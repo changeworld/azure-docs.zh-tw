@@ -9,16 +9,16 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ccd8d383db265826d8644ee89d7300128fc3a350
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c54690645286a4fceb3fd786d85652b1cf77d7aa
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82131314"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260041"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>使用 x.509 憑證建立和布建 IoT Edge 裝置
 
-使用[Azure IoT 中樞裝置布建服務（DPS）](../iot-dps/index.yml)，您可以使用 x.509 憑證，自動布建 IoT Edge 裝置。 如果您不熟悉自動布建程式，請先參閱自動布[建概念](../iot-dps/concepts-auto-provisioning.md)，再繼續進行。
+透過[Azure IoT 中樞裝置布建服務 (DPS) ](../iot-dps/index.yml)，您可以使用 x.509 憑證自動布建 IoT Edge 裝置。 如果您不熟悉自動布建程式，請先參閱自動布[建概念](../iot-dps/concepts-auto-provisioning.md)，再繼續進行。
 
 本文說明如何使用 x.509 憑證，在 IoT Edge 裝置上建立裝置布建服務註冊，並執行下列步驟：
 
@@ -39,7 +39,7 @@ ms.locfileid: "82131314"
 
 ## <a name="generate-device-identity-certificates"></a>產生裝置身分識別憑證
 
-裝置身分識別憑證是一種分葉憑證，會透過憑證信任鏈連線到最上層的 x.509 憑證授權單位單位（CA）憑證。 裝置身分識別憑證的一般名稱（CN）必須設定為您要讓裝置在 IoT 中樞內擁有的裝置識別碼。
+裝置身分識別憑證是分葉憑證，會透過憑證信任鏈連線到 (CA) 憑證的前 x.509 憑證授權單位單位。 裝置身分識別憑證必須將其一般名稱 (CN) 設定為您希望裝置在 IoT 中樞內擁有的裝置識別碼。
 
 裝置身分識別憑證僅用於布建 IoT Edge 裝置，以及使用 Azure IoT 中樞驗證裝置。 它們不會簽署憑證，不同于 IoT Edge 裝置向模組或分葉裝置出示以進行驗證的 CA 憑證。 如需詳細資訊，請參閱[Azure IoT Edge 憑證使用方式詳細資料](iot-edge-certs.md)。
 
@@ -50,6 +50,9 @@ ms.locfileid: "82131314"
 * 裝置身分識別憑證和其私密金鑰憑證。 如果您建立個別註冊，裝置身分識別憑證會上傳至 DPS。 私用金鑰會傳遞至 IoT Edge 執行時間。
 * 完整鏈憑證，其中應該至少有裝置身分識別和中繼憑證。 完整的連鎖憑證會傳遞至 IoT Edge 執行時間。
 * 憑證信任鏈中的中繼或根 CA 憑證。 如果您建立群組註冊，則會將此憑證上傳至 DPS。
+
+> [!NOTE]
+> 目前，libiothsm 的限制可防止使用2050年1月1日之後到期的憑證。
 
 ### <a name="use-test-certificates"></a>使用測試憑證
 
@@ -94,13 +97,13 @@ Windows：
 
       `<WRKDIR>/certs/iot-edge-device-identity-<name>.cert.pem`
 
-   * **IoT 中樞裝置識別碼**：如有需要，請提供您裝置的識別碼。 您可以使用裝置識別碼，將個別裝置設為模組部署的目標。 如果您未提供裝置識別碼，則會使用 x.509 憑證中的一般名稱（CN）。
+   * **IoT 中樞裝置識別碼**：如有需要，請提供您裝置的識別碼。 您可以使用裝置識別碼，將個別裝置設為模組部署的目標。 如果您未提供裝置識別碼，則會使用 x.509 憑證中 (CN) 的一般名稱。
 
    * **IoT Edge 裝置**：選取 [ **True** ] 以宣告註冊適用于 IoT Edge 裝置。
 
    * **選取可指派此裝置的 iot 中樞**：選擇您想要將裝置連線到的已連結 iot 中樞。 您可以選擇多個中樞，並根據選取的配置原則，將裝置指派給其中一個。
 
-   * **初始裝置**對應項狀態：如有需要，請新增要新增至裝置對應項的標記值。 您可以使用標籤來鎖定裝置群組，以進行自動部署。 例如：
+   * **初始裝置**對應項狀態：如有需要，請新增要新增至裝置對應項的標記值。 您可以使用標籤來鎖定裝置群組，以進行自動部署。 例如︰
 
       ```json
       {
@@ -161,7 +164,7 @@ Windows：
 
 1. 在 Azure 入口網站的相同 [憑證詳細資料] 頁面上，上傳新產生的驗證憑證。
 
-1. 選取 [驗證] ****。
+1. 選取 [驗證]。
 
 ### <a name="create-enrollment-group"></a>建立註冊群組
 
@@ -185,7 +188,7 @@ Windows：
 
    * **選取可指派此裝置的 iot 中樞**：選擇您想要將裝置連線到的已連結 iot 中樞。 您可以選擇多個中樞，並根據選取的配置原則，將裝置指派給其中一個。
 
-   * **初始裝置**對應項狀態：如有需要，請新增要新增至裝置對應項的標記值。 您可以使用標籤來鎖定裝置群組，以進行自動部署。 例如：
+   * **初始裝置**對應項狀態：如有需要，請新增要新增至裝置對應項的標記值。 您可以使用標籤來鎖定裝置群組，以進行自動部署。 例如︰
 
       ```json
       {
@@ -204,7 +207,7 @@ Windows：
 
 ## <a name="install-the-iot-edge-runtime"></a>安裝 IoT Edge 執行階段
 
-IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 其元件會在容器中執行，並可讓您將其他容器部署到裝置，以便您在 Edge 上執行程式碼。
+IoT Edge 執行階段會部署在所有 IoT Edge 裝置上。 其元件會在容器中執行，並可讓您將其他容器部署到裝置，以便您在 Edge 上執行程式碼。
 
 X.509 使用 DPS 布建，只有在 IoT Edge 版本1.0.9 或更新版本中才支援。
 
@@ -213,7 +216,7 @@ X.509 使用 DPS 布建，只有在 IoT Edge 版本1.0.9 或更新版本中才�
 * DPS**識別碼範圍**值。 您可以從 Azure 入口網站中 DPS 實例的 [總覽] 頁面抓取此值。
 * 裝置上的裝置身分識別憑證鏈檔案。
 * 裝置上的裝置身分識別金鑰檔。
-* 選擇性的註冊識別碼（如果未提供，則會從裝置身分識別憑證中的一般名稱中提取）。
+* 選擇性的註冊識別碼 (從裝置身分識別憑證中的一般名稱提取（如果未提供) ）。
 
 ### <a name="linux-device"></a>Linux 裝置
 
@@ -221,7 +224,7 @@ X.509 使用 DPS 布建，只有在 IoT Edge 版本1.0.9 或更新版本中才�
 
 [在 Linux 上安裝 Azure IoT Edge 執行階段](how-to-install-iot-edge-linux.md)
 
-當您將 x.509 憑證和金鑰資訊新增至 yaml 檔案時，應該將路徑提供為檔案 Uri。 例如：
+當您將 x.509 憑證和金鑰資訊新增至 yaml 檔案時，應該將路徑提供為檔案 Uri。 例如︰
 
 * `file:///<path>/identity_certificate_chain.pem`
 * `file:///<path>/identity_key.pem`
@@ -255,7 +258,7 @@ sudo systemctl restart iotedge
 
 如需有關在 Windows 上安裝 IoT Edge 的詳細資訊，包括管理容器和更新 IoT Edge 等工作的必要條件和指示，請參閱[在 windows 上安裝 Azure IoT Edge 執行時間](how-to-install-iot-edge-windows.md)。
 
-1. 在系統管理員模式下開啟 [Azure PowerShell] 視窗。 安裝 IoT Edge 時，請務必使用 PowerShell 的 AMD64 會話，而不是 PowerShell （x86）。
+1. 在系統管理員模式下開啟 [Azure PowerShell] 視窗。 安裝 IoT Edge 時，請務必使用 PowerShell 的 AMD64 會話，而不是 PowerShell (x86) 。
 
 1. **IoTEdge**命令會檢查您的 Windows 電腦是否在支援的版本上，開啟 [容器] 功能，然後下載 moby 執行時間和 IoT Edge 執行時間。 命令預設為使用 Windows 容器。
 

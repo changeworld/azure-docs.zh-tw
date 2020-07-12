@@ -4,12 +4,12 @@ description: 了解如何掛接 Azure 檔案磁碟區來保存 Azure 容器執�
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc
-ms.openlocfilehash: 593400f67db5018f1533dd37eed88ece7fd596c6
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: eaf5e0704ba2ea4f0e0a30d61e4ae1d2ad1bf58d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169573"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259475"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>在 Azure 容器執行個體中掛接 Azure 檔案共用
 
@@ -223,11 +223,11 @@ az container create --resource-group myResourceGroup --file deploy-aci.yaml
 }
 ```
 
-若要透過 Resource Manager 範本進行部署，請將上述 JSON 儲存到名為 `deploy-aci.json` 的檔案，然後使用  參數執行 [az group deployment create`--template-file`][az-group-deployment-create] 命令：
+若要使用 Resource Manager 範本進行部署，請將上述 JSON 儲存到名為的檔案 `deploy-aci.json` ，然後使用參數執行[az deployment group create][az-deployment-group-create]命令 `--template-file` ：
 
 ```azurecli
 # Deploy with Resource Manager template
-az group deployment create --resource-group myResourceGroup --template-file deploy-aci.json
+az deployment group create --resource-group myResourceGroup --template-file deploy-aci.json
 ```
 
 
@@ -285,4 +285,4 @@ az group deployment create --resource-group myResourceGroup --template-file depl
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create
 [az-container-show]: /cli/azure/container#az-container-show
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create

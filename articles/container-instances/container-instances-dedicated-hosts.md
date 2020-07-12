@@ -5,15 +5,16 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: a614d6b5d0cf5c6c1df5ffcb90e56960d6b8a2a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9d7e2a706f65b5f2948a24400aa63ba39350661
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82025028"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259644"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>在專用主機上部署
 
-「專用」是一種 Azure 容器實例（ACI） sku，可提供隔離且專用的計算環境，以安全地執行容器。 使用專用 sku 會導致在 Azure 資料中心具有專用實體伺服器的每個容器群組中，確保完整的工作負載隔離，以協助符合您組織的安全性和合規性需求。 
+「專用」是一種 Azure 容器實例， (ACI) sku，可提供隔離且專用的計算環境來安全地執行容器。 使用專用 sku 會導致在 Azure 資料中心具有專用實體伺服器的每個容器群組中，確保完整的工作負載隔離，以協助符合您組織的安全性和合規性需求。 
 
 專用 sku 適用于需要從實體伺服器觀點來隔離工作負載的容器工作負載。
 
@@ -24,10 +25,10 @@ ms.locfileid: "82025028"
 ## <a name="use-the-dedicated-sku"></a>使用專用 sku
 
 > [!IMPORTANT]
-> 使用專用 sku 僅適用于目前推出的最新 API 版本（2019-12-01）。在您的部署範本中指定此 API 版本。
+> 使用專用 sku 僅適用于目前推出的最新 API 版本 (2019-12-01) 。在您的部署範本中指定此 API 版本。
 >
 
-從 API 版本2019-12-01 開始， `sku` 部署範本的 [容器群組屬性] 區段底下會有一個屬性，這是 ACI 部署所需的內容。 目前，您可以使用此屬性做為 ACI Azure Resource Manager 部署範本的一部分。 在[教學課程：使用 Resource Manager 範本部署多容器群組](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)中，深入瞭解如何使用範本部署 ACI 資源。 
+從 API 版本2019-12-01 開始， `sku` 部署範本的 [容器群組屬性] 區段底下會有一個屬性，這是 ACI 部署所需的內容。 目前，您可以使用此屬性做為 ACI Azure Resource Manager 部署範本的一部分。 在[教學課程：使用 Resource Manager 範本部署多容器群組](./container-instances-multi-container-group.md)中，深入瞭解如何使用範本部署 ACI 資源。 
 
 `sku`屬性可以有下列其中一個值：
 * `Standard`-標準 ACI 部署選擇，其仍可保證程式管理層級安全性 
@@ -136,17 +137,17 @@ ms.locfileid: "82025028"
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az group deployment create][az-group-deployment-create] 命令部署範本。
+使用[az deployment group create][az-deployment-group-create]命令來部署範本。
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
+az deployment group create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
 在幾秒內，您應該會從 Azure 收到首次回應。 成功的部署會在專用主機上進行。
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

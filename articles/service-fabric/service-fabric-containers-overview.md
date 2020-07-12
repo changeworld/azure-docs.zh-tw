@@ -3,11 +3,12 @@ title: Service Fabric 和容器的概觀
 description: Service Fabric 及使用容器來部署微服務應用程式的概觀。 本文提供如何使用容器及 Service Fabric 所提供之功能的概觀。
 ms.topic: conceptual
 ms.date: 8/8/2018
-ms.openlocfilehash: 884cefa3d6a60f55269afac73c40b9f6b21518f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c92910a92c8fa3061a1a0d53611734cf681484f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458215"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259222"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric 和容器
 
@@ -64,7 +65,7 @@ Windows Server 2016 提供兩種不同的容器，其隔離程度有所不同。
 
 以下是典型範例，容器是很好的選擇︰
 
-* **IIS 提起然後平移**︰您可以將現有的 [ASP.NET MVC](https://www.asp.net/mvc) 應用程式放在一個容器中，而不是將它遷移到 ASP.NET Core。 這些 ASP.NET MVC 應用程式相依於網際網路資訊服務 (IIS)。 您可以從預先建立的 IIS 映像將這些應用程式封裝成容器映像，然後與 Service Fabric 一起部署。 請參閱 [Windows Server 上的容器映像](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) (英文)，以取得 Windows 容器的相關資訊。
+* **IIS 提起然後平移**︰您可以將現有的 [ASP.NET MVC](https://www.asp.net/mvc) 應用程式放在一個容器中，而不是將它遷移到 ASP.NET Core。 這些 ASP.NET MVC 應用程式相依於網際網路資訊服務 (IIS)。 您可以從預先建立的 IIS 映像將這些應用程式封裝成容器映像，然後與 Service Fabric 一起部署。 請參閱 [Windows Server 上的容器映像](/virtualization/windowscontainers/quick-start/quick-start-windows-server) (英文)，以取得 Windows 容器的相關資訊。
 
 * **混合容器和 Service Fabric 微服務**︰針對您的應用程式的一部分使用現有的容器映像。 例如，對於應用程式的 Web 前端系統，您可以使用 [NGINX 容器](https://hub.docker.com/_/nginx/)，而對於更密集的後端運算，則可以使用具狀態服務。
 
@@ -89,7 +90,7 @@ Service Fabric 提供數個容器功能，協助您建置由容器化微服務�
 * 能夠在容器上設定安全性認證。
 * 為容器選擇不同的網路模式。
 
-如需在 Azure 上支援容器的完整概觀，例如如何利用 Azure Kubernetes 服務建立 Kubernetes 叢集、如何在 Azure Container Registry 中建立私人 Docker 登錄等等，請參閱 [Azure 容器](https://docs.microsoft.com/azure/containers/)。
+如需在 Azure 上支援容器的完整概觀，例如如何利用 Azure Kubernetes 服務建立 Kubernetes 叢集、如何在 Azure Container Registry 中建立私人 Docker 登錄等等，請參閱 [Azure 容器](../containers/index.yml)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -97,6 +98,6 @@ Service Fabric 提供數個容器功能，協助您建置由容器化微服務�
 
 [在 Linux 建立第一個 Service Fabric 容器應用程式](service-fabric-get-started-containers-linux.md)  
 [在 Windows 建立第一個 Service Fabric 容器應用程式](service-fabric-get-started-containers.md)  
-[深入了解 Windows 容器](https://docs.microsoft.com/virtualization/windowscontainers/about/)
+[深入了解 Windows 容器](/virtualization/windowscontainers/about/)
 
 [Image1]: media/service-fabric-containers/Service-Fabric-Types-of-Isolation.png

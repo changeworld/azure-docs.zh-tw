@@ -3,17 +3,18 @@ title: 建立叢集的 Azure Load Balancer 規則
 description: 設定 Azure Load Balancer 來開啟 Azure Service Fabric 叢集的連接埠。
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: f4599b2e0174381ab7df04aeeb33db7e3ee60f26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 049afb88b5552c92294180069b54d49574a410fa
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77025379"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259035"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>開啟 Service Fabric 叢集的連接埠
 
 此負載平衡器會隨 Azure Service Fabric 叢集一起部署，以將流量導向至節點上所執行的應用程式。 如果您變更應用程式以使用不同的連接埠，您必須在 Azure Load Balancer 中公開該連接埠 (或路由不同的連接埠)。
 
-當您將 Service Fabric 叢集部署至 Azure 時，系統會自動為您建立負載平衡器。 如果您沒有負載平衡器，請參閱[設定網際網路面向的負載平衡器](../load-balancer/load-balancer-get-started-internet-portal.md)。
+當您將 Service Fabric 叢集部署至 Azure 時，系統會自動為您建立負載平衡器。 如果您沒有負載平衡器，請參閱[設定網際網路面向的負載平衡器](../load-balancer/quickstart-load-balancer-standard-public-portal.md)。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -24,7 +25,7 @@ ms.locfileid: "77025379"
 
 ## <a name="create-a-load-balancer-rule"></a>建立負載平衡器規則
 
-負載平衡器規則會開啟網際網路面向的連接埠，並將流量轉送至您的應用程式所使用的內部節點連接埠。 如果您沒有負載平衡器，請參閱[設定網際網路面向的負載平衡器](../load-balancer/load-balancer-get-started-internet-portal.md)。
+負載平衡器規則會開啟網際網路面向的連接埠，並將流量轉送至您的應用程式所使用的內部節點連接埠。 如果您沒有負載平衡器，請參閱[設定網際網路面向的負載平衡器](../load-balancer/quickstart-load-balancer-standard-public-portal.md)。
 
 若要建立負載平衡器規則，您需要收集下列資訊：
 
@@ -49,7 +50,7 @@ az network lb rule create --backend-port 40000 --frontend-port 39999 --protocol 
 
 Azure CLI 命令有幾個參數，如下表所述：
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 | --------- | ----------- |
 | `--backend-port`  | Service Fabric 應用程式正在接聽的連接埠。 |
 | `--frontend-port` | 負載平衡器公開給外部連線的連接埠。 |

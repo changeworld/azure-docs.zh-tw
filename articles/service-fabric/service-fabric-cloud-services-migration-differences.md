@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 283ad2c63bb59771dab7881522e737f773ab1705
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47c3d1b4d603e2dde2de8d4a95fb953744d71409
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75463376"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259008"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>移轉應用程式之前，先了解「雲端服務」與 Service Fabric 之間的差異。
 Microsoft Azure Service Fabric 為次世代雲端應用程式平台，適用於高度可調整且高度可靠的分散式應用程式。 其中導入了許多封裝、部署、更新及管理分散式雲端應用程式的新功能。 
@@ -80,22 +81,22 @@ Service Fabric 提供服務探索機制 (稱為「名稱服務」)，可用來�
 ![Service Fabric 直接通訊][8]
 
 ## <a name="parity"></a>Parity
-[雲端服務類似于 Service Fabric 的控制程度和易用性，但它現在是舊版服務，建議您在進行新的開發時使用 Service Fabric](https://docs.microsoft.com/azure/app-service/overview-compare)。以下是 API 比較：
+[雲端服務類似于 Service Fabric 的控制程度和易用性，但它現在是舊版服務，建議您在進行新的開發時使用 Service Fabric](/azure/app-service/overview-compare)。以下是 API 比較：
 
 
-| **雲端服務 API** | **Service Fabric API** | **備註** |
+| **雲端服務 API** | **Service Fabric API** | **注意事項** |
 | --- | --- | --- |
 | RoleInstance. GetID | FabricRuntime. GetNodeCoNtext。NodeName | ID 是 NodeName 的屬性 |
 | RoleInstance. GetFaultDomain | FabricClient. Fabricclient.querymanager. GetNodeList | 在 NodeName 上篩選並使用 FD 屬性 |
 | RoleInstance. GetUpgradeDomain | FabricClient. Fabricclient.querymanager. GetNodeList | 在 NodeName 上篩選，並使用 Upgrade 屬性 |
-| RoleInstance. GetInstanceEndpoints | FabricRuntime. GetActivationCoNtext 或命名（ResolveService） | CodePackageActivationCoNtext 是由 FabricRuntime 所提供，而且是透過在中提供的 ServiceInitializationParameters. CodePackageActivationCoNtext 在複本內。格式化 |
+| RoleInstance. GetInstanceEndpoints | FabricRuntime. GetActivationCoNtext 或命名 (ResolveService)  | CodePackageActivationCoNtext 是由 FabricRuntime 所提供，而且是透過在中提供的 ServiceInitializationParameters. CodePackageActivationCoNtext 在複本內。格式化 |
 | RoleEnvironment. GetRoles | FabricClient. Fabricclient.querymanager. GetNodeList | 如果您想要依類型執行相同的篩選，您可以透過 FabricClient. ClusterManager. GetClusterManifest 取得叢集資訊清單中的節點類型清單，並從該處抓取角色/節點類型。 |
 | RoleEnvironment. GetIsAvailable | 連接-WindowsFabricCluster 或建立指向特定節點的 FabricRuntime | * |
 | RoleEnvironment. Roleenvironment.getlocalresource | CodePackageActivationCoNtext .Log/Temp/Work | * |
 | RoleEnvironment. GetCurrentRoleInstance | CodePackageActivationCoNtext .Log/Temp/Work | * |
 | LocalResource. GetRootPath | CodePackageActivationCoNtext .Log/Temp/Work | * |
 | GetInstances | FabricClient. Fabricclient.querymanager. GetNodeList 或 ResolveService | * |
-| RoleInstanceEndpoint.GetIPEndpoint | FabricRuntime. GetActivationCoNtext 或命名（ResolveService） | * |
+| RoleInstanceEndpoint.GetIPEndpoint | FabricRuntime. GetActivationCoNtext 或命名 (ResolveService)  | * |
 
 ## <a name="next-steps"></a>後續步驟
 從雲端服務移轉到 Service Fabric 最簡單的路徑是，只將雲端服務部署以 Service Fabric 應用程式取代，應用程式的整體基礎結構則大致上相同。 下列文章提供指南，以協助將 Web 和背景工作角色移轉到 Service Fabric 無狀態服務。

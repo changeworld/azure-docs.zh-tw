@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 07394fb2d33aaacdc8e47bc2d1809854c0c8ca1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5eee6f34124f8b286deff278c6c3d1038b595357
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209346"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259873"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>使用新的工作階段主機擴充現有的主機集區
 
@@ -29,7 +29,7 @@ ms.locfileid: "85209346"
 
 ## <a name="what-you-need-to-expand-the-host-pool"></a>擴充主機集區所需的內容
 
-開始之前，請確定您已使用下列其中一種方法建立主機集區和工作階段主機虛擬機器（Vm）：
+開始之前，請確定您已使用下列其中一種方法， (Vm 建立主機集區和工作階段主機虛擬機器) ：
 
 - [Azure 入口網站](./create-host-pools-azure-marketplace.md)
 - [使用 PowerShell 建立主機集區](./create-host-pools-powershell.md)
@@ -54,7 +54,7 @@ ms.locfileid: "85209346"
 
 5. 選取 [ **+ 新增**] 以開始建立您的主機集區。
 
-6. 忽略 [基本] 索引標籤，並改為選取 [ **VM 詳細資料**] 索引標籤。您可以在這裡查看和編輯您想要新增至主機集區的虛擬機器（VM）詳細資料。
+6. 忽略 [基本] 索引標籤，並改為選取 [ **VM 詳細資料**] 索引標籤。您可以在這裡查看和編輯您要新增至主機集區之虛擬機器 (VM) 的詳細資料。
 
 7. 選取您想要在其下建立 Vm 的資源群組，然後選取 [區域]。 您可以選擇目前使用的區域或新的區域。
 
@@ -78,7 +78,7 @@ ms.locfileid: "85209346"
 
 現在您已擴充現有的主機集區，您可以登入 Windows 虛擬桌面用戶端，在使用者會話中進行測試。 您可以使用下列任何一種用戶端連接到會話：
 
-- [與 Windows 桌面用戶端連線](./connect-windows-7-and-10.md)
+- [與 Windows 桌面用戶端連線](./connect-windows-7-10.md)
 - [與 Web 用戶端連線](./connect-web.md)
 - [與 Android 用戶端連線](./connect-android.md)
 - [與 macOS 用戶端連線](./connect-macos.md)

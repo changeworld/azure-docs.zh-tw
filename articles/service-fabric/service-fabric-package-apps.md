@@ -3,11 +3,12 @@ title: 封裝 Azure Service Fabric 應用程式
 description: 瞭解如何封裝 Azure Service Fabric 應用程式，以及如何準備部署至叢集。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c00e46915c7bf147d224911ef4988d9fedd691c7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701042"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260966"
 ---
 # <a name="package-an-application"></a>封裝應用程式
 
@@ -42,7 +43,7 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ## <a name="use-setupentrypoint"></a>使用 SetupEntryPoint
 
-使用 **SetupEntryPoint** 的一般案例，是當您必須在服務啟動之前執行可執行檔，或必須使用提高的權限來執行作業時。 例如：
+使用 **SetupEntryPoint** 的一般案例，是當您必須在服務啟動之前執行可執行檔，或必須使用提高的權限來執行作業時。 例如︰
 
 * 設定及初始化服務可執行檔需要的環境變數。 這不僅限於透過 Service Fabric 程式設計模型撰寫的可執行檔。 例如，npm.exe 部署 node.js 應用程式，需要設定某些環境變數。
 * 透過安裝安全性憑證設定存取控制。
@@ -210,7 +211,7 @@ Service Fabric 會在內部針對驗證計算應用程式封裝的總和檢查�
 `sfpkg` 檔案是一個包含初始應用程式封裝的 zip，副檔名為 ".sfpkg"。
 在 zip 中，應用程式封裝可能是已經過壓縮或未壓縮的。 zip 內應用程式封裝的壓縮是在 code、config 和 data 封裝層級完成，如[先前所述](service-fabric-package-apps.md#compress-a-package)。
 
-若要建立 `sfpkg`，請先建立一個包含原始已壓縮或未壓縮應用程式封裝的資料夾。 然後，使用任何公用程式，以副檔名 ".sfpkg" 壓縮資料夾。 例如，使用 [ZipFile.CreateFromDirectory](https://msdn.microsoft.com/library/hh485721(v=vs.110).aspx)。
+若要建立 `sfpkg`，請先建立一個包含原始已壓縮或未壓縮應用程式封裝的資料夾。 然後，使用任何公用程式，以副檔名 ".sfpkg" 壓縮資料夾。 例如，使用 [ZipFile.CreateFromDirectory](/dotnet/api/system.io.compression.zipfile.createfromdirectory?view=netcore-3.1#System_IO_Compression_ZipFile_CreateFromDirectory_System_String_System_String_System_IO_Compression_CompressionLevel_System_Boolean_)。
 
 ```csharp
 ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);

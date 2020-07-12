@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8c5de43ed29856451ad67e02a426b07cc34a0d54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3dc9d62141a63574a6796982542cb1491108eedc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80422421"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259870"
 ---
 # <a name="linux-support"></a>Linux 支援
 
@@ -48,9 +48,9 @@ SDK 支援與桌上型電腦和遠端應用程式會話之間的多個連接。 
 | 滑鼠             | &#10004;  |
 | 音訊 in          | &#10004;  |
 | 音訊輸出         | &#10004;  |
-| 剪貼簿（文字）  | &#10004;  |
-| 剪貼簿（影像） | &#10004;  |
-| 剪貼簿（檔案）  | &#10004;  |
+| 剪貼簿 (文字)   | &#10004;  |
+| 剪貼簿 (影像)  | &#10004;  |
+| 剪貼簿 (檔案)   | &#10004;  |
 | 智慧卡         | &#10004;  |
 | 磁片磁碟機/資料夾      | &#10004;  |
 
@@ -69,7 +69,7 @@ SDK 也支援多個監視器顯示設定，只要您為會話選取的監視器�
 
 查看下列用戶端的檔：
 
-- [Windows 桌面用戶端](connect-windows-7-and-10.md)
+- [Windows 桌面用戶端](connect-windows-7-10.md)
 - [Web 用戶端](connect-web.md)
 - [Android 用戶端](connect-android.md)
 - [macOS 用戶端](connect-macos.md)

@@ -4,12 +4,12 @@ description: 瞭解如何針對部署、執行或管理 Azure 容器實例時的
 ms.topic: article
 ms.date: 06/25/2020
 ms.custom: mvc
-ms.openlocfilehash: aeb4517f5be7fff9c29487d6521f80ee697c0e96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46d3ad6afb1761ca9503676ad2176482b7e4530e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807837"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260756"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>在 Azure 容器執行個體中針對常見問題進行疑難排解
 
@@ -183,7 +183,7 @@ mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 month
 
 #### <a name="image-location"></a>映像位置
 
-另一種可在容器啟動階段降低對於映像提取作業影響的方式，是在您想要部署容器執行個體的相同區域中，將容器映像裝載在 [Azure Container Registry](/azure/container-registry/) 中。 這種方式會縮短容器映像需要經過的網路路徑，從而大幅縮短下載時間。
+另一種可在容器啟動階段降低對於映像提取作業影響的方式，是在您想要部署容器執行個體的相同區域中，將容器映像裝載在 [Azure Container Registry](../container-registry/index.yml) 中。 這種方式會縮短容器映像需要經過的網路路徑，從而大幅縮短下載時間。
 
 #### <a name="cached-images"></a>快取的影像
 
@@ -228,9 +228,9 @@ Azure 容器實例尚未支援像是一般 docker 設定的埠對應。 如果�
 瞭解如何[取得容器記錄和事件](container-instances-get-logs.md)，以協助您進行容器的偵錯工具。
 
 <!-- LINKS - External -->
-[azure-name-restrictions]: https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources
+[azure-name-restrictions]: /azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources
 [naming-rules]: ../azure-resource-manager/management/resource-name-rules.md
-[windows-sac-overview]: https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview
+[windows-sac-overview]: /windows-server/get-started/semi-annual-channel-overview
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/_/microsoft-windows-servercore
 [docker-hub-windows-nano]: https://hub.docker.com/_/microsoft-windows-nanoserver

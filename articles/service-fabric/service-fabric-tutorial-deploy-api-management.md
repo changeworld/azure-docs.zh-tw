@@ -4,12 +4,12 @@ description: 了解如何快速開始使用 Azure API 管理以及將流量路�
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 7bd781a21a32ca29fe3f5dd2f4432dbf1e5ca411
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40f8c53394292a85f6fd032e445d79ed82e2d4e9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80292133"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260253"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>整合 API 管理與 Azure 中的 Service Fabric
 
@@ -30,7 +30,7 @@ ms.locfileid: "80292133"
 開始之前：
 
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* 安裝[Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps)或[Azure CLI](/cli/azure/install-azure-cli)。
+* 安裝[Azure Powershell](/powershell/azure/install-az-ps)或[Azure CLI](/cli/azure/install-azure-cli)。
 * 在網路安全性群組中建立安全的 [Windows 叢集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)。
 * 如果您部署 Windows 叢集，請設定 Windows 開發環境。 安裝 [Visual Studio 2019](https://www.visualstudio.com) 和 **Azure 開發**、**ASP.NET 和 Web 開發**以及 **.NET Core 跨平台開發**工作負載。  然後設定 [.NET 開發環境](service-fabric-get-started.md)。
 
@@ -151,9 +151,9 @@ az account set --subscription <guid>
 
 ### <a name="microsoftapimanagementserviceapispolicies"></a>Microsoft.ApiManagement/service/apis/policies
 
-[Microsoft.ApiManagement/service/apis/policies](/azure/templates/microsoft.apimanagement/service/apis/policies) 會建立後端原則，該原則會將所有項目繫結在一起。 您需在此原則中設定作為要求路由傳送目的地的後端 Service Fabric 服務。 您可以將此原則套用至任何 API 作業。  如需詳細資訊，請參閱[原則概觀](/azure/api-management/api-management-howto-policies)。
+[Microsoft.ApiManagement/service/apis/policies](/azure/templates/microsoft.apimanagement/service/apis/policies) 會建立後端原則，該原則會將所有項目繫結在一起。 您需在此原則中設定作為要求路由傳送目的地的後端 Service Fabric 服務。 您可以將此原則套用至任何 API 作業。  如需詳細資訊，請參閱[原則概觀](../api-management/api-management-howto-policies.md)。
 
-[Service Fabric 的後端組態](/azure/api-management/api-management-transformation-policies#SetBackendService)提供下列要求路由控制：
+[Service Fabric 的後端組態](../api-management/api-management-transformation-policies.md#SetBackendService)提供下列要求路由控制：
 
 * 服務執行個體選取：方法是以硬式編碼 (例如 `"fabric:/myapp/myservice"`) 或從 HTTP 要求產生 (例如 `"fabric:/myapp/users/" + context.Request.MatchedParameters["name"]`) 來指定 Service Fabric 服務執行個體名稱。
 * 分割區解析：方法是使用任何 Service Fabric 資料分割配置來產生分割區索引鍵。
@@ -180,7 +180,7 @@ az account set --subscription <guid>
 </policies>
 ```
 
-如需完整的一組 Service Fabric 後端原則屬性，請參考 [API 管理後端文件](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#SetBackendService)
+如需完整的一組 Service Fabric 後端原則屬性，請參考 [API 管理後端文件](../api-management/api-management-transformation-policies.md#SetBackendService)
 
 ## <a name="set-parameters-and-deploy-api-management"></a>設定參數並且部署 API 管理
 
@@ -291,9 +291,9 @@ az group delete --name $ResourceGroupName
 
 ## <a name="next-steps"></a>後續步驟
 
-深入了解如何使用 [API 管理](/azure/api-management/import-and-publish)。
+深入了解如何使用 [API 管理](../api-management/import-and-publish.md)。
 
-[azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[azure-powershell]: /powershell/azure/
 
 [apim-arm]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/service-integration/apim.json
 [apim-parameters-arm]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/service-integration/apim.parameters.json

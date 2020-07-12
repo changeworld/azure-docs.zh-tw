@@ -3,12 +3,12 @@ title: 升級叢集的 Azure Service Fabric 版本
 description: 升級執行 Service Fabric 叢集的 Service Fabric 程式碼和/或組態，包括設定叢集更新模式、升級憑證、新增應用程式連接埠、修補作業系統等等。 執行升級時，您可以期待些什麼？
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: 802e7402f60370b7151c5e373c8a4921a5af7c80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0fef612725d606f1415e7e8d004aacee025cedf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82789595"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261046"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>升級叢集的 Service Fabric 版本
 
@@ -19,7 +19,7 @@ ms.locfileid: "82789595"
 作法是在入口網站上設定 “upgrademode” 叢集組態，或是建立時或稍後在即時叢集上使用 Resource Manager 來設定。 
 
 > [!NOTE]
-> 請務必保持您的叢集一律執行支援的網狀架構版本。 當我們宣布發行新版本的 Service Fabric 時，從當日起至少 60 天後，舊版就會標示為結束支援。 新的版本會於 [Service Fabric 小組部落格上](https://blogs.msdn.microsoft.com/azureservicefabric/)發佈。 那時就有新的版本可選擇。 
+> 請務必保持您的叢集一律執行支援的網狀架構版本。 當我們宣布發行新版本的 Service Fabric 時，從當日起至少 60 天後，舊版就會標示為結束支援。 新的版本會於 [Service Fabric 小組部落格上](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)發佈。 那時就有新的版本可選擇。 
 > 
 > 
 

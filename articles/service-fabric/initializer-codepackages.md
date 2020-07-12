@@ -5,12 +5,12 @@ author: shsha-msft
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: shsha
-ms.openlocfilehash: 8483e00f55d0dd49ba57db58b99b237ce0a169e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3be079b97c2660437344f88203fdda06cc6d6740
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81430626"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258973"
 ---
 # <a name="initializer-codepackages"></a>初始設定式 Codepackage
 
@@ -23,12 +23,12 @@ ms.locfileid: "81430626"
  
 ## <a name="semantics"></a>語意
 
-初始化運算式 CodePackage 預期會執行**成功完成（結束代碼0）**。 失敗的初始化運算式 CodePackage 會重新開機，直到成功完成為止。 系統會允許多個初始化運算式 Codepackage，並在 ServicePackage 開始執行中的其他 Codepackage 之前，依照**指定的順序**，**順序**執行到**成功完成**。
+初始化運算式 CodePackage 預期會執行**成功完成 (結束代碼 0) **。 失敗的初始化運算式 CodePackage 會重新開機，直到成功完成為止。 系統會允許多個初始化運算式 Codepackage，並在 ServicePackage 開始執行中的其他 Codepackage 之前，依照**指定的順序**，**順序**執行到**成功完成**。
 
 ## <a name="specifying-initializer-codepackages"></a>指定初始化運算式 Codepackage
 您可以藉由將 ServiceManifest 中的**初始化運算式**屬性設定為**True** ，將 CodePackage 標記為初始化運算式。 當有多個初始化運算式 Codepackage 時，可以透過**ExecOrder**屬性指定其執行順序。 **ExecOrder**必須是非負值的整數，而且只對初始化運算式 codepackage 有效。 較低值為**ExecOrder**的初始化運算式 codepackage 會先執行。 如果未指定初始化運算式 CodePackage 的**ExecOrder** ，則會假設為預設值0。 未指定具有相同**ExecOrder**值之初始化運算式 codepackage 的相對執行順序。
 
-下列 ServiceManifest 程式碼片段描述三個已標記為初始化運算式的 Codepackage。 當此 ServicePackage 啟動時，會先執行*InitCodePackage0* ，因為它的最小值為**ExecOrder**。 當*InitCodePackage0*成功完成（結束代碼0）時，會執行*InitCodePackage1* 。 最後，當*InitCodePackage1*成功完成時，就會執行*WorkloadCodePackage* 。
+下列 ServiceManifest 程式碼片段描述三個已標記為初始化運算式的 Codepackage。 當此 ServicePackage 啟動時，會先執行*InitCodePackage0* ，因為它的最小值為**ExecOrder**。 成功完成 (結束代碼 0) *InitCodePackage0*時，就會執行*InitCodePackage1* 。 最後，當*InitCodePackage1*成功完成時，就會執行*WorkloadCodePackage* 。
 
 ```xml
 <CodePackage Name="InitCodePackage0" Version="1.0" Initializer="true" ExecOrder="0">
@@ -50,7 +50,7 @@ ms.locfileid: "81430626"
 > [!IMPORTANT]
 > 下列範例假設您已熟悉如何[使用 Service Fabric 和 Docker 建立 Windows 容器應用程式][containers-getting-started-link]。
 >
-> 這個範例會參考 mcr.microsoft.com/windows/nanoserver:1809。 Windows Server 容器在主機 OS 的所有版本之間不相容。 若要深入了解，請參閱 [Windows 容器版本相容性](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)。
+> 這個範例會參考 mcr.microsoft.com/windows/nanoserver:1809。 Windows Server 容器在主機 OS 的所有版本之間不相容。 若要深入了解，請參閱 [Windows 容器版本相容性](/virtualization/windowscontainers/deploy-containers/version-compatibility)。
 
 下列 ServiceManifest.xml 是以先前所述的 ServiceManifest 程式碼片段為基礎。 *InitCodePackage0*、 *InitCodePackage1*和*WorkloadCodePackage*都是代表容器的 codepackage。 啟用時，會先執行*InitCodePackage0* 。 它會將訊息記錄到檔案並結束。 接下來，會執行*InitCodePackage1* ，這也會將訊息記錄到檔案並結束。 最後， *WorkloadCodePackage*會開始執行。 它也會將訊息記錄到檔案中，將檔案的內容輸出到**stdout** ，然後永遠進行 ping。
 
@@ -151,4 +151,3 @@ Hi from WorkloadCodePackage.
 [application-model-link]: service-fabric-application-model.md
 [hosting-model-link]: service-fabric-hosting-model.md
 [setup-entry-point-link]: service-fabric-run-script-at-service-startup.md
-

@@ -5,18 +5,19 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 007ad6f59f0ce304db579f4faa1bb95611a93a37
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05132e4c7e644e681e2e4cfdedaa2b04a066ebeb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906145"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259969"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 選取、管理和操作 Service Fabric 叢集。
 
 ## <a name="commands"></a>命令
 
-|Command|描述|
+|命令|描述|
 | --- | --- |
 | code-versions | 取得在 Service Fabric 叢集中佈建的網狀架構程式碼版本清單。 |
 | config-versions | 取得在 Service Fabric 叢集中佈建的網狀架構組態版本清單。 |
@@ -87,7 +88,7 @@ ms.locfileid: "76906145"
 
 ### <a name="arguments"></a>引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --applications-health-state-filter | 允許根據健康情況狀態，篩選叢集健康情況查詢結果中所傳回的應用程式健康情況狀態物件。 此參數的可能值包括從 HealthStateFilter 列舉成員或對這些成員的位元運算取得的整數值。 只會傳回符合篩選條件的應用程式。 所有應用程式都會用來評估彙總的健康情況狀態。 如果未指定，則會傳回所有項目。 狀態值是以旗標為基礎的列舉，因此值可以是使用位元 'OR' 運算子取得的這些值的組合。 例如，如果提供的值為 6，則會傳回 HealthState 值為 OK (2) 和 Warning (4) 的應用程式健康情況狀態。  <br> - Default - 預設值。 符合任何 HealthState。 值為零。  <br> - None - 不符合任何 HealthState 值的篩選條件。 用來在指定狀態集合沒有任何結果時傳回。 值為 1。  <br> - Ok - 符合輸入含 HealthState 值 Ok 的篩選條件。 值為 2。  <br> - Warning - 符合輸入含 HealthState 值 Warning 的篩選條件。 值為 4。  <br> - Error - 符合輸入含 HealthState 值 Error 的篩選條件。 值為 8。  <br> - All - 符合輸入含任何 HealthState 值的篩選條件。 值為 65535。 |
 | --events-health-state-filter | 可根據健康情況狀態來篩選所傳回的 HealthEvent 物件集合。 此參數的可能值包括下列其中一個健康情況狀態的整數值。 只會傳回符合篩選條件的事件。 所有事件都會用來評估彙總的健康情況狀態。 如果未指定，則會傳回所有項目。 狀態值是以旗標為基礎的列舉，因而此值可以是使用位元 'OR' 運算子所取得這些值的組合。 例如，如果提供的值為 6，則會傳回 HealthState 值為 OK (2) 和 Warning (4) 的所有事件。  <br> - Default - 預設值。 符合任何 HealthState。 值為零。  <br> - None - 不符合任何 HealthState 值的篩選條件。 用來在指定狀態集合沒有任何結果時傳回。 值為 1。  <br> - Ok - 符合輸入含 HealthState 值 Ok 的篩選條件。 值為 2。  <br> - Warning - 符合輸入含 HealthState 值 Warning 的篩選條件。 值為 4。  <br> - Error - 符合輸入含 HealthState 值 Error 的篩選條件。 值為 8。  <br> - All - 符合輸入含任何 HealthState 值的篩選條件。 值為 65535。 |
@@ -98,7 +99,7 @@ ms.locfileid: "76906145"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -113,13 +114,13 @@ ms.locfileid: "76906145"
 
 ### <a name="arguments"></a>引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -134,7 +135,7 @@ ms.locfileid: "76906145"
 
 ### <a name="arguments"></a>引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --operation-id [必要] | 識別此 API 呼叫的 GUID。  這會傳遞至對應的 GetProgress API。 |
 | --force | 指出是否要以正常方式復原並清除執行使用者引發作業所修改的內部系統狀態。 |
@@ -142,7 +143,7 @@ ms.locfileid: "76906145"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -157,7 +158,7 @@ ms.locfileid: "76906145"
 
 ### <a name="arguments"></a>引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --state-filter | 針對使用者引發的作業，用來依據 OperationState 進行篩選。 -65535-選取 [全部-1-選取執行中-2-選取 RollingBack-8-選取已完成-16-選取錯誤-32-選取已取消-64-選取 ForceCancelled]。  預設值\:65535。 |
 | --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
@@ -165,7 +166,7 @@ ms.locfileid: "76906145"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -180,7 +181,7 @@ ms.locfileid: "76906145"
 
 ### <a name="arguments"></a>引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --cluster-manifest-file-path | 叢集資訊清單檔案路徑。 |
 | --code-file-path | 叢集程式碼封裝檔案路徑。 |
@@ -188,7 +189,7 @@ ms.locfileid: "76906145"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -203,13 +204,13 @@ ms.locfileid: "76906145"
 
 ### <a name="arguments"></a>引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -224,7 +225,7 @@ ms.locfileid: "76906145"
 
 ### <a name="arguments"></a>引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --health-property [必要] | 健康情況資訊的屬性。 <br><br> 實體可以有不同屬性的健康情況報告。 屬性是一個字串而不是固定的列舉，以便讓報告程式在分類觸發報告的狀態條件時較有彈性。 例如，SourceId 為 "LocalWatchdog" 的報告程式可以監視節點上可用磁碟的狀態，因此可以針對該節點回報 "AvailableDisk" 屬性。 該相同報告程式還可以監視節點連線能力，因此可以針對該相同節點回報 "Connectivity" 屬性。 在健康狀態資料存放區中，會將這些報告視為所指定節點的個別健康情況事件。 與 SourceId 搭配使用時，此屬性可唯一識別健康情況資訊。 |
 | --health-state    [必要] | 可能的值包括：'Invalid'、'Ok'、'Warning'、'Error'、'Unknown'。 |
@@ -238,7 +239,7 @@ ms.locfileid: "76906145"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -249,11 +250,11 @@ ms.locfileid: "76906145"
 ## <a name="sfctl-cluster-select"></a>sfctl cluster select
 連線到 Service Fabric 叢集端點。
 
-如果連線到安全的叢集，請指定憑證 (.crt) 和金鑰檔案 (.key) 的絕對路徑，或包含兩者之單一檔案 (.pem) 的絕對路徑。 請勿指定兩者。 您也可以在連線到安全的叢集時，視需要一併指定 CA 組合檔案的絕對路徑，或是受信任 CA 憑證目錄的絕對路徑。  不需要先執行此命令即可連接到叢集，包括與 localhost 的連線。 不過，連接至本機叢集不需要明確的端點。  如果使用自我簽署的憑證，或其他未被知名 CA 簽署的憑證，請傳入--CA 參數，以確保驗證通過。 如果不在生產叢集上，若要略過用戶端驗證（適用于自我簽署或不知名的 CA 簽署），請使用--no-verify 選項。 雖然可能，但不建議用於生產叢集。 否則，可能會產生憑證驗證錯誤。
+如果連線到安全的叢集，請指定憑證 (.crt) 和金鑰檔案 (.key) 的絕對路徑，或包含兩者之單一檔案 (.pem) 的絕對路徑。 請勿指定兩者。 您也可以在連線到安全的叢集時，視需要一併指定 CA 組合檔案的絕對路徑，或是受信任 CA 憑證目錄的絕對路徑。  不需要先執行此命令即可連接到叢集，包括與 localhost 的連線。 不過，連接至本機叢集不需要明確的端點。  如果使用自我簽署的憑證，或其他未被知名 CA 簽署的憑證，請傳入--CA 參數，以確保驗證通過。 如果不在生產叢集上，若要略過用戶端驗證 (適用于自我簽署或不知名的 CA 簽署) ，請使用--no-verify 選項。 雖然可能，但不建議用於生產叢集。 否則，可能會產生憑證驗證錯誤。
 
 ### <a name="arguments"></a>引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --aad | 使用 Azure Active Directory 進行驗證。 |
 | --ca | 要視為有效 CA 憑證目錄的絕對路徑，或 CA 組合檔案的絕對路徑。 如果使用 CA 憑證的目錄，OpenSSL 提供的 `c_rehash <directory>` 必須先執行以計算憑證雜湊，並建立適當的 symbolics 連結。 這是用來驗證由叢集傳回的憑證是否有效。 |
@@ -265,7 +266,7 @@ ms.locfileid: "76906145"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -278,7 +279,7 @@ ms.locfileid: "76906145"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -293,7 +294,7 @@ ms.locfileid: "76906145"
 
 ### <a name="arguments"></a>引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --code-version | 叢集程式碼封裝版本。 |
 | --config-version | 叢集資訊清單版本。 |
@@ -301,7 +302,7 @@ ms.locfileid: "76906145"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -316,7 +317,7 @@ ms.locfileid: "76906145"
 
 ### <a name="arguments"></a>引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --app-health-map | 引發錯誤之前，應用程式名稱和健康情況不良最大百分比組合的 JSON 編碼目錄。 |
 | --app-type-health-map | 引發錯誤之前，應用程式類型名稱和健康情況不良最大百分比組合的 JSON 編碼目錄。 |
@@ -341,7 +342,7 @@ ms.locfileid: "76906145"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -356,14 +357,14 @@ ms.locfileid: "76906145"
 
 ### <a name="arguments"></a>引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --upgrade-domain [必要] | 此叢集升級的下一個升級網域。 |
 | --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -378,13 +379,13 @@ ms.locfileid: "76906145"
 
 ### <a name="arguments"></a>引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -399,13 +400,13 @@ ms.locfileid: "76906145"
 
 ### <a name="arguments"></a>引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -418,7 +419,7 @@ ms.locfileid: "76906145"
 
 ### <a name="arguments"></a>引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --app-health-map | 引發錯誤之前，應用程式名稱和健康情況不良最大百分比組合的 JSON 編碼目錄。 |
 | --app-type-health-map | 引發錯誤之前，應用程式類型名稱和健康情況不良最大百分比組合的 JSON 編碼目錄。 |
@@ -442,7 +443,7 @@ ms.locfileid: "76906145"
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -453,4 +454,4 @@ ms.locfileid: "76906145"
 
 ## <a name="next-steps"></a>後續步驟
 - [設定](service-fabric-cli.md) Service Fabric CLI。
-- 了解如何使用[範例指令碼](/azure/service-fabric/scripts/sfctl-upgrade-application)來使用 Service Fabric CLI。
+- 了解如何使用[範例指令碼](./scripts/sfctl-upgrade-application.md)來使用 Service Fabric CLI。

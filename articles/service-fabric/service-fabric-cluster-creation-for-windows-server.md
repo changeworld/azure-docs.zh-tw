@@ -5,11 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: a42797b51d811ee9427c9b77f8ea59a24c00feee
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ba6474751913b4994ae840f77577b3c1db6c5f73
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827959"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259279"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>建立在 Windows Server 上執行的獨立叢集
 您可以使用 Azure Service Fabric 在執行 Windows Server 的任何虛擬機器或電腦上建立 Service Fabric 叢集。 這表示您能夠在包含一組互連式 Windows Server 電腦的任何環境中部署和執行 Service Fabric 應用程式，不論該環境是內部部署或是透過任何雲端提供者來提供。 Service Fabric 會提供一個安裝封裝來建立稱為獨立 Windows Server 封裝的 Service Fabric 叢集。 傳統的 Service Fabric 叢集在 Azure 上是以受控服務的形式提供，而獨立 Service Fabric 叢集則是自助服務。 如需差異的詳細資訊，請參閱[比較 Azure 和獨立 Service Fabric 叢集](./service-fabric-deploy-anywhere.md)。
@@ -24,10 +25,10 @@ ms.locfileid: "83827959"
 <a id="getsupport"></a>
 
 ## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>取得 Windows Server 套件的 Service Fabric 支援
-* 請至 [Azure Service Fabric 的 Microsoft 問與答問題頁面](https://docs.microsoft.com/answers/topics/azure-service-fabric.html) \(英文\)，向社群發問有關 Windows Server 的 Service Fabric 獨立套件。
+* 請至 [Azure Service Fabric 的 Microsoft 問與答問題頁面](/answers/topics/azure-service-fabric.html) \(英文\)，向社群發問有關 Windows Server 的 Service Fabric 獨立套件。
 * 向 [Service Fabric 的專業支援](https://support.microsoft.com/oas/default.aspx?prid=16146)開立票證。  [在這裡](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0)深入了解 Microsoft 的專業支援。
 * 您也可以取得此封裝的支援做為 [Microsoft 頂級支援](https://support.microsoft.com/en-us/premier)的一部分。
-* 如需詳細資訊，請參閱 [Azure Service Fabric 支援選項](https://docs.microsoft.com/azure/service-fabric/service-fabric-support)。
+* 如需詳細資訊，請參閱 [Azure Service Fabric 支援選項](./service-fabric-support.md)。
 * 若要針對支援用途收集記錄，請執行 [Service Fabric 獨立記錄收集器](service-fabric-cluster-standalone-package-contents.md)。
 
 <a id="downloadpackage"></a>
@@ -215,7 +216,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
 * [獨立 Windows 叢集的組態設定](service-fabric-cluster-manifest.md)
 * [在獨立 Service Fabric 叢集中新增或移除節點](service-fabric-cluster-windows-server-add-remove-nodes.md)
 * [獨立 Service Fabric 叢集版本升級](service-fabric-cluster-upgrade-windows-server.md)
-* [建立具有執行 Windows 之 Azure VM 的獨立 Service Fabric 叢集](service-fabric-cluster-creation-with-windows-azure-vms.md)
+* [建立具有執行 Windows 之 Azure VM 的獨立 Service Fabric 叢集](./service-fabric-cluster-creation-via-arm.md)
 * [使用 Windows 安全性保護 Windows 上的獨立叢集](service-fabric-windows-cluster-windows-security.md)
 * [使用 X509 憑證保護 Windows 上的獨立叢集](service-fabric-windows-cluster-x509-security.md)
 

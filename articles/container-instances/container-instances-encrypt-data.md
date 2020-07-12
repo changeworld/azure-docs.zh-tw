@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: 2f9aff2ea88c2334ab30c9819f68fd6cbb9124c5
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 3c7a84dad1f107d8709e3bcdeac696414cdf883d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232435"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259709"
 ---
 # <a name="encrypt-deployment-data"></a>加密部署資料
 
@@ -39,7 +39,7 @@ ACI 中的資料會使用256位 AES 加密來加密和解密。 它會針對所�
 
 ### <a name="create-service-principal-for-aci"></a>建立 ACI 的服務主體
 
-第一個步驟是確保您的[azure 租](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)使用者具有指派給 Azure 容器實例服務許可權的服務主體。 
+第一個步驟是確保您的[azure 租](../active-directory/develop/quickstart-create-new-tenant.md)使用者具有指派給 Azure 容器實例服務許可權的服務主體。 
 
 > [!IMPORTANT]
 > 若要執行下列命令並成功建立服務主體，請確認您有權在您的租使用者中建立服務主體。
@@ -59,7 +59,7 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 
 ### <a name="create-a-key-vault-resource"></a>建立金鑰保存庫資源
 
-使用[Azure 入口網站](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault)、 [CLI](https://docs.microsoft.com/azure/key-vault/quick-create-cli)或[PowerShell](https://docs.microsoft.com/azure/key-vault/quick-create-powershell)建立 Azure Key Vault。 
+使用[Azure 入口網站](../key-vault/secrets/quick-create-portal.md#create-a-vault)、 [CLI](../key-vault/secrets/quick-create-cli.md)或[PowerShell](../key-vault/secrets/quick-create-powershell.md)建立 Azure Key Vault。 
 
 如需金鑰保存庫的屬性，請使用下列指導方針： 
 * Name：唯一名稱是必要項。 
@@ -96,7 +96,7 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 > [!IMPORTANT]
 > 使用客戶管理的金鑰來加密部署資料，可在目前推出的最新 API 版本 (2019-12-01) 中取得。在您的部署範本中指定此 API 版本。 如果您有任何問題，請與 Azure 支援服務聯繫。
 
-設定金鑰保存庫金鑰和存取原則之後，請將下列屬性新增至您的 ACI 部署範本。 在[教學課程：使用 Resource Manager 範本部署多容器群組](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)中，深入瞭解如何使用範本部署 ACI 資源。 
+設定金鑰保存庫金鑰和存取原則之後，請將下列屬性新增至您的 ACI 部署範本。 在[教學課程：使用 Resource Manager 範本部署多容器群組](./container-instances-multi-container-group.md)中，深入瞭解如何使用範本部署 ACI 資源。 
 * 在底下 `resources` ，將設 `apiVersion` 為 `2019-12-01` 。
 * 在部署範本的 [容器群組屬性] 區段底下，新增 `encryptionProperties` 包含下列值的：
   * `vaultBaseUrl`：您可以在入口網站中金鑰保存庫資源的 [總覽] 分頁上，找到金鑰保存庫的 DNS 名稱。
@@ -129,7 +129,7 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 ]
 ```
 
-以下是完整的範本，可從[教學課程：使用 Resource Manager 範本部署多容器群組](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)中的範本進行調整。 
+以下是完整的範本，可從[教學課程：使用 Resource Manager 範本部署多容器群組](./container-instances-multi-container-group.md)中的範本進行調整。 
 
 ```json
 {
@@ -233,14 +233,14 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az group deployment create][az-group-deployment-create] 命令部署範本。
+使用[az deployment group create][az-deployment-group-create]命令來部署範本。
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
+az deployment group create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
 在幾秒內，您應該會從 Azure 收到首次回應。 部署完成之後，ACI 服務所保存的所有相關資料都會以您提供的金鑰進行加密。
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group/#az-deployment-group-create

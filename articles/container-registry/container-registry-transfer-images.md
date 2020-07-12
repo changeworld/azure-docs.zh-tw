@@ -4,12 +4,12 @@ description: 使用 Azure 儲存體帳戶建立傳輸管線，以將映射或其
 ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
-ms.openlocfilehash: c80f10e8795c63b84bb46fc21fd3406a195b772e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 7f63936ad8f2a97bae6ff63e783e38c15db35e13
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186923"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259464"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>將成品傳輸至另一個登錄
 
@@ -36,7 +36,7 @@ ms.locfileid: "86186923"
 * **儲存體帳戶**-在訂用帳戶和您選擇的位置中建立來源和目標儲存體帳戶。 基於測試目的，您可以使用與來源和目標登錄相同的訂用帳戶或訂閱。 針對跨雲端案例，通常您會在每個雲端中建立個別的儲存體帳戶。 如有需要，請使用[Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli)或其他工具來建立儲存體帳戶。 
 
   為每個帳戶中的成品傳輸建立 blob 容器。 例如，建立一個名為*transfer*的容器。 有兩個或多個傳輸管線可以共用相同的儲存體帳戶，但應使用不同的儲存體容器範圍。
-* **金鑰保存庫**-儲存用來存取來源和目標儲存體帳戶的 SAS 權杖秘密時，需要 key vault。 在與您的來源和目標登錄相同的 Azure 訂用帳戶中，建立來源和目標金鑰保存庫。 如有需要，請使用[Azure CLI](../key-vault/quick-create-cli.md)或其他工具建立金鑰保存庫。
+* **金鑰保存庫**-儲存用來存取來源和目標儲存體帳戶的 SAS 權杖秘密時，需要 key vault。 在與您的來源和目標登錄相同的 Azure 訂用帳戶中，建立來源和目標金鑰保存庫。 如有需要，請使用[Azure CLI](../key-vault/secrets/quick-create-cli.md)或其他工具建立金鑰保存庫。
 * **環境變數**-例如本文中的命令，設定來源和目標環境的下列環境變數。 所有範例都是針對 Bash shell 進行格式化。
   ```console
   SOURCE_RG="<source-resource-group>"
@@ -162,7 +162,7 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
-在命令輸出中，記下管線的資源識別碼 (`id`) 。 您可以執行[az deployment group show][az-deployment-group-show]，將此值儲存在環境變數中供稍後使用。 例如：
+在命令輸出中，記下管線的資源識別碼 (`id`) 。 您可以執行[az deployment group show][az-deployment-group-show]，將此值儲存在環境變數中供稍後使用。 例如︰
 
 ```azurecli
 EXPORT_RES_ID=$(az group deployment show \
@@ -208,7 +208,7 @@ az deployment group create \
   --name importPipeline
 ```
 
-如果您打算手動執行匯入，請記下管線的資源識別碼 (`id`) 。 您可以執行[az deployment group show][az-deployment-group-show]，將此值儲存在環境變數中供稍後使用。 例如：
+如果您打算手動執行匯入，請記下管線的資源識別碼 (`id`) 。 您可以執行[az deployment group show][az-deployment-group-show]，將此值儲存在環境變數中供稍後使用。 例如︰
 
 ```azurecli
 IMPORT_RES_ID=$(az group deployment show \
@@ -257,7 +257,7 @@ az storage blob list \
 
 使用 AzCopy 工具或其他方法，將[blob 資料](../storage/common/storage-use-azcopy-blobs.md#copy-blobs-between-storage-accounts)從來源儲存體帳戶傳送到目標儲存體帳戶。
 
-例如，下列命令會 [`azcopy copy`](/azure/storage/common/storage-ref-azcopy-copy) 將 myblob 從來源帳戶中的*傳輸*容器複製到目標帳戶中的*傳輸*容器。 如果 blob 存在於目標帳戶中，則會予以覆寫。 驗證會針對來源和目標容器使用具有適當許可權的 SAS 權杖。 不會顯示建立權杖的 (步驟。 ) 
+例如，下列命令會 [`azcopy copy`](../storage/common/storage-ref-azcopy-copy.md) 將 myblob 從來源帳戶中的*傳輸*容器複製到目標帳戶中的*傳輸*容器。 如果 blob 存在於目標帳戶中，則會予以覆寫。 驗證會針對來源和目標容器使用具有適當許可權的 SAS 權杖。 不會顯示建立權杖的 (步驟。 ) 
 
 ```console
 azcopy copy \
@@ -366,6 +366,3 @@ az deployment group delete \
 [az-deployment-group-show]: /cli/azure/deployment/group#az-deployment-group-show
 [az-acr-repository-list]: /cli/azure/acr/repository#az-acr-repository-list
 [az-acr-import]: /cli/azure/acr#az-acr-import
-
-
-

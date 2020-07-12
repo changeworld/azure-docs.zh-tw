@@ -4,18 +4,19 @@ description: 瞭解如何將您的 Azure IoT Edge 解決方案從開發到生產
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 4/25/2020
+ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 128504c59690476afef03aa82a03d69769968e99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f5698c5390a341df505bf5a1f849e121bd754a2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84431921"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258788"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>準備在生產環境中部署 IoT Edge 解決方案
 
@@ -37,17 +38,20 @@ IoT Edge 裝置可以是任何項目，包括 Raspberry Pi、膝上型電腦或�
 
 ### <a name="install-production-certificates"></a>安裝生產憑證
 
-生產環境中的每個 IoT Edge 裝置都要安裝裝置憑證授權單位 (CA) 的憑證。 此 CA 憑證接著會在 config.yaml 檔案的 IoT Edge 執行階段中宣告。 在開發和測試案例中，如果 yaml 檔案中未宣告任何憑證，則 IoT Edge 執行時間會建立暫時憑證。 不過，這些暫時憑證三個月後就會過期，而且對於生產情節並不安全。
+生產環境中的每個 IoT Edge 裝置都要安裝裝置憑證授權單位 (CA) 的憑證。 此 CA 憑證接著會在 config.yaml 檔案的 IoT Edge 執行階段中宣告。 在開發和測試案例中，如果 yaml 檔案中未宣告任何憑證，則 IoT Edge 執行時間會建立暫時憑證。 不過，這些暫時憑證三個月後就會過期，而且對於生產情節並不安全。 針對生產案例，您應該從自我簽署的憑證授權單位單位提供自己的裝置 CA 憑證，或從商業憑證授權單位單位購買。
+
+> [!NOTE]
+> 目前，libiothsm 的限制可防止使用2050年1月1日之後到期的憑證。
 
 若要了解裝置 CA 憑證的角色，請參閱 [Azure IoT Edge 如何使用憑證](iot-edge-certs.md)。
 
-如需如何在 IoT Edge 裝置上安裝憑證，並從 yaml 檔案參考它們的詳細資訊，請參閱[在 IoT Edge 裝置上安裝生產憑證](how-to-manage-device-certificates.md)。
+如需如何在 IoT Edge 裝置上安裝憑證，並從 yaml 檔案參考它們的詳細資訊，請參閱[在 IoT Edge 裝置上管理憑證](how-to-manage-device-certificates.md)。
 
 ### <a name="have-a-device-management-plan"></a>研擬裝置管理計畫
 
 在生產環境中設置任何裝置前，應先了解如何管理未來的更新作業。 若是 IoT Edge 裝置，要更新的元件清單可能包含：
 
-* 裝置軔體
+* 裝置韌體
 * 作業系統程式庫
 * 容器引擎，例如 Moby
 * IoT Edge 精靈
@@ -61,7 +65,7 @@ IoT Edge 裝置可以是任何項目，包括 Raspberry Pi、膝上型電腦或�
 
 ### <a name="choose-upstream-protocol"></a>選擇上游通訊協定
 
-您可以設定通訊協定（決定所使用的埠），以便進行上游通訊，以針對 IoT Edge 代理程式和 IoT Edge 中樞 IoT 中樞。 預設的通訊協定是 AMQP，但您可以根據網路設定變更。
+您可以設定通訊協定 (，以決定) 供上游通訊用來 IoT 中樞 IoT Edge 代理程式和 IoT Edge 中樞的埠。 預設的通訊協定是 AMQP，但您可以根據網路設定變更。
 
 這兩個執行階段模組都有 **UpstreamProtocol** 環境變數。 有效的變數值為：
 
@@ -70,7 +74,7 @@ IoT Edge 裝置可以是任何項目，包括 Raspberry Pi、膝上型電腦或�
 * MQTTWS
 * AMQPWS
 
-在裝置本身的 yaml 檔案中設定 IoT Edge 代理程式的 UpstreamProtocol 變數。 例如，如果您的 IoT Edge 裝置位於封鎖 AMQP 埠的 proxy 伺服器後方，您可能需要將 IoT Edge 代理程式設定為使用 AMQP over WebSocket （AMQPWS），以建立 IoT 中樞的初始連接。
+在裝置本身的 yaml 檔案中設定 IoT Edge 代理程式的 UpstreamProtocol 變數。 例如，如果您的 IoT Edge 裝置位於封鎖 AMQP 埠的 proxy 伺服器後方，您可能需要設定 IoT Edge 代理程式以使用 AMQP over WebSocket (AMQPWS) 來建立 IoT 中樞的初始連線。
 
 一旦您的 IoT Edge 裝置連線，請務必在未來的部署中繼續設定這兩個執行階段模組的 UpstreamProtocol 變數。 [設定 IoT Edge 裝置以透過 Proxy 伺服器進行通訊](how-to-configure-proxy-support.md)中提供此程序的範例。
 
@@ -144,7 +148,7 @@ timeToLiveSecs 參數的預設值是 7200 秒，也就是兩小時。
 
 在教學課程和其他說明文件中，我們會指示您在 IoT Edge 裝置使用與開發電腦上所用相同的容器登錄認證。 這些指示僅協助您更輕鬆地設定測試和開發環境，在生產情節中不應遵照這些指示。
 
-為了更安全地存取您的登錄，您可以選擇[驗證選項](../container-registry/container-registry-authentication.md)。 常見且建議的驗證是使用適用于應用程式或服務的 Active Directory 服務主體，以自動化或其他自動（無周邊）的方式來提取容器映射，如同 IoT Edge 的裝置一樣。
+為了更安全地存取您的登錄，您可以選擇[驗證選項](../container-registry/container-registry-authentication.md)。 常用且建議的驗證是使用適用于應用程式或服務的 Active Directory 服務主體，以自動化或自動的 (無周邊) 方式來提取容器映射，如同 IoT Edge 的裝置一樣。
 
 若要建立服務主體，請執行這兩個腳本，如[建立服務主體](../container-registry/container-registry-auth-service-principal.md#create-a-service-principal)中所述。 這些腳本會執行下列工作：
 
@@ -171,7 +175,7 @@ timeToLiveSecs 參數的預設值是 7200 秒，也就是兩小時。
 
 ### <a name="store-runtime-containers-in-your-private-registry"></a>在您的私用登錄中儲存執行時間容器
 
-您知道如何將自訂程式碼模組的容器映射儲存在私人 Azure 登錄中，但您也可以使用它來儲存公用容器映射，例如適用于 edgeAgent 和 edgHub 執行時間模組。 如果您因為這些執行時間容器儲存在 Microsoft Container Registry （MCR）中，而有非常嚴格的防火牆限制，可能就需要這麼做。
+您知道如何將自訂程式碼模組的容器映射儲存在私人 Azure 登錄中，但您也可以使用它來儲存公用容器映射，例如適用于 edgeAgent 和 edgHub 執行時間模組。 如果您有非常嚴格的防火牆限制，因為這些執行時間容器會儲存在 Microsoft Container Registry (MCR) 中，所以可能需要這麼做。
 
 取得具有 Docker pull 命令的映射，以放入您的私用登錄中。 請注意，您必須使用 IoT Edge 執行時間的每個新版本來更新映射。
 
@@ -222,7 +226,7 @@ Azure IoT 中樞和 IoT Edge 之間的通訊通道一律會設定為輸出。 �
    | \*.azurecr.io | 443 | 個人和協力廠商容器登錄 |
    | \*.blob.core.windows.net | 443 | 從 blob 儲存體下載 Azure Container Registry 映射差異 |
    | \*.azure-devices.net | 5671、8883、443 | IoT 中樞存取 |
-   | \*.docker.io  | 443 | Docker Hub 存取（選擇性） |
+   | \*.docker.io  | 443 | Docker Hub 存取 (選擇性)  |
 
 其中一些防火牆規則會繼承自 Azure Container Registry。 如需詳細資訊，請參閱[設定規則以存取防火牆後方的 Azure container registry](../container-registry/container-registry-firewall-access-rules.md)。
 
@@ -258,7 +262,7 @@ Azure IoT 中樞和 IoT Edge 之間的通訊通道一律會設定為輸出。 �
 
 #### <a name="option-set-global-limits-that-apply-to-all-container-modules"></a>選項：設定適用于所有容器模組的全域限制
 
-您可以限制容器引擎記錄檔選項中所有容器日誌的大小。 下列範例會將記錄驅動程式設定為 `json-file` （建議），並限制檔案大小和數目：
+您可以限制容器引擎記錄檔選項中所有容器日誌的大小。 下列範例會將記錄驅動程式設定為 `json-file` (建議的) ，並限制檔案的大小和數目：
 
 ```JSON
 {
@@ -270,7 +274,7 @@ Azure IoT 中樞和 IoT Edge 之間的通訊通道一律會設定為輸出。 �
 }
 ```
 
-將此資訊新增（或附加）至名為的檔案 `daemon.json` ，並將它放在您裝置平臺的正確位置。
+新增 (或附加) 此資訊至名為的檔案 `daemon.json` ，並將它放在您裝置平臺的正確位置。
 
 | 平台 | 位置 |
 | -------- | -------- |
@@ -281,7 +285,7 @@ Azure IoT 中樞和 IoT Edge 之間的通訊通道一律會設定為輸出。 �
 
 #### <a name="option-adjust-log-settings-for-each-container-module"></a>選項：調整每個容器模組的記錄檔設定
 
-您可以在每個模組的**createOptions**中執行此動作。 例如：
+您可以在每個模組的**createOptions**中執行此動作。 例如︰
 
 ```yml
 "createOptions": {

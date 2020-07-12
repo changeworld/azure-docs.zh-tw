@@ -4,11 +4,12 @@ description: 了解 Azure Service Fabric Mesh 的常見問題和解答。
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 2a5c2ea63d162eb6fb78ab702e0519f8ac25dcc7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64eeb43d743d71d5acd456409445a4fadfe91aeb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78252499"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260125"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Service Fabric Mesh 的常見問題
 
@@ -43,7 +44,7 @@ Azure Service Fabric Mesh 是一個受到完整管理的服務，讓開發人員
 
 如果確實發生此情況，可以藉由在 Azure CLI 中執行 `az mesh app show` 命令，以驗證系統是否將它關閉。 請檢查是否傳回 `"status": "Failed", "statusDetails": "Stopped resource due to max lifetime policies for an application during preview. Delete the resource to continue."` 
 
-例如： 
+例如︰ 
 
 ```azurecli
 az mesh app show --resource-group myResourceGroup --name helloWorldApp
@@ -96,7 +97,7 @@ az mesh app show --resource-group myResourceGroup --name helloWorldApp
 
 ### <a name="what-types-of-applications-can-i-deploy"></a>我可以部署哪些類型的應用程式？ 
 
-您可以部署在容器中執行的任何專案，以符合應用程式資源上的限制（如需配額的詳細資訊，請參閱上文）。 如果我們偵測到您使用網格來執行不合法的工作負載，或濫用系統（亦即「挖掘」），則我們會保留終止部署的權利，並封鎖清單您的訂用帳戶在服務上執行。 如果您有任何關於執行特定工作負載的問題，請與我們聯繫。 
+您可以部署在容器中執行的任何專案，以符合應用程式資源上的限制 (如需配額) 的詳細資訊，請參閱上面的。 如果我們偵測到您使用網格來執行不合法的工作負載，或濫用系統 (也就是「挖掘) 」，則我們會保留終止您的部署，並封鎖清單您的訂用帳戶在服務上執行的權利。 如果您有任何關於執行特定工作負載的問題，請與我們聯繫。 
 
 ## <a name="developer-experience-issues"></a>開發人員體驗問題
 
@@ -106,7 +107,7 @@ az mesh app show --resource-group myResourceGroup --name helloWorldApp
 
 - 使用 Windows Fall Creators Update (1709版) 或更新版本作為基礎容器映像。
 - 如果服務名稱單獨無法使用，請嘗試完整名稱： ServiceName. ApplicationName。
-- 在您服務的 Docker 檔案中新增 `EXPOSE <port>`，其中的 port 是您公開服務的連接埠。 例如：
+- 在您服務的 Docker 檔案中新增 `EXPOSE <port>`，其中的 port 是您公開服務的連接埠。 例如︰
 
 ```Dockerfile
 EXPOSE 80
@@ -120,7 +121,7 @@ EXPOSE 80
 
 Azure Mesh 目前不支援跨應用程式的 DNS 解析。
 
-如需在 Windows 10 上執行 Service Fabric 開發叢集的其他已知 DNS 問題，請參閱：[偵錯工具 windows 容器](/azure/service-fabric/service-fabric-how-to-debug-windows-containers)和[已知的 DNS 問題](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues)。
+如需在 Windows 10 上執行 Service Fabric 開發叢集的其他已知 DNS 問題，請參閱：[偵錯工具 windows 容器](../service-fabric/service-fabric-how-to-debug-windows-containers.md)和[已知的 DNS 問題](../service-fabric/service-fabric-dnsservice.md#known-issues)。
 
 ### <a name="networking"></a>網路功能
 

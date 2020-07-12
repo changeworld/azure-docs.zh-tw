@@ -3,12 +3,12 @@ title: 部署已啟用 GPU 的容器實例
 description: 瞭解如何部署 Azure 容器實例，以使用 GPU 資源來執行計算密集型容器應用程式。
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 78b67843978583dd6b0f0aee2c1d8ad0e5a7ca77
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: a25efc90573eb338b81f4a6532a632a140c7ab7d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169743"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259592"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>部署使用 GPU 資源的容器執行個體
 
@@ -209,7 +209,7 @@ Adding run metadata for 999
 
 ## <a name="clean-up-resources"></a>清除資源
 
-因為使用 GPU 資源很昂貴，所以請確保您的容器不會非預期地長時間執行。 您可以在 Azure 入口網站中監視您的容器，或使用 [az container show][az-container-show] 命令來檢查容器群組的狀態。 例如：
+因為使用 GPU 資源很昂貴，所以請確保您的容器不會非預期地長時間執行。 您可以在 Azure 入口網站中監視您的容器，或使用 [az container show][az-container-show] 命令來檢查容器群組的狀態。 例如︰
 
 ```azurecli
 az container show --resource-group myResourceGroup --name gpucontainergroup --output table
@@ -225,7 +225,7 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 ## <a name="next-steps"></a>後續步驟
 
 * 深入了解如何使用 [YAML 檔案](container-instances-multi-container-yaml.md)或 [Resource Manager 範本](container-instances-multi-container-group.md)來部署容器群組。
-* 深入了解 Azure 中的 [GPU 最佳化 VM 大小](../virtual-machines/linux/sizes-gpu.md)。
+* 深入了解 Azure 中的 [GPU 最佳化 VM 大小](../virtual-machines/sizes-gpu.md)。
 
 
 <!-- IMAGES -->

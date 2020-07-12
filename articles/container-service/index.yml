@@ -22,15 +22,15 @@ sections:
         className: cardsFTitle
         items:
           - title: 開始使用 Kubernetes 叢集
-            href: /azure/container-service/kubernetes
+            href: ./kubernetes/index.yml
             image:
               src: media/index/get-started.svg
-              href: /azure/container-service/kubernetes
+              href: ./kubernetes/index.yml
           - title: 開始使用 DC/OS 和 Docker Swarm 叢集
-            href: /azure/container-service/dcos-swarm
+            href: ./dcos-swarm/index.yml
             image:
               src: media/index/get-started.svg
-              href: /azure/container-service/dcos-swarm
+              href: ./dcos-swarm/index.yml
   - title: 透過 Microsoft Learn 增進您的技巧
     items:
       - type: list

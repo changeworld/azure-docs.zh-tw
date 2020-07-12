@@ -5,16 +5,16 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 03076a711041812f7587aa1c388b0889b49725d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4efa8626e80cbd64cd6216faa1869d7210f32cf2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82787128"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261098"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric 節點類型與虛擬機器擴展集
 
-[虛擬機器擴展集](/azure/virtual-machine-scale-sets)是 Azure 計算資源。 您可以使用擴展集來將虛擬機器集合以一組的方式加以部署和管理。 您在 Azure Service Fabric 叢集中定義的每個節點類型都只會設定一個擴展集：多個節點類型無法由相同的擴展集支援，而一個節點類型不應由多個擴展集支援（在大多數情況下）。 在[垂直調整](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)節點類型的罕見情況下，當您將 `nodeTypeRef` 複本從原始遷移至升級的擴展集時，如果您暫時有兩個擴展集，則會發生例外狀況。
+[虛擬機器擴展集](../virtual-machine-scale-sets/index.yml)是 Azure 計算資源。 您可以使用擴展集來將虛擬機器集合以一組的方式加以部署和管理。 您在 Azure Service Fabric 叢集中定義的每個節點類型都只會設定一個擴展集：多個節點類型無法由相同的擴展集支援，而且在大部分情況下，不應該 (一個節點類型，) 由多個擴展集支援。 在[垂直調整](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)節點類型的罕見情況下，當您將 `nodeTypeRef` 複本從原始遷移至升級的擴展集時，如果您暫時有兩個擴展集，則會發生例外狀況。
 
 Service Fabric 執行時間會安裝在*ServiceFabric*虛擬機器擴充功能的擴展集內的每部虛擬機器上。 您可以分開相應增加或減少每個節點類型、變更每個叢集節點上執行的 OS SKU、開啟不同組的連接埠，並使用不同的容量計量。
 

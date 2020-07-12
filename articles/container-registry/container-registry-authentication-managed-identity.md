@@ -3,11 +3,12 @@ title: 使用受控識別進行驗證
 description: 在您的私人˙容器登錄中，使用使用者指派或系統指派的受控 Azure 身分識別提供映像的存取權。
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 9b8bed78629d3a9739ec00772ad5c8216a04c122
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3a1f0f9c9e814cabaa205fbb0abf05333fd6daf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74456503"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259090"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>使用 Azure 受控識別向 Azure 容器登錄進行驗證 
 
@@ -34,7 +35,7 @@ ms.locfileid: "74456503"
 
 * *系統受控識別*，這對特定資源 (例如單一虛擬機器) 而言是唯一的，且存留時間與該資源一致。
 
-以受控識別設定 Azure 資源後，請為此受控識別提供對另一項資源的存取權，就像任何安全性主體一樣。 例如，指派一個角色給受控識別，該角色可具備 Azure 中私人登錄的提取、推送和提取，或其他權限。 （如需登錄角色的完整清單，請參閱[Azure Container Registry 角色和許可權](container-registry-roles.md)）。您可以為身分識別提供一或多個資源的存取權。
+以受控識別設定 Azure 資源後，請為此受控識別提供對另一項資源的存取權，就像任何安全性主體一樣。 例如，指派一個角色給受控識別，該角色可具備 Azure 中私人登錄的提取、推送和提取，或其他權限。  (需登錄角色的完整清單，請參閱[Azure Container Registry 角色和許可權](container-registry-roles.md)。 ) 您可以為身分識別授與一或多個資源的存取權。
 
 然後使用身分識別向任何[支援 Azure AD 驗證的服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)進行驗證，不需要任何您程式碼中的認證。 若要使用身分識別從虛擬機器存取 Azure 容器登錄，可以使用 Azure Resource Manager 驗證。 請依據您的案例選擇如何使用受控識別進行驗證：
 
@@ -44,7 +45,7 @@ ms.locfileid: "74456503"
 
 * 使用身分識別[登入 Azure CLI 或 PowerShell](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md)。 
 
-## <a name="create-a-container-registry"></a>建立容器登錄庫
+## <a name="create-a-container-registry"></a>建立容器登錄
 
 如果您還沒有 Azure 容器登錄，請建立登錄並將範例容器映像推送至該登錄。 如需相關步驟，請參閱[快速入門：使用 Azure CLI 建立私人容器](container-registry-get-started-azure-cli.md)登錄。
 
@@ -238,7 +239,7 @@ docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 > * 授與 Azure 容器登錄的身分識別存取權
 > * 使用受控識別存取登錄及提取容器映像
 
-* 深入瞭解[適用于 Azure 資源的受控](/azure/active-directory/managed-identities-azure-resources/)識別。
+* 深入瞭解[適用于 Azure 資源的受控](../active-directory/managed-identities-azure-resources/index.yml)識別。
 
 
 <!-- LINKS - external -->

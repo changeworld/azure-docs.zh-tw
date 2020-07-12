@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 8d4231de13da3f8b2960bd4852136f803a97a546
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1d118fa1fb65663f37e33f739bf4a72a14e1c52
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75614429"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258696"
 ---
 # <a name="monitor-containers-with-azure-monitor-logs"></a>使用 Azure 監視器記錄監視容器
  
@@ -47,5 +48,5 @@ ms.locfileid: "75614429"
 ## <a name="next-steps"></a>後續步驟
 * 深入瞭解[Azure 監視器記錄容器解決方案](../azure-monitor/insights/containers.md)。
 * 深入了解 Service Fabric 上的容器協調流程 - [Service Fabric 與容器](service-fabric-containers-overview.md)
-* 熟悉 Azure 監視器記錄中提供的[記錄搜尋和查詢](../log-analytics/log-analytics-log-searches.md)功能
-* 設定 Azure 監視器記錄以設定[自動化警示](../log-analytics/log-analytics-alerts.md)規則，以協助偵測和診斷
+* 熟悉 Azure 監視器記錄中提供的[記錄搜尋和查詢](../azure-monitor/log-query/log-query-overview.md)功能
+* 設定 Azure 監視器記錄以設定[自動化警示](../azure-monitor/platform/alerts-overview.md)規則，以協助偵測和診斷

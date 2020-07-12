@@ -3,11 +3,12 @@ title: 設定用戶端驗用的 Azure Active Directory
 description: 了解如何設定 Azure Active Directory (Azure AD) 以驗證 Service Fabric 叢集的用戶端。
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: 28c4c65cfcc77607dfe9a463a09ecd10389a6eca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 537a81a090828d3fcc9dde6032f1d4eb2df9b4e4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78193370"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258777"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>設定用戶端驗用的 Azure Active Directory
 
@@ -37,7 +38,7 @@ Service Fabric 叢集提供其管理功能的各種進入點 (包括 Web 型 [Se
 
 我們會使用腳本來建立兩個 Azure AD 應用程式來控制對叢集的存取：一個 web 應用程式和一個原生應用程式。 建立應用程式來代表您的叢集之後，您將會為[Service Fabric 所支援的角色](service-fabric-cluster-security-roles.md)建立使用者：唯讀和系統管理員。
 
-執行 `SetupApplications.ps1`，並提供租用戶識別碼、叢集名稱和 Web 應用程式回覆 URL 作為參數。  同時也應指定使用者的使用者名稱和密碼。 例如：
+執行 `SetupApplications.ps1`，並提供租用戶識別碼、叢集名稱和 Web 應用程式回覆 URL 作為參數。  同時也應指定使用者的使用者名稱和密碼。 例如︰
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9890c' -ClusterName 'mysftestcluster' -WebApplicationReplyUrl 'https://mysftestcluster.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -124,7 +125,7 @@ https://&lt;cluster_domain&gt;:19080/Explorer
 Connect-ServiceFabricCluster -ConnectionEndpoint <endpoint> -KeepAliveIntervalInSec 10 -AzureActiveDirectory -ServerCertThumbprint <thumbprint>
 ```
 
-若要深入了解，請參閱 [Connect-ServiceFabricCluster Cmdlet](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster)。
+若要深入了解，請參閱 [Connect-ServiceFabricCluster Cmdlet](/powershell/module/servicefabric/connect-servicefabriccluster)。
 
 ### <a name="can-i-reuse-the-same-azure-ad-tenant-in-multiple-clusters"></a>我是否可以在多個叢集中重複使用相同的 Azure AD 租用戶？
 是。 但是請務必將 Service Fabric Explorer 的 URL 新增到叢集 (Web) 應用程式。 否則 Service Fabric Explorer 無法運作。

@@ -4,12 +4,12 @@ description: 了解如何使用 Azure CLI 將 Linux Service Fabric 叢集部署�
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: 1d6edc086233d757269c12e323241bc4bf55249f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14e029622f17e8aae392cc55ba4418b3971a5ad2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611691"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260221"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>將 Linux Service Fabric 叢集部署到 Azure 虛擬網路
 
@@ -51,11 +51,11 @@ ms.locfileid: "85611691"
 
 * 三個節點類型
 * 主要節點類型中的 五個節點 (可在範本參數中設定)，其他節點類型各有一個節點
-* OS：（Ubuntu 16.04 LTS/Ubuntu 18.04 LTS）（可在範本參數中設定）
+* OS： (Ubuntu 16.04 LTS/Ubuntu 18.04 LTS)  (可在範本參數中設定) 
 * 受保護的憑證 (可在範本參數中設定)
 * [DNS 服務](service-fabric-dnsservice.md)已啟用
-* 銅[級耐久性層級](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)（可在範本參數中設定）
-* 銀[級的可靠性層級](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster)（可在範本參數中設定）
+* 可在範本參數中設定的銅[級耐久性等級](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) () 
+* 可在範本參數中設定之銀級 (的[可靠性等級](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster)) 
 * 用戶端連線端點：19000 (可在範本參數中設定)
 * HTTP 閘道端點：19080 (可在範本參數中設定)
 
@@ -81,7 +81,7 @@ ms.locfileid: "85611691"
 
 **Azuredeploy.parameters.json」參數**會宣告許多用來部署叢集和相關聯資源的值。 您可能需要為自己的部署修改某些參數：
 
-|參數|範例值|備註|
+|參數|範例值|附註|
 |---|---||
 |adminUserName|vmadmin| 叢集 VM 的系統管理員使用者名稱。 |
 |adminPassword|Password#1234| 叢集 VM 的系統管理員密碼。|
@@ -162,7 +162,7 @@ sfctl cluster health
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果您現在不打算繼續閱讀下一篇文章，您可能要[刪除該叢集](service-fabric-cluster-delete.md)以避免產生費用。
+如果您現在不打算繼續閱讀下一篇文章，您可能要[刪除該叢集](./service-fabric-tutorial-delete-cluster.md)以避免產生費用。
 
 ## <a name="next-steps"></a>後續步驟
 

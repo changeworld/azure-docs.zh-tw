@@ -4,11 +4,12 @@ description: 本文概述如何使用 Azure Resource Manager 來管理 Azure Ser
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 7a9f59e3e44d3302ac19c7a9e7e77beb51947ce4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ad0d4f6d92ba8d85383df281bd14681f43bb6d4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81682635"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258733"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric 應用程式資源模型
 
@@ -18,7 +19,7 @@ ms.locfileid: "81682635"
 
 * Audit 追蹤： Resource Manager 會每個作業進行審核，並保留詳細的活動記錄。 活動記錄可協助您追蹤對應用程式和叢集所做的任何變更。
 * 角色型存取控制：您可以使用相同的 Resource Manager 範本，管理叢集的存取權，以及部署在叢集上的應用程式。
-* 管理效率：使用 Resource Manager 可提供單一位置（Azure 入口網站）來管理您的叢集和重要的應用程式部署。
+* 管理效率：使用 Resource Manager 可為您提供單一位置 (Azure 入口網站) ，以管理您的叢集和重要的應用程式部署。
 
 在本檔中，您將瞭解如何：
 
@@ -55,7 +56,7 @@ ms.locfileid: "81682635"
 
 * 使用[Azure Active Directory](../storage/common/storage-auth-aad-app.md)來授權 blob 和佇列的存取權。
 * [在 Azure 入口網站中使用 RBAC](../storage/common/storage-auth-aad-rbac-portal.md)，以授與 Azure blob 和佇列資料的存取權。
-* 使用[共用存取](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature)簽章來委派存取權。
+* 使用[共用存取](/rest/api/storageservices/delegate-access-with-shared-access-signature)簽章來委派存取權。
 
 下列螢幕擷取畫面中的範例會使用 blob 的匿名讀取權限。
 
@@ -90,7 +91,7 @@ ms.locfileid: "81682635"
 >
 >
 
-| 參數              | 說明                                 | 範例                                                      | 註解                                                     |
+| 參數              | 描述                                 | 範例                                                      | 註解                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | 您正在部署的叢集名稱 | sf-cluster123                                                |                                                              |
 | 應用程式            | 應用程式的名稱                 | 投票                                                       |
@@ -98,7 +99,7 @@ ms.locfileid: "81682635"
 | applicationTypeVersion | 應用程式類型的版本         | 1.0.0                                                        | 必須符合 ApplicationManifest.xml                 |
 | serviceName            | 服務的名稱         | 投票 ~ VotingWeb                                             | 的格式必須為 ApplicationName ~ ServiceType            |
 | serviceTypeName        | 服務的類型名稱                | VotingWeb                                                    | 必須符合 ServiceManifest.xml                 |
-| appPackageUrl          | 應用程式的 blob 儲存體 URL     | HTTPs： \/ /servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Blob 儲存體中的應用程式封裝 URL （設定 URL 的程式會在本文稍後說明） |
+| appPackageUrl          | 應用程式的 blob 儲存體 URL     | HTTPs： \/ /servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | 在 blob 儲存體中，應用程式套件的 URL (設定 URL 的程式，請參閱本文稍後的內容)  |
 
 ```json
 {
@@ -165,13 +166,13 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 
 若要刪除在 Resource Manager 中使用應用程式資源模型所部署的應用程式：
 
-1. 使用[get-azresource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource?view=azps-2.5.0) Cmdlet 來取得應用程式的資源識別碼：
+1. 使用[get-azresource](/powershell/module/az.resources/get-azresource?view=azps-2.5.0) Cmdlet 來取得應用程式的資源識別碼：
 
     ```powershell
     Get-AzResource  -Name <String> | f1
     ```
 
-1. 使用[get-azresource](https://docs.microsoft.com/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) Cmdlet 來刪除應用程式資源：
+1. 使用[get-azresource](/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) Cmdlet 來刪除應用程式資源：
 
     ```powershell
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]

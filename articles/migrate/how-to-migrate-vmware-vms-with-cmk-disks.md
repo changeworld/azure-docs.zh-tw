@@ -7,12 +7,12 @@ ms.manager: carmonm
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: raynew
-ms.openlocfilehash: afc3132ebdd0f144d16507ef2ccda2dcaffaa34e
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 01f30305529e7f142be0ca6ddffa0f5a12a235bb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232163"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260013"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>使用伺服器端加密和客戶管理的金鑰，將 VMware Vm 遷移至啟用的 Azure Vm
 
@@ -24,7 +24,7 @@ Azure Migrate Server 遷移入口網站體驗可讓您[使用無代理程式複�
 
 [深入瞭解](../virtual-machines/windows/disk-encryption.md)伺服器端加密 (SSE) 搭配客戶管理的金鑰 (適用于受控磁片的 CMK) 。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 請參閱使用無代理程式複寫將 VMware Vm 遷移至 Azure[的教學](tutorial-migrate-vmware.md)課程，以瞭解工具需求。
 - [遵循這些指示](how-to-add-tool-first-time.md)來建立 Azure Migrate 專案，並將**Azure Migrate：伺服器遷移**工具加入至專案。
@@ -59,6 +59,10 @@ Azure Migrate Server 遷移入口網站體驗可讓您[使用無代理程式複�
 磁片加密設定物件會將受控磁碟對應至包含要用於 SSE 之 CMK 的 Key Vault。 若要使用 CMK 複寫 Vm，您將建立磁片加密集，並將它當做輸入傳遞至複寫作業。
 
 遵循[這裡](../virtual-machines/windows/disks-enable-customer-managed-keys-powershell.md)的範例，使用 Azure PowerShell 建立磁片加密集。 請確定已在目標訂用帳戶中建立要在其中遷移 Vm 的磁片加密集，以及在目標 Azure 區域中進行遷移。
+
+磁片加密集可以設定為使用客戶管理的金鑰來加密受控磁片，或使用客戶管理的金鑰和平臺金鑰進行雙重加密。 若要使用雙重加密待用選項，請設定磁片加密集，如[這裡](../virtual-machines/windows/disks-enable-double-encryption-at-rest-powershell.md)所述。
+
+在下面顯示的範例中，磁片加密集已設定為使用客戶管理的金鑰。
 
 ```azurepowershell
 $Location = "southcentralus"                           #Target Azure region for migration 

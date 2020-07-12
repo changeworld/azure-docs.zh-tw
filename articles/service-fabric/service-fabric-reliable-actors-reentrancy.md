@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 46ce91e607341e2fbdc0b6a3018e74cb24e76839
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 100cf1f7bf8a0c903cfd61d93d2f923c32cabd11
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645526"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260951"
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors 重新進入
 Reliable Actors 執行階段預設允許邏輯呼叫以內容為基礎的重新進入。 這允許位於相同的呼叫內容鏈結的動作項目可重新進入。 例如，動作項目 A 傳送訊息給動作項目 B，而動作項目 B 又將訊息傳送給動作項目 C。當處理訊息時，如果動作項目 C 呼叫動作項目 A，則此訊息是可以重新進入的，因此將允許此訊息。 屬於不同呼叫內容的其他任何訊息都將在動作項目 A 上遭到封鎖，直到其處理完畢為止。
@@ -101,4 +102,4 @@ static class Program
 
 
 ## <a name="next-steps"></a>後續步驟
-* 參閱[動作項目 API 參考文件](https://msdn.microsoft.com/library/azure/dn971626.aspx)來深入了解重新進入
+* 參閱[動作項目 API 參考文件](/previous-versions/azure/dn971626(v=azure.100))來深入了解重新進入

@@ -5,20 +5,21 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: a9bd75e0b7f8bfceb50a71ca83b60ff1e7b45508
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a5ebd4822c5f0ff1735464bb4d5b42c436ee529
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905823"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260323"
 ---
 # <a name="sfctl-property"></a>sfctl property
 在 Service Fabric 名稱底下儲存和查詢屬性。
 
 ## <a name="commands"></a>命令
 
-|Command|描述|
+|命令|描述|
 | --- | --- |
-| delete | 刪除指定的 Service Fabric 屬性。 |
+| 刪除 | 刪除指定的 Service Fabric 屬性。 |
 | get | 取得指定的 Service Fabric 屬性。 |
 | list | 取得指定名稱下所有 Service Fabric 屬性的相關資訊。 |
 | put | 建立或更新 Service Fabric 屬性。 |
@@ -85,7 +86,7 @@ Service Fabric 名稱可以包含一或多個儲存自訂資訊的具名屬性�
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -100,7 +101,7 @@ Service Fabric 名稱可以包含一或多個儲存自訂資訊的具名屬性�
 
 ### <a name="arguments"></a>引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --name-id       [必要] | 不含 'fabric\:' URI 配置的 Service Fabric 名稱。 |
 | --property-name [必要] | Service Fabric 屬性的名稱。 |
@@ -110,7 +111,7 @@ Service Fabric 名稱可以包含一或多個儲存自訂資訊的具名屬性�
 
 ### <a name="global-arguments"></a>全域引數
 
-|引數|說明|
+|引數|描述|
 | --- | --- |
 | --debug | 增加記錄詳細資訊，以顯示所有偵錯記錄。 |
 | --help -h | 顯示此說明訊息並結束。 |
@@ -121,4 +122,4 @@ Service Fabric 名稱可以包含一或多個儲存自訂資訊的具名屬性�
 
 ## <a name="next-steps"></a>後續步驟
 - [設定](service-fabric-cli.md)Service Fabric CLI。
-- 了解如何使用[範例指令碼](/azure/service-fabric/scripts/sfctl-upgrade-application)來使用 Service Fabric CLI。
+- 了解如何使用[範例指令碼](./scripts/sfctl-upgrade-application.md)來使用 Service Fabric CLI。

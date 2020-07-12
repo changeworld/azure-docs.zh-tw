@@ -3,11 +3,12 @@ title: 使用 ServiceNow 傳送 Azure 服務健康情況警示
 description: 取得關於 ServiceNow 執行個體服務健康情況事件的個人化通知。
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 3daae05aabff571010d043cf5602847e95ea29f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cd17af080714fdf2e9e5b168e72f975c8d3a3f6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77654098"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260208"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>使用 webhook 透過 ServiceNow 傳送 Azure 服務健康情況警示
 
@@ -139,9 +140,10 @@ ms.locfileid: "77654098"
      ![ServiceNow 中的「基本 API 路徑」](./media/webhook-alerts/servicenow-base-api-path.png)
 
 1.  完整的整合 URL 看起來會像：
-        
-         https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
 
+    ```http
+    https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
+    ```
 
 ## <a name="create-an-alert-using-servicenow-in-the-azure-portal"></a>在 Azure 入口網站使用 ServiceNow 建立警示
 ### <a name="for-a-new-action-group"></a>新的動作群組：

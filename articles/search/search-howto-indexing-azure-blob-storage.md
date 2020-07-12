@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7e3a35d95e7d2a339bf33620c9d1a140fb6a0a1d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 3ed3ff94b764c0fcb5521ef8106b32923b203a01
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143752"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260651"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>如何使用 Azure 認知搜尋在 Azure Blob 儲存體中編制檔的索引
 
@@ -210,6 +210,25 @@ blob 索引子可以從下列文件格式擷取文字：
 >
 >
 
+#### <a name="what-if-you-need-to-encode-a-field-to-use-it-as-a-key-but-you-also-want-to-search-it"></a>如果您需要將欄位編碼以做為索引鍵，但也想要搜尋它，該怎麼做？
+
+有時候，您需要使用如 metadata_storage_path 之類的欄位編碼版本做為索引鍵，但您也需要該欄位可供搜尋 (而不) 編碼。 為了解決這個問題，您可以將它對應到兩個欄位;一個將用於金鑰，另一個則用於搜尋用途。 在下列範例中，[索引*鍵*] 欄位包含編碼的路徑，而 [*路徑*] 欄位未編碼，而且將用來做為索引中的可搜尋欄位。
+
+```http
+    PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2020-06-30
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+      "dataSourceName" : " blob-datasource ",
+      "targetIndexName" : "my-target-index",
+      "schedule" : { "interval" : "PT2H" },
+      "fieldMappings" : [
+        { "sourceFieldName" : "metadata_storage_path", "targetFieldName" : "key", "mappingFunction" : { "name" : "base64Encode" } },
+        { "sourceFieldName" : "metadata_storage_path", "targetFieldName" : "path" }
+      ]
+    }
+```
 <a name="WhichBlobsAreIndexed"></a>
 ## <a name="controlling-which-blobs-are-indexed"></a>控制要編製哪些 blob 的索引
 您可以控制要編製哪些 blob 的索引，以及哪些要略過。
@@ -303,7 +322,7 @@ Azure 認知搜尋會限制已編制索引的 blob 大小。 這些限制記載�
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
 ```
 
-如果在處理期間發生任何錯誤，當剖析 blob 或是將文件新增至索引時，您還是可以繼續編製索引。 若要忽略特定錯誤數目，請將 `maxFailedItems` 和 `maxFailedItemsPerBatch` 組態參數設定為所需的值。 例如：
+如果在處理期間發生任何錯誤，當剖析 blob 或是將文件新增至索引時，您還是可以繼續編製索引。 若要忽略特定錯誤數目，請將 `maxFailedItems` 和 `maxFailedItemsPerBatch` 組態參數設定為所需的值。 例如︰
 
 ```http
     {

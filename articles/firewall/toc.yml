@@ -12,8 +12,6 @@
       href: tutorial-hybrid-portal.md
     - name: 使用 DNAT 篩選輸入流量
       href: tutorial-firewall-dnat.md
-    - name: 監視器診斷記錄
-      href: tutorial-diagnostics.md
 - name: 快速入門
   expanded: true
   items:
@@ -86,6 +84,8 @@
       href: protect-azure-kubernetes-service.md
     - name: DNS 設定
       href: dns-settings.md
+    - name: 監視器診斷記錄
+      href: firewall-diagnostics.md
 - name: 參考
   items:
     - name: Azure CLI

@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: cf0fab9942dcbb7ee09e554f2c9ba8738f208009
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 691f3b7987c2591b0f6cea3f7b520c03c0ba9a9e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75609922"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258654"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>設定叢集的 Azure 監視器記錄
 
@@ -90,7 +91,7 @@ Azure Resource Manager 會偵測到此命令是現有資源的更新。 它只�
 
 ## <a name="deploy-azure-monitor-logs-with-azure-powershell"></a>使用 Azure PowerShell 部署 Azure 監視器記錄
 
-您也可以使用命令，透過 PowerShell 部署您的 log analytics 資源 `New-AzOperationalInsightsWorkspace` 。 若要使用此方法，請確定您已安裝 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 請使用此指令碼建立新的 Log Analytics 工作區，並將 Service Fabric 解決方案新增至該工作區： 
+您也可以使用命令，透過 PowerShell 部署您的 log analytics 資源 `New-AzOperationalInsightsWorkspace` 。 若要使用此方法，請確定您已安裝 [Azure PowerShell](/powershell/azure/install-az-ps)。 請使用此指令碼建立新的 Log Analytics 工作區，並將 Service Fabric 解決方案新增至該工作區： 
 
 ```powershell
 
@@ -122,5 +123,5 @@ Set-AzOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup -Wor
 
 ## <a name="next-steps"></a>後續步驟
 * [部署 Log Analytics 代理程式](service-fabric-diagnostics-oms-agent.md)至您的節點，以收集效能計數器，並收集您容器的 Docker 統計資料和記錄
-* 熟悉 Azure 監視器記錄中提供的[記錄搜尋和查詢](../log-analytics/log-analytics-log-searches.md)功能
+* 熟悉 Azure 監視器記錄中提供的[記錄搜尋和查詢](../azure-monitor/log-query/log-query-overview.md)功能
 * [使用 View Designer 在 Azure 監視器記錄中建立自訂視圖](../azure-monitor/platform/view-designer.md)

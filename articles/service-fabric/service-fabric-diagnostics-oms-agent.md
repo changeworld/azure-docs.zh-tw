@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: c3c1bf511f3313e7408d6ce90b73de60bd1309f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b91a8a8742a5bdc9454ebcbd8894889084a12a79
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79366733"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258681"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>使用 Azure 監視器記錄進行效能監視
 
@@ -22,11 +23,11 @@ ms.locfileid: "79366733"
 
 ## <a name="add-the-agent-extension-via-azure-cli"></a>透過 Azure CLI 新增代理程式延伸模組
 
-將 Log Analytics 代理程式新增至叢集的最佳方法是透過 Azure CLI 提供的虛擬機器擴展集 API。 如果您尚未設定 Azure CLI，請前往 Azure 入口網站，並開啟 [Cloud Shell](../cloud-shell/overview.md) 執行個體，或[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+將 Log Analytics 代理程式新增至叢集的最佳方法是透過 Azure CLI 提供的虛擬機器擴展集 API。 如果您尚未設定 Azure CLI，請前往 Azure 入口網站，並開啟 [Cloud Shell](../cloud-shell/overview.md) 執行個體，或[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 1. 一旦要求了 Cloud Shell，請確定用於作業的訂用帳戶與資源的訂用帳戶相同。 請使用 `az account show` 進行檢查，並確保「名稱」值符合叢集訂用帳戶的名稱。
 
-2. 在入口網站中，瀏覽至您的 Log Analytics 工作區所在的資源群組。 按一下 [log analytics] 資源（資源的類型將會是 [Log Analytics 工作區]）。 當您在資源概觀頁面時，在左側功能表的 [設定] 區段下方，按一下 [進階設定]****。
+2. 在入口網站中，瀏覽至您的 Log Analytics 工作區所在的資源群組。 按一下 [log analytics] 資源 (資源的類型將會是 Log Analytics 工作區) 。 當您在資源概觀頁面時，在左側功能表的 [設定] 區段下方，按一下 [進階設定]****。
 
     ![Log analytics 屬性頁面](media/service-fabric-diagnostics-oms-agent/oms-advanced-settings.png)
 
@@ -72,7 +73,7 @@ ms.locfileid: "79366733"
 
 3. 按一下 [進階設定]****。
 
-4. 按一下 [資料]****，然後按一下 [Windows 效能計數器] 或 [Linux 效能計數器]****。 有一個預設計數器清單，您可以從中選擇啟用，也可以設定收集間隔。 您也可以新增想收集的[其他效能計數器](service-fabric-diagnostics-event-generation-perf.md)。 [本文](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx)參照適當的格式。
+4. 按一下 [資料]****，然後按一下 [Windows 效能計數器] 或 [Linux 效能計數器]****。 有一個預設計數器清單，您可以從中選擇啟用，也可以設定收集間隔。 您也可以新增想收集的[其他效能計數器](service-fabric-diagnostics-event-generation-perf.md)。 [本文](/windows/win32/perfctrs/specifying-a-counter-path)參照適當的格式。
 
 5. 按一下 [儲存]****，然後按一下 [確定]****。
 
@@ -91,5 +92,5 @@ ms.locfileid: "79366733"
 ## <a name="next-steps"></a>後續步驟
 
 * 收集相關[效能計數器](service-fabric-diagnostics-event-generation-perf.md)。 若要設定 Log Analytics 代理程式來收集特定的效能計數器，請檢閱[設定資料來源](../azure-monitor/platform/agent-data-sources.md#configuring-data-sources)。
-* 設定 Azure 監視器記錄以設定[自動化警示](../log-analytics/log-analytics-alerts.md)，以協助偵測和診斷
+* 設定 Azure 監視器記錄以設定[自動化警示](../azure-monitor/platform/alerts-overview.md)，以協助偵測和診斷
 * 或者，您可以透過 [Azure 診斷延伸模組來收集效能計數器，並將它們傳送至 Application Insights](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)

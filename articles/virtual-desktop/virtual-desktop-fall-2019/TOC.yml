@@ -24,6 +24,8 @@
   items:
     - name: 連線至 Windows 虛擬桌面資源
       items:
+        - name: 與 Windows 桌面用戶端連線
+          href: connect-windows-7-10-2019.md
         - name: 與 Web 用戶端連線
           href: connect-web-2019.md
         - name: 與 Android 用戶端連線

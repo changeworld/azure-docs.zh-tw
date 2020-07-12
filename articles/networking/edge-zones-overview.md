@@ -7,12 +7,12 @@ ms.service: vnf-manager
 ms.topic: article
 ms.date: 07/07/2020
 ms.author: ganesr
-ms.openlocfilehash: 65a5f7e261913fa38c41930cc44341ca872d1b44
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: be113fec596d4730d55403b6ce4dbd6d2709e273
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086886"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260073"
 ---
 # <a name="about-azure-edge-zone-preview"></a>關於 Azure Edge 區域預覽
 
@@ -74,7 +74,9 @@ Azure Edge 區域將在下列 metro 區域內上市：
 
 邊緣區域將與下列操作員合作提供：
 
-- 在&T （亞特蘭大、達拉斯和洛杉磯） 
+- 在&T (亞特蘭大、達拉斯和洛杉磯)  
+
+針對連線到5G 網路的優化且可擴充的應用程式使用的 Isv，現在可以使用 Azure 邊緣區域的新洛杉磯預覽位置，並在建立和實驗超低延遲平臺、行動和連線的案例時，于&T。 註冊早期採用者計畫，以利用安全、高頻寬的連線能力。
 
 如需詳細資訊，[請聯絡 Edge 區域小組](https://aka.ms/EdgeZones)。
 
@@ -82,13 +84,13 @@ Azure Edge 區域將在下列 metro 區域內上市：
 
 ![私人邊緣區域](./media/edge-zones-overview/private-edge.png "私人邊緣區域")
 
-Azure 私用邊緣區域是放置於內部部署的小型 Azure 擴充功能。 Azure 私用 Edge 區域是以[Azure Stack 邊緣](https://azure.microsoft.com/products/azure-stack/edge/)平臺為基礎。 它可讓您在內部部署環境中，對計算和儲存體服務進行低延遲存取。 私用邊緣區域也可讓您將來自 Isv 和虛擬化網路功能（VNFs）的應用程式部署為[Azure 受控應用程式](https://azure.microsoft.com/services/managed-applications/)以及內部部署的虛擬機器和容器。 這些 VNFs 可以包括行動封包核心、路由器、防火牆和 SD WAN 設備。 Azure 私用 Edge 區域隨附雲端原生協調流程解決方案，可讓您從 Azure 入口網站管理 VNFs 和應用程式的生命週期。
+Azure 私用邊緣區域是放置於內部部署的小型 Azure 擴充功能。 Azure 私用 Edge 區域是以[Azure Stack 邊緣](https://azure.microsoft.com/products/azure-stack/edge/)平臺為基礎。 它可讓您在內部部署環境中，對計算和儲存體服務進行低延遲存取。 私用邊緣區域也可讓您將來自 Isv 和虛擬化網路功能的應用程式部署 (VNFs) 作為[Azure 受控應用程式](https://azure.microsoft.com/services/managed-applications/)以及內部部署的虛擬機器和容器。 這些 VNFs 可以包括行動封包核心、路由器、防火牆和 SD WAN 設備。 Azure 私用 Edge 區域隨附雲端原生協調流程解決方案，可讓您從 Azure 入口網站管理 VNFs 和應用程式的生命週期。
 
 Azure 私用 Edge 區域可讓您使用在 Azure 中建立及部署應用程式時所使用的相同熟悉工具，在內部部署環境開發和部署應用程式。 
 
 它也可讓您： 
 
-- 執行私人行動網路（私人 LTE、私用5G）。
+-  (私人的 LTE、私用 5G) 執行私人行動網路。
 - 執行防火牆之類的安全性功能。
 - 在相同的私人邊緣區域設備上使用 SD WAN 應用裝置，並從 Azure 進行管理，以跨多個分支和 Azure 延伸您的內部部署網路。
 
@@ -106,9 +108,9 @@ Azure 私用 Edge 區域可讓您使用在 Azure 中建立及部署應用程式�
 
 ![私人 Edge 區域合作夥伴](./media/edge-zones-overview/partners.png "私人邊緣區域合作夥伴")
 
-#### <a name="virtualized-network-functions-vnfs"></a><a name="vnf"></a>虛擬化網路功能（VNFs）
+#### <a name="virtualized-network-functions-vnfs"></a><a name="vnf"></a> (VNFs) 的虛擬化網路功能
 
-##### <a name="virtualized-evolved-packet-core-vepc-for-mobile-networks"></a><a name="vEPC"></a>適用于行動網路的虛擬化進化封包核心（vEPC）
+##### <a name="virtualized-evolved-packet-core-vepc-for-mobile-networks"></a><a name="vEPC"></a>行動網路 (vEPC) 的虛擬化進化封包核心
 
 - [Affirmed 網路](https://www.affirmednetworks.com/)
 - [Druid 軟體](https://www.druidsoftware.com/)
@@ -135,7 +137,7 @@ Azure 私用 Edge 區域可讓您使用在 Azure 中建立及部署應用程式�
 
 - [Palo Alto Networks](https://www.paloaltonetworks.com/)
 
-##### <a name="managed-solutions-providers-mobile-operators-and-global-system-integrators-gsis"></a><a name="msp-mobile"></a>受控解決方案提供者：行動操作員和全域系統整合商（GSIs）
+##### <a name="managed-solutions-providers-mobile-operators-and-global-system-integrators-gsis"></a><a name="msp-mobile"></a>受控解決方案提供者：行動操作員和全域系統整合器 (GSIs) 
 
 | GSIs 和運算子 | 電信業者 |
 | --- | --- |
@@ -159,11 +161,11 @@ Azure 私用 Edge 區域可讓您使用在 Azure 中建立及部署應用程式�
 您現在可以在私人邊緣區域上部署私人行動網路。 私人行動網路可實現非常低延遲、高容量，以及商務關鍵應用程式所需的可靠且安全的無線網路。 
 
 私人行動網路可以啟用下列案例： 
-- 倉儲中自動化引導式車輛（AGVs）的命令與控制。 
+- 自動化引導式車輛的命令與控制 (AGVs) 在倉儲中。 
 - 智慧型處理站中的機器人之間的即時通訊。
 - 增強的現實和虛擬實境 edge 應用程式。
 
-虛擬化進化封包核心（vEPC）網路功能是私人行動網路的大腦。 您現在可以在私人邊緣區域上部署 vEPC。 如需私人邊緣區域上可用的 vEPC 合作夥伴清單，請參閱[VEPC isv](#vEPC)。
+虛擬化進化封包核心 (vEPC) 網路功能，是私用行動網路的大腦。 您現在可以在私人邊緣區域上部署 vEPC。 如需私人邊緣區域上可用的 vEPC 合作夥伴清單，請參閱[VEPC isv](#vEPC)。
 
 在私人邊緣區域上部署私人行動網路解決方案，需要其他元件，例如行動存取點、SIM 卡和其他 VNFs （例如路由器）。 存取授權或未經授權的頻譜，對於設定私人行動網路而言至關重要。 而且您可能需要有 RF 規劃、實體版面配置、安裝和支援的協助。 如需合作夥伴清單，請參閱[Mobile 收音機合作夥伴](#mobile-radio)。
 
@@ -173,7 +175,7 @@ Microsoft 提供的合作夥伴生態系統可協助處理此程式的所有層�
 
 ![SD-私人邊緣區域上的 WAN](./media/edge-zones-overview/sd-wan.png "SD-私人邊緣區域上的 WAN")
  
-SD-WAN 可讓您建立具有下列優點的企業級廣域網路（Wan）：
+SD-WAN 可讓您建立企業級的廣域網路， (具備下列優點的 Wan) ：
 
 - 增加頻寬
 - 雲端的高效能存取
@@ -183,9 +185,9 @@ SD-WAN 可讓您建立具有下列優點的企業級廣域網路（Wan）：
 - 廣泛的網路可見度
     
 SD-WAN 提供順暢的分公司連線，以較低的擁有成本，從冗余的中央控制器協調。
-SD-私人邊緣區域上的 WAN 可讓您從以 capex 為中心的模型移至軟體即服務（SaaS）模型，以降低 IT 預算。 您可以使用您選擇的 SD-WAN 合作夥伴（orchestrator 或 controller）來啟用新服務，並立即將其傳播到整個網路中。
+SD-私人邊緣區域上的 WAN 可讓您從以 capex 為中心的模型移至軟體即服務 (SaaS) 模型，以降低 IT 預算。 您可以使用您選擇的 SD-WAN 合作夥伴（orchestrator 或 controller）來啟用新服務，並立即將其傳播到整個網路中。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需詳細資訊，請洽詢下列小組：
 

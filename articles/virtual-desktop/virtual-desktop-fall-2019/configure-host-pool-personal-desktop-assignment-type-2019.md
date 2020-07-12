@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 376f9d78f508c245bec2d066863566ace68eff0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f4ee0a6ba028a6359a83f5130aca7c6f05ba08b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204858"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259796"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>設定個人桌面主機集區指派類型
 
@@ -92,5 +92,5 @@ Remove-RdsSessionHost
 
 現在您已完成設定個人桌面指派類型，您可以登入 Windows 虛擬桌面用戶端，在使用者工作階段中進行測試。 接下來的兩個操作說明將會說明如何使用您所選擇的用戶端，連線至工作階段：
 
-- [與 Windows 桌面用戶端連線](../connect-windows-7-and-10.md)
+- [與 Windows 桌面用戶端連線](connect-windows-7-10-2019.md)
 - [與 Web 用戶端連線](connect-web-2019.md)

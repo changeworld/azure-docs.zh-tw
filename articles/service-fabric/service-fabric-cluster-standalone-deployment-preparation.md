@@ -5,11 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 495949d1a4ec927c601f174521c360f51034a2fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b07e3fe14478cf45df2f02378da4e83853cf9ea
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85079352"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261029"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>規劃和準備您的 Service Fabric 獨立叢集部署
 
@@ -19,7 +20,7 @@ ms.locfileid: "85079352"
 您即將「自行」在您所擁有的電腦上建立 Service Fabric 叢集，因此您可以決定您希望叢集不受何種失敗的影響。 例如，您是否需要提供給這些電腦的個別電源線或網際網路連線？ 此外，請考慮這些電腦的實體安全性。 電腦位於何處？哪些人需要存取這些電腦？ 您做出這些決定之後，可依據邏輯將電腦對應到多個容錯網域 (請參閱下一個步驟)。 生產叢集的基礎結構規劃比起測試叢集更為複雜。
 
 ## <a name="determine-the-number-of-fault-domains-and-upgrade-domains"></a>決定容錯網域和升級網域的數目
-[*容錯網域*（FD）](service-fabric-cluster-resource-manager-cluster-description.md)是故障的實體單位，與資料中心內的實體基礎結構直接相關。 容錯網域是由共用單一失敗點的硬體元件 (電腦、交換器、網路等) 所組成。 雖然容錯網域和機架之間沒有 1:1 對應，但是大致上來說，可以將每個機架視為一個容錯網域。
+[*容錯網域* (FD) ](service-fabric-cluster-resource-manager-cluster-description.md)是發生失敗的實體單位，與資料中心內的實體基礎結構直接相關。 容錯網域是由共用單一失敗點的硬體元件 (電腦、交換器、網路等) 所組成。 雖然容錯網域和機架之間沒有 1:1 對應，但是大致上來說，可以將每個機架視為一個容錯網域。
 
 當您在 ClusterConfig.json 中指定 FD 時，可以選擇每個 FD 的名稱。 Service Fabric 支援階層式 FD，因此，您可以在 FD 中反映您的基礎結構拓撲。  例如，下列 FD 有效：
 
@@ -56,12 +57,12 @@ ms.locfileid: "85079352"
 * 至少 40 GB 的可用磁碟空間
 * 4 核心或更高的 CPU
 * 所有電腦的安全網路連線
-* 已安裝 Windows Server 作業系統（有效版本： 2012 R2、2016、1709或1803）。 Service Fabric version 6.4.654.9590 和更新版本也支援伺服器2019和1809。
+* 安裝的 Windows Server 作業系統 (有效的版本： 2012 R2、2016、1709或 1803) 。 Service Fabric version 6.4.654.9590 和更新版本也支援伺服器2019和1809。
 * [.NET Framework 4.5.1 或更高版本](https://www.microsoft.com/download/details.aspx?id=40773)，完整安裝
-* [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/install/installing-windows-powershell)
-* [RemoteRegistry 服務](https://technet.microsoft.com/library/cc754820)應該在所有電腦上執行
+* [Windows PowerShell 3.0](/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7)
+* [RemoteRegistry 服務](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754820(v=ws.11))應該在所有電腦上執行
 * **Service Fabric 安裝磁片磁碟機必須是 NTFS 檔案系統**
-* **必須[啟用](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc755249(v=ws.11))Windows 服務*效能記錄 & 警示*和*windows 事件記錄*** 檔。
+* **必須[啟用](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc755249(v=ws.11))Windows 服務*效能記錄 & 警示*和*windows 事件記錄*** 檔。
 
 > [!IMPORTANT]
 > 部署和設定叢集的叢集系統管理員必須擁有每部電腦的 [系統管理員權限](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) 。 您無法在網域控制站上安裝 Service Fabric。
@@ -156,7 +157,7 @@ Passed                     : True
 目前此組態測試模組並不會驗證安全性設定，因此這必須獨立完成。
 
 > [!NOTE]
-> 我們會持續進行改進，以讓此模組更穩健，因此如果您認為目前有 TestConfiguration 攔截不到的錯誤或有疏漏之處，請透過我們的[支援通道](https://docs.microsoft.com/azure/service-fabric/service-fabric-support)來告訴我們。
+> 我們會持續進行改進，以讓此模組更穩健，因此如果您認為目前有 TestConfiguration 攔截不到的錯誤或有疏漏之處，請透過我們的[支援通道](./service-fabric-support.md)來告訴我們。
 >
 >
 

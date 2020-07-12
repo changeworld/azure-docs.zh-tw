@@ -4,12 +4,12 @@ description: 深入了解 Azure Service Fabric 叢集的安全性情節，以及
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: ba1565c31e8a3ce3f25501f0cad321d5413dc962
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 258a6dd141ccc31516e37dac9f265328f981bbf5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080679"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261066"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric 叢集安全性案例
 
@@ -27,7 +27,7 @@ Azure Service Fabric 叢集是您擁有的資源。 保護叢集是您的責任�
 
 ![節點對節點通訊的圖表][Node-to-Node]
 
-在 Azure 上執行的叢集和在 Windows 上執行的獨立叢集都可以使用[憑證安全性](https://msdn.microsoft.com/library/ff649801.aspx)或針對 Windows Server 電腦使用 [Windows 安全性](https://msdn.microsoft.com/library/ff649396.aspx)。
+在 Azure 上執行的叢集和在 Windows 上執行的獨立叢集都可以使用[憑證安全性](/previous-versions/msp-n-p/ff649801(v=pandp.10))或針對 Windows Server 電腦使用 [Windows 安全性](/previous-versions/msp-n-p/ff649396(v=pandp.10))。
 
 ### <a name="node-to-node-certificate-security"></a>節點對節點憑證安全性
 
@@ -54,7 +54,7 @@ Service Fabric 會使用您建立叢集時，在節點類型組態中指定的 X
 
 ![用戶端對節點通訊的圖表][Client-to-Node]
 
-在 Azure 上執行的叢集和在 Windows 上執行的獨立叢集兩者都可以使用[憑證安全性](https://msdn.microsoft.com/library/ff649801.aspx)或[windows 安全性](https://msdn.microsoft.com/library/ff649396.aspx)，不過建議您盡可能使用 x.509 憑證驗證。
+在 Azure 上執行的叢集和在 Windows 上執行的獨立叢集兩者都可以使用[憑證安全性](/previous-versions/msp-n-p/ff649801(v=pandp.10))或[windows 安全性](/previous-versions/msp-n-p/ff649396(v=pandp.10))，不過建議您盡可能使用 x.509 憑證驗證。
 
 ### <a name="client-to-node-certificate-security"></a>用戶端對節點憑證安全性
 
@@ -95,7 +95,7 @@ Service Fabric 叢集提供其管理功能的各種進入點 (包括 Web 型 [Se
 
 ## <a name="x509-certificates-and-service-fabric"></a>X.509 憑證和 Service Fabric
 
-X509 數位憑證通常用來驗證用戶端與伺服器。 它們也用來加密及數位簽署訊息。 Service Fabric 會使用 X.509 憑證來保護叢集，並提供應用程式的安全性功能。 如需關於 X.509 數位憑證的詳細資訊，請參閱[使用憑證](https://msdn.microsoft.com/library/ms731899.aspx)。 您可以使用 [Key Vault](../key-vault/general/overview.md) 來管理 Azure 中 Service Fabric 叢集的憑證。
+X509 數位憑證通常用來驗證用戶端與伺服器。 它們也用來加密及數位簽署訊息。 Service Fabric 會使用 X.509 憑證來保護叢集，並提供應用程式的安全性功能。 如需關於 X.509 數位憑證的詳細資訊，請參閱[使用憑證](/dotnet/framework/wcf/feature-details/working-with-certificates)。 您可以使用 [Key Vault](../key-vault/general/overview.md) 來管理 Azure 中 Service Fabric 叢集的憑證。
 
 一些需要考量的重要事項︰
 
@@ -114,11 +114,11 @@ X509 數位憑證通常用來驗證用戶端與伺服器。 它們也用來加�
 
 * 憑證必須包含私密金鑰。 通常這些憑證的副檔名為 .pfx 或 .pem  
 * 憑證必須是為了進行金鑰交換而建立，且可匯出成個人資訊交換 (.pfx) 檔案。
-* **憑證的主體名稱必須與您用來存取 Service Fabric 叢集的網域相符**。 需要此比對，才能為叢集的 HTTPS 管理端點和 Service Fabric Explorer 提供 TLS。 您無法從 *. cloudapp.azure.com 網域的憑證授權單位單位（CA）取得 TLS/SSL 憑證。 您必須為您的叢集取得自訂網域名稱。 當您向 CA 要求憑證時，憑證的主體名稱必須與用於您叢集的自訂網域名稱相符。
+* **憑證的主體名稱必須與您用來存取 Service Fabric 叢集的網域相符**。 需要此比對，才能為叢集的 HTTPS 管理端點和 Service Fabric Explorer 提供 TLS。 您無法從 cloudapp.azure.com 網域的憑證授權單位單位取得 (CA) 的 TLS/SSL 憑證。 您必須為您的叢集取得自訂網域名稱。 當您向 CA 要求憑證時，憑證的主體名稱必須與用於您叢集的自訂網域名稱相符。
 
 需考量的其他事項：
 
-* [主體]**** 欄位可以有多個值。 每個值前面都會加上起首字母來表示實值類型。 通常，初始化是**CN** （針對*一般名稱*）;例如， **CN = www \. contoso.com**。
+* [主體]**** 欄位可以有多個值。 每個值前面都會加上起首字母來表示實值類型。 通常，初始化是*一般名稱*) 的**CN** (;例如， **CN = www \. contoso.com**。
 * [主體]**** 欄位可以是空白。
 * 如果選擇性 [主體別名]**** 欄位已填入資料，此欄位就必須具有憑證的一般名稱，以及每個 SAN 的一個項目。 這些是以**DNS 名稱**值的形式輸入。 若要深入了解如何產生具有 SAN 的憑證，請參閱[如何將主體別名新增至安全 LDAP 憑證](https://support.microsoft.com/kb/931351)。
 * 憑證的 [**預定目的**] 欄位的值應該包含適當的值，例如**伺服器驗證**或**用戶端驗證**。

@@ -3,12 +3,12 @@ title: 擴大 Azure Service Fabric 節點類型
 description: 了解如何透過新增虛擬機器擴展集來調整 Service Fabric 叢集的規模。
 ms.topic: article
 ms.date: 02/13/2019
-ms.openlocfilehash: 2d700367049e0bf9bf710aad110c850a78c26220
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a42e33fa87b6cf7966368481ef6d3920511919e3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610688"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260461"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>擴大 Service Fabric 叢集主要節點類型
 本文說明如何透過增加虛擬機器資源來擴大 Service Fabric 叢集主要節點類型。 Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用來將您的微服務部署到其中並進行管理。 屬於叢集一部分的機器或 VM 都稱為節點。 虛擬機器擴展集是一個 Azure 計算資源，可以用來將一組虛擬機器當做一個集合加以部署和管理。 在 Azure 叢集中定義的每個節點類型，會[設定為不同的擴展集](service-fabric-cluster-nodetypes.md)。 隨後，您即可個別管理每個節點類型。 建立 Service Fabric 叢集之後，您可以垂直調整叢集節點類型 (變更節點的資源) 或將節點類型 VM 的作業系統升級。  您可以隨時調整叢集，即使正在叢集上執行工作負載，也是如此。  在叢集進行調整時，您的應用程式也會自動調整。
@@ -49,7 +49,7 @@ ms.locfileid: "85610688"
 Login-AzAccount -SubscriptionId "<your subscription ID>"
 ```
 
-本教學課程會逐步解說建立自我簽署憑證的案例。 若要使用 Azure Key Vault 的現有憑證，請略過以下步驟，並改為鏡射[使用現有憑證來部署叢集](https://docs.microsoft.com/azure/service-fabric/upgrade-managed-disks#use-an-existing-certificate-to-deploy-the-cluster)中的步驟。
+本教學課程會逐步解說建立自我簽署憑證的案例。 若要使用 Azure Key Vault 的現有憑證，請略過以下步驟，並改為鏡射[使用現有憑證來部署叢集](./upgrade-managed-disks.md#use-an-existing-certificate-to-deploy-the-cluster)中的步驟。
 
 ### <a name="generate-a-self-signed-certificate-and-deploy-the-cluster"></a>產生自我簽署憑證及部署叢集
 
@@ -157,7 +157,7 @@ Get-ServiceFabricClusterHealth
 
 我們現在已準備好開始停用原始擴展集的節點。 隨著這些節點變為停用，系統服務和種子節點會遷移到新擴展集的 VM，因為其也會標示為主要節點類型。
 
-針對相應增加非主要節點類型，在此步驟中，您會修改服務放置條件約束以包含新的虛擬機器擴展集/節點類型，然後將舊的虛擬機器擴展集實例計數減少為零，一次一個節點（以確保節點移除不會影響叢集可靠性）。
+針對相應增加非主要節點類型，在此步驟中，您會修改服務放置條件約束以包含新的虛擬機器擴展集/節點類型，然後將舊的虛擬機器擴展集實例計數減少為零，一次一個節點 (，以確保節點移除不會影響叢集可靠性) 。
 
 ```powershell
 # Disable the nodes in the original scale set.
@@ -251,4 +251,3 @@ foreach($name in $nodeNames){
 * [將 Azure 叢集相應縮小或相應放大](service-fabric-tutorial-scale-cluster.md)。
 * 使用 Fluent Azure 計算 SDK，[以程式設計方式調整 Azure 叢集](service-fabric-cluster-programmatic-scaling.md)。
 * [將獨立叢集相應縮小或相應放大](service-fabric-cluster-windows-server-add-remove-nodes.md)。
-

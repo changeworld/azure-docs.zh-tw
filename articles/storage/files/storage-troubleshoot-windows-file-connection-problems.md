@@ -7,16 +7,16 @@ ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 8a8fff374edab7e307cd6dc8fb9aa4a4f974d09c
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e855ed169a0c4eca7dda696c03deedb9e519e9bf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224684"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259976"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>針對 Windows 中的 Azure 檔案服務問題進行疑難排解
 
-本文列出當您從 Windows 用戶端連線時，與 Microsoft Azure 檔案服務相關的常見問題。 文中也會提供這些問題的可能原因和解決方案。 除了本文中的疑難排解步驟之外，您也可以使用[AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)   來確保 Windows 用戶端環境具有正確的必要條件。 AzFileDiagnostics 會自動偵測本文中提及的大部分徵兆，並協助設定您的環境以取得最佳效能。 您也可以在 [Azure 檔案共用疑難排解員](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)中找到此資訊，當中有提供步驟來協助您解決連線/對應/掛接 Azure 檔案共用的問題。
+本文列出當您從 Windows 用戶端連線時，與 Microsoft Azure 檔案服務相關的常見問題。 文中也會提供這些問題的可能原因和解決方案。 除了本文中的疑難排解步驟之外，您也可以使用[AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)   來確保 Windows 用戶端環境具有正確的必要條件。 AzFileDiagnostics 會自動偵測本文中提及的大部分徵兆，並協助設定您的環境以取得最佳效能。 您也可以在 [Azure 檔案共用疑難排解員](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)中找到此資訊，當中有提供步驟來協助您解決連線/對應/掛接 Azure 檔案共用的問題。
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>掛接 Azure 檔案共用時發生錯誤 5
@@ -65,7 +65,7 @@ Windows 8、Windows Server 2012 和更新版本的每個系統交涉都要求包
 
 如果連接埠 445 至 Azure 檔案服務資料中心的輸出通訊遭到封鎖，可能會發生系統錯誤 53 或系統錯誤 67。 若要查看 ISP 是否允許從連接埠 445 進行存取的摘要，請參閱 [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx) \(英文\)。
 
-若要檢查您的防火牆或 ISP 是否封鎖連接埠 445，請使用 [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) 工具或 `Test-NetConnection` Cmdlet。 
+若要檢查您的防火牆或 ISP 是否封鎖連接埠 445，請使用 [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) 工具或 `Test-NetConnection` Cmdlet。 
 
 若要使用 `Test-NetConnection` Cmdlet，必須安裝 Azure PowerShell 模組，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)以取得詳細資訊。 請記得以儲存體帳戶的相關名稱取代 `<your-storage-account-name>` 和 `<your-resource-group-name>`。
 
@@ -334,7 +334,7 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
 ### <a name="self-diagnostics-steps"></a>自我診斷步驟
 首先，請確定您已遵循全部的四個步驟來[啟用 AZURE 檔案儲存體 AD 驗證](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable)。
 
-第二，請嘗試[使用儲存體帳戶金鑰裝載 Azure 檔案共用](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)。 如果您無法掛接，請下載[AzFileDiagnostics.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)以協助您驗證用戶端執行環境、偵測不相容的用戶端設定，這會導致 Azure 檔案儲存體的存取失敗、提供自行修正的規範指引，以及收集診斷追蹤。
+第二，請嘗試[使用儲存體帳戶金鑰裝載 Azure 檔案共用](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)。 如果您無法掛接，請下載[AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)以協助您驗證用戶端執行環境、偵測不相容的用戶端設定，這會導致 Azure 檔案儲存體的存取失敗、提供自行修正的規範指引，以及收集診斷追蹤。
 
 第三，您可以執行 AzStorageAccountAuth Cmdlet，在 AD 設定上使用登入的 AD 使用者進行一組基本的檢查。 [AzFilesHybrid v0.1.2+ 版本](https://github.com/Azure-Samples/azure-files-samples/releases)支援此 Cmdlet。 您必須以對目標儲存體帳戶具有擁有者權限的 AD 使用者身分執行此 Cmdlet。  
 ```PowerShell

@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: 73c149a0d0992fecd1acf633891057570285df64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b17befcd86cd56eb5eb385ddc5196cbfce73003c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75639661"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260421"
 ---
 # <a name="actor-events"></a>動作項目事件
 動作項目事件會將最佳效果通知從動作項目傳送到用戶端。 動作項目事件是為了動作項目與用戶端之間的通訊而設計，不應用於動作項目與動作項目之間的通訊。
@@ -101,7 +102,7 @@ event.gameScoreUpdated(Id.getUUIDId(), score);
 ## <a name="next-steps"></a>後續步驟
 * [動作專案重新進入](service-fabric-reliable-actors-reentrancy.md)
 * [動作項目診斷與效能監視](service-fabric-reliable-actors-diagnostics.md)
-* [動作項目 API 參考文件](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [動作項目 API 參考文件](/previous-versions/azure/dn971626(v=azure.100))
 * [C # 範例程式碼](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [C# .NET Core 範例程式碼](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)
 * [JAVA 範例程式碼](https://github.com/Azure-Samples/service-fabric-java-getting-started)

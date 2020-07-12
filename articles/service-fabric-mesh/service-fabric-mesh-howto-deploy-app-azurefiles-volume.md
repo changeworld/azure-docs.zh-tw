@@ -6,17 +6,18 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 5bb7ab6c861d958f6811ca852363c59cfced3940
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54edc242260479a8f48cc4aae91845041fc2d376
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76718815"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260095"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>在 Service Fabric Mesh 應用程式中裝載以檔案儲存體為基礎的磁碟區 
 
 本文說明如何在 Service Fabric Mesh 應用程式的服務中，裝載以檔案儲存體為基礎的磁碟區。  檔案儲存體磁碟區驅動程式是用來將檔案儲存體共用裝載至容器的 Docker 磁碟區驅動程式，可供用來保存服務狀態。 磁碟區會提供一般用途的檔案儲存體，並可讓您使用一般磁碟 I/O 檔案 API 來讀取/寫入檔案。  若要深入了解磁碟區和用於儲存應用程式資料的選項，請閱讀[儲存狀態](service-fabric-mesh-storing-state.md)。
 
-若要在服務中裝載磁碟區，請在 Service Fabric Mesh 應用程式中建立磁碟區資源，然後在服務中參考該磁碟區。  您可以在[以 YAML 為基礎的資源檔](#declare-a-volume-resource-and-update-the-service-resource-yaml)或[以 JSON 為基礎的部署範本](#declare-a-volume-resource-and-update-the-service-resource-json)中，宣告磁碟區資源並在服務資源中加以參考。 在裝載磁碟區之前，請先建立 Azure 儲存體帳戶和[檔案儲存體中的檔案共用](/azure/storage/files/storage-how-to-create-file-share)。
+若要在服務中裝載磁碟區，請在 Service Fabric Mesh 應用程式中建立磁碟區資源，然後在服務中參考該磁碟區。  您可以在[以 YAML 為基礎的資源檔](#declare-a-volume-resource-and-update-the-service-resource-yaml)或[以 JSON 為基礎的部署範本](#declare-a-volume-resource-and-update-the-service-resource-json)中，宣告磁碟區資源並在服務資源中加以參考。 在裝載磁碟區之前，請先建立 Azure 儲存體帳戶和[檔案儲存體中的檔案共用](../storage/files/storage-how-to-create-file-share.md)。
 
 ## <a name="prerequisites"></a>必要條件
 > [!NOTE]
@@ -26,7 +27,7 @@ Error event: SourceId='System.Hosting', Property='CodePackageActivation:counterS
 There was an error during CodePackage activation.System.Fabric.FabricException (-2147017731)
 Failed to start Container. ContainerName=sf-2-63fc668f-362d-4220-873d-85abaaacc83e_6d6879cf-dd43-4092-887d-17d23ed9cc78, ApplicationId=SingleInstance_0_App2, ApplicationName=fabric:/counterApp. DockerRequest returned StatusCode=InternalServerError with ResponseBody={"message":"error while mounting volume '': mount failed"}
 ```
-問題的因應措施是1）以 Powershell 系統管理員身分執行下列命令，2）重新開機電腦。
+問題的因應措施為 1) 以 Powershell 系統管理員身分執行下列命令，而 2) 重新開機電腦。
 ```powershell
 PS C:\WINDOWS\system32> Mofcomp c:\windows\system32\wbem\smbwmiv2.mof
 ```

@@ -3,11 +3,12 @@ title: 使用服務主體進行驗證
 description: 使用 Azure Active Directory 服務主體，提供您私人容器登錄中映像的存取權。
 ms.topic: article
 ms.date: 10/04/2019
-ms.openlocfilehash: 37da784c8e95a5f5b924532e4a019552924a1a3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d49628576a1c337efaea3e5286fef00e39def17
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74455399"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259143"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>使用服務主體進行 Azure Container Registry 驗證
 
@@ -27,13 +28,13 @@ Azure AD *服務主體*提供您訂用帳戶內 Azure 資源的存取權。 您�
 
 ## <a name="when-to-use-a-service-principal"></a>何時使用服務主體
 
-您應該使用服務主體來提供**無周邊案例**中的登錄存取權。 也就是，任何必須以自動化或其他自動方式發送或提取容器映像的應用程式、服務或指令碼。 例如：
+您應該使用服務主體來提供**無周邊案例**中的登錄存取權。 也就是，任何必須以自動化或其他自動方式發送或提取容器映像的應用程式、服務或指令碼。 例如︰
 
-  * *Pull*：將容器從登錄部署至協調流程系統，包括 KUBERNETES、DC/OS 和 Docker Swarm。 您也可以從容器登錄提取到相關的 Azure 服務，例如[Azure Kubernetes Service （AKS）](../aks/cluster-container-registry-integration.md)、 [Azure 容器實例](container-registry-auth-aci.md)、 [App Service](../app-service/index.yml)、[批次](../batch/index.yml)、 [Service Fabric](/azure/service-fabric/)及其他專案。
+  * *Pull*：將容器從登錄部署至協調流程系統，包括 KUBERNETES、DC/OS 和 Docker Swarm。 您也可以從容器登錄提取到相關的 Azure 服務，例如[Azure Kubernetes Service (AKS) ](../aks/cluster-container-registry-integration.md)、 [Azure 容器實例](container-registry-auth-aci.md)、 [App Service](../app-service/index.yml)、 [Batch](../batch/index.yml)、 [Service Fabric](../service-fabric/index.yml)及其他專案。
 
   * *推送*：使用持續整合和部署解決方案（例如 Azure Pipelines 或 Jenkins）來建立容器映射，並將其推送至登錄。
 
-對於登錄的個別存取（例如，當您手動將容器映射提取到您的開發工作站時），我們建議使用您自己的[Azure AD 身分識別](container-registry-authentication.md#individual-login-with-azure-ad)，而不是登錄存取（例如，使用[az acr login][az-acr-login]）。
+對於登錄的個別存取（例如，當您手動將容器映射提取到您的開發工作站時），我們建議使用您自己的[Azure AD 身分識別](container-registry-authentication.md#individual-login-with-azure-ad)，而不是登錄存取 (例如，使用[az acr login][az-acr-login]) 。
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
@@ -48,8 +49,8 @@ Azure AD *服務主體*提供您訂用帳戶內 Azure 資源的存取權。 您�
 
 一旦您擁有已授與容器登錄存取權的服務主體，您可以設定其認證以存取「無周邊」服務和應用程式，或使用命令輸入它們 `docker login` 。 輸入下列值：
 
-* **使用者名稱**-服務主體應用程式識別碼（也稱為*用戶端識別碼*）
-* **密碼**-服務主體密碼（也稱為*用戶端秘密*）
+* **使用者名稱**-服務主體應用程式識別碼 (也稱為*用戶端識別碼*) 
+* **密碼**-服務主體密碼 (也稱為*用戶端密碼*) 
 
 每個值都是表單的 GUID `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` 。 
 

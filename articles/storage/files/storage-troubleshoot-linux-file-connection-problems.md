@@ -7,18 +7,18 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ffd73e9dff06df4b5acdd004dddcfca5ff03ede0
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 4dddc2eab5004377afd6743c4722498dd5c6e2a0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232265"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260002"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>針對 Linux 中的 Azure 檔案服務問題進行疑難排解
 
 本文會列出當您從 Linux 用戶端連線時，與 Azure 檔案服務相關的常見問題。 文中也會提供這些問題的可能原因和解決方案。 
 
-除了本文中的疑難排解步驟外，您還可以使用 [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) 來確保 Windows 用戶端環境具備正確的必要條件。 AzFileDiagnostics 會自動偵測本文提及的大部分徵兆。 它可協助設定您的環境，以取得最佳效能。 您也可以在 [Azure 檔案共用疑難排解員](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)中找到這項資訊。 疑難排解員提供的步驟有助您處理連接、對應以及掛接 Azure 檔案共用的問題。
+除了本文中的疑難排解步驟外，您還可以使用 [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux) 來確保 Windows 用戶端環境具備正確的必要條件。 AzFileDiagnostics 會自動偵測本文提及的大部分徵兆。 它可協助設定您的環境，以取得最佳效能。 您也可以在 [Azure 檔案共用疑難排解員](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)中找到這項資訊。 疑難排解員提供的步驟有助您處理連接、對應以及掛接 Azure 檔案共用的問題。
 
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>無法連線或裝載 Azure 檔案共用
 

@@ -3,12 +3,12 @@ title: 在 Azure 入口網站中建立 Service Fabric 叢集
 description: 了解如何使用 Azure 入口網站和 Azure Key Vault 在 Azure 中建立安全的 Service Fabric 叢集。
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: eeadfcf24ad2448c845f3d612247686347600001
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b47f3b756ef4d012b41fd15686ffc08ab54fc187
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611147"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259315"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>使用 Azure 入口網站在 Azure 中建立 Service Fabric 叢集
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "85611147"
 ## <a name="cluster-security"></a>叢集安全性 
 憑證是在 Service Fabric 中用來提供驗證與加密，以保護叢集和其應用程式的各個層面。 如需如何在 Service Fabric 中使用憑證的詳細資訊，請參閱 [Service Fabric 叢集安全性案例][service-fabric-cluster-security]。
 
-如果這是您第一次建立 service fabric 叢集，或正在部署測試工作負載的叢集，您可以跳到下一節（**在 Azure 入口網站中建立**叢集），並讓系統產生執行測試工作負載的叢集所需的憑證。 如果您準備為生產工作負載設定叢集，請繼續閱讀。
+如果這是您第一次建立 service fabric 叢集，或正在部署測試工作負載的叢集，您可以跳到下一節 (在**Azure 入口網站) 中建立**叢集，並讓系統產生執行測試工作負載的叢集所需的憑證。 如果您準備為生產工作負載設定叢集，請繼續閱讀。
 
 #### <a name="cluster-and-server-certificate-required"></a>叢集和伺服器憑證 (必要)
 需要此憑證來保護叢集安全及防止未經授權存取叢集。 它會透過幾種方式提供叢集安全性：
@@ -42,7 +42,7 @@ ms.locfileid: "85611147"
 
 * 憑證必須包含私密金鑰。
 * 憑證必須是為了進行金鑰交換而建立，且可匯出成個人資訊交換檔 (.pfx)。
-* 憑證的**主體名稱必須符合**用來存取 Service Fabric 叢集的網域。 若要為叢集的 HTTPS 管理端點和 Service Fabric Explorer 提供 TLS，這是必要的。 您無法從憑證授權單位單位（CA）取得網域的 TLS/SSL 憑證 `.cloudapp.azure.com` 。 為您的叢集取得自訂網域名稱。 當您向 CA 要求憑證時，憑證的主體名稱必須符合用於您叢集的自訂網域名稱。
+* 憑證的**主體名稱必須符合**用來存取 Service Fabric 叢集的網域。 若要為叢集的 HTTPS 管理端點和 Service Fabric Explorer 提供 TLS，這是必要的。 您無法從憑證授權單位單位取得網域 (CA) 的 TLS/SSL 憑證 `.cloudapp.azure.com` 。 為您的叢集取得自訂網域名稱。 當您向 CA 要求憑證時，憑證的主體名稱必須符合用於您叢集的自訂網域名稱。
 
 #### <a name="client-authentication-certificates"></a>用戶端驗證憑證
 其他用戶端憑證會驗證系統管理員以執行叢集管理工作。 Service Fabric 有兩個存取層級：[系統管理員]**** 和 [唯讀使用者]****。 您至少應使用一個單一憑證以用於進行系統管理存取。 若要進行其他使用者層級存取，則必須提供個別憑證。 如需存取角色的詳細資訊，請參閱[角色型存取控制 (適用於 Service Fabric 用戶端)][service-fabric-cluster-security-roles]。
@@ -121,7 +121,7 @@ ms.locfileid: "85611147"
 ### <a name="3-security"></a>3. 安全性
 ![Azure 入口網站上安全性設定的螢幕擷取畫面。][BasicSecurityConfigs]
 
-為了讓您輕鬆設定安全的測試叢集，我們已提供 [基本]**** 選項。 如果您已擁有憑證，並且已將憑證上傳至[金鑰保存庫](/azure/key-vault/) (且已啟用金鑰保存庫以供部署)，則請使用 [自訂]**** 選項
+為了讓您輕鬆設定安全的測試叢集，我們已提供 [基本]**** 選項。 如果您已擁有憑證，並且已將憑證上傳至[金鑰保存庫](../key-vault/index.yml) (且已啟用金鑰保存庫以供部署)，則請使用 [自訂]**** 選項
 
 #### <a name="basic-option"></a>基本選項
 請遵循畫面指示新增或重複使用現有的金鑰保存庫，並新增憑證。 新增憑證為同步的程序，所以您必須等待憑證建立完成。
@@ -173,9 +173,9 @@ ms.locfileid: "85611147"
 
 若要完成叢集建立作業，請按一下 [建立]****。 您也可以選擇性下載此範本。
 
-![摘要]
+![總結]
 
-您可以在通知功能中看到叢集的建立進度。 （按一下畫面右上方狀態列附近的「鐘」圖示）。如果您在建立叢集時按了 [**釘選到開始面板**]，您會看到將 Service Fabric 的叢集**部署**到**開始**面板。 此程序需要一些時間。 
+您可以在通知功能中看到叢集的建立進度。  (按一下畫面右上角狀態列附近的「鐘」圖示。 ) 如果您在建立叢集時按了 [**釘選到開始面板**]，您會看到部署釘選到**開始**面板的**Service Fabric**叢集。 此程序需要一些時間。 
 
 若要使用 PowerShell 或 CLI 在您的叢集上執行管理作業，您需要連線到您的叢集，深入瞭解如何[連接到您](service-fabric-connect-to-secure-cluster.md)的叢集。
 
@@ -202,7 +202,7 @@ ms.locfileid: "85611147"
 此時，您擁有一個使用憑證來管理驗證的安全叢集。 接下來，請[連線到您的叢集](service-fabric-connect-to-secure-cluster.md)並了解如何[管理應用程式密碼](service-fabric-application-secret-management.md)。  同時，了解 [Service Fabric 支援選項](service-fabric-support.md)。
 
 <!-- Links -->
-[azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[azure-powershell]: /powershell/azure/
 [azure-portal]: https://portal.azure.com/
 [key-vault-get-started]: ../key-vault/general/overview.md
 [create-cluster-arm]: service-fabric-cluster-creation-via-arm.md

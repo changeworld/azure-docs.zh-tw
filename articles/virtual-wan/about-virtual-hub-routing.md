@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 368440976558730bd7bb9600a0bf45c56d1ee300
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 659cb9aabe5fcca68aea9a73ea9beadb8e52ec50
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147392"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259176"
 ---
 # <a name="about-virtual-hub-routing"></a>關於虛擬中樞路由
 
@@ -63,6 +63,9 @@ ms.locfileid: "86147392"
 ### <a name="configuring-static-routes-in-a-virtual-network-connection"></a><a name="static"></a>設定虛擬網路連接中的靜態路由
 
 設定靜態路由提供了一種機制，可透過下一個躍點 IP 來引導流量，這可能是網路虛擬裝置 (NVA) 布建在連接至虛擬中樞的輪輻 VNet 中。 靜態路由是由路由名稱、目的地首碼清單，以及下一個躍點 IP 所組成。
+
+## <a name="reset-hub"></a><a name="route"></a>重設中樞
+僅適用于 Azure 入口網站，此選項可讓使用者將任何失敗的資源（例如路由表、中樞路由器或虛擬中樞資源本身）帶回其正當布建狀態。 這是其他選項，可讓使用者在聯繫 Microsoft 尋求支援之前先考慮。 這項作業不會重設虛擬中樞內的任何閘道。 
 
 ## <a name="route-tables-in-basic-and-standard-virtual-wans-prior-to-the-feature-set-of-association-and-propagation"></a><a name="route"></a>在關聯和傳播的功能集之前，于基本和標準虛擬 Wan 中路由表
 

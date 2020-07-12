@@ -5,12 +5,12 @@ author: mjrousos
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: bd7c57f3089115e4da861fc8fd20331ab92bc33e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19f773fa781c51f64412039201842a7af4c29052
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82787102"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261119"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>以程式設計方式調整 Service Fabric 叢集 
 
@@ -20,16 +20,16 @@ ms.locfileid: "82787102"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="manage-credentials"></a>管理認證
-撰寫服務來處理調整的其中一項挑戰是，服務必須能夠不經互動式登入程序就存取虛擬機器擴展集資源。 如果調整服務是要修改自己的 Service Fabric 應用程式，存取 Service Fabric 叢集是很容易的事，但需要有認證才能存取擴展集。 若要登入，您可以使用以[Azure CLI](https://github.com/azure/azure-cli)建立的[服務主體](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)。
+撰寫服務來處理調整的其中一項挑戰是，服務必須能夠不經互動式登入程序就存取虛擬機器擴展集資源。 如果調整服務是要修改自己的 Service Fabric 應用程式，存取 Service Fabric 叢集是很容易的事，但需要有認證才能存取擴展集。 若要登入，您可以使用以[Azure CLI](https://github.com/azure/azure-cli)建立的[服務主體](/cli/azure/create-an-azure-service-principal-azure-cli)。
 
 您可以透過下列步驟來建立服務主體︰
 
-1. 以 `az login` 具有虛擬機器擴展集存取權的使用者身分登入 Azure CLI （）
+1. 以 `az login` 具有虛擬機器擴展集存取權的使用者身分登入 Azure CLI () 
 2. 使用 `az ad sp create-for-rbac` 建立服務主體
     1. 記下 appId (在其他地方稱為「用戶端識別碼」)、名稱、密碼及租用戶，以供稍後使用。
     2. 您還需要訂用帳戶識別碼，若要檢視此識別碼，請使用 `az account list`
 
-流暢的計算程式庫可以使用這些認證來登入，如下所示（請注意，azure 中的核心流暢 Azure 類型 `IAzure` 位於中，如： [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/)
+流暢的計算程式庫可以使用這些認證來登入，如下所示 (請注意，如中的核心流暢 Azure 類型 `IAzure` 位於[Microsoft. Azure 管理](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/)的封裝) ：
 
 ```csharp
 var credentials = new AzureCredentials(new ServicePrincipalLoginInformation {
@@ -59,7 +59,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-或者，也可以使用 PowerShell Cmdlet 來管理虛擬機器擴展集大小。 [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss)可以取得虛擬機器擴展集物件。 目前的容量可透過 `.sku.capacity` 屬性來取得。 將容量變更為所需的值之後，就可以使用命令來更新 Azure 中的虛擬機器擴展集 [`Update-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) 。
+或者，也可以使用 PowerShell Cmdlet 來管理虛擬機器擴展集大小。 [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss)可以取得虛擬機器擴展集物件。 目前的容量可透過 `.sku.capacity` 屬性來取得。 將容量變更為所需的值之後，就可以使用命令來更新 Azure 中的虛擬機器擴展集 [`Update-AzVmss`](/powershell/module/az.compute/update-azvmss) 。
 
 和手動新增節點時一樣，若要啟動新的 Service Fabric 節點，您只需要新增擴展集執行個體，因為擴展集範本所含有的擴充功能可自動將新的執行個體加入 Service Fabric 叢集。 
 
@@ -121,4 +121,4 @@ await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 
 - [以手動方式或透過自動調整規則進行調整](./service-fabric-cluster-scale-in-out.md)
 - [適用於 .NET 的 Fluent Azure 管理程式庫](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (適用於與 Service Fabric 叢集的基礎虛擬機器擴展集互動)
-- [System.Fabric.FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) (適用於與 Service Fabric 叢集及其節點互動)
+- [System.Fabric.FabricClient](/dotnet/api/system.fabric.fabricclient) (適用於與 Service Fabric 叢集及其節點互動)

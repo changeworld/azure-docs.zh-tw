@@ -4,14 +4,14 @@ description: 了解如何使用虛擬網路中的私人 IP 位址來設定 Azure
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/11/2020
+ms.date: 07/10/2020
 ms.author: thweiss
-ms.openlocfilehash: 1ee468b99cddeb5f18f78a6d1298c8959bda075b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb1310d0f45f945fc150e0ae011ede0d102a5918
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261625"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259117"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>設定 Azure Cosmos 帳戶的 Azure Private Link
 
@@ -622,7 +622,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
   * 由私人端點對應之資料庫帳戶的流量會透過私用端點路由傳送，
   * 來自子網的其他資料庫帳戶的流量會透過服務端點來路由傳送。
 
-* 如果未設定任何公用流量或服務端點並建立私人端點，則只能透過私人端點來存取 Azure Cosmos 帳戶。 如果您未設定公用流量或服務端點，則在拒絕或刪除所有已核准的私用端點之後，除非 [PublicNetworkAccess] 設為 [已停用] （請參閱下一節），否則將會開啟整個網路的帳戶。
+* 如果未設定任何公用流量或服務端點並建立私人端點，則只能透過私人端點來存取 Azure Cosmos 帳戶。 如果您未設定公用流量或服務端點，則在拒絕或刪除所有已核准的私用端點之後，除非 [PublicNetworkAccess] 設為 [已停用]，否則會開啟整個網路的帳戶， (請參閱) 下一節。
 
 ## <a name="blocking-public-network-access-during-account-creation"></a>在帳戶建立期間封鎖公用網路存取
 
@@ -630,7 +630,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 ## <a name="port-range-when-using-direct-mode"></a>使用 direct 模式時的埠範圍
 
-當您透過直接模式連線搭配 Azure Cosmos 帳戶使用私人連結時，您必須確定已開啟完整範圍的 TCP 埠（0-65535）。
+當您透過直接模式連線搭配 Azure Cosmos 帳戶使用私人連結時，您必須確定已開啟完整範圍的 TCP 埠 (0-65535) 。
 
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>新增或移除區域時更新私人端點
 
@@ -655,8 +655,6 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 * 當針對具有 Private Link 的 MongoDB 帳戶使用 Azure Cosmos DB 的 API 時，某些工具或程式庫可能無法正常運作，因為其會自動從連接字串中移除 `appName` 參數。 需要此參數才能透過私人端點連線到帳戶。 某些工具 (例如 Visual Studio Code) 並不會從連接字串中移除此參數，因此相容。
 
 * 網路系統管理員至少應獲授與 Azure Cosmos 帳戶範圍的 `Microsoft.DocumentDB/databaseAccounts/PrivateEndpointConnectionsApproval/action` 權限，才能建立自動核准的私人端點。
-
-* Azure 中國區域目前不支援直接模式。
 
 ### <a name="limitations-to-private-dns-zone-integration"></a>私人 DNS 區域整合的限制
 

@@ -5,11 +5,12 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: a3b2f7c22c1afd0a24aafa3bcd9dc9a6c3f725f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e60ac5065c2f9543a641daf4f62299c00c61fc8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392568"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260184"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>使用系統健康狀態報告進行疑難排解
 Azure Service Fabric 元件會針對現成叢集中的所有實體，提供系統健康情況報告。 [健康狀態資料存放區](service-fabric-health-introduction.md#health-store) 會根據系統報告來建立和刪除實體。 它也會將這些實體組織為階層以擷取實體的互動。
@@ -73,17 +74,17 @@ Azure Service Fabric 元件會針對現成叢集中的所有實體，提供系�
 * **後續步驟**：如果此警告顯示在叢集中，請遵循下列指示來修正此問題：針對執行 Service Fabric 6.5 版或更高版本的叢集：針對 Azure 上的 Service Fabric 叢集，在種子節點關閉後，Service Fabric 會嘗試自動將其變更為非種子節點。 若要進行這項操作，請確定主要節點類型中的非種子節點數目大於或等於向下種子節點的數目。 如有必要，請將更多節點新增至主要節點類型，以達成此目的。
 視叢集狀態而定，可能需要一些時間來修正問題。 完成後，就會自動清除警告報告。
 
-針對 Service Fabric 獨立叢集，若要清除警告報告，所有種子節點都必須變成狀況良好。 視種子節點狀況不良的原因而定，需要採取不同的動作：如果種子節點已關閉，使用者必須將該種子節點啟動;如果已移除或不明種子節點，則必須從叢集[移除](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes)此種子節點。
+針對 Service Fabric 獨立叢集，若要清除警告報告，所有種子節點都必須變成狀況良好。 視種子節點狀況不良的原因而定，需要採取不同的動作：如果種子節點已關閉，使用者必須將該種子節點啟動;如果已移除或不明種子節點，則必須從叢集[移除](./service-fabric-cluster-windows-server-add-remove-nodes.md)此種子節點。
 當所有種子節點變成狀況良好時，會自動清除警告報告。
 
 針對執行 Service Fabric 版本早于6.5 的叢集：在此情況下，必須手動清除警告報告。 **使用者應該先確定所有種子節點都變成狀況良好，然後再清除報告**：如果種子節點已關閉，使用者必須將該種子節點啟動; 如果已移除或不明種子節點，則必須從叢集移除該種子節點。
-當所有種子節點都變成狀況良好之後，請從 Powershell 使用下列命令來[清除警告報告](https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricclusterhealthreport)：
+當所有種子節點都變成狀況良好之後，請從 Powershell 使用下列命令來[清除警告報告](/powershell/module/servicefabric/send-servicefabricclusterhealthreport)：
 
 ```powershell
 PS C:\> Send-ServiceFabricClusterHealthReport -SourceId "System.FM" -HealthProperty "SeedNodeStatus" -HealthState OK
 
 ## Node system health reports
-System.FM, which represents the Failover Manager service, is the authority that manages information about cluster nodes. Each node should have one report from System.FM showing its state. The node entities are removed when the node state is removed. For more information, see [RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).
+System.FM, which represents the Failover Manager service, is the authority that manages information about cluster nodes. Each node should have one report from System.FM showing its state. The node entities are removed when the node state is removed. For more information, see [RemoveNodeStateAsync](/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).
 
 ### Node up/down
 System.FM reports as OK when the node joins the ring (it's up and running). It reports an error when the node departs the ring (it's down, either for upgrading or simply because it has failed). The health hierarchy built by the health store acts on deployed entities in correlation with System.FM node reports. It considers the node a virtual parent of all deployed entities. The deployed entities on that node are exposed through queries if the node is reported as up by System.FM, with the same instance as the instance associated with the entities. When System.FM reports that the node is down or restarted, as a new instance, the health store automatically cleans up the deployed entities that can exist only on the down node or on the previous instance of the node.
@@ -138,7 +139,7 @@ HealthEvents          :
 ## <a name="application-system-health-reports"></a>應用程式系統健康狀態報告
 System.CM(代表叢集管理員服務) 是管理應用程式相關資訊的授權單位。
 
-### <a name="state"></a>State
+### <a name="state"></a>狀態
 已建立或更新應用程式時，System.CM 會回報為 OK。 刪除應用程式時，它會通知健康狀態資料存放區，以便從存放區將它移除。
 
 * **SourceId**：System.CM
@@ -171,7 +172,7 @@ HealthEvents                    :
 ## <a name="service-system-health-reports"></a>服務系統健康狀態報告
 System.FM(代表容錯移轉管理員服務) 是管理服務相關資訊的授權單位。
 
-### <a name="state"></a>State
+### <a name="state"></a>狀態
 已建立服務時，System.FM 會回報為 OK。 已刪除服務時，它會從健康狀態資料存放區刪除實體。
 
 * **SourceId**：System.FM
@@ -213,7 +214,7 @@ HealthEvents          :
 ## <a name="partition-system-health-reports"></a>分割區系統健康狀態報告
 System.FM(代表容錯移轉管理員服務) 是管理服務分割區相關資訊的授權單位。
 
-### <a name="state"></a>State
+### <a name="state"></a>狀態
 已建立分割區且其狀況良好時，System.FM 會回報為 OK。 刪除分割區時，它會從健康狀態資料存放區刪除實體。
 
 如果分割區低於最小複本計數，它會回報錯誤。 如果分割區高於最小複本計數，但低於目標複本計數，則會回報警告。 如果分割區處於仲裁遺失狀態，System.FM 會回報錯誤。
@@ -390,7 +391,7 @@ HealthEvents          :
 ## <a name="replica-system-health-reports"></a>複本系統健康狀態報告
 **System.RA**(代表重新設定代理程式元件) 是複本狀態的授權單位。
 
-### <a name="state"></a>State
+### <a name="state"></a>狀態
 System.RA 會在複本建立後回報 OK。
 
 * **SourceId**：System.RA
@@ -644,9 +645,9 @@ HealthEvents          :
 
 - **IStatefulServiceReplica.ChangeRole(S)** 和 **IStatefulServiceReplica.ChangeRole(N)**：最常見的案例是服務不接受傳遞至 `RunAsync` 的取消權杖。 在此案例中，最佳解決方案是重新開機複本。
 
-- **IStatefulServiceReplica. ChangeRole （P）**：最常見的情況是服務尚未從傳回工作 `RunAsync` 。
+- **IStatefulServiceReplica. ChangeRole (P) **：最常見的情況是服務尚未從傳回工作 `RunAsync` 。
 
-可能會停滯的其他 API 呼叫會在**位於 ireplicator**介面上。 例如：
+可能會停滯的其他 API 呼叫會在**位於 ireplicator**介面上。 例如︰
 
 - **IReplicator.CatchupReplicaSet**：此警告表示下列其中一種情況。 啟動的複本數不足。 若要了解是否為這種情況，請查看分割區中複本的複本狀態或 System.FM 健康情況報告，以進行停滯重新設定。 或者複本未認可作業。 PowerShell Cmdlet `Get-ServiceFabricDeployedReplicaDetail` 可用來判斷所有複本的進度。 問題出在其 `LastAppliedReplicationSequenceNumber` 值位於主要複本之 `CommittedSequenceNumber` 值後面的複本。
 
@@ -661,7 +662,7 @@ HealthEvents          :
 * **後續步驟**：如果報表是在主要複本上，檢查叢集中節點之間的連線。 如果所有連線狀況良好，可能是至少一個具有高磁碟延遲時間的緩慢次要複本要套用作業。 如果報表是在次要複本上，請先檢查節點上的磁碟使用量和效能。 然後檢查從緩慢節點到主要複本的傳出連線。
 
 **RemoteReplicatorConnectionStatus：** 
-當與次要（遠端）複寫器的連接狀況不良時，主要複本上的**system.web**會回報警告。 遠端複寫器的位址會顯示在報表的訊息中，讓您更方便地偵測是否有錯誤組態傳入或者複寫器之間是否有網路問題。
+當與次要 (遠端) 複寫器的連接狀況不良時，主要複本上的**System.** 複寫器會回報警告。 遠端複寫器的位址會顯示在報表的訊息中，讓您更方便地偵測是否有錯誤組態傳入或者複寫器之間是否有網路問題。
 
 * **SourceId**：System.Replicator
 * **Property**：**RemoteReplicatorConnectionStatus**。
@@ -674,7 +675,7 @@ HealthEvents          :
 * **屬性**： **PrimaryReplicationQueueStatus**或**SecondaryReplicationQueueStatus**，視複本角色而定。
 
 ### <a name="slow-naming-operations"></a>緩慢的命名作業
-**System.NamingService** 會在命名作業執行時間太長而無法接受時，報告其主要複本的健康情況。 命名作業的範例為 [CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) 或 [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync)。 您可以在 FabricClient 下找到更多方法。 例如，可以在[服務管理方法](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient)或[屬性管理方法](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient)底下找到這些方法。
+**System.NamingService** 會在命名作業執行時間太長而無法接受時，報告其主要複本的健康情況。 命名作業的範例為 [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) 或 [DeleteServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync)。 您可以在 FabricClient 下找到更多方法。 例如，可以在[服務管理方法](/dotnet/api/system.fabric.fabricclient.servicemanagementclient)或[屬性管理方法](/dotnet/api/system.fabric.fabricclient.propertymanagementclient)底下找到這些方法。
 
 > [!NOTE]
 > 命名服務會將服務名稱解析為叢集中的位置。 使用者可以使用它來管理服務名稱和屬性。 它是 Service Fabric 資料分割保存的服務。 其中一個分割區代表*授權擁有者*，內含所有 Service Fabric 名稱和服務的中繼資料。 Service Fabric 名稱會對應至不同的分割區 (稱為*名稱擁有者*分割區)，讓服務可以擴充。 深入了解[命名服務](service-fabric-architecture.md)。
@@ -879,4 +880,3 @@ HealthEvents               :
 * [在本機上監視及診斷服務](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 * [Service Fabric 應用程式升級](service-fabric-application-upgrade.md)
-

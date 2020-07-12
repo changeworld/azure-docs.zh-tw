@@ -5,12 +5,12 @@ author: suhuruli
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 7855b92c90a9ccd208a25080c260437e6808d1b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4cab376318bec471fa59614e5bcc716a31dc333
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82184141"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260932"
 ---
 # <a name="get-started-with-reliable-services-in-java"></a>開始使用 JAVA 中的 Reliable Services
 > [!div class="op_single_selector"]
@@ -190,7 +190,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections.reliablehashmap) 是一個字典實作，您可以在服務中可靠地儲存狀態。 有了 Service Fabric 和可靠的 HashMaps，您可以直接在服務中儲存資料，而不需要外部的持續性存放區。 可靠的 HashMaps 可讓您的資料具備高可用性。 Service Fabric 會藉由為您建立與管理服務的多個複本 ** 來完成此作業。 它也提供 API 讓管理這些複本和其狀態轉換的複雜性抽象化。
+[ReliableHashMap](/java/api/microsoft.servicefabric.data.collections.reliablehashmap) 是一個字典實作，您可以在服務中可靠地儲存狀態。 有了 Service Fabric 和可靠的 HashMaps，您可以直接在服務中儲存資料，而不需要外部的持續性存放區。 可靠的 HashMaps 可讓您的資料具備高可用性。 Service Fabric 會藉由為您建立與管理服務的多個複本 ** 來完成此作業。 它也提供 API 讓管理這些複本和其狀態轉換的複雜性抽象化。
 
 可靠的集合可以儲存任何 JAVA 型別 (包括您的自訂型別)，不過有幾個需要注意的事項：
 

@@ -6,22 +6,22 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: masnider
 ms.custom: sfrev
-ms.openlocfilehash: dc429500081e65bf3fdf4d7f7557d2423f56ee23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b2f1a170a792e0b4d069258264407c121dab3ae
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611725"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260238"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric 術語概觀
 
-Azure Service Fabric 是分散式系統平台，可讓您輕鬆封裝、部署及管理可調整和可信賴的微服務。  您可以[在任何地方裝載 Service Fabric 叢集](service-fabric-deploy-anywhere.md)：Azure、內部部署資料中心或任何雲端提供者。  Service Fabric 是支援 [Azure Service Fabric Mesh](/azure/service-fabric-mesh) 的協調器。 您可以使用任何架構來撰寫服務，並從多種環境中選擇要執行應用程式的位置。 本文詳細說明 Service Fabric 中所使用的術語，以利您了解文件中使用的詞彙。
+Azure Service Fabric 是分散式系統平台，可讓您輕鬆封裝、部署及管理可調整和可信賴的微服務。  您可以[在任何地方裝載 Service Fabric 叢集](service-fabric-deploy-anywhere.md)：Azure、內部部署資料中心或任何雲端提供者。  Service Fabric 是支援 [Azure Service Fabric Mesh](../service-fabric-mesh/index.yml) 的協調器。 您可以使用任何架構來撰寫服務，並從多種環境中選擇要執行應用程式的位置。 本文詳細說明 Service Fabric 中所使用的術語，以利您了解文件中使用的詞彙。
 
 ## <a name="infrastructure-concepts"></a>基礎結構概念
 
 **叢集**：由虛擬或實體機器連結組成的網路，微服務可於其中部署和管理。  叢集可擴充至數千部機器。
 
-**節點**：屬於叢集一部分的電腦或 VM 都稱為節點**。 每個節點都會被指派一個節點名稱（字串）。 節點具有各種特性，如 placement 屬性。 每個電腦或 VM 皆有自動啟動的 Windows 服務 `FabricHost.exe`，該服務會在開機時開始執行，然後啟動兩個執行檔：`Fabric.exe` 和 `FabricGateway.exe`。 這兩個執行檔構成節點。 在測試案例中，您可以藉由執行 `Fabric.exe` 和 `FabricGateway.exe` 的多個執行個體，在單一電腦或 VM 上裝載多個節點。
+**節點**：屬於叢集一部分的電腦或 VM 都稱為節點**。 每個節點都會被指派一個節點名稱 (字串) 。 節點具有各種特性，如 placement 屬性。 每個電腦或 VM 皆有自動啟動的 Windows 服務 `FabricHost.exe`，該服務會在開機時開始執行，然後啟動兩個執行檔：`Fabric.exe` 和 `FabricGateway.exe`。 這兩個執行檔構成節點。 在測試案例中，您可以藉由執行 `Fabric.exe` 和 `FabricGateway.exe` 的多個執行個體，在單一電腦或 VM 上裝載多個節點。
 
 ## <a name="application-and-service-concepts"></a>應用程式和服務概念
 
@@ -125,13 +125,13 @@ Azure Service Fabric 是分散式系統平台，可讓您輕鬆封裝、部署�
 
 ### <a name="resource-model-preview"></a>資源模型 (預覽)
 
-Service Fabric 資源是可個別部署至 Service Fabric 的任何項目，包括應用程式、服務、網路和磁碟區。 資源會使用可部署至叢集端點的 JSON 檔案來定義。  針對 Service Fabric Mesh，會使用 Azure 資源模型結構描述。 您也可以使用 YAML 檔案結構描述更輕鬆地撰寫定義檔。 資源可以部署於 Service Fabric 執行所在的任何位置。 資源模型是描述 Service Fabric 應用程式的最簡單方式。 其主要重點是簡單的部署和容器化服務的管理。 若要深入了解，請參閱 [Service Fabric 資源模型簡介](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources)。
+Service Fabric 資源是可個別部署至 Service Fabric 的任何項目，包括應用程式、服務、網路和磁碟區。 資源會使用可部署至叢集端點的 JSON 檔案來定義。  針對 Service Fabric Mesh，會使用 Azure 資源模型結構描述。 您也可以使用 YAML 檔案結構描述更輕鬆地撰寫定義檔。 資源可以部署於 Service Fabric 執行所在的任何位置。 資源模型是描述 Service Fabric 應用程式的最簡單方式。 其主要重點是簡單的部署和容器化服務的管理。 若要深入了解，請參閱 [Service Fabric 資源模型簡介](../service-fabric-mesh/service-fabric-mesh-service-fabric-resources.md)。
 
 ### <a name="native-model"></a>原生模型
 
 原生應用程式模型會為您的應用程式提供對 Service Fabric 的完整低層級存取權。 應用程式和服務會定義為已在 XML 資訊清單檔案中註冊的類型。
 
-原生模型支援 Reliable Services 和 Reliable Actors 架構，可在 C# 和 Java 中提供對 Service Fabric 執行階段 API 及叢集管理 API 的存取權。 原生模型也支援任意的容器和可執行檔。 [Service Fabric Mesh 環境](/azure/service-fabric-mesh/service-fabric-mesh-overview)中不支援原生模型。
+原生模型支援 Reliable Services 和 Reliable Actors 架構，可在 C# 和 Java 中提供對 Service Fabric 執行階段 API 及叢集管理 API 的存取權。 原生模型也支援任意的容器和可執行檔。 [Service Fabric Mesh 環境](../service-fabric-mesh/service-fabric-mesh-overview.md)中不支援原生模型。
 
 **Reliable Services**：用於建置無狀態和具狀態服務的 API。 具狀態服務將其狀態儲存在 Reliable Collections 中，例如字典或佇列。 您也可以插入各種不同的通訊堆疊，例如 Web API、Windows Communication Foundation (WCF)。
 
@@ -155,7 +155,7 @@ Service Fabric 是一項開放原始碼平台技術，有數個不同的服務�
 
  - **Azure Service Fabric Mesh**：一個完全受控的服務，可用來在 Microsoft Azure 中執行 Service Fabric 應用程式。
  - **Azure Service Fabric**：Azure 裝載的 Service Fabric 叢集供應項目。 它提供 Service Fabric 和 Azure 基礎結構之間的整合，以及 Service Fabric 叢集的升級和設定管理。
- - **獨立 Service Fabric**：一組安裝和設定工具，[可將 Service Fabric 叢集部署到任何地方](/azure/service-fabric/service-fabric-deploy-anywhere) (內部部署或在任何雲端提供者上)。 不會由 Azure 管理。
+ - **獨立 Service Fabric**：一組安裝和設定工具，[可將 Service Fabric 叢集部署到任何地方](./service-fabric-deploy-anywhere.md) (內部部署或在任何雲端提供者上)。 不會由 Azure 管理。
  - **Service Fabric 開發叢集**：提供在 Windows、Linux 或 Mac 上的本機開發體驗，適用於開發 Service Fabric 應用程式。
 
 ## <a name="environment-framework-and-deployment-model-support-matrix"></a>環境、架構和部署模型支援對照表
@@ -184,4 +184,4 @@ Service Fabric 是一項開放原始碼平台技術，有數個不同的服務�
 
 若要深入了解 Service Fabric Mesh：
 
-* [Service Fabric Mesh 概觀](/azure/service-fabric-mesh/service-fabric-mesh-overview)
+* [Service Fabric Mesh 概觀](../service-fabric-mesh/service-fabric-mesh-overview.md)

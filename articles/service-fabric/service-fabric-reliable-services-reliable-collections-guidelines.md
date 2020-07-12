@@ -3,12 +3,12 @@ title: 可靠集合的指導方針
 description: 在 Azure Service Fabric 應用程式中使用 Service Fabric 可靠集合的指導方針和建議。
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: f196df4b58f1acb01a497b5fa08e9af99a4707d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63e6de436bdaceed7f1d2a78e8385dd14bfc0ed6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483120"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260914"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric 中 Reliable Collection 的指導方針與建議
 本節提供使用 Reliable State Manager 和 Reliable Collection 的指導方針。 目標是要協助使用者避開常見的陷阱。
@@ -40,7 +40,7 @@ ms.locfileid: "85483120"
   這表示從單一次要複本讀取的資料版本進度可能有誤。
   從主要複本讀取一定最穩定︰進度一定不會有誤。
 * 應用程式保存在可靠集合中的資料會有何種安全性/隱私權將由您決定，且會受到儲存體管理的保護；也就是說， 作業系統磁碟加密可用來保護待用資料。
-* `ReliableDictionary`列舉會使用依索引鍵排序的已排序資料結構。 為了讓列舉有效率，認可會加入暫存 hashtable，稍後再移至主要的排序資料結構後置檢查點。 新增/更新/刪除具有最佳的 i/o 執行時間（1）和最糟的 O （log n）案例執行時間，在驗證檢查是否有金鑰存在的情況下。 取得的可能是 O （1）或 O （log n），取決於您是從最近的認可還是從較舊的認可讀取。
+* `ReliableDictionary`列舉會使用依索引鍵排序的已排序資料結構。 為了讓列舉有效率，認可會加入暫存 hashtable，稍後再移至主要的排序資料結構後置檢查點。 新增/更新/刪除具有 (1) 的最佳案例執行時間，以及最糟的 O (log n) 的執行時間，在驗證檢查是否存在金鑰的情況下。 根據您是從最近的認可還是從較舊的認可讀取，取得可能是 O (1) 或 O (log n) 。
 
 ## <a name="volatile-reliable-collections"></a>Volatile 可靠的集合
 決定使用 volatile 可靠的集合時，請考慮下列事項：
@@ -64,4 +64,4 @@ ms.locfileid: "85483120"
   * [Reliable State Manager 組態](service-fabric-reliable-services-configuration.md)
 * 其他
   * [Reliable Services 快速入門](service-fabric-reliable-services-quick-start.md)
-  * [可靠的集合的開發人員參考資料](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [可靠的集合的開發人員參考資料](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

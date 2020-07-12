@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: be0e24977bbb1aeec74e8847b3fb128267a9ec0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5afa6b9127317fcd1a683651be86cdfe078cfcd6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392228"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259431"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning 的企業安全性
 
@@ -44,7 +44,7 @@ Azure Machine Learning 支援兩種形式的 Web 服務驗證：金鑰和權杖�
 
 |驗證方法|描述|Azure Container Instances|AKS|
 |---|---|---|---|
-|Key|金鑰是靜態的，不需要重新整理。 金鑰可以手動重新產生。|預設為停用| 預設為啟用|
+|Key|金鑰是靜態的，而且不需要重新整理。 金鑰可以手動重新產生。|預設為停用| 預設為啟用|
 |Token|權杖會在指定的時間間隔後過期，而且需要重新整理。| 無法使用| 預設為停用 |
 
 如需程式碼範例，請參閱 [Web 服務驗證](how-to-setup-authentication.md#web-service-authentication)一節。
@@ -111,14 +111,19 @@ Azure Machine Learning 仰賴其他 Azure 服務來處理計算資源。 計算�
 
 ## <a name="data-encryption"></a>資料加密
 
+> [!IMPORTANT]
+> 若要在__定型__期間進行生產等級加密，Microsoft 建議使用 Azure Machine Learning 計算叢集。 對於__推斷__期間的生產等級加密，Microsoft 建議使用 Azure Kubernetes Service。
+>
+> Azure Machine Learning 計算實例是開發/測試環境。 使用此功能時，建議您將檔案（例如筆記本和腳本）儲存在檔案共用中。 您的資料應該儲存在資料存放區中。
+
 ### <a name="encryption-at-rest"></a>待用加密
 
 > [!IMPORTANT]
 > 如果您的工作區包含敏感性資料，建議您在建立工作區時，設定 [hbi_workspace 旗標](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) \(部分機器翻譯\)。 
 
-`hbi_workspace` 旗標控制 Microsoft 針對診斷目的而收集的資料量，並在 Microsoft 受控環境中啟用額外的加密。 此外，其可啟用下列功能：
+`hbi_workspace`旗標可控制 microsoft 所收集的資料量，以供診斷之用，並在 microsoft 管理的環境中啟用額外的加密。 此外，它也會啟用下列動作：
 
-* 開始加密 Amlcompute 叢集中的本機暫存磁碟，前提是您尚未在該訂用帳戶中建立任何先前的叢集。 否則，您必須提出支援票證，以啟用計算叢集的暫存磁碟加密 
+* 如果您尚未在該訂用帳戶中建立任何先前的叢集，請在您的 Azure Machine Learning 計算叢集中開始加密本機臨時磁片。 否則，您必須提出支援票證，以啟用計算叢集的暫存磁碟加密 
 * 清除執行之間的本機暫存磁碟
 * 使用您的金鑰保存庫，將您的儲存體帳戶、容器登錄和 SSH 帳戶的認證，從執行層安全地傳遞至您的計算叢集
 * 啟用 IP 篩選以確保底層批次集區無法由 AzureMachineLearningService 以外的任何外部服務呼叫
@@ -228,7 +233,7 @@ Azure Databricks 可以在 Azure Machine Learning 管線中使用。 根據預�
 
 Azure Machine Learning 使用 TLS 來保護各種 Azure Machine Learning 微服務之間的內部通訊。 所有的 Azure 儲存體存取也會透過安全通道進行。
 
-Azure Machine Learning 使用 TLS 來保護對評分端點的外部呼叫。 如需詳細資訊，請參閱[使用 TLS 來透過 Azure Machine Learning 保護 Web 服務](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service) \(部分機器翻譯\)。
+為了保護對評分端點進行的外部呼叫，Azure Machine Learning 使用 TLS。 如需詳細資訊，請參閱[使用 TLS 來透過 Azure Machine Learning 保護 Web 服務](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service) \(部分機器翻譯\)。
 
 ### <a name="using-azure-key-vault"></a>使用 Azure Key Vault
 

@@ -3,11 +3,12 @@ title: 安全地連接到 Azure Service Fabric 叢集
 description: 說明如何驗證用戶端對 Service Fabric 叢集的存取，以及如何保護用戶端與叢集之間的通訊。
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89d3598b283a91645f0db648be81c73dffde8b46
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701214"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259246"
 ---
 # <a name="connect-to-a-secure-cluster"></a>連線到安全的叢集
 
@@ -29,7 +30,7 @@ openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pas
 
 如果您的 .pfx 檔案未受密碼保護，請針對最後一個參數使用 -passin pass:。
 
-若要以 pem 檔案指定用戶端憑證，請在 `--pem` 引數中指定檔案路徑。 例如：
+若要以 pem 檔案指定用戶端憑證，請在 `--pem` 引數中指定檔案路徑。 例如︰
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
@@ -43,7 +44,7 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./clie
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-有時，用來保護測試或開發叢集的憑證會讓憑證驗證失敗。 若要略過憑證驗證，請指定 `--no-verify` 選項。 例如：
+有時，用來保護測試或開發叢集的憑證會讓憑證驗證失敗。 若要略過憑證驗證，請指定 `--no-verify` 選項。 例如︰
 
 > [!WARNING]
 > 連線到生產環境 Service Fabric 叢集時，請勿使用 `no-verify` 選項。
@@ -52,7 +53,7 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./cli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
-此外，您可以指定受信任 CA 憑證，或個別憑證的目錄路徑。 若要指定這些路徑，請使用 `--ca` 引數。 例如：
+此外，您可以指定受信任 CA 憑證，或個別憑證的目錄路徑。 若要指定這些路徑，請使用 `--ca` 引數。 例如︰
 
 ```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
@@ -144,7 +145,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
 <a id="connectsecureclusterfabricclient"></a>
 
 ## <a name="connect-to-a-cluster-using-the-fabricclient-apis"></a>使用 FabricClient API 來連線到叢集
-Service Fabric SDK 會提供叢集管理的 [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) 類別。 若要使用 FabricClient API，請取得 Microsoft.ServiceFabric NuGet 封裝。
+Service Fabric SDK 會提供叢集管理的 [FabricClient](/dotnet/api/system.fabric.fabricclient) 類別。 若要使用 FabricClient API，請取得 Microsoft.ServiceFabric NuGet 封裝。
 
 ### <a name="connect-to-an-unsecure-cluster"></a>連線到不安全的叢集
 
@@ -162,7 +163,7 @@ FabricClient fabricClient = new FabricClient();
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>使用用戶端憑證連線到安全的叢集
 
-叢集中的節點必須具備有效的憑證，這些憑證在 SAN 中的通用名稱或 DNS 名稱會出現在於 [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) 上設定的 [RemoteCommonNames](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials) 屬性中。 遵循此程序，就可讓用戶端與叢集節點之間進行相互驗證。
+叢集中的節點必須具備有效的憑證，這些憑證在 SAN 中的通用名稱或 DNS 名稱會出現在於 [FabricClient](/dotnet/api/system.fabric.fabricclient) 上設定的 [RemoteCommonNames](/dotnet/api/system.fabric.x509credentials) 屬性中。 遵循此程序，就可讓用戶端與叢集節點之間進行相互驗證。
 
 ```csharp
 using System.Fabric;
@@ -230,7 +231,7 @@ catch (Exception e)
 
 以下範例依存於 Microsoft.IdentityModel.Clients.ActiveDirectory，版本：2.19.208020213。
 
-如需 AAD 權杖取得的詳細資訊，請參閱 [Microsoft.IdentityModel.Clients.ActiveDirectory](https://msdn.microsoft.com/library/microsoft.identitymodel.clients.activedirectory.aspx)。
+如需 AAD 權杖取得的詳細資訊，請參閱 [Microsoft.IdentityModel.Clients.ActiveDirectory](/dotnet/api/microsoft.identitymodel.clients.activedirectory?view=azure-dotnet)。
 
 ```csharp
 string tenantId = "C15CFCEA-02C1-40DC-8466-FBD0EE0B05D2";

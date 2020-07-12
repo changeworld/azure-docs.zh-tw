@@ -3,12 +3,12 @@ title: 在容器群組中啟用受控識別
 description: 瞭解如何在 Azure 容器實例中啟用可向其他 Azure 服務進行驗證的受控識別
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 9bc96ed29039650082bdfa8b7b2b1b48ecb6bd3f
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 23f2347593137a4846c8fd22e3b90f22db39bda3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169777"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259618"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>如何搭配 Azure 容器執行個體使用受控識別
 
@@ -392,6 +392,6 @@ identity:
 > * 將身分識別存取權授與 Azure 金鑰保存庫
 > * 使用受控識別從執行中的容器存取金鑰保存庫
 
-* 深入瞭解[適用于 Azure 資源的受控](/azure/active-directory/managed-identities-azure-resources/)識別。
+* 深入瞭解[適用于 Azure 資源的受控](../active-directory/managed-identities-azure-resources/index.yml)識別。
 
 * 請參閱使用受控識別從 Azure 容器實例存取金鑰保存庫的[Azure GO SDK 範例](https://medium.com/@samkreter/c98911206328)。

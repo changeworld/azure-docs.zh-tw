@@ -3,12 +3,12 @@ title: 建立 Azure Service Fabric 叢集
 description: 了解如何使用 Azure Resource Manager 在 Azure 中設定安全的 Service Fabric 叢集。  您可以使用預設範本或您自己的叢集範本來建立叢集。
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.openlocfilehash: 24bc80a7ab3ce61b79466cdd943c60efd367ce01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd2c472d24f305e42f1706e5fc49168ccde2a580
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81458295"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258746"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>使用 Azure Resource Manager 來建立 Service Fabric 叢集 
 > [!div class="op_single_selector"]
@@ -19,7 +19,7 @@ ms.locfileid: "81458295"
 
 [Azure Service Fabric 叢集](service-fabric-deploy-anywhere.md)是一組透過網路連線的虛擬機器，您可以將微服務部署到其中並進行管理。  在 Azure 中執行的 Service Fabric 叢集是 Azure 資源，而且是使用 Azure Resource Manager 部署的。 本文說明如何使用 Resource Manager 在 Azure 中部署安全的 Service Fabric 叢集。 您可以使用預設叢集範本或自訂範本。  如果您還沒有自訂範本，您可以[了解如何建立自訂範本](service-fabric-cluster-creation-create-template.md)。
 
-在初始建立叢集時，您必須指定要保護叢集的安全性類型（也就是： Windows identity、X509 等等），之後就無法變更。 設定叢集之前，請閱讀 [Service Fabric 叢集安全性案例][service-fabric-cluster-security]。 在 Azure 中，Service Fabric 使用 x509 憑證來保護您的叢集與其端點、驗證用戶端，以及加密資料。 也建議您使用 Azure Active Directory 來保護對管理端點的存取。 如需詳細資訊，請閱讀[設定 Azure AD 以驗證用戶端](service-fabric-cluster-creation-setup-aad.md)。
+選擇用來保護叢集安全的安全性類型 (也就是： Windows identity、X509 等 ) 必須針對初始建立叢集指定，而且之後無法變更。 設定叢集之前，請閱讀 [Service Fabric 叢集安全性案例][service-fabric-cluster-security]。 在 Azure 中，Service Fabric 使用 x509 憑證來保護您的叢集與其端點、驗證用戶端，以及加密資料。 也建議您使用 Azure Active Directory 來保護對管理端點的存取。 如需詳細資訊，請閱讀[設定 Azure AD 以驗證用戶端](service-fabric-cluster-creation-setup-aad.md)。
 
 部署生產叢集以執行生產工作負載之前，請務必先閱讀[生產整備檢查清單](service-fabric-production-readiness-checklist.md)。
 
@@ -33,8 +33,8 @@ ms.locfileid: "81458295"
 * [Azure CLI 2.0 版與更新版本][azure-CLI]
 
 您可以在此找到 Service Fabric 模組的參考文件：
-* [Az.ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
-* [az SF CLI module](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
+* [Az.ServiceFabric](/powershell/module/az.servicefabric)
+* [az SF CLI module](/cli/azure/sf?view=azure-cli-latest)
 
 ### <a name="sign-in-to-azure"></a>登入 Azure
 

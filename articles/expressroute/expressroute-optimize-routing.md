@@ -7,18 +7,18 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: charwen
-ms.openlocfilehash: f3a658d4b02501994437691308810ffb9cabcb6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2672068e505b7c86127b8b765372e7c607c3875a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738850"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259784"
 ---
 # <a name="optimize-expressroute-routing"></a>最佳化 ExpressRoute 路由
 當您有多個 ExpressRoute 線路時，會有一個以上的路徑來連線到 Microsoft。 因此，可能會產生次佳的路由 - 也就是，您的流量可能會經由較長的路徑連到 Microsoft，而 Microsoft 也可能會經由較長的路徑連到您的網路。 網路路徑愈常，延遲愈久。 延遲對於應用程式效能和使用者體驗有直接的影響。 本文將說明這個問題，並說明如何使用標準路由技術來最佳化路由。
 
 ## <a name="path-selection-on-microsoft-and-public-peerings"></a>在 Microsoft 和公用對等互連上選取路徑
-在利用 Microsoft 或公用對等互連時，如果您有一或多個 ExpressRoute 線路，以及透過網際網路交換（IX）或網際網路服務提供者（ISP）連到網際網路的路徑，就一定要確定流量會流經所需的路徑。 BGP 會根據數個因素（包括最長的前置詞比對（LPM）），利用最佳路徑選取演算法。 若要確保透過 Microsoft 或公用對等互連以 Azure 為目標的流量會通過 ExpressRoute 路徑，客戶必須執行*本機喜好*設定屬性，以確保在 ExpressRoute 上一律慣用路徑。 
+在利用 Microsoft 或公用對等互連時，如果您有一或多個 ExpressRoute 線路，以及透過網際網路交換 (IX) 或網際網路服務提供者 (ISP) 的網際網路路徑，請務必確定流量會流經所需的路徑。 BGP 會根據數個因素（包括最長的前置詞比對 (LPM) ），利用最佳路徑選取演算法。 若要確保透過 Microsoft 或公用對等互連以 Azure 為目標的流量會通過 ExpressRoute 路徑，客戶必須執行*本機喜好*設定屬性，以確保在 ExpressRoute 上一律慣用路徑。 
 
 > [!NOTE]
 > 預設的本機喜好設定通常是100。 較高的本機喜好設定更慣用。 
@@ -33,18 +33,18 @@ ms.locfileid: "84738850"
 
 **Cisco IOS-從 R1 觀點的 XE 設定：**
 
-    R1(config)#route-map prefer-ExR permit 10
-    R1(config-route-map)#set local-preference 150
+- R1 (config) # route 對應偏好-ExR 允許10
+- R1 (設定-路由對應) # set 本機-喜好設定150
 
-    R1(config)#router BGP 345
-    R1(config-router)#neighbor 1.1.1.2 remote-as 12076
-    R1(config-router)#neighbor 1.1.1.2 activate
-    R1(config-router)#neighbor 1.1.1.2 route-map prefer-ExR in
+- R1 (config) # 路由器 BGP 345
+- R1 (設定-路由器) # 鄰近1.1.1.2 遠端-as 12076
+- R1 (設定-路由器) # 鄰近1.1.1.2 啟用
+- R1 (設定-路由器) # 鄰近1.1.1.2 路由對應偏好-ExR
 
 **從 R1 觀點來 Junos 設定：**
 
-    user@R1# set protocols bgp group ibgp type internal
-    user@R1# set protocols bgp group ibgp local-preference 150
+- user@R1# set 通訊協定 bgp 群組 ibgp 類型內部
+- user@R1# set 通訊協定 bgp 群組 ibgp 本機-喜好設定150
 
 
 

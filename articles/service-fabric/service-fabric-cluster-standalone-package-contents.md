@@ -5,11 +5,12 @@ author: maburlik
 ms.topic: conceptual
 ms.date: 8/10/2017
 ms.author: maburlik
-ms.openlocfilehash: 1bb73fa69717f067139067f127a0d50af4878d6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb9a52510788a275bdeea67cd5c1fdd2e894738d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75451837"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261018"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>適用於 Windows Server 的 Service Fabric 獨立封裝內容
 在[下載](https://go.microsoft.com/fwlink/?LinkId=730690)的 Service Fabric 獨立封裝中，您會找到下列檔案︰
@@ -36,11 +37,11 @@ ms.locfileid: "75451837"
 | --- | --- |
 | ClusterConfig.Unsecure.DevCluster.json |叢集組態範例檔案，其中包含適用於不安全、三個節點、單一電腦 (或虛擬機器) 部署叢集的設定，包括叢集中每個節點的相關資訊。 |
 | ClusterConfig.Unsecure.MultiMachine.json |叢集組態範例檔案，其中包含適用於不安全、多個電腦 (或虛擬機器) 叢集的設定，包括叢集中每個電腦的相關資訊。 |
-| ClusterConfig.Windows.DevCluster.json |叢集組態範例檔案，其中包含適用於安全、三個節點、單一電腦 (或虛擬機器) 部署叢集的所有設定，包括叢集中每個節點的相關資訊。 使用 [Windows 身分識別](https://msdn.microsoft.com/library/ff649396.aspx)保護叢集的安全。 |
-| ClusterConfig.Windows.MultiMachine.json |叢集組態範例檔案，其中包含適用於使用 Windows 安全性的安全、多個電腦 (或虛擬機器) 叢集的所有設定，包括安全叢集中每個電腦的相關資訊。 使用 [Windows 身分識別](https://msdn.microsoft.com/library/ff649396.aspx)保護叢集的安全。 |
+| ClusterConfig.Windows.DevCluster.json |叢集組態範例檔案，其中包含適用於安全、三個節點、單一電腦 (或虛擬機器) 部署叢集的所有設定，包括叢集中每個節點的相關資訊。 使用 [Windows 身分識別](/previous-versions/msp-n-p/ff649396(v=pandp.10))保護叢集的安全。 |
+| ClusterConfig.Windows.MultiMachine.json |叢集組態範例檔案，其中包含適用於使用 Windows 安全性的安全、多個電腦 (或虛擬機器) 叢集的所有設定，包括安全叢集中每個電腦的相關資訊。 使用 [Windows 身分識別](/previous-versions/msp-n-p/ff649396(v=pandp.10))保護叢集的安全。 |
 | ClusterConfig.x509.DevCluster.json |叢集組態範例檔案，其中包含適用於安全、三個節點、單一電腦 (或虛擬機器) 部署叢集的所有設定，包括叢集中每個節點的相關資訊。 使用 x509 憑證保護叢集的安全。 |
 | ClusterConfig.x509.MultiMachine.json |叢集組態範例檔案，其中包含適用於安全、多個電腦 (或虛擬機器) 叢集的所有設定，包括安全叢集中每個節點的相關資訊。 使用 x509 憑證保護叢集的安全。 |
-| ClusterConfig.gMSA.Windows.MultiMachine.json |叢集組態範例檔案，其中包含適用於安全、多個電腦 (或虛擬機器) 叢集的所有設定，包括安全叢集中每個節點的相關資訊。 使用[群組受控服務帳戶](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx)保護叢集的安全。 |
+| ClusterConfig.gMSA.Windows.MultiMachine.json |叢集組態範例檔案，其中包含適用於安全、多個電腦 (或虛擬機器) 叢集的所有設定，包括安全叢集中每個節點的相關資訊。 使用[群組受控服務帳戶](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11))保護叢集的安全。 |
 
 ## <a name="cluster-configuration-samples"></a>叢集組態範例
 您可以在 GitHub 頁面上找到最新版本的叢集設定範本：獨立叢集設定[範例](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)。

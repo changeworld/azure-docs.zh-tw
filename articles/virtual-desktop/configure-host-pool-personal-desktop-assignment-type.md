@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bfe428b9eba1f83f3e1bb05c3941c4c56317c9bc
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 12caa6fce4d49e86d1ad5da16aa7abba30f26207
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223103"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260815"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>設定個人桌面主機集區指派類型
 
@@ -28,7 +28,7 @@ ms.locfileid: "86223103"
 >[!NOTE]
 > 本文中的指示僅適用於個人桌面主機集區，而非集區式主機集區，因為集區式主機集區中的使用者不會指派給特定的工作階段主機。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本文假設您已下載並安裝 Windows 虛擬桌面 PowerShell 模組。 如果您尚未這麼做，請依照[設定 PowerShell 模組](powershell-module.md)中的指示進行。
 
@@ -91,7 +91,7 @@ Update-AzWvdSessionHost -HostPoolName <hostpoolname> -Name <sessionhostname> -Re
 
 現在您已完成設定個人桌面指派類型，您可以登入 Windows 虛擬桌面用戶端，在使用者工作階段中進行測試。 接下來的兩個操作說明將會說明如何使用您所選擇的用戶端，連線至工作階段：
 
-- [與 Windows 桌面用戶端連線](connect-windows-7-and-10.md)
+- [與 Windows 桌面用戶端連線](connect-windows-7-10.md)
 - [與 Web 用戶端連線](connect-web.md)
 - [與 Android 用戶端連線](connect-android.md)
 - [與 iOS 用戶端連線](connect-ios.md)

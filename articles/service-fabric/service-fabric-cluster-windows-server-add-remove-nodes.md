@@ -5,11 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: f9bee35ee8e82070b4cf601139b471562ba5e10b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fa8b0970d198f9801c7661b9555db17cdf67b3c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75934214"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258728"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>在執行於 Windows Server 上的獨立 Service Fabric 叢集中新增或移除節點
 [在 Windows Server 機器上建立獨立 Service Fabric 叢集](service-fabric-cluster-creation-for-windows-server.md)之後，您的業務需求可能會改變，因此您將需要在叢集中新增或移除節點。 本文提供可達成此目的的詳細步驟。 請注意，在本機開發叢集中，不支援新增/移除節點功能。
@@ -30,13 +31,13 @@ ms.locfileid: "75934214"
 
 6. 使用描述要新增之新節點的參數來執行 *AddNode.ps1* 指令碼。 下列範例會將名為 VM5 的新節點（其類型為 NodeType0 和 IP 位址 182.17.34.52) 新增）新增至 UD1 和 fd：/dc1/r0。 `ExistingClusterConnectionEndPoint`這是現有叢集中已存在之節點的連接端點，可以是叢集中*任何*節點的 IP 位址。 
 
-   不安全（原型化）：
+   不安全的 (原型) ：
 
    ```
    .\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain fd:/dc1/r0 -AcceptEULA
    ```
 
-   安全（以憑證為基礎）：
+   安全 (以憑證為基礎的) ：
 
    ```  
    $CertThumbprint= "***********************"
@@ -141,5 +142,4 @@ ms.locfileid: "75934214"
 ## <a name="next-steps"></a>後續步驟
 * [獨立 Windows 叢集的組態設定](service-fabric-cluster-manifest.md)
 * [使用 X509 憑證保護 Windows 上的獨立叢集](service-fabric-windows-cluster-x509-security.md)
-* [建立具有執行 Windows 之 Azure VM 的獨立 Service Fabric 叢集](service-fabric-cluster-creation-with-windows-azure-vms.md)
-
+* [建立具有執行 Windows 之 Azure VM 的獨立 Service Fabric 叢集](./service-fabric-cluster-creation-via-arm.md)

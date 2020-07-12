@@ -5,15 +5,16 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: 2a331715d4e4538cfdda8d958ff549a81b627b79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bbde23dd888d179917f123d00745fb7d0099c2d2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76028543"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259306"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric 搭配 Azure API 管理概觀
 
-雲端應用程式通常需要前端閘道來為使用者、裝置或其他應用程式提供單一輸入點。 在 Service Fabric 中，閘道可以是任何無狀態服務（例如[ASP.NET Core 應用程式](service-fabric-reliable-services-communication-aspnetcore.md)），或是為流量輸入設計的另一個服務，例如[事件中樞](https://docs.microsoft.com/azure/event-hubs/)、 [IoT 中樞](https://docs.microsoft.com/azure/iot-hub/)或[Azure API 管理](https://docs.microsoft.com/azure/api-management/)。
+雲端應用程式通常需要前端閘道來為使用者、裝置或其他應用程式提供單一輸入點。 在 Service Fabric 中，閘道可以是任何無狀態服務（例如[ASP.NET Core 應用程式](service-fabric-reliable-services-communication-aspnetcore.md)），或是為流量輸入設計的另一個服務，例如[事件中樞](../event-hubs/index.yml)、 [IoT 中樞](../iot-hub/index.yml)或[Azure API 管理](../api-management/index.yml)。
 
 本文是使用「Azure API 管理」作為 Service Fabric 應用程式閘道的簡介。 「API 管理」直接與 Service Fabric 整合，可讓您將具有一組豐富路由規則的 API 發佈至後端 Service Fabric 服務。
 
@@ -76,7 +77,7 @@ Service Fabric 中的服務可以是無狀態或具狀態服務，並且可使�
 
 - `fabric:/app/users/<username>`
 
-  每個服務都具有唯一的名稱，但並無法事先得知這些名稱，因為是根據使用者或系統管理員的輸入來建立服務，所以無法以硬式編碼編寫在 APIM 原則或路由規則中。 取而代之的是，會在後端原則定義中，從 URL 要求路徑中提供的 `name` 值產生作為要求傳送目的地的服務名稱。 例如：
+  每個服務都具有唯一的名稱，但並無法事先得知這些名稱，因為是根據使用者或系統管理員的輸入來建立服務，所以無法以硬式編碼編寫在 APIM 原則或路由規則中。 取而代之的是，會在後端原則定義中，從 URL 要求路徑中提供的 `name` 值產生作為要求傳送目的地的服務名稱。 例如︰
 
   - 對 `/api/users/foo` 發出的要求會路由傳送到服務執行個體 `fabric:/app/users/foo`
   - 對 `/api/users/bar` 發出的要求會路由傳送到服務執行個體 `fabric:/app/users/bar`
@@ -95,7 +96,7 @@ Service Fabric 中的服務可以是無狀態或具狀態服務，並且可使�
 
 - `fabric:/app/users/<username>`
 
-  每個服務都具有唯一的名稱，但並無法事先得知這些名稱，因為是根據使用者或系統管理員的輸入來建立服務，所以無法以硬式編碼編寫在 APIM 原則或路由規則中。 取而代之的是，會在後端原則定義中，從 URL 要求路徑中提供的 `name` 值產生作為要求傳送目的地的服務名稱。 例如：
+  每個服務都具有唯一的名稱，但並無法事先得知這些名稱，因為是根據使用者或系統管理員的輸入來建立服務，所以無法以硬式編碼編寫在 APIM 原則或路由規則中。 取而代之的是，會在後端原則定義中，從 URL 要求路徑中提供的 `name` 值產生作為要求傳送目的地的服務名稱。 例如︰
 
   - 對 `/api/users/foo` 發出的要求會路由傳送到服務執行個體 `fabric:/app/users/foo`
   - 對 `/api/users/bar` 發出的要求會路由傳送到服務執行個體 `fabric:/app/users/bar`

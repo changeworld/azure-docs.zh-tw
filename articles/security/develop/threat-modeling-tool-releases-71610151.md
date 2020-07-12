@@ -6,15 +6,16 @@ ms.author: jegeib
 ms.service: security
 ms.topic: article
 ms.date: 10/16/2019
-ms.openlocfilehash: 452b44653775a1bcb9456b62e1587b5ff2dff874
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 410da29d8c119111d1ec9b4e60bf8fb1ca661f70
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75552044"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259378"
 ---
 # <a name="threat-modeling-tool-update-release-71610151---10162019"></a>Threat Modeling Tool 更新版本 7.1.61015.1 - 2019 年 10 月 16 日
 
-Microsoft Threat Modeling Tool （TMT）的版本7.1.61015.1 已于 16 2019 年10月發行，並包含下列變更：
+ (TMT) 的 Microsoft Threat Modeling Tool 版本7.1.61015.1 已于 16 2019 年10月發行，其中包含下列變更：
 
 - 協助工具增強功能
 - Bug 修正
@@ -40,9 +41,11 @@ Azure Logic Apps 和 Azure 資料總管的新樣板已新增至 Azure 樣板，�
 
 某些客戶在開啟 "Threat Modeling Tool 2016" 或自訂範本中建立的檔案時，回報收到下列錯誤訊息：
 
-    System.InvalidOperationException: Invalid Priority value. Accepted values are [0..4] and 'High', 'Medium', 'Low' at ThreatModeling.Model.Threat.get_Priority()
-    
-    System.ArgumentOutOfRangeException: Accepted values are 'High', 'Medium', and 'Low' Parameter name: value Actual value was 5.6. at ThreatModeling.Model.Threat.set_Priority(String value)
+```output
+System.InvalidOperationException: Invalid Priority value. Accepted values are [0..4] and 'High', 'Medium', 'Low' at ThreatModeling.Model.Threat.get_Priority()
+
+System.ArgumentOutOfRangeException: Accepted values are 'High', 'Medium', and 'Low' Parameter name: value Actual value was 5.6. at ThreatModeling.Model.Threat.set_Priority(String value)
+```
 
 此問題正在調查中
 

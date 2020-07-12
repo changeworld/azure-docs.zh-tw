@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ad535dd18b89cbe2fceab90f73789180ad332b57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d189d5febe54a83cde4fe6cd6aa51e728aa882e6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82612362"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259892"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows 虛擬桌面環境
 
@@ -43,7 +43,7 @@ Windows 虛擬桌面是一種服務，可讓使用者輕鬆且安全地存取其
 - RemoteApp，使用者可在其中存取您個別選取併發布至應用程式群組的 Remoteapp
 - 桌面，使用者在其中存取完整桌面
 
-根據預設，每當您建立主機集區時，就會自動建立桌面應用程式群組（名為「桌面應用程式群組」）。 您可以隨時移除此應用程式群組。 不過，當桌面應用程式群組存在時，您無法在主機集區中建立另一個桌面應用程式群組。 若要發佈 Remoteapp，您必須建立 RemoteApp 應用程式群組。 您可以建立多個 RemoteApp 應用程式群組來配合不同的背景工作案例。 不同的 RemoteApp 應用程式群組也可以包含重迭的 Remoteapp。
+根據預設，每當您建立主機集區時，就會自動建立名為「桌面應用程式群組」 ) 的桌面應用程式群組 (。 您可以隨時移除此應用程式群組。 不過，當桌面應用程式群組存在時，您無法在主機集區中建立另一個桌面應用程式群組。 若要發佈 Remoteapp，您必須建立 RemoteApp 應用程式群組。 您可以建立多個 RemoteApp 應用程式群組來配合不同的背景工作案例。 不同的 RemoteApp 應用程式群組也可以包含重迭的 Remoteapp。
 
 若要將資源發佈給使用者，您必須將它們指派給應用程式群組。 將使用者指派給應用程式群組時，請考慮下列事項：
 
@@ -66,7 +66,7 @@ Windows 虛擬桌面是一種服務，可讓使用者輕鬆且安全地存取其
 
 若要瞭解如何連接到 Windows 虛擬桌面，請參閱下列其中一篇文章：
 
-- [與 Windows 10 或 Windows 7 連接](connect-windows-7-and-10.md)
+- [與 Windows 10 或 Windows 7 連接](connect-windows-7-10.md)
 - [使用網頁瀏覽器連接](connect-web.md)
 - [與 Android 用戶端連線](connect-android.md)
 - [與 macOS 用戶端連線](connect-macos.md)

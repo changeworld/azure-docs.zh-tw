@@ -3,11 +3,12 @@ title: Azure Service Fabric DNS 服務
 description: 使用 Service Fabric 的 DNS 服務來從叢集內部探索微服務。
 ms.topic: conceptual
 ms.date: 7/20/2018
-ms.openlocfilehash: 317aa81238ec7a0dc24b69b1d00568901b9bc34f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a6611281fd2d2368809419ad594d2eb1289b5a0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458024"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258907"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric 中的 DNS 服務
 「DNS 服務」是一個選用的系統服務，您可以在叢集中啟用以使用 DNS 通訊協定來探索其他服務。 
@@ -41,7 +42,7 @@ DNS 服務不支援動態連接埠。 若要解決動態連接埠上所公開的
 如果您不使用入口網站來建立叢集，或是要更新現有叢集，則需要在範本中啟用 DNS 服務：
 
 - 若要部署新叢集，您可以使用[範例範本](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)或建立自己的 Resource Manager 範本。 
-- 若要更新現有叢集，您可以在入口網站上瀏覽至叢集的資源群組，然後按一下 [自動化指令碼]**** 以使用可反映叢集目前狀態和群組中其他資源的範本。 若要深入了解，請參閱[從資源群組匯出範本](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template)。
+- 若要更新現有叢集，您可以在入口網站上瀏覽至叢集的資源群組，然後按一下 [自動化指令碼]**** 以使用可反映叢集目前狀態和群組中其他資源的範本。 若要深入了解，請參閱[從資源群組匯出範本](../azure-resource-manager/templates/export-template-portal.md)。
 
 擁有範本後，您可以使用下列步驟來啟用 DNS 服務：
 
@@ -102,7 +103,7 @@ DNS 服務不支援動態連接埠。 若要解決動態連接埠上所公開的
 3. 在使用您的變更將叢集範本更新之後，請加以套用，使升級完成。 升級完成後，DNS 系統服務就會開始在叢集中執行。 服務名稱是 `fabric:/System/DnsService`，而且您可以在 Service Fabric Explorer 的 [系統]**** 服務區段下找到它。 
 
 > [!NOTE]
-> 從 [停用] 將 DNS 升級為 [已啟用] 時，Service Fabric Explorer 可能不會反映新的狀態。 若要解決此問題，請修改 Azure Resource Manager 範本中的 UpgradePolicy 來重新開機節點。 如需詳細資訊，請參閱[Service Fabric 範本參考](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications)。
+> 從 [停用] 將 DNS 升級為 [已啟用] 時，Service Fabric Explorer 可能不會反映新的狀態。 若要解決此問題，請修改 Azure Resource Manager 範本中的 UpgradePolicy 來重新開機節點。 如需詳細資訊，請參閱[Service Fabric 範本參考](/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications)。
 
 > [!NOTE]
 > 啟用 DNS 服務時，在本機電腦上進行開發時，將會覆寫某些 DNS 設定。 如果您在連線到網際網路時遇到問題，請檢查您的 DNS 設定。
@@ -128,7 +129,7 @@ DNS 服務不支援動態連接埠。 若要解決動態連接埠上所公開的
 
 ![服務端點](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
 
-下列範例會將具狀態服務的 DNS 名稱設定為 `statefulsvc.app`。 服務會使用具名的資料配置。 請注意，分割區名稱採用小寫。 這是將在 DNS 查詢中作為目標的分割區所需符合的要求；如需詳細資訊，請參閱[對具狀態服務分割區進行 DNS 查詢](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#preview-making-dns-queries-on-a-stateful-service-partition)。
+下列範例會將具狀態服務的 DNS 名稱設定為 `statefulsvc.app`。 服務會使用具名的資料配置。 請注意，分割區名稱採用小寫。 這是將在 DNS 查詢中作為目標的分割區所需符合的要求；如需詳細資訊，請參閱[對具狀態服務分割區進行 DNS 查詢](#preview-making-dns-queries-on-a-stateful-service-partition)。
 
 ```xml
     <Service Name="Stateful1" ServiceDnsName="statefulsvc.app" />
@@ -252,4 +253,3 @@ public class ValuesController : Controller
 
 ## <a name="next-steps"></a>後續步驟
 若要深入了解叢集內的服務通訊，請參閱[連接服務並與其進行通訊](service-fabric-connect-and-communicate-with-services.md)
-

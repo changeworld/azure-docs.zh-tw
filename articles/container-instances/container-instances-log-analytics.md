@@ -4,12 +4,12 @@ description: 瞭解如何從 Azure 容器實例中的容器群組，將資源記
 ms.topic: article
 ms.date: 07/02/2020
 ms.author: danlep
-ms.openlocfilehash: c76d8a2e7e468c511f0df47ebb240a787f40e026
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d9f3e844e9d82e540776cdcf821770929d238e3f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169726"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259601"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>具有 Azure 監視器記錄的容器群組和實例記錄
 
@@ -24,12 +24,12 @@ Log Analytics 工作區提供集中的位置，不僅可以儲存和查詢來自
 > [!NOTE]
 > 目前，您只能將來自 Linux 容器執行個體的事件資料傳送至 Log Analytics。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要在您的容器執行個體中啟用記錄，您必須具備下列項目：
 
 * [Log Analytics 工作區](../azure-monitor/learn/quick-create-workspace.md)
-* [Azure CLI](/cli/azure/install-azure-cli) (或 [Cloud Shell](/azure/cloud-shell/overview))
+* [Azure CLI](/cli/azure/install-azure-cli) (或 [Cloud Shell](../cloud-shell/overview.md))
 
 ## <a name="get-log-analytics-credentials"></a>取得 Log Analytics 認證
 
@@ -153,7 +153,7 @@ ContainerInstanceLog_CL
 
 如需關於在 Azure 監視器記錄中查詢記錄和設定警示的詳細資訊，請參閱：
 
-* [瞭解 Azure 監視器記錄中的記錄搜尋](../log-analytics/log-analytics-log-search.md)
+* [瞭解 Azure 監視器記錄中的記錄搜尋](../azure-monitor/log-query/log-query-overview.md)
 * [Azure 監視器中的整合警示](../azure-monitor/platform/alerts-overview.md)
 
 

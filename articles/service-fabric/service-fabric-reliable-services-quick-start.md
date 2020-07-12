@@ -4,11 +4,12 @@ description: 概述使用無狀態與具狀態服務來建立 Microsoft Azure Se
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: sfrev
-ms.openlocfilehash: 0a8d5a05f922cd01067abbc3e98320a32cd9d256
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 201131f774632e1130c6be6a0dbcb950b96ec508
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038016"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260474"
 ---
 # <a name="get-started-with-reliable-services"></a>開始使用 Reliable Service
 
@@ -168,11 +169,11 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
 
-[IReliableDictionary](https://msdn.microsoft.com/library/dn971511.aspx) 是一個字典實作，您可以在服務中可靠地儲存狀態。 有了 Service Fabric 和可靠的集合，您可以直接在服務中儲存資料，而不需要外部的持續性存放區。 可靠的集合可讓您的資料具備高可用性。 Service Fabric 會藉由為您建立與管理服務的多個複本 ** 來完成此作業。 它也提供 API 讓管理這些複本和其狀態轉換的複雜性抽象化。
+[IReliableDictionary](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2) 是一個字典實作，您可以在服務中可靠地儲存狀態。 有了 Service Fabric 和可靠的集合，您可以直接在服務中儲存資料，而不需要外部的持續性存放區。 可靠的集合可讓您的資料具備高可用性。 Service Fabric 會藉由為您建立與管理服務的多個複本 ** 來完成此作業。 它也提供 API 讓管理這些複本和其狀態轉換的複雜性抽象化。
 
 可靠的集合可以儲存任何 .NET 類型 (包括您的自訂類型)，不過有幾個需要注意的事項：
 
-* Service Fabric 藉由在節點之間複寫 ** 狀態來使您的狀態高度可用，而可靠的集合會將您的資料儲存到每個複本上的本機磁碟。 這表示所有儲存在可靠的集合中的項目必須可序列化 **。 根據預設，可靠的集合使用 [DataContract](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractattribute%28v=vs.110%29.aspx) 進行序列化，因此在您使用預設序列化程式時，請務必確定您的類型受到[資料合約序列化程式支援](https://msdn.microsoft.com/library/ms731923%28v=vs.110%29.aspx)。
+* Service Fabric 藉由在節點之間複寫 ** 狀態來使您的狀態高度可用，而可靠的集合會將您的資料儲存到每個複本上的本機磁碟。 這表示所有儲存在可靠的集合中的項目必須可序列化 **。 根據預設，可靠的集合使用 [DataContract](/dotnet/api/system.runtime.serialization.datacontractattribute?view=netcore-3.1) 進行序列化，因此在您使用預設序列化程式時，請務必確定您的類型受到[資料合約序列化程式支援](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer)。
 * 當您在可靠的集合上認可交易時，物件會複寫以獲得高可用性。 儲存在可靠集合中的物件會保留在服務中的本機記憶體。 這表示您有物件的本機參考。
   
    很重要的一點是，您不要改變那些物件的本機執行個體而不在交易中的可靠集合上執行更新作業。 這是因為不會自動複寫對本機物件執行個體所做的變更。 您必須將物件重新插入到字典中，或在字典上使用其中一個*更新*方法。
@@ -192,7 +193,7 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 }
 ```
 
-`System.Collections.Generic` `System.Collections.Concurrent` 除了語言整合式查詢（LINQ）之外，可靠的集合具有與其和對應專案相同的許多相同作業。 可靠的集合上的作業是非同步的。 這是因為具備可靠集合的寫入作業執行 I/O 作業以將資料複寫並保存至磁碟。
+`System.Collections.Generic` `System.Collections.Concurrent` 除了語言整合式查詢 (LINQ) 之外，可靠的集合具有與其和對應專案相同的許多作業。 可靠的集合上的作業是非同步的。 這是因為具備可靠集合的寫入作業執行 I/O 作業以將資料複寫並保存至磁碟。
 
 可靠的集合作業為「交易式」 ** 作業，因此您可以在多個可靠的集合和作業之間維持狀態的一致。 比方說，您可能會從可靠佇列取出一個工作項目、對它執行作業，然後將結果儲存在可靠字典中，全都在單一交易中完成。 這會被視為不可部分完成的作業，而且它可保證整個作業都會成功，或整個作業都會回復。 如果您從佇列取消項目之後，但在您儲存結果之前發生錯誤，那麼會回復整個交易，且項目會保持在佇列中進行處理。
 
@@ -211,7 +212,7 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 ## <a name="next-steps"></a>後續步驟
 [在 Visual Studio 中偵錯 Service Fabric 應用程式](service-fabric-debugging-your-application.md)
 
-[開始使用：Service Fabric Web API 服務與 OWIN 自我裝載 | Microsoft Azure](service-fabric-reliable-services-communication-webapi.md)
+[開始使用：Service Fabric Web API 服務與 OWIN 自我裝載 | Microsoft Azure](./service-fabric-reliable-services-communication-aspnetcore.md)
 
 [深入了解可靠的集合](service-fabric-reliable-services-reliable-collections.md)
 
@@ -219,5 +220,4 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 
 [應用程式升級](service-fabric-application-upgrade.md)
 
-[可靠的服務的開發人員參考資料](https://msdn.microsoft.com/library/azure/dn706529.aspx)
-
+[可靠的服務的開發人員參考資料](/previous-versions/azure/dn706529(v=azure.100))

@@ -3,12 +3,12 @@ title: 將現有的可執行檔部署至 Azure Service Fabric
 description: 了解如何將現有應用程式封裝為來賓可執行檔，使其可以部署至 Service Fabric 叢集。
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: c6c6bc0369593c177b74261da1fd8c15dd73fcb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72fde75e16341164106bb952d0bb66b83be744e1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80520494"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259271"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>將現有可執行檔封裝和部署至 Service Fabric
 
@@ -33,7 +33,7 @@ Visual Studio 會提供 Service Fabric 服務範本，協助您將來賓可執�
      * `CodePackage` 指定工作目錄即將設為應用程式套件中的根目錄 (先前檔案結構中所示的 `GuestService1Pkg`)。
      * `Work` 指定檔案放在名為 work 的子目錄中。
 4. 指定服務的名稱，然後按一下 [確定]****。
-5. 如果服務需要用來進行通訊的端點，您現在可以將 protocol、port 和 type 新增至 ServiceManifest.xml 檔案。 例如： `<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />` 。
+5. 如果服務需要用來進行通訊的端點，您現在可以將 protocol、port 和 type 新增至 ServiceManifest.xml 檔案。 例如：`<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`。
 6. 您現在可以藉由在 Visual Studio 中偵錯方案，對本機叢集執行封裝和發佈動作。 準備好時，即可將應用程式發佈至遠端叢集，或將方案簽入到原始檔控制。
 7. 請參閱[檢查您的執行中應用程式](#check-your-running-application)，以了解如何檢視 Service Fabric Explorer 中執行的來賓執行檔服務。
 
@@ -76,7 +76,7 @@ Yeoman 會建立應用程式套件，其中包含適當的應用程式和資訊�
 
 ### <a name="create-the-package-directory-structure"></a>建立套件目錄結構
 
-您可以從建立目錄結構開始，如[封裝 Azure Service Fabric 應用程式](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps)中所述。
+您可以從建立目錄結構開始，如[封裝 Azure Service Fabric 應用程式](./service-fabric-package-apps.md)中所述。
 
 ### <a name="add-the-applications-code-and-configuration-files"></a>新增應用程式的程式碼和組態檔
 
@@ -178,7 +178,7 @@ SetupEntryPoint 元素用來指定任何應在服務的程式碼啟動前執行�
 
 服務資訊清單檔中的 `EntryPoint` 元素用來指定如何啟動服務。
 
-`ExeHost` 元素指定應用來啟動服務的可執行檔 (和引數)。 您可以選擇性地將 `IsExternalExecutable="true"` 屬性新增至 `ExeHost`，表示此程式為程式碼套件之外的外部可執行檔。 例如：`<ExeHost IsExternalExecutable="true">`。
+`ExeHost` 元素指定應用來啟動服務的可執行檔 (和引數)。 您可以選擇性地將 `IsExternalExecutable="true"` 屬性新增至 `ExeHost`，表示此程式為程式碼套件之外的外部可執行檔。 例如，`<ExeHost IsExternalExecutable="true">`。
 
 * `Program` 指定應啟動服務的執行檔名稱。
 * `Arguments` 指定應傳遞至可執行檔的引數。 這可以是具有引數的參數清單。

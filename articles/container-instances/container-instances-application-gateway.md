@@ -3,11 +3,12 @@ title: 容器群組的靜態 IP 位址
 description: 在虛擬網路中建立容器群組，並使用 Azure 應用程式閘道將靜態前端 IP 位址公開給容器化 web 應用程式
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: a27cf20b7d04fedb0b9e0ab408de24d37f2935c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc128da0f4c2e92af98781cef45f48f9e8aeab31
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299157"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260781"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>公開容器群組的靜態 IP 位址
 
@@ -28,7 +29,7 @@ ms.locfileid: "84299157"
 
 在一般情況下，您可能已有 Azure 虛擬網路。 如果您沒有帳戶，請建立一個，如下列範例命令所示。 虛擬網路需要應用程式閘道和容器群組的個別子網。
 
-如有需要，請建立 Azure 資源群組。 例如：
+如有需要，請建立 Azure 資源群組。 例如︰
 
 ```azureci
 az group create --name myResourceGroup --location eastus
@@ -102,7 +103,7 @@ ACI_IP=$(az container show \
 
 ## <a name="create-application-gateway"></a>建立應用程式閘道
 
-遵循[應用程式閘道快速入門](../application-gateway/quick-create-cli.md)中的步驟，在虛擬網路中建立應用程式閘道。 下列[az network application-gateway create][az-network-application-gateway-create]命令會建立具有公用前端 IP 位址的閘道，以及對後端容器群組的路由。 如需閘道設定的詳細資訊，請參閱[應用程式閘道檔](/azure/application-gateway/)。
+遵循[應用程式閘道快速入門](../application-gateway/quick-create-cli.md)中的步驟，在虛擬網路中建立應用程式閘道。 下列[az network application-gateway create][az-network-application-gateway-create]命令會建立具有公用前端 IP 位址的閘道，以及對後端容器群組的路由。 如需閘道設定的詳細資訊，請參閱[應用程式閘道檔](../application-gateway/index.yml)。
 
 ```azurecli
 az network application-gateway create \

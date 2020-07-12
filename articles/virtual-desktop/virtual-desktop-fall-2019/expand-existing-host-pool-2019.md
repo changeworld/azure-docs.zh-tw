@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 70ae4a014768976c7dcf81ffadf1066027fa06ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 956934bd536d8eb5e692ed193cad1424929db24b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214276"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260761"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>使用新的工作階段主機擴充現有的主機集區
 
@@ -25,7 +26,7 @@ ms.locfileid: "85214276"
 
 ## <a name="what-you-need-to-expand-the-host-pool"></a>擴充主機集區所需的內容
 
-開始之前，請確定您已使用下列其中一種方法建立主機集區和工作階段主機虛擬機器（Vm）：
+開始之前，請確定您已使用下列其中一種方法， (Vm 建立主機集區和工作階段主機虛擬機器) ：
 
 - [Azure Marketplace 供應專案](create-host-pools-azure-marketplace-2019.md)
 - [GitHub Azure Resource Manager 範本](create-host-pools-arm-template.md)
@@ -75,7 +76,7 @@ ms.locfileid: "85214276"
 
 遵循[使用 Azure Marketplace 建立主機集](create-host-pools-azure-marketplace-2019.md)區中的指示，直到[執行 Azure Marketplace 供應專案以布建新的主機集](create-host-pools-azure-marketplace-2019.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool)區為止。 當您進入該點時，您必須在每個索引標籤上輸入下列資訊：
 
-### <a name="basics"></a>基本概念
+### <a name="basics"></a>基本動作
 
 此區段中的所有值都應該符合您第一次建立主機集區和工作階段主機 Vm 時所提供的內容（*預設的桌面使用者*除外）：
 
@@ -129,7 +130,7 @@ ms.locfileid: "85214276"
 
 現在您已擴充現有的主機集區，您可以登入 Windows 虛擬桌面用戶端，在使用者會話中進行測試。 您可以使用下列任何一種用戶端連接到會話：
 
-- [與 Windows 桌面用戶端連線](../connect-windows-7-and-10.md)
+- [與 Windows 桌面用戶端連線](connect-windows-7-10-2019.md)
 - [與 Web 用戶端連線](connect-web-2019.md)
 - [與 Android 用戶端連線](connect-android-2019.md)
 - [與 macOS 用戶端連線](connect-macos-2019.md)

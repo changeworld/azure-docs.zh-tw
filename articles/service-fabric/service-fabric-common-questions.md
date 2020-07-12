@@ -4,11 +4,12 @@ description: 有關 Service Fabric 的常見問題，包括功能、使用案例
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: bf61858b446c1ac6d4a0210571fffaa721ad0166
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 056ff2475e0ae8c78887e24e07a3e33f12d7df88
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78254893"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258933"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric 的常見問題
 
@@ -21,9 +22,9 @@ ms.locfileid: "78254893"
 
 ### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>如何復原 Service Fabric 叢集憑證？
 
-若要復原應用程式的任何升級，唯有發生健康情況失敗偵測，Service Fabric 叢集仲裁才會認可變更；認可後的變更只能向前復原。 如果您引進未受監視的中斷性憑證變更，若要復原叢集，您可能需要透過客戶支援服務提報工程師。  [Service Fabric 的應用程式升級](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master)會套用[應用程式升級參數](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)，以及履行不需要停機升級承諾。  完成我們建議的應用程式升級監視模式後，是否能自動進展到更新網域，端視應用程式是否通過健康情況檢查，如果預設服務更新失敗，系統將進行自動復原。
+若要復原應用程式的任何升級，唯有發生健康情況失敗偵測，Service Fabric 叢集仲裁才會認可變更；認可後的變更只能向前復原。 如果您引進未受監視的中斷性憑證變更，若要復原叢集，您可能需要透過客戶支援服務提報工程師。  [Service Fabric 的應用程式升級](./service-fabric-application-upgrade.md?branch=master)會套用[應用程式升級參數](./service-fabric-application-upgrade-parameters.md?branch=master)，以及履行不需要停機升級承諾。  完成我們建議的應用程式升級監視模式後，是否能自動進展到更新網域，端視應用程式是否通過健康情況檢查，如果預設服務更新失敗，系統將進行自動復原。
  
-如果叢集的 Resource Manager 範本還在使用傳統憑證指紋屬性，建議您[將叢集從憑證指紋變更為通用名稱](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn)，這樣才能運用現代化的秘密管理功能。
+如果叢集的 Resource Manager 範本還在使用傳統憑證指紋屬性，建議您[將叢集從憑證指紋變更為通用名稱](./service-fabric-cluster-change-cert-thumbprint-to-cn.md)，這樣才能運用現代化的秘密管理功能。
 
 ### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>我能否建立跨多個 Azure 區域或自有資料中心的叢集？
 
@@ -40,7 +41,7 @@ ms.locfileid: "78254893"
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Service Fabric 節點是否會自動接收作業系統更新？
 
-您可以使用[虛擬機器擴展集自動 OS 映像更新](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) (現已正式運作的功能)。
+您可以使用[虛擬機器擴展集自動 OS 映像更新](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) (現已正式運作的功能)。
 
 針對「沒有」在 Azure 中執行的叢集，我們[提供了一個應用程式](service-fabric-patch-orchestration-application.md)，可修補您 Service Fabric 節點下的作業系統。
 
@@ -96,7 +97,7 @@ ms.locfileid: "78254893"
 是。  如需詳細資訊，請參閱[使用連接的資料磁片建立](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks)叢集和[虛擬機器擴展集的 Azure 磁碟加密](../virtual-machine-scale-sets/disk-encryption-overview.md)。
 
 ### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>如何在叢集節點類型 (虛擬機器擴展集) 中使用低優先順序的 VM？
-否。 不支援低優先順序的 VM。 
+不正確。 不支援低優先順序的 VM。 
 
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>當我在叢集中執行防毒程式時需要排除哪些目錄和處理序？
 
@@ -125,7 +126,7 @@ ms.locfileid: "78254893"
 您的應用程式可使用下列方法取得向 KeyVault 驗證所需的認證：
 
 A. 在您的應用程式建置/封裝作業期間，您可以將憑證提取到 SF 應用程式的資料套件中，並以此憑證向 KeyVault 驗證。
-B. 對於已啟用虛擬機器擴展集的 MSI，您可以為 SF 應用程式開發簡單的 PowerShell SetupEntryPoint，以[從 MSI 端點取得存取權杖](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)，然後[從 KeyVault 取出您的秘密](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret)。
+B. 對於已啟用虛擬機器擴展集的 MSI，您可以為 SF 應用程式開發簡單的 PowerShell SetupEntryPoint，以[從 MSI 端點取得存取權杖](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)，然後[從 KeyVault 取出您的秘密](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret)。
 
 ## <a name="application-design"></a>應用程式設計
 
@@ -176,9 +177,9 @@ B. 對於已啟用虛擬機器擴展集的 MSI，您可以為 SF 應用程式開
 
 我們在 GitHub 上有開放部分 Service Fabric 原始碼 ([可靠的服務架構](https://github.com/Azure/service-fabric-services-and-actors-dotnet)、[可靠的執行者架構](https://github.com/Azure/service-fabric-services-and-actors-dotnet)、[ASP.NET Core 整合程式庫](https://github.com/Azure/service-fabric-aspnetcore)、[Service Fabric Explorer](https://github.com/Azure/service-fabric-explorer)，以及 [Service Fabric CLI](https://github.com/Azure/service-fabric-cli))，並接受社群對這些專案的貢獻。 
 
-我們[最近宣佈](https://blogs.msdn.microsoft.com/azureservicefabric/2018/03/14/service-fabric-is-going-open-source/)計劃開放 Service Fabric 執行階段原始碼。 此時，我們透過 Linux 組建和測試工具在 GitHub 上安裝 [Service Fabric 存放庫](https://github.com/Microsoft/service-fabric/)，這表示您可以複製存放庫、組建適用於 Linux 的 Service Fabric、執行基本測試、開啟問題，並提交提取要求。 我們正努力讓 Windows 組建環境以及完整的 CI 環境進行移轉。
+我們[最近宣佈](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)計劃開放 Service Fabric 執行階段原始碼。 此時，我們透過 Linux 組建和測試工具在 GitHub 上安裝 [Service Fabric 存放庫](https://github.com/Microsoft/service-fabric/)，這表示您可以複製存放庫、組建適用於 Linux 的 Service Fabric、執行基本測試、開啟問題，並提交提取要求。 我們正努力讓 Windows 組建環境以及完整的 CI 環境進行移轉。
 
-請關注 [Service Fabric 部落格](https://blogs.msdn.microsoft.com/azureservicefabric/)，以便在公告更多詳細資料時進行了解。
+請關注 [Service Fabric 部落格](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)，以便在公告更多詳細資料時進行了解。
 
 ## <a name="next-steps"></a>後續步驟
 
