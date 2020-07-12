@@ -5,11 +5,12 @@ author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: bharatn
-ms.openlocfilehash: 7f3b3974893316a488270f755b8f8822080658d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fbcf552cee8a96636920f04472843b1fea5c845
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75433870"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253230"
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>適用於 Reliable Services 的 WCF 式通訊堆疊
 Reliable Services 架構允許服務作者選擇其想要針對服務使用的通訊堆疊。 他們可以透過從 **CreateServiceReplicaListeners 或 CreateServiceInstanceListeners** 方法傳回的 [ICommunicationListener](service-fabric-reliable-services-communication.md) ，來外掛所選擇的通訊堆疊。 服務作者如果想要使用 Windows Communication Foundation (WCF) 式通訊，架構可提供以 WCF 式實作的通訊堆疊。
@@ -115,6 +116,5 @@ var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
 
 ## <a name="next-steps"></a>後續步驟
 * [使用 Reliable Services 遠端服務進行遠端程序呼叫](service-fabric-reliable-services-communication-remoting.md)
-* [在 Reliable Services 中搭配 OWIN 使用 Web API](service-fabric-reliable-services-communication-webapi.md)
+* [在 Reliable Services 中搭配 OWIN 使用 Web API](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [Reliable Services 的安全通訊](service-fabric-reliable-services-secure-communication-wcf.md)
-

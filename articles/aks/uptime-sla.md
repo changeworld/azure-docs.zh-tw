@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9f8b0cc5a80853542b15d1993713d8a97f5371b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 672a5afe36449aaa486ca6980f510ba52cf6daf2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361569"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250952"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes Service (AKS) 運作時間 SLA
 
@@ -40,7 +40,7 @@ ms.locfileid: "85361569"
 
 ## <a name="before-you-begin"></a>開始之前
 
-* 安裝[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)版2.8.0 或更新版本
+* 安裝[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)版2.8.0 或更新版本
 
 ## <a name="creating-a-new-cluster-with-uptime-sla"></a>建立具有執行時間 SLA 的新叢集
 

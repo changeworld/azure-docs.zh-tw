@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
-ms.openlocfilehash: 5670be6d4c45644ac8318702822c37ed82a81caa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9249cb1ac64bf61b405bc3537523cc85bca3f00c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85205742"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252788"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>如何設定或編輯 Azure API 管理原則
 
@@ -38,7 +38,7 @@ ms.locfileid: "85205742"
 4. 選取其中一個您先前匯入的 API。
 5. 選取 [設計] 索引標籤。
 6. 選取您要套用原則的作業。 如果您想要將原則套用至所有作業，請選取 [所有作業]****。
-7. **</>** 在 [**輸入處理**] 或 [**輸出處理**] 區段中，選取 [（程式碼編輯器）] 圖示。
+7. **</>** 在 [**輸入處理**] 或 [**輸出處理**] 區段中，選取 [ (程式碼編輯器]) 圖示。
 8. 將需要的原則程式碼貼入其中一個適當的區塊。
 
     ```xml
@@ -135,5 +135,5 @@ API 範圍已設定為所選 API 的**所有作業**。
 請參閱下列相關主題：
 
 + [轉換 API](transform-api.md)
-+ [原則參考文件](api-management-policy-reference.md)，取得原則陳述式及其設定的完整清單
++ [原則參考文件](./api-management-policies.md)，取得原則陳述式及其設定的完整清單
 + [原則範例](policy-samples.md)

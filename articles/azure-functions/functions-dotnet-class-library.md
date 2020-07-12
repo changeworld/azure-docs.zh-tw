@@ -1,13 +1,14 @@
 ---
 title: Azure Functions C# 開發人員參考
 description: 了解如何使用 C# 開發 Azure Functions。
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 09/12/2018
-ms.openlocfilehash: cfa53fe2defca768196af595c1d088d41bc60f71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 038c1db2d4bb4d8bd80801d36cf5feec1905bbc1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84697182"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254362"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# 開發人員參考
 

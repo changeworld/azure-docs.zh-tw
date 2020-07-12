@@ -1,30 +1,31 @@
 ---
 title: 在 gMSA 帳戶下執行 Azure Service Fabric 服務
-description: 瞭解如何在 Service Fabric 的 Windows 獨立叢集上，以群組管理的服務帳戶（gMSA）執行服務。
+description: 瞭解如何在 Service Fabric 的 Windows 獨立叢集上，以群組管理的服務帳戶 (gMSA) 來執行服務。
 author: dkkapur
 ms.topic: how-to
 ms.date: 03/29/2018
 ms.author: dekapur
 ms.custom: sfrev
-ms.openlocfilehash: 19343d370547cb5457f6bed70a8465187ff27102
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8dea63ef6a50597d9ad852cb9cdea4745532fed4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76988391"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252907"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>以群組受控服務帳戶身分執行服務
 
-在 Windows Server 獨立叢集上，您可以使用*RunAs*原則，以*群組受管理的服務帳戶*（gMSA）來執行服務。  根據預設，Service Fabric 應用程式會在執行進程的帳戶下執行 `Fabric.exe` 。 即使在共用主控環境中，以不同帳戶執行應用程式能避免彼此干擾。 使用 gMSA，就不需將密碼或加密的密碼儲存於應用程式資訊清單中。  您也可以利用 [Active Directory 使用者或群組](service-fabric-run-service-as-ad-user-or-group.md)身分執行服務。
+在 Windows Server 獨立叢集上，您可以使用*RunAs*原則，以*群組受管理的服務帳戶* (gMSA) 來執行服務。  根據預設，Service Fabric 應用程式會在執行進程的帳戶下執行 `Fabric.exe` 。 即使在共用主控環境中，以不同帳戶執行應用程式能避免彼此干擾。 使用 gMSA，就不需將密碼或加密的密碼儲存於應用程式資訊清單中。  您也可以利用 [Active Directory 使用者或群組](service-fabric-run-service-as-ad-user-or-group.md)身分執行服務。
 
 下列範例顯示如何建立名為*svc-Test $* 的 gMSA 帳戶、如何將該受管理的服務帳戶部署至叢集節點，以及如何設定使用者主體。
 
 > [!NOTE]
-> 使用 gMSA 搭配獨立的 Service Fabric 叢集需要在您的網域內 Active Directory 內部部署（而不是 Azure Active Directory （Azure AD））。
+> 使用 gMSA 搭配獨立 Service Fabric 叢集需要在您的網域內 Active Directory 內部部署 (，而不是 Azure Active Directory (Azure AD # A3。
 
 先決條件：
 
 - 網域需要一個 KDS 根金鑰。
-- 網域中必須至少有一個 Windows Server 2012 （或 R2） DC。
+- 網域中必須至少有一個 Windows Server 2012 (或 R2) DC。
 
 1. 讓 Active Directory 網域系統管理員使用 Cmdlet 建立群組管理的服務帳戶 `New-ADServiceAccount` ，並確定 `PrincipalsAllowedToRetrieveManagedPassword` 包含所有的 Service Fabric 叢集節點。 `AccountName`、`DnsHostName` 和 `ServicePrincipalName` 必須是唯一的。
 
@@ -40,7 +41,7 @@ ms.locfileid: "76988391"
     Test-AdServiceAccount svc-Test$
     ```
 
-3. 設定使用者主體，並設定 `RunAsPolicy` 來參考[使用者](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-fabric-settings#runas)。
+3. 設定使用者主體，並設定 `RunAsPolicy` 來參考[使用者](./service-fabric-cluster-fabric-settings.md#runas)。
     
     ```xml
     <?xml version="1.0" encoding="utf-8"?>

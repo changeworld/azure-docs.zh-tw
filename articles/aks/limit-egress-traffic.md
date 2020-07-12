@@ -6,29 +6,29 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 06/29/2020
 author: palma21
-ms.openlocfilehash: 6aed6c84439e65646c15367cdad3bf13c5573256
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d06852e9d3d61b3e3d368a1d1c6f4107aff1442
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831652"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251309"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes Service (AKS) 中叢集節點的連出流量
 
-本文提供必要的詳細資料，可讓您保護來自 Azure Kubernetes Service 的輸出流量（AKS）。 其中包含基底 AKS 部署的叢集需求，以及選擇性附加元件和功能的其他需求。 [如需如何使用 Azure 防火牆來設定這些需求的結尾，將提供範例](#restrict-egress-traffic-using-azure-firewall)。 不過，您可以將此資訊套用至任何輸出限制方法或設備。
+本文提供必要的詳細資料，可讓您保護來自 Azure Kubernetes Service (AKS) 的輸出流量。 其中包含基底 AKS 部署的叢集需求，以及選擇性附加元件和功能的其他需求。 [如需如何使用 Azure 防火牆來設定這些需求的結尾，將提供範例](#restrict-egress-traffic-using-azure-firewall)。 不過，您可以將此資訊套用至任何輸出限制方法或設備。
 
 ## <a name="background"></a>背景
 
-AKS 叢集會部署在虛擬網路上。 此網路可以受到管理（由 AKS 建立）或自訂（預先由使用者預先設定）。 不論是哪一種情況，叢集對該虛擬網路外部的服務都有**輸出**相依性（服務沒有輸入相依性）。
+AKS 叢集會部署在虛擬網路上。 此網路可以管理 (由使用者事先) 預先設定的 AKS) 或自訂 (所建立。 不論是哪一種情況，叢集都具有該虛擬網路外部服務的**輸出**相依性 (服務沒有任何輸入相依性) 。
 
-基於管理和操作目的，AKS 叢集中的節點需要存取特定連接埠和完整網域名稱 (FQDN)。 需要這些端點，節點才能與 API 伺服器通訊，或下載並安裝核心 Kubernetes 叢集元件和節點安全性更新。 例如，叢集必須從 Microsoft Container Registry （MCR）提取基本系統容器映射。
+基於管理和操作目的，AKS 叢集中的節點需要存取特定連接埠和完整網域名稱 (FQDN)。 需要這些端點，節點才能與 API 伺服器通訊，或下載並安裝核心 Kubernetes 叢集元件和節點安全性更新。 例如，叢集必須從 Microsoft Container Registry 提取基底系統容器映射 (MCR) 。
 
 AKS 輸出相依性幾乎是以 Fqdn 定義，其後面沒有靜態位址。 缺少靜態位址表示不能使用網路安全性群組來鎖定來自 AKS 叢集的輸出流量。 
 
 根據預設，AKS 叢集具有不受限制的輸出 (連出) 網際網路存取。 此網路存取層級可讓您執行的節點和服務視需要存取外部資源。 如果您想要限制連出流量，則必須能夠存取有限數量的連接埠和位址，才能維持狀況良好的叢集維護工作。 保護輸出位址最簡單的解決方法，就是使用防火牆裝置來控制以功能變數名稱為基礎的輸出流量。 例如，Azure 防火牆可以根據目的地的 FQDN 來限制輸出 HTTP 和 HTTPS 流量。 您也可以設定慣用的防火牆和安全性規則，以允許這些必要的埠和位址。
 
 > [!IMPORTANT]
-> 此文件僅涵蓋如何鎖定離開 AKS 子網路的流量。 根據預設，AKS 沒有輸入需求。  不支援使用網路安全性群組（Nsg）和防火牆封鎖**內部子網流量**。 若要控制和封鎖叢集中的流量，請使用[***網路原則***][network-policy]。
+> 此文件僅涵蓋如何鎖定離開 AKS 子網路的流量。 根據預設，AKS 沒有輸入需求。  不支援使用網路安全性群組來封鎖**內部子網流量** (nsg) 和防火牆。 若要控制和封鎖叢集中的流量，請使用[***網路原則***][network-policy]。
 
 ## <a name="required-outbound-network-rules-and-fqdns-for-aks-clusters"></a>AKS 叢集所需的輸出網路規則和 Fqdn
 
@@ -50,7 +50,7 @@ AKS 叢集需要下列網路和 FQDN/應用程式規則，如果您想要設定 
 |----------------------------------------------------------------------------------|----------|---------|------|
 | **`*:1194`** <br/> *或* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *或* <br/> [區域 CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *或* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | 適用于節點與控制平面之間的通道安全通訊。 |
 | **`*:9000`** <br/> *或* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *或* <br/> [區域 CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *或* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | 適用于節點與控制平面之間的通道安全通訊。 |
-| **`*:123`** 或 **`ntp.ubuntu.com:123`** （如果使用 Azure 防火牆網路規則）  | UDP      | 123     | Linux 節點上的網路時間通訊協定（NTP）時間同步處理所需。                 |
+| **`*:123`** 或者， **`ntp.ubuntu.com:123`** 如果使用 Azure 防火牆網路規則) ，則 (  | UDP      | 123     | 網路時間通訊協定所需 (NTP) Linux 節點上的時間同步處理。                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | 如果您使用的是自訂 DNS 伺服器，您必須確定叢集節點可存取它們。 |
 | **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | 如果執行可存取 API 伺服器的 pod/部署，則此為必要項，這些 pod/部署會使用 API IP。  |
 
@@ -61,9 +61,9 @@ AKS 叢集需要下列網路和 FQDN/應用程式規則，如果您想要設定 
 | 目的地 FQDN                 | 連接埠            | 使用      |
 |----------------------------------|-----------------|----------|
 | **`*.hcp.<location>.azmk8s.io`** | **`HTTPS:443`** | 節點 < 所需-> API 伺服器通訊。 將取代 *\<location\>* 為部署 AKS 叢集所在的區域。 |
-| **`mcr.microsoft.com`**          | **`HTTPS:443`** | 需要用來存取 Microsoft Container Registry （MCR）中的映射。 此登錄包含第一方映射/圖表（例如，coreDNS 等）。 必須有這些映射，才能正確建立和運作叢集，包括調整和升級作業。  |
-| **`*.cdn.mscr.io`**              | **`HTTPS:443`** | Azure 內容傳遞網路（CDN）支援的 MCR 儲存體所需。 |
-| **`*.data.mcr.microsoft.com`**   | **`HTTPS:443`** | Azure 內容傳遞網路（CDN）支援的 MCR 儲存體所需。 |
+| **`mcr.microsoft.com`**          | **`HTTPS:443`** | 需要用來存取 Microsoft Container Registry 中的映射 (MCR) 。 此登錄包含第一方映射/圖表 (例如 coreDNS 等，) 。 必須有這些映射，才能正確建立和運作叢集，包括調整和升級作業。  |
+| **`*.cdn.mscr.io`**              | **`HTTPS:443`** | 適用于 Azure 內容傳遞網路 (CDN) 所支援的 MCR 儲存體。 |
+| **`*.data.mcr.microsoft.com`**   | **`HTTPS:443`** | 由 Azure 內容傳遞網路支援的 MCR 儲存體 (CDN) 所需。 |
 | **`management.azure.com`**       | **`HTTPS:443`** | 對 Azure API 進行 Kubernetes 作業所需。 |
 | **`login.microsoftonline.com`**  | **`HTTPS:443`** | Azure Active Directory 驗證所需。 |
 | **`packages.microsoft.com`**     | **`HTTPS:443`** | 此位址是用於快取 *apt-get* 作業的 Microsoft 套件存放庫。  範例套件包括 Moby、PowerShell 和 Azure CLI。 |
@@ -78,7 +78,7 @@ AKS 叢集需要下列網路和 FQDN/應用程式規則，如果您想要設定 
 | **`*:1194`** <br/> *或* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.Region:1194`** <br/> *或* <br/> [區域 CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *或* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | 適用于節點與控制平面之間的通道安全通訊。 |
 | **`*:9000`** <br/> *或* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *或* <br/> [區域 CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *或* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | 適用于節點與控制平面之間的通道安全通訊。 |
 | **`*:22`** <br/> *或* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:22`** <br/> *或* <br/> [區域 CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:22`** <br/> *或* <br/> **`APIServerIP:22`** `(only known after cluster creation)`  | TCP           | 22      | 適用于節點與控制平面之間的通道安全通訊。 |
-| **`*:123`** 或 **`ntp.ubuntu.com:123`** （如果使用 Azure 防火牆網路規則）  | UDP      | 123     | Linux 節點上的網路時間通訊協定（NTP）時間同步處理所需。                 |
+| **`*:123`** 或者， **`ntp.ubuntu.com:123`** 如果使用 Azure 防火牆網路規則) ，則 (  | UDP      | 123     | 網路時間通訊協定所需 (NTP) Linux 節點上的時間同步處理。                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | 如果您使用的是自訂 DNS 伺服器，您必須確定叢集節點可存取它們。 |
 | **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | 如果執行可存取 API 伺服器的 pod/部署，則需要使用 API IP。  |
 
@@ -90,9 +90,9 @@ AKS 叢集需要下列網路和 FQDN/應用程式規則，如果您想要設定 
 |------------------------------------------------|-----------------|----------|
 | **`*.hcp.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | 節點 < 所需-> API 伺服器通訊。 將取代 *\<location\>* 為部署 AKS 叢集所在的區域。 |
 | **`*.tun.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | 節點 < 所需-> API 伺服器通訊。 將取代 *\<location\>* 為部署 AKS 叢集所在的區域。 |
-| **`mcr.microsoft.com`**                        | **`HTTPS:443`** | 需要用來存取 Microsoft Container Registry （MCR）中的映射。 此登錄包含第一方映射/圖表（例如，coreDNS 等）。 必須有這些映射，才能正確建立和運作叢集，包括調整和升級作業。 |
-| **`*.cdn.mscr.io`**                            | **`HTTPS:443`** | Azure 內容傳遞網路（CDN）支援的 MCR 儲存體所需。 |
-| **`.data.mcr.microsoft.com`**                  | **`HTTPS:443`** | Azure 內容傳遞網路（CDN）支援的 MCR 儲存體所需。 |
+| **`mcr.microsoft.com`**                        | **`HTTPS:443`** | 需要用來存取 Microsoft Container Registry 中的映射 (MCR) 。 此登錄包含第一方映射/圖表 (例如 coreDNS 等，) 。 必須有這些映射，才能正確建立和運作叢集，包括調整和升級作業。 |
+| **`*.cdn.mscr.io`**                            | **`HTTPS:443`** | 適用于 Azure 內容傳遞網路 (CDN) 所支援的 MCR 儲存體。 |
+| **`.data.mcr.microsoft.com`**                  | **`HTTPS:443`** | 適用于 Azure 內容傳遞網路 (CDN) 所支援的 MCR 儲存體。 |
 | **`management.chinacloudapi.cn`**              | **`HTTPS:443`** | 對 Azure API 進行 Kubernetes 作業所需。 |
 | **`login.chinacloudapi.cn`**                   | **`HTTPS:443`** | Azure Active Directory 驗證所需。 |
 | **`packages.microsoft.com`**                   | **`HTTPS:443`** | 此位址是用於快取 *apt-get* 作業的 Microsoft 套件存放庫。  範例套件包括 Moby、PowerShell 和 Azure CLI。 |
@@ -106,7 +106,7 @@ AKS 叢集需要下列網路和 FQDN/應用程式規則，如果您想要設定 
 |----------------------------------------------------------------------------------|----------|---------|------|
 | **`*:1194`** <br/> *或* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *或* <br/> [區域 CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *或* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | 適用于節點與控制平面之間的通道安全通訊。 |
 | **`*:9000`** <br/> *或* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *或* <br/> [區域 CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *或* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | 適用于節點與控制平面之間的通道安全通訊。 |
-| **`*:123`** 或 **`ntp.ubuntu.com:123`** （如果使用 Azure 防火牆網路規則）  | UDP      | 123     | Linux 節點上的網路時間通訊協定（NTP）時間同步處理所需。                 |
+| **`*:123`** 或者， **`ntp.ubuntu.com:123`** 如果使用 Azure 防火牆網路規則) ，則 (  | UDP      | 123     | 網路時間通訊協定所需 (NTP) Linux 節點上的時間同步處理。                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | 如果您使用的是自訂 DNS 伺服器，您必須確定叢集節點可存取它們。 |
 | **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | 如果執行可存取 API 伺服器的 pod/部署，則此為必要項，這些 pod/部署會使用 API IP。  |
 
@@ -117,9 +117,9 @@ AKS 叢集需要下列網路和 FQDN/應用程式規則，如果您想要設定 
 | 目的地 FQDN                                        | 連接埠            | 使用      |
 |---------------------------------------------------------|-----------------|----------|
 | **`*.hcp.<location>.cx.aks.containerservice.azure.us`** | **`HTTPS:443`** | 節點 < 所需-> API 伺服器通訊。 將取代 *\<location\>* 為部署 AKS 叢集所在的區域。|
-| **`mcr.microsoft.com`**                                 | **`HTTPS:443`** | 需要用來存取 Microsoft Container Registry （MCR）中的映射。 此登錄包含第一方映射/圖表（例如，coreDNS 等）。 必須有這些映射，才能正確建立和運作叢集，包括調整和升級作業。 |
-| **`*.cdn.mscr.io`**                                     | **`HTTPS:443`** | Azure 內容傳遞網路（CDN）支援的 MCR 儲存體所需。 |
-| **`*.data.mcr.microsoft.com`**                          | **`HTTPS:443`** | Azure 內容傳遞網路（CDN）支援的 MCR 儲存體所需。 |
+| **`mcr.microsoft.com`**                                 | **`HTTPS:443`** | 需要用來存取 Microsoft Container Registry 中的映射 (MCR) 。 此登錄包含第一方映射/圖表 (例如 coreDNS 等，) 。 必須有這些映射，才能正確建立和運作叢集，包括調整和升級作業。 |
+| **`*.cdn.mscr.io`**                                     | **`HTTPS:443`** | 適用于 Azure 內容傳遞網路 (CDN) 所支援的 MCR 儲存體。 |
+| **`*.data.mcr.microsoft.com`**                          | **`HTTPS:443`** | 由 Azure 內容傳遞網路支援的 MCR 儲存體 (CDN) 所需。 |
 | **`management.usgovcloudapi.net`**                      | **`HTTPS:443`** | 對 Azure API 進行 Kubernetes 作業所需。 |
 | **`login.microsoftonline.us`**                          | **`HTTPS:443`** | Azure Active Directory 驗證所需。 |
 | **`packages.microsoft.com`**                            | **`HTTPS:443`** | 此位址是用於快取 *apt-get* 作業的 Microsoft 套件存放庫。  範例套件包括 Moby、PowerShell 和 Azure CLI。 |
@@ -168,7 +168,7 @@ AKS 叢集需要下列網路和 FQDN/應用程式規則，如果您想要設定 
 
 需要下列 FQDN/應用程式規則：
 
-| 目的地端點                                                             | 通訊協定 | Port    | 使用  |
+| 目的地端點                                                             | 通訊協定 | 連接埠    | 使用  |
 |----------------------------------------------------------------------------------|----------|---------|------|
 | [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureMonitor:443`**  | TCP           | 443      | 此端點用來將計量資料和記錄傳送至 Azure 監視器和 Log Analytics。 |
 
@@ -183,13 +183,13 @@ AKS 叢集需要下列網路和 FQDN/應用程式規則，如果您想要設定 
 | *.oms.opinsights.azure.com | **`HTTPS:443`** | Omsagent 會使用此端點來驗證 log analytics 服務。 |
 | *.monitoring.azure.com | **`HTTPS:443`** | 此端點用來將計量資料傳送至 Azure 監視器。 |
 
-### <a name="azure-dev-spaces"></a>Azure Dev Spaces
+### <a name="azure-dev-spaces"></a>Azure 開發人員空間
 
 更新您的防火牆或安全性設定，以允許進出下列所有 Fqdn 和[Azure Dev Spaces 基礎結構服務][dev-spaces-service-tags]的網路流量。
 
 #### <a name="required-network-rules"></a>必要的網路規則
 
-| 目的地端點                                                             | 通訊協定 | Port    | 使用  |
+| 目的地端點                                                             | 通訊協定 | 連接埠    | 使用  |
 |----------------------------------------------------------------------------------|----------|---------|------|
 | [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureDevSpaces`**  | TCP           | 443      | 此端點用來將計量資料和記錄傳送至 Azure 監視器和 Log Analytics。 |
 
@@ -204,7 +204,7 @@ AKS 叢集需要下列網路和 FQDN/應用程式規則，如果您想要設定 
 | `storage.googleapis.com` | **`HTTPS:443`** | 此位址是用來提取 helm/tiller 映像 |
 
 
-### <a name="azure-policy-preview"></a>Azure 原則（預覽）
+### <a name="azure-policy-preview"></a>Azure 原則 (預覽) 
 
 > [!CAUTION]
 > 下列部分功能目前為預覽狀態。  隨著功能移至公開預覽階段和未來發行階段，此文章中的建議可能會有所變更。
@@ -222,7 +222,7 @@ AKS 叢集需要下列網路和 FQDN/應用程式規則，如果您想要設定 
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>使用 Azure 防火牆限制輸出流量
 
-Azure 防火牆提供 Azure Kubernetes Service （ `AzureKubernetesService` ） FQDN 標記以簡化此設定。 
+Azure 防火牆提供 Azure Kubernetes Service (`AzureKubernetesService`) FQDN 標記來簡化此設定。 
 
 > [!NOTE]
 > FQDN 標記包含上列所有 Fqdn，而且會自動保持最新狀態。
@@ -239,7 +239,7 @@ Azure 防火牆提供 Azure Kubernetes Service （ `AzureKubernetesService` ） 
   * 來自 AKS 代理程式節點的要求會遵循已放置於部署 AKS 叢集之子網路上的 UDR。
   * Azure 防火牆會從公用 IP 前端輸出虛擬網路
   * 存取公用網際網路或其他 Azure 服務，會流入和流出防火牆前端 IP 位址
-  * （選擇性） AKS 控制平面的存取會受到[API 伺服器授權 ip 範圍](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)的保護，其中包括防火牆公用前端 ip 位址。
+  * （選擇性） AKS 控制平面的存取會受到[API 伺服器授權 ip 範圍](./api-server-authorized-ip-ranges.md)的保護，其中包括防火牆公用前端 ip 位址。
 * 內部流量
   * 或者，除了[公開 Load Balancer](load-balancer-standard.md)之外，您也可以將[內部 Load Balancer](internal-lb.md)用於內部流量，而您也可以在自己的子網中隔離。
 
@@ -353,7 +353,7 @@ FWPRIVATE_IP=$(az network firewall show -g $RG -n $FWNAME --query "ipConfigurati
 ```
 
 > [!NOTE]
-> 如果您使用安全存取 AKS API 伺服器與授權的[ip 位址範圍](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)，您必須將防火牆公用 ip 新增到授權的 ip 範圍中。
+> 如果您使用安全存取 AKS API 伺服器與授權的[ip 位址範圍](./api-server-authorized-ip-ranges.md)，您必須將防火牆公用 ip 新增到授權的 ip 範圍中。
 
 ### <a name="create-a-udr-with-a-hop-to-azure-firewall"></a>在 Azure 防火牆中建立具有躍點的 UDR
 
@@ -373,7 +373,7 @@ az network route-table route create -g $RG --name $FWROUTE_NAME_INTERNET --route
 
 ### <a name="adding-firewall-rules"></a>新增防火牆規則
 
-以下是您可以用來在防火牆上設定的三個網路規則，您可能需要根據您的部署來調整這些規則。 第一個規則允許透過 TCP 存取埠9000。 第二個規則允許透過 UDP 存取埠1194和123（如果您要部署到 Azure 中國的世紀，您可能需要[更多](#azure-china-21vianet-required-network-rules)）。 這兩個規則只會允許目的地為所使用之 Azure 區域 CIDR 的流量，在此案例中為「美國東部」。 最後，我們會透過 UDP 新增第三個網路規則，將埠123開啟至 `ntp.ubuntu.com` FQDN （新增 fqdn 作為網路規則，是 Azure 防火牆的其中一個特定功能，而且您必須在使用自己的選項時加以調整）。
+以下是您可以用來在防火牆上設定的三個網路規則，您可能需要根據您的部署來調整這些規則。 第一個規則允許透過 TCP 存取埠9000。 第二個規則允許透過 UDP (存取埠1194和123。如果您要部署到 Azure 中國的世紀，可能需要[更多](#azure-china-21vianet-required-network-rules)) 。 這兩個規則只會允許目的地為所使用之 Azure 區域 CIDR 的流量，在此案例中為「美國東部」。 最後，我們會透過 UDP 新增第三個網路規則，將埠123開啟至 `ntp.ubuntu.com` fqdn， (新增 fqdn 作為網路規則，是 Azure 防火牆的其中一項特定功能，而且您必須在使用自己的選項) 時加以調整。
 
 設定網路規則之後，我們也會使用來新增應用程式規則， `AzureKubernetesService` 其中涵蓋透過 TCP 埠443和埠80存取的所有必要 fqdn。
 
@@ -389,7 +389,7 @@ az network firewall network-rule create -g $RG -f $FWNAME --collection-name 'aks
 az network firewall application-rule create -g $RG -f $FWNAME --collection-name 'aksfwar' -n 'fqdn' --source-addresses '*' --protocols 'http=80' 'https=443' --fqdn-tags "AzureKubernetesService" --action allow --priority 100
 ```
 
-若要深入了解 Azure 防火牆服務，請參閱 [Azure 防火牆文件](https://docs.microsoft.com/azure/firewall/overview)。
+若要深入了解 Azure 防火牆服務，請參閱 [Azure 防火牆文件](../firewall/overview.md)。
 
 ### <a name="associate-the-route-table-to-aks"></a>將路由表關聯至 AKS
 
@@ -403,13 +403,13 @@ az network vnet subnet update -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NA
 
 ### <a name="deploy-aks-with-outbound-type-of-udr-to-the-existing-network"></a>將具有 UDR 連出類型的 AKS 部署到現有網路
 
-現在，AKS 叢集可以部署到現有的虛擬網路中。 我們也會使用[輸出類型 `userDefinedRouting` ](egress-outboundtype.md)，這項功能可確保任何輸出流量會透過防火牆強制執行，而且不會有其他輸出路徑（根據預設，可以使用 Load Balancer 輸出類型）。
+現在，AKS 叢集可以部署到現有的虛擬網路中。 我們也會使用[輸出類型 `userDefinedRouting` ](egress-outboundtype.md)，這項功能可確保任何輸出流量會透過防火牆強制執行，而且預設不會有其他輸出路徑 (Load Balancer 輸出類型可) 使用。
 
 ![AKS 部署](media/limit-egress-traffic/aks-udr-fw.png)
 
 ### <a name="create-a-service-principal-with-access-to-provision-inside-the-existing-virtual-network"></a>建立可存取現有虛擬網路內佈建的服務主體
 
-AKS 會使用服務主體來建立叢集資源。 在建立時所傳遞的服務主體會用來建立基礎 AKS 資源，例如儲存體資源、Ip 和 AKS 所使用的負載平衡器（您也可以改用[受控識別](use-managed-identity.md)）。 如果未授與下列適當的許可權，您將無法布建 AKS 叢集。
+AKS 會使用服務主體來建立叢集資源。 在建立時所傳遞的服務主體會用來建立基礎 AKS 資源（例如儲存體資源、Ip 和 AKS 所使用的負載平衡器） (您也可以使用[受控識別](use-managed-identity.md)，而不是) 。 如果未授與下列適當的許可權，您將無法布建 AKS 叢集。
 
 ```azure-cli
 # Create SP and Assign Permission to Virtual Network
@@ -722,7 +722,7 @@ kubectl apply -f example.yaml
 ### <a name="add-a-dnat-rule-to-azure-firewall"></a>將 DNAT 規則新增至 Azure 防火牆
 
 > [!IMPORTANT]
-> 當您使用 Azure 防火牆來限制連出流量，並建立使用者定義路由 (UDR) 來強制執行所有連出流量時，請務必在防火牆中建立適當的 DNAT 規則，以正確地允許連入流量。 將 Azure 防火牆搭配 UDR 使用，會因為非對稱式路由而中斷連入設定。 (如果 AKS 子網路的預設路由會前往防火牆私人 IP 位址，但是您使用的是公用負載平衡器 - 類型為 LoadBalancer 的連入或 Kubernetes 服務，則會發生此問題)。 在此情況下，系統會透過傳入負載平衡器流量的公用 IP 位址接收它，但傳回路徑則會通過防火牆的私人 IP 位址。 由於防火牆是具狀態，其會捨棄傳回封包，因為防火牆並不知道已建立的工作階段。 若要了解如何整合 Azure 防火牆與您的連入或服務負載平衡器，請參閱[整合 Azure 防火牆與 Azure Standard Load Balancer](https://docs.microsoft.com/azure/firewall/integrate-lb) \(部分機器翻譯\)。
+> 當您使用 Azure 防火牆來限制連出流量，並建立使用者定義路由 (UDR) 來強制執行所有連出流量時，請務必在防火牆中建立適當的 DNAT 規則，以正確地允許連入流量。 將 Azure 防火牆搭配 UDR 使用，會因為非對稱式路由而中斷連入設定。 (如果 AKS 子網路的預設路由會前往防火牆私人 IP 位址，但是您使用的是公用負載平衡器 - 類型為 LoadBalancer 的連入或 Kubernetes 服務，則會發生此問題)。 在此情況下，系統會透過傳入負載平衡器流量的公用 IP 位址接收它，但傳回路徑則會通過防火牆的私人 IP 位址。 由於防火牆是具狀態，其會捨棄傳回封包，因為防火牆並不知道已建立的工作階段。 若要了解如何整合 Azure 防火牆與您的連入或服務負載平衡器，請參閱[整合 Azure 防火牆與 Azure Standard Load Balancer](../firewall/integrate-lb.md) \(部分機器翻譯\)。
 
 
 若要設定連入連線能力，必須將 DNAT 規則寫入至 Azure 防火牆。 若要測試與叢集的連線，防火牆前端公用 IP 位址會定義規則，以路由傳送至內部服務所公開的內部 IP。

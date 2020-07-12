@@ -13,15 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: b8215cd852d54283bfc6bd47e77d7d63ee4e2582
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b586edd7adce8bcea61419005a3ce8cfc814fb3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79475488"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254926"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>如何在 Azure API 管理中使用 Azure Active Directory B2C 授權開發人員帳戶
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Azure Active Directory B2C 是適用於取用者導向 Web 與行動應用程式的雲端身分識別管理解決方案。 您可以使用它來管理開發人員入口網站的存取。 本指南會說明要與 Azure Active Directory B2C 整合所必須在 API 管理服務中進行的設定。 如需實現使用傳統 Azure Active Directory 來存取開發人員入口網站的相關資訊，請參閱[如何使用 Azure Active Directory 授權開發人員帳戶]。
 
@@ -59,7 +60,7 @@ Azure Active Directory B2C 是適用於取用者導向 Web 與行動應用程式
 
    ![註冊新的應用程式 3][api-management-howto-aad-b2c-app-details]
 
-1. 如果您使用的是新的開發人員入口網站（而不是舊版開發人員入口網站），請在應用程式宣告中包含**指定的名稱**、**姓氏**和**使用者的物件識別碼**。
+1. 如果您使用的是新的開發人員入口網站 (不是舊版開發人員入口網站) ，請在應用程式宣告中包含**指定的名稱**、**姓氏**和**使用者的物件識別碼**。
 
     ![應用程式宣告](./media/api-management-howto-aad-b2c/api-management-application-claims.png)
 
@@ -181,25 +182,25 @@ Azure Active Directory B2C 是適用於取用者導向 Web 與行動應用程式
 [api-management-groups]: ./media/api-management-howto-aad/api-management-groups.png
 [api-management-edit-group]: ./media/api-management-howto-aad/api-management-edit-group.png
 
-[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add operations to an API]: ./mock-api-responses.md
 [How to add and publish a product]: api-management-howto-add-products.md
 [Monitoring and analytics]: api-management-monitoring.md
 [Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [Get started with Azure API Management]: get-started-create-service-instance.md
-[API Management policy reference]: api-management-policy-reference.md
-[Caching policies]: api-management-policy-reference.md#caching-policies
+[API Management policy reference]: ./api-management-policies.md
+[Caching policies]: ./api-management-policies.md#caching-policies
 [Create an API Management service instance]: get-started-create-service-instance.md
 
 [https://oauth.net/2/]: https://oauth.net/2/
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
-[Azure Active Directory B2C 概觀]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview
-[如何使用 Azure Active Directory 授權開發人員帳戶]: https://docs.microsoft.com/azure/api-management/api-management-howto-aad
-[Azure Active Directory B2C：可延伸的原則架構]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies
-[使用 Microsoft 帳戶做為 Azure Active Directory B2C 中的身分識別提供者]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app
-[使用 Google 帳戶做為 Azure Active Directory B2C 中的身分識別提供者]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-goog-app
-[使用 Facebook 帳戶做為 Azure Active Directory B2C 中的身分識別提供者]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-fb-app
-[使用 Linkedin 帳戶做為 Azure Active Directory B2C 中的身分識別提供者]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-li-app
+[Azure Active Directory B2C 概觀]: ../active-directory-b2c/overview.md
+[如何使用 Azure Active Directory 授權開發人員帳戶]: ./api-management-howto-aad.md
+[Azure Active Directory B2C：可延伸的原則架構]: ../active-directory-b2c/user-flow-overview.md
+[使用 Microsoft 帳戶做為 Azure Active Directory B2C 中的身分識別提供者]: ../active-directory-b2c/identity-provider-microsoft-account.md
+[使用 Google 帳戶做為 Azure Active Directory B2C 中的身分識別提供者]: ../active-directory-b2c/identity-provider-google.md
+[使用 Facebook 帳戶做為 Azure Active Directory B2C 中的身分識別提供者]: ../active-directory-b2c/identity-provider-facebook.md
+[使用 Linkedin 帳戶做為 Azure Active Directory B2C 中的身分識別提供者]: ../active-directory-b2c/identity-provider-linkedin.md
 
 [Prerequisites]: #prerequisites
 [Configure an OAuth 2.0 authorization server in API Management]: #step1

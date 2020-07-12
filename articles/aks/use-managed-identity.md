@@ -6,18 +6,18 @@ author: mlearned
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: mlearned
-ms.openlocfilehash: 27ae1d1a2c6309bdac2410dca4b48abf27d8ea0b
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 95a303a4b6a83901560b26679bca920b9de4d3f4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231976"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250900"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes Service 中使用受控識別
 
 目前，Azure Kubernetes Service (AKS) 叢集 (明確地說，Kubernetes 雲端提供者) 需要身分識別，才能在 Azure 中建立額外的資源，例如負載平衡器和受控磁片。 這個識別可以是*受控識別*或*服務主體*。 如果您使用[服務主體](kubernetes-service-principal.md)，則必須提供一個或 AKS 代表您建立一個。 如果您使用受控識別，則會自動 AKS 來為您建立。 使用服務主體的叢集最終會到達必須更新服務主體的狀態，才能讓叢集正常運作。 管理服務主體會增加複雜性，這也是為什麼較容易使用受控識別的原因。 相同的許可權需求同時適用于服務主體和受控識別。
 
-*受控*識別基本上是服務主體的包裝函式，讓其管理變得更簡單。 MI 的認證輪替會根據 Azure Active Directory 預設值，每隔46天自動執行一次。 AKS 會同時使用系統指派和使用者指派的受控識別類型。 這些身分識別目前是不可變的。 若要深入瞭解，請參閱[Azure 資源的受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)識別。
+*受控*識別基本上是服務主體的包裝函式，讓其管理變得更簡單。 MI 的認證輪替會根據 Azure Active Directory 預設值，每隔46天自動執行一次。 AKS 會同時使用系統指派和使用者指派的受控識別類型。 這些身分識別目前是不可變的。 若要深入瞭解，請參閱[Azure 資源的受控](../active-directory/managed-identities-azure-resources/overview.md)識別。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -110,4 +110,4 @@ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
 * 使用[Azure Resource Manager (ARM) 範本][aks-arm-template]來建立受控識別啟用的叢集。
 
 <!-- LINKS - external -->
-[aks-arm-template]: https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters
+[aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters

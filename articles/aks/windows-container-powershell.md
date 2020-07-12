@@ -4,12 +4,12 @@ description: 瞭解如何使用 PowerShell 快速建立 Kubernetes 叢集、在 
 services: container-service
 ms.topic: article
 ms.date: 05/26/2020
-ms.openlocfilehash: 735869da1432c241927597789f00a0bd2aea63f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 036c97d406e37e038474287daf39182ddce194a1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207936"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250867"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>使用 PowerShell 在 Azure Kubernetes Service (AKS) 叢集上建立 Windows Server 容器
 
@@ -47,7 +47,7 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-[Azure 資源群組](/azure/azure-resource-manager/resource-group-overview)是部署及管理 Azure 資源所在的邏輯群組。 建立資源群組時，系統會要求您指定位置。 此位置是儲存資源群組中繼資料的位置，如果您未在資源建立期間指定另一個區域，此位置也會是您在 Azure 中執行資源的位置。 使用 [New-AzResourceGroup][new-azresourcegroup] Cmdelt 建立新的資源群組。
+[Azure 資源群組](../azure-resource-manager/management/overview.md)是部署及管理 Azure 資源所在的邏輯群組。 建立資源群組時，系統會要求您指定位置。 此位置是儲存資源群組中繼資料的位置，如果您未在資源建立期間指定另一個區域，此位置也會是您在 Azure 中執行資源的位置。 使用 [New-AzResourceGroup][new-azresourcegroup] Cmdelt 建立新的資源群組。
 
 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組。
 
@@ -70,7 +70,7 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ## <a name="create-an-aks-cluster"></a>建立 AKS 叢集
 
-使用 `ssh-keygen` 命令列公用程式產生 SSH 金鑰組。 如需詳細資料，請參閱[快速步驟：在 Azure 中建立及使用 Linux VM 的 SSH 公開和私密金鑰組](/azure/virtual-machines/linux/mac-create-ssh-keys)。
+使用 `ssh-keygen` 命令列公用程式產生 SSH 金鑰組。 如需詳細資料，請參閱[快速步驟：在 Azure 中建立及使用 Linux VM 的 SSH 公開和私密金鑰組](../virtual-machines/linux/mac-create-ssh-keys.md)。
 
 若要執行支援 Windows Server 容器之節點集區的 AKS 叢集，您的叢集必須採用使用 [Azure CNI][azure-cni-about] (advanced) 網路外掛程式的網路原則。 如需協助方案必要子網路範圍和網路考慮的詳細資訊，請參閱[設定 Azure CNI 網路][use-advanced-networking]。 使用下列的 [New - AzAks][new-azaks] Cmdlet 來建立名稱為 **myAKSCluster** 的 AKS 叢集。 下列範例會建立所需的網路資源 (如果不存在)。
 

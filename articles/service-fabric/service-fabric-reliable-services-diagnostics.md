@@ -5,14 +5,15 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 8/24/2018
 ms.author: dekapur
-ms.openlocfilehash: 37162287e130b05dc41453c579b3a628ac878fca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92fd8dbd1afbd2bdcabbaebbd5dc056d912ae118
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699801"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253111"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>具狀態 Reliable Services 診斷功能
-Azure Service Fabric 具狀態可靠服務 StatefulServiceBase 類別會發出 [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) 事件，可用於偵錯服務、提供執行階段運作情形的深入了解，以及協助疑難排解。
+Azure Service Fabric 具狀態可靠服務 StatefulServiceBase 類別會發出 [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) 事件，可用於偵錯服務、提供執行階段運作情形的深入了解，以及協助疑難排解。
 
 ## <a name="eventsource-events"></a>EventSource 事件
 具狀態可靠服務之 StatefulServiceBase 類別的 EventSource 名稱是 "Microsoft-ServiceFabric-Services"。 當 [Visual Studio 中正在偵錯](service-fabric-debugging-your-application.md)服務時，此事件來源的事件會出現在 [診斷事件](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio)視窗中。
@@ -45,11 +46,11 @@ Reliable Services 執行階段定義下列效能計數器類別：
 | Service Fabric 異動複寫器 |Azure Service Fabric 異動複寫器特有的計數器 |
 | Service Fabric TStore |Azure Service Fabric TStore 特有的計數器 |
 
-Service Fabric 異動複寫器使用 [Reliable State Manager](service-fabric-reliable-services-reliable-collections-internals.md)，複寫所指定[複本](service-fabric-concepts-replica-lifecycle.md)中的異動。
+Service Fabric 異動複寫器使用 [Reliable State Manager](./service-fabric-reliable-services-introduction.md)，複寫所指定[複本](service-fabric-concepts-replica-lifecycle.md)中的異動。
 
-Service Fabric TStore 是一個元件，在 [Reliable Collections](service-fabric-reliable-services-reliable-collections-internals.md) 中用來儲存及擷取索引鍵/值組。
+Service Fabric TStore 是一個元件，在 [Reliable Collections](./service-fabric-reliable-services-introduction.md) 中用來儲存及擷取索引鍵/值組。
 
-Windows 作業系統中預設可用的 [Windows 效能監視器](https://technet.microsoft.com/library/cc749249.aspx) 應用程式可用於收集與檢視效能計數器資料。 [Azure 診斷](../cloud-services/cloud-services-dotnet-diagnostics.md) 是另一個收集效能計數器資料並上傳至 Azure 資料表的選項。
+Windows 作業系統中預設可用的 [Windows 效能監視器](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc749249(v=ws.11)) 應用程式可用於收集與檢視效能計數器資料。 [Azure 診斷](../cloud-services/cloud-services-dotnet-diagnostics.md) 是另一個收集效能計數器資料並上傳至 Azure 資料表的選項。
 
 ### <a name="performance-counter-instance-names"></a>效能計數器執行個體名稱
 含大量可靠服務或可靠服務資料分割的叢集，將有大量的異動複寫器效能計數器執行個體。 TStore 效能計數器也是如此，但是只會乘以使用的可靠字典和可靠佇列數目。 效能計數器執行個體名稱有助於識別效能計數器執行個體相關聯的特定[磁碟分割](service-fabric-concepts-partitioning.md)、服務複本，而在 TStore 中還可識別狀態供應器。
@@ -59,7 +60,7 @@ Windows 作業系統中預設可用的 [Windows 效能監視器](https://technet
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId`
 
-*ServiceFabricPartitionId* 是與效能計數器執行個體相關聯 Service Fabric 資料分割識別碼的字串表示法。 資料分割識別碼是 GUID，其字串標記法是透過 [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) 與格式規範 "D" 所產生。
+*ServiceFabricPartitionId* 是與效能計數器執行個體相關聯 Service Fabric 資料分割識別碼的字串表示法。 資料分割識別碼是 GUID，其字串標記法是透過 [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) 與格式規範 "D" 所產生。
 
 *ServiceFabricReplicaId* 是與某一可靠服務特定複本相關聯的識別碼。 複本識別碼包含在效能計數器實例名稱中，以確保其唯一性，並避免與相同分割區所產生的其他效能計數器實例發生衝突。 [這裡](service-fabric-concepts-replica-lifecycle.md)會詳細介紹複本以及它們在可靠服務中的角色。
 
@@ -74,7 +75,7 @@ Windows 作業系統中預設可用的 [Windows 效能監視器](https://technet
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId:StateProviderId_PerformanceCounterInstanceDifferentiator_StateProviderName`
 
-*ServiceFabricPartitionId* 是與效能計數器執行個體相關聯 Service Fabric 資料分割識別碼的字串表示法。 資料分割識別碼是 GUID，其字串標記法是透過 [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) 與格式規範 "D" 所產生。
+*ServiceFabricPartitionId* 是與效能計數器執行個體相關聯 Service Fabric 資料分割識別碼的字串表示法。 資料分割識別碼是 GUID，其字串標記法是透過 [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) 與格式規範 "D" 所產生。
 
 *ServiceFabricReplicaId* 是與某一可靠服務特定複本相關聯的識別碼。 複本識別碼包含在效能計數器實例名稱中，以確保其唯一性，並避免與相同分割區所產生的其他效能計數器實例發生衝突。 [這裡](service-fabric-concepts-replica-lifecycle.md)會詳細介紹複本以及它們在可靠服務中的角色。
 
@@ -94,20 +95,20 @@ PerformanceCounterInstanceDifferentiator** 是區別識別碼，與狀態供應�
 
 Reliable Services 執行階段會發出 `Service Fabric Transactional Replicator` 類別底下的下列事件
 
- 計數器名稱 | Description |
+ 計數器名稱 | 描述 |
 | --- | --- |
 | Begin Txn Operations/sec | 每秒建立的新寫入異動數目。|
 | Txn Operations/sec | 每秒在可靠集合上所執行的新增/更新/刪除作業數目。|
 | 記錄檔排清位元組/秒 | 異動複寫器每秒排清到磁碟的位元組數 |
 | Throttled Operations/sec | 異動複寫器每秒因為節流而拒絕的作業數目。 |
 | 平均交易毫秒/認可 | 每一次異動的平均認可延遲 (毫秒) |
-| Avg. Flush 延遲（毫秒） | 異動複寫器起始的磁碟排清作業平均持續時間 (毫秒) |
+| Avg. Flush 延遲 (ms)  | 異動複寫器起始的磁碟排清作業平均持續時間 (毫秒) |
 
 ### <a name="tstore-performance-counters"></a>TStore 效能計數器
 
 Reliable Services 執行階段會發出 `Service Fabric TStore` 類別底下的下列事件
 
- 計數器名稱 | Description |
+ 計數器名稱 | 描述 |
 | --- | --- |
 | 項目計數 | 存放區中的項目數。|
 | 磁碟大小 | 存放區檢查點檔案的磁碟大小總計 (位元組)。|
@@ -115,4 +116,4 @@ Reliable Services 執行階段會發出 `Service Fabric TStore` 類別底下的�
 | 複製磁碟傳輸位元組/秒 | 存放區複製期間的每秒讀取 (主要複本上) 或寫入 (次要複本上) 磁碟位元組數。|
 
 ## <a name="next-steps"></a>後續步驟
-[PerfView 中的 EventSource 提供者](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
+[PerfView 中的 EventSource 提供者](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)

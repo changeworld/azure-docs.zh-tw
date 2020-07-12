@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
-ms.openlocfilehash: dd49680da6f52e32ddb52dbdb23ad5e8f627a91e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac147863fe54be3343eda653fc863ebd08dac54d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82205062"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254498"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>設定 Azure API 管理自我裝載閘道的本機計量和記錄
 
@@ -189,7 +189,7 @@ kubectl rollout restart deployment/<deployment-name>
 
 透過自我裝載閘道進行一些 API 呼叫，如果所有專案都已正確設定，您應該能夠查看下列計量：
 
-| Metric  | 描述 |
+| 計量  | 描述 |
 | ------------- | ------------- |
 | Requests  | 期間內的 API 要求數目 |
 | DurationInMS | 從閘道收到要求直到傳入完整回應時的毫秒數 |
@@ -204,7 +204,7 @@ kubectl rollout restart deployment/<deployment-name>
 kubectl logs <pod-name>
 ```
 
-如果您的自我裝載閘道是部署在 Azure Kubernetes Service 中，您可以讓[容器 Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview)收集 `stdout` `stderr` 工作負載，並在 Log Analytics 中查看記錄。 
+如果您的自我裝載閘道是部署在 Azure Kubernetes Service 中，您可以讓[容器 Azure 監視器](../azure-monitor/insights/container-insights-overview.md)收集 `stdout` `stderr` 工作負載，並在 Log Analytics 中查看記錄。 
 
 自我裝載閘道也支援數種通訊協定，包括 `localsyslog` 、 `rfc5424` 和 `journal` 。 下表摘要說明所有支援的選項。 
 
@@ -236,4 +236,3 @@ kubectl logs <pod-name>
 
 * 若要深入瞭解自我裝載閘道，請參閱[AZURE API 管理自我裝載閘道總覽](self-hosted-gateway-overview.md)
 * 瞭解如何[在雲端中設定和保存記錄](how-to-configure-local-metrics-logs.md)
-

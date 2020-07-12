@@ -5,11 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 1c044d5fd973d3c577088a887f2fac413d2ab79d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c381c6e7d692eda32fea2033779bacddafc267bb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75551806"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253672"
 ---
 # <a name="infrastructure-as-code"></a>基礎結構即程式碼
 
@@ -43,7 +44,7 @@ New-AzResourceGroupDeployment -Name $ResourceGroupName -TemplateFile $Template -
 
 ## <a name="azure-service-fabric-resources"></a>Azure Service Fabric 資源
 
-您可以透過 Azure Resource Manager 將應用程式和服務部署到 Service Fabric 叢集。 請參閱[將應用程式和服務視為 Azure Resource Manager 資源進行管理](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-arm-resource)了解詳細資訊。 以下是在 Resource Manager 範本資源中包含 Service Fabric 應用程式特定資源的最佳做法。
+您可以透過 Azure Resource Manager 將應用程式和服務部署到 Service Fabric 叢集。 請參閱[將應用程式和服務視為 Azure Resource Manager 資源進行管理](./service-fabric-application-arm-resource.md)了解詳細資訊。 以下是在 Resource Manager 範本資源中包含 Service Fabric 應用程式特定資源的最佳做法。
 
 ```json
 {
@@ -72,7 +73,7 @@ New-AzResourceGroupDeployment -Name $ResourceGroupName -TemplateFile $Template -
 }
 ```
 
-若要 Azure Resource Manager 部署您的應用程式，必須先[建立 sfpkg](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg) Service Fabric 應用程式封裝。 以下 python 指令碼為示範如何建立 sfpkg 的範例：
+若要 Azure Resource Manager 部署您的應用程式，必須先[建立 sfpkg](./service-fabric-package-apps.md#create-an-sfpkg) Service Fabric 應用程式封裝。 以下 python 指令碼為示範如何建立 sfpkg 的範例：
 
 ```python
 # Create SFPKG that needs to be uploaded to Azure Storage Blob Container
@@ -90,7 +91,7 @@ microservices_sfpkg.close()
 ```
 
 ## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Azure 虛擬機器作業系統自動升級設定 
-升級您的虛擬機器是使用者起始的作業，建議您針對 Azure Service Fabric 叢集主機修補程式管理使用[虛擬機器擴展集的自動作業系統升級](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade);修補程式協調流程應用程式是一種替代方案，適用于在 azure 外部託管時，雖然 POA 可以在 azure 中使用，但在 Azure 中裝載 POA 的額外負荷，是偏好將虛擬機器作業系統自動升級至 POA 的常見原因。 以下是計算虛擬機器擴展集 Resource Manager 範本屬性，以啟用自動 OS 升級：
+升級您的虛擬機器是使用者起始的作業，建議您針對 Azure Service Fabric 叢集主機修補程式管理使用[虛擬機器擴展集的自動作業系統升級](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md);修補程式協調流程應用程式是一種替代方案，適用于在 azure 外部託管時，雖然 POA 可以在 azure 中使用，但在 Azure 中裝載 POA 的額外負荷，是偏好將虛擬機器作業系統自動升級至 POA 的常見原因。 以下是計算虛擬機器擴展集 Resource Manager 範本屬性，以啟用自動 OS 升級：
 
 ```json
 "upgradePolicy": {

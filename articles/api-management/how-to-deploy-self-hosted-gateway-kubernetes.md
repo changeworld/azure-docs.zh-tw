@@ -9,11 +9,12 @@ ms.workload: mobile
 ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
-ms.openlocfilehash: 38cfab8a3b73eeef28249f53bd2f5c56e26b21a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51ce2e0dec8b38c9285f4f4e71dd35056b292b66
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82854104"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254277"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>將自我裝載閘道部署至 Kubernetes
 
@@ -36,7 +37,7 @@ ms.locfileid: "82854104"
 5. 選取 [**部署腳本**] 底下的 [ **Kubernetes** ] 索引標籤。
 6. 選取 **<的閘道名稱> yml**檔案連結，並下載 YAML 檔案。
 7. 選取 [**部署**] 文字方塊右下角的**複製**圖示，將 `kubectl` 命令儲存到剪貼簿。
-8. 將命令貼到 [終端機] （或命令）視窗。 第一個命令會建立 Kubernetes 秘密，其中包含步驟4中產生的存取權杖。 第二個命令會將步驟6中所下載的設定檔套用至 Kubernetes 叢集，並預期該檔案位於目前目錄中。
+8. 將命令貼到終端機 (或命令) 視窗。 第一個命令會建立 Kubernetes 秘密，其中包含步驟4中產生的存取權杖。 第二個命令會將步驟6中所下載的設定檔套用至 Kubernetes 叢集，並預期該檔案位於目前目錄中。
 9. 執行命令，以在[預設命名空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)中建立必要的 Kubernetes 物件，並從從 Microsoft container Registry 下載的[容器映射](https://aka.ms/apim/sputnik/dhub)啟動自我裝載閘道 pod。
 10. 執行下列命令來檢查部署是否成功。 請注意，您可能需要花一點時間來建立所有物件，並將 pod 初始化。
     ```console
@@ -64,7 +65,7 @@ ms.locfileid: "82854104"
 ### <a name="access-token"></a>存取權杖
 如果沒有有效的存取權杖，自我裝載閘道就無法從相關聯的 API 管理服務端點存取並下載設定資料。 存取權杖的有效時間上限為30天。 您必須重新產生它，並以全新的權杖設定叢集，不論是手動或在到期前透過自動化。 
 
-當您要將權杖重新整理自動化時，請使用[此管理 API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/gateway/generatetoken)作業來產生新的權杖。 如需管理 Kubernetes 秘密的相關資訊，請參閱[Kubernetes 網站](https://kubernetes.io/docs/concepts/configuration/secret)。
+當您要將權杖重新整理自動化時，請使用[此管理 API](/rest/api/apimanagement/2019-12-01/gateway/generatetoken)作業來產生新的權杖。 如需管理 Kubernetes 秘密的相關資訊，請參閱[Kubernetes 網站](https://kubernetes.io/docs/concepts/configuration/secret)。
 
 ### <a name="namespace"></a>命名空間
 Kubernetes[命名空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)可協助在多個小組、專案或應用程式之間分割單一叢集。 命名空間會提供資源和名稱的範圍。 它們可以與資源配額和存取控制原則相關聯。

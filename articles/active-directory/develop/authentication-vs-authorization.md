@@ -13,11 +13,12 @@ ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 2e9a50553a12c57c0043c7f2924245f6a907242a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 095bc5594cf9b6eaf0df7929ea83c25a401793e2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83825953"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252108"
 ---
 # <a name="authentication-vs-authorization"></a>驗證與授權
 
@@ -37,7 +38,7 @@ ms.locfileid: "83825953"
 
 Azure Active Directory (Azure AD) 是雲端中的集中式識別提供者。 將驗證與授權委派給識別提供者可啟用例如條件式存取原則的案例，該原則會要求使用者位於特定位置、使用[多重要素驗證](../authentication/concept-mfa-howitworks.md) (有時稱為雙因素驗證或 2FA)，以及讓使用者登入一次，然後自動登入共用相同集中式目錄的所有 Web 應用程式。 這項功能稱為**單一登入 (SSO)** 。
 
-Microsoft 身分識別平台可透過以服務的形式提供身分識別來簡化應用程式開發人員的授權與驗證工作，並支援業界標準的通訊協定 (例如 OAuth 2.0 和 OpenID Connect)，以及適用於不同平台的開放原始碼程式庫，以協助您快速開始撰寫程式碼。 可讓開發人員建置應用程式以登入所有 Microsoft 身分識別、取得權杖以呼叫 [Microsoft Graph](https://developer.microsoft.com/graph/)、其他 Microsoft API 或開發人員所建置的 API。 如需詳細資訊，請參閱 [Microsoft 身分識別平台的演化](about-microsoft-identity-platform.md)。
+Microsoft 身分識別平台可透過以服務的形式提供身分識別來簡化應用程式開發人員的授權與驗證工作，並支援業界標準的通訊協定 (例如 OAuth 2.0 和 OpenID Connect)，以及適用於不同平台的開放原始碼程式庫，以協助您快速開始撰寫程式碼。 可讓開發人員建置應用程式以登入所有 Microsoft 身分識別、取得權杖以呼叫 [Microsoft Graph](https://developer.microsoft.com/graph/)、其他 Microsoft API 或開發人員所建置的 API。
 
 以下是 Microsoft 身分識別平台所使用各種通訊協定的簡短比較：
 

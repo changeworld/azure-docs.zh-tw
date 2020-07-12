@@ -2,14 +2,15 @@
 title: Azure Functions 中的觸發程序和繫結
 description: 瞭解如何使用觸發程式和系結，將您的 Azure 函式連線至線上事件和雲端式服務。
 author: craigshoemaker
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: d41fd7f66ecef3a563345424d7dc4366e47d3f0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddcf6758c8c648678c69070fa5b65ae6c4947018
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687645"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252686"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 觸發程序和繫結概念
 
@@ -17,7 +18,7 @@ ms.locfileid: "84687645"
 
 觸發程式是造成函式執行的原因。 觸發程式會定義叫用函式的方式，而函式必須剛好有一個觸發程式。 觸發程序具有相關聯的資料，它通常提供作為函式的承載。 
 
-系結至函式是以宣告方式將另一個資源連接至函式的方法;系結可能會連接為*輸入*系結、*輸出*系結或兩者。 繫結中的資料會提供給函式作為參數。
+系結至函式是以宣告方式將另一個資源連接至函式的方法;系結可能會連接為*輸入*系結、*輸出*系結或兩者。 來自繫結的資料是作為參數提供給函式。
 
 您可以混合使用不同繫結，以符合您的需求。 繫結是選擇性的，而且一個函數可能有一或多個輸入和/或輸出繫結。
 
@@ -27,10 +28,10 @@ ms.locfileid: "84687645"
 
 | 範例案例 | 觸發程序 | 輸入系結 | 輸出系結 |
 |-------------|---------|---------------|----------------|
-| 新的佇列訊息抵達，其會執行函式以寫入至另一個佇列。 | 佇列<sup>*</sup> | *None* | 佇列<sup>*</sup> |
+| 新的佇列訊息抵達，其會執行函式以寫入至另一個佇列。 | 佇列<sup>*</sup> | *無* | 佇列<sup>*</sup> |
 |排程工作會讀取 Blob 儲存體內容，並建立新的 Cosmos DB 檔。 | 計時器 | Blob 儲存體 | Cosmos DB |
 |事件方格是用來從 Blob 儲存體中讀取影像，並使用來自 Cosmos DB 的檔來傳送電子郵件。 | 事件方格 | Blob 儲存體和 Cosmos DB | SendGrid |
-| 使用 Microsoft Graph 來更新 Excel 工作表的 webhook。 | HTTP | *None* | Microsoft Graph |
+| 使用 Microsoft Graph 來更新 Excel 工作表的 webhook。 | HTTP | *無* | Microsoft Graph |
 
 <sup>\*</sup>代表不同的佇列
 
@@ -43,7 +44,7 @@ ms.locfileid: "84687645"
 | 平台 | 觸發程式和系結是由設定的 .。。 |
 |-------------|--------------------------------------------|
 | C# 類別庫 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用 c # 屬性裝飾方法和參數 |
-| 所有其他專案（包括 Azure 入口網站） | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更新（[架構](http://json.schemastore.org/function)）[上的function.js](./functions-reference.md) |
+| 所有其他 (包括 Azure 入口網站)  | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更新 ([架構](http://json.schemastore.org/function)) [上的function.js](./functions-reference.md) |
 
 入口網站會提供此設定的 UI，但是您可以透過函式的 [**整合**] 索引標籤開啟可用的 [ **Advanced editor** ]，直接編輯檔案。
 

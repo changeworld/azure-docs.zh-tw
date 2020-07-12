@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 4a2038b44cf55f2a322b6bda202b8c33372f3716
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edbe202350b0912372aad822c8530c5f79c76384
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808282"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254821"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>在 Azure API 管理中使用 Azure Active Directory 來授權開發人員帳戶
 
@@ -34,7 +34,7 @@ ms.locfileid: "84808282"
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>使用 Azure AD 來授權開發人員帳戶
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
-2. 選取 ![箭號](./media/api-management-howto-aad/arrow.png).
+2. Select ![箭號](./media/api-management-howto-aad/arrow.png).
 3. 在搜尋方塊中輸入**api** 。
 4. 選取 [ **API 管理服務**]。
 5. 選取 API 管理服務執行個體。
@@ -58,8 +58,8 @@ ms.locfileid: "84808282"
     * 將 [重新**導向 URI** ] 設定為您從步驟9中所獲得的值。 
     * 選擇 [**註冊**]。 
 
-14.  註冊應用程式之後，請從 [**總覽**] 頁面複製**應用程式（用戶端）識別碼**。 
-15. 回到您的 API 管理實例。 在 [**新增識別提供者**] 視窗中，將 [**應用程式（用戶端）識別碼**] 值貼到 [**用戶端識別碼**] 方塊中。
+14.  註冊應用程式之後，請從 [**總覽**] 頁面將**應用程式 (用戶端) 識別碼**。 
+15. 回到您的 API 管理實例。 在 [**新增識別提供者**] 視窗中，將**應用程式 (用戶端) 識別碼**值貼到 [**用戶端識別碼**] 方塊中。
 16. 切換回 Azure AD 設定，選取 [**管理**] 底下的 [**憑證 & 秘密**]。 選取 [新增用戶端密碼]**** 按鈕。 在 [描述]**** 中輸入值、針對 [到期]**** 選取任意選項，然後選擇 [新增]****。 請先複製用戶端密碼值，再離開頁面。 您在下一個步驟將會用到這些資料。 
 17. 在 [**管理**] 底下選取 [**驗證**]，然後選取 **[隱含授**與] 底下的 [**識別碼**
 18. 回到您的 API 管理實例，將密碼貼入 [**用戶端密碼**] 方塊中。
@@ -141,14 +141,14 @@ ms.locfileid: "84808282"
 [api-management-complete-registration]: ./media/api-management-howto-aad/api-management-complete-registration.png
 [api-management-registration-complete]: ./media/api-management-howto-aad/api-management-registration-complete.png
 
-[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add operations to an API]: ./mock-api-responses.md
 [How to add and publish a product]: api-management-howto-add-products.md
 [Monitoring and analytics]: api-management-monitoring.md
 [Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [Get started with Azure API Management]: get-started-create-service-instance.md
-[API Management policy reference]: api-management-policy-reference.md
-[Caching policies]: api-management-policy-reference.md#caching-policies
+[API Management policy reference]: ./api-management-policies.md
+[Caching policies]: ./api-management-policies.md#caching-policies
 [Create an API Management service instance]: get-started-create-service-instance.md
 
 [https://oauth.net/2/]: https://oauth.net/2/

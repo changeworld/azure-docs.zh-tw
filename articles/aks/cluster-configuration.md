@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 3c8d374935c777548d1dc0d43ccd131fe21fd509
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: f1329aa056e8d1db951e01555634cf1ea709608b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856095"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252006"
 ---
 # <a name="configure-an-aks-cluster"></a>設定 AKS 叢集
 
@@ -44,19 +44,19 @@ az extension list
 az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
 ```
 
-可能需要幾分鐘的時間，狀態才會顯示為 [已註冊]。 您可以使用 [az feature list](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-list) 命令檢查註冊狀態：
+可能需要幾分鐘的時間，狀態才會顯示為 [已註冊]。 您可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) 命令檢查註冊狀態：
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-當狀態顯示為已註冊時，請使用 [az provider register](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register) 命令重新整理 `Microsoft.ContainerService` 資源提供者的註冊：
+當狀態顯示為已註冊時，請使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) 命令重新整理 `Microsoft.ContainerService` 資源提供者的註冊：
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
 ```
 
-### <a name="use-aks-ubuntu-1804-on-new-clusters-preview"></a>在新叢集上使用 AKS Ubuntu 18.04 （預覽）
+### <a name="use-aks-ubuntu-1804-on-new-clusters-preview"></a>在 (預覽) 的新叢集上使用 AKS Ubuntu 18.04
 
 在叢集建立時，請將叢集設定為使用 Ubuntu 18.04。 請使用 `--aks-custom-headers` 旗標將 Ubuntu 18.04 設定為預設作業系統。
 
@@ -66,7 +66,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup --aks-custom-
 
 如果您想要使用 AKS Ubuntu 16.04 映射來建立叢集，您可以省略自訂標記來執行此動作 `--aks-custom-headers` 。
 
-### <a name="use-aks-ubuntu-1804-existing-clusters-preview"></a>使用 AKS Ubuntu 18.04 現有的叢集（預覽）
+### <a name="use-aks-ubuntu-1804-existing-clusters-preview"></a>使用 AKS Ubuntu 18.04 現有的叢集 (預覽) 
 
 請將新的節點集區設定為使用 Ubuntu 18.04。 請使用 `--aks-custom-headers` 旗標，將 Ubuntu 18.04 設定為該節點集區的預設作業系統。
 
@@ -77,15 +77,15 @@ az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-gro
 如果您想要使用 AKS Ubuntu 16.04 映射建立節點集區，您可以省略自訂標記來執行此動作 `--aks-custom-headers` 。
 
 
-## <a name="container-runtime-configuration-preview"></a>容器執行時間設定（預覽）
+## <a name="container-runtime-configuration-preview"></a>容器執行時間設定 (預覽) 
 
-容器執行時間是一種軟體，可執行容器並管理節點上的容器映射。 執行時間可協助將 sys 呼叫或作業系統（OS）特有的功能抽象化，以在 Linux 或 Windows 上執行容器。 今日 AKS 會使用[Moby](https://mobyproject.org/) （上游 docker）作為其容器執行時間。 
+容器執行時間是一種軟體，可執行容器並管理節點上的容器映射。 執行時間有助於抽象地脫離 sys 呼叫或作業系統 (OS) 特定功能，在 Linux 或 Windows 上執行容器。 今日 AKS 會使用[Moby](https://mobyproject.org/) (上游 docker) 作為其容器執行時間。 
     
 ![Docker CRI](media/cluster-configuration/docker-cri.png)
 
-[`Containerd`](https://containerd.io/)是[OCI](https://opencontainers.org/) （開放容器計畫）規範的核心容器執行時間，提供執行容器和管理節點上之映射所需的最小功能集。 它是在2017年3月以雲端原生計算基礎（由 CNCF）[捐贈](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/)。 AKS 目前使用的目前 Moby 版本已利用，並建立在之上，如上 `containerd` 所示。 
+[`Containerd`](https://containerd.io/)是一個[OCI](https://opencontainers.org/) (開放容器計畫) 相容的核心容器執行時間，可提供執行容器和管理節點上之映射所需的最小功能集。 它是在2017年3月 (由 CNCF) 的雲端原生計算基礎中[捐贈](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/)。 AKS 目前使用的目前 Moby 版本已利用，並建立在之上，如上 `containerd` 所示。 
 
-使用以 containerd 為基礎的節點和節點集區，而不是與交談 `dockershim` 時，kubelet 會直接透過 `containerd` CRI （容器執行時間介面）外掛程式與交談，在與 Docker CRI 執行相較之下，移除流程上的額外躍點。 因此，您會看到較佳的 pod 啟動延遲和較少的資源（CPU 和記憶體）使用量。
+使用以 containerd 為基礎的節點和節點集區，而不是與交談時， `dockershim` kubelet 會直接透過 `containerd` CRI (容器執行時間介面) 外掛程式來交談，並在與 Docker CRI 執行相較之下，移除流程上的額外躍點。 因此，您會看到較佳的 pod 啟動延遲和較少的資源 (CPU 和記憶體) 使用量。
 
 藉由使用 `containerd` AKS 節點，pod 啟動延遲會改善，而容器執行時間的節點資源耗用量也會減少。 這項新架構會啟用這些改良功能，其中 kubelet 會直接與 `containerd` CRI 外掛程式交談，而在 Moby/docker 架構中 kubelet 會在 `dockershim` 到達之前與 docker 引擎通訊 `containerd` ，因此在流程上有額外的躍點。
 
@@ -98,7 +98,7 @@ az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-gro
 > 
 > 我們建議您先在節點集區上測試工作負載， `containerd` 再升級或使用此容器執行時間建立新的叢集。
 
-### <a name="use-containerd-as-your-container-runtime-preview"></a>當做 `containerd` 您的容器執行時間使用（預覽）
+### <a name="use-containerd-as-your-container-runtime-preview"></a>使用 `containerd` 做為您的容器執行時間 (預覽) 
 
 您必須具備下列必要條件：
 
@@ -122,20 +122,20 @@ az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.Cont
 
 ```
 
-可能需要幾分鐘的時間，狀態才會顯示為 [已註冊]。 您可以使用 [az feature list](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-list) 命令檢查註冊狀態：
+可能需要幾分鐘的時間，狀態才會顯示為 [已註冊]。 您可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) 命令檢查註冊狀態：
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedContainerRuntime')].{Name:name,State:properties.state}"
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-當狀態顯示為已註冊時，請使用 [az provider register](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register) 命令重新整理 `Microsoft.ContainerService` 資源提供者的註冊：
+當狀態顯示為已註冊時，請使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) 命令重新整理 `Microsoft.ContainerService` 資源提供者的註冊：
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
 ```  
 
-### <a name="use-containerd-on-new-clusters-preview"></a>`containerd`在新叢集上使用（預覽）
+### <a name="use-containerd-on-new-clusters-preview"></a>`containerd`在新叢集上使用 (預覽) 
 
 設定叢集，以在 `containerd` 建立叢集時使用。 使用旗標將 `--aks-custom-headers` 設定 `containerd` 為容器執行時間。
 
@@ -146,9 +146,9 @@ az provider register --namespace Microsoft.ContainerService
 az aks create --name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804,ContainerRuntime=containerd
 ```
 
-如果您想要使用 Moby （docker）執行時間來建立叢集，您可以省略自訂標記來執行此動作 `--aks-custom-headers` 。
+如果您想要使用 Moby (docker) 執行時間建立叢集，您可以省略自訂標記來執行此動作 `--aks-custom-headers` 。
 
-### <a name="use-containerd-on-existing-clusters-preview"></a>`containerd`在現有叢集上使用（預覽）
+### <a name="use-containerd-on-existing-clusters-preview"></a>`containerd`在現有的叢集上使用 (預覽) 
 
 設定要使用的新節點集區 `containerd` 。 使用旗標， `--aks-custom-headers` 將設定 `containerd` 為該節點集區的執行時間。
 
@@ -156,25 +156,25 @@ az aks create --name myAKSCluster --resource-group myResourceGroup --aks-custom-
 az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804,ContainerRuntime=containerd
 ```
 
-如果您想要使用 Moby （docker）執行時間來建立節點集區，您可以省略自訂標記來執行此動作 `--aks-custom-headers` 。
+如果您想要使用 Moby (docker) 執行時間建立節點集區，您可以省略自訂標記來執行此動作 `--aks-custom-headers` 。
 
 
 ### <a name="containerd-limitationsdifferences"></a>`Containerd`限制/差異
 
 * 若要使用 `containerd` 做為容器執行時間，您必須使用 AKS Ubuntu 18.04 做為基本 OS 映射。
-* 雖然 docker 工具組仍然存在於節點上，但 Kubernetes 會使用 `containerd` 做為容器執行時間。 因此，由於 Moby/Docker 不會管理節點上已 Kubernetes 建立的容器，因此您無法使用 Docker 命令（例如 `docker ps` ）或 DOCKER API 來查看或與容器互動。
-* 針對 `containerd` ，建議您使用 [`crictl`](https://kubernetes.io/docs/tasks/debug-application-cluster/crictl) 作為取代的 cli，而不是使用 Docker cli 來針對 Kubernetes 節點上的 pod、容器和容器映射**進行疑難排解**（例如， `crictl ps` ）。 
+* 雖然 docker 工具組仍然存在於節點上，但 Kubernetes 會使用 `containerd` 做為容器執行時間。 因此，由於 Moby/Docker 不會管理節點上已 Kubernetes 建立的容器，因此您無法使用 Docker 命令來查看或與容器互動， (例如 `docker ps`) 或 DOCKER API。
+* 針對 `containerd` ，建議您使用 [`crictl`](https://kubernetes.io/docs/tasks/debug-application-cluster/crictl) 作為取代 cli，而不是使用 Docker cli 來針對 Kubernetes 節點上的 pod、容器和容器映射**進行疑難排解** (例如 `crictl ps`) 。 
    * 它不會提供 docker CLI 的完整功能。 僅供疑難排解之用。
    * `crictl`提供更 kubernetes 易懂的容器，其中包含 pod 之類的概念等等。
-* `Containerd`使用標準化 `cri` 記錄格式來設定記錄（這與您目前從 docker 的 json 驅動程式取得的不同）。 您的記錄解決方案需要支援 `cri` 記錄格式（例如[容器的 Azure 監視器](../azure-monitor/insights/container-insights-enable-new-cluster.md)）
-* 您無法再存取 docker 引擎， `/var/run/docker.sock` 或使用 docker docker （DinD）。
+* `Containerd`使用標準化記錄格式設定記錄 `cri` (這與您目前從 docker 的 json 驅動程式) 所取得的不同。 您的記錄解決方案需要支援 `cri` 記錄格式 (例如[容器的 Azure 監視器](../azure-monitor/insights/container-insights-enable-new-cluster.md)) 
+* 您無法再存取 docker 引擎， `/var/run/docker.sock` 或使用 docker (DinD) 。
   * 如果您目前從 Docker 引擎解壓縮應用程式記錄檔或監視資料，請改用類似于[容器的 Azure 監視器](../azure-monitor/insights/container-insights-enable-new-cluster.md)。 此外，AKS 不支援在代理程式節點上執行任何可能造成不穩定的頻外命令。
   * 即使在使用 Moby/docker 時，強烈建議您不要透過上述方法來建立映射並直接利用 docker 引擎。 Kubernetes 並不完全察覺那些已耗用的資源，而這些方法會[在這裡](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/)和[這裡](https://securityboulevard.com/2018/05/escaping-the-whale-things-you-probably-shouldnt-do-with-docker-part-1/)詳述許多問題，例如。
 * 建立映射-建立影像的建議方法是使用[ACR 工作](../container-registry/container-registry-quickstart-task-cli.md)。 另一種方法是使用更安全的叢集中選項，例如[docker buildx](https://github.com/docker/buildx)。
 
-## <a name="generation-2-virtual-machines-preview"></a>第2代虛擬機器（預覽）
+## <a name="generation-2-virtual-machines-preview"></a>第2代虛擬機器 (預覽) 
 
-Azure 支援[第2代（Gen2）虛擬機器（vm）](../virtual-machines/windows/generation-2.md)。 第2代 Vm 支援第1代 Vm （Gen1）中不支援的重要功能。 這些功能包括記憶體增加、Intel Software Guard Extensions (Intel SGX) 和虛擬化的持續性記憶體 (vPMEM)。
+Azure 支援[第2代 (Gen2) 虛擬機器 (vm) ](../virtual-machines/windows/generation-2.md)。 第2代 Vm 支援第1代 Vm 中不支援的主要功能 (Gen1) 。 這些功能包括記憶體增加、Intel Software Guard Extensions (Intel SGX) 和虛擬化的持續性記憶體 (vPMEM)。
 
 第 2 代 VM 捨棄第 1 代 VM 所使用的 BIOS 架構，改用新式的 UEFI 開機架構。
 只有特定的 Sku 和大小支援 Gen2 Vm。 檢查[支援的大小清單](../virtual-machines/windows/generation-2.md#generation-2-vm-sizes)，以查看您的 SKU 是否支援或需要 Gen2。
@@ -191,13 +191,13 @@ Azure 支援[第2代（Gen2）虛擬機器（vm）](../virtual-machines/windows/
 az feature register --name Gen2VMPreview --namespace Microsoft.ContainerService
 ```
 
-可能需要幾分鐘的時間，狀態才會顯示為 [已註冊]。 您可以使用 [az feature list](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-list) 命令檢查註冊狀態：
+可能需要幾分鐘的時間，狀態才會顯示為 [已註冊]。 您可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) 命令檢查註冊狀態：
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/Gen2VMPreview')].{Name:name,State:properties.state}"
 ```
 
-當狀態顯示為已註冊時，請使用 [az provider register](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register) 命令重新整理 `Microsoft.ContainerService` 資源提供者的註冊：
+當狀態顯示為已註冊時，請使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) 命令重新整理 `Microsoft.ContainerService` 資源提供者的註冊：
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -215,16 +215,16 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-### <a name="use-gen2-vms-on-new-clusters-preview"></a>在新叢集上使用 Gen2 Vm （預覽）
+### <a name="use-gen2-vms-on-new-clusters-preview"></a>在 (預覽) 的新叢集上使用 Gen2 Vm
 將叢集設定為在建立叢集時，針對選取的 SKU 使用 Gen2 Vm。 使用 `--aks-custom-headers` 旗標，將 Gen2 設定為新叢集上的 VM 世代。
 
 ```azure-cli
 az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_D2s_v3 --aks-custom-headers usegen2vm=true
 ```
 
-如果您想要使用第1代（Gen1） Vm 建立一般叢集，您可以省略自訂標記來執行此動作 `--aks-custom-headers` 。 您也可以選擇新增更多 Gen1 或 Gen2 Vm，如下所示。
+如果您想要使用第1代 (Gen1) Vm 來建立一般叢集，您可以省略自訂標記來執行此動作 `--aks-custom-headers` 。 您也可以選擇新增更多 Gen1 或 Gen2 Vm，如下所示。
 
-### <a name="use-gen2-vms-on-existing-clusters-preview"></a>在現有叢集上使用 Gen2 Vm （預覽）
+### <a name="use-gen2-vms-on-existing-clusters-preview"></a>在現有的叢集上使用 Gen2 Vm (Preview) 
 設定新的節點集區以使用 Gen2 Vm。 使用 `--aks-custom-headers` 旗標，將 Gen2 設定為該節點集區的 VM 世代。
 
 ```azure-cli

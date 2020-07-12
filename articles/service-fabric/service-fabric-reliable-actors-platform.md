@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: 92c717fa2c82dd147acd3c28333e37ccf8dd2e89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 621e325d0b549d2970180a5a40eb09260c1f2ee0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79282298"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253468"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Reliable Acto 如何使用 Service Fabric 平台
 本文說明 Reliable Actors 在 Azure Service Fabric 平台上的運作方式。 Reliable Actors 在裝載于具狀態可靠服務（稱為動作專案*服務*）之執行的架構中執行。 動作項目服務包含管理生命週期和您的動作項目用於發送之訊息所需的所有元件︰
@@ -89,7 +90,7 @@ ActorProxyBase.create(MyActor.class, new ActorId(1234));
 ## <a name="next-steps"></a>後續步驟
 * [動作項目狀態管理](service-fabric-reliable-actors-state-management.md)
 * [執行者生命週期和垃圾收集](service-fabric-reliable-actors-lifecycle.md)
-* [動作項目 API 參考文件](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors?redirectedfrom=MSDN&view=azure-dotnet)
+* [動作項目 API 參考文件](/dotnet/api/microsoft.servicefabric.actors?view=azure-dotnet)
 * [.NET 範例程式碼](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java 範例程式碼 (英文)](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

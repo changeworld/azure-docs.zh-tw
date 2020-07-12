@@ -1,19 +1,20 @@
 ---
 title: 建立 NFS Ubuntu Linux 伺服器磁片區
 titleSuffix: Azure Kubernetes Service
-description: 瞭解如何在 Azure Kubernetes Service （AKS）中手動建立用於 pod 的 NFS Ubuntu Linux 伺服器磁片區
+description: '瞭解如何在 Azure Kubernetes Service (AKS 中，以手動方式建立用於 pod 的 NFS Ubuntu Linux 伺服器磁片區) '
 services: container-service
 author: ozboms
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
-ms.openlocfilehash: 7db3f806df88e5b23012e97ba5c2f14ca65b2508
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e817d572a98ffb8135adf58d13f50ccacbc8746
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80803461"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251989"
 ---
-# <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>以 Azure Kubernetes Service （AKS）手動建立和使用 NFS （網路檔案系統） Linux 伺服器磁片區
+# <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service (AKS，手動建立和使用 NFS (網路檔案系統) Linux 伺服器卷) 
 在容器之間共用資料通常是容器型服務和應用程式的必要元件。 您通常會有各種 pod 需要存取外部持續性磁片區上的相同資訊。    
 雖然 Azure 檔案服務是一個選項，但在 Azure VM 上建立 NFS 伺服器是另一種形式的持續性共用儲存體。 
 
@@ -26,7 +27,7 @@ ms.locfileid: "80803461"
 
 如需使用現有 VNET 進行設定的步驟，請參閱下列檔：在[現有的 vnet 中建立 AKS][aks-virtual-network]叢集和[使用 VNET 對等互連連接虛擬網路][peer-virtual-networks]
 
-它也假設您已建立 Ubuntu Linux 虛擬機器（例如，18.04 LTS）。 設定和大小可以是您的喜好，而且可以透過 Azure 部署。 如需 Linux 快速入門，請參閱[LINUX VM 管理][linux-create]。
+它也假設您已建立 Ubuntu Linux 虛擬機器 (例如 18.04 LTS) 。 設定和大小可以是您的喜好，而且可以透過 Azure 部署。 如需 Linux 快速入門，請參閱[LINUX VM 管理][linux-create]。
 
 如果您先部署 AKS 叢集，則在部署您的 Ubuntu 機器時，Azure 會自動填入 [虛擬網路] 欄位，使其存留在相同的 VNET 中。 但是，如果您想要改為使用對等互連網路，請參閱上述檔。
 
@@ -73,7 +74,7 @@ echo "/export        localhost(rw,async,insecure,fsid=0,crossmnt,no_subtree_chec
 
 nohup service nfs-kernel-server restart
 ```
-伺服器將會重新開機（因為腳本），而且您可以將 NFS 伺服器掛接到 AKS。
+伺服器將會因為腳本) 而重新開機 (，而且您可以將 NFS 伺服器掛接到 AKS。
 
 >[!IMPORTANT]  
 >請務必將**AKS_SUBNET**取代為叢集的正確一個，否則 "*" 會將您的 NFS 伺服器開啟至所有埠和連線。
@@ -96,9 +97,9 @@ chmod +x ~/nfs-server-setup.sh
 
 需要在相同或對等互連的虛擬網路中連接這兩個服務。 如需在相同 VNET 中設定叢集的指示，請參閱：[在現有的 vnet 中建立 AKS][aks-virtual-network]叢集
 
-一旦它們位於相同的虛擬網路（或對等互連）中，您就必須在 AKS 叢集中布建持續性磁片區和持續性磁片區宣告。 然後，容器可以將 NFS 磁片磁碟機掛接到其本機目錄。
+一旦它們位於相同的虛擬網路 (或對等互連) ，您就必須在 AKS 叢集中布建持續性磁片區和持續性磁片區宣告。 然後，容器可以將 NFS 磁片磁碟機掛接到其本機目錄。
 
-以下是持續性磁片區的範例 Kubernetes 定義（此定義會假設您的叢集和 VM 位於相同的 VNET 中）：
+以下是持續性磁片區的範例 Kubernetes 定義 (此定義會假設您的叢集和 VM 位於相同的 VNET) 中：
 
 ```yaml
 apiVersion: v1
@@ -160,10 +161,10 @@ ls -l
 
 <!-- LINKS - external -->
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/volumes/
-[linux-create]: https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm
+[linux-create]: ../virtual-machines/linux/tutorial-manage-vm.md
 [nfs-tutorial]: https://help.ubuntu.com/community/SettingUpNFSHowTo#Pre-Installation_Setup
-[aks-virtual-network]: https://docs.microsoft.com/azure/aks/configure-kubenet#create-an-aks-cluster-in-the-virtual-network
-[peer-virtual-networks]: https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-portal
+[aks-virtual-network]: ./configure-kubenet.md#create-an-aks-cluster-in-the-virtual-network
+[peer-virtual-networks]: ../virtual-network/tutorial-connect-virtual-networks-portal.md
 
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md

@@ -1,19 +1,20 @@
 ---
-title: 在 Azure Kubernetes Service 中使用系統節點集區（AKS）
-description: 瞭解如何在 Azure Kubernetes Service （AKS）中建立和管理系統節點集區
+title: '在 Azure Kubernetes Service (AKS 中使用系統節點集區) '
+description: '瞭解如何在 Azure Kubernetes Service (AKS 中建立和管理系統節點集區) '
 services: container-service
 ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
-ms.openlocfilehash: 9b6270f81e7af8bd508d29510698e6cf9a5a2010
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01dcd6b7b366b7a1ada581ec154409ee7598e7a6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052649"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250833"
 ---
-# <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>管理 Azure Kubernetes Service 中的系統節點集區（AKS）
+# <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS 中管理系統節點集區) 
 
-在 Azure Kubernetes Service （AKS）中，相同設定的節點會群組在一起成為*節點*集區。 節點集區包含執行應用程式的基礎 Vm。 針對您的 AKS 叢集，系統節點集區和使用者節點集區是兩個不同的節點集區模式。 系統節點集區提供裝載重要系統 pod （例如 CoreDNS 和 tunnelfront）的主要目的。 使用者節點集區提供裝載應用程式 pod 的主要目的。 不過，如果您想要在 AKS 叢集中只有一個集區，可以在系統節點集區上排程應用程式 pod。 每個 AKS 叢集至少必須包含一個具有至少一個節點的系統節點集區。
+在 Azure Kubernetes Service (AKS) 中，相同設定的節點會群組在一起成為*節點*集區。 節點集區包含執行應用程式的基礎 Vm。 針對您的 AKS 叢集，系統節點集區和使用者節點集區是兩個不同的節點集區模式。 系統節點集區提供裝載重要系統 pod （例如 CoreDNS 和 tunnelfront）的主要目的。 使用者節點集區提供裝載應用程式 pod 的主要目的。 不過，如果您想要在 AKS 叢集中只有一個集區，可以在系統節點集區上排程應用程式 pod。 每個 AKS 叢集至少必須包含一個具有至少一個節點的系統節點集區。
 
 > [!Important]
 > 如果您在生產環境中針對 AKS 叢集執行單一系統節點集區，建議您針對節點集區使用至少三個節點。
@@ -26,7 +27,7 @@ ms.locfileid: "85052649"
 
 當您建立和管理支援系統節點集區的 AKS 叢集時，適用下列限制。
 
-* 請參閱[配額、虛擬機器大小限制，以及 Azure Kubernetes Service 中的區域可用性（AKS）][quotas-skus-regions]。
+* 請參閱[Azure Kubernetes Service (AKS) 中的配額、虛擬機器大小限制和區域可用性][quotas-skus-regions]。
 * AKS 叢集必須以虛擬機器擴展集作為 VM 類型來建立。
 * 節點集區的名稱只可包含小寫英數位元，且必須以小寫字母開頭。 針對 Linux 節點集區，長度必須介於1到12個字元之間。 對於 Windows 節點集區，長度必須介於1到6個字元之間。
 * 必須使用2020-03-01 或更高的 API 版本來設定節點集區模式。 在2020-03-01 之前的 API 版本上建立的叢集只會包含使用者節點集區，但可以遵循[更新集區模式步驟](#update-existing-cluster-system-and-user-node-pools)來遷移以包含系統節點集區。
@@ -177,7 +178,7 @@ az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster -n mynodep
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 [quotas-skus-regions]: quotas-skus-regions.md
 [supported-versions]: supported-kubernetes-versions.md
-[tag-limitation]: ../azure-resource-manager/resource-group-using-tags.md
+[tag-limitation]: ../azure-resource-manager/management/tag-resources.md
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
 [use-multiple-node-pools]: use-multiple-node-pools.md

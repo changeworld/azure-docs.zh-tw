@@ -5,11 +5,12 @@ author: suchiagicha
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
-ms.openlocfilehash: ee2f1d70f4094ccc7d80edbfaf16509b5124f607
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba68df53f1f21b9ff360772fe1a60c93c8df74d3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75609616"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252210"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>保護 C# 服務中的服務遠端通訊
 > [!div class="op_single_selector"]
@@ -199,4 +200,4 @@ ms.locfileid: "75609616"
     ```
 
 
-接著請參閱[在 Reliable Services 中搭配 OWIN 使用 Web API](service-fabric-reliable-services-communication-webapi.md)。
+接著請參閱[在 Reliable Services 中搭配 OWIN 使用 Web API](./service-fabric-reliable-services-communication-aspnetcore.md)。

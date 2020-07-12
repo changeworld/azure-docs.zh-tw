@@ -3,16 +3,16 @@ title: 搭配應用程式使用受控識別
 description: 如何在 Azure 中使用受控識別 Service Fabric 應用程式代碼來存取 Azure 服務。
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: 8f1f355d6add16f3b3ec25bc569f9b198a8d6778
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07f960c01367ab42a434a8c2e1e276d9c5f7bd11
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461560"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253638"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>如何利用 Service Fabric 應用程式的受控識別來存取 Azure 服務
 
-Service Fabric 應用程式可以利用受控識別來存取支援 Azure Active Directory 型驗證的其他 Azure 資源。 應用程式可以取得代表其身分識別的[存取權杖](../active-directory/develop/developer-glossary.md#access-token)，這可能是系統指派或使用者指派，並使用它做為「持有人」權杖，向另一個服務（也稱為[受保護的資源伺服器](../active-directory/develop/developer-glossary.md#resource-server)）驗證其本身。 權杖代表指派給 Service Fabric 應用程式的身分識別，而且只會發行至共用該身分識別的 Azure 資源（包括 SF 應用程式）。 如需受控識別的詳細描述，以及系統指派和使用者指派的識別之間的差異，請參閱[受控識別總覽](../active-directory/managed-identities-azure-resources/overview.md)檔。 在本文中，我們會將受管理身分識別功能的 Service Fabric 應用程式稱為[用戶端應用](../active-directory/develop/developer-glossary.md#client-application)程式。
+Service Fabric 應用程式可以利用受控識別來存取支援 Azure Active Directory 型驗證的其他 Azure 資源。 應用程式可以取得代表其身分識別的[存取權杖](../active-directory/develop/developer-glossary.md#access-token)，這可能是系統指派或使用者指派，並使用它做為「持有人」權杖，向另一個服務（也稱為[受保護的資源伺服器](../active-directory/develop/developer-glossary.md#resource-server)）驗證其本身。 權杖代表指派給 Service Fabric 應用程式的身分識別，而且只會發行至 Azure 資源， (包括共用該身分識別的 SF 應用程式) 。 如需受控識別的詳細描述，以及系統指派和使用者指派的識別之間的差異，請參閱[受控識別總覽](../active-directory/managed-identities-azure-resources/overview.md)檔。 在本文中，我們會將受管理身分識別功能的 Service Fabric 應用程式稱為[用戶端應用](../active-directory/develop/developer-glossary.md#client-application)程式。
 
 > [!IMPORTANT]
 > 受控識別代表與包含資源之訂用帳戶相關聯之對應 Azure AD 租使用者中的 Azure 資源與服務主體之間的關聯。 因此，在 Service Fabric 的內容中，受管理的身分識別僅支援部署為 Azure 資源的應用程式。 
@@ -32,15 +32,15 @@ Service Fabric 應用程式可以利用受控識別來存取支援 Azure Active 
 > 應用程式程式碼應該將 ' IDENTITY_HEADER ' 環境變數的值視為機密資料-它不應該記錄或簡易性。 驗證碼沒有本機節點以外的值，或裝載服務的進程終止之後，但它確實代表 Service Fabric 服務的身分識別，因此應該使用與存取權杖本身相同的預防措施來處理。
 
 若要取得權杖，用戶端會執行下列步驟：
-- 將受控識別端點（IDENTITY_ENDPOINT 值）與 API 版本和權杖所需的資源（物件）串連，以形成 URI
-- 為指定的 URI 建立 GET HTTP （s）要求
+- 藉由將受控識別端點 (IDENTITY_ENDPOINT 值) 與 API 版本以及) 權杖所需的資源 (物件進行串連，形成 URI
+- 為指定的 URI 建立 GET HTTP (s) 要求
 - 新增適當的伺服器憑證驗證邏輯
-- 將驗證碼（IDENTITY_HEADER 值）新增為要求的標頭
+- 新增驗證程式代碼 (IDENTITY_HEADER 值) 做為要求的標頭
 - 提交要求
 
 成功的回應會包含代表所產生之存取權杖的 JSON 承載，以及描述它的中繼資料。 失敗的回應也會包含失敗的說明。 如需錯誤處理的其他詳細資料，請參閱下文。
 
-存取權杖會由不同層級（節點、叢集、資源提供者服務）的 Service Fabric 進行快取，因此成功的回應不一定表示已直接發出權杖以回應使用者應用程式的要求。 權杖將會快取到低於其存留期，因此應用程式保證會收到有效的權杖。 建議應用程式程式碼快取它所取得的任何存取權杖;快取索引鍵應該包含物件的（的衍生）。 
+存取權杖將會由 Service Fabric (節點、叢集、資源提供者服務) 的各種層級進行快取，因此成功的回應不一定表示已直接發出權杖以回應使用者應用程式的要求。 權杖將會快取到低於其存留期，因此應用程式保證會收到有效的權杖。 建議應用程式程式碼快取它所取得的任何存取權杖;快取索引鍵應該包含 () 物件的衍生。 
 
 範例要求：
 ```http
@@ -53,7 +53,7 @@ GET 'https://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-0
 | `GET` | HTTP 指令動詞，指出您想要擷取端點中的資料。 在此案例中是 OAuth 存取權杖。 | 
 | `https://localhost:2377/metadata/identity/oauth2/token` | 透過 IDENTITY_ENDPOINT 環境變數提供 Service Fabric 應用程式的受控識別端點。 |
 | `api-version` | 查詢字串參數，指定受控識別權杖服務的 API 版本;目前唯一接受的值是 `2019-07-01-preview` ，而且可能會變更。 |
-| `resource` | 查詢字串參數，指出目標資源的應用程式識別碼 URI。 這會反映為 `aud` 所發行權杖的（物件）宣告。 此範例會要求權杖來存取 Azure Key Vault，其應用程式識別碼 URI 為 HTTPs： \/ /vault.azure.net/。 |
+| `resource` | 查詢字串參數，指出目標資源的應用程式識別碼 URI。 這會反映為 `aud` (物件) 已發行權杖的宣告。 此範例會要求權杖來存取 Azure Key Vault，其應用程式識別碼 URI 為 HTTPs： \/ /vault.azure.net/。 |
 | `Secret` | Service Fabric 服務的 Service Fabric 受控識別權杖服務所需的 HTTP 要求標頭欄位，用來驗證呼叫者。 此值是由 SF 執行時間透過 IDENTITY_HEADER 環境變數提供。 |
 
 
@@ -72,9 +72,9 @@ Content-Type: application/json
 
 | 元素 | 描述 |
 | ------- | ----------- |
-| `token_type` | Token 的類型;在此情況下，就是「持有人」存取權杖，這表示此權杖的展示者（「持有人」）是權杖的預定主旨。 |
+| `token_type` | Token 的類型;在此情況下，就是「持有人」存取權杖，這表示 ( 「持有人」此權杖的 ) 是權杖的預定主旨。 |
 | `access_token` | 所要求的存取權杖。 呼叫受保護的 REST API 時，權杖會內嵌在 `Authorization` 要求標頭欄位中成為「持有人」權杖，以允許 API 驗證呼叫端。 | 
-| `expires_on` | 存取權杖的到期時間戳記;以 "1970-01-01T0：0： 0Z UTC" 的秒數表示，並對應至權杖的宣告 `exp` 。 在此情況下，此權杖會在 2019-08-08T06：10： 11 + 00：00（在 RFC 3339 中）到期|
+| `expires_on` | 存取權杖的到期時間戳記;以 "1970-01-01T0：0： 0Z UTC" 的秒數表示，並對應至權杖的宣告 `exp` 。 在此情況下，此權杖會在 2019-08-08T06：10： 11 + 00： 00 (在 RFC 3339 中到期) |
 | `resource` | 發出存取權杖的資源（透過 `resource` 要求的查詢字串參數指定）; 對應至權杖的 ' aud ' 宣告。 |
 
 
@@ -328,7 +328,7 @@ HTTP 回應標頭的 [狀態碼] 欄位會指出要求的成功狀態。「200�
 | 404 找不到。 | 不明的驗證碼，或未將受控識別指派給應用程式。 | 更正應用程式安裝或權杖取得代碼。 |
 | 429 要求太多。 |  已達到節流限制，由 AAD 或 SF 強加。 | 使用指數輪詢重試。 請參閱下面的指引。 |
 | 要求中的 4xx 錯誤。 | 一個或多個要求參數不正確。 | 請勿重試。  檢查錯誤詳細資料以取得更多資訊。  4xx 錯誤是設計階段錯誤。|
-| 來自服務的5xx 錯誤。 | 受控識別子系統或 Azure Active Directory 傳回暫時性錯誤。 | 很容易就能在短時間後重試。 您可能會在重試時遇到節流狀況（429）。|
+| 來自服務的5xx 錯誤。 | 受控識別子系統或 Azure Active Directory 傳回暫時性錯誤。 | 很容易就能在短時間後重試。 在重試時，您可能會遇到 (429) 的節流狀況。|
 
 如果發生錯誤，對應的 HTTP 回應主體會包含 JSON 物件，其中含有錯誤詳細資料：
 
@@ -349,15 +349,15 @@ HTTP 回應標頭的 [狀態碼] 欄位會指出要求的成功狀態。「200�
 | ----------- | ----- | ----------------- |
 | SecretHeaderNotFound | 在要求標頭中找不到秘密。 | 要求未提供驗證碼。 | 
 | ManagedIdentityNotFound | 找不到指定之應用程式主機的受控識別。 | 應用程式沒有身分識別，或驗證碼不明。 |
-| ArgumentNullOrEmpty | 參數 ' resource ' 不應為 null 或空字串。 | 要求中未提供資源（物件）。 |
+| ArgumentNullOrEmpty | 參數 ' resource ' 不應為 null 或空字串。 | 要求中未提供資源 (物件) 。 |
 | InvalidApiVersion | 不支援 api 版本 ' '。 支援的版本為 ' 2019-07-01-preview '。 | 要求 URI 中指定的 API 版本遺失或不受支援。 |
-| InternalServerError | 發生錯誤。 | 受控識別子系統中發生錯誤，可能是在 Service Fabric 堆疊外部。 最可能的原因是為資源指定了不正確的值（檢查尾端的 '/'？） | 
+| InternalServerError | 發生錯誤。 | 受控識別子系統中發生錯誤，可能是在 Service Fabric 堆疊外部。 最可能的原因是為資源指定的值不正確 (檢查尾端的 '/'？ )  | 
 
 ## <a name="retry-guidance"></a>重試指引 
 
-通常唯一可重試的錯誤碼為429（要求太多）;內部伺服器錯誤/5xx 錯誤碼可能是可重試的，但原因可能是永久性的。 
+通常唯一可重試的錯誤碼為 429 (太多要求) ;內部伺服器錯誤/5xx 錯誤碼可能是可重試的，但原因可能是永久性的。 
 
-節流限制適用于對受控識別子系統發出的呼叫數，特別是「上游」相依性（受控識別 Azure 服務或安全權杖服務）。 Service Fabric 會在管線中的各種層級快取權杖，但基於相關元件的分散式本質，呼叫者可能會遇到不一致的節流回應（也就是在應用程式的一個節點/實例上進行節流處理，但在要求相同身分識別的權杖時，不會在不同的節點上）。設定節流條件時，來自相同應用程式的後續要求可能會失敗，並出現 HTTP 狀態碼429（太多要求），直到清除該條件為止。  
+節流限制適用于對受控識別子系統發出的呼叫數，特別是「上游」相依性 (受控識別 Azure 服務或安全權杖服務) 。 Service Fabric 會在管線中的不同層級快取權杖，但基於相關元件的分散式本質，呼叫者可能會遇到不一致的節流回應 (也就是在應用程式的一個節點/實例上進行節流，但在要求相同身分識別的權杖時，不是在不同的節點上。 ) 設定節流條件時，來自相同應用程式的後續要求可能會失敗，並出現 HTTP 狀態碼 429 (太多要求，直到清除該條件為止。)   
 
 建議因為節流會以指數輪詢重試而導致要求失敗，如下所示： 
 
@@ -371,7 +371,7 @@ HTTP 回應標頭的 [狀態碼] 欄位會指出要求的成功狀態。「200�
 | 5 | 等候16秒後重試 |
 
 ## <a name="resource-ids-for-azure-services"></a>Azure 服務的資源識別碼
-如需支援 Azure AD 的資源清單及其各自的資源識別碼，請參閱[支援 Azure AD 驗證的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-msi.md)。
+如需支援 Azure AD 的資源清單及其各自的資源識別碼，請參閱[支援 Azure AD 驗證的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)。
 
 ## <a name="next-steps"></a>後續步驟
 * [使用系統指派的受控識別來部署 Azure Service Fabric 應用程式](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)

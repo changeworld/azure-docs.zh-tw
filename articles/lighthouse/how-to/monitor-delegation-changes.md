@@ -1,14 +1,14 @@
 ---
 title: 監視管理租使用者中的委派變更
 description: 瞭解如何監視客戶租使用者的委派活動與您的管理租使用者。
-ms.date: 07/07/2020
+ms.date: 07/10/2020
 ms.topic: how-to
-ms.openlocfilehash: b30cbc025f97ab76be55f0f83e15603b40092ce3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 63b19f56538f060a158fd665a9bef3bf43a9d087
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105161"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252278"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>監視管理租使用者中的委派變更
 
@@ -16,18 +16,18 @@ ms.locfileid: "86105161"
 
 在管理租使用者中， [Azure 活動記錄](../../azure-monitor/platform/platform-logs-overview.md)會追蹤租使用者層級的委派活動。 此記錄的活動包含所有客戶租使用者中新增或移除的委派。
 
-本主題說明在您的租使用者（所有客戶）上監視委派活動所需的許可權，以及這麼做的最佳作法。 其中也包含範例腳本，其中顯示查詢和報告此資料的一種方法。
+本主題說明監視您的租使用者在所有客戶中 (所需的許可權) 以及執行此作業的最佳作法。 其中也包含範例腳本，其中顯示查詢和報告此資料的一種方法。
 
 > [!IMPORTANT]
 > 所有這些步驟都必須在您的管理租使用者中執行，而不是在任何客戶租使用者中執行。
 
 ## <a name="enable-access-to-tenant-level-data"></a>啟用租使用者層級資料的存取
 
-若要存取租使用者層級的活動記錄資料，必須在根範圍（/）將[監視讀取器](../../role-based-access-control/built-in-roles.md#monitoring-reader)內建角色指派給帳戶。 此指派必須由具有其他提高存取權的全域管理員角色的使用者執行。
+若要存取租使用者層級的活動記錄資料，必須在根範圍 (/) ，將[監視讀取器](../../role-based-access-control/built-in-roles.md#monitoring-reader)內建角色指派給帳戶。 此指派必須由具有其他提高存取權的全域管理員角色的使用者執行。
 
 ### <a name="elevate-access-for-a-global-administrator-account"></a>提升全域管理員帳戶的存取權
 
-若要在根範圍（/）指派角色，您必須具有具有更高存取權的全域管理員角色。 只有當您需要進行角色指派時，才應新增這個提高許可權的存取權，然後在完成時移除。
+若要在根範圍 (/) 指派角色，您必須具有具有提高存取權的全域管理員角色。 只有當您需要進行角色指派時，才應新增這個提高許可權的存取權，然後在完成時移除。
 
 如需新增和移除提高許可權的詳細指示，請參閱提高[存取權以管理所有 Azure 訂用帳戶和管理群組](../../role-based-access-control/elevate-access-global-admin.md)。
 
@@ -73,25 +73,25 @@ az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role
 
 一旦您建立了新的服務主體帳戶，並讓它具有管理租使用者之根範圍的監視讀取器存取權，就可以用它來查詢和報告您租使用者中的委派活動。 
 
-[此 Azure PowerShell 腳本](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes)可用來查詢過去1天的活動，以及報告任何新增或移除的委派（或失敗的嘗試）。 它會查詢[租使用者活動記錄](/rest/api/monitor/TenantActivityLogs/List)資料，然後建立下列值來報告新增或移除的委派：
+[此 Azure PowerShell 腳本](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes)可用來查詢過去1天的活動，以及報告任何新增或移除的委派 (或未成功) 的嘗試。 它會查詢[租使用者活動記錄](/rest/api/monitor/TenantActivityLogs/List)資料，然後建立下列值來報告新增或移除的委派：
 
 - **DelegatedResourceId**：委派的訂用帳戶或資源群組的識別碼
 - **CustomerTenantId**：客戶租使用者識別碼
 - **CustomerSubscriptionId**：已委派或包含已委派資源群組的訂用帳戶識別碼
-- **CustomerDelegationStatus**：委派資源的狀態變更（成功或失敗）
+- **CustomerDelegationStatus**：委派資源的狀態變更 ([成功] 或 [失敗]) 
 - **EventTimeStamp**：記錄委派變更的日期和時間
 
 查詢此資料時，請記住：
 
 - 如果在單一部署中委派多個資源群組，則會針對每個資源群組傳回個別的專案。
-- 對先前委派所做的變更（例如更新許可權結構）將會記錄為新增的委派。
-- 如上所述，帳戶必須在根範圍（/）擁有「監視讀取器」內建角色，才能存取此租使用者層級的資料。
-- 您可以在自己的工作流程和報告中使用此資料。 例如，您可以使用[HTTP 資料收集器 API （公開預覽）](../../azure-monitor/platform/data-collector-api.md)來記錄要從 REST API 用戶端 Azure 監視器的資料，然後使用[動作群組](../../azure-monitor/platform/action-groups.md)來建立通知或警示。
+- 對先前委派 (進行的變更（例如更新許可權結構) 會記錄為新增的委派）。
+- 如先前所述，帳戶必須在根範圍 (/) 的「監視讀取器」內建角色，才能存取此租使用者層級的資料。
+- 您可以在自己的工作流程和報告中使用此資料。 例如，您可以使用[HTTP 資料收集器 API (公開預覽) ](../../azure-monitor/platform/data-collector-api.md) ，將資料記錄到來自 REST API 用戶端的 Azure 監視器，然後使用[動作群組](../../azure-monitor/platform/action-groups.md)來建立通知或警示。
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
 
-# Azure Lighthouse: Query Tenant Activity Log for registered/unregistered delegations for the past 1 day
+# Azure Lighthouse: Query Tenant Activity Log for registered/unregistered delegations for the last 1 day
 
 $GetDate = (Get-Date).AddDays((-1))
 
@@ -106,54 +106,58 @@ $profileClient = [Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClien
 $token = $profileClient.AcquireAccessToken($currentContext.Tenant.Id)
 
 $listOperations = @{
-    Uri = "https://management.azure.com/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&`$filter=eventTimestamp ge '$($dateFormatForQuery)'"
+    Uri     = "https://management.azure.com/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&`$filter=eventTimestamp ge '$($dateFormatForQuery)'"
     Headers = @{
-        Authorization = "Bearer $($token.AccessToken)"
+        Authorization  = "Bearer $($token.AccessToken)"
         'Content-Type' = 'application/json'
     }
-    Method = 'GET'
+    Method  = 'GET'
 }
 $list = Invoke-RestMethod @listOperations
-$showOperations = $list.value
 
-if ($showOperations.operationName.value -eq "Microsoft.Resources/tenants/register/action")
-{
-    $registerOutputs  = $showOperations | Where-Object -FilterScript {$_.eventName.value -eq "EndRequest" -and $_.resourceType.value -and $_.operationName.value -eq "Microsoft.Resources/tenants/register/action"}
-    foreach ($registerOutput in $registerOutputs)
-    {
+# First link can be empty - and point to a next link (or potentially multiple pages)
+# While you get more data - continue fetching and add result
+while($list.nextLink){
+    $list2 = Invoke-RestMethod $list.nextLink -Headers $listOperations.Headers -Method Get
+    $data+=$list2.value;
+    $list.nextLink = $list2.nextlink;
+}
+
+$showOperations = $data;
+
+if ($showOperations.operationName.value -eq "Microsoft.Resources/tenants/register/action") {
+    $registerOutputs = $showOperations | Where-Object -FilterScript { $_.eventName.value -eq "EndRequest" -and $_.resourceType.value -and $_.operationName.value -eq "Microsoft.Resources/tenants/register/action" }
+    foreach ($registerOutput in $registerOutputs) {
+        $eventDescription = $registerOutput.description | ConvertFrom-Json;
     $registerOutputdata = [pscustomobject]@{
-        Event = "An Azure customer has delegated resources to your tenant";
-        DelegatedResourceId = $registerOutput.description |%{$_.split('"')[11]};
-        CustomerTenantId = $registerOutput.description |%{$_.split('"')[7]};
-        CustomerSubscriptionId = $registerOutput.subscriptionId;
+        Event                    = "An Azure customer has registered delegated resources to your Azure tenant";
+        DelegatedResourceId      = $eventDescription.delegationResourceId; 
+        CustomerTenantId         = $eventDescription.subscriptionTenantId;
+        CustomerSubscriptionId   = $eventDescription.subscriptionId;
         CustomerDelegationStatus = $registerOutput.status.value;
-        EventTimeStamp = $registerOutput.eventTimestamp;
+        EventTimeStamp           = $registerOutput.eventTimestamp;
         }
         $registerOutputdata | Format-List
     }
 }
-if ($showOperations.operationName.value -eq "Microsoft.Resources/tenants/unregister/action") 
-{
-    $unregisterOutputs  = $showOperations | Where-Object -FilterScript {$_.eventName.value -eq "EndRequest" -and $_.resourceType.value -and $_.operationName.value -eq "Microsoft.Resources/tenants/unregister/action"}
-    foreach ($unregisterOutput in $unregisterOutputs)
-    {
+if ($showOperations.operationName.value -eq "Microsoft.Resources/tenants/unregister/action") {
+    $unregisterOutputs = $showOperations | Where-Object -FilterScript { $_.eventName.value -eq "EndRequest" -and $_.resourceType.value -and $_.operationName.value -eq "Microsoft.Resources/tenants/unregister/action" }
+    foreach ($unregisterOutput in $unregisterOutputs) {
+        $eventDescription = $registerOutput.description | ConvertFrom-Json;
     $unregisterOutputdata = [pscustomobject]@{
-        Event = "An Azure customer has removed delegated resources from your tenant";
-        DelegatedResourceId = $unregisterOutput.description |%{$_.split('"')[11]};
-        CustomerTenantId = $unregisterOutput.description |%{$_.split('"')[7]};
-        CustomerSubscriptionId = $unregisterOutput.subscriptionId;
+        Event                    = "An Azure customer has unregistered delegated resources from your Azure tenant";
+        DelegatedResourceId      = $eventDescription.delegationResourceId;
+        CustomerTenantId         = $eventDescription.subscriptionTenantId;
+        CustomerSubscriptionId   = $eventDescription.subscriptionId;
         CustomerDelegationStatus = $unregisterOutput.status.value;
-        EventTimeStamp = $unregisterOutput.eventTimestamp;
+        EventTimeStamp           = $unregisterOutput.eventTimestamp;
         }
         $unregisterOutputdata | Format-List
     }
 }
-else 
-{
-    Write-Output "No new delegation changes."
-}   
-
-
+else {
+    Write-Output "No new delegation events for tenant: $($currentContext.Tenant.TenantId)"
+}
 ```
 
 ## <a name="next-steps"></a>後續步驟

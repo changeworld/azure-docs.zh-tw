@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 48a83fad3395f6ecf06fb1f1ba95aa1b06a53431
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c9df3393a0554d2e65b3918c6760885f89e11ed
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81259131"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254737"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>如何整合 Azure API 管理與 Azure Application Insights
 
@@ -50,7 +51,7 @@ ms.locfileid: "81259131"
     ![App Insights 記錄器](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
 > [!NOTE]
-> 在幕後，[記錄器](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate)實體會建立於 API 管理執行個體，其中包含 Application Insights 執行個體的檢測金鑰。
+> 在幕後，[記錄器](/rest/api/apimanagement/2019-12-01/logger/createorupdate)實體會建立於 API 管理執行個體，其中包含 Application Insights 執行個體的檢測金鑰。
 
 ## <a name="enable-application-insights-logging-for-your-api"></a>為您的 API 啟用 Application Insights 記錄功能
 
@@ -63,18 +64,18 @@ ms.locfileid: "81259131"
 6. 選取 [啟用]**** 方塊。
 7. 從 [目的地]**** 下拉式清單中，選取已連結的記錄器。
 8. 輸入 **100** 作為 [取樣 (%)]****，然後勾選 [一律記錄錯誤]**** 核取方塊。
-9. 按一下 [檔案] 。
+9. 按一下 [儲存]。
 
 > [!WARNING]
 > 覆寫 [本文的前幾個位元組]**** 欄位中的預設值 **0**，可能會大幅降低您 API 的效能。
 
 > [!NOTE]
-> 在幕後，名為 'applicationinsights' 的[診斷](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate)實體會建立於 API 層級。
+> 在幕後，名為 'applicationinsights' 的[診斷](/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate)實體會建立於 API 層級。
 
-| 設定名稱                        | 值類型                        | Description                                                                                                                                                                                                                                                                                                                                      |
+| 設定名稱                        | 值類型                        | 描述                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 啟用                              | boolean                           | 指定是否要啟用此 API 的記錄功能。                                                                                                                                                                                                                                                                                                |
-| Destination                         | Azure Application Insights 記錄器 | 指定要使用的 Azure Application Insights 記錄器                                                                                                                                                                                                                                                                                           |
+| 目的地                         | Azure Application Insights 記錄器 | 指定要使用的 Azure Application Insights 記錄器                                                                                                                                                                                                                                                                                           |
 | 取樣 (%)                        | decimal                           | 值為 0 到 100 (百分比)。 <br/> 指定將記錄至 Azure Application Insights 的要求百分比。 取樣為 0% 時，表示不會記錄任何要求，取樣為 100% 時，則表示會記錄所有要求。 <br/> 此設定可用來降低將要求記錄至 Azure Application Insights 所帶來的效能影響 (請參閱下一節)。 |
 | 一律記錄錯誤                   | boolean                           | 如果選取此設定，則不論 [取樣]**** 設定為何，都會將所有失敗都記錄至 Azure Application Insights。                                                                                                                                                                                                                  |
 | 基本選項：標頭              | list                              | 指定針對要求和回應，將記錄至 Azure Application Insights 的標頭。  預設值：不會記錄任何標頭。                                                                                                                                                                                                             |
@@ -125,5 +126,5 @@ Azure Application Insights 會接收：
 
 ## <a name="next-steps"></a>後續步驟
 
-+ 深入了解 [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/)。
++ 深入了解 [Azure Application Insights](/azure/application-insights/)。
 + 考慮[使用 Azure 事件中樞來進行記錄](api-management-howto-log-event-hubs.md)。

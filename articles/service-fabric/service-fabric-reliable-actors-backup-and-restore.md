@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vturecek
-ms.openlocfilehash: 41ba3f9c7d362756b800005d0c140c23dd96caa6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 632cd7b09462ae8ad1fd142c2946833781b53dd1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75370454"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253519"
 ---
 # <a name="implement-reliable-actors-backup-and-restore"></a>實作 Reliable Actors 備份與還原
 
@@ -111,7 +112,7 @@ myActorServiceProxy.backupActorsAsync();
 如需有關 Reliable Actors 的詳細資訊，請參閱下列文章：
 * [動作項目狀態管理](service-fabric-reliable-actors-state-management.md)
 * [執行者生命週期和垃圾收集](service-fabric-reliable-actors-lifecycle.md)
-* [動作項目 API 參考文件](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [動作項目 API 參考文件](/previous-versions/azure/dn971626(v=azure.100))
 * [.NET 範例程式碼](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java 範例程式碼 (英文)](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

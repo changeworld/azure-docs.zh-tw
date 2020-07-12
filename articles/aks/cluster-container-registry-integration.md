@@ -1,16 +1,16 @@
 ---
 title: 將 Azure Container Registry 與 Azure Kubernetes Service 整合
-description: 瞭解如何整合 Azure Kubernetes Service （AKS）與 Azure Container Registry （ACR）
+description: '瞭解如何整合 Azure Kubernetes Service (AKS) 與 Azure Container Registry (ACR) '
 services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: aa2b82e70b1a1372076483c7405c32b66da377af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a60f0e2f40fa1a4945198a4b5738b4f7b65b05ed
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84974409"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251836"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>從 Azure Kubernetes Service 對 Azure Container Registry 進行驗證
 
@@ -148,4 +148,4 @@ nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 * 深入瞭解[ACR 健全狀況](../container-registry/container-registry-check-health.md)
 
 <!-- LINKS - external -->
-[AKS AKS CLI]:  https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create
+[AKS AKS CLI]: /cli/azure/aks?view=azure-cli-latest#az-aks-create

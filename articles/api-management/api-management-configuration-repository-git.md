@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: c1a9f3e76622523dde03cc2a639cce33227dff5f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 183a3561a7c01d8f0911a70846384cf8ebc7dd9c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649229"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254838"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>如何使用 Git 儲存和設定 API 管理服務組態
 
@@ -141,7 +142,7 @@ git push
 
 一旦您的本機變更被認可並且推送至伺服器儲存機制，您可以將它們部署到您的 API 管理服務執行個體。
 
-如需使用 REST API 執行此作業的詳細資訊，請參閱 [使用 REST API 將 Git 變更部署至組態資料庫](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/tenantconfiguration)。
+如需使用 REST API 執行此作業的詳細資訊，請參閱 [使用 REST API 將 Git 變更部署至組態資料庫](/rest/api/apimanagement/2019-12-01/tenantconfiguration)。
 
 ## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>本機 Git 儲存機制的檔案和資料夾結構參考
 
@@ -171,8 +172,8 @@ git push
 > [!NOTE]
 > 下列實體不包含在 Git 儲存機制，因此無法使用 Git 來設定。
 >
-> * [使用者](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user)
-> * [訂用帳戶](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription)
+> * [使用者](/rest/api/apimanagement/2019-12-01/user)
+> * [訂用帳戶](/rest/api/apimanagement/2019-12-01/subscription)
 > * 具名值
 > * 樣式以外的開發人員入口網站實體
 >
@@ -221,15 +222,15 @@ git push
 ### <a name="apis-folder"></a>apis 資料夾
 `apis` 資料夾包含服務執行個體中每個 API 的資料夾，其中包含下列項目。
 
-* `apis\<api name>\configuration.json` - 這是 API 的組態，而且包含後端服務 URL 和作業的相關資訊。 此資訊與當您以 `application/json` 格式的 `export=true` 呼叫[取得特定 API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apis/get) 時傳回的資訊相同。
-* `apis\<api name>\api.description.html` - 這是 API 的說明，並會對應至 [API 實體](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.entityproperty)的 `description` 屬性。
-* `apis\<api name>\operations\` - 此資料夾包含 `<operation name>.description.html` 檔案，該檔案對應至 API 中的作業。 每個檔案包含 API 中單一作業的說明，其會對應至 REST API 中[作業實體](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties)的 `description` 屬性。
+* `apis\<api name>\configuration.json` - 這是 API 的組態，而且包含後端服務 URL 和作業的相關資訊。 此資訊與當您以 `application/json` 格式的 `export=true` 呼叫[取得特定 API](/rest/api/apimanagement/2019-12-01/apis/get) 時傳回的資訊相同。
+* `apis\<api name>\api.description.html` - 這是 API 的說明，並會對應至 [API 實體](/java/api/com.microsoft.azure.storage.table.entityproperty)的 `description` 屬性。
+* `apis\<api name>\operations\` - 此資料夾包含 `<operation name>.description.html` 檔案，該檔案對應至 API 中的作業。 每個檔案包含 API 中單一作業的說明，其會對應至 REST API 中[作業實體](/rest/api/visualstudio/operations/list#operationproperties)的 `description` 屬性。
 
 ### <a name="groups-folder"></a>群組資料夾
 `groups` 資料夾包含服務執行個體中定義的每個群組的資料夾。
 
-* `groups\<group name>\configuration.json` - 這是群組的組態。 此資訊與當您呼叫 [取得特定群組](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/group/get) 作業時傳回的資訊相同。
-* `groups\<group name>\description.html` - 這是群組的說明，並會對應至[群組實體](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity)的 `description` 屬性。
+* `groups\<group name>\configuration.json` - 這是群組的組態。 此資訊與當您呼叫 [取得特定群組](/rest/api/apimanagement/2019-12-01/group/get) 作業時傳回的資訊相同。
+* `groups\<group name>\description.html` - 這是群組的說明，並會對應至[群組實體](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity)的 `description` 屬性。
 
 ### <a name="policies-folder"></a>原則資料夾
 `policies` 資料夾包含您的服務執行個體的原則陳述式。
@@ -248,8 +249,8 @@ git push
 ### <a name="products-folder"></a>產品資料夾
 `products` 資料夾包含服務執行個體中定義的每個產品的資料夾。
 
-* `products\<product name>\configuration.json` - 這是產品的組態。 此資訊與當您呼叫 [取得特定產品](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/product/get) 作業時傳回的資訊相同。
-* `products\<product name>\product.description.html` - 這是產品的說明，並會對應至 REST API 中[產品實體](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity)的 `description` 屬性。
+* `products\<product name>\configuration.json` - 這是產品的組態。 此資訊與當您呼叫 [取得特定產品](/rest/api/apimanagement/2019-12-01/product/get) 作業時傳回的資訊相同。
+* `products\<product name>\product.description.html` - 這是產品的說明，並會對應至 REST API 中[產品實體](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity)的 `description` 屬性。
 
 ### <a name="templates"></a>範本
 `templates` 資料夾包含服務執行個體的 [電子郵件範本](api-management-howto-configure-notifications.md) 的組態。
@@ -261,8 +262,8 @@ git push
 如需管理您的服務執行個體的其他方法的詳細資訊，請參閱︰
 
 * 使用下列 PowerShell Cmdlet 管理您的服務執行個體
-  * [服務部署 PowerShell Cmdlet 參考](https://docs.microsoft.com/powershell/module/wds)
-  * [服務管理 PowerShell Cmdlet 參考](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)
+  * [服務部署 PowerShell Cmdlet 參考](/powershell/module/wds)
+  * [服務管理 PowerShell Cmdlet 參考](/powershell/azure/servicemanagement/overview)
 * 使用 REST API 管理您的服務執行個體
   * [API 管理 REST API 參考](/rest/api/apimanagement/)
 
@@ -280,7 +281,3 @@ git push
 [api-management-identity-settings]: ./media/api-management-configuration-repository-git/api-management-identity-settings.png
 [api-management-delegation-settings]: ./media/api-management-configuration-repository-git/api-management-delegation-settings.png
 [api-management-git-icon-enable]: ./media/api-management-configuration-repository-git/api-management-git-icon-enable.png
-
-
-
-

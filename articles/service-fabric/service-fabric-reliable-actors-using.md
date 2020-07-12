@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 9f5f9e00c374b16026f22d4efdee51ec94d2902a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8bf54f9909125030e067bc483ca2fb7e3dc68a7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79502280"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253349"
 ---
 # <a name="implement-service-level-features-in-your-actor-service"></a>在動作項目服務中實作服務層級功能
 
@@ -215,7 +215,7 @@ public class Program
 
 * [動作項目狀態管理](service-fabric-reliable-actors-state-management.md)
 * [執行者生命週期和垃圾收集](service-fabric-reliable-actors-lifecycle.md)
-* [動作項目 API 參考文件](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [動作項目 API 參考文件](/previous-versions/azure/dn971626(v=azure.100))
 * [.NET 範例程式碼](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java 範例程式碼 (英文)](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

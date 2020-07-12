@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 0d59275f25931a11b2d551a2e9eb019838e4c1b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3f19d1240c2dcf1e62d5723c40b4f7c8b2154f0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75433875"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253281"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>使用 Reliable Services 在 C# 中進行服務遠端處理
 
@@ -64,7 +65,7 @@ class MyService : StatelessService, IMyService
 ```
 
 > [!NOTE]
-> 服務介面中的引數和傳回類型可以是任何簡單、複雜或自訂的類型，但必須能夠由 .NET [DataContractSerializer](https://msdn.microsoft.com/library/ms731923.aspx) 序列化。
+> 服務介面中的引數和傳回類型可以是任何簡單、複雜或自訂的類型，但必須能夠由 .NET [DataContractSerializer](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer) 序列化。
 >
 >
 
@@ -88,19 +89,19 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ### <a name="service-proxy-factory-lifetime"></a>服務 Proxy 處理站存留期
 
-[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) 是建立不同遠端介面 Proxy 執行個體的處理站。 如果您使用 API `ServiceProxyFactory.CreateServiceProxy` 來建立 Proxy，則架構會建立單一服務 Proxy。
-當您需要覆寫 [IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) 屬性時，最實用的方式是手動建立一個。
+[ServiceProxyFactory](/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) 是建立不同遠端介面 Proxy 執行個體的處理站。 如果您使用 API `ServiceProxyFactory.CreateServiceProxy` 來建立 Proxy，則架構會建立單一服務 Proxy。
+當您需要覆寫 [IServiceRemotingClientFactory](/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) 屬性時，最實用的方式是手動建立一個。
 處理站建立是一個成本高昂的作業。 服務 Proxy 處理站會維護通訊用戶端的內部快取。
 最佳做法是快取服務 Proxy 處理站的時間愈長愈好。
 
 ## <a name="remoting-exception-handling"></a>遠端例外狀況處理
 
-服務 API 擲回的所有遠端例外狀況都會以 AggregateException 的形式傳送回用戶端。 遠端例外狀況應可由 DataContract 序列化。 否則，Proxy API 會擲回包含序列化錯誤的 [ServiceException](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.communication.serviceexception)。
+服務 API 擲回的所有遠端例外狀況都會以 AggregateException 的形式傳送回用戶端。 遠端例外狀況應可由 DataContract 序列化。 否則，Proxy API 會擲回包含序列化錯誤的 [ServiceException](/dotnet/api/microsoft.servicefabric.services.communication.serviceexception)。
 
 服務 Proxy 會處理它為其建立之服務分割區的所有容錯移轉列外狀況。 它會在有容錯移轉例外狀況 (非暫時性例外狀況) 時重新解析端點，然後以正確的端點再次嘗試呼叫。 容錯移轉例外狀況的重試次數並無限制。
 如果發生暫時性例外狀況，Proxy 會重試呼叫。
 
-預設的重試參數是由 [OperationRetrySettings](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings) 提供。
+預設的重試參數是由 [OperationRetrySettings](/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings) 提供。
 
 使用者可以將 OperationRetrySettings 物件傳遞至 ServiceProxyFactory 建構函式，來設定這些值。
 
@@ -160,7 +161,7 @@ string message = await helloWorldClient.HelloWorldAsync();
    </Resources>
    ```
 
-2. 從 `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` 命名空間使用 [FabricTransportServiceRemotingListener](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotingListener?view=azure-dotnet)。
+2. 從 `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` 命名空間使用 [FabricTransportServiceRemotingListener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet)。
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -176,7 +177,7 @@ string message = await helloWorldClient.HelloWorldAsync();
     }
    ```
 
-3. 從 `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` 命名空間使用 [FabricTransportServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) 來建立用戶端。
+3. 從 `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` 命名空間使用 [FabricTransportServiceRemotingClientFactory](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) 來建立用戶端。
 
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
@@ -255,7 +256,7 @@ string message = await helloWorldClient.HelloWorldAsync();
     }
    ```
 
-3. 在遠端介面上新增[組件屬性](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet)。
+3. 在遠端介面上新增[組件屬性](/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet)。
 
    ```csharp
     [assembly:  FabricTransportServiceRemotingProvider(RemotingListenerVersion=  RemotingListenerVersion.V2_1, RemotingClientVersion= RemotingClientVersion.V2_1)]
@@ -267,7 +268,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ### <a name="use-explicit-remoting-classes-to-create-a-listenerclient-factory-for-the-v2-interface-compatible-version"></a>使用明確的遠端類別來建立 V2 (介面相容) 版本的接聽程式/用戶端處理站。
 
-請遵循下列步驟：
+遵循這些步驟：
 
 1. 在服務資訊清單中新增名稱為 "ServiceEndpointV2_1" 的端點資源。
 
@@ -279,7 +280,7 @@ string message = await helloWorldClient.HelloWorldAsync();
    </Resources>
    ```
 
-2. 使用[遠端 V2 接聽程式](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet)。 預設使用的服務端點資源名稱是 "ServiceEndpointV2_1"。 該名稱必須定義在服務資訊清單中。
+2. 使用[遠端 V2 接聽程式](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet)。 預設使用的服務端點資源名稱是 "ServiceEndpointV2_1"。 該名稱必須定義在服務資訊清單中。
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -297,7 +298,7 @@ string message = await helloWorldClient.HelloWorldAsync();
     }
    ```
 
-3. 使用 V2 [用戶端處理站](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet)。
+3. 使用 V2 [用戶端處理站](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet)。
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
           {
@@ -356,7 +357,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 ### <a name="use-custom-serialization-with-a-remoting-wrapped-message"></a>使用自訂序列化搭配遠端包裝訊息
 
 對於遠端包裝訊息，我們會建立含有所有參數的單一包裝物件作為其中的欄位。
-請遵循下列步驟：
+遵循這些步驟：
 
 1. 實作 `IServiceRemotingMessageSerializationProvider` 介面，以提供自訂序列化的實作。
     此程式碼片段會顯示實作情況。
@@ -548,6 +549,6 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ## <a name="next-steps"></a>後續步驟
 
-* [在 Reliable Services 中搭配 OWIN 使用 Web API](service-fabric-reliable-services-communication-webapi.md)
+* [在 Reliable Services 中搭配 OWIN 使用 Web API](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [使用 Reliable Services 的 Windows Communication Foundation 通訊](service-fabric-reliable-services-communication-wcf.md)
 * [Reliable Services 的安全通訊](service-fabric-reliable-services-secure-communication.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
-ms.openlocfilehash: d0fbdcb877e91a703306f15fdc7507fd19d534f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bbfd167e89ae1b5f9b7de1df5fd1cb72c720cb6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82205127"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254520"
 ---
 # <a name="configure-cloud-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>設定 Azure API 管理自我裝載閘道的雲端計量和記錄
 
@@ -49,7 +49,7 @@ ms.locfileid: "82205127"
 
 自我裝載閘道目前會透過 Azure 監視器發出下列計量：
 
-| Metric  | 描述 |
+| 計量  | 描述 |
 | ------------- | ------------- |
 | Requests  | 期間內的 API 要求數目 |
 | 閘道要求的持續時間 | 從閘道收到要求直到傳入完整回應時的毫秒數 |
@@ -57,14 +57,12 @@ ms.locfileid: "82205127"
 
 ## <a name="logs"></a>記錄
 
-自我裝載閘道目前不會將[診斷記錄](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs)傳送至雲端。 不過，您可以在部署自我裝載閘道的[本機上設定並保存記錄](how-to-configure-local-metrics-logs.md)。 
+自我裝載閘道目前不會將[診斷記錄](./api-management-howto-use-azure-monitor.md#activity-logs)傳送至雲端。 不過，您可以在部署自我裝載閘道的[本機上設定並保存記錄](how-to-configure-local-metrics-logs.md)。 
 
-如果閘道部署在[Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/)中，您可以啟用[Azure 監視器讓容器](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview)從您的容器收集記錄，並在 Log Analytics 中加以查看。 
+如果閘道部署在[Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/)中，您可以啟用[Azure 監視器讓容器](../azure-monitor/insights/container-insights-overview.md)從您的容器收集記錄，並在 Log Analytics 中加以查看。 
 
 
 ## <a name="next-steps"></a>後續步驟
 
 * 若要深入瞭解自我裝載閘道，請參閱[AZURE API 管理自我裝載閘道總覽](self-hosted-gateway-overview.md)
 * 瞭解如何在[本機設定和保存記錄](how-to-configure-local-metrics-logs.md)
-
-

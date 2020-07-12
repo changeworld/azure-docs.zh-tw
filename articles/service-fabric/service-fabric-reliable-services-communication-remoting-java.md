@@ -5,11 +5,12 @@ author: PavanKunapareddyMSFT
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: eef63d7a2c8a4b15938dfbffd7db5f9d1b22d426
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2942c015ba9265d7f2c597ced2321a7789c28576
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75426643"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253384"
 ---
 # <a name="service-remoting-in-java-with-reliable-services"></a>使用 Reliable Services 在 Java 中進行服務遠端處理
 > [!div class="op_single_selector"]
@@ -82,8 +83,8 @@ CompletableFuture<String> message = helloWorldClient.helloWorldAsync();
 建立 ServiceProxy 是輕量型作業，因此您可以建立的數目沒有限制。 只要有需要，可以重複使用服務 Proxy 執行個體。 如果遠端程序呼叫擲回例外狀況，您仍然可以重複使用相同的 Proxy 執行個體。 每個 ServiceProxy 都包含用來透過網路傳送訊息的通訊用戶端。 叫用遠端呼叫時，系統會執行內部檢查來判斷通訊用戶端是否有效。 根據這些檢查的結果，系統會在必要情況下重建通訊用戶端。 因此，如果發生例外狀況，您無須重建 `ServiceProxy`。
 
 ### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory 存留期
-[FabricServiceProxyFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) 是一個為不同的遠端處理介面建立 Proxy 的處理站。 如果您使用 API `ServiceProxyBase.create` 來建立 Proxy，則架構會建立 `FabricServiceProxyFactory`。
-當您需要覆寫 [ServiceRemotingClientFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.serviceremotingclientfactory) 屬性時，手動建立一個會相當有用。
+[FabricServiceProxyFactory](/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) 是一個為不同的遠端處理介面建立 Proxy 的處理站。 如果您使用 API `ServiceProxyBase.create` 來建立 Proxy，則架構會建立 `FabricServiceProxyFactory`。
+當您需要覆寫 [ServiceRemotingClientFactory](/java/api/microsoft.servicefabric.services.remoting.client.serviceremotingclientfactory) 屬性時，手動建立一個會相當有用。
 處理站是一項昂貴的作業。 `FabricServiceProxyFactory` 會維護通訊用戶端的快取。
 最佳做法是快取 `FabricServiceProxyFactory` 的時間愈長愈好。
 
@@ -93,7 +94,7 @@ CompletableFuture<String> message = helloWorldClient.helloWorldAsync();
 ServiceProxy 會處理服務分割區 (ServiceProxy 即是為其建立) 的所有容錯移轉列外狀況。 發生容錯移轉例外狀況 (非暫時性例外狀況) 時，ServiceProxy 會重新解析端點，然後以正確的端點再次嘗試呼叫。 容錯移轉例外狀況的重試次數並無限制。
 若是發生 TransientExceptions，ServiceProxy 僅會重試呼叫。
 
-預設的重試參數是由 [OperationRetrySettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.communication.client.operationretrysettings) \(英文\) 提供。
+預設的重試參數是由 [OperationRetrySettings](/java/api/microsoft.servicefabric.services.communication.client.operationretrysettings) \(英文\) 提供。
 您可以將 OperationRetrySettings 物件傳遞至 ServiceProxyFactory 建構函式，來設定這些值。
 
 ## <a name="next-steps"></a>後續步驟

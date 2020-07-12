@@ -5,11 +5,12 @@ author: mcoskun
 ms.topic: conceptual
 ms.date: 6/29/2017
 ms.author: mcoskun
-ms.openlocfilehash: 1f3239ea1da252ccd84c6572b562756c8fd1677d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16dcfd23ec00a144b17244e811e91a92db9e6995
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75639559"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253042"
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services 通知
 通知可讓用戶端追蹤對於他們感興趣物件所進行的變更。 兩種類型的物件支援通知：「可靠的狀態管理員」** 和「可靠的字典」**。
@@ -209,5 +210,4 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 * [Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Reliable Services 快速入門](service-fabric-reliable-services-quick-start.md)
 * [備份與還原 Reliable Services (災害復原)](service-fabric-reliable-services-backup-restore.md)
-* [可靠的集合的開發人員參考資料](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
-
+* [可靠的集合的開發人員參考資料](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

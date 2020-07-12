@@ -12,15 +12,16 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 380b61df8a774e69454577d201cebf1c495b4f74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 981d3134e957e1f19b9cd88ee13a72fc45d79277
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83004736"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252890"
 ---
 # <a name="configure-a-custom-domain-name"></a>設定自訂網域名稱
 
-當您建立 Azure API 管理服務實例時，Azure 會為其指派子域 `azure-api.net` （例如 `apim-service-name.azure-api.net` ）。 不過，您可以使用自己的自訂功能變數名稱（例如**contoso.com**）公開您的 API 管理端點。 本教學課程說明如何將現有的自訂 DNS 名稱對應至 API 管理實例所公開的端點。
+當您建立 Azure API 管理服務實例時，Azure 會為其指派 `azure-api.net` (的子域，例如， `apim-service-name.azure-api.net`) 。 不過，您可以使用自己的自訂功能變數名稱（例如**contoso.com**）公開您的 API 管理端點。 本教學課程說明如何將現有的自訂 DNS 名稱對應至 API 管理實例所公開的端點。
 
 > [!IMPORTANT]
 > API 管理只會接受[主機標頭](https://tools.ietf.org/html/rfc2616#section-14.23)值符合預設功能變數名稱或任何已設定自訂功能變數名稱的要求。
@@ -39,7 +40,7 @@ ms.locfileid: "83004736"
 -   API 管理實例。 如需詳細資訊，請參閱[建立 Azure API 管理執行個體](get-started-create-service-instance.md)。
 -   您或您的組織所擁有的自訂功能變數名稱。 本主題不提供如何購買自訂功能變數名稱的指示。
 -   裝載于 DNS 伺服器上的 CNAME 記錄，可將自訂功能變數名稱對應至您的 API 管理實例的預設功能變數名稱。 本主題不提供如何裝載 CNAME 記錄的指示。
--   您必須具備一個含有公開和私密金鑰的有效憑證 (.PFX)。 主體或主體別名（SAN）必須符合功能變數名稱（這可讓 API 管理實例透過 TLS 安全地公開 Url）。
+-   您必須具備一個含有公開和私密金鑰的有效憑證 (.PFX)。  (SAN) 的主體或主體替代名稱必須符合功能變數名稱 (這可讓 API 管理實例安全地透過 TLS) 公開 Url。
 
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>使用 Azure 入口網站來設定自訂網域名稱
 
@@ -48,34 +49,34 @@ ms.locfileid: "83004736"
 
     有幾個端點可供您指派自訂功能變數名稱。 目前有下列端點可用：
 
-    - **閘道**（預設值為： `<apim-service-name>.azure-api.net` ）、
+    - **閘道** (預設值為： `<apim-service-name>.azure-api.net`) 、
     - **入口網站** (預設值為：`<apim-service-name>.portal.azure-api.net`)、
     - **管理** (預設值為：`<apim-service-name>.management.azure-api.net`)、
-    - **SCM** （預設值為： `<apim-service-name>.scm.azure-api.net` ）、
-    - **NewPortal** （預設值為： `<apim-service-name>.developer.azure-api.net` ）。
+    - **SCM** (預設值為： `<apim-service-name>.scm.azure-api.net`) 、
+    - **NewPortal** (預設值為： `<apim-service-name>.developer.azure-api.net`) 。
 
     > [!NOTE]
     > 只有**閘道**端點可用於取用層中的設定。
-    > 您可以更新所有端點或一部分端點。 客戶通常會更新**閘道**（此 URL 是用來呼叫透過 api 管理公開的 api）和**入口網站**（開發人員入口網站 URL）。
+    > 您可以更新所有端點或一部分端點。 客戶通常會更新**閘道** (此 URL 是用來呼叫透過 api 管理) 和**入口網站**公開的 api， (開發人員入口網站 URL) 。
     > **管理**和**SCM**端點僅供「API 管理」實例擁有者在內部使用，因此較不常指派自訂功能變數名稱。
     > 進階層**支援為****閘道**端點設定多個主機名稱。
 
 1. 選取您想要更新的端點。
 1. 在右側視窗中，按一下 [自訂]****。
 
-    - 在 [自訂網域名稱]**** 中，指定您想要使用的名稱。 例如： `api.contoso.com` 。
+    - 在 [自訂網域名稱]**** 中，指定您想要使用的名稱。 例如，`api.contoso.com`。
     - 在 [**憑證**] 中，選取 Key Vault 的憑證。 您也可以上傳有效的。PFX 檔案，並提供**密碼**（如果使用密碼保護憑證）。
 
     > [!NOTE]
     > `*.contoso.com`除了取用層以外，所有層都支援萬用字元功能變數名稱，例如。
 
     > [!TIP]
-    > 我們建議使用[Azure Key Vault 來管理憑證](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates)，並將其設定為 autorenew。
-    > 如果您使用 Azure Key Vault 來管理自訂網域的 TLS/SSL 憑證，請確定憑證是以[_憑證_的形式](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate)插入 Key Vault，而不是_秘密_。
+    > 我們建議使用[Azure Key Vault 來管理憑證](../key-vault/certificates/about-certificates.md)，並將其設定為 autorenew。
+    > 如果您使用 Azure Key Vault 來管理自訂網域的 TLS/SSL 憑證，請確定憑證是以[_憑證_的形式](/rest/api/keyvault/createcertificate/createcertificate)插入 Key Vault，而不是_秘密_。
     >
     > 若要提取 TLS/SSL 憑證，API 管理必須具有包含憑證之 Azure Key Vault 的 [清單] 和 [取得秘密] 許可權。 使用 Azure 入口網站時，所有必要的設定步驟都會自動完成。 使用命令列工具或管理 API 時，必須以手動方式授與這些許可權。 此作業有兩個階段。 首先，使用 API 管理實例上的 [受控識別] 頁面，以確定受控識別已啟用，並記下該頁面上顯示的主體識別碼。 第二，在包含憑證的 Azure Key Vault 上，授與許可權清單並取得此主體識別碼的秘密許可權。
     >
-    > 如果憑證設定為 autorenew，則 API 管理會自動取得最新版本，而不會對服務造成任何停機（如果您的 API 管理層有 SLA-----在所有層級中，而開發人員層除外）。
+    > 如果憑證設定為 autorenew，API 管理會自動取得最新版本，而不需要停機服務 (如果您的 API 管理層級除了開發人員層) 以外的所有層級都有 SLA。
 
 1. 按一下 [套用]。
 

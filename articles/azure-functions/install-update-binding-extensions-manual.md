@@ -1,13 +1,14 @@
 ---
 title: 手動安裝或更新 Azure Functions 繫結延伸模組
 description: 了解如何為已部署的函數應用程式安裝或更新 Azure Functions 繫結延伸模組。
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: e8716f691a5d19ddac7fece47c423e1f7787b9db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0705e62adc4acb26797b937a6dd8c684a598ebc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75768855"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252618"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>從入口網站手動安裝或更新 Azure Functions 繫結延伸模組
 
@@ -21,7 +22,7 @@ ms.locfileid: "75768855"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，找出您的函數應用程式並選取它。 選擇 [概觀]**** 索引標籤，然後選取 [停止]****。  停止函數應用程式會將檔案解除鎖定，以便進行變更。
 
-1. 選擇 [平台功能]**** 索引標籤，然後在 [開發工具]**** 底下，選取 [進階工具 (Kudu)]****。 Kudu 端點（ `https://<APP_NAME>.scm.azurewebsites.net/` ）會在新視窗中開啟。
+1. 選擇 [平台功能]**** 索引標籤，然後在 [開發工具]**** 底下，選取 [進階工具 (Kudu)]****。 Kudu 端點 (`https://<APP_NAME>.scm.azurewebsites.net/`) 會在新視窗中開啟。
 
 1. 在 [Kudu] 視窗中，選取 [ **Debug console**  >  **CMD**]。  
 

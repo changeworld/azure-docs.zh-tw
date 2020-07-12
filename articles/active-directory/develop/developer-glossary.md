@@ -12,11 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 764600d61704378b1bc0937dd1399260a1266150
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91094285aa50641f62527326bab121adcf026a9a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84308621"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252057"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft 身分識別平臺開發人員詞彙
 
@@ -35,9 +36,9 @@ ms.locfileid: "84308621"
 
 如需詳細資訊，請參閱[Microsoft 身分識別平臺權杖參考][AAD-Tokens-Claims]。
 
-## <a name="application-id-client-id"></a>應用程式識別碼（用戶端識別碼）
+## <a name="application-id-client-id"></a>應用程式識別碼 (用戶端識別碼) 
 
-唯一識別碼 Azure AD 會核發給應用程式註冊，它會識別特定應用程式和相關聯的設定。 執行驗證要求時，會使用此應用程式識別碼（[用戶端識別碼](https://tools.ietf.org/html/rfc6749#page-15)），並在開發期間提供給驗證程式庫。 應用程式識別碼（用戶端識別碼）不是秘密。
+唯一識別碼 Azure AD 會核發給應用程式註冊，它會識別特定應用程式和相關聯的設定。 此應用程式識別碼 ([用戶端識別碼](https://tools.ietf.org/html/rfc6749#page-15)) 會在執行驗證要求時使用，並在開發期間提供給驗證程式庫。  (用戶端識別碼) 的應用程式識別碼不是秘密。
 
 ## <a name="application-manifest"></a>應用程式資訊清單
 
@@ -59,7 +60,7 @@ ms.locfileid: "84308621"
 
 如需詳細資訊，請參閱[整合應用程式與 Azure Active Directory][AAD-Integrating-Apps]。
 
-## <a name="authentication"></a>驗證 (authentication)
+## <a name="authentication"></a>驗證
 
 對憑證者查問合法認證的動作，此動作可做為基礎來建立用於身分識別和存取控制的安全性主體。 例如，在 [OAuth2 授權授與](#authorization-grant)期間，憑證者驗證會根據所使用的授與，填入[資源擁有者](#resource-owner)或[用戶端應用程式](#client-application)的角色。
 
@@ -116,7 +117,7 @@ ms.locfileid: "84308621"
 
 ## <a name="microsoft-identity-platform"></a>Microsoft 身分識別平台
 
-Microsoft 身分識別平台是 Azure Active Directory (Azure AD) 身分識別服務與開發人員平台的演化。 它可讓開發人員建置應用程式以登入所有 Microsoft 身分識別、取得權杖以呼叫 Microsoft Graph、其他 Microsoft API 或開發人員所建置的 API。 它是具有完整功能的平台，由驗證服務、程式庫、應用程式註冊與設定、完整開發人員文件、程式碼範例與其他開發人員內容所組成。 Microsoft 身分識別平台支援業界標準通訊協定，例如 OAuth 2.0 與 OpenID Connect。 如需詳細資訊，請參閱[關於 Microsoft 身分識別平台](about-microsoft-identity-platform.md)。
+Microsoft 身分識別平台是 Azure Active Directory (Azure AD) 身分識別服務與開發人員平台的演化。 它可讓開發人員建置應用程式以登入所有 Microsoft 身分識別、取得權杖以呼叫 Microsoft Graph、其他 Microsoft API 或開發人員所建置的 API。 它是具有完整功能的平台，由驗證服務、程式庫、應用程式註冊與設定、完整開發人員文件、程式碼範例與其他開發人員內容所組成。 Microsoft 身分識別平台支援業界標準通訊協定，例如 OAuth 2.0 與 OpenID Connect。
 
 ## <a name="multi-tenant-application"></a>多租用戶應用程式
 
@@ -137,11 +138,11 @@ Microsoft 身分識別平台是 Azure Active Directory (Azure AD) 身分識別�
 
 權限也會在 [同意](#consent) 程序期間出現，讓系統管理員或資源擁有者有機會允許/拒絕用戶端對其租用戶中的資源進行存取。
 
-許可權要求是在[Azure 入口網站][AZURE-portal]中應用程式的 [ **API 許可權**] 頁面上設定，方法是選取所需的 [委派的許可權] 和 [應用程式許可權] （後者需要全域管理員角色的成員資格）。 [公用用戶端](#client-application)無法安全地維護認證，因此它只能要求委派的權限，而[機密用戶端](#client-application)則能夠要求委派的權限和應用程式權限。 用戶端的[應用程式物件](#application-object)會將宣告的權限儲存在其 [requiredResourceAccess 屬性][Graph-App-Resource]中。
+許可權要求是在[Azure 入口網站][AZURE-portal]中應用程式的 [ **API 許可權**] 頁面上設定，方法是選取所需的 [委派的許可權] 和 [應用程式許可權] (後者需要全域管理員角色) 的成員資格。 [公用用戶端](#client-application)無法安全地維護認證，因此它只能要求委派的權限，而[機密用戶端](#client-application)則能夠要求委派的權限和應用程式權限。 用戶端的[應用程式物件](#application-object)會將宣告的權限儲存在其 [requiredResourceAccess 屬性][Graph-App-Resource]中。
 
 ## <a name="refresh-token"></a>重新整理權杖
 
-[授權伺服器](#authorization-server)所發出的[安全性權杖](#security-token)類型，並由[用戶端應用程式](#client-application)使用，以便在存取權杖到期之前要求新的[存取權杖](#access-token)。 通常以[JSON Web 權杖（JWT）][JWT]的形式呈現。
+[授權伺服器](#authorization-server)所發出的[安全性權杖](#security-token)類型，並由[用戶端應用程式](#client-application)使用，以便在存取權杖到期之前要求新的[存取權杖](#access-token)。 通常會以[JSON Web 權杖的形式 (JWT) ][JWT]。
 
 不同于存取權杖，可以撤銷重新整理權杖。 如果用戶端應用程式嘗試使用已撤銷的重新整理權杖來要求新的存取權杖，授權伺服器將會拒絕要求，而且用戶端應用程式將不再具有代表[資源擁有](#resource-owner)者存取[資源伺服器](#resource-server)的許可權。
 
@@ -175,7 +176,7 @@ Microsoft 身分識別平台是 Azure Active Directory (Azure AD) 身分識別�
 
 ## <a name="security-token"></a>安全性權杖
 
-包含 OAuth2 權杖或 SAML 2.0 判斷提示等宣告的已簽署文件。 對於 OAuth2[授權授](#authorization-grant)與而言，[存取權杖](#access-token)（OAuth2）、重新整理[權杖](#refresh-token)和[識別碼權杖](https://openid.net/specs/openid-connect-core-1_0.html#IDToken)是安全性權杖的類型，這些都是實作為[JSON Web 權杖（JWT）][JWT]。
+包含 OAuth2 權杖或 SAML 2.0 判斷提示等宣告的已簽署文件。 對於 OAuth2[授權授](#authorization-grant)與而言，[存取權杖](#access-token) (OAuth2) 、重新整理[權杖](#refresh-token)和[識別碼權杖](https://openid.net/specs/openid-connect-core-1_0.html#IDToken)是安全性權杖的類型，這些都是實作為[JSON Web 權杖 (JWT) ][JWT]。
 
 ## <a name="service-principal-object"></a>服務主體物件
 

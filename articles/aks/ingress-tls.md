@@ -1,16 +1,16 @@
 ---
 title: 使用自動 TLS 建立輸入
 titleSuffix: Azure Kubernetes Service
-description: 瞭解如何安裝及設定 NGINX 輸入控制器，其使用 Let's Encrypt 在 Azure Kubernetes Service （AKS）叢集中自動產生 TLS 憑證。
+description: 瞭解如何安裝及設定 NGINX 輸入控制器，其使用「讓我們在 Azure Kubernetes Service (AKS) 叢集中自動產生 TLS 憑證的加密。
 services: container-service
 ms.topic: article
 ms.date: 04/27/2020
-ms.openlocfilehash: 59f1b63a5c72ed5583b88af9e42bf5337f358b47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9536d8ee6c1cab0d3ebd2648200683d454843760
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82561891"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251347"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 上建立 HTTPS 輸入控制器
 
@@ -32,7 +32,7 @@ ms.locfileid: "82561891"
 
 本文也假設您在與 AKS 叢集相同的資源群組中，有一個[DNS 區域][dns-zone]的[自訂網域][custom-domain]。
 
-本文使用[Helm 3][helm]來安裝 NGINX 輸入控制器和 cert 管理員。 請確定您使用的是 Helm 的最新版本。 如需升級指示，請參閱[Helm 安裝][helm-install]檔。如需設定和使用 Helm 的詳細資訊，請參閱[在 Azure Kubernetes Service （AKS）中使用 Helm 安裝應用程式][use-helm]。
+本文使用[Helm 3][helm]來安裝 NGINX 輸入控制器和 cert 管理員。 請確定您使用的是 Helm 的最新版本。 如需升級指示，請參閱[Helm 安裝][helm-install]檔。如需設定和使用 Helm 的詳細資訊，請參閱[在 Azure Kubernetes Service (AKS) 中使用 Helm 安裝應用程式][use-helm]。
 
 本文也會要求您執行 Azure CLI 版本2.0.64 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
 
@@ -419,7 +419,7 @@ kubectl delete namespace ingress-basic
 [custom-domain]: ../app-service/manage-custom-dns-buy-domain.md#buy-the-domain
 [dns-zone]: ../dns/dns-getstarted-cli.md
 [helm]: https://helm.sh/
-[helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm
+[helm-cli]: ./kubernetes-helm.md
 [cert-manager]: https://github.com/jetstack/cert-manager
 [cert-manager-certificates]: https://cert-manager.readthedocs.io/en/latest/reference/certificates.html
 [ingress-shim]: https://docs.cert-manager.io/en/latest/tasks/issuing-certificates/ingress-shim.html

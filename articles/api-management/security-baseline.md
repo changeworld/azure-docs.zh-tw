@@ -7,23 +7,24 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ceaa44429d105c2a6a1d0883ab29ed11b63ad497
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b5640a42c0fdcb0bd958011db28c19854b16a547
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83736070"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252754"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>適用於 API 管理的 Azure 安全性基準
 
 適用於 API 管理的 Azure 安全性基準包含的建議有助於改善部署的安全性狀態。
 
-此服務的基準取自 [Azure 安全性基準測試版本 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview)，其中提供有關如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
+此服務的基準取自 [Azure 安全性效能評定 1.0 版](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 
-如需詳細資訊，請參閱 [Azure 安全性基準概觀](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)。
+如需詳細資訊，請參閱 [Azure 安全性基準概觀](../security/benchmarks/security-baselines-overview.md)。
 
 ## <a name="network-security"></a>網路安全性
 
-*如需詳細資訊，請參閱[安全性控制項：網路安全性](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。*
+*如需詳細資訊，請參閱[安全性控制：網路安全性](../security/benchmarks/security-control-network-security.md)。*
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在虛擬網路上使用網路安全性群組或 Azure 防火牆來保護資源
 
@@ -33,11 +34,11 @@ ms.locfileid: "83736070"
 
 使用網路安全性群組，可以控制到 APIM 部署於其中的子網路之輸入和輸出流量。
 
-* [如何將 Azure API 管理與虛擬網路搭配使用](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)
+* [如何將 Azure API 管理與虛擬網路搭配使用](./api-management-using-with-vnet.md)
 
-* [在內部虛擬網路中使用 Azure API 管理服務](https://docs.microsoft.com/azure/api-management/api-management-using-with-internal-vnet)
+* [在內部虛擬網路中使用 Azure API 管理服務](./api-management-using-with-internal-vnet.md)
 
-* [整合內部 VNET 中的 API 管理與應用程式閘道](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [整合內部 VNET 中的 API 管理與應用程式閘道](./api-management-howto-integrate-internal-vnet-appgateway.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -49,11 +50,11 @@ ms.locfileid: "83736070"
 
 注意：在 API 管理子網路上設定 NSG 時，有一組需要開啟的通訊埠。 如果這些連接埠中有任何一個無法使用，「API 管理」可能就無法正常運作而可能變成無法存取。
 
-* [了解適用於 Azure API 管理的 NSG 設定](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet#-common-network-configuration-issues)
+* [了解適用於 Azure API 管理的 NSG 設定](./api-management-using-with-vnet.md#-common-network-configuration-issues)
 
-* [如何啟用 NSG 流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [如何啟用 NSG 流量記錄](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [如何啟用及使用流量分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [如何啟用及使用流量分析](../network-watcher/traffic-analytics.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -70,9 +71,9 @@ ms.locfileid: "83736070"
 
 注意:這項功能適用於 API 管理的 [進階] 與 [開發人員] 層。
 
-* [如何整合內部 VNET 中的 API 管理與應用程式閘道](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [如何整合內部 VNET 中的 API 管理與應用程式閘道](./api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [了解 Azure 應用程式閘道](https://docs.microsoft.com/azure/application-gateway/)
+* [了解 Azure 應用程式閘道](../application-gateway/index.yml)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -93,13 +94,13 @@ ms.locfileid: "83736070"
 
 使用 Azure 資訊安全中心的整合式威脅情報來拒絕與已知惡意或未使用的網際網路 IP 位址通訊。
 
-* [如何整合內部 VNET 中的 API 管理與應用程式閘道](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [如何整合內部 VNET 中的 API 管理與應用程式閘道](./api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [了解 Azure 應用程式閘道](https://docs.microsoft.com/azure/application-gateway/)
+* [了解 Azure 應用程式閘道](../application-gateway/index.yml)
 
-* [如何設定 DDoS 保護標準](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+* [如何設定 DDoS 保護標準](../virtual-network/manage-ddos-protection.md)
 
-* [了解 Azure 資訊安全中心的整合式威脅情報](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+* [了解 Azure 資訊安全中心的整合式威脅情報](../security-center/threat-protection.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -111,11 +112,11 @@ ms.locfileid: "83736070"
 
 注意：在 API 管理子網路上設定 NSG 時，有一組需要開啟的通訊埠。 如果這些連接埠中有任何一個無法使用，「API 管理」可能就無法正常運作而可能變成無法存取。
 
-* [了解適用於 Azure API 管理的 NSG 設定](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet#-common-network-configuration-issues)
+* [了解適用於 Azure API 管理的 NSG 設定](./api-management-using-with-vnet.md#-common-network-configuration-issues)
 
-* [如何啟用 NSG 流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [如何啟用 NSG 流量記錄](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [如何啟用及使用流量分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [如何啟用及使用流量分析](../network-watcher/traffic-analytics.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -134,9 +135,9 @@ ms.locfileid: "83736070"
 
 注意:這項功能適用於 API 管理的 [進階] 與 [開發人員] 層。
 
-* [如何整合內部 VNET 中的 API 管理與應用程式閘道](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [如何整合內部 VNET 中的 API 管理與應用程式閘道](./api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [了解 Azure 應用程式閘道 WAF](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview)
+* [了解 Azure 應用程式閘道 WAF](../web-application-firewall/ag/ag-overview.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -155,13 +156,13 @@ ms.locfileid: "83736070"
 
 注意:這項功能適用於 API 管理的 [進階] 與 [開發人員] 層。
 
-* [如何對外部取用者公開私人 API](https://docs.microsoft.com/azure/architecture/example-scenario/apps/publish-internal-apis-externally)
+* [如何對外部取用者公開私人 API](/azure/architecture/example-scenario/apps/publish-internal-apis-externally)
 
-* [如何在 Vnet 中使用 API 管理](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)
+* [如何在 Vnet 中使用 API 管理](./api-management-using-with-vnet.md)
 
-* [Azure 應用程式閘道上的 Web 應用程式防火牆](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview)
+* [Azure 應用程式閘道上的 Web 應用程式防火牆](../web-application-firewall/ag/ag-overview.md)
 
-* [了解 Azure 應用程式閘道](https://docs.microsoft.com/azure/application-gateway/overview)
+* [了解 Azure 應用程式閘道](../application-gateway/overview.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -173,9 +174,9 @@ ms.locfileid: "83736070"
 
 注意：在 API 管理子網路上設定 NSG 時，有一組需要開啟的通訊埠。 如果這些連接埠中有任何一個無法使用，「API 管理」可能就無法正常運作而可能變成無法存取。
 
-* [了解和使用服務標籤](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [了解和使用服務標籤](../virtual-network/service-tags-overview.md)
 
-* [API 管理所需的連接埠](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet#-common-network-configuration-issues)
+* [API 管理所需的連接埠](./api-management-using-with-vnet.md#-common-network-configuration-issues)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -188,9 +189,9 @@ ms.locfileid: "83736070"
 
 您也可以使用 Azure 藍圖，在單一藍圖定義中封裝金鑰環境成品 (例如 Azure Resource Manager 範本、角色型存取控制 (RBAC) 和原則)，以簡化大規模的 Azure 部署。 您可以輕鬆地將藍圖套用至新的訂用帳戶、環境，以及透過版本控制來微調控制和管理。
 
-* [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-* [如何建立 Azure 藍圖](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [如何建立 Azure 藍圖](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -200,11 +201,11 @@ ms.locfileid: "83736070"
 
 **指引**：將標籤使用於網路安全性群組 (NSG) 以及與網路安全性和流量相關的其他資源。 對於個別的 NSG 規則，您可以使用 [描述] 欄位，針對允許進出網路流量的任何規則指定商務需求和/或持續時間 (等等)。
 
-* [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
-* [如何建立虛擬網路](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [如何建立虛擬網路](../virtual-network/quick-create-portal.md)
 
-* [如何建立具有安全性設定的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [如何建立具有安全性設定的 NSG](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -214,9 +215,9 @@ ms.locfileid: "83736070"
 
 **指引**：使用 Azure 活動記錄來監視網路資源設定，並偵測與您的 Azure API 管理部署相關聯的網路資源變更。 在 Azure 監視器中建立警示，以在重要網路資源發生變更時觸發。
 
-* [如何檢視及擷取 Azure 活動記錄事件](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [如何檢視及擷取 Azure 活動記錄事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [如何在 Azure 監視器中建立警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [如何在 Azure 監視器中建立警示](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -224,7 +225,7 @@ ms.locfileid: "83736070"
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
-*如需詳細資訊，請參閱[安全性控制項：記錄和監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)。*
+*如需詳細資訊，請參閱[安全性控制：記錄和監視](../security/benchmarks/security-control-logging-monitoring.md)。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用已核准的時間同步處理來源
 
@@ -242,15 +243,15 @@ ms.locfileid: "83736070"
 
 (選擇性) 啟用 Azure Sentinel 或第三方安全性事件與事件管理 (SIEM)，然後讓資料上線。
 
-* [如何設定診斷設定](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-diagnostic-settings-in-azure-portal)
+* [如何設定診斷設定](../azure-monitor/platform/diagnostic-settings.md#create-in-azure-portal)
 
-* [如何讓 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
 * [如何開始使用 Azure 監視器和第三方 SIEM 整合](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-* [如何建立自訂記錄和分析管線](https://docs.microsoft.com/azure/api-management/api-management-howto-log-event-hubs)
+* [如何建立自訂記錄和分析管線](./api-management-howto-log-event-hubs.md)
 
-* [如何與 Azure Application Insights 整合](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights)
+* [如何與 Azure Application Insights 整合](./api-management-howto-app-insights.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -262,9 +263,9 @@ ms.locfileid: "83736070"
 
 針對資料平面稽核記錄，診斷記錄會提供豐富的作業與錯誤資訊，這些資訊對於稽核和疑難排解用途來說很重要。 診斷記錄與活動記錄不同。 活動記錄可讓您深入了解 Azure 資源上所執行的作業。 診斷記錄能讓您了解資源執行的作業。
 
-* [如何啟用 Azure 活動記錄的診斷設定](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [如何啟用 Azure 活動記錄的診斷設定](../azure-monitor/platform/activity-log.md)
 
-* [如何啟用 Azure API 管理的診斷設定](https://docs.microsoft.com/Azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs)
+* [如何啟用 Azure API 管理的診斷設定](./api-management-howto-use-azure-monitor.md#activity-logs)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -282,9 +283,9 @@ ms.locfileid: "83736070"
 
 **指引**：在 Azure 監視器中，根據貴組織的合規性規定來設定您的 Log Analytics 工作區保留期間。 使用 Azure 儲存體帳戶進行長期/封存儲存。
 
-* [如何設定 Log Analytics 工作區的記錄保留參數](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [如何設定 Log Analytics 工作區的記錄保留參數](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-* [如何將記錄封存到 Azure 儲存體帳戶](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage)
+* [如何將記錄封存到 Azure 儲存體帳戶](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -296,13 +297,13 @@ ms.locfileid: "83736070"
 
 (選擇性) 將 API 管理與 Azure Application Insights 整合，並將其當作主要或次要監視、追蹤、報告和警示工具使用。
 
-* [如何監視和檢閱 Azure API 管理的記錄](https://docs.microsoft.com/Azure/api-management/api-management-howto-use-azure-monitor)
+* [如何監視和檢閱 Azure API 管理的記錄](./api-management-howto-use-azure-monitor.md)
 
-* [如何在 Azure 監視器中執行自訂查詢](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+* [如何在 Azure 監視器中執行自訂查詢](../azure-monitor/log-query/get-started-queries.md)
 
-* [了解 Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+* [了解 Log Analytics 工作區](../azure-monitor/log-query/get-started-portal.md)
 
-* [如何與 Azure Application Insights 整合](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights)
+* [如何與 Azure Application Insights 整合](./api-management-howto-app-insights.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -318,17 +319,17 @@ ms.locfileid: "83736070"
 
 (選擇性) 您可啟用 Azure Sentinel 或第三方 SIEM，並且讓資料上線。
 
-* [如何啟用 Azure 活動記錄的診斷設定](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [如何啟用 Azure 活動記錄的診斷設定](../azure-monitor/platform/activity-log.md)
 
-* [如何啟用 Azure API 管理的診斷設定](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs)
+* [如何啟用 Azure API 管理的診斷設定](./api-management-howto-use-azure-monitor.md#activity-logs)
 
-* [如何針對未經授權的要求設定警示規則](https://docs.microsoft.com/Azure/api-management/api-management-howto-use-azure-monitor#set-up-an-alert-rule-for-unauthorized-request)
+* [如何針對未經授權的要求設定警示規則](./api-management-howto-use-azure-monitor.md#set-up-an-alert-rule-for-unauthorized-request)
 
-* [如何檢視 Azure API 管理執行個體的容量計量](https://docs.microsoft.com/azure/api-management/api-management-capacity)
+* [如何檢視 Azure API 管理執行個體的容量計量](./api-management-capacity.md)
 
-* [如何與 Azure Application Insights 整合](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights)
+* [如何與 Azure Application Insights 整合](./api-management-howto-app-insights.md)
 
-* [如何讓 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [如何讓 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -360,7 +361,7 @@ ms.locfileid: "83736070"
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
-*如需詳細資訊，請參閱[安全性控制項：身分識別與存取控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)。*
+*如需詳細資訊，請參閱[安全性控制：身分識別與存取控制](../security/benchmarks/security-control-identity-access-control.md)。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的詳細目錄
 
@@ -372,15 +373,15 @@ Azure Active Directory (AD) 具有必須明確指派且可供查詢的內建角�
 
 請遵循 Azure 資訊安全中心的建議來管理和維護系統管理帳戶。
 
-* [如何在 Azure API 管理中使用角色型存取控制](https://docs.microsoft.com/azure/api-management/api-management-role-based-access-control)
+* [如何在 Azure API 管理中使用角色型存取控制](./api-management-role-based-access-control.md)
 
-* [如何取得 Azure API 管理執行個體之下的使用者清單](https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-3.1.0)
+* [如何取得 Azure API 管理執行個體之下的使用者清單](/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-3.1.0)
 
-* [如何使用 PowerShell 在 Azure AD 中取得指派給目錄角色的使用者清單](https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0)
+* [如何使用 PowerShell 在 Azure AD 中取得指派給目錄角色的使用者清單](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0)
 
-* [如何使用 PowerShell 在 Azure AD 中取得目錄角色定義](https://docs.microsoft.com/powershell/module/az.resources/get-azroledefinition?view=azps-3.7.0)
+* [如何使用 PowerShell 在 Azure AD 中取得目錄角色定義](/powershell/module/az.resources/get-azroledefinition?view=azps-3.7.0)
 
-* [了解 Azure 資訊安全中心的身分識別和存取建議](https://docs.microsoft.com/azure/security-center/recommendations-reference#recs-identity)
+* [了解 Azure 資訊安全中心的身分識別和存取建議](../security-center/recommendations-reference.md#recs-identity)
 
 **Azure 資訊安全中心監視**：是
 
@@ -392,7 +393,7 @@ Azure Active Directory (AD) 具有必須明確指派且可供查詢的內建角�
 
 Azure API 管理訂用帳戶是保護 API 存取的一種方法，不過其隨附了一對產生的訂用帳戶金鑰。 客戶可以隨時重新產生這些訂用帳戶金鑰。
 
-* [了解 Azure API 管理訂用帳戶](https://docs.microsoft.com/azure/api-management/api-management-subscriptions)
+* [了解 Azure API 管理訂用帳戶](./api-management-subscriptions.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -407,9 +408,9 @@ Azure API 管理訂用帳戶是保護 API 存取的一種方法，不過其隨�
 - 具有擁有者權限的已取代帳戶應該從您的訂用帳戶中移除
 - 具有擁有者權限的外部帳戶應該從您的訂用帳戶中移除
 
-* [如何使用 Azure 資訊安全中心來監視身分識別和存取 (預覽)](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [如何使用 Azure 資訊安全中心來監視身分識別和存取 (預覽)](../security-center/security-center-identity-access.md)
 
-* [如何使用 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何使用 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -419,11 +420,11 @@ Azure API 管理訂用帳戶是保護 API 存取的一種方法，不過其隨�
 
 **指引**：您可將 Azure API 管理設定成以 Azure Active Directory 作為識別提供者，在開發人員入口網站上驗證使用者，進而受益於 Azure AD 所提供的 SSO 功能。 設定之後，新的開發人員入口網站使用者即可選擇遵循現成的註冊程序，首先是透過 Azure AD 進行驗證，然後在驗證後於入口網站上完成註冊程序。
 
-* [在 Azure API 管理中使用 Azure Active Directory 來授權開發人員帳戶](https://docs.microsoft.com/azure/api-management/api-management-howto-aad)
+* [在 Azure API 管理中使用 Azure Active Directory 來授權開發人員帳戶](./api-management-howto-aad.md)
 
 或者，您也可透過委派進一步自訂登入/註冊程序。 委派可讓您使用現有的網站來處理開發人員登入/註冊和產品訂閱，而非使用開發人員入口網站中的內建功能。 其可讓您的網站擁有使用者資料，並以自訂方式來執行這些步驟的驗證。
 
-* [如何委派使用者註冊和產品訂用帳戶](https://docs.microsoft.com/azure/api-management/api-management-howto-setup-delegation)
+* [如何委派使用者註冊和產品訂用帳戶](./api-management-howto-setup-delegation.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -433,9 +434,9 @@ Azure API 管理訂用帳戶是保護 API 存取的一種方法，不過其隨�
 
 **指引**：啟用 Azure Active Directory (AD) 多重要素驗證 (MFA)，並遵循 Azure 資訊安全中心的身分識別與存取管理建議。
 
-* [如何在 Azure 中啟用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [如何在 Azure 資訊安全中心監視身分識別和存取](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [如何在 Azure 資訊安全中心監視身分識別和存取](../security-center/security-center-identity-access.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -445,9 +446,9 @@ Azure API 管理訂用帳戶是保護 API 存取的一種方法，不過其隨�
 
 **指引**：使用已設定多重要素驗證 (MFA) 的特殊權限存取工作站 (PAW) 來登入和設定 Azure 資源。
 
-* [了解特殊權限存取工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [了解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [如何在 Azure 中啟用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -459,9 +460,9 @@ Azure API 管理訂用帳戶是保護 API 存取的一種方法，不過其隨�
 
 此外，使用 Azure AD 風險偵測來檢視有風險的使用者行為相關警示和報告。
 
-* [如何部署 Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [如何部署 Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [了解 Azure AD 風險偵測](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [了解 Azure AD 風險偵測](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -471,7 +472,7 @@ Azure API 管理訂用帳戶是保護 API 存取的一種方法，不過其隨�
 
 **指引**：使用條件式存取具名位置，只允許從 IP 位址範圍或國家/區域的特定邏輯群組存取 Azure 入口網站。
 
-* [如何在 Azure 中設定具名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [如何在 Azure 中設定具名位置](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -485,11 +486,11 @@ Azure API 管理訂用帳戶是保護 API 存取的一種方法，不過其隨�
 
 使用 OAuth 2.0 通訊協定搭配 Azure Active Directory (Azure AD)，設定 Azure API 管理執行個體以保護 API。
 
-* [如何在 Azure API 管理中使用 Azure Active Directory 來授權開發人員帳戶](https://docs.microsoft.com/azure/api-management/api-management-howto-aad)
+* [如何在 Azure API 管理中使用 Azure Active Directory 來授權開發人員帳戶](./api-management-howto-aad.md)
 
-* [如何使用 OAuth 2.0 搭配 Azure Active Directory 與 API 管理來保護 API](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad)
+* [如何使用 OAuth 2.0 搭配 Azure Active Directory 與 API 管理來保護 API](./api-management-howto-protect-backend-with-aad.md)
 
-* [如何建立和設定 AAD 執行個體](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [如何建立和設定 AAD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -503,13 +504,13 @@ Azure API 管理訂用帳戶是保護 API 存取的一種方法，不過其隨�
 
 系統管理員可以建立自訂群組，或利用相關聯 Azure Active Directory 租用戶中的外部群組。 自訂群組和外部群組可以與系統群組一起使用，提供開發人員 API 產品的能見度及存取權。
 
-* [如何在 Azure API 管理中管理使用者帳戶](https://docs.microsoft.com/azure/api-management/api-management-howto-create-or-invite-developers)
+* [如何在 Azure API 管理中管理使用者帳戶](./api-management-howto-create-or-invite-developers.md)
 
-* [如何取得 API 管理的使用者清單](https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-3.1.0)
+* [如何取得 API 管理的使用者清單](/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-3.1.0)
 
-* [如何在 Azure API 管理中建立和使用群組來管理開發人員帳戶](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups)
+* [如何在 Azure API 管理中建立和使用群組來管理開發人員帳戶](./api-management-howto-create-groups.md)
 
-* [如何使用 Azure 身分識別存取權檢閱](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [如何使用 Azure 身分識別存取權檢閱](../active-directory/governance/access-reviews-overview.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -527,17 +528,17 @@ Azure API 管理訂用帳戶是保護 API 存取的一種方法，不過其隨�
 
 使用 `log-to-eventhub` 原則透過 API 管理來設定進階監視，擷取安全性分析所需的任何其他內容資訊，並傳送至 Azure Sentinel 或第三方 SIEM。
 
-* [如何在 Azure API 管理中使用 Azure Active Directory 來授權開發人員帳戶](https://docs.microsoft.com/azure/api-management/api-management-howto-aad)
+* [如何在 Azure API 管理中使用 Azure Active Directory 來授權開發人員帳戶](./api-management-howto-aad.md)
 
-* [如何使用 OAuth 2.0 搭配 Azure Active Directory 與 API 管理來保護 API](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad)
+* [如何使用 OAuth 2.0 搭配 Azure Active Directory 與 API 管理來保護 API](./api-management-howto-protect-backend-with-aad.md)
 
-* [API 管理存取限制原則](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies)
+* [API 管理存取限制原則](./api-management-access-restriction-policies.md)
 
-* [如何將 Azure AD 記錄整合到 Azure 監視器中](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [如何將 Azure AD 記錄整合到 Azure 監視器中](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [如何讓 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [如何讓 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
-* [API 的進階監視](https://docs.microsoft.com/azure/api-management/api-management-log-to-eventhub-sample)
+* [API 的進階監視](./api-management-log-to-eventhub-sample.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -547,11 +548,11 @@ Azure API 管理訂用帳戶是保護 API 存取的一種方法，不過其隨�
 
 **指引**：對於控制平面 (Azure 入口網站) 上的帳戶登入行為偏差，請使用 Azure Active Directory (AD) Identity Protection 和風險偵測功能，設定自動回應偵測到與使用者身分識別相關的可疑動作。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
 
-* [如何檢視有風險的 Azure AD 登入](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [如何檢視有風險的 Azure AD 登入](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [如何設定和啟用身分識別保護風險原則](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [如何設定和啟用身分識別保護風險原則](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [如何讓 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -561,7 +562,7 @@ Azure API 管理訂用帳戶是保護 API 存取的一種方法，不過其隨�
 
 **指引**：目前無法使用；Azure API 管理目前不支援客戶加密箱。
 
-* [客戶加密箱支援的服務清單](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [客戶加密箱支援的服務清單](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -569,13 +570,13 @@ Azure API 管理訂用帳戶是保護 API 存取的一種方法，不過其隨�
 
 ## <a name="data-protection"></a>資料保護
 
-*如需詳細資訊，請參閱[安全性控制項：資料保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)。*
+*如需詳細資訊，請參閱[安全性控制：資料保護](../security/benchmarks/security-control-data-protection.md)。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的詳細目錄
 
 **指引**：使用標籤協助追蹤可儲存或處理敏感性資訊的 Azure 資源。
 
-* [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -585,13 +586,13 @@ Azure API 管理訂用帳戶是保護 API 存取的一種方法，不過其隨�
 
 **指引**：針對開發、測試和生產，實作不同的訂用帳戶和/或管理群組。 Azure API 管理執行個體應該以虛擬網路 (VNet)/子網路區隔，並適當地標記。
 
-* [如何建立額外的 Azure 訂用帳戶](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [如何建立額外的 Azure 訂用帳戶](../cost-management-billing/manage/create-subscription.md)
 
-* [如何建立管理群組](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [如何建立管理群組](../governance/management-groups/create.md)
 
-* [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
-* [如何將 Azure API 管理與虛擬網路搭配使用](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)
+* [如何將 Azure API 管理與虛擬網路搭配使用](./api-management-using-with-vnet.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -603,7 +604,7 @@ Azure API 管理訂用帳戶是保護 API 存取的一種方法，不過其隨�
 
 Microsoft 會管理 Azure API 管理的基礎結構，並已實作嚴格的控制項，以避免遺失或公開客戶資料。
 
-* [了解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -613,13 +614,13 @@ Microsoft 會管理 Azure API 管理的基礎結構，並已實作嚴格的控�
 
 **指引**：管理平面呼叫會經由 Azure Resource Manager 透過 TLS 進行。 需要有效的 JSON Web 權杖 (JWT)。 您可使用 TLS 和其中一種支援的驗證機制 (例如用戶端憑證或 JWT) 來保護資料平面呼叫。
 
-* [了解 Azure API 管理中的資料保護](https://docs.microsoft.com/azure/api-management/api-management-security-controls#data-protection)
+* [了解 Azure API 管理中的資料保護](./api-management-security-controls.md#data-protection)
 
-* [管理 Azure API 管理中的 TLS 設定](https://docs.microsoft.com/azure/api-management/api-management-howto-manage-protocols-ciphers)
+* [管理 Azure API 管理中的 TLS 設定](./api-management-howto-manage-protocols-ciphers.md)
 
-* [使用 Azure Active Directory 來保護 Azure API 管理中的 API](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad)
+* [使用 Azure Active Directory 來保護 Azure API 管理中的 API](./api-management-howto-protect-backend-with-aad.md)
 
-* [使用 Azure Active Directory B2C 來保護 Azure API 管理中的 API](https://docs.microsoft.com/azure/api-management/howto-protect-backend-frontend-azure-ad-b2c)
+* [使用 Azure Active Directory B2C 來保護 Azure API 管理中的 API](./howto-protect-backend-frontend-azure-ad-b2c.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -631,7 +632,7 @@ Microsoft 會管理 Azure API 管理的基礎結構，並已實作嚴格的控�
 
 對於 Microsoft 所管理的基礎平台，Microsoft 會將所有客戶內容視為敏感性資訊，並竭盡全力來防範客戶資料外洩和暴露。 為了確保 Azure 中的客戶資料安全無虞，Microsoft 已實作並維護一套強大的資料保護控制項和功能。
 
-* [了解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -641,7 +642,7 @@ Microsoft 會管理 Azure API 管理的基礎結構，並已實作嚴格的控�
 
 **指引**：使用角色型存取控制來控制對 Azure API 管理的存取。 Azure API 管理需要 Azure 角色型存取控制 (RBAC)，才能針對 API 管理服務及實體 (例如 API 和原則) 啟用更細緻的存取管理。
 
-* [如何在 Azure API 管理中使用角色型存取控制](https://docs.microsoft.com/azure/api-management/api-management-role-based-access-control)
+* [如何在 Azure API 管理中使用角色型存取控制](./api-management-role-based-access-control.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -653,7 +654,7 @@ Microsoft 會管理 Azure API 管理的基礎結構，並已實作嚴格的控�
 
 Microsoft 會管理 Azure API 管理的基礎結構，並已實作嚴格的控制項，以避免遺失或公開客戶資料。
 
-* [了解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -663,7 +664,7 @@ Microsoft 會管理 Azure API 管理的基礎結構，並已實作嚴格的控�
 
 **指引**：敏感性資料 (例如憑證、金鑰和秘密具名值) 會使用服務所管理的各服務執行個體金鑰進行加密。 所有加密金鑰都會屬於服務所管理的各服務執行個體。
 
-* [了解如何使用 Azure API 管理進行待用資料保護/加密](https://docs.microsoft.com/azure/api-management/api-management-security-controls#data-protection)
+* [了解如何使用 Azure API 管理進行待用資料保護/加密](./api-management-security-controls.md#data-protection)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -673,9 +674,9 @@ Microsoft 會管理 Azure API 管理的基礎結構，並已實作嚴格的控�
 
 **指引**：使用 Azure 監視器搭配 Azure 活動記錄，以建立適用於生產 Azure Functions 應用程式及其他重要或相關資源發生變更時的警示。
 
-* [如何建立 Azure 活動記錄事件的警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [如何建立 Azure 活動記錄事件的警示](../azure-monitor/platform/alerts-activity-log.md)
 
-* [如何在 Azure API 管理中使用 Azure 監視器和 Azure 活動記錄](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor)
+* [如何在 Azure API 管理中使用 Azure 監視器和 Azure 活動記錄](./api-management-howto-use-azure-monitor.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -683,7 +684,7 @@ Microsoft 會管理 Azure API 管理的基礎結構，並已實作嚴格的控�
 
 ## <a name="vulnerability-management"></a>弱點管理
 
-*如需詳細資訊，請參閱[安全性控制項：弱點管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)。*
+*如需詳細資訊，請參閱[安全性控制：弱點管理](../security/benchmarks/security-control-vulnerability-management.md)。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：執行自動化弱點掃描工具
 
@@ -691,7 +692,7 @@ Microsoft 會管理 Azure API 管理的基礎結構，並已實作嚴格的控�
 
 Microsoft 所掃描和修補的基礎平台。 檢閱可用來減少服務設定相關弱點的安全性控制項。
 
-* [了解 Azure API 管理可用的安全性控制項](https://docs.microsoft.com/azure/api-management/api-management-security-controls)
+* [了解 Azure API 管理可用的安全性控制項](./api-management-security-controls.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -713,7 +714,7 @@ Microsoft 所掃描和修補的基礎平台。 檢閱可用來減少服務設定
 
 **責任**：客戶
 
-### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4：比較連續的弱點掃描
+### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4：比較連續性弱點掃描
 
 **指引**：不適用，這項建議主要用於計算資源。
 
@@ -727,7 +728,7 @@ Microsoft 所掃描和修補的基礎平台。 檢閱可用來減少服務設定
 
 Microsoft 所掃描和修補的基礎平台。 客戶會檢閱可用來減少服務設定相關弱點的安全性控制項。
 
-* [了解 Azure API 管理可用的安全性控制項](https://docs.microsoft.com/azure/api-management/api-management-security-controls)
+* [了解 Azure API 管理可用的安全性控制項](./api-management-security-controls.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -735,7 +736,7 @@ Microsoft 所掃描和修補的基礎平台。 客戶會檢閱可用來減少服
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
-*如需詳細資訊，請參閱[安全性控制項：清查和資產管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)。*
+*如需詳細資訊，請參閱[安全性控制：清查和資產管理](../security/benchmarks/security-control-inventory-asset-management.md)。*
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1：使用 Azure 資產探索
 
@@ -743,11 +744,11 @@ Microsoft 所掃描和修補的基礎平台。 客戶會檢閱可用來減少服
 
 雖然可透過 Resource Graph 探索傳統 Azure 資源，但強烈建議您從現在開始建立並使用 Azure Resource Manager 資源。
 
-* [如何使用 Azure Resource Graph 建立查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [如何使用 Azure Resource Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-* [如何檢視您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [如何檢視您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [了解 Azure RBAC](../role-based-access-control/overview.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -757,7 +758,7 @@ Microsoft 所掃描和修補的基礎平台。 客戶會檢閱可用來減少服
 
 **指引**：將標籤套用至提供中繼資料的 Azure 資源，以邏輯方式依分類組織這些資源。
 
-* [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -765,17 +766,17 @@ Microsoft 所掃描和修補的基礎平台。 客戶會檢閱可用來減少服
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：刪除未經授權的 Azure 資源
 
-**指引**：在適當的情況下，使用標記、管理群組和個別訂用帳戶來組織及追蹤 Azure 資源。 定期調節清查並確保未經授權的資源會及時從訂用帳戶中刪除。
+**指引**：在適當的情況下，使用標籤、管理群組和個別訂閱來組織及追蹤 Azure 資源。 請定期調節清查，並確保會及時刪除訂閱中未經授權的資源。
 
-此外，使用下列內建原則定義，利用 Azure 原則對可在客戶訂用帳戶中建立的資源類型施加限制：
+此外，使用下列內建原則定義，利用 Azure 原則對可在客戶訂閱中建立的資源類型施加限制：
 - 不允許的資源類型
 - 允許的資源類型
 
-* [如何建立額外的 Azure 訂用帳戶](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-* [如何建立管理群組](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [如何建立管理群組](../governance/management-groups/create.md)
 
-* [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -795,11 +796,11 @@ Microsoft 所掃描和修補的基礎平台。 客戶會檢閱可用來減少服
 - 不允許的資源類型
 - 允許的資源類型
 
-使用 Azure Resource Graph 來查詢/探索其訂用帳戶內的資源。 確保已核准環境中的所有 Azure 資源。
+使用 Azure Resource Graph 來查詢/探索其訂閱內的資源。 確保已核准環境中的所有 Azure 資源。
 
-* [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-* [如何使用 Azure Graph 建立查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [如何使用 Azure Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -831,13 +832,13 @@ Microsoft 所掃描和修補的基礎平台。 客戶會檢閱可用來減少服
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：僅使用已核准的 Azure 服務
 
-**指引**：使用下列內建原則定義，利用 Azure 原則對可在客戶訂用帳戶中建立的資源類型施加限制：
+**指引**：使用下列內建原則定義，以利用 Azure 原則對可在客戶訂用帳戶中建立的資源類型施加限制：
 - 不允許的資源類型
 - 允許的資源類型
 
-* [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-* [如何使用 Azure 原則拒絕特定的資源類型](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [如何使用 Azure 原則拒絕特定的資源類型](/azure/governance/policy/samples/not-allowed-resource-types)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -855,9 +856,9 @@ Microsoft 所掃描和修補的基礎平台。 客戶會檢閱可用來減少服
 
 **指引**：設定 Azure 條件式存取，以藉由對「Microsoft Azure 管理」應用程式設定「封鎖存取」，限制使用者與 Azure Resource Manager 互動的能力。
 
-* [如何設定條件式存取以封鎖 Azure Resource Manager 的存取](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [如何設定條件式存取以封鎖 Azure Resource Manager 的存取](../role-based-access-control/conditional-access-azure-management.md)
 
-* [Azure API 管理中的角色型存取控制](https://docs.microsoft.com/azure/api-management/api-management-role-based-access-control)
+* [Azure API 管理中的角色型存取控制](./api-management-role-based-access-control.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -881,15 +882,15 @@ Microsoft 所掃描和修補的基礎平台。 客戶會檢閱可用來減少服
 
 ## <a name="secure-configuration"></a>安全設定
 
-*如需詳細資訊，請參閱[安全性控制項：安全設定](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)。*
+*如需詳細資訊，請參閱[安全性控制：安全設定](../security/benchmarks/security-control-secure-configuration.md)。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
 **指引**：使用 Azure 原則，為您的 Azure API 管理服務定義及實作標準安全性設定。 使用 "Microsoft.ApiManagement" 命名空間中的 Azure 原則別名來建立自訂原則，以稽核或強制執行 Azure API 管理服務的設定。
 
-* [如何檢視可用的 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [如何檢視可用的 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -907,9 +908,9 @@ Microsoft 所掃描和修補的基礎平台。 客戶會檢閱可用來減少服
 
 **指引**：使用 Azure 原則，為您的 Azure API 管理服務定義及實作標準安全性設定。 使用 "Microsoft.ApiManagement" 命名空間中的 Azure 原則別名來建立自訂原則，以稽核或強制執行 Azure API 管理執行個體的設定。 使用 Azure 原則 [拒絕] 和 [在不存在時部署]，對您的 Azure 資源強制使用安全設定。
 
-* [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-* [了解 Azure 原則效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [瞭解 Azure 原則效果](../governance/policy/concepts/effects.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -927,11 +928,11 @@ Microsoft 所掃描和修補的基礎平台。 客戶會檢閱可用來減少服
 
 **指引**：如果使用自訂 Azure 原則定義，請使用 Azure DevOps 或 Azure Repos 安全地儲存及管理您的 Azure API 管理服務設定。
 
-* [如何在 Azure DevOps 中儲存檔案](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [如何在 Azure DevOps 中儲存檔案](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Azure Repos 文件](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Azure Repos 文件](/azure/devops/repos/index?view=azure-devops)
 
-* [了解 Azure API 管理 DevOps 資源套件](https://docs.microsoft.com/azure/api-management/api-management-security-controls#configuration-management)
+* [了解 Azure API 管理 DevOps 資源套件](./api-management-security-controls.md#configuration-management)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -949,15 +950,15 @@ Microsoft 所掃描和修補的基礎平台。 客戶會檢閱可用來減少服
 
 **指引**：使用 Azure 原則，為您的 Azure API 管理服務定義及實作標準安全性設定。 使用 "Microsoft.ApiManagement" 命名空間中的 Azure 原則別名來建立自訂原則，以稽核或強制執行 Azure API 管理執行個體的設定。 使用 Azure 原則 [拒絕] 和 [在不存在時部署]，對您的 Azure 資源強制使用安全設定。
 
-* [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-* [了解 Azure 原則效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [瞭解 Azure 原則效果](../governance/policy/concepts/effects.md)
 
 **Azure 資訊安全中心監視**：不適用
 
 **責任**：客戶
 
-### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8：部署作業系統的系統組態管理工具
+### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8：部署作業系統的系統設定管理工具
 
 **指引**：不適用，這項建議主要用於計算資源。
 
@@ -971,11 +972,11 @@ Microsoft 所掃描和修補的基礎平台。 客戶會檢閱可用來減少服
 
 此外，使用 Azure 原則，為您的 Azure API 管理服務定義及實作標準安全性設定。 使用 "Microsoft.ApiManagement" 命名空間中的 Azure 原則別名來建立自訂原則，以稽核或強制執行 Azure API 管理執行個體的設定。 使用 Azure 原則 [拒絕] 和 [在不存在時部署]，對您的 Azure 資源強制使用安全設定。
 
-* [了解 Azure API 管理 DevOps 資源套件](https://docs.microsoft.com/azure/api-management/api-management-security-controls#configuration-management)
+* [了解 Azure API 管理 DevOps 資源套件](./api-management-security-controls.md#configuration-management)
 
-* [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-* [了解 Azure 原則效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [瞭解 Azure 原則效果](../governance/policy/concepts/effects.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -993,7 +994,7 @@ Microsoft 所掃描和修補的基礎平台。 客戶會檢閱可用來減少服
 
 **指引**：使用 Key Vault 來管理憑證，並將其設定為自動輪替。 如果使用 Azure Key Vault 來管理自訂網域 SSL 憑證，請確定憑證是以憑證 (而不是秘密) 的形式插入 Key Vault 中。
 
-* [如何使用 Key Vault 金鑰輪替的指引來設定自訂網域名稱](https://docs.microsoft.com/azure/api-management/configure-custom-domain)
+* [如何使用 Key Vault 金鑰輪替的指引來設定自訂網域名稱](./configure-custom-domain.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -1003,17 +1004,17 @@ Microsoft 所掃描和修補的基礎平台。 客戶會檢閱可用來減少服
 
 **指引**：使用 Azure Active Directory (AD) 所產生的受控服務識別，可讓您的「API 管理」執行個體輕鬆且安全地存取其他受 Azure AD 保護的資源 (例如 Azure Key Vault)。
 
-* [如何為 API 管理執行個體建立受控識別](https://docs.microsoft.com/azure/api-management/api-management-howto-use-managed-service-identity)
+* [如何為 API 管理執行個體建立受控識別](./api-management-howto-use-managed-service-identity.md)
 
-* [使用受控識別進行驗證的原則](https://docs.microsoft.com/azure/api-management/api-management-authentication-policies#ManagedIdentity)
+* [使用受控識別進行驗證的原則](./api-management-authentication-policies.md#ManagedIdentity)
 
 **Azure 資訊安全中心監視**：是
 
 **責任**：客戶
 
-### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除非預期的認證暴露
+### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除非預期的認證公開
 
-**指引**：實作認證掃描器來識別程式碼中的認證。 認證掃描器也鼓勵將探索到的認證移至更安全的位置，例如 Azure Key Vault。
+**指引**：實作認證掃描器來識別程式碼中的認證。 認證掃描器也有助於將探索到的認證移至更安全的位置，例如 Azure Key Vault。
 
 * [如何設定認證掃描器](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
@@ -1023,7 +1024,7 @@ Microsoft 所掃描和修補的基礎平台。 客戶會檢閱可用來減少服
 
 ## <a name="malware-defense"></a>惡意程式碼防禦
 
-*如需詳細資訊，請參閱[安全性控制項：惡意程式碼防禦](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)。*
+*如需詳細資訊，請參閱[安全性控制：惡意程式碼防禦](../security/benchmarks/security-control-malware-defense.md)。*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反惡意程式碼軟體
 
@@ -1057,7 +1058,7 @@ Microsoft 所掃描和修補的基礎平台。 客戶會檢閱可用來減少服
 
 ## <a name="data-recovery"></a>資料復原
 
-*如需詳細資訊，請參閱[安全性控制項：資料復原](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)。*
+*如需詳細資訊，請參閱[安全性控制：資料復原](../security/benchmarks/security-control-data-recovery.md)。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確保會定期自動備份
 
@@ -1065,9 +1066,9 @@ Microsoft 所掃描和修補的基礎平台。 客戶會檢閱可用來減少服
 
 API 管理的服務備份與還原功能可提供實作災害復原策略時必要的構成要素。 您可手動或自動執行備份和還原作業。
 
-* [如何將 API 管理資料平面部署到多個區域](https://docs.microsoft.com/azure/api-management/api-management-howto-deploy-multi-region)
+* [如何將 API 管理資料平面部署到多個區域](./api-management-howto-deploy-multi-region.md)
 
-* [如何在 Azure API 管理中使用服務備份和還原來實作災害復原](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
+* [如何在 Azure API 管理中使用服務備份和還原來實作災害復原](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
 * [如何呼叫 API 管理備份作業](/rest/api/apimanagement/2019-12-01/apimanagementservice/backup)
 
@@ -1083,9 +1084,9 @@ API 管理的服務備份與還原功能可提供實作災害復原策略時必�
 
 受控識別可用來從 API 管理自訂網域名稱的 Azure Key Vault 中取得憑證。 備份 Azure Key Vault 中所儲存的任何憑證。
 
-* [如何在 Azure API 管理中使用服務備份和還原來實作災害復原](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
+* [如何在 Azure API 管理中使用服務備份和還原來實作災害復原](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
-* [如何備份 Azure Key Vault 憑證](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate?view=azurermps-6.13.0)
+* [如何備份 Azure Key Vault 憑證](/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate?view=azurermps-6.13.0)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1095,9 +1096,9 @@ API 管理的服務備份與還原功能可提供實作災害復原策略時必�
 
 **指引**：從備份執行服務的測試還原和憑證，藉此驗證備份。
 
-* [如何呼叫 API 管理還原作業](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
+* [如何呼叫 API 管理還原作業](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
 
-* [如何還原 Azure Key Vault 憑證](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
+* [如何還原 Azure Key Vault 憑證](/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1107,13 +1108,13 @@ API 管理的服務備份與還原功能可提供實作災害復原策略時必�
 
 **指引**：Azure API 管理會將備份寫入客戶擁有的 Azure 儲存體帳戶。 遵循 Azure 儲存體安全性建議來保護您的備份。
 
-* [如何在 Azure API 管理中使用服務備份和還原來實作災害復原](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
+* [如何在 Azure API 管理中使用服務備份和還原來實作災害復原](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
-* [Blob 儲存體的安全性建議](https://docs.microsoft.com/azure/storage/blobs/security-recommendations)
+* [Blob 儲存體的安全性建議](../storage/blobs/security-recommendations.md)
 
 在 Key Vault 中啟用虛刪除，以防止金鑰遭到意外或惡意刪除。
 
-* [如何在 Key Vault 中啟用虛刪除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [如何在 Key Vault 中啟用虛刪除](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1121,11 +1122,11 @@ API 管理的服務備份與還原功能可提供實作災害復原策略時必�
 
 ## <a name="incident-response"></a>事件回應
 
-*如需詳細資訊，請參閱[安全性控制項：事件回應](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)。*
+*如需詳細資訊，請參閱[安全性控制：事件回應](../security/benchmarks/security-control-incident-response.md)。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：建立事件回應指南
 
-**指引**：為您的組織製作事件回應指南。 請確定有書面的事件回應計畫，其中定義人員的所有角色，以及從偵測到事件後檢討的事件處理/管理階段。
+**指引**：為組織製作事件回應指南。 請確定有書面的事件回應計畫，其中定義人員的所有角色，以及從偵測到事件後檢討的事件處理/管理階段。
 
 * [建立自有安全性事件回應程序的指引](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -1139,13 +1140,13 @@ API 管理的服務備份與還原功能可提供實作災害復原策略時必�
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：建立事件評分和優先順序程序
 
-**指引**：資訊安全中心會指派每個警示的嚴重性，協助您設定應優先調查哪些警示。 嚴重性所依據的基礎是資訊安全中心對用於發出警示之發現或分析的信心程度，以及導致警示的活動背後有惡意意圖的信賴等級。
+**指引**：資訊安全中心會指派每個警示的嚴重性，以協助設定應優先調查哪些警示。 嚴重性會依據資訊安全中心對用於發出警示的發現或分析其信心程度，以及信賴等級具有活動背後會導致警示的惡意意圖。
 
 此外，使用標記清楚地標示訂用帳戶 (例如， 生產、非生產) 並建立命名系統，以清楚地識別及分類 Azure 資源，尤其是處理敏感性資料的資源。 您需負責根據發生事件的 Azure 資源和環境的重要性，設定警示的補救優先順序。
 
-* [Azure 資訊安全中心的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Azure 資訊安全中心的安全性警示](../security-center/security-center-alerts-overview.md)
 
-* [使用標記來組織 Azure 資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [使用標記來組織 Azure 資源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -1165,7 +1166,7 @@ API 管理的服務備份與還原功能可提供實作災害復原策略時必�
 
 **指引**：如果 Microsoft 安全性回應中心 (MSRC) 發現您的資料遭到非法或未經授權的對象存取，Microsoft 將使用安全性事件連絡資訊來連絡您。 事後檢討事件，確保問題已解決。
 
-* [如何設定 Azure 資訊安全中心的安全性連絡人](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [如何設定 Azure 資訊安全中心的安全性連絡人](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -1175,9 +1176,9 @@ API 管理的服務備份與還原功能可提供實作災害復原策略時必�
 
 **指引**：使用「連續匯出」功能來匯出 Azure 資訊安全中心警示和建議，協助找出 Azure 資源的風險。 「連續匯出」可讓您以手動或持續不斷的方式來匯出警示和建議。 您可使用 Azure 資訊安全中心的資料連接器，將警示串流至 Azure Sentinel。
 
-* [如何設定連續匯出](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [如何設定連續匯出](../security-center/continuous-export.md)
 
-* [如何將警示串流至 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [如何將警示串流至 Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1187,7 +1188,7 @@ API 管理的服務備份與還原功能可提供實作災害復原策略時必�
 
 **指引**：利用 Azure 資訊安全中心的工作流程自動化功能，透過「Logic Apps」自動觸發對安全性警示和建議的回應。
 
-* [如何設定工作流程自動化和 Logic Apps](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [如何設定工作流程自動化和 Logic Apps](../security-center/workflow-automation.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1195,7 +1196,7 @@ API 管理的服務備份與還原功能可提供實作災害復原策略時必�
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
 
-*如需詳細資訊，請參閱[安全性控制項：滲透測試和 Red Team 練習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
+*如需詳細資訊，請參閱[安全性控制項：滲透測試和 Red Team 練習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-to-remediate-all-critical-security-findings-within-60-days"></a>11.1：進行 Azure 資源的定期滲透測試，並確保在 60 天內補救所有重大安全性發現
 
@@ -1209,5 +1210,5 @@ API 管理的服務備份與還原功能可提供實作災害復原策略時必�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

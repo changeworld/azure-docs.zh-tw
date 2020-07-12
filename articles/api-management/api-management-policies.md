@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: f4a29c7cb7e35e69eb9410dd7ddc9f07757e3565
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 069fc95d226e4417bb650b6092a7d00953f69e8d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82128724"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252839"
 ---
 # <a name="api-management-policies"></a>API 管理原則
 本節提供下列「API 管理」原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](api-management-howto-policies.md)。  
@@ -50,12 +50,12 @@ ms.locfileid: "82128724"
     -   [設定變數](api-management-advanced-policies.md#set-variable) - 保存具名 context 變數中的值，供日後存取使用。  
     -   [設定要求方法](api-management-advanced-policies.md#SetRequestMethod) - 允許您變更要求的 HTTP 方法。  
     -   [設定狀態碼](api-management-advanced-policies.md#SetStatus) - 將 HTTP 狀態碼變更為指定的值。  
-    -   [追蹤](api-management-advanced-policies.md#Trace)-將自訂追蹤新增至[API 偵測器](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)輸出、Application Insights 遙測和資源記錄。  
+    -   [追蹤](api-management-advanced-policies.md#Trace)-將自訂追蹤新增至[API 偵測器](./api-management-howto-api-inspector.md)輸出、Application Insights 遙測和資源記錄。  
     -   [等候](api-management-advanced-policies.md#Wait)-等候括住的[傳送要求](api-management-advanced-policies.md#SendRequest)、[取得快取的值](api-management-caching-policies.md#GetFromCacheByKey)，或[控制流程](api-management-advanced-policies.md#choose)原則完成後再繼續。  
 -   [驗證原則](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   [使用基本驗證進行驗證](api-management-authentication-policies.md#Basic) - 使用基本驗證來驗證後端服務。  
     -   [使用用戶端憑證進行驗證](api-management-authentication-policies.md#ClientCertificate) - 使用用戶端憑證來驗證後端服務。  
-    -   使用[受控識別進行驗證](api-management-authentication-policies.md#ManagedIdentity)-使用[受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)向後端服務進行驗證。  
+    -   使用[受控識別進行驗證](api-management-authentication-policies.md#ManagedIdentity)-使用[受控識別](../active-directory/managed-identities-azure-resources/overview.md)向後端服務進行驗證。  
 -   [快取原則](api-management-caching-policies.md#CachingPolicies)  
     -   [從快取中取得](api-management-caching-policies.md#GetFromCache) - 執行快取查閱並傳回有效的快取回應 (如果有的話)。  
     -   [儲存至快取](api-management-caching-policies.md#StoreToCache) - 根據指定的快取控制組態來快取回應。  

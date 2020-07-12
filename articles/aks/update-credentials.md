@@ -1,18 +1,18 @@
 ---
 title: 重設叢集的認證
 titleSuffix: Azure Kubernetes Service
-description: 瞭解如何更新或重設 Azure Kubernetes Service （AKS）叢集的服務主體或 AAD 應用程式認證
+description: 瞭解如何更新或重設 Azure Kubernetes Service (AKS) 叢集的服務主體或 AAD 應用程式認證
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 7dcbd91063d4f36c4d78023b6548db0c968eda74
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a9cc19184cc39975cce18d17a6047bedf5915555
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077689"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251021"
 ---
-# <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>更新或輪替 Azure Kubernetes Service 的認證（AKS）
+# <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>更新或輪替 Azure Kubernetes Service (AKS 的認證) 
 
 根據預設，建立 AKS 叢集時包含的服務主體到期時間為期一年。 當到期日接近時，您可以重設認證，將服務主體再延長一段時間。 您可能也想為已定義的安全性原則更新或輪替認證。 本文詳述如何更新 AKS 叢集的認證。
 
@@ -127,8 +127,8 @@ az aks update-credentials \
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [az-aks-update-credentials]: /cli/azure/aks#az-aks-update-credentials
 [best-practices-identity]: operator-best-practices-identity.md
-[aad-integration]: azure-ad-integration.md
-[create-aad-app]: azure-ad-integration.md#create-the-server-application
+[aad-integration]: ./azure-ad-integration-cli.md
+[create-aad-app]: ./azure-ad-integration-cli.md#create-azure-ad-server-component
 [az-ad-sp-create]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
 [az-ad-sp-credential-list]: /cli/azure/ad/sp/credential#az-ad-sp-credential-list
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset

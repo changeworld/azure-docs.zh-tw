@@ -2,13 +2,14 @@
 title: Azure Functions 的 JavaScript 開發人員參考
 description: 了解如何使用 JavaScript 開發函式。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 51d8c951958dc5fb4b26e92337f96e7a5c758999
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d71301ef73cd94c13b12e17c923ec73abb8e4aae
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996596"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252720"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 開發人員指南
 
@@ -47,11 +48,11 @@ FunctionsProject
 
 ## <a name="exporting-a-function"></a>匯出函數
 
-JavaScript 函數必須透過 [`module.exports`](https://nodejs.org/api/modules.html#modules_module_exports) （或）匯出 [`exports`](https://nodejs.org/api/modules.html#modules_exports) 。 您匯出的函式應該是可經觸發而執行的 JavaScript 函式。
+JavaScript 函數必須透過 [`module.exports`](https://nodejs.org/api/modules.html#modules_module_exports) (或) 匯出 [`exports`](https://nodejs.org/api/modules.html#modules_exports) 。 您匯出的函式應該是可經觸發而執行的 JavaScript 函式。
 
 根據預設，Functions 執行階段會在 `index.js` 中尋找您的函式，其中 `index.js` 與對應的 `function.json` 會共用相同的父目錄。 在預設情況中，您匯出的函式應該是僅來自其檔案的匯出，或是名為 `run` 或 `index` 的匯出。 若要設定檔案位置，並匯出函式的名稱，請參閱以下的[設定您的函式進入點](functions-reference-node.md#configure-function-entry-point)。
 
-您匯出的函式在執行時，會傳入多個引數。 它所採用的第一個引數一律為 `context` 物件。 如果您的函式是同步的（不會傳回承諾），您必須傳遞 `context` 物件，因為 `context.done` 需要呼叫才可正確使用。
+您匯出的函式在執行時，會傳入多個引數。 它所採用的第一個引數一律為 `context` 物件。 如果您的函式是同步 (不會傳回承諾) ，您必須傳遞 `context` 物件，因為 `context.done` 需要呼叫才可正確使用。
 
 ```javascript
 // You should include context, other arguments are optional
@@ -130,7 +131,7 @@ module.exports = async function (context, req) {
 ### <a name="outputs"></a>輸出
 函式可透過數種方式寫入輸出 (`direction === "out"` 的繫結)。 在所有情況下，在 *function.json* 中為繫結定義的 `name` 屬性都會對應至在您的函式中寫入的物件成員名稱。 
 
-您可以用下列其中一種方式將資料指派給輸出系結（請勿結合這些方法）：
+您可以利用下列其中一種方式將資料指派給輸出系結 (不要將這些方法結合) ：
 
 - **_[建議用於多個輸出]_ 傳回物件。** 如果您使用的是非同步/承諾傳回函式，您可以傳回具有指派之輸出資料的物件。 在下列範例中，輸出繫結在 *function.json* 中會命名為 "httpResponse" 和 "queueOutput"。
 
@@ -146,7 +147,7 @@ module.exports = async function (context, req) {
   };
   ```
 
-  如果您使用同步函式，您可以使用傳回此物件 [`context.done`](#contextdone-method) （請參閱範例）。
+  如果您使用同步函式，您可以使用傳回此物件 [`context.done`](#contextdone-method) (參閱範例) 。
 - **_[建議用於單一輸出]_ 直接傳回值並使用 $return 繫結名稱。** 這僅適用於非同步/Promise 傳回函式。 請參閱[匯出非同步函式](#exporting-an-async-function)中的範例。 
 - **將值指派給 `context.bindings`** 您可以直接將值指派給 context.bindings。
 
@@ -266,7 +267,7 @@ context.log(message)
 
 | 方法                 | 描述                                |
 | ---------------------- | ------------------------------------------ |
-| **錯誤（_訊息_）**   | 寫入錯誤層級或更低層級的記錄。   |
+| ** (_訊息_) 時發生錯誤**   | 寫入錯誤層級或更低層級的記錄。   |
 | **warn(_message_)**    | 寫入警告層級或更低層級的記錄。 |
 | **info(_message_)**    | 寫入資訊層級或更低層級的記錄。    |
 | **verbose(_message_)** | 寫入詳細資訊層級記錄。           |
@@ -341,7 +342,7 @@ HTTP 和 Webhook 觸發程序以及 HTTP 輸出繫結會使用要求和回應物
 
 `context.req` (要求) 物件具有下列屬性：
 
-| 屬性      | 說明                                                    |
+| 屬性      | 描述                                                    |
 | ------------- | -------------------------------------------------------------- |
 | _body_        | 包含要求本文的物件。               |
 | _標題_     | 包含要求標頭的物件。                   |
@@ -356,7 +357,7 @@ HTTP 和 Webhook 觸發程序以及 HTTP 輸出繫結會使用要求和回應物
 
 `context.res` (回應) 物件具有下列屬性：
 
-| 屬性  | 說明                                               |
+| 屬性  | 描述                                               |
 | --------- | --------------------------------------------------------- |
 | _body_    | 包含回應本文的物件。         |
 | _標題_ | 包含回應標頭的物件。             |
@@ -420,11 +421,11 @@ FUNCTIONS_WORKER_PROCESS_COUNT 適用於 Functions 在擴增應用程式以符�
 
 下錶針對每個主要版本的函式執行時間，依作業系統顯示目前支援的 Node.js 版本：
 
-| Functions 版本 | 節點版本（Windows） | 節點版本（Linux） |
+| Functions 版本 |  (Windows) 的節點版本 |  (Linux) 的節點版本 |
 |---|---| --- |
 | 1.x | 6.11.2 (由執行階段鎖定) | n/a |
-| 2.x  | ~ 8<br/>~ 10 （建議）<br/>~ 12<sup>*</sup> | ~ 8 （建議）<br/>~ 10  |
-| 3.x | ~ 10<br/>~ 12 （建議）  | ~ 10<br/>~ 12 （建議） |
+| 2.x  | ~ 8<br/>~ 10 (建議) <br/>~ 12<sup>*</sup> | ~ 8 (建議) <br/>~ 10  |
+| 3.x | ~ 10<br/>~ 12 (建議)   | ~ 10<br/>~ 12 (建議)  |
 
 <sup>*</sup>在2.x 版的函式執行時間中，目前允許節點 ~ 12。 不過，為了達到最佳效能，我們建議使用函數執行時間3.x 與節點 ~ 12。 
 
@@ -458,7 +459,7 @@ module.exports = function(context) {
 
 
 ### <a name="using-kudu"></a>使用 Kudu
-1. 移至 `https://<function_app_name>.scm.azurewebsites.net`。
+1. 前往 `https://<function_app_name>.scm.azurewebsites.net`。
 
 2. 按一下 [**偵錯主控台**  >  **CMD**]。
 
@@ -570,7 +571,7 @@ module.exports = myObj;
 
 產生的檔案 `.funcignore` 是用來指出當專案發行至 Azure 時要排除的檔案。  
 
-TypeScript 檔案（. ts）會轉換至輸出目錄中的 JavaScript 檔案（.js） `dist` 。 TypeScript 範本使用中的[ `scriptFile` 參數](#using-scriptfile) `function.json` 來表示資料夾中對應 .js 檔案的位置 `dist` 。 輸出位置是由範本使用檔案中的參數來設定 `outDir` `tsconfig.json` 。 如果您變更此設定或資料夾的名稱，執行時間就無法找到要執行的程式碼。
+在輸出目錄中，)  ( 的 TypeScript 檔案會轉換至 JavaScript 檔案 ( .js) 中。 `dist` TypeScript 範本使用中的[ `scriptFile` 參數](#using-scriptfile) `function.json` 來表示資料夾中對應 .js 檔案的位置 `dist` 。 輸出位置是由範本使用檔案中的參數來設定 `outDir` `tsconfig.json` 。 如果您變更此設定或資料夾的名稱，執行時間就無法找到要執行的程式碼。
 
 您在本機開發和部署 TypeScript 專案的方式，取決於您的開發工具。
 
@@ -580,7 +581,7 @@ Visual Studio Code 擴充功能的[Azure Functions](https://marketplace.visualst
 
 若要在 Visual Studio Code 中建立 TypeScript 函數應用程式，請在 `TypeScript` 建立函數應用程式時選擇您的語言。
 
-當您按**F5**在本機執行應用程式時，轉譯會在主機（func.exe）初始化之前完成。 
+當您按**F5**在本機執行應用程式時，轉譯會在主機 ( # A0) 初始化之前完成。 
 
 當您使用 [**部署至函式應用程式 ...** ] 按鈕將函式應用程式部署到 Azure 時，Azure Functions 延伸模組會先從 TypeScript 來源檔案產生已準備好用於生產環境的 JavaScript 檔案組建。
 
@@ -647,7 +648,7 @@ func azure functionapp publish <APP_NAME>
  - 擲回未攔截的例外狀況，導致[Node.js 進程損毀](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly)，可能會影響其他函數的執行。
  - 非預期的行為，例如來自 coNtext .log 的遺漏記錄，因為未正確等待的非同步呼叫所造成。
 
-在下列範例中， `fs.readFile` 會叫用具有錯誤第一個回呼函式的非同步方法作為第二個參數。 這段程式碼會導致上述這兩個問題。 在正確的範圍中未明確攔截到的例外狀況會損毀整個進程（問題 #1）。 在 `context.done()` 回呼函式範圍之外呼叫，表示函式呼叫可能會在讀取檔案之前結束（問題 #2）。 在此範例中，如果呼叫 `context.done()` 過早，會導致遺漏記錄專案，從開始 `Data from file:` 。
+在下列範例中， `fs.readFile` 會叫用具有錯誤第一個回呼函式的非同步方法作為第二個參數。 這段程式碼會導致上述這兩個問題。 在正確的範圍中未明確攔截到的例外狀況會導致整個程式 (問題 #1) 。 在 `context.done()` 回呼函式範圍之外呼叫，表示函式呼叫可能會在讀取檔案之前結束 (問題 #2) 。 在此範例中，如果呼叫 `context.done()` 過早，會導致遺漏記錄專案，從開始 `Data from file:` 。
 
 ```javascript
 // NOT RECOMMENDED PATTERN

@@ -7,12 +7,12 @@ author: TomGeske
 ms.topic: article
 ms.date: 07/08/2020
 ms.author: thomasge
-ms.openlocfilehash: 9cacd2454dc987f7d507bb4b677e742f0be0d391
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: b30c5b0e81f4748d5e94c05d016be83163c1e78e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166496"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251122"
 ---
 # <a name="aks-managed-azure-active-directory-integration-preview"></a>AKS-受控 Azure Active Directory 整合 (預覽) 
 
@@ -71,13 +71,13 @@ kubectl version --client
 az feature register --name AAD-V2 --namespace Microsoft.ContainerService
 ```
 
-可能需要幾分鐘的時間，狀態才會顯示為 [已註冊]。 您可以使用 [az feature list](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-list) 命令檢查註冊狀態：
+可能需要幾分鐘的時間，狀態才會顯示為 [已註冊]。 您可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) 命令檢查註冊狀態：
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AAD-V2')].{Name:name,State:properties.state}"
 ```
 
-當狀態顯示為已註冊時，請使用 [az provider register](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register) 命令重新整理 `Microsoft.ContainerService` 資源提供者的註冊：
+當狀態顯示為已註冊時，請使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) 命令重新整理 `Microsoft.ContainerService` 資源提供者的註冊：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -131,7 +131,7 @@ az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-g
 
 ## <a name="access-an-azure-ad-enabled-cluster"></a>存取已啟用 Azure AD 的叢集
 
-您需要 Azure Kubernetes Service 叢集[使用者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-user-role)內建角色，才能執行下列步驟。
+您需要 Azure Kubernetes Service 叢集[使用者](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role)內建角色，才能執行下列步驟。
 
 取得用來存取叢集的使用者認證：
  
@@ -150,7 +150,7 @@ aks-nodepool1-15306047-0   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-1   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 ```
-[ (RBAC) ](https://docs.microsoft.com/azure/aks/azure-ad-rbac)設定以角色為基礎的存取控制，為您的叢集設定額外的安全性群組。
+[ (RBAC) ](./azure-ad-rbac.md)設定以角色為基礎的存取控制，為您的叢集設定額外的安全性群組。
 
 ## <a name="troubleshooting-access-issues-with-azure-ad"></a>針對 Azure AD 的存取問題進行疑難排解
 
@@ -159,7 +159,7 @@ aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 
 如果您因為無法存取具有叢集存取權的有效 Azure AD 群組而永久封鎖，您仍然可以取得系統管理員認證來直接存取叢集。
 
-若要執行這些步驟，您必須具備 Azure Kubernetes Service 叢集系統[管理員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-admin-role)內建角色的存取權。
+若要執行這些步驟，您必須具備 Azure Kubernetes Service 叢集系統[管理員](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-admin-role)內建角色的存取權。
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster --admin
@@ -180,7 +180,7 @@ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster 
 <!-- LINKS - external -->
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
-[aks-arm-template]: https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters
+[aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
 
 <!-- LINKS - Internal -->
 [azure-rbac-integration]: manage-azure-rbac.md
@@ -195,4 +195,3 @@ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster 
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
 [azure-ad-cli]: azure-ad-integration-cli.md
-

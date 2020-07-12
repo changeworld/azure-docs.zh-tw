@@ -4,11 +4,12 @@ description: 了解 Kubernetes 的基本叢集和工作負載元件，及其與 
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 9b54bdbfcbc37d3863d4e6b86ae6fe5522bb5be9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fe687ddd63ee85faec2d1aa4c02fa2636a3058f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336636"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251853"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) 的 Kubernetes 核心概念
 
@@ -24,7 +25,7 @@ Kubernetes 是一個快速發展中的平台，可管理容器型應用程式及
 
 Kubernetes 屬於開放式平台，可讓您使用慣用的程式設計語言、作業系統、程式庫或訊息匯流排來建置您的應用程式。 現有的持續整合與持續傳遞 (CI/CD) 工具可與 Kubernetes 整合，以排程及部署發行。
 
-Azure Kubernetes Service (AKS) 提供受控 Kubernetes 服務，可降低部署和核心管理工作的複雜度，包括協調升級。 AKS 控制平面是由 Azure 平臺所管理，而您只需為執行應用程式的 AKS 節點付費。 AKS 建置於開放原始碼 Azure Kubernetes Service 引擎（[AKS 引擎][aks-engine]）之上。
+Azure Kubernetes Service (AKS) 提供受控 Kubernetes 服務，可降低部署和核心管理工作的複雜度，包括協調升級。 AKS 控制平面是由 Azure 平臺所管理，而您只需為執行應用程式的 AKS 節點付費。 AKS 建置於開放原始碼 Azure Kubernetes Service 引擎 ([AKS-engine][aks-engine]) 上。
 
 ## <a name="kubernetes-cluster-architecture"></a>Kubernetes 叢集架構
 
@@ -37,7 +38,7 @@ Kubernetes 叢集分成兩個元件：
 
 ## <a name="control-plane"></a>控制平面
 
-當您建立 AKS 叢集時，系統會自動建立並設定控制平面。 這個控制平面是以受控 Azure 資源的形式提供，可從使用者抽象化。 控制平面不會產生任何費用，只有屬於 AKS 叢集的節點。
+當您建立 AKS 叢集時，系統會自動建立並設定控制平面。 這個控制平面是以受控 Azure 資源的形式提供，可從使用者抽象化。 控制平面不會產生任何費用，只有屬於 AKS 叢集的節點。 控制平面和其資源僅位於您建立叢集所在的區域。
 
 控制平面包含下列核心 Kubernetes 元件：
 
@@ -48,7 +49,7 @@ Kubernetes 叢集分成兩個元件：
 
 AKS 提供單一租使用者控制平面，其中包含專用的 API 伺服器、排程器等。您可以定義節點的數目和大小，而 Azure 平臺會設定控制平面與節點之間的安全通訊。 與控制平面的互動會透過 Kubernetes Api （例如 `kubectl` 或 Kubernetes 儀表板）進行。
 
-這個受控控制平面表示您不需要設定高可用性*etcd*存放區之類的元件，但這也表示您無法直接存取控制平面。 升級至 Kubernetes 會透過 Azure CLI 或 Azure 入口網站進行協調，這會升級控制平面和節點。 若要對可能的問題進行疑難排解，您可以透過 Azure 監視器記錄來檢查控制平面記錄。
+此受控控制平面表示您不需要設定高可用性*etcd*存放區之類的元件，但這也表示您無法直接存取控制平面。 升級至 Kubernetes 會透過 Azure CLI 或 Azure 入口網站進行協調，這會升級控制平面和節點。 若要對可能的問題進行疑難排解，您可以透過 Azure 監視器記錄來檢查控制平面記錄。
 
 如果您需要以特定方式設定控制平面，或需要直接存取它，您可以使用[aks-engine][aks-engine]來部署您自己的 Kubernetes 叢集。
 
@@ -66,13 +67,13 @@ AKS 提供單一租使用者控制平面，其中包含專用的 API 伺服器�
 
 節點的 Azure VM 大小將定義可用的 CPU 數量、記憶體數量，以及儲存體的大小和類型 (例如高效能 SSD 或一般 HDD)。 如果您預期有應用程式需要大量的 CPU 和記憶體或高效能儲存體，請據以規劃節點大小。 您也可以相應放大您 AKS 叢集中的節點數目，以符合需求。
 
-在 AKS 中，叢集中節點的 VM 映射目前是以 Ubuntu Linux 或 Windows Server 2019 為基礎。 當您建立 AKS 叢集或相應放大節點數目時，Azure 平臺會建立所要求的 Vm 數目並加以設定。 您不需要執行任何手動設定。 代理程式節點會以標準虛擬機器計費，因此會自動套用您在使用的 VM 大小（包括[Azure 保留][reservation-discounts]專案）上的任何折扣。
+在 AKS 中，叢集中節點的 VM 映射目前是以 Ubuntu Linux 或 Windows Server 2019 為基礎。 當您建立 AKS 叢集或相應放大節點數目時，Azure 平臺會建立所要求的 Vm 數目並加以設定。 您不需要執行任何手動設定。 代理程式節點會以標準虛擬機器計費，因此，您在使用的 VM 大小上擁有的任何折扣 (包括[Azure 保留][reservation-discounts]) 會自動套用。
 
 如果您需要使用不同的主機 OS、容器執行階段或要納入自訂套件，您可以使用 [aks-engine][aks-engine] 自行部署 Kubernetes 叢集。 上游 `aks-engine` 會在功能於 AKS 叢集中正式受到支援之前發行這些功能，並提供設定選項。 例如，如果您想要使用 Moby 以外的容器執行時間，您可以使用 `aks-engine` 來設定和部署符合您目前需求的 Kubernetes 叢集。
 
 ### <a name="resource-reservations"></a>資源保留
 
-AKS 會使用節點資源，讓 node 函式成為叢集的一部分。 在 AKS 中使用時，這會在節點的總資源和資源 allocatable 之間建立差異。 在設定使用者部署的 pod 的要求和限制時，請務必注意這一點。
+AKS 會使用節點資源，讓 node 函式成為叢集的一部分。 當您在 AKS 中使用節點的總資源和資源 allocatable 時，此使用方式可能會產生差異。 設定使用者部署 pod 的要求和限制時，請務必注意這項資訊。
 
 若要尋找節點的 allocatable 資源，請執行：
 ```kubectl
@@ -83,26 +84,26 @@ kubectl describe node [NODE_NAME]
 為了維護節點的效能和功能，AKS 會在每個節點上保留資源。 當節點在資源中變大時，資源保留會因為需要管理的使用者部署的 pod 數量增加而增加。
 
 >[!NOTE]
-> 使用 AKS 附加元件（例如容器深入解析（OMS））將會使用其他節點資源。
+> 使用 AKS 附加元件（例如 Container Insights (OMS) 會耗用額外的節點資源。
 
 - **Cpu**保留的 cpu 取決於節點類型和叢集設定，這可能會因為執行其他功能而造成較少的 allocatable CPU
 
 | 主機上的 CPU 核心 | 1    | 2    | 4    | 8    | 16 | 32|64|
 |---|---|---|---|---|---|---|---|
-|Kube-reserved （millicore）|60|100|140|180|260|420|740|
+|Kube-reserved (millicore) |60|100|140|180|260|420|740|
 
 - **記憶體**-AKS 使用的記憶體包含兩個值的總和。
 
-1. Kubelet daemon 會安裝在所有 Kubernetes 代理程式節點上，以管理容器的建立和終止。 根據預設，在 AKS 上，此 daemon 具有下列收回規則：*記憶體。可用<750Mi*，這表示節點隨時都必須至少有 750 Mi allocatable。  當主機低於可用記憶體的閾值時，kubelet 將會終止其中一個執行中的 pod，以釋放主機電腦上的記憶體並加以保護。 當可用記憶體減少超過750Mi 臨界值時，這是一種回應動作。
+1. Kubelet daemon 會安裝在所有 Kubernetes 代理程式節點上，以管理容器的建立和終止。 根據預設，在 AKS 上，此 daemon 具有下列收回規則：*記憶體。可用<750Mi*，這表示節點隨時都必須至少有 750 Mi allocatable。  當主機低於可用記憶體的閾值時，kubelet 將會終止其中一個執行中的 pod，以釋放主機電腦上的記憶體並加以保護。 當可用記憶體減少超過750Mi 臨界值時，就會觸發此動作。
 
-2. 第二個值是回歸的記憶體保留速率，可供 kubelet daemon 正常運作（kube 保留）。
+2. 第二個值是 kubelet daemon 的記憶體保留回歸速率，可正常運作 (kube 保留) 。
     - 前 4 GB 記憶體的25%
-    - 接下來 4 GB 記憶體的20% （最多 8 GB）
-    - 下一個 8 GB 記憶體的10% （最多 16 GB）
-    - 下一個 112 GB 記憶體的6% （最多 128 GB）
+    - 下 4 GB 記憶體的 20% (最多 8 GB) 
+    - 下 8 GB 記憶體的 10% (最多 16 GB) 
+    - 下一個 112 GB 記憶體的 6% (最多 128 GB) 
     - 128 GB 以上任何記憶體的2%
 
-上述的記憶體和 CPU 配置規則是用來讓代理程式節點保持良好狀態，包括一些對叢集健康狀態很重要的裝載系統 pod。 這些配置規則也會導致節點回報較不 allocatable 的記憶體和 CPU，而不是 Kubernetes 叢集的一部分。 無法變更上述資源保留。
+上述的記憶體和 CPU 配置規則是用來讓代理程式節點保持良好狀態，包括一些對叢集健康狀態很重要的裝載系統 pod。 這些配置規則也會導致節點回報較不 allocatable 的記憶體和 CPU，而不是它不屬於 Kubernetes 叢集的情況。 無法變更上述資源保留。
 
 例如，如果節點提供 7 GB，將會報告34% 的記憶體未 allocatable，包括750Mi 的硬收回閾值。
 
@@ -152,7 +153,7 @@ Kubernetes 會使用 *Pod* 執行您的應用程式執行個體。 一個 Pod �
 
 如需詳細資訊，請參閱 [Kubernetes Pod][kubernetes-pods] 和 [Kubernetes Pod 生命週期][kubernetes-pod-lifecycle]。
 
-Pod 是邏輯資源，但應用程式工作負載執行的所在之處是容器。 Pod 通常是暫時性、可處置的資源，且個別排程的 Pod 會無法獲益於 Kubernetes 所提供的一些高可用性和備援功能。 實際上，Pod 通常會由 Kubernetes *控制器*部署及管理，例如「部署控制器」。
+Pod 是邏輯資源，但應用程式工作負載執行的所在之處是容器。 Pod 通常是暫時性、可處置的資源，且個別排程的 Pod 會無法獲益於 Kubernetes 所提供的一些高可用性和備援功能。 取而代之的是，pod 是由 Kubernetes*控制器*來部署和管理，例如部署控制器。
 
 ## <a name="deployments-and-yaml-manifests"></a>部署和 YAML 資訊清單
 
@@ -162,9 +163,9 @@ Pod 是邏輯資源，但應用程式工作負載執行的所在之處是容器�
 
 AKS 中的多數無狀態應用程式均應使用部署模型，而不是排程個別的 Pod。 Kubernetes 可監視部署的健康情況和狀態，以確定有所需數量的複本執行於叢集內。 當您只排程個別 pod 時，如果 pod 遇到問題，pod 不會重新開機，而且如果其目前節點發生問題，則不會在狀況良好的節點上重新排定。
 
-如果應用程式需要執行個體仲裁以便隨時可供管理決策擬定之用，您就不應讓更新程序中斷該項功能。 您可以使用 *Pod 中斷預算*，定義在更新或節點升級期間可在部署中停止多少個複本。 例如，如果您的部署中有 *5* 個複本，您可以將 Pod 中斷定義為 *4*，而每次僅允許一個複本不受刪除/重新排程。 與 Pod 資源限制相同，最佳做法是為需要有最少量複本持續存在的應用程式定義 Pod 中斷預算。
+如果應用程式需要執行個體仲裁以便隨時可供管理決策擬定之用，您就不應讓更新程序中斷該項功能。 您可以使用 *Pod 中斷預算*，定義在更新或節點升級期間可在部署中停止多少個複本。 例如，如果您的部署中有*五個 (5) *複本，您可以將 pod 中斷（ *4* ）定義為只允許一個複本一次被刪除/重新排程。 與 Pod 資源限制相同，最佳做法是為需要有最少量複本持續存在的應用程式定義 Pod 中斷預算。
 
-部署通常可透過 `kubectl create` 或 `kubectl apply` 來建立和管理。 若要建立部署，您可以定義 YAML (YAML 不是標記語言) 格式的資訊清單檔。 下列範例會建立 NGINX Web 伺服器的基本部署。 此部署會指定要建立 *3* 個複本，並開啟容器上的連接埠 *80*。 此外也會定義 CPU 和記憶體的資源要求和限制。
+部署通常可透過 `kubectl create` 或 `kubectl apply` 來建立和管理。 若要建立部署，您可以定義 YAML (YAML 不是標記語言) 格式的資訊清單檔。 下列範例會建立 NGINX Web 伺服器的基本部署。 部署指定*三個 (3) *要建立的複本，而且需要在容器上開啟埠*80* 。 此外也會定義 CPU 和記憶體的資源要求和限制。
 
 ```yaml
 apiVersion: apps/v1
@@ -216,7 +217,7 @@ spec:
 
 ### <a name="statefulsets"></a>StatefulSet
 
-現今的應用程式開發通常以無狀態應用程式為目標，但 *StatefulSet* 可用於具狀態的應用程式，例如包含資料庫元件的應用程式。 StatefulSet 類似於會建立和管理一或多個相同 Pod 的部署。 StatefulSet 中的複本會依照正常、循序的方法進行部署、調整、升級和終止。 使用 StatefulSet （作為複本重新排定）時，命名慣例、網路名稱和儲存體會保存。
+現今的應用程式開發通常以無狀態應用程式為目標，但 *StatefulSet* 可用於具狀態的應用程式，例如包含資料庫元件的應用程式。 StatefulSet 類似於會建立和管理一或多個相同 Pod 的部署。 StatefulSet 中的複本會依照正常、循序的方法進行部署、調整、升級和終止。 使用 StatefulSet (作為複本的重新排程) 命名慣例、網路名稱和儲存體會保存。
 
 您可以使用 `kind: StatefulSet` 定義 YAML 格式的應用程式，隨後再由 StatefulSet 控制器處理必要複本的部署和管理。 資料會寫入至 Azure 受控磁碟或 Azure 檔案所提供的永續性儲存體。 透過 StatefulSet，即使在 StatefulSet 刪除後，基礎的永續性儲存體仍將保存。
 
@@ -253,7 +254,7 @@ Kubernetes 資源 (例如 Pod 和部署) 會依邏輯分組到*命名空間*中�
 
 ## <a name="next-steps"></a>後續步驟
 
-本文說明了部分核心 Kubernetes 元件，及其套用至 AKS 叢集的方式。 如需關於 Kubernetes 及 AKS 核心概念的詳細資訊，請參閱下列文章：
+本文說明了部分核心 Kubernetes 元件，及其套用至 AKS 叢集的方式。 如需有關 Kubernetes 及 AKS 核心概念的詳細資訊，請參閱下列文章：
 
 - [Kubernetes / AKS 存取和身分識別][aks-concepts-identity]
 - [Kubernetes / AKS 安全性][aks-concepts-security]

@@ -3,15 +3,16 @@ title: 收集 & 分析資源記錄
 description: 記錄和分析資源記錄檔事件以進行 Azure Container Registry，例如驗證、影像推送和影像提取。
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: b41b1001a669fe42721471bc196e7628eabff983
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8757b8bdb67cf75b1ba800658d80b2a44311f1ba
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343178"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252482"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>用於診斷評估和審核的 Azure Container Registry 記錄
 
-本文說明如何使用[Azure 監視器](../azure-monitor/overview.md)的功能來收集 Azure container registry 的記錄資料。 Azure 監視器會針對登錄中的使用者驅動事件收集[資源記錄](../azure-monitor/platform/platform-logs-overview.md)（先前稱為*診斷記錄*）。 收集並取用此資料以符合需求，例如：
+本文說明如何使用[Azure 監視器](../azure-monitor/overview.md)的功能來收集 Azure container registry 的記錄資料。 Azure 監視器會收集 (先前稱為*診斷記錄*的[資源記錄](../azure-monitor/platform/platform-logs-overview.md)，) 用於登錄中的使用者驅動事件。 收集並取用此資料以符合需求，例如：
 
 * 審核登錄驗證事件以確保安全性與合規性 
 
@@ -26,7 +27,7 @@ ms.locfileid: "84343178"
 * **推送**
 * **提取**
 * **Untag**
-* **刪除**（包括存放庫刪除事件）
+* **刪除** (包括存放庫刪除事件) 
 * **清除標記**和**清除資訊清單**
 
 > [!NOTE]
@@ -141,10 +142,9 @@ ContainerRegistryLoginEvents
 
 除了將記錄傳送至 Log Analytics，或作為替代方案，常見的案例是選取 Azure 儲存體帳戶作為記錄目的地。 若要在 Azure 儲存體中封存記錄，請先建立儲存體帳戶，然後再透過診斷設定啟用保存。
 
-您也可以將診斷記錄事件串流至[Azure 事件中樞](../event-hubs/event-hubs-what-is-event-hubs.md)。 事件中樞每秒可輸入數百萬個事件，您可以使用任何即時分析提供者來轉換和儲存。 
+您也可以將診斷記錄事件串流至[Azure 事件中樞](../event-hubs/event-hubs-about.md)。 事件中樞每秒可輸入數百萬個事件，您可以使用任何即時分析提供者來轉換和儲存。 
 
 ## <a name="next-steps"></a>後續步驟
 
 * 深入瞭解如何使用[Log Analytics](../azure-monitor/log-query/get-started-portal.md)和建立[記錄查詢](../azure-monitor/log-query/get-started-queries.md)。
 * 請參閱[azure 平臺記錄的總覽](../azure-monitor/platform/platform-logs-overview.md)，以瞭解可在不同 Azure 層級使用的平臺記錄。
-

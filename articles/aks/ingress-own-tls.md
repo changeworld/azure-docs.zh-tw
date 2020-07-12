@@ -5,11 +5,12 @@ description: 了解如何安裝及設定 NGINX 輸入控制器，而該控制器
 services: container-service
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 4e87a4005a2f6428123b852c2ff505a30c7e36fd
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: b3e844c0c4d4861f7a0a0e12c4ae9d59e23c24e2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920333"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251506"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 上建立 HTTPS 輸入控制器及使用自有的 TLS 憑證
 
@@ -26,7 +27,7 @@ ms.locfileid: "85920333"
 
 ## <a name="before-you-begin"></a>開始之前
 
-本文使用[Helm 3][helm]來安裝 NGINX 輸入控制器。 請確定您使用的是 Helm 的最新版本。 如需升級指示，請參閱[Helm 安裝][helm-install]檔。如需設定和使用 Helm 的詳細資訊，請參閱[在 Azure Kubernetes Service （AKS）中使用 Helm 安裝應用程式][use-helm]。
+本文使用[Helm 3][helm]來安裝 NGINX 輸入控制器。 請確定您使用的是 Helm 的最新版本。 如需升級指示，請參閱[Helm 安裝][helm-install]檔。如需設定和使用 Helm 的詳細資訊，請參閱[在 Azure Kubernetes Service (AKS) 中使用 Helm 安裝應用程式][use-helm]。
 
 本文也會要求您執行 Azure CLI 版本2.0.64 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
 
@@ -383,7 +384,7 @@ kubectl delete namespace ingress-basic
 - 建立輸入控制器，其使用 Let's Encrypt 自動產生[具有動態公用 IP][aks-ingress-tls] 或[具有靜態公用 IP 位址][aks-ingress-static-tls]的 TLS 憑證
 
 <!-- LINKS - external -->
-[helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm
+[helm-cli]: ./kubernetes-helm.md
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx
 [helm]: https://helm.sh/
 [helm-install]: https://docs.helm.sh/using_helm/#installing-helm

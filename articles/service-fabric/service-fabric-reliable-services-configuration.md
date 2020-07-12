@@ -5,11 +5,12 @@ author: sumukhs
 ms.topic: conceptual
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 9743213394b59af701b25b8be9dd48cf4310b499
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8765e86ffeae86b9f4e2b693c0dbf92478632dbf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645509"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253162"
 ---
 # <a name="configure-stateful-reliable-services"></a>設定具狀態可靠服務
 有兩組組態設定可供 Reliable Services 使用。 一組是適用於叢集中的所有 Reliable Services，而另一組專屬於特定的 Reliable Services。
@@ -18,7 +19,7 @@ ms.locfileid: "75645509"
 在 KtlLogger 區段下，叢集的叢集資訊清單中所指定的全域 Reliable Service 組態。 它可設定共用記錄檔位置和大小，加上記錄器所使用的全域記憶體限制。 叢集資訊清單是單一 XML 檔案，可保留套用至叢集中所有節點和服務態的設定與組態。 此檔案通常稱為 ClusterManifest.xml。 您可以查看叢集的叢集資訊清單使用 Get-ServiceFabricClusterManifest powershell 命令。
 
 ### <a name="configuration-names"></a>設定名稱
-| Name | 單位 | 預設值 | 備註 |
+| 名稱 | 單位 | 預設值 | 備註 |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |KB |8388608 |以核心模式配置給記錄器寫入緩衝區記憶體集區的最小 KB 數。 此記憶體集區用於在寫入至磁碟之前快取狀態資訊。 |
 | WriteBufferMemoryPoolMaximumInKB |KB |沒有限制 |記錄器寫入緩衝區記憶體集區可以成長的的大小上限。 |
@@ -99,7 +100,7 @@ ReplicatorConfig
 > 
 
 ### <a name="configuration-names"></a>設定名稱
-| Name | 單位 | 預設值 | 備註 |
+| 名稱 | 單位 | 預設值 | 備註 |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |秒 |0.015 |次要複寫器收到作業後，將通知傳回給主要複寫器前所等待的時間間隔。 任何要在此間隔內傳送給作業處理的其他通知，會集中以一個回應傳送。 |
 | ReplicatorEndpoint |N/A |無預設值--必要的參數 |主要/次要複寫器將用於與複本集中其他複寫器通訊的 IP 位址與連接埠。 這應該參考服務資訊清單中的 TCP 資源端點。 請參閱 [服務資訊清單資源](service-fabric-service-manifest-resources.md) ，深入了解如何在服務資訊清單中定義端點資源。 |
@@ -108,14 +109,14 @@ ReplicatorConfig
 | CheckpointThresholdInMB |MB |50 |狀態完成檢查點作業後的記錄檔空間量。 |
 | MaxRecordSizeInKB |KB |1024 |複寫器可以寫入記錄檔中的最大記錄大小。 此值必須是 4 的倍數且大於 16。 |
 | MinLogSizeInMB |MB |0 (系統判定) |交易記錄檔大小下限。 系統將不會允許把記錄檔截斷為低於此設定的大小。 0 表示複寫器將會判斷記錄檔大小下限。 提高這個值會提高執行部分複本和增量備份的可能性，因為這會降低將相關記錄檔記錄截斷的可能性。 |
-| TruncationThresholdFactor |因數 |2 |判斷將會觸發截斷的記錄檔大小。 截斷臨界值是以 MinLogSizeInMB 乘以 TruncationThresholdFactor 來決定。 TruncationThresholdFactor 必須大於 1。 MinLogSizeInMB 乘以 TruncationThresholdFactor 必須小於 MaxStreamSizeInMB。 |
-| ThrottlingThresholdFactor |因數 |4 |判斷複本將會開始節流的記錄檔大小。 節流閾值 (MB) 是以 Max((MinLogSizeInMB * ThrottlingThresholdFactor),(CheckpointThresholdInMB * ThrottlingThresholdFactor)) 來決定。 節流臨界值 (MB) 必須大於截斷臨界值 (MB)。 截斷臨界值 (MB) 必須小於 MaxStreamSizeInMB。 |
+| TruncationThresholdFactor |因素 |2 |判斷將會觸發截斷的記錄檔大小。 截斷臨界值是以 MinLogSizeInMB 乘以 TruncationThresholdFactor 來決定。 TruncationThresholdFactor 必須大於 1。 MinLogSizeInMB 乘以 TruncationThresholdFactor 必須小於 MaxStreamSizeInMB。 |
+| ThrottlingThresholdFactor |因素 |4 |判斷複本將會開始節流的記錄檔大小。 節流閾值 (MB) 是以 Max((MinLogSizeInMB * ThrottlingThresholdFactor),(CheckpointThresholdInMB * ThrottlingThresholdFactor)) 來決定。 節流臨界值 (MB) 必須大於截斷臨界值 (MB)。 截斷臨界值 (MB) 必須小於 MaxStreamSizeInMB。 |
 | MaxAccumulatedBackupLogSizeInMB |MB |800 |指定備份記錄鏈中備份記錄的最大累積大小 (MB)。 如果增量備份會產生導致累積備份記錄的備份記錄，增量備份要求將會失敗，因為相關完整備份會大於此大小。 在這個情況下，使用者需要進行完整備份。 |
 | SharedLogId |GUID |"" |指定用於識別此複本共用記錄檔的唯一 GUID。 服務通常不應使用此設定。 不過，如果有指定 SharedLogId，則也必須指定 SharedLogPath。 |
 | SharedLogPath |完整路徑名稱 |"" |指定建立此複本共用記錄檔的完整路徑。 服務通常不應使用此設定。 不過，如果有指定 SharedLogPath，則也必須指定 SharedLogId。 |
 | SlowApiMonitoringDuration |秒 |300 |設定受控 API 呼叫的監視間隔。 範例︰使用者提供的備份回呼函式。 經過這段間隔後，警告健全狀況報告會傳送到健全狀況管理員。 |
 | LogTruncationIntervalSeconds |秒 |0 |會在每個複本中起始記錄截斷的可設定間隔。 它可用來確保記錄也會根據時間而不只是記錄大小進行截斷。 這項設定也會強制在可靠的字典中清除已刪除的項目。 因此，它可用來確保適時將已刪除的項目清除。 |
-| EnableStableReads |Boolean |False |啟用穩定讀取會限制次要複本，以傳回已仲裁已確認的值。 |
+| EnableStableReads |Boolean |否 |啟用穩定讀取會限制次要複本，以傳回已仲裁已確認的值。 |
 
 ### <a name="sample-configuration-via-code"></a>透過程式碼的範例組態
 ```csharp
@@ -183,5 +184,4 @@ SharedLogId 和 SharedLogPath 設定永遠會一起使用，以便讓服務使�
 
 ## <a name="next-steps"></a>後續步驟
 * [在 Visual Studio 中偵錯 Service Fabric 應用程式](service-fabric-debugging-your-application.md)
-* [可靠的服務的開發人員參考資料](https://msdn.microsoft.com/library/azure/dn706529.aspx)
-
+* [可靠的服務的開發人員參考資料](/previous-versions/azure/dn706529(v=azure.100))

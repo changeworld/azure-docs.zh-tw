@@ -1,27 +1,28 @@
 ---
 title: 升級 Azure Kubernetes Service (AKS) 叢集
-description: 瞭解如何升級 Azure Kubernetes Service （AKS）叢集，以取得最新的功能和安全性更新。
+description: 瞭解如何升級 Azure Kubernetes Service (AKS) 叢集，以取得最新的功能和安全性更新。
 services: container-service
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: ea9f0154c221fe99d683cc58d5f6dccfce8d948c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 603a27f0ecffb762a18f58847110c4dd3de68425
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800489"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250986"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>升級 Azure Kubernetes Service (AKS) 叢集
 
 作為 AKS 叢集生命週期的一部分，您通常需要升級至最新的 Kubernetes 版本。 套用最新的 Kubernetes 安全性版本，或升級以取得最新的功能非常重要。 本文說明如何在 AKS 叢集中升級主要元件或單一預設節點集區。
 
-對於使用多個節點集區或 Windows Server 節點的 AKS 叢集（目前在 AKS 中為預覽狀態），請參閱[升級 AKS 中的節點集][nodepool-upgrade]區。
+對於使用多個節點集區或 Windows Server 節點的 AKS 叢集， (目前在 AKS) 中處於預覽狀態，請參閱[升級 AKS 中的節點集][nodepool-upgrade]區。
 
 ## <a name="before-you-begin"></a>開始之前
 
 本文會要求您執行 Azure CLI 版本2.0.65 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
 
 > [!WARNING]
-> AKS 叢集升級會觸發 cordon 並清空您的節點。 如果您有可用的計算配額不足，升級可能會失敗。 如需詳細資訊，請參閱[增加配額](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。
+> AKS 叢集升級會觸發 cordon 並清空您的節點。 如果您有可用的計算配額不足，升級可能會失敗。 如需詳細資訊，請參閱[增加配額](../azure-portal/supportability/resource-manager-core-quotas-request.md)。
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>檢查可用的 AKS 叢集升級
 
@@ -48,16 +49,16 @@ default  myResourceGroup   1.12.8           1.12.8             1.13.9, 1.13.10
 ERROR: Table output unavailable. Use the --query option to specify an appropriate query. Use --debug for more info.
 ```
 
-## <a name="customize-node-surge-upgrade-preview"></a>自訂節點浪湧升級（預覽）
+## <a name="customize-node-surge-upgrade-preview"></a>自訂節點浪湧升級 (預覽) 
 
 > [!Important]
-> 節點浪湧需要針對每個升級作業要求的最大浪湧計數的訂用帳戶配額。 例如，具有5個節點集區的叢集（每個都有4個節點的計數）總共有20個節點。 如果每個節點集區的最大浪湧值為50%，則需要10個節點（2個節點 * 5 集區）的額外計算和 IP 配額，才能完成升級。
+> 節點浪湧需要針對每個升級作業要求的最大浪湧計數的訂用帳戶配額。 例如，具有5個節點集區的叢集（每個都有4個節點的計數）總共有20個節點。 如果每個節點集區的最大浪湧值為50%，則需要有10個節點的額外計算和 IP 配額 (2 個節點 * 5 個集區) ，才能完成升級。
 >
 > 如果使用 Azure CNI，請驗證子網中是否有可用的 ip，以及[滿足 AZURE CNI 的 IP 需求](configure-azure-cni.md)。
 
 根據預設，AKS 會使用一個額外的節點來設定激增的升級。 最大浪湧設定的預設值，可讓 AKS 在 cordon/清空現有應用程式以取代舊版的節點之前，先建立額外的節點，以將工作負載中斷降至最低。 您可以針對每個節點集區自訂最大的浪湧值，以便在升級速度和升級中斷之間進行取捨。 藉由增加最大的浪湧值，升級程式的完成速度會更快，但為最大激增設定大的值可能會在升級過程中造成中斷。 
 
-例如，最大浪湧值100% 提供最快的可能升級程式（節點計數加倍），同時也會導致節點集區中的所有節點同時清空。 您可能想要使用較高的值（例如，用於測試環境）。 針對生產節點集區，我們建議使用33% 的 max_surge 設定。
+例如，最大浪湧值100% 提供最快速的升級程式 (使節點計數加倍) 但也會導致節點集區中的所有節點同時清空。 您可能想要使用較高的值（例如，用於測試環境）。 針對生產節點集區，我們建議使用33% 的 max_surge 設定。
 
 AKS 接受整數值和最大激增的百分比值。 整數（例如 "5"）表示五個額外的節點要進行激增。 值為 "50%" 表示集區中目前節點計數一半的電湧值。 最大激增百分比值最小為1%，最大可達100%。 百分比值會無條件進位到最接近的節點計數。 如果最大浪湧值低於升級時的目前節點計數，則會使用目前的節點計數做為最大的浪湧值。
 

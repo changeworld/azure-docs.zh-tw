@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 3c1a6cfa5227369bf1cde4af087019727c22c0c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0899e33e875fea4a1708e593876b7ef771004677
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75462945"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253179"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>如何使用 Reliable Services 通訊 API
 「Azure Service Fabric 即平台」完全不受服務間的通訊影響。 所有通訊協定和堆疊 (從 UDP 到 HTTP) 都可接受。 它是由服務開發人員選擇服務應有的通訊方式。 Reliable Services 應用程式架構會提供內建的通訊堆疊以及 API，讓您可用來建置自訂通訊元件。
@@ -187,7 +188,7 @@ public CompletableFuture<String> openAsync(CancellationToken cancellationToken)
 Service Fabric 提供 API，讓用戶端和其他服務之後能夠依服務名稱來要求這個位址。 這一點很重要，因為服務位址不是靜態的。 服務會為了資源平衡和可用性目的在叢集中移動。 這是可讓用戶端解析服務接聽位址的機制。
 
 > [!NOTE]
-> 如需如何撰寫通訊接聽程式的完整逐步解說，請參閱 [Service Fabric Web API 服務與 OWIN 自我裝載](service-fabric-reliable-services-communication-webapi.md) (若為 C#)，而您可以撰寫自己的 HTTP 伺服器實作 (若為 Java)，請參閱 https://github.com/Azure-Samples/service-fabric-java-getting-started 中的 EchoServer 應用程式範例。
+> 如需如何撰寫通訊接聽程式的完整逐步解說，請參閱 [Service Fabric Web API 服務與 OWIN 自我裝載](./service-fabric-reliable-services-communication-aspnetcore.md) (若為 C#)，而您可以撰寫自己的 HTTP 伺服器實作 (若為 Java)，請參閱 https://github.com/Azure-Samples/service-fabric-java-getting-started 中的 EchoServer 應用程式範例。
 >
 >
 
@@ -206,7 +207,7 @@ ServicePartitionResolver resolver = ServicePartitionResolver.GetDefault();
 FabricServicePartitionResolver resolver = FabricServicePartitionResolver.getDefault();
 ```
 
-若要連線到不同叢集中的服務，可利用一組叢集閘道端點來建立 ServicePartitionResolver。 請注意，閘道端點就只是可用來連接到相同叢集的不同端點。 例如：
+若要連線到不同叢集中的服務，可利用一組叢集閘道端點來建立 ServicePartitionResolver。 請注意，閘道端點就只是可用來連接到相同叢集的不同端點。 例如︰
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver("mycluster.cloudapp.azure.com:19000", "mycluster.cloudapp.azure.com:19001");

@@ -4,11 +4,12 @@ description: 了解如何使用叢集自動調整程式，根據 Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: e87470e577f4d2613b43cc02755ccc2d500c0ef8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9aa06ea2fbc3aff218a4940fa60da767fabca500
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84730011"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252023"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>自動調整叢集以符合 Azure Kubernetes Service (AKS) 的應用程式需求
 
@@ -212,7 +213,7 @@ AKS 會代表您管理叢集自動調整程式，並在受控控制平面中執�
 
 若要將記錄設為從叢集自動調整程式推送至 Log Analytics，請按下列步驟操作。
 
-1. 設定資源記錄規則，將叢集自動調整程式記錄推送至 Log Analytics。 [這裡提供了詳細說明](https://docs.microsoft.com/azure/aks/view-master-logs#enable-resource-logs)，請務必在選取 [記錄] 選項時，勾選 `cluster-autoscaler` 的核取方塊。
+1. 設定資源記錄規則，將叢集自動調整程式記錄推送至 Log Analytics。 [這裡提供了詳細說明](./view-master-logs.md#enable-resource-logs)，請務必在選取 [記錄] 選項時，勾選 `cluster-autoscaler` 的核取方塊。
 1. 透過 Azure 入口網站，按一下您叢集上的 [記錄] 區段。
 1. 將下列範例查詢輸入至 Log Analytics：
 
