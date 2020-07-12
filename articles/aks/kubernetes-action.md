@@ -6,11 +6,12 @@ author: azooinmyluggage
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
-ms.openlocfilehash: 5ee8ee4d2c9e225d82e58daffeef9e5f09e43e6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4f8a41df64c3bcbbd85438e4d340d44d5f16351
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77595360"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255212"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>部署至 Kubernetes 服務的 GitHub 動作
 
@@ -22,7 +23,7 @@ ms.locfileid: "77595360"
 
 |區段  |工作  |
 |---------|---------|
-|**驗證** | 登入私人容器登錄（ACR） |
+|**驗證** |  (ACR) 登入私人容器登錄 |
 |**建置** | 組建 & 推送容器映射  |
 |**部署** | 1. 設定目標 AKS 叢集 |
 | |2. 在 Kubernetes 叢集中建立 generic/docker-登錄秘密  |
@@ -30,7 +31,7 @@ ms.locfileid: "77595360"
 
 ## <a name="create-a-service-principal"></a>建立服務主體
 
-您可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/) 中的 [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令來建立[服務主體](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)。 您可以使用 Azure 入口網站中的 [Azure Cloud Shell](https://shell.azure.com/)，或選取 [試試看] 按鈕來執行此命令。
+您可以使用 [Azure CLI](/cli/azure/) 中的 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令來建立[服務主體](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 您可以使用 Azure 入口網站中的 [Azure Cloud Shell](https://shell.azure.com/)，或選取 [試試看] 按鈕來執行此命令。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth
@@ -57,7 +58,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
     ![密碼](media/kubernetes-action/secrets.png)
 
-2. 將上述命令的內容貼入 `az cli` 作為 [秘密變數] 的值。 例如： `AZURE_CREDENTIALS` 。
+2. 將上述命令的內容貼入 `az cli` 作為 [秘密變數] 的值。 例如，`AZURE_CREDENTIALS`。
 
 3. 同樣地，針對容器登錄認證定義下列額外的秘密，並在 Docker 登入動作中加以設定。 
 
@@ -74,11 +75,11 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 | **參數**  | **說明**  |
 |---------|---------|
-| **命名空間** | 選擇性選擇目標 Kubernetes 命名空間。 如果未提供命名空間，則命令會在預設命名空間中執行 | 
-| **mdac** |  具備資訊清單檔案的路徑，將用於部署 |
-| **images** | 選擇性要在資訊清單檔上用來替代之影像的完整資源 URL |
-| **imagepullsecrets** | 選擇性已在叢集內設定的 docker 登錄密碼名稱。 在輸入資訊清單檔中找到的工作負載的 [imagePullSecrets] 欄位下，會新增每個秘密名稱 |
-| **kubectl-版本** | 選擇性安裝特定版本的 kubectl 二進位檔 |
+| **命名空間** |  (選擇性) 選擇目標 Kubernetes 命名空間。 如果未提供命名空間，則命令會在預設命名空間中執行 | 
+| **mdac** |   (所需的資訊清單檔案) 路徑，將用於部署 |
+| **images** |  (選擇性) 影像 (s) 的完整資源 URL，以用於資訊清單檔案的替代 |
+| **imagepullsecrets** |  (已在叢集內設定之 docker 登錄密碼的選擇性) 名稱。 在輸入資訊清單檔中找到的工作負載的 [imagePullSecrets] 欄位下，會新增每個秘密名稱 |
+| **kubectl-版本** |  (選擇性) 會安裝特定版本的 kubectl 二進位檔 |
 
 ### <a name="deploy-to-azure-kubernetes-service-cluster"></a>部署到 Azure Kubernetes Service 叢集
 

@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 56efa15a7de3414f9c535e66bd80c94594cd5038
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc317345155a6807a20d342e2cefd0701b20f180
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906214"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257048"
 ---
 # <a name="sfctl"></a>sfctl
 用於管理 Service Fabric 叢集和實體的命令。 這個版本與 Service Fabric 7.0 執行時間相容。
@@ -17,14 +18,14 @@ ms.locfileid: "76906214"
 命令會依循「名詞-動詞」模式。 如需詳細資訊，請參閱＜子群組＞。
 
 ## <a name="subgroups"></a>子群組
-|子群組|Description|
+|子群組|描述|
 | --- | --- |
 | [應用程式](service-fabric-sfctl-application.md) | 建立、刪除與管理應用程式和應用程式類型。 |
 | [chaos](service-fabric-sfctl-chaos.md) | 啟動、停止及報告 chaos 測試服務。 |
 | [該群](service-fabric-sfctl-cluster.md) | 選取、管理和操作 Service Fabric 叢集。 |
 | [成為](service-fabric-sfctl-compose.md) | 建立、刪除和管理 Docker Compose 應用程式。 |
 | [container](service-fabric-sfctl-container.md) | 在叢集節點上執行容器相關命令。 |
-| [events](service-fabric-sfctl-events.md) | 從事件存放區取出事件（如果已安裝 EventStore 服務）。 |
+| [events](service-fabric-sfctl-events.md) | 如果已) 安裝 EventStore 服務，請從事件存放區中取出事件 (。 |
 | [均](service-fabric-sfctl-is.md) | 查詢命令，並將其傳送至基礎結構服務。 |
 | [mesh](service-fabric-sfctl-mesh.md) | 刪除及管理 Service Fabric Mesh 應用程式。 |
 | [節點](service-fabric-sfctl-node.md) | 管理形成叢集的節點。 |
@@ -39,4 +40,4 @@ ms.locfileid: "76906214"
 
 ## <a name="next-steps"></a>後續步驟
 - [設定](service-fabric-cli.md)Service Fabric CLI。
-- 了解如何使用[範例指令碼](/azure/service-fabric/scripts/sfctl-upgrade-application)來使用 Service Fabric CLI。
+- 了解如何使用[範例指令碼](./scripts/sfctl-upgrade-application.md)來使用 Service Fabric CLI。

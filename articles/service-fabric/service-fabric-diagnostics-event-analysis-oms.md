@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: 40dd930aa21e3056d5ecc908359215d6874ed8ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd952449cb088a383f0b9241fb7856522fbeeb10
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464733"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257673"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Azure 監視器記錄檔進行事件分析和視覺效果
  Azure 監視器記錄會從裝載於雲端的應用程式和服務收集和分析遙測，並提供分析工具來協助您將其可用性和效能最大化。 本文概述如何在 Azure 監視器記錄中執行查詢，以深入瞭解及疑難排解您的叢集中發生的情況。 我們將討論下列常見的問題：
@@ -102,7 +103,7 @@ Kusto 查詢語言功能很強大。 您可以執行的另一個重要查詢是�
 ## <a name="next-steps"></a>後續步驟
 
 * 若要啟用基礎結構監視 (也就是監視效能計數器)，請前往[新增 Log Analytics 代理程式](service-fabric-diagnostics-oms-agent.md)。 這個代理程式會收集效能計數器，並將它們新增至現有的工作區。
-* 針對內部部署叢集，Azure 監視器記錄會提供可用來將資料傳送至 Azure 監視器記錄的閘道（HTTP 正向 Proxy）。 深入瞭解[如何使用 Log Analytics 閘道將電腦連線到沒有網際網路存取 Azure 監視器記錄](../azure-monitor/platform/gateway.md)。
-* 設定[自動化警示](../log-analytics/log-analytics-alerts.md)，以協助偵測與診斷。
-* 取得熟悉，其中包含作為 Azure 監視器記錄一部分的[記錄搜尋和查詢](../log-analytics/log-analytics-log-searches.md)功能。
-* 深入瞭解 Azure 監視器記錄及其提供的內容，請參閱[什麼是 Azure 監視器記錄？](../operations-management-suite/operations-management-suite-overview.md)。
+* 針對內部部署叢集，Azure 監視器記錄會提供閘道 (HTTP 正向 Proxy) ，可用來將資料傳送至 Azure 監視器記錄。 深入瞭解[如何使用 Log Analytics 閘道將電腦連線到沒有網際網路存取 Azure 監視器記錄](../azure-monitor/platform/gateway.md)。
+* 設定[自動化警示](../azure-monitor/platform/alerts-overview.md)，以協助偵測與診斷。
+* 取得熟悉，其中包含作為 Azure 監視器記錄一部分的[記錄搜尋和查詢](../azure-monitor/log-query/log-query-overview.md)功能。
+* 深入瞭解 Azure 監視器記錄及其提供的內容，請參閱[什麼是 Azure 監視器記錄？](../azure-monitor/overview.md)。

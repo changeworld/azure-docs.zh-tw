@@ -3,12 +3,12 @@ title: 瞭解 Azure Service Fabric 應用程式安全性
 description: 如何安全地在 Service Fabric 上執行微服務應用程式的概觀。 深入了解如何在不同的安全性帳戶底下執行服務和啟動指令碼、驗證和授權使用者、管理應用程式祕密、保護服務通訊、使用 API 閘道，以及保護應用程式待用資料。
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: c97c5345a1a18cce8c44508542f12d3642d2b8f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f17840f31d2a4c12a1d4618bd16e81dcc2cc8a14
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461424"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256572"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric 應用程式和服務安全性
 微服務架構可以帶來[許多優點](service-fabric-overview-microservices.md)。 不過，管理微服務的安全性是一種挑戰，而且與管理傳統的整合型應用程式安全性有所不同。 
@@ -35,7 +35,7 @@ ms.locfileid: "81461424"
 ## <a name="restrict-and-secure-access-using-an-api-gateway"></a>使用 API 閘道來限制和保護存取權
 雲端應用程式通常需要前端閘道來為使用者、裝置或其他應用程式提供單一輸入點。 [API 閘道](/azure/architecture/microservices/gateway)位於用戶端與服務之間，這是通往您應用程式所提供之所有服務的進入點。 它會作為反向 Proxy，將要求從用戶端路由傳送到服務。 它也可以執行各種跨領域工作，例如驗證和授權、TLS 終止和速率限制。 如果您未部署閘道，用戶端就必須將要求直接傳送給前端服務。
 
-在 Service Fabric 中，閘道可以是任何無狀態服務 (例如 [ASP.NET Core 應用程式](service-fabric-reliable-services-communication-aspnetcore.md))，或是為流量輸入設計的另一個服務 (例如，[Traefik](https://docs.traefik.io/)、[事件中樞](https://docs.microsoft.com/azure/event-hubs/)、[IoT 中樞](https://docs.microsoft.com/azure/iot-hub/)或 [Azure API 管理](https://docs.microsoft.com/azure/api-management))。
+在 Service Fabric 中，閘道可以是任何無狀態服務 (例如 [ASP.NET Core 應用程式](service-fabric-reliable-services-communication-aspnetcore.md))，或是為流量輸入設計的另一個服務 (例如，[Traefik](https://docs.traefik.io/)、[事件中樞](../event-hubs/index.yml)、[IoT 中樞](../iot-hub/index.yml)或 [Azure API 管理](../api-management/index.yml))。
 
 「API 管理」直接與 Service Fabric 整合，可讓您將具有一組豐富路由規則的 API 發佈至後端 Service Fabric 服務。  您可以保護後端服務的存取、使用節流來預防 DOS 攻擊，或驗證 API 金鑰、JWT 權杖、憑證和其他認證。 若要深入了解，請參閱 [Service Fabric 搭配 Azure API 管理概觀](service-fabric-api-management-overview.md)。
 
@@ -85,7 +85,7 @@ Service Fabric 為容器內的服務提供了一種機制，供其存取 Windows
 Reliable Services 應用程式架構會提供可用來改善安全性的一些預先建置通訊堆疊和工具。 深入了解在您使用服務遠端作業 (在 [C#](service-fabric-reliable-services-secure-communication.md) 或 [Java](service-fabric-reliable-services-secure-communication-java.md) 中) 或使用 [WCF](service-fabric-reliable-services-secure-communication-wcf.md) 時，如何改善安全性。
 
 ## <a name="encrypt-application-data-at-rest"></a>加密應用程式待用資料
-在 Azure 中執行之 Service Fabric 叢集中的每個[節點類型](service-fabric-cluster-nodetypes.md)都是由[虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)提供支援。 使用 Azure Resource Manager 範本，您可以將資料磁碟連結到構成 Service Fabric 叢集的擴展集。  如果您的服務會將資料儲存至連結的資料磁碟，您可以[將這些資料磁碟加密](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md)以保護您的應用程式資料。
+在 Azure 中執行之 Service Fabric 叢集中的每個[節點類型](service-fabric-cluster-nodetypes.md)都是由[虛擬機器擴展集](../virtual-machine-scale-sets/overview.md)提供支援。 使用 Azure Resource Manager 範本，您可以將資料磁碟連結到構成 Service Fabric 叢集的擴展集。  如果您的服務會將資料儲存至連結的資料磁碟，您可以[將這些資料磁碟加密](../virtual-machine-scale-sets/disk-encryption-powershell.md)以保護您的應用程式資料。
 
 <!--TO DO: Enable BitLocker on Windows standalone clusters?
 TO DO: Encrypt disks on Linux clusters?-->

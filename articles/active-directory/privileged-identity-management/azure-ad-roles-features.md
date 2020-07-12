@@ -1,27 +1,25 @@
 ---
-title: 在 Privileged Identity Management （PIM）中管理 Azure AD 角色 |Microsoft Docs
-description: 如何管理指派 Privileged Identity Management （PIM） Azure AD 角色
+title: Privileged Identity Management 中的 Azure AD 角色功能 |Microsoft Docs
+description: '如何管理 Azure AD 角色以進行指派 Privileged Identity Management (PIM) '
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: pim
-ms.devlang: na
-ms.topic: how-to
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/06/2019
+ms.date: 07/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 501efaf2e9e97f37521daa770e6c760cc794fa36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54a286ed63d842dba08ad545b17498cb4000a5cf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742856"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256623"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management 中 Azure AD 角色的管理功能
 
@@ -29,28 +27,30 @@ Privileged Identity Management 中 Azure AD 角色的管理體驗已更新，以
 
 在目前推出更新的情況下，我們會將這兩者合併成單一管理體驗，而在其中，您會取得與 Azure 資源角色相同的 Azure AD 角色功能。 本文會通知您已更新的功能和任何需求。
 
-
 ## <a name="time-bound-assignments"></a>時間界限指派
 
-先前在 Azure AD 角色的 Privileged Identity Management 中，您已熟悉具有兩種可能狀態的角色指派–*合格*和*永久*。 現在您可以設定每個指派類型的開始和結束時間。 這項新增功能提供您四個可能的狀態，您可以在其中放置指派：
+在過去，角色指派有兩種可能的狀態：*合格*和*永久*。 現在您也可以針對每個指派類型設定開始和結束時間。 這種新增提供四種可能的狀態，您可以在其中放置指派：
 
 - 已永久符合資格
 - 永久有效
-- 合格，具有指定的開始/結束日期以進行指派
-- 作用中，具有指定的開始/結束日期以進行指派
+- 合格，具有指定的開始和結束日期以進行指派
+- 作用中，具有指定的開始和結束日期供指派
 
 在許多情況下，即使您不想讓使用者每次都有合格的指派和啟動角色，仍然可以藉由設定指派的到期時間來保護您的 Azure AD 組織。 例如，如果您有一些有資格的暫時使用者，請考慮設定到期日，以便在工作完成時，自動從角色指派中移除它們。
 
 ## <a name="new-role-settings"></a>新的角色設定
 
-我們也會為 Azure AD 角色新增設定。 之前，您只能以每個角色為基礎來設定啟用設定。 也就是說，啟用設定（例如多重要素驗證需求和事件/要求票證需求）會套用至所有符合指定角色的使用者。 現在，您可以設定個別使用者是否需要執行多重要素驗證，然後才能啟動角色。 此外，您還可以對與特定角色相關的 Privileged Identity Management 電子郵件進行先進的控制。
+我們也會為 Azure AD 角色新增設定。
+
+- **之前**，您只能以每個角色為基礎來設定啟用設定。 也就是說，啟用設定（例如多重要素驗證需求和事件/要求票證需求）會套用至所有符合指定角色的使用者。
+- **現在**，您可以設定個別使用者是否需要執行多重要素驗證，然後才能啟動角色。 此外，您還可以對與特定角色相關的 Privileged Identity Management 電子郵件進行先進的控制。
 
 ## <a name="extend-and-renew-assignments"></a>延長和更新指派
 
 一旦您找出時間限制指派，您可能會問的第一個問題是，如果角色已過期，會發生什麼事？ 在這個新版本中，我們提供兩個適用于此案例的選項：
 
-- 擴充–角色指派接近其到期時間時，使用者可以使用 Privileged Identity Management 來要求該角色指派的延伸模組
-- 續訂–角色指派過期時，使用者可以使用 Privileged Identity Management 來要求更新該角色指派
+- **擴充**：當角色指派接近其到期日時，使用者可以使用 Privileged Identity Management 來要求該角色指派的擴充功能
+- **續訂**：當角色指派過期時，使用者可以使用 Privileged Identity Management 來要求更新該角色指派
 
 使用者起始的動作都需要全域管理員或特殊權限角色管理員的核准。 系統管理員不再需要管理這些過期的業務。 他們只需要等待擴充或更新要求，並在要求有效時予以核准。
 

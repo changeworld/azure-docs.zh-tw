@@ -272,12 +272,12 @@
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=api-management'
     - name: Microsoft 問與答頁面
-      href: 'https://docs.microsoft.com/answers/topics/azure-api-management.html'
+      href: /answers/topics/azure-api-management.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-api-management'
     - name: API 設計指引
-      href: 'https://docs.microsoft.com/azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json'
+      href: /azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json
     - name: API 實作指引
-      href: 'https://docs.microsoft.com/azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json'
+      href: /azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json
     - name: 無法疑難排解更新主機名稱的錯誤
       href: api-management-troubleshoot-cannot-add-custom-domain.md

@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 3b7cb09d67080d49f53d9dd48b5ed0f8f3a54884
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: a912b7a6d918a40aaae54c9b177250dc3c30c84d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701891"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256555"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>使用 Application Insights 進行事件分析和視覺效果
 
@@ -37,7 +38,7 @@ Application Insights 有用於查詢所有傳入資訊的指定檢視。 按一�
 
 ![Application Insights 要求詳細資料](media/service-fabric-diagnostics-event-analysis-appinsights/ai-metrics-explorer.png)
 
-若要進一步探索 Application Insights 入口網站的功能，請前往 [Application Insights 入口網站文件](../azure-monitor/app/app-insights-dashboards.md)。
+若要進一步探索 Application Insights 入口網站的功能，請前往 [Application Insights 入口網站文件](../azure-monitor/app/overview-dashboard.md)。
 
 ### <a name="configuring-application-insights-with-eventflow"></a>使用 EventFlow 設定 Application Insights
 
@@ -66,11 +67,11 @@ Application Insights 有用於查詢所有傳入資訊的指定檢視。 按一�
 
 一旦將 Application Insights 設定為事件和記錄的輸出，資訊就會在幾分鐘內開始出現在 Application Insights 資源中。 瀏覽至 Application Insights 資源，它會帶您到 Application Insights 資源儀表板。 按一下 Application Insights 工作列的 [搜尋]，可查看它接收到的最新追蹤，並可從中進行篩選。
 
-*計量瀏覽器*是很有用的工具，它可根據應用程式、服務和叢集可能報告的計量，建立自訂的儀表板。 請參閱[在 Application Insights 中探索計量](../azure-monitor/app/metrics-explorer.md)，根據您所收集的資料自行設定幾個圖表。
+*計量瀏覽器*是很有用的工具，它可根據應用程式、服務和叢集可能報告的計量，建立自訂的儀表板。 請參閱[在 Application Insights 中探索計量](../azure-monitor/platform/metrics-charts.md)，根據您所收集的資料自行設定幾個圖表。
 
-按一下 [分析] 會帶您到 Application Insights 的 Analytics 入口網站中，您可以在這裡查詢更大範圍和選擇性的事件和追蹤。 在 [Application Insights 的 Analytics](../azure-monitor/app/analytics.md) 中了解更多。
+按一下 [分析] 會帶您到 Application Insights 的 Analytics 入口網站中，您可以在這裡查詢更大範圍和選擇性的事件和追蹤。 在 [Application Insights 的 Analytics](../azure-monitor/log-query/log-query-overview.md) 中了解更多。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [在 AI 中設定警示](/azure/azure-monitor/platform/alerts-log)以收到效能或使用方式的變更通知
+* [在 AI 中設定警示](../azure-monitor/platform/alerts-log.md)以收到效能或使用方式的變更通知
 * [Application Insights 的智慧偵測](../azure-monitor/app/proactive-diagnostics.md)會對傳送至 Application Insights 的遙測資料執行主動式分析，對可能的效能問題提出警告

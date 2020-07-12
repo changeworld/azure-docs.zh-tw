@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3fc44ca18f237fecd1c694e96f9ebc2d5b541757
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d482b3335b31d116846ec64883b43897fcc4e43d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564456"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255654"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>在 Windows 虛擬桌面上使用 Microsoft 團隊
 
@@ -23,7 +23,7 @@ ms.locfileid: "85564456"
 >[!NOTE]
 >Microsoft 小組的媒體優化僅適用于 Windows 10 電腦上的 Windows 桌面用戶端。 媒體優化需要 Windows 桌面用戶端版本1.2.1026.0 或更新版本。
 
-Microsoft 團隊的 Windows 虛擬桌面支援聊天與共同作業。 透過媒體優化，它也支援呼叫和會議功能。 若要深入瞭解如何在虛擬桌面基礎結構（VDI）環境中使用 Microsoft 小組，請參閱[虛擬化桌面基礎結構的小組](/microsoftteams/teams-for-vdi/)。
+Microsoft 團隊的 Windows 虛擬桌面支援聊天與共同作業。 透過媒體優化，它也支援呼叫和會議功能。 若要深入瞭解如何在虛擬桌面基礎結構中使用 Microsoft 小組 (VDI) 環境，請參閱[虛擬化桌面基礎結構的小組](/microsoftteams/teams-for-vdi/)。
 
 透過適用于 Microsoft 小組的媒體優化，Windows 桌面用戶端會在本機處理音訊和影片，供小組通話和會議使用。 您仍然可以使用 Microsoft 小組在 Windows 虛擬桌面與其他用戶端，而不需要經過優化的通話和會議。 所有平臺都支援小組交談和共同作業功能。 若要重新導向遠端會話中的本機裝置，請參閱[自訂主機集區的遠端桌面通訊協定屬性](#customize-remote-desktop-protocol-properties-for-a-host-pool)。
 
@@ -32,8 +32,8 @@ Microsoft 團隊的 Windows 虛擬桌面支援聊天與共同作業。 透過媒
 在 Windows 虛擬桌面上使用 Microsoft 團隊之前，您必須執行下列動作：
 
 - 為 Microsoft 團隊[準備您的網路](/microsoftteams/prepare-network/)。
-- 在 windows 10 或 Windows 10 IoT 企業版裝置上安裝[Windows 桌面用戶端](connect-windows-7-and-10.md)，以符合 Microsoft 小組[在 windows 電腦上的小組硬體需求](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)。
-- 連接到 Windows 10 多會話或 Windows 10 企業版虛擬機器（VM）。
+- 在 windows 10 或 Windows 10 IoT 企業版裝置上安裝[Windows 桌面用戶端](connect-windows-7-10.md)，以符合 Microsoft 小組[在 windows 電腦上的小組硬體需求](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)。
+-  (VM) 連接到 Windows 10 多會話或 Windows 10 企業版虛擬機器。
 - 使用每一電腦安裝，在主機上安裝小組桌面應用程式。 Microsoft 小組的媒體優化需要小組桌面應用程式版本1.3.00.4461 或更新版本。
 
 ## <a name="install-the-teams-desktop-app"></a>安裝小組桌面應用程式
@@ -80,7 +80,7 @@ Microsoft 團隊的 Windows 虛擬桌面支援聊天與共同作業。 透過媒
         msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1 ALLUSERS=1
         ```
 
-        這會將小組安裝到64位作業系統上的 Program Files （x86）資料夾，以及32位作業系統上的 Program Files 資料夾。 此時，黃金映射設定已完成。 非持續性的安裝需要為每部電腦安裝小組。
+        這會將小組安裝到64位作業系統上的 Program Files (x86) 資料夾，以及32位作業系統上的 Program Files 資料夾。 此時，黃金映射設定已完成。 非持續性的安裝需要為每部電腦安裝小組。
 
         下次當您在會話中開啟小組時，系統會要求您提供認證。
 
@@ -93,7 +93,7 @@ Microsoft 團隊的 Windows 虛擬桌面支援聊天與共同作業。 透過媒
       msiexec /passive /x <msi_name> /l*v <uninstall_logfile_name>
       ```
 
-      這會根據作業系統環境，從 [Program Files （x86）] 資料夾或 [Program Files] 資料夾卸載小組。
+      這會根據作業系統環境，從 Program Files (x86) 資料夾或 Program Files 資料夾卸載小組。
 
       > [!NOTE]
       > 當您安裝具有 MSI 設定 ALLUSER = 1 的小組時，自動更新將會停用。 我們建議您至少每個月更新一次小組。 若要深入瞭解如何部署小組桌面應用程式，請參閱將[小組桌面應用程式部署至 VM](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm/)。
@@ -151,7 +151,7 @@ Microsoft 團隊的 Windows 虛擬桌面支援聊天與共同作業。 透過媒
 
 ## <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>自訂主機集區的遠端桌面通訊協定屬性
 
-自訂主機集區的遠端桌面通訊協定（RDP）內容，例如多監視器體驗或啟用麥克風和音訊重新導向，可讓您根據使用者的需求為您的使用者提供最佳的體驗。
+自訂主機集區的遠端桌面通訊協定 (RDP) 內容（例如多監視器經驗或啟用麥克風和音訊重新導向），可讓您根據自己的需求為您的使用者提供最佳的體驗。
 
 使用具有媒體優化的小組時，不需要啟用裝置重新導向。 如果您使用沒有媒體優化的小組，請設定下列 RDP 屬性來啟用麥克風和相機重新導向：
 

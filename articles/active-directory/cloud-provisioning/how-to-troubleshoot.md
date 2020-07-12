@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 009e762b69d4f3512158d69ef3c67089096c9da7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77ea5a354dde7adb006c95e9548d8fcc37e2dc12
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360787"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256861"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>雲端布建疑難排解
 
@@ -22,9 +22,9 @@ ms.locfileid: "85360787"
 
 ## <a name="common-troubleshooting-areas"></a>常見的疑難排解區域
 
-|Name|說明|
+|名稱|描述|
 |-----|-----|
-|[代理程式問題](#agent-problems)|請確認代理程式已正確安裝，且與 Azure Active Directory （Azure AD）通訊。|
+|[代理程式問題](#agent-problems)|請確認代理程式已正確安裝，且與 Azure Active Directory (Azure AD) 通訊。|
 |[物件同步處理問題](#object-synchronization-problems)|使用布建記錄來針對物件同步處理問題進行疑難排解。|
 |[布建隔離的問題](#provisioning-quarantined-problems)|瞭解布建隔離問題，以及如何加以修正。|
 
@@ -55,9 +55,7 @@ ms.locfileid: "85360787"
 
 ### <a name="verify-the-port"></a>驗證埠
 
-若要確認 Azure 正在接聽埠443，且您的代理程式可以與其通訊，請使用下列工具：
-
-https://aadap-portcheck.connectorporttest.msappproxy.net/ 
+確認 Azure 正在接聽埠443，且您的代理程式可以與其通訊。 
 
 此測試會驗證您的代理程式是否可透過埠443與 Azure 通訊。 開啟瀏覽器，並移至安裝代理程式之伺服器上的先前 URL。
 
@@ -82,7 +80,7 @@ https://aadap-portcheck.connectorporttest.msappproxy.net/
 
 **服務 ' Microsoft Azure AD Connect 布建代理程式 ' 無法啟動。請確認您有足夠的許可權可以啟動系統服務。** 
 
-此問題通常是因為群組原則導致無法將許可權套用至安裝程式所建立的本機 NT 服務登入帳戶（NT SERVICE\AADConnectProvisioningAgent）。 需要有這些權限，才能啟動服務。
+此問題通常是因為群組原則導致無法將許可權套用至安裝程式所建立的本機 NT 服務登入帳戶 (NT SERVICE\AADConnectProvisioningAgent) 。 需要有這些權限，才能啟動服務。
 
 若要解決此問題，請遵循下列步驟。
 

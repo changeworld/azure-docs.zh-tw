@@ -5,17 +5,18 @@ author: cawaMS
 ms.topic: conceptual
 ms.date: 8/04/2017
 ms.author: cawa
-ms.openlocfilehash: 11f76153726d3fc92118fb46cc61b4627ab6a1b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4d6b781d97d481793e69cf2ca97cca5b93ce432
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464086"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256088"
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>從 Visual Studio 設定對 Service Fabric 叢集的安全連線
 了解如何使用 Visual Studio 安全地存取已設定存取控制原則的 Azure Service Fabric 叢集。
 
 ## <a name="cluster-connection-types"></a>叢集連線類型
-Azure Service Fabric 叢集支援兩種連線：「非安全」**** 連線和「x509 憑證型」**** 安全連線。 （對於裝載于內部部署的 Service Fabric 叢集，也支援**Windows**和**dSTS**驗證）。當叢集建立時，您必須設定叢集連線類型。 建立之後，即無法變更連線類型。
+Azure Service Fabric 叢集支援兩種連線：「非安全」**** 連線和「x509 憑證型」**** 安全連線。  (裝載于內部部署環境的 Service Fabric 叢集，也支援**Windows**和**dSTS**驗證。 ) 您必須在建立叢集時設定叢集連線類型。 建立之後，即無法變更連線類型。
 
 Visual Studio Service Fabric 工具支援所有用於連線到叢集來進行發佈的驗證類型。 如需有關如何設定安全 Service Fabric 叢集的說明，請參閱 [從 Azure 入口網站設定 Service Fabric 叢集](service-fabric-cluster-creation-via-portal.md) 。
 
@@ -34,9 +35,9 @@ Visual Studio Service Fabric 工具支援所有用於連線到叢集來進行發
 3. 在專案的捷徑功能表上選擇 [發行...]**** 命令以開啟 [發行 Azure 應用程式]**** 對話方塊，然後選取目標叢集。 此工具會自動解析連線，並將安全連線參數儲存在發行設定檔中。
 4. 選擇性︰您可以編輯發行設定檔來指定安全的叢集連線。
    
-   由於您正手動編輯「發行設定檔」XML 檔案以指定憑證資訊，因此請務必記下憑證存放區名稱、存放區位置，以及憑證指紋。 您將必須為憑證的存放區名稱和存放區位置提供這些值。 如需詳細資訊，請參閱[做法：擷取憑證的指紋](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx)。
+   由於您正手動編輯「發行設定檔」XML 檔案以指定憑證資訊，因此請務必記下憑證存放區名稱、存放區位置，以及憑證指紋。 您將必須為憑證的存放區名稱和存放區位置提供這些值。 如需詳細資訊，請參閱[做法：擷取憑證的指紋](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)。
    
-   您可以使用 *ClusterConnectionParameters* 參數指定連線到 Service Fabric 叢集時要使用的 PowerShell 參數。 有效的參數是 Connect-ServiceFabricCluster Cmdlet 所接受的任何參數。 如需可用參數的清單，請參閱 [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster) 。
+   您可以使用 *ClusterConnectionParameters* 參數指定連線到 Service Fabric 叢集時要使用的 PowerShell 參數。 有效的參數是 Connect-ServiceFabricCluster Cmdlet 所接受的任何參數。 如需可用參數的清單，請參閱 [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) 。
    
    如果要發行至遠端叢集，您需要指定該特定叢集的適當參數。 以下是連線到非安全叢集的範例：
    

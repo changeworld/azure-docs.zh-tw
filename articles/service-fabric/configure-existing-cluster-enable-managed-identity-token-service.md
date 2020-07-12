@@ -4,12 +4,12 @@ description: 以下說明如何在現有的 Azure Service Fabric 叢集中啟用
 ms.topic: article
 ms.date: 03/11/2019
 ms.custom: sfrev
-ms.openlocfilehash: 73c890e960f26b8e0e3fa924d9ff6b7a4cd4a4dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 722c507300cc5766d162f336f77f60293c5c90dc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415678"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257615"
 ---
 # <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>在現有的 Service Fabric 叢集中設定受控識別支援
 
@@ -24,7 +24,7 @@ ms.locfileid: "81415678"
 
 ## <a name="enable-managed-identity-token-service-in-an-existing-cluster"></a>在現有的叢集中啟用*受控識別權杖服務*
 
-若要在現有的叢集中啟用受控識別權杖服務，您將需要起始叢集升級，並指定兩個變更：（1）啟用受控識別權杖服務，以及（2）要求重新開機每個節點。 首先，在您的叢集 Azure Resource Manager 範本中新增下列程式碼片段：
+若要在現有的叢集中啟用受控識別權杖服務，您必須起始指定兩項變更的叢集升級： (1) 啟用受控識別權杖服務，而 (2) 要求重新開機每個節點。 首先，在您的叢集 Azure Resource Manager 範本中新增下列程式碼片段：
 
 ```json
 "fabricSettings": [
@@ -40,7 +40,7 @@ ms.locfileid: "81415678"
 ]
 ```
 
-為了讓變更生效，您也需要變更升級原則，以便在升級完成叢集時，在每個節點上指定強制重新開機 Service Fabric 執行時間。 此重新開機可確保新啟用的系統服務已在每個節點上啟動並執行。 在下列程式碼片段中， `forceRestart` 是啟用重新開機的基本設定。 針對其餘的參數，請使用以下所述的值，或使用已為叢集資源指定的現有自訂值。 您可以從 Azure 入口網站中選取 [Service Fabric 資源] 或 [resources.azure.com] 上的 [網狀架構升級] 選項，以查看網狀架構升級原則的自訂設定（' upgradeDescription '）。 升級原則（' upgradeDescription '）的預設選項無法從 powershell 或 resources.azure.com 查看。 如需其他資訊，請參閱[ClusterUpgradePolicy](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet) 。  
+為了讓變更生效，您也需要變更升級原則，以便在升級完成叢集時，在每個節點上指定強制重新開機 Service Fabric 執行時間。 此重新開機可確保新啟用的系統服務已在每個節點上啟動並執行。 在下列程式碼片段中， `forceRestart` 是啟用重新開機的基本設定。 針對其餘的參數，請使用以下所述的值，或使用已為叢集資源指定的現有自訂值。 您可以從 Azure 入口網站中選取 [Service Fabric 資源] 或 [resources.azure.com] 上的 [網狀架構升級] 選項，來查看網狀架構升級原則 ( ' upgradeDescription ' ) 的自訂設定。 升級原則 ( ' upgradeDescription ' ) 的預設選項無法從 powershell 或 resources.azure.com 查看。 如需其他資訊，請參閱[ClusterUpgradePolicy](/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet) 。  
 
 ```json
 "upgradeDescription": {

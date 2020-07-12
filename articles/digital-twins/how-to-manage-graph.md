@@ -7,19 +7,22 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bfdf1263ccee78b57ccf79c63efcc01d95dd13c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d51abab46cd8450dd3a09e5e5ef47e6267b990d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392245"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258101"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>使用關聯性管理數位 twins 的圖表
 
 Azure 數位 Twins 的核心是代表整個環境的對應項[圖形](concepts-twins-graph.md)。 對應項圖形是由透過**關聯**性連線的個別數位 twins 所組成。
 
-當您擁有運作中的[Azure 數位 Twins 實例](how-to-set-up-instance.md)並已設定用戶端應用程式的[驗證](how-to-authenticate-client.md)之後，您就可以使用[**選取 api**](how-to-use-apis-sdks.md)來建立、修改和刪除數位 Twins 及其在 Azure 數位 Twins 實例中的關聯性。 您也可以使用[.net （c #） SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或[AZURE 數位 Twins CLI](how-to-use-cli.md)。
+當您擁有運作中的[Azure 數位 Twins 實例](how-to-set-up-instance.md)並已設定用戶端應用程式的[驗證](how-to-authenticate-client.md)之後，您就可以使用[**選取 api**](how-to-use-apis-sdks.md)來建立、修改和刪除數位 Twins 及其在 Azure 數位 Twins 實例中的關聯性。 您也可以使用[.net (c # ) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或[AZURE 數位 Twins CLI](how-to-use-cli.md)。
 
 本文著重于整體管理關聯性和圖形;若要使用個別的數位 twins，請參閱[如何：管理數位 twins](how-to-manage-twin.md)。
+
+[!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
 ## <a name="create-relationships"></a>建立關聯性
 
@@ -28,8 +31,8 @@ Azure 數位 Twins 的核心是代表整個環境的對應項[圖形](concepts-t
 關聯性是使用呼叫所建立 `CreateRelationship` 。 
 
 若要建立關聯性，您必須指定：
-* 來源對應項識別碼（關聯性的來源對應項）
-* 目標對應項識別碼（關聯性到達的對應項）
+* 來源對應項識別碼 (關聯性源自的對應項) 
+* 目標對應項識別碼 (關聯性抵達的對應項) 
 * 關聯性名稱
 * 關聯性識別碼
 
@@ -131,7 +134,7 @@ async Task<List<IncomingRelationship>> FindIncomingRelationshipsAsync(string dtI
 
 您可以使用刪除關聯性 `DeleteRelationship(source, relId);` 。
 
-第一個參數指定來源對應項（關聯性的來源對應項）。 另一個參數是關聯性識別碼。 您需要對應項識別碼和關聯性識別碼，因為關聯性識別碼只在對應項的範圍內是唯一的。
+第一個參數會指定來源對應項 (對應項在) 關聯性的對應項。 另一個參數是關聯性識別碼。 您需要對應項識別碼和關聯性識別碼，因為關聯性識別碼只在對應項的範圍內是唯一的。
 
 ## <a name="create-a-twin-graph"></a>建立對應項圖形 
 
@@ -229,12 +232,12 @@ static async Task<bool> CreateFloorOrBuilding(string id, bool makeFloor=true)
 | 型號    | 識別碼 | 父系 | 關聯性名稱 | 其他資料 |
 | --- | --- | --- | --- | --- |
 | floor    | Floor01 | | | … |
-| 房間    | Room10 | Floor01 | 包含 | … |
-| 房間    | Room11 | Floor01 | 包含 | … |
-| 房間    | Room12 | Floor01 | 包含 | … |
+| 房間    | Room10 | Floor01 | contains | … |
+| 房間    | Room11 | Floor01 | contains | … |
+| 房間    | Room12 | Floor01 | contains | … |
 | floor    | Floor02 | | | … |
-| 房間    | Room21 | Floor02 | 包含 | … |
-| 房間    | Room22 | Floor02 | 包含 | … |
+| 房間    | Room21 | Floor02 | contains | … |
+| 房間    | Room22 | Floor02 | contains | … |
 
 下列程式碼會使用[MICROSOFT GRAPH API](https://docs.microsoft.com/graph/overview)來讀取試算表，並從結果中建立 Azure 數位 Twins 對應項圖形。
 

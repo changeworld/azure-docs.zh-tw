@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: e57d169decf482f8b8be1e3b31a07690bc222c5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a873a32aa8c12b535c06711ea7dc7a4aa920a27f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458236"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257772"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>連接至 Service Fabric 中的服務並與其進行通訊
 在 Service Fabric 中，服務會在 Service Fabric 叢集中的某處執行，通常是分散到多個 VM。 它可以由服務擁有者或是 Service Fabric 自動從某個位置移到其他位置。 服務無法以靜態方式繫結至特定電腦或位址。
@@ -162,14 +163,14 @@ Azure 中的 Service Fabric 叢集位於 Azure 負載平衡器後方。 到叢�
 Reliable Services 架構隨附數個預先建置的通訊選項。 最適合您選項的決定取決於如何選擇程式設計模型、通訊架構以及用來撰寫您服務的程式語言。
 
 * **沒有特定的通訊協定：** 如果您沒有特定的通訊架構選擇，但想要快速啟動並執行，則適合您的理想選項是「[服務遠端處理](service-fabric-reliable-services-communication-remoting.md)」，這可讓 Reliable Services 和 Reliable Actors 的強型別遠端程序呼叫。 若要開始使用服務通訊，這是最簡單且快速的方式。 遠端服務會處理服務位址、連接、重試和錯誤處理的解析。 這同時適用 C# 和 Java 應用程式。
-* **HTTP**︰對於無從驗證語言的通訊，HTTP 提供業界標準的選擇，具有工具與許多不同語言的 HTTP 伺服器，都受到 Service Fabric 的支援。 服務可以使用任何可用的 HTTP 堆疊，包括 C# 應用程式適用的 [ASP.NET Web API](service-fabric-reliable-services-communication-webapi.md)。 以 C# 撰寫的用戶端可以利用 `ICommunicationClient` 和 `ServicePartitionClient` 類別，而使用 Java 的用戶端則可以利用 `CommunicationClient` 和 `FabricServicePartitionClient` 進行[服務解析、HTTP 連線和重試迴圈](service-fabric-reliable-services-communication.md)。
+* **HTTP**︰對於無從驗證語言的通訊，HTTP 提供業界標準的選擇，具有工具與許多不同語言的 HTTP 伺服器，都受到 Service Fabric 的支援。 服務可以使用任何可用的 HTTP 堆疊，包括 C# 應用程式適用的 [ASP.NET Web API](./service-fabric-reliable-services-communication-aspnetcore.md)。 以 C# 撰寫的用戶端可以利用 `ICommunicationClient` 和 `ServicePartitionClient` 類別，而使用 Java 的用戶端則可以利用 `CommunicationClient` 和 `FabricServicePartitionClient` 進行[服務解析、HTTP 連線和重試迴圈](service-fabric-reliable-services-communication.md)。
 * **WCF**：若您有現有的程式碼且使用 WCF 作為通訊架構，則您可以針對伺服器端使用 `WcfCommunicationListener` 類別，並針對用戶端使用 `WcfCommunicationClient` 和 `ServicePartitionClient` 類別。 不過，這只適用以 Windows 為基礎的叢集上的 C# 應用程式。 如需詳細資訊，請參閱本文中 [通訊堆疊的 WCF 式實作](service-fabric-reliable-services-communication-wcf.md)。
 
 ## <a name="using-custom-protocols-and-other-communication-frameworks"></a>使用自訂通訊協定以及其他通訊架構
 服務可以使用任何通訊協定或架構進行通訊，無論是透過 TCP 通訊端的自訂二進位通訊協定，或透過 [Azure 事件中樞](https://azure.microsoft.com/services/event-hubs/)或 [Azure IoT 中樞](https://azure.microsoft.com/services/iot-hub/)的串流事件。 Service Fabric 提供通訊 API，您可以將通訊堆疊插入其中，同時讓您免於探索和連接的所有工作。 如需詳細資訊，請參閱本文中 [Reliable Service 通訊模型](service-fabric-reliable-services-communication.md) 。
 
 ## <a name="next-steps"></a>後續步驟
-您可以在 [Reliable Services 通訊模型](service-fabric-reliable-services-communication.md)中深入了解概念和可用的 API，然後快速地開始使用[遠端服務](service-fabric-reliable-services-communication-remoting.md)或深入了解如何使用 [Web API 與 OWIN 自我裝載](service-fabric-reliable-services-communication-webapi.md)撰寫通訊接聽程式。
+您可以在 [Reliable Services 通訊模型](service-fabric-reliable-services-communication.md)中深入了解概念和可用的 API，然後快速地開始使用[遠端服務](service-fabric-reliable-services-communication-remoting.md)或深入了解如何使用 [Web API 與 OWIN 自我裝載](./service-fabric-reliable-services-communication-aspnetcore.md)撰寫通訊接聽程式。
 
 [1]: ./media/service-fabric-connect-and-communicate-with-services/serviceendpoints.png
 [2]: ./media/service-fabric-connect-and-communicate-with-services/namingservice.png

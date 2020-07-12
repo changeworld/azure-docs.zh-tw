@@ -5,11 +5,12 @@ author: pkcsf
 ms.topic: troubleshooting
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: f2da9fbb04f9d1fa696250967db404864a3cce82
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: ae49a59c2629d9f9461d298ada555d314c0c9f22
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921825"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256963"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric 支援選項
 
@@ -25,9 +26,9 @@ ms.locfileid: "85921825"
 - [Microsoft 頂級支援](https://support.microsoft.com/en-us/premier)。
 
 > [!Note]
-> 在銅級可靠性層上執行的叢集或單一節點叢集僅供執行測試工作負載。 如果使用在銅級可靠性上執行的叢集或單一節點叢集時遇到問題，Microsoft 支援小組會協助減輕問題，但不會執行根本原因分析。 如需詳細資訊，請參閱[叢集的可靠性特性](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#reliability-characteristics-of-the-cluster) (機器翻譯)。
+> 在銅級可靠性層上執行的叢集或單一節點叢集僅供執行測試工作負載。 如果使用在銅級可靠性上執行的叢集或單一節點叢集時遇到問題，Microsoft 支援小組會協助減輕問題，但不會執行根本原因分析。 如需詳細資訊，請參閱[叢集的可靠性特性](./service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) (機器翻譯)。
 >
-> 如需生產環境就緒叢集必要條件的詳細資訊，請參閱[生產整備檢查清單](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist) (機器翻譯)。
+> 如需生產環境就緒叢集必要條件的詳細資訊，請參閱[生產整備檢查清單](./service-fabric-production-readiness-checklist.md) (機器翻譯)。
 
 <a id="getlivesitesupportonprem"></a>
 
@@ -58,15 +59,15 @@ ms.locfileid: "85921825"
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric 預覽版本 - 不支援用於生產環境
 
-有時候，我們會以預覽形式發行包含我們想得到意見反應之重要功能的版本。 這些預覽版本只能用於測試目的。 您的生產叢集應一律執行支援的穩定 Service Fabric 版本。 預覽版本一律從 255 作為主要和次要版本號碼的開頭。 例如，如果您看到 Service Fabric 版本 255.255.5703.949，該發行版本只能使用於測試叢集並處於預覽狀態。 這些預覽版本也會在 [Service Fabric 小組部落格](https://blogs.msdn.microsoft.com/azureservicefabric)上宣告，並且有內含功能的詳細資料。
-這些預覽版本沒有付費的支援選項。 使用[報告 Azure Service Fabric 問題](https://docs.microsoft.com/azure/service-fabric/service-fabric-support#report-azure-service-fabric-issues)底下所列的其中一個選項來提出問題或提供意見反應。
+有時候，我們會以預覽形式發行包含我們想得到意見反應之重要功能的版本。 這些預覽版本只能用於測試目的。 您的生產叢集應一律執行支援的穩定 Service Fabric 版本。 預覽版本一律從 255 作為主要和次要版本號碼的開頭。 例如，如果您看到 Service Fabric 版本 255.255.5703.949，該發行版本只能使用於測試叢集並處於預覽狀態。 這些預覽版本也會在 [Service Fabric 小組部落格](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)上宣告，並且有內含功能的詳細資料。
+這些預覽版本沒有付費的支援選項。 使用[報告 Azure Service Fabric 問題](#report-azure-service-fabric-issues)底下所列的其中一個選項來提出問題或提供意見反應。
 
 ## <a name="next-steps"></a>後續步驟
 
 [支援的 Service Fabric 版本](service-fabric-versions.md)
 
 <!--references-->
-[Microsoft Q&A question page]: https://docs.microsoft.com/answers/topics/azure-service-fabric.html
+[Microsoft Q&A question page]: /answers/topics/azure-service-fabric.html
 [stackoverflow]: https://stackoverflow.com/questions/tagged/azure-service-fabric
 [uservoice-forum]: https://feedback.azure.com/forums/293901-service-fabric
 [acom-docs]: https://aka.ms/servicefabricdocs

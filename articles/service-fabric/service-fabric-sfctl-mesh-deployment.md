@@ -5,18 +5,19 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 108389407221779ed20e81310f084b7b5c23b8c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb2adafab88eb1d3855cdec8268601fb4e15dcbb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906035"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257274"
 ---
 # <a name="sfctl-mesh-deployment"></a>sfctl mesh deployment
 建立 Service Fabric Mesh 資源。
 
 ## <a name="commands"></a>命令
 
-|Command|描述|
+|命令|描述|
 | --- | --- |
 | 建立 | 建立 Service Fabric Mesh 資源的部署。 |
 
@@ -27,7 +28,7 @@ ms.locfileid: "76906035"
 
 |引數|說明|
 | --- | --- |
-| --input-yaml-files [必要] | 以逗號分隔的所有 yaml 檔案或包含 yaml 檔案之目錄（遞迴）的相對或絕對路徑的相對或絕對檔案路徑。 |
+| --input-yaml-files [必要] | 以逗號分隔的所有 yaml 檔案的相對或絕對檔案路徑，或包含 yaml 檔案之目錄 (遞迴) 的相對或絕對路徑。 |
 | --parameters | Yaml 檔或 json 物件的相對或絕對路徑，其中包含需要覆寫的參數。 |
 
 ### <a name="global-arguments"></a>全域引數
@@ -62,4 +63,4 @@ sfctl mesh deployment create --input-yaml-files ./resources --parameters "{ 'my_
 
 ## <a name="next-steps"></a>後續步驟
 - [設定](service-fabric-cli.md)Service Fabric CLI。
-- 了解如何使用[範例指令碼](/azure/service-fabric/scripts/sfctl-upgrade-application)來使用 Service Fabric CLI。
+- 了解如何使用[範例指令碼](./scripts/sfctl-upgrade-application.md)來使用 Service Fabric CLI。

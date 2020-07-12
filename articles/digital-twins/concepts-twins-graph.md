@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 248725c7281c8c63e4ca5c0c70428b4fc997d350
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 955a3b8d12eb3b93bc9d44c624953cd5c1007318
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142405"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258210"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>瞭解數位 twins 及其對應項圖形
 
@@ -21,11 +21,27 @@ ms.locfileid: "86142405"
 > [!TIP]
 > 「Azure 數位 Twins」是指整個 Azure 服務。 「數位對應項 (s) 」或只是「對應項 (s) 」是指服務實例內的個別對應項節點。
 
-## <a name="creating-digital-twins"></a>建立數位分身
+## <a name="digital-twins"></a>數位 twins
 
 在您的 Azure 數位 Twins 實例中建立數位對應項之前，您必須先將*模型*上傳至服務。 模型描述特定對應項可以擁有的一組屬性、遙測訊息和關聯性，還有其他專案。 如需模型中所定義的資訊類型，請參閱[概念：自訂模型](concepts-models.md)。
 
 建立和上傳模型之後，您的用戶端應用程式可以建立類型的實例。這是數位對應項。 例如，建立*樓層*的模型之後，您可以建立一或數個使用此類型的數位 twins， (像是名為*GroundFloor*的*Floor*類型對應項、另一個稱為*Floor2*等，) 。 
+
+## <a name="relationships-a-graph-of-digital-twins"></a>關聯性：數位 twins 的圖表
+
+Twins 會依其關聯性連接至對應項圖形。 對應項可以擁有的關聯性會定義為其模型的一部分。  
+
+例如，模型*樓層*可能會定義*contains*關聯性，其目標為*聊天室*類型的 twins。 使用此定義，Azure 數位 Twins 可讓您建立*包含*來自任何*樓層*對應項的關聯性到任何*房間*對應項 (包括) 的*房間*子類型的 Twins。 
+
+此程式的結果是一組節點 (數位 twins) 透過邊緣連線， (它們在圖形中) 關聯性。
+
+[!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
+
+## <a name="create-with-the-apis"></a>使用 Api 建立
+
+本節說明從用戶端應用程式建立數位 twins 和關聯性的樣子。 其中包含的 .NET 程式碼範例會利用[選取 api](how-to-use-apis-sdks.md)，以提供有關每個概念內的其他內容。
+
+### <a name="create-digital-twins"></a>建立數位分身
 
 以下是使用[選取 api](how-to-use-apis-sdks.md)來具現化類型*室*之對應項的用戶端程式代碼程式碼片段。
 
@@ -59,11 +75,7 @@ public Task<boolean> CreateRoom(string id, double temperature, double humidity)
 }
 ```
 
-## <a name="relationships-creating-a-graph-of-digital-twins"></a>關聯性：建立數位 twins 的圖表
-
-Twins 會依其關聯性連接至對應項圖形。 對應項可以擁有的關聯性會定義為其模型的一部分。  
-
-例如，模型*樓層*可能會定義*contains*關聯性，其目標為*聊天室*類型的 twins。 使用此定義，Azure 數位 Twins 可讓您建立*包含*來自任何*樓層*對應項的關聯性到任何*房間*對應項 (包括) 的*房間*子類型的 Twins。 
+### <a name="create-relationships"></a>建立關聯性
 
 以下是一些範例用戶端程式代碼，它會使用[選取 api](how-to-use-apis-sdks.md) ，在名為*GroundFloor*的*Floor*類型數位對應項和名為*咖啡廳*的*房間*類型數位對應項之間建立關聯性。
 
@@ -84,8 +96,6 @@ try
     Console.WriteLine($"*** Error creating relationship: {e.Response.StatusCode}");
 }
 ```
-
-此程式的結果是一組節點 (數位 twins) 透過邊緣連線， (它們在圖形中) 關聯性。
 
 ## <a name="json-representations-of-graph-elements"></a>圖表元素的 JSON 標記法
 

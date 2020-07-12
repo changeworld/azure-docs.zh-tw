@@ -3,14 +3,15 @@ title: Azure Service Fabric 中的 ReliableConcurrentQueue
 description: ReliableConcurrentQueue 是高輸送量的佇列，可允許平行將和清除。
 ms.topic: conceptual
 ms.date: 5/1/2017
-ms.openlocfilehash: a7115db8259fde0e87e53557ecef730f8e82d2fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 423ef3d1898176d7c25c596ad186a9c000108aa4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75462733"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257447"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Azure Service Fabric 中的 ReliableConcurrentQueue 簡介
-可靠的並行佇列是非同步、交易式和複寫的佇列，特徵是加入佇列與清除佇列作業的高並行存取。 它旨在提供高輸送量和低延遲，方法是將[可靠的佇列](https://msdn.microsoft.com/library/azure/dn971527.aspx)所提供的嚴格 FIFO 順序放寬，並改為提供最佳的順序。
+可靠的並行佇列是非同步、交易式和複寫的佇列，特徵是加入佇列與清除佇列作業的高並行存取。 它旨在提供高輸送量和低延遲，方法是將[可靠的佇列](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)所提供的嚴格 FIFO 順序放寬，並改為提供最佳的順序。
 
 ## <a name="apis"></a>API
 
@@ -20,11 +21,11 @@ ms.locfileid: "75462733"
 | bool TryDequeue(out T result)  | Task< ConditionalValue < T > > TryDequeueAsync(ITransaction tx)  |
 | int Count()                    | long Count()                                                     |
 
-## <a name="comparison-with-reliable-queue"></a>與[可靠的佇列](https://msdn.microsoft.com/library/azure/dn971527.aspx)進行比較
+## <a name="comparison-with-reliable-queue"></a>與[可靠的佇列](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)進行比較
 
-可靠的並行佇列會以[可靠的佇列](https://msdn.microsoft.com/library/azure/dn971527.aspx)替代形式提供。 它應用於不需要嚴格 FIFO 順序的情況，因為保證 FIFO 使用並行存取時需要有所取捨。  [可靠的佇列](https://msdn.microsoft.com/library/azure/dn971527.aspx)會使用鎖定來強制使用 FIFO 順序，並且一次最多允許一個交易加入佇列，以及一次最多允許一個交易清除佇列。 相較之下，可靠的並行佇列會放寬排序條件約束，並允許任何數目的並行交易可交錯其加入佇列及清除佇列作業。 會提供最佳順序，不過，一律無法保證可靠並行佇列中兩個值的相對順序。
+可靠的並行佇列會以[可靠的佇列](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)替代形式提供。 它應用於不需要嚴格 FIFO 順序的情況，因為保證 FIFO 使用並行存取時需要有所取捨。  [可靠的佇列](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)會使用鎖定來強制使用 FIFO 順序，並且一次最多允許一個交易加入佇列，以及一次最多允許一個交易清除佇列。 相較之下，可靠的並行佇列會放寬排序條件約束，並允許任何數目的並行交易可交錯其加入佇列及清除佇列作業。 會提供最佳順序，不過，一律無法保證可靠並行佇列中兩個值的相對順序。
 
-每當多個並行交易執行加入佇列或清除佇列時，可靠的並行佇列會提供比[可靠的佇列](https://msdn.microsoft.com/library/azure/dn971527.aspx)更高的輸送量和更低的延遲。
+每當多個並行交易執行加入佇列或清除佇列時，可靠的並行佇列會提供比[可靠的佇列](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)更高的輸送量和更低的延遲。
 
 ReliableConcurrentQueue 的範例使用情況為[訊息佇列](https://en.wikipedia.org/wiki/Message_queue)案例。 在此案例中，一個或多個訊息生產者會建立項目並加以新增至佇列，而一個或多個訊息取用者則會從佇列中提取訊息並加以處理。 多個產生者和取用者可以獨立運作，使用並行交易以處理佇列。
 
@@ -335,8 +336,8 @@ using (var txn = this.StateManager.CreateTransaction())
 * [Reliable Services 快速入門](service-fabric-reliable-services-quick-start.md)
 * [使用可靠的集合](service-fabric-work-with-reliable-collections.md)
 * [Reliable Services 通知](service-fabric-reliable-services-notifications.md)
-* [Reliable Services 備份和還原（嚴重損壞修復）](service-fabric-reliable-services-backup-restore.md)
+* [Reliable Services 備份和還原 (嚴重損壞修復) ](service-fabric-reliable-services-backup-restore.md)
 * [可靠的狀態管理員設定](service-fabric-reliable-services-configuration.md)
-* [Service Fabric Web API 服務的消費者入門](service-fabric-reliable-services-communication-webapi.md)
-* [Reliable Services 程式設計模型的進階用法](service-fabric-reliable-services-advanced-usage.md)
-* [可靠集合的開發人員參考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+* [Service Fabric Web API 服務的消費者入門](./service-fabric-reliable-services-communication-aspnetcore.md)
+* [Reliable Services 程式設計模型的進階用法](./service-fabric-reliable-services-lifecycle.md)
+* [可靠集合的開發人員參考](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

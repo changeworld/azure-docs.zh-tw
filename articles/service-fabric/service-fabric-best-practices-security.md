@@ -5,20 +5,20 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 9f6049a69b88c85f4e1bdf1c2400866739a6718d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90ffd1c01411982f56aed3332c499aa0c10b8a94
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944316"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257599"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric 安全性 
 
-如需 [Azure 安全性最佳做法](https://docs.microsoft.com/azure/security/)的相關詳細資訊，請參閱 [Azure Service Fabric 安全性最佳做法](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices)
+如需 [Azure 安全性最佳做法](../security/index.yml)的相關詳細資訊，請參閱 [Azure Service Fabric 安全性最佳做法](../security/fundamentals/service-fabric-best-practices.md)
 
 ## <a name="key-vault"></a>Key Vault
 
-[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) 是建議採用的 Azure Service Fabric 應用程式和叢集的秘密管理服務。
+[Azure Key Vault](../key-vault/index.yml) 是建議採用的 Azure Service Fabric 應用程式和叢集的秘密管理服務。
 > [!NOTE]
 > 如果 Key Vault 的憑證/秘密已部署至虛擬機器擴展集作為虛擬機器擴展集祕密，Key Vault 和虛擬機器擴展集必須位於相同位置。
 
@@ -29,11 +29,11 @@ ms.locfileid: "84944316"
 - 建立自我簽署憑證以建立公開-私密金鑰組，並與憑證建立關聯。 憑證會由自己擁有的金鑰簽署。 
 - 手動建立新憑證以建立公開-私密金鑰組，並產生 X.509 憑證簽署要求。 簽署要求可以由您的登錄授權單位或憑證授權單位簽署。 經過簽署的 x509 憑證能與擱置中的金鑰組合併，在 Key Vault 中完成 KV 憑證。 這個方式的步驟比較繁瑣，不過能確實提高安全性，因為私密金鑰僅限在 Key Vault 中建立。 下圖提供相關說明。 
 
-檢閱[Azure 金鑰保存庫憑證建立方法](https://docs.microsoft.com/azure/key-vault/create-certificate)了解其他詳細資訊。
+檢閱[Azure 金鑰保存庫憑證建立方法](../key-vault/certificates/create-certificate.md)了解其他詳細資訊。
 
 ## <a name="deploy-key-vault-certificates-to-service-fabric-cluster-virtual-machine-scale-sets"></a>將 Key Vault 憑證部署至 Service Fabric 叢集虛擬機器擴展集
 
-若要將憑證從位於相同位置的金鑰保存庫部署至虛擬機器擴展集，請使用虛擬機器擴展集 [osProfile](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile)。 下列是 Resource Manager 範本屬性：
+若要將憑證從位於相同位置的金鑰保存庫部署至虛擬機器擴展集，請使用虛擬機器擴展集 [osProfile](/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile)。 下列是 Resource Manager 範本屬性：
 
 ```json
 "secrets": [
@@ -56,7 +56,7 @@ ms.locfileid: "84944316"
 
 ## <a name="apply-an-access-control-list-acl-to-your-certificate-for-your-service-fabric-cluster"></a>將存取控制清單 (ACL) 套用至您 Service Fabric 叢集的憑證
 
-[虛擬機器擴展集延伸模組](https://docs.microsoft.com/cli/azure/vmss/extension?view=azure-cli-latest) 發行者 Microsoft.Azure.ServiceFabric 是用來設定您的節點安全性的。
+[虛擬機器擴展集延伸模組](/cli/azure/vmss/extension?view=azure-cli-latest) 發行者 Microsoft.Azure.ServiceFabric 是用來設定您的節點安全性的。
 若要針對您的 Service Fabric 叢集程序將 ACL 套用至憑證，請使用下列 Resource Manager 範本屬性：
 
 ```json
@@ -70,7 +70,7 @@ ms.locfileid: "84944316"
 
 ## <a name="secure-a-service-fabric-cluster-certificate-by-common-name"></a>透過一般名稱保護 Service Fabric 叢集憑證
 
-若要透過憑證 `Common Name` Service Fabric 叢集，請使用 Resource Manager 範本屬性 [certificateCommonNames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames)，如下所示：
+若要透過憑證 `Common Name` Service Fabric 叢集，請使用 Resource Manager 範本屬性 [certificateCommonNames](/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames)，如下所示：
 
 ```json
 "certificateCommonNames": {
@@ -89,7 +89,7 @@ ms.locfileid: "84944316"
 
 Azure 網域（例如 * \<YOUR SUBDOMAIN\> . cloudapp.azure.com 或 \<YOUR SUBDOMAIN\> . trafficmanager.net）由 Microsoft 所擁有。 憑證授權單位不會發出網域憑證給未經授權的使用者。 大部分的使用者必須向註冊機構購買網域，或本身為授權的網域系統管理員，憑證授權單位才會發出具備該一般名稱的憑證給您。
 
-如需有關如何設定 DNS 服務以將網域解析為 Microsoft IP 位址的其他詳細資訊，請檢閱如何設定 [Azure DNS 來裝載您的網域](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)。
+如需有關如何設定 DNS 服務以將網域解析為 Microsoft IP 位址的其他詳細資訊，請檢閱如何設定 [Azure DNS 來裝載您的網域](../dns/dns-delegate-domain-azure-dns.md)。
 
 > [!NOTE]
 > 將網域名稱伺服器委派給您的 Azure DNS 區域名稱伺服器之後，請將下列兩項記錄新增至您的 DNS 區域：
@@ -106,7 +106,7 @@ Azure 網域（例如 * \<YOUR SUBDOMAIN\> . cloudapp.azure.com 或 \<YOUR SUBDO
 
 Service Fabric 封裝中會經過加密的常見值包括 Azure Container Registry (ACR) 認證、環境變數、設定和 Azure 磁碟區外掛程式儲存體帳戶金鑰。
 
-若要[設定加密憑證，並在 Windows 叢集上將祕密加密](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management-windows)：
+若要[設定加密憑證，並在 Windows 叢集上將祕密加密](./service-fabric-application-secret-management-windows.md)：
 
 產生自我簽署的憑證以加密您的秘密：
 
@@ -122,7 +122,7 @@ New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEnciphermen
 Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint "<thumbprint>" -Text "mysecret" -StoreLocation CurrentUser -StoreName My
 ```
 
-若要[設定加密憑證，並在 Linux 叢集上將祕密加密](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management-linux)：
+若要[設定加密憑證，並在 Linux 叢集上將祕密加密](./service-fabric-application-secret-management-linux.md)：
 
 產生自我簽署的憑證以加密您的秘密：
 
@@ -141,7 +141,7 @@ user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt -o plaintext_UTF-16.txt
 user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform der TestCert.pem | base64 > encrypted.txt
 ```
 
-將受保護的值加密之後，[在 Service Fabric 應用程式中指定加密的祕密](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#specify-encrypted-secrets-in-an-application)，然後[從服務程式碼將加密的秘密解密](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#decrypt-encrypted-secrets-from-service-code)。
+將受保護的值加密之後，[在 Service Fabric 應用程式中指定加密的祕密](./service-fabric-application-secret-management.md#specify-encrypted-secrets-in-an-application)，然後[從服務程式碼將加密的秘密解密](./service-fabric-application-secret-management.md#decrypt-encrypted-secrets-from-service-code)。
 
 ## <a name="include-certificate-in-service-fabric-applications"></a>在 Service Fabric 應用程式中包含憑證
 
@@ -158,8 +158,8 @@ user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform de
 ## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>使用受控服務識別 (MSI) 向 Azure 資源驗證 Service Fabric 應用程式
 
 若要了解適用於 Azure 資源的受控識別，請參閱[什麼是適用於 Azure 資源的受控識別？](../active-directory/managed-identities-azure-resources/overview.md)。
-Azure Service Fabric 叢集裝載在虛擬機器擴展集中，支援[受控服務識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-managed-identities-for-azure-resources)。
-若要取得 MSI 可用來進行驗證的服務清單，請參閱[支援 Azure Active Directory 驗證的 Azure 服務](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-azure-ad-authentication)。
+Azure Service Fabric 叢集裝載在虛擬機器擴展集中，支援[受控服務識別](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)。
+若要取得 MSI 可用來進行驗證的服務清單，請參閱[支援 Azure Active Directory 驗證的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 
 
 若要在虛擬機器擴展集建立期間，或在現有的虛擬機器擴展集上，啟用系統指派的受控識別，請宣告以下 `"Microsoft.Compute/virtualMachinesScaleSets"` 屬性：
@@ -169,9 +169,9 @@ Azure Service Fabric 叢集裝載在虛擬機器擴展集中，支援[受控服�
     "type": "SystemAssigned"
 }
 ```
-如需詳細資訊，請參閱[什麼是適用於 Azure 資源的受控識別？](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vmss#system-assigned-managed-identity)。
+如需詳細資訊，請參閱[什麼是適用於 Azure 資源的受控識別？](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vmss.md#system-assigned-managed-identity)。
 
-如果建立[使用者指派的受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm#create-a-user-assigned-managed-identity)，請在您的範本中宣告以下資源，以將它指派給您的虛擬機器擴展集。 請將 `\<USERASSIGNEDIDENTITYNAME\>` 取代為您建立的使用者指派受控識別名稱：
+如果建立[使用者指派的受控識別](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity)，請在您的範本中宣告以下資源，以將它指派給您的虛擬機器擴展集。 請將 `\<USERASSIGNEDIDENTITYNAME\>` 取代為您建立的使用者指派受控識別名稱：
 
 ```json
 "identity": {
@@ -191,7 +191,7 @@ principalid=$(az resource show --id /subscriptions/<YOUR SUBSCRIPTON>/resourceGr
 az role assignment create --assignee $principalid --role 'Contributor' --scope "/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/<PROVIDER NAME>/<RESOURCE TYPE>/<RESOURCE NAME>"
 ```
 
-在您的 Service Fabric 應用程式代碼中，藉由建立 Azure Resource Manager 的[存取權杖](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http)，其方式與下列內容相同：
+在您的 Service Fabric 應用程式代碼中，藉由建立 Azure Resource Manager 的[存取權杖](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md#get-a-token-using-http)，其方式與下列內容相同：
 
 ```bash
 access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true | python -c "import sys, json; print json.load(sys.stdin)['access_token']")
@@ -205,10 +205,10 @@ access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-v
 cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/Microsoft.DocumentDB/databaseAccounts/<YOUR ACCOUNT>/listKeys?api-version=2016-03-31' -X POST -d "" -H "Authorization: Bearer $access_token" | python -c "import sys, json; print(json.load(sys.stdin)['primaryMasterKey'])")
 ```
 ## <a name="windows-security-baselines"></a>Windows 安全性基準
-[我們建議您執行廣為知名且經過妥善測試的業界標準設定，例如 Microsoft 安全性基準，而不是自行建立基準](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines);在您的虛擬機器擴展集上布建這些功能的選項是使用 Azure Desired State Configuration （DSC）延伸模組處理常式，在 Vm 上線時進行設定，使其執行生產環境軟體。
+[我們建議您執行廣為知名且經過妥善測試的業界標準設定，例如 Microsoft 安全性基準，而不是自行建立基準](/windows/security/threat-protection/windows-security-baselines);在您的虛擬機器擴展集上布建這些功能的選項是使用 Azure Desired State Configuration (DSC) 延伸模組處理常式，以在 Vm 上線時進行設定，使其執行生產環境軟體。
 
 ## <a name="azure-firewall"></a>Azure 防火牆
-[Azure 防火牆是受控的雲端式網路安全性服務，可保護您的 Azure 虛擬網路資源。它是完全具狀態的防火牆即服務，具有內建的高可用性和不受限制的雲端擴充性。](https://docs.microsoft.com/azure/firewall/overview)這讓您能夠將輸出 HTTP/S 流量限制為指定的完整功能變數名稱（FQDN）清單，包括萬用字元。 這項功能不需要 TLS/SSL 終止。 建議您利用適用于 Windows Update 的[Azure 防火牆 FQDN](https://docs.microsoft.com/azure/firewall/fqdn-tags)標籤，並讓 Microsoft Windows Update 端點的網路流量可以流經您的防火牆。 [使用範本部署 Azure 防火牆](https://docs.microsoft.com/azure/firewall/deploy-template)提供了適用于 Microsoft 網路/azureFirewalls 資源範本定義的範例。 Service Fabric 應用程式通用的防火牆規則，是針對您的叢集虛擬網路允許下列各項：
+[Azure 防火牆是受控的雲端式網路安全性服務，可保護您的 Azure 虛擬網路資源。它是完全具狀態的防火牆即服務，具有內建的高可用性和不受限制的雲端擴充性。](../firewall/overview.md)這讓您能夠將輸出 HTTP/S 流量限制為指定的完整功能變數名稱清單 (FQDN) 包括萬用字元）。 這項功能不需要 TLS/SSL 終止。 建議您利用適用于 Windows Update 的[Azure 防火牆 FQDN](../firewall/fqdn-tags.md)標籤，並讓 Microsoft Windows Update 端點的網路流量可以流經您的防火牆。 [使用範本部署 Azure 防火牆](../firewall/deploy-template.md)提供了適用于 Microsoft 網路/azureFirewalls 資源範本定義的範例。 Service Fabric 應用程式通用的防火牆規則，是針對您的叢集虛擬網路允許下列各項：
 
 - * download.microsoft.com
 - * servicefabric.azure.com
@@ -218,7 +218,7 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 
 ## <a name="tls-12"></a>TLS 1.2
 
-Microsoft [Azure 建議](https://azure.microsoft.com/updates/azuretls12/)所有客戶完整遷移至支援傳輸層安全性（TLS）1.2 的解決方案，並確保預設會使用 TLS 1.2。
+Microsoft [Azure 建議](https://azure.microsoft.com/updates/azuretls12/)所有客戶完整遷移至支援傳輸層安全性 (TLS) 1.2 的解決方案，並確保預設會使用 tls 1.2。
 
 包括[Service Fabric](https://techcommunity.microsoft.com/t5/azure-service-fabric/microsoft-azure-service-fabric-6-3-refresh-release-cu1-notes/ba-p/791493)在內的 Azure 服務已完成工程工作，以移除對 TLS 1.0/1.1 通訊協定的相依性，並為想要將其工作負載設定為接受並僅起始 tls 1.2 連線的客戶提供完整支援。
 
@@ -226,7 +226,7 @@ Microsoft [Azure 建議](https://azure.microsoft.com/updates/azuretls12/)所有�
 
 ## <a name="windows-defender"></a>Windows Defender 
 
-根據預設，Windows Server 2016 上已安裝 Windows Defender 防毒軟體。 如需詳細資訊，請參閱 [Windows Server 2016 上的 Windows Defender 防毒軟體](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)。 某些 SKU 上會預設安裝使用者介面，但並不需要。 若要降低因 Windows Defender 造成的任何效能影響和資源過度耗用，以及如果您的安全性原則可讓您排除開放原始碼軟體的處理程序和路徑，請宣告下列虛擬機器擴展集延伸模組 Resource Manager 範本屬性，以將 Service Fabric 叢集從掃描作業中排除：
+根據預設，Windows Server 2016 上已安裝 Windows Defender 防毒軟體。 如需詳細資訊，請參閱 [Windows Server 2016 上的 Windows Defender 防毒軟體](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)。 某些 SKU 上會預設安裝使用者介面，但並不需要。 若要降低因 Windows Defender 造成的任何效能影響和資源過度耗用，以及如果您的安全性原則可讓您排除開放原始碼軟體的處理程序和路徑，請宣告下列虛擬機器擴展集延伸模組 Resource Manager 範本屬性，以將 Service Fabric 叢集從掃描作業中排除：
 
 
 ```json

@@ -3,11 +3,12 @@ title: 使用 Azure Resource Manager 部署和升級
 description: 了解如何使用 Azure Resource Manager 範本將應用程式和服務部署到 Service Fabric 叢集。
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: a2dfe54bf2c6b4fa8814f10c10576a73727a7417
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a849bdff0d2719f02b6b5f2d7159b87ce664c13f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75610245"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256504"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>將應用程式和服務視為 Azure Resource Manager 進行管理
 
@@ -260,13 +261,12 @@ Get-AzureRmResource -ResourceId /subscriptions/{sid}/resourceGroups/{rg}/provide
 
 ## <a name="manage-an-existing-application-via-resource-manager"></a>透過 Resource Manager 管理現有應用程式
 
-如果您的叢集已啟動，而且您已經將幾個要視為 Resource Manager 資源管理的應用程式部署在叢集之上，與其移除應用程式再重新部署，不如透過使用相同 API 的 PUT 呼叫讓應用程式獲得 Resource Manager 資源的認可。 如需其他資訊，請參閱[什麼是 Service Fabric 應用程式資源模型？](https://docs.microsoft.com/azure/service-fabric/service-fabric-concept-resource-model)
+如果您的叢集已啟動，而且您已經將幾個要視為 Resource Manager 資源管理的應用程式部署在叢集之上，與其移除應用程式再重新部署，不如透過使用相同 API 的 PUT 呼叫讓應用程式獲得 Resource Manager 資源的認可。 如需其他資訊，請參閱[什麼是 Service Fabric 應用程式資源模型？](./service-fabric-concept-resource-model.md)
 
 > [!NOTE]
-> 若要讓叢集升級忽略狀況不良的應用程式，客戶可以在 “upgradeDescription/healthPolicy” 區段指定 “maxPercentUnhealthyApplications: 100”；所有設定的詳細說明位於 [Service Fabric REST API 叢集升級原則文件](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)中。
+> 若要讓叢集升級忽略狀況不良的應用程式，客戶可以在 “upgradeDescription/healthPolicy” 區段指定 “maxPercentUnhealthyApplications: 100”；所有設定的詳細說明位於 [Service Fabric REST API 叢集升級原則文件](/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)中。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 使用 [Service Fabric CLI](service-fabric-cli.md) 或 [PowerShell](service-fabric-deploy-remove-applications.md) 將其他應用程式部署到叢集。 
 * [升級 Service Fabric 叢集](service-fabric-cluster-upgrade.md)
-

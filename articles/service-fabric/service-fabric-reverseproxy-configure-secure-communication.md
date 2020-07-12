@@ -3,11 +3,12 @@ title: Azure Service Fabric 反向 proxy 安全通訊
 description: 設定反向 proxy，以在 Azure Service Fabric 應用程式中啟用安全的端對端通訊。
 ms.topic: conceptual
 ms.date: 08/10/2017
-ms.openlocfilehash: e88a81108f38efefe413024fb2b41bbd82f297b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b01ce559b3c790164992d6618149afa9df069466
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82858521"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256130"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>安全服務與反向 Proxy 的連線
 
@@ -19,7 +20,7 @@ ms.locfileid: "82858521"
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>建立反向 Proxy 與服務之間的安全連線 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>服務的反向 Proxy 驗證：
-反向 Proxy 會使用其憑證對服務進行自我識別。 針對 Azure 叢集，該憑證會以 Resource Manager 範本之 [**Microsoft.ServiceFabric/clusters** \(英文\) ](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [資源類型區段](../azure-resource-manager/templates/template-syntax.md)中的 ***reverseProxyCertificate*** 屬性來指定。 針對獨立叢集，該憑證會以 ClusterConfig.json 之 **Security** 區段中的 ***ReverseProxyCertificate*** 或 ***ReverseProxyCertificateCommonNames*** 屬性來指定。 若要深入了解，請參閱[在獨立叢集上啟用反向 Proxy](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters)。 
+反向 Proxy 會使用其憑證對服務進行自我識別。 針對 Azure 叢集，該憑證會以 Resource Manager 範本之 [**Microsoft.ServiceFabric/clusters** \(英文\) ](/azure/templates/microsoft.servicefabric/clusters) [資源類型區段](../azure-resource-manager/templates/template-syntax.md)中的 ***reverseProxyCertificate*** 屬性來指定。 針對獨立叢集，該憑證會以 ClusterConfig.json 之 **Security** 區段中的 ***ReverseProxyCertificate*** 或 ***ReverseProxyCertificateCommonNames*** 屬性來指定。 若要深入了解，請參閱[在獨立叢集上啟用反向 Proxy](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters)。 
 
 服務可以實作邏輯來驗證反向 Proxy 出示的憑證。 服務可以將接受的用戶端憑證詳細資料指定為設定套件中的組態設定。 系統會在執行階段時加以讀取，並用來驗證反向 Proxy 出示的憑證。 若要新增組態設定，請參閱[管理應用程式參數](service-fabric-manage-multiple-environment-app-configuration.md)。 
 
@@ -188,5 +189,5 @@ TLS 終止會發生在反向 proxy，而且所有用戶端憑證資料都會遺�
 * 請參閱[設定反向 proxy 以連接到安全服務](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services)
 * 請參閱 [GitHub 上的範例專案](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)中服務之間的 HTTP 通訊範例。
 * [使用 Reliable Services 遠端服務進行遠端程序呼叫](service-fabric-reliable-services-communication-remoting.md)
-* [在 Reliable Services 中使用 OWIN 的 Web API](service-fabric-reliable-services-communication-webapi.md)
+* [在 Reliable Services 中使用 OWIN 的 Web API](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [管理叢集憑證](service-fabric-cluster-security-update-certs-azure.md)

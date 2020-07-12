@@ -5,16 +5,17 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: vturecek
-ms.openlocfilehash: a6e4fb48653572139463738c82de632ff7d55074
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2ee5df9f0b09e30212f61e804e24086874f07f5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75466245"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256266"
 ---
 # <a name="getting-started-with-reliable-actors"></a>開始使用 Reliable Actors
 > [!div class="op_single_selector"]
 > * [Windows 上的 c #](service-fabric-reliable-actors-get-started.md)
-> * [在 Linux 上使用 Java](service-fabric-reliable-actors-get-started-java.md)
+> * [在 Linux 上使用 Java](./service-fabric-create-your-first-linux-application-with-java.md)
 
 本文將逐步說明如何在 Visual Studio 中建立一個簡單的 Reliable Actor 應用程式並進行偵錯。 如需 Reliable Actors 的相關詳細資訊，請參閱 [Service Fabric Reliable Actors 簡介](service-fabric-reliable-actors-introduction.md)。
 
@@ -106,7 +107,7 @@ internal class HelloWorld : Actor, IHelloWorld
 
     NuGet 套件及其所有相依性都安裝在 ActorClient 專案中。
 
-5. 用戶端專案也需要介面專案的參考。  在 ActorClient 專案中，以滑鼠右鍵按一下 [相依性]，然後按一下 [**加入參考 ...** **]** 。 選取 [**專案] > [方案**] （如果尚未選取），然後勾選 [ **HelloWorld**] 旁的核取方塊。  按一下 [確定]。
+5. 用戶端專案也需要介面專案的參考。  在 ActorClient 專案中，以滑鼠右鍵按一下 [相依性]，然後按一下 [**加入參考 ...** **]** 。 選取 [**專案] > [方案** (] （如果尚未選取) ），然後勾選 [ **HelloWorld**] 旁的核取方塊。  按一下 [確定]。
     
     ![[加入參考] 對話方塊][7]
 

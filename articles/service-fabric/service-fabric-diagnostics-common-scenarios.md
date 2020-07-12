@@ -3,11 +3,12 @@ title: Azure Service Fabric 診斷常見案例
 description: 了解如何針對 Azure Service Fabric 應用程式內常見的監視和診斷案例進行疑難排解。
 ms.topic: article
 ms.date: 02/25/2019
-ms.openlocfilehash: bc17f00dc46c6e995d18621353c8f10cacf7759c
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: f92bc02082d8bcd9d917f05c93d3da413f772cd0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697678"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257727"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>針對 Service Fabric 的常見案例進行診斷
 
@@ -132,9 +133,9 @@ ms.locfileid: "83697678"
 ## <a name="next-steps"></a>後續步驟
 
 * [查詢常見的程式碼套件啟用錯誤](./service-fabric-diagnostics-code-package-errors.md)
-* [在 AI 中設定警示](/azure/azure-monitor/platform/alerts-log)以收到效能或使用方式的變更通知
+* [在 AI 中設定警示](../azure-monitor/platform/alerts-log.md)以收到效能或使用方式的變更通知
 * [Application Insights 的智慧偵測](../azure-monitor/app/proactive-diagnostics.md)會對傳送至 AI 的遙測資料執行主動式分析，對可能的效能問題提出警告。
-* 深入了解 Azure 監視器記錄[警示](../log-analytics/log-analytics-alerts.md)，以協助偵測和診斷。
+* 深入了解 Azure 監視器記錄[警示](../azure-monitor/platform/alerts-overview.md)，以協助偵測和診斷。
 * 針對內部部署叢集，Azure 監視器記錄提供閘道 (HTTP 正向 Proxy)，可用於將資料傳送至 Azure 監視器記錄。 如需詳細資訊，請參閱[使用 Log Analytics 閘道將未連上網際網路的電腦連線到 Azure 監視器記錄](../azure-monitor/platform/gateway.md)
-* 熟悉 Azure 監視器記錄中提供的[記錄搜尋和查詢](../log-analytics/log-analytics-log-searches.md)功能
-* 若要更深入了解 Azure 監視器記錄及其提供的功能，請參閱[什麼是 Azure 監視器記錄？](../operations-management-suite/operations-management-suite-overview.md)
+* 熟悉 Azure 監視器記錄中提供的[記錄搜尋和查詢](../azure-monitor/log-query/log-query-overview.md)功能
+* 若要更深入了解 Azure 監視器記錄及其提供的功能，請參閱[什麼是 Azure 監視器記錄？](../azure-monitor/overview.md)

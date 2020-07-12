@@ -5,11 +5,12 @@ author: suchiagicha
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
-ms.openlocfilehash: ca5eafa4612503a13f80b7f238e4827979c0358b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8633a5018e6faeaca842a3ecffb4c4921358e191
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75614157"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257352"
 ---
 # <a name="secure-wcf-based-communications-for-a-service"></a>保護服務的 WCF 通訊
 安全性是通訊最為重視的其中一個部分。 Reliable Services 應用程式架構會提供可用來改善安全性的一些預先建置通訊堆疊和工具。 本文探討如何改善使用服務遠端作業時的安全性。
@@ -119,4 +120,4 @@ ms.locfileid: "75614157"
         client => client.Channel.Add(2, 3)).Result;
     ```
 
-接著請參閱[在 Reliable Services 中搭配 OWIN 使用 Web API](service-fabric-reliable-services-communication-webapi.md)。
+接著請參閱[在 Reliable Services 中搭配 OWIN 使用 Web API](./service-fabric-reliable-services-communication-aspnetcore.md)。

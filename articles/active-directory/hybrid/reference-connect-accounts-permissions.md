@@ -17,11 +17,12 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23508535c1853cd056bb162c254cda5f7f86d7fe
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f84724285dee6dfff4913b067daa651837787d4e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681742"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255773"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect：帳戶和權限
 
@@ -201,7 +202,6 @@ AD DS 連接器帳戶是為了在 Windows Server AD 中讀取和寫入而建立�
 
 | | LocalDB</br>Express | LocalDB/LocalSQL</br>Custom | 遠端 SQL</br>Custom |
 | --- | --- | --- | --- |
-| **獨立/工作群組電腦** | 不支援 | **VSA**</br>本機帳戶 (2008)</br>本機帳戶 |  不支援 |
 | **已加入網域的電腦** | **VSA**</br>本機帳戶 (2008) | **VSA**</br>本機帳戶 (2008)</br>本機帳戶</br>網域帳戶</br>sMSA、gMSA | **gMSA**</br>網域帳戶 |
 | **網域控制站** | **網域帳戶** | *gMSA*</br>**網域帳戶**</br>sMSA| *gMSA*</br>**網域帳戶**|
 

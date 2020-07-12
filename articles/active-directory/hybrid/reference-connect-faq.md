@@ -15,11 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ad8990512cb09f6048b169c1d0c0a259a62b61b
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4956014e3a950a729ef3993e10ca455ab8aae6f4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827143"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256674"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常見問題集
 
@@ -256,6 +257,16 @@ Office 小組正在處理 Office 入口網站更新，以反映目前的產品�
 
 **問：我不確定升級至較新的 Azure AD Connect 版本時有何風險。您可以打電話給我來協助我升級嗎？**  
 如果您需要升級至較新 Azure AD Connect 版本的協助，請在[建立服務要求以連絡 Office 365 支援人員](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/)上開啟支援票證。
+
+## <a name="operational-best-practice"></a>操作最佳做法    
+以下是當您在 Windows Server Active Directory 和 Azure Active Directory 之間進行同步處理時，應該執行的一些最佳作法。
+
+**對所有已同步處理的帳戶套用多重要素驗證**Azure 多因素驗證有助於保護對資料和應用程式的存取，同時為使用者維持簡單性。 它藉由要求第二種形式的驗證來提供額外的安全性，並透過一系列易於使用的驗證方法來提供增強式驗證。 因管理員所做的設定決定不同，使用者可能必須也可能無須通過 MFA。 如需 MFA 的詳細資訊，請參閱：https://www.microsoft.com/security/business/identity/mfa?rtc=1
+
+**遵循 Azure AD Connect 伺服器安全性指導方針**Azure AD Connect 伺服器包含重要的身分識別資料，而且應該視為第0層元件，如[Active Directory 管理層模型](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)中所述。 另請參閱我們[的指導方針，以保護您的 AADConnect 伺服器](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#azure-ad-connect-server)。
+
+**啟用 PHS 以進行洩漏的認證偵測**密碼雜湊同步處理也可讓您的混合式帳戶有[洩漏的認證偵測](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks)。 Microsoft 與深色的 web 研究人員和執法機關合作，尋找公開可用的使用者名稱/密碼配對。 如果其中任何一組符合您的使用者，則會將相關聯的帳戶移至高風險。 
+
 
 ## <a name="troubleshooting"></a>疑難排解
 **問：如何取得 Azure AD Connect 的說明？**

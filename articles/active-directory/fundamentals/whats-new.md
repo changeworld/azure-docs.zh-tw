@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30c6be98eeca4433798ad8ed2bacb9338331b112
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: cbf811fdb8ff051ec1bb782eb3da12ea45b29bdf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170440"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256811"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能？
 
@@ -259,7 +259,7 @@ Azure AD/Microsoft 365 登入體驗上的公司商標功能已更新，可讓客
 **產品功能：** 身分識別安全性 & 保護
  
 
-我們正在對 MFA 的 MFA 電子郵件通知進行下列變更：
+我們正在對雲端 MFA 的電子郵件通知進行下列變更：
 
 電子郵件通知將會從下列位址傳送： azure-noreply@microsoft.com 和 msonlineservicesteam@microsoftonline.com 。 我們正在更新詐騙警示電子郵件的內容，以進一步指出解除封鎖使用的必要步驟。
 

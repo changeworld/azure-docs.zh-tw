@@ -3,12 +3,12 @@ title: 使用可靠的集合
 description: 瞭解在 Azure Service Fabric 應用程式中使用可靠集合的最佳做法。
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: f0f1d332b3636e28ffc50ee8b8edcd253474a307
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7df48bc0dfbef6fc85335801e64484914a218eb7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374690"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255790"
 ---
 # <a name="working-with-reliable-collections"></a>使用可靠的集合
 Service Fabric 透過可靠的集合向 .NET 開發人員提供具狀態的程式設計模型。 具體來說，Service Fabric 提供了可靠的字典和可靠的佇列類別。 當您使用這些類別時，您的狀態是分割的 (延展性)、複寫的 (可用性)，且在分割區內交易 (ACID 語意)。 讓我們看看可靠字典物件的一般用法，並查看其實際執行的作業。
@@ -150,7 +150,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
 ```
 
 ## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>定義不可變的資料類型，以防止程式設計人員犯錯。
-在理想的情況下，我們希望編譯器在您意外產生程式碼時報告錯誤，以變動此您應該視為不可變的物件狀態。 但是 C# 編譯器做不到這一點。 所以，為避免潛在的程式設計人員錯誤，我們強烈建議您將可靠集合所使用的類型定義為不可變的類型。 具體來說，這表示您要堅持核心值類型 (例如數字 [Int32、UInt64 等等]、DateTime、Guid、TimeSpan 等等)。 您也可以使用 String。 最好避免使用集合屬性，因為將其序列化和還原序列化經常會降低效能。 不過，如果您想要使用集合屬性，我們強烈建議使用。NET 的不可變集合程式庫（[system.object](https://www.nuget.org/packages/System.Collections.Immutable/)）。 此程式庫可從下載 https://nuget.org 。我們也建議您盡可能密封類別，並將欄位設為唯讀。
+在理想的情況下，我們希望編譯器在您意外產生程式碼時報告錯誤，以變動此您應該視為不可變的物件狀態。 但是 C# 編譯器做不到這一點。 所以，為避免潛在的程式設計人員錯誤，我們強烈建議您將可靠集合所使用的類型定義為不可變的類型。 具體來說，這表示您要堅持核心值類型 (例如數字 [Int32、UInt64 等等]、DateTime、Guid、TimeSpan 等等)。 您也可以使用 String。 最好避免使用集合屬性，因為將其序列化和還原序列化經常會降低效能。 不過，如果您想要使用集合屬性，我們強烈建議使用。NET 的不可變集合程式庫 ([system.object](https://www.nuget.org/packages/System.Collections.Immutable/)) 。 此程式庫可從下載 https://nuget.org 。我們也建議您盡可能密封類別，並將欄位設為唯讀。
 
 以下的 UserInfo 類型會示範如何利用上述建議定義不可變的類型。
 
@@ -208,7 +208,7 @@ public struct ItemId
 ```
 
 ## <a name="schema-versioning-upgrades"></a>結構描述版本控制 (升級)
-就內部而言，可靠的集合會使用將您的物件序列化。NET 的 DataContractSerializer。 序列化的物件會保存到主要複本的本機磁片，而且也會傳送至次要複本。 隨著您的服務成熟，您可能會想要變更服務所需的資料類型（架構）。 請謹慎處理資料的版本設定。 首先也是最重要的，您必須永遠有能力還原序列化舊的資料。 具體來說，這表示您的還原序列化程式碼必須具有無限回溯相容性︰服務程式碼的版本 333 必須能夠操作 5 年前放在可靠的集合中，第 1 版的服務程式碼資料。
+就內部而言，可靠的集合會使用將您的物件序列化。NET 的 DataContractSerializer。 序列化的物件會保存到主要複本的本機磁片，而且也會傳送至次要複本。 隨著您的服務成熟，您可能會想要變更您的服務所需) 的資料類型 (架構。 請謹慎處理資料的版本設定。 首先也是最重要的，您必須永遠有能力還原序列化舊的資料。 具體來說，這表示您的還原序列化程式碼必須具有無限回溯相容性︰服務程式碼的版本 333 必須能夠操作 5 年前放在可靠的集合中，第 1 版的服務程式碼資料。
 
 而且，服務程式碼一次只能升級一個網域。 所以，在升級期間，您會同時執行兩個不同版本的服務程式碼。 您必須避免新版本的服務程式碼使用新的結構描述，因為舊版的服務程式碼可能無法處理新的結構描述。 您應該盡可能將服務的每個版本都設計為正向相容一個版本。 具體來說，這表示服務程式碼的 V1 應該能夠略過它未明確處理的任何結構描述元素。 不過，它必須能夠儲存未明確得知的任何資料，並在更新字典索引鍵或值時將其寫回。
 
@@ -216,13 +216,13 @@ public struct ItemId
 > 雖然您可以修改索引鍵的架構，但您必須確保金鑰的雜湊碼和 equals 演算法都是穩定的。 如果您變更這些演算法其中一個的運作方式，您就再也無法在可靠的字典內查詢索引鍵。
 > .NET 字串可用來做為索引鍵，但使用字串本身做為索引鍵--請勿使用 GetHashCode 的結果做為索引鍵。
 
-或者，您也可以執行通稱為兩階段升級的功能。 透過兩階段升級，您可以將服務從 V1 升級至 V2： V2 包含知道如何處理新架構變更的程式碼，但這段程式碼不會執行。 當 V2 程式碼讀取 V1 資料時，它會在其上操作並寫入 V1 資料。 然後，在跨所有升級網域的升級都完成之後，您就可以通知執行中的 V2 執行個體，升級已完成。 （表示這種情況的其中一種方式是要推出設定升級; 這就是讓這項功能成為兩階段升級）。現在，V2 實例可以讀取 V1 資料、將其轉換成 V2 資料、對其進行操作，並將其寫出為 V2 資料。 當其他執行個體讀取 V2 資料時，不需要轉換它，只要操作並寫出 V2 資料即可。
+或者，您也可以執行通稱為兩階段升級的功能。 透過兩階段升級，您可以將服務從 V1 升級至 V2： V2 包含知道如何處理新架構變更的程式碼，但這段程式碼不會執行。 當 V2 程式碼讀取 V1 資料時，它會在其上操作並寫入 V1 資料。 然後，在跨所有升級網域的升級都完成之後，您就可以通知執行中的 V2 執行個體，升級已完成。  (一種表示這種情況的方式，就是推出設定升級;這會使此作業成為兩階段升級。現在 ) ，V2 實例可以讀取 V1 資料，將它轉換成 V2 資料，對其進行操作，並將其寫出為 V2 資料。 當其他執行個體讀取 V2 資料時，不需要轉換它，只要操作並寫出 V2 資料即可。
 
 ## <a name="next-steps"></a>後續步驟
-若要了解如何建立正向相容的資料合約，請參閱[正向相容的資料合約](https://msdn.microsoft.com/library/ms731083.aspx) \(機器翻譯\)。
+若要了解如何建立正向相容的資料合約，請參閱[正向相容的資料合約](/dotnet/framework/wcf/feature-details/forward-compatible-data-contracts) \(機器翻譯\)。
 
-若要了解資料合約版本設定的最佳做法，請參閱[資料合約版本設定](https://msdn.microsoft.com/library/ms731138.aspx) \(機器翻譯\)。
+若要了解資料合約版本設定的最佳做法，請參閱[資料合約版本設定](/dotnet/framework/wcf/feature-details/data-contract-versioning) \(機器翻譯\)。
 
-若要了解如何實作版本容錯的資料合約，請參閱[版本容錯序列化回呼](https://msdn.microsoft.com/library/ms733734.aspx) \(機器翻譯\)。
+若要了解如何實作版本容錯的資料合約，請參閱[版本容錯序列化回呼](/dotnet/framework/wcf/feature-details/version-tolerant-serialization-callbacks) \(機器翻譯\)。
 
-若要了解如何提供可跨多個版本相互操作的資料結構，請參閱 [IExtensibleDataObject](https://msdn.microsoft.com/library/system.runtime.serialization.iextensibledataobject.aspx) \(機器翻譯\)。
+若要了解如何提供可跨多個版本相互操作的資料結構，請參閱 [IExtensibleDataObject](/dotnet/api/system.runtime.serialization.iextensibledataobject?view=netcore-3.1) \(機器翻譯\)。

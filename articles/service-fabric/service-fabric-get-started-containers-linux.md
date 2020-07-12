@@ -4,18 +4,19 @@ description: 在 Azure Service Fabric 上建立第一個 Linux 容器應用程�
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 07e3682ec1787ceb350ac72c8b80d86eed80b339
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 783f6a06d57a447998710e2c8ff349b23ef751c5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560654"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256404"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>在 Linux 建立第一個 Service Fabric 容器應用程式
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-在 Service Fabric 叢集上的 Linux 容器中執行現有的應用程式，無需變更您的應用程式。 本文會逐步引導您建立包含 Python [Flask](http://flask.pocoo.org/) Web 應用程式的 Docker 映像，並將它部署到 Service Fabric 叢集。 您也將透過 [Azure Container Registry](/azure/container-registry/) 共用容器化應用程式。 本文假設您對 Docker 有基本認識。 您可藉由閱讀 [Docker 概觀](https://docs.docker.com/engine/understanding-docker/)來了解 Docker。
+在 Service Fabric 叢集上的 Linux 容器中執行現有的應用程式，無需變更您的應用程式。 本文會逐步引導您建立包含 Python [Flask](http://flask.pocoo.org/) Web 應用程式的 Docker 映像，並將它部署到 Service Fabric 叢集。 您也將透過 [Azure Container Registry](../container-registry/index.yml) 共用容器化應用程式。 本文假設您對 Docker 有基本認識。 您可藉由閱讀 [Docker 概觀](https://docs.docker.com/engine/understanding-docker/)來了解 Docker。
 
 > [!NOTE]
 > 本文適用於 Linux 開發環境。  Service Fabric 叢集執行階段與 Docker 執行階段必須在相同的作業系統上執行。  您無法在 Windows 叢集上執行 Linux 容器。
@@ -256,7 +257,7 @@ sfctl cluster select --endpoint http://localhost:19080
 ./install.sh
 ```
 
-開啟瀏覽器並流覽至 Service Fabric Explorer，網址為 HTTP： \/ /localhost： 19080/Explorer （如果在 Mac OS X 上使用 Vagrant，請以 VM 的私人 IP 取代 localhost）。 展開 [應用程式] 節點，請注意，您的應用程式類型現在有一個項目，而另一個則是該類型的第一個執行個體。
+開啟瀏覽器並流覽至 Service Fabric Explorer，網址為 HTTP： \/ /localhost： 19080/Explorer (以 VM 的私人 IP 取代 localhost （如果在 Mac OS X) 上使用 Vagrant）。 展開 [應用程式] 節點，請注意，您的應用程式類型現在有一個項目，而另一個則是該類型的第一個執行個體。
 
 連線到執行中的容器。 開啟網頁瀏覽器，指向埠4000上傳回的 IP 位址，例如 "HTTP： \/ /localhost： 4000"。 您應該會看到 "Hello World!" 標題 顯示在瀏覽器中。
 

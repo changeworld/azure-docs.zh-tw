@@ -7,11 +7,12 @@ author: seanmck
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 9dc5a38a05ef73863f85e4dbe92d52eb94b2715f
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 2b0078f1aff3ef81ee270f67de0fffddec3abab9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773794"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255246"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>檢查叢集中的 Kubernetes 最佳做法
 
@@ -28,7 +29,7 @@ kube-advisor 工具可以報告適用於 Windows 應用程式和 Linux 應用程
 
 ## <a name="running-kube-advisor"></a>執行 kube-advisor
 
-若要在設定為[角色型存取控制 (RBAC)](azure-ad-integration.md) 的叢集上執行此工具，請使用下列命令。 第一個命令會建立 Kubernetes 服務帳戶。 第二個命令會使用該服務帳戶在 Pod 中執行此工具，並設定為 Pod 結束之後便會刪除。 
+若要在設定為[角色型存取控制 (RBAC)](./azure-ad-integration-cli.md) 的叢集上執行此工具，請使用下列命令。 第一個命令會建立 Kubernetes 服務帳戶。 第二個命令會使用該服務帳戶在 Pod 中執行此工具，並設定為 Pod 結束之後便會刪除。 
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml

@@ -8,11 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b13944e30c339357997fbc5f0919e5eb8485a0a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c49345f7036dfee7d1f37c15a4647202b3e5670
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84308773"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257832"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>管理 IoT Edge 裝置上的憑證
 
@@ -33,9 +34,9 @@ ms.locfileid: "84308773"
 ### <a name="prerequisites"></a>必要條件
 
 * 在[Windows](how-to-install-iot-edge-windows.md)或[Linux](how-to-install-iot-edge-linux.md)上執行的 IoT Edge 裝置。
-* 擁有根憑證授權單位（CA）憑證，可以自我簽署或從受信任的商業憑證授權單位單位（例如巴爾的摩、Verisign、DigiCert 或透過 globalsign）購買。
+* 具有根憑證授權單位 (CA) 憑證，可以自我簽署或從受信任的商業憑證授權單位單位（例如巴爾的摩、Verisign、DigiCert 或透過 globalsign）購買。
 
-如果您還沒有根憑證授權單位，但想要嘗試 IoT Edge 需要生產憑證的功能（例如閘道案例），您可以[建立示範憑證來測試 IoT Edge 的裝置功能](how-to-create-test-certificates.md)。
+如果您還沒有根憑證授權單位，但想要嘗試 IoT Edge 需要生產憑證的功能 (例如閘道案例) 您可以[建立示範憑證來測試 IoT Edge 的裝置功能](how-to-create-test-certificates.md)。
 
 ### <a name="create-production-certificates"></a>建立生產環境憑證
 
@@ -46,6 +47,9 @@ ms.locfileid: "84308773"
 * 裝置 CA 私密金鑰
 
 在本文中，我們指的是*根 CA*不是組織最上層的憑證授權單位單位。 這是 IoT Edge 案例的最上層憑證授權單位單位，其中 IoT Edge 中樞模組、使用者模組和任何下游裝置都使用它來建立彼此之間的信任。
+
+> [!NOTE]
+> 目前，libiothsm 的限制可防止使用2050年1月1日之後到期的憑證。
 
 若要查看這些憑證的範例，請參閱在[管理測試 CA 憑證以取得範例和教學](https://github.com/Azure/iotedge/tree/master/tools/CACertificates)課程中建立示範憑證的腳本。
 
@@ -68,7 +72,7 @@ ms.locfileid: "84308773"
    * Windows：`C:\ProgramData\iotedge\config.yaml`
    * Linux：`/etc/iotedge/config.yaml`
 
-1. 將 yaml 中的**憑證**屬性設為憑證的檔案 URI 路徑和 IoT Edge 裝置上的金鑰檔案。 移除 `#` 憑證屬性前面的字元，以取消批註四行。 請確定 [**憑證：** ] 行沒有前面的空白字元，且已將該嵌套專案縮排為兩個空格。 例如：
+1. 將 yaml 中的**憑證**屬性設為憑證的檔案 URI 路徑和 IoT Edge 裝置上的金鑰檔案。 移除 `#` 憑證屬性前面的字元，以取消批註四行。 請確定 [**憑證：** ] 行沒有前面的空白字元，且已將該嵌套專案縮排為兩個空格。 例如︰
 
    * Windows：
 
@@ -108,7 +112,7 @@ IoT Edge 在數種情況下會在裝置上自動產生憑證，包括：
 針對這兩個自動產生的憑證，您可以選擇在 yaml 中設定**auto_generated_ca_lifetime_days**旗標，以設定憑證存留期的天數。
 
 >[!NOTE]
->IoT Edge 的安全性管理員所建立的第三個自動產生的憑證， **IoT Edge 中樞伺服器憑證**。 此憑證一律有90天，但會在到期前自動更新。 **Auto_generated_ca_lifetime_days**值不會影響此憑證。
+>IoT Edge 的安全性管理員所建立的第三個自動產生的憑證， **IoT Edge 中樞伺服器憑證**。 此憑證一律會有90天的存留期，但會在到期前自動更新。 **Auto_generated_ca_lifetime_days**值不會影響此憑證。
 
 若要將憑證到期設定為預設90天以外的值，請在 yaml 檔案的 [**憑證**] 區段中新增以天為單位的值。
 
@@ -119,6 +123,9 @@ certificates:
   trusted_ca_certs: "<ADD URI TO TRUSTED CA CERTIFICATES HERE>"
   auto_generated_ca_lifetime_days: <value>
 ```
+
+> [!NOTE]
+> 目前，libiothsm 的限制可防止使用2050年1月1日之後到期的憑證。
 
 如果您提供自己的裝置 CA 憑證，則此值仍然適用于工作負載 CA 憑證，前提是您所設定的存留期值比裝置 CA 憑證的存留期短。
 

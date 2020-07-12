@@ -5,20 +5,21 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 75c62b54ff3aa7f3af344aa3e1ca81d431ae0ab2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af5399be44d2946775622598c5c1db3d8355f7cd
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905620"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257065"
 ---
 # <a name="sfctl-store"></a>sfctl store
 在叢集映像存放區上執行基本檔案層級作業。
 
 ## <a name="commands"></a>命令
 
-|Command|描述|
+|命令|描述|
 | --- | --- |
-| delete | 刪除現有映像存放區內容。 |
+| 刪除 | 刪除現有映像存放區內容。 |
 | root-info | 取得映像存放區根的內容資訊。 |
 | stat | 取得映像存放區內容資訊。 |
 
@@ -90,4 +91,4 @@ ms.locfileid: "76905620"
 
 ## <a name="next-steps"></a>後續步驟
 - [設定](service-fabric-cli.md) Service Fabric CLI。
-- 了解如何使用[範例指令碼](/azure/service-fabric/scripts/sfctl-upgrade-application)來使用 Service Fabric CLI。
+- 了解如何使用[範例指令碼](./scripts/sfctl-upgrade-application.md)來使用 Service Fabric CLI。

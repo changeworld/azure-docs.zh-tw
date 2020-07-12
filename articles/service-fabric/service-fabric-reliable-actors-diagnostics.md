@@ -5,20 +5,20 @@ author: abhishekram
 ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
-ms.openlocfilehash: e6e9fb66368461e0d3ebdd2709f4ced0e796bea5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a38a11d9cf062cd0a45890d43afe9b2530b2b7bb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846601"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258469"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Reliable Actors 的診斷和效能監視
-Reliable Actors 執行階段會發出 [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) 事件與[效能計數器](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)。 這些項目提供深入了解執行階段的運作方式，並有助於疑難排解及效能監視。
+Reliable Actors 執行階段會發出 [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) 事件與[效能計數器](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1)。 這些項目提供深入了解執行階段的運作方式，並有助於疑難排解及效能監視。
 
 ## <a name="eventsource-events"></a>EventSource 事件
 Reliable Actors 執行階段的 EventSource 提供者名稱為 "Microsoft-ServiceFabric-Actors"。 當 [Visual Studio 中正在偵錯](service-fabric-debugging-your-application.md)動作項目應用程式時，事件來源中的事件會出現在 [診斷事件](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) 視窗中。
 
-可協助您收集和/或檢視 EventSource 事件的工具和技術範例包括 [PerfView](https://www.microsoft.com/download/details.aspx?id=28567)、[Azure 診斷](../cloud-services/cloud-services-dotnet-diagnostics.md)、[語意記錄](https://msdn.microsoft.com/library/dn774980.aspx)和 [Microsoft TraceEvent 程式庫](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)。
+可協助您收集和/或檢視 EventSource 事件的工具和技術範例包括 [PerfView](https://www.microsoft.com/download/details.aspx?id=28567)、[Azure 診斷](../cloud-services/cloud-services-dotnet-diagnostics.md)、[語意記錄](/previous-versions/msp-n-p/dn774980(v=pandp.10))和 [Microsoft TraceEvent 程式庫](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)。
 
 ### <a name="keywords"></a>關鍵字
 所有屬於 Reliable Actor EventSource 的事件皆有一或多個相關聯的關鍵字。 這會啟動篩選所選的事件。 以下為已定義的關鍵字位元。
@@ -40,7 +40,7 @@ Reliable Actor 執行階段定義下列效能計數器類別。
 
 上述的類別每一個都有一或多個計數器。
 
-Windows 作業系統中預設可用的 [Windows 效能監視器](https://technet.microsoft.com/library/cc749249.aspx) 應用程式可用於收集與檢視效能計數器資料。 [Azure 診斷](../cloud-services/cloud-services-dotnet-diagnostics.md) 是另一個收集效能計數器資料並上傳至 Azure 資料表的選項。
+Windows 作業系統中預設可用的 [Windows 效能監視器](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc749249(v=ws.11)) 應用程式可用於收集與檢視效能計數器資料。 [Azure 診斷](../cloud-services/cloud-services-dotnet-diagnostics.md) 是另一個收集效能計數器資料並上傳至 Azure 資料表的選項。
 
 ### <a name="performance-counter-instance-names"></a>效能計數器執行個體名稱
 含大量動作項目服務或動作項目服務資料分割的叢集將有大量的動作項目效能計數器執行個體。 效能計數器執行個體名稱可幫助識別效能計數器執行個體相關聯的特定 [資料分割](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors) 與動作項目方法 (如果適用)。
@@ -50,7 +50,7 @@ Windows 作業系統中預設可用的 [Windows 效能監視器](https://technet
 
 `ServiceFabricPartitionID_ActorsRuntimeInternalID`
 
-*ServiceFabricPartitionID*是與效能計數器實例相關聯之 Service Fabric 分割區識別碼的字串表示。 資料分割識別碼是 GUID，其字串標記法是透過 [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) 具有格式規範 "D" 的方法所產生。
+*ServiceFabricPartitionID*是與效能計數器實例相關聯之 Service Fabric 分割區識別碼的字串表示。 資料分割識別碼是 GUID，其字串標記法是透過 [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) 具有格式規範 "D" 的方法所產生。
 
 *ActorRuntimeInternalID* 是 Fabric 動作項目執行階段所產生 64 位元整數的字串表示法，供內部使用。 這包含在效能計數器執行個體名稱中，以確保其唯一性，並避免與其他效能計數器執行個體名稱衝突。 使用者不應該嘗試解譯效能計數器執行個體名稱的這個部分。
 
@@ -69,7 +69,7 @@ Windows 作業系統中預設可用的 [Windows 效能監視器](https://technet
 
 *ActorsRuntimeMethodId* 是 Fabric 動作項目執行階段所產生 32 位元整數的字串表示法，供內部使用。 這包含在效能計數器執行個體名稱中，以確保其唯一性，並避免與其他效能計數器執行個體名稱衝突。 使用者不應該嘗試解譯效能計數器執行個體名稱的這個部分。
 
-*ServiceFabricPartitionID*是與效能計數器實例相關聯之 Service Fabric 分割區識別碼的字串表示。 資料分割識別碼是 GUID，其字串標記法是透過 [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) 具有格式規範 "D" 的方法所產生。
+*ServiceFabricPartitionID*是與效能計數器實例相關聯之 Service Fabric 分割區識別碼的字串表示。 資料分割識別碼是 GUID，其字串標記法是透過 [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) 具有格式規範 "D" 的方法所產生。
 
 *ActorRuntimeInternalID* 是 Fabric 動作項目執行階段所產生 64 位元整數的字串表示法，供內部使用。 這包含在效能計數器執行個體名稱中，以確保其唯一性，並避免與其他效能計數器執行個體名稱衝突。 使用者不應該嘗試解譯效能計數器執行個體名稱的這個部分。
 
@@ -83,7 +83,7 @@ Windows 作業系統中預設可用的 [Windows 效能監視器](https://technet
 ### <a name="actor-method-events-and-performance-counters"></a>動作項目方法事件與效能計數器
 Reliable Actors 執行階段會發出下列與 [動作項目方法](service-fabric-reliable-actors-introduction.md)相關的事件。
 
-| 事件名稱 | 事件識別碼 | 層級 | 關鍵字 | Description |
+| 事件名稱 | 事件識別碼 | 層級 | 關鍵字 | 描述 |
 | --- | --- | --- | --- | --- |
 | ActorMethodStart |7 |「詳細資訊」 |0x2 |動作項目執行階段即將叫用動作項目方法。 |
 | ActorMethodStop |8 |「詳細資訊」 |0x2 |動作項目方法已經完成執行。 亦即，執行階段對動作項目方法的非同步呼叫已經傳回，且由動作項目方法傳回的工作已經完成。 |
@@ -91,7 +91,7 @@ Reliable Actors 執行階段會發出下列與 [動作項目方法](service-fabr
 
 Reliable Actor 執行階段會發佈與執行動作項目方法相關的下列效能計數器。
 
-| 類別目錄名稱 | 計數器名稱 | Description |
+| 類別目錄名稱 | 計數器名稱 | 描述 |
 | --- | --- | --- |
 | Service Fabric 動作項目方法 |叫用數目/秒 |每秒叫用動作項目服務方法的次數 |
 | Service Fabric 動作項目方法 |每個叫用的平均毫秒數 |執行動作項目服務方法花費的時間 (單位為毫秒) |
@@ -106,7 +106,7 @@ Reliable Actor 執行階段會發出下列與 [並行](service-fabric-reliable-a
 
 Reliable Actor 執行階段會發佈下列與並行相關的效能計數器。
 
-| 類別目錄名稱 | 計數器名稱 | Description |
+| 類別目錄名稱 | 計數器名稱 | 描述 |
 | --- | --- | --- |
 | Service Fabric 動作項目 |# of actor calls waiting for actor lock |擱置中的動作項目呼叫數目，這些呼叫正等待取得強制執行回合式並行的各動作項目鎖定 |
 | Service Fabric 動作項目 |每個 Lock Wait 的平均毫秒數 |取得強制執行回合式並行的各動作項目鎖定所虛的時間 (單位為毫秒) |
@@ -122,7 +122,7 @@ Reliable Actor 執行階段會發出下列與 [動作項目狀態管理](service
 
 Reliable Actor 執行階段會發佈下列與動作項目狀態管理相關的效能計數器。
 
-| 類別目錄名稱 | 計數器名稱 | Description |
+| 類別目錄名稱 | 計數器名稱 | 描述 |
 | --- | --- | --- |
 | Service Fabric 動作項目 |每個儲存狀態作業的平均毫秒數 |儲存動作項目狀態花費的時間 (單位為毫秒) |
 | Service Fabric 動作項目 |每個載入狀態作業的平均毫秒數 |載入動作項目狀態花費的時間 (單位為毫秒) |
@@ -145,14 +145,14 @@ Reliable Actor 執行階段會發出下列與 [動作項目啟動與停用](serv
 
 Reliable Actor 執行階段會發佈下列與動作項目啟用和停用相關的效能計數器。
 
-| 類別目錄名稱 | 計數器名稱 | Description |
+| 類別目錄名稱 | 計數器名稱 | 描述 |
 | --- | --- | --- |
 | Service Fabric 動作項目 |平均 OnActivateAsync 毫秒數 |執行 OnActivateAsync 方法花費的時間 (單位為毫秒) |
 
 ### <a name="actor-request-processing-performance-counters"></a>動作項目要求處理效能計數器
 當用戶端透過動作項目 proxy 物件叫用方法時，會造成要求訊息透過網路傳送至動作項目服務。 服務會處理要求訊息，並傳送回應給用戶端。 Reliable Actor 執行階段會發佈下列與動作項目要求處理相關的效能計數器。
 
-| 類別目錄名稱 | 計數器名稱 | Description |
+| 類別目錄名稱 | 計數器名稱 | 描述 |
 | --- | --- | --- |
 | Service Fabric 動作項目 |# of outstanding requests |服務中正在處理的要求數目 |
 | Service Fabric 動作項目 |每個要求的平均毫秒數 |服務處理要求所花費的時間 (單位為毫秒) |
@@ -161,6 +161,6 @@ Reliable Actor 執行階段會發佈下列與動作項目啟用和停用相關�
 
 ## <a name="next-steps"></a>後續步驟
 * [Reliable Acto 如何使用 Service Fabric 平台](service-fabric-reliable-actors-platform.md)
-* [動作項目 API 參考文件](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [動作項目 API 參考文件](/previous-versions/azure/dn971626(v=azure.100))
 * [範例程式碼](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [PerfView 中的 EventSource 提供者](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
+* [PerfView 中的 EventSource 提供者](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)

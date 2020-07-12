@@ -111,7 +111,7 @@
 - name: 範例
   items:
     - name: 程式碼範例
-      href: 'https://docs.microsoft.com/samples/browse/'
+      href: /samples/browse/
     - name: Azure PowerShell
       href: service-fabric-powershell-samples.md
     - name: Service Fabric CLI
@@ -491,7 +491,7 @@
             - name: 設定 ReliableDictionaryActorStateProvider
               href: service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md
         - name: 建置 ASP.NET Core 服務
-          href: service-fabric-add-a-web-frontend.md
+          href: ./service-fabric-reliable-services-communication-aspnetcore.md
         - name: 在 Linux 上建置 Apache Tomcat 伺服器容器
           href: service-fabric-get-started-tomcat.md
         - name: 設定安全性
@@ -628,7 +628,7 @@
         - name: 設定連續整合
           items:
             - name: 透過 Azure Pipelines 設定連續整合
-              href: service-fabric-set-up-continuous-integration.md
+              href: ./service-fabric-tutorial-deploy-app-with-cicd-vsts.md
             - name: 使用 Jenkins 部署您的 Linux 應用程式
               href: service-fabric-cicd-your-linux-applications-with-jenkins.md
     - name: 設定反向 Proxy
@@ -897,7 +897,7 @@
     - name: 常見問題
       href: service-fabric-common-questions.md
     - name: Microsoft 問與答頁面
-      href: 'https://docs.microsoft.com/answers/topics/azure-service-fabric.html'
+      href: /answers/topics/azure-service-fabric.html
     - name: Azure Resource Manager 部署限制
       href: service-fabric-azure-resource-manager-guardrails.md
     - name: 定價

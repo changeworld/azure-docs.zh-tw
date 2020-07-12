@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 5a5ffdf217483c60836f67213c20ff3afd9043d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43b6f5d4367cfc641183a17fda89cf1381c22a6c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82608910"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258601"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>修補 Service Fabric 叢集中的 Windows 作業系統
 
@@ -28,10 +28,10 @@ ms.locfileid: "82608910"
 > 從2019年4月30日起，不再支援 Patch 協調流程應用程式版本 1.2. *。 請務必升級至最新版本。
 
 > [!NOTE]
-> 在[您的虛擬機器擴展集上取得自動 OS 映射升級](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)是讓作業系統在 Azure 中進行修補的最佳作法。 以虛擬機器擴展集為基礎的自動 OS 映射升級將需要在擴展集上具有銀級或更高的持久性。
+> 在[您的虛擬機器擴展集上取得自動 OS 映射升級](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)是讓作業系統在 Azure 中進行修補的最佳作法。 以虛擬機器擴展集為基礎的自動 OS 映射升級將需要在擴展集上具有銀級或更高的持久性。
 >
 
- 修補程式協調流程應用程式（POA）是 Azure Service Fabric 修復管理員服務的包裝函式，可針對非 Azure 託管的叢集啟用以設定為基礎的 OS 修補程式排程。 非 Azure 主控的叢集不需要 POA，但需要排程更新網域的修補程式安裝，才能修補 Service Fabric 叢集主機，而不會產生停機時間。
+ 修補協調流程應用程式 (POA) 是 Azure Service Fabric 修復管理員服務的包裝函式，可針對非 Azure 託管的叢集啟用以設定為基礎的 OS 修補程式排程。 非 Azure 主控的叢集不需要 POA，但需要排程更新網域的修補程式安裝，才能修補 Service Fabric 叢集主機，而不會產生停機時間。
 
 POA 是 Service Fabric 應用程式，可將 Service Fabric 叢集上的作業系統修補自動化，而不會產生停機時間。
 
@@ -68,7 +68,7 @@ POA 是由下列子元件所組成：
 > [!NOTE]
 > 所需的最小 .NET Framework 版本為4.6。
 
-### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>啟用修復管理員服務（如果尚未執行）
+### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>啟用修復管理員服務 (（如果尚未執行）) 
 
 POA 需要在叢集上啟用修復管理員服務。
 
@@ -82,9 +82,9 @@ POA 需要在叢集上啟用修復管理員服務。
 ![從 Azure 入口網站啟用修復管理員的影像](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
 ##### <a name="the-azure-resource-manager-deployment-model"></a>Azure Resource Manager 部署模型
-或者，您可以使用[Azure Resource Manager 部署模型](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)，在新的和現有的 Service Fabric 叢集上啟用修復管理員服務。 取得您想要部署之叢集的範本。 您可以使用範例範本，或建立自訂的 Azure Resource Manager 部署模型範本。 
+或者，您可以使用[Azure Resource Manager 部署模型](./service-fabric-cluster-creation-via-arm.md)，在新的和現有的 Service Fabric 叢集上啟用修復管理員服務。 取得您想要部署之叢集的範本。 您可以使用範例範本，或建立自訂的 Azure Resource Manager 部署模型範本。 
 
-若要使用[Azure Resource Manager 部署模型範本](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)來啟用修復管理員服務，請執行下列動作：
+若要使用[Azure Resource Manager 部署模型範本](./service-fabric-cluster-creation-via-arm.md)來啟用修復管理員服務，請執行下列動作：
 
 1. 檢查以確定 `apiVersion` *ServiceFabric/* 叢集資源已設定為*2017-07-01-preview* 。 如果不同，您必須更新 `apiVersion` 至*2017-07-01-preview*或更新版本：
 
@@ -113,11 +113,11 @@ POA 需要在叢集上啟用修復管理員服務。
 
 ### <a name="standalone-on-premises-clusters"></a>獨立的內部部署叢集
 
-若要在新的或現有的 Service Fabric 叢集上啟用修復管理員服務，您可以使用[獨立 Windows](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest)叢集的設定。
+若要在新的或現有的 Service Fabric 叢集上啟用修復管理員服務，您可以使用[獨立 Windows](./service-fabric-cluster-manifest.md)叢集的設定。
 
 若要啟用修復管理員服務：
 
-1. 檢查以確定 `apiVersion` 在[[一般](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest#general-cluster-configurations)叢集設定] 中，已設為*04-2017*或更新版本，如下所示：
+1. 檢查以確定 `apiVersion` 在[[一般](./service-fabric-cluster-manifest.md#general-cluster-configurations)叢集設定] 中，已設為*04-2017*或更新版本，如下所示：
 
     ```json
     {
@@ -139,7 +139,7 @@ POA 需要在叢集上啟用修復管理員服務。
     ],
     ```
 
-1. 使用更新後的叢集資訊清單，以這些變更更新您的叢集資訊清單[建立新](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server)叢集或[升級](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server)叢集設定。 
+1. 使用更新後的叢集資訊清單，以這些變更更新您的叢集資訊清單[建立新](./service-fabric-cluster-creation-for-windows-server.md)叢集或[升級](./service-fabric-cluster-upgrade-windows-server.md)叢集設定。 
 
    使用更新後的叢集資訊清單執行叢集之後，您可以看到在您的叢集中執行的修復管理員服務。 它稱為*fabric：/System/RepairManagerService*，它位於 Service Fabric Explorer 的系統服務區段中。
 
@@ -158,15 +158,15 @@ POA 需要在叢集上啟用修復管理員服務。
 | 參數        | 類型                          | 詳細資料 |
 |:-|-|-|
 |MaxResultsToCache    |long                              | 應快取的 Windows Update 結果數目上限。 <br><br>預設值為3000，假設： <br> &nbsp;&nbsp;-節點數目為20。 <br> &nbsp;&nbsp;-每個月對節點的更新數目為5。 <br> &nbsp;&nbsp;-每個作業的結果數目可以是10。 <br> &nbsp;&nbsp;-應該儲存過去三個月的結果。 |
-|TaskApprovalPolicy   |列舉 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy 會指出協調器服務在 Service Fabric 叢集節點中用來安裝 Windows 更新的原則。<br><br>允許的值包括： <br>*NodeWise*： Windows 更新會一次安裝一個節點。 <br> *UpgradeDomainWise*： Windows 更新會一次安裝一個更新網域。 （最多，屬於更新網域的所有節點都可以進行 Windows update）。<br><br> 若要協助決定哪一個原則最適合您的叢集，請參閱[常見問題](#frequently-asked-questions)一節。
-|LogsDiskQuotaInMB   |long  <br> （預設值： *1024*）               | 修補程式協調流程應用程式記錄檔的大小上限（以 MB 為單位），可以在本機節點上保存。
-| WUQuery               | 字串<br>（預設值： *IsInstalled = 0*）                | 用以取得 Windows 更新的查詢。 如需詳細資訊，請參閱 [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)。
-| InstallWindowsOSOnlyUpdates | *True* <br> (預設值：False)                 | 使用此旗標可控制所應下載並安裝的更新。 允許下列值 <br>true - 只安裝 Windows 作業系統的更新。<br>false - 在電腦上安裝所有可用的更新。          |
-| WUOperationTimeOutInMinutes | Int <br>（預設值： *90*）                   | 指定任何 Windows Update 作業的逾時 (搜尋或下載或安裝)。 如果作業未在指定的逾時內完成，它就會中止。       |
-| WURescheduleCount     | Int <br> （預設值： *5*）                  | 如果作業持續失敗，服務會將 Windows update 重新排程的次數上限。          |
-| WURescheduleTimeInMinutes | Int <br>（預設值： *30*） | 如果失敗持續發生，服務重新排定 Windows 更新的間隔。 |
-| WUFrequency           | 以逗號分隔的字串（預設值：*每週、星期三、7:00:00*）     | 安裝 Windows 更新的頻率。 格式與可能的值如下： <br>-每月，DD，HH： MM： SS （範例：*每月，5，12:22:32*）。 [欄位_DD_ （日）] 允許的值為1到28和_最後一個_的數位。 <br>-每週、日、HH： MM： SS （範例：*每週、星期二、12:22:32*）  <br>-每天，HH： MM： SS （範例：*每天，12:22:32*）  <br>-Week，Day，HH： MM： SS （範例： *2，星期五，21:00:00*表示每月第2周星期五的 UTC 9:00 PM） <br>- [*無*] 表示不應執行 Windows 更新。  <br><br> 時間為 UTC。|
-| AcceptWindowsUpdateEula | Boolean <br>（預設值： *true*） | 藉由設定這個旗標，應用程式會代表電腦的擁有者接受 Windows Update 的使用者授權合約 (EULA)。              |
+|TaskApprovalPolicy   |列舉 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy 會指出協調器服務在 Service Fabric 叢集節點中用來安裝 Windows 更新的原則。<br><br>允許的值包括： <br>*NodeWise*： Windows 更新會一次安裝一個節點。 <br> *UpgradeDomainWise*： Windows 更新會一次安裝一個更新網域。 最多 (，屬於更新網域的所有節點都可以進行 Windows update。 ) <br><br> 若要協助決定哪一個原則最適合您的叢集，請參閱[常見問題](#frequently-asked-questions)一節。
+|LogsDiskQuotaInMB   |long  <br>  (預設值： *1024*)                | 修補程式協調流程應用程式記錄檔的大小上限（以 MB 為單位），可以在本機節點上保存。
+| WUQuery               | 字串<br> (預設值： *IsInstalled = 0*)                 | 用以取得 Windows 更新的查詢。 如需詳細資訊，請參閱 [WuQuery](/windows/win32/api/wuapi/nf-wuapi-iupdatesearcher-search)。
+| InstallWindowsOSOnlyUpdates | *Boolean* <br> (預設值：False)                 | 使用此旗標可控制所應下載並安裝的更新。 允許下列值 <br>true - 只安裝 Windows 作業系統的更新。<br>false - 在電腦上安裝所有可用的更新。          |
+| WUOperationTimeOutInMinutes | Int <br> (預設值： *90*)                    | 指定任何 Windows Update 作業的逾時 (搜尋或下載或安裝)。 如果作業未在指定的逾時內完成，它就會中止。       |
+| WURescheduleCount     | Int <br>  (預設值： *5*)                   | 如果作業持續失敗，服務會將 Windows update 重新排程的次數上限。          |
+| WURescheduleTimeInMinutes | Int <br> (預設值： *30*)  | 如果失敗持續發生，服務重新排定 Windows 更新的間隔。 |
+| WUFrequency           | 以逗號分隔的字串 (預設值：*每週、星期三、7:00:00*)      | 安裝 Windows 更新的頻率。 格式與可能的值如下： <br>-每月，DD，HH： MM： SS (範例：*每月，5，12:22:32*) 。 欄位_DD_ (day) 允許的值是從1到28及_最後一個_的數位。 <br>-每週、日、HH： MM： SS (範例：*每週、星期二、12:22:32*)   <br>-每天、HH： MM： SS (範例：*每日、12:22:32*)   <br>-Week、Day、HH： MM： SS (範例： *2，星期五，21:00:00*表示每月第2周的星期五下午 9:00 PM UTC)  <br>- [*無*] 表示不應執行 Windows 更新。  <br><br> 時間為 UTC。|
+| AcceptWindowsUpdateEula | Boolean <br> (預設值： *true*)  | 藉由設定這個旗標，應用程式會代表電腦的擁有者接受 Windows Update 的使用者授權合約 (EULA)。              |
 
 > [!TIP]
 > 如果您想要讓 Windows update 立即發生，請設定 `WUFrequency` [相對於應用程式部署時間]。 例如，假設您的測試叢集有五個節點，計劃於大約下午 5:00 UTC 部署應用程式。 如果您假設應用程式升級或部署最多需要30分鐘的時間，請將 Wufrequency 設定設定為*每日，17:30:00*。
@@ -174,7 +174,7 @@ POA 需要在叢集上啟用修復管理員服務。
 ## <a name="deploy-poa"></a>部署 POA
 
 1. 完成準備叢集的所有必要條件步驟。
-1. 部署 POA，就像任何其他 Service Fabric 應用程式一樣。 若要使用 PowerShell 部署它，請參閱[使用 Powershell 部署和移除應用程式](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications)。
+1. 部署 POA，就像任何其他 Service Fabric 應用程式一樣。 若要使用 PowerShell 部署它，請參閱[使用 Powershell 部署和移除應用程式](./service-fabric-deploy-remove-applications.md)。
 1. 若要在部署時設定應用程式，可將 `ApplicationParameter` 傳遞給 `New-ServiceFabricApplication` Cmdlet。 為了您的方便，我們提供了 Deploy.ps1 指令碼以及我們的應用程式。 若要使用指令碼：
 
     - 使用 `Connect-ServiceFabricCluster` 連線至 Service Fabric 叢集。
@@ -185,11 +185,11 @@ POA 需要在叢集上啟用修復管理員服務。
 
 ## <a name="upgrade-poa"></a>升級 POA
 
-若要使用 PowerShell 升級您的 POA 版本，請遵循[使用 powershell Service Fabric 應用程式升級](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-tutorial-powershell)中的指示。
+若要使用 PowerShell 升級您的 POA 版本，請遵循[使用 powershell Service Fabric 應用程式升級](./service-fabric-application-upgrade-tutorial-powershell.md)中的指示。
 
 ## <a name="remove-poa"></a>移除 POA
 
-若要移除應用程式，請遵循[使用 PowerShell 部署和移除應用程式](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications)中的指示。
+若要移除應用程式，請遵循[使用 PowerShell 部署和移除應用程式](./service-fabric-deploy-remove-applications.md)中的指示。
 
 為了方便起見，我們提供了 Undeploy.ps1 腳本以及應用程式。 若要使用指令碼：
 
@@ -240,10 +240,10 @@ POA 會公開 REST Api，以向使用者顯示歷程記錄結果。 以下是結
 OperationResult | 0 - 成功<br> 1 - 成功但發生錯誤<br> 2 - 失敗<br> 3 - 已中止<br> 4 - 中止但逾時 | 指出整體作業的結果，通常會牽涉到安裝一或多個更新。
 ResultCode | 與 OperationResult 相同 | 此欄位指出個別更新之安裝作業的結果。
 OperationType | 1 - 安裝<br> 0-搜尋和下載| 根據預設，安裝是顯示在結果中的唯一 OperationType。
-WindowsUpdateQuery | 預設值為 "IsInstalled=0" | 用來搜尋更新的 Windows Update 查詢。 如需詳細資訊，請參閱[WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)。
+WindowsUpdateQuery | 預設值為 "IsInstalled=0" | 用來搜尋更新的 Windows Update 查詢。 如需詳細資訊，請參閱[WuQuery](/windows/win32/api/wuapi/nf-wuapi-iupdatesearcher-search)。
 RebootRequired | true - 需要重新開機<br> false - 不需要重新開機 | 指出是否需要重新開機才能完成更新的安裝。
-OperationStartTime | Datetime | 表示作業（下載/安裝）開始的時間。
-OperationTime | Datetime | 表示作業（下載/安裝）已完成的時間。
+OperationStartTime | Datetime | 指出) 啟動作業 (下載/安裝的時間。
+OperationTime | Datetime | 表示作業 (下載/安裝) 完成的時間。
 HResult | 0-成功<br> 其他-失敗| 指出具有 updateID "7392acaf-6a85-427c-8a8d-058c25beb0d6" 的 Windows update 失敗原因。
 
 如果尚未排程更新，JSON 結果會是空的。
@@ -258,7 +258,7 @@ HResult | 0-成功<br> 其他-失敗| 指出具有 updateID "7392acaf-6a85-427c-
 
 您需要叫用的端點是*Http:// &lt; SERVERURL &gt; ： &lt; REVERSEPROXYPORT &gt; /PatchOrchestrationApplication/CoordinatorService/v1/GetWindowsUpdateResults*。
 
-若要在叢集上啟用反向 proxy，請遵循[Azure 中的反向 proxy Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy)中的指示。 
+若要在叢集上啟用反向 proxy，請遵循[Azure 中的反向 proxy Service Fabric](./service-fabric-reverseproxy.md)中的指示。 
 
 > 
 > [!WARNING]
@@ -271,17 +271,17 @@ HResult | 0-成功<br> 其他-失敗| 指出具有 updateID "7392acaf-6a85-427c-
 > [!NOTE]
 > 若要取得下列許多稱為「自我診斷」改良功能，您應該已安裝 POA version 1.4.0 或更新版本。
 
-節點代理程式 NTService 會建立[修復](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtask?view=azure-dotnet)工作，以便在節點上安裝更新。 然後，協調器服務會根據工作核准原則來準備每個工作。 最後，修復管理員會核准備妥的工作，如果叢集處於狀況不良狀態，則不會核准任何工作。 
+節點代理程式 NTService 會建立[修復](/dotnet/api/system.fabric.repair.repairtask?view=azure-dotnet)工作，以便在節點上安裝更新。 然後，協調器服務會根據工作核准原則來準備每個工作。 最後，修復管理員會核准備妥的工作，如果叢集處於狀況不良狀態，則不會核准任何工作。 
 
 為了協助您瞭解更新如何在節點上繼續進行，讓我們逐步執行：
 
 1. 在每個節點上執行的 NodeAgentNTService，會在排程的時間尋找可用的 Windows 更新。 如果有可用的更新，它會將它們下載到節點上。
 
-1. 下載更新之後，節點代理程式 NTService 會為名稱為*POS___ \<unique_id> *的節點建立對應的修復工作。 您可以使用[ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) Cmdlet 或在 [節點詳細資料] 區段中使用 SFX 來查看這些修復工作。 建立修復工作之後，它很快就會移至[*宣告*的狀態](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet)。
+1. 下載更新之後，節點代理程式 NTService 會為名稱為*POS___ \<unique_id> *的節點建立對應的修復工作。 您可以使用[ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) Cmdlet 或在 [節點詳細資料] 區段中使用 SFX 來查看這些修復工作。 建立修復工作之後，它很快就會移至[*宣告*的狀態](/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet)。
 
 1. 協調器服務會定期尋找已*宣告*狀態的修復工作，然後更新它們以根據 taskapprovalpolicy 會*準備*狀態。 如果 Taskapprovalpolicy 會設定為 NodeWise，則只有在沒有其他修復工作正在*準備*、*核准*、*執行*或*還原*狀態時，才會備妥對應至節點的修復工作。 
 
-   同樣地，在 UpgradeWise Taskapprovalpolicy 會的案例中，上述狀態中的工作僅適用于屬於相同更新網域的節點。 將修復工作移至*準備*狀態之後，會[停](https://docs.microsoft.com/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps)用對應的 Service Fabric 節點，意圖設定為 [*重新開機*]。
+   同樣地，在 UpgradeWise Taskapprovalpolicy 會的案例中，上述狀態中的工作僅適用于屬於相同更新網域的節點。 將修復工作移至*準備*狀態之後，會[停](/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps)用對應的 Service Fabric 節點，意圖設定為 [*重新開機*]。
 
    POA 版本1.4.0 和更新版本會在 CoordinatorService 上使用 ClusterPatchingStatus 屬性張貼事件，以顯示正在修補的節點。 更新會安裝在 _poanode_0 上，如下圖所示：
 
@@ -300,7 +300,7 @@ HResult | 0-成功<br> 其他-失敗| 指出具有 updateID "7392acaf-6a85-427c-
 
    [![Windows Update 作業狀態的影像](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
 
-   您也可以使用 PowerShell 來取得詳細資料。 若要這麼做，您可以使用[ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps)連接到叢集，並提取修復工作的狀態。 
+   您也可以使用 PowerShell 來取得詳細資料。 若要這麼做，您可以使用[ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps)連接到叢集，並提取修復工作的狀態。 
    
    在下列範例中，"POS__poanode_2_125f2969-933c-4774-85d1-ebdf85e79f15" 工作處於*DownloadComplete*狀態。 這表示已在*poanode_2*節點上下載更新，並會在工作移至*執行*狀態時嘗試安裝。
 
@@ -311,7 +311,7 @@ HResult | 0-成功<br> 其他-失敗| 指出具有 updateID "7392acaf-6a85-427c-
     {"ExecutorSubState":2,"ExecutorTimeoutInMinutes":90,"RestartRequestedTime":"0001-01-01T00:00:00"}
     ```
 
-   如果仍然發現更多問題，請使用 Windows 事件記錄檔登入您的虛擬機器（VM）或 Vm，並瞭解它們。 先前提到的修復工作只能存在於下列執行程式 substates 中：
+   如果仍然發現更多問題，請使用 Windows 事件記錄檔登入您的虛擬機器 (VM) 或 Vm，並瞭解它們。 先前提到的修復工作只能存在於下列執行程式 substates 中：
 
       ExecutorSubState | 描述
     -- | -- 
@@ -334,7 +334,7 @@ HResult | 0-成功<br> 其他-失敗| 指出具有 updateID "7392acaf-6a85-427c-
 
 修補協調流程應用程式記錄檔會收集為 Service Fabric 執行時間記錄的一部分。
 
-您可以使用您選擇的診斷工具或管線來捕捉記錄。 POA 會使用下列固定提供者識別碼，透過[事件來源](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1)記錄事件：
+您可以使用您選擇的診斷工具或管線來捕捉記錄。 POA 會使用下列固定提供者識別碼，透過[事件來源](/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1)記錄事件：
 
 - e39b723c-590c-4090-abb0-11e3e6616346
 - fc0028ff-bfdc-499f-80dc-ed922c52c5e9
@@ -379,18 +379,18 @@ POA 也會在下列案例中，針對節點代理程式服務或協調器服務�
 
 **問：我應該將叢集的 Taskapprovalpolicy 會設為 "NodeWise" 或 "UpgradeDomainWise" 嗎？**
 
-答：「UpgradeDomainWise」設定會以平行方式修補屬於更新網域的所有節點，以加速整體叢集修復。 在此過程中，屬於整個更新網域的節點無法使用（處於[*已停*用狀態](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled)）。
+答：「UpgradeDomainWise」設定會以平行方式修補屬於更新網域的所有節點，以加速整體叢集修復。 在此過程中，屬於整個更新網域的節點在[*停*](/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled)用的狀態)  (無法使用。
 
-相反地，「NodeWise」設定一次只會修補一個節點，這表示整體叢集修補可能需要較長的時間。 不過，在修補程式期間，最多隻會有一個節點無法使用（處於*已停*用狀態）。
+相反地，「NodeWise」設定一次只會修補一個節點，這表示整體叢集修補可能需要較長的時間。 不過，在修補程式期間， (處於*停*用狀態) ，最多隻能有一個節點無法使用。
 
-如果您的叢集可容忍在修補週期期間在 N-1 個更新網域上執行（其中 N 是叢集上的更新網域總數），您可以將原則設定為「UpgradeDomainWise」。 否則，請將它設定為 "NodeWise"。
+如果您的叢集可容忍在修補週期期間于 N-1 個更新網域上執行 (其中 N 是叢集上的更新網域總數) 您可以將原則設定為「UpgradeDomainWise」。 否則，請將它設定為 "NodeWise"。
 
 **問：修補節點需要多久的時間？**
 
-答：修補節點可能需要幾分鐘的時間（例如， [Windows Defender 定義更新](https://www.microsoft.com/en-us/wdsi/definitions)）到數小時（例如[windows 累計更新](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)）。 修補節點所需的時間主要取決於： 
+答：修補節點可能需要幾分鐘的時間 (例如， [Windows Defender 定義更新](https://www.microsoft.com/en-us/wdsi/definitions)) 到小時 (例如， [windows 累計更新](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)) 。 修補節點所需的時間主要取決於： 
  - 更新的大小。
  - 必須在修補視窗中套用的更新數目。
- - 安裝更新所需的時間、重新開機節點（如有必要），並完成重新開機後的安裝步驟。
+ - 安裝更新所需的時間，視需要) 重新開機節點 (，並完成重新開機後的安裝步驟。
  - VM 或電腦的效能，以及網路狀況。
 
 **問：修補整個叢集需要多久的時間？**
@@ -401,29 +401,29 @@ POA 也會在下列案例中，針對節點代理程式服務或協調器服務�
 
 - 協調器服務的原則。 預設原則 "NodeWise" 會導致一次只修補一個節點，這種方法比使用 "UpgradeDomainWise" 慢。 
 
-   例如：如果節點需要約1小時來修補，請使用5個更新網域來修補20個節點（相同類型的節點）叢集，其中每個都包含4個節點，需要：
+   例如：如果節點需要約1小時才會進行修補，請使用5個更新網域來修補20個節點 (相同類型的節點) 叢集，其中每個都包含4個節點，需要：
     - 針對 "NodeWise"： ~ 20 小時。
     - 針對 "UpgradeDomainWise"： ~ 5 小時。
 
-- 叢集負載。 每次修補作業都需要將客戶工作負載重新放置到叢集中的其他可用節點。 在這段期間，正在修補的節點會處於[*停*用狀態](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling)。 如果叢集在接近尖峰負載的情況下執行，則停用的程式會花費較長的時間。 因此，在這種負荷條件下，整體修補程式可能會變慢。
+- 叢集負載。 每次修補作業都需要將客戶工作負載重新放置到叢集中的其他可用節點。 在這段期間，正在修補的節點會處於[*停*用狀態](/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling)。 如果叢集在接近尖峰負載的情況下執行，則停用的程式會花費較長的時間。 因此，在這種負荷條件下，整體修補程式可能會變慢。
 
-- 修補期間的叢集健康狀態失敗。 叢集的[健全狀況](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction)[降低](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error)會中斷修補程式。 此問題會加到修補整個叢集所需的整體時間。
+- 修補期間的叢集健康狀態失敗。 叢集的[健全狀況](./service-fabric-health-introduction.md)[降低](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error)會中斷修補程式。 此問題會加到修補整個叢集所需的整體時間。
 
 **問：為什麼我會在 Windows Update 結果中看到透過 REST API 取得的部分更新，但不會在電腦上的 Windows Update 歷程記錄中顯示？**
 
 答：某些產品更新只會出現在自己的更新或修補歷程記錄中。 例如，windows Defender 更新不一定會顯示在 Windows Server 2016 上的 Windows Update 歷程記錄中。
 
-**問： POA 可以用來修補我的開發叢集（單節點叢集）嗎？**
+**問： POA 可以用來修補我的開發叢集 (單一節點叢集) 嗎？**
 
-答：否，POA 不能用來修補單節點叢集。 這項限制是根據設計，因為[Service Fabric 系統服務](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services)或其他客戶應用程式會產生停機時間。 因此，修復管理員不會核准修復工作的修補作業。
+答：否，POA 不能用來修補單節點叢集。 這項限制是根據設計，因為[Service Fabric 系統服務](./service-fabric-technical-overview.md#system-services)或其他客戶應用程式會產生停機時間。 因此，修復管理員不會核准修復工作的修補作業。
 
 **問：在 Linux 上如何? 修補叢集節點？**
 
-答：若要瞭解如何在 Linux 上協調更新，請參閱[Azure 虛擬機器擴展集的自動 OS 映射升級](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)。
+答：若要瞭解如何在 Linux 上協調更新，請參閱[Azure 虛擬機器擴展集的自動 OS 映射升級](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)。
 
 **問：為什麼更新週期會花很長的時間？**
 
-答：查詢結果 JSON、輸入所有節點的更新週期，然後您可以嘗試使用 OperationStartTime 和 OperationTime （OperationCompletionTime）來找出每個節點上的更新安裝所花費的時間。 
+答：查詢結果 JSON、輸入所有節點的更新週期，然後您可以嘗試使用 OperationStartTime 和 OperationTime (OperationCompletionTime) ，來找出每個節點上的更新安裝所花費的時間。 
 
 如果有很大的時間範圍沒有發生任何更新，叢集可能處於錯誤狀態，因此修復管理員無法核准任何 POA 修復工作。 如果更新安裝在任何節點上花費了很長的時間，表示該節點在一段期間內可能尚未更新。 有很多更新可能會擱置安裝，這可能會導致延遲。 
 
@@ -462,7 +462,7 @@ POA 也會在下列案例中，針對節點代理程式服務或協調器服務�
 * 節點可能會卡在關閉狀態，因為：
 
   - 它是以手動方式置於關閉狀態。
-  - 正在進行重新開機（可能是由 POA 所觸發）。
+  - 正在進行重新開機 (可能由 POA) 觸發。
   - 它有故障的 VM 或電腦，或網路連線有問題。
 
 ### <a name="updates-were-skipped-on-some-nodes"></a>已略過某些節點上的更新

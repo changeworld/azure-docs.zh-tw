@@ -1,19 +1,19 @@
 ---
-title: 在 Azure Kubernetes Service 中輪替憑證（AKS）
-description: 瞭解如何在 Azure Kubernetes Service （AKS）叢集中輪替您的憑證。
+title: 'Azure Kubernetes Service (AKS 中輪替憑證) '
+description: 瞭解如何在 Azure Kubernetes Service (AKS) cluster 中輪替憑證。
 services: container-service
 ms.topic: article
 ms.date: 11/15/2019
-ms.openlocfilehash: 715771c7a1704e0d39f790d018980c4b39ba351b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e48a05a36fdbd56fb78cd1394c512485b521e50
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817455"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255348"
 ---
-# <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service 中輪替憑證（AKS）
+# <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS 中輪替憑證) 
 
-Azure Kubernetes Service （AKS）會使用憑證來驗證其許多元件。 基於安全性或原則的理由，您可能需要定期輪替這些憑證。 例如，您可能會有一個原則，每90天輪替一次您的憑證。
+Azure Kubernetes Service (AKS) 使用憑證來驗證其許多元件。 基於安全性或原則的理由，您可能需要定期輪替這些憑證。 例如，您可能會有一個原則，每90天輪替一次您的憑證。
 
 本文說明如何在 AKS 叢集中輪替憑證。
 
@@ -25,13 +25,13 @@ Azure Kubernetes Service （AKS）會使用憑證來驗證其許多元件。 基
 
 AKS 會產生並使用下列憑證、憑證授權單位單位和服務帳戶：
 
-* AKS API 伺服器會建立名為叢集 CA 的憑證授權單位單位（CA）。
+* AKS API 伺服器會建立名為叢集 CA (CA) 的憑證授權單位單位。
 * API 伺服器具有叢集 CA，它會簽署從 API 伺服器到 kubelets 的單向通訊憑證。
-* 每個 kubelet 也會建立由叢集 CA 簽署的憑證簽署要求（CSR），以便從 kubelet 到 API 伺服器的通訊。
+* 每個 kubelet 也會建立憑證簽署要求， (CSR) （由叢集 CA 簽署），以便從 kubelet 到 API 伺服器的通訊。
 * Etcd 金鑰值存放區具有叢集 CA 簽署的憑證，可從 etcd 至 API 伺服器進行通訊。
 * Etcd 金鑰值存放區會建立簽署憑證的 CA，以驗證和授權 AKS 叢集中 etcd 複本之間的資料複寫。
 * API 匯總工具會使用叢集 CA 來發行憑證，以便與其他 Api 通訊。 API 匯總工具也可以有自己的 CA 來頒發證書，但目前使用的是叢集 CA。
-* 每個節點都會使用由叢集 CA 簽署的服務帳戶（SA）權杖。
+* 每個節點都會使用服務帳戶 (SA) 權杖，這是由叢集 CA 所簽署。
 * `kubectl`用戶端具有與 AKS 叢集通訊的憑證。
 
 > [!NOTE]
@@ -62,7 +62,7 @@ az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 > [!IMPORTANT]
 > 最多可能需要30分鐘的時間 `az aks rotate-certs` 才能完成。 如果命令在完成前失敗，請使用 `az aks show` 來確認叢集的狀態為 [*憑證輪替*]。 如果叢集處於失敗狀態，請重新執行 `az aks rotate-certs` 以再次輪替您的憑證。
 
-執行命令，確認舊憑證已不再有效 `kubectl` 。 由於您尚未更新所使用的憑證，因此 `kubectl` 您會看到錯誤。  例如：
+執行命令，確認舊憑證已不再有效 `kubectl` 。 由於您尚未更新所使用的憑證，因此 `kubectl` 您會看到錯誤。  例如︰
 
 ```console
 $ kubectl get no
@@ -75,7 +75,7 @@ Unable to connect to the server: x509: certificate signed by unknown authority (
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing
 ```
 
-藉由執行命令來確認憑證已更新 `kubectl` ，這現在將會成功。 例如：
+藉由執行命令來確認憑證已更新 `kubectl` ，這現在將會成功。 例如︰
 
 ```console
 kubectl get no
@@ -86,7 +86,7 @@ kubectl get no
 
 ## <a name="next-steps"></a>後續步驟
 
-本文說明如何自動輪替叢集的憑證、Ca 和 SAs。 如需 AKS 安全性最佳做法的詳細資訊，請參閱[Azure Kubernetes Service 中叢集安全性和升級的最佳做法（AKS）][aks-best-practices-security-upgrades] 。
+本文說明如何自動輪替叢集的憑證、Ca 和 SAs。 如需 AKS 安全性最佳做法的詳細資訊，請參閱[Azure Kubernetes Service (AKS) 中叢集安全性和升級的最佳做法][aks-best-practices-security-upgrades]。
 
 
 [azure-cli-install]: /cli/azure/install-azure-cli
@@ -94,5 +94,5 @@ kubectl get no
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [aks-best-practices-security-upgrades]: operator-best-practices-cluster-security.md
-[dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[dev-spaces]: ../dev-spaces/index.yml
 [dev-spaces-rotate]: ../dev-spaces/troubleshooting.md#error-using-dev-spaces-after-rotating-aks-certificates

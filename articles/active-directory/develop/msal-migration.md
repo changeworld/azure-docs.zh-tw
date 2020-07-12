@@ -1,7 +1,7 @@
 ---
-title: 遷移至 Microsoft 驗證程式庫（MSAL）
+title: '遷移至 Microsoft 驗證程式庫 (MSAL) '
 titleSuffix: Microsoft identity platform
-description: 瞭解 Microsoft 驗證程式庫（MSAL）與 Azure AD 驗證程式庫（ADAL）之間的差異，以及如何遷移至 MSAL。
+description: 瞭解 Microsoft 驗證程式庫 (MSAL) 與 Azure AD 驗證程式庫 (ADAL) 以及如何遷移至 MSAL 之間的差異。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,16 +13,16 @@ ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 52a4a7131c85231107a2a23a1916016776b219fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f84e479c4780437b09ab463781edbb52d8dfdfaa
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367422"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255620"
 ---
-# <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>將應用程式遷移至 Microsoft 驗證程式庫（MSAL）
+# <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>將應用程式遷移至 Microsoft 驗證程式庫 (MSAL) 
 
-許多開發人員都已使用 Azure Active Directory Authentication Library （ADAL）來建立和部署應用程式。 我們現在建議使用 Microsoft 驗證程式庫（MSAL）來驗證和授權 Azure AD 實體。
+許多開發人員都已使用 Azure Active Directory Authentication 程式庫 (ADAL) 來建立和部署應用程式。 我們現在建議使用 Microsoft 驗證程式庫 (MSAL) 來驗證和授權 Azure AD 實體。
 
 藉由使用 MSAL，而不是 ADAL：
 
@@ -75,5 +75,5 @@ __問：如何? 取得遷移應用程式的協助嗎？__
 ## <a name="next-steps"></a>後續步驟
 
 - [將您的應用程式更新為使用 Microsoft 驗證程式庫和 Microsoft Graph API](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363)
-- [深入瞭解 Microsoft 身分識別平臺（MSAL）](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)
-- [回顧我們的 MSAL 程式碼範例](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code)
+- [Microsoft 身分識別平臺總覽](v2-overview.md)
+- [回顧我們的 MSAL 程式碼範例](sample-v2-code.md)

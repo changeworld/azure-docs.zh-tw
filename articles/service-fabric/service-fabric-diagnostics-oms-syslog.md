@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: 5bd3bda71943b2ba8a34cd4fbd0b20917b875670
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe31c6fdca3651bfe56e798b30d50c9f047c680b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645747"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258635"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Syslog 中的 Service Fabric Linux 叢集事件
 
@@ -25,7 +26,7 @@ Service Fabric 會公開一組平台事件，以通知您叢集中的重要活�
 * Facility
 * 身分識別
 * 訊息
-* Severity
+* 嚴重性
 
 SyslogConsumer 會使用 `Local0` 設施 (Facility) 寫入所有平台事件。 您可以藉由變更設定設定來更新為任何有效的設施。使用的身分識別為 `ServiceFabric` 。 [訊息] 欄位會包含整個以 JSON 序列化的事件，以便各種工具查詢及使用。 
 
@@ -112,6 +113,6 @@ SyslogConsumer 會使用 `Local0` 設施 (Facility) 寫入所有平台事件。 
 
 ## <a name="next-steps"></a>後續步驟
 * [部署 Log Analytics 代理程式](service-fabric-diagnostics-oms-agent.md)至您的節點，以收集效能計數器，並收集您容器的 Docker 統計資料和記錄
-* 熟悉 Azure 監視器記錄中提供的[記錄搜尋和查詢](../log-analytics/log-analytics-log-searches.md)功能
-* [使用 View Designer 在 Azure 監視器記錄中建立自訂視圖](../log-analytics/log-analytics-view-designer.md)
-* 如何[Azure 監視器記錄與 Syslog 整合](../log-analytics/log-analytics-data-sources-syslog.md)的參考。
+* 熟悉 Azure 監視器記錄中提供的[記錄搜尋和查詢](../azure-monitor/log-query/log-query-overview.md)功能
+* [使用 View Designer 在 Azure 監視器記錄中建立自訂視圖](../azure-monitor/platform/view-designer.md)
+* 如何[Azure 監視器記錄與 Syslog 整合](../azure-monitor/platform/data-sources-syslog.md)的參考。
