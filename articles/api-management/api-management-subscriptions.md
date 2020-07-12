@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 9144af131e1427d0b3226655c871921ac1d91665
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 137cbec270b40042503fc7687c9deb39b0df1aa4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70073413"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243285"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Azure API 管理中的訂用帳戶
 
@@ -32,8 +32,8 @@ ms.locfileid: "70073413"
 > [!TIP]
 > APIM 也支援其他保護 API 存取權的機制，包括下列範例：
 > - [OAuth2.0](api-management-howto-protect-backend-with-aad.md)
-> - [Client certificates](api-management-howto-mutual-certificates-for-clients.md)
-> - [IP 允許清單](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#RestrictCallerIPs)
+> - [用戶端憑證](api-management-howto-mutual-certificates-for-clients.md)
+> - [IP 允許清單](./api-management-access-restriction-policies.md#RestrictCallerIPs)
 
 ## <a name="scope-of-subscriptions"></a>訂用帳戶的範圍
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 7c23e659463364c5e1a497ead138abb4c696627a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0334e03f2d4f34913f2f96610868b5ffe169013
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207493"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242554"
 ---
 # <a name="create-a-data-source"></a>建立資料來源
 
@@ -71,16 +71,69 @@ dataSource.setShapes(geoJsonData);
 
 **向量圖格來源**
 
-向量圖格來源會說明如何存取向量磚圖層。 使用[VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource)類別來具現化向量圖格來源。 向量圖格圖層與磚圖層相似，但它們並不相同。 圖格圖層是一個點陣影像。 向量圖格圖層是壓縮檔案，格式為 PBF。 此壓縮檔案包含向量對應資料，以及一或多個圖層。 檔案可以根據每個圖層的樣式，在用戶端上呈現和樣式化。 [向量] 磚中的資料會以點、線條和多邊形的形式包含地理特徵。 使用向量圖格圖層，而不是點陣磚圖層有數個優點：
+向量圖格來源會說明如何存取向量磚圖層。 使用[VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource)類別來具現化向量圖格來源。 向量圖格圖層與磚圖層相似，但它們並不相同。 圖格圖層是一個點陣影像。 向量圖格圖層是壓縮檔案，格式為**PBF** 。 此壓縮檔案包含向量對應資料，以及一或多個圖層。 檔案可以根據每個圖層的樣式，在用戶端上呈現和樣式化。 [向量] 磚中的資料會以點、線條和多邊形的形式包含地理特徵。 使用向量圖格圖層，而不是點陣磚圖層有數個優點：
 
  - [向量] 磚的檔案大小通常會比對等的 [點陣] 磚小很多。 因此，會使用較少的頻寬。 這表示較低的延遲、更快速的對應，以及更佳的使用者體驗。
  - 由於向量圖格會在用戶端上呈現，因此會根據其顯示的裝置解析度進行調整。 如此一來，呈現的對應會以 crystal clear 標籤的方式更妥善定義。
  - 變更向量對應中的資料樣式不需要再次下載資料，因為新的樣式可以套用至用戶端。 相反地，變更點陣磚圖層的樣式通常需要從伺服器載入磚，然後套用新的樣式。
  - 因為資料是以向量形式傳遞，所以準備資料需要較少的伺服器端處理。 因此，較新的資料可以更快速地提供。
 
-所有使用向量來源的圖層都必須指定一個 `sourceLayer` 值。
+Azure 地圖服務遵守[Mapbox Vector 磚規格](https://github.com/mapbox/vector-tile-spec)，這是一種開放標準。 Azure 地圖服務提供下列向量圖格服務作為平臺的一部分：
 
-Azure 地圖服務遵守[Mapbox Vector 磚規格](https://github.com/mapbox/vector-tile-spec)，這是一種開放標準。
+- 道路磚[檔](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)  |  [資料格式詳細資料](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
+- 流量事件[檔](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)  |  [資料格式詳細資料](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
+- 交通流量[檔](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)  |  [資料格式詳細資料](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
+- Azure 地圖服務 Creator 也允許透過[Get 磚 Render V2](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)建立和存取自訂向量圖格
+
+> [!TIP]
+> 使用來自 Azure 地圖服務轉譯服務的向量或點陣影像磚搭配 web SDK 時，您可以將取代 `atlas.microsoft.com` 為預留位置 `{azMapsDomain}` 。 此預留位置將會取代為對應所使用的相同網域，而且也會自動附加相同的驗證詳細資料。 這可大幅簡化使用 Azure Active Directory 驗證時，轉譯服務的驗證。
+
+若要在地圖上顯示向量磚來源的資料，請將來源連接至其中一個資料轉譯層。 所有使用向量來源的圖層都必須 `sourceLayer` 在選項中指定值。 定下列程式碼會將 Azure 地圖服務流量向量圖格服務載入為向量磚來源，然後使用線條圖層將它顯示在地圖上。 這個向量磚來源在來源層中有一個稱為「流量流程」的單一資料集。 此資料集內的行資料具有名為 `traffic_level` 的屬性，在此程式碼中會用來選取色彩並調整線條大小。
+
+```javascript
+//Create a vector tile source and add it to the map.
+var datasource = new atlas.source.VectorTileSource(null, {
+    tiles: ['https://{azMapsDomain}/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}'],
+    maxZoom: 22
+});
+map.sources.add(datasource);
+
+//Create a layer for traffic flow lines.
+var flowLayer = new atlas.layer.LineLayer(datasource, null, {
+    //The name of the data layer within the data source to pass into this rendering layer.
+    sourceLayer: 'Traffic flow',
+
+    //Color the roads based on the traffic_level property. 
+    strokeColor: [
+        'interpolate',
+        ['linear'],
+        ['get', 'traffic_level'],
+        0, 'red',
+        0.33, 'orange',
+        0.66, 'green'
+    ],
+
+    //Scale the width of roads based on the traffic_level property. 
+    strokeWidth: [
+        'interpolate',
+        ['linear'],
+        ['get', 'traffic_level'],
+        0, 6,
+        1, 1
+    ]
+});
+
+//Add the traffic flow layer below the labels to make the map clearer.
+map.layers.add(flowLayer, 'labels');
+```
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="向量磚線圖層" src="https://codepen.io/azuremaps/embed/wvMXJYJ?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+在 CodePen 上 Azure 地圖服務 () ，請參閱「畫筆<a href='https://codepen.io/azuremaps/pen/wvMXJYJ'>向量圖層</a>」 <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'> </a>。
+</iframe>
+
+<br/>
 
 ## <a name="connecting-a-data-source-to-a-layer"></a>將資料來源連接至圖層
 

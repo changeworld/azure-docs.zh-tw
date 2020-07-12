@@ -7,21 +7,21 @@ ms.topic: article
 ms.date: 09/11/2019
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: b7552fc083c5ed340dc54c2a31160b0c8b4bd076
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84b826ce33b5395db5bd38e883b3a0fb3425725b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80420909"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244033"
 ---
 # <a name="security-hardening-for-aks-agent-node-host-os"></a>AKS 代理程式節點主機 OS 的安全性強化
 
-Azure Kubernetes Service （AKS）是與 SOC、ISO、PCI DSS 和 HIPAA 標準相容的安全服務。 本文涵蓋適用于 AKS 虛擬機器主機的安全性強化。 如需 AKS 安全性的詳細資訊，請參閱[Azure Kubernetes Service （AKS）中應用程式和叢集的安全性概念](https://docs.microsoft.com/azure/aks/concepts-security)。
+Azure Kubernetes Service (AKS) 是與 SOC、ISO、PCI DSS 和 HIPAA 標準相容的安全服務。 本文涵蓋適用于 AKS 虛擬機器主機的安全性強化。 如需 AKS 安全性的詳細資訊，請參閱[Azure Kubernetes Service (AKS) 中應用程式和叢集的安全性概念](./concepts-security.md)。
 
 > [!Note]
 > 本檔的範圍僅限於 AKS 中的 Linux 代理程式。
 
-AKS 叢集會部署在主機虛擬機器上，其會執行安全性優化 OS，以供在 AKS 上執行的容器使用。 此主機 OS 是以**Ubuntu 16.04. LTS**映射為基礎，並套用額外的安全性強化和優化（請參閱安全性強化詳細資料）。
+AKS 叢集會部署在主機虛擬機器上，其會執行安全性優化 OS，以供在 AKS 上執行的容器使用。 此主機 OS 是以**Ubuntu 16.04. LTS**映射為基礎，並套用額外的安全性強化和優化 (請參閱安全性強化詳細資料) 。
 
 安全性強化主機 OS 的目標是要減少攻擊的介面區，並以安全的方式將容器的部署優化。
 
@@ -32,7 +32,7 @@ AKS 叢集會部署在主機虛擬機器上，其會執行安全性優化 OS，�
 
 * AKS 預設會提供安全性優化主機 OS。 沒有選擇替代作業系統的選項。
 
-* Azure 會將每日修補程式（包括安全性修補程式）套用至 AKS 虛擬機器主機。 其中有些修補程式需要重新開機，有些則不會。 您必須負責排程 AKS VM 主機重新開機（如有需要）。 如需如何將 AKS 修補自動化的指引，請參閱[修補 AKS 節點](https://docs.microsoft.com/azure/aks/node-updates-kured)。
+* Azure 會套用每日修補程式 (包括) AKS 虛擬機器主機的安全性修補程式。 其中有些修補程式需要重新開機，有些則不會。 您必須負責排程 AKS VM 主機重新開機（如有需要）。 如需如何將 AKS 修補自動化的指引，請參閱[修補 AKS 節點](./node-updates-kured.md)。
 
 ## <a name="what-is-configured"></a>設定的內容
 
@@ -85,8 +85,8 @@ AKS 叢集會部署在主機虛擬機器上，其會執行安全性優化 OS，�
 
 如需 AKS 安全性的詳細資訊，請參閱下列文章： 
 
-[Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+[Azure Kubernetes Service (AKS)](./intro-kubernetes.md)
 
-[AKS 安全性考慮](https://docs.microsoft.com/azure/aks/concepts-security)
+[AKS 安全性考慮](./concepts-security.md)
 
-[AKS 最佳作法](https://docs.microsoft.com/azure/aks/best-practices)
+[AKS 最佳作法](./best-practices.md)

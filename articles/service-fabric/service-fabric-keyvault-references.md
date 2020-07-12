@@ -3,25 +3,26 @@ title: Azure Service Fabric-使用 Service Fabric 應用程式 KeyVault 參考
 description: 本文說明如何使用應用程式密碼的 service fabric KeyVaultReference 支援。
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: f7d8a083ea5ec4b66c29d392ee98927915465875
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1ac3ac50c5ac7cbabb03561c5db7f9c14150de4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76545478"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246158"
 ---
-#  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric 應用程式的 KeyVaultReference 支援（預覽）
+#  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric 應用程式 (預覽) 的 KeyVaultReference 支援
 
 建立雲端應用程式時，常見的挑戰是如何安全地儲存應用程式所需的秘密。 例如，您可能會想要將容器儲存機制認證儲存在 keyvault 中，並在應用程式資訊清單中參考它。 Service Fabric KeyVaultReference 使用 Service Fabric 受控身分識別，並可讓您輕鬆地參考 keyvault 的秘密。 本文的其餘部分將詳細說明如何使用 Service Fabric KeyVaultReference，並包含一些一般的使用方式。
 
 ## <a name="prerequisites"></a>必要條件
 
-- 應用程式的受控識別（MIT）
+- 應用程式 (MIT) 的受控識別
     
     Service Fabric KeyVaultReference 支援使用應用程式的受控識別，因此規劃以使用 KeyVaultReferences 的應用程式應該使用受控識別。 請遵循這[份檔](concepts-managed-identity.md)，為您的應用程式啟用受控識別。
 
-- 中央秘密存放區（CSS）。
+- 中央秘密存放區 (CSS) 。
 
-    中央秘密存放區（CSS）是 Service Fabric 的加密本機秘密快取。 CSS 是一個本機秘密存放區快取，可讓機密資料（例如密碼、權杖和金鑰）在記憶體中加密。 提取之後，就會在 CSS 中快取 KeyVaultReference。
+    中央秘密存放區 (CSS) 是 Service Fabric 加密的本機秘密快取。 CSS 是一個本機秘密存放區快取，可讓機密資料（例如密碼、權杖和金鑰）在記憶體中加密。 提取之後，就會在 CSS 中快取 KeyVaultReference。
 
     將以下程式新增至下的叢集設定 `fabricSettings` ，以啟用 KeyVaultReference 支援的所有必要功能。
 
@@ -157,4 +158,4 @@ KeyVaultReference 是容器 RepositoryCredentials 支援的類型，以下範例
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Azure KeyVault 檔](https://docs.microsoft.com/azure/key-vault/)
+* [Azure KeyVault 檔](../key-vault/index.yml)

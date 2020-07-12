@@ -4,12 +4,12 @@ description: 了解如何建立私人 Azure Kubernetes Service (AKS) 叢集
 services: container-service
 ms.topic: article
 ms.date: 6/18/2020
-ms.openlocfilehash: ebbe2f754aa70c6c65ec7016da29a4a1b0bd7dd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c788f2009bdc771bcdde20d1c3dbe9eafdbcffcb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374520"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244220"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>建立私人 Azure Kubernetes Service 叢集
 
@@ -83,7 +83,7 @@ API 伺服器端點沒有公用 IP 位址。 若要管理 API 伺服器，您使
 
 ## <a name="hub-and-spoke-with-custom-dns"></a>具有自訂 DNS 的中樞和輪輻
 
-[中樞和輪輻架構](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)通常用來在 Azure 中部署網路。 在其中許多部署中，輪輻 VNet 中的 DNS 設定會設定為參考中央 DNS 轉寄站，以允許用於內部部署和以 Azure 為基礎的 DNS 解析。 將 AKS 叢集部署到這類的網路環境時，有一些特殊的考量必須納入考慮。
+[中樞和輪輻架構](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)通常用來在 Azure 中部署網路。 在其中許多部署中，輪輻 VNet 中的 DNS 設定會設定為參考中央 DNS 轉寄站，以允許用於內部部署和以 Azure 為基礎的 DNS 解析。 將 AKS 叢集部署到這類的網路環境時，有一些特殊的考量必須納入考慮。
 
 ![私人叢集中樞和輪輻](media/private-clusters/aks-private-hub-spoke.png)
 
@@ -91,7 +91,7 @@ API 伺服器端點沒有公用 IP 位址。 若要管理 API 伺服器，您使
 
 2. 私人 DNS 區域只會連結至叢集節點所連結的 VNet (3)。 這表示私人端點只能由該連結 VNet 中的主機解析。 未在 VNet 上設定任何自訂 DNS 的情況下 (預設值)，這會在主機點向 DNS 的 168.63.129.16 時，沒有問題地正常運作，DNS 可以因為連結而在私人 DNS 區域中解析記錄。
 
-3. 在包含叢集的 VNet 有自訂 DNS 設定 (4) 的情況下，除非私人 DNS 區域已連結至包含自訂 DNS 解析程式 (5) 的 VNet，否則叢集部署將會失敗。 此連結可在叢集布建期間建立私人區域之後，或在使用事件架構部署機制（例如，Azure Event Grid 和 Azure Functions）偵測到建立區域之後，以手動方式建立。
+3. 在包含叢集的 VNet 有自訂 DNS 設定 (4) 的情況下，除非私人 DNS 區域已連結至包含自訂 DNS 解析程式 (5) 的 VNet，否則叢集部署將會失敗。 在叢集布建期間建立私人區域，或在使用事件架構部署 (機制（例如 Azure Event Grid 和 Azure Functions) ）偵測建立區域時，可以手動建立此連結。
 
 ## <a name="dependencies"></a>相依性  
 
@@ -116,9 +116,9 @@ API 伺服器端點沒有公用 IP 位址。 若要管理 API 伺服器，您使
 [az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[private-link-service]: /azure/private-link/private-link-service-overview#limitations
+[private-link-service]: ../private-link/private-link-service-overview.md#limitations
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
-[devops-agents]: https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops
+[devops-agents]: /azure/devops/pipelines/agents/agents?view=azure-devops
 [availability-zones]: availability-zones.md

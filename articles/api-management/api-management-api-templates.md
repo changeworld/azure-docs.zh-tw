@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.custom: tracking-python
-ms.openlocfilehash: 467d8b89ef5c114d647a257053ed3367d6336bdc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 193dc7a953bc746ec7211433f846343969176c96
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559344"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243693"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API 管理中的 API 範本
 
@@ -39,7 +40,7 @@ ms.locfileid: "84559344"
     -   [Ruby](#Ruby)  
 
 > [!NOTE]
->  下列文件中包含範例預設範本，但範本可能會因持續進行的改善而有變更。 您可以瀏覽至想要的個別範本，來檢視開發人員入口網站中的即時預設範本。 如需有關使用範本的詳細資訊，請參閱[如何使用範本自訂 API 管理開發人員入口網站](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
+>  下列文件中包含範例預設範本，但範本可能會因持續進行的改善而有變更。 您可以瀏覽至想要的個別範本，來檢視開發人員入口網站中的即時預設範本。 如需有關使用範本的詳細資訊，請參閱[如何使用範本自訂 API 管理開發人員入口網站](./api-management-developer-portal-templates.md)。  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -89,7 +90,7 @@ ms.locfileid: "84559344"
   
 ### <a name="data-model"></a>資料模型  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
 |`apis`|[API 摘要](api-management-template-data-model-reference.md#APISummary)實體的集合。|目前使用者可看見的 API。|  
   
@@ -344,7 +345,7 @@ ms.locfileid: "84559344"
   
 ### <a name="data-model"></a>資料模型  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
 |`apiId`|字串|目前 API 的識別碼。|  
 |`apiName`|字串|API 的名稱。|  

@@ -5,11 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: 0f9b625dfbe9c39bea7771dcc5fd58805ce19811
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8a1fdfb23b6e0aee9b9bdd04f70c554824f4c35
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458368"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246566"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>獨立 Windows 叢集的組態設定
 本文說明如何在 ClusterConfig.json** 檔案中設定獨立 Azure Service Fabric 叢集的組態設定。 您將會使用此檔案來指定叢集節點、安全性設定，以及容錯和升級網域方面之網路拓撲的相關資訊。  變更或新增組態設定之後，您可以[建立獨立叢集](service-fabric-cluster-creation-for-windows-server.md)或[升級獨立叢集的組態](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -88,7 +89,7 @@ reliabilityLevel 的概念會定義可以在叢集主要節點上執行之 Servi
 }
 ```
 
-metadata 是叢集診斷的說明，而且可根據您的設定來進行設定。 這些變數有助於收集 ETW 追蹤記錄、損毀傾印，以及效能計數器。 如需 ETW 追蹤記錄的詳細資訊，請參閱 [Tracelog](https://msdn.microsoft.com/library/windows/hardware/ff552994.aspx) 和 [ETW 追蹤](https://msdn.microsoft.com/library/ms751538.aspx)。 包含[損毀傾印](https://blogs.technet.microsoft.com/askperf/2008/01/08/understanding-crash-dump-files/)和[效能計數器](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx)的所有記錄可導向至電腦上的 connectionString 資料夾。 您也可以使用 AzureStorage 來儲存診斷。 請參閱下列程式碼片段範例：
+metadata 是叢集診斷的說明，而且可根據您的設定來進行設定。 這些變數有助於收集 ETW 追蹤記錄、損毀傾印，以及效能計數器。 如需 ETW 追蹤記錄的詳細資訊，請參閱 [Tracelog](/windows-hardware/drivers/devtest/tracelog) 和 [ETW 追蹤](/dotnet/framework/wcf/samples/etw-tracing)。 包含[損毀傾印](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf)和[效能計數器](/windows/win32/perfctrs/performance-counters-portal)的所有記錄可導向至電腦上的 connectionString 資料夾。 您也可以使用 AzureStorage 來儲存診斷。 請參閱下列程式碼片段範例：
 
 ```json
 "diagnosticsStore": {
@@ -192,7 +193,7 @@ name 是此特定節點類型的易記名稱。 若要建立此節點類型的�
     ]
 }
 ```
-所有可用的附加元件功能都可以在[Service Fabric REST API 參考](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-addonfeatures)中看到。
+所有可用的附加元件功能都可以在[Service Fabric REST API 參考](/rest/api/servicefabric/sfrp-model-addonfeatures)中看到。
 
 ### <a name="container-support"></a>容器支援
 若要啟用獨立叢集的 Windows Server 容器和 Hyper-V 容器的容器支援，必須啟用 DnsService 附加功能。
@@ -203,4 +204,3 @@ name 是此特定節點類型的易記名稱。 若要建立此節點類型的�
 如果您已部署獨立叢集，您也可以[升級獨立叢集的組態](service-fabric-cluster-config-upgrade-windows-server.md)。 
 
 了解如何[使用 Service Fabric 總管視覺化叢集](service-fabric-visualizing-your-cluster.md)。
-

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0eca73b5acae715283c05125181e12729ed5a772
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6b73fef368dc8dec5d8c042cdac1d3cea899450
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335579"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242435"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 將符號圖層新增至地圖
 
@@ -50,7 +50,7 @@ ms.locfileid: "80335579"
     </FrameLayout>
     ```
 
-2. 將下列程式碼片段複製到您類別的**onCreate （）** 方法中 `MainActivity.java` 。
+2. 將下列程式碼片段複製到您類別的**onCreate ( # B1**方法中 `MainActivity.java` 。
 
     ```Java
     mapControl.onReady(map -> {
@@ -72,7 +72,7 @@ ms.locfileid: "80335579"
     
     ```
     
-    上述程式碼片段會先使用**onReady （）** 回呼方法來取得 Azure 地圖服務的地圖控制項實例。 然後，它會使用**DataSource**類別來建立資料來源物件，並將它加入至對應。 然後，它會將包含點幾何的**功能**新增至其中。 然後會將紅色標記影像設定為符號的圖示。 **符號圖層**會使用文字或圖示，將資料來源中包裝的點式資料轉譯為地圖上的符號。 接著會建立符號圖層，並將資料來源傳遞給它以轉譯，然後再新增至地圖的圖層。
+    上述程式碼片段會先使用**onReady ( # B1**回呼方法來取得 Azure 地圖服務的地圖控制項實例。 然後，它會使用**DataSource**類別來建立資料來源物件，並將它加入至對應。 然後，它會將包含點幾何的**功能**新增至其中。 然後會將紅色標記影像設定為符號的圖示。 **符號圖層**會使用文字或圖示，將資料來源中包裝的點式資料轉譯為地圖上的符號。 接著會建立符號圖層，並將資料來源傳遞給它以轉譯，然後再新增至地圖的圖層。
     
     新增上述程式碼片段之後，您 `MainActivity.java` 的看起來應該如下所示：
     
@@ -172,6 +172,8 @@ ms.locfileid: "80335579"
 
 ![Android 地圖釘選圖示](./media/how-to-add-symbol-to-android-map/android-map-pin.png)</center>
 
+> [!TIP]
+> 根據預設，符號圖層會藉由隱藏重迭的符號來優化符號的呈現。 當您放大時，隱藏的符號就會變成可見。 若要停用此功能並隨時呈現所有符號，請將 `iconAllowOverlap` 選項設定為 `true` 。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 6af5fa944ef399756f9e890ddd77a7f5f32e2bfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef720a14617b4131474d50875701d0ef27df4151
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76903024"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245497"
 ---
 # <a name="sfctl-settings-telemetry"></a>sfctl settings telemetry
 在 sfctl 的此執行個體設定遙測設定。
@@ -18,7 +19,7 @@ Sfctl telemetry 會收集命令名稱 (不提供參數或其名稱)、sfctl 版�
 
 ## <a name="commands"></a>命令
 
-|Command|描述|
+|命令|描述|
 | --- | --- |
 | set-telemetry | 開啟或關閉遙測。 |
 
@@ -59,4 +60,4 @@ sfctl settings telemetry set_telemetry --on
 
 ## <a name="next-steps"></a>後續步驟
 - [設定](service-fabric-cli.md)Service Fabric CLI。
-- 了解如何使用[範例指令碼](/azure/service-fabric/scripts/sfctl-upgrade-application)來使用 Service Fabric CLI。
+- 了解如何使用[範例指令碼](./scripts/sfctl-upgrade-application.md)來使用 Service Fabric CLI。

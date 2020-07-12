@@ -3,11 +3,12 @@ title: Reliable Actors 計時器和提醒
 description: Service Fabric Reliable Actors 的計時器和提醒簡介，包括每個使用時機的指導方針。
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.openlocfilehash: 67dc5d9706c2176b2fe70d2540be00d0af79fd80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a464fda3f8b0f293efd36cf0a064156bd7795d44
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82996361"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245942"
 ---
 # <a name="actor-timers-and-reminders"></a>動作項目計時器和提醒
 動作項目可藉由註冊計時器或提醒來排程本身的週期性工作。 本文示範如何使用計時器和提醒，以及說明它們之間的差異。
@@ -124,12 +125,12 @@ public class VisualObjectActorImpl extends FabricActor implements VisualObjectAc
 當動作項目在記憶體回收期間停用時，將會停止所有的計時器。 而在此之後不會叫用任何計時器回呼。 此外，動作項目執行階段並不保留任何停用前執行中的計時器資訊。 由動作項目來決定任何未來重新啟動時所需計時器的註冊。 如需詳細資訊，請參閱 [動作項目記憶體回收](service-fabric-reliable-actors-lifecycle.md)一節。
 
 ## <a name="actor-reminders"></a>動作項目提醒
-提醒是一個會在指定時間於動作項目上觸發持續性回呼的機制。 其功能很類似計時器。 但與計時器不同的是，在所有情況下都會觸發提醒，直到動作項目明確地取消註冊它們或動作項目明確刪除為止。 具體而言，動作項目的停用和容錯移轉會觸發提醒，因為動作項目執行階段會使用動作項目狀態供應器來保存動作項目的提醒相關資訊。 與計時器不同的是，您可以 `RegisterReminderAsync` 使用相同的*reminderName*，再次呼叫註冊方法（）來更新現有的提醒。
+提醒是一個會在指定時間於動作項目上觸發持續性回呼的機制。 其功能很類似計時器。 但與計時器不同的是，在所有情況下都會觸發提醒，直到動作項目明確地取消註冊它們或動作項目明確刪除為止。 具體而言，動作項目的停用和容錯移轉會觸發提醒，因為動作項目執行階段會使用動作項目狀態供應器來保存動作項目的提醒相關資訊。 與計時器不同的是，您可以呼叫註冊方法來更新現有的提醒， (`RegisterReminderAsync` 使用相同的*reminderName*再次) 。
 
 > [!NOTE]
 > 提醒的可靠性會與動作專案狀態提供者所提供的狀態可靠性保證相關聯。 這表示，如果動作專案的狀態持續性設定為 [*無*]，則不會在容錯移轉之後引發提醒。
 
-若要註冊提醒，動作專案會呼叫 [`RegisterReminderAsync`](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks) 基類提供的方法，如下列範例所示：
+若要註冊提醒，動作專案會呼叫 [`RegisterReminderAsync`](/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks) 基類提供的方法，如下列範例所示：
 
 ```csharp
 protected override async Task OnActivateAsync()

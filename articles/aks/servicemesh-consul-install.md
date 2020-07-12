@@ -1,18 +1,19 @@
 ---
 title: 在 Azure Kubernetes Service (AKS) 中安裝 Consul
-description: 瞭解如何安裝和使用 Consul，以在 Azure Kubernetes Service （AKS）叢集中建立服務網格
+description: 瞭解如何安裝和使用 Consul，以在 Azure Kubernetes Service (AKS) 叢集內建立服務網格
 author: dstrebel
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: ef77037526beba1be2e4e8a834dbd09c8a73310c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f47ded22209a9d53510c7d0a2f8270096161354
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84197223"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244120"
 ---
-# <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service 中安裝和使用 Consul （AKS）
+# <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中安裝和使用 Consul
 
 [Consul][consul-github]是一種開放原始碼服務網格，可在 Kubernetes 叢集中跨微服務提供一組重要的功能。 這些功能包括服務探索、健康情況檢查、服務分割和可檢視性。 如需有關 Consul 的詳細資訊，請參閱官方[什麼是 Consul？][consul-docs-concepts]檔。
 
@@ -32,7 +33,7 @@ ms.locfileid: "84197223"
 
 ## <a name="before-you-begin"></a>開始之前
 
-本文中詳述的步驟假設您已建立 AKS 叢集（ `1.13` 已啟用 RBAC 的 Kubernetes 和更新版本），並已建立與叢集的連線 `kubectl` 。 如果您需要前述任何方面的協助，請參閱 [AKS 快速入門][aks-quickstart]。 請確定您的叢集在 Linux 節點集區中至少有3個節點。
+本文中詳述的步驟假設您已建立 AKS 叢集 (Kubernetes 和更新版本 `1.13` ，並已啟用 RBAC) 並已建立與叢集的連線 `kubectl` 。 如果您需要前述任何方面的協助，請參閱 [AKS 快速入門][aks-quickstart]。 請確定您的叢集在 Linux 節點集區中至少有3個節點。
 
 您將需要[Helm][helm] ，才能遵循這些指示並安裝 Consul。 建議您在叢集中正確安裝和設定最新的穩定版本。 如果您需要安裝 Helm 的協助，請參閱[AKS Helm 安裝指引][helm-install]。 所有 Consul pod 也必須排程在 Linux 節點上執行。
 
@@ -106,7 +107,7 @@ kubectl get svc --namespace consul --output wide
 kubectl get pod --namespace consul --output wide
 ```
 
-下列範例輸出顯示現在應該正在執行的服務和 pod （已排程在 Linux 節點上）：
+下列範例輸出顯示在 Linux 節點上 (排程的服務和 pod，) 現在應該正在執行：
 
 ```output
 NAME                                 TYPE           CLUSTER-IP    EXTERNAL-IP             PORT(S)                                                                   AGE     SELECTOR
@@ -183,12 +184,12 @@ kubectl delete namespace consul
 [consul-mesh-gateways]: https://learn.hashicorp.com/consul/kubernetes/mesh-gateways
 [consul-reference]: https://learn.hashicorp.com/consul/kubernetes/kubernetes-reference
 [consul-app-example]: https://learn.hashicorp.com/consul?track=gs-consul-service-mesh#gs-consul-service-mesh
-[install-wsl]: https://docs.microsoft.com/windows/wsl/install-win10
+[install-wsl]: /windows/wsl/install-win10
 
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 [kubectl-port-forward]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward
-[kubernetes-node-selectors]: https://docs.microsoft.com/azure/aks/concepts-clusters-workloads#node-selectors
+[kubernetes-node-selectors]: ./concepts-clusters-workloads.md#node-selectors
 
 <!-- LINKS - internal -->
 [aks-quickstart]: ./kubernetes-walkthrough.md

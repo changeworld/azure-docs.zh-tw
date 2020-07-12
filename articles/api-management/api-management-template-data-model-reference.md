@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 5625ff7e4fc51b9b6b894698719247902a480f44
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 868ad3d1c6e7e7ef2cf32dcf675bc471a614f3ed
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690026"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243149"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Azure API 管理範本資料模型參考
 本主題說明在 Azure API 管理的開發人員入口網站範本資料模型中，所使用之一般項目的實體和類型表示法。  
   
- 如需有關使用範本的詳細資訊，請參閱[如何使用範本自訂 API 管理開發人員入口網站](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
+ 如需有關使用範本的詳細資訊，請參閱[如何使用範本自訂 API 管理開發人員入口網站](./api-management-developer-portal-templates.md)。  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -58,7 +59,7 @@ ms.locfileid: "84690026"
 ##  <a name="api"></a><a name="API"></a>API  
  `API` 實體具有下列屬性：  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
 |`id`|字串|資源識別碼。 可唯一識別目前 API 管理服務執行個體內的 API。 其值為 `apis/{id}` 格式的有效相對 URL，其中 `{id}` 是 API 識別碼。 這個屬性是唯讀的。|  
 |`name`|字串|API 的名稱。 不能空白。 長度上限是 100 個字元。|  
@@ -66,13 +67,13 @@ ms.locfileid: "84690026"
 |`serviceUrl`|字串|實作此 API 之後端服務的絕對 URL。|  
 |`path`|字串|可在 API 管理服務執行個體內唯一識別此 API 及其所有資源路徑的相對 URL。 此路徑會附加至在服務執行個體建立期間所指定的 API 端點基底 URL，以形成此 API 的公用 URL。|  
 |`protocols`|數字陣列|描述此 API 中的作業可在哪些通訊協定上叫用。 允許的值為 `1 - http` 和 `2 - https`或兩者兼具。|  
-|`authenticationSettings`|[授權伺服器驗證設定](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|此 API 中所包含之驗證設定的集合。|  
+|`authenticationSettings`|[授權伺服器驗證設定](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|此 API 中所包含之驗證設定的集合。|  
 |`subscriptionKeyParameterNames`|物件 (object)|選擇性屬性，可用來指定包含訂用帳戶金鑰之查詢和/或標頭參數的自訂名稱。 此屬性若存在，其中就至少必須包含下列兩個屬性的其中之一。<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
   
 ##  <a name="api-summary"></a><a name="APISummary"></a>API 摘要  
  `API summary` 實體具有下列屬性：  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
 |`id`|字串|資源識別碼。 可唯一識別目前 API 管理服務執行個體內的 API。 其值為 `apis/{id}` 格式的有效相對 URL，其中 `{id}` 是 API 識別碼。 這個屬性是唯讀的。|  
 |`name`|字串|API 的名稱。 不能空白。 長度上限是 100 個字元。|  
@@ -81,7 +82,7 @@ ms.locfileid: "84690026"
 ##  <a name="application"></a><a name="Application"></a>應用程式  
  `application` 實體具有下列屬性：  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
 |`Id`|字串|應用程式的唯一識別碼。|  
 |`Title`|字串|應用程式的標題。|  
@@ -99,7 +100,7 @@ ms.locfileid: "84690026"
 ##  <a name="attachment"></a><a name="Attachment"></a>附件  
  `attachment` 實體具有下列屬性：  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
 |`UniqueId`|字串|附件的唯一識別碼。|  
 |`Url`|字串|資源的 URL。|  
@@ -108,7 +109,7 @@ ms.locfileid: "84690026"
   
 ##  <a name="code-sample"></a><a name="Sample"></a>程式碼範例  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
 |`title`|字串|作業的名稱。|  
 |`snippet`|字串|此屬性已過時而不應使用。|  
@@ -126,7 +127,7 @@ ms.locfileid: "84690026"
 ##  <a name="comment"></a><a name="Comment"></a>加以  
  `API` 實體具有下列屬性：  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
 |`Id`|number|批註的識別碼。|  
 |`CommentText`|字串|註解的本文。 可包含 HTML。|  
@@ -136,7 +137,7 @@ ms.locfileid: "84690026"
 ##  <a name="issue"></a><a name="Issue"></a>問題  
  `issue` 實體具有下列屬性。  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
 |`Id`|字串|問題的唯一識別碼。|  
 |`ApiID`|字串|回報此問題之 API 的識別碼。|  
@@ -152,7 +153,7 @@ ms.locfileid: "84690026"
 ##  <a name="filtering"></a><a name="Filtering"></a>濾除  
  `filtering` 實體具有下列屬性：  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
 |`Pattern`|字串|目前的搜尋詞彙；或者，如果沒有搜尋詞彙，則為 `null`。|  
 |`Placeholder`|字串|未指定搜尋詞彙時要在搜尋方塊中顯示的文字。|  
@@ -160,7 +161,7 @@ ms.locfileid: "84690026"
 ##  <a name="header"></a><a name="Header"></a>標頭  
  本區段描述 `parameter` 表示法。  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|-----------------|----------|  
 |`name`|字串|參數名稱。|  
 |`description`|字串|參數描述。|  
@@ -173,7 +174,7 @@ ms.locfileid: "84690026"
 ##  <a name="http-request"></a><a name="HTTPRequest"></a>HTTP 要求  
  本區段描述 `request` 表示法。  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
 |`description`|字串|作業要求描述。|  
 |`headers`|[標頭](#Header)實體的陣列。|要求標頭。|  
@@ -183,7 +184,7 @@ ms.locfileid: "84690026"
 ##  <a name="http-response"></a><a name="HTTPResponse"></a>HTTP 回應  
  本區段描述 `response` 表示法。  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
 |`statusCode`|正整數|作業回應狀態碼。|  
 |`description`|字串|作業回應描述。|  
@@ -192,13 +193,13 @@ ms.locfileid: "84690026"
 ##  <a name="operation"></a><a name="Operation"></a>運營  
  `operation` 實體具有下列屬性：  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
 |`id`|字串|資源識別碼。 可唯一識別目前 API 管理服務執行個體內的作業。 其值為 `apis/{aid}/operations/{id}` 格式的有效相對 URL，其中 `{aid}` 是 API 識別碼，`{id}` 是作業識別碼。 這個屬性是唯讀的。|  
 |`name`|字串|作業名稱。 不能空白。 長度上限是 100 個字元。|  
 |`description`|字串|作業的描述。 不能空白。 可包含 HTML 格式標籤。 長度上限是 1000 個字元。|  
 |`scheme`|字串|描述此 API 中的作業可在哪些通訊協定上叫用。 允許的值為 `http`、`https` 或 `http` 和 `https` 兼具。|  
-|`uriTemplate`|字串|可識別此作業之目標資源的相對 URL 範本。 可包含參數。 範例：`customers/{cid}/orders/{oid}/?date={date}`|  
+|`uriTemplate`|字串|可識別此作業之目標資源的相對 URL 範本。 可包含參數。 範例： `customers/{cid}/orders/{oid}/?date={date}`|  
 |`host`|字串|裝載 API 的 API 管理閘道 URL。|  
 |`httpMethod`|字串|作業 HTTP 方法。|  
 |`request`|[HTTP 要求](#HTTPRequest)|包含要求詳細資料的實體。|  
@@ -207,7 +208,7 @@ ms.locfileid: "84690026"
 ##  <a name="operation-menu"></a><a name="Menu"></a>作業功能表  
  `operation menu` 實體具有下列屬性：  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
 |`ApiId`|字串|目前 API 的識別碼。|  
 |`CurrentOperationId`|字串|目前作業的識別碼。|  
@@ -217,7 +218,7 @@ ms.locfileid: "84690026"
 ##  <a name="operation-menu-item"></a><a name="MenuItem"></a>作業功能表項目  
  `operation menu item` 實體具有下列屬性：  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
 |`Id`|字串|作業的識別碼。|  
 |`Title`|字串|作業的描述。|  
@@ -226,7 +227,7 @@ ms.locfileid: "84690026"
 ##  <a name="paging"></a><a name="Paging"></a>速度  
  `paging` 實體具有下列屬性：  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
 |`Page`|number|目前的頁碼。|  
 |`PageSize`|number|要在單一頁面中顯示的結果數上限。|  
@@ -237,7 +238,7 @@ ms.locfileid: "84690026"
 ##  <a name="parameter"></a><a name="Parameter"></a>實參  
  本區段描述 `parameter` 表示法。  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|-----------------|----------|  
 |`name`|字串|參數名稱。|  
 |`description`|字串|參數描述。|  
@@ -250,7 +251,7 @@ ms.locfileid: "84690026"
 ##  <a name="product"></a><a name="Product"></a>基礎  
  `product` 實體具有下列屬性：  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
 |`Id`|字串|資源識別碼。 可唯一識別目前 API 管理服務執行個體內的產品。 其值為 `products/{pid}` 格式的有效相對 URL，其中 `{pid}` 是產品識別碼。 這個屬性是唯讀的。|  
 |`Title`|字串|產品的名稱。 不能空白。 長度上限是 100 個字元。|  
@@ -263,7 +264,7 @@ ms.locfileid: "84690026"
 ##  <a name="provider"></a><a name="Provider"></a>那裡  
  `provider` 實體具有下列屬性：  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
 |`Properties`|字串字典|此驗證提供者的屬性。|  
 |`AuthenticationType`|字串|提供者類型  (Azure Active Directory、Facebook 登入、Google 帳戶、Microsoft 帳戶、Twitter)。|  
@@ -272,7 +273,7 @@ ms.locfileid: "84690026"
 ##  <a name="representation"></a><a name="Representation"></a>表示  
  本區段描述 `representation`。  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
 |`contentType`|字串|為此表示法指定已註冊或自訂內容類型，例如 `application/xml`。|  
 |`sample`|字串|表示法的範例。|  
@@ -280,7 +281,7 @@ ms.locfileid: "84690026"
 ##  <a name="subscription"></a><a name="Subscription"></a> 訂閱  
  `subscription` 實體具有下列屬性：  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
 |`Id`|字串|資源識別碼。 可唯一識別目前 API 管理服務執行個體內的訂用帳戶。 其值為 `subscriptions/{sid}` 格式的有效相對 URL，其中 `{sid}` 是訂用帳戶識別碼。 這個屬性是唯讀的。|  
 |`ProductId`|字串|已訂閱之產品的產品資源識別碼。 其值為 `products/{pid}` 格式的有效相對 URL，其中 `{pid}` 是產品識別碼。|  
@@ -306,7 +307,7 @@ ms.locfileid: "84690026"
 ##  <a name="subscription-summary"></a><a name="SubscriptionSummary"></a>訂用帳戶摘要  
  `subscription summary` 實體具有下列屬性：  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
 |`Id`|字串|資源識別碼。 可唯一識別目前 API 管理服務執行個體內的訂用帳戶。 其值為 `subscriptions/{sid}` 格式的有效相對 URL，其中 `{sid}` 是訂用帳戶識別碼。 這個屬性是唯讀的。|  
 |`DisplayName`|字串|訂用帳戶的顯示名稱|  
@@ -314,7 +315,7 @@ ms.locfileid: "84690026"
 ##  <a name="user-account-info"></a><a name="UserAccountInfo"></a>使用者帳戶資訊  
  `user account info` 實體具有下列屬性：  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
 |`FirstName`|字串|名字。 不能空白。 長度上限是 100 個字元。|  
 |`LastName`|字串|姓氏。 不能空白。 長度上限是 100 個字元。|  
@@ -327,7 +328,7 @@ ms.locfileid: "84690026"
 ##  <a name="user-sign-in"></a><a name="UseSignIn"></a>使用者登入  
  `user sign in` 實體具有下列屬性：  
   
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |--------------|----------|-----------------|  
 |`Email`|字串|電子郵件地址。 不能空白，且在服務執行個體內必須是唯一的。 長度上限是 254 個字元。|  
 |`Password`|字串|使用者帳戶密碼。|  

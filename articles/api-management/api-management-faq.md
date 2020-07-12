@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 219681351159de6ac6bb48ff979cc68aa4ee18d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72f9381a320dc0fb946dbf6f48c5bcab5390aed5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82233477"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243574"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常見問題集
 得到 Azure API 管理常見問題、模式和最佳作法的答案。
@@ -68,7 +68,7 @@ ms.locfileid: "82233477"
 
 * [API 管理 REST API](/rest/api/apimanagement/)。
 * [Microsoft Azure ApiManagement 服務管理資源庫 SDK](https://aka.ms/apimsdk)。
-* [服務部署](https://docs.microsoft.com/powershell/module/wds)和[服務管理](https://docs.microsoft.com/powershell/azure/servicemanagement/overview) PowerShell Cmdlet。
+* [服務部署](/powershell/module/wds)和[服務管理](/powershell/azure/servicemanagement/overview) PowerShell Cmdlet。
 
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>如何將使用者新增至 Administrators 群組？
 將使用者新增至 Administrators 群組的步驟如下：
@@ -77,7 +77,7 @@ ms.locfileid: "82233477"
 2. 移至包含您要更新之 API 管理執行個體的資源群組。
 3. 在 [API 管理] 中，將 [ **Api 管理] 服務參與者**角色指派給使用者。
 
-新增的參與者現在即可使用 Azure PowerShell [Cmdlet](https://docs.microsoft.com/powershell/azure/overview)。 以系統管理員身分登入的步驟如下︰
+新增的參與者現在即可使用 Azure PowerShell [Cmdlet](/powershell/azure/overview)。 以系統管理員身分登入的步驟如下︰
 
 1. 使用 `Connect-AzAccount` Cmdlet 進行登入。
 2. 使用 `Set-AzContext -SubscriptionID <subscriptionGUID>` 將內容設定為具有服務的訂用帳戶。
@@ -85,7 +85,7 @@ ms.locfileid: "82233477"
 4. 使用此 URL 來存取系統管理入口網站。
 
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>為什麼「我想要新增」的原則無法用於原則編輯器？
-如果您想要新增的原則在原則編輯器中呈暗灰色，請確定您是在該原則的正確範圍內。 每個原則陳述式都是為您在特定範圍和原則區段中使用所設計。 若要檢閱原則的原則區段和範圍，請參閱 [API 管理原則](/azure/api-management/api-management-policies)中原則的「使用方式」一節。
+如果您想要新增的原則在原則編輯器中呈暗灰色，請確定您是在該原則的正確範圍內。 每個原則陳述式都是為您在特定範圍和原則區段中使用所設計。 若要檢閱原則的原則區段和範圍，請參閱 [API 管理原則](./api-management-policies.md)中原則的「使用方式」一節。
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>如何在單一 API 中設定多個環境？
 若要在單一 API 中設定多個環境 (例如一個測試環境和一個生產環境)，您有兩個選項。 您可以：
@@ -94,7 +94,7 @@ ms.locfileid: "82233477"
 * 在不同租用戶上裝載相同的 API。
 
 ### <a name="can-i-use-soap-with-api-management"></a>可以使用 SOAP 搭配 API 管理嗎？
-現在可以使用 [SOAP 傳遞](https://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/)支援。 系統管理員可以匯入其 SOAP 服務的 WSDL，而 Azure API 管理將會建立 SOAP 前端。 開發人員入口網站文件、測試主控台、原則和分析全都適用於 SOAP 服務。
+現在可以使用 [SOAP 傳遞](https://azure.microsoft.com/blog/soap-pass-through/)支援。 系統管理員可以匯入其 SOAP 服務的 WSDL，而 Azure API 管理將會建立 SOAP 前端。 開發人員入口網站文件、測試主控台、原則和分析全都適用於 SOAP 服務。
 
 ### <a name="can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security"></a>可以設定具有 AD FS 安全性的 OAUth 2.0 授權伺服器嗎？
 若要了解如何使用 Active Directory Federation Services (AD FS) 安全性來設定 OAuth 2.0 授權伺服器，請參閱[在 API 管理中使用 ADFS](https://phvbaars.wordpress.com/2016/02/06/using-adfs-in-api-management/)。
@@ -109,7 +109,7 @@ API 管理會在部署到多個地理位置時，使用[效能流量路由方法
 是。 這可以透過 PowerShell 或直接提交至 API 來完成。 這將會停用信任鏈結驗證，在從 API 管理對後端服務進行通訊時，還可讓您使用自我簽署或私人簽署的憑證。
 
 #### <a name="powershell-method"></a>Powershell 方法 ####
-使用 [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) （適用于新的後端）或 [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) （適用于現有的後端） PowerShell Cmdlet，並將 `-SkipCertificateChainValidation` 參數設定為 `True` 。
+[`New-AzApiManagementBackend`](/powershell/module/az.apimanagement/new-azapimanagementbackend)針對新的後端) 使用 ([`Set-AzApiManagementBackend`](/powershell/module/az.apimanagement/set-azapimanagementbackend) ，或針對現有的後端) PowerShell Cmdlet 使用 (，並將 `-SkipCertificateChainValidation` 參數設定為 `True` 。
 
 ```powershell
 $context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'

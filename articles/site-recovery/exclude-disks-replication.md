@@ -3,12 +3,12 @@ title: 使用 Azure Site Recovery 從複寫排除磁碟
 description: 如何使用 Azure Site Recovery 從 Azure 的複寫排除磁碟。
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 5a8d52bd0cc40b45f92039c537a1b3b63f0bec61
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 778bb030d9768c5fbe1cb8aeba0becfc68c00629
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135690"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245393"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>從災害復原排除磁碟
 
@@ -105,29 +105,35 @@ Disk3 | G:\ | 使用者資料庫 2
 1. 開啟命令提示字元。
 2. 從命令提示字元，在復原模式下執行 SQL Server。
 
-        Net start MSSQLSERVER /f / T3608
+    ```console
+    Net start MSSQLSERVER /f / T3608
+    ```
 
 3. 執行下列 sqlcmd，將 tempdb 路徑變更為新的路徑。
 
-        sqlcmd -A -S SalesDB        **Use your SQL DBname**
-        USE master;     
-        GO      
-        ALTER DATABASE tempdb       
-        MODIFY FILE (NAME = tempdev, FILENAME = 'E:\MSSQL\tempdata\tempdb.mdf');
-        GO      
-        ALTER DATABASE tempdb       
-        MODIFY FILE (NAME = templog, FILENAME = 'E:\MSSQL\tempdata\templog.ldf');       
-        GO
-
+    ```sql
+    sqlcmd -A -S SalesDB        **Use your SQL DBname**
+    USE master;     
+    GO      
+    ALTER DATABASE tempdb       
+    MODIFY FILE (NAME = tempdev, FILENAME = 'E:\MSSQL\tempdata\tempdb.mdf');
+    GO      
+    ALTER DATABASE tempdb       
+    MODIFY FILE (NAME = templog, FILENAME = 'E:\MSSQL\tempdata\templog.ldf');       
+    GO
+    ```
 
 4. 停止 Microsoft SQL Server 服務。
 
-        Net stop MSSQLSERVER
+    ```console
+    Net stop MSSQLSERVER
+    ```
+
 5. 啟動 Microsoft SQL Server 服務。
 
-        Net start MSSQLSERVER
-
-
+    ```console
+    Net start MSSQLSERVER
+    ```
 
 ### <a name="vmware-vms-disks-during-failback-to-original-location"></a>VMware VM：容錯回復至原始位置期間的磁碟
 

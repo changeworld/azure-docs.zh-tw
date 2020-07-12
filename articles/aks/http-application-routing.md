@@ -1,16 +1,17 @@
 ---
 title: Azure Kubernetes Service (AKS) 上的 HTTP 應用程式路由附加元件
-description: 使用 HTTP 應用程式路由附加元件來存取部署在 Azure Kubernetes Service （AKS）上的應用程式。
+description: 使用 HTTP 應用程式路由附加元件來存取部署在 Azure Kubernetes Service (AKS) 上的應用程式。
 services: container-service
 author: lachie83
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: 041767474fbc56ee7a53bcbd54f27873d17dab77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 216705ef4ff7c235179c1f1be38a993ecd2fe782
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85413632"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244407"
 ---
 # <a name="http-application-routing"></a>HTTP 應用程式路由
 
@@ -19,7 +20,7 @@ HTTP 應用程式路由解決方案可讓您輕鬆存取已部署至 Azure Kuber
 啟用附加元件時，它會在您的訂用帳戶中建立 DNS 區域。 如需 DNS 成本的詳細資訊，請參閱 [DNS 定價][dns-pricing]。
 
 > [!CAUTION]
-> HTTP 應用程式路由附加元件依設計可讓您快速建立輸入控制器，以及存取您的應用程式。 不建議將此附加元件用於生產環境。 若要進行包含多個複本和 TLS 支援的生產環境輸入部署，請參閱[建立 HTTPS 輸入控制器](https://docs.microsoft.com/azure/aks/ingress-tls)。
+> HTTP 應用程式路由附加元件依設計可讓您快速建立輸入控制器，以及存取您的應用程式。 不建議將此附加元件用於生產環境。 若要進行包含多個複本和 TLS 支援的生產環境輸入部署，請參閱[建立 HTTPS 輸入控制器](./ingress-tls.md)。
 
 ## <a name="http-routing-solution-overview"></a>HTTP 路由解決方案概觀
 

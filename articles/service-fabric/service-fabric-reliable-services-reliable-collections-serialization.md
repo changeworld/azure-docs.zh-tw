@@ -3,11 +3,12 @@ title: 可靠的集合物件序列化
 description: 瞭解 Azure Service Fabric 可靠的集合物件序列化，包括預設策略和如何定義自訂序列化。
 ms.topic: conceptual
 ms.date: 5/8/2017
-ms.openlocfilehash: 666e1bb45a9c75ee143f15a0d871d6ae1408eca9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7a0dc56c181ddd6a98ab0e263180c222368dafb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75639542"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245988"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Service Fabric 中的 Reliable Collection 物件序列化
 Reliable Collections 會複寫並保存其項目，以確保在電腦發生失敗和電力中斷時能持續保留這些項目。
@@ -18,7 +19,7 @@ Reliable State Manager 包含內建的序列化程式，並允許為指定的類
 
 ## <a name="built-in-serializers"></a>內建的序列化程式
 
-Reliable State Manager 包含一些常見類型的內建序列化程式，以便透過預設方式有效率地將這些類型序列化。 針對其他類型，Reliable State Manager 會回復為使用 [DataContractSerializer](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer(v=vs.110).aspx)。
+Reliable State Manager 包含一些常見類型的內建序列化程式，以便透過預設方式有效率地將這些類型序列化。 針對其他類型，Reliable State Manager 會回復為使用 [DataContractSerializer](/dotnet/api/system.runtime.serialization.datacontractserializer?view=netcore-3.1)。
 內建的序列化程式較有效率，因為它們知道它們的類型無法變更，所以不需要包含類型的相關資訊 (例如其類型名稱)。
 
 Reliable State Manager 具有下列類型的內建序列化程式： 
@@ -43,7 +44,7 @@ Reliable State Manager 具有下列類型的內建序列化程式：
 
 自訂序列化程式通常是用來提升效能，或是透過網路和在磁碟上加密資料。 自訂序列化程式通常比一般序列化程式更有效率，最主要的原因是因為它們不需要將類型的相關資訊序列化。 
 
-[IReliableStateManager.TryAddStateSerializer\<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) 可用來為指定的類型 T 註冊自訂序列化程式。您應該在建構 StatefulServiceBase 時進行這項註冊，以確保在開始復原之前，所有 Reliable Collections 都能存取相關的序列化程式以讀取其保存資料。
+[IReliableStateManager.TryAddStateSerializer\<T>](/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) 可用來為指定的類型 T 註冊自訂序列化程式。您應該在建構 StatefulServiceBase 時進行這項註冊，以確保在開始復原之前，所有 Reliable Collections 都能存取相關的序列化程式以讀取其保存資料。
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)
@@ -61,7 +62,7 @@ public StatefulBackendService(StatefulServiceContext context)
 
 ### <a name="how-to-implement-a-custom-serializer"></a>如何實作自訂序列化程式
 
-自訂序列化程式需要實作 [IStateSerializer\<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) 介面。
+自訂序列化程式需要實作 [IStateSerializer\<T>](/dotnet/api/microsoft.servicefabric.data.istateserializer-1) 介面。
 
 > [!NOTE]
 > IStateSerializer\<T> 包含會接受額外 T (稱為基底值) 的 Write 和 Read 多載。 此 API 適用於差異序列化。 目前並未公開差異序列化功能。 因此，將等到公開並啟用差異序列化之後，才會呼叫這兩個多載。
@@ -130,7 +131,7 @@ public class OrderKeySerializer : IStateSerializer<OrderKey>
 不過，如果您使用的是自訂序列化程式或 DataContractSerializer，資料就必須無限地往前和往後相容。
 換句話說，每個還原序列化版本都必須能夠將該類型的任何版本序列化或還原序列化。
 
-「資料合約」使用者應該依照妥善定義的版本控制規則來新增、移除及變更欄位。 「資料合約」也支援處理未知欄位、連結到序列化和還原序列化程序，以及處理類別繼承。 如需詳細資訊，請參閱 [使用資料合約](https://msdn.microsoft.com/library/ms733127.aspx)。
+「資料合約」使用者應該依照妥善定義的版本控制規則來新增、移除及變更欄位。 「資料合約」也支援處理未知欄位、連結到序列化和還原序列化程序，以及處理類別繼承。 如需詳細資訊，請參閱 [使用資料合約](/dotnet/framework/wcf/feature-details/using-data-contracts)。
 
 自訂序列化程式使用者應該遵守所使用序列化程式的準則，以確保能夠往前和往後相容。
 支援所有版本的常見方式是在開頭新增大小資訊，並且只新增選用的屬性。
@@ -138,7 +139,7 @@ public class OrderKeySerializer : IStateSerializer<OrderKey>
 
 ## <a name="next-steps"></a>後續步驟
   * [序列化與升級](service-fabric-application-upgrade-data-serialization.md)
-  * [可靠的集合的開發人員參考資料](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [可靠的集合的開發人員參考資料](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
   * [使用 Visual Studio 升級您的應用程式](service-fabric-application-upgrade-tutorial.md)會逐步引導您使用 Visual Studio 進行應用程式升級。
   * [使用 Powershell 升級您的應用程式](service-fabric-application-upgrade-tutorial-powershell.md)會逐步引導您使用 powershell 進行應用程式升級。
   * 使用 [升級參數](service-fabric-application-upgrade-parameters.md)來控制您應用程式的升級方式。

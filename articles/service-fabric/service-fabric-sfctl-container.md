@@ -5,18 +5,19 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 07861e2b67eea67740b341cbea994de978973664
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f82883b68ab911fb0b89fc117d9a9d77e05a781a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906108"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245886"
 ---
 # <a name="sfctl-container"></a>sfctl container
 在叢集節點上執行容器相關命令。
 
 ## <a name="commands"></a>命令
 
-|Command|描述|
+|命令|描述|
 | --- | --- |
 | invoke-api | 針對指定程式碼封裝，叫用 Service Fabric 節點上所部署容器的容器 API。 |
 | 記錄 | 取得在 Service Fabric 節點上部署之容器的容器記錄。 |
@@ -77,4 +78,4 @@ ms.locfileid: "76906108"
 
 ## <a name="next-steps"></a>後續步驟
 - [設定](service-fabric-cli.md)Service Fabric CLI。
-- 了解如何使用[範例指令碼](/azure/service-fabric/scripts/sfctl-upgrade-application)來使用 Service Fabric CLI。
+- 了解如何使用[範例指令碼](./scripts/sfctl-upgrade-application.md)來使用 Service Fabric CLI。

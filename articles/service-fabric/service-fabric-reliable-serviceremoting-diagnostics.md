@@ -5,14 +5,15 @@ author: suchiagicha
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
-ms.openlocfilehash: 31095a619fc4d756fa4ef9c29691d1d511d59ece
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89a7a545dd334f892ee27b97995de40d7b6416dc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692558"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245920"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Reliable Service Remoting 的診斷和效能監視
-Reliable ServiceRemoting 執行階段會發出[效能計數器](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)。 這些項目提供深入了解 ServiceRemoting 的運作方式，並有助於疑難排解及效能監視。
+Reliable ServiceRemoting 執行階段會發出[效能計數器](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1)。 這些項目提供深入了解 ServiceRemoting 的運作方式，並有助於疑難排解及效能監視。
 
 
 ## <a name="performance-counters"></a>效能計數器
@@ -25,7 +26,7 @@ Reliable ServiceRemoting 執行階段定義下列效能計數器類別：
 
 前述的類別每一個都有一或多個計數器。
 
-Windows 作業系統中預設可用的 [Windows 效能監視器](https://technet.microsoft.com/library/cc749249.aspx) 應用程式可用於收集與檢視效能計數器資料。 [Azure 診斷](../cloud-services/cloud-services-dotnet-diagnostics.md) 是另一個收集效能計數器資料並上傳至 Azure 資料表的選項。
+Windows 作業系統中預設可用的 [Windows 效能監視器](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc749249(v=ws.11)) 應用程式可用於收集與檢視效能計數器資料。 [Azure 診斷](../cloud-services/cloud-services-dotnet-diagnostics.md) 是另一個收集效能計數器資料並上傳至 Azure 資料表的選項。
 
 ### <a name="performance-counter-instance-names"></a>效能計數器執行個體名稱
 含大量 ServiceRemoting 服務或資料分割的叢集有大量的效能計數器執行個體。 效能計數器執行個體名稱可幫助識別效能計數器執行個體相關聯的特定資料分割與服務方法 (如果適用)。
@@ -35,7 +36,7 @@ Windows 作業系統中預設可用的 [Windows 效能監視器](https://technet
 
 `ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-*ServiceFabricPartitionID*是與效能計數器實例相關聯之 Service Fabric 分割區識別碼的字串表示。 資料分割識別碼是 GUID，其字串標記法是透過 [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) 具有格式規範 "D" 的方法所產生。
+*ServiceFabricPartitionID*是與效能計數器實例相關聯之 Service Fabric 分割區識別碼的字串表示。 資料分割識別碼是 GUID，其字串標記法是透過 [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) 具有格式規範 "D" 的方法所產生。
 
 *ServiceReplicaOrInstanceId* 是與效能計數器執行個體相關聯之 Service Fabric 複本/執行個體識別碼的字串表示法。
 
@@ -56,7 +57,7 @@ Windows 作業系統中預設可用的 [Windows 效能監視器](https://technet
 
 *ServiceRuntimeMethodId* 是 Fabric Service 執行階段所產生 32 位元整數的字串表示法，供內部使用。 這包含在效能計數器執行個體名稱中，以確保其唯一性，並避免與其他效能計數器執行個體名稱衝突。 使用者不應該嘗試解譯效能計數器執行個體名稱的這個部分。
 
-*ServiceFabricPartitionID*是與效能計數器實例相關聯之 Service Fabric 分割區識別碼的字串表示。 資料分割識別碼是 GUID，其字串標記法是透過 [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) 具有格式規範 "D" 的方法所產生。
+*ServiceFabricPartitionID*是與效能計數器實例相關聯之 Service Fabric 分割區識別碼的字串表示。 資料分割識別碼是 GUID，其字串標記法是透過 [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) 具有格式規範 "D" 的方法所產生。
 
 *ServiceReplicaOrInstanceId* 是與效能計數器執行個體相關聯之 Service Fabric 複本/執行個體識別碼的字串表示法。
 
@@ -73,7 +74,7 @@ Windows 作業系統中預設可用的 [Windows 效能監視器](https://technet
 
 Reliable Service 執行階段會發佈與執行服務方法相關的下列效能計數器。
 
-| 類別目錄名稱 | 計數器名稱 | Description |
+| 類別目錄名稱 | 計數器名稱 | 描述 |
 | --- | --- | --- |
 | Service Fabric Service Method |叫用數目/秒 |每秒叫用服務方法的次數 |
 | Service Fabric Service Method |每個叫用的平均毫秒數 |執行服務方法花費的時間 (單位為毫秒) |
@@ -82,7 +83,7 @@ Reliable Service 執行階段會發佈與執行服務方法相關的下列效能
 ### <a name="service-request-processing-performance-counters"></a>服務要求處理效能計數器
 當用戶端透過服務 Proxy 物件叫用方法時，會造成要求訊息透過網路傳送至遠端服務。 服務會處理要求訊息，並傳送回應給用戶端。 Reliable ServiceRemoting 執行階段會發佈下列與服務要求處理相關的效能計數器。
 
-| 類別目錄名稱 | 計數器名稱 | Description |
+| 類別目錄名稱 | 計數器名稱 | 描述 |
 | --- | --- | --- |
 | Service Fabric Service |# of outstanding requests |服務中正在處理的要求數目 |
 | Service Fabric Service |每個要求的平均毫秒數 |服務處理要求所花費的時間 (單位為毫秒) |
@@ -91,4 +92,4 @@ Reliable Service 執行階段會發佈與執行服務方法相關的下列效能
 
 ## <a name="next-steps"></a>後續步驟
 * [範例程式碼](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
-* [PerfView 中的 EventSource 提供者](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
+* [PerfView 中的 EventSource 提供者](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)

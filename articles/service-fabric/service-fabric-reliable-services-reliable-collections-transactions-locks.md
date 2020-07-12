@@ -4,21 +4,22 @@ description: Azure Service Fabric Reliable State Manager 和 Reliable Collection
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.custom: sfrev
-ms.openlocfilehash: 5f7b3a4d43d35f0d2965dd33c8f69143f4b3a8f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7d0970918b0fc60f1208b5997d696a57e5bc698
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76938917"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245104"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric Reliable Collections 中的交易和鎖定模式
 
 ## <a name="transaction"></a>交易
 
-交易就是以單一工作邏輯單元執行的一連串作業。 它會展示資料庫交易的常見[ACID](https://en.wikipedia.org/wiki/ACID) *（不可*部分完成性、*一致性*、*隔離*、*耐久性*）屬性：
+交易就是以單一工作邏輯單元執行的一連串作業。 它會展現資料庫交易的常見[ACID](https://en.wikipedia.org/wiki/ACID) * (不可*部分完成性、*一致性*、*隔離*、*持久性*) 屬性：
 
 * **不可部分完成性**︰交易必須是不可部分完成的工作單位。 換句話說，執行其所有資料修改，或完全不執行。
 * **一致性**︰交易完成時，所有資料必須維持一致的狀態。 所有內部資料結構在交易結束時必須是正確的。
-* **隔離**︰並行交易所做的修改，必須與任何其他並行交易所做的修改隔離。 在[ITransaction](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.itransaction?view=azure-dotnet)內用於作業的隔離等級是由執行作業的[IReliableState](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestate?view=azure-dotnet)所決定。
+* **隔離**︰並行交易所做的修改，必須與任何其他並行交易所做的修改隔離。 在[ITransaction](/dotnet/api/microsoft.servicefabric.data.itransaction?view=azure-dotnet)內用於作業的隔離等級是由執行作業的[IReliableState](/dotnet/api/microsoft.servicefabric.data.ireliablestate?view=azure-dotnet)所決定。
 * **耐久性**：交易完成之後，其作用會永久存在系統中。 即使發生系統失敗仍會保存修改。
 
 ### <a name="isolation-levels"></a>隔離層級
@@ -67,7 +68,7 @@ ms.locfileid: "76938917"
 
 下表中可找到鎖定相容性矩陣：
 
-| 要求 \ 授與 | None | 共用 | 更新 | 獨佔 |
+| 要求 \ 授與 | 無 | 共用 | 更新 | 獨佔 |
 | --- |:--- |:--- |:--- |:--- |
 | 共用 |無衝突 |無衝突 |衝突 |衝突 |
 | 更新 |無衝突 |無衝突 |衝突 |衝突 |
@@ -84,4 +85,4 @@ ms.locfileid: "76938917"
 * [Reliable Services 通知](service-fabric-reliable-services-notifications.md)
 * [備份與還原 Reliable Services (災害復原)](service-fabric-reliable-services-backup-restore.md)
 * [Reliable State Manager 組態](service-fabric-reliable-services-configuration.md)
-* [可靠的集合的開發人員參考資料](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+* [可靠的集合的開發人員參考資料](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

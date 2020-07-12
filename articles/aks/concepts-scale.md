@@ -4,12 +4,12 @@ description: 了解 Azure Kubernetes Service (AKS) 中的調整功能，包括�
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: 7c9c3cf159d67d2f4acaaab943ecf9d99263ae55
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 41d4088a0942eb408d3d3c9eeb2d13ff38fc0362
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223834"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244509"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中調整應用程式的選項
 
@@ -26,7 +26,7 @@ ms.locfileid: "86223834"
 
 您可以手動調整複本 (Pod) 及節點，來測試您的應用程式如何回應可用資源和狀態中的變更。 手動調整資源也可讓您定義用來維護固定成本的資源集數量，例如節點的數目。 若要手動調整，您可以定義複本或節點計數。 Kubernetes API 接著會根據該複本或節點計數，排程建立額外的 pod 或清空節點。
 
-向下調整節點時，Kubernetes API 會呼叫相關的 Azure 計算 API，並系結至您的叢集所使用的計算類型。 例如，針對以為基礎的叢集 VM 擴展集用來選取要移除哪些節點的邏輯，是由 VM 擴展集 API 所決定。 若要深入瞭解如何在相應減少時選取要移除的節點，請參閱[VMSS 常見問題](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed)。
+向下調整節點時，Kubernetes API 會呼叫相關的 Azure 計算 API，並系結至您的叢集所使用的計算類型。 例如，針對以為基礎的叢集 VM 擴展集用來選取要移除哪些節點的邏輯，是由 VM 擴展集 API 所決定。 若要深入瞭解如何在相應減少時選取要移除的節點，請參閱[VMSS 常見問題](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed)。
 
 若要開始手動調整 Pod 和節點，請參閱[在 AKS 中調整應用程式][aks-scale]。
 
@@ -111,7 +111,7 @@ ACI 可讓您快速部署容器執行個體，不需要額外的基礎結構成�
 [aks-scale]: tutorial-kubernetes-scale.md
 [aks-manually-scale-pods]: tutorial-kubernetes-scale.md#manually-scale-pods
 [aks-manually-scale-nodes]: tutorial-kubernetes-scale.md#manually-scale-aks-nodes
-[aks-cluster-autoscaler]: autoscaler.md
+[aks-cluster-autoscaler]: ./cluster-autoscaler.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
 [aks-concepts-security]: concepts-security.md
 [aks-concepts-storage]: concepts-storage.md

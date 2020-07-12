@@ -5,11 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: a9699eae17657e96b38b3bccc95e8f84326efbb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f473b70d260c552dc67d00715b6ee4bc56b670e0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259468"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246549"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>使用叢集描述 Service Fabric 叢集 Resource Manager
 Azure Service Fabric 的叢集 Resource Manager 功能提供數個用來描述叢集的機制：
@@ -28,14 +29,14 @@ Azure Service Fabric 的叢集 Resource Manager 功能提供數個用來描述�
 
 由於硬體錯誤的重迭程度自然，容錯網域原本就是階層式的。 它們在 Service Fabric 中是以 Uri 表示。
 
-正確設定容錯網域是很重要的，因為 Service Fabric 會使用這項資訊來安全地放置服務。 Service Fabric 不想要放置服務，使容錯網域遺失（由某個元件失敗所造成），會導致服務關閉。 
+正確設定容錯網域是很重要的，因為 Service Fabric 會使用這項資訊來安全地放置服務。 Service Fabric 不想要放置服務，使錯誤網域遺失 (因某些元件失敗所造成) 會導致服務關閉。 
 
 在 Azure 環境中，Service Fabric 會使用環境所提供的容錯網域資訊，以代表您正確地設定叢集中的節點。 針對 Service Fabric 的獨立實例，容錯網域會在叢集設定時定義。 
 
 > [!WARNING]
 > 提供給 Service Fabric 的容錯網域資訊必須正確。 例如，假設您的 Service Fabric 叢集的節點是在10部虛擬機器中執行，並在5個實體主機上執行。 在此情況下，即使有 10 部虛擬機器，也只有 5 個不同的 (最上層) 容錯網域。 共用相同的實體主機會使 Vm 共用相同的根容錯網域，因為當 Vm 的實體主機失敗時，會遇到協調失敗。  
 >
-> Service Fabric 預期節點的容錯網域不會變更。 確保 Vm 高可用性的其他機制（例如[HA vm](https://technet.microsoft.com/library/cc967323.aspx)）可能會與 Service Fabric 發生衝突。 這些機制會使用從一部主機到另一部主機的透明 Vm 遷移。 它們不會重新設定或通知 VM 內的執行中程式碼。 因此，它們*不支援*做為執行 Service Fabric 叢集的環境。 
+> Service Fabric 預期節點的容錯網域不會變更。 確保 Vm 高可用性的其他機制（例如[HA vm](/previous-versions/system-center/virtual-machine-manager-2008-r2/cc967323(v=technet.10))）可能會與 Service Fabric 發生衝突。 這些機制會使用從一部主機到另一部主機的透明 Vm 遷移。 它們不會重新設定或通知 VM 內的執行中程式碼。 因此，它們*不支援*做為執行 Service Fabric 叢集的環境。 
 >
 > Service Fabric 應該僅採用高可用性技術。 不需要像是即時 VM 遷移和 San 等機制。 如果這些機制與 Service Fabric 搭配使用，則會_降低_應用程式的可用性和可靠性。 原因是它們會帶來額外的複雜性、新增失敗的集中式來源，以及使用與 Service Fabric 中的可靠性和可用性策略相衝突。 
 >
@@ -66,7 +67,7 @@ Azure Service Fabric 的叢集 Resource Manager 功能提供數個用來描述�
 
 在 Azure 中，您可以選擇哪一個容錯網域包含節點。 但視您布建的節點數目而定，您仍然可以得到具有更多節點的容錯網域，而不是其他資源。 
 
-例如，假設您在叢集中有五個容錯網域，但針對節點類型（**NodeType**）布建七個節點。 在此情況下，前兩個容錯網域最後會有更多節點。 如果您繼續部署只有幾個實例的多個**NodeType**實例，問題就會變差。 基於這個理由，我們建議每個節點類型中的節點數目是容錯網域數目的倍數。
+例如，假設您在叢集中有五個容錯網域，但針對節點類型布建七個節點， (**NodeType**) 。 在此情況下，前兩個容錯網域最後會有更多節點。 如果您繼續部署只有幾個實例的多個**NodeType**實例，問題就會變差。 基於這個理由，我們建議每個節點類型中的節點數目是容錯網域數目的倍數。
 
 ## <a name="upgrade-domains"></a>升級網域
 升級網域是另一項功能，可協助 Service Fabric 叢集 Resource Manager 瞭解叢集的版面配置。 升級網域會定義同時升級的節點集。 升級網域有助於叢集 Resource Manager 瞭解和協調升級之類的管理作業。
@@ -93,7 +94,7 @@ Azure Service Fabric 的叢集 Resource Manager 功能提供數個用來描述�
 環境中容錯或升級網域的總數沒有實際限制，對於它們如何重疊也沒有條件約束。 但有一些常見的模式：
 
 - 容錯網域和升級網域對應1:1
-- 每個節點（實體或虛擬作業系統實例）一個升級網域
+-  (實體或虛擬作業系統實例的每個節點一個升級網域) 
 - 「等量」或「矩陣」模型，其中容錯網域和升級網域會形成具有機器的矩陣，通常會向下對角線
 
 <center>
@@ -111,7 +112,7 @@ Azure Service Fabric 的叢集 Resource Manager 功能提供數個用來描述�
 
 ## <a name="fault-and-upgrade-domain-constraints-and-resulting-behavior"></a>容錯和升級網域條件約束及產生的行為
 ### <a name="default-approach"></a>預設方法
-根據預設，叢集 Resource Manager 會讓服務在容錯和升級網域之間保持平衡。 這會經由模型化成為[條件約束](service-fabric-cluster-resource-manager-management-integration.md)。 容錯和升級網域的條件約束狀態：「針對特定的服務分割區，相同階層層級上的兩個網域之間的服務物件（無狀態服務實例或具狀態服務複本）數目之間的差異應該不會大於1。」
+根據預設，叢集 Resource Manager 會讓服務在容錯和升級網域之間保持平衡。 這會經由模型化成為[條件約束](service-fabric-cluster-resource-manager-management-integration.md)。 容錯和升級網域的條件約束狀態：「針對特定的服務分割區，服務物件 (無狀態服務實例或具狀態服務) 複本的數目，在相同階層層級的任兩個網域之間，應該永遠不會有大於1的差異。」
 
 假設此條件約束提供「最大差異」保證。 容錯和升級網域的條件約束可防止違反規則的特定移動或相片順序。
 
@@ -125,7 +126,7 @@ Azure Service Fabric 的叢集 Resource Manager 功能提供數個用來描述�
 | **UD3** | | | |N4 | |
 | **UD4** | | | | |N5 |
 
-假設我們以**TargetReplicaSetSize** （或適用于無狀態服務， **InstanceCount**）值5來建立服務。 複本將會落在 N1-N5 上。 事實上，不論建立多少像這樣的服務，都不會用到 N6。 原因為何？ 讓我們看看目前的配置和選擇 N6 時情況如何之間的差異。
+現在讓我們來建立一個具有**TargetReplicaSetSize** (的服務，或針對無狀態服務， **InstanceCount**) 值為5。 複本將會落在 N1-N5 上。 事實上，不論建立多少像這樣的服務，都不會用到 N6。 原因為何？ 讓我們看看目前的配置和選擇 N6 時情況如何之間的差異。
 
 以下是我們所擁有的配置，以及每個容錯和升級網域的複本總數：
 
@@ -151,7 +152,7 @@ Azure Service Fabric 的叢集 Resource Manager 功能提供數個用來描述�
 | **UD4** | | | | |R4 |1 |
 | **FDTotal** |2 |0 |1 |1 |1 |- |
 
-此配置違反容錯網域條件約束的「最大差異」保證定義。 FD0 有兩個複本，而 FD1 則為零。 FD0 和 FD1 之間的差異總計為二，大於一的最大差異。 由於違反了條件約束，因此叢集 Resource Manager 不允許這種相片順序。 同樣地，如果我們挑選了 N2 和 N6 （而不是 N1 和 N2），我們會得到：
+此配置違反容錯網域條件約束的「最大差異」保證定義。 FD0 有兩個複本，而 FD1 則為零。 FD0 和 FD1 之間的差異總計為二，大於一的最大差異。 由於違反了條件約束，因此叢集 Resource Manager 不允許這種相片順序。 同樣地，如果我們挑選了 N2 和 N6 (，而不是 N1 和 N2) ，我們就會得到：
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
@@ -166,7 +167,7 @@ Azure Service Fabric 的叢集 Resource Manager 功能提供數個用來描述�
 
 這個分配具狀態複本或無狀態執行個體的方法提供了可能的最佳容錯效果。 如果一個網域停止運作，複本/實例的最小數目就會遺失。 
 
-另一方面，此方法則可能太過嚴苛，而不允許叢集利用所有資源。 就某些叢集設定而言，會無法使用某些節點。 這可能會導致 Service Fabric 不會放置您的服務，因此會產生警告訊息。 在上述範例中，無法使用某些叢集節點（在此範例中為 N6）。 即使您已將節點新增至該叢集（N7-N10），複本/實例還是只會放在 N1 – N5 上，因為容錯和升級網域的條件約束。 
+另一方面，此方法則可能太過嚴苛，而不允許叢集利用所有資源。 就某些叢集設定而言，會無法使用某些節點。 這可能會導致 Service Fabric 不會放置您的服務，因此會產生警告訊息。 在上述範例中，某些叢集節點無法在範例)  (N6 中使用。 即使您已將節點新增至該叢集 (N7-N10) ，複本/實例只會放在 N1 – N5 上，因為容錯和升級網域的條件約束。 
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 |
 | --- |:---:|:---:|:---:|:---:|:---:|
@@ -188,7 +189,7 @@ Azure Service Fabric 的叢集 Resource Manager 功能提供數個用來描述�
 > 對於無狀態服務，*仲裁遺失*不會造成這種情況。 即使大部分的實例同時關閉，無狀態服務仍會繼續正常運作。 因此，我們會將焦點放在本文其餘部分的具狀態服務。
 >
 
-讓我們回到先前的範例。 使用條件約束的「仲裁安全」版本，這三個配置都是有效的。 即使第二個配置中的 FD0 失敗或第三個配置中的 UD1 失敗，資料分割仍會有仲裁。 （大部分複本仍然會啟動）。使用此版本的條件約束，幾乎可以隨時使用 N6。
+讓我們回到先前的範例。 使用條件約束的「仲裁安全」版本，這三個配置都是有效的。 即使第二個配置中的 FD0 失敗或第三個配置中的 UD1 失敗，資料分割仍會有仲裁。  (大部分複本仍會啟動。使用這個版本的條件約束 ) ，幾乎都可以使用 N6。
 
 「仲裁安全」方法提供比「最大差異」方法更多的彈性。 這是因為在幾乎任何叢集拓撲中，都可以更輕鬆地找到有效的複本散發套件。 不過，此方法無法保證最佳容錯特性，因為有些錯誤比其他錯誤來得嚴重。 
 
@@ -230,7 +231,7 @@ Azure Service Fabric 的叢集 Resource Manager 功能提供數個用來描述�
 | **UD4** | | | | |R5 |1 |
 | **FDTotal** |2 |1 |1 |0 |1 |- |
 
-如果您服務的**TargetReplicaSetSize**值已縮減為四（例如），叢集 Resource Manager 將會注意到該變更。 它會繼續使用「最大差異」邏輯，因為**TargetReplicaSetSize**不會再由容錯網域和升級網域的數目 dividable。 如此一來，將會發生特定的複本移動，以便在節點 N1-N5 上散發剩餘的四個複本。 如此一來，就不會違反容錯網域和升級網域邏輯的「最大差異」版本。 
+如果您的服務**TargetReplicaSetSize**值已縮減為四個 (例如) ，叢集 Resource Manager 會注意到該變更。 它會繼續使用「最大差異」邏輯，因為**TargetReplicaSetSize**不會再由容錯網域和升級網域的數目 dividable。 如此一來，將會發生特定的複本移動，以便在節點 N1-N5 上散發剩餘的四個複本。 如此一來，就不會違反容錯網域和升級網域邏輯的「最大差異」版本。 
 
 在先前的配置中，如果**TargetReplicaSetSize**值為5，而 N1 已從叢集中移除，升級網域的數目就會變成等於四。 同樣地，叢集 Resource Manager 會開始使用「最大差異」邏輯，因為升級網域的數目並不會再將服務的**TargetReplicaSetSize**值分開。 因此，當複本 R1 再次建立時，必須在 N4 上，以避免違反容錯和升級網域的條件約束。
 
@@ -246,7 +247,7 @@ Azure Service Fabric 的叢集 Resource Manager 功能提供數個用來描述�
 ## <a name="configuring-fault-and-upgrade-domains"></a>設定容錯和升級網域
 在 Azure 託管的 Service Fabric 部署中，容錯網域和升級網域會自動定義。 Service Fabric 會從 Azure 中取用環境資訊。
 
-如果您要建立自己的叢集（或想要在開發環境中執行特定拓撲），您可以自行提供容錯網域和升級網域資訊。 在此範例中，我們定義了九個節點的本機開發叢集，其橫跨三個資料中心（每個都有三個機架）。 此叢集也有三個跨三個資料中心的升級網域。 以下是 ClusterManifest.xml 中設定的範例：
+如果您要建立自己的叢集 (或想要在開發) 中執行特定的拓撲，您可以自行提供容錯網域和升級網域資訊。 在此範例中，我們定義了九個節點的本機開發叢集，其橫跨三個資料中心， (每個都有三個機架) 。 此叢集也有三個跨三個資料中心的升級網域。 以下是 ClusterManifest.xml 中設定的範例：
 
 ```xml
   <Infrastructure>
@@ -342,11 +343,11 @@ Azure Service Fabric 的叢集 Resource Manager 功能提供數個用來描述�
 >
 
 ## <a name="node-properties-and-placement-constraints"></a>節點屬性和放置條件約束
-有時候（事實上，大部分的情況下）您會想要確保某些工作負載只在叢集中的特定節點類型上執行。 例如，某些工作負載可能需要 Gpu 或 Ssd，有些則可能不會。 
+有時候 (，大部分的時間) 您會想要確保某些工作負載只會在叢集中的特定節點類型上執行。 例如，某些工作負載可能需要 Gpu 或 Ssd，有些則可能不會。 
 
 以特定工作負載為目標的絕佳範例，幾乎是每個多層式架構。 某些機器會做為應用程式的前端或 API 服務端，並公開至用戶端或網際網路。 其他電腦 (通常有不同的硬體資源) 處理計算層或儲存層的工作。 它們通常_不會_直接公開至用戶端或網際網路。 
 
-Service Fabric 預期在某些情況下，特定的工作負載可能需要在特定硬體設定上執行。 例如：
+Service Fabric 預期在某些情況下，特定的工作負載可能需要在特定硬體設定上執行。 例如︰
 
 * 現有的多層式應用程式已「提升並轉移」到 Service Fabric 的環境中。
 * 工作負載必須在特定硬體上執行，以達到效能、調整或安全性隔離的原因。
@@ -374,7 +375,7 @@ Service Fabric 會定義一些可以自動使用的預設節點屬性，因此�
 
 * 建立特定語句的條件式檢查：
 
-  | 引數 | Syntax |
+  | 引數 | 語法 |
   | --- |:---:|
   | 「等於」 | "==" |
   | 「不等於」 | "!=" |
@@ -385,7 +386,7 @@ Service Fabric 會定義一些可以自動使用的預設節點屬性，因此�
 
 * 群組和邏輯作業的布林語句：
 
-  | 引數 | Syntax |
+  | 引數 | 語法 |
   | --- |:---:|
   | 「和」 | "&&" |
   | 「或」 | "&#124;&#124;" |

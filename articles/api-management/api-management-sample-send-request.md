@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 1c86570850894a47f57a2d3587811411cc9a76eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac5f6b4d2d197bbd4f4aff9236837eab062b4a63
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77190003"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243302"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>使用來自 Azure API 管理服務的外部服務
 Azure API 管理服務中可用的原則可純粹根據傳入的要求、傳出的回應及基本組態資訊來進行各式各樣的有用工作。 不過，能夠與來自 API 管理原則的外部服務進行互動，可開啟更多的機會。
@@ -26,7 +27,7 @@ Azure API 管理服務中可用的原則可純粹根據傳入的要求、傳出�
 您先前已了解如何與[適用於記錄、監視及分析的 Azure 事件中樞服務](api-management-log-to-eventhub-sample.md)互動。 本文將示範可讓您與任何以 HTTP 為基礎的外部服務進行互動的原則。 這些原則可用來觸發遠端事件，或用來擷取將以某種方式用於操作原始要求和回應的資訊。
 
 ## <a name="send-one-way-request"></a>傳送單向要求
-或許對要求來說，最簡單的外部互動是射後不理的樣式，讓外部服務能夠獲得某些種類之重要事件的通知。 控制流程原則 `choose` 可用來偵測任何一種您感興趣的條件。  如果符合條件，您可以使用 [send-one-way-request](/azure/api-management/api-management-advanced-policies#SendOneWayRequest) 原則進行外部 HTTP 要求。 這可能是對傳訊系統 (例如 Hipchat 或 Slack) 的要求，也可能是對郵件 API (例如 SendGrid 或 MailChimp) 的要求，或者是針對某些像是 PagerDuty 的重大支援事件的要求。 這些傳訊系統權都具有簡單的 HTTP API，可供輕鬆叫用。
+或許對要求來說，最簡單的外部互動是射後不理的樣式，讓外部服務能夠獲得某些種類之重要事件的通知。 控制流程原則 `choose` 可用來偵測任何一種您感興趣的條件。  如果符合條件，您可以使用 [send-one-way-request](./api-management-advanced-policies.md#SendOneWayRequest) 原則進行外部 HTTP 要求。 這可能是對傳訊系統 (例如 Hipchat 或 Slack) 的要求，也可能是對郵件 API (例如 SendGrid 或 MailChimp) 的要求，或者是針對某些像是 PagerDuty 的重大支援事件的要求。 這些傳訊系統權都具有簡單的 HTTP API，可供輕鬆叫用。
 
 ### <a name="alerting-with-slack"></a>使用 Slack 提供警示
 下列範例示範如果 HTTP 回應狀態碼大於或等於 500，如何將訊息傳送至 Slack 聊天室。 500 範圍錯誤表示後端 API 發生問題，而 API 的用戶端無法解決這類問題。 通常 API 管理需要進行某種形式的介入。  
@@ -61,7 +62,7 @@ Slack 具有傳入 Web 攔截的概念。 在設定輸入 Web Hook 時，Slack �
 ![Slack 的 Web 攔截](./media/api-management-sample-send-request/api-management-slack-webhook.png)
 
 ### <a name="is-fire-and-forget-good-enough"></a>「射後不理」 夠好嗎？
-使用要求的射後不理樣式有一些特定的權衡取捨。 如果基於某些原因而導致要求失敗，則不會報告失敗。 在此特殊情況下，無法保證具有次要失敗報告系統的複雜度，以及等待回應所需的其他效能成本。 如果檢查回應很重要，則 [send-request](/azure/api-management/api-management-advanced-policies#SendRequest) 原則是較好的選項。
+使用要求的射後不理樣式有一些特定的權衡取捨。 如果基於某些原因而導致要求失敗，則不會報告失敗。 在此特殊情況下，無法保證具有次要失敗報告系統的複雜度，以及等待回應所需的其他效能成本。 如果檢查回應很重要，則 [send-request](./api-management-advanced-policies.md#SendRequest) 原則是較好的選項。
 
 ## <a name="send-request"></a>send-request
 `send-request` 原則能夠使用外部服務來執行複雜的處理函式，並將資料傳回 API 管理服務，此服務可用來進一步處理原則。
@@ -103,7 +104,7 @@ API 管理的主要功能是保護後端資源。 如果您的 API 所使用的�
 
 或者，如果授權伺服器未包含 [作用中] 欄位來指示權杖是否有效，請使用 Postman 之類的工具來判斷哪些屬性是在有效的權杖中設定。 例如，如果有效的權杖回應包含名為 "expires_in" 的屬性，請以這種方式檢查授權伺服器回應中是否有此屬性名稱：
 
-當 condition = "@ （（IResponse） coNtext 時 <。變數 ["tokenstate"]）。Body.As <JObject> （）。Property （"expires_in"） = = null） ">
+當 condition = "@ ( # A2 # B3 IResponse) 內容時 <。變數 ["tokenstate"] ) 。Body.As <JObject> ( # A7。屬性 ( "expires_in" ) = = null) ">
 
 ### <a name="reporting-failure"></a>報告失敗
 您可以使用 `<choose>` 原則來偵測權杖是否無效，如果無效，則會傳回 401 回應。
@@ -212,7 +213,7 @@ API 管理的主要功能是保護後端資源。 如果您的 API 所使用的�
 這些要求會依序執行，這並不理想。 
 
 ### <a name="responding"></a>回應
-若要建構複合回應，您可以使用 [return-response](/azure/api-management/api-management-advanced-policies#ReturnResponse) 原則。 `set-body` 元素可以使用運算式，來建構新的 `JObject` 以及內嵌為屬性的所有元件表示法。
+若要建構複合回應，您可以使用 [return-response](./api-management-advanced-policies.md#ReturnResponse) 原則。 `set-body` 元素可以使用運算式，來建構新的 `JObject` 以及內嵌為屬性的所有元件表示法。
 
 ```xml
 <return-response response-variable-name="existing response variable">
@@ -284,6 +285,5 @@ API 管理的主要功能是保護後端資源。 如果您的 API 所使用的�
 
 在預留位置作業的組態中，您可以設定要快取儀表板資源至少一小時。 
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 Azure API 管理服務提供彈性的原則，可以選擇性地套用到 HTTP 流量，並且能夠組合後端服務。 不論您是否想要使用警示功能、確認、驗證功能或根據多個後端服務建立新的複合資源來增強您的 API 閘道器， `send-request` 及相關原則都會開啟各種可能性。
-

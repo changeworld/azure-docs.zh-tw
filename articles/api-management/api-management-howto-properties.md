@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: dc8ca7296658f4113d86765f230ca0158727255f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 28a9f37f58a6c056bf23a85fcf2641f407988891
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649208"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243472"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>如何在 Azure API 管理原則中使用具名值
 
@@ -33,7 +34,7 @@ API 管理原則是系統的強大功能，可讓 Azure 入口網站透過設定
 
 ![具名值](./media/api-management-howto-properties/named-values.png)
 
-具名值可以包含常值字串和[原則運算式](/azure/api-management/api-management-policy-expressions)。 例如，`Expression` 的值是原則運算式，會傳回包含目前日期與時間的字串。 具名值 `Credential` 已標示為密碼，因此預設不會顯示值。
+具名值可以包含常值字串和[原則運算式](./api-management-policy-expressions.md)。 例如，`Expression` 的值是原則運算式，會傳回包含目前日期與時間的字串。 具名值 `Credential` 已標示為密碼，因此預設不會顯示值。
 
 | 名稱       | 值                      | 祕密 | Tags          |
 | ---------- | -------------------------- | ------ | ------------- |
@@ -109,8 +110,8 @@ API 管理原則是系統的強大功能，可讓 Azure 入口網站透過設定
 
 -   深入了解原則的使用方式
     -   [API 管理中的原則](api-management-howto-policies.md)
-    -   [原則參考文件](/azure/api-management/api-management-policies)
-    -   [原則運算式](/azure/api-management/api-management-policy-expressions)
+    -   [原則參考文件](./api-management-policies.md)
+    -   [原則運算式](./api-management-policy-expressions.md)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
 [api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png

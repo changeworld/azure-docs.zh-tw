@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: d98261629f9e1612966bf74084ae0e0fa70d3605
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c5d6bf83d9aa9c3717b0f8e08785b0fc897577d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829242"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244441"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>使用使用者定義的路由自訂叢集輸出
 
@@ -38,7 +38,7 @@ ms.locfileid: "85829242"
 > 傳出類型只會影響叢集的連出流量。 如需詳細資訊，請參閱[設定輸入控制器](ingress-basic.md)。
 
 > [!NOTE]
-> 您可以使用自己的[路由表][byo-route-table]搭配 UDR 和 kubenet 網路功能。 請確定您的叢集身分識別（服務主體或受控識別）具有自訂路由表的參與者許可權。
+> 您可以使用自己的[路由表][byo-route-table]搭配 UDR 和 kubenet 網路功能。 請確定您的叢集身分識別 (服務主體或受控識別) 具有自訂路由表的「參與者」許可權。
 
 ### <a name="outbound-type-of-loadbalancer"></a>LoadBalancer 的連出類型
 
@@ -60,7 +60,7 @@ ms.locfileid: "85829242"
 
 如果 `userDefinedRouting` 設定了，AKS 將不會自動設定輸出路徑。 輸出設定必須由您完成。
 
-AKS 叢集必須部署到具有先前已設定之子網的現有虛擬網路，因為在使用標準負載平衡器（SLB）架構時，您必須建立明確的輸出。 因此，此架構需要明確地將輸出流量傳送至應用裝置（例如防火牆、閘道、proxy），或允許透過指派給標準負載平衡器或設備的公用 IP 來完成網路位址轉譯（NAT）。
+AKS 叢集必須部署到具有先前已設定之子網的現有虛擬網路，因為使用標準負載平衡器 (SLB) 架構時，您必須建立明確的輸出。 因此，此架構需要明確地將輸出流量傳送至應用裝置，例如防火牆、閘道或 proxy，或允許網路位址轉譯 (NAT) 由指派給標準負載平衡器或設備的公用 IP 來完成。
 
 AKS 資源提供者將會部署標準負載平衡器 (SLB)。 負載平衡器不會使用任何規則進行設定，而且在[設定規則之前，不會產生任何費用](https://azure.microsoft.com/pricing/details/load-balancer/)。 AKS**不**會自動布建 SLB 前端的公用 IP 位址，也不會自動設定負載平衡器後端集區。
 
@@ -69,15 +69,15 @@ AKS 資源提供者將會部署標準負載平衡器 (SLB)。 負載平衡器不
 為了說明使用使用者定義路由的輸出類型來應用叢集，可以在具有 Azure 防火牆的虛擬網路上，于自己的子網中設定叢集。 請參閱[使用 Azure 防火牆限制輸出流量範例](limit-egress-traffic.md#restrict-egress-traffic-using-azure-firewall)中的此範例。
 
 > [!IMPORTANT]
-> UDR 的輸出類型需要路由表中的 0.0.0.0/0 和下一個躍點目的地為 NVA （網路虛擬裝置）的路由。
+> UDR 的輸出類型需要路由表中的 0.0.0.0/0 和下一個躍點目的地的路由，)  (網路虛擬裝置。
 > 路由表已經有預設的 0.0.0.0/0 到網際網路，如果沒有公用 IP 到 SNAT，那麼只要新增此路由就不會提供您輸出。 AKS 會驗證您不會建立指向網際網路的 0.0.0.0/0 路由，而是改為 NVA 或閘道等。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱 [Azure 網路 UDR 概觀](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) \(部分機器翻譯\)。
+請參閱 [Azure 網路 UDR 概觀](../virtual-network/virtual-networks-udr-overview.md) \(部分機器翻譯\)。
 
-請參閱[如何建立、變更或刪除路由表](https://docs.microsoft.com/azure/virtual-network/manage-route-table) \(部分機器翻譯\)。
+請參閱[如何建立、變更或刪除路由表](../virtual-network/manage-route-table.md) \(部分機器翻譯\)。
 
 <!-- LINKS - internal -->
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials

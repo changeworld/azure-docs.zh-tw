@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: c8699ff86573084e3199b096b25dd5d97cce2985
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ba9edba97ce89cede54287076e50eb587af10f3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791566"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242469"
 ---
 # <a name="drawing-package-requirements"></a>繪圖套件需求
 
@@ -20,7 +21,7 @@ ms.locfileid: "84791566"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-繪圖套件包含以 DWG 格式儲存的繪圖，這是 Autodesk 中 AutoCAD® 軟體 ([Autodesk,Inc 的商標](https://www.autodesk.com/company/legal-notices-trademarks/trademarks/guidelines-for-use#section12)) 的原生檔案格式。
+繪圖套件包含以 DWG 格式儲存的繪圖，這是 Autodesk 的 AutoCAD®軟體（ [Autodesk，inc. 的商標）](https://www.autodesk.com/company/legal-notices-trademarks/trademarks/guidelines-for-use#section12)的原生檔案格式。
 
 在繪圖套件中，您可以選擇任何 CAD 軟體來產生繪圖。  
 
@@ -186,7 +187,7 @@ zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔�
 
 ### <a name="directoryinfo"></a>directoryInfo
 
-| 屬性  | type | 必要 | 說明 |
+| 屬性  | type | 必要 | 描述 |
 |-----------|------|----------|-------------|
 | NAME      | 字串 | true   |  建築物的名稱。 |
 | streetAddress|    字串 |    false    | 建築物的地址。 |
@@ -217,15 +218,15 @@ zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔�
 
 ### <a name="georeference"></a>georeference
 
-| 屬性  | 類型 | 必要 | 說明 |
+| 屬性  | 類型 | 必要 | 描述 |
 |-----------|------|----------|-------------|
 |lat    | NUMERIC |    true |    設施繪圖的原始緯度十進位標記法。 原始座標必須在 WGS84 Web Mercator (`EPSG:3857`) 中。|
 |lon    |NUMERIC|    true|    設施繪圖的原始經度十進位標記法。 原始座標必須在 WGS84 Web Mercator (`EPSG:3857`) 中。 |
-|角度|    NUMERIC|    true|   真北部和繪圖垂直 (Y) 軸之間的順時針角度 (以度為單位)。   |
+|角度|    NUMERIC|    true|   以度為單位的順時針角度，介於真北部和繪圖的垂直 (Y) 軸之間。   |
 
 ### <a name="dwglayers"></a>dwgLayers
 
-| 屬性  | 類型 | 必要 | 說明 |
+| 屬性  | 類型 | 必要 | 描述 |
 |-----------|------|----------|-------------|
 |exterior    |字串陣列|    true|    定義外部建築物概況的圖層名稱。|
 |unit|    字串陣列|    true|    用於定義單位的圖層名稱。|

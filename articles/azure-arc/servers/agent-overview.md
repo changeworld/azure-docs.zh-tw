@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 07/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 38c487928f15e953a1c660c5007398bc5c2b3f7d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ed95b902c2c0768f50a0c6dadbfc617292932c2b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206633"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242945"
 ---
 # <a name="overview-of-azure-arc-for-servers-agent"></a>適用於伺服器的 Azure Arc 代理程式概觀
 
@@ -62,7 +62,7 @@ Azure 連線的機器代理程式套件包含數個結合在一起的邏輯元�
 
     |資料夾 |描述 |
     |-------|------------|
-    |C:\Program Files\AzureConnectedMachineAgent |包含代理程式支援檔案的預設安裝路徑。|
+    |%ProgramFiles%\AzureConnectedMachineAgent |包含代理程式支援檔案的預設安裝路徑。|
     |%ProgramData%\AzureConnectedMachineAgent |包含代理程式組態檔。|
     |%ProgramData%\AzureConnectedMachineAgent\Tokens |包含取得的權杖。|
     |%ProgramData%\AzureConnectedMachineAgent\Config |包含代理程式組態檔 `agentconfig.json` 將其註冊資訊記錄到服務中。|
@@ -99,7 +99,7 @@ Azure 連線的機器代理程式套件包含數個結合在一起的邏輯元�
 
 * 解除安裝代理程式期間，不會移除下列成品。
 
-    * C:\Program Files\AzureConnectedMachineAgent\Logs
+    * %ProgramFiles%\AzureConnectedMachineAgent\Logs
     * %ProgramData%\AzureConnectedMachineAgent 和子目錄
     * %ProgramData%\GuestConfig
 
@@ -170,9 +170,9 @@ Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作�
 
 ### <a name="required-permissions"></a>所需的權限
 
-- 若要使電腦上線，您必須是 **Azure Connected Machine 上線**角色的成員。
+* 若要使電腦上線，您必須是 **Azure Connected Machine 上線**角色的成員。
 
-- 若要讀取、修改、重新上線和刪除機器，您必須是 **Azure Connected Machine 資源管理員**角色的成員。 
+* 若要讀取、修改、重新上線和刪除機器，您必須是 **Azure Connected Machine 資源管理員**角色的成員。 
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure 訂用帳戶與服務限制
 
@@ -195,8 +195,8 @@ Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作�
 
 服務標籤：
 
-- AzureActiveDirectory
-- AzureTrafficManager
+* AzureActiveDirectory
+* AzureTrafficManager
 
 URL：
 
@@ -218,8 +218,8 @@ URL：
 
 適用於伺服器的 Azure Arc (預覽) 需依賴您訂用帳戶中的下列 Azure 資源提供者來使用此服務：
 
-- **Microsoft.HybridCompute**
-- **Microsoft.GuestConfiguration**
+* **Microsoft.HybridCompute**
+* **Microsoft.GuestConfiguration**
 
 如果未登錄這些資源，您可以使用下列命令來登錄：
 

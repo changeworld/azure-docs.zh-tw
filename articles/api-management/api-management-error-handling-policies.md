@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 0bc4792b44ccff23a141460c3521d684801c4567
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bddb4ea3759d19d1e122739fb69cf9bf96c66635
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84674256"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243540"
 ---
 # <a name="error-handling-in-api-management-policies"></a>API 管理原則中的錯誤處理
 
@@ -50,7 +51,7 @@ Azure API 管理中的原則分為 `inbound`、`backend`、`outbound` 和 `on-er
 `on-error` 原則區段可用在任何範圍。 API 發佈者可以設定自訂行為，例如將錯誤記錄到事件中樞，或建立要傳回給呼叫者的新回應。
 
 > [!NOTE]
-> 依預設，原則中不會有 `on-error` 區段。 若要在原則中新增 `on-error` 區段，請在原則編輯器中瀏覽至所要的原則，然後予以新增。 如需如何設定原則的詳細資訊，請參閱 [API 管理中的原則](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/)。
+> 依預設，原則中不會有 `on-error` 區段。 若要在原則中新增 `on-error` 區段，請在原則編輯器中瀏覽至所要的原則，然後予以新增。 如需如何設定原則的詳細資訊，請參閱 [API 管理中的原則](./api-management-howto-policies.md)。
 >
 > 如果沒有 `on-error` 區段，在發生錯誤狀況時，呼叫端將會收到 400 或 500 HTTP 回應訊息。
 
@@ -79,7 +80,7 @@ Azure API 管理中的原則分為 `inbound`、`backend`、`outbound` 和 `on-er
 
 當發生錯誤，且控制跳到 `on-error` 原則區段時，錯誤會儲存在[內容中。LastError](api-management-policy-expressions.md#ContextVariables)屬性，可由區段中的原則存取 `on-error` 。 LastError 具有下列屬性。
 
-| 名稱       | 類型   | 說明                                                                                               | 必要 |
+| 名稱       | 類型   | 描述                                                                                               | 必要 |
 | ---------- | ------ | --------------------------------------------------------------------------------------------------------- | -------- |
 | `Source`   | 字串 | 發生錯誤之元素的名稱。 可以是原則或內建管線步驟名稱。      | 是      |
 | `Reason`   | 字串 | 方便電腦理解的錯誤碼，可用於處理錯誤。                                       | 否       |
@@ -87,7 +88,7 @@ Azure API 管理中的原則分為 `inbound`、`backend`、`outbound` 和 `on-er
 | `Scope`    | 字串 | 發生錯誤之範圍的名稱，此名稱可為「全域」、「產品」、「API」或「作業」其中之一 | 否       |
 | `Section`  | 字串 | 發生錯誤的區段名稱。 可能的值：「輸入」、「後端」、「輸出」或 「錯誤」。      | 否       |
 | `Path`     | 字串 | 指定巢狀原則，例如 "choose[3]/when[2]"。                                                 | 否       |
-| `PolicyId` | 字串 | 發生錯誤之原則上 `id` 屬性的值 (如果客戶有指定)             | No       |
+| `PolicyId` | 字串 | 發生錯誤之原則上 `id` 屬性的值 (如果客戶有指定)             | 否       |
 
 > [!TIP]
 > 您可以透過 context.Response.StatusCode 存取狀態碼。
@@ -104,8 +105,8 @@ Azure API 管理中的原則分為 `inbound`、`backend`、`outbound` 和 `on-er
 | 組態 | Uri 不符合任何 API 或作業 | OperationNotFound       | 連入要求與作業無法匹配。                                                                      |
 | 授權 | 未提供訂用帳戶金鑰             | SubscriptionKeyNotFound | 拒絕存取，因為找不到訂用帳戶金鑰。 在對這個 API 提出要求時，請務必包含訂用帳戶金鑰。 |
 | 授權 | 訂用帳戶金鑰值無效         | SubscriptionKeyInvalid  | 拒絕存取，因為訂用帳戶金鑰無效。 請務必提供適用於作用中訂用帳戶的有效金鑰。            |
-| 多個 | 用戶端的下游連線（從用戶端到 API 管理閘道）已在等待要求時中止 | ClientConnectionFailure | 多個 |
-| 多個 | 未建立上游連線（從 API 管理閘道到後端服務），或已由後端中止 | BackendConnectionFailure | 多個 |
+| 多個 | 從用戶端到 API 管理閘道的下游連線 () 已由用戶端在要求擱置時中止 | ClientConnectionFailure | 多個 |
+| 多個 | 從 API 管理閘道到後端服務的上游連線 () 未建立或已由後端中止 | BackendConnectionFailure | 多個 |
 | 多個 | 評估特定運算式時發生執行時間例外狀況 | ExpressionValueEvaluationFailure | 多個 |
 
 ## <a name="predefined-errors-for-policies"></a>原則的預先定義錯誤
@@ -188,5 +189,5 @@ Azure API 管理中的原則分為 `inbound`、`backend`、`outbound` 和 `on-er
 
 -   [API 管理中的原則](api-management-howto-policies.md)
 -   [轉換 API](transform-api.md)
--   [原則參考文件](api-management-policy-reference.md)，取得原則陳述式及其設定的完整清單
+-   [原則參考文件](./api-management-policies.md)，取得原則陳述式及其設定的完整清單
 -   [原則範例](policy-samples.md)

@@ -5,13 +5,14 @@ description: 了解如何搭配 Azure Kubernetes Service (AKS) 負載平衡器�
 services: container-service
 ms.topic: article
 ms.date: 03/09/2020
-ms.openlocfilehash: 5051232f29ad51d9fee893a4a660fc81f6e60d77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3055b5d32055d0ed0e3870f16f6af95407a68cd9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80886733"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243931"
 ---
-# <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>搭配 Azure Kubernetes Service （AKS）負載平衡器使用靜態公用 IP 位址和 DNS 標籤
+# <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>使用靜態公用 IP 位址和 DNS 標籤搭配 Azure Kubernetes Service (AKS) 負載平衡器
 
 根據預設，指派給 AKS 叢集所建立之負載平衡器資源的公用 IP 位址，只有在該資源的生命週期內有效。 如果您刪除 Kubernetes 服務，相關聯的負載平衡器和 IP 位址也會一併刪除。 如果您想要針對已重新部署的 Kubernetes 服務指派特定的 IP 位址或保留 IP 位址，您可以建立並使用靜態公用 IP 位址。
 
@@ -62,7 +63,7 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 
 ## <a name="create-a-service-using-the-static-ip-address"></a>使用靜態 IP 位址建立服務
 
-建立服務之前，請確定 AKS 叢集所使用的服務主體具有其他資源群組的委派許可權。 例如：
+建立服務之前，請確定 AKS 叢集所使用的服務主體具有其他資源群組的委派許可權。 例如︰
 
 ```azurecli-interactive
 az role assignment create \
@@ -101,7 +102,7 @@ kubectl apply -f load-balancer-service.yaml
 
 如果您的服務使用動態或靜態公用 IP 位址，您可以使用服務注釋 `service.beta.kubernetes.io/azure-dns-label-name` 來設定對外公開的 DNS 標籤。 這會使用 Azure 的公用 DNS 伺服器和最上層網域來發行服務的完整功能變數名稱。 批註值在 Azure 位置中必須是唯一的，因此建議使用完整的標籤。   
 
-接著，Azure 會自動將預設子網（ `<location>.cloudapp.azure.com` 其中 location 是您選取的區域）附加至您提供的名稱，以建立完整的 DNS 名稱。 例如：
+接著，Azure 會自動將預設子網（例如 `<location>.cloudapp.azure.com` (位置是您) 所選的區域）附加至您提供的名稱，以建立完整的 DNS 名稱。 例如︰
 
 ```yaml
 apiVersion: v1
@@ -172,4 +173,4 @@ Events:
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
-[ip-sku]: ../virtual-network/virtual-network-ip-addresses-overview-arm.md#sku
+[ip-sku]: ../virtual-network/public-ip-addresses.md#sku

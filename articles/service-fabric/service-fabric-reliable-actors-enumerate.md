@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 1516c9005a7c4dd0adcb279e9954e5f882c575c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e462cc5fa82b8692304f58ef6cf0ea0e2db8725
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645594"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245971"
 ---
 # <a name="enumerate-service-fabric-reliable-actors"></a>列舉 Service Fabric Reliable Actors
 Reliable Actors 服務允許用戶端列舉服務所裝載之動作項目的相關中繼資料。 因為動作項目服務是已資料分割的具狀態服務，所以會針對每個分割區執行列舉。 由於每個分割區可能包含許多動作項目，因此，列舉會以一組分頁式結果形式傳回。 頁面會以迴圈方式讀取，直到讀取所有頁面為止。 下列範例示範如何在動作項目服務的其中一個分割區中，建立所有作用中動作項目的清單︰
@@ -60,7 +61,7 @@ while (continuationToken != null);
 ## <a name="next-steps"></a>後續步驟
 * [動作項目狀態管理](service-fabric-reliable-actors-state-management.md)
 * [執行者生命週期和垃圾收集](service-fabric-reliable-actors-lifecycle.md)
-* [動作項目 API 參考文件](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [動作項目 API 參考文件](/previous-versions/azure/dn971626(v=azure.100))
 * [.NET 範例程式碼](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java 範例程式碼 (英文)](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

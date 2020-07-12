@@ -5,16 +5,17 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 54382e74899d2cbb56ccf424b0f39bd874e31630
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8f883457c2d6da6d2776bb2119caf5d09565170
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259366"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246413"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>跨可用性區域部署 Azure Service Fabric 叢集
 Azure 中的可用性區域是高可用性供應專案，可保護您的應用程式和資料不受資料中心失敗的影響。 「可用性區域」是一種獨特的實體位置，具備獨立的電源、冷卻和網路功能，可在 Azure 區域內使用。
 
-Service Fabric 藉由部署釘選到特定區域的節點類型，支援跨可用性區域的叢集。 這可確保應用程式的高可用性。 Azure 可用性區域僅適用于選取的區域。 如需詳細資訊，請參閱[Azure 可用性區域總覽](https://docs.microsoft.com/azure/availability-zones/az-overview)。
+Service Fabric 藉由部署釘選到特定區域的節點類型，支援跨可用性區域的叢集。 這可確保應用程式的高可用性。 Azure 可用性區域僅適用于選取的區域。 如需詳細資訊，請參閱[Azure 可用性區域總覽](../availability-zones/az-overview.md)。
 
 可用的範例範本： [Service Fabric [跨可用性區域] 範本](https://github.com/Azure-Samples/service-fabric-cluster-templates)
 
@@ -26,7 +27,7 @@ Service Fabric 藉由部署釘選到特定區域的節點類型，支援跨可�
 * 叢集可靠性層級設定為 [白金]。
 * 標示為主要的三個節點類型。
     * 每個節點類型都應該對應到位於不同區域中的專屬虛擬機器擴展集。
-    * 每個虛擬機器擴展集至少應有五個節點（銀級耐久性）。
+    * 每個虛擬機器擴展集至少應有五個節點 (銀級持久性) 。
 * 使用標準 SKU 的單一公用 IP 資源。
 * 使用標準 SKU 的單一 Load Balancer 資源。
 * 您用來部署虛擬機器擴展集的子網所參考的 NSG。
@@ -135,7 +136,7 @@ Service Fabric 藉由部署釘選到特定區域的節點類型，支援跨可�
 ```
 
 ### <a name="standard-sku-load-balancer-outbound-rules"></a>標準 SKU Load Balancer 輸出規則
-相較于使用基本 Sku，Standard Load Balancer 和標準公用 IP 在輸出連線時引進了新的功能和不同的行為。 如果您想要在使用標準 SKU 時輸出連線，您必須使用標準公用 IP 位址或標準公用 Load Balancer 明確定義該連線。 如需詳細資訊，請參閱[輸出](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatexhaust)連線和[Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。
+相較于使用基本 Sku，Standard Load Balancer 和標準公用 IP 在輸出連線時引進了新的功能和不同的行為。 如果您想要在使用標準 SKU 時輸出連線，您必須使用標準公用 IP 位址或標準公用 Load Balancer 明確定義該連線。 如需詳細資訊，請參閱[輸出](../load-balancer/load-balancer-outbound-connections.md)連線和[Azure Standard Load Balancer](../load-balancer/load-balancer-overview.md)。
 
 >[!NOTE]
 > 標準範本會參考 NSG，其預設允許所有輸出流量。 輸入流量僅限於 Service Fabric 管理作業所需的埠。 您可以修改 NSG 規則以符合您的需求。
@@ -259,7 +260,7 @@ Service Fabric 藉由部署釘選到特定區域的節點類型，支援跨可�
 * 您用來部署虛擬機器擴展集的子網所參考的 NSG。
 * 標示為主要的三個節點類型。
     * 每個節點類型都應該對應到位於不同區域中的專屬虛擬機器擴展集。
-    * 每個虛擬機器擴展集至少應有五個節點（銀級耐久性）。
+    * 每個虛擬機器擴展集至少應有五個節點 (銀級持久性) 。
 
 如需這些資源的範例，請參閱[範例範本](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/10-VM-Ubuntu-2-NodeType-Secure)。
 

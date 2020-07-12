@@ -1,16 +1,17 @@
 ---
 title: 商務持續性-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
-description: 本文說明使用適用於 PostgreSQL 的 Azure 資料庫時的商務持續性（時間點還原、資料中心中斷、異地還原）。
+description: 本文說明使用適用於 PostgreSQL 的 Azure 資料庫時， (時間點還原、資料中心中斷、異地還原) 的商務持續性。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: afa03399933bdc8bd8ff869125955cfd9e0abecb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35b2236ae6ffd3df3e458cdbd4bc01e89a1da2b2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75981923"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245296"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫單一伺服器的商務持續性總覽
 
@@ -51,6 +52,11 @@ ms.locfileid: "75981923"
 
 ## <a name="cross-region-read-replicas"></a>跨區域讀取複本
 您可以使用跨區域讀取複本來增強您的商務持續性和嚴重損壞修復規劃。 讀取複本會使用於 postgresql 的實體複寫技術以非同步方式更新。 深入瞭解讀取複本、可用區域，以及如何從[讀取複本概念一文](concepts-read-replicas.md)進行故障切換。 
+
+## <a name="faq"></a>常見問題集
+### <a name="where-does-azure-database-for-postgresql-store-customer-data"></a>適用於 PostgreSQL 的 Azure 資料庫儲存客戶資料的位置？
+根據預設，適用於 PostgreSQL 的 Azure 資料庫不會在其部署所在的區域中移動或儲存客戶資料。 不過，客戶可以選擇性地選擇啟用[異地多餘備份](concepts-backup.md#backup-redundancy-options)或建立[跨區域讀取複本](concepts-read-replicas.md#cross-region-replication)，以便將資料儲存在另一個區域中。
+
 
 ## <a name="next-steps"></a>後續步驟
 - 深入了解[適用於 PostgreSQL 的 Azure 資料庫中的自動備份](concepts-backup.md)。 

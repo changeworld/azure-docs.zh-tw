@@ -8,16 +8,19 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: d017472715e8fe924a11080fc837ac837f5bd48f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 598a8383350cae98d61b8ab74f7687161d3d33e8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982147"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245285"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure 認知搜尋擴充管線中的 AML 技能
 
-**AML**技能可讓您使用自訂[Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml) （AML）模型擴充 AI 擴充。 一旦將 AML 模型[定型並部署](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workflow)之後， **aml**技能就會將它整合到 AI 擴充中。
+> [!IMPORTANT] 
+> 此技能目前為公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 目前沒有 .NET SDK 支援。
+
+**AML**技能可讓您使用自訂[Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml) (AML) 模型擴充 AI 擴充。 一旦將 AML 模型[定型並部署](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workflow)之後， **aml**技能就會將它整合到 AI 擴充中。
 
 與內建技能一樣， **AML**技能也具有輸入和輸出。 輸入會以 JSON 物件的形式傳送至您已部署的 AML 服務，這會將 JSON 承載輸出為回應以及成功狀態碼。 回應預期會有您**AML**技能所指定的輸出。 任何其他的回應會被視為錯誤，並且不會執行任何擴充。
 
@@ -42,12 +45,12 @@ AmlSkill 的 Microsoft 技術。
 
 | 參數名稱 | 描述 |
 |--------------------|-------------|
-| `uri` | （不需要[驗證或金鑰驗證](#WhatSkillParametersToUse)）將傳送_JSON_承載之[AML 服務的評分 URI](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service) 。 只允許**HTTPs** URI 配置。 |
-| `key` | （[金鑰驗證](#WhatSkillParametersToUse)的必要項）[AML 服務](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service#authentication-with-keys)的索引鍵。 |
-| `resourceId` | （[權杖驗證](#WhatSkillParametersToUse)所需）。 AML 服務的 Azure Resource Manager 資源識別碼。 其格式應為訂用帳戶/{guid}/resourceGroups/{資源群組-名稱}/Microsoft.machinelearningservices/工作區/{工作區-名稱}/服務/{service_name}。 |
-| `region` | （選擇性用於[權杖驗證](#WhatSkillParametersToUse)）。 AML 服務部署所在的[區域](https://azure.microsoft.com/global-infrastructure/regions/)。 |
+| `uri` |  (不需要[驗證或金鑰驗證](#WhatSkillParametersToUse)，) 將會傳送_JSON_承載之[AML 服務的評分 URI](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service) 。 只允許**HTTPs** URI 配置。 |
+| `key` | [金鑰驗證](#WhatSkillParametersToUse)所需的 () [AML 服務的金鑰](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service#authentication-with-keys)。 |
+| `resourceId` |  ([權杖驗證](#WhatSkillParametersToUse)) 所需。 AML 服務的 Azure Resource Manager 資源識別碼。 其格式應為訂用帳戶/{guid}/resourceGroups/{資源群組-名稱}/Microsoft.machinelearningservices/工作區/{工作區-名稱}/服務/{service_name}。 |
+| `region` |  (選擇性的[權杖驗證](#WhatSkillParametersToUse)) 。 AML 服務部署所在的[區域](https://azure.microsoft.com/global-infrastructure/regions/)。 |
 | `timeout` | (選擇性) 指定時，表示進行 API 呼叫的 http 用戶端逾時。 其必須格式化為 XSD "dayTimeDuration" 值 ( [ISO 8601 持續時間](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) 值的受限子集)。 例如，`PT60S` 為 60 秒。 如果沒有設定，則選擇的預設值為 30 秒。 [超時] 可以設定為最大值230秒，最小值為1秒。 |
-| `degreeOfParallelism` | 選擇性指定時，表示索引子將會平行地對您提供的端點進行的呼叫次數。 如果您的端點在要求負載過高的情況下失敗，您可以減少這個值，如果您的端點能夠接受更多要求，而且您想要增加索引子的效能，則會引發此值。  如果未設定，則會使用預設值5。 DegreeOfParallelism 可以設定為最大值10，最小值為1。
+| `degreeOfParallelism` |  (選擇性) 指定時，表示索引子將會平行地對您提供的端點進行的呼叫次數。 如果您的端點在要求負載過高的情況下失敗，您可以減少這個值，如果您的端點能夠接受更多要求，而且您想要增加索引子的效能，則會引發此值。  如果未設定，則會使用預設值5。 DegreeOfParallelism 可以設定為最大值10，最小值為1。
 
 <a name="WhatSkillParametersToUse"></a>
 
@@ -105,7 +108,7 @@ AmlSkill 的 Microsoft 技術。
 
 ## <a name="sample-output-json-structure"></a>範例輸出 JSON 結構
 
-輸出會對應到從 AML 服務傳回的回應。 AML 服務應該只傳回_JSON_承載（藉由查看 `Content-Type` 回應標頭來驗證），而且應該是物件，其中的欄位會與中的「名稱」擴充相符 `output` ，而且其值會視為擴充。
+輸出會對應到從 AML 服務傳回的回應。 AML 服務應該只會傳回_JSON_承載， (藉由查看 `Content-Type` 回應標頭) 來驗證，而且應該是物件，其中欄位擴充符合中的「名稱」 `output` ，且其值視為擴充。
 
 ```json
 {

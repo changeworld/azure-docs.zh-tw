@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: a0fe0803b0961b3aaa89627823b4867fac0d5d61
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: f957ee5293d2804298d4723ed3a763fabac9dc93
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206306"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244526"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中的應用程式和叢集的安全性概念
 
@@ -19,7 +19,7 @@ ms.locfileid: "86206306"
 
 本文將介紹對 AKS 中的應用程式進行保護的核心概念：
 
-- [Azure Kubernetes Service (AKS) 中的應用程式和叢集的安全性概念](#security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks)
+- [Azure Kubernetes Service (AKS) 中應用程式和叢集的安全性概念](#security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks) (機器翻譯)
   - [主要元件安全性](#master-security)
   - [節點安全性](#node-security)
     - [計算隔離](#compute-isolation)
@@ -112,12 +112,12 @@ Kubernetes 秘密會儲存在 etcd 中，也就是分散式索引鍵/值存放�
 [kured]: https://github.com/weaveworks/kured
 [kubernetes-network-policies]: https://kubernetes.io/docs/concepts/services-networking/network-policies/
 [secret-risks]: https://kubernetes.io/docs/concepts/configuration/secret/#risks
-[encryption-atrest]: https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest
+[encryption-atrest]: ../security/fundamentals/encryption-atrest.md
 
 <!-- LINKS - Internal -->
 [aks-daemonsets]: concepts-clusters-workloads.md#daemonsets
 [aks-upgrade-cluster]: upgrade-cluster.md
-[aks-aad]: azure-ad-integration.md
+[aks-aad]: ./azure-ad-integration-cli.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
 [aks-concepts-identity]: concepts-identity.md
 [aks-concepts-scale]: concepts-scale.md

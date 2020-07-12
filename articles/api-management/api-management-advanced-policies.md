@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 5b17b7784691cdf38c45e4f306b2ed14b981a2d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3843ff986fdc37c37690bee9616861f16a334c67
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751252"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243727"
 ---
 # <a name="api-management-advanced-policies"></a>API 管理進階原則
 
@@ -38,7 +38,7 @@ ms.locfileid: "84751252"
 -   [設定要求方法](#SetRequestMethod) - 允許您變更要求的 HTTP 方法。
 -   [設定狀態碼](#SetStatus) - 將 HTTP 狀態碼變更為指定的值。
 -   [設定變數](api-management-advanced-policies.md#set-variable) - 保存具名[內容](api-management-policy-expressions.md#ContextVariables)變數中的值，供日後存取使用。
--   [追蹤](#Trace)-將自訂追蹤新增至[API 偵測器](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)輸出、Application Insights 遙測和資源記錄。
+-   [追蹤](#Trace)-將自訂追蹤新增至[API 偵測器](./api-management-howto-api-inspector.md)輸出、Application Insights 遙測和資源記錄。
 -   [等候](#Wait)-等候括住的[傳送要求](api-management-advanced-policies.md#SendRequest)、[取得快取的值](api-management-caching-policies.md#GetFromCacheByKey)，或[控制流程](api-management-advanced-policies.md#choose)原則完成後再繼續。
 
 ## <a name="control-flow"></a><a name="choose"></a>控制流程
@@ -124,23 +124,23 @@ ms.locfileid: "84751252"
 </choose>
 ```
 
-### <a name="elements"></a>元素
+### <a name="elements"></a>項目
 
-| 元素   | 說明                                                                                                                                                                                                                                                               | 必要 |
+| 元素   | 描述                                                                                                                                                                                                                                                               | 必要 |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| choose    | 根元素。                                                                                                                                                                                                                                                             | Yes      |
-| when      | 要用於 `choose` 原則之 `if` 或 `ifelse` 組件的條件。 如果 `choose` 原則有多個 `when` 區段，則會依序評估這些區段。 一旦 when 元素的 `condition` 評估為 `true` 後，就不會再評估後面的 `when` 條件。 | Yes      |
-| otherwise | 內含沒有任何 `when` 條件評估為 `true` 時，所要使用的原則片段。                                                                                                                                                                               | No       |
+| choose    | 根元素。                                                                                                                                                                                                                                                             | 是      |
+| when      | 要用於 `choose` 原則之 `if` 或 `ifelse` 組件的條件。 如果 `choose` 原則有多個 `when` 區段，則會依序評估這些區段。 一旦 when 元素的 `condition` 評估為 `true` 後，就不會再評估後面的 `when` 條件。 | 是      |
+| otherwise | 內含沒有任何 `when` 條件評估為 `true` 時，所要使用的原則片段。                                                                                                                                                                               | 否       |
 
 ### <a name="attributes"></a>屬性
 
-| 屬性                                              | 說明                                                                                               | 必要 |
+| 屬性                                              | 描述                                                                                               | 必要 |
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- | -------- |
-| condition="Boolean expression &#124; Boolean constant" | 所包含之 `when` 原則陳述式受到評估時，所要評估的布林運算式或常數。 | Yes      |
+| condition="Boolean expression &#124; Boolean constant" | 所包含之 `when` 原則陳述式受到評估時，所要評估的布林運算式或常數。 | 是      |
 
 ### <a name="usage"></a><a name="ChooseUsage"></a>實例
 
-此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。
+此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、輸出、後端、錯誤
 
@@ -148,7 +148,7 @@ ms.locfileid: "84751252"
 
 ## <a name="forward-request"></a><a name="ForwardRequest"></a>轉寄要求
 
-`forward-request` 原則會將內送要求轉送給要求[內容](api-management-policy-expressions.md#ContextVariables)中指定的後端服務。 後端服務 URL 會在 API[設定](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings)中指定，並可使用[設定後端服務](api-management-transformation-policies.md)原則來變更。
+`forward-request` 原則會將內送要求轉送給要求[內容](api-management-policy-expressions.md#ContextVariables)中指定的後端服務。 後端服務 URL 會在 API[設定](./import-and-publish.md)中指定，並可使用[設定後端服務](api-management-transformation-policies.md)原則來變更。
 
 > [!NOTE]
 > 移除此原則會導致要求不會轉送到後端服務中，而且當 inbound 區段中的原則一順利完成，就會立即評估 outbound 區段中的原則。
@@ -242,24 +242,24 @@ ms.locfileid: "84751252"
 
 ```
 
-### <a name="elements"></a>元素
+### <a name="elements"></a>項目
 
-| 元素         | 說明   | 必要 |
+| 元素         | 描述   | 必要 |
 | --------------- | ------------- | -------- |
-| forward-request | 根元素。 | Yes      |
+| forward-request | 根元素。 | 是      |
 
 ### <a name="attributes"></a>屬性
 
-| 屬性                                     | 說明                                                                                                                                                                                                                                                                                                    | 必要 | 預設 |
+| 屬性                                     | 描述                                                                                                                                                                                                                                                                                                    | 必要 | 預設 |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | timeout="integer"                             | 等待後端服務傳回 HTTP 回應標頭的時間長度（以秒為單位），然後才引發逾時錯誤。 最小值為0秒。 無法接受大於240秒的值，因為基礎網路基礎結構在這段時間之後可以卸載閒置連線。 | 否       | None    |
-| 跟隨-重新導向 = "false &#124; true"          | 指定來自後端服務的重新導向會由閘道遵循或傳回給呼叫者。                                                                                                                                                                                                    | No       | false   |
-| 緩衝區-要求-body = "false &#124; true"       | 當設定為 "true" 時，要求會經過緩衝處理，並會在[重試](api-management-advanced-policies.md#Retry)時重複使用。                                                                                                                                                                                               | No       | false   |
-| 失敗-錯誤-狀態-代碼 = "false &#124; true" | 當設定為 true 時，會針對範圍從400到599（含）的回應碼觸發[錯誤](api-management-error-handling-policies.md)區段。                                                                                                                                                                      | No       | false   |
+| 跟隨-重新導向 = "false &#124; true"          | 指定來自後端服務的重新導向會由閘道遵循或傳回給呼叫者。                                                                                                                                                                                                    | 否       | false   |
+| 緩衝區-要求-body = "false &#124; true"       | 當設定為 "true" 時，要求會經過緩衝處理，並會在[重試](api-management-advanced-policies.md#Retry)時重複使用。                                                                                                                                                                                               | 否       | false   |
+| 失敗-錯誤-狀態-代碼 = "false &#124; true" | 當設定為 true 時，會針對範圍從400到599（含）的回應碼觸發[錯誤](api-management-error-handling-policies.md)區段。                                                                                                                                                                      | 否       | false   |
 
 ### <a name="usage"></a>使用方式
 
-此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。
+此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 後端
 -   **原則範圍：** 所有範圍
@@ -294,22 +294,22 @@ ms.locfileid: "84751252"
 </policies>
 ```
 
-### <a name="elements"></a>元素
+### <a name="elements"></a>項目
 
-| 元素           | 說明   | 必要 |
+| 元素           | 描述   | 必要 |
 | ----------------- | ------------- | -------- |
-| limit-concurrency | 根元素。 | Yes      |
+| limit-concurrency | 根元素。 | 是      |
 
 ### <a name="attributes"></a>屬性
 
-| 屬性 | 說明                                                                                        | 必要 | 預設 |
+| 屬性 | 描述                                                                                        | 必要 | 預設 |
 | --------- | -------------------------------------------------------------------------------------------------- | -------- | ------- |
 | 索引鍵       | 字串。 允許的運算式。 指定並行範圍。 可由多個原則共用。 | 是      | N/A     |
 | max-count | 整數。 指定允許輸入原則的要求數目上限。           | 是      | N/A     |
 
 ### <a name="usage"></a>使用方式
 
-此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。
+此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、輸出、後端、錯誤
 
@@ -320,7 +320,7 @@ ms.locfileid: "84751252"
 `log-to-eventhub` 原則會將指定格式的訊息傳送至記錄器實體所定義的事件中樞。 此原則正如其名，可用來儲存選取的要求或回應內容資訊，以進行線上或離線分析。
 
 > [!NOTE]
-> 如需如何設定事件中樞和記錄事件的逐步指南，請參閱[如何使用 Azure 事件中樞記錄 API 管理事件](https://azure.microsoft.com/documentation/articles/api-management-howto-log-event-hubs/)。
+> 如需如何設定事件中樞和記錄事件的逐步指南，請參閱[如何使用 Azure 事件中樞記錄 API 管理事件](./api-management-howto-log-event-hubs.md)。
 
 ### <a name="policy-statement"></a>原則陳述式
 
@@ -347,23 +347,23 @@ ms.locfileid: "84751252"
 </policies>
 ```
 
-### <a name="elements"></a>元素
+### <a name="elements"></a>項目
 
-| 元素         | 說明                                                                     | 必要 |
+| 元素         | 描述                                                                     | 必要 |
 | --------------- | ------------------------------------------------------------------------------- | -------- |
-| log-to-eventhub | 根元素。 此元素的值是要記錄至事件中樞的字串。 | Yes      |
+| log-to-eventhub | 根元素。 此元素的值是要記錄至事件中樞的字串。 | 是      |
 
 ### <a name="attributes"></a>屬性
 
-| 屬性     | 說明                                                               | 必要                                                             |
+| 屬性     | 描述                                                               | 必要                                                             |
 | ------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| logger-id     | 已向您的 API 管理服務註冊的記錄器識別碼。         | Yes                                                                  |
+| logger-id     | 已向您的 API 管理服務註冊的記錄器識別碼。         | 是                                                                  |
 | partition-id  | 指定訊息傳送目的地的資料分割索引。             | 選擇性。 如果使用 `partition-key`，就不能使用這個屬性。 |
 | partition-key | 指定在傳送訊息時，用來指派資料分割的值。 | 選擇性。 如果使用 `partition-id`，就不能使用這個屬性。  |
 
 ### <a name="usage"></a>使用方式
 
-此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。
+此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、輸出、後端、錯誤
 
@@ -392,22 +392,22 @@ status code and media type. If no example or schema found, the content is empty.
 <mock-response status-code='200' content-type='application/json'/>
 ```
 
-### <a name="elements"></a>元素
+### <a name="elements"></a>項目
 
-| 元素       | 說明   | 必要 |
+| 元素       | 描述   | 必要 |
 | ------------- | ------------- | -------- |
-| mock-response | 根元素。 | Yes      |
+| mock-response | 根元素。 | 是      |
 
 ### <a name="attributes"></a>屬性
 
-| 屬性    | 說明                                                                                           | 必要 | 預設 |
+| 屬性    | 描述                                                                                           | 必要 | 預設 |
 | ------------ | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| status-code  | 指定回應狀態碼，且用來選取對應範例或結構描述。                 | No       | 200     |
-| Content-Type | 指定 `Content-Type` 回應標頭值，且用來選取對應範例或結構描述。 | No       | None    |
+| status-code  | 指定回應狀態碼，且用來選取對應範例或結構描述。                 | 否       | 200     |
+| Content-Type | 指定 `Content-Type` 回應標頭值，且用來選取對應範例或結構描述。 | 否       | None    |
 
 ### <a name="usage"></a>使用方式
 
-此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。
+此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、輸出、錯誤
 
@@ -451,22 +451,22 @@ status code and media type. If no example or schema found, the content is empty.
 
 ```
 
-### <a name="elements"></a>元素
+### <a name="elements"></a>項目
 
-| 元素 | 說明                                                         | 必要 |
+| 元素 | 描述                                                         | 必要 |
 | ------- | ------------------------------------------------------------------- | -------- |
-| retry   | 根元素。 可包含其他任何原則來做為其子元素。 | Yes      |
+| retry   | 根元素。 可包含其他任何原則來做為其子元素。 | 是      |
 
 ### <a name="attributes"></a>屬性
 
-| 屬性        | 說明                                                                                                                                           | 必要 | 預設 |
+| 屬性        | 描述                                                                                                                                           | 必要 | 預設 |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | condition (條件)        | 布林常值或[運算式](api-management-policy-expressions.md)，指定應停止 (`false`) 還是繼續 (`true`) 重試。      | 是      | N/A     |
-| count            | 正數，指定要嘗試的重試次數上限。                                                                                | 是      | N/A     |
+| 計數            | 正數，指定要嘗試的重試次數上限。                                                                                | 是      | N/A     |
 | interval         | 以秒為單位的正數，指定重試嘗試之間的等待間隔。                                                                 | 是      | N/A     |
 | max-interval     | 以秒為單位的正數，指定重試嘗試之間的最大等待間隔。 此屬性可用來實作指數重試演算法。 | 否       | N/A     |
 | delta            | 以秒為單位的正數，指定等待間隔的增量。 此屬性可用來實作線性和指數的重試演算法。             | 否       | N/A     |
-| first-fast-retry | 如果設定為 `true` ，則會立即執行第一次重試。                                                                                  | No       | `false` |
+| first-fast-retry | 如果設定為 `true` ，則會立即執行第一次重試。                                                                                  | 否       | `false` |
 
 > [!NOTE]
 > 當只有指定 `interval` 時，會執行**固定**間隔的重試。
@@ -475,7 +475,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用方式
 
-此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。 請注意，此原則會繼承子原則的使用方式限制。
+此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。 請注意，此原則會繼承子原則的使用方式限制。
 
 -   **原則區段︰** 輸入、輸出、後端、錯誤
 
@@ -508,24 +508,24 @@ status code and media type. If no example or schema found, the content is empty.
 
 ```
 
-### <a name="elements"></a>元素
+### <a name="elements"></a>項目
 
-| 元素         | 說明                                                                               | 必要 |
+| 元素         | 描述                                                                               | 必要 |
 | --------------- | ----------------------------------------------------------------------------------------- | -------- |
-| return-response | 根元素。                                                                             | Yes      |
-| set-header      | [set-header](api-management-transformation-policies.md#SetHTTPheader) 原則陳述式。 | No       |
-| set-body        | [set-body](api-management-transformation-policies.md#SetBody) 原則陳述式。         | No       |
-| set-status      | [set-status](api-management-advanced-policies.md#SetStatus) 原則陳述式。           | No       |
+| return-response | 根元素。                                                                             | 是      |
+| set-header      | [set-header](api-management-transformation-policies.md#SetHTTPheader) 原則陳述式。 | 否       |
+| set-body        | [set-body](api-management-transformation-policies.md#SetBody) 原則陳述式。         | 否       |
+| set-status      | [set-status](api-management-advanced-policies.md#SetStatus) 原則陳述式。           | 否       |
 
 ### <a name="attributes"></a>屬性
 
-| 屬性              | 說明                                                                                                                                                                          | 必要  |
+| 屬性              | 描述                                                                                                                                                                          | 必要  |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- |
 | response-variable-name | 所參考的內容變數名稱，其參考來源為 (舉例來說) 上游 [send-request](api-management-advanced-policies.md#SendRequest) 原則，且包含 `Response` 物件 | 選擇性。 |
 
 ### <a name="usage"></a>使用方式
 
-此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。
+此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、輸出、後端、錯誤
 
@@ -550,7 +550,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="example"></a>範例
 
-此一相同原則會舉例說明如何使用 `send-one-way-request` 原則，以在 HTTP 回應碼大於或等於 500 時，將訊息傳送至 Slack 聊天室。 如需此範例的詳細資訊，請參閱[使用來自 Azure API 管理服務的外部服務](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)。
+此一相同原則會舉例說明如何使用 `send-one-way-request` 原則，以在 HTTP 回應碼大於或等於 500 時，將訊息傳送至 Slack 聊天室。 如需此範例的詳細資訊，請參閱[使用來自 Azure API 管理服務的外部服務](./api-management-sample-send-request.md)。
 
 ```xml
 <choose>
@@ -578,28 +578,28 @@ status code and media type. If no example or schema found, the content is empty.
 
 ```
 
-### <a name="elements"></a>元素
+### <a name="elements"></a>項目
 
-| 元素                    | 說明                                                                                                 | 必要                        |
+| 元素                    | 描述                                                                                                 | 必要                        |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| send-one-way-request       | 根元素。                                                                                               | Yes                             |
+| send-one-way-request       | 根元素。                                                                                               | 是                             |
 | url                        | 要求的 URL。                                                                                     | mode=copy 時為 [否]；否則為 [是]。 |
 | method                     | 要求的 HTTP 方法。                                                                            | mode=copy 時為 [否]；否則為 [是]。 |
-| header                     | 要求標頭。 若有多個要求標頭，請使用多個 header 元素。                                  | No                              |
-| body                       | 要求本文。                                                                                           | No                              |
-| authentication-certificate | [用於用戶端驗證的憑證](api-management-authentication-policies.md#ClientCertificate) | No                              |
+| header                     | 要求標頭。 若有多個要求標頭，請使用多個 header 元素。                                  | 否                              |
+| body                       | 要求本文。                                                                                           | 否                              |
+| authentication-certificate | [用於用戶端驗證的憑證](api-management-authentication-policies.md#ClientCertificate) | 否                              |
 
 ### <a name="attributes"></a>屬性
 
-| 屬性     | 說明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 必要 | 預設  |
+| 屬性     | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 必要 | 預設  |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
-| mode="string" | 判斷這是新要求還是現行要求的複本。 在輸出模式中，mode=copy 不會初始化要求本文。                                                                                                                                                                                                                                                                                                                                                                                                                                                                | No       | 新增      |
-| NAME          | 指定要設定之標頭的名稱。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 是      | N/A      |
-| exists-action | 指定當已指定標頭時要採取的動作。 此屬性必須具有下列其中一個值。<br /><br /> -override-取代現有標頭的值。<br />-skip-不取代現有的標頭值。<br />-append-將值附加至現有的標頭值。<br />-delete-移除要求中的標頭。<br /><br /> 設為 `override` 時，編列多個相同名稱的項目會導致根據所有項目來設定標頭 (列出多次)；只有列出的值才會設定在結果中。 | No       | override |
+| mode="string" | 判斷這是新要求還是現行要求的複本。 在輸出模式中，mode=copy 不會初始化要求本文。                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 否       | 新增      |
+| name          | 指定要設定之標頭的名稱。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 是      | N/A      |
+| exists-action | 指定當已指定標頭時要採取的動作。 此屬性必須具有下列其中一個值。<br /><br /> -override-取代現有標頭的值。<br />-skip-不取代現有的標頭值。<br />-append-將值附加至現有的標頭值。<br />-delete-移除要求中的標頭。<br /><br /> 設為 `override` 時，編列多個相同名稱的項目會導致根據所有項目來設定標頭 (列出多次)；只有列出的值才會設定在結果中。 | 否       | override |
 
 ### <a name="usage"></a>使用方式
 
-此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。
+此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、輸出、後端、錯誤
 
@@ -625,7 +625,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="example"></a>範例
 
-此範例會顯示向授權伺服器確認參考權杖的方法。 如需此範例的詳細資訊，請參閱[使用來自 Azure API 管理服務的外部服務](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)。
+此範例會顯示向授權伺服器確認參考權杖的方法。 如需此範例的詳細資訊，請參閱[使用來自 Azure API 管理服務的外部服務](./api-management-sample-send-request.md)。
 
 ```xml
 <inbound>
@@ -662,31 +662,31 @@ status code and media type. If no example or schema found, the content is empty.
 
 ```
 
-### <a name="elements"></a>元素
+### <a name="elements"></a>項目
 
-| 元素                    | 說明                                                                                                 | 必要                        |
+| 元素                    | 描述                                                                                                 | 必要                        |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| send-request               | 根元素。                                                                                               | Yes                             |
+| send-request               | 根元素。                                                                                               | 是                             |
 | url                        | 要求的 URL。                                                                                     | mode=copy 時為 [否]；否則為 [是]。 |
 | method                     | 要求的 HTTP 方法。                                                                            | mode=copy 時為 [否]；否則為 [是]。 |
-| header                     | 要求標頭。 若有多個要求標頭，請使用多個 header 元素。                                  | No                              |
-| body                       | 要求本文。                                                                                           | No                              |
-| authentication-certificate | [用於用戶端驗證的憑證](api-management-authentication-policies.md#ClientCertificate) | No                              |
+| header                     | 要求標頭。 若有多個要求標頭，請使用多個 header 元素。                                  | 否                              |
+| body                       | 要求本文。                                                                                           | 否                              |
+| authentication-certificate | [用於用戶端驗證的憑證](api-management-authentication-policies.md#ClientCertificate) | 否                              |
 
 ### <a name="attributes"></a>屬性
 
-| 屬性                       | 說明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 必要 | 預設  |
+| 屬性                       | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 必要 | 預設  |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
-| mode="string"                   | 判斷這是新要求還是現行要求的複本。 在輸出模式中，mode=copy 不會初始化要求本文。                                                                                                                                                                                                                                                                                                                                                                                                                                                                | No       | 新增      |
+| mode="string"                   | 判斷這是新要求還是現行要求的複本。 在輸出模式中，mode=copy 不會初始化要求本文。                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 否       | 新增      |
 | response-variable-name="string" | 將會收到回應物件之內容變數的名稱。 如果變數不存在，則會在原則成功執行時建立，並可透過 [`context.Variable`](api-management-policy-expressions.md#ContextVariables) 集合存取。                                                                                                                                                                                                                                                                                                                          | 是      | N/A      |
-| timeout="integer"               | 以秒為單位的逾時間隔，URL 的呼叫在經過此間隔後便會失敗。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | No       | 60       |
-| ignore-error                    | 如果為 true，則要求會導致錯誤︰<br /><br /> -如果已指定回應變數名稱，則會包含 null 值。<br />-如果未指定回應變數名稱，則為 coNtext。將不會更新要求。                                                                                                                                                                                                                                                                                                                                                                                   | No       | false    |
-| NAME                            | 指定要設定之標頭的名稱。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 是      | N/A      |
-| exists-action                   | 指定當已指定標頭時要採取的動作。 此屬性必須具有下列其中一個值。<br /><br /> -override-取代現有標頭的值。<br />-skip-不取代現有的標頭值。<br />-append-將值附加至現有的標頭值。<br />-delete-移除要求中的標頭。<br /><br /> 設為 `override` 時，編列多個相同名稱的項目會導致根據所有項目來設定標頭 (列出多次)；只有列出的值才會設定在結果中。 | No       | override |
+| timeout="integer"               | 以秒為單位的逾時間隔，URL 的呼叫在經過此間隔後便會失敗。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | 否       | 60       |
+| ignore-error                    | 如果為 true，則要求會導致錯誤︰<br /><br /> -如果已指定回應變數名稱，則會包含 null 值。<br />-如果未指定回應變數名稱，則為 coNtext。將不會更新要求。                                                                                                                                                                                                                                                                                                                                                                                   | 否       | false    |
+| name                            | 指定要設定之標頭的名稱。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | 是      | N/A      |
+| exists-action                   | 指定當已指定標頭時要採取的動作。 此屬性必須具有下列其中一個值。<br /><br /> -override-取代現有標頭的值。<br />-skip-不取代現有的標頭值。<br />-append-將值附加至現有的標頭值。<br />-delete-移除要求中的標頭。<br /><br /> 設為 `override` 時，編列多個相同名稱的項目會導致根據所有項目來設定標頭 (列出多次)；只有列出的值才會設定在結果中。 | 否       | override |
 
 ### <a name="usage"></a>使用方式
 
-此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。
+此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、輸出、後端、錯誤
 
@@ -712,15 +712,15 @@ status code and media type. If no example or schema found, the content is empty.
 
 ```
 
-### <a name="elements"></a>元素
+### <a name="elements"></a>項目
 
-| 元素 | 說明  | 必要 |
+| 元素 | 描述  | 必要 |
 | ------- | ------------ | -------- |
-| proxy   | 根元素 | Yes      |
+| proxy   | 根元素 | 是      |
 
 ### <a name="attributes"></a>屬性
 
-| 屬性         | 說明                                            | 必要 | 預設 |
+| 屬性         | 描述                                            | 必要 | 預設 |
 | ----------------- | ------------------------------------------------------ | -------- | ------- |
 | url="string"      | http://host:port 格式的 Proxy URL。             | 是      | N/A     |
 | username="string" | 用於向 Proxy 驗證的使用者名稱。 | 否       | N/A     |
@@ -728,7 +728,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="usage"></a>使用方式
 
-此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。
+此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** inbound
 
@@ -747,7 +747,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="example"></a>範例
 
-這個使用 `set-method` 原則的相同原則會舉例說明如何在 HTTP 回應碼大於或等於 500 時，將訊息傳送至 Slack 聊天室。 如需此範例的詳細資訊，請參閱[使用來自 Azure API 管理服務的外部服務](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)。
+這個使用 `set-method` 原則的相同原則會舉例說明如何在 HTTP 回應碼大於或等於 500 時，將訊息傳送至 Slack 聊天室。 如需此範例的詳細資訊，請參閱[使用來自 Azure API 管理服務的外部服務](./api-management-sample-send-request.md)。
 
 ```xml
 <choose>
@@ -775,15 +775,15 @@ status code and media type. If no example or schema found, the content is empty.
 
 ```
 
-### <a name="elements"></a>元素
+### <a name="elements"></a>項目
 
-| 元素    | 說明                                                       | 必要 |
+| 元素    | 描述                                                       | 必要 |
 | ---------- | ----------------------------------------------------------------- | -------- |
-| set-method | 根元素。 元素的值會指定 HTTP 方法。 | Yes      |
+| set-method | 根元素。 元素的值會指定 HTTP 方法。 | 是      |
 
 ### <a name="usage"></a>使用方式
 
-此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。
+此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、錯誤
 
@@ -802,7 +802,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="example"></a>範例
 
-此範例會說明如何在授權權杖無效時傳回 401 回應。 如需詳細資訊，請參閱[使用來自 Azure API 管理服務的外部服務](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)
+此範例會說明如何在授權權杖無效時傳回 401 回應。 如需詳細資訊，請參閱[使用來自 Azure API 管理服務的外部服務](./api-management-sample-send-request.md)
 
 ```xml
 <choose>
@@ -818,22 +818,22 @@ status code and media type. If no example or schema found, the content is empty.
 
 ```
 
-### <a name="elements"></a>元素
+### <a name="elements"></a>項目
 
-| 元素    | 說明   | 必要 |
+| 元素    | 描述   | 必要 |
 | ---------- | ------------- | -------- |
-| set-status | 根元素。 | Yes      |
+| set-status | 根元素。 | 是      |
 
 ### <a name="attributes"></a>屬性
 
-| 屬性       | 說明                                                | 必要 | 預設 |
+| 屬性       | 描述                                                | 必要 | 預設 |
 | --------------- | ---------------------------------------------------------- | -------- | ------- |
 | code="integer"  | 要傳回的 HTTP 狀態碼。                            | 是      | N/A     |
 | reason="string" | 狀態碼傳回原因的描述。 | 是      | N/A     |
 
 ### <a name="usage"></a>使用方式
 
-此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。
+此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸出、後端、錯誤
 -   **原則範圍：** 所有範圍
@@ -856,22 +856,22 @@ status code and media type. If no example or schema found, the content is empty.
 <set-variable name="IsMobile" value="@(context.Request.Headers["User-Agent"].Contains("iPad") || context.Request.Headers["User-Agent"].Contains("iPhone"))" />
 ```
 
-### <a name="elements"></a>元素
+### <a name="elements"></a>項目
 
-| 元素      | 說明   | 必要 |
+| 元素      | 描述   | 必要 |
 | ------------ | ------------- | -------- |
-| set-variable | 根元素。 | Yes      |
+| set-variable | 根元素。 | 是      |
 
 ### <a name="attributes"></a>屬性
 
-| 屬性 | 說明                                                              | 必要 |
+| 屬性 | 描述                                                              | 必要 |
 | --------- | ------------------------------------------------------------------------ | -------- |
-| NAME      | 變數的名稱。                                                | Yes      |
-| value     | 變數的值。 此值可為運算式或常值。 | Yes      |
+| NAME      | 變數的名稱。                                                | 是      |
+| value     | 變數的值。 此值可為運算式或常值。 | 是      |
 
 ### <a name="usage"></a>使用方式
 
-此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。
+此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、輸出、後端、錯誤
 -   **原則範圍：** 所有範圍
@@ -916,9 +916,9 @@ status code and media type. If no example or schema found, the content is empty.
 
 `trace`原則會將自訂追蹤新增至 API 偵測器輸出、Application Insights 遙測和/或資源記錄。
 
--   此原則會在觸發追蹤時，將自訂追蹤新增至[API 偵測器](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)輸出，亦即， `Ocp-Apim-Trace` 要求標頭存在且設定為 true 且 `Ocp-Apim-Subscription-Key` 要求標頭存在，並保留允許追蹤的有效金鑰。
--   當[Application Insights 整合](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights)已啟用，且[Trace](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) `severity` 原則中指定的層級高於或高於 `verbosity` 診斷設定中指定的層級時，原則就會在 Application Insights 中建立追蹤遙測。
--   當[資源記錄](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs)已啟用，且原則中指定的嚴重性層級高於或高於診斷設定中指定的詳細等級時，原則會在記錄專案中新增屬性。
+-   此原則會在觸發追蹤時，將自訂追蹤新增至[API 偵測器](./api-management-howto-api-inspector.md)輸出，亦即， `Ocp-Apim-Trace` 要求標頭存在且設定為 true 且 `Ocp-Apim-Subscription-Key` 要求標頭存在，並保留允許追蹤的有效金鑰。
+-   當[Application Insights 整合](./api-management-howto-app-insights.md)已啟用，且[Trace](../azure-monitor/app/data-model-trace-telemetry.md) `severity` 原則中指定的層級高於或高於 `verbosity` 診斷設定中指定的層級時，原則就會在 Application Insights 中建立追蹤遙測。
+-   當[資源記錄](./api-management-howto-use-azure-monitor.md#activity-logs)已啟用，且原則中指定的嚴重性層級高於或高於診斷設定中指定的詳細等級時，原則會在記錄專案中新增屬性。
 
 ### <a name="policy-statement"></a>原則陳述式
 
@@ -940,26 +940,26 @@ status code and media type. If no example or schema found, the content is empty.
 </trace>
 ```
 
-### <a name="elements"></a>元素
+### <a name="elements"></a>項目
 
-| 元素  | 說明                                                                                                                                          | 必要 |
+| 元素  | 描述                                                                                                                                          | 必要 |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| 追蹤    | 根元素。                                                                                                                                        | Yes      |
-| message  | 要記錄的字串或運算式。                                                                                                                 | Yes      |
-| 中繼資料 | 將自訂屬性新增至 Application Insights 的[追蹤](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry)遙測。 | No       |
+| 追蹤    | 根元素。                                                                                                                                        | 是      |
+| message  | 要記錄的字串或運算式。                                                                                                                 | 是      |
+| 中繼資料 | 將自訂屬性新增至 Application Insights 的[追蹤](../azure-monitor/app/data-model-trace-telemetry.md)遙測。 | 否       |
 
 ### <a name="attributes"></a>屬性
 
-| 屬性 | 說明                                                                                                               | 必要 | 預設 |
+| 屬性 | 描述                                                                                                               | 必要 | 預設 |
 | --------- | ------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | source    | 對追蹤檢視器有意義，並指定了訊息來源的字串常值。                                   | 是      | N/A     |
-| severity  | 指定追蹤的嚴重性層級。 允許的值為 `verbose` 、 `information` 、 `error` （從最低到最高）。 | No       | 「詳細資訊」 |
-| NAME      | 屬性的名稱。                                                                                                     | 是      | N/A     |
+| severity  | 指定追蹤的嚴重性層級。 允許的值為 `verbose` 、 `information` ， `error` (從最低到最高的) 。 | 否       | 「詳細資訊」 |
+| name      | 屬性的名稱。                                                                                                     | 是      | N/A     |
 | value     | 屬性的值。                                                                                                    | 是      | N/A     |
 
 ### <a name="usage"></a>使用方式
 
-此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。
+此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、輸出、後端、錯誤
 
@@ -1015,21 +1015,21 @@ status code and media type. If no example or schema found, the content is empty.
 
 ```
 
-### <a name="elements"></a>元素
+### <a name="elements"></a>項目
 
-| 元素 | 說明                                                                                                   | 必要 |
+| 元素 | 描述                                                                                                   | 必要 |
 | ------- | ------------------------------------------------------------------------------------------------------------- | -------- |
-| wait    | 根元素。 只能包含做為子元素 `send-request`、`cache-lookup-value` 和 `choose` 原則。 | Yes      |
+| wait    | 根元素。 只能包含做為子元素 `send-request`、`cache-lookup-value` 和 `choose` 原則。 | 是      |
 
 ### <a name="attributes"></a>屬性
 
-| 屬性 | 說明                                                                                                                                                                                                                                                                                                                                                                                                            | 必要 | 預設 |
+| 屬性 | 描述                                                                                                                                                                                                                                                                                                                                                                                                            | 必要 | 預設 |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| 對象       | 決定 `wait` 原則是要等候所有直屬子原則完成或只等候一個完成。 允許的值包括：<br /><br /> - `all` - 等候所有直屬子原則完成<br />-any-等待任何直屬子原則完成。 第一個直屬子原則完成後，`wait` 原則便會完成，並終止執行任何其他直屬子原則。 | No       | all     |
+| for       | 決定 `wait` 原則是要等候所有直屬子原則完成或只等候一個完成。 允許的值包括：<br /><br /> - `all` - 等候所有直屬子原則完成<br />-any-等待任何直屬子原則完成。 第一個直屬子原則完成後，`wait` 原則便會完成，並終止執行任何其他直屬子原則。 | 否       | all     |
 
 ### <a name="usage"></a>使用方式
 
-此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。
+此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** 輸入、輸出、後端
 -   **原則範圍：** 所有範圍
@@ -1040,5 +1040,5 @@ status code and media type. If no example or schema found, the content is empty.
 
 -   [API 管理中的原則](api-management-howto-policies.md)
 -   [原則運算式](api-management-policy-expressions.md)
--   [原則參考文件](api-management-policy-reference.md)，取得原則陳述式及其設定的完整清單
+-   [原則參考文件](./api-management-policies.md)，取得原則陳述式及其設定的完整清單
 -   [原則範例](policy-samples.md)

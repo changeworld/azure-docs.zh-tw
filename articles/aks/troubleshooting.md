@@ -4,12 +4,12 @@ description: 了解在使用 Azure Kubernetes Service (AKS) 時，如何針對�
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 08668289faa2341389a80b00cba11a33021da608
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: f334f501335e9e384cfcc35b356e61ab66efe7a8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054384"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243676"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑難排解
 
@@ -22,7 +22,7 @@ ms.locfileid: "86054384"
 
 ## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>我在建立或升級期間收到「已超出配額」錯誤。 我該怎麼辦？ 
 
- [要求更多核心](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) \(部分機器翻譯\)。
+ [要求更多核心](../azure-portal/supportability/resource-manager-core-quotas-request.md) \(部分機器翻譯\)。
 
 ## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>對於 AKS，每個節點的最大 Pod 數設定為何？
 
@@ -34,9 +34,9 @@ ms.locfileid: "86054384"
 此錯誤表示叢集使用中的子網不再具有 CIDR 中的可用 Ip，因此無法成功指派資源。 針對 Kubenet 叢集，此需求是叢集中每個節點的足夠 IP 空間。 針對 Azure CNI 叢集，需求是叢集中每個節點和 pod 的足夠 IP 空間。
 深入瞭解[AZURE CNI 的設計，以將 ip 指派給](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)pod。
 
-這些錯誤也會出現在[AKS 診斷](https://docs.microsoft.com/azure/aks/concepts-diagnostics)中，這會主動呈現子網大小不足的問題。
+這些錯誤也會出現在[AKS 診斷](./concepts-diagnostics.md)中，這會主動呈現子網大小不足的問題。
 
-下列三（3）個案例會導致子網大小不足的錯誤：
+下列三個 (3) 案例會造成子網大小不足的錯誤：
 
 1. AKS Scale 或 AKS Nodepool scale
    1. 如果使用 Kubenet，當小於時，就會發生這種情況 `number of free IPs in the subnet` **less than** `number of new nodes requested` 。
@@ -46,7 +46,7 @@ ms.locfileid: "86054384"
    1. 如果使用 Kubenet，當小於時，就會發生這種情況 `number of free IPs in the subnet` **less than** `number of buffer nodes needed to upgrade` 。
    1. 如果使用 Azure CNI，當小於時，就會發生這種情況 `number of free IPs in the subnet` **less than** `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` 。
    
-   根據預設，AKS 叢集會設定一（1）的最大浪湧（升級緩衝區）值，但您可以藉由設定[節點集區的最大浪湧值](upgrade-cluster.md#customize-node-surge-upgrade-preview)來自訂此升級行為，這會增加完成升級所需的可用 ip 數目。
+   根據預設，AKS 叢集會設定一個 (1) 的最大浪湧 (升級緩衝區) 值，但您可以藉由設定[節點集區的最大浪湧值](upgrade-cluster.md#customize-node-surge-upgrade-preview)來自訂此升級行為，這會增加完成升級所需的可用 ip 數目。
 
 1. AKS 建立或 AKS Nodepool 新增
    1. 如果使用 Kubenet，當小於時，就會發生這種情況 `number of free IPs in the subnet` **less than** `number of nodes requested for the node pool` 。
@@ -70,7 +70,7 @@ ms.locfileid: "86054384"
 如需有關如何針對 Pod 問題進行疑難排解的詳細資訊，請參閱[偵錯應用程式](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods)。
 
 ## <a name="im-receiving-tcp-timeouts-when-using-kubectl-or-other-third-party-tools-connecting-to-the-api-server"></a>我 `TCP timeouts` 在使用 `kubectl` 或其他協力廠商工具連接到 API 伺服器時收到
-AKS 具有 HA 控制平面，會根據核心數目垂直調整，以確保其服務等級目標（Slo）和服務等級協定（Sla）。 如果您遇到連線超時的問題，請檢查下列內容：
+AKS 有 HA 控制平面，會根據核心數垂直調整，以確保其服務等級目標 (Slo) 和服務等級協定 (Sla) 。 如果您遇到連線超時的問題，請檢查下列內容：
 
 - **您的所有 API 命令是否一致地計時，或只是幾個？** 如果只有少數幾個，您的 `tunnelfront` pod 或 `aks-link` pod （負責節點 > 的控制平面通訊）可能不會處於執行中狀態。 請確定裝載此 pod 的節點未過度使用或在壓力下。 請考慮將它們移至自己的[ `system` 節點集](use-system-pools.md)區。
 - **您是否已開啟[AKS 限制輸出流量](limit-egress-traffic.md)檔中所述的所有必要端口、Fqdn 和 ip？** 否則，可能會有數個命令呼叫失敗。
@@ -197,14 +197,14 @@ AKS 具有 HA 控制平面，會根據核心數目垂直調整，以確保其服
 
 在 Kubernetes 1.10 版中，MountVolume.WaitForAttach 可能會因為 Azure 磁碟重新掛接而失敗。
 
-在 Linux 上，您可能會看到不正確的 DevicePath 格式錯誤。 例如：
+在 Linux 上，您可能會看到不正確的 DevicePath 格式錯誤。 例如︰
 
 ```console
 MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
   Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
 ```
 
-在 Windows 上，您可能會看到錯誤的 DevicePath(LUN) 數字錯誤。 例如：
+在 Windows 上，您可能會看到錯誤的 DevicePath(LUN) 數字錯誤。 例如︰
 
 ```console
 Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
@@ -410,7 +410,7 @@ E0118 08:15:52.041014    2112 nestedpendingoperations.go:267] Operation for "\"k
 
 您可以使用 base64 編碼的儲存體帳戶金鑰，以手動方式在 Azure 檔案祕密中手動更新 `azurestorageaccountkey` 欄位來減輕。
 
-若要以 base64 來為您的儲存體帳戶金鑰進行編碼，您可以使用 `base64`。 例如：
+若要以 base64 來為您的儲存體帳戶金鑰進行編碼，您可以使用 `base64`。 例如︰
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64

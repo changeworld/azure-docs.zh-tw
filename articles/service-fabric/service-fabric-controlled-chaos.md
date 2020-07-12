@@ -5,16 +5,17 @@ author: motanv
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: motanv
-ms.openlocfilehash: 37b451abd0a519dff17aba9b2d6c42b4762f30cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33ad837195c747a4e7f9a4609d745659be69dc9a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75463162"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246175"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>在 Service Fabric 叢集中引發受控制的混亂
 雲端基礎結構之類的大型分散式系統本身並不可靠。 Azure Service Fabric 可讓開發人員在不可靠的基礎結構之上撰寫可靠的分散式服務。 若要在不可靠的基礎結構之上撰寫健全的分散式服務，開發人員需要能夠測試其服務的穩定性，同時不可靠的基礎結構會因錯誤而經歷複雜的狀態轉換。
 
-[錯誤插入與叢集分析服務](https://docs.microsoft.com/azure/service-fabric/service-fabric-testability-overview) (亦稱為「錯誤分析服務」) 讓開發人員能夠引發錯誤來測試其服務。 這些針對性模擬錯誤，例如[重新啟動分割區](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps)，可幫助您練習最常見的狀態轉換。 但針對性模擬錯誤會因為定義而有偏差，因此可能會遺漏只會出現在難以預測、冗長且複雜的狀態轉換順序中的問題。 如需無偏差測試，您可以使用混亂。
+[錯誤插入與叢集分析服務](./service-fabric-testability-overview.md) (亦稱為「錯誤分析服務」) 讓開發人員能夠引發錯誤來測試其服務。 這些針對性模擬錯誤，例如[重新啟動分割區](/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps)，可幫助您練習最常見的狀態轉換。 但針對性模擬錯誤會因為定義而有偏差，因此可能會遺漏只會出現在難以預測、冗長且複雜的狀態轉換順序中的問題。 如需無偏差測試，您可以使用混亂。
 
 混亂會以很長的時間在整個叢集上模擬定期、交錯的錯誤 (包括非失誤性和失誤性錯誤)。 非失誤性錯誤是由一組 Service Fabric API 呼叫所組成。舉例來說，重新啟動複本錯誤是非失誤性錯誤，因為這是複本上由開啟所接續的關閉。 移除複本、移動主要複本，以及移動次要複本是由混亂所運用的其他非失誤性錯誤。 失誤性錯誤為處理程序結束，例如重新啟動節點和重新啟動程式碼封裝。 
 
@@ -24,7 +25,7 @@ ms.locfileid: "75463162"
 > 目前來說，混亂只會引發安全的錯誤，這表示如果沒有外部錯誤，絕不會發生仲裁遺失或資料遺失。
 >
 
-混亂執行時，會產生不同事件來擷取目前執行的狀態。 例如，ExecutingFaultsEvent 包含混亂已決定正在該反覆運算中執行的所有錯誤。 ValidationFailedEvent 包含在驗證叢集期間所發現驗證失敗 (健康情況或穩定性問題) 的詳細資料。 您可以叫用 GetChaosReport API (C#、Powershell 或 REST) 以取得混亂執行的報告。 這些事件保存在[可靠的字典](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections)中，其中有由兩個組態決定的截斷原則：MaxStoredChaosEventCount**** (預設值為 25000) 及 StoredActionCleanupIntervalInSeconds**** (預設值為 3600)。 每個 StoredActionCleanupIntervalInSeconds** 混亂檢查及最新 MaxStoredChaosEventCount** 事件以外的所有事件皆會自可靠字典中清除。
+混亂執行時，會產生不同事件來擷取目前執行的狀態。 例如，ExecutingFaultsEvent 包含混亂已決定正在該反覆運算中執行的所有錯誤。 ValidationFailedEvent 包含在驗證叢集期間所發現驗證失敗 (健康情況或穩定性問題) 的詳細資料。 您可以叫用 GetChaosReport API (C#、Powershell 或 REST) 以取得混亂執行的報告。 這些事件保存在[可靠的字典](./service-fabric-reliable-services-reliable-collections.md)中，其中有由兩個組態決定的截斷原則：MaxStoredChaosEventCount**** (預設值為 25000) 及 StoredActionCleanupIntervalInSeconds**** (預設值為 3600)。 每個 StoredActionCleanupIntervalInSeconds** 混亂檢查及最新 MaxStoredChaosEventCount** 事件以外的所有事件皆會自可靠字典中清除。
 
 ## <a name="faults-induced-in-chaos"></a>混亂中引發的錯誤
 混亂會在整個 Service Fabric 叢集中產生錯誤，並將在幾個月或幾年內看到的錯誤壓縮成幾小時。 交錯錯誤和高錯誤率的組合，會尋找可能會在其他情形下遺漏的極端狀況。 這個混亂練習可以大幅提升服務的程式碼品質。

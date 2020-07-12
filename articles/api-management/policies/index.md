@@ -13,12 +13,12 @@ ms.topic: sample
 ms.date: 10/31/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: b8f97bb27b3eb45c731b20ad51e35fde9b6a394a
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 252e7b8d13cf53a98ea1f25b207740c0e623f92c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126889"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242962"
 ---
 # <a name="api-management-policy-samples"></a>API 管理原則範例
 
@@ -34,7 +34,7 @@ ms.locfileid: "85126889"
 | [使用外部授權者授權要求](./authorize-request-using-external-authorizer.md)                                                   | 示範如何使用外部授權者來保護 API 存取。                                                                                                                                                               |
 | [使用 Google OAuth 權杖授權存取](./use-google-as-oauth-token-provider.md)                                            | 示範如何使用 Google 作為 OAuth 權杖提供者來授權存取您的端點。                                                                                                                                    |
 | [使用應用程式閘道時篩選 IP 位址](./filter-ip-addresses-when-using-appgw.md) | 說明如何在透過應用程式閘道存取 APIM 執行個體時，於原則中設定 IP 篩選
-| [產生共用存取簽章並將要求轉送到 Azure 儲存體](./generate-shared-access-signature.md)                  | 示範如何使用運算式來產生[共用存取簽章](../../storage/storage-dotnet-shared-access-signature-part-1.md)，並使用 rewrite-uri 原則來將要求轉送到 Azure 儲存體。 |
+| [產生共用存取簽章並將要求轉送到 Azure 儲存體](./generate-shared-access-signature.md)                  | 示範如何使用運算式來產生[共用存取簽章](../../storage/common/storage-sas-overview.md)，並使用 rewrite-uri 原則來將要求轉送到 Azure 儲存體。 |
 | [從 AAD 取得 OAuth2 存取權杖並將它轉送到後端](./use-oauth2-for-authorization.md)                             | 提供使用 OAuth2 在閘道與後端之間進行授權的範例。 此範例示範如何從 AAD 取得存取權杖並將它轉送到後端。                                                    |
 | [使用傳送要求原則從 SAP 閘道取得 X-CSRF 權杖](./get-x-csrf-token-from-sap-gateway.md)                           | 示範如何實作許多 API 所使用的 X-CSRF 模式。 這是 SAP 閘道特有的範例。                                                                                                                           |
 | [根據要求主體的大小進行要求的路由傳送](./route-requests-based-on-size.md)                                            | 示範如何根據要求主體的大小進行要求的路由傳送。                                                                                                                                                       |

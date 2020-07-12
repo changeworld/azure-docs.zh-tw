@@ -15,19 +15,20 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6415214e5d6b71d174e5117c1cf1e41af381334c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bbd461072a137bf32874805e5c6171d1102ef0c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84013554"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245342"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教學課程：設定 Workday 來自動佈建使用者
 
-本教學課程的目的是要示範將背景工作設定檔從 Workday 布建至內部部署 Active Directory （AD）時所需執行的步驟。
+本教學課程的目的是要示範將背景工作設定檔從 Workday 布建至內部部署 Active Directory (AD) 所需執行的步驟。
 
 >[!NOTE]
 >如果您想要從 Workday 布建的使用者需要內部部署 AD 帳戶和 Azure AD 帳戶，請使用本教學課程。 
->* 如果 Workday 的使用者只需要 Azure AD 帳戶（僅限雲端的使用者），請參閱[設定 Workday 來 Azure AD](workday-inbound-cloud-only-tutorial.md)使用者布建的教學課程。 
+>* 如果 Workday 的使用者只需要 Azure AD 帳戶 (僅限雲端的使用者) ，請參閱[設定 Workday 以 Azure AD](workday-inbound-cloud-only-tutorial.md)使用者布建的教學課程。 
 >* 若要設定將屬性的回寫（例如電子郵件地址、使用者名稱和電話號碼）從 Azure AD 到 Workday，請參閱[設定 workday 回寫](workday-writeback-tutorial.md)的教學課程。
 
 
@@ -48,7 +49,7 @@ ms.locfileid: "84013554"
 
 * **5 月 2020-能夠將電話號碼回寫到 Workday：** 除了電子郵件和使用者名稱之外，您現在也可以將公司電話號碼和行動電話號碼從 Azure AD 回寫到 Workday。 如需詳細資訊，請參閱[回寫應用程式教學](workday-writeback-tutorial.md)課程。
 
-* **2020 年4月-支援最新版本的 Workday Web 服務（WWS） API：** 每年3月和9月兩次，Workday 都會提供功能豐富的更新，協助您滿足業務目標及變更員工需求。 若要跟上 Workday 所提供的新功能，您現在可以直接指定您想要在連線 URL 中使用的 WWS API 版本。 如需如何指定 Workday API 版本的詳細資訊，請參閱設定[workday](#part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory)連線的一節。 
+* **2020 年4月-支援最新版本的 Workday Web 服務 (WWS) API：** 每年3月和9月兩次，Workday 都會提供功能豐富的更新，協助您滿足業務目標及變更員工需求。 若要跟上 Workday 所提供的新功能，您現在可以直接指定您想要在連線 URL 中使用的 WWS API 版本。 如需如何指定 Workday API 版本的詳細資訊，請參閱設定[workday](#part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory)連線的一節。 
 
 * **Jan 2020-設定 AD accountExpires 屬性的能力：** 使用函數[NumFromDate](../app-provisioning/functions-for-customizing-application-data.md#numfromdate) ，您現在可以對應 Workday 日期欄位，例如*EndContractDate*或*StatusTerminationDate*。 
 
@@ -70,7 +71,7 @@ ms.locfileid: "84013554"
 
 本節針對常見的混合式環境，說明端對端使用者佈建方案架構。 有兩個相關的流程：
 
-* **授權 HR 資料流程–從 Workday 到內部部署 Active Directory：** 在此流程中，背景工作事件（例如新進員工、轉移、終止）會先發生在雲端 Workday HR 租使用者，然後事件資料會透過 Azure AD 和布建代理程式流入內部部署 Active Directory。 視事件而定，它可能會在 AD 中產生建立/更新/啟用/停用作業。
+* **授權 HR 資料流程–從 Workday 到內部部署 Active Directory：** 在此流程中，背景工作角色 (例如新進員工、轉移、終止) 會先發生在雲端 Workday HR 租使用者，然後事件資料會透過 Azure AD 和布建代理程式流入內部部署 Active Directory。 視事件而定，它可能會在 AD 中產生建立/更新/啟用/停用作業。
 * **回寫流程–從內部部署 Active Directory 到 Workday：** 在 Active Directory 中完成帳戶建立之後，它會透過 Azure AD Connect 與 Azure AD 同步處理，而電子郵件、使用者名稱和電話號碼等資訊則可回寫到 Workday。
 
 ![概觀](./media/workday-inbound-tutorial/wd_overview.png)
@@ -255,7 +256,7 @@ ms.locfileid: "84013554"
 ### <a name="permissions-required-to-configure-the-provisioning-agent-service"></a>設定布建代理程式服務所需的許可權
 使用下列步驟來設定可用於布建代理程式作業的服務帳戶。 
 1.  在您的 AD 網域控制站上，開啟*Active Directory 使用者和電腦*] 嵌入式管理單元。 
-2.  建立新的網域使用者（例如： *provAgentAdmin*）  
+2.  建立新的網域使用者 (範例： *provAgentAdmin*)   
 3.  以滑鼠右鍵按一下 OU 或功能變數名稱，然後選取 [*委派控制*]，這將會開啟 [*控制] Wizard 的委派*。 
 
 > [!NOTE] 
@@ -394,13 +395,13 @@ ms.locfileid: "84013554"
    
      | URL 格式 | 使用的 WWS API 版本 | 需要 XPATH 變更 |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21。1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21。1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #。# | Yes |
+     | https://####.workday.com/ccx/service/tenantName | v 21。1 | 否 |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21。1 | 否 |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #。# | 是 |
 
       > [!NOTE]
-     > 如果 URL 中未指定任何版本資訊，則應用程式會使用 Workday Web 服務（WWS） v 21.1，而且應用程式隨附的預設 XPATH API 運算式不需要任何變更。 若要使用特定的 WWS API 版本，請在 URL 中指定版本號碼 <br>
-     > 範例：`https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v34.0` <br>
+     > 如果 URL 中未指定任何版本資訊，應用程式會使用 Workday Web 服務 (WWS) v 21.1，而且應用程式隨附的預設 XPATH API 運算式不需要任何變更。 若要使用特定的 WWS API 版本，請在 URL 中指定版本號碼 <br>
+     > 範例： `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v34.0` <br>
      > <br> 如果您使用 WWS API v 30.0 +，在開啟布建作業之前，請先更新 [屬性對應->] [設定] [選項] 下的 [ **XPATH API 運算式**]-請參閱[管理您](#managing-your-configuration)的設定和[workday 屬性參考](../app-provisioning/workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30)一節中的**Workday > 編輯屬性清單**。  
 
    * **Active Directory 樹系** – 向代理程式註冊的 Active Directory 網域「名稱」。 請使用下拉式清單來選取用於佈建的目標網域。 此值通常是如下的字串：*contoso.com*
@@ -519,7 +520,7 @@ ms.locfileid: "84013554"
 | **Fax**      | facsimileTelephoneNumber     |     |    建立 + 更新 |
 | **Mobile**  |    mobile       |     |       建立 + 更新 |
 | **LocalReference** |  preferredLanguage  |     |  建立 + 更新 |                                               
-| **Switch （ \[ Municipality \] ，"Ou = Default USERS，DC = CONTOSO，DC = com"，"達拉斯"，"Ou = 達拉斯，OU = USERS，dc = CONTOSO，dc = com"，"奧斯丁"，"OU = 奧斯丁，Ou = USERS，dc = CONTOSO，dc = com"，"西雅圖"，"OU = 西雅圖，Ou = USERS，dc = CONTOSO，dc = com"，"倫敦"，"Ou = 倫敦，OU = USERS，dc = CONTOSO，dc = com"）**  | parentDistinguishedName     |     |  建立 + 更新 |
+| **Switch (\[ Municipality \] 、"OU = Default USERS，DC = CONTOSO，DC = com"，"達拉斯"，"Ou = 達拉斯，OU = USERS，dc = CONTOSO，dc = com"，"奧斯丁"，"OU = 奧斯丁，Ou = USERS，dc = CONTOSO，dc = com"，"西雅圖"，"OU = 西雅圖，Ou = USERS，dc = CONTOSO，dc = com"，"倫敦"，"Ou = 倫敦，OU = USERS，dc = CONTOSO，dc = com" ) **  | parentDistinguishedName     |     |  建立 + 更新 |
 
 完成屬性對應設定之後，您現在便可以[啟用及啟動使用者佈建服務](#enable-and-launch-user-provisioning)。
 
@@ -683,12 +684,7 @@ ms.locfileid: "84013554"
 
 #### <a name="how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent"></a>如何確保佈建代理程式能夠與 Azure AD 租用戶進行通訊，而沒有任何防火牆封鎖代理程式所需的連接埠？
 
-您也可以從內部部署網路開啟[連接器連接埠測試工具](https://aadap-portcheck.connectorporttest.msappproxy.net/)，以檢查是否已開啟所有必要的連接埠。 越多的綠色勾選記號，表示越佳的復原功能。
-
-為了確定工具可提供您正確的結果，請務必：
-
-* 從您已安裝「佈建代理程式」之伺服器的瀏覽器上開啟工具。
-* 確定所有適用於您「佈建代理程式」的 Proxy 或防火牆也已套用至這個頁面。 做法是在 Internet Explorer 中移至 [設定] -> [網際網路選項] -> [連線] -> [區域網路設定]。 在此頁面上，您會看到 [為您的 LAN 使用 Proxy 伺服器] 欄位。 請選取此方塊，然後在 [位址] 欄位中輸入 Proxy 位址。
+您也可以檢查是否所有必要的[埠](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#open-ports)皆已開啟。
 
 #### <a name="can-one-provisioning-agent-be-configured-to-provision-multiple-ad-domains"></a>是否可以設定讓一個佈建代理程式佈建多個 AD 網域？
 

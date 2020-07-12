@@ -1,22 +1,23 @@
 ---
-title: 使用鄰近放置群組來減少 Azure Kubernetes Service （AKS）叢集的延遲
+title: 使用鄰近放置群組來減少 Azure Kubernetes Service (AKS) 叢集的延遲
 description: 瞭解如何使用鄰近放置群組來減少 AKS 叢集工作負載的延遲。
 services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 06/22/2020
-ms.openlocfilehash: 095746b9cf3cada9cebf7d169078eff9eb64a52d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1bcdfb4bb3c910feeac0521308e1e7d733fbd959
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444262"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244067"
 ---
-# <a name="reduce-latency-with-proximity-placement-groups-preview"></a>使用鄰近放置群組來減少延遲（預覽）
+# <a name="reduce-latency-with-proximity-placement-groups-preview"></a>使用 (預覽) 的鄰近放置群組來減少延遲
 
 > [!Note]
 > 當您使用 AKS 的鄰近放置群組時，共置僅適用于代理程式節點。 節點對節點和對應的主控 pod 至 pod 的延遲已獲得改善。 共置不會影響叢集控制平面的位置。
 
-在 Azure 中部署您的應用程式時，將虛擬機器（VM）實例分散到不同區域或可用性區域會建立網路延遲，這可能會影響應用程式的整體效能。 鄰近放置群組是一種邏輯群組，用來確保 Azure 計算資源實際位於彼此接近的位置。 某些應用程式（例如遊戲、工程模擬和高頻率交易（HFT））需要快速完成的低延遲和工作。 針對高效能運算（HPC）案例，例如，請考慮為叢集的節點集區使用[鄰近放置群組](../virtual-machines/linux/co-location.md#proximity-placement-groups)。
+在 Azure 中部署您的應用程式時，將虛擬機器 (VM) 實例分散到不同區域或可用性區域會建立網路延遲，這可能會影響應用程式的整體效能。 鄰近放置群組是一種邏輯群組，用來確保 Azure 計算資源實際位於彼此接近的位置。 某些應用程式（例如遊戲、工程模擬和高頻率交易） (HFT) 需要快速完成的低延遲和工作。 針對高效能運算 (HPC) 案例（例如這些情況），請考慮使用叢集節點集區的[鄰近放置群組](../virtual-machines/linux/co-location.md#proximity-placement-groups)。
 
 ## <a name="limitations"></a>限制
 
@@ -64,7 +65,7 @@ az extension update --name aks-preview
 ```
 ## <a name="node-pools-and-proximity-placement-groups"></a>節點集區和鄰近放置群組
 
-您使用鄰近放置群組部署的第一個資源會附加至特定的資料中心。 使用相同的鄰近放置群組部署的其他資源，會共置於相同的資料中心。 當使用鄰近放置群組的所有資源都已停止（解除配置）或刪除之後，就不再附加。
+您使用鄰近放置群組部署的第一個資源會附加至特定的資料中心。 使用相同的鄰近放置群組部署的其他資源，會共置於相同的資料中心。 一旦使用鄰近放置群組的所有資源都已停止 (解除配置) 或刪除，就不再附加。
 
 * 許多節點集區可以與單一的鄰近放置群組建立關聯。
 * 節點集區只能與單一鄰近放置群組相關聯。
@@ -73,7 +74,7 @@ az extension update --name aks-preview
 
 下列範例會使用[az group create][az-group-create]命令，在*centralus*區域中建立名為*myResourceGroup*的資源群組。 然後使用[az AKS create][az-aks-create]命令來建立名為*myAKSCluster*的 AKS 叢集。 
 
-加速網路可大幅提升虛擬機器的網路效能。 在理想的情況下，請將鄰近放置群組與加速網路搭配使用。 根據預設，AKS 會在支援的[虛擬機器實例](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=/azure/virtual-machines/linux/toc.json#limitations-and-constraints)上使用加速網路，其中包括具有兩個或多個個 vcpu 的大部分 Azure 虛擬機器。
+加速網路可大幅提升虛擬機器的網路效能。 在理想的情況下，請將鄰近放置群組與加速網路搭配使用。 根據預設，AKS 會在支援的[虛擬機器實例](../virtual-network/create-vm-accelerated-networking-cli.md?toc=/azure/virtual-machines/linux/toc.json#limitations-and-constraints)上使用加速網路，其中包括具有兩個或多個個 vcpu 的大部分 Azure 虛擬機器。
 
 使用鄰近放置群組建立新的 AKS 叢集：
 
@@ -163,4 +164,3 @@ az group delete --name myResourceGroup --yes --no-wait
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
-

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/18/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 459360e72c2d35cafedb0291642bf081bfcad96c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 077dc0e8048da39253729d56f1e812cccc69500c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103988"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242911"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>從 Azure 入口網站將混合式機器連線至 Azure
 
@@ -32,7 +32,7 @@ ms.locfileid: "86103988"
 
 1. 在瀏覽器中，移至 [Azure 入口網站](https://aka.ms/hybridmachineportal)。
 
-1. 在 [機器 - Azure Arc] 頁面上，選取左上角的 [新增]，或選取中間窗格底部的 [建立機器 - Azure Arc] 選項。 
+1. 在 [機器 - Azure Arc] 頁面上，選取左上角的 [新增]，或選取中間窗格底部的 [建立機器 - Azure Arc] 選項。
 
 1. 在 [選取方法] 頁面上，選取 [使用互動式指令碼新增機器] 圖格，然後選取 [產生指令碼]。
 
@@ -49,8 +49,8 @@ ms.locfileid: "86103988"
 
 1. 在 [產生指令碼] 頁面的 [作業系統] 下拉式清單中，選取要作為指令碼執行平台的作業系統。
 
-1. 如果機器透過 Proxy 伺服器進行通訊以連線到網際網路，請選取 [下一步：Proxy 伺服器]。 
-1. 在 [Proxy 伺服器] 索引標籤上，指定要供機器用來與 Proxy 伺服器通訊的 Proxy 伺服器 IP 位址或名稱與連接埠號碼。 請以 `http://<proxyURL>:<proxyport>` 格式輸入值。 
+1. 如果機器透過 Proxy 伺服器進行通訊以連線到網際網路，請選取 [下一步：Proxy 伺服器]。
+1. 在 [Proxy 伺服器] 索引標籤上，指定要供機器用來與 Proxy 伺服器通訊的 Proxy 伺服器 IP 位址或名稱與連接埠號碼。 請以 `http://<proxyURL>:<proxyport>` 格式輸入值。
 1. 選取 [檢閱 + 產生]。
 
 1. 在 [檢閱 + 產生] 索引標籤上檢閱摘要資訊，然後選取 [下載]。 如果您還需要變更，請選取 [上一步]。
@@ -59,17 +59,17 @@ ms.locfileid: "86103988"
 
 ### <a name="install-manually"></a>手動安裝
 
-您可以執行 Windows Installer 套件「AzureConnectedMachineAgent.msi」來手動安裝 Azure Connected Machine 代理程式。 您可以從 Microsoft 下載中心下載最新版本的 [Windows 代理程式的 Windows Installer 套件](https://aka.ms/AzureConnectedMachineAgent)。 
+您可以執行 Windows Installer 套件「AzureConnectedMachineAgent.msi」來手動安裝 Azure Connected Machine 代理程式。 您可以從 Microsoft 下載中心下載最新版本的 [Windows 代理程式的 Windows Installer 套件](https://aka.ms/AzureConnectedMachineAgent)。
 
-> [!NOTE]
-> * 若要安裝或解除安裝此代理程式，您必須具有「系統管理員」權限。
-> * 您必須先下載安裝程式套件，並將其複製到目標伺服器上的資料夾，或從共用的網路資料夾執行此動作。 如果您在執行此安裝程式套件時未使用任何選項，則會啟動以互動方式安裝代理程式的安裝精靈。
+>[!NOTE]
+>* 若要安裝或解除安裝此代理程式，您必須具有「系統管理員」權限。
+>* 您必須先下載安裝程式套件，並將其複製到目標伺服器上的資料夾，或從共用的網路資料夾執行此動作。 如果您在執行此安裝程式套件時未使用任何選項，則會啟動以互動方式安裝代理程式的安裝精靈。
 
 如果機器需要透過 Proxy 伺服器與服務通訊，則在安裝代理程式之後，您必須執行本文稍後所述的命令。 這會設定 Proxy 伺服器系統環境變數 `https_proxy`。
 
 如果您不熟悉 Windows Installer 套件的命令列選項，請參閱 [Msiexec 標準命令列選項](/windows/win32/msi/standard-installer-command-line-options)和 [Msiexec 命令列選項](/windows/win32/msi/command-line-options)。
 
-例如，使用 `/?` 參數執行安裝程式，以檢閱說明和快速參考選項。 
+例如，使用 `/?` 參數執行安裝程式，以檢閱說明和快速參考選項。
 
 ```dos
 msiexec.exe /i AzureConnectedMachineAgent.msi /?
@@ -113,7 +113,7 @@ Restart-Service -Name himds
 
 在安裝代理程式後，您必須執行下列命令，將代理程式設定為與 Azure Arc 服務進行通訊：
 
-`"%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "<resourceGroupName>" --tenant-id "<tenantID>" --location "<regionName>" --subscription-id "<subscriptionID>"`
+`"%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID"`
 
 ## <a name="install-and-validate-the-agent-on-linux"></a>在 Linux 上安裝和驗證代理程式
 
@@ -124,7 +124,7 @@ Restart-Service -Name himds
 
 (選擇性) 您可以納入 `--proxy "{proxy-url}:{proxy-port}"` 參數，以使用 Proxy 資訊來設定代理程式。
 
-此指令碼也包含用來識別可支援和不支援發行版本的邏輯，並會驗證用來執行安裝所需的權限。 
+此指令碼也包含用來識別可支援和不支援發行版本的邏輯，並會驗證用來執行安裝所需的權限。
 
 下列範例會下載並安裝代理程式：
 
@@ -132,7 +132,7 @@ Restart-Service -Name himds
 # Download the installation package.
 wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 
-# Install the connected machine agent. 
+# Install the connected machine agent.
 bash ~/Install_linux_azcmagent.sh
 ```
 
@@ -150,7 +150,7 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 安裝好代理程式後，請執行下列命令將其設定為與 Azure Arc 服務進行通訊：
 
-`azcmagent connect --resource-group "<resourceGroupName>" --tenant-id "<tenantID>" --location "<regionName>" --subscription-id "<subscriptionID>"`
+`azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID"`
 
 ## <a name="verify-the-connection-with-azure-arc"></a>確認與 Azure Arc 的連線
 

@@ -5,11 +5,12 @@ author: motanv
 ms.topic: conceptual
 ms.date: 10/1/2019
 ms.author: motanv
-ms.openlocfilehash: 206b02024ad052a12e87cfdf1773815027e8aec4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 336cd048704055e07de1a20f0694bd5816265a8a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75465545"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245563"
 ---
 # <a name="testability-scenarios"></a>Testability 案例
 雲端基礎結構之類的大型分散式系統本身並不可靠。 Azure Service Fabric 讓開發人員能夠撰寫可在不可靠的基礎結構上執行的服務。 為了撰寫高品質的服務，開發人員必須能夠產生這類不可靠的基礎結構，才能測試其服務的穩定性。
@@ -123,7 +124,7 @@ class Test
 
 PowerShell
 
-Service Fabric Powershell 模組包含兩種開始混亂案例的方式。 `Invoke-ServiceFabricChaosTestScenario`是以用戶端為基礎，而且如果用戶端機器在測試期間關閉，將不會再引進任何錯誤。 或者，還有一組命令，用來在機器關機時讓測試保持執行狀態。 `Start-ServiceFabricChaos`會使用名為 FaultAnalysisService 的具狀態且可靠的系統服務，確保在 TimeToRun 啟動之前，會持續引進錯誤。 `Stop-ServiceFabricChaos`可以用來手動停止案例，並 `Get-ServiceFabricChaosReport` 取得報表。 如需詳細資訊，請參閱[Azure Service Fabric Powershell 參考](https://docs.microsoft.com/powershell/module/servicefabric/?view=azureservicefabricps)和[Service Fabric 叢集中的引發控制混亂](service-fabric-controlled-chaos.md)。
+Service Fabric Powershell 模組包含兩種開始混亂案例的方式。 `Invoke-ServiceFabricChaosTestScenario`是以用戶端為基礎，而且如果用戶端機器在測試期間關閉，將不會再引進任何錯誤。 或者，還有一組命令，用來在機器關機時讓測試保持執行狀態。 `Start-ServiceFabricChaos`會使用名為 FaultAnalysisService 的具狀態且可靠的系統服務，確保在 TimeToRun 啟動之前，會持續引進錯誤。 `Stop-ServiceFabricChaos`可以用來手動停止案例，並 `Get-ServiceFabricChaosReport` 取得報表。 如需詳細資訊，請參閱[Azure Service Fabric Powershell 參考](/powershell/module/servicefabric/?view=azureservicefabricps)和[Service Fabric 叢集中的引發控制混亂](service-fabric-controlled-chaos.md)。
 
 ```powershell
 $connection = "localhost:19000"

@@ -3,12 +3,12 @@ title: 深入瞭解 Azure Service Fabric
 description: 了解 Azure Service Fabric 的核心概念和主要領域。 提供 Service Fabric 及如何建立微服務的延伸概觀。
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 573b1ec662bdc7e72f964698f5e0670860895586
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d578d6b3e0232d0733097d68bac22af566b2083
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82791845"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246253"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>您想要了解 Service Fabric 嗎？
 Azure Service Fabric 是分散式系統平台，可讓您輕鬆封裝、部署及管理可調整和可信賴的微服務。  Service Fabric 有相當大的介面區，不過，要了解的方面很多。  本文提供 Service Fabric 的概述，並描述核心概念、程式設計模型、應用程式生命週期、測試、叢集及健康情況監視。 如需相關簡介及了解如何使用 Service Fabric 來建立微服務，請參閱[概觀](service-fabric-overview.md)和[什麼是微服務？](service-fabric-overview-microservices.md)。 本文並未包含完整的內容清單，但有連結到 Service Fabric 每個領域的概觀與入門文章。 
@@ -87,7 +87,7 @@ Service Fabric 與 [ASP.NET Core](service-fabric-reliable-services-communication
 ## <a name="application-lifecycle"></a>應用程式生命週期
 如同其他平台，Service Fabric 上的應用程式通常會經歷下列階段：設計、開發、測試、部署、升級、維護和移除。 從開發到部署、到每日管理、維護，以及最終的解除委任，Service Fabric 為雲端應用程式的完整應用程式生命週期提供第一等的支援。 服務模型可以啟用數個不同的角色，在應用程式生命週期中獨立參與。 [Service Fabric 應用程式生命週期](service-fabric-application-lifecycle.md)說明 API 的概觀，以及不同的角色如何在 Service Fabric 應用程式生命週期的各個階段使用 API。 
 
-您可使用 [PowerShell cmdlet](/powershell/module/ServiceFabric/)、[CLI 命令](service-fabric-sfctl.md)、[C# APIs](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient)、[Java APIs](/java/api/overview/azure/servicefabric) 和 [REST APIs](/rest/api/servicefabric/) 來管理整個應用程式生命週期。 您也可使用 [Azure Pipelines](service-fabric-set-up-continuous-integration.md) 或 [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md) 等工具來設定持續整合/持續部署管線。
+您可使用 [PowerShell cmdlet](/powershell/module/ServiceFabric/)、[CLI 命令](service-fabric-sfctl.md)、[C# APIs](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient)、[Java APIs](/java/api/overview/azure/servicefabric) 和 [REST APIs](/rest/api/servicefabric/) 來管理整個應用程式生命週期。 您也可使用 [Azure Pipelines](./service-fabric-tutorial-deploy-app-with-cicd-vsts.md) 或 [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md) 等工具來設定持續整合/持續部署管線。
 
 ## <a name="test-applications-and-services"></a>測試應用程式與服務
 為了建立真正雲端級別的服務，確保應用程式和服務可以禁得起真實世界失敗考驗便至關重要。 錯誤分析服務的設計用意，是測試建置於 Service Fabric 的服務。 使用[錯誤分析服務](service-fabric-testability-overview.md)，您可以引發有意義的錯誤，並對應用程式執行完整的測試案例。 這些錯誤及案例會在受控制、安全且一致的情況下，執行及驗證服務在其生命週期會發生的各種狀態和轉換情形。
@@ -112,7 +112,7 @@ Service Fabric 與 [ASP.NET Core](service-fabric-reliable-services-communication
 ### <a name="clusters-on-azure"></a>Azure 上的叢集
 我們可藉由在 Azure 上執行 Service Fabric 叢集，與其他的 Azure 功能和服務整合，而能夠更加輕鬆可靠地操作及管理叢集。 叢集為 Azure Resource Manager 資源，因此您可如同 Azure 中的其他任何資源般建立叢集模型。 Resource Manager 亦可輕鬆管理由叢集以單一單位方式使用的所有資源。 Azure 上的叢集會與 Azure 診斷和 Azure 監視器記錄整合。 叢集節點類型是[虛擬機器擴展集](/azure/virtual-machine-scale-sets/index)，因此內建自動調整功能。
 
-您可透過 [Azure 入口網站](service-fabric-cluster-creation-via-portal.md)、[範本](service-fabric-cluster-creation-via-arm.md)或 [Visual Studio](service-fabric-cluster-creation-via-visual-studio.md)，在 Azure 上建立叢集。
+您可透過 [Azure 入口網站](service-fabric-cluster-creation-via-portal.md)、[範本](service-fabric-cluster-creation-via-arm.md)或 [Visual Studio](./service-fabric-cluster-creation-via-arm.md)，在 Azure 上建立叢集。
 
 Linux 上的 Service Fabric 可讓您如同在 Windows 上一樣，在 Linux 上建置、部署和管理可用性高、可大幅調整的應用程式。 Service Fabric 架構 (Reliable Services 和 Reliable Actors) 除了可在 C# (.NET Core) 中使用，也可在 Linux 上的 Java 中使用。 您也可以使用任何語言或架構來建置 [來賓可執行檔服務](service-fabric-guest-executables-introduction.md) 。 也支援協調 Docker 容器。 Docker 容器可以執行使用 Service Fabric 架構的來賓可執行檔或原生 Service Fabric 服務。 如需詳細資訊，請參閱 [Linux 上的 Service Fabric](service-fabric-deploy-anywhere.md)。
 
@@ -191,7 +191,7 @@ Service Fabric 提供多種[健康狀態報告檢視](service-fabric-view-entiti
 * 學習如何[管理和組織叢集資源](service-fabric-cluster-resource-manager-introduction.md)。
 * 查看 [Service Fabric 範例 ](https://aka.ms/servicefabricsamples)。
 * 了解 [Service Fabric 支援選項](service-fabric-support.md)。
-* 如需相關文章與公告資訊，請參閱[小組部落格](https://blogs.msdn.microsoft.com/azureservicefabric/)。
+* 如需相關文章與公告資訊，請參閱[小組部落格](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)。
 
 
 [cluster-application-instances]: media/service-fabric-content-roadmap/cluster-application-instances.png

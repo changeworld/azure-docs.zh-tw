@@ -12,11 +12,12 @@ ms.workload: mobile
 ms.topic: article
 ms.date: 06/24/2020
 ms.author: apimpm
-ms.openlocfilehash: 72899e743e167eef5ee7d1be04cb50cafc1f2a95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 455444fe78171e3e2b37a309fd5708f283121ed6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445503"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243404"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>使用 OAuth 2.0 搭配 Azure Active Directory 與 API 管理來保護 API
 
@@ -33,7 +34,7 @@ ms.locfileid: "85445503"
 - 正在使用 API 管理執行個體發佈的 API
 - Azure AD 租用戶
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 以下是步驟的快速總覽：
 
@@ -64,7 +65,7 @@ ms.locfileid: "85445503"
 
 1. 選取 [**公開 API** ]，並以預設值設定 [**應用程式識別碼 URI** ]。 記錄此值以供稍後查看。
 
-1. 選取 [**新增範圍**] 按鈕以顯示 [**新增範圍**] 頁面。 然後建立 API 支援的新範圍（例如 `Files.Read` ）。
+1. 選取 [**新增範圍**] 按鈕以顯示 [**新增範圍**] 頁面。 然後建立 API 支援的新範圍 (例如， `Files.Read`) 。
 
 1. 選取 [**新增領域**] 按鈕以建立範圍。 重複此步驟，以新增 API 支援的所有範圍。
 
@@ -85,7 +86,7 @@ ms.locfileid: "85445503"
 1. 當 [註冊應用程式]  頁面出現時，輸入您應用程式的註冊資訊：
 
    - 在 [**名稱**] 區段中，輸入將對應用程式使用者顯示且有意義的應用程式名稱，例如*用戶端應用*程式。 
-   - 在 [**支援的帳戶類型**] 區段中，選取 [**任何組織目錄中的帳戶（任何 Azure AD 目錄-** 多租使用者）]。 
+   - 在 [**支援的帳戶類型**] 區段中，選取**任何組織目錄中的 [帳戶]， (任何 Azure AD 目錄-** 多租使用者) 。 
 
 1. 在 [重新**導向 URI** ] 區段中，選取 `Web` 並將 [URL] 欄位保留空白。
 
@@ -145,7 +146,7 @@ ms.locfileid: "85445503"
 
 1. 如果您使用**v1**端點，請新增名為**resource**的主體參數。 針對此參數的值，請使用後端應用**程式的應用程式識別碼**。 
 
-1. 如果您使用**v2**端點，請使用您在 [**預設範圍**] 欄位中為後端應用程式建立的範圍。 此外，請務必 [`accessTokenAcceptedVersion`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute) `2` 在[應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)中，將屬性的值設定為。
+1. 如果您使用**v2**端點，請使用您在 [**預設範圍**] 欄位中為後端應用程式建立的範圍。 此外，請務必 [`accessTokenAcceptedVersion`](../active-directory/develop/reference-app-manifest.md#accesstokenacceptedversion-attribute) `2` 在[應用程式資訊清單](../active-directory/develop/reference-app-manifest.md)中，將屬性的值設定為。
 
 1. 接著，指定用戶端認證。 這些是用戶端應用程式的認證。
 
@@ -167,9 +168,9 @@ ms.locfileid: "85445503"
 
 1. 瀏覽至您的 API 管理執行個體，然後移至 [API]****。
 
-1. 選取您要保護的 API。 例如： `Echo API` 。
+1. 選取您要保護的 API。 例如，`Echo API`。
 
-1. 移至 [設定]****。
+1. 移至 [設定]。
 
 1. 在 [安全性]**** 之下，選擇 [OAuth 2.0]****，然後選取您先前設定的 OAuth 2.0 伺服器。 
 
@@ -202,7 +203,7 @@ ms.locfileid: "85445503"
 
 不過，如果有人呼叫您的 API，但沒有權杖或權杖無效？ 例如，嘗試在沒有標頭的情況下呼叫 API `Authorization` ，呼叫仍然會繼續進行。 這是因為 API 管理此時不會驗證存取權杖。 它只會將 `Authorization` 標頭傳遞至後端 API。
 
-藉由驗證每個傳入要求的存取權杖，在 API 管理中使用[驗證 JWT](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#ValidateJWT)原則來預先授權要求。 如果要求沒有有效的權杖，則 API 管理會封鎖該要求。 例如，將下列原則新增至的 `<inbound>` 原則區段 `Echo API` 。 它會檢查存取權杖中的 audience 宣告，並在權杖無效時傳回錯誤訊息。 如需如何設定原則的資訊，請參閱[設定或編輯原則](https://docs.microsoft.com/azure/api-management/set-edit-policies)。
+藉由驗證每個傳入要求的存取權杖，在 API 管理中使用[驗證 JWT](./api-management-access-restriction-policies.md#ValidateJWT)原則來預先授權要求。 如果要求沒有有效的權杖，則 API 管理會封鎖該要求。 例如，將下列原則新增至的 `<inbound>` 原則區段 `Echo API` 。 它會檢查存取權杖中的 audience 宣告，並在權杖無效時傳回錯誤訊息。 如需如何設定原則的資訊，請參閱[設定或編輯原則](./set-edit-policies.md)。
 
 
 ```xml
@@ -227,7 +228,7 @@ ms.locfileid: "85445503"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入了解 [Azure Active Directory 和 OAuth2.0](../active-directory/develop/authentication-scenarios.md)。
+- 深入了解 [Azure Active Directory 和 OAuth2.0](../active-directory/develop/authentication-vs-authorization.md)。
 - 查看更多有關 API 管理的 [視訊](https://azure.microsoft.com/documentation/videos/index/?services=api-management) 。
 - 如需其他保護後端服務的方式，請參閱[相互憑證驗證](./api-management-howto-mutual-certificates.md)。
 - [建立 API 管理服務實例](./get-started-create-service-instance.md)。

@@ -4,11 +4,12 @@ description: 了解 Azure Kubernetes Service (AKS) 中的網路功能，包括 k
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ae1c2b95a948f2344119af234539b6fab4edaaac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0e2c193e626b2d82fc57ef0699a2558ec3a9629
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84789492"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244645"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中的網路概念
 
@@ -62,7 +63,7 @@ Azure 平台也有助於簡化 AKS 叢集的虛擬網路。 當您建立 Kuberne
 
 ### <a name="kubenet-basic-networking"></a>Kubenet (基本) 網路
 
-*Kubenet* 網路選項是建立 AKS 叢集時的預設組態。 使用 *kubenet*，節點會從 Azure 虛擬網路子網路取得 IP 位址。 Pod 會從邏輯上不同的位址空間接收至節點的 Azure 虛擬網路子網路的 IP 位址。 然後設定網路位址轉譯 (NAT)，以便 Pod 可以連線到 Azure 虛擬網路上的資源。 流量的來源 IP 位址會被轉譯為節點的主要 IP 位址。
+*Kubenet* 網路選項是建立 AKS 叢集時的預設組態。 使用 *kubenet*，節點會從 Azure 虛擬網路子網路取得 IP 位址。 Pod 會接收到 IP 位址，從邏輯上不同位址空間到節點的 Azure 虛擬網路子網路。 網路位址轉譯 (NAT) 接著會進行設定，使 Pod 可以連接 Azure 虛擬網路上的資源。 流量的來源 IP 位址會被轉譯為節點的主要 IP 位址。
 
 節點會使用 [kubenet][kubenet] Kubernetes 外掛程式。 您可以讓 Azure 平台為您建立及設定虛擬網路，或選擇部署 AKS 叢集到現有的虛擬網路子網路。 同樣地，只有節點會收到可路由傳送的 IP 位址，而 pod 會使用 NAT 與 AKS 叢集外的其他資源進行通訊。 這種方法可大幅減少您需要在網路空間中保留，以供 Pod 使用的 IP 位址數目。
 
@@ -85,7 +86,7 @@ Kubenet 和 Azure CNI 都可為您的 AKS 叢集提供網路連線能力。 不�
 * **kubenet**
     * 節省 IP 位址空間。
     * 會使用 Kubernetes 內部或外部負載平衡器，從叢集外部到達 pod。
-    * 您必須手動管理和維護使用者定義的路由（Udr）。
+    * 您必須手動管理和維護使用者定義的路由， (Udr) 。
     * 每個叢集最多400個節點。
 * **Azure CNI**
     * Pod 會取得完整的虛擬網路連線，並可透過其私人 IP 位址從連線的網路直接取得。
@@ -113,7 +114,7 @@ Kubenet 與 Azure CNI 之間存在下列行為差異：
 * 當您建立 AKS 叢集時，Azure 平臺可以自動建立和設定虛擬網路資源。
 * 當您建立 AKS 叢集時，可以手動建立和設定虛擬網路資源，並連結至這些資源。
 
-雖然 kubenet 和 Azure CNI 都支援服務端點或 Udr 之類的功能，但[AKS 的支援原則][support-policies]會定義您可以進行的變更。 例如：
+雖然 kubenet 和 Azure CNI 都支援服務端點或 Udr 之類的功能，但[AKS 的支援原則][support-policies]會定義您可以進行的變更。 例如︰
 
 * 如果您手動建立 AKS 叢集的虛擬網路資源，當您設定自己的 Udr 或服務端點時，就會支援。
 * 如果 Azure 平臺自動為您的 AKS 叢集建立虛擬網路資源，則不支援手動變更這些 AKS 管理的資源，以設定您自己的 Udr 或服務端點。
@@ -128,7 +129,7 @@ Kubenet 與 Azure CNI 之間存在下列行為差異：
 
 在 AKS 中，您可以使用 NGINX 之類的功能建立輸入資源，或是使用 AKS HTTP 應用程式路由功能。 當您為 AKS 叢集啟用 HTTP 應用程式路由時，Azure 平台會建立輸入控制器和 *External-DNS* 控制器。 在 Kubernetes 中建立新的輸入資源時，會在叢集特定的 DNS 區域中建立所需的 DNS A 記錄。 如需詳細資訊，請參閱[部署 HTTP 應用程式路由][aks-http-routing]。
 
-應用程式閘道輸入控制器（AGIC）附加元件可讓 AKS 客戶利用 Azure 的原生應用程式閘道層級7負載平衡器，將雲端軟體公開到網際網路。 AGIC 會監視其裝載所在的 Kubernetes 叢集，並持續更新應用程式閘道，讓選取的服務向網際網路公開。 若要深入瞭解適用于 AKS 的 AGIC 附加元件，請參閱[什麼是應用程式閘道輸入控制器？][agic-overview]
+應用程式閘道輸入控制器 (AGIC) 附加元件可讓 AKS 客戶利用 Azure 的原生應用程式閘道層級7負載平衡器，將雲端軟體公開至網際網路。 AGIC 會監視其裝載所在的 Kubernetes 叢集，並持續更新應用程式閘道，讓選取的服務向網際網路公開。 若要深入瞭解適用于 AKS 的 AGIC 附加元件，請參閱[什麼是應用程式閘道輸入控制器？][agic-overview]
 
 輸入的另一個常見功能是終止 SSL/TLS。 在透過 HTTPS 存取的大型 Web 應用程式上，可由輸入資源來處理 TLS 終止，而無須由應用程式本身處理。 若要提供自動 TLS 憑證產生和設定的功能，您可以將輸入資源設定為使用 Let's Encrypt 之類的資源提供者。 如需為 NGINX 輸入控制器設定 Let's Encrypt 的詳細資訊，請參閱[輸入和 TLS][aks-ingress-tls]。
 
@@ -173,7 +174,7 @@ Kubenet 與 Azure CNI 之間存在下列行為差異：
 
 <!-- LINKS - Internal -->
 [aks-http-routing]: http-application-routing.md
-[aks-ingress-tls]: ingress.md
+[aks-ingress-tls]: ./ingress-tls.md
 [aks-configure-kubenet-networking]: configure-kubenet.md
 [aks-configure-advanced-networking]: configure-azure-cni.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md

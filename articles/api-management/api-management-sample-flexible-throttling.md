@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: 467d9cee74567fc0d19031773415675ae7c51818
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc36211eeb58f18546e4eae24ad003c6b2ae761b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71066759"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243166"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>以 Azure API 管理進行進階要求節流
 能夠節流傳入要求是 Azure API 管理的重要角色。 藉由控制要求的速率或傳輸的要求/資料總量，API 管理讓 API 提供者能夠保護其 API 不被濫用，並建立不同 API 產品層級的價值。
@@ -32,7 +32,7 @@ ms.locfileid: "71066759"
 > [!NOTE]
 > `rate-limit-by-key` `quota-by-key` 在 Azure API 管理的取用層中，無法使用和原則。 
 
-新的 [rate-limit-by-key](/azure/api-management/api-management-access-restriction-policies#LimitCallRateByKey) 和 [quota-by-key](/azure/api-management/api-management-access-restriction-policies#SetUsageQuotaByKey) 原則能提供更有彈性的流量控制解決方案。 這些新原則可讓您定義運算式，以識別要用來追蹤流量使用量的索引鍵。 其運作的方式用範例來說明最簡單。 
+新的 [rate-limit-by-key](./api-management-access-restriction-policies.md#LimitCallRateByKey) 和 [quota-by-key](./api-management-access-restriction-policies.md#SetUsageQuotaByKey) 原則能提供更有彈性的流量控制解決方案。 這些新原則可讓您定義運算式，以識別要用來追蹤流量使用量的索引鍵。 其運作的方式用範例來說明最簡單。 
 
 ## <a name="ip-address-throttling"></a>IP 位址節流
 下列原則會限制單一用戶端 IP 位址每一分鐘只有 10 個呼叫，等於每個月總數為 1,000,000 個呼叫和 10,000 KB 頻寬。 
@@ -62,10 +62,10 @@ ms.locfileid: "71066759"
 此範例會示範如何擷取授權標頭，將它轉換成 `JWT` 物件，然後使用權杖的主體來識別使用者，並使用它作為速率限制索引鍵。 如果使用者身分識別儲存於 `JWT` 以作為其中一個其他宣告，則可使用該值來代替它。
 
 ## <a name="combined-policies"></a>結合的原則
-雖然新的節流原則比現有節流原則提供更多的控制，但仍會有結合兩種功能的值。 依產品訂用帳戶金鑰 ([依訂用帳戶限制呼叫率](/azure/api-management/api-management-access-restriction-policies#LimitCallRate)和[依訂用帳戶設定使用量配額](/azure/api-management/api-management-access-restriction-policies#SetUsageQuota)) 進行節流是一種根據使用量層級收費、讓 API 創造獲利的絕佳方式。 更精細的依使用者控制節流則和其互補，並防止一位使用者的行為降低另一位使用者的體驗。 
+雖然新的節流原則比現有節流原則提供更多的控制，但仍會有結合兩種功能的值。 依產品訂用帳戶金鑰 ([依訂用帳戶限制呼叫率](./api-management-access-restriction-policies.md#LimitCallRate)和[依訂用帳戶設定使用量配額](./api-management-access-restriction-policies.md#SetUsageQuota)) 進行節流是一種根據使用量層級收費、讓 API 創造獲利的絕佳方式。 更精細的依使用者控制節流則和其互補，並防止一位使用者的行為降低另一位使用者的體驗。 
 
 ## <a name="client-driven-throttling"></a>用戶端導向節流
-若使用 [原則運算式](/azure/api-management/api-management-policy-expressions)定義節流索引鍵，則是由 API 提供者選擇如何設定節流的範圍。 不過，開發人員可能想要控制他們對自己的客戶的速率限制。 API 提供者可以藉由導入自訂標頭來做到這一點，以允許開發人員的用戶端應用程式與 API 通訊索引鍵。
+若使用 [原則運算式](./api-management-policy-expressions.md)定義節流索引鍵，則是由 API 提供者選擇如何設定節流的範圍。 不過，開發人員可能想要控制他們對自己的客戶的速率限制。 API 提供者可以藉由導入自訂標頭來做到這一點，以允許開發人員的用戶端應用程式與 API 通訊索引鍵。
 
 ```xml
 <rate-limit-by-key calls="100"
@@ -75,9 +75,8 @@ ms.locfileid: "71066759"
 
 這可讓開發人員的用戶端應用程式選擇要如何建立速率限制索引鍵。 用戶端開發人員可以透過將索引鍵組配置給使用者並輪流使用索引鍵，來建立自己的速率層。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 Azure API 管理提供速率和配額節流，不但能保護您的 API 服務，並為您的 API 服務增加價值。 新的節流原則與自訂範圍規則，可讓您更精細的控制這些原則，進而讓您的客戶建置更好的應用程式。 本文中的範例示範如何使用這些新原則，分別使用用戶端 IP 位址、使用者身分識別及用戶端產生值來製造速率限制索引鍵。 不過，訊息中還有許多其他部份可以利用，例如使用者代理程式、URL 路徑片段、訊息大小。
 
 ## <a name="next-steps"></a>後續步驟
 請將您的意見反應提供給我們，做為本主題的 GitHub 問題。 我們很想知道其他在您的案例中是合理選擇的可能索引鍵值。
-

@@ -9,13 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 79f1188665208ec95e5d1d855d2247858e98653c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aaf974eca4b307fc122cf0ee5fdb0ddbcf75088a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84561657"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242605"
 ---
-# <a name="data-driven-style-expressions-web-sdk"></a>資料驅動樣式表達式（Web SDK）
+# <a name="data-driven-style-expressions-web-sdk"></a> (Web SDK) 的資料驅動樣式表達式
 
 運算式可讓您將商務邏輯套用至樣式選項，以觀察資料來源中每個圖形中所定義的屬性。 運算式可以篩選資料來源或圖層中的資料。 運算式可能包含條件式邏輯，例如 if 語句。 而且，它們可以用來使用：字串運算子、邏輯運算子和數學運算子來運算元據。
 
@@ -27,7 +28,7 @@ ms.locfileid: "84561657"
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
-運算式會以 JSON 陣列表示。 陣列中運算式的第一個元素是指定運算式運算子名稱的字串。 例如，"+" 或 "case"。 下一個元素（如果有的話）是運算式的引數。 每個引數都是常值（字串、數位、布林值或 `null` ）或另一個運算式陣列。 下列虛擬程式碼會定義運算式的基本結構。 
+運算式會以 JSON 陣列表示。 陣列中運算式的第一個元素是指定運算式運算子名稱的字串。 例如，"+" 或 "case"。 下一個元素 (是否有任何) 是運算式的引數。 每個引數都是字串、數位、布林值或 `null`) 或另一個運算式陣列 (的常值。 下列虛擬程式碼會定義運算式的基本結構。 
 
 ```javascript
 [ 
@@ -40,7 +41,7 @@ ms.locfileid: "84561657"
 
 Azure 地圖服務 Web SDK 支援許多類型的運算式。 運算式可以單獨使用，或與其他運算式搭配使用。
 
-| 運算式的類型 | Description |
+| 運算式的類型 | 描述 |
 |---------------------|-------------|
 | [匯總運算式](#aggregate-expression) | 運算式，定義在一組資料上處理的計算，並可與的選項搭配使用 `clusterProperties` `DataSource` 。 |
 | [布林運算式](#boolean-expressions) | 布林運算式提供一組布林運算子運算式來評估布林值比較。 |
@@ -778,7 +779,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
         textField: [
             'number-format', 
             ['get', 'revenue'], 
-            { ‘currency’: 'USD' }
+            { ‘currency': 'USD' }
         ],
 
         offset: [0, 0.75]

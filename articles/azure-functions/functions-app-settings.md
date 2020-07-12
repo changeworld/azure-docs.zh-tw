@@ -3,12 +3,12 @@ title: Azure Functions 的應用程式設定參考
 description: Azure Functions 應用程式設定或環境變數的參考文件。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: adb11f29460bd6dee7171fa97a6ebfc958cfad12
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 2be13fbdbf8ce75a051448bfb46d2a41ad425be8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169899"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242758"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的應用程式設定參考
 
@@ -17,6 +17,9 @@ ms.locfileid: "86169899"
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
 在 [host.json](functions-host-json.md) 檔案和 [local.settings.json](functions-run-local.md#local-settings-file) 檔案中，還有其他全域設定選項。
+
+> [!NOTE]  
+> 您可以使用應用程式設定來覆寫設定值的 host.js，而不需要變更檔案本身的 host.js。 當您需要設定或修改特定環境設定的特定 host.js時，這會很有説明。 這也可讓您變更設定 host.js，而不需要重新發佈專案。 若要深入瞭解，請參閱[參考文章上的host.js](functions-host-json.md#override-hostjson-values)。  
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 

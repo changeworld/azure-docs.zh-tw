@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 上使用 GPU 處理
 services: container-service
 ms.topic: article
 ms.date: 03/27/2020
-ms.openlocfilehash: 242fefb3b153d11e23d66f26049d0b68c0a4bf4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30cbac0984236717581c994700483b85829c4571
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80383985"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244288"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 上使用 GPU 處理計算密集型工作負載
 
@@ -350,5 +350,5 @@ kubectl delete jobs samples-tf-mnist-demo
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [aks-spark]: spark-job.md
-[gpu-skus]: ../virtual-machines/linux/sizes-gpu.md
+[gpu-skus]: ../virtual-machines/sizes-gpu.md
 [install-azure-cli]: /cli/azure/install-azure-cli

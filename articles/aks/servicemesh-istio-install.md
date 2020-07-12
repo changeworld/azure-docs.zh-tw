@@ -6,11 +6,12 @@ ms.topic: article
 ms.date: 02/19/2020
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: d1d02cb42a86023e5c341daab678c39f22f75dda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d47bb7f1f9c1ce39239d6f6ee5826a60ce1741a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80877689"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244155"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中安裝和使用 Istio
 
@@ -34,7 +35,7 @@ ms.locfileid: "80877689"
 
 ## <a name="before-you-begin"></a>開始之前
 
-本文中詳述的步驟假設您已建立 AKS 叢集（ `1.13` 已啟用 RBAC 的 Kubernetes 和更新版本），並已建立與叢集的連線 `kubectl` 。 如果您需要前述任何方面的協助，請參閱 [AKS 快速入門][aks-quickstart]。
+本文中詳述的步驟假設您已建立 AKS 叢集 (Kubernetes 和更新版本 `1.13` ，並已啟用 RBAC) 並已建立與叢集的連線 `kubectl` 。 如果您需要前述任何方面的協助，請參閱 [AKS 快速入門][aks-quickstart]。
 
 請確定您已閱讀[Istio 效能和擴充性](https://istio.io/docs/concepts/performance-and-scalability/)檔，以瞭解在 AKS 叢集中執行 Istio 的其他資源需求。 核心和記憶體需求會根據您的特定工作負載而有所不同。 選擇適當數目的節點和 VM 大小，以滿足您的設定。
 
@@ -96,9 +97,9 @@ Istio 的[Helm][helm]安裝方法將于未來淘汰。 Istio 的新安裝方法�
 > Istio 目前必須排程在 Linux 節點上執行。 如果您的叢集中有 Windows Server 節點，您必須確定 Istio pod 只排程在 Linux 節點上執行。 我們將使用[節點選取器][kubernetes-node-selectors]來確定 pod 已排程至正確的節點。
 
 > [!CAUTION]
-> [SDS （秘密探索服務）][istio-feature-sds]和[Istio CNI][istio-feature-cni] Istio 功能目前是以[Alpha][istio-feature-stages]提供，因此請先考慮一下，再啟用這些功能。 
+> [SDS (秘密探索服務) ][istio-feature-sds]和[Istio CNI][istio-feature-cni] Istio 功能目前是以[Alpha][istio-feature-stages]為限，因此請先考慮，再啟用這些功能。 
 >
-> 請注意，現在已針對 AKS 上的所有 Kubernetes 1.13 和更新版本**啟用**[服務帳戶權杖磁片區投射][kubernetes-feature-sa-projected-volume]Kubernetes 功能（SDS 的需求）。
+> 請注意，[服務帳戶 Token 磁片區投射][kubernetes-feature-sa-projected-volume]Kubernetes 功能 (SDS) 的需求現在已針對 AKS 上的所有 Kubernetes 1.13 和更新版本**啟用**。
 
 使用下列內容建立名為的檔案 `istio.aks.yaml` 。 這個檔案會保留[Istio 控制平面的規格][istio-control-plane]詳細資料，以供設定 Istio。
 
@@ -427,12 +428,12 @@ kubectl delete -f istio-components-aks -R
 [istio-feature-sds]: https://istio.io/docs/tasks/traffic-management/ingress/secure-ingress-sds/
 [istio-feature-cni]: https://istio.io/docs/setup/additional-setup/cni/
 
-[install-wsl]: https://docs.microsoft.com/windows/wsl/install-win10
+[install-wsl]: /windows/wsl/install-win10
 
 [kubernetes-feature-sa-projected-volume]: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#service-account-token-volume-projection
 [kubernetes-crd]: https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions
 [kubernetes-secrets]: https://kubernetes.io/docs/concepts/configuration/secret/
-[kubernetes-node-selectors]: https://docs.microsoft.com/azure/aks/concepts-clusters-workloads#node-selectors
+[kubernetes-node-selectors]: ./concepts-clusters-workloads.md#node-selectors
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 [kubectl-port-forward]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward
@@ -443,7 +444,7 @@ kubectl delete -f istio-components-aks -R
 [kiali]: https://www.kiali.io/
 [envoy]: https://www.envoyproxy.io/
 
-[app-insights]: https://docs.microsoft.com/azure/azure-monitor/app/kubernetes
+[app-insights]: ../azure-monitor/app/kubernetes.md
 
 <!-- LINKS - internal -->
 [aks-quickstart]: ./kubernetes-walkthrough.md

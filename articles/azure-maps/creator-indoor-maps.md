@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: fb0293c66662c86723c31baebeed42dd42d33413
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d55a0726000a6ed55f049ac4a4146f66421a7085
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83677808"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242571"
 ---
 # <a name="creator-for-indoor-maps"></a>室內地圖的建立工具
 
@@ -34,7 +35,7 @@ ms.locfileid: "83677808"
 
 ## <a name="convert-a-drawing-package"></a>轉換繪圖套件
 
-[Azure 地圖轉換服務](https://docs.microsoft.com/rest/api/maps/conversion)會將上傳的繪圖套件轉換成室內地圖資料。 轉換服務也會驗證套件。 驗證問題分為錯誤和警告兩種類型。 如果偵測到任何錯誤，轉換流程會失敗。 若偵測到警告，轉換則會成功。 但建議您檢閱並解決所有警告。 出現警告時，表示已忽略或自動修正轉換的一部分。 若無法解決警告，可能會導致後續的程序發生錯誤。 如需詳細資訊，請參閱[繪圖套件警告和錯誤](drawing-conversion-error-codes.md)。
+[Azure 地圖轉換服務](https://docs.microsoft.com/rest/api/maps/conversion)會將上傳的繪圖套件轉換成室內地圖資料。 轉換服務也會驗證套件。 驗證問題分為錯誤和警告兩種類型。 如果偵測到任何錯誤，轉換流程會失敗。 若偵測到警告，轉換則會成功。 但建議您檢閱所有警告並加以解決。 出現警告時，表示已忽略或自動修正轉換的一部分。 若無法解決警告，可能會導致後續的程序發生錯誤。 如需詳細資訊，請參閱[繪圖套件警告和錯誤](drawing-conversion-error-codes.md)。
 
 發生錯誤時，轉換服務會提供 [Azure 地圖服務繪圖錯誤視覺化檢視](drawing-error-visualizer.md)獨立 Web 應用程式的連結。 您可以使用繪圖錯誤視覺化檢視，檢查在轉換流程期間發生的[繪圖套件警告和錯誤](drawing-conversion-error-codes.md)。 修正錯誤後，您就可以嘗試上傳和轉換套件。
 

@@ -5,18 +5,19 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: ac604ec0a854964746ef34627b054e853662265f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cbfdba30663e2aa531ab1db955b0e035a0588709
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905946"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245716"
 ---
 # <a name="sfctl-mesh-service-replica"></a>sfctl mesh service-replica
 取得複本服務詳細資料和應用程式資源中指定服務的清單複本。
 
 ## <a name="commands"></a>命令
 
-|Command|描述|
+|命令|描述|
 | --- | --- |
 | list | 列出服務的所有複本。 |
 | 顯示 | 取得應用程式服務的指定複本。 |
@@ -69,4 +70,4 @@ ms.locfileid: "76905946"
 
 ## <a name="next-steps"></a>後續步驟
 - [設定](service-fabric-cli.md)Service Fabric CLI。
-- 了解如何使用[範例指令碼](/azure/service-fabric/scripts/sfctl-upgrade-application)來使用 Service Fabric CLI。
+- 了解如何使用[範例指令碼](./scripts/sfctl-upgrade-application.md)來使用 Service Fabric CLI。

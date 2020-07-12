@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/12/2020
 ms.author: apimpm
-ms.openlocfilehash: 70f1e4414888ceb8fb04fd92dc954d1a7c06dcb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d077f6b3c84b0279a7a1c99243240192c2b45d1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557985"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243710"
 ---
 # <a name="api-management-authentication-policies"></a>API 管理驗證原則
 本主題提供下列 API 管理原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](https://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -46,21 +46,21 @@ ms.locfileid: "85557985"
 <authentication-basic username="testuser" password="testpassword" />
 ```
 
-### <a name="elements"></a>元素
+### <a name="elements"></a>項目
 
-|Name|說明|必要|
+|名稱|描述|必要|
 |----------|-----------------|--------------|
-|authentication-basic|根元素。|Yes|
+|authentication-basic|根元素。|是|
 
 ### <a name="attributes"></a>屬性
 
-|Name|說明|必要|預設|
+|名稱|描述|必要|預設|
 |----------|-----------------|--------------|-------------|
-|username|指定「基本驗證」認證的使用者名稱。|是|N/A|
+|使用者名稱|指定「基本驗證」認證的使用者名稱。|是|N/A|
 |密碼|指定「基本驗證」認證的密碼。|是|N/A|
 
 ### <a name="usage"></a>使用方式
- 此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。
+ 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。
 
 -   **原則區段︰** inbound
 
@@ -95,15 +95,15 @@ ms.locfileid: "85557985"
 <authentication-certificate body="@(context.Variables.GetValueOrDefault<byte[]>("byteCertificate"))" password="optional-certificate-password" />
 ```
 
-### <a name="elements"></a>元素  
+### <a name="elements"></a>項目  
   
-|Name|說明|必要|  
+|名稱|描述|必要|  
 |----------|-----------------|--------------|  
-|authentication-certificate|根元素。|Yes|  
+|authentication-certificate|根元素。|是|  
   
 ### <a name="attributes"></a>屬性  
   
-|Name|說明|必要|預設|  
+|名稱|描述|必要|預設|  
 |----------|-----------------|--------------|-------------|  
 |thumbprint|用戶端憑證的指紋。|`thumbprint` `certificate-id` 必須有或。|N/A|
 |憑證識別碼|憑證資源名稱。|`thumbprint` `certificate-id` 必須有或。|N/A|
@@ -111,7 +111,7 @@ ms.locfileid: "85557985"
 |密碼|用戶端憑證的密碼。|在中指定的憑證 `body` 受密碼保護時使用。|N/A|
   
 ### <a name="usage"></a>使用方式  
- 此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。  
+ 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。  
   
 -   **原則區段︰** inbound  
   
@@ -172,23 +172,23 @@ ms.locfileid: "85557985"
 </send-request>
 ```
 
-### <a name="elements"></a>元素  
+### <a name="elements"></a>項目  
   
-|Name|說明|必要|  
+|名稱|描述|必要|  
 |----------|-----------------|--------------|  
-|驗證-受控-身分識別 |根元素。|Yes|  
+|驗證-受控-身分識別 |根元素。|是|  
   
 ### <a name="attributes"></a>屬性  
   
-|Name|說明|必要|預設|  
+|名稱|描述|必要|預設|  
 |----------|-----------------|--------------|-------------|  
-|resource|字串。 Azure Active Directory 中目標 Web API （受保護的資源）的應用程式識別碼。|是|N/A|
-|client-id|字串。 Azure Active Directory 中使用者指派之身分識別的應用程式識別碼。|No|系統指派的身分識別|
+|resource|字串。 目標 Web API 的應用程式識別碼 (在 Azure Active Directory 中受保護的資源) 。|是|N/A|
+|client-id|字串。 Azure Active Directory 中使用者指派之身分識別的應用程式識別碼。|否|系統指派的身分識別|
 |輸出-token-變數-名稱|字串。 將接收 token 值做為物件類型之內容變數的名稱 `string` 。 |否|N/A|  
-|ignore-error|布林值。 如果設定為 `true` ，即使未取得存取權杖，原則管線仍會繼續執行。|No|false|  
+|ignore-error|布林值。 如果設定為 `true` ，即使未取得存取權杖，原則管線仍會繼續執行。|否|false|  
   
 ### <a name="usage"></a>使用方式  
- 此原則可用於下列原則[區段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[範圍](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)。  
+ 此原則可用於下列原則[區段](./api-management-howto-policies.md#sections)和[範圍](./api-management-howto-policies.md#scopes)。  
   
 -   **原則區段︰** inbound  
   
@@ -199,5 +199,5 @@ ms.locfileid: "85557985"
 
 + [API 管理中的原則](api-management-howto-policies.md)
 + [轉換 API](transform-api.md)
-+ [原則參考文件](api-management-policy-reference.md)，取得原則陳述式及其設定的完整清單
++ [原則參考文件](./api-management-policies.md)，取得原則陳述式及其設定的完整清單
 + [原則範例](policy-samples.md)

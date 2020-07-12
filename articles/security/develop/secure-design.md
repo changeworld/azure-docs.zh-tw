@@ -13,19 +13,20 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 533f287693ca8aac76a3233674d95f3f49d4ae22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0cffbd1fa09abef9853e0ef853696c3c8ed353c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82857169"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246804"
 ---
 # <a name="design-secure-applications-on-azure"></a>在 Azure 上設計安全的應用程式
-在本文中，我們會提供您在設計雲端應用程式時應考慮的安全性活動和控制項。 涵蓋在 Microsoft[安全性開發週期（SDL）](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx)的需求和設計階段中，應考慮的安全性問題和概念的訓練資源。 其目標是要協助您定義活動和 Azure 服務，您可以用來設計更安全的應用程式。
+在本文中，我們會提供您在設計雲端應用程式時應考慮的安全性活動和控制項。 在 Microsoft 安全性開發週期的需求和設計階段中，訓練資源以及要考慮的安全性問題和概念[ (SDL) ](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx)涵蓋在內。 其目標是要協助您定義活動和 Azure 服務，您可以用來設計更安全的應用程式。
 
 本文章涵蓋下列 SDL 階段：
 
 - 訓練
-- 規格需求
+- 需求
 - 設計
 
 ## <a name="training"></a>訓練
@@ -44,11 +45,11 @@ ms.locfileid: "82857169"
 
   - 在[推送到生產環境之前，要考慮的前5個安全性專案](https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider/index?WT.mc_id=Learn-Blog-tajanca)會示範如何協助保護您在 Azure 上的 web 應用程式，並保護您的應用程式免于受到最常見且危險的 web 應用程式攻擊。
 
-  - [適用于 azure 的安全 DevOps 套件](https://azsk.azurewebsites.net/index.html)是腳本、工具、延伸模組和自動化的集合，可已經考慮使用廣泛自動化之 DevOps 團隊的完整 Azure 訂用帳戶和資源安全性需求。 適用于 Azure 的安全 DevOps 套件可以向您示範如何將安全性順暢地整合到您的原生 DevOps 工作流程。 此套件會處理安全性驗證測試（SVTs）之類的工具，可協助開發人員撰寫安全的程式碼，並在編碼和早期開發階段測試其雲端應用程式的安全設定。
+  - [適用于 azure 的安全 DevOps 套件](https://azsk.azurewebsites.net/index.html)是腳本、工具、延伸模組和自動化的集合，可已經考慮使用廣泛自動化之 DevOps 團隊的完整 Azure 訂用帳戶和資源安全性需求。 適用于 Azure 的安全 DevOps 套件可以向您示範如何將安全性順暢地整合到您的原生 DevOps 工作流程。 此套件處理 (SVTs) 的安全性驗證測試之類的工具，可協助開發人員撰寫安全的程式碼，並在編碼和早期開發階段測試其雲端應用程式的安全設定。
 
   - [Azure 解決方案的安全性最佳作法](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions)提供了一組安全性最佳作法，可讓您在使用 Azure 設計、部署和管理雲端解決方案時使用。
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 需求定義階段是定義應用程式的重要步驟，以及發行時將會執行的動作。 需求階段也是考慮您將在應用程式中建立之安全性控制項的一段時間。 在此階段中，您也會開始在 SDL 中採取的步驟，以確保您可以發行和部署安全的應用程式。
 
 ### <a name="consider-security-and-privacy-issues"></a>考慮安全性和隱私權問題
@@ -65,20 +66,20 @@ ms.locfileid: "82857169"
 
   - 我的應用程式是否包含敏感性資料？
 
-  - 我的應用程式是否會收集或儲存要求我遵守業界標準和合規性計畫的資料，例如[聯邦金融機構檢查委員會（FFIEC）](../blueprints/ffiec-analytics-overview.md)或[支付卡產業資料安全標準（PCI DSS）](../blueprints/pcidss-analytics-overview.md)？
+  - 我的應用程式是否會收集或儲存要求我遵守業界標準和合規性計畫的資料，例如[《聯邦金融機構檢查委員會 (FFIEC) ](../blueprints/ffiec-analytics-overview.md)或「[支付卡產業資料安全標準」 (PCI DSS) ](../blueprints/pcidss-analytics-overview.md)？
 
   - 我的應用程式會收集或包含機密個人或客戶資料，不論是自己或其他資訊，都可以用來識別、聯絡或尋找單一人員嗎？
 
   - 我的應用程式會收集或包含可用來存取個人醫療、教育、財務或雇用資訊的資料嗎？ 識別您的資料在需求階段的敏感性可協助您將資料分類，並識別您將用於應用程式的資料保護方法。
 
-  - 我的資料在哪裡和如何儲存？ 請考慮您將如何監視應用程式用於任何非預期變更的儲存體服務（例如回應時間較慢）。 您將能夠影響記錄，以收集更詳細的資料並深入分析問題嗎？
+  - 我的資料在哪裡和如何儲存？ 請考慮您將如何監視應用程式用於任何非預期變更的儲存體服務 (例如回應時間較慢) 。 您將能夠影響記錄，以收集更詳細的資料並深入分析問題嗎？
 
-  - 我的應用程式是否可供公用（在網際網路上）或僅供內部使用？ 如果您的應用程式可供公開使用，您要如何保護可能收集成不正確的資料？ 如果您的應用程式僅供內部使用，請考慮您組織中的哪些人應該具有應用程式的存取權，以及他們應該有多久的存取權。
+  - 我的應用程式是否可供網際網路上的公用 () 或內部使用？ 如果您的應用程式可供公開使用，您要如何保護可能收集成不正確的資料？ 如果您的應用程式僅供內部使用，請考慮您組織中的哪些人應該具有應用程式的存取權，以及他們應該有多久的存取權。
 
   - 在開始設計您的應用程式之前，您是否瞭解您的身分識別模型？ 您要如何判斷使用者的身分為何，以及使用者有權執行哪些動作？
 
-  - 我的應用程式會執行敏感性或重要的工作（例如，轉移金錢、鎖定門或實現醫學）嗎？
-    請考慮如何驗證執行敏感性工作的使用者已獲授權執行此工作，以及如何驗證該人員是他們所說的。 授權（AuthZ）是指授與已驗證的安全性主體許可權來執行某個動作。 驗證（驗證）是將合法認證的合作物件具挑戰性的動作。
+  - 我的應用程式會執行敏感或重要的工作， (例如轉移 money、解除鎖定門，或傳遞醫學) ？
+    請考慮如何驗證執行敏感性工作的使用者已獲授權執行此工作，以及如何驗證該人員是他們所說的。 授權 (AuthZ) 是授與已驗證的安全性主體許可權來執行某個動作的作業。 驗證 (驗證) 是合法認證合作物件的動作。
 
   - 我的應用程式是否會執行任何具風險的軟體活動，像是允許使用者上傳或下載檔案或其他資料？ 如果您的應用程式確實執行有風險的活動，請考慮您的應用程式如何保護使用者不受惡意檔案或資料的處理。
 
@@ -102,7 +103,7 @@ OWASP 前10個可解決 web 應用程式的重大安全性風險。
 
 當您有安全性需求並使用安全的設計概念時，您可以避免或減少安全性缺陷的機會。 安全性缺陷是應用程式設計的監督，可能會讓使用者在您的應用程式發行之後執行惡意或非預期的動作。
 
-在設計階段，也要考慮如何在層級套用安全性;一個防禦層級並不一定足夠。 如果攻擊者已超過 web 應用程式防火牆（WAF），會發生什麼事？ 您想要有另一個安全性控制措施來防禦該攻擊。
+在設計階段，也要考慮如何在層級套用安全性;一個防禦層級並不一定足夠。 如果攻擊者 (WAF) 的 web 應用程式防火牆之後，會發生什麼事？ 您想要有另一個安全性控制措施來防禦該攻擊。
 
 記住這一點之後，我們將討論下列安全設計概念，以及您在設計安全應用程式時應解決的安全性控制項：
 
@@ -120,15 +121,15 @@ OWASP 前10個可解決 web 應用程式的重大安全性風險。
 
 ### <a name="use-a-secure-coding-library-and-a-software-framework"></a>使用安全的程式碼撰寫程式庫和軟體架構
 
-若要進行開發，請使用安全的程式碼撰寫程式庫，以及具有內嵌安全性的軟體架構。 開發人員可以使用現有、經過證實的功能（加密、輸入清理、輸出編碼、金鑰或連接字串，以及任何其他會視為安全性控制的專案），而不是從頭開發安全性控制項。 這有助於防範安全性相關的設計和實施瑕疵。
+若要進行開發，請使用安全的程式碼撰寫程式庫，以及具有內嵌安全性的軟體架構。 開發人員可以使用現有、經過證實的功能 (加密、輸入清理、輸出編碼、金鑰或連接字串，以及任何其他會被視為安全性控制) ，而不是從頭開發安全性控制項。 這有助於防範安全性相關的設計和實施瑕疵。
 
 請確定您使用的是 framework 的最新版本，以及架構中可用的所有安全性功能。 Microsoft 為所有開發人員提供了一[組完整的開發工具](https://azure.microsoft.com/product-categories/developer-tools/)，以處理任何平臺或語言，以提供雲端應用程式。 您可以從各種[sdk](https://azure.microsoft.com/downloads/)中選擇，以您選擇的語言撰寫程式碼。
-您可以利用功能完整的整合式開發環境（Ide）和編輯器，具備先進的偵錯工具和內建的 Azure 支援。
+您可以利用功能完整的整合式開發環境， (Ide) 和具備先進的偵錯工具功能的編輯器，以及內建 Azure 支援。
 
 Microsoft 提供各種不同的[語言、架構和工具](https://docs.microsoft.com/azure/index?pivot=sdkstools&panel=sdkstools-all)，可讓您用來在 Azure 上開發應用程式。 例如，[適用于 .net 和 .Net Core 開發人員的 Azure](https://docs.microsoft.com/dotnet/azure/)。 針對我們所提供的每個語言和架構，您可以找到快速入門、教學課程和 API 參考，以協助您快速入門。
 
 Azure 提供您可用來裝載網站和 web 應用程式的各種服務。 這些服務可讓您以您慣用的語言進行開發，無論是 .NET、.NET Core、JAVA、Ruby、Node.js、PHP 或 Python。
-[Azure App Service Web Apps](../../app-service/overview.md) （Web Apps）是其中一項服務。
+[Azure App Service Web Apps](../../app-service/overview.md) (Web Apps) 是其中一項服務。
 
 Web Apps 將 Microsoft Azure 的威力新增至您的應用程式。 其中包括安全性、負載平衡、自動調整和自動化管理。 您也可以利用 Web Apps 中的 DevOps 功能，例如套件管理、預備環境、自訂網域、SSL/TLS 憑證，以及從 Azure DevOps、GitHub、Docker Hub 和其他來源進行持續部署。
 
@@ -138,9 +139,9 @@ Azure 提供您可用來裝載網站和 web 應用程式的其他服務。 大�
 
 ### <a name="apply-updates-to-components"></a>將更新套用至元件
 
-為避免發生弱點，您應該持續清查用戶端和伺服器端元件（例如架構和程式庫）及其更新的相依性。 新的弱點和更新的軟體版本會持續發行。 請確定您有進行中的計畫來監視、分級，並將更新或設定變更套用至您所使用的程式庫和元件。
+為避免弱點，您應該持續清查用戶端和伺服器端元件 (例如，) 的架構和程式庫，以及更新的相依性。 新的弱點和更新的軟體版本會持續發行。 請確定您有進行中的計畫來監視、分級，並將更新或設定變更套用至您所使用的程式庫和元件。
 
-請參閱[Open Web Application Security Project （OWASP）](https://www.owasp.org/index.php/Main_Page)頁面上的[使用具有已知弱點的元件](https://www.owasp.org/index.php/Top_10-2017_A9-Using_Components_with_Known_Vulnerabilities)來取得工具建議。 您也可以訂閱電子郵件警示，以取得與您所使用之元件相關的安全性弱點。
+請參閱[Open Web Application Security Project (OWASP) ](https://www.owasp.org/index.php/Main_Page)頁面上有關[使用具有已知弱點的元件](https://www.owasp.org/index.php/Top_10-2017_A9-Using_Components_with_Known_Vulnerabilities)來取得工具建議。 您也可以訂閱電子郵件警示，以取得與您所使用之元件相關的安全性弱點。
 
 ### <a name="use-threat-modeling-during-application-design"></a>在應用程式設計期間使用威脅模型化
 
@@ -150,13 +151,13 @@ Azure 提供您可用來裝載網站和 web 應用程式的其他服務。 大�
 
 將應用程式設計模型化，並列舉[STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)威脅（詐騙、篡改、否認、資訊洩漏、阻絕服務及提高許可權）：在所有信任界限中，已證明有效的方法，可以及早攔截設計錯誤。 下表列出 STRIDE 威脅，並提供一些使用 Azure 所提供功能的範例緩和措施。 這些風險降低措施並非能在各個情況下運作。
 
-| Threat | 安全性屬性 | 潛在的 Azure 平臺緩和措施 |
+| 威脅 | 安全性屬性 | 潛在的 Azure 平臺緩和措施 |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 詐騙               | 驗證        | [需要 HTTPS 連接](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio)。 |
 | 竄改              | 完整性             | 驗證 SSL/TLS 憑證。 使用 SSL/TLS 的應用程式必須完整驗證其所連接實體的 x.509 憑證。 使用 Azure Key Vault 憑證來[管理 x509 憑證](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates)。 |
 | 否認性            | 不可否認性       | 啟用 Azure [監視和診斷](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)。|
-| 資訊洩漏 | 保密       | 加密待用和[傳輸中](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)[的敏感](../fundamentals/encryption-atrest.md)資料。 |
-| 阻斷服務      | 可用性          | 監視潛在拒絕服務狀況的效能計量。 實作 IP 連線篩選。 [Azure DDoS 保護](../../virtual-network/ddos-protection-overview.md#next-steps)與應用程式設計最佳作法結合，可提供對抗 DDoS 攻擊的防線。|
+| 洩露資訊 | 機密性       | 加密待用和[傳輸中](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)[的敏感](../fundamentals/encryption-atrest.md)資料。 |
+| 拒絕服務      | 可用性          | 監視潛在拒絕服務狀況的效能計量。 實作 IP 連線篩選。 [Azure DDoS 保護](../../virtual-network/ddos-protection-overview.md#next-steps)與應用程式設計最佳作法結合，可提供對抗 DDoS 攻擊的防線。|
 | 提高權限 | 授權         | 使用 Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)。|
 
 ### <a name="reduce-your-attack-surface"></a>減少受攻擊面
@@ -178,7 +179,7 @@ Azure 提供您可用來裝載網站和 web 應用程式的其他服務。 大�
 攻擊面分析可協助您識別：
 
 - 系統的函式和部分，您必須檢查並測試是否有安全性弱點。
-- 需要深度防禦保護的程式碼高風險區域（需要保護的系統元件）。
+- 需要深層防禦保護的程式碼的高風險部分， (系統的部分，您必須加以防護才能) 。
 - 當您改變受攻擊面，而且需要重新整理威脅評估時。
 
 降低攻擊者入侵潛在弱點或弱點的機會，需要您徹底分析應用程式的整體攻擊面。 它也包括停用或限制系統服務的存取、套用最低許可權的原則，以及盡可能採用多層防禦。
@@ -202,21 +203,21 @@ Azure 提供您可用來裝載網站和 web 應用程式的其他服務。 大�
 
 #### <a name="enforce-multi-factor-authentication-for-users"></a>對使用者強制執行多重要素驗證
 
-使用雙因素驗證。 雙因素驗證是目前的驗證和授權標準，因為它可避免使用者名稱和密碼類型的驗證中固有的安全性弱點。 Azure 管理介面（Azure 入口網站/遠端 PowerShell）和客戶面向服務的存取權，應設計並設定為使用[Azure 多重要素驗證](../../active-directory/authentication/concept-mfa-howitworks.md)。
+使用雙因素驗證。 雙因素驗證是目前的驗證和授權標準，因為它可避免使用者名稱和密碼類型的驗證中固有的安全性弱點。 存取 Azure 管理介面 (Azure 入口網站/遠端 PowerShell) 以及客戶面向服務，應設計並設定為使用[Azure 多重要素驗證](../../active-directory/authentication/concept-mfa-howitworks.md)。
 
 #### <a name="use-strong-authentication-and-authorization-platforms"></a>使用增強式驗證與授權平臺
 
-使用平台提供的驗證與授權機制，而不要使用自訂程式碼。 這是因為開發自訂驗證程式代碼可能會很容易發生錯誤。 商業程式碼（例如，來自 Microsoft）通常會針對安全性進行廣泛的審查。 [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) 是用於管理身分識別和存取的 Azure 解決方案。 這些 Azure AD 工具和服務可協助進行安全的開發：
+使用平台提供的驗證與授權機制，而不要使用自訂程式碼。 這是因為開發自訂驗證程式代碼可能會很容易發生錯誤。 例如，從 Microsoft) 的商業程式碼 (經常會針對安全性進行廣泛的審查。 [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) 是用於管理身分識別和存取的 Azure 解決方案。 這些 Azure AD 工具和服務可協助進行安全的開發：
 
-- [Azure AD 身分識別平臺（適用于開發人員的 Azure AD）](../../active-directory/develop/about-microsoft-identity-platform.md)是一項雲端身分識別服務，可供開發人員用來建立安全登入使用者的應用程式。 Azure AD 協助開發人員建立單一租使用者、企業營運（LOB）應用程式，以及想要開發多租使用者應用程式的開發人員。 除了基本登入以外，使用 Azure AD 建立的應用程式也可以呼叫 Microsoft Api 和建置於 Azure AD 平臺上的自訂 Api。 Azure AD 身分識別平臺支援業界標準通訊協定，例如 OAuth 2.0 和 OpenID Connect。
+- [Microsoft 身分識別平臺](/azure/active-directory/develop/)是一組元件，可供開發人員用來建立安全地登入使用者的應用程式。 此平臺可協助建立單一租使用者、企業營運 (LOB) 應用程式的開發人員，以及想要開發多租使用者應用程式的開發人員。 除了基本登入以外，使用 Microsoft 身分識別平臺所建立的應用程式也可以呼叫 Microsoft Api 和自訂 Api。 Microsoft 身分識別平臺支援業界標準通訊協定，例如 OAuth 2.0 和 OpenID Connect。
 
-- [Azure Active Directory B2C （Azure AD B2C）](../../active-directory-b2c/index.yml)是一項身分識別管理服務，可讓您自訂和控制客戶在使用您的應用程式時，如何註冊、登入及管理其設定檔。 這包括針對 iOS、Android 和 .NET 開發的應用程式，以及其他專案。 Azure AD B2C 會啟用這些動作，同時保護客戶身分識別。
+- [Azure Active Directory B2C (Azure AD B2C) ](../../active-directory-b2c/index.yml)是一項身分識別管理服務，可用來自訂和控制客戶在使用您的應用程式時，如何註冊、登入及管理其設定檔。 這包括針對 iOS、Android 和 .NET 開發的應用程式，以及其他專案。 Azure AD B2C 會啟用這些動作，同時保護客戶身分識別。
 
 #### <a name="apply-the-principle-of-least-privilege"></a>套用最低許可權原則
 
 [最低許可權](https://en.wikipedia.org/wiki/Principle_of_least_privilege)的概念意味著讓使用者能夠進行其作業所需的精確存取和控制層級，而不需要執行其他動作。
 
-軟體發展人員需要網域系統管理員許可權嗎？ 系統管理助理需要存取其個人電腦上的管理控制項嗎？ 評估軟體的存取權並不相同。 如果您使用[角色型存取控制（RBAC）](../../role-based-access-control/overview.md)為使用者提供應用程式中不同的功能和授權單位，您就不會讓所有人都能存取所有專案。 藉由限制每個角色所需的存取權，您可以限制發生安全性問題的風險。
+軟體發展人員需要網域系統管理員許可權嗎？ 系統管理助理需要存取其個人電腦上的管理控制項嗎？ 評估軟體的存取權並不相同。 如果您使用[角色型存取控制 (RBAC) ](../../role-based-access-control/overview.md)在您的應用程式中為使用者提供不同的功能和授權，您就不會讓所有人都能存取所有專案。 藉由限制每個角色所需的存取權，您可以限制發生安全性問題的風險。
 
 請確定您的應用程式在其存取模式中強制執行[最低許可權](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications)。
 
@@ -225,14 +226,14 @@ Azure 提供您可用來裝載網站和 web 應用程式的其他服務。 大�
 
 #### <a name="implement-just-in-time-access"></a>執行即時存取
 
-執行*即時*（JIT）存取，以進一步降低許可權的曝光時間。 使用[Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-take-control-of-admin-activity) ：
+執行*即時* (JIT) 存取，以進一步降低許可權的曝光時間。 使用[Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-take-control-of-admin-activity) ：
 
 - 授與使用者只需要 JIT 的許可權。
 - 指派縮短持續時間的角色，而且有信心會自動撤銷權限。
 
 ### <a name="require-re-authentication-for-important-transactions"></a>需要重新驗證重要交易
 
-[跨網站偽造要求](https://docs.microsoft.com/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1)（也稱為*XSRF*或*CSRF*）是對 web 裝載應用程式的攻擊，其中惡意的 web 應用程式會影響用戶端瀏覽器與信任該瀏覽器之 web 應用程式之間的互動。 由於網頁瀏覽器會在每次要求網站時自動傳送某些類型的驗證權杖，因此可能會發生跨網站偽造要求攻擊。
+[跨網站要求偽造](https://docs.microsoft.com/aspnet/core/security/anti-request-forgery?view=aspnetcore-2.1) (也稱為*XSRF*或*CSRF*) 是對 web 裝載應用程式的攻擊，其中惡意的 web 應用程式會影響用戶端瀏覽器與信任該瀏覽器之 web 應用程式之間的互動。 由於網頁瀏覽器會在每次要求網站時自動傳送某些類型的驗證權杖，因此可能會發生跨網站偽造要求攻擊。
 這種形式的攻擊也稱為單鍵*攻擊*或*會話騎*，因為攻擊會利用使用者先前已驗證的會話。
 
 防禦這類攻擊的最佳方式，就是詢問使用者只有使用者可以在每個重要交易之前提供的專案，例如購買、帳戶停用或密碼變更。 您可能會要求使用者重新輸入密碼、完成 captcha，或提交只有使用者會擁有的秘密權杖。 最常見的方法是秘密權杖。
@@ -241,7 +242,7 @@ Azure 提供您可用來裝載網站和 web 應用程式的其他服務。 大�
 
 遺失金鑰和認證是相當常見的問題。 唯一比遺失金鑰和認證更糟的情況，就是讓未經授權者能夠存取這些機密資料。 攻擊者可以利用自動化和手動技術，來尋找儲存在程式碼存放庫（例如 GitHub）中的金鑰和秘密。 請勿將金鑰和密碼放在這些公用程式代碼存放庫或任何其他伺服器上。
 
-請一律將您的金鑰、憑證、秘密和連接字串放在金鑰管理解決方案中。 您可以使用集中式解決方案，將金鑰和密碼儲存在硬體安全性模組（Hsm）中。 Azure 可讓您透過[Azure Key Vault](../../key-vault/general/overview.md)在雲端中提供 HSM。
+請一律將您的金鑰、憑證、秘密和連接字串放在金鑰管理解決方案中。 您可以使用集中式解決方案，將金鑰和密碼儲存在硬體安全性模組中， (Hsm) 。 Azure 可讓您透過[Azure Key Vault](../../key-vault/general/overview.md)在雲端中提供 HSM。
 
 Key Vault 是「*秘密存放區*」：這是用來儲存應用程式秘密的集中式雲端服務。 Key Vault 藉由將應用程式秘密保存在單一集中位置，並提供安全存取、許可權控制和存取記錄，來保護機密資料的安全。
 
@@ -250,12 +251,12 @@ Key Vault 是「*秘密存放區*」：這是用來儲存應用程式秘密的�
 > [!IMPORTANT]
 > Azure Key Vault 是設計用來儲存伺服器應用程式的設定秘密。 它不適合用來儲存屬於應用程式使用者的資料。 這會反映在其效能特性、API 和成本模型中。
 >
-> 使用者資料應該儲存在其他地方，例如在具有透明資料加密（TDE）的 Azure SQL Database 實例中，或在使用 Azure 儲存體服務加密的儲存體帳戶中。 您的應用程式用來存取這些資料存放區的秘密可以保存在 Azure Key Vault 中。
+> 使用者資料應該儲存在其他地方，例如在具有透明資料加密 () TDE 的 Azure SQL Database 實例中，或在使用 Azure 儲存體服務加密的儲存體帳戶中。 您的應用程式用來存取這些資料存放區的秘密可以保存在 Azure Key Vault 中。
 
 ### <a name="protect-sensitive-data"></a>保護敏感性資料
 
 保護資料是安全性策略中不可或缺的一部分。
-將您的資料分類並識別您的資料保護需求，可協助您在設計應用程式時考慮資料安全性。 依據敏感度和業務影響來分類（分類）儲存的資料，可協助開發人員判斷與資料相關聯的風險。
+將您的資料分類並識別您的資料保護需求，可協助您在設計應用程式時考慮資料安全性。 分類 (依敏感度和業務影響來分類) 儲存的資料，可協助開發人員判斷與資料相關聯的風險。
 
 當您設計資料格式時，請將所有適用的資料標記為機密。 請確定應用程式會將適用的資料視為機密。 這些作法可協助您保護您的敏感性資料：
 
@@ -266,7 +267,7 @@ Key Vault 是「*秘密存放區*」：這是用來儲存應用程式秘密的�
 #### <a name="use-encryption"></a>使用加密
 
 保護資料應該是安全性策略中不可或缺的一部分。
-如果您的資料儲存在資料庫中，或在位置間來回移動，請使用待用[資料](../fundamentals/encryption-atrest.md)加密（在資料庫中），並加密[傳輸中的資料](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)（透過使用者、資料庫、API 或服務端點的方式）。 我們建議您一律使用 SSL/TLS 通訊協定來交換資料。 請確定您使用最新版本的 TLS 進行加密（目前，這是1.2 版）。
+如果您的資料儲存在資料庫中，或在位置間來回移動，請在資料庫中使用待用[資料](../fundamentals/encryption-atrest.md)的加密 (，同時) 和使用者、資料庫、API 或服務端點) [傳送 (傳輸中的資料](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)加密。 我們建議您一律使用 SSL/TLS 通訊協定來交換資料。 請確定您使用最新版本的 TLS 進行加密 (目前的版本為 1.2) 。
 
 #### <a name="avoid-hard-coding"></a>避免硬式編碼
 

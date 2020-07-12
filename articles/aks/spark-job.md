@@ -1,17 +1,17 @@
 ---
 title: 透過 Azure Kubernetes Service (AKS) 執行 Apache Spark 作業
-description: 使用 Azure Kubernetes Service （AKS）來建立和執行大規模資料處理的 Apache Spark 作業。
+description: 使用 Azure Kubernetes Service (AKS) 來建立和執行大規模資料處理的 Apache Spark 作業。
 author: lenadroid
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 962d0d6dd51bb30f5df9ca0b609acf932777ebcf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 074e3db3234794aa891d5452b0c19060193c6d0c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887529"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243965"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>在 AKS 上執行 Apache Spark 作業
 
@@ -350,7 +350,7 @@ ENTRYPOINT [ "/opt/entrypoint.sh" ]
 
 <!-- LINKS - internal -->
 [acr-aks]: cluster-container-registry-integration.md
-[acr-create]: https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli
-[aks-quickstart]: https://docs.microsoft.com/azure/aks/
-[azure-cli]: https://docs.microsoft.com/cli/azure/?view=azure-cli-latest
-[storage-account]: https://docs.microsoft.com/azure/storage/common/storage-azure-cli
+[acr-create]: ../container-registry/container-registry-get-started-azure-cli.md
+[aks-quickstart]: ./index.yml
+[azure-cli]: /cli/azure/?view=azure-cli-latest
+[storage-account]: ../storage/blobs/storage-quickstart-blobs-cli.md

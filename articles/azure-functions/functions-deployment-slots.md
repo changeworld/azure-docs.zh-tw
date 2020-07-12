@@ -2,14 +2,15 @@
 title: Azure Functions 部署位置
 description: 瞭解如何使用 Azure Functions 建立和使用部署位置
 author: craigshoemaker
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 7cfbd533921ba4d1757e7415a3bb8f70aeb71251
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8abc670535f240d436e90c34f7245a3d176f517
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83122422"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242775"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions 部署位置
 
@@ -36,13 +37,13 @@ Azure Functions 部署位置可讓您的函數應用程式執行稱為「位置�
 交換期間，會將一個位置視為來源，另一個是目標。 來源位置具有套用至目標位置之應用程式的實例。 下列步驟可確保目標位置在交換期間不會遇到停機時間：
 
 1. 套用**設定：** 來自目標位置的設定會套用至來源位置的所有實例。 例如，生產環境設定會套用至暫存實例。 套用的設定包含下列類別：
-    - 位置[特定的](#manage-settings)應用程式設定和連接字串（如果適用）
-    - [持續部署](../app-service/deploy-continuous-deployment.md)設定（如果已啟用）
-    - [App Service 驗證](../app-service/overview-authentication-authorization.md)設定（如果已啟用）
+    - 位置[特定的](#manage-settings)應用程式設定和連接字串（如果適用) ） (
+    - 若已啟用，則[持續部署](../app-service/deploy-continuous-deployment.md)設定 () 
+    - [App Service 驗證](../app-service/overview-authentication-authorization.md)設定 (啟用) 
 
 1. **等待重新開機和可用性：** 交換會等候來源位置中的每個實例完成其重新開機，並且可供要求使用。 如果有任何實例無法重新開機，則交換作業會將所有變更還原到來源位置，並停止作業。
 
-1. **更新路由：** 如果來源位置上的所有實例都已成功準備就緒，這兩個插槽會藉由切換路由規則來完成交換。 在此步驟之後，目標位置（例如，生產位置）會有先前在來源插槽中準備就緒的應用程式。
+1. **更新路由：** 如果來源位置上的所有實例都已成功準備就緒，這兩個插槽會藉由切換路由規則來完成交換。 在此步驟之後，目標位置 (例如，生產位置) 的應用程式先前已在來源插槽中準備就緒。
 
 1. **重複操作：** 既然來源位置先前已在目標插槽中有預先交換的應用程式，請套用所有設定，然後重新開機來源位置的實例，以完成相同的操作。
 
@@ -134,7 +135,7 @@ Azure Functions 部署位置可讓您的函數應用程式執行稱為「位置�
 
     :::image type="content" source="./media/functions-deployment-slots/functions-navigate-slots.png" alt-text="尋找 Azure 入口網站中的插槽。" border="true":::
 
-1. 選取 [刪除] 。
+1. 選取 [刪除]。
 
     :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot.png" alt-text="刪除 Azure 入口網站中的部署位置。" border="true":::
 
@@ -189,7 +190,7 @@ Azure Functions 部署位置有下列限制：
 
 部署位置有兩種支援層級：
 
-- 正式運作 **（GA）**：完全支援並已核准可供生產環境使用。
+- **正式運作 (GA) **：完全支援並已核准可供生產環境使用。
 - **預覽**：尚不支援，但未來預期會到達 GA 狀態。
 
 | OS/主控方案           | 支援層級     |

@@ -5,11 +5,12 @@ author: rapatchi
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: rapatchi
-ms.openlocfilehash: 0a243c1cd0ab0dcb93a1cc6169c89ba18606f346
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c093958b9a8c5a21cb6996db891705ec8c3d21ab
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75451673"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246277"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Azure Service Fabric JAVA 用戶端 API
 
@@ -120,9 +121,8 @@ Service Fabric 用戶端 API 允許在 Azure、內部佈署、本機開發機器
     * 如果您想要使用未來式非同步程式設計並使用回呼，可使用此 API 呼叫的變數
  3. **public Observable\<Void> removeReplicaAsync(String nodeName, UUID partitionId, String replicaId)**
     * 如果您想要使用回應式非同步程式設計，可使用此 API 呼叫的變數
- 4. **公用可觀察 \<ServiceResponse\<Void>> removeReplicaWithServiceResponseAsync （字串 nodeName、UUID partitionId、字串 replicaId）**
+ 4. **公用可觀察 \<ServiceResponse\<Void>> removeReplicaWithServiceResponseAsync (字串 nodeName、UUID partitionId、字串 replicaId) **
     * 如果您想要使用回應式非同步程式設計，並處理 RAW REST 回應，可使用此 API 呼叫的變數
 
 ## <a name="next-steps"></a>後續步驟
-* 了解 [Service Fabric REST API](https://docs.microsoft.com/rest/api/servicefabric/)
-
+* 了解 [Service Fabric REST API](/rest/api/servicefabric/)

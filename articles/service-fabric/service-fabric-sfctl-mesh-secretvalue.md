@@ -5,20 +5,21 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: b2fe3a7995cdd88a8f63d0d865e72e9f161cf9d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 985fb505aae96f4ebd1ba8aeb61679081f303243
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905956"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245767"
 ---
 # <a name="sfctl-mesh-secretvalue"></a>sfctl mesh secretvalue
 取得和刪除網狀結構 mesh secretvalue 資源。
 
 ## <a name="commands"></a>命令
 
-|Command|描述|
+|命令|描述|
 | --- | --- |
-| delete | 刪除選定祕密資源的指定值。 |
+| 刪除 | 刪除選定祕密資源的指定值。 |
 | list | 列出指定祕密資源所有值的名稱。 |
 | 顯示 | 列出秘密資源的指定值。 |
 
@@ -89,4 +90,4 @@ ms.locfileid: "76905956"
 
 ## <a name="next-steps"></a>後續步驟
 - [設定](service-fabric-cli.md)Service Fabric CLI。
-- 了解如何使用[範例指令碼](/azure/service-fabric/scripts/sfctl-upgrade-application)來使用 Service Fabric CLI。
+- 了解如何使用[範例指令碼](./scripts/sfctl-upgrade-application.md)來使用 Service Fabric CLI。
