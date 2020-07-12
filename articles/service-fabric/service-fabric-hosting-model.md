@@ -5,11 +5,12 @@ author: harahma
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: 82bc5068be651b05eb24efa3b05e46c1e7c1e24d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6c55ab52f4e51ddf2a39e03bed3ea543a6096be
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81115045"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247450"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric 主控模型
 本文提供 Azure Service Fabric 所提供之應用程式主控模型的概觀，並說明**共用處理序**與**專屬處理序**模型之間的差異。 本文說明已部署之應用程式在 Service Fabric 節點上看起來的樣子，以及服務的複本 (或執行個體) 與服務主機處理序之間的關聯性。
@@ -170,7 +171,7 @@ Service Fabric 會將[客體可執行檔][a2]和[容器][a3]應用程式視為�
 
 ### <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services 和 Reliable Actor 分叉處理子程序
 
-Service Fabric 不支援 Reliable Services 和後續 Reliable Actors 分叉處理子程序。 舉例來說，不支援的原因是 [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) 無法用來註冊不支援的子程序，且取消 Token 只會傳送到已註冊的程序；在父程序收到取消 Token 之後，子程序並未關閉，因而導致各種問題，例如升級失敗。
+Service Fabric 不支援 Reliable Services 和後續 Reliable Actors 分叉處理子程序。 舉例來說，不支援的原因是 [CodePackageActivationContext](/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) 無法用來註冊不支援的子程序，且取消 Token 只會傳送到已註冊的程序；在父程序收到取消 Token 之後，子程序並未關閉，因而導致各種問題，例如升級失敗。
 
 ## <a name="next-steps"></a>後續步驟
 [對應用程式進行封裝][a4]並使它準備好進行部署。
@@ -192,16 +193,16 @@ Service Fabric 不支援 Reliable Services 和後續 Reliable Actors 分叉處�
 [a4]: service-fabric-package-apps.md
 [a5]: service-fabric-deploy-remove-applications.md
 
-[r1]: https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-createservice
+[r1]: /rest/api/servicefabric/sfclient-api-createservice
 
-[c1]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync
-[c2]: https://docs.microsoft.com/dotnet/api/system.fabric.description.statelessservicedescription.instancecount
+[c1]: /dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync
+[c2]: /dotnet/api/system.fabric.description.statelessservicedescription.instancecount
 
-[p1]: https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice
-[p2]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricservicedescription
-[p3]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicePackage
-[p4]: https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricdeployedservicepackagehealthreport
-[p5]: https://docs.microsoft.com/powershell/module/servicefabric/restart-servicefabricdeployedcodepackage
-[p6]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicetype
-[p7]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedreplica
-[p8]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedcodepackage
+[p1]: /powershell/module/servicefabric/new-servicefabricservice
+[p2]: /powershell/module/servicefabric/get-servicefabricservicedescription
+[p3]: /powershell/module/servicefabric/get-servicefabricdeployedservicepackage
+[p4]: /powershell/module/servicefabric/send-servicefabricdeployedservicepackagehealthreport
+[p5]: /powershell/module/servicefabric/restart-servicefabricdeployedcodepackage
+[p6]: /powershell/module/servicefabric/get-servicefabricdeployedservicetype
+[p7]: /powershell/module/servicefabric/get-servicefabricdeployedreplica
+[p8]: /powershell/module/servicefabric/get-servicefabricdeployedcodepackage

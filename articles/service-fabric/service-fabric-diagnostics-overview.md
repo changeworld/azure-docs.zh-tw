@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: ef77810adfab213845c7824740effc3416d85407
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b4e454532dec31cbcc92269d63c8be1ff92a9f6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712219"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247518"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>對 Azure Service Fabric 進行監視和診斷
 
@@ -92,4 +92,4 @@ Service Fabric 也會提供一組適用于 Reliable Services 和動作專案程�
 * 瞭解如何設定 Azure 監視器記錄來監視容器- [Azure Service Fabric 中 Windows 容器的監視和診斷](service-fabric-tutorial-monitoring-wincontainers.md)。
 * 請參閱[診斷常見案例](service-fabric-diagnostics-common-scenarios.md)中的 Service Fabric 範例診斷問題和解決方案
 * 查看 [Service Fabric 診斷合作夥伴](service-fabric-diagnostics-partners.md)中與 Service Fabric 整合的其他診斷產品
-* 了解 Azure 資源的一般監視建議：[最佳做法 - 監視和診斷](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)。 
+* 了解 Azure 資源的一般監視建議：[最佳做法 - 監視和診斷](/azure/architecture/best-practices/monitoring)。 

@@ -6,12 +6,12 @@ manager: sridmad
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: chrpap
-ms.openlocfilehash: d9562c09fe99372a9b1106d3ae891f65663cf307
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6cc7cbcc8344c5015d60d9721c682b6a856cbb6e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610093"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247229"
 ---
 # <a name="how-to-remove-a-service-fabric-node-type"></a>如何移除 Service Fabric 節點類型
 此文章說明如何透過將現有的節點類型從叢集移除，來調整 Azure Service Fabric 叢集的規模。 Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用來將您的微服務部署到其中並進行管理。 屬於叢集一部分的機器或 VM 都稱為節點。 虛擬機器擴展集是一個 Azure 計算資源，可以用來將一組虛擬機器當做一個集合加以部署和管理。 在 Azure 叢集中定義的每個節點類型，會[設定為不同的擴展集](service-fabric-cluster-nodetypes.md)。 隨後，您即可個別管理每個節點類型。 建立 Service Fabric 叢集之後，您可以透過移除節點類型 (虛擬機器擴展集) 與其所有節點，來水平調整叢集規模。  您可以隨時調整叢集，即使正在叢集上執行工作負載，也是如此。  在叢集進行調整時，您的應用程式也會自動調整。
@@ -20,7 +20,7 @@ ms.locfileid: "85610093"
 > 不建議經常使用此方法從生產環境叢集移除節點類型。 它是非常危險的命令，因為它會刪除節點類型後的虛擬機器擴展集資源。 
 
 ## <a name="durability-characteristics"></a>持久性特性
-使用 Remove-azservicefabricnodetype 時，安全性的優先順序高於速度。 節點類型必須是銀級或金級[持久性層級](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster)，因為：
+使用 Remove-azservicefabricnodetype 時，安全性的優先順序高於速度。 節點類型必須是銀級或金級[持久性層級](./service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)，因為：
 - 銅級不提供關於儲存狀態資訊的任何保證。
 - 銀級和金級持久性可以攔截對擴展集的任何變更。
 - 金級也可提供您對擴展集下 Azure 更新的控制。
@@ -47,7 +47,7 @@ Service Fabric 會「協調」基礎結構變更和更新，如此資料就不�
     - 上面修改的所有服務都不再于屬於節點類型的節點上執行。
     - 所有服務都狀況良好。
 
-3. 取消標示節點類型為非主要節點（略過非主要節點類型）
+3. 取消標示節點類型為非主要 (略過非主要節點類型) 
 
     - 找出用於部署的 Azure Resource Manager 範本。
     - 在 [Service Fabric] 區段中，尋找與節點類型相關的區段。
@@ -175,6 +175,6 @@ Service Fabric 會「協調」基礎結構變更和更新，如此資料就不�
     - 等待部署完成。
 
 ## <a name="next-steps"></a>後續步驟
-- 深入了解叢集[持久性特性](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#durability-characteristics-of-the-cluster)。
+- 深入了解叢集[持久性特性](./service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)。
 - 深入了解[節點類型和虛擬機器擴展集](service-fabric-cluster-nodetypes.md)。
 - 深入了解[調整 Service Fabric 叢集](service-fabric-cluster-scaling.md)。

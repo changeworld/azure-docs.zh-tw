@@ -2,13 +2,13 @@
 title: 範本的最佳做法
 description: 說明用於製作 Azure Resource Manager 範本的建議方法。 提供建議來避免使用範本時的常見問題。
 ms.topic: conceptual
-ms.date: 06/09/2020
-ms.openlocfilehash: a85e9afd64c416628c35bd36d16086f28d0732d3
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 07/10/2020
+ms.openlocfilehash: 272c7e7f824eb193ed48d79c5256167f1dbbbce5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058056"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248912"
 ---
 # <a name="arm-template-best-practices"></a>ARM 範本最佳做法
 
@@ -160,7 +160,7 @@ ms.locfileid: "86058056"
 
 決定[要設定](define-resource-dependency.md)哪些相依性時，請使用下列指導方針：
 
-* 使用 **reference** 函式並傳入資源名稱，以便在必須共用屬性的資源之間設定隱含相依性。 當您已經定義隱含的相依性時，請勿新增明確的 `dependsOn` 元素。 這種方法可減少產生不必要相依性的風險。
+* 使用 **reference** 函式並傳入資源名稱，以便在必須共用屬性的資源之間設定隱含相依性。 當您已經定義隱含的相依性時，請勿新增明確的 `dependsOn` 元素。 這種方法可減少產生不必要相依性的風險。 如需設定隱含相依性的範例，請參閱[隱含](define-resource-dependency.md#reference-and-list-functions)相依性。
 
 * 設定子資源為相依於其父資源。
 

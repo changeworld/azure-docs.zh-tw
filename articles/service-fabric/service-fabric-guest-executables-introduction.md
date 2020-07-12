@@ -3,11 +3,12 @@ title: 將現有的可執行檔封裝到 Azure Service Fabric
 description: 了解如何將現有應用程式封裝為來賓可執行檔，使其可以部署至 Service Fabric 叢集。
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 3d7aab28a32effa2caf7b04b830d72e5e3dfda56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b808d092001196a4d2150e44d508e031db95554
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75457827"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247382"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>將現有可執行檔部署至 Service Fabric
 您可以在 Azure Service Fabric 中將任何類型的程式碼 (例如 Node.js、Java 或 C++) 當作服務來執行。 Service Fabric 將這些類型的服務稱為客體可執行檔。
@@ -53,7 +54,7 @@ Service Fabric 將來賓可執行檔視為無狀態服務。 因此會根據可�
 ApplicationPackageRoot 包含可定義應用程式的 ApplicationManifest.xml 檔案。 對於應用程式包含的每個服務，都有一個子目錄用來包含服務所需的所有構件。 這些子目錄是 ServiceManifest.xml，通常如下︰
 
 * 程式*代碼*。 此目錄包含服務程式碼。
-* *Config*。此目錄包含服務可在執行時間存取以取得特定設定的 Settings.xml 檔案（以及其他必要檔案）。
+* *Config*。此目錄包含 Settings.xml 檔案 (和其他檔案（如有必要）) 服務可在執行時間存取以取得特定的設定。
 * *資料*。 這是額外的目錄，用來儲存服務可能需要的其他本機資料。 資料應該只用來儲存短期資料。 如果必須重新定位服務 (例如在容錯移轉期間)，Service Fabric 不會將變更複製/複寫到資料目錄。
 
 > [!NOTE]
@@ -64,8 +65,7 @@ ApplicationPackageRoot 包含可定義應用程式的 ApplicationManifest.xml �
 ## <a name="next-steps"></a>後續步驟
 請參閱下列文章以了解相關資訊和工作。
 * [部署來賓可執行檔](service-fabric-deploy-existing-app.md)
-* [部署多個來賓可執行檔](service-fabric-deploy-multiple-apps.md)
+* [部署多個來賓可執行檔](./service-fabric-deploy-existing-app.md)
 * [使用 Visual Studio 建立第一個來賓可執行檔應用程式](quickstart-guest-app.md)
 * [封裝和部署來賓可執行檔的範例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)，包括封裝工具預先發行版本的連結
 * [兩個客體可執行檔 (C# 和 nodejs) 使用 REST 透過命名服務進行通訊的範例](https://github.com/Azure-Samples/service-fabric-containers)
-

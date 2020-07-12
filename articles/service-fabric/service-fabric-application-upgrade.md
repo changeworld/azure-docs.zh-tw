@@ -3,11 +3,12 @@ title: Service Fabric 應用程式升級
 description: 本文章提供升級 Service Fabric 應用程式的簡介，其中包括選擇升級模式和執行健康狀態檢查。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 2dc484b49c5250510e5f018cbbc2da107573d452
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e7a93dd3ef8a1adf6617dcd57887a0ce694c509
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710315"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247994"
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric 應用程式升級
 Azure Service Fabric 應用程式是服務集合。 在升級期間，Service Fabric 會比較新的 [應用程式資訊清單](service-fabric-application-and-service-manifests.md) 與舊版本，並決定應用程式中哪些服務需要更新。 Service Fabric 會比較服務資訊清單中的版本號碼和上一版中的版本號碼。 如果服務未變更，則該服務不會升級。
@@ -36,7 +37,7 @@ Service Fabric 在升級期間進行的健康狀態原則以及檢查不限於�
 不受監控手動模式在每次於更新網域上升級之後都需要手動介入，以開始進行下一個更新網域上的升級。 系統不會執行任何 Service Fabric 健康狀態檢查。 系統管理員在開始下一個更新網域中的升級之前，會執行健康狀態或狀態檢查。
 
 ## <a name="upgrade-default-services"></a>升級預設服務
-某些定義於[應用程式資訊清單](service-fabric-application-and-service-manifests.md)中的預設服務參數，也可在應用程式升級的過程中一併升級。 只有支援透過 [Update-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) 進行變更的服務參數，才能在升級的過程中變更。 在應用程式升級期間變更預設服務的行為如下：
+某些定義於[應用程式資訊清單](service-fabric-application-and-service-manifests.md)中的預設服務參數，也可在應用程式升級的過程中一併升級。 只有支援透過 [Update-ServiceFabricService](/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) 進行變更的服務參數，才能在升級的過程中變更。 在應用程式升級期間變更預設服務的行為如下：
 
 1. 會建立不存在於叢集中的新應用程式資訊清單中的預設服務。
 2. 會更新同時存在於舊有與新的應用程式資訊清單中的預設服務。 新應用程式資訊清單中的預設服務參數會覆寫現有服務的參數。 在預設服務更新失敗時，應用程式升級會自動回復。

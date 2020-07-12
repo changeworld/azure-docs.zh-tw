@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: 733f4b74ca7643476586189b36f4e1d3e446968b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08e718739971283418d151bef9ad75333e313d85
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811166"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250425"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>整合內部 VNET 中的 API 管理與應用程式閘道
 
@@ -40,7 +41,7 @@ API 管理服務可以內部模式設定於虛擬網路中，因此只能從虛�
 
 若要執行本文所述的步驟，您必須具有：
 
-* 有效的 Azure 訂用帳戶。
+* 使用中的 Azure 訂用帳戶。
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -63,7 +64,7 @@ API 管理服務可以內部模式設定於虛擬網路中，因此只能從虛�
 * **後端伺服器集區︰** 這是 API 管理服務的內部虛擬 IP 位址。
 * **後端伺服器集區設定：** 每個集區都有設定，例如埠、通訊協定和以 cookie 為基礎的親和性。 這些設定會套用至集區內所有伺服器。
 * **前端連接埠：** 這是在應用程式閘道上開啟的公用連接埠。 到達的流量會重新導向至其中一個後端伺服器。
-* 接聽程式 **：** 接聽程式具有前端埠、通訊協定（Http 或 Https，這些值都區分大小寫）和 TLS/SSL 憑證名稱（如果設定 TLS 卸載）。
+* 接聽程式 **：** 接聽程式具有前端埠、通訊協定 (Http 或 Https，這些值會區分大小寫) ，如果設定 TLS 卸載) ，則會 (TLS/SSL 憑證名稱。
 * **規則︰** 規則會繫結接聽程式至後端伺服器集區。
 * **自訂健全狀況探查︰** 應用程式閘道預設會使用 IP 位址型探查，來找出 BackendAddressPool 中有哪些伺服器正在作用中。 API 管理服務只會回應具有正確主機標頭的要求，因此預設探查會失敗。 需要定義自訂的健全狀況探查以協助應用程式閘道判斷服務正在執行，因此它應該轉送要求。
 * **自訂網域憑證︰** 若要從網際網路存取 API 管理，您需要建立其主機名稱和應用程式閘道前端 DNS 名稱的 CNAME 對應。 這可確保主機名稱的標頭和憑證傳送到轉送至 API 管理的應用程式閘道，是 APIM 可以辨識為有效的。 在此範例中，我們將使用兩個憑證 - 分別用於後端和開發人員入口網站。  
@@ -329,7 +330,7 @@ $rule02 = New-AzApplicationGatewayRequestRoutingRule -Name "rule2" -RuleType Bas
 
 ### <a name="step-11"></a>步驟 11
 
-設定執行個體數目和應用程式閘道的大小。 在此範例中，我們使用 [WAF SKU](../application-gateway/application-gateway-webapplicationfirewall-overview.md) 以提高 API 管理資源的安全性。
+設定執行個體數目和應用程式閘道的大小。 在此範例中，我們使用 [WAF SKU](../web-application-firewall/ag/ag-overview.md) 以提高 API 管理資源的安全性。
 
 ```powershell
 $sku = New-AzApplicationGatewaySku -Name "WAF_Medium" -Tier "WAF" -Capacity 2
@@ -367,9 +368,9 @@ VNET 中設定的 Azure API 管理為所有已設定的 Api 提供單一閘道�
 
 ## <a name="next-steps"></a><a name="next-steps"> </a>後續步驟
 * 深入了解 Azure 應用程式閘道
-  * [應用程式閘道總覽](../application-gateway/application-gateway-introduction.md)
-  * [應用程式閘道 Web 應用程式防火牆](../application-gateway/application-gateway-webapplicationfirewall-overview.md)
-  * [使用路徑型路由的應用程式閘道](../application-gateway/application-gateway-create-url-route-arm-ps.md)
+  * [應用程式閘道總覽](../application-gateway/overview.md)
+  * [應用程式閘道 Web 應用程式防火牆](../web-application-firewall/ag/ag-overview.md)
+  * [使用路徑型路由的應用程式閘道](../application-gateway/tutorial-url-route-powershell.md)
 * 深入了解 API 管理和 VNET
   * [使用只在 VNET 內提供的 API 管理](api-management-using-with-internal-vnet.md)
   * [在 VNET 中使用 API 管理](api-management-using-with-vnet.md)

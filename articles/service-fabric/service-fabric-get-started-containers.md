@@ -4,11 +4,12 @@ description: 在 Azure Service Fabric 上建立第一個 Windows 容器應用程
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: tracking-python
-ms.openlocfilehash: d7076226b63fa3b45eaae82c2964997d3065ed88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0baad5d2596de04b629c4cf9eb86c51b37b8cdc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560656"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247399"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>在 Windows 建立第一個 Service Fabric 容器應用程式
 
@@ -16,7 +17,7 @@ ms.locfileid: "84560656"
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-在 Service Fabric 叢集上的 Windows 容器中執行現有的應用程式，不需要變更您的應用程式。 本文會逐步引導您建立包含 Python [Flask](http://flask.pocoo.org/) web 應用程式的 Docker 映射，並將其部署至 Azure Service Fabric 叢集。 您也將透過 [Azure Container Registry](/azure/container-registry/) 共用容器化應用程式。 本文假設您對 Docker 有基本認識。 您可藉由閱讀 [Docker 概觀](https://docs.docker.com/engine/understanding-docker/)來了解 Docker。
+在 Service Fabric 叢集上的 Windows 容器中執行現有的應用程式，不需要變更您的應用程式。 本文會逐步引導您建立包含 Python [Flask](http://flask.pocoo.org/) web 應用程式的 Docker 映射，並將其部署至 Azure Service Fabric 叢集。 您也將透過 [Azure Container Registry](../container-registry/index.yml) 共用容器化應用程式。 本文假設您對 Docker 有基本認識。 您可藉由閱讀 [Docker 概觀](https://docs.docker.com/engine/understanding-docker/)來了解 Docker。
 
 > [!NOTE]
 > 本文適用於 Windows 開發環境。  Service Fabric 叢集執行階段與 Docker 執行階段必須在相同的作業系統上執行。  您無法在 Linux 叢集上執行 Windows 容器。
@@ -29,7 +30,7 @@ ms.locfileid: "84560656"
 * 執行下列項目的開發電腦︰
   * Visual Studio 2015 或 Visual Studio 2019。
   * [SERVICE FABRIC SDK 和工具](service-fabric-get-started.md)。
-  *  Docker for Windows。 [取得適用於 Windows 的 Docker CE （穩定）](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)。 安裝並啟動 Docker 之後，以滑鼠右鍵按一下系統匣圖示，然後選取 [切換至 Windows 容器]****。 這是執行以 Windows 為基礎的 Docker 映像時的必要步驟。
+  *  Docker for Windows。 [取得適用於 Windows 的 Docker CE (穩定) ](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)。 安裝並啟動 Docker 之後，以滑鼠右鍵按一下系統匣圖示，然後選取 [切換至 Windows 容器]****。 這是執行以 Windows 為基礎的 Docker 映像時的必要步驟。
 
 * 有三個或更多節點在具有容器的 Windows Server 上執行的 Windows 叢集。 
 
@@ -320,9 +321,9 @@ Windows 支援兩種容器隔離模式：分別為處理序和 Hyper-V。 在處
 ## <a name="deploy-the-container-application"></a>部署容器應用程式
 儲存所有變更，並建置應用程式。 若要發佈您的應用程式，以滑鼠右鍵按一下 [方案總管] 中的 **MyFirstContainer**，然後選取 [發佈]****。
 
-在 [連線端點]**** 中，輸入叢集的管理端點。 例如： `containercluster.westus2.cloudapp.azure.com:19000` 。 在 [Azure 入口網站](https://portal.azure.com)中，您可以在叢集的 [概觀] 索引標籤中找到用戶端連線端點。
+在 [連線端點]**** 中，輸入叢集的管理端點。 例如，`containercluster.westus2.cloudapp.azure.com:19000`。 在 [Azure 入口網站](https://portal.azure.com)中，您可以在叢集的 [概觀] 索引標籤中找到用戶端連線端點。
 
-按一下 **[發行]**。
+按一下 [發佈]。
 
 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 是一個 Web 型工具，可檢查和管理 Service Fabric 叢集中的應用程式與節點。 開啟瀏覽器並瀏覽至 `http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/` 然後遵循應用程式部署。 此應用程式會進行部署，但在叢集節點中下載映像之前 (視映像大小而定，這可能需要一些時間) 會處於錯誤狀態︰![錯誤][1]
 
@@ -332,7 +333,7 @@ Windows 支援兩種容器隔離模式：分別為處理序和 Hyper-V。 在處
 
 ## <a name="clean-up"></a>清除
 
-當叢集在執行時，您需要繼續支付費用，請考慮[刪除您的叢集](service-fabric-cluster-delete.md)。
+當叢集在執行時，您需要繼續支付費用，請考慮[刪除您的叢集](./service-fabric-tutorial-delete-cluster.md)。
 
 將映像推送至容器登錄之後，您可以從開發電腦刪除本機映像︰
 
@@ -343,15 +344,15 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 
 ## <a name="windows-server-container-os-and-host-os-compatibility"></a>Windows Server 容器作業系統和主機作業系統的相容性
 
-Windows Server 容器在主機 OS 的所有版本之間不相容。 例如：
+Windows Server 容器在主機 OS 的所有版本之間不相容。 例如︰
  
 - 使用 Windows Server 1709 版本所建置的 Windows Server 容器無法在執行 Windows Server 2016 版本的主機上運作。 
 - 使用 Windows Server 2016 所建立的 windows Server 容器，只能在執行 Windows Server 1709 版的主機上使用 Hyper-v 隔離模式。 
 - 透過使用 Windows Server 2016 所建置的 Windows Server 容器，可能必須確保在執行 Windows Server 2016 的主機上以程序隔離模式執行時，容器 OS 和主機 OS 的修訂版本相同。
  
-若要深入了解，請參閱 [Windows 容器版本相容性](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)。
+若要深入了解，請參閱 [Windows 容器版本相容性](/virtualization/windowscontainers/deploy-containers/version-compatibility)。
 
-在建置容器並部署到 Service Fabric 叢集時，請考慮主機 OS 和容器 OS 的相容性。 例如：
+在建置容器並部署到 Service Fabric 叢集時，請考慮主機 OS 和容器 OS 的相容性。 例如︰
 
 - 請確定您部署的容器具有的 OS 與您叢集節點上的 OS 相容。
 - 請確定為容器應用程式所指定的隔離模式，與其部署所在節點上的容器 OS 支援一致。

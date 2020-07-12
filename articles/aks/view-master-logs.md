@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 中啟用並檢視 K
 services: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.openlocfilehash: 504d6a5216f3345f22a601c4ae084488aeb97c8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76ded781d4eae48db04f54a4f88a80cc700d0ad9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82128961"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250731"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中啟用並檢閱 Kubernetes 主要節點記錄
 
@@ -71,7 +71,7 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>檢視收集的記錄
 
-診斷記錄可能需要幾分鐘的時間才會啟用並出現在 Log Analytics 工作區中。 在 [Azure 入口網站中，選取 Log Analytics 工作區的資源群組（例如*myResourceGroup*），然後選擇您的 log analytics 資源，例如*myakslogs)*。
+診斷記錄可能需要幾分鐘的時間才會啟用並出現在 Log Analytics 工作區中。 在 [Azure 入口網站中，選取 Log Analytics 工作區的資源群組（例如*myResourceGroup*），然後選擇您的 log analytics 資源，例如*myakslogs) *。
 
 ![選擇適用於 AKS 叢集的 Log Analytics 工作區](media/view-master-logs/select-log-analytics-workspace.png)
 
@@ -119,7 +119,7 @@ AzureDiagnostics
 
 | 角色                     | 描述 |
 |--------------------------|-------------|
-| *aksService*             | 控制平面作業在 audit 記錄檔中的顯示名稱（從 hcpService） |
+| *aksService*             | [控制平面作業] 的 [audit 記錄檔] 中的顯示名稱 (從 hcpService)  |
 | *masterclient*           | MasterClientCertificate 的 audit 記錄檔中的顯示名稱，是您從 az aks 取得認證取得的憑證 |
 | *nodeclient*             | 代理程式節點所使用之 ClientCertificate 的顯示名稱 |
 
@@ -133,8 +133,8 @@ AzureDiagnostics
 <!-- LINKS - internal -->
 [cli-quickstart]: kubernetes-walkthrough.md
 [portal-quickstart]: kubernetes-walkthrough-portal.md
-[log-analytics-overview]: ../log-analytics/log-analytics-overview.md
-[analyze-log-analytics]: ../azure-monitor/learn/tutorial-viewdata.md
+[log-analytics-overview]: ../azure-monitor/log-query/log-query-overview.md
+[analyze-log-analytics]: ../azure-monitor/log-query/get-started-portal.md
 [kubelet-logs]: kubelet-logs.md
 [aks-ssh]: ssh.md
 [az-feature-register]: /cli/azure/feature#az-feature-register

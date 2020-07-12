@@ -5,18 +5,19 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 6/6/2019
 ms.author: srrengar
-ms.openlocfilehash: d23c8114bf10ef3225775accef6910c0ba539e15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2fcbd07c105885da4180b06fa27ec13045940a6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645730"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247637"
 ---
 # <a name="eventstore-overview"></a>EventStore 總覽
 
 >[!NOTE]
 >截至 Service Fabric 6.4 版為止， EventStore API 僅適用於在 Azure 上執行的 Windows 叢集。 我們正在將這個功能和我們的獨立叢集移植到 Linux。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 6.2 版中引進，EventStore 服務是 Service Fabric 中的監視選項。 EventStore 可讓您了解您的叢集或工作負載在指定時間點的狀態。
 EventStore 是具狀態的 Service Fabric 服務，可維護叢集中的事件。 此事件會透過 Service Fabric Explorer、REST 和 API 公開。 EventStore 可直接查詢叢集，取得叢集中任何實體的診斷資料，應可用來協助您：
@@ -45,7 +46,7 @@ EventStore 是具狀態的 Service Fabric 服務，可維護叢集中的事件�
 * 分割區複本：特定分割區 (以 `partitionId` 識別) 內所有複本 / 執行個體中的事件
 * 分割區複本：特定複本 / 執行個體 (以 `replicaId` 和 `partitionId` 識別) 中的事件
 
-若要深入瞭解 API，請參閱[EVENTSTORE API 參考](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)。
+若要深入瞭解 API，請參閱[EVENTSTORE API 參考](/rest/api/servicefabric/sfclient-index-eventsstore)。
 
 EventStore 服務還能將叢集中的事件相互關聯。 透過同時間寫入的事件，您可以追溯到彼此影響的相異實體；EventStore 服務能連結這些事件，協助您找出叢集中活動的原因。 例如，如果某個應用程式在未引發變更的情況下成為不良狀況，EventStore 也會查看平台公開的其他事件，因而可能會將這個狀況與 `Error` 或 `Warning` 事件相互關聯。 這有助於縮短偵測失敗及分析根本原因的時間。
 
@@ -125,5 +126,5 @@ EventStore 服務還能將叢集中的事件相互關聯。 透過同時間寫�
 * 開始使用 EventStore API - [在 Azure Service Fabric 叢集中使用 EventStore API](service-fabric-diagnostics-eventstore-query.md)
 * 深入了解 EventStore 所提供的事件清單 - [Service Fabric 事件](service-fabric-diagnostics-event-generation-operational.md)
 * Service Fabric 的監視和診斷概觀 - [Service Fabric 的監視和診斷](service-fabric-diagnostics-overview.md)
-* 檢視完整的 API 呼叫清單 - [EventStore REST API 參考](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)
+* 檢視完整的 API 呼叫清單 - [EventStore REST API 參考](/rest/api/servicefabric/sfclient-index-eventsstore)
 * 深入了解監視叢集 - [監視叢集和平台](service-fabric-diagnostics-event-generation-infra.md)。

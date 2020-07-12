@@ -1,15 +1,16 @@
 ---
 title: 異地複寫登錄
-description: 開始建立和管理異地複寫的Azure container registry，讓登錄能夠使用多重主要區域複本服務多個區域。 異地複寫是 Premium 提供層的一項功能。
+description: 開始建立和管理異地複寫的Azure container registry，讓登錄能夠使用多重主要區域複本服務多個區域。 異地複寫是高階服務層的一項功能。
 author: stevelas
 ms.topic: article
 ms.date: 05/11/2020
 ms.author: stevelas
-ms.openlocfilehash: 35525906135db02c453c55d8798e1405396c8598
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 315de5151547c4339255639cb65d1be30f7213ff
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84508789"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247127"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器登錄中的異地複寫
 
@@ -18,8 +19,8 @@ ms.locfileid: "84508789"
 異地複寫登錄提供下列優點：
 
 * 可跨多個區域使用單一登錄/映像/標記名稱
-* 從區域部署網路關閉登錄存取
-* 沒有其他輸出費用，因為映像是取自容器主機的相同區域中的本機、複寫的登錄
+* 從區域部署進行網路關閉登錄存取
+* 沒有其他輸出費用，因為映像是取自與容器主機相同區域中的本機複寫登錄
 * 跨多個區域單一管理登錄
 
 > [!NOTE]
@@ -27,7 +28,7 @@ ms.locfileid: "84508789"
 >
 
 ## <a name="example-use-case"></a>使用案例範例
-Contoso 會執行位在美國、加拿大和歐洲的公開金鑰存在網站。 為了在這些市場中提供本機和網路關閉內容，Contoso 在美國西部、美國東部、加拿大中部和歐洲西部執行 [Azure Kubernetes Service](/azure/aks/) (AKS) 叢集。 網站應用程式 (部署為 Docker 映像) 會在所有區域利用相同的程式碼和映像。 從資料庫 (基本在每個區域中佈建) 擷取該區域的本機內容。 每個區域部署都會有其資源的唯一設定，例如本機資料庫。
+Contoso 會執行位在美國、加拿大和歐洲的公開金鑰存在網站。 為了在這些市場中提供本機和網路關閉內容，Contoso 在美國西部、美國東部、加拿大中部和歐洲西部執行 [Azure Kubernetes Service](../aks/index.yml) (AKS) 叢集。 網站應用程式 (部署為 Docker 映像) 會在所有區域利用相同的程式碼和映像。 從資料庫 (基本在每個區域中佈建) 擷取該區域的本機內容。 每個區域部署都會有其資源的唯一設定，例如本機資料庫。
 
 開發小組位於 Seattle WA，利用美國西部的資料中心。
 
@@ -94,7 +95,7 @@ ACR 會開始同步設定的複本之間的映像。 完成時，入口網站會
 * 當您對異地複寫的登錄推送或提取映像時，背景中的 Azure 流量管理員會考慮網路延遲而將要求傳送至離您最近的區域中的登錄。
 * 當您將映像或標記更新推送至最接近的區域之後，Azure Container registry 需要一些時間將資訊清單和層複寫至您選擇加入的其餘區域。 映像愈大，複寫就愈耗時。 各個複寫區域會透過最終的一致性模型同步處理映像和標記。
 * 若要管理必須將更新推送至異地複寫登錄的工作流程，建議您設定 [Webhook](container-registry-webhook.md) 來回應推送事件。 您可以在異地複寫的登錄中設定區域 Webhook，來追蹤異地複寫區域之間的推送事件何時完成。
-* 為了提供代表內容圖層的 Blob，Azure Container 註冊表會使用資料端點。 您可以在每個登錄的異地複寫區域中，為您的登錄啟用[專用的資料端點](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints)。 這些端點可讓您設定嚴格限定範圍的防火牆存取規則。
+* 為了提供代表內容層的 blob，Azure Container Registry 使用資料端點。 您可以在每個登錄的異地複寫區域中，為您的登錄啟用[專用的資料端點](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints)。 這些端點可讓您設定嚴格限定範圍的防火牆存取規則。
 * 如果您使用虛擬網路中的[私人連結](container-registry-private-link.md)設定登錄的私人連結，則預設會啟用每個異地複寫區域中的專用資料端點。 
 
 ## <a name="delete-a-replica"></a>刪除複本伺服器

@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: ff608cac9786ebc0d3908ce4d88fb501e621be6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b826c986a0af26bb79fb0823e4e8626f0165d460
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690178"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250017"
 ---
 # <a name="azure-api-management-page-controls"></a>Azure API 管理的頁面控制項
 Azure API 管理提供下列可在開發人員入口網站範本中使用的控制項。  
@@ -29,7 +30,7 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
   
 參數的值會以範本資料模型組件的形式來傳入。 大部分情況下，您只要在針對每個控制項所提供的範例中貼上，即可讓其正確運作。 如需參數值的詳細資訊，請參閱控制項可能使用所在之各個範本的資料模型區段。  
 
-如需有關使用範本的詳細資訊，請參閱[如何使用範本自訂 API 管理開發人員入口網站](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
+如需有關使用範本的詳細資訊，請參閱[如何使用範本自訂 API 管理開發人員入口網站](./api-management-developer-portal-templates.md)。  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -59,7 +60,7 @@ Azure API 管理提供下列可在開發人員入口網站範本中使用的控�
   
 ### <a name="parameters"></a>參數  
   
-|參數|說明|  
+|參數|描述|  
 |---------------|-----------------|  
 |appId|應用程式的識別碼。|  
   

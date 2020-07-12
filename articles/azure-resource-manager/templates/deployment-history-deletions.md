@@ -2,13 +2,13 @@
 title: 部署歷程記錄刪除
 description: 描述 Azure Resource Manager 如何自動從部署歷程記錄中刪除部署。 當歷程記錄接近超過800的限制時，就會刪除部署。
 ms.topic: conceptual
-ms.date: 07/06/2020
-ms.openlocfilehash: 70730ce814ebc689d9672952bad7c3dd39b5a7f1
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/10/2020
+ms.openlocfilehash: 8ec3291dc5e35689d4e2c614949e0328057fbfd3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981651"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248971"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>從部署歷程記錄自動刪除
 
@@ -23,16 +23,18 @@ Azure Resource Manager 很快就會在您接近限制時，自動從歷程記錄
 
 ## <a name="when-deployments-are-deleted"></a>當部署已刪除時
 
-當您到達790部署時，會從部署歷程記錄中刪除部署。 Azure Resource Manager 會刪除一小組最舊的部署，以清除空間供未來部署之用。 您的歷程記錄會維持不變。 通常會先刪除最舊的部署。
+當您到達775或更多部署時，將會從您的歷程記錄中刪除部署。 Azure Resource Manager 會刪除部署，直到歷程記錄關閉到750為止。 通常會先刪除最舊的部署。
 
 :::image type="content" border="false" source="./media/deployment-history-deletions/deployment-history.svg" alt-text="從部署歷程記錄刪除":::
+
+> [!NOTE]
+> 起始數位 (775) ， (750) 的結束數位可能會變更。
+>
+> 如果您的資源群組已達到800限制，則您的下一個部署會失敗併發生錯誤。 自動刪除進程會立即啟動。 您可以在短暫的等候後再次嘗試部署。
 
 除了部署之外，您也會在執行「[假設](template-deploy-what-if.md)」作業或驗證部署時觸發刪除作業。
 
 當您提供部署與歷程記錄中的相同名稱時，您會在歷程記錄中重設其位置。 部署會移至歷程記錄中最新的位置。 當您在錯誤發生後[回復至該部署](rollback-on-error.md)時，也會重設部署的位置。
-
-> [!NOTE]
-> 如果您的資源群組已達到800限制，則您的下一個部署會失敗併發生錯誤。 自動刪除進程會立即啟動。 您可以在短暫的等候後再次嘗試部署。
 
 ## <a name="opt-out-of-automatic-deletions"></a>選擇不自動刪除
 

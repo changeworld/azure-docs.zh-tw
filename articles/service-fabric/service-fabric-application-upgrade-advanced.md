@@ -3,25 +3,26 @@ title: 先進的應用程式升級主題
 description: 本文章涵蓋升級 Service Fabric 應用程式相關的一些進階主題。
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 98d8213cc50f73ef2c053e1fe5574fe33a2f3cb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc2fdc8f99b74078bd8d5274cbe52265ab8455ae
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84263086"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248079"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric 應用程式升級： Advanced 主題
 
 ## <a name="add-or-remove-service-types-during-an-application-upgrade"></a>在應用程式升級期間新增或移除服務類型
 
-如果新服務類型新增至已發行應用程式作為一項升級，新服務類型就會新增至部署的應用程式中。 這類升級不會影響已經是應用程式一部分的任何服務執行個體，但是已新增的服務類型執行個體必須針對作用中的新服務類型建立 (請參閱 [New-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps))。
+如果新服務類型新增至已發行應用程式作為一項升級，新服務類型就會新增至部署的應用程式中。 這類升級不會影響已經是應用程式一部分的任何服務執行個體，但是已新增的服務類型執行個體必須針對作用中的新服務類型建立 (請參閱 [New-ServiceFabricService](/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps))。
 
-同樣地，服務類型也可以從應用程式移除，作為升級的一部分。 不過，即將移除服務類型的所有服務執行個體都必須移除，才能繼續執行升級 (請參閱 [Remove-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps))。
+同樣地，服務類型也可以從應用程式移除，作為升級的一部分。 不過，即將移除服務類型的所有服務執行個體都必須移除，才能繼續執行升級 (請參閱 [Remove-ServiceFabricService](/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps))。
 
 ## <a name="avoid-connection-drops-during-stateless-service-planned-downtime"></a>避免在無狀態服務方案停機期間中斷連接
 
 針對規劃的無狀態實例停機（例如應用程式/叢集升級或節點停用），連接可能會被捨棄，因為在實例關閉後，已移除公開的端點，這會導致強制連接中斷。
 
-若要避免這種情況，請在服務設定中加入*實例關閉延遲持續時間*，以允許來自叢集內的現有要求清空已公開的端點，以設定*RequestDrain*功能。 這是因為在關閉實例之前，會先移除無狀態實例所通告的端點，*然後再*啟動延遲。 此延遲可讓現有的要求在實例實際停機之前正常地清空。 用戶端會在啟動延遲時，透過回呼函式來通知端點變更，使其可以重新解析端點，並避免將新的要求傳送至即將關閉的實例。 這些要求可能是來自使用[反向 Proxy](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy)的用戶端，或使用服務端點解析 api 和通知模型（[ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)）來更新端點。
+若要避免這種情況，請在服務設定中加入*實例關閉延遲持續時間*，以允許來自叢集內的現有要求清空已公開的端點，以設定*RequestDrain*功能。 這是因為在關閉實例之前，會先移除無狀態實例所通告的端點，*然後再*啟動延遲。 此延遲可讓現有的要求在實例實際停機之前正常地清空。 用戶端會在啟動延遲時，透過回呼函式來通知端點變更，使其可以重新解析端點，並避免將新的要求傳送至即將關閉的實例。 這些要求可能是來自使用[反向 Proxy](./service-fabric-reverseproxy.md)的用戶端，或使用服務端點解析 api 搭配通知模型 ([ServiceNotificationFilterDescription](/dotnet/api/system.fabric.description.servicenotificationfilterdescription)) 來更新端點。
 
 ### <a name="service-configuration"></a>服務設定
 
@@ -47,7 +48,7 @@ ms.locfileid: "84263086"
     Update-ServiceFabricService [-Stateless] [-ServiceName] <Uri> [-InstanceCloseDelayDuration <TimeSpan>]`
     ```
 
- * **透過 ARM 範本建立或更新現有的服務時**，請指定 `InstanceCloseDelayDuration` 值（支援的最低 API 版本： 2019-11-01-preview）：
+ * **透過 ARM 範本建立或更新現有的服務時**，請將 `InstanceCloseDelayDuration` 值指定 (最低支援的 API 版本： 2019-11-01-preview) ：
 
     ```ARM template to define InstanceCloseDelayDuration of 30seconds
     {
@@ -76,12 +77,12 @@ ms.locfileid: "84263086"
 
 ### <a name="client-configuration"></a>用戶端組態
 
-若要在端點變更時收到通知，用戶端應該註冊回呼，請參閱[ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)。
+若要在端點變更時收到通知，用戶端應該註冊回呼，請參閱[ServiceNotificationFilterDescription](/dotnet/api/system.fabric.description.servicenotificationfilterdescription)。
 變更通知會指出端點已變更，用戶端應該重新解析端點，而不使用不再公告的端點，因為它們很快就會關閉。
 
 ### <a name="optional-upgrade-overrides"></a>選用的升級覆寫
 
-除了設定每個服務的預設延遲持續時間，您也可以使用相同的（）選項來覆寫應用程式/叢集升級期間的延遲 `InstanceCloseDelayDurationSec` ：
+除了設定每個服務的預設延遲持續時間，您也可以使用相同的 () 選項，覆寫應用程式/叢集升級期間的延遲 `InstanceCloseDelayDurationSec` ：
 
 ```powershell
 Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationTypeVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
@@ -93,7 +94,7 @@ Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManife
 
 > [!NOTE]
 > * 清空要求的設定將無法防止 Azure 負載平衡器將新的要求傳送至即將清空的端點。
-> * 以抱怨為基礎的解決機制不會導致正常清空要求，因為它會在失敗後觸發服務解析。 如先前所述，您應該改為使用[ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)來訂閱端點變更通知。
+> * 以抱怨為基礎的解決機制不會導致正常清空要求，因為它會在失敗後觸發服務解析。 如先前所述，您應該改為使用[ServiceNotificationFilterDescription](/dotnet/api/system.fabric.description.servicenotificationfilterdescription)來訂閱端點變更通知。
 > * 當升級為 impactless 時，不會接受這些設定，亦即 當複本不會在升級期間關閉。
 >
 >
@@ -113,7 +114,7 @@ Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManife
 
 在「Monitored」** 模式中，Service Fabric 會套用健康情況原則，以確保應用程式在升級程序期間狀況良好。 如果違反健康情況原則，則升級會根據指定的 FailureAction** 暫止或自動復原。
 
-在「UnmonitoredManual」** 模式中，應用程式系統管理員具有升級程序的完整控制權。 當套用自訂健康情況評估原則，或執行非傳統升級以完全略過健康情況監視 (例如應用程式已經有資料遺失) 時，此模式非常有用。 在此模式中執行的升級會在完成每個 UD 之後自行暫止，必須明確地使用 [Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) 才能繼續。 當升級已暫止並準備好讓使用者繼續時，其升級狀態將會顯示 RollforwardPending** (請參閱 [UpgradeState](https://docs.microsoft.com/dotnet/api/system.fabric.applicationupgradestate?view=azure-dotnet))。
+在「UnmonitoredManual」** 模式中，應用程式系統管理員具有升級程序的完整控制權。 當套用自訂健康情況評估原則，或執行非傳統升級以完全略過健康情況監視 (例如應用程式已經有資料遺失) 時，此模式非常有用。 在此模式中執行的升級會在完成每個 UD 之後自行暫止，必須明確地使用 [Resume-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) 才能繼續。 當升級已暫止並準備好讓使用者繼續時，其升級狀態將會顯示 RollforwardPending** (請參閱 [UpgradeState](/dotnet/api/system.fabric.applicationupgradestate?view=azure-dotnet))。
 
 最後，「UnmonitoredAuto」** 模式適用於在服務開發或測試期間執行快速升級反覆項目，因為不需要使用者輸入，而且不會評估應用程式健康情況原則。
 
@@ -204,11 +205,11 @@ ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAft
 
 ## <a name="roll-back-application-upgrades"></a>復原應用程式升級
 
-雖然升級可以向前復原為三個模式其中之一 (Monitored**、UnmonitoredAuto** 或 UnmonitoredManual**)，但是只能復原為 UnmonitoredAuto** 或 UnmonitoredManual** 模式。 在「UnmonitoredAuto」** 模式中復原的運作方式與向前復原相同，例外的是 UpgradeReplicaSetCheckTimeout** 的預設值不同 - 請參閱[應用程式升級參數](service-fabric-application-upgrade-parameters.md)。 在「UnmonitoredManual」** 模式中復原的運作方式與向前復原相同 - 復原會在完成每個 UD 之後自行暫止，必須明確地使用 [Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) 以繼續復原。
+雖然升級可以向前復原為三個模式其中之一 (Monitored**、UnmonitoredAuto** 或 UnmonitoredManual**)，但是只能復原為 UnmonitoredAuto** 或 UnmonitoredManual** 模式。 在「UnmonitoredAuto」** 模式中復原的運作方式與向前復原相同，例外的是 UpgradeReplicaSetCheckTimeout** 的預設值不同 - 請參閱[應用程式升級參數](service-fabric-application-upgrade-parameters.md)。 在「UnmonitoredManual」** 模式中復原的運作方式與向前復原相同 - 復原會在完成每個 UD 之後自行暫止，必須明確地使用 [Resume-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) 以繼續復原。
 
-當「Monitored」** 模式中升級的健康情況原則，違反 FailureAction**「復原」** 時 (請參閱[應用程式升級參數](service-fabric-application-upgrade-parameters.md)) 或明確地使用 [Start-ServiceFabricApplicationRollback](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps) 時，復原會自動觸發。
+當「Monitored」** 模式中升級的健康情況原則，違反 FailureAction**「復原」** 時 (請參閱[應用程式升級參數](service-fabric-application-upgrade-parameters.md)) 或明確地使用 [Start-ServiceFabricApplicationRollback](/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps) 時，復原會自動觸發。
 
-在復原期間，UpgradeReplicaSetCheckTimeout** 的值和模式仍然可以使用 [Update-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps) 隨時變更。
+在復原期間，UpgradeReplicaSetCheckTimeout** 的值和模式仍然可以使用 [Update-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps) 隨時變更。
 
 ## <a name="next-steps"></a>後續步驟
 [使用 Visual Studio 升級您的應用程式](service-fabric-application-upgrade-tutorial.md)會逐步引導您使用 Visual Studio 進行應用程式升級。

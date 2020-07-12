@@ -5,11 +5,12 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 17bff459a0399d39c6bfdd772ad16d0b5b2f6771
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b34893b64ac3533406f33c45583a911b70ae42af
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692593"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247433"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>適用於 Visual Studio Code 的 Service Fabric
 
@@ -27,7 +28,7 @@ ms.locfileid: "84692593"
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Node.js](https://nodejs.org/)
 * [Git](https://git-scm.com/)
-* [Service Fabric SDK](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started)
+* [Service Fabric SDK](./service-fabric-get-started.md)
 * Yeoman 產生器 - 為您的應用程式安裝適當的產生器
 
    ```sh
@@ -97,7 +98,7 @@ ms.locfileid: "84692593"
 **Service Fabric: Deploy Application** 命令會在本機叢集上部署您的 Service Fabric 應用程式。 在使用命令之前，請先確定您的本機叢集正在執行。 
 
 1. 選取 **Service Fabric: Deploy Application** 命令
-2. 使用 Service Fabric Explorer （HTTP： \/ /localhost： 19080/Explorer）來查看本機叢集，以確認已安裝應用程式。 這可能需要一些時間，請耐心等候。
+2.  (HTTP： \/ /localhost： 19080/Explorer) 來查看 Service Fabric Explorer 本機叢集，以確認已安裝應用程式。 這可能需要一些時間，請耐心等候。
 3. 您也可以於未在 Cloud.json 檔案中設定參數時使用 **Service Fabric: Publish Application** 命令，以部署到本機叢集。
 
 > [!NOTE]

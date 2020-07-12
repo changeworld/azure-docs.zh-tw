@@ -1,22 +1,23 @@
 ---
 title: Windows 診斷延伸模組架構
-description: Azure 監視器中 Windows 診斷擴充功能（WAD）的設定架構參考。
+description: Windows 診斷擴充功能的設定架構參考 (在 Azure 監視器中的 WAD) 。
 ms.subservice: diagnostic-extension
 ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: c04fc82b8b04e474a656a0849177f7aa5d27b427
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e078f81db75dd6b89a65ff2d00bb2805ea912d0d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81676421"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249133"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows 診斷延伸模組架構
 Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作業系統和 Azure 計算資源的工作負載收集監視資料。 本文詳細說明在 Windows 虛擬機器和其他計算資源上設定診斷擴充功能時所使用的架構。
 
 > [!NOTE]
-> 本文中的架構適用于1.3 和更新版本（Azure SDK 2.4 和更新版本）。 我們會在較新的組態區段中加入標記，表示已將它們新增至哪一個版本中。 架構的版本1.0 和1.2 已封存，已無法再使用。 
+> 本文中的架構適用于1.3 版和更新版本 (Azure SDK 2.4 和較新的) 。 我們會在較新的組態區段中加入標記，表示已將它們新增至哪一個版本中。 架構的版本1.0 和1.2 已封存，已無法再使用。 
 
 ## <a name="public-configuration-file-schema"></a>公用設定檔架構
 
@@ -42,7 +43,7 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 `http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration`
 
 
-|子元素|Description|  
+|子元素|描述|  
 |--------------------|-----------------|  
 |**PublicConfig**|必要。 請參閱本頁面上其他部分的說明。|  
 |**PrivateConfig**|選擇性。 請參閱本頁面上其他部分的說明。|  
@@ -53,7 +54,7 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 
  說明公用診斷組態。  
 
-|子元素|Description|  
+|子元素|描述|  
 |--------------------|-----------------|  
 |**WadCfg**|必要。 請參閱本頁面上其他部分的說明。|  
 |**StorageAccount**|要儲存資料的 Azure 儲存體帳戶名稱。 可能也會在執行 Set-AzureServiceDiagnosticsExtension Cmdlet 時指定為參數。|  
@@ -71,16 +72,16 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 
  必要
 
-|屬性|Description|  
+|屬性|描述|  
 |----------------|-----------------|  
 | **overallQuotaInMB** | 可供 Azure 診斷所收集的各種類型診斷資料取用的本機磁碟空間量上限。 預設設定為 4096 MB。<br />
 |**useProxyServer** | 設定 Azure 診斷來使用 Proxy 伺服器設定，如 IE 設定中所設定。|
-|**sinks** | 在 1.5 中新增。 選擇性。 針對支援接收的所有子元素，同時要傳送診斷資料的接收位置指標。 接收範例為 Application Insights 或事件中樞。|  
+|**sinks** | 在 1.5 中新增。 選擇性。 針對支援接收的所有子元素，同時要傳送診斷資料的接收位置指標。 接收範例為 Application Insights 或事件中樞。 請注意，如果您想要上傳至事件中樞的事件具有資源識別碼，您必須在 [*計量*] 元素底下新增 [ *resourceId* ] 屬性。 |  
 
 
 <br /> <br />
 
-|子元素|Description|  
+|子元素|描述|  
 |--------------------|-----------------|  
 |**CrashDumps**|請參閱本頁面上其他部分的說明。|  
 |**DiagnosticInfrastructureLogs**|啟用收集 Azure 診斷所產生的記錄。 診斷基礎結構記錄適用於疑難排解診斷系統本身。 選用屬性包括：<br /><br /> - **scheduledTransferLogLevelFilter** - 設定所收集之記錄的最低嚴重性層級。<br /><br /> - **scheduledTransferPeriod** - 排程傳輸至儲存體之間的間隔，無條件進位到最接近的分鐘數。 值是 [XML「持續時間資料類型」(英文)](https://www.w3schools.com/xml/schema_dtypes_date.asp)。 |  
@@ -98,13 +99,13 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 
  啟用收集損毀傾印。  
 
-|屬性|Description|  
+|屬性|描述|  
 |----------------|-----------------|  
 |**containerName**|選擇性。 在您的 Azure 儲存體帳戶中用來儲存損毀傾印的 Blob 容器名稱。|  
 |**crashDumpType**|選擇性。  設定 Azure 診斷來收集迷你或完整的損毀傾印。|  
 |**directoryQuotaPercentage**|選擇性。  設定要在 VM 上保留以供損毀傾印使用的 **overallQuotaInMB** 百分比。|  
 
-|子元素|Description|  
+|子元素|描述|  
 |--------------------|-----------------|  
 |**CrashDumpConfiguration**|必要。 定義每個處理序的組態值。<br /><br /> 以下也是必要屬性：<br /><br /> **processName** - 您希望 Azure 診斷收集損毀傾印的處理序名稱。|  
 
@@ -115,7 +116,7 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 
  選用的 **scheduledTransferPeriod** 屬性。 請參閱稍早的說明。  
 
-|子元素|Description|  
+|子元素|描述|  
 |--------------------|-----------------|  
 |**IISLogs**|在組態中包含此元素，就能收集 IIS 記錄：<br /><br /> **containerName** - 在您的 Azure 儲存體帳戶中用來儲存 IIS 記錄的 Blob 容器名稱。|   
 |**FailedRequestLogs**|在組態中包含此元素，就能夠收集對於 IIS 站台或應用程式之失敗要求的相關記錄。 您也必須在 **Web.config** 的 **system.WebServer** 下啟用追蹤選項。|  
@@ -129,7 +130,7 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 
  要監視的目錄清單。  
 
-|子元素|Description|  
+|子元素|描述|  
 |--------------------|-----------------|  
 |**DirectoryConfiguration**|必要。 必要屬性：<br /><br /> **containerName** - 在您的 Azure 儲存體帳戶中用來儲存記錄檔的 Blob 容器名稱。|  
 
@@ -142,7 +143,7 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 
  可能包括 **Absolute** 或 **LocalResource** 元素，但非兩者。  
 
-|子元素|Description|  
+|子元素|描述|  
 |--------------------|-----------------|  
 |**求**|要監視之目錄的絕對路徑。 以下為必要屬性：<br /><br /> - **Path** - 要監視之目錄的絕對路徑。<br /><br /> - **expandEnvironment** - 設定是否要展開 Path 中的環境變數。|  
 |**LocalResource**|相對於要監視之本機資源的路徑。 必要屬性包括：<br /><br /> - **Name** - 包含要監視之目錄的本機資源<br /><br /> - **relativePath** - 包含要監視目錄之 Name 的相對路徑|  
@@ -154,7 +155,7 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 
  設定要收集來自 EventSource 和/或以 ETW 資訊清單為基礎之提供者的 ETW 事件。  
 
-|子元素|Description|  
+|子元素|描述|  
 |--------------------|-----------------|  
 |**EtwEventSourceProviderConfiguration**|設定要收集從 [EventSource 類別](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)產生的事件。 必要屬性：<br /><br /> **provider** - EventSource 事件的類別名稱。<br /><br /> 選用屬性包括：<br /><br /> - **scheduledTransferLogLevelFilter** - 要傳輸至儲存體帳戶的最低嚴重性層級。<br /><br /> - **scheduledTransferPeriod** - 排程傳輸至儲存體之間的間隔，無條件進位到最接近的分鐘數。 值是 [XML「持續時間資料類型」(英文)](https://www.w3schools.com/xml/schema_dtypes_date.asp)。 |  
 |**EtwManifestProviderConfiguration**|必要屬性：<br /><br /> **provider** - 事件提供者的 GUID<br /><br /> 選用屬性包括：<br /><br /> - **scheduledTransferLogLevelFilter** - 要傳輸至儲存體帳戶的最低嚴重性層級。<br /><br /> - **scheduledTransferPeriod** - 排程傳輸至儲存體之間的間隔，無條件進位到最接近的分鐘數。 值是 [XML「持續時間資料類型」(英文)](https://www.w3schools.com/xml/schema_dtypes_date.asp)。 |  
@@ -166,7 +167,7 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 
  設定要收集從 [EventSource 類別](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)產生的事件。  
 
-|子元素|Description|  
+|子元素|描述|  
 |--------------------|-----------------|  
 |**DefaultEvents**|選用屬性：<br/><br/> **eventDestination** - 要儲存事件的資料表名稱|  
 |**事件**|必要屬性：<br /><br /> **id** - 事件的識別碼。<br /><br /> 選用屬性：<br /><br /> **eventDestination** - 要儲存事件的資料表名稱|  
@@ -176,7 +177,7 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 ## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration 元素  
  樹狀結構︰根目錄 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders - EtwManifestProviderConfiguration**
 
-|子元素|Description|  
+|子元素|描述|  
 |--------------------|-----------------|  
 |**DefaultEvents**|選用屬性：<br /><br /> **eventDestination** - 要儲存事件的資料表名稱|  
 |**事件**|必要屬性：<br /><br /> **id** - 事件的識別碼。<br /><br /> 選用屬性：<br /><br /> **eventDestination** - 要儲存事件的資料表名稱|  
@@ -188,9 +189,9 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 
  讓您能夠產生已最佳化的效能計數器資料表來進行快速查詢。 除了效能計數器資料表之外，**PerformanceCounters** 元素中所定義的每個效能計數器都會儲存於 Metrics 資料表中。  
 
- **resourceId** 是必要屬性。  您要部署 Azure 診斷的虛擬機器或虛擬機器擴展集資源識別碼。 從 [Azure 入口網站](https://portal.azure.com)取得 **resourceID**。 選取 **[流覽] [**  ->  **資源群組**]  ->  **<名稱 \> **]。 按一下 [屬性]**** 圖格，並複製 [識別碼]**** 欄位的值。  
+ **resourceId** 是必要屬性。  您要部署 Azure 診斷的虛擬機器或虛擬機器擴展集資源識別碼。 從 [Azure 入口網站](https://portal.azure.com)取得 **resourceID**。 選取 **[流覽] [**  ->  **資源群組**]  ->  **<名稱 \> **]。 按一下 [屬性]**** 圖格，並複製 [識別碼]**** 欄位的值。  此 resourceID 屬性用於傳送自訂計量，以及用於將 resourceID 屬性新增至傳送至事件中樞的資料。 請注意，如果您想要上傳至事件中樞的事件具有資源識別碼，您必須在 [*計量*] 元素底下新增 [ *resourceId* ] 屬性。
 
-|子元素|Description|  
+|子元素|描述|  
 |--------------------|-----------------|  
 |**MetricAggregation**|必要屬性：<br /><br /> **scheduledTransferPeriod** - 排程傳輸至儲存體之間的間隔，無條件進位到最接近的分鐘數。 值是 [XML「持續時間資料類型」(英文)](https://www.w3schools.com/xml/schema_dtypes_date.asp)。 |  
 
@@ -205,10 +206,10 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 
  選用的 **scheduledTransferPeriod** 屬性。 請參閱稍早的說明。
 
-|子元素|Description|  
+|子元素|描述|  
 |-------------------|-----------------|  
-|**PerformanceCounterConfiguration**|以下為必要屬性：<br /><br /> - **counterSpecifier** - 效能計數器的名稱。 例如： `\Processor(_Total)\% Processor Time` 。 若要在主機上取得效能計數器清單，請執行 `typeperf` 命令。<br /><br /> - **sampleRate** - 應針對計數器進行取樣的頻率。<br /><br /> 選用屬性：<br /><br /> **unit** - 計數器的測量單位。 值可在[Unittype.pixel 表示類別](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet)取得 |
-|**sinks** | 在 1.5 中新增。 選擇性。 同時要傳送診斷資料的接收位置指標。 例如，Azure 監視器或事件中樞。|    
+|**PerformanceCounterConfiguration**|以下為必要屬性：<br /><br /> - **counterSpecifier** - 效能計數器的名稱。 例如，`\Processor(_Total)\% Processor Time`。 若要在主機上取得效能計數器清單，請執行 `typeperf` 命令。<br /><br /> - **sampleRate** - 應針對計數器進行取樣的頻率。<br /><br /> 選用屬性：<br /><br /> **unit** - 計數器的測量單位。 值可在[Unittype.pixel 表示類別](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet)取得 |
+|**sinks** | 在 1.5 中新增。 選擇性。 同時要傳送診斷資料的接收位置指標。 例如，Azure 監視器或事件中樞。 請注意，如果您想要上傳至事件中樞的事件具有資源識別碼，您必須在 [*計量*] 元素底下新增 [ *resourceId* ] 屬性。|    
 
 
 
@@ -220,9 +221,9 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 
  選用的 **scheduledTransferPeriod** 屬性。 請參閱稍早的說明。  
 
-|子元素|Description|  
+|子元素|描述|  
 |-------------------|-----------------|  
-|**源**|要收集的 Windows 事件記錄。 必要屬性：<br /><br /> **name** - 說明要收集之 Windows 事件的 XPath 查詢。 例如：<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> 若要收集所有事件，請指定 "*" |
+|**源**|要收集的 Windows 事件記錄。 必要屬性：<br /><br /> **name** - 說明要收集之 Windows 事件的 XPath 查詢。 例如︰<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> 若要收集所有事件，請指定 "*" |
 |**sinks** | 在 1.5 中新增。 選擇性。 針對支援接收的所有子元素，同時要傳送診斷資料的接收位置指標。 接收範例為 Application Insights 或事件中樞。|  
 
 
@@ -233,19 +234,19 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 
  定義基本 Azure 記錄的緩衝區組態。  
 
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|選擇性。 指定適用於所指定資料的檔案系統儲存體數量上限。<br /><br /> 預設值是 0。|  
 |**scheduledTransferLogLevelFilter**|**string**|選擇性。 指定所傳輸記錄項目的最低嚴重性層級。 預設值為 **Undefined**，會傳輸所有記錄。 其他可能的值 (按照從大到小的順序排列) 為 **Verbose**、**Information**、**Warning**、**Error** 及 **Critical**。|  
 |**scheduledTransferPeriod**|**duration**|選擇性。 指定排程傳輸資料之間的間隔，無條件進位到最接近的分鐘數。<br /><br /> 預設值為 PT0S。|  
-|**sinks** |**string**| 在 1.5 中新增。 選擇性。 同時要傳送診斷資料的接收位置指標。 例如，Application Insights 或事件中樞。|  
+|**sinks** |**string**| 在 1.5 中新增。 選擇性。 同時要傳送診斷資料的接收位置指標。 例如，Application Insights 或事件中樞。 請注意，如果您想要上傳至事件中樞的事件具有資源識別碼，您必須在 [*計量*] 元素底下新增 [ *resourceId* ] 屬性。|  
 
 ## <a name="dockersources"></a>DockerSources
  樹狀結構︰根目錄 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources**
 
  已在 1.9 版中新增。
 
-|元素名稱|Description|  
+|元素名稱|描述|  
 |------------------|-----------------|  
 |**統計資料**|會請系統收集 Docker 容器的統計資料|  
 
@@ -254,7 +255,7 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 
  傳送診斷資料的位置清單，以及與這些位置相關聯的組態。  
 
-|元素名稱|Description|  
+|元素名稱|描述|  
 |------------------|-----------------|  
 |**接收**|請參閱本頁面上其他部分的說明。|  
 
@@ -265,14 +266,14 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 
  定義要傳送診斷資料的目標位置。 例如 Application Insights 服務。  
 
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |---------------|----------|-----------------|  
 |**name**|字串|識別 sinkname 的字串。|  
 
 |元素|類型|描述|  
 |-------------|----------|-----------------|  
 |**Application Insights**|字串|僅會在將資料傳送至 Application Insights 時使用。 包含您有權存取之使用中 Application Insights 帳戶的檢測金鑰。|  
-|**Channels**|字串|每個可額外篩選該資料流的其中一個|  
+|**聲道**|字串|每個可額外篩選該資料流的其中一個|  
 
 ## <a name="channels-element"></a>Channels 元素  
  樹狀結構︰根目錄 - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels**
@@ -281,7 +282,7 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 
  針對通過接收之記錄資料的資料流定義篩選器。  
 
-|元素|類型|Description|  
+|元素|類型|描述|  
 |-------------|----------|-----------------|  
 |**通道**|字串|請參閱本頁面上其他部分的說明。|  
 
@@ -292,7 +293,7 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 
  定義要傳送診斷資料的目標位置。 例如 Application Insights 服務。  
 
-|屬性|類型|Description|  
+|屬性|類型|描述|  
 |----------------|----------|-----------------|  
 |**logLevel**|**string**|指定所傳輸記錄項目的最低嚴重性層級。 預設值為 **Undefined**，會傳輸所有記錄。 其他可能的值 (按照從大到小的順序排列) 為 **Verbose**、**Information**、**Warning**、**Error** 及 **Critical**。|  
 |**name**|**string**|要參考之通道的唯一名稱|  
@@ -307,9 +308,9 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 
  存放儲存體帳戶的私用詳細資料 (名稱、金鑰和端點)。 此資訊會傳送至虛擬機器，但無法從中擷取。  
 
-|子元素|Description|  
+|子元素|描述|  
 |--------------------|-----------------|  
-|**StorageAccount**|要使用的儲存體帳戶。 以下為必要屬性<br /><br /> - **name** - 儲存體帳戶的名稱。<br /><br /> - **key** - 儲存體帳戶的金鑰。<br /><br /> - **endpoint** - 要存取儲存體帳戶的端點。 <br /><br /> -**sasToken** （已新增1.8.1）-您可以在私人設定中指定 SAS 權杖，而不是儲存體帳戶金鑰。如果有提供，則會忽略儲存體帳戶金鑰。 <br />SAS 權杖的需求︰ <br />- 僅支援帳戶 SAS 權杖 <br />- 需要 b**、t** 服務類型。 <br /> - 需要 a**、c**、u**、w** 權限。 <br /> - 需要 c**、o** 資源類型。 <br /> - 僅支援 HTTPS 通訊協定 <br /> - 開始和到期時間必須是有效的。|  
+|**StorageAccount**|要使用的儲存體帳戶。 以下為必要屬性<br /><br /> - **name** - 儲存體帳戶的名稱。<br /><br /> - **key** - 儲存體帳戶的金鑰。<br /><br /> - **endpoint** - 要存取儲存體帳戶的端點。 <br /><br /> -**sasToken** (新增 1.8.1) -您可以在私人設定中指定 SAS 權杖，而不是儲存體帳戶金鑰。如果有提供，則會忽略儲存體帳戶金鑰。 <br />SAS 權杖的需求︰ <br />- 僅支援帳戶 SAS 權杖 <br />- 需要 b**、t** 服務類型。 <br /> - 需要 a**、c**、u**、w** 權限。 <br /> - 需要 c**、o** 資源類型。 <br /> - 僅支援 HTTPS 通訊協定 <br /> - 開始和到期時間必須是有效的。|  
 
 
 ## <a name="isenabled-element"></a>IsEnabled 元素  
@@ -326,7 +327,7 @@ Azure 診斷延伸模組是 Azure 監視器中的代理程式，可從客體作�
 *PublicConfig*和*PrivateConfig*是分開的，因為在大部分的 JSON 使用案例中，它們會當做不同的變數來傳遞。 這些案例包括 Resource Manager 範本、PowerShell 和 Visual Studio。
 
 > [!NOTE]
-> 公用設定 Azure 監視器接收定義具有兩個屬性： *resourceId*和*region*。 這些只有傳統 VM 和傳統雲端服務才需要使用。 這些屬性不應該用於其他資源。
+> 公用設定 Azure 監視器接收定義具有兩個屬性： *resourceId*和*region*。 這些只有傳統 VM 和傳統雲端服務才需要使用。 [ *Region* ] 屬性不應用於其他資源，在 ARM vm 上會使用 [ *resourceid* ] 屬性來填入上傳至事件中樞之記錄中的 [resourceid] 欄位。
 
 ```json
 "PublicConfig" {

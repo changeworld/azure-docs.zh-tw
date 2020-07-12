@@ -4,11 +4,12 @@ description: 瞭解如何使用 Visual Studio 2019 在 Azure Service Fabric 中�
 ms.topic: article
 ms.date: 02/14/2019
 ms.author: mikhegn
-ms.openlocfilehash: 2a00a352d09562ffe46dc8e6e63a5d4963ac3a3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e6e7785278b182cebb21115a70f35ade52303c3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701144"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247246"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>How to：使用 Visual Studio 2019 在 Azure Service Fabric 中調試 Windows 容器
 
@@ -16,9 +17,9 @@ ms.locfileid: "84701144"
 
 ## <a name="prerequisites"></a>必要條件
 
-* 在 Windows 10 上，請遵循本快速入門來[設定 Windows 10 以執行 Windows 容器](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10)
-* 在 Windows Server 2016 上，請遵循本快速入門來[設定 Windows 2016 以執行 Windows 容器](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server)
-* 遵循[在 Windows 上準備您的開發環境](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started)，以設定本機 Service Fabric 環境
+* 在 Windows 10 上，請遵循本快速入門來[設定 Windows 10 以執行 Windows 容器](/virtualization/windowscontainers/quick-start/quick-start-windows-10)
+* 在 Windows Server 2016 上，請遵循本快速入門來[設定 Windows 2016 以執行 Windows 容器](/virtualization/windowscontainers/quick-start/quick-start-windows-server)
+* 遵循[在 Windows 上準備您的開發環境](./service-fabric-get-started.md)，以設定本機 Service Fabric 環境
 
 ## <a name="configure-your-developer-environment-to-debug-containers"></a>設定開發人員環境以對容器進行偵錯
 
@@ -37,7 +38,7 @@ ms.locfileid: "84701144"
       > 您可以使用 `-CreateOneNodeCluster` 來設定單節點叢集。 依預設會建立五節點的本機叢集。
       >
 
-      若要深入了解 Service Fabric 中的 DNS 服務，請參閱 [Azure Service Fabric 中的 DNS 服務](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice)。 若要深入了解如何從在容器中執行的服務使用 Service Fabric 反向 Proxy，請參閱[針對在容器中執行的服務進行反向 Proxy 特殊處理](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers)。
+      若要深入了解 Service Fabric 中的 DNS 服務，請參閱 [Azure Service Fabric 中的 DNS 服務](./service-fabric-dnsservice.md)。 若要深入了解如何從在容器中執行的服務使用 Service Fabric 反向 Proxy，請參閱[針對在容器中執行的服務進行反向 Proxy 特殊處理](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers)。
 
 ### <a name="known-limitations-when-debugging-containers-in-service-fabric"></a>在對 Service Fabric 中的容器進行偵錯時的已知限制
 

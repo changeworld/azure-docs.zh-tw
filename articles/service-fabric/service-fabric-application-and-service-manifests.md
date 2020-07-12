@@ -3,11 +3,12 @@ title: 描述 Azure Service Fabric 應用程式和服務
 description: 說明如何使用資訊清單來描述 Service Fabric 應用程式和服務。
 ms.topic: conceptual
 ms.date: 8/12/2019
-ms.openlocfilehash: 6014ef6a9b6ec810aafd5e5be96223b8ed92d576
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcf4c7611f0a6f52c28b234717b9244ac58ad2d4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75349971"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248215"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric 應用程式和服務資訊清單
 本文說明如何使用 ApplicationManifest.xml 和 ServiceManifest.xml 檔案來定義 Service Fabric 應用程式和服務及設定其版本。  如需更詳細的範例，請參閱[應用程式和服務資訊清單範例](service-fabric-manifest-examples.md)。  這些資訊清單檔的 XML 結構描述記載於 [ServiceFabricServiceModel.xsd 結構描述文件](service-fabric-service-model-schema.md)中。
@@ -62,7 +63,7 @@ ms.locfileid: "75349971"
 
 **EntryPoint** 指定的可執行檔通常是長時間執行的服務主機。 **SetupEntryPoint** 是以與 Service Fabric 相同的認證執行的特殊權限進入點 (通常 *LocalSystem* 帳戶)，優先於任何其他進入點。  有個別設定的進入點，就不需要使用較高權限來長時間執行服務主機。 **EntryPoint** 指定的可執行檔是在 **SetupEntryPoint** 成功結束之後執行。 如果程序曾經終止或當機，則產生的程序會受到監視並重新啟動 (以 **SetupEntryPoint**再次開始)。  
 
-使用 **SetupEntryPoint** 的一般案例，是當您在服務啟動之前執行可執行檔，或使用提高的權限來執行作業時。 例如：
+使用 **SetupEntryPoint** 的一般案例，是當您在服務啟動之前執行可執行檔，或使用提高的權限來執行作業時。 例如︰
 
 * 設定及初始化服務可執行檔需要的環境變數。 這不限於透過 Service Fabric 程式設計模型撰寫的執行檔。 例如，npm.exe 部署 node.js 應用程式，需要設定某些環境變數。
 * 透過安裝安全性憑證設定存取控制。
@@ -156,12 +157,12 @@ For more information about other features supported by service manifests, refer 
 
 **Certificates** (未設定於前一個範例中) 會宣告用來[設定 HTTPS 端點](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service)或[在應用程式資訊清單中加密密碼](service-fabric-application-secret-management.md)。
 
-**放置條件約束**是定義服務應在何處執行的語句。 這些語句會附加至您為一個或多個節點屬性選取的個別服務。 如需詳細資訊，請參閱[放置條件約束和節點屬性語法](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#placement-constraints-and-node-property-syntax)
+**放置條件約束**是定義服務應在何處執行的語句。 這些語句會附加至您為一個或多個節點屬性選取的個別服務。 如需詳細資訊，請參閱[放置條件約束和節點屬性語法](./service-fabric-cluster-resource-manager-cluster-description.md#placement-constraints-and-node-property-syntax)
 
-**原則**（在上述範例中未設定）描述要在應用層級設定的記錄集合、[預設執行](service-fabric-application-runas-security.md)身分、[健康](service-fabric-health-introduction.md#health-policies)情況和[安全性存取](service-fabric-application-runas-security.md)原則，包括服務是否可存取 Service Fabric 執行時間。
+前述範例中未設定的**原則** () 描述要在應用層級設定的記錄集合、[預設執行](service-fabric-application-runas-security.md)身分、[健康](service-fabric-health-introduction.md#health-policies)情況和[安全性存取](service-fabric-application-runas-security.md)原則，包括服務 () 是否有 Service Fabric 執行時間的存取權。
 
 > [!NOTE] 
-> 根據預設，Service Fabric 應用程式可以存取 Service Fabric 執行時間，其格式為接受應用程式特定要求的端點，以及指向包含網狀架構和應用程式特定檔案之主機上檔案路徑的環境變數。 當應用程式裝載不受信任的程式碼（也就是來源不明或應用程式擁有者知道不安全執行的程式碼）時，請考慮停用此存取。 如需詳細資訊，請參閱[Service Fabric 中的安全性最佳做法](service-fabric-best-practices-security.md#platform-isolation)。 
+> 根據預設，Service Fabric 應用程式可以存取 Service Fabric 執行時間，其格式為接受應用程式特定要求的端點，以及指向包含網狀架構和應用程式特定檔案之主機上檔案路徑的環境變數。 當應用程式裝載不受信任的程式碼時，請考慮停用此存取 (也就是來源未知的程式碼，或應用程式擁有者知道不安全地執行) 。 如需詳細資訊，請參閱[Service Fabric 中的安全性最佳做法](service-fabric-best-practices-security.md#platform-isolation)。 
 >
 
 **Principals** (未設定於前一個範例中) 說明[執行服務和保護服務資源](service-fabric-application-runas-security.md)所需的安全性主體 (使用者或群組)。  主體會在 **Policies** 區段中參考。
@@ -191,6 +192,3 @@ For more information about other features supported by application manifests, re
 [appmodel-diagram]: ./media/service-fabric-application-model/application-model.png
 [cluster-imagestore-apptypes]: ./media/service-fabric-application-model/cluster-imagestore-apptypes.png
 [cluster-application-instances]: media/service-fabric-application-model/cluster-application-instances.png
-
-
-

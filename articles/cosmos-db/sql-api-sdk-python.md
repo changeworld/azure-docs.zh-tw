@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
 ms.custom: tracking-python
-ms.openlocfilehash: e70d7d1f2ca7aa0eeec08d69720e37c5be34f8ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6bd880806a4b067139c1f22a0e4d4e6df5c88451
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391905"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247059"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>適用於 SQL API 的 Azure Cosmos DB Python SDK：版本資訊和資源
 
@@ -134,7 +134,7 @@ ms.locfileid: "85391905"
 
 * 採用 `request_options` 或 `feed_options` 參數的所有作業，都已移至僅限關鍵字的參數。 此外，雖然仍支援這些選項字典，但是字典中的每個個別選項現在都支援當做明確關鍵字引數。
 
-* 錯誤階層現在繼承自 `azure.core.AzureError`，已移除。
+* 錯誤階層現在繼承自 `azure.core.AzureError` ：
 
   * `HTTPFailure` 已重新命名為 `CosmosHttpResponseError`
   * `JSONParseFailure` 已移除並由 `azure.core.DecodeError` 取代

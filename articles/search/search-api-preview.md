@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: fb99530923f25541316fd159a2270f7035a1916b
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 0c0f40144fde49d467ca7fb126a19afa6c76660a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229239"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246951"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure 認知搜尋中的預覽功能
 
@@ -23,6 +23,7 @@ ms.locfileid: "86229239"
 
 |特徵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
 |---------|------------------|-------------|---------------|
+| [**Azure Machine Learning (AML) 技能**](cognitive-search-aml-skill.md) | AI 擴充| 一種新的技能類型，可將推斷端點與 Azure Machine Learning 整合。 開始使用[本教學課程](cognitive-search-tutorial-aml-custom-skill.md)。 | 使用[搜尋 REST API 2020-06-30-preview](https://docs.microsoft.com/rest/api/searchservice/)或 2019-05-06-preview。 此外，入口網站中也提供技能集設計，假設認知搜尋和 Azure ML 服務部署在相同的訂用帳戶中。 |
 | [**featuresMode 參數**](https://docs.microsoft.com/rest/api/searchservice/search-documents#featuresmode) | 相關性 (計分)  | 相關性分數擴充以包含詳細資料：每個欄位的相似性分數、每個欄位的頻率，以及相符的唯一標記的每個欄位數目。 您可以使用[自訂評分解決方案](https://github.com/Azure-Samples/search-ranking-tutorial)中的這些資料點。 | 使用[ (REST) 的搜尋檔](https://docs.microsoft.com/rest/api/searchservice/search-documents)，搭配 api 版本 = 2020-06-30-preview 或 2019-05-06-preview 來新增此查詢參數。 |
 | [**受控服務識別**](search-howto-managed-identities-data-sources.md) | 索引子，安全性| 向 Azure Active Directory 註冊搜尋服務，使其成為受信任的服務，然後在 Azure 資料來源上使用 RBAC 許可權，以允許索引子進行唯讀存取。 | 使用入口網站或[建立資料來源 (REST) ](https://docs.microsoft.com/rest/api/searchservice/create-data-source)的 api 版本 = 2020-06-30-preview 或 api 版本 = 2019-05 06-01.5.1-preview 時，請存取這項功能。 |
 | [**Debug 會話**](cognitive-search-debug-session.md) | 入口網站、AI 擴充 (技能集)  | 會話內的技能集編輯器，用來調查和解決技能集的問題。 在 debug 會話期間套用的修正可以儲存至服務中的技能集。 | 僅適用于入口網站，使用 [總覽] 頁面上的 [中頁] 連結來開啟 [debug] 會話。 |

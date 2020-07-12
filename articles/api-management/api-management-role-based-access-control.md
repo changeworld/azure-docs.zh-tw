@@ -13,15 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: ed0cd51fc686735f2d9c110ce46d5904107cafc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8be8ffa1b569c365c8fa9b985d2b8319b7c0731b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75430623"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249830"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>如何在 Azure API 管理中使用角色型存取控制
 
-Azure API 管理需要 Azure 角色型存取控制 (RBAC)，才能針對 API 管理服務及實體 (例如 API 和原則) 啟用更細緻的存取管理。 本文章將為您提供 API 管理中內建角色和自訂角色的概觀。 如需有關 Azure 入口網站中的存取管理的詳細資訊，請參閱[開始在 Azure 入口網站中使用存取管理](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/)。
+Azure API 管理需要 Azure 角色型存取控制 (RBAC)，才能針對 API 管理服務及實體 (例如 API 和原則) 啟用更細緻的存取管理。 本文章將為您提供 API 管理中內建角色和自訂角色的概觀。 如需有關 Azure 入口網站中的存取管理的詳細資訊，請參閱[開始在 Azure 入口網站中使用存取管理](../role-based-access-control/overview.md)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -29,9 +30,9 @@ Azure API 管理需要 Azure 角色型存取控制 (RBAC)，才能針對 API 管
 
 API 管理目前提供三個內建角色，不久之後會再新增兩個角色。 這些角色可以指派到不同的範圍，包括訂用帳戶、資源群組，以及個別 API 管理執行個體。 例如，如果您將「API 管理服務讀者」角色指派給資源群組層級的使用者，則使用者會擁有資源群組內所有 API 管理實例的讀取權限。 
 
-下表提供內建角色的簡短描述。 您可以使用 Azure 入口網站或其他工具 (包括 Azure [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 和 [REST API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)) 指派這些角色。 如需如何指派內建角色的詳細資料，請參閱[使用角色指派來管理 Azure 訂用帳戶資源的存取權](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
+下表提供內建角色的簡短描述。 您可以使用 Azure 入口網站或其他工具 (包括 Azure [PowerShell](../role-based-access-control/role-assignments-powershell.md)、[Azure CLI](../role-based-access-control/role-assignments-cli.md) 和 [REST API](../role-based-access-control/role-assignments-rest.md)) 指派這些角色。 如需如何指派內建角色的詳細資料，請參閱[使用角色指派來管理 Azure 訂用帳戶資源的存取權](../role-based-access-control/role-assignments-portal.md)。
 
-| 角色          | 讀取權限<sup>[1]</sup> | 寫入權限<sup>[2]</sup> | 服務建立、刪除、調整規模、VPN 及自訂網域設定 | 存取舊版發行者入口網站 | Description
+| 角色          | 讀取權限<sup>[1]</sup> | 寫入權限<sup>[2]</sup> | 服務建立、刪除、調整規模、VPN 及自訂網域設定 | 存取舊版發行者入口網站 | 描述
 | ------------- | ---- | ---- | ---- | ---- | ---- 
 | API 管理服務參與者 | ✓ | ✓ | ✓ | ✓ | 進階使用者。 具有 API 管理服務及實體 (例如 API 和原則) 的完整 CRUD 存取。 具有舊版發行者入口網站的存取權限。 |
 | API 管理服務讀者 | ✓ | | || 具有 API 管理服務及實體的唯讀權限。 |
@@ -47,7 +48,7 @@ API 管理目前提供三個內建角色，不久之後會再新增兩個角色�
 
 ## <a name="custom-roles"></a>自訂角色
 
-如果內建角色都無法滿足您的特定需求，您可以建立自訂角色來提供更精細的 API 管理實體存取管理。 例如，您可以建立自訂角色，使其具有 API 管理服務的唯讀權限，但只有單一特定 API 的寫入權限。 若要深入了解自訂角色，請參閱 [Azure RBAC 中的自訂角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)。 
+如果內建角色都無法滿足您的特定需求，您可以建立自訂角色來提供更精細的 API 管理實體存取管理。 例如，您可以建立自訂角色，使其具有 API 管理服務的唯讀權限，但只有單一特定 API 的寫入權限。 若要深入了解自訂角色，請參閱 [Azure RBAC 中的自訂角色](../role-based-access-control/custom-roles.md)。 
 
 > [!NOTE]
 > 若要能夠在 Azure 入口網站中查看 API 管理實例，自訂角色必須包含 ```Microsoft.ApiManagement/service/read``` 動作。
@@ -82,4 +83,4 @@ New-AzRoleAssignment -ObjectId <object ID of the user account> -RoleDefinitionNa
   * [開始在 Azure 入口網站中使用存取管理](../role-based-access-control/overview.md)
   * [使用角色指派來管理 Azure 訂用帳戶資源的存取權](../role-based-access-control/role-assignments-portal.md)
   * [Azure RBAC 中的自訂角色](../role-based-access-control/custom-roles.md)
-  * [Azure Resource Manager 資源提供者作業](../role-based-access-control/resource-provider-operations.md#microsoftapimanagement)
+  * [Azure Resource Manager 資源提供者作業](../role-based-access-control/resource-provider-operations.md#microsoftapimanagement) (機器翻譯)

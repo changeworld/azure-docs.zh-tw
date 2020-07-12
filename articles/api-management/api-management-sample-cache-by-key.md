@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 922ab731ccd76e6a1336d61abe4b0251e358beb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b87244b4df155768e815bdba5226fc784866f6b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60780815"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249711"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>在 Azure API 管理中自訂快取
-Azure API 管理服務以資源 URL 做為索引鍵，內建對 [HTTP 回應的快取](api-management-howto-cache.md) 的支援。 可以在要求標頭中使用 `vary-by` 屬性修改索引鍵。 這很適合用於快取整個 HTTP 回應 (也稱為｢表示法｣)，但是有時候也很適合用於只快取部分表示法。 新的 [cache-lookup-value](/azure/api-management/api-management-caching-policies#GetFromCacheByKey) 和 [cache-store-value](/azure/api-management/api-management-caching-policies#StoreToCacheByKey) 原則提供了可儲存及擷取原則定義中任意資料的能力。 這個能力也讓先前推出的 [send-request](/azure/api-management/api-management-advanced-policies#SendRequest) 原則更有價值，因為您現在可以快取外部服務的回應。
+Azure API 管理服務以資源 URL 做為索引鍵，內建對 [HTTP 回應的快取](api-management-howto-cache.md) 的支援。 可以在要求標頭中使用 `vary-by` 屬性修改索引鍵。 這很適合用於快取整個 HTTP 回應 (也稱為｢表示法｣)，但是有時候也很適合用於只快取部分表示法。 新的 [cache-lookup-value](./api-management-caching-policies.md#GetFromCacheByKey) 和 [cache-store-value](./api-management-caching-policies.md#StoreToCacheByKey) 原則提供了可儲存及擷取原則定義中任意資料的能力。 這個能力也讓先前推出的 [send-request](./api-management-advanced-policies.md#SendRequest) 原則更有價值，因為您現在可以快取外部服務的回應。
 
 ## <a name="architecture"></a>架構
 API 管理服務使用共用的個別租用戶資料快取，所以，當您相應增加為多個單位時，您仍可以存取相同的快取資料。 不過，使用多區域部署時，在每個區域內有獨立的快取。 切勿將快取視為資料存放區，資料存放區是部分資訊片段的唯一來源。 如果您這麼做，之後又決定要採用多區域部署，擁有旅遊使用者的客戶可能會失去該快取資料的存取權。
@@ -276,5 +276,5 @@ variable-name="clientversion" />
 
 您將會傳回將租用戶與指派之硬體群組建立關聯的識別碼，而不是傳回每個訂用帳戶金鑰的 API 慣用的版本。 這個識別碼可以用來建構適當的後端 URL。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 能夠自由地使用 Azure API 管理快取來儲存任何種類的資料，可讓您有效率地存取組態資料，而這些資料可能會影響輸入要求的處理方式。 上述快取也可以用來儲存資料片段，此種片段可以增加從後端 API 傳回的回應。

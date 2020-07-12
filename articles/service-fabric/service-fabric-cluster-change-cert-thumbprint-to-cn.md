@@ -3,11 +3,12 @@ title: 將叢集更新為使用憑證一般名稱
 description: 了解如何切換 Service Fabric 叢集，將原本使用憑證指紋的叢集改為使用憑證通用名稱。
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 1926b0501766eb0a5fe086ceada0c9bf45e3dcf6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a90290430616302dbbe9ab9cf717510070936529
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81272622"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247909"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>將叢集從憑證指紋變更為通用名稱
 由於憑證的指紋皆不相同，導致叢集憑證變換或管理變成艱難的任務。 然而，不同的憑證卻能擁有相同的通用名稱或主體。  將使用憑證指紋的已部署叢集切換為使用憑證通用名稱，有助於大幅簡化憑證管理作業。 本文章描述如何更新執行中的 Service Fabric 叢集，改為使用憑證通用名稱，而非憑證指紋。
@@ -19,7 +20,7 @@ ms.locfileid: "81272622"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-a-certificate"></a>取得憑證
-首先，請向[憑證授權單位 (CA)](https://wikipedia.org/wiki/Certificate_authority) 索取憑證。  憑證的一般名稱應該用於您擁有的自訂網域，並且向網域註冊機構購買。 例如，"azureservicefabricbestpractices.com"；並非 Microsoft 員工的人員法佈建 MS 網域的憑證，因此您無法使用您的 LB 或流量管理員本身的 DNS 名稱作為您的憑證一般名稱，而且，如果您的自訂網域可以在 Azure 中解析，您必須佈建 [Azure DNS 區域](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)。 如果您想要入口網站反映叢集的自訂網域別名，您也需要宣告您擁有的自訂網域成為叢集的 “managementEndpoint”。
+首先，請向[憑證授權單位 (CA)](https://wikipedia.org/wiki/Certificate_authority) 索取憑證。  憑證的一般名稱應該用於您擁有的自訂網域，並且向網域註冊機構購買。 例如，"azureservicefabricbestpractices.com"；並非 Microsoft 員工的人員法佈建 MS 網域的憑證，因此您無法使用您的 LB 或流量管理員本身的 DNS 名稱作為您的憑證一般名稱，而且，如果您的自訂網域可以在 Azure 中解析，您必須佈建 [Azure DNS 區域](../dns/dns-delegate-domain-azure-dns.md)。 如果您想要入口網站反映叢集的自訂網域別名，您也需要宣告您擁有的自訂網域成為叢集的 “managementEndpoint”。
 
 基於測試目的，您可以向免費或開放的憑證授權單位索取 CA 簽署憑證。
 
@@ -178,7 +179,7 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
         ...
     ```
 
-如需其他資訊[，請參閱部署使用憑證一般名稱的 Service Fabric 叢集，而不是指紋。](https://docs.microsoft.com/azure/service-fabric/service-fabric-create-cluster-using-cert-cn)
+如需其他資訊[，請參閱部署使用憑證一般名稱的 Service Fabric 叢集，而不是指紋。](./service-fabric-create-cluster-using-cert-cn.md)
 
 ## <a name="deploy-the-updated-template"></a>部署更新的範本
 完成變更之後，重新部署更新的範本。

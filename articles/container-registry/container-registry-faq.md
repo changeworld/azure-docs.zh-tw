@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: f160910024d9d64d22028c72825b98d93f66f15d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ee58f6a2058158308cab8ec49b1d79587998d39
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390358"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247025"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>關於 Azure Container Registry 的常見問題集
 
@@ -32,7 +32,7 @@ ms.locfileid: "85390358"
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>ACR 中的映像是否有安全性弱點掃描？
 
-是。 請參閱 [Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)、[Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) 和 [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) 中的文件。
+是。 請參閱 [Azure 資訊安全中心](../security-center/azure-container-registry-integration.md)、[Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) 和 [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) 中的文件。
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>如何使用 Azure Container Registry 設定 Kubernetes？
 
@@ -436,8 +436,8 @@ curl $redirect_url
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>為什麼我的提取或推送要求失敗，且不允許作業？
 
 以下是可能不允許作業的一些案例：
-* 已不再支援傳統登錄。 請使用 [az acr update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) 或 Azure 入口網站升級至支援的[服務層級](https://aka.ms/acr/skus)。
-* 映像或存放庫可能已鎖定，所以無法刪除或更新。 您可以使用 [az acr show repository](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) 命令來查看目前的屬性。
+* 已不再支援傳統登錄。 請使用 [az acr update](/cli/azure/acr?view=azure-cli-latest#az-acr-update) 或 Azure 入口網站升級至支援的[服務層級](https://aka.ms/acr/skus)。
+* 映像或存放庫可能已鎖定，所以無法刪除或更新。 您可以使用 [az acr show repository](./container-registry-image-lock.md) 命令來查看目前的屬性。
 * 如果映像處於隔離中，則不允許某些作業。 深入瞭解[隔離](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)。
 * 您的登錄可能已達到其[儲存空間限制](container-registry-skus.md#service-tier-features-and-limits)。
 
@@ -501,9 +501,9 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 | Git 服務 | 來源內容 | 手動組建 | 透過認可觸發自動建立 |
 |---|---|---|---|
-| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | 是 | Yes |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | 是 | 是 |
 | Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | 是 | 是 |
-| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Yes | 否 |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | 是 | 否 |
 | BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | 是 | 否 |
 
 ## <a name="run-error-message-troubleshooting"></a>執行錯誤訊息的疑難排解

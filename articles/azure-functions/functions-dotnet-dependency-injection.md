@@ -2,16 +2,16 @@
 title: 在 .NET Azure Functions 中使用相依性插入
 description: 了解如何在 .NET 函式中使用相依性插入來註冊和使用服務
 author: craigshoemaker
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: a994111d2f7e938ecdd71236858e4cb8773b00f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb9783b38185940f0e75e888c3bc69a1edcc6cbb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832860"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249252"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用相依性插入
 

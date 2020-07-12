@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 40ea26a2394b7ca093f1bba2456ebf5ef116cd0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1713f2ca8fda0c768727ea12e682b373d644bcba
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695805"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249813"
 ---
 # <a name="api-management-policy-expressions"></a>API 管理原則運算式
 本文討論 c # 7 中的原則運算式語法。 每個運算式具有存取權以隱含方式提供[內容](api-management-policy-expressions.md#ContextVariables)變數並允許[子集](api-management-policy-expressions.md#CLRTypes)的.NET Framework 型別。
@@ -26,7 +27,7 @@ ms.locfileid: "84695805"
 
 - 了解如何提供內容資訊給您的後端服務。 使用[設定查詢字串參數](api-management-transformation-policies.md#SetQueryStringParameter)和[設定 HTTP 標頭](api-management-transformation-policies.md#SetHTTPheader)原則來提供此資訊。
 - 了解如何使用[驗證 JWT](api-management-access-restriction-policies.md#ValidateJWT) 原則來根據權杖宣告預先授與作業的存取權。
-- 了解如何使用 [API 檢查器](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)追蹤，以查看原則的評估方式和那些評估結果。
+- 了解如何使用 [API 檢查器](./api-management-howto-api-inspector.md)追蹤，以查看原則的評估方式和那些評估結果。
 - 了解如何使用運算式搭配[從快取中取得](api-management-caching-policies.md#GetFromCache)和[儲存至快取](api-management-caching-policies.md#StoreToCache)原則，來設定 API 管理回應的快取。 設定一段持續時間，使其符合備用服務中 `Cache-Control` 指示詞所指定的後端服務回應快取。
 - 了解如何執行內容篩選。 使用[控制流程](api-management-advanced-policies.md#choose)和[設定本文](api-management-transformation-policies.md#SetBody)原則，移除「從後端收到的回應」中的資料元素。
 - 若要下載原則語句，請參閱[api 管理-範例/原則](https://github.com/Azure/api-management-samples/tree/master/policies)GitHub 存放庫。
@@ -107,7 +108,7 @@ ms.locfileid: "84695805"
 |System.object。\<T>|全部|
 |System.web. Stack\<T>|全部|
 |System.Convert|全部|
-|System.DateTime|（函式）、Add、AddDays、Time.addhours、AddMilliseconds、AddMinutes、AddMonths、AddSeconds、AddTicks、AddYears、Date、Day、DayOfWeek、DayOfYear、DaysInMonth、Hour、IsDaylightSavingTime、IsLeapYear、int32.maxvalue、毫秒、Minute、MinValue、Month、Now、Parse、Second、減法、滴答、TimeOfDay、Today、ToString、UtcNow、Year|
+|System.DateTime| (的函式) 、Add、AddDays、Time.addhours、AddMilliseconds、AddMinutes、AddMonths、AddSeconds、AddTicks、AddYears、Date、Day、DayOfWeek、DayOfYear、DaysInMonth、Hour、IsDaylightSavingTime、IsLeapYear、int32.maxvalue、毫秒、Minute、MinValue、Month、Now、Parse、Second、減法、滴答、TimeOfDay、Today、ToString、UtcNow、Year|
 |System.DateTimeKind|Utc|
 |System.DateTimeOffset|全部|
 |System.Decimal|全部|
@@ -155,7 +156,7 @@ ms.locfileid: "84695805"
 |System.security.cryptography.symmetricalgorithm。|全部|
 |System.security.cryptography.x509certificates.x509certificate2. PublicKey。|全部|
 |System.security.cryptography.x509certificates.x509certificate2. RSACertificateExtensions。|全部|
-|System.security.cryptography.x509certificates.x509certificate2. System.security.cryptography.x509certificates.x500distinguishedname。|Name|
+|System.security.cryptography.x509certificates.x509certificate2. System.security.cryptography.x509certificates.x500distinguishedname。|名稱|
 |System.security.cryptography.x509certificates.x509certificate2. X509Certificate。|全部|
 |System.Security.Cryptography.X509Certificates.X509Certificate2|全部|
 |System.security.cryptography.x509certificates.x509certificate2. X509ContentType。|全部|
@@ -171,7 +172,7 @@ ms.locfileid: "84695805"
 |System.Text.RegularExpressions.Group|擷取、成功|
 |System.Text.RegularExpressions.GroupCollection|計數、項目|
 |System.Text.RegularExpressions.Match|空白、群組、結果|
-|System.Text.RegularExpressions.Regex|（函式）、IsMatch、比對、Match、Replace、Unescape、Split|
+|System.Text.RegularExpressions.Regex| (的函式) 、IsMatch、比對、Match、Replace、Unescape、Split|
 |System.Text.RegularExpressions.RegexOptions|全部|
 |System.Text.StringBuilder|全部|
 |System.TimeSpan|全部|
@@ -223,12 +224,12 @@ ms.locfileid: "84695805"
 |<a id="ref-context-user"></a>context.User|電子郵件︰字串<br /><br /> FirstName︰字串<br /><br /> 群組： IEnumerable<[IGroup](#ref-igroup)\><br /><br /> 識別碼︰字串<br /><br /> 身分識別： IEnumerable<[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName︰字串<br /><br /> 附註︰字串<br /><br /> RegistrationDate︰DateTime|
 |<a id="ref-iapi"></a>IApi|識別碼︰字串<br /><br /> 名稱︰字串<br /><br /> 路徑︰字串<br /><br /> 通訊協定︰IEnumerable<string\><br /><br /> ServiceUrl： [iurl.query.getvalueordefault](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames： [ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
 |<a id="ref-igroup"></a>IGroup|識別碼︰字串<br /><br /> 名稱︰字串|
-|<a id="ref-imessagebody"></a>IMessageBody|As<T \> （preserveContent： bool = false）：其中 t： string、byte []、JObject、JToken、JArray、system.xml.linq.xnode>、system.xml.linq.xelement>、XDocument<br /><br /> `context.Request.Body.As<T>` 和 `context.Response.Body.As<T>` 方法是用來讀取指定類型 `T` 的要求和回應訊息主體。 根據預設，該方法會使用原始訊息本文資料流，並使它在傳回後無法使用。 若要避免那種情況，並讓方法在本文資料流的複本上進行操作，請將 `preserveContent` 參數設定為 `true`。 請移至[這裡](api-management-transformation-policies.md#SetBody)來查看範例。|
+|<a id="ref-imessagebody"></a>IMessageBody|As<T \> (preserveContent： bool = false) ：，其中 t： string，byte []，JObject，JToken，JArray，system.xml.linq.xnode>，system.xml.linq.xelement>，XDocument<br /><br /> `context.Request.Body.As<T>` 和 `context.Response.Body.As<T>` 方法是用來讀取指定類型 `T` 的要求和回應訊息主體。 根據預設，該方法會使用原始訊息本文資料流，並使它在傳回後無法使用。 若要避免那種情況，並讓方法在本文資料流的複本上進行操作，請將 `preserveContent` 參數設定為 `true`。 請移至[這裡](api-management-transformation-policies.md#SetBody)來查看範例。|
 |<a id="ref-iurl"></a>IUrl|主機︰字串<br /><br /> 路徑︰字串<br /><br /> 連接埠︰int<br /><br /> [查詢](#ref-iurl-query)： ..ireadonlydictionary<string<字串，string [] ><br /><br /> QueryString︰字串<br /><br /> 配置︰字串|
 |<a id="ref-iuseridentity"></a>IUserIdentity|識別碼︰字串<br /><br /> 提供者︰字串|
 |<a id="ref-isubscriptionkeyparameternames"></a>ISubscriptionKeyParameterNames|標頭︰字串<br /><br /> 查詢︰字串|
 |<a id="ref-iurl-query"></a>string IUrl.Query.GetValueOrDefault(queryParameterName︰字串、defaultValue︰字串)|queryParameterName︰字串<br /><br /> defaultValue︰字串<br /><br /> 如果找不到參數，則傳回以逗號分隔的查詢參數值或 `defaultValue`。|
-|<a id="ref-context-variables"></a>T 內容。CoNtext.variables.getvalueordefault<t<T \> （variableName： string，defaultValue： T）|variableName︰字串<br /><br /> defaultValue︰T<br /><br /> 如果找不到變數，則傳回轉換為 `T` 或 `defaultValue` 的變數值。<br /><br /> 如果指定的類型不符合所傳回變數的實際類型，此方法便會擲回例外狀況。|
+|<a id="ref-context-variables"></a>T 內容。CoNtext.variables.getvalueordefault<t<T \> (variableName： string，defaultValue： T) |variableName︰字串<br /><br /> defaultValue︰T<br /><br /> 如果找不到變數，則傳回轉換為 `T` 或 `defaultValue` 的變數值。<br /><br /> 如果指定的類型不符合所傳回變數的實際類型，此方法便會擲回例外狀況。|
 |BasicAuthCredentials AsBasic(輸入：此字串)|輸入︰字串<br /><br /> 如果輸入參數包含有效的 HTTP 基本驗證授權要求標頭值，則方法會傳回類型為 `BasicAuthCredentials` 的物件；否則方法會傳回 null。|
 |bool TryParseBasic(輸入：此字串、結果：out BasicAuthCredentials)|輸入︰字串<br /><br /> 結果︰out BasicAuthCredentials<br /><br /> 如果輸入參數包含要求標頭中的有效 HTTP 基本驗證授權值，則方法會傳回 `true`，且結果參數包含類型為 `BasicAuthCredentials` 的值；否則方法會傳回 `false`。|
 |BasicAuthCredentials|密碼︰字串<br /><br /> UserId︰字串|
@@ -242,7 +243,7 @@ ms.locfileid: "84695805"
 |byte[] Decrypt(input: this byte[], alg: string, key:byte[], iv:byte[])|輸入 - 要解密的 Cypher 文字<br /><br />alg - 對稱加密演算法的名稱<br /><br />金鑰 - 加密金鑰<br /><br />iv - 初始化向量<br /><br />傳回純文字。|
 |byte[] Decrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm)|輸入 - 要解密的 Cypher 文字<br /><br />alg - 加密演算法<br /><br />傳回純文字。|
 |byte[] Decrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|輸入 - 要解密的 Cypher 文字<br /><br />alg - 加密演算法<br /><br />金鑰 - 加密金鑰<br /><br />iv - 初始化向量<br /><br />傳回純文字。|
-|bool VerifyNoRevocation （輸入：此 System.security.cryptography.x509certificates.x509certificate2. X509Certificate2）|執行 x.509 鏈驗證，而不檢查憑證撤銷狀態。<br /><br />輸入憑證物件<br /><br />`true`如果驗證成功，則傳回; `false` 如果驗證失敗，則傳回。|
+|bool VerifyNoRevocation (輸入： System.security.cryptography.x509certificates.x509certificate2. X509Certificate2) |執行 x.509 鏈驗證，而不檢查憑證撤銷狀態。<br /><br />輸入憑證物件<br /><br />`true`如果驗證成功，則傳回; `false` 如果驗證失敗，則傳回。|
 
 
 ## <a name="next-steps"></a>後續步驟
@@ -251,5 +252,5 @@ ms.locfileid: "84695805"
 
 + [API 管理中的原則](api-management-howto-policies.md)
 + [轉換 API](transform-api.md)
-+ [原則參考文件](api-management-policy-reference.md)，取得原則陳述式及其設定的完整清單
++ [原則參考文件](./api-management-policies.md)，取得原則陳述式及其設定的完整清單
 + [原則範例](policy-samples.md)

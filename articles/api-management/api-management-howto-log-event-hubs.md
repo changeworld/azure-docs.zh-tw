@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 0d122a56035e58bd5065da8fde56246da6478d54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f594d4467e64ead40ff3c26aaf3e3a44cb673a98
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82871268"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250289"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>如何將事件記錄到 Azure API 管理中的 Azure 事件中樞
 事件中樞是可高度調整的資料輸入服務，每秒可擷取數百萬個事件，可讓您處理和分析連接的裝置和應用程式所產生的大量資料。 事件中樞能做為事件管線的「大門」，一旦收集的資料進入事件中樞，它可以使用任何即時分析提供者或批次/儲存配接器轉換及儲存資料。 事件中樞能分隔事件串流的生產與這些事件的使用，讓事件消費者依照自己的排程存取事件。
@@ -26,12 +27,12 @@ ms.locfileid: "82871268"
 
 ## <a name="create-an-azure-event-hub"></a>建立 Azure 事件中樞
 
-如需如何建立事件中樞，並取得在事件中樞傳送及接收事件所需之連接字串的詳細步驟，請參閱[使用 Azure 入口網站建立事件中樞命名空間和事件中樞](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)。
+如需如何建立事件中樞，並取得在事件中樞傳送及接收事件所需之連接字串的詳細步驟，請參閱[使用 Azure 入口網站建立事件中樞命名空間和事件中樞](../event-hubs/event-hubs-create.md)。
 
 ## <a name="create-an-api-management-logger"></a>建立 API 管理記錄器
-現在您已經有事件中樞，下一步是在 API 管理服務中設定 [記錄器](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger) ，以將事件記錄至事件中樞。
+現在您已經有事件中樞，下一步是在 API 管理服務中設定 [記錄器](/rest/api/apimanagement/2019-12-01/logger) ，以將事件記錄至事件中樞。
 
-可使用 [API 管理 REST API](https://aka.ms/apimapi)來設定 API 管理記錄器。 如需詳細的要求範例，請參閱[如何建立記錄器](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate)。
+可使用 [API 管理 REST API](https://aka.ms/apimapi)來設定 API 管理記錄器。 如需詳細的要求範例，請參閱[如何建立記錄器](/rest/api/apimanagement/2019-12-01/logger/createorupdate)。
 
 ## <a name="configure-log-to-eventhub-policies"></a>設定登入 eventhub 原則
 
@@ -68,7 +69,7 @@ ms.locfileid: "82871268"
 
 ## <a name="preview-the-log-in-event-hubs-by-using-azure-stream-analytics"></a>使用 Azure 串流分析預覽登入事件中樞
 
-您可以使用[Azure 串流分析查詢](https://docs.microsoft.com/azure/event-hubs/process-data-azure-stream-analytics)，在事件中樞中預覽登入。 
+您可以使用[Azure 串流分析查詢](../event-hubs/process-data-azure-stream-analytics.md)，在事件中樞中預覽登入。 
 
 1. 在 [Azure 入口網站中，流覽至記錄器將事件傳送至其中的事件中樞。 
 2. 在 [**功能**] 底下，選取 [**處理資料**] 索引標籤。
@@ -78,11 +79,11 @@ ms.locfileid: "82871268"
 ## <a name="next-steps"></a>後續步驟
 * 深入了解 Azure 事件中樞
   * [開始使用 Azure 事件中樞](../event-hubs/event-hubs-c-getstarted-send.md)
-  * [使用 EventProcessorHost 接收訊息](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
+  * [使用 EventProcessorHost 接收訊息](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
   * [事件中樞程式設計指南](../event-hubs/event-hubs-programming-guide.md)
 * 深入了解 API 管理和事件中樞的整合
-  * [記錄器實體參考](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger)
-  * [log-to-eventhub 原則參考](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
+  * [記錄器實體參考](/rest/api/apimanagement/2019-12-01/logger)
+  * [log-to-eventhub 原則參考](./api-management-advanced-policies.md#log-to-eventhub)
   * [利用 Azure API 管理、事件中樞與 Moesif 監視您的 API](api-management-log-to-eventhub-sample.md)  
 * 深入了解如何[與 Azure Application Insights 整合](api-management-howto-app-insights.md)
 

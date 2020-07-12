@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 182f0ea93ddfb2ab64de1c15b36958537fa5431f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16ab72a67a021338bd8e186c32015c271240d224
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75430717"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250527"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>如何在 Azure API 管理中建立和使用群組來管理開發人員帳戶
 
@@ -33,7 +34,7 @@ API 管理具有下列不可變的系統群組：
 
 本指南說明 API 管理執行個體的管理員如何加入新的群組，並將這些群組與產品和開發人員建立關聯。
 
-除了在發佈者入口網站中建立和管理群組，您還可以使用 API 管理 REST API [群組](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) 實體，建立和管理您的群組。
+除了在發佈者入口網站中建立和管理群組，您還可以使用 API 管理 REST API [群組](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) 實體，建立和管理您的群組。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -97,7 +98,7 @@ API 管理具有下列不可變的系統群組：
 ## <a name="next-steps"></a><a name="next-steps"> </a>後續步驟
 
 * 當開發人員加入至群組之後，他們就可以檢視和訂閱與該群組相關聯的產品。 如需詳細資訊，請參閱 [如何在 Azure API 管理中建立和發行產品][How create and publish a product in Azure API Management]。
-* 除了在發佈者入口網站中建立和管理群組，您還可以使用 API 管理 REST API [群組](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) 實體，建立和管理您的群組。
+* 除了在發佈者入口網站中建立和管理群組，您還可以使用 API 管理 REST API [群組](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) 實體，建立和管理您的群組。
 
 [Create a group]: #create-group
 [Associate a group with a product]: #associate-group-product

@@ -4,11 +4,12 @@ description: Service Fabric 中雲端應用程式類別概觀。 討論使用具
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: sfrev
-ms.openlocfilehash: 0aeb8ab2923915befdd11f96025687be3b3c4ff9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aaf8204158f720d8c69c98af758071cd91f6eff0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76024732"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248164"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric 應用程式案例
 
@@ -16,7 +17,7 @@ Azure Service Fabric 提供可靠且彈性的平臺，可讓您撰寫及執行�
 
 Service Fabric 的獨特架構可讓您在應用程式中執行接近即時的資料分析、記憶體中計算、平行交易和事件處理。 您可以根據變更的資源需求，輕鬆地將應用程式相應縮小或相應放大。
 
-如需建立應用程式的設計指引，請參閱[Azure 上的微服務架構 Service Fabric](https://docs.microsoft.com/azure/architecture/reference-architectures/microservices/service-fabric)和[使用 Service Fabric 進行應用程式設計的最佳作法](service-fabric-best-practices-applications.md)。
+如需建立應用程式的設計指引，請參閱[Azure 上的微服務架構 Service Fabric](/azure/architecture/reference-architectures/microservices/service-fabric)和[使用 Service Fabric 進行應用程式設計的最佳作法](service-fabric-best-practices-applications.md)。
 
 針對下列類型的應用程式，請考慮使用 Service Fabric 平臺：
 
@@ -24,7 +25,7 @@ Service Fabric 的獨特架構可讓您在應用程式中執行接近即時的�
 
     已使用 Service Fabric 建立 IoT 服務的客戶包括[Honeywell](https://customers.microsoft.com/story/honeywell-builds-microservices-based-thermostats-on-azure)、 [PCL 建築](https://customers.microsoft.com/story/pcl-construction-professional-services-azure)、 [Crestron](https://customers.microsoft.com/story/crestron-partner-professional-services-azure)、[寶馬](https://customers.microsoft.com/story/bmw-enables-driver-mobility-via-azure-service-fabric/)、 [Schneider 電動](https://customers.microsoft.com/story/schneider-electric-powers-engergy-solutions-on-azure-service-fabric)和[網狀網格系統](https://customers.microsoft.com/story/mesh-systems-lights-up-the-market-with-iot-based-azure-solutions)。
 
-* **遊戲和以會話為基礎的互動式應用程式**：如果您的應用程式需要低延遲的讀取和寫入（例如線上遊戲或立即訊息），Service Fabric 會很有用。 Service Fabric 可讓您建立這些互動式、具狀態的應用程式，而不需要建立個別的存放區或快取。 請造訪[Azure 遊戲解決方案](https://azure.microsoft.com/solutions/gaming/)，以取得在[遊戲服務中使用 Service Fabric](https://docs.microsoft.com/gaming/azure/reference-architectures/multiplayer-synchronous-sf)的設計指引。
+* **遊戲和以會話為基礎的互動式應用程式**：如果您的應用程式需要低延遲的讀取和寫入（例如線上遊戲或立即訊息），Service Fabric 會很有用。 Service Fabric 可讓您建立這些互動式、具狀態的應用程式，而不需要建立個別的存放區或快取。 請造訪[Azure 遊戲解決方案](https://azure.microsoft.com/solutions/gaming/)，以取得在[遊戲服務中使用 Service Fabric](/gaming/azure/reference-architectures/multiplayer-synchronous-sf)的設計指引。
 
     已建立遊戲服務的客戶包括[下一場遊戲](https://customers.microsoft.com/story/next-games-media-telecommunications-azure)和[Digamore](https://customers.microsoft.com/story/digamore-entertainment-scores-with-a-new-gaming-platform-based-on-azure-service-fabric/)。 已建立互動式會話的客戶包括[Honeywell 與 Hololens](https://customers.microsoft.com/story/honeywell-manufacturing-hololens)。
 
@@ -32,7 +33,7 @@ Service Fabric 的獨特架構可讓您在應用程式中執行接近即時的�
 
     已建立商務工作流程服務的客戶包括[Zeiss 群組](https://customers.microsoft.com/story/zeiss-group-focuses-on-azure-service-fabric-for-key-integration-platform)、[仲裁商務解決方案](https://customers.microsoft.com/en-us/story/quorum-business-solutions-expand-energy-managemant-solutions-using-azure-service-fabric)和[Société一般](https://customers.microsoft.com/en-us/story/societe-generale-speeds-real-time-market-quotes-using-azure-service-fabric)。
 
-* **資料的計算**： Service Fabric 可讓您建立執行大量資料計算的具狀態應用程式。 Service Fabric 允許在應用程式中進行處理（計算）和資料的共置。 
+* **資料的計算**： Service Fabric 可讓您建立執行大量資料計算的具狀態應用程式。 Service Fabric 可讓您在應用程式中處理 (計算) 和資料的共置。 
 
    一般來說，當您的應用程式需要存取資料時，與外部資料快取或儲存層相關聯的網路延遲會限制計算時間。 具狀態 Service Fabric 服務會消除該延遲，以提供更優化的讀取和寫入。
 
@@ -54,7 +55,7 @@ Service Fabric 的獨特架構可讓您在應用程式中執行接近即時的�
 
 中的具狀態服務 Service Fabric 將高可用性帶入所有類型的應用程式，而不只是資料庫和其他資料存放區。 這是自然的進展。 針對高可用性，應用程式已經從使用單純的關聯式資料庫進展到 NoSQL 資料庫的境界。 現在應用程式就能在其本身內管理它們的「熱門」狀態和資料，以便進一步提高效能，而不需犧牲可靠性、一致性或可用性。
 
-當您建立包含微服務的應用程式時，通常會結合無狀態 web 應用程式（例如 ASP.NET 和 Node.js），以呼叫無狀態和具狀態的 business 中介層服務。 應用程式和服務全都會透過 Service Fabric 部署命令，部署在相同的 Service Fabric 叢集中。 這些服務各自獨立于規模、可靠性和資源使用方式。 此獨立性可改善開發和生命週期管理的靈活性和彈性。
+當您正在建立包含微服務的應用程式時，您通常會有無狀態 web apps 的組合 (例如 ASP.NET 和 Node.js) 呼叫無狀態和具狀態的 business 中介層服務。 應用程式和服務全都會透過 Service Fabric 部署命令，部署在相同的 Service Fabric 叢集中。 這些服務各自獨立于規模、可靠性和資源使用方式。 此獨立性可改善開發和生命週期管理的靈活性和彈性。
 
 具狀態的微服務簡化了應用程式設計，因此不需要傳統上為滿足純無狀態應用程式的可用性與延遲需求時所需的其他佇列與快取。 因為具狀態服務有高可用性和低延遲，所以在您的應用程式中管理的詳細資料較少。
 
@@ -67,7 +68,7 @@ Service Fabric 的獨特架構可讓您在應用程式中執行接近即時的�
 ## <a name="next-steps"></a>後續步驟
 
 * 開始使用 Service Fabric [Reliable Services](service-fabric-reliable-services-quick-start.md)和[Reliable Actors](service-fabric-reliable-actors-get-started.md)程式設計模型，建立無狀態和具狀態服務。
-* 如需在[Azure 上建立微服務](https://docs.microsoft.com/azure/architecture/microservices/)的指引，請造訪 Azure 架構中心。
+* 如需在[Azure 上建立微服務](/azure/architecture/microservices/)的指引，請造訪 Azure 架構中心。
 * 如需應用程式設計指引，請移至[Azure Service Fabric 應用程式和叢集最佳作法](service-fabric-best-practices-overview.md)。
 
 * 另請參閱：

@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/25/2020
-ms.openlocfilehash: 33e521046889733b2f0a66b839ab5dde46398318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 350c542e1b183c79707c99989b2544fd8faa43ac
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85412690"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248470"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps 的限制和設定資訊
 
@@ -112,7 +113,7 @@ ms.locfileid: "85412690"
 
 以下是[進階 ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) 的輸送量限制：
 
-| Name | 限制 | 備註 |
+| 名稱 | 限制 | 附註 |
 |------|-------|-------|
 | 基礎單位執行限制 | 當基礎結構容量達到 80% 時，系統會節流 | 每分鐘提供 ~ 4,000 次動作執行，也就是每個月 ~160,000,000 次動作執行 | |
 | 縮放單位執行限制 | 當基礎結構容量達到 80% 時，系統會節流 | 每個縮放單位每分鐘可以額外提供 ~2,000 次動作執行，也就是每個月超過 ~80,000,000 次動作執行 | |
@@ -140,7 +141,7 @@ Azure Logic Apps 透過閘道支援寫入作業，包括插入和更新。 不�
 
 某些連接器作業會進行非同步呼叫或接聽 Webhook 要求，因此這些作業的逾時可能會超過這些限制。 如需詳細資訊，請參閱特定連接器的技術詳細資料以及[工作流程觸發程序和動作](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)。
 
-| Name | 多租用戶限制 | 整合服務環境限制 | 備註 |
+| 名稱 | 多租用戶限制 | 整合服務環境限制 | 附註 |
 |------|--------------------|---------------------------------------|-------|
 | 輸出要求 | 120 秒 <br>(2 分鐘) | 240 秒 <br>(4 分鐘) | 輸出要求的範例包括 HTTP 觸發程序發出的呼叫。 <p><p>**提示**：對於執行時間較久的作業，請使用[非同步輪詢模式](../logic-apps/logic-apps-create-api-app.md#async-pattern)或 [until 迴圈](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)。 若要在您呼叫另一個具有[可呼叫端點](logic-apps-http-endpoint.md)的邏輯應用程式時解決逾時限制，可以改為使用內建的 Azure Logic Apps 動作，而您可以在連接器選擇器中的 [內建] 底下找到此動作。 |
 | 輸入要求 | 120 秒 <br>(2 分鐘) | 240 秒 <br>(4 分鐘) | 輸入要求的範例包括要求觸發程序和 Webhook 觸發程序所接收的呼叫。 <p><p>**注意**：為了讓原始呼叫者取得回應，除非您以巢狀工作流程的形式呼叫另一個邏輯應用程式，否則回應中的所有步驟都必須在限制時間內完成。 如需詳細資訊，請參閱[呼叫、觸發或巢狀邏輯應用程式](../logic-apps/logic-apps-http-endpoint.md)。 |
@@ -150,7 +151,7 @@ Azure Logic Apps 透過閘道支援寫入作業，包括插入和更新。 不�
 
 #### <a name="message-size"></a>訊息大小
 
-| Name | 多租用戶限制 | 整合服務環境限制 | 備註 |
+| 名稱 | 多租用戶限制 | 整合服務環境限制 | 附註 |
 |------|--------------------|---------------------------------------|-------|
 | 訊息大小 | 100 MB | 200 MB | 若要解決此限制，請參閱[使用區塊化處理大型訊息](../logic-apps/logic-apps-handle-large-messages.md)。 不過，某些連接器和 API 可能不支援區塊化或甚至預設限制。 <p><p>- 例如 AS2、X12 和 EDIFACT 等連接器都有自己的 [B2B 訊息限制](#b2b-protocol-limits)。 <br>- ISE 連接器會使用 ISE 限制，而不是其非 ISE 連接器限制。 |
 | 使用區塊化時的訊息大小 | 1 GB | 5 GB | 此限制適用於原生支援區塊化的動作，或可讓您在其執行階段設定中啟用區塊化的動作。 <p><p>如果您是使用 ISE，則 Logic Apps 引擎會支援此限制，但是連接器會有自己的區塊化限制，最高可達引擎限制。如需範例，請參閱 [Azure Blob 儲存體連接器的 API 參考](https://docs.microsoft.com/connectors/azureblob/)。 如需區塊化的詳細資訊，請參閱[使用區塊化處理大型訊息](../logic-apps/logic-apps-handle-large-messages.md)。 |
@@ -168,7 +169,7 @@ Azure Logic Apps 透過閘道支援寫入作業，包括插入和更新。 不�
 
 #### <a name="retry-policy"></a>重試原則
 
-| Name | 限制 | 備註 |
+| 名稱 | 限制 | 附註 |
 | ---- | ----- | ----- |
 | 重試次數 | 90 | 預設值為 4。 若要變更預設值，請使用[重試原則參數](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
 | 重試延遲上限 | 1 日 | 若要變更預設值，請使用[重試原則參數](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
@@ -179,7 +180,7 @@ Azure Logic Apps 透過閘道支援寫入作業，包括插入和更新。 不�
 
 ### <a name="authentication-limits"></a>驗證限制
 
-以下是邏輯應用程式的限制，此邏輯應用程式透過要求觸發程序啟動，並可讓 [Azure Active Directory 開放驗證](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) 授權對要求觸發程序進行輸入呼叫：
+以下是邏輯應用程式的限制，此邏輯應用程式透過要求觸發程序啟動，並可讓 [Azure Active Directory 開放驗證](/azure/active-directory/develop/) (Azure AD OAuth) 授權對要求觸發程序進行輸入呼叫：
 
 | 名稱 | 限制 | 注意 |
 | ---- | ----- | ----- |
@@ -193,7 +194,7 @@ Azure Logic Apps 透過閘道支援寫入作業，包括插入和更新。 不�
 
 以下限制適用於可透過 Web API 來建立的自訂連接器。
 
-| 名稱 | 多租用戶限制 | 整合服務環境限制 | 備註 |
+| 名稱 | 多租用戶限制 | 整合服務環境限制 | 附註 |
 |------|--------------------|---------------------------------------|-------|
 | 自訂連接器的數目 | 每個 Azure 訂用帳戶 1,000 個 | 每個 Azure 訂用帳戶 1,000 個 ||
 | 自訂連接器的每分鐘要求數目 | 每個連線每分鐘 500 個要求 | 每個「自訂連接器」每分鐘 2,000 個要求 ||
@@ -254,7 +255,7 @@ Azure Logic Apps 透過閘道支援寫入作業，包括插入和更新。 不�
 
 ### <a name="artifact-capacity-limits"></a>成品容量限制
 
-| 構件 | 限制 | 備註 |
+| 構件 | 限制 | 附註 |
 | -------- | ----- | ----- |
 | 組件 | 8 MB | 若要上傳大於 2 MB 的檔案，請使用 [Azure 儲存體帳戶和 Blob 容器](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 |
 | 對應 (XSLT 檔案) | 8 MB | 若要上傳大於 2 MB 的檔案，請使用 [Azure Logic Apps REST API - 對應](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)。 <p><p>**注意**：對應可以成功處理的資料或記錄數量是以 Azure Logic Apps 中的訊息大小和動作逾時限制為基礎。 例如，如果您使用 HTTP 動作，則根據 [HTTP 訊息大小和逾時限制](#request-limits)，若作業在 HTTP 逾時限制內完成，對應可以處理最大到 HTTP 訊息大小限制的資料。 |
@@ -301,7 +302,8 @@ Azure Logic Apps 透過閘道支援寫入作業，包括插入和更新。 不�
 Azure Logic Apps 用於輸入和輸出呼叫的 IP 位址取決於邏輯應用程式所在的區域。 相同區域中的 *「所有」* 邏輯應用程式都會使用相同的 IP 位址範圍。 某些 [Power Automate](https://docs.microsoft.com/power-automate/getting-started) 呼叫，例如 **HTTP** 和 **HTTP + OpenAPI** 要求，直接通過 Azure Logic Apps 服務，並來自這裡所列的 IP 位址。 如需 Power Automate 所使用 IP 位址的詳細資訊，請參閱 [Power Automate 中的限制和設定](https://docs.microsoft.com/flow/limits-and-config#ip-address-configuration)。
 
 > [!TIP]
-> 為了協助降低建立安全性規則時的複雜度，您可以選擇性地使用[服務標籤](../virtual-network/service-tags-overview.md)，而不是指定每個區域的 Logic Apps IP 位址，如本節稍後所述。 這些標籤適用於提供 Logic Apps 服務的區域：
+> 為了協助降低建立安全性規則時的複雜度，您可以選擇性地使用[服務標籤](../virtual-network/service-tags-overview.md)，而不是指定每個區域的 Logic Apps IP 位址，如本節稍後所述。
+> 這些標籤適用於提供 Logic Apps 服務的區域：
 >
 > * **LogicAppsManagement**：表示 Logic Apps 服務的輸入 IP 位址首碼。
 > * **LogicApps**：表示 Logic Apps 服務的輸出 IP 位址首碼。
@@ -325,7 +327,8 @@ Azure Logic Apps 用於輸入和輸出呼叫的 IP 位址取決於邏輯應用�
 本節只會列出 Azure Logic Apps 服務的輸入 IP 位址。 如果您有 Azure Government，請參閱 [Azure Government - 輸入 IP 位址](#azure-government-inbound)。
 
 > [!TIP]
-> 為了協助降低建立安全性規則時的複雜度，您可以選擇性地使用[服務標籤](../virtual-network/service-tags-overview.md) (**LogicAppsManagement**)，而不是指定每個區域的輸入 Logic Apps IP 位址首碼。 此標籤適用於提供 Logic Apps 服務的區域。
+> 為了協助降低建立安全性規則時的複雜度，您可以選擇性地使用[服務標籤](../virtual-network/service-tags-overview.md) (**LogicAppsManagement**)，而不是指定每個區域的輸入 Logic Apps IP 位址首碼。
+> 此標籤適用於提供 Logic Apps 服務的區域。
 
 <a name="multi-tenant-inbound"></a>
 
@@ -385,7 +388,9 @@ Azure Logic Apps 用於輸入和輸出呼叫的 IP 位址取決於邏輯應用�
 本節列出 Azure Logic Apps 服務和受控連接器的輸出 IP 位址。 如果您有 Azure Government，請參閱 [Azure Government - 輸出 IP 位址](#azure-government-outbound)。
 
 > [!TIP]
-> 為了協助降低建立安全性規則時的複雜度，您可以選擇性地使用[服務標籤](../virtual-network/service-tags-overview.md) (**LogicApps**)，而不是指定每個區域的輸出 Logic Apps IP 位址首碼。 此標籤適用於提供 Logic Apps 服務的區域。 針對受控連接器，您必須繼續使用 IP 位址。
+> 為了協助降低建立安全性規則時的複雜度，您可以選擇性地使用[服務標籤](../virtual-network/service-tags-overview.md) (**LogicApps**)，而不是指定每個區域的輸出 Logic Apps IP 位址首碼。
+> 此標籤適用於提供 Logic Apps 服務的區域。
+> 針對受控連接器，您必須繼續使用 IP 位址。
 
 <a name="multi-tenant-outbound"></a>
 
@@ -440,5 +445,5 @@ Azure Logic Apps 用於輸入和輸出呼叫的 IP 位址取決於邏輯應用�
 
 ## <a name="next-steps"></a>後續步驟
 
-* 了解如何[建立第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)  
+* 了解如何[建立第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * 了解[常見的範例和案例](../logic-apps/logic-apps-examples-and-scenarios.md)

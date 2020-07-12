@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: ce0cd0866cc6daa36d598767a486faeabac8076d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 033b4967d3da382057c2651457f7792e760d8bc3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82791811"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247610"
 ---
 # <a name="monitoring-the-cluster"></a>監視叢集
 
@@ -81,7 +81,7 @@ Service Fabric 有自己的健全狀況模型，詳述於下列文件：
 以下是您可以設定收集叢集效能資料的兩個常用方式：
 
 * **使用代理程式**  
-這是從電腦收集效能的慣用方法，因為代理程式通常會有一份可收集的效能計量清單，而且選擇您要收集或變更的計量是相當簡單的程序。 閱讀關於 Azure 監視器在 Service Fabric 的[Azure 監視器記錄整合](service-fabric-diagnostics-event-analysis-oms.md)中提供 Azure 監視器記錄，以及[設定 log analytics 代理程式](../log-analytics/log-analytics-windows-agent.md)以深入瞭解 log analytics 代理程式，這種監視代理程式可以挑選叢集 vm 和已部署容器的效能資料。
+這是從電腦收集效能的慣用方法，因為代理程式通常會有一份可收集的效能計量清單，而且選擇您要收集或變更的計量是相當簡單的程序。 閱讀關於 Azure 監視器在 Service Fabric 的[Azure 監視器記錄整合](service-fabric-diagnostics-event-analysis-oms.md)中提供 Azure 監視器記錄，以及[設定 log analytics 代理程式](../azure-monitor/platform/agent-windows.md)以深入瞭解 log analytics 代理程式，這種監視代理程式可以挑選叢集 vm 和已部署容器的效能資料。
 
 * **Azure 表格儲存體的效能計數器**  
 您也可以將效能計量傳送給與事件相同的表格儲存體。 這需要變更 Azure 診斷設定來反映叢集中 VM 的適當效能計數器，並在您要部署任何容器時，讓它反映 Docker 統計資料。 請閱讀在 Service Fabric 中設定 [WAD 中的效能計數器](service-fabric-diagnostics-event-aggregation-wad.md)，以設定效能計數器集合。

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: e74d7dcf8764d167e0080c9d7cca5573bd69ef1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c6f4bbae180184c13041863a85e2a7025f06a6e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81260984"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250440"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何在 Azure API 管理中使用服務備份和還原實作災害復原
 
@@ -60,7 +61,7 @@ ms.locfileid: "81260984"
     > [!NOTE]
     > 如果您的帳戶看不到 Azure Active Directory 預設目錄，請連絡 Azure 訂用帳戶的系統管理員，以授與您的帳戶必要權限。
 
-3. 按一下 [新增應用程式註冊]****。
+3. 按一下 [新增應用程式註冊]。
 
     [建立]**** 視窗會出現在右邊。 您可以在這裡輸入 AAD 應用程式的相關資訊。
 
@@ -83,7 +84,7 @@ ms.locfileid: "81260984"
 8. 按 [選取]****。
 9. 按一下 [授與權限]****。
 
-### <a name="configuring-your-app"></a>設定您的應用程式
+### <a name="configuring-your-app"></a>設定應用程式
 
 在呼叫產生備份並將其還原的 API 之前，您必須先取得權杖。 下列範例會使用[microsoft.identitymodel](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory)來抓取權杖，以取得 token。
 
@@ -180,7 +181,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   如果已啟用[防火牆][azure-storage-ip-firewall]，**允許**從控制平面存取 Azure 儲存體帳戶。 客戶應該在其儲存體帳戶上開啟一組[AZURE API 管理控制平面 IP 位址][control-plane-ip-address]，以便進行備份或還原。 
 
 > [!NOTE]
-> 如果您嘗試使用已啟用[防火牆][azure-storage-ip-firewall]的儲存體帳戶來進行備份/還原至 API 管理服務，則在相同的 Azure 區域中，這將無法正常執行。 這是因為 Azure 儲存體的要求不會從計算 > （Azure Api 管理控制平面） Snat 轉譯到公用 IP。 跨區域儲存體要求將會 Snat 轉譯。
+> 如果您嘗試使用已啟用[防火牆][azure-storage-ip-firewall]的儲存體帳戶來進行備份/還原至 API 管理服務，則在相同的 Azure 區域中，這將無法正常執行。 這是因為 Azure 儲存體的要求不會從計算 > (Azure Api 管理控制平面) 中 Snat 轉譯至公用 IP。 跨區域儲存體要求將會 Snat 轉譯。
 
 ### <a name="restore-an-api-management-service"></a><a name="step2"> </a>還原 API 管理服務
 
@@ -233,7 +234,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 [backup an api management service]: #step1
 [restore an api management service]: #step2
-[azure api management rest api]: https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest
+[azure api management rest api]: /rest/api/apimanagement/apimanagementrest/api-management-rest
 [api-management-add-aad-application]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-add-aad-application.png
 [api-management-aad-permissions]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-permissions.png
 [api-management-aad-permissions-add]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-permissions-add.png

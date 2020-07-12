@@ -6,11 +6,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 247a1de4d00668371337295616d31caf101f0cc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e940f0cf0d1547b317cd9e7bd15ac5486d5e70b2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75498157"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248402"
 ---
 # <a name="monitoring-and-diagnostics"></a>監視和診斷
 Azure Service Fabric Mesh 是一個受到完整管理的服務，讓開發人員能夠部署微服務應用程式，而不需管理虛擬機器、儲存體或網路功能。 Service Fabric Mesh 的監視和診斷可歸類為三種主要診斷資料類型：
@@ -57,7 +58,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 | RestartCount | 容器重新開機次數 | N/A |
 
 > [!NOTE]
-> ServiceStatus 和 ServiceReplicaStatus 值與 Service Fabric 中的[HealthState](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet)相同。 
+> ServiceStatus 和 ServiceReplicaStatus 值與 Service Fabric 中的[HealthState](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet)相同。 
 
 每個計量都可在不同的維度上使用，因此您可以在不同的層級上查看匯總。 目前的維度清單如下所示：
 
@@ -73,7 +74,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 
 ### <a name="azure-monitor-cli"></a>Azure 監視器 CLI
 
-[AZURE 監視器 CLI](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)檔中提供完整的命令清單，但我們已包含以下幾個實用的範例 
+[AZURE 監視器 CLI](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)檔中提供完整的命令清單，但我們已包含以下幾個實用的範例 
 
 在每個範例中，資源識別碼會遵循此模式
 
@@ -117,4 +118,4 @@ In addition to the metrics explorer, we also have a dashboard available out of t
 
 ## <a name="next-steps"></a>後續步驟
 * 若要深入了解 Service Fabric Mesh，請閱讀 [Service Fabric Mesh 概觀](service-fabric-mesh-overview.md)。
-* 若要深入瞭解 Azure 監視器計量命令，請參閱[AZURE 監視器 CLI](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)檔。
+* 若要深入瞭解 Azure 監視器計量命令，請參閱[AZURE 監視器 CLI](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)檔。

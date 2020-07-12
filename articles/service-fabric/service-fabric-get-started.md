@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev
-ms.openlocfilehash: e059a503a29872ee6241fe00ff5c7ec94ae30308
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e82c7809f5a6c79b61dc0c6731a696c672f6aa97
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888095"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247331"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>在 Windows 上準備您的開發環境
 
@@ -42,7 +42,7 @@ ms.locfileid: "84888095"
 
 ## <a name="install-the-sdk-and-tools"></a>安裝 SDK 和工具
 
-Web Platform Installer (WebPI) 是安裝 SDK 和工具的建議方式。 如果您在使用 WebPI 時接收到執行階段錯誤，您也可以在特定 Service Fabric 版本的版本資訊中找到安裝程式的直接連結。 版本資訊可在 [Service Fabric 小組部落格](https://blogs.msdn.microsoft.com/azureservicefabric/) \(英文\) 上的各個版本公告中找到。
+Web Platform Installer (WebPI) 是安裝 SDK 和工具的建議方式。 如果您在使用 WebPI 時接收到執行階段錯誤，您也可以在特定 Service Fabric 版本的版本資訊中找到安裝程式的直接連結。 版本資訊可在 [Service Fabric 小組部落格](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) \(英文\) 上的各個版本公告中找到。
 
 > [!NOTE]
 > 不支援本機 Service Fabric 開發叢集升級。

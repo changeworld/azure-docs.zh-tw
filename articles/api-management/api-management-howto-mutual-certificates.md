@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: b0ddf6dda99ee666e3052b5a70e51c7e4208a374
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e02a47cd6ae6e4883b5113b07d4049cd723232d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80347097"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250187"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>如何在 Azure API 管理中使用用戶端憑證驗證來保護後端服務
 
@@ -30,7 +30,7 @@ API 管理可讓您使用用戶端憑證來保護對 API 後端服務的存取�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-本指南將示範如何設定 API 管理服務執行個體，以使用用戶端憑證驗證來存取 API 的後端服務。 在遵循本文中的步驟之前，您應該先設定後端服務以進行用戶端憑證驗證（[若要在 Azure App Service 中設定憑證驗證，請參閱這篇文章][to configure certificate authentication in Azure WebSites refer to this article]）。 您必須存取憑證和密碼以將它上傳至 API 管理服務。
+本指南將示範如何設定 API 管理服務執行個體，以使用用戶端憑證驗證來存取 API 的後端服務。 在遵循本文中的步驟之前，您應該先設定後端服務以進行用戶端憑證驗證 ([在 Azure App Service 中設定憑證驗證，請參閱這篇文章][to configure certificate authentication in Azure WebSites refer to this article]) 。 您必須存取憑證和密碼以將它上傳至 API 管理服務。
 
 ## <a name="upload-a-certificate"></a><a name="step1"> </a>上傳憑證
 
@@ -75,7 +75,7 @@ API 管理可讓您使用用戶端憑證來保護對 API 後端服務的存取�
 3. 將 [閘道認證]**** 變更為 [用戶端憑證]****，並從下拉式清單中選取您的憑證。
     ![啟用用戶端憑證](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
 
-4. 按一下 **[儲存]** 。
+4. 按一下 [儲存]。
 
 > [!WARNING]
 > 此變更將立即生效，且該 API 之作業的呼叫將使用憑證以在後端伺服器上進行驗證。
@@ -86,24 +86,24 @@ API 管理可讓您使用用戶端憑證來保護對 API 後端服務的存取�
 
 ## <a name="self-signed-certificates"></a>自我簽署憑證
 
-如果您使用自我簽署憑證，則需要停用信任鏈結驗證，API 管理才能與後端系統通訊。 否則將會傳回 500 錯誤碼。 若要進行此設定，您可以使用 [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) （適用于新的後端）或 [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) （適用于現有的後端） PowerShell Cmdlet，並將 `-SkipCertificateChainValidation` 參數設為 `True` 。
+如果您使用自我簽署憑證，則需要停用信任鏈結驗證，API 管理才能與後端系統通訊。 否則將會傳回 500 錯誤碼。 若要進行此設定，您可以使用 [`New-AzApiManagementBackend`](/powershell/module/az.apimanagement/new-azapimanagementbackend) 新後端) 的 (，或 [`Set-AzApiManagementBackend`](/powershell/module/az.apimanagement/set-azapimanagementbackend) 現有後端) PowerShell Cmdlet 的 (，並將 `-SkipCertificateChainValidation` 參數設定為 `True` 。
 
 ```powershell
 $context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
 New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
 ```
 
-[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add operations to an API]: ./mock-api-responses.md
 [How to add and publish a product]: api-management-howto-add-products.md
 [Monitoring and analytics]: ../api-management-monitoring.md
 [Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [Get started with Azure API Management]: get-started-create-service-instance.md
-[API Management policy reference]: api-management-policy-reference.md
-[Caching policies]: api-management-policy-reference.md#caching-policies
+[API Management policy reference]: ./api-management-policies.md
+[Caching policies]: ./api-management-policies.md#caching-policies
 [Create an API Management service instance]: get-started-create-service-instance.md
 
-[Azure API Management REST API Certificate entity]: https://msdn.microsoft.com/library/azure/dn783483.aspx
+[Azure API Management REST API Certificate entity]: ./api-management-caching-policies.md
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
 [to configure certificate authentication in Azure WebSites refer to this article]: ../app-service/app-service-web-configure-tls-mutual-auth.md
 
