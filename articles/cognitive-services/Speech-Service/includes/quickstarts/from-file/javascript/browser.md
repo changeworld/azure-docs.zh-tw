@@ -3,13 +3,13 @@ author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: dapine
-ms.openlocfilehash: b5bdbb76a822f8b6d5134da819828b3dee518165
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.author: trbye
+ms.openlocfilehash: 7e2960adce028450fd3ccdb9eb11190629bf7bb8
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83806538"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035642"
 ---
 ## <a name="prerequisites"></a>必要條件
 
@@ -168,7 +168,7 @@ ms.locfileid: "83806538"
 現在，您需要建立指向音訊檔案的 `AudioConfig` 物件。 將此程式碼插入您的語音設定下方的 `startRecognizeOnceAsyncButton.addEventListener()` 方法中。
 
 ```JavaScript
-        var audioConfig  = SpeechSDK.AudioConfig.fromFile(audioFile);
+        var audioConfig  = SpeechSDK.AudioConfig.fromWavFileInput(audioFile);
 ```
 
 ## <a name="initialize-a-speechrecognizer"></a>初始化 SpeechRecognizer
@@ -212,7 +212,7 @@ recognizer.recognizeOnceAsync(
 如果想要在 Web 伺服器上裝載網頁，可以選擇性提供示範應用程式的權杖來源。
 這樣一來，訂用帳戶金鑰將永遠不會離開您的伺服器，同時可讓使用者不需要輸入任何授權代碼就能使用語音功能。
 
-建立名為 `token.php` 的新檔案。 在此範例中，我們會假設您的 Web 伺服器支援 PHP 指令碼語言。 輸入下列程式碼：
+建立名為 `token.php` 的新檔案。 在此範例中，我們會假設您的 Web 伺服器支援 PHP 指令碼語言並且已啟用 cURL。 輸入下列程式碼：
 
 ```php
 <?php

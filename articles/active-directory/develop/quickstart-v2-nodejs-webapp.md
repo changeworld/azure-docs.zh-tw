@@ -11,24 +11,24 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 1ff92b8a9477800477ebb2d79145ddaa78831f30
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 5522d35faf1888c862e0c42328f08067e7b9be26
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536058"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339906"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>快速入門：將使用 OpenID Connect 的登入新增至 Node.js Web 應用程式
 
 在本快速入門中，您將了解如何在使用 Node.js 與 Express 所建置的 Web 應用程式中設定 OpenID Connect 驗證。 此範例已設計為可在任何平台上執行。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要執行此範例，您將需要：
 
 * 從 http://nodejs.org/ 安裝 Node.js
 
-* [Microsoft 帳戶](https://www.outlook.com)或 [Office 365 開發人員計劃](/office/developer-program/office-365-developer-program)
+* [Microsoft 帳戶](https://www.outlook.com)或 [Microsoft 365 開發人員計劃](/office/developer-program/office-365-developer-program)
 
 ## <a name="register-your-application"></a>註冊您的應用程式
 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com/)。
@@ -38,29 +38,29 @@ ms.locfileid: "81536058"
 
 1. 瀏覽至 [[Azure Active Directory] > [應用程式註冊]](https://go.microsoft.com/fwlink/?linkid=2083908) 來註冊您的應用程式。
 
-1. 選取 [新增註冊]  。
+1. 選取 [新增註冊]。
 
-1. 當 [註冊應用程式]  頁面出現時，輸入您應用程式的註冊資訊：
-    - 在 [名稱]  區段中，輸入將對應用程式使用者顯示、且有意義的名稱。 例如：MyWebApp
-    - 在 [支援的帳戶類型]  區段中，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶 (例如 Skype、Xbox、Outlook.com)]  。
+1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊：
+    - 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的名稱。 例如：MyWebApp
+    - 在 [支援的帳戶類型] 區段中，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶 (例如 Skype、Xbox、Outlook.com)]。
 
-    如果有多個重新導向 URI，您稍後必須在應用程式建立成功之後，從 [驗證]  索引標籤新增這些 URI。
+    如果有多個重新導向 URI，您稍後必須在應用程式建立成功之後，從 [驗證] 索引標籤新增這些 URI。
 
-1. 選取 [註冊]  以建立應用程式。
+1. 選取 [註冊] 以建立應用程式。
 
-1. 在應用程式的 [概觀]  頁面上，尋找 [應用程式 (用戶端) 識別碼]  值並將它記下供稍後使用。 稍後在此專案中，您會需要用這個值來設定應用程式。
+1. 在應用程式的 [概觀] 頁面上，尋找 [應用程式 (用戶端) 識別碼] 值並將它記下供稍後使用。 稍後在此專案中，您會需要用這個值來設定應用程式。
 
-1. 在應用程式頁面清單中，選取 [驗證]  。
-    - 在 [重新導向 URI]  區段中，選取下拉式方塊中的 [Web]  ，然後輸入下列重新導向 URI：`http://localhost:3000/auth/openid/return`
-    - 在 [進階設定]  區段中，將 [登出 URL]  設定為 `http://localhost:3000`。
-    - 在 [進階設定] > [隱含授與]  區段中，核取 [識別碼權杖]  ，因為此範例需要啟用 [[隱含授與流程](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow)] 才能將使用者登入。
+1. 在應用程式頁面清單中，選取 [驗證]。
+    - 在 [重新導向 URI] 區段中，選取下拉式方塊中的 [Web]，然後輸入下列重新導向 URI：`http://localhost:3000/auth/openid/return`
+    - 在 [進階設定] 區段中，將 [登出 URL]設定為 `http://localhost:3000`。
+    - 在 [進階設定] > [隱含授與] 區段中，核取 [識別碼權杖]，因為此範例需要啟用 [[隱含授與流程](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow)] 才能將使用者登入。
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
-1. 從 [憑證和祕密]  頁面的 [用戶端密碼]  區段中，選擇 [新增用戶端密碼]  。
+1. 從 [憑證和祕密] 頁面的 [用戶端密碼] 區段中，選擇 [新增用戶端密碼]。
     - 輸入 (執行個體應用程式祕密的) 金鑰描述。
-    - 選取金鑰持續時間，此值可為 [1 年]、[2 年]  或 [永不過期]  。
-    - 當您按一下 [新增]  按鈕時，將會顯示金鑰值。 複製金鑰值，並將此值儲存在安全的位置。
+    - 選取金鑰持續時間，此值可為 [1 年]、[2 年] 或 [永不過期]。
+    - 當您按一下 [新增] 按鈕時，將會顯示金鑰值。 複製金鑰值，並將此值儲存在安全的位置。
 
     稍後您需要用此金鑰來設定應用程式。 此金鑰值不會再次顯示，也無法透過任何其他方式來擷取，因此，請於此值出現在 Azure 入口網站後就立即記錄下來。
 

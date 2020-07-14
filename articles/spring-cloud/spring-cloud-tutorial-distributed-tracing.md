@@ -1,17 +1,17 @@
 ---
-title: 教學課程 - 搭配 Azure Spring Cloud 使用分散式追蹤
-description: 本教學課程說明如何透過 Azure Application Insights 使用 Spring Cloud 的分散式追蹤
+title: 搭配使用分散式追蹤與 Azure Spring Cloud
+description: 了解如何透過 Azure Application Insights 使用 Spring Cloud 的分散式追蹤
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
-ms.openlocfilehash: 0815aa084462d1b829d64cd7c5d6fa7cebf534fc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ccaf58465c1ade0228daea2b535d06fb6168d64f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78273201"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142117"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>搭配使用分散式追蹤與 Azure Spring Cloud
 
@@ -25,9 +25,9 @@ ms.locfileid: "78273201"
 > * 檢視微服務應用程式的相依性對應。
 > * 搭配不同的篩選搜尋追蹤資料。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-若要完成本教學課程，您需要已佈建好且正在執行的 Azure Spring Cloud 服務。 請完成[關於如何透過 Azure CLI 來部署應用程式的快速入門](spring-cloud-quickstart-launch-app-cli.md)，以佈建和執行 Azure Spring Cloud 服務。
+若要遵循這些程序，您需要已佈建好且正在執行的 Azure Spring Cloud 服務。 請完成[關於如何透過 Azure CLI 來部署應用程式的快速入門](spring-cloud-quickstart-launch-app-cli.md)，以佈建和執行 Azure Spring Cloud 服務。
     
 ## <a name="add-dependencies"></a>新增相依性
 
@@ -76,19 +76,19 @@ spring.sleuth.sampler.probability=0.5
 ## <a name="enable-application-insights"></a>啟用 Application Insights
 
 1. 在 Azure 入口網站中，移至您的 Azure Spring Cloud 服務頁面。
-1. 在 [監視]  頁面上，選取 [分散式追蹤]  。
-1. 選取 [編輯設定]  以編輯或新增新的設定。
+1. 在 [監視] 頁面上，選取 [分散式追蹤]。
+1. 選取 [編輯設定] 以編輯或新增新的設定。
 1. 建立新的 Application Insights 查詢或選取現有查詢。
 1. 選擇您想要監視的記錄類別，並指定保留期間 (以天為單位)。
-1. 選取 [套用]  來套用新的追蹤。
+1. 選取 [套用] 來套用新的追蹤。
 
 ## <a name="view-the-application-map"></a>檢視應用程式對應
 
-返回 [分散式追蹤]  頁面，並選取 [檢視應用程式對應]  。 檢閱您應用程式及監視設定的視覺效果呈現。 若要了解如何使用應用程式對應，請參閱[應用程式對應：將分散式應用程式分級](https://docs.microsoft.com/azure/azure-monitor/app/app-map)。
+返回 [分散式追蹤] 頁面，並選取 [檢視應用程式對應]。 檢閱您應用程式及監視設定的視覺效果呈現。 若要了解如何使用應用程式對應，請參閱[應用程式對應：將分散式應用程式分級](https://docs.microsoft.com/azure/azure-monitor/app/app-map)。
 
 ## <a name="use-search"></a>使用搜尋
 
-使用搜尋功能來查詢其他特定的遙測項目。 在 [分散式追蹤]  頁面上，選取 [搜尋]  。 如需如何使用搜尋功能的詳細資訊，請參閱 [在 Application Insights 中使用搜尋](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search)。
+使用搜尋功能來查詢其他特定的遙測項目。 在 [分散式追蹤] 頁面上，選取 [搜尋]。 如需如何使用搜尋功能的詳細資訊，請參閱 [在 Application Insights 中使用搜尋](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search)。
 
 ## <a name="use-application-insights"></a>使用 Application Insights
 
@@ -97,12 +97,9 @@ spring.sleuth.sampler.probability=0.5
 ## <a name="disable-application-insights"></a>停用 Application Insights
 
 1. 在 Azure 入口網站中，移至您的 Azure Spring Cloud 服務頁面。
-1. 在 [監視]  上，選取 [分散式追蹤]  。
-1. 選取 [停用]  以停用 Application Insights。
+1. 在 [監視] 上，選取 [分散式追蹤]。
+1. 選取 [停用] 以停用 Application Insights。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何在 Azure Spring Cloud 中啟用及理解分散式追蹤。 若要了解如何將應用程式繫結至 Azure Cosmos DB 資料庫，請繼續進行下一個教學課程。
-
-> [!div class="nextstepaction"]
-> [了解如何繫結至 Azure Cosmos DB 資料庫](spring-cloud-tutorial-bind-cosmos.md)
+在本文中，您已了解如何在 Azure Spring Cloud 中啟用及理解分散式追蹤。 若要了解如何將服務繫結至應用程式，請參閱[將 Azure Cosmos DB 資料庫繫結至 Azure Spring Cloud 應用程式](spring-cloud-tutorial-bind-cosmos.md)。

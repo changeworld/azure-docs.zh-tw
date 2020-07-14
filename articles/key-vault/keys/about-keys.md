@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f96ec80b529c594a383be8d668fd28b77372cd80
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: b9803726bf3a54eb31d3c2ebaddce11fb96472be
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900924"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413718"
 ---
 # <a name="about-azure-key-vault-keys"></a>關於 Azure Key Vault 金鑰
 
@@ -30,10 +30,10 @@ Key Vault 中的密碼編譯金鑰會表示為 JSON Web 金鑰 [JWK] 物件。 J
 
 基底 JWK/JWA 規格也可延伸，讓 Key Vault 實作使用特有的金鑰類型。 例如，匯入使用 HSM 廠商特定封裝的金鑰，可安全地傳輸只能在 Key Vault HSM 中使用的金鑰。 
 
-Azure Key Vault 同時支援軟式和硬式金鑰：
+Azure Key Vault 支援受軟體保護和受 HSM 保護的金鑰：
 
-- **「軟式」金鑰**：一種由 Key Vault 在軟體中進行處理，但會在待用期間使用 HSM 中的系統金鑰來加密的金鑰。 用戶端可以匯入現有的 RSA 或 EC 金鑰，或要求 Key Vault 產生此金鑰。
-- **「硬式」金鑰**：一種在 HSM (硬體安全模組) 中處理的金鑰。 這些金鑰會在其中一個 Key Vault HSM Security Worlds 中受到保護 (每個地理位置各有一個 Security World，以保有獨立性)。 用戶端可以匯入軟式 RSA 或 EC 金鑰，或從相容的 HSM 裝置匯出金鑰。 用戶端也可以要求 Key Vault 產生金鑰。 此金鑰類型會將 key_hsm 屬性新增至為執行 HSM 金鑰內容而取得的 JWK。
+- **受軟體保護的金鑰**：一種由 Key Vault 在軟體中進行處理，但會在待用期間使用 HSM 中的系統金鑰來加密的金鑰。 用戶端可以匯入現有的 RSA 或 EC 金鑰，或要求 Key Vault 產生此金鑰。
+- **受 HSM 保護的金鑰**：一種在 HSM (硬體安全模組) 中處理的金鑰。 這些金鑰會在其中一個 Key Vault HSM Security Worlds 中受到保護 (每個地理位置各有一個 Security World，以保有獨立性)。 用戶端可以匯入受軟體保護格式的 RSA 或 EC 金鑰，或是從相容的 HSM 裝置匯出金鑰。 用戶端也可以要求 Key Vault 產生金鑰。 此金鑰類型會將 key_hsm 屬性新增至為執行 HSM 金鑰內容而取得的 JWK。
 
 如需地理界限的詳細資訊，請參閱 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/privacy/)  
 
@@ -41,9 +41,9 @@ Azure Key Vault 同時支援軟式和硬式金鑰：
 
 Key Vault 僅支援 RSA 和橢圓曲線金鑰。 
 
--   **EC**：「軟式」橢圓曲線金鑰。
+-   **EC**：受軟體保護的橢圓曲線金鑰。
 -   **EC-HSM**：「硬式」橢圓曲線金鑰。
--   **RSA**：「軟式」RSA 金鑰。
+-   **RSA**：受軟體保護的 RSA 金鑰。
 -   **RSA-HSM**：「硬式」RSA 金鑰。
 
 Key Vault 支援 2048、3072 和 4096 等大小的 RSA 金鑰。 Key Vault 支援 P-256、P-384、P-521 和 P-256K (SECP256K1) 等類型的橢圓曲線金鑰。
@@ -119,20 +119,20 @@ Key Vault 不支援匯出作業。 在系統中佈建金鑰後，即無法加以
 
 除了金鑰內容，您可以指定下列屬性。 在 JSON 要求中，屬性關鍵字和括弧「{」「}」是必要的，即使沒有指定任何屬性。  
 
-- enabled  ：選擇性的布林值，預設值是 **true**。 指定金鑰是否已啟用，並可用於密碼編譯作業。 enabled  屬性會與 nbf  和 exp  一起使用。當作業發生於 nbf  和 exp  之間時，只有在 enabled  設定為 **true** 時，才能允許此作業。 發生於 nbf   / exp  範圍外的作業將自動禁止，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。
-- *nbf*：選擇性的 IntDate，預設值為現在 (now)。 nbf  (不早於) 屬性會定義一個時間，而在此時間之前「絕不可」將金鑰用於密碼編譯作業，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。 若要處理 nbf  屬性，目前的日期/時間「必須」晚於或等同 nbf  屬性中所列的「不早於」日期/時間。 考慮到時鐘誤差，Key Vault 可能會多提供一點時間 (通常都在幾分鐘內)。 其值必須是包含 IntDate 值的數字。  
-- *exp*：選擇性的 IntDate，預設值為永久 (forever)。 exp  (到期時間) 屬性會定義到期時間，而在此時間點或之後「絕不可」將金鑰用於密碼編譯作業，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。 若要處理 exp  屬性，目前的日期/時間「必須」早於 exp  屬性中所列的到期日期/時間。 考慮到時鐘誤差，Key Vault 可能會多提供一點時間 (通常都在幾分鐘內)。 其值必須是包含 IntDate 值的數字。  
+- enabled：選擇性的布林值，預設值是 **true**。 指定金鑰是否已啟用，並可用於密碼編譯作業。 enabled 屬性會與 nbf 和 exp 一起使用。當作業發生於 nbf 和 exp 之間時，只有在 enabled 設定為 **true** 時，才能允許此作業。 發生於 nbf / exp 範圍外的作業將自動禁止，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。
+- *nbf*：選擇性的 IntDate，預設值為現在 (now)。 nbf (不早於) 屬性會定義一個時間，而在此時間之前「絕不可」將金鑰用於密碼編譯作業，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。 若要處理 nbf 屬性，目前的日期/時間「必須」晚於或等同 nbf 屬性中所列的「不早於」日期/時間。 考慮到時鐘誤差，Key Vault 可能會多提供一點時間 (通常都在幾分鐘內)。 其值必須是包含 IntDate 值的數字。  
+- *exp*：選擇性的 IntDate，預設值為永久 (forever)。 exp (到期時間) 屬性會定義到期時間，而在此時間點或之後「絕不可」將金鑰用於密碼編譯作業，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。 若要處理 exp 屬性，目前的日期/時間「必須」早於 exp 屬性中所列的到期日期/時間。 考慮到時鐘誤差，Key Vault 可能會多提供一點時間 (通常都在幾分鐘內)。 其值必須是包含 IntDate 值的數字。  
 
 任何包含金鑰屬性的回應中，可包含其他唯讀屬性：  
 
-- *created*：選擇性的 IntDate。 created  屬性會指出建立此金鑰版本的時間。 若金鑰是在新增此屬性之前建立的，則此值為 Null。 其值必須是包含 IntDate 值的數字。  
-- *updated*：選擇性的 IntDate。 updated  屬性會指出更新此金鑰版本的時間。 若金鑰是在新增此屬性之前進行最後一次更新，則此值為 Null。 其值必須是包含 IntDate 值的數字。  
+- *created*：選擇性的 IntDate。 created 屬性會指出建立此金鑰版本的時間。 若金鑰是在新增此屬性之前建立的，則此值為 Null。 其值必須是包含 IntDate 值的數字。  
+- *updated*：選擇性的 IntDate。 updated 屬性會指出更新此金鑰版本的時間。 若金鑰是在新增此屬性之前進行最後一次更新，則此值為 Null。 其值必須是包含 IntDate 值的數字。  
 
 如需有關 IntDate 和其他資料類型的詳細資訊，請參閱 [關於金鑰、祕密與憑證：[資料類型](../general/about-keys-secrets-certificates.md#data-types)。
 
 ### <a name="date-time-controlled-operations"></a>受到日期時間控制的作業
 
-nbf   / exp  範圍外尚未生效和過期的金鑰，將會用於**解密**、**解除包裝**和**驗證**作業 (不會傳回 403 禁止)。 使用尚未生效狀態的基本原理是，允許金鑰先經過測試，然後才在生產環境使用。 使用過期狀態的基本原理是，允許對在金鑰有效時建立的資料執行復原作業。 此外，您可以使用 Key Vault 原則，或藉由將 enabled  金鑰屬性更新為 **false**，來停用金鑰的存取權。
+nbf / exp 範圍外尚未生效和過期的金鑰，將會用於**解密**、**解除包裝**和**驗證**作業 (不會傳回 403 禁止)。 使用尚未生效狀態的基本原理是，允許金鑰先經過測試，然後才在生產環境使用。 使用過期狀態的基本原理是，允許對在金鑰有效時建立的資料執行復原作業。 此外，您可以使用 Key Vault 原則，或藉由將 enabled 金鑰屬性更新為 **false**，來停用金鑰的存取權。
 
 如需資料類型的詳細資訊，請參閱[資料類型](../general/about-keys-secrets-certificates.md#data-types)。
 
@@ -143,7 +143,7 @@ nbf   / exp  範圍外尚未生效和過期的金鑰，將會用於**解密**、
 您可以將其他應用程式專屬的中繼資料指定為標記形式。 Key Vault 支援最多 15 個標記，各標記可以有 256 個字元的名稱和 256 個字元的值。  
 
 >[!Note]
->如果標記具有可對物件類型 (金鑰、秘密或憑證) 執行「列出」  或「取得」  的權限，則呼叫者可讀取這些標記。
+>如果標記具有可對物件類型 (金鑰、秘密或憑證) 執行「列出」或「取得」的權限，則呼叫者可讀取這些標記。
 
 ##  <a name="key-access-control"></a>金鑰存取控制
 

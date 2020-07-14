@@ -232,6 +232,24 @@
           href: how-to-add-tile-layer-android-map.md
         - name: 顯示流量資料
           href: how-to-show-traffic-android.md
+    - name: 在 Power BI 中使用 Azure 地圖服務
+      items:
+        - name: 開始使用
+          href: power-bi-visual-getting-started.md
+        - name: 了解圖層
+          href: power-bi-visual-understanding-layers.md
+        - name: 新增泡泡圖層
+          href: power-bi-visual-add-bubble-layer.md
+        - name: 新增長條圖圖層
+          href: power-bi-visual-add-bar-chart-layer.md
+        - name: 新增參考圖層
+          href: power-bi-visual-add-reference-layer.md
+        - name: 新增圖格圖層
+          href: power-bi-visual-add-tile-layer.md
+        - name: 顯示即時流量
+          href: power-bi-visual-show-real-time-traffic.md
+        - name: 管理存取權
+          href: power-bi-visual-manage-access.md
     - name: 提供資料意見反應
       href: how-to-use-feedback-tool.md
 - name: 參考

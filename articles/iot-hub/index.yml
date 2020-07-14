@@ -11,12 +11,12 @@ metadata:
   manager: eliotgra
   ms.date: 03/23/2020
   ms.custom: amqp
-  ms.openlocfilehash: 93f81f444acae9b4b4451de75de018c2a894bcba
-  ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+  ms.openlocfilehash: c2faec6885987a57147cef2f0e9ec50bcf003793
+  ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 04/21/2020
-  ms.locfileid: "81730773"
+  ms.lasthandoff: 07/11/2020
+  ms.locfileid: "86259360"
 landingContent:
 - title: 開始使用
   linkLists:
@@ -104,3 +104,19 @@ landingContent:
       url: iot-hub-security-x509-get-started.md
     - text: X.509 CA 憑證的安全性概念
       url: iot-hub-x509ca-concept.md
+- title: 針對 IoT 中樞使用 Azure CLI
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: IoT 的 CLI 參考
+      url: /cli/azure/azure-cli-reference-for-IoT
+  - linkListType: concept
+    links:
+    - text: 建立 IoT 中樞
+      url: iot-hub-create-using-cli.md
+    - text: 管理 IoT 裝置
+      url: iot-hub-device-management-iot-extension-azure-cli-2-0.md
+    - text: 設定訊息路由
+      url: tutorial-routing-config-message-routing-cli.md
+    - text: 傳送遙測和監視
+      url: quickstart-send-telemetry-cli.md

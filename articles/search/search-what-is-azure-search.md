@@ -7,19 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 06/23/2020
-ms.openlocfilehash: 7075753049e6ba6f4804d23aa31796cbd5bc9141
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.date: 06/30/2020
+ms.openlocfilehash: 9d081dea8e4a59a7b872bde8626cbb8674eebd7e
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263223"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554332"
 ---
 # <a name="what-is-azure-cognitive-search"></a>什麼是 Azue 認知搜尋？
 
-Azure 認知搜尋 ([先前稱為「Azure 搜尋服務」](whats-new.md#new-service-name)) 是一個搜尋即服務雲端解決方案，可為開發人員提供 API 和工具，透過 Web、行動和企業應用程式中的私用和異質內容來增添豐富的搜尋體驗。 您的程式碼或工具會叫用資料擷取 (索引編制) 以建立和載入索引。 您可以選擇新增認知技能，以在編製索引期間套用 AI 程序。 這麼做可以新增對搜尋和其他案例有幫助的新資訊和結構。
+Azure 認知搜尋 ([先前稱為「Azure 搜尋服務」](whats-new.md#new-service-name)) 是一個搜尋即服務雲端解決方案，可為開發人員提供 API 和工具，透過 Web、行動和企業應用程式中的私用和異質內容來增添豐富的搜尋體驗。 
 
-在服務的另一方面，應用程式程式碼會發出查詢要求和處理回應。 搜尋體驗會透過 Azure 認知搜尋的功能，在您的用戶端中進行定義，而查詢會針對您在服務上建立、擁有及儲存的持續性索引執行。
+在自訂解決方案中，搜尋服務位於兩個主要工作負載之間：內容擷取和查詢。 您的程式碼或工具會定義結構描述，並且叫用資料擷取 (索引)，以將索引載入 Azure 認知搜尋。 您可以選擇新增認知技能，以在編製索引期間套用 AI 程序。 這麼做可以建立對搜尋和知識發掘案例有幫助的新資訊和結構。
+
+一旦索引存在，您的應用程式程式碼會發出查詢要求給搜尋服務，並且處理回應。 搜尋體驗會透過 Azure 認知搜尋的功能，在您的用戶端中進行定義，而查詢會針對您在服務上建立、擁有及儲存的持續性索引執行。
 
 ![Azure 認知搜尋架構](media/search-what-is-azure-search/azure-search-diagram.svg "Azure 認知搜尋架構")
 
@@ -29,9 +31,9 @@ Azure 認知搜尋 ([先前稱為「Azure 搜尋服務」](whats-new.md#new-serv
 
 Azure 認知搜尋適用於下列應用程式案例：
 
-+ 將異質內容類型合併為可搜尋的單一私人索引。 查詢一律會針對您搭配文件建立和載入的索引進行，而且索引一律會位於 Azure 認知搜尋服務的雲端中。 您可以從任何來源或平台，將 JSON 文件的資料流填入索引。 或者，針對 Azure 上的內容，您可以使用「索引子」  將資料提取到索引中。 索引定義和管理/擁有權是使用 Azure 認知搜尋的主要原因。
++ 將異質內容類型合併為可搜尋的單一私人索引。 查詢一律會針對您搭配文件建立和載入的索引進行，而且索引一律會位於 Azure 認知搜尋服務的雲端中。 您可以從任何來源或平台，將 JSON 文件的資料流填入索引。 或者，針對 Azure 上的內容，您可以使用「索引子」將資料提取到索引中。 索引定義和管理/擁有權是使用 Azure 認知搜尋的主要原因。
 
-+ 原始內容是大型的無差異文字、影像檔案或應用程式檔案，例如 Azure Blob 儲存體或 Cosmos DB 等 Azure 資料來源上的 Office 內容類型。 您可以在編製索引期間套用認知技能，以新增結構或從影像和應用程式檔中擷取意義。
++ 原始內容是大型的無差異文字、影像檔案或應用程式檔案，例如 Azure Blob 儲存體或 Cosmos DB 等 Azure 資料來源上的 Office 內容類型。 您可以在編製索引期間套用認知技能，以新增結構或從影像和應用程式檔中擷取可搜尋的文字。
 
 + 輕鬆實作與搜尋相關的功能。 Azure 認知搜尋 API 簡化了查詢結構、多面向導覽、篩選 (包括地理空間搜尋)、同義字對應、自動提示查詢和相關性調整。 透過內建功能，您可以滿足終端使用者希望搜尋體驗能類似 Web 搜尋引擎的期望。
 
@@ -53,20 +55,20 @@ Azure 認知搜尋適用於下列應用程式案例：
 
 | AI&nbsp;enrichment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | 特性 |
 |-------------------|----------|
-|在編制索引期間的 AI 處理 | 用於影像和文字分析的 [**AI 擴充**](cognitive-search-concept-intro.md)可以套用至索引管線，以便從原始內容擷取文字資訊。 [內建技巧](cognitive-search-predefined-skills.md)的範例包括光學字元辨識 (讓掃描過的 JPEG 可搜尋)、實體辨識 (識別組織、名稱或位置)，以及關鍵片語辨識。 您也可以[將自訂技巧編碼](cognitive-search-create-custom-skill-example.md)，以附加至管線。 |
-| 在非搜尋案例中儲存擴充的內容以供分析和取用 | [**知識存放區 (預覽)** ](knowledge-store-concept-intro.md) 是以 AI 為基礎之索引的延伸。 將 Azure 儲存體當作後端時，您可以儲存編製索引期間建立的擴充。 這些成品可以用來協助您設計更好的技能集，或從無組織或模稜兩可的資料建立圖形和結構。 您可以針對特定工作負載或使用者的這些結構建立投影。 您也可以直接分析擷取的資料，或將其載入至其他應用程式。<br/><br/> |
+|在編制索引期間的 AI 處理 | 用於影像和文字分析的 [**AI 擴充**](cognitive-search-concept-intro.md)可以套用至索引管線，以便從原始內容擷取文字資訊。 [內建技巧](cognitive-search-predefined-skills.md)的範例包括光學字元辨識 (讓掃描過的 JPEG 可搜尋)、實體辨識 (識別組織、名稱或位置)，以及關鍵片語辨識。 您也可以[將自訂技巧編碼](cognitive-search-create-custom-skill-example.md)，以附加至管線。 您也可以[整合 Azure Machine Learning 撰寫技能](https://docs.microsoft.com/azure/search/cognitive-search-tutorial-aml-custom-skill)。 |
+| 在非搜尋案例中儲存擴充的內容以供分析和取用 | [**知識存放區**](knowledge-store-concept-intro.md)是以 AI 為基礎的索引延伸。 將 Azure 儲存體當作後端時，您可以儲存編製索引期間建立的擴充。 這些成品可以用來協助您設計更好的技能集，或從無組織或模稜兩可的資料建立圖形和結構。 您可以針對特定工作負載或使用者的這些結構建立投影。 您也可以直接分析擷取的資料，或將其載入至其他應用程式。<br/><br/> |
 | 快取的內容 | [**累加擴充 (預覽)** ](cognitive-search-incremental-indexing-conceptual.md) 會針對未變更的管線部分使用快取的內容，以將處理對象限制在只針對由管線的特定編輯所變更的文件。 |
 
 | 資料&nbsp;匯入/編製索引 | 特性 |
 |----------------------------------|----------|
-| 資料來源 | Azure 認知搜尋索引接受以 JSON 資料結構形式提交的任何來源。 <br/><br/> [**索引子**](search-indexer-overview.md)會針對支援的 Azure 資料來源，將資料擷取自動化，並處理 JSON 序列化。 連線 [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Azure Cosmos DB](search-howto-index-cosmosdb.md) 或 [Azure Blob 儲存體](search-howto-indexing-azure-blob-storage.md)，以擷取主要資料存放區中可搜尋的內容。 Azure Blob 索引子可執行「文件破解」  以[從主要檔案格式擷取文字](search-howto-indexing-azure-blob-storage.md)，包括 Microsoft Office、PDF 和 HTML 文件。 |
+| 資料來源 | Azure 認知搜尋索引接受以 JSON 資料結構形式提交的任何來源。 <br/><br/> [**索引子**](search-indexer-overview.md)會針對支援的 Azure 資料來源，將資料擷取自動化，並處理 JSON 序列化。 連線 [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Azure Cosmos DB](search-howto-index-cosmosdb.md) 或 [Azure Blob 儲存體](search-howto-indexing-azure-blob-storage.md)，以擷取主要資料存放區中可搜尋的內容。 Azure Blob 索引子可執行「文件破解」以[從主要檔案格式擷取文字](search-howto-indexing-azure-blob-storage.md)，包括 Microsoft Office、PDF 和 HTML 文件。 |
 | 階層式和巢狀資料結構 | [**複雜類型**](search-howto-complex-data-types.md)和集合可讓您建立幾乎任何類型 JSON 結構的模型，作為 Azure 認知搜尋索引。 一對多和多對多基數可以透過集合、複雜類型和複雜類型的集合，以原生方式表示。|
 | 語言分析 | 分析器是在編製索引和搜尋作業期間用於文字處理的元件。 有兩種類型。 <br/><br/>[**自訂語彙分析器**](index-add-custom-analyzers.md) (英文) 用於使用語音比對和規則運算式的複雜搜尋查詢。 <br/><br/>Lucene 或 Microsoft 的[**語言分析器**](index-add-language-analyzers.md) (英文) 可用來以智慧方式處理特定語言的語言學，包括動詞時態、性別、不規則複數名詞 (例如 ' mouse' 與 'mice')、拆解複合字、斷字 (針對沒有空格的語言) 等。 <br/><br/>|
 
 
 | 平台&nbsp;層級&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 特性 |
 |-------------------|----------|
-| 用於原型設計和檢查的工具 | 在入口網站中，您可以使用 [[匯入資料]  ](search-import-data-portal.md) 精靈設定索引子、使用索引設計工具建立索引，以及使用 [[搜尋總管]  ](search-explorer.md) 測試查詢並修改評分設定檔。 您也可以開啟任何索引，以檢視其結構描述。 |
+| 用於原型設計和檢查的工具 | 在入口網站中，您可以使用 [[匯入資料]](search-import-data-portal.md) 精靈設定索引子、使用索引設計工具建立索引，以及使用 [[搜尋總管]](search-explorer.md) 測試查詢並修改評分設定檔。 您也可以開啟任何索引，以檢視其結構描述。 |
 | 監視和診斷 | [**啟用監視功能**](search-monitor-usage.md)，使其超越永遠可以在入口網站看到，且一目了然的計量。 自動會擷取每秒查詢次數、延遲和節流的計量，並在入口網站頁面中報告，不需要其他設定。|
 | 伺服器端加密 | [**Microsoft 管理的待用加密**](search-security-overview.md#encrypted-transmissions-and-storage)會內建到內部儲存層，而且無法回復。 您可以選擇性地使用[**客戶管理的加密金鑰**](search-security-manage-encryption-keys.md)補充預設加密。 您在 Azure Key Vault 中建立並管理的金鑰用來加密 Azure 認知搜尋中的索引和同義字地圖。 |
 | 基礎結構 | **高可用性平台**可確保相當可靠的搜尋服務體驗。 經過適當的調整，[Azure 認知搜尋可提供 99.9% SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。<br/><br/> Azure 認知搜尋是**完全受控和可調整的**端對端解決方案，完全不需要基礎結構管理。 以兩種方式調整您的服務，即可針對您的需求量身訂做，以處理更多的文件儲存體、更高的查詢負載，或兩者。<br/><br/>|
@@ -129,7 +131,7 @@ Azure 認知搜尋適用於下列應用程式案例：
 
 |平台 |描述 |
 |-----|------------|
-|[REST](/rest/api/searchservice/) | 任何程式設計平台和語言 (包括 Xamarin、Java 和 JavaScript) 支援的 HTTP 指令|
+|[REST](/rest/api/searchservice/) | 任何程式設計平台和語言 (包括 JAVA、Python 和 JavaScript) 支援的 HTTP 指令|
 |[.NET SDK](search-howto-dotnet-sdk.md) | REST API 的 .NET 包裝函式支援使用 C# 和以 .NET Framework 為目標的其他受控程式碼語言，有效率地撰寫程式碼 |
 
 ## <a name="free-trial"></a>免費試用

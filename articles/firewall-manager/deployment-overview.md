@@ -1,24 +1,22 @@
 ---
-title: Azure 防火牆管理員預覽部署概觀
-description: 了解 Azure 防火牆管理員預覽所需的概略部署步驟
+title: Azure 防火牆管理員部署概觀
+description: 了解 Azure 防火牆管理員所需的高階部署步驟
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 02/18/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: c3a94cea838609f65511a21ee2f64e8782a6adea
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 90f817ac3bbd475d8a84df44bc284f09fcd19ce3
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77443120"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565804"
 ---
-# <a name="azure-firewall-manager-preview-deployment-overview"></a>Azure 防火牆管理員預覽部署概觀
+# <a name="azure-firewall-manager-deployment-overview"></a>Azure 防火牆管理員部署概觀
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
-
-有多種方法可以部署 Azure 防火牆管理員預覽，但建議使用下列一般程序。
+有多種方法可以部署 Azure 防火牆管理員，但建議使用下列一般程序。
 
 ## <a name="general-deployment-process"></a>一般部署程序
 
@@ -70,4 +68,4 @@ ms.locfileid: "77443120"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [教學課程：使用 Azure 入口網站以 Azure 防火牆管理員預覽來保護您的雲端網路](secure-cloud-network.md)
+- [教學課程：使用 Azure 入口網站以 Azure 防火牆管理員保護您的雲端網路](secure-cloud-network.md)

@@ -3,16 +3,16 @@ title: Azure EA 入口網站系統管理員
 description: 本文將說明系統管理員在 Azure EA 入口網站中完成的一般工作。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: eefd4a9ddf2150728578a4e058686a3204e34930
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 6169a18148b251540d66bce6e34374a16f697015
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456550"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044884"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA 入口網站系統管理員
 
@@ -33,7 +33,7 @@ ms.locfileid: "84456550"
 
 ## <a name="department-spending-quotas"></a>部門支出配額
 
-EA 客戶可為註冊下的每個部門設定或變更支出配額。 系統會針對目前的承諾用量期間設定支出配額金額。 在目前的承諾用量期間結束時，系統會將現有的支出配額延長到下一個承諾用量期間，除非值有所更新。
+EA 客戶可為註冊下的每個部門設定或變更支出配額。 系統會針對目前的預付款期間設定支出配額金額。 在目前的預付款期間結束時，系統會將現有的支出配額延長到下一個預付款期間，除非值有所更新。
 
 部門系統管理員可檢視支出配額，但只有企業系統管理員可更新配額金額。 當配額達到 50%、75%、90% 和 100% 時，企業系統管理員和部門系統管理員將會收到通知。
 
@@ -48,9 +48,9 @@ EA 客戶可為註冊下的每個部門設定或變更支出配額。 系統會�
     - [部門名稱] 和 [成本中心] 也可在此時編輯。
  1. 選取 [儲存]。
 
-部門的支出配額此時會顯示在 [部門清單] 檢視中的 [部門] 索引標籤下。在目前的承諾用量期間結束時，Azure EA 入口網站將會維護下一個承諾用量期限的支出配額。
+部門的支出配額此時會顯示在 [部門清單] 檢視中的 [部門] 索引標籤下。在目前的預付款期間結束時，Azure EA 入口網站將會維護下一個預付款期限的支出配額。
 
-部門配額金額獨立於目前的承諾用量金額外，且配額金額和警示僅適用於第一方使用量。 部門支出配額僅供參考之用，不會強制執行支出限制。
+部門配額金額獨立於目前的 Azure 預付款金額外，且配額金額和警示僅適用於第一方使用量。 部門支出配額僅供參考之用，不會強制執行支出限制。
 
 ### <a name="department-administrator-to-view-the-quota"></a>部門系統管理員若要檢視配額：
 
@@ -174,7 +174,7 @@ Azure 企業版使用者可以從 Microsoft 帳戶 (MSA 或 Live ID) 轉換為�
 
 ### <a name="how-many-azure-account-owners-can-you-have-per-subscription"></a>您的每個訂用帳戶可以有多少個 Azure 帳戶擁有者？
 
-每個訂用帳戶只能有一個帳戶擁有者。  您可以在 [portal.azure.com] (https://portal.azure.com) 頁面左上角的 [訂用帳戶] 索引標籤中，使用角色型存取或 (存取控制 (IAM)) 來新增其他角色。
+每個訂用帳戶只能有一個帳戶擁有者。  您可以在 [Azure 入口網站](https://portal.azure.com)頁面左上角的 [訂用帳戶] 索引標籤中，使用角色型存取或 (存取控制 (IAM)) 來新增其他角色。
 
 ### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>一個 Azure 帳戶擁有者是否可列在多個部門下？
 

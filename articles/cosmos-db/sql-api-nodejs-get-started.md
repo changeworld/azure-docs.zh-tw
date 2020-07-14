@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: dech
-ms.openlocfilehash: ef493b6b21eb0ba0ad6d22a21e4e205a9fecacb6
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 5d41f467efafa42bd73fce258ca97e4412a7cf48
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858062"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026843"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>教學課程：使用 JavaScript SDK 建置 Node.js 主控台應用程式，以管理 Azure Cosmos DB SQL API 資料
 
@@ -36,7 +36,7 @@ ms.locfileid: "82858062"
 > * 將項目新增至容器。
 > * 對項目、容器和資料庫執行基本作業。
 
-## <a name="prerequisites"></a>Prerequisites 
+## <a name="prerequisites"></a>必要條件 
 
 請確定您具有下列資源：
 
@@ -82,23 +82,23 @@ ms.locfileid: "82858062"
 
 現在，您的應用程式以存在，您必須確定它可與 Azure Cosmos DB 通訊。 藉由更新一些組態設定 (如下列步驟所示)，您即可設定應用程式而使其與 Azure Cosmos DB 通訊：
 
-1. 在您慣用的文字編輯器中開啟 config.js  檔案。
+1. 在您慣用的文字編輯器中開啟 config.js 檔案。
 
-1. 複製以下程式碼片段並貼到 config.js  檔案中，以及將屬性 `endpoint` 和 `key` 設定為您的 Azure Cosmos DB 端點 URI 和主要金鑰。 資料庫、容器名稱會設定為 **Tasks** 和 **Items**。 您將用於此應用程式的分割區索引鍵是 **/category**。
+1. 複製以下程式碼片段並貼到 config.js 檔案中，以及將屬性 `endpoint` 和 `key` 設定為您的 Azure Cosmos DB 端點 URI 和主要金鑰。 資料庫、容器名稱會設定為 **Tasks** 和 **Items**。 您將用於此應用程式的分割區索引鍵是 **/category**。
 
    :::code language="javascript" source="~/cosmosdb-nodejs-get-started/config.js":::
 
-   您可以在 [Azure 入口網站](https://portal.azure.com)的 [金鑰]  窗格中找到端點和金鑰詳細資料。
+   您可以在 [Azure 入口網站](https://portal.azure.com)的 [金鑰] 窗格中找到端點和金鑰詳細資料。
 
-   ![從 Azure 入口網站取得金鑰的螢幕擷取畫面][keys]
+   :::image type="content" source="media/sql-api-nodejs-get-started/node-js-tutorial-keys.png" alt-text="從 Azure 入口網站取得金鑰的螢幕擷取畫面":::
 
-JavaScript SDK 會使用通用詞彙「容器」  和「項目」  。 容器可以是集合、圖形或資料表。 項目可以是文件、邊緣/頂點或資料列，並且是容器內的內容。 在先前的程式碼片段中，`module.exports = config;` 程式碼會用來匯出 config 物件，因此您可以在 app.js  檔案中參考該物件。
+JavaScript SDK 會使用通用詞彙「容器」和「項目」。 容器可以是集合、圖形或資料表。 項目可以是文件、邊緣/頂點或資料列，並且是容器內的內容。 在先前的程式碼片段中，`module.exports = config;` 程式碼會用來匯出 config 物件，因此您可以在 app.js 檔案中參考該物件。
 
 ## <a name="create-a-database-and-a-container"></a>建立資料庫和容器
 
-1. 在您慣用的文字編輯器中開啟 databaseContext.js  檔案。
+1. 在您慣用的文字編輯器中開啟 databaseContext.js 檔案。
 
-1. 複製下列程式碼並貼到 databaseContext.js  檔案中。 此程式碼會定義一個函式來建立「工作」、「項目」資料庫和容器 (如果您的 Azure Cosmos 帳戶中沒有的話)：
+1. 複製下列程式碼並貼到 databaseContext.js 檔案中。 此程式碼會定義一個函式來建立「工作」、「項目」資料庫和容器 (如果您的 Azure Cosmos 帳戶中沒有的話)：
 
    :::code language="javascript" source="~/cosmosdb-nodejs-get-started/data/databaseContext.js" id="createDatabaseAndContainer":::
 
@@ -109,7 +109,7 @@ JavaScript SDK 會使用通用詞彙「容器」  和「項目」  。 容器可
 
 ## <a name="import-the-configuration"></a>匯入設定
 
-1. 在您慣用的文字編輯器中開啟 app.js  檔案。
+1. 在您慣用的文字編輯器中開啟 app.js 檔案。
 
 1. 複製並貼上下列程式碼以匯入 `@azure/cosmos` 模組、設定，以及您在先前步驟中定義的 databaseCoNtext。 
 
@@ -117,7 +117,7 @@ JavaScript SDK 會使用通用詞彙「容器」  和「項目」  。 容器可
 
 ## <a name="connect-to-the-azure-cosmos-account"></a>連線至 Azure Cosmos 帳戶
 
-在 app.js  檔案中，複製並貼上下列程式碼，以使用先前儲存的端點和金鑰來建立新的 CosmosClient 物件。
+在 app.js 檔案中，複製並貼上下列程式碼，以使用先前儲存的端點和金鑰來建立新的 CosmosClient 物件。
 
 :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="CreateClientObjectDatabaseContainer":::
 
@@ -132,7 +132,7 @@ JavaScript SDK 會使用通用詞彙「容器」  和「項目」  。 容器可
 
 ## <a name="query-items"></a><a id="QueryItem"></a>查詢項目
 
-Azure Cosmos DB 支援對儲存於每個容器中的 JSON 項目進行豐富查詢。 下列範例程式碼顯示您可以針對容器中項目執行的查詢。您可以使用 `Items` 類別的 query 函式來查詢項目。 將下列程式碼新增至 app.js  檔案，以從您的 Azure Cosmos 帳戶查詢項目：
+Azure Cosmos DB 支援對儲存於每個容器中的 JSON 項目進行豐富查詢。 下列範例程式碼顯示您可以針對容器中項目執行的查詢。您可以使用 `Items` 類別的 query 函式來查詢項目。 將下列程式碼新增至 app.js 檔案，以從您的 Azure Cosmos 帳戶查詢項目：
 
 :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="QueryItems":::
 
@@ -150,13 +150,13 @@ Azure Cosmos DB 支援對儲存於每個容器中的 JSON 項目進行豐富查�
 
 ## <a name="update-an-item"></a><a id="ReplaceItem"></a>更新項目
 
-Azure Cosmos DB 支援取代項目的內容。 複製以下程式碼並貼到 app.js  檔案中。 此程式碼會從容器中取得項目，並將 isComplete  欄位更新為 true。
+Azure Cosmos DB 支援取代項目的內容。 複製以下程式碼並貼到 app.js 檔案中。 此程式碼會從容器中取得項目，並將 isComplete 欄位更新為 true。
 
 :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="UpdateItem":::
 
 ## <a name="delete-an-item"></a><a id="DeleteItem"></a>刪除項目
 
-Azure Cosmos DB 支援刪除 JSON 項目。 下列程式碼會示範如何依識別碼取得項目，並將其刪除。 複製以下程式碼並貼到 app.js  檔案中：
+Azure Cosmos DB 支援刪除 JSON 項目。 下列程式碼會示範如何依識別碼取得項目，並將其刪除。 複製以下程式碼並貼到 app.js 檔案中：
 
 :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="DeleteItem":::
 
@@ -215,7 +215,7 @@ node app.js
 
 ## <a name="clean-up-resources"></a>清除資源
 
-若不再需要這些資源，您可以刪除資源群組、Azure Cosmos DB 帳戶和所有相關資源。 請選取用於 Azure Cosmos DB 帳戶的資源群組，選取 [刪除]  ，然後確認要刪除的資源群組名稱，即可刪除資源。
+若不再需要這些資源，您可以刪除資源群組、Azure Cosmos DB 帳戶和所有相關資源。 請選取用於 Azure Cosmos DB 帳戶的資源群組，選取 [刪除]，然後確認要刪除的資源群組名稱，即可刪除資源。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -223,4 +223,3 @@ node app.js
 > [監視 Azure Cosmos DB 帳戶](monitor-accounts.md)
 
 [create-account]: create-sql-api-dotnet.md#create-account
-[keys]: media/sql-api-nodejs-get-started/node-js-tutorial-keys.png

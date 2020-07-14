@@ -7,17 +7,17 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
-ms.date: 06/21/2019
-ms.openlocfilehash: f435a33befdde96a92c900663a2ddcca1d319260
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/6/2020
+ms.openlocfilehash: d62fd0a23a5f5553f27c7a399eb17d06d427a6f3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82201188"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108782"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Azure 串流分析是什麼？
 
-Azure 串流分析是即時分析與處理複雜事件的引擎，用來同時分析和處理多個來源的大量快速串流資料。 它可以從多個輸入來源 (包括裝置、感應器、點選流、社交媒體摘要和應用程式) 中擷取的資訊，識別模式和關聯性。 這些模式可以用來觸發動作並啟動工作流程，例如建立警示、將資訊提供給報告工具，或是儲存轉換資料以供之後使用。 此外，串流分析可用於 Azure IoT Edge 執行階段，並支援與雲端相同的語言或語法。 
+Azure 串流分析是即時分析與處理複雜事件的引擎，用來同時分析和處理多個來源的大量快速串流資料。 它可以從多個輸入來源 (包括裝置、感應器、點選流、社交媒體摘要和應用程式) 中擷取的資訊，識別模式和關聯性。 這些模式可以用來觸發動作並啟動工作流程，例如建立警示、將資訊提供給報告工具，或是儲存轉換資料以供之後使用。 此外，Azure IoT Edge 執行階段也提供串流分析，能夠處理 IoT 裝置上的資料。 
 
 下列案例是您何時可以使用 Azure 串流分析的範例：
 
@@ -29,13 +29,13 @@ Azure 串流分析是即時分析與處理複雜事件的引擎，用來同時�
 
 ## <a name="how-does-stream-analytics-work"></a>串流分析如何運作？
 
-Azure 串流分析作業是由輸入、查詢及輸出所組成。 串流分析內嵌 Azure 事件中樞、Azure IoT 中樞或 Azure Blob 儲存體的資料。 查詢以 SQL 查詢語言為基礎，可在一段時間內輕鬆地篩選、排序、彙總和聯結串流處理資料。 您也可以使用 JavaScript 和 C# 使用者定義函式 (UDF) 來擴充此 SQL 語言。 透過簡單的語言建構和/或設定執行彙總作業時，您可以輕鬆調整事件排序選項和時間範圍的持續長度。
+Azure 串流分析作業是由輸入、查詢及輸出所組成。 串流分析會擷取 Azure 事件中樞 (包括來自 Apache Kafka 的 Azure 事件中樞)、Azure IoT 中樞或 Azure Blob 儲存體的資料。 查詢以 SQL 查詢語言為基礎，可在一段時間內輕鬆地篩選、排序、彙總和聯結串流處理資料。 您也可以使用 JavaScript 和 C# 使用者定義函式 (UDF) 來擴充此 SQL 語言。 透過簡單的語言建構和/或設定執行彙總作業時，您可以輕鬆調整事件排序選項和時間範圍的持續長度。
 
-每個作業都具有所轉換資料的輸出，並可控制所要採取的動作以回應您所分析的資訊。 例如，您可以：
+每個作業都具有所轉換資料的一或多個輸出，並可控制所要採取的動作以回應您所分析的資訊。 例如，您可以：
 
 * 將資料傳送至服務如 Azure Functions、服務匯流排主題或佇列，以觸發通訊或自訂工作流程下游。
 * 將資料傳送至 Power BI 儀表板以即時顯示在儀表板上。
-* 將資料儲存至其他 Azure 儲存體服務，以便根據歷程記錄資料定型機器學習服務模型，或執行批次分析。
+* 將資料儲存至其他 Azure 儲存體服務 (例如 Azure Data Lake、Azure Synapse Analytics 等等)，以便根據歷程記錄資料定型機器學習服務模型，或執行批次分析。
 
 下圖顯示如何將資料傳送至串流分析、加以分析並傳送，以進行儲存或呈現等其他動作：
 
@@ -59,21 +59,21 @@ Azure 串流分析的設計訴求是方便使用、具靈活性、可靠，以�
 
 Azure 串流分析使用已擴增的簡單 SQL 架構查詢語言，搭配強大的時態性限制式即可分析移動中的資料。 若要定義作業轉換，您可以使用簡單的敘述性[串流分析查詢語言](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)，來撰寫使用簡單 SQL 建構的複雜時態性查詢和分析。 因為串流分析查詢語言與 SQL 語言一致，只要熟悉 SQL 便可開始建立作業。 使用 Azure PowerShell、[串流分析 Visual Studio 工具](stream-analytics-tools-for-visual-studio-install.md)、[串流分析 Visual Studio Code 擴充功能](quick-create-vs-code.md)，或 Azure Resource Manager 範本等開發人員工具，也可以建立作業。 使用開發人員工具可讓您離線開發轉換查詢，並使用 [CI/CD 管線](stream-analytics-tools-for-visual-studio-cicd.md)將作業提交至 Azure。
 
-串流分析查詢語言提供了各式各樣的函式，以供分析和處理串流資料。 此查詢語言支援簡單的資料操作、彙總函式，和複雜的地理空間函式。 您可以在入口網站中編輯查詢，然後使用從即時資料流所擷取出的範例資料來測試查詢。
+串流分析查詢語言提供了各式各樣的函式，以供分析和處理串流資料。 此查詢語言支援簡單資料操作、彙總和分析函式、[地理空間函式](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-geospatial-functions)、[模式比對](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics)及[異常偵測](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-machine-learning-anomaly-detection)。 您可以在入口網站中編輯查詢，然後使用從即時資料流所擷取出的範例資料來測試查詢。
 
 您可以透過定義和叫用其他函式來延伸查詢語言的功能。 您可以在 Azure Machine Learning 中定義函式呼叫以利用 Azure Machine Learning 解決方案，並整合 JavaScript 或 C# 使用者定義的函式 (UDF) 或使用者定義的彙總以在串流分析查詢中執行複雜的計算。
 
 ## <a name="fully-managed"></a>完全受控
 
-Azure 串流分析是 Azure 上完全受控的無伺服器 (PaaS) 供應項目。 您不必佈建任何硬體或管理叢集即可執行您的作業。 Azure 串流分析會全權管理您的作業，它會在雲端設定複雜的計算叢集，並負責處理執行作業所需的效能微調。 與 Azure 事件中樞和 Azure IoT 中樞整合，可讓作業每秒擷取數百萬來自各種來源 (包括連線裝置、點擊資料流及記錄檔等) 的事件。 透過事件中樞的分割功能，您可以將計算分割為邏輯步驟，而每個步驟都可以再進一步地分割來增加延展性。
+Azure 串流分析是 Azure 上完全受控的無伺服器 (PaaS) 供應項目。 您不必佈建任何硬體或管理叢集，即可執行您的作業或者更新 OS 或軟體。 Azure 串流分析完全管理您的作業，因此您可以專注於商務邏輯，而不是基礎結構。
 
 ## <a name="run-in-the-cloud-or-on-the-intelligent-edge"></a>在雲端或在智慧邊緣執行
 
-Azure 串流分析可以在雲端執行以進行大規模分析，或在 IoT Edge 上執行以進行超低延遲分析。 Azure 串流分析會在雲端和智慧邊緣上使用相同的查詢語言，讓開發人員能夠建置真正的混合式架構進行串流處理。 
+Azure 串流分析可以在雲端執行以進行大規模分析，或在 IoT Edge 上執行以進行超低延遲分析。 Azure 串流分析會在雲端和智慧邊緣上使用相同的工具和查詢語言，讓開發人員能夠建置真正的混合式架構進行串流處理。 
 
 ## <a name="low-total-cost-of-ownership"></a>低擁有權總成本
 
-作為雲端服務，串流分析已進行成本最佳化。 不會有預付費用 - 您只需針對[您耗用的串流單位](stream-analytics-streaming-unit-consumption.md)和處理的資料量付費。 不需要承諾或佈建叢集，您可以根據業務需求相應增加或減少作業。
+作為雲端服務，串流分析已進行成本最佳化。 不會有預付費用 - 您只需針對[您耗用的串流單位](stream-analytics-streaming-unit-consumption.md)付費。 不需要承諾或佈建叢集，您可以根據業務需求相應增加或減少作業。
 
 ## <a name="mission-critical-ready"></a>任務關鍵性就緒
 

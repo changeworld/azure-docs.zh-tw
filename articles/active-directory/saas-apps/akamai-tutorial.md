@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb9135873b61abf5a5ebd0d9c4d7f52ae314ee12
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 17d0c91d31f7746c53d62af87670c40e9902554c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84675049"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026794"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Akamai 整合
 
@@ -79,7 +79,7 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 • 您可以定義個別的 CA 原則
 
-• 所有應用程式都會顯示在 0365 Waffle 和 myApps.microsoft.com 面板上。
+• 所有應用程式都會顯示在 O365 Waffle 和 myApps.microsoft.com 面板上。
 
 **缺點**：
 
@@ -111,11 +111,11 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 若要設定將 Akamai 整合到 Azure AD 中，您需要從資源庫將 Akamai 新增到受控 SaaS 應用程式清單。
 
 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左方瀏覽窗格上，選取 [Azure Active Directory]**** 服務。
-1. 巡覽至 [企業應用程式]****，然後選取 [所有應用程式]****。
-1. 若要新增應用程式，請選取 [新增應用程式]****。
-1. 在 [從資源庫新增]**** 區段的搜尋方塊中輸入 **Akamai**。
-1. 從結果面板選取 [Akamai]****，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
+1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
+1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
+1. 若要新增應用程式，請選取 [新增應用程式]。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Akamai**。
+1. 從結果面板選取 [Akamai]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-akamai"></a>設定及測試 Akamai 的 Azure AD 單一登入
 
@@ -139,26 +139,26 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Akamai]**** 應用程式整合頁面上，尋找 [管理]**** 區段並選取 [單一登入]****。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Akamai] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
 1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
-1. 在 [以 SAML 設定單一登入]**** 頁面上，按一下 [基本 SAML 設定]**** 的編輯/畫筆圖示，以編輯設定。
+1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 設定]**** 區段上，如果您想要以 **IDP** 起始模式設定應用程式，請輸入下列欄位的值：
+1. 在 [基本 SAML 設定] 區段上，如果您想要以 **IDP** 起始模式設定應用程式，請輸入下列欄位的值：
 
-    a. 在 [識別碼]**** 文字方塊中，使用下列模式來輸入 URL：`https://<Yourapp>.login.go.akamai-access.com/saml/sp/response`
+    a. 在 [識別碼] 文字方塊中，使用下列模式來輸入 URL：`https://<Yourapp>.login.go.akamai-access.com/saml/sp/response`
 
-    b. 在 [回覆 URL]**** 文字方塊中，使用下列模式來輸入 URL：`https:// <Yourapp>.login.go.akamai-access.com/saml/sp/response`
+    b. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https:// <Yourapp>.login.go.akamai-access.com/saml/sp/response`
 
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [Akamai 用戶端支援小組](https://www.akamai.com/us/en/contact-us/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-1. 在 [以 SAML 設定單一登入]**** 頁面上的 [SAML 簽署憑證]**** 區段中，尋找 [同盟中繼資料 XML]****，然後選取 [下載]****，以下載憑證並將其儲存在電腦上。
+1. 在 [以 SAML 設定單一登入] 頁面上的 [SAML 簽署憑證] 區段中，尋找 [同盟中繼資料 XML]，然後選取 [下載]，以下載憑證並將其儲存在電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
-1. 在 [設定 Akamai]**** 區段上，根據您的需求複製適當的 URL。
+1. 在 [設定 Akamai] 區段上，根據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -166,31 +166,31 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]****、[使用者]**** 和 [所有使用者]****。
-1. 在畫面頂端選取 [新增使用者]****。
-1. 在 [使用者]**** 屬性中，執行下列步驟：
-   1. 在 [名稱]**** 欄位中，輸入 `B.Simon`。  
-   1. 在 [使用者名稱]**** 欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
-   1. 選取 [顯示密碼]**** 核取方塊，然後記下 [密碼]**** 方塊中顯示的值。
-   1. 按一下 [建立]****。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
+1. 在畫面頂端選取 [新增使用者]。
+1. 在 [使用者] 屬性中，執行下列步驟：
+   1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
+   1. 在 [使用者名稱] 欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
+   1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
+   1. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 Akamai 的存取權授與 B.Simon，讓其能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，選取 [企業應用程式]****，然後選取 [所有應用程式]****。
-1. 在應用程式清單中，選取 [Akamai]****。
-1. 在應用程式的概觀頁面中尋找 [管理]**** 區段，然後選取 [使用者和群組]****。
+1. 在 Azure 入口網站中，選取 [企業應用程式]，然後選取 [所有應用程式]。
+1. 在應用程式清單中，選取 [Akamai]。
+1. 在應用程式的概觀頁面中尋找 [管理] 區段，然後選取 [使用者和群組]。
 
    ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-1. 選取 [新增使用者]****，然後在 [新增指派]**** 對話方塊中選取 [使用者和群組]****。
+1. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組]。
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組]**** 對話方塊的 [使用者] 清單中選取 [B.Simon]****，然後按一下畫面底部的 [選取]**** 按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]**** 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]**** 按鈕。
-1. 在 [新增指派]**** 對話方塊中，按一下 [指派]**** 按鈕。
+1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
+1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取] 按鈕。
+1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ## <a name="configure-akamai-sso"></a>設定 Akamai SSO
 
@@ -199,17 +199,17 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 **AKAMAI EAA IDP 設定**
 
 1. 登入 **Akamai 企業應用程式存取**主控台。
-1. 在 [Akamai EAA 主控台]**** 上，選取 [身分識別]**** > [識別提供者]****，然後按一下 [新增識別提供者]****。
+1. 在 [Akamai EAA 主控台] 上，選取 [身分識別] > [識別提供者]，然後按一下 [新增識別提供者]。
 
     ![設定 Akamai](./media/header-akamai-tutorial/configure01.png)
 
-1. 在 [建立新的識別提供者]**** 上，執行下列步驟：
+1. 在 [建立新的識別提供者] 上，執行下列步驟：
 
     ![設定 Akamai](./media/header-akamai-tutorial/configure02.png)
 
-    a. 指定 [唯一名稱]****。
+    a. 指定 [唯一名稱]。
 
-    b. 選擇 [第三方 SAML]****，然後按一下 [建立識別提供者並設定]****。
+    b. 選擇 [第三方 SAML]，然後按一下 [建立識別提供者並設定]。
 
 ### <a name="general-settings"></a>一般設定
 
@@ -268,11 +268,11 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 以 Akamai 標頭為基礎的驗證
 
-1. 從「新增應用程式」精靈選擇 [自訂 HTTP]****。
+1. 從「新增應用程式」精靈選擇 [自訂 HTTP]。
 
     ![設定 Akamai](./media/header-akamai-tutorial/configure05.png)
 
-2. 輸入 [應用程式名稱]**** 和 [描述]****。
+2. 輸入 [應用程式名稱] 和 [描述]。
 
     ![設定 Akamai](./media/header-akamai-tutorial/configure06.png)
 
@@ -282,11 +282,11 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 #### <a name="authentication"></a>驗證
 
-1. 選取 [驗證]**** 索引標籤。
+1. 選取 [驗證] 索引標籤。
 
     ![設定 Akamai](./media/header-akamai-tutorial/configure09.png)
 
-2. 指派 [識別提供者]****
+2. 指派 [識別提供者]
 
     ![設定 Akamai](./media/header-akamai-tutorial/configure10.png)
 
@@ -298,17 +298,17 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 #### <a name="advanced-settings"></a>進階設定
 
-1. 在 [客戶 HTTP 標頭]**** 底下，指定 [CustomerHeader]**** 和 [SAML 屬性]****。
+1. 在 [客戶 HTTP 標頭] 底下，指定 [CustomerHeader] 和 [SAML 屬性]。
 
     ![設定 Akamai](./media/header-akamai-tutorial/configure12.png)
 
-1. 按一下 [儲存]**** 並移至 [部署] 按鈕。
+1. 按一下 [儲存] 並移至 [部署] 按鈕。
 
     ![設定 Akamai](./media/header-akamai-tutorial/configure13.png)
 
 #### <a name="deploy-the-application"></a>部署應用程式
 
-1. 按一下 [部署應用程式]**** 按鈕。
+1. 按一下 [部署應用程式] 按鈕。
 
     ![設定 Akamai](./media/header-akamai-tutorial/configure14.png)
 
@@ -330,11 +330,11 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 #### <a name="remote-desktop"></a>遠端桌面
 
-1. 從「新增應用程式」精靈選擇 [RDP]****。
+1. 從「新增應用程式」精靈選擇 [RDP]。
 
     ![設定 Akamai](./media/header-akamai-tutorial/configure16.png)
 
-1. 輸入 [應用程式名稱]**** 和 [描述]****。
+1. 輸入 [應用程式名稱] 和 [描述]。
 
     ![設定 Akamai](./media/header-akamai-tutorial/configure17.png)
 
@@ -346,19 +346,19 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 #### <a name="authentication"></a>驗證
 
-按一下 [儲存]**** 並移至 [服務]。
+按一下 [儲存] 並移至 [服務]。
 
 ![設定 Akamai](./media/header-akamai-tutorial/configure20.png)
 
 #### <a name="services"></a>服務
 
-按一下 [儲存]**** 並移至 [進階設定]。
+按一下 [儲存] 並移至 [進階設定]。
 
 ![設定 Akamai](./media/header-akamai-tutorial/configure21.png)
 
 #### <a name="advanced-settings"></a>進階設定
 
-1. 按一下 [儲存]**** 並移至 [部署]。
+1. 按一下 [儲存] 並移至 [部署]。
 
     ![設定 Akamai](./media/header-akamai-tutorial/configure22.png)
 
@@ -384,11 +384,11 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 #### <a name="ssh"></a>SSH
 
-1. 移至 [新增應用程式]，選擇 [SSH]****。
+1. 移至 [新增應用程式]，選擇 [SSH]。
 
     ![設定 Akamai](./media/header-akamai-tutorial/configure25.png)
 
-1. 輸入 [應用程式名稱]**** 和 [描述]****。
+1. 輸入 [應用程式名稱] 和 [描述]。
 
     ![設定 Akamai](./media/header-akamai-tutorial/configure26.png)
 
@@ -408,13 +408,13 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 #### <a name="authentication"></a>驗證
 
-按一下 [儲存]**** 並移至 [服務]。
+按一下 [儲存] 並移至 [服務]。
 
 ![設定 Akamai](./media/header-akamai-tutorial/configure28.png)
 
 #### <a name="services"></a>服務
 
-按一下 [儲存]**** 並移至 [進階設定]。
+按一下 [儲存] 並移至 [進階設定]。
 
 ![設定 Akamai](./media/header-akamai-tutorial/configure29.png)
 
@@ -428,7 +428,7 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 #### <a name="deployment"></a>部署
 
-1. 按一下 [部署應用程式]****。
+1. 按一下 [部署應用程式]。
 
     ![設定 Akamai](./media/header-akamai-tutorial/configure32.png)
 
@@ -479,7 +479,7 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 #### <a name="adding-directory"></a>新增目錄
 
-1. 從下拉式清單中選取 [AD]****。
+1. 從下拉式清單中選取 [AD]。
 
     ![設定 Akamai](./media/header-akamai-tutorial/configure33.png)
 
@@ -499,7 +499,7 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
     ![設定 Akamai](./media/header-akamai-tutorial/eaagroup.png)
 
-1. 按一下 [身分識別]**** > [識別提供者]**** 將目錄新增至您的識別提供者，並按一下 [目錄]**** 索引標籤，然後按一下 [指派目錄]****。
+1. 按一下 [身分識別] > [識別提供者] 將目錄新增至您的識別提供者，並按一下 [目錄] 索引標籤，然後按一下 [指派目錄]。
 
     ![設定 Akamai](./media/header-akamai-tutorial/assigndirectory.png)
 
@@ -512,7 +512,7 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
     ![設定 Akamai](./media/header-akamai-tutorial/assigndirectory.png)
 
     > [!NOTE]
-    > 根據 [身分識別攔截名稱]****，使用者名稱必須採用特定格式。 從圖 1 中，該名稱顯示為 **corpapps.login.go.akamai-access.com**
+    > 根據 [身分識別攔截名稱]，使用者名稱必須採用特定格式。 從圖 1 中，該名稱顯示為 **corpapps.login.go.akamai-access.com**
 
 1. 使用者登入名稱將是：`HTTP/corpapps.login.go.akamai-access.com`
 
@@ -558,11 +558,11 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 #### <a name="step-5-import-keytab-in-the-akamai-eaa-console"></a>步驟 5：在 AKAMAI EAA 主控台中匯入金鑰表
 
-1. 按一下 [系統]**** > [金鑰表]****。
+1. 按一下 [系統] > [金鑰表]。
 
     ![設定 Akamai](./media/header-akamai-tutorial/keytabs.png)
 
-1. 在 [金鑰表類型] 中，選擇 [Kerberos 委派]****。
+1. 在 [金鑰表類型] 中，選擇 [Kerberos 委派]。
 
     ![設定 Akamai](./media/header-akamai-tutorial/keytabdelegation.png)
 

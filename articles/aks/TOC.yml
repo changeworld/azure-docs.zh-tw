@@ -257,6 +257,8 @@
           href: private-clusters.md
         - name: 適用於磁碟的 BYOK
           href: azure-disk-customer-managed-keys.md
+        - name: 啟用主機型加密
+          href: enable-host-encryption.md
     - name: 監視和記錄
       items:
         - name: 適用於容器的 Azure 監視器
@@ -282,9 +284,9 @@
         - name: 使用 Kubernetes 儀表板
           href: kubernetes-dashboard.md
         - name: 建立適用於 Windows Server 容器的 Dockerfiles
-          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/azure/aks/context/aks-context'
+          href: /virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/azure/aks/context/aks-context
         - name: 最佳化適用於 Windows Server 容器的 Dockerfiles
-          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context'
+          href: /virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context
     - name: 開發及執行應用程式
       items:
         - name: 將 Visual Studio Code 和 Kubernetes 與本機處理序搭配使用 (預覽)

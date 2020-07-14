@@ -9,12 +9,12 @@ ms.date: 06/15/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
-ms.openlocfilehash: 383b59d10fa1de1b2ee0ea8b505c164577487255
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 7052e9203532320a7de5197e983d40cb0a34b50d
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84974376"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374775"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows 虛擬桌面的新增功能？
 
@@ -73,6 +73,8 @@ Windows 虛擬桌面現在整合至 Azure Resource Manager。 在最新的更新
 若要進一步了解，請參閱[我們的部落格文章](https://azure.microsoft.com/updates/windows-virtual-desktop-media-optimization-for-microsoft-teams-is-now-available-in-public-preview/)。
 
 ## <a name="next-steps"></a>後續步驟
+
+在 [Microsoft 365 Windows 虛擬桌面藍圖](https://www.microsoft.com/microsoft-365/roadmap?filters=Windows%20Virtual%20Desktop)深入了解未來的計劃。
 
 請參閱這些文章，以了解哪些用戶端更新適用於 Windows 虛擬桌面和遠端桌面服務：
 

@@ -4,14 +4,14 @@ description: 尋找部分常見 App Service 案例的 Azure CLI 範例。 了解
 tags: azure-service-management
 ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.topic: sample
-ms.date: 12/12/2017
+ms.date: 07/07/2020
 ms.custom: mvc
-ms.openlocfilehash: 857d6cdc26e41f5ea7b1d66aaff6efb4056c47c4
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: ce10c0e95d77103f386174c7bd0ffd56adff871b
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254492"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054537"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>Azure App Service 的 CLI 範例
 
@@ -25,7 +25,8 @@ ms.locfileid: "85254492"
 | [建立可從 GitHub 連續部署的應用程式](./scripts/cli-continuous-deployment-github.md?toc=%2fcli%2fazure%2ftoc.json)| 建立可從您擁有的 GitHub 存放庫持續發佈的 App Service 應用程式。 |
 | [建立應用程式並從本機 Git 存放庫部署程式碼](./scripts/cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json) | 建立 App Service 應用程式，並從本機 Git 存放庫設定程式碼推送。 |
 | [建立應用程式並將程式碼部署至預備環境](./scripts/cli-deploy-staging-environment.md?toc=%2fcli%2fazure%2ftoc.json) | 建立具有部署位置以用於暫存程式碼變更的 App Service 應用程式。 |
-| [在 Docker 容器中建立 ASP.NET Core 應用程式](./scripts/cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json)| 在 Linux 上建立 App Service 應用程式，並從 Docker Hub 載入 Docker 映像。 |
+| [在 Docker 容器中建立 ASP.NET Core 應用程式](./scripts/cli-linux-docker-aspnetcore.md?toc=%2fcli%2fazure%2ftoc.json) | 在 Linux 上建立 App Service 應用程式，並從 Docker Hub 載入 Docker 映像。 |
+| [使用私人端點建立應用程式並將其公開](./scripts/cli-deploy-privateendpoint.md?toc=%2fcli%2fazure%2ftoc.json) | 建立 App Service 應用程式和私人端點 |
 |**設定應用程式**||
 | [將自訂網域對應至應用程式](./scripts/cli-configure-custom-domain.md?toc=%2fcli%2fazure%2ftoc.json)| 建立 App Service 應用程式，並使自訂網域名稱與之對應。 |
 | [將自訂 TLS/SSL 憑證繫結至應用程式](./scripts/cli-configure-ssl-certificate.md?toc=%2fcli%2fazure%2ftoc.json)| 建立 App Service 應用程式，並使自訂網域名稱的 TLS/SSL 憑證與之繫結。 |

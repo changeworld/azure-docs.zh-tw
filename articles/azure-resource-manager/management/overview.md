@@ -1,14 +1,14 @@
 ---
-title: 概觀
+title: Azure Resource Manager 概觀
 description: 描述如何使用 Azure Resource Manager 在 Azure 上進行資源的部署、管理及存取控制。
 ms.topic: overview
 ms.date: 04/21/2020
-ms.openlocfilehash: 253fc2f296fa764a6c22fa1331221df60ca21bb5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 089919e227b33859dbeabd98ecd75845a28a3f42
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81870480"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087022"
 ---
 # <a name="what-is-azure-resource-manager"></a>什麼是 Azure Resource Manager？
 
@@ -68,7 +68,7 @@ Azure 提供四個範圍層級：[管理群組](../../governance/management-grou
 
 定義資源群組時，必須考慮一些重要因素：
 
-* 群組中的所有資源應該共用相同的生命週期。 您可一起部署、更新和刪除它們。 如果類似資料庫伺服器這樣的資源必須存在於不同的部署週期，它應該位於另一個資源群組中。
+* 群組中的所有資源應該共用相同的生命週期。 您可一起部署、更新和刪除它們。 如果類似伺服器這樣的資源必須存在於不同的部署週期，該資源應該位於另一個資源群組中。
 
 * 每個資源只能存在於一個資源群組中。
 

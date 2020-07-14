@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: ed533f571ada4cacf053157b397cca07cd65e6f8
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 62669457f73ba78186614433fb6d10cc4dc01089
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300567"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565515"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>快速入門：使用 Unity 轉譯模型
 
 本快速入門說明如何使用 Azure 遠端轉譯 (ARR) 服務，執行可從遠端轉譯內建模型的 Unity 範例。
 
-我們不會詳細說明 ARR API 本身，或如何設定新的 Unity 專案。 這些主題會涵蓋於[教學課程：從頭開始設定 Unity 專案](../tutorials/unity/project-setup.md)。
+我們不會詳細說明 ARR API 本身，或如何設定新的 Unity 專案。 這些主題會涵蓋於[教學課程：檢視遠端轉譯模型](../tutorials/unity/view-remote-models/view-remote-models.md)。
 
 在本快速入門中，您將了解如何：
 > [!div class="checklist"]
@@ -33,8 +33,8 @@ ms.locfileid: "84300567"
 
 * Windows SDK 10.0.18362.0 [(下載)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * 最新版的 Visual Studio 2019 [(下載)](https://visualstudio.microsoft.com/vs/older-downloads/)
-* [適用於混合實境的 Visual Studio 工具](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 具體而言，必須要安裝下列*工作負載*：
-  * **具備 C++ 的桌面開發**
+* [適用於混合實境的 Visual Studio 工具](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 具體而言，必須要安裝下列「工作負載」：
+  * **使用 C++ 開發桌面**
   * **通用 Windows 平台 (UWP) 開發**
 * GIT [(下載)](https://git-scm.com/downloads)
 * Unity 2019.3.1 [(下載)](https://unity3d.com/get-unity/download)

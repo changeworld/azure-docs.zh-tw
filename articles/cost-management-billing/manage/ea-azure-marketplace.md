@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: banders
-ms.openlocfilehash: 4721d8dbe5973baf2ac82124ff516a89398227cb
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: acb818cf2a892a3a71f2f59b0a44041767b846d0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298188"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044918"
 ---
 # <a name="azure-marketplace"></a>Azure Marketplace
 
@@ -20,7 +20,7 @@ ms.locfileid: "84298188"
 
 ## <a name="azure-marketplace-for-ea-customers"></a>適用於 EA 客戶的 Azure Marketplace
 
-直接客戶可以在 Azure 企業版入口網站上看見 Azure Marketplace 費用。 Azure Marketplace 的購買和使用都會在預付金以外按季或按月於期末計費。
+直接客戶可以在 Azure 企業版入口網站上看見 Azure Marketplace 費用。 Azure Marketplace 的購買和使用都會在 Azure 預付款以外按季或按月於期末計費。
 
 間接客戶可以在 Azure 企業版入口網站的 [管理訂用帳戶] 頁面上找到其 Azure Marketplace 訂用帳戶，但價格將會隱藏。 客戶應該連絡其授權解決方案提供者 (LSP) 以了解相關的 Azure Marketplace 費用資訊。
 
@@ -28,7 +28,7 @@ ms.locfileid: "84298188"
 
 現有的每月週期性費用會繼續在每個日曆月份的第一天續約。 年度費用則會在購買屆滿一年的當天續約。
 
-Azure Marketplace 上提供的某些第三方轉銷商服務會使用您 Enterprise 合約 (EA) 的預付金餘額。 這些服務原先在 EA 承諾用量範圍外計費，並另外開立發票。 Azure Marketplace 中這些服務的 EA 承諾用量金額有助於簡化客戶購買及款項管理。 如需目前使用預付金的完整服務清單，請參閱 [Azure 網站上的 2018 年 3 月 6 日更新](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)。
+Azure Marketplace 上提供的某些第三方轉銷商服務會使用您 Enterprise 合約 (EA) 的 Azure 預付款餘額。 這些服務原先在 EA Azure 預付款範圍外計費，並另外開立發票。 Azure Marketplace 中這些服務的 EA Azure 預付款有助於簡化客戶購買及款項管理。 如需目前使用 Azure 預付款的完整服務清單，請參閱 [Azure 網站上的 2018 年 3 月 6 日更新](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)。
 
 ### <a name="partners"></a>合作夥伴
 
@@ -75,41 +75,41 @@ LSP 可以從 Azure 企業版入口網站中的價位表頁面下載 Azure Marke
 
 ## <a name="azure-marketplace-faq"></a>Azure Marketplace 常見問題集
 
-本節將說明您的 Azure 預付金可如何套用到 Azure Marketplace 中一些第三方轉銷商服務。
+本節將說明您的 Azure 預付款可如何套用到 Azure Marketplace 中一些第三方轉銷商服務。
 
-### <a name="what-changed-with-azure-marketplace-services-and-ea-monetary-commitment"></a>Azure Marketplace 服務和 EA 預付金有哪些變更？
+### <a name="what-changed-with-azure-marketplace-services-and-azure-ea-prepayment"></a>Azure Marketplace 服務和 Azure EA 預付款有哪些變更？
 
-自 2018 年 3 月 1 日起，部分第三方轉銷商服務可取用 EA 預付金 (MC)。 除了 Azure 保留的 VM 執行個體 (RI) 以外，服務先前都會以 EA 預付金以外的費率計費，並且個別開立發票。
+自 2018 年 3 月 1 日起，部分第三方轉銷商服務可取用 Azure EA 預付款。 除了 Azure 保留的 VM 執行個體 (RI) 以外，服務先前都會以 Azure EA 預付款以外的費率計費，並且個別開立發票。
 
-我們已擴充 MC 的適用性，以納入一些最常購買且由第三方發佈的 Azure Marketplace 服務。 Azure Marketplace 中這些服務的 EA 預付金有助於簡化您的購買及款項管理。
+我們已擴充 Azure 預付款的適用性，以納入一些最常購買且由第三方發佈的 Azure Marketplace 服務。 Azure Marketplace 中這些服務的 Azure EA 預付款有助於簡化您的購買及款項管理。
 
 ### <a name="why-did-we-make-this-change"></a>為什麼我們要進行此變更？
 
-一直以來，客戶都希望能有其他方式可充分運用其預付的 MC 款項。 客戶經常要求這項變更，而且影響了大多數 Azure Marketplace 客戶。
+一直以來，客戶都希望能有其他方式可充分運用其預付的 Azure 預付款。 客戶經常要求這項變更，而且影響了大多數 Azure Marketplace 客戶。
 
 ### <a name="how-do-you-benefit"></a>您如何受益？
 
-您可以獲得更簡單的計費體驗，並能夠更有效地使用 EA 預付金。 因為這些服務已包含在您的預付型 MC 中，所以您的 EA 預付金會變得更有價值。
+您可以獲得更簡單的計費體驗，並能夠更有效地使用 Azure EA 預付款。 因為這些服務已包含在您的 Azure 預付款中，所以您的 Azure EA 預付款會變得更有價值。
 
-### <a name="what-azure-marketplace-services-use-ea-monetary-commitment-and-how-do-i-know"></a>哪些 Azure Marketplace 服務會使用 EA 預付金？我該如何得知？
+### <a name="what-azure-marketplace-services-use-azure-ea-prepayment-and-how-do-i-know"></a>哪些 Azure Marketplace 服務會使用 Azure EA 預付款？我該如何得知？
 
-當您購買可使用 MC 的服務時，Azure Marketplace 會提供免責聲明。 支援的項目有 Red Hat、SUSE、Autodesk 和 Oracle 發行的一些服務。 目前，由其他廠商發佈且名稱類似的服務並不會從 MC 中扣款。 此常見問題的結尾處提供了完整清單。
+當您購買可使用 Azure 預付款的服務時，Azure Marketplace 會提供免責聲明。 支援的項目有 Red Hat、SUSE、Autodesk 和 Oracle 發行的一些服務。 目前，由其他廠商發佈且名稱類似的服務並不會從 Azure 預付款中扣款。 此常見問題的結尾處提供了完整清單。
 
-### <a name="what-if-my-ea-monetary-commitment-runs-out"></a>如果我的 EA 預付金用完了該怎麼辦？
+### <a name="what-if-my-azure-ea-prepayment-runs-out"></a>如果我的 Azure EA 預付款已用盡該怎麼辦？
 
-如果您用完所有的 MC 且已產生超額部分時，這些服務的相關費用將連同任何其他取用服務顯示在下一張超額發票中。 在 2018 年 3 月 1 日進行變更之前，這些費用會與其他 Azure Marketplace 服務一起開立發票。
+如果您用完所有的 Azure 預付款且已產生超額部分時，這些服務的相關費用將連同任何其他取用服務顯示在下一張超額發票中。 在 2018 年 3 月 1 日進行變更之前，這些費用會與其他 Azure Marketplace 服務一起開立發票。
 
-### <a name="why-dont-all-azure-marketplaces-consume-ea-monetary-commitment"></a>為什麼不是所有 Azure Marketplace 項目都能使用 EA 預付金？
+### <a name="why-dont-all-azure-marketplaces-consume-azure-ea-prepayment"></a>為什麼不是所有 Azure Marketplace 項目都能使用 Azure EA 預付款？
 
-我們一直都在設法提供 EA 預付金方面的最佳客戶體驗。 這項變更將使許多客戶受惠，並解決在 Azure Marketplace 中的總支出比例偏高的問題。 未來可能會新增其他服務。
+我們一直都在設法提供 Azure EA 預付款方面的最佳客戶體驗。 這項變更將使許多客戶受惠，並解決在 Azure Marketplace 中的總支出比例偏高的問題。 未來可能會新增其他服務。
 
 ### <a name="how-does-this-impact-indirect-enrollment-and-partners"></a>這對間接註冊和合作夥伴有何影響？
 
-我們的間接註冊客戶或合作夥伴將不受影響。 這些服務將與其他取用服務一樣，受到相同合作夥伴標記功能的控管。 唯一的變更是，費用會顯示在不同的發票上，以及使用客戶的 EA 預付金來支付費用。
+我們的間接註冊客戶或合作夥伴將不受影響。 這些服務將與其他取用服務一樣，受到相同合作夥伴標記功能的控管。 唯一的變更是，費用會顯示在不同的發票上，以及使用客戶的 Azure EA 預付款來支付費用。
 
-### <a name="is-there-a-list-of-azure-marketplace-services-that-consume-ea-monetary-commitment"></a>是否有使用 EA 預付金的 Azure Marketplace 服務清單？
+### <a name="is-there-a-list-of-azure-marketplace-services-that-consume-azure-ea-prepayment"></a>是否有使用 Azure EA 預付款的 Azure Marketplace 服務清單？
 
-特定 Azure Marketplace 供應項目可以使用預付金。 如需參與此方案的完整產品清單，請參閱[使用預付金的第三方服務](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment)。
+特定 Azure Marketplace 供應項目可以使用 Azure 預付款資金。 如需參與此方案的完整產品清單，請參閱[使用 Azure 預付款的第三方服務](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment)。
 
 
 ## <a name="next-steps"></a>後續步驟

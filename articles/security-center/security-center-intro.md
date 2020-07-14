@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: f437205ae76feb36596b05ee0e320aaed0a37184
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: e9ed36971e157e67ede6573b9fdf9ff1fc6e05a0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83846660"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044272"
 ---
 # <a name="what-is-azure-security-center"></a>什麼是 Azure 資訊安全中心？
 
@@ -47,7 +47,7 @@ Azure 資訊安全中心可解決三項最急迫的安全性挑戰：
 
 ## <a name="architecture"></a>架構
 
-因為資訊安全中心原生為 Azure 的一部分，完全不需要部署，Azure 中的 PaaS 服務 (包括 Service Fabric、SQL 資料庫及儲存體帳戶) 即可由資訊安全中心監視和保護。
+因為資訊安全中心原生為 Azure 的一部分，完全不需要部署，Azure 中的 PaaS 服務 (包括 Service Fabric、SQL Database、SQL 受控執行個體及儲存體帳戶) 即可由資訊安全中心監視和保護。
 
 此外，在 Windows 和 Linux 伺服器上安裝 Log Analytics 代理程式，資訊安全中心即可保護雲端中或內部部署上的非 Azure 伺服器和虛擬機器。 Azure 虛擬機器會自動佈建在資訊安全中心。
 
@@ -111,7 +111,7 @@ Azure 資訊安全中心的價值核心在於其建議。 建議是專為工作�
 
 資訊安全中心可與 Microsoft Defender 進階威脅防護進行自動原生整合。 這表示不需要任何設定，您的 Windows 和 Linux 機器即可與資訊安全中心的建議與評量功能完全整合。
 
-此外，資訊安全中心可讓您在伺服器環境自動化執行應用程式控制原則。 資訊安全中心的自適性應用程式控制會在所有 Windows 伺服器啟用端對端應用程式允許清單。 建立規則和檢查違規全都會自動完成，您不需要動手。
+此外，資訊安全中心可讓您在伺服器環境自動化執行應用程式控制原則。 資訊安全中心的自適性應用程式控制會在所有 Windows 伺服器啟用端對端應用程式核准清單。 建立規則和檢查違規全都會自動完成，您不需要動手。
 
 ### <a name="protect-paas"></a>保護 PaaS
 

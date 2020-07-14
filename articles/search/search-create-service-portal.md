@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 83b723c815825a255727e9a48d415fedd405c942
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.date: 06/24/2020
+ms.openlocfilehash: f802ec10410d0a412e29d9ad51bb409a5d099f31
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488217"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562542"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>快速入門：在入口網站中建立 Azure 認知搜尋服務
 
@@ -24,6 +24,14 @@ Azure 認知搜尋是一項可用來在自訂應用程式中插入搜尋體驗�
 [![動畫 GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
 是否偏好使用 PowerShell？ 請使用 Azure Resource Manager [服務範本](https://azure.microsoft.com/resources/templates/101-azure-search-create/)。 如需入門說明，請參閱[使用 PowerShell 管理 Azure 認知搜尋](search-manage-powershell.md)。
+
+## <a name="before-you-start"></a>開始之前
+
+下列服務屬性已針對服務的存留期進行修正，而將其變更需要新的服務。 當您建立服務時，請考慮您將如何使用服務：
+
+* 名稱 (針對服務名稱請參閱[這些建議](#name-the-service))
+* 層級 (免費、基本、標準會[影響帳單](search-sku-tier.md)並設定容量上限)
+* 區域 (選擇具有相關服務的位置。 若要與認知服務或 Azure Machine Learning 整合，必須將服務共置在相同區域中)
 
 ## <a name="subscribe-free-or-paid"></a>訂閱 (免費或付費)
 

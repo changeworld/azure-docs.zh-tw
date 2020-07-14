@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 7ba8d201c29b5e3835fec52d8c479a388ca07f71
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: d457e911dec481e2b1a8bdae1ca05f80452bb883
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313003"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557180"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>快速入門：轉換模型以進行轉譯
 
@@ -24,7 +24,7 @@ ms.locfileid: "81313003"
 > * 上傳和轉換3D 模型以便搭配 Azure 遠端轉譯使用
 > * 在應用程式中包含轉換後的3D 模型以進行轉譯
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 完成[快速入門：使用 Unity 轉譯模型](render-model.md)
 * 安裝 Azure PowerShell [(文件)](https://docs.microsoft.com/powershell/azure/)
@@ -59,7 +59,7 @@ ms.locfileid: "81313003"
 
 ![Azure - 新增資源](media/azure-add-a-resource.png)
 
-在新的畫面中，選擇左側的 [儲存體]  ，然後從下一個資料行中選擇 [儲存體帳戶 - Blob、檔案、資料表、佇列]  ：
+在新的畫面中，選擇左側的 [儲存體]，然後從下一個資料行中選擇 [儲存體帳戶 - Blob、檔案、資料表、佇列]：
 
 ![Azure - 新增儲存體](media/azure-add-storage.png)
 
@@ -70,16 +70,16 @@ ms.locfileid: "81313003"
 以下列方式填寫表單：
 
 * 從下拉式方塊下方的連結建立新的資源群組，並將此命名為 **ARR_Tutorial**
-* 針對 [儲存體帳戶名稱]  ，在此輸入唯一名稱。 **此名稱必須是全域唯一的**，否則會出現提示，告知您該名稱已被使用。 在本快速入門的範圍中，我們將其命名為 **arrtutorialstorage**。 因此，您需要以您的名稱取代本快速入門中任何出現的項目。
+* 針對 [儲存體帳戶名稱]，在此輸入唯一名稱。 **此名稱必須是全域唯一的**，否則會出現提示，告知您該名稱已被使用。 在本快速入門的範圍中，我們將其命名為 **arrtutorialstorage**。 因此，您需要以您的名稱取代本快速入門中任何出現的項目。
 * 選取您附近的**位置**。 在理想情況下，使用在其他快速入門中用於設定轉譯的相同位置。
 * **效能**設為「標準」
 * **帳戶種類**設為「StorageV2 (一般用途 V2)」
 * **複寫**設為「讀取權限異地備援儲存體 (RA-GRS)」
 * **存取層**設為「經常性」
 
-其他索引標籤中的屬性都不需要變更，因此您可以繼續進行 [審查 + 建立]  ，然後遵循步驟來完成設定。
+其他索引標籤中的屬性都不需要變更，因此您可以繼續進行 [審查 + 建立]，然後遵循步驟來完成設定。
 
-網站現在會通知您有關部署的進度，最後會回報「您的部署已完成」。 針對後續步驟按一下 [前往資源]  按鈕：
+網站現在會通知您有關部署的進度，最後會回報「您的部署已完成」。 針對後續步驟按一下 [前往資源] 按鈕：
 
 ![Azure 儲存體建立完成](./media/storage-creation-complete.png)
 
@@ -87,17 +87,17 @@ ms.locfileid: "81313003"
 
 接下來，我們需要兩個 Blob 容器，一個用於輸入，另一個用於輸出。
 
-從上方的 [移至資源]  按鈕，您會進入左側有面板的頁面，其中包含清單功能表。 在 [Blob 服務]  分類下的該清單中，按一下 [容器]  按鈕：
+從上方的 [移至資源] 按鈕，您會進入左側有面板的頁面，其中包含清單功能表。 在 [Blob 服務] 分類下的該清單中，按一下 [容器] 按鈕：
 
 ![Azure - 新增容器](./media/azure-add-containers.png)
 
-按下 [+ 容器]  按鈕，以建立**輸入** Blob 儲存體容器。
+按下 [+ 容器] 按鈕，以建立**輸入** Blob 儲存體容器。
 建立容器時，請使用下列設定︰
   
 * 名稱 = arrinput
 * 公用存取層級 = 私人
 
-建立容器之後，再次按一下 [+ 容器]  ，然後對**輸出**容器重複使用下列設定：
+建立容器之後，再次按一下 [+ 容器]，然後對**輸出**容器重複使用下列設定：
 
 * 名稱 = arroutput
 * 公用存取層級 = 私人
@@ -157,7 +157,7 @@ ms.locfileid: "81313003"
 
 轉換模型後，其會寫回 **blobOutputContainerName** 所指定的儲存體容器。 您可藉由提供選擇性 **outputFolderPath** 來指定子路徑。 在上述範例中，產生的 "robot.arrAsset" 會複製到 "converted/robot" 底下的輸出 Blob 容器。
 
-組態設定 **outputAssetFileName** 會決定已轉換資產的名稱 - 這是選用參數，否則會從輸入檔案名稱推論輸出檔案名稱。 
+組態設定 **outputAssetFileName** 會決定已轉換資產的名稱 - 這是選用參數，否則會從輸入檔案名稱推論輸出檔案名稱。
 
 開啟 PowerShell，確定您已如[必要條件](#prerequisites)所述安裝 *Azure PowerShell*。 然後使用下列命令登入 Azure 訂用帳戶並遵循畫面上的指示操作：
 
@@ -176,7 +176,9 @@ Connect-AzAccount
 
 您應該會看到如下的結果：![Conversion.ps1](./media/successful-conversion.png)
 
-轉換指令碼會為已轉換的模型產生「共用存取簽章 (SAS)」  URI。 您現在可以將此 URI 當作 [模型名稱]  複製到快速入門範例應用程式中 (請參閱[快速入門：使用 Unity 轉譯模型](render-model.md))。
+## <a name="insert-new-model-into-quickstart-sample-app"></a>將新模型插入快速入門範例應用程式
+
+轉換指令碼會為已轉換的模型產生「共用存取簽章 (SAS)」 URI。 您現在可以將此 URI 當作 [模型名稱] 複製到快速入門範例應用程式中 (請參閱[快速入門：使用 Unity 轉譯模型](render-model.md))。
 
 ![在 Unity 中取代模型](./media/replace-model-in-unity.png)
 
@@ -187,9 +189,9 @@ Connect-AzAccount
 轉換指令碼所建立的 SAS URI 只會在 24 小時內有效。 但是，過期之後，您不需要再次轉換模型。 您反而可在入口網站中建立新的 SAS，如後續步驟所述：
 
 1. 移至 [Azure 入口網站](https://www.portal.azure.com)
-1. 按一下 [儲存體帳戶]  資源：![簽章存取](./media/portal-storage-accounts.png)
-1. 在下列畫面中，按一下左面板中的 [儲存體總管]  ，然後在 *arroutput* Blob 儲存體容器中尋找您的輸出模型 (*arrAsset* 檔案)。 以滑鼠右鍵按一下檔案，然後從快顯功能表選取 [取得共用存取簽章]  ：![簽章存取](./media/portal-storage-explorer.png)
-1. 新畫面隨即開啟，您可在其中選取到期日。 按下 [建立]  ，然後複製下一個對話方塊中所顯示的 URI。 這個新的 URI 會取代指令碼所建立的暫存 URI。
+1. 按一下 [儲存體帳戶] 資源：![簽章存取](./media/portal-storage-accounts.png)
+1. 在下列畫面中，按一下左面板中的 [儲存體總管]，然後在 *arroutput* Blob 儲存體容器中尋找您的輸出模型 (*arrAsset* 檔案)。 以滑鼠右鍵按一下檔案，然後從快顯功能表選取 [取得共用存取簽章]：![簽章存取](./media/portal-storage-explorer.png)
+1. 新畫面隨即開啟，您可在其中選取到期日。 按下 [建立]，然後複製下一個對話方塊中所顯示的 URI。 這個新的 URI 會取代指令碼所建立的暫存 URI。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -198,4 +200,4 @@ Connect-AzAccount
 如果您想要了解模型轉換的詳細資訊，請參閱[模型轉換 REST API](../how-tos/conversion/conversion-rest-api.md)。
 
 > [!div class="nextstepaction"]
-> [教學課程：從頭開始設定 Unity 專案](../tutorials/unity/project-setup.md)
+> [教學課程：檢視遠端轉譯模型](../tutorials/unity/view-remote-models/view-remote-models.md)

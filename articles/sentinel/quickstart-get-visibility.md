@@ -1,6 +1,6 @@
 ---
 title: 快速入門：開始使用 Azure Sentinel
-description: Azure Sentinel 快速入門 - 開始使用 Azure Sentinel 預覽版
+description: 使用本快速入門，深入了解如何使用 Azure Sentinel 快速檢視和監視您的環境中發生什麼情況。 
 services: sentinel
 author: yelevin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 4bd01b737c4a80ff286458c122f3b0ab9573a40b
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 60e3529e68183488016e40211730412da8e3e0bb
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798663"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85564609"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>快速入門：開始使用 Azure Sentinel
 
@@ -47,7 +47,7 @@ ms.locfileid: "83798663"
 
 - **最近的事件**：可檢視近期事件、其嚴重性和事件相關警示的數目。 如果您看到特定警示類型突然出現尖峰，這可能表示目前有作用中的攻擊正在進行。 比方說，如果突然出現 20 個來自 Azure ATP 的雜湊傳遞事件，則可能是有人目前正試圖攻擊您。
 
-- **資料來源異常**：Microsoft 的資料分析師建立了一些模型，這些模型會不斷地在您資料來源的資料中搜尋異常情況。 如果沒有任何異常狀況，則不會顯示任何內容。 如果偵測到異常，您應該深入探討這些異常以查看發生什麼情況。 例如，按一下 Azure 活動中的尖峰。 您可以按一下 [圖表]  來查看何時發生尖峰，然後篩選在那段期間發生的活動，以了解造成尖峰的原因。
+- **資料來源異常**：Microsoft 的資料分析師建立了一些模型，這些模型會不斷地在您資料來源的資料中搜尋異常情況。 如果沒有任何異常狀況，則不會顯示任何內容。 如果偵測到異常，您應該深入探討這些異常以查看發生什麼情況。 例如，按一下 Azure 活動中的尖峰。 您可以按一下 [圖表] 來查看何時發生尖峰，然後篩選在那段期間發生的活動，以了解造成尖峰的原因。
 
    ![Azure Sentinel 地圖](./media/qs-get-visibility/anomolies.png)
 
@@ -55,7 +55,7 @@ ms.locfileid: "83798663"
 
 內建活頁簿會從已連線的資料來源提供整合式資料，讓您深入探討這些服務中所產生的事件。 內建活頁簿包含 Azure AD、Azure 活動事件和內部部署資料，該資料可以是來自伺服器、來自第一方警示、來自任何第三方 (包括防火牆流量記錄、Office 365 和以 Windows 為基礎的不安全通訊協定) 的 Windows 事件資料。 活頁簿是以 Azure 監視器活頁簿為基礎，可讓您在設計自己的活頁簿時使用增強的自訂功能和彈性。 如需詳細資訊，請參閱[活頁簿](../azure-monitor/platform/workbooks-overview.md)。
 
-1. 在 [設定]  之下，選取 [活頁簿]  。 在 [已安裝]  之下，您可以看到所有已安裝的活頁簿。 在 [全部]  底下，您可以看到可供安裝的完整內建活頁簿資源庫。 
+1. 在 [設定] 之下，選取 [活頁簿]。 在 [已安裝] 之下，您可以看到所有已安裝的活頁簿。 在 [全部] 底下，您可以看到可供安裝的完整內建活頁簿資源庫。 
 2. 搜尋特定活頁簿，以查看所提供功能的完整清單和描述。 
 3. 假設您使用 Azure AD 來啟動並執行 Azure Sentinel，我們建議您至少安裝下列活頁簿：
    - **Azure AD**：使用下列其中一項或兩項：
@@ -67,7 +67,7 @@ ms.locfileid: "83798663"
       ![Pal Alto 儀表板](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-您可藉由編輯主要查詢![按鈕](./media/qs-get-visibility/edit-query-button.png)來自訂活頁簿。 您可以按一下按鈕![按鈕](./media/qs-get-visibility/go-to-la-button.png)前往 [Log Analytics 來編輯查詢](../azure-monitor/log-query/get-started-portal.md)，而且可以選取省略符號 (...) 並選取 [自訂圖格資料]  ，這可讓您編輯主要時間篩選器，或從活頁簿中移除特定圖格。
+您可藉由編輯主要查詢![按鈕](./media/qs-get-visibility/edit-query-button.png)來自訂活頁簿。 您可以按一下按鈕![按鈕](./media/qs-get-visibility/go-to-la-button.png)前往 [Log Analytics 來編輯查詢](../azure-monitor/log-query/get-started-portal.md)，而且可以選取省略符號 (...) 並選取 [自訂圖格資料]，這可讓您編輯主要時間篩選器，或從活頁簿中移除特定圖格。
 
 如需使用查詢的詳細資訊，請參閱[教學課程︰Log Analytics 中的視覺化資料](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
@@ -75,16 +75,16 @@ ms.locfileid: "83798663"
 
 如果您想要新增圖格，則可將它新增至現有活頁簿 (您所建立的活頁簿或 Azure Sentinel 內建活頁簿)。 
 1. 在 Log Analytics 中，使用[教學課程：Log Analytics 中的視覺化資料](../azure-monitor/learn/tutorial-logs-dashboards.md)中的指示建立圖格。 
-2. 建立圖格之後，在 [釘選]  之下，選取您希望出現圖格的活頁簿。
+2. 建立圖格之後，在 [釘選] 之下，選取您希望出現圖格的活頁簿。
 
 ## <a name="create-new-workbooks"></a>建立新活頁簿
 您可以從頭開始建立新的活頁簿，或使用內建活頁簿作為新活頁簿的基礎。
 
-1. 若要從頭開始建立新的活頁簿，請依序選取 [活頁簿]  和 [+新增活頁簿]  。
+1. 若要從頭開始建立新的活頁簿，請依序選取 [活頁簿] 和 [+新增活頁簿]。
 2. 選取活頁簿建立所在的訂用帳戶，並為它提供描述性名稱。 每個活頁簿都是一項 Azure 資源，您可以指派其角色 (RBAC) 來定義及限制可以存取的人員。 
-3. 若要讓它顯示在您要釘選視覺效果的活頁簿中，您必須共用它。 按一下 [共用]  ，然後按一下 [管理使用者]  。 
+3. 若要讓它顯示在您要釘選視覺效果的活頁簿中，您必須共用它。 按一下 [共用]，然後按一下 [管理使用者]。 
  
-1. 如同處理任何其他 Azure 資源一樣，使用 [檢查存取權]  和 [角色指派]  。 如需詳細資訊，請參閱[使用 RBAC 共用 Azure 活頁簿](../azure-portal/azure-portal-dashboard-share-access.md)。
+1. 如同處理任何其他 Azure 資源一樣，使用 [檢查存取權] 和 [角色指派]。 如需詳細資訊，請參閱[使用 RBAC 共用 Azure 活頁簿](../azure-portal/azure-portal-dashboard-share-access.md)。
 
 
 ## <a name="new-workbook-examples"></a>新的活頁簿範例
@@ -117,7 +117,7 @@ ms.locfileid: "83798663"
 
 當您建立新的偵測時，利用 Microsoft 安全性研究人員鎖建立的內建偵測，其已針對您連線的資料來源量身訂製。
 
-若要檢視所有現成的偵測，請依序移至 [分析]  和 [規則範本]  。 此索引標籤包含所有 Azure Sentinel 內建規則。
+若要檢視所有現成的偵測，請依序移至 [分析] 和 [規則範本]。 此索引標籤包含所有 Azure Sentinel 內建規則。
 
    ![使用內建偵測來尋找 Azure Sentinel 的威脅](media/tutorial-detect-built-in/view-oob-detections.png)
 

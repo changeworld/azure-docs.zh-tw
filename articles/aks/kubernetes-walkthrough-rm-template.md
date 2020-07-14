@@ -5,16 +5,16 @@ services: container-service
 ms.topic: quickstart
 ms.date: 04/19/2019
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: bbe5d9ac21ae9e03d629a1667567a915c8653a8a
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 447af1580f601c1f55690434b371aeeed2d335a0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81602635"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106283"
 ---
-# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本部署 Azure Kubernetes Service (AKS) 叢集
+# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-arm-template"></a>快速入門：使用 ARM 範本部署 Azure Kubernetes Service (AKS) 叢集
 
-Azure Kubernetes Service (AKS) 是受控 Kubernetes 服務，可讓您快速部署及管理叢集。 在本快速入門中，您將使用 Azure Resource Manager 範本部署 AKS 叢集。 在叢集上執行包含 Web 前端和 Redis 執行個體的多容器應用程式。
+Azure Kubernetes Service (AKS) 是受控 Kubernetes 服務，可讓您快速部署及管理叢集。 在本快速入門中，您將使用 Azure Resource Manager 範本 (ARM 範本) 部署 AKS 叢集。 在叢集上執行包含 Web 前端和 Redis 執行個體的多容器應用程式。
 
 ![瀏覽至 Azure 投票的影像](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
@@ -22,15 +22,19 @@ Azure Kubernetes Service (AKS) 是受控 Kubernetes 服務，可讓您快速部�
 
 本快速入門假設您已有 Kubernetes 概念的基本知識。 如需詳細資訊，請參閱 [Azure Kubernetes Services (AKS) 的 Kubernetes 核心概念][kubernetes-concepts]。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aks%2Fazuredeploy.json)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.61 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-若要使用 Resource Manager 範本建立 AKS 叢集，您必須提供 SSH 公開金鑰與 Azure Active Directory 服務主體。  您也可以使用[受控識別](use-managed-identity.md)而不是服務主體的權限。 如果您需要其中一個資源，請參閱下一節；否則請跳至[建立 AKS 叢集](#create-an-aks-cluster)一節。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+若要使用 Resource Manager 範本建立 AKS 叢集，您必須提供 SSH 公開金鑰與 Azure Active Directory 服務主體。 您也可以使用[受控識別](use-managed-identity.md)而不是服務主體的權限。 如果您需要其中一個資源，請參閱下一節；否則請跳至[檢閱範本](#review-the-template)一節。
 
 ### <a name="create-an-ssh-key-pair"></a>建立 SSH 金鑰組
 
@@ -66,11 +70,9 @@ az ad sp create-for-rbac --skip-assignment
 }
 ```
 
-記下 appId  和密碼  。 下列步驟中會使用這些值。
+記下 appId 和密碼。 下列步驟中會使用這些值。
 
-## <a name="create-an-aks-cluster"></a>建立 AKS 叢集
-
-### <a name="review-the-template"></a>檢閱範本
+## <a name="review-the-template"></a>檢閱範本
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-aks/)。
 
@@ -78,7 +80,7 @@ az ad sp create-for-rbac --skip-assignment
 
 如需更多 AKS 範例，請參閱 [AKS 快速入門範本][aks-quickstart-templates]站台。
 
-### <a name="deploy-the-template"></a>部署範本
+## <a name="deploy-the-template"></a>部署範本
 
 1. 選取以下影像來登入 Azure 並開啟範本。
 
@@ -86,11 +88,11 @@ az ad sp create-for-rbac --skip-assignment
 
 2. 選取或輸入下列值。
 
-    在本快速入門中，請保留 [OS 磁碟大小 GB]  、[代理程式計數]  、[代理程式 VM 大小]  、[OS 類型]  和 [Kubernetes 版本]  的預設值。 請針對下列範本參數提供您自己的值︰
+    在本快速入門中，請保留 [OS 磁碟大小 GB]、[代理程式計數]、[代理程式 VM 大小]、[OS 類型] 和 [Kubernetes 版本] 的預設值。 請針對下列範本參數提供您自己的值︰
 
-    * 訂用帳戶  ：選取 Azure 訂用帳戶。
-    * **資源群組**：選取 [建立新的]  。 輸入資源群組的唯一名稱 (例如 *myResourceGroup*)，然後選擇 [確定]  。
-    * **位置**：選取一個位置，例如 [美國東部]  。
+    * 訂用帳戶：選取 Azure 訂用帳戶。
+    * **資源群組**：選取 [建立新的]。 輸入資源群組的唯一名稱 (例如 *myResourceGroup*)，然後選擇 [確定]。
+    * **位置**：選取一個位置，例如 [美國東部]。
     * **叢集名稱**：輸入 AKS 叢集的唯一名稱，例如 *myAKSCluster*。
     * **DNS 前置詞**：為您的叢集輸入唯一的 DNS 前置詞，例如 *myakscluster*。
     * **Linux 管理員使用者名稱**：輸入使用 SSH 連線的使用者名稱，例如 *azureuser*。
@@ -101,7 +103,7 @@ az ad sp create-for-rbac --skip-assignment
 
     ![在入口網站中建立 Azure Container Service 叢集的 Resource Manager 範本](./media/kubernetes-walkthrough-rm-template/create-aks-cluster-using-template-portal.png)
 
-3. 選取 [購買]  。
+3. 選取 [購買]。
 
 建立 AKS 叢集需要幾分鐘的時間。 請等到叢集成功部署後，再移至下一個步驟。
 

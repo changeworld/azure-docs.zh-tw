@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: 2b6f4bb707d6c5c07dd6a1205ce7be542a220f17
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: a5bd7b3e6262fa21865f04a6b65d1a75faafefa4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268694"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038187"
 ---
 [沈浸式閱讀程式](https://www.onenote.com/learningtools)是經過全面設計的工具，可實作經實證的技術以改善閱讀理解程度。
 
@@ -305,7 +305,8 @@ public async Task<JsonResult> GetTokenAndSubdomain()
 
 ## <a name="next-steps"></a>後續步驟
 
-* 檢視 [Node.js 快速入門](../../quickstart-nodejs.md)，以查看您還可以使用 Node.js 透過沈浸式閱讀程式執行哪些作業
+* 檢視 [Node.js 快速入門](../../tutorial-nodejs.md)，以查看您還可以使用 Node.js 透過沈浸式閱讀程式執行哪些作業
+* 檢視 [Android 教學課程](../../tutorial-android.md)，以查看您還可以使用適用於 Android 的 Java 或 Kotlin 透過沈浸式閱讀程式 SDK 執行哪些作業
+* 檢視 [iOS 教學課程](../../tutorial-ios.md)，以查看您還可以使用適用於 iOS 的 Swift 透過沈浸式閱讀程式 SDK 執行哪些作業
 * 檢視 [Python 教學課程](../../tutorial-python.md)，以查看您還可以使用 Python 透過沈浸式閱讀程式用戶端程式庫執行哪些作業
-* 檢視 [iOS 教學課程](../../tutorial-ios-picture-immersive-reader.md)，以查看您還可以使用 Swift 透過沈浸式閱讀程式用戶端程式庫執行哪些作業
 * 探索[沈浸式閱讀程式 SDK](https://github.com/microsoft/immersive-reader-sdk) 和[沈浸式閱讀程式 SDK 參考](../../reference.md)

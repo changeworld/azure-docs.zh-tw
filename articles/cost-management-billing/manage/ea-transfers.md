@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: banders
-ms.openlocfilehash: a0846a07fd8107a87483753c8dbff1301fda4a0c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: ff10d9ec9b92b85d057e556a21c144b9e8f155cf
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299905"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043269"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise 傳輸
 
@@ -29,7 +29,7 @@ ms.locfileid: "84299905"
 - 只會轉移要求中指定的帳戶。 如果選擇所有帳戶，則會轉移全部的帳戶。
 - 來源註冊會將其狀態保持為 [作用中] 或 [已延長]。 您可以繼續使用註冊，直到到期為止。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 當您要求帳戶轉移時，請提供下列資訊：
 
@@ -49,7 +49,7 @@ ms.locfileid: "84299905"
 
 在下列情況下可考慮進行註冊轉移：
 
-- 目前註冊的承諾用量期間已結束。
+- 目前註冊的預付款期間已結束。
 - 註冊處於過期/延長狀態，且已協商新合約。
 - 您有多個註冊，而想要將所有帳戶和帳單合併在單一註冊之下。
 
@@ -60,7 +60,7 @@ ms.locfileid: "84299905"
 - 所有 Azure 服務、訂用帳戶、帳戶、部門和整個註冊結構 (包括所有 EA 部門系統管理員) 都會轉移至新的目標註冊。
 - 註冊狀態會設定為 [已轉移]。 已轉移的註冊僅限用於報告使用量記錄。
 - 您無法將角色或訂用帳戶新增至已轉移的註冊。 已轉移狀態可防止以該註冊產生其他使用量。
-- 合約中任何剩餘的預付金餘額都會遺失，其中也包括未來的期限。
+- 合約中任何剩餘的 Azure 預付款餘額都會遺失，其中也包括未來的期限。
 -    如果您要轉移的註冊有 RI 購買，RI 購買費用將保留在來源註冊中，但所有 RI 權益都將轉移供新註冊使用。
 -    舊註冊上已產生的 Marketplace 一次性購買費用和任何每月固定費用，都不會轉移到新的註冊。 依使用量的 Marketplace 費用將會轉移。
 
@@ -68,9 +68,9 @@ ms.locfileid: "84299905"
 
 有效的轉移日期可以是目標註冊的開始日期或之後的日期。
 
-來源註冊使用量會依承諾用量或超額部分收費。 在有效轉移日期之後發生的使用量會轉移至新的註冊，並據以收費。
+來源註冊使用量會依 Azure 預付款或超額部分收費。 在有效轉移日期之後發生的使用量會轉移至新的註冊，並據以收費。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 當您要求註冊轉移時，請提供下列資訊：
 
@@ -84,9 +84,9 @@ ms.locfileid: "84299905"
 - 如果註冊轉移不符合您的需求，請考慮帳戶轉移。
 - 來源註冊狀態會更新為已轉移，且將僅適用於歷史使用量報告用途。
 
-### <a name="monetary-commitment"></a>承諾用量
+### <a name="azure-prepayment"></a>Azure 預付款
 
-預付金無法在註冊之間轉移。 預付金餘額會依約繫結至收訂的註冊。 預付金不會在帳戶或註冊轉移程序中轉移。
+Azure 預付款無法在註冊之間轉移。 Azure 預付款餘額會依約繫結至收訂的註冊。 Azure 預付款不會在帳戶或註冊轉移程序中轉移。
 
 ### <a name="no-services-affected-for-account-and-enrollment-transfers"></a>帳戶和註冊轉移不會影響任何服務
 

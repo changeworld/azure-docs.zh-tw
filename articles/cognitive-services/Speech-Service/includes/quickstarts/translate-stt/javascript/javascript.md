@@ -3,15 +3,15 @@ author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: dapine
-ms.openlocfilehash: 61c5370bc8dd77babaaa79c814c0d7a9c8049d73
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.author: trbye
+ms.openlocfilehash: ad3e005f65b1660bd843bf2819f41eddbed44e9c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82978810"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035820"
 ---
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前：
 
@@ -41,7 +41,7 @@ ms.locfileid: "82978810"
 如果想要在 Web 伺服器上裝載網頁，可以選擇性提供示範應用程式的權杖來源。
 這樣一來，訂用帳戶金鑰將永遠不會離開您的伺服器，同時可讓使用者不需要輸入任何授權代碼就能使用語音功能。
 
-建立名為 `token.php` 的新檔案。 在此範例中，我們會假設您的 Web 伺服器支援 PHP 指令碼語言。 輸入下列程式碼：
+建立名為 `token.php` 的新檔案。 在此範例中，我們會假設您的 Web 伺服器支援 PHP 指令碼語言並且已啟用 cURL。 輸入下列程式碼：
 
 ```php
 <?php
@@ -67,11 +67,11 @@ echo curl_exec($ch);
 
 ## <a name="build-and-run-the-sample-locally"></a>在本機建置並執行範例
 
-若要啟動應用程式，請按兩下 index.html 檔案或使用最愛的網頁瀏覽器開啟 index.html。 其將會提供簡單的 GUI，供您輸入訂用帳戶金鑰與[區域](../../../../regions.md)，並觸發輸入文字的合成。
+若要啟動應用程式，請按兩下 index.html 檔案或使用最愛的網頁瀏覽器開啟 index.html。 其將會提供簡單的 GUI，供您輸入訂用帳戶金鑰與[區域](../../../../regions.md)，並觸發輸入語音的文字轉譯。
 
 ## <a name="build-and-run-the-sample-via-a-web-server"></a>透過 Web 伺服器建置並執行範例
 
-若要啟動應用程式，請開啟您最愛的網頁瀏覽器並指向資料夾裝載所在的公用 URL，輸入您的[區域](../../../../regions.md)，並觸發輸入文字的合成。 如果已設定，它將會從您的權杖來源取得權杖。
+若要啟動應用程式，請開啟您最愛的網頁瀏覽器並指向資料夾裝載所在的公用 URL，輸入您的[區域](../../../../regions.md)，並觸發輸入語音的文字轉譯。 如果已設定，它將會從您的權杖來源取得權杖。
 
 ## <a name="next-steps"></a>後續步驟
 

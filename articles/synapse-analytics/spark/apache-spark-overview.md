@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 1f1a83bce3a8b46bb49bf78917690851390408e0
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 0a9a89b6ff3d0e2d3987d4b4281b9e4e1605475f
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194683"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476779"
 ---
 # <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>什麼是 Azure Synapse Analytics 中的 Apache Spark
 
@@ -60,7 +60,7 @@ SparkContext 可以連線到叢集管理員，其可在各個應用程式之間�
 
 SparkContext 會執行使用者的主要函式，並在節點上執行各種平行作業。 然後，SparkContext 會收集作業的結果。 節點會在檔案系統中讀取和寫入資料。 節點也會將記憶體內部已轉換的資料快取為彈性分散式資料集 (RDD)。
 
-SparkCoNtext 會連線至 Spark 集區，並負責將應用程式轉換為有向圖形 (DAG)。 圖形包含在節點上的執行程式流程內執行的個別工作。 每個應用程式都會取得自己的執行程式處理序，而這些處理序會在整個應用程式的持續時間保持運作，並且在多個執行緒中執行工作。
+SparkCoNtext 會連線至 Spark 集區，並負責將應用程式轉換為有向非循環圖 (DAG)。 圖形包含在節點上的執行程式流程內執行的個別工作。 每個應用程式都會取得自己的執行程式處理序，而這些處理序會在整個應用程式的持續時間保持運作，並且在多個執行緒中執行工作。
 
 ## <a name="apache-spark-in-synapse-analytics-use-cases"></a>Synapse Analytics 中的 Apache Spark 使用案例
 

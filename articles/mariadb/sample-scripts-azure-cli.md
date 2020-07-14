@@ -8,17 +8,17 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 3/18/2020
-ms.openlocfilehash: d10d5b4885e826da9b6efd95dfc02940e1a9644a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8579f9294f55293cd32c8dfc1c13f9d4570aed67
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79529963"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110329"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mariadb"></a>「適用於 MariaDB 的 Azure 資料庫」的 Azuer CLI 範例 
 下表包含「適用於 MariaDB 的 Azure 資料庫」的範例 Azure CLI 指令碼連結。
 
-| |  |
+| 範例連結 | 描述  |
 |---|---|
 |**建立伺服器**||
 | [建立伺服器和防火牆規則](./scripts/sample-create-server-and-firewall-rule.md?toc=%2fcli%2fazure%2ftoc.json) | 此 Azure CLI 指令碼會建立單一「適用於 MariaDB 的 Azure 資料庫」伺服器，並設定伺服器等級防火牆規則。 |

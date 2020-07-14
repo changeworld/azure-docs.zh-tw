@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: b9afd1c4ca5e4c652a03bc2ef652b8e43ea12787
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 3e5afae9421d13d986ad6c891c8e889f590f04a2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83727194"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044714"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>快速入門：控制連線到 IoT 中樞的裝置 (Android)
 
@@ -25,7 +25,7 @@ ms.locfileid: "83727194"
 
 在此快速入門中，您可以使用直接方法來控制連線到 IoT 中樞的模擬裝置。 IoT 中樞是一項 Azure 服務，可讓您從雲端管理您的 IoT 裝置，並將大量的裝置遙測內嵌到雲端進行儲存或處理。 您可以使用直接方法，針對連線到 IoT 中樞的裝置，從遠端變更裝置的行為。 本快速入門使用兩個應用程式：可回應從後端服務應用程式所呼叫直接方法的模擬裝置應用程式，以及在 Android 裝置上呼叫直接方法的服務應用程式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
@@ -113,9 +113,7 @@ az iot hub show-connection-string --policy-name service --name {YourIoTHubName} 
 
 裝置 SDK 的應用程式範例可以在實體 Android 裝置或 Android 模擬器上執行。 範例會連線到 IoT 中樞上的特定裝置端點、傳送模擬的遙測，並接聽來自中樞的直接方法呼叫。 在此快速入門中，來自中樞的直接方法呼叫會告知裝置變更其傳送遙測的間隔。 模擬的裝置在執行直接方法後，會將通知傳送回您的中樞。
 
-1. 在 Android Studio 中開啟 GitHub 的 Android 專案範例。 專案會位在 [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java) 存放庫副本 (已複製或下載) 的下列目錄中。
-
-        \azure-iot-samples-java\iot-hub\Samples\device\AndroidSample
+1. 在 Android Studio 中開啟 GitHub 的 Android 專案範例。 專案會位在 [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java) 存放庫副本 (已複製或下載) 的下列目錄中： *\azure-iot-samples-java\iot-hub\Samples\device\AndroidSample*。
 
 2. 在 Android Studio 中開啟專案範例的 *gradle.properties*，並以您稍早所記錄的裝置連接字串取代 **Device_Connection_String** 預留位置。
 
@@ -123,7 +121,7 @@ az iot hub show-connection-string --policy-name service --name {YourIoTHubName} 
     DeviceConnectionString=HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyAndroidDevice;SharedAccessKey={YourSharedAccessKey}
     ```
 
-3. 在 Android Studio 中，按一下 [檔案]   > [同步專案與 Gradle 檔案]  。 確認建置是否完成。
+3. 在 Android Studio 中，按一下 [檔案] > [同步專案與 Gradle 檔案]。 確認建置是否完成。
 
    > [!NOTE]
    > 如果專案同步失敗，其可能的原因包括：
@@ -131,9 +129,9 @@ az iot hub show-connection-string --policy-name service --name {YourIoTHubName} 
    > * 對您的 Android Studio 版本而言，專案中參考的 Android Gradle 外掛程式和 Gradle 的版本已過時。 請依照[這些指示](https://developer.android.com/studio/releases/gradle-plugin)，針對您的安裝參考及安裝正確版本的外掛程式和 Gradle。
    > * Android SDK 的授權合約尚未簽署。 請依照建置輸出中的指示，簽署授權合約並下載 SDK。
 
-4. 完成建置後，按一下 [執行]   > [執行「應用程式」]  。 設定應用程式，以在實體 Android 裝置或 Android 模擬器上執行。 如需有關如何在實體裝置或模擬器上執行 Android 應用程式的詳細資訊，請參閱[執行應用程式](https://developer.android.com/training/basics/firstapp/running-app)。
+4. 完成建置後，按一下 [執行] > [執行「應用程式」]。 設定應用程式，以在實體 Android 裝置或 Android 模擬器上執行。 如需有關如何在實體裝置或模擬器上執行 Android 應用程式的詳細資訊，請參閱[執行應用程式](https://developer.android.com/training/basics/firstapp/running-app)。
 
-5. 載入應用程式後，按一下 [啟動]  按鈕，以開始將遙測傳送至 IoT 中樞：
+5. 載入應用程式後，按一下 [啟動] 按鈕，以開始將遙測傳送至 IoT 中樞：
 
     ![用戶端裝置 android 應用程式的範例螢幕擷取畫面](media/quickstart-control-device-android/sample-screenshot.png)
 
@@ -165,18 +163,16 @@ az iot hub show-connection-string --policy-name service --name {YourIoTHubName} 
 
 IoT 中樞後端服務應用程式通常會在雲端中執行，如此可較簡單地降低與機密連接字串相關的風險 (連接字串可控制 IoT 中樞上的所有裝置)。 在此範例中，我們會以 Android 應用程式的形式執行後端服務應用程式 (僅供示範用)。 本快速入門的其他語言版本會提供更符合典型後端服務應用程式的範例。
 
-1. 在 Android Studio 中開啟 GitHub 的 Android 專案服務範例。 專案會位在 [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java) 存放庫副本 (已複製或下載) 的下列目錄中。
+1. 在 Android Studio 中開啟 GitHub 的 Android 專案服務範例。 專案會位在 [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java) 存放庫副本 (已複製或下載) 的下列目錄中： *\azure-iot-samples-java\iot-hub\Samples\service\AndroidSample*。
 
-        \azure-iot-samples-java\iot-hub\Samples\service\AndroidSample
-
-2. 在 Android Studio 中，開啟範例專案的 gradle.properties  。 以您稍早記下的服務連接字串和您註冊的 Android 裝置識別碼來更新 **ConnectionString** 和 **DeviceId** 屬性值。
+2. 在 Android Studio 中，開啟範例專案的 gradle.properties。 以您稍早記下的服務連接字串和您註冊的 Android 裝置識別碼來更新 **ConnectionString** 和 **DeviceId** 屬性值。
 
     ```
     ConnectionString=HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}
     DeviceId=MyAndroidDevice
     ```
 
-3. 在 Android Studio 中，按一下 [檔案]   > [同步專案與 Gradle 檔案]  。 確認建置是否完成。
+3. 在 Android Studio 中，按一下 [檔案] > [同步專案與 Gradle 檔案]。 確認建置是否完成。
 
    > [!NOTE]
    > 如果專案同步失敗，其可能的原因包括：
@@ -184,9 +180,9 @@ IoT 中樞後端服務應用程式通常會在雲端中執行，如此可較簡�
    > * 對您的 Android Studio 版本而言，專案中參考的 Android Gradle 外掛程式和 Gradle 的版本已過時。 請依照[這些指示](https://developer.android.com/studio/releases/gradle-plugin)，針對您的安裝參考及安裝正確版本的外掛程式和 Gradle。
    > * Android SDK 的授權合約尚未簽署。 請依照建置輸出中的指示，簽署授權合約並下載 SDK。
 
-4. 完成建置後，按一下 [執行]   > [執行「應用程式」]  。 設定應用程式，以在不同的實體 Android 裝置或 Android 模擬器上執行。 如需有關如何在實體裝置或模擬器上執行 Android 應用程式的詳細資訊，請參閱[執行應用程式](https://developer.android.com/training/basics/firstapp/running-app)。
+4. 完成建置後，按一下 [執行] > [執行「應用程式」]。 設定應用程式，以在不同的實體 Android 裝置或 Android 模擬器上執行。 如需有關如何在實體裝置或模擬器上執行 Android 應用程式的詳細資訊，請參閱[執行應用程式](https://developer.android.com/training/basics/firstapp/running-app)。
 
-5. 載入應用程式之後，將 [設定傳訊間隔]  的值設為 [1000]  ，然後按一下 [叫用]  。
+5. 載入應用程式之後，將 [設定傳訊間隔] 的值設為 [1000]，然後按一下 [叫用]。
 
     遙測傳訊間隔是以毫秒為單位。 裝置範例的預設遙測間隔會設為 5 秒。 此變更會更新 Android IoT 裝置，使遙測變成每秒傳送。
 

@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 8b340bdbd4bea4fcd865d6c27d688e5dbed86bb8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6a449c078b18b5bc9e005a873c51d92ad29417f6
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84052339"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084982"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立伺服器層級的防火牆規則
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -33,12 +33,12 @@ ms.locfileid: "84052339"
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>建立伺服器層級 IP 防火牆規則
 
- SQL Database 會在伺服器層級建立單一和集區資料庫的防火牆。 除非您建立 IP 防火牆規則來開啟防火牆，否則此防火牆會防止用戶端應用程式連線到伺服器或其任何單一或集區資料庫。 若要從 Azure 外部的 IP 位址連線，請針對您想要能夠連線的特定 IP 位址或位址範圍建立防火牆規則。 如需伺服器層級和資料庫層級 IP 防火牆規則的詳細資訊，請參閱 [伺服器層級和資料庫層級 IP 防火牆規則](firewall-configure.md)。
+ SQL Database 會在伺服器層級建立單一和集區資料庫的防火牆。 除非您建立 IP 防火牆規則來開啟防火牆，否則此防火牆會防止用戶端應用程式連線到伺服器或其任何資料庫。 若要從 Azure 外部的 IP 位址連線，請針對您想要能夠連線的特定 IP 位址或位址範圍建立防火牆規則。 如需伺服器層級和資料庫層級 IP 防火牆規則的詳細資訊，請參閱 [伺服器層級和資料庫層級 IP 防火牆規則](firewall-configure.md)。
 
 > [!NOTE]
 > Azure SQL Database 會透過連接埠 1433 通訊。 如果您嘗試從公司網路內進行連線，您網路的防火牆可能不允許透過連接埠 1433 的輸出流量。 若是如此，除非 IT 部門開啟連接埠 1433，否則您無法連線到您的伺服器。
 > [!IMPORTANT]
-> 0\.0.0.0 的防火牆規則可讓所有 Azure 服務通過伺服器層級防火牆規則，並嘗試透過伺服器連線到單一或集區資料庫。
+> 0\.0.0.0 的防火牆規則可讓所有 Azure 服務通過伺服器層級防火牆規則，並嘗試透過伺服器連線到資料庫。
 
 請遵循下列步驟，為您用戶端的 IP 位址建立伺服器層級 IP 防火牆規則，並且讓外部連線僅能透過 Azure SQL Database 防火牆存取該 IP 位址。
 

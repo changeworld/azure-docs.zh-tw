@@ -8,17 +8,17 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: sample, mvc
 ms.date: 5/6/2019
-ms.openlocfilehash: 154dc8b8569162992f4fc231caee2a43682db456
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 094222c9d6cee6c785f44111a9f9ac6a2185536c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74774715"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120530"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-postgresql---single-server"></a>「適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器」的 Azure CLI 範例
 下表包含「適用於 PostgreSQL 的 Azure 資料庫」之範例 Azure CLI 指令碼的連結。
 
-| |  |
+| 範例連結 | 描述 |
 |---|---|
 |**建立伺服器**||
 | [建立伺服器和防火牆規則](scripts/sample-create-server-and-firewall-rule.md?toc=%2fcli%2fazure%2ftoc.json) | 此 Azure CLI 指令碼可建立「適用於 PostgreSQL 的 Azure 資料庫」伺服器，並設定伺服器等級的防火牆規則。 |

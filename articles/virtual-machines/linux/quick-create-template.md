@@ -8,28 +8,28 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 7fc7e4d5d402bfb21a30798f64e31cbbef8ccdd0
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 479e580ee8821f0a6de054c631714c5386927e4f
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677945"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083911"
 ---
-# <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-a-resource-manager-template"></a>快速入門：使用 Resource Manager 範本建立 Ubuntu Linux 虛擬機器
+# <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-an-arm-template"></a>快速入門：使用 ARM 範本建立 Ubuntu Linux 虛擬機器
 
-此快速入門會向您說明如何在 Azure 中使用 Resource Manager 範本部署 Ubuntu Linux 虛擬機器 (VM)。 
+此快速入門會向您說明如何在 Azure 中使用 Azure Resource Manager 範本 (ARM 範本) 部署 Ubuntu Linux 虛擬機器 (VM)。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[![部署至 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-linux%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>必要條件
 
-無。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-an-ubuntu-linux-virtual-machine"></a>建立 Ubuntu Linux 虛擬機器
-
-### <a name="review-the-template"></a>檢閱範本
+## <a name="review-the-template"></a>檢閱範本
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/)。
 
@@ -46,7 +46,7 @@ ms.locfileid: "84677945"
 - [**Microsoft.Network/publicIPAddresses**](/azure/templates/Microsoft.Network/publicIPAddresses)：建立公用 IP 位址。
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/Microsoft.Compute/virtualMachines)：建立虛擬機器。
 
-### <a name="deploy-the-template"></a>部署範本
+## <a name="deploy-the-template"></a>部署範本
 
 1. 選取以下影像來登入 Azure 並開啟範本。 此範本會建立金鑰保存庫和祕密。
 
@@ -90,7 +90,7 @@ Azure 入口網站用於部署範本。 除了 Azure 入口網站以外，您也
 
 ## <a name="next-steps"></a>後續步驟
 
-在此快速入門中，您已使用 Resource Manager 範本部署一個簡單的虛擬機器。 若要深入了解 Azure 虛擬機器，請繼續 Linux VM 的教學課程。
+在本快速入門中，您已使用 ARM 範本部署一個簡單的虛擬機器。 若要深入了解 Azure 虛擬機器，請繼續 Linux VM 的教學課程。
 
 
 > [!div class="nextstepaction"]

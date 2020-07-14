@@ -8,17 +8,17 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 12/02/2019
-ms.openlocfilehash: 18c52505ddf82cb29b13a9ee7621db5c3422eab6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 467d14e1f00e88999e130d28ee0e5a00dac47825
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74769756"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120954"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mysql"></a>「適用於 MySQL 的 Azure 資料庫」的 Azuer CLI 範例 
 下表包含「適用於 MySQL 的 Azure 資料庫」之範例 Azure CLI 指令碼的連結。
 
-| |  |
+| 範例連結 | 描述  |
 |---|---|
 |**建立伺服器**||
 | [建立伺服器和防火牆規則](./scripts/sample-create-server-and-firewall-rule.md?toc=%2fcli%2fazure%2ftoc.json) | 此 Azure CLI 指令碼會建立單一「適用於 MySQL 的 Azure 資料庫」伺服器，並設定伺服器等級防火牆規則。 |

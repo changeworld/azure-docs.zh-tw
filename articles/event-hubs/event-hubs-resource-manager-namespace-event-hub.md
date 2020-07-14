@@ -2,29 +2,30 @@
 title: 快速入門：使用取用者群組建立事件中樞 - Azure 事件中樞
 description: 快速入門：使用 Azure Resource Manager 範本來建立含有事件中樞和取用者群組的事件中樞命名空間
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 06/23/2020
-ms.openlocfilehash: 6ddf17030da8b0ff50f10938221b9c1dba08084d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 1aa1dc0a4be8c74651a764788184ae1eefe17e75
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964289"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038084"
 ---
-# <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本建立事件中樞
+# <a name="quickstart-create-an-event-hub-by-using-an-arm-template"></a>快速入門：使用 ARM 範本建立事件中樞
 
-Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可接收和處理數百萬個事件。 事件中樞可以處理及儲存分散式軟體和裝置所產生的事件、資料或遙測。 傳送至事件中樞的資料可以透過任何即時分析提供者或批次/儲存體配接器來轉換和儲存。 如需事件中樞的詳細概觀，請參閱[事件中樞概觀](event-hubs-about.md)和[事件中樞功能](event-hubs-features.md)。 在本快速入門中，您會使用 [Azure Resource Manager 範本](../azure-resource-manager/management/overview.md)建立事件中樞。 您可以部署 Azure Resource Manager 範本，以建立一個類型為[事件中樞](event-hubs-what-is-event-hubs.md)、且含有一個事件中樞的命名空間。
+Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可接收和處理數百萬個事件。 事件中樞可以處理及儲存分散式軟體和裝置所產生的事件、資料或遙測。 傳送至事件中樞的資料可以透過任何即時分析提供者或批次/儲存體配接器來轉換和儲存。 如需事件中樞的詳細概觀，請參閱[事件中樞概觀](event-hubs-about.md)和[事件中樞功能](event-hubs-features.md)。 在本快速入門中，您會使用 [Azure Resource Manager 範本 (ARM 範本)](../azure-resource-manager/management/overview.md) 建立事件中樞。 您可以部署 ARM 範本，以建立一個類型為[事件中樞](event-hubs-what-is-event-hubs.md)、且含有一個事件中樞的命名空間。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-eventhubs-create-namespace-and-eventhub%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>必要條件
+
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>Prerequisites
-
-無。
-
-## <a name="create-an-event-hub"></a>建立事件中樞
-
-### <a name="review-the-template"></a>檢閱範本
+## <a name="review-the-template"></a>檢閱範本
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-eventhubs-create-namespace-and-eventhub/)。
 
@@ -37,11 +38,11 @@ Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可�
 
 若要尋找更多範本範例，請參閱 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/?term=eventhub&pageNumber=1&sort=Popular)。
 
-### <a name="deploy-the-template"></a>部署範本
+## <a name="deploy-the-template"></a>部署範本
 
 若要部署範本：
 
-1. 選取下列程式碼區塊中的 [試用]  ，然後依照指示登入 Azure Cloud Shell。
+1. 選取下列程式碼區塊中的 [試用]，然後依照指示登入 Azure Cloud Shell。
 
    ```azurepowershell-interactive
    $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -57,12 +58,12 @@ Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可�
 
    建立事件中樞需要幾分鐘的時間。
 
-1. 選取 [複製]  來複製 PowerShell 指令碼。
-1. 以滑鼠右鍵按一下殼層主控台，然後選取 [貼上]  。
+1. 選取 [複製] 來複製 PowerShell 指令碼。
+1. 以滑鼠右鍵按一下殼層主控台，然後選取 [貼上]。
 
-## <a name="verify-the-deployment"></a>驗證部署
+## <a name="validate-the-deployment"></a>驗證部署
 
-若要驗證部署，您可以從 [Azure 入口網站](https://portal.azure.com)中開啟資源群組，或使用下列 Azure PowerShell 指令碼。  如果 Cloud Shell 仍開啟，您就不需要複製/執行第一行 (Read-Host)。
+若要驗證部署，您可以從 [Azure 入口網站](https://portal.azure.com)中開啟資源群組，或使用下列 Azure PowerShell 指令碼。 如果 Cloud Shell 仍開啟，您就不需要複製/執行第一行 (Read-Host)。
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"

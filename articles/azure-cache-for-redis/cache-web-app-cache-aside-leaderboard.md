@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.openlocfilehash: ca70262a7980df9d427fbd7e58e08b41c37d7133
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 177aa42991612d8ce2e899576599aafc43015c58
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195584"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082772"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>教學課程：在 ASP.NET 上建立另行快取排行榜
 
@@ -680,8 +680,8 @@ ms.locfileid: "84195584"
 
     | 預留位置 | 建議的值 |
     | --- | --- |
-    | {your_username} | 針對您剛才建立的資料庫伺服器使用**伺服器系統管理員登入**。 |
-    | {your_password} | 針對您剛才建立的資料庫伺服器使用密碼。 |
+    | {your_username} | 針對您剛才建立的伺服器使用**伺服器管理員登入**。 |
+    | {your_password} | 針對您剛才建立的伺服器使用密碼。 |
 
     藉由新增使用者名稱和密碼作為應用程式設定，程式碼中就不會包含使用者名稱和密碼。 這種方法可協助您保護這些認證。
 

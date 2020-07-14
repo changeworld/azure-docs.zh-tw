@@ -11,12 +11,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/05/2020
 ms.author: kumud
-ms.openlocfilehash: 1a1593566b8bdb72f322d64c1ee99c7018f49329
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: dfeb9c6bc3dbe33881fc51ccb08a776b827dfe9c
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707407"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082432"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立虛擬網路
 
@@ -223,3 +223,6 @@ ms.locfileid: "84707407"
 若要深入了解虛擬網路設定，請參閱[建立、變更或刪除虛擬網路](manage-virtual-network.md)。
 
 根據預設，Azure 允許 VM 之間進行安全通訊。 Azure 只允許從網際網路連線到 Windows VM 的輸入遠端桌面連線。 若要深入了解 VM 網路通訊的類型，請參閱[篩選網路流量](tutorial-filter-network-traffic.md)。
+
+> [!NOTE] 
+> Azure 服務成本費用。 Azure 成本管理可協助您設定預算和設定警示以控制費用。 使用成本管理來分析、管理和最佳化您的 Azure 成本。 若要深入了解，請參閱[分析成本的快速入門](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。

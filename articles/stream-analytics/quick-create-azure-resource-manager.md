@@ -10,18 +10,22 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 05/28/2020
-ms.openlocfilehash: 127a8550b7f4ca89b8b3a8e61880b295a806e5d0
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: b7217df7fe7ccedf2419480b1114fa1ef6c8e24a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449357"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043541"
 ---
-# <a name="quickstart-create-an-azure-stream-analytics-job-by-using-the-azure-resource-manager-template"></a>快速入門：透過使用 Azure Resource Manager 範本建立 Azure 串流分析作業
+# <a name="quickstart-create-an-azure-stream-analytics-job-by-using-an-arm-template"></a>快速入門：使用 ARM 範本建立 Azure 串流分析作業
 
-在此快速入門中，您將使用 Azure Resource Manager 範本建立 Azure 串流分析作業。 建立作業之後，即可驗證該部署。
+在此快速入門中，您將使用 Azure Resource Manager 範本 (ARM 範本) 建立 Azure 串流分析作業。 建立作業之後，即可驗證該部署。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-streamanalytics-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -29,9 +33,7 @@ ms.locfileid: "84449357"
 
 * 擁有 Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="create-an-azure-stream-analytics-job"></a>建立 Azure 串流分析作業
-
-### <a name="review-the-template"></a>檢閱範本
+## <a name="review-the-template"></a>檢閱範本
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-streamanalytics-create/)。
 
@@ -39,9 +41,9 @@ ms.locfileid: "84449357"
 
 範本中定義的 Azure 資源是 [Microsoft.StreamAnalytics/StreamingJobs](/azure/templates/microsoft.streamanalytics/streamingjobs)：建立 Azure 串流分析作業。
 
-### <a name="deploy-the-template"></a>部署範本
+## <a name="deploy-the-template"></a>部署範本
 
-在此節中，您會使用 Azure Resource Manager 範本建立 Azure 串流分析作業。
+在此節中，您會使用 ARM 範本建立 Azure 串流分析作業。
 
 1. 選取以下影像來登入 Azure 並開啟範本。 此範本會建立 Azure 串流分析作業。
 
@@ -108,7 +110,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>後續步驟
 
-在此快速入門中，您已透過使用 Azure Resource Manager 範本建立 Azure 串流分析作業，並已驗證該部署。 前往下一篇文章以了解如何使用 VS Code 匯出現有作業的 Azure Resource Manager 範本。
+在此快速入門中，您已透過使用 ARM 範本建立 Azure 串流分析作業，並已驗證該部署。 前往下一篇文章以了解如何使用 VS Code 匯出現有作業的 ARM 範本。
 
 > [!div class="nextstepaction"]
-> [匯出 Azure 串流分析作業的 Azure Resource Manager 範本](resource-manager-export.md)
+> [匯出 Azure 串流分析作業 ARM 範本](resource-manager-export.md)

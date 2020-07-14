@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e17bad915fd913f6e3894ed386e914e65aa46c01
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 6a56602ad5217af07d9e35872a26ddb478146d0e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85250327"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101880"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>教學課程：使用 ARM 範本匯入 SQL BACPAC 檔案
 
@@ -34,7 +34,7 @@ ms.locfileid: "85250327"
 
 若要完成本文，您需要：
 
-* Visual Studio Cod 搭配 Resource Manager Tools 擴充功能。 請參閱[使用 Visual Studio Code 建立 ARM 範本](./use-vs-code-to-create-template.md)。
+* Visual Studio Cod 搭配 Resource Manager Tools 擴充功能。 請參閱[快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本](./quickstart-create-templates-use-visual-studio-code.md)。
 * 為了提高安全性，請使用為伺服器系統管理員帳戶產生的密碼。 以下是您可以用來產生密碼的範例：
 
     ```console
@@ -112,8 +112,8 @@ BACPAC 檔案必須先儲存在 Azure 儲存體帳戶中，才能使用 ARM 範�
 
     範本中定義了兩項資源：
 
-   * 第 1 課：建立 Windows Azure 儲存體物件`Microsoft.Sql/servers`。 請參閱[範本參考](https://docs.microsoft.com/azure/templates/microsoft.sql/servers)。
-   * 第 1 課：建立 Windows Azure 儲存體物件`Microsoft.SQL.servers/databases`。 請參閱[範本參考](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases)。
+   * 第 1 課：建立 Windows Azure 儲存體物件`Microsoft.Sql/servers`。 請參閱[範本參考](/azure/templates/microsoft.sql/servers)。
+   * 第 1 課：建立 Windows Azure 儲存體物件`Microsoft.SQL.servers/databases`。 請參閱[範本參考](/azure/templates/microsoft.sql/servers/databases)。
 
         自訂範本之前，最好先對範本有初步了解。
 1. 選取 [檔案] > [另存新檔]，以名稱 *azuredeploy.json* 將檔案的複本儲存至您的本機電腦。
@@ -194,7 +194,7 @@ BACPAC 檔案必須先儲存在 Azure 儲存體帳戶中，才能使用 ARM 範�
 
         ![具有 SQL Database 擴充功能的範本](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac.png)
 
-        若要了解資源定義，請參閱 [SQL Database 擴充功能參考](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions)。 以下是部分重要元素：
+        若要了解資源定義，請參閱 [SQL Database 擴充功能參考](/azure/templates/microsoft.sql/servers/databases/extensions)。 以下是部分重要元素：
 
         * **dependsOn**：在資料庫建立後，才可建立擴充功能資源。
         * **storageKeyType**：指定要使用的儲存體金鑰類型。 這個值可以是 `StorageAccessKey` 或 `SharedAccessKey`。 在本教學課程中使用 `StorageAccessKey`。

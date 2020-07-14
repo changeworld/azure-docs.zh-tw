@@ -4,14 +4,14 @@ description: 尋找部分常見 App Service 案例的 Azure PowerShell 範例。
 tags: azure-service-management
 ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.topic: sample
-ms.date: 03/08/2017
+ms.date: 07/07/2020
 ms.custom: mvc
-ms.openlocfilehash: 6300b9fe10d7b12d71f87adec85d3a86658a8c97
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 51693ad4d233ea180607bc7358a0847e23688099
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254475"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057903"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>Azure App Service 的 PowerShell 範例
 
@@ -25,6 +25,7 @@ ms.locfileid: "85254475"
 | [建立應用程式並使用 FTP 部署程式碼](./scripts/powershell-deploy-ftp.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 建立 App Service 應用程式，並使用 FTP 從本機目錄上傳檔案。 |
 | [建立應用程式並從本機 Git 存放庫部署程式碼](./scripts/powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 建立 App Service 應用程式，並從本機 Git 存放庫設定程式碼推送。 |
 | [建立應用程式並將程式碼部署至預備環境](./scripts/powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 建立具有部署位置以用於暫存程式碼變更的 App Service 應用程式。 |
+|  [使用私人端點建立應用程式並公開您的應用程式](./scripts/powershell-deploy-private-endpoint.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 使用私人端點建立 App Service 應用程式。 |
 |**設定應用程式**||
 | [將自訂網域對應至應用程式](./scripts/powershell-configure-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 建立 App Service 應用程式，並使自訂網域名稱與之對應。 |
 | [將自訂 TLS/SSL 憑證繫結至應用程式](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 建立 App Service 應用程式，並使自訂網域名稱的 TLS/SSL 憑證與之繫結。 |

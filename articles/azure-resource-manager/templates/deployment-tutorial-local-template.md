@@ -4,12 +4,12 @@ description: 了解如何從您的本機電腦部署 Azure Resource Manager 範�
 ms.date: 05/20/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 01f04d18ae54c3c512010dd005e9d820b914e536
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 3112c3940f9d2668f4825de3c2e57a63af009d92
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714061"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118897"
 ---
 # <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>教學課程：部署本機 Azure Resource Manager 範本
 
@@ -33,7 +33,7 @@ ms.locfileid: "83714061"
 
 ### <a name="editor-optional"></a>編輯器 (選擇性)
 
-範本是 JSON 檔案。 若要檢閱/編輯範本，您需要良好的 JSON 編輯器。 我們建議使用含 Resource Manager 工具擴充功能的 Visual Studio Code。 如果您需要安裝這些工具，請參閱[使用 Visual Studio Code 來建立 Azure Resource Manager 範本](use-vs-code-to-create-template.md)。
+範本是 JSON 檔案。 若要檢閱/編輯範本，您需要良好的 JSON 編輯器。 我們建議使用含 Resource Manager 工具擴充功能的 Visual Studio Code。 如果您需要安裝這些工具，請參閱[快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本](quickstart-create-templates-use-visual-studio-code.md)。
 
 ## <a name="review-template"></a>檢閱範本
 
@@ -155,10 +155,10 @@ az deployment group create \
 
 您可以藉由刪除資源群組來清除您所部署的資源。
 
-1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]  。
-2. 在 [依名稱篩選]  欄位中輸入資源群組名稱。
+1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]。
+2. 在 [依名稱篩選] 欄位中輸入資源群組名稱。
 3. 選取資源群組名稱。
-4. 從頂端功能表中選取 [刪除資源群組]  。
+4. 從頂端功能表中選取 [刪除資源群組]。
 
 ## <a name="next-steps"></a>後續步驟
 

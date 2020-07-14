@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door | Microsoft Docs
-description: 本文提供 Azure Front Door 的概觀。 了解其是否為平衡應用程式使用者流量負載的最佳選擇。
+title: Azure Front Door
+description: 本文提供您適用於 Azure Front Door 規則引擎的各種比對條件清單。
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 77c0d68f507e09b315c912d1d91fdf9cf63db6fa
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: d42b6b56f0cdd1f6ef2ea45b21a027f1b4c56b1c
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515763"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321990"
 ---
 # <a name="azure-front-door-rules-engine-match-conditions"></a>Azure Front Door 規則引擎比對條件
 
-在 [AFD 規則引擎](front-door-rules-engine.md)中，一個規則包含零個或更多比對條件和一個動作。 本文針對您可在 AFD 規則引擎中使用的比對條件，提供詳細的說明。 
+在 [AFD 規則引擎](front-door-rules-engine.md)中，一個規則包含零個或更多比對條件和一個動作。 本文針對您可在 AFD 規則引擎中使用的比對條件，提供詳細的說明。
 
-規則的第一個部分是一個比對條件或一組比對條件。 一個規則最多可以包含 10 個比對條件。 比對條件會識別特定類型的要求，以便針對這類要求執行已定義的動作。 如果您使用多個比對條件，則會使用 AND 邏輯將比對條件群組在一起。 對於支援多個值的所有比對條件 (如下所示「以空格分隔」)，則會採用 "OR" 運算子。 
+規則的第一個部分是一個比對條件或一組比對條件。 一個規則最多可以包含 10 個比對條件。 比對條件會識別特定類型的要求，以便針對這類要求執行已定義的動作。 如果您使用多個比對條件，則會使用 AND 邏輯將比對條件群組在一起。 對於支援多個值的所有比對條件 (如下所示「以空格分隔」)，則會採用 "OR" 運算子。
 
 例如，您可以使用比對條件：
 
@@ -142,7 +142,7 @@ Equals、Not equals | HTTP、HTTPS
 
 #### <a name="key-information"></a>重要資訊
 
-- 當您使用此規則條件時，請務必包含通訊協定資訊。 例如： *https://www.\<yourdomain\>.com* 。
+- 當您使用此規則條件時，請務必包含通訊協定資訊。 例如： *https://www.\<yourdomain\>.com*。
 
 ## <a name="request-file-extension"></a>要求副檔名
 
@@ -156,7 +156,7 @@ Equals、Not equals | HTTP、HTTPS
 
 #### <a name="key-information"></a>重要資訊
 
-- 例如，請勿包含前置句號；例如，使用 htm  而非 .htm  。
+- 例如，請勿包含前置句號；例如，使用 htm 而非 .htm。
 
 ## <a name="request-file-name"></a>要求檔案名稱
 

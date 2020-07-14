@@ -11,16 +11,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: b696cdf2d54c42d3967041c5d10b1bd9bb5a3065
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: a055216634775254867421854aa0b456fa90c709
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84448677"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85551034"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer 元件
 
-Azure Load Balancer 包含幾個主要元件。 您可以透過 Azure 入口網站、Azure CLI、Azure PowerShell 或範本，在您的訂用帳戶中設定這些元件。
+Azure Load Balancer 包含幾個主要元件。 您可以透過下列方式，在您的訂用帳戶中設定這些元件：
+
+* Azure 入口網站
+* Azure CLI
+* Azure PowerShell
+* Resource Manager 範本
 
 ## <a name="frontend-ip-configuration"></a>前端 IP 設定 <a name = "frontend-ip-configurations"></a>
 
@@ -51,7 +56,7 @@ Load Balancer 可以有多個前端 Ip。 深入瞭解 [多個前端](load-balan
 
 ## <a name="health-probes"></a>健康狀態探查
 
-健康情況探查可用來判斷後端集區中執行個體的健全狀態。 建立 Load Balancer 時必須設定健康情況探查，以供 Load Balancer 可以用來判斷執行個體是否狀況良好，並將流量路由傳送到其中。
+健康情況探查可用來判斷後端集區中執行個體的健全狀態。 在建立負載平衡器期間，設定負載平衡器使用的健康狀態探查。  此健康狀態探查會判斷執行個體是否狀況良好，並且可接收流量。
 
 您可以為健康情況探查定義狀況不良臨界值。 當探查無法回應時，負載平衡器會停止傳送新的連線至狀況不良的執行個體。 探查失敗不會影響現有的連線。 連線會繼續進行，直到應用程式：
 
@@ -67,32 +72,55 @@ Load Balancer 會為以下端點提供不同的健康情況探查類型：TCP、
 
 Load Balancer 規則可用來定義要如何將傳入流量散發給後端集區內的**所有**執行個體。 負載平衡規則會將指定的前端 IP 組態和連接埠對應至多個後端 IP 位址和連接埠。
 
-例如，如果您想要將前端 IP 連接埠 80 (或另一個連接埠) 上的流量，路由傳送至所有後端執行個體的連接埠 80，則可以使用負載平衡規則來達到此目的。
+例如，使用連接埠 80 的負載平衡規則，會將來自前端 IP 的流量路由傳送至後端執行個體的連接埠 80。
 
-### <a name="high-availability-ports"></a>高可用性連接埠
+<p align="center">
+  <img src="./media/load-balancer-components/lbrules.svg" width="512" title="負載平衡規則">
+</p>
 
-以 'protocol - all and port - 0' 設定的 Load Balancer 規則。 這可提供單一規則，讓抵達內部 Standard Load Balancer 所有埠的所有 TCP 和 UDP 流量進行負載平衡。 每次都會針對流量進行負載平衡決策。 此動作是以下列的五元組連線為基礎： 
+*圖：負載平衡規則*
+
+## <a name="high-availability-ports"></a>高可用性連接埠
+
+以 **'protocol - all and port - 0'** 設定的負載平衡器規則。 
+
+此規則會啟用單一規則，讓抵達內部 Standard Load Balancer 所有連接埠的所有 TCP 和 UDP 流量進行負載平衡。 
+
+每次都會針對流量進行負載平衡決策。 此動作是以下列的五元組連線為基礎： 
+
 1. 來源 IP 位址
 2. 來源連接埠
 3. 目的地 IP 位址
 4. 目的地連接埠
 5. protocol
 
-HA 連接埠負載平衡規則可協助您處理重要的使用案例，例如虛擬網路中網路虛擬裝置 (NVA) 的高可用性和規模調整。 此功能也可以在必須對大量連接埠進行負載平衡時提供協助。
+HA 連接埠負載平衡規則可協助您處理重要的使用案例，例如虛擬網路中網路虛擬裝置 (NVA) 的高可用性和規模調整。 此功能可以在必須對大量連接埠進行負載平衡時提供協助。
 
-您可以深入瞭解 [HA 連接埠](load-balancer-ha-ports-overview.md)。
+<p align="center">
+  <img src="./media/load-balancer-components/harules.svg" width="512" title="HA 連接埠規則">
+</p>
+
+*圖：HA 連接埠規則*
+
+深入了解 [HA 連接埠](load-balancer-ha-ports-overview.md)。
 
 ## <a name="inbound-nat-rules"></a>傳入的 NAT 規則
 
-輸入 NAT 規則會將傳送至所選前端 IP 位址和連接埠組合的傳入流量，轉送至後端集區中的**特定**虛擬機器或執行個體。 連接埠轉送作業會使用與負載平衡相同的雜湊式分送來完成。
+輸入 NAT 規則會轉寄傳送到前端 IP 位址與連接埠組合的連入流量。 流量會傳送至後端集區中的**特定**虛擬機器或執行個體。 連接埠轉送作業會使用與負載平衡相同的雜湊式分送來完成。
 
 例如，如果您想要讓遠端桌面通訊協定 (RDP) 或安全殼層 (SSH) 工作階段分隔後端集區中的 VM 執行個體。 您可以將多個內部端點對應至相同前端 IP 位址的連接埠。 前端 IP 位址可以從遠端管理 VM，而不需要額外的 jumpbox。
 
-虛擬機器擴展集 (VMSS) 內容中的輸入 NAT 規則是輸入 NAT 集區。 深入瞭解 [Load Balancer 元件和 VMSS](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#azure-virtual-machine-scale-sets-with-azure-load-balancer)。
+<p align="center">
+  <img src="./media/load-balancer-components/inboundnatrules.svg" width="512" title="傳入的 NAT 規則">
+</p>
+
+*圖：輸入 NAT 規則*
+
+虛擬機器擴展集內容中的輸入 NAT 規則是輸入 NAT 集區。 深入了解 [Load Balancer 元件和虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#azure-virtual-machine-scale-sets-with-azure-load-balancer)。
 
 ## <a name="outbound-rules"></a>輸出規則
 
-輸出規則會針對後端集區所識別的所有虛擬機器或執行個體設定輸出網路位址轉譯 (NAT)。 這可讓後端中的執行個體與網際網路或其他端點通訊 (輸出)。
+輸出規則會針對後端集區所識別的所有虛擬機器或執行個體設定輸出網路位址轉譯 (NAT)。 此規則可讓後端中的執行個體與網際網路或其他端點通訊 (輸出)。
 
 深入瞭解 [輸出連線和規則](load-balancer-outbound-connections.md)。
 

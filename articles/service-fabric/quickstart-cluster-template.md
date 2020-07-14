@@ -7,26 +7,28 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: edoyle
 ms.date: 04/24/2020
-ms.openlocfilehash: 2db3dffbbf0f6d98fe6da7a0cec5400f7f2c03da
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 1cb6dc56a5d4fa975f68c1dea08920a7c7db3904
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722451"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119492"
 ---
-# <a name="quickstart-create-a-service-fabric-cluster-using-resource-manager-template"></a>快速入門：使用 Resource Manager 範本建立 Service Fabric 叢集
+# <a name="quickstart-create-a-service-fabric-cluster-using-arm-template"></a>快速入門：使用 ARM 範本建立 Service Fabric 叢集
 
-Azure Service Fabric 是一個分散式系統平台，可讓您輕鬆封裝、部署及管理可調整和可信賴的微服務與容器。 Service Fabric *叢集*是一組透過網路連線的虛擬機器，您可以將微服務部署到其中並進行管理。
+Azure Service Fabric 是一個分散式系統平台，可讓您輕鬆封裝、部署及管理可調整和可信賴的微服務與容器。 Service Fabric *叢集*是一組透過網路連線的虛擬機器，您可以將微服務部署到其中並進行管理。 本文說明如何使用 Azure Resource Manager 範本 (ARM 範本) 在 Azure 中部署 Service Fabric 測試叢集。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-本文說明如何使用 Resource Manager 在 Azure 中部署 Service Fabric 測試叢集。 這個有五個節點的 Windows 叢集會使用自我簽署憑證來加以保護，因此僅適用於教學目的 (而不適用於生產工作負載)。
+這個有五個節點的 Windows 叢集會使用自我簽署憑證來加以保護，因此僅適用於教學目的 (而不適用於生產工作負載)。 我們會使用 Azure PowerShell 來部署範本。 除了 Azure PowerShell 以外，您也可以使用 Azure 入口網站、Azure CLI 和 REST API。 若要了解其他部署方法，請參閱[部署範本](../azure-resource-manager/templates/deploy-portal.md)。
 
-我們會使用 Azure PowerShell 來部署範本。 除了 Azure PowerShell 以外，您也可以使用 Azure 入口網站、Azure CLI 和 REST API。 若要了解其他部署方法，請參閱[部署範本](../azure-resource-manager/templates/deploy-portal.md)。
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fservice-fabric-secure-cluster-5-node-1-nodetype%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>必要條件
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
-
-## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="install-service-fabric-sdk-and-powershell-modules"></a>安裝 Service Fabric SDK 和 PowerShell 模組
 
@@ -87,9 +89,7 @@ $certUrlValue = "<Certificate URL>"
 $certThumbprint = "<Certificate Thumbprint>"
 ```
 
-## <a name="create-a-service-fabric-cluster"></a>建立 Service Fabric 叢集
-
-### <a name="review-the-template"></a>檢閱範本
+## <a name="review-the-template"></a>檢閱範本
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/)。 本文的範本太長，無法在此完整顯示。 若要檢視範本，請參閱 [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json) 檔案。
 
@@ -144,7 +144,7 @@ $certThumbprint = "<Certificate Thumbprint>"
 
 ## <a name="deploy-the-template"></a>部署範本
 
-將 Resource Manager 範本和參數檔案的路徑儲存在變數中，然後部署範本。
+將 ARM 範本和參數檔案的路徑儲存在變數中，然後部署範本。
 
 ```powershell
 $templateFilePath = "<full path to azuredeploy.json>"

@@ -5,6 +5,8 @@
   items:
     - name: 認知服務是什麼？
       href: Welcome.md
+    - name: 認知服務文件中有何新資訊？
+      href: whats-new-docs.md
     - name: 認知服務和機器學習
       href: cognitive-services-and-machine-learning.md
     - name: 認知服務的自訂子網域
@@ -64,6 +66,24 @@
           href: ../container-registry/container-registry-get-started-azure-cli.md
         - name: Azure Kubernetes Service (AKS)
           href: ../aks/tutorial-kubernetes-prepare-app.md
+- name: 巨量資料
+  items:
+    - name: 巨量資料的認知服務
+      href: ./big-data/cognitive-services-for-big-data.md
+    - name: 開始使用
+      href: ./big-data/getting-started.md
+    - name: 範例
+      items:
+        - name: Python
+          href: ./big-data/samples-python.md
+        - name: Scala
+          href: ./big-data/samples-scala.md
+    - name: 食譜
+      items:
+        - name: 配方：異常偵測器
+          href: ./big-data/recipes/anomaly-detection.md
+        - name: 配方：藝術總管
+          href: ./big-data/recipes/art-explorer.md
 - name: 資源
   items:
     - name: Azure 藍圖

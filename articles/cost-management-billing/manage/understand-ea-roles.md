@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: banders
-ms.openlocfilehash: e38271b3a56894380ca5456146a7ab36fb09e08c
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: b8693ea09ccbb6f0a3f8dfe0846a9b1b256872b6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678013"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045139"
 ---
 # <a name="managing-azure-enterprise-roles"></a>管理 Azure 企業角色
 
@@ -84,7 +84,7 @@ Azure EA 系統管理員建立部門之後，Azure 企業系統管理員就可�
 
 |工作| 企業系統管理員|企業系統管理員 (唯讀)|部門系統管理員|部門系統管理員 (唯讀) |帳戶擁有者| Partner|
 |---|---|---|---|---|---|---|
-|檢視包括承諾用量在內的信用額度結餘|✔|✔|✘|✘|✘|✔|
+|檢視包括 Azure 預付款在內的信用額度餘額|✔|✔|✘|✘|✘|✔|
 |檢視部門費用配額|✔|✔|✘|✘|✘|✔|
 |設定部門費用配額|✔|✘|✘|✘|✘|✘|
 |檢視組織的 EA 價位表|✔|✔|✘|✘|✘|✔|

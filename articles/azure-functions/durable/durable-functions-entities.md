@@ -5,20 +5,20 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4f45ac40e7df865bdb4722d086325096c377cd59
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 496b315e23beeb97d08befca13e05c4797268f36
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877537"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341566"
 ---
 # <a name="entity-functions"></a>實體函式
 
-實體函式會定義用於讀取和更新一小段狀態 (稱為「持久性實體」  ) 的作業。 和協調器函式一樣，實體函式也是具有特殊觸發程序類型 (「實體觸發程序」  ) 的函式。 不同於協調器函式，實體函式會明確管理實體的狀態，而不是透過控制流程來隱含表示狀態。
+實體函式會定義用於讀取和更新一小段狀態 (稱為「持久性實體」) 的作業。 和協調器函式一樣，實體函式也是具有特殊觸發程序類型 (「實體觸發程序」) 的函式。 不同於協調器函式，實體函式會明確管理實體的狀態，而不是透過控制流程來隱含表示狀態。
 實體提供一個方法來擴充應用程式，方法是將工作分散到許多實體，而每個實體都有適度大小的狀態。
 
 > [!NOTE]
-> 只有 Durable Functions 2.0 和更新版本有提供實體函式和相關功能。
+> 只有 Durable Functions 2.0 和更新版本有提供實體函式和相關功能。 .NET 和 JavaScript 目前都支援這些功能。
 
 ## <a name="general-concepts"></a>一般概念
 
@@ -27,7 +27,7 @@ ms.locfileid: "80877537"
 為了避免衝突，單一實體上的所有作業保證會以序列方式執行，也就是一個接一個執行。 
 
 ### <a name="entity-id"></a>實體識別碼
-實體是透過唯一識別碼 (即「實體識別碼」  ) 來存取。 實體識別碼就只是一對可唯一識別實體執行個體的字串。 其中包括：
+實體是透過唯一識別碼 (即「實體識別碼」) 來存取。 實體識別碼就只是一對可唯一識別實體執行個體的字串。 其中包括：
 
 * **實體名稱**，這是用來識別實體類型的名稱。 例如 "Counter"。 此名稱必須符合實作為實體的實體函式名稱。 它不會區分大小寫。
 * **實體索引鍵**，這是可在所有其他同名實體之間唯一識別實體的字串。 例如 GUID。
@@ -203,7 +203,7 @@ module.exports = async function (context) {
 
 ---
 
-「訊號」  一詞表示實體 API 的叫用是單向且非同步的。 用戶端函式無法知道實體處理作業的時間。 此外，用戶端函式無法觀察到任何結果值或例外狀況。 
+「訊號」一詞表示實體 API 的叫用是單向且非同步的。 用戶端函式無法知道實體處理作業的時間。 此外，用戶端函式無法觀察到任何結果值或例外狀況。 
 
 ### <a name="example-client-reads-an-entity-state"></a>範例：用戶端讀取實體狀態
 
@@ -327,7 +327,7 @@ module.exports = df.orchestrator(function*(context){
 
 ### <a name="example-transfer-funds-c"></a>範例：轉移資金 (C#)
 
-下列程式碼範例會使用協調器函式，在兩個帳戶實體之間轉移資金。 若要協調實體更新，就必須使用 `LockAsync` 方法在協調流程中建立「重要區段」  。
+下列程式碼範例會使用協調器函式，在兩個帳戶實體之間轉移資金。 若要協調實體更新，就必須使用 `LockAsync` 方法在協調流程中建立「重要區段」。
 
 > [!NOTE]
 > 為了簡單起見，此範例會重複使用先前定義的 `Counter` 實體。 在實際的應用程式中，建議您定義更詳細的 `BankAccount` 實體。

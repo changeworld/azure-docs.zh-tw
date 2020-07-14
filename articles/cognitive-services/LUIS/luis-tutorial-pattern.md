@@ -2,13 +2,13 @@
 title: 教學課程：模式 - LUIS
 description: 在本教學課程中，您將可以在提供較少語句範例的情況下，使用模式來提高意圖和實體預測準確度。 此模式是以範本語句範例的方式來提供，其中包含用來識別實體及可忽略文字的語法。
 ms.topic: tutorial
-ms.date: 05/07/2020
-ms.openlocfilehash: c9bbd521d49d669e8ebd18b29bda9f2add8f7739
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 07/06/2020
+ms.openlocfilehash: 3ca8bb15d19b0fa0dd6b33d35a380c0b1b07abe0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592911"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039495"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>教學課程：新增通用模式範本語句格式以改善預測
 
@@ -39,12 +39,10 @@ LUIS 應用程式中儲存了兩種類型的語句：
 
 使用下列步驟：
 
-1.  下載並儲存[應用程式的 JSON 檔案](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json?raw=true)。
+1.  下載並儲存[應用程式的 JSON 檔案](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/tutorial-fix-unsure-predictions.json?raw=true)。
 
 1. 登入 [LUIS 入口網站](https://www.luis.ai)，然後選取您的 [訂用帳戶] 和 [撰寫資源]，以查看指派給該撰寫資源的應用程式。
-1. 將 JSON 匯入至 [LUIS 入口網站](https://www.luis.ai)中的新應用程式。 在 [我的應用程式] 頁面中，選取 [+ 新增對話應用程式]，然後選取 [匯入為 JSON]。 選取您在上個步驟中下載的檔案。
-
-1. 從 [管理] 區段的 [版本] 索引標籤上選取使用中的版本，然後選取 [複製]。 將複製的版本命名為 `patterns`。 複製是一個既可測試各種 LUIS 功能又不影響原始版本的絕佳方式。 因為版本名稱會作為 URL 路由的一部分，所以此名稱不能包含任何在 URL 中無效的字元。
+1. 將 JSON 匯入至 [LUIS 入口網站](https://www.luis.ai)中的新應用程式。 在 [我的應用程式] 頁面中，選取 [+ 新增對話應用程式]，然後選取 [匯入為 JSON]。 選取您在上個步驟中下載的檔案，將應用程式命名為 `Patterns tutorial`。
 
 ## <a name="create-new-intents-and-their-utterances"></a>建立新意圖及其語句
 
@@ -67,8 +65,6 @@ LUIS 應用程式中儲存了兩種類型的語句：
     |`Who is John W. Smith's manager?`|
     |`Who does Jill Jones directly report to?`|
     |`Who is Jill Jones supervisor?`|
-
-    如果是在意圖的語句 (而不是員工實體的語句) 中標示 keyPhrase 實體，也沒關係。 這兩者都可在端點的 [測試] 窗格中正確預測。
 
 1. 在左側導覽中，選取 [意圖]。
 
@@ -109,50 +105,50 @@ LUIS 應用程式中儲存了兩種類型的語句：
             "topIntent": "OrgChart-Manager",
             "intents": {
                 "OrgChart-Manager": {
-                    "score": 0.313054234
+                    "score": 0.326605469
                 },
                 "OrgChart-Reports": {
-                    "score": 0.2462688
+                    "score": 0.127583548
                 },
                 "EmployeeFeedback": {
-                    "score": 0.0488328524
-                },
-                "GetJobInformation": {
-                    "score": 0.0156933
+                    "score": 0.0299124215
                 },
                 "MoveEmployee": {
-                    "score": 0.011265873
+                    "score": 0.01159851
                 },
-                "Utilities.StartOver": {
-                    "score": 0.003065792
-                },
-                "Utilities.Stop": {
-                    "score": 0.00300148362
-                },
-                "Utilities.Cancel": {
-                    "score": 0.00271081156
-                },
-                "None": {
-                    "score": 0.00212835032
+                "GetJobInformation": {
+                    "score": 0.0104600191
                 },
                 "ApplyForJob": {
-                    "score": 0.0020669254
+                    "score": 0.007508645
                 },
-                "Utilities.Confirm": {
-                    "score": 0.00200891262
+                "Utilities.StartOver": {
+                    "score": 0.00359402061
+                },
+                "Utilities.Stop": {
+                    "score": 0.00336530479
                 },
                 "FindForm": {
-                    "score": 0.00194145238
+                    "score": 0.002653719
+                },
+                "Utilities.Cancel": {
+                    "score": 0.00263288687
+                },
+                "None": {
+                    "score": 0.00238638581
                 },
                 "Utilities.Help": {
-                    "score": 0.00182301877
+                    "score": 0.00226386427
+                },
+                "Utilities.Confirm": {
+                    "score": 0.00211663754
                 }
             },
             "entities": {
                 "keyPhrase": [
                     "boss of Jill Jones"
                 ],
-                "Employee": [
+                "EmployeeListEntity": [
                     [
                         "Employee-45612"
                     ]
@@ -171,9 +167,9 @@ LUIS 應用程式中儲存了兩種類型的語句：
                             ]
                         }
                     ],
-                    "Employee": [
+                    "EmployeeListEntity": [
                         {
-                            "type": "Employee",
+                            "type": "EmployeeListEntity",
                             "text": "Jill Jones",
                             "startIndex": 19,
                             "length": 10,
@@ -190,11 +186,7 @@ LUIS 應用程式中儲存了兩種類型的語句：
     }
     ```
 
-兩個熱門意圖的分數已接近，但最高意圖並沒有明顯很高 (超過 60%)，且未遠遠超過下一個意圖的分數。
-
-因為 LUIS 定型每次都不會完全一樣，會有一些變化，所以，因此前兩個分數可能會在下一個定型週期中反轉。 結果可能會傳回錯誤的意圖。
-
-使用模式來讓正確意圖的分數大幅提高 (以百分比表示)，並拉大與下一個最高分數的差距。
+已預測出正確的最高意圖 (`OrgChart-Manager`) 但分數未超過 70%，而且遠低於下一個最高意圖。 使用模式來讓正確意圖的分數大幅提高 (以百分比表示)，並拉大與下一個最高分數的差距。
 
 讓這裡的第二個瀏覽器視窗保持開啟。 您稍後會在本教學課程中使用到它。
 
@@ -206,16 +198,16 @@ LUIS 應用程式中儲存了兩種類型的語句：
 |`Who does Jill Jones report to?`|
 |`Who reports to Jill Jones?`|
 
-這些語句太相似，以致若不提供許多語句範例，便無法判斷各個語句中內容相關的唯一性。 藉由為意圖新增模式，無須提供許多語句範例，LUIS 便可學習意圖的常見語句模式。
+這些語句太相似，以致若不提供_許多_語句範例，便無法判斷各個語句中內容相關的唯一性。 藉由為意圖新增模式，無須提供許多其他語句範例，LUIS 便可學習意圖的常見語句模式。
 
 此意圖的範本語句範例包括：
 
 |範本語句的範例|語法意義|
 |--|--|
-|`Who does {Employee} report to[?]`|可交換 `{Employee}`<br>忽略 `[?]`|
-|`Who reports to {Employee}[?]`|可交換 `{Employee}`<br>忽略 `[?]`|
+|`Who does {EmployeeListEntity} report to[?]`|可交換 `{EmployeeListEntity}`<br>忽略 `[?]`|
+|`Who reports to {EmployeeListEntity}[?]`|可交換 `{EmployeeListEntity}`<br>忽略 `[?]`|
 
-`{Employee}` 語法不僅會標示是哪一個實體，也會標示實體在範本語句內的位置。 選擇性的語法 `[?]` 會標記選擇性的單字或[標點符號](luis-reference-application-settings.md#punctuation-normalization)。 LUIS 會比對語句，並略過括號內的選擇性文字。
+`{EmployeeListEntity}` 語法不僅會標示是哪一個實體，也會標示實體在範本語句內的位置。 選擇性的語法 `[?]` 會標記選擇性的單字或[標點符號](luis-reference-application-settings.md#punctuation-normalization)。 LUIS 會比對語句，並略過括號內的選擇性文字。
 
 雖然語法看起來像是規則運算式，但它不是規則運算式。 只支援大括號 `{}` 和方括號 `[]` 語法。 它們的巢狀結構最多可以有兩個層級。
 
@@ -233,25 +225,25 @@ LUIS 應用程式中儲存了兩種類型的語句：
 
     |範本語句|
     |:--|
-    |`Who is {Employee} the subordinate of[?]`|
-    |`Who does {Employee} report to[?]`|
-    |`Who is {Employee}['s] manager[?]`|
-    |`Who does {Employee} directly report to[?]`|
-    |`Who is {Employee}['s] supervisor[?]`|
-    |`Who is the boss of {Employee}[?]`|
+    |`Who is {EmployeeListEntity} the subordinate of[?]`|
+    |`Who does {EmployeeListEntity} report to[?]`|
+    |`Who is {EmployeeListEntity}['s] manager[?]`|
+    |`Who does {EmployeeListEntity} directly report to[?]`|
+    |`Who is {EmployeeListEntity}['s] supervisor[?]`|
+    |`Who is the boss of {EmployeeListEntity}[?]`|
 
-    這些範本語句包括具有大括弧標記法的 **Employee** 實體。
+    這些範本語句包括具有大括弧標記法的 **EmployeeListEntity** 實體。
 
 1. 同樣在 [模式] 頁面上，選取 [OrgChart-Reports] 意圖，然後輸入下列範本語句：
 
     |範本語句|
     |:--|
-    |`Who are {Employee}['s] subordinates[?]`|
-    |`Who reports to {Employee}[?]`|
-    |`Who does {Employee} manage[?]`|
-    |`Who are {Employee} direct reports[?]`|
-    |`Who does {Employee} supervise[?]`|
-    |`Who does {Employee} boss[?]`|
+    |`Who are {EmployeeListEntity}['s] subordinates[?]`|
+    |`Who reports to {EmployeeListEntity}[?]`|
+    |`Who does {EmployeeListEntity} manage[?]`|
+    |`Who are {EmployeeListEntity} direct reports[?]`|
+    |`Who does {EmployeeListEntity} supervise[?]`|
+    |`Who does {EmployeeListEntity} boss[?]`|
 
 ### <a name="query-endpoint-when-patterns-are-used"></a>使用模式時查詢端點
 
@@ -261,7 +253,7 @@ LUIS 應用程式中儲存了兩種類型的語句：
 
 1. 發佈完成後，將瀏覽器索引標籤切換回 [端點 URL] 索引標籤。
 
-1. 移至網址列中的 URL 尾端，並以 `Who is the boss of Jill Jones?` 取代 _YOUR_QUERY_HERE_
+1. 移至網址列中的 URL 結尾，並確認您的查詢仍是 `Who is the boss of Jill Jones?`，然後提交新預測的 URL。
 
     ```json
     {
@@ -270,50 +262,50 @@ LUIS 應用程式中儲存了兩種類型的語句：
             "topIntent": "OrgChart-Manager",
             "intents": {
                 "OrgChart-Manager": {
-                    "score": 0.999997854
+                    "score": 0.999999046
                 },
                 "OrgChart-Reports": {
-                    "score": 6.13748343E-05
+                    "score": 3.237443E-05
                 },
                 "EmployeeFeedback": {
-                    "score": 8.052567E-06
+                    "score": 4.364242E-06
                 },
                 "GetJobInformation": {
-                    "score": 1.18197136E-06
+                    "score": 1.616159E-06
                 },
                 "MoveEmployee": {
-                    "score": 7.65549657E-07
-                },
-                "None": {
-                    "score": 3.975E-09
-                },
-                "Utilities.StartOver": {
-                    "score": 1.53E-09
-                },
-                "Utilities.Confirm": {
-                    "score": 1.38181822E-09
-                },
-                "Utilities.Help": {
-                    "score": 1.38181822E-09
-                },
-                "Utilities.Stop": {
-                    "score": 1.38181822E-09
-                },
-                "Utilities.Cancel": {
-                    "score": 1.25833333E-09
-                },
-                "FindForm": {
-                    "score": 1.15384613E-09
+                    "score": 7.575752E-07
                 },
                 "ApplyForJob": {
-                    "score": 5.26923061E-10
+                    "score": 5.234157E-07
+                },
+                "None": {
+                    "score": 3.3E-09
+                },
+                "Utilities.StartOver": {
+                    "score": 1.26E-09
+                },
+                "FindForm": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Cancel": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Confirm": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Help": {
+                    "score": 1.13636367E-09
+                },
+                "Utilities.Stop": {
+                    "score": 1.13636367E-09
                 }
             },
             "entities": {
                 "keyPhrase": [
                     "boss of Jill Jones"
                 ],
-                "Employee": [
+                "EmployeeListEntity": [
                     [
                         "Employee-45612"
                     ]
@@ -332,9 +324,9 @@ LUIS 應用程式中儲存了兩種類型的語句：
                             ]
                         }
                     ],
-                    "Employee": [
+                    "EmployeeListEntity": [
                         {
-                            "type": "Employee",
+                            "type": "EmployeeListEntity",
                             "text": "Jill Jones",
                             "startIndex": 19,
                             "length": 10,
@@ -351,7 +343,7 @@ LUIS 應用程式中儲存了兩種類型的語句：
     }
     ```
 
-意圖預測現在更有信心，而下一個最高意圖的分數明顯降低。 這兩個意圖不會在定型時翻轉。
+意圖預測現在更有信心，而且下一個最高意圖的分數非常低。 這兩個意圖不會在定型時翻轉。
 
 ### <a name="working-with-optional-text-and-prebuilt-entities"></a>使用選用文字和預先建置的實體
 
@@ -372,8 +364,8 @@ LUIS 應用程式中儲存了兩種類型的語句：
 
 |Intent|包含選用文字和預先建置實體的語句範例|
 |:--|:--|
-|OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
-|OrgChart-Manager|`who is {Employee}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who was {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who is {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
 
 
 使用方括號 `[]`的選用語法可讓此選用文字輕鬆地加入範本語句，並且能以巢狀方式 `[[]]` 增加至第二個層級，然後包含實體或文字。
@@ -383,9 +375,10 @@ LUIS 應用程式中儲存了兩種類型的語句：
 
 **問題：如果 March 3 (3 月 3 日) 會預測為數字 `3` 及日期 `March 3`，為什麼預先建置的號碼不是範例語句的一部分？** 根據上下文，此範本語句使用的是日期，日期可以是常值 (`March 3`) 或抽象表示 (`in a month`)。 日期可以包含數字，但數字不一定會被視為日期。 每次使用實體時，該實體應要最能代表要在預測 JSON 結果中傳回的類型。
 
-**問題：為什麼剖析 `Who will {Employee}['s] manager be on March 3?` 之類的語句時，效果很差。** 文法上，不同動詞時態必須是新的範本語句 (例如此處的 `will` 和 `be` 是分開的)。 現有範本語句並不符合此原則。 雖然語句的意圖沒有變更，但字組在語句中的位置已變更。 此變更會影響 LUIS 中的預測。 您可以使用 [group 和 or ](#use-the-or-operator-and-groups) 處理動詞時態，以結合這些語句。
+**問題：為什麼剖析 `Who will {EmployeeListEntity}['s] manager be on March 3?` 之類的語句時，效果很差。** 文法上，不同動詞時態必須是新的範本語句 (例如此處的 `will` 和 `be` 是分開的)。 現有範本語句並不符合此原則。 雖然語句的意圖沒有變更，但字組在語句中的位置已變更。 此變更會影響 LUIS 中的預測。 您可以使用 [group 和 or ](#use-the-or-operator-and-groups) 處理動詞時態，以結合這些語句。
 
-**請記住：系統會先找出實體，然後比對模式。**
+> [!CAUTION]
+> **請記住：系統會先找出實體，然後比對模式。**
 
 ### <a name="add-new-pattern-template-utterances"></a>新增模式範本語句
 
@@ -393,9 +386,9 @@ LUIS 應用程式中儲存了兩種類型的語句：
 
     |Intent|包含選用文字和預先建置實體的語句範例|
     |--|--|
-    |OrgChart-Manager|`who was {Employee}['s] manager [[on]{datetimeV2}?]`|
-    |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
-    |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+    |OrgChart-Manager|`who was {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
+    |OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[in]{datetimeV2}?]`|
+    |OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
 
 2. 選取導覽列中的 [定型] 來進行應用程式定型。
 
@@ -403,7 +396,7 @@ LUIS 應用程式中儲存了兩種類型的語句：
 
 4. 輸入數個測試語句，以驗證模式符合，而且意圖分數相當高。
 
-    輸入第一個語句之後，請選取結果下方的 [檢查]，然後您就可以看到所有預測結果。 每個語句應該都有 **OrgChart-Manager** 意圖，且應該擷取 Employee 和 datetimeV2 實體的值。
+    輸入第一個語句之後，請選取結果下方的 [檢查]，然後您就可以看到所有預測結果。 每個語句應該都有 **OrgChart-Manager** 意圖，且應該擷取 `EmployeeListEntity` 和 `datetimeV2` 實體的值。
 
     |語句|
     |--|
@@ -425,18 +418,21 @@ LUIS 應用程式中儲存了兩種類型的語句：
 
 先前數個範本語句都非常接近。 使用 **group** `()` 和 **OR** `|` 語法來減少範本語句。
 
-使用 group `()` 和 OR `|` 語法，可以將下列 2 個模式合併成單一模式。
+使用 group `()` 和 OR `|` 語法，可以將下列兩個模式合併成單一模式。
 
 |Intent|包含選用文字和預先建置實體的語句範例|
 |--|--|
-|OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
-|OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
+|OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[in]{datetimeV2}?]`|
+|OrgChart-Manager|`who will be {EmployeeListEntity}['s] manager [[on]{datetimeV2}?]`|
 
 新的範本語句會是：
 
-第 1 課：建立 Windows Azure 儲存體物件`who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`。
+第 1 課：建立 Windows Azure 儲存體物件`who ( was | is | will be ) {EmployeeListEntity}['s] manager [([in]|[on]){datetimeV2}?]`。
 
 這會使用 **group** 圍住必要的動詞時態，以及使用選用的 `in` 和 `on` (兩者之間有 **or** 垂直線)。
+
+> [!NOTE]
+> 當使用 _OR_ (`|` (管道)) 符號時，請務必區隔管道符號，方法為在範例範本中於管道符號前後加上空格。
 
 1. 在 [模式] 頁面上，選取 **OrgChart-Manager** 篩選器。 藉由搜尋 `manager` 來縮小清單。
 
@@ -444,7 +440,7 @@ LUIS 應用程式中儲存了兩種類型的語句：
 
 1. 將範本語句變更為：
 
-    `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`
+    `who ( was | is | will be ) {EmployeeListEntity}['s] manager [([in]|[on]){datetimeV2}?]`
 
 2. 選取導覽列中的 [定型] 來進行應用程式定型。
 

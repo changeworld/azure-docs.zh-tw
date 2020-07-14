@@ -4,12 +4,12 @@ description: 了解如何持續建置、測試及部署 Azure Resource Manager �
 ms.date: 04/22/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: dacbdbcbebbbd696c14745e055ed9f7bd7905b1d
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: b8163c357f184ac41ce72dc8c89fcc5030c3180d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731929"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118914"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>教學課程：Azure Resource Manager 範本與 Azure Pipelines 的持續整合
 
@@ -33,14 +33,14 @@ Azure DevOps 提供開發人員服務，以支援小組規劃工作、共同作�
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本文，您需要：
 
 * **GitHub 帳戶**，您會用它為您的範本建立存放庫。 如果您沒有存放庫，您可以[免費建立一個](https://github.com)。 如需使用 GitHub 存放庫的詳細資訊，請參閱[建置 GitHub 存放庫](/azure/devops/pipelines/repos/github)。
 * **安裝 Git**。 此教學課程的指示使用 *Git Bash* 或 *Git Shell*。 如需指示，請參閱 [安裝 Git]( https://www.atlassian.com/git/tutorials/install-git)。
-* **Azure DevOps 組織**。 如果您沒有組織，您可以免費建立一個。 請參閱[建立組織或專案集合]( https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops)。
-* (選擇性) **Visual Studio Code 搭配 Resource Manager Tools 擴充功能**。 請參閱[使用 Visual Studio Code 建立 Azure Resource Manager 範本](use-vs-code-to-create-template.md)。
+* **Azure DevOps 組織**。 如果您沒有組織，您可以免費建立一個。 請參閱[建立組織或專案集合](/azure/devops/organizations/accounts/create-organization?view=azure-devops)。
+* (選擇性) **Visual Studio Code 搭配 Resource Manager Tools 擴充功能**。 請參閱[快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本](quickstart-create-templates-use-visual-studio-code.md)。
 
 ## <a name="prepare-a-github-repository"></a>準備 GitHub 存放庫
 
@@ -51,15 +51,15 @@ GitHub 可用來儲存專案原始程式碼，包括 Resource Manager 範本。 
 如果您沒有 GitHub 帳戶，請參閱[必要條件](#prerequisites)。
 
 1. 登入 [GitHub](https://github.com)。
-1. 在右上角，選取您的帳戶圖示，然後選取 [您的存放庫]  。
+1. 在右上角，選取您的帳戶圖示，然後選取 [您的存放庫]。
 
     ![Azure Resource Manager Azure DevOps Azure Pipelines 建立 GitHub 存放庫](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-github-repository.png)
 
-1. 選取 [新建]  (綠色按鈕)。
-1. 在 [存放庫名稱]  中輸入存放庫名稱。  例如，**AzureRmPipeline-repo**。 請記得將任何 **AzureRmPipeline** 取代為您的專案名稱。 進行此教學課程時，您可以選取 [公開]  或 [私人]  。 然後選取 [建立存放庫]  。
+1. 選取 [新建] (綠色按鈕)。
+1. 在 [存放庫名稱] 中輸入存放庫名稱。  例如，**AzureRmPipeline-repo**。 請記得將任何 **AzureRmPipeline** 取代為您的專案名稱。 進行此教學課程時，您可以選取 [公開] 或 [私人]。 然後選取 [建立存放庫]。
 1. 請將 URL 抄寫下來。 存放庫 URL 會具有以下格式 - **`https://github.com/[YourAccountName]/[YourRepositoryName]`** 。
 
-此存放庫稱為「遠端存放庫」  。 同一專案的每位開發人員都可以複製他/她自己的「本機存放庫」  ，並將變更合併至遠端存放庫。
+此存放庫稱為「遠端存放庫」。 同一專案的每位開發人員都可以複製他/她自己的「本機存放庫」，並將變更合併至遠端存放庫。
 
 ### <a name="clone-the-remote-repository"></a>複製遠端存放庫
 
@@ -105,8 +105,8 @@ azuredeploy.json 已新增至本機存放庫。 接下來您會將範本推送�
 
     您可能會收到關於 LF 的警告。 您可以忽略警告。 **master**為主要分支。  通常您會為每個更新建立分支。 為了簡化此教學課程，您可以直接使用 master 分支。
 1. 使用瀏覽器瀏覽至您的 GitHub 存放庫。  URL 為 **`https://github.com/[YourAccountName]/[YourGitHubRepository]`** 。 您應該會看到 **CreateWebApp** 資料夾，以及資料夾內的三個檔案。
-1. 選取 [linkedStorageAccount.json]  以開啟範本。
-1. 選取 [原始]  按鈕。 URL 的開頭為 **raw.githubusercontent.com**。
+1. 選取 [linkedStorageAccount.json] 以開啟範本。
+1. 選取 [原始] 按鈕。 URL 的開頭為 **raw.githubusercontent.com**。
 1. 複製 URL。  當您稍後在本教學課程中設定管線時，將必須提供此值。
 
 到目前為止，您已建立一個 GitHub 存放庫，並已上傳一個範本至存放庫。
@@ -120,29 +120,29 @@ azuredeploy.json 已新增至本機存放庫。 接下來您會將範本推送�
 
     ![Azure Resource Manager Azure DevOps Azure Pipelines 建立 Azure DevOps 專案](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-create-devops-project.png)
 
-1. 選取 [新增專案]  。 如果您沒有任何專案，系統會自動開啟建立專案頁面。
+1. 選取 [新增專案]。 如果您沒有任何專案，系統會自動開啟建立專案頁面。
 1. 輸入下列值：
 
     * **專案名稱**：輸入專案名稱。 您可以使用您在此教學課程一開始時所選擇的專案名稱。
-    * **版本控制**：選取 [Git]  。 您可能需要展開 [ 進階]  才能看到 [版本控制]  。
+    * **版本控制**：選取 [Git]。 您可能需要展開 [ 進階] 才能看到 [版本控制]。
 
     其他屬性則請使用預設值。
-1. 選取 [建立]  。
+1. 選取 [建立]。
 
 建立用來將專案部署至 Azure 的服務連線。
 
-1. 按一下左側功能表的底部選取 [專案設定]  。
-1. 選取 [管線]  底下的 [服務連線]  。
-1. 依序選取 [新增服務連線]  、[Azure Resource Manager]  和 [下一步]  。
-1. 選取 [服務主體]  ，然後選取 [下一步]  。
+1. 按一下左側功能表的底部選取 [專案設定]。
+1. 選取 [管線] 底下的 [服務連線]。
+1. 依序選取 [新增服務連線]、[Azure Resource Manager] 和 [下一步]。
+1. 選取 [服務主體]，然後選取 [下一步]。
 1. 輸入下列值：
 
-    * **範圍層級**：選取 [訂用帳戶]  。
+    * **範圍層級**：選取 [訂用帳戶]。
     * **訂用帳戶**︰選取您的訂用帳戶。
     * **資源群組**：保留為空白。
     * **連線名稱**：輸入連線名稱。 例如，**AzureRmPipeline conn**。 請記下此名稱，您在建立管線時會用到。
     * **授與所有管線的存取權限**。 (已選取)
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 ## <a name="create-a-pipeline"></a>建立管線
 
@@ -153,36 +153,36 @@ azuredeploy.json 已新增至本機存放庫。 接下來您會將範本推送�
 
 建立包含一個部署範本步驟的管線：
 
-1. 從左側功能表中選取 [管線]  。
-1. 選取 [建立新管線]  。
-1. 從 [連線]  索引標籤選取 **GitHub**。 如果系統要求輸入您的 GitHub 認證，請輸入並依照指示進行。 如果您看到以下畫面，請選取 [只選取存放庫]  ，並確認清單中包含您的存放庫，然後再選取 [核准並安裝]  。
+1. 從左側功能表中選取 [管線]。
+1. 選取 [建立新管線]。
+1. 從 [連線] 索引標籤選取 **GitHub**。 如果系統要求輸入您的 GitHub 認證，請輸入並依照指示進行。 如果您看到以下畫面，請選取 [只選取存放庫]，並確認清單中包含您的存放庫，然後再選取 [核准並安裝]。
 
     ![Azure Resource Manager Azure DevOps Azure Pipelines 只選取存放庫](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-only-select-repositories.png)
 
-1. 從 [選取]  索引標籤選取您的存放庫。  預設名稱為 **[YourAccountName]/[YourGitHubRepositoryName]** 。
-1. 從 [設定]  索引標籤選取 [入門管線]  。 它會顯示包含兩個指令碼步驟的 **azure pipelines.yml** 管線檔案。
+1. 從 [選取] 索引標籤選取您的存放庫。  預設名稱為 **[YourAccountName]/[YourGitHubRepositoryName]** 。
+1. 從 [設定] 索引標籤選取 [入門管線]。 它會顯示包含兩個指令碼步驟的 **azure pipelines.yml** 管線檔案。
 1. 從 yml 檔案中刪除兩個指令碼步驟。
-1. 將游標移至「步驟：」  後面的那一行。
-1. 選取畫面右側的 [顯示小幫手]  ，以開啟 [工作]  窗格。
-1. 選取 [ARM 範本部署]  。
+1. 將游標移至「步驟：」後面的那一行。
+1. 選取畫面右側的 [顯示小幫手]，以開啟 [工作] 窗格。
+1. 選取 [ARM 範本部署]。
 1. 輸入下列值：
 
-    * **deploymentScope**：選取 [資源群組]  。 若要深入了解範圍，請參閱[部署範圍](deploy-rest.md#deployment-scope)。
+    * **deploymentScope**：選取 [資源群組]。 若要深入了解範圍，請參閱[部署範圍](deploy-rest.md#deployment-scope)。
     * **Azure Resource Manager 連線**：選取您先前建立的服務連線名稱。
-    * 訂用帳戶  ：指定目標訂用帳戶識別碼。
-    * **動作**：選取 [建立或更新資源群組]  動作，會執行 2 個動作 - 1. 如果已經提供新的資源群組名稱，就會建立一個資源群組；2. 部署指定的範本。
+    * 訂用帳戶：指定目標訂用帳戶識別碼。
+    * **動作**：選取 [建立或更新資源群組] 動作，會執行 2 個動作 - 1. 如果已經提供新的資源群組名稱，就會建立一個資源群組；2. 部署指定的範本。
     * **資源群組**：輸入新的資源群組名稱。 例如，**AzureRmPipeline rg**。
     * **位置**：選取資源群組的位置，例如**美國中部**。
-    * **範本位置**：選取 [連結的成品]  ，這表示工作會直接從已連線的存放庫中尋找範本檔案。
+    * **範本位置**：選取 [連結的成品]，這表示工作會直接從已連線的存放庫中尋找範本檔案。
     * **範本**：輸入 **CreateWebApp/azuredeploy.json**。 如果您變更了資料夾名稱和檔案名稱，就必須變更此值。
     * **範本參數**：將此欄位保留空白。 您將在 **覆寫範本參數中指定參數值。
     * **overrideParameters**：輸入 **-projectName [EnterAProjectName] -linkedTemplateUri [EnterTheLinkedTemplateURL]** 。 請取代專案名稱和連結的範本 URL。 連結的範本 URL 是您在[建立 GitHub 存放庫](#create-a-github-repository)結束時記下的內容。
-    * **部署模式**：選取 [增量]  。
-    * **部署名稱**：輸入 **DeployPipelineTemplate**。 選取 [進階]  ，才能看到 [部署名稱]  。
+    * **部署模式**：選取 [增量]。
+    * **部署名稱**：輸入 **DeployPipelineTemplate**。 選取 [進階]，才能看到 [部署名稱]。
 
     ![Azure Resource Manager Azure DevOps Azure Pipelines 步驟](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
 
-1. 選取 [新增]  。
+1. 選取 [新增]。
 
     如需有關工作的詳細資訊，請參閱 [Azure 資源群組部署工作](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)和 [Azure Resource Manager 範本部署工作](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)
 
@@ -190,8 +190,8 @@ azuredeploy.json 已新增至本機存放庫。 接下來您會將範本推送�
 
     ![Azure Resource Manager Azure DevOps Azure Pipelines yaml](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-yml.png)
 
-1. 選取 [儲存並執行]  。
-1. 從 [儲存並執行]  窗格中，再次選取 [儲存並執行]  。 YAML 檔案的複本已儲存到連線的存放庫。 您可以瀏覽您的存放庫，就能看到 YAML 檔案。
+1. 選取 [儲存並執行]。
+1. 從 [儲存並執行] 窗格中，再次選取 [儲存並執行]。 YAML 檔案的複本已儲存到連線的存放庫。 您可以瀏覽您的存放庫，就能看到 YAML 檔案。
 1. 確認管線已成功執行。
 
     ![Azure Resource Manager Azure DevOps Azure Pipelines yaml](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-status.png)
@@ -201,7 +201,7 @@ azuredeploy.json 已新增至本機存放庫。 接下來您會將範本推送�
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 開啟資源群組。 名稱是您在管線 YAML 檔案中指定的。  您應該會看到已建立一個儲存體帳戶。  儲存體帳戶名稱開頭為 **store**。
 1. 選取儲存體帳戶以將它開啟。
-1. 選取 [屬性]  。 請注意，[複寫]  是 [本地備援儲存體 (LRS)]  。
+1. 選取 [屬性] 。 請注意，[複寫] 是 [本地備援儲存體 (LRS)]。
 
 ## <a name="update-and-redeploy"></a>更新並重新部署
 
@@ -232,10 +232,10 @@ azuredeploy.json 已新增至本機存放庫。 接下來您會將範本推送�
 
 不再需要 Azure 資源時，可藉由刪除資源群組來清除您所部署的資源。
 
-1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]  。
-2. 在 [依名稱篩選]  欄位中輸入資源群組名稱。
+1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]。
+2. 在 [依名稱篩選] 欄位中輸入資源群組名稱。
 3. 選取資源群組名稱。
-4. 從頂端功能表中選取 [刪除資源群組]  。
+4. 從頂端功能表中選取 [刪除資源群組]。
 
 您也可能會想要刪除 GitHub 存放庫和 Azure DevOps 專案。
 

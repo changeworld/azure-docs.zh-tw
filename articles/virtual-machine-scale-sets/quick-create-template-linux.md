@@ -8,31 +8,31 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: linux
 ms.date: 03/27/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: f51bfa012c62e7acdd0aa2cd16279ec68702a72c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: mimckitt, subject-armqs
+ms.openlocfilehash: bb23a47b702237cad55ded2fa46400eba0997264
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117320"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082840"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本建立 Linux 虛擬機器擴展集
+# <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-arm-template"></a>快速入門：使用 ARM 範本建立 Linux 虛擬機器擴展集
 
-虛擬機器擴展集可讓您部署和管理一組相同、自動調整的虛擬機器。 您可以手動調整擴展集中的 VM 數目，或定義規則以根據 CPU、記憶體需求或網路流量等資源使用量進行自動調整。 其後，Azure 負載平衡器會將流量分配到擴展集中的多個 VM 執行個體。 在此快速入門中，您會使用 Resource Manager 範本建立虛擬機器擴展集，並部署範例應用程式。
+虛擬機器擴展集可讓您部署和管理一組自動調整的虛擬機器。 您可以手動調整擴展集中的 VM 數目，或定義規則以根據 CPU、記憶體需求或網路流量等資源使用量進行自動調整。 其後，Azure 負載平衡器會將流量分配到擴展集中的多個 VM 執行個體。 在此快速入門中，您會使用 Azure Resource Manager 範本 (ARM 範本) 建立虛擬機器擴展集，並部署範例應用程式。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
+ARM 範本可讓您部署相關資源的群組。 在單一範本中，您可以建立虛擬機器擴展集、安裝應用程式，並設定自動縮放規則。 使用變數和參數，就可以重複使用此範本來更新現有的、或建立其他的擴展集。 您可以透過 Azure 入口網站、Azure CLI 或 Azure PowerShell，或從持續整合 / 持續傳遞 (CI/CD) 管線部署範本。
+
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-bottle-autoscale%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>必要條件
+
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>Prerequisites
-
-無。
-
-## <a name="create-a-scale-set"></a>建立擴展集
-
-Azure Resource Manager 範本可讓您部署相關資源的群組。 在單一範本中，您可以建立虛擬機器擴展集、安裝應用程式，並設定自動縮放規則。 使用變數和參數，就可以重複使用此範本來更新現有的、或建立其他的擴展集。 您可以透過 Azure 入口網站、Azure CLI 或 Azure PowerShell，或從持續整合 / 持續傳遞 (CI/CD) 管線部署範本。
-
-### <a name="review-the-template"></a>檢閱範本
+## <a name="review-the-template"></a>檢閱範本
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/201-vmss-bottle-autoscale/)。
 
@@ -46,7 +46,7 @@ Azure Resource Manager 範本可讓您部署相關資源的群組。 在單一�
 - [**Microsoft.Compute/virtualMachineScaleSets**](/azure/templates/microsoft.compute/virtualmachinescalesets)
 - [**Microsoft.Insights/autoscaleSettings**](/azure/templates/microsoft.insights/autoscalesettings)
 
-#### <a name="define-a-scale-set"></a>定義擴展集
+### <a name="define-a-scale-set"></a>定義擴展集
 
 反白顯示的部分是擴展集資源定義。 若要使用範本建立縮放，您可以定義適當的資源。 虛擬機器擴展集資源類型的核心部分是：
 
@@ -65,9 +65,9 @@ Azure Resource Manager 範本可讓您部署相關資源的群組。 在單一�
 
 若要自訂擴展集範本，您可以變更 VM 大小或初始容量， 或使用不同的平台或自訂映像。
 
-#### <a name="add-a-sample-application"></a>新增範例應用程式
+### <a name="add-a-sample-application"></a>新增範例應用程式
 
-若要測試您的擴展集，請安裝基本的 Web 應用程式。 當您部署擴展集時，VM 延伸模組可以提供後置部署設定和自動化工作，例如安裝應用程式。 您可以從 Azure 儲存體或 GitHub 下載指令碼，或是在擴充功能執行階段將指令碼提供給 Azure 入口網站。 若要將延伸模組套用至擴展集，請將 extensionProfile  區段新增至上述資源範例。 延伸模組設定檔通常會定義下列屬性：
+若要測試您的擴展集，請安裝基本的 Web 應用程式。 當您部署擴展集時，VM 延伸模組可以提供後置部署設定和自動化工作，例如安裝應用程式。 您可以從 Azure 儲存體或 GitHub 下載指令碼，或是在擴充功能執行階段將指令碼提供給 Azure 入口網站。 若要將延伸模組套用至擴展集，請將 extensionProfile 區段新增至上述資源範例。 延伸模組設定檔通常會定義下列屬性：
 
 - 延伸模組類型
 - 延伸模組發行者
@@ -77,13 +77,13 @@ Azure Resource Manager 範本可讓您部署相關資源的群組。 在單一�
 
 範本會使用自訂指令碼延伸模組來安裝 [Bottle](https://bottlepy.org/docs/dev/)、Python web 架構，以及簡單的 HTTP 伺服器。
 
-fileUris  中定義的兩個指令碼  -  installserver.sh  和 workserver.py  。 會從 GitHub 下載這些檔案，然後 commandToExecute  會執行 `bash installserver.sh`來安裝和設定應用程式。
+fileUris 中定義的兩個指令碼  -  installserver.sh 和 workserver.py。 會從 GitHub 下載這些檔案，然後 commandToExecute 會執行 `bash installserver.sh`來安裝和設定應用程式。
 
-### <a name="deploy-the-template"></a>部署範本
+## <a name="deploy-the-template"></a>部署範本
 
-您可以選取以下的 [部署至 Azure]  按鈕來部署範本。 這個按鈕會開啟 Azure 入口網站、載入完整的範本，並提示輸入幾個參數，例如擴展集名稱、執行個體計數和管理員認證。
+您可以選取以下的 [部署至 Azure] 按鈕來部署範本。 這個按鈕會開啟 Azure 入口網站、載入完整的範本，並提示輸入幾個參數，例如擴展集名稱、執行個體計數和管理員認證。
 
-[![將範本部署到 Azure](media/virtual-machine-scale-sets-create-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-bottle-autoscale%2Fazuredeploy.json)
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-bottle-autoscale%2Fazuredeploy.json)
 
 您也可以使用 Azure CLI 部署 Resource Manager 範本：
 
@@ -99,7 +99,7 @@ az group deployment create \
 
 回答提示以提供擴展集名稱、執行個體計數和 VM 執行個體的管理員認證。 需要幾分鐘的時間才能建立擴展集和支援資源。
 
-## <a name="test-the-deployment"></a>測試部署
+## <a name="validate-the-deployment"></a>驗證部署
 
 若要查看有效的擴展集，請在網頁瀏覽器中存取範例 Web 應用程式。 使用 [az network public-ip list](/cli/azure/network/public-ip) 取得負載平衡器的公用 IP 位址，如下所示：
 
@@ -109,7 +109,7 @@ az network public-ip list \
     --query [*].ipAddress -o tsv
 ```
 
-http:\//publicIpAddress:9000/do_work  格式，將負載平衡器的公用 IP 位址輸入網頁瀏覽器中。 負載平衡器會將流量散發至您的其中一個 VM 執行個體，如下列範例所示：
+http:\//publicIpAddress:9000/do_work 格式，將負載平衡器的公用 IP 位址輸入網頁瀏覽器中。 負載平衡器會將流量散發至您的其中一個 VM 執行個體，如下列範例所示：
 
 ![NGINX 中的預設網頁](media/virtual-machine-scale-sets-create-template/running-python-app.png)
 
@@ -123,7 +123,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>後續步驟
 
-在此快速入門中，您使用 Azure 範本建立了 Linux 擴展集，並使用自訂指令碼延伸模組，在 VM 執行個體上安裝基本的 Python Web 伺服器。 若要深入了解，請繼續執行有關於如何建立和管理 Azure 虛擬機器擴展集的教學課程。
+在此快速入門中，您使用 ARM 範本建立了 Linux 擴展集，並使用自訂指令碼延伸模組，在 VM 執行個體上安裝基本的 Python Web 伺服器。 若要深入了解，請繼續執行有關於如何建立和管理 Azure 虛擬機器擴展集的教學課程。
 
 > [!div class="nextstepaction"]
 > [建立和管理 Azure 虛擬機器擴展集](tutorial-create-and-manage-cli.md)

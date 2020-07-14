@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: ab31daafe496f1aaad2bbc8075b2514d9e57e997
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 12e1c79e610526dec11467cc08c753bf90daa095
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84687169"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083452"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos 模擬器 - 版本資訊和下載資訊
 
@@ -26,7 +26,11 @@ ms.locfileid: "84687169"
 
 ## <a name="release-notes"></a>版本資訊
 
-### <a name="2111"></a>2.11.1
+### <a name="2112-07072020"></a>2.11.2 (07/07/2020)
+
+- 此版本會變更如何收集對 Cosmos 模擬器進行疑難排解時所需的 ETL 追蹤。 WPR (Windows 效能執行時間工具) 現在是用於擷取 ETL 型追蹤的預設工具，而舊的 LOGMAN 型擷取則已被取代。 這是必要的變更，部分原因是最新的 Windows 安全性更新在透過 Cosmos 模擬器執行時，會對 LOGMAN 的運作方式產生非預期的影響。
+
+### <a name="2111-06102020"></a>2.11.1 (06/10/2020)
 
 - 此版本修正了與模擬器資料總管相關的幾個錯誤 (bug)。 在某些情況下，若透過網頁瀏覽器使用模擬器資料總管，便無法連線至 Cosmos 模擬器端點，而且所有相關動作 (例如建立資料庫或容器) 都會發生錯誤。 已修正的第二個問題與使用資料總管上傳動作從 JSON 檔案建立項目有關。
 

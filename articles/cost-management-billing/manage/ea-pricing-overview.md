@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: banders
-ms.openlocfilehash: 5ad92fe9f243cf9884f29536cf6ebb66202338d5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: d205f3ccc0adef7e2390274bb7f4511c6f994027
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299956"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037999"
 ---
 # <a name="azure-ea-pricing"></a>Azure EA 定價
 
@@ -24,7 +24,7 @@ ms.locfileid: "84299956"
 
 ### <a name="price-protection"></a>價格保護
 
-身為客戶或通路合作夥伴，我們保證您會收到客戶價位表 (CPS) 上顯示的價格 (或比其更低的價格)，或是 Azure 購買生效日上的價格。 此價格稱為基準價格。 就 Azure 購買後導入的服務而言，我們向您收取的價格會是服務首次導入時依適用折扣層級生效的價格。 此價格保護適用於承諾用量的持續期間，可能是一年或三年，視 Enterprise 合約而定。
+身為客戶或通路合作夥伴，我們保證您會收到客戶價位表 (CPS) 上顯示的價格 (或比其更低的價格)，或是 Azure 購買生效日上的價格。 此價格稱為基準價格。 就 Azure 購買後導入的服務而言，我們向您收取的價格會是服務首次導入時依適用折扣層級生效的價格。 此價格保護適用於預付款期間的持續期間，可能是一年或三年，視 Enterprise 合約而定。
 
 ### <a name="price-changes"></a>價格變更
 

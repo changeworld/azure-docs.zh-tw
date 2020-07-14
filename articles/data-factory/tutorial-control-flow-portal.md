@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: edb6846d199470818e07a208feb778aca3021d9e
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: e12f0cd44143621d34096a6c1161a22a89d21d9b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253659"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077641"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>使用 Azure 入口網站在 Azure Data Factory 管線中為活動建立分支並進行鏈結
 
@@ -139,7 +139,8 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
    Azure Data Factory 的名稱必須是 **全域唯一的**。 如果您收到錯誤，請變更 Data Factory 名稱 (例如 yournameADFTutorialDataFactory)，然後試著重新建立。 請參閱 [Data Factory - 命名規則](naming-rules.md)一文，以了解 Data Factory 成品的命名規則。
 
-       `Data factory name “ADFTutorialDataFactory” is not available`
+   *Data factory 名稱 "ADFTutorialDataFactory" 無法使用。*
+
 3. 選取您要在其中建立資料處理站的 Azure **訂用帳戶**。
 4. 針對 [資源群組]，請執行下列其中一個步驟︰
 
@@ -202,10 +203,11 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
    ![新增 Azure 儲存體連結服務](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. 針對資料夾輸入 `@pipeline().parameters.sourceBlobContainer`，針對檔案名稱輸入 `emp.txt`。 您可以使用 sourceBlobContainer 管線參數來為資料集設定資料夾路徑。
 
-   ![來源資料集設定](./media/tutorial-control-flow-portal/source-dataset-settings.png)
-13. 切換至 [管線] 索引標籤 (或) 按一下樹狀檢視中的 [管線]。 確認已為 [來源資料集] 選取 [SourceBlobDataset]。
+    ![來源資料集設定](./media/tutorial-control-flow-portal/source-dataset-settings.png)
 
-    ![來源資料集](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
+13. 切換至 [管線] 索引標籤 (或) 按一下樹狀檢視中的 [管線]。 確認已為 [來源資料集] 選取 [SourceBlobDataset]。
+      
+   ![來源資料集](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
 
 13. 在 [屬性] 視窗中，切換至 [接收] 索引標籤，然後為 [接收資料集] 按一下 [+ 新增]。 您在此步驟中為複製活動建立的接收資料集與您建立來源資料集的方式類似。
 

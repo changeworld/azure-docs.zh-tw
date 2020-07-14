@@ -11,12 +11,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: d3f3842265e0c8a36c7eb4b14abca771bd3d38f2
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: b8263e0445f7997469ba9165decbaccfa9ed2d6e
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918937"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027844"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>教學課程：使用 Azure Databricks 對串流資料進行異常情況偵測
 
@@ -41,11 +41,11 @@ ms.locfileid: "85918937"
 
 > [!Note]
 > * 本教學課程介紹一種方法來對 Anomaly Detector API 實作建議的[解決方案架構](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/)。
-> * 您無法使用 Anomaly Detector API 或 Azure Databricks 的免費試用完成教學課程。 
+> * 您無法使用 Anomaly Detector API 或 Azure Databricks 的免費層 (`F0`) 完成教學課程。 
 
 如果您沒有 Azure 訂用帳戶，請建立一個 [Azure 訂用帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - [Azure 事件中樞命名空間](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)和事件中樞。
 
@@ -61,11 +61,11 @@ ms.locfileid: "85918937"
 
 在本節中，您會使用 [Azure 入口網站](https://portal.azure.com/)建立 Azure Databricks 工作區。
 
-1. 在 Azure 入口網站中，選取 [建立資源]   > [分析]   > [Azure Databricks]  。
+1. 在 Azure 入口網站中，選取 [建立資源] > [分析] > [Azure Databricks]。
 
     ![Azure 入口網站上的 Databricks](../media/tutorials/azure-databricks-on-portal.png "Azure 入口網站上的 Databricks")
 
-3. 在 [Azure Databricks 服務]  下方提供下列值，以建立 Databricks 工作區：
+3. 在 [Azure Databricks 服務] 下方提供下列值，以建立 Databricks 工作區：
 
 
     |屬性  |描述  |
@@ -73,22 +73,22 @@ ms.locfileid: "85918937"
     |**工作區名稱**     | 提供您 Databricks 工作區的名稱        |
     |**訂用帳戶**     | 從下拉式清單中選取您的 Azure 訂用帳戶。        |
     |**資源群組**     | 指定您是要建立新的資源群組，還是使用現有資源群組。 資源群組是存放 Azure 方案相關資源的容器。 如需詳細資訊，請參閱 [Azure 資源群組概觀](../../../azure-resource-manager/management/overview.md)。 |
-    |**位置**     | 選取 [美國東部 2]  或其中一個任何其他可用的區域。 如需可用的區域，請參閱[依區域提供的 Azure 服務](https://azure.microsoft.com/regions/services/)。        |
-    |定價層      |  選擇 [標準]  或 [進階]  。 請勿選擇 [試用版]  。 如需這些定價層的詳細資訊，請參閱 [Databricks 定價頁面](https://azure.microsoft.com/pricing/details/databricks/)。       |
+    |**位置**     | 選取 [美國東部 2] 或其中一個任何其他可用的區域。 如需可用的區域，請參閱[依區域提供的 Azure 服務](https://azure.microsoft.com/regions/services/)。        |
+    |定價層     |  選擇 [標準] 或 [進階]。 請勿選擇 [試用版]。 如需這些定價層的詳細資訊，請參閱 [Databricks 定價頁面](https://azure.microsoft.com/pricing/details/databricks/)。       |
 
-    選取 [建立]  。
+    選取 [建立]。
 
 4. 工作區建立需要幾分鐘的時間。 
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>在 Databricks 中建立 Spark 叢集
 
-1. 在 Azure 入口網站中，移至您所建立的 Databricks 工作區，然後選取 [啟動工作區]  。
+1. 在 Azure 入口網站中，移至您所建立的 Databricks 工作區，然後選取 [啟動工作區]。
 
-2. 系統會將您重新導向至 Azure Databricks 入口網站。 在入口網站中，選取 [新增叢集]  。
+2. 系統會將您重新導向至 Azure Databricks 入口網站。 在入口網站中，選取 [新增叢集]。
 
     ![Azure 上的 Databricks](../media/tutorials/databricks-on-azure.png "Azure 上的 Databricks")
 
-3. 在 [新增叢集]  頁面中，提供一些值以建立叢集。
+3. 在 [新增叢集] 頁面中，提供一些值以建立叢集。
 
     ![在 Azure 上建立 Databricks Spark 叢集](../media/tutorials/create-databricks-spark-cluster.png "在 Azure 上建立 Databricks Spark 叢集")
 
@@ -96,24 +96,24 @@ ms.locfileid: "85918937"
 
    * 輸入叢集的名稱。
    * 針對本文，使用 **5.2** 執行階段建立叢集。 請勿選取 **5.3** 執行階段。
-   * 請確定已選取 [在活動\_\_分鐘後終止]  核取方塊。 若未使用叢集，請提供據以終止叢集的持續時間 (以分鐘為單位)。
+   * 請確定已選取 [在活動\_\_分鐘後終止] 核取方塊。 若未使用叢集，請提供據以終止叢集的持續時間 (以分鐘為單位)。
 
-     選取 [建立叢集]  。 
+     選取 [建立叢集]。 
 4. 叢集建立可能需要數分鐘的時間。 叢集在執行後，您就可以將 Notebook 連結至叢集，並執行 Spark 作業。
 
 ## <a name="create-a-twitter-application"></a>建立 Twitter 應用程式
 
 若要收到推文的串流，您必須在 Twitter 中建立應用程式。 請依照下列步驟建立 Twitter 應用程式，並記錄要完成本教學課程所需的值。
 
-1. 從網頁瀏覽器移至 [Twitter 應用程式管理](https://apps.twitter.com/) ，然後選取 [建立新的應用程式]  。
+1. 從網頁瀏覽器移至 [Twitter 應用程式管理](https://apps.twitter.com/) ，然後選取 [建立新的應用程式]。
 
     ![建立 Twitter 應用程式](../media/tutorials/databricks-create-twitter-app.png "建立 Twitter 應用程式")
 
-2. 在 [建立應用程式]  頁面上，提供新應用程式的詳細資料，然後選取 [建立 Twitter 應用程式]  。
+2. 在 [建立應用程式] 頁面上，提供新應用程式的詳細資料，然後選取 [建立 Twitter 應用程式]。
 
     ![Twitter 應用程式詳細資料](../media/tutorials/databricks-provide-twitter-app-details.png "Twitter 應用程式詳細資料")
 
-3. 在應用程式頁面上，選取 [金鑰和存取權杖]  索引標籤，並複製 [取用者金鑰]  和 [取用者秘密]  的值。 此外，請選取 [建立我的存取權杖]  來產生存取權杖。 複製 [存取權杖]  和 [存取權杖祕密]  的值。
+3. 在應用程式頁面上，選取 [金鑰和存取權杖] 索引標籤，並複製 [取用者金鑰] 和 [取用者秘密] 的值。 此外，請選取 [建立我的存取權杖] 來產生存取權杖。 複製 [存取權杖] 和 [存取權杖祕密] 的值。
 
     ![Twitter 應用程式詳細資料](../media/tutorials/twitter-app-key-secret.png "Twitter 應用程式詳細資料")
 
@@ -121,27 +121,27 @@ ms.locfileid: "85918937"
 
 ## <a name="attach-libraries-to-spark-cluster"></a>將程式庫連結至 Spark 叢集
 
-在本教學課程中，您會使用 Twitter API 將推文傳送至事件中樞。 您也會使用 [Apache Spark 事件中樞連接器](https://github.com/Azure/azure-event-hubs-spark)來讀取資料並將資料寫入至 Azure 事件中樞。 若要在叢集中使用這些 API，請將其作為程式庫新增至 Azure Databricks，然後讓這些 API 與您的 Spark 叢集產生關聯。 下列指示說明如何將程式庫新增至工作區中的 [共用]  資料夾。
+在本教學課程中，您會使用 Twitter API 將推文傳送至事件中樞。 您也會使用 [Apache Spark 事件中樞連接器](https://github.com/Azure/azure-event-hubs-spark)來讀取資料並將資料寫入至 Azure 事件中樞。 若要在叢集中使用這些 API，請將其作為程式庫新增至 Azure Databricks，然後讓這些 API 與您的 Spark 叢集產生關聯。 下列指示說明如何將程式庫新增至工作區中的 [共用] 資料夾。
 
-1. 在 Azure Databricks 工作區中，選取 [工作區]  ，然後以滑鼠右鍵按一下 [共用]  。 從快顯功能表中，選取 [建立]   > [程式庫]  。
+1. 在 Azure Databricks 工作區中，選取 [工作區]，然後以滑鼠右鍵按一下 [共用]。 從快顯功能表中，選取 [建立] > [程式庫]。
 
    ![新增程式庫對話方塊](../media/tutorials/databricks-add-library-option.png "新增程式庫對話方塊")
 
-2. 在 [新增程式庫] 頁面中，針對 [來源]  選取 [Maven]  。 在 [座標]  中，輸入您要新增之套件的座標。 以下是本教學課程所使用之程式庫的 Maven 座標：
+2. 在 [新增程式庫] 頁面中，針對 [來源] 選取 [Maven]。 在 [座標] 中，輸入您要新增之套件的座標。 以下是本教學課程所使用之程式庫的 Maven 座標：
 
    * Spark 事件中樞連接器 - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
    * Twitter API - `org.twitter4j:twitter4j-core:4.0.7`
 
      ![提供 Maven 座標](../media/tutorials/databricks-eventhub-specify-maven-coordinate.png "提供 Maven 座標")
 
-3. 選取 [建立]  。
+3. 選取 [建立]。
 
 4. 選取程式庫新增所在的資料夾，然後選取程式庫名稱。
 
     ![選取要新增的程式庫](../media/tutorials/select-library.png "選取要新增的程式庫")
 
-5. 如果程式庫頁面中沒有叢集，請選取 [叢集]  並執行您所建立的叢集。 等到狀態顯示 [執行中]，然後移回程式庫頁面。
-在程式庫頁面上，選取要在其中使用程式庫的叢集，然後選取 [安裝]  。 在程式庫成功地與叢集產生關聯後，狀態會立即變更為 [已安裝]  。
+5. 如果程式庫頁面中沒有叢集，請選取 [叢集] 並執行您所建立的叢集。 等到狀態顯示 [執行中]，然後移回程式庫頁面。
+在程式庫頁面上，選取要在其中使用程式庫的叢集，然後選取 [安裝]。 在程式庫成功地與叢集產生關聯後，狀態會立即變更為 [已安裝]。
 
     ![將程式庫安裝到叢集](../media/tutorials/databricks-library-attached.png "將程式庫安裝到叢集")
 
@@ -153,13 +153,13 @@ ms.locfileid: "85918937"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-2. 選取 [+ 建立資源]  。
+2. 選取 [+ 建立資源]。
 
-3. 在 Azure Marketplace 之下，選取 [AI + 機器學習服務]   > [查看全部]   > [認知服務 - 更多]   > [Anomaly Detector]  。 或者，您可以使用[此連結](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector)直接前往 [建立]  對話方塊。
+3. 在 Azure Marketplace 之下，選取 [AI + 機器學習服務] > [查看全部] > [認知服務 - 更多] > [Anomaly Detector]。 或者，您可以使用[此連結](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector)直接前往 [建立] 對話方塊。
 
     ![建立 Anomaly Detector 資源](../media/tutorials/databricks-cognitive-services-anomaly-detector.png "建立 Anomaly Detector 資源")
 
-4. 在 [建立]  對話方塊中提供下列值：
+4. 在 [建立] 對話方塊中提供下列值：
 
     |值 |描述  |
     |---------|---------|
@@ -170,13 +170,13 @@ ms.locfileid: "85918937"
     |資源群組     | 指定您是要建立新的資源群組，還是選取現有資源群組。        |
 
 
-     選取 [建立]  。
+     選取 [建立]。
 
-5. 建立資源之後，從 [概觀]  索引標籤，複製並儲存 [端點]  URL (如螢幕擷取畫面所示)。 然後選取 [顯示存取金鑰]  。
+5. 建立資源之後，從 [概觀] 索引標籤，複製並儲存 [端點] URL (如螢幕擷取畫面所示)。 然後選取 [顯示存取金鑰]。
 
     ![顯示存取金鑰](../media/tutorials/cognitive-services-get-access-keys.png "顯示存取金鑰")
 
-6. 在 [金鑰]  下，針對您要使用的金鑰選取 [複製] 圖示。 儲存存取金鑰。
+6. 在 [金鑰] 下，針對您要使用的金鑰選取 [複製] 圖示。 儲存存取金鑰。
 
     ![複製存取金鑰](../media/tutorials/cognitive-services-copy-access-keys.png "複製存取金鑰")
 
@@ -187,15 +187,15 @@ ms.locfileid: "85918937"
 - **SendTweetsToEventHub** - 生產者 Notebook，可供用來從 Twitter 取得推文，再將推文串流至事件中樞。
 - **AnalyzeTweetsFromEventHub** - 取用者 Notebook，可供用來從事件中樞讀取推文並執行異常偵測。
 
-1. 在 Azure Databricks 工作區中，從左窗格選取 [工作區]  。 從 [工作區]  下拉式清單選取 [建立]  ，然後選取 [Notebook]  。
+1. 在 Azure Databricks 工作區中，從左窗格選取 [工作區]。 從 [工作區] 下拉式清單選取 [建立]，然後選取 [Notebook]。
 
     ![在 Databricks 中建立筆記本](../media/tutorials/databricks-create-notebook.png "在 Databricks 中建立筆記本")
 
-2. 在 [建立 Notebook]  對話方塊中，輸入 **SendTweetsToEventHub** 作為名稱，選取 [Scala]  作為語言，然後選取您先前建立的 Spark 叢集。
+2. 在 [建立 Notebook] 對話方塊中，輸入 **SendTweetsToEventHub** 作為名稱，選取 [Scala] 作為語言，然後選取您先前建立的 Spark 叢集。
 
     ![在 Databricks 中建立筆記本](../media/tutorials/databricks-notebook-details.png "在 Databricks 中建立筆記本")
 
-    選取 [建立]  。
+    選取 [建立]。
 
 3. 重複上述步驟以建立 **AnalyzeTweetsFromEventHub** Notebook。
 
@@ -682,11 +682,11 @@ adResult.show()
 
 ## <a name="clean-up-resources"></a>清除資源
 
-在本教學課程執行完後，您可以終止叢集。 若要這樣做，請從 Azure Databricks 工作區的左窗格中選取 [叢集]  。 對於您想要終止的叢集，將游標移到 [動作]  資料行底下的省略符號上，然後選取 [終止]  圖示，然後選取 [確認]  。
+在本教學課程執行完後，您可以終止叢集。 若要這樣做，請從 Azure Databricks 工作區的左窗格中選取 [叢集]。 對於您想要終止的叢集，將游標移到 [動作] 資料行底下的省略符號上，然後選取 [終止] 圖示，然後選取 [確認]。
 
 ![停止 Databricks 叢集](../media/tutorials/terminate-databricks-cluster.png "停止 Databricks 叢集")
 
-如果您不手動終止叢集，叢集將會自動停止，但前提是您已在建立叢集時選取 [在停止活動 \_\_ 分鐘後終止]  核取方塊。 在這種情況下，叢集將會在停止活動達指定時間後自動停止。
+如果您不手動終止叢集，叢集將會自動停止，但前提是您已在建立叢集時選取 [在停止活動 \_\_ 分鐘後終止] 核取方塊。 在這種情況下，叢集將會在停止活動達指定時間後自動停止。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c922b95154f16a199660bcd5e58f792e46eade7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4fbfe9222971ccd1d28ceaddc91b137c6106e12
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360600"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146741"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>教學課程：整合單一樹系與單一 Azure AD 租用戶
 
@@ -108,13 +108,13 @@ ms.locfileid: "85360600"
 2.  按一下 [Azure Active Directory]
 3.  按一下 [Azure AD Connect]
 4.  選取 [管理佈建 (預覽)]
-![](media/how-to-configure/manage1.png)
-5.  按一下 [新增組態]
-![](media/tutorial-single-forest/configure1.png)
+![螢幕擷取畫面顯示 [管理佈建 (預覽)] 連結。](media/how-to-configure/manage1.png)
+5.  按一下 [新增設定]
+![[Azure AD 佈建 (預覽)] 畫面的螢幕擷取畫面，反白顯示了 [新增設定] 連結。](media/tutorial-single-forest/configure1.png)
 7.  在組態畫面上輸入 [通知電子郵件]，將選取器移至 [啟用]，然後按一下 [儲存]。
-![](media/tutorial-single-forest/configure2.png)
+![[設定] 畫面的螢幕擷取畫面，其中已填入通知電子郵件並已選取啟用。](media/tutorial-single-forest/configure2.png)
 1.  設定狀態此時應顯示為 [狀況良好]。
-![](media/how-to-configure/manage4.png)
+![[Azure AD 佈建 (預覽)] 畫面的螢幕擷取畫面顯示狀況良好狀態。](media/how-to-configure/manage4.png)
 
 ## <a name="verify-users-are-created-and-synchronization-is-occurring"></a>確認已建立使用者且已進行同步
 現在，您將確認內部部署目錄中的使用者已同步，而且已存在於外部 Azure AD 租用戶中。  這可能需要花幾個小時才能完成。  若要確認使用者是否已同步，請執行下列動作。

@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 4175214219350620ae44d0249243e23b1a25144a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 69265b17d5030d30bbb4d4be3e68c3d98fc90af0
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196598"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321085"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory 簡介 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -142,6 +142,6 @@ Data Factory 只在「美國西部」、「美國東部」和「北歐」區域�
 
 | 教學課程 | 描述 |
 | --- | --- |
-| [在兩個雲端資料存放區之間移動資料](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |您會建立具有管線的 Data Factory，以從 Blob 儲存體 移動資料至 SQL Database。 |
+| [在兩個雲端資料存放區之間移動資料](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |您會建立具有管線的 Data Factory，以從 Blob 儲存體移動資料至 SQL Database。 |
 | [使用 Hadoop 叢集轉換資料](data-factory-build-your-first-pipeline.md) |您會在 Azure HDInsight (Hadoop) 叢集上執行 Hive 指令碼，以建立您的第一個 Azure Data Factory 與用來處理資料的資料管線。 |
 | [使用資料管理閘道，在內部部署資料存放區與雲端資料存放區之間移動資料](data-factory-move-data-between-onprem-and-cloud.md) |您會建置具有管線的資料處理站，以將資料從 SQL Server 資料庫移動至 Azure Blob。 在逐步解說中，您會在電腦上安裝及設定資料管理閘道。 |

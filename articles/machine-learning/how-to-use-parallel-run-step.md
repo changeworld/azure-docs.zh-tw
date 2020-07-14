@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.reviewer: trbye, jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 04/15/2020
+ms.date: 06/23/2020
 ms.custom: Build2020, tracking-python
-ms.openlocfilehash: b26527321cf7fc5ca7fc4b061f11b86f8830ec29
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: e5665bd5ad2baa35b497c8b4fe19b0cb93bdb2a7
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552308"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023358"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>使用 Azure Machine Learning 對大量資料執行批次推斷
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "84552308"
 > * 建立包含 ParallelRunStep 的[機器學習管線](concept-ml-pipelines.md)，並在 MNIST 測試映像上執行批次推斷。 
 > * 重新提交具有新資料輸入和參數的批次推斷執行。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
@@ -112,9 +112,6 @@ else:
 from azureml.core import Datastore
 from azureml.core import Workspace
 
-# Load workspace authorization details from config.json
-ws = Workspace.from_config()
-
 mnist_blob = Datastore.register_azure_blob_container(ws, 
                       datastore_name="mnist_datastore", 
                       container_name="sampledata", 
@@ -140,8 +137,6 @@ def_data_store = ws.get_default_datastore()
 
 ```python
 from azureml.core.dataset import Dataset
-
-mnist_ds_name = 'mnist_sample_data'
 
 path_on_datastore = mnist_blob.path('mnist/')
 input_mnist_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
@@ -210,7 +205,7 @@ model = Model.register(model_path="models/",
 - `init()`:請將此函式用於高成本或一般的準備，以進行後續的推斷。 例如，使用此函式將模型載入至全域物件。 此函式只會在程序開始時呼叫一次。
 -  `run(mini_batch)`:此函式會針對每個 `mini_batch` 執行個體來執行。
     -  `mini_batch`:ParallelRunStep 會叫用 run 方法，並將 list 或 Pandas 資料框架作為引數傳遞給方法。 mini_batch 中的每個項目會是檔案路徑 (如果輸入是 FileDataset) 或 Pandas 資料框架 (如果輸入是 TabularDataset)。
-    -  `response`：run() 方法應該傳回 Pandas 資料框架或陣列。 針對 append_row output_action，這些傳回的元素會附加至一般輸出檔案。 針對 summary_only，則會忽略元素的內容。 針對所有輸出動作，每個傳回的輸出元素會指出輸入迷你批次中一次成功的輸入元素執行。 您應確保執行結果中有足夠的資料可將輸入對應至執行輸出結果。 執行輸出將會寫入至輸出檔案，而且不保證會按照順序，所以您應該在輸出中使用某個索引鍵以將其對應至輸入。
+    -  `response`：run() 方法應該傳回 Pandas 資料框架或陣列。 針對 append_row output_action，這些傳回的元素會附加至一般輸出檔案。 針對 summary_only，則會忽略元素的內容。 針對所有輸出動作，每個傳回的輸出元素會指出輸入迷你批次中一次成功的輸入元素執行。 確保執行結果中有足夠的資料可將輸入對應至執行輸出結果。 執行輸出將會寫入至輸出檔案，而且不保證會按照順序，所以您應該在輸出中使用某個索引鍵以將其對應至輸入。
 
 ```python
 # Snippets from a sample script.
@@ -218,6 +213,7 @@ model = Model.register(model_path="models/",
 # (https://aka.ms/batch-inference-notebooks)
 # for the implementation script.
 
+%%writefile digit_identification.py
 import os
 import numpy as np
 import tensorflow as tf
@@ -270,7 +266,7 @@ file_path = os.path.join(script_dir, "<file_name>")
 
 ### <a name="prepare-the-environment"></a>準備環境
 
-首先，為指令碼指定相依性。 這可讓您安裝 pip 套件，以及設定環境。 請一律包含 **azureml-core** 和 **azureml-dataprep[pandas, fuse]** 套件。
+首先，為指令碼指定相依性。 這麼做可讓您安裝 pip 套件，以及設定環境。 一律包含 **azureml-core** 和 **azureml-dataprep[pandas, fuse]** 套件。
 
 如果您使用自訂 Docker 映像 (user_managed_dependencies=True)，也應該安裝 Conda。
 
@@ -311,12 +307,14 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 
 您可以將 `mini_batch_size`、`node_count`、`process_count_per_node`、`logging_level`、`run_invocation_timeout` 和 `run_max_try` 指定為 `PipelineParameter`，以便在重新提交管線執行時，可以微調參數值。 在此範例中，您會針對 `mini_batch_size` 和 `Process_count_per_node` 使用 PipelineParameter，而且將會在稍後重新提交執行時變更這些值。 
 
+此範例假設您使用稍早所討論的 `digit_identification.py` 指令碼。 如果您使用自己的指令碼，請據以變更 `source_directory` 和 `entry_script` 參數。
+
 ```python
 from azureml.pipeline.core import PipelineParameter
 from azureml.pipeline.steps import ParallelRunConfig
 
 parallel_run_config = ParallelRunConfig(
-    source_directory=scripts_folder,
+    source_directory='.',
     entry_script="digit_identification.py",
     mini_batch_size=PipelineParameter(name="batch_size_param", default_value="5"),
     error_threshold=10,
@@ -384,9 +382,8 @@ pipeline_run.wait_for_completion(show_output=True)
 由於您已進行輸入，並將數個項目設定為 `PipelineParameter`，因此可以重新提交具有不同資料集輸入的批次推斷執行並微調參數，而不需要建立全新的管線。 您會使用相同的資料存放區，但只會使用單一影像作為資料輸入。
 
 ```python
-path_on_datastore = mnist_data.path('mnist/0.png')
+path_on_datastore = mnist_blob.path('mnist/0.png')
 single_image_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
-single_image_ds._ensure_saved(ws)
 
 pipeline_run_2 = experiment.submit(pipeline, 
                                    pipeline_parameters={"mnist_param": single_image_ds, 

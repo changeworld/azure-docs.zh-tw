@@ -4,18 +4,22 @@ description: 快速了解如何使用 Azure CLI 執行 Batch 作業。 從命令
 ms.topic: quickstart
 ms.date: 05/19/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 5f26aeead41fa1ffcebefdeaabae84490dfdae2b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d92751d1463a20c8fb0cb83fe678789860957189
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959818"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086121"
 ---
-# <a name="quickstart-create-a-batch-account-by-using-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本建立 Batch 帳戶
+# <a name="quickstart-create-a-batch-account-by-using-arm-template"></a>快速入門：使用 ARM 範本建立 Batch 帳戶
 
-您需有 Batch 帳戶才能建立計算資源 (計算節點的集區) 和 Batch 作業。 您可以連結 Azure 儲存體帳戶與 Batch 帳戶，其適合用於部署應用程式以及儲存大部分真實工作負載的輸入和輸出資料。 本快速入門會說明如何使用 Azure Resource Manager 範本來建立 Batch 帳戶，包括儲存體。 完成本快速入門之後，您將了解 Batch 服務的重要概念，並可準備使用更多真實的工作負載來大規模試用 Batch。
+您需有 Batch 帳戶才能建立計算資源 (計算節點的集區) 和 Batch 作業。 您可以連結 Azure 儲存體帳戶與 Batch 帳戶，其適合用於部署應用程式以及儲存大部分真實工作負載的輸入和輸出資料。 本快速入門會說明如何使用 Azure Resource Manager 範本 (ARM 範本) 來建立 Batch 帳戶，包括儲存體。 完成本快速入門之後，您將了解 Batch 服務的重要概念，並可準備使用更多真實的工作負載來大規模試用 Batch。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-batchaccount-with-storage%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -23,9 +27,7 @@ ms.locfileid: "85959818"
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-batch-account-with-storage"></a>建立具有儲存體的 Batch 帳戶
-
-### <a name="review-the-template"></a>檢閱範本
+## <a name="review-the-template"></a>檢閱範本
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-batchaccount-with-storage/)。
 
@@ -36,7 +38,7 @@ ms.locfileid: "85959818"
 - [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)：建立儲存體帳戶。
 - [Microsoft.Batch/batchAccounts](/azure/templates/microsoft.batch/batchaccounts)：建立 Batch 帳戶。
 
-### <a name="deploy-the-template"></a>部署範本
+## <a name="deploy-the-template"></a>部署範本
 
 1. 選取以下影像來登入 Azure 並開啟範本。 範本會建立 Azure Batch 帳戶和儲存體帳戶。
 

@@ -15,30 +15,34 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 175c5a36c873d16d50d5192a489133a01018e335
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ebf2f926f5be86ffee5f3a3e30277962a6060762
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80474592"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479755"
 ---
-# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本建立負載平衡器以平衡 VM 的負載
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>快速入門：使用 ARM 範本建立負載平衡器以平衡 VM 的負載
 
-負載平衡會將傳入要求分散於多部虛擬機器 (VM)，藉此提供高可用性和範圍。 本快速入門會示範如何部署 Azure Resource Manager 範本，以建立標準負載平衡器來平衡 VM 的負載。 相較於其他部署方法，使用 Resource Manager 範本所需的步驟比較少。
+負載平衡會將傳入要求分散於多部虛擬機器 (VM)，藉此提供高可用性和範圍。 本快速入門會示範如何部署 Azure Resource Manager 範本 (ARM 範本)，以建立標準負載平衡器來平衡 VM 的負載。 相較於其他部署方法，使用 ARM 範本所需的步驟比較少。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-load-balancer-standard-create%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>必要條件
+
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-a-load-balancer"></a>建立負載平衡器
+## <a name="review-the-template"></a>檢閱範本
+
+本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-load-balancer-standard-create/)。
 
 負載平衡器和公用 IP SKU 必須相符。 當您建立 Standard Load Balancer 時，您也必須建立新的標準公用 IP 位址，而該 IP 位址會設定為 Standard Load Balancer 的前端。 如果您想要建立基本負載平衡器，請使用[此範本](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/)。 Microsoft 建議對生產工作負載使用標準 SKU。
 
-### <a name="review-the-template"></a>檢閱範本
-
-本快速入門中使用的範本是來自 [Azure 快速入門範本](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json)。
-
-:::code language="json" source="~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json" range="1-324" highlight="58-122":::
+:::code language="json" source="~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json" range="1-324" highlight="57-122":::
 
 範本中已定義多個 Azure 資源：
 
@@ -46,15 +50,15 @@ ms.locfileid: "80474592"
 - [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)：適用於負載平衡器，以及三部虛擬機器的每一部。
 - [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
 - [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Compute/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines) (其中 3 個)
-- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) (其中 3 個)
-- [**Microsoft.Compute/virtualMachine/extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) (其中 3 個)：用來設定 IIS 和網頁
+- [**Microsoft.Compute/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines) (其中 3 個)。
+- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) (其中 3 個)。
+- [**Microsoft.Compute/virtualMachine/extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) (其中 3 個)：用來設定 IIS 和網頁。
 
 若要尋找更多有關 Azure Load Balancer 的範本，請參閱 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular)。
 
-### <a name="deploy-the-template"></a>部署範本
+## <a name="deploy-the-template"></a>部署範本
 
-1. 選取以下程式碼區塊的 [試用]  以開啟 Azure Cloud Shell，然後遵循指示登入 Azure。
+1. 選取以下程式碼區塊的 [試用] 以開啟 Azure Cloud Shell，然後遵循指示登入 Azure。
 
    ```azurepowershell-interactive
    $projectName = Read-Host -Prompt "Enter a project name with 12 or less letters or numbers that is used to generate Azure resource names"
@@ -73,9 +77,9 @@ ms.locfileid: "80474592"
 
    等候直到您看見主控台的提示字元。
 
-1. 從先前的程式碼區塊選取 [複製]  以複製 PowerShell 指令碼。
+1. 從先前的程式碼區塊選取 [複製] 以複製 PowerShell 指令碼。
 
-1. 以滑鼠右鍵按一下殼層主控台窗格，然後選取 [貼上]  。
+1. 以滑鼠右鍵按一下殼層主控台窗格，然後選取 [貼上]。
 
 1. 輸入這些值。
 
@@ -89,11 +93,11 @@ ms.locfileid: "80474592"
 
 Azure PowerShell 用於部署範本。 除了 Azure PowerShell 以外，您也可以使用 Azure 入口網站、Azure CLI 和 REST API。 若要了解其他部署方法，請參閱[部署範本](../azure-resource-manager/templates/deploy-portal.md)。
 
-## <a name="test-the-load-balancer"></a>測試負載平衡器
+## <a name="review-deployed-resources"></a>檢閱已部署的資源
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 選取左側面板中的 [資源群組]  。
+1. 選取左側面板中的 [資源群組]。
 
 1. 選取您在上一節中建立的資源群組。 預設的資源群組名稱是附加 **rg** 的專案名稱。
 
@@ -111,7 +115,7 @@ Azure PowerShell 用於部署範本。 除了 Azure PowerShell 以外，您也�
 
 ## <a name="clean-up-resources"></a>清除資源
 
-您可以刪除不再需要的資源群組、負載平衡器和所有相關資源。 若要這樣做，請移至 Azure 入口網站，選取包含負載平衡器的資源群組，然後選取 [刪除資源群組]  。
+您可以刪除不再需要的資源群組、負載平衡器和所有相關資源。 若要這樣做，請移至 Azure 入口網站，選取包含負載平衡器的資源群組，然後選取 [刪除資源群組]。
 
 ## <a name="next-steps"></a>後續步驟
 

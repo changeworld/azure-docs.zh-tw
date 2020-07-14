@@ -4,16 +4,16 @@ ms.service: sql-database
 ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
-ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7943ea13d93fa68b76d333bda5438fb5738f5cd1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67174057"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050376"
 ---
 ## <a name="c-program-example"></a>C# 程式範例
 
-本文的下一節會呈現使用 ADO.NET 將 TRANSACT-SQL (T-SQL) 陳述式傳送到 SQL 資料庫的 C# 程式。 C# 程式會示範下列動作：
+本文的下一節會呈現使用 ADO.NET 將 TRANSACT-SQL (T-SQL) 陳述式傳送到 SQL Database 的 C# 程式。 C# 程式會示範下列動作：
 
 - [使用 ADO.NET 連線至 SQL Database](#cs_1_connect)
 - [可傳回 T-SQL 陳述式的方法](#cs_2_return)
@@ -24,22 +24,22 @@ ms.locfileid: "67174057"
 
 ### <a name="entity-relationship-diagram-erd"></a>實體關聯圖 (ERD)
 
-`CREATE TABLE` 陳述式包含 **REFERENCES** 關鍵字，可建立兩個資料表之間的「外部索引鍵」  (FK) 關聯性。 如果您使用 tempdb  ，請使用一對前置破折號將 `--REFERENCES` 關鍵字註解化。
+`CREATE TABLE` 陳述式包含 **REFERENCES** 關鍵字，可建立兩個資料表之間的「外部索引鍵」(FK) 關聯性。 如果您使用 tempdb，請使用一對前置破折號將 `--REFERENCES` 關鍵字註解化。
 
-ERD 會顯示兩個資料表之間的關聯性。 **tabEmployee.DepartmentCode**「子」  資料行中的值受限於 **tabDepartment.DepartmentCode**「父」  資料行中的值。
+ERD 會顯示兩個資料表之間的關聯性。 **tabEmployee.DepartmentCode**「子」資料行中的值受限於 **tabDepartment.DepartmentCode**「父」資料行中的值。
 
 ![顯示外部索引鍵的 ERD](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
 
 > [!NOTE]
-> 您可以選擇編輯 T-SQL，將前置 `#` 新增至資料表名稱，以將其建立為 tempdb  中的暫存資料表。 沒有測試資料庫可供使用時，這很適合用於示範。 在外部索引鍵使用期間不會強制執行任何參考，而在程式完成執行之後，暫存資料表會在連線關閉時自動刪除。
+> 您可以選擇編輯 T-SQL，將前置 `#` 新增至資料表名稱，以將其建立為 tempdb 中的暫存資料表。 沒有測試資料庫可供使用時，這很適合用於示範。 在外部索引鍵使用期間不會強制執行任何參考，而在程式完成執行之後，暫存資料表會在連線關閉時自動刪除。
 
 ### <a name="to-compile-and-run"></a>編譯和執行
 
 C# 程式在邏輯上是一個 .cs 檔案，而實際上會分成數個程式碼區塊，讓您更容易了解每個區塊。 若要編譯及執行此程式，請執行下列步驟：
 
-1. 在 Visual Studio 中建立 C# 專案。 專案類型應該是「主控台」  ，可在 [範本]   > [Visual C#]   > [Windows 桌面]   > [主控台應用程式 (.NET Framework)]  下找到。
+1. 在 Visual Studio 中建立 C# 專案。 專案類型應該是「主控台」，可在 [範本] > [Visual C#] > [Windows 桌面] > [主控台應用程式 (.NET Framework)] 下找到。
 
-1. 在 Program.cs  檔案中，利用下列步驟取代程式碼的起始行：
+1. 在 Program.cs 檔案中，利用下列步驟取代程式碼的起始行：
 
     1. 複製並貼上下列程式碼區塊 (以其出現的相同順序)，請參閱[連線到資料庫](#cs_1_connect)、[產生 T-SQL](#cs_2_return)，以及[提交至資料庫](#cs_3_submit)。
 
@@ -50,9 +50,9 @@ C# 程式在邏輯上是一個 .cs 檔案，而實際上會分成數個程式碼
         - *cb.Password*
         - *cb.InitialCatalog*
 
-1. 確認已參照 *System.Data.dll* 組件。 若要確認，請展開 [方案總管]  窗格中的 [參考]  節點。
+1. 確認已參照 *System.Data.dll* 組件。 若要確認，請展開 [方案總管] 窗格中的 [參考] 節點。
 
-1. 若要從 Visual Studio 建置及執行程式，請選取 [啟動]  按鈕。 報告輸出會顯示在程式視窗中，而 GUID 值會隨著測試回合有所不同。
+1. 若要從 Visual Studio 建置及執行程式，請選取 [啟動] 按鈕。 報告輸出會顯示在程式視窗中，而 GUID 值會隨著測試回合有所不同。
 
     ```Output
     =================================

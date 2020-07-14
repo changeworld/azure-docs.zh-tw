@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 084083a704a007e6675234883c62350d1d9a0849
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 22bf7e85a48e0d138bfdbca82cf032287d982899
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536143"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339589"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>快速入門：呼叫受 Azure 身分識別平台保護的 ASP.NET Web API
 
@@ -24,13 +24,13 @@ ms.locfileid: "81536143"
 
 此範例也包含 Windows 傳統型應用程式 (WPF) 用戶端，其會示範如何要求存取權杖以存取 Web API。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要執行這個範例，您將需要下列各項：
 
 * Visual Studio 2017 或 2019。  下載 [Visual Studio (免費版)](https://www.visualstudio.com/downloads/)。
 
-* [Microsoft 帳戶](https://www.outlook.com)或 [Office 365 開發人員計劃](/office/developer-program/office-365-developer-program)
+* [Microsoft 帳戶](https://www.outlook.com)或 [Microsoft 365 開發人員計劃](/office/developer-program/office-365-developer-program)
 
 ## <a name="download-or-clone-this-sample"></a>下載或複製此範例
 
@@ -55,32 +55,32 @@ ms.locfileid: "81536143"
 ### <a name="register-the-service-app-todolistservice"></a>註冊服務應用程式 (TodoListService)
 
 1. 瀏覽至 Microsoft 身分識別平台，以取得開發人員的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面。
-1. 選取 [新增註冊]  。
-1. 當 [註冊應用程式]  頁面出現時，輸入您應用程式的註冊資訊：
-   - 在 [名稱]  區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱，例如 `AppModelv2-NativeClient-DotNet-TodoListService`。
-   - 將 [支援的帳戶類型]  變更為 [任何組織目錄中的帳戶]  。
-   - 選取 [註冊]  以建立應用程式。
+1. 選取 [新增註冊]。
+1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊：
+   - 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱，例如 `AppModelv2-NativeClient-DotNet-TodoListService`。
+   - 將 [支援的帳戶類型] 變更為 [任何組織目錄中的帳戶]。
+   - 選取 [註冊] 以建立應用程式。
 
-1. 在應用程式 [概觀]  頁面上，尋找 [應用程式 (用戶端) 識別碼]  值並將它記下供稍後使用。 您必須用此識別碼來設定此專案的 Visual Studio 設定檔 (`TodoListService\Web.config` 中的 `ClientId`)。
-1. 選取 [公開 API]  區段，然後：
-   - 選取 [新增範圍] 
-   - 選取 [儲存並繼續]  以接受建議的應用程式識別碼 URI (api://{clientId})
+1. 在應用程式 [概觀] 頁面上，尋找 [應用程式 (用戶端) 識別碼] 值並將它記下供稍後使用。 您必須用此識別碼來設定此專案的 Visual Studio 設定檔 (`TodoListService\Web.config` 中的 `ClientId`)。
+1. 選取 [公開 API] 區段，然後：
+   - 選取 [新增範圍]
+   - 選取 [儲存並繼續] 以接受建議的應用程式識別碼 URI (api://{clientId})
    - 輸入下列參數：
-     - 針對 [範圍名稱]  使用 `access_as_user`
-     - 確定已針對 [誰可以同意]  選取 [系統管理員與使用者]  選項
-     - 在 [管理員同意顯示名稱]  中輸入 `Access TodoListService as a user`
-     - 在 [管理員同意描述]  中輸入 `Accesses the TodoListService web API as a user`
-     - 在 [使用者同意顯示名稱]  中輸入 `Access TodoListService as a user`
-     - 在 [使用者同意描述]  中輸入 `Accesses the TodoListService web API as a user`
-     - 讓 [狀態]  保持為 [啟用] 
-     - 選取 [新增範圍] 
+     - 針對 [範圍名稱] 使用 `access_as_user`
+     - 確定已針對 [誰可以同意] 選取 [系統管理員與使用者] 選項
+     - 在 [管理員同意顯示名稱] 中輸入 `Access TodoListService as a user`
+     - 在 [管理員同意描述] 中輸入 `Accesses the TodoListService web API as a user`
+     - 在 [使用者同意顯示名稱] 中輸入 `Access TodoListService as a user`
+     - 在 [使用者同意描述] 中輸入 `Accesses the TodoListService web API as a user`
+     - 讓 [狀態] 保持為 [啟用]
+     - 選取 [新增範圍]
 
 ### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>設定服務專案來符合已註冊的 Web API
 
 1. 在 Visual Studio 中開啟解決方案，然後開啟 **TodoListService** 專案根目錄下的 **Web.config** 檔案。
 1. 以剛才在應用程式註冊入口網站中所註冊應用程式的**用戶端識別碼 (應用程式識別碼)** 取代 `ida:ClientId` 參數的值。
 
-### <a name="add-the-new-scope-to-the-todolistclients-appconfig"></a>將新範圍新增至 TodoListClient  的 app.config
+### <a name="add-the-new-scope-to-the-todolistclients-appconfig"></a>將新範圍新增至 TodoListClient 的 app.config
 
 1. 開啟位於 **TodoListClient** 專案根資料夾中的 **app.config** 檔案，然後貼上剛才在 `TodoListServiceScope` 參數下針對 *TodoListService* 所註冊應用程式的**應用程式識別碼**，並取代字串 `{Enter the Application ID of your TodoListService from the app registration portal}`。
 
@@ -97,47 +97,47 @@ ms.locfileid: "81536143"
 ### <a name="register-the-todolistclient-application-in-the-application-registration-portal"></a>在*應用程式註冊入口網站*中註冊 *TodoListClient* 應用程式
 
 1. 瀏覽至 Microsoft 身分識別平台，以取得開發人員的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面。
-1. 選取 [新增註冊]  。
-1. 當 [註冊應用程式]  頁面出現時，輸入您應用程式的註冊資訊：
-   - 在 [名稱]  區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱，例如 `NativeClient-DotNet-TodoListClient`。
-   - 將 [支援的帳戶類型]  變更為 [任何組織目錄中的帳戶]  。
-   - 選取 [註冊]  以建立應用程式。
-1. 從應用程式的 [概觀] 頁面，選取 [驗證]  區段。
-   - 在 [重新導向 URI]   | [公用用戶端 (行動、傳統型) 的建議重新導向 URI]  區段，然後核取 **https://login.microsoftonline.com/common/oauth2/nativeclient**
-   - 選取 [儲存]  。
-1. 選取 [API 權限]  區段
-   - 按一下 [新增權限]  按鈕，然後
-   - 選取 [我的 API]  索引標籤。
+1. 選取 [新增註冊]。
+1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊：
+   - 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱，例如 `NativeClient-DotNet-TodoListClient`。
+   - 將 [支援的帳戶類型] 變更為 [任何組織目錄中的帳戶]。
+   - 選取 [註冊] 以建立應用程式。
+1. 從應用程式的 [概觀] 頁面，選取 [驗證] 區段。
+   - 在 [重新導向 URI] | [公用用戶端 (行動、傳統型) 的建議重新導向 URI] 區段，然後核取 **https://login.microsoftonline.com/common/oauth2/nativeclient**
+   - 選取 [儲存]。
+1. 選取 [API 權限] 區段
+   - 按一下 [新增權限] 按鈕，然後
+   - 選取 [我的 API] 索引標籤。
    - 在 API 清單中選取 `AppModelv2-NativeClient-DotNet-TodoListService API`，或選取您為 Web API 輸入的名稱。
    - 核取 **access_as_user** 權限 (如果尚未核取)。 如有需要請使用搜尋方塊。
-   - 選取 [新增權限]  按鈕
+   - 選取 [新增權限] 按鈕
 
 ### <a name="configure-your-todolistclient-project"></a>設定 *TodoListClient* 專案
 
-1. 在*應用程式註冊入口網站*的 [概觀]  頁面中，複製 [應用程式 (用戶端) 識別碼]  的值
+1. 在*應用程式註冊入口網站*的 [概觀] 頁面中，複製 [應用程式 (用戶端) 識別碼] 的值
 1. 開啟位於 **TodoListClient** 專案根資料夾中的 **app.config** 檔案，然後將值貼到 `ida:ClientId` 參數值中
 
 ## <a name="run-your-project"></a>執行專案
 
 1. 按 `<F5>` 來執行專案。 *TodoListClient* 應該會開啟。
-1. 選取右上方的 [登入]  ，然後使用您用來註冊應用程式的相同使用者，或使用相同目錄中的使用者來登入。
+1. 選取右上方的 [登入]，然後使用您用來註冊應用程式的相同使用者，或使用相同目錄中的使用者來登入。
 1. 至此，如果您是第一次登入，系統可能會提示您同意 *TodoListService* Web API。
 1. 登入也會要求 *access_as_user* 範圍的存取權杖，以便存取 *TodoListService* Web API，並操作 *To-Do* 清單。
 
 ## <a name="pre-authorize-your-client-application"></a>預先授權用戶端應用程式
 
-若要讓其他目錄中的使用者存取您的 Web API，其中一種方式是「預先授權」  用戶端應用程式來存取您的 Web API，做法是在 Web API 的「預先授權」  應用程式清單中新增用戶端應用程式的應用程式識別碼。 藉由新增預先授權的用戶端，您就不需要要求使用者同意使用您的 Web API。 請遵循下列步驟來預先授權 Web 應用程式：
+若要讓其他目錄中的使用者存取您的 Web API，其中一種方式是「預先授權」用戶端應用程式來存取您的 Web API，做法是在 Web API 的「預先授權」應用程式清單中新增用戶端應用程式的應用程式識別碼。 藉由新增預先授權的用戶端，您就不需要要求使用者同意使用您的 Web API。 請遵循下列步驟來預先授權 Web 應用程式：
 
 1. 回到*應用程式註冊入口網站*，並開啟 **TodoListService** 的屬性。
-1. 在 [公開 API]  區段中，按一下 [授權的用戶端應用程式]  區段下的 [新增用戶端應用程式]  。
-1. 在 [用戶端識別碼]  欄位中，貼上 `TodoListClient` 應用程式的應用程式識別碼。
-1. 在 [授權的範圍]  區段中，選取此 Web API `api://<Application ID>/access_as_user` 的範圍。
-1. 按頁面底部的 [新增應用程式]  按鈕。
+1. 在 [公開 API] 區段中，按一下 [授權的用戶端應用程式] 區段下的 [新增用戶端應用程式]。
+1. 在 [用戶端識別碼] 欄位中，貼上 `TodoListClient` 應用程式的應用程式識別碼。
+1. 在 [授權的範圍] 區段中，選取此 Web API `api://<Application ID>/access_as_user` 的範圍。
+1. 按頁面底部的 [新增應用程式] 按鈕。
 
 ## <a name="run-your-project"></a>執行專案
 
 1. 按 `<F5>` 來執行專案。 *TodoListClient* 應該會開啟。
-1. 選取右上方的 [登入]  (或 [清除快取/登入])，然後使用個人 Microsoft 帳戶 (live.com 或 hotmail.com) 來登入或使用公司或學校帳戶來登入。
+1. 選取右上方的 [登入] (或 [清除快取/登入])，然後使用個人 Microsoft 帳戶 (live.com 或 hotmail.com) 來登入或使用公司或學校帳戶來登入。
 
 ## <a name="optional-restrict-sign-in-access-to-your-application"></a>選擇性：限制對您應用程式的登入存取
 

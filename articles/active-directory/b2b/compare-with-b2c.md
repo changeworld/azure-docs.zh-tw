@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9006a70ae941abb700412a7c596627939c994028
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1c45aae35c7c1cf2fbde436303a2ac000dfdd5ec
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587505"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339603"
 ---
 # <a name="compare-solutions-for-external-identities-in-azure-active-directory"></a>比較 Azure Active Directory 中外部身分識別的解決方案
 
@@ -36,11 +36,11 @@ Azure AD 外部身分識別比較不注重使用者與貴組織的關聯性，�
 
 | 多租用戶應用程式  | 外部使用者共同作業 (B2B) | 消費者或客戶的應用程式 (B2C)  |
 | ---- | --- | --- |
-| 主要案例：企業軟體即服務 (SaaS) | 主要案例：使用 Microsoft 應用程式 (Office 365、Teams、...) 或自己的共同作業軟體進行共同作業。  | 主要案例：使用自訂開發應用程式的交易式應用程式。   |
+| 主要案例：企業軟體即服務 (SaaS) | 主要案例：使用 Microsoft 應用程式 (Microsoft 365、Teams、...) 或自己的共同作業軟體進行共同作業。  | 主要案例：使用自訂開發應用程式的交易式應用程式。   |
 | 適用對象：想要為許多企業客戶提供軟體的組織。    | 適用對象：想要能夠驗證來自合作夥伴組織 (無論是否為識別提供者) 之使用者的組織。    | 適用對象：邀請您的行動和 Web 應用程式客戶 (無論是個人、機構或組織客戶) 加入 Azure AD 目錄，該目錄與您自有的組織目錄分開。 |
 | 支援的身分識別︰具有 Azure AD 帳戶的員工。 | 支援的身分識別︰本機有工作或學校帳戶的員工、本機有工作或學校帳戶的合作夥伴、或任何電子郵件地址。 即將支援直接聯盟。      | 支援的身分識別︰具有本機應用程式帳戶的取用者使用者 (任何電子郵件地址或使用者名稱) 或任何以直接聯盟支援的社交身分識別。       |
 | 外部使用者會在自己的目錄中進行管理，與應用程式註冊所在的目錄隔離。    | 外部使用者與員工在相同的目錄中管理的，但特別註解。 管理他們的方式可以和員工相同、他們可以加入到相同的群組等等。    | 外部使用者在應用程式目錄中管理的。 他們和組織的員工及合作夥伴目錄 (若有) 分開管理。  |
-| 單一登入：支援 SSO 至所有與 Azure AD 連線的應用程式。          | 單一登入：支援 SSO 至所有與 Azure AD 連線的應用程式。 例如，您可以提供 Office 365 或內部部署應用程式的存取權，以及其他 SaaS 應用程式 (例如 Salesforce 或 Workday) 的存取權。    | 單一登入：支援 SSO 至客戶在 Azure AD B2C 租用戶內擁有的應用程式。 不支援 SSO 至 Office 365 或其他 Microsoft SaaS 應用程式。    |
+| 單一登入：支援 SSO 至所有與 Azure AD 連線的應用程式。          | 單一登入：支援 SSO 至所有與 Azure AD 連線的應用程式。 例如，您可以提供 Microsoft 365 或內部部署應用程式的存取權，以及其他 SaaS 應用程式 (例如 Salesforce 或 Workday) 的存取權。    | 單一登入：支援 SSO 至客戶在 Azure AD B2C 租用戶內擁有的應用程式。 不支援 SSO 至 Microsoft 365 或其他 Microsoft SaaS 應用程式。    |
 | 客戶生命週期︰由使用者的主要組織管理。      | 合作夥伴生命週期：由主控/邀請組織管理。    | 客戶生命週期︰自助式管理或由應用程式管理。      |
 | 安全性原則和合規性：由主控/邀請組織管理 (例如，使用[條件式存取原則](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access))。           | 安全性原則和合規性：由主控/邀請組織管理 (例如，使用[條件式存取原則](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access))。 | 安全性原則和合規性：受應用程式管理。        |
 | 商標：使用主控/邀請組織的品牌。   | 商標：使用主控/邀請組織的品牌。    | 商標：受應用程式管理。 通常多半會是產品品牌加上組織在背景淡出的效果。   |

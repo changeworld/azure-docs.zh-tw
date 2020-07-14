@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 27f085543869b1a77db9c97ca2e7ae7d3d3b7b88
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 891e0c18b3f95dca905fbc14b957af773135eeec
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80046407"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557888"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Linux 上的 Azure App Service 簡介
 
@@ -54,7 +54,7 @@ Linux 上的 App Service 可支援一些內建映像，以增加開發人員的�
 
 Azure 入口網站只會顯示 Web App for Containers 目前可用的功能。 隨著我們啟用更多功能，您會在入口網站中看到它們。
 
-Linux 上的 App Service 只在[免費、基本、標準和進階](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service 方案中才支援，而且沒有[共用](https://azure.microsoft.com/pricing/details/app-service/plans/)層。 您無法在已裝載非 Linux Web App 的 App Service 方案中，建立 Linux Web App。  
+Linux 上的 App Service 只在[免費、基本、標準、進階和隔離](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service 方案中才支援，而且沒有[共用](https://azure.microsoft.com/pricing/details/app-service/plans/)層。 您無法在已裝載非 Linux Web App 的 App Service 方案中，建立 Linux Web App。  
 
 根據目前的限制，您無法在相同的區域中，對相同的資源群組混用 Windows 和 Linux 應用程式。
 
@@ -65,9 +65,9 @@ Linux 上的 App Service 只在[免費、基本、標準和進階](https://azure
 >
 >
 
-當您的應用程式無法啟動或您想要檢查應用程式的記錄時，請檢查 LogFiles 目錄中的 Docker 記錄。 您可以透過 SCM 網站或 FTP 來存取此目錄。 若要從您的容器記錄 `stdout` 和 `stderr`，您必須啟用 [App Service 記錄]  下的 [應用程式記錄]  。 設定會立即生效。 App Service 會偵測變更，且自動重新啟動容器。
+當您的應用程式無法啟動或您想要檢查應用程式的記錄時，請檢查 LogFiles 目錄中的 Docker 記錄。 您可以透過 SCM 網站或 FTP 來存取此目錄。 若要從您的容器記錄 `stdout` 和 `stderr`，您必須啟用 [App Service 記錄] 下的 [應用程式記錄]。 設定會立即生效。 App Service 會偵測變更，且自動重新啟動容器。
 
-您可以在 [開發工具]  功能表中從 [進階工具]  存取 SCM 網站。
+您可以在 [開發工具] 功能表中從 [進階工具] 存取 SCM 網站。
 
 ![Using Kudu to view Docker logs][1]
 

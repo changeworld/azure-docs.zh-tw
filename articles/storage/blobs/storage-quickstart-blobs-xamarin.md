@@ -7,12 +7,12 @@ ms.date: 05/08/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: e0845e7cdc2ce6dc57ed5a18d263f117f0c2005c
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: c66766b39ae104cf4a031c3fd73c173e81d47fb8
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006384"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563485"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>快速入門：Azure Blob 儲存體用戶端程式庫 v12 與 Xamarin
 
@@ -30,7 +30,7 @@ ms.locfileid: "83006384"
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * Azure 儲存體帳戶 - [建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
@@ -151,7 +151,7 @@ protected async override void OnAppearing()
 下列程式碼片段：
 
 1. 建立文字的 `MemoryStream`。
-1. 藉由呼叫 [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) 類別的 [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync?view=azure-dotnet#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) 函式，並同時向其傳遞檔案名稱定義的類別層級變數和文字的 `MemoryStream`，以將文字上傳至 Blob。 如果 Blob 不存在，此方法會建立 Blob，若已存在，則會加以覆寫。
+1. 藉由呼叫 [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) 類別的 [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync?view=azure-dotnet#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) 函式，並同時將其傳遞至檔案名稱和文字的 `MemoryStream`，以將文字上傳至 Blob。 如果 Blob 不存在，此方法會建立 Blob，若已存在，則會加以覆寫。
 
 將此程式碼新增至 *MainPage.xaml.cs* 檔案：
 

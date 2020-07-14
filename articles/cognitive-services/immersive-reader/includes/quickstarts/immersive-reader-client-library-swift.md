@@ -1,7 +1,7 @@
 ---
 title: 沈浸式閱讀程式 Swift 用戶端程式庫快速入門
 titleSuffix: Azure Cognitive Services
-description: 在本快速入門中，您會從頭開始建置 Web 應用程式，並且新增沈浸式閱讀程式 API 功能。
+description: 在本快速入門中，您會從頭開始建置 iOS 應用程式，並且新增沈浸式閱讀程式 API 功能。
 services: cognitive-services
 author: pasta
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: 191d802064d477babd8aa1f782ad15876b821d11
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 3d0a8444312f37b1f59817d50bdc50d3aff22164
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268698"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038188"
 ---
 [沈浸式閱讀程式](https://www.onenote.com/learningtools)是經過全面設計的工具，可實作經實證的技術以改善閱讀理解程度。
 
@@ -573,4 +573,4 @@ function sendContentToReader(message) {
 
 ## <a name="next-steps"></a>後續步驟
 
-* 探索[沈浸式閱讀程式 SDK 參考](../../reference.md)
+* 探索[沈浸式閱讀程式 SDK](https://github.com/microsoft/immersive-reader-sdk) 和[沈浸式閱讀程式 SDK 參考](../../reference.md)

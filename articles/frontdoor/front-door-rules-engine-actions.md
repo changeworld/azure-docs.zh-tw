@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door | Microsoft Docs
-description: 本文提供 Azure Front Door 的概觀。 了解其是否為平衡應用程式使用者流量負載的最佳選擇。
+title: Azure Front Door
+description: 本文提供您可以使用 Azure Front Door 規則引擎執行的各種動作清單。
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 3e7c9606a17736ea45b09a4d6981b4d55fa6dee6
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: e11555e883a323bcb5b0be1c62b2825bce77524e
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515803"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85313997"
 ---
 # <a name="azure-front-door-rules-engine-actions"></a>Azure Front Door 規則引擎動作
 
 在 [AFD 規則引擎](front-door-rules-engine.md)中，一個規則包含零個或更多比對條件和動作。 本文針對您可在 AFD 規則引擎中使用的動作，提供詳細的說明。
 
-動作可定義一個比對條件或一組比對條件識別的要求類型所要套用的行為。 在 AFD 規則引擎中，一個規則最多可包含五個動作，其中只有一個動作可以是路由組態覆寫動作 (轉送或重新導向)。 
+動作可定義一個比對條件或一組比對條件識別的要求類型所要套用的行為。 在 AFD 規則引擎中，一個規則最多可包含五個動作，其中只有一個動作可以是路由組態覆寫動作 (轉送或重新導向)。
 
 下列動作可使用於 Azure Front Door 規則引擎。  
 
@@ -35,8 +35,8 @@ ms.locfileid: "82515803"
 
 動作 | HTTP 標頭名稱 | 值
 -------|------------------|------
-附加 | 若已選取此選項且符合規則，在 [標頭名稱]  中指定的標頭會新增至具有指定值的要求。 如果標頭已存在，此值就會附加至現有的值。 | String
-Overwrite | 若已選取此選項且符合規則，在 [標頭名稱]  中指定的標頭會新增至具有指定值的要求。 如果標頭已存在，指定的值就會覆寫現有的值。 | String
+附加 | 若已選取此選項且符合規則，在 [標頭名稱] 中指定的標頭會新增至具有指定值的要求。 如果標頭已存在，此值就會附加至現有的值。 | String
+Overwrite | 若已選取此選項且符合規則，在 [標頭名稱] 中指定的標頭會新增至具有指定值的要求。 如果標頭已存在，指定的值就會覆寫現有的值。 | String
 刪除 | 若已選取此選項、符合規則，且規則中指定的標頭存在，則會從要求中刪除此標頭。 | String
 
 ## <a name="modify-response-header"></a>修改回應標頭
@@ -47,8 +47,8 @@ Overwrite | 若已選取此選項且符合規則，在 [標頭名稱]  中指定
 
 動作 | HTTP 標頭名稱 | 值
 -------|------------------|------
-附加 | 若已選取此選項且符合規則，則會使用指定的 [值]  ，將 [標頭名稱]  中指定的標頭新增至回應。 如果標頭已存在，[值]  就會附加至現有的值。 | String
-Overwrite | 若已選取此選項且符合規則，則會使用指定的 [值]  ，將 [標頭名稱]  中指定的標頭新增至回應。 如果標頭已存在，[值]  就會覆寫現有的值。 | String
+附加 | 若已選取此選項且符合規則，則會使用指定的 [值]，將 [標頭名稱] 中指定的標頭新增至回應。 如果標頭已存在，[值] 就會附加至現有的值。 | String
+Overwrite | 若已選取此選項且符合規則，則會使用指定的 [值]，將 [標頭名稱] 中指定的標頭新增至回應。 如果標頭已存在，[值] 就會覆寫現有的值。 | String
 刪除 | 若已選取此選項、符合規則，且規則中指定的標頭存在，則會從回應中刪除此標頭。 | String
 
 ## <a name="route-configuration-overrides"></a>路由組態覆寫 
@@ -82,7 +82,7 @@ Caching | Enabled、Disabled。 若已啟用，請參閱下方以取得其他必
 
 #### <a name="url-rewrite"></a>URL 重寫
 
-使用此設定來設定選擇性 [自訂轉送路徑]  ，以在建構要轉送至後端的要求時使用。
+使用此設定來設定選擇性 [自訂轉送路徑]，以在建構要轉送至後端的要求時使用。
 
 欄位 | 描述 
 ------|------------

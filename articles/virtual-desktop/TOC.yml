@@ -23,7 +23,7 @@
     - name: 連線至 Windows 虛擬桌面資源
       items:
         - name: 與 Windows 桌面用戶端連線
-          href: connect-windows-7-and-10.md
+          href: connect-windows-7-10.md
         - name: 與 Web 用戶端連線
           href: connect-web.md
         - name: 與 Android 用戶端連線
@@ -38,6 +38,8 @@
       items:
         - name: PowerShell
           href: create-host-pools-powershell.md
+        - name: 部署 Windows 7 虛擬機器
+          href: deploy-windows-7-virtual-machine.md
         - name: 部署 GPU 型工作階段主機
           href: configure-vm-gpu.md
         - name: 擴充現有的主機集區
@@ -90,6 +92,8 @@
       href: language-packs.md
 - name: 概念
   items:
+    - name: 安全 URL 清單
+      href: safe-url-list.md
     - name: Windows 虛擬桌面環境
       href: environment-setup.md
     - name: 判斷使用者連線延遲

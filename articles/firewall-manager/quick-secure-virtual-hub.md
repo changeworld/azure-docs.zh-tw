@@ -1,27 +1,27 @@
 ---
-title: 快速入門：使用 Azure 防火牆管理員預覽版來保護虛擬中樞 - Resource Manager 範本
-description: 了解如何使用 Azure 防火牆管理員預覽來保護您的虛擬中樞。
+title: 快速入門：使用 Azure 防火牆管理員來保護虛擬中樞 - Resource Manager 範本
+description: 了解如何使用 Azure 防火牆管理員來保護您的虛擬中樞。
 services: firewall-manager
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 05/19/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9c51fdb5142159e390ac4fcf59a04aa3dd747469
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 6641cc29025d39ddff33e706dd9b1b0da517b884
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167191"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563698"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---resource-manager-template"></a>快速入門：使用 Azure 防火牆管理員來保護您的虛擬中樞 - Resource Manager 範本
 
-在本快速入門中，您可以使用 Resource Manager 範本，利用 Azure 防火牆管理員預覽版來保護您的虛擬中樞。 已部署的防火牆具有允許連線到 `www.microsoft.com` 的應用程式規則。 已部署兩部 Windows Server 2019 虛擬機器來測試防火牆。 一部跳躍伺服器用來連線到工作負載伺服器。 從工作負載伺服器，您只能連線到 `www.microsoft.com`。
+在本快速入門中，您可以使用 Resource Manager 範本，利用 Azure 防火牆管理員來保護您的虛擬中樞。 已部署的防火牆具有允許連線到 `www.microsoft.com` 的應用程式規則。 已部署兩部 Windows Server 2019 虛擬機器來測試防火牆。 一部跳躍伺服器用來連線到工作負載伺服器。 從工作負載伺服器，您只能連線到 `www.microsoft.com`。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-如需 Azure 防火牆管理員預覽版的詳細資訊，請參閱[什麼是 Azure 防火牆管理員預覽版？](overview.md)。
+如需 Azure 防火牆管理員的詳細資訊，請參閱[什麼是 Azure 防火牆管理員？](overview.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -29,7 +29,7 @@ ms.locfileid: "84167191"
 
 ## <a name="create-a-secured-virtual-hub"></a>建立安全虛擬中樞
 
-此範本會使用 Azure 防火牆管理員預覽版建立受保護的虛擬中樞，以及支援此案例所需的資源。
+此範本會使用 Azure 防火牆管理員建立受保護的虛擬中樞，以及支援此案例所需的資源。
 
 ### <a name="review-the-template"></a>檢閱範本
 
@@ -101,4 +101,4 @@ Remove-AzResourceGroup -Name "<your resource group name>"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [了解信任的安全性合作夥伴](trusted-security-partners.md)
+> [深入了解安全性合作夥伴提供者](trusted-security-partners.md)

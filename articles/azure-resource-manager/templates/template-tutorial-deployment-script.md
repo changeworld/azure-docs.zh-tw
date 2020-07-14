@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2b4b94c05b39dddcef83644638a105d5b6c75118
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 81574f25e2132a7079fa0242284fb67b0132a8af
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184974"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119322"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>教學課程：使用部署指令碼建立自我簽署憑證 (預覽)
 
@@ -36,11 +36,11 @@ ms.locfileid: "82184974"
 > * 對失敗的指令碼進行偵錯
 > * 清除資源
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本文，您需要：
 
-* **[Visual Studio Cod](https://code.visualstudio.com/) 搭配 Resource Manager Tools 擴充功能**。 請參閱[使用 Visual Studio Code 建立 ARM 範本](./use-vs-code-to-create-template.md)。
+* **[Visual Studio Cod](https://code.visualstudio.com/) 搭配 Resource Manager Tools 擴充功能**。 請參閱[快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本](./quickstart-create-templates-use-visual-studio-code.md)。
 
 * **使用者指派的受控識別，且在訂用帳戶層級上具有參與者角色**。 此身分識別會用來執行部署指令碼。 若要建立身分識別，請參閱[使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity)。 您在部署範本時將需要身分識別的識別碼。 此身分識別的格式為：
 
@@ -62,15 +62,15 @@ ms.locfileid: "82184974"
 
 本快速入門中使用的範本名為[建立 Azure Key Vault 和秘密](https://azure.microsoft.com/resources/templates/101-key-vault-create/)。 此範本會建立金鑰保存庫，然後將秘密新增至金鑰保存庫。
 
-1. 在 Visual Studio Code 中，選取 [檔案]  >[開啟檔案]  。
-2. 在 [檔案名稱]  中，貼上下列 URL：
+1. 在 Visual Studio Code 中，選取 [檔案]>[開啟檔案]。
+2. 在 [檔案名稱] 中，貼上下列 URL：
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-key-vault-create/azuredeploy.json
     ```
 
-3. 選取 [開啟]  以開啟檔案。
-4. 選取 [檔案]  >[另存新檔]  ，在您的本機電腦上將檔案另存為 **azuredeploy.json**。
+3. 選取 [開啟] 以開啟檔案。
+4. 選取 [檔案]>[另存新檔]，在您的本機電腦上將檔案另存為 **azuredeploy.json**。
 
 ## <a name="edit-the-template"></a>編輯範本
 
@@ -263,7 +263,7 @@ ms.locfileid: "82184974"
     * **arguments**：指定參數值。 多個值應以空格分隔。
     * **scriptContent**：指定指令碼內容。 若要執行外部指令碼，請改用 **primaryScriptURI**。 如需詳細資訊，請參閱[使用外部指令碼](./deployment-script-template.md#use-external-scripts)。
         只有在本機電腦上測試指令碼時，才需要宣告 **$DeploymentScriptOutputs**。 宣告此變數可讓指令碼直接在本機電腦和 deploymentScript 資源中執行，而無須進行變更。 指派給 $DeploymentScriptOutputs 的值可作為部署中的輸出。 如需詳細資訊，請參閱[使用 PowerShell 部署腳本的輸出](./deployment-script-template.md#work-with-outputs-from-powershell-script)或[使用 CLI 部署腳本的輸出](./deployment-script-template.md#work-with-outputs-from-cli-script)。
-    * **cleanupPreference**：指定何時要刪除部署指令碼資源的喜好設定。  預設值為 [一律]  ，這表示即使處於終止狀態 (成功、失敗、已取消)，仍會刪除部署指令碼資源。 本教學課程中會使用 **OnSuccess**，以讓您有機會檢視指令碼執行結果。
+    * **cleanupPreference**：指定何時要刪除部署指令碼資源的喜好設定。  預設值為 [一律]，這表示即使處於終止狀態 (成功、失敗、已取消)，仍會刪除部署指令碼資源。 本教學課程中會使用 **OnSuccess**，以讓您有機會檢視指令碼執行結果。
     * **retentionInterval**：指定服務在指令碼資源到達結束狀態後保留該資源的間隔。 此持續時間到期後，即會刪除資源。 持續時間以 ISO 8601 模式為基礎。 本教學課程使用 P1D，這表示一天。  當 **cleanupPreference** 設定為 **OnExpiration** 時，就會使用此屬性。 目前並未啟用此屬性。
 
     部署指令碼會採用三個參數：金鑰保存庫名稱、憑證名稱和主體名稱。  指令碼會建立憑證，然後將憑證新增至金鑰保存庫。
@@ -280,7 +280,7 @@ ms.locfileid: "82184974"
 
     正確的命令是 **Write-Output**，而不是 **Write-Output1**。
 
-1. 選取 [檔案]  >[儲存]  ，以儲存檔案。
+1. 選取 [檔案]>[儲存]，以儲存檔案。
 
 ## <a name="deploy-the-template"></a>部署範本
 
@@ -290,7 +290,7 @@ ms.locfileid: "82184974"
 
     ![Azure 入口網站的 Cloud Shell 上傳檔案](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. 選取 [上傳/下載檔案]  ，然後選取 [上傳]  。 請參閱上一個螢幕擷取畫面。  選取您在前一節中儲存的檔案。 上傳檔案之後，您可以使用 **ls** 命令和 **cat** 命令來確認檔案是否已成功上傳。
+1. 選取 [上傳/下載檔案]，然後選取 [上傳]。 請參閱上一個螢幕擷取畫面。  選取您在前一節中儲存的檔案。 上傳檔案之後，您可以使用 **ls** 命令和 **cat** 命令來確認檔案是否已成功上傳。
 
 1. 然後執行下列 PowerShell 指令碼來部署範本。
 
@@ -331,11 +331,11 @@ ms.locfileid: "82184974"
 
     這兩個檔案都具有 **azscripts** 尾碼。 其中一個是儲存體帳戶，另一個則是容器執行個體。
 
-    請選取 [顯示隱藏的類型]  ，以列出 deploymentScripts 資源。
+    請選取 [顯示隱藏的類型]，以列出 deploymentScripts 資源。
 
 1. 選取具有 **azscripts** 尾碼的儲存體帳戶。
-1. 選取 [檔案共用]  磚。 您應該會看到 **azscripts** 資料夾。  此資料夾包含部署指令碼執行檔案。
-1. 選取 [azscripts]  。 您應該會看到兩個資料夾：**azscriptinput** 和 **azscriptoutput**。  輸入資料夾包含系統 PowerShell 指令檔和使用者部署指令檔。 輸出檔案夾包含 **executionresult.json** 和指令碼輸出檔案。 您可以在 **executionresult.json** 中查看錯誤訊息。 輸出檔案不存在，因為執行失敗。
+1. 選取 [檔案共用] 磚。 您應該會看到 **azscripts** 資料夾。  此資料夾包含部署指令碼執行檔案。
+1. 選取 [azscripts]。 您應該會看到兩個資料夾：**azscriptinput** 和 **azscriptoutput**。  輸入資料夾包含系統 PowerShell 指令檔和使用者部署指令檔。 輸出檔案夾包含 **executionresult.json** 和指令碼輸出檔案。 您可以在 **executionresult.json** 中查看錯誤訊息。 輸出檔案不存在，因為執行失敗。
 
 移除 **Write-Output1** 行，並重新部署範本。
 
@@ -345,10 +345,10 @@ ms.locfileid: "82184974"
 
 不再需要 Azure 資源時，可藉由刪除資源群組來清除您所部署的資源。
 
-1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]  。
-2. 在 [依名稱篩選]  欄位中輸入資源群組名稱。
+1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]。
+2. 在 [依名稱篩選] 欄位中輸入資源群組名稱。
 3. 選取資源群組名稱。  您在資源群組中應該會看到共計六個資源。
-4. 從頂端功能表中選取 [刪除資源群組]  。
+4. 從頂端功能表中選取 [刪除資源群組]。
 
 ## <a name="next-steps"></a>後續步驟
 

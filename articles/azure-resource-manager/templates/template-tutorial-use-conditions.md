@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b73598da2b34847a38485db9952302f7c5b33c98
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d902258c80467380518df3b55583cea1efa76609
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82185025"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119305"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>教學課程：使用 ARM 範本中的條件
 
@@ -37,11 +37,11 @@ ms.locfileid: "82185025"
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本文，您需要：
 
-* Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[使用 Visual Studio Code 建立 ARM 範本](use-vs-code-to-create-template.md)。
+* Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本](quickstart-create-templates-use-visual-studio-code.md)。
 * 為了提高安全性，請使用為虛擬機器系統管理員帳戶產生的密碼。 以下是用於產生密碼的範例：
 
     ```console
@@ -54,14 +54,14 @@ ms.locfileid: "82185025"
 
 Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範本並加以自訂，而不要從頭建立範本。 本教學課程中使用的範本名為[部署簡單的 Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)。
 
-1. 在 Visual Studio Code 中，選取 [檔案]  >[開啟檔案]  。
-1. 在 [檔案名稱]  中，貼上下列 URL：
+1. 在 Visual Studio Code 中，選取 [檔案]>[開啟檔案]。
+1. 在 [檔案名稱] 中，貼上下列 URL：
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-1. 選取 [開啟]  以開啟檔案。
+1. 選取 [開啟] 以開啟檔案。
 1. 範本中定義了六項資源：
 
    * [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts).
@@ -73,7 +73,7 @@ Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範�
 
     在自訂範本之前，建議您先檢閱範本參考。
 
-1. 選取 [檔案]  >[另存新檔]  ，以名稱 **azuredeploy.json** 將檔案的複本儲存至您的本機電腦。
+1. 選取 [檔案]>[另存新檔]，以名稱 **azuredeploy.json** 將檔案的複本儲存至您的本機電腦。
 
 ## <a name="modify-the-template"></a>修改範本
 
@@ -140,7 +140,7 @@ Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範�
 
     ![Azure 入口網站的 Cloud Shell 上傳檔案](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. 選取 [上傳/下載檔案]  ，然後選取 [上傳]  。 請參閱上一個螢幕擷取畫面。 選取您在前一節中儲存的檔案。 上傳檔案之後，您可以使用 **ls** 命令和 **cat** 命令來確認檔案是否已成功上傳。
+1. 選取 [上傳/下載檔案]，然後選取 [上傳]。 請參閱上一個螢幕擷取畫面。 選取您在前一節中儲存的檔案。 上傳檔案之後，您可以使用 **ls** 命令和 **cat** 命令來確認檔案是否已成功上傳。
 
 1. 然後執行下列 PowerShell 指令碼來部署範本。
 
@@ -178,7 +178,7 @@ Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範�
 
 ## <a name="clean-up-resources"></a>清除資源
 
-不再需要 Azure 資源時，可藉由刪除資源群組來清除您所部署的資源。 若要刪除資源群組，請選取 [試試看]  來開啟 Cloud Shell。 若要貼上 PowerShell 指令碼，請以滑鼠右鍵按一下 Shell 窗格，然後選取 [貼上]  。
+不再需要 Azure 資源時，可藉由刪除資源群組來清除您所部署的資源。 若要刪除資源群組，請選取 [試試看] 來開啟 Cloud Shell。 若要貼上 PowerShell 指令碼，請以滑鼠右鍵按一下 Shell 窗格，然後選取 [貼上]。
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name you used in the last procedure"

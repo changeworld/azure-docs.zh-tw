@@ -1,26 +1,16 @@
 ---
-title: 關於 Azure 實驗室服務 | Microsoft Azure
-description: 了解實驗室服務如何協助您輕鬆搭配虛擬機器建立、管理及保護實驗室，以供開發人員、測試人員、教育工作者、學生及其他人員使用。
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Azure 實驗室服務與Azure DevTest Labs
+description: 比較 Azure DevTest Labs 與 Azure 實驗室服務。
 ms.topic: overview
-ms.date: 02/03/2020
-ms.author: spelluru
-ms.openlocfilehash: a1e42a415e99bfaec1c48204efdaacd178005705
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: b1cd476faf6c457033ffeace03cd2e37b51e8578
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899367"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480077"
 ---
-# <a name="an-introduction-to-azure-lab-services"></a>Azure 實驗室服務簡介
+# <a name="compare-azure-devtest-labs-and-azure-lab-services"></a>比較 Azure DevTest Labs 與 Azure 實驗室服務
 Azure 上有兩項服務可讓您在雲端中設定實驗室環境。 
 
 - **Azure DevTest Labs** - 此服務可讓您為小組快速設定環境 (例如：開發環境，或雲端中的測試環境)。 實驗室擁有者會建立實驗室，佈建 Windows 或 Linux 虛擬機器，安裝必要的軟體和工具，然後將它們提供給實驗室使用者使用。 實驗室使用者會連線至實驗室中的虛擬機器 (VM)，並使用它們來進行日常工作和短期專案。 當使用者開始運用實驗室中的資源後，實驗室管理員便可以跨多個實驗室分析成本和使用情形，並設定整體性的原則來對組織或團隊的成本進行最佳化。

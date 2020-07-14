@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: fa8bf79c047911ca283bf60261bba0cbdd6816a7
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 53cabaec21daafb910b958bb4b573dd033ca6283
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980110"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035895"
 ---
 本指南說明如何安裝適用於 JavaScript 的[語音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)，以與網頁搭配使用。
 
@@ -27,11 +27,12 @@ ms.locfileid: "82980110"
 
 ## <a name="unpack-the-speech-sdk-for-javascript-into-that-folder"></a>將適用於 JavaScript 的語音 SDK 解壓縮到該資料夾
 
-下載 [.zip 套件](https://aka.ms/csspeech/jsbrowserpackage)形式的語音 SDK，並將它解壓縮到新建立的資料夾。 這會讓四個檔案開始解壓縮：
+下載 [.zip 套件](https://aka.ms/csspeech/jsbrowserpackage)形式的語音 SDK，並將它解壓縮到新建立的資料夾。 這會讓五個檔案開始解壓縮：
 * `microsoft.cognitiveservices.speech.sdk.bundle.js` 易讀版的語音 SDK。
 * `microsoft.cognitiveservices.speech.sdk.bundle.js.map` 用於針對 SDK 程式碼進行偵錯的對應檔。
 * `microsoft.cognitiveservices.speech.sdk.bundle.d.ts` 用於 TypeScript 的物件定義
 * `microsoft.cognitiveservices.speech.sdk.bundle-min.js` 縮減版的語音 SDK。
+* `speech-processor.js` 程式碼，在某些瀏覽器上改善效能。
 
 ## <a name="create-an-indexhtml-page"></a>建立 index.html 網頁
 

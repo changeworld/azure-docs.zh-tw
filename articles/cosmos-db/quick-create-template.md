@@ -8,20 +8,22 @@ ms.service: cosmos-db
 ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: e626f6e5b65e369c3c77900cd46f2b86cd6f9d52
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 249ff87813fe23505a09db020d4c6ad0f272796d
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85117993"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483290"
 ---
-# <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本來建立 Azure Cosmos DB 和容器
+# <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-an-arm-template"></a>快速入門：使用 ARM 範本來建立 Azure Cosmos DB 和容器
 
-Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以使用 Azure Cosmos DB 快速地建立及查詢機碼/值資料庫、文件資料庫與圖形資料庫。 本快速入門所著重的程序可讓您部署 Resource Manager 範本以建立 Azure Cosmos 資料庫並於該資料庫內建立容器。 您稍後可以在此容器中儲存資料。
+Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以使用 Azure Cosmos DB 快速地建立及查詢機碼/值資料庫、文件資料庫與圖形資料庫。 本快速入門所著重的程序可讓您部署 Azure Resource Manager 範本 (ARM 範本) 以建立 Azure Cosmos 資料庫並於該資料庫內建立容器。 您稍後可以在此容器中儲存資料。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署至 Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -31,9 +33,7 @@ Azure 訂用帳戶或免費的 Azure Cosmos DB 試用帳戶
 
 - [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-## <a name="create-an-azure-cosmos-account-database-container"></a>建立 Azure Cosmos 帳戶、資料庫和容器
-
-### <a name="review-the-template"></a>檢閱範本
+## <a name="review-the-template"></a>檢閱範本
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/)。
 
@@ -49,7 +49,7 @@ Azure 訂用帳戶或免費的 Azure Cosmos DB 試用帳戶
 
 您可以在[快速入門範本資源庫](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb)中找到更多 Azure Cosmos DB 範本的範例。
 
-### <a name="deploy-the-template"></a>部署範本
+## <a name="deploy-the-template"></a>部署範本
 
 1. 選取以下影像來登入 Azure 並開啟範本。 此範本會建立 Azure Cosmos 帳戶、資料庫和容器。
 
@@ -57,7 +57,7 @@ Azure 訂用帳戶或免費的 Azure Cosmos DB 試用帳戶
 
 2. 選取或輸入下列值。
 
-   :::image type="content" source="./media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="Resource Manager 範本、Azure Cosmos DB 整合、部署入口網站":::
+   :::image type="content" source="./media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="ARM 範本、Azure Cosmos DB 整合、部署入口網站":::
 
     除非有指定，否則請使用預設值來建立 Azure Cosmos 資源。
 
@@ -78,7 +78,7 @@ Azure 訂用帳戶或免費的 Azure Cosmos DB 試用帳戶
 
 3. 選取 [購買]。 成功部署 Azure Cosmos 帳戶之後，您會收到通知：
 
-   :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="Resource Manager 範本、Cosmos DB 整合、部署入口網站通知":::
+   :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="ARM 範本、Cosmos DB 整合、部署入口網站通知":::
 
 Azure 入口網站用於部署範本。 除了 Azure 入口網站以外，您也可以使用 Azure PowerShell、Azure CLI 和 REST API。 若要了解其他部署方法，請參閱[部署範本](../azure-resource-manager/templates/deploy-powershell.md)。
 
@@ -132,7 +132,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已使用 Azure Resource Manager 範本建立 Azure Cosmos 帳戶、資料庫和容器，並已驗證過部署。 若要深入了解 Azure Cosmos DB 和 Azure Resource Manager，請繼續閱讀下列文章。
+在本快速入門中，您已使用 ARM 範本建立 Azure Cosmos 帳戶、資料庫和容器，並已驗證過部署。 若要深入了解 Azure Cosmos DB 和 Azure Resource Manager，請繼續閱讀下列文章。
 
 - 閱讀 [Azure Cosmos DB 的概觀](introduction.md)
 - 深入了解 [Azure Resource Manager](../azure-resource-manager/management/overview.md)

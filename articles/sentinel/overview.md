@@ -1,6 +1,6 @@
 ---
 title: 什麼是 Azure Sentinel？| Microsoft Docs
-description: 了解 Azure Sentinel、其主要功能及運作方式。
+description: 深入了解 Azure Sentinel，這是一個可調整的雲端原生安全性資訊事件管理 (SIEM) 和安全性協調流程自動化回應 (SOAR) 解決方案。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: 517bdc0846ae56e0db41631f1dc5411471c6c2bd
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: ebc9756afc43648f2b44ca317abe3373807f4efa
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800133"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85564628"
 ---
 # <a name="what-is-azure-sentinel"></a>什麼是 Azure Sentinel？
 

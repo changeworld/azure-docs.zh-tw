@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebbb73b6fc4e2a934c7c4235cfcdc39b8fa81b60
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 18dc2e4393175751f5ac52d53e0c331c82fce7e8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126986"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078091"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shopify-plus"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Shopify Plus 整合
 
@@ -103,7 +103,8 @@ ms.locfileid: "85126986"
     | ---------------| --------------- | --------- |
     | 電子郵件 | | user.mail |
 
-1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，按一下 [複製] 按鈕以複製 [應用程式同盟中繼資料 URL]，並將資料儲存在您的電腦上。
+1. 將 [名稱識別碼] 格式變更為 [持續性]。 選取 [唯一使用者識別碼 (名稱識別碼)] 選項，然後選取 [名稱識別碼] 格式。 為這個選項選取 [持續性]。 儲存您的變更。
+1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，選取 [複製] 按鈕以複製**應用程式同盟中繼資料 URL**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/copy-metadataurl.png)
 
@@ -139,11 +140,31 @@ ms.locfileid: "85126986"
 
 ## <a name="configure-shopify-plus-sso"></a>設定 Shopify Plus SSO
 
-若要在 **Shopify Plus** 端設定單一登入，您必須將 [應用程式同盟中繼資料 URL] 傳送給 [Shopify Plus 支援小組](mailto:plus-user-management@shopify.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要檢視完整步驟，請參閱[有關設定 SAML 整合的 Shopify 文件](https://help.shopify.com/en/manual/shopify-plus/saml)。
+
+若要在 **Shopify Plus** 端上設定單一登入，請從 Azure Active Directory 複製**應用程式同盟中繼資料 URL**。 然後，登入[組織管理](https://shopify.plus)，並移至 [使用者] > [安全性]。 選取 [設定組態]，然後在 [識別提供者中繼資料 URL] 區段中貼上您的應用程式同盟中繼資料 URL。 選取 [新增] 以完成這個步驟。
 
 ### <a name="create-shopify-plus-test-user"></a>建立 Shopify Plus 測試使用者
 
-在本節中，您要在 Shopify Plus 中建立名為 B.Simon 的使用者。 請與  [Shopify Plus 支援小組](mailto:plus-user-management@shopify.com)合作，在 Shopify Plus 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您要在 Shopify Plus 中建立名為 B.Simon 的使用者。 返回 [使用者] 區段，並輸入他們的電子郵件和權限來新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+
+### <a name="enforce-saml-authentication"></a>強制執行 SAML 驗證
+
+> [!NOTE]
+> 我們建議您先使用個別使用者測試整合，然後再廣泛套用。
+
+個別使用者：
+1. 使用由 Azure AD 管理並在 Shopify Plus 中驗證的電子郵件網域，移至 Shopify Plus 中的個別使用者頁面。
+1. 在 [SAML 驗證] 區段中，選取 [編輯]、選取 [必要]，然後選取 [儲存]。
+1. 測試此使用者是否可以透過 idP 起始和 SP 起始的流程成功登入。
+
+針對電子郵件網域下的所有使用者：
+1. 返回 [安全性] 頁面。
+1. 針對您的 SAML 驗證設定，選取 [必要]。 這會針對在 Shopify Plus 中具有該電子郵件網域的所有使用者強制執行 SAML。
+1. 選取 [儲存]。
+
+> [!IMPORTANT]
+> 為電子郵件網域下的所有使用者啟用 SAML，會影響所有使用此應用程式的使用者。 使用者將無法使用其一般登入頁面登入。 他們只能夠透過 Azure Active Directory 存取應用程式。 Shopify 不會提供備份登入 URL，讓使用者可以使用其一般使用者名稱和密碼登入。 如有必要，您可以連絡 Shopify 支援以關閉 SAML。
 
 ## <a name="test-sso"></a>測試 SSO 
 

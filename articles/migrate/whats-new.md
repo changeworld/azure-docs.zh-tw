@@ -4,12 +4,12 @@ description: 了解 Azure Migrate 服務中的新功能和最新更新。
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: be617590ce0c96c3ec8ea705732534c8395ac0ce
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 58c77dccd1e43ed497cd56b2831eb2ab914d8d5d
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052325"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85556927"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate 中的新功能
 
@@ -17,6 +17,7 @@ ms.locfileid: "85052325"
 
 ## <a name="update-june-2020"></a>更新 (2020 年 6 月)
 
+- 現在支援將內部部署 VMware VM 遷移至 [Azure VMware 解決方案 (AVS)](https://go.microsoft.com/fwlink/?linkid=2132637) 的評量。 [深入了解](how-to-create-azure-vmware-solution-assessment.md)
 - 支援應用裝置上的多個認證以進行實體伺服器探索。
 - 對於已設定租用戶限制的租用戶，支援允許從設備進行 Azure 登入。
 - 新的 Azure Migrate 設備版本如下所列。
@@ -95,7 +96,7 @@ Azure Migrate 新增了新的評量和移轉工具：
 
 ## <a name="azure-migrate-previous-version"></a>Azure Migrate 舊版本
 
-如果您使用的是舊版 Azure Migrate (僅支援內部部署 VMware VM 的評量)，則您現在應該使用目前的版本。 在舊版中，您已無法建立新的 Azure Migrate 專案，或是執行新的探索。 您仍然可以存取現有的專案。 若要這樣做，請在 Azure 入口網站 > [所有服務]**** 中搜尋 **Azure Migrate**。 在 [Azure Migrate] 的通知中，會有可存取舊 Azure Migrate 專案的連結。
+如果您使用的是舊版 Azure Migrate (僅支援內部部署 VMware VM 的評量)，則您現在應該使用目前的版本。 在舊版中，您已無法建立新的 Azure Migrate 專案，或是執行新的探索。 您仍然可以存取現有的專案。 若要這樣做，請在 Azure 入口網站 > [所有服務] 中搜尋 **Azure Migrate**。 在 [Azure Migrate] 的通知中，會有可存取舊 Azure Migrate 專案的連結。
 
 
 

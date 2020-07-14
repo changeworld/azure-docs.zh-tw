@@ -3,12 +3,12 @@ title: 教學課程：使用機器學習實體擷取結構化資料 - LUIS
 description: 使用機器學習實體從語句中擷取結構化資料。 若要提高擷取的正確性，請新增具有特徵的子實體。
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: e16badfb2e024c5d82f1aed8a02aa901dca2c2a9
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: eb9761a3d3a98a3318fe0adc6fa170652639a9a1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611011"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045598"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>教學課程：在 Language Understanding (LUIS) 中使用機器學習實體從使用者語句中擷取結構化資料
 
@@ -108,7 +108,7 @@ ms.locfileid: "85611011"
 
 1. 從左側功能表中選取 [實體]，然後選取 [+建立]。
 
-1. 將實體名稱設為 `SizeListentity`，以便在與上一節中建立的 `SizePhraselist` 比較時輕鬆識別。
+1. 將實體名稱設為 `SizeListentity`，並將類型設定為 [清單]，以便在與上一節中建立的 `SizePhraselist` 比較時輕鬆識別。
 
 1. 新增用戶端應用程式預期的大小：`Small`、`Medium`、`Large` 和 `XLarge`，然後為每個項目新增同義字。 同義字應該是使用者在聊天機器人中輸入的詞彙。 當實體完全符合標準化的值或同義字時，會使用清單實體來將其擷取。
 

@@ -1,23 +1,23 @@
 ---
-title: 教學課程 - 將 Azure Cache for Redis 繫結至 Azure Spring Cloud 應用程式
-description: 本教學課程說明如何將 Azure Cache for Redis 繫結至您的 Azure Spring Cloud 應用程式
+title: 將 Azure Cache for Redis 繫結至 Azure Spring Cloud 應用程式
+description: 了解如何將 Azure Cache for Redis 繫結至您的 Azure Spring Cloud 應用程式
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 10/31/2019
 ms.author: brendm
-ms.openlocfilehash: 94f7b5a2363b7c53e0f70500e5a0a8cb6f64e611
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ddf239fc6415b3dbee6051d4199cd29e5244e4d2
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76277511"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142144"
 ---
 # <a name="bind-azure-cache-for-redis-to-your-azure-spring-cloud-application"></a>將 Azure Cache for Redis 繫結至 Azure Spring Cloud 應用程式 
 
 您可以使用 Azure Spring Cloud 將精選的 Azure 服務自動繫結至應用程式，而不必手動設定 Spring Boot 應用程式。 本文會示範如何將您的應用程式繫結至 Azure Cache for Redis。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 已部署的 Azure Spring Cloud 執行個體
 * Azure Cache for Redis 服務執行個體
@@ -39,9 +39,9 @@ ms.locfileid: "76277511"
 
 1. 使用 `az spring-cloud app update` 來更新目前的部署，或是使用 `az spring-cloud app deployment create` 來建立新部署。
 
-1. 在 Azure 入口網站中，移至您的 Azure Spring Cloud 服務頁面。 移至 [應用程式儀表板]  ，然後選取要繫結至 Azure Cache for Redis 的應用程式。 這是您在上一個步驟中更新或部署的同一個應用程式。
+1. 在 Azure 入口網站中，移至您的 Azure Spring Cloud 服務頁面。 移至 [應用程式儀表板]，然後選取要繫結至 Azure Cache for Redis 的應用程式。 這是您在上一個步驟中更新或部署的同一個應用程式。
 
-1. 選取 [服務繫結]  ，然後選取 [建立服務繫結]  。 填寫表單，並務必選取 [繫結類型]  值 [Azure Cache for Redis]  、您的 Azure Cache for Redis 伺服器和 [主要]  金鑰選項。
+1. 選取 [服務繫結]，然後選取 [建立服務繫結]。 填寫表單，並務必選取 [繫結類型] 值 [Azure Cache for Redis]、您的 Azure Cache for Redis 伺服器和 [主要] 金鑰選項。
 
 1. 重新啟動應用程式。 繫結現在應可正常運作。
 
@@ -55,7 +55,4 @@ ms.locfileid: "76277511"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何將 Azure Spring Cloud 應用程式繫結至 Azure Cache for Redis。 若要深入了解如何將服務繫結至應用程式，請繼續進行關於如何將應用程式繫結至「適用於 MySQL 的 Azure 資料庫」執行個體的教學課程。
-
-> [!div class="nextstepaction"]
-> [了解如何繫結至適用於 MySQL 的 Azure 資料庫執行個體](spring-cloud-tutorial-bind-mysql.md)
+在本文中，您已了解如何將 Azure Spring Cloud 應用程式繫結至 Azure Cache for Redis。 若要深入了解如何將服務繫結至您的應用程式，請參閱[繫結至適用於 MySQL 的 Azure 資料庫執行個體](spring-cloud-tutorial-bind-mysql.md)。

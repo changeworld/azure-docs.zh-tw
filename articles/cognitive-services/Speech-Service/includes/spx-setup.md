@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: c57187ae15e5f15a601edbc74921b3c879abe715
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: b0f70fccf3f7f4a6856ae64d0946c2c473fed93c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800683"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050342"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -27,6 +27,10 @@ ms.locfileid: "83800683"
 3. 移至您從下載解壓縮的根目錄 `spx-zips`，並解壓縮您需要的子目錄 (.NET Framework 4.7 為 `spx-net471`，或在 x64 CPU 上的 .NET Core 3.0 為 `spx-netcore-win-x64`)。
 
 在命令提示字元中，將目錄變更至此位置，然後輸入 `spx` 以查看語音 CLI 的說明。
+
+> [!NOTE]
+> 在尋找命令時，Powershell 不會檢查本機目錄。 在 Powershell 中，將目錄變更為 `spx` 的位置，然後輸入 `.\spx` 來呼叫工具。
+> 如果您將此目錄新增至您的路徑，Powershell 和 Windows 命令提示字元會從任何目錄尋找 `spx`，但不包括 `.\` 前置詞。
 
 #### <a name="linux-install"></a>[Linux 安裝](#tab/linuxinstall)
 

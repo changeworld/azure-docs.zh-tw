@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: overview
-ms.date: 03/18/2020
+ms.date: 06/24/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f28b660a2afc97cf9faf0f601e247a97e99098cd
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 0d05e85a06ae1e893d5d7faa7e5389da78ad6389
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853358"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85559530"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob 儲存體簡介
 
@@ -55,7 +55,7 @@ http://mystorageaccount.blob.core.windows.net
 
 Azure 儲存體支援三種 blob 類型：
 
-- **區塊 Blob** 可儲存文字和二進位資料 (最多約 4.7 TB)。 區塊 Blob 是由可個別管理的資料區塊所組成。
+- **區塊 Blob** 可儲存文字和二進位資料。 區塊 Blob 是由可個別管理的資料區塊所組成。 區塊 Blob 最多可儲存大約 4.75 TiB 的資料。 較大的區塊 Blob 可供預覽，最多大約 190.7 TiB
 - **附加 Blob** 和區塊 Blob 相似，由區塊所組成，但已針對附加作業最佳化。 附加 Blob 很適合某些案例，例如記錄虛擬機器中的資料。
 - **分頁 Blob** 可儲存隨機存取檔案 (大小上限為 8 TB)。 分頁 Blob 存放區可儲存虛擬硬碟 (VHD) 檔案，以作為 Azure 虛擬機器的磁碟。 如需有關分頁 Blob 的詳細資訊，請參閱 [Azure 分頁 Blob 的概觀](storage-blob-pageblob-overview.md)
 

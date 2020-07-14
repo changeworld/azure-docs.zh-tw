@@ -5,12 +5,12 @@ author: mumian
 ms.date: 06/10/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e2419e8ee9f8648ae8f929638ac2c85ea8b67a0f
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 1e286a3b59279ed9658a373210f1425ece05eff4
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84676143"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102096"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>教學課程：建立及部署您的第一個 ARM 範本
 
@@ -28,7 +28,7 @@ ms.locfileid: "84676143"
 
 ### <a name="editor"></a>編輯器
 
-範本是 JSON 檔案。 若要建立範本，您需要良好的 JSON 編輯器。 我們建議使用含 Resource Manager 工具擴充功能的 Visual Studio Code。 如果您需要安裝這些工具，請參閱[使用 Visual Studio Code 來建立 ARM 範本](use-vs-code-to-create-template.md)。
+範本是 JSON 檔案。 若要建立範本，您需要良好的 JSON 編輯器。 我們建議使用含 Resource Manager 工具擴充功能的 Visual Studio Code。 如果您需要安裝這些工具，請參閱[快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本](quickstart-create-templates-use-visual-studio-code.md)。
 
 ### <a name="command-line-deployment"></a>命令列部署
 
@@ -49,9 +49,9 @@ ms.locfileid: "84676143"
 ## <a name="create-your-first-template"></a>建立您的第一個範本
 
 1. 開啟已安裝 Resource Manager 工具擴充功能的 Visual Studio Code。
-1. 從 [檔案]**** 功能表中，選取 [新增檔案]**** 以建立新檔案。
-1. 從 [檔案]**** 功能表中，選取 [另存新檔]****。
-1. 將檔案命名為 **azuredeploy**，然後選取 [JSON]**** 副檔名。 檔案的完整名稱是 **azuredeploy.json**。
+1. 從 [檔案] 功能表中，選取 [新增檔案] 以建立新檔案。
+1. 從 [檔案] 功能表中，選取 [另存新檔]。
+1. 將檔案命名為 **azuredeploy**，然後選取 [JSON] 副檔名。 檔案的完整名稱是 **azuredeploy.json**。
 1. 將檔案儲存到您的工作站。 選取容易記住的路徑，因為您稍後將在部署範本時提供該路徑。
 1. 將下列 JSON 複製並貼到檔案中：
 
@@ -185,15 +185,15 @@ az deployment group create \
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 從左側功能表中，選取 [資源群組]****。
+1. 從左側功能表中，選取 [資源群組]。
 
 1. 選取在最後一個程序中部署的資源群組。 預設名稱為 **myResourceGroup**。 您應該不會在資源群組內看到任何已部署的資源。
 
-1. 請注意，在概觀右上方會顯示部署的狀態。 選取 [1 成功]****。
+1. 請注意，在概觀右上方會顯示部署的狀態。 選取 [1 成功]。
 
    ![檢視部署狀態](./media/template-tutorial-create-first-template/deployment-status.png)
 
-1. 您會看到資源群組的部署記錄。 選取 [blanktemplate]****。
+1. 您會看到資源群組的部署記錄。 選取 [blanktemplate]。
 
    ![選取部署](./media/template-tutorial-create-first-template/select-from-deployment-history.png)
 
@@ -207,10 +207,10 @@ az deployment group create \
 
 如果您現在要停止，則可能想要刪除資源群組。
 
-1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]****。
-2. 在 [依名稱篩選]**** 欄位中輸入資源群組名稱。
+1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]。
+2. 在 [依名稱篩選] 欄位中輸入資源群組名稱。
 3. 選取資源群組名稱。
-4. 從頂端功能表中選取 [刪除資源群組]****。
+4. 從頂端功能表中選取 [刪除資源群組]。
 
 ## <a name="next-steps"></a>後續步驟
 

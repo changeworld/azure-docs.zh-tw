@@ -7,17 +7,14 @@ ms.author: cschorm
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 170901f3410c85ab53a306529053e611b36fa8ec
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: deb69f6ca8f1499f43c12d606434719571a1f400
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298390"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027886"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>使用 Azure Digital Twins API 撰寫程式碼
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 開發人員使用 Azure Digital Twins 撰寫用戶端應用程式，與其 Azure Digital Twins 服務執行個體互動，是很常見的情況。 這項以開發人員為主的教學課程，會介紹使用[適用於 .NET 的 Azure IoT Digital Twin 用戶端程式庫 (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core) (英文) 設計 Azure Digital Twins 服務的程式。 逐步引導您從頭開始撰寫 C# 主控台用戶端應用程式。
 
@@ -288,6 +285,7 @@ Type name: : dtmi:com:contoso:SampleModel;1
 
 ```csharp
 using System.Text.Json;
+using Azure.DigitalTwins.Core.Serialization;
 ```
 
 然後，將下列程式碼新增至 `Main` 方法的結尾，根據此模型建立並初始化三個數位分身。
@@ -318,7 +316,7 @@ for(int i=0; i<3; i++) {
 
 接下來，您可以建立已建立對應項之間的**關聯性**，將其連線到**對應項圖形**。 [對應項圖形](concepts-twins-graph.md)用來表示整個環境。
 
-為能夠建立關聯性，請在 SDK 中新增關聯性基底類型的 `using` 陳述式：
+為了建立關聯性，請在 SDK 中新增關聯性基底類型的 `using` 陳述式：如果已新增，請略過此項。
 ```csharp
 using Azure.DigitalTwins.Core.Serialization;
 ```
@@ -566,5 +564,5 @@ az ad app delete --id <your-application-ID>
 > [教學課程：探索範例用戶端應用程式的基本概念](tutorial-command-line-app.md)
 
 您也可以在操作說明文章中深入了解管理作業，新增至您在本教學課程中撰寫的程式碼，或開始查看概念文件，以深入了解您在教學課程中使用的元素。
-* [操作說明：管理對應項模型](how-to-manage-model.md)
+* [操作說明：管理自訂模型](how-to-manage-model.md)
 * [概念：自訂模型](concepts-models.md)

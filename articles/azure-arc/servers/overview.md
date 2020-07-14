@@ -9,14 +9,14 @@ ms.author: magoedte
 keywords: azure 自動化, DSC, powershell, Desired State Configuration, 更新管理, 變更追蹤, 清查, Runbook, python, 圖形, 混合式
 ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: c9e69e221dc21baae96ab814cb9fb0b65ce98126
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: e775945526a5453085946ed4eea2a2e19761ba78
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449476"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482185"
 ---
-# <a name="what-is-azure-arc-for-servers-preview"></a>什麼是適用於伺服器的 Azure Arc (預覽)
+# <a name="what-is-azure-arc-for-servers-preview"></a>什麼是適用於伺服器的 Azure Arc (預覽)？
 
 適用於伺服器的 Azure Arc (預覽) 可讓您在公司網路或其他雲端提供者上管理裝載於 Azure 外部的 Windows 和 Linux 機器，就如同您管理原生 Azure 虛擬機器一樣。 混合式機器連線到 Azure 時就會變成已連線的機器，並且視為 Azure 中的資源。 每個已連線的機器都有資源識別碼，可在訂用帳戶內作為資源群組的一部分來管理，並可從標準的 Azure 結構中 (例如 Azure 原則和套用標籤) 獲益。
 

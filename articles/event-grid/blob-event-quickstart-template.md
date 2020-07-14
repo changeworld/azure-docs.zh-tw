@@ -1,30 +1,28 @@
 ---
 title: 將 Blob 儲存體事件傳送至 Web 端點 - 範本
 description: 使用 Azure 事件方格和 Azure Resource Manager 範本來建立 Blob 儲存體帳戶，並訂閱其事件。 將事件傳送到 Webhook。
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 06/03/2020
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.custom: subject-armqs
-ms.openlocfilehash: 0cf880411a5c2a8eefd592a01de40b5098f31cda
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.openlocfilehash: 603d6bf11f2ec6988d52e69817bddf2fd3ccf3b3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424121"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103308"
 ---
-# <a name="route-blob-storage-events-to-web-endpoint-by-using-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本將 Blob 儲存體事件路由至 Web 端點
+# <a name="route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>使用 ARM 範本將 Blob 儲存體事件路由至 Web 端點
 
-Azure Event Grid 是一項雲端事件服務。 在本文中，您會使用 **Azure Resource Manager 範本**建立 Blob 儲存體帳戶、訂閱該 Blob 儲存體的事件，以及觸發事件以檢視結果。 通常，您會將事件傳送至可處理事件資料及採取行動的端點。 不過，若要簡化這篇文章，您可將事件傳送至可收集及顯示訊息的 Web 應用程式。
+Azure Event Grid 是一項雲端事件服務。 在本文中，您會使用 Azure Resource Manager 範本 (ARM 範本) 建立 Blob 儲存體帳戶、訂閱該 Blob 儲存體的事件，以及觸發事件以檢視結果。 通常，您會將事件傳送至可處理事件資料及採取行動的端點。 不過，若要簡化這篇文章，您可將事件傳送至可收集及顯示訊息的 Web 應用程式。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-event-grid-subscription-and-storage%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>必要條件
+
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
 ### <a name="create-a-message-endpoint"></a>建立訊息端點
 
@@ -39,21 +37,19 @@ Azure Event Grid 是一項雲端事件服務。 在本文中，您會使用 **Az
 
    ![檢視新網站](./media/blob-event-quickstart-portal/view-site.png)
 
-## <a name="create-a-storage-account-with-an-event-grid-subscription"></a>在事件方格訂閱帳戶中建立儲存體帳戶
+## <a name="review-the-template"></a>檢閱範本
 
-### <a name="review-the-template"></a>檢閱範本
+本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-event-grid-subscription-and-storage/)。
 
-本快速入門中使用的範本是來自 [Azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage)。
-
-[!code-json[<Azure Resource Manager template create Blob storage Event Grid subscription>](~/quickstart-templates/101-event-grid-subscription-and-storage/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-event-grid-subscription-and-storage/azuredeploy.json" range="1-91" highlight="40-85":::
 
 範本中定義了兩個 Azure 資源：
 
 * [**Microsoft.Storage/storageAccounts**](/azure/templates/microsoft.storage/storageaccounts)：建立 Azure 儲存體帳戶。
-* [**Microsoft.EventGrid/systemTopics**](/azure/templates/microsoft.eventgrid/systemtopics)：針對儲存體帳戶建立具有指定名稱的系統主題。 
+* [**Microsoft.EventGrid/systemTopics**](/azure/templates/microsoft.eventgrid/systemtopics)：針對儲存體帳戶建立具有指定名稱的系統主題。
 * [**Microsoft.EventGrid/systemTopics/eventSubscriptions**](/azure/templates/microsoft.eventgrid/systemtopics/eventsubscriptions)：針對系統主題建立 Azure 事件方格訂閱。
 
-### <a name="deploy-the-template"></a>部署範本
+## <a name="deploy-the-template"></a>部署範本
 
 1. 選取以下連結來登入 Azure 並開啟範本。 此範本會建立金鑰保存庫和祕密。
 
@@ -65,7 +61,7 @@ Azure Event Grid 是一項雲端事件服務。 在本文中，您會使用 **Az
   Azure 入口網站在此用於部署範本。 您也可以使用 Azure PowerShell、Azure CLI 和 REST API。 若要了解其他部署方法，請參閱[部署範本](../azure-resource-manager/templates/deploy-powershell.md)。
 
 > [!NOTE]
-> 您可以在[這裡](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid)找到更多 Azure 事件方格範本範例。
+> 您可以在[這裡](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid&pageNumber=1&sort=Popular)找到更多 Azure 事件方格範本範例。
 
 ## <a name="validate-the-deployment"></a>驗證部署
 

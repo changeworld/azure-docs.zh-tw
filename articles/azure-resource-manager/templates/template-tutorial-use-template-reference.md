@@ -6,11 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 12990238455046d837b175318225bb4f3d317706
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3709511fa8da0a40f4faf4ab2dac9505d69003ab
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82185042"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118506"
 ---
 # <a name="tutorial-utilize-the-resource-manager-template-reference"></a>教學課程：利用 Resource Manager 範本參考
 
@@ -31,11 +32,11 @@ ms.locfileid: "82185042"
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本文，您需要：
 
-* Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[使用 Visual Studio Code 建立 ARM 範本](use-vs-code-to-create-template.md)。
+* Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本](quickstart-create-templates-use-visual-studio-code.md)。
 
 ## <a name="open-a-quickstart-template"></a>開啟快速入門範本
 
@@ -74,7 +75,7 @@ ms.locfileid: "82185042"
 
 ## <a name="find-the-template-reference"></a>尋找範本參考
 
-1. 瀏覽至[Azure 範本參考](https://docs.microsoft.com/azure/templates/)。
+1. 瀏覽至[Azure 範本參考](/azure/templates/)。
 1. 在 [依標題篩選] 方塊中，輸入**儲存體帳戶**，然後選取 [參考] > [儲存體] 底下的第一個 [儲存體帳戶]。
 
     ![Resource Manager 範本參考儲存體帳戶](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts.png)

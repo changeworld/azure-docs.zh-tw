@@ -3,16 +3,16 @@ title: 開始使用 Azure 企業版入口網站
 description: 本文說明 Azure Enterprise 合約 (Azure EA) 客戶如何使用 Azure 企業版入口網站。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/29/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 6b31f3cd8ca6baa2d20d0281de51ed83424eca17
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 2d4fbf90afa93f3dbde12a3bc5ce02f9a60b6c5d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560362"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044952"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>開始使用 Azure 企業版入口網站
 
@@ -372,7 +372,7 @@ MSDN 訂用帳戶會自動轉換成 MSDN 開發/測試，而 Azure EA 供應項�
 
 ## <a name="view-usage-summary-and-download-reports"></a>檢視使用量摘要及下載報表
 
-企業系統管理員可以在 Azure 企業版入口網站中檢視其使用量資料的摘要、已使用的承諾用量金額，以及與其他使用量相關聯的費用。 費用會顯示在所有帳戶和訂用帳戶的摘要層級上。
+企業系統管理員可以在 Azure 企業版入口網站中檢視其使用量資料的摘要、已使用預付款，以及與其他使用量相關聯的費用。 費用會顯示在所有帳戶和訂用帳戶的摘要層級上。
 
 若要檢視特定帳戶的詳細使用量，請下載使用量詳細資料報告：
 
@@ -390,7 +390,7 @@ MSDN 訂用帳戶會自動轉換成 MSDN 開發/測試，而 Azure EA 供應項�
 
 1. 登入 Azure 企業版入口網站。
 
-1. 選取承諾期間。
+1. 選取款預付字詞。
 
    若要變更 [使用量摘要] 的日期範圍，您可以從頁面右上方的 **M** (每月) 切換到 **C** (自訂)，然後輸入自訂開始和結束日期。
 
@@ -455,7 +455,7 @@ Azure 企業版入口網站會篩選掉非作用中的註冊。 您必須取消�
 - **帳戶**：Azure 企業版入口網站上的組織單位。 其可用來管理訂用帳戶和進行報告。
 - **帳戶擁有者**：在 Azure 上管理訂用帳戶和服務管理員的人員。 他們可以檢視此帳戶及其相關聯訂用帳戶的使用量資料。
 - **增修條款訂用帳戶**：依據註冊增修條款的一年期或相接訂用帳戶。
-- **承諾用量**：Azure 服務年度購買金額的承諾用量，其針對此預付款的使用量採用折扣承諾用量費率。
+- **預付款**：Azure 服務年度購買金額的預付款，其針對此預付款的使用量採用折扣預付費率。
 - **部門系統管理員**：負責管理部門、建立新帳戶和帳戶擁有者、檢視所管理部門的使用量詳細資料，而且在獲得授權的情況下可檢視成本的人員。
 - **註冊號碼**：由 Microsoft 提供的唯一識別碼，用來識別與 Enterprise 合約相關聯的特定註冊。
 - **企業系統管理員**：在 Azure 上管理部門、部門擁有者、帳戶和帳戶擁有者的人員。 他們能夠管理企業系統管理員，以及針對與 Enterprise 註冊相關聯的所有帳戶和訂用帳戶，檢視使用量資料、已計費數量和未計費費用。
@@ -478,7 +478,7 @@ Azure 企業版入口網站會篩選掉非作用中的註冊。 您必須取消�
 
    在 Azure EA 註冊到達 Enterprise 合約結束日期之前，註冊系統管理員應決定要採用下列哪個選項：
 
-  - 藉由新增額外的預付金以更新註冊。
+  - 藉由新增額外的 Azure 預付款以更新註冊。
   - 轉移至新的註冊。
   - 遷移至 Microsoft 線上訂閱方案 (MOSP)。
   - 確認停用所有與註冊相關聯的服務。

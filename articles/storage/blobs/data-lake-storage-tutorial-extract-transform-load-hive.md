@@ -8,23 +8,23 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 1e408f27d4c9b2686bd9f56ca754f5553a446440
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b247a72b5d7db9892c6a2a763b7b71dc5f972d95
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014905"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045292"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>教學課程：使用 Azure HDInsight 擷取、轉換和載入資料
 
-在本教學課程中，您將會執行 ETL 作業：擷取、轉換及載入資料。 您會取用原始 CSV 資料檔案，並將其匯入 Azure HDInsight 叢集中，然後使用 Apache Hive 加以轉換，再使用 Apache Sqoop 將其載入 Azure SQL 資料庫中。
+在本教學課程中，您將會執行 ETL 作業：擷取、轉換及載入資料。 您會取用原始 CSV 資料檔案，並將其匯入 Azure HDInsight 叢集中，然後使用 Apache Hive 加以轉換，再使用 Apache Sqoop 將其載入 Azure SQL Database 中。
 
 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 擷取資料並將其上傳至 HDInsight 叢集。
 > * 使用 Apache Hive 轉換資料。
-> * 使用 Sqoop 將資料載入至 Azure SQL 資料庫。
+> * 使用 Sqoop 將資料載入至 Azure SQL Database。
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -38,7 +38,7 @@ ms.locfileid: "84014905"
 
     請參閱[快速入門：使用 Azure 入口網站在 Azure HDInsight 中開始使用 Apache Hadoop 和 Apache Hive](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal)。
 
-* **Azure SQL Database**：您會使用 Azure SQL 資料庫做為目的地資料存放區。 如果您沒有 SQL 資料庫，請參閱[在 Azure 入口網站中建立 Azure SQL 資料庫](../../sql-database/sql-database-get-started.md)。
+* **Azure SQL Database**：您會使用 Azure SQL Database 做為目的地資料存放區。 如果您在 SQL Database 中沒有資料庫，請參閱[在 Azure 入口網站的 Azure SQL Database 中建立資料庫](../../sql-database/sql-database-get-started.md)。
 
 * **Azure CLI**：如果您未安裝 Azure CLI，請參閱 [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
@@ -224,7 +224,7 @@ ms.locfileid: "84014905"
 
 ## <a name="create-a-sql-database-table"></a>建立 SQL 資料庫資料表
 
-執行這項作業時，需要您在 SQL 資料庫中的伺服器名稱。 請完成下列步驟以找出您的伺服器名稱。
+執行這項作業時，需要您在 SQL Database 中的伺服器名稱。 請完成下列步驟以找出您的伺服器名稱。
 
 1. 移至 [Azure 入口網站](https://portal.azure.com)。
 
@@ -300,7 +300,7 @@ ms.locfileid: "84014905"
 
 ## <a name="export-and-load-the-data"></a>匯出和載入資料
 
-在前幾節中，您在位置 `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` 上複製了已轉換的資料。 在本節中，您將使用 Sqoop 將資料從 `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` 匯出至您在 Azure SQL 資料庫中建立的資料表。
+在前幾節中，您在位置 `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` 上複製了已轉換的資料。 在本節中，您將使用 Sqoop 將資料從 `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` 匯出至您在 Azure SQL Database 中建立的資料表。
 
 1. 使用下列命令以確認 Sqoop 看得見您的 SQL 資料庫：
 

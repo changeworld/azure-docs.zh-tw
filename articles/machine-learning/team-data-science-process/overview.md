@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 1/10/2020
 ms.author: tdsp
 ms.custom: previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 10d6e562301e089700940ac5dfb212bcc4e09653
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4ffe00c3df4abd924fca202d2bcdd0ec458dd3eb
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79088081"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85355330"
 ---
 # <a name="what-is-the-team-data-science-process"></a>什麼是 Team Data Science Process？
 
@@ -26,12 +26,12 @@ Team Data Science Process (TDSP) 是一種敏捷式反覆資料科學方法，�
 
 ## <a name="key-components-of-the-tdsp"></a>TDSP 的重要元件
 
-TDSP 包含下列主要元件：
+TDSP 具有下列主要元件：
 
 - **資料科學生命週期**定義
 - **標準化專案結構**
-- 資料科學專案的**基礎結構和資源**
-- 專案執行的**工具和公用程式**
+- 針對資料科學專案建議的**基礎結構和資源**
+- 針對專案執行建議的**工具和公用程式**
 
 
 ## <a name="data-science-lifecycle"></a>資料科學生命週期
@@ -48,7 +48,6 @@ Team Data Science Process (TDSP) 會提供建構資料科學專案開發的生�
 * **資料取得與認知**
 * **模型化**
 * **部署**
-* **客戶接受度**
 
 以下是 **Team Data Science Process 生命週期**的視覺化呈現。 
 
@@ -58,7 +57,9 @@ Team Data Science Process (TDSP) 會提供建構資料科學專案開發的生�
 
 - 解決方案架構師
 - 專案經理
+- 資料工程師
 - 資料科學家
+- 應用程式開發人員
 - 專案負責人 
 
 下圖以格線檢視呈現這些角色 (水平軸) 的生命週期每個階段 (垂直軸) 相關聯的工作 (藍色) 和構件 (綠色)。 
@@ -87,10 +88,10 @@ TDSP 提供管理共用分析和儲存體基礎結構的建議，例如：
 
 - 儲存資料集的雲端檔案系統 
 - 資料庫
-- 巨量資料 (Hadoop 或 Spark) 叢集 
+- 巨量資料 (SQL 或 Spark) 叢集 
 - 機器學習服務 
 
-儲存原始和已處理資料集的分析和儲存體基礎結構，可能位於雲端或內部部署中。 這個基礎架構能夠進行可重現的分析。 它也可避免重複，重複可能會導致不一致和不必要的基礎結構成本。 提供的工具可用來佈建和追蹤共用的資源，並允許每個小組成員安全地連線到這些資源。 讓專案成員建立一致的計算環境也是個不錯的做法。 不同的小組成員可以複寫和驗證實驗。
+儲存原始和已處理資料集的分析和儲存體基礎結構，可能位於雲端或內部部署中。 這個基礎架構能夠進行可重現的分析。 也可以避免重複，重複可能會導致不一致和不必要的基礎結構成本。 提供的工具可用來佈建和追蹤共用的資源，並允許每個小組成員安全地連線到這些資源。 讓專案成員建立一致的計算環境也是個不錯的做法。 不同的小組成員可以複寫和驗證實驗。
 
 以下是小組處理多個專案並共用各種雲端分析基礎結構元件的範例。
 
@@ -99,9 +100,9 @@ TDSP 提供管理共用分析和儲存體基礎結構的建議，例如：
 
 ## <a name="tools-and-utilities-for-project-execution"></a>專案執行的工具和公用程式
 
-在大部分的組織中引進流程是相當有挑戰性。 對於實作資料科學流程和生命週期所提供的工具有助於降低採用的障礙，並提升採用的一致性。 TDSP 提供一組初始的工具和指令碼，可供團隊快速採用 TDSP。 這也有助於資料科學開發週期中部分常見的工作自動進行，例如資料探索和基準模型。 提供妥善定義的結構，以供個人將共用的工具和公用程式貢獻到小組共用的程式碼存放庫。 小組或組織內的其他專案接著即可使用這些資源。 TDSP 也計畫向整個社群貢獻工具和公用程式。 您可以從 [GitHub](https://github.com/Azure/Azure-TDSP-Utilities) \(英文\) 複製 TDSP 公用程式。
+在大部分的組織中引進流程是相當有挑戰性。 對於實作資料科學流程和生命週期所提供的工具有助於降低採用的障礙，並提升採用的一致性。 TDSP 提供一組初始的工具和指令碼，可供團隊快速採用 TDSP。 這也有助於資料科學開發週期中部分常見的工作自動進行，例如資料探索和基準模型。 提供妥善定義的結構，以供個人將共用的工具和公用程式貢獻到小組共用的程式碼存放庫。 小組或組織內的其他專案接著即可使用這些資源。 TDSP 也計畫向整個社群貢獻工具和公用程式。 您可以從 [GitHub](https://github.com/Azure/Azure-TDSP-Utilities) 複製 TDSP 公用程式。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-[小組資料科學流程：角色和工作](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md)概述依據此流程進行標準化的資料科學團隊之中的重要人員角色及其相關工作。 
+[Team Data Science Process：角色和工作](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) \(英文\) 概述依據此程序進行標準化之資料科學小組中的重要人員角色及其相關工作。 

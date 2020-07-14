@@ -1,232 +1,102 @@
 ### YamlMime:Landing
 title: Microsoft 身分識別平台文件
-summary: Microsoft 身分識別平台可讓開發人員建置應用程式以登入所有 Microsoft 身分識別，並取得權杖以呼叫 Microsoft Graph 等 Microsoft API 或您所建置的 API。 這個平台功能完整，包含符合 OAuth 2.0 和 OpenID Connect 標準的驗證服務、多個開放原始碼程式庫、應用程式註冊以及組態、健全的概念及參考文件、快速入門、程式碼範例、教學課程和操作指南。
+summary: Microsoft 身分識別平台是驗證服務、開放原始碼程式庫和應用程式管理工具。 了解如何透過我們的快速入門、教學課程和程式碼範例，建立現代化的標準型驗證解決方案。 建置可供使用者和客戶使用其 Microsoft 身分識別或社交帳戶來登入的應用程式，並授權其存取您的 API 或 Microsoft API，例如 Microsoft Graph。
 metadata:
   ms.topic: landing-page
-  ms.date: 06/22/2019
+  ms.date: 07/13/2020
   author: CelesteDG
   ms.author: celested
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: d1f3958fd47f6e3e5f3971697de546b4cb738b3d
-  ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+  ms.openlocfilehash: 689fb9953f6de9c717d774e222824c5b3701527e
+  ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 06/17/2020
-  ms.locfileid: "84886906"
+  ms.lasthandoff: 07/10/2020
+  ms.locfileid: "86230344"
 landingContent:
 - title: 關於 Microsoft 身分識別平台
   linkLists:
   - linkListType: overview
     links:
-    - text: Microsoft 身分識別平台 (v2.0)
+    - text: 什麼是 Microsoft 身分識別平台？
       url: v2-overview.md
-    - text: Microsoft 身分識別平台的演化
-      url: about-microsoft-identity-platform.md
-    - text: 將應用程式遷移至 MSAL
+    - text: 程式碼範例
+      url: sample-v2-code.md
+    - text: 將 ADAL 應用程式遷移至 MSAL
       url: msal-migration.md
-    - text: 開發人員適用的 Azure Active Directory (v1.0)
-      url: ../azuread-dev/v1-overview.md
-  - linkListType: concept
+- title: 基本概念
+  linkLists:
+  - linkListType: learn
     links:
-    - text: 驗證基本概念
-      url: authentication-scenarios.md
+    - text: 驗證的基本概念
+      url: authentication-vs-authorization.md
     - text: 驗證流程和應用程式案例
       url: authentication-flows-app-scenarios.md
     - text: 最佳做法和建議
       url: identity-platform-integration-checklist.md
+- title: 影片學習系列
+  linkLists:
   - linkListType: video
     links:
-    - text: 序列：適用於開發人員的身分識別平台
-      url: identity-videos.md
-- title: 建置單頁應用程式
+    - text: 適用於開發人員的身分識別平台
+      url: identity-videos.md#microsoft-identity-platform-for-developers
+    - text: 驗證基本概念
+      url: identity-videos.md#authentication-fundamentals
+    - text: 一個開發問題：平台基本概念
+      url: identity-videos.md#microsoft-identity-platform-basics
+- title: 單頁應用程式 (SPA)
   linkLists:
   - linkListType: get-started
     links:
-    - text: 案例概觀
-      url: scenario-spa-overview.md
-  - linkListType: quickstart
-    links:
-    - text: JavaScript - 驗證碼
-      url: quickstart-v2-javascript-auth-code.md
-    - text: JavaScript - 隱含
-      url: quickstart-v2-javascript.md
     - text: Angular
       url: quickstart-v2-angular.md
-  - linkListType: tutorial
-    links:
-    - text: JavaScript - 驗證碼
-      url: tutorial-v2-javascript-auth-code.md
-    - text: JavaScript - 隱含
-      url: tutorial-v2-javascript-spa.md
-  - linkListType: download
-    links:
-    - text: 範例 - JavaScript、Angular
-      url: sample-v2-code.md#single-page-applications
-    - text: 範例 - SPA with Azure AD B2C
-      url: https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp
-- title: 建置可登入使用者的 Web 應用程式
+    - text: JavaScript - 驗證碼流程
+      url: quickstart-v2-javascript-auth-code.md
+    - text: JavaScript - 隱含流程
+      url: quickstart-v2-javascript.md
+- title: Web 應用程式
   linkLists:
   - linkListType: get-started
     links:
-    - text: 案例概觀
-      url: scenario-web-app-sign-user-overview.md
-  - linkListType: quickstart
-    links:
-    - text: ASP.NET Core
-      url: quickstart-v2-aspnet-core-webapp.md
     - text: ASP.NET
       url: quickstart-v2-aspnet-webapp.md
-    - text: Java
-      url: quickstart-v2-java-webapp.md
+    - text: ASP.NET Core
+      url: quickstart-v2-aspnet-core-webapp.md
     - text: Python
       url: quickstart-v2-python-webapp.md
-  - linkListType: tutorial
-    links:
-    - text: ASP.NET Core
-      url: https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2
-  - linkListType: download
-    links:
-    - text: 範例 - ASP.NET Core、ASP.NET、Java、Python
-      url: sample-v2-code.md#web-applications
-- title: 建置可呼叫 Web API 的 Web 應用程式
+- title: 行動/原生應用程式
   linkLists:
   - linkListType: get-started
     links:
-    - text: 案例概觀
-      url: scenario-web-app-call-api-overview.md
-  - linkListType: quickstart
-    links:
-    - text: Java
-      url: quickstart-v2-java-webapp.md
-    - text: Python
-      url: quickstart-v2-python-webapp.md
-  - linkListType: tutorial
-    links:
-    - text: ASP.NET Core
-      url: https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2#scope-of-this-tutorial
-  - linkListType: download
-    links:
-    - text: 範例 - ASP.NET Core、ASP.NET、Node.js、Ruby、Java、Python
-      url: sample-v2-code.md#web-applications
-- title: 建置受保護的 Web API
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: 案例概觀
-      url: scenario-protected-web-api-overview.md
-  - linkListType: tutorial
-    links:
-    - text: ASP.NET Core Web API
-      url: https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2
-  - linkListType: download
-    links:
-    - text: 範例 - ASP.NET
-      url: https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2
-- title: 呼叫 Web API 的 Web API
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: 案例概觀
-      url: scenario-web-api-call-api-overview.md
-  - linkListType: tutorial
-    links:
-    - text: 呼叫 Microsoft Graph 的 ASP.NET Core Web API
-      url: https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph
-    - text: 呼叫 Microsoft Graph 的 Java Web API
-      url: https://github.com/Azure-Samples/ms-identity-java-webapi
-- title: 建置呼叫 Web API 的桌面應用程式
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: 案例概觀
-      url: scenario-desktop-overview.md
-  - linkListType: quickstart
-    links:
-    - text: 取得權杖，並呼叫 Microsoft Graph API (Windows 桌面)
-      url: quickstart-v2-windows-desktop.md
-    - text: 取得權杖，並呼叫 Microsoft Graph API (UWP)
-      url: quickstart-v2-uwp.md
-  - linkListType: tutorial
-    links:
-    - text: 呼叫 Microsoft Graph API (Windows 桌面)
-      url: tutorial-v2-windows-desktop.md
-    - text: 呼叫 Microsoft Graph API (UWP)
-      url: tutorial-v2-windows-uwp.md
-  - linkListType: download
-    links:
-    - text: 範例 - .NET、.NET Core、Java、Python
-      url: sample-v2-code.md#desktop-and-mobile-public-client-apps
-- title: 建置可呼叫 Web API 的精靈應用程式
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: 案例概觀
-      url: scenario-daemon-overview.md
-  - linkListType: quickstart
-    links:
-    - text: 取得權杖，並呼叫 Microsoft Graph API (.NET Core 主控台)
-      url: quickstart-v2-netcore-daemon.md
-    - text: 取得權杖，並呼叫 Microsoft Graph API (.NET Core Web 應用程式)
-      url: https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp
-  - linkListType: download
-    links:
-    - text: 範例 - ASP.NET 主控台、ASP.NET Web、Java、Python
-      url: sample-v2-code.md#daemon-applications
-- title: 建置呼叫 Web API 的行動應用程式
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: 案例概觀
-      url: scenario-mobile-overview.md
-  - linkListType: quickstart
-    links:
-    - text: 取得權杖，並呼叫 Microsoft Graph API (Android)
+    - text: Android
       url: quickstart-v2-android.md
-    - text: 取得權杖，並呼叫 Microsoft Graph API (iOS)
+    - text: iOS 和 macOS
       url: quickstart-v2-ios.md
-    - text: 取得權杖，並呼叫 Microsoft Graph API (Xamarin iOS 與 Android)
-      url: https://github.com/Azure-Samples/active-directory-xamarin-native-v2
-  - linkListType: tutorial
-    links:
-    - text: 登入使用者，並呼叫 Microsoft Graph API (Android)
-      url: tutorial-v2-android.md
-    - text: 登入使用者，並呼叫 Microsoft Graph API (iOS)
-      url: tutorial-v2-ios.md
-  - linkListType: download
-    links:
-    - text: 範例 - Android、iOS、Xamarin
-      url: sample-v2-code.md#desktop-and-mobile-public-client-apps
-- title: 呼叫 Microsoft Graph API
+    - text: Windows 桌面 (WPF)
+      url: quickstart-v2-windows-desktop.md
+- title: 安全的 Web API
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
-    - text: 關於 Microsoft Graph
-      url: https://docs.microsoft.com/graph/overview
-  - linkListType: quickstart
-    links:
-    - text: 3 分鐘內就能啟動並執行
-      url: https://developer.microsoft.com/graph/get-started
-  - linkListType: learn
-    links:
-    - text: 使用 API
-      url: https://docs.microsoft.com/graph/use-the-api
-    - text: Microsoft Graph REST API v1.0
-      url: https://docs.microsoft.com/graph/api/overview?toc=.%2Fref%2Ftoc.json&view=graph-rest-1.0
-    - text: Microsoft Graph REST API 搶鮮版 (Beta)
-      url: https://docs.microsoft.com/graph/api/overview?toc=.%2Fref%2Ftoc.json&view=graph-rest-beta
-  - linkListType: deploy
-    links:
-    - text: Graph 總管
-      url: https://developer.microsoft.com/graph/graph-explorer/
-- title: 建置登入社交與當地身分識別的客戶對應應用程式
+    - text: ASP.NET
+      url: quickstart-v2-dotnet-native-aspnet.md
+    - text: ASP.NET Core
+      url: https://docs.microsoft.com/samples/azure-samples/active-directory-dotnet-native-aspnetcore-v2/calling-an-aspnet-core-web-api-from-a-wpf-application-using-azure-ad-v2/
+- title: Microsoft Graph
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
-    - text: 關於 Azure AD B2C
-      url: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview
-  - linkListType: tutorial
+    - text: 使用 Microsoft Graph API
+      url: microsoft-graph-intro.md
+    - text: Microsoft Graph 驗證概觀
+      url: https://docs.microsoft.com/graph/auth/
+- title: SAML 2.0
+  linkLists:
+  - linkListType: get-started
     links:
-    - text: 將識別提供者新增到 Azure AD B2C 中的應用程式
-      url: https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers
+    - text: Azure AD 如何使用 SAML 通訊協定
+      url: active-directory-saml-protocol-reference.md
+    - text: Azure AD 中的 SAML SSO
+      url: single-sign-on-saml-protocol.md

@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2019
 ms.author: sharadag
-ms.openlocfilehash: b2ee41324cfaefa4d5aec3aa02b2d0d8c75da78f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 081305170020aa35511ad574bd8c5575c192d577
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879117"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322291"
 ---
 # <a name="what-is-azure-front-door"></a>Azure Front Door 是什麼？
-Azure Front Door 可讓您針對最佳效能和立即全域容錯移轉以獲得高可用性最佳化，定義、管理及監視網路流量的全域路由。 透過 Front Door，您可以將全球 (多區域) 消費者和企業應用程式轉換成健全、高效能的個人化新式應用程式、API，以及觸及 Azure 全球對象的內容。
+Azure Front Door 可讓您針對最佳效能和快速全域容錯移轉以獲得高可用性最佳化，定義、管理及監視網路流量的全域路由。 透過 Front Door，您可以將全球 (多區域) 消費者和企業應用程式轉換成健全、高效能的個人化新式應用程式、API，以及觸及 Azure 全球對象的內容。
 
 Front Door 會在第 7 層或 HTTP/HTTPS 層上運作，並使用任一傳播通訊協定搭配分割 TCP 和 Microsoft 的全球網路來改善全球連線能力。 因此，根據您在組態中選取的路由方法，您可以確保 Front Door 將用戶端要求路由傳送至最快速且最可用的應用程式後端。 應用程式後端是裝載於 Azure 內部或外部的任何網際網路對向服務。 Front Door 提供[流量路由方法](front-door-routing-methods.md)和[後端健康情況監視選項](front-door-health-probes.md)的範圍，以符合不同的應用程式需求和自動容錯移轉模型。 Front Door 類似於[流量管理員](../traffic-manager/traffic-manager-overview.md)，可針對失敗彈性應變，包括整個 Azure 區域失敗。
 
@@ -36,7 +36,7 @@ Front Door 包含下列功能︰
 
 ## <a name="increase-application-availability-with-smart-health-probes"></a>利用智慧型健康情況探查提高應用程式可用性
 
-Front Door 使用其智慧型健康情況探查、監視您後端的延遲和可用性，以及在後端關閉時提供即時自動容錯移轉，為您的關鍵應用程式提供高可用性。 因此，您可以在您的應用程式執行規劃的維護作業，而不需要停機。 當維護正在進行時，Front Door 會將流量導向替代後端。
+Front Door 使用其智慧型健康情況探查、監視您後端的延遲和可用性，以及在後端關閉時提供快速自動容錯移轉，為您的關鍵應用程式提供高可用性。 因此，您可以在您的應用程式執行規劃的維護作業，而不需要停機。 當維護正在進行時，Front Door 會將流量導向替代後端。
 
 ## <a name="url-based-routing"></a>URL 型路由
 URL 路徑型路由可讓您根據要求的 URL 路徑，將流量路由傳送至後端集區。 有一個案例是將對於不同內容類型的要求路由傳送至不同的後端集區。

@@ -56,3 +56,7 @@
               href: ./servers/manage-vm-extensions.md
             - name: 管理代理程式
               href: ./servers/manage-agent.md
+        - name: 疑難排解
+          items:
+            - name: 代理程式連線問題
+              href: ./servers/troubleshoot-agent-onboard.md

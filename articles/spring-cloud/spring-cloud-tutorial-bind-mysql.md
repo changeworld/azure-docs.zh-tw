@@ -1,23 +1,23 @@
 ---
-title: 教學課程 - 如何將適用於 MySQL 的 Azure 資料庫執行個體繫結至您的 Azure Spring Cloud 應用程式
-description: 本教學課程說明如何將適用於 MySQL 的 Azure 資料庫執行個體繫結至您的 Azure Spring Cloud 應用程式
+title: 如何將適用於 MySQL 的 Azure 資料庫執行個體繫結至您的 Azure Spring Cloud 應用程式
+description: 了解如何將適用於 MySQL 的 Azure 資料庫執行個體繫結至您的 Azure Spring Cloud 應用程式
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: 657aa70d77fd1af9fd2121a3e98ea3aca7773642
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6f2c9a46d8b17a53d2dc43c0c8313c9357f502a1
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76277549"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142177"
 ---
-# <a name="tutorial-bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>教學課程：將適用於 MySQL 的 Azure 資料庫執行個體繫結至您的 Azure Spring Cloud 應用程式 
+# <a name="bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>將適用於 MySQL 的 Azure 資料庫執行個體繫結至您的 Azure Spring Cloud 應用程式 
 
-透過 Azure Spring Cloud，您可以將特定的 Azure 服務自動繫結至應用程式，而無須手動設定 Spring Boot 應用程式。 本教學課程說明如何將應用程式繫結至適用於 MySQL 的 Azure 資料庫執行個體。
+透過 Azure Spring Cloud，您可以將特定的 Azure 服務自動繫結至應用程式，而無須手動設定 Spring Boot 應用程式。 本文說明如何將應用程式繫結至適用於 MySQL 的 Azure 資料庫執行個體。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 已部署的 Azure Spring Cloud 執行個體
 * 適用於 MySQL 的 Azure 資料庫帳戶
@@ -43,11 +43,11 @@ ms.locfileid: "76277549"
 
 1. 執行 `az spring-cloud app update` 以更新目前的部署，或執行 `az spring-cloud app deployment create` 建立新部署以進行此變更。  這些命令會以新的相依性來更新或建立應用程式。
 
-1. 在 Azure 入口網站中的 [Azure Spring Cloud 服務]  頁面上，尋找 [應用程式儀表板]  ，然後選取要繫結至適用於 MySQL 的 Azure 資料庫執行個體的應用程式。  這是您在先前的步驟中更新或部署的相同應用程式。 
+1. 在 Azure 入口網站中的 [Azure Spring Cloud 服務] 頁面上，尋找 [應用程式儀表板]，然後選取要繫結至適用於 MySQL 的 Azure 資料庫執行個體的應用程式。  這是您在先前的步驟中更新或部署的相同應用程式。 
 
-1. 選取 [服務繫結]  ，然後選取 [建立服務繫結]  按鈕。 
+1. 選取 [服務繫結]，然後選取 [建立服務繫結] 按鈕。 
 
-1. 選取 [Azure MySQL]  作為 [繫結類型]  ，使用您在第一個步驟中記下的使用者名稱和密碼，以填寫表單。
+1. 選取 [Azure MySQL] 作為 [繫結類型]，使用您在第一個步驟中記下的使用者名稱和密碼，以填寫表單。
 
 1. 重新啟動應用程式，此繫結現在應該會正常運作。
 
@@ -61,7 +61,4 @@ ms.locfileid: "76277549"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何將 Azure Spring Cloud 應用程式繫結至適用於 MySQL 的 Azure 資料庫執行個體。  若要深入了解如何管理 Azure Spring Cloud 服務，請閱讀關於服務探索和註冊的文章。
-
-> [!div class="nextstepaction"]
-> [使用 Spring Cloud Service Registry 來啟用服務探索和註冊](spring-cloud-service-registration.md)
+在本文中，您已了解如何將 Azure Spring Cloud 應用程式繫結至適用於 MySQL 的 Azure 資料庫執行個體。 若要深入了解如何將服務繫結至應用程式，請參閱[將 Azure Cosmos DB 資料庫繫結至 Azure Spring Cloud 應用程式](spring-cloud-tutorial-bind-cosmos.md)。

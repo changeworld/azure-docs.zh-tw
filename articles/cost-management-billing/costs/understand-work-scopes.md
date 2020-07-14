@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 2f61345cd55fc9541f9e1b707389d0b9d06685b0
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: ae6205db4e120f0496fa47be6788887b155361b0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873440"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077153"
 ---
 # <a name="understand-and-work-with-scopes"></a>了解並使用範圍
 
@@ -67,7 +67,7 @@ Azure 支援三個範圍進行資源管理。 每個範圍都支援管理存取�
 
 成本管理參與者是建議的最低權限角色。 其允許人員建立及管理預算和匯出的存取權，以更有效率地監視和報告成本。 成本管理參與者也可能需要額外的角色，以支援端對端成本管理案例。 請考慮下列案例：
 
-- **報告資源使用量** – Azure 成本管理會顯示 Azure 入口網站中的成本，同時也包含與完整使用量和費用 API 和下載相關的使用量，但建議您深入了解 Azure 監視器中的詳細使用計量，以取得更深入的了解。 請考慮在您需要的任何範圍上授與[監視讀取器](../../role-based-access-control/built-in-roles.md#monitoring-reader)權限，同時也可報告詳細的使用計量。
+- **報告資源使用量** - Azure 成本管理會顯示 Azure 入口網站中的成本，其中包括使用量，因為其與完整使用量模式的成本有關。 此報告也會顯示 API 和下載費用，但是建議您深入了解 Azure 監視器中的詳細使用量計量，以取得更深入的了解。 請考慮在您需要的任何範圍上授與[監視讀取器](../../role-based-access-control/built-in-roles.md#monitoring-reader)權限，同時也可報告詳細的使用計量。
 - **在超出預算時採取行動** – 成本管理參與者也需要存取權來建立及/或管理動作群組，以便自動回應超額部分。 請考慮將[監視參與者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)授予資源群組，其中包含在超出預算限額時所要使用的動作群組。 需要所用特定服務 (例如自動化和 Azure Functions) 的其他角色，才能自動執行特定動作。
 - **排程成本資料匯出** – 成本管理參與者也需要存取權來管理儲存體帳戶，以排程將資料複製到儲存體帳戶中的匯出。 請考慮將[儲存體帳戶參與者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)授予資源群組，其中包含成本資料匯出所在的儲存體帳戶。
 - **檢視節省成本建議** – 成本管理讀者和成本管理參與者預設都有存取來「檢視」成本建議。 不過，需要個別資源的存取權，才具備對成本建議採取行動的存取權。 如果您想要對以成本為基礎的建議採取行動，請考慮授與[服務專屬角色](../../role-based-access-control/built-in-roles.md#all)。

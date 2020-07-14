@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b655fa2f12eac894e97c61cc931983aa58fff7a9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6c2ae9e7654fa468d499ca6ef8543b98b1e372ca
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74007932"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481386"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Azure Active Directory 報告是什麼？
 
@@ -52,7 +52,7 @@ Azure Active Directory (Azure AD) 報告可提供環境中活動的全面性檢�
 
 所有 Azure AD 版本都可提供標幟為有風險的使用者和有風險的登入報告。 不過，報告細微性層級因版本而異： 
 
-- 在 [Azure Active Directory Free 和 Basic 版本]  中，您會取得標幟為有風險的使用者和有風險的登入清單。 
+- 在 [Azure Active Directory Free 和 Basic 版本] 中，您會取得標幟為有風險的使用者和有風險的登入清單。 
 
 - **Azure Active Directory Premium 1** 版本也可讓您檢查每份報告部分已偵測到的基礎風險偵測，藉此擴充此模型。 
 
@@ -81,7 +81,7 @@ Azure Active Directory (Azure AD) 報告可提供環境中活動的全面性檢�
 
 #### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>您需要哪項 Azure AD 授權才能存取稽核記錄報告？  
 
-稽核記錄報告可用於您擁有授權的功能。 如果您有特定功能的授權，也可以存取其稽核記錄資訊。 如需詳細資訊，請參閱 [Azure Active Directory 功能和功用](https://www.microsoft.com/cloud-platform/azure-active-directory-features)。   
+稽核記錄報告可用於您擁有授權的功能。 如果您有特定功能的授權，也可以存取其稽核記錄資訊。 依據[不同類型授權](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#what-are-the-azure-ad-licenses)的詳細功能比較，可以在 [Azure Active Directory 定價頁面](https://azure.microsoft.com/pricing/details/active-directory/)上看到。 如需詳細資訊，請參閱 [Azure Active Directory 功能和功用](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#which-features-work-in-azure-ad)。
 
 ### <a name="sign-ins-report"></a>登入報告
 

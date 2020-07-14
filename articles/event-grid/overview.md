@@ -1,20 +1,14 @@
 ---
 title: 什麼是 Azure 事件方格？
 description: 使用 Azure 事件方格，將事件資料從來源傳送至處理常式。 建置事件型應用程式，並與 Azure 服務整合。
-services: event-grid
-author: femila
-manager: timlt
-ms.service: event-grid
 ms.topic: overview
-ms.date: 02/20/2020
-ms.author: femila
-ms.custom: seodec18
-ms.openlocfilehash: 38f0218a7dedd243cccfab4b0b5ecfb73d3a626a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 07/07/2020
+ms.openlocfilehash: 95deeddbd7ae3f5ee07bef0c4ac73559d208c352
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560314"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116126"
 ---
 # <a name="what-is-azure-event-grid"></a>什麼是 Azure 事件方格？
 
@@ -103,7 +97,7 @@ Event Grid 可連線資料來源與事件處理常式。 例如，使用事件�
 
 ![作業自動化](./media/overview/Ops_automation.png)
 
-Event Grid 可讓您加快自動化速度並簡化原則強制執行。 例如，使用事件方格在建立虛擬機器或 SQL Database 時通知 Azure 自動化。 使用事件自動檢查服務組態是否符合規範、將中繼資料放入作業工具、標記虛擬機器，或將工作項目歸檔。
+Event Grid 可讓您加快自動化速度並簡化原則強制執行。 例如，使用事件方格在建立虛擬機器或 Azure SQL 中的資料庫時通知 Azure 自動化。 使用事件自動檢查服務組態是否符合規範、將中繼資料放入作業工具、標記虛擬機器，或將工作項目歸檔。
 
 ### <a name="application-integration"></a>應用程式整合
 

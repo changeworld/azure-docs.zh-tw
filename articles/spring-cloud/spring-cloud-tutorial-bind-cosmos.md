@@ -1,17 +1,17 @@
 ---
-title: 教學課程 - 將 Azure Cosmos DB 繫結至 Azure Spring Cloud 應用程式
-description: 在本教學課程中，您將了解如何將 Azure Cosmos DB 繫結至 Azure Spring Cloud 應用程式
+title: 將 Azure Cosmos DB 繫結至 Azure Spring Cloud 應用程式
+description: 了解如何將 Azure Cosmos DB 繫結至 Azure Spring Cloud 應用程式
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
-ms.openlocfilehash: 1566b6ab59e858217adcf6818e1d62f851f37eb1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 083c67184c6b039303b29119261a6967306a1447
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76277555"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142225"
 ---
 # <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>將 Azure Cosmos DB 資料庫繫結至 Azure Spring Cloud 應用程式
 
@@ -82,10 +82,10 @@ Azure Cosmos DB 有五個不同的 API 類型可支援繫結。 下列程序會�
 
 1. 使用 `az spring-cloud app update` 來更新目前的部署，或使用 `az spring-cloud app deployment create` 來建立新的部署。 這些命令會搭配新的相依性來更新或建立應用程式。
 
-1. 在 Azure 入口網站中，移至您的 Azure Spring Cloud 服務頁面。 移至 [應用程式儀表板]  ，然後選取要繫結至 Azure Cosmos DB 的應用程式。 這是您在上一個步驟中更新或部署的同一個應用程式。
+1. 在 Azure 入口網站中，移至您的 Azure Spring Cloud 服務頁面。 移至 [應用程式儀表板]，然後選取要繫結至 Azure Cosmos DB 的應用程式。 這是您在上一個步驟中更新或部署的同一個應用程式。
 
-1. 選取 [服務繫結]  ，然後選取 [建立服務繫結]  。 若要填寫表單，請選取：
-   * [繫結類型]  值 [Azure Cosmos DB]  。
+1. 選取 [服務繫結]，然後選取 [建立服務繫結]。 若要填寫表單，請選取：
+   * [繫結類型] 值 [Azure Cosmos DB]。
    * API 類型。
    * 資料庫名稱。
    * Azure Cosmos DB 帳戶。
@@ -93,7 +93,7 @@ Azure Cosmos DB 有五個不同的 API 類型可支援繫結。 下列程序會�
     > [!NOTE]
     > 如果您使用 Cassandra，請為資料庫名稱使用 Keyspace。
 
-1. 選取應用程式頁面上的 [重新啟動]  ，以重新啟動應用程式。
+1. 選取應用程式頁面上的 [重新啟動]，以重新啟動應用程式。
 
 1. 為確保服務的繫結是否正確，請選取繫結名稱並確認其詳細資料。 `property` 欄位應該會類似下列範例：
 
@@ -105,7 +105,4 @@ Azure Cosmos DB 有五個不同的 API 類型可支援繫結。 下列程序會�
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何將 Azure Spring Cloud 應用程式繫結至 Azure Cosmos DB 資料庫。 若要了解如何將應用程式繫結至 Azure Cache for Redis 快取，請繼續進行下一個教學課程。
-
-> [!div class="nextstepaction"]
-> [了解如何繫結至 Azure Cache for Redis 快取](spring-cloud-tutorial-bind-redis.md)
+在本文中，您已了解如何將 Azure Spring Cloud 應用程式繫結至 Azure Cosmos DB 資料庫。 若要深入了解如何將服務繫結至您的應用程式，請參閱[繫結至 Azure Cache for Redis 快取](spring-cloud-tutorial-bind-redis.md)。

@@ -1,5 +1,5 @@
 ---
-title: 快速入門 - 建立異地複寫登錄 - Resource Manager 範本
+title: 快速入門 - 建立異地複寫登錄 - Azure Resource Manager 範本
 description: 了解如何使用 Azure Resource Manager 範本建立異地複寫的 Azure 容器登錄。
 services: azure-resource-manager
 author: dlepow
@@ -8,28 +8,28 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 05/26/2020
-ms.openlocfilehash: c94cd3b4b455691e85e7525007fcdf7a056a2b28
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 3ed160780e15cc36648f7e2ad77e726901ee86c3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558071"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119849"
 ---
-# <a name="quickstart-create-a-geo-replicated-container-registry-by-using-a-resource-manager-template"></a>快速入門：使用 Resource Manager 範本建立異地複寫的容器登錄
+# <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>快速入門：使用 ARM 範本建立異地複寫的容器登錄
 
-本快速入門示範如何使用 Azure Resource Manager 範本建立 Azure 容器登錄執行個體。 此範本會設定[異地複寫](container-registry-geo-replication.md)登錄，自動同步處理多個 Azure 區域的登錄內容。 異地複寫可讓您從區域部署對映像進行網路封閉存取，同時提供單一的管理體驗。 這是[進階](container-registry-skus.md)登錄服務層級的一項功能。 
+本快速入門示範如何使用 Azure Resource Manager 範本 (ARM 範本) 建立 Azure 容器登錄執行個體。 此範本會設定[異地複寫](container-registry-geo-replication.md)登錄，自動同步處理多個 Azure 區域的登錄內容。 異地複寫可讓您從區域部署對映像進行網路封閉存取，同時提供單一的管理體驗。 這是[進階](container-registry-skus.md)登錄服務層級的一項功能。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-container-registry-geo-replication%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>必要條件
 
-無。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="create-a-geo-replicated-registry"></a>建立異地複寫登錄
-
-### <a name="review-the-template"></a>檢閱範本
+## <a name="review-the-template"></a>檢閱範本
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-container-registry-geo-replication/)。 此範本會設定一項登錄和一個額外的區域複本。
 
@@ -42,7 +42,7 @@ ms.locfileid: "84558071"
 
 如需更多 Azure 容器登錄範本範例，請參閱[快速入門範本資源庫](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Containerregistry&pageNumber=1&sort=Popular)。
 
-### <a name="deploy-the-template"></a>部署範本
+## <a name="deploy-the-template"></a>部署範本
 
  1. 選取以下影像來登入 Azure 並開啟範本。
 
@@ -86,7 +86,7 @@ ms.locfileid: "84558071"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已使用 Resource Manager 範本建立了 Azure 容器登錄，並在另一個位置設定了登錄複本。 請繼續進行 Azure 容器登錄教學課程，以深入了解 ACR。
+在本快速入門中，您已使用 ARM 範本建立了 Azure 容器登錄，並在另一個位置設定了登錄複本。 請繼續進行 Azure 容器登錄教學課程，以深入了解 ACR。
 
 > [!div class="nextstepaction"]
 > [Azure Container Registry 教學課程](container-registry-tutorial-prepare-registry.md)
@@ -94,4 +94,4 @@ ms.locfileid: "84558071"
 如需逐步教學課程，以引導您完成建立範本的流程，請參閱：
 
 > [!div class="nextstepaction"]
-> [教學課程：建立及部署第一個 Azure Resource Manager 範本](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [教學課程：建立及部署您的第一個 ARM 範本](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

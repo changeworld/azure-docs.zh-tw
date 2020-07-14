@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 3613d190ef079d0e477d42b426a224d8e4dda7e6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f26f0ab6da398dcdee307f89b27cca780d08af85
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81400733"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85839066"
 ---
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前：
 
@@ -34,7 +34,9 @@ ms.locfileid: "81400733"
 
 ## <a name="build-and-run-app"></a>建置並執行應用程式
 
-現在您已經準備好要測試應用程式，並使用語音服務來驗證語音辨識功能。
+現在您已準備好使用語音服務來測試語音辨識。 
+
+如果您是在 macOS 上執行此程式，而且是使用麥克風所建置的第一個 Python 應用程式，您可能需要讓終端機存取麥克風。 開啟 [系統設定]，然後選取 [安全性與隱私權]。 接下來，選取 [隱私權] 並且在清單中找到 [麥克風]。 最後，選取 [終端機] 並且儲存。 
 
 1. **啟動應用程式** - 從命令列輸入：
     ```bash
@@ -45,4 +47,3 @@ ms.locfileid: "81400733"
 ## <a name="next-steps"></a>後續步驟
 
 [!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]
-

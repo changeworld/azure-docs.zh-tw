@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: d29f97bf421804fb234ce8d86c66c12b01854681
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 6dcfdc63946bcc2a9ffe4c5c767e81ca3b32107b
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85113787"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025279"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>教學課程：使用 Azure Cosmos DB 和 SQL API 來建置 Java Web 應用程式
 
@@ -90,7 +90,7 @@ ms.locfileid: "85113787"
 
 1. 如果您在步驟 2 中已設定目標執行階段，就可以依序按一下 [專案] 和 [執行]，即可在本機執行您的 JSP 應用程式：
 
-  ![Hello World – Java 應用程式教學課程](./media/sql-api-java-application/image12.png)
+   :::image type="content" source="./media/sql-api-java-application/image12.png" alt-text="Hello World – Java 應用程式教學課程":::
 
 ## <a name="install-the-sql-java-sdk"></a><a id="InstallSDK"></a>安裝 SQL Java SDK
 

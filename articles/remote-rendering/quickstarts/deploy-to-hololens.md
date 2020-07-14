@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 75b6629ea924ec17888ec2f981ff85ed917434c9
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: d6acc16780179654975d63ab2c0b04caf141510c
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677613"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557045"
 ---
 # <a name="quickstart-deploy-unity-sample-to-hololens"></a>快速入門：將 Unity 範例部署至 HoloLens
 
@@ -24,7 +24,7 @@ ms.locfileid: "80677613"
 >* 將範例部署到裝置
 >* 在裝置上執行範例
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在本快速入門中，我們從以下位置部署範例專案：[快速入門：使用 Unity 轉譯模型](render-model.md)。
 
@@ -32,21 +32,23 @@ ms.locfileid: "80677613"
 
 ## <a name="build-the-sample-project"></a>建置範例專案
 
-1. 開啟 [檔案] -> [組建設定]  。
-1. 將 [平台]  變更為 [通用 Windows 平台] 
-1. 將 [目標裝置]  設定為 [HoloLens] 
-1. 將 [架構]  設定為 [ARM64] 
-1. 將 [組建類型]  設定為 [D3D 專案]  ![組建設定](./media/unity-build-settings.png)
-1. 選取 [切換至平台] 
-1. 按下 [建置]  (或 [建置並執行]) 時，系統會要求您選取應儲存解決方案的資料夾
+1. 開啟 [檔案] -> [組建設定]。
+1. 將 [平台] 變更為 [通用 Windows 平台]
+1. 將 [目標裝置] 設定為 [HoloLens]
+1. 將 [架構] 設定為 [ARM64]
+1. 將 [組建類型] 設定為 [D3D 專案]\
+    ![組建設定](./media/unity-build-settings.png)
+1. 選取 [切換至平台]
+1. 按下 [建置] (或 [建置並執行]) 時，系統會要求您選取應儲存解決方案的資料夾
 1. 使用 Visual Studio 開啟所產生的 **Quickstart.sln**
-1. 將設定變更為 [版本]  和 [ARM64] 
-1. 將偵錯工具模式切換到 [遠端電腦]  ![解決方案設定](media/unity-deploy-config.png)
+1. 將設定變更為 [版本] 和 [ARM64]
+1. 將偵錯工具模式切換到 [遠端電腦]\
+    ![解決方案設定](media/unity-deploy-config.png)
 1. 建置解決方案 (F7)
-1. 如需專案的「快速入門」，請移至 [屬性] > [偵錯] 
-    1. 請確定 [版本]  設定為作用中
-    1. 將 [要啟動的偵錯工具]  設定為 [遠端電腦] 
-    1. 將 [電腦名稱]  變更為 [HoleLens 的 IP] 
+1. 如需專案的「快速入門」，請移至 [屬性] > [偵錯]
+    1. 請確定 [版本] 設定為作用中
+    1. 將 [要啟動的偵錯工具] 設定為 [遠端電腦]
+    1. 將 [電腦名稱] 變更為 [HoleLens 的 IP]
 
 ## <a name="launch-the-sample-project"></a>啟動範例專案
 

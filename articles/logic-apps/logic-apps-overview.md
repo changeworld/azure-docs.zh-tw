@@ -3,16 +3,16 @@ title: 將企業整合的工作自動化
 description: 了解使用 Azure Logic Apps 針對企業整合在搭配最少程式碼的情況下，將整合應用程式、資料、服務及系統的工作流程自動化。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: overview
 ms.custom: mvc
 ms.date: 03/11/2020
-ms.openlocfilehash: 789ddf39e4493d11d63a07f2341ab36ac161f32d
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 08b3863ac9a03cda2659cf4934b781eeb9330e17
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659606"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563816"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>概觀 - 什麼是 Azure Logic Apps？
 
@@ -32,7 +32,7 @@ ms.locfileid: "84659606"
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 
-## <a name="how-does-logic-apps-work"></a>Logic Apps 如何運作？ 
+## <a name="how-do-logic-apps-work"></a>邏輯應用程式如何運作？ 
 
 每個邏輯應用程式都會使用觸發程序啟動，而該觸發程序會在特定事件發生時，或在可用的新資料符合特定準則時引發。 Logic Apps 中連接器提供的許多觸發程序都包含基本排程功能，以便您設定工作負載定期執行的方式。 如需更複雜的排程或進階的週期，可以在任何工作流程中使用循環觸發程序作為第一步。 深入了解[以排程為基礎的工作流程](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)。
 
@@ -42,7 +42,7 @@ ms.locfileid: "84659606"
 
 您可以使用 Logic Apps 設計工具 (可透過瀏覽器在 Azure 入口網站中和在 Visual Studio 中取得)，以視覺化方式建立邏輯應用程式。 如需更多自訂邏輯應用程式，您可以在「程式碼檢視」編輯器中，以 JavaScript 物件標記法 (JSON) 建立或編輯邏輯應用程式定義。 您也可以對精選工作使用 Azure PowerShell 和 Azure Resource Manager 範本。 Azure 上的邏輯應用程式會在雲端部署並執行。 如需更詳細的簡介，請觀看以下影片：[使用 Azure Enterprise Integration Services 來執行大規模的雲端應用程式](https://channel9.msdn.com/Events/Connect/2017/T119/)
 
-## <a name="why-use-logic-apps"></a>為何使用 Logic Apps？
+## <a name="why-use-logic-apps"></a>為何使用邏輯應用程式？
 
 隨著企業邁向數位化，邏輯應用程式可藉由提供預先建置的 API 作為 Microsoft 管理的連接器，協助您更輕鬆快速地與舊有、新式和尖端系統連線。 如此一來，您即可專注於應用程式的商務邏輯與功能。 您不必擔心建置、裝載、調整、管理、維護和監視您的應用程式。 Logic Apps 會為您處理這些疑慮。 再者，根據取用[定價模式](../logic-apps/logic-apps-pricing.md)，您只需針對使用的部分付費。
 
@@ -102,7 +102,7 @@ BizTalk Server 可以透過另一種方式，使用[適用於 Logic Apps 的 Mic
 
 ### <a name="access-resources-inside-azure-virtual-networks"></a>存取 Azure 虛擬網路內的資源
 
-當您建立[整合服務環境** (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 時，邏輯應用程式可以存取 [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)中的受保護資源，例如虛擬機器 (VM) 和其他系統或服務。 ISE 是 Logic Apps 服務的專用執行個體，其使用專用資源，並與「全域」多租用戶 Logic Apps 服務分開執行。
+當您建立[整合服務環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 時，邏輯應用程式可以存取 [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)中的受保護資源，例如虛擬機器 (VM) 和其他系統或服務。 ISE 是 Logic Apps 服務的專用執行個體，其使用專用資源，並與「全域」多租用戶 Logic Apps 服務分開執行。
 
 在您自己的個別專用執行個體中執行邏輯應用程式，有助於減少其他 Azure 租用戶對您應用程式效能可能造成的影響，也就是 ["noisy neighbors" effect](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors) (相鄰干擾效應)。 ISE 也提供下列優點：
 
@@ -110,7 +110,7 @@ BizTalk Server 可以透過另一種方式，使用[適用於 Logic Apps 的 Mic
 
 * 增加執行期間、儲存體保留期、輸送量、HTTP 要求和回應逾時、訊息大小及自訂連接器要求的限制。 如需詳細資訊，請參閱 [Azure Logic Apps 的限制和設定](../logic-apps/logic-apps-limits-and-config.md)。
 
-當您建立 ISE 時，Azure 會在您的 Azure 虛擬網路中「插入」** 或部署 ISE。 接著，您可以針對邏輯應用程式和需要存取的整合帳戶，使用此 ISE 作為其位置。 如需有關建立 ISE 的詳細資訊，請參閱[從 Azure Logic Apps 連線到 Azure 虛擬網路](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。
+當您建立 ISE 時，Azure 會在您的 Azure 虛擬網路中「插入」或部署 ISE。 接著，您可以針對邏輯應用程式和需要存取的整合帳戶，使用此 ISE 作為其位置。 如需有關建立 ISE 的詳細資訊，請參閱[從 Azure Logic Apps 連線到 Azure 虛擬網路](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。
 
 ### <a name="built-in-extensibility"></a>內建擴充性
 

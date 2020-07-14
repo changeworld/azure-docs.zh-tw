@@ -477,6 +477,8 @@
                   items:
                     - name: 從 VM
                       href: ../image-version-vm-cli.md
+                    - name: 從 VHD 或快照集
+                      href: ../image-version-snapshot-cli.md
                     - name: 從受控映像遷移
                       href: ../image-version-managed-image-cli.md
                     - name: 從另一個資源庫複製
@@ -499,6 +501,8 @@
                   items:
                     - name: 從 VM
                       href: ../image-version-vm-powershell.md
+                    - name: 從 VHD 或快照集
+                      href: ../image-version-snapshot-powershell.md
                     - name: 從受控映像遷移
                       href: ../image-version-managed-image-powershell.md
                     - name: 從另一個資源庫複製
@@ -547,6 +551,8 @@
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: 尋找及使用映像
           href: cli-ps-findimage.md
+        - name: 購買方案資訊
+          href: ../marketplace-images.md
         - name: 將 VM 擷取至受控映像
           href: capture-image.md
         - name: 使用 Packer 建置映像
@@ -945,6 +951,16 @@
           href: disks-incremental-snapshots-portal.md
         - name: 備份非受控磁碟
           href: incremental-snapshots.md
+        - name: 加密
+          items:
+            - name: 在主機上啟用加密 - CLI
+              href: disks-enable-host-based-encryption-cli.md
+            - name: 啟用客戶管理的金鑰 - CLI
+              href: disks-enable-customer-managed-keys-cli.md
+            - name: 啟用客戶管理的金鑰 - 入口網站
+              href: disks-enable-customer-managed-keys-portal.md
+            - name: 啟用雙重待用加密
+              href: disks-enable-double-encryption-at-rest-cli.md
         - name: 移轉和轉換
           items:
             - name: 使用 Azure Site Recovery 移轉到進階儲存體
