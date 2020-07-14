@@ -9,11 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 316a6c13b55664bdabf7c0cb3e37d7bb18b8649f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d99d211ec48a507b205c4cef21618054c11aec9b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84765092"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224854"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>開始使用 Key Vault 憑證
 下列情節概述 Key Vault 憑證管理服務的數個主要用法 (包括在金鑰保存庫中建立第一個憑證所需的其他步驟)。
@@ -45,7 +46,7 @@ ms.locfileid: "84765092"
 **步驟 3** - Contoso 管理員與擁有憑證的 Contoso 員工 (Key Vault 使用者) (根據 CA 而定) 可以向管理員取得憑證或者直接向 CD 從帳戶取得憑證。  
 
 - [設定憑證簽發者](/rest/api/keyvault/setcertificateissuer/setcertificateissuer)資源，開始將認證作業新增至金鑰保存庫。 憑證簽發者是 Azure Key Vault (KV) 中以 CertificateIssuer 資源表示的實體。 它用來提供 KV 憑證來源相關資訊；簽發者名稱、提供者、認證和其他系統管理詳細資訊。
-  - 例如： MyDigiCertIssuer  
+  - 例如 MyDigiCertIssuer  
     -   提供者  
     -   認證 – CA 帳戶認證。 每個 CA 都有自己的特定資料。  
 
@@ -61,9 +62,9 @@ ms.locfileid: "84765092"
 
 **步驟 4** - 下列描述對應至上圖中的綠色編號步驟。  
   (1) - 在上圖中，您的應用程式即將建立憑證，內部流程始於在金鑰保存庫中建立金鑰。  
-  （2）-Key Vault 會將 TLS/SSL 憑證要求傳送給 CA。  
-  (3) - 您的應用程式會以迴圈和等待流程來輪詢 Key Vault，直到憑證完成。 Key Vault 收到含 x509 憑證的 CA 回應時，憑證建立工作即完成。  
-  （4）-CA 會使用 X509 TLS/SSL 憑證來回應 Key Vault 的 TLS/SSL 憑證要求。  
+   (2) -Key Vault 會將 TLS/SSL 憑證要求傳送給 CA。  
+  (3) - 您的應用程式會以迴圈和等待流程來輪詢 Key Vault，直到憑證完成。 當 Key Vault 收到具有 x509 憑證的 CA 回應時，就會完成憑證建立。  
+   (4) -CA 會使用 X509 TLS/SSL 憑證來回應 Key Vault 的 TLS/SSL 憑證要求。  
   (5) - 您的新憑證建立是透過合併 CA 的 X509 憑證而完成。  
 
   Key Vault 使用者 – 指定原則來建立憑證
@@ -80,6 +81,9 @@ ms.locfileid: "84765092"
       -   狀態：已完成、失敗但有錯誤資訊，或已取消  
       -   因為延遲建立，所以可以起始取消作業。 取消不一定會有作用。  
 
+### <a name="network-security-and-access-policies-associated-with-integrated-ca"></a>與整合式 CA 相關聯的網路安全性和存取原則
+Key Vault 服務會將要求傳送給 CA (輸出流量) 。 因此，它與啟用防火牆的金鑰保存庫完全相容。 Key Vault 不會與 CA 共用存取原則。 CA 必須設定為獨立接受簽署要求。 [整合受信任 CA 的指南](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)
+
 ## <a name="import-a-certificate"></a>匯入憑證  
  或者，可以將憑證匯入至 Key Vault – PFX 或 PEM。  
 
@@ -92,7 +96,7 @@ ms.locfileid: "84765092"
 
 -   如果沒有進一步作業，則 Key Vault 要做的第一件事是傳送到期通知。 
 
--   此外，使用者可以編輯原則，而此原則是在匯入時作用，但包含匯入時未指定任何資訊的預設值。 例如： 無簽發者資訊  
+-   此外，使用者可以編輯原則，而此原則是在匯入時作用，但包含匯入時未指定任何資訊的預設值。 例如 無簽發者資訊  
 
 ### <a name="formats-of-import-we-support"></a>我們支援的匯入格式
 Azure Key Vault 支援將憑證匯入金鑰保存庫的 pem 和 .pfx 憑證檔案。
@@ -105,7 +109,7 @@ Azure Key Vault 支援將憑證匯入金鑰保存庫的 pem 和 .pfx 憑證檔�
 當您匯入憑證時，您必須確定該金鑰包含在檔案本身。 如果您使用不同的格式來個別擁有私密金鑰，就必須結合該金鑰與憑證。 有些憑證授權單位單位會提供不同格式的憑證，因此在匯入憑證之前，請確定它們都是 pem 或 .pfx 格式。 
 
 ### <a name="formats-of-merge-csr-we-support"></a>我們支援的合併 CSR 的格式
-AKV 支援2個以 PEM 為基礎的格式。 您可以合併單一 PKCS # 8 編碼憑證或 base64 編碼的 P7B （由 CA 簽署的憑證鏈） 
+AKV 支援2個以 PEM 為基礎的格式。 您可以合併單一 PKCS # 8 編碼憑證或 base64 編碼的 P7B (由 CA 簽署的憑證鏈)  
 
 -----開始憑證----------結束憑證-----
 

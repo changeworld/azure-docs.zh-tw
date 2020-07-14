@@ -1,29 +1,30 @@
 ---
 title: 在 Azure 上部署 Oracle 應用程式虛擬機器的架構 |Microsoft Docs
-description: 應用程式架構，用來部署 Oracle 應用程式，包括電子商務套件、JD Edwards EnterpriseOne，以及使用 Azure 或 Oracle 雲端基礎結構（OCI）中的資料庫 Microsoft Azure 虛擬機器上的 PeopleSoft。
+description: 應用程式架構，用來部署 Oracle 應用程式，包括電子商務套件、JD Edwards EnterpriseOne，以及在 Azure 中的資料庫或 Oracle 雲端基礎結構 (OCI) 中 Microsoft Azure 虛擬機器上的 PeopleSoft。
 services: virtual-machines-linux
 documentationcenter: ''
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 tags: ''
 ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/18/2019
-ms.author: borisb
+ms.author: rogardle
 ms.custom: ''
-ms.openlocfilehash: f36dfe0092e3447053871ee0e5b4d659bb443779
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fe6886f368d053af919b326fabf1ad4c3066717
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687490"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224531"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>在 Azure 上部署 Oracle 應用程式的架構
 
-Microsoft 和 Oracle 已共同合作，讓客戶能夠在雲端中部署 oracle 電子商務套件、JD Edwards EnterpriseOne 和 PeopleSoft 等 Oracle 應用程式。 隨著 Microsoft Azure 和 Oracle 雲端基礎結構（OCI）之間的預覽[私人網路](configure-azure-oci-networking.md)的推出，oracle 應用程式現在可以在 azure 上使用其後端資料庫部署到 AZURE 或 OCI 中。 Oracle 應用程式也可以與 Azure Active Directory 整合，讓您設定單一登入，讓使用者可以使用其 Azure Active Directory （Azure AD）認證來登入 Oracle 應用程式。
+Microsoft 和 Oracle 已共同合作，讓客戶能夠在雲端中部署 oracle 電子商務套件、JD Edwards EnterpriseOne 和 PeopleSoft 等 Oracle 應用程式。 隨著 Microsoft Azure 和 Oracle 雲端基礎結構之間的預覽[私人網路互連能力](configure-azure-oci-networking.md) (OCI) ，oracle 應用程式現在可以部署在 azure 上，並在 AZURE 或 OCI 中使用其後端資料庫。 Oracle 應用程式也可以與 Azure Active Directory 整合，讓您設定單一登入，讓使用者可以使用其 Azure Active Directory (Azure AD) 認證來登入 Oracle 應用程式。
 
-OCI 為 Oracle 應用程式提供多個 Oracle 資料庫選項，包括 DBaaS、Exadata 雲端服務、Oracle RAC 和基礎結構即服務（IaaS）。 目前，自發資料庫不是 Oracle 應用程式支援的後端。
+OCI 為 Oracle 應用程式提供多個 Oracle 資料庫選項，包括 DBaaS、Exadata 雲端服務、Oracle RAC 和基礎結構即服務 (IaaS) 。 目前，自發資料庫不是 Oracle 應用程式支援的後端。
 
 有[多個選項](oracle-overview.md)可用來在 Azure 中部署 Oracle 應用程式，包括以高可用性和安全的方式。 如果您選擇在 Azure 上完整執行 Oracle 應用程式，Azure 也會提供您可以部署的[oracle 資料庫 VM 映射](oracle-vm-solutions.md)。
 
@@ -45,7 +46,7 @@ Oracle 應用程式是由多個服務所組成，可以裝載在 Azure 中的相
 
 ## <a name="e-business-suite"></a>E-Business Suite
 
-Oracle 電子商務套件（EBS）是一套應用程式，包括供應鏈管理（SCM）和客戶關係管理（CRM）。 若要利用 OCI 的受控資料庫組合，可以使用 Microsoft Azure 和 OCI 之間的跨雲端互連來部署 EBS。 在此設定中，簡報和應用層會在 Azure 中執行，並在 OCI 中的資料庫層中執行，如下列架構圖所示（圖1）。
+Oracle 電子商務套件 (EBS) 是一套應用程式，包括供應鏈管理 (SCM) 和客戶關係管理 (CRM) 。 若要利用 OCI 的受控資料庫組合，可以使用 Microsoft Azure 和 OCI 之間的跨雲端互連來部署 EBS。 在此設定中，簡報和應用層會在 Azure 中執行，並在 OCI 中的資料庫層中執行，如下列架構圖所示 ([圖 1]) 。
 
 ![電子商務套件跨雲端架構](media/oracle-oci-applications/ebs-arch-cross-cloud.png)
 
@@ -53,7 +54,7 @@ Oracle 電子商務套件（EBS）是一套應用程式，包括供應鏈管理�
 
 在此架構中，Azure 中的虛擬網路會使用跨雲端互連連線至 OCI 中的虛擬雲端網路。 應用層會在 Azure 中設定，而資料庫會在 OCI 中設定。 建議使用網路安全性群組，將每個元件部署到它自己的子網，以只允許來自特定埠上特定子網的流量。
 
-此架構也可以針對部署在 Azure 上，並使用在區域的兩個可用性區域中設定為 Oracle Data Guard 的高可用性 Oracle 資料庫來進行調整。 下圖（圖2）是此架構模式的範例：
+此架構也可以針對部署在 Azure 上，並使用在區域的兩個可用性區域中設定為 Oracle Data Guard 的高可用性 Oracle 資料庫來進行調整。 下圖 ([圖 2]) 是此架構模式的範例：
 
 ![電子商務套件僅限 Azure 架構](media/oracle-oci-applications/ebs-arch-azure.png)
 
@@ -63,7 +64,7 @@ Oracle 電子商務套件（EBS）是一套應用程式，包括供應鏈管理�
 
 [!INCLUDE [virtual-machines-oracle-applications-bastion](../../../../includes/virtual-machines-oracle-applications-bastion.md)]
 
-### <a name="application-middle-tier"></a>應用程式（中間）層
+### <a name="application-middle-tier"></a>應用程式 (中間) 層
 
 應用層會在自己的子網中隔離。 已設定多部虛擬機器以進行容錯和輕鬆的修補程式管理。 這些 Vm 可以由 Azure NetApp Files 和 Ultra Ssd 提供的共用儲存體來支援。 此設定可讓您更輕鬆地部署修補程式，而不需要停機。 應用層中的機器應該由公用負載平衡器前端，如此一來，即使該層中的一部機器因為錯誤而離線，仍會處理 EBS 應用層的要求。
 
@@ -80,7 +81,7 @@ Microsoft 和 Oracle 建議高可用性設定。 藉由在兩個具有 Oracle Da
 
 ### <a name="identity-tier"></a>身分識別層
 
-身分識別層包含 EBS Asserter VM。 EBS Asserter 可讓您同步處理 Oracle Identity Cloud 服務（IDCS）和 Azure AD 的身分識別。 需要 EBS Asserter，因為 EBS 不支援 SAML 2.0 或 OpenID Connect 之類的單一登入通訊協定。 EBS Asserter 會使用 OpenID connect 權杖（由 IDCS 產生）、驗證它，然後在 EBS 中為使用者建立會話。 
+身分識別層包含 EBS Asserter VM。 EBS Asserter 可讓您同步處理 Oracle Identity Cloud 服務 (IDCS) 和 Azure AD 的身分識別。 需要 EBS Asserter，因為 EBS 不支援 SAML 2.0 或 OpenID Connect 之類的單一登入通訊協定。 EBS Asserter 會取用 IDCS) 所產生的 OpenID connect 權杖 (、驗證它，然後在 EBS 中為使用者建立會話。 
 
 雖然此架構會顯示 IDCS 整合，但也可以使用 oracle Access Manager 搭配 Oracle 網際網路目錄或 Oracle 整合目錄來啟用 Azure AD 的統一存取和單一登入。 如需詳細資訊，請參閱[使用 IDCS 整合部署 ORACLE ebs](https://cloud.oracle.com/iaas/whitepapers/deploy_ebusiness_suite_across_oci_azure_sso_idcs.pdf)或[使用 OAM 整合部署 oracle ebs](https://cloud.oracle.com/iaas/whitepapers/deploy_ebusiness_suite_across_oci_azure_sso_oam.pdf)中的白皮書。
 
@@ -92,7 +93,7 @@ Microsoft 和 Oracle 建議高可用性設定。 藉由在兩個具有 Oracle Da
 
 Oracle 的 JD Edwards EnterpriseOne 是全方位企業資源規劃軟體的整合應用程式套件。 它是一種多層式應用程式，可以使用 Oracle 或 SQL Server 資料庫後端進行設定。 本節討論在 OCI 或 Azure 中，使用 Oracle 資料庫後端部署 JD Edwards EnterpriseOne 的詳細資料。
 
-在下列建議的架構（圖3）中，系統管理、簡報和仲介層會部署至 Azure 中的虛擬網路。 資料庫會部署在 OCI 的虛擬雲端網路中。
+在下列建議的架構中 ([圖 3]) ，系統管理、簡報和仲介層會部署到 Azure 中的虛擬網路。 資料庫會部署在 OCI 的虛擬雲端網路中。
 
 如同電子商務套件，您可以為安全的系統管理目的設定選擇性防禦層。 使用防禦 VM 主機作為跳躍伺服器，以存取應用程式和資料庫實例。
 
@@ -102,7 +103,7 @@ Oracle 的 JD Edwards EnterpriseOne 是全方位企業資源規劃軟體的整�
 
 在此架構中，Azure 中的虛擬網路會使用跨雲端互連連線至 OCI 中的虛擬雲端網路。 應用層會在 Azure 中設定，而資料庫會在 OCI 中設定。 建議使用網路安全性群組，將每個元件部署到它自己的子網，以只允許來自特定埠上特定子網的流量。
 
-此架構也可以針對部署在 Azure 上，並使用在區域的兩個可用性區域中設定為 Oracle Data Guard 的高可用性 Oracle 資料庫來進行調整。 下圖（圖4）是此架構模式的範例：
+此架構也可以針對部署在 Azure 上，並使用在區域的兩個可用性區域中設定為 Oracle Data Guard 的高可用性 Oracle 資料庫來進行調整。 下圖 ([圖 4]) 這是此架構模式的範例：
 
 ![JD Edwards EnterpriseOne 僅限 Azure 架構](media/oracle-oci-applications/jdedwards-arch-azure.png)
 
@@ -124,16 +125,16 @@ Oracle 的 JD Edwards EnterpriseOne 是全方位企業資源規劃軟體的整�
 
 ### <a name="presentation-tier"></a>展示層
 
-這一層包含各種元件，例如應用程式介面服務（AIS）、應用程式開發架構（ADF）和 JAVA 應用程式伺服器（JA）。 這一層中的伺服器會與仲介層中的伺服器通訊。 負載平衡器會將其前端，以根據接收流量的埠號碼和 URL，將流量路由傳送至所需的伺服器。 建議您為每個伺服器類型部署多個實例，以提供高可用性。
+這一層包含各種元件，例如應用程式介面服務 (AIS) 、應用程式開發架構 (ADF) 和 JAVA 應用程式伺服器 (JA) 。 這一層中的伺服器會與仲介層中的伺服器通訊。 負載平衡器會將其前端，以根據接收流量的埠號碼和 URL，將流量路由傳送至所需的伺服器。 建議您為每個伺服器類型部署多個實例，以提供高可用性。
 
 以下是此層中的元件：
     
-- **應用程式介面服務（AIS）** -AIS 伺服器提供 JD Edwards EnterpriseOne mobile 企業應用程式與 JD Edwards EnterpriseOne 之間的通訊介面。
-- **JAVA 應用程式伺服器（ja）** -ja 會接收來自負載平衡器的要求，並將它傳遞至仲介層，以執行複雜的工作。 JA 能夠執行簡單的商務邏輯。
-- **BI 發行者伺服器（BIP）** -此伺服器會根據 JD Edwards EnterpriseOne 應用程式所收集的資料來顯示報告。 您可以根據不同的範本，設計和控制報表轉譯資料的方式。
-- **商務服務伺服器（bss）** -BSS 可與其他 Oracle 應用程式進行資訊交換和互通性。
-- **即時事件伺服器（rte）** -在 JDE EnterpriseOne 系統中，您可以將「rte 伺服器」設定為外部系統的相關通知。 它會使用訂閱者模型，並允許協力廠商系統訂閱事件。 若要將要求負載平衡到這兩個 RTE 伺服器，請確定伺服器位於叢集中。
-- **應用程式開發架構（ADF）伺服器**-ADF 伺服器可用來執行以 Oracle ADF 開發的 JD Edwards EnterpriseOne 應用程式。 這會部署在具有 ADF 執行時間的 Oracle WebLogic 伺服器上。
+- **應用程式介面服務 (ais) ** -ais 伺服器提供 JD Edwards EnterpriseOne mobile 企業應用程式與 JD Edwards EnterpriseOne 之間的通訊介面。
+- **JAVA 應用程式伺服器 (ja) ** -ja 會接收來自負載平衡器的要求，並將它傳遞至仲介層，以執行複雜的工作。 JA 能夠執行簡單的商務邏輯。
+- **BI Publisher 伺服器 (BIP) ** -此伺服器會根據 JD Edwards EnterpriseOne 應用程式所收集的資料來顯示報告。 您可以根據不同的範本，設計和控制報表轉譯資料的方式。
+- **商務服務伺服器 (BSS) ** -bss 可與其他 Oracle 應用程式進行資訊交換和互通性。
+- **即時事件伺服器 (RTE) ** -rte 伺服器可讓您針對 JDE EnterpriseOne 系統中發生的交易，設定對外部系統的通知。 它會使用訂閱者模型，並允許協力廠商系統訂閱事件。 若要將要求負載平衡到這兩個 RTE 伺服器，請確定伺服器位於叢集中。
+- **應用程式開發架構 (adf) 伺服器**-adf 伺服器可用來執行以 Oracle ADF 開發的 JD Edwards EnterpriseOne 應用程式。 這會部署在具有 ADF 執行時間的 Oracle WebLogic 伺服器上。
 
 ### <a name="middle-tier"></a>中介層
 
@@ -152,11 +153,11 @@ Oracle 的 JD Edwards EnterpriseOne 是全方位企業資源規劃軟體的整�
 
 ## <a name="peoplesoft"></a>PeopleSoft
 
-Oracle 的 PeopleSoft 應用程式套件包含人力資源和財務管理的軟體。 應用程式套件是多層式應用程式，包含人力資源管理系統（HRMS）、客戶關係管理（CRM）、財務和供應鏈管理（FSCM），以及企業效能管理（EPM）。
+Oracle 的 PeopleSoft 應用程式套件包含人力資源和財務管理的軟體。 應用程式套件是多層式應用程式，其中包括人力資源管理系統 (HRMS) 、客戶關係管理 (CRM) 、財務和供應鏈管理 (FSCM) 和企業效能管理 (EPM) 。
 
 建議您將軟體套件的每一層部署在自己的子網中。 需要 Oracle 資料庫或 Microsoft SQL Server 做為應用程式的後端資料庫。 本節討論使用 Oracle 資料庫後端部署 PeopleSoft 的詳細資料。
 
-以下是在跨雲端架構中部署 PeopleSoft 應用程式套件的標準架構（圖5）。
+以下是在跨雲端架構中部署 PeopleSoft 應用程式套件的標準架構 (圖 5) 。
 
 ![跨雲端架構 PeopleSoft](media/oracle-oci-applications/peoplesoft-arch-cross-cloud.png)
 
@@ -164,7 +165,7 @@ Oracle 的 PeopleSoft 應用程式套件包含人力資源和財務管理的軟�
 
 在此範例架構中，Azure 中的虛擬網路會使用跨雲端互連連線到 OCI 中的虛擬雲端網路。 應用層會在 Azure 中設定，而資料庫會在 OCI 中設定。 建議使用網路安全性群組，將每個元件部署到它自己的子網，以只允許來自特定埠上特定子網的流量。
 
-此架構也可以針對部署在 Azure 上，並使用在區域的兩個可用性區域中設定為 Oracle Data Guard 的高可用性 Oracle 資料庫來進行調整。 下圖（圖6）是此架構模式的範例：
+此架構也可以針對部署在 Azure 上，並使用在區域的兩個可用性區域中設定為 Oracle Data Guard 的高可用性 Oracle 資料庫來進行調整。 下圖 ([圖 6]) 是此架構模式的範例：
 
 ![PeopleSoft 僅限 Azure 的架構](media/oracle-oci-applications/peoplesoft-arch-azure.png)
 

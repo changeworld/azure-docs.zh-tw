@@ -8,11 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 752529454a5b6293d9cbfdf8378b46947aed5a0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edf669eb813240505cba8faef41e166785cc5b18
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77564639"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232061"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>整合 Azure 時間序列深入解析與遠端監視
 
@@ -61,7 +62,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
     | 環境名稱 | 下列螢幕擷取畫面會使用名稱 **contorosrmtsi**。 當您完成此步驟時，請選擇您自己的唯一名稱。 |
     | 訂用帳戶 | 在下拉式清單中選取您的 Azure 訂用帳戶。 |
     | 資源群組 | **使用現有**的。 選取現有遠端監視資源群組的名稱。 |
-    | 位置 | 我們使用**美國東部**。 如果可能的話，請在與遠端監視解決方案相同的區域中建立環境。 |
+    | Location | 我們使用**美國東部**。 如果可能的話，請在與遠端監視解決方案相同的區域中建立環境。 |
     | SKU |**S1** |
     | Capacity | **1** |
 
@@ -79,7 +80,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
     ![檢視事件來源](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources.png)
 
-1. 按一下 **[新增]** 。
+1. 按一下 [新增]。
 
     ![新增事件來源](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources-add.png)
 
@@ -243,7 +244,7 @@ docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
 
 為以上已更新的微服務設定 `standard` 部署環境
 
-1. 在命令列上執行 `kubectl proxy`。 如需詳細資訊，請參閱[存取 Kubernetes API](https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/#using-kubectl-to-start-a-proxy-server)。
+1. 在命令列上執行 `kubectl proxy`。 如需詳細資訊，請參閱[存取 Kubernetes API](https://kubernetes.io/docs/reference/access-authn-authz/)。
 
 1. 開啟 Kubernetes 管理主控台。
 

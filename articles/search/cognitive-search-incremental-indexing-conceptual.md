@@ -1,5 +1,5 @@
 ---
-title: 累加式擴充概念（預覽）
+title: " (預覽) 的累加式擴充概念"
 titleSuffix: Azure Cognitive Search
 description: 從 Azure 儲存體中的 AI 擴充管線快取中繼內容和增量變更，以保留現有已處理檔的投資。 此功能目前為公開預覽狀態。
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: d4b36f00bad8c06c2f62794fa03a85120af79965
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3957884a8c559194c436487050f0dbc09acf0441
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557394"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232503"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure 認知搜尋中的增量擴充和快取
 
@@ -22,7 +22,7 @@ ms.locfileid: "85557394"
 
 累加*式擴充*是以[技能集](cognitive-search-working-with-skillsets.md)為目標的功能。 它會利用 Azure 儲存體來儲存擴充管線所發出的處理輸出，以供未來的索引子執行重複使用。 在可能的情況下，索引子會重複使用仍然有效的任何快取輸出。 
 
-增量擴充不僅會保留您對處理的金額（特別是 OCR 和影像處理），也可讓系統更有效率。 快取結構和內容時，索引子可以判斷哪些技能已變更，並只執行已修改的技能，以及任何下游相依技能。 
+增量擴充不僅會保留您在處理 (的金額，特別是 OCR 和影像處理) 但也可讓系統更有效率。 快取結構和內容時，索引子可以判斷哪些技能已變更，並只執行已修改的技能，以及任何下游相依技能。 
 
 使用累加式快取的工作流程包含下列步驟：
 
@@ -75,13 +75,13 @@ ms.locfileid: "85557394"
 
 ### <a name="prioritize-new-documents"></a>設定新檔的優先順序
 
-設定 `enableReprocessing` 屬性，以控制已在快取中表示的傳入檔處理。 如果為 `true` （預設值），則當您重新執行索引子時，已在快取中的檔會被重新處理，前提是您的技能更新會影響到 
+設定 `enableReprocessing` 屬性，以控制已在快取中表示的傳入檔處理。 當 `true` (預設) 時，如果您的技能更新會影響該檔，則當您重新執行索引子時，已經在快取中的檔就會重新處理。 
 
 若 `false` 為，則不會重新處理現有的檔，並有效地排列現有內容的新內送內容優先順序。 您應該只暫時將設 `enableReprocessing` 為 `false` 。 為了確保主體間的一致性， `enableReprocessing` 應該是 `true` 大部分的時間，確保所有檔（包括新的和現有的）都是根據目前的技能集定義來有效。
 
 ### <a name="bypass-skillset-evaluation"></a>略過技能集評估
 
-修改技能集和重新處理該技能集通常會直接處理。 不過，技能集的某些變更不會導致重新處理（例如，將自訂技能部署到新位置或使用新的存取金鑰）。 最有可能的是，對技能集本身的物質沒有真正影響的周邊修改。 
+修改技能集和重新處理該技能集通常會直接處理。 不過，技能集的某些變更不會導致重新處理 (例如，將自訂技能部署到新位置，或使用新的存取金鑰) 。 最有可能的是，對技能集本身的物質沒有真正影響的周邊修改。 
 
 如果您知道技能集的變更確實是表面，您應該將參數設定為來覆寫技能集評估 `disableCacheReprocessingChangeDetection` `true` ：
 
@@ -107,9 +107,9 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 
 ### <a name="force-skillset-evaluation"></a>強制技能集評估
 
-快取的目的是要避免不必要的處理，但假設您變更了索引子無法偵測的技能（例如，變更外部程式碼中的某個專案，例如自訂技能）。
+快取的目的是要避免不必要的處理，但假設您變更了索引子不會偵測到的技能 (例如，變更外部程式碼中的專案，例如自訂技能) 。
 
-在此情況下，您可以使用[重設技能](https://docs.microsoft.com/rest/api/searchservice/reset-skills)來強制重新處理特定技能，包括任何相依于該技能輸出的下游技能。 此 API 會接受 POST 要求，其中包含應失效並標示為重新處理的技能清單。 重設技能之後，請執行索引子來叫用管線。
+在此情況下，您可以使用[重設技能](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills)來強制重新處理特定技能，包括任何相依于該技能輸出的下游技能。 此 API 會接受 POST 要求，其中包含應失效並標示為重新處理的技能清單。 重設技能之後，請執行索引子來叫用管線。
 
 ## <a name="change-detection"></a>變更偵測
 
@@ -148,19 +148,19 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 * 變更知識存放區投射，導致文件重新投射
 * 索引子的輸出欄位對應已變更，導致文件重新投射至索引
 
-## <a name="api-reference"></a>API 參考資料
+## <a name="api-reference"></a>應用程式開發介面參考
 
 REST API 版本會 `2020-06-30-Preview` 透過索引子上的其他屬性提供累加擴充。 技能集和資料來源可以使用正式推出的版本。 除了參考檔之外，如需如何呼叫 Api 的詳細資訊，請參閱[設定增量擴充](search-howto-incremental-index.md)的快取。
 
-+ [建立索引子（api 版本 = 2020-06-30-Preview）](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) 
++ [建立索引子 (api 版本 = 2020-06-30-Preview) ](https://docs.microsoft.com/rest/api/searchservice/create-indexer) 
 
-+ [更新索引子（api 版本 = 2020-06-30-Preview）](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) 
++ [更新索引子 (api 版本 = 2020-06-30-Preview) ](https://docs.microsoft.com/rest/api/searchservice/update-indexer) 
 
-+ [Update 技能集（api 版本 = 2020-06-30）](https://docs.microsoft.com/rest/api/searchservice/update-skillset) （要求上的新 URI 參數）
++ [更新技能集 (api 版本 = 2020-06-30) ](https://docs.microsoft.com/rest/api/searchservice/update-skillset) (要求的新 URI 參數) 
 
-+ [重設技能（api 版本 = 2020-06-30）](https://docs.microsoft.com/rest/api/searchservice/reset-skills)
++ [重設技能 (api 版本 = 2020-06-30) ](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills)
 
-+ 資料庫索引子（Azure SQL、Cosmos DB）。 某些索引子會透過查詢抓取資料。 若為抓取資料的查詢，[更新資料來源](https://docs.microsoft.com/rest/api/searchservice/update-data-source)支援要求**ignoreResetRequirement**上的新參數， `true` 當您的更新動作不應使快取失效時，應將其設定為。 
++ Azure SQL (的資料庫索引子，Cosmos DB) 。 某些索引子會透過查詢抓取資料。 若為抓取資料的查詢，[更新資料來源](https://docs.microsoft.com/rest/api/searchservice/update-data-source)支援要求**ignoreResetRequirement**上的新參數， `true` 當您的更新動作不應使快取失效時，應將其設定為。 
 
   請謹慎使用**ignoreResetRequirement** ，因為它可能會導致不容易偵測到的資料中發生非預期的不一致。
 

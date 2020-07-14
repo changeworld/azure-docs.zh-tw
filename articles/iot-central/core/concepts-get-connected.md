@@ -3,19 +3,19 @@ title: Azure IoT Central 中的裝置連線能力 | Microsoft Docs
 description: 本文介紹 Azure IoT Central 裝置連線能力的重要相關概念
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 06/26/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: aa6aa7a8d98ae756a65a2618371c320118875c42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a66613406de66cf9478b90d4ad58c115a30fdf5d
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710434"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224726"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>連線至 Azure IoT Central
 
@@ -25,14 +25,14 @@ ms.locfileid: "84710434"
 
 一般來說，您必須先在應用程式中註冊裝置，才能進行連接。 不過，IoT Central 支援[可在未先註冊裝置](#connect-without-registering-devices)的情況下進行連線的案例。
 
-IoT Central 使用[Azure IoT 中樞裝置布建服務（DPS）](../../iot-dps/about-iot-dps.md)來管理連接程式。 裝置會先連線到 DPS 端點，以取得連線到您的應用程式所需的資訊。 就內部而言，您的 IoT Central 應用程式會使用 IoT 中樞來處理裝置連線能力。 使用 DPS 可實現如下效果：
+IoT Central 會使用[Azure IoT 中樞裝置布建服務 (DPS) ](../../iot-dps/about-iot-dps.md)來管理連接程式。 裝置會先連線到 DPS 端點，以取得連線到您的應用程式所需的資訊。 就內部而言，您的 IoT Central 應用程式會使用 IoT 中樞來處理裝置連線能力。 使用 DPS 可實現如下效果：
 
 - 讓 IoT Central 支援大規模的裝置上線和連線。
 - 讓您產生裝置認證並在離線狀態下設定裝置，而不需要透過 IoT Central UI 來註冊裝置。
 - 讓您使用自己的裝置識別碼在 IoT Central 中註冊裝置。 使用自己的裝置識別碼可簡化與現有後台系統的整合。
 - 讓您以單一且一致的方式將裝置連線到 IoT Central。
 
-為了保護裝置與應用程式之間的通訊安全，IoT Central 支援共用存取簽章（SAS）和 x.509 憑證。 X.509 憑證建議用於生產環境中。
+為了保護裝置與應用程式之間的通訊安全，IoT Central 支援共用存取簽章 (SAS) 和 x.509 憑證。 X.509 憑證建議用於生產環境中。
 
 本文說明下列使用案例：
 
@@ -72,27 +72,48 @@ IoT Central 使用[Azure IoT 中樞裝置布建服務（DPS）](../../iot-dps/ab
 
 在生產環境中，使用 x.509 憑證是 IoT Central 的建議裝置驗證機制。 若要深入了解，請參閱[使用 X.509 CA 憑證進行裝置驗證](../../iot-hub/iot-hub-x509ca-overview.md)。
 
-在您使用 x.509 憑證來連接裝置之前，請先在應用程式中新增並驗證中繼或根 x.509 憑證。 裝置必須使用從根或中繼憑證產生的分葉 x.509 憑證。
+將具有 x.509 憑證的裝置連接到您的應用程式：
 
-### <a name="add-and-verify-a-root-or-intermediate-certificate"></a>新增及驗證根或中繼憑證
+1. 建立使用**憑證 (x.509) **證明類型的*註冊群組*。
+2. 新增並驗證註冊群組中的中繼或根 x.509 憑證。
+3. 註冊並聯機使用分葉 x.509 憑證的裝置（從註冊群組中的根或中繼憑證所產生）。
 
-流覽至 [系統管理] > [裝置連線] **> 管理主要憑證**]，然後新增您用來產生裝置憑證的 x.509 根或中繼憑證。
+### <a name="create-an-enrollment-group"></a>建立註冊群組
 
-![連線設定](media/concepts-get-connected/manage-x509-certificate.png)
+[註冊群組](../../iot-dps/concepts-service.md#enrollment)是共用相同證明類型的一組裝置。 這兩種支援的證明類型為 x.509 憑證和 SAS：
 
-驗證憑證擁有權可確保上傳憑證的人員擁有憑證的私密金鑰。 若要驗證憑證：
+- 在 x.509 註冊群組中，連線到 IoT Central 的所有裝置都會使用從註冊群組中的根或中繼憑證所產生的分葉 x.509 憑證。
+- 在 SAS 註冊群組中，連線到 IoT Central 的所有裝置都會使用從註冊群組中的 SAS 權杖所產生的 SAS 權杖。
 
-  1. 選取 [**驗證碼**] 旁的按鈕，以產生程式碼。
-  1. 使用您在上一個步驟中產生的驗證碼來建立 x.509 驗證憑證。 將憑證儲存為 .cer 檔案。
-  1. 上傳已簽署的驗證憑證，然後選取 [**驗證**]。 驗證成功時，會將憑證標示為**已驗證**。
+每個 IoT Central 應用程式中的兩個預設註冊群組是 SAS 註冊群組，一個用於 IoT 裝置，另一個用於 Azure IoT Edge 裝置。 若要建立 x.509 註冊群組，請流覽至 [**裝置**連線] 頁面，然後選取 [ **+ 新增註冊群組**]：
+
+:::image type="content" source="media/concepts-get-connected/add-enrollment-group.png" alt-text="新增 x.509 註冊群組螢幕擷取畫面":::
+
+### <a name="add-and-verify-a-root-or-intermediate-x509-certificate"></a>新增並驗證根或中繼的 x.509 憑證
+
+若要將根或中繼憑證新增至您的註冊群組並加以驗證：
+
+1. 流覽至您剛才建立的 x.509 註冊群組。 您可以選擇新增主要和次要 x.509 憑證。 選取 [ **+ 管理主要**]。
+
+1. 在 [**主要憑證] 頁面**上，上傳您的主要 x.509 憑證。 這是您的根或中繼憑證：
+
+    :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="主要憑證螢幕擷取畫面":::
+
+1. 使用**驗證碼**，在您所使用的工具中產生驗證碼。 然後選取 [**驗證**] 來上傳驗證憑證。
+
+1. 驗證成功時，您會看到下列確認：
+
+    :::image type="content" source="media/concepts-get-connected/verified-primary-certificate.png" alt-text="已驗證的主要憑證螢幕擷取畫面":::
+
+驗證憑證擁有權可確保上傳憑證的人員擁有憑證的私密金鑰。
 
 如果您有安全性缺口或主要憑證設定為過期，請使用次要憑證來縮短停機時間。 當您更新主要憑證時，您可以繼續使用次要憑證來布建裝置。
 
 ### <a name="register-and-connect-devices"></a>註冊並連接裝置
 
-若要使用 x.509 憑證大量連線裝置，請先在應用程式中註冊裝置，方法是使用 CSV 檔案匯[入裝置識別碼和裝置名稱](howto-manage-devices.md#import-devices)。 裝置識別碼的大小寫都應該是小寫。
+若要使用 x.509 憑證大量連線裝置，請先使用 CSV 檔案，在您的應用程式中註冊裝置，以匯[入裝置識別碼和裝置名稱](howto-manage-devices.md#import-devices)。 裝置識別碼的大小寫都應該是小寫。
 
-使用上傳的根或中繼憑證，為您的裝置產生 x.509 分葉憑證。 使用**裝置識別碼**作為分 `CNAME` 葉憑證中的值。 您的裝置程式碼需要應用程式的**識別碼範圍**值、**裝置識別碼**和對應的裝置憑證。
+使用您上傳至 x.509 註冊群組的根或中繼憑證，為您的裝置產生 x.509 分葉憑證。 使用**裝置識別碼**作為分 `CNAME` 葉憑證中的值。 您的裝置程式碼需要應用程式的**識別碼範圍**值、**裝置識別碼**和對應的裝置憑證。
 
 #### <a name="sample-device-code"></a>範例裝置程式碼
 
@@ -122,9 +143,9 @@ IoT Central 使用[Azure IoT 中樞裝置布建服務（DPS）](../../iot-dps/ab
 
 ### <a name="connect-devices-that-use-sas-tokens-without-registering"></a>連接使用 SAS 權杖的裝置而不進行註冊
 
-1. 複製 IoT Central 應用程式的群組主要金鑰：
+1. 從 [ **SAS-IoT-裝置**] 註冊群組複製 [群組主要金鑰]：
 
-    ![應用程式群組主要 SAS 金鑰](media/concepts-get-connected/group-sas-keys.png)
+    :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="從 SAS 對主要金鑰進行群組-IoT-裝置註冊群組":::
 
 1. 使用[dps-keygen](https://www.npmjs.com/package/dps-keygen)工具來產生裝置 SAS 金鑰。 使用上一個步驟中的群組主要金鑰。 裝置識別碼必須是小寫：
 
@@ -145,7 +166,7 @@ IoT Central 使用[Azure IoT 中樞裝置布建服務（DPS）](../../iot-dps/ab
 
 ### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>連接使用 x.509 憑證但不註冊的裝置
 
-1. 在 IoT Central 應用程式中[新增並驗證根或中繼的 x.509 憑證](#connect-devices-using-x509-certificates)。
+1. [建立註冊群組](#create-an-enrollment-group)，然後在 IoT Central 應用程式中[新增並驗證根或中繼的 x.509 憑證](#add-and-verify-a-root-or-intermediate-x509-certificate)。
 
 1. 使用您新增至 IoT Central 應用程式的根或中繼憑證，為您的裝置產生分葉憑證。 使用與分葉憑證中的小寫裝置識別碼 `CNAME` 。
 
@@ -162,7 +183,7 @@ IoT Central 使用[Azure IoT 中樞裝置布建服務（DPS）](../../iot-dps/ab
 
 ## <a name="individual-enrollment-based-device-connectivity"></a>以個人註冊為基礎的裝置連線能力
 
-若客戶連線的裝置都有自己的驗證認證，請使用個別註冊。 個別註冊是允許連接的單一裝置專案。 個別註冊可以使用 x.509 分葉憑證或 SAS 權杖（來自實體或虛擬的可信賴平臺模組）作為證明機制。 個別註冊中的裝置識別碼（也稱為註冊識別碼）是英數位元、小寫，而且可能包含連字號。 如需詳細資訊，請參閱[DPS 個別註冊](https://docs.microsoft.com/azure/iot-dps/concepts-service#individual-enrollment)。
+若客戶連線的裝置都有自己的驗證認證，請使用個別註冊。 個別註冊是允許連接的單一裝置專案。 個別註冊可以使用 x.509 分葉憑證或 SAS 權杖 (從實體或虛擬的可信賴平臺模組) 作為證明機制。 在個別註冊中，裝置識別碼 (也稱為註冊識別碼) 是英數位元、小寫，而且可能包含連字號。 如需詳細資訊，請參閱[DPS 個別註冊](https://docs.microsoft.com/azure/iot-dps/concepts-service#individual-enrollment)。
 
 > [!NOTE]
 > 當您建立裝置的個別註冊時，其優先順序會高於 IoT Central 應用程式中的預設群組註冊選項。
@@ -171,17 +192,17 @@ IoT Central 使用[Azure IoT 中樞裝置布建服務（DPS）](../../iot-dps/ab
 
 IoT Central 支援個別註冊的下列證明機制：
 
-- **對稱金鑰證明：** 對稱金鑰證明是使用 DPS 實例驗證裝置的簡單方法。 若要建立使用對稱金鑰的個別註冊，請開啟 [**裝置**連線] 頁面，選取 [**個別註冊**] 做為連線方法，以及 [**共用存取簽章（SAS）** ] 做為機制。 輸入 base64 編碼的主要和次要金鑰，然後儲存您的變更。 使用**識別碼範圍**、**裝置識別碼**，以及主要或次要金鑰來連接您的裝置。
+- **對稱金鑰證明：** 對稱金鑰證明是使用 DPS 實例驗證裝置的簡單方法。 若要建立使用對稱金鑰的個別註冊，請開啟 [**裝置**連線] 頁面，選取 [**個別註冊**] 做為連線方法，並將 [共用存取簽章] ** (SAS) **作為 [機制]。 輸入 base64 編碼的主要和次要金鑰，然後儲存您的變更。 使用**識別碼範圍**、**裝置識別碼**，以及主要或次要金鑰來連接您的裝置。
 
     > [!TIP]
     > 若要進行測試，您可以使用**OpenSSL**來產生 base64 編碼的金鑰：`openssl rand -base64 64`
 
-- **X.509 憑證：** 若要建立使用 x.509 憑證的個別註冊，請開啟 [**裝置**連線] 頁面，選取 [**個別註冊**] 做為連線方法，以及 [**憑證（x.509）** ] 做為機制。 與個別註冊專案搭配使用的裝置憑證，必須將簽發者和主體 CN 設定為裝置識別碼。
+- **X.509 憑證：** 若要建立使用 x.509 憑證的個別註冊，請開啟 [**裝置**連線] 頁面，選取 [**個別註冊**] 做為連線方法，並將 [**憑證] (x.509) **作為 [機制]。 與個別註冊專案搭配使用的裝置憑證，必須將簽發者和主體 CN 設定為裝置識別碼。
 
     > [!TIP]
     > 若要進行測試，您可以使用[適用于 Node.js的 Azure IoT 裝置布建裝置 SDK 工具](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools)來產生自我簽署憑證：`node create_test_cert.js device "mytestdevice"`
 
-- **信賴平臺模組（TPM）證明：**[TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation)是一種硬體安全性模組。 使用 TPM 是連接裝置的其中一個最安全的方式。 本文假設您使用的是獨立、固件或整合的 TPM。 軟體模擬 Tpm 非常適合用於原型設計或測試，但不提供與離散、固件或整合式 Tpm 相同層級的安全性。 請勿在生產環境中使用軟體 Tpm。 若要建立使用 TPM 的個別註冊，請開啟 [**裝置**連線] 頁面，選取 [**個別註冊**] 做為 [連線方法]，將 [ **TPM** ] 做為機制。 輸入 TPM 簽署金鑰並儲存裝置連接資訊。
+- **信賴平臺模組 (TPM) 證明：**[TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation)是一種硬體安全性模組。 使用 TPM 是連接裝置的其中一個最安全的方式。 本文假設您使用的是獨立、固件或整合的 TPM。 軟體模擬 Tpm 非常適合用於原型設計或測試，但不提供與離散、固件或整合式 Tpm 相同層級的安全性。 請勿在生產環境中使用軟體 Tpm。 若要建立使用 TPM 的個別註冊，請開啟 [**裝置**連線] 頁面，選取 [**個別註冊**] 做為 [連線方法]，將 [ **TPM** ] 做為機制。 輸入 TPM 簽署金鑰並儲存裝置連接資訊。
 
 ## <a name="automatically-associate-with-a-device-template"></a>自動與裝置範本產生關聯
 
@@ -258,7 +279,7 @@ Azure 裝置 Sdk 提供最簡單的方式來執行您的裝置程式碼。 可�
 | 遙測 | 裝置到雲端傳訊 |
 | 屬性 | 裝置對應項的報告屬性 |
 | 屬性 (可寫入) | 裝置對應項所需和所報告的屬性 |
-| Command | 直接方法 |
+| 命令 | 直接方法 |
 
 若要深入瞭解如何使用裝置 Sdk，請參閱[將 MXChip IoT DevKit 裝置連線到您的 Azure IoT Central 應用程式](howto-connect-devkit.md)，以取得範例程式碼。
 
