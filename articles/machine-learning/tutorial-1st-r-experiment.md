@@ -10,17 +10,17 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: dea5b3fb6cf20924666668e59e370399664d6b28
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d95c0fc9baf1e53e6643660726c72660719908ba
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684742"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483375"
 ---
-# <a name="tutorial-use-r-to-create-a-machine-learning-model"></a>教學課程：使用 R 建立機器學習模型
+# <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>教學課程：使用 R 建立機器學習模型 (預覽)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本教學課程中，您將使用 Azure Machine Learning R SDK 建立羅吉斯迴歸模型，以預測車禍致命的可能性。 您將了解 Azure Machine Learning 雲端資源如何與 R 搭配使用以提供可調整的環境，以進行模型的定型和部署。  
+在本教學課程中，您將使用 Azure Machine Learning R SDK (預覽) 建立羅吉斯迴歸模型，以預測車禍致命的可能性。 您將了解 Azure Machine Learning 雲端資源如何與 R 搭配使用以提供可調整的環境，以進行模型的定型和部署。  
 
 在本教學課程中，您會執行下列工作：
 > [!div class="checklist"]
@@ -59,31 +59,31 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 
 1. 選取訂用帳戶與您建立的工作區。
 
-1. 選取左側的 [筆記本]  。
+1. 選取左側的 [筆記本]。
 
 1. 開啟 **samples** 資料夾。
 
-1. 開啟 [R]  資料夾。
+1. 開啟 [R] 資料夾。
 
 1. 開啟其上有版本號碼的資料夾。  此號碼代表 R SDK 的目前版本。
 
-1. 選取 **vignettes** 資料夾右側的 **"..."** ，然後選取 [複製]  。
+1. 選取 **vignettes** 資料夾右側的 **"..."** ，然後選取 [複製]。
 
     ![複製資料夾](media/tutorial-1st-r-experiment/clone-folder.png)
 
 1. 資料夾清單隨即顯示，其中顯示每位存取工作區的使用者。  選取您的資料夾，以將 **vignettes** 資料夾複製到該處。
 
-## <a name="a-nameopenopen-rstudio"></a><a name="open">開啟 RStudio
+## <a name="open-rstudio"></a><a name="open"></a>開啟 RStudio
 
 在計算執行個體或 Notebook VM 上使用 RStudio 來執行本教學課程。  
 
-1. 選取左側的 [計算]  。
+1. 選取左側的 [計算]。
 
 1. 新增計算資源 (如果尚未存在的話)。
 
-1. 計算執行後，請使用 [RStudio]  連結來開啟 RStudio。
+1. 計算執行後，請使用 [RStudio] 連結來開啟 RStudio。
 
-1. 在 RStudio 中，您的 [vignettes]  資料夾會在 [使用者]  的下面幾層，位於右下方的 [檔案]  區段中。  在 [vignettes]  底下選取 [train-and-deploy-to-aci]  資料夾，以尋找本教學課程中所需的檔案。
+1. 在 RStudio 中，您的 [vignettes] 資料夾會在 [使用者] 的下面幾層，位於右下方的 [檔案] 區段中。  在 [vignettes] 底下選取 [train-and-deploy-to-aci] 資料夾，以尋找本教學課程中所需的檔案。
 
 > [!Important]
 > 本文的其餘部分會包含您在 *train-and-deploy-to-aci.Rmd* 檔案中看到的相同內容。 如果您曾使用過 RMarkdown，則可以使用該檔案中的程式碼。  或者，您也可以從該處複製/貼上程式碼片段，或從本文複製/貼到 R 指令碼或命令列中。  
@@ -407,10 +407,10 @@ delete_compute(compute)
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-您也可以保留資源群組，但刪除單一工作區。 顯示工作區屬性，然後選取 [刪除]  。
+您也可以保留資源群組，但刪除單一工作區。 顯示工作區屬性，然後選取 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 現在，您已完成使用 R 的第一個 Azure Machine Learning 實驗，接著請深入了解[適用於 R 的 Azure Machine Learning SDK](https://azure.github.io/azureml-sdk-for-r/index.html)。
 
-* 您可以從其他 vignettes  資料夾中的範例，深入了解使用 R 的 Azure Machine Learning。
+* 您可以從其他 vignettes 資料夾中的範例，深入了解使用 R 的 Azure Machine Learning。

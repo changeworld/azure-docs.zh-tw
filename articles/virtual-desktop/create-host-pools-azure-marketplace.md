@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8a20d7cb05f4529d5aa8a115b7d1db6e4d812be0
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 7c22ad844f0a543cfbf2e007ab2bfc8f0fe22ef7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100855"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362929"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>教學課程：透過 Azure 入口網站建立主機集區
 
@@ -67,20 +67,23 @@ ms.locfileid: "85100855"
    
    與您所選區域相關聯的 Azure 地理位置是將儲存此主機集區中繼資料及其相關物件的位置。 所選區域務必要在儲存服務中繼資料的地理位置內。
 
-     ![Azure 入口網站的螢幕擷取畫面，其中顯示已選取 [美國東部] 位置的 [位置] 欄位。 欄位旁的文字會顯示「中繼資料將儲存在美國東部」。](media/portal-location-field.png)
+     > [!div class="mx-imgBorder"]
+     > ![Azure 入口網站的螢幕擷取畫面，其中顯示已選取 美國東部 位置的 位置 欄位。 欄位旁的文字會顯示「中繼資料將儲存在美國東部」。](media/portal-location-field.png)
 
 8. 在 [主機集區類型] 底下，選取您的主機集區是 [個人] 還是 [集區]。
 
     - 如果您選擇 [個人]，請在 [指派類型] 欄位中選取 [自動] 或 [直接]。
 
-      ![[指派類型] 欄位下拉式功能表的螢幕擷取畫面。 使用者已選取 [自動]。](media/assignment-type-field.png)
+      > [!div class="mx-imgBorder"]
+      > ![指派類型 欄位下拉式功能表的螢幕擷取畫面。 使用者已選取 自動。](media/assignment-type-field.png)
 
 9. 如果您選擇 [集區]，請輸入下列資訊：
 
      - 針對 [最大工作階段限制]，請輸入您想要負載平衡至單一工作階段主機的最大使用者數目。
      - 針對 [負載平衡演算法]，請根據您的使用模式，選擇 [廣度優先] 或 [深度優先]。
 
-       ![已選取「集區」的指派類型欄位螢幕擷取畫面。 使用者將游標停留在 [負載平衡] 下拉式功能表上的 [廣度優先]。](media/pooled-assignment-type.png)
+       > [!div class="mx-imgBorder"]
+       > ![已選取「集區」的指派類型欄位螢幕擷取畫面。 使用者將游標停留在 [負載平衡] 下拉式功能表上的 廣度優先。](media/pooled-assignment-type.png)
 
 10. 完成時，選取 [下一步:VM 詳細資料]。
 
@@ -117,11 +120,13 @@ ms.locfileid: "85100855"
 
      如果您沒有看到想要的映像，請選取 [瀏覽所有映像和磁碟]，這可讓您選取資源庫中的另一個映像，或 Microsoft 及其他發行者所提供的映像。
 
-     ![Marketplace 的螢幕擷取畫面，其中顯示來自 Microsoft 的映像清單。](media/marketplace-images.png)
+     > [!div class="mx-imgBorder"]
+     > ![Marketplace 的螢幕擷取畫面，其中顯示來自 Microsoft 的映像清單。](media/marketplace-images.png)
 
      您也可以移至 [我的項目]，然後選擇您已經上傳的自訂映像。
 
-     ![[我的項目] 索引標籤的螢幕擷取畫面。](media/my-items.png)
+     > [!div class="mx-imgBorder"]
+     > ![[我的項目] 索引標籤的螢幕擷取畫面。](media/my-items.png)
 
     - 如果您選擇 [儲存體 Blob]，您可以透過 Hyper-V 或在 Azure VM 上運用您自己的映像組建。 您只需要輸入儲存體 Blob 中的映像位置來作為 URI 即可。
 
@@ -136,7 +141,8 @@ ms.locfileid: "85100855"
     >[!NOTE]
     >為了提高安全性，我們建議您不要開啟公用的輸入連接埠。
 
-    ![安全性群組頁面的螢幕擷取畫面，其中顯示下拉式功能表中的可用連接埠清單。](media/available-ports.png)
+    > [!div class="mx-imgBorder"]
+    > ![安全性群組頁面的螢幕擷取畫面，其中顯示下拉式功能表中的可用連接埠清單。](media/available-ports.png)
     
     如果您選擇 [進階]，請選取您已設定的現有網路安全性群組。
 

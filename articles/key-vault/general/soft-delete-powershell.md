@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f883b8527fff97ea3e16e7ffa7637c432dc33c2f
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 452dd99ae58858b661892e3f962fce8086d4503c
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84783345"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85444653"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>如何使用 Key Vault 虛刪除與 PowerShell
 
@@ -267,7 +267,7 @@ Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus
 
 開啟清除保護時，必須等到保留期間過後，才能清除處於已刪除狀態的保存庫或物件。 這類保存庫或物件仍可復原。 此功能可加強確保在保留期間已過之前，一律無法永久刪除保存庫或物件。 預設的保留期間為 90 天，但在建立金鑰保存庫期間，您可以將保留原則間隔設定為 7 到 90 天的值。 清除保護保留原則會使用相同的間隔。 保留原則間隔一經設定即無法變更。
 
-只有在已啟用虛刪除功能的情況下，才可以啟用清除保護。 
+只有在已啟用虛刪除功能的情況下，才可以啟用清除保護。 目前不支援停用清除保護。 
 
 若要在建立保存庫時開啟虛刪除和清除保護，請使用 [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0) Cmdlet：
 

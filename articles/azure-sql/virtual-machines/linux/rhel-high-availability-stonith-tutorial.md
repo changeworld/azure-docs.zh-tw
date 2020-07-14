@@ -7,19 +7,19 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
-ms.date: 06/18/2020
-ms.openlocfilehash: 56af098050315e1b2cb0bdde531cc38452db4738
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.date: 06/25/2020
+ms.openlocfilehash: cd4128328ac0c3e9f03ecc80abb6e7b17537b2ee
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079381"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483052"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教學課程：在 Azure 中為 RHEL 虛擬機器上的 SQL Server 設定可用性群組 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!NOTE]
-> 我們在本教學課程中，使用含 RHEL 7.6 的 SQL Server 2017 來設定高可用性，但使用 RHEL 7 或 RHEL 8 的 SQL Server 2019 也可行。 用以設定可用性群組資源的命令，在 RHEL 8 中已有所變更。如需正確命令的詳細資訊，請參閱[建立可用性群組資源](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource)一文與 RHEL 8 資源。
+> 我們在本教學課程中，使用含 RHEL 7.6 的 SQL Server 2017 來設定高可用性，但使用 RHEL 7 或 RHEL 8 的 SQL Server 2019 也可行。 用以設定 Pacemake 叢集和可用性群組資源的命令，在 RHEL 8 中已有所變更。如需正確命令的詳細資訊，請參閱[建立可用性群組資源](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource)一文與 RHEL 8 資源。
 
 在本教學課程中，您會了解如何：
 
@@ -103,32 +103,118 @@ az vm availability-set create \
 
     ```output
     [
-            {
-              "offer": "RHEL-HA",
-              "publisher": "RedHat",
-              "sku": "7.4",
-              "urn": "RedHat:RHEL-HA:7.4:7.4.2019062021",
-              "version": "7.4.2019062021"
-            },
-            {
-              "offer": "RHEL-HA",
-              "publisher": "RedHat",
-              "sku": "7.5",
-              "urn": "RedHat:RHEL-HA:7.5:7.5.2019062021",
-              "version": "7.5.2019062021"
-            },
-            {
-              "offer": "RHEL-HA",
-              "publisher": "RedHat",
-              "sku": "7.6",
-              "urn": "RedHat:RHEL-HA:7.6:7.6.2019062019",
-              "version": "7.6.2019062019"
-            }
+      {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "7.4",
+    "urn": "RedHat:RHEL-HA:7.4:7.4.2019062021",
+    "version": "7.4.2019062021"
+       },
+       {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "7.5",
+    "urn": "RedHat:RHEL-HA:7.5:7.5.2019062021",
+    "version": "7.5.2019062021"
+        },
+        {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "7.6",
+    "urn": "RedHat:RHEL-HA:7.6:7.6.2019062019",
+    "version": "7.6.2019062019"
+         },
+         {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "8.0",
+    "urn": "RedHat:RHEL-HA:8.0:8.0.2020021914",
+    "version": "8.0.2020021914"
+         },
+         {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "8.1",
+    "urn": "RedHat:RHEL-HA:8.1:8.1.2020021914",
+    "version": "8.1.2020021914"
+          },
+          {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "80-gen2",
+    "urn": "RedHat:RHEL-HA:80-gen2:8.0.2020021915",
+    "version": "8.0.2020021915"
+           },
+           {
+    "offer": "RHEL-HA",
+    "publisher": "RedHat",
+    "sku": "81_gen2",
+    "urn": "RedHat:RHEL-HA:81_gen2:8.1.2020021915",
+    "version": "8.1.2020021915"
+           }
     ]
     ```
 
-    在本教學課程中，我們將選擇映像 `RedHat:RHEL-HA:7.6:7.6.2019062019`。
+    在本教學課程中，我們會選擇 映像 `RedHat:RHEL-HA:7.6:7.6.2019062019` 作為 RHEL 7 的範例，然後選擇 `RedHat:RHEL-HA:8.1:8.1.2020021914` 作為 RHEL 8 的範例。
+    
+    您也可以選擇在 RHEL8-HA 映像上預先安裝 SQL Server 2019。 若要取得這些映像的清單，請執行下列命令：  
+    
+    ```azurecli-interactive
+    az vm image list --all --offer "sql2019-rhel8"
+    ```
 
+    您應該會看見下列結果：
+
+    ```output
+    [
+      {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "enterprise",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:enterprise:15.0.200317",
+    "version": "15.0.200317"
+       },
+       }
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "enterprise",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:enterprise:15.0.200512",
+    "version": "15.0.200512"
+       },
+       {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "sqldev",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:sqldev:15.0.200317",
+    "version": "15.0.200317"
+       },
+       {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "sqldev",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:sqldev:15.0.200512",
+    "version": "15.0.200512"
+       },
+       {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "standard",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:standard:15.0.200317",
+    "version": "15.0.200317"
+       },
+       {
+    "offer": "sql2019-rhel8",
+    "publisher": "MicrosoftSQLServer",
+    "sku": "standard",
+    "urn": "MicrosoftSQLServer:sql2019-rhel8:standard:15.0.200512",
+    "version": "15.0.200512"
+       }
+    ]
+    ```
+
+    如果您確實有使用上述其中一個映像來建立虛擬機器，則會預先安裝 SQL Server 2019。 如本文所述，跳過[安裝 SQL Server 和 mssql-tools](#install-sql-server-and-mssql-tools) 一節。
+    
+    
     > [!IMPORTANT]
     > 機器名稱不得超過 15 個字元，才能設定可用性群組。 使用者名稱不可包含大寫字元，且密碼必須有 12 個以上的字元。
 
@@ -276,9 +362,22 @@ ssh <username>@publicipaddress
 
     - 執行 `pcs cluster auth` 命令以驗證叢集節點時，系統會提示您輸入密碼。 請輸入先前建立之 **hacluster** 使用者的密碼。
 
+    **RHEL7**
+
     ```bash
     sudo pcs cluster auth <VM1> <VM2> <VM3> -u hacluster
     sudo pcs cluster setup --name az-hacluster <VM1> <VM2> <VM3> --token 30000
+    sudo pcs cluster start --all
+    sudo pcs cluster enable --all
+    ```
+
+    **RHEL8**
+
+    針對 RHEL 8，您將需要分別驗證節點。 出現提示時，請手動輸入 **hacluster** 的使用者名稱和密碼。
+
+    ```bash
+    sudo pcs host auth <node1> <node2> <node3>
+    sudo pcs cluster setup <clusterName> <node1> <node2> <node3>
     sudo pcs cluster start --all
     sudo pcs cluster enable --all
     ```
@@ -289,6 +388,8 @@ ssh <username>@publicipaddress
     sudo pcs status
     ```
 
+   **RHEL 7** 
+   
     如果所有節點都已連線，您將看到如下的輸出：
 
     ```output
@@ -315,7 +416,36 @@ ssh <username>@publicipaddress
           pacemaker: active/enabled
           pcsd: active/enabled
     ```
-
+   
+   **RHEL 8** 
+   
+    ```output
+    Cluster name: az-hacluster
+     
+    WARNINGS:
+    No stonith devices and stonith-enabled is not false
+     
+    Cluster Summary:
+    * Stack: corosync
+    * Current DC: <VM2> (version 1.1.19-8.el7_6.5-c3c624ea3d) - partition with quorum
+    * Last updated: Fri Aug 23 18:27:57 2019
+    * Last change: Fri Aug 23 18:27:56 2019 by hacluster via crmd on <VM2>
+    * 3 nodes configured
+    * 0 resource instances configured
+     
+   Node List:
+    * Online: [ <VM1> <VM2> <VM3> ]
+   
+   Full List of Resources:
+   * No resources
+     
+   Daemon Status:
+          corosync: active/enabled
+          pacemaker: active/enabled
+          pcsd: active/enabled
+    
+    ```
+    
 1. 將即時叢集中的預期投票設定為 3。 此命令只會對即時叢集產生影響，而不會變更組態檔。
 
     在所有節點上，使用下列命令設定預期的投票：
@@ -469,12 +599,18 @@ sudo firewall-cmd --reload
 ```
 
 ## <a name="install-sql-server-and-mssql-tools"></a>安裝 SQL Server 和 mssql-tools
- 
-依照下一節的指示，在 VM 上安裝 SQL Server 和 mssql-tools。 請在所有節點上執行這些動作。 如需詳細資訊，請參閱[在 Red Hat VM 上安裝 SQL Server](/sql/linux/quickstart-install-connect-red-hat)。
+
+> [!NOTE]
+> 如果您已建立在 RHEL8-HA 上預先安裝 SQL Server 2019 的 VM，可以跳過下列安裝 SQL Server 和 mssql-tools 的步驟，並在所有 VM 上執行 `sudo /opt/mssql/bin/mssql-conf set-sa-password` 命令來設定 sa 密碼後，開始進行**設定可用性群組**區段。
+
+依照下一節的指示，在 VM 上安裝 SQL Server 和 mssql-tools。 您可以選擇下列其中一個範例，將 SQL Server 2017 安裝在 RHEL 7，或將 SQL Server 2019 安裝在 RHEL 8 上。 請在所有節點上執行這些動作。 如需詳細資訊，請參閱[在 Red Hat VM 上安裝 SQL Server](/sql/linux/quickstart-install-connect-red-hat)。
+
 
 ### <a name="installing-sql-server-on-the-vms"></a>在 VM 上安裝 SQL Server
 
 下列命令可用來安裝 SQL Server：
+
+**RHEL 7 與 SQL Server 2017** 
 
 ```bash
 sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/7/mssql-server-2017.repo
@@ -483,6 +619,14 @@ sudo /opt/mssql/bin/mssql-conf setup
 sudo yum install mssql-server-ha
 ```
 
+**RHEL 8 與 SQL Server 2019** 
+
+```bash
+sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/8/mssql-server-2019.repo
+sudo yum install -y mssql-server
+sudo /opt/mssql/bin/mssql-conf setup
+sudo yum install mssql-server-ha
+```
 ### <a name="open-firewall-port-1433-for-remote-connections"></a>開啟防火牆連接埠 1433 以進行遠端連線
 
 您必須在 VM 上開啟連接埠 1433，才能從遠端連線。 請使用下列命令，在每個 VM 的防火牆中開啟連接埠 1433：
@@ -496,8 +640,17 @@ sudo firewall-cmd --reload
 
 下列命令可用來安裝 SQL Server 命令列工具。 如需詳細資訊，請參閱[安裝 SQL Server 命令列工具](/sql/linux/quickstart-install-connect-red-hat#tools)。
 
+**RHEL 7** 
+
 ```bash
 sudo curl -o /etc/yum.repos.d/msprod.repo https://packages.microsoft.com/config/rhel/7/prod.repo
+sudo yum install -y mssql-tools unixODBC-devel
+```
+
+**RHEL 8** 
+
+```bash
+sudo curl -o /etc/yum.repos.d/msprod.repo https://packages.microsoft.com/config/rhel/8/prod.repo
 sudo yum install -y mssql-tools unixODBC-devel
 ```
  
@@ -796,26 +949,47 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
 
 ### <a name="create-the-ag-cluster-resource"></a>建立 AG 叢集資源
 
-1. 使用下列命令，在可用性群組 `ag1` 中建立資源 `ag_cluster`。
+1. 根據稍早選擇的環境，使用下列其中一個命令，在可用性群組 `ag1` 中建立資源 `ag_cluster`。
 
-    ```bash
-    sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
-    ```
+      **RHEL 7** 
+  
+        ```bash
+        sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
+        ```
 
-1. 檢查並確定您的資源已連線，然後再繼續使用下列命令：
+      **RHEL 8** 
+  
+        ```bash
+        sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s promotable notify=true
+        ```
+
+2. 檢查並確定您的資源已連線，然後再繼續使用下列命令：
 
     ```bash
     sudo pcs resource
     ```
 
     您應該會看見下列輸出：
-
+    
+    **RHEL 7** 
+    
     ```output
     [<username>@VM1 ~]$ sudo pcs resource
     Master/Slave Set: ag_cluster-master [ag_cluster]
     Masters: [ <VM1> ]
     Slaves: [ <VM2> <VM3> ]
     ```
+    
+    **RHEL 8** 
+    
+    ```output
+    [<username>@VM1 ~]$ sudo pcs resource
+    * Clone Set: ag_cluster-clone [ag_cluster] (promotable):
+    * ag_cluster             (ocf::mssql:ag) :            Slave VMrhel3 (Monitoring) 
+    * ag_cluster             (ocf::mssql:ag) :            Master VMrhel1 (Monitoring)
+    * ag_cluster             (ocf::mssql:ag) :            Slave VMrhel2 (Monitoring)
+    ```
+
 
 ### <a name="create-a-virtual-ip-resource"></a>建立虛擬 IP 資源
 
@@ -827,13 +1001,13 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
     # The above will scan for all IP addresses that are already occupied in the 10.0.0.x space.
     ```
 
-1. 將 **stonith-enabled** 屬性設定為 false
+2. 將 **stonith-enabled** 屬性設定為 false
 
     ```bash
     sudo pcs property set stonith-enabled=false
     ```
 
-1. 使用下列命令建立虛擬 IP 資源：
+3. 使用下列命令建立虛擬 IP 資源：
 
     - 下方的 `<availableIP>` 值取代為未使用的 IP 位址。
 
@@ -845,23 +1019,41 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
 
 1. 為了確保 IP 位址和 AG 資源在相同的節點上執行，必須設定共置限制式。 執行以下命令：
 
+   **RHEL 7**
+  
     ```bash
     sudo pcs constraint colocation add virtualip ag_cluster-master INFINITY with-rsc-role=Master
     ```
 
-1. 建立排序限制式，以確保 AG 資源會在 IP 位址之前啟動並執行。 雖然共置限制式隱含排序限制式，但此步驟會強制執行它。
+   **RHEL 8**
+   
+    ```bash
+     sudo pcs constraint colocation add virtualip with master ag_cluster-clone INFINITY with-rsc-role=Master
+    ```
+  
+2. 建立排序限制式，以確保 AG 資源會在 IP 位址之前啟動並執行。 雖然共置限制式隱含排序限制式，但此步驟會強制執行它。
 
+   **RHEL 7**
+   
     ```bash
     sudo pcs constraint order promote ag_cluster-master then start virtualip
     ```
 
-1. 若要驗證限制式，請執行下列命令：
+   **RHEL 8**
+   
+    ```bash
+    sudo pcs constraint order promote ag_cluster-clone then start virtualip
+    ```
+  
+3. 若要驗證限制式，請執行下列命令：
 
     ```bash
     sudo pcs constraint list --full
     ```
 
     您應該會看見下列輸出：
+    
+    **RHEL 7**
 
     ```
     Location Constraints:
@@ -869,6 +1061,17 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
           promote ag_cluster-master then start virtualip (kind:Mandatory) (id:order-ag_cluster-master-virtualip-mandatory)
     Colocation Constraints:
           virtualip with ag_cluster-master (score:INFINITY) (with-rsc-role:Master) (id:colocation-virtualip-ag_cluster-master-INFINITY)
+    Ticket Constraints:
+    ```
+    
+    **RHEL 8**
+    
+    ```output
+    Location Constraints:
+    Ordering Constraints:
+            promote ag_cluster-clone then start virtualip (kind:Mandatory) (id:order-ag_cluster-clone-virtualip-mandatory)
+    Colocation Constraints:
+            virtualip with ag_cluster-clone (score:INFINITY) (with-rsc-role:Master) (id:colocation-virtualip-ag_cluster-clone-INFINITY)
     Ticket Constraints:
     ```
 
@@ -917,12 +1120,22 @@ Daemon Status:
 
 1. 執行下列命令，手動將主要複本容錯移轉至 `<VM2>`。 將 `<VM2>` 取代為您伺服器名稱的值。
 
+   **RHEL 7**
+   
     ```bash
     sudo pcs resource move ag_cluster-master <VM2> --master
     ```
 
-1. 如果您再次檢查限制式，您會看到因為手動容錯移轉而新增了另一個限制式：
+   **RHEL 8**
+   
+    ```bash
+    sudo pcs resource move ag_cluster-clone <VM2> --master
+    ```
 
+2. 如果您再次檢查限制式，您會看到因為手動容錯移轉而新增了另一個限制式：
+    
+    **RHEL 7**
+    
     ```output
     [<username>@VM1 ~]$ sudo pcs constraint list --full
     Location Constraints:
@@ -935,10 +1148,32 @@ Daemon Status:
     Ticket Constraints:
     ```
 
-1. 使用下列命令，移除識別碼為 `cli-prefer-ag_cluster-master` 的限制式：
+    **RHEL 8**
+    
+    ```output
+    [<username>@VM1 ~]$ sudo pcs constraint list --full
+    Location Constraints:
+          Resource: ag_cluster-master
+            Enabled on: VM2 (score:INFINITY) (role: Master) (id:cli-prefer-ag_cluster-clone)
+    Ordering Constraints:
+            promote ag_cluster-clone then start virtualip (kind:Mandatory) (id:order-ag_cluster-clone-virtualip-mandatory)
+    Colocation Constraints:
+            virtualip with ag_cluster-clone (score:INFINITY) (with-rsc-role:Master) (id:colocation-virtualip-ag_cluster-clone-INFINITY)
+    Ticket Constraints:
+    ```
+    
+3. 使用下列命令，移除識別碼為 `cli-prefer-ag_cluster-master` 的限制式：
 
+    **RHEL 7**
+    
     ```bash
     sudo pcs constraint remove cli-prefer-ag_cluster-master
+    ```
+
+    **RHEL 8**
+    
+    ```bash
+    sudo pcs constraint remove cli-prefer-ag_cluster-clone
     ```
 
 1. 使用命令 `sudo pcs resource` 檢查您的叢集資源，您應該會看到此時的主要執行個體為 `<VM2>`。

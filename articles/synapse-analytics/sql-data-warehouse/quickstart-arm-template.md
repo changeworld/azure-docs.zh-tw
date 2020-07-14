@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 06/09/2020
-ms.openlocfilehash: 766a41b61f32804c7d7f59c946530f8e1a7b869a
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 3f84cd92a4c4f96831d39cac783df6710c5ea5f4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296265"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513409"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-sql-pool-by-using-an-arm-template"></a>快速入門：使用 ARM 範本建立 Azure Synapse Analytics SQL 集區
 
-此範本會建立已啟用透明資料加密的 Azure Synapse Analytics SQL 集區。 Synapse SQL 集區是已在 Azure Synapse 中正式推出的企業資料倉儲功能。
+此 Azure Resource Manager 範本 (ARM 範本) 會建立已啟用透明資料加密的 Azure Synapse Analytics SQL 集區。 Synapse SQL 集區是已在 Azure Synapse 中正式推出的企業資料倉儲功能。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -107,8 +107,8 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>後續步驟
 
-在此快速入門中，您已透過使用 Azure Resource Manager 範本建立 Azure Synapse Analytics SQL 集區，並已驗證該部署。 若要深入了解 Azure Synapse Analytics 和 Azure Resource Manager，請繼續閱讀下列文章。
+在此快速入門中，您已透過使用 ARM 範本建立 Azure Synapse Analytics SQL 集區，並已驗證該部署。 若要深入了解 Azure Synapse Analytics 和 Azure Resource Manager，請繼續閱讀下列文章。
 
 - 閱讀 [Azure Synapse Analytics 的概觀](sql-data-warehouse-overview-what-is.md)
 - 深入了解 [Azure Resource Manager](../../azure-resource-manager/management/overview.md)
-- [建立及部署第一個 Azure Resource Manager 範本](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+- [建立及部署您的第一個 ARM 範本](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)

@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
-ms.openlocfilehash: 14fe27c28e2eb6a527dc6f026916002cfb5b0147
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 4313d9fec9e858a5d30cfea2bbe7372e6a96169c
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84945245"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413887"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure 監視器 PowerShell 範例
 本文說明可協助您存取 Azure 監視器 功能的範例 PowerShell 命令。
@@ -220,6 +220,10 @@ Set-AzActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGr
 其他的 Webhook 屬性是選擇性的。 您可以使用 `Get-AzActivityLogAlert` 來取回活動記錄警示的內容。
 
 ## <a name="create-and-manage-autoscale-settings"></a>建立和管理自動調整設定
+
+> [!NOTE] 
+> 針對雲端服務 (Microsoft.ClassicCompute)，自動調整支援時間粒紋為 5分鐘 (PT5M)。 針對其他服務自動調整，支援最少 1 分鐘的時間粒紋 (PT1M)
+
 Web 應用程式、VM、雲端服務或虛擬機器擴展集之類的資源只能設定一個自動調整設定。
 不過，每個自動調整設定都可以有多個設定檔。 例如，一個用於以效能為基礎的調整設定檔，以及一個用於以排程為基礎的設定檔。 每個設定檔都可以設定多個規則。 如需有關自動調整的詳細資訊，請參閱 [如何自動調整應用程式](../../cloud-services/cloud-services-how-to-scale-portal.md)。
 

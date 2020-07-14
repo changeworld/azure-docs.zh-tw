@@ -5,27 +5,27 @@ author: mhopkins-msft
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 06/11/2020
+ms.date: 06/24/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.openlocfilehash: 37e751d78bddd76847a4859b6f24e37bec5c9acb
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: e8caf6af0b30809857fd59d88fd57e5e43010ae2
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84730487"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368340"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>教學課程：使用 Azure 儲存體在雲端中上傳影像資料
 
-本教學課程是一個系列的第一部分。 本教學課程會示範如何部署 Web 應用程式，其使用 Azure Blob 儲存體用戶端程式庫將映像上傳至儲存體帳戶。 完成後，您就有可儲存和顯示 Azure 儲存體映像資料的 Web 應用程式。
+本教學課程是一個系列的第一部分。 在本教學課程中，您將了解如何部署 Web 應用程式。 Web 應用程式會使用 Azure Blob 儲存體用戶端程式庫將映像上傳至儲存體帳戶。 完成後，您就有可儲存和顯示 Azure 儲存體映像資料的 Web 應用程式。
 
 # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
 ![.NET 中的影像大小調整器應用程式](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
+# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
 
-![Node.js V10 中的影像大小調整器應用程式](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![JavaScript 中的影像大小調整器應用程式](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 
@@ -46,7 +46,7 @@ ms.locfileid: "84730487"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-若要在本機安裝和使用 CLI，本教學課程要求您執行 Azure CLI 2.0.4 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 
+若要在本機安裝和使用 CLI，請執行 Azure CLI 2.0.4 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -97,28 +97,26 @@ images 容器的公用存取設為 `off`。 thumbnails 容器的公用存取設�
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
   -n $blobStorageAccount --query "[0].value" --output tsv)
 
-az storage container create -n images --account-name $blobStorageAccount \
+az storage container create --name images \
+  --account-name $blobStorageAccount \
   --account-key $blobStorageAccountKey
 
-az storage container create -n thumbnails --account-name $blobStorageAccount \
+az storage container create --name thumbnails \
+  --account-name $blobStorageAccount \
   --account-key $blobStorageAccountKey --public-access container
-
-echo "Make a note of your Blob storage account key..."
-echo $blobStorageAccountKey
 ```
 
 ```powershell
 $blobStorageAccountKey=$(az storage account keys list -g myResourceGroup `
   -n $blobStorageAccount --query "[0].value" --output tsv)
 
-az storage container create -n images --account-name $blobStorageAccount `
+az storage container create --name images `
+  --account-name $blobStorageAccount `
   --account-key $blobStorageAccountKey
 
-az storage container create -n thumbnails --account-name $blobStorageAccount `
+az storage container create --name thumbnails `
+  --account-name $blobStorageAccount `
   --account-key $blobStorageAccountKey --public-access container
-
-echo "Make a note of your Blob storage account key..."
-echo $blobStorageAccountKey
 ```
 
 請記下您的 Blob 儲存體帳戶名稱和金鑰。 範例應用程式會使用下列設定連線到儲存體帳戶，以上傳映像。 
@@ -177,20 +175,20 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
   --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ```
 
-# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
+# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
 
-應用程式服務支援數種將內容部署至 Web 應用程式的方法。 在本教學課程中，您會從[公用 GitHub 範例存放庫](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10)部署 Web 應用程式。 使用 [az webapp deployment source config](/cli/azure/webapp/deployment/source) 命令設定 Web 應用程式的 GitHub 部署。
+應用程式服務支援數種將內容部署至 Web 應用程式的方法。 在本教學課程中，您會從[公用 GitHub 範例存放庫](https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-stream-nodejs)部署 Web 應用程式。 使用 [az webapp deployment source config](/cli/azure/webapp/deployment/source) 命令設定 Web 應用程式的 GitHub 部署。
 
 ```bash
 az webapp deployment source config --name $webapp --resource-group myResourceGroup \
   --branch master --manual-integration \
-  --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10
+  --repo-url https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-stream-nodejs
 ```
 
 ```powershell
 az webapp deployment source config --name $webapp --resource-group myResourceGroup `
   --branch master --manual-integration `
-  --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10
+  --repo-url https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-stream-nodejs
 ```
 
 ---
@@ -217,9 +215,9 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
     AzureStorageConfig__AccountKey=$blobStorageAccountKey
 ```
 
-# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
+# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
 
-範例 Web 應用程式使用 [Azure 儲存體用戶端程式庫](https://github.com/Azure/azure-storage-js)要求存取權杖，其用來上傳影像。 儲存體 SDK 所使用的儲存體帳戶認證是在 Web 應用程式的應用程式設定中設定。 使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) 命令將應用程式設定新增至已部署的應用程式。
+範例 Web 應用程式會使用[適用於 JavaScript 的 Azure 儲存體用戶端程式庫](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage)來上傳映像。 儲存體帳戶認證是在 Web 應用程式的應用程式設定中設定。 使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) 命令將應用程式設定新增至已部署的應用程式。
 
 ```bash
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
@@ -243,7 +241,7 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
 
 # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-選取 [上傳相片] 區域以指定並上傳檔案，或將檔案拖曳到區域。 如果上傳成功，影像就會消失。 [產生的縮圖] 區段就會維持空白，直到我們在本主題稍後對其完成測試。
+選取 [上傳相片] 區域以指定並上傳檔案，或將檔案拖曳到區域。 如果上傳成功，影像就會消失。 [產生的縮圖] 區段就會維持空白，直到我們稍後在本教學課程中完成測試。
 
 ![在 .NET 中上傳相片](media/storage-upload-process-images/figure1.png)
 
@@ -283,16 +281,16 @@ public static async Task<bool> UploadFileToStorage(Stream fileStream, string fil
 | [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) | [StorageSharedKeyCredential(String, String) 建構函式](/dotnet/api/azure.storage.storagesharedkeycredential.-ctor) |
 | [BlobClient](/dotnet/api/azure.storage.blobs.blobclient) | [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) |
 
-# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
+# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
 
-選取 [選擇檔案] 來選取檔案，然後按一下 [上傳映像]。 [產生的縮圖] 區段就會維持空白，直到我們在本主題稍後對其完成測試。 
+選取 [選擇檔案] 來選取檔案，然後按一下 [上傳映像]。 [產生的縮圖] 區段就會維持空白，直到我們稍後在本教學課程中完成測試。
 
-![在 Node.js V10 中上傳相片](media/storage-upload-process-images/upload-app-nodejs.png)
+![在 Node.js 中上傳相片](media/storage-upload-process-images/upload-app-nodejs.png)
 
 在範例程式碼中，`post` 路由會負責將影像上傳至 Blob 容器中。 此路由會使用模組來協助處理上傳作業：
 
 - [multer](https://github.com/expressjs/multer) 會實作路由處理常式的上傳策略。
-- [into-stream](https://github.com/sindresorhus/into-stream) 會將緩衝區轉換為 [createBlockBlobFromStream](https://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html) 所需的資料流。
+- [into-stream](https://github.com/sindresorhus/into-stream) 會將緩衝區轉換為 [uploadStream](/javascript/api/%40azure/storage-blob/blockblobclient#uploadstream-readable--number--number--blockblobuploadstreamoptions-) 所需的資料流。
 
 當檔案傳送至路由時，檔案的內容在檔案上傳至 Blob 容器之前都會留在記憶體中。
 
@@ -300,34 +298,33 @@ public static async Task<bool> UploadFileToStorage(Stream fileStream, string fil
 > 將大型檔案載入記憶體中，可能會對 Web 應用程式的效能產生負面影響。 如果您預期使用者會發佈大型檔案，則可能應考慮在 Web 伺服器檔案系統上使用暫存檔案，然後排程上傳至 Blob 儲存體的作業。 在檔案放入 Blob 儲存體後，您即可將其從伺服器檔案系統中移除。
 
 ```javascript
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 const {
-  Aborter,
-  BlobURL,
-  BlockBlobURL,
-  ContainerURL,
-  ServiceURL,
-  StorageURL,
-  SharedKeyCredential,
-  uploadStreamToBlockBlob
+  BlobServiceClient,
+  StorageSharedKeyCredential,
+  newPipeline
 } = require('@azure/storage-blob');
 
 const express = require('express');
 const router = express.Router();
+const containerName1 = 'thumbnails';
 const multer = require('multer');
 const inMemoryStorage = multer.memoryStorage();
 const uploadStrategy = multer({ storage: inMemoryStorage }).single('image');
 const getStream = require('into-stream');
-const containerName = 'images';
+const containerName2 = 'images';
 const ONE_MEGABYTE = 1024 * 1024;
 const uploadOptions = { bufferSize: 4 * ONE_MEGABYTE, maxBuffers: 20 };
-const ONE_MINUTE = 60 * 1000;
-const aborter = Aborter.timeout(30 * ONE_MINUTE);
 
-const sharedKeyCredential = new SharedKeyCredential(
+const sharedKeyCredential = new StorageSharedKeyCredential(
   process.env.AZURE_STORAGE_ACCOUNT_NAME,
   process.env.AZURE_STORAGE_ACCOUNT_ACCESS_KEY);
-const pipeline = StorageURL.newPipeline(sharedKeyCredential);
-const serviceURL = new ServiceURL(
+const pipeline = newPipeline(sharedKeyCredential);
+
+const blobServiceClient = new BlobServiceClient(
   `https://${process.env.AZURE_STORAGE_ACCOUNT_NAME}.blob.core.windows.net`,
   pipeline
 );
@@ -335,31 +332,62 @@ const serviceURL = new ServiceURL(
 const getBlobName = originalName => {
   // Use a random number to generate a unique file name, 
   // removing "0." from the start of the string.
-  const identifier = Math.random().toString().replace(/0\./, ''); 
+  const identifier = Math.random().toString().replace(/0\./, '');
   return `${identifier}-${originalName}`;
 };
 
-router.post('/', uploadStrategy, async (req, res) => {
+router.get('/', async (req, res, next) => {
 
-    const blobName = getBlobName(req.file.originalname);
-    const stream = getStream(req.file.buffer);
-    const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);
-    const blobURL = BlobURL.fromContainerURL(containerURL, blobName);
-    const blockBlobURL = BlockBlobURL.fromBlobURL(blobURL);
+  let viewData;
 
-    try {
+  try {
+    const containerClient = blobServiceClient.getContainerClient(containerName1);
+    const listBlobsResponse = await containerClient.listBlobFlatSegment();
 
-      await uploadStreamToBlockBlob(aborter, stream,
-        blockBlobURL, uploadOptions.bufferSize, uploadOptions.maxBuffers);
-
-      res.render('success', { message: 'File uploaded to Azure Blob storage.' });   
-
-    } catch (err) {
-
-      res.render('error', { message: 'Something went wrong.' });
-
+    for await (const blob of listBlobsResponse.segment.blobItems) {
+      console.log(`Blob: ${blob.name}`);
     }
+
+    viewData = {
+      title: 'Home',
+      viewName: 'index',
+      accountName: process.env.AZURE_STORAGE_ACCOUNT_NAME,
+      containerName: containerName1
+    };
+
+    if (listBlobsResponse.segment.blobItems.length) {
+      viewData.thumbnails = listBlobsResponse.segment.blobItems;
+    }
+  } catch (err) {
+    viewData = {
+      title: 'Error',
+      viewName: 'error',
+      message: 'There was an error contacting the blob storage container.',
+      error: err
+    };
+    res.status(500);
+  } finally {
+    res.render(viewData.viewName, viewData);
+  }
 });
+
+router.post('/', uploadStrategy, async (req, res) => {
+  const blobName = getBlobName(req.file.originalname);
+  const stream = getStream(req.file.buffer);
+  const containerClient = blobServiceClient.getContainerClient(containerName2);;
+  const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+
+  try {
+    await blockBlobClient.uploadStream(stream,
+      uploadOptions.bufferSize, uploadOptions.maxBuffers,
+      { blobHTTPHeaders: { blobContentType: "image/jpeg" } });
+    res.render('success', { message: 'File uploaded to Azure Blob storage.' });
+  } catch (err) {
+    res.render('error', { message: err.message });
+  }
+});
+
+module.exports = router;
 ```
 
 ---
@@ -386,15 +414,15 @@ router.post('/', uploadStrategy, async (req, res) => {
 
 ![顯示新影像的 .NET 影像大小調整器應用程式](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
+# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
 
-![顯示新影像的 Node.js V10 影像大小調整器應用程式](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![顯示新影像的 Node.js 影像大小調整器應用程式](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 
-在本系列的第二部分，您會自動建立縮圖映像，因此您不需要此映像。 在 Azure 入口網站的 [縮圖] 容器中，選取您上傳的影像，然後選取 [刪除] 來刪除影像。 
+在本系列的第二部分，您會自動建立縮圖映像，因此您不需要此映像。 在 [縮圖] 容器中，選取您上傳的影像，然後選取 [刪除] 來移除影像。
 
-您可以啟用內容傳遞網路 (CDN)，從您的 Azure 儲存體快取內容。 如需如何在 Azure 儲存體帳戶啟用 CDN 的詳細資訊，請參閱[整合 Azure 儲存體帳戶與 Azure CDN](../../cdn/cdn-create-a-storage-account-with-cdn.md)。
+您可以啟用內容傳遞網路 (CDN)，從您的 Azure 儲存體快取內容。 如需詳細資訊，請參閱[整合 Azure 儲存體帳戶與 Azure CDN](../../cdn/cdn-create-a-storage-account-with-cdn.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -8,26 +8,24 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 14760eaef309ec5695b423b98e59a8ae1ab5cacb
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 35590fd8aefb8b6a90adeef52fabe773663403c2
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84886799"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510984"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>教學課程：診斷、修復及認可技能集的變更
 
 在本文中，您將使用 Azure 入口網站存取偵測工作階段，以對提供的技能集修復問題。 技能集有一些錯誤需要解決。 本教學課程將引導您完成偵錯工作階段，以識別並解決技能輸入和輸出的問題。
 
 > [!Important]
-> Azure 認知搜尋的偵測工作階段支援可[應要求](https://aka.ms/DebugSessions)以有限存取預覽版的形式提供。 預覽版功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 偵錯工作階段是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 >
-> 獲得預覽版的存取權之後，您就能夠使用 Azure 入口網站存取偵錯工作階段，並將其用於您的服務。
->   
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 > [!div class="checklist"]
 > * Azure 訂用帳戶。 建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，或使用您目前的訂用帳戶

@@ -8,24 +8,24 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: 1ff29be9cde4a2bd53f0edbe57f3eab603c1796f
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: f673fd4b49a33c2faf6bc8b489520f2a877b0689
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84739491"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513810"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>教學課程：使用 Azure Machine Learning 建置和部署自訂技能 
 
-在本教學課程中，您將使用[飯店評論資料集](https://www.kaggle.com/datafiniti/hotel-reviews) (依據 Creative Commons 授權 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt) 散佈)，使用 Azure Machine Learning 建立[自訂技能](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface)，以從評論擷取層面式情感。 這可讓您在相同評論內指派正面和負面情感，以正確歸類至已識別的實體，例如員工、會議室、大廳或集區。
+在本教學課程中，您將使用[飯店評論資料集](https://www.kaggle.com/datafiniti/hotel-reviews) (依據 Creative Commons 授權 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt) 散佈)，使用 Azure Machine Learning 建立[自訂技能](https://docs.microsoft.com/azure/search/cognitive-search-aml-skill)，以從評論擷取層面式情感。 這可讓您在相同評論內指派正面和負面情感，以正確歸類至已識別的實體，例如員工、會議室、大廳或集區。
 
-若要對層面式情感定型，您將使用 [nlp 食譜存放庫](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa)。 然後，此模型會部署為 Azure Kubernetes 叢集上的端點。 部署之後，模型就會新增至擴充管線，做為認知搜尋服務所使用的自訂技能。
+若要對 Azure Machine Learning 中的層面式情感模型定型，您將使用 [nlp 食譜存放庫](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa)。 然後，此模型會部署為 Azure Kubernetes 叢集上的端點。 部署之後，端點就會新增至擴充管線，做為認知搜尋服務所使用的 AML 技能。
 
 提供了兩個資料集。 如果您想要自行對模型定型，則需要 hotel_reviews_1000.csv 檔案。 偏好略過定型步驟嗎？ 下載 hotel_reviews_100.csv。
 
 > [!div class="checklist"]
 > * 建立 Azure 認知搜尋執行個體
-> * 建立 Azure Machine Learning 工作區
+> * 建立 Azure Machine Learning 工作區 (搜尋服務和工作區應位於相同的訂用帳戶中)
 > * 對模型定型並將其部署至 Azure Kubernetes 叢集
 > * 將 AI 擴充管線連結至已部署的模型
 > * 將來自已部署模型的輸出內嵌為自訂技能
@@ -98,7 +98,7 @@ ms.locfileid: "84739491"
 
 使用您自己的訂用帳戶時，在專案結束後確認您是否還需要您建立的資源，是很好的做法。 讓資源繼續執行可能會產生費用。 您可以個別刪除資源，或刪除資源群組以刪除整組資源。
 
-您可以使用左導覽窗格中的 [所有資源]**** 或 [資源群組]**** 連結，在入口網站中尋找和管理資源。
+您可以使用左導覽窗格中的 [所有資源] 或 [資源群組] 連結，在入口網站中尋找和管理資源。
 
 如果您使用免費服務，請記住您會有三個索引、索引子和資料來源的限制。 您可以在入口網站中刪除個別項目，以避免超出限制。
 

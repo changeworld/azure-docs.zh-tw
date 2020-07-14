@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f33992c7aa205e503c7de150adad7180ff823881
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: c0a8185d81966932c17fd3b0590b5f8ef2f7b6df
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85099668"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479788"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ibm-digital-business-automation-on-cloud"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 IBM Digital Business Automation on Cloud 整合
 
@@ -93,7 +93,7 @@ ms.locfileid: "85099668"
     > 如果 [識別碼] 和 [回覆 URL] 值未自動填入，則請根據您的需求手動填入這些值。
 
     > [!Note]
-    > 客戶可以透過 [DBAoC DevOps 小組](mailto:supportbpmoncloud@us.ibm.com)取得其雲端訂閱的中繼資料檔案。
+    > 客戶可以從[雲端客戶支援小組上的 IBM 數位商務自動化](mailto:supportbpmoncloud@us.ibm.com)，取得其雲端訂用帳戶中繼資料檔案。
 
 1. 在 [基本 SAML 設定] 區段上，如果您想要以 **IDP** 起始模式設定應用程式，請輸入下列欄位的值 (如果您沒有**服務提供者中繼資料檔案**的話)：
 

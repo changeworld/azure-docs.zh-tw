@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: e02f6946ff6f520fec63ead7e14e94f33182357f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3e6f94c3b44cd3316a25c356dc5e33835f8c9337
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682286"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85553801"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>教學課程：使用授權碼流程來登入使用者，並從 JavaScript 單頁應用程式 (SPA) 呼叫 Microsoft Graph API
 
@@ -42,10 +42,7 @@ MSAL.js 2.0 改良了 MSAL.js 1.0，可在瀏覽器中支援授權碼流程，�
 
 本教學課程會使用下列程式庫：
 
-| | |
-|---|---|
-|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)|適用於 JavaScript v2.0 瀏覽器套件的 Microsoft 驗證程式庫|
-| | |
+[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) 適用於 JavaScript v2.0 的 Microsoft 驗證程式庫瀏覽器套件
 
 ## <a name="get-the-completed-code-sample"></a>取得完整的程式碼範例
 
@@ -57,7 +54,7 @@ MSAL.js 2.0 改良了 MSAL.js 1.0，可在瀏覽器中支援授權碼流程，�
 
 若要繼續進行本教學課程並自行建置應用程式，請移至下一節[必要條件](#prerequisites)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 用於執行本機網頁伺服器的 [Node.js](https://nodejs.org/en/download/)
 * [Visual Studio Code](https://code.visualstudio.com/download) 或其他程式碼編輯器

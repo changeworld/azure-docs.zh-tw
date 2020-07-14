@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 67b476b2ec6ec0c841639f7aa1d94a0d9d3d3304
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: d670ee0cb2396858d908ac13f70819efd57d7f63
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262326"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391820"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>使用範例用戶端應用程式探索 Azure Digital Twins
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 本教學課程介紹實作命令列用戶端應用程式的範例應用程式，可用於與 Azure Digital Twins 執行個體進行互動。 該用戶端應用程式與[教學課程：撰寫用戶端應用程式](tutorial-code.md)中所介紹的用戶端應用程式相似。
 
@@ -131,7 +128,8 @@ CreateModels Room Floor
 CreateModels Room
 ```
 
-因為模型無法覆寫，這現在會傳回服務錯誤：
+因為模型無法覆寫，這現在會傳回服務錯誤。
+如需如何刪除現有模型的詳細資訊，請參閱[操作說明：管理自訂模型](how-to-manage-model.md)。
 ```cmd/sh
 Response 409: Service request failed.
 Status: 409 (Conflict)

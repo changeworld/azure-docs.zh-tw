@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 41b6fb38798e9aa7264000676d81101db1c83236
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e10e5050912788732128a8b765716c22fe9e576e
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656531"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517440"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>教學課程：透過設計工具部署機器學習模型 (預覽)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "83656531"
 > * 部署即時端點。
 > * 測試即時端點。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 完成[教學課程的第一個部分](tutorial-designer-automobile-price-train-score.md)，了解如何在設計工具中定型和評分機器學習模型。
 
@@ -40,7 +40,7 @@ ms.locfileid: "83656531"
 
 1. 在管線畫布上方，選取 [建立推斷管線] > [即時推斷管線]。
 
-    ![顯示要在哪裡尋找建立管線按鈕的螢幕擷取畫面](./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png"alt-text="顯示要在哪裡尋找建立管線按鈕的螢幕擷取畫面":::
 
     您的管線此時應會顯示如下： 
 
@@ -72,7 +72,7 @@ ms.locfileid: "83656531"
 1. 在導覽功能區中，選取 [推斷叢集] > [+ 新增]。
 
     ![顯示如何移至 [新增推斷叢集] 窗格的螢幕擷取畫面](./media/tutorial-designer-automobile-price-deploy/new-inference-cluster.png)
-
+   
 1. 在推斷叢集窗格中，設定新的 Kubernetes 服務。
 
 1. 輸入 aks-compute 作為**計算名稱**。
@@ -96,8 +96,8 @@ ms.locfileid: "83656531"
 1. 選取您建立的 AKS 叢集。
 
 1. 選取 [部署]。
-
-    ![顯示如何設定新即時端點的螢幕擷取畫面](./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png)
+    
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="顯示如何設定新即時端點的螢幕擷取畫面":::
 
     完成部署之後，畫布上方會出現成功通知。 這可能需要幾分鐘的時間。
 
