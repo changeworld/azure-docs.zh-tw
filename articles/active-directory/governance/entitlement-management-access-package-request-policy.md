@@ -18,6 +18,7 @@ ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9ef2faf2a1d1a131dc5f2a01d3fa46cc61a06fb6
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "85078805"
@@ -34,7 +35,7 @@ ms.locfileid: "85078805"
 
 ![存取套件中的多個原則](./media/entitlement-management-access-package-request-policy/access-package-policy.png)
 
-| 狀況 | 原則數目 |
+| 案例 | 原則數目 |
 | --- | --- |
 | 我希望目錄中的所有使用者都擁有相同的存取套件要求和核准設定 | 一個 |
 | 我希望特定連線組織中的所有使用者都能夠要求存取套件 | 一個 |

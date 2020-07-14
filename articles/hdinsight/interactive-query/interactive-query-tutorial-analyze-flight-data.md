@@ -1,6 +1,6 @@
 ---
 title: 教學課程：使用互動式查詢的 ETL 作業 - Azure HDInsight
-description: 教學課程 - 了解如何從原始 CSV 資料集擷取資料。 使用 HDInsight 上的互動式查詢加以轉換。 然後使用 Apache Sqoop 將已轉換的資料載入 Azure SQL 資料庫。
+description: 教學課程 - 了解如何從原始 CSV 資料集擷取資料。 使用 HDInsight 上的互動式查詢加以轉換。 然後使用 Apache Sqoop 將已轉換的資料載入 Azure SQL Database。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 431cd5efbb1087d99fc8521cec7a5c604856dac5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5c5a3c9e66a4d25a84d7940f49ec332d57f4c818
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021733"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85319186"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>教學課程：使用 Azure HDInsight 上的互動式查詢來擷取、轉換和載入資料
 
-在本教學課程中，您會下載可公開取得之航班資料的原始 CSV 資料檔案。 將其匯入 HDInsight 叢集儲存體，然後在 Azure HDInsight 中使用互動式查詢來轉換資料。 資料轉換後，您會使用 [Apache Sqoop](https://sqoop.apache.org/) 將該資料載入 Azure SQL 資料庫中。
+在本教學課程中，您會下載可公開取得之航班資料的原始 CSV 資料檔案。 將其匯入 HDInsight 叢集儲存體，然後在 Azure HDInsight 中使用互動式查詢來轉換資料。 資料轉換後，您會使用 [Apache Sqoop](https://sqoop.apache.org/) 將該資料載入 Azure SQL Database 中。
 
 本教學課程涵蓋下列工作：
 
@@ -25,14 +25,14 @@ ms.locfileid: "84021733"
 > * 下載範例航班資料
 > * 將資料上傳至 HDInsight 叢集
 > * 使用互動式查詢轉換資料
-> * 在 Azure SQL 資料庫中建立資料表
-> * 使用 Sqoop 將資料匯出至 Azure SQL 資料庫
+> * 在 Azure SQL Database 的資料庫中建立資料表
+> * 使用 Sqoop 將資料匯出至 Azure SQL Database 中的資料庫
 
 ## <a name="prerequisites"></a>必要條件
 
 * HDInsight 上的互動式查詢叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)，然後選取 [互動式查詢] 作為 [叢集類型]。
 
-* Azure SQL Database。 您會使用 Azure SQL 資料庫做為目的地資料存放區。 如果您沒有 SQL 資料庫，請參閱[在 Azure 入口網站中建立 Azure SQL 資料庫](/azure/sql-database/sql-database-single-database-get-started)。
+* Azure SQL Database 中的資料庫。 您會使用 資料庫做為目的地資料存放區。 如果您在 Azure SQL Database 中沒有資料庫，請參閱[在 Azure 入口網站的 Azure SQL Database 中建立資料庫](/azure/sql-database/sql-database-single-database-get-started)，按照步驟建立資料庫。
 
 * SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
@@ -250,9 +250,9 @@ ms.locfileid: "84021733"
 
 4. Enter `exit` at the `1>` 以結束 tsql 公用程式。
 
-## <a name="export-data-to-sql-database-using-apache-sqoop"></a>使用 Apache Sqoop 將資料匯出至 SQL 資料庫
+## <a name="export-data-to-sql-database-using-apache-sqoop"></a>使用 Apache Sqoop 將資料匯出至 SQL Database
 
-在前幾節中，您在 `/tutorials/flightdelays/output` 上複製了已轉換的資料。 在本節中，您會使用 Sqoop 將資料從 `/tutorials/flightdelays/output` 匯出至您在 Azure SQL 資料庫中建立的資料表。
+在前幾節中，您在 `/tutorials/flightdelays/output` 上複製了已轉換的資料。 在本節中，您會使用 Sqoop 將資料從 `/tutorials/flightdelays/output` 匯出至您在 Azure SQL Database 中建立的資料表。
 
 1. 輸入下列命令，以確認 Sqoop 看得見您的 SQL 資料庫：
 

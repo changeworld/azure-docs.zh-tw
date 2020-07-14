@@ -2,18 +2,20 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: b28641a184503dc36b5e3f8315e810c69f3be9d3
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 85fc561f485da8ca90717678951b253235b58285
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84686509"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85322900"
 ---
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
+|[Azure Cosmos DB 帳戶應使用客戶管理的金鑰加密待用資料](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1f905d99-2ab7-462c-a6b0-f709acca6c8f) |若需要符合法規或合規性需求，請使用客戶管理的金鑰來控制 Azure Cosmos DB 中儲存的待用資料加密。 客戶管理的金鑰也會在使用服務管理的金鑰完成的預設加密以外新增第二層加密，來提供雙重加密。 請參閱 [https://aka.ms/cosmosdb-cmk](https://aka.ms/cosmosdb-cmk) |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_CMK_Deny.json) |
+|[Azure Cosmos DB 帳戶應具有防火牆規則](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F862e97cf-49fc-4a5c-9de4-40d4e2e7c8eb) |預設會稽核或拒絕未設定任何 IP 規則的資源，並允許所有網路。 若帳戶至少有一個已啟用虛擬網路篩選器定義之 IP 規則，系統會將其視為符合規範。 停用公用存取的帳戶也會視為符合規範。 |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_NetworkRulesExist_Audit.json) |
 |[Azure Cosmos DB 允許的位置](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0473574d-2d43-4217-aefe-941fcdf7e684) |此原則可讓您限制貴組織在部署 Azure Cosmos DB 資源時可指定的位置。 它可用來強制執行地理合規性需求。 |[parameters('policyEffect')] |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_Locations_Deny.json) |
 |[應停用 Azure Cosmos DB 以金鑰為基礎的中繼資料寫入權限](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4750c32b-89c0-46af-bfcb-2e4541a818d5) |此原則可讓您確認所有 Azure Cosmos DB 帳戶都停用以金鑰為基礎的中繼資料寫入權限。 |附加 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_DisableMetadata_Append.json) |
 |[應限制 Azure Cosmos DB 輸送量](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b7ef78e-a035-4f23-b9bd-aff122a1b1cf) |此原則可讓您在透過資源提供者建立 Azure Cosmos DB 資料庫和容器時，限制組織可指定的最大輸送量。 這會封鎖自動調整資源的建立。 |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_MaxThroughput_Deny.json) |

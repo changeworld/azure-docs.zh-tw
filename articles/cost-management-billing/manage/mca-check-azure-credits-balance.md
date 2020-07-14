@@ -6,20 +6,23 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 06/24/2019
 ms.author: banders
-ms.openlocfilehash: e65637f20d14b93c212b1af2f20695ff5dfeb350
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e238a409adda674e1182c0ffd40a4f666d362731
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199682"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361501"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>追蹤 Microsoft 客戶合約的 Azure 點數餘額
 
 您可以在 Azure 入口網站中或透過 REST API，針對 Microsoft 客戶合約查看您計費帳戶的 Azure 點數餘額。
 
 在 Microsoft 客戶合約的計費帳戶中，點數會指派給帳單設定檔。 每個帳單設定檔都有自己的點數，並自動套用至其發票上的費用。 您必須擁有帳單設定檔的擁有者、參與者、讀者或發票管理員角色，或計費帳戶的擁有者、參與者或讀者角色，才能檢視帳單設定檔的 Azure 點數餘額。 若要深入了解角色，請參閱[了解 Azure 中的 Microsoft 客戶合約管理角色](understand-mca-roles.md)。
+
+> [!NOTE]
+> 新的點數最多可能需要 24 小時才會出現在 Azure 入口網站中。 如果您取得新的點數，但未顯示在入口網站中，請先等待 24 小時來讓其顯示。
 
 本文適用於 Microsoft 客戶合約的計費帳戶。 請[確認您是否有 Microsoft 客戶合約的存取權](#check-access-to-a-microsoft-customer-agreement)。
 
@@ -29,7 +32,7 @@ ms.locfileid: "77199682"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 搜尋 [成本管理 + 帳單]  。
+2. 搜尋 [成本管理 + 帳單]。
 
     ![顯示在入口網站中搜尋 [成本管理 + 帳單] 的螢幕擷取畫面](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
@@ -41,7 +44,7 @@ ms.locfileid: "77199682"
     >
     > Azure 入口網站會記住您所存取的最後一個計費範圍，並在您下一次進入 [成本管理 + 帳單] 頁面時顯示該範圍。 如果您先前已造訪過 [成本管理 + 帳單]，就不會看到 [計費範圍] 頁面。 若是如此，請確認您已位於[正確的範圍](#check-access-to-a-microsoft-customer-agreement)。 如果沒有，請[切換範圍](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)以選取 Microsoft 客戶合約的計費帳戶。
 
-3. 從左側選取 [付款方式]  ，然後選取 [Azure 點數]  。
+3. 從左側選取 [付款方式]，然後選取 [Azure 點數]。
 
    ![帳單設定檔點數餘額的螢幕擷取畫面](./media/mca-check-azure-credits-balance/mca-payment-methods.png)
 
@@ -356,7 +359,7 @@ API 回應會傳回所有影響帳單設定檔之點數餘額的交易。
 | `charges`      |  交易的費用。  |
 | `closedBalance`  | 交易後的餘額。   |
 | `eventType`  | 交易的類型。   |
-| `invoiceNumber`  | 交易計費發票的發票號碼。 暫止交易的的發票號碼會是空的。   |
+| `invoiceNumber`  | 交易計費發票的發票號碼。 暫止交易的發票號碼會是空的。   |
 
 ---
 

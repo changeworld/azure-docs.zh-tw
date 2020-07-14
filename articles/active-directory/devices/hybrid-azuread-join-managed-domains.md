@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5d631143b839e052316490d3b3b89ca10469cb1
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 2f3ea5f1810b5ca80e096b19e1dcf230e21eabcc
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778824"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317644"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教學課程：設定適用於受控網域的混合式 Azure Active Directory Join
 
@@ -42,7 +42,7 @@ ms.locfileid: "83778824"
 > * 確認加入的裝置
 > * 疑難排解
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 或更新版本)
 - Azure AD 租用戶的全域管理員認證
@@ -70,9 +70,9 @@ ms.locfileid: "83778824"
 - `https://device.login.microsoftonline.com`
 - `https://autologon.microsoftazuread-sso.com` (如果您使用或計劃使用無縫 SSO)
 
-如果組織需要透過輸出 Proxy 來存取網際網路，建議您[實作 Web Proxy 自動探索 (WPAD)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) \(英文\)，讓 Windows 10 電腦能向 Azure AD 進行裝置註冊。 若要解決 WPAD 的設定和管理問題，請參閱[針對自動偵測進行疑難排解](/previous-versions/tn-archive/cc302643(v=technet.10))。
+如果組織需要透過輸出 Proxy 來存取網際網路，您可以使用[實作 Web Proxy 自動探索 (WPAD)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) \(英文\)，讓 Windows 10 電腦能向 Azure AD 進行裝置註冊。 若要解決 WPAD 的設定和管理問題，請參閱[針對自動偵測進行疑難排解](/previous-versions/tn-archive/cc302643(v=technet.10))。 在 1709 更新之前的 Windows 10 裝置中，WPAD 是唯一可用來將 Proxy 設定為使用混合式 Azure AD 聯結的選項。 
 
-如果您未使用 WPAD，則從 Windows 10 1709 開始，您可以在電腦上設定 Proxy 設定。 如需詳細資訊，請參閱 [GPO 所部署的 WinHTTP Proxy 設定](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)。
+如果您未使用 WPAD，則從 Windows 10 1709 開始，您可以在電腦上設定 WinHTTP Proxy 設定。 如需詳細資訊，請參閱 [GPO 所部署的 WinHTTP Proxy 設定](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)。
 
 > [!NOTE]
 > 如果您使用 WinHTTP 設定在電腦上設定 Proxy 設定，則任何無法連線到所設定 Proxy 的電腦將無法連線到網際網路。
