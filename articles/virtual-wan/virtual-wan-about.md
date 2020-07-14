@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 05/14/2020
+ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 8bdba64445212c564a3d4762bc8497be15f7d9a0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: bae8fa97d075784bba1d2f75cc06cfa3f801c052
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657005"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027200"
 ---
 # <a name="about-azure-virtual-wan"></a>關於 Azure 虛擬 WAN
 
@@ -64,7 +64,7 @@ Azure 區域作為中樞，您可以選擇連線到該中樞。 所有中樞都�
 
 **其他虛擬 WAN 資源**
 
-  * **站台：** 此資源僅用於站對站連線。 站台資源為 **vpnsite**。 它代表您的內部部署 VPN 裝置及其設定。 使用虛擬 WAN 合作夥伴，您將擁有內建的解決方案，會將這項資訊自動匯出至 Azure。
+* **站台：** 此資源僅用於站對站連線。 站台資源為 **vpnsite**。 它代表您的內部部署 VPN 裝置及其設定。 使用虛擬 WAN 合作夥伴，您將擁有內建的解決方案，會將這項資訊自動匯出至 Azure。
 
 ## <a name="types-of-connectivity"></a><a name="connectivity"></a>連線類型
 
@@ -72,21 +72,9 @@ Azure 區域作為中樞，您可以選擇連線到該中樞。 所有中樞都�
 
 ### <a name="site-to-site-vpn-connections"></a><a name="s2s"></a>站對站 VPN 連線
 
-![虛擬 WAN 的圖表](./media/virtual-wan-about/virtualwan.png)
+您可以透過站對站IPsec/IKE (IKEv2) 連線，來連線到您在 Azure 中的資源。 如需詳細資訊，請參閱[使用虛擬 WAN 建立站對站連線](virtual-wan-site-to-site-portal.md)。 
 
-當您建立虛擬 WAN 站對站連線時，可以使用可用的夥伴。 如果您不想使用夥伴，可以手動設定連線。 如需詳細資訊，請參閱[使用虛擬 WAN 建立站對站連線](virtual-wan-site-to-site-portal.md)。
-
-#### <a name="virtual-wan-partner-workflow"></a><a name="s2spartner"></a>虛擬 WAN 夥伴工作流程
-
-當您使用虛擬 WAN 夥伴時，工作流程是：
-
-1. 分支裝置 (VPN/SDWAN) 控制器會進行驗證，使用 [Azure 服務主體](../active-directory/develop/howto-create-service-principal-portal.md)，將以網站為中心的資訊匯出至 Azure。
-2. 分支裝置 (VPN/SDWAN) 控制器會取得 Azure 連線設定，並更新本機裝置。 這會將設定下載、編輯和更新內部部署 VPN 裝置等動作自動化。
-3. 一旦裝置有正確的 Azure 設定後，隨即建立與 Azure WAN 的站對站連線 (兩個使用中的通道)。 Azure 同時支援 IKEv1 與 IKEv2。 BGP 為選擇性。
-
-#### <a name="partners-for-site-to-site-virtual-wan-connections"></a><a name="partners"></a>站對站虛擬 WAN 連線的夥伴
-
-如需可用夥伴和位置的清單，請參閱[虛擬 WAN 夥伴與位置](virtual-wan-locations-partners.md)一文。
+此類型的連線需要 VPN 裝置或虛擬 WAN 合作夥伴裝置。 虛擬 WAN 合作夥伴提供自動連線功能，可將裝置資訊匯出至 Azure、下載 Azure 設定，以及建立與 Azure 虛擬 WAN 中樞的連線。 如需可用夥伴和位置的清單，請參閱[虛擬 WAN 夥伴與位置](virtual-wan-locations-partners.md)一文。 如果您的 VPN/SD-WAN 裝置提供者未列在提及的連結中，您可以直接透過＜[使用虛擬 WAN 建立站對站連線](virtual-wan-site-to-site-portal.md)＞的逐步指示來設定連線。
 
 ### <a name="user-vpn-point-to-site-connections"></a><a name="uservpn"></a>使用者 VPN (點對站) 連線
 
@@ -95,9 +83,50 @@ Azure 區域作為中樞，您可以選擇連線到該中樞。 所有中樞都�
 ### <a name="expressroute-connections"></a><a name="er"></a>ExpressRoute 連線
 ExpressRoute 可讓您透過私人連線將內部部署網路連線至 Azure。 若要建立連線，請參閱[使用虛擬 WAN 建立 ExpressRoute 連線](virtual-wan-expressroute-portal.md)。
 
+### <a name="hub-to-vnet-connections"></a><a name="hub"></a>中樞對 VNet 的連線
+
+您可以將 Azure 虛擬網路連線至虛擬中樞。 如需詳細資訊，請參閱[將 VNet 連線至中樞](virtual-wan-site-to-site-portal.md#vnet)。
+
+### <a name="transit-connectivity"></a><a name="transit"></a>傳輸連線能力
+
+#### <a name="transit-connectivity-between-vnets"></a><a name="transit-vnet"></a>VNet 之間的傳輸連線能力
+
+虛擬 WAN 可讓 VNet 之間進行傳輸連線。 VNet 可透過虛擬網路連線來連線至虛擬中樞。 在**標準虛擬 WAN** 中，VNet 之間的傳輸連線會藉由每個虛擬中樞內的路由器來啟用。 路由器會在第一次建立虛擬中樞時具現化。
+
+路由器可以有四個路由狀態：已佈建、佈建中、失敗或無。 **路由狀態**位於 Azure 入口網站中的 [虛擬中樞] 頁面上。
+
+* [**無**] 狀態表示虛擬中樞並未佈建路由器。 如果虛擬 WAN 的類型是「基本」，或虛擬中樞在服務可供使用之前部署，就會發生這種情況。
+* [**失敗**] 狀態表示在具現化期間發生失敗。 若要具現化或重設路由器，您可以瀏覽至 Azure 入口網站中的虛擬中樞概觀頁面，找出 [重設路由器] 選項。
+
+每個虛擬中樞路由器最多支援 50 Gbps 的彙總輸送量。 虛擬網路連線之間的連線會假設虛擬 WAN 中的所有 VNet 上有總數為 2000 部 VM 的工作負載。
+
+#### <a name="transit-connectivity-between-vpn-and-expressroute"></a><a name="transit-er"></a>VPN 和 ExpressRoute 之間的傳輸連線能力
+
+虛擬 WAN 可讓 VPN 和 ExpressRoute 之間進行傳輸連線。 這表示以 VPN 連線的網站或遠端使用者可以與以 ExpressRoute 連線的網站通訊。 此外，也會隱含**分支對分支旗標**已啟用的假設。 此旗標可能位於 Azure 入口網站的 Azure 虛擬 WAN 設定中。 所有路由管理都是由虛擬中樞路由器提供，這也會啟用虛擬網路之間的傳輸連線能力。
+
+### <a name="custom-routing"></a><a name="routing"></a>自訂路由
+
+虛擬 WAN 提供進階的路由增強功能。 能夠設定自訂路由表、使用路由關聯和傳播來最佳化虛擬網路路由、以邏輯方式將具有標籤的路由表分組，以及簡化許多網路虛擬設備或共用的服務路由案例。
+
+### <a name="global-vnet-peering"></a><a name="global"></a>全域 VNet 對等互連
+
+全域 VNet 對等互連提供可將不同區域中兩個 VNet 連線的機制。 在虛擬 WAN 中，虛擬網路連線會將 VNet 連線到虛擬中樞。 使用者不需要明確設定全域 VNet 對等互連。 VNet 連線到相同區域中的虛擬中樞時會產生 VNet 對等互連費用。 VNet 連線到不同區域中的虛擬中樞時會產生全域 VNet 對等互連費用。
+
+### <a name="expressroute-traffic-encryption"></a><a name="encryption"></a>ExpressRoute 流量加密
+
+Azure 虛擬 WAN 可為 ExpressRoute 流量提供加密功能。 此技術透過 ExpressRoute 來提供內部部署網路與 Azure 虛擬網路之間的加密傳輸，而不需要經過公用網際網路或使用公用 IP 位址。 如需詳細資訊，請參閱[針對虛擬 WAN 透過 ExpressRoute 建立 IPsec](vpn-over-expressroute.md)。
+
 ## <a name="locations"></a><a name="locations"></a>位置
 
 如需位置資訊，請參閱[虛擬 WAN 夥伴與位置](virtual-wan-locations-partners.md)一文。
+
+## <a name="route-tables-in-basic-and-standard-virtual-wans"></a><a name="route"></a>基本和標準虛擬 WAN 中的路由表
+
+路由表現在具有關聯和傳播的功能。 既有的路由表是不具有這些功能的路由表。 如果您在中樞路由中有既有的路由，但想要使用新功能，請考慮下列方式：
+
+* **虛擬中樞內存在既有路由的標準虛擬 WAN 客戶**：若要使用新的路由表功能，請等候至 8 月 3 日這週會在 Azure 中推出。 如果您在 Azure 入口網站中樞的 [路由] 區段中已存在路由，則需要先將這些路由刪除，然後嘗試建立新的路由表 (可在 Azure 入口網站中樞的 [路由表] 區段中取得)。
+
+* **虛擬中樞內存在既有路由的基本虛擬 WAN 客戶**：若要使用新的路由表功能，請等候至 8 月 3 日這週會在 Azure 中推出。 如果您在 Azure 入口網站中樞的 [路由] 區段中已存在路由，則需要先將這些路由刪除，然後將基本虛擬 WAN **升級**為標準虛擬 WAN。 請參閱[將虛擬 WAN 從基本升級至標準](upgrade-virtual-wan.md)。
 
 ## <a name="faq"></a><a name="faq"></a>常見問題集
 

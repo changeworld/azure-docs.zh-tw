@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 10/13/2019
-ms.openlocfilehash: d274160cc2ed1102dfc8fd11df358b34e40d9923
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 937be72bfec96119474e7effe9ba88a2cf253444
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "84870296"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081838"
 ---
 # <a name="add-data-to-audit-logs-by-using-custom-http-headers"></a>使用自訂 HTTP 標頭將資料新增至稽核記錄
 
@@ -36,7 +36,7 @@ ms.locfileid: "84870296"
 > [!IMPORTANT]
 > 請注意，在自訂標頭中傳送的資訊，於 Azure 記錄監視中提供後，會儲存在 Microsoft 內部記錄系統中 30 天。 我們建議您在將任何資訊新增至自訂標頭之前，先將其加密。 您不應該透過客戶標頭傳遞任何 PHI 資訊。
 
-您必須針對 HTTP 標頭使用下列命名慣例：X-MS-AZUREFHIR-AUDIT-AUDIT-\<name>。
+您必須針對 HTTP 標頭使用下列命名慣例：X-MS-AZUREFHIR-AUDIT-\<name>。
 
 這些 HTTP 標頭會包含在新增至記錄檔的屬性包中。 例如：
 
@@ -63,7 +63,7 @@ ms.locfileid: "84870296"
  
 您最多可以新增 10 個唯一的標頭 (具有相同標頭但不同值的重複項目只會被計為一個)。 任一個標頭的值最大長度為 2048 個字元。
 
-如果您使用的是 Firely C# 用戶端 API 程式庫，則程式碼會看起來像這樣：
+如果您使用的是 Firefly C# 用戶端 API 程式庫，則程式碼會看起來像這樣：
 
 ```C#
 FhirClient client;

@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 061907783d21372f0e926e529730e9e82b7a4ddb
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 632071c2a9597fc11ab4ffc0971493ef5b52d807
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488761"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083554"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Azure 認知搜尋索引
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.locfileid: "84488761"
 
 + 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/)。
 
-+ Azure 認知搜尋服務。 在目前的訂用帳戶下，[建立服務](search-create-service-portal.md)或[尋找現有的服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 您可以使用本快速入門的免費服務。 
++ Azure 認知搜尋服務。 在目前的訂閱下，[建立服務](search-create-service-portal.md) 或 [尋找現有的服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 您可以使用本快速入門的免費服務。 
 
 ### <a name="check-for-space"></a>檢查空間
 
@@ -150,7 +150,7 @@ ms.locfileid: "84488761"
 
    ![搜尋總管命令](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. 從 [索引] 下拉式清單中，選擇 [hotels-sample-index]。 按一下[API 版本] 下拉式清單，以查看可用的 REST API。 針對下面的查詢，請使用公開推出版本 (2019-05-06)。
+2. 從 [索引] 下拉式清單中，選擇 [hotels-sample-index]。 按一下[API 版本] 下拉式清單，以查看可用的 REST API。 針對下面的查詢，請使用公開推出版本 (2020-06-30)。
 
    ![索引和 API 命令](media/search-get-started-portal/search-explorer-changeindex.png)
 
@@ -275,4 +275,9 @@ Facet 篩選器會包含在搜尋要求中。 您可以使用 facet 參數，傳
 使用入口網站精靈，產生可在瀏覽器中執行的立即可用 Web 應用程式。 您可以在剛才建立的小型索引上試用此精靈，也可以使用其中一個內建的資料集範例，來獲得更豐富的搜尋體驗。
 
 > [!div class="nextstepaction"]
-> [在入口網站中建立搜尋應用程式](search-create-app-portal.md)
+> [在入口網站中建立示範應用程式](search-create-app-portal.md)
+
+想要最佳化並節省您的雲端費用嗎？
+
+> [!div class="nextstepaction"]
+> [使用成本管理開始分析成本](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
