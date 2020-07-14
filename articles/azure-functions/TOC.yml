@@ -55,6 +55,7 @@
       href: machine-learning-pytorch.md
     - name: 建立自訂 Linux 映像
       href: functions-create-function-linux-custom-image.md
+      displayName: 'container, docker'
     - name: IoT Edge 裝置上的 Azure Functions
       href: ../iot-edge/tutorial-deploy-function.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: Java 搭配 Azure Cosmos DB 和事件中樞
@@ -252,7 +253,7 @@
           href: run-functions-from-deployment-package.md
         - name: Kubernetes 中的函式
           href: functions-kubernetes-keda.md
-          displayName: keda
+          displayName: 'keda, container, docker'
         - name: 自動資源部署
           href: functions-infrastructure-as-code.md
         - name: 內部部署函式
@@ -296,6 +297,8 @@
               href: ../app-service/configure-authentication-provider-microsoft.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: 使用 Twitter 進行驗證
               href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fazure-functions%2ftoc.json
+            - name: 使用 OpenID Connect 提供者進行驗證 (預覽)
+              href: ../app-service/configure-authentication-provider-openid-connect.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: 進階驗證
           href: ../app-service/app-service-authentication-how-to.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: 限制 IP
@@ -500,6 +503,8 @@
   items:
     - name: 透過 Microsoft Learn 增進您的技巧
       href: /learn/browse/?products=azure-functions
+    - name: 架構指導
+      href: 'https://docs.microsoft.com/azure/architecture/serverless-quest/serverless-overview'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: 定價

@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: 47daf4ecd034c390a1460610e78d4fffd9277ac7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d0d0d19b9b84649867085a05efa656131e48c5a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81535701"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220715"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>針對 Azure App Service 購買自訂網域名稱
 
@@ -45,7 +45,7 @@ App Service 網域是直接在 Azure 中管理的頂層網域。 它們可以讓
 
 ### <a name="check-the-pricing-tier"></a>檢查定價層
 
-在應用程式分頁的左側導覽中，捲動到 [設定]  區段，然後選取 [擴大 (App Service 方案)]  。
+在應用程式分頁的左側導覽中，捲動到 [設定] 區段，然後選取 [擴大 (App Service 方案)]。
 
 ![相應增加功能表](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
@@ -57,9 +57,9 @@ App Service 網域是直接在 Azure 中管理的頂層網域。 它們可以讓
 
 ### <a name="scale-up-the-app-service-plan"></a>擴大 App Service 方案
 
-選取任何非免費層 (**D1**、**B1**、**B2**、**B3** 或「生產」  類別中的任何一層)。 如需其他選項，請按一下 [查看其他選項]  。
+選取任何非免費層 (**D1**、**B1**、**B2**、**B3** 或「生產」類別中的任何一層)。 如需其他選項，請按一下 [查看其他選項]。
 
-按一下 [套用]  。
+按一下 [套用]。
 
 ![檢查定價層](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
@@ -78,11 +78,11 @@ App Service 網域是直接在 Azure 中管理的頂層網域。 它們可以讓
 ### <a name="launch-buy-domains"></a>啟動購買網域
 在 [應用程式服務]**** 索引標籤中，按一下您應用程式的名稱，選取 [設定]****，然後選取 [自訂網域]****
    
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+![顯示反白顯示自訂網域的螢幕擷取畫面。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
 在 [自訂網域]**** 頁面中，按一下 [購買網域]****。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
+![顯示反白顯示 [購買網域] 的螢幕擷取畫面。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
 
 > [!NOTE]
 > 如果您沒看見 [App Service 網域]**** 區段，則需要移除您 Azure 帳戶的消費限制 (請參閱[必要條件](#prerequisites))。
@@ -93,7 +93,7 @@ App Service 網域是直接在 Azure 中管理的頂層網域。 它們可以讓
 
 在 [App Service 網域]**** 頁面的 [搜尋網域]**** 方塊中，輸入要購買的網域名稱，然後輸入 `Enter`。 建議的可用網域會顯示在文字方塊下方。 選取一或多個要購買的網域。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
+![顯示 [搜尋網域] 搜尋方塊的螢幕擷取畫面。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
 > [!NOTE]
 > App Service 網域支援下列[頂層網域](https://wikipedia.org/wiki/Top-level_domain)：_com_、_net_、_co.uk_、_org_、_nl_、_in_、_biz_、_org.uk_，以及 _co.in_。
@@ -122,19 +122,19 @@ App Service 網域是直接在 Azure 中管理的頂層網域。 它們可以讓
 
 回到 [App Service 網域]**** 頁面，然後按一下 [確定]****。 作業進行中時，您會看到下列通知：
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-validate.png)
+![顯示驗證進行中訊息的螢幕擷取畫面。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-validate.png)
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-purchase-success.png)
+![顯示購買成功之通知的螢幕擷取畫面。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-purchase-success.png)
 
 ### <a name="test-the-hostnames"></a>測試主機名稱
 
 如果您已經指派預設主機名稱給應用程式，也會看見針對每個選取主機名稱的成功通知。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
+![顯示每個所選主機名稱之成功通知的螢幕擷取畫面。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
 您也會在 [自訂網域]**** 頁面的 [自訂主機名稱]**** 區段中看到選取的主機名稱。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
+![螢幕擷取畫面：在 [自訂網域] 頁面的 [自訂主機名稱] 區段中，顯示選取的主機名稱。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
 > [!NOTE]
 > 您自訂網域的「**不安全**」標籤表示它尚未系結至 TLS/SSL 憑證，而從瀏覽器到您自訂網域的任何 HTTPS 要求都會收到錯誤或警告（視瀏覽器而定）。 若要設定 TLS 系結，請參閱[Azure App Service 中的使用 tls/SSL 系結保護自訂 DNS 名稱](configure-ssl-bindings.md)。
@@ -154,11 +154,11 @@ App Service 網域是直接在 Azure 中管理的頂層網域。 它們可以讓
 ### <a name="launch-add-hostname"></a>啟動新增主機名稱
 在 [應用程式服務]**** 頁面中，選取要指派主機名稱的應用程式名稱，選取 [設定]****，然後選取 [自訂網域]****。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+![顯示反白顯示自訂網域的螢幕擷取畫面。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
 請確定您所購買的網域已列於 [App Service 網域]**** 區段中，但請不要選取它。 
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
+![在 [App Service 網域] 區段中顯示已購買網域的螢幕擷取畫面。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
 > [!NOTE]
 > 相同訂用帳戶中的所有 App Service 網域，都會顯示在應用程式的 [自訂網域]**** 頁面中。 如果您的網域已位於應用程式的訂用帳戶中，但您在應用程式的 [自訂網域]**** 頁面中看不到該網域，請嘗試重新開啟 [自訂網域]**** 頁面，或是重新整理該網頁。 此外，請透過檢查位於 Azure 入口網站頂端的通知鈴，來取得進度或建立失敗的訊息。
@@ -180,14 +180,14 @@ App Service 網域是直接在 Azure 中管理的頂層網域。 它們可以讓
 
 作業完成之後，您會看到成功指派主機名稱的通知。  
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
+![顯示已指派主機名稱之成功通知的螢幕擷取畫面。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
 ### <a name="close-add-hostname"></a>關閉新增主機名稱
 在 [新增主機名稱]**** 頁面中，視需求將其他任何主機名稱指派給您的應用程式。 完成之後，請關閉 [新增主機名稱]**** 頁面。
 
 您現在應該會在應用程式的 [自訂網域]**** 頁面中看到新指派的主機名稱。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added2.png)
+![在應用程式的 [自訂網域] 頁面中顯示新指派主機名稱的螢幕擷取畫面。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added2.png)
 
 ### <a name="test-the-hostnames"></a>測試主機名稱
 
@@ -201,15 +201,15 @@ App Service 網域是直接在 Azure 中管理的頂層網域。 它們可以讓
 
 在 [**應用程式服務**] 索引標籤中，按一下應用程式的名稱，選取 [**設定**]，然後選取 [**自訂網域**]。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+![顯示反白顯示自訂網域的螢幕擷取畫面。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
 在 [App Service 網域]**** 區段中，選取您想要設定的網域。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
+![在 [App Service 網域] 區段中顯示已購買網域的螢幕擷取畫面。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
 從網域的左側導覽中，選取 [網域續訂]****。 若要停止自動續訂您的網域，請選取 [關閉]****，然後選取 [儲存]****。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
+![顯示自動更新網域選項的螢幕擷取畫面。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
 
 若要以手動方式續訂您的網域，請選取 [續訂網域]****。 不過，在[網域到期前90天之前](#when-domain-expires)，此按鈕不是作用中。
 
@@ -221,7 +221,7 @@ Azure 會處理過期或過期的 App Service 網域，如下所示：
 
 * 若已停用自動更新：在網域到期前90天，會將更新通知電子郵件傳送給您，並在入口網站中啟用 [**更新網域**] 按鈕。
 * 如果已啟用自動更新：在您的網域到期日之後的一天，Azure 會嘗試向您收取功能變數名稱更新的費用。
-* 如果在自動更新期間發生錯誤（例如，您的卡片已過期），或自動更新已停用，且您允許網域過期，Azure 會通知您網域到期，並將您的功能變數名稱提供給您。 您可以[手動更新](#renew-the-domain)您的網域。
+* 如果在自動更新期間發生錯誤 (例如，檔案上的卡片已過期) ，或是自動更新已停用，且您允許網域過期，Azure 會通知您網域到期，並將您的功能變數名稱提供給您。 您可以[手動更新](#renew-the-domain)您的網域。
 * Azure 會在到期後的第4和第12天，傳送額外的通知電子郵件給您。 您可以[手動更新](#renew-the-domain)您的網域。
 * 在到期後的第19天，您的網域仍會保留，但會受到兌換費用的限制。 您可以致電客戶支援以更新您的功能變數名稱，受限於任何適用的更新和兌換費用。
 * 在到期後的第25天，Azure 會將您的網域放在使用功能變數名稱產業拍賣服務的拍賣上。 您可以致電客戶支援以更新您的功能變數名稱，受限於任何適用的更新和兌換費用。
@@ -237,7 +237,7 @@ Azure 會處理過期或過期的 App Service 網域，如下所示：
 
 在 Azure 入口網站中，從左側功能表中選取 [**所有服務**] [  >  **App Service 網域**]。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
+![顯示 App Service 網域存取位置的螢幕擷取畫面。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
 選取要管理的網域。 
 
@@ -245,7 +245,7 @@ Azure 會處理過期或過期的 App Service 網域，如下所示：
 
 在網域的左側功能表中，選取 [DNS 區域]****。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-dns-zone.png)
+![顯示要在哪裡選取 DNS 區域的螢幕擷取畫面。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-dns-zone.png)
 
 這個動作會開啟您在 Azure DNS 中之 App Service 網域的 [DNS 區域](../dns/dns-zones-records.md)頁面。 如需如何編輯 DNS 記錄的相關資訊，請參閱[如何在 Azure 入口網站中管理 DNS 區域](../dns/dns-operations-dnszones-portal.md)。
 
@@ -257,7 +257,7 @@ Azure 會處理過期或過期的 App Service 網域，如下所示：
 
 在 Azure 入口網站中，從左側功能表中選取 [**所有服務**] [  >  **App Service 網域**]。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
+![顯示 App Service 網域存取位置的螢幕擷取畫面。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
 選取您要取消或刪除的網域。 
 
@@ -265,13 +265,13 @@ Azure 會處理過期或過期的 App Service 網域，如下所示：
 
 在網域的左側功能表中，選取 [主機名稱繫結]****。 這裡會列出來自所有 Azure 服務的主機名稱繫結。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostname-bindings.png)
+![顯示 [主機名稱系結] 頁面的螢幕擷取畫面。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostname-bindings.png)
 
 您必須先刪除所有主機名稱繫結，才能刪除 App Service 網域。
 
 選取 [ **...**  >  ]，以刪除每個主機名稱的系結**刪除**。 刪除所有繫結之後，請選取 [儲存]****。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
+![顯示要刪除主機名稱系結之位置的螢幕擷取畫面。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
 
 ### <a name="cancel-or-delete"></a>取消或刪除
 
@@ -279,7 +279,7 @@ Azure 會處理過期或過期的 App Service 網域，如下所示：
 
 如果已購買網域的取消期間尚未到期，請選取 [取消購買]****。 否則，您會看到 [刪除]**** 按鈕。 若要在不退款情況下刪除網域，請選取 [刪除]****。
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
+![顯示刪除或取消已購買的網域之位置的螢幕擷取畫面。](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
 
 若要確認作業，請選取 [是]****。
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 7933d5e5cf7d82de013e18b221f3a0c3ce6b5229
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 284f8c8432d732fdfa7e16b43a47578437bcf0ba
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800523"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202236"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web 搜尋 API 回應結構和回應類型  
 
@@ -435,7 +435,7 @@ Query: What time is it in the U.S.
 
 來自 Bing Web 搜尋 API 的回應可能包含下列標頭：
 
-|||
+| 標頭 | 描述 |
 |-|-|
 |`X-MSEdge-ClientID`|Bing 已指派給使用者的唯一識別碼|
 |`BingAPIs-Market`|用來履行要求的市場|

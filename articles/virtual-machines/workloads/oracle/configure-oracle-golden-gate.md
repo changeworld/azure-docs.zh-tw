@@ -3,8 +3,8 @@ title: 在 Azure Linux VM 上實作 Oracle Golden Gate| Microsoft Docs
 description: 快速在您的 Azure 環境中啟動並執行 Oracle Golden Gate。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: borisb
-ms.openlocfilehash: ae6bfb0ab0208d0f778476c9f0959b0c0f1d6471
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rogardle
+ms.openlocfilehash: 60d06fa4cf6d116f9c802cda544a356e469755b5
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81683724"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223069"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>在 Azure Linux VM 上實作 Oracle Golden Gate 
 
@@ -432,7 +432,7 @@ SQL> EXIT;
 
 若要安裝 Oracle Golden Gate，請完成下列步驟：
 
-1. 以 oracle 的身分登入。 （您應該能夠登入，而不會提示您輸入密碼）。在開始安裝之前，請確定 Xming 正在執行。
+1. 以 oracle 的身分登入。  (您應該能夠登入，而不會提示您輸入密碼。 ) 在開始安裝之前，請確定 Xming 正在執行。
 
    ```bash
    $ cd /opt/fbo_ggs_Linux_x64_shiphome/Disk1
@@ -443,7 +443,7 @@ SQL> EXIT;
 
    ![安裝程式之 [選取安裝] 分頁的螢幕擷取畫面](./media/oracle-golden-gate/golden_gate_install_01.png)
 
-3. 變更軟體位置。 然後選取 [啟動管理員]**** 方塊並輸入資料庫位置。 選取 [下一步] 以繼續進行操作。
+3. 變更軟體位置。 然後選取 [啟動管理員]**** 方塊並輸入資料庫位置。 選取 [下一步] 以繼續操作。
 
    ![[選取安裝] 分頁的螢幕擷取畫面](./media/oracle-golden-gate/golden_gate_install_02.png)
 
@@ -732,7 +732,7 @@ SQL> EXIT;
 
 ### <a name="set-up-the-replication-myvm1-and-myvm2"></a>設定複寫 (myVM1 和 myVM2)
 
-#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1. 在 myVM2 上設定複寫（複寫）
+#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1. 在 myVM2 上設定複寫 (複寫) 
 
   ```bash
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -755,7 +755,7 @@ SQL> EXIT;
   GGSCI> EXIT
   ```
 
-#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2. 在 myVM1 （主要）上設定複寫
+#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2. 在 myVM1 (主要) 上設定複寫
 
 啟動初始載入並且檢查錯誤：
 
@@ -766,7 +766,7 @@ GGSCI> START EXTRACT INITEXT
 GGSCI> VIEW REPORT INITEXT
 ```
 
-#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3. 在 myVM2 上設定複寫（複寫）
+#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3. 在 myVM2 上設定複寫 (複寫) 
 
 使用您之前取得的數字變更 SCN 編號：
 

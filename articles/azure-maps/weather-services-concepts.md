@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 03a16ac065b585c499efa268500e0a8c81c07738
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f38ef2c337564d2b36d3939b3ed03130437e35ea
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80333807"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221760"
 ---
 # <a name="weather-services-in-azure-maps"></a>Azure 地圖服務中的氣象服務
 
@@ -22,7 +23,7 @@ ms.locfileid: "80333807"
 
 某些氣象服務 Api 可讓使用者指定以度量或英制單位傳回資料。 針對這些 Api 傳回的回應包含 Unittype.pixel 表示，以及可用於單元轉譯的數值。 請參閱下表來解讀這些值。
 
-|Unittype.pixel 表示|說明         |
+|Unittype.pixel 表示|描述         |
 |--------|--------------------|
 |0       |英呎                |
 |1       |英吋              |
@@ -45,7 +46,7 @@ ms.locfileid: "80333807"
 |18      |華氏          |
 |19      |克式              |
 |20      |percent             |
-|21      |FLOAT               |
+|21      |float               |
 |22      |integer             |
 
 
@@ -55,46 +56,46 @@ ms.locfileid: "80333807"
 
 | 圖示編號 |圖示| 天 | 日 | Text |
 |-------------|:----:|-----|-------|------|
-| 1           |![](./media/weather-services-concepts/sunny-i.png)                      | 是 |  否    | 晴朗|
-| 2           |![](./media/weather-services-concepts/mostly-sunny.png)                | 是 |  否    | 主要 Sunny|
-| 3           |![](./media/weather-services-concepts/partly-sunny.png)                | 是 |  否    | 部分 Sunny|
-| 4           |![](./media/weather-services-concepts/intermittent-clouds.png)         | 是 |  否    | 間歇雲端|
-| 5           |![](./media/weather-services-concepts/hazy-sunshine.png)               | 是 |  否    | 模糊陽光 |
-| 6           |![](./media/weather-services-concepts/mostly-cloudy.png)               | 是 |  否    | 大部分的雲|
-| 7           |![](./media/weather-services-concepts/cloudy-i.png)                     | Yes |  Yes   | 雲 |
-| 8           |![](./media/weather-services-concepts/dreary-overcast.png)             | Yes |  Yes   | 單調（Overcast）|
-| 11           |![](./media/weather-services-concepts/fog-i.png)                       | Yes |  Yes   | 雲|
-| 12           |![](./media/weather-services-concepts/showers-i.png)                   | Yes |  Yes   | 大氣|
-| 13           |![](./media/weather-services-concepts/mostly-cloudy-showers.png)       | 是 |  否    | 大部分使用大氣的模糊|
-| 14           |![](./media/weather-services-concepts/partly-sunny-showers.png)        | 是 |  否    | 部分 Sunny 與大氣|
-| 15           |![](./media/weather-services-concepts/tstorms-i.png)                   | Yes |  Yes   | Thunderstorms|
-| 16           |![](./media/weather-services-concepts/mostly-cloudy-tstorms.png)       | 是 |  否    | 大部分使用 Thunderstorms 的模糊|
-| 17           |![](./media/weather-services-concepts/partly-sunny-tstorms.png)        | 是 |  否    | 部分 Sunny 與 Thunderstorms|
-| 18           |![](./media/weather-services-concepts/rain-i.png)                      | 是 |  Yes   | Rain|
-| 19           |![](./media/weather-services-concepts/flurries-i.png)                  | Yes |  Yes   | Flurries|
-| 20           |![](./media/weather-services-concepts/mostly-cloudy-flurries.png)      | 是 |  否    | 大部分使用 Flurries 的模糊|
-| 21           |![](./media/weather-services-concepts/partly-sunny-flurries.png)       | 是 |  否    | 部分 Sunny 與 Flurries|
-| 22           |![](./media/weather-services-concepts/snow-i.png)                      | Yes |  Yes   | Snow|
-| 23           |![](./media/weather-services-concepts/mostly-cloudy-snow.png)          | 是 |  否    | 大多是具有雪的一種雲|
-| 24           |![](./media/weather-services-concepts/ice-i.png)                       | Yes |  Yes   | Ice |
-| 25           |![](./media/weather-services-concepts/sleet-i.png)                     | Yes |  Yes   | Sleet|
-| 26           |![](./media/weather-services-concepts/freezing-rain.png)              | Yes |  Yes   | 凍結 Rain|
-| 29           |![](./media/weather-services-concepts/rain-snow.png)                  | Yes |  Yes   | 雨和雪|
-| 30           |![](./media/weather-services-concepts/hot-i.png)                       | Yes |  Yes   | 經常性存取|
-| 31           |![](./media/weather-services-concepts/cold-i.png)                      | Yes |  Yes   | 冷|
-| 32           |![](./media/weather-services-concepts/windy-i.png)                     | Yes |  Yes   | 風大|
-| 33           |![](./media/weather-services-concepts/clear-night.png)                | 否  |  Yes   | 清除|
-| 34           |![](./media/weather-services-concepts/mostly-clear-night.png)          | 否  |  Yes   | 大多清除|
-| 35           |![](./media/weather-services-concepts/partly-cloudy-night.png)         | 否  |  Yes   | 部分雲|
-| 36           |![](./media/weather-services-concepts/intermittent-clouds-Night.png)   | 否  |  Yes   | 間歇雲端|
-| 37           |![](./media/weather-services-concepts/hazymoon-light.png)             | 否  |  Yes   | 模糊 Moonlight|
-| 38           |![](./media/weather-services-concepts/mostly-cloudy-night.png)         | 否  |  是   | 大部分的雲|
-| 39           |![](./media/weather-services-concepts/partly-cloudy-showers-night.png)  | 否  |  是   | 具有大氣的部分模糊|
-| 40           |![](./media/weather-services-concepts/mostly-cloudy-showers-night.png)  | 否  |  是   | 大部分使用大氣的模糊|
-| 41           |![](./media/weather-services-concepts/partly-cloudy-tstorms-night.png)  | 否  |  是   | 具有 Thunderstorms 的部分模糊|
-| 42           |![](./media/weather-services-concepts/mostly-cloudy-tstorms-night.png)  | 否  |  是   | 大部分使用 Thunderstorms 的模糊|
-| 43           |![](./media/weather-services-concepts/mostly-cloudy-flurries-night.png) | 否  |  是   | 大部分使用 Flurries 的模糊|
-| 44           |![](./media/weather-services-concepts/mostly-cloudy-snow.png)          | 否  |  是   | 大多是具有雪的一種雲|
+| 1           | :::image type="icon" source="./media/weather-services-concepts/sunny-i.png"::: | 是 |  否    | 晴朗|
+| 2           | :::image type="icon" source="./media/weather-services-concepts/mostly-sunny.png"::: | 是 |  否    | 主要 Sunny|
+| 3           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny.png"::: | 是 |  否    | 部分 Sunny|
+| 4           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds.png"::: | 是 |  否    | 間歇雲端|
+| 5           | :::image type="icon" source="./media/weather-services-concepts/hazy-sunshine.png"::: | 是 |  否    | 模糊陽光 |
+| 6           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy.png"::: | 是 |  否    | 大部分的雲|
+| 7           | :::image type="icon" source="./media/weather-services-concepts/cloudy-i.png"::: | Yes |  Yes   | 雲 |
+| 8           | :::image type="icon" source="./media/weather-services-concepts/dreary-overcast.png"::: | Yes |  Yes   | 單調 (Overcast) |
+| 11           | :::image type="icon" source="./media/weather-services-concepts/fog-i.png"::: | Yes |  Yes   | 雲|
+| 12           | :::image type="icon" source="./media/weather-services-concepts/showers-i.png"::: | Yes |  Yes   | 大氣|
+| 13           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers.png"::: | 是 |  否    | 大部分使用大氣的模糊|
+| 14           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-showers.png"::: | 是 |  否    | 部分 Sunny 與大氣|
+| 15           | :::image type="icon" source="./media/weather-services-concepts/tstorms-i.png"::: | Yes |  Yes   | Thunderstorms|
+| 16           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms.png"::: | 是 |  否    | 大部分使用 Thunderstorms 的模糊|
+| 17           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-tstorms.png"::: | 是 |  否    | 部分 Sunny 與 Thunderstorms|
+| 18           | :::image type="icon" source="./media/weather-services-concepts/rain-i.png"::: | 是 |  Yes   | Rain|
+| 19           | :::image type="icon" source="./media/weather-services-concepts/flurries-i.png"::: | Yes |  Yes   | Flurries|
+| 20           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries.png"::: | 是 |  否    | 大部分使用 Flurries 的模糊|
+| 21           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-flurries.png"::: | 是 |  否    | 部分 Sunny 與 Flurries|
+| 22           | :::image type="icon" source="./media/weather-services-concepts/snow-i.png"::: | Yes |  Yes   | Snow|
+| 23           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | 是 |  否    | 大多是具有雪的一種雲|     
+| 24           | :::image type="icon" source="./media/weather-services-concepts/ice-i.png"::: | Yes |  Yes   | Ice |
+| 25           | :::image type="icon" source="./media/weather-services-concepts/sleet-i.png"::: | Yes |  Yes   | Sleet|
+| 26           | :::image type="icon" source="./media/weather-services-concepts/freezing-rain.png"::: | Yes |  Yes   | 凍結 Rain|
+| 29           | :::image type="icon" source="./media/weather-services-concepts/rain-snow.png"::: | Yes |  Yes   | 雨和雪|
+| 30           | :::image type="icon" source="./media/weather-services-concepts/hot-i.png"::: | Yes |  Yes   | 經常性|
+| 31           | :::image type="icon" source="./media/weather-services-concepts/cold-i.png"::: | Yes |  Yes   | 冷|
+| 32           | :::image type="icon" source="./media/weather-services-concepts/windy-i.png"::: | Yes |  Yes   | 風大|
+| 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | 否  |  Yes   | 清除|
+| 34           | :::image type="icon" source="./media/weather-services-concepts/mostly-clear-night.png"::: | 否  |  Yes   | 大多清除|
+| 35           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-night.png"::: | 否  |  Yes   | 部分雲|
+| 36           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds-Night.png"::: | 否  |  Yes   | 間歇雲端|
+| 37           | :::image type="icon" source="./media/weather-services-concepts/hazymoon-light.png"::: | 否  |  Yes   | 模糊 Moonlight|
+| 38           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-night.png"::: | 否  |  是   | 大部分的雲|
+| 39           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-showers-night.png"::: | 否  |  是   | 具有大氣的部分模糊|
+| 40           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers-night.png"::: | 否  |  是   | 大部分使用大氣的模糊|
+| 41           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-tstorms-night.png"::: | 否  |  是   | 具有 Thunderstorms 的部分模糊|
+| 42           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms-night.png"::: | 否  |  是   | 大部分使用 Thunderstorms 的模糊|
+| 43           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries-night.png"::: | 否  |  是   | 大部分使用 Flurries 的模糊|
+| 44           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | 否  |  是   | 大多是具有雪的一種雲|
 
 
 ## <a name="radar-and-satellite-imagery-color-scale"></a>雷達圖和衛星圖像色階
@@ -107,88 +108,88 @@ ms.locfileid: "80333807"
 
 | 十六進位色彩代碼 | 色彩範例 | 天氣條件 |
 |----------------|--------------|-------------------|
-| #93c701        | ![](./media/weather-services-concepts/color-93c701.png) | Rain-Light |
-| #ffd701        | ![](./media/weather-services-concepts/color-ffd701.png) | Rain-適中 |
-| #f05514        | ![](./media/weather-services-concepts/color-f05514.png) | Rain-繁重 |
-| #dc250e        | ![](./media/weather-services-concepts/color-dc250e.png) | Rain-嚴重 |
-| #9ec8f2        | ![](./media/weather-services-concepts/color-9ec8f2.png) | 雪-Light |
-| #2a8fdb        | ![](./media/weather-services-concepts/color-2a8fdb.png) | 雪-適中 |
-| #144bed        | ![](./media/weather-services-concepts/color-144bed.png) | 雪-繁重 |
-| #020096        | ![](./media/weather-services-concepts/color-020096.png) | 雪-嚴重 |
-| #e6a5c8        | ![](./media/weather-services-concepts/color-e6a5c8.png) | Ice-Light |
-| #d24fa0        | ![](./media/weather-services-concepts/color-d24fa0.png) | Ice-適中 |
-| #b71691        | ![](./media/weather-services-concepts/color-b71691.png) | Ice-嚴重 |
-| #7a1570        | ![](./media/weather-services-concepts/color-7a1570.png) | Ice-繁重 |
-| #c196e6        | ![](./media/weather-services-concepts/color-c196e6.png) | 混合-淺色 |
-| #ae6ee6        | ![](./media/weather-services-concepts/color-ae6ee6.png) | 混合-適中 |
-| #8a32d7        | ![](./media/weather-services-concepts/color-8a32d7.png) | 混合-繁重 |
-| #6500ba        | ![](./media/weather-services-concepts/color-6500ba.png) | 混合-嚴重 |
+| #93c701        | ![Rain-light 的色彩。](./media/weather-services-concepts/color-93c701.png) | Rain-Light |
+| #ffd701        | ![Rain-適中的色彩。](./media/weather-services-concepts/color-ffd701.png) | Rain-適中 |
+| #f05514        | ![Rain-繁重的色彩。](./media/weather-services-concepts/color-f05514.png) | Rain-繁重 |
+| #dc250e        | ![Rain-嚴重的色彩。](./media/weather-services-concepts/color-dc250e.png) | Rain-嚴重 |
+| #9ec8f2        | ![雪-light 的色彩。](./media/weather-services-concepts/color-9ec8f2.png) | 雪-Light |
+| #2a8fdb        | ![雪-適中的色彩。](./media/weather-services-concepts/color-2a8fdb.png) | 雪-適中 |
+| #144bed        | ![雪-繁重的色彩。](./media/weather-services-concepts/color-144bed.png) | 雪-繁重 |
+| #020096        | ![雪-嚴重的色彩。](./media/weather-services-concepts/color-020096.png) | 雪-嚴重 |
+| #e6a5c8        | ![Ice 光源的色彩。](./media/weather-services-concepts/color-e6a5c8.png) | Ice-Light |
+| #d24fa0        | ![Ice-適中的色彩。](./media/weather-services-concepts/color-d24fa0.png) | Ice-適中 |
+| #b71691        | ![Ice-嚴重的色彩。](./media/weather-services-concepts/color-b71691.png) | Ice-嚴重 |
+| #7a1570        | ![Ice-繁重的色彩。](./media/weather-services-concepts/color-7a1570.png) | Ice-繁重 |
+| #c196e6        | ![混和光源的色彩。](./media/weather-services-concepts/color-c196e6.png) | 混合-淺色 |
+| #ae6ee6        | ![混合-適中的色彩。](./media/weather-services-concepts/color-ae6ee6.png) | 混合-適中 |
+| #8a32d7        | ![混搭的色彩。](./media/weather-services-concepts/color-8a32d7.png) | 混合-繁重 |
+| #6500ba        | ![混合-嚴重的色彩。](./media/weather-services-concepts/color-6500ba.png) | 混合-嚴重 |
 
 具有十六進位色彩代碼和 dBZ 值之雷達圖磚的詳細色彩調色板如下所示。 dBZ 代表氣象雷達圖中的降雨機率濃度。 
 
 | **RAIN**             | **抵銷**              | **SNOW**              | **MIXED**             |
 |----------------------|----------------------|-----------------------|-----------------------|
-| **dBZ** **（色彩）**  | **dBZ** **（色彩）**  | **dBZ** **（色彩）**   | **dBZ** **（色彩）**   |
-| 1.25 （#93C701） | 1.25 （#E6A5C8） | 1.25 （#9EC8F2）  | 1.25 （#C196E6） |
-| 2.5 （#92C201） | 2.5 （#E6A2C6） | 2.5 （#98C5F0）  | 2.5 （#BF92E6） |
-| 3.75 （#92BE01） | 3.75 （#E69FC5） | 3.75 （#93C3EF）  | 3.75 （#BD8EE6） |
-| 5（#92BA02） | 5（#E69DC4） | 5（#8DC1EE）  | 5（#BB8BE6） |
-| 6.25 （#92B502） | 6.25 （#E69AC2） | 6.25 （#88BFEC）  | 6.25 （#BA87E6） |
-| 6.75 （#92B403） | 7.5 （#E697C1）  | 7.5 （#82BDEB）   | 7.5 （#B883E6） |
-| 8（#80AD02） | 8.75 （#E695C0） | 8.75 （#7DBAEA）  | 8.75 （#B680E6） |
-| 9.25 （#6FA602） | 10（#E692BE） | 10（#77B8E8）  | 10（#B47CE6） |
-| 10.5 （#5EA002） | 11.25 （#E68FBD） | 11.25 （#72B6E7）  | 11.25 （#B378E6） |
-| 11.75 （#4D9902） | 12.5 （#E68DBC） | 12.5 （#6CB4E6）  | 12.5 （#B175E6） |
-| 12.25 （#479702） | 13.75 （#E68ABA） | 13.75 （#67B2E5）  | 13.75 （#AF71E6） |
-| 13.5 （#3D9202） | 15（#E687B9） | 15（#61AEE4）  | 15（#AE6EE6） |
-| 14.75 （#338D02） | 16.25 （#E685B8） | 16.25 （#5BABE3）  | 16.25 （#AB6AE4） |
-| 16（#298802）  | 17.5 （#E682B6） | 17.5 （#56A8E2）  | 17.5 （#A967E3） |
-| 17.25 （#1F8302） | 18.75 （#E67FB5） | 18.75 （#50A5E1）  | 18.75 （#A764E2） |
-| 17.75 （#1B8103） | 20（#E67DB4） | 20（#4BA2E0）  | 20（#A560E1） |
-| 19（#187102） | 21.25 （#E275B0） | 21.25 （#459EDF） | 21.25 （#A35DE0） |
-| 20.25 （#166102） | 22.5 （#DF6DAD） | 22.5 （#409BDE）  | 22.5 （#A15ADF） |
-| 20.75 （#165B02） | 23.75 （#DC66AA） | 23.75 （#3A98DD）  | 23.75 （#9F56DE） |
-| 22（#135001） | 25（#D85EA6） | 25（#3595DC）  | 25（#9D53DD） |
-| 23.25 （#114501） | 26.25 （#D556A3） | 26.25 （#2F92DB）  | 26.25 （#9B50DC） |
-| 24.5 （#0F3A01） | 27.5 （#D24FA0） | 27.5 （#2A8FDB）  | 27.5 （#9648DA） |
-| 25.75 （#124C01） | 28.75 （#CE479E） | 28.75 （#2581DE）  | 28.75 （#9241D9） |
-| 27（#114401） | 30（#CB409C） | 30（#2173E2）  | 30（#8E39D8） |
-| 28.25 （#0F3D01） | 31.25 （#C7399A） | 31.25 （#1C66E5）  | 31.25 （#8A32D7） |
-| 28.75 （#0F3A01） | 32.5 （#C43298） | 32.5 （#1858E9）  | 32.5 （#862ED2） |
-| 30（#375401） | 33.75 （#C12B96） | 33.75 （#144BED）  | 33.75 （#832BCE） |
-| 31.25 （#5F6E01） | 35（#BD2494） | 35（#1348EA）  | 35（#7F28C9） |
-| 32.5 （#878801） | 36.25 （#BA1D92） | 36.25 （#1246E7）  | 36.25 （#7C25C5） |
-| 33.75 （#AFA201） | 37.5 （#B71691） | 37.5 （#1144E4）  | 37.5 （#7822C1） |
-| 35（#D7BC01） | 38.75 （#B51690） | 38.75 （#1142E1）  | 38.75 （#751FBC） |
-| 36.25 （#FFD701） | 40（#B3168F） | 40（#1040DE）  | 40（#711CB8） |
-| 37.5 （#FEB805） | 41.25 （#B1168E） | 41.25 （#0F3EDB）  | 41.25 （#6E19B4） |
-| 38.75 （#FCAB06） | 42.5 （#AF168D） | 42.5 （#0F3CD8）  | 42.5 （#6D18B4） |
-| 40（#FA9E07） | 43.75 （#AD168C） | 43.75 （#0E3AD5）  | 43.75 （#6D17B4） |
-| 41.25 （#F89209） | 45（#AB168B） | 45（#0D38D2）  | 45（#6D16B4） |
-| 42.5 （#F05514） | 46.25 （#A9168A） | 46.25 （#0C36CF）  | 46.25 （#6C15B4） |
-| 43.75 （#E74111） | 47.5 （#A81689） | 47.5 （#0C34CC）  | 47.5 （#6C14B5） |
-| 45（#DF2D0F） | 48.75 （#A61688） | 48.75 （#0B32C9）  | 48.75 （#6C13B5） |
-| 45.5 （#DC250E） | 50（#A41687） | 50（#0A30C6）  | 50（#6B12B5） |
-| 46.75 （#D21C0C） | 51.25 （#A21686） | 51.25 （#0A2EC4）  | 51.25 （#6B11B5） |
-| 48（#C9140A） | 52.5 （#A01685） | 52.5 （#092BC1）  | 52.5 （#6B10B6） |
-| 49.25 （#BF0C09） | 53.75 （#9E1684） | 53.75 （#0929BF）  | 53.75 （#6A0FB6） |
-| 50（#BA0808） | 55（#9C1683） | 55（#0826BC）  | 55（#6A0EB6） |
-| 56.25 （#6f031b） | 56.25 （#9B1682） | 56.25 （#0824BA）  | 56.25 （#6A0DB6） |
-| 57.5 （#9f0143） | 57.5 （#981580） | 57.5 （#0721B7）  | 57.5 （#690CB6） |
-| 58.75 （#c10060） | 58.75 （#96157F） | 58.75 （#071FB5）  | 58.75 （#690CB7） |
-| 60（#e70086） | 60（#94157E） | 60（#071DB3）  | 60（#690BB7） |
-| 61.25 （#e205a0） | 61.25 （#92157D） | 61.25 （#061AB0）  | 61.25 （#680AB7） |
-| 62.5 （#cc09ac） | 62.5 （#90157C） | 62.5 （#0618AE）  | 62.5 （#6809B7） |
-| 63.75 （#b50eb7） | 63.75 （#8D157A） | 63.75 （#0515AB）  | 63.75 （#6808B8） |
-| 65（#9315c8） | 65（#8B1579） | 65（#0513A9）  | 65（#6707B8） |
-| 66.25 （#8f21cc） | 66.25 （#891578） | 66.25 （#0410A6）  | 66.25 （#6706B8） |
-| 67.5 （#983acb） | 67.5 （#871577） | 67.5 （#040EA4）  | 67.5 （#6705B8） |
-| 68.75 （#9d49cb） | 68.75 （#851576） | 68.75 （#040CA2）  | 68.75 （#6604B8） |
-| 70（#a661ca） | 70（#821574） | 70（#03099F）  | 70（#6603B9） |
-| 71.25 （#ad72c9） | 71.25 （#801573） | 71.25 （#03079D）  | 71.25 （#6602B9） |
-| 72.5 （#b78bc6） | 72.5 （#7E1572） | 72.5 （#02049A）  | 72.5 （#6501B9） |
-| 73.75 （#bf9bc4） | 73.75 （#7C1571） | 73.75 （#020298）  | 73.75 （#6500B9） |
-| 75（#c9b5c2） | 75（#7A1570） | 75（#020096）  | 75（#6500BA） |
+| **dBZ** ** (色彩) **  | **dBZ** ** (色彩) **  | **dBZ** ** (色彩) **   | **dBZ** ** (色彩) **   |
+| 1.25 ( # 93C701)  | 1.25 ( # E6A5C8)  | 1.25 ( # 9EC8F2)   | 1.25 ( # C196E6)  |
+| 2.5 ( # 92C201)  | 2.5 ( # E6A2C6)  | 2.5 ( # 98C5F0)   | 2.5 ( # BF92E6)  |
+| 3.75 ( # 92BE01)  | 3.75 ( # E69FC5)  | 3.75 ( # 93C3EF)   | 3.75 ( # BD8EE6)  |
+| 5 ( # 92BA02)  | 5 ( # E69DC4)  | 5 ( # 8DC1EE)   | 5 ( # BB8BE6)  |
+| 6.25 ( # 92B502)  | 6.25 ( # E69AC2)  | 6.25 ( # 88BFEC)   | 6.25 ( # BA87E6)  |
+| 6.75 ( # 92B403)  | 7.5 ( # E697C1)   | 7.5 ( # 82BDEB)    | 7.5 ( # B883E6)  |
+| 8 ( # 80AD02)  | 8.75 ( # E695C0)  | 8.75 ( # 7DBAEA)   | 8.75 ( # B680E6)  |
+| 9.25 ( # 6FA602)  | 10 ( # E692BE)  | 10 ( # 77B8E8)   | 10 ( # B47CE6)  |
+| 10.5 ( # 5EA002)  | 11.25 ( # E68FBD)  | 11.25 ( # 72B6E7)   | 11.25 ( # B378E6)  |
+| 11.75 ( # 4D9902)  | 12.5 ( # E68DBC)  | 12.5 ( # 6CB4E6)   | 12.5 ( # B175E6)  |
+| 12.25 ( # 479702)  | 13.75 ( # E68ABA)  | 13.75 ( # 67B2E5)   | 13.75 ( # AF71E6)  |
+| 13.5 ( # 3D9202)  | 15 ( # E687B9)  | 15 ( # 61AEE4)   | 15 ( # AE6EE6)  |
+| 14.75 ( # 338D02)  | 16.25 ( # E685B8)  | 16.25 ( # 5BABE3)   | 16.25 ( # AB6AE4)  |
+| 16 ( # 298802)   | 17.5 ( # E682B6)  | 17.5 ( # 56A8E2)   | 17.5 ( # A967E3)  |
+| 17.25 ( # 1F8302)  | 18.75 ( # E67FB5)  | 18.75 ( # 50A5E1)   | 18.75 ( # A764E2)  |
+| 17.75 ( # 1B8103)  | 20 ( # E67DB4)  | 20 ( # 4BA2E0)   | 20 ( # A560E1)  |
+| 19 ( # 187102)  | 21.25 ( # E275B0)  | 21.25 ( # 459EDF)  | 21.25 ( # A35DE0)  |
+| 20.25 ( # 166102)  | 22.5 ( # DF6DAD)  | 22.5 ( # 409BDE)   | 22.5 ( # A15ADF)  |
+| 20.75 ( # 165B02)  | 23.75 ( # DC66AA)  | 23.75 ( # 3A98DD)   | 23.75 ( # 9F56DE)  |
+| 22 ( # 135001)  | 25 ( # D85EA6)  | 25 ( # 3595DC)   | 25 ( # 9D53DD)  |
+| 23.25 ( # 114501)  | 26.25 ( # D556A3)  | 26.25 ( # 2F92DB)   | 26.25 ( # 9B50DC)  |
+| 24.5 ( # 0F3A01)  | 27.5 ( # D24FA0)  | 27.5 ( # 2A8FDB)   | 27.5 ( # 9648DA)  |
+| 25.75 ( # 124C01)  | 28.75 ( # CE479E)  | 28.75 ( # 2581DE)   | 28.75 ( # 9241D9)  |
+| 27 ( # 114401)  | 30 ( # CB409C)  | 30 ( # 2173E2)   | 30 ( # 8E39D8)  |
+| 28.25 ( # 0F3D01)  | 31.25 ( # C7399A)  | 31.25 ( # 1C66E5)   | 31.25 ( # 8A32D7)  |
+| 28.75 ( # 0F3A01)  | 32.5 ( # C43298)  | 32.5 ( # 1858E9)   | 32.5 ( # 862ED2)  |
+| 30 ( # 375401)  | 33.75 ( # C12B96)  | 33.75 ( # 144BED)   | 33.75 ( # 832BCE)  |
+| 31.25 ( # 5F6E01)  | 35 ( # BD2494)  | 35 ( # 1348EA)   | 35 ( # 7F28C9)  |
+| 32.5 ( # 878801)  | 36.25 ( # BA1D92)  | 36.25 ( # 1246E7)   | 36.25 ( # 7C25C5)  |
+| 33.75 ( # AFA201)  | 37.5 ( # B71691)  | 37.5 ( # 1144E4)   | 37.5 ( # 7822C1)  |
+| 35 ( # D7BC01)  | 38.75 ( # B51690)  | 38.75 ( # 1142E1)   | 38.75 ( # 751FBC)  |
+| 36.25 ( # FFD701)  | 40 ( # B3168F)  | 40 ( # 1040DE)   | 40 ( # 711CB8)  |
+| 37.5 ( # FEB805)  | 41.25 ( # B1168E)  | 41.25 ( # 0F3EDB)   | 41.25 ( # 6E19B4)  |
+| 38.75 ( # FCAB06)  | 42.5 ( # AF168D)  | 42.5 ( # 0F3CD8)   | 42.5 ( # 6D18B4)  |
+| 40 ( # FA9E07)  | 43.75 ( # AD168C)  | 43.75 ( # 0E3AD5)   | 43.75 ( # 6D17B4)  |
+| 41.25 ( # F89209)  | 45 ( # AB168B)  | 45 ( # 0D38D2)   | 45 ( # 6D16B4)  |
+| 42.5 ( # F05514)  | 46.25 ( # A9168A)  | 46.25 ( # 0C36CF)   | 46.25 ( # 6C15B4)  |
+| 43.75 ( # E74111)  | 47.5 ( # A81689)  | 47.5 ( # 0C34CC)   | 47.5 ( # 6C14B5)  |
+| 45 ( # DF2D0F)  | 48.75 ( # A61688)  | 48.75 ( # 0B32C9)   | 48.75 ( # 6C13B5)  |
+| 45.5 ( # DC250E)  | 50 ( # A41687)  | 50 ( # 0A30C6)   | 50 ( # 6B12B5)  |
+| 46.75 ( # D21C0C)  | 51.25 ( # A21686)  | 51.25 ( # 0A2EC4)   | 51.25 ( # 6B11B5)  |
+| 48 ( # C9140A)  | 52.5 ( # A01685)  | 52.5 ( # 092BC1)   | 52.5 ( # 6B10B6)  |
+| 49.25 ( # BF0C09)  | 53.75 ( # 9E1684)  | 53.75 ( # 0929BF)   | 53.75 ( # 6A0FB6)  |
+| 50 ( # BA0808)  | 55 ( # 9C1683)  | 55 ( # 0826BC)   | 55 ( # 6A0EB6)  |
+| 56.25 ( # 6f031b)  | 56.25 ( # 9B1682)  | 56.25 ( # 0824BA)   | 56.25 ( # 6A0DB6)  |
+| 57.5 ( # 9f0143)  | 57.5 ( # 981580)  | 57.5 ( # 0721B7)   | 57.5 ( # 690CB6)  |
+| 58.75 ( # c10060)  | 58.75 ( # 96157F)  | 58.75 ( # 071FB5)   | 58.75 ( # 690CB7)  |
+| 60 ( # e70086)  | 60 ( # 94157E)  | 60 ( # 071DB3)   | 60 ( # 690BB7)  |
+| 61.25 ( # e205a0)  | 61.25 ( # 92157D)  | 61.25 ( # 061AB0)   | 61.25 ( # 680AB7)  |
+| 62.5 ( # cc09ac)  | 62.5 ( # 90157C)  | 62.5 ( # 0618AE)   | 62.5 ( # 6809B7)  |
+| 63.75 ( # b50eb7)  | 63.75 ( # 8D157A)  | 63.75 ( # 0515AB)   | 63.75 ( # 6808B8)  |
+| 65 ( # 9315c8)  | 65 ( # 8B1579)  | 65 ( # 0513A9)   | 65 ( # 6707B8)  |
+| 66.25 ( # 8f21cc)  | 66.25 ( # 891578)  | 66.25 ( # 0410A6)   | 66.25 ( # 6706B8)  |
+| 67.5 ( # 983acb)  | 67.5 ( # 871577)  | 67.5 ( # 040EA4)   | 67.5 ( # 6705B8)  |
+| 68.75 ( # 9d49cb)  | 68.75 ( # 851576)  | 68.75 ( # 040CA2)   | 68.75 ( # 6604B8)  |
+| 70 ( # a661ca)  | 70 ( # 821574)  | 70 ( # 03099F)   | 70 ( # 6603B9)  |
+| 71.25 ( # ad72c9)  | 71.25 ( # 801573)  | 71.25 ( # 03079D)   | 71.25 ( # 6602B9)  |
+| 72.5 ( # b78bc6)  | 72.5 ( # 7E1572)  | 72.5 ( # 02049A)   | 72.5 ( # 6501B9)  |
+| 73.75 ( # bf9bc4)  | 73.75 ( # 7C1571)  | 73.75 ( # 020298)   | 73.75 ( # 6500B9)  |
+| 75 ( # c9b5c2)  | 75 ( # 7A1570)  | 75 ( # 020096)   | 75 ( # 6500BA)  |
 
 
 
@@ -198,23 +199,23 @@ ms.locfileid: "80333807"
 
 | 十六進位色彩代碼 | 色彩範例 | 雲端溫度 |
 |----------------|--------------|-------------------|
-| #b5b5b5        | ![](./media/weather-services-concepts/color-b5b5b5.png) | 溫度-低 | 
-| #d24fa0        | ![](./media/weather-services-concepts/color-d24fa0.png) |  |
-| #8a32d7        | ![](./media/weather-services-concepts/color-8a32d7.png) |  |
-| #144bed        | ![](./media/weather-services-concepts/color-144bed.png) |  |
-| #479702        | ![](./media/weather-services-concepts/color-479702.png) |  |
-| #72b403        | ![](./media/weather-services-concepts/color-72b403.png) |  |
-| #93c701        | ![](./media/weather-services-concepts/color-93c701.png) |  |
-| #ffd701        | ![](./media/weather-services-concepts/color-ffd701.png) |  |
-| #f05514        | ![](./media/weather-services-concepts/color-f05514.png) |  |
-| #dc250e        | ![](./media/weather-services-concepts/color-dc250e.png) |  |
-| #ba0808        | ![](./media/weather-services-concepts/color-ba0808.png) |  |
-| #1f1f1f        | ![](./media/weather-services-concepts/color-1f1f1f.png) | 溫度-高 |
+| #b5b5b5        | ![#B5b5b5 的色彩磚。](./media/weather-services-concepts/color-b5b5b5.png) | 溫度-低 | 
+| #d24fa0        | ![#D24fa0 的色彩磚。](./media/weather-services-concepts/color-d24fa0.png) |  |
+| #8a32d7        | ![#8a32d7 的色彩磚。](./media/weather-services-concepts/color-8a32d7.png) |  |
+| #144bed        | ![#144bed 的色彩磚。](./media/weather-services-concepts/color-144bed.png) |  |
+| #479702        | ![#479702 的色彩磚。](./media/weather-services-concepts/color-479702.png) |  |
+| #72b403        | ![#72b403 的色彩磚。](./media/weather-services-concepts/color-72b403.png) |  |
+| #93c701        | ![#93c701 的色彩磚。](./media/weather-services-concepts/color-93c701.png) |  |
+| #ffd701        | ![#Ffd701 的色彩磚。](./media/weather-services-concepts/color-ffd701.png) |  |
+| #f05514        | ![#F05514 的色彩磚。](./media/weather-services-concepts/color-f05514.png) |  |
+| #dc250e        | ![#Dc250e 的色彩磚。](./media/weather-services-concepts/color-dc250e.png) |  |
+| #ba0808        | ![#Ba0808 的色彩磚。](./media/weather-services-concepts/color-ba0808.png) |  |
+| #1f1f1f        | ![#1f1f1f 的色彩磚。](./media/weather-services-concepts/color-1f1f1f.png) | 溫度-高 |
 
 
 紅外線附屬磚的詳細色彩調色板如下所示。
 
-|**暫存（K）**|**十六進位色彩代碼**|
+|**Temp (K) **|**十六進位色彩代碼**|
 |--------|--------------|
 |198     |#fe050505     |
 |198.43  |#fe120505     |

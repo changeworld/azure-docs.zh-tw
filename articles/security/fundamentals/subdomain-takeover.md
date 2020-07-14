@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: b395931d11c7bc7119be0122531908ed680fc3b9
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: a7ff8a0cf23bf0701a7cc35cb137ec0965f295ec
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145972"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223970"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>防止無關聯的 DNS 專案，並避免子域接管
 
@@ -117,8 +117,8 @@ Azure DNS 的[別名記錄](https://docs.microsoft.com/azure/dns/dns-alias#scena
 
     - 定期檢查您的 DNS 記錄，以確保您的子域都會對應至 Azure 資源，其會：
 
-        - 已**存在**-針對指向 Azure 子域（例如 *. azurewebsites.net 或 *. cloudapp.azure.com）的資源查詢您的 DNS 區域 (參閱[此參考清單](azure-domains.md)) 。
-        - **您擁有**-確認您擁有 DNS 子域目標的所有資源。
+        - 已存在-針對指向 Azure 子域（例如 *. azurewebsites.net 或 *. cloudapp.azure.com）的資源查詢您的 DNS 區域 (參閱[此參考清單](azure-domains.md)) 。
+        - 您擁有-確認您擁有 DNS 子域目標的所有資源。
 
     - 維護 Azure 完整功能變數名稱的服務類別目錄， (FQDN) 端點和應用程式擁有者。 若要建立您的服務類別目錄，請使用下表中的參數來執行下列 Azure Resource Graph (ARG) 查詢：
     
@@ -127,26 +127,15 @@ Azure DNS 的[別名記錄](https://docs.microsoft.com/azure/dns/dns-alias#scena
         >
         > **限制**-Azure Resource Graph 具有節流和分頁限制，如果您有大型的 Azure 環境，就應該考慮這一點。 [深入瞭解](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data)如何使用大型 Azure 資源資料集。  
 
-        ```
-        Search-AzGraph -Query "resources | where type == '[ResourceType]' | project tenantId, subscriptionId, type, resourceGroup, name, endpoint = [FQDNproperty]"
+        ```powershell
+        Search-AzGraph -Query "resources | where type == '<ResourceType>' | 
+        project tenantId, subscriptionId, type, resourceGroup, name, 
+        endpoint = <FQDNproperty>"
         ``` 
-        
-        例如，此查詢會傳回 Azure App Service 的資源：
-
-        ```
-        Search-AzGraph -Query "resources | where type == 'microsoft.web/sites' | project tenantId, subscriptionId, type, resourceGroup, name, endpoint = properties.defaultHostName"
-        ```
-        
-        您也可以結合多個資源類型。 這個範例查詢會傳回 Azure App Service**和**Azure App Service 位置的資源：
-
-        ```azurepowershell
-        Search-AzGraph -Query "resources | where type in ('microsoft.web/sites', 'microsoft.web/sites/slots') | project tenantId, subscriptionId, type, resourceGroup, name, endpoint = properties.defaultHostName"
-        ```
-
 
         ARG 查詢的每個服務參數：
 
-        |資源名稱  |[ResourceType]  | [FQDNproperty]  |
+        |資源名稱  | `<ResourceType>`  | `<FQDNproperty>`  |
         |---------|---------|---------|
         |Azure Front Door|microsoft.network/frontdoors|屬性 cName|
         |Azure Blob 儲存體|microsoft.storage/storageaccounts|Primaryendpoints.blob. blob|
@@ -157,6 +146,23 @@ Azure DNS 的[別名記錄](https://docs.microsoft.com/azure/dns/dns-alias#scena
         |Azure API 管理|microsoft.apimanagement/service|hostnameConfigurations. hostName|
         |Azure App Service|microsoft.web/sites|屬性。 defaultHostName|
         |Azure App Service 插槽|microsoft.web/sites/slots|屬性。 defaultHostName|
+
+        
+        **範例 1** -此查詢會傳回 Azure App Service 的資源： 
+
+        ```powershell
+        Search-AzGraph -Query "resources | where type == 'microsoft.web/sites' | 
+        project tenantId, subscriptionId, type, resourceGroup, name, 
+        endpoint = properties.defaultHostName"
+        ```
+        
+        **範例 2** -此查詢結合了多個資源類型，以傳回 Azure App Service**和**Azure App Service 位置的資源：
+
+        ```powershell
+        Search-AzGraph -Query "resources | where type in ('microsoft.web/sites', 
+        'microsoft.web/sites/slots') | project tenantId, subscriptionId, type, 
+        resourceGroup, name, endpoint = properties.defaultHostName"
+        ```
 
 
 - **建立補救程式：**
@@ -173,4 +179,4 @@ Azure DNS 的[別名記錄](https://docs.microsoft.com/azure/dns/dns-alias#scena
 
 - [在 Azure App Service 中新增自訂網域時，請使用網域驗證識別碼](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain#get-domain-verification-id) 
 
--    [快速入門：使用 Azure PowerShell 執行您的第一個 Resource Graph 查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-powershell)
+- [快速入門：使用 Azure PowerShell 執行您的第一個 Resource Graph 查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-powershell)

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/15/2020
-ms.openlocfilehash: 347f37fb999656a1c4951f01a75a392887b5b882
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/09/2020
+ms.openlocfilehash: 43839e19eb252c9fa7ab46605fd247f3a798d223
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045666"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220281"
 ---
 # <a name="copy-data-from-and-to-snowflake-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料從和複製到雪花
 
@@ -46,11 +46,11 @@ ms.locfileid: "86045666"
 
 下列屬性受到雪花連結服務的支援。
 
-| 屬性         | 說明                                                  | 必要 |
+| 屬性         | 描述                                                  | 必要 |
 | :--------------- | :----------------------------------------------------------- | :------- |
 | type             | Type 屬性必須設定為**雪花**。              | Yes      |
-| connectionString | 設定[完整帳戶名稱](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name)（包括識別區域和雲端平臺的其他區段）、使用者名稱、密碼、資料庫和倉儲。 指定要連接到雪花實例的 JDBC 連接字串。 您也可以將密碼放在 Azure Key Vault 中。 如需詳細資訊，請參閱表格下方的範例，以及[Azure Key Vault 文章中的 Store 認證](store-credentials-in-key-vault.md)。| Yes      |
-| connectVia       | 用來連接到資料存放區的[整合運行](concepts-integration-runtime.md)時間。 您可以使用 Azure integration runtime 或自我裝載整合執行時間（如果您的資料存放區位於私人網路中）。 如果未指定，則會使用預設的 Azure integration runtime。 | 否       |
+| connectionString | 設定[完整帳戶名稱](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (包括識別區域和雲端平臺) 、使用者名稱、密碼、資料庫和倉儲的其他區段。 指定要連接到雪花實例的 JDBC 連接字串。 您也可以將密碼放在 Azure Key Vault 中。 如需詳細資訊，請參閱表格下方的範例，以及[Azure Key Vault 文章中的 Store 認證](store-credentials-in-key-vault.md)。| Yes      |
+| connectVia       | 用來連接到資料存放區的[整合運行](concepts-integration-runtime.md)時間。 如果您的資料存放區位於私人網路) 中，您可以使用 Azure integration runtime 或自我裝載整合執行時間 (。 如果未指定，則會使用預設的 Azure integration runtime。 | 否       |
 
 **範例︰**
 
@@ -60,7 +60,7 @@ ms.locfileid: "86045666"
     "properties": {
         "type": "Snowflake",
         "typeProperties": {
-            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&password=<password>&db=<database>&warehouse=<warehouse>(optional)"
+            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&password=<password>&db=<database>&warehouse=<warehouse>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -78,7 +78,7 @@ ms.locfileid: "86045666"
     "properties": {
         "type": "Snowflake",
         "typeProperties": {
-            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&db=<database>&warehouse=<warehouse>(optional)",
+            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&db=<database>&warehouse=<warehouse>",
             "password": {
                 "type": "AzureKeyVaultSecret",
                 "store": { 
@@ -102,7 +102,7 @@ ms.locfileid: "86045666"
 
 雪花資料集支援下列屬性。
 
-| 屬性  | 說明                                                  | 必要                    |
+| 屬性  | 描述                                                  | 必要                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | 資料集的類型屬性必須設定為**SnowflakeTable**。 | Yes                         |
 | 結構描述 | 結構描述的名稱。 |針對來源為否，針對接收則為 [是]  |
@@ -140,7 +140,7 @@ ms.locfileid: "86045666"
 
 若要從雪花複製資料，複製活動的 [**來源**] 區段支援下列屬性。
 
-| 屬性                     | 說明                                                  | 必要 |
+| 屬性                     | 描述                                                  | 必要 |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | 複製活動來源的類型屬性必須設定為**SnowflakeSource**。 | 是      |
 | 查詢          | 指定要從雪花讀取資料的 SQL 查詢。<br>不支援執行預存程式。 | No       |
@@ -156,15 +156,20 @@ ms.locfileid: "86045666"
 
 - **接收連結服務**是使用**共用存取**簽章驗證的[**Azure Blob 儲存體**](connector-azure-blob-storage.md)。
 
-- **接收資料格式**為**Parquet**或分隔的**文字**，具有下列設定：
+- **接收資料格式**為**Parquet**、**分隔文字**或具有下列設定的**JSON** ：
 
-   - 針對**Parquet**格式，壓縮編解碼器為**None**、 **Snappy**或**Lzo**。
-   - 針對**分隔的文字**格式：
-     - `rowDelimiter`是**\r\n**，或任何單一字元。
-     - `compression`不可以是**壓縮**、 **gzip**、 **bzip2**或**deflate**。
-     - `encodingName` 會保留為預設值，或設定為 **utf-8**。
-     - `quoteChar`為**雙引號**、**單引號**或**空字串**（沒有引號字元）。
-- 在複製活動來源中， `additionalColumns` 未指定。
+    - 針對**Parquet**格式，壓縮編解碼器為**None**、 **Snappy**或**Lzo**。
+    - 針對**分隔的文字**格式：
+        - `rowDelimiter`是**\r\n**，或任何單一字元。
+        - `compression`不可以是**壓縮**、 **gzip**、 **bzip2**或**deflate**。
+        - `encodingName` 會保留為預設值，或設定為 **utf-8**。
+        - `quoteChar`為**雙引號**、**單引號**或**空字串** (不) 引號字元。
+    - 若是**JSON**格式，直接複製僅支援來源雪花表或查詢結果只有單一資料行，而此資料行的資料類型是**VARIANT**、 **OBJECT**或**ARRAY**的情況。
+        - `compression`不可以是**壓縮**、 **gzip**、 **bzip2**或**deflate**。
+        - `encodingName` 會保留為預設值，或設定為 **utf-8**。
+        - `filePattern`在中，複製活動接收會保留為預設值，或設定為**setOfObjects**。
+
+- 未指定複製活動來源中的 `additionalColumns` 。
 - 未指定資料行對應。
 
 **範例︰**
@@ -266,7 +271,7 @@ ms.locfileid: "86045666"
 
 若要將資料複製到雪花，複製活動的 [**接收**] 區段支援下列屬性。
 
-| 屬性          | 說明                                                  | 必要                                      |
+| 屬性          | 描述                                                  | 必要                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | type              | 複製活動接收的 type 屬性，設定為**SnowflakeSink**。 | Yes                                           |
 | preCopyScript     | 指定在每次執行中將資料寫入雪花之前，要執行複製活動的 SQL 查詢。 使用此屬性來清除預先載入的資料。 | 否                                            |
@@ -282,15 +287,19 @@ ms.locfileid: "86045666"
 
 - **來源連結服務**是具有**共用存取**簽章驗證的[**Azure Blob 儲存體**](connector-azure-blob-storage.md)。
 
-- **源資料格式**為**Parquet**或**分隔的文字**，具有下列設定：
+- **源資料格式**為**Parquet**、**分隔文字**或具有下列設定的**JSON** ：
 
-   - 針對**Parquet**格式，壓縮編解碼器為**None**或**Snappy**。
+    - 若為**Parquet**格式，壓縮編解碼器為**None**或**Snappy**。
 
-   - 針對**分隔的文字**格式：
-     - `rowDelimiter`是**\r\n**，或任何單一字元。 如果資料列分隔符號不是 "\r\n"，則必須為 `firstRowAsHeader` **false**，而且 `skipLineCount` 不會指定。
-     - `compression`不可以是**壓縮**、 **gzip**、 **bzip2**或**deflate**。
-     - `encodingName`會保留為預設值或設定為 "UTF-8"、"UTF-16"、"UTF-16BE"、"UTF-32"、"32BE"、"BIG5"、"EUC-JP"、"EUC-KR"、"GB18030"、".ISO-2022-JP"、"ISO-2022-KR"、"ISO-8859-1"，"ISO-8859-2"，"ISO-8859-5"，"ISO-8859-6"，"ISO-8859-7"，"ISO-8859-8"，"ISO-8859-9"，"WINDOWS-1250"，"windows-1251"，"windows-1252"，"windows-1253"。
-     - `quoteChar`為**雙引號**、**單引號**或**空字串**（沒有引號字元）。
+    - 針對**分隔的文字**格式：
+        - `rowDelimiter`是**\r\n**，或任何單一字元。 如果資料列分隔符號不是 "\r\n"，則必須為 `firstRowAsHeader` **false**，而且 `skipLineCount` 不會指定。
+        - `compression`不可以是**壓縮**、 **gzip**、 **bzip2**或**deflate**。
+        - `encodingName`會保留為預設值或設定為 "UTF-8"、"UTF-16"、"UTF-16BE"、"UTF-32"、"32BE"、"BIG5"、"EUC-JP"、"EUC-KR"、"GB18030"、".ISO-2022-JP"、"ISO-2022-KR"、"ISO-8859-1"，"ISO-8859-2"，"ISO-8859-5"，"ISO-8859-6"，"ISO-8859-7"，"ISO-8859-8"，"ISO-8859-9"，"WINDOWS-1250"，"windows-1251"，"windows-1252"，"windows-1253"。
+        - `quoteChar`為**雙引號**、**單引號**或**空字串** (不) 引號字元。
+    - 若是**JSON**格式，直接複製只支援接收雪花表只有單一資料行，而此資料行的資料類型是**VARIANT**、 **OBJECT**或**ARRAY**。
+        - `compression`不可以是**壓縮**、 **gzip**、 **bzip2**或**deflate**。
+        - `encodingName` 會保留為預設值，或設定為 **utf-8**。
+        - 未指定資料行對應。
 
 - 在複製活動來源中： 
 

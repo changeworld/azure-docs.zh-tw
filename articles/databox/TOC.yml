@@ -14,30 +14,52 @@
               href: data-box-quickstart-portal.md
         - name: 教學課程
           items:
-            - name: 1 - 訂購
-              href: data-box-deploy-ordered.md
-            - name: 2 - 設定
-              href: data-box-deploy-set-up.md
-            - name: 3 - 連線和複製
+            - name: 將資料匯入 Azure
               items:
-                - name: 透過 SMB
-                  href: data-box-deploy-copy-data.md
-                - name: 透過 NFS
-                  href: data-box-deploy-copy-data-via-nfs.md
-                - name: 透過 REST
-                  href: data-box-deploy-copy-data-via-rest.md
-                - name: 透過資料複製服務
-                  href: data-box-deploy-copy-data-via-copy-service.md
-                - name: 至受控磁碟
-                  href: data-box-deploy-copy-data-from-vhds.md
-            - name: 4 - 傳回、上傳並確認
-              href: data-box-deploy-picked-up.md
+                - name: 1 - 訂購
+                  href: data-box-deploy-ordered.md
+                - name: 2 - 設定
+                  href: data-box-deploy-set-up.md
+                - name: 3 - 連線和複製
+                  items:
+                    - name: 透過 SMB
+                      href: data-box-deploy-copy-data.md
+                    - name: 透過 NFS
+                      href: data-box-deploy-copy-data-via-nfs.md
+                    - name: 透過 REST
+                      href: data-box-deploy-copy-data-via-rest.md
+                    - name: 透過資料複製服務
+                      href: data-box-deploy-copy-data-via-copy-service.md
+                    - name: 至受控磁碟
+                      href: data-box-deploy-copy-data-from-vhds.md
+                - name: 4 - 傳回、上傳並確認
+                  href: data-box-deploy-picked-up.md
+            - name: 從 Azure 匯出資料
+              items:
+                - name: 1 - 訂購
+                  href: data-box-deploy-export-ordered.md
+                - name: 2 - 設定
+                  href: data-box-deploy-set-up.md
+                - name: 3 - 連線和複製
+                  items:
+                    - name: 透過 SMB
+                      href: data-box-deploy-export-copy-data.md
+                    - name: 透過 NFS
+                      href: data-box-deploy-export-copy-data-via-nfs.md
+                - name: 4 - 退回
+                  href: data-box-deploy-export-picked-up.md
         - name: 概念
           items:
             - name: 閱讀安全性方針
               href: data-box-safety.md
             - name: 檢閱追蹤和記錄
-              href: data-box-logs.md
+              items:
+                - name: 針對匯入訂單
+                  href: data-box-logs.md
+                - name: 針對匯出訂單
+                  href: data-box-export-logs.md
+            - name: 檢視稽核記錄
+              href: data-box-audit-logs.md
             - name: 檢閱需求
               items:
                 - name: 適用於資料箱
@@ -64,6 +86,8 @@
               href: data-box-portal-customer-managed-shipping.md
             - name: 啟用客戶管理的金鑰
               href: data-box-customer-managed-encryption-key-portal.md
+            - name: 使用客戶加密箱
+              href: data-box-customer-lockbox.md
             - name: 將資料移至 Blob 層
               href: data-box-how-to-set-data-tier.md
             - name: 接上裝置纜線

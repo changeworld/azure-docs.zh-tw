@@ -103,6 +103,8 @@
       href: howto-import-export-data.md
     - name: 將事件路由至自訂端點
       href: howto-app-configuration-event.md
+    - name: 自動備份設定存放區
+      href: howto-backup-config-store.md
     - name: 最佳作法
       href: howto-best-practices.md
 - name: 參考

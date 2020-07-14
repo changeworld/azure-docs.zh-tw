@@ -6,15 +6,19 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: ce50c665fa79c361f638fda4ec373d5215c407f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a2ec2e60ae38506d716a244872baddbbdf570e7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74129424"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184968"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>如何設定 Azure Cache for Redis 的異地複寫
 
-異地複寫提供一個機制，可連結兩個進階層 Azure Cache for Redis 執行個體。 其中一個快取會選擇作為主要連結快取，另一個則做為次要連結快取。 次要連結快取會變成唯讀，而寫入主要快取的資料會複寫至次要連結快取。 這項功能可用來跨 Azure 區域複寫快取。 本文提供的指南可為您的 Premium 層 Azure Cache for Redis 實例設定異地複寫。
+異地複寫提供一個機制，可連結兩個進階層 Azure Cache for Redis 執行個體。 其中一個快取會選擇作為主要連結快取，另一個則做為次要連結快取。 次要連結快取會變成唯讀，而寫入主要快取的資料會複寫至次要連結快取。 主要和次要快取實例之間的資料傳輸是由 TLS 所保護。 異地複寫可用於設定跨兩個 Azure 區域的快取。 本文提供的指南可為您的 Premium 層 Azure Cache for Redis 實例設定異地複寫。
+
+> [!NOTE]
+> 異地複寫是設計為災難復原解決方案。 根據預設，您的應用程式會在主要區域中寫入和讀取。 您可以選擇性地將它設定為從次要區域讀取。 異地複寫不會提供自動容錯移轉，因為如果應用程式的其餘部分保留在主要區域中，在區域之間的額外網路延遲會有疑慮。 您必須取消連結次要快取，以管理並起始容錯移轉。 這會將它升級為新的主要實例。
 
 ## <a name="geo-replication-prerequisites"></a>異地複寫的必要條件
 
@@ -179,7 +183,7 @@ ms.locfileid: "74129424"
 
 異地複寫快取不支援跨 Azure 區域自動容錯移轉。 在嚴重損壞修復案例中，客戶應該以協調的方式，在備份區域中啟動整個應用程式堆疊。 讓個別應用程式元件決定何時要自行切換到其備份，可能會對效能產生負面影響。 Redis 的其中一個主要優點是，它是非常低延遲的存放區。 如果客戶的主應用程式與快取位於不同的區域，則新增的來回時間可能會對效能造成明顯的影響。 基於這個理由，我們會避免因為暫時性可用性問題而自動容錯移轉。
 
-若要啟動客戶起始的容錯移轉，請先取消快取的連結。 然後，將您的 Redis 用戶端變更為使用（先前連結）次要快取的連接端點。 當兩個快取未連結時，次要快取會再次變成一般的讀寫快取，並直接接受來自 Redis 用戶端的要求。
+若要啟動客戶起始的容錯移轉，請先取消快取的連結。 然後，將您的 Redis 用戶端變更為使用先前連結) 次要快取的 (的連接端點。 當兩個快取未連結時，次要快取會再次變成一般的讀寫快取，並直接接受來自 Redis 用戶端的要求。
 
 ## <a name="next-steps"></a>後續步驟
 

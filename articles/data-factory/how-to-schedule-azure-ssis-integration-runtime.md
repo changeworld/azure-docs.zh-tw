@@ -8,20 +8,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 8/2/2019
+ms.date: 07/09/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 0023bcc4a7c31a0e337683fa3d3080a45445fc49
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4df4f7e1db880a38f647e8e384cbfb29b70954ec
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117915"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187246"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>如何按照排程來啟動和停止 Azure-SSIS Integration Runtime
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本文說明如何使用 Azure Data Factory (ADF) 來排程 Azure-SSIS Integration Runtime (IR) 的啟動和停止。 Azure-SSIS IR 是專門用來執行 SQL Server Integration Services (SSIS) 套件的 ADF 計算資源。 執行 Azure-SSIS IR 會有相關聯的成本。 因此，您通常只應在需要於 Azure 中執行 SSIS 套件時才執行 IR，不再需要時即應停止 IR。 您可以使用 ADF 使用者介面 (UI)/應用程式或 Azure PowerShell，[以手動方式啟動或停止 IR](manage-azure-ssis-integration-runtime.md)。
 
@@ -162,7 +163,7 @@ ms.locfileid: "84117915"
     4. 在 [週期性]**** 中，輸入觸發程序的頻率。 在下列範例中，頻率是**每天**一次。 
     5. 在 [結束]**** 中，選取 [不會結束]****，或在選取 [日期]**** 之後輸入結束日期和時間。 
     6. 選取 [啟動]**** 以在您發佈了整個 ADF 設定之後立即啟動觸發程序。 
-    7. 選取 [下一步]。
+    7. 選取 [下一步] 。
 
    ![觸發程序 -> 新增/編輯](./media/how-to-schedule-azure-ssis-integration-runtime/new-trigger-window.png)
     

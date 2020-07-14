@@ -159,6 +159,8 @@
           href: streaming-policy-concept.md
         - name: 內容金鑰原則
           href: content-key-policy-concept.md
+        - name: 透過 Azure AD 保護內容
+          href: azure-ad-content-protection.md
     - name: 監視
       items:
         - name: 具有事件方格的事件

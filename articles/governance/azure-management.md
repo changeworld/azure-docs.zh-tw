@@ -1,16 +1,16 @@
 ---
 title: Azure 管理概觀 - Azure 控管
 description: 管理 Azure 應用程式與資源的區域概觀，並提供 Azure 管理工具內容的連結。
-ms.date: 05/22/2020
+ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: e293ab743b7c3b49a13cab97200c136a9bd044f5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 81d655db706a7330fc541724d490a4885cc2fe8b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828142"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041909"
 ---
-# <a name="overview-of-management-services-in-azure"></a>Azure 管理服務概觀
+# <a name="what-are-the-azure-management-areas"></a>什麼是 Azure 管理區域？
 
 在 Azure 中治理是 Azure 管理的其中一個層面。 本文說明在 Azure 中部署及維護資源的各種管理領域。
 
@@ -26,7 +26,7 @@ ms.locfileid: "83828142"
 
 ## <a name="monitor"></a>監視
 
-監視係指經由收集和分析資料來稽核資源的效能、健康情況和可用性的行為。 有效的監視策略可協助您了解您元件的運作情形，並透過通知增加您的有效運作時間。 請經由[監視 Azure 應用程式和資源](../monitoring/monitoring-overview.md)參閱監視的概觀，以了解所使用的各種服務。
+監視係指經由收集和分析資料來稽核資源的效能、健康情況和可用性的行為。 有效的監視策略可協助您了解您元件的運作情形，並透過通知增加您的有效運作時間。 請經由[監視 Azure 應用程式和資源](../azure-monitor/overview.md)參閱監視的概觀，以了解所使用的各種服務。
 
 ## <a name="configure"></a>設定
 
@@ -46,9 +46,16 @@ ms.locfileid: "83828142"
 
 ## <a name="protect"></a>Protect
 
-保護是指即使發生了您無法控制的中斷狀況，也能確保應用程式和資料的可用性。 Azure 中的保護是由兩個服務提供。 [Azure 備份](../backup/backup-introduction-to-azure-backup.md)提供雲端或內部部署中資料的備份和復原。 [Azure Site Recovery](../site-recovery/site-recovery-overview.md) 可在災害發生時提供商務持續性和立即復原的能力。
+保護是指即使發生了您無法控制的中斷狀況，也能確保應用程式和資料的可用性。 Azure 中的保護是由兩個服務提供。 [Azure 備份](../backup/backup-overview.md)提供雲端或內部部署中資料的備份和復原。 [Azure Site Recovery](../site-recovery/site-recovery-overview.md) 可在災害發生時提供商務持續性和立即復原的能力。
 
 ## <a name="migrate"></a>遷移
 
 移轉是指將目前正在內部部署環境中執行的工作負載轉換至 Azure 雲端。
-[Azure Migrate](../migrate/migrate-overview.md) 是一項服務，可協助您評估將內部部署虛擬機器移轉至 Azure 的移轉適用性。 Azure Site Recovery 可[從內部部署](../site-recovery/migrate-tutorial-on-premises-azure.md)或[從 Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md) 移轉虛擬機器。 [Azure 資料庫移轉](../dms/dms-overview.md)可協助您將資料庫來源移轉至 Azure 資料平台。
+[Azure Migrate](../migrate/migrate-services-overview.md) 是一項服務，可協助您評估將內部部署虛擬機器移轉至 Azure 的移轉適用性。 Azure Site Recovery 可[從內部部署](../site-recovery/migrate-tutorial-on-premises-azure.md)或[從 Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md) 移轉虛擬機器。 [Azure 資料庫移轉](../dms/dms-overview.md)可協助您將資料庫來源移轉至 Azure 資料平台。
+
+## <a name="next-steps"></a>後續步驟
+
+若要深入了解 Azure 治理，請參閱下列文章：
+
+- 請參閱 [Azure 治理中樞](./index.yml)。
+- 請參閱[在適用於 Azure 的雲端採用架構中治理](/azure/cloud-adoption-framework/govern/)

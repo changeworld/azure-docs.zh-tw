@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Notebooks 預覽文件
-summary: Azure Notebooks 預覽是免費的裝載服務，無需任何安裝程序，就能用來在雲端中開發和執行 Jupyter Notebooks。 Jupyter (前稱 IPython) 是開放原始碼專案，可輕鬆將 Markdown 文字、可執行程式碼 (Python、R 和 F#)、持續性資料、圖形以及視覺效果統整至名為「筆記本」的單一且可分享的畫布上。
+summary: 2020 年 10 月 9 日，Azure Notebooks 公開預覽網站將會淘汰，並取代為 Visual Studio、Azure 和 GitHub 的整合式服務。 在 https://notebooks.azure.com/Content/alternatives.html 了解您的選項和 Microsoft 的其他筆記本體驗。
 metadata:
   title: Azure Notebooks 預覽文件
   description: 了解如何透過裝載的 Azure Notebooks 預覽服務來建立、執行和共用 Jupyter Notebooks。
@@ -9,12 +9,12 @@ metadata:
   author: JoshuaPartlow
   ms.author: joshuapa
   ms.date: 06/17/2020
-  ms.openlocfilehash: 96fd38e081105b6fc43cc2fc00d52bcf17b20074
-  ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
-  ms.translationtype: 
+  ms.openlocfilehash: 0065b8b609ca9ef29365127333ad1a39f3327c1b
+  ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+  ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 07/01/2020
-  ms.locfileid: "85799406"
+  ms.lasthandoff: 07/09/2020
+  ms.locfileid: "86181415"
 landingContent:
 - title: 關於 Azure Notebooks
   linkLists:

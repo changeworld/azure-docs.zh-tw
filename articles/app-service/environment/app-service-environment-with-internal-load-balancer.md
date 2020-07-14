@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 009b1ff08f9a3a0b840a20a01be5b16cd28d4533
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49045c8b8c7b3ccfa44a1077e59683191393e1ee
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833098"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220808"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>搭配 App Service 環境使用內部負載平衡器
 
@@ -22,7 +22,7 @@ ms.locfileid: "85833098"
 
 App Service 環境 (ASE) 功能是 Azure App Service 的進階服務選項，可提供多租用戶戳記中不提供的增強式設定功能。 ASE功能基本上會在您的 Azure 虛擬網路 (VNet) 中部署 Azure App Service。 若要更深入了解 App Service Environment 所提供的功能，請閱讀[什麼是 App Service Environment][WhatisASE] 文件。 如果您不了解在 VNet 中操作的優點，請閱讀 [Azure 虛擬網路常見問題集][virtualnetwork]。 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 ASE 可以使用網際網路可存取的端點或您 Vnet 中的 IP 位址加以部署。 為了將 IP 位址設定為 VNet 位址，您必須搭配內部負載平衡器 (ILB) 來部署您的 ASE。 當您的 ASE 是使用 ILB 設定時，您要提供：
 
 * 您自己的網域或子網域。 為了能順利進行，本文件假設是子網域，但是您還是可以設定。 
@@ -54,7 +54,7 @@ ASE 可以使用網際網路可存取的端點或您 Vnet 中的 IP 位址加以
 7. 提供子網域名稱 (此名稱是在此 ASE 中建立的 app 所使用的子網域)。
 8. 依序選取 **[確定] 和 [** **建立**]。
 
-![][1]
+![顯示用來建立 ILB ASE 的畫面。][1]
 
 在 [虛擬網路] 窗格中有 [VNet 設定] 選項，可讓您選取外部 VIP 或 VIP 內部。 預設為「外部」。 如果您將其設為 [外部]，您的 ASE 會使用一個網際網路可存取的 VIP。 如果您選取 [內部]，您的 ASE 會使用您的 VNet 內 IP 位址搭配 ILB 進行設定。 
 
@@ -70,7 +70,7 @@ ASE 可以使用網際網路可存取的端點或您 Vnet 中的 IP 位址加以
 5. 選取或建立 App Service 方案 (ASP)。 如果是建立新的 ASP，請選取您的 ASE 作為位置，並選取您希望在其中建立 ASP 的背景工作角色集區。 當您建立 ASP 時，可以選取您的 ASE 作為位置與背景工作角色集區。 當您指定 app 的名稱時，您會看見您 app 名稱底下的子網域會由您 ASE 的子網域取代。 
 6. 選取 [建立]。 如果您希望 app 顯示在儀表板上，請務必選取 [釘選到儀表板]**** 核取方塊。 
 
-![][2]
+![說明如何在 Azure 入口網站的 ILB ASE 中建立應用程式。][2]
 
 在 app 名稱底下，子網域名稱會更新，以反映您的 ASE 子網域。 
 
@@ -79,11 +79,11 @@ ILB ASE 與非 ILB ASE 稍微有些不同。 如先前所述，您必須管理�
 
 建立您的 ASE 之後，您會注意到子網域顯示您所指定的子網域，且 [設定]**** 功能表中會有一個稱為 [ILB 憑證]**** 的新項目。 ASE 是使用可易於測試 HTTPS 的自我簽署憑證建立。 入口網站會讓您知道您需要針對 HTTPS 提供自己的憑證，但這是要鼓勵您擁有子網域附帶的憑證。 
 
-![][3]
+![顯示您在建立 ASE 時所指定的子域。][3]
 
 如果您只是要測試而且不知道如何建立憑證，您可以使用 IIS MMC 主控台應用程式來建立自我簽署憑證。 建立之後，您可以將它匯出為 .pfx 檔案，然後在 ILB 憑證 UI 中上傳。 當您存取使用自我簽署憑證保護的網站時，您的瀏覽器會發出警告指出您正在存取的網站不安全，因為無法驗證憑證。 如果您想要避免這個警告產生，您將需要一個符合您的子網域、具有您的瀏覽器已識別的信任鏈結，並且已經正確簽署的憑證。
 
-![][6]
+![示範如何使用 IIS MMC 主控台應用程式來建立自我簽署憑證。][6]
 
 如果您想要使用您自己的憑證嘗試流程，並測試對 ASE 的 HTTP 和 HTTPS 存取：
 
@@ -98,7 +98,7 @@ ILB ASE 與非 ILB ASE 稍微有些不同。 如先前所述，您必須管理�
 
 您的 ILB 的 IP 位址會在您的 [屬性] 中列出為 [虛擬 IP 位址]。
 
-![][4]
+![顯示您的 ILB 的 IP 位址列在您的屬性中做為虛擬 IP 位址。][4]
 
 ## <a name="using-an-ilb-ase"></a>使用 ILB ASE
 #### <a name="network-security-groups"></a>網路安全性群組
@@ -108,7 +108,7 @@ ILB ASE 可讓您的應用程式與網路隔離。 app 無法透過網際網路�
 
 若要設定您的 NSG，您必須知道 Azure 所使用的 IP 位址，以管理您的 ASE。 如果該 IP 位址提出網際網路要求，它也會成為您 ASE 的輸出 IP 位址。 在 ASE 的存留期內，ASE 的輸出 IP 位址仍維持不變。 如果您刪除並重建 ASE，您會收到新的 IP 位址。 若要尋找此 IP 位址，請移至 [設定] -> [屬性]****，尋找 [輸出 IP 位址]****。 
 
-![][5]
+![顯示您可以在哪裡找到 ASE 的輸出 IP 位址。][5]
 
 #### <a name="general-ilb-ase-management"></a>一般 ILB ASE 管理
 管理 ILB ASE 通常大部分與管理 ASE 相同。 您必須相應增加您的背景工作集區來裝載更多 ASP 執行個體，並相應增加您的前端伺服器，以處理增加的 HTTP/HTTPS 流量。 如需管理 ASE 組態的一般資訊，請參閱[設定 App Service 環境][ASEConfig]。 

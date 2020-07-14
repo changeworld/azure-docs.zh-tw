@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 519520538c16b1bde18f0810344864d37090accf
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 98675b0f986ecb78ff122ed052a01d521aac1f6f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342641"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114205"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>使用匯入的資料來評估伺服器
 
@@ -179,10 +179,21 @@ ms.locfileid: "84342641"
 
 您可以使用伺服器評量建立兩種類型的評量。
 
-**評量類型** | **詳細資料** | **Data**
+
+**評量類型** | **詳細資料**
+--- | --- 
+**Azure VM** | 將內部部署伺服器遷移至 Azure 虛擬機器的評量。 <br/><br/> 您可以使用此評量類型，評量內部部署 [VMware VM](how-to-set-up-appliance-vmware.md)、[Hyper-V VM](how-to-set-up-appliance-hyper-v.md) 和[實體伺服器](how-to-set-up-appliance-physical.md)以移轉至 Azure (concepts-assessment-calculation.md)
+**Azure VMware 解決方案 (AVS)** | 評估內部部署伺服器，並將其遷移至 [Azure VMware 解決方案 (AVS)](../azure-vmware/introduction.md)。 <br/><br/> 您可以使用此評量類型，評量內部部署 [VMware VM](how-to-set-up-appliance-vmware.md) 以移轉至 Azure VMware 解決方案 (AVS)。[深入了解](concepts-azure-vmware-solution-assessment-calculation.md)
+
+### <a name="sizing-criteria"></a>調整大小準則
+
+伺服器評量提供兩個調整大小準則選項：
+
+**調整大小準則** | **詳細資料** | **Data**
 --- | --- | ---
-**以效能為基礎** | 以指定的效能資料值為基礎的評量。 | **建議的 VM 大小**：以 CPU 和記憶體使用量資料為基礎。<br/><br/> **建議的磁碟類型 (標準或進階受控磁碟**)：以內部部署磁片的每秒輸入/輸出 (IOPS) 和輸送量為基礎。
-**作為內部部署** | 以內部部署大小調整為基礎的評估。 | **建議的 VM 大小**：以指定的伺服器大小為基礎。<br/><br> **建議的磁碟類型**：以您為評量選取的儲存體類型設定為基礎。
+**以效能為基礎** | 根據所收集的效能資料做出建議的評量 | **VMware VM 評量**：以 CPU 和記憶體使用量資料為基礎的 VM 大小建議。<br/><br/> 磁碟類型建議 (標準 HDD/SSD 或進階受控磁碟) 是以內部部署磁碟的 IOPS 和輸送量為基礎。<br/><br/> **Azure VMware 解決方案 (AVS) 評量**：以 CPU 和記憶體使用量資料為基礎的 AVS 節點建議。
+**依內部部署** | 不使用效能資料來提出建議的評量。 | **VMware VM 評量**：VM 大小建議是根據內部部署 VM 大小而提供<br/><br> 建議的磁碟類型是根據您在評量的儲存體類型設定中所選取的內容而定。<br/><br/> **Azure VMware 解決方案 (AVS) 評量**：AVS 節點建議是根據內部部署 VM 大小而提供。
+
 
 若要執行評量：
 
@@ -191,24 +202,31 @@ ms.locfileid: "84342641"
 
     ![評定](./media/tutorial-assess-physical/assess.png)
 
-3. 在 [評估伺服器] 中，指定評估的名稱。
+3. 如果您想要執行 Azure VM 評量或 Azure VMware 解決方案 (AVS)，請在 [評量伺服器] 中指定評量名稱，然後選取 Azure VM 作為**評量**類型。
+
+    ![評量基本概念](./media/how-to-create-assessment/assess-servers-azurevm.png)
+
 4. 在 [探索來源] 中，選取 [透過匯入至 Azure Migrate 新增的機器]。
+
 5. 選取 [檢視全部] 以檢閱評量屬性。
 
     ![評量屬性](./media/tutorial-assess-physical/view-all.png)
 
-6. 在 [選取或建立群組] 中，選取 [新建]，然後指定群組名稱。 群組會將一或多個 VM 收集在一起以進行評估。
+6. 按一下 [下一步] 以**選取要評量的機器**。 在 [選取或建立群組] 中，選取 [新建]，然後指定群組名稱。 群組會將一或多個 VM 收集在一起以進行評估。
 7. 在 [將電腦新增至群組] 中，選取要新增至群組的伺服器。
-8. 選取 [建立評量] 以建立群組，然後執行評量。
+8. 按一下 [下一步] 以**檢閱+建立評量**來檢閱評量詳細資料。
+9. 按一下 [建立評量] 以建立群組，然後執行評量。
 
     ![建立評估](./media/tutorial-assess-physical/assessment-create.png)
 
 9. 評量建立好之後，可在 [伺服器] >  **[Azure Migrate：伺服器評量]**  > [評量] 中加以檢視。
 10. 選取 [匯出評量]，將其下載為 Microsoft Excel 檔案。
 
-## <a name="review-an-assessment"></a>檢閱評量
+若要深入了解 **Azure VMware 解決方案 (AVS)** 評量的詳細資訊，請參閱[這裡](how-to-create-azure-vmware-solution-assessment.md)。 
 
-評量會說明：
+## <a name="review-an-azure-vm-assessment"></a>檢閱 Azure VM 評量
+
+Azure VM 評量內容會說明：
 
 - **Azure 移轉整備程度**：伺服器是否適合移轉至 Azure。
 - **每月成本預估**：在 Azure 中執行伺服器的預估每月計算與儲存體成本。

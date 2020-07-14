@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 1e725fb483afed0f126248737c2e9121ce823a45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fdef11fec93d4ba6254957ad14e0612e2fd05580
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734685"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221352"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>使用 Resource Manager 範本將 Windows Server 虛擬機器加入 Azure Active Directory Domain Services 受控網域
 
-若要將 Azure 虛擬機器（Vm）的部署和設定自動化，您可以使用 Resource Manager 範本。 這些範本可讓您每次都建立一致的部署。 延伸模組也可以包含在範本中，以自動將 VM 設定為部署的一部分。 有一個有用的延伸模組會將 Vm 加入網域，而該網域可以搭配 Azure Active Directory Domain Services （Azure AD DS）受控網域使用。
+若要將 Azure 虛擬機器的部署和設定自動化 (Vm) ，您可以使用 Resource Manager 範本。 這些範本可讓您每次都建立一致的部署。 延伸模組也可以包含在範本中，以自動將 VM 設定為部署的一部分。 有一個有用的延伸模組會將 Vm 加入網域，而該網域可以與 Azure Active Directory Domain Services (Azure AD DS) 受控網域搭配使用。
 
 本文說明如何使用 Resource Manager 範本，建立 Windows Server VM 並將其加入 Azure AD DS 受控網域。 您也會瞭解如何將現有的 Windows Server VM 加入 Azure AD DS 網域。
 
@@ -40,7 +40,7 @@ ms.locfileid: "84734685"
 
 Resource Manager 範本可讓您在程式碼中定義 Azure 基礎結構。 Vm 的必要資源、網路連線或設定都可以在範本中定義。 這些範本會每次建立一致且可重現的部署，並在您進行變更時進行版本設定。 如需詳細資訊，請參閱[Azure Resource Manager 範本總覽][template-overview]。
 
-每個資源都是在使用 JavaScript 物件標記法（JSON）的範本中定義。 下列 JSON 範例會使用*virtualMachines/extensions*資源類型來安裝 Active Directory 網域加入延伸模組。 系統會使用您在部署時指定的參數。 部署擴充功能之後，VM 會加入至指定的受控網域。
+每個資源都是在使用 JavaScript 物件標記法 (JSON) 的範本中定義。 下列 JSON 範例會使用*virtualMachines/extensions*資源類型來安裝 Active Directory 網域加入延伸模組。 系統會使用您在部署時指定的參數。 部署擴充功能之後，VM 會加入至指定的受控網域。
 
 ```json
  {
@@ -88,7 +88,7 @@ Resource Manager 範本可讓您在程式碼中定義 Azure 基礎結構。 Vm �
     |---------------------------|-------|
     | 訂用帳戶              | 挑選已啟用 Azure AD Domain Services 的相同 Azure 訂用帳戶。 |
     | 資源群組            | 選擇您 VM 的資源群組。 |
-    | 位置                  | 選取 VM 的位置。 |
+    | Location                  | 選取 VM 的位置。 |
     | 現有的 VNET 名稱        | 要連接 VM 的現有虛擬網路名稱，例如*myVnet*。 |
     | 現有的子網名稱      | 現有虛擬網路子網的名稱，例如*工作負載*。 |
     | DNS 標籤首碼          | 輸入要用於 VM 的 DNS 名稱，例如*myvm*。 |
@@ -121,8 +121,8 @@ Resource Manager 範本可讓您在程式碼中定義 Azure 基礎結構。 Vm �
     |---------------------------|-------|
     | 訂用帳戶              | 挑選已啟用 Azure AD Domain Services 的相同 Azure 訂用帳戶。 |
     | 資源群組            | 選擇包含現有 VM 的資源群組。 |
-    | 位置                  | 選取現有 VM 的位置。 |
-    | VM 清單                   | 輸入要加入受控網域之現有 VM 的逗號分隔清單，例如*myVM1，myVM2*。 |
+    | Location                  | 選取現有 VM 的位置。 |
+    | VM 清單                   | 輸入要加入受控網域之現有 VM () 以逗號分隔的清單，例如*myVM1、myVM2*。 |
     | 加入網域的使用者名稱     | 受控網域中應該用來將 VM 加入受控網域的使用者帳戶，例如 `contosoadmin@aaddscontoso.com` 。 此帳戶必須是受控網域的一部分。 |
     | 加入網域的使用者密碼 | 先前設定中所指定使用者帳戶的密碼。 |
     | 選用 OU 路徑          | 要在其中新增 VM 的自訂 OU。 如果您未指定此參數的值，VM 會新增至預設*AAD DC 電腦*OU。 |

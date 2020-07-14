@@ -12,7 +12,7 @@ ms.lasthandoff: 07/09/2020
 ms.locfileid: "86181485"
 ---
 > [!IMPORTANT]
-> 2020年10月9日將淘汰 Azure Notebooks 公開預覽網站，並將其取代為 Visual Studio、Azure 和 GitHub 的整合式服務。
+> 2020 年 10 月 9 日，Azure Notebooks 公開預覽網站將會淘汰，並取代為 Visual Studio、Azure 和 GitHub 的整合式服務。
 > [深入瞭解](https://aka.ms/aznb-notebooks-at-msft/)您的選項，以及其他 Microsoft 的筆記本體驗。
 >
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。

@@ -79,6 +79,10 @@
       href: enterprise-state-roaming-group-policy-settings.md
     - name: 企業狀態漫遊 Windows 設定
       href: enterprise-state-roaming-windows-settings-reference.md
+    - name: 圖形 API
+      items:
+        - name: 裝置身分識別 API
+          href: /graph/api/resources/device?view=graph-rest-1.0
 - name: 資源
   items:
     - name: Azure 意見反應論壇

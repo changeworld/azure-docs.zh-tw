@@ -10,16 +10,17 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 679e44a8949f283c0e01c47ca3e602ae6fc0eacf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cc7c70f6db31568f671a0172c569f912cb677c3
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433791"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146675"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>使用 Azure Machine Learning，大規模建立 TensorFlow 深度學習模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文說明如何使用 Azure Machine Learning 的[TensorFlow 估計工具](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)類別，大規模執行您的[TensorFlow](https://www.tensorflow.org/overview)訓練腳本。 這個範例會使用深度類神經網路（DNN），訓練並註冊 TensorFlow 模型來分類手寫數位。
+本文說明如何使用 Azure Machine Learning 的[TensorFlow 估計工具](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)類別，大規模執行您的[TensorFlow](https://www.tensorflow.org/overview)訓練腳本。 這個範例會使用深度類神經網路 (DNN) ，來訓練並註冊 TensorFlow 模型來分類手寫數位。
 
 無論您是從頭開始開發 TensorFlow 模型，或是將[現有的模型](how-to-deploy-existing-model.md)帶入雲端，都可以使用 Azure Machine Learning 來相應放大開放原始碼訓練作業，以建立、部署、版本及監視生產等級的模型。
 
@@ -143,6 +144,11 @@ TensorFlow 估計工具是透過泛型類別來執行 [`estimator`](https://docs
 
 如果您的訓練腳本需要額外的 pip 或 conda 封裝來執行，您可以藉由透過 `pip_packages` 和引數傳遞它們的名稱，將套件安裝在產生的 Docker 映射上 `conda_packages` 。
 
+
+> [!WARNING]
+> Azure Machine Learning 會藉由複製整個來原始目錄來執行定型腳本。 如果您有不想要上傳的敏感性資料，請使用[. ignore](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)檔案，或不要將它包含在來原始目錄中。 相反地，請[使用資料存放](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)區來存取您的資料。
+
+
 ```python
 script_params = {
     '--data-folder': dataset.as_named_input('mnist').as_mount(),
@@ -199,7 +205,7 @@ model = run.register_model(model_name='tf-dnn-mnist',
                            resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5))
 ```
 
-您也可以使用執行物件來下載模型的本機複本。 在定型腳本中 `mnist-tf.py` ，TensorFlow 的保護物件會將模型保存到本機資料夾（計算目標的本機）。 您可以使用執行物件來下載複本。
+您也可以使用執行物件來下載模型的本機複本。 在定型腳本中 `mnist-tf.py` ，TensorFlow 的保護物件會將模型保存至計算目標)  (本機的本機資料夾。 您可以使用執行物件來下載複本。
 
 ```Python
 # Create a model folder in the current directory
@@ -308,9 +314,9 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 您剛註冊的模型可以使用與 Azure Machine Learning 中任何其他已註冊的模型完全相同的方式來部署，不論您用於定型的估計工具為何。 部署如何包含註冊模型的區段，但您可以直接跳到建立部署的[計算目標](how-to-deploy-and-where.md#choose-a-compute-target)，因為您已經有已註冊的模型。
 
-## <a name="preview-no-code-model-deployment"></a>預覽無程式碼模型部署
+## <a name="preview-no-code-model-deployment"></a> (預覽) 無程式碼模型部署
 
-除了傳統部署路由以外，您也可以使用無程式碼部署功能（預覽）進行 Tensorflow。 藉由使用、和參數來註冊您的模型（如上所示 `model_framework` `model_framework_version` ）， `resource_configuration` 您可以直接使用靜態函式 `deploy()` 來部署您的模型。
+除了傳統部署路由以外，您也可以使用無程式碼部署功能 (預覽) Tensorflow。 藉由使用、和參數來註冊您的模型（如上所示 `model_framework` `model_framework_version` ）， `resource_configuration` 您可以直接使用靜態函式 `deploy()` 來部署您的模型。
 
 ```python
 service = Model.deploy(ws, "tensorflow-web-service", [model])

@@ -4,12 +4,12 @@ description: 說明如何使用 Azure Migrate 伺服器評量來評估內部部�
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 231daff5972e9b2f115df9e6184c43a553f55b83
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 6c395d7e2be151e97808fa9601ff6001801d243b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771303"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110346"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>透過伺服器評量評估 VMware
 
@@ -42,25 +42,25 @@ ms.locfileid: "84771303"
 設定新的 Azure Migrate 專案，如下所示：
 
 1. 在 Azure 入口網站 > [所有服務] 中，搜尋 **Azure Migrate**。
-1. 在 [服務] 下，選取 [Azure Migrate]。
-1. 在 [概觀] 的 [探索、評估和遷移伺服器] 底下，選取 [評估和遷移伺服器]。
+2. 在 [服務] 下，選取 [Azure Migrate]。
+3. 在 [概觀] 的 [探索、評估和遷移伺服器] 底下，選取 [評估和遷移伺服器]。
 
    ![用來評估和遷移伺服器的按鈕](./media/tutorial-assess-vmware/assess-migrate.png)
 
-1. 在 [開始使用] 中，選取 [新增工具]。
-1. 在 [Migrate 專案] 中選取您的 Azure 訂用帳戶，並建立資源群組 (如果您還沒有的話)。     
-1. 在 [專案詳細資料] 中，指定專案名稱以及要在其中建立專案的地理位置。 請檢閱[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府雲端](migrate-support-matrix.md#supported-geographies-azure-government)支援的地理位置。
+4. 在 [開始使用] 中，選取 [新增工具]。
+5. 在 [Migrate 專案] 中選取您的 Azure 訂用帳戶，並建立資源群組 (如果您還沒有的話)。     
+6. 在 [專案詳細資料] 中，指定專案名稱以及要在其中建立專案的地理位置。 請檢閱[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府雲端](migrate-support-matrix.md#supported-geographies-azure-government)支援的地理位置。
 
    ![專案名稱和區域的方塊](./media/tutorial-assess-vmware/migrate-project.png)
 
-1. 選取 [下一步] 。
-1. 在 [選取評量工具] 中，選取 **[Azure Migrate：伺服器評量]**  > [下一步]。
+7. 選取 [下一步] 。
+8. 在 [選取評量工具] 中，選取 **[Azure Migrate：伺服器評量]**  > [下一步]。
 
    ![伺服器評估工具的選取](./media/tutorial-assess-vmware/assessment-tool.png)
 
-1. 在 [選取移轉工具] 中，選取 [暫時跳過新增移轉工具] > [下一步]。
-1. 在 [檢閱 + 新增工具] 中檢閱設定，然後選取 [新增工具]。
-1. 等候幾分鐘讓 Azure Migrate 專案完成部署。 您會進入專案頁面。 如果您沒有看到專案，則可以從 Azure Migrate 儀表板中的 [伺服器] 來存取。
+9. 在 [選取移轉工具] 中，選取 [暫時跳過新增移轉工具] > [下一步]。
+10. 在 [檢閱 + 新增工具] 中檢閱設定，然後選取 [新增工具]。
+11. 等候幾分鐘讓 Azure Migrate 專案完成部署。 您會進入專案頁面。 如果您沒有看到專案，則可以從 Azure Migrate 儀表板中的 [伺服器] 來存取。
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>設定 Azure Migrate 設備
 
@@ -75,8 +75,8 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
 ### <a name="download-the-ova-template"></a>下載 OVA 範本
 
 1. 在 [移轉目標] > [伺服器] >  **[Azure Migrate：伺服器評估]** 中，選取 [探索]。
-1. 在 [探索機器] > [機器是否已虛擬化?] 中，選取 [是，使用 VMWare vSphere Hypervisor]。
-1. 選取 [下載] 以下載 OVA 範本檔案。
+2. 在 [探索機器] > [機器是否已虛擬化?] 中，選取 [是，使用 VMWare vSphere Hypervisor]。
+3. 選取 [下載] 以下載 OVA 範本檔案。
 
    ![用於下載 OVA 檔案的選項](./media/tutorial-assess-vmware/download-ova.png)
 
@@ -114,13 +114,13 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
 
    ![用於部署 OVF 範本的功能表命令](./media/tutorial-assess-vmware/deploy-ovf.png)
 
-1. 在 [部署 OVF 範本精靈] > [來源] 中，指定 OVA 檔案的位置。
-1. 在 [名稱]  和 [位置] 中，指定 VM 的易記名稱。 選取將裝載 VM 的庫存物件。
-1. 在 [主機/叢集] 中，指定 VM 的執行所在主機或叢集。
-1. 在**儲存體**中，指定 VM 的儲存目的地。
-1. 在 [磁碟格式] 中，指定磁碟類型和大小。
-1. 在 [網路對應] 中，指定 VM 所要連線的網路。 此網路必須能夠連線到網際網路，以將中繼資料傳送至 Azure Migrate 伺服器評估。
-1. 檢閱並確認設定，然後選取 [完成]。
+2. 在 [部署 OVF 範本精靈] > [來源] 中，指定 OVA 檔案的位置。
+3. 在 [名稱]  和 [位置] 中，指定 VM 的易記名稱。 選取將裝載 VM 的庫存物件。
+4. 在 [主機/叢集] 中，指定 VM 的執行所在主機或叢集。
+5. 在**儲存體**中，指定 VM 的儲存目的地。
+6. 在 [磁碟格式] 中，指定磁碟類型和大小。
+7. 在 [網路對應] 中，指定 VM 所要連線的網路。 此網路必須能夠連線到網際網路，以將中繼資料傳送至 Azure Migrate 伺服器評估。
+8. 檢閱並確認設定，然後選取 [完成]。
 
 ## <a name="verify-appliance-access-to-azure"></a>確認設備是否能存取 Azure
 
@@ -134,8 +134,8 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
 > 如果您使用 [PowerShell 指令碼](deploy-appliance-script.md)來設定設備 (而非使用下載的 OVA)，則此程序中的前兩個步驟將與之無關。
 
 1. 在 vSphere 用戶端主控台中，以滑鼠右鍵按一下 VM，然後選取 [開啟主控台]。
-1. 提供設備的語言、時區和密碼。
-1. 在任何可連線至 VM 的機器上開啟瀏覽器，並開啟設備 Web 應用程式的 URL：**https://設備名稱或 IP 位址:44368**。
+2. 提供設備的語言、時區和密碼。
+3. 在任何可連線至 VM 的機器上開啟瀏覽器，並開啟設備 Web 應用程式的 URL：**https://設備名稱或 IP 位址:44368**。
 
    或者，您也可以選取應用程式捷徑，從設備桌面開啟應用程式。
 1. 在 [Web 應用程式] > [設定必要條件] 中，執行下列動作：
@@ -153,13 +153,13 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
 ### <a name="register-the-appliance-with-azure-migrate"></a>向 Azure Migrate 註冊設備
 
 1. 選取 [登入]。 如果未出現，請確定您已在瀏覽器中停用快顯封鎖程式。
-1. 在新的索引標籤上，使用您的 Azure 使用者名稱和密碼登入。
+2. 在新的索引標籤上，使用您的 Azure 使用者名稱和密碼登入。
    
    不支援使用 PIN 登入。
-1. 成功登入後，返回 Web 應用程式。
-1. 選取 Azure Migrate 專案建立所在的訂用帳戶，然後選取專案。
-1. 指定設備的名稱。 名稱應該是英數位元，且長度不超過 14 個字元。
-1. 選取 [註冊]。
+3. 成功登入後，返回 Web 應用程式。
+4. 選取 Azure Migrate 專案建立所在的訂用帳戶，然後選取專案。
+5. 指定設備的名稱。 名稱應該是英數位元，且長度不超過 14 個字元。
+6. 選取 [註冊]。
 
 
 ## <a name="start-continuous-discovery"></a>開始連續探索
@@ -191,39 +191,53 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
 探索完成後，便可以確認 VM 是否出現在 Azure 入口網站中：
 
 1. 開啟 Azure Migrate 儀表板。
-1. 在 Azure Migrate - 伺服器 >  **Azure Migrate：伺服器評估** 中，選取圖示以顯示 探索到的伺服器 計數。
+2. 在 Azure Migrate - 伺服器 >  **Azure Migrate：伺服器評估** 中，選取圖示以顯示 探索到的伺服器 計數。
 
 ## <a name="set-up-an-assessment"></a>設定評估
 
 您可以使用 Azure Migrate 伺服器評估來建立兩種評估：
 
-**評量** | **詳細資料** | **Data**
+**評量類型** | **詳細資料**
+--- | --- 
+**Azure VM** | 評估內部部署伺服器，並將其遷移至 Azure 虛擬機器。 <br/><br/> 您可以使用評量類型，評量內部部署 [VMware VM](how-to-set-up-appliance-vmware.md)、[Hyper-V VM](how-to-set-up-appliance-hyper-v.md) 和[實體伺服器](how-to-set-up-appliance-physical.md)以移轉至 Azure。 [深入了解](concepts-assessment-calculation.md)
+**Azure VMware 解決方案 (AVS)** | 評估內部部署伺服器，並將其遷移至 [Azure VMware 解決方案 (AVS)](../azure-vmware/introduction.md)。 <br/><br/> 您可以使用此評量類型，評量內部部署 [VMware VM](how-to-set-up-appliance-vmware.md) 以移轉至 Azure VMware 解決方案 (AVS)。 [深入了解](concepts-azure-vmware-solution-assessment-calculation.md)
+
+伺服器評量提供兩個調整大小準則選項：
+
+**調整大小準則** | **詳細資料** | **Data**
 --- | --- | ---
-**以效能為基礎** | 以所收集效能資料為基礎的評估 | **建議的 VM 大小**：以 CPU 和記憶體使用量資料為基礎。<br/><br/> **建議的磁碟類型 (標準或進階受控磁碟**)：以內部部署磁碟的 IOPS 和輸送量為基礎。
-**作為內部部署** | 以內部部署大小調整為基礎的評估 | **建議的 VM 大小**：以內部部署 VM 大小為基礎。<br/><br> **建議的磁碟類型**：以您為評估選取的儲存體類型設定為基礎。
+**以效能為基礎** | 根據所收集的效能資料做出建議的評量 | **VMware VM 評量**：以 CPU 和記憶體使用量資料為基礎的 VM 大小建議。<br/><br/> 磁碟類型建議 (標準 HDD/SSD 或進階受控磁碟) 是以內部部署磁碟的 IOPS 和輸送量為基礎。<br/><br/> **Azure VMware 解決方案 (AVS) 評量**：以 CPU 和記憶體使用量資料為基礎的 AVS 節點建議。
+**依內部部署** | 不使用效能資料來提出建議的評量。 | **VMware VM 評量**：VM 大小建議是根據內部部署 VM 大小而提供<br/><br> 建議的磁碟類型是根據您在評量的儲存體類型設定中所選取的內容而定。<br/><br/> **Azure VMware 解決方案 (AVS) 評量**：AVS 節點建議是根據內部部署 VM 大小而提供。
 
 ## <a name="run-an-assessment"></a>執行評估
 
-執行評估，如下所示：
+執行 *Azure VM 評量*，如下所示：
 
 1. 檢閱適用於建立評估的[最佳做法](best-practices-assessment.md)。
-1. 在 [伺服器] 索引標籤的 **[Azure Migrate：伺服器評估]** 圖格中，選取 [評估]。
+2. 在 [伺服器] 索引標籤的 **[Azure Migrate：伺服器評估]** 圖格中，選取 [評估]。
 
    ![[評估] 按鈕的位置](./media/tutorial-assess-vmware/assess.png)
 
-1. 在 [評估伺服器] 中，指定評估的名稱。
-1. 選取 [檢視全部]，然後檢閱評估屬性。
+3. 在 [評估伺服器] 中，選取「Azure VM」作為評量類型，選取探索來源，然後指定評量名稱。
+
+    ![評量基本概念](./media/tutorial-assess-vmware/assess-servers-azurevm.png)
+ 
+4. 選取 [檢視全部]，然後檢閱評估屬性。
 
    ![評量屬性](./media/tutorial-assess-vmware/view-all.png)
 
-1. 在 [選取或建立群組] 中，選取 [新建]，然後指定群組名稱。 群組會將一或多個 VM 收集在一起以進行評估。
-1. 在 [將機器新增至群組] 中，選取要新增至群組的 VM。
-1. 選取 [建立評估] 以建立群組，然後執行評估。
+5. 按一下 [下一步] 以**選取要評量的機器**。 在 [選取或建立群組] 中，選取 [新建]，然後指定群組名稱。 群組會將一或多個 VM 收集在一起以進行評估。
+6. 在 [將機器新增至群組] 中，選取要新增至群組的 VM。
+7. 按一下 下一步 以**檢閱+ 建立評量**來檢閱評量詳細資料。
+8. 選取 [建立評估] 以建立群組，然後執行評估。
 
    ![評定伺服器](./media/tutorial-assess-vmware/assessment-create.png)
 
-1. 評量建立好之後，可在 [伺服器] >  **[Azure Migrate：伺服器評量]**  > [評量] 中加以檢視。
-1. 選取 [匯出評估]，將其下載為 Excel 檔案。
+8. 評量建立好之後，可在 [伺服器] >  **[Azure Migrate：伺服器評量]**  > [評量] 中加以檢視。
+9. 選取 [匯出評估]，將其下載為 Excel 檔案。
+
+如果您想要執行 **Azure VMware 解決方案 (AVS) 評量**，請遵循[這裡](how-to-create-azure-vmware-solution-assessment.md)所敘述的步驟。
+
 
 ## <a name="review-an-assessment"></a>檢閱評量
 
@@ -236,20 +250,20 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
 若要檢視評估：
 
 1. 在 [移轉目標] > [伺服器] 中，選取 [Azure Migrate：伺服器評估] 中的 [評估]。
-1. 在 [評估] 中，選取評估來加以開啟。
+2. 在 [評估] 中，選取評估來加以開啟。
 
    ![評量摘要](./media/tutorial-assess-vmware/assessment-summary.png)
 
 ### <a name="review-azure-readiness"></a>檢閱 Azure 移轉整備程度
 
 1. 在 [Azure 移轉整備程度] 中，確認 VM 是否已準備好移轉至 Azure。
-1. 檢查 VM 狀態：
+2. 檢查 VM 狀態：
     - **可供 Azure 使用**：當 Azure Migrate 針對評估中的 VM 建議 VM 大小和成本估計值時會用到。
     - **有條件的備妥**：顯示問題和建議的補救措施。
     - **未備妥供 Azure 使用**：顯示問題和建議的補救措施。
     - **移轉整備程度未知**：當 Azure Migrate 因資料可用性問題而無法評估整備程度時，便會使用此狀態。
 
-1. 選取 [Azure 移轉整備程度] 狀態。 您可以檢視 VM 移轉整備程度的詳細資料。 您也可以向下切入以查看 VM 詳細資料，包括計算、儲存體和網路設定。
+3. 選取 [Azure 移轉整備程度] 狀態。 您可以檢視 VM 移轉整備程度的詳細資料。 您也可以向下切入以查看 VM 詳細資料，包括計算、儲存體和網路設定。
 
 ### <a name="review-cost-details"></a>檢閱成本詳細資料
 

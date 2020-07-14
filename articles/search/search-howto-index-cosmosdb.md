@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
-ms.openlocfilehash: 13c55f2a7470a0d33e12e9e6f0da9df3421242fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60f4ed9940c70ed479c3108f3637aa55f2a42811
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556244"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146888"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中使用索引子為 Cosmos DB 資料編製索引 
 
@@ -33,9 +33,9 @@ Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定
 
 + 針對正式推出的[SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference)，您可以使用[入口網站](#cosmos-indexer-portal)、 [REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)或[.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)來建立資料來源和索引子。
 
-+ 針對[MONGODB API （預覽）](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)，您可以使用[入口網站](#cosmos-indexer-portal)或[REST API 版本 2020-06-30-preview](search-api-preview.md)來建立資料來源和索引子。
++ 針對[MONGODB API (preview) ](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)，您可以使用[入口網站](#cosmos-indexer-portal)或[REST API 版本 2020-06-30-preview](search-api-preview.md)來建立資料來源和索引子。
 
-+ 針對[Cassandra API （預覽）](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction)和[Gremlin API （預覽）](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)，您只能使用[REST API 版本 2020-06-30-preview](search-api-preview.md)來建立資料來源和索引子。
++ 針對[Cassandra API (preview) ](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction)和[Gremlin API (preview) ](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)，您只能使用[REST API 版本 2020-06-30-preview](search-api-preview.md)來建立資料來源和索引子。
 
 
 > [!Note]
@@ -47,7 +47,7 @@ Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定
 ## <a name="use-the-portal"></a>使用入口網站
 
 > [!Note]
-> 入口網站目前支援 SQL API 和 MongoDB API （預覽）。
+> 入口網站目前支援 SQL API 和 MongoDB API (預覽) 。
 
 索引 Azure Cosmos DB 專案最簡單的方法是使用[Azure 入口網站](https://portal.azure.com/)中的 wizard。 藉由取樣資料並讀取容器的中繼資料，Azure 認知搜尋中的「匯[**入資料**](search-import-data-portal.md)」 wizard 可以建立預設索引、將來源欄位對應至目標索引欄位，以及在單一作業中載入索引。 根據來源資料的大小和複雜度，只需要幾分鐘的時間，您就可以擁有正常運作的全文檢索搜尋索引。
 
@@ -55,7 +55,7 @@ Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定
 
 ### <a name="1---prepare-source-data"></a>1 - 準備來源資料
 
-您應該會有 Cosmos DB 帳戶、對應至 SQL API、MongoDB API （預覽）的 Azure Cosmos DB 資料庫，或 Gremlin API （預覽），以及資料庫中的內容。
+您應該會有一個 Cosmos DB 帳戶、一個對應至 SQL API、MongoDB API (preview) 的 Azure Cosmos DB 資料庫，或資料庫中的 [Gremlin API (preview) ] 和 [內容]。
 
 請確定您的 Cosmos DB 資料庫包含資料。 「匯[入資料」 wizard](search-import-data-portal.md)會讀取中繼資料，並執行資料取樣來推斷索引架構，但它也會從 Cosmos DB 載入資料。 如果資料遺失，嚮導會停止並出現下列錯誤：「從資料來源偵測索引架構時發生錯誤：無法建立原型索引，因為資料來源 ' emptycollection ' 未傳回任何資料」。
 
@@ -83,7 +83,7 @@ Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定
 
 ### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4-略過 wizard 中的 [擴充內容] 頁面
 
-新增認知技能（或擴充）不是匯入需求。 除非您有特定的需求，才能[將 AI 擴充加入](cognitive-search-concept-intro.md)至索引管線，所以您應該略過此步驟。
+新增認知技能 (或擴充) 不是匯入需求。 除非您有特定的需求，才能[將 AI 擴充加入](cognitive-search-concept-intro.md)至索引管線，所以您應該略過此步驟。
 
 若要略過此步驟，請按一下頁面底部的藍色按鈕，以尋找 [下一步] 和 [略過]。
 
@@ -91,7 +91,7 @@ Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定
 
 在 [索引]**** 頁面上，您應該會看到欄位清單，其中有資料類型以及一系列用於設定索引屬性的核取方塊。 此 wizard 可以根據中繼資料和取樣來源資料來產生欄位清單。 
 
-您可以按一下屬性資料行頂端的核取方塊，以大量選取屬性。 針對應傳回給用戶端應用程式並受全文檢索搜尋**處理的每**個欄位 **，選擇 [** 可取得] 和 [可搜尋]。 您會發現整數不是全文檢索或模糊搜尋（數位會逐字評估，而且通常適用于篩選）。
+您可以按一下屬性資料行頂端的核取方塊，以大量選取屬性。 針對應傳回給用戶端應用程式並受全文檢索搜尋**處理的每**個欄位 **，選擇 [** 可取得] 和 [可搜尋]。 您會發現整數不是全文檢索或模糊搜尋， (數位會逐字評估，而且通常適用于) 的篩選準則。
 
 如需詳細資訊，請參閱[索引屬性](https://docs.microsoft.com/rest/api/searchservice/create-index#bkmk_indexAttrib)和[語言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)的描述。 
 
@@ -132,7 +132,7 @@ Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1-組合要求的輸入
 
-針對每個要求，您必須提供 Azure 認知搜尋的服務名稱和管理金鑰（在 POST 標頭中），以及 blob 儲存體的儲存體帳戶名稱和金鑰。 您可以使用[Postman](search-get-started-postman.md)將 HTTP 要求傳送至 Azure 認知搜尋。
+針對每個要求，您必須在 POST 標頭) 中提供 Azure 認知搜尋 (的服務名稱和管理金鑰，以及 blob 儲存體的儲存體帳戶名稱和金鑰。 您可以使用[Postman](search-get-started-postman.md)將 HTTP 要求傳送至 Azure 認知搜尋。
 
 將下列四個值複製到 [記事本]，讓您可以將其貼入要求中：
 
@@ -144,7 +144,7 @@ Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定
 
 1. 在 Azure 認知搜尋的入口網站頁面中，從 [總覽] 頁面複製 [搜尋服務 URL]。
 
-2. 在左側導覽窗格中，按一下 [**金鑰**]，然後複製主要或次要金鑰（它們是相等的）。
+2. 在左側導覽窗格中，按一下 [**金鑰**]，然後複製主要或次要金鑰 (它們等同) 。
 
 3. 切換至 Cosmos 儲存體帳戶的入口網站頁面。 在左側流覽窗格的 [**設定**] 底下，按一下 [**金鑰**]。 此頁面提供 URI、兩組連接字串，以及兩組索引鍵。 將其中一個連接字串複製到 [記事本]。
 
@@ -153,6 +153,8 @@ Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定
 **資料來源**指定要編製索引的資料、認證，以及可識別資料是否變更 (例如修改或刪除集合內的文件) 的原則。 資料來源會被定義為獨立的資源，因此可供多個索引子使用。
 
 若要建立資料來源，請制訂 POST 要求：
+
+```http
 
     POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
@@ -170,6 +172,7 @@ Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定
             "highWaterMarkColumnName": "_ts"
         }
     }
+```
 
 要求的主體包含資料來源定義，其中應包含下列欄位：
 
@@ -190,6 +193,7 @@ Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定
 
 範例文件︰
 
+```http
     {
         "userId": 10001,
         "contact": {
@@ -199,30 +203,37 @@ Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定
         "company": "microsoft",
         "tags": ["azure", "cosmosdb", "search"]
     }
+```
 
 篩選查詢：
 
-    SELECT * FROM c WHERE c.company = "microsoft" and c._ts >= @HighWaterMark ORDER BY c._ts
+```sql
+SELECT * FROM c WHERE c.company = "microsoft" and c._ts >= @HighWaterMark ORDER BY c._ts
+```
 
 壓平合併查詢︰
 
-    SELECT c.id, c.userId, c.contact.firstName, c.contact.lastName, c.company, c._ts FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
-    
-    
+```sql
+SELECT c.id, c.userId, c.contact.firstName, c.contact.lastName, c.company, c._ts FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
+```
+
 投影查詢：
 
-    SELECT VALUE { "id":c.id, "Name":c.contact.firstName, "Company":c.company, "_ts":c._ts } FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
-
+```sql
+SELECT VALUE { "id":c.id, "Name":c.contact.firstName, "Company":c.company, "_ts":c._ts } FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
+```
 
 陣列壓平合併查詢︰
 
-    SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @HighWaterMark ORDER BY c._ts
-
+```sql
+SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @HighWaterMark ORDER BY c._ts
+```
 
 ### <a name="3---create-a-target-search-index"></a>3-建立目標搜尋索引 
 
 [建立目標 Azure 認知搜尋索引](/rest/api/searchservice/create-index)（如果您還沒有的話）。 下列範例會建立具有識別碼和描述欄位的索引：
 
+```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
@@ -243,6 +254,7 @@ Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定
          "suggestions": true
        }]
      }
+```
 
 請確定目標索引的結構描述會與來源 JSON 文件的結構描述或自訂查詢投射的輸出相容。
 
@@ -257,7 +269,7 @@ Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定
 | Bool |Edm.Boolean、Edm.String |
 | 看起來像是整數的數字 |Edm.Int32、Edm.Int64、Edm.String |
 | 看起來像是浮點的數字 |Edm.Double、Edm.String |
-| String |Edm.String |
+| 字串 |Edm.String |
 | 基本類型的陣列，例如 ["a", "b", "c"] |Collection(Edm.String) |
 | 看起來像是日期的字串 |Edm.DateTimeOffset、Edm.String |
 | GeoJSON 物件，例如 { "type": "Point", "coordinates": [long, lat] } |Edm.GeographyPoint |
@@ -267,6 +279,7 @@ Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定
 
 建立索引和資料來源之後，您就可以開始建立索引子︰
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -277,6 +290,7 @@ Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定
       "targetIndexName" : "mysearchindex",
       "schedule" : { "interval" : "PT2H" }
     }
+```
 
 這個索引子每隔兩小時就會執行一次 (已將排程間隔設為 "PT2H")。 若每隔 30 分鐘就要執行索引子，可將間隔設為 "PT30M"。 支援的最短間隔為 5 分鐘。 排程為選擇性 - 如果省略，索引子只會在建立時執行一次。 不過，您隨時都可依需求執行索引子。   
 
@@ -297,12 +311,14 @@ Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定
 
 ## <a name="indexing-changed-documents"></a>索引已變更的文件
 
-資料變更偵測原則是用來有效識別已變更的資料項目。 目前，唯一支援的原則是 [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) 使用 Azure Cosmos DB 所 `_ts` 提供的（時間戳記）屬性，其指定方式如下所示：
+資料變更偵測原則是用來有效識別已變更的資料項目。 目前，唯一支援的原則是 [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) 使用 Azure Cosmos DB 所 `_ts` 提供的 (timestamp) 屬性，其指定方式如下：
 
+```http
     {
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
         "highWaterMarkColumnName" : "_ts"
     }
+```
 
 為確保索引子效能良好，強烈建議使用此原則。 
 
@@ -318,11 +334,13 @@ Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定
 
 在某些情況下，即使您的查詢包含 `ORDER BY [collection alias]._ts` 子句，Azure 認知搜尋也可能無法推斷查詢是以排序 `_ts` 。 您可以使用 configuration 屬性，告訴 Azure 認知搜尋結果是否已排序 `assumeOrderByHighWaterMarkColumn` 。 若要指定這項提示，請依下列指示更新您的索引子： 
 
+```http
     {
      ... other indexer definition properties
      "parameters" : {
             "configuration" : { "assumeOrderByHighWaterMarkColumn" : true } }
     } 
+```
 
 <a name="DataDeletionDetectionPolicy"></a>
 
@@ -330,16 +348,19 @@ Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定
 
 從集合中刪除資料列時，通常也會想刪除搜尋索引內的那些資料列。 資料刪除偵測原則可用來有效識別刪除的資料項目。 目前，唯一支援的原則是「 `Soft Delete` 」原則 (刪除會標示為某種形式的旗標)，指定方式如下：
 
+```http
     {
         "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",
         "softDeleteColumnName" : "the property that specifies whether a document was deleted",
         "softDeleteMarkerValue" : "the value that identifies a document as deleted"
     }
+```
 
 如果您使用自訂查詢，請確定查詢有投射到 `softDeleteColumnName` 參考的屬性。
 
 下列範例會建立包含虛刪除原則的資料來源：
 
+```http
     POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
@@ -361,6 +382,7 @@ Azure 認知搜尋中的 Cosmos DB 索引子可以編目透過不同通訊協定
             "softDeleteMarkerValue": "true"
         }
     }
+```
 
 ## <a name="next-steps"></a><a name="NextSteps"></a>後續步驟
 

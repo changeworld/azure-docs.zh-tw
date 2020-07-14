@@ -369,8 +369,10 @@
           href: backup-azure-security-feature.md
         - name: 私人端點
           href: private-endpoints.md
-        - name: 加密
+        - name: Azure 備份的加密
           href: backup-encryption.md
+        - name: 使用客戶管理的金鑰進行加密
+          href: encryption-at-rest-with-cmk.md
         - name: 內建安全性控制
           href: backup-security-controls.md
         - name: 安全性基準

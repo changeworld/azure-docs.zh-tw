@@ -1,6 +1,6 @@
 ---
 title: 針對 SSIS Integration Runtime 管理進行疑難排解
-description: 本文提供 SSIS Integration Runtime 管理問題的疑難排解指引（SSIS IR）
+description: '本文提供 SSIS Integration Runtime (SSIS IR 的管理問題疑難排解指引) '
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -11,19 +11,20 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: e928a6b54e53f9076ffe184ed4868e7741661d7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2c1d08656ce9ef6b76e34a943f133859b78345a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84118824"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86172021"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>針對 Azure Data Factory 中的 SSIS Integration Runtime 管理進行疑難排解
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-本文提供 Azure SQL Server Integration Services （SSIS） Integration Runtime （IR）（也稱為 SSIS IR）中管理問題的疑難排解指引。
+本文提供 Azure 中管理問題的疑難排解指引，SQL Server Integration Services (SSIS) Integration Runtime (IR) （也稱為 SSIS IR）。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 如果您在布建或取消布建 SSIS IR 時遇到任何問題，您會在 Microsoft Azure Data Factory 入口網站中看到錯誤訊息，或從 PowerShell Cmdlet 傳回錯誤。 錯誤一律會以錯誤碼的格式出現，並顯示詳細的錯誤訊息。
 
@@ -33,7 +34,7 @@ ms.locfileid: "84118824"
 
 ## <a name="sql-database-or-sql-managed-instance-issues"></a>SQL Database 或 SQL 受控執行個體問題
 
-如果您要使用 SSIS 目錄資料庫布建 SSIS IR，則需要 SQL Database 或 SQL 受控執行個體。 SSIS IR 必須能夠存取 SQL Database 或 SQL 受控執行個體。 此外，SQL Database 或 SQL 受控執行個體的登入帳戶必須擁有建立 SSIS 目錄資料庫（SSISDB）的許可權。 如果發生錯誤，Data Factory 入口網站中會顯示錯誤碼與詳細的 SQL 例外狀況訊息。 請使用下列清單中的資訊來針對錯誤碼進行疑難排解。
+如果您要使用 SSIS 目錄資料庫布建 SSIS IR，則需要 SQL Database 或 SQL 受控執行個體。 SSIS IR 必須能夠存取 SQL Database 或 SQL 受控執行個體。 此外，SQL Database 或 SQL 受控執行個體的登入帳戶必須擁有建立 SSIS 目錄資料庫 (SSISDB) 的許可權。 如果發生錯誤，Data Factory 入口網站中會顯示錯誤碼與詳細的 SQL 例外狀況訊息。 請使用下列清單中的資訊來針對錯誤碼進行疑難排解。
 
 ### <a name="azuresqlconnectionfailure"></a>AzureSqlConnectionFailure
 
@@ -114,7 +115,7 @@ SSIS IR 會定期更新，因此系統會在 IR 正在執行時檢查自訂設�
 ## <a name="virtual-network-configuration"></a>虛擬網路設定
 
 當您將 SSIS IR 加入 Azure 虛擬網路時，SSIS IR 會使用位於使用者訂用帳戶下的虛擬網路。 如需詳細資訊，請參閱[將 Azure-SSIS Integration Runtime 加入虛擬網路](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。
-
+當 SSIS IR 成功啟動之後，如果您遇到網路連線問題，您可以嘗試使用[診斷連線工具](ssis-integration-runtime-diagnose-connectivity-faq.md)來自行診斷問題。
 發生虛擬網路相關的問題時，您會看到下列其中一個錯誤。
 
 ### <a name="invalidvnetconfiguration"></a>InvalidVnetConfiguration
@@ -171,7 +172,7 @@ SSIS IR 會定期自動更新。 升級期間會建立新的 Azure Batch 集區�
 | 錯誤訊息 | 解決方案|
 |:--- |:--- |
 | 提供的靜態公用 IP 位址已在使用中，請為您的 Azure SSIS Integration Runtime 提供兩個未使用的。 | 您應該選取兩個未使用的靜態公用 IP 位址，或移除指定之公用 IP 位址的目前參照，然後重新開機 Azure SSIS IR。 |
-| 提供的靜態公用 IP 位址沒有 DNS 名稱，請為您的 Azure SSIS Integration Runtime 提供 DNS 名稱其中兩個。 | 您可以在 Azure 入口網站中設定公用 IP 位址的 DNS 名稱，如下圖所示。 特定步驟如下：（1）開啟 Azure 入口網站並移至此公用 IP 位址的資源頁面;（2）選取**Configuration**區段並設定 DNS 名稱，然後按一下 [**儲存**] 按鈕;（3）重新開機您的 Azure SSIS IR。 |
+| 提供的靜態公用 IP 位址沒有 DNS 名稱，請為您的 Azure SSIS Integration Runtime 提供 DNS 名稱其中兩個。 | 您可以在 Azure 入口網站中設定公用 IP 位址的 DNS 名稱，如下圖所示。 特定步驟如下： (1) 開啟 Azure 入口網站並移至此公用 IP 位址的資源頁面; (2) 選取 [設定 **] 區段並**設定 DNS 名稱，然後按一下 [**儲存**] 按鈕; (3) 重新開機您的 Azure SSIS IR。 |
 | 針對您的 Azure SSIS Integration Runtime 所提供的 VNet 和靜態公用 IP 位址必須位於相同的位置。 | 根據 Azure 網路的需求，靜態公用 IP 位址和虛擬網路應位於相同的位置和訂用帳戶中。 請提供兩個有效的靜態公用 IP 位址，並重新啟動 Azure SSIS IR。 |
 | 提供的靜態公用 IP 位址是基本的，請提供兩個標準，供您的 Azure SSIS Integration Runtime 使用。 | 如需協助，請參閱[公用 IP 位址的 sku](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) 。 |
 
@@ -179,15 +180,15 @@ SSIS IR 會定期自動更新。 升級期間會建立新的 Azure Batch 集區�
 
 ### <a name="publicipresourcegrouplockedduringstart"></a>PublicIPResourceGroupLockedDuringStart
 
-如果 Azure SSIS IR 布建失敗，則會刪除所有已建立的資源。 不過，如果訂用帳戶或資源群組（包含您的靜態公用 IP 位址）層級有資源刪除鎖定，則不會如預期般刪除網路資源。 若要修正錯誤，請移除刪除鎖定，然後重新開機 IR。
+如果 Azure SSIS IR 布建失敗，則會刪除所有已建立的資源。 不過，如果訂用帳戶或資源群組上有資源刪除鎖定 (其中包含您的靜態公用 IP 位址) 層級，則不會如預期般刪除網路資源。 若要修正錯誤，請移除刪除鎖定，然後重新開機 IR。
 
 ### <a name="publicipresourcegrouplockedduringstop"></a>PublicIPResourceGroupLockedDuringStop
 
-當您停止 Azure SSIS IR 時，將會刪除在包含公用 IP 位址的資源群組中建立的所有網路資源。 但如果訂用帳戶或資源群組（包含您的靜態公用 IP 位址）層級有資源刪除鎖定，則刪除作業可能會失敗。 請移除刪除鎖定，然後重新開機 IR。
+當您停止 Azure SSIS IR 時，將會刪除在包含公用 IP 位址的資源群組中建立的所有網路資源。 但是，如果在訂用帳戶或資源群組上有資源刪除鎖定，則刪除作業可能會失敗， (包含您的靜態公用 IP 位址) 層級。 請移除刪除鎖定，然後重新開機 IR。
 
 ### <a name="publicipresourcegrouplockedduringupgrade"></a>PublicIPResourceGroupLockedDuringUpgrade
 
-Azure-SSIS IR 會定期自動更新。 在升級期間會建立新的 IR 節點，而舊的節點將會刪除。 此外，系統會刪除舊節點的已建立網路資源（例如負載平衡器和網路安全性群組），並在您的訂用帳戶下建立新的網路資源。 此錯誤表示刪除舊節點的網路資源失敗，因為訂用帳戶或資源群組（包含您的靜態公用 IP 位址）層級的刪除鎖定。 請移除刪除鎖定，讓我們可以清除舊的節點，並釋放舊節點的靜態公用 IP 位址。 否則，無法釋放靜態公用 IP 位址，我們將無法再進一步升級您的 IR。
+Azure-SSIS IR 會定期自動更新。 在升級期間會建立新的 IR 節點，而舊的節點將會刪除。 此外，已建立的網路資源 (例如，會刪除舊節點的負載平衡器和網路安全性群組) ，並在您的訂用帳戶下建立新的網路資源。 此錯誤表示由於訂用帳戶或資源群組上的刪除鎖定，而導致刪除舊節點的網路資源失敗， (，其中包含您的靜態公用 IP 位址) 層級。 請移除刪除鎖定，讓我們可以清除舊的節點，並釋放舊節點的靜態公用 IP 位址。 否則，無法釋放靜態公用 IP 位址，我們將無法再進一步升級您的 IR。
 
 ### <a name="publicipnotusableduringupgrade"></a>PublicIPNotUsableDuringUpgrade
 

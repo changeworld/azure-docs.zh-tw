@@ -11,11 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/28/2020
-ms.openlocfilehash: 6a71cc080c28cfa6e54de5b942ad1d8ce5b496d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3fe5257b3db2057e805d2f2cd0c6e2a2973e211
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513960"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223052"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure Data Factory 複製和轉換 Azure SQL Database 中的資料
 
@@ -39,7 +40,7 @@ ms.locfileid: "85513960"
 
 針對複製活動，此 Azure SQL Database 連接器支援下列功能：
 
-- 使用 SQL 驗證和 Azure Active Directory （Azure AD）應用程式權杖驗證搭配服務主體或 Azure 資源的受控識別來複製資料。
+- 使用 SQL 驗證和 Azure Active Directory 來複製資料 (Azure AD) 使用服務主體的應用程式權杖驗證，或 Azure 資源的受控識別。
 - 作為來源，使用 SQL 查詢或預存程式來抓取資料。
 - 作為接收，會根據來源架構，自動建立目的地資料表（如果不存在的話）。在複製期間，將資料附加至資料表，或使用自訂邏輯叫用預存程式。
 
@@ -60,7 +61,7 @@ ms.locfileid: "85513960"
 
 以下是支援 Azure SQL Database 已連結服務的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | **Type**屬性必須設定為**AzureSqlDatabase**。 | 是 |
 | connectionString | 指定連接到**connectionString**屬性的 Azure SQL Database 實例所需的資訊。 <br/>您也可以將密碼或服務主體金鑰放在 Azure Key Vault 中。 如果是 SQL 驗證，請 `password` 從連接字串中提取設定。 如需詳細資訊，請參閱資料表後面的 JSON 範例，並[將認證儲存在 Azure Key Vault 中](store-credentials-in-key-vault.md)。 | Yes |
@@ -88,7 +89,7 @@ ms.locfileid: "85513960"
     "properties": {
         "type": "AzureSqlDatabase",
         "typeProperties": {
-            "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+            "connectionString": "Data Source=tcp:<servername>.database.windows.net,1433;Initial Catalog=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -106,7 +107,7 @@ ms.locfileid: "85513960"
     "properties": {
         "type": "AzureSqlDatabase",
         "typeProperties": {
-            "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30",
+            "connectionString": "Data Source=tcp:<servername>.database.windows.net,1433;Initial Catalog=<databasename>;User ID=<username>@<servername>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30",
             "password": {
                 "type": "AzureKeyVaultSecret",
                 "store": {
@@ -158,7 +159,7 @@ ms.locfileid: "85513960"
     "properties": {
         "type": "AzureSqlDatabase",
         "typeProperties": {
-            "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;Connection Timeout=30",
+            "connectionString": "Data Source=tcp:<servername>.database.windows.net,1433;Initial Catalog=<databasename>;Connection Timeout=30",
             "servicePrincipalId": "<service principal id>",
             "servicePrincipalKey": {
                 "type": "SecureString",
@@ -204,7 +205,7 @@ ms.locfileid: "85513960"
     "properties": {
         "type": "AzureSqlDatabase",
         "typeProperties": {
-            "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;Connection Timeout=30"
+            "connectionString": "Data Source=tcp:<servername>.database.windows.net,1433;Initial Catalog=<databasename>;Connection Timeout=30"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -220,7 +221,7 @@ ms.locfileid: "85513960"
 
 Azure SQL Database 資料集支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的**類型**屬性必須設定為**AzureSqlTable**。 | Yes |
 | 結構描述 | 結構描述的名稱。 |否 (來源)；是 (接收)  |
@@ -256,7 +257,7 @@ Azure SQL Database 資料集支援下列屬性：
 
 若要從 Azure SQL Database 複製資料，複製活動的 [**來源**] 區段中支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的**類型**屬性必須設定為**AzureSqlSource**。 "SqlSource" 類型仍然支援回溯相容性。 | 是 |
 | sqlReaderQuery | 此屬性使用自訂 SQL 查詢來讀取資料。 例如 `select * from MyTable`。 | No |
@@ -363,7 +364,7 @@ GO
 
 若要將資料複製到 Azure SQL Database，複製活動的 [**接收**] 區段中支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動接收器的**type**屬性必須設定為**AzureSqlSink**。 "SqlSink" 類型仍然支援回溯相容性。 | Yes |
 | preCopyScript | 指定要在將資料寫入 Azure SQL Database 之前，要執行之複製活動的 SQL 查詢。 每一複製回合只會叫用此查詢一次。 使用此屬性來清除預先載入的資料。 | 否 |
@@ -373,7 +374,7 @@ GO
 | sqlWriterTableType |要在預存程式中使用的資料表類型名稱。 複製活動可讓正在移動的資料可用於此資料表類型的暫存資料表。 然後，預存程序程式碼可以合併正在複製的資料與現有的資料。 |No |
 | storedProcedureParameters |預存程序的參數。<br/>允許的值為：名稱和值組。 參數的名稱和大小寫必須符合預存程序參數的名稱和大小寫。 | 否 |
 | writeBatchSize | 要插入 SQL 資料表中*每個批次*的資料列數目。<br/> 允許的值為**整數** (資料列數目)。 根據預設，Azure Data Factory 會依據資料列大小，以動態方式決定適當的批次大小。 | No |
-| writeBatchTimeout | 在逾時前等待批次插入作業完成的時間。<br/> 允許的值為**時間範圍**。 例如，"00:30:00" （30分鐘）。 | 否 |
+| writeBatchTimeout | 在逾時前等待批次插入作業完成的時間。<br/> 允許的值為**時間範圍**。 例如，"00:30:00" (30 分鐘的) 。 | 否 |
 | disableMetricsCollection | Data Factory 會收集統計資料，例如複製效能優化和建議的 Azure SQL Database Dtu。 如果您擔心此行為，請指定 `true` 將其關閉。 | 否 (預設值為 `false`) |
 
 **範例1：附加資料**
@@ -492,7 +493,7 @@ BEGIN
 END
 ```
 
-**選項2：** 您可以選擇在[複製活動中叫用預存](#invoke-a-stored-procedure-from-a-sql-sink)程式。 這個方法會在來源資料表中執行每個批次（由屬性所控制 `writeBatchSize` ），而不是在複製活動中使用 bulk insert 做為預設方法。
+**選項2：** 您可以選擇在[複製活動中叫用預存](#invoke-a-stored-procedure-from-a-sql-sink)程式。 這個方法會執行每個批次 (由 `writeBatchSize` 來源資料表中的屬性) 所控制，而不是在複製活動中使用 bulk insert 做為預設方法。
 
 **選項3：** 您可以使用提供內建插入/upsert/更新方法的[對應資料流程](#sink-transformation)。
 
@@ -633,7 +634,7 @@ ADF 會使用您在此處挑選為金鑰的資料行名稱，做為後續更新�
 | SMALLINT |Int16 |
 | SMALLMONEY |Decimal |
 | sql_variant |Object |
-| text |String, Char[] |
+| 文字 |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
 | TINYINT |Byte |

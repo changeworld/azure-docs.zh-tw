@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: fe7b74b0d4d065d4f222fefbbdc4a1d434d1163b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 635a8fc5409e18da9529763b06e4a531a36d0156
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80518256"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169199"
 ---
 # <a name="interoperability-in-azure--data-plane-analysis"></a>Azure 中的互通性：資料平面分析
 
@@ -29,13 +29,15 @@ ms.locfileid: "80518256"
 
 虛擬網路 (VNet) 對等互連可模擬兩個對等 VNet 之間的網路橋接器功能。 以下是從中樞 VNet 輸出至輪輻 VNet 中 VM 的追蹤路由：
 
-    C:\Users\rb>tracert 10.11.30.4
+```console
+C:\Users\rb>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
+Tracing route to 10.11.30.4 over a maximum of 30 hops
 
-      1     2 ms     1 ms     1 ms  10.11.30.4
+  1     2 ms     1 ms     1 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 下圖顯示 Azure 網路監看員視角下的中樞 VNet 和輪幅 VNet 的圖形連線檢視：
 
@@ -46,15 +48,17 @@ ms.locfileid: "80518256"
 
 以下是從中樞 VNet 輸出至分支 VNet 中 VM 的追蹤路由：
 
-    C:\Users\rb>tracert 10.11.30.68
+```console
+C:\Users\rb>tracert 10.11.30.68
 
-    Tracing route to 10.11.30.68 over a maximum of 30 hops
+Tracing route to 10.11.30.68 over a maximum of 30 hops
 
-      1     1 ms     1 ms     1 ms  10.10.30.142
-      2     *        *        *     Request timed out.
-      3     2 ms     2 ms     2 ms  10.11.30.68
+  1     1 ms     1 ms     1 ms  10.10.30.142
+  2     *        *        *     Request timed out.
+  3     2 ms     2 ms     2 ms  10.11.30.68
 
-    Trace complete.
+Trace complete.
+```
 
 在此追蹤路由，第一個躍點是中樞 VNet 的 Azure VPN 閘道中的 VPN 閘道。 第二個躍點是分支 VNet 的 VPN 閘道。 分支 VNet 的 VPN 閘道的 IP 位址沒有在中樞 VNet 中公告。 第三個躍點是分支 VNet 上的 VM。
 
@@ -70,16 +74,18 @@ ms.locfileid: "80518256"
 
 以下是從中樞 VNet 輸出至內部部署位置 1 中 VM 的追蹤路由：
 
-    C:\Users\rb>tracert 10.2.30.10
+```console
+C:\Users\rb>tracert 10.2.30.10
 
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
+Tracing route to 10.2.30.10 over a maximum of 30 hops
 
-      1     2 ms     2 ms     2 ms  10.10.30.132
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4     2 ms     2 ms     2 ms  10.2.30.10
+  1     2 ms     2 ms     2 ms  10.10.30.132
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4     2 ms     2 ms     2 ms  10.2.30.10
 
-    Trace complete.
+Trace complete.
+```
 
 在此追蹤路由中，第一個躍點是對 Microsoft Enterprise Edge Router (MSEE) 的 Azure ExpressRoute 閘道通道端點。 第二個和第三個躍點是，客戶 Edge (CE) 路由器和內部部署位置 1 LAN IP。 這些 IP 位址沒有在中樞 VNet 中公告。 第四個躍點是內部部署位置 1 中的 VM。
 
@@ -88,16 +94,18 @@ ms.locfileid: "80518256"
 
 以下是從中樞 VNet 輸出至內部部署位置 2 中 VM 的追蹤路由：
 
-    C:\Users\rb>tracert 10.1.31.10
+```console
+C:\Users\rb>tracert 10.1.31.10
 
-    Tracing route to 10.1.31.10 over a maximum of 30 hops
+Tracing route to 10.1.31.10 over a maximum of 30 hops
 
-      1    76 ms    75 ms    75 ms  10.10.30.134
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4    75 ms    75 ms    75 ms  10.1.31.10
+  1    76 ms    75 ms    75 ms  10.10.30.134
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4    75 ms    75 ms    75 ms  10.1.31.10
 
-    Trace complete.
+Trace complete.
+```
 
 在此追蹤路由中，第一個躍點是對 MSEE 的 ExpressRoute 閘道通道端點。 第二個和第三個躍點是 CE 路由器和內部部署位置 2 LAN IP。 這些 IP 位址沒有在中樞 VNet 中公告。 第四個躍點是內部部署位置 2 上的 VM。
 
@@ -105,15 +113,17 @@ ms.locfileid: "80518256"
 
 以下是從中樞 VNet 輸出至遠端 VNet 中 VM 的追蹤路由：
 
-    C:\Users\rb>tracert 10.17.30.4
+```console
+C:\Users\rb>tracert 10.17.30.4
 
-    Tracing route to 10.17.30.4 over a maximum of 30 hops
+Tracing route to 10.17.30.4 over a maximum of 30 hops
 
-      1     2 ms     2 ms     2 ms  10.10.30.132
-      2     *        *        *     Request timed out.
-      3    69 ms    68 ms    69 ms  10.17.30.4
+  1     2 ms     2 ms     2 ms  10.10.30.132
+  2     *        *        *     Request timed out.
+  3    69 ms    68 ms    69 ms  10.17.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 在此追蹤路由中，第一個躍點是對 MSEE 的 ExpressRoute 閘道通道端點。 第二個躍點是遠端 VNet 的閘道 IP。 第二個躍點 IP 範圍沒有在中樞 VNet 中公告。 第三個躍點是遠端 VNet 上的 VM。
 
@@ -125,27 +135,31 @@ ms.locfileid: "80518256"
 
 以下是從輪幅 VNet 輸出至中樞 VNet 中 VM 的追蹤路由：
 
-    C:\Users\rb>tracert 10.10.30.4
+```console
+C:\Users\rb>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-branch-vnet"></a>往分支 VNet 的路徑
 
 以下是從輪幅 VNet 輸出至分支 VNet 中 VM 的追蹤路由：
 
-    C:\Users\rb>tracert 10.11.30.68
+```console
+C:\Users\rb>tracert 10.11.30.68
 
-    Tracing route to 10.11.30.68 over a maximum of 30 hops
+Tracing route to 10.11.30.68 over a maximum of 30 hops
 
-      1     1 ms    <1 ms    <1 ms  10.10.30.142
-      2     *        *        *     Request timed out.
-      3     3 ms     2 ms     2 ms  10.11.30.68
+  1     1 ms    <1 ms    <1 ms  10.10.30.142
+  2     *        *        *     Request timed out.
+  3     3 ms     2 ms     2 ms  10.11.30.68
 
-    Trace complete.
+Trace complete.
+```
 
 在此追蹤路由中，第一個躍點是中樞 VNet 的 VPN 閘道。 第二個躍點是分支 VNet 的 VPN 閘道。 分支 VNet 的 VPN 閘道的 IP 位址沒有在中樞/輪幅 VNet 中公告。 第三個躍點是分支 VNet 上的 VM。
 
@@ -153,16 +167,18 @@ ms.locfileid: "80518256"
 
 以下是從輪幅 VNet 輸出至內部部署位置 1 中 VM 的追蹤路由：
 
-    C:\Users\rb>tracert 10.2.30.10
+```console
+C:\Users\rb>tracert 10.2.30.10
 
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
+Tracing route to 10.2.30.10 over a maximum of 30 hops
 
-      1    24 ms     2 ms     3 ms  10.10.30.132
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4     3 ms     2 ms     2 ms  10.2.30.10
+  1    24 ms     2 ms     3 ms  10.10.30.132
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4     3 ms     2 ms     2 ms  10.2.30.10
 
-    Trace complete.
+Trace complete.
+```
 
 在此追蹤路由中，第一個躍點是中樞 VNet 的 ExpressRoute 閘道通道端點至 MSEE。 第二個和第三個躍點是 CE 路由器和內部部署位置 1 LAN IP。 這些 IP 位址沒有在中樞/輪幅 VNet 中公告。 第四個躍點是內部部署位置 1 中的 VM。
 
@@ -170,17 +186,18 @@ ms.locfileid: "80518256"
 
 以下是從輪幅 VNet 輸出至內部部署位置 2 中 VM 的追蹤路由：
 
+```console
+C:\Users\rb>tracert 10.1.31.10
 
-    C:\Users\rb>tracert 10.1.31.10
+Tracing route to 10.1.31.10 over a maximum of 30 hops
 
-    Tracing route to 10.1.31.10 over a maximum of 30 hops
+  1    76 ms    75 ms    76 ms  10.10.30.134
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4    75 ms    75 ms    75 ms  10.1.31.10
 
-      1    76 ms    75 ms    76 ms  10.10.30.134
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4    75 ms    75 ms    75 ms  10.1.31.10
-
-    Trace complete.
+Trace complete.
+```
 
 在此追蹤路由中，第一個躍點是中樞 VNet 的 ExpressRoute 閘道通道端點至 MSEE。 第二個和第三個躍點是 CE 路由器和內部部署位置 2 LAN IP。 這些 IP 位址沒有在中樞/輪幅 VNet 中公告。 第四個躍點是內部部署位置 2 中的 VM。
 
@@ -188,15 +205,17 @@ ms.locfileid: "80518256"
 
 以下是從輪幅 VNet 輸出至遠端 VNet 中 VM 的追蹤路由：
 
-    C:\Users\rb>tracert 10.17.30.4
+```console
+C:\Users\rb>tracert 10.17.30.4
 
-    Tracing route to 10.17.30.4 over a maximum of 30 hops
+Tracing route to 10.17.30.4 over a maximum of 30 hops
 
-      1     2 ms     1 ms     1 ms  10.10.30.133
-      2     *        *        *     Request timed out.
-      3    71 ms    70 ms    70 ms  10.17.30.4
+  1     2 ms     1 ms     1 ms  10.10.30.133
+  2     *        *        *     Request timed out.
+  3    71 ms    70 ms    70 ms  10.17.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 在此追蹤路由中，第一個躍點是中樞 VNet 的 ExpressRoute 閘道通道端點至 MSEE。 第二個躍點是遠端 VNet 的閘道 IP。 第二個躍點 IP 範圍沒有在中樞/輪幅 VNet 中公告。 第三個躍點是遠端 VNet 上的 VM。
 
@@ -206,15 +225,17 @@ ms.locfileid: "80518256"
 
 以下是從分支 VNet 輸出至中樞 VNet 中 VM 的追蹤路由：
 
-    C:\Windows\system32>tracert 10.10.30.4
+```console
+C:\Windows\system32>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.11.30.100
-      2     *        *        *     Request timed out.
-      3     4 ms     3 ms     3 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.11.30.100
+  2     *        *        *     Request timed out.
+  3     4 ms     3 ms     3 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 在此追蹤路由中，第一個躍點是分支 VNet 的VPN 閘道。 第二個躍點是中樞 VNet 的 VPN 閘道。 中樞 VNet 的 VPN 閘道的 IP 位址沒有在遠端 VNet 中公告。 第三個躍點是中樞 VNet 上的 VM。
 
@@ -222,15 +243,17 @@ ms.locfileid: "80518256"
 
 以下是從分支 VNet 輸出至輪幅 VNet 中 VM 的追蹤路由：
 
-    C:\Users\rb>tracert 10.11.30.4
+```console
+C:\Users\rb>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
+Tracing route to 10.11.30.4 over a maximum of 30 hops
 
-      1     1 ms    <1 ms     1 ms  10.11.30.100
-      2     *        *        *     Request timed out.
-      3     4 ms     3 ms     2 ms  10.11.30.4
+  1     1 ms    <1 ms     1 ms  10.11.30.100
+  2     *        *        *     Request timed out.
+  3     4 ms     3 ms     2 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 在此追蹤路由中，第一個躍點是分支 VNet 的VPN 閘道。 第二個躍點是中樞 VNet 的 VPN 閘道。 中樞 VNet 的 VPN 閘道的 IP 位址沒有在遠端 VNet 中公告。 第三個躍點是在輪輻 VNet 上的 VM。
 
@@ -238,17 +261,19 @@ ms.locfileid: "80518256"
 
 以下是從分支 VNet 輸出至內部部署位置 1 中 VM 的追蹤路由：
 
-    C:\Users\rb>tracert 10.2.30.10
+```console
+C:\Users\rb>tracert 10.2.30.10
 
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
+Tracing route to 10.2.30.10 over a maximum of 30 hops
 
-      1     1 ms    <1 ms    <1 ms  10.11.30.100
-      2     *        *        *     Request timed out.
-      3     3 ms     2 ms     2 ms  10.2.30.125
-      4     *        *        *     Request timed out.
-      5     3 ms     3 ms     3 ms  10.2.30.10
+  1     1 ms    <1 ms    <1 ms  10.11.30.100
+  2     *        *        *     Request timed out.
+  3     3 ms     2 ms     2 ms  10.2.30.125
+  4     *        *        *     Request timed out.
+  5     3 ms     3 ms     3 ms  10.2.30.10
 
-    Trace complete.
+Trace complete.
+```
 
 在此追蹤路由中，第一個躍點是分支 VNet 的VPN 閘道。 第二個躍點是中樞 VNet 的 VPN 閘道。 中樞 VNet 的 VPN 閘道的 IP 位址沒有在遠端 VNet 中公告。 第三個躍點是主要 CE 路由器的 VPN 通道終止點。 第四個躍點是內部部署位置 1 的內部 IP 位址。 此 LAN IP 位址沒有在 CE 路由器外公告。 第五個躍點是內部部署位置 1 中的目的地 VM。
 
@@ -256,27 +281,29 @@ ms.locfileid: "80518256"
 
 如我們在控制平面分析中所討論，由於網路設定的緣故，內部部署位置 2 或遠端 VNet 對於分支 VNet 都是不可見的。 下列 Ping 結果可證實： 
 
-    C:\Users\rb>ping 10.1.31.10
+```console
+C:\Users\rb>ping 10.1.31.10
 
-    Pinging 10.1.31.10 with 32 bytes of data:
+Pinging 10.1.31.10 with 32 bytes of data:
 
-    Request timed out.
-    ...
-    Request timed out.
+Request timed out.
+...
+Request timed out.
 
-    Ping statistics for 10.1.31.10:
-        Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+Ping statistics for 10.1.31.10:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
 
-    C:\Users\rb>ping 10.17.30.4
+C:\Users\rb>ping 10.17.30.4
 
-    Pinging 10.17.30.4 with 32 bytes of data:
+Pinging 10.17.30.4 with 32 bytes of data:
 
-    Request timed out.
-    ...
-    Request timed out.
+Request timed out.
+...
+Request timed out.
 
-    Ping statistics for 10.17.30.4:
-        Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+Ping statistics for 10.17.30.4:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+```
 
 ## <a name="data-path-from-on-premises-location-1"></a>從內部部署位置 1 來的資料路徑
 
@@ -284,17 +311,19 @@ ms.locfileid: "80518256"
 
 以下是從內部部署位置 1 輸出至中樞 VNet 中 VM 的追蹤路由：
 
-    C:\Users\rb>tracert 10.10.30.4
+```console
+C:\Users\rb>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2    <1 ms    <1 ms    <1 ms  192.168.30.0
-      3    <1 ms    <1 ms    <1 ms  192.168.30.18
-      4     *        *        *     Request timed out.
-      5     2 ms     2 ms     2 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2    <1 ms    <1 ms    <1 ms  192.168.30.0
+  3    <1 ms    <1 ms    <1 ms  192.168.30.18
+  4     *        *        *     Request timed out.
+  5     2 ms     2 ms     2 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 在此追蹤路由中，前兩個躍點屬於內部部署網路。 第三個躍點是面對 CE 路由器的主要 MSEE 介面。 第四個躍點是中樞 VNet 的 ExpressRoute 閘道。 中樞 VNet 的 ExpressRoute 閘道的 IP 範圍沒有對內部部署網路公告。 第五個躍點是目的地 VM。
 
@@ -306,15 +335,17 @@ ms.locfileid: "80518256"
 
 如稍早所述，測試安裝程式使用對站 VPN 作為內部部署位置 1 和中樞 VNet 之間 ExpressRoute 的備份連線。 為了測試備份資料路徑，讓我們引發內部部署位置1主要 CE 路由器與對應的 MSEE 之間的 ExpressRoute 連結失敗。 為了引發 ExpressRoute 連結失敗，請關閉面對 MSEE 的 CE 介面：
 
-    C:\Users\rb>tracert 10.10.30.4
+```console
+C:\Users\rb>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2    <1 ms    <1 ms    <1 ms  192.168.30.0
-      3     3 ms     2 ms     3 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2    <1 ms    <1 ms    <1 ms  192.168.30.0
+  3     3 ms     2 ms     3 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 下圖顯示當 ExpressRoute 連線中斷時，內部部署位置 1 VM 透過站對站 VPN 連線至中樞 VNet 上的 VM 之拓撲檢視：
 
@@ -326,17 +357,19 @@ ms.locfileid: "80518256"
 
 讓我們重新建立 ExpressRoute 主要連線，以執行朝向輪輻 VNet 的資料路徑分析：
 
-    C:\Users\rb>tracert 10.11.30.4
+```console
+C:\Users\rb>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
+Tracing route to 10.11.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2    <1 ms    <1 ms    <1 ms  192.168.30.0
-      3    <1 ms    <1 ms    <1 ms  192.168.30.18
-      4     *        *        *     Request timed out.
-      5     3 ms     2 ms     2 ms  10.11.30.4
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2    <1 ms    <1 ms    <1 ms  192.168.30.0
+  3    <1 ms    <1 ms    <1 ms  192.168.30.18
+  4     *        *        *     Request timed out.
+  5     3 ms     2 ms     2 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 重新建立主要 ExpressRoute 1 連線，以進行其餘的資料路徑分析。
 
@@ -344,46 +377,52 @@ ms.locfileid: "80518256"
 
 以下是從內部部署位置 1 輸出至分支 VNet 中 VM 的追蹤路由：
 
-    C:\Users\rb>tracert 10.11.30.68
+```console
+C:\Users\rb>tracert 10.11.30.68
 
-    Tracing route to 10.11.30.68 over a maximum of 30 hops
+Tracing route to 10.11.30.68 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2    <1 ms    <1 ms    <1 ms  192.168.30.0
-      3     3 ms     2 ms     2 ms  10.11.30.68
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2    <1 ms    <1 ms    <1 ms  192.168.30.0
+  3     3 ms     2 ms     2 ms  10.11.30.68
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-on-premises-location-2"></a>往內部部署位置 2 的路徑
 
 如我們在[控制平面分析][Control-Analysis]中所討論，由於網路設定的緣故，內部部署位置 2 對於內部部署位置 1 是不可見的。 下列 Ping 結果可證實： 
 
-    C:\Users\rb>ping 10.1.31.10
-    
-    Pinging 10.1.31.10 with 32 bytes of data:
+```console
+C:\Users\rb>ping 10.1.31.10
 
-    Request timed out.
-    ...
-    Request timed out.
+Pinging 10.1.31.10 with 32 bytes of data:
 
-    Ping statistics for 10.1.31.10:
-        Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+Request timed out.
+...
+Request timed out.
+
+Ping statistics for 10.1.31.10:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+```
 
 ### <a name="path-to-the-remote-vnet"></a>往遠端 VNet 的路徑
 
 以下是從內部部署位置 1 輸出至遠端 VNet 中 VM 的追蹤路由：
 
-    C:\Users\rb>tracert 10.17.30.4
+```console
+C:\Users\rb>tracert 10.17.30.4
 
-    Tracing route to 10.17.30.4 over a maximum of 30 hops
+Tracing route to 10.17.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2     2 ms     5 ms     7 ms  192.168.30.0
-      3    <1 ms    <1 ms    <1 ms  192.168.30.18
-      4     *        *        *     Request timed out.
-      5    69 ms    70 ms    69 ms  10.17.30.4
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2     2 ms     5 ms     7 ms  192.168.30.0
+  3    <1 ms    <1 ms    <1 ms  192.168.30.18
+  4     *        *        *     Request timed out.
+  5    69 ms    70 ms    69 ms  10.17.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ## <a name="data-path-from-on-premises-location-2"></a>從內部部署位置 2 來的資料路徑
 
@@ -391,32 +430,36 @@ ms.locfileid: "80518256"
 
 以下是從內部部署位置 2 輸出至中樞 VNet 中 VM 的追蹤路由：
 
-    C:\Windows\system32>tracert 10.10.30.4
+```console
+C:\Windows\system32>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.1.31.3
-      2    <1 ms    <1 ms    <1 ms  192.168.31.4
-      3    <1 ms    <1 ms    <1 ms  192.168.31.22
-      4     *        *        *     Request timed out.
-      5    75 ms    74 ms    74 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.1.31.3
+  2    <1 ms    <1 ms    <1 ms  192.168.31.4
+  3    <1 ms    <1 ms    <1 ms  192.168.31.22
+  4     *        *        *     Request timed out.
+  5    75 ms    74 ms    74 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-spoke-vnet"></a>往輪幅 VNet 的路徑
 
 以下是從內部部署位置 2 輸出至輪幅 VNet 中 VM 的追蹤路由：
 
-    C:\Windows\system32>tracert 10.11.30.4
+```console
+C:\Windows\system32>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
-      1    <1 ms    <1 ms     1 ms  10.1.31.3
-      2    <1 ms    <1 ms    <1 ms  192.168.31.0
-      3    <1 ms    <1 ms    <1 ms  192.168.31.18
-      4     *        *        *     Request timed out.
-      5    75 ms    74 ms    74 ms  10.11.30.4
+Tracing route to 10.11.30.4 over a maximum of 30 hops
+  1    <1 ms    <1 ms     1 ms  10.1.31.3
+  2    <1 ms    <1 ms    <1 ms  192.168.31.0
+  3    <1 ms    <1 ms    <1 ms  192.168.31.18
+  4     *        *        *     Request timed out.
+  5    75 ms    74 ms    74 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-branch-vnet-on-premises-location-1-and-the-remote-vnet"></a>往分支 VNet、內部部署位置 1 和遠端 VNet 的路徑
 
@@ -428,29 +471,33 @@ ms.locfileid: "80518256"
 
 以下是從遠端 VNet 輸出至中樞 VNet 中 VM 的追蹤路由：
 
-    C:\Users\rb>tracert 10.10.30.4
+```console
+C:\Users\rb>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    65 ms    65 ms    65 ms  10.17.30.36
-      2     *        *        *     Request timed out.
-      3    69 ms    68 ms    68 ms  10.10.30.4
+  1    65 ms    65 ms    65 ms  10.17.30.36
+  2     *        *        *     Request timed out.
+  3    69 ms    68 ms    68 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-spoke-vnet"></a>往輪幅 VNet 的路徑
 
 以下是從遠端 VNet 輸出至輪幅 VNet 中 VM 的追蹤路由：
 
-    C:\Users\rb>tracert 10.11.30.4
+```console
+C:\Users\rb>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
+Tracing route to 10.11.30.4 over a maximum of 30 hops
 
-      1    67 ms    67 ms    67 ms  10.17.30.36
-      2     *        *        *     Request timed out.
-      3    71 ms    69 ms    69 ms  10.11.30.4
+  1    67 ms    67 ms    67 ms  10.17.30.36
+  2     *        *        *     Request timed out.
+  3    71 ms    69 ms    69 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-branch-vnet-and-on-premises-location-2"></a>往分支 VNet 和內部部署位置 2 的路徑
 
@@ -460,17 +507,18 @@ ms.locfileid: "80518256"
 
 以下是從遠端 VNet 輸出至內部部署位置 1 中 VM 的追蹤路由：
 
-    C:\Users\rb>tracert 10.2.30.10
+```console
+C:\Users\rb>tracert 10.2.30.10
 
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
+Tracing route to 10.2.30.10 over a maximum of 30 hops
 
-      1    67 ms    67 ms    67 ms  10.17.30.36
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4    69 ms    69 ms    69 ms  10.2.30.10
+  1    67 ms    67 ms    67 ms  10.17.30.36
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4    69 ms    69 ms    69 ms  10.2.30.10
 
-    Trace complete.
-
+Trace complete.
+```
 
 ## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute 和站對站 VPN 連線串聯
 

@@ -11,18 +11,19 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 04/15/2020
-ms.openlocfilehash: 4cb5b84f3889dcf4e0f28d525afb42cfeac5b54c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 1eac86e856840d5cb78313fb4d61751066d6886b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81605500"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183999"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>在 Azure Data Factory 中，將自我裝載 IR 設定為 Azure SSIS IR 的 proxy
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-本文說明如何在使用設定為 proxy 的自我裝載整合執行時間（自我裝載 IR）的 Azure Data Factory 中，于 Azure SSIS Integration Runtime （Azure SSIS IR）上執行 SQL Server Integration Services （SSIS）套件。 
+本文說明如何在 (中，使用自我裝載整合執行時間) 自我裝載的 IR Azure Data Factory 設定為 proxy，在 Azure SSIS Integration Runtime (Azure ssis IR) 中執行 SQL Server Integration Services (SSIS) 套件。 
 
 透過這項功能，您可以在內部部署存取資料，而不需要將[您的 AZURE SSIS IR 加入虛擬網路](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。 當您的公司網路設定太複雜或原則過於嚴格，而無法將您的 Azure SSIS IR 插入其中時，此功能會很有用。
 
@@ -38,22 +39,22 @@ ms.locfileid: "81605500"
 
 接著，您會在已設定 Azure SSIS IR 的相同 data factory 中設定自我裝載 IR。 若要這麼做，請參閱[建立自我裝載 IR](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)。
 
-最後，您可以在內部部署電腦或 Azure 虛擬機器（VM）上下載並安裝最新版的自我裝載 IR，以及額外的驅動程式和執行時間，如下所示：
+最後，您可以在內部部署電腦或 Azure 虛擬機器上下載並安裝最新版的自我裝載 IR，以及額外的驅動程式和執行時間 (VM) ，如下所示：
 - 下載並安裝最新版的自我裝載[IR](https://www.microsoft.com/download/details.aspx?id=39717)。
-- 如果您在封裝中使用物件連結和內嵌資料庫（OLEDB）連接器，請在已安裝自我裝載 IR 的同一部電腦上下載並安裝相關的 OLEDB 驅動程式（如果您尚未這麼做）。  
+- 如果您在封裝中使用物件連結和內嵌資料庫 (OLEDB) 連接器，請在已安裝自我裝載 IR 的同一部電腦上下載並安裝相關的 OLEDB 驅動程式（如果您尚未這麼做）。  
 
-  如果您使用較舊版本的 OLEDB 驅動程式進行 SQL Server （SQL Server Native Client [SQLNCLI]），請[下載64位版本](https://www.microsoft.com/download/details.aspx?id=50402)。  
+  如果您使用舊版 OLEDB 驅動程式 for SQL Server (SQL Server Native Client [SQLNCLI] ) ，請[下載64位版本](https://www.microsoft.com/download/details.aspx?id=50402)。  
 
-  如果您使用 SQL Server 的 OLEDB 驅動程式（內含 MSOLEDBSQL.H）的最新版本，請[下載64位版本](https://www.microsoft.com/download/details.aspx?id=56730)。  
+  如果您使用 SQL Server (內含 MSOLEDBSQL.H) 的 OLEDB 驅動程式的最新版本，請[下載64位版本](https://www.microsoft.com/download/details.aspx?id=56730)。  
   
   如果您針對其他資料庫系統（例如于 postgresql、MySQL、Oracle 等等）使用 OLEDB 驅動程式，您可以從他們的網站下載64位版本。
-- 如果您尚未這麼做，請在已安裝自我裝載 IR 的同一部電腦上，[下載並安裝64位版本的 Visual C++ （VC）運行](https://www.microsoft.com/download/details.aspx?id=40784)時間。
+- 如果您尚未這麼做，請在已安裝自我裝載 IR 的同一部電腦上，[下載並安裝64位版本的 Visual C++ (VC) 運行](https://www.microsoft.com/download/details.aspx?id=40784)時間。
 
 ## <a name="prepare-the-azure-blob-storage-linked-service-for-staging"></a>準備 Azure Blob 儲存體連結服務以進行預備
 
 如果您尚未這麼做，請在您的 Azure SSIS IR 設定所在的相同 data factory 中建立 Azure Blob 儲存體連結的服務。 若要這麼做，請參閱[建立 Azure data factory-連結服務](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service)。 請務必執行下列動作：
 - 針對 [**資料存放區**]，選取 [ **Azure Blob 儲存體**]。  
-- 針對 **[透過整合運行**時間連線]，請選取 [ **AutoResolveIntegrationRuntime** ] （而非您的 Azure SSIS IR 或自我裝載 IR），因為我們會使用預設 Azure IR 來提取 Azure Blob 儲存體的存取認證。
+- 針對 **[透過整合運行**時間連線]，請選取 [ **AutoResolveIntegrationRuntime** ] (不是您的 Azure SSIS IR 或自我裝載 IR) ，因為我們會使用預設 Azure IR 來提取您 Azure Blob 儲存體的存取認證。
 - 針對 [**驗證方法**]，選取 [**帳戶金鑰**]、[ **SAS URI**] 或 [**服務主體**]。  
 
     >[!TIP]
@@ -152,7 +153,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 如果自我裝載 IR 上的預備工作需要 Windows 驗證，請[將您的 SSIS 套件設定為使用相同的 windows 驗證](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15)。 
 
-您的預備工作將會使用自我裝載 IR 服務帳戶（預設為*NT SERVICE\DIAHostService*）來叫用，而您的資料存放區將會使用 Windows 驗證帳戶來存取。 這兩個帳戶都需要將特定安全性原則指派給它們。 在自我裝載的 IR 機器上，移至 [**本機安全性原則**] [  >  **本機原則**] [  >  **使用者權限指派**]，然後執行下列動作：
+您的預備工作將會使用自我裝載 IR 服務帳戶來叫用 (*NT SERVICE\DIAHostService*，預設為) ，而您的資料存放區將會使用 Windows 驗證帳戶來存取。 這兩個帳戶都需要將特定安全性原則指派給它們。 在自我裝載的 IR 機器上，移至 [**本機安全性原則**] [  >  **本機原則**] [  >  **使用者權限指派**]，然後執行下列動作：
 
 1. 指派進程的 [*調整記憶體配額*]，並將*進程層級的 token 原則取代*為自我裝載的 IR 服務帳戶。 當您使用預設服務帳戶安裝自我裝載 IR 時，應該會自動發生這種情況。 如果不是，請手動指派這些原則。 如果您使用不同的服務帳戶，請為其指派相同的原則。
 
@@ -166,14 +167,14 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 ## <a name="enabling-tls-12"></a>啟用 TLS 1.2
 
-如果您需要使用強式密碼編譯/更安全的網路通訊協定（TLS 1.2），並在自我裝載 IR 上停用較舊的 SSL/TLS 版本，您可以下載並執行可在公用預覽容器的*CustomSetupScript/UserScenarios/tls 1.2*資料夾中找到的*主要 .cmd*腳本。  使用[Azure 儲存體總管](https://storageexplorer.com/)，您可以輸入下列 SAS URI 來連接到我們的公用預覽容器：
+如果您需要使用強式密碼編譯/更安全的網路通訊協定 (TLS 1.2) 並在自我裝載 IR 上停用較舊的 SSL/TLS 版本，您可以下載並執行可在公用預覽容器的*CustomSetupScript/UserScenarios/tls 1.2*資料夾中找到的*主要 .cmd*腳本。  使用[Azure 儲存體總管](https://storageexplorer.com/)，您可以輸入下列 SAS URI 來連接到我們的公用預覽容器：
 
 `https://ssisazurefileshare.blob.core.windows.net/publicpreview?sp=rl&st=2020-03-25T04:00:00Z&se=2025-03-25T04:00:00Z&sv=2019-02-02&sr=c&sig=WAD3DATezJjhBCO3ezrQ7TUZ8syEUxZZtGIhhP6Pt4I%3D`
 
 ## <a name="current-limitations"></a>目前的限制
 
-- 目前僅支援具有開放式資料庫連接（ODBC）/OLEDB/Flat 檔來源或 OLEDB 目的地的資料流程工作。 
-- 目前僅支援以*帳戶金鑰*、*共用存取簽章（SAS） URI*或*服務主體*驗證設定的 Azure Blob 儲存體連結服務。
+- 目前僅支援具有開放式資料庫連接性 (ODBC) /OLEDB/Flat 檔案來源或 OLEDB 目的地的資料流程工作。 
+- 目前僅支援以*帳戶金鑰*、*共用存取簽章 (SAS) URI*或*服務主體*驗證設定的 Azure Blob 儲存體連結服務。
 - 尚不支援 OLEDB 來源中的*ParameterMapping* 。 因應措施是*從變數使用 Sql 命令*做為*AccessMode* ，並使用*運算式*在 SQL 命令中插入變數/參數。 如需說明，請參閱在公開預覽容器的*SelfHostedIRProxy/限制*資料夾中可找到的*ParameterMappingSample .dtsx*套件。 使用 Azure 儲存體總管，您可以藉由輸入上述 SAS URI 來連線到我們的公用預覽容器。
 
 ## <a name="next-steps"></a>後續步驟

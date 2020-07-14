@@ -104,7 +104,7 @@ ms.locfileid: "86202529"
     |---------|---------|---------|
     |databoxe2etest_BlockBlob.txt     |區塊 Blob         |SMB/NFS         |
     |databoxe2etest_PageBlob.txt     |分頁 Blob         |SMB/NFS         |
-    |databoxe2etest_AzFile-BOM.txt    |Azure 檔案儲存體         |SMB/NFS         |
+    |databoxe2etest_AzFile-BOM.txt    |Azure 檔案         |SMB/NFS         |
     |databoxe2etest_PageBlock_Rest-BOM.txt     |分頁 Blob         |REST        |
     |databoxe2etest_BlockBlock_Rest-BOM.txt    |區塊 Blob         |REST         |
     |mydbmdrg1_MDisk-BOM.txt    |受控磁碟         |SMB/NFS         |

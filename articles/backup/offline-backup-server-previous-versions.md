@@ -1,29 +1,29 @@
 ---
-title: Data Protection Manager （DPM）和 Microsoft Azure 備份 Server （MABS）的離線備份-舊版
+title: Data Protection Manager (DPM) 和 Microsoft Azure 備份伺服器的離線備份 (MABS) -先前的版本
 description: 使用 Azure 備份，您可以使用 Azure 匯入/匯出服務從網路傳送資料。 本文說明 DPM 和 Azure 備份伺服器的離線備份工作流程。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: f39e93973deab09eb328eeafcff4e49b326483f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 128051210984a55620be60a5965a7067e74de7c7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374826"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186940"
 ---
-# <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM 和 Azure 備份伺服器的離線備份工作流程（舊版）
+# <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM 和 Azure 備份伺服器 (舊版的離線備份工作流程) 
 
 >[!IMPORTANT]
 >這些步驟適用于 DPM 2019 RTM 和較舊版本，以及 MABS v3 RTM 和更早版本。
 
 Azure 備份有數個可提升效率的內建功能，能在資料初始完整備份至 Azure 的期間節省網路和儲存體成本。 初始完整備份通常會傳輸大量資料且需要更多網路頻寬，相較之下，後續備份只傳輸差異/增量部分。 Azure 備份會壓縮初始備份。 透過離線植入的程序，Azure 備份可以使用磁碟，將已壓縮的離線初始備份資料上傳至 Azure。
 
-Azure 備份的離線植入程式與[Azure 匯入/匯出服務](../storage/common/storage-import-export-service.md)緊密整合。 您可以使用這項服務，使用磁片將資料傳輸至 Azure。 如果您需要透過高延遲和低頻寬網路傳輸的初始備份資料量 tb，您可以使用離線植入工作流程，將一或多個硬碟上的初始備份複本傳送至 Azure 資料中心。 本文提供針對 System Center Data Protection Manager （DPM）和 Microsoft Azure 備份 Server （MABS）完成此工作流程的總覽和後續步驟。
+Azure 備份的離線植入程式與[Azure 匯入/匯出服務](../storage/common/storage-import-export-service.md)緊密整合。 您可以使用這項服務，使用磁片將資料傳輸至 Azure。 如果您有 tb (Tb 的初始備份資料) 需要透過高延遲和低頻寬網路傳輸，您可以使用離線植入工作流程，將一或多個硬碟上的初始備份複本傳送至 Azure 資料中心。 本文提供針對 System Center Data Protection Manager (DPM) 和 Microsoft Azure 備份 Server (MABS) 完成此工作流程的總覽和後續步驟。
 
 > [!NOTE]
-> Microsoft Azure 復原服務（MARS）代理程式的離線備份進程與 DPM 和 MABS 不同。 如需搭配使用離線備份與 MARS 代理程式的相關資訊，請參閱[Azure 備份中的離線備份工作流程](backup-azure-backup-import-export.md)。 使用 Azure 備份代理程式完成的系統狀態備份不支援離線備份。
+> Microsoft Azure 復原服務 (MARS) 代理程式的離線備份程式，與 DPM 和 MABS 不同。 如需搭配使用離線備份與 MARS 代理程式的相關資訊，請參閱[Azure 備份中的離線備份工作流程](backup-azure-backup-import-export.md)。 使用 Azure 備份代理程式完成的系統狀態備份不支援離線備份。
 >
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 透過 Azure 備份和 Azure 匯入/匯出服務的離線植入功能，您可以輕鬆地使用磁片將資料離線上傳至 Azure。 離線備份程序涉及下列步驟：
 
@@ -44,6 +44,9 @@ Azure 備份的離線植入程式與[Azure 匯入/匯出服務](../storage/commo
 > * 使用 MARS 代理程式或 Azure 備份代理程式來備份檔案和資料夾。
 > * 使用 DPM 備份所有工作負載和檔案。
 > * 使用 MABS 備份所有工作負載和檔案。
+
+>[!NOTE]
+>Azure CSP 訂用帳戶不支援用於 DPM 2019 RTM 和更早版本的離線植入，以及 MABS v3 RTM 和更早版本。 仍然支援透過網路的線上備份。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -84,7 +87,7 @@ Azure 備份的離線植入程式與[Azure 匯入/匯出服務](../storage/commo
 * *AzureOfflineBackupCertGen.exe*工具會產生*OfflineApplicationParams.xml*檔案。 使用 MABS 或 DPM 將此檔案複製到伺服器。
 * 在 DPM 實例或 Azure 備份伺服器上安裝[最新的 MARS 代理程式](https://aka.ms/azurebackup_agent)。
 * 向 Azure 註冊伺服器。
-* 執行下列命令：
+* 執行以下命令：
 
     ```cmd
     AzureOfflineBackupCertGen.exe AddRegistryEntries SubscriptionId:<subscriptionid> xmlfilepath:<path of the OfflineApplicationParams.xml file>  storageaccountname:<storageaccountname to be used for offline backup>
@@ -180,7 +183,7 @@ Azure 備份的離線植入程式與[Azure 匯入/匯出服務](../storage/commo
      > [!IMPORTANT]
      > 如果來源電腦是虛擬機器，則必須使用不同的實體伺服器或用戶端電腦作為複本電腦。
 
-1. 以*AzureOfflineBackupDiskPrep*公用程式目錄作為目前的目錄，在複製電腦上開啟提升許可權的命令提示字元。 執行下列命令：
+1. 以*AzureOfflineBackupDiskPrep*公用程式目錄作為目前的目錄，在複製電腦上開啟提升許可權的命令提示字元。 執行以下命令：
 
     `*.\AzureOfflineBackupDiskPrep.exe*   s:<*Staging Location Path*>   [p:<*Path to AzurePublishSettingsFile*>]`
 
@@ -225,7 +228,7 @@ Azure 備份的離線植入程式與[Azure 匯入/匯出服務](../storage/commo
 
    `*.\AzureOfflineBackupDiskPrep.exe*  u:  s:<*Staging Location Path*>   p:<*Path to AzurePublishSettingsFile*>`
 
-    | 參數 | 說明 |
+    | 參數 | 描述 |
     | --- | --- |
     | u: | 此強制輸入是用來更新 Azure 匯入作業的寄送詳細資料。 |
     | s:&lt;*預備位置路徑*&gt; | 當命令不是在來源電腦上執行時，會使用此強制輸入。 它可用來提供您在「起始離線備份」一節的工作流程中所輸入的預備位置路徑。 |
