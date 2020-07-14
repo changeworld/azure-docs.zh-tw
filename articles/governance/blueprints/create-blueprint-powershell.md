@@ -3,18 +3,18 @@ title: 快速入門：使用 PowerShell 建立藍圖
 description: 在本快速入門中，您將在 PowerShell 中使用 Azure 藍圖建立、定義和部署成品。
 ms.date: 05/06/2020
 ms.topic: quickstart
-ms.openlocfilehash: 79feafa48d5d180949b8a23163f2ee9b686e6076
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: b881731dfdcaf9e9e016d1437e51dbd5c1a7488a
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864108"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970496"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>快速入門：使用 PowerShell 定義和指派 Azure 藍圖
 
-了解如何建立及指派有助於定義常用模式的藍圖，以根據 Resource Manager 範本、原則、安全性等，開發出可重複使用並可快速部署的組態。 在本教學課程中，您將了解如何使用 Azure 藍圖在您的組織中處理藍圖的建立、發佈和指派等常見工作，例如：
+了解如何建立及指派有助於定義常用模式的藍圖，以根據 Azure Resource Manager 範本 (ARM 範本)、原則、安全性等，開發出可重複使用並可快速部署的組態。 在本教學課程中，您將了解如何使用 Azure 藍圖在您的組織中處理藍圖的建立、發佈和指派等常見工作，例如：
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free)。
 
@@ -24,7 +24,7 @@ ms.locfileid: "82864108"
 
 ## <a name="create-a-blueprint"></a>建立藍圖
 
-定義合規性標準模式的第一個步驟，即是以可用的資源規劃藍圖。 我們將建立名為 'MyBlueprint' 的藍圖，以設定訂用帳戶的角色和原則指派。 然後，我們將新增資源群組、Resource Manager 範本，以及資源群組的角色指派。
+定義合規性標準模式的第一個步驟，即是以可用的資源規劃藍圖。 我們將建立名為 'MyBlueprint' 的藍圖，以設定訂用帳戶的角色和原則指派。 然後，我們將新增資源群組、ARM 範本，以及資源群組的角色指派。
 
 > [!NOTE]
 > 使用 PowerShell 時，會先建立_藍圖_物件。 對於要新增的具有參數的每個_成品_，需要在初始_藍圖_上預先定義參數。
@@ -127,7 +127,7 @@ ms.locfileid: "82864108"
      New-AzBlueprintArtifact -Blueprint $blueprint -Name 'roleContributor' -ArtifactFile .\artifacts\roleContributor.json
      ```
 
-1. 在訂用帳戶中新增原則指派。 **ArtifactFile** 會定義成品的_種類_、對應至原則或方案定義的屬性，並將原則指派設定為使用要在藍圖指派期間設定的已定義藍圖參數。 此範例使用 [將標籤及其預設值套用至資源群組]  內建原則，GUID 為 `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`。
+1. 在訂用帳戶中新增原則指派。 **ArtifactFile** 會定義成品的_種類_、對應至原則或方案定義的屬性，並將原則指派設定為使用要在藍圖指派期間設定的已定義藍圖參數。 此範例使用 [將標籤及其預設值套用至資源群組] 內建原則，GUID 為 `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`。
 
    - JSON 檔案 - \artifacts\policyTags.json
 
@@ -157,7 +157,7 @@ ms.locfileid: "82864108"
      New-AzBlueprintArtifact -Blueprint $blueprint -Name 'policyTags' -ArtifactFile .\artifacts\policyTags.json
      ```
 
-1. 在訂用帳戶為儲存標記新增另一個儲存體標記 (重複使用 _storageAccountType_ 參數)。 這個新增的原則指派成品示範藍圖上定義的參數可供多個成品使用。 在此範例中，會使用 **storageAccountType** 來設定資源群組的標記。 此值會提供在下一個步驟中建立的儲存體帳戶的相關資訊。 此範例使用 [將標籤及其預設值套用至資源群組]  內建原則，GUID 為 `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`。
+1. 在訂用帳戶為儲存標記新增另一個儲存體標記 (重複使用 _storageAccountType_ 參數)。 這個新增的原則指派成品示範藍圖上定義的參數可供多個成品使用。 在此範例中，會使用 **storageAccountType** 來設定資源群組的標記。 此值會提供在下一個步驟中建立的儲存體帳戶的相關資訊。 此範例使用 [將標籤及其預設值套用至資源群組] 內建原則，GUID 為 `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`。
 
    - JSON 檔案 - \artifacts\policyStorageTags.json
 
@@ -187,9 +187,9 @@ ms.locfileid: "82864108"
      New-AzBlueprintArtifact -Blueprint $blueprint -Name 'policyStorageTags' -ArtifactFile .\artifacts\policyStorageTags.json
      ```
 
-1. 在資源群組下新增範本。 Resource Manager 範本的 **TemplateFile** 包含範本的一般 JSON 元件。 此範本也會將 **storageAccountType**、**tagName** 和 **tagValue** 藍圖參數傳至範本，以重複使用這些參數。 藍圖參數可藉由使用 **TemplateParameterFile** 提供給範本使用，並且可在使用索引鍵/值配對來插入值的 JSON 範本內使用。 藍圖和範本參數名稱可能相同。
+1. 在資源群組下新增範本。 ARM 範本的 **TemplateFile** 包含範本的一般 JSON 元件。 此範本也會將 **storageAccountType**、**tagName** 和 **tagValue** 藍圖參數傳至範本，以重複使用這些參數。 藍圖參數可藉由使用 **TemplateParameterFile** 提供給範本使用，並且可在使用索引鍵/值配對來插入值的 JSON 範本內使用。 藍圖和範本參數名稱可能相同。
 
-   - JSON Azure Resource Manager 範本檔案 - \artifacts\templateStorage.json
+   - JSON ARM 範本檔案 - \artifacts\templateStorage.json
 
      ```json
      {
@@ -243,7 +243,7 @@ ms.locfileid: "82864108"
      }
      ```
 
-   - JSON Azure Resource Manager 範本參數檔案 - \artifacts\templateStorageParams.json
+   - JSON ARM 範本參數檔案 - \artifacts\templateStorageParams.json
 
      ```json
      {

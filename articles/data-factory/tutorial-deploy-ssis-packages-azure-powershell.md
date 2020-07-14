@@ -9,28 +9,28 @@ ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 03/27/2020
+ms.date: 07/06/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 2c3f2ccd80f2f329a7495beda1a002d84d769802
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: bcb30e2f653a0f22e2407cb95058431b95ef7db5
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253914"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969697"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>使用 PowerShell 在 Azure Data Factory 中設定 Azure SSIS IR
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-此教學課程提供使用 PowerShell 在 Azure Data Factory 中佈建 Azure-SQL Server Integration Services 整合執行階段 (Azure-SSIS IR) 的步驟。 Azure-SSIS IR 支援執行已部署至下列項目的套件：
+此教學課程提供使用 PowerShell 在 Azure Data Factory (ADF) 中佈建 Azure-SQL Server Integration Services (SSIS) 整合執行階段 (IR) 的步驟。 Azure-SSIS IR 可支援：
 
-* 在 SQL Database 或 SQL 受控執行個體 (專案部署模型) 中裝載的 SSIS 目錄 (SSISDB)。
-* 檔案系統、檔案共用或 Azure 檔案儲存體 (套件部署模型)。 
+- 執行已部署到 SSIS 目錄 (SSISDB) 的套件，此目錄由 Azure SQL Database 伺服器/受控執行個體 (專案部署模型) 裝載
+- 執行已部署到 Azure SQL 受控執行個體 (套件部署模型) 所裝載檔案系統、Azure 檔案儲存體或 SQL Server 資料庫 (MSDB) 中的套件
 
-佈建 Azure-SSIS IR 之後，您就可以使用熟悉的工具在 Azure 中部署和執行套件。 這些工具包括 SQL Server Data Tools (SSDT)、SQL Server Management Studio (SSMS) 和命令列工具，例如 `dtinstall`、`dtutil` 和 `dtexec`。
+佈建 Azure-SSIS IR 之後，您就可以使用熟悉的工具在 Azure 中部署和執行套件。 這些工具已針對 Azure 啟用，且包括 SQL Server Data Tools (SSDT)、SQL Server Management Studio (SSMS) 與命令列公用程式，例如 [dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) 和 [AzureDTExec](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-azure-enabled-dtexec)。
 
 如需 Azure-SSIS IR 的概念資訊，請參閱 [Azure-SSIS 整合執行階段概觀](concepts-integration-runtime.md#azure-ssis-integration-runtime)。
 
@@ -49,18 +49,27 @@ ms.locfileid: "85253914"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure 訂用帳戶**：如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。 如需 Azure-SSIS IR 的概念資訊，請參閱 [Azure-SSIS Integration Runtime 概觀](concepts-integration-runtime.md#azure-ssis-integration-runtime)。
+- **Azure 訂用帳戶**。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
-- **SQL Database 或 SQL 受控執行個體**：如果您還沒有 SQL Database 或 SQL 受控執行個體，請在開始使用之前，先在 Azure 入口網站中建立一個。 Azure Data Factory 接著會在此 SQL Database 或 SQL 受控執行個體上建立 SSISDB。 建議於整合執行階段所在的相同 Azure 區域中建立 SQL Database 或 SQL 受控執行個體。 此設定可讓整合執行階段將執行記錄寫入 SSISDB，而不需要跨 Azure 區域。 
-    - 根據選取的資料庫伺服器，SSISDB 可代表您在 SQL Database 或 SQL 受控執行個體中建立為單一資料庫、彈性集區的一部分，或建立在受控執行個體中，並可在公用網路中或透過加入虛擬網路來存取。 如需選擇適當資料庫伺服器類型來裝載 SSISDB 的指導方針，請參閱[比較 SQL Database 與 SQL 受控執行個體](create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance)。
-    
-      如果您使用具有 IP 防火牆或虛擬網路服務端點的 SQL Database 或具有私人端點的 SQL 受控執行個體來裝載 SSISDB，或您需要在不設定自我裝載 IR 的情況下存取內部部署資料，請將您的 Azure-SSIS IR 加入虛擬網路。 如需詳細資訊，請參閱[在虛擬網路中建立 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。
-    - 確認 SQL Database 的 [允許存取 Azure 服務] 設定已啟用。 如果您使用具有 IP 防火牆規則或虛擬網路服務端點的 SQL Database 或具有私人端點的 SQL 受控執行個體來裝載 SSISDB，則不適用此設定。 如需詳細資訊，請參閱[保護 Azure SQL Database](../azure-sql/database/secure-database-tutorial.md#create-firewall-rules)。 若要使用 PowerShell 來啟用此設定，請參閱 [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)。
-    - 在 SQL Database 的防火牆設定中，將用戶端電腦的 IP 位址或包括用戶端電腦 IP 位址的 IP 位址範圍新增至用戶端 IP 位址清單。 如需詳細資訊，請參閱[伺服器層級和資料庫層級防火牆規則](../azure-sql/database/firewall-configure.md)。
-    - 若要連線至 SQL Database 或 SQL 受控執行個體，您可以使用伺服器系統管理員認證來執行 SQL 驗證，或使用資料處理站的受控識別來執行 Azure Active Directory (Azure AD) 驗證。 針對 Azure AD 驗證，若要將資料處理站的受控識別新增到具有資料庫伺服器存取權的 Azure AD 群組，請參閱[使用 Azure AD 驗證建立 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。
-    - 確認 SQL Database 或 SQL 受控執行個體還沒有 SSISDB。 設定 Azure-SSIS IR 不支援使用現有的 SSISDB。
+- **Azure SQL Database 伺服器或受控執行個體 (選擇性)** 。 如果您還沒有資料庫伺服器，請在 Azure 入口網站中建立一個，然後再開始。 Data Factory 接著會在此資料庫伺服器上建立 SSISDB 執行個體。 
 
-- Azure PowerShell。 若要執行 PowerShell 指令碼來設定 Azure-SSIS IR，請遵循[安裝和設定 Azure PowerShell](/powershell/azure/install-Az-ps) 中的指示。
+  建議於整合執行階段所在的相同 Azure 區域中建立資料庫伺服器。 此設定可讓整合執行階段將執行記錄寫入 SSISDB，而不需要跨 Azure 區域。
+
+  請記住下列重點：
+
+  - 根據所選的資料庫伺服器，系統可以代表您將 SSISDB 執行個體建立為單一資料庫、建立為彈性集區的一部分，或建立在受控執行個體中。 該執行個體可以在公用網路中供您存取，而您也可以藉由加入虛擬網路來加以存取。 如需選擇適當資料庫伺服器類型來裝載 SSISDB 的指導方針，請參閱[比較 SQL Database 與 SQL 受控執行個體](create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance)。 
+  
+    如果您使用具有 IP 防火牆規則/虛擬網路服務端點的 Azure SQL Database 伺服器或具有私人端點的受控執行個體來裝載 SSISDB，或您需要在不設定自我裝載 IR 的情況下存取內部部署資料，則必須將 Azure-SSIS IR 加入虛擬網路。 如需詳細資訊，請參閱[在虛擬網路中建立 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。
+
+  - 確認資料庫伺服器的 [允許存取 Azure 服務] 設定已啟用。 如果您使用具有IP 防火牆規則/虛擬網路服務端點的 Azure SQL Database 伺服器或具有私人端點的受控執行個體來裝載 SSISDB，則不適用此設定。 如需詳細資訊，請參閱[保護 Azure SQL Database](../sql-database/sql-database-security-tutorial.md#create-firewall-rules)。 若要使用 PowerShell 來啟用此設定，請參閱 [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)。
+
+  - 新增用戶端電腦的 IP 位址，或新增 IP 位址範圍，其中包含資料庫伺服器之防火牆設定中用戶端電腦 IP 位址到用戶端 IP 位址清單。 如需詳細資訊，請參閱 [Azure SQL Database 伺服器層級和資料庫層級防火牆規則](../sql-database/sql-database-firewall-configure.md)
+
+  - 若要連線至資料庫伺服器，您可以使用 SQL 驗證搭配伺服器管理員認證，也可以使用 Azure AD 驗證搭配資料處理站的受控識別。 若為後者，您必須將資料處理站的受控識別新增至具有資料庫伺服器存取權限的 Azure AD 群組中。 如需詳細資訊，請參閱[使用 Azure AD 驗證來建立 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。
+
+  - 請確認您的資料庫伺服器尚未有 SSISDB 執行個體。 Azure-SSIS IR 的佈建不支援使用現有的 SSISDB 執行個體。
+
+- **Azure PowerShell**(英文)。 若要執行 PowerShell 指令碼來設定 Azure-SSIS IR，請遵循[安裝和設定 Azure PowerShell](/powershell/azure/install-Az-ps) 中的指示。
 
 > [!NOTE]
 > 如需目前有提供 Azure Data Factory 和 Azure-SSIS IR 的 Azure 區域清單，請參閱[各區域的 Azure Data Factory 和 Azure-SSIS IR 可用性](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all)。 
@@ -317,11 +326,11 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 ```
 
 > [!NOTE]
-> 若不包含任何自訂的安裝時間，此程序應該會在五分鐘內完成。
+> 若不包含任何自訂的設定時間，此程序應該會在 5 分鐘內完成。
 >
-> 如果您使用 SSISDB，Azure Data Factory 服務將會連線到資料庫伺服器來準備 SSISDB。 
+> 如果您使用 SSISDB，Data Factory 服務將會連線到資料庫伺服器來準備 SSISDB。 
 > 
-> 當您設定 Azure-SSIS IR 時，也會安裝 Access 可轉散發套件和適用於 SSIS 的 Azure Feature Pack。 除了內建元件已支援的資料來源，這些元件還提供對 Excel/Access 檔案及各種 Azure 資料來源的連線能力。 您也可以安裝其他元件，請參閱 [Azure-SSIS IR 的自訂安裝](how-to-configure-azure-ssis-ir-custom-setup.md)。
+> 當您佈建 Azure-SSIS IR 時，也會安裝 Access 可轉散發套件和適用於 SSIS 的 Azure Feature Pack。 除了內建元件已支援的資料來源外，這些元件還可讓您連線到 Excel 檔案、Access 檔案及各種 Azure 資料來源。 如需內建/預先安裝元件的詳細資訊，請參閱 [Azure-SSIS IR 上的內建/預先安裝元件](https://docs.microsoft.com/azure/data-factory/built-in-preinstalled-components-ssis-integration-runtime) \(英文\)。 如需其他可安裝元件的詳細資訊，請參閱 [Azure-SSIS IR 的自訂設定](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup) \(部分機器翻譯\)。
 
 ## <a name="full-script"></a>完整指令碼
 
@@ -540,11 +549,17 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 
 ## <a name="deploy-ssis-packages"></a>部署 SSIS 套件
 
-如果您使用 SSISDB，則可使用透過其伺服器端點連線到您資料庫伺服器的 SQL Server Data Tools (SSDT) 或 SQL Server Management Studio (SSMS) 工具，將套件部署到 SSISDB 中，並在 Azure-SSIS IR 上執行套件。 針對 SQL Database 或具有公用端點的 SQL 受控執行個體，伺服器端點的格式分別是 *<server name>.database.windows.net* 與 *<server name>.public.<dns prefix>.database.windows.net,3342*。 
+如果您使用 SSISDB，則可以使用已針對 Azure 啟用的 SSDT 或 SSMS 工具，將套件部署到 SSISDB 中，並在 Azure-SSIS IR 上執行套件。 這些工具在連線至資料庫伺服器時會透過其伺服器端點來進行： 
 
-如果您不是使用 SSISDB，您可以使用 `dtinstall`/`dtutil`/`dtexec` 命令列公用程式，將套件部署到檔案系統、檔案共用或 Azure 檔案儲存體，並在 Azure-SSIS IR 上執行這些套件。 如需詳細資訊，請參閱[部署 SSIS 套件](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server)。 
+- 針對 Azure SQL Database 伺服器，伺服器端點的格式為 `<server name>.database.windows.net`。
+- 針對具有私人端點的受控執行個體，伺服器端點的格式為 `<server name>.<dns prefix>.database.windows.net`。
+- 針對具有公用端點的受控執行個體，伺服器端點的格式為 `<server name>.public.<dns prefix>.database.windows.net,3342`。 
 
-在這兩種狀況中，您也可以使用 Azure Data Factory 管線中的「執行 SSIS 套件」活動，在 Azure-SSIS IR 上執行已部署的套件。 如需詳細資訊，請參閱[以第一級 Azure Data Factory 活動的形式來叫用 SSIS 套件執行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)。
+如果您不使用 SSISDB，則可以將套件部署到 Azure SQL 受控執行個體所裝載的檔案系統、Azure 檔案儲存體或 MSDB 中，然後使用 [dtutil](https://docs.microsoft.com/sql/integration-services/dtutil-utility?view=sql-server-2017) 和 [AzureDTExec](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-azure-enabled-dtexec) 命令列公用程式，在 Azure-SSIS IR 上加以執行。 
+
+如需詳細資訊，請參閱[部署 SSIS 專案/套件](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-ver15)。
+
+在這兩種狀況中，您也可以使用 Data Factory 管線中的「執行 SSIS 套件」活動，在 Azure-SSIS IR 上執行已部署的套件。 如需詳細資訊，請參閱[以第一級 Data Factory 活動的形式來叫用 SSIS 套件執行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)。
 
 如需更多 SSIS 文件，請參閱： 
 

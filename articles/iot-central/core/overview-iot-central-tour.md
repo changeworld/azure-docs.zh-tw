@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: b905b1e86810b25c4c94072d6cd414b993e2a883
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1792f158ac59e2b80a037621be2c2ce2556e1097
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77425975"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799780"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>開始導覽 Azure IoT 中心 UI
 
@@ -26,9 +26,9 @@ ms.locfileid: "77425975"
 
 * 定義可連線到您的解決方案的裝置類型。
 * 為您的裝置設定規則和動作。 
-* 為使用您的解決方案的「操作員」  自訂 UI。
+* 為使用您的解決方案的「操作員」自訂 UI。
 
-「操作員」  可使用 Azure IoT 中心 UI 來管理 Azure IoT 中心解決方案。 您可以使用 UI：
+「操作員」可使用 Azure IoT 中心 UI 來管理 Azure IoT 中心解決方案。 您可以使用 UI：
 
 * 監視您的裝置。
 * 設定您的裝置。
@@ -100,10 +100,10 @@ ms.locfileid: "77425975"
 > [!div class="mx-imgBorder"]
 > ![工具列](media/overview-iot-central-tour/toolbar-pnp.png)
 
-* 若要搜尋裝置範本與裝置，請輸入 [搜尋]  值。
-* 若要變更 UI 語言或佈景主題，請選擇 [語言]  圖示。 深入了解如何[管理您的應用程式喜好設定](howto-manage-preferences.md)
-* 若要登出應用程式，請選擇 [帳戶]  圖示。
-* 若要取得說明及支援，請選擇 [說明]  下拉式功能表以取得資源清單。 在免費定價方案的應用程式中，支援資源包括[即時聊天](howto-show-hide-chat.md)的存取權。
+* 若要搜尋裝置範本與裝置，請輸入 [搜尋] 值。
+* 若要變更 UI 語言或佈景主題，請選擇 [語言] 圖示。 深入了解如何[管理您的應用程式喜好設定](howto-manage-preferences.md)
+* 若要登出應用程式，請選擇 [帳戶] 圖示。
+* 若要取得說明及支援，請選擇 [說明] 下拉式功能表以取得資源清單。 您可以從＜**關於您的應用程式**＞連結中[取得應用程式的相關資訊](./howto-get-app-info.md)。 在免費定價方案的應用程式中，支援資源包括[即時聊天](howto-show-hide-chat.md)的存取權。
 
 您可以為 UI 選擇淺色佈景主題或深色調佈景主題：
 

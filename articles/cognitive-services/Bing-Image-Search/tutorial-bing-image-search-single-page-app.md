@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 9227417d28eb09a322dd4757033ee62fee97d91c
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 6a88ca1f028efcb3b9614df532b6d2dcc9dcfac8
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78943896"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800899"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>教學課程：使用 Bing 影像搜尋 API 來建立單頁應用程式
 
@@ -31,7 +31,7 @@ ms.locfileid: "78943896"
 
 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Image-Search) 上有此教學課程的完整原始程式碼。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 最新版的 [Node.js](https://nodejs.org/)。
 * 適用於 Node.js 的 [Express.js](https://expressjs.com/) 架構。 GitHub 範例讀我檔案中會提供原始程式碼的安裝指示。
@@ -390,15 +390,18 @@ searchItemRenderers = {
 
 您可以輕鬆安裝 CORS Proxy，讓我們的教學課程應用程式存取用戶端識別碼標頭。 首先，請[安裝 Node.js](https://nodejs.org/en/download/) (若尚未安裝)。 然後在命令視窗中發出下列命令：
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-接下來，將 HTML 檔案中的 Bing Web 搜尋端點變更為：
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+接下來，將 HTML 檔案中的 Bing Web 搜尋端點變更為：\
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 最後，使用下列命令啟動 CORS Proxy：
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 當您使用教學課程應用程式時，請保持開啟命令視窗；關閉視窗會停止 Proxy。 在可展開的 [HTTP 標頭] 區段搜尋結果下，您現在可以看到 `X-MSEdge-ClientID` 標頭 (及其他標頭)，並確認每個要求的此標頭都相同。
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 03fe40cea5891e87f42f0d6a50eedee80a68f25e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: efcc5e8f629c8b6ccc903478473b54989c0e9fd6
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200528"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959440"
 ---
 ::: zone target="docs"
 
@@ -35,18 +35,18 @@ ms.locfileid: "83200528"
 在本教學課程中，您將了解如下所列的主題：
 
 > [!div class="checklist"]
-> * Prerequisites
+> * 必要條件
 > * 準備寄送
 > * 將資料箱寄送給 Microsoft
 > * 確認資料上傳至 Azure
 > * 清除資料箱的資料
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在您開始前，請確定：
 
 - 您已完成[教學課程：將資料複製到 Azure 資料箱並確認](data-box-deploy-copy-data.md)。 
-- 複製作業已完成。 如果複製作業正在進行，則無法執行寄送準備。
+- 複製作業已完成，且 [連線並複製] 頁面上沒有任何錯誤。 如果複製作業正在進行中，或 [連線並複製] 頁面中有錯誤，則寄送準備將無法執行。
 
 ## <a name="prepare-to-ship"></a>準備寄送
 
@@ -62,7 +62,7 @@ ms.locfileid: "83200528"
 
 在您準備寄送之前，請確定複製作業已完成。
 
-1. 前往本機 Web UI 中的 [準備寄送]  頁面，並開始準備寄送。 
+1. 前往本機 Web UI 中的 [準備寄送] 頁面，並開始準備寄送。 
 2. 從本機 Web UI 關閉裝置。 從裝置移除纜線。 
 
 後續步驟則取決於您退回裝置的地點。
@@ -73,7 +73,7 @@ ms.locfileid: "83200528"
 
 ## <a name="ship-data-box-back"></a>寄回資料箱
 
-確保裝置的資料副本完整且 [準備寄送]  執行成功。 根據您寄送裝置的區域，程序會有所不同。
+確保裝置的資料副本完整且 [準備寄送] 執行成功。 根據您寄送裝置的區域，程序會有所不同。
 
 ::: zone-end
 
@@ -83,7 +83,7 @@ ms.locfileid: "83200528"
 
 1. 確定裝置的電源已關閉，然後移除纜線。 
 2. 纏繞裝置隨附的電源線，並將其安全地放在裝置背後。
-3. 請確定出貨標籤已顯示在電子筆墨顯示器上，並安排貨運業者取貨。 如果標籤損毀、遺失或未顯示在電子筆墨顯示器上，請與 Microsoft 支援服務連絡。 若支援人員提出建議，則您可以前往 Azure 入口網站中的 [概觀] > [下載出貨標籤]  。 下載出貨標籤並貼在裝置上。 
+3. 請確定出貨標籤已顯示在電子筆墨顯示器上，並安排貨運業者取貨。 如果標籤損毀、遺失或未顯示在電子筆墨顯示器上，請與 Microsoft 支援服務連絡。 若支援人員提出建議，則您可以前往 Azure 入口網站中的 [概觀] > [下載出貨標籤]。 下載出貨標籤並貼在裝置上。 
 4. 如果要送回裝置，請安排由 UPS 取貨。 若要排定取貨時間：
 
     - 致電給當地的 UPS (國家/地區特定的免付費電話號碼)。
@@ -91,7 +91,7 @@ ms.locfileid: "83200528"
     - 若未提供追蹤號碼，UPS 將在取貨期間要求您支付額外的費用。
 
     除了排定取貨時間，您也可以在最接近的托運地點托運該資料箱。
-4. 一旦貨運業者收取資料箱並進行掃描，入口網站的訂單狀態會更新為 [已取貨]  。 此外，也會顯示追蹤識別碼。
+4. 一旦貨運業者收取資料箱並進行掃描，入口網站的訂單狀態會更新為 [已取貨]。 此外，也會顯示追蹤識別碼。
 
 ::: zone target="chromeless"
 
@@ -120,7 +120,7 @@ ms.locfileid: "83200528"
 
 
 1. 保留用來寄送裝置以供退貨的原始外盒。
-2. 確保裝置的資料副本完整且 [準備寄送]  執行成功。
+2. 確保裝置的資料副本完整且 [準備寄送] 執行成功。
 3. 關閉裝置電源並移除纜線。
 4. 纏繞裝置隨附的電源線，並將其安全地放在裝置背後。
 5. 透過 [DHL 連結](https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference)線上預約取貨服務。

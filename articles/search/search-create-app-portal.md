@@ -1,23 +1,25 @@
 ---
-title: 在 Azure 入口網站中建立搜尋應用程式
+title: 在 Azure 入口網站中建立示範應用程式
 titleSuffix: Azure Cognitive Search
-description: 執行「建立應用程式 (預覽)」精靈，可為運作的 Web 應用程式產生 HTML 頁面和指令碼。 此頁面包含搜尋列、結果區域、提要欄位和自動提示支援。
+description: 執行「建立示範應用程式 (預覽)」精靈，為運作的 Web 應用程式產生 HTML 頁面和指令碼。 此頁面包含搜尋列、結果區域、提要欄位和自動提示支援。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 6c956c937027b16d51141ded4de5ff9b019c37d4
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.date: 07/01/2020
+ms.openlocfilehash: 11dd12fce669d6b6a027eb182d5f9e6e493577ad
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488166"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955687"
 ---
-# <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>快速入門：在入口網站中建立搜尋應用程式 (Azure 認知搜尋)
+# <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>快速入門：在入口網站中建立示範應用程式 (Azure 認知搜尋)
 
-使用 Azure 入口網站的 [建立搜尋應用程式] 精靈來產生會在瀏覽器中執行的可下載 "localhost" 樣式 Web 應用程式。 根據其設定，所產生的應用程式會在第一次使用時運作，並即時連線至遠端索引。 預設應用程式可包含搜尋列、結果區域、提要欄位篩選和自動提示支援。
+使用 Azure 入口網站的 [建立示範應用程式] 精靈來產生會在瀏覽器中執行的可下載 "localhost" 樣式 Web 應用程式。 根據其設定，所產生的應用程式會在第一次使用時運作，並與遠端索引建立即時的唯讀連線。 預設應用程式可包含搜尋列、結果區域、提要欄位篩選和自動提示支援。
+
+示範應用程式可協助您在用戶端應用程式中視覺化索引的運作方式，但不適合用於生產環境。 用戶端應用程式應包含安全性、錯誤處理和裝載邏輯，所產生的 HTML 頁面不會提供這些項目。 當您準備好要建立用戶端應用程式時，請參閱[使用 .NET SDK 建立您的第一個搜尋應用程式](tutorial-csharp-create-first-app.md)，以進行後續步驟。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -25,7 +27,7 @@ ms.locfileid: "84488166"
 
 + 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/)。
 
-+ Azure 認知搜尋服務。 在目前的訂用帳戶下，[建立服務](search-create-service-portal.md)或[尋找現有的服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 您可以使用本快速入門的免費服務。 
++ Azure 認知搜尋服務。 在目前的訂閱下，[建立服務](search-create-service-portal.md) 或 [尋找現有的服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 您可以使用本快速入門的免費服務。 
 
 + [Microsoft Edge (最新版本)](https://www.microsoft.com/edge) 或 Google Chrome。
 
@@ -45,7 +47,7 @@ ms.locfileid: "84488166"
 
 1. 從現有索引的清單中選擇 [realestate-us-sample-index]。
 
-1. 在索引頁面頂端，選取 [建立搜尋應用程式 (預覽)] 以啟動精靈。
+1. 在索引頁面頂端，選取 [建立示範應用程式 (預覽)] 以啟動精靈。
 
 1. 在第一個精靈頁面上，選取 [啟用跨原始來源資源共用 (CORS)] 以將 CORS 支援新增至索引定義。 這是選擇性步驟，但如果沒有此支援，本機 Web 應用程式就不會連線至遠端索引。
 
@@ -85,7 +87,7 @@ ms.locfileid: "84488166"
 
 ## <a name="create-download-and-execute"></a>建立、下載和執行
 
-1. 選取 [建立搜尋應用程式] 來產生 HTML 檔案。
+1. 選取 [建立示範應用程式] 來產生 HTML 檔案。
 
 1. 出現提示時，選取 [下載應用程式] 來下載檔案。
 

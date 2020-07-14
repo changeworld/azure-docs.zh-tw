@@ -5,16 +5,16 @@ services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2c470483cee8b621475fa70dd09c80aa126173be
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 43f0dfa5fd413d201eb8c63aa752a6fd8db68f6c
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609143"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85807871"
 ---
 # <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure Synapse Analytics (工作區預覽) 常見問題集
 
@@ -48,6 +48,10 @@ A：Azure Synapse 具有下列功能：
 A：Azure Synapse 分析是 Azure SQL 資料倉儲進入分析平台的演進，其中包含作為資料倉儲解決方案的 SQL 集區。 此平台結合資料探索、擷取、轉換、準備和服務分析層。
 
 ## <a name="use-cases"></a>使用案例
+
+### <a name="q-how-do-i-rename-a-published-artifact-dataset-notebook-sql-script-and-so-on-in-azure-synapse"></a>問：如何在 Azure Synapse 中重新命名已發佈的成品 (資料集、筆記本和 SQL 指令碼等)？
+
+A：若要重新命名已發佈的成品檔案，請先複製檔案，並將新的檔案重新命名為您偏好的名稱。 您必須手動將成品的所有參考更新為新的檔案名稱，並刪除舊的名稱。
 
 ### <a name="q-what-is-a-good-use-case-for-synapse-sql-pool"></a>問：對 Synapse SQL 集區而言，什麼是良好的使用案例
 

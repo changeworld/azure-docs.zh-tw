@@ -1,14 +1,14 @@
 ---
 title: Azure Resource Graph 概觀
 description: 了解 Azure Resource Graph 服務如何能夠在訂用帳戶和租用戶之間，大規模地進行複雜的資源查詢。
-ms.date: 03/02/2020
+ms.date: 06/29/2020
 ms.topic: overview
-ms.openlocfilehash: a084215f6f2d1b5a8ed34ca59266e1c0087f608b
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 9c15ff12f21c1d3d168828eae67de51069cdcada
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167259"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970598"
 ---
 # <a name="what-is-azure-resource-graph"></a>什麼是 Azure Resource Graph？
 
@@ -29,7 +29,7 @@ Azure Resource Graph 是 Azure 中的一項服務，透過大規模查詢指定�
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Resource Graph 輔助 Resource Manager 的方式
 
-Azure Resource Manager 目前支援查詢基本資源欄位 (尤其是資源名稱、識別碼、類型、資源群組、訂用帳戶及位置)。 Resource Manager 也提供呼叫個別資源提供者的功能，可一次取得一個資源的詳細屬性。
+Resource Manager 目前支援查詢基本資源欄位 (尤其是資源名稱、識別碼、類型、資源群組、訂用帳戶及位置)。 Resource Manager 也提供呼叫個別資源提供者的功能，可一次取得一個資源的詳細屬性。
 
 使用 Azure Resource Graph，您可以存取這些由資源提供者傳回的屬性，而無須對每個資源提供者進行個別呼叫。 如需支援的資源類型清單，請參閱[資料表和資源類型參考](./reference/supported-tables-resources.md)。 另一種查看所支援資源類型的方法是透過 [Azure Resource Graph Explorer 結構描述瀏覽器](./first-query-portal.md#schema-browser)。
 
@@ -52,8 +52,7 @@ Resource Graph 接著會更新其資料庫。 Resource Graph 也會執行標準�
 
 請務必了解，Azure Resource Graph 的查詢語言是以 Azure 資料總管所使用的 [Kusto 查詢語言](/azure/data-explorer/data-explorer-overview)為基礎的。
 
-首先，如需可搭配 Azure Resource Graph 使用的作業及函式詳細資料，請參閱 [Resource Graph 查詢語言](./concepts/query-language.md)。
-若要瀏覽資源，請參閱[探索資源](./concepts/explore-resources.md)。
+首先，如需可搭配 Azure Resource Graph 使用的作業及函式詳細資料，請參閱 [Resource Graph 查詢語言](./concepts/query-language.md)。 若要瀏覽資源，請參閱[探索資源](./concepts/explore-resources.md)。
 
 ## <a name="permissions-in-azure-resource-graph"></a>Azure Resource Graph 中的權限
 
@@ -62,8 +61,7 @@ Resource Graph 接著會更新其資料庫。 Resource Graph 也會執行標準�
 > [!NOTE]
 > Resource Graph 會使用主體在登入期間可使用的訂用帳戶。 若要查看作用中工作階段期間加入的新訂用帳戶資源，主體必須重新整理內容。 若登出後再登入，則此動作會自動執行。
 
-Azure CLI 和 Azure PowerShell 會使用使用者可存取的訂用帳戶。 直接使用 REST API 時，訂用帳戶清單會由使用者提供。 如果使用者可存取清單中的任何訂用帳戶，則系統會傳回使用者可存取訂用帳戶的查詢結果。 這種行為與呼叫[資源群組 - 清單](/rest/api/resources/resourcegroups/list)時相同 \- 您會取得您可以存取的資源群組，而且沒有任何跡象表明結果可能是部分的。
-如果使用者具有適當權限的訂用帳戶清單中沒有任何訂用帳戶，則回應為 403 (禁止)。
+Azure CLI 和 Azure PowerShell 會使用使用者可存取的訂用帳戶。 直接使用 REST API 時，訂用帳戶清單會由使用者提供。 如果使用者可存取清單中的任何訂用帳戶，則系統會傳回使用者可存取訂用帳戶的查詢結果。 這種行為與呼叫[資源群組 - 清單](/rest/api/resources/resourcegroups/list)時相同 \- 您會取得您可以存取的資源群組，而且沒有任何跡象表明結果可能是部分的。 如果使用者具有適當權限的訂用帳戶清單中沒有任何訂用帳戶，則回應為 403 (禁止)。
 
 ## <a name="throttling"></a>節流
 

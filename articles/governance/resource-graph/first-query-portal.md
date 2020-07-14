@@ -3,12 +3,12 @@ title: 快速入門：您的第一個入口網站查詢
 description: 遵循此快速入門中的步驟，以使用 Azure Resource Graph Explorer 從 Azure 入口網站執行您的第一個查詢。
 ms.date: 05/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: a4b8e0b792dfda1bbd1866444ddc6c4ec8d289b6
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: 1e506ee1b1c610381f300323f80c38eb6bf67caa
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148033"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958802"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>快速入門：使用 Azure Resource Graph Explorer 執行您的第一個 Resource Graph 查詢
 
@@ -16,7 +16,7 @@ Azure Resource Graph 的功能可直接透過 Azure Resource Graph Explorer 在 
 
 在本快速入門結束時，您將會使用過 Azure 入口網站和 Resource Graph Explorer 來執行您的第一個 Resource Graph 查詢，並將結果釘選到儀表板。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -90,11 +90,11 @@ Azure Resource Graph 的功能可直接透過 Azure Resource Graph Explorer 在 
 
 - [Resource Graph Explorer - 儀表板範例 #1](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-1/resourcegraphexplorer-sample-1.json)
 
-  [![儀表板範例的影像範例 #1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
+  :::image type="content" source="./media/arge-sample1-small.png" alt-text="儀表板範例的影像範例 #1" lightbox="./media/arge-sample1-large.png":::
 
 - [Resource Graph Explorer - 儀表板範例 #2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
 
-  [![儀表板範例的影像範例 #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
+  :::image type="content" source="./media/arge-sample2-small.png" alt-text="儀表板範例的影像範例 #2" lightbox="./media/arge-sample2-large.png":::
 
 > [!NOTE]
 > 上述儀表板範例螢幕擷取畫面中的計數和圖表會隨著 Azure 環境而有所不同。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 457ab3a0d5e816becbd2b32d858d5172951f27ad
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9ab66dc7bc2aea249e105df20652c0f5904e294d
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67094128"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800231"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>教學課程：Azure Active Directory 與 Predictix Ordering 整合
 
@@ -35,7 +35,7 @@ ms.locfileid: "67094128"
 
 如果您沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要設定 Azure AD 與 Predictix Ordering 的整合，您必須具備：
 
@@ -52,19 +52,19 @@ ms.locfileid: "67094128"
 
 若要進行將 Predictix Ordering 整合到 Azure AD 中的設定，您必須從資源庫將 Predictix Ordering 新增至受控 SaaS 應用程式清單。
 
-1. 在 [Azure 入口網站](https://portal.azure.com)的左窗格中，選取 [Azure Active Directory]  ：
+1. 在 [Azure 入口網站](https://portal.azure.com)的左窗格中，選取 [Azure Active Directory]：
 
     ![選取 Azure Active Directory](common/select-azuread.png)
 
-2. 移至 [企業應用程式]   > [所有應用程式]  ：
+2. 移至 [企業應用程式] > [所有應用程式]：
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-3. 若要新增應用程式，請選取視窗頂端的 [新增應用程式]  ：
+3. 若要新增應用程式，請選取視窗頂端的 [新增應用程式]：
 
     ![選取 [新增應用程式]](common/add-new-app.png)
 
-4. 在 [搜尋] 方塊中，輸入 **Predictix Ordering**。 在搜尋結果中選取 [Predictix Ordering]  ，然後選取 [新增]  。
+4. 在 [搜尋] 方塊中，輸入 **Predictix Ordering**。 在搜尋結果中選取 [Predictix Ordering]，然後選取 [新增]。
 
      ![搜尋結果](common/search-new-app.png)
 
@@ -88,42 +88,41 @@ ms.locfileid: "67094128"
 
 若要設定與 Predictix Ordering 搭配運作的 Azure AD 單一登入，請執行下列步驟：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Predictix Ordering]  應用程式整合頁面上，選取 [單一登入]  ：
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Predictix Ordering] 應用程式整合頁面上，選取 [單一登入]：
 
     ![選取單一登入](common/select-sso.png)
 
-2. 在 [選取單一登入方法]  對話方塊中，選取 [SAML/WS-Fed]  模式以啟用單一登入：
+2. 在 [選取單一登入方法] 對話方塊中，選取 [SAML/WS-Fed] 模式以啟用單一登入：
 
     ![選取單一登入方法](common/select-saml-option.png)
 
-3. 在 [以 SAML 設定單一登入]  頁面上選取 [編輯]  圖示，以開啟 [基本 SAML 組態]  對話方塊：
+3. 在 [以 SAML 設定單一登入] 頁面上選取 [編輯] 圖示，以開啟 [基本 SAML 組態] 對話方塊：
 
     ![編輯圖示](common/edit-urls.png)
 
-4. 在 [基本 SAML 組態]  對話方塊中，完成下列步驟。
+4. 在 [基本 SAML 組態] 對話方塊中，完成下列步驟。
 
     ![[基本 SAML 組態] 對話方塊](common/sp-identifier.png)
 
-    1. 在 [登入 URL]  方塊中，輸入以下模式的 URL：
+    1. 在 [登入 URL] 方塊中，輸入以下模式的 URL：
 
        `https://<companyname-pricing>.ordering.predictix.com/sso/request`
 
-    1. 在 [識別碼 (實體識別碼)]  方塊中，輸入以下模式的 URL：
+    1. 在 [識別碼 (實體識別碼)] 方塊中，輸入以下模式的 URL：
 
-        | |
-        |--|
-        | `https://<companyname-pricing>.dev.ordering.predictix.com` |
-        | `https://<companyname-pricing>.ordering.predictix.com` |
-        | |
+        ```https
+        https://<companyname-pricing>.dev.ordering.predictix.com
+        https://<companyname-pricing>.ordering.predictix.com
+        ```
 
     > [!NOTE]
-    > 這些值都是預留位置。 您需要使用實際的登入 URL 和識別碼。 請連絡 [Predictix Ordering 支援小組](https://www.predix.io/support/)以取得此值。 您也可以參考 Azure 入口網站中的 [基本 SAML 組態]  對話方塊所顯示的模式。
+    > 這些值都是預留位置。 您需要使用實際的登入 URL 和識別碼。 請連絡 [Predictix Ordering 支援小組](https://www.predix.io/support/)以取得此值。 您也可以參考 Azure 入口網站中的 [基本 SAML 組態] 對話方塊所顯示的模式。
 
 5. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，依據您的需求選取 [憑證 (Base64)] 旁邊的 [下載] 連結，並將憑證儲存在您的電腦上：
 
     ![憑證下載連結](common/certificatebase64.png)
 
-6. 在 [設定 Predictix Ordering]  區段中，依據您的需求複製適當的 URL：
+6. 在 [設定 Predictix Ordering] 區段中，依據您的需求複製適當的 URL：
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -141,39 +140,39 @@ ms.locfileid: "67094128"
 
 在本節中，您會在 Azure 入口網站中建立名為 Britta Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  ：
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]：
 
     ![選取 [所有使用者]](common/users.png)
 
-2. 在畫面頂端選取 [新增使用者]  ：
+2. 在畫面頂端選取 [新增使用者]：
 
     ![選取 [新增使用者]](common/new-user.png)
 
-3. 在 [使用者]  對話方塊中，執行下列步驟。
+3. 在 [使用者] 對話方塊中，執行下列步驟。
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    1. 在 [名稱]  方塊中，輸入 **BrittaSimon**。
+    1. 在 [名稱] 方塊中，輸入 **BrittaSimon**。
   
-    1. 在 [使用者名稱]  方塊中，輸入 **BrittaSimon@\<yourcompanydomain>.\<extension>** 。 (例如，BrittaSimon@contoso.com)。
+    1. 在 [使用者名稱] 方塊中，輸入 **BrittaSimon@\<yourcompanydomain>.\<extension>** 。 (例如，BrittaSimon@contoso.com)。
 
-    1. 選取 [顯示密碼]  ，然後記下 [密碼]  方塊中的值。
+    1. 選取 [顯示密碼]，然後記下 [密碼] 方塊中的值。
 
-    1. 選取 [建立]  。
+    1. 選取 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 Predictix Ordering 的存取權授與 Britta Simon，讓她能夠使用 Azure AD 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]  、[所有應用程式]  及 [Predictix Ordering]  ：
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]、[所有應用程式] 及 [Predictix Ordering]：
 
     ![企業應用程式](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [Predictix Ordering]  。
+2. 在應用程式清單中，選取 [Predictix Ordering]。
 
     ![應用程式清單](common/all-applications.png)
 
-3. 在左窗格中，選取 [使用者和群組]  ：
+3. 在左窗格中，選取 [使用者和群組]：
 
     ![選取 [使用者和群組]](common/users-groups-blade.png)
 
@@ -181,11 +180,11 @@ ms.locfileid: "67094128"
 
     ![選取 [新增使用者]](common/add-assign-user.png)
 
-5. 在 [使用者和群組]  對話方塊的 [使用者] 清單中，選取 [Britta Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
+5. 在 [使用者和群組] 對話方塊的 [使用者] 清單中，選取 [Britta Simon]，然後按一下畫面底部的 [選取] 按鈕。
 
-6. 如果您在 SAML 判斷提示中需要角色值，請在 [選取角色]  對話方塊的清單中選取適當的使用者角色。 按一下畫面底部的 [選取]  按鈕。
+6. 如果您在 SAML 判斷提示中需要角色值，請在 [選取角色] 對話方塊的清單中選取適當的使用者角色。 按一下畫面底部的 [選取] 按鈕。
 
-7. 在 [新增指派]  對話方塊中，選取 [指派]  。
+7. 在 [新增指派] 對話方塊中，選取 [指派]。
 
 ### <a name="create-a-predictix-ordering-test-user"></a>建立 Predictix Ordering 測試使用者
 

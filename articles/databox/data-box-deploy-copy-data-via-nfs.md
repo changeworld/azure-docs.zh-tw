@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 06/25/2019
+ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 81732f13b85a7c0b514aad61c40802f4547957c2
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 2b5789acfbb088ca8dbeb731b1ce7748041233cb
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219134"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960502"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>教學課程：透過 NFS 將資料複製到 Azure 資料箱
 
@@ -48,7 +48,7 @@ ms.locfileid: "84219134"
 
 下表顯示您資料箱上的共用 UNC 路徑，以及用於上傳資料的 Azure 儲存體路徑 URL。 最終的 Azure 儲存體路徑 URL 可以衍生自 UNC 共用路徑。
  
-|                   |                                                            |
+| Azure 儲存體類型| 資料箱共用                                       |
 |-------------------|--------------------------------------------------------------------------------|
 | Azure 區塊 Blob | <li>共用的 UNC 路徑：`//<DeviceIPAddress>/<StorageAccountName_BlockBlob>/<ContainerName>/files/a.txt`</li><li>Azure 儲存體 URL：`https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
 | Azure 分頁 Blob  | <li>共用的 UNC 路徑：`//<DeviceIPAddres>/<StorageAccountName_PageBlob>/<ContainerName>/files/a.txt`</li><li>Azure 儲存體 URL：`https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
@@ -58,7 +58,7 @@ ms.locfileid: "84219134"
 
 1. 針對允許存取共用的用戶端提供其 IP 位址。 在本機 Web UI 中，移至 [連線並複製] 頁面。 在 [NFS 設定] 下方，按一下 [NFS 用戶端存取]。 
 
-    ![設定 NFS 用戶端存取 1](media/data-box-deploy-copy-data/nfs-client-access.png)
+    ![設定 NFS 用戶端存取 1](media/data-box-deploy-copy-data/nfs-client-access-1.png)
 
 2. 提供 NFS 用戶端的 IP 位址，然後按一下 [新增]。 您可以重複此步驟，以設定多個 NFS 用戶端的存取。 按一下 [確定]。
 
@@ -139,7 +139,19 @@ ms.locfileid: "84219134"
 > [!IMPORTANT]
 > 不支援下列 Linux 檔案類型：符號連結、字元檔案、區塊檔案、通訊端和管線。 這些檔案類型會導致在**準備寄送**步驟期間發生失敗。
 
-開啟目標資料夾，以檢視並確認已複製的檔案。 如果您在複製程序期間遇到任何錯誤，請下載錯誤檔以進行疑難排解。 如需詳細資訊，請參閱[在資料複製到資料箱期間檢視錯誤記錄](data-box-logs.md#view-error-log-during-data-copy)。 如需資料複製期間的詳細錯誤清單，請參閱[針對資料箱問題進行疑難排解](data-box-troubleshoot.md)。
+在複製程序期間如果發生任何錯誤，您會看到通知。
+
+![下載及檢視 [連線並複製] 頁面上的錯誤](media/data-box-deploy-copy-data/view-errors-1.png)
+
+選取 [下載問題清單]。
+
+![下載及檢視 [連線並複製] 頁面上的錯誤](media/data-box-deploy-copy-data/view-errors-2.png)
+
+開啟清單以檢視錯誤的詳細資料，並選取 [解析 URL] 以檢視建議的解決方法。
+
+![下載及檢視 [連線並複製] 頁面上的錯誤](media/data-box-deploy-copy-data/view-errors-3.png)
+
+如需詳細資訊，請參閱[在資料複製到資料箱期間檢視錯誤記錄](data-box-logs.md#view-error-log-during-data-copy)。 如需資料複製期間的詳細錯誤清單，請參閱[針對資料箱問題進行疑難排解](data-box-troubleshoot.md)。
 
 為了確保資料完整性，在複製資料時會計算內嵌的總和檢查碼。 複製完成後，請確認您的裝置上已使用的空間和可用空間。
 

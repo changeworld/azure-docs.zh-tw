@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: banders
-ms.openlocfilehash: 718365119b8cdf9279dcabc5f8c54deb386e8500
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 609ca56419ed14f3cf4e449e9b906a75a4ff20ab
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019036"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85807776"
 ---
 # <a name="buy-a-reservation"></a>購買保留項目
 
@@ -22,7 +22,7 @@ Azure 保留可協助您藉由承諾多項 Azure 資源一年或三年期的方�
 
 若要購買方案，您必須具備 Enterprise (MS-AZR-0017P 或 MS-AZR-0148P) 或隨用隨付訂用帳戶 (MS-AZR-0003P 或 MS-AZR-0023P) 或 Microsoft 客戶合約訂用帳戶的訂用帳戶擁有者角色。 雲端解決方案提供者可使用 Azure 入口網站或 [合作夥伴中心](/partner-center/azure-reservations) 來購買 Azure 保留。
 
-Enterprise 合約 (EA) 客戶可藉由在 EA 入口網站中停用 [新增保留執行個體]  選項，以限制對 EA 管理員的購買。 EA 管理員必須是至少一個 EA 訂用帳戶的訂用帳戶擁有者，才能購買保留。 當企業想要讓中央小組購買不同成本中心的保留時，此選項非常有用。 購買之後，中央小組可以將成本中心擁有者新增至保留。 然後，擁有者可以將保留範圍設定為其訂用帳戶。 中央小組不需要擁有購買保留之處的訂用帳戶擁有者存取權。
+Enterprise 合約 (EA) 客戶可藉由在 EA 入口網站中停用 [新增保留執行個體] 選項，以限制對 EA 管理員的購買。 EA 管理員必須是至少一個 EA 訂用帳戶的訂用帳戶擁有者，才能購買保留。 當企業想要讓中央小組購買不同成本中心的保留時，此選項非常有用。 購買之後，中央小組可以將成本中心擁有者新增至保留。 然後，擁有者可以將保留範圍設定為其訂用帳戶。 中央小組不需要擁有購買保留之處的訂用帳戶擁有者存取權。
 
 保留折扣僅適用於與透過 Enterprise、雲端解決方案提供者 (CSP)、Microsoft 客戶合約購買的訂用帳戶相關聯的資源，以及採用隨用隨付費率的個別方案。
 
@@ -44,7 +44,7 @@ Enterprise 合約 (EA) 客戶可藉由在 EA 入口網站中停用 [新增保留
 2. 單一範圍保留
 3. 共用範圍保留
 
-您一律可以在購買保留之後變更範圍。 若要這麼做，請移至保留，按一下 [設定]  ，然後重新設定保留範圍。 重新設定保留範圍不算是商業交易。 您的保留期限不會變更。 如需有關更新範圍的詳細資訊，請參閱[在購買保留後更新範圍](manage-reserved-vm-instance.md#change-the-reservation-scope)。
+您一律可以在購買保留之後變更範圍。 若要這麼做，請移至保留，按一下 [設定]，然後重新設定保留範圍。 重新設定保留範圍不算是商業交易。 您的保留期限不會變更。 如需有關更新範圍的詳細資訊，請參閱[在購買保留後更新範圍](manage-reserved-vm-instance.md#change-the-reservation-scope)。
 
 ![顯示保留範圍變更的範例](./media/prepare-buy-reservation/rescope-reservation-resource-group.png)
 
@@ -85,13 +85,13 @@ Enterprise 合約 (EA) 客戶可藉由在 EA 入口網站中停用 [新增保留
 
 如果是使用 Microsoft 客戶合約 (MCA) 購買保留，則您的月付金額可能會依當地貨幣的當月市場匯率而異。
 
-每月付款不適用於：Databricks、SUSE Linux 保留、Red Hat 方案和 Azure Red Hat OpenShift Compute。
+每月付款不適用於：Databricks、SUSE Linux 保留、Red Hat 方案和 Azure Red Hat OpenShift 授權。
 
 ### <a name="view-payments-made"></a>檢視已支付的款項
 
 您可以使用 API、使用量資料和成本分析來檢視已支付的款項。 針對每月付款的保留，使用量資料和保留費用 API 中的頻率值會顯示為**定期**。 針對預先付款的保留，此值會顯示為**一次性**。
 
-成本分析會在預設檢視中顯示每月的購買。 在 [費用類型]  上套用 [購買]  ，以及在 [頻率]  上套用 [定期]  來進行篩選，即可查看所有購買。 若只要檢視保留，請篩選 [保留]  。
+成本分析會在預設檢視中顯示每月的購買。 在 [費用類型] 上套用 [購買]，以及在 [頻率] 上套用 [定期] 來進行篩選，即可查看所有購買。 若只要檢視保留，請篩選 [保留]。
 
 ![在成本分析中顯示保留購買費用的範例](./media/prepare-buy-reservation/cost-analysis.png)
 

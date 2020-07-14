@@ -3,20 +3,20 @@ title: 模式：使用原則定義來部署資源
 description: 此 Azure 原則模式提供如何使用原則定義來部署資源的範例。
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: a8b6528afbd21c7c667e48965574c9b48c403654
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7ce93f4895a86905cd31889e853f95a3de640b13
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77169986"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970853"
 ---
 # <a name="azure-policy-pattern-deploy-resources"></a>Azure 原則模式：部署資源
 
-[deployIfNotExists](../concepts/effects.md#deployifnotexists) 效果讓您可以在建立或更新不符合規範的資源時，部署 [Azure Resource Manager 範本](../../../azure-resource-manager/templates/overview.md)。 這種方法會比使用 [deny](../concepts/effects.md#deny) 效果更好，因為其可讓資源繼續建立，但又能確保可進行變更以使資源符合規範。
+[deployIfNotExists](../concepts/effects.md#deployifnotexists) 效果讓您可以在建立或更新不符合規範的資源時，部署 [Azure Resource Manager 範本](../../../azure-resource-manager/templates/overview.md) (ARM 範本)。 這種方法會比使用 [deny](../concepts/effects.md#deny) 效果更好，因為其可讓資源繼續建立，但又能確保可進行變更以使資源符合規範。
 
 ## <a name="sample-policy-definition"></a>原則定義範例
 
-此原則定義會使用 **field** 運算子來評估所建立或更新的資源 `type`。 當該資源是「Microsoft.Network/virtualNetworks」  時，原則會在新資源或已更新資源的位置中尋找網路監看員。 如果找不到相符的網路監看員，則會部署 Resource Manager 範本來建立遺失的資源。
+此原則定義會使用 **field** 運算子來評估所建立或更新的資源 `type`。 當該資源是「Microsoft.Network/virtualNetworks」時，原則會在新資源或已更新資源的位置中尋找網路監看員。 如果找不到相符的網路監看員，則會部署 ARM 範本來建立遺失的資源。
 
 :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json":::
 
@@ -32,7 +32,7 @@ ms.locfileid: "77169986"
 
 :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="24-26":::
 
-**properties.policyRule.then.details** 區塊中的 **roleDefinitionIds**「陣列」  屬性會告訴原則定義，受控識別需要哪些權限才能部署所包含的 Resource Manager 範本。 此屬性必須設定為將具有範本部署所需權限的角色包含在內，但應使用「最低權限原則」的概念，而且只具有所需的作業，而沒有其他任何項目。
+**properties.policyRule.then.details** 區塊中的 **roleDefinitionIds**「陣列」屬性會告訴原則定義，受控識別需要哪些權限才能部署所包含的 Resource Manager 範本。 此屬性必須設定為將具有範本部署所需權限的角色包含在內，但應使用「最低權限原則」的概念，而且只具有所需的作業，而沒有其他任何項目。
 
 #### <a name="deployment-template"></a>部署範本
 

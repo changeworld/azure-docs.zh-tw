@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: b4278cb2e8c5152f522258a37c37acda5efbacf8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 13949bef7b26058c577a3ab85b4fb2e736bba8f5
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84687917"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562994"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教學課程：使用 Azure 虛擬 WAN 來建立站對站連線
 
@@ -29,7 +29,7 @@ ms.locfileid: "84687917"
 > * 將 VPN 網站連線到中樞
 > * 將 VNet 連線至中樞
 > * 下載設定檔
-> * 檢視您的虛擬 WAN
+> * 設定 VPN 閘道
 
 > [!NOTE]
 > 如果您有許多網站，通常會使用[虛擬 WAN 夥伴](https://aka.ms/virtualwan)來建立此組態。 不過，如果您慣用網路並且知道如何設定自己的 VPN 裝置，可以自行建立此組態。
@@ -53,9 +53,9 @@ ms.locfileid: "84687917"
 
 透過瀏覽器瀏覽至 Azure 入口網站，並使用您的 Azure 帳戶登入。
 
-1. 瀏覽至 [虛擬 WAN] 頁面。 在入口網站中，按一下 [+建立資源]  。 在搜尋方塊中鍵入**虛擬 WAN** 並選取 [輸入]。
-2. 從結果中選取 [虛擬 WAN]  。 在 [虛擬 WAN] 頁面中，按一下 [建立]  ，以開啟 [建立 WAN] 頁面。
-3. 在 [建立 WAN]  頁面的 [基本]  索引標籤中，填寫下列欄位：
+1. 瀏覽至 [虛擬 WAN] 頁面。 在入口網站中，按一下 [+建立資源]。 在搜尋方塊中鍵入**虛擬 WAN** 並選取 [輸入]。
+2. 從結果中選取 [虛擬 WAN]。 在 [虛擬 WAN] 頁面中，按一下 [建立]，以開啟 [建立 WAN] 頁面。
+3. 在 [建立 WAN] 頁面的 [基本] 索引標籤中，填寫下列欄位：
 
    ![虛擬 WAN](./media/virtual-wan-site-to-site-portal/vwan.png)
 
@@ -64,8 +64,8 @@ ms.locfileid: "84687917"
    * **資源群組位置** - 從下拉式清單中選擇資源位置。 WAN 是全域資源，並不會在特定區域存留。 不過，您必須選取一個區域以方便管理，以及放置所建立的 WAN 資源。
    * **名稱** - 鍵入要用來稱呼 WAN 的名稱。
    * **類型：** 基本或標準。 如果您建立基本 WAN，則只能建立基本中樞。 基本中樞只能進行 VPN 站對站連線。
-4. 填寫完欄位之後，選取 [檢閱 + 建立]  。
-5. 驗證通過後，選取 [建立]  ，以建立虛擬 WAN。
+4. 填寫完欄位之後，選取 [檢閱 + 建立]。
+5. 驗證通過後，選取 [建立]，以建立虛擬 WAN。
 
 ## <a name="create-a-hub"></a><a name="hub"></a>建立中樞。
 
@@ -89,22 +89,22 @@ ms.locfileid: "84687917"
 
 在此步驟中，您會在中樞和 VNet 之間建立連線。 為您想要連線的每個 VNet 重複這些步驟。
 
-1. 在虛擬 WAN 頁面上，按一下 [虛擬網路連線]  。
-2. 在 [虛擬網路連線] 頁面上，按一下 [+ 新增連線]  。
-3. 在 [新增連線]  頁面上，填寫下列欄位︰
+1. 在虛擬 WAN 頁面上，按一下 [虛擬網路連線]。
+2. 在 [虛擬網路連線] 頁面上，按一下 [+ 新增連線]。
+3. 在 [新增連線] 頁面上，填寫下列欄位︰
 
     * **名稱** - 為您的連線命名。
     * **中樞** - 選取要與此連線產生關聯的中樞。
     * **訂用帳戶** - 請確認訂用帳戶。
     * **虛擬網路** - 選取要與此中樞連線的虛擬網路。 虛擬網路不能有現有的虛擬網路閘道。
-4. 按一下 [確定]  以建立虛擬網路連線。
+4. 按一下 [確定] 以建立虛擬網路連線。
 
 ## <a name="download-vpn-configuration"></a><a name="device"></a>下載 VPN 組態
 
 若要設定您的內部部署 VPN 裝置，請使用 VPN 裝置組態。
 
-1. 在您的虛擬 WAN 頁面上，按一下 [概觀]  。
-2. 在 [中樞] -> [VPNSite]  頁面的頂端按一下 [下載 VPN 組態]  。Azure 會在資源群組 'microsoft-network-[location]' 中建立儲存體帳戶，其中 location 是 WAN 的位置。 將組態套用至您的 VPN 裝置之後，就可以刪除此儲存體帳戶。
+1. 在您的虛擬 WAN 頁面上，按一下 [概觀]。
+2. 在 [中樞] -> [VPNSite] 頁面的頂端按一下 [下載 VPN 組態]。Azure 會在資源群組 'microsoft-network-[location]' 中建立儲存體帳戶，其中 location 是 WAN 的位置。 將組態套用至您的 VPN 裝置之後，就可以刪除此儲存體帳戶。
 3. 檔案建立完成之後，您可以按一下連結來下載。
 4. 將組態套用至您的內部部署 VPN 裝置。
 
@@ -251,11 +251,20 @@ ms.locfileid: "84687917"
 * 新的虛擬 WAN 可以支援 IKEv1 和 IKEv2。
 * 虛擬 WAN 可以使用原則式與路由式 VPN 裝置和裝置指示。
 
-## <a name="view-your-virtual-wan"></a><a name="viewwan"></a>檢視您的虛擬 WAN
+## <a name="configure-your-vpn-gateway"></a><a name="gateway-config"></a>設定 VPN 閘道
 
-1. 瀏覽至虛擬 WAN。
-2. 在 [概觀]  頁面中，地圖上的每個點都代表著中樞。 將滑鼠停留在任何一個點，即可檢視中樞健康情況摘要、連線狀態，以及傳入和傳出的位元組。
-3. 在 [中樞和連線] 區段中，您可以檢視中樞狀態和 VPN 網站等項目。您可以按一下特定中樞名稱，然後瀏覽至 VPN 網站來取得其他詳細資料。
+您可以選取 [檢視/設定]，隨時檢視和設定您的 VPN 閘道設定。
+
+:::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-1.png" alt-text="檢視設定" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-1-expand.png":::
+
+在 [編輯 VPN 閘道] 頁面上，您可以看到下列設定：
+
+* VPN 閘道的公用 IP 位址 (由 Azure 指派)
+* VPN 閘道的私人 IP 位址 (由 Azure 指派)
+* VPN 閘道的預設 BGP IP 位址 (由 Azure 指派)
+* 自訂 BGP IP 位址的設定選項：此欄位保留給 APIPA (自動私人 IP 定址)。 Azure 在範圍 169.254.21.* 和 169.254.22.* 支援 BGP IP
+
+   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="檢視設定" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 
 ## <a name="next-steps"></a>後續步驟
 

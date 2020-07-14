@@ -2,14 +2,14 @@
 title: 教學課程 - 建立異地複寫的登錄
 description: 建立 Azure Container Registry、設定異地複寫、準備 Docker 映像並將其部署至登錄。 三段式教學課程的第一段。
 ms.topic: tutorial
-ms.date: 04/30/2017
+ms.date: 06/30/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 70dc664d27fde3b7cf9fe4e5e3a99c041236ac16
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 159426b7258d83fc28fc7d126c064167bbe00975
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84693223"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799433"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>教學課程：準備異地複寫的 Azure Container Registry
 
@@ -37,53 +37,66 @@ Azure Cloud Shell 不包括完成本教學課程每個步驟所需的 Docker 元
 
 ## <a name="create-a-container-registry"></a>建立容器登錄庫
 
+在本教學課程中，需要在進階服務層中具備 Azure Container Registry。 請遵循本節中的下列步驟來建立新的 Azure Container Registry。
+
+> [!TIP]
+> 如果您先前已建立登錄並需要升級，請參閱[變更層級](container-registry-skus.md#changing-tiers)。 
+
 登入 [Azure 入口網站](https://portal.azure.com)。
 
-選取 [建立資源]   > [容器]   > [Azure Container Registry]  。
+選取 [建立資源] > [容器] > [Azure Container Registry]。
 
-![在 Azure 入口網站中建立容器登錄][tut-portal-01]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-01.png" alt-text="在 Azure 入口網站中建立容器登錄":::
 
-為新的登錄進行以下設定：
+為新的登錄進行以下設定。 在 [基本] 索引標籤中：
 
-* **登錄名稱**：建立登錄名稱，其必須在 Azure 中全域唯一且包含 5-50 個英數字元
-* **資源群組**：**建立新的** > `myResourceGroup`
+* **登錄名稱**：建立登錄名稱，其必須在 Azure 中是全域唯一且包含 5-50 個英數字元
+* **資源群組**：**新建** > `myResourceGroup`
 * **位置**：`West US`
-* **管理員使用者**：`Enable` (必要項目；可讓用於容器的 Web 應用程式提取映像)
 * **SKU**：`Premium` (異地複寫的必要項目)
 
-選取 [建立]  以部署 ACR 執行個體。
+選取 [檢閱+建立]，然後選取 [建立] 來建立登錄執行個體。
 
-![在 Azure 入口網站中建立容器登錄][tut-portal-02]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="在 Azure 入口網站中設定":::容器登錄
 
 在本教學課程的其餘部分，我們使用 `<acrName>` 作為您所選容器**登錄名稱**的預留位置。
 
 > [!TIP]
 > 由於 Azure Container Registry 通常是存留較久且跨多部容器主機使用的資源，因此建議您在專屬的資源群組中建立您的登錄。 當您設定異地複寫登錄和 Webhook 時，這些額外的資源會放置在相同的資源群組中。
->
 
 ## <a name="configure-geo-replication"></a>設定異地複寫
 
 現在，您已經具備進階登錄，即可設定異地複寫。 這樣一來，您的 Web 應用程式即可從最近的登錄來提取其容器映像 (在下一個教學課程中，您會將 Web 應用程式設為在兩個區域中執行)。
 
-在 Azure 入口網站中，巡覽至您的新容器登錄，並選取 [服務]  下方的 [複寫]  ：
+在 Azure 入口網站中，瀏覽至您的新容器登錄，並選取**服務**下方的 [複寫]：
 
-![在 Azure 入口網站的容器登錄 UI 中進行複寫][tut-portal-03]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="在 Azure 入口網站的容器登錄 UI 中進行複寫":::
 
 系統會顯示地圖，並以綠色六邊形代表適用於異地複寫的 Azure 區域：
 
- ![Azure 入口網站的區域圖][tut-map-01]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="Azure 入口網站的區域圖":::
 
-選取美國東部地區的綠色六邊形，然後選取 [建立複寫]  下方的 [建立]  ，將登錄複寫到美國東部地區：
+選取美國東部地區的綠色六邊形，然後選取 [建立複寫] 下方的 [建立]，將登錄複寫到美國東部地區：
 
- ![在 Azure 入口網站中建立複寫 UI][tut-portal-04]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="在 Azure 入口網站中建立複寫 UI":::
 
-完成複寫時，入口網站會將這兩個區域顯示為 [就緒]  。 使用 [重新整理]  按鈕，以重新整理複寫的狀態；建立並同步處理複本可能需要一分鐘左右的時間。
+完成複寫時，入口網站會將這兩個區域顯示為 [就緒]。 使用 [重新整理] 按鈕，以重新整理複寫的狀態；建立並同步處理複本可能需要一分鐘左右的時間。
 
-![Azure 入口網站中的複寫狀態 UI][tut-portal-05]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Azure 入口網站中的複寫狀態 UI":::
+
+
+## <a name="enable-admin-account"></a>啟用系統管理員帳戶
+
+在後續的教學課程中，您會直接從登錄將容器映像部署到適用於容器的 Web App。 若要啟用這項功能，您也必須啟用登錄的[系統管理員帳戶](container-registry-authentication.md#admin-account)。
+
+在 Azure 入口網站中，瀏覽至您的新容器登錄，並選取**設定** 下方的 [存取金鑰]。 在 [管理使用者] 下，選取 [啟用]。
+
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="啟用 Azure 入口網站中的系統管理員帳戶":::
+
 
 ## <a name="container-registry-login"></a>Container Registry 登入
 
-現在，您已設定異地複寫、建置容器映像，並將它推送到您的登錄。 您必須先登入 ACR 執行個體，再將映像推送至該處。
+現在，您已設定異地複寫、建置容器映像，並將它推送到您的登錄。 您必須先登入登錄，再將映像推送至該處。
 
 使用 [az acr login](https://docs.microsoft.com/cli/azure/acr#az-acr-login) 命令，驗證並快取登錄的認證。 將 `<acrName>` 取代為您先前建立的登錄名稱。
 
@@ -97,7 +110,7 @@ az acr login --name <acrName>
 
 本教學課程的範例包含一個由 [ASP.NET Core][aspnet-core] 建置的小型 Web 應用程式。 該應用程式有一個 HTML 網頁，可顯示 Azure Container Registry 部署映像的來源區域。
 
-![在瀏覽器中顯示的教學課程應用程式][tut-app-01]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-app-01.png" alt-text="在瀏覽器中顯示的教學課程應用程式":::
 
 使用 git 將此範例下載到本機目錄中，並將 `cd` 下載到目錄中：
 
@@ -228,15 +241,6 @@ v1: digest: sha256:0799014f91384bda5b87591170b1242bcd719f07a03d1f9a1ddbae72b3543
 
 > [!div class="nextstepaction"]
 > [從 Azure Container Registry 部署 Web 應用程式](container-registry-tutorial-deploy-app.md)
-
-<!-- IMAGES -->
-[tut-portal-01]: ./media/container-registry-tutorial-prepare-registry/tut-portal-01.png
-[tut-portal-02]: ./media/container-registry-tutorial-prepare-registry/tut-portal-02.png
-[tut-portal-03]: ./media/container-registry-tutorial-prepare-registry/tut-portal-03.png
-[tut-portal-04]: ./media/container-registry-tutorial-prepare-registry/tut-portal-04.png
-[tut-portal-05]: ./media/container-registry-tutorial-prepare-registry/tut-portal-05.png
-[tut-app-01]: ./media/container-registry-tutorial-prepare-registry/tut-app-01.png
-[tut-map-01]: ./media/container-registry-tutorial-prepare-registry/tut-map-01.png
 
 <!-- LINKS - External -->
 [acr-helloworld-zip]: https://github.com/Azure-Samples/acr-helloworld/archive/master.zip

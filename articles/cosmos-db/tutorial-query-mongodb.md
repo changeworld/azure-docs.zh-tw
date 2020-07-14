@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 5b9bc78f6af833d89a3404de0295ddad78ebdf20
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5283916194d407cebd30ef072907c56ded1c6cb0
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74870134"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848954"
 ---
 # <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 適用於 MongoDB 的 API 查詢資料
 
@@ -63,12 +63,15 @@ ms.locfileid: "74870134"
 在提供上述範例家族文件的情況下，下列查詢會傳回識別碼欄位符合 `WakefieldFamily` 的文件。
 
 **查詢**
-    
-    db.families.find({ id: "WakefieldFamily"})
+
+```bash
+db.families.find({ id: "WakefieldFamily"})
+```
 
 **結果**
 
-    {
+```json
+{
     "_id": "ObjectId(\"58f65e1198f3a12c7090e68c\")",
     "id": "WakefieldFamily",
     "parents": [
@@ -106,19 +109,23 @@ ms.locfileid: "74870134"
     },
     "creationDate": 1431620462,
     "isRegistered": false
-    }
+}
+```
 
 ## <a name="example-query-2"></a><a id="examplequery2"></a>範例查詢 2 
 
 下一個查詢會傳回家族中的所有小孩。 
 
 **查詢**
-    
-    db.families.find( { id: "WakefieldFamily" }, { children: true } )
+
+```bash 
+db.families.find( { id: "WakefieldFamily" }, { children: true } )
+``` 
 
 **結果**
 
-    {
+```json
+{
     "_id": "ObjectId("58f65e1198f3a12c7090e68c")",
     "children": [
       {
@@ -138,28 +145,37 @@ ms.locfileid: "74870134"
         "grade": 8
       }
     ]
-    }
-
+}
+```
 
 ## <a name="example-query-3"></a><a id="examplequery3"></a>範例查詢 3 
 
 下一個查詢會傳回已註冊的所有家族。 
 
 **查詢**
-    
-    db.families.find( { "isRegistered" : true })
-**結果** 不會傳回任何文件。 
+
+```bash
+db.families.find( { "isRegistered" : true })
+``` 
+
+**結果**
+
+不會傳回任何文件。 
 
 ## <a name="example-query-4"></a><a id="examplequery4"></a>範例查詢 4
 
 下一個查詢會傳回未註冊的所有家族。 
 
 **查詢**
-    
-    db.families.find( { "isRegistered" : false })
+
+```bash
+db.families.find( { "isRegistered" : false })
+``` 
+
 **結果**
 
-     {
+```json
+{
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
     "id": "WakefieldFamily",
     "parents": [{
@@ -193,18 +209,22 @@ ms.locfileid: "74870134"
     "creationDate": 1431620462,
     "isRegistered": false
 }
+```
 
 ## <a name="example-query-5"></a><a id="examplequery5"></a>範例查詢 5
 
 下一個查詢會傳回未註冊且州別為 NY 的所有家族。 
 
 **查詢**
-    
-     db.families.find( { "isRegistered" : false, "address.state" : "NY" })
+
+```bash
+db.families.find( { "isRegistered" : false, "address.state" : "NY" })
+``` 
 
 **結果**
 
-     {
+```json
+{
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
     "id": "WakefieldFamily",
     "parents": [{
@@ -238,19 +258,22 @@ ms.locfileid: "74870134"
     "creationDate": 1431620462,
     "isRegistered": false
 }
-
+```
 
 ## <a name="example-query-6"></a><a id="examplequery6"></a>範例查詢 6
 
 下一個查詢會傳回小孩年級為 8 的所有家族。
 
 **查詢**
-  
-     db.families.find( { children : { $elemMatch: { grade : 8 }} } )
+
+```bash
+db.families.find( { children : { $elemMatch: { grade : 8 }} } )
+```
 
 **結果**
 
-     {
+```json
+{
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
     "id": "WakefieldFamily",
     "parents": [{
@@ -284,14 +307,17 @@ ms.locfileid: "74870134"
     "creationDate": 1431620462,
     "isRegistered": false
 }
+```
 
 ## <a name="example-query-7"></a><a id="examplequery7"></a>範例查詢 7
 
 下一個查詢會傳回小孩陣列大小為 3 的所有家族。
 
 **查詢**
-  
-      db.Family.find( {children: { $size:3} } )
+
+```bash
+db.Family.find( {children: { $size:3} } )
+```
 
 **結果**
 

@@ -1,16 +1,16 @@
 ---
 title: 使用管理群組來組織資源 - Azure Governance
 description: 了解管理群組及權限如何運作，以及如何使用。
-ms.date: 04/15/2020
+ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: 43c8bb2bdb71b0b75d2fcc31451952214978093c
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: b3d031b68ee7dba9c80ee0c7e97898bb8b439a47
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773146"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963677"
 ---
-# <a name="organize-your-resources-with-azure-management-groups"></a>使用 Azure 管理群組來組織資源
+# <a name="what-are-azure-management-groups"></a>什麼是 Azure 管理群組？
 
 如果貴組織有多個訂用帳戶，您可能需要一個方法來有效率地管理這些訂用帳戶的存取、原則和相容性。 Azure 管理群組可以在訂用帳戶之上提供範圍層級。 您要將訂用帳戶整理到稱為「管理群組」的容器中，並將治理條件套用至管理群組。 管理群組內的所有訂用帳戶都會自動繼承套用到管理群組的條件。 無論具有何種類型的訂用帳戶，管理群組都可為您提供企業級的大規模管理功能。
 單一管理群組中的所有訂用帳戶都必須信任相同的 Azure Active Directory 租用戶。
@@ -199,6 +199,4 @@ Azure 管理群組支援對所有的資源存取和角色定義使用 [Azure 角
 
 - [建立管理群組以組織 Azure 資源](./create.md)
 - [如何變更、刪除或管理您的管理群組](./manage.md)
-- [檢閱 Azure PowerShell 資源模組中的管理群組](/powershell/module/az.resources#resources)
-- [檢閱 REST API 中的管理群組](/rest/api/resources/managementgroups)
-- [檢閱 Azure CLI 中的管理群組](/cli/azure/account/management-group)
+- 請參閱[如何保護您的資源階層](./how-to/protect-resource-hierarchy.md)選項

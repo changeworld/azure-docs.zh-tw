@@ -2,7 +2,8 @@
 title: 作業自動化
 description: 使用作業自動化在一或多個資料庫集合執行 Transact-SQL (T-SQL) 指令碼
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: overview
@@ -10,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 03/10/2020
-ms.openlocfilehash: 1b27eac1a8b5989734d3451bf21c5b13dd5cc0af
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 537c989271800c15444d5323cfce8e133c8eeeba
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220574"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984637"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>使用資料庫作業將管理工作自動化
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -54,8 +55,8 @@ ms.locfileid: "84220574"
 
 | |彈性作業 |SQL Agent |
 |---------|---------|---------|
-|影響範圍 | 與作業代理程式位於相同 Azure 雲端中之 Azure SQL Database 及 (或) 資料倉儲中任何數目的資料庫。 目標可以位於不同的伺服器、訂用帳戶及 (或) 區域中。 <br><br>目標群組可由個別資料庫或資料倉儲，或伺服器、集區或 shardmap 中的所有資料庫所組成 (在作業執行階段以動態方式列舉)。 | 與 SQL Agent 位於相同執行個體中的任何個別資料庫。 |
-|支援的 API 和工具 | 入口網站、PowerShell、T-SQL、Azure Resource Manager | T-SQL、SQL Server Management Studio (SSMS) |
+|**範圍** | 與作業代理程式位於相同 Azure 雲端中之 Azure SQL Database 及 (或) 資料倉儲中任何數目的資料庫。 目標可以位於不同的伺服器、訂用帳戶及 (或) 區域中。 <br><br>目標群組可由個別資料庫或資料倉儲，或伺服器、集區或 shardmap 中的所有資料庫所組成 (在作業執行階段以動態方式列舉)。 | 與 SQL Agent 位於相同執行個體中的任何個別資料庫。 |
+|**支援的 API 和工具** | 入口網站、PowerShell、T-SQL、Azure Resource Manager | T-SQL、SQL Server Management Studio (SSMS) |
 
 ## <a name="sql-agent-jobs"></a>SQL Agent 作業
 

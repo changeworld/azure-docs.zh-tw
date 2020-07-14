@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: bf014c7188232f07a399cc3e438d1d894c96a233
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7c795e6077bc5a7b755a388a6f50848ad6094d48
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701434"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921802"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>搭配 Synapse SQL 使用外部資料表
 
@@ -96,13 +96,17 @@ data_source_name
 指定資料來源的使用者定義名稱。 這個名稱在資料庫內必須是唯一的。
 
 #### <a name="location"></a>Location
-LOCATION = `'<prefix>://<path>'` - 提供連線通訊協定和路徑給外部資料來源。 路徑可以包含 `'<prefix>://<path>/container'` 格式的容器，以及 `'<prefix>://<path>/container/folder'` 形式的資料夾。
+LOCATION = `'<prefix>://<path>'` - 提供連線通訊協定和路徑給外部資料來源。 下列模式可用於位置中：
 
 | 外部資料來源        | 位置前置詞 | 位置路徑                                         |
 | --------------------------- | --------------- | ----------------------------------------------------- |
 | Azure Blob 儲存體          | `wasb[s]`       | `<container>@<storage_account>.blob.core.windows.net` |
+|                             | `https`         | `<storage_account>.blob.core.windows.net/<container>/subfolders` |
 | Azure Data Lake Store Gen 1 | `adl`           | `<storage_account>.azuredatalake.net`                 |
 | Azure Data Lake Store Gen 2 | `abfs[s]`       | `<container>@<storage_account>.dfs.core.windows.net`  |
+|                             | `https`         | `<storage_account>.dfs.core.windows.net/<container>/subfolders`  |
+
+`https:` 前置詞可讓您在路徑中使用子資料夾。
 
 #### <a name="credential"></a>認證
 CREDENTIAL = `<database scoped credential>` 是選擇性認證，將用來在 Azure 儲存體上進行驗證。 沒有認證的外部資料來源可以存取公用儲存體帳戶。 
@@ -124,7 +128,7 @@ SQL 集區中沒有認證的外部資料來源也可以使用呼叫者 Azure AD 
 CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
 WITH
   -- Please note the abfss endpoint when your account has secure transfer enabled
-  ( LOCATION = 'abfss://newyorktaxidataset.azuredatalakestore.net' ,
+  ( LOCATION = 'abfss://data@newyorktaxidataset.dfs.core.windows.net' ,
     CREDENTIAL = ADLS_credential ,
     TYPE = HADOOP
   ) ;
@@ -342,7 +346,7 @@ SELECT TOP 1 * FROM census_external_table
 
 使用 Data Lake 探索功能，您現在可以使用 SQL 集區或 SQL 隨選建立並查詢外部資料表，只要在檔案上按一下滑鼠右鍵即可。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 - 您必須擁有至少具有 ADLS Gen2 帳戶之儲存體 Blob 資料參與者 ARM 存取角色的工作區存取權
 

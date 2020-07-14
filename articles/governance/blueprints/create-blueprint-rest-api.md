@@ -1,20 +1,20 @@
 ---
 title: 快速入門：使用 REST API 建立藍圖
 description: 在本快速入門中，您將在 REST API 中使用 Azure 藍圖建立、定義和部署成品。
-ms.date: 02/26/2020
+ms.date: 06/29/2020
 ms.topic: quickstart
-ms.openlocfilehash: ec84e8396ad65aa01f73414b971f27bc95396e2f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e3cdf28cfe523e52aceefe20294042d28b98e1e2
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745101"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971193"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>快速入門：使用 REST API 定義和指派 Azure 藍圖
 
-了解如何建立及指派有助於定義常用模式的藍圖，以根據 Resource Manager 範本、原則、安全性等，開發出可重複使用並可快速部署的組態。 在本教學課程中，您將了解如何使用 Azure 藍圖在您的組織中處理藍圖的建立、發佈和指派等常見工作，例如：
+了解如何建立及指派有助於定義常用模式的藍圖，以根據 Azure Resource Manager 範本 (ARM 範本)、原則、安全性等，開發出可重複使用並可快速部署的組態。 在本教學課程中，您將了解如何使用 Azure 藍圖在您的組織中處理藍圖的建立、發佈和指派等常見工作，例如：
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free)。
 - 註冊 `Microsoft.Blueprint` 資源提供者。 如需指示，請參閱[資源提供者和類型](../../azure-resource-manager/management/resource-providers-and-types.md)。
@@ -52,7 +52,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 
 ## <a name="create-a-blueprint"></a>建立藍圖
 
-定義合規性標準模式的第一個步驟，即是以可用的資源規劃藍圖。 我們將建立名為 'MyBlueprint' 的藍圖，以設定訂用帳戶的角色和原則指派。 然後，我們將新增資源群組、Resource Manager 範本，以及資源群組的角色指派。
+定義合規性標準模式的第一個步驟，即是以可用的資源規劃藍圖。 我們將建立名為 'MyBlueprint' 的藍圖，以設定訂用帳戶的角色和原則指派。 然後，我們將新增資源群組、ARM 範本，以及資源群組的角色指派。
 
 > [!NOTE]
 > 使用 REST API 時，會先建立_藍圖_物件。 對於要新增的具有參數的每個_成品_，需要在初始_藍圖_上預先定義參數。
@@ -144,7 +144,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. 在訂用帳戶中新增原則指派。 **要求本文**會定義成品的_種類_、對應至原則或方案定義的屬性，以及設定用來定義藍圖參數 (藍圖指派期間設定) 的原則指派。 此範例使用 [將標籤及其預設值套用至資源群組]  內建原則，GUID 為 `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`。
+1. 在訂用帳戶中新增原則指派。 **要求本文**會定義成品的_種類_、對應至原則或方案定義的屬性，以及設定用來定義藍圖參數 (藍圖指派期間設定) 的原則指派。 此範例使用 [將標籤及其預設值套用至資源群組] 內建原則，GUID 為 `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`。
 
    - REST API URI
 
@@ -172,7 +172,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. 在訂用帳戶為儲存標記新增另一個儲存體標記 (重複使用 _storageAccountType_ 參數)。 這個新增的原則指派成品示範藍圖上定義的參數可供多個成品使用。 在此範例中，會使用 **storageAccountType** 來設定資源群組的標記。 此值會提供在下一個步驟中建立的儲存體帳戶的相關資訊。 此範例使用 [將標籤及其預設值套用至資源群組]  內建原則，GUID 為 `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`。
+1. 在訂用帳戶為儲存標記新增另一個儲存體標記 (重複使用 _storageAccountType_ 參數)。 這個新增的原則指派成品示範藍圖上定義的參數可供多個成品使用。 在此範例中，會使用 **storageAccountType** 來設定資源群組的標記。 此值會提供在下一個步驟中建立的儲存體帳戶的相關資訊。 此範例使用 [將標籤及其預設值套用至資源群組] 內建原則，GUID 為 `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`。
 
    - REST API URI
 
@@ -200,7 +200,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. 在資源群組下新增範本。 Resource Manager 範本的**要求本文**包含範本的一般 JSON 元件，且會使用 **properties.resourceGroup** 定義目標資源群組。 此範本也會將 **storageAccountType**、**tagName** 和 **tagValue** 藍圖參數傳至範本，以重複使用這些參數。 藍圖參數可藉由定義 **properties.parameters** 提供給範本使用，並且可在使用索引鍵/值配對來插入值的 JSON 範本內使用。 藍圖和範本參數的名稱可以相同，但是用不同的名字是為了說明每個物件是如何從藍圖傳遞到範本成品。
+1. 在資源群組下新增範本。 ARM 範本的**要求本文**包含範本的一般 JSON 元件，且會使用 **properties.resourceGroup** 定義目標資源群組。 此範本也會將 **storageAccountType**、**tagName** 和 **tagValue** 藍圖參數傳至範本，以重複使用這些參數。 藍圖參數可藉由定義 **properties.parameters** 提供給範本使用，並且可在使用索引鍵/值配對來插入值的 JSON 範本內使用。 藍圖和範本參數的名稱可以相同，但是用不同的名字是為了說明每個物件是如何從藍圖傳遞到範本成品。
 
    - REST API URI
 

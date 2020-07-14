@@ -1,9 +1,8 @@
 ---
-title: Azure 資源管理員範本
-titleSuffix: Azure SQL Database & SQL Managed Instance
+title: Azure Resource Manager 範本 - Azure SQL Database 與 SQL 受控執行個體
 description: 使用 Azure Resource Manager 範本建立並設定 Azure SQL Database 與 Azure SQL 受控執行個體。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: service
 ms.custom: overview-samples sqldbrb=2
 ms.devlang: ''
@@ -12,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: 76b9b1301a0aeee24b698b15a3871754de8ca0b9
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: ee2c6580285246d3b170602e507aed038b2507f4
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718796"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983633"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database--sql-managed-instance"></a>適用於 Azure SQL Database 與 SQL 受控執行個體的 Azure Resource Manager 範本
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,7 +27,7 @@ Azure Resource Manager 範本可讓您定義基礎結構即程式碼，並將解
 
 下表包含適用於 Azure SQL Database 的 Azure Resource Manager 範本的連結。
 
-| |  |
+|連結 |描述|
 |---|---|
 | [SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create) | 此 Azure Resource Manager 範本可在 Azure SQL Database 中建立單一資料庫，並設定伺服器層級 IP 防火牆規則。 |
 | [Server](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server) | 此 Azure Resource Manager 範本可建立 Azure SQL Database 的伺服器。 |
@@ -47,7 +46,7 @@ Azure Resource Manager 範本可讓您定義基礎結構即程式碼，並將解
 
 下表包含適用於 Azure SQL 受控執行個體之 Azure Resource Manager 範本的連結。
 
-| |  |
+|連結|描述|
 |---|---|
 | [新 VNet 中的 SQL 受控執行個體](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet) \(英文\) | 此 Azure Resource Manager 範本可在虛擬網路中建立新設定的 Azure 虛擬網路和受控執行個體。 |
 | [SQL 受控執行個體的網路環境](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) \(英文\) | 此部署會建立已設定的 Azure 虛擬網路和兩個子網路，一個專門用於您的受控執行個體，另一個則可用來放置其他資源 (例如 VM、App Service 環境等)。 此範本會建立已適當設定的網路環境，供您在其中部署受控執行個體。 |

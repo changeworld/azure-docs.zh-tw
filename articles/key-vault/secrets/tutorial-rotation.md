@@ -1,6 +1,6 @@
 ---
-title: 單一使用者/單一密碼輪替教學課程
-description: 使用此教學課程來了解如何針對使用單一使用者/單一密碼驗證的資源，自動輪替祕密。
+title: 具有一組驗證認證的資源輪替教學課程
+description: 使用此教學課程來了解如何針對使用一組驗證認證的資源，自動輪替祕密。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,18 +10,18 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8f9c0dca29d173eb2c7893a20b2ab41dd31522e1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9bff8c040f4cfed612278dd83ebb354b31a3a1f3
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183206"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801439"
 ---
-# <a name="automate-the-rotation-of-a-secret-for-resources-that-use-single-usersingle-password-authentication"></a>針對使用單一使用者/單一密碼驗證的資源，將秘密的輪替自動化
+# <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>針對使用一組驗證認證的資源，將秘密的輪替自動化
 
 向 Azure 服務進行驗證的最佳方式是使用[受控識別](../general/managed-identity.md)，但在某些情況下並無法使用此選項。 在這類情況下，應使用存取金鑰或祕密。 您應該定期輪替存取金鑰或祕密。
 
-本教學課程示範如何對使用單一使用者/密碼驗證的資料庫和服務自動執行定期的秘密輪替。 具體而言，此教學課程會使用 Azure 事件方格通知所觸發的函式，來輪替儲存在 Azure Key Vault 中的 SQL Server 密碼：
+本教學課程示範如何針對使用一組驗證認證的資料庫和服務自動執行定期的秘密輪替。 具體而言，此教學課程會使用 Azure 事件方格通知所觸發的函式，來輪替儲存在 Azure Key Vault 中的 SQL Server 密碼：
 
 ![輪替解決方案圖表](../media/rotate1.png)
 
@@ -41,8 +41,8 @@ ms.locfileid: "82183206"
 
 1. 選取 Azure 範本部署連結：
 <br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2Fazure-keyvault-basicrotation-tutorial%2Fmaster%2Farm-templates%2Finitial-setup%2Fazuredeploy.json" target="_blank"> <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/></a>
-1. 在 [資源群組]  下方，選取 [新建]  。 將群組命名為 **simplerotation**。
-1. 選取 [購買]  。
+1. 在 [資源群組] 下方，選取 [新建]。 將群組命名為 **simplerotation**。
+1. 選取 [購買]。
 
     ![建立資源群組](../media/rotate2.png)
 
@@ -73,8 +73,8 @@ simplerotation-sql/master  simplerotation      eastus      Microsoft.Sql/servers
 
 1. 選取 Azure 範本部署連結：
 <br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2Fazure-keyvault-basicrotation-tutorial%2Fmaster%2Farm-templates%2Ffunction-app%2Fazuredeploy.json" target="_blank"><img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/></a>
-1. 在 [資源群組]  清單中，選取 [simplerotation]  。
-1. 選取 [購買]  。
+1. 在 [資源群組] 清單中，選取 [simplerotation]。
+1. 選取 [購買]。
 
    ![選取購買](../media/rotate3.png)
 
@@ -204,7 +204,7 @@ az eventgrid event-subscription create --name simplerotation-eventsubscription -
 ```
 
 ## <a name="add-the-secret-to-key-vault"></a>將秘密新增至 Key Vault
-設定存取原則，將「管理秘密」  權限授與使用者：
+設定存取原則，將「管理秘密」權限授與使用者：
 
 ```azurecli
 az keyvault set-policy --upn <email-address-of-user> --name simplerotation-kv --secret-permissions set delete get list
@@ -240,8 +240,8 @@ Web 應用程式需要以下元件：
 
 1. 選取 Azure 範本部署連結：
 <br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2Fazure-keyvault-basicrotation-tutorial%2Fmaster%2Farm-templates%2Fweb-app%2Fazuredeploy.json" target="_blank"> <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/></a>
-1. 選取 [simplerotation]  資源群組。
-1. 選取 [購買]  。
+1. 選取 [simplerotation] 資源群組。
+1. 選取 [購買]。
 
 ### <a name="deploy-the-web-app"></a>部署 Web 應用程式
 
@@ -263,7 +263,7 @@ Web 應用程式需要以下元件：
  
 ![選取 URL](../media/rotate10.png)
 
-當應用程式在瀏覽器中開啟時，您會看到 [產生的密碼值]  以及值為 *true* 的 [資料庫已連線]  。
+當應用程式在瀏覽器中開啟時，您會看到 [產生的密碼值] 以及值為 *true* 的 [資料庫已連線]。
 
 ## <a name="learn-more"></a>深入了解
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc1cc89beb1e704428fdb4e10868e72e837804d3
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 0b5a52d0a54a9671052b9b7d46810cc65c22951f
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765255"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799872"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hub-planner"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Hub Planner 整合
 
@@ -43,7 +43,7 @@ ms.locfileid: "84765255"
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
-* Hub Planner 支援 **SP** 起始的 SSO
+* Hub Planner 支援 **SP** 起始的 SSO。
 * 設定 Hub Planner 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-hub-planner-from-the-gallery"></a>從資源庫新增 Hub Planner
@@ -51,11 +51,11 @@ ms.locfileid: "84765255"
 若要設定將 Hub Planner 整合到 Azure AD 中，您需要從資源庫將 Hub Planner 新增到受控 SaaS 應用程式清單中。
 
 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左方瀏覽窗格上，選取 [Azure Active Directory]**** 服務。
-1. 巡覽至 [企業應用程式]****，然後選取 [所有應用程式]****。
-1. 若要新增應用程式，請選取 [新增應用程式]****。
-1. 在 [從資源庫新增]**** 區段的搜尋方塊中輸入 **Hub Planner**。
-1. 從結果面板選取 [Hub Planner]****，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
+1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
+1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
+1. 若要新增應用程式，請選取 [新增應用程式]。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Hub Planner**。
+1. 從結果面板選取 [Hub Planner]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-hub-planner"></a>設定及測試 Hub Planner 的 Azure AD 單一登入
@@ -75,67 +75,87 @@ ms.locfileid: "84765255"
 
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Hub Planner]**** 應用程式整合頁面上，尋找 [管理]**** 區段並選取 [單一登入]****。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Hub Planner] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
 1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
-1. 在 [以 SAML 設定單一登入]**** 頁面上，按一下 [基本 SAML 設定]**** 的編輯/畫筆圖示，以編輯設定。
+1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 組態]**** 區段上，輸入下列欄位的值：
+1. 在 [基本 SAML 組態] 區段上，輸入下列欄位的值：
 
-    a. 在 [登入 URL]**** 文字方塊中，以下列模式輸入 URL︰`https://<SUBDOMAIN>.hubplanner.com`
+    a. 在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://<SUBDOMAIN>.hubplanner.com`
 
-    b. 在 [識別碼]**** 方塊中，使用下列模式輸入 URL：`https://<SUBDOMAIN>.hubplanner.com/sso/metadata`
+    b. 在 [識別碼] 方塊中，使用下列模式輸入 URL：`https://app.hubplanner.com/sso/metadata`
 
-    c. 在 [回覆 URL]**** 文字方塊中，使用下列模式來輸入 URL：`https://<SUBDOMAIN>.hubplanner.com/sso/callback`
+    c. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://app.hubplanner.com/sso/callback`
 
     > [!NOTE]
     > 這些都不是真正的值。 使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 請連絡 [Hub Planner 客戶支援小組](mailto:hello@hubplanner.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-1. 在 [以 SAML 設定單一登入]**** 頁面的 [SAML 簽署憑證]**** 區段中，尋找 [憑證 (Base64)]**** 並選取 [下載]****，以下載憑證並將其儲存在電腦上。
+1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，尋找 [憑證 (Base64)] 並選取 [下載]，以下載憑證並將其儲存在電腦上。
 
     ![憑證下載連結](common/certificatebase64.png)
 
-1. 在 [設定 Hub Planner]**** 區段上，根據您的需求複製適當的 URL。
+1. 在 [設定 Hub Planner] 區段上，根據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]****、[使用者]**** 和 [所有使用者]****。
-1. 在畫面頂端選取 [新增使用者]****。
-1. 在 [使用者]**** 屬性中，執行下列步驟：
-   1. 在 [名稱]**** 欄位中，輸入 `B.Simon`。  
-   1. 在 [使用者名稱]**** 欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
-   1. 選取 [顯示密碼]**** 核取方塊，然後記下 [密碼]**** 方塊中顯示的值。
-   1. 按一下 [建立]****。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
+1. 在畫面頂端選取 [新增使用者]。
+1. 在 [使用者] 屬性中，執行下列步驟：
+   1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
+   1. 在 [使用者名稱] 欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
+   1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
+   1. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 Hub Planner 的存取權授與 B.Simon，讓其能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，選取 [企業應用程式]****，然後選取 [所有應用程式]****。
-1. 在應用程式清單中，選取 [Hub Planner]****。
-1. 在應用程式的概觀頁面中尋找 [管理]**** 區段，然後選取 [使用者和群組]****。
+1. 在 Azure 入口網站中，選取 [企業應用程式]，然後選取 [所有應用程式]。
+1. 在應用程式清單中，選取 [Hub Planner]。
+1. 在應用程式的概觀頁面中尋找 [管理] 區段，然後選取 [使用者和群組]。
 
    ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-1. 選取 [新增使用者]****，然後在 [新增指派]**** 對話方塊中選取 [使用者和群組]****。
+1. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組]。
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組]**** 對話方塊的 [使用者] 清單中選取 [B.Simon]****，然後按一下畫面底部的 [選取]**** 按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]**** 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]**** 按鈕。
-1. 在 [新增指派]**** 對話方塊中，按一下 [指派]**** 按鈕。
+1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
+1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取] 按鈕。
+1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ## <a name="configure-hub-planner-sso"></a>設定 Hub Planner SSO
 
-若要在 **Hub Planner** 端設定單一登入，您必須將從 Azure 入口網站下載的 [憑證 (Base64)]**** 和複製的適當 URL 傳送給 [Hub Planner 支援小組](mailto:hello@hubplanner.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Hub Planner** 端設定單一登入，您必須將從 Azure 入口網站下載的 [憑證 (Base64)] 和複製的適當 URL 傳送給 [Hub Planner 支援小組](mailto:hello@hubplanner.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+
+### <a name="install-the-extension-in-hub-planner"></a>在 Planner 中樞中安裝擴充功能
+
+若要啟用 SSO 功能，您必須先啟用擴充功能。 以帳戶擁有者或具有相同權限的身分，請完成下列步驟：
+
+1. 移至 [設定] 。
+1. 在側邊功能表中，選取 [管理擴充功能] > [新增/移除擴充功能]。
+1. 尋找單一登入以及新增或免費試用的擴充功能。
+1. 出現提示時，同意條款和條件，然後選取 [立即新增]。
+
+### <a name="enable-sso"></a>啟用 SSO
+
+啟用擴充功能後，您必須為您帳戶啟用 SSO。 
+
+1. 移至 [設定] 。
+1. 在側邊功能表中，選取 [驗證]。
+1. 選取 [SSO (單一登入)]。
+1. 輸入如下圖所示的其他驗證資訊，然後選取 [儲存]。
+
+![SSO 設定 的螢幕擷取畫面](media/hub-planner-tutorial/sso-settings.png)
 
 ### <a name="create-hub-planner-test-user"></a>建立 Hub Planner 測試使用者
 
-在本節中，您會在 Hub Planner 中建立名為 Britta Simon 的使用者。 與  [Hub Planner 支援小組](mailto:hello@hubplanner.com)合作，在 Hub Planner 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+如果要新增其他使用者，請移至**設定** > **管理資源**，並從這裡新增使用者。 請務必新增使用者的電子郵件地址並邀請他們。 受邀之後，使用者會收到一封電子郵件，並且能夠透過 SSO 進入。 
 
 ## <a name="test-sso"></a>測試 SSO 
 

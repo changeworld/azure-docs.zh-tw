@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: banders
-ms.openlocfilehash: 8552b6732736d1d10711479639fa45114f8b039b
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 5fb8a9cd5e00bf3a6ebeddaf44a09ac48b94fe7c
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85297999"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849074"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>按發票支付 Azure 訂閱費
 
@@ -42,28 +42,28 @@ ms.locfileid: "85297999"
 
 5. 在 [詳細資料] 方塊中輸入下列資訊，並選取 [下一步]。
 
-         New or existing customer:
-         If existing, current payment method:
-         Order ID (requesting for invoice option):
-         Account Admins Live ID (or Org ID) (should be company domain):
-         Commerce Account ID:
-         Company Name (as registered under VAT or Government Website):
-         Company Address (as registered under VAT or Government Website):
-         Company Website:
-         Country:
-         TAX ID/ VAT ID:
-         Company Established on (Year):
-         Any prior business with Microsoft:
-         Contact Name:
-         Contact Phone:
-         Contact Email:
-         Justification on why you prefer Invoice option over credit card:
+     新的或現有客戶：<br>
+     如果是現有客戶，目前的付款方法為：<br>
+     訂單識別碼 (要求發票選項)：<br>
+     帳戶管理員 Live ID (或組織識別碼) (應該是公司網域)：<br>
+     商業帳戶識別碼：<br>
+     公司名稱 (如加值稅或政府網站中註冊的名稱)：<br>
+     公司地址 (如加值稅或政府網站中註冊的地址)：<br>
+     公司網站：<br>
+     國家/地區：<br>
+     統一編號/加值稅識別碼：<br>
+     公司創立時間 (年)：<br>
+     之前與 Microsoft 合作的任何業務：<br>
+     連絡人姓名：<br>
+     連絡人電話：<br>
+     連絡人電子郵件：<br>
+     您為何偏好透過信用卡作為發票選項的理由：<br>
 
-         For cores increase, provide the following additional information:
+     如需增加核心數，請提供下列其他資訊：<br>
 
-         (Old quota) Existing Cores:
-         (New quota) Requested cores:
-         Specific region & series of Subscription:
+     (舊配額) 現有核心數：<br>
+     (新配額) 要求的核心數：<br>
+     訂用帳戶的特定區域及系列：<br>
 
     - [公司名稱] 和 [公司位址] 應符合您為 Azure 帳戶提供的資訊。 若要檢視或更新資訊，請參閱[變更您的 Azure 帳戶設定檔資訊](change-azure-account-profile.md)。
     - 請先在 Azure 入口網站中新增您的帳單連絡人資訊，才能核准信用限額。 連絡人詳細資料應該與公司的應付帳款或財務部門相關。 若要更新帳單連絡人資訊，請移至 [Azure 帳戶中心](https://account.azure.com/Profile)。

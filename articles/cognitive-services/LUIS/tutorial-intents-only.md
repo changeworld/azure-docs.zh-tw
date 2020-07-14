@@ -3,12 +3,12 @@ title: 教學課程：預測用意 - LUIS
 description: 在本教學課程中建立自訂應用程式，以根據語句 (文字) 預測使用者的用意。
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: c76273d7c180928d25be70e0abd7abf26c90b44a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d0a625708e730094ab4dea8f705852f38ee6e1da
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588924"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959854"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>教學課程：建置 LUIS 應用程式來判斷使用者意圖
 
@@ -113,9 +113,8 @@ ms.locfileid: "83588924"
 
     `get a medium vegetarian pizza for delivery`
 
-    這與範例語句並不完全相同，因此若要查看 LUIS 是否能了解以此意圖應預測的內容，這是很好的測試。
-
-    最後一個查詢字串參數是 `query`，也就是語句**查詢**。 此語句與所有範例語句不同。 這是很好的測試，而且應傳回 `OrderPizza` 意圖作為評分最高的意圖。
+  
+    查詢字串參數是 `query`，會在 URI 中傳遞語句**查詢**。 此語句與所有範例語句不同。 這應該是一個很好的測試，可以檢查 LUIS 是否學習並預測 `OrderPizza` 意圖，以做為最高分的意圖。
 
     ```JSON
     {

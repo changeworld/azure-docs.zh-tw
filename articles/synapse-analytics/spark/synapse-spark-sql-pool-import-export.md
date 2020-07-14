@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 515fd9bfedc5bc5d3cefda2a357c351f515fb5f5
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: ebf948fdb1df76cb7bcb03ee5d85f581d856524f
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194666"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918736"
 ---
 # <a name="introduction"></a>簡介
 
@@ -30,7 +30,7 @@ Azure Synapse Apache Spark 集區對 Synapse SQL 連接器是適用於 Apache Sp
 
 ## <a name="authentication-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的驗證
 
-在 Azure Synapse Analytics 中，系統之間的驗證會順暢地進行。 在存取儲存體帳戶或資料倉儲伺服器時，會有一個與 Azure Active Directory 連線的權杖服務可供您取得所要使用的安全性權杖。 
+在 Azure Synapse Analytics 中，系統之間的驗證會順暢地進行。 在存取儲存體帳戶或資料倉儲伺服器時，會有一個與 Azure Active Directory 連線的權杖服務可供您取得所要使用的安全性權杖。
 
 因此，只要在儲存體帳戶和資料倉儲伺服器上設定好 AAD 驗證，就不需要建立認證或在連接器 API 中指定認證。 如果未設定，則可以指定 SQL 驗證。 請於[使用方式](#usage)一節尋找更多詳細資料。
 
@@ -40,19 +40,27 @@ Azure Synapse Apache Spark 集區對 Synapse SQL 連接器是適用於 Apache Sp
 
 ## <a name="prerequisites"></a>必要條件
 
-- 在想要於其中往返傳輸資料的資料庫/SQL 集區中，準備好 **db_exporter** 角色。
+- 在想要於其中往返傳輸資料的資料庫/SQL 集區中，必須是 **db_exporter** 角色的成員。
+- 在預設的儲存體帳戶上必須是「儲存體 Blob 資料參與者」角色的成員。
 
-若要建立使用者，請連線到資料庫，並遵循下列範例：
+若要建立使用者，請連線到 SQL 集區資料庫，並遵循下列範例：
 
 ```sql
+--SQL User
 CREATE USER Mary FROM LOGIN Mary;
+
+--Azure Active Directory User
 CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 ```
 
 若要指派角色：
 
 ```sql
+--SQL User
 EXEC sp_addrolemember 'db_exporter', 'Mary';
+
+--Azure Active Directory User
+EXEC sp_addrolemember 'db_exporter',[mike@contoso.com]
 ```
 
 ## <a name="usage"></a>使用量
@@ -72,7 +80,7 @@ EXEC sp_addrolemember 'db_exporter', 'Mary';
 #### <a name="read-api"></a>讀取 API
 
 ```scala
-val df = spark.read.sqlanalytics("[DBName].[Schema].[TableName]")
+val df = spark.read.sqlanalytics("<DBName>.<Schema>.<TableName>")
 ```
 
 在 SQL 集區中，上述 API 會同時適用於內部 (受控) 以及外部資料表。
@@ -80,17 +88,51 @@ val df = spark.read.sqlanalytics("[DBName].[Schema].[TableName]")
 #### <a name="write-api"></a>寫入 API
 
 ```scala
-df.write.sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
+df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-其中 TableType 可以是 Constants.INTERNAL 或 Constants.EXTERNAL
+寫入 API 會在 SQL 集區中建立資料表，然後叫用 Polybase 來載入資料。  資料表不能存在於 SQL 集區中，否則會傳回錯誤，指出「已經有物件名為...」。
+
+TableType 值
+
+- Constants.INTERNAL - SQL 集區中的受控資料表
+- Constants.EXTERNAL - SQL 集區中的外部資料表
+
+SQL 集區受控資料表
 
 ```scala
-df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.INTERNAL)
-df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.EXTERNAL)
+df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 ```
 
-對儲存體和 SQL Server 的驗證完成
+SQL 集區外部資料表
+
+若要寫入 SQL 集區外部資料表，SQL 集區上必須有 EXTERNAL DATA SOURCE 和 EXTERNAL FILE FORMAT。  如需詳細資訊，請參閱 SQL 集區中的[建立外部資料來源](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)和[外部檔案格式](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。  以下是在 SQL 集區中建立外部資料來源和外部檔案格式的範例。
+
+```sql
+--For an external table, you need to pre-create the data source and file format in SQL pool using SQL queries:
+CREATE EXTERNAL DATA SOURCE <DataSourceName>
+WITH
+  ( LOCATION = 'abfss://...' ,
+    TYPE = HADOOP
+  ) ;
+
+CREATE EXTERNAL FILE FORMAT <FileFormatName>
+WITH (  
+    FORMAT_TYPE = PARQUET,  
+    DATA_COMPRESSION = 'org.apache.hadoop.io.compress.SnappyCodec'  
+);
+```
+
+對儲存體帳戶使用 Azure Active Directory 傳遞驗證時，不需要 EXTERNAL CREDENTIAL 物件。  請確定您是「儲存體 Blob 資料參與者」角色的成員。
+
+```scala
+
+df.write.
+    option(Constants.DATA_SOURCE, <DataSourceName>).
+    option(Constants.FILE_FORMAT, <FileFormatName>).
+    sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.EXTERNAL)
+
+```
 
 ### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>如果您要在工作區外的 SQL 集區或資料庫之間來回傳輸資料
 
@@ -114,8 +156,8 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 
 ```scala
 df.write.
-option(Constants.SERVER, "[samplews].[database.windows.net]").
-sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
+option(Constants.SERVER, "samplews.database.windows.net").
+sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
 ### <a name="using-sql-auth-instead-of-aad"></a>使用 SQL 驗證而非 AAD
@@ -127,8 +169,8 @@ sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 ```scala
 val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
-option(Constants.USER, [SQLServer Login UserName]).
-option(Constants.PASSWORD, [SQLServer Login Password]).
+option(Constants.USER, <SQLServer Login UserName>).
+option(Constants.PASSWORD, <SQLServer Login Password>).
 sqlanalytics("<DBName>.<Schema>.<TableName>")
 ```
 
@@ -136,10 +178,10 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 
 ```scala
 df.write.
-option(Constants.SERVER, "[samplews].[database.windows.net]").
-option(Constants.USER, [SQLServer Login UserName]).
-option(Constants.PASSWORD, [SQLServer Login Password]).
-sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
+option(Constants.SERVER, "samplews.database.windows.net").
+option(Constants.USER, <SQLServer Login UserName>).
+option(Constants.PASSWORD, <SQLServer Login Password>).
+sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
 ### <a name="using-the-pyspark-connector"></a>使用 PySpark 連接器
@@ -166,7 +208,7 @@ pysparkdftemptable.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTE
 
 同樣地，在讀取案例中，請使用 Scala 讀取資料並將其寫入暫存資料表，並在 PySpark 中使用 Spark SQL 將暫存資料表查詢至資料框架。
 
-## <a name="allowing-other-users-to-use-the-dw-connector-in-your-workspace"></a>允許其他使用者在您的工作區中使用 DW 連接器
+## <a name="allowing-other-users-to-use-the-azure-synapse-apache-spark-to-synapse-sql-connector-in-your-workspace"></a>允許其他使用者對您工作區中的 Synapse SQL 連接器使用 Azure Synapse Apache Spark
 
 您必須是連線到工作區的 ADLS Gen2 儲存體帳戶上所存在的儲存體 Blob 資料擁有者，才能更改其他人的遺漏權限。 請確定使用者可存取工作區並有權執行筆記本。
 
@@ -178,7 +220,7 @@ pysparkdftemptable.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTE
 
 - 在資料夾結構上指定下列 ACL：
 
-| 資料夾 | / | synapse | workspaces  | <workspacename> | sparkpools | <sparkpoolname>  | sparkpoolinstances  |
+| 資料夾 | / | synapse | workspaces  | \<workspacename> | sparkpools | \<sparkpoolname>  | sparkpoolinstances  |
 |--|--|--|--|--|--|--|--|
 | 存取權限 | --X | --X | --X | --X | --X | --X | -WX |
 | 預設權限 | ---| ---| ---| ---| ---| ---| ---|

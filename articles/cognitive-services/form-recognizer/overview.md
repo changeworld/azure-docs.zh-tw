@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 8885f66b3501217ead302486d2e5ef7de63f5f47
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 2193bd85265103957c5cafad10a243b266f7e5bc
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563243"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026877"
 ---
 # <a name="what-is-form-recognizer"></a>什麼是表單辨識器？
 
@@ -57,18 +57,20 @@ Azure 表單辨識器是一項認知服務，其使用機器學習技術來識�
 
 遵循快速入門以開始從表單中擷取資料。 當您學習技術時，我們建議您使用免費的服務。 請記住，免費的頁數限制為每個月 500 頁。
 
-* 自訂 - 將模型定型至您的表單
-  * 不使用標籤進行定型
-    * [快速入門：搭配使用 REST API 與 cURL 來將表單辨識器模型定型並擷取表單資料](quickstarts/curl-train-extract.md)
-    * [快速入門：搭配使用 REST API 與 Python 來將表單辨識器模型定型並擷取表單資料](quickstarts/python-train-extract.md)
-  * 使用標籤進行定型
-    * [使用範例標記工具，以標籤定型表單辨識器模型](quickstarts/label-tool.md)
-    * [使用 REST API 和 Python 以標籤定型表單辨識器模型](quickstarts/python-labeled-data.md)
-* 預建的收據 - 從美國銷售收據中擷取資料
-  * [快速入門：使用 cURL 擷取收據資料](quickstarts/curl-receipts.md)
-  * [快速入門：使用 Python 擷取收據資料](quickstarts/python-receipts.md)
-* 版面配置 - 從表單中擷取文字和資料表結構
-  * [快速入門：使用 Python 擷取版面配置資料](quickstarts/python-layout.md)
+* [用戶端程式庫快速入門](./quickstarts/client-library.md) (所有語言，多個案例)
+* Web UI 快速入門
+  * [使用標籤進行定型 - 範例標籤工具](quickstarts/label-tool.md)
+* REST 快速入門
+  * 定型自訂模型和擷取表單資料
+    * [不使用標籤進行定型 - cURL](quickstarts/curl-train-extract.md)
+    * [不使用標籤進行定型 - Python](quickstarts/python-train-extract.md)
+    * [使用標籤進行定型 - Python](quickstarts/python-labeled-data.md)
+  * 從美國銷售收據中擷取資料
+    * [擷取收據資料 - cURL](quickstarts/curl-receipts.md)
+    * [擷取收據資料 - Python](quickstarts/python-receipts.md)
+  * 從表單中擷取文字和資料表結構
+    * [擷取版面配置資料 - Python](quickstarts/python-layout.md)
+
 
 ### <a name="review-the-rest-apis"></a>檢閱 REST API
 
@@ -81,7 +83,7 @@ Azure 表單辨識器是一項認知服務，其使用機器學習技術來識�
 | **分析收據** |分析單一收據文件，以擷取索引鍵資訊和其他收據文字。|
 | **分析版面配置** |分析表單的版面配置以擷取文字和資料表結構。|
 
-若要了解更多，請瀏覽 [REST API 參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)。 如果您熟悉舊版的 API，請參閱[新功能](./whats-new.md)一文，以了解最近的變更。
+若要了解更多，請瀏覽 [REST API 參考文件](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)。 如果您熟悉舊版的 API，請參閱[新功能](./whats-new.md)一文，以了解最近的變更。
 
 ## <a name="input-requirements"></a>輸入需求
 ### <a name="custom-model"></a>自訂模型
@@ -104,4 +106,4 @@ Azure 表單辨識器是一項認知服務，其使用機器學習技術來識�
 
 ## <a name="next-steps"></a>後續步驟
 
-請完成[快速入門](quickstarts/curl-train-extract.md)來開始使用[表單辨識器 API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)。
+請完成[快速入門](quickstarts/curl-train-extract.md)來開始使用[表單辨識器 API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)。

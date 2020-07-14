@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 4f9b8f3edc475ec50eaf11080020aa9f62a0d2c1
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: b02455c153c6205b87a64a388d5588c3c431e0c9
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700872"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963490"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>快速入門：使用裝置功能模型建立 IoT 隨插即用預覽版裝置 (Windows)
 
@@ -21,7 +21,7 @@ ms.locfileid: "83700872"
 
 _裝置功能模型_ (DCM) 可說明 IoT 隨插即用裝置的功能。 DCM 通常會與產品 SKU 相關聯。 DCM 中定義的功能會組織成可重複使用的介面。 您可以從 DCM 產生基本架構裝置程式碼。 本快速入門說明如何在 Windows 上使用 VS Code，以便使用 DCM 建立 IoT 隨插即用裝置。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本快速入門，您必須在本機電腦上安裝下列軟體：
 
@@ -34,9 +34,9 @@ _裝置功能模型_ (DCM) 可說明 IoT 隨插即用裝置的功能。 DCM 通�
 
 請使用下列步驟安裝[適用於 VS Code 的 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) \(英文\) 擴充套件：
 
-1. 在 VS Code 中，選取 [延伸模組]  索引標籤。
+1. 在 VS Code 中，選取 [延伸模組] 索引標籤。
 1. 搜尋 **Azure IoT Tools**。
-1. 選取 [安裝]  。
+1. 選取 [安裝]。
 
 ### <a name="install-the-azure-iot-explorer"></a>安裝 Azure IoT 檔案總管
 
@@ -44,7 +44,7 @@ _裝置功能模型_ (DCM) 可說明 IoT 隨插即用裝置的功能。 DCM 通�
 
 ### <a name="get-the-connection-string-for-your-company-model-repository"></a>取得公司模型存放庫的連接字串
 
-當您使用 Microsoft 工作或學校帳戶，或您的 Microsoft 合作夥伴識別碼 (如果您有的話) 登入時，您可以在 [Azure IoT 認證入口網站](https://preview.catalog.azureiotsolutions.com)中找到您的_公司模型存放庫連接字串_。 在登入後，依序選取 [公司存放庫]  和 [連接字串]  。
+當您使用 Microsoft 工作或學校帳戶，或您的 Microsoft 合作夥伴識別碼 (如果您有的話) 登入時，您可以在 [Azure IoT 認證入口網站](https://preview.catalog.azureiotsolutions.com)中找到您的_公司模型存放庫連接字串_。 在登入後，依序選取 [公司存放庫] 和 [連接字串]。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -78,7 +78,7 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 1. 安裝 Azure IoT C 裝置 SDK Vcpkg：
 
     ```cmd
-    .\vcpkg.exe install azure-iot-sdk-c[public-preview,use_prov_client]
+    .\vcpkg.exe install azure-iot-sdk-c[public-preview,use-prov-client]
     ```
 
 ## <a name="author-your-model"></a>製作您的模型
@@ -87,10 +87,10 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
 1. 在您的本機磁碟機中建立 `pnp_app` 資料夾。 您可以使用此資料夾來存放裝置模型檔案和裝置程式碼 Stub。
 
-1. 下載[裝置功能模型及介面範例檔案](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.model.json)和[介面範例](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json)，並將檔案儲存到 `pnp_app` 資料夾中。
+1. 下載[裝置功能模型](https://github.com/Azure/opendigitaltwins-dtdl/blob/9004219bff1e958b7cd6ff2a52209f4b7ae19396/samples/SampleDevice.capabilitymodel.json)和[介面範例](https://github.com/Azure/opendigitaltwins-dtdl/blob/9004219bff1e958b7cd6ff2a52209f4b7ae19396/samples/EnvironmentalSensor.interface.json)檔案，並儲存到 `pnp_app` 資料夾中。
 
     > [!TIP]
-    > 若要從 GitHub 下載檔案，請瀏覽至該檔案，並以滑鼠右鍵按一下 [Raw]  ，然後選取 [另存連結]  。
+    > 若要從 GitHub 下載檔案，請瀏覽至該檔案，並以滑鼠右鍵按一下 [Raw]，然後選取 [另存連結]。
 
 1. 使用 VS Code 開啟 `pnp_app` 資料夾。 您可以使用 IntelliSense 來檢視檔案：
 
@@ -102,7 +102,7 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
 既然您已經有 DCM 及其相關聯的介面，您可以產生實作模型的裝置程式碼。 若要在 VS Code 中產生 C 程式碼 Stub：
 
-1. 當 `pnp_app` 資料夾在 VS Code 中開啟時，使用 **Ctrl+Shift+P** 開啟命令選擇區、輸入 **IoT 隨插即用**，然後選取 [產生裝置程式碼 Stub]  。
+1. 當 `pnp_app` 資料夾在 VS Code 中開啟時，使用 **Ctrl+Shift+P** 開啟命令選擇區、輸入 **IoT 隨插即用**，然後選取 [產生裝置程式碼 Stub]。
 
     > [!NOTE]
     > 第一次使用 IoT 隨插即用 CodeGen CLI 時，需要幾秒鐘的時間才能自動下載並安裝。
@@ -111,13 +111,13 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
 1. 輸入專案名稱 **sample_device**。 這是您的裝置應用程式名稱。
 
-1. 選擇 [ANSI C]  作為您的語言。
+1. 選擇 [ANSI C] 作為您的語言。
 
-1. 選擇 [透過 IoT 中樞裝置連接字串]  作為連線方式。
+1. 選擇 [透過 IoT 中樞裝置連接字串] 作為連線方式。
 
-1. 選擇 [Windows 上的 CMake 專案]  作為專案範本。
+1. 選擇 [Windows 上的 CMake 專案] 作為專案範本。
 
-1. 選擇 [透過 Vcpkg]  作為包含裝置 SDK 的方式。
+1. 選擇 [透過 Vcpkg] 作為包含裝置 SDK 的方式。
 
 1. 系統會在與 DCM 檔案相同的位置中建立一個名為 **sample_device** 的新資料夾，而且其中是產生的裝置程式碼 Stub 檔案。 VS Code 會開啟新的視窗來顯示這些內容。
     ![裝置程式碼](media/quickstart-create-pnp-device/device-code.png)
@@ -187,9 +187,9 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
 [!INCLUDE [iot-pnp-iot-explorer-1.md](../../includes/iot-pnp-iot-explorer-1.md)]
 
-4. 若要新增公司存放庫，請依序選取 [設定]  、[+ 新增模組定義來源]  和 [公司存放庫]  。 新增您的公司模型存放庫連接字串，然後選取 [儲存並連線]  。
+4. 若要新增公司存放庫，請依序選取 [設定]、[+ 新增模組定義來源] 和 [公司存放庫]。 新增您的公司模型存放庫連接字串，然後選取 [儲存並連線]。
 
-1. 回到**裝置**概觀頁面，尋找您先前建立的裝置身分識別。 當裝置應用程式仍在命令提示字元中執行時，請在 Azure IoT 檔案總管中檢查裝置的**線上狀態**是否會回報為「已連線」  (如果不是，請按 **重新整理**，直到變成已連線為止)。 選取裝置以檢視更多詳細資料。
+1. 回到**裝置**概觀頁面，尋找您先前建立的裝置身分識別。 當裝置應用程式仍在命令提示字元中執行時，請在 Azure IoT 檔案總管中檢查裝置的**線上狀態**是否會回報為「已連線」(如果不是，請按 **重新整理**，直到變成已連線為止)。 選取裝置以檢視更多詳細資料。
 
 1. 展開識別碼為 **urn:<YOUR_INTERFACE_NAME>:EnvironmentalSensor:1** 的介面，以查看 IoT 隨插即用基本項目 - 屬性、命令和遙測資料。 將顯示的介面名稱是您在撰寫模型時所放入的名稱。
 

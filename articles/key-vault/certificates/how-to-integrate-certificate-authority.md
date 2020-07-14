@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: d6cb8d386efbcdaf053f0740d955b249c0e636b4
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 7627625a917a8f652da62d4197368f023ad8c110
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84907804"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964493"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>將 Key Vault 與 DigiCert 憑證授權單位整合
 
@@ -57,7 +57,7 @@ Azure Key Vault 使用者可以直接從其 Key Vault 產生 DigiCert 憑證。 
  ![憑證屬性](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
 5.  在 [建立憑證授權單位] 畫面上，選擇下列值：
     -   **Name**：新增可識別的簽發者名稱。 範例 DigicertCA
-    -   **提供**：從功能表中選取 DigiCert。
+    -   **提供者**：從功能表中選取 DigiCert。
     -   **帳戶識別碼**：輸入您的 DigiCert CertCentral 帳戶識別碼
     -   **帳戶密碼**：輸入您在 DigiCert CertCentral 帳戶中產生的 API 金鑰
     -   **組織識別碼**：輸入從 DigiCert CertCentral 帳戶收集的 OrgID 

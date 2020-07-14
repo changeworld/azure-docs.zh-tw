@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/11/2019
 ms.author: komammas
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: c60f9df87930519684c6c29b1194624342b11528
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: a8f6fe49faf0624f6ef6d4fa8a346e22c69da599
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555061"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851742"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>教學課程：使用 Azure Batch 透過 Azure Data Factory 執行 Python 指令碼
 
@@ -30,7 +30,7 @@ ms.locfileid: "84555061"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/) 。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 已安裝的 [Python](https://www.python.org/downloads/) 散發套件 (用於本機測試)。
 * [Azure](https://pypi.org/project/azure/) `pip` 套件。
@@ -116,27 +116,27 @@ python main.py
 1. 在 [處理站資源] 方塊中，選取 + (加號) 按鈕，然後選取 [管線]。
 1. 在 [一般] 索引標籤中，將管線的名稱設定為 [執行 Python]。
 
-    ![](./media/run-python-batch-azure-data-factory/create-pipeline.png)
+    ![在 [一般] 索引標籤中，將管線的名稱設定為「執行 Python」](./media/run-python-batch-azure-data-factory/create-pipeline.png)
 
 1. 在 [活動] 方塊中，展開 [Batch 服務]。 將 [活動] 工具箱中的自訂活動拖到管線設計工具介面。
 1. 在 [一般] 索引標籤中，指定 **testPipeline** 作為 [名稱]。
 
-    ![](./media/run-python-batch-azure-data-factory/create-custom-task.png)
+    ![在 [一般] 索引標籤中，指定 testPipeline 作為 [名稱]](./media/run-python-batch-azure-data-factory/create-custom-task.png)
 1. 在 [Azure Batch] 索引標籤中，新增在先前步驟中建立的 [Batch 帳戶]，然後**測試連線**以確保連線成功。
 
-    ![](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
+    ![在 [Azure Batch] 索引標籤中，新增在先前步驟中建立的 [Batch 帳戶]，然後測試連線](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
 
 1. 在 [設定] 索引標籤中，輸入 `python main.py` 命令。
 1. 針對 [資源連結服務]，新增在先前步驟中建立的儲存體帳戶。 測試連線以確保連線成功。
 1. 在 [資料夾路徑] 中，選取 [Azure Blob 儲存體] 容器的名稱，其中包含 Python 指令碼及相關聯的輸入。 在 Python 腳本執行之前，這會將選取的檔案從容器下載至集區節點執行個體。
 
-    ![](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
+    ![在 [資料夾路徑] 中，選取 Azure Blob 儲存體容器的名稱](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
 1. 在畫布上方的管線設定上按一下 [驗證]，以驗證管線設定。 確認管線已驗證成功。 若要關閉驗證輸出，請選取 &gt;&gt; (向右箭號) 按鈕。
 1. 按一下 [偵錯] 以測試管線，並確保其運作正常。
 1. 按一下 [發佈] 以發佈管線。
 1. 按一下 [觸發]，以在批次處理過程中執行 Python 指令碼。
 
-    ![](./media/run-python-batch-azure-data-factory/create-custom-task-py-success-run.png)
+    ![按一下 [觸發]，以在批次處理過程中執行 Python 指令碼](./media/run-python-batch-azure-data-factory/create-custom-task-py-success-run.png)
 
 ### <a name="monitor-the-log-files"></a>監視記錄檔
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: dfcde775780cdb42f9df1d677ff2f2475de92843
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 9b2ef5ddb56e3d0422a2a876993ddda0bd97e4ff
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85115273"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961093"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>教學課程：在 Azure Cosmos DB 中建立筆記本來分析資料並將其視覺化
 
@@ -235,7 +235,7 @@ df_cosmos.head(10)
 
    輸出會以不同的色彩顯示世界地圖。 較深到較淺的色彩代表具有最高收益到最低收益的國家/區域。
 
-   ![國家/區域收益地圖視覺效果](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/countries-revenue-map-visualization.png" alt-text="國家/區域收益地圖視覺效果":::
 
 1. 讓我們看看另一個資料視覺效果案例。 WebsiteData 容器記錄了已檢視項目、放入其購物車，以及購買項目的使用者。 讓我們繪製所購買項目的轉換率。 在新儲存格中執行下列程式碼，將每個項目的轉換率視覺化：
 

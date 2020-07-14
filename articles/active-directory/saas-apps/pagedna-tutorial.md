@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c7f8c8efcad0a07a3d3a56925866b10d94f82ed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 34e496ea9d2a89894951856a19854bff18f20a8b
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68227471"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800864"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>教學課程：Azure Active Directory 與 PageDNA 整合
 
@@ -35,7 +35,7 @@ PageDNA 與 Azure AD 整合提供下列優點：
 
 如需軟體即服務 (SaaS) 應用程式與 Azure AD 整合的詳細資訊，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要設定 Azure AD 與 PageDNA 整合，您需要下列項目：
 
@@ -57,19 +57,19 @@ PageDNA 支援下列功能︰
 若要設定將 PageDNA 整合到 Azure AD 中，您需要從 Azure Marketplace 將 PageDNA 新增到受控 SaaS 應用程式清單：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com?azure-portal=true)。
-1. 在左窗格中，選取 [Azure Active Directory]  。
+1. 在左窗格中，選取 [Azure Active Directory]。
 
     ![Azure Active Directory 選項](common/select-azuread.png)
 
-1. 移至 [企業應用程式]  ，然後選取 [所有應用程式]  。
+1. 移至 [企業應用程式]，然後選取 [所有應用程式]。
 
     ![[企業應用程式] 窗格](common/enterprise-applications.png)
 
-1. 若要新增應用程式，請選取窗格頂端的 [+ 新增應用程式]  。
+1. 若要新增應用程式，請選取窗格頂端的 [+ 新增應用程式]。
 
     ![新增應用程式選項](common/add-new-app.png)
 
-1. 在搜尋方塊中，輸入 **PageDNA**。 在搜尋結果中，選取 [PageDNA]  ，然後選取 [新增]  以新增應用程式。
+1. 在搜尋方塊中，輸入 **PageDNA**。 在搜尋結果中，選取 [PageDNA]，然後選取 [新增] 以新增應用程式。
 
     ![結果清單中的 PageDNA](common/search-new-app.png)
 
@@ -92,48 +92,46 @@ PageDNA 支援下列功能︰
 
 若要使用 PageDNA 設定 Azure AD 單一登入，請執行下列步驟：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [PageDNA]  應用程式整合頁面上，選取 [單一登入]  。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [PageDNA] 應用程式整合頁面上，選取 [單一登入]。
 
     ![設定單一登入選項](common/select-sso.png)
 
-1. 在 [選取單一登入方法]  窗格中，選取 [SAML/WS-Fed]  模式以啟用單一登入。
+1. 在 [選取單一登入方法] 窗格中，選取 [SAML/WS-Fed] 模式以啟用單一登入。
 
     ![單一登入選取模式](common/select-saml-option.png)
 
-1. 在 [以 SAML 設定單一登入]  窗格上選取 [編輯]  (鉛筆圖示)，以開啟 [基本 SAML 組態]  窗格。
+1. 在 [以 SAML 設定單一登入] 窗格上選取 [編輯] (鉛筆圖示)，以開啟 [基本 SAML 組態] 窗格。
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 組態]  窗格中，執行下列步驟：
+1. 在 [基本 SAML 組態] 窗格中，執行下列步驟：
 
     ![PageDNA 網域與 URL 單一登入資訊](common/sp-identifier.png)
 
-    1. 在 [登入 URL]  方塊中，以下列其中一種模式輸入 URL：
+    1. 在 [登入 URL] 方塊中，以下列其中一種模式輸入 URL：
 
-        ||
-        |--|
-        | `https://stores.pagedna.com/<your site>` |
-        | `https://<your domain>` |
-        | `https://<your domain>/<your site>` |
-        | `https://www.nationsprint.com/<your site>` |
-        | |
+        ```https
+        https://stores.pagedna.com/<your site>
+        https://<your domain>
+        https://<your domain>/<your site>
+        https://www.nationsprint.com/<your site>
+        ```
 
-    1. 在 [識別碼 (實體 ID)]  方塊中，以下列其中一種模式輸入 URL：
+    1. 在 [識別碼 (實體 ID)] 方塊中，以下列其中一種模式輸入 URL：
 
-        ||
-        |--|
-        | `https://stores.pagedna.com/<your site>/saml2ep.cgi` |
-        | `https://www.nationsprint.com/<your site>/saml2ep.cgi` |
-        | |
+        ```https
+        https://stores.pagedna.com/<your site>/saml2ep.cgi
+        https://www.nationsprint.com/<your site>/saml2ep.cgi
+        ```
 
     > [!NOTE]
-    > 這些都不是真正的值。 使用實際的「登入 URL」及「識別碼」來更新這些值。 若要取得這些值，請連絡 [PageDNA 支援小組](mailto:success@pagedna.com)。 您也可以參考 Azure 入口網站中 [基本 SAML 組態]  窗格所示的模式。
+    > 這些都不是真正的值。 使用實際的「登入 URL」及「識別碼」來更新這些值。 若要取得這些值，請連絡 [PageDNA 支援小組](mailto:success@pagedna.com)。 您也可以參考 Azure 入口網站中 [基本 SAML 組態] 窗格所示的模式。
 
-1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，選取 [下載]  以從指定的選項下載 [憑證 (原始)]  並儲存在電腦上。
+1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，選取 [下載] 以從指定的選項下載 [憑證 (原始)] 並儲存在電腦上。
 
     ![憑證 (原始) 下載選項](common/certificateraw.png)
 
-1. 在 [設定 PageDNA]  區段中，複製您所需的一或多個 URL：
+1. 在 [設定 PageDNA] 區段中，複製您所需的一或多個 URL：
 
    * **登入 URL**
    * **Azure AD 識別碼**
@@ -149,31 +147,31 @@ PageDNA 支援下列功能︰
 
 在本節中，您會在 Azure 入口網站中建立名稱為 Britta Simon 的測試使用者。
 
-1. 在 Azure 入口網站中，於左窗格選取 [Azure Active Directory]     > [使用者]   > [所有使用者]  。
+1. 在 Azure 入口網站中，於左窗格選取 [Azure Active Directory]   > [使用者] > [所有使用者]。
 
     ![[使用者] 和 [所有使用者] 選項](common/users.png)
 
-1. 選取畫面頂端的 [+ 新增使用者]  。
+1. 選取畫面頂端的 [+ 新增使用者]。
 
     ![新增使用者選項](common/new-user.png)
 
-1. 在 [使用者]  窗格中，執行下列步驟：
+1. 在 [使用者] 窗格中，執行下列步驟：
 
     ![[使用者] 窗格](common/user-properties.png)
 
-    1. 在 [名稱]  方塊中，輸入 **BrittaSimon**。
+    1. 在 [名稱] 方塊中，輸入 **BrittaSimon**。
   
-    1. 在 [使用者名稱]  方塊中，輸入 **BrittaSimon\@\<yourcompanydomain>.\<extension>** 。 例如 **BrittaSimon\@contoso.com**。
+    1. 在 [使用者名稱] 方塊中，輸入 **BrittaSimon\@\<yourcompanydomain>.\<extension>** 。 例如 **BrittaSimon\@contoso.com**。
 
-    1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
+    1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
 
-    1. 選取 [建立]  。
+    1. 選取 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 PageDNA 的存取權授與使用者 Britta Simon，讓她能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，選取 [企業應用程式]   > [所有應用程式]   > [PageDNA]  。
+1. 在 Azure 入口網站中，選取 [企業應用程式] > [所有應用程式] > [PageDNA]。
 
     ![企業應用程式窗格](common/enterprise-applications.png)
 
@@ -181,19 +179,19 @@ PageDNA 支援下列功能︰
 
     ![應用程式清單中的 PageDNA](common/all-applications.png)
 
-1. 在左側窗格中，選取 [管理]  之下的 [使用者和群組]  。
+1. 在左側窗格中，選取 [管理] 之下的 [使用者和群組]。
 
     ![[使用者和群組] 選項](common/users-groups-blade.png)
 
-1. 選取 [+ 新增使用者]  ，然後在 [新增指派]  窗格中選取 [使用者和群組]  。
+1. 選取 [+ 新增使用者]，然後在 [新增指派] 窗格中選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
-1. 在 [使用者和群組]  窗格中，選取 [使用者]  清單中的 [Britta Simon]  ，然後選擇窗格底部的 [選取]  。
+1. 在 [使用者和群組] 窗格中，選取 [使用者] 清單中的 [Britta Simon]，然後選擇窗格底部的 [選取]。
 
-1. 如果您預期使用 SAML 判斷提示中的角色值，則在 [選取角色]  窗格的清單中選取適當的使用者角色。 選擇窗格底部的 [選取]  。
+1. 如果您預期使用 SAML 判斷提示中的角色值，則在 [選取角色] 窗格的清單中選取適當的使用者角色。 選擇窗格底部的 [選取]。
 
-1. 在 [新增指派]  窗格中，選取 [指派]  。
+1. 在 [新增指派] 窗格中，選取 [指派]。
 
 ### <a name="create-a-pagedna-test-user"></a>建立 PageDNA 測試使用者
 
@@ -203,7 +201,7 @@ PageDNA 中現在會建立名為 Britta Simon 的使用者。 您不需要採取
 
 在本節中，您會使用 MyApps 入口網站來測試您的 Azure AD 單一登入組態。
 
-當您在 My Apps 入口網站中選取 [PageDNA]  時，應該會自動登入您已設定單一登入的 PageDNA 訂用帳戶。 如需 My Apps 入口網站的詳細資訊，請參閱[在 My Apps 入口網站上存取和使用應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在 My Apps 入口網站中選取 [PageDNA] 時，應該會自動登入您已設定單一登入的 PageDNA 訂用帳戶。 如需 My Apps 入口網站的詳細資訊，請參閱[在 My Apps 入口網站上存取和使用應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
 ## <a name="additional-resources"></a>其他資源
 

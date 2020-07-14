@@ -1,14 +1,14 @@
 ---
 title: DoD 影響等級 4 藍圖範例控制
 description: 控制 DoD 影響等級 4 藍圖範例的對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
-ms.date: 05/12/2020
+ms.date: 06/30/2020
 ms.topic: sample
-ms.openlocfilehash: 48734e62f47c38feb8bc34409f9ba41af2648e7a
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 54eb1807e4986bb56b72e064cdae9df973ed7a81
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168976"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800421"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>控制 DoD 影響等級 4 藍圖範例的對應
 
@@ -175,21 +175,21 @@ Azure 監視器所收集的記錄資料會儲存在 Log Analytics 工作區中�
 
 ## <a name="cm-7-2-least-functionality--prevent-program-execution"></a>CM-7 (2) 最少的功能 | 防止程式執行
 
-「Azure 資訊安全中心」的自適性應用程式控制是智慧型的自動化端對端應用程式允許清單解決方案，可封鎖或防止在虛擬機器上執行特定軟體。 應用程式控制能以強制模式執行，禁止執行未經核准的應用程式。 此藍圖指派一個 Azure 原則定義，協助您監視已建議但尚未設定允許清單解決方案的虛擬機器。
+Azure 資訊安全中心的自適性應用程式控制是智慧型的自動化端對端應用程式允許清單解決方案，可封鎖或防止在虛擬機器上執行特定軟體。 應用程式控制能以強制模式執行，禁止執行未經核准的應用程式。 此藍圖會指派一個 Azure 原則定義，協助您監視已建議但尚未設定允許清單解決方案的虛擬機器。
 
-- 應在虛擬機器上啟用自適性應用程式控制
+- 您的電腦應啟用自適性應用程式控制，以定義安全應用程式
 
 ## <a name="cm-7-5-least-functionality--authorized-software--whitelisting"></a>CM-7 (5) 最少的功能 | 已授權的軟體 / 加入允許清單
 
-「Azure 資訊安全中心」的自適性應用程式控制是智慧型的自動化端對端應用程式允許清單解決方案，可封鎖或防止在虛擬機器上執行特定軟體。 應用程式控制可協助您建立虛擬機器的已核准應用程式清單。 此藍圖指派一個 [Azure 原則](../../../policy/overview.md)定義，協助您監視已建議但尚未設定允許清單解決方案的虛擬機器。
+Azure 資訊安全中心的自適性應用程式控制是智慧型的自動化端對端應用程式允許清單解決方案，可封鎖或防止在虛擬機器上執行特定軟體。 應用程式控制可協助您建立虛擬機器的已核准應用程式清單。 此藍圖會指派一個 [Azure 原則](../../../policy/overview.md)定義，協助您監視已建議但尚未設定允許清單解決方案的虛擬機器。
 
-- 應在虛擬機器上啟用自適性應用程式控制
+- 您的電腦應啟用自適性應用程式控制，以定義安全應用程式
 
 ## <a name="cm-11-user-installed-software"></a>CM-11 使用者安裝的軟體
 
-「Azure 資訊安全中心」的自適性應用程式控制是智慧型的自動化端對端應用程式允許清單解決方案，可封鎖或防止在虛擬機器上執行特定軟體。 應用程式控制可協助您強制執行軟體限制原則，並監視其合規性。 此藍圖指派一個 [Azure 原則](../../../policy/overview.md)定義，協助您監視已建議但尚未設定允許清單解決方案的虛擬機器。
+Azure 資訊安全中心的自適性應用程式控制是智慧型的自動化端對端應用程式允許清單解決方案，可封鎖或防止在虛擬機器上執行特定軟體。 應用程式控制可協助您強制執行軟體限制原則，並監視其合規性。 此藍圖會指派一個 [Azure 原則](../../../policy/overview.md)定義，協助您監視已建議但尚未設定允許清單解決方案的虛擬機器。
 
-- 應在虛擬機器上啟用自適性應用程式控制
+- 您的電腦應啟用自適性應用程式控制，以定義安全應用程式
 
 ## <a name="cp-7-alternate-processing-site"></a>CP-7 替代處理地點
 

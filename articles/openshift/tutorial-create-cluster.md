@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: f8b34f1678d39471a1d0b91756ac93a01cbfedba
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 61b6ad0bedb4817c262b4269a6e9f6930a6caa6c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800170"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985683"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>教學課程：建立 Azure Red Hat OpenShift 4 叢集
 
@@ -26,7 +26,7 @@ ms.locfileid: "83800170"
 
 ### <a name="verify-your-permissions"></a>驗證權限
 
-若要建立 Azure Red Hat OpenShift 叢集，請在您的 Azure 帳戶和使用者上確認下列權限：
+若要建立 Azure Red Hat OpenShift 叢集，請在您的 Azure 訂用帳戶、Azure Active Directory 使用者或服務主體上確認下列權限：
 
 |權限|包含 VNet 的資源群組|使用者執行 `az aro create`|服務主體作為 `–client-id` 傳遞|
 |----|:----:|:----:|:----:|
@@ -189,10 +189,10 @@ Red Hat 提取祕密可讓您的叢集存取 Red Hat 容器登錄及其他內容
 
 ## <a name="create-the-cluster"></a>建立叢集
 
-執行下列命令來建立叢集： (選用) 您可以[傳遞 Red Hat 提取祕密](#get-a-red-hat-pull-secret-optional)，讓您的叢集能夠存取 Red Hat 容器登錄及其他內容。
+執行下列命令來建立叢集： (選用) 您可以[傳遞 Red Hat 提取祕密](#get-a-red-hat-pull-secret-optional)，讓您的叢集能夠存取 Red Hat 容器登錄與其他內容。
 
 >[!NOTE]
-> 如果要複製/貼上命令，並使用其中一個選用參數，請務必刪除初始主題標籤和後置註解文字。 也請在命令上一行結尾加上反斜線，以關閉引數。
+> 如果要複製/貼上命令，並使用其中一個選用參數，請務必刪除初始主題標籤與後置註解文字。 也請在命令上一行結尾加上反斜線，以關閉引數。
 
 ```azurecli-interactive
 az aro create \

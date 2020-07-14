@@ -3,16 +3,16 @@ title: 快速入門：使用 Azure CLI 建立藍圖
 description: 在此快速入門中，您將在 Azure CLI 中使用 Azure 藍圖建立、定義及部署成品。
 ms.date: 06/02/2020
 ms.topic: quickstart
-ms.openlocfilehash: 7d144edca0794679e67358ff820e1508736ba723
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 30a450fc7eab55424da7ce971ad234cbf2248b30
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613346"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969663"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>快速入門：使用 Azure CLI 定義及指派 Azure 藍圖
 
-了解如何建立及指派有助於定義常用模式的藍圖，以根據 Resource Manager 範本、原則、安全性等，開發出可重複使用並可快速部署的組態。 在本教學課程中，您將了解如何使用 Azure 藍圖在您的組織中處理藍圖的建立、發佈和指派等常見工作，例如：
+了解如何建立及指派有助於定義常用模式的藍圖，以根據 Azure Resource Manager 範本 (ARM 範本)、原則、安全性等，開發出可重複使用並可快速部署的組態。 在本教學課程中，您將了解如何使用 Azure 藍圖在您的組織中處理藍圖的建立、發佈和指派等常見工作，例如：
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -46,7 +46,7 @@ ms.locfileid: "84613346"
 
 ## <a name="create-a-blueprint"></a>建立藍圖
 
-定義合規性標準模式的第一個步驟，即是以可用的資源規劃藍圖。 我們將建立名為 'MyBlueprint' 的藍圖，以設定訂用帳戶的角色和原則指派。 然後，我們將新增資源群組、Resource Manager 範本，以及資源群組的角色指派。
+定義合規性標準模式的第一個步驟，即是以可用的資源規劃藍圖。 我們將建立名為 'MyBlueprint' 的藍圖，以設定訂用帳戶的角色和原則指派。 然後，我們將新增資源群組、ARM 範本，以及資源群組的角色指派。
 
 > [!NOTE]
 > 使用 Azure CLI 時，會先建立「藍圖」物件。 對於要新增的具有參數的每個_成品_，需要在初始_藍圖_上預先定義參數。
@@ -193,9 +193,9 @@ ms.locfileid: "84613346"
         --parameters artifacts\policyStorageTags.json
      ```
 
-1. 在資源群組下新增範本。 Resource Manager 範本的 **template** 參數包含範本的一般 JSON 元件。 此範本也會將 **storageAccountType**、**tagName** 和 **tagValue** 藍圖參數傳至範本，以重複使用這些參數。 藍圖參數可透過使用 **parameters** 參數提供給範本使用，而且可在使用機碼值組來插入值的 JSON 範本內使用。 藍圖和範本參數名稱可能相同。
+1. 在資源群組下新增範本。 ARM 範本的 **template** 參數包含範本的一般 JSON 元件。 此範本也會將 **storageAccountType**、**tagName** 和 **tagValue** 藍圖參數傳至範本，以重複使用這些參數。 藍圖參數可透過使用 **parameters** 參數提供給範本使用，而且可在使用機碼值組來插入值的 JSON 範本內使用。 藍圖和範本參數名稱可能相同。
 
-   - JSON Azure Resource Manager 範本檔案 - artifacts\templateStorage.json
+   - JSON ARM 範本檔案 - artifacts\templateStorage.json
 
      ```json
      {
@@ -249,7 +249,7 @@ ms.locfileid: "84613346"
      }
      ```
 
-   - JSON Azure Resource Manager 範本參數檔案 - artifacts\templateStorageParams.json
+   - JSON ARM 範本參數檔案 - artifacts\templateStorageParams.json
 
      ```json
      {

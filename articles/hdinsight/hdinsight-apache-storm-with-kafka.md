@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: eac9bee6992520492b846e3b579d8a05c327e749
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6c600c4cfe96b849786664aa878ec1f84407da5b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73494363"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963524"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>教學課程：在 HDInsight 上搭配使用 Apache Storm 與 Apache Kafka
 
@@ -32,7 +32,7 @@ ms.locfileid: "73494363"
 > * 停止拓撲
 > * 清除資源
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 熟悉如何建立 Kafka 主題。 如需詳細資訊，請參閱 [HDInsight 上的 Kafka 快速入門](./kafka/apache-kafka-get-started.md)文件。
 
@@ -402,9 +402,9 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
    > [!WARNING]  
    > 若要保證 Kafka 在 HDInsight 上的可用性，您的叢集必須包含至少三個背景工作角色節點。 此範本會建立包含三個背景工作角色節點的 Kafka 叢集。
 
-2. 使用下列指引來填入 [自訂部署]  區段上的項目︰
+2. 使用下列指引來填入 [自訂部署] 區段上的項目︰
 
-   1. 使用下列資訊，填入 [自訂範本]  區段上的項目︰
+   1. 使用下列資訊，填入 [自訂範本] 區段上的項目︰
 
       | 設定 | 值 |
       | --- | --- |
@@ -420,9 +420,9 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
    
       ![範本參數的圖片](./media/hdinsight-apache-storm-with-kafka/storm-kafka-template.png)
 
-3. 讀取**條款及條件**，然後選取 [我同意上方所述的條款及條件]  。
+3. 讀取**條款及條件**，然後選取 [我同意上方所述的條款及條件]。
 
-4. 最後，核取 [釘選到儀表板]  ，然後選取 [購買]  。
+4. 最後，核取 [釘選到儀表板]，然後選取 [購買]。
 
 > [!NOTE]  
 > 建立叢集可能需要 20 分鐘的時間。
@@ -500,7 +500,9 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
     傳回的值類似下列文字︰
 
-        zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    ```output
+    zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    ```
 
     > [!IMPORTANT]  
     > 雖然可能有兩個以上的 Zookeeper 節點，您並不需要提供客戶端完整的主機名單。 列出一兩個主機便已足夠。
@@ -509,9 +511,11 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
 3. 編輯專案根目錄中的 `dev.properties` 檔案。 請將 __Kafka__ 叢集的訊息代理程式和 Zookeeper 主機資訊新增至此檔案中相符的行。 下例是使用先前步驟中的範例值所設定：
 
-        kafka.zookeeper.hosts: zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
-        kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
-        kafka.topic: stormtopic
+    ```bash
+    kafka.zookeeper.hosts: zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
+    kafka.topic: stormtopic
+    ```
 
     > [!IMPORTANT]  
     > 為使用 Azure 儲存體帳戶的叢集設定 `hdfs.url` 項目。 若要使用此拓撲搭配使用 Data Lake Storage 的 Storm 叢集，請將此值從 `wasb` 變更為 `adl`。
@@ -590,11 +594,13 @@ Kafka 會將資料儲存到_主題_中。 在啟動 Storm 拓撲之前，您必�
 
     輸出大致如下：
 
-        Found 173 items
-        -rw-r--r--   1 storm supergroup       5137 2018-04-09 19:00 /stormdata/hdfs-bolt-4-0-1523300453088.txt
-        -rw-r--r--   1 storm supergroup       5128 2018-04-09 19:00 /stormdata/hdfs-bolt-4-1-1523300453624.txt
-        -rw-r--r--   1 storm supergroup       5131 2018-04-09 19:00 /stormdata/hdfs-bolt-4-10-1523300455170.txt
-        ...
+    ```output
+    Found 173 items
+      -rw-r--r--   1 storm supergroup       5137 2018-04-09 19:00 /stormdata/hdfs-bolt-4-0-1523300453088.txt
+      -rw-r--r--   1 storm supergroup       5128 2018-04-09 19:00 /stormdata/hdfs-bolt-4-1-1523300453624.txt
+      -rw-r--r--   1 storm supergroup       5131 2018-04-09 19:00 /stormdata/hdfs-bolt-4-10-1523300455170.txt
+      ...
+    ```
 
 3. 若要檢視檔案內容，請使用下列命令。 請將 `filename.txt` 取代為檔案名稱：
 
@@ -604,13 +610,19 @@ Kafka 會將資料儲存到_主題_中。 在啟動 Storm 拓撲之前，您必�
 
     以下文字是檔案內容的範例：
 
-        four score and seven years ago
-        snow white and the seven dwarfs
-        i am at two with nature
-        snow white and the seven dwarfs
-        i am at two with nature
-        four score and seven years ago
-        an apple a day keeps the doctor away
+    > 八十七年前
+    >
+    > 白雪公主與七矮人
+    >
+    > 我本質上就是矛盾
+    >
+    > 白雪公主與七矮人
+    >
+    > 我本質上就是矛盾
+    >
+    > 八十七年前
+    >
+    > 一天一蘋果，醫生遠離我
 
 ## <a name="stop-the-topologies"></a>停止拓撲
 
@@ -627,9 +639,9 @@ Kafka 會將資料儲存到_主題_中。 在啟動 Storm 拓撲之前，您必�
 
 若要使用 Azure 入口網站移除資源群組：
 
-1. 在 Azure 入口網站中展開左側功能表，以開啟服務的功能表，然後選擇 [資源群組]  以顯示資源群組的清單。
-2. 找出要刪除的資源群組，然後以滑鼠右鍵按一下清單右側的 [更多]  按鈕 (...)。
-3. 選取 [刪除資源群組]  ，並加以確認。
+1. 在 Azure 入口網站中展開左側功能表，以開啟服務的功能表，然後選擇 [資源群組] 以顯示資源群組的清單。
+2. 找出要刪除的資源群組，然後以滑鼠右鍵按一下清單右側的 [更多] 按鈕 (...)。
+3. 選取 [刪除資源群組]，並加以確認。
 
 ## <a name="next-steps"></a>後續步驟
 

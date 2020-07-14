@@ -1,5 +1,5 @@
 ---
-title: 教學課程：使用 REST API 複製到 Blob 儲存體
+title: 教學課程：透過 REST API 複製到 Blob 儲存體
 titleSuffix: Azure Data Box
 description: 了解如何透過 REST API 將資料複製到您的 Azure 資料箱 Blob 儲存體
 services: databox
@@ -7,16 +7,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 05/09/2019
+ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: aa59d2dea4456b977afee92103fa66d6afe9bf31
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 50c4daabe3dc980937f52db7e56cd778890b84d8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219146"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960670"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>教學課程：透過 REST API 將資料複製到 Azure 資料箱 Blob 儲存體  
+# <a name="tutorial-use-rest-apis-to-copy-data-to-azure-data-box-blob-storage"></a>教學課程：使用 REST API 將資料複製到 Azure 資料箱 Blob 儲存體  
 
 本教學課程說明透過 REST API (透過 *http* 或 *https*) 連線到 Azure 資料箱 Blob 儲存體的程序。 連線之後，也會說明將資料複製到資料箱 Blob 儲存體並準備寄送資料箱所需的步驟。
 
@@ -186,15 +186,19 @@ RHEL、Fedora 及 CentOS 的新近版本則使用 `update-ca-trust` 命令。
 
 #### <a name="linux"></a>Linux
 
-    azcopy \
-        --source /mnt/myfolder \
-        --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
-        --dest-key <key> \
-        --recursive
+```azcopy
+azcopy \
+    --source /mnt/myfolder \
+    --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
+    --dest-key <key> \
+    --recursive
+```
 
 #### <a name="windows"></a>Windows
 
-    AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
+```
 
 使用您的帳戶金鑰來取代 `<key>`。 若要取得帳戶金鑰，在 Azure 入口網站中，移至您的儲存體帳戶。 移至 [設定] > [存取金鑰]、選取金鑰，並將它貼到 AzCopy 命令中。
 
@@ -209,16 +213,21 @@ RHEL、Fedora 及 CentOS 的新近版本則使用 `update-ca-trust` 命令。
 如果您只想複製目的地中不存在的來源資源，請在 AzCopy 命令中同時指定 `--exclude-older` 和 `--exclude-newer` (Linux) 或 `/XO` 和 `/XN` (Windows) 參數。 AzCopy 只會上傳已更新的資料 (根據其時間戳記)。
 
 #### <a name="linux"></a>Linux
-    azcopy \
-    --source /mnt/myfolder \
-    --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
-    --dest-key <key> \
-    --recursive \
-    --exclude-older
+
+```azcopy
+azcopy \
+--source /mnt/myfolder \
+--destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
+--dest-key <key> \
+--recursive \
+--exclude-older
+```
 
 #### <a name="windows"></a>Windows
 
-    AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+```
 
 如果在連線或複製作業期間發生任何錯誤，請參閱[針對資料箱 Blob 儲存體問題進行疑難排解](data-box-troubleshoot-rest.md)。
 

@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: 379f7a0ef60020566de9edfcafb0809d1955cac8
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: cd6e075448c68b6d2c65832d128e14c016c69c7c
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84752119"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85601406"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>將 Azure 訂用帳戶的帳單擁有權交給您的 MPA 帳戶
 
@@ -20,7 +20,7 @@ ms.locfileid: "84752119"
 
 這項功能僅適用於已認證為 [Azure 專家 MSP](https://partner.microsoft.com/membership/azure-expert-msp) 的 CSP 直接帳單合作夥伴。 這受限於 Microsoft 控管和原則，而且可能需要對特定客戶進行檢閱與核准。
 
-若要要求帳單擁有權，您必須擁有 [全域管理員]**** 或 [管理員代理人]**** 角色。 若要深入了解，請參閱[合作夥伴中心 - 指派使用者角色和權限](https://docs.microsoft.com/partner-center/permissions-overview)。
+若要要求帳單擁有權，您必須擁有 [全域管理員] 或 [管理員代理人] 角色。 若要深入了解，請參閱[合作夥伴中心 - 指派使用者角色和權限](https://docs.microsoft.com/partner-center/permissions-overview)。
 
 本文適用於 Microsoft 合作夥伴合約的計費帳戶。 針對雲端解決方案提供者 (CSP) 建立這些帳戶，以便在新的商務體驗中管理其客戶的帳單。 新的體驗僅適用於下列合作夥伴：至少有一個客戶已接受 Microsoft 客戶合約 (MCA) 且具有 Azure 方案。 [檢查您是否有 Microsoft 合作夥伴合約的存取權](#check-access-to-a-microsoft-partner-agreement)。
 
@@ -33,19 +33,19 @@ ms.locfileid: "84752119"
 ## <a name="request-billing-ownership"></a>要求帳單擁有權
 
 1. 使用 CSP 租用戶中的 CSP 管理代理程式認證登入 [Azure 入口網站](https://portal.azure.com)。
-1. 搜尋 [成本管理 + 帳單]****。  
+1. 搜尋 [成本管理 + 帳單]。  
     ![顯示在 Azure 入口網站中搜尋 [成本管理 + 計費] 的螢幕擷取畫面](./media/mpa-request-ownership/search-cmb.png)
-1. 從左側選取 [客戶]****，然後從清單中選取客戶。  
+1. 從左側選取 [客戶]，然後從清單中選取客戶。  
     [![顯示選取客戶的螢幕擷取畫面](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
-1. 從左下方選取 [轉移要求]****，然後選取 [新增要求]****。  
+1. 從左下方選取 [轉移要求]，然後選取 [新增要求]。  
     [![顯示選取轉移要求的螢幕擷取畫面](./media/mpa-request-ownership/mpa-select-transfer-requests.png)](./media/mpa-request-ownership/mpa-select-transfer-requests.png#lightbox)
-1. 輸入客戶組織中將接受轉移要求之使用者的電子郵件地址。 此使用者必須是 Enterprise 合約上的帳戶擁有者。 選取 [傳送轉移要求]****。  
+1. 輸入客戶組織中將接受轉移要求之使用者的電子郵件地址。 此使用者必須是 Enterprise 合約上的帳戶擁有者。 選取 [傳送轉移要求]。  
     [![顯示傳送轉移要求的螢幕擷取畫面](./media/mpa-request-ownership/mpa-send-transfer-requests.png)](./media/mpa-request-ownership/mpa-send-transfer-requests.png#lightbox)
 1. 使用者會收到一封電子郵件，內含用來檢閱轉移要求的指示。  
     ![顯示檢閱轉移要求電子郵件的螢幕擷取畫面](./media/mpa-request-ownership/mpa-review-transfer-request-email.png)
 1. 若要核准轉移要求，使用者須選取電子郵件中的連結，並遵循相關指示。  
-    [![顯示檢閱轉移要求的螢幕擷取畫面](./media/mpa-request-ownership/review-transfer-requests.png)](./media/mpa-request-ownership/review-transfer-requests.png#lightbox) 使用者可選取他們要從中轉移 Azure 產品的計費帳戶。 選取之後，會顯示可轉移的合格產品。 **注意：** 已停用的訂用帳戶無法轉移，且會顯示在「無法轉移的 Azure 產品」清單中 (如果適用)。 選取要轉移的 Azure 產品之後，請選取 [驗證]****。
-1. [傳輸驗證結果]**** 區域會顯示即將轉移的 Azure 產品所產生的影響。 以下是可能的狀態：
+    [![顯示檢閱轉移要求的螢幕擷取畫面](./media/mpa-request-ownership/review-transfer-requests.png)](./media/mpa-request-ownership/review-transfer-requests.png#lightbox) 使用者可選取他們要從中轉移 Azure 產品的計費帳戶。 選取之後，會顯示可轉移的合格產品。 **注意：** 已停用的訂用帳戶無法轉移，且會顯示在「無法轉移的 Azure 產品」清單中 (如果適用)。 選取要轉移的 Azure 產品之後，請選取 [驗證]。
+1. [傳輸驗證結果] 區域會顯示即將轉移的 Azure 產品所產生的影響。 以下是可能的狀態：
     * **通過** - 此 Azure 產品的驗證已通過，可進行轉移。
     * **警告** - 選取的 Azure 產品出現警告。 雖然產品仍可轉移，但轉移時會造成使用者在想要採取緩和動作時應注意的影響。 例如，假設要轉移的 Azure 訂用帳戶受益於 RI。 轉移之後，訂用帳戶將不再享有該權益。 若要盡可能節省成本，請確定 RI 已與可使用其權益的另一個訂用帳戶相關聯。 實際上，使用者也可選擇返回選取頁面，並取消選取此 Azure 訂用帳戶。
     * **失敗** - 選取的 Azure 產品因錯誤而無法轉移。 使用者必須回到選取頁面並取消選取此產品，以轉移其他已選取的 Azure 產品。  
@@ -54,12 +54,12 @@ ms.locfileid: "84752119"
 ## <a name="check-the-transfer-request-status"></a>查看轉移要求狀態
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 搜尋 [成本管理 + 帳單]****。  
+1. 搜尋 [成本管理 + 帳單]。  
     ![顯示在 Azure 入口網站中搜尋 [成本管理 + 計費] 的螢幕擷取畫面](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
-1. 從左側選取 [客戶]****。  
+1. 從左側選取 [客戶]。  
     [![顯示選取客戶的螢幕擷取畫面](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
 1. 從清單中選取您為其傳送轉移要求的客戶。
-1. 從左下方選取 [轉移要求]****。 [轉移要求] 頁面會顯示下列資訊：[![顯示轉移要求清單的螢幕擷取畫面](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png)](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png#lightbox)
+1. 從左下方選取 [轉移要求]。 [轉移要求] 頁面會顯示下列資訊：[![顯示轉移要求清單的螢幕擷取畫面](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png)](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png#lightbox)
 
    |資料行|定義|
    |---------|---------|

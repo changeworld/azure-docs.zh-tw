@@ -10,16 +10,16 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 9772ea320ff28325ffdc8cdcb6e35947b182d1b3
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: ae2d6259bac6a2034edc98de9b0405f32f17fbc3
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095193"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849490"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>在 Key Vault 中建立和合併 CSR
 
-Azure Key Vault 支援建立具有私人/公開金鑰組的憑證簽署要求，並由您選擇的任何憑證授權單位來簽署此要求。 其可以是內部企業 CA 或外部公用 CA。 憑證簽署要求 (也就是 CSR 或認證要求) 是由使用者傳送到憑證授權單位 (CA) 的訊息，目的是要求發行憑證。
+Azure Key Vault 支援將您所選任何憑證授權單位發行的數位憑證儲存在金鑰保存庫中。 其支援建立具有私人/公開金鑰組的憑證簽署要求，這可由任何任何指定的憑證授權單位簽署。 其可以是內部企業 CA 或外部公用 CA。 憑證簽署要求 (也就是 CSR 或認證要求) 是由使用者傳送到憑證授權單位 (CA) 的訊息，目的是要求發行憑證。
 
 如需更多有關憑證的一般資訊，請參閱 [Azure Key Vault 憑證](/azure/key-vault/certificates/about-certificates)。
 

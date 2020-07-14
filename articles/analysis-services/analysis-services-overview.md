@@ -4,16 +4,16 @@ description: 了解 Azure Analysis Services，此為完全受控的平台即服�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 04/13/2020
+ms.date: 06/24/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 0fb0e9e2611ed882bffa1df62adeb617e7211354
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: f1e70c5b7eb4efdde1bfc20b1ec3e058bfa5b054
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191974"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918957"
 ---
 # <a name="what-is-azure-analysis-services"></a>什麼是 Azure Analysis Services？
 
@@ -65,14 +65,13 @@ Azure Analysis Services 會以**開發人員**、**基本**及**標準**層提�
 |S1    |    100     |    25     |
 |S2    |    200     |    50     |
 |S4    |    400     |    100     |
-|S8 <sup>[1](#depr)</sup>，<sup>[2](#rec)</sup>    |    320    |    200     |
-|S9 <sup>[1](#depr)</sup>，<sup>[2](#rec)</sup>    |    640    |    400     |
-|S8v2 <sup>[1](#depr)</sup>   |    640     |    200     |
-|S9v2 <sup>[1](#depr)</sup>    |    1280    |    400     |
+|S8 <sup>[1](#naar)</sup>，<sup>[2](#rec)</sup>   |    320    |    200     |
+|S9 <sup>[1](#naar)</sup>，<sup>[2](#rec)</sup>    |    640    |    400     |
+|S8v2 <sup>[1](#naar)</sup>   |    640     |    200     |
+|S9v2 <sup>[1](#naar)</sup>    |    1280    |    400     |
 
-<a name="depr">1</a> - 並非所有區域都有提供。   
-<a name="rec">2</a> - 此方案已淘汰。 建議使用 v2。
-
+<a name="naar">1</a> - 並非所有區域都有提供。   
+<a name="rec">2</a> - 建議使用 v2。
 
 ## <a name="availability-by-region"></a>依區域的可用性
 
@@ -86,15 +85,15 @@ Azure Analysis Services 會以**開發人員**、**基本**及**標準**層提�
 |加拿大中部    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |美國東部     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |美國東部 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
-|美國東部 2     |     S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2   |    1    |
+|美國東部 2     |     S8、S9、S8v2、S9v2   |    1    |
 |美國中北部     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |美國中部     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |美國中南部     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |美國中西部   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |美國西部     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
-|美國西部     |    S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2   |    2  |
+|美國西部     |    S8、S9、S8v2、S9v2   |    2  |
 |美國西部 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|美國西部 2    |    S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2  |    1     |
+|美國西部 2    |    S8、S9、S8v2、S9v2  |    1     |
 
 ### <a name="europe"></a>歐洲
 
@@ -104,17 +103,17 @@ Azure Analysis Services 會以**開發人員**、**基本**及**標準**層提�
 |北歐     |    S8v2、S9v2      |    3     |
 |英國南部     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
 |西歐     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
-|西歐    |   S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2  |  1  |
+|西歐    |   S8、S9、S8v2、S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>亞太地區 
 
 |區域  | 支援的方案 | 查詢複本 (僅限標準方案) |
 |---------|---------|:---------:|
 |澳大利亞東部     |    B1, B2, S0, S1, S2, S4     |    3     |
-|澳大利亞東部     |    S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2    |    1     |
+|澳大利亞東部     |    S8、S9、S8v2、S9v2    |    1     |
 |澳大利亞東南部     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |日本東部     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|東南亞     |     B1、B2、S0、S1、S2、S4、S8<sup>[2](#rec)</sup>、S9<sup>[2](#rec)</sup>、S8v2、S9v2、D1     |   1      |
+|東南亞     |     B1、B2、S0、S1、S2、S4、S8、S9、S8v2、S9v2、D1     |   1      |
 |印度西部     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>調整您的需求
@@ -133,15 +132,17 @@ Azure Analysis Services 會以**開發人員**、**基本**及**標準**層提�
 
 ## <a name="pricing"></a>定價
 
-總成本取決於許多因素；例如，您所選擇的區域、服務層、查詢複本和暫停/繼續。 請使用 [Azure Analysis Services 定價](https://azure.microsoft.com/pricing/details/analysis-services/)計算機來判斷您所在區域的一般定價。 此工具會計算單一區域單一伺服器執行個體的定價。 請記住，查詢複本會以相同的伺服器費率計費。 
+總成本取決於許多因素。 例如，您所選擇的區域、服務層、查詢複本和暫停/繼續。 請使用 [Azure Analysis Services 定價](https://azure.microsoft.com/pricing/details/analysis-services/)計算機來判斷您所在區域的一般定價。 此工具會計算單一區域單一伺服器執行個體的定價。 請記住，查詢複本會以相同的伺服器費率計費。 
 
 ## <a name="built-on-sql-server-analysis-services"></a>建置在 SQL Server Analysis Services 上
 
 Azure Analysis Services 與 SQL Server Analysis Services Enterprise Edition 中現有的許多優質功能相容。 Azure Analysis Services 支援 1200 或更高[相容性層級](analysis-services-compat-level.md)的表格式模型。 表格式模型屬於關聯式模型建構 (模型、資料表、資料行)，在表格式模型指令碼語言 (TMSL) 和表格式物件模型 (TOM) 程式碼中會以表格式中繼資料物件定義來加以聯結。 分割區、檢視方塊、資料列層級安全性、雙向關聯性和轉譯都有支援\*。 多維度模型和 PowerPivot for SharePoint 則不受 Azure Analysis Services 支援。
 
-記憶體內部模式和 DirectQuery 模式皆支援表格式模型。 記憶體內部模式 (預設值) 的表格式模型支援多個資料來源。 因為模型資料經過高度壓縮，且會快取到記憶體內部，此模式可在資料量很大時提供最快的查詢回應速度。 針對複雜的資料集和查詢，它也可提供最大的彈性。 分割能實現累加式載入、增加平行處理能力，並降低記憶體耗用量。 其他進階的資料模型功能 (例如，導出的資料表和所有的 DAX 函式) 都可獲得支援。 記憶體內部模型必須經過重新整理 (處理)，才能從資料來源更新快取資料。 搭配 Azure 服務主體支援，使用 PowerShell、TOM、TMSL 和 REST 的自動重新整理作業可提供彈性，確保模型資料永遠是最新的。 
+記憶體內部模式和 DirectQuery 模式皆支援表格式模型。 記憶體內部模式 (預設值) 的表格式模型支援多個資料來源。 因為模型資料經過高度壓縮，且會快取到記憶體內部，此模式可在資料量很大時提供最快的查詢回應速度。 針對複雜的資料集和查詢，它也可提供最大的彈性。 
 
-DirectQuery 模式* 會利用後端關聯式資料庫來提供儲存和查詢執行功能。 單一的 SQL Server、SQL Server 資料倉儲、Azure SQL Database、Azure Synapse Analytics (SQL 資料倉儲)、Oracle 和 Teradata 資料來源都可支援超大型資料集。 後端資料集可超過可用的伺服器資源記憶體。 不需要複雜的資料模型重新整理案例。 此模式也有一些限制，例如，資料來源類型有限、DAX 公式限制，且不支援某些進階的資料模型化功能。 請先參閱[直接查詢模式](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular)，再來判斷最適合您的模式。
+分割能實現累加式載入、增加平行處理能力，並降低記憶體耗用量。 其他進階的資料模型功能 (例如，導出的資料表和所有的 DAX 函式) 都可獲得支援。 記憶體內部模型必須經過重新整理 (處理)，才能從資料來源更新快取資料。 搭配 Azure 服務主體支援，使用 PowerShell、TOM、TMSL 和 REST 的自動重新整理作業可提供彈性，確保模型資料永遠是最新的。 
+
+DirectQuery 模式* 會利用後端關聯式資料庫來提供儲存和查詢執行功能。 單一的 SQL Server、SQL Server 資料倉儲、Azure SQL Database、Azure Synapse Analytics (先前的 SQL 資料倉儲)、Oracle 和 Teradata 資料來源都可支援超大型資料集。 後端資料集可超過可用的伺服器資源記憶體。 不需要複雜的資料模型重新整理案例。 此模式也有一些限制，例如，資料來源類型有限、DAX 公式限制，且不支援某些進階的資料模型化功能。 請先參閱[直接查詢模式](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular)，再來判斷最適合您的模式。
 
 \* 功能是否可用取決於服務層。
 

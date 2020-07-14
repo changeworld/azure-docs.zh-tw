@@ -3,13 +3,13 @@ title: 教學課程：檢閱端點語句 - LUIS
 description: 在本教學課程中，藉由驗證或更正透過 LUIS 不確定的 LUIS HTTP 端點所收到的語句來改善應用程式的預測。 有些語句可能會針對意圖進行驗證，而其他語句則可能需要針對實體進行驗證。
 services: cognitive-services
 ms.topic: tutorial
-ms.date: 06/22/2020
-ms.openlocfilehash: c2df8cdba3422c522aa4ccf1fe4138a510355d12
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.date: 07/02/2020
+ms.openlocfilehash: 082e625efeeb4764aaa1ac5101eb2b0013348b19
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445914"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959010"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>教學課程：檢閱端點語句以修正不確定的預測
 在本教學課程中，藉由驗證或更正透過 LUIS 不確定的 LUIS HTTPS 端點所收到的語句來改善應用程式的預測。 您應該在排定的 LUIS 維護中定期檢閱端點語句。
@@ -35,11 +35,16 @@ ms.locfileid: "85445914"
 
 ## <a name="download-json-file-for-app"></a>下載應用程式的 JSON 檔案
 
-下載並儲存[應用程式的 JSON 檔案](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true)。
+下載並儲存[應用程式的 JSON 檔案](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/tutorial-fix-unsure-predictions.json?raw=true)。
 
 ## <a name="import-json-file-for-app"></a>匯入應用程式的 JSON 檔案
 
-[!INCLUDE [Import app steps](includes/import-app-steps.md)]
+
+1. 在 [LUIS 入口網站](https://www.luis.ai)中，從 [我的應用程式] 頁面選取 [+ 新增對話應用程式]，然後選取 [匯入為 JSON]。 尋找上一個步驟中已儲存的 JSON 檔案。 您不需要變更應用程式的名稱。 選取 [完成] 
+
+1. 依序選取 [建置] 和 [意圖] 來查看意圖，也就是 LUIS 應用程式的主要構成要素。
+
+    :::image type="content" source="media/luis-tutorial-review-endpoint-utterances/initial-intents-in-app.png" alt-text="從 [版本] 頁面變更為 [意圖] 頁面。":::
 
 ## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>為應用程式定型以將實體變更套用至應用程式
 
@@ -77,15 +82,11 @@ ms.locfileid: "85445914"
 
 1. 從入口網站的 [建置] 區段中，選取左側導覽中的 [檢閱端點語句]。 此清單已針對 **ApplyForJob** 意圖進行篩選。
 
-    > [!div class="mx-imgBorder"]
-    > ![[檢閱端點語句] 按鈕在左側導覽中的螢幕擷取畫面](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)
+    :::image type="content" source="./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png" alt-text="[檢閱端點語句] 按鈕在左側導覽中的螢幕擷取畫面。":::
 
-    此語句 (`I'm looking for a job with Natural Language Processing`) 的意圖不正確。
+    此語句 (`I'm looking for a job with Natural Language Processing`) 的意圖不正確，_GetJobInformation_。 因為這兩個意圖中的作業名稱和動詞的相似性，使其已錯估為 _ApplyForJob_。
 
-1.  若要對齊此語句，請在語句資料列上，選取 `GetJobInformation` 的正確**對齊意圖**。 選取核取記號，即可將已變更的語句新增至應用程式。
-
-    > [!div class="mx-imgBorder"]
-    > ![[檢閱端點語句] 按鈕在左側導覽中的螢幕擷取畫面](./media/luis-tutorial-review-endpoint-utterances/select-correct-aligned-intent-for-endpoint-utterance.png)
+1.  若要對齊此語句，選取 `GetJobInformation` 的正確**對齊意圖**。 選取核取記號，即可將已變更的語句新增至應用程式。
 
     檢閱此意圖中的其餘語句，並視需要更正對齊的意圖。 使用本教學課程中的初始語句資料表來檢視對齊的意圖。
 
@@ -110,37 +111,37 @@ ms.locfileid: "85445914"
             "topIntent": "GetJobInformation",
             "intents": {
                 "GetJobInformation": {
-                    "score": 0.903607249
-                },
-                "EmployeeFeedback": {
-                    "score": 0.0312187821
+                    "score": 0.901367366
                 },
                 "ApplyForJob": {
-                    "score": 0.0230276529
+                    "score": 0.0307973567
+                },
+                "EmployeeFeedback": {
+                    "score": 0.0296942145
                 },
                 "MoveEmployee": {
-                    "score": 0.008322801
-                },
-                "Utilities.Stop": {
-                    "score": 0.004480808
+                    "score": 0.00739785144
                 },
                 "FindForm": {
-                    "score": 0.00425248267
+                    "score": 0.00449316856
+                },
+                "Utilities.Stop": {
+                    "score": 0.00417657848
                 },
                 "Utilities.StartOver": {
-                    "score": 0.004224336
+                    "score": 0.00407167152
                 },
                 "Utilities.Help": {
-                    "score": 0.00373591436
+                    "score": 0.003662492
                 },
                 "None": {
-                    "score": 0.0034621188
+                    "score": 0.00335733569
                 },
                 "Utilities.Cancel": {
-                    "score": 0.00230977475
+                    "score": 0.002225436
                 },
                 "Utilities.Confirm": {
-                    "score": 0.00112078607
+                    "score": 0.00107437756
                 }
             },
             "entities": {
@@ -156,7 +157,7 @@ ms.locfileid: "85445914"
                                 "timex": "PRESENT_REF",
                                 "resolution": [
                                     {
-                                        "value": "2019-12-05 23:23:53"
+                                        "value": "2020-07-02 21:45:50"
                                     }
                                 ]
                             }

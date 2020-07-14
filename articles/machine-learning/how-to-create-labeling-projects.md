@@ -5,16 +5,17 @@ description: 了解如何建立及執行標記專案，以將用於機器學習�
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
+ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: f514c33f2c39e205ac186b70711b478f67fcb4e5
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: e20b7b447797a957f860c6b1dd9679519960ebc5
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211999"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025177"
 ---
-# <a name="create-a-data-labeling-project-and-export-labels"></a>建立資料標記專案和匯出標籤 
+# <a name="create-a-data-labeling-project-preview-and-export-labels"></a>建立資料標記專案 (預覽) 和匯出標籤 
 
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 

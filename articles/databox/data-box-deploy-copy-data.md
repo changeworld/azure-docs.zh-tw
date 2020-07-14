@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: a3e66e7f6857361136fb4b7839953790f66b4db5
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 82cdd8519f1e3fce80aaf051d6bc5fc40a9b8be9
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219102"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959566"
 ---
 ::: zone target="docs"
 
@@ -62,7 +62,7 @@ ms.locfileid: "84219102"
 
 下表顯示您資料箱上的共用 UNC 路徑，以及用於上傳資料的 Azure 儲存體路徑 URL。 最終的 Azure 儲存體路徑 URL 可以衍生自 UNC 共用路徑。
  
-|                   |                                                            |
+|Azure 儲存體類型  | 資料箱共用            |
 |-------------------|--------------------------------------------------------------------------------|
 | Azure 區塊 Blob | <li>共用的 UNC 路徑：`\\<DeviceIPAddress>\<StorageAccountName_BlockBlob>\<ContainerName>\files\a.txt`</li><li>Azure 儲存體 URL：`https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
 | Azure 分頁 Blob  | <li>共用的 UNC 路徑：`\\<DeviceIPAddres>\<StorageAccountName_PageBlob>\<ContainerName>\files\a.txt`</li><li>Azure 儲存體 URL：`https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
@@ -70,32 +70,32 @@ ms.locfileid: "84219102"
 
 如果使用 Windows Server 主機電腦，請依照下列步驟來連線至資料箱。
 
-1. 第一個步驟是驗證並啟動工作階段。 移至 [連線並複製]。 按一下 [取得認證]，以取得您儲存體帳戶相關共用的存取認證。 
+1. 第一個步驟是驗證並啟動工作階段。 移至 [連線並複製]。 選取 [SMB]，以取得您儲存體帳戶相關共用的存取認證。 
 
     ![取得共用認證 1](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
-2. 在 [存取共用及複製資料] 對話方塊中，複製與共用相對應的 [使用者名稱] 和 [密碼]。 按一下 [確定]。
+2. 在 [存取共用及複製資料] 對話方塊中，複製與共用相對應的 [使用者名稱] 和 [密碼]。 選取 [確定]。
     
     ![取得共用認證 1](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
-3. 若要從主機電腦存取與您的儲存體帳戶相關聯的共用 (在下列範例中為 devicemanagertest1)，請開啟命令視窗。 在命令提示字元中，輸入：
+3. 若要從主機電腦存取與您的儲存體帳戶相關聯的共用 (在下列範例中為 utsac1)，請開啟命令視窗。 在命令提示字元中，輸入：
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
     視您的資料格式而定，共用路徑如下所示：
-    - Azure 區塊 Blob - `\\10.126.76.172\devicemanagertest1_BlockBlob`
-    - Azure 分頁 Blob - `\\10.126.76.172\devicemanagertest1_PageBlob`
-    - Azure 檔案服務 - `\\10.126.76.172\devicemanagertest1_AzFile`
+    - Azure 區塊 Blob - `\\10.126.76.138\utSAC1_202006051000_BlockBlob`
+    - Azure 分頁 Blob - `\\10.126.76.138\utSAC1_202006051000_PageBlob`
+    - Azure 檔案服務 - `\\10.126.76.138\utSAC1_202006051000_AzFile`
 
 4. 出現提示時，請輸入共用的密碼。 下列範例說明如何透過前述命令連線至共用。
 
     ```
-    C:\Users\Databoxuser>net use \\10.126.76.172\devicemanagertest1_BlockBlob /u:devicemanagertest1
-    Enter the password for 'devicemanagertest1' to connect to '10.126.76.172':
+    C:\Users\Databoxuser>net use \\10.126.76.138\utSAC1_202006051000_BlockBlob /u:testuser1
+    Enter the password for 'testuser1' to connect to '10.126.76.138':
     The command completed successfully.
     ```
 
-4. 按 Windows + R。在 [執行] 視窗中，指定 `\\<device IP address>`。 按一下 [確定] 以開啟檔案總管。
+4. 按 Windows + R。在 [執行] 視窗中，指定 `\\<device IP address>`。 選取 [確定] 以開啟檔案總管。
     
     ![透過檔案總管 2 連線至共用](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
@@ -107,7 +107,7 @@ ms.locfileid: "84219102"
     
 使用 Linux 用戶端時，請使用下列命令來掛接 SMB 共用。 下方的 "vers" 參數是您的 Linux 主機支援的 SMB 版本。 請在下列命令中插入適當的版本。 如需資料箱支援哪些 SMB 版本的相關資訊，請參閱 [Linux 用戶端支援的檔案系統](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients) 
 
-    `sudo mount -t nfs -o vers=2.1 10.126.76.172:/devicemanagertest1_BlockBlob /home/databoxubuntuhost/databox`
+    `sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home/databoxubuntuhost/databox`
 
 ## <a name="copy-data-to-data-box"></a>將資料複製到資料箱
 
@@ -215,11 +215,23 @@ ms.locfileid: "84219102"
 
 如需 Robocopy 命令的詳細資訊，請移至 [Robocopy 和數個範例](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx)。
 
-開啟目標資料夾，以檢視並確認已複製的檔案。 如果您在複製程序期間遇到任何錯誤，請下載錯誤檔以進行疑難排解。 如需詳細資訊，請參閱[在資料複製到資料箱期間檢視錯誤記錄](data-box-logs.md#view-error-log-during-data-copy)。 如需資料複製期間的詳細錯誤清單，請參閱[針對資料箱問題進行疑難排解](data-box-troubleshoot.md)。
+在複製程序期間如果發生任何錯誤，您會看到通知。
+
+![下載及檢視 [連線並複製] 頁面上的錯誤](media/data-box-deploy-copy-data/view-errors-1.png)
+
+選取 [下載問題清單]。
+
+![下載及檢視 [連線並複製] 頁面上的錯誤](media/data-box-deploy-copy-data/view-errors-2.png)
+
+開啟清單以檢視錯誤的詳細資料，並選取 [解析 URL] 以檢視建議的解決方法。
+
+![下載及檢視 [連線並複製] 頁面上的錯誤](media/data-box-deploy-copy-data/view-errors-3.png)
+
+如需詳細資訊，請參閱[在資料複製到資料箱期間檢視錯誤記錄](data-box-logs.md#view-error-log-during-data-copy)。 如需資料複製期間的詳細錯誤清單，請參閱[針對資料箱問題進行疑難排解](data-box-troubleshoot.md)。
 
 為了確保資料完整性，在複製資料時會計算內嵌的總和檢查碼。 複製完成後，請確認您的裝置上已使用的空間和可用空間。
 
-   ![確認儀表板上的可用空間和已使用的空間](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
+![確認儀表板上的可用空間和已使用的空間](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 ::: zone-end
 

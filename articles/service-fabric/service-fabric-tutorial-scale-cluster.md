@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何在 Azure 中相應放大
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 6e8dbb5a56bf313bf35ad97ec6ea7df8ce483be9
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: ed212083a29836e1da593ec42c31bbf86b907546
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788816"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611640"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教學課程：在 Azure 中調整 Service Fabric 叢集
 
@@ -33,7 +33,7 @@ ms.locfileid: "82788816"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始進行本教學課程之前：
 
@@ -68,11 +68,11 @@ ms.locfileid: "82788816"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)，移至包含叢集的資源群組 (**sfclustertutorialgroup**，前提是您已遵循本教學課程)。 
 
-2. 在左窗格中，選取 [部署]  ，或選取 [部署]  下方的連結。 
+2. 在左窗格中，選取 [部署]，或選取 [部署] 下方的連結。 
 
 3. 從清單中選取最新的成功部署。
 
-4. 在左窗格中，選取 [範本]  ，然後選取 [下載]  以將範本匯出為 ZIP 檔案。  將範本和參數儲存到您的本機電腦。
+4. 在左窗格中，選取 [範本]，然後選取 [下載] 以將範本匯出為 ZIP 檔案。  將範本和參數儲存到您的本機電腦。
 
 ## <a name="add-nodes-to-or-remove-nodes-from-a-node-type"></a>從節點類型中新增或移除節點
 
@@ -833,13 +833,12 @@ Foreach($node in $nodes)
 ```
 
 ## <a name="increase-node-resources"></a>增加節點資源 
-建立 Service Fabric 叢集之後，您可以垂直調整叢集節點類型 (變更節點的資源) 或將節點類型 VM 的作業系統升級。  
+建立 Service Fabric 叢集之後，您可以使用新的節點類型 (包括更新的 VM SKU 或作業系統映像) 取代原始的節點類型，垂直調整叢集節點類型 (變更節點的資源) 或將節點類型 VM 的作業系統升級。 如需詳細的資訊，請參閱[擴大 Azure Service Fabric 節點類型](service-fabric-scale-up-node-type.md)。
 
-> [!WARNING]
-> 建議您不要變更擴展集/節點類型的 VM SKU，除非它會在銀級持久性或更高層級執行。 變更 VM SKU 大小是就地破壞資料的基礎結構作業。 如果沒有延遲或監視此變更的能力，作業可能會導致具狀態服務的資料遺失，或者甚至對於無狀態工作負載導致其他未預期作業問題。
+> [!IMPORTANT]
+> 請勿嘗試就地變更 VM SKU 或作業系統映像，這是一項危險的作業且不受支援。
 
-> [!WARNING]
-> 建議您不要變更主要節點類型的 VM SKU，這是個非常危險的作業且不受支援。  如果您需要更多叢集容量，則可新增更多 VM 執行個體或其他節點類型。  如果此做法不可行，您可以建立新的叢集，並從舊叢集[還原應用程式狀態](service-fabric-reliable-services-backup-restore.md) (如果適用)。  如果不可行，則可[變更主要節點類型的 VM SKU](service-fabric-scale-up-node-type.md)。
+如果此做法不可行，您可以從舊叢集建立新的叢集並[還原應用程式狀態](service-fabric-reliable-services-backup-restore.md) (如果適用的話)。 您不需要還原任何系統服務狀態，這些狀態會在您部署應用程式到新叢集時重新建立。 如果您之前只在叢集上執行無狀態應用程式，那麼您要做的只有部署應用程式到新叢集，不需還原任何東西。
 
 ### <a name="update-the-template"></a>更新範本
 
@@ -873,19 +872,7 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 > [!div class="nextstepaction"]
 > [升級叢集的執行階段](service-fabric-tutorial-upgrade-cluster.md)
 
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
-[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
-[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
-
-> * 新增和移除節點類型 (擴增和縮減)
-> * 增加節點資源 (擴大)
-
-接下來，請前往下列教學課程，了解如何升級叢集執行階段。
-> [!div class="nextstepaction"]
-> [升級叢集的執行階段](service-fabric-tutorial-upgrade-cluster.md)
-
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json

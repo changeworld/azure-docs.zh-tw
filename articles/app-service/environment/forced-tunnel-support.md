@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 3334a19b1ba0e3949ab2670c5d2f70d3bcd02fe8
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 6dc002b0ed9e68ea15eaa58c226249837c7df32d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983905"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85830854"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>設定 App Service Environment 搭配強制通道
 
@@ -79,7 +79,7 @@ ASE 有一些外部相依性，[App Service 環境網路架構][network]文件�
 
 當您在資源上啟用服務端點時，所建立的路由具有高於所有其他路由的優先順序。 如果您使用服務端點搭配強制通道 ASE，Azure SQL 和 Azure 儲存體管理流量不會使用強制通道。 其他 ASE 相依性流量會使用強制通道且不能遺失，否則 ASE 會無法正常運作。
 
-透過 Azure SQL 執行個體在子網路上啟用服務端點時，從該子網路連線的所有 Azure SQL 執行個體都必須啟用服務端點。 如果您想要從相同的子網路存取多個 Azure SQL 執行個體，您就無法在一個 Azure SQL 執行個體啟用服務端點，而不要在另一個執行個體上啟用。  Azure 儲存體與 Azure SQL 的運作方式不同。  當您使用 Azure 儲存體啟用服務端點時，您會封鎖您的子網路存取該資源，，但仍可存取其他 Azure 儲存體帳戶 (即使它們未啟用服務端點)。  
+透過 Azure SQL 執行個體在子網路上啟用服務端點時，從該子網路連線的所有 Azure SQL 執行個體都必須啟用服務端點。 如果您想要從相同的子網路存取多個 Azure SQL 執行個體，您就無法在一個 Azure SQL 執行個體啟用服務端點，而不要在另一個執行個體上啟用。  Azure 儲存體與 Azure SQL 的運作方式不同。  當您使用 Azure 儲存體啟用服務端點時，您會封鎖您的子網路存取該資源，但仍可存取其他 Azure 儲存體帳戶 (即使它們未啟用服務端點)。  
 
 如果您設定對網路篩選設備使用強制通道，請記住，除了 Azure SQL 和 Azure 儲存體以外，ASE 還具有一些相依性。 如果封鎖對這些相依項目的流量，則 ASE 無法正常運作。
 
@@ -95,35 +95,39 @@ ASE 有一些外部相依性，[App Service 環境網路架構][network]文件�
 
 3. 取得位址，該位址將使用於從您的 App Service Environment 至網際網路的所有輸出流量。 如果您將流量路由傳送至內部部署網路，則這些位址就是您的 NAT 或閘道 IP。 如果您想要透過 NVA 路由傳送 App Service Environment 連出流量，則輸出位址為 NVA 的公用 IP。
 
-4. _若要在現有的 App Service 環境中設定輸出位址：_ 移至 resources.azure.com，然後移至 Subscription/\<subscription id>/resourceGroups/\<ase resource group>/providers/Microsoft.Web/hostingEnvironments/\<ase name>。 接著，您就可以看到描述您 App Service Environment 的 JSON。 確定最上方寫的是「讀取/寫入」  。 選取 [編輯]  。 向下捲動至底部。 將 **userWhitelistedIpRanges** 值從 **null** 變更為類似以下這樣。 使用您要設為輸出位址範圍的位址。 
+4. _若要在現有的 App Service 環境中設定輸出位址：_ 移至 resource.azure.com 並前往 Subscription/\<subscription id>/resourceGroups/\<ase resource group>/providers/Microsoft.Web/hostingEnvironments/\<ase name>。 接著，您就可以看到描述您 App Service Environment 的 JSON。 確定最上方寫的是「讀取/寫入」。 選取 [編輯]。 向下捲動至底部。 將 **userWhitelistedIpRanges** 值從 **null** 變更為類似以下這樣。 使用您要設為輸出位址範圍的位址。 
 
-        "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"] 
+    ```json
+    "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"]
+    ```
 
-   選取頂端的 [PUT]  。 此選項會觸發 App Service Environment 上的規模調整作業，並調整防火牆。
+   選取頂端的 [PUT]。 此選項會觸發 App Service Environment 上的規模調整作業，並調整防火牆。
 
 _若要使用輸出位址來建立您的 ASE_：請依照[使用範本建立 App Service 環境][template]中的指示操作，並取得適當的範本。  編輯 azuredeploy.json 檔案中的 "resources" 區段 (但不在 "properties" 區塊中)，而且納入包含您的值的 **userWhitelistedIpRanges** 行。
 
-    "resources": [
-      {
+```json
+"resources": [
+    {
         "apiVersion": "2015-08-01",
         "type": "Microsoft.Web/hostingEnvironments",
         "name": "[parameters('aseName')]",
         "kind": "ASEV2",
         "location": "[parameters('aseLocation')]",
         "properties": {
-          "name": "[parameters('aseName')]",
-          "location": "[parameters('aseLocation')]",
-          "ipSslAddressCount": 0,
-          "internalLoadBalancingMode": "[parameters('internalLoadBalancingMode')]",
-          "dnsSuffix" : "[parameters('dnsSuffix')]",
-          "virtualNetwork": {
-            "Id": "[parameters('existingVnetResourceId')]",
-            "Subnet": "[parameters('subnetName')]"
-          },
-        "userWhitelistedIpRanges":  ["11.22.33.44/32", "55.66.77.0/30"]
+            "name": "[parameters('aseName')]",
+            "location": "[parameters('aseLocation')]",
+            "ipSslAddressCount": 0,
+            "internalLoadBalancingMode": "[parameters('internalLoadBalancingMode')]",
+            "dnsSuffix" : "[parameters('dnsSuffix')]",
+            "virtualNetwork": {
+                "Id": "[parameters('existingVnetResourceId')]",
+                "Subnet": "[parameters('subnetName')]"
+            },
+            "userWhitelistedIpRanges":  ["11.22.33.44/32", "55.66.77.0/30"]
         }
-      }
-    ]
+    }
+]
+```
 
 這些變更會將流量直接從 ASE 傳送至 Azure 儲存體，並允許從 ASE 的 VIP 以外的其他位址存取 Azure SQL。
 

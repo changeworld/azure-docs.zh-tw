@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: cfd8dd7474cf7926ef2230e6be53a967a97645db
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 3e1c67ee91298b9e8d0c3c427988c9966771aeaa
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85554387"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920564"
 ---
 # <a name="what-is-computer-vision"></a>什麼是電腦視覺？
 
@@ -48,9 +48,9 @@ Azure 的電腦視覺服務可供開發人員存取進階演算法，以根據�
 |**[產生縮圖](concept-generating-thumbnails.md)**|分析影像的內容，為其產生適當的縮圖。 「電腦視覺」會先產生高品質的縮圖，然後分析該影像內的物件，以判斷「關注區域」。 接著，「電腦視覺」會裁剪影像以符合關注區域的需求。 產生的縮圖可以使用與原始影像的外觀比例不同的外觀比例來呈現，視您的需求而定。|
 |**[取得關注區域](concept-generating-thumbnails.md#area-of-interest)**|分析影像的內容以傳回「關注區域」的座標。 「電腦視覺」會傳回該區域的週框方塊座標，而不會裁剪影像並產生縮圖，因此呼叫端應用程式可以視需要修改原始影像。|
 
-## <a name="detect-text-from-images"></a>偵測影像中的文字
+## <a name="optical-character-recognition-ocr"></a>光學字元辨識 (OCR)
 
-您可使用電腦視覺的[文字偵測](concept-recognizing-text.md) API，將影像中列印和手寫文字擷取到電腦可讀取的字元資料流中。 讀取 API 會使用最新的模型並處理各種表層和背景上的文字，例如收據、海報、名片、信件和白板等。 這兩個文字偵測 API 都支援以[數種語言](./language-support.md)來解壓縮列印文字。
+電腦視覺包含[光學字元辨識 (OCR)](concept-recognizing-text.md) 功能。 您可以使用新的閱讀 API，從影像和文件中擷取列印和手寫文字。 其使用最新的模型，並可與各種表面和背景上的文字搭配使用。 這些包含收據、海報、名片、信件和白板。 這兩個 OCR API 都支援擷取以[數種語言](./language-support.md)列印的文字。
 
 ## <a name="moderate-content-in-images"></a>調節影像中的內容
 

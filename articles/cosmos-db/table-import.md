@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 3d1efc0a116a38686fa929a2058fa88e4c2cfa82
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 0023308c74d58b1c94bf13fcb47ffb8aa7ade1d6
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119472"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557631"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>將您的資料移轉至 Azure Cosmos DB 資料表 API 帳戶
 
@@ -45,26 +45,26 @@ ms.locfileid: "85119472"
     dt.exe [/<option>:<value>] /s:<source-name> [/s.<source-option>:<value>] /t:<target-name> [/t.<target-option>:<value>] 
    ```
 
-此命令的選項如下：
+支援此命令的選項如下：
 
-    /ErrorLog: Optional. Name of the CSV file to redirect data transfer failures
-    /OverwriteErrorLog: Optional. Overwrite error log file
-    /ProgressUpdateInterval: Optional, default is 00:00:01. Time interval to refresh on-screen data transfer progress
-    /ErrorDetails: Optional, default is None. Specifies that detailed error information should be displayed for the following errors: None, Critical, All
-    /EnableCosmosTableLog: Optional. Direct the log to a cosmos table account. If set, this defaults to destination account connection string unless /CosmosTableLogConnectionString is also provided. This is useful if multiple instances of DT are being run simultaneously.
-    /CosmosTableLogConnectionString: Optional. ConnectionString to direct the log to a remote cosmos table account. 
+* **/ErrorLog:** 選擇性。 資料傳輸失敗時要重新導向的 CSV 檔案名
+* **/OverwriteErrorLog:** 選擇性。 覆寫錯誤記錄檔
+* **/ProgressUpdateInterval:** (選用) 預設值為 00:00:01。 螢幕資料傳輸進度重新整理的時間間隔
+* **/ErrorDetails:** (選用) 預設值為無。 指定應該針對下列錯誤顯示詳細的錯誤資訊：無、重大、全部
+* **/EnableCosmosTableLog:** 選擇性。 將記錄導向至 Cosmos 資料表帳戶。 如果已設定，除非也提供 /CosmosTableLogConnectionString，否則預設會導向至目的地帳戶連接字串。 如果有多個 DT 執行個體同時執行，此命令十分實用。
+* **/CosmosTableLogConnectionString:** 選擇性。 ConnectionString 會將記錄導向至遠端 Cosmos 資料表帳戶。
 
 ### <a name="command-line-source-settings"></a>命令列來源設定
 
 將 Azure 資料表儲存體或資料表 API 預覽版定義為移轉來源時，請使用下列來源選項。
 
-    /s:AzureTable: Reads data from Azure Table storage
-    /s.ConnectionString: Connection string for the table endpoint. This can be retrieved from the Azure portal
-    /s.LocationMode: Optional, default is PrimaryOnly. Specifies which location mode to use when connecting to Azure Table storage: PrimaryOnly, PrimaryThenSecondary, SecondaryOnly, SecondaryThenPrimary
-    /s.Table: Name of the Azure Table
-    /s.InternalFields: Set to All for table migration as RowKey and PartitionKey are required for import.
-    /s.Filter: Optional. Filter string to apply
-    /s.Projection: Optional. List of columns to select
+* **/s:AzureTable:** 從 Azure 資料表儲存體讀取資料
+* **/s.ConnectionString:** 資料表端點的連接字串。 這可從 Azure 入口網站擷取
+* **/s.LocationMode:** (選用) 預設值為 PrimaryOnly。 指定連線到 Azure 資料表儲存體時要使用的位置模式：PrimaryOnly、PrimaryThenSecondary、SecondaryOnly、SecondaryThenPrimary
+* **/s.Table:** Azure 資料表的名稱
+* **/s.InternalFields:** 針對資料表移轉設為「全部」，因為需要 RowKey 和PartitionKey 才能匯入。
+* **/s.Filter:** 選擇性。 要套用的篩選字串
+* **/s.Projection:** 選擇性。 要選取的資料行清單
 
 在從 Azure 資料表儲存體匯入時若要擷取來源的連接字串，請開啟 Azure 入口網站，按一下 [儲存體帳戶] > [帳戶] > [存取金鑰]，然後使用 [複製] 按鈕複製 [連接字串]。
 
@@ -82,28 +82,29 @@ ms.locfileid: "85119472"
 
 將 Azure Cosmos DB 資料表 API 定義為移轉目標時，請使用下列目標選項。
 
-    /t:TableAPIBulk: Uploads data into Azure CosmosDB Table in batches
-    /t.ConnectionString: Connection string for the table endpoint
-    /t.TableName: Specifies the name of the table to write to
-    /t.Overwrite: Optional, default is false. Specifies if existing values should be overwritten
-    /t.MaxInputBufferSize: Optional, default is 1GB. Approximate estimate of input bytes to buffer before flushing data to sink
-    /t.Throughput: Optional, service defaults if not specified. Specifies throughput to configure for table
-    /t.MaxBatchSize: Optional, default is 2MB. Specify the batch size in bytes
+* **/t:TableAPIBulk:** 以批次方式將資料上傳至 Azure CosmosDB 資料表
+* **/t.ConnectionString:** 資料表端點的連接字串
+* **/t.TableName:** 指定要寫入之資料表的名稱
+* **/t.Overwrite:** (選用) 預設值為 False。 指定是否應該覆寫現有的值
+* **/t.MaxInputBufferSize:** (選用) 預設值為 1GB。 將資料排清到接收之前，要緩衝的輸入位元組約略估計值
+* **/t.Throughput:** 選用，如果未指定則為服務預設值。 指定要為資料表設定的輸送量
+* **/t.MaxBatchSize:** 選用，預設值為 2MB。 指定批次大小上限 (位元組)
 
 <a id="azure-table-storage"></a>
 ### <a name="sample-command-source-is-azure-table-storage"></a>範例命令：來源是 Azure 資料表儲存體
 
 以下命令列範例會說明如何從 Azure 資料表儲存體匯入到資料表 API：
 
-```
+```bash
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Table storage account name>;AccountKey=<Account Key>;EndpointSuffix=core.windows.net /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
+
 <a id="table-api-preview"></a>
 ### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>範例命令：來原是 Azure Cosmos DB 資料表 API (預覽)
 
 以下是從資料表 API 預覽版匯入到資料表 API GA 的命令列範例：
 
-```
+```bash
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Table API preview account name>;AccountKey=<Table API preview account key>;TableEndpoint=https://<Account Name>.documents.azure.com; /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
 
@@ -115,7 +116,7 @@ dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=
 
 匯入命令範例：
 
-```
+```bash
 AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.table.cosmosdb.windows.net/mytable1/ /DestKey:key /Manifest:"myaccount_mytable_20140103T112020.manifest" /EntityOperation:InsertOrReplace
 ```
 
@@ -123,7 +124,6 @@ AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.table.cosmosdb.windows.net/m
 
 > [!WARNING]
 > 如果您想要立即享受正式推出之資料表的好處，請依本節所述地移轉您現有的預覽版資料表，否則，我們將在未來幾週為現有的預覽版客戶執行自動移轉，但請注意，自動移轉的預覽版資料表會受到某些限制，而新建立的資料表則沒有這些限制。
-> 
 
 資料表 API 現已正式推出 (GA)。 在執行於雲端的程式碼中以及在執行於用戶端的程式碼中，預覽版和 GA 版的資料表皆會有差異。 因此，不建議您嘗試混合使用預覽版 SDK 用戶端與 GA 版資料表 API 帳戶，反之亦然。 想要繼續使用其現有資料表，但環境改為生產環境的資料表 API 預覽版客戶，必須從預覽版移轉至 GA 版環境，或者，他們也可以等候自動移轉。 如果您要等候自動移轉，系統會通知您移轉的資料表會受到限制。 移轉之後，您就可以在現有帳戶上毫無限制地建立新資料表 (只有經過移轉的資料表會有限制)。
 

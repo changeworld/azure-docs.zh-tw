@@ -1,5 +1,5 @@
 ---
-title: AD 報告 API 與憑證的教學課程 |Microsoft Docs
+title: AD 報告 API 搭配憑證的教學課程 | Microsoft Docs
 description: 本教學課程說明如何使用 Azure AD 報告 API 配合憑證認證來取得目錄中的資料，而不需使用者介入。
 services: active-directory
 documentationcenter: ''
@@ -10,27 +10,27 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: tutorial
 ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: a6699d7a117eee95ba635c8c94ed9b2955f21a7b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 4f27385cc33c6c289718c3143d03e24f0454a9f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196885"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608003"
 ---
-# <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>教學課程：使用 Azure Active Directory 報告 API 配合憑證來取得資料
+# <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>教學課程：使用 Azure Active Directory 報告 API 搭配憑證來取得資料
 
 [Azure Active Directory (Azure AD) 報告 API](concept-reporting-api.md) 透過一組以 REST 為基礎的 API 為您提供資料的程式設計方式存取。 您可以從各種程式設計語言和工具呼叫這些 API。 如果您想在沒有使用者介入的情況下存取 Azure AD 報告 API，請務必設定您的存取權以使用憑證。
 
 在本教學課程中，您會了解如何使用測試憑證來存取 MS 圖形 API 以進行報告。 我們不建議在生產環境中使用測試憑證。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 1. 若要存取登入資料，請確定您有進階 (P1/P2) 授權的 Azure Active Directory 租用戶。 請參閱[開始使用 Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) 來升級 Azure Active Directory 版本。 請注意，如果您在升級前沒有任何活動資料，則在升級至進階授權之後，報告需要幾天的時間才會顯示出資料。 
 
@@ -45,9 +45,9 @@ ms.locfileid: "83196885"
     - 從使用者、應用程式金鑰和憑證存取權杖 (使用 ADAL)
     - 處理分頁結果的圖形 API
 
-6. 如果這是您第一次使用模組，請執行**Install-install-mscloudidutilsmodule**，否則請使用**import-module** PowerShell 命令匯入它。 您的會話看起來應該類似此畫面： ![ Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. 如果您第一次使用模組執行 **Install-MSCloudIdUtilsModule**，則改用 **Import-Module** PowerShell 命令將其匯入。 您的工作階段看起來應該類似此畫面：![Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
   
-7. 使用**SelfSignedCertificate** PowerShell commandlet 來建立測試憑證。
+7. 使用 **New-SelfSignedCertificate** PowerShell commandlet 建立測試憑證。
 
    ```
    $cert = New-SelfSignedCertificate -Subject "CN=MSGraph_ReportingAPI" -CertStoreLocation "Cert:\CurrentUser\My" -KeyExportPolicy Exportable -KeySpec Signature -KeyLength 2048 -KeyAlgorithm RSA -HashAlgorithm SHA256
@@ -62,15 +62,15 @@ ms.locfileid: "83196885"
 
 ## <a name="get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>使用 Azure Active Directory 報告 API 搭配憑證來取得資料
 
-1. 導覽至 [Azure 入口網站](https://portal.azure.com)，選取 [Azure Active Directory]****，接著選取 [應用程式註冊]****，然後從清單中選擇您的應用程式。 
+1. 導覽至 [Azure 入口網站](https://portal.azure.com)，選取 [Azure Active Directory]，接著選取 [應用程式註冊]，然後從清單中選擇您的應用程式。 
 
-2. 在 [應用程式註冊] 分頁上，選取 [**管理**] 區段下的 [**憑證 & 密碼**]，然後選取 **[**
+2. 在 [應用程式註冊] 刀鋒視窗的**管理**區段下，選取 [憑證與祕密]，然後選取 [上傳憑證]。
 
-3. 選取上一個步驟中的憑證檔案，然後選取 [**新增**]。 
+3. 從上一個步驟中選取憑證檔案，然後選取 [新增]。 
 
-4. 請記下應用程式識別碼，以及您剛剛向應用程式註冊的憑證指紋。 若要尋找指紋，請在入口網站的應用程式頁面中，移至 [**管理**] 區段下的 [**憑證 & 密碼**]。 指紋會在 [**憑證**] 清單之下。
+4. 請記下應用程式識別碼，以及您剛剛向應用程式註冊的憑證指紋。 若要尋找指紋，請從入口網站的應用程式頁面中移至**管理**下的**憑證和祕密**。 指紋會出現在**憑證**清單下方。
 
-5. 開啟內嵌資訊清單編輯器中的應用程式資訊清單，並確認*keyCredentials*屬性已更新為新的憑證資訊，如下所示- 
+5. 在內嵌資訊清單編輯器中開啟應用程式資訊清單，然後驗證 *keyCredentials* 屬性是否已使用下列新的憑證資訊更新 - 
 
    ```
    "keyCredentials": [
@@ -87,7 +87,7 @@ ms.locfileid: "83196885"
 
    ![Azure 入口網站](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
 
-7. 使用 PowerShell 腳本中的存取權杖來查詢圖形 API。 使用 MSCloudIDUtils 中的 **Invoke-MSCloudIdMSGraphQuery** 指令程式來列舉 signins 和 directoryAudits 端點。 此指令程式可處理多個分頁結果，並將這些結果傳送至 PowerShell 管道。
+7. 使用 PowerShell 指令碼中的存取權杖來查詢圖形 API。 使用 MSCloudIDUtils 中的 **Invoke-MSCloudIdMSGraphQuery** 指令程式來列舉 signins 和 directoryAudits 端點。 此指令程式可處理多個分頁結果，並將這些結果傳送至 PowerShell 管道。
 
 8. 查詢 directoryAudits 端點以擷取稽核記錄。 
    ![Azure 入口網站](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
