@@ -4,12 +4,12 @@ description: 了解如何使用 PowerShell 快速建立 Kubernetes 叢集、部�
 services: container-service
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 74a71bdc4c9aef9a6964f0c9120a902262a50526
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: e786b64554b5fbaf5bb7051e09daca8fb1eaf049
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85207136"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251411"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>快速入門：使用 PowerShell 部署 Azure Kubernetes Service 叢集
 
@@ -37,7 +37,7 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-[Azure 資源群組](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)是部署及管理 Azure 資源所在的邏輯群組。 建立資源群組時，系統會要求您指定位置。 此位置是儲存資源群組中繼資料的位置，如果您未在資源建立期間指定另一個區域，此位置也會是您在 Azure 中執行資源的位置。 使用 [New-AzResourceGroup][new-azresourcegroup] Cmdelt 建立新的資源群組。
+[Azure 資源群組](../azure-resource-manager/management/overview.md)是部署及管理 Azure 資源所在的邏輯群組。 建立資源群組時，系統會要求您指定位置。 此位置是儲存資源群組中繼資料的位置，如果您未在資源建立期間指定另一個區域，此位置也會是您在 Azure 中執行資源的位置。 使用 [New-AzResourceGroup][new-azresourcegroup] Cmdelt 建立新的資源群組。
 
 下列範例會在 eastus 地區建立名為 myResourceGroup 的資源群組。
 
@@ -57,12 +57,12 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ## <a name="create-aks-cluster"></a>建立 AKS 叢集
 
-使用 `ssh-keygen` 命令列公用程式產生 SSH 金鑰組。 如需詳細資料，請參閱[快速步驟：在 Azure 中建立及使用 Linux VM 的 SSH 公開和私密金鑰組](/azure/virtual-machines/linux/mac-create-ssh-keys)。
+使用 `ssh-keygen` 命令列公用程式產生 SSH 金鑰組。 如需詳細資料，請參閱[快速步驟：在 Azure 中建立及使用 Linux VM 的 SSH 公開和私密金鑰組](../virtual-machines/linux/mac-create-ssh-keys.md)。
 
 使用 [New-AzAks][new-azaks] Cmdlet 來建立 AKS 叢集。 下列範例會建立名為 myAKSCluster 並包含一個節點的叢集。 預設也會啟用容器的 Azure 監視器。 這需要幾分鐘才能完成。
 
 > [!NOTE]
-> 建立 AKS 叢集時，系統會自動建立第二個資源群組來儲存 AKS 資源。 如需詳細資訊，請參閱[為何會使用 AKS 建立兩個資源群組？](https://docs.microsoft.com/azure/aks/faq#why-are-two-resource-groups-created-with-aks)
+> 建立 AKS 叢集時，系統會自動建立第二個資源群組來儲存 AKS 資源。 如需詳細資訊，請參閱[為何會使用 AKS 建立兩個資源群組？](./faq.md#why-are-two-resource-groups-created-with-aks)
 
 ```azurepowershell-interactive
 New-AzAks -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 1
@@ -266,7 +266,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 <!-- LINKS - external -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[azure-dev-spaces]: ../dev-spaces/index.yml
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git
 

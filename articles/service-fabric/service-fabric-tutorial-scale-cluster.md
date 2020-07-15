@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何在 Azure 中相應放大
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: ed212083a29836e1da593ec42c31bbf86b907546
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 05fd29f874d59601942216f907010b94bb7c4058
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611640"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257099"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教學課程：在 Azure 中調整 Service Fabric 叢集
 
@@ -38,7 +38,7 @@ ms.locfileid: "85611640"
 開始進行本教學課程之前：
 
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* 安裝 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
+* 安裝 [Azure PowerShell](/powershell/azure/install-az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
 * 在 Azure 上建立安全的 [Windows 叢集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 
 ## <a name="important-considerations-and-guidelines"></a>重要考量和方針
@@ -64,7 +64,7 @@ ms.locfileid: "85611640"
 
 ## <a name="export-the-template-for-the-resource-group"></a>匯出資源群組的範本
 
-建立安全的 [Windows 叢集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)且成功設定資源群組之後，請匯出資源群組的 Resource Manager 範本。 匯出範本，可讓您將叢集及其資源的未來部署自動化，因為範本包含所有完整的基礎結構。  如需匯出範本的詳細資訊，請參閱[使用 Azure 入口網站管理 Azure Resource Manager 資源群組](/azure/azure-resource-manager/manage-resource-groups-portal)。
+建立安全的 [Windows 叢集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)且成功設定資源群組之後，請匯出資源群組的 Resource Manager 範本。 匯出範本，可讓您將叢集及其資源的未來部署自動化，因為範本包含所有完整的基礎結構。  如需匯出範本的詳細資訊，請參閱[使用 Azure 入口網站管理 Azure Resource Manager 資源群組](../azure-resource-manager/management/manage-resource-groups-portal.md)。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)，移至包含叢集的資源群組 (**sfclustertutorialgroup**，前提是您已遵循本教學課程)。 
 

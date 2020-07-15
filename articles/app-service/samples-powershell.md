@@ -6,18 +6,18 @@ ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.topic: sample
 ms.date: 07/07/2020
 ms.custom: mvc
-ms.openlocfilehash: 51693ad4d233ea180607bc7358a0847e23688099
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: a1577d42de9a4452467a448a0de5cd5f9575a55f
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057903"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169420"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>Azure App Service 的 PowerShell 範例
 
 下表包含使用 Azure PowerShell 所建置的 PowerShell 指令碼連結。
 
-| | |
+| 指令碼 | 描述 |
 |-|-|
 |**建立應用程式**||
 | [建立可從 GitHub 部署的應用程式](./scripts/powershell-deploy-github.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 建立可從 GitHub 提取程式碼的 App Service 應用程式。 |

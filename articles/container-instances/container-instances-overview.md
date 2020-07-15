@@ -4,12 +4,12 @@ description: Azure Container Instances 服務提供最簡單快速的方法，�
 ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c871c09e29b64c4f0dcd107361154efdce306481
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 261e5d0159b4201aab0e8aad1e05fa320cc76a14
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84695279"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259504"
 ---
 # <a name="what-is-azure-container-instances"></a>什麼是 Azure Container Instances？
 
@@ -43,7 +43,7 @@ Azure Container Instances 也會提供互動式殼層，讓您可以在執行中
 
 ## <a name="persistent-storage"></a>永續性儲存體
 
-為了擷取和保存 Azure Container Instances 的狀態，我們支援直接[裝載 Azure 檔案儲存體共用](container-instances-mounting-azure-files-volume.md) (由 Azure 儲存體提供支援)。
+為了擷取和保存 Azure Container Instances 的狀態，我們支援直接[裝載 Azure 檔案儲存體共用](./container-instances-volume-azure-files.md) (由 Azure 儲存體提供支援)。
 
 ## <a name="linux-and-windows-containers"></a>Linux 和 Windows 容器
 

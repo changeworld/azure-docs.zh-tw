@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/31/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c36d45919ae8a17026fc91f8e9040f3bb11d3eb0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 586641d721d0c29bcd6d7b42fc8ca9141df96c66
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75494955"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261309"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>教學課程：對在本機開發叢集中執行的 Service Fabric Mesh 應用程式進行偵錯
 
@@ -77,7 +77,7 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 
 如果出現**沒有執行中的 Service Fabric 本機叢集**錯誤，請確定 Service Fabric 本機叢集管理員 (LCM) 正在執行，並以滑鼠右鍵按一下工作列上的 LCM 圖示，然後按一下 [啟動本機叢集]  。 在其啟動後，回到 Visual Studio，然後按 **F5**。
 
-如果在應用程式啟動時出現 **404** 錯誤，這可能表示您在 **service.yaml** 中的環境變數不正確。 請確定 `ApiHostPort` 和 `ToDoServiceName` 都已根據[建立環境變數](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore#create-environment-variables)中的指示正確設定。
+如果在應用程式啟動時出現 **404** 錯誤，這可能表示您在 **service.yaml** 中的環境變數不正確。 請確定 `ApiHostPort` 和 `ToDoServiceName` 都已根據[建立環境變數](./service-fabric-mesh-tutorial-create-dotnetcore.md#create-environment-variables)中的指示正確設定。
 
 如果 **service.yaml** 中出現建置錯誤，請確定用來縮排各行的是空格，而不是定位字元。 此外，目前您必須使用英文地區設定來建置應用程式。
 

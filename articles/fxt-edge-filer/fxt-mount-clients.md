@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 43223db298e4ad170ea6d0687a342b3aee35500e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ea963b143cedf36137d9c36bc57d323353da6786
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80130759"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231347"
 ---
 # <a name="tutorial-mount-the-cluster"></a>教學課程：掛接叢集
 
@@ -43,7 +43,7 @@ ms.locfileid: "80130759"
 
 對於小型安裝來說，較簡單的方法是在掛接用戶端時，使用指令碼來指派整個範圍的 IP 位址。
 
-其他負載平衡方法則可能適用於大型或複雜的系統。 請洽詢 Microsoft 業務代表或建立[支援票證](fxt-support-ticket.md)以尋求協助。 (Azure FXT Edge Filer 目前「不支援」  Azure Load Balancer。)
+其他負載平衡方法則可能適用於大型或複雜的系統。 請洽詢 Microsoft 業務代表或建立[支援票證](fxt-support-ticket.md)以尋求協助。 (Azure FXT Edge Filer 目前「不支援」Azure Load Balancer。)
 
 ## <a name="create-the-mount-command"></a>建立掛接命令
 
@@ -59,7 +59,7 @@ ms.locfileid: "80130759"
 
 ### <a name="create-the-cluster-path"></a>建立叢集路徑
 
-叢集路徑由 vserver 的「IP 位址」  加上「命名空間連接點」  的路徑組合而成。 命名空間連接點是您在[新增儲存體系統](fxt-add-storage.md#create-a-junction)時所定義的虛擬路徑。
+叢集路徑由 vserver 的「IP 位址」加上「命名空間連接點」的路徑組合而成。 命名空間連接點是您在[新增儲存體系統](fxt-add-storage.md#create-a-junction)時所定義的虛擬路徑。
 
 例如，如果您使用 ``/fxt/files`` 作為命名空間路徑，則用戶端會將 *IP_address*:/fxt/files 掛接至其本機掛接點。
 
@@ -93,14 +93,14 @@ ms.locfileid: "80130759"
 
 ``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
-| 必要的設定 | |
+| 必要的設定 | 描述 |
 --- | ---
 ``hard`` | 對 Azure FXT Edge Filer 叢集執行軟掛接可能會產生應用程式失敗和資料遺失的狀況。
 ``proto=netid`` | 此選項支援適當處理 NFS 網路錯誤的功能。
 ``mountproto=netid`` | 此選項支援在掛接作業中適當處理網路錯誤的功能。
 ``retry=n`` | 設定 ``retry=30`` 可避免暫時性的掛接失敗。 (執行前景掛接時建議使用不同的值)。
 
-| 慣用設定  | |
+| 慣用設定  | 描述 |
 --- | ---
 ``nointr``            | 如果用戶端使用舊版作業系統核心 (2008 年 4 月之前) 但可支援此選項，請加以使用。 "intr" 是預設選項。
 

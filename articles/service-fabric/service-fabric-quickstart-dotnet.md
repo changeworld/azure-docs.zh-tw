@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: e3d984fee75dcdb8d4e14e7b454e74a3f7c629f2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b88dfedd5454d708386afa6912a26dac41c6d6b4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75730134"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258569"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>快速入門：將 .NET 可靠服務應用程式部署至 Service Fabric
 
@@ -52,7 +52,7 @@ Azure Service Fabric 是一個分散式系統平台，可讓您部署及管理�
 > 雖然此特殊快速入門沒必要這麼做，但是當您建立叢集時讓 Docker 執行的指示已納入為最佳做法。
 > 請開啟終端機視窗並執行 `docker ps`，然後查看是否有錯誤發生，以測試該 Docker。 如果回應未指出錯誤，表示 Docker 正在執行中，且您已可建置叢集。
 >
-> [設定適用於容器的 Windows 10 或 Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-10-Client)
+> [設定適用於容器的 Windows 10 或 Windows Server](/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-10-Client)
 
 1. 以系統管理員身分開啟提升權限的新 PowerShell 視窗。
 2. 執行下列 PowerShell 命令，以建立開發叢集：

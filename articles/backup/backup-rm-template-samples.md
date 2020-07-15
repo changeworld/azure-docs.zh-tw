@@ -4,18 +4,18 @@ description: 要與復原服務保存庫和 Azure 備份功能搭配使用的 Az
 ms.topic: sample
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 3c05f345c6c5df5d0350c75e52381c24b0609501
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 09962a37f36621950189e9446099c349de9430bb
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74172171"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170984"
 ---
 # <a name="azure-resource-manager-templates-for-azure-backup"></a>適用於 Azure 備份的 Azure Resource Manager 範本
 
 下表包含 Azure Resource Manager 範本的連結，這些範本適用於復原服務保存庫和 Azure 備份功能。 若要深入了解 JSON 語法和屬性，請參閱 [Microsoft.RecoveryServices 資源類型](/azure/templates/microsoft.recoveryservices/allversions)。
 
-|   |   |
+| [範本] | 描述 |
 |---|---|
 |**復原服務保存庫** | |
 | [建立復原服務保存庫](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vault-create)| 建立復原服務保存庫。 保存庫可以使用於 Azure 備份和 Azure Site Recovery。 |

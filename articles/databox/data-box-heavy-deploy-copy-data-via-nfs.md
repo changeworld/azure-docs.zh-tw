@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 4361cee3d07408c3abb5031d2ab18c15c92c5e0a
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 047c4649da298e1dcb74ec1910a49353d8be534a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711250"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206651"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-heavy-via-nfs"></a>教學課程：透過 NFS 將資料複製到 Azure Data Box Heavy
 
@@ -22,16 +22,16 @@ ms.locfileid: "84711250"
 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
-> * Prerequisites
+> * 必要條件
 > * 連線至 Data Box Heavy
 > * 將資料複製到 Data Box Heavy
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在您開始前，請確定：
 
 1. 您已完成[教學課程：設定 Azure Data Box Heavy](data-box-heavy-deploy-set-up.md)。
-2. 您已收到 Data Box Heavy，且入口網站中的訂購狀態為 [已交付]  。
+2. 您已收到 Data Box Heavy，且入口網站中的訂購狀態為 [已交付]。
 3. 您有一部主機電腦，其中包含要複製到 Data Box Heavy 的資料。 您的主機電腦必須符合下列條件：
     - 執行[支援的作業系統](data-box-heavy-system-requirements.md)。
     - 連線至高速網路。 如需最快的複製速度，可平行使用兩個 40 GbE 的連線 (每個節點一個連線)。 如果您沒有 40 GbE 連線可用，我們建議您至少有兩個 10 GbE 的連線 (每個節點一個連線)。 
@@ -55,7 +55,7 @@ ms.locfileid: "84711250"
 
 下表顯示您 Data Box Heavy 上的共用 UNC 路徑，以及用於上傳資料的 Azure 儲存體路徑 URL。 最終的 Azure 儲存體路徑 URL 可以衍生自 UNC 共用路徑。
  
-|                   |                                                            |
+| 儲存體           | UNC 路徑                                                                       |
 |-------------------|--------------------------------------------------------------------------------|
 | Azure 區塊 Blob | <li>共用的 UNC 路徑：`//<DeviceIPAddress>/<StorageAccountName_BlockBlob>/<ContainerName>/files/a.txt`</li><li>Azure 儲存體 URL：`https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
 | Azure 分頁 Blob  | <li>共用的 UNC 路徑：`//<DeviceIPAddres>/<StorageAccountName_PageBlob>/<ContainerName>/files/a.txt`</li><li>Azure 儲存體 URL：`https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
@@ -63,11 +63,11 @@ ms.locfileid: "84711250"
 
 如果您使用 Linux 主機電腦，請執行下列步驟設定您的裝置，以允許 NFS 用戶端的存取。
 
-1. 針對允許存取共用的用戶端提供其 IP 位址。 在本機 Web UI 中，移至 [連線並複製]  頁面。 在 [NFS 設定]  下方，按一下 [NFS 用戶端存取]  。 
+1. 針對允許存取共用的用戶端提供其 IP 位址。 在本機 Web UI 中，移至 [連線並複製] 頁面。 在 [NFS 設定] 下方，按一下 [NFS 用戶端存取]。 
 
     ![設定 NFS 用戶端存取 1](media/data-box-deploy-copy-data/nfs-client-access.png)
 
-2. 提供 NFS 用戶端的 IP 位址，然後按一下 [新增]  。 您可以重複此步驟，以設定多個 NFS 用戶端的存取。 按一下 [確定]  。
+2. 提供 NFS 用戶端的 IP 位址，然後按一下 [新增]。 您可以重複此步驟，以設定多個 NFS 用戶端的存取。 按一下 [確定]。
 
     ![設定 NFS 用戶端存取 2](media/data-box-deploy-copy-data/nfs-client-access2.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "84711250"
     
     `sudo mount -t nfs -o sec=sys,resvport 10.161.23.130:/Mystoracct_Blob /home/databoxheavyubuntuhost/databoxheavy`
 
-    **一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾**。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 [root]  資料夾。
+    **一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾**。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 [root] 資料夾。
 
 ## <a name="copy-data-to-data-box-heavy"></a>將資料複製到 Data Box Heavy
 
@@ -95,7 +95,7 @@ ms.locfileid: "84711250"
 -  複製資料時，請確定資料大小符合 [Azure 儲存體和 Data Box Heavy 限制](data-box-heavy-limits.md) 中所述的大小限制。 
 - 如果資料 (由 Data Box Heavy 上傳) 同時由 Data Box Heavy 以外的其他應用程式上傳，則可能導致上傳作業失敗和資料損毀。
 - 建議您不要同時使用 SMB 與 NFS，或將相同的資料複製到 Azure 上的相同最終目的地。 在這種情況下，無法判斷最後的結果。
-- **一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾**。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 [root]  資料夾。
+- **一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾**。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 [root] 資料夾。
 - 如果從 NFS 共用將區分大小寫的目錄和檔案名稱內嵌至 Data Box Heavy 上的 NFS： 
     - 在名稱中會保留大小寫。
     - 檔案不區分大小寫。
@@ -156,7 +156,7 @@ ms.locfileid: "84711250"
 在本教學課程中，您已了解 Azure Data Box Heavy 的相關主題，像是：
 
 > [!div class="checklist"]
-> * Prerequisites
+> * 必要條件
 > * 連線至 Data Box Heavy
 > * 將資料複製到 Data Box Heavy
 

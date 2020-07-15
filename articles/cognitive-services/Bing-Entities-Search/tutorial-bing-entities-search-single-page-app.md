@@ -10,18 +10,18 @@ ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: a376c5d223121774b6c707b3bdc8edce42649e42
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 53731540c4a2861c77c02b1a4b25b60fd0e23872
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800052"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184135"
 ---
 # <a name="tutorial-single-page-web-app"></a>教學課程：單一頁面 Web 應用程式
 
 Bing 實體搜尋 API 可讓您搜尋網路上的「實體」和「地點」相關資訊。 您可以在指定查詢中要求任何一種結果，或兩者都要求。 以下提供地點和實體的定義。
 
-|||
+| 結果 | 描述 |
 |-|-|
 |實體|您可以依名稱尋找的已知人物、地點和事項|
 |地點|您可以依名稱「或」類型 (義大利餐廳) 尋找的餐廳、旅館及其他本地商家|
@@ -141,7 +141,7 @@ HTML `<body>` 標籤包含 `onload` 屬性，以在頁面完成載入時呼叫 `
 
 HTML 表單包含下列控制項：
 
-| | |
+| 控制 | 描述 |
 |-|-|
 |`where`|可供選取市場 (位置和語言) 以用於搜尋的下拉式功能表。|
 |`query`|要在其中輸入搜尋字詞的文字欄位。|
@@ -411,7 +411,7 @@ Bing 實體搜尋 API [要求您依指定順序顯示結果](use-display-require
 
 `rankingResponse` 集合中的每個項目是指兩個不同但方式相同的實際搜尋結果項目。
 
-| | |
+| Item | 描述 |
 |-|-|
 |`id`|`id` 看起來像是 URL，但不應該用於連結。 排名結果的 `id` 類型符合回應集合中任一搜尋結果項目的 `id`，「或」整個回應集合 (例如`Entities`)。
 |`answerType`<br>`resultIndex`|`answerType` 會參照包含結果的最上層答案集合 (例如 `Entities`)。 `resultIndex` 會參照該集合內的結果索引。 若省略 `resultIndex`，排名結果是指整個集合。
@@ -452,7 +452,7 @@ searchItemRenderers = {
 
 轉譯器函式可接受下列參數：
 
-| | |
+| 參數 | 描述 |
 |-|-|
 |`item`|JavaScript 物件，其中包含項目的屬性，例如其 URL 及其描述。|
 |`index`|集合內結果項目的索引。|

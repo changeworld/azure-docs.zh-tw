@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 686d6e2ff01fd4d8283350ab8097e1f73c914af0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d90b212286b555bf5b858990fd5dcb062348be8d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81260991"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254719"
 ---
 # <a name="create-and-publish-a-product"></a>建立和發行產品  
 
@@ -85,7 +85,7 @@ ms.locfileid: "81260991"
 4. 選擇 API，然後按一下 [選取]  。
 
 > [!TIP]
-> 您可以[透過 REST API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription/createorupdate) 或 PowerShell 命令，使用自訂的訂用帳戶金鑰建立或更新使用者的*產品*訂用帳戶。
+> 您可以[透過 REST API](/rest/api/apimanagement/2019-12-01/subscription/createorupdate) 或 PowerShell 命令，使用自訂的訂用帳戶金鑰建立或更新使用者的*產品*訂用帳戶。
 
 ## <a name="next-steps"></a>後續步驟
 

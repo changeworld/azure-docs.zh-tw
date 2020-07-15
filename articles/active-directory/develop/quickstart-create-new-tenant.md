@@ -12,12 +12,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: a45160db09b3f6bf68bda3f25e40a29a1154099d
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 19c94a4807b8958fa8b1ec46ccae660c7cbe92de
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84308484"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256691"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>快速入門：設定租用戶
 
@@ -34,7 +34,7 @@ Microsoft 身分識別平台可讓開發人員建置以各種自訂 Microsoft 36
 * 公司與學校 (Azure AD 帳戶) 或 Microsoft 帳戶 (例如 outlook.com 與 live.com)
 * 社交與本機帳戶 (Azure AD B2C)
 
-快速入門分成兩種案例，視您要建置的應用程式類型而定。 如果您需要有關身分識別類型的更多幫助，請查看[關於 Microsoft 身分識別平台](about-microsoft-identity-platform.md)
+快速入門分成兩種案例，視您要建置的應用程式類型而定。
 
 ## <a name="work-and-school-accounts-or-personal-microsoft-accounts"></a>公司與學校帳戶，或個人 Microsoft 帳戶
 

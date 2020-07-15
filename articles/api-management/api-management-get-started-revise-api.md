@@ -14,15 +14,15 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: c91d42f3445bb2ffc02366e6cb9ae49ec2db1be4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7a4655b20fabcc72e02037de05dd0ef7c4671e52
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75442758"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254906"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>使用修訂項目安全地進行不間斷的變更
-當您的 API 已準備就緒，且開發人員也已準備好使用時，您就必須對該 API 進行變更，同時避免中斷 API 呼叫者的作業。 這對於讓開發人員了解您所做的更改也相當有用。 我們可以使用**修訂**在 Azure API 管理中進行此動作。 如需詳細資訊，請參閱[版本與修訂](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/)和[使用 Azure API 管理的 API 版本設定](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/)。
+當您的 API 已準備就緒，且開發人員也已準備好使用時，您就必須對該 API 進行變更，同時避免中斷 API 呼叫者的作業。 這對於讓開發人員了解您所做的更改也相當有用。 我們可以使用**修訂**在 Azure API 管理中進行此動作。 如需詳細資訊，請參閱[版本與修訂](https://azure.microsoft.com/blog/versions-revisions/)和[使用 Azure API 管理的 API 版本設定](https://azure.microsoft.com/blog/api-versioning-with-azure-api-management/)。
 
 在本教學課程中，您會了解如何：
 

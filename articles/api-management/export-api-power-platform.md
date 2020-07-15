@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/01/2020
 ms.author: apimpm
-ms.openlocfilehash: 9af20972a47e2d0ad20de62f1bb9d10e4d43563c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 5814ff3909aa36ccfd9e14033f200fb4d3b8d32d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82702649"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252847"
 ---
 # <a name="export-apis-from-azure-api-management-to-the-power-platform"></a>將 API 從 Azure API 管理匯出到 Power Platform 
 
@@ -29,7 +29,7 @@ ms.locfileid: "82702649"
 
 + 完成下列快速入門：[建立 Azure API 管理執行個體](get-started-create-service-instance.md)
 + 請確定您的 API 管理執行個體中有要匯出至 Power Platform 的 API
-+ 確定您擁有 Power Apps 或 Power Automate [環境](https://docs.microsoft.com/powerapps/powerapps-overview#power-apps-for-admins) 
++ 確定您擁有 Power Apps 或 Power Automate [環境](/powerapps/powerapps-overview#power-apps-for-admins) 
 
 ## <a name="export-an-api"></a>匯出 API
 
@@ -47,4 +47,4 @@ ms.locfileid: "82702649"
 ## <a name="next-steps"></a>後續步驟
 
 * [深入了解 Power Platform](https://powerplatform.microsoft.com/)
-* [遵循教學課程，以了解 API 管理中的一般工作](https://docs.microsoft.com/azure/api-management/import-and-publish)
+* [遵循教學課程，以了解 API 管理中的一般工作](./import-and-publish.md)

@@ -4,12 +4,12 @@ description: 了解如何使用 Powershell 建立和管理 Azure Service Fabric 
 ms.topic: sample
 ms.date: 11/29/2018
 ms.custom: mvc
-ms.openlocfilehash: f9ba1b4833b3aff13284a68c23f398ea47ef2ae2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4b85fd604eb27f0963af882b41e823d800005dda
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75645645"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187093"
 ---
 # <a name="azure-service-fabric-powershell-samples"></a>Azure Service Fabric PowerShell 範例
 
@@ -17,7 +17,7 @@ ms.locfileid: "75645645"
 
 [!INCLUDE [links to azure CLI and service fabric CLI](../../includes/service-fabric-powershell.md)]
 
-| | |
+| 指令碼 | 描述 |
 |-|-|
 | **建立叢集** ||
 | [建立叢集 (Azure)](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)| 建立 Azure Service Fabric 叢集。 |

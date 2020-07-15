@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 29e1bb33b98b1fbc8fcfcd541d0014ca1bc75d8d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: f2eead8dfd1f4d88d28de1f70134dcfcad8471d3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84114127"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259770"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>教學課程：設定服務警示
 
@@ -61,4 +61,4 @@ ms.locfileid: "84114127"
 在本教學課程中，您已了解如何設定 Azure 服務健康狀態，以及用於監視 Windows 虛擬桌面的服務問題和健康狀態諮詢。 若要了解如何登入 Windows 虛擬桌面，請繼續進行「連線到 Windows 虛擬桌面」操作說明。
 
 > [!div class="nextstepaction"]
-> [連線到 Windows 7 和 Windows 10 上的遠端桌面用戶端](../connect-windows-7-and-10.md)
+> [連線到 Windows 7 和 Windows 10 上的遠端桌面用戶端](connect-windows-7-10-2019.md)

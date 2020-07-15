@@ -13,16 +13,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: d0c837ac376f9d496baaf1ed67d0ec80c996804a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b683910180e597cb8cbfa642bb2d9ac3200b42ee
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73176828"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255025"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>為您的 API 發佈多個版本 
 
-有時候，讓 API 的所有呼叫者使用完全相同的版本不太實際。 當呼叫者想要升級至更新版本時，他們希望能夠使用簡單易懂的方法來執行此操作。 您可以在 Azure API 管理中使用**版本**執行此操作。 如需詳細資訊，請參閱[版本與修訂](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/)。
+有時候，讓 API 的所有呼叫者使用完全相同的版本不太實際。 當呼叫者想要升級至更新版本時，他們希望能夠使用簡單易懂的方法來執行此操作。 您可以在 Azure API 管理中使用**版本**執行此操作。 如需詳細資訊，請參閱[版本與修訂](https://azure.microsoft.com/blog/versions-revisions/)。
 
 在本教學課程中，您會了解如何：
 

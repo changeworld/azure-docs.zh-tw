@@ -4,12 +4,12 @@ description: 在本教學課程中，您會了解如何建立含有 ASP.NET Core
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.custom: mvc
-ms.openlocfilehash: f7bad66d15cc2f9fb1885e440f95e76e12ea458a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: dc869dce536449a901826db3b0d964bf17abbbec
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214021"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257124"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>教學課程：建立和部署含有 ASP.NET Core Web API 前端服務和具狀態後端服務的應用程式
 
@@ -41,7 +41,7 @@ ms.locfileid: "85214021"
 
 ## <a name="create-an-aspnet-web-api-service-as-a-reliable-service"></a>建立 ASP.NET Web API 服務成為可靠的服務
 
-首先，使用 ASP.NET Core 建立投票應用程式的 web 前端。 ASP.NET Core 是輕量型、跨平台的 Web 開發架構，可供您用來建立新式 Web UI 和 Web API。 若要完整了解 ASP.NET Core 如何與 Service Fabric 整合，強烈建議您仔細閱讀 [Service Fabric Reliable Services 中的 ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) 文章。 現在，您可以依照本教學課程來快速上手。 若要深入了解 ASP.NET Core，請參閱 [ASP.NET Core 文件](https://docs.microsoft.com/aspnet/core/)。
+首先，使用 ASP.NET Core 建立投票應用程式的 web 前端。 ASP.NET Core 是輕量型、跨平台的 Web 開發架構，可供您用來建立新式 Web UI 和 Web API。 若要完整了解 ASP.NET Core 如何與 Service Fabric 整合，強烈建議您仔細閱讀 [Service Fabric Reliable Services 中的 ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) 文章。 現在，您可以依照本教學課程來快速上手。 若要深入了解 ASP.NET Core，請參閱 [ASP.NET Core 文件](/aspnet/core/)。
 
 1. 以**系統管理員**身分啟動 Visual Studio。
 

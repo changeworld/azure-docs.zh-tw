@@ -3,16 +3,16 @@ title: 將容器中的 .NET 應用程式部署到 Azure Service Fabric
 description: 了解如何使用 Visual Studio 將現有 .NET 應用程式容器化，並在 Service Fabric 本機為容器偵錯。 需將容器化的應用程式推送至 Azure 容器登錄，並部署到 Service Fabric 叢集。 部署到 Azure 時，應用程式會使用 Azure SQL 資料庫保存資料。
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: aa99897da99ff1a1443e548e98ae415b6a8d49f5
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 4970cf6492da38ad76a51df88eeb73538c850c67
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234227"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258867"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>教學課程：將 Windows 容器中的 .NET 應用程式部署到 Azure Service Fabric
 
-本教學課程示範如何將現有的 ASP.NET 應用程式容器化，並封裝為 Service Fabric 應用程式。  在 Service Fabric 開發叢集上本機執行容器，然後將此應用程式部署到 Azure。  應用程式的資料會保存在 [Azure SQL Database](/azure/sql-database/sql-database-technical-overview) 中。
+本教學課程示範如何將現有的 ASP.NET 應用程式容器化，並封裝為 Service Fabric 應用程式。  在 Service Fabric 開發叢集上本機執行容器，然後將此應用程式部署到 Azure。  應用程式的資料會保存在 [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md) 中。
 
 在本教學課程中，您會了解如何：
 
@@ -55,7 +55,7 @@ ms.locfileid: "84234227"
 
 在生產環境中執行 Fabrikam Fiber CallCenter 應用程式時，資料必須保存在資料庫中。 目前無法保證資料能保存在容器中，因此請不要將 SQL Server 生產環境的資料儲存在容器中。
 
-建議使用 [Azure SQL Database](/azure/sql-database/sql-database-get-started-powershell)。 若要在 Azure 中設定及執行受控 SQL Server 資料庫，執行下列指令碼。  視需要修改指令碼變數。 clientIP 是開發電腦的 IP 位址。 記下由指令碼輸出的伺服器名稱。
+建議使用 [Azure SQL Database](../azure-sql/database/powershell-script-content-guide.md)。 若要在 Azure 中設定及執行受控 SQL Server 資料庫，執行下列指令碼。  視需要修改指令碼變數。 clientIP 是開發電腦的 IP 位址。 記下由指令碼輸出的伺服器名稱。
 
 ```powershell
 $subscriptionID="<subscription ID>"
@@ -126,7 +126,7 @@ Write-Host "Server name is $servername"
 
 ## <a name="create-a-container-registry"></a>建立容器登錄庫
 
-現在應用程式是在本機執行，可以開始準備部署至 Azure。  容器映像需要存放在容器登錄中。  使用下列指令碼建立 [Azure 容器登錄](/azure/container-registry/container-registry-intro)。 其他 Azure 訂用帳戶會看到容器登錄名稱，因此此名稱必須是唯一的。
+現在應用程式是在本機執行，可以開始準備部署至 Azure。  容器映像需要存放在容器登錄中。  使用下列指令碼建立 [Azure 容器登錄](../container-registry/container-registry-intro.md)。 其他 Azure 訂用帳戶會看到容器登錄名稱，因此此名稱必須是唯一的。
 將應用程式部署到 Azure 前，需將容器映像推送至此登錄。  當應用程式部署到 Azure 中的叢集時，會從此登錄提取容器映像。
 
 ```powershell
@@ -179,7 +179,7 @@ Service Fabric 應用程式執行於叢集，也就是一組連接網路的虛�
 
 ## <a name="allow-your-application-running-in-azure-to-access-sql-database"></a>允許在 Azure 中執行的應用程式存取 SQL Database
 
-您先前已建立 SQL 防火牆規則，讓在本機執行的應用程式有存取權。  接著，您需要讓在 Azure 中執行的應用程式存取 SQL 資料庫。  為 Service Fabric 叢集建立[虛擬網路服務端點](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)，然後再建立規則以允許該端點存取 SQL 資料庫。 請務必指定建立叢集時，您所記下的叢集資源群組變數。
+您先前已建立 SQL 防火牆規則，讓在本機執行的應用程式有存取權。  接著，您需要讓在 Azure 中執行的應用程式存取 SQL 資料庫。  為 Service Fabric 叢集建立[虛擬網路服務端點](../azure-sql/database/vnet-service-endpoint-rule-overview.md)，然後再建立規則以允許該端點存取 SQL 資料庫。 請務必指定建立叢集時，您所記下的叢集資源群組變數。
 
 ```powershell
 # Create a virtual network service endpoint

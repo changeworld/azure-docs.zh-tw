@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 6a88ca1f028efcb3b9614df532b6d2dcc9dcfac8
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 3d4ccc6ecf18eb2eecc3ccc69ed97bf1094b2035
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800899"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206458"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>教學課程：使用 Bing 影像搜尋 API 來建立單頁應用程式
 
@@ -118,7 +118,7 @@ bingSearchOptions(this), getSubscriptionKey())">
 
 「Bing 影像搜尋 API」提供數個[篩選查詢參數](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters)，可針對搜尋結果縮小範圍及進行篩選。 此應用程式中的 HTML 表單會使用及顯示下列參數選項：
 
-|              |                                                                                                                                                                                    |
+| 選項 | 描述 |
 |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `where`      | 可供選取市場 (位置和語言) 以用於搜尋的下拉式功能表。                                                                                             |
 | `query`      | 要在其中輸入搜尋字詞的文字欄位。                                                                                                                                 |

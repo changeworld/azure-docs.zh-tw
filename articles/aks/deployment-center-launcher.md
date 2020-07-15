@@ -5,12 +5,12 @@ ms.author: puagarw
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
-ms.openlocfilehash: b0a9597e370648faab3787218c7d038798dbd455
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 42bdde45b3a289a35c5bf4c4651e5a50a639f049
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80048117"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251768"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>適用於 Azure Kubernetes 的部署中心
 
@@ -34,7 +34,7 @@ Azure DevOps 中的部署中心可簡化對您應用程式設定健全 Azure Dev
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 選取 Azure 入口網站中功能表列右上角的 [[Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)] 選項。
+1. 選取 Azure 入口網站中功能表列右上角的 [[Cloud Shell](../cloud-shell/overview.md)] 選項。
 
 1. 若要建立 AKS 叢集，請執行下列命令：
 
@@ -56,7 +56,7 @@ Azure DevOps 中的部署中心可簡化對您應用程式設定健全 Azure Dev
 
    ![settings](media/deployment-center-launcher/settings.png)
 
-1. 選擇程式碼的位置，然後選取 [下一步]  。 然後，選取其中一個目前支援的存放庫： **[Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)** 或 **GitHub**。
+1. 選擇程式碼的位置，然後選取 [下一步]  。 然後，選取其中一個目前支援的存放庫： **[Azure Repos](/azure/devops/repos/index?view=azure-devops)** 或 **GitHub**。
 
     Azure Repos 是一組版本控制工具，可協助您管理程式碼。 無論您的軟體專案大小為何，盡早使用版本控制都是個不錯的主意。
 
@@ -77,7 +77,7 @@ Azure DevOps 中的部署中心可簡化對您應用程式設定健全 Azure Dev
 
     ![Dockerfile](media/deployment-center-launcher/dockerfile.png)
 
-1. 選取現有的容器登錄或建立一個容器登錄，然後選取 [完成]  。 管線會自動建立，並將建置排入 [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/index?view=azure-devops) 的佇列中。
+1. 選取現有的容器登錄或建立一個容器登錄，然後選取 [完成]  。 管線會自動建立，並將建置排入 [Azure Pipelines](/azure/devops/pipelines/index?view=azure-devops) 的佇列中。
 
     Azure Pipelines 是一種雲端服務，可讓您用來自動建置和測試程式碼專案，並將其提供給其他使用者使用。 Azure Pipelines 結合了持續整合與持續傳遞，可持續且一致地測試及建置程式碼，並將其傳送至任何目標。
 

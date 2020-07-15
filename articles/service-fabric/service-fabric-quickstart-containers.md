@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 477d47fabc59c5718c449418f225d6a38838b270
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: da50fb9f331e91089bb6bf0fb373cab8045639f0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75466277"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260511"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>快速入門：將 Windows 容器部署至 Service Fabric
 
@@ -148,7 +148,7 @@ Thumbprint                                Subject
 
 ## <a name="clean-up"></a>清除
 
-當叢集在執行時，您需要繼續支付費用。 請考慮[刪除您的叢集](service-fabric-cluster-delete.md)。
+當叢集在執行時，您需要繼續支付費用。 請考慮[刪除您的叢集](./service-fabric-tutorial-delete-cluster.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

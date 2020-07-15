@@ -4,12 +4,12 @@ description: 建立 Azure Container Registry、設定異地複寫、準備 Docke
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 159426b7258d83fc28fc7d126c064167bbe00975
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 780a16d691e0d8afe62cd06f37a37fc3f6445ea6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85799433"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259528"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>教學課程：準備異地複寫的 Azure Container Registry
 
@@ -98,7 +98,7 @@ Azure Cloud Shell 不包括完成本教學課程每個步驟所需的 Docker 元
 
 現在，您已設定異地複寫、建置容器映像，並將它推送到您的登錄。 您必須先登入登錄，再將映像推送至該處。
 
-使用 [az acr login](https://docs.microsoft.com/cli/azure/acr#az-acr-login) 命令，驗證並快取登錄的認證。 將 `<acrName>` 取代為您先前建立的登錄名稱。
+使用 [az acr login](/cli/azure/acr#az-acr-login) 命令，驗證並快取登錄的認證。 將 `<acrName>` 取代為您先前建立的登錄名稱。
 
 ```azurecli
 az acr login --name <acrName>

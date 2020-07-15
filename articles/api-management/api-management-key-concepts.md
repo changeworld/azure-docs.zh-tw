@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 8d7fa8b8119ddf1769b36bcb55831047d6242470
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 85fa79cdfc7036be5b0ab20e49986a1d075152c5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84690195"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254651"
 ---
 # <a name="about-api-management"></a>關於 API 管理
 
@@ -102,7 +102,7 @@ API 是 API 管理服務執行個體的基礎。 每個 API 都代表可供開�
 ## <a name="policies"></a><a name="policies"> </a> 原則
 原則是 API 管理的強大功能，可讓 Azure 入口網站透過設定來變更 API 的行為。 原則是陳述式的集合，會因 API 的要求或回應循序執行。 常見陳述式包括從 XML 對 JSON 的格式轉換，以及可限制來自開發人員的傳入呼叫數量的呼叫費率限制，而且還有許多原則可供使用。
 
-如果原則不另行指定，則可以在任何 API 管理原則中，使用原則運算式做為屬性值或文字值。 某些原則是以原則運算式為基礎，例如[控制流程](/azure/api-management/api-management-advanced-policies#choose)和[設定變數](/azure/api-management/api-management-advanced-policies#set-variable)原則。 如需詳細資訊，請參閱[進階原則](/azure/api-management/api-management-advanced-policies#AdvancedPolicies)和[原則運算式](/azure/api-management/api-management-policy-expressions)。
+如果原則不另行指定，則可以在任何 API 管理原則中，使用原則運算式做為屬性值或文字值。 某些原則是以原則運算式為基礎，例如[控制流程](./api-management-advanced-policies.md#choose)和[設定變數](./api-management-advanced-policies.md#set-variable)原則。 如需詳細資訊，請參閱[進階原則](./api-management-advanced-policies.md#AdvancedPolicies)和[原則運算式](./api-management-policy-expressions.md)。
 
 
 如需 API 管理原則的完整清單，請參閱 [原則參考文件][Policy reference]。 如需使用和設定原則的詳細資訊，請參閱 [API 管理原則][API Management policies]。 如需建立產品並加上費率限制和配額原則的教學課程，請參閱 [如何建立和設定進階產品設定][How create and configure advanced product settings]。
@@ -135,17 +135,13 @@ API 是 API 管理服務執行個體的基礎。 每個 API 都代表可供開�
 [Policies]: #policies
 [Developer portal]: #developer-portal
 
-[How to create APIs]: api-management-howto-create-apis.md
-[How to add operations to an API]: api-management-howto-add-operations.md
+[How to create APIs]: ./import-and-publish.md
+[How to add operations to an API]: ./mock-api-responses.md
 [How to create and publish a product]: api-management-howto-add-products.md
 [How to create and use groups]: api-management-howto-create-groups.md
 [How to associate groups with developers]: api-management-howto-create-groups.md#associate-group-developer
 [How create and configure advanced product settings]: transform-api.md
 [How to create or invite developers]: api-management-howto-create-or-invite-developers.md
-[Policy reference]: api-management-policy-reference.md
+[Policy reference]: ./api-management-policies.md
 [API Management policies]: api-management-howto-policies.md
 [Create an API Management service instance]: get-started-create-service-instance.md
-
-
-
-

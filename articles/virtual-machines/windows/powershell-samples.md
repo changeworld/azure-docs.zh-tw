@@ -8,18 +8,18 @@ ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 03d27e1e72eaa5f5dee8cfa9062a56c6dd45007a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 712ff713a4aa7c014b14323cea7c0d6be1c9f53c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100017"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202231"
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Azure 虛擬機器 PowerShell 範例
 
 下表提供可建立及管理 Windows 虛擬機器 (VM) 之 PowerShell 指令碼範例的連結。
 
-| | |
+| 指令碼 | 描述 |
 |---|---|
 |**建立虛擬機器**||
 | [快速建立虛擬機器](./../scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 在最少提示的情況下，建立資源群組、虛擬機器及所有相關資源。|

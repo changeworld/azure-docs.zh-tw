@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27803187e06ee523ff7e6b773bd302eed7422111
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: b0db29309c2f691a1c7811258fee59582643a6e6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608856"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256078"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>教學課程：Azure Active Directory 與 ClickTime 整合
 
@@ -110,10 +110,10 @@ ClickTime 與 Azure AD 整合提供下列優點：
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：
     
-        ```https
-        https://app.clicktime.com/Login/
-        https://app.clicktime.com/App/Login/Consume.aspx
-        ```
+    ```http
+    https://app.clicktime.com/Login/
+    https://app.clicktime.com/App/Login/Consume.aspx
+    ```
 
 4. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 

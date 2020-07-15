@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: e6195409a08498527ec40a2ddd2f909a092c9d19
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 28b055cb343b7f894a28eee5fbe452d037fd6b0e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82202820"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249485"
 ---
 # <a name="import-an-api-app-as-an-api"></a>匯入 API 應用程式作為 API
 
@@ -33,7 +33,7 @@ ms.locfileid: "82202820"
 ## <a name="prerequisites"></a>Prerequisites
 
 + 完成下列快速入門：[建立 Azure API 管理執行個體](get-started-create-service-instance.md)
-+ 確定您的訂用帳戶中有 API 應用程式。 如需詳細資訊，請參閱 [App Service 文件](https://docs.microsoft.com/azure/app-service/)
++ 確定您的訂用帳戶中有 API 應用程式。 如需詳細資訊，請參閱 [App Service 文件](../app-service/index.yml)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 

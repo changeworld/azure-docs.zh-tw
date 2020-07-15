@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: b4ce4cd53f9dda3d0f96e892128d543e59c83b26
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fce613da352e55bae64db2912af23a07f4bf954f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100357"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200685"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>教學課程：了解如何使用 Azure PowerShell 來管理 Windows 虛擬機器
 
@@ -23,7 +23,7 @@ ms.locfileid: "82100357"
 
 Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 
 
-若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看]  即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製]  即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
+若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看] 即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製] 即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
 
 ## <a name="understand-scope"></a>了解範圍
 
@@ -65,7 +65,7 @@ New-AzRoleAssignment -ObjectId $adgroup.id `
 
 如果出現錯誤，指出**原則 \<guid> 不存在於目錄中**，表示新群組未傳播至整個 Azure Active Directory。 請嘗試再次執行命令。
 
-通常您需要針對網路參與者  和儲存體帳戶參與者  重複進行此程序，以確保已指派使用者來管理已部署的資源。 在本文中，您可以略過這些步驟。
+通常您需要針對網路參與者和儲存體帳戶參與者重複進行此程序，以確保已指派使用者來管理已部署的資源。 在本文中，您可以略過這些步驟。
 
 ## <a name="azure-policy"></a>Azure 原則
 
@@ -217,6 +217,10 @@ Remove-AzResourceLock -LockName LockNSG `
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup
 ```
+
+## <a name="manage-costs"></a>管理成本
+
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

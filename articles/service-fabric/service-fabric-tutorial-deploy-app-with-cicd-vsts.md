@@ -4,12 +4,12 @@ description: 在本教學課程中，您會了解如何使用 Azure Pipelines �
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 11485d22abcf0b8e1eb13d8123ff21c7fe0079f8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 992d720d86fc2e7fedd8e7fd4b559220ff3c0512
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75614135"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260355"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>教學課程：將搭配 CI/CD 的應用程式部署到 Service Fabric 叢集
 
@@ -39,7 +39,7 @@ ms.locfileid: "75614135"
 * [安裝 Visual Studio 2019](https://www.visualstudio.com/)，並安裝 **Azure 開發**以及 **ASP.NET 和 Web 開發**工作負載。
 * [安裝 Service Fabric SDK](service-fabric-get-started.md)
 * 在 Azure 上建立 Windows Service Fabric 叢集，例如[遵循本教學課程](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
-* 建立 [Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student) 組織。 這可讓您在 Azure DevOps 中建立專案並使用 Azure Pipelines。
+* 建立 [Azure DevOps](/azure/devops/organizations/accounts/create-organization-msa-or-work-student) 組織。 這可讓您在 Azure DevOps 中建立專案並使用 Azure Pipelines。
 
 ## <a name="download-the-voting-sample-application"></a>下載投票應用程式範例
 
