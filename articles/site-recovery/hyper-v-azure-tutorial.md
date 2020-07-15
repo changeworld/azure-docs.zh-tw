@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 9a2bb636ba749cae50195cefeb8e7237d382fb99
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: afa8375805ebc5d52ac716126adca86850147166
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82182339"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134086"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>設定 Hyper-V VM 至 Azure 的災害復原
 
@@ -30,7 +30,7 @@ ms.locfileid: "82182339"
 > * 啟用 VM 複寫。
 
 > [!NOTE]
-> 這些教學課程示範案例的最簡單部署路徑。 可能的話，會使用預設選項，而不會顯示所有可能的設定與路徑。 如需詳細指示，請檢閱 [Site Recovery 文件](https://docs.microsoft.com/azure/site-recovery)的**操作指南**一節中的文章。
+> 這些教學課程示範案例的最簡單部署路徑。 可能的話，會使用預設選項，而不會顯示所有可能的設定與路徑。 如需詳細指示，請檢閱 [Site Recovery 文件](./index.yml)的**操作指南**一節中的文章。
 
 
 
@@ -39,7 +39,7 @@ ms.locfileid: "82182339"
 這是本系列的第三個教學課程。 其內容假設您已完成了先前教學課程中的工作：
 
 1. [準備 Azure](tutorial-prepare-azure.md)
-2. [準備內部部署 Hyper-V](tutorial-prepare-on-premises-hyper-v.md)
+2. [準備內部部署 Hyper-V](./hyper-v-prepare-on-premises-tutorial.md)
 
 ## <a name="select-a-replication-goal"></a>選取複寫目標
 

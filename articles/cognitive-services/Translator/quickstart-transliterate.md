@@ -12,18 +12,18 @@ ms.date: 05/26/2020
 ms.author: erhopf
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 47580e45f030cd49d30a5a8cc3d9e1a2160357fc
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 31d316635211d56207b2d612997938c2baaff02f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84606508"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144229"
 ---
 # <a name="quickstart-use-the-translator-to-transliterate-text"></a>快速入門：使用翻譯工具進行文字直譯
 
 在本快速入門中，您將了解如何使用翻譯工具 REST API，將文字從一個字集直譯 (轉換) 成另一個字集。 在所提供的範例中，日文會直譯為使用拉丁字母。
 
-本快速入門需要 [Azure 認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)和翻譯工具資源。 如果您還沒有帳戶，可以使用[免費試用](https://azure.microsoft.com/try/cognitive-services/)來取得訂用帳戶金鑰。
+本快速入門需要 [Azure 認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)和翻譯工具資源。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/transliterate-csharp.md)]

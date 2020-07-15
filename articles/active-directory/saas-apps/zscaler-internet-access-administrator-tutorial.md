@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a149527c6e00972991bf0b18e6f7c599799a0c91
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d7623373be1aded29cb022f1d5080ed94d96b719
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73161031"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170083"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>教學課程：Azure Active Directory 與 Zscaler Internet Access Administrator 整合
 
@@ -108,25 +108,21 @@ ms.locfileid: "73161031"
 
     a. 在 [識別碼]  文字方塊中，依據您的需求鍵入 URL：
 
-    | |
-    |--|
-    | `https://admin.zscaler.net` |
-    | `https://admin.zscalerone.net` |
-    | `https://admin.zscalertwo.net` |
-    | `https://admin.zscalerthree.net` |
-    | `https://admin.zscloud.net` |
-    | `https://admin.zscalerbeta.net` |
+    - `https://admin.zscaler.net`
+    - `https://admin.zscalerone.net`
+    - `https://admin.zscalertwo.net`
+    - `https://admin.zscalerthree.net`
+    - `https://admin.zscloud.net`
+    - `https://admin.zscalerbeta.net`
 
     b. 在 [回覆 URL]  文字方塊中，依據您的需求鍵入 URL：
 
-    | |
-    |--|
-    | `https://admin.zscaler.net/adminsso.do` |
-    | `https://admin.zscalerone.net/adminsso.do` |
-    | `https://admin.zscalertwo.net/adminsso.do` |
-    | `https://admin.zscalerthree.net/adminsso.do` |
-    | `https://admin.zscloud.net/adminsso.do` |
-    | `https://admin.zscalerbeta.net/adminsso.do` |
+    - `https://admin.zscaler.net/adminsso.do`
+    - `https://admin.zscalerone.net/adminsso.do`
+    - `https://admin.zscalertwo.net/adminsso.do`
+    - `https://admin.zscalerthree.net/adminsso.do`
+    - `https://admin.zscloud.net/adminsso.do`
+    - `https://admin.zscalerbeta.net/adminsso.do`
 
 5. Zscaler Internet Access Administrator 應用程式需要特定格式的 SAML 判斷提示。 設定此應用程式的下列宣告。 您可以在應用程式整合頁面的 [使用者屬性與宣告]  區段中管理這些屬性的值。 在 [以 SAML 設定單一登入]  頁面上，按一下 [編輯]  按鈕以開啟 [使用者屬性與宣告]  對話方塊。
 

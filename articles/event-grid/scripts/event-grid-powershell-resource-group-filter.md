@@ -1,22 +1,15 @@
 ---
 title: Azure PowerShell - 訂閱資源群組
 description: 本文提供範例 Azure PowerShell 指令碼，示範如何訂閱資源群組的事件方格事件以及對資源進行篩選。
-services: event-grid
-documentationcenter: na
-author: spelluru
-ms.service: event-grid
 ms.devlang: powershell
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: 5d41bfec5978d1baf38eaf1608f50375170d9929
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/08/2020
+ms.openlocfilehash: ebb9b1ce729d5a2690492401bc4fd351e86f3462
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76720600"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171205"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-and-filter-for-a-resource-with-powershell"></a>使用 PowerShell 訂閱資源群組的事件和篩選資源
 

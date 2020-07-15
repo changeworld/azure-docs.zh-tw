@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: dc37cb6fa05a2be56de7bf5536d7274190257d85
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 463bd290c304d9436316c9e08778f37ce8bd0b55
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78303914"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135431"
 ---
 # <a name="move-azure-vms-to-another-azure-region"></a>將 Azure VM 移至另一個 Azure 區域
 
@@ -35,7 +35,7 @@ ms.locfileid: "78303914"
 ## <a name="prerequisites"></a>Prerequisites
 
 - 確定您要「移出」  VM 的來源 Azure 區域中有 Azure VM。
-- 確認您選擇的[來源區域與目標區域組合受到支援](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)，然後小心地選擇目標區域。
+- 確認您選擇的[來源區域與目標區域組合受到支援](./azure-to-azure-support-matrix.md#region-support)，然後小心地選擇目標區域。
 - 請確定您了解[情節架構和元件](azure-to-azure-architecture.md)。
 - 檢閱[支援限制和需求](azure-to-azure-support-matrix.md)。
 - 驗證帳戶權限。 如果您剛建立免費的 Azure 帳戶，「您」  就是您的訂用帳戶管理員。 如果您不是管理員，請與管理員合作來取得您所需的權限：
@@ -66,13 +66,13 @@ ms.locfileid: "78303914"
 
    當您啟用來源 VM 的複寫時，Azure Site Recovery 會自動探索和建立虛擬網路及儲存體帳戶。 您也可以在啟用複寫步驟中，預先建立這些資源並將其指派給 VM。 但您必須在目標區域中手動建立任何其他資源。 請參閱下列文件，以根據您的來源 VM 組態建立最常用的網路資源：
 
-   - [網路安全性群組](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-   - [負載平衡器](https://docs.microsoft.com/azure/load-balancer)
+   - [網路安全性群組](../virtual-network/manage-network-security-group.md)
+   - [負載平衡器](../load-balancer/index.yml)
    - [公用 IP](../virtual-network/virtual-network-public-ip-address.md)
     
-   如需任何其他網路元件，請參閱 [Azure 網路文件](https://docs.microsoft.com/azure/?pivot=products&panel=network)。 
+   如需任何其他網路元件，請參閱 [Azure 網路文件](../index.yml?pivot=products&panel=network)。 
 
-4. 若要在執行移動前測試組態，請在目標區域中手動[建立非生產網路](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)。 測試安裝程式對生產環境的干擾最少，建議使用此方法。
+4. 若要在執行移動前測試組態，請在目標區域中手動[建立非生產網路](../virtual-network/quick-create-portal.md)。 測試安裝程式對生產環境的干擾最少，建議使用此方法。
     
 ## <a name="copy-data-to-the-target-region"></a>將資料複製到目標區域
 下列步驟使用 Azure Site Recovery 將資料複製到目標區域。
@@ -149,4 +149,3 @@ Site Recovery 會擷取與訂用帳戶和資源群組建立關聯的 VM 清單�
 
 > [!div class="nextstepaction"]
 > [在移轉之後設定災害復原](azure-to-azure-quickstart.md)
-

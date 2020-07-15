@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c27b7bf29e5f124fdcfb886b658fd8e9d4cc48fe
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e6257311473987ee053caeade6bfe14533353b73
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74091353"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134450"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>在 Azure 區域之間容錯回復 Azure VM
 
@@ -28,7 +28,7 @@ ms.locfileid: "74091353"
 > 
 > [!NOTE]
 > 
-> 本教學課程可協助您將一些 VM 容錯移轉到目標區域，再容錯回復到來源區域 (需要最少自訂)。 如需詳細的深入指示，請檢閱 [Azure VM 的操作指南](https://docs.microsoft.com/azure/virtual-machines/windows/)。
+> 本教學課程可協助您將一些 VM 容錯移轉到目標區域，再容錯回復到來源區域 (需要最少自訂)。 如需詳細的深入指示，請檢閱 [Azure VM 的操作指南](../virtual-machines/windows/index.yml)。
 
 ## <a name="before-you-start"></a>開始之前
 

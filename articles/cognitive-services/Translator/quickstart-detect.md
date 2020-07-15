@@ -12,18 +12,18 @@ ms.date: 05/26/2020
 ms.author: erhopf
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 4e11a26d75877dcaf244e754763f7c9b80c1de61
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 2ab484f1662d365bc23aefe1bc3d9eb4aed98185
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608310"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146985"
 ---
 # <a name="quickstart-use-the-translator-to-detect-text-language"></a>快速入門：使用翻譯工具來偵測文字語言
 
 在本快速入門中，您將了解如何使用翻譯工具 REST API 來偵測所提供文字的語言。
 
-本快速入門需要 [Azure 認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)和翻譯工具資源。 如果您還沒有帳戶，可以使用[免費試用](https://azure.microsoft.com/try/cognitive-services/)來取得訂用帳戶金鑰。
+本快速入門需要 [Azure 認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)和翻譯工具資源。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/detect-csharp.md)]

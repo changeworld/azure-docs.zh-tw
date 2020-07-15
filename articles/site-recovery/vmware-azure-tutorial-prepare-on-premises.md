@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4969a1f14e53aabf79495e179213f9763d4c8803
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: b8fd34c8f1e3a32a8252074941a49d61aa540207
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84704245"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134903"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>準備內部部署 VMware 伺服器以進行 Azure 的災害復原
 
@@ -103,7 +103,7 @@ Site Recovery 需要存取 VMware 伺服器才能：
 - 在容錯移轉之前，於內部部署機器上，確認安全殼層服務已設定為在系統開機時自動啟動。
 - 確認防火牆規則允許 SSH 連線。
 - 在容錯移轉之後，於 Azure VM 上，針對已容錯移轉之 VM 上的網路安全性群組規則及其所連線的 Azure 子網路，允許 SSH 連接埠的連入連線。
-- [新增 VM 的公用 IP 位址](site-recovery-monitoring-and-troubleshooting.md)。
+- [新增 VM 的公用 IP 位址](./site-recovery-monitor-and-troubleshoot.md)。
 - 您可以勾選 [開機診斷]  以檢視 VM 的螢幕擷取畫面。
 
 

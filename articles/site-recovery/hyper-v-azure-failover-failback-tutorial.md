@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 03826abf6da94859c510f4c127dfce035aa79370
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b46a2ea12a697afde8223cc3595365c1286512c7
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75498168"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132455"
 ---
 # <a name="fail-over-hyper-v-vms-to-azure"></a>將 Hyper-V VM 容錯移轉至 Azure
 
@@ -27,8 +27,8 @@ ms.locfileid: "75498168"
 此教學課程是本系列的第五個教學課程。 其內容假設您已經完成了先前教學課程中的工作。    
 
 1. [準備 Azure](tutorial-prepare-azure.md)
-2. [準備內部部署 Hyper-V](tutorial-prepare-on-premises-hyper-v.md)
-3. 設定適用於 [Hyper-V VM](tutorial-hyper-v-to-azure.md)，或適用於 [System Center VMM 雲端中所管理的 Hyper-V VM](tutorial-hyper-v-vmm-to-azure.md) 的災害復原
+2. [準備內部部署 Hyper-V](./hyper-v-prepare-on-premises-tutorial.md)
+3. 設定適用於 [Hyper-V VM](./hyper-v-azure-tutorial.md)，或適用於 [System Center VMM 雲端中所管理的 Hyper-V VM](./hyper-v-vmm-azure-tutorial.md) 的災害復原
 4. [執行災害復原演練](tutorial-dr-drill-azure.md)
 
 [了解](failover-failback-overview.md#types-of-failover)不同類型的容錯移轉。 如果您想要容錯移轉復原方案中的多個 VM，請參閱[本文](site-recovery-failover.md)。

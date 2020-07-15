@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fd01c86086c7491d22f655fcba5da237286412f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: dbe6aed8ae0403f6ab4a7f9e0ba8b9a2c5d61617
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68347792"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86168553"
 ---
 # <a name="tutorial-integrate-sap-analytics-cloud-with-azure-active-directory"></a>教學課程：整合 SAP Analytics Cloud 與 Azure Active Directory
 
@@ -85,17 +85,13 @@ ms.locfileid: "68347792"
 
     a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：
 
-    | |
-    |-|-|
-    | `https://<sub-domain>.sapanalytics.cloud/` |
-    | `https://<sub-domain>.sapbusinessobjects.cloud/` |
+    - `https://<sub-domain>.sapanalytics.cloud/`
+    - `https://<sub-domain>.sapbusinessobjects.cloud/`
 
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：
-    
-    | |
-    |-|-|
-    | `<sub-domain>.sapbusinessobjects.cloud` |
-    | `<sub-domain>.sapanalytics.cloud` |
+
+    - `<sub-domain>.sapbusinessobjects.cloud`
+    - `<sub-domain>.sapanalytics.cloud`
 
     > [!NOTE] 
     > 這些 URL 中的值僅供示範。 使用實際的「登入 URL」及「識別碼 URL」來更新這些值。 若要取得登入 URL，請連絡 [SAP Analytics Cloud 用戶端支援小組](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/)。 您可以從管理員主控台下載 SAP Analytics Cloud 中繼資料，以取得識別碼 URL。 稍後在本教學課程中會加以說明。

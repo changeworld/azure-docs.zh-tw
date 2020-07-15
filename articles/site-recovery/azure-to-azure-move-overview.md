@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 3f715af835df6783ae5d59dd073a042a553fba4d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0c7efc94bcde18e7b6ff43726602fa87641f3e76
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75498039"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130615"
 ---
 # <a name="moving-azure-vms-to-another-azure-region"></a>將 Azure VM 移至另一個 Azure 區域
 
@@ -51,11 +51,11 @@ ms.locfileid: "75498039"
 
      ![單一執行個體 VM 部署於不同層](media/move-vm-overview/regular-deployment.png)
 
-* **每層中的 VM 部署在可用性設定組間**：一層中的每個 VM 會設定於可用性設定組中。 [可用性設定組](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)可確保您在 Azure 上部署的 VM 會分散到叢集中多個各自獨立的硬體節點。 這可確保當 Azure 內發生硬體或軟體故障時，只有 VM 子集會受到影響，而您的整體解決方案則會維持可用且正常運作。
+* **每層中的 VM 部署在可用性設定組間**：一層中的每個 VM 會設定於可用性設定組中。 [可用性設定組](../virtual-machines/windows/tutorial-availability-sets.md)可確保您在 Azure 上部署的 VM 會分散到叢集中多個各自獨立的硬體節點。 這可確保當 Azure 內發生硬體或軟體故障時，只有 VM 子集會受到影響，而您的整體解決方案則會維持可用且正常運作。
 
      ![可用性設定組間的 VM 部署](media/move-vm-overview/avset.png)
 
-* **每層中的 VM 部署在可用性區域間**：一層中的每個 VM 都會設定於[可用性設定組](https://docs.microsoft.com/azure/availability-zones/az-overview) \(機器翻譯\) 間。 Azure 區域中的可用性區域是由容錯網域和更新網域組成。 例如，如果您在 Azure 區域中建立橫跨三個區域的三個 (或更多) VM，您的 VM 會有效地分散到三個容錯網域和三個更新網域。 Azure 平台會從更新網域中辨識此分佈，以確定不會同時更新不同區域中的 VM。
+* **每層中的 VM 部署在可用性區域間**：一層中的每個 VM 都會設定於[可用性設定組](../availability-zones/az-overview.md) \(機器翻譯\) 間。 Azure 區域中的可用性區域是由容錯網域和更新網域組成。 例如，如果您在 Azure 區域中建立橫跨三個區域的三個 (或更多) VM，您的 VM 會有效地分散到三個容錯網域和三個更新網域。 Azure 平台會從更新網域中辨識此分佈，以確定不會同時更新不同區域中的 VM。
 
      ![可用性區域部署](media/move-vm-overview/zone.png)
 

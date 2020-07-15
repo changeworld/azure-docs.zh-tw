@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e99b860f4f75e142a8df09bb538ebee3f2eac6d3
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 41f42b053181f4115770cd9973621706b248baab
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85297472"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86168298"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 ServiceNow 整合
 
@@ -101,10 +101,8 @@ ms.locfileid: "85297472"
 
     c. 針對 [回覆 URL]  ，輸入下列其中一個 URL：
 
-    |||
-    |-|-|
-    | `https://instancename.service-now.com/navpage.do` |
-    | `https://instancename.service-now.com/customer.do` | 
+    - `https://instancename.service-now.com/navpage.do`
+    - `https://instancename.service-now.com/customer.do`
 
     > [!NOTE]
     > 這些都不是真正的值。 您必須使用實際的登入 URL 及識別碼來更新這些值 (本教學課程稍後會說明)。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
@@ -173,10 +171,8 @@ ms.locfileid: "85297472"
 
     c. 針對 [回覆 URL]  ，輸入下列其中一個 URL：
 
-    |||
-    |-|-|
-    | `https://instancename.service-now.com/navpage.do` |
-    | `https://instancename.service-now.com/customer.do` |
+    - `https://instancename.service-now.com/navpage.do`
+    - `https://instancename.service-now.com/customer.do`
 
     > [!NOTE]
     > 這些都不是真正的值。 您必須使用實際的登入 URL 及識別碼來更新這些值 (本教學課程稍後會說明)。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。

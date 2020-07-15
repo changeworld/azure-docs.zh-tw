@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: d26e8a21865304b2065a28da5e241f58cb5ab34c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 76ded60421c1f6d39328ec88e964876e3eb64d78
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68383231"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169046"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reflektive"></a>教學課程：Azure Active Directory 與 Reflektive 整合
 
@@ -107,11 +107,8 @@ Reflektive 與 Azure AD 整合提供下列優點：
 
     在 [識別碼]  文字方塊中，在 Reflektive 支援小組確認過後，使用下列其中一個 URL：
 
-    | |
-    |--|
-    | `reflektive.com` |
-    | `https://www.reflektive.com/saml/metadata` |
-    | |
+    - `reflektive.com`
+    - `https://www.reflektive.com/saml/metadata`
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 

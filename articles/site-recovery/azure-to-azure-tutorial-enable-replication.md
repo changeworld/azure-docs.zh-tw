@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 145ae5f6f9204366052d9a182c61d76ff7ffa715
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: e7f7535cf66da721e1738da6d0efbf335d97a6da
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871502"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134498"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>設定適用於 Azure VM 的災害復原
 
@@ -31,8 +31,8 @@ ms.locfileid: "82871502"
 
 若要完成本教學課程：
 
-- 檢閱[案例架構和元件](concepts-azure-to-azure-architecture.md)。
-- 開始之前，請檢閱[支援需求](site-recovery-support-matrix-azure-to-azure.md)。
+- 檢閱[案例架構和元件](./azure-to-azure-architecture.md)。
+- 開始之前，請檢閱[支援需求](./azure-to-azure-support-matrix.md)。
 
 ## <a name="create-a-recovery-services-vault"></a>建立復原服務保存庫
 
@@ -137,7 +137,7 @@ Site Recovery 會設定目標區域的預設設定和複寫原則。 您可以�
    | **目標位置** | 用於災害復原的目標區域。<br/><br/> 我們建議目標位置符合 Site Recovery 保存庫的位置。 |
    | **目標資源群組** | 目標區域中在容錯移轉後保留 Azure VM 的資源群組。<br/><br/> 根據預設，Site Recovery 會在目標區域中建立具有 `asr` 尾碼的新資源群組。 目標資源群組的位置可以是任何區域，但是裝載您來源虛擬機器所在的區域除外。 |
    | **目標虛擬網路** | 目標區域中 VM 在容錯移轉後所在的網路。<br/><br/> 根據預設，Site Recovery 會在目標區域中建立具有 `asr` 尾碼的新虛擬網路 (和子網路)。 |
-   | **快取儲存體帳戶** | Site Recovery 會使用來源區域中的儲存體帳戶。 來源 VM 的變更會在複寫到目標位置之前，先傳送到此帳戶。<br/><br/> 如果您使用啟用防火牆的快取儲存體帳戶，請確定您已啟用 [允許信任的 Microsoft 服務]。 [深入了解](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)。 此外，請確保您允許存取來源 Vnet 的至少一個子網路。 |
+   | **快取儲存體帳戶** | Site Recovery 會使用來源區域中的儲存體帳戶。 來源 VM 的變更會在複寫到目標位置之前，先傳送到此帳戶。<br/><br/> 如果您使用啟用防火牆的快取儲存體帳戶，請確定您已啟用 [允許信任的 Microsoft 服務]。 [深入了解](../storage/common/storage-network-security.md#exceptions)。 此外，請確保您允許存取來源 Vnet 的至少一個子網路。 |
    | **目標儲存體帳戶 (來源 VM 使用非受控磁碟)** | 根據預設，Site Recovery 會在目標區域中建立新的儲存體帳戶，以反映來源 VM 儲存體帳戶。<br/><br/> 如果您使用啟用防火牆的快取儲存體帳戶，請啟用**允許信任的 Microsoft 服務**。 |
    | **複本受控磁碟 (如果來源 VM 使用受控磁碟)** | 根據預設，Site Recovery 會在目標區域中建立與來源 VM 受控磁碟具有相同儲存體類型 (標準或進階) 的複本受控磁碟，以反映來源 VM 的受控磁碟。 您只能自訂磁碟類型。 |
    | **目標可用性設定組** | 根據預設，Azure Site Recovery 會針對來源區域的可用性設定組中的 VM，在目標區域中建立名稱尾碼為 `asr` 的新可用性設定組。 如果 Azure Site Recovery 建立的可用性設定組已存在，則會重複使用。 |

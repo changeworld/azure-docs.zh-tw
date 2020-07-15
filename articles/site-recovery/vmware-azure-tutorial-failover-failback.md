@@ -5,12 +5,12 @@ ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.custom: MVC
-ms.openlocfilehash: 8501bb1a998eb08984a118bfa5d52d1e3f3e4f84
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bf47f08ac555cf60f59ba2b1a84750b6a9e2e0a1
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75498075"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132001"
 ---
 # <a name="fail-over--vmware-vms"></a>容錯移轉 VMware VM
 
@@ -87,7 +87,7 @@ ms.locfileid: "75498075"
 
 ## <a name="connect-to-failed-over-vm"></a>連線至容錯移轉的 VM
 
-1. 如果您在容錯移轉後想要使用遠端桌面通訊協定 (RDP) 和安全殼層 (SSH) 連線至 Azure VM，[請確認已符合需求]((ailover-failback-overview.md#connect-to-azure-after-failover)。
+1. 如果您在容錯移轉後想要使用遠端桌面通訊協定 (RDP) 和安全殼層 (SSH) 連線至 Azure VM，請[確認已符合需求](failover-failback-overview.md#connect-to-azure-after-failover)。
 2. 容錯移轉之後，請移至 VM 並[連線](../virtual-machines/windows/connect-logon.md)至該 VM 進行驗證。
 3. 如果您想要在容錯移轉後使用不同的復原點，請使用 [變更復原點]  。 在下一個步驟中認可容錯移轉之後，將無法再使用此選項。
 4. 在驗證之後，選取 [認可]  以完成容錯移轉後的 VM 復原點。

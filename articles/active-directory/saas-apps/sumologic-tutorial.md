@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de6d941c6efe42993b6bad7c556582831d179250
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bca74d7cce0257f4d852e1520cb23e6a77969ec7
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75659724"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86167720"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sumologic"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SumoLogic 整合
 
@@ -83,28 +83,24 @@ ms.locfileid: "75659724"
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：
 
-    | |
-    |--|
-    | `https://service.sumologic.com`|
-    | `https://<tenantname>.us2.sumologic.com`|
-    | `https://<tenantname>.us4.sumologic.com`|
-    | `https://<tenantname>.eu.sumologic.com`|
-    | `https://<tenantname>.jp.sumologic.com`|
-    | `https://<tenantname>.de.sumologic.com`|
-    | `https://<tenantname>.ca.sumologic.com`|
+    - `https://service.sumologic.com`
+    - `https://<tenantname>.us2.sumologic.com`
+    - `https://<tenantname>.us4.sumologic.com`
+    - `https://<tenantname>.eu.sumologic.com`
+    - `https://<tenantname>.jp.sumologic.com`
+    - `https://<tenantname>.de.sumologic.com`
+    - `https://<tenantname>.ca.sumologic.com`
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：
 
-    | |
-    |--|
-    | `https://service.sumologic.com/sumo/saml/consume/<tenantname>`|
-    | `https://service.us2.sumologic.com/sumo/saml/consume/<tenantname>`|
-    | `https://service.us4.sumologic.com/sumo/saml/consume/<tenantname>`|
-    | `https://service.eu.sumologic.com/sumo/saml/consume/<tenantname>`|
-    | `https://service.jp.sumologic.com/sumo/saml/consume/<tenantname>`|
-    | `https://service.de.sumologic.com/sumo/saml/consume/<tenantname>`|
-    | `https://service.ca.sumologic.com/sumo/saml/consume/<tenantname>`|
-    | `https://service.au.sumologic.com/sumo/saml/consume/<tenantname>`|
+    - `https://service.sumologic.com/sumo/saml/consume/<tenantname>`
+    - `https://service.us2.sumologic.com/sumo/saml/consume/<tenantname>`
+    - `https://service.us4.sumologic.com/sumo/saml/consume/<tenantname>`
+    - `https://service.eu.sumologic.com/sumo/saml/consume/<tenantname>`
+    - `https://service.jp.sumologic.com/sumo/saml/consume/<tenantname>`
+    - `https://service.de.sumologic.com/sumo/saml/consume/<tenantname>`
+    - `https://service.ca.sumologic.com/sumo/saml/consume/<tenantname>`
+    - `https://service.au.sumologic.com/sumo/saml/consume/<tenantname>`
 
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [SumoLogic 客戶支援小組](https://www.sumologic.com/contact-us/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。

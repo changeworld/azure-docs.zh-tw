@@ -4,12 +4,12 @@ description: 了解如何使用 Site Recovery 將 System Center VMM 雲端中內
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.custom: MVC
-ms.openlocfilehash: a391d8eb3cf7bc43b52883cbf2e76170338c44c6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f32103adce184a67cec9e5a778ac1d1e6f330f4d
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067583"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130229"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>將 VMM 雲端中 Hyper-V VM 的災害復原設定至 Azure
 
@@ -25,7 +25,7 @@ ms.locfileid: "80067583"
 > * 啟用 VM 複寫。
 
 > [!NOTE]
-> 這些教學課程示範案例的最簡單部署路徑。 可能的話，會使用預設選項，而不會顯示所有可能的設定與路徑。 如需詳細指示，請檢閱 [Site Recovery 文件](/azure/site-recovery/)的**操作指南**一節中的文章。
+> 這些教學課程示範案例的最簡單部署路徑。 可能的話，會使用預設選項，而不會顯示所有可能的設定與路徑。 如需詳細指示，請檢閱 [Site Recovery 文件](./index.yml)的**操作指南**一節中的文章。
 
 ## <a name="prerequisites"></a>Prerequisites
 

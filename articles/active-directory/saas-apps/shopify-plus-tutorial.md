@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18dc2e4393175751f5ac52d53e0c331c82fce7e8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f3740415652407c834ec258730f89e46398a9f79
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078091"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170474"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shopify-plus"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Shopify Plus 整合
 
@@ -99,9 +99,9 @@ ms.locfileid: "86078091"
 
 1. 除了上述屬性外，Shopify Plus 應用程式還需要在 SAML 回應中多傳回幾個屬性，如下所示。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。
 
-    | 名稱 |  |  來源屬性|
-    | ---------------| --------------- | --------- |
-    | 電子郵件 | | user.mail |
+    | 名稱 | 來源屬性|
+    | ---- | --------------- |
+    | 電子郵件 | user.mail |
 
 1. 將 [名稱識別碼] 格式變更為 [持續性]。 選取 [唯一使用者識別碼 (名稱識別碼)] 選項，然後選取 [名稱識別碼] 格式。 為這個選項選取 [持續性]。 儲存您的變更。
 1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，選取 [複製] 按鈕以複製**應用程式同盟中繼資料 URL**，並儲存在您的電腦上。

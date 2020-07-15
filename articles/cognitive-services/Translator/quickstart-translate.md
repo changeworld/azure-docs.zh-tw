@@ -12,18 +12,18 @@ ms.date: 05/26/2020
 ms.author: erhopf
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: e4ee37c00778d239c8481392ce9231b2dda7c6e3
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 363da0f528444ab45784beb43d3590b50c0cb71f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84606520"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144319"
 ---
 # <a name="quickstart-use-the-translator-to-translate-text"></a>快速入門：使用翻譯工具翻譯文字
 
 在本快速入門中，您將了解如何使用翻譯工具 REST API，將文字字串從英文翻譯成德文、義大利文、日文和泰文。
 
-本快速入門需要 [Azure 認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)和翻譯工具資源。 如果您還沒有帳戶，可以使用[免費試用](https://azure.microsoft.com/try/cognitive-services/)來取得訂用帳戶金鑰。
+本快速入門需要 [Azure 認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)和翻譯工具資源。 
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/translate-csharp.md)]

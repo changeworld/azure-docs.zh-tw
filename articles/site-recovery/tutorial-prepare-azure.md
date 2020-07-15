@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ba5ecc29edbcd69324500e87add846e4395ce0a3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 312723818c4cef82ad6c96b013d7ec81ede276cc
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067555"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130918"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>準備 Azure 以進行內部部署災害復原至 Azure
 
@@ -90,8 +90,8 @@ ms.locfileid: "80067555"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 針對 VMware 災害復原，[準備內部部署 VMware 基礎結構](tutorial-prepare-on-premises-vmware.md)。
+- 針對 VMware 災害復原，[準備內部部署 VMware 基礎結構](./vmware-azure-tutorial-prepare-on-premises.md)。
 - 針對 Hyper-V 災害復原，[準備內部部署 Hyper-V 伺服器](hyper-v-prepare-on-premises-tutorial.md)。
 - 針對實體伺服器災害復原，[設定組態伺服器和來源環境](physical-azure-disaster-recovery.md)。
-- [了解](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) Azure 網路。
-- [了解](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)受控磁碟。
+- [了解](../virtual-network/virtual-networks-overview.md) Azure 網路。
+- [了解](../virtual-machines/windows/managed-disks-overview.md)受控磁碟。

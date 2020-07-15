@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: cb9a6a79aa75f646370d05a6a55ec75533d42038
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2fd26acfd857ab868c003d0de901f6d168d63078
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67088727"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86167516"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tidemark"></a>教學課程：Azure Active Directory 與 Tidemark 整合
 
@@ -107,19 +107,14 @@ Tidemark 與 Azure AD 整合提供下列優點：
 
     a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：
 
-    | |
-    |--|
-    | `https://<subdomain>.tidemark.com/login` |
-    | `https://<subdomain>.tidemark.net/login` |
-    | |
+    - `https://<subdomain>.tidemark.com/login`
+    - `https://<subdomain>.tidemark.net/login`
 
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：
 
-    | |
-    |--|
-    | `https://<subdomain>.tidemark.com/saml` |
-    | `https://<subdomain>.tidemark.net/saml` |
-    | |
+
+    - `https://<subdomain>.tidemark.com/saml`
+    - `https://<subdomain>.tidemark.net/saml`
 
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Tidemark 客戶支援小組](http://www.tidemark.com/contact-us)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。

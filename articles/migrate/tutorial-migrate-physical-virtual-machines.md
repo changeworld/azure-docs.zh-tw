@@ -4,12 +4,12 @@ description: 本文說明如何使用 Azure Migrate 將實體機器遷移至 Azu
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: dbb7737d59f48cadc645be990634bb5cb0cda251
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 16145c5d8b2414750b6eff9669fa7cd61eb482f5
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116092"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165391"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>將機器視為實體伺服器遷移至 Azure
 
@@ -69,9 +69,9 @@ ms.locfileid: "86116092"
 
 將「虛擬機器參與者」角色指派給 Azure 帳戶。 這會提供權限給：
 
-    - 在所選的資源群組中建立 VM。
-    - 在所選的虛擬網路中建立 VM。
-    - 寫入至 Azure 受控磁碟。 
+- 在所選的資源群組中建立 VM。
+- 在所選的虛擬網路中建立 VM。
+- 寫入至 Azure 受控磁碟。 
 
 ### <a name="create-an-azure-network"></a>建立 Azure 網路
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71d2fe97a4af07f48038ffd88de648247b56bb80
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9c535b6610b569c4d3649f3d97428b2c97d0db91
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160025"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86168179"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>教學課程：Azure Active Directory 與 Citrix ShareFile 整合
 
@@ -110,22 +110,17 @@ Citrix ShareFile 與 Azure AD 整合提供下列優點：
 
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：
 
-    | |
-    |---|
-    | `https://<tenant-name>.sharefile.com`|
-    | `https://<tenant-name>.sharefile.com/saml/info`|
-    | `https://<tenant-name>.sharefile1.com/saml/info`|
-    | `https://<tenant-name>.sharefile1.eu/saml/info`|
-    | `https://<tenant-name>.sharefile.eu/saml/info`|
-    | |
-    
+    - `https://<tenant-name>.sharefile.com`
+    - `https://<tenant-name>.sharefile.com/saml/info`
+    - `https://<tenant-name>.sharefile1.com/saml/info`
+    - `https://<tenant-name>.sharefile1.eu/saml/info`
+    - `https://<tenant-name>.sharefile.eu/saml/info`
+
     c. 在 [回覆 URL]  文字方塊中，以下列模式輸入 URL：
     
-    | |
-    |---|
-    | `https://<tenant-name>.sharefile.com/saml/acs`|
-    | `https://<tenant-name>.sharefile.eu/saml/<URL path>`|
-    | `https://<tenant-name>.sharefile.com/saml/<URL path>`|
+    - `https://<tenant-name>.sharefile.com/saml/acs`
+    - `https://<tenant-name>.sharefile.eu/saml/<URL path>`
+    - `https://<tenant-name>.sharefile.com/saml/<URL path>`
 
     > [!NOTE]
     > 這些都不是真正的值。 使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 請連絡 [Citrix ShareFile 用戶端支援小組](https://www.citrix.co.in/products/citrix-content-collaboration/support.html)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。

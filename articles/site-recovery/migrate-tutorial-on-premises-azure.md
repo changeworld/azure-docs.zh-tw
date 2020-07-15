@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: b978190776aee3c89d3beadde76d20c4327b012f
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.openlocfilehash: ccf83bacedb667e52e9865b6d451641faa0ac414
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80388911"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131190"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>將內部部署機器移轉至 Azure
 
@@ -132,21 +132,21 @@ Hyper-V | [啟用複寫](hyper-v-azure-tutorial.md#enable-replication)<br/><br/>
 
 - 執行任何移轉後應用程式調整，例如更新資料庫連接字串和 Web 伺服器設定。 
 - 在現在於 Azure 中執行的已移轉應用程式上，執行最終的應用程式和移轉接受度測試。
-- [Azure VM 代理程式](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)可管理 VM 與「Azure 網狀架構控制器」之間的互動。 它對某些 Azure 服務 (例如 Azure 備份、Site Recovery 及 Azure 安全性) 來說是必要的。
+- [Azure VM 代理程式](../virtual-machines/extensions/agent-windows.md)可管理 VM 與「Azure 網狀架構控制器」之間的互動。 它對某些 Azure 服務 (例如 Azure 備份、Site Recovery 及 Azure 安全性) 來說是必要的。
     - 如果您要移轉 VMware 機器和實體伺服器，「行動服務」安裝程式就會在 Windows 機器上安裝可用的 Azure VM 代理程式。 在 Linux VM 上，建議您在容錯移轉後安裝代理程式。
     - 如果您要將 Azure VM 移轉至次要區域，就必須在移轉前將 Azure VM 代理程式佈建在 VM 上。
     - 如果您要將 Hyper-V VM 移轉至 Azure，請在移轉後將 Azure VM 代理程式安裝在 Azure VM 上。
 - 請從 VM 中手動移除任何 Site Recovery 提供者/代理程式。 如果您遷移 VMware VM 或實體伺服器，請將行動服務從 VM 解除安裝。
 - 針對提升復原能力：
-    - 使用「Azure 備份」服務來備份 Azure VM 以維護資料安全。 [深入了解]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal)。
+    - 使用「Azure 備份」服務來備份 Azure VM 以維護資料安全。 [深入了解](../backup/quick-backup-vm-portal.md)。
     - 使用 Site Recovery 將 Azure VM 複寫至次要區域，讓工作負載保持執行且持續可供使用。 [深入了解](azure-to-azure-quickstart.md)。
 - 針對提升安全性：
-    - 使用「Azure 資訊安全中心」[Just-In-Time 系統管理]( https://docs.microsoft.com/azure/security-center/security-center-just-in-time)來鎖定並限制輸入流量存取
-    - 使用[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview)來限制傳送至管理端點的網路流量。
-    - 部署 [Azure 磁碟加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview)以協助保護磁碟，以及防止資料遭到竊取和受到未經授權的存取。
+    - 使用「Azure 資訊安全中心」[Just-In-Time 系統管理](../security-center/security-center-just-in-time.md)來鎖定並限制輸入流量存取
+    - 使用[網路安全性群組](../virtual-network/security-overview.md)來限制傳送至管理端點的網路流量。
+    - 部署 [Azure 磁碟加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)以協助保護磁碟，以及防止資料遭到竊取和受到未經授權的存取。
     - 深入了解如何[保護 IaaS 資源]( https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/ )，並瀏覽 [Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/ )。
 - 針對監視及管理：
-    - 可考慮部署 [Azure 成本管理](https://docs.microsoft.com/azure/cost-management/overview)來監視資源使用情況和花費。
+    - 可考慮部署 [Azure 成本管理](../cost-management-billing/cloudyn/overview.md)來監視資源使用情況和花費。
 
 ### <a name="post-migration-steps-on-premises"></a>內部部署環境中的移轉後步驟
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: acaf16e7469b3ea4e5e391db91e37dc76be3b261
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d99a5feb344f970b10925b596726520b9dba9464
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78298525"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134030"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>在 Azure Government 和公用區域之間移動 Azure VM 
 
@@ -32,7 +32,7 @@ ms.locfileid: "78298525"
 > * 捨棄來源區域中的資源
 
 > [!IMPORTANT]
-> 本教學課程說明如何在 Azure Government 與公用區域之間，或在 Azure VM 的一般災害復原解決方案不支援的區域組之間移動 Azure VM。 假使，您的來源和目標區域組均[受支援](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)，請參閱此[文件](azure-to-azure-tutorial-migrate.md)中的移動相關資訊。 如果您的需求是要將可用性設定組中的 VM 移到不同區域中固定區域的 VM，藉此改善可用性，請參閱[此處](move-azure-VMs-AVset-Azone.md)的教學課程。
+> 本教學課程說明如何在 Azure Government 與公用區域之間，或在 Azure VM 的一般災害復原解決方案不支援的區域組之間移動 Azure VM。 假使，您的來源和目標區域組均[受支援](./azure-to-azure-support-matrix.md#region-support)，請參閱此[文件](azure-to-azure-tutorial-migrate.md)中的移動相關資訊。 如果您的需求是要將可用性設定組中的 VM 移到不同區域中固定區域的 VM，藉此改善可用性，請參閱[此處](move-azure-VMs-AVset-Azone.md)的教學課程。
 
 > [!IMPORTANT]
 > 不建議使用這個方法來設定不支援區域組之間的 DR，因為區域組已定義成記住資料延遲 (這對 DR 案例很重要)。
@@ -96,13 +96,13 @@ ms.locfileid: "78298525"
 
      請參閱下列文件，以根據來源 VM 組態，建立您最常用的相關網路資源。
 
-    - [網路安全性群組](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [負載平衡器](https://docs.microsoft.com/azure/load-balancer)
+    - [網路安全性群組](../virtual-network/manage-network-security-group.md)
+    - [負載平衡器](../load-balancer/index.yml)
     - [公用 IP](../virtual-network/virtual-network-public-ip-address.md)
     
-    如需其他網路元件的資訊，請參閱網路[文件](https://docs.microsoft.com/azure/?pivot=products&panel=network)。
+    如需其他網路元件的資訊，請參閱網路[文件](../index.yml?pivot=products&panel=network)。
 
-4. 如果您想要先測試組態再執行對目標區域的最終完全移轉，請在目標區域中手動[建立非生產網路](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)。 這對生產環境的干擾最少，建議使用此方法。
+4. 如果您想要先測試組態再執行對目標區域的最終完全移轉，請在目標區域中手動[建立非生產網路](../virtual-network/quick-create-portal.md)。 這對生產環境的干擾最少，建議使用此方法。
 
 ## <a name="copy-data-to-the-target-region"></a>將資料複製到目標區域
 下列步驟將說明如何使用 Azure Site Recovery 將資料複製到目標區域。
@@ -136,7 +136,7 @@ ms.locfileid: "78298525"
 開始之前，請執行下列動作： 
 
 #### <a name="verify-time-accuracy"></a>驗證時間精確度
-在組態伺服器機器上，確定系統時鐘會與[時間伺服器](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)同步。 應該相符。 如果快慢誤差 15 分鐘，安裝可能會失敗。
+在組態伺服器機器上，確定系統時鐘會與[時間伺服器](/windows-server/networking/windows-time-service/windows-time-service-top)同步。 應該相符。 如果快慢誤差 15 分鐘，安裝可能會失敗。
 
 #### <a name="verify-connectivity"></a>驗證連線能力
 請確定主機可以根據您的環境，存取這些 URL： 

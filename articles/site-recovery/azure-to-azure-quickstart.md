@@ -4,12 +4,12 @@ description: 使用 Azure Site Recovery 服務快速設定將 Azure VM 移到其
 ms.topic: quickstart
 ms.date: 03/27/2020
 ms.custom: mvc
-ms.openlocfilehash: e26c2a1f24a88dc979f4ec68de65afc618740c00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8681ccaac30402927005e5e8802d7da2bddc2c5c
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371895"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135703"
 ---
 # <a name="quickstart-set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>快速入門：設定 Azure VM 到次要 Azure 區域的災害復原
 
@@ -22,7 +22,7 @@ ms.locfileid: "80371895"
 若要完成此教學課程，您需要 Azure 訂用帳戶與 VM。
 
 - 如果您沒有包含作用中訂用帳戶的 Azure 帳戶，可以[建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- 建議 VM 至少要有 1 GB 的 RAM。 [深入了解](/azure/virtual-machines/windows/quick-create-portal)如何建立 VM。
+- 建議 VM 至少要有 1 GB 的 RAM。 [深入了解](../virtual-machines/windows/quick-create-portal.md)如何建立 VM。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/26/2020
-ms.openlocfilehash: ef19c8eb747432a2eea3880b094f77747890c0d9
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 663d6659acf5c1e5abc8be56156af84167c51797
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984006"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146945"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教學課程：使用 REST 和 AI 從 Azure Blob 產生可搜尋的內容
 
@@ -451,7 +451,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 1. 使用 **GET** 和下列 URL，將 YOUR-SERVICE-NAME 取代為服務的實際名稱，以搜尋詞彙或片語的實例，並傳回 `content` 欄位和相符文件的計數。
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?search=*&$count=true&$select=content?api-version=2020-06-30
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=content&api-version=2020-06-30
    ```
    
    此查詢的結果會傳回文件內容，如果您在沒有認知搜尋管線的情況下使用 Blob 索引子，也會得到相同的結果。 此欄位是可搜尋的，但無法使用 Facet、篩選或自動完成。
@@ -461,7 +461,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 1. 第二個查詢會傳回管線所建立的一些新欄位 (人員、組織、位置、languageCode)。 為了簡潔起見，我們會省略 keyPhrases，但如果您想要查看這些值，就要將其包含在內。
 
    ```http
-   https://mydemo.search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=metadata_storage_name,persons,organizations,locations,languageCode&api-version=2020-06-30
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=metadata_storage_name,persons,organizations,locations,languageCode&api-version=2020-06-30
    ```
    $Select 陳述式中的欄位會包含新資訊，也就是從認知服務的自然語言處理功能建立的資訊。 如您所預期，結果中有一些非必要資訊，而文件之間會有些變異，但在許多情況下，分析模型會產生精確的結果。
 
@@ -483,7 +483,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 1. 在最後一個範例中，將篩選套用至組織集合，以根據 NASDAQ 傳回符合篩選準則的兩個項目。
 
    ```http
-   cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2020-06-30
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2020-06-30
    ```
 
 這些查詢說明在認知搜尋所建立的新欄位上，您可使用的一些查詢語法和篩選方式。 如需更多查詢範例，請參閱[搜尋文件 REST API 中的範例](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples)、[簡單的語法查詢範例](search-query-simple-examples.md)及[完整的 Lucene 查詢範例](search-query-lucene-examples.md)。

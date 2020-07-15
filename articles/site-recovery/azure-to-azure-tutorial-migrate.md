@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 4882206692c334d6ab6af28feb5d2cba5277eea1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 09a00d2c6a889f396e5c18da29530c94a624568b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78303931"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134424"
 ---
 # <a name="move-azure-vms-to-another-region"></a>將 Azure VM 移動到另一個區域
 
@@ -37,7 +37,7 @@ ms.locfileid: "78303931"
 ## <a name="prerequisites"></a>Prerequisites
 
 - 請確定 Azure VM 確實位在您要從中移動 Azure 區域中。
-- 確認您選擇的[來源區域 - 目標區域組合受到支援](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)，並做出與目標區域有關的明智決策。
+- 確認您選擇的[來源區域 - 目標區域組合受到支援](./azure-to-azure-support-matrix.md#region-support)，並做出與目標區域有關的明智決策。
 - 請確定您了解[情節架構和元件](azure-to-azure-architecture.md)。
 - 檢閱[支援限制和需求](azure-to-azure-support-matrix.md)。
 - 驗證帳戶權限。 如果您已建立免費的 Azure 帳戶，那您就是自己的訂用帳戶管理員。 如果您不是訂用帳戶管理員，請與系統管理員合作以指派您所需的權限。 若要使用 Azure Site Recovery 啟用 VM 複寫並複製必要資料，您必須具備：
@@ -70,10 +70,10 @@ ms.locfileid: "78303931"
      > 當您啟用來源 VM 的複寫時，Azure Site Recovery 會自動探索和建立虛擬網路。 您也可以在啟用複寫的使用者流程中，預先建立網路並指派給 VM。 如後面內容所述，您需要以手動方式在在目標區域中建立任何其他資源。
 
     若要根據來源 VM 設定建立最常用且符合需求的網路資源，請參閱下列文件：
-    - [網路安全性群組](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [負載平衡器](https://docs.microsoft.com/azure/load-balancer)
+    - [網路安全性群組](../virtual-network/manage-network-security-group.md)
+    - [負載平衡器](../load-balancer/index.yml)
     -  [公用 IP](../virtual-network/virtual-network-public-ip-address.md)
-    - 如需任何其他網路元件，請參閱[網路文件](https://docs.microsoft.com/azure/?pivot=products&panel=network)。
+    - 如需任何其他網路元件，請參閱[網路文件](../index.yml?pivot=products&panel=network)。
 
 
 
@@ -146,4 +146,3 @@ Site Recovery 會擷取與訂用帳戶和資源群組建立關聯的 VM 清單�
 
 > [!div class="nextstepaction"]
 > [在移轉之後設定災害復原](azure-to-azure-quickstart.md)
-

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: de7cf57d177902efdbb44524703481e8c65c75c5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 33548df0b8eb73d28dfe6348f057266cca4c0290
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72991462"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86168536"
 ---
 # <a name="tutorial-integrate-ringcentral-with-azure-active-directory"></a>教學課程：整合 RingCentral 與 Azure Active Directory
 
@@ -92,17 +92,13 @@ ms.locfileid: "72991462"
 
     a. 在 [識別碼]  文字方塊中輸入 URL：
 
-    | |
-    |--|
-    |  `https://sso.ringcentral.com` |
-    | `https://ssoeuro.ringcentral.com` |
+    - `https://sso.ringcentral.com`
+    - `https://ssoeuro.ringcentral.com`
 
     b. 在 [回覆 URL]  文字方塊中輸入 URL：
 
-    | |
-    |--|
-    | `https://sso.ringcentral.com/sp/ACS.saml2` |
-    | `https://ssoeuro.ringcentral.com/sp/ACS.saml2` |
+    - `https://sso.ringcentral.com/sp/ACS.saml2`
+    - `https://ssoeuro.ringcentral.com/sp/ACS.saml2`
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [複製] 按鈕以複製 [應用程式同盟中繼資料 URL]  ，並將其儲存在您的電腦上。
 

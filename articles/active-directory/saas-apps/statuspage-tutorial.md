@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
-ms.openlocfilehash: d947f610e6a753ce2ed349917640b07a55bbb735
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c1ad9d7afd215371b92c83445cfd1c8778bc0642
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67089883"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170525"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>教學課程：將 Azure Active Directory 與 StatusPage 整合
 
@@ -106,18 +106,14 @@ StatusPage 與 Azure AD 整合提供下列優點：
     ![StatusPage 網域與 URL 單一登入資訊](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：
-    
-    | |
-    |--|
-    | `https://<subdomain>.statuspagestaging.com/`|
-    | `https://<subdomain>.statuspage.io/`|
+
+    - `https://<subdomain>.statuspagestaging.com/`
+    - `https://<subdomain>.statuspage.io/`
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：
-    
-    | |
-    |--|
-    | `https://<subdomain>.statuspagestaging.com/sso/saml/consume`|
-    | `https://<subdomain>.statuspage.io/sso/saml/consume`|
+
+    - `https://<subdomain>.statuspagestaging.com/sso/saml/consume`
+    - `https://<subdomain>.statuspage.io/sso/saml/consume`
 
     > [!NOTE]
     > 請透過 [SupportTeam@statuspage.io](mailto:SupportTeam@statuspage.io)連絡 StatusPage 支援小組，要求設定單一登入所需的中繼資料。 

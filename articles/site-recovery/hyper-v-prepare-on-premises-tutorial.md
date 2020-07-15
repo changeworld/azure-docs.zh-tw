@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b36e4688ebd6e929a56869a6bb191d98b2f1f432
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 6f24a259d2d71aa6599f6dd417d5e9fc99734e99
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84691096"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135659"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>準備內部部署 Hyper-V 伺服器以進行至 Azure 的災害復原
 
@@ -56,12 +56,12 @@ ms.locfileid: "84691096"
 
 ### <a name="prepare-vmm-for-network-mapping"></a>準備 VMM 以進行網路對應
 
-如果您使用 VMM，[網路對應](site-recovery-network-mapping.md)會在內部部署 VMM VM 網路與 Azure 虛擬網路之間進行對應。 對應可確保容錯移轉之後建立的 Azure VM 會連線到正確的網路。
+如果您使用 VMM，[網路對應](./hyper-v-vmm-network-mapping.md)會在內部部署 VMM VM 網路與 Azure 虛擬網路之間進行對應。 對應可確保容錯移轉之後建立的 Azure VM 會連線到正確的網路。
 
 準備 VMM 以進行網路對應，如下所示：
 
-1. 請確定 Hyper-V 主機所在雲端有相關聯的 [VMM 邏輯網路](https://docs.microsoft.com/system-center/vmm/network-logical)。
-2. 請確定您有 [VM 網路](https://docs.microsoft.com/system-center/vmm/network-virtual)連結至邏輯網路。
+1. 請確定 Hyper-V 主機所在雲端有相關聯的 [VMM 邏輯網路](/system-center/vmm/network-logical)。
+2. 請確定您有 [VM 網路](/system-center/vmm/network-virtual)連結至邏輯網路。
 3. 在 VMM 中，將 VM 連線至 VM 網路。
 
 ## <a name="verify-internet-access"></a>確認網際網路存取
@@ -94,5 +94,5 @@ ms.locfileid: "84691096"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [設定 Hyper-V VM 至 Azure 的災害復原](tutorial-hyper-v-to-azure.md)
-> [在 VMM 雲端設定 Hyper-V VM 至 Azure 的災害復原](tutorial-hyper-v-vmm-to-azure.md)
+> [設定 Hyper-V VM 至 Azure 的災害復原](./hyper-v-azure-tutorial.md)
+> [在 VMM 雲端設定 Hyper-V VM 至 Azure 的災害復原](./hyper-v-vmm-azure-tutorial.md)
