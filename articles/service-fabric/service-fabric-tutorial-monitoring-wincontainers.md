@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: eeb279892f987ed1f26ced97ab267e8140ccb20e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6a3a5211864c4cbadc03bbc77bfef2204f6c2ccf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75614055"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244798"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>教學課程：使用 Azure 監視器記錄監視 Service Fabric 上的 Windows 容器
 
@@ -37,7 +37,7 @@ ms.locfileid: "75614055"
 如果您使用本教學課程第一部分中[提供的範本](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure)，它應該會包含下列已新增至一般 Service Fabric Azure Resource Manager 範本的內容。 假如您有自己的叢集，而您想要設定該叢集以便使用 Azure 監視器記錄來監視容器：
 
 * 對您的 Resource Manager 範本進行下列變更。
-* 藉由[部署範本](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)，使用 PowerShell 部署它以升級您的叢集。 Azure Resource Manager 會解析該資源存在，因此將推出它作為升級。
+* 藉由[部署範本](./service-fabric-cluster-creation-via-arm.md)，使用 PowerShell 部署它以升級您的叢集。 Azure Resource Manager 會解析該資源存在，因此將推出它作為升級。
 
 ### <a name="adding-azure-monitor-logs-to-your-cluster-template"></a>將 Azure 監視器記錄新增到您的叢集範本
 
@@ -233,6 +233,6 @@ ms.locfileid: "75614055"
 現在您已設定監視您的容器化應用程式，請嘗試進行下列動作：
 
 * 設定適用於 Linux 叢集的 Azure 監視器記錄，請遵循類似上述的步驟。 參考[此範本](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeType-Secure-OMS) \(英文\)，在 Resource Manager 範本中進行變更。
-* 設定 Azure 監視器記錄以設定[自動化警示](../log-analytics/log-analytics-alerts.md)，協助偵測與診斷。
+* 設定 Azure 監視器記錄以設定[自動化警示](../azure-monitor/platform/alerts-overview.md)，協助偵測與診斷。
 * 瀏覽 Service Fabric [建議的效能計數器](service-fabric-diagnostics-event-generation-perf.md)清單，以針對您的叢集進行設定。
-* 熟悉 Azure 監視器記錄中提供的[記錄搜尋和查詢](../log-analytics/log-analytics-log-searches.md)功能。
+* 熟悉 Azure 監視器記錄中提供的[記錄搜尋和查詢](../azure-monitor/log-query/log-query-overview.md)功能。

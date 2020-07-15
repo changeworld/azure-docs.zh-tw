@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 9951610732cbb1c5884a7b7e830033f427db0ab1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4cd21669b30b8ec83d6a0538c90d4cec5cafe32a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75646002"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244985"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>教學課程：將 Service Fabric 應用程式部署到 Azure 中的叢集
 
@@ -53,7 +53,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="create-a-cluster"></a>建立叢集
 
-應用程式現在已準備就緒，您可以建立 Service Fabric 叢集，然後將應用程式部署至該叢集。 [Service Fabric 叢集](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-anywhere)是一組由網路連接的虛擬或實體機器，可用來將您的微服務部署到其中並進行管理。
+應用程式現在已準備就緒，您可以建立 Service Fabric 叢集，然後將應用程式部署至該叢集。 [Service Fabric 叢集](./service-fabric-deploy-anywhere.md)是一組由網路連接的虛擬或實體機器，可用來將您的微服務部署到其中並進行管理。
 
 在本教學課程中，您將在 Visual Studio IDE 中建立新的三節點測試叢集，然後將應用程式發佈至該叢集。 請參閱[建立和管理叢集教學課程](service-fabric-tutorial-create-vnet-and-windows-cluster.md)，以取得關於建立生產叢集的資訊。 您也可以將應用程式部署至您先前在 [Azure 入口網站](https://portal.azure.com)中使用 [PowerShel](./scripts/service-fabric-powershell-create-secure-cluster-cert.md) 或 [Azure CLI](./scripts/cli-create-cluster.md) 指令碼，或是從 [Azure Resource Manager 範本](service-fabric-tutorial-create-vnet-and-windows-cluster.md)建立的現有叢集。
 

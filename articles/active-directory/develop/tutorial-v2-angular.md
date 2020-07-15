@@ -3,7 +3,7 @@ title: Angular 單頁應用程式教學課程 - Azure
 titleSuffix: Microsoft identity platform
 description: 了解 Angular SPA 應用程式如何呼叫需要 Microsoft 身分識別平台端點所提供存取權杖的 API。
 services: active-directory
-author: hahamil
+author: hamiltonha
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6d869243f7f125ef7a795d6049d0b4f70fc51361
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 7cd2d5d8728e2a0539d5f106ab39c563e6e7c382
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322765"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231687"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>教學課程：讓使用者登入並從 Angular 單頁應用程式呼叫 Microsoft Graph API
 
@@ -138,7 +138,7 @@ ng generate component page-name                  # To add a new page (such as a 
 3. 將下列 import 陳述式新增至 `src/app/app.component.ts` 的頂端：
 
     ```javascript
-    import { MsalService } from '@azure/msal-angular';
+    import { MsalService, BroadcastService } from '@azure/msal-angular';
     import { Component, OnInit } from '@angular/core';
     ```
 ## <a name="sign-in-a-user"></a>登入使用者
@@ -148,6 +148,8 @@ ng generate component page-name                  # To add a new page (such as a 
 ```javascript
 export class AppComponent implements OnInit {
     constructor(private broadcastService: BroadcastService, private authService: MsalService) { }
+    
+    ngOnInit() { }
 
     login() {
         const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;

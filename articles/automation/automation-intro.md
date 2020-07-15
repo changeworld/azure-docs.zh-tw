@@ -7,12 +7,12 @@ keywords: azure 自動化, DSC, powershell, 狀態組態, 更新管理, 變更�
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: e02cfdaac602adfe455c26d9e87939586fd9738a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 30cfadcec1f0c28a463740ddaefa8fc76f04af3f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835269"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186175"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure 自動化簡介
 
@@ -53,14 +53,14 @@ Azure 自動化提供一些共用的功能，包括共用的資源、角色型�
 
 Azure 自動化包含一組共用資源，讓您能更輕鬆地自動化，並大量設定您的環境。
 
-* **[排程](automation-schedules.md)** - 在預先定義的時間觸發自動化作業。
-* **[模組](automation-integration-modules.md)** - 管理 Azure 和其他系統。 您可以將模組匯入適用於 Microsoft、第三方、社群或自訂定義 Cmdlet 和 DSC 資源的自動化帳戶中。
+* **[排程](./shared-resources/schedules.md)** - 在預先定義的時間觸發自動化作業。
+* **[模組](./shared-resources/modules.md)** - 管理 Azure 和其他系統。 您可以將模組匯入適用於 Microsoft、第三方、社群或自訂定義 Cmdlet 和 DSC 資源的自動化帳戶中。
 * **[模組資源庫](automation-runbook-gallery.md)** - 支援原生整合至 PowerShell 資源庫，以檢視 Runbook 並將其匯入自動化帳戶。 資源庫可讓您快速開始從 PowerShell 資源庫和 Microsoft 指令碼中心整合及撰寫您的流程。
 * **[Python 2 套件](python-packages.md)** -支援自動化帳戶的 Python 2 Runbook。
-* **[認證](automation-credentials.md)** - 安全地儲存可供 Runbook 和組態在執行階段使用的敏感性資訊。
+* **[認證](./shared-resources/credentials.md)** - 安全地儲存可供 Runbook 和組態在執行階段使用的敏感性資訊。
 * **[連線](automation-connections.md)** - 存放系統連線的一般資訊名稱/值配對。 連線是由模組建立者所定義，可在執行階段中用於 Runbook 和組態。
-* **[憑證](automation-certificates.md)** - 定義資訊，以在執行階段由 Runbook 或 DSC 組態存取時，用於驗證和保護已部署的資源。 
-* **[變數](automation-variables.md)** - 保存可在 Runbook 和組態之間使用的內容。 您可以變更變數值，而不必修改任何參考這些變數值的 Runbook 及組態。
+* **[憑證](./shared-resources/certificates.md)** - 定義資訊，以在執行階段由 Runbook 或 DSC 組態存取時，用於驗證和保護已部署的資源。 
+* **[變數](./shared-resources/variables.md)** - 保存可在 Runbook 和組態之間使用的內容。 您可以變更變數值，而不必修改任何參考這些變數值的 Runbook 及組態。
 
 ### <a name="role-based-access-control"></a>角色型存取控制
 

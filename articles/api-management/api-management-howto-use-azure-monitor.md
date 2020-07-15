@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 989608b9a087599ab73864ae2605fbffcf3221d9
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 7f6c7a651e133122dab86d6ed81572f239718b43
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84982045"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243234"
 ---
 # <a name="monitor-published-apis"></a>監視發佈的 API
 
@@ -43,7 +43,7 @@ ms.locfileid: "84982045"
 
 ## <a name="view-metrics-of-your-apis"></a>檢視 API 的計量
 
-API 管理會每分鐘發出計量，讓您近乎即時地了解 API 的狀態和健康情況。 以下是兩個最常使用的計量。 如需所有可用計量的清單，請參閱[支援的計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftapimanagementservice)。
+API 管理會每分鐘發出計量，讓您近乎即時地了解 API 的狀態和健康情況。 以下是兩個最常使用的計量。 如需所有可用計量的清單，請參閱[支援的計量](../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice)。
 
 * 容量：協助您決定是否升級/降級 APIM 服務。 計量每分鐘發出，並反映提出報告時的閘道容量。 計量的範圍為 0 到 100，是根據 CPU 和記憶體使用率等閘道資源計算而來。
 * 要求：協助您分析通過 APIM 服務的 API 流量。 計量會每分鐘發出，並回報具有維度的閘道要求數目，包括回應碼、位置、主機名稱和錯誤。 

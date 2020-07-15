@@ -4,12 +4,12 @@ description: 在本教學課程中，您會了解如何刪除 Azure 裝載的 Se
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 802fdfc46344929930b1ffb015b364b4e2360cca
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 38ddc7173f54a34d68c41ce1180c8dbeaf3d7962
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75465362"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244957"
 ---
 # <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>教學課程：移除 Azure 中執行的 Service Fabric 叢集
 
@@ -37,7 +37,7 @@ ms.locfileid: "75465362"
 開始進行本教學課程之前：
 
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* 安裝 [Azure Powershell](https://docs.microsoft.com/powershell/azure//install-Az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
+* 安裝 [Azure Powershell](/powershell/azure//install-az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
 * 在 Azure 上建立安全的 [Windows 叢集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 
 ## <a name="delete-the-resource-group-containing-the-service-fabric-cluster"></a>刪除包含 Service Fabric 叢集的資源群組

@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 6/22/2020
 ms.author: mebeatty
-ms.openlocfilehash: 4d698375488d4dac551f0028883fc4e18a10d8ef
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: d489186dc1c012fe8c181f17e00bcdb999e230dd
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323472"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232129"
 ---
 # <a name="add-security-headers-with-rules-engine"></a>使用規則引擎新增安全性標頭
 
 實作安全性標頭以防止以瀏覽器為基礎的漏洞，例如 HTTP Strict-Transport-Security (HSTS)、X-XSS-Protection、Content-Security-Policy 或 X-Frame-Options。 以安全性為基礎的屬性也可以使用 Cookie 來定義。
 
-下列範例示範如何將 Content-Security-Policy 標頭新增至所有符合規則引擎組態相關聯路由中所定義路徑的傳入要求。 在這裡我們只允許來自信任網站 **https://apis.contoso.com** 的指令碼在我們的應用程式上執行。
+下列範例示範如何將 Content-Security-Policy 標頭新增至所有符合規則引擎組態相關聯路由中所定義路徑的傳入要求。 在這裡我們只允許來自信任網站 **https://apiphany.portal.azure-api.net** 的指令碼在我們的應用程式上執行。
 
 ## <a name="add-a-content-security-policy-header-in-azure-portal"></a>在 Azure 入口網站中新增 Content-Security-Policy 標頭
 
@@ -33,7 +33,7 @@ ms.locfileid: "85323472"
 
 3. 將運算子設定為 [附加] 以新增此標頭，作為對此路由所有傳入要求的回應。
 
-4. 新增標頭名稱：**Content-Security-Policy**，並且定義此標頭應該接受的值。 在此案例中，我們選擇「*script-src 'self' https://apis.contoso.com 」。*
+4. 新增標頭名稱：**Content-Security-Policy**，並且定義此標頭應該接受的值。 在此案例中，我們選擇「*script-src 'self' https://apiphany.portal.azure-api.net 」。*
 
 5. 將所有想要的規則新增至您的組態之後，請別忘了移至慣用的路由，並且將您的規則引擎組態與您的路由規則產生關聯。 必須執行此步驟，才能讓規則生效。 
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 124fc6035c1d0ad504a34b7db227f0f4675f24f7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8dd47d27f928cb33e5a2bbc3ba9a6ab2bc044852
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75613953"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245376"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>教學課程：將應用程式部署在 Service Fabric 獨立叢集上
 
@@ -52,7 +52,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 4. 以滑鼠右鍵按一下 [方案總管] 中的 `Voting` 應用程式專案，然後選擇 [發佈]  。
 
-5. 選取 [連線端點]  的下拉式清單，並輸入叢集中一個節點的公開 DNS 名稱。  例如： `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000` 。 請注意，在 Azure 中不會自動指定完整網域名稱 (FQDN)，但是可以輕易地[在 VM 概觀頁面上設定](https://docs.microsoft.com/azure/virtual-machines/linux/portal-create-fqdn)。
+5. 選取 [連線端點]  的下拉式清單，並輸入叢集中一個節點的公開 DNS 名稱。  例如： `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000` 。 請注意，在 Azure 中不會自動指定完整網域名稱 (FQDN)，但是可以輕易地[在 VM 概觀頁面上設定](../virtual-machines/linux/portal-create-fqdn.md)。
 
 6. 開啟您偏好的瀏覽器，並輸入叢集位址 (連線端點，此應用程式部署於連接埠 8080 - 例如 ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080)。
 

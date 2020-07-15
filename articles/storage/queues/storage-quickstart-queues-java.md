@@ -7,12 +7,12 @@ ms.date: 12/4/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 013281db2821c99f6942edd1322f4978e100c144
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a4c873e7ec1867b6ce53cd9f4c3d5c54242a6f16
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81729859"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232333"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>快速入門：適用於 Java 的 Azure 佇列儲存體用戶端程式庫 v12
 
@@ -167,7 +167,7 @@ Azure 佇列儲存體是用來儲存大量訊息的服務。 一則佇列訊息�
 * [取得連接字串](#get-the-connection-string)
 * [建立佇列](#create-a-queue)
 * [將訊息新增至佇列](#add-messages-to-a-queue)
-* [窺視佇列中的訊息](#peek-at-messages -in-a-queue)
+* [窺視佇列中的訊息](#peek-at-messages-in-a-queue)
 * [更新佇列中的訊息](#update-a-message-in-a-queue)
 * [接收和刪除佇列中的訊息](#receive-and-delete-messages-from-a-queue)
 * [刪除佇列](#delete-a-queue)

@@ -3,20 +3,20 @@ title: 快速入門：使用 REST API 取得意圖 - LUIS
 titleSuffix: Azure Cognitive Services
 description: 在本 REST API 快速入門中，使用可用的公用 LUIS 應用程式，從交談文字判斷使用者的用意。
 services: cognitive-services
-author: roy-har
+author: nitinme
 manager: diberry
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 06/19/2020
-ms.author: v-royha
-ms.openlocfilehash: 8248d441add1af39ab9d2d08a6dba85055f254b6
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.author: nitinme
+ms.openlocfilehash: 714d76641dd22f566b2464e3470f6a3324f4d758
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119571"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207177"
 ---
 # <a name="quickstart-use-curl-and-rest-to-get-intent"></a>快速入門：使用 cURL 和 REST 來取得意圖
 

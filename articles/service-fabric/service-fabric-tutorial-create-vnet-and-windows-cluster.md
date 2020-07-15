@@ -4,16 +4,16 @@ description: 在本教學課程中，您會了解如何使用 PowerShell，將 W
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: dfcee93ffa5eea0b2aa0b9a93ff53ad7b61ea245
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: a7390858e55a456ec5fb2f851be1a7443be97082
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611657"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245036"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>教學課程：將執行 Windows 的 Service Fabric 叢集部署到 Azure 虛擬網路
 
-本教學課程是一個系列的第一部分。 您會了解如何使用 PowerShell 和範本，將執行 Windows 的 Azure Service Fabric 叢集部署到 [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)和[網路安全性群組](../virtual-network/virtual-networks-nsg.md)。 完成時，您會有在雲端執行的叢集，讓您可在其中部署應用程式。 若要建立 Linux 叢集來使用 Azure CLI，請參閱[在 Azure 上建立安全的 Linux 叢集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)。
+本教學課程是一個系列的第一部分。 您會了解如何使用 PowerShell 和範本，將執行 Windows 的 Azure Service Fabric 叢集部署到 [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)和[網路安全性群組](../virtual-network/virtual-network-vnet-plan-design-arm.md)。 完成時，您會有在雲端執行的叢集，讓您可在其中部署應用程式。 若要建立 Linux 叢集來使用 Azure CLI，請參閱[在 Azure 上建立安全的 Linux 叢集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)。
 
 此教學課程說明的是生產環境案例。 如果您想要建立測試用的更小型叢集，請參閱[建立測試叢集](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)。
 
@@ -48,7 +48,7 @@ ms.locfileid: "85611657"
 
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 安裝 [Service Fabric SDK 和 PowerShell 模組](service-fabric-get-started.md)。
-* 安裝 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
+* 安裝 [Azure PowerShell](/powershell/azure/install-az-ps)。
 * 檢閱 [Azure 叢集](service-fabric-azure-clusters-overview.md)的重要概念。
 * [規劃及準備](service-fabric-cluster-azure-deployment-preparation.md)生產環境的叢集部署。
 
@@ -111,7 +111,7 @@ ms.locfileid: "85611657"
 如果需要其他應用程式連接埠，您必須調整 **Microsoft.Network/loadBalancers** 資源和 **Microsoft.Network/networkSecurityGroups** 資源，以允許流量進入。
 
 ### <a name="windows-defender"></a>Windows Defender
-根據預設，會在 Windows Server 2016 上安裝並執行 [Windows Defender 防毒程式](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)。 某些 SKU 上預設會安裝使用者介面，但並非必要。 針對在範本中宣告的每個節點類型/VM 擴展集，可以使用 [Azure VM 反惡意程式碼擴充功能](/azure/virtual-machines/extensions/iaas-antimalware-windows)來排除 Service Fabric 目錄和程序：
+根據預設，會在 Windows Server 2016 上安裝並執行 [Windows Defender 防毒程式](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)。 某些 SKU 上預設會安裝使用者介面，但並非必要。 針對在範本中宣告的每個節點類型/VM 擴展集，可以使用 [Azure VM 反惡意程式碼擴充功能](../virtual-machines/extensions/iaas-antimalware-windows.md)來排除 Service Fabric 目錄和程序：
 
 ```json
 {
@@ -145,8 +145,8 @@ ms.locfileid: "85611657"
 
 **參數** | **範例值** | **注意事項** 
 |---|---|---|
-|adminUserName|vmadmin| 叢集 VM 的系統管理員使用者名稱。 [VM 的使用者名稱需求](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm)。 |
-|adminPassword|Password#1234| 叢集 VM 的系統管理員密碼。 [VM 的密碼需求](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm)。|
+|adminUserName|vmadmin| 叢集 VM 的系統管理員使用者名稱。 [VM 的使用者名稱需求](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)。 |
+|adminPassword|Password#1234| 叢集 VM 的系統管理員密碼。 [VM 的密碼需求](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。|
 |clusterName|mysfcluster123| 叢集的名稱。 只能包含字母和數字。 長度可介於 3 到 23 個字元之間。|
 |location|southcentralus| 叢集的位置。 |
 |certificateThumbprint|| <p>如果建立自我簽署憑證或提供憑證檔案，則值應該空白。</p><p>若要使用先前上傳至金鑰保存庫的現有憑證，請填入憑證 SHA1 指紋值。 例如 "6190390162C988701DB5676EB81083EA608DCCF3"。</p> |
@@ -703,7 +703,7 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="clean-up-resources"></a>清除資源
 
-此教學課程系列的其他文章會使用您建立的叢集。 如果您現在不打算繼續閱讀下一篇文章，您可能要[刪除該叢集](service-fabric-cluster-delete.md)以避免產生費用。
+此教學課程系列的其他文章會使用您建立的叢集。 如果您現在不打算繼續閱讀下一篇文章，您可能要[刪除該叢集](./service-fabric-tutorial-delete-cluster.md)以避免產生費用。
 
 ## <a name="next-steps"></a>後續步驟
 

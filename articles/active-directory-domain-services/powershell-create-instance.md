@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: sample
-ms.date: 09/05/2019
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 9dbb8a6011b4f2aebc73df7d37e6f43e7f27b747
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 2d291af3cc6175b371f71fb63402ecb45afcba34
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734515"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223443"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>使用 PowerShell 啟用 Azure Active Directory Domain Services
 
@@ -64,7 +64,7 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
 
 建立 *AAD DC 管理員*群組之後，請使用 [Add-AzureADGroupMember][Add-AzureADGroupMember] Cmdlet，將使用者新增至群組。 首先，您會使用 [Get-AzureADGroup][Get-AzureADGroup] Cmdlet 取得 *AAD DC 管理員*群組物件識別碼，然後使用[Get-AzureADUser][Get-AzureADUser] Cmdlet 取得所需的使用者物件識別碼。
 
-在下列範例中，帳戶的使用者物件識別碼為 `admin@aaddscontoso.onmicrosoft.com` 的 UPN。 將此使用者帳戶取代為您要新增至 AAD DC 管理員** 群組之使用者的 UPN：
+在下列範例中，帳戶的使用者物件識別碼為 `admin@contoso.onmicrosoft.com` 的 UPN。 將此使用者帳戶取代為您要新增至 AAD DC 管理員** 群組之使用者的 UPN：
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -74,7 +74,7 @@ $GroupObjectId = Get-AzureADGroup `
 
 # Now, retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
-  -Filter "UserPrincipalName eq 'admin@aaddscontoso.onmicrosoft.com'" | `
+  -Filter "UserPrincipalName eq 'admin@contoso.onmicrosoft.com'" | `
   Select-Object ObjectId
 
 # Add the user to the 'AAD DC Administrators' group.
@@ -167,7 +167,7 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 
 ```powershell
 # Change the following values to match your deployment.
-$AaddsAdminUserUpn = "admin@aaddscontoso.onmicrosoft.com"
+$AaddsAdminUserUpn = "admin@contoso.onmicrosoft.com"
 $ResourceGroupName = "myResourceGroup"
 $VnetName = "myVnet"
 $AzureLocation = "westus"

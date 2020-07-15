@@ -7,12 +7,12 @@ ms.date: 04/11/2018
 ms.topic: tutorial
 ms.subservice: change-inventory-management
 ms.custom: mvc
-ms.openlocfilehash: d4acecbc6d1a1d7f617b0da95da1b97dc5a3dd75
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: cad92ef376a14805049772cd0bfdbac04309f6c4
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743676"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185818"
 ---
 # <a name="discover-what-software-is-installed-on-your-vms"></a>探索您的 VM 上安裝了哪些軟體
 
@@ -32,7 +32,7 @@ ms.locfileid: "83743676"
 若要完成本教學課程，您需要：
 
 * Azure 訂用帳戶。 如果您沒有這類帳戶，可以[啟用自己的 MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* [自動化帳戶](automation-offering-get-started.md)可保存監看員和動作 Runbook，以及監看員工作。
+* [自動化帳戶](./index.yml)可保存監看員和動作 Runbook，以及監看員工作。
 * 要啟用此功能的[虛擬機器](../virtual-machines/windows/quick-create-portal.md)。
 
 ## <a name="log-in-to-azure"></a>登入 Azure
@@ -48,7 +48,7 @@ ms.locfileid: "83743676"
 
 1. 瀏覽至您的自動化帳戶，然後選取 [組態管理] 下的 [清查] 或 [變更追蹤]。
 
-2. 選擇 [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) 工作區。 此工作區會收集變更追蹤和清查等功能所產生的資料。 工作區提供單一位置來檢閱和分析來自多個來源的資料。
+2. 選擇 [Log Analytics](../azure-monitor/log-query/log-query-overview.md) 工作區。 此工作區會收集變更追蹤和清查等功能所產生的資料。 工作區提供單一位置來檢閱和分析來自多個來源的資料。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
 ms.custom: has-adal-ref, tracking-python
-ms.openlocfilehash: 1203feaf6b400e91e6ab5381df0af245db0a2973
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 9c587ad9b791d953dce66df2337cf0e7dca52324
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559566"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185359"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>教學課程：建立 Python Runbook
 
@@ -31,7 +31,7 @@ ms.locfileid: "84559566"
 若要完成此教學課程，您需要下列項目：
 
 - Azure 訂用帳戶。 如果您沒有這類帳戶，可以[啟用自己的 MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [自動化帳戶](../automation-offering-get-started.md) ，用來保存 Runbook 以及向 Azure 資源驗證。 此帳戶必須擁有啟動和停止虛擬機器的權限。
+- [自動化帳戶](../index.yml) ，用來保存 Runbook 以及向 Azure 資源驗證。 此帳戶必須擁有啟動和停止虛擬機器的權限。
 - Azure 虛擬機器。 您會停止並啟動這部電腦，因此它不該是生產 VM。
 
 ## <a name="create-a-new-runbook"></a>建立新的 Runbook
@@ -161,7 +161,7 @@ print("Hello World!")
 
 ## <a name="add-code-to-create-python-compute-client-and-start-the-vm"></a>加入程式碼以建立 Python 計算用戶端，並啟動虛擬機器
 
-若要使用 Azure 虛擬機器，請建立 [適用於 Python 的 Azure 計算用戶端](https://docs.microsoft.com/python/api/azure-mgmt-compute/azure.mgmt.compute.computemanagementclient)的執行個體。
+若要使用 Azure 虛擬機器，請建立 [適用於 Python 的 Azure 計算用戶端](/python/api/azure-mgmt-compute/azure.mgmt.compute.computemanagementclient)的執行個體。
 
 您可以使用計算用戶端來啟動虛擬機器。 將下列程式碼加入 Runbook：
 

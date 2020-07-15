@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: 80c84693f466ea30c4a65a8960472a55e98d1efe
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: dd9aee01edf45f89feb6a6010c8d958511bc3904
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714452"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185393"
 ---
 # <a name="tutorial-create-a-powershell-workflow-runbook"></a>教學課程：建立 PowerShell 工作流程 Runbook
 
@@ -27,7 +27,7 @@ ms.locfileid: "83714452"
 若要完成本教學課程，您需要：
 
 * Azure 訂用帳戶。 如果您沒有這類帳戶，可以[啟用自己的 MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* [自動化帳戶](../automation-offering-get-started.md) ，用來保存 Runbook 以及向 Azure 資源驗證。 此帳戶必須擁有啟動和停止虛擬機器的權限。
+* [自動化帳戶](../index.yml) ，用來保存 Runbook 以及向 Azure 資源驗證。 此帳戶必須擁有啟動和停止虛擬機器的權限。
 * Azure 虛擬機器。 您會停止並啟動這部電腦，因此其不該是生產 VM。
 
 ## <a name="step-1---create-new-runbook"></a>步驟 1 - 建立新的 Runbook
@@ -131,7 +131,7 @@ ms.locfileid: "83714452"
 
 ## <a name="step-5---add-authentication-to-manage-azure-resources"></a>步驟 5 - 加入驗證來管理 Azure 資源
 
-您已測試並發行您的 Runbook，但是到目前為止，它似乎並不實用。 您想要讓它管理 Azure 資源。 除非使用訂用帳戶的認證進行驗證，否則無法這麼做。 驗證會使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0)Cmdlet。
+您已測試並發行您的 Runbook，但是到目前為止，它似乎並不實用。 您想要讓它管理 Azure 資源。 除非使用訂用帳戶的認證進行驗證，否則無法這麼做。 驗證會使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0)Cmdlet。
 
 >[!NOTE]
 >針對 PowerShell Runbook，`Add-AzAccount` 和 `Add-AzureRMAccount` 是 `Connect-AzAccount` 的別名。 您可使用這些 Cmdlet，也可以在您的自動化帳戶中[將您的模組更新](../automation-update-azure-modules.md)為最新版本。 即使您才剛建立新的自動化帳戶，可能還是需要更新您的模組。
@@ -165,8 +165,7 @@ ms.locfileid: "83714452"
 
 由於您的 Runbook 正在向 Azure 訂用帳戶進行驗證，所以您可以管理資源。 讓我們新增一個命令以啟動虛擬機器。 您可以在您的 Azure 訂用帳戶中挑選任何 VM，而現在您會在 Runbook 中將該名稱硬式編碼。 如果您要管理跨多個訂用帳戶的資源，您需要使用 `AzContext` 參數搭配 [Get-AzContext](/powershell/module/az.accounts/get-azcontext) Cmdlet。
 
-1. 輸入對 [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0
-) Cmdlet 的呼叫，以提供要啟動 VM 的名稱和資源組名，如下所示。 
+1. 輸入對 [Start-AzVM](/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) Cmdlet 的呼叫，以提供要啟動 VM 的名稱和資源組名，如下所示。 
 
    ```powershell-interactive
    workflow MyFirstRunbook-Workflow
@@ -227,9 +226,9 @@ ms.locfileid: "83714452"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [PowerShell Docs](https://docs.microsoft.com/powershell/scripting/overview)
-* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
-* [建立圖形化 Runbook](automation-tutorial-runbook-graphical.md)
-* [建立 PowerShell Runbook](automation-tutorial-runbook-textual-powershell.md)
-* [Azure 自動化 Runbook 類型](../automation-runbook-types.md)
-* [Azure 自動化中的原生 PowerShell 指令碼支援](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)
+* 如需 PowerShell 的詳細資訊 (包括語言參考和學習模組)，請參閱 [PowerShell 文件](/powershell/scripting/overview)。
+* 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。
+* 若要開始使用圖形化 Runbook，請參閱[建立圖形化 Runbook](automation-tutorial-runbook-graphical.md)。
+* 若要開始使用 PowerShell Runbook，請參閱[建立 PowerShell Runbook](automation-tutorial-runbook-textual-powershell.md)。
+* 若要深入了解 Runbook 類型以及其優點和限制，請參閱 [Azure 自動化 Runbook 類型](../automation-runbook-types.md)。
+* 如需 PowerShell 指令碼支援功能的詳細資訊，請參閱 [Azure 自動化中的原生 PowerShell 指令碼支援](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)。
