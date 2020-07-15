@@ -29,7 +29,7 @@ ms.locfileid: "83837939"
 
 ## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>為什麼我會收到 "NewClassicVMCreationNotAllowedForSubscription" 的錯誤？
 
-在淘汰過程中，IaaS VM (傳統) 不再提供給新客戶。 我們將您視為新客戶，因此未授權您的作業。 強烈建議[使用 ARM 來執行 Azure 虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)。 如果您無法使用 ARM 執行 Azure VM，請連絡支援人員將您列入訂用帳戶白名單。
+在淘汰過程中，IaaS VM (傳統) 不再提供給新客戶。 我們將您視為新客戶，因此未授權您的作業。 強烈建議[使用 ARM 來執行 Azure 虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)。 如果您無法使用 ARM 執行 Azure VM，請連絡支援人員將您列入訂用帳戶允許清單。
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>此移轉計劃是否會影響任何在 Azure 虛擬機器上執行的現有服務或應用程式？ 
 

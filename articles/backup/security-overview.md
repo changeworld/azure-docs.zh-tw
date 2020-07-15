@@ -5,6 +5,7 @@ ms.topic: conceptual
 ms.date: 03/12/2020
 ms.openlocfilehash: 178518f9f04a789f3cb634797cab650e24864337
 ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83653796"
@@ -69,7 +70,7 @@ Azure 備份服務使用 Microsoft Azure 復原服務 (MARS) 代理程式，將�
 
 ## <a name="compliance-with-standardized-security-requirements"></a>符合標準化的安全性需求
 
-為協助組織符合控管個人資料收集和使用的國家、區域和業界特定需求的標準，Microsoft Azure 與 Azure 備份提供一套完整的認證和證明。 [請參閱合規性認證的清單](compliance-offerings.md)
+為協助組織符合控管個人資料收集和使用的國家/地區、區域和業界特定需求的標準，Microsoft Azure 與 Azure 備份提供一套完整的認證和證明。 [請參閱合規性認證的清單](compliance-offerings.md)
 
 ## <a name="next-steps"></a>後續步驟
 

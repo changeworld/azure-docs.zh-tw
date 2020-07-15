@@ -17,6 +17,7 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 8e597fb9208430b8da447768608c48edef049d83
 ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83653122"
@@ -395,7 +396,7 @@ myCommand.Fill(userDataset);
 | **適用的技術** | 泛型、MVC5、MVC6 |
 | **屬性**              | N/A  |
 | **參考**              | [新增驗證](https://www.asp.net/mvc/overview/getting-started/introduction/adding-validation)、[驗證 MVC 應用程式中的模型資料](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx)、[ASP.NET MVC 應用程式的指導原則](https://msdn.microsoft.com/magazine/dd942822.aspx) |
-| **步驟** | <p>所有輸入參數都必須先驗證再用於應用程式，以確保應用程式不受惡意使用者輸入所危害。 請採取白名單驗證策略，在伺服器端上使用規則運算式驗證來驗證輸入值。 傳遞至方法的未清理使用者輸入/參數會造成程式碼插入弱點。</p><p>對於 Web 應用程式，進入點還可能包括表單欄位、QueryStrings、Cookie、HTTP 標頭和 Web 服務參數。</p><p>在繫結模型時，必須執行下列輸入驗證檢查︰</p><ul><li>模型屬性應該使用 RegularExpression 註解來加以註解，以便接受允許的字元和最大允許長度</li><li>控制器方法應該執行 ModelState 有效性</li></ul>|
+| **步驟** | <p>所有輸入參數都必須先驗證再用於應用程式，以確保應用程式不受惡意使用者輸入所危害。 請採取允許清單驗證策略，在伺服器端上使用規則運算式驗證來驗證輸入值。 傳遞至方法的未清理使用者輸入/參數會造成程式碼插入弱點。</p><p>對於 Web 應用程式，進入點還可能包括表單欄位、QueryStrings、Cookie、HTTP 標頭和 Web 服務參數。</p><p>在繫結模型時，必須執行下列輸入驗證檢查︰</p><ul><li>模型屬性應該使用 RegularExpression 註解來加以註解，以便接受允許的字元和最大允許長度</li><li>控制器方法應該執行 ModelState 有效性</li></ul>|
 
 ## <a name="sanitization-should-be-applied-on-form-fields-that-accept-all-characters-eg-rich-text-editor"></a><a id="richtext"></a>應該對接受所有字元的表單欄位 (例如 RTF 編輯器) 套用清理
 
