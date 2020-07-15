@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 3a7c9f61af0124c656f98b64ba9295bc659c572a
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 6edc6facc884fc6469b75b63216d6e5036321ea8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262328"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277700"
 ---
 ## <a name="configure-the-sample-project"></a>設定範例專案
 
@@ -36,7 +36,7 @@ ms.locfileid: "85262328"
 
 接下來，設定 *serviceConfig.json* 檔案，使其在您建置 *SampleClientApp* 時複製到輸出目錄。 若要進行此操作，請以滑鼠右鍵選取 *serviceConfig.json* 檔案，然後選擇 [屬性]。 在 [屬性] 偵測器中，將 [複製到輸出目錄] 屬性的值變更為 [有更新時才複製]。
 
-:::image type="content" source="../articles/digital-twins/media/include-tutorial/copy-config.png" alt-text="Visual Studio 視窗的摘要，顯示 [方案總管] 窗格，其中醒目提示 serviceConfig.json，而且 [屬性] 窗格的 [複製到輸出目錄] 屬性設為 [有更新時才複製]" border="false":::
+:::image type="content" source="../articles/digital-twins/media/includes/copy-config.png" alt-text="Visual Studio 視窗的摘要，顯示 [方案總管] 窗格，其中醒目提示 serviceConfig.json，而且 [屬性] 窗格的 [複製到輸出目錄] 屬性設為 [有更新時才複製]" border="false":::
 
 在 Visual Studio 中將 _**AdtE2ESample**_ 專案保持在開啟狀態，以繼續在教學課程中使用該專案。
 

@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/08/2020
 ms.author: pafarley
-ms.openlocfilehash: f5bf8a0420614b69f4022891e76b5d959f5782f3
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 2d8cdda28cc7176496457399fd1356634ddafddf
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86035751"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86277883"
 ---
-[參考文件](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/formrecognizer/ai-form-recognizer/) | [套件 (npm)](https://www.npmjs.com/package/@azure/ai-form-recognizer) | [範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples)
+[參考文件](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/formrecognizer/ai-form-recognizer/) | [套件 (npm)](https://www.npmjs.com/package/@azure/ai-form-recognizer) | [範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -116,7 +116,7 @@ const client = new FormRecognizerClient(endpoint, new AzureKeyCredential(apiKey)
 * 另請使用上述方法取得收據影像的 URL，或使用提供的範例影像 URL。
 
 > [!NOTE]
-> 本指南中的程式碼片段會使用 URL 所存取的遠端表單。 如果您想要改為處理本機表單文件，請參閱[參考文件](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer)中的相關方法。
+> 本指南中的程式碼片段會使用 URL 所存取的遠端表單。 如果您想要改為處理本機表單文件，請參閱[參考文件](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/)中的相關方法。
 
 
 ```javascript

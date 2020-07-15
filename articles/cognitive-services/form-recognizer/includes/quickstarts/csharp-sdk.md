@@ -9,16 +9,16 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: pafarley
-ms.openlocfilehash: c4a8950e5aaa56f739fb3f6f780fbcfef80e2ec6
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 2b46e115b6360b161a1b2ad9b176f3afbfaf27d0
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86035658"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86277760"
 ---
-[參考文件](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src) | [套件 (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer) | [範例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
+[參考文件](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src) | [套件 (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer) | [範例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)。
 * 包含一組訓練資料的 Azure 儲存體 Blob。 請參閱[為自訂模型建置訓練資料集](../../build-training-data-set.md) (機器翻譯)，以獲得產生訓練資料集的提示和選項。 在本快速入門中，您可以使用[範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451)中 **Train** 資料夾底下的檔案。
@@ -135,7 +135,7 @@ static async Task RunFormRecognizerClient()
 * 另請使用上述方法取得收據影像的 URL，或使用提供的範例影像 URL。
 
 > [!NOTE]
-> 本指南中的程式碼片段會使用 URL 所存取的遠端表單。 如果您想要改為處理本機表單文件，請參閱[參考文件](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer)中的相關方法。
+> 本指南中的程式碼片段會使用 URL 所存取的遠端表單。 如果您想要改為處理本機表單文件，請參閱[參考文件](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre)中的相關方法。
 
 ```csharp
     string trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";
@@ -171,7 +171,7 @@ static async Task RunFormRecognizerClient()
 private static async Task<Guid> GetContent(
     FormRecognizerClient recognizerClient, string invoiceUri)
 {
-    Response<IReadOnlyList<FormPage>> formPages = await recognizerClient
+    Response<FormPageCollection> formPages = await recognizerClient
         .StartRecognizeContentFromUri(new Uri(invoiceUri))
         .WaitForCompletionAsync();
 ```

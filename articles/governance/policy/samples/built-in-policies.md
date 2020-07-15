@@ -1,15 +1,15 @@
 ---
 title: 內建原則定義的清單
 description: 列出 Azure 原則的內建原則定義。 分類包括標籤、法規合規性、Key Vault、Kubernetes、來賓設定等等。
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 94f69754ab51728a18da10b45e05770f1271760b
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 1db053744a68e34fc3995916605be75a49887f01
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85313777"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277119"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure 原則的內建原則定義
 
@@ -164,6 +164,10 @@ Azure 入口網站中原則定義的每個內建連結名稱。 使用 [來源] 
 ## <a name="tags"></a>Tags
 
 [!INCLUDE [azure-policy-samples-policies-tags](../../../../includes/policy/samples/bycat/policies-tags.md)]
+
+## <a name="vm-image-builder"></a>VM 映像建立器
+
+[!INCLUDE [azure-policy-samples-policies-vm-image-builder](../../../../includes/policy/samples/bycat/policies-vm-image-builder.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

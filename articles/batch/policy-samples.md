@@ -1,15 +1,15 @@
 ---
 title: 適用於 Azure Batch 的內建原則定義
 description: 列出適用於 Azure Batch 的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 855c04c84ae55574dab9bd4e46d10aacdbde67a5
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 499dc52fec9055638677f5ac35d86d3f5a17c990
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85318977"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276071"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-batch"></a>適用於 Azure Batch 的 Azure 原則內建定義
 

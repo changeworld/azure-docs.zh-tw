@@ -1,24 +1,24 @@
 ---
 title: 適用於 Azure 應用程式組態的內建原則定義
 description: 列出適用於 Azure 應用程式組態的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.topic: sample
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 2d430bbe718981f9a4f258d70efcd1d218da8283
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 79b213af62c0c1a6919f03d4b0052c6c03d6257b
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85316346"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86275611"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-app-configuration"></a>適用於 Azure 應用程式組態的 Azure 原則內建定義
 
 此頁面是適用於 Azure 應用程式組態的 [Azure 原則](../governance/policy/overview.md)內建原則定義索引。 如需其他服務的其他內建 Azure 原則，請參閱 [Azure 原則內建定義](../governance/policy/samples/built-in-policies.md)。
 
-連結至 Azure 入口網站中原則定義的每個內建原則定義名稱。 使用 [版本]**** 資料行中的連結來查看 [Azure 原則 GitHub 存放庫](https://github.com/Azure/azure-policy)上的來源。
+連結至 Azure 入口網站中原則定義的每個內建原則定義名稱。 使用 [版本] 資料行中的連結來查看 [Azure 原則 GitHub 存放庫](https://github.com/Azure/azure-policy)上的來源。
 
 ## <a name="azure-app-configuration"></a>Azure 應用程式組態
 

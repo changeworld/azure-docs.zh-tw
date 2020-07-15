@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure 虛擬機器的內建原則定義
 description: 列出適用於 Azure 虛擬機器的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.topic: sample
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 72c57f86b3eab40490a39d99fbedc2ec7907c5d2
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 7402e1f034c6fb4e9d6816bb71cdf3826a5ffc88
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321766"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276918"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-virtual-machines"></a>適用於 Azure 虛擬機器的 Azure 原則內建定義
 

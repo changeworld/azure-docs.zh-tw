@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: f16f9b3fe6cd17b9fb6eb1cb2bd3ef1f42824701
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: a1df804681f0066fda025a60e0baddedc51f7a78
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85312716"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276828"
 ---
 |名稱 |描述 |原則 |版本 |
 |---|---|---|---|
@@ -37,4 +37,3 @@ ms.locfileid: "85312716"
 |[稽核已安裝指定應用程式的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_NotInstalledApp.json) |此方案會部署原則需求，並針對已安裝指定應用程式的 Windows 虛擬機器進行稽核。 如需有關客體設定原則的詳細資訊，請造訪 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
 |[稽核正在等候重新開機的 Windows VM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsPendingReboot.json) |此方案會部署原則需求，並針對重新開機作業擱置的 Windows 虛擬機器進行稽核。 如需有關客體設定原則的詳細資訊，請造訪 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
 |[稽核未使用安全通訊協定的 Windows 網頁伺服器](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_TLS.json) |此方案會部署原則需求，並稽核未使用安全通訊協定 (TLS 1.1 或 TLS 1.2) 的 Windows 網頁伺服器。 如需有關客體設定原則的詳細資訊，請造訪 [https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
-|[部署必要條件，以在虛擬機器上啟用來賓設定原則](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_Prerequisites.json) |此計畫會新增系統指派的受控識別，並將適合平台的客體設定延伸模組部署到可由客體設定原則監視的虛擬機器。 這是所有客體設定原則的必要條件，必須先指派給原則指派範圍，才能使用任何客體設定原則。 如需有關客體設定的詳細資訊，請造訪 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 |4 |1.0.0-preview |

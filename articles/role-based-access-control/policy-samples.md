@@ -1,24 +1,24 @@
 ---
 title: 適用於 Azure RBAC 的內建原則定義
 description: 列出適用於 Azure RBAC 的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.topic: sample
 author: rolyon
 ms.author: rolyon
 ms.service: role-based-access-control
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 448f382bcaba1ba37b64a6aa5722d98c0d1648ee
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 34dd945b539926a0c35d3f9e3642b8882b24db6f
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85317249"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274371"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-rbac"></a>適用於 Azure RBAC 的 Azure 原則內建定義
 
 此頁面是適用於 Azure RBAC 的 [Azure 原則](../governance/policy/overview.md)內建原則定義索引。 如需其他服務的其他內建 Azure 原則，請參閱 [Azure 原則內建定義](../governance/policy/samples/built-in-policies.md)。
 
-連結至 Azure 入口網站中原則定義的每個內建原則定義名稱。 使用 [版本]**** 資料行中的連結來查看 [Azure 原則 GitHub 存放庫](https://github.com/Azure/azure-policy)上的來源。
+連結至 Azure 入口網站中原則定義的每個內建原則定義名稱。 使用 [版本] 資料行中的連結來查看 [Azure 原則 GitHub 存放庫](https://github.com/Azure/azure-policy)上的來源。
 
 ## <a name="azure-rbac"></a>Azure RBAC
 

@@ -1,18 +1,18 @@
 ---
 title: 適用於 PostgreSQL 的 Azure 資料庫的內建原則定義
 description: 列出「適用於 PostgreSQL 的 Azure 資料庫」的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.topic: sample
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 109c3ca274e46324a8c93ba089abf3db3b5cac68
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: f2db6d592eb7a06f4863e9e5ffa9d13c75473d3e
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321421"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276597"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-database-for-postgresql"></a>「適用於 PostgreSQL 的 Azure 資料庫」的 Azure 原則內建定義
 
