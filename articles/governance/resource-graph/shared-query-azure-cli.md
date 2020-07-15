@@ -28,7 +28,7 @@ ms.locfileid: "85569383"
 
 1. 確認已安裝最新的 Azure CLI (至少 **2.8.0**)。 如果尚未安裝，請依照[這些指示](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)操作。
 
-1. 在您選擇的 Azure CLI 環境中，使用 [](/cli/azure/extension#az-extension-add)，透過下列命令匯入 Resource Graph 延伸模組：
+1. 在您選擇的 Azure CLI 環境中，使用 [az extension add](/cli/azure/extension#az-extension-add)，透過下列命令匯入 Resource Graph 延伸模組：
 
    ```azurecli-interactive
    # Add the Resource Graph extension to the Azure CLI environment
