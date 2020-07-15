@@ -7,12 +7,12 @@ ms.date: 05/08/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: c66766b39ae104cf4a031c3fd73c173e81d47fb8
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: b6dc5ba59aa563da6e7c19e6c821f4a9b697832f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563485"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206533"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>快速入門：Azure Blob 儲存體用戶端程式庫 v12 與 Xamarin
 
@@ -26,7 +26,12 @@ ms.locfileid: "85563485"
 * 將 Blob 下載至您的裝置
 * 刪除容器
 
-[API 參考文件](/dotnet/api/azure.storage.blobs) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs) | [套件 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs) | [範例](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
+參考連結：
+
+* [API 參考文件](/dotnet/api/azure.storage.blobs)
+* [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
+* [套件 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
+* [範例](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 

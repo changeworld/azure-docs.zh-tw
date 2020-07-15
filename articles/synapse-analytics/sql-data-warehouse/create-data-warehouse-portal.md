@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: c7efccf35ddb47bf349d9a21628e9445e37b7699
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: c1b640fa5104ceb0f330c9aee9813ed8b3914d33
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211301"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166037"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站來建立及查詢 Synapse SQL 集區
 
@@ -199,6 +199,10 @@ SQL 資料倉儲會使用 T-SQL 作為查詢語言。 若要開啟查詢視窗�
 4. 若要移除所建立的伺服器，請選取上圖中的 [sqlpoolservername.database.windows.net]，然後選取 [刪除]。 請謹慎使用刪除，因為刪除伺服器也會刪除所有指派給伺服器的資料庫。
 
 5. 若要移除此資源群組，請選取 [myResourceGroup]，然後選取 [刪除資源群組]。
+
+想要最佳化並節省您的雲端費用嗎？
+
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,5 +1,5 @@
 ---
-title: 連線至適用於 Azure Cosmos DB 的 Azure Synapse Link
+title: 快速入門：連線至適用於 Azure Cosmos DB 的 Azure Synapse Link
 description: 如何使用 Synapse Link 將 Azure Cosmos DB 連線至 Synapse 工作區
 services: synapse-analytics
 author: ArnoMicrosoft
@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 81cc7745790c7a89576dc5d0ff925dbaff2b2334
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 56b018326e8673e6ac9e625a5732a08238f982fd
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700392"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274317"
 ---
 # <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>連線至適用於 Azure Cosmos DB 的 Azure Synapse Link
 
 本文說明如何使用 Synapse Link 從 Azure Synapse Analytics Studio 存取 Azure Cosmos DB 資料庫。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 要將 Azure Cosmos DB 帳戶連線至您的工作區，必須符合幾項先決條件。
 

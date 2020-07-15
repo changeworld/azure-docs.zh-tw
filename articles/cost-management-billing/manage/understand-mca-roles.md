@@ -6,12 +6,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 1003e26fa670a804328d5e34def7c9d78eced9c0
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 76aa21aea647e5096ba47fb691622ea5146d9901
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84702596"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207210"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>了解 Azure 中的 Microsoft 客戶合約管理角色
 
@@ -141,12 +141,12 @@ ms.locfileid: "84702596"
 
 ### <a name="manage-invoice-section-permissions-and-properties"></a>管理發票區段權限和屬性
 
-|工作|發票區段擁有者|發票區段參與者|發票區段讀者|Azure 訂用帳戶建立者|計費帳戶擁有者|計費帳戶參與者|計費帳戶讀者 | |
-|---|---|---|---|---|---|---|---|---|
-|檢視發票區段上的所有權限|✔|✔|✔|✔|✔|✔|✔| |
-|授與他人檢視和管理發票區段的權限|✔|✘|✘|✘|✘|✘|✘| |
-|檢視發票區段屬性|✔|✔|✔|✔|✔|✔|✔| |
-|更新發票區段屬性|✔|✔|✘|✘|✘|✘|✘|✘|
+|工作|發票區段擁有者|發票區段參與者|發票區段讀者|Azure 訂用帳戶建立者|計費帳戶擁有者|計費帳戶參與者|計費帳戶讀者 |
+|---|---|---|---|---|---|---|---|
+|檢視發票區段上的所有權限|✔|✔|✔|✔|✔|✔|✔|
+|授與他人檢視和管理發票區段的權限|✔|✘|✘|✘|✘|✘|✘|
+|檢視發票區段屬性|✔|✔|✔|✔|✔|✔|✔|
+|更新發票區段屬性|✔|✔|✘|✘|✘|✘|✘|
 
 ### <a name="manage-products-for-invoice-section"></a>管理發票區段的產品
 
@@ -178,17 +178,17 @@ ms.locfileid: "84702596"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 搜尋 [成本管理 + 帳單]  。
+2. 搜尋 [成本管理 + 帳單]。
 
    ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/understand-mca-roles/billing-search-cost-management-billing.png)
 
-3. 在您想要授與存取權的範圍內 (例如計費帳戶、帳單設定檔或發票區段)，選取 [存取控制 (IAM)]  。
+3. 在您想要授與存取權的範圍內 (例如計費帳戶、帳單設定檔或發票區段)，選取 [存取控制 (IAM)]。
 
 4. [存取控制 (IAM)] 頁面會列出指派給該範圍內每個角色的使用者和群組。
 
    ![顯示計費帳戶管理員清單的螢幕擷取畫面](./media/understand-mca-roles/billing-list-admins.png)
 
-5. 若要為使用者授與存取權，請從頁面頂端選取 [新增]  。 在 [角色] 下拉式清單中，選取角色。 輸入您要為其授與存取權之使用者的電子郵件地址。 選取 [儲存]  以指派角色。
+5. 若要為使用者授與存取權，請從頁面頂端選取 [新增]。 在 [角色] 下拉式清單中，選取角色。 輸入您要為其授與存取權之使用者的電子郵件地址。 選取 [儲存] 以指派角色。
 
    ![顯示將管理員新增至計費帳戶的螢幕擷取畫面](./media/understand-mca-roles/billing-add-admin.png)
 

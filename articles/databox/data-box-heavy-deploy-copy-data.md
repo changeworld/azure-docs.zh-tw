@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: e855bb669d86db246d57709607f62e77385e8c42
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: b02345ded6f519981db03795678802107f9cfb1f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199151"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206683"
 ---
 ::: zone target = "docs"
 
@@ -50,12 +50,12 @@ ms.locfileid: "83199151"
 
 ::: zone target = "docs"
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在您開始前，請確定：
 
 1. 您已完成[教學課程：設定 Azure Data Box Heavy](data-box-deploy-set-up.md)。
-2. 您已收到 Data Box Heavy，且入口網站中的訂購狀態為 [已交付]  。
+2. 您已收到 Data Box Heavy，且入口網站中的訂購狀態為 [已交付]。
 3. 您有一部主機電腦，其中包含要複製到 Data Box Heavy 的資料。 您的主機電腦必須符合下列條件：
     - 執行[支援的作業系統](data-box-system-requirements.md)。
     - 連線至高速網路。 如需最快的複製速度，可平行使用兩個 40 GbE 的連線 (每個節點一個連線)。 如果您沒有 40 GbE 連線可用，我們建議您至少有兩個 10 GbE 的連線 (每個節點一個連線)。
@@ -80,7 +80,7 @@ ms.locfileid: "83199151"
 
 下表顯示您 Data Box Heavy 上的共用 UNC 路徑，以及用於上傳資料的 Azure 儲存體路徑 URL。 最終的 Azure 儲存體路徑 URL 可以衍生自 UNC 共用路徑。
  
-|                   |                                                            |
+| 儲存體           | UNC 路徑                                                                       |
 |-------------------|--------------------------------------------------------------------------------|
 | Azure 區塊 Blob | <li>共用的 UNC 路徑：`\\<DeviceIPAddress>\<StorageAccountName_BlockBlob>\<ContainerName>\files\a.txt`</li><li>Azure 儲存體 URL：`https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
 | Azure 分頁 Blob  | <li>共用的 UNC 路徑：`\\<DeviceIPAddres>\<StorageAccountName_PageBlob>\<ContainerName>\files\a.txt`</li><li>Azure 儲存體 URL：`https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
@@ -95,15 +95,15 @@ ms.locfileid: "83199151"
 
 如果使用 Windows Server 主機電腦，請依照下列步驟來連線至 Data Box Heavy。
 
-1. 第一個步驟是驗證並啟動工作階段。 移至 [連線並複製]  。 按一下 [取得認證]  ，以取得您儲存體帳戶相關共用的存取認證。
+1. 第一個步驟是驗證並啟動工作階段。 移至 [連線並複製]。 按一下 [取得認證]，以取得您儲存體帳戶相關共用的存取認證。
 
     ![取得共用認證 1](media/data-box-heavy-deploy-copy-data/get-share-credentials-1.png)
 
-2. 在 [存取共用及複製資料] 對話方塊中，複製與共用相對應的 [使用者名稱]  和 [密碼]  。 按一下 [確定]  。
+2. 在 [存取共用及複製資料] 對話方塊中，複製與共用相對應的 [使用者名稱] 和 [密碼]。 按一下 [確定]。
     
     ![取得共用認證 1](media/data-box-heavy-deploy-copy-data/get-share-credentials-2.png)
 
-3. 若要從主機電腦存取與您的儲存體帳戶相關聯的共用 (在下列範例中為 databoxe2etest  )，請開啟命令視窗。 在命令提示字元中，輸入：
+3. 若要從主機電腦存取與您的儲存體帳戶相關聯的共用 (在下列範例中為 databoxe2etest)，請開啟命令視窗。 在命令提示字元中，輸入：
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -120,7 +120,7 @@ ms.locfileid: "83199151"
     The command completed successfully.
     ```
 
-4. 按 Windows + R。在 [執行]  視窗中，指定 `\\<device IP address>`。 按一下 [確定]  以開啟檔案總管。
+4. 按 Windows + R。在 [執行] 視窗中，指定 `\\<device IP address>`。 按一下 [確定] 以開啟檔案總管。
     
     ![透過檔案總管 2 連線至共用](media/data-box-heavy-deploy-copy-data/connect-shares-file-explorer-1.png)
 
@@ -128,7 +128,7 @@ ms.locfileid: "83199151"
     
     ![透過檔案總管 2 連線至共用](media/data-box-heavy-deploy-copy-data/connect-shares-file-explorer-2.png)
 
-    **一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾**。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 [root]  資料夾。
+    **一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾**。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 [root] 資料夾。
     
 ### <a name="connect-on-a-linux-system"></a>在 Linux 系統上連線
 
@@ -160,7 +160,7 @@ sudo mount -t nfs -o vers=2.1 10.126.76.172:/databoxe2etest_BlockBlob /home/data
     - 將相同的資料複製到 Azure 上的相同最終目的地。
      
   在這類情況下，無法判斷最後的結果。
-- 一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 [root]  資料夾。
+- 一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 [root] 資料夾。
 
 連線至 SMB 共用之後，請開始複製資料。
 
@@ -262,7 +262,7 @@ sudo mount -t nfs -o vers=2.1 10.126.76.172:/databoxe2etest_BlockBlob /home/data
 
     ![錯誤已解決](media/data-box-heavy-deploy-copy-data/error-resolved.png)
 
-6. 複製完成之後，請移至 [檢視儀表板]  頁面。 確認您裝置上已使用的空間和可用空間。
+6. 複製完成之後，請移至 [檢視儀表板] 頁面。 確認您裝置上已使用的空間和可用空間。
     
     ![確認儀表板上的可用空間和已使用的空間](media/data-box-heavy-deploy-copy-data/verify-used-space-dashboard.png)
 
@@ -292,7 +292,7 @@ sudo mount -t nfs -o vers=2.1 10.126.76.172:/databoxe2etest_BlockBlob /home/data
 
     `\\<IP address of your device>\ShareName`
 
-2. 若要取得共用存取認證，請前往資料箱之本機 Web UI 中的 [連線並複製]  頁面。
+2. 若要取得共用存取認證，請前往資料箱之本機 Web UI 中的 [連線並複製] 頁面。
 
 3. 使用與 SMB 相容的檔案複製工具 (例如 Robocopy) 來將資料複製到共用。
 
@@ -304,7 +304,7 @@ sudo mount -t nfs -o vers=2.1 10.126.76.172:/databoxe2etest_BlockBlob /home/data
 
     `sudo mount <Data Box device IP>:/<NFS share on Data Box device> <Path to the folder on local Linux computer>`
 
-2. 若要取得共用存取認證，請前往 Data Box Heavy 的本機 Web UI 中的 [連線並複製]  頁面。
+2. 若要取得共用存取認證，請前往 Data Box Heavy 的本機 Web UI 中的 [連線並複製] 頁面。
 3. 使用 `cp` 或 `rsync` 命令來複製您的資料。 
 4. 重複這些步驟來將資料連線並複製到 Data Box Heavy 的第二個節點。
 
@@ -312,7 +312,7 @@ sudo mount -t nfs -o vers=2.1 10.126.76.172:/databoxe2etest_BlockBlob /home/data
 
 ### <a name="copy-data-via-rest"></a>透過 REST 複製資料
 
-1. 若要透過 REST API 使用資料箱 Blob 儲存體來複製資料，您可以透過 HTTP  或 HTTPS  來進行連線。
+1. 若要透過 REST API 使用資料箱 Blob 儲存體來複製資料，您可以透過 HTTP 或 HTTPS 來進行連線。
 2. 若要將資料複製到資料箱 Blob 儲存體，您可以使用 AzCopy。
 3. 重複這些步驟來將資料連線並複製到 Data Box Heavy 的第二個節點。
 
@@ -320,7 +320,7 @@ sudo mount -t nfs -o vers=2.1 10.126.76.172:/databoxe2etest_BlockBlob /home/data
 
 ### <a name="copy-data-via-data-copy-service"></a>透過資料複製服務來複製資料
 
-1. 若要使用資料複製服務來複製資料，您需要建立一項作業。 在 Data Box Heavy 的本機 Web UI 中，移至 [管理] > [複製資料] > [建立]  。
+1. 若要使用資料複製服務來複製資料，您需要建立一項作業。 在 Data Box Heavy 的本機 Web UI 中，移至 [管理] > [複製資料] > [建立]。
 2. 填寫參數並建立作業。
 3. 重複這些步驟來將資料連線並複製到 Data Box Heavy 的第二個節點。
 

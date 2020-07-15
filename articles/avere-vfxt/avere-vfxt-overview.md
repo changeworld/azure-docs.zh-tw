@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: overview
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: a9dab2ca844feb1c24dfffc48b4f29cd1a311314
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7967b58819523173fd66d45eeabeaddc8605a21d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76153186"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229460"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>什麼是 Avere vFXT for Azure？
 
@@ -66,7 +66,7 @@ Avere vFXT 叢集可應要求快取檔案。 重複的要求超過八成 (以時
 
 Avere vFXT for Azure 會使用下列 Azure 資源：
 
-|Azure 元件|   |
+|Azure 元件| 資源 |
 |----------|-----------|
 |虛擬機器|3 或更多 E32s_v3|
 |進階 SSD 儲存體|200 GB 的 OS 空間，外加每個節點 1 TB 到 4 TB 的快取空間 |

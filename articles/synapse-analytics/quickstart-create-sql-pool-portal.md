@@ -1,5 +1,5 @@
 ---
-title: 快速入門 - 使用 Azure 入口網站建立 Synapse SQL 集區 (預覽)
+title: 快速入門：使用 Azure 入口網站建立 Synapse SQL 集區 (預覽)
 description: 遵循本指南中的步驟，使用 Azure 入口網站建立新的 Synapse SQL 集區。
 services: synapse-analytics
 author: julieMSFT
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 966ca099c44ba8b0f2d3241c391f4d7a101afb26
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 768b559ddaf7364726cb26a34d12f357d4126426
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955092"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274249"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-preview-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立 Synapse SQL 集區 (預覽)
 
@@ -24,7 +24,7 @@ Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、�
 
 如果您沒有 Azure 訂用帳戶，[請在開始前建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 - [Synapse 工作區](./quickstart-create-workspace.md)

@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 03/25/2020
-ms.openlocfilehash: 065fd166fb2ce82a3338322d55ef1ee5886ac56b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 1d4896a2dd2115e5654baffe394618b30a294d5b
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85210366"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231738"
 ---
 # <a name="azure-machine-learning-vs-machine-learning-studio-classic"></a>Azure Machine Learning 與 Machine Learning Studio (傳統)
 
@@ -27,7 +27,7 @@ Azure Machine Learning 提供 Python 和 R SDK，**以及**「拖放」設計工
 
 下表摘要說明 Azure Machine Learning 與 Studio (傳統) 之間的一些主要差異：
 
-| | Machine Learning Studio (傳統) | Azure Machine Learning |
+| 功能 | Machine Learning Studio (傳統) | Azure Machine Learning |
 |---| --- | --- |
 | 拖放介面 | 支援 | 支援 - [Azure Machine Learning 設計工具 (預覽)](concept-designer.md) <br/>(需要企業工作區) | 
 | 實驗 | 可調整規模 (有 10 GB 的定型資料限制) | 使用計算目標進行調整 |

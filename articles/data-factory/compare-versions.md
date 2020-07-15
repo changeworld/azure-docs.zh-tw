@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: ea625fbe28dad08ec2c3e2a64bada96460a04225
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6c43906468ee0124187dc5ce6d6f1405e3b96b2e
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81415559"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231228"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>比較 Azure Data Factory 與 Data Factory 第 1 版
 
@@ -130,14 +130,14 @@ Azure-SSIS 整合執行階段是一個完全受管理的 Azure VM (節點) 叢�
 
 ## <a name="authoring-experience"></a>撰寫體驗
 
-| &nbsp; | V2 | V1 |
+| | 第 2 版 | 第 1 版 |
 | ------ | -- | -- | 
-| Azure 入口網站 | [是](quickstart-create-data-factory-portal.md) | 否 |
-| Azure PowerShell | [是](quickstart-create-data-factory-powershell.md) | [是](data-factory-build-your-first-pipeline-using-powershell.md) |
-| .NET SDK | [是](quickstart-create-data-factory-dot-net.md) | [是](data-factory-build-your-first-pipeline-using-vs.md) |
-| REST API | [是](quickstart-create-data-factory-rest-api.md) | [是](data-factory-build-your-first-pipeline-using-rest-api.md) |
-| Python SDK | [是](quickstart-create-data-factory-python.md) | 否 |
-| Resource Manager 範本 | [是](quickstart-create-data-factory-resource-manager-template.md) | [是](data-factory-build-your-first-pipeline-using-arm.md) | 
+| **Azure 入口網站** | [是](quickstart-create-data-factory-portal.md) | 否 |
+| **Azure PowerShell** | [是](quickstart-create-data-factory-powershell.md) | [是](data-factory-build-your-first-pipeline-using-powershell.md) |
+| **.NET SDK** | [是](quickstart-create-data-factory-dot-net.md) | [是](data-factory-build-your-first-pipeline-using-vs.md) |
+| **REST API** | [是](quickstart-create-data-factory-rest-api.md) | [是](data-factory-build-your-first-pipeline-using-rest-api.md) |
+| **Python SDK** | [是](quickstart-create-data-factory-python.md) | 否 |
+| **Resource Manager 範本** | [是](quickstart-create-data-factory-resource-manager-template.md) | [是](data-factory-build-your-first-pipeline-using-arm.md) | 
 
 ## <a name="roles-and-permissions"></a>角色和權限
 
