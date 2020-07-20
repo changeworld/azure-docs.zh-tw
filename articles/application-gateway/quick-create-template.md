@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 986e061c03634fe33af985c9d11569848500862c
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 963f728db55f587f7ae72aec702a099882cf401a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170489"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249354"
 ---
-# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---resource-manager-template"></a>快速入門：使用 Azure 應用程式閘道來引導網路流量 - Resource Manager 範本
+# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>快速入門：使用 Azure 應用程式閘道引導網路流量 - ARM 範本
 
-在本快速入門中，您會使用 Resource Manager 範本來建立 Azure 應用程式閘道。 然後您會測試應用程式閘道，以確保其運作正常。
+在此快速入門中，您將使用 Azure Resource Manager 範本 (ARM 範本) 建立 Azure 應用程式閘道。 然後您會測試應用程式閘道，以確保其運作正常。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -26,17 +26,19 @@ ms.locfileid: "84170489"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-an-application-gateway"></a>建立應用程式閘道
+## <a name="review-the-template"></a>檢閱範本
 
 為了簡單起見，此範本會建立簡單的設定，包括公用前端 IP、在此應用程式閘道上裝載單一網站的基本接聽程式、基本的要求路由規則，以及後端集區中的兩部虛擬機器。
 
-### <a name="review-the-template"></a>檢閱範本
-
-本快速入門中使用的範本是來自 [Azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates/blob/master/ag-docs-qs/azuredeploy.json)
+本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/ag-docs-qs/)
 
 :::code language="json" source="~/quickstart-templates/ag-docs-qs/azuredeploy.json" range="001-343" highlight="197-297":::
 
@@ -50,10 +52,9 @@ ms.locfileid: "84170489"
 - [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)：兩個用於虛擬機器
 - [**Microsoft.Compute/virtualMachine/extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions)：可設定 IIS 和網頁
 
+## <a name="deploy-the-template"></a>部署範本
 
-### <a name="deploy-the-template"></a>部署範本
-
-將 Resource Manager 範本部署至 Azure：
+將 ARM 範本部署到 Azure：
 
 1. 選取 [部署至 Azure] 以登入 Azure 並開啟範本。 此範本會在執行 IIS 的後端集區中建立應用程式閘道、網路基礎結構和兩個虛擬機器。
 

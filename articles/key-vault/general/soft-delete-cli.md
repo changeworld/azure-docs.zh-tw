@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ae6ddac61ecbcef41704f71ed5188fc547a996a3
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: f98df33b3efc697e349ddeae31439dd2fb701d91
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81616591"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202021"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>如何以 CLI 使用金鑰保存庫虛刪除
 
@@ -23,7 +23,7 @@ Azure Key Vault 的虛刪除功能可復原已刪除的保存庫和保存庫物�
 - 可復原的 Key Vault 刪除支援
 - 支援可復原的金鑰保存庫物件刪除；金鑰、密碼和憑證
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - Azure CLI - 如果您沒有為環境進行此設定，請參閱[使用 Azure CLI 管理 Key Vault](manage-with-cli2.md))。
 
@@ -96,9 +96,9 @@ az keyvault delete --name ContosoVault
 ```azurecli
 az keyvault list-deleted
 ```
-- 「識別碼」  可以用來在復原或清除時識別資源。 
-- 「資源識別碼」  是此保存庫的原始資源識別碼。 因為此金鑰保存庫目前處於已刪除狀態，所以沒有具有該資源識別碼的資源存在。 
-- 如果不採取任何動作，「排定清除日期」  就是永久刪除保存庫的時間。 用來計算「排定清除日期」  的預設保留期間為 90 天。
+- 「識別碼」可以用來在復原或清除時識別資源。 
+- 「資源識別碼」是此保存庫的原始資源識別碼。 因為此金鑰保存庫目前處於已刪除狀態，所以沒有具有該資源識別碼的資源存在。 
+- 如果不採取任何動作，「排定清除日期」就是永久刪除保存庫的時間。 用來計算「排定清除日期」的預設保留期間為 90 天。
 
 ## <a name="recovering-a-key-vault"></a>復原金鑰保存庫
 
@@ -220,16 +220,16 @@ az keyvault purge --location westus --name ContosoVault
 
 ### <a name="scheduled-purge"></a>排定的清除
 
-列出已刪除的金鑰保存庫物件，也會顯示它們排定要由金鑰保存庫清除的時間。 如果不採取任何動作，「排定清除日期」  指出何時會永久刪除金鑰保存庫物件。 根據預設，已刪除的金鑰保存庫物件的保留期限為 90 天。
+列出已刪除的金鑰保存庫物件，也會顯示它們排定要由金鑰保存庫清除的時間。 如果不採取任何動作，「排定清除日期」指出何時會永久刪除金鑰保存庫物件。 根據預設，已刪除的金鑰保存庫物件的保留期限為 90 天。
 
 >[!IMPORTANT]
->已清除的保存庫物件，由其「排定清除日期」  欄位觸發，會永久刪除。 它無法復原！
+>已清除的保存庫物件，由其「排定清除日期」欄位觸發，會永久刪除。 它無法復原！
 
 ## <a name="enabling-purge-protection"></a>啟用清除保護
 
 開啟清除保護時，必須等到 90 天的保留期間過後，才能清除處於已刪除狀態的保存庫或物件。 這類保存庫或物件仍可復原。 此功能可加強確保在保留期間已過之前，一律無法永久刪除保存庫或物件。
 
-只有在已啟用虛刪除功能的情況下，才可以啟用清除保護。 
+只有在已啟用虛刪除功能的情況下，才可以啟用清除保護。 不支援停用清除保護。
 
 若要在建立保存庫時開啟虛刪除和清除保護，請使用 [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) 命令：
 

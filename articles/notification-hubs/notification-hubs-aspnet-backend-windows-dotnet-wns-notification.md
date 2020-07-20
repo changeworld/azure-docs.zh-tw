@@ -17,12 +17,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 914ccc2ac74048abb2a66b61aa65b771f8141d5e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a8a939f0d0c3575adec147c1942ddbbef334cb65
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "71212068"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220145"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將通知傳送給特定使用者
 
@@ -46,7 +46,7 @@ ms.locfileid: "71212068"
 > * 更新用戶端專案的程式碼
 > * 測試應用程式
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程以您在以下教學課程中建立的通知中樞和 Visual Studio 專案為基礎：[教學課程：使用 Azure 通知中樞將通知傳送至通用 Windows 平台應用程式](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。 因此，請先加以完成，再開始進行本教學課程。
 
@@ -60,11 +60,11 @@ ms.locfileid: "71212068"
 在本節中，您會更新已針對以下教學課程完成之專案中的程式碼：[教學課程：使用 Azure 通知中樞將通知傳送至通用 Windows 平台應用程式](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。 此專案應已與 Windows 市集產生關聯。 此外它也應設定成使用您的通知中樞。 在本節中，您會新增程式碼以呼叫新的 WebAPI 後端，並使用它來註冊和傳送通知。
 
 1. 在 Visual Studio 中，開啟您為以下教學課程所建立的方案：[教學課程：使用 Azure 通知中樞將通知傳送至通用 Windows 平台應用程式](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。
-2. 在 [方案總管] 中，以滑鼠右鍵按一下 [通用 Windows 平台 (UWP)] 專案，然後按一下 [管理 NuGet 套件]  。
-3. 選取左邊的 [瀏覽]  。
-4. 在 [搜尋]  方塊中，輸入 **Http Client**。
-5. 在 [結果] 清單中按一下 **System.Net.Http**，然後按一下 [安裝]  。 完成安裝。
-6. 回到 NuGet [搜尋]  方塊，輸入 **Json.net**。 安裝 **Newtonsoft.json** 套件，然後關閉 [NuGet 套件管理員] 視窗。
+2. 在 [方案總管] 中，以滑鼠右鍵按一下 [通用 Windows 平台 (UWP)] 專案，然後按一下 [管理 NuGet 套件]。
+3. 選取左邊的 [瀏覽]。
+4. 在 [搜尋] 方塊中，輸入 **Http Client**。
+5. 在 [結果] 清單中按一下 **System.Net.Http**，然後按一下 [安裝]。 完成安裝。
+6. 回到 NuGet [搜尋] 方塊，輸入 **Json.net**。 安裝 **Newtonsoft.json** 套件，然後關閉 [NuGet 套件管理員] 視窗。
 7. 在方案總管的 **WindowsApp** 專案中按兩下 **MainPage.xaml**，在 Visual Studio 編輯器中開啟該檔案。
 8. 在 `MainPage.xaml` XML 程式碼中，使用下列程式碼取代 `<Grid>` 區段：此程式碼會新增使用者用來進行驗證的使用者名稱和密碼文字方塊。 它也會新增通知訊息的文字方塊，以及應接收通知的使用者名稱標記：
 
@@ -118,7 +118,7 @@ ms.locfileid: "71212068"
         </StackPanel>
     </Grid>
     ```
-9. 在 [方案總管] 中，開啟 [(Windows 8.1)]  和 [(Windows Phone 8.1)]  專案的 `MainPage.xaml.cs` 檔案。 在這兩個檔案頂端加入下列 `using` 陳述式：
+9. 在 [方案總管] 中，開啟 [(Windows 8.1)] 和 [(Windows Phone 8.1)] 專案的 `MainPage.xaml.cs` 檔案。 在這兩個檔案頂端加入下列 `using` 陳述式：
 
     ```csharp
     using System.Net.Http;
@@ -133,11 +133,11 @@ ms.locfileid: "71212068"
     ```csharp
     private static string BACKEND_ENDPOINT = "<Enter Your Backend Endpoint>";
     ```
-11. 將下面的程式碼新增到 [(Windows 8.1)]  和 [(Windows Phone 8.1)]  專案之 `MainPage.xaml.cs` 中的 MainPage 類別。
+11. 將下面的程式碼新增到 [(Windows 8.1)] 和 [(Windows Phone 8.1)] 專案之 `MainPage.xaml.cs` 中的 MainPage 類別。
 
-    `PushClick` 方法是 [傳送推播]  按鈕的 click 處理常式。 它會呼叫後端以觸發所有裝置的通知，而所有裝置都具有符合 `to_tag` 參數的使用者名稱標記。 通知訊息會以要求主體的 JSON 內容形式傳送。
+    `PushClick` 方法是 [傳送推播] 按鈕的 click 處理常式。 它會呼叫後端以觸發所有裝置的通知，而所有裝置都具有符合 `to_tag` 參數的使用者名稱標記。 通知訊息會以要求主體的 JSON 內容形式傳送。
 
-    `LoginAndRegisterClick` 方法是 [登入並註冊]  按鈕的 click 處理常式。 它會在本機儲存體中儲存基本驗證權杖 (代表驗證配置使用的任何權杖)，然後使用 `RegisterClient` 來註冊使用後端的通知。
+    `LoginAndRegisterClick` 方法是 [登入並註冊] 按鈕的 click 處理常式。 它會在本機儲存體中儲存基本驗證權杖 (代表驗證配置使用的任何權杖)，然後使用 `RegisterClient` 來註冊使用後端的通知。
 
     ```csharp
     private async void PushClick(object sender, RoutedEventArgs e)
@@ -222,9 +222,9 @@ ms.locfileid: "71212068"
     {
         //InitNotificationsAsync();
     ```
-13. 以滑鼠右鍵按一下 **WindowsApp** 專案、按一下 [新增]  ，然後按一下 [類別]  。 將類別命名為 `RegisterClient.cs`，然後按一下 [確定]  以產生類別。
+13. 以滑鼠右鍵按一下 **WindowsApp** 專案、按一下 [新增]，然後按一下 [類別]。 將類別命名為 `RegisterClient.cs`，然後按一下 [確定] 以產生類別。
 
-    為了註冊推播通知，此類別會包裝連絡應用程式後端所需的 REST 呼叫。 它也會在本機儲存通知中心所建立的 *registrationIds* ，如 [從您的應用程式後端註冊](https://msdn.microsoft.com/library/dn743807.aspx)中的詳細說明。 當您按一下 [登入並註冊]  按鈕時，系統會使用儲存在本機儲存體中的授權權杖。
+    為了註冊推播通知，此類別會包裝連絡應用程式後端所需的 REST 呼叫。 它也會在本機儲存通知中心所建立的 *registrationIds* ，如 [從您的應用程式後端註冊](https://msdn.microsoft.com/library/dn743807.aspx)中的詳細說明。 當您按一下 [登入並註冊] 按鈕時，系統會使用儲存在本機儲存體中的授權權杖。
 14. 在 RegisterClient.cs 檔案開頭加入下列 `using` 陳述式：
 
     ```csharp
@@ -328,14 +328,14 @@ ms.locfileid: "71212068"
 ## <a name="test-the-application"></a>測試應用程式
 
 1. 在這兩種 Windows 系統上啟動應用程式。
-2. 輸入 [使用者名稱]  和 [密碼]  ，如下列畫面所示。 它應該與您在 Windows Phone 上輸入的使用者名稱和密碼不同。
-3. 按一下 [登入並註冊]  ，並確認顯示您已登入的對話方塊。 此程式碼也會啟用 [傳送推播]  按鈕。
+2. 輸入 [使用者名稱]和 [密碼]，如下列畫面所示。 它應該與您在 Windows Phone 上輸入的使用者名稱和密碼不同。
+3. 按一下 [登入並註冊]  ，並確認顯示您已登入的對話方塊。 此程式碼也會啟用 [傳送推播] 按鈕。
 
-    ![][14]
-5. 然後，在 [收件者使用者名稱標記]  欄位中，輸入已註冊的使用者名稱。 輸入通知訊息，然後按一下 [傳送推播]  。
+    ![顯示已填入使用者名稱和密碼的通知中樞應用程式螢幕擷取畫面。][14]
+5. 然後，在 [收件者使用者名稱標記] 欄位中，輸入已註冊的使用者名稱。 輸入通知訊息，然後按一下 [傳送推播] 。
 6. 只有已經使用相符使用者名稱標記所註冊的裝置才會收到通知訊息。
 
-    ![][15]
+    ![顯示已推送訊息的通知中樞應用程式螢幕擷取畫面。][15]
 
 ## <a name="next-steps"></a>後續步驟
 

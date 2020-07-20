@@ -10,34 +10,34 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 05/21/2020
 ms.author: rolyon
-ms.openlocfilehash: da25f4bc585da26b9765fd36d65a8b5e0689f725
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 9320a68684a25949e8a0b4e2c7d72a6267401add
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300659"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252346"
 ---
-# <a name="quickstart-add-an-azure-role-assignment-using-an-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本新增 Azure 角色指派
+# <a name="quickstart-add-an-azure-role-assignment-using-an-arm-template"></a>快速入門：使用 ARM 範本新增 Azure 角色指派
 
-[Azure 角色型存取控制 (Azure RBAC)](overview.md) 是您管理對 Azure 資源存取的機制。 在本快速入門中，您會建立資源群組並對使用者授與存取權，讓其在資源群組中建立和管理虛擬機器。 本快速入門會使用 Resource Manager 範本來授與存取權。
+[Azure 角色型存取控制 (Azure RBAC)](overview.md) 是您管理對 Azure 資源存取的機制。 在本快速入門中，您會建立資源群組並對使用者授與存取權，讓其在資源群組中建立和管理虛擬機器。 本快速入門會使用 Azure Resource Manager 範本 (ARM 範本) 來授與存取權。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-rbac-builtinrole-resourcegroup%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>必要條件
 
 若要新增角色指派，您必須具有：
 
-* `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 權限，例如[使用者存取系統管理員](built-in-roles.md#user-access-administrator)或[擁有者](built-in-roles.md#owner)
+- 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 權限，例如[使用者存取系統管理員](built-in-roles.md#user-access-administrator)或[擁有者](built-in-roles.md#owner)
+- 若要新增角色指派，您必須定三項元素：安全性主體、角色定義和範圍。 在本快速入門中，安全性主體是您或目錄中的其他使用者，角色定義為[虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)，而範圍則是您指定的資源群組。
 
-## <a name="create-a-role-assignment"></a>建立角色指派
+## <a name="review-the-template"></a>檢閱範本
 
-若要新增角色指派，您必須定三項元素：安全性主體、角色定義和範圍。 在本快速入門中，安全性主體是您或目錄中的其他使用者，角色定義為[虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)，而範圍則是您指定的資源群組。
-
-### <a name="review-the-template"></a>檢閱範本
-
-本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/)。 範本有三個參數和一個資源區段。 在 [資源] 區段中，請注意，其具有角色指派的三個元素：安全性主體、角色定義和範圍。 
+本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/)。 範本有三個參數和一個資源區段。 在 [資源] 區段中，請注意，其具有角色指派的三個元素：安全性主體、角色定義和範圍。
 
 :::code language="json" source="~/quickstart-templates/101-rbac-builtinrole-resourcegroup/azuredeploy.json" highlight="30-32":::
 
@@ -45,7 +45,7 @@ ms.locfileid: "84300659"
 
 - [Microsoft.Authorization/roleAssignments](/azure/templates/Microsoft.Authorization/roleAssignments)
 
-### <a name="deploy-the-template"></a>部署範本
+## <a name="deploy-the-template"></a>部署範本
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 

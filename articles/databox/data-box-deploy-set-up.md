@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 850144e4835b43e219fa059bbc1c92bb3ef412f4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c74b5ba5101dae9165898aeb4f265d449988ecab
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200507"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205230"
 ---
 ::: zone target="docs"
 
@@ -38,21 +38,23 @@ ms.locfileid: "83200507"
 > * 連接資料箱的纜線
 > * 連線至資料箱
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在您開始前，請確定：
 
-1. 您已完成[教學課程：訂購 Azure 資料箱](data-box-deploy-ordered.md)。
-2. 您已收到資料箱，且入口網站中的訂購狀態為 [已交付]  。 
+1. 您已建立 Azure 資料箱的訂單。
+    - 針對匯入訂單，請參閱[教學課程：訂購 Azure 資料箱](data-box-deploy-ordered.md)。
+    - 針對匯出訂單，請參閱[教學課程：訂購 Azure 資料箱](data-box-deploy-export-ordered.md)
+1. 您已收到資料箱，且入口網站中的訂購狀態為 [已交付]。 
     - 黏貼到裝置目前標籤下的透明袋中有出貨標籤。 請妥善保存此標籤，您會在退貨時用到。
     - 歐洲境內某些區域可能會收到封裝在盒子裡的裝置。 打開裝置包裝後，請保留盒子以在送回裝置時使用。
-3. 您已檢閱[資料箱安全指導方針](data-box-safety.md)。
-4. 您已收到一條用於 100 TB 儲存體裝置的接地電源線。
-5. 您有一部主機電腦，其中包含要複製到資料箱的資料。 您的主機電腦必須符合下列條件：
+1. 您已檢閱[資料箱安全指導方針](data-box-safety.md)。
+1. 您已收到一條用於 100 TB 儲存體裝置的接地電源線。
+1. 您有一部主機電腦，用來將資料複製到 (匯入訂單) 或複製出 (匯出訂單) 資料箱。 您的主機電腦必須符合下列條件：
     - 執行[支援的作業系統](data-box-system-requirements.md)。
     - 連線至高速網路。 強烈建議您具有至少一個 10 GbE 的連線。 如果無法使用 10 GbE 連線，也可以使用 1 GbE 資料連結，但是複製速度會受到影響。 
-6. 您必須能夠進入放置資料箱所在的平坦表面。 如果您想要將裝置放在標準機架上，您的資料中心機架中需要有 7U 插槽。 您可以將裝置平放或垂直放置在機架中。
-7. 您已購買下列纜線，以將您的資料箱連線至主機電腦。
+1. 您必須能夠進入放置資料箱所在的平坦表面。 如果您想要將裝置放在標準機架上，您的資料中心機架中需要有 7U 插槽。 您可以將裝置平放或垂直放置在機架中。
+1. 您已購買下列纜線，以將您的資料箱連線至主機電腦。
     - 一或多條 10 GbE SFP+ Twinax 銅線或 SFP+ 光纖纜線 (搭配 DATA 1、DATA 2 網路介面使用)。 資料箱具有採用 PCI Express 3.0 網路介面的 Mellanox ConnectX®-3 Pro EN 雙連接埠 10GBASE-T 配接器，所以與這個介面相容的纜線應該有作用。 例如，CISCO SFP-H10GB-CU3M 10GBASE-CU TWINAX SFP +3M 纜線已用於內部測試。 如需詳細資訊，請參閱 [Mellanox 中支援的纜線和交換器清單](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf)。
     - 一條 RJ-45 CAT 6 網路線 (與 MGMT 網路介面搭配使用)
     - 一條 RJ-45 CAT 6A 或一條 RJ-45 CAT 6 網路線 (與 DATA 3 網路介面搭配使用，分別設定為 10 Gbps 或 1 Gbps)
@@ -115,27 +117,27 @@ ms.locfileid: "83200507"
 
 1. 使用靜態 IP 位址 192.168.100.5 和子網路 255.255.255.0，在您要用來連接到裝置的膝上型電腦上設定乙太網路介面卡。 
 2. 連接到裝置的 MGMT 連接埠，並經由 https\://192.168.100.10 存取其本機 Web UI。 在開啟裝置後，此作業最多可能需耗時 5 分鐘。
-3. 按一下 [詳細資料]  ，然後按一下 [繼續瀏覽網頁]  。
+3. 按一下 [詳細資料]，然後按一下 [繼續瀏覽網頁]。
 
    ![連線至本機 Web UI](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png) 
 
-4. 您會看到本機 Web UI 的 [登入]  頁面。 請確定入口網站 UI 和本機 Web UI 上的裝置序號是相符的。 裝置此時處於鎖定狀態。
+4. 您會看到本機 Web UI 的 [登入] 頁面。 請確定入口網站 UI 和本機 Web UI 上的裝置序號是相符的。 裝置此時處於鎖定狀態。
 5. 登入 [Azure 入口網站](https://portal.azure.com)。
-6. 從入口網站下載裝置認證。 移至 [一般] > [裝置詳細資料]  。 複製 [裝置密碼]  。 裝置密碼會繫結至入口網站中的特定訂單。 
+6. 從入口網站下載裝置認證。 移至 [一般] > [裝置詳細資料]。 複製 [裝置密碼]。 裝置密碼會繫結至入口網站中的特定訂單。 
 
     ![取得裝置認證](media/data-box-deploy-set-up/data-box-device-credentials.png)
     
     
 7. 提供您在上一個步驟中從 Azure 入口網站取得的裝置密碼，以登入裝置的本機 Web UI。 按一下 **[登入]** 。
-8. 在 [儀表板]  上，確定網路介面已設定。 
+8. 在 [儀表板] 上，確定網路介面已設定。 
    - 如果您的環境中啟用了 DHCP，則會自動設定網路介面。 
-   - 如果未啟用 DHCP，請移至 [設定網路介面]  ，並視需要指派靜態 IP。
+   - 如果未啟用 DHCP，請移至 [設定網路介面]，並視需要指派靜態 IP。
 
      ![裝置儀表板](media/data-box-deploy-set-up/data-box-dashboard-1.png)
 
 設定資料網路介面後，您也可以使用任何 DATA 1 -DATA 3 介面的 IP 位址來存取位於 `https://<IP address of a data network interface>` 的本機 Web UI。 
 
-在裝置設定完成後，您可以連線至裝置共用，並將資料從您的電腦複製到裝置。 
+在裝置設定完成後，您就可以連線至裝置共用並複製資料。 
 
 ::: zone-end
 
@@ -143,7 +145,7 @@ ms.locfileid: "83200507"
 
 ## <a name="connect-your-device"></a>連接裝置
 
-1. 若要取得裝置密碼，請前往 [Azure 入口網站](https://portal.azure.com)中的 [一般] > [裝置詳細資料]  。
+1. 若要取得裝置密碼，請前往 [Azure 入口網站](https://portal.azure.com)中的 [一般] > [裝置詳細資料]。
 2. 將靜態 IP 位址 192.168.100.5 和子網路 255.255.255.0，指派到您要用來連接至資料箱之電腦上的乙太網路介面卡。 在 `https://192.168.100.10` 存取裝置的本機 Web UI。 開啟裝置後，連線可能需要最多 5 分鐘。 
 3. 使用 Azure 入口網站中的密碼登入。 您會看到錯誤指出網站的安全性憑證有問題。 請依照瀏覽器專屬指示，繼續前往網頁。
 4. 根據預設，10 Gbps 資料介面 (或 1 Gbps) 的網路設定會設定為 DHCP。 如有需要，您可以將此介面設定為靜態，並提供 IP 位址。 
@@ -161,10 +163,15 @@ ms.locfileid: "83200507"
 > * 連接資料箱的纜線
 > * 連線至資料箱
 
-請繼續進行下一個教學課程，以了解如何複製資料箱上的資料。
+請前進到下一個教學課程，以了解如何複製資料。
 
 > [!div class="nextstepaction"]
-> [將資料複製到 Azure 資料箱](./data-box-deploy-copy-data.md)
+> [針對匯入訂單，將您的資料複製到 Azure 資料箱](./data-box-deploy-copy-data.md)
+
+Or
+
+> [!div class="nextstepaction"]
+> [針對匯出訂單，從 Azure 資料箱複製資料](./data-box-deploy-export-copy-data.md)
 
 ::: zone-end
 

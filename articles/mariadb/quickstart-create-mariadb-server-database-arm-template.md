@@ -7,18 +7,22 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 78b38f5059d50d56158e31c65299e5f747c8c073
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: fd560658a20a5b58d582332a88bf031d0e56ac91
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323588"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134114"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>快速入門：使用 ARM 範本來建立適用於 MariaDB 的 Azure 資料庫伺服器
 
-適用於 MariaDB 的 Azure 資料庫是一個受控服務，您可用來在雲端執行、管理及調整高可用性 MariaDB 資料庫。 在本快速入門中，您會使用 ARM 範本建立適用於 MariaDB 的 Azure 資料庫 - Azure 入口網站、PowerShell 或 Azure CLI 中的單一伺服器。
+適用於 MariaDB 的 Azure 資料庫是一個受控服務，您可用來在雲端執行、管理及調整高可用性 MariaDB 資料庫。 在本快速入門中，您會使用 Azure Resource Manager 範本 (ARM 範本)，在 Azure 入口網站、PowerShell 或 Azure CLI 中建立適用於 MariaDB 的 Azure 資料庫伺服器。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mariadb-with-vnet%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -38,11 +42,9 @@ ms.locfileid: "84323588"
 
 ---
 
-## <a name="create-an-azure-database-for-mariadb-server"></a>建立適用於 MariaDB 的 Azure 資料庫伺服器
+## <a name="review-the-template"></a>檢閱範本
 
 您可使用一組已定義的計算和儲存體資源來建立適用於 MariaDB 的 Azure 資料庫伺服器。 如需深入了解，請參閱[適用於 MariaDB 的 Azure 資料庫定價層](concepts-pricing-tiers.md)。 您可在 [Azure 資源群組](../azure-resource-manager/management/overview.md)內建立伺服器。
-
-### <a name="review-the-template"></a>檢閱範本
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-managed-mariadb-with-vnet/)。
 
@@ -58,7 +60,7 @@ ms.locfileid: "84323588"
 
 在 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformariadb&pageNumber=1&sort=Popular)中，可找到更多「適用於 MariaDB 的 Azure 資料庫」範本範例。
 
-### <a name="deploy-the-template"></a>部署範本
+## <a name="deploy-the-template"></a>部署範本
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -207,7 +209,7 @@ read -p "Press [ENTER] to continue: "
 
 ## <a name="next-steps"></a>後續步驟
 
-如需逐步教學課程，以引導您完成建立範本的流程，請參閱：
+如需逐步教學課程，以引導您完成建立 ARM 範本的流程，請參閱：
 
 > [!div class="nextstepaction"]
-> [教學課程：建立及部署第一個 Azure Resource Manager 範本](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [教學課程：建立及部署您的第一個 ARM 範本](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

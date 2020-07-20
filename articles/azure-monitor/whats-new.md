@@ -5,17 +5,96 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 04/06/2020
-ms.openlocfilehash: 561767b6857f4b52b3ee1eb17fedd51ad409ee29
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.date: 07/08/2020
+ms.openlocfilehash: 4d061e7a105fc73f7f44c8336df82ff363ee6ded
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462969"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203761"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure 監視器文件的最新動向
 
 本文提供新增或已大幅更新的 Azure 監視器文章清單。 該清單會在每個月的第一週重新整理，以納入上個月的文章更新。
+
+## <a name="june-2020"></a>2020 年 6 月
+
+### <a name="general"></a>一般
+- [部署 Azure 監視器](platform/deploy-scale.md) - 新文章。
+- [Azure 監視器客戶管理的金鑰](platform/customer-managed-keys.md) - 更新的 billingtype 屬性。 已新增 PowerShell 命令。
+
+### <a name="agents"></a>代理程式
+- [Log Analytics 代理程式概觀](platform/log-analytics-agent.md) - 已新增 Python 2 需求。
+
+### <a name="alerts"></a>警示
+- [如何在警示規則或動作規則的目標資源移至不同 Azure 區域時進行更新](platform/alerts-resource-move.md) - 新文章。
+- [針對 Azure 計量警示進行疑難排解](platform/alerts-troubleshoot-metric.md) - 新文章。
+- [針對 Azure 監視器中的記錄警示進行疑難排解](platform/alerts-troubleshoot-metric.md) - 新文章。
+  
+### <a name="application-insights"></a>Application Insights
+- [適用於 JavaScript Web 應用程式的 Azure Application Insights](app/javascript.md) - 更新至 JavaScript SDK 區段。 更新程式碼片段以報告載入失敗。
+- [針對 Profiler 和快照偵錯工具設定 BYOS (自備儲存體)](app/profiler-bring-your-own-storage.md) - 新文章。
+- [使用 OpenCensus Python 進行 Azure Application Insights 中的傳入要求追蹤](app/opencensus-python-request.md) - 更新 OpenCensus 的記錄和設定。
+- [使用 Azure Application Insights 監視即時的 ASP.NET Web 應用程式](app/monitor-performance-live-website-now.md) - 更新狀態監視器 v1 的淘汰日期。
+- [使用 Azure Application Insights 監視 Node.js 服務](app/nodejs.md) - 多個更新，包括從舊版本進行遷移和 SDK 設定
+- [使用 Azure 監視器監視 Python 應用程式 (預覽)](app/opencensus-python.md) - 新增設定 Azure 監視器匯出工具的區段。
+- [監視您的應用程式而不需要變更程式碼 - 自動檢測 Azure 監視器 Application Insights](app/codeless-overview.md) - 新文章。
+- [針對 JavaScript Web 應用程式的 SDK 載入失敗問題進行疑難排解](app/javascript-sdk-load-failure.md) - 新文章。
+
+### <a name="containers"></a>容器
+- [如何停止監視混合式 Kubernetes 叢集](insights/container-insights-optout-hybrid.md) - 已針對啟用 Arc 的 Kubernetes 新增區段。
+- [使用適用於容器的 Azure 監視器來設定啟用 Azure Arc 的 Kubernetes 叢集](insights/container-insights-enable-arc-enabled-clusters.md) - 新文章。
+- [使用適用於容器的 Azure 監視器設定 Azure Red Hat OpenShift v4.x](insights/container-insights-azure-redhat4-setup.md) - 更新必要條件。
+- [為適用於容器的 Azure 監視器設定即時資料 (Live Data) (預覽)](insights/container-insights-livedata-setup.md) - 已針對 Azure 美國政府中未提供的功能移除相關注意事項。
+
+### <a name="insights"></a>深入解析
+- [常見問題 - Azure 中的網路效能監控解決方案](insights/network-performance-monitor-faq.md) - 新增 ExpressRoute 監視器的常見問題。
+
+### <a name="logs"></a>記錄
+- [刪除和復原 Azure Log Analytics 工作區](platform/delete-workspace.md) - 已新增 PowerShell 命令。 已更新疑難排解。
+- [在 Azure 監視器中管理 Log Analytics 工作區](platform/manage-access.md) - 針對 RBAC 區段中不允許的資料表新增範例。
+- [管理 Azure 監視器記錄的使用量和成本](platform/manage-cost-storage.md) - 資料大小計算的其他詳細資訊。 已更新資料量警示的設定。 Azure Sentinel 所收集的安全性資料詳細資訊。 資料上限的說明。
+- [搭配 Azure Logic Apps 和 Power Automate 使用 Azure 監視器記錄](platform/logicapp-flow-connector.md) - 新增連接器限制。
+
+### <a name="metrics"></a>計量
+- [Azure 監視器支援的資源類型計量](platform/metrics-supported.md) - 已更新 SQL Server 計量。
+
+
+### <a name="platform-logs"></a>平台記錄
+
+- [診斷設定的 Resource Manager 範本範例](samples/resource-manager-diagnostic-settings.md) - 修正活動記錄診斷設定。
+- [使用 Azure 入口網站將 Azure 活動記錄傳送至 Log Analytics 工作區](learn/quick-collect-activity-log-portal.md) - 新文章
+- [使用 Azure Resource Manager 範本將 Azure 活動記錄傳送至 Log Analytics 工作區](learn/quick-collect-activity-log-arm.md) - 新文章。
+
+#### <a name="new-and-updated-articles-from-restructure-and-consolidation-of-platform-log-content"></a>平台記錄內容重構和彙總的最新和更新文章
+- [將 Azure 資源記錄封存到儲存體帳戶](platform/resource-logs-collect-storage.md)
+- [Azure 活動記錄事件結構描述](platform/activity-log-schema.md)
+- [Azure 活動記錄](platform/activity-log.md)
+- [Azure 監視器 CLI 範例](samples/cli-samples.md)
+- [Azure 監視器 PowerShell 範例](samples/powershell-samples.md)
+- [Azure 監視 REST API 逐步解說](platform/rest-api-walkthrough.md)
+- [Azure Resource 記錄支援的服務和結構描述](platform/diagnostic-logs-schema.md)
+- [Azure 資源記錄](platform/resource-logs.md)
+- [收集並分析 Azure 監視器中的 Azure 活動記錄](platform/activity-log-collect.md)
+- [在 Log Analytics 工作區中收集 Azure 資源記錄](platform/resource-logs-collect-workspace.md)
+- [建立診斷設定以將平台記錄和計量傳送至不同目的地](platform/diagnostic-settings.md)
+- [匯出 Azure 活動記錄](platform/activity-log-export.md)
+- [Azure 平台記錄概觀](platform/platform-logs-overview.md)
+- [將 Azure 平台記錄串流至事件中樞](platform/resource-logs-stream-event-hubs.md)
+- [在 Azure 監視器中檢視 Azure 活動記錄](platform/activity-log-view.md)
+
+### <a name="virtual-machines"></a>虛擬機器
+- [在 Azure 入口網站中啟用適用於 VM 的 Azure 監視器](insights/vminsights-enable-single-vm.md) - 已更新為包含 Azure Arc。
+- [啟用適用於 VM 的 Azure 監視器概觀](insights/vminsights-enable-overview.md) - 已更新為包含 Azure Arc。
+- [什麼是適用於 VM 的 Azure 監視器？](insights/vminsights-overview.md) - 已更新為包含 Azure Arc。
+
+
+### <a name="visualizations"></a>視覺效果
+- [Azure 監視器活頁簿資料來源](platform/workbooks-data-sources.md) - 新增警示和自訂端點區段。
+- [針對 Azure 監視器的活頁簿型深入解析進行疑難排解](insights/troubleshoot-workbooks.md) - 新文章。
+- [升級您的 Log Analytics 儀表板視覺效果](log-query/dashboard-upgrade.md) - 新文章。
+
+
 
 ## <a name="may-2020"></a>2020 年 5 月
 

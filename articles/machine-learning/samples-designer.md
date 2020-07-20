@@ -1,5 +1,5 @@
 ---
-title: 範例設計工具管線和資料集
+title: 設計工具的範例管線和資料集 (預覽)
 titleSuffix: Azure Machine Learning
 description: 在 Azure Machine Learning 設計工具中使用範例，以快速了解您的機器學習管線。
 services: machine-learning
@@ -10,18 +10,18 @@ author: peterclu
 ms.author: peterlu
 ms.date: 03/29/2020
 ms.custom: designer
-ms.openlocfilehash: e40c49cdcaae6fa84a72c645f5fea4bac99ee03f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d2ed9a605b19287c2ea693187c445dc8a4b3b932
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654563"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206330"
 ---
-# <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Azure Machine Learning 設計工具的範例管線和資料集
+# <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning 設計工具的範例管線和資料集 (預覽)
 
 使用 Azure Machine Learning 設計工具中的內建範例，快速開始建置您自己的機器學習管線。 Azure Machine Learning 設計工具 [GitHub 存放庫](https://github.com/Azure/MachineLearningDesigner)包含詳細的文件，可協助您了解一些常見的機器學習案例。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://aka.ms/AMLFree)。
 * 具備 Enterprise SKU 的 Azure Machine Learning 工作區。

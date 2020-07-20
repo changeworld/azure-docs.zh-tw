@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 06/29/2020
+ms.date: 07/09/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 13949bef7b26058c577a3ab85b4fb2e736bba8f5
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 219551f2bba229fb627092548fe5c5f5ff8798b9
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562994"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220590"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教學課程：使用 Azure 虛擬 WAN 來建立站對站連線
 
@@ -87,17 +87,7 @@ ms.locfileid: "85562994"
 
 ## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>將 VNet 連線到中樞
 
-在此步驟中，您會在中樞和 VNet 之間建立連線。 為您想要連線的每個 VNet 重複這些步驟。
-
-1. 在虛擬 WAN 頁面上，按一下 [虛擬網路連線]。
-2. 在 [虛擬網路連線] 頁面上，按一下 [+ 新增連線]。
-3. 在 [新增連線] 頁面上，填寫下列欄位︰
-
-    * **名稱** - 為您的連線命名。
-    * **中樞** - 選取要與此連線產生關聯的中樞。
-    * **訂用帳戶** - 請確認訂用帳戶。
-    * **虛擬網路** - 選取要與此中樞連線的虛擬網路。 虛擬網路不能有現有的虛擬網路閘道。
-4. 按一下 [確定] 以建立虛擬網路連線。
+[!INCLUDE [Connect](../../includes/virtual-wan-connect-vnet-hub-include.md)]
 
 ## <a name="download-vpn-configuration"></a><a name="device"></a>下載 VPN 組態
 
@@ -262,7 +252,7 @@ ms.locfileid: "85562994"
 * VPN 閘道的公用 IP 位址 (由 Azure 指派)
 * VPN 閘道的私人 IP 位址 (由 Azure 指派)
 * VPN 閘道的預設 BGP IP 位址 (由 Azure 指派)
-* 自訂 BGP IP 位址的設定選項：此欄位保留給 APIPA (自動私人 IP 定址)。 Azure 在範圍 169.254.21.* 和 169.254.22.* 支援 BGP IP
+* 自訂 BGP IP 位址的設定選項：此欄位保留給 APIPA (自動私人 IP 定址)。 Azure 在範圍 169.254.21.* 和 169.254.22.* 支援 BGP IP。 Azure 會接受這些範圍內的 BGP 連線，但會使用預設的 BGP IP 來進行撥號連線。
 
    :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="檢視設定" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 

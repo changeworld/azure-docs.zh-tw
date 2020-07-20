@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 06/10/2020
 ms.author: victorh
-ms.openlocfilehash: dd6ec2057ede076511b567c013fc1b6fa12d8281
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: ebb3e6ba777646d39e3732215aa6c8fdd12ca40a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669727"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186685"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Azure 應用程式閘道的新功能為何？
 
@@ -27,6 +27,7 @@ Azure 應用程式閘道會持續更新。 為了讓您隨時掌握最新的開�
 
 |功能  |描述  |新增日期  |
 |---------|---------|---------|
+| 用於健康情況探查的自訂連接埠 | 應用程式閘道 v2 SKU 現在提供在健康情況探查設定中提供自訂連接埠的功能。 如需詳細資訊，請參閱[健康情況探查概觀](application-gateway-probe-overview.md) | 2020 年 7 月
 | 應用程式閘道輸入控制器 (AGIC) AKS 附加元件 (預覽) |應用程式閘道輸入控制器現在可以透過 Azure CLI 在一行中部署為原生 AKS 附加元件。 AKS 附加元件可讓 AGIC 成為完全受控的服務，同時仍在客戶的 AKS 叢集中執行。 如需詳細資訊，請參閱 [AGIC 附加元件差異](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)。 |2020 年 6 月 |
 | v2 上的使用者定義路由 (UDR) (預覽) |應用程式閘道 v2 SKU 的某些案例現在可支援使用者定義的路由。 如需詳細資訊，請參閱[應用程式閘道設定概觀](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)。 |2020 年 3 月 |
 |親和性 Cookie 變更 |啟用以 Cookie 為基礎的親和性時，除了現有的 ApplicationGatewayAffinity Cookie 以外，應用程式閘道也會插入另一個名為 *ApplicationGatewayAffinityCORS* 的相同 Cookie。 *ApplicationGatewayAffinityCORS* 已對其新增兩個屬性 (*SameSite=None; Secure*)，因此即使是跨原始來源的要求，仍會維護黏性工作階段。 如需詳細資訊，請參閱[應用程式閘道以 Cookie 為依據的親和性](configuration-overview.md#cookie-based-affinity)。 |2020 年 2 月 |

@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 1d86749a4e6071213ba5e229765bb6391affb199
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 05a3fc7524b16033c48170b6cf0fa4e004c9eb9b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737116"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257991"
 ---
 # <a name="what-is-azure-digital-twins"></a>什麼是 Azure Digital Twins？
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 **Azure Digital Twins** 屬於 IoT 平台，可讓您建立整個環境的完整數位模型。 這些環境可能是大樓、工廠、農場、能源網路、鐵路、運動場等，甚至是整個城市。 這些數位模型可用來取得深入解析以推動更優秀的產品、優化作業、降低成本，以及突破性的客戶體驗。
 
@@ -46,6 +43,12 @@ DTDL 是其他 Azure IoT 服務中全程使用的資料模型，包括 [IoT 隨�
 ### <a name="live-execution-environment"></a>即時執行環境
 
 Azure Digital Twins 中的數位模型是現實環境即時的最新表示。 您可以使用自訂 DTDL 模型中的關聯性，將對應項連線至代表您環境的**即時圖表**。
+
+您可以透過範例應用程式 ([**Azure Digital Twins 總管**](https://github.com/Azure-Samples/digital-twins-explorer)) 的說明，檢視 Azure Digital Twins 圖表的視覺效果。
+
+範例視覺效果看起來就像這樣：
+
+:::image type="content" source="media/includes/azure-digital-twins-explorer.png" alt-text="Azure Digital Twins 總管範例應用程式的螢幕擷取畫面，其中顯示代表 Digital Twins 的節點圖表" lightbox="media/includes/azure-digital-twins-explorer.png":::
 
 Azure Digital Twins 提供豐富的**事件系統**，讓圖表保持在最新的資料處理和商務邏輯。 您可以連線外部計算資源 (例如 [Azure Functions](../azure-functions/functions-overview.md))，以彈性的自訂方式來推動此資料處理流程。
 

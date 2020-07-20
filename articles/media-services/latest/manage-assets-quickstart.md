@@ -3,12 +3,12 @@ title: 使用入口網站上傳、編碼和串流內容 - Azure
 description: 本快速入門說明如何搭配 Azure 媒體服務使用入口網站來上傳、編碼和串流內容。
 ms.topic: quickstart
 ms.date: 06/08/2020
-ms.openlocfilehash: b023a4ed68aa7cfa41661e986dcd4ad6819b810d
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 374e8a22bf8fdcb14101bffc26f9d1b27480ce88
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84988740"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232469"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>快速入門：使用入口網站上傳、編碼和串流內容
 

@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 61b6ad0bedb4817c262b4269a6e9f6930a6caa6c
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: b78364cef6bfd6cf91e6edf81fd57fa5912125db
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985683"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260687"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>教學課程：建立 Azure Red Hat OpenShift 4 叢集
 
@@ -87,11 +87,26 @@ Red Hat 提取祕密可讓您的叢集存取 Red Hat 容器登錄及其他內容
 
 如果您要複製提取祕密，或在其他指令碼中參考，您的提取祕密應格式化為有效的 JSON 字串。
 
+### <a name="prepare-a-custom-domain-for-your-cluster-optional"></a>為叢集準備自訂網域 (選擇性)
+
+執行 `az aro create` 命令時，您可以使用 `--domain foo.example.com` 參數來指定叢集的自訂網域。
+
+如果您為叢集提供自訂網域，請注意下列幾點：
+
+* 建立叢集之後，您必須在 DNS 伺服器中針對指定的 `--domain` 建立 2 個 DNS A 記錄：
+    * **api** - 指向 API 伺服器
+    * **\*.apps** - 指向輸入
+    * 藉由執行下列命令來取得這些值：`az aro show -n -g --query '{api:apiserverProfile.ip, ingress:ingressProfiles[0].ip}'`。
+
+* OpenShift 主控台將會在 URL (例如 `https://console-openshift-console.apps.foo.example.com`) 中提供，而不是內建的網域 `https://console-openshift-console.apps.<random>.<location>.aroapp.io`。
+
+* 根據預設，OpenShift 會針對 `*.apps.<random>.<location>.aroapp.io` 上建立的所有路由使用自我簽署憑證。  如果您在連線至叢集之後選擇使用自訂 DNS，則必須遵循 OpenShift 文件來[為您的輸入控制器設定自訂 CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html)，以及[為您的 API 伺服器自訂 CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html)。
+
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>建立包含兩個空白子網路的虛擬網路
 
 接下來，您將建立包含兩個空白子網路的虛擬網路。
 
-1. **設定下列變數。**
+1. **在您將執行 `az` 命令的殼層環境中，設定下列變數。**
 
    ```console
    LOCATION=eastus                 # the location of your cluster
@@ -99,9 +114,9 @@ Red Hat 提取祕密可讓您的叢集存取 Red Hat 容器登錄及其他內容
    CLUSTER=cluster                 # the name of your cluster
    ```
 
-1. **建立資源群組**
+1. **建立資源群組。**
 
-    Azure 資源群組是部署及管理 Azure 資源所在的邏輯群組。 建立資源群組時，系統會要求您指定位置。 此位置是儲存資源群組中繼資料的位置，如果您未在資源建立期間指定另一個區域，此位置也會是您在 Azure 中執行資源的位置。 使用 [az group create][az-group-create] 命令來建立資源群組。
+    Azure 資源群組是部署及管理 Azure 資源所在的邏輯群組。 建立資源群組時，系統會要求您指定位置。 此位置是儲存資源群組中繼資料的位置，如果您未在資源建立期間指定另一個區域，此位置也會是您在 Azure 中執行資源的位置。 使用 [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) 命令來建立資源群組。
 
     ```azurecli-interactive
     az group create --name $RESOURCEGROUP --location $LOCATION
@@ -126,7 +141,7 @@ Red Hat 提取祕密可讓您的叢集存取 Red Hat 容器登錄及其他內容
 
     執行 OpenShift 4 的 Azure Red Hat OpenShift 叢集需要具有兩個空白子網路的虛擬網路，分別用於主要節點和背景工作角色節點。
 
-    在您稍早建立的相同資源群組中建立新的虛擬網路。
+    在您稍早建立的相同資源群組中建立新的虛擬網路：
 
     ```azurecli-interactive
     az network vnet create \
@@ -189,10 +204,12 @@ Red Hat 提取祕密可讓您的叢集存取 Red Hat 容器登錄及其他內容
 
 ## <a name="create-the-cluster"></a>建立叢集
 
-執行下列命令來建立叢集： (選用) 您可以[傳遞 Red Hat 提取祕密](#get-a-red-hat-pull-secret-optional)，讓您的叢集能夠存取 Red Hat 容器登錄與其他內容。
+執行下列命令來建立叢集： 如果您選擇使用下列其中一個選項，請據以修改命令：
+* (選用) 您可以[傳遞 Red Hat 提取祕密](#get-a-red-hat-pull-secret-optional)，讓您的叢集能夠存取 Red Hat 容器登錄與其他內容。 將 `--pull-secret @pull-secret.txt` 引數新增至您的命令。
+* (選擇性) 您可以[使用自訂網域](#prepare-a-custom-domain-for-your-cluster-optional)。 將 `--domain foo.example.com` 引數新增至您的命令，並將 `foo.example.com` 取代為您自己的自訂網域。
 
->[!NOTE]
-> 如果要複製/貼上命令，並使用其中一個選用參數，請務必刪除初始主題標籤與後置註解文字。 也請在命令上一行結尾加上反斜線，以關閉引數。
+> [!NOTE]
+> 如果您要將任何選擇性引數新增至您的命令，請務必在命令的前一行結尾加上反斜線以關閉引數。
 
 ```azurecli-interactive
 az aro create \
@@ -201,17 +218,9 @@ az aro create \
   --vnet aro-vnet \
   --master-subnet master-subnet \
   --worker-subnet worker-subnet
-  # --domain foo.example.com # [OPTIONAL] custom domain
-  # --pull-secret @pull-secret.txt # [OPTIONAL]
 ```
 
 執行 `az aro create` 命令之後，一般大約需要 35 分鐘的時間來建立叢集。
-
->[!IMPORTANT]
-> 如果您選擇指定自訂網域 (例如 **foo.example.com**)，OpenShift 主控台將會以類似 `https://console-openshift-console.apps.foo.example.com` 的 URL 來提供，而不是內建的網域：`https://console-openshift-console.apps.<random>.<location>.aroapp.io`。
->
-> 根據預設，OpenShift 會針對 `*.apps.<random>.<location>.aroapp.io` 上建立的所有路由使用自我簽署憑證。  如果您在連線至叢集之後選擇使用自訂 DNS，則必須遵循 OpenShift 文件來[為您的輸入控制器設定自訂 CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html)，以及[為您的 API 伺服器自訂 CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html)。
->
 
 ## <a name="next-steps"></a>後續步驟
 

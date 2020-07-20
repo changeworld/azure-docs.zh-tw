@@ -4,18 +4,18 @@ description: 了解如何將自訂 Windows 容器遷移至 Azure App Service，�
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 8e755c5b9a57eb66fc47364fb2fcdcbe30c2d09e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 8f2f4f707300e3ebe31f059c65492247befe324a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85205617"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169947"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>使用 Windows 容器將 ASP.NET 應用程式移轉至 Azure App Service (預覽)
 
 [Azure App Service](overview.md) 會在 Windows 上提供預先定義的應用程式堆疊 (例如 ASP.NET 或 Node.js)，執行於 IIS 上。 預先設定的 Windows 環境會鎖定作業系統的系統管理存取、軟體安裝、對全域組件快取的變更等作業 (請參閱 [Azure App Service 上的作業系統功能](operating-system-functionality.md))。 但是，在 App Service 中使用自訂 Windows 容器可讓您進行應用程式所需的作業系統變更，因此能夠很容易地移轉需要自訂作業系統與軟體設定的內部部署應用程式。 此教學課程會示範如何將使用 Windows 字型庫中已安裝自訂字型的 ASP.NET 應用程式移轉至 App Service。 您會將自訂的 Windows 映像從 Visual Studio 部署到 [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/)，然後在 App Service 中執行。
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
+![顯示在 Windows 容器中執行的 Web 應用程式。](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -146,7 +146,7 @@ RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 
 您的 [基本] 索引標籤應該會顯示如下：
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-basics.png)
+![顯示用來設定 Web 應用程式的 [基本] 索引標籤。](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-basics.png)
 
 ### <a name="configure-windows-container"></a>設定 Windows 容器
 
@@ -167,7 +167,7 @@ RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 
 Azure 作業完成時，會顯示通知方塊。
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/portal-create-finished.png)
+![顯示 Azure 作業已完成。](media/app-service-web-tutorial-windows-containers-custom-fonts/portal-create-finished.png)
 
 1. 按一下 [前往資源]。
 
@@ -175,11 +175,11 @@ Azure 作業完成時，會顯示通知方塊。
 
 新的瀏覽器頁面隨即開啟，並顯示下列頁面：
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-starting.png)
+![顯示 Web 應用程式的新瀏覽器頁面。](media/app-service-web-tutorial-windows-containers-custom-fonts/app-starting.png)
 
 等候幾分鐘並再試一次，直到獲得包含所需美麗字型的首頁為止。
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
+![以您設定的字型顯示首頁。](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
 
 **恭喜！** 您已運用 Windows 容器將 ASP.NET 應用程式移轉至 Azure App Service。
 

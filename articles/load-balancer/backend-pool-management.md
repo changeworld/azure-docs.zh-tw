@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: overview
 ms.date: 07/07/2020
 ms.author: allensu
-ms.openlocfilehash: 51b00119a5cb7e49a04f02978613678a5144f8b9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f1718de6bc9a86f85cadf4531386e663d5a420d3
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113967"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273756"
 ---
 # <a name="backend-pool-management"></a>後端集區管理
 後端集區是負載平衡器的重要元件。 後端集區會定義將為指定負載平衡規則提供流量的資源群組。
@@ -22,9 +22,9 @@ ms.locfileid: "86113967"
 * 網路介面卡 (NIC)
 * 結合 IP 位址和虛擬網路 (VNET) 資源識別碼
 
-使用虛擬機器和虛擬機器擴展集時，透過 NIC 設定您的後端集區。 此方法會在您的資源和後端集區之間建置最直接的連結。 
+使用現有虛擬機器和虛擬機器擴展集時，透過 NIC 設定您的後端集區。 此方法會在您的資源和後端集區之間建置最直接的連結。 
 
-在 NIC 無法使用的情況下 (例如容器或 Kubernetes Pod)，請藉由 IP 位址和 VNET 識別碼組合來設定您的後端集區。
+使用您打算稍後用來建立虛擬機器和虛擬機器擴展集的 IP 位址範圍，來預先配置後端集區時，請依照 IP 位址和 VNET 識別碼組合來設定您的後端集區。
 
 本文的設定章節將著重於：
 
@@ -249,7 +249,7 @@ JSON 要求本文：
 請遵循此[快速入門 Resource Manager 範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create/)來部署負載平衡器和虛擬機器，並透過網路介面將虛擬機器新增至後端集區。
 
 ## <a name="configure-backend-pool-by-ip-address-and-virtual-network"></a>透過 IP 位址和虛擬網路設定後端集區
-在具有 IP 的容器或預先填入後端集區的案例中，請使用 IP 和虛擬網路。
+在預先填入後端集區的案例中，請使用 IP 和虛擬網路。
 
 所有後端集區管理都是直接在後端集區物件上完成，如下列範例中的醒目提示。
 

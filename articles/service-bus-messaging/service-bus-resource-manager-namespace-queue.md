@@ -8,28 +8,28 @@ ms.custom: subject-armqs
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: e382d39e10e1907c9892f03a3da64945f3049fee
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: cb87b33ee3f88e17f7d9b7557040849745b2d95f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85337026"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248453"
 ---
-# <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本建立服務匯流排命名空間和佇列
+# <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-arm-template"></a>快速入門：使用 ARM 範本建立服務匯流排命名空間和佇列
 
-本文說明如何使用 Azure Resource Manager 範本，建立服務匯流排命名空間和在該命名空間內的佇列。 本文說明如何指定要部署哪些資源，以及如何定義執行部署時所指定的參數。 您可以直接在自己的部署中使用此範本，或自訂此範本以符合您的需求。
+本文說明如何使用 Azure Resource Manager 範本 (ARM 範本)，建立服務匯流排命名空間和在該命名空間內的佇列。 本文說明如何指定要部署哪些資源，以及如何定義執行部署時所指定的參數。 您可以直接在自己的部署中使用此範本，或自訂此範本以符合您的需求。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-queue%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>必要條件
+
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>Prerequisites
-
-None
-
-## <a name="create-a-service-bus-namespace-and-a-queue"></a>建立服務匯流排命名空間與佇列
-
-### <a name="review-the-template"></a>檢閱範本
+## <a name="review-the-template"></a>檢閱範本
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/201-servicebus-create-queue)。
 
@@ -41,7 +41,7 @@ None
 - [**Microsoft.ServiceBus/namespaces/queues**](/azure/templates/microsoft.servicebus/namespaces/queues)
 
 > [!NOTE]
-> 下列 Azure Resource Manager 範本可供下載和部署。
+> 下列的 ARM 範本可供下載和部署。
 >
 > * [建立服務匯流排命名空間與佇列和授權規則](service-bus-resource-manager-namespace-auth-rule.md)
 > * [建立服務匯流排命名空間與主題和訂用帳戶](service-bus-resource-manager-namespace-topic.md)
@@ -50,7 +50,7 @@ None
 
 您可以在 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Servicebus&pageNumber=1&sort=Popular)中找到更多範本
 
-### <a name="deploy-the-template"></a>部署範本
+## <a name="deploy-the-template"></a>部署範本
 
 使用此範本，您將部署具有佇列的服務匯流排命名空間。
 
@@ -58,11 +58,11 @@ None
 
 若要自動執行部署，請按一下下列按鈕：為部署建立新的資源群組，讓您稍後可以輕鬆地清除。
 
-[![部署至 Azure](./media/service-bus-resource-manager-namespace-queue/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-queue%2Fazuredeploy.json)
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-queue%2Fazuredeploy.json)
 
-## <a name="verify-the-deployment"></a>驗證部署
+## <a name="validate-the-deployment"></a>驗證部署
 
-1. 選取頂端的 [通知]  ，查看部署狀態。 等待部署成功。 然後，在通知訊息中選取 [移至資源群組]  ，瀏覽至包含服務匯流排命名空間的資源群組頁面。 
+1. 選取頂端的 [通知]，查看部署狀態。 等待部署成功。 然後，在通知訊息中選取 [移至資源群組]，瀏覽至包含服務匯流排命名空間的資源群組頁面。 
 
     ![取得部署通知](./media/service-bus-resource-manager-namespace-queue/notification.png)
 2. 確認您在資源清單中看到您的服務匯流排命名空間。 
@@ -70,11 +70,11 @@ None
     ![資源群組 - 命名空間](./media/service-bus-resource-manager-namespace-queue/resource-group-namespace.png)
 3. 從清單中選取命名空間，以查看**服務匯流排命名空間**頁面。 
 
-## <a name="cleanup-resources"></a>清除資源
+## <a name="clean-up-resources"></a>清除資源
 
 1. 在 Azure 入口網站中瀏覽至您資源群組的**資源群組**頁面。
-2. 從工具列中選取 [刪除資源群組]  。 
-3. 輸入資源群組名稱，然後選取 [刪除]  。 
+2. 從工具列中選取 [刪除資源群組]。 
+3. 輸入資源群組名稱，然後選取 [刪除]。 
 
     ![資源群組 - 刪除](./media/service-bus-resource-manager-namespace-queue/resource-group-delete.png)
 
@@ -82,7 +82,7 @@ None
 
 參閱下列主題，了解如何建立命名空間/佇列的授權規則：
 
-[使用 Azure Resource Manager 範本建立命名空間和佇列的服務匯流排授權規則](service-bus-resource-manager-namespace-auth-rule.md)
+[使用 ARM 範本建立命名空間和佇列的服務匯流排授權規則](service-bus-resource-manager-namespace-auth-rule.md)
 
 檢視下列文章以了解如何管理這些資源︰
 

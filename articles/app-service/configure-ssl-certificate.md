@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 9f9fcc0b3d8dfe19961668e77da91bc9f14ff2d1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: be490c5ec11ab4bafcd68731a535483d1803a8c7
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81453892"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146421"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>在 Azure App Service 中新增 TLS/SSL 憑證
 
@@ -29,7 +29,7 @@ ms.locfileid: "81453892"
 | 上傳私人憑證 | 如果您已經有協力廠商提供者的私人憑證，您可以將該憑證上傳。 請參閱[私人憑證需求](#private-certificate-requirements)。 |
 | 上傳公開憑證 | 公開憑證無法用來保護自訂網域，但如果您需要公開憑證來存取遠端資源，則可將公開憑證載入程式碼中。 |
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要遵循本操作說明指南：
 
@@ -64,7 +64,7 @@ ms.locfileid: "81453892"
 - 不支援萬用字元憑證。
 - 不支援裸網域。
 - 不可匯出。
-- 不支援 DNS A 記錄。
+- 不支援 A 記錄。 例如，自動續約不適用於 A 記錄。
 
 > [!NOTE]
 > 免費憑證由 DigiCert 所發行。 針對某些最上層網域，您必須使用下列值建立 [CAA 網域記錄](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization)，以明確允許 DigiCert 作為憑證簽發者：`0 issue digicert.com`。
@@ -72,15 +72,15 @@ ms.locfileid: "81453892"
 
 若要建立免費的 App Service 受控憑證：
 
-在 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>的左側功能表中，選取 [應用程式服務]   >  **\<app-name>** 。
+在 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>的左側功能表中，選取 [應用程式服務] > \<app-name>。
 
-從應用程式的左側導覽中，選取 [TLS/SSL 設定]   > [私密金鑰憑證 (.pfx)]   > [匯入 App Service 受控憑證]  。
+從應用程式的左側導覽中，選取 [TLS/SSL 設定] > [私密金鑰憑證 (.pfx)] > [匯入 App Service 受控憑證]。
 
 ![在 App Service 中建立免費憑證](./media/configure-ssl-certificate/create-free-cert.png)
 
-任何透過 CNAME 記錄正確對應至您應用程式的非裸網域，都會列在對話方塊中。 選取要為其建立免費憑證的自訂網域，然後選取 [建立]  。 您只能為每個支援的自訂網域建立一個憑證。
+任何透過 CNAME 記錄正確對應至您應用程式的非裸網域，都會列在對話方塊中。 選取要為其建立免費憑證的自訂網域，然後選取 [建立]。 您只能為每個支援的自訂網域建立一個憑證。
 
-當作業完成時，您會在 [私密金鑰憑證]  清單中看到憑證。
+當作業完成時，您會在 [私密金鑰憑證] 清單中看到憑證。
 
 ![免費憑證建立完成](./media/configure-ssl-certificate/create-free-cert-finished.png)
 
@@ -111,7 +111,7 @@ ms.locfileid: "81453892"
 
 ![開始購買 App Service 憑證](./media/configure-ssl-certificate/purchase-app-service-cert.png)
 
-使用下表來協助您設定憑證。 完成後，按一下 [建立]  。
+使用下表來協助您設定憑證。 完成後，按一下 [建立]。
 
 | 設定 | 描述 |
 |-|-|
@@ -126,13 +126,13 @@ ms.locfileid: "81453892"
 
 憑證購買程序完成後，您必須先完成一些其他的步驟，才能開始使用此憑證。 
 
-選取 [App Service 憑證](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)頁面中的憑證，然後按一下 [憑證設定]   > [步驟 1：  存放區]。
+選取 [App Service 憑證](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)頁面中的憑證，然後按一下 [憑證設定] > [步驟 1：存放區]。
 
 ![設定 App Service 憑證的 Key Vault 儲存體](./media/configure-ssl-certificate/configure-key-vault.png)
 
 [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) 是一項 Azure 服務，可協助保護雲端應用程式和服務所使用的密碼編譯金鑰和祕密。 這是 App Service 憑證的儲存體選擇。
 
-在 [Key Vault 狀態]  頁面中，按一下 [Key Vault 存放庫]  來建立新的保存庫或選擇現有的保存庫。 如果您選擇建立新的保存庫，請使用下表來協助您設定保存庫並按一下 [建立]。 在與 App Service 應用程式相同的訂用帳戶和資源群組內建立新的 Key Vault。
+在 [Key Vault 狀態] 頁面中，按一下 [Key Vault 存放庫] 來建立新的保存庫或選擇現有的保存庫。 如果您選擇建立新的保存庫，請使用下表來協助您設定保存庫並按一下 [建立]。 在與 App Service 應用程式相同的訂用帳戶和資源群組內建立新的 Key Vault。
 
 | 設定 | 描述 |
 |-|-|
@@ -143,15 +143,15 @@ ms.locfileid: "81453892"
 | 存取原則| 定義應用程式以及允許的保存庫資源存取權。 您可以稍後設定它，並遵循[將金鑰保存庫的存取權授與數個應用程式](../key-vault/general/group-permissions-for-apps.md)中的步驟。 |
 | 虛擬網路存取 | 限制某些 Azure 虛擬網路的保存庫存取權。 您可以稍後設定它，並遵循[設定 Azure Key Vault 防火牆和虛擬網路](../key-vault/general/network-security.md)中的步驟。 |
 
-選取保存庫之後，關閉 [Key Vault 存放庫]  頁面。 [步驟 1：  儲存] 選項應該會顯示綠色核取記號來表示已成功。 讓頁面保持開啟，以供下一個步驟使用。
+選取保存庫之後，關閉 [Key Vault 存放庫] 頁面。 [步驟 1：儲存] 選項應該會顯示綠色核取記號來表示已成功。 讓頁面保持開啟，以供下一個步驟使用。
 
 ### <a name="verify-domain-ownership"></a>確認網域擁有權
 
-從您在上一個步驟中使用的相同 [憑證設定]  頁面，按一下 [步驟 2：  驗證]。
+從您在上一個步驟中使用的相同 [憑證設定] 頁面，按一下 [步驟 2：驗證]。
 
 ![驗證 App Service 憑證的網域](./media/configure-ssl-certificate/verify-domain.png)
 
-選取 [App Service 驗證]  。 您已經將網域對應至您的 Web 應用程式 (請參閱[必要條件](#prerequisites))，因此它已經過驗證。 只要按一下 [驗證]  即可完成此步驟。 按一下 [重新整理]  按鈕，直到「憑證已經過網域驗證」  訊息出現為止。
+選取 [App Service 驗證]。 您已經將網域對應至您的 Web 應用程式 (請參閱[必要條件](#prerequisites))，因此它已經過驗證。 只要按一下 [驗證] 即可完成此步驟。 按一下 [重新整理] 按鈕，直到「憑證已經過網域驗證」訊息出現為止。
 
 > [!NOTE]
 > 支援的網域驗證方法有四種： 
@@ -163,15 +163,15 @@ ms.locfileid: "81453892"
 
 ### <a name="import-certificate-into-app-service"></a>將憑證匯入至 App Service
 
-在 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>的左側功能表中，選取 [應用程式服務]   >  **\<app-name>** 。
+在 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>的左側功能表中，選取 [應用程式服務] > \<app-name>。
 
-從您應用程式的左側導覽中，選取 [TLS/SSL 設定]   >   [私密金鑰憑證 (.pfx)] > [匯入 App Service 憑證]  。
+從您應用程式的左側導覽中，選取 [TLS/SSL 設定] > [私密金鑰憑證 (.pfx)] > [匯入 App Service 憑證]。
 
 ![在 App Service 中匯入 App Service 憑證](./media/configure-ssl-certificate/import-app-service-cert.png)
 
-選取您剛剛購買的憑證，然後選取 [確定]  。
+選取您剛剛購買的憑證，然後選取 [確定]。
 
-當作業完成時，您會在 [私密金鑰憑證]  清單中看到憑證。
+當作業完成時，您會在 [私密金鑰憑證] 清單中看到憑證。
 
 ![App Service 憑證匯入完成](./media/configure-ssl-certificate/import-app-service-cert-finished.png)
 
@@ -183,9 +183,9 @@ ms.locfileid: "81453892"
 
 如果您使用 Azure Key Vault 管理憑證，只要 PKCS12 憑證[符合需求](#private-certificate-requirements)，便可將該憑證從 Key Vault 匯入到 App Service。
 
-在 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>的左側功能表中，選取 [應用程式服務]   >  **\<app-name>** 。
+在 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>的左側功能表中，選取 [應用程式服務] > \<app-name>。
 
-從您應用程式的左側導覽中，選取 [TLS/SSL 設定]   >   [私密金鑰憑證 (.pfx)] > [匯入 Key Vault 憑證]  。
+從您應用程式的左側導覽中，選取 [TLS/SSL 設定] > [私密金鑰憑證 (.pfx)] > [匯入 Key Vault 憑證]。
 
 ![在 App Service 中匯入 Key Vault 憑證](./media/configure-ssl-certificate/import-key-vault-cert.png)
 
@@ -197,7 +197,7 @@ ms.locfileid: "81453892"
 | Key Vault | 具有所要匯入憑證的保存庫。 |
 | 憑證 | 從保存庫內的 PKCS12 憑證清單中選取。 保存庫中所有的 PKCS12 憑證會連同其指紋一併列出，但在 App Service 中並非皆受到支援。 |
 
-當作業完成時，您會在 [私密金鑰憑證]  清單中看到憑證。 如果匯入失敗並發生錯誤，則表示憑證不符合 [App Service 的需求](#private-certificate-requirements)。
+當作業完成時，您會在 [私密金鑰憑證] 清單中看到憑證。 如果匯入失敗並發生錯誤，則表示憑證不符合 [App Service 的需求](#private-certificate-requirements)。
 
 ![Key Vault 憑證匯入完成](./media/configure-ssl-certificate/import-app-service-cert-finished.png)
 
@@ -253,15 +253,15 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 您現在已準備好將憑證上傳至 App Service。
 
-在 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>的左側功能表中，選取 [應用程式服務]   >  **\<app-name>** 。
+在 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>的左側功能表中，選取 [應用程式服務] > \<app-name>。
 
-從您應用程式的左側導覽中，選取 [TLS/SSL 設定]   >   [私密金鑰憑證 (.pfx)] > [上傳憑證]  。
+從您應用程式的左側導覽中，選取 [TLS/SSL 設定] > [私密金鑰憑證 (.pfx)] > [上傳憑證]。
 
 ![在 App Service 中上傳私人憑證](./media/configure-ssl-certificate/upload-private-cert.png)
 
-在 [PFX 憑證檔案]  中，選取您的 PFX 檔案。 在 [憑證密碼]  中，輸入您將 PFX 檔案匯出時所建立的密碼。 完成後，請按一下 [上傳]  。 
+在 [PFX 憑證檔案] 中，選取您的 PFX 檔案。 在 [憑證密碼] 中，輸入您將 PFX 檔案匯出時所建立的密碼。 完成後，請按一下 [上傳]。 
 
-當作業完成時，您會在 [私密金鑰憑證]  清單中看到憑證。
+當作業完成時，您會在 [私密金鑰憑證] 清單中看到憑證。
 
 ![憑證上傳完成](./media/configure-ssl-certificate/create-free-cert-finished.png)
 
@@ -273,13 +273,13 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 公開憑證支援 *.cer* 格式。 
 
-在 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>的左側功能表中，選取 [應用程式服務]   >  **\<app-name>** 。
+在 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>的左側功能表中，選取 [應用程式服務] > \<app-name>。
 
-從您應用程式的左側導覽中，按一下 [TLS/SSL 設定]   >   [私密金鑰憑證 (.pfx)] > [上傳公開金鑰憑證]  。
+從您應用程式的左側導覽中，按一下 [TLS/SSL 設定] > [私密金鑰憑證 (.pfx)] > [上傳公開金鑰憑證]。
 
-在 [名稱]  中，輸入憑證的名稱。 在 [CER 憑證檔案]  中，選取您的 CER 檔案。
+在 [名稱] 中，輸入憑證的名稱。 在 [CER 憑證檔案] 中，選取您的 CER 檔案。
 
-按一下 [上傳]  。
+按一下 [上傳] 。
 
 ![在 App Service 中上傳公開憑證](./media/configure-ssl-certificate/upload-public-cert.png)
 
@@ -296,33 +296,33 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 ### <a name="rekey-certificate"></a>重設憑證的金鑰
 
-如果您認為您憑證的私密金鑰遭到入侵，您可以重設憑證的金鑰。 選取 [App Service 憑證](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)頁面中的憑證，然後從左側導覽中選取 [重設金鑰和同步處理]  。
+如果您認為您憑證的私密金鑰遭到入侵，您可以重設憑證的金鑰。 選取 [App Service 憑證](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)頁面中的憑證，然後從左側導覽中選取 [重設金鑰和同步處理]。
 
-按一下 [重設金鑰]  來啟動處理程序。 此程序需要 1 - 10 分鐘才能完成。
+按一下 [重設金鑰] 來啟動處理程序。 此程序需要 1 - 10 分鐘才能完成。
 
 ![重設 App Service 憑證的金鑰](./media/configure-ssl-certificate/rekey-app-service-cert.png)
 
 重設憑證的金鑰，會以憑證授權單位發行的新憑證變更憑證。
 
-重設金鑰作業完成後，請按一下 [同步]  。同步作業會自動更新 App Service 中憑證的主機名稱繫結，而不會對您的應用程式造成任何停機。
+重設金鑰作業完成後，請按一下 [同步]。同步作業會自動更新 App Service 中憑證的主機名稱繫結，而不會對您的應用程式造成任何停機。
 
 > [!NOTE]
-> 如果您未按一下 [同步]  ，則 App Service 會在 48 小時內自動同步處理您的憑證。
+> 如果您未按一下 [同步]，則 App Service 會在 48 小時內自動同步處理您的憑證。
 
 ### <a name="renew-certificate"></a>更新憑證
 
-若要隨時開啟憑證的自動更新，請選取 [App Service 憑證](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)頁面中的憑證，然後按一下左側導覽中的 [自動更新設定]  。 根據預設，App Service 憑證的有效期間為一年。
+若要隨時開啟憑證的自動更新，請選取 [App Service 憑證](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)頁面中的憑證，然後按一下左側導覽中的 [自動更新設定]。 根據預設，App Service 憑證的有效期間為一年。
 
-選取 [開啟]  ，然後按一下 [儲存]  。 如果您已經開啟自動更新，憑證可以在過期前的 60 天開始自動更新。
+選取 [開啟]，然後按一下 [儲存]。 如果您已經開啟自動更新，憑證可以在過期前的 60 天開始自動更新。
 
 ![自動更新 App Service 憑證](./media/configure-ssl-certificate/auto-renew-app-service-cert.png)
 
-若要改為手動更新憑證，請按一下 [手動更新]  。 您可以在過期前的 60 天要求手動更新憑證。
+若要改為手動更新憑證，請按一下 [手動更新]。 您可以在過期前的 60 天要求手動更新憑證。
 
-更新作業完成後，請按一下 [同步]  。同步作業會自動更新 App Service 中憑證的主機名稱繫結，而不會對您的應用程式造成任何停機。
+更新作業完成後，請按一下 [同步]。同步作業會自動更新 App Service 中憑證的主機名稱繫結，而不會對您的應用程式造成任何停機。
 
 > [!NOTE]
-> 如果您未按一下 [同步]  ，則 App Service 會在 48 小時內自動同步處理您的憑證。
+> 如果您未按一下 [同步]，則 App Service 會在 48 小時內自動同步處理您的憑證。
 
 ### <a name="export-certificate"></a>匯出憑證
 
@@ -351,13 +351,13 @@ az keyvault secret download \
 
 刪除 App Service 憑證是不可更改且無法復原的。 刪除 App Service 憑證資源會導致憑證遭到撤銷。 App Service 中任何與此憑證的繫結都會變成無效。 為了防止意外刪除，Azure 會鎖定憑證。 若要刪除 App Service 憑證，您必須先移除憑證的刪除鎖定。
 
-選取 [App Service 憑證](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)頁面中的憑證，然後在左側導覽中選取 [鎖定]  。
+選取 [App Service 憑證](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)頁面中的憑證，然後在左側導覽中選取 [鎖定]。
 
-在您的憑證上尋找鎖定類型為 [刪除]  的鎖定。 選取其右側的 [刪除]  。
+在您的憑證上尋找鎖定類型為 [刪除] 的鎖定。 選取其右側的 [刪除]。
 
 ![App Service 憑證的刪除鎖定](./media/configure-ssl-certificate/delete-lock-app-service-cert.png)
 
-現在您可以刪除 App Service 憑證。 從左側導覽中，選取 [總覽]   > [刪除]  。 在確認對話方塊中，輸入憑證名稱，然後選取 [確定]  。
+現在您可以刪除 App Service 憑證。 從左側導覽中，選取 [總覽] > [刪除]。 在確認對話方塊中，輸入憑證名稱，然後選取 [確定]。
 
 ## <a name="automate-with-scripts"></a>使用指令碼進行自動化
 

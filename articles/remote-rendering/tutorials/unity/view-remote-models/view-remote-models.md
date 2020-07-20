@@ -1,16 +1,16 @@
 ---
 title: 檢視遠端轉譯模型
 description: Azure 遠端轉譯的「Hello World」，教學課程會示範如何檢視 Azure 遠端轉譯的模型
-author: michael-house
-ms.author: v-mihous
+author: florianborn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: f0b9bf1c7e085efd86f70f8246214d366265036a
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: bd9e9b6754c8626a8d858b9832a8e3547b72352d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85566255"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231894"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>教學課程：檢視遠端轉譯模型
 
@@ -101,7 +101,7 @@ ms.locfileid: "85566255"
 
 1. 將 [清除旗標] 設定為 [單色]
 
-1. 將 **背景** 設定為「黑色」 (#000000)，且為完整 (255) alpha (A)
+1. 將**背景**設定為「黑色」(#000000)，且 alpha (A) 為完全透明 (0)
 
     ![色彩轉輪](./media/color-wheel-black.png)
 

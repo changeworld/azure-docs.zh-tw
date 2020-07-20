@@ -8,22 +8,28 @@ ms.service: cost-management-billing
 ms.topic: quickstart
 ms.date: 06/10/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: dc37039d6777a77f9de247808329930f1621ee82
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 5bff8e6057475701a2e78835fb5a950dcb8c8fcb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84686404"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252431"
 ---
-# <a name="quickstart-create-a-budget-with-an-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本建立預算
+# <a name="quickstart-create-a-budget-with-an-arm-template"></a>快速入門：使用 ARM 範本建立預算
 
-成本管理中的預算可協助您進行規劃並促進組織責任歸屬。 透過預算，您可以說明您在特定期間所取用或訂閱的 Azure 服務。 它們可協助您通知其他人其費用的相關資訊以主動管理成本，並監視費用在經過一段時間的進展方式。 超過您所建立的預算閾值時，就會觸發通知。 您的資源都會不受到影響，而您的使用量並不會停止。 當您分析成本時，您可以使用預算來比較及追蹤費用。 本快速入門說明如何使用 Resource Manager 範本建立預算。
+成本管理中的預算可協助您進行規劃並促進組織責任歸屬。 透過預算，您可以說明您在特定期間所取用或訂閱的 Azure 服務。 它們可協助您通知其他人其費用的相關資訊以主動管理成本，並監視費用在經過一段時間的進展方式。 超過您所建立的預算閾值時，就會觸發通知。 您的資源都會不受到影響，而您的使用量並不會停止。 當您分析成本時，您可以使用預算來比較及追蹤費用。 本快速入門說明如何使用 Azure Resource Manager 範本 (ARM 範本) 建立預算。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[![部署至 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcreate-budget%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>必要條件
 
-Azure Resource Manager 範本僅支援 Enterprise 合約 (EA) 的 Azure 訂用帳戶。 此範本不支援其他訂用帳戶類型。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+ARM 範本僅支援 Enterprise 合約 (EA) 的 Azure 訂用帳戶。 此範本不支援其他訂用帳戶類型。
 
 若要建立及管理預算，您必須具有參與者權限。 您可以個別為 EA 訂用帳戶和資源群組建立預算。 不過，您無法為 EA 帳單帳戶建立預算。 針對 Azure EA 訂用帳戶，您必須具備檢視預算的讀取存取權。
 
@@ -39,9 +45,7 @@ Azure Resource Manager 範本僅支援 Enterprise 合約 (EA) 的 Azure 訂用�
 
 如需成本管理資料的指派權限詳細資訊，請參閱[指派成本管理資料的存取權](assign-access-acm-data.md)。
 
-## <a name="create-a-budget"></a>建立預算
-
-### <a name="review-the-template"></a>檢閱範本
+## <a name="review-the-template"></a>檢閱範本
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/create-budget)。
 
@@ -51,7 +55,7 @@ Azure Resource Manager 範本僅支援 Enterprise 合約 (EA) 的 Azure 訂用�
 
 * [Microsoft.Consumption/budgets](/azure/templates/microsoft.consumption/budgets)：建立 Azure 預設。
 
-### <a name="deploy-the-template"></a>部署範本
+## <a name="deploy-the-template"></a>部署範本
 
 1. 選取以下影像來登入 Azure 並開啟範本。 此範本會建立預算。
 

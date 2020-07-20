@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: sample
-ms.date: 01/14/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: d826a40073d243193f87d90ab80333b491a203b2
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 9a9518eb4c8635275b9cbf0467f3091eca10f647
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734210"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223001"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本建立 Azure Active Directory Domain Services 受控網域
 
 Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，例如：網域加入、群組原則、LDAP、Kerberos/NTLM 驗證，與 Windows Server Active Directory 完全相容。 您不需要自行部署、管理和修補網域控制站，就可以使用這些網域服務。 Azure AD DS 會與您現有的 Azure AD 租用戶整合。 這項整合可讓使用者使用其公司認證進行登入，而您可以使用現有的群組和使用者帳戶來保護資源的存取。
 
-本文說明如何使用 Azure Resource Manager 範本啟用 Azure AD DS。 支援的資源是使用 Azure PowerShell 建立的。
+本文說明如何使用 Azure Resource Manager 範本建立受控網域。 支援的資源是使用 Azure PowerShell 建立的。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -51,7 +51,7 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 >
 > 建議您為環境中的其他服務，或環境中現有 DNS 命名空間之間的條件式 DNS 轉寄站，建立一些額外的 DNS 記錄。 例如，如果您使用根 DNS 名稱執行裝載網站的 Web 伺服器，可能會發生需要其他 DNS 項目的命名衝突。
 >
-> 在這些教學課程和操作說明文章中，會使用 aadds.contoso.com 的自訂網域作為簡短的範例。 在所有命令中，指定您自己的網域名稱。
+> 在此範例和操作說明文章中，會使用 aadds.contoso.com 的自訂網域作為簡短的範例。 在所有命令中，指定您自己的網域名稱。
 
 下列 DNS 名稱限制也適用於此：
 
@@ -88,7 +88,7 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
 
 建立 *AAD DC 管理員*群組之後，請使用 [Add-AzureADGroupMember][Add-AzureADGroupMember] Cmdlet，將使用者新增至群組。 首先，您會使用 [Get-AzureADGroup][Get-AzureADGroup] Cmdlet 取得 *AAD DC 管理員*群組物件識別碼，然後使用[Get-AzureADUser][Get-AzureADUser] Cmdlet 取得所需的使用者物件識別碼。
 
-在下列範例中，帳戶的使用者物件識別碼為 `admin@aaddscontoso.onmicrosoft.com` 的 UPN。 將此使用者帳戶取代為您要新增至 AAD DC 管理員群組之使用者的 UPN：
+在下列範例中，帳戶的使用者物件識別碼為 `admin@contoso.onmicrosoft.com` 的 UPN。 將此使用者帳戶取代為您要新增至 AAD DC 管理員群組之使用者的 UPN：
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -98,7 +98,7 @@ $GroupObjectId = Get-AzureADGroup `
 
 # Now, retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
-  -Filter "UserPrincipalName eq 'admin@aaddscontoso.onmicrosoft.com'" | `
+  -Filter "UserPrincipalName eq 'admin@contoso.onmicrosoft.com'" | `
   Select-Object ObjectId
 
 # Add the user to the 'AAD DC Administrators' group.
@@ -124,9 +124,9 @@ New-AzResourceGroup `
 | 參數               | 值 |
 |-------------------------|---------|
 | domainName              | 受控網域的 DNS 網域名稱，請將前面幾項命名前置碼和衝突情況列入考慮。 |
-| filteredSync            | Azure AD DS 可讓您同步 Azure AD 中的「所有」使用者和群組，或僅對特定群組進行「限域」同步。 如果選擇同步所有使用者和群組，之後就無法選擇只執行限域同步。<br /> 如需有關限域同步的詳細資訊，請參閱 [Azure AD Domain Services 的限域同步][scoped-sync]。|
-| notificationSettings    | 如果受控網域中產生任何警示，則會送出電子郵件通知。 <br />您可以「啟用」Azure 租用戶的「全域管理員」和「AAD DC 管理員」 群組的成員，以便他們可以收到通知。<br /> 如有需要，請變新增其他收件者，以便他們在有警示且需要注意時可收到通知。|
-| domainConfigurationType | 根據預設，受控網域會建立為*使用者*樹系。 這種類型的樹系會同步 Azure AD 中的所有物件，包括在內部部署 AD DS 環境中建立的任何使用者帳戶。 您不需要指定 domainConfiguration 值來建立使用者樹系。<br /> *資源*樹系只會同步直接在 Azure AD 中建立的使用者和群組。 資源樹系目前為預覽狀態。 將值設定為 ResourceTrusting 以建立資源樹系。<br />如需*資源*樹系的詳細資訊，包括您使用某一樹系的原因，以及如何建立與內部部署 AD DS 網域之間的樹系信任，請參閱 [Azure AD DS 資源樹系概觀][resource-forests]。|
+| filteredSync            | Azure AD DS 可讓您同步 Azure AD 中的「所有」使用者和群組，或僅對特定群組進行「限域」同步。<br /><br /> 如需有關限域同步的詳細資訊，請參閱 [Azure AD Domain Services 的限域同步][scoped-sync]。|
+| notificationSettings    | 如果受控網域中產生任何警示，則會送出電子郵件通知。 <br /><br />您可以「啟用」Azure 租用戶的「全域管理員」和「AAD DC 管理員」 群組的成員，以便他們可以收到通知。<br /><br /> 如有需要，請變新增其他收件者，以便他們在有警示且需要注意時可收到通知。|
+| domainConfigurationType | 根據預設，受控網域會建立為*使用者*樹系。 這種類型的樹系會同步 Azure AD 中的所有物件，包括在內部部署 AD DS 環境中建立的任何使用者帳戶。 您不需要指定 domainConfiguration 值來建立使用者樹系。<br /><br /> *資源*樹系只會同步直接在 Azure AD 中建立的使用者和群組。 資源樹系目前為預覽狀態。 將值設定為 ResourceTrusting 以建立資源樹系。<br /><br />如需*資源*樹系的詳細資訊，包括您使用某一樹系的原因，以及如何建立與內部部署 AD DS 網域之間的樹系信任，請參閱 [Azure AD DS 資源樹系概觀][resource-forests]。|
 
 下列壓縮的參數定義會顯示這些值的宣告方式。 系統會建立名為 aaddscontoso.com 的使用者樹系，並將所有使用者從 Azure AD 同步至受控網域：
 
@@ -331,7 +331,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "myResourceGroup" -TemplateFile
 
 * 為虛擬網路更新 DNS 設定，讓虛擬機器可以找到受控網域來進行網域聯結或驗證。
     * 在入口網站中選取您的受控網域以設定 DNS。 在 [概觀] 視窗中，系統會提示您自動設定這些 DNS 設定。
-* [啟用 Azure AD Domain Services 的密碼同步化](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，讓使用者可使用他們的公司認證來登入受控網域。
+* [啟用 Azure AD DS 的密碼同步化](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，讓使用者可使用他們的公司認證來登入受控網域。
 
 ## <a name="next-steps"></a>後續步驟
 

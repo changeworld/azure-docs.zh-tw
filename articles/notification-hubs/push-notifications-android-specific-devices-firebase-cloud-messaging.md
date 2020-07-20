@@ -17,12 +17,12 @@ ms.date: 04/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/30/2019
-ms.openlocfilehash: b7ee3afc2e8b9958a868c8c117262d2017c9b600
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 273827e68a81e87dcff15760f0b400b2d5ce8723
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80126866"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220859"
 ---
 # <a name="tutorial-send-notifications-to-specific-devices-using-notification-hubs-and-google-firebase-cloud-messaging"></a>教學課程：使用通知中樞和 Google Firebase 雲端通訊將通知傳送至特定裝置
 
@@ -42,7 +42,7 @@ ms.locfileid: "80126866"
 > * 傳送加註標記的通知。
 > * 測試應用程式
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程以您在以下教學課程中建立的 Android 應用程式為基礎：[教學課程：使用 Azure 通知中樞和 Firebase 雲端通訊將通知推送至 Android 裝置](notification-hubs-android-push-notification-google-fcm-get-started.md)。 開始進行本教學課程之前，請完成[教學課程：使用 Azure 通知中樞和 Firebase 雲端通訊將通知推送至 Android 裝置](notification-hubs-android-push-notification-google-fcm-get-started.md)。
 
@@ -117,7 +117,7 @@ ms.locfileid: "80126866"
 
     您的 `main_activity.xml` 圖形版面配置應如下圖所示：
 
-    ![][A1]
+    ![顯示主要活動 X M L 圖形版面配置外觀的模擬器螢幕擷取畫面。][A1]
 3. 在與 `MainActivity` 類別相同的套件中建立 `Notifications` 類別。
 
     ```java
@@ -209,7 +209,7 @@ ms.locfileid: "80126866"
     ```java
     private Notifications notifications;
     ```
-5. 接著，更新 `onCreate` 方法，如下列程式碼所示。 您可以在 [通知]  類別的 **subscribeToCategories** 方法中向通知中樞註冊。 
+5. 接著，更新 `onCreate` 方法，如下列程式碼所示。 您可以在 [通知] 類別的 **subscribeToCategories** 方法中向通知中樞註冊。 
 
     ```java
     @Override
@@ -319,7 +319,7 @@ ms.locfileid: "80126866"
 ## <a name="test-the-app"></a>測試應用程式
 
 1. 使用 Android Studio，在您的 Android 裝置或模擬器上執行應用程式。 應用程式 UI 提供一組切換，可讓您選擇要訂閱的類別。
-2. 啟用一或多個類別切換，然後按一下 [訂閱]  。 應用程式會將選取的類別轉換成標籤，並在通知中心內為選取的標籤要求新裝置註冊。 隨即會傳回已註冊的類別，且會顯示在快顯通知中。
+2. 啟用一或多個類別切換，然後按一下 [訂閱] 。 應用程式會將選取的類別轉換成標籤，並在通知中心內為選取的標籤要求新裝置註冊。 隨即會傳回已註冊的類別，且會顯示在快顯通知中。
 
     ![訂閱類別](./media/notification-hubs-aspnet-backend-android-breaking-news/subscribe-for-categories.png)
 3. 執行 .NET 主控台應用程式，這會傳送每個類別的通知。 選取的類別通知會以快顯通知方式出現。

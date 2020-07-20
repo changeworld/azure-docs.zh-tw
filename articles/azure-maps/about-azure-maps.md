@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 4b53c4d1a26d8e4b8d784087dcb9b9feba9c7ded
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2b6c61c5c144923ece80fddf8a1412d68f35ad52
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191758"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242863"
 ---
 # <a name="what-is-azure-maps"></a>什麼是 Azure 地圖服務？
 
@@ -164,6 +164,14 @@ Azure 地圖服務的空間作業服務會取得位置資訊。 該服務會快�
 Azure 地圖服務是針對行動性而建置，可以協助您開發跨平台應用程式。 它使用與語言無關的程式設計模型，並且透過 [REST API](https://docs.microsoft.com/rest/api/maps/) 支援 JSON 輸出。
 
 此外，Azure 地圖服務也使用簡單的程式設計模型提供方便的 [JavaScript 地圖控制項](https://docs.microsoft.com/javascript/api/azure-maps-control)。 Web 和行動應用程式都可輕易且快速地進行開發。
+
+## <a name="power-bi-visual"></a>Power BI 視覺效果
+
+Power BI 的 Azure 地圖服務視覺效果會針對地圖頂端的空間資料提供一組豐富的資料視覺效果。 估計超過 80% 的商務資料有位置內容。 Azure 地圖服務視覺效果提供無程式碼的解決方案，可深入了解此位置內容與您的商務資料之間有何關聯和影響。
+
+![Power BI 桌面和顯示商務資料的 Azure 地圖服務視覺效果](media/power-bi-visual/azure-maps-visual-hero.png)
+
+如需詳細資訊，請參閱 [Azure 地圖服務 Power BI 視覺效果](power-bi-visual-getting-started.md)文件的使用者入門。
 
 ## <a name="usage"></a>使用量
 

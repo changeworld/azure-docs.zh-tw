@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 42098d54725cc12691839b63c508efbecf042aa0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6727a2c45187e0e6bb583bb65e176024067d81e2
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80064425"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219977"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>教學課程：使用裝置功能模型建立 IoT 隨插即用 (預覽) 裝置，並將其連線至您的 IoT Central 應用程式
 
@@ -28,15 +28,15 @@ _裝置功能模型_ (DCM) 可說明 [IoT 隨插即用](../../iot-pnp/overview-i
 > * 在 Windows 中執行裝置程式碼，並查看它是否連線至您的 IoT Central 應用程式。
 > * 檢視裝置所傳送的模擬遙測。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-完成[建立 Azure IoT Central 應用程式](./quick-deploy-iot-central.md)快速入門，以使用 [自訂應用程式] > [自訂應用程式]  範本建立 IoT Central 應用程式。
+完成[建立 Azure IoT Central 應用程式](./quick-deploy-iot-central.md)快速入門，以使用 [自訂應用程式] > [自訂應用程式] 範本建立 IoT Central 應用程式。
 
 若要完成本教學課程，您必須在本機電腦上安裝下列軟體：
 
 * 具有 **C++ 建置工具**和 **NuGet 套件管理員元件**工作負載的 [Visual Studio 建置工具](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16)。 或者如果您已安裝具有相同工作負載的 [Visual Studio (Community、Professional 或 Enterprise)](https://visualstudio.microsoft.com/downloads/) 2019、2017 或 2015。
 * [Git](https://git-scm.com/download/)。
-* [CMake](https://cmake.org/download/) - 當您安裝 **CMake** 時，請選取 [將 CMake 新增至系統路徑]  選項。
+* [CMake](https://cmake.org/download/) - 當您安裝 **CMake** 時，請選取 [將 CMake 新增至系統路徑] 選項。
 * [Visual Studio Code](https://code.visualstudio.com/) \(英文\)。
 * [Node.js](https://nodejs.org/)
 * `dps-keygen` 公用程式：
@@ -49,9 +49,9 @@ _裝置功能模型_ (DCM) 可說明 [IoT 隨插即用](../../iot-pnp/overview-i
 
 請使用下列步驟安裝在 VS Code 中安裝 Azure IoT Tools 擴充套件：
 
-1. 在 VS Code 中，選取 [延伸模組]  索引標籤。
+1. 在 VS Code 中，選取 [延伸模組] 索引標籤。
 1. 搜尋 **Azure IoT Tools**。
-1. 選取 [安裝]  。
+1. 選取 [安裝]。
 
 ## <a name="prepare-the-development-environment"></a>準備開發環境
 
@@ -82,11 +82,13 @@ _裝置功能模型_ (DCM) 可說明 [IoT 隨插即用](../../iot-pnp/overview-i
 
 若要將裝置連線至 IoT Central 應用程式，您必須要有裝置金鑰。 若要產生裝置金鑰：
 
-1. 登入到您在[建立 Azure IoT Central 應用程式](./quick-deploy-iot-central.md)快速入門中使用 [自訂應用程式]  範本所建立的 IoT Central 應用程式。
+1. 登入到您在[建立 Azure IoT Central 應用程式](./quick-deploy-iot-central.md)快速入門中使用 [自訂應用程式] 範本所建立的 IoT Central 應用程式。
 
-1. 移至 [管理]  頁面，然後選取 [裝置連線]  。
+1. 移至 [管理] 頁面，然後選取 [裝置連線]。
 
-1. 記下您在選取 [檢視金鑰]  時所看到的 [識別碼範圍]  和 [主要金鑰]  。 您在本教學課程後續的內容中，會用到這些值。
+1. 記下 [識別碼範圍]。 您稍後會在本教學課程中使用此值。
+
+1. 選取 **SAS-IoT-Devices**註冊群組。 記下**主要金鑰**。 您稍後會在本教學課程中使用此值。
 
     ![裝置連線](./media/tutorial-connect-pnp-device/device-connection.png)
 
@@ -104,9 +106,9 @@ _裝置功能模型_ (DCM) 可說明 [IoT 隨插即用](../../iot-pnp/overview-i
 
 1. 建立名為 `central_app` 的資料夾，並在 VS Code 中開啟。
 
-1. 使用 **Ctrl+Shift+P** 開啟命令選擇區，輸入 **IoT 隨插即用**，然後選取 [開啟模型存放庫]  。 選取 [公用存放庫]  。 VS Code 會顯示公用模型存放庫中的 DCM 清單。
+1. 使用 **Ctrl+Shift+P** 開啟命令選擇區，輸入 **IoT 隨插即用**，然後選取 [開啟模型存放庫]。 選取 [公用存放庫]。 VS Code 會顯示公用模型存放庫中的 DCM 清單。
 
-1. 選取識別碼為 `urn:mxchip:mxchip_iot_devkit:1` 的 **MXChip IoT DevKit** DCM。 然後，選取 [下載]  。 現在，您在 `central_app` 資料夾中已有 DCM 的複本。
+1. 選取識別碼為 `urn:mxchip:mxchip_iot_devkit:1` 的 **MXChip IoT DevKit** DCM。 然後，選取 [下載]。 現在，您在 `central_app` 資料夾中已有 DCM 的複本。
 
 ![模型存放庫和 DCM](./media/tutorial-connect-pnp-device/public-repository.png)
 
@@ -117,7 +119,7 @@ _裝置功能模型_ (DCM) 可說明 [IoT 隨插即用](../../iot-pnp/overview-i
 
 現在您已有 **MXChip IoT DevKit** DCM 及其相關聯的介面，您可以產生實作模型的裝置程式碼。 若要在 VS Code 中產生 C 程式碼 Stub：
 
-1. 開啟含有 DCM 檔案的資料夾，使用 **Ctrl+Shift+P** 開啟命令選擇區，輸入 **IoT 隨插即用**，然後選取 [產生裝置程式碼 Stub]  。
+1. 開啟含有 DCM 檔案的資料夾，使用 **Ctrl+Shift+P** 開啟命令選擇區，輸入 **IoT 隨插即用**，然後選取 [產生裝置程式碼 Stub]。
 
     > [!NOTE]
     > 第一次使用 IoT 隨插即用程式碼產生器公用程式時，需要幾秒鐘的時間才能下載。
@@ -126,13 +128,13 @@ _裝置功能模型_ (DCM) 可說明 [IoT 隨插即用](../../iot-pnp/overview-i
 
 1. 輸入專案名稱 **devkit_device**。
 
-1. 選擇 [ANSI C]  作為您的語言。
+1. 選擇 [ANSI C] 作為您的語言。
 
-1. 選擇 [透過 DPS (裝置佈建服務) 對稱金鑰]  作為連線方法。
+1. 選擇 [透過 DPS (裝置佈建服務) 對稱金鑰] 作為連線方法。
 
-1. 選擇 [Windows 上的 CMake 專案]  作為專案類型。 請勿選擇 [MXChip IoT DevKit 專案]  ，此選項適用於您有實際的 DevKit 裝置時。
+1. 選擇 [Windows 上的 CMake 專案] 作為專案類型。 請勿選擇 [MXChip IoT DevKit 專案]，此選項適用於您有實際的 DevKit 裝置時。
 
-1. 選擇 [透過 Vcpkg]  作為包含 SDK 的方式。
+1. 選擇 [透過 Vcpkg] 作為包含 SDK 的方式。
 
 1. VS Code 會開啟新視窗，其中包含在 `devkit_device` 資料夾中產生的裝置程式碼 Stub 檔案。
 
@@ -178,17 +180,17 @@ _裝置功能模型_ (DCM) 可說明 [IoT 隨插即用](../../iot-pnp/overview-i
 
 當您的裝置程式碼連線至 IoT Central 之後，您就可以檢視它所傳送的屬性和遙測資料：
 
-1. 在您的 IoT Central 應用程式中，移至 [裝置]  頁面，然後選取 **mxchip-01** 裝置。 此裝置會在裝置程式碼連線時自動新增：
+1. 在您的 IoT Central 應用程式中，移至 [裝置] 頁面，然後選取 **mxchip-01** 裝置。 此裝置會在裝置程式碼連線時自動新增：
 
     ![概觀分頁](./media/tutorial-connect-pnp-device/overview-page.png)
 
     幾分鐘後，此頁面會顯示裝置所傳送之遙測資料的圖表。
 
-1. 選取 [關於]  頁面，以查看裝置所傳送的屬性值。
+1. 選取 [關於] 頁面，以查看裝置所傳送的屬性值。
 
-1. 選取 [命令]  頁面，以在裝置上呼叫命令。 您可以在執行裝置程式碼的命令提示字元中查看裝置回應。
+1. 選取 [命令] 頁面，以在裝置上呼叫命令。 您可以在執行裝置程式碼的命令提示字元中查看裝置回應。
 
-1. 移至 [裝置範本]  頁面，以查看 IoT Central 從公用存放庫中的 DCM 建立的範本：
+1. 移至 [裝置範本] 頁面，以查看 IoT Central 從公用存放庫中的 DCM 建立的範本：
 
     ![裝置範本頁面](./media/tutorial-connect-pnp-device/device-template.png)
 

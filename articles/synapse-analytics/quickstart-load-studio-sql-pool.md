@@ -1,5 +1,5 @@
 ---
-title: 使用 Synapse SQL 大量載入資料
+title: 快速入門：使用 Synapse SQL 大量載入資料
 description: 使用 Synapse Studio 在 Synapse SQL 中大量載入資料
 services: synapse-analytics
 author: kevinvngo
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/06/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 959742ec3c0434213d19b0f92fe523671fd60f33
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 7f840d4a75be72a4317860dcf4a6708642369a24
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964544"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274215"
 ---
 # <a name="bulk-loading-with-synapse-sql"></a>使用 Synapse SQL 進行大量載入
 

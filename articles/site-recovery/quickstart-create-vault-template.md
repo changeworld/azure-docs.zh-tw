@@ -1,33 +1,31 @@
 ---
 title: 使用 Azure Resource Manager 範本建立 Azure 復原服務保存庫的快速入門。
-description: 在本快速入門中，您會了解如何使用 Azure Resource Manager 範本建立 Azure 復原服務保存庫。
+description: 在本快速入門中，您會了解如何使用 Azure Resource Manager 範本 (ARM 範本) 建立 Azure 復原服務保存庫。
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/29/2020
-author: davidsmatlak
-ms.author: v-dasmat
-ms.openlocfilehash: cf85939a1dbaf8d3e8a90a3acf10bda9faac83bc
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 9112841f6f07808d80fa2b8b61e612d57d0ec20e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217290"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248820"
 ---
-# <a name="quickstart-create-a-recovery-services-vault-using-a-resource-manager-template"></a>快速入門：使用 Resource Manager 範本建立復原服務保存庫
+# <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>快速入門：使用 ARM 範本建立復原服務保存庫
 
-本快速入門會說明如何使用 Azure Resource Manager 範本設定 Azure 復原服務保存庫。 [Azure Site Recovery](site-recovery-overview.md) 服務會確保您的商務應用程式可在計劃性與非計劃性中斷期間持續運作，來提供商務持續性和災害復原 (BCDR) 策略。 Site Recovery 會管理並內部部署機器和 Azure 虛擬機器 (VM) 的災害復原，包括複寫、容錯移轉和復原。
+本快速入門會說明如何使用 Azure Resource Manager 範本 (ARM 範本) 設定 Azure 復原服務保存庫。 [Azure Site Recovery](site-recovery-overview.md) 服務會確保您的商務應用程式可在計劃性與非計劃性中斷期間持續運作，來提供商務持續性和災害復原 (BCDR) 策略。 Site Recovery 會管理並內部部署機器和 Azure 虛擬機器 (VM) 的災害復原，包括複寫、容錯移轉和復原。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-如果您沒有作用中的 Azure 訂用帳戶，可以在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>必要條件
 
-無。
+如果您沒有作用中的 Azure 訂用帳戶，可以在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-a-recovery-services-vault"></a>建立復原服務保存庫
-
-### <a name="review-the-template"></a>檢閱範本
+## <a name="review-the-template"></a>檢閱範本
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-recovery-services-vault-create/)。
 
@@ -42,7 +40,7 @@ ms.locfileid: "84217290"
 
 如需更多 Azure 復原服務範本，請參閱 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Recoveryservices&pageNumber=1&sort=Popular)。
 
-### <a name="deploy-the-template"></a>部署範本
+## <a name="deploy-the-template"></a>部署範本
 
 若要部署範本，需要**訂用帳戶**、**資源群組**和**保存庫名稱**。
 

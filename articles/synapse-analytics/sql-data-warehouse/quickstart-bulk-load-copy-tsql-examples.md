@@ -6,15 +6,15 @@ author: kevinvngo
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql-dw
-ms.date: 05/06/2020
+ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: f5f6c6970ad8bb697ceb118b6725b37e93ca80b5
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: f9aa0214712704c1a80f73ae3fd05929f7245eb3
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213052"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274132"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>使用 Synapse SQL 安全地載入資料
 
@@ -23,10 +23,10 @@ ms.locfileid: "85213052"
 
 下列矩陣說明每個檔案類型和儲存體帳戶支援的驗證方法。 這適用於來源儲存位置和錯誤檔案位置。
 
-|                      |                CSV                |              Parquet              |                ORC                |
-| :------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
-|  Azure Blob 儲存體  | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD |              SAS/KEY              |              SAS/KEY              |
-| Azure Data Lake Gen2 | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD |
+|                          |                CSV                |              Parquet              |                ORC                |
+| :----------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
+|  **Azure Blob 儲存體**  | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD |              SAS/KEY              |              SAS/KEY              |
+| **Azure Data Lake Gen2** | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD |
 
 ## <a name="a-storage-account-key-with-lf-as-the-row-terminator-unix-style-new-line"></a>A. 以 LF 作為資料列結束字元的儲存體帳戶金鑰 (Unix 樣式的新行)
 
@@ -68,7 +68,7 @@ WITH (
 
 您的儲存體帳戶連結至 VNet 時，將需要受控識別驗證。 
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 1. 使用此[指南](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)安裝 Azure PowerShell。
 2. 如果您有一般用途 v1 或 Blob 儲存體帳戶，您必須先使用此[指南](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)先升級至一般用途 v2。
@@ -93,6 +93,11 @@ WITH (
    > [!NOTE]
    > 僅有具備「擁有者」權限的成員才能執行此步驟。 關於 Azure 資源的各種內建角色，請參閱此[指南](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
    
+    > [!IMPORTANT]
+    > 指定**儲存體** **Blob 資料**的擁有者、參與者或讀取者 RBAC 角色。 這些角色與 Azure 內建的擁有者、參與者和讀取者角色不同。 
+
+    ![授與 RBAC 授權以載入](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
+
 4. 現在，您可以執行指定「受控識別」的 COPY 陳述式：
 
     ```sql
@@ -104,14 +109,15 @@ WITH (
     )
     ```
 
-> [!IMPORTANT]
->
-> - 指定**儲存體** **Blob 資料**的擁有者、參與者或讀取者 RBAC 角色。 這些角色與 Azure 內建的擁有者、參與者和讀取者角色不同。 
-
 ## <a name="d-azure-active-directory-authentication-aad"></a>D. Azure Active Directory 驗證 (AAD)
 #### <a name="steps"></a>步驟
 
 1. 在您的儲存體帳戶底下，瀏覽至 [存取控制 (IAM)]，然後選取 [新增角色指派]。 將**儲存體 Blob 資料擁有者、參與者或讀取者** RBAC 角色指派給您的 AAD 使用者。 
+
+    > [!IMPORTANT]
+    > 指定**儲存體** **Blob 資料**的擁有者、參與者或讀取者 RBAC 角色。 這些角色與 Azure 內建的擁有者、參與者和讀取者角色不同。
+
+    ![授與 RBAC 授權以載入](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
 2. 參考下列[文件](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#create-an-azure-ad-administrator-for-azure-sql-server)以設定 Azure AD 驗證。 
 
@@ -125,9 +131,6 @@ WITH (
     )
     ```
 
-> [!IMPORTANT]
->
-> - 指定**儲存體** **Blob 資料**的擁有者、參與者或讀取者 RBAC 角色。 這些角色與 Azure 內建的擁有者、參與者和讀取者角色不同。 
 
 ## <a name="e-service-principal-authentication"></a>E. 服務主體驗證
 #### <a name="steps"></a>步驟

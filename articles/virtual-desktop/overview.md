@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 05/07/2020
+ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 289cc463732ee6b612b67f6c408d9d7260016137
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 473e3d52b1757faebd60c14966b425e9390a2685
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125799"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248606"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>什麼是 Windows 虛擬桌面？ 
 
@@ -87,47 +87,7 @@ Windows 虛擬桌面是可以在雲端執行的桌面與應用程式虛擬化服
 >[!NOTE]
 >如果需要 Azure 訂用帳戶，您可以[註冊一個月的免費試用](https://azure.microsoft.com/free/)。 如果您使用 Azure 免費試用版，您應該使用 Azure AD Domain Services 讓您的 Windows Server Active Directory 與 Azure Active Directory 保持同步。
 
-您為 Windows 虛擬桌面建立的 Azure 虛擬機器必須具有下列 URL 的存取權：
-
-|位址|傳出 TCP 連接埠|目的|服務標記|
-|---|---|---|---|
-|*.wvd.microsoft.com|443|服務流量|WindowsVirtualDesktop|
-|mrsglobalsteus2prod.blob.core.windows.net|443|代理程式和 SXS 堆疊更新|AzureCloud|
-|*.core.windows.net|443|代理程式流量|AzureCloud|
-|*.servicebus.windows.net|443|代理程式流量|AzureCloud|
-|prod.warmpath.msftcloudes.com|443|代理程式流量|AzureCloud|
-|catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
-|kms.core.windows.net|1688|Windows 啟用|Internet|
-|wvdportalstorageblob.blob.core.windows.net|443|Azure 入口網站支援|AzureCloud|
-
->[!IMPORTANT]
->Windows 虛擬桌面現在支援 FQDN 標記。 如需詳細資訊，請參閱[使用 Azure 防火牆來保護 Windows 虛擬桌面部署](../firewall/protect-windows-virtual-desktop.md)。
->
->建議您使用 FQDN 標籤，而不要使用 URL，以避免產生服務問題。 列出的 URL 和標籤僅對應於 Windows 虛擬桌面網站和資源。 其中不包含其他服務 (例如 Azure Active Directory) 的 URL。
-
-下表列出您的 Azure 虛擬機器可存取的選用 URL：
-
-|位址|傳出 TCP 連接埠|目的|服務標記|
-|---|---|---|---|
-|*.microsoftonline.com|443|向 Microsoft Online Services 進行驗證|None|
-|*.events.data.microsoft.com|443|遙測服務|None|
-|www.msftconnecttest.com|443|偵測 OS 是否已連線到網際網路|None|
-|*.prod.do.dsp.mp.microsoft.com|443|Windows Update|None|
-|login.windows.net|443|登入 Microsoft Online Services、Microsoft 365|None|
-|*.sfx.ms|443|OneDrive 用戶端軟體的更新|None|
-|*.digicert.com|443|憑證撤銷檢查|None|
-
-
->[!NOTE]
->Windows 虛擬桌面目前沒有 IP 位址範圍清單可供您列入允許網路流量的白名單。 我們目前僅支援將特定 URL 列入白名單。
->
->如需 Office 相關 URL 的清單，包括必要的 Azure Active Directory 相關 URL，請參閱 [Office 365 URL 和 IP 位址範圍](/office365/enterprise/urls-and-ip-address-ranges)。
->
->對於涉及服務流量的 URL，必須使用萬用字元 (*)。 如果您不想使用 * 來表示代理程式相關流量，下列方法可讓您不使用萬用字元來尋找 URL：
->
->1. 向 Windows 虛擬桌面主機集區註冊您的虛擬機器。
->2. 開啟 [事件檢視器]，並瀏覽至 [Windows 記錄] > [應用程式] > [WVD-Agent]，然後尋找事件識別碼 3702。
->3. 將您在事件識別碼 3702 下找到的 URL 列入白名單中。 事件識別碼 3702 下的 URL 會隨區域而不同。 您必須針對要在其中部署虛擬機器的每個區域，重複執行相關 URL 的白名單程序。
+如需 URL 的清單，您應該解除封鎖以讓 Windows 虛擬桌面部署如預期般運作，請參閱我們的[安全 URL 清單](safe-url-list.md)。
 
 Windows 虛擬桌面包含您交付給使用者的 Windows 桌面與應用程式，以及由 Microsoft 在 Azure 上裝載為服務的管理解決方案。 桌面和應用程式都可以部署在任何 Azure 區域的虛擬機器 (VM) 中，而這些 VM 的管理解決方案和資料都會位於美國。 這可能會導致資料轉送到美國。
 
@@ -141,7 +101,7 @@ Windows 虛擬桌面包含您交付給使用者的 Windows 桌面與應用程式
 
 下列遠端桌面用戶端支援 Windows 虛擬桌面：
 
-* [Windows 桌面](connect-windows-7-and-10.md)
+* [Windows 桌面](connect-windows-7-10.md)
 * [Web](connect-web.md)
 * [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
@@ -153,20 +113,7 @@ Windows 虛擬桌面包含您交付給使用者的 Windows 桌面與應用程式
 > [!IMPORTANT]
 > Windows 虛擬桌面目前不支援來自 Windows Store 的遠端桌面用戶端。 未來版本將增加此用戶端的支援。
 
-遠端桌面用戶端必須能夠存取下列 URL：
-
-|位址|傳出 TCP 連接埠|目的|用戶端|
-|---|---|---|---|
-|*.wvd.microsoft.com|443|服務流量|全部|
-|*.servicebus.windows.net|443|疑難排解資料|全部|
-|go.microsoft.com|443|Microsoft FWLinks|全部|
-|aka.ms|443|Microsoft URL 縮短器|全部|
-|docs.microsoft.com|443|文件|全部|
-|privacy.microsoft.com|443|隱私權聲明|全部|
-|query.prod.cms.rt.microsoft.com|443|用戶端更新|Windows 桌面|
-
->[!IMPORTANT]
->開啟這些 URL 是擁有可靠用戶端體驗所必需的。 不支援封鎖這些 URL 的存取，而且會影響服務功能。 這些 URL 僅對應於用戶端網站和資源，並不包含其他服務 (例如 Azure Active Directory) 的 URL。
+若要深入了解您必須解除封鎖以使用遠端用戶端的 URL，請參閱[安全 URL 清單](safe-url-list.md)。
 
 ## <a name="supported-virtual-machine-os-images"></a>支援的虛擬機器 OS 映像
 

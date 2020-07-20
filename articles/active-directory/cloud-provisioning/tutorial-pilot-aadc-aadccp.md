@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 835eb66444dd9f4c4da7689196c759621cfef999
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: fd9eff90f144909b9746e85a9c42aae2fdf02ed6
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360753"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146803"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>針對現有的同步 AD 樹系進行雲端佈建試驗 
 
@@ -35,7 +35,7 @@ ms.locfileid: "85360753"
 
 4. 這是進階案例。 請確實遵循本教學課程中記載的步驟。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 下列是完成此教學課程的必要條件
 - 具有 Azure AD Connect 同步 1.4.32.0 版或更新版本的測試環境
 - 在同步範圍內、並且可用於試驗的 OU 或群組。 建議您先從一小組物件開始。
@@ -165,18 +165,18 @@ Azure AD Connect 同步會使用排程器來同步處理您內部部署目錄中
  2. 按一下 [Azure Active Directory]
  3. 按一下 [Azure AD Connect]
  4. 選取 [管理佈建 (預覽)]
- ![](media/how-to-configure/manage1.png)</br>
- 5.  按一下 [新增組態]
- ![](media/tutorial-single-forest/configure1.png)</br>
+ ![螢幕擷取畫面顯示 [管理佈建 (預覽)] 連結。](media/how-to-configure/manage1.png)</br>
+ 5.  按一下 [新增設定]
+ ![[Azure AD 佈建 (預覽)] 畫面的螢幕擷取畫面，反白顯示了 [新增設定] 連結。](media/tutorial-single-forest/configure1.png)</br>
  6.  在組態畫面上輸入 [通知電子郵件]，將選取器移至 [啟用]，然後按一下 [儲存]。
- ![](media/tutorial-single-forest/configure2.png)</br>
+ ![[設定] 畫面的螢幕擷取畫面，其中已填入通知電子郵件並已選取啟用。](media/tutorial-single-forest/configure2.png)</br>
  7. 在 [設定] 底下選取 [所有使用者]，以變更組態規則的範圍。
- ![](media/how-to-configure/scope2.png)</br>
+ ![[設定] 畫面的螢幕擷取畫面，並醒目提示 [使用者範圍] 旁的 [所有使用者]。](media/how-to-configure/scope2.png)</br>
  8. 在右側變更範圍，以包含您剛剛建立的特定 OU "OU=CPUsers,DC=contoso,DC=com"。
- ![](media/tutorial-existing-forest/scope2.png)</br>
+ ![[使用者範圍] 畫面的螢幕擷取畫面，並醒目提示範圍已變更為您所建立的 OU。](media/tutorial-existing-forest/scope2.png)</br>
  9.  按一下 [完成]，然後按 [儲存]。
  10. 範圍此時應會設定為一個組織單位。 
- ![](media/tutorial-existing-forest/scope3.png)</br>
+ ![[設定] 畫面的螢幕擷取畫面，並醒目提示 [使用者範圍] 旁的 [1 個組織單位]。](media/tutorial-existing-forest/scope3.png)</br>
  
 
 ## <a name="verify-users-are-provisioned-by-cloud-provisioning"></a>確認雲端佈建已佈建使用者

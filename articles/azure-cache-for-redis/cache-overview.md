@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 05/12/2020
-ms.openlocfilehash: 09a7a28716e437bab71c7386bd332712a4d192dd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 75c6f8ec8410ff90b3da4fb6a50c9ef8ba7d1618
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196364"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184614"
 ---
 # <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 
@@ -40,7 +40,7 @@ Azure Cache for Redis 可在以下層級使用：
 | 層 | 描述 |
 |---|---|
 基本 | 單一節點快取。 這一層支援多個記憶體大小 (250 MB - 53 GB)，非常適用於開發/測試和非關鍵工作負載。 基本層沒有服務等級協定 (SLA) |
-| 標準 | 複寫的快取是雙節點 (主要/次要) 組態，由 Azure 管理且具高可用性 SLA (99.9%) |
+| 標準 | 複寫的快取是雙節點 (主要/複本) 組態，由 Azure 管理且具高可用性 SLA (99.9%) |
 | Premium | 進階層是可供企業使用的層級。 進階層快取支援更多功能，而且具有較高的輸送量和較低的延遲。 進階層中的快取是部署在更強大的硬體上，因此效能優於基本或標準層。 這項優勢表示，針對大小相同的快取，其輸送量在進階層中會比在標準層中高。 |
 
 > [!TIP]

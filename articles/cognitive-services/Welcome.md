@@ -10,16 +10,18 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: nitinme
-ms.openlocfilehash: 2906734a37fbb5516596d456386929c11c8dc1e4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6272d050e6a71032f32c72be696d8c3918fc3d61
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588287"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223749"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure 認知服務是什麼？
 
 Azure 認知服務是用來協助開發人員建置智慧型應用程式，且無須使用直接 AI 或資料科學技術或知識的 API、SDK 和服務。 Azure 認知服務可讓開發人員輕鬆地將認知功能新增到其應用程式中。 Azure 認知服務的目標是協助開發人員建立可以看、聽、說、理解甚至推論的應用程式。 Azure 認知服務中的服務目錄可以分成五個主要支柱：視覺、語音、語言、Web 搜尋和決策。
+
+想要查看新功能和更新的認知服務文件嗎？ 請參閱[認知服務文件中有何新資訊](whats-new-docs.md)。
 
 ## <a name="vision-apis"></a>視覺 API
 
@@ -77,10 +79,6 @@ Azure 認知服務是用來協助開發人員建置智慧型應用程式，且�
 |[異常偵測器](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "異常偵測器") \(預覽\)|異常偵測器可讓您監視和偵測時間序列資料中的異常狀況。|
 |[內容仲裁](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "內容仲裁")|內容仲裁可監視潛在的冒犯、惡意或具風險之內容。|
 |[個人化工具](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "個人化工具")|個人化工具可讓您選擇最佳體驗來對使用者展現，進而從其即時行為中學習。|
-
-## <a name="use-free-trials"></a>使用免費試用版
-
-[註冊免費試用版](https://azure.microsoft.com/try/cognitive-services/ "註冊說明")只需一封電子郵件和數個簡單步驟即可完成。 您需要 Microsoft 帳戶 (如果您還沒有帳戶的話)。 您將會收到適用於每個要求 API 的唯一金鑰組。 第二個金鑰僅供備用。 請勿與任何人共用祕密金鑰。 就每秒或每分鐘的交易來說，試用會有速率限制，而且也有每月使用量上限。 一個交易就只是一個 API 呼叫。 您可以升級到付費層來解除鎖定限制。
 
 ## <a name="subscription-management"></a>訂用帳戶管理
 

@@ -4,28 +4,30 @@ description: 在本快速入門中，您可以使用 Azure Resource Manager 範�
 ms.date: 07/06/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 3cdcff4898a8644008193943a243be4a2ef9e8c4
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: a05be04064df81373f856ea0e8ca59664078695f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969800"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252363"
 ---
-# <a name="quickstart-create-a-shared-query-by-using-an-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本建立共用查詢
+# <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>快速入門：使用 ARM 範本建立共用查詢
 
 Resource Graph 查詢可以儲存為_私人查詢_或_共用查詢_。 私人查詢會儲存到個人的入口網站設定檔，其他人看不到。 共用查詢則是 Resource Manager 物件，可透過權限和角色型存取來與其他人共用。 共用查詢可讓您以通用且一致的方式執行資源探索。 本快速入門會使用 Azure Resource Manager 範本 (ARM 範本) 來建立共用查詢。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="部署 ARM 範本來建立 Azure 的共用查詢" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresourcegraph-sharedquery-countos%2Fazuredeploy.json":::
+
 ## <a name="prerequisites"></a>必要條件
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="create-a-shared-query"></a>建立共用查詢
+## <a name="review-the-template"></a>檢閱範本
 
 在本快速入門中，您會建立名為_依 OS 計算 VM 數量_的共用查詢。 若要在 SDK 中試用此查詢，或是在入口網站中使用 Resource Graph 總管來試用此查詢，請參閱[範例 - 依 OS 類型計算虛擬機器數量](./samples/starter.md#count-os)。
-
-### <a name="review-the-template"></a>檢閱範本
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/resourcegraph-sharedquery-countos/)。
 
@@ -35,7 +37,7 @@ Resource Graph 查詢可以儲存為_私人查詢_或_共用查詢_。 私人查
 
 - [Microsoft.ResourceGraph/queries](/azure/templates/microsoft.resourcegraph/queries)
 
-### <a name="deploy-the-template"></a>部署範本
+## <a name="deploy-the-template"></a>部署範本
 
 > [!NOTE]
 > Azure Resource Graph 服務是免費的。 如需詳細資訊，請參閱 [Azure Resource Graph 概觀](./overview.md)。

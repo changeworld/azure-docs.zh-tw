@@ -1,6 +1,6 @@
 ---
 title: 快速入門：建立 Azure 防火牆和 IP 群組 - Resource Manager 範本
-description: 了解如何使用 Resource Manager 範本建立 Azure 防火牆和 IP 群組。
+description: 了解如何使用 Azure Resource Manager 範本 (ARM 範本) 建立 Azure 防火牆和 IP 群組。
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,28 +8,30 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/06/2020
 ms.author: victorh
-ms.openlocfilehash: 403aaafebcae680f337aeff551b81a80a9549252
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 5ac1248ddcdf8c0eef68b7c32e322398fa01a6f2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680554"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260578"
 ---
-# <a name="quickstart-create-an-azure-firewall-and-ip-groups---resource-manager-template"></a>快速入門：建立 Azure 防火牆和 IP 群組 - Resource Manager 範本
+# <a name="quickstart-create-an-azure-firewall-and-ip-groups---arm-template"></a>快速入門：建立 Azure 防火牆和 IP 群組 - ARM 範本
 
-在本快速入門中，您會使用 Resource Manager 範本搭配網路規則和應用程式規則中使用的範例 IP 群組，以部署 Azure 防火牆。 IP 群組是最上層資源，可讓您定義 IP 位址、範圍和子網定義，並將其群組為單一物件。 這適用於管理 Azure 防火牆規則中的 IP 位址。 您可手動輸入 IP 位址，或從檔案進行匯入。
+在本快速入門中，您會使用 Azure Resource Manager 範本 (ARM 範本) 搭配網路規則和應用程式規則中使用的範例 IP 群組，以部署 Azure 防火牆。 IP 群組是最上層資源，可讓您定義 IP 位址、範圍和子網定義，並將其群組為單一物件。 這適用於管理 Azure 防火牆規則中的 IP 位址。 您可手動輸入 IP 位址，或從檔案進行匯入。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-create-with-ipgroups-and-linux-jumpbox%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-an-azure-firewall-and-ip-groups"></a>建立 Azure 防火牆和 IP 群組
+## <a name="review-the-template"></a>檢閱範本
 
 此範本會建立 Azure 防火牆和 IP 群組，以及支援 Azure 防火牆所需的資源。
-
-### <a name="review-the-template"></a>檢閱範本
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox)。
 
@@ -47,9 +49,9 @@ ms.locfileid: "83680554"
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
 - [**Microsoft.Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
 
-### <a name="deploy-the-template"></a>部署範本
+## <a name="deploy-the-template"></a>部署範本
 
-將 Resource Manager 範本部署至 Azure：
+將 ARM 範本部署到 Azure：
 
 1. 選取 [部署至 Azure] 以登入 Azure 並開啟範本。 此範本會建立 Azure 防火牆、網路基礎結構和兩部虛擬機器。
 
@@ -76,7 +78,7 @@ ms.locfileid: "83680554"
 
 :::image type="content" source="media/quick-create-ipgroup-template/network-rule.png" alt-text="網路規則。":::
 
-若要了解範本中防火牆的 JSON 語法和屬性，請參閱 [Microsoft.Network azureFirewalls 範本參考](https://docs.microsoft.com/azure/templates/Microsoft.Network/2019-11-01/azureFirewalls)。
+若要了解範本中防火牆的 JSON 語法和屬性，請參閱 [Microsoft.Network azureFirewalls 範本參考](/azure/templates/Microsoft.Network/2019-11-01/azureFirewalls)。
 
 ## <a name="clean-up-resources"></a>清除資源
 

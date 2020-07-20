@@ -11,12 +11,12 @@ author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 353bc49ad6a64ff00a8a3ab8594fd76e02ca7913
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: a25fe090c88d2540bdf63cd6479d25b879090a38
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85551746"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202542"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>教學課程：啟用目的地為內部部署環境的 Azure Active Directory 自助式密碼重設回寫
 
@@ -43,7 +43,7 @@ ms.locfileid: "85551746"
     * 如有需要，[請完成上一個教學課程以啟用 Azure AD SSPR](tutorial-enable-sspr.md)。
 * 已使用目前版本的 Azure AD Connect 設定好現有內部部署 AD DS 環境。
     * 如有需要，請使用[快速](../hybrid/how-to-connect-install-express.md)或[自訂](../hybrid/how-to-connect-install-custom.md)設定來設定 Azure AD Connect。
-    * 若要使用密碼回寫，您的網域控制站必須是 Windows Server 2008 R2 或更新版本。
+    * 若要使用密碼回寫，您的網域控制站必須是 Windows Server 2012 或更新版本。
 
 ## <a name="configure-account-permissions-for-azure-ad-connect"></a>設定 Azure AD Connect 的帳戶權限
 

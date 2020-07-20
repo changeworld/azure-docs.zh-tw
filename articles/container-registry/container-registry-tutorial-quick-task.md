@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何使用 Azure Container Re
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 82b539ba8f275755ee31a00c2127a0dba7c38d9f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7178d7171d4c9c0183eb744f19776f6b2fac09ef
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78398509"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259493"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>教學課程：使用 Azure Container Registry 工作在雲端中建置和部署容器映像
 
@@ -32,7 +32,7 @@ ms.locfileid: "78398509"
 
 如果您想要在本機使用 Azure CLI，必須安裝 Azure CLI **2.0.46** 版或更新版本，並使用 [az login][az-login] 登入。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級 CLI，請參閱[安裝 Azure CLI][azure-cli]。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="github-account"></a>GitHub 帳戶
 
@@ -50,7 +50,7 @@ ms.locfileid: "78398509"
 
 在您派生存放庫後，請複製您的分支，並進入包含本機複本的目錄。
 
-使用 `git` 複製存放庫，並將 **\<your-github-username\>** 取代為您的 GitHub 使用者名稱：
+使用 `git` 複製存放庫，並以您的 GitHub 使用者名稱取代 **\<your-github-username\>** ：
 
 ```console
 git clone https://github.com/<your-github-username>/acr-build-helloworld-node
@@ -176,7 +176,7 @@ ACR 工作依預設會自動將已建置的映像順利推送至登錄，讓您�
 
 #### <a name="create-a-key-vault"></a>建立金鑰保存庫
 
-如果您在 [Azure Key Vault](/azure/key-vault/) 中還沒有保存庫，使用 Azure CLI 以下列命令建立一個。
+如果您在 [Azure Key Vault](../key-vault/index.yml) 中還沒有保存庫，使用 Azure CLI 以下列命令建立一個。
 
 ```azurecli-interactive
 AKV_NAME=$ACR_NAME-vault
@@ -203,9 +203,9 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-在前面的命令中，`--role` 引數設定服務主體具有 acrpull  角色，授與主體僅限提取登錄的存取權。 若要同時授與發送和提取存取權，請將 `--role` 引數變更為 acrpush  。
+在前面的命令中，`--role` 引數設定服務主體具有 acrpull 角色，授與主體僅限提取登錄的存取權。 若要同時授與發送和提取存取權，請將 `--role` 引數變更為 acrpush。
 
-接下來，在保存庫中儲存服務主體的 appId  ，也就是您傳遞給 Azure Container Registry 進行驗證的**使用者名稱**：
+接下來，在保存庫中儲存服務主體的 appId，也就是您傳遞給 Azure Container Registry 進行驗證的**使用者名稱**：
 
 ```azurecli-interactive
 # Store service principal ID in AKV (the registry *username*)

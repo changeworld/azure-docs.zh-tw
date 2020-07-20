@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9b9b7926caa717c1a02988ac7a927bd9bd39d52a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: cec7ff020ce7e5894d4909263b5ab1aa2275caac
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683716"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260624"
 ---
-# <a name="quickstart-deploy-azure-firewall-with-availability-zones---resource-manager-template"></a>快速入門：使用可用性區域部署 Azure 防火牆 - Resource Manager 範本
+# <a name="quickstart-deploy-azure-firewall-with-availability-zones---arm-template"></a>快速入門：使用可用性區域部署 Azure 防火牆 - ARM 範本
 
-在本快速入門中，您會使用 Resource Manager 範本在三個可用性區域中部署 Azure 防火牆。 
+在本快速入門中，您會使用 Azure Resource Manager 範本 (ARM 範本) 在三個可用性區域中部署 Azure 防火牆。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -29,15 +29,17 @@ ms.locfileid: "83683716"
 
 如需 Azure 防火牆的詳細資訊，請參閱[使用 Azure 入口網站部署和設定 Azure 防火牆](tutorial-firewall-deploy-portal.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-with-zones-sandbox%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-an-azure-firewall-with-availability-zones"></a>使用可用性區域建立 Azure 防火牆
+## <a name="review-the-template"></a>檢閱範本
 
 此範本會建立具有可用性區域的 Azure 防火牆，以及支援 Azure 防火牆所需的資源。
-
-### <a name="review-the-template"></a>檢閱範本
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-azurefirewall-with-zones-sandbox)。
 
@@ -54,9 +56,9 @@ ms.locfileid: "83683716"
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
 - [**Microsoft.Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
 
-### <a name="deploy-the-template"></a>部署範本
+## <a name="deploy-the-template"></a>部署範本
 
-將 Resource Manager 範本部署至 Azure：
+將 ARM 範本部署到 Azure：
 
 1. 選取 [部署至 Azure] 以登入 Azure 並開啟範本。 此範本會建立 Azure 防火牆、網路基礎結構和兩部虛擬機器。
 
@@ -64,9 +66,9 @@ ms.locfileid: "83683716"
 
 2. 在入口網站的 [以區域建立 AzureFirewall 的沙箱設定] 頁面上，輸入或選取下列值：
    - **資源群組**：選取 [新建]，輸入資源群組的名稱，然後選取 [確定]。 
-   - **虛擬網路名稱**：輸入新 VNet 的名稱。 
+   - **虛擬網路名稱**：輸入新 VNet 的名稱。
    - **管理使用者名稱**：輸入管理使用者帳戶的使用者名稱。
-   - **管理員密碼**：輸入管理員密碼。 
+   - **管理員密碼**：輸入管理員密碼。
 
 3. 讀取條款及條件，然後選取 [我同意上方所述的條款及條件]，然後選取 [購買]。 部署可能需要 10 分鐘或更久的時間才能完成。
 
@@ -78,7 +80,7 @@ ms.locfileid: "83683716"
 
 ## <a name="clean-up-resources"></a>清除資源
 
-當您不再需要這些資源時，您可以執行 `Remove-AzResourceGroup` PowerShell 命令來移除資源群組、防火牆和所有相關資源。 若要移除名為 MyResourceGroup 的資源群組，請執行： 
+當您不再需要這些資源時，您可以執行 `Remove-AzResourceGroup` PowerShell 命令來移除資源群組、防火牆和所有相關資源。 若要移除名為 MyResourceGroup 的資源群組，請執行：
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyResourceGroup

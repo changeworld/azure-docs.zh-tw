@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 10/24/2019
 ms.author: victorh
-ms.openlocfilehash: 11212c931e38b1c6319c7c3554155d9d17a1080c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5033d19de2321e0dfd3b6d89d2da3306b1723bd0
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745152"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146585"
 ---
 # <a name="whats-new-in-azure-web-application-firewall"></a>Azure Web 應用程式防火牆有哪些新功能？
 
@@ -27,6 +27,7 @@ Azure Web 應用程式防火牆會持續更新。 為了讓您隨時掌握最新
 
 |功能  |描述  |新增日期  |
 |---------|---------|---------|
+|以每個網站為主的原則 GA| 以每個網站為主的原則現已正式推出。 | 2020 年 7 月 |
 |Bot 風險降低規則集 (預覽)|您可以將 Bot 風險降低規則集與您選擇的 CRS 規則集一起啟用。 | 2019 年 11 月 |
 |GeoDB 整合 (預覽)|現在，您可以建立依來源國家/區域限制流量的自訂規則。 | 2019 年 11 月 |
 |WAF 每個網站/每個 URI 的原則 (預覽)|WAF-v2 現在支援將原則套用至接聽程式，以及路徑式規則。 請參閱[建立 WAF 原則](create-waf-policy-ag.md)。 | 2019 年 11 月 |

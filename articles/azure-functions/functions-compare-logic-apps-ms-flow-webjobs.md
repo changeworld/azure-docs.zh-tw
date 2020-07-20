@@ -4,12 +4,12 @@ description: 比較已針對整合工作最佳化的 Microsoft 雲端服務：Po
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 40293056a73fd88e9ad6b3922aebfe0ba71f07dd
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 9d7531fac9610b357adb37d28f5d5e90a7e4b108
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878131"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169862"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>在 Azure 中選擇正確的整合和自動化服務
 
@@ -26,7 +26,7 @@ ms.locfileid: "80878131"
 
 ## <a name="compare-microsoft-power-automate-and-azure-logic-apps"></a>比較 Microsoft Power Automate 和 Azure Logic Apps
 
-Power Automate 和 Logic Apps 都是可建立工作流程的「設計工具優先」  整合服務。 這兩個服務皆可與各種 SaaS 和企業應用程式整合。 
+Power Automate 和 Logic Apps 都是可建立工作流程的「設計工具優先」整合服務。 這兩個服務皆可與各種 SaaS 和企業應用程式整合。 
 
 Power Automate 是以 Logic Apps 為基礎所建置。 它們共用相同的工作流程設計工具和相同的[連接器](../connectors/apis-list.md)。 
 
@@ -45,7 +45,7 @@ Power Automate 可讓任何辦公室工作人員有能力執行簡單的整合 (
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>比較 Azure Functions 和 Azure Logic Apps
 
-Functions 和 Logic Apps 都是可啟用無伺服器工作負載的 Azure 服務。 Azure Functions 是無伺服器計算服務，而 Azure Logic Apps 可提供無伺服器工作流程。 兩者皆可建立複雜的「協調流程」  。 協調流程是函式或步驟的集合，在 Logic Apps 中稱為「動作」  ，您可執行其來完成複雜工作。 例如處理命令批次，您可以平行執行許多函式執行個體、等待執行個體完成，然後執行函式來計算彙總結果。
+Functions 和 Logic Apps 都是可啟用無伺服器工作負載的 Azure 服務。 Azure Functions 是無伺服器計算服務，而 Azure Logic Apps 可提供無伺服器工作流程。 兩者皆可建立複雜的「協調流程」。 協調流程是函式或步驟的集合，在 Logic Apps 中稱為「動作」，您可執行其來完成複雜工作。 例如處理命令批次，您可以平行執行許多函式執行個體、等待執行個體完成，然後執行函式來計算彙總結果。
 
 對於 Azure Functions，您可以透過撰寫程式碼和使用 [Durable Functions 擴充功能](durable/durable-functions-overview.md)來開發協調流程。 對於 Logic apps，您可以使用 GUI 或編輯組態檔來建立協調流程。
 
@@ -64,11 +64,11 @@ Functions 和 Logic Apps 都是可啟用無伺服器工作負載的 Azure 服務
 
 ## <a name="compare-functions-and-webjobs"></a>比較 Functions 和 Webjob
 
-如同 Azure Functions，搭配 WebJobs SDK 的 Azure App Service WebJobs 是針對開發人員所設計的 Code First  整合服務。 兩者皆以 [Azure App Service](../app-service/overview.md) 為基礎，並支援[原始檔控制整合](../app-service/deploy-continuous-deployment.md)、[驗證](../app-service/overview-authentication-authorization.md)和[使用 Application Insights 整合進行監視](functions-monitoring.md)等功能。
+如同 Azure Functions，搭配 WebJobs SDK 的 Azure App Service WebJobs 是針對開發人員所設計的 Code First 整合服務。 兩者皆以 [Azure App Service](../app-service/overview.md) 為基礎，並支援[原始檔控制整合](../app-service/deploy-continuous-deployment.md)、[驗證](../app-service/overview-authentication-authorization.md)和[使用 Application Insights 整合進行監視](functions-monitoring.md)等功能。
 
 ### <a name="webjobs-and-the-webjobs-sdk"></a>WebJob 和 WebJob SDK
 
-您可以使用 App Service 的 WebJobs  功能在 App Service Web 應用程式的環境中執行指令碼或程式碼。 WebJobs SDK  是為 WebJobs 設計的架構，可簡化您在回應 Azure 服務中的事件時所撰寫的程式碼。 例如，您可藉由建立縮圖影像來回應 Azure 儲存體中的映像 Blob 建立。 WebJobs SDK 以 .NET 主控台應用程式的形式執行，您可以將其部署至 WebJob。 
+您可以使用 App Service 的 WebJobs 功能在 App Service Web 應用程式的環境中執行指令碼或程式碼。 WebJobs SDK 是為 WebJobs 設計的架構，可簡化您在回應 Azure 服務中的事件時所撰寫的程式碼。 例如，您可藉由建立縮圖影像來回應 Azure 儲存體中的映像 Blob 建立。 WebJobs SDK 以 .NET 主控台應用程式的形式執行，您可以將其部署至 WebJob。 
 
 搭配使用 WebJobs 和 WebJobs SDK 的效果最好，但您也可以在沒有 WebJobs SDK 情況下使用 WebJobs，反之亦然。 WebJob 可執行 App Service 沙箱中執行的任何程式或指令碼。 WebJobs SDK 主控台應用程式可以在任何可執行主控台應用程式的地方執行，例如內部部署伺服器。
 
@@ -78,13 +78,13 @@ Azure Functions 是以 WebJobs SDK 為基礎，因此其共用許多相同的事
 
 |  | 函式 | 搭配 WebJobs SDK 的 WebJobs |
 | --- | --- | --- |
-|[無伺服器應用程式模型](https://azure.microsoft.com/solutions/serverless/)與[自動調整](functions-scale.md#how-the-consumption-and-premium-plans-work)|✔||
-|[在瀏覽器中開發與測試](functions-create-first-azure-function.md) |✔||
-|[按使用次數付費的定價方式](functions-scale.md#consumption-plan)|✔||
-|[與 Logic Apps 整合](functions-twitter-email.md)|✔||
-| 觸發程序事件 |[計時器](functions-bindings-timer.md)<br>[Azure 儲存體佇列和 Blob](functions-bindings-storage-blob.md)<br>[Azure 服務匯流排佇列和主題](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure 事件中樞](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub、Slack)](functions-bindings-http-webhook.md)<br>[事件格線](functions-bindings-event-grid.md)|[計時器](functions-bindings-timer.md)<br>[Azure 儲存體佇列和 Blob](functions-bindings-storage-blob.md)<br>[Azure 服務匯流排佇列和主題](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure 事件中樞](functions-bindings-event-hubs.md)<br>[檔案系統](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
-| 支援的語言  |C#<br>F#<br>JavaScript<br>Java<br>Python<br>PowerShell |C#<sup>1</sup>|
-|套件管理員|NPM 和 NuGet|NuGet<sup>2</sup>|
+|**[無伺服器應用程式模型](https://azure.microsoft.com/solutions/serverless/)與[自動調整](functions-scale.md#how-the-consumption-and-premium-plans-work)**|✔||
+|**[在瀏覽器中開發與測試](functions-create-first-azure-function.md)** |✔||
+|**[按使用次數付費的定價方式](functions-scale.md#consumption-plan)**|✔||
+|**[與 Logic Apps 整合](functions-twitter-email.md)**|✔||
+| **觸發程序事件** |[計時器](functions-bindings-timer.md)<br>[Azure 儲存體佇列和 Blob](functions-bindings-storage-blob.md)<br>[Azure 服務匯流排佇列和主題](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure 事件中樞](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub、Slack)](functions-bindings-http-webhook.md)<br>[事件格線](functions-bindings-event-grid.md)|[計時器](functions-bindings-timer.md)<br>[Azure 儲存體佇列和 Blob](functions-bindings-storage-blob.md)<br>[Azure 服務匯流排佇列和主題](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure 事件中樞](functions-bindings-event-hubs.md)<br>[檔案系統](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
+| **支援的語言**  |C#<br>F#<br>JavaScript<br>Java<br>Python<br>PowerShell |C#<sup>1</sup>|
+|**套件管理員**|NPM 和 NuGet|NuGet<sup>2</sup>|
 
 <sup>1</sup> WebJobs (沒有 WebJobs SDK) 支援 C#、Java、JavaScript、Bash、.cmd、.bat、PowerShell、PHP、TypeScript、Python 等其他項目。 這並非完整清單。 WebJob 可執行 App Service 沙箱中執行的任何程式或指令碼。
 

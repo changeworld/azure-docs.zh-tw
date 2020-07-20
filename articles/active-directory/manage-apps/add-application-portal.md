@@ -11,16 +11,16 @@ ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 044c55e64c6532bf08d31b2c052e4ee9f5069ff1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f93a25854bc8b93e9bd75ea71037f6363d143914
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956095"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145721"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>快速入門：將應用程式新增到您的 Azure Active Directory (Azure AD) 租用戶
 
-Azure Active Directory (Azure AD) 有一個資源庫，其中包含數千個預先整合的應用程式。 您組織使用的許多應用程式可能已存在資源庫中。 本快速入門會使用 Azure 入口網站，將資源庫應用程式新增至 Azure AD 租用戶。 本快速入門著重於新增已是資源庫一部份的應用程式。 未包含在資源庫中的應用程式也可以與 Azure AD 整合，但本快速入門並未涵蓋此部分。 
+Azure Active Directory (Azure AD) 有一個資源庫，其中包含數千個預先整合的應用程式。 您組織使用的許多應用程式可能已存在資源庫中。
 
 將應用程式新增至 Azure AD 租用戶之後，您可以：
 
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) 有一個資源庫，其中包含數千個預�
 
 ## <a name="add-an-app-to-your-azure-ad-tenant"></a>將應用程式新增至您的 Azure AD 租用戶
 
-將資源庫應用程式新增至 Azure AD 租用戶：
+若要將應用程式新增至 Azure AD 租用戶：
 
 1. 在 [Azure 入口網站](https://portal.azure.com)的左方瀏覽窗格中，選取 [Azure Active Directory]。
 2. 在 [Azure Active Directory] 視格中，選取 [企業應用程式]。 [所有應用程式] 窗格會隨即開啟，並顯示您 Azure AD 租用戶中應用程式的隨機樣本。
@@ -50,8 +50,10 @@ Azure Active Directory (Azure AD) 有一個資源庫，其中包含數千個預�
 4. 切換至新的資源庫預覽體驗：在 [新增應用程式] 頁面頂端的橫幅中，選取顯示為 [按一下這裡試用改良過的新版應用程式資源庫] 的連結。
 5. [瀏覽 Azure AD 資源庫 (預覽)] 窗格隨即開啟，並顯示雲端平台、內部部署應用程式和精選應用程式的圖格。 [精選應用程式] 區段中所列的應用程式，會有圖示指出其是否支援同盟單一登入 (SSO) 和佈建。
     ![依名稱或類別搜尋應用程式](media/add-application-portal/browse-gallery.png)
-6. 您可以瀏覽您要新增之應用程式的資源庫，或在搜尋方塊中輸入應用程式的名稱加以搜尋。 然後，從結果中選取應用程式。 在表單中，您可以編輯應用程式名稱，以符合您的組織需求。 在此範例中，我們已將名稱變更為 **GitHub-test**。
+6. 您可以瀏覽您要新增之應用程式的資源庫，或在搜尋方塊中輸入應用程式的名稱加以搜尋。 然後，從結果中選取應用程式。 在表單中，您可以編輯應用程式名稱，以符合您的組織需求。 在此範例中，我們選取了 GitHub 並將名稱變更為 **GitHub-test**。
     ![說明如何從資源庫新增應用程式](media/add-application-portal/create-application.png)
+    >[!TIP]
+    >如果您要尋找的應用程式不在資源庫中，您可以按一下**建立您自己的應用程式**連結。 Microsoft 已經與許多應用程式開發人員合作，將他們預先設定為可使用 Azure AD。 這些都是顯示在資源庫中的應用程式。 但如果未列出您要新增的應用程式，您可以建立新的一般應用程式，然後自行設定，或使用建立者的開發人員指導方針來設定。
 7. 選取 [建立]。 [開始使用] 頁面會隨即顯示，其中包含可為您組織設定應用程式的選項。
 
 您已完成新增應用程式。 下一個快速入門將示範如何為應用程式變更標誌和編輯其他屬性。

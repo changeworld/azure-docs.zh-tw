@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: e4ea76a888ba51b3560139e9efc3df512c4fbadf
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 118e1e49393a797a065f1e9968a83a6d4464868e
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120937"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171035"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站來啟動現有的 Azure Spring Cloud 應用程式
 
@@ -43,14 +43,6 @@ ms.locfileid: "86120937"
 3. [安裝 Maven 3.0 或更新版本](https://maven.apache.org/download.cgi) \(英文\)
 4. [安裝 Azure CLI 2.0.67 版或更新版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 5. [註冊 Azure 訂用帳戶](https://azure.microsoft.com/free/)
-
-## <a name="install-the-azure-cli-extension"></a>安裝 Azure CLI 擴充功能
-
-使用下列命令安裝適用於 Azure CLI 的 Azure Spring Cloud 擴充功能
-
-```azurecli
-az extension add --name spring-cloud
-```
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>在 Azure 入口網站上佈建服務執行個體
 
@@ -112,7 +104,7 @@ az extension add --name spring-cloud
 
 ## <a name="build-and-deploy-microservice-applications"></a>建置並部署微服務應用程式
 
-1. 開啟 [Azure Cloud Shell](https://shell.azure.com)，並將範例應用程式存放庫複製到本機電腦。  在這裡，我們會先建立一個名為 `source-code` 的暫存目錄，然後再複製應用程式。
+1. 開啟 [Azure Cloud Shell](https://shell.azure.com) 或您已安裝 Azure CLI 的本機殼層。 在這裡，我們會先建立一個名為 `source-code` 的暫存目錄，然後再複製範例應用程式。
 
     ```console
     mkdir source-code
@@ -127,18 +119,20 @@ az extension add --name spring-cloud
     mvn clean package -DskipTests
     ```
 
-3. 將名稱指派給您的資源群組和服務。 務必將下列預留位置取代為您稍早在本教學課程中所佈建的資源群組名稱和服務名稱。
+3. 使用下列命令安裝適用於 Azure CLI 的 Azure Spring Cloud 擴充功能
+
+    ```azurecli
+    az extension add --name spring-cloud
+    ```
+
+4. 將名稱指派給您的資源群組和服務。 務必將下列預留位置取代為您稍早在本教學課程中所佈建的資源群組名稱和服務名稱。
 
     ```azurecli
     az configure --defaults group=<resource group name>
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-4. 建立 `gateway` 應用程式並部署 JAR 檔案。  下列步驟需要 Spring Cloud 擴充功能。 如果您沒有安裝必要條件，請執行下列命令：
-
-    ```azurecli
-    az extension add --name spring-cloud
-    ```
+5. 建立 `gateway` 應用程式並部署 JAR 檔案。
 
     使用 Spring Cloud 擴充功能建立應用程式：
 
@@ -147,7 +141,7 @@ az extension add --name spring-cloud
     az spring-cloud app deploy -n gateway --jar-path ./gateway/target/gateway.jar
     ```
 
-5. 遵循相同的模式來建立 `account-service` 和 `auth-service` 應用程式，並部署它們的 JAR 檔案。
+6. 遵循相同的模式來建立 `account-service` 和 `auth-service` 應用程式，並部署它們的 JAR 檔案。
 
     ```azurecli
     az spring-cloud app create -n account-service
@@ -156,7 +150,7 @@ az extension add --name spring-cloud
     az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth-service.jar
     ```
 
-6. 系統需要幾分鐘的時間來完成部署應用程式。 若要確認它們已部署，請移至 Azure 入口網站的 [應用程式] 刀鋒視窗。 您應該會看到個別與這三個應用程式個別的行。
+7. 系統需要幾分鐘的時間來完成部署應用程式。 若要確認它們已部署，請移至 Azure 入口網站的 [應用程式] 刀鋒視窗。 您應該會看到個別與這三個應用程式個別的行。
 
 > [!div class="nextstepaction"]
 > [我遇到問題](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=deploy)

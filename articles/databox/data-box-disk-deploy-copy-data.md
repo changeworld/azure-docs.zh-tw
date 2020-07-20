@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 93a7181a3b720a3b313bb75855b2564c4cd33bc1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ff57a67d5e6d617d6d51c924161f586f90f92c3c
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214321"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231534"
 ---
 ::: zone target="docs"
 
@@ -40,7 +40,7 @@ ms.locfileid: "79214321"
 > * 將資料複製到資料箱磁碟
 > * 驗證資料
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在您開始前，請確定：
 - 您已完成[教學課程：安裝和設定您的 Azure 資料箱磁碟](data-box-disk-deploy-set-up.md)。
@@ -106,12 +106,12 @@ ms.locfileid: "79214321"
     |Destination       | 指定目的地目錄的路徑。        |
     |/E                  | 複製子目錄，包含空的目錄。 |
     |/MT[:N]             | 建立具有 N 個執行緒的多執行緒複製，其中 N 是介於 1 到 128 之間的整數。 <br>N 的預設值為 8。        |
-    |/R:\<N>             | 指定失敗複製的重試次數。 N 的預設值為 1000000 (1 百萬次重試)。        |
-    |/W:\<N>             | 指定重試之間的等待時間 (以秒為單位)。 N 的預設值為 30 (等候時間 30 秒)。        |
+    |/R: \<N>             | 指定失敗複製的重試次數。 N 的預設值為 1000000 (1 百萬次重試)。        |
+    |/W: \<N>             | 指定重試之間的等待時間 (以秒為單位)。 N 的預設值為 30 (等候時間 30 秒)。        |
     |/NFL                | 指定不會記錄檔案名稱。        |
     |/NDL                | 指定不會記錄目錄名稱。        |
     |/FFT                | 假設 FAT 檔案時間 (兩秒精確度)。        |
-    |/Log:\<記錄檔>     | 將狀態輸出寫入至記錄檔 (覆寫現有記錄檔)。         |
+    |/Log:\<Log File>     | 將狀態輸出寫入至記錄檔 (覆寫現有記錄檔)。         |
 
     您可採平行方式使用多個磁碟，在每個磁碟上執行多項作業。
 
@@ -273,7 +273,7 @@ ms.locfileid: "79214321"
 
 如果您未使用「分割複製」工具複製資料，則必須驗證資料。 若要確認資料，請執行下列步驟。
 
-1. 在磁碟機的 DataBoxDiskImport  資料夾中執行 `DataBoxDiskValidation.cmd`，以進行總和檢查碼驗證。
+1. 在磁碟機的 DataBoxDiskImport 資料夾中執行 `DataBoxDiskValidation.cmd`，以進行總和檢查碼驗證。 這僅適用於 Windows 環境。 Linux 使用者必須驗證複製到磁碟的來源資料是否符合[必要條件](https://docs.microsoft.com/azure/databox/data-box-disk-limits)。
     
     ![資料箱磁碟驗證工具的輸出](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
@@ -315,8 +315,8 @@ ms.locfileid: "79214321"
 
     - 確定所有容器、Blob 和檔案都符合 [Azure 命名慣例](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)和 [Azure 物件大小限制](data-box-disk-limits.md#azure-object-size-limits)。 如果未遵循這些規則或限制，則將資料上傳至 Azure 的作業將會失敗。     
     - 如果訂單的其中一個儲存體目的地為受控磁碟，請參閱[受控磁碟](data-box-disk-limits.md#managed-disk-naming-conventions)的命名慣例。
-    - 系統會在 Azure 儲存體帳戶中為 BlockBlob 和 PageBlob 資料夾下的每個子資料夾建立容器。 BlockBlob  和 PageBlob  資料夾下的所有檔案，都會複製到 Azure 儲存體帳戶下的預設容器 $root。 $root 容器中的任何檔案一律會上傳為區塊 Blob。
-    - 在 AzureFile  資料夾內建立子資料夾。 這個子資料夾會對應至雲端中的檔案共用。 將檔案複製到子資料夾。 直接複製到 *AzureFile* 資料夾的檔案會失敗並上傳為區塊 Blob。
+    - 系統會在 Azure 儲存體帳戶中為 BlockBlob 和 PageBlob 資料夾下的每個子資料夾建立容器。 BlockBlob 和 PageBlob 資料夾下的所有檔案，都會複製到 Azure 儲存體帳戶下的預設容器 $root。 $root 容器中的任何檔案一律會上傳為區塊 Blob。
+    - 在 AzureFile 資料夾內建立子資料夾。 這個子資料夾會對應至雲端中的檔案共用。 將檔案複製到子資料夾。 直接複製到 *AzureFile* 資料夾的檔案會失敗並上傳為區塊 Blob。
     - 如果根目錄中有檔案和資料夾存在，則您必須在開始複製資料之前，將這些項目移到不同的資料夾。
 
 3. 請使用檔案總管的拖放功能，或任何與 SMB 相容的檔案複製工具 (例如 Robocopy)，來複製資料。 您可以使用下列命令起始多個複製作業：
@@ -332,7 +332,7 @@ ms.locfileid: "79214321"
 
 請執行下列步驟以驗證資料。
 
-1. 在磁碟機的 DataBoxDiskImport  資料夾中執行 `DataBoxDiskValidation.cmd`，以進行總和檢查碼驗證。
+1. 在磁碟機的 DataBoxDiskImport 資料夾中執行 `DataBoxDiskValidation.cmd`，以進行總和檢查碼驗證。
 2. 使用選項 2 來驗證您的檔案並產生總和檢查碼。 視您的資料大小而定，此步驟可能需要一段時間。 如果在驗證和產生總和檢查碼期間發生任何錯誤，您會收到通知及錯誤記錄的連結。
 
     如需有關資料驗證的詳細資訊，請參閱[驗證資料](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data)。 如果您在驗證期間遇到錯誤，請參閱[針對驗證錯誤進行疑難排解](data-box-disk-troubleshoot.md)。

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 2398bfa2ce828e716831cc7ce438bd1c241ca5f8
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 4bf2f12ef79f8551291316b5446121f2735d9347
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75378529"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206583"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>教學課程：將 Power BI 與文字分析認知服務整合
 
@@ -30,11 +30,11 @@ Microsoft Power BI Desktop 是免費的應用程式，可讓您將您的資料�
 > * 使用文字分析關鍵片語 API 從客戶意見反應擷取最重要的片語
 > * 從客戶意見反應建立文字雲
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 <a name="Prerequisites"></a>
 
 - Microsoft Power BI Desktop。 [免費下載](https://powerbi.microsoft.com/get-started/)。
-- Microsoft Azure 帳戶。 [開始免費試用](https://azure.microsoft.com/free/)或[登入](https://portal.azure.com/)。
+- Microsoft Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)或[登入](https://portal.azure.com/)。
 - 具有文字分析 API 的認知服務 API 帳戶。 如果您沒有帳戶，可以[註冊](../../cognitive-services-apis-create-account.md)並使用免費層提供的 5,000 筆交易/月 (請參閱[定價詳細資料](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)以完成此教學課程)。
 - 您在註冊過程中為您產生的[文字分析存取金鑰](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)。
 - 客戶評論。 您可以使用[我們的範例資料](https://aka.ms/cogsvc/ta)，或是自己的資料。 此教學課程假設您使用我們的範例資料。
@@ -47,17 +47,17 @@ Microsoft Power BI Desktop 是免費的應用程式，可讓您將您的資料�
 > [!NOTE]
 > Power BI 可以使用各種來源的資料，例如 Facebook 或 SQL 資料庫。 請深入了解 [Facebook 與 Power BI 的整合](https://powerbi.microsoft.com/integrations/facebook/)和 [SQL Server 與 Power BI 的整合](https://powerbi.microsoft.com/integrations/sql-server/)。
 
-在 Power BI Desktop 主視窗中，選取 [常用]  功能區。 在 [外部資料]  功能區群組中，開啟 [取得資料]  下拉式功能表，然後選取 [文字/CSV]  。
+在 Power BI Desktop 主視窗中，選取 [常用] 功能區。 在 [外部資料] 功能區群組中，開啟 [取得資料] 下拉式功能表，然後選取 [文字/CSV]。
 
 ![[取得資料按鈕]](../media/tutorials/power-bi/get-data-button.png)
 
-[開啟] 對話方塊隨即出現。 瀏覽到您的 [下載] 資料夾，或是您下載 `FabrikamComments.csv` 檔案的資料夾。 按一下 `FabrikamComments.csv`，然後按 [開啟]  按鈕。 [CSV 匯入] 對話方塊隨即出現。
+[開啟] 對話方塊隨即出現。 瀏覽到您的 [下載] 資料夾，或是您下載 `FabrikamComments.csv` 檔案的資料夾。 按一下 `FabrikamComments.csv`，然後按 [開啟] 按鈕。 [CSV 匯入] 對話方塊隨即出現。
 
 ![[CSV 匯入對話方塊]](../media/tutorials/power-bi/csv-import.png)
 
-[CSV 匯入] 對話方塊可讓您確認 Power BI Desktop 是否已正確地偵測到字元集、分隔符號、標題資料列和資料行類型。 此資訊都正確，所以按一下 [載入]  。
+[CSV 匯入] 對話方塊可讓您確認 Power BI Desktop 是否已正確地偵測到字元集、分隔符號、標題資料列和資料行類型。 此資訊都正確，所以按一下 [載入]。
 
-若要查看載入的資料，請按一下 Power BI 工作區左側邊緣的 [資料檢視]  按鈕。 隨即會開啟包含資料的資料表，就和在 Microsoft Excel 中一樣。
+若要查看載入的資料，請按一下 Power BI 工作區左側邊緣的 [資料檢視] 按鈕。 隨即會開啟包含資料的資料表，就和在 Microsoft Excel 中一樣。
 
 ![[所匯入資料的初始檢視]](../media/tutorials/power-bi/initial-data-view.png)
 
@@ -68,21 +68,21 @@ Microsoft Power BI Desktop 是免費的應用程式，可讓您將您的資料�
 
 範例資料包含 `subject` 資料行和 `comment` 資料行。 有了 Power BI Desktop 中的「合併資料行」功能，您就可以從這兩個資料行中的資料擷取關鍵片語，而不是只從 `comment` 資料行。
 
-在 Power BI Desktop 中，選取 [常用]  功能區。 在 [外部資料]  群組中，按一下 [編輯查詢]  。
+在 Power BI Desktop 中，選取 [常用] 功能區。 在 [外部資料] 群組中，按一下 [編輯查詢]。
 
 ![[常用功能區中的外部資料群組]](../media/tutorials/power-bi/edit-queries.png)
 
-在視窗左側的 [查詢]  清單中選取 `FabrikamComments` (如果尚未選取)。
+在視窗左側的 [查詢] 清單中選取 `FabrikamComments` (如果尚未選取)。
 
 現在，選取資料表中的 `subject` 和 `comment` 資料行。 您可能需要水平捲動才能看到這些資料行。 請先按一下 `subject` 資料行標題，然後按住 Control 鍵並按一下 `comment` 資料行標題。
 
 ![[選取要合併的欄位]](../media/tutorials/power-bi/select-columns.png)
 
-選取 [轉換]  功能區。 在功能區的 [文字資料行]  群組中，按一下 [合併資料行]  。 [合併資料行] 對話方塊隨即出現。
+選取 [轉換] 功能區。 在功能區的 [文字資料行] 群組中，按一下 [合併資料行]。 [合併資料行] 對話方塊隨即出現。
 
 ![[使用合併資料行對話方塊合併欄位]](../media/tutorials/power-bi/merge-columns.png)
 
-在 [合併資料行] 對話方塊中，選擇 `Tab` 作為分隔符號，然後按一下 [確定]  。
+在 [合併資料行] 對話方塊中，選擇 `Tab` 作為分隔符號，然後按一下 [確定]。
 
 您也可以考慮使用「移除空白」篩選條件來篩掉空白訊息，或是使用「清理轉換」移除不可列印的字元。 如果資料包含像是檔案範例中 `spamscore` 資料行的資料行，您可以使用「數字篩選條件」來略過「垃圾」評論。
 
@@ -91,7 +91,7 @@ Microsoft Power BI Desktop 是免費的應用程式，可讓您將您的資料�
 
 文字分析服務的[關鍵片語 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) 可針對每個 HTTP 要求處理多達一千個文字文件。 Power BI 偏好一次處理一個記錄，所以在此教學課程中，您對 API 的呼叫每次只會包含單一文件。 關鍵片語 API 要求所處理的每個文件都必須具有下列欄位。
 
-| | |
+| 欄位 | 描述 |
 | - | - |
 | `id`  | 這個文件在要求中的唯一識別碼。 回應中也會包含此欄位。 如此一來，如果您處理多份文件，就可以輕鬆地將擷取到的關鍵片語關聯至其來源文件。 在此教學課程中，因為您針對每個要求只會處理一個文件，您可以針對每個要求將 `id` 的值以硬式編碼設為相同的值。|
 | `text`  | 要處理的文字。 此欄位的值來自您在[前一節](#PreparingData)中建立的 `Merged` 資料行，其中包含了結合的主旨行與評論文字。 關鍵片語 API 要求這項資料的長度不得超過約 5,120 個字元。|
@@ -105,13 +105,13 @@ Microsoft Power BI Desktop 是免費的應用程式，可讓您將您的資料�
 > [!NOTE]
 > Power BI Desktop 自訂函式會以 [Power Query M 公式語言](https://docs.microsoft.com/powerquery-m/power-query-m-reference) (簡稱 "M") 來撰寫。 M 是以 [F#](https://docs.microsoft.com/dotnet/fsharp/) 為基礎的功能性程式設計語言。 不過，不是程式設計師也能完成本教學課程；下面有所需的程式碼。
 
-在 Power BI Desktop 中，確定您仍在 [查詢編輯器] 視窗中。 如果不是，請選取 [常用]  功能區，按一下 [外部資料]  群組中的 [編輯查詢]  。
+在 Power BI Desktop 中，確定您仍在 [查詢編輯器] 視窗中。 如果不是，請選取 [常用] 功能區，按一下 [外部資料] 群組中的 [編輯查詢]。
 
-現在，在 [常用]  功能區的 [新增查詢]  群組中，開啟 [新增來源]  下拉式功能表，並選取 [空白查詢]  。 
+現在，在 [常用] 功能區的 [新增查詢] 群組中，開啟 [新增來源] 下拉式功能表，並選取 [空白查詢]。 
 
 [查詢] 清單中會出現新的查詢，一開始名為 `Query1`。 按兩下此項目，並將它命名為 `KeyPhrases`。
 
-現在，按一下 [常用]  功能區 [查詢]  群組中的 [進階編輯器]  ，以開啟 [進階編輯器] 視窗。 刪除該視窗中已有的程式碼，然後貼上下列程式碼。 
+現在，按一下 [常用] 功能區 [查詢] 群組中的 [進階編輯器]，以開啟 [進階編輯器] 視窗。 刪除該視窗中已有的程式碼，然後貼上下列程式碼。 
 
 > [!NOTE]
 > 將以下的範例端點 (包含 `<your-custom-subdomain>`) 取代為針對文字分析資源所產生的端點。 您可以透過登入 [Azure 入口網站](https://azure.microsoft.com/features/azure-portal/)，選取您的文字分析訂用帳戶，然後選取 `Quick start` 來找到此端點。
@@ -132,24 +132,24 @@ Microsoft Power BI Desktop 是免費的應用程式，可讓您將您的資料�
 in  keyphrases
 ```
 
-使用您的文字分析存取金鑰取代 `YOUR_API_KEY_HERE`。 您也可以透過登入 [Azure 入口網站](https://azure.microsoft.com/features/azure-portal/)、選取您的文字分析訂用帳戶，然後選取 [概觀] 頁面來找到此金鑰。 請務必保留金鑰前後的引號。 然後按一下 [完成]  。
+使用您的文字分析存取金鑰取代 `YOUR_API_KEY_HERE`。 您也可以透過登入 [Azure 入口網站](https://azure.microsoft.com/features/azure-portal/)、選取您的文字分析訂用帳戶，然後選取 [概觀] 頁面來找到此金鑰。 請務必保留金鑰前後的引號。 然後按一下 [完成]。
 
 ## <a name="use-the-custom-function"></a>使用自訂函式
 <a name="UseCustomFunction"></a>
 
 現在您可以使用自訂函式，從每個客戶的意見擷取關鍵片語，並將它們儲存在資料表中的新資料行。 
 
-在 Power BI Desktop 中，於 [查詢視窗] 中，切換回 `FabrikamComments` 查詢。 選取 [新增資料行]  功能區。 在 [一般]  群組中，按一下 [叫用自訂函數]  。
+在 Power BI Desktop 中，於 [查詢視窗] 中，切換回 `FabrikamComments` 查詢。 選取 [新增資料行] 功能區。 在 [一般] 群組中，按一下 [叫用自訂函數]。
 
 ![[叫用自訂函式按鈕]](../media/tutorials/power-bi/invoke-custom-function-button.png)<br><br>
 
-[叫用自訂函數] 對話方塊隨即出現。 在 [新資料行名稱]  中，輸入 `keyphrases`。 在 [函數查詢]  中，選取您建立的自訂函式 `KeyPhrases`。
+[叫用自訂函數] 對話方塊隨即出現。 在 [新資料行名稱] 中，輸入 `keyphrases`。 在 [函數查詢] 中，選取您建立的自訂函式 `KeyPhrases`。
 
 對話方塊中會出現新的欄位 **text (optional)** 。 此欄位是我們要使用哪一個資料行，針對關鍵片語 API 的 `text` 參數提供值。 (請記住，您已經以硬式編碼方式編寫 `language` 與 `id` 參數的值)。從下拉式功能表選取`Merged` (我們[稍早](#PreparingData)透過合併主旨與訊息欄位所建立的資料行)。
 
 ![[叫用自訂函式]](../media/tutorials/power-bi/invoke-custom-function.png)
 
-最後，按一下 [確定]  。
+最後，按一下 [確定]。
 
 如果一切都準備就緒，Power BI 會針對資料表中的每個資料列呼叫您的自訂函式一次。 它會傳送查詢至關鍵片語 API，並新增新的資料行到資料表來儲存結果。 但在開始進行之前，您可能需要指定驗證和隱私權設定。
 
@@ -160,7 +160,7 @@ in  keyphrases
 
 ![[認證橫幅]](../media/tutorials/power-bi/credentials-banner.png)
 
-按一下 [編輯認證]  ，確定已在對話方塊中選取 `Anonymous`，然後按一下 [連線]  。 
+按一下 [編輯認證]，確定已在對話方塊中選取 `Anonymous`，然後按一下 [連線]。 
 
 > [!NOTE]
 > 選取 `Anonymous` 是因為文字分析服務會透過您使用的存取金鑰驗證您的身分，因此 Power BI 不需要為 HTTP 要求本身提供認證。
@@ -174,23 +174,23 @@ in  keyphrases
 
 ![[隱私權橫幅]](../media/tutorials/power-bi/privacy-banner.png)
 
-按一下 [繼續]  ，然後針對對話方塊中的每個資料來源選擇 `Public`。 然後按一下 [儲存]  。
+按一下 [繼續]，然後針對對話方塊中的每個資料來源選擇 `Public`。 然後按一下 [儲存]。
 
 ![[設定資料來源隱私權]](../media/tutorials/power-bi/privacy-dialog.png)
 
 ## <a name="create-the-word-cloud"></a>建立文字雲
 <a name="WordCloud"></a>
 
-處理好出現的各個橫幅後，按一下 [常用] 功能區中的 [關閉並套用]  以關閉查詢編輯器。
+處理好出現的各個橫幅後，按一下 [常用] 功能區中的 [關閉並套用] 以關閉查詢編輯器。
 
 Power BI Desktop 需要一點時間來提出必要的 HTTP 要求。 在資料表的每個資料列中，新的 `keyphrases` 資料行會包含關鍵片語 API 在文字中所偵測到的關鍵片語。 
 
-現在，您將使用此資料行來產生文字雲。 若要開始，請按一下工作區左邊 Power BI Desktop 主視窗中的 [報告]  按鈕。
+現在，您將使用此資料行來產生文字雲。 若要開始，請按一下工作區左邊 Power BI Desktop 主視窗中的 [報告] 按鈕。
 
 > [!NOTE]
-> 為何要使用所擷取的關鍵片語來產生文字雲，而不是使用每個評論的完整文字？ 關鍵片語可為我們提供客戶評論中的「重要」  文字，而不只是「最常見的」  文字。 此外，在產生的文字雲中，文字大小也不會因為相對少數的評論中頻繁使用某個文字而受到影響。
+> 為何要使用所擷取的關鍵片語來產生文字雲，而不是使用每個評論的完整文字？ 關鍵片語可為我們提供客戶評論中的「重要」文字，而不只是「最常見的」文字。 此外，在產生的文字雲中，文字大小也不會因為相對少數的評論中頻繁使用某個文字而受到影響。
 
-如果您尚未安裝文字雲自訂視覺效果，請加以安裝。 在工作區右邊的 [視覺效果] 窗格中，按一下三個點 ( **...** )，然後選擇 [從存放區匯入]  。 然後搜尋「雲」，並按一下文字雲視覺效果旁的 [新增]  按鈕。 Power BI 會安裝文字雲視覺效果，並讓您知道它已成功安裝。
+如果您尚未安裝文字雲自訂視覺效果，請加以安裝。 在工作區右邊的 [視覺效果] 窗格中，按一下三個點 ( **...** )，然後選擇 [從存放區匯入]。 然後搜尋「雲」，並按一下文字雲視覺效果旁的 [新增] 按鈕。 Power BI 會安裝文字雲視覺效果，並讓您知道它已成功安裝。
 
 ![[新增自訂視覺效果]](../media/tutorials/power-bi/add-custom-visuals.png)<br><br>
 
@@ -200,11 +200,11 @@ Power BI Desktop 需要一點時間來提出必要的 HTTP 要求。 在資料�
 
 新的報告隨即出現在工作區中。 將 `keyphrases` 欄位從 [欄位] 面板拖曳至 [視覺效果] 面板的 [類別] 欄位。 文字雲會出現在報告中。
 
-現在，切換到 [視覺效果] 面板的 [格式] 頁面。 在 [停止文字] 類別中，開啟 [預設停止文字]  以從雲端排除常見的簡短文字，例如 "of"。 
+現在，切換到 [視覺效果] 面板的 [格式] 頁面。 在 [停止文字] 類別中，開啟 [預設停止文字] 以從雲端排除常見的簡短文字，例如 "of"。 
 
 ![[啟用預設停止文字]](../media/tutorials/power-bi/default-stop-words.png)
 
-在這個面板中往下一點，關閉 [旋轉文字]  和 [標題]  。
+在這個面板中往下一點，關閉 [旋轉文字] 和 [標題]。
 
 ![[啟用焦點模式]](../media/tutorials/power-bi/word-cloud-focus-mode.png)
 

@@ -1,12 +1,12 @@
 ---
-title: 使用者、群組、授權和角色概觀 - Azure AD | Microsoft Docs
+title: Azure Active Directory 中的使用者、群組、授權和角色
 description: Azure Active Directory 中使用者與指派的授權、系統管理員角色、群組成員資格之間的關聯性
 keywords: ''
 author: curtand
 manager: daveba
 ms.author: curtand
 ms.reviewer: vincesm
-ms.date: 11/08/2019
+ms.date: 06/16/2020
 ms.topic: overview
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -14,14 +14,14 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8052bb44df6d29e17304763051fa2099009b9701
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 89c96da30411705bf33b1c63f79a9beef11962a1
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583012"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223817"
 ---
-# <a name="users-groups-licensing-and-roles-for-large-organizations"></a>大型組織的使用者、群組、授權和角色
+# <a name="what-is-enterprise-user-management"></a>什麼是企業使用者管理？
 
 本文將在重要的使用者[身分識別管理](/azure/active-directory/fundamentals/identity-fundamentals?context=azure/active-directory/users-groups-roles/context/ugr-context)工作關係中 (就使用者的群組、授權、已部署企業應用程式及系統管理員角色而言)，引入 Azure AD 系統管理員。 隨著貴組織的成長，您可以使用 Azure AD 群組和系統管理員角色來：
 
@@ -62,7 +62,7 @@ ms.locfileid: "82583012"
 
 您可以使用 Azure AD 將群組存取權指派給[部署在 Azure AD 組織中的企業應用程式](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context)。 如果您將具有群組指派的動態群組合併至應用程式，您就可以在組織成長時，自動化使用者應用程式的存取權指派。 您需要 Azure Active Directory Premium P1 或 Premium P2 授權，才能將存取權指派給企業應用程式。
 
-Azure AD 也可讓您更精細地控制在應用程式與群組 (您對其指派存取權) 之間流動的資料。 在[企業應用程式](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)中，開啟應用程式，然後選取 [佈建]  來：
+Azure AD 也可讓您更精細地控制在應用程式與群組 (您對其指派存取權) 之間流動的資料。 在[企業應用程式](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)中，開啟應用程式，然後選取 [佈建] 來：
 
 * 為應用程式設定自動佈建 (若有支援)
 * 提供認證以連線至應用程式的使用者管理 API

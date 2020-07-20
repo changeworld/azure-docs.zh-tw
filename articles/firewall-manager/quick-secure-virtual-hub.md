@@ -8,30 +8,32 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 6641cc29025d39ddff33e706dd9b1b0da517b884
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 1917bed7727b97de27e560a0f2d8032a8ae08996
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563698"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242010"
 ---
-# <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---resource-manager-template"></a>快速入門：使用 Azure 防火牆管理員來保護您的虛擬中樞 - Resource Manager 範本
+# <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---arm-template"></a>快速入門：使用 Azure 防火牆管理員來保護您的虛擬中樞 - ARM 範本
 
-在本快速入門中，您可以使用 Resource Manager 範本，利用 Azure 防火牆管理員來保護您的虛擬中樞。 已部署的防火牆具有允許連線到 `www.microsoft.com` 的應用程式規則。 已部署兩部 Windows Server 2019 虛擬機器來測試防火牆。 一部跳躍伺服器用來連線到工作負載伺服器。 從工作負載伺服器，您只能連線到 `www.microsoft.com`。
+在本快速入門中，您可以使用 Azure Resource Manager 範本 (ARM 範本)，利用 Azure 防火牆管理員來保護您的虛擬中樞。 已部署的防火牆具有允許連線到 `www.microsoft.com` 的應用程式規則。 已部署兩部 Windows Server 2019 虛擬機器來測試防火牆。 一部跳躍伺服器用來連線到工作負載伺服器。 從工作負載伺服器，您只能連線到 `www.microsoft.com`。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 如需 Azure 防火牆管理員的詳細資訊，請參閱[什麼是 Azure 防火牆管理員？](overview.md)。
 
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffwm-docs-qs%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-a-secured-virtual-hub"></a>建立安全虛擬中樞
+## <a name="review-the-template"></a>檢閱範本
 
 此範本會使用 Azure 防火牆管理員建立受保護的虛擬中樞，以及支援此案例所需的資源。
-
-### <a name="review-the-template"></a>檢閱範本
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/fwm-docs-qs/)。
 
@@ -51,9 +53,9 @@ ms.locfileid: "85563698"
 - [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft.Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 
-### <a name="deploy-the-template"></a>部署範本
+## <a name="deploy-the-template"></a>部署範本
 
-將 Resource Manager 範本部署至 Azure：
+將 ARM 範本部署到 Azure：
 
 1. 選取 [部署至 Azure] 以登入 Azure 並開啟範本。 此範本會建立 Azure 防火牆、虛擬 WAN 與虛擬中樞、網路基礎結構和兩部虛擬機器。
 
@@ -86,7 +88,7 @@ ms.locfileid: "85563698"
 
 因此，現在您已確認防火牆規則正在運作：
 
-* 您可以瀏覽至允許 FQDN 的防火牆規則，但不可瀏覽至任何其他的防火牆規則。
+- 您可以瀏覽至允許 FQDN 的防火牆規則，但不可瀏覽至任何其他的防火牆規則。
 
 ## <a name="clean-up-resources"></a>清除資源
 

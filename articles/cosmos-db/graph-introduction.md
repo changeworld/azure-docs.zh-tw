@@ -5,28 +5,28 @@ author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 07/18/2019
+ms.date: 07/10/2020
 ms.author: lbosq
-ms.openlocfilehash: 0eb778d1fc2dca522bef675709b5241f214e2b86
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 18f8be607516857d1631f43d3bef9e2ae233c995
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118112"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248641"
 ---
-# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB 簡介：Gremlin API
+# <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 Gremlin API 簡介
 
-[Azure Cosmos DB](introduction.md)  是 Microsoft 推出的全域散發多模型資料庫服務，適用於任務關鍵性應用程式。 它是一種多模型資料庫，支援文件、索引鍵值、圖形和資料行系列資料模型。 Azure Cosmos DB Gremlin API 用來在針對任何規模而設計的完全受控資料庫服務上儲存及操作圖形資料。  
+[Azure Cosmos DB](introduction.md)  是 Microsoft 推出的全域散發多模型資料庫服務，適用於任務關鍵性應用程式。 它是一種多模型資料庫，支援文件、索引鍵值、圖形和資料行系列資料模型。 在針對任何規模設計的完全受控資料庫服務上，Azure Cosmos DB 會透過 Gremlin API 提供圖形資料庫服務。  
 
 :::image type="content" source="./media/graph-introduction/cosmosdb-graph-architecture.png" alt-text="Azure Cosmos DB 圖表架構" border="false":::
 
-本文提供 Azure Cosmos DB Gremlin API 的概觀，並說明如何使用它來儲存包含數十億個頂點和邊緣的巨大圖表。 您可以在幾毫秒延遲的情況下查詢圖形，並輕鬆地發展圖形結構。 Azure Cosmos DB 的 Gremlin API 會遵循 [Apache TinkerPop](https://tinkerpop.apache.org)  圖形資料庫標準，並使用 Gremlin 查詢語言。 
+本文提供 Azure Cosmos DB Gremlin API 的概觀，並說明如何用此功能來儲存包含數十億個頂點和邊緣的巨大圖表。 您可以在幾毫秒延遲的情況下查詢圖形，並輕鬆地發展圖形結構。 Azure Cosmos DB 的 Gremlin API 奠基於 [Apache TinkerPop](https://tinkerpop.apache.org) 圖形計算架構。 Azure Cosmos DB 中的 Gremlin API 會使用 Gremlin 查詢語言。
 
-Azure Cosmos DB 的 Gremlin API 結合了圖形資料庫演算法的強大功能，其具有調整性高的受控基礎結構，可針對因缺乏彈性和關聯式方法而產生的常見資料問題，提供唯一且有彈性的解決方案。 
+Azure Cosmos DB 的 Gremlin API 結合了圖形資料庫演算法的強大功能，其具有調整性高的受控基礎結構，可針對因缺乏彈性和關聯式方法而產生的常見資料問題，提供唯一且有彈性的解決方案。
 
-## <a name="features-of-azure-cosmos-db-graph-database"></a>Azure Cosmos DB 圖表資料庫的功能
+## <a name="features-of-azure-cosmos-dbs-gremlin-api"></a>Azure Cosmos DB Gremlin API 的功能
  
-Azure Cosmos DB 是一種完全受控的圖表資料庫，提供全域散發、彈性調整的儲存體和輸送量、自動編製索引和查詢、可調整的一致性等級，而且支援 TinkerPop 標準。 
+Azure Cosmos DB 是一種完全受控的圖表資料庫，提供全域散發、彈性調整的儲存體和輸送量、自動編製索引和查詢、可調整的一致性等級，而且支援 TinkerPop 標準。
 
 以下是 Azure Cosmos DB Gremlin API 所提供的差異化功能：
 
@@ -36,11 +36,11 @@ Azure Cosmos DB 是一種完全受控的圖表資料庫，提供全域散發、�
 
 * **多重區域複寫**
 
-  Azure Cosmos DB 可以自動將圖形資料複寫至全球各地的任何 Azure 區域。 全域複寫可簡化需要全域資料存取權的應用程式開發。 除了將全球各地的讀取和寫入延遲降至最低以外，Azure Cosmos DB 還提供了自動區域性容錯移轉機制，如果應用程式罕見地在區域中發生服務中斷時，這將可確保應用程式的持續性。 
+  Azure Cosmos DB 可以自動將圖形資料複寫至全球各地的任何 Azure 區域。 全域複寫可簡化需要全域資料存取權的應用程式開發。 除了將全球各地的讀取和寫入延遲降至最低以外，Azure Cosmos DB 還提供了自動區域性容錯移轉機制，如果應用程式罕見地在區域中發生服務中斷時，這將可確保應用程式的持續性。
 
 * **使用最廣為採用的圖形查詢標準進行快速查詢和周遊**
 
-  儲存異質頂點和邊緣，並透過熟悉的 Gremlin 語法加以查詢。 Gremlin 是命令式的功能性查詢語言，其提供豐富的介面來實作常用圖形演算法。 
+  儲存異質頂點和邊緣，並透過熟悉的 Gremlin 語法加以查詢。 Gremlin 是命令式的功能性查詢語言，其提供豐富的介面來實作常用圖形演算法。
   
   這樣一來，不需要指定結構描述提示、次要索引或檢視，Azure Cosmos DB 就能進行大量且即時的查詢和周遊。 深入了解[使用 Gremlin 查詢圖形](gremlin-support.md)。
 
@@ -52,17 +52,18 @@ Azure Cosmos DB 是一種完全受控的圖表資料庫，提供全域散發、�
 
 * **自動編製索引**
 
-  根據預設，Azure Cosmos DB 會自動為圖表中節點和邊緣內的屬性編製索引，而不要求或需要任何結構描述或建立次要索引。 深入了解 [Azure Cosmos DB 的索引編製](https://docs.microsoft.com/azure/cosmos-db/index-overview)。 
+  根據預設，Azure Cosmos DB 會自動為圖表中節點 (也稱為頂點) 和邊緣內的屬性編製索引，而不要求或需要任何結構描述或建立次要索引。 深入了解 [Azure Cosmos DB 的索引編製](https://docs.microsoft.com/azure/cosmos-db/index-overview)。
 
 * **Apache TinkerPop 相容性**
 
-  Azure Cosmos DB 支援[開放原始碼的 Apache TinkerPop 標準](https://tinkerpop.apache.org/)。 Tinkerpop 標準有豐富的應用程式和程式庫生態系統，可以與 Azure Cosmos DB 的 Gremlin API 輕鬆整合。 
+  Azure Cosmos DB 支援[開放原始碼的 Apache TinkerPop 標準](https://tinkerpop.apache.org/)。 Tinkerpop 標準有豐富的應用程式和程式庫生態系統，可以與 Azure Cosmos DB 的 Gremlin API 輕鬆整合。
 
 * **可調式一致性層級**
 
   Azure Cosmos DB 提供了五個定義完善的一致性層級，讓您可在應用程式的一致性與效能之間做出適當的取捨。 針對查詢和讀取作業，Azure Cosmos DB 提供五個不同的一致性等級：強式、限定過期、工作階段、一致的前置和最終。 這些細微且定義完善的一致性等級，可讓您在一致性、可用性與延遲三者間做出合理取捨。 深入了解 [Azure Cosmos DB 中的 Tunable 資料一致性層級](consistency-levels.md)。
 
-## <a name="scenarios-that-can-use-gremlin-api"></a>可以使用 Gremlin API 的案例
+## <a name="scenarios-that-use-gremlin-api"></a>可以使用 Gremlin API 的案例
+
 以下是某些可以使用 Azure Cosmos DB 圖形支援的案例︰
 
 * **社交網路/Customer 365**
@@ -82,6 +83,7 @@ Azure Cosmos DB 是一種完全受控的圖表資料庫，提供全域散發、�
   以圖形模擬 IoT 裝置之間的網路和連線，可讓您更了解裝置和資產的狀態。 您也可以了解網路的某個部分變動時可能對其他部分造成什麼影響。
 
 ## <a name="introduction-to-graph-databases"></a>圖形資料庫的簡介
+
 實務上的資料會自然連線。 傳統的資料模型化著重於個別定義實體，以及計算這些實體在執行階段上的關聯性。 雖然此模型有其優點，但要在其限制下管理高度連結的資料並不容易。  
 
 圖形資料庫方法則是依賴儲存層中持續的關聯性，以達到高效率的圖形擷取作業。 Azure Cosmos DB 的 Gremlin API 支援[屬性圖形模型](https://tinkerpop.apache.org/docs/current/reference/#intro)。
@@ -90,34 +92,39 @@ Azure Cosmos DB 是一種完全受控的圖表資料庫，提供全域散發、�
 
 [圖形](http://mathworld.wolfram.com/Graph.html)屬性是由[頂點](http://mathworld.wolfram.com/GraphVertex.html)和[邊緣](http://mathworld.wolfram.com/GraphEdge.html)組成的結構。 這兩個物件能夠以任意數目的索引鍵值組作為屬性。 
 
-* **頂點** - 頂點代表特定的實體，例如人員、地點或事件。
+* **頂點/節點** - 頂點代表特定的實體，例如人員、地點或事件。
 
-* **邊緣** - 邊緣代表頂點之間的關聯性。 比方說，某個人可能會知道其他人、參與某個事件，以及在最近前往某個位置。 
+* **邊緣/關聯性** - 邊緣代表頂點之間的關聯性。 比方說，某個人可能會知道其他人、參與某個事件，以及在最近前往某個位置。
 
-* **屬性** - 屬性表達頂點和邊緣的相關資訊。 頂點或邊緣中可以有任意數目的屬性，並且可用來說明及篩選查詢中的物件。 屬性範例包括具有名稱和年齡的頂點，或是具有時間戳記和/或加權的邊緣。 
+* **屬性** - 屬性表達頂點和邊緣的相關資訊。 頂點或邊緣中可以有任意數目的屬性，並且可用來說明及篩選查詢中的物件。 屬性範例包括具有名稱和年齡的頂點，或是具有時間戳記和/或加權的邊緣。
 
-圖形資料庫通常內含在 NoSQL 或非關聯式的資料庫類別中，因為沒有結構描述或受限資料模型的相依性。 這種缺乏結構描述的特性，可讓連接的結構自然又有效率地模型化和儲存。 
+* **標籤** - 標籤是頂點或邊緣的名稱或識別碼。 標籤可以將多個頂點或邊緣分組，讓群組中的所有頂點/邊緣都具有特定標籤。 例如，圖形可以有標籤類型為 "person" 的多個頂點。
 
-### <a name="gremlin-by-example"></a>Gremlin 範例
+圖形資料庫通常內含在 NoSQL 或非關聯式的資料庫類別中，因為沒有結構描述或受限資料模型的相依性。 這種缺乏結構描述的特性，可讓連接的結構自然又有效率地模型化和儲存。
+
+### <a name="graph-database-by-example"></a>透過範例說明圖表資料庫
+
 讓我們利用一個範例圖表了解如何以 Gremlin 表達查詢。 下圖顯示的商務應用程式以圖表形式管理使用者、興趣和裝置的相關資料。  
 
 :::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="顯示人員、裝置和興趣的範例資料庫" border="false"::: 
 
 此圖形有下列*頂點*類型 (在 Gremlin 中稱為「標籤」)︰
 
-- **人員**：圖表中有三個人：Robin、Thomas 和 Ben
-- **興趣**：在此範例中他們的興趣是足球比賽
-- **裝置**：人員使用的裝置
-- **作業系統**：執行裝置的作業系統
+* **人員**：圖表中有三個人：Robin、Thomas 和 Ben
+* **興趣**：在此範例中他們的興趣是足球比賽
+* **裝置**：人員使用的裝置
+* **作業系統**：執行裝置的作業系統
+* **位置**：從中存取裝置的位置
 
-我們透過下列*邊緣*類型/標籤，表示這些實體之間的關聯性︰
+我們透過下列*邊緣*類型，表示這些實體之間的關聯性︰
 
-- **認識**：例如，「Thomas 認識 Robin」
-- **有興趣**：在圖表中表示人員的興趣，例如「Ben 對足球有興趣」
-- **執行 OS**︰膝上型電腦執行 Windows OS
-- **使用**：代表某個人使用的裝置。 例如，Robin 使用序號 77 的 Motorola 手機
+* **認識**：例如，「Thomas 認識 Robin」
+* **有興趣**：在圖表中表示人員的興趣，例如「Ben 對足球有興趣」
+* **執行 OS**︰膝上型電腦執行 Windows OS
+* **使用**：代表某個人使用的裝置。 例如，Robin 使用序號 77 的 Motorola 手機
+* **位於**：代表從中存取裝置的位置
 
-讓我們使用 [Gremlin 主控台](https://tinkerpop.apache.org/docs/3.3.2/reference/#gremlin-console) (英文) 對此圖表執行一些作業。 也可以在您選擇的平台 (Java、Node.js、Python 或 .NET) 使用 Gremlin 驅動程式執行這些作業。  在了解 Azure Cosmos DB 中支援什麼功能之前，讓我們先看看幾個範例，以熟悉語法。
+Gremlin 主控台是 Apache TinkerPop 所提供的互動式終端機，此終端機會用來與圖表資料互動。 若要深入了解，請參閱[如何使用 Gremlin 主控台](create-graph-gremlin-console.md)的快速入門文件。 也可以在您選擇的平台 (Java、Node.js、Python 或 .NET) 使用 Gremlin 驅動程式執行這些作業。 下列範例會示範如何使用 Gremlin 主控台對此圖表資料執行查詢。
 
 首先，讓我們看看 CRUD。 下列 Gremlin 陳述式會將 "Thomas" 頂點插入圖表中︰
 
@@ -132,6 +139,7 @@ Azure Cosmos DB 是一種完全受控的圖表資料庫，提供全域散發、�
 ```
 
 下列查詢會依名字的遞減順序傳回 "person" 頂點：
+
 ```java
 :> g.V().hasLabel('person').order().by('firstName', decr)
 ```
@@ -143,6 +151,7 @@ Azure Cosmos DB 是一種完全受控的圖表資料庫，提供全域散發、�
 ```
 
 ## <a name="next-steps"></a>後續步驟
+
 若要深入了解 Azure Cosmos DB 中的圖表支援，請參閱︰
 
 * 開始使用 [Azure Cosmos DB 圖表教學課程](create-graph-dotnet.md)。

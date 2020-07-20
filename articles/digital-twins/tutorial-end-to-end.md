@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: faad1f812fc5c2cde6847a5208ee4b385f28ab3e
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 9c07db575827254de833fc0b2390be823ebc4e57
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391922"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206569"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>建置端對端解決方案
 
@@ -205,8 +205,9 @@ az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku 
 
 :::image type="content" source="media/tutorial-end-to-end/event-subscription-2.png" alt-text="Azure 入口網站：建立事件訂用帳戶":::
 
-填入欄位如下：
+填寫下列欄位 (不會提及依預設填入的欄位)：
 * 「事件訂用帳戶詳細資料」 > [名稱]：命名事件訂用帳戶。
+* *主題詳細資料* > **系統主題名稱**：提供要用於系統主題的名稱。 
 * 「事件類型」 > [篩選至事件類型]：從功能表選項中選取「裝置遙測」。
 * 「端點詳細資料」 > [端點類型]：從功能表選項中選取「Azure 函式」。
 * 「端點詳細資料」 > [端點]：按「選取端點」 連結。 這會開啟「選取 Azure 函式」 視窗：:::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="Azure 入口網站事件訂用帳戶：選取 Azure 函式" border="false":::
@@ -361,11 +362,9 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 
 :::image type="content" source="media/tutorial-end-to-end/event-subscription-1b.png" alt-text="Azure 入口網站：事件方格事件訂用帳戶":::
 
-建立此事件訂用帳戶的步驟，類似本教學課程稍早訂閱第一個 IoT 中樞 Azure 函式的步驟。 差別在於這次不需要指定「裝置遙測」作為接聽的事件類型，而且您會連線至不同的 Azure 函式。
+建立此事件訂用帳戶的步驟，類似本教學課程稍早訂閱第一個 IoT 中樞 Azure 函式的步驟。 這次不需要指定「裝置遙測」作為接聽的事件類型，而且您會連線至不同的 Azure 函式。
 
-以下是訂用帳戶步驟：
-
-在「建立事件訂用帳戶」 頁面中，填寫下列欄位：
+在 [建立事件訂用帳戶] 頁面中，填寫下列欄位 (不會提及依預設填入的欄位)：
 * 「事件訂用帳戶詳細資料」 > [名稱]：命名事件訂用帳戶。
 * 「端點詳細資料」 > [端點類型]：從功能表選項中選取「Azure 函式」。
 * 「端點詳細資料」 > [端點]：按「選取端點」 連結。 這會開啟「選取 Azure 函式」 視窗：

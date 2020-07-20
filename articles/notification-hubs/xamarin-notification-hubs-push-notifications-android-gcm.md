@@ -17,12 +17,12 @@ ms.date: 08/01/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
-ms.openlocfilehash: 06be9e7c4ce41ff01494ecef84a800b52db6b82e
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 5f1d12081591b180acca8ee35ecc5a5bf202211e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84308127"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223936"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>教學課程：使用通知中樞將推播通知傳送至 Xamarin.Android 應用程式
 
@@ -60,7 +60,7 @@ ms.locfileid: "84308127"
 2. 輸入您從 Google Firebase 主控台記下的**伺服器金鑰**。
 3. 在工具列上選取 [儲存]。
 
-    ![](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
+    ![Azure 入口網站中的通知中樞螢幕擷取畫面，並以紅色框線醒目提示 Google G C M F C M 選項。](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
 您的通知中樞已設定成使用 FCM，而且您已擁有可用來註冊應用程式以接收通知和傳送推播通知的連接字串。
 

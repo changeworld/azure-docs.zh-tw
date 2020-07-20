@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: 8a1dd07fd567f41c2b406aabccd0421b5a6983af
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: fbfc6bf9c50257c2683522913503bf9b29450d94
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80671277"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226378"
 ---
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請務必：
 
@@ -95,7 +95,7 @@ ms.locfileid: "80671277"
 
 UI 的文字表現方式和畫面現在應會如下：
 
-![](~/articles/cognitive-services/speech-service/media/sdk/qs-java-android-assistant-designer-ui.png)
+![與 Bot UI 對話時的螢幕擷取畫面。](~/articles/cognitive-services/speech-service/media/sdk/qs-java-android-assistant-designer-ui.png)
 
 ## <a name="add-sample-code"></a>新增範例程式碼
 
@@ -257,9 +257,9 @@ UI 的文字表現方式和畫面現在應會如下：
 
 1. 將 Android 裝置連接到開發電腦。 請確定您已在裝置上啟用[開發模式和 USB 偵錯](https://developer.android.com/studio/debug/dev-options)。
 
-1. 若要建置應用程式，請按 Ctrl+F9，或從功能表列中選擇 [建置]   > [建立專案]  。
+1. 若要建置應用程式，請按 Ctrl+F9，或從功能表列中選擇 [建置] > [建立專案]。
 
-1. 若要啟動應用程式，請按 Shift+F10，或選擇 [執行]   > [執行應用程式]  。
+1. 若要啟動應用程式，請按 Shift+F10，或選擇 [執行] > [執行應用程式]。
 
 1. 在出現的 [部署目標] 視窗中，選擇您的 Android 裝置。
 

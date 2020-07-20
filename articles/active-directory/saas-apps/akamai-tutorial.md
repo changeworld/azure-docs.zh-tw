@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17d0c91d31f7746c53d62af87670c40e9902554c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 9ea2c20a7720cc80b36ff88595aa6ca5c57f6b9a
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026794"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232367"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Akamai 整合
 
@@ -61,13 +61,13 @@ Akamai EAA 設定為 Azure AD 上的單一應用程式。 管理員可設定應�
 
 **優點**：
 
-• 您只需設定 IDP 一次
+* 您只需設定 IDP 一次
 
 **缺點**：
 
-• 使用者最終會有兩個應用程式入口網站
+* 使用者最終會有兩個應用程式入口網站
 
-• 所有應用程式有共同的單一 CA 原則涵蓋範圍。
+* 所有應用程式有共同的單一 CA 原則涵蓋範圍。
 
 ![整合案例 1](./media/header-akamai-tutorial/scenario1.png)
 
@@ -77,13 +77,14 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 **優點**：
 
-• 您可以定義個別的 CA 原則
+* 您可以定義個別的 CA 原則
 
-• 所有應用程式都會顯示在 O365 Waffle 和 myApps.microsoft.com 面板上。
+* 所有應用程式都會顯示在 0365 Waffle 和 myApps.microsoft.com 面板上。
+
 
 **缺點**：
 
-• 您必須設定多個 IDP。
+* 您必須設定多個 IDP。
 
 ![整合案例 2](./media/header-akamai-tutorial/scenario2.png)
 
@@ -450,7 +451,7 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 ### <a name="kerberos-authentication"></a>Kerberos 驗證
 
-在下列範例中，我們將發佈內部網頁伺服器 [http://frp-app1.superdemo.live](http://frp-app1.superdemo.live/)，並使用 KCD 啟用 SSO
+在下列範例中，我們將發佈內部網頁伺服器 <code>http://frp-app1.superdemo.live</code>，並使用 KCD 啟用 SSO
 
 #### <a name="general-tab"></a>General Tab
 

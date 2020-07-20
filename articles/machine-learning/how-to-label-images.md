@@ -2,20 +2,20 @@
 title: 標記標籤專案中的影像
 title.suffix: Azure Machine Learning
 description: 了解如何在 Azure Machine Learning 標籤專案中使用資料標記工具。
-author: lobrien
-ms.author: laobri
+author: sdgilley
+ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 0421e5ad164c440c1b841cae66e7dafc5deadb81
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 90ef75c704459ca726480e6950ba748162c66b8e
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025126"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147021"
 ---
-# <a name="tag-images-in-a-labeling-project-preview"></a>標記標籤專案中的影像 (預覽)
+# <a name="tag-images-in-a-labeling-project"></a>標記標籤專案中的影像 
 
 當您的專案系統管理員在 Azure Machine Learning 中[建立標籤專案](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project)之後，您就可以使用標籤工具 (公開預覽) 快速準備機器學習專案的資料。 本文章說明：
 
@@ -24,7 +24,7 @@ ms.locfileid: "86025126"
 > * 標籤工具
 > * 如何使用特定標籤工作的工具
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 組織和專案的 [Microsoft 帳戶](https://account.microsoft.com/account)或 Azure Active Directory 帳戶
 * 參與者層級的存取權，用於存取包含標籤專案的工作區。
@@ -64,7 +64,7 @@ ms.locfileid: "86025126"
 
 在您提交手邊資料的標籤後，Azure 會以工作佇列中的一組新影像來重新整理頁面。
 
-### <a name="assisted-machine-learning"></a>輔助機器學習 
+### <a name="assisted-machine-learning-preview"></a>輔助機器學習 (預覽) 
 
 可能已觸發機器學習演算法。 如果您的專案中已啟用這些演算法，可能會看到下列內容：
 

@@ -1,11 +1,11 @@
 ---
-ms.openlocfilehash: 9e50caeac5c52b9f2309448e2bb0b760f533fb6c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ec78ffd1fbc1f77a7b1e1467df1c2303e7d5daf1
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "67173696"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86156639"
 ---
 ## <a name="delete-anchors"></a>刪除錨點
 
-若要刪除雲端空間錨點，您可以使用 `DeleteAnchor()` 方法。 在無須再使用錨點加以刪除，是很適合在開發程序初期加入的實務準則。 這麼做可適時清除資源。 此外，雖然您可以免費使用 Azure Spatial Anchors，但其定價日後可能會有所變更。 您可以在我們的[定價頁面](https://azure.microsoft.com/pricing/details/spatial-anchors/)找到關於預覽期間定價的詳細資訊。
+若要刪除雲端空間錨點，您可以使用 `DeleteAnchor()` 方法。 在您的開發程序和實務中，最好盡早設定將不再使用的錨點刪除，以讓您的 Azure 資源保持乾淨。 

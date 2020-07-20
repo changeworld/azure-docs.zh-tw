@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 準備內部部署電腦以進行�
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: MVC
-ms.openlocfilehash: e6840b75d58bf19f742f94caad74e10aebe24666
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: aec2e95b65be2e3c69b2d29111fa1cfdbd66674e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044153"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223613"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>準備內部部署電腦以移轉至 Azure
 
@@ -122,7 +122,7 @@ ms.locfileid: "86044153"
 --- | --- | ---
 **安裝 Hyper-V Linux Integration Services** | 重建 Linux init 映像以包含必要的 Hyper-V 驅動程式。 重建 init 映像可確保 VM 會在 Azure 中開機。 | 最新版的 Linux 散發套件預設會包含此元件。<br/><br/> 若未包含在內，請對所有版本 (上述版本除外) 進行手動安裝。
 **啟用 Azure 序列主控台記錄** | 啟用主控台記錄可協助您進行疑難排解。 您不需要重新啟動 VM。 Azure VM 將會使用磁碟映像開機， 這相當於為新的 VM 重新開機。<br/><br/> 請遵循[這些指示](../virtual-machines/troubleshooting/serial-console-linux.md)來啟用。
-**更新裝置對應檔案** | 將具有裝置名稱的裝置對應檔案更新為磁碟區關聯，以使用持續性裝置識別碼。 | 對所有版本 (上述版本除外) 進行手動安裝。
+**更新裝置對應檔案** | 將具有裝置名稱的裝置對應檔案更新為磁碟區關聯，以使用持續性裝置識別碼。 | 對所有版本 (上述版本除外) 進行手動安裝。 (僅適用於以代理程式為基礎的 VMware 案例)
 **更新 fstab 項目** |  更新項目以使用持續性磁碟區識別碼。    | 對所有版本 (上述版本除外) 進行手動更新。
 **移除 udev 規則** | 移除任何會根據 mac 位址等項目來保留介面名稱的 udev 規則。 | 對所有版本 (上述版本除外) 進行手動移除。
 **更新網路介面** | 更新網路介面以根據 DHCP.nst 來接收 IP 位址 | 對所有版本 (上述版本除外) 進行手動更新。

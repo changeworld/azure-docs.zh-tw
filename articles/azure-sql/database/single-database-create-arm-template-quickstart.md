@@ -11,16 +11,16 @@ author: mumian
 ms.author: jgao
 ms.reviewer: carlrab
 ms.date: 06/24/2020
-ms.openlocfilehash: 2975b98306b7019022799d5ba69b9d7af5797a2b
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: a766d61c49fe23645c232432198eb4aa0eedb98b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85368034"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135631"
 ---
-# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本在 Azure SQL Database 中建立單一資料庫
+# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-an-arm-template"></a>快速入門：使用 ARM 範本在 Azure SQL Database 中建立單一資料庫
 
-要在 Azure SQL Database 中建立資料庫，建立[單一資料庫](single-database-overview.md)是最快速且最簡單的選項。 本快速入門說明如何使用 Azure Resource Manager 範本建立單一資料庫。
+要在 Azure SQL Database 中建立資料庫，建立[單一資料庫](single-database-overview.md)是最快速且最簡單的選項。 本快速入門說明如何使用 Azure Resource Manager 範本 (ARM 範本) 建立單一資料庫。
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -36,7 +36,7 @@ ms.locfileid: "85368034"
 
 單一資料庫具有一組使用兩個[購買模型](purchasing-models.md)之一定義的計算、記憶體、IO 和儲存體資源。 當您建立單一資料庫時，也會定義[伺服器](logical-servers.md)加以管理，並將其放入指定區域中的 [Azure 資源群組](../../active-directory-b2c/overview.md)內。
 
-本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-sql-logical-server/)。
+本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-sql-database/)。
 
 :::code language="json" source="~/quickstart-templates/101-sql-database/azuredeploy.json" range="1-67" highlight="41-65":::
 
@@ -88,4 +88,4 @@ Remove-AzResourceGroup -Name $resourceGroupName
   - [使用 Azure Data Studio 進行連線及查詢](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
 - 若要使用 Azure CLI 建立單一資料庫，請參閱 [Azure CLI 範例](az-cli-script-samples-content-guide.md)。
 - 若要使用 Azure PowerShell 建立單一資料庫，請參閱 [Azure PowerShell 範例](powershell-script-content-guide.md)。
-- 若要了解如何建立 Resource Manager 範本，請參閱[建立您的第一個範本](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)。
+- 若要了解如何建立 ARM 範本，請參閱[建立您的第一個範本](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)。
