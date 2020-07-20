@@ -1,26 +1,20 @@
 ---
-title: Azure Functions 绑定表达式和模式
-description: 了解如何基于通用模式创建不同的 Azure Functions 绑定表达式。
-services: functions
-documentationcenter: na
+title: Azure Functions 系結運算式和模式
+description: 瞭解如何根據常見模式建立不同的 Azure Functions 系結運算式。
 author: craigshoemaker
-manager: jeconnoc
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
-origin.date: 02/18/2019
-ms.date: 03/20/2019
-ms.author: v-junlch
-ms.openlocfilehash: 0c1dbbae5e4be965f195b5ea4fc88b1bc5fb4f87
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 02/18/2019
+ms.author: cshoe
+ms.openlocfilehash: ca3e342d42e6baf2bc4caaed07dc196203d8a032
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61437866"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261064"
 ---
-# <a name="azure-functions-binding-expression-patterns"></a>Azure Functions 绑定表达式模式
+# <a name="azure-functions-binding-expression-patterns"></a>Azure Functions 系結運算式模式
 
-[触发器和绑定](./functions-triggers-bindings.md)的最强大功能之一是*绑定表达式*。 在 function.json 檔案以及函式參數與程式碼中，您可以使用多個運算式，這些運算式會將各種來源解析為相對應的多個值。
+[觸發程式和](./functions-triggers-bindings.md)系結的其中一個最強大功能就是系結*運算式*。 在 function.json** 檔案以及函式參數與程式碼中，您可以使用多個運算式，這些運算式會將各種來源解析為相對應的多個值。
 
 大多數運算式會藉由以大括號裹住來供您識別。 例如，在佇列觸發程序函式中，`{queueTrigger}` 會解析為佇列訊息文字。 如果 Blob 輸出繫結的 `path` 屬性是 `container/{queueTrigger}`，且函式是由佇列訊息 `HelloWorld` 所觸發，則系統會建立名為 `HelloWorld` 的 Blob。
 
@@ -35,15 +29,16 @@ ms.locfileid: "61437866"
 
 ## <a name="binding-expressions---app-settings"></a>繫結運算式 - 應用程式設定
 
-為了遵循最佳做法，祕密和連接字串應使用應用程式設定來管理，而不是使用組態檔。 這會限制對這些祕密的存取，並保護儲存在公用原始檔控制存放庫的檔案，例如 function.json。
+為了遵循最佳做法，祕密和連接字串應使用應用程式設定來管理，而不是使用組態檔。 這會限制對這些祕密的存取，並保護儲存在公用原始檔控制存放庫的檔案，例如 function.json**。
 
 當您想要根據環境來變更設定時，應用程式設定也很有用。 例如，在測試環境中，您可能會想要監視不同佇列或 Blob 儲存體容器。
 
 應用程式設定繫結運算式可藉由不同於其他繫結運算式的方式來識別：它們會以百分比符號裹住，而不是以大括號裹住。 例如，如果 Blob 輸出繫結路徑是 `%Environment%/newblob.txt` 而 `Environment` 應用程式設定值是 `Development`，則系統會在 `Development` 容器中建立 Blob。
 
-在本機執行函式時，應用程式設定值來自 local.settings.json 檔案。
+在本機執行函式時，應用程式設定值來自 local.settings.json** 檔案。
 
-請注意，觸發程序和繫結的 `connection` 屬性是特殊案例，且會自動將值解析為應用程式設定，不含百分比符號。 
+> [!NOTE]
+> `connection`觸發程式和系結的屬性是特殊案例，會自動將值解析為應用程式設定，而不含百分比符號。 
 
 下列範例是使用應用程式設定 `%input-queue-name%` 來定義要觸發之佇列的 Azure 佇列儲存體觸發程序。
 
@@ -73,7 +68,7 @@ public static void Run(
 }
 ```
 
-## <a name="trigger-file-name"></a>触发器文件名
+## <a name="trigger-file-name"></a>觸發程序檔案名稱
 
 Blob 觸發程序的 `path` 可以是可讓您參考其他繫結和函式程式碼中之觸發 Blob 名稱的模式。 此模式也可以包含篩選條件，該條件會指定哪個 Blob 可以觸發函式引動過程。
 
@@ -121,7 +116,7 @@ public static void Run(Stream image, string filename, Stream imageSmall, ILogger
 <!--TODO: add JavaScript example -->
 <!-- Blocked by bug https://github.com/Azure/Azure-Functions/issues/248 -->
 
-類別庫中的所有屬性都可以使用繫結運算式和模式。 在下列範例中，屬性建構函式參數是與上述 function.json 範例相同的 `path` 值： 
+類別庫中的所有屬性都可以使用繫結運算式和模式。 在下列範例中，屬性建構函式參數是與上述 function.json** 範例相同的 `path` 值： 
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -137,7 +132,19 @@ public static void Run(
 
 ```
 
-您也可以為檔案名稱的各個部分 (例如副檔名) 建立運算式。 如需如何在 Blob 路徑字串中使用運算式和模式的詳細資訊，請參閱[儲存體 Blob 繫結參考](functions-bindings-storage-blob.md)。
+您也可以為部分檔案名建立運算式。 在下列範例中，只會在符合模式的檔案名上觸發函數：`anyname-anyfile.csv`
+
+```json
+{
+    "name": "myBlob",
+    "type": "blobTrigger",
+    "direction": "in",
+    "path": "testContainerName/{date}-{filetype}.csv",
+    "connection": "OrderStorageConnection"
+}
+```
+
+如需如何在 Blob 路徑字串中使用運算式和模式的詳細資訊，請參閱[儲存體 Blob 繫結參考](functions-bindings-storage-blob.md)。
 
 ## <a name="trigger-metadata"></a>觸發程序中繼資料
 
@@ -148,7 +155,7 @@ public static void Run(
 * QueueTrigger - 如果是有效字串，便觸發訊息內容
 * DequeueCount
 * ExpirationTime
-* id
+* Id
 * InsertionTime
 * NextVisibleTime
 * PopReceipt
@@ -173,13 +180,13 @@ public static void Run(
   ]
 ```
 
-在對應的參考文章中，會描述每個觸發程序之中繼資料屬性的詳細資料。 如需範例，請參閱[佇列觸發程序中繼資料](functions-bindings-storage-queue.md#trigger---message-metadata)。 您也可以在入口網站的 [整合] 索引標籤中，繫結設定區域之下的 [文件] 區段取得文件。  
+在對應的參考文章中，會描述每個觸發程序之中繼資料屬性的詳細資料。 如需範例，請參閱[佇列觸發程序中繼資料](functions-bindings-storage-queue-trigger.md#message-metadata)。 您也可以在入口網站的 [整合]**** 索引標籤中，繫結設定區域之下的 [文件]**** 區段取得文件。  
 
-## <a name="json-payloads"></a>JSON 有效负载
+## <a name="json-payloads"></a>JSON 承載
 
 當觸發程序承載為 JSON 時，您可以在相同函式與函式程式碼內之其他繫結的設定中參考其屬性。
 
-下列範例針對接收 JSON 中 Blob 名稱的 Webhook 函式顯示 function.json 檔案：`{"BlobName":"HelloWorld.txt"}`。 Blob 輸入繫結會讀取 Blob，HTTP 輸出繫結則會在 HTTP 回應中傳回 Blob 內容。 請注意，Blob 輸入繫結會藉由直接參考 `BlobName` 屬性 (`"path": "strings/{BlobName}"`) 來取得 Blob 名稱
+下列範例針對接收 JSON 中 Blob 名稱的 Webhook 函式顯示 function.json** 檔案：`{"BlobName":"HelloWorld.txt"}`。 Blob 輸入繫結會讀取 Blob，HTTP 輸出繫結則會在 HTTP 回應中傳回 Blob 內容。 請注意，Blob 輸入繫結會藉由直接參考 `BlobName` 屬性 (`"path": "strings/{BlobName}"`) 來取得 Blob 名稱
 
 ```json
 {
@@ -284,27 +291,27 @@ public class BlobName
 
 ## <a name="create-guids"></a>建立 GUID
 
-`{rand-guid}` 繫結運算式可建立 GUID。 `function.json` 檔案中的下列 Blob 路徑會建立具有如 50710cb5-84b9-4d87-9d83-a03d6976a682.txt 之名稱的 Blob。
+`{rand-guid}` 繫結運算式可建立 GUID。 `function.json` 檔案中的下列 Blob 路徑會建立具有如 50710cb5-84b9-4d87-9d83-a03d6976a682.txt** 之名稱的 Blob。
 
 ```json
 {
   "type": "blob",
   "name": "blobOutput",
   "direction": "out",
-  "path": "my-output-container/{rand-guid}"
+  "path": "my-output-container/{rand-guid}.txt"
 }
 ```
 
 ## <a name="current-time"></a>目前時間
 
-繫結運算式 `DateTime` 會解析成 `DateTime.UtcNow`。 `function.json` 檔案中的下列 Blob 路徑會建立具有如 2018-02-16T17-59-55Z.txt 之名稱的 Blob。
+繫結運算式 `DateTime` 會解析成 `DateTime.UtcNow`。 `function.json` 檔案中的下列 Blob 路徑會建立具有如 2018-02-16T17-59-55Z.txt** 之名稱的 Blob。
 
 ```json
 {
   "type": "blob",
   "name": "blobOutput",
   "direction": "out",
-  "path": "my-output-container/{DateTime}"
+  "path": "my-output-container/{DateTime}.txt"
 }
 ```
 ## <a name="binding-at-runtime"></a>執行階段的繫結
@@ -313,6 +320,4 @@ public class BlobName
 
 ## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]
-> [使用 Azure 函数返回值](./functions-bindings-return-value.md)
-
-<!-- Update_Description: link update -->
+> [使用 Azure 函數傳回值](./functions-bindings-return-value.md)

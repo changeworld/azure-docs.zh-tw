@@ -1,23 +1,22 @@
 ---
 title: 透過 Azure IoT 中樞更新裝置韌體 | Microsoft Docs
-description: 使用作業和裝置對應項實作裝置韌體更新程序
+description: 了解如何實作可從連線至 IoT 中樞的後端應用程式觸發的裝置韌體更新程序。
 services: iot-hub
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/22/2019
-ms.custom: mvc
-ms.openlocfilehash: 1418a9815e155a0c491fc65b16307fa2755bd964
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/28/2019
+ms.custom:
+- mvc
+- mqtt
+ms.openlocfilehash: 2eec96eee943d6fe291d054e1d73876e38f61d6d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59008897"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81769965"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>教學課程：實作裝置韌體更新程序
 
@@ -37,11 +36,11 @@ ms.locfileid: "59008897"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>必要條件
 
-您在此快速入門中執行的兩個範例應用程式是使用 Node.js 所撰寫的。 您的開發電腦上需要 Node.js 4.x.x 版或更高版本。
+您在此快速入門中執行的兩個範例應用程式是使用 Node.js 所撰寫的。 您的開發電腦上需要 Node.js 10.x.x 版或更新版本。
 
 您可以從 [nodejs.org](https://nodejs.org) 下載適用於多種平台的 Node.js。
 
@@ -52,6 +51,8 @@ node --version
 ```
 
 從 https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip 下載範例 Node.js 專案並將 ZIP 封存檔解壓縮。
+
+請確定您的防火牆已開啟連接埠 8883。 本教學課程中的裝置範例會使用 MQTT 通訊協定，其會透過連接埠 8883 進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="set-up-azure-resources"></a>設定 Azure 資源
 
@@ -64,7 +65,7 @@ hubname=tutorial-iot-hub
 location=centralus
 
 # Install the IoT extension if it's not already installed
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Create a resource group
 az group create --name tutorial-iot-hub-rg --location $location
@@ -73,7 +74,7 @@ az group create --name tutorial-iot-hub-rg --location $location
 az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
 
 # Make a note of the service connection string, you need it later
-az iot hub show-connection-string --name $hubname -o table
+az iot hub show-connection-string --name $hubname --policy-name service -o table
 
 ```
 
@@ -95,8 +96,7 @@ az iot hub device-identity show-connection-string --device-id MyFirmwareUpdateDe
 ```
 
 > [!TIP]
-> 如果您在 Windows 命令提示字元或 Powershell 命令提示字元中執行這些命令，請參閱 [azure-iot-cli-extension tips](https://github.com/Azure/azure-iot-cli-extension/wiki/Tips
-) 頁面，以取得如何為 JSON 字串加上引號的相關資訊。
+> 如果您在 Windows 命令提示字元或 Powershell 命令提示字元中執行這些命令，請參閱 [azure-iot-cli-extension tips](https://github.com/Azure/azure-iot-cli-extension/wiki/Tips) 頁面，以取得如何為 JSON 字串加上引號的相關資訊。
 
 ## <a name="start-the-firmware-update"></a>開始進行韌體更新
 
@@ -187,7 +187,7 @@ node ServiceClient.js "{your service connection string}"
 
 ![後端應用程式](./media/tutorial-firmware-update/BackEnd2.png)
 
-由於 IoT 中樞裝置身分識別登錄中的延遲，您可能不會看到每個傳送至後端應用程式的狀態更新。 您也可以在入口網站中，經由 IoT 中樞的 [自動裝置管理] -> [IoT 裝置組態] 區段來檢視計量：
+由於自動裝置設定會在建立時執行，以及之後每五分鐘執行一次，因此您可能不會看到每個傳送至後端應用程式的更新狀態。 您也可以在入口網站中，經由 IoT 中樞的 [自動裝置管理] -> [IoT 裝置組態] 區段來檢視計量：
 
 ![在入口網站中檢視組態](./media/tutorial-firmware-update/portalview.png)
 

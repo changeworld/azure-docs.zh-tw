@@ -4,12 +4,12 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: 87514a139c097ebec3804c8c5ff82a1a21ccdd8c
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
-ms.translationtype: HT
+ms.openlocfilehash: a53d2b259bc4ece12c4ccb1cf47409cd2f0af86f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42809469"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67174664"
 ---
 **Objective-C**：
 
@@ -28,7 +28,7 @@ ms.locfileid: "42809469"
     [[UIApplication sharedApplication] registerForRemoteNotifications];
     ```
 
-3. 在 **QSAppDelegate.m**中，新增下列處理常式方法。 您的應用程式現在已更新為支援推播通知。 
+3. 在**QSAppDelegate.m**中，添加以下處理程式方法。 您的應用程式現在已更新為支援推播通知。 
 
     ```objc
     // Registration with APNs is successful
@@ -97,7 +97,7 @@ ms.locfileid: "42809469"
     }
     ```
 
-**Swift**：
+**斯威夫特**：
 
 1. 新增含有以下內容的檔案 **ClientManager.swift** 。 使用 Azure 行動應用程式後端的 URL 取代 *%AppUrl%*。
 

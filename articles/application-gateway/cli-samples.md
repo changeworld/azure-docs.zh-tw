@@ -1,34 +1,25 @@
 ---
-title: Azure 應用程式閘道 Azure CLI 範例 | Microsoft Docs
-description: 應用程式閘道 Azure CLI 範例
+title: Azure 應用程式閘道的 Azure CLI 範例
+description: 本文提供 Azure CLI 範例的連結，讓您可以快速部署以各種方式設定的 Azure 應用程式閘道。
 services: application-gateway
-documentationcenter: networking
 author: vhorne
-manager: jpconnock
-editor: tysonn
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
-origin.date: 01/30/2018
-ms.date: 07/02/2018
-ms.author: v-junlch
-ms.custom: mvc
-ms.openlocfilehash: 90e5c52c9efae7538308371a157b552d4e4d12ee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.topic: sample
+ms.date: 11/16/2019
+ms.author: victorh
+ms.openlocfilehash: 57df87f6cc101f4cc097b464d93238d3b868c93b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60831124"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74129773"
 ---
-# <a name="azure-application-gateway-azure-cli-samples"></a>Azure 應用程式閘道 Azure CLI 範例
+# <a name="azure-cli-examples-for-azure-application-gateway"></a>Azure 應用程式閘道的 Azure CLI 範例
 
-下表包含可建立應用程式閘道的 Azure CLI 指令碼範例連結。
+下表包含 Azure 應用程式閘道的 Azure CLI 指令碼範例連結。
 
 | | |
 |---|---|
 | [管理網路流量](./scripts/create-vmss-cli.md) | 建立應用程式閘道和所有相關的資源。 |
 | [限制網路流量](./scripts/create-vmss-waf-cli.md) | 建立使用 OWASP 規則限制網路流量的應用程式閘道。|
 | | |
-

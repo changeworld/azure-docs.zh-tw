@@ -1,24 +1,26 @@
 ---
-title: 使用 Azure Data Factory 將資料載入 Azure Data Lake Storage Gen1 | Microsoft Docs
+title: 將資料載入至 Azure Data Lake Storage Gen1
 description: 使用 Azure Data Factory 將資料複製到 Azure Data Lake Storage Gen1
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 01/17/2018
-ms.author: jingwang
-ms.openlocfilehash: 522b9743af28dedb2aec5682a1ae95b9d52ad2d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1b1b19814709451bdbbea97462c459149484e71f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60548426"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81415854"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料載入 Azure Data Lake Storage Gen1
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md) (先前稱為 Azure Data Lake Store) 是容納巨量資料分析工作負載的企業級超大規模存放庫。 Data Lake Storage Gen1 可讓您擷取任何大小、類型和擷取速度的資料。 系統會在單一位置擷取資料以供作業及探勘分析之用。
 
@@ -26,10 +28,10 @@ Azure Data Factory 是完全受控的雲端式資料整合服務。 您可以使
 
 Azure Data Factory 可針對將資料載入到 Data Lake Storage Gen1 的作業提供下列優勢：
 
-* **容易設定**：沒有所需的指令碼的直覺式 5 步驟精靈。
-* **豐富的資料存放區支援**:一組豐富內部部署和雲端資料存放區的內建支援。 如需詳細清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)的資料表。
-* **安全且符合規範**:資料會透過 HTTPS 或 ExpressRoute 傳輸。 具有全域服務，可確保資料絕不會離開地理界限。
-* **高效能**:最多 1 GB/s 資料載入至 Data Lake 儲存體 Gen1 的速度。 如需詳細資料，請參閱[複製活動效能](copy-activity-performance.md)。
+* **容易設定**：直覺式的 5 步驟精靈，無須任何指令碼。
+* **支援豐富的資料存放區**：內建各種內部部署和雲端式資料存放區的支援。 如需詳細清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)的資料表。
+* **安全且符合規範**：資料會透過 HTTPS 或 ExpressRoute 傳輸。 具有全域服務，可確保資料絕不會離開地理界限。
+* **高效能**：將資料載入到 Data Lake Storage Gen1 的速度高達 1 GB/s。 如需詳細資料，請參閱[複製活動效能](copy-activity-performance.md)。
 
 此文章將示範如何使用 Data Factory 資料複製工具，將資料從 Amazon S3 載入到 Data Lake Storage Gen1。 您可以依照類似的步驟，從其他類型的資料存放區複製資料。
 
@@ -38,13 +40,13 @@ Azure Data Factory 可針對將資料載入到 Data Lake Storage Gen1 的作業�
 
 ## <a name="prerequisites"></a>必要條件
 
-* Azure 訂用帳戶：如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/) 。
-* Data Lake 儲存體 Gen1 帳戶：如果您沒有 Data Lake 儲存體 Gen1 帳戶，請參閱中的指示[建立資料湖儲存體 Gen1 帳戶](../data-lake-store/data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account)。
+* Azure 訂用帳戶：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+* Data Lake Storage Gen1 帳戶：如果沒有 Data Lake Storage Gen1 帳戶，請參閱[建立 Data Lake Storage Gen1 帳戶](../data-lake-store/data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account)中的指示。
 * Amazon S3：本文示範如何從 Amazon S3 複製資料。 您可以依照類似的步驟來使用其他資料存放區。
 
 ## <a name="create-a-data-factory"></a>建立 Data Factory
 
-1. 在左側功能表中，選取 [建立資源] > [分析] > [資料處理站]：
+1. 在左側功能表上，選取 [建立資源] > [分析] > [資料處理站]：
    
    ![在 [新增] 窗格中選取資料處理站](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -52,13 +54,13 @@ Azure Data Factory 可針對將資料載入到 Data Lake Storage Gen1 的作業�
       
    ![新增資料處理站頁面](./media/load-data-into-azure-data-lake-store//new-azure-data-factory.png)
  
-    * **名稱**：輸入 Azure 資料處理站的全域唯一名稱。 如果您收到「Data Factory 名稱 \"LoadADLSG1Demo\" 無法使用」的錯誤，請為該資料處理站輸入其他名稱。 例如，您可以使用_**您的名稱**_**ADFTutorialDataFactory**。 請嘗試再次建立資料處理站。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](naming-rules.md)。
+    * **Name**：輸入 Azure 資料處理站的全域唯一名稱。 如果您收到「Data Factory 名稱 \"LoadADLSG1Demo\" 無法使用」的錯誤，請為該資料處理站輸入其他名稱。 例如，您可以使用_**您的名稱**_**ADFTutorialDataFactory**。 請嘗試再次建立資料處理站。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](naming-rules.md)。
     * 訂用帳戶：選取用來在其中建立資料處理站的 Azure 訂用帳戶。 
-    * **資源群組**：從下拉式清單中選取現有的資源群組，或選取 [新建] 選項，然後輸入資源群組的名稱。 若要了解資源群組，請參閱 [使用資源群組管理您的 Azure 資源](../azure-resource-manager/resource-group-overview.md)。  
+    * **資源群組**：從下拉式清單中選取現有的資源群組，或選取 [新建] 選項，然後輸入資源群組的名稱。 若要了解資源群組，請參閱 [使用資源群組管理您的 Azure 資源](../azure-resource-manager/management/overview.md)。  
     * **版本**：選取 [V2]。
     * **位置**：選取資料處理站的位置。 只有受到支援的位置會顯示在下拉式清單中。 資料處理站所使用的資料存放區可位於其他位置和區域。 這些資料存放區包含 Azure Data Lake Storage Gen1、Azure 儲存體、Azure SQL Database 等等。
 
-3. 選取 [建立] 。
+3. 選取 [建立]。
 4. 建立完成後，請移至資料處理站。 您會看到如下圖所示的 [Data Factory] 首頁： 
    
    ![Data Factory 首頁](./media/load-data-into-azure-data-lake-store/data-factory-home-page.png)

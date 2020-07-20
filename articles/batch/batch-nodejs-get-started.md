@@ -1,28 +1,20 @@
 ---
-title: 教學課程 - 使用適用於 Node.js 的 Azure Batch 用戶端程式庫 | Microsoft Docs
+title: 教學課程 - 使用適用於 Node.js 的 Azure Batch 用戶端程式庫
 description: 了解 Azure Batch 的基本概念和使用 Node.js 建置簡單的解決方案。
-services: batch
-author: shwetams
-manager: jeconnoc
-ms.assetid: ''
-ms.service: batch
-ms.devlang: nodejs
-ms.topic: conceptual
-ms.workload: big-compute
+ms.topic: tutorial
 ms.date: 05/22/2017
-ms.author: shwetams
-ms.openlocfilehash: bb0bfa5eac3dd9031718fb12f270f5fc03bbaea6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 4cecd25346d868dfb27deb9f768342ab2e72ade9
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60775209"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780169"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>開始使用適用於 Node.js 的 Batch SDK
 
 了解如何使用 [Azure Batch Node.js SDK](/javascript/api/overview/azure/batch) 在 Node.js 中建置 Batch 用戶端的基本概念。 我們會逐步了解批次應用程式的案例，然後使用 Node.js 用戶端加以設定。  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本文假設您已具備 Node.js 的使用知識並熟悉 Linux。 同時假設您的 Azure 帳戶設有存取權限，可建立 Batch 和儲存體服務。
 
 建議您先閱讀 [Azure Batch 技術概觀](batch-technical-overview.md)，再進行本文概述的步驟。
@@ -52,7 +44,7 @@ Node.js 用戶端會使用準備工作部署批次作業 (稍後詳細說明) �
 
 現在，我們要依照程序逐步建置 Node.js 用戶端︰
 
-### <a name="step-1-install-azure-batch-sdk"></a>步驟 1：安裝 Azure Batch SDK
+### <a name="step-1-install-azure-batch-sdk"></a>步驟 1:安裝 Azure Batch SDK
 
 您可以使用 npm 安裝命令來安裝適用於 Node.js 的 Azure Batch SDK。
 
@@ -65,9 +57,9 @@ Node.js 用戶端會使用準備工作部署批次作業 (稍後詳細說明) �
 >
 >
 
-### <a name="step-2-create-an-azure-batch-account"></a>步驟 2：建立 Azure Batch 帳戶
+### <a name="step-2-create-an-azure-batch-account"></a>步驟 2:建立 Azure Batch 帳戶
 
-您可以從 [Azure 入口網站](batch-account-create-portal.md)或從命令列 ([Powershell](batch-powershell-cmdlets-get-started.md) /[Azure cli](/cli/azure)) 加以建立。
+您可以從 [Azure 入口網站](batch-account-create-portal.md)或從命令列 ([PowerShell](batch-powershell-cmdlets-get-started.md) /[Azure CLI](/cli/azure)) 加以建立。
 
 以下是透過 Azure CLI 命令建立 Batch 帳戶的命令。
 
@@ -279,7 +271,7 @@ Azure Batch 作業是相似工作的邏輯群組。 在我們的案例中，這�
 
 準備工作是在 Azure Batch 作業提交期間指定。 以下是準備工作組態參數︰
 
-* **ID**：準備工作的唯一識別碼
+* **識別碼**：準備工作的唯一識別碼
 * **commandLine**：要執行工作可執行檔的命令列
 * **resourceFiles**：提供執行此工作所需下載之檔案詳細資料的物件陣列。  其選項如下：
     - blobSource︰檔案的 SAS URI
@@ -353,6 +345,6 @@ var container_list = ["con1","con2","con3","con4"]
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如果您不熟悉這項服務，我們建議檢閱 [Azure Batch 功能概觀](batch-api-basics.md) 一文。
+- 深入了解 [Batch 服務工作流程和主要資源](batch-service-workflow-features.md)，例如集區、節點、作業和工作。
 - 請參閱 [Batch Node.js 參考](/javascript/api/overview/azure/batch)以探索 Batch API。
 

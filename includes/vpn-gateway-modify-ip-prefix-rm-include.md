@@ -9,13 +9,13 @@ ms.date: 02/14/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 13089a2514229c5c5bc7b40d9447719247b23405
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60419121"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67173816"
 ---
-### <a name="noconnection"></a>修改區域網路閘道 IP 位址首碼 - 沒有閘道連線
+### <a name="to-modify-local-network-gateway-ip-address-prefixes---no-gateway-connection"></a><a name="noconnection"></a>修改區域網路閘道 IP 位址首碼 - 沒有閘道連線
 
 若要新增其他位址首碼：
 
@@ -47,9 +47,9 @@ ms.locfileid: "60419121"
    -AddressPrefix @('10.101.0.0/24','10.101.1.0/24')
    ```
 
-### <a name="withconnection"></a>修改區域網路閘道 IP 位址首碼 - 現有閘道連線
+### <a name="to-modify-local-network-gateway-ip-address-prefixes---existing-gateway-connection"></a><a name="withconnection"></a>修改區域網路閘道 IP 位址首碼 - 現有閘道連線
 
-如果有一个网关连接并且想要添加或删除包含在本地网关中的 IP 地址前缀，则需要按顺序执行以下步骤。 這會導致您 VPN 連線的停機時間。 修改 IP 位址首碼時，您不需要刪除 VPN 閘道。 您只需要移除連線。
+如果您有閘道連線並想要新增或移除包含在區域網路閘道中的 IP 位址首碼，您必須依序執行下列步驟。 這會導致您 VPN 連線的停機時間。 修改 IP 位址首碼時，您不需要刪除 VPN 閘道。 您只需要移除連線。
 
 1. 移除連線。
 
@@ -70,7 +70,7 @@ ms.locfileid: "60419121"
    Set-AzLocalNetworkGateway -LocalNetworkGateway $local `
    -AddressPrefix @('10.101.0.0/24','10.101.1.0/24')
    ```
-3. 创建连接。 在此範例中，我們會設定 IPsec 連線類型。 當您重新建立連線時，請使用針對設定指定的連線類型。 對於其他連線類型，請參閱 [PowerShell Cmdlet](https://msdn.microsoft.com/library/mt603611.aspx) 頁面。
+3. 建立連線。 在此範例中，我們會設定 IPsec 連線類型。 當您重新建立連線時，請使用針對設定指定的連線類型。 對於其他連線類型，請參閱 [PowerShell Cmdlet](https://msdn.microsoft.com/library/mt603611.aspx) 頁面。
    
    設定 VirtualNetworkGateway 的變數。
 

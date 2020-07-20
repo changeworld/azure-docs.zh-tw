@@ -1,27 +1,25 @@
 ---
-title: Azure PowerShell 指令碼範例 - 建立 Windows VM NLB | Microsoft Docs
+title: Azure PowerShell 指令碼範例 - 建立 Windows VM NLB
 description: Azure PowerShell 指令碼範例 - 建立 Windows VM NLB
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 18bf494ceb212de07b3e7ee1e0fa0e4de89cb07f
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 0a9e53794e547382efbfc7ef24964c3e9c7b8204
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55976746"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81459265"
 ---
 # <a name="load-balance-traffic-between-highly-available-virtual-machines"></a>對高可用性虛擬機器之間的流量進行負載平衡
 
@@ -31,7 +29,7 @@ ms.locfileid: "55976746"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+ 
 
 ## <a name="sample-script"></a>範例指令碼
 
@@ -49,7 +47,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 此指令碼會使用下列命令來建立部署。 下表中的每個項目都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | 建立用來存放所有資源的資源群組。 |
 | [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | 建立子網路組態。 此組態可使用於虛擬網路建立程序。 |
@@ -68,6 +66,16 @@ Remove-AzResourceGroup -Name myResourceGroup
 | [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) | 建立 VM 組態。 此組態包括 VM 名稱、作業系統和系統管理認證等資訊。 建立 VM 時會使用此組態。 |
 | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | 建立虛擬機器。 |
 |[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 移除資源群組及其內含的所有資源。 |
+
+您也可以使用自己的自訂受控映像建立 VM。 在 VM 組態中，針對 `Set-AzVMSourceImage` 使用 `-Id` 和 `-VM` 參數，而非`-PublisherName`、`-Offer`、`-Skus`和 `-Version`。
+
+例如，建立 VM 組態會：
+
+```powershell
+$vmConfig = New-AzVMConfig -VMName 'myVM3' -VMSize Standard_DS1_v2 -AvailabilitySetId $as.Id | `
+  Set-AzVMOperatingSystem -Windows -ComputerName 'myVM3' -Credential $cred | `
+  Set-AzVMSourceImage -Id <Image.ID of the custom managed image> | Add-AzVMNetworkInterface -Id $nicVM3.Id
+ ```
 
 ## <a name="next-steps"></a>後續步驟
 

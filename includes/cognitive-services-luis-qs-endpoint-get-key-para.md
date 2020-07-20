@@ -11,11 +11,11 @@ ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
 ms.openlocfilehash: ef8dae8219eaf1a85a5c112705517b992e25a50f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56740675"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174290"
 ---
 預測端點的存取權會與端點金鑰一起提供。 基於本快速入門的目的，請使用與您的 LUIS 帳戶相關聯的免費入門金鑰。 
  
@@ -23,11 +23,11 @@ ms.locfileid: "56740675"
 
     [![Language Understanding (LUIS) 應用程式清單的螢幕擷取畫面](media/cognitive-services-luis/app-list.png "Language Understanding (LUIS) 應用程式清單的螢幕擷取畫面")](media/cognitive-services-luis/app-list.png)
 
-2. 在右上功能表中選取您的名稱，然後選取 [設定]。
+2. 在右上功能表中選取您的名稱，然後選取 [設定]  。
 
     ![LUIS 使用者設定功能表存取](media/cognitive-services-luis/get-user-settings-in-luis.png)
 
-3. 複製 [撰寫金鑰] 的值。 您稍後會在快速入門中使用此值。 
+3. 複製 [撰寫金鑰]  的值。 您稍後會在快速入門中使用此值。 
 
     [![Language Understanding (LUIS) 使用者設定的螢幕擷取畫面](media/cognitive-services-luis/get-user-authoring-key.png "Language Understanding (LUIS) 使用者設定的螢幕擷取畫面")](media/cognitive-services-luis/get-user-authoring-key.png)
 

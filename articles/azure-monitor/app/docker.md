@@ -1,25 +1,15 @@
 ---
 title: 在 Azure Application Insights 中監視 Docker 應用程式 | Microsoft Docs
 description: Docker 效能計數器、事件和例外狀況可以與來自容器化應用程式的遙測一起顯示在 Application Insights 上。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 27a3083d-d67f-4a07-8f3c-4edb65a0a685
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.author: mbullwin
-ms.openlocfilehash: 115e2d6b041ecc3f38a2a6438d90777da9660221
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: 5ff3d6a2b31425a3fb6857c8c6aed45f7ef18d64
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62098026"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77669602"
 ---
-# <a name="monitor-docker-applications-in-application-insights-deprecated"></a>在 Application Insights （已過時） 監視 Docker 應用程式
+# <a name="monitor-docker-applications-in-application-insights-deprecated"></a>監視 Application Insights 中的 Docker 應用程式（已淘汰）
 
 > [!NOTE]
 > 此解決方案已被取代。 若要深入了解我們目前對於容器監視所做的投資，建議查看[適用於容器的 Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview)。
@@ -36,7 +26,7 @@ ms.locfileid: "62098026"
 
 ## <a name="set-up-your-application-insights-resource"></a>設定您的 Application Insights 資源
 
-1. 登入 [Microsoft Azure 入口網站](https://azure.com)，然後開啟您應用程式的 Application Insights 資源；或[建立新的資源](../../azure-monitor/app/create-new-resource.md )。 
+1. 登入[Microsoft Azure 入口網站](https://azure.com)並開啟應用程式的 Application Insights 資源;或[建立一個新的](../../azure-monitor/app/create-new-resource.md )。 
    
     *我應該使用哪種資源？* 如果您在主機上執行的應用程式是由其他人所開發，則您需要[建立新的 Application Insights 資源](../../azure-monitor/app/create-new-resource.md )。 這是您檢視及分析遙測的位置 (針對應用程式類型選取 [一般])。
    
@@ -44,7 +34,7 @@ ms.locfileid: "62098026"
    
     第三種情況是您已開發大部分應用程式，但想要使用不同的資源來顯示其遙測。 在這種情況下，您可能也需要為 Docker 資料建立不同的資源。
 
-2. 按一下 [程式集]  下拉式清單，然後複製檢測金鑰。 您將會使用這個項目以告知 SDK 傳送遙測的位置。
+2. 按一下 [程式集] **** 下拉式清單，然後複製檢測金鑰。 您將會使用這個項目以告知 SDK 傳送遙測的位置。
 
 保持該瀏覽器視窗就緒，因為您稍後即會返回以查看您的遙測。
 

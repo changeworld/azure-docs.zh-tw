@@ -1,27 +1,19 @@
 ---
-title: 教學課程 - 使用 Azure PowerShell 建立和管理 Windows VM | Microsoft Docs
+title: 教學課程 - 使用 Azure PowerShell 建立和管理 Windows VM
 description: 在本教學課程中，您將了解如何使用 Azure PowerShell 在 Azure 中建立和管理 Windows VM
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 11/28/2018
+ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 94858a147dc0383376a54bc94685d855d37e12d5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 229df5d2f5186ad7cec08952f2a44790f9220dfe
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57991201"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82100306"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 建立和管理 Windows VM
 
@@ -38,7 +30,7 @@ Azure 虛擬機器提供完全可設定且彈性的計算環境。 本教學課�
 
 Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 
 
-若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看] 即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製] 即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
+若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看]  即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製]  即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
 
 ## <a name="create-resource-group"></a>建立資源群組
 
@@ -89,13 +81,13 @@ Get-AzPublicIpAddress `
    -ResourceGroupName "myResourceGroupVM"  | Select IpAddress
 ```
 
-在本機電腦上使用下列命令，建立 VM 的遠端桌面工作階段。 請將 IP 位址取代為 VM 的 publicIPAddress。 出現提示時，請輸入您在建立 VM 時所使用的認證。
+在本機電腦上使用下列命令，建立 VM 的遠端桌面工作階段。 請將 IP 位址取代為 VM 的 publicIPAddress  。 出現提示時，請輸入您在建立 VM 時所使用的認證。
 
 ```powershell
 mstsc /v:<publicIpAddress>
 ```
 
-在 [Windows 安全性] 視窗中，選取 [更多選擇]，然後選取 [使用不同的帳戶]。 輸入您為 VM 建立的使用者名稱和密碼，然後按一下 [確定]。
+在 [Windows 安全性]  視窗中，選取 [更多選擇]  ，然後選取 [使用不同的帳戶]  。 輸入您為 VM 建立的使用者名稱和密碼，然後按一下 [確定]  。
 
 ## <a name="understand-marketplace-images"></a>了解 Marketplace 映像
 
@@ -181,12 +173,12 @@ VM 大小會決定可供 VM 使用的計算資源 (例如 CPU、GPU 和記憶體
 
 下表會將大小分類成各種使用案例。  
 
-| 類型                     | 一般大小           |    說明       |
+| 類型                     | 一般大小           |    描述       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [一般用途](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| 平衡的 CPU 對記憶體。 適用於開發/測試及小型到中型應用程式和資料解決方案。  |
-| [計算最佳化](sizes-compute.md)   | Fsv2、Fs、F             | CPU 與記憶體的比例高。 適用於中流量應用程式、網路設備，以及批次處理。        |
-| [記憶體最佳化](sizes-memory.md)    | Esv3、Ev3、M、GS、G、DSv2、Dv2  | 記憶體與核心的比例高。 適用於關聯式資料庫、中型到大型快取，以及記憶體內分析。                 |
-| [儲存體最佳化](sizes-storage.md)      | Ls                | 高磁碟輸送量及 IO。 適用於巨量資料、SQL 及 NoSQL 資料庫。                                                         |
+| [計算最佳化](sizes-compute.md)   | Fsv2          | CPU 與記憶體的比例高。 適用於中流量應用程式、網路設備，以及批次處理。        |
+| [記憶體最佳化](sizes-memory.md)    | Esv3、Ev3、M、DSv2、Dv2  | 記憶體與核心的比例高。 適用於關聯式資料庫、中型到大型快取，以及記憶體內分析。                 |
+| [儲存體最佳化](sizes-storage.md)      | Lsv2、Ls              | 高磁碟輸送量及 IO。 適用於巨量資料、SQL 及 NoSQL 資料庫。                                                         |
 | [GPU](sizes-gpu.md)          | NV、NVv2、NC、NCv2、NCv3、ND            | 以大量圖形轉譯和視訊編輯為目標的特製化 VM。       |
 | [高效能](sizes-hpc.md) | H        | 我們的最強大 CPU VM，可搭配選用的高輸送量網路介面 (RDMA)。 |
 
@@ -242,7 +234,7 @@ Start-AzVM `
 Azure VM 的電源狀態可以是許多電源狀態的其中一種。 
 
 
-| 電源狀態 | 說明
+| 電源狀態 | 描述
 |----|----|
 | 啟動中 | 虛擬機器正在啟動。 |
 | 執行中 | 虛擬機器未執行。 |

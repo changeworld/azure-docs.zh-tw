@@ -1,18 +1,18 @@
 ---
-title: 建立和修改 ExpressRoute 線路：Azure CLI | Microsoft Docs
+title: 建立和修改 ExpressRoute 線路： Azure CLI
 description: 本文說明如何使用 CLI 建立、佈建、驗證、更新、刪除和取消佈建 ExpressRoute 線路。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: anzaman;cherylmc
-ms.openlocfilehash: 556589aa7a0a577b9b1a010cf4811922ebc6de52
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 11/13/2019
+ms.author: cherylmc
+ms.openlocfilehash: 56af984ef83d2e237f0aa05af5cfef4dd6205256
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60837805"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738323"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>使用 CLI 建立和修改 ExpressRoute 線路
 
@@ -20,25 +20,26 @@ ms.locfileid: "60837805"
 本文說明如何使用命令列介面 (CLI) 來建立 Azure ExpressRoute 線路。 本文也會示範如何檢查狀態、更新或刪除和取消佈建線路。 如果您想要對 ExpressRoute 線路使用不同的方法，您可以從下列清單選取文章：
 
 > [!div class="op_single_selector"]
-> * [Azure 门户](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Azure 入口網站](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [影片 - Azure 入口網站](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
-> * [PowerShell (傳統)](expressroute-howto-circuit-classic.md)
-> 
+> * [Azure Resource Manager 範本](expressroute-howto-circuit-resource-manager-template.md)
+> * [影片-Azure 入口網站](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
+> * [PowerShell （傳統）](expressroute-howto-circuit-classic.md)
+>
 
 ## <a name="before-you-begin"></a>開始之前
 
 * 開始之前，請先安裝 CLI 命令的最新版本 (2.0 版或更新版本)。 如需關於安裝 CLI 命令的資訊，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli) 和[開始使用 Azure CLI](/cli/azure/get-started-with-azure-cli)。
 * 開始設定之前，請檢閱[必要條件](expressroute-prerequisites.md)和[工作流程](expressroute-workflows.md)。
 
-## <a name="create"></a>建立和佈建 ExpressRoute 線路
+## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>建立和佈建 ExpressRoute 線路
 
-### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1.登入您的 Azure 帳戶並且選取您的訂用帳戶
+### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1. 登入您的 Azure 帳戶並選取您的訂用帳戶
 
 若要開始您的組態，請登入您的 Azure 帳戶。 如果您使用 CloudShell 的「試用」功能，將可自動登入。 使用下列範例來協助您連接：
 
-```azurecli
+```azurecli-interactive
 az login
 ```
 
@@ -54,9 +55,9 @@ az account list
 az account set --subscription "<subscription ID>"
 ```
 
-### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2.取得支援的提供者、位置和頻寬清單
+### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. 取得支援的提供者、位置和頻寬的清單
 
-建立 ExpressRoute 線路之前，您需要有支援的連線提供者、位置和頻寬選項的清單。 CLI 命令`az network express-route list-service-providers`會傳回此資訊，您將在稍後步驟中使用：
+建立 ExpressRoute 線路之前，您需要有支援的連線提供者、位置和頻寬選項的清單。 CLI 命令 `az network express-route list-service-providers` 會傳回這項資訊，您將在稍後的步驟中使用：
 
 ```azurecli-interactive
 az network express-route list-service-providers
@@ -64,7 +65,7 @@ az network express-route list-service-providers
 
 回應如下列範例所示：
 
-```azurecli
+```output
 [
   {
     "bandwidthsOffered": [
@@ -117,18 +118,18 @@ az network express-route list-service-providers
 
 請檢查回應以查看是否列出您的連線提供者。 記下下列資訊，當您建立線路時將會用到：
 
-* 名稱
+* Name
 * PeeringLocations
 * BandwidthsOffered
 
 您現在已經準備好建立 ExpressRoute 線路。
 
-### <a name="3-create-an-expressroute-circuit"></a>3.建立 ExpressRoute 線路
+### <a name="3-create-an-expressroute-circuit"></a>3. 建立 ExpressRoute 線路
 
 > [!IMPORTANT]
 > ExpressRoute 線路會從發出服務金鑰時開始收費。 在連線提供者準備好佈建線路之後，再執行這項作業。
-> 
-> 
+>
+>
 
 若您還沒有資源群組，您必須在建立 ExpressRoute 線路之前建立一個。 您可以藉由使用下列命令來建立資源群組：
 
@@ -136,15 +137,15 @@ az network express-route list-service-providers
 az group create -n ExpressRouteResourceGroup -l "West US"
 ```
 
-以下示範如何透過矽谷的 Equinix 建立 200-Mbps ExpressRoute 線路。 如果您使用不同的提供者和不同的設定，請在您提出要求時替換成該資訊。 
+以下示範如何透過矽谷的 Equinix 建立 200-Mbps ExpressRoute 線路。 如果您使用不同的提供者和不同的設定，請在您提出要求時替換成該資訊。
 
 請確定您指定正確的 SKU 層和 SKU 系列：
 
-* SKU 層會判斷 ExpressRoute 標準或 ExpressRoute 高階附加元件是否啟用。 您可以指定 [標準] 來取得標準 SKU，或指定 [進階] 來取得進階附加元件。
-* SKU 系列決定計費類型。 您可以指定 [Metereddata] 以採用計量付費數據傳輸方案，選取 [Unlimiteddata] 以採用無限行動數據方案。 您可以將計費類型從 [Metereddata] 變更為 [Unlimiteddata]，但無法將類型從 [Unlimiteddata] 變更為 [Metereddata]。
+* SKU 層會決定 ExpressRoute 線路為 [[本機](expressroute-faqs.md#expressroute-local)]、[標準] 或 [ [Premium](expressroute-faqs.md#expressroute-premium)]。 您可以指定*Local*、 *Standard*或*Premium*。
+* SKU 系列決定計費類型。 您可以針對計量付費資料方案指定*Metereddata* ，並針對無限制的資料方案*Unlimiteddata* 。 您可以將計費類型從 *Metereddata* 變更為 *Unlimiteddata*，但無法將類型從 *Unlimiteddata* 變更為 *Metereddata*。 *本機*線路僅供*Unlimiteddata* 。
 
 
-从发布服务密钥的那一刻起，会对 ExpressRoute 线路进行计费。 下列是新服務金鑰的要求範例：
+ExpressRoute 線路會從發出服務金鑰時開始收費。 下列是新服務金鑰的要求範例：
 
 ```azurecli-interactive
 az network express-route create --bandwidth 200 -n MyCircuit --peering-location "Silicon Valley" -g ExpressRouteResourceGroup --provider "Equinix" -l "West US" --sku-family MeteredData --sku-tier Standard
@@ -152,17 +153,17 @@ az network express-route create --bandwidth 200 -n MyCircuit --peering-location 
 
 回應包含服務金鑰。
 
-### <a name="4-list-all-expressroute-circuits"></a>4.列出所有 ExpressRoute 循環
+### <a name="4-list-all-expressroute-circuits"></a>4. 列出所有 ExpressRoute 線路
 
-若要取得您所建立之所有 ExpressRoute 線路的清單，請執行`az network express-route list`命令。 您隨時可以使用此命令來擷取此資訊。 若要列出所有線路，在不使用任何參數的情況下進行呼叫。
+若要取得您所建立之所有 ExpressRoute 線路的清單，請執行 `az network express-route list` 命令。 您隨時可以使用此命令來擷取此資訊。 若要列出所有線路，在不使用任何參數的情況下進行呼叫。
 
 ```azurecli-interactive
 az network express-route list
 ```
 
-回應的 [服務金鑰] 欄位會列出您的服務金鑰。
+回應的 [服務金鑰]** 欄位會列出您的服務金鑰。
 
-```azurecli
+```output
 "allowClassicOperations": false,
 "authorizations": [],
 "circuitProvisioningState": "Enabled",
@@ -197,32 +198,32 @@ az network express-route list
 az network express-route list -h
 ```
 
-### <a name="5-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>5.將服務金鑰傳送給連線提供者以進行佈建
+### <a name="5-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>5. 將服務金鑰傳送給您的連線提供者以進行布建
 
 'ServiceProviderProvisioningState' 提供服務提供者端目前的佈建狀態相關資訊。 狀態提供 Microsoft 端的狀態。 如需詳細資訊，請參閱[工作流程文章](expressroute-workflows.md#expressroute-circuit-provisioning-states)。
 
 當您建立新的 ExpressRoute 線路時，線路會是下列狀態：
 
-```azurecli-interactive
+```output
 "serviceProviderProvisioningState": "NotProvisioned"
 "circuitProvisioningState": "Enabled"
 ```
 
 當連線提供者正在為您啟用線路時，線路會變更為下列狀態：
 
-```azurecli-interactive
+```output
 "serviceProviderProvisioningState": "Provisioning"
 "circuitProvisioningState": "Enabled"
 ```
 
 若要能夠使用 ExpressRoute 線路，它必須處於下列狀態：
 
-```azurecli-interactive
+```output
 "serviceProviderProvisioningState": "Provisioned"
 "circuitProvisioningState": "Enabled
 ```
 
-### <a name="6-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>6.定期檢查線路金鑰的情況和狀態
+### <a name="6-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>6. 定期檢查線路金鑰的狀態和狀態
 
 檢查線路金鑰的情況和狀態將能讓您得知提供者是否已啟用您的線路。 設定線路之後，[ServiceProviderProvisioningState] 會顯示為 [Provisioned]，如下列範例所示：
 
@@ -232,7 +233,7 @@ az network express-route show --resource-group ExpressRouteResourceGroup --name 
 
 回應如下列範例所示：
 
-```azurecli
+```output
 "allowClassicOperations": false,
 "authorizations": [],
 "circuitProvisioningState": "Enabled",
@@ -261,27 +262,27 @@ az network express-route show --resource-group ExpressRouteResourceGroup --name 
 "type": "Microsoft.Network/expressRouteCircuits]
 ```
 
-### <a name="7-create-your-routing-configuration"></a>7.创建路由配置
+### <a name="7-create-your-routing-configuration"></a>7. 建立路由設定
 
 如需逐步指示，請參閱 [ExpressRoute 線路路由組態](howto-routing-cli.md) 一文以建立和修改線路對等。
 
 > [!IMPORTANT]
 > 這些指示只適用於由提供第 2 層連線服務的服務提供者所建立的線路。 如果您使用的服務提供者是提供受控第 3 層服務 (通常是 IP VPN，如 MPLS)，您的連線提供者會為您設定和管理路由。
-> 
-> 
+>
+>
 
-### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8.將虛擬網路連結到 ExpressRoute 線路
+### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8. 將虛擬網路連結至 ExpressRoute 線路
 
 接下來，將虛擬網路連結到 ExpressRoute 線路。 使用[將虛擬網路連結至 ExpressRoute 線路](howto-linkvnet-cli.md)一文。
 
-## <a name="modify"></a>修改 ExpressRoute 線路
+## <a name="modifying-an-expressroute-circuit"></a><a name="modify"></a>修改 ExpressRoute 線路
 
 您可以修改 ExpressRoute 線路的某些屬性，而不會影響連線。 您可以進行下列變更，而不會有停機時間：
 
 * 您可以啟用或停用 ExpressRoute 線路的 ExpressRoute 進階附加元件。
-* 只要連接埠有可用的容量，您就可以增加 ExpressRoute 線路的頻寬。 但是，不支援將線路的頻寬降級。 
+* 只要連接埠有可用的容量，您就可以增加 ExpressRoute 線路的頻寬。 但是，不支援將線路的頻寬降級。
 * 您可以將計量方案從 [已計量資料] 變更為 [無限制資料]。 但是，不支援將計量方案從 [無限制資料] 變更為 [已計量資料]。
-* 您可以啟用和停用 [允許傳統作業] 。
+* 您可以啟用和停用 [允許傳統作業] **。
 
 如需限制的詳細資訊，請參閱 [ExpressRoute 常見問題集](expressroute-faqs.md)。
 
@@ -299,8 +300,8 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 
 > [!IMPORTANT]
 > 如果您使用的資源超出標準線路所允許的數量，這項作業可能會失敗。
-> 
-> 
+>
+>
 
 停用 ExpressRoute 進階附加元件之前，請了解下列準則：
 
@@ -344,13 +345,13 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 
 請檢閱 [將 ExpressRoute 線路從傳統部署模型移至 Resource Manager 部署模型](expressroute-howto-move-arm.md)中的指示。
 
-## <a name="delete"></a>取消佈建和刪除 ExpressRoute 線路
+## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>取消佈建和刪除 ExpressRoute 線路
 
 若要取消佈建並刪除 ExpressRoute 線路，請確定您了解下列準則：
 
 * 您必須取消連結 ExpressRoute 線路的所有虛擬網路。 如果此作業失敗，請確認是否有任何虛擬網路連結至循環。
-* 如果 ExpressRoute 線路服務提供者佈建狀態為 **Provisioning** 或 **Provisioned**，您就必須與服務提供者一起合作，取消佈建他們那邊的線路。 我們會繼續保留資源並向您收取費用，直到線路服務提供者完成取消佈建並通知我們。
-* 您只能在服務提供者已取消佈建線路時刪除線路。 當線路取消佈建時，服務提供者佈建狀態會設定為「未佈建」。 這樣會停止針對線路計費。
+* 如果 ExpressRoute 線路服務提供者布建狀態**為 [** 布建] 或 [已布建]，則您必須與服務提供者合作，以在其端取消布**建**線路。 我們會繼續保留資源並向您收取費用，直到線路服務提供者完成取消佈建並通知我們。
+* 您只能在服務提供者已取消佈建線路時刪除線路。 當線路取消佈建時，服務提供者佈建狀態會設定為「未佈建」****。 這樣會停止針對線路計費。
 
 您可以執行下列命令來刪除 ExpressRoute 線路：
 

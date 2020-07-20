@@ -1,27 +1,26 @@
 ---
-title: 如何管理對於資源的並行寫入 - Azure 搜尋服務
-description: 使用開放式同步存取來避免在針對 Azure 搜尋服務索引、索引子及資料來源的更新或刪除過程中發生衝突。
+title: 如何管理對資源的並行寫入
+titleSuffix: Azure Cognitive Search
+description: 使用開放式平行存取，以避免對 Azure 認知搜尋索引、索引子、資料來源的更新或刪除發生空中衝突。
+manager: nitinme
 author: HeidiSteen
-manager: cgronlun
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 07/21/2017
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 7e569fa30727f2df7411eee5fa6d48f9b9454460
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: f22e69cbc625d21c398151e413574387a2587790
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025329"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145280"
 ---
-# <a name="how-to-manage-concurrency-in-azure-search"></a>如何管理 Azure 搜尋服務中的並行
+# <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>如何管理 Azure 認知搜尋中的平行存取
 
-管理如索引及資料來源的 Azure 搜尋服務資源時，能夠安全地更新資源是一件很重要的事，尤其是在應用程式中有不同的元件正在同時存取資源時。 當兩個用戶端在未經協調的情況下同時更新資源時，便可能發生競爭情形。 為了避免這個問題，Azure 搜尋服務提供了「開放式同步存取模型」。 資源上不會有鎖定的情形。 每個資源都會有一個能識別資源版本的 ETag，使您可以製作能避免意外覆寫的要求。
+管理 Azure 認知搜尋資源（例如索引和資料來源）時，請務必安全地更新資源，特別是當應用程式的不同元件同時存取資源時。 當兩個用戶端在未經協調的情況下同時更新資源時，便可能發生競爭情形。 為了避免這種情況，Azure 認知搜尋提供*開放式平行存取模型*。 資源上不會有鎖定的情形。 每個資源都會有一個能識別資源版本的 ETag，使您可以製作能避免意外覆寫的要求。
 
 > [!Tip]
-> [範例 C# 解決方案](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) \(英文\) 中的概念程式碼能說明 Azure 搜尋服務中並行控制的運作方式。 該程式碼會建立能叫用並行控制的條件。 對於大多數開發人員而言，閱讀[下方的程式碼片段](#samplecode)應該就已經足夠，但如果您想要執行該程式碼片段，請編輯 appsettings.json 以新增服務名稱和系統管理員 API 金鑰。 若服務 URL 為 `http://myservice.search.windows.net`，服務名稱將會是 `myservice`。
+> [範例 c # 解決方案](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)中的概念程式碼說明並行存取控制在 Azure 認知搜尋中的運作方式。 該程式碼會建立能叫用並行控制的條件。 對於大多數開發人員而言，閱讀[下方的程式碼片段](#samplecode)應該就已經足夠，但如果您想要執行該程式碼片段，請編輯 appsettings.json 以新增服務名稱和系統管理員 API 金鑰。 若服務 URL 為 `http://myservice.search.windows.net`，服務名稱將會是 `myservice`。
 
 ## <a name="how-it-works"></a>運作方式
 
@@ -45,13 +44,13 @@ ms.locfileid: "65025329"
 + 如果資源已不存在，則更新失敗
 + 如果資源版本變更，則更新失敗
 
-### <a name="sample-code-from-dotnetetagsexplainer-programhttpsgithubcomazure-samplessearch-dotnet-getting-startedtreemasterdotnetetagsexplainer"></a>[DotNetETagsExplainer 程式](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) \(英文\) 的範例程式碼
+### <a name="sample-code-from-dotnetetagsexplainer-program"></a>[DotNetETagsExplainer 程式](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) \(英文\) 的範例程式碼
 
-```
+```csharp
     class Program
     {
         // This sample shows how ETags work by performing conditional updates and deletes
-        // on an Azure Search index.
+        // on an Azure Cognitive Search index.
         static void Main(string[] args)
         {
             IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
@@ -62,14 +61,14 @@ ms.locfileid: "65025329"
             Console.WriteLine("Deleting index...\n");
             DeleteTestIndexIfExists(serviceClient);
 
-            // Every top-level resource in Azure Search has an associated ETag that keeps track of which version
+            // Every top-level resource in Azure Cognitive Search has an associated ETag that keeps track of which version
             // of the resource you're working on. When you first create a resource such as an index, its ETag is
             // empty.
             Index index = DefineTestIndex();
             Console.WriteLine(
                 $"Test index hasn't been created yet, so its ETag should be blank. ETag: '{index.ETag}'");
 
-            // Once the resource exists in Azure Search, its ETag will be populated. Make sure to use the object
+            // Once the resource exists in Azure Cognitive Search, its ETag will be populated. Make sure to use the object
             // returned by the SearchServiceClient! Otherwise, you will still have the old object with the
             // blank ETag.
             Console.WriteLine("Creating index...\n");
@@ -129,9 +128,9 @@ ms.locfileid: "65025329"
             serviceClient.Indexes.Delete("test", accessCondition: AccessCondition.GenerateIfExistsCondition());
 
             // This is slightly better than using the Exists method since it makes only one round trip to
-            // Azure Search instead of potentially two. It also avoids an extra Delete request in cases where
+            // Azure Cognitive Search instead of potentially two. It also avoids an extra Delete request in cases where
             // the resource is deleted concurrently, but this doesn't matter much since resource deletion in
-            // Azure Search is idempotent.
+            // Azure Cognitive Search is idempotent.
 
             // And we're done! Bye!
             Console.WriteLine("Complete.  Press any key to end application...\n");
@@ -170,10 +169,11 @@ ms.locfileid: "65025329"
 
 實作開放式同步存取的設計模式應包含重複嘗試存取條件檢查、測試存取條件，並選擇性擷取更新資源，然後再嘗試重新套用變更的迴圈。
 
-此程式碼片段說明如何將 synonymMap 新增至已存在的索引。 此程式碼取自[同義字C#Azure 搜尋服務的範例](search-synonyms-tutorial-sdk.md)。
+此程式碼片段說明如何將 synonymMap 新增至已存在的索引。 這段程式碼來自[Azure 認知搜尋的同義字 c # 範例](search-synonyms-tutorial-sdk.md)。
 
 該程式碼片段會取得 "hotels" 索引，檢查更新作業的物件版本，在條件失敗的情況下擲回例外狀況，然後重試該作業 (最多三次)，並從自伺服器擷取索引以取得最新版本開始。
 
+```csharp
         private static void EnableSynonymsInHotelsIndexSafely(SearchServiceClient serviceClient)
         {
             int MaxNumTries = 3;
@@ -204,7 +204,7 @@ ms.locfileid: "65025329"
             index.Fields.First(f => f.Name == "tags").SynonymMaps = new[] { "desc-synonymmap" };
             return index;
         }
-
+```
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -212,11 +212,11 @@ ms.locfileid: "65025329"
 
 嘗試修改下列任一範例以包含 ETag 或 AccessCondition 物件。
 
-+ [GitHub 上的 REST API 範例](https://github.com/Azure-Samples/search-rest-api-getting-started) (英文)
-+ [GitHub 上的 .NET SDK 範例](https://github.com/Azure-Samples/search-dotnet-getting-started) (英文)。 此解決方案包括「DotNetEtagsExplainer」專案，其中包含本文所提供的程式碼。
++ [GitHub 上的 REST API 範例](https://github.com/Azure-Samples/search-rest-api-getting-started)
++ [GitHub 上的 .NET SDK 範例](https://github.com/Azure-Samples/search-dotnet-getting-started)。 此解決方案包括「DotNetEtagsExplainer」專案，其中包含本文所提供的程式碼。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
-[常見 HTTP 要求和回應標頭 (英文)](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
-[HTTP 狀態碼 (英文)](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)
-[索引作業 (REST API)(英文)](https://docs.microsoft.com/rest/api/searchservice/index-operations)
+[一般 HTTP 要求和回應標頭](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) 
+[HTTP 狀態碼](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) 
+[索引作業 (REST API) ](https://docs.microsoft.com/rest/api/searchservice/index-operations)

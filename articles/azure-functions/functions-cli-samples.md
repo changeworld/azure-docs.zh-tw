@@ -1,48 +1,37 @@
 ---
-title: Azure CLI 範例 - Azure Functions | Microsoft Docs
+title: Azure CLI 範例 - Azure Functions
 description: Azure CLI 範例 - Azure Functions
-services: functions
-documentationcenter: functions
-author: syntaxc4
-manager: jeconnoc
 ms.assetid: 577d2f13-de4d-40d2-9dfc-86ecc79f3ab0
-ms.service: azure-functions
 ms.topic: sample
 ms.date: 01/09/2018
-ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: ba0ecda0ec24bf0a07acbf1bf5bfef494c3eabdd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 61ac1b95055b8ec9e65c3009d76f79581721f594
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57836924"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779553"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI 範例
 
 下表包含 Azure Functions 的 Bash 指令碼 (使用 Azure CLI) 連結。
 
-| | |
-|-|-|
-|<a name="create"></a>**建立應用程式**||
+<a id="create"></a>
+
+| 建立應用程式 | 描述 |
+|---|---|
 | [建立無伺服器也可執行的函式應用程式](scripts/functions-cli-create-serverless.md) | 在取用方案中建立函數應用程式。  |
-| [在 App Service 方案中建立函式應用程式](scripts/functions-cli-create-app-service-plan.md) | 在專用的 App Service 方案中建立函數應用程式。 |
-| | |
-|**整合**||
+| [建立無伺服器 Python 函式應用程式](scripts/functions-cli-create-serverless-python.md) | 在取用方案中建立 Python 函式應用程式。 |
+| [在可調整的進階方案中建立函式應用程式](scripts/functions-cli-create-premium-plan.md) | 在進階方案中建立函式應用程式。 |
+| [在專用的 (App Service) 方案中建立函式應用程式](scripts/functions-cli-create-app-service-plan.md) | 在專用的 App Service 方案中建立函數應用程式。 |
+
+| 整合 | 描述|
+|---|---|
 | [建立函式應用程式和連線至儲存體帳戶](scripts/functions-cli-create-function-app-connect-to-storage-account.md) | 建立函式應用程式和連線至儲存體帳戶。 |
 | [建立函式應用程式和連線至 Azure Cosmos DB](scripts/functions-cli-create-function-app-connect-to-cosmos-db.md) | 建立函數應用程式，並將其連線至 Azure Cosmos DB。 |
-| | |
-|**連續部署**||
+| [建立 Python 函式應用程式並掛接 Azure 檔案儲存體共用](scripts/functions-cli-mount-files-storage-linux.md) | 藉由將共用掛接至 Linux 函式應用程式，您可以利用現有的機器學習模型或函式中的其他資料。 | 
+
+| 連續部署 | 描述|
+|---|---|
 | [從 GitHub 部署](scripts/functions-cli-create-function-app-github-continuous.md) | 建立從 GitHub 存放庫部署的函數應用程式。  |
 | [從 Azure DevOps 部署](scripts/functions-cli-create-function-app-vsts-continuous.md) | 建立會從 Azure DevOps 存放庫部署的函數應用程式。  |
-| | |
-|**設定應用程式**||
-| [將自訂網域對應至函式應用程式](scripts/functions-cli-configure-custom-domain.md) | 定義函式的自訂網域。  |
-| [將 SSL 憑證繫結至函式應用程式](scripts/functions-cli-configure-ssl-certificate.md)  |  為自訂網域中的函式上傳 SSL 憑證。 |
-
-<!---
-
-|**Scale app**||
-
-|**Connect app to resources**||
--->

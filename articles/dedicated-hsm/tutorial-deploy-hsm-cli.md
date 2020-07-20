@@ -3,22 +3,22 @@ title: 教學課程：使用 Azure CLI 部署到現有的虛擬網路中 - Azure
 description: 示範如何使用 CLI 將專用 HSM 部署到現有虛擬網路中的教學課程
 services: dedicated-hsm
 documentationcenter: na
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
 ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2018
-ms.author: barclayn
-ms.openlocfilehash: 84beac4eca44a274eecc032e4816e3ff57aeafe2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 11/11/2019
+ms.author: mbaldwin
+ms.openlocfilehash: 76b7a97a5be5e7952b0ac11d93bd68656ff8f1ec
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60688365"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79454307"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>教學課程：使用 CLI 將 HSM 部署至現有的虛擬網路
 
@@ -36,7 +36,7 @@ Azure 專用 HSM 提供實體裝置以供單獨客戶使用，其具有完整的
 
 本教學課程著重於一對已整合到現有虛擬網路 (請參閱上述的 VNET 1) 的 HSM 和必要的 ExpressRoute 閘道 (請參閱上述的子網路 1)。  所有其他資源都是標準 Azure 資源。 相同的整合程序可以用於上述 VNET 3 上子網路 4 中的 HSM。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 Azure 入口網站中目前尚未提供 Azure 專用 HSM。 所有與服務的互動都會透過命令列或使用 PowerShell 進行。 本教學課程會使用 Azure Cloud Shell 中的命令列 (CLI) 介面。 如果您不熟悉 Azure CLI，請遵循以下的入門指示：[Azure CLI 2.0 使用者入門](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)。
 
@@ -47,7 +47,7 @@ Azure 入口網站中目前尚未提供 Azure 專用 HSM。 所有與服務的�
 - 您已建立這些資源的資源群組，而本教學課程中部署的新資訊將會加入該群組。
 - 您已經按照上圖建立所需的虛擬網路、子網路和虛擬機器，而現在想要將 2 個 HSM 整合到該部署中。
 
-以下所有指示都假設您已經導覽至 Azure 入口網站，並已開啟 Cloud Shell (選取靠近入口網站右上方的 “\>\_”)。
+以下所有指示都假設您已經導覽至 Azure 入口網站，並已開啟 Cloud Shell (選取靠近入口網站右上方的 "\>\_")。
 
 ## <a name="provisioning-a-dedicated-hsm"></a>佈建專用 HSM
 
@@ -71,7 +71,7 @@ az feature show \
    --name AllowBaremetalServers
 ```
 
-兩個命令都應該會傳回 “Registered” 狀態 (如下所示)。 如果命令並未傳回 “Registered”，則必須註冊此服務，請連絡您的 Microsoft 帳戶代表。
+兩個命令都應該會傳回 "Registered" 狀態 (如下所示)。 如果命令並未傳回 “Registered”，則必須註冊此服務，請連絡您的 Microsoft 帳戶代表。
 
 ![訂用帳戶狀態](media/tutorial-deploy-hsm-cli/subscription-status.png)
 
@@ -79,7 +79,7 @@ az feature show \
 
 HSM 會佈建到客戶的虛擬網路中，所以需要虛擬網路和子網路。 ExpressRoute 閘道是可供 HSM 啟用虛擬網路與實體裝置之間通訊的相依性，而虛擬機器最終需要使用 Gemalto 用戶端軟體存取 HSM 裝置。 這些資源已收集到範本檔案中 (具有對應的參數檔案)，以便使用。 直接以 HSMrequest@Microsoft.com 連絡 Microsoft 即可取得檔案。
 
-擁有檔案後，您必須編輯參數檔案，以插入慣用的資源名稱。 使用 “value”: “” 編輯程式碼行。
+擁有檔案後，您必須編輯參數檔案，以插入慣用的資源名稱。 使用 "value": "" 編輯程式碼行。
 
 - `namingInfix` HSM 資源名稱的首碼
 - `ExistingVirtualNetworkName` 用於 HSM 的虛擬網路名稱
@@ -126,7 +126,7 @@ HSM 會佈建到客戶的虛擬網路中，所以需要虛擬網路和子網路�
 - 戳記 1 中的 HSM
 - 戳記 2 中的 HSM
 
-設定參數值後，必須將檔案上傳至 Azure 入口網站 Cloud Shell 檔案共用，以便使用。 在 Azure 入口網站中，按一下右上方的 “\>\_” Cloud Shell 符號，這會讓畫面的底部成為命令環境。 其選項包含 BASH 和 PowerShell，而您應該選取 BASH (如果尚未設定)。
+設定參數值後，必須將檔案上傳至 Azure 入口網站 Cloud Shell 檔案共用，以便使用。 在 Azure 入口網站中，按一下右上方的 "\>\_" Cloud Shell 符號，這會讓畫面的底部成為命令環境。 其選項包含 BASH 和 PowerShell，而您應該選取 BASH (如果尚未設定)。
 
 命令殼層在工具列上有上傳/下載選項，您應該選取此選項以將範本和參數檔案上載至您的檔案共用：
 
@@ -144,7 +144,8 @@ az network vnet create \
 ```
 
 ```azurecli
---vnet-name myHSM-vnet \
+az network vnet create \
+  --vnet-name myHSM-vnet \
   --resource-group myRG \
   --name hsmsubnet \
   --address-prefixes 10.2.1.0/24 \
@@ -160,7 +161,7 @@ az network vnet subnet create \
 ```
 
 >[!NOTE]
->請注意，對於虛擬網路而言最重要的組態是 HSM 裝置的子網路必須將委派設定為 “Microsoft.HardwareSecurityModules/dedicatedHSMs”。  若未設定此選項，HSM 佈建將無法運作。
+>請注意，對於虛擬網路而言最重要的組態是 HSM 裝置的子網路必須將委派設定為 "Microsoft.HardwareSecurityModules/dedicatedHSMs"。  若未設定此選項，HSM 佈建將無法運作。
 
 一旦備妥所有必要條件，請執行下列命令以使用 Azure Resource Manager 範本，確保您已使用您唯一的名稱來更新值 (最少資源群組名稱)：
 
@@ -177,9 +178,9 @@ az group deployment create \
 
 ![佈建狀態](media/tutorial-deploy-hsm-cli/progress-status.png)
 
-當部署順利完成時，會顯示 “provisioningState”:“Succeeded”。 您可以連線到現有的虛擬機器，並使用 SSH 來確保 HSM 裝置的可用性。
+當部署順利完成時，會顯示 "provisioningState":"Succeeded"。 您可以連線到現有的虛擬機器，並使用 SSH 來確保 HSM 裝置的可用性。
 
-## <a name="verifying-the-deployment"></a>驗證部署
+## <a name="verifying-the-deployment"></a>確認部署
 
 若要驗證是否已佈建裝置以及查看裝置屬性，請執行下列命令集。 請確定已適當設定資源群組，且資源名稱完全與您在參數檔案中擁有的資源名稱相同。
 
@@ -193,7 +194,7 @@ az resource show \
 
 ![佈建輸出](media/tutorial-deploy-hsm-cli/progress-status2.png)
 
-您現在也可以使用 [Azure 資源總管](https://resources.azure.com/)來查看資源。   在總管中，依序展開左側的 [訂用帳戶]、專用 HSM 的特定訂用帳戶、資源群組、您所使用的資源群組，最後選取 [資源] 項目。
+您現在也可以使用 [Azure 資源總管](https://resources.azure.com/)來查看資源。   在總管中，依序展開左側的 [訂用帳戶]、專用 HSM 的特定訂用帳戶、[資源群組]、您所使用的資源群組，最後選取 [資源] 項目。
 
 ## <a name="testing-the-deployment"></a>測試部署
 
@@ -209,7 +210,7 @@ VM 的 IP 位址也用來取代上述命令中的 DNS 名稱。 如果命令成�
 >[!NOTE]
 >請注意，若已選取 [顯示隱藏的類型] 核取方塊，將會顯示 HSM 資源。
 
-在上面的螢幕擷取畫面，按一下 “HSM1_HSMnic” 或 “HSM2_HSMnic” 會顯示適當的私人 IP 位址。 否則，以上使用的 `az resource show` 命令是識別正確 IP 位址的方法。 
+在上面的螢幕擷取畫面，按一下 "HSM1_HSMnic" 或 "HSM2_HSMnic" 會顯示適當的私人 IP 位址。 否則，以上使用的 `az resource show` 命令是識別正確 IP 位址的方法。 
 
 當您擁有正確的 IP 位址時，請執行下列命令來替代該位址：
 
@@ -232,24 +233,13 @@ VM 的 IP 位址也用來取代上述命令中的 DNS 名稱。 如果命令成�
 
 ## <a name="delete-or-clean-up-resources"></a>刪除或清除資源
 
-如果您已處理完 HSM 裝置，即可將它當作資源刪除並傳回可用的集區。 執行此作業時的顯著考量就是裝置上的任何敏感性客戶資料。 若要移除敏感性客戶資料，裝置應使用 Gemalto 用戶端來恢復出廠預設值。 請參閱 Gemalto 系統管理員指南中的 SafeNet Network Luna 7 裝置，並考慮依序執行下列命令。
-
-1. `hsm factoryReset -f`
-2. `sysconf config factoryReset -f -service all`
-3. `network interface delete -device eth0`
-4. `network interface delete -device eth1`
-5. `network interface delete -device eth2`
-6. `network interface delete -device eth3`
-7. `my file clear -f`
-8. `my public-key clear -f`
-9. `syslog rotate`
-
+如果您已處理完 HSM 裝置，即可將它當作資源刪除並傳回可用的集區。 執行此作業時的顯著考量就是裝置上的任何敏感性客戶資料。 將裝置「歸零」的最佳方式是讓 HSM 管理員的密碼連錯 3 次 (注意：這裡指的不是裝置管理員，而是實際的 HSM 管理員)。 由於金鑰內容有安全措施保護，裝置必須處於歸零狀態，才能以 Azure 資源的形式刪除。
 
 > [!NOTE]
 > 如果您有關於任何 Gemalto 裝置組態的問題，您應該連絡 [Gemalto 客戶支援](https://safenet.gemalto.com/technical-support/)。
 
 
-如果您已處理完此資源群組中的資源，即可透過下列命令來移除它們：
+如果您已處理完此資源群組中的所有資源，即可透過下列命令來將其移除：
 
 ```azurecli
 az group deployment delete \

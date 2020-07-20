@@ -3,20 +3,19 @@ title: Team Data Science Process 生命週期的模型化階段
 description: 資料科學專案模型化階段的目標、工作和交付項目
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c22c75b4fe900ecb96d016251c09e9ad6ec31f7c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 1d3cd61ea3da88c4c5231f22c0e127508591fb8d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306219"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76720464"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命週期的模型化階段
 
@@ -24,7 +23,7 @@ ms.locfileid: "60306219"
 
    1. **了解商務**
    2. **資料取得與認知**
-   3. **模型化**
+   3. **模型**
    4. **部署**
    5. **客戶接受度**
 
@@ -38,12 +37,12 @@ ms.locfileid: "60306219"
 * 建立最能精確預測目標的參考機器學習模型。
 * 建立適用於生產環境的機器學習模型。
 
-## <a name="how-to-do-it"></a>作法
+## <a name="how-to-do-it"></a>如何執行此動作
 此階段會解決三項主要工作︰
 
-  * **特徵設計**：從未經處理資料建立資料特徵，以便訓練模型。
-  * **模型訓練**：比較各個模型的成功標準，以找出最能精確回答問題的模型。
-  * 判斷您的模型是否**適用於生產環境**
+  * **特徵工程設計**：從原始資料建立資料特徵，以加速模型定型。
+  * **模型定型**：藉由比較其成功的計量，找出最能精確回答問題的模型。
+  * 判斷您的模型是否**適用于生產環境。**
 
 ### <a name="feature-engineering"></a>特徵設計
 特徵設計包括納入、彙總和轉換未經處理的變數，以建立用於分析的特徵。 如果您想要深入了解模型驅動因子，就必須了解特徵之間的關聯方式，以及機器學習演算法要如何使用這些特徵。 
@@ -63,18 +62,18 @@ ms.locfileid: "60306219"
    * 比較替代方法之間的成功標準，以**決定用來回答問題的「最佳」方案**。
 
 > [!NOTE]
-> **避免外洩**：如果您納入訓練資料集以外的資料，可能會造成資料外洩，而讓模型或機器學習演算法做出誤以為良好的預測。 當資料科學家取得好得過頭的預測結果時，會讓他們感到不安的常見原因就是資料外洩。 這些相依性很難察覺。 為了避免外洩，通常會需要反覆建置分析資料集、建立模型，然後評估結果的精確度。 
+> **避免外洩**︰如果您納入訓練資料集以外的資料，可能會造成資料外洩，而讓模型或機器學習演算法做出誤以為良好的預測。 當資料科學家取得好得過頭的預測結果時，會讓他們感到不安的常見原因就是資料外洩。 這些相依性很難察覺。 為了避免外洩，通常會需要反覆建置分析資料集、建立模型，然後評估結果的精確度。 
 > 
 > 
 
 我們透過 TDSP 提供[自動化模型和報告工具](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling) \(英文\)，其可透過多個演算法及參數掃掠來執行，以產生基準模型。 它也會產生基準模型報告，摘要說明每個模型和參數組合的效能 (包括變數重要性)。 此程序也會反覆進行，因為這可促成進一步的功能設計。 
 
-## <a name="artifacts"></a>構件
+## <a name="artifacts"></a>Artifacts
 此階段所產生的成品包括︰
 
-   * [功能集](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#feature-sets)：**資料定義**報告的**功能集**區段會說明針對模型化所開發的功能。 它包含產生特徵的程式碼指標，以及特徵產生方式的描述。
-   * [模型報表](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md)：每個嘗試過的模型，都會產生一個標準的範本型報告，提供每項實驗的詳細資料。
-   * **檢查點決策**：評估模型的效能是否良好到足以將其部署到生產系統。 需要詢問的一些重要問題是︰
+   * [功能集](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md)：針對模型化所開發的功能，會在**資料定義**報告的 [**功能集**] 區段中說明。 它包含產生特徵的程式碼指標，以及特徵產生方式的描述。
+   * [模型報告](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md) \(英文\)：每個嘗試過的模型，都會產生一個標準的範本型報告，提供每項實驗的詳細資料。
+   * **檢查點決策**：評估模型是否足以執行生產環境。 需要詢問的一些重要問題是︰
      * 在給訂測試資料的情況下，模型是否有足夠的信心來回答問題？ 
      * 您應該嘗試任何替代方法嗎？ 您應該收集其他資料、進行更多特徵設計，或實驗其他演算法嗎？
 
@@ -84,7 +83,7 @@ ms.locfileid: "60306219"
 
    1. [了解商務](lifecycle-business-understanding.md)
    2. [資料取得與認知](lifecycle-data.md)
-   3. [模型化](lifecycle-modeling.md)
+   3. [模型](lifecycle-modeling.md)
    4. [部署](lifecycle-deployment.md)
    5. [客戶接受度](lifecycle-acceptance.md)
 

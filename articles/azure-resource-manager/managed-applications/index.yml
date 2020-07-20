@@ -1,0 +1,89 @@
+### YamlMime:Landing
+title: 受控應用程式文件
+summary: 提供雲端解決方案，讓取用者方便部署及操作。
+metadata:
+  title: Azure 受控應用程式文件
+  description: Azure 受控應用程式可讓您提供雲端解決方案，讓取用者方便部署及操作。
+  ms.service: managed-applications
+  ms.topic: landing-page
+  ms.collection: na
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 01/02/2020
+  ms.openlocfilehash: 15cd46ba2758fd1a56f7d19791713eae72bac1d2
+  ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 07/07/2020
+  ms.locfileid: "86057648"
+landingContent:
+- title: Azure 受控應用程式
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure 受控應用程式？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 檢視定義成品
+      url: concepts-view-definition.md
+    - text: 適用於關聯的 Azure 原則
+      url: concepts-built-in-policy.md
+    - text: 角色定義成品
+      url: concepts-custom-role-definition.md
+- title: 建立受控應用程式
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 發佈應用程式定義
+      url: ./publish-service-catalog-app.md
+    - text: 部署服務目錄應用程式
+      url: deploy-service-catalog-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: 建立定義檔案
+      url: publish-service-catalog-app.md
+    - text: 發佈市集應用程式
+      url: publish-marketplace-app.md
+    - text: 使用自訂提供者建立受控應用程式
+      url: tutorial-create-managed-app-with-custom-provider.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Key Vault 中的祕密
+      url: key-vault-access.md
+    - text: 透過入口網站發佈
+      url: publish-portal.md
+- title: 存取控制
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 要求 Just-In-Time 存取
+      url: request-just-in-time-access.md
+    - text: 核准 Just-In-Time 存取
+      url: approve-just-in-time-access.md
+    - text: 使用受控識別進行部署
+      url: publish-managed-identity.md
+- title: 建立入口網站 UI
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 建立入口網站介面
+      url: create-uidefinition-overview.md
+    - text: 測試入口網站介面
+      url: test-createuidefinition.md
+    - text: 使用者介面元素成品
+      url: reference-createuidefinition-artifact.md
+    - text: 介面元素
+      url: create-uidefinition-elements.md
+    - text: 介面功能
+      url: create-uidefinition-functions.md
+- title: 管理資源
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 監視已部署的執行個體
+      url: monitor-managed-application-portal.md
+    - text: 使用通知進行部署
+      url: publish-notifications.md
+    - text: 更新受控資源
+      url: update-managed-resources.md

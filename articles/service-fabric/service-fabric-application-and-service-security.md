@@ -1,25 +1,14 @@
 ---
-title: 深入了解 Azure Service Fabric 應用程式安全性 | Microsoft Docs
+title: 瞭解 Azure Service Fabric 應用程式安全性
 description: 如何安全地在 Service Fabric 上執行微服務應用程式的概觀。 深入了解如何在不同的安全性帳戶底下執行服務和啟動指令碼、驗證和授權使用者、管理應用程式祕密、保護服務通訊、使用 API 閘道，以及保護應用程式待用資料。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/16/2018
-ms.author: aljo
-ms.openlocfilehash: b4d3699c0327bb2771a358d3e3c2921bdc39ee5e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f17840f31d2a4c12a1d4618bd16e81dcc2cc8a14
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60621539"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256572"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric 應用程式和服務安全性
 微服務架構可以帶來[許多優點](service-fabric-overview-microservices.md)。 不過，管理微服務的安全性是一種挑戰，而且與管理傳統的整合型應用程式安全性有所不同。 
@@ -28,15 +17,15 @@ ms.locfileid: "60621539"
 
 本文不是微服務安全性的指南 (線上有許多此類資源可供取用)，但會說明如何在 Service Fabric 中完成不同層面的安全性。
 
-## <a name="authentication-and-authorization"></a>驗證和授權
+## <a name="authentication-and-authorization"></a>驗證與授權
 通常需要將服務所公開的資源和 API 限制為適用於特定信任的使用者或用戶端。 驗證是可靠地查明使用者身分識別的程序。  授權是讓 API 或服務可供某些已驗證使用者使用 (其他使用者無法使用) 的程序。
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>驗證
 進行 API 層級信任決策的第一個步驟是驗證。 驗證是可靠地查明使用者身分識別的程序。  在微服務案例中，驗證通常會集中處理。 如果您使用 API 閘道，您可以[將驗證卸載](/azure/architecture/patterns/gateway-offloading)至閘道。 如果您使用此方法，請確定可以直接與個別服務連線 (不需要 API 閘道)，除非設立了額外的安全性來驗證訊息是否來自閘道。
 
 如果可以直接存取服務，則驗證服務 (例如 Azure Active Directory 或專用驗證微服務) 會作為安全性權杖服務 (STS)，可用來驗證使用者。 信任決策會在服務與安全性權杖或 Cookie 之間共用。 
 
-針對 ASP.NET Core，[驗證使用者](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/)的主要機制是 ASP.NET Core 身分識別成員資格系統。 ASP.NET Core 身分識別會將使用者資訊 (包括登入資訊、角色及宣告) 儲存在由開發人員設定的資料存放區中。 ASP.NET Core 身分識別支援雙因素驗證。  另外也支援外部驗證提供者，以便使用者使用 Microsoft、Google、Facebook 或 Twitter 等提供者的現有驗證程序進行登入。 
+針對 ASP.NET Core，[驗證使用者](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/)的主要機制是 ASP.NET Core 身分識別成員資格系統。 ASP.NET Core 身分識別會將使用者資訊 (包括登入資訊、角色及宣告) 儲存在由開發人員設定的資料存放區中。 ASP.NET Core 身分識別支援雙因素驗證。  此外，也支援外部驗證提供者，讓使用者可以使用來自 Microsoft、Google、Facebook 或 Twitter 等提供者的現有驗證程式進行登入。
 
 ### <a name="authorization"></a>授權
 驗證之後，服務需要授權使用者存取權，或判斷使用者可以執行哪些作業。 這個程序允許服務讓 API 可供某些已驗證的使用者使用，而不是所有使用者都可使用。 授權與驗證彼此獨立且互不影響，後者是查明使用者是誰的程序。 驗證可為目前使用者建立一或多個身分識別。
@@ -44,27 +33,27 @@ ms.locfileid: "60621539"
 [ASP.NET Core 授權](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/authorization-net-microservices-web-applications)可以根據使用者的角色或根據自訂原則來進行，其中包含檢查宣告或其他啟發學習法。
 
 ## <a name="restrict-and-secure-access-using-an-api-gateway"></a>使用 API 閘道來限制和保護存取權
-雲端應用程式通常需要前端閘道來為使用者、裝置或其他應用程式提供單一輸入點。 [API 閘道](/azure/architecture/microservices/gateway)位於用戶端與服務之間，這是通往您應用程式所提供之所有服務的進入點。 它會作為反向 Proxy，將要求從用戶端路由傳送到服務。 它也會執行各種跨領域工作，例如驗證和授權、SSL 終止和速率限制。 如果您未部署閘道，用戶端就必須將要求直接傳送給前端服務。
+雲端應用程式通常需要前端閘道來為使用者、裝置或其他應用程式提供單一輸入點。 [API 閘道](/azure/architecture/microservices/gateway)位於用戶端與服務之間，這是通往您應用程式所提供之所有服務的進入點。 它會作為反向 Proxy，將要求從用戶端路由傳送到服務。 它也可以執行各種跨領域工作，例如驗證和授權、TLS 終止和速率限制。 如果您未部署閘道，用戶端就必須將要求直接傳送給前端服務。
 
-在 Service Fabric 中，閘道可以是任何無狀態服務 (例如 [ASP.NET Core 應用程式](service-fabric-reliable-services-communication-aspnetcore.md))，或是為流量輸入設計的另一個服務 (例如，[Traefik](https://docs.traefik.io/)、[事件中樞](https://docs.microsoft.com/azure/event-hubs/)、[IoT 中樞](https://docs.microsoft.com/azure/iot-hub/)或 [Azure API 管理](https://docs.microsoft.com/azure/api-management))。
+在 Service Fabric 中，閘道可以是任何無狀態服務 (例如 [ASP.NET Core 應用程式](service-fabric-reliable-services-communication-aspnetcore.md))，或是為流量輸入設計的另一個服務 (例如，[Traefik](https://docs.traefik.io/)、[事件中樞](../event-hubs/index.yml)、[IoT 中樞](../iot-hub/index.yml)或 [Azure API 管理](../api-management/index.yml))。
 
 「API 管理」直接與 Service Fabric 整合，可讓您將具有一組豐富路由規則的 API 發佈至後端 Service Fabric 服務。  您可以保護後端服務的存取、使用節流來預防 DOS 攻擊，或驗證 API 金鑰、JWT 權杖、憑證和其他認證。 若要深入了解，請參閱 [Service Fabric 搭配 Azure API 管理概觀](service-fabric-api-management-overview.md)。
 
 ## <a name="manage-application-secrets"></a>管理應用程式密碼
-密碼可以是任何機密資訊，例如儲存體連接字串、密碼或其他不會以純文字處理的值。 本文使用 Azure Key Vault 來管理金鑰和祕密。 不過，應用程式中的密碼「使用」  是由平台驗證，讓應用程式可部署至裝載在任何位置的叢集。
+密碼可以是任何機密資訊，例如儲存體連接字串、密碼或其他不會以純文字處理的值。 本文使用 Azure Key Vault 來管理金鑰和祕密。 不過，在應用程式中*使用*秘密與雲端平臺無關，可讓應用程式部署到裝載于任何位置的叢集。
 
-建議透過[服務組態套件][config-package]來管理服務組態設定。 可以通过包含运行状况验证和自动回滚的托管滚动升级机制来控制配置包版本以及对其进行更新。 這是慣用的全域組態，因為可以減少全域服務中斷的機會。 加密的密碼也不例外。 Service Fabric 具有內建的功能，可使用憑證加密來加密或解密組態套件 Settings.xml 檔案中的值。
+建議透過[服務組態套件][config-package]來管理服務組態設定。 組態套件會有各種版本，並可透過含有健全狀況驗證和自動復原的受控輪流升級來進行升級。 這是慣用的全域組態，因為可以減少全域服務中斷的機會。 加密的密碼也不例外。 Service Fabric 具有內建的功能，可使用憑證加密來加密或解密組態套件 Settings.xml 檔案中的值。
 
 下圖說明 Service Fabric 應用程式中密碼管理的基本流程︰
 
 ![密碼管理概觀][overview]
 
-此流程包括四个主要步骤：
+此流程有四個主要步驟︰
 
 1. 取得資料編密憑證。
 2. 在叢集中安裝憑證。
 3. 在部署應用程式時以憑證來加密密碼的值，並將其插入服務的 Settings.xml 組態檔。
-4. 通过使用相同的加密证书进行解密，从 Settings.xml 中读取加密值。 
+4. 藉由以相同的編密憑證進行解密，從 Settings.xml 讀取加密的值。 
 
 [Azure Key Vault][key-vault-get-started] 在此是當做憑證的安全儲存位置，以及讓憑證安裝在 Azure 中的 Service Fabric 叢集上的方法。 如果您沒有要部署至 Azure，您不需要使用金鑰保存庫管理 Service Fabric 應用程式中的密碼。
 
@@ -96,7 +85,7 @@ Service Fabric 為容器內的服務提供了一種機制，供其存取 Windows
 Reliable Services 應用程式架構會提供可用來改善安全性的一些預先建置通訊堆疊和工具。 深入了解在您使用服務遠端作業 (在 [C#](service-fabric-reliable-services-secure-communication.md) 或 [Java](service-fabric-reliable-services-secure-communication-java.md) 中) 或使用 [WCF](service-fabric-reliable-services-secure-communication-wcf.md) 時，如何改善安全性。
 
 ## <a name="encrypt-application-data-at-rest"></a>加密應用程式待用資料
-在 Azure 中執行之 Service Fabric 叢集中的每個[節點類型](service-fabric-cluster-nodetypes.md)都是由[虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)提供支援。 使用 Azure Resource Manager 範本，您可以將資料磁碟連結到構成 Service Fabric 叢集的擴展集。  如果您的服務會將資料儲存至連結的資料磁碟，您可以[將這些資料磁碟加密](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md)以保護您的應用程式資料。
+在 Azure 中執行之 Service Fabric 叢集中的每個[節點類型](service-fabric-cluster-nodetypes.md)都是由[虛擬機器擴展集](../virtual-machine-scale-sets/overview.md)提供支援。 使用 Azure Resource Manager 範本，您可以將資料磁碟連結到構成 Service Fabric 叢集的擴展集。  如果您的服務會將資料儲存至連結的資料磁碟，您可以[將這些資料磁碟加密](../virtual-machine-scale-sets/disk-encryption-powershell.md)以保護您的應用程式資料。
 
 <!--TO DO: Enable BitLocker on Windows standalone clusters?
 TO DO: Encrypt disks on Linux clusters?-->
@@ -110,7 +99,7 @@ TO DO: Encrypt disks on Linux clusters?-->
 * [深入了解叢集安全性](service-fabric-cluster-security.md)
 
 <!-- Links -->
-[key-vault-get-started]:../key-vault/key-vault-overview.md
+[key-vault-get-started]:../key-vault/general/overview.md
 [config-package]: service-fabric-application-and-service-manifests.md
 [service-fabric-cluster-creation-via-arm]: service-fabric-cluster-creation-via-arm.md
 

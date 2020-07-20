@@ -3,25 +3,24 @@ title: 對應用程式執行同意時發生非預期的錯誤 | Microsoft Docs
 description: 討論對應用程式執行同意的程序期間會發生的錯誤，以及可對錯誤採取的動作
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89c01202e0d7d7ca0f37b89d5473f96873c52606
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: e2a7709cf0522727257025b2dddc495b20fe8448
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60292141"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763749"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>對應用程式執行同意時出現非預期的錯誤
 
@@ -33,8 +32,11 @@ ms.locfileid: "60292141"
 
 ## <a name="requesting-not-authorized-permissions-error"></a>要求未經授權權限的錯誤
 * **AADSTS90093：** &lt;clientAppDisplayName&gt; 正在要求一或多個您未授權授與的權限。 請連絡系統管理員，其可代表您同意此應用程式。
+* **AADSTS90094：** &lt;clientAppDisplayName&gt; 需要只有系統管理員才能授與的權限來存取貴組織中的資源。 請先要求系統管理員授與此應用程式的權限，然後您才能使用。
 
 當非公司系統管理員的使用者嘗試使用的應用程式正在要求只有系統管理員能夠授與的權限時，會發生此錯誤。 可代表其組織授與應用程式存取權的系統管理員能夠解決此錯誤。
+
+當使用者因為 Microsoft 偵測到許可權要求有風險而無法同意應用程式時，也可能會發生此錯誤。 在此情況下，也會記錄「ApplicationManagement」類別、「同意應用程式的活動」和「偵測到具風險的應用程式」的狀態原因的「audit 事件」。
 
 ## <a name="policy-prevents-granting-permissions-error"></a>原則禁止授與權限錯誤
 * **AADSTS90093：**&lt;tenantDisplayName&gt; 的系統管理員設定了原則，讓您無法將 &lt;應用程式名稱&gt; 正在要求的權限授與該應用程式。 請連絡 &lt;tenantDisplayName&gt; 的系統管理員，其可代表您將權限授與此應用程式。
@@ -42,7 +44,7 @@ ms.locfileid: "60292141"
 當公司系統管理員關閉使用者同意應用程式的功能，接著非系統管理員使用者嘗試使用需要同意的應用程式時，會發生此錯誤。 可代表其組織授與應用程式存取權的系統管理員能夠解決此錯誤。
 
 ## <a name="intermittent-problem-error"></a>間歇性問題錯誤
-* **AADSTS90090：** 登入程序在記錄您嘗試授與 &lt;clientAppDisplayName&gt; 的權限時，看似發生暫時性問題。 請稍後再試一次。
+* **AADSTS90090：** 看來登入程序在記錄您嘗試授與 &lt;clientAppDisplayName&gt; 的權限時似乎發生問題，此問題間歇性發生。 請稍後再試一次。
 
 此錯誤表示已發生間歇性服務端問題。 再次嘗試同意應用程式，可解決此問題。
 

@@ -1,29 +1,41 @@
 ---
-title: 設定 SSL 連線能力，以安全地連線到適用於 MariaDB 的 Azure 資料庫
+title: 設定 SSL-適用於 MariaDB 的 Azure 資料庫
 description: 有關如何適當設定「適用於 MariaDB 的 Azure 資料庫」及相關聯應用程式以適當使用 SSL 連線的指示
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
-ms.date: 01/24/2019
-ms.openlocfilehash: 6de16b7264c7ae7ead06b4e131e7fa46c664cedd
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.topic: how-to
+ms.date: 07/08/2020
+ms.openlocfilehash: ca1129f0ef4f341773ebb7fea89ff9ec0881ca5b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573348"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143052"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>在您的應用程式中設定 SSL 連線能力，以安全地連線至適用於 MariaDB 的 Azure 資料庫
-適用於 MariaDB 的 Azure 資料庫支援使用安全通訊端層 (SSL)，將適用於 MariaDB 的 Azure 資料庫伺服器連線至用戶端應用程式。 在您的資料庫伺服器和用戶端應用程式之間強制使用 SSL 連線，可將伺服器與應用程式之間的資料流加密，有助於抵禦「中間人」攻擊。
+適用於 MariaDB 的 Azure 資料庫支援使用安全通訊端層 (SSL)，將適用於 MariaDB 的 Azure 資料庫伺服器連線至用戶端應用程式。 在您的資料庫伺服器和用戶端應用程式之間強制使用 SSL 連線，可將兩者之間的資料流加密，有助於抵禦「中間人」攻擊。
 
 ## <a name="obtain-ssl-certificate"></a>取得 SSL 憑證
-從 [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) 下載要透過 SSL 與「適用於 MariaDB 的 Azure 資料庫」伺服器通訊所需的憑證，並將該憑證檔儲存到本機磁碟機 (例如，本教學課程使用 c:\ssl)。
-**針對 Internet Explorer 和 Microsoft Edge：** 在下載完成後，請將憑證重新命名為 BaltimoreCyberTrustRoot.crt.pem。
+下載透過 SSL 與您的適用於 MariaDB 的 Azure 資料庫伺服器進行通訊所需的憑證 [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) ，並將憑證檔案儲存到本機磁片磁碟機 (本教學課程會使用 c:\ssl，例如) 。
+**針對 Microsoft Internet Explorer 和 Microsoft Edge：** 在下載完成後，請將憑證重新命名為 BaltimoreCyberTrustRoot.crt.pem。
+
+請參閱下列連結，以取得主權雲端中伺服器的憑證： [Azure Government](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)、 [Azure 中國](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)和[azure 德國](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt)。
 
 ## <a name="bind-ssl"></a>繫結 SSL
-### <a name="connecting-to-server-using-the-mysql-workbench-over-ssl"></a>使用 MySQL Workbench 透過 SSL 連線至伺服器
-設定使 MySQL Workbench 安全地透過 SSL 連線。 從 [設定新連線] 對話方塊，瀏覽至 [SSL] 索引標籤。在 [SSL CA 檔案:] 欄位中輸入 **BaltimoreCyberTrustRoot.crt.pem** 的檔案位置。 
-![儲存自訂的圖格](./media/howto-configure-ssl/mysql-workbench-ssl.png) 對於現有連線，您可以透過在 [連線] 圖示上按一下滑鼠右鍵，然後選擇 [編輯] 將 SSL 繫結。 然後瀏覽至 [SSL] 索引標籤上，並繫結憑證檔案。
+
+### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>使用 MySQL 工作臺透過 SSL 連線到伺服器
+設定使 MySQL Workbench 安全地透過 SSL 連線。 
+
+1. 從 [設定新連線] 對話方塊，瀏覽至 [SSL]**** 索引標籤。 
+
+1. 將 [**使用 SSL** ] 欄位更新為 [需要]。
+
+1. 在 [SSL CA 檔案:]**** 欄位中輸入 **BaltimoreCyberTrustRoot.crt.pem** 的檔案位置。 
+    
+    ![儲存 SSL 設定](./media/howto-configure-ssl/mysql-workbench-ssl.png)
+
+針對現有的連線，您可以用滑鼠右鍵按一下連線圖示來系結 SSL，然後選擇 [編輯]。 然後瀏覽至 [SSL]**** 索引標籤上，並繫結憑證檔案。
 
 ### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>使用 MySQL CLI 透過 SSL 連線至伺服器
 有另一個繫結 SSL 憑證的方法，就是藉由執行下列命令來使用 MySQL 命令列介面。 
@@ -37,7 +49,7 @@ mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p
 
 ## <a name="enforcing-ssl-connections-in-azure"></a>強制在 Azure 中使用 SSL 連線 
 ### <a name="using-the-azure-portal"></a>使用 Azure 入口網站
-使用 Azure 入口網站，瀏覽適用於 MariaDB 的 Azure 資料庫伺服器，然後按一下 [連線安全性]。 使用切換按鈕來啟用或停用 [強制使用 SSL 連線] 設定，然後按一下 [儲存]。 Microsoft 建議一律啟用 [強制使用 SSL 連線] 設定，以增強安全性。
+使用 Azure 入口網站，瀏覽適用於 MariaDB 的 Azure 資料庫伺服器，然後按一下 [連線安全性]****。 使用切換按鈕來啟用或停用 [強制使用 SSL 連線]**** 設定，然後按一下 [儲存]****。 Microsoft 建議一律啟用 [強制使用 SSL 連線]**** 設定，以增強安全性。
 ![啟用 ssl](./media/howto-configure-ssl/enable-ssl.png)
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
@@ -51,7 +63,7 @@ az mariadb server update --resource-group myresource --name mydemoserver --ssl-e
 ```sql
 status
 ```
-藉由檢閱輸出確認連線已加密，顯示結果應類似：**SSL:使用中的編碼器是 AES256-SHA** 
+藉由檢閱輸出確認連線已加密，顯示結果應類似：**SSL: Cipher in use is AES256-SHA** 
 
 ## <a name="sample-code"></a>範例程式碼
 若要從您的應用程式透過 SSL 對「適用於 MariaDB 的 Azure 資料庫」建立安全連線，請參閱下列程式碼範例：
@@ -68,22 +80,23 @@ die('Failed to connect to MySQL: '.mysqli_connect_error());
 ### <a name="python-mysqlconnector-python"></a>Python (MySQLConnector Python)
 ```python
 try:
-    conn=mysql.connector.connect(user='myadmin@mydemoserver', 
-        password='yourpassword', 
-        database='quickstartdb', 
-        host='mydemoserver.mariadb.database.azure.com', 
-        ssl_ca='/var/www/html/BaltimoreCyberTrustRoot.crt.pem')
+    conn = mysql.connector.connect(user='myadmin@mydemoserver',
+                                   password='yourpassword',
+                                   database='quickstartdb',
+                                   host='mydemoserver.mariadb.database.azure.com',
+                                   ssl_ca='/var/www/html/BaltimoreCyberTrustRoot.crt.pem')
 except mysql.connector.Error as err:
     print(err)
 ```
 ### <a name="python-pymysql"></a>Python (PyMySQL)
 ```python
-conn = pymysql.connect(user = 'myadmin@mydemoserver', 
-        password = 'yourpassword', 
-        database = 'quickstartdb', 
-        host = 'mydemoserver.mariadb.database.azure.com', 
-        ssl = {'ssl': {'ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'}})
+conn = pymysql.connect(user='myadmin@mydemoserver',
+                       password='yourpassword',
+                       database='quickstartdb',
+                       host='mydemoserver.mariadb.database.azure.com',
+                       ssl={'ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'})
 ```
+
 ### <a name="ruby"></a>Ruby
 ```ruby
 client = Mysql2::Client.new(
@@ -91,9 +104,21 @@ client = Mysql2::Client.new(
         :username => 'myadmin@mydemoserver',      
         :password => 'yourpassword',    
         :database => 'quickstartdb',
-        :ssl_ca => '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'
+        :sslca => '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'
+        :ssl_mode => 'required'
     )
 ```
+#### <a name="ruby-on-rails"></a>Ruby on Rails
+```ruby
+default: &default
+  adapter: mysql2
+  username: username@mydemoserver
+  password: yourpassword
+  host: mydemoserver.mariadb.database.azure.com
+  sslca: BaltimoreCyberTrustRoot.crt.pem
+  sslverify: true
+```
+
 ### <a name="golang"></a>Golang
 ```go
 rootCertPool := x509.NewCertPool()
@@ -161,7 +186,7 @@ properties.setProperty("password", 'yourpassword');
 conn = DriverManager.getConnection(url, properties);
 ```
 
-### <a name="net-mysqlconnector"></a>.NET (MySqlConnector)
+### <a name="net-mysqlconnector"></a>.NET (MySqlConnector) 
 ```csharp
 var builder = new MySqlConnectionStringBuilder
 {

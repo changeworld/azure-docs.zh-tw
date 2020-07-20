@@ -1,33 +1,29 @@
 ---
-title: 使用 Resource Manager 範本在 Azure 中建立傳統計量警示
+title: Resource Manager 範本-建立度量警示
 description: 了解如何使用 Resource Manager 範本來建立傳統計量警示，以接收電子郵件或 Webhook 的通知。
-author: johnkemnetz
-services: azure-monitor
-ms.service: azure-monitor
+author: rboucher
+ms.author: robb
 ms.topic: conceptual
-ms.date: 4/27/2018
-ms.author: johnkem
-ms.subservice: metrics
-ms.openlocfilehash: df26547132403bfe2f3fb3be74e5d1a3d9400967
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 03/09/2020
+ms.subservice: alerts
+ms.openlocfilehash: 5a868167f80aaa735e4fbeab32fd1d308dd6da1f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60776434"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81114421"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 範本建立傳統計量警示
-本文章將說明如何使用 [Azure Resource Manager 範本](../../azure-resource-manager/resource-group-authoring-templates.md) 設定 Azure 度量警示。 這可讓您在建立警示以確保正確地監視所有資源時，自動在您的資源上設定警示。
-
-> [!NOTE]
+> [!WARNING]
 > 
-> 本文說明如何使用 Resource Manager 範本建立**傳統計量警示**。 如果您要尋找使用範本建立[新版計量警示](../../azure-monitor/platform/alerts-metric-near-real-time.md)的方式，[此文章](alerts-metric-create-templates.md)提供詳細資訊。
+> 本文說明如何使用 Resource Manager 範本建立**傳統計量警示**。 傳統警示已于2019年8月淘汰，並已設定為在6月2020日完全淘汰。 您無法建立新的傳統警示公用 Azure。 某些區域版本的 Azure 仍然可以選擇，但我們建議您改為使用範本來建立[較新](../../azure-monitor/platform/alerts-metric-near-real-time.md)的計量警示（如果可能的話）。 [本文](alerts-metric-create-templates.md)提供詳細資料。
 >
 
+本文說明如何使用[Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)來設定 Azure 傳統計量警示。 這可讓您在建立警示以確保正確地監視所有資源時，自動在您的資源上設定警示。
 
-基本步骤如下所示：
+基本步驟如下：
 
 1. 建立一個描述如何建立警示的 JSON 檔案做為範本。
-2. [使用任何部署方法部署範本](../../azure-resource-manager/resource-group-template-deploy.md)。
+2. [使用任何部署方法部署範本](../../azure-resource-manager/templates/deploy-powershell.md)。
 
 下面我們會先單獨針對警示，然後針對建立其他資源期間的警示，描述如何建立 Resource Manager 範本。
 
@@ -403,6 +399,6 @@ ms.locfileid: "60776434"
 
 ## <a name="next-steps"></a>後續步驟
 * [深入了解警示](alerts-overview.md)
-* [將診斷設定新增](../../azure-monitor/platform/diagnostic-logs-stream-template.md) 至您的 Resource Manager 範本
+* [將診斷設定新增](../../azure-monitor/platform/diagnostic-settings-template.md) 至您的 Resource Manager 範本
 * 如需 JSON 語法和屬性的相關資訊，請參閱 [Microsoft.Insights/alertrules](/azure/templates/microsoft.insights/alertrules) 範本參考。
 

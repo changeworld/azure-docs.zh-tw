@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect 同步服務功能與組態 | Microsoft Docs
-description: 介绍 Azure AD Connect 同步服务的服务端功能。
+description: 描述 Azure AD Connect 同步處理服務的服務端功能。
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 06/25/2018
+ms.topic: how-to
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be67a6f287e2d6e77070928cbe12542857696011
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: db5dbef2b57fb89b33ea116d0373184cdade0ac5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60347530"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356758"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同步處理服務功能
 
@@ -62,12 +62,12 @@ Azure AD connect 同步處理功能有兩個元件：
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |如果屬性是另一個物件的複本，即會將該屬性隔離，而不會在匯出期間導致整個物件失敗。 |
 | 密碼雜湊同步處理 |[使用 Azure AD Connect 同步來實作密碼雜湊同步處理](how-to-connect-password-hash-synchronization.md) \(英文\) |
 |傳遞驗證|[使用 Azure Active Directory 傳遞驗證來進行使用者登入](how-to-connect-pta.md)|
-| UnifiedGroupWriteback |[預覽：群組回寫](how-to-connect-preview.md#group-writeback) |
+| UnifiedGroupWriteback |群組回寫|
 | UserWriteback |目前不支援。 |
 
 ## <a name="duplicate-attribute-resiliency"></a>重複屬性恢復功能
 
-含重複 UPNs / proxyAddresses 的物件，會將該屬性「隔離」，並指派暫時的值，而不會讓佈建物件失敗。 解決衝突時，會自動將暫時 UPN 變更為適當的值。 有关详细信息，请参阅[标识同步和重复属性复原](how-to-connect-syncservice-duplicate-attribute-resiliency.md)。
+含重複 UPNs / proxyAddresses 的物件，會將該屬性「隔離」，並指派暫時的值，而不會讓佈建物件失敗。 解決衝突時，會自動將暫時 UPN 變更為適當的值。 如需詳細資訊，請參閱 [身分識別同步處理和重複屬性恢復功能](how-to-connect-syncservice-duplicate-attribute-resiliency.md)。
 
 ## <a name="userprincipalname-soft-match"></a>UserPrincipalName 大致比對
 
@@ -81,7 +81,7 @@ Azure AD connect 同步處理功能有兩個元件：
 Get-MsolDirSyncFeatures -Feature EnableSoftMatchOnUpn
 ```
 
-如果没有为 Azure AD 目录启用此功能，可以运行以下命令来启用它：  
+如果您的 Azure AD 目錄未啟用這項功能，您可以執行下列項目加以啟用︰  
 
 ```powershell
 Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
@@ -89,14 +89,16 @@ Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 
 ## <a name="synchronize-userprincipalname-updates"></a>同步處理 userPrincipalName 更新
 
-在過去，除非下列兩項條件都成立，否則皆會將透過內部部署使用同步處理服務的 UserPrincipalName 屬性更新封鎖：
+在過去，除非下列兩項條件都成立，否則禁止從內部部署使用同步服務來更新 UserPrincipalName 屬性：
 
 * 使用者受到管理 (非同盟)。
 * 使用者尚未指派授權。
 
-如需詳細資訊，請參閱 [Office 365、Azure 或 Intune 中的使用者名稱不符合內部部署的 UPN 或替代登入識別碼](https://support.microsoft.com/kb/2523192)。
+> [!NOTE]
+> 自 2019 年 3 月起，允許同步處理同盟使用者帳戶的 UPN 變更。
+> 
 
-啟用這項功能可讓同步處理引擎更新 userPrincipalName，內部變更，且您使用密碼雜湊同步處理或傳遞驗證時。 如果您使用同盟，則不支援這項功能。
+如果啟用這項功能，當內部部署變更 userPrincipalName，而且您使用密碼雜湊同步或傳遞驗證時，同步引擎可以更新此屬性。
 
 在新建立的 Azure AD 目錄中，預設會開啟這項功能。 您可以執行下列項目，查看是否已啟用此功能︰  
 
@@ -112,7 +114,7 @@ Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $true
 
 啟用這項功能之後，現有的 userPrincipalName 值會保持不變。 下次 userPrincipalName 屬性的內部部署變更時，使用者的一般差異同步處理即會更新 UPN。  
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
-* [Azure AD Connect 同步](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同步處理](how-to-connect-sync-whatis.md)
 * [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。

@@ -9,7 +9,7 @@
   items:
     - name: 執行範例 Genomics 工作流程
       href: quickstart-run-genomics-workflow-portal.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 使用各種輸入檔案格式
       items:

@@ -1,19 +1,19 @@
 ---
-title: 使用 PowerShell 建立和管理 Azure S2S VPN 連線 | Microsoft Docs
+title: Azure VPN 閘道：建立和管理 S2S VPN 連線：教學課程
 description: 教學課程 - 使用 Azure PowerShell 模組建立和管理 Azure S2S VPN 連線
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 02/11/2019
+ms.date: 03/11/2020
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: cac68506803cda2c4e537feac84da2a82bc128bd
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 18c6188e1b13c35a4c28a5f9e7fc863f00798eed
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444298"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80616407"
 ---
 # <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>教學課程：使用 PowerShell 建立和管理 S2S VPN 連線
 
@@ -25,13 +25,13 @@ Azure S2S VPN 連線提供客戶組織內部與 Azure 之間的跨單位安全�
 > * 新增更多 VPN 連線
 > * 刪除 VPN 連線
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 下圖顯示本教學課程的拓撲：
 
 ![端對端 VPN 連線圖表](./media/vpn-gateway-tutorial-vpnconnection-powershell/site-to-site-diagram.png)
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+### <a name="working-with-azure-cloud-shell-and-azure-powershell"></a>使用 Azure Cloud Shell 和 Azure PowerShell
+
+[!INCLUDE [working with cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
 ## <a name="requirements"></a>需求
 
@@ -86,7 +86,7 @@ $Connection1 = "VNet1ToSite1"
 
 ```azurepowershell-interactive
 New-AzLocalNetworkGateway -Name $LNG1 -ResourceGroupName $RG1 `
-  -Location 'East US' -GatewayIpAddress $LNGIP1 -AddressPrefix $LNGprefix1,$LNGprefix2
+  -Location $Location1 -GatewayIpAddress $LNGIP1 -AddressPrefix $LNGprefix1,$LNGprefix2
 ```
 
 ## <a name="create-a-s2s-vpn-connection"></a>建立 S2S VPN 連線
@@ -99,10 +99,10 @@ $lng1 = Get-AzLocalNetworkGateway   -Name $LNG1 -ResourceGroupName $RG1
 
 New-AzVirtualNetworkGatewayConnection -Name $Connection1 -ResourceGroupName $RG1 `
   -Location $Location1 -VirtualNetworkGateway1 $vng1 -LocalNetworkGateway2 $lng1 `
-  -ConnectionType IPsec -SharedKey "Azure@!b2C3"
+  -ConnectionType IPsec -SharedKey "Azure@!b2C3" -ConnectionProtocol IKEv2
 ```
 
-如果您使用 BGP，請新增選用的 "**-EnableBGP $True**" 屬性，以啟用連線的 BGP。 此選項預設為停用。
+如果您使用 BGP，請新增選用的 " **-EnableBGP $True**" 屬性，以啟用連線的 BGP。 此選項預設為停用。 參數 '-ConnectionProtocol' 為選用，IKEv2 為預設值。 您可以指定 **ConnectionProtocol IKEv1**，建立與 IKEv1 通訊協定的連線。
 
 ## <a name="update-the-vpn-connection-pre-shared-key-bgp-and-ipsecike-policy"></a>更新 VPN 連線預先共用的金鑰、BGP、IPsec/IKE 原則
 

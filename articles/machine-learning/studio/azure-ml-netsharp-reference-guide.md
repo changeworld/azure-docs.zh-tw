@@ -1,30 +1,30 @@
 ---
-title: 使用 Net# 建立自訂神經網路
-titleSuffix: Azure Machine Learning Studio
-description: 適用於 Net# 類神經網路規格語言的語法指南。 了解如何在 Azure Machine Learning Studio 中建立自訂的類神經網路模型。
+title: 'Net # 自訂類神經網路'
+titleSuffix: ML Studio (classic) - Azure
+description: 適用於 Net# 類神經網路規格語言的語法指南。 瞭解如何在 Azure Machine Learning Studio （傳統）中建立自訂類神經網路模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: c352100392a5bf7b590b27b9448f7f37fb105fbe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b297a3f975450b7459895ce7c0abc79e9b2fcdea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60751636"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85129512"
 ---
-# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>適用於 Azure Machine Learning Studio 的 Net# 類神經規格語言指南
+# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio 的 Net # 類神經網路規格語言指南（傳統）
 
 Net # 是由 Microsoft 開發的語言，用來定義複雜的類神經網路架構，例如，任意維度的深度神經網路或迴旋。 您可以使用複雜的結構來改善影像、視訊或音訊等的資料學習。
 
 您可以在這些內容中使用 Net# 架構規格：
 
-+ 在 Microsoft Azure Machine Learning Studio 中的所有類神經網路模組︰[多元化類神經網路](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)，[二元化類神經網路](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)，和[類神經網路迴歸](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ Microsoft ML Server 中的類神經網路功能：針對 R 語言為 [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) 和 [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)，針對 Python 為 [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network)。
++ Microsoft Azure Machine Learning Studio （傳統）中的所有類神經網路模組：[多元類神經網路](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)、[雙類別類神經網路](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)和類[神經網路回歸](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
++ Microsoft ML Server 中的類神經網路功能：適用于 R 語言的[NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet)和[rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)，以及適用于 Python 的[rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) 。
 
 
 本文說明使用 Net# 開發自訂類神經網路所需的基本概念和語法：
@@ -39,7 +39,7 @@ Net # 是由 Microsoft 開發的語言，用來定義複雜的類神經網路架
 
 類神經網路的組成結構，包含以層組織的節點，和節點之間的加權連線 (或邊緣)。 這些連線是雙向的，且每個連線都有來源節點和目的地節點。
 
-每個可訓練的層 (隱藏或輸出層) 都有一或多個**連線套件組合**。 連線套組由來源層和來自該來源層之連線的規格所組成。 一個套件組合中的所有連線會共用來源層和目的地層。 在 Net# 中，連線套組會被視為由套組的目的地層所屬。
+每個可訓練的層 (隱藏或輸出層) 都有一或多個**連線套組**。 連線套組由來源層和來自該來源層之連線的規格所組成。 一個套件組合中的所有連線會共用來源層和目的地層。 在 Net# 中，連線套組會被視為由套組的目的地層所屬。
 
 Net# 支援多種不同的連線套組，可讓您自訂輸入對應至隱藏層和對應至輸出的方式。
 
@@ -49,14 +49,14 @@ Net# 支援多種不同的連線套組，可讓您自訂輸入對應至隱藏層
 
 + **篩選套組**。 您可以使用來源層節點和目的地層節點的位置來定義述詞。 只要述詞為 True，即會連接節點。
 
-+ **迴旋套組**。 您可以在來源層中定義小型的節點臨近地區。 目的地層中的每個節點都會連接到來源層中的一個節點鄰區。
++ **迴旋**套件組合。 您可以在來源層中定義小型的節點臨近地區。 目的地層中的每個節點都會連接到來源層中的一個節點鄰區。
 
 + **集區套組**和**回應正規化套組**。 這些套組類似於可供使用者在來源層中定義小型節點臨近地區的迴旋套組。 差別在於這些套組中的邊緣加權無法訓練。 因此會將預先定義的函數套用至來源節點值來判斷目的地節點值。
 
 
 ## <a name="supported-customizations"></a>支援的自訂
 
-您在 Azure Machine Learning Studio 中建立的類神經網路模型架構，可以使用 Net# 廣泛地進行自訂。 您可以：
+您在 Azure Machine Learning Studio （傳統）中建立的類神經網路模型架構，可以使用 Net # 廣泛地進行自訂。 您可以：
 
 + 建立隱藏層及控制每一層中的節點數目。
 + 指定各層彼此連接的方式。
@@ -89,17 +89,17 @@ Net# 支援多種不同的連線套組，可讓您自訂輸入對應至隱藏層
 
 `Const X = 28;`
 
-若要同時定義兩個或更多常數，請將識別碼名稱和值放在大括號中，並使用分號分隔。 例如︰
+若要同時定義兩個或更多常數，請將識別碼名稱和值放在大括號中，並使用分號分隔。 例如：
 
 `Const { X = 28; Y = 4; }`
 
-各個指派運算式的右側可以是整數、實數、布林值 (True/False) 或數學運算式。 例如︰
+各個指派運算式的右側可以是整數、實數、布林值 (True/False) 或數學運算式。 例如：
 
 `Const { X = 17 * 2; Y = true; }`
 
 ## <a name="layer-declaration"></a>層宣告
 
-層宣告是必要宣告。 它定義層的大小和來源，包括層的連線套組和屬性。 宣告陳述式以層的名稱開頭 (輸入、隱藏或輸出)，其後是層的維度 (正整數的 Tuple)。 例如︰
+層宣告是必要宣告。 它定義層的大小和來源，包括層的連線套組和屬性。 宣告陳述式以層的名稱開頭 (輸入、隱藏或輸出)，其後是層的維度 (正整數的 Tuple)。 例如：
 
 ```Net#
 input Data auto;
@@ -220,7 +220,7 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
   - **UpperPad** 的每個元件皆不可大於 `KernelShape[d]/2`。
   - 這些屬性的預設值是所有元件皆等於 0 的 Tuple。
 
-    **Padding** = true 設定允許可將核心的「中心」保持在「真實」輸入內所需的填補量。 這麼做會略為改變輸出大小的計算方式。 一般而言，輸出大小 D 的計算方式為 `D = (I - K) / S + 1`，其中 `I` 是輸入大小，`K` 是核心大小，`S` 是分散，而 `/` 是整數除法 (趨近於零)。 如果您設定 UpperPad = [1, 1]，輸入大小 `I` 實際上是 29，因此 `D = (29 - 5) / 2 + 1 = 13`。 不過，當 **Padding** = true 時，基本上 `I` 會藉由 `K - 1` 而提高；因此 `D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14`。 藉由指定 **UpperPad** 和 **LowerPad** 的值，您對填補的控制權會遠遠超過只設定 **Padding** = true。
+    **Padding** = true 設定允許可將核心的「中心」保持在「真實」輸入內所需的填補量。 這麼做會略為改變輸出大小的計算方式。 一般而言，輸出大小 D** 的計算方式為 `D = (I - K) / S + 1`，其中 `I` 是輸入大小，`K` 是核心大小，`S` 是分散，而 `/` 是整數除法 (趨近於零)。 如果您設定 UpperPad = [1, 1]，輸入大小 `I` 實際上是 29，因此 `D = (29 - 5) / 2 + 1 = 13`。 不過，當 **Padding** = true 時，基本上 `I` 會藉由 `K - 1` 而提高；因此 `D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14`。 藉由指定 **UpperPad** 和 **LowerPad** 的值，您對填補的控制權會遠遠超過只設定 **Padding** = true。
 
 如需迴旋網路及其應用程式的詳細資訊，請參閱下列文章：
 
@@ -251,7 +251,7 @@ hidden P1 [5, 12, 12]
 
 如需集區層的詳細資訊，請參閱下列文章：
 
-+ [https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (第 3.4 節)
++ [https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)（第3.4 節）
 + [https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf)
 + [https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf](https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf)
 
@@ -450,7 +450,7 @@ output Digit [10] from Hid3 all;
 + 關鍵字 `convolve` 指出名為 `Conv1` 和 `Conv2` 的層為迴旋層。 這些層宣告的後面分別會加上一份迴旋屬性清單。
 + 網路具有第三個隱藏層 `Hid3`，與第二個隱藏層 `Conv2` 完全相連。
 + 輸出層 `Digit` 僅連線到第三個隱藏層 `Hid3`。 關鍵字 `all` 指出輸出層與 `Hid3` 完全相連。
-+ 迴旋的 arity 為三： tuple 的長度`InputShape`， `KernelShape`， `Stride`，和`Sharing`。
++ 卷放的 arity 為3：元組、、和的 `InputShape` 長度 `KernelShape` `Stride` `Sharing` 。
 + 每個核心的加權數目是 `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26`。 或 `26 * 50 = 1300`。
 + 您可以用下列方式計算每個隱藏層中的節點數：
 

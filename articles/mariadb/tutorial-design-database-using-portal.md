@@ -1,24 +1,24 @@
 ---
-title: 教學課程：使用 Azure 入口網站來設計適用於 MariaDB 的 Azure 資料庫
-description: 此教學課程說明如何使用「Azure 入口網站」來建立和管理「適用於 MariaDB 的 Azure 資料庫」伺服器和資料庫。
+title: 教學課程：設計適用於 MariaDB 的 Azure 資料庫 - Azure 入口網站
+description: 本教學課程說明如何使用「Azure 入口網站」來建立和管理「適用於 MariaDB 的 Azure 資料庫」伺服器和資料庫。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: tutorial
-ms.date: 04/15/2019
+ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 1eb24d90c3aefa81f53a3e31c0bd460f45e5a250
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 974b6a1e980119582d4fedb5f8b4e73685290de3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617694"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80063797"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站來設計「適用於 MariaDB 的 Azure 資料庫」資料庫
 
 適用於 MariaDB 的 Azure 資料庫是一個受控服務，您可用來在雲端執行、管理及調整高可用性 MySQL 資料庫。 使用 Azure 入口網站，您可以輕鬆管理伺服器和設計資料庫。
 
-在此教學課程中，您將使用 Azure 入口網站來學習如何：
+在本教學課程中，您將使用 Azure 入口網站來學習如何：
 
 > [!div class="checklist"]
 > * 建立適用於 MariaDB 的 Azure 資料庫
@@ -39,41 +39,44 @@ ms.locfileid: "59617694"
 
 您可使用一組已定義的[計算和儲存體資源](concepts-pricing-tiers.md)來建立適用於 MariaDB 的 Azure 資料庫伺服器。 伺服器會建立在 [Azure 資源群組](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)內。
 
-1. 選取入口網站左上角的 [建立資源] 按鈕 (+)。
+1. 選取入口網站左上角的 [建立資源]  按鈕 (+)。
 
-2. 選取 [資料庫] > [Azure Database for MariaDB]。 您也可以在搜尋方塊中輸入 **MariaDB** 以尋找此服務。
-   
+2. 選取 [資料庫]   > [適用於 MariaDB 的 Azure 資料庫]  。 您也可以在搜尋方塊中輸入 **MariaDB** 以尋找此服務。
+
    ![移至 MySQL](./media/tutorial-design-database-using-portal/1-Navigate-to-mariadb.png)
 
-3. 選取 [適用於 MariaDB 的 Azure 資料庫] 圖格，然後選取 [建立]。 輸入或選取必要的資訊。
-   
+3. 選取 [適用於 MariaDB 的 Azure 資料庫]  圖格。 輸入或選取必要的資訊。
+
    ![建立表單](./media/tutorial-design-database-using-portal/2-create-form.png)
 
-    設定 | 建議的值 | 欄位描述 
+    設定 | 建議的值 | 欄位描述
     ---|---|---
-    伺服器名稱 | 唯一的伺服器名稱 | 選擇可識別適用於 MariaDB 的 Azure 資料庫伺服器的唯一名稱。 例如，**mydemoserver**。 網域名稱 *.mariadb.database.azure.com* 會附加至您輸入的伺服器名稱。 伺服器名稱只能包含小寫字母、數字及連字號 (-) 字元。 它必須包含 3 到 63 個字元。
+    伺服器名稱 | 唯一的伺服器名稱  | 選擇可識別適用於 MariaDB 的 Azure 資料庫伺服器的唯一名稱。 例如，**mydemoserver**。 網域名稱 *.mariadb.database.azure.com* 會附加至您輸入的伺服器名稱。 伺服器名稱只能包含小寫字母、數字及連字號 (-) 字元。 它必須包含 3 到 63 個字元。
     訂用帳戶 | *您的訂用帳戶* | 選取您要用於伺服器的 Azure 訂用帳戶。 如果您有多個訂用帳戶，請選擇資源計費的訂用帳戶。
     資源群組 | **myresourcegroup** | 輸入新的資源群組名稱，或選取現有資源群組。
-    選取來源 | 空白 | 選取 [空白]，以建立新的伺服器。 (如果您要從現有「適用於 MariaDB 的 Azure 資料庫」伺服器的異地備份建立伺服器，請選取 [備份])。
-    伺服器管理員登入 | myadmin | 連線至伺服器時所要使用的登入帳戶。 系統管理員登入名稱不能是 **azure_superuser**、**admin**、**administrator**、**root**、**guest** 或 **public**。
-    密碼 | 您的選擇 | 為伺服器管理帳戶輸入新密碼。 其必須包含 8 到 128 個字元。 您的密碼必須包含下列類別中三種類別的字元：英文大寫字母、英文小寫字母、數字 (0-9) 及非英數字元 (!、$、#、% 等等)。
-    確認密碼 | 您的選擇| 確認管理帳戶密碼。
-    位置 | 最接近使用者的區域| 選取最靠近使用者或其他 Azure 應用程式的位置。
-    版本 | 最新版本| 最新版本 (除非您有使用不同版本的特定需求)。
-    定價層 | 請參閱說明。 | 新伺服器的計算、儲存體和備份組態。 選取 [定價層] > [一般用途]。 保留下列設定的預設值：<br><ul><li>**計算產生** (Gen 5)</li><li>**vCore** (4 個 vCore)</li><li>**儲存體 (100 GB)**</li><li>**備份保留期限** (7 天)</li></ul><br>若要啟用異地備援儲存體中的伺服器備份，請為 [備份備援選項] 選取 [異地備援]。 <br><br>若要儲存此定價層選取項目，請選取 [確定]。 下方螢幕擷取畫面會擷取這些選取項目。
+    選取來源 | 空白  | 選取 [空白]  ，以建立新的伺服器。 (如果您要從現有「適用於 MariaDB 的 Azure 資料庫」伺服器的異地備份建立伺服器，請選取 [備份]  )。
+    伺服器管理員登入 | myadmin  | 連線至伺服器時所要使用的登入帳戶。 系統管理員登入名稱不能是 **azure_superuser**、**admin**、**administrator**、**root**、**guest** 或 **public**。
+    密碼 | 您的選擇  | 為伺服器管理帳戶輸入新密碼。 其必須包含 8 到 128 個字元。 您的密碼必須包含下列類別中三種類別的字元：英文大寫字母、英文小寫字母、數字 (0-9) 及非英數字元 (!、$、#、% 等等)。
+    確認密碼 | 您的選擇 | 確認管理帳戶密碼。
+    Location | 最接近使用者的區域 | 選取最靠近使用者或其他 Azure 應用程式的位置。
+    版本 | 最新版本 | 最新版本 (除非您有使用不同版本的特定需求)。
+    定價層 | 請參閱說明。 | 新伺服器的計算、儲存體和備份組態。 選取 [定價層]   > [一般用途]  。 保留下列設定的預設值：<br><ul><li>**計算產生** (Gen 5)</li><li>**vCore** (4 個 vCore)</li><li>**儲存體** (100 GB)</li><li>**備份保留期限** (7 天)</li></ul><br>若要啟用異地備援儲存體中的伺服器備份，請為 [備份備援選項]  選取 [異地備援]  。 <br><br>若要儲存此定價層選取項目，請選取 [確定]  。 下方螢幕擷取畫面會擷取這些選取項目。
     
    ![定價層](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
 
-4. 選取 [建立] 。 在一兩分鐘內，新的「適用於 MariaDB 的 Azure 資料庫」伺服器就會在雲端執行。 若要監視部署程序，請在工具列上選取 [通知]。
+   > [!TIP]
+   > 啟用**自動成長**後，您的伺服器會在接近配置的限制時增加儲存體，而不會影響您的工作負載。
+
+4. 按一下 [檢閱 + 建立]  。 您可以按一下工具列上的 [通知]  按鈕來監視部署程序。 部署最多需要 20 分鐘的時間。
 
 ## <a name="configure-the-firewall"></a>設定防火牆
 
 「適用於 MariaDB 的 Azure 資料庫」會受到防火牆保護。 依預設，伺服器與其內部資料庫的所有連線皆會遭拒。 第一次連線到適用於 MariaDB 的 Azure 資料庫之前，請設定防火牆來新增用戶端電腦的公用網路 IP 位址 (或 IP 位址範圍)。
 
-1. 選取您新建立的伺服器，然後選取 [連線安全性]。
-   
+1. 選取您新建立的伺服器，然後選取 [連線安全性]  。
+
    ![連接安全性](./media/tutorial-design-database-using-portal/1-Connection-security.png)
-2. 您可以在這裡選取 [新增我的 IP]，或設定防火牆規則。 請記得在建立規則後選取 [儲存]。
+2. 您可以在這裡選取 [新增我的 IP]  ，或設定防火牆規則。 請記得在建立規則後選取 [儲存]  。
 
 您現在可以使用 mysql 命令列工具或 MySQL Workbench 來連線到伺服器。
 
@@ -82,11 +85,11 @@ ms.locfileid: "59617694"
 
 ## <a name="get-connection-information"></a>取得連線資訊
 
-請從 Azure 入口網站取得「適用於 MariaDB 的 Azure 資料庫」伺服器的 [伺服器名稱] (完整) 和 [伺服器管理員登入名稱] 值。 您將使用 mysql 命令列工具搭配此完整伺服器名稱來連線到伺服器。 
+請從 Azure 入口網站取得「適用於 MariaDB 的 Azure 資料庫」伺服器的 [伺服器名稱]  (完整) 和 [伺服器管理員登入名稱]  值。 您將使用 mysql 命令列工具搭配此完整伺服器名稱來連線到伺服器。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的左側功能表中，選取 [所有資源]。 輸入伺服器名稱，並搜尋適用於 MariaDB 的 Azure 資料庫伺服器。 選取伺服器名稱以檢視伺服器詳細資料。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的左側功能表中，選取 [所有資源]  。 輸入伺服器名稱，並搜尋適用於 MariaDB 的 Azure 資料庫伺服器。 選取伺服器名稱以檢視伺服器詳細資料。
 
-2. 在 [概觀] 頁面上，記下 [伺服器名稱] 和 [伺服器管理員登入名稱] 的值。 您也可以選取每個欄位旁邊的 [複製] 按鈕，將其值複製到剪貼簿。
+2. 在 [概觀]  頁面上，記下 [伺服器名稱]  和 [伺服器管理員登入名稱]  的值。 您也可以選取每個欄位旁邊的 [複製]  按鈕，將其值複製到剪貼簿。
 
    ![伺服器屬性](./media/tutorial-design-database-using-portal/2-server-properties.png)
 
@@ -94,11 +97,11 @@ ms.locfileid: "59617694"
 
 ## <a name="connect-to-the-server-by-using-mysql"></a>使用 mysql 來連線到伺服器
 
-使用 [mysql 命令列工具](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)來建立對「適用於 MariaDB 的 Azure 資料庫」伺服器的連線。 您可以從 Azure Cloud Shell 在瀏覽器中，或從電腦使用本機安裝的 mysql 工具執行 mysql 命令列工具。 若要開啟 Azure Cloud Shell，請選取此文章中程式碼區塊上的 [試用] 按鈕，或造訪 Azure 入口網站並按一下右上方工具列中的 **>_** 圖示。 
+使用 [mysql 命令列工具](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)來建立對「適用於 MariaDB 的 Azure 資料庫」伺服器的連線。 您可以從 Azure Cloud Shell 在瀏覽器中，或從電腦使用本機安裝的 mysql 工具執行 mysql 命令列工具。 若要開啟 Azure Cloud Shell，請選取本文中程式碼區塊上的 [試用]  按鈕，或造訪 Azure 入口網站並按一下右上方工具列中的 **>_** 圖示。
 
 輸入下列命令以進行連線：
 
-```azurecli-interactive
+```bash
 mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
 ```
 
@@ -163,12 +166,12 @@ SELECT * FROM inventory;
 
 假設您不小心刪除重要的資料庫資料表，而無法輕易地復原資料。 在適用於 MariaDB 的 Azure 資料庫中，您可以在新的伺服器中建立資料庫複本，以將伺服器還原至某個時間點。 您可以使用這個新的伺服器來復原已刪除的資料。 下列步驟會將範例伺服器還原到新增資料表之前的時間點：
 
-1. 在 Azure 入口網站中，找出您的「適用於 MariaDB 的 Azure 資料庫」。 在 [概觀] 頁面上，選取 [還原]。
+1. 在 Azure 入口網站中，找出您的「適用於 MariaDB 的 Azure 資料庫」。 在 [概觀]  頁面上，選取 [還原]  。
 
    ![還原資料庫](./media/tutorial-design-database-using-portal/1-restore-a-db.png)
 
-2. 在 [還原] 頁面上，輸入或選取下列資訊：
-   
+2. 在 [還原]  頁面上，輸入或選取下列資訊：
+
    ![還原表單](./media/tutorial-design-database-using-portal/2-restore-form.png)
    
    - **還原點**：從所列的時間範圍中，選取您想要還原的時間點。 務必將您的當地時區轉換成 UTC。
@@ -176,10 +179,10 @@ SELECT * FROM inventory;
    - **位置**：此區域與來源伺服器相同且無法變更。
    - **定價層**：此定價層與來源伺服器相同且無法變更。
    
-3. 選取 [確定]，將伺服器還原到資料表刪除之前的時間點[還原至某個時間點](./howto-restore-server-portal.md)。 還原伺服器可在您選取的時間點建立伺服器的新複本。 
+3. 選取 [確定]  ，將伺服器還原到資料表刪除之前的時間點[還原至某個時間點](./howto-restore-server-portal.md)。 還原伺服器可在您選取的時間點建立伺服器的新複本。 
 
 ## <a name="next-steps"></a>後續步驟
-在此教學課程中，您使用 Azure 入口網站來學習如何：
+在本教學課程中，您使用 Azure 入口網站來學習如何：
 
 > [!div class="checklist"]
 > * 建立適用於 MariaDB 的 Azure 資料庫

@@ -1,15 +1,15 @@
 ---
-author: cynthn
+author: tanmaygore
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
-ms.author: cynthn
-ms.openlocfilehash: dc871b29cdafa57d337f9be6cf01e76212f31b67
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.author: tagore
+ms.openlocfilehash: d7019d673bd8dfda31c5073fb7f37e26768dcc1d
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125351"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83778248"
 ---
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>將 IaaS 資源從傳統部署模型移轉至 Azure Resource Manager
 首先，務必了解基礎結構即服務 (IaaS) 資源上資料平面與管理平面作業之間的差異。
@@ -45,7 +45,7 @@ ms.locfileid: "62125351"
 >
 >
 
-### <a name="validate"></a>驗證
+### <a name="validate"></a>Validate
 驗證作業是移轉程序的第一個步驟。 此步驟的目標是要分析您希望在傳統部署模型中移轉之資源的狀態。 此作業會評估資源是否能夠移轉 (成功或失敗)。
 
 您可選取要進行移轉驗證的虛擬網路或雲端服務 (如果不在虛擬網路中)。 如果資源不能夠移轉，Azure 會列出其原因。
@@ -117,11 +117,11 @@ ms.locfileid: "62125351"
 > 在您觸發認可作業之後，就無法完成此作業。     
 >
 
-### <a name="commit"></a>認可
+### <a name="commit"></a>Commit
 完成驗證之後，您便可以認可移轉。 資源不會再出現於傳統部署模型中，而只有在 Resource Manager 部署模型中才能使用這些資源。 只能在新入口網站中管理已移轉的資源。
 
 > [!NOTE]
-> 這是一種等冪作業。 如果失敗，請重試此作業。 如果持續發生失敗，請建立支援票證，或是在我們的 [VM 論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesforWindows)上建立一篇標籤為 "ClassicIaaSMigration" 的論壇文章。
+> 這是一種等冪作業。 如果失敗，請重試此作業。 如果持續失敗，請建立支援票證，或在 [Microsoft 問與答](https://docs.microsoft.com/answers/index.html)上建立論壇
 >
 >
 
@@ -138,30 +138,30 @@ ms.locfileid: "62125351"
 
 | 傳統表示法 | Resource Manager 表示法 | 注意 |
 | --- | --- | --- |
-| 雲端服務名稱 |DNS 名稱 |在移轉期間，會以命名樣式 `<cloudservicename>-migrated`為每個雲端服務建立新的資源群組。 此資源群組包含您的所有資源。 云服务名称会成为与公共 IP 地址关联的 DNS 名称。 |
-| 虚拟机 |虛擬機器 |VM 特定屬性會原封不動地移轉過去。 有些 osProfile 資訊 (例如電腦名稱) 不會儲存在傳統部署模型中，因此移轉後會保留空白。 |
+| 雲端服務名稱 |DNS 名稱 |在移轉期間，會以命名樣式 `<cloudservicename>-migrated`為每個雲端服務建立新的資源群組。 此資源群組包含您的所有資源。 雲端服務名稱會成為與公用 IP 位址關聯的 DNS 名稱。 |
+| 虛擬機器 |虛擬機器 |VM 特定屬性會原封不動地移轉過去。 有些 osProfile 資訊 (例如電腦名稱) 不會儲存在傳統部署模型中，因此移轉後會保留空白。 |
 | 連接至 VM 的磁碟資源 |連接至 VM 的隱含磁碟 |在 Resource Manager 部署模型中，並未將磁碟塑造成最上層資源。 這些磁碟是被當作 VM 底下的隱含磁碟來移轉。 目前只支援連接至 VM 的磁碟。 Resource Manager VM 現在可以使用傳統部署模型中的儲存體帳戶，這可讓您不須進行任何更新，即可輕鬆移轉磁碟。 |
 | VM 擴充功能 |VM 擴充功能 |所有資源擴充功能 (XML 擴充功能除外) 都會從傳統部署模型移轉出來。 |
 | 虛擬機器憑證 |Azure 金鑰保存庫中的憑證 |如果雲端服務包含服務憑證，移轉作業就會為每項雲端服務建立新的 Azure Key Vault，然後將憑證移至該金鑰保存庫中。 VM 將會更新為參照該金鑰保存庫中的憑證。 <br><br> 請勿刪除 Key Vault。 這會導致 VM 進入失敗狀態。 |
 | WinRM 組態 |osProfile 下的 WinRM 組態 |「Windows 遠端管理」組態在移轉過程中會原封不動地移過去。 |
 | 可用性設定組屬性 |可用性設定組資源 | 可用性設定組規格是傳統部署模型中 VM 上的屬性。 在移轉過程中，可用性設定組會變成最上層資源。 不支援下列組態：每個雲端服務有多個可用性設定組，或是一或多個可用性設定組帶有不屬於雲端服務中任何可用性設定組的 VM。 |
-| VM 上的网络配置 |主要網路介面 |移轉之後，VM 上的網路組態就會顯示為主要網路介面資源。 VM 如果不在虛擬網路中，其內部 IP 位址在移轉期間將會變更。 |
+| VM 上的網路組態 |主要網路介面 |移轉之後，VM 上的網路組態就會顯示為主要網路介面資源。 VM 如果不在虛擬網路中，其內部 IP 位址在移轉期間將會變更。 |
 | VM 上的多個網路介面 |網路介面 |如果 VM 有多個相關聯的網路介面，則每個網路介面及所有的屬性都會在移轉過程中成為最上層資源。 |
 | 負載平衡的端點集 |負載平衡器 |在傳統部署模型中，平台已為每個雲端服務指派一個隱含的負載平衡器。 在移轉期間，會建立新的負載平衡器資源，而負載平衡端點集則會成為負載平衡器規則。 |
 | 傳入的 NAT 規則 |傳入的 NAT 規則 |在移轉期間，VM 上定義的輸入端點會轉換成負載平衡器下的輸入網路位址轉譯規則。 |
-| VIP 地址 |具 DNS 名稱的公用 IP 位址 |虛擬 IP 位址會變成公用 IP 位址並與負載平衡器產生關聯。 有指派給虛擬 IP 的輸入端點時，才可移轉該虛擬 IP。 |
+| VIP 位址 |具 DNS 名稱的公用 IP 位址 |虛擬 IP 位址會變成公用 IP 位址並與負載平衡器產生關聯。 有指派給虛擬 IP 的輸入端點時，才可移轉該虛擬 IP。 |
 | 虛擬網路 |虛擬網路 |虛擬網路會與其所有屬性一起移轉至 Resource Manager 部署模型。 將會建立名為 `-migrated`的新資源群組。 |
-| 保留的 IP |搭配靜態配置方法的公用 IP 位址 |與負載平衡器關聯的保留 IP 會隨著雲端服務或虛擬機器的移轉一併移轉。 目前不支援移轉未關聯的保留 IP。 |
+| 保留的 IP |搭配靜態配置方法的公用 IP 位址 |與負載平衡器關聯的保留 IP 會隨著雲端服務或虛擬機器的移轉一併移轉。 未關聯的保留 IP 可以使用 [Move-AzureReservedIP](https://docs.microsoft.com/powershell/module/servicemanagement/azure/move-azurereservedip?view=azuresmps-4.0.0) 進行遷移。  |
 | 每一個 VM 的公用 IP 位址 |搭配動態配置方法的公用 IP 位址 |與 VM 關聯的公用 IP 位址會轉換成公用 IP 位址資源，且配置方法會設定為靜態。 |
-| NSG |NSG |在移轉至 Resource Manager 部署模型的過程中，會複製與子網路關聯的網路安全性群組。 在移轉期間不會移除傳統部署模型中的 NSG。 不過，在移轉進行時，會封鎖 NSG 的管理平面作業。 |
+| NSG |NSG |在移轉至 Resource Manager 部署模型的過程中，會複製與子網路關聯的網路安全性群組。 在移轉期間不會移除傳統部署模型中的 NSG。 不過，在移轉進行時，會封鎖 NSG 的管理平面作業。 未關聯的 NSG 可以使用 [Move-AzureNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/servicemanagement/azure/move-azurenetworksecuritygroup?view=azuresmps-4.0.0) 進行遷移。|
 | DNS 伺服器 |DNS 伺服器 |與虛擬網路或 VM 關聯的 DNS 伺服器，會在對應的資源移轉過程中，與其所有屬性一起移轉。 |
-| UDR |UDR |在移轉至 Resource Manager 部署模型的過程中，會複製與子網路關聯的使用者定義路由。 在移轉期間不會移除傳統部署模型中的 UDR。 不過，移轉進行時，會封鎖 UDR 的管理平面作業。 |
+| UDR |UDR |在移轉至 Resource Manager 部署模型的過程中，會複製與子網路關聯的使用者定義路由。 在移轉期間不會移除傳統部署模型中的 UDR。 不過，移轉進行時，會封鎖 UDR 的管理平面作業。 未關聯的 UDR 可以使用 [Move-AzureRouteTable](https://docs.microsoft.com/powershell/module/servicemanagement/azure/Move-AzureRouteTable?view=azuresmps-4.0.0) 進行遷移。 |
 | VM 網路組態上的 IP 轉送屬性 |NIC 上的 IP 轉送屬性 |在移轉期間，VM 上的 IP 轉送屬性會轉換成網路介面上的屬性。 |
 | 具有多個 IP 的負載平衡器 |具有多個公用 IP 資源的負載平衡器 |與負載平衡器關聯的每個公用 IP 在移轉後都會轉換成公用 IP 資源，並與負載平衡器產生關聯。 |
 | VM 上的內部 DNS 名稱 |NIC 上的內部 DNS 名稱 |在移轉期間，VM 的內部 DNS 尾碼會移轉至 NIC 上名為 "InternalDomainNameSuffix" 的唯讀屬性。 尾碼在移轉後保持不變，VM 解析應該會像之前一樣繼續運作。 |
 | 虛擬網路閘道 |虛擬網路閘道 |不變更虛擬網路閘道內容下進行移轉。 與閘道相關聯的 VIP 也不會變更。 |
 | 區域網路網站 |區域網路閘道 |不變更區域網路網站的內容下移轉到稱為本機網路閘道的新資源。 這表示內部部署位址首碼與遠端閘道的 IP。 |
-| 連線參考 |連線 |閘道與網路組態中的區域網路網站之間的連線參考會以稱為連線的新資源表示。 網路組態檔中連線參考的所有屬性都會在不變更下複製到連線資源。 傳統部署模型中虛擬網路之間連線能力的實現方式為建立兩個區域網路網站的 IPsec 通道以代表虛擬網路。 這會在 Resource Manager 模型中轉換為虛擬網路對虛擬網路連線類型，而不需要區域網路閘道。 |
+| 連線參考 |Connection |閘道與網路組態中的區域網路網站之間的連線參考會以稱為連線的新資源表示。 網路組態檔中連線參考的所有屬性都會在不變更下複製到連線資源。 傳統部署模型中虛擬網路之間連線能力的實現方式為建立兩個區域網路網站的 IPsec 通道以代表虛擬網路。 這會在 Resource Manager 模型中轉換為虛擬網路對虛擬網路連線類型，而不需要區域網路閘道。 |
 
 ## <a name="changes-to-your-automation-and-tooling-after-migration"></a>移轉之後對自動化及工具的變更
 在將資源從「傳統」部署模型移轉至 Resource Manager 部署模型的過程中，您必須更新現有的自動化或工具，以確保它在移轉之後仍可繼續運作。

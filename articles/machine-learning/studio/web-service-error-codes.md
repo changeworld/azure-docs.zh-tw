@@ -1,37 +1,32 @@
 ---
-title: REST API 錯誤碼 - Azure Machine Learning Studio | Microsoft Docs
+title: REST API 錯誤碼
+titleSuffix: ML Studio (classic) - Azure
 description: Azure Machine Learning Web 服務上的作業可以傳回這些錯誤碼。
 keywords: ''
 services: machine-learning
-documentationcenter: ''
-author: xiaoharper
-ms.custom: seodec18
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 editor: cgronlun
 ms.assetid: 0923074b-3728-439d-a1b8-8a7245e39be4
 ms.service: machine-learning
 ms.subservice: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: 8e91d0cd68997dee9bb00cceeaa6b697f6644ee5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 8030e44e85958495714f441303461722b6b96bf4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736559"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84115443"
 ---
-# <a name="azure-machine-learning-studio-rest-api-error-codes"></a>Azure Machine Learning Studio REST API 錯誤碼
- 
-Azure Machine Learning Studio Web 服務上的作業可以傳回下列錯誤碼。
+# <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure Machine Learning Studio （傳統） REST API 錯誤代碼
+
+Azure Machine Learning Studio （傳統） web 服務上的作業可能會傳回下列錯誤碼。
  
 ## <a name="badargument-http-status-code-400"></a>BadArgument (HTTP 狀態碼 400)
  
 提供的引數無效。
  
-此類錯誤表示某處提供的引數無效。 對於傳遞至 web 服務的項目而言，這可能是 Azure 儲存體的認證或位置。 請查看 [詳細資料] 區段中的 [錯誤碼] 欄位，以診斷那個特定引數無效。
+此類錯誤表示某處提供的引數無效。 對於傳遞至 web 服務的項目而言，這可能是 Azure 儲存體的認證或位置。 請查看 [詳細資料] 區段中的「程式碼」欄位，以診斷哪些特定引數無效。
  
 | 錯誤碼 | 使用者訊息 |
 | ---------- |--------------|
@@ -69,7 +64,7 @@ Azure Machine Learning Studio Web 服務上的作業可以傳回下列錯誤碼�
 | MissingWebServicePackage | 未提供 Web 服務套件。 提供有效的 Web 服務套件，然後再試一次。 |
 | MissingWorkspaceId | 未提供工作區識別碼。 提供有效的工作區識別碼，然後再試一次。 |
 | ModelConfigurationInvalid | 模型套件中的模型組態無效。 確定模型組態包含輸出端點定義、標準錯誤端點和標準輸出端點，然後再試一次。 |
-| ModelPackageIdInvalid | 模型套件識別碼無效。確認模型套件識別碼正確無誤，然後再試一次。 |
+| ModelPackageIdInvalid | 模型套件識別碼無效。請確認模型套件識別碼是否正確，然後再試一次。 |
 | RequestBodyInvalid | 未提供要求本文，或在還原序列化要求本文時發生錯誤。 |
 | RequestIsEmpty | 未提供要求。 提供有效的要求，然後再試一次。 |
 | UnexpectedParameter | 提供的參數並非預期。 確認所有參數名稱的拼寫都正確無誤，只傳遞預期的參數，然後再試一次。 |

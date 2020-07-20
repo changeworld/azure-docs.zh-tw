@@ -1,26 +1,27 @@
 ---
-title: Azure 公用 IP 位址首碼 | Microsoft Docs
+title: Azure 公用 IP 位址首碼
 description: 了解什麼是 Azure 公用 IP 位址首碼，以及它如何協助您為資源指派可預測的的公用 IP 位址。
 services: virtual-network
 documentationcenter: na
-author: anavinahar
-manager: narayan
+author: asudbring
+manager: KumudD
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
-ms.author: anavin
-ms.openlocfilehash: 68ca35590aaadba431d5f1dc06e0405162ebc69f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 04/08/2020
+ms.author: allensu
+ms.openlocfilehash: 0f71f845ef3209146ead79cafae2f3aa5c8c6d7d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154474"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82144511"
 ---
 # <a name="public-ip-address-prefix"></a>公用 IP 位址首碼
 
@@ -39,7 +40,7 @@ ms.locfileid: "65154474"
 - 您可以從已知範圍建立公用 IP 位址資源。
 - 您或您的業務合作夥伴可以建立防火牆規則，其範圍包括您目前獲指派的公用 IP 位址，以及尚未分配的位址。 這樣就不需要在將位址指派給新資源時變更防火牆規則。
 - 您可以建立之範圍的預設大小是 /28 或 16 個 IP 位址。
-- 您可以建立多少範圍沒有任何限制，但是，Azure 訂用帳戶中可以擁有的靜態公用 IP 位址的數目上限有限制。 因此，您所建立的範圍數目不能包含比訂用帳戶中的位址更多的靜態公用 IP 位址。 如需詳細資訊，請參閱 [Azure 限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
+- 您可以建立多少範圍沒有任何限制，但是，Azure 訂用帳戶中可以擁有的靜態公用 IP 位址的數目上限有限制。 因此，您所建立的範圍數目不能包含比訂用帳戶中的位址更多的靜態公用 IP 位址。 如需詳細資訊，請參閱 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 - 使用首碼中的位址建立的位址，可以指派給任何可為其指派公用 IP 位址的 Azure 資源。
 - 您可以輕鬆查看該範圍內已配置與尚未配置的 IP 位址。
 
@@ -48,16 +49,16 @@ ms.locfileid: "65154474"
 
 |資源|案例|步驟|
 |---|---|---|
-|虛擬機器| 將公用 IP 從首碼與您在 Azure 中的虛擬機器產生關聯，可以減少在防火牆中建立 IP 允許清單的管理負荷。 您可以使用單一防火牆規則，將整個首碼列入允許清單。 當您在調整 Azure 中的虛擬機器規模時，可以關聯來自相同首碼的 IP，進而節省成本、時間與管理額外負荷。| 將首碼中的 IP 與您的虛擬機器產生關聯：1. [建立首碼](manage-public-ip-address-prefix.md)。 2. [從首碼建立 IP](manage-public-ip-address-prefix.md)。 3. [將 IP 與您的虛擬機器網路介面產生關聯](virtual-network-network-interface-addresses.md#add-ip-addresses)。
-| 負載平衡器 | 將首碼中的公用 IP 與您的前端 IP 設定或負載平衡器的連出規則產生關聯，以確保簡化您的 Azure 公用 IP 位址空間。 您可以透過清理連出連線，使其源自公用 IP 首碼定義的連續 IP 位址範圍，來簡化您的案例。 | 將首碼中的 IP 與您的負載平衡器產生關聯：1. [建立首碼](manage-public-ip-address-prefix.md)。 2. [從首碼建立 IP](manage-public-ip-address-prefix.md)。 3. 建立負載平衡器時，選取或更新上面步驟 2 中建立的 IP 作為您負載平衡器的前端 IP。 |
-| Azure 防火牆 | 您可以為連出 SNAT 使用首碼中的公用 IP。 這表示所有連出虛擬網路流量都會轉譯為 [Azure 防火牆](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)公用 IP。 由於此 IP 來自於預定的首碼，因此很容易就能事先知道 Azure 中的公用 IP 將是什麼樣子。 | 1.[建立首碼](manage-public-ip-address-prefix.md)。 2. [從首碼建立 IP](manage-public-ip-address-prefix.md)。 3. 當您[部署 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-the-firewall)時，請務必選取您之前從首碼中配置的 IP。|
+|虛擬機器| 將公用 IP 從首碼與您在 Azure 中的虛擬機器產生關聯，可以減少在防火牆中建立 IP 允許清單的管理負荷。 您可以使用單一防火牆規則，將整個首碼列入允許清單。 當您在調整 Azure 中的虛擬機器規模時，可以關聯來自相同首碼的 IP，進而節省成本、時間與管理額外負荷。| 將首碼中的 IP 與您的虛擬機器產生關聯：1. [建立首碼](manage-public-ip-address-prefix.md)。 2. [從首碼建立 IP](manage-public-ip-address-prefix.md)。 3. [將 IP 與您的虛擬機器網路介面產生關聯](virtual-network-network-interface-addresses.md#add-ip-addresses)。 您也可以[將 ip 與虛擬機器擴展集建立關聯](https://azure.microsoft.com/resources/templates/101-vmms-with-public-ip-prefix/)。
+| 標準負載平衡器 | 將首碼中的公用 IP 與您的前端 IP 設定或負載平衡器的連出規則產生關聯，以確保簡化您的 Azure 公用 IP 位址空間。 您可以透過清理連出連線，使其源自公用 IP 首碼定義的連續 IP 位址範圍，來簡化您的案例。 | 將首碼中的 IP 與您的負載平衡器產生關聯：1. [建立首碼](manage-public-ip-address-prefix.md)。 2. [從首碼建立 IP](manage-public-ip-address-prefix.md)。 3. 建立負載平衡器時，選取或更新上面步驟 2 中建立的 IP 作為您負載平衡器的前端 IP。 |
+| Azure 防火牆 | 您可以為連出 SNAT 使用首碼中的公用 IP。 這表示所有連出虛擬網路流量都會轉譯為 [Azure 防火牆](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)公用 IP。 由於此 IP 來自於預定的首碼，因此很容易就能事先知道 Azure 中的公用 IP 將是什麼樣子。 | 1.[建立前置詞。](manage-public-ip-address-prefix.md) 2. [從首碼建立 IP](manage-public-ip-address-prefix.md)。 3. 當您[部署 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-the-firewall)時，請務必選取您之前從首碼中配置的 IP。|
+| 應用程式閘道 v2 | 您可以針對自動調整和區域多餘的應用程式閘道 v2，使用首碼中的公用 IP。 由於此 IP 來自於預定的首碼，因此很容易就能事先知道 Azure 中的公用 IP 將是什麼樣子。 | 1.[建立前置詞。](manage-public-ip-address-prefix.md) 2. [從首碼建立 IP](manage-public-ip-address-prefix.md)。 3. 當您[部署應用程式閘道](../application-gateway/quick-create-portal.md#create-an-application-gateway)時，請務必選取您先前從前置詞配置的 IP。|
 
 ## <a name="constraints"></a>條件約束
 
 - 您無法指定首碼的 IP 位址。 Azure 會根據您指定的大小為首碼配置 IP 位址。
-- 前置詞的預設大小是/28 或 16 公用 IP 位址。
+- 根據預設，您可以建立最多16個 IP 位址或/28 的前置詞。 如需詳細資訊，請參閱[網路限制增加要求](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests)和[Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 - 建立首碼之後，就無法變更範圍。
-- 範圍僅適用於 IPv4 位址。 範圍不包含 IPv6 位址。
 - 只能從首碼的範圍指派使用標準 SKU 建立的靜態公用 IP 位址。 若要深入了解公用 IP 位址 SKU，請參閱[公用 IP 位址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)。
 - 範圍中的位址只能指派給 Azure Resource Manager 資源。 無法將位址指派給傳統部署模型中的資源。
 - 從首碼建立的所有公用 IP 位址必須與首碼存在於相同 Azure 區域和訂用帳戶中，並且必須指派給相同區域和訂用帳戶中的資源。

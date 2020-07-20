@@ -2,19 +2,19 @@
 title: 文件詳細資料 - 自訂翻譯工具
 titleSuffix: Azure Cognitive Services
 description: 文件清單頁面會顯示您的工作區中的前 10 個文件。 對於每個文件，將會顯示其名稱、配對、類型、語言、上傳時間戳記，以及文件者的使用者電子郵件地址。
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
-ms.author: v-rada
+ms.date: 05/26/2020
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: d380c8bcdcb4954901df0b460269493c5be0a6de
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 22c982babbed1322e97127379be75e7b070ed81f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777383"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994237"
 ---
 # <a name="view-document-details"></a>檢視文件詳細資料
 
@@ -22,7 +22,7 @@ ms.locfileid: "57777383"
 
 按一下個別文件，可檢視文件的詳細資料頁面。 文件的詳細資料頁面會顯示從文件中擷取的句子清單。
 
-- 依預設會在下拉式欄位中選取「來源」語言，但您可以切換以檢視目標語言的句子。
+- 根據預設，下拉式欄位中會選取「來源」語言，但是您可以切換成以目的語言來查看句子。
 - 根據預設，每頁會顯示 20 個句子。 您可以使用分頁控制項在頁面之間瀏覽。
 
 ![文件詳細資料](media/how-to/how-to-view-document-details.png)

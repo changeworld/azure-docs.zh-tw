@@ -1,19 +1,19 @@
 ---
-title: 為 ExpressRoute 設定 VNet 閘道 - 傳統：Azure PowerShell | Microsoft Docs
+title: Azure ExpressRoute：將閘道新增至 VNet：傳統
 description: 針對 ExpressRoute 組態，使用 PowerShell 設定傳統部署模型 VNet 的 VNet 閘道。
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: article
-ms.date: 11/05/2018
+ms.topic: how-to
+ms.date: 12/06/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 101e03d07a15e9058ef236a575251b052017db32
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bcffd60596f8c2286b91eaf13be3e09bb8bec94f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60365114"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736402"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell-classic"></a>使用 PowerShell 設定 ExpressRoute 的虛擬網路閘道閘道 (傳統)
 > [!div class="op_single_selector"]
@@ -32,7 +32,9 @@ ms.locfileid: "60365114"
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="before-beginning"></a>開始之前
-確認您已安裝此組態所需的 Azure PowerShell Cmdlet (1.0.2 或更新版本)。 如果您尚未安裝 Cmdlet，您必須先安裝，然後才能開始進行組態步驟。 如需安裝 Azure PowerShell 的詳細資訊，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。
+確認您已安裝此設定所需的 Azure PowerShell Cmdlet。
+
+[!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
 [!INCLUDE [expressroute-gateway-classic-ps](../../includes/expressroute-gateway-classic-ps-include.md)]
 

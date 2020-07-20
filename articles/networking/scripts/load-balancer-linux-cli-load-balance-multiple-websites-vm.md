@@ -3,24 +3,20 @@ title: Azure CLI 指令碼範例 - 使用 Azure CLI 進行多個網站的負載�
 description: Azure CLI 指令碼範例 - 使用相同的虛擬機器進行多個網站的負載平衡
 services: load-balancer
 documentationcenter: load-balancer
-author: KumudD
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: asudbring
+manager: KumudD
 ms.service: load-balancer
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
-ms.author: kumud
-ms.openlocfilehash: e3dc9476d188382db31b03b37b2a23affc61aed3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: allensu
+ms.openlocfilehash: 568934d6b5ecc2fbb3b6fc6588ecfd48c8306490
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564879"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73889460"
 ---
 # <a name="load-balance-multiple-websites"></a>進行多個網站的負載平衡
 
@@ -37,7 +33,7 @@ ms.locfileid: "60564879"
 
 ## <a name="clean-up-deployment"></a>清除部署 
 
-运行以下命令来删除资源组、VM 和所有相关资源。
+執行下列命令來移除資源群組、VM 和所有相關資源。
 
 ```azurecli
 az group delete --name myResourceGroup --yes
@@ -47,7 +43,7 @@ az group delete --name myResourceGroup --yes
 
 此指令碼使用下列命令建立資源群組、虛擬網路、負載平衡器和所有相關資源。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | 建立用來存放所有資源的資源群組。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | 建立 Azure 虛擬網路和子網路。 |

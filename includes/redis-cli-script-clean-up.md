@@ -2,15 +2,14 @@
 author: wesmc7777
 ms.service: redis-cache
 ms.topic: include
-origin.date: 11/09/2018
-ms.date: 12/25/2018
-ms.author: v-junlch
+ms.date: 11/09/2018
+ms.author: wesmc
 ms.openlocfilehash: e5166934c4f7e1ecc917d2a5afcbb26ea9a637a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60607754"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67173783"
 ---
 ## <a name="clean-up-deployment"></a>清除部署 
 
@@ -19,5 +18,3 @@ ms.locfileid: "60607754"
 ```azurecli
 az group delete --name contosoGroup
 ```
-
-<!-- ms.date: 12/25/2018 -->

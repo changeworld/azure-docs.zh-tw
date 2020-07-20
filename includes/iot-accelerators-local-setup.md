@@ -9,11 +9,11 @@ ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
 ms.openlocfilehash: 1f567b3d083853f9bb342bfad462e8545caa6480
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61446114"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67174412"
 ---
 ## <a name="download-the-source-code"></a>下載原始程式碼
 
@@ -59,21 +59,21 @@ git submodule foreach git pull origin master
 
      指令碼會使用您的解決方案名稱在 Azure 中建立資源群組。 此資源群組包含解決方案加速器使用的 Azure 資源。 一旦您不再需要對應的資源，您可以刪除此資源群組。
 
-     此指令碼也會將一組有前置詞 **PCS** 的環境變數新增到您的本機電腦。 這些環境變數提供可以讀取 Azure 金鑰保存庫資源的遠端監視的詳細資料。 此金鑰保存庫資源會為其中遠端監視將其設定要從中讀取值。
+     此指令碼也會將一組有前置詞 **PCS** 的環境變數新增到您的本機電腦。 這些環境變數會提供遠端監視的詳細資料，以便能夠從 Azure Key Vault 資源讀取。 此 Key Vault 的資源是遠端監視將從中讀取其設定值的位置。
 
      > [!TIP]
-     > 指令碼完成時，它也會將環境變數儲存到下列檔案中，檔名為 **\<您的主資料夾\>\\.pcs\\\<解決方案名稱\>.env**。 您可以將這些環境變數用於未來的解決方案加速器部署。 請注意，當您執行 **docker-compose** 時，您本機電腦上設定的任何環境變數會覆寫 **services\\scripts\\local\\.env** 檔案中的值。
+     > 當腳本完成時，它也會將環境變數儲存至名為** \<your home folder\> \\ \\ \<solution name\> 的檔案。** 您可以將這些環境變數用於未來的解決方案加速器部署。 請注意，當您執行 **docker-compose** 時，您本機電腦上設定的任何環境變數會覆寫 **services\\scripts\\local\\.env** 檔案中的值。
 
 1. 退出命令列環境。
 
 ### <a name="use-existing-azure-resources"></a>使用現有的 Azure 資源
 
 如果您已經建立必要的 Azure 資源，請在本機電腦上建立對應的環境變數。
-設定下列環境變數：
-* **PCS_KEYVAULT_NAME** -Azure 金鑰保存庫資源的名稱
+為下列各項設定環境變數：
+* **PCS_KEYVAULT_NAME** -Azure Key Vault 資源的名稱
 * **PCS_AAD_APPID** -AAD 應用程式識別碼
-* **PCS_AAD_APPSECRET** -AAD 應用程式祕密
+* **PCS_AAD_APPSECRET** -AAD 應用程式密碼
 
-組態值將會讀取此 Azure 金鑰保存庫資源。 這些環境變數可能會儲存在**\<主資料夾\>\\.pcs\\\<方案名稱\>.env**從部署的檔案。 請注意，當您執行 **docker-compose** 時，您本機電腦上設定的環境變數會覆寫 **services\\scripts\\local\\.env** 檔案中的值。
+將從此 Azure Key Vault 資源讀取設定值。 這些環境變數可能會儲存在部署的** \<your home folder\> \\ 電腦 \\ \<solution name\> env**檔案中。 請注意，當您執行 **docker-compose** 時，您本機電腦上設定的環境變數會覆寫 **services\\scripts\\local\\.env** 檔案中的值。
 
-某些微服務所需的設定會儲存在執行個體**Key Vault**所建立的初始部署。 在 keyvault 中對應的變數應該視需要修改。
+微服務所需的部分設定會儲存在初始部署所建立**Key Vault**的實例中。 Keyvault 中的對應變數應該視需要修改。

@@ -1,27 +1,25 @@
 ---
-title: Azure PowerShell 指令碼範例 - 建立 Windows VM | Microsoft Docs
+title: Azure PowerShell 指令碼範例 - 建立 Windows VM
 description: Azure PowerShell 指令碼範例 - 建立 Windows VM
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f2008a795addb035cf3f19606170dbac5ffd1a5b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 71cd1fb1e29783b4601c0a43746148b7fb9ebe47
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993379"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81460812"
 ---
 # <a name="create-a-virtual-machine-with-powershell"></a>使用 PowerShell 建立虛擬機器
 
@@ -29,7 +27,7 @@ ms.locfileid: "55993379"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+ 
 
 ## <a name="sample-script"></a>範例指令碼
 
@@ -47,7 +45,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 此指令碼會使用下列命令來建立部署。 下表中的每個項目都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | 建立用來存放所有資源的資源群組。 |
 | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | 建立虛擬機器，並將它連線到網路卡、虛擬網路、子網路及網路安全性群組。 此命令也會開啟連接埠 80 並設定系統管理認證。 |

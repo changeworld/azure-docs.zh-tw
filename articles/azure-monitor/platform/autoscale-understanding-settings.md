@@ -1,19 +1,14 @@
 ---
 title: 了解 Azure 中的自動調整設定
 description: 自動調整規模設定及其運作方式的詳細解說。 適用於虛擬機器、雲端服務、Web Apps
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2017
-ms.author: ancav
-ms.component: autoscale
-ms.openlocfilehash: 02840b8a909f46c37130bdb7162674c694a0ff96
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.subservice: autoscale
+ms.openlocfilehash: 9a2b94208de7ce490a0e7acfbb71175b4a7c846e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60787490"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75364300"
 ---
 # <a name="understand-autoscale-settings"></a>了解自動調整設定
 自動調整設定可協助您確保執行中的資源數量正確，能夠處理變動的應用程式負載。 您可以設定根據指出負載或效能的計量，或是在排定的日期和時間，觸發自動調整設定。 本文將詳細探討自動調整設定的剖析。 本文開頭是設定的結構描述和屬性，然後逐步說明可以設定的各種設定檔類型。 最後，本文會討論 Azure 中的自動調整功能如何評估在任何指定的時間要執行哪個設定檔。
@@ -89,26 +84,26 @@ ms.locfileid: "60787490"
 }
 ```
 
-| 區段 | 元素名稱 | 描述 |
+| 區段 | 元素名稱 | Description |
 | --- | --- | --- |
-| 設定 | ID | 自動調整規模設定的資源識別碼。 自動調整規模設定是 Azure Resource Manager 資源。 |
-| 設定 | name | 自動調整規模設定名稱。 |
+| 設定 | 識別碼 | 自動調整規模設定的資源識別碼。 自動調整規模設定是 Azure Resource Manager 資源。 |
+| 設定 | NAME | 自動調整規模設定名稱。 |
 | 設定 | location | 自動調整規模設定的位置。 此位置可以與要調整規模的資源位置不同。 |
 | properties | targetResourceUri | 要調整規模之資源的資源識別碼。 每個資源都只能有一個自動調整規模設定。 |
 | properties | 設定檔 | 自動調整規模設定是由一或多個設定檔所組成。 每次自動調整規模引擎執行時，都會執行一個設定檔。 |
-| 設定檔 | name | 設定檔的名稱。 您可以選擇任何有助於識別設定檔的名稱。 |
-| 設定檔 | Capacity.maximum | 允許的最大容量。 執行此設定檔時，可確保自動調整不會將資源的規模調整到大於此數字。 |
-| 設定檔 | Capacity.minimum | 允許的最小容量。 執行此設定檔時，可確保自動調整規模不會將資源的規模調整到小於此數字。 |
-| 設定檔 | Capacity.default | 如果在讀取資源計量 (在此案例中為 “vmss1” 的 CPU) 時發生問題，而目前的容量低於預設值，則自動調整會相應放大為預設值。 這是為了確保資源的可用性。 如果目前的容量已超過預設容量，自動調整不會進行相應縮小。 |
-| 設定檔 | 規則 | 自動調整會使用設定檔中的規則，在最大容量與最小容量之間進行調整。 一個設定檔中可以有多個規則。 通常有兩個規則：一個用於決定何時要相應放大，另一個用於決定何時要相應縮小。 |
-| 規則 | metricTrigger | 定義規則的計量條件。 |
+| profile | NAME | 設定檔的名稱。 您可以選擇任何有助於識別設定檔的名稱。 |
+| profile | Capacity.maximum | 允許的最大容量。 執行此設定檔時，可確保自動調整不會將資源的規模調整到大於此數字。 |
+| profile | Capacity.minimum | 允許的最小容量。 執行此設定檔時，可確保自動調整規模不會將資源的規模調整到小於此數字。 |
+| profile | Capacity.default | 如果在讀取資源計量 (在此案例中為 “vmss1” 的 CPU) 時發生問題，而目前的容量低於預設值，則自動調整會相應放大為預設值。 這是為了確保資源的可用性。 如果目前的容量已超過預設容量，自動調整不會進行相應縮小。 |
+| profile | 規則 | 自動調整會使用設定檔中的規則，在最大容量與最小容量之間進行調整。 一個設定檔中可以有多個規則。 通常有兩個規則：一個用於決定何時要相應放大，另一個用於決定何時要相應縮小。 |
+| rule (規則) | metricTrigger | 定義規則的計量條件。 |
 | metricTrigger | metricName | 計量的名稱。 |
 | metricTrigger |  metricResourceUri | 發出計量之資源的資源識別碼。 在大多數情況下，會與要調整規模的資源相同。 在某些情況下，則可能不同。 例如，您可以根據儲存體佇列中的訊息數目來調整虛擬機器擴展集的規模。 |
 | metricTrigger | timeGrain | 計量取樣持續時間。 例如 **TimeGrain = “PT1M”** 表示應該使用 statistic 元素中所指定的彙總方法，每分鐘彙總一次計量。 |
 | metricTrigger | statistic | timeGrain 期間內的彙總方法。 例如 **statistic = “Average”** 和 **timeGrain = “PT1M”** 表示應該每分鐘計算一次計量平均值來彙總計量。 此屬性會指定進行計量取樣的方式。 |
 | metricTrigger | timeWindow | 回顧計量的時間長度。 例如 **timeWindow = “PT10M”** 表示每次執行自動調整時，都會查詢過去 10 分鐘的計量。 時間範圍可讓您的計量正規化，而避免對暫時性尖峰做出反應。 |
 | metricTrigger | timeAggregation | 用來彙總所取樣計量的彙總方法。 例如 **TimeAggregation = “Average”** 應該會透過計算平均值來彙總所取樣的計量。 在前述案例中會採用 10 個 1 分鐘樣本，然後計算其平均值。 |
-| 規則 | scaleAction | 觸發 metricTrigger 時要採取的動作。 |
+| rule (規則) | scaleAction | 觸發 metricTrigger 時要採取的動作。 |
 | scaleAction | direction | "Increase" 用於相應放大，或 "Decrease" 用於相應縮小。|
 | scaleAction | value | 要增加或減少多少資源容量。 |
 | scaleAction | cooldown | 在進行調整作業之後、再次調整之前，所要等待的時間長度。 例如，如果 **cooldown = “PT10M”**，則自動調整在接下來 10 分鐘內不會再次嘗試進行調整。 cooldown 是用來在新增或移除執行個體之後，讓計量穩定。 |
@@ -121,7 +116,7 @@ ms.locfileid: "60787490"
 
     本文中稍早使用的範例設定檔是一般設定檔範例。 請注意，您也可以將設定檔設定成調整至資源的靜態執行個體計數。
 
-- **固定日期設定檔：** 用於特殊案例的設定檔。 例如，假設您有一個在 2017 年 12 月 26 日 (PST) 發生的重要事件。 您希望當天資源的最小和最大容量不同，但仍會依據相同的計量進行調整。 在此情況下，您應該在設定的設定檔清單中新增一個固定日期設定檔。 此設定檔會設定為只在事件當天執行。 在任何其他日子，自動調整會使用一般設定檔。
+- **固定日期設定檔：** 這個設定檔用於特殊案例。 例如，假設您有一個在 2017 年 12 月 26 日 (PST) 發生的重要事件。 您希望當天資源的最小和最大容量不同，但仍會依據相同的計量進行調整。 在此情況下，您應該在設定的設定檔清單中新增一個固定日期設定檔。 此設定檔會設定為只在事件當天執行。 在任何其他日子，自動調整會使用一般設定檔。
 
     ``` JSON
     "profiles": [{
@@ -217,7 +212,7 @@ ms.locfileid: "60787490"
 
     例如，在上述設定中，“weekdayProfile” 已設定為在星期一上午 12 點開始。 這表示此設定檔會在星期一上午 12 點開始執行。 它會持續執行到星球六上午 12 點為止，亦即已排定的 “weekendProfile” 開始執行時間。
 
-    **範例 2：上班時數**
+    **範例 2：上班時間**
     
     例如，假設您想要有一個適用於上班時間 (上午 9 點到下午 5 點) 的計量閾值，以及另一個適用於所有其他時間的計量閾值。 此設定看起來會像這樣：
     
@@ -305,8 +300,9 @@ ms.locfileid: "60787490"
 ## <a name="next-steps"></a>後續步驟
 請參考下列各項，以深入了解自動調整︰
 
-* [自動調整規模的概觀](../../azure-monitor/platform/autoscale-overview.md)
+* [自動調整的概觀](../../azure-monitor/platform/autoscale-overview.md)
 * [Azure 監視器自動調整的常用度量](../../azure-monitor/platform/autoscale-common-metrics.md)
 * [Azure 監視器自動調整的最佳作法](../../azure-monitor/platform/autoscale-best-practices.md)
 * [使用自動調整動作傳送電子郵件和 Webhook 警示通知](../../azure-monitor/platform/autoscale-webhook-email.md)
 * [自動調整 REST API](https://msdn.microsoft.com/library/dn931953.aspx)
+

@@ -1,52 +1,54 @@
 ---
-title: 锁定 Azure 容器注册表中的映像
-description: 设置容器映像或存储库的属性，使之不会在 Azure 容器注册表中遭到删除或覆盖。
-services: container-registry
-author: dlepow
-ms.service: container-registry
+title: 鎖定映像
+description: 設定容器映射或存放庫的屬性，使其無法在 Azure container registry 中刪除或覆寫。
 ms.topic: article
-ms.date: 02/19/2019
-ms.author: danlep
-ms.openlocfilehash: ebbfaba158e7ddb669111f097eb1adde2373aa6c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 09/30/2019
+ms.openlocfilehash: da84767523bb6d948b71b1c1ad2ddaffb628354a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60828642"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77659691"
 ---
-# <a name="lock-a-container-image-in-an-azure-container-registry"></a>锁定 Azure 容器注册表中的容器映像
+# <a name="lock-a-container-image-in-an-azure-container-registry"></a>鎖定 Azure container registry 中的容器映射
 
-在 Azure 容器注册表中，可以锁定某个映像版本或存储库，使之不会被删除或更新。 若要锁定映像或存储库，可使用 Azure CLI 命令 [az acr repository update][az-acr-repository-update] 更新其属性。 
+在 Azure container registry 中，您可以鎖定映射版本或存放庫，使其無法被刪除或更新。 若要鎖定映射或存放庫，請使用 Azure CLI 命令[az acr repository update][az-acr-repository-update]來更新其屬性。 
 
-本文會要求您執行 Azure CLI 在 Azure Cloud Shell 或在本機 (2.0.55 版本或更新版本的建議)。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli]。
+本文要求您在 Azure Cloud Shell 或本機執行 Azure CLI （建議使用使用2.0.55 版或更新版本）。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli]。
+
+> [!IMPORTANT]
+> 本文不適用於鎖定整個登錄，例如，使用 Azure 入口網站中的**設定 > 鎖定**，或 `az lock` Azure CLI 中的命令。 鎖定登錄資源並不會讓您無法建立、更新或刪除存放庫中的資料。 鎖定登錄只會影響管理作業，例如新增或刪除複寫，或刪除登錄本身。 [鎖定資源以防止非預期的變更](../azure-resource-manager/management/lock-resources.md)的詳細資訊。
 
 ## <a name="scenarios"></a>案例
 
-默认情况下，Azure 容器注册表中带标记的映像是可变的，因此，如果具有相应的权限，你可以反复更新带有相同标记的映像并将其推送到注册表。 还可以根据需要[删除](container-registry-delete.md)容器映像。 开发映像并需要保持注册表的大小时，此行为很有用。
+根據預設，Azure Container Registry 中已標記的影像是可*變動的，* 因此您可以使用適當的許可權，重複地更新，並將具有相同標記的映射推送至登錄。 容器映射也可以視需要[刪除](container-registry-delete.md)。 當您開發映射，而且需要為登錄保留大小時，此行為相當實用。
 
-但是，将容器映像部署到生产环境时，可能需要不可变的容器映像。 不可变的映像是指不能意外删除或覆盖的映像。 使用 [az acr repository update][az-acr-repository-update] 命令设置存储库属性，以便可以：
+不過，當您將容器映射部署到生產環境時，您可能需要*不可變*的容器映射。 不可變的映射是指您無法意外刪除或覆寫的影像。
 
-* 锁定某个映像版本或整个存储库
+如需在登錄中標記和版本映射的策略，請參閱[標記和版本設定容器映射的建議](container-registry-image-tag-version.md)。
 
-* 防止删除某个映像版本或存储库，但允许更新
+使用[az acr repository update][az-acr-repository-update]命令來設定存放庫屬性，讓您可以：
 
-* 防止针对某个映像版本或整个存储库执行读取（提取）操作
+* 鎖定映射版本或整個存放庫
 
-有关示例，请参阅以下部分。
+* 保護映射版本或存放庫不會遭到刪除，但允許更新
 
-## <a name="lock-an-image-or-repository"></a>锁定映像或存储库 
+* 防止對映射版本或整個存放庫進行讀取（提取）作業
 
-### <a name="show-the-current-repository-attributes"></a>显示当前存储库属性
-若要查看存储库的当前属性，请使用下面的 [az acr repository show][az-acr-repository-show] 命令：
+如需範例，請參閱下列各節。 
+
+## <a name="lock-an-image-or-repository"></a>鎖定映射或存放庫 
+
+### <a name="show-the-current-repository-attributes"></a>顯示目前的存放庫屬性
+若要查看存放庫的目前屬性，請執行下列[az acr repository show][az-acr-repository-show]命令：
 
 ```azurecli
 az acr repository show \
-    --name myregistry --repository myrepo
+    --name myregistry --repository myrepo \
     --output jsonc
 ```
 
-### <a name="show-the-current-image-attributes"></a>显示当前映像属性
-若要查看标记的当前属性，请使用下面的 [az acr repository show][az-acr-repository-show] 命令：
+### <a name="show-the-current-image-attributes"></a>顯示目前的影像屬性
+若要查看標記的目前屬性，請執行下列[az acr repository show][az-acr-repository-show]命令：
 
 ```azurecli
 az acr repository show \
@@ -54,9 +56,9 @@ az acr repository show \
     --output jsonc
 ```
 
-### <a name="lock-an-image-by-tag"></a>按标记锁定映像
+### <a name="lock-an-image-by-tag"></a>依標記鎖定影像
 
-若要锁定 *myregistry* 中的 *myrepo/myimage:tag* 映像，请运行以下 [az acr repository update][az-acr-repository-update] 命令：
+若要鎖定*myregistry*中的*myrepo/myimage： tag*映射，請執行下列[az acr repository update][az-acr-repository-update]命令：
 
 ```azurecli
 az acr repository update \
@@ -64,9 +66,9 @@ az acr repository update \
     --write-enabled false
 ```
 
-### <a name="lock-an-image-by-manifest-digest"></a>按清单摘要锁定映像
+### <a name="lock-an-image-by-manifest-digest"></a>依資訊清單摘要鎖定影像
 
-若要锁定按清单摘要（SHA-256 哈希，以 `sha256:...` 形式表示）标识的 *myrepo/myimage* 映像，请运行以下命令。 （若要查找与一个或多个映像标记关联的清单摘要，请运行 [az acr repository show-manifests][az-acr-repository-show-manifests] 命令。）
+若要鎖定資訊清單摘要所識別的*myrepo/myimage*影像（以表示的 SHA-256 雜湊 `sha256:...` ），請執行下列命令。 （若要尋找與一或多個映射標記相關聯的資訊清單摘要，請執行[az acr repository show-資訊清單][az-acr-repository-show-manifests]命令）。
 
 ```azurecli
 az acr repository update \
@@ -74,9 +76,9 @@ az acr repository update \
     --write-enabled false
 ```
 
-### <a name="lock-a-repository"></a>锁定存储库
+### <a name="lock-a-repository"></a>鎖定存放庫
 
-若要锁定 *myrepo/myimage* 存储库及其包含的所有映像，请运行以下命令：
+若要鎖定*myrepo/myimage*存放庫和其中的所有映射，請執行下列命令：
 
 ```azurecli
 az acr repository update \
@@ -84,11 +86,11 @@ az acr repository update \
     --write-enabled false
 ```
 
-## <a name="protect-an-image-or-repository-from-deletion"></a>防止删除映像或存储库
+## <a name="protect-an-image-or-repository-from-deletion"></a>保護映射或存放庫，使其無法刪除
 
-### <a name="protect-an-image-from-deletion"></a>防止删除映像
+### <a name="protect-an-image-from-deletion"></a>保護映射不被刪除
 
-若要允许对 *myrepo / myimage:tag* 映像进行更新但防止删除，请运行以下命令：
+若要允許更新*myrepo/myimage： tag*映射，但不加以刪除，請執行下列命令：
 
 ```azurecli
 az acr repository update \
@@ -96,9 +98,9 @@ az acr repository update \
     --delete-enabled false --write-enabled true
 ```
 
-### <a name="protect-a-repository-from-deletion"></a>防止删除存储库
+### <a name="protect-a-repository-from-deletion"></a>保護存放庫，使其無法刪除
 
-以下命令设置 *myrepo/myimage* 存储库，以防止将其删除。 仍可以更新或删除单个映像。
+下列命令會設定*myrepo/myimage*存放庫，使其無法刪除。 個別映射仍然可以更新或刪除。
 
 ```azurecli
 az acr repository update \
@@ -106,9 +108,9 @@ az acr repository update \
     --delete-enabled false --write-enabled true
 ```
 
-## <a name="prevent-read-operations-on-an-image-or-repository"></a>防止针对映像或存储库执行读取操作
+## <a name="prevent-read-operations-on-an-image-or-repository"></a>防止對映射或存放庫進行讀取作業
 
-若要防止针对 *myrepo/myimage:tag* 映像执行读取（提取）操作，请运行以下命令：
+若要防止*myrepo/myimage： tag*映射上的讀取（提取）作業，請執行下列命令：
 
 ```azurecli
 az acr repository update \
@@ -116,7 +118,7 @@ az acr repository update \
     --read-enabled false
 ```
 
-若要防止针对 *myrepo/myimage* 存储库中的所有映像执行读取操作，请运行以下命令：
+若要防止*myrepo/myimage*存放庫中所有映射的讀取作業，請執行下列命令：
 
 ```azurecli
 az acr repository update \
@@ -124,9 +126,9 @@ az acr repository update \
     --read-enabled false
 ```
 
-## <a name="unlock-an-image-or-repository"></a>解锁映像或存储库
+## <a name="unlock-an-image-or-repository"></a>解除鎖定映射或存放庫
 
-若要还原 *myrepo / myimage:tag* 映像的默认行为，以便能够将其删除和更新，请运行以下命令：
+若要還原*myrepo/myimage： tag*映射的預設行為，使其可以刪除和更新，請執行下列命令：
 
 ```azurecli
 az acr repository update \
@@ -134,7 +136,7 @@ az acr repository update \
     --delete-enabled true --write-enabled true
 ```
 
-若要还原 *myrepo/myimage* 存储库和所有映像的默认行为，以便能够将其删除和更新，请运行以下命令：
+若要還原*myrepo/myimage*存放庫和所有映射的預設行為，使其可以刪除和更新，請執行下列命令：
 
 ```azurecli
 az acr repository update \
@@ -144,11 +146,11 @@ az acr repository update \
 
 ## <a name="next-steps"></a>後續步驟
 
-本文已介绍如何使用 [az acr repository update][az-acr-repository-update] 命令来防止删除或更新存储库中的映像版本。 若要设置其他属性，请参阅 [az acr repository update][az-acr-repository-update] 命令参考。
+在本文中，您已瞭解如何使用[az acr repository update][az-acr-repository-update]命令來防止刪除或更新存放庫中的映射版本。 若要設定其他屬性，請參閱[az acr repository update][az-acr-repository-update]命令參考。
 
-若要查看针对某个映像版本或存储库设置的属性，请使用 [az acr repository show][az-acr-repository-show] 命令。
+若要查看為映射版本或存放庫設定的屬性，請使用[az acr repository show][az-acr-repository-show]命令。
 
-有关删除操作的详细信息，请参阅[删除 Azure 容器注册表中的容器映像][container-registry-delete]。
+如需刪除作業的詳細資訊，請參閱[刪除 Azure Container Registry 中的容器映射][container-registry-delete]。
 
 <!-- LINKS - Internal -->
 [az-acr-repository-update]: /cli/azure/acr/repository#az-acr-repository-update

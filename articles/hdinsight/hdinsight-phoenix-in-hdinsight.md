@@ -1,26 +1,25 @@
 ---
 title: HDInsight 中的 Apache Phoenix - Azure HDInsight
-description: ''
+description: Apache Phoenix 總覽
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
+ms.topic: how-to
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 01/19/2018
-ms.author: ashishth
-ms.openlocfilehash: 7d9aafeb920eab7f6a87061a135bf2e464add436
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 12/17/2019
+ms.openlocfilehash: 14591f334801329e78000a007783c3d6c4c3b5ae
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697998"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082534"
 ---
-# <a name="apache-phoenix-in-hdinsight"></a>HDInsight 中的 Apache Phoenix
+# <a name="apache-phoenix-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Phoenix
 
 [Apache Phoenix](https://phoenix.apache.org/) (英文) 是一個建置在 [Apache HBase](hbase/apache-hbase-overview.md) 上的開放原始碼、大規模平行關聯式資料庫層。 Phoenix 可讓您透過 HBase 使用類似 SQL 的查詢。 Phoenix 使用下方的 JDBC 驅動程式，讓使用者建立、刪除及更改 SQL 資料表、索引、檢視表和序列，以及個別或大量更新插入資料列。 Phoenix 使用 noSQL 原生編譯而不是使用 MapReduce 來編譯查詢，以便在 HBase 上建立低延遲的應用程式。 Phoenix 新增了協同處理器，可支援在伺服器的位址空間中執行用戶端提供的程式碼，執行與資料共置的程式碼。 這個方法可將用戶端/伺服器資料轉送降到最低。
 
 Apache Phoenix 會對非開發人員 (他可以使用類似 SQL 的語法而不是程式設計) 開啟巨量資料查詢。 Phoenix 已針對 HBase 高度最佳化，不同於 [Apache Hive](hadoop/hdinsight-use-hive.md) 和 Apache Spark SQL 等其他工具。 開發人員的優勢是可以使用較少的程式碼寫入較高效能的查詢。
-<!-- [Spark SQL](spark/apache-spark-sql-with-hdinsight.md)  -->
 
 當您提交 SQL 查詢時，Phoenix 會將查詢編譯至 HBase 原生呼叫，並且以平行方式執行掃描 (或計劃) 以獲得最佳化。 這個抽象層可以讓開發人員免於寫入 MapReduce 作業，轉而將焦點放在 Phoenix 巨量資料儲存體周圍應用程式的商務邏輯和工作流程。
 
@@ -38,11 +37,11 @@ HBase 有單一索引，依辭典編纂順序儲存在主要資料列索引鍵�
 CREATE INDEX ix_purchasetype on SALTEDWEBLOGS (purchasetype, transactiondate) INCLUDE (bookname, quantity);
 ```
 
-相較於執行單一索引查詢，這種方法可以產生顯著的效能提升。 這種類型的次要索引是**涵蓋索引**，包含查詢中所含的所有資料行。 因此，不需要資料表查閱，索引就可以滿足整個查詢。
+相較於執行單一索引查詢，這種方法可以產生顯著的效能提升。 這種類型的次要索引是**涵蓋索引**，包含查詢中所含的所有資料行。 因此，不需要資料表查閱，而且索引會滿足整個查詢的需求。
 
-### <a name="views"></a>Views
+### <a name="views"></a>檢視
 
-Phoenix 檢視提供克服 HBase 限制的方法，此限制是當您建立超過約 100 個實體資料表時，效能就會開始降低。 Phoenix 檢視可以讓多個虛擬資料表共用一個基礎實體 HBase 資料表。
+Phoenix 檢視提供克服 HBase 限制的方法，此限制是當您建立超過約 100 個實體資料表時，效能就會開始降低。 Phoenix 檢視可以讓多個虛擬資料表** 共用一個基礎實體 HBase 資料表。
 
 建立 Phoenix 檢視類似於使用標準的 SQL 檢視語法。 其中一個差異是除了從其基底資料表繼承的資料行以外，您還可以針對檢視定義資料行。 您也可以新增 `KeyValue` 資料行。
 
@@ -51,8 +50,8 @@ Phoenix 檢視提供克服 HBase 限制的方法，此限制是當您建立超�
 ```sql
 CREATE  TABLE product_metrics (
     metric_type CHAR(1),
-    created_by VARCHAR, 
-    created_date DATE, 
+    created_by VARCHAR,
+    created_date DATE,
     metric_id INTEGER
     CONSTRAINT pk PRIMARY KEY (metric_type, created_by, created_date, metric_id));
 ```
@@ -71,7 +70,7 @@ WHERE metric_type = 'm';
 
 略過掃描會使用一或多個複合式索引的資料行來尋找相異值。 不同於範圍掃描，略過掃描會實作資料列內部掃描，產生[更佳的效能](https://phoenix.apache.org/performance.html#Skip-Scan)。 當掃描時，第一個相符值會略過，同時略過索引，直到找到下一個值。
 
-略過掃描會使用 HBase 篩選的 `SEEK_NEXT_USING_HINT` 列舉。 略過掃描會使用 `SEEK_NEXT_USING_HINT`，追蹤每個資料行中搜尋的索引鍵集合或索引鍵範圍。 然後略過掃描會取用在篩選評估期間傳遞給它的索引鍵，並且判斷它是否為其中一個組合。 如果不是，略過掃描會評估下一個最高索引鍵，並跳至該處。
+略過掃描會使用 HBase 篩選的 `SEEK_NEXT_USING_HINT` 列舉。 略過掃描會使用 `SEEK_NEXT_USING_HINT`，追蹤每個資料行中搜尋的索引鍵集合或索引鍵範圍。 然後，略過掃描會使用在篩選評估期間傳遞給它的金鑰，並判斷它是否為其中一個組合。 如果不是，略過掃描會評估下一個最高索引鍵，並跳至該處。
 
 ### <a name="transactions"></a>交易
 
@@ -98,9 +97,9 @@ ALTER TABLE my_other_table SET TRANSACTIONAL=true;
 
 ### <a name="salted-tables"></a>以 Salt 處理的資料表
 
-將具有循序索引鍵的記錄寫入至 HBase 時會出現「區域伺服器作用區」。 雖然您在叢集中可能有多個區域伺服器，但是您的寫入只會在其中一個伺服器中發生。 此集中情形會產生作用區問題，其中您的寫入工作負載並非分散到所有可用的區域伺服器，而是只有一個伺服器會處理負載。 因為區域具有預先定義的大小上限，當區域達到該大小限制時，它會分割成兩個小區域。 發生這種情況時，其中一個新區域會採用所有新的記錄，變成新的作用區。
+將具有順序索引鍵的記錄寫入至 HBase 時，可能會發生*區域伺服器 hotspotting* 。 雖然您在叢集中可能有多個區域伺服器，但是您的寫入只會在其中一個伺服器中發生。 此集中情形會產生作用區問題，其中您的寫入工作負載並非分散到所有可用的區域伺服器，而是只有一個伺服器會處理負載。 由於每個區域都有預先定義的大小上限，因此當區域達到該大小限制時，它會分割成兩個小型區域。 發生這種情況時，其中一個新區域會採用所有新的記錄，變成新的作用區。
 
-若要減輕這個問題並達到更佳的效能，請預先分割資料表，讓所有區域伺服器的使用都相等。 Phoenix 提供以 Salt 處理的資料表，明確地將已 Salt 處理的位元組新增至特定資料表的資料列索引鍵。 資料表是在 Salt 位元組界限上預先分割，以確保在資料表初始階段期間，區域伺服器之間的負載分配相等。 這種方法會將寫入工作負載散佈到所有可用的區域伺服器，改善寫入和讀取效能。 若要以 Salt 處理資料表，在建立資料表時指定 `SALT_BUCKETS` 資料表屬性：
+若要減輕這個問題並達到更佳的效能，請預先分割資料表，讓所有區域伺服器的使用都相等。 Phoenix 提供以 Salt 處理的資料表**，明確地將已 Salt 處理的位元組新增至特定資料表的資料列索引鍵。 資料表是在 Salt 位元組界限上預先分割，以確保在資料表初始階段期間，區域伺服器之間的負載分配相等。 這種方法會將寫入工作負載散佈到所有可用的區域伺服器，改善寫入和讀取效能。 若要以 Salt 處理資料表，在建立資料表時指定 `SALT_BUCKETS` 資料表屬性：
 
 ```sql
 CREATE TABLE Saltedweblogs (
@@ -127,14 +126,16 @@ HDInsight HBase 叢集包括 [Ambari UI](hdinsight-hadoop-manage-ambari.md)，�
 
 1. 若要啟用或停用 Phoenix，並且控制 Phoenix 的查詢逾時設定，使用您的 Hadoop 使用者認證登入 Ambari Web UI (`https://YOUR_CLUSTER_NAME.azurehdinsight.net`)。
 
-2. 從左側功能表中的服務清單選取 [HBase]，然後選取 [設定] 索引標籤。
+2. 從左側功能表中的服務清單選取 [HBase]****，然後選取 [設定]**** 索引標籤。
 
-    ![Ambari HBase 設定](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config.png)
+    ![Apache Ambari HBase 設定](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config1.png)
 
 3. 尋找 **Phoenix SQL** 設定區段以啟用或停用 Phoenix，並且設定查詢逾時。
 
-    ![Ambari Phoenix SQL 設定區段](./media/hdinsight-phoenix-in-hdinsight/ambari-phoenix.png)
+    ![Ambari Phoenix SQL 設定區段](./media/hdinsight-phoenix-in-hdinsight/apache-ambari-phoenix.png)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
-* [在 HDInsight 中搭配 Linux 型 HBase 叢集使用 Apache Phoenix](hbase/apache-hbase-phoenix-squirrel-linux.md)
+* [在 HDInsight 中搭配 Linux 型 HBase 叢集使用 Apache Phoenix](hbase/apache-hbase-query-with-phoenix.md)
+
+* [使用 Apache Zeppelin 在 Apache HBase 上執行 Apache Phoenix 查詢 Azure HDInsight](./hbase/apache-hbase-phoenix-zeppelin.md)

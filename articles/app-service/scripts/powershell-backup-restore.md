@@ -1,26 +1,19 @@
 ---
-title: Azure PowerShell 指令碼範例 - 從備份還原 Web 應用程式 | Microsoft Docs
-description: Azure PowerShell 指令碼範例 - 從備份還原 Web 應用程式
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: PowerShell：還原應用程式備份
+description: 了解如何使用 Azure PowerShell 將 App Service 的部署和管理自動化。 此範例說明如何從備份還原應用程式。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: a2a27d94-d378-4c17-a6a9-ae1e69dc4a72
-ms.service: app-service-web
-ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 11/21/2018
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: aca7f700dc7004f682430d0794f8bc9b024f41b3
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.custom: mvc, seodec18
+ms.openlocfilehash: a10a451bff73c081d9b0c95c494acb8b2051bd84
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113493"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80057734"
 ---
 # <a name="restore-a-web-app-from-a-backup-using-azure-powershell"></a>使用 Azure PowerShell 從備份還原 Web 應用程式
 
@@ -46,7 +39,7 @@ Remove-AzResourceGroup -Name $resourceGroupName -Force
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | 取得 Web 應用程式的備份清單。 |
 | [Restore-AzWebAppBackup](/powershell/module/az.websites/restore-azwebappbackup) | 從先前完成的備份中還原 Web 應用程式。 |

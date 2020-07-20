@@ -1,50 +1,47 @@
 ---
-title: 教學課程 - Azure 中 Linux VM 的高可用性 | Microsoft Docs
+title: 教學課程 - Azure 中 Linux VM 的高可用性
 description: 在本教學課程中，您會了解如何使用 Azure CLI 在可用性設定組中部署高可用性的虛擬機器
 documentationcenter: ''
 services: virtual-machines-linux
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/24/2018
+ms.date: 01/17/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7fd671c77b4c0897134457f5aacaabc11d568694
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 300b497765dd1081fbad36292c01c56da5bb5e38
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756405"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "76277253"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>教學課程：使用 Azure CLI 建立及部署高可用性的虛擬機器
 
 在本教學課程中，您會學到如何使用稱為「可用性設定組」的功能，增加 Azure 虛擬機器解決方案的可用性和可靠性。 可用性設定組可確保您在 Azure 上部署的 VM 會分散到多個各自獨立的硬體叢集中。 這麼做可以確保當 Azure 發生硬體或軟體故障時，受到影響的只會是一部分的 VM 子集，您整體的解決方案則會維持可用且正常運作。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 建立可用性設定組
 > * 在可用性設定組中建立 VM
 > * 檢查可用的 VM 大小
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+本教學課程會使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 內的 CLI，這會不斷更新至最新版本。 若要開啟 Cloud Shell，請選取任何程式碼區塊頂端的 [試試看]  。
 
 如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.0.30 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
-## <a name="availability-set-overview"></a>可用性設定組概觀
+## <a name="overview"></a>概觀
 
 可用性設定組是一種可在 Azure 中使用的邏輯群組功能，用以確保其中所放置的 VM 資源在部署到 Azure 資料中心時會彼此隔離。 Azure 可確保您在可用性設定組中所放置的 VM，會橫跨多部實體伺服器、計算機架、儲存體單位和網路交換器來執行。 如果硬體或 Azure 軟體發生故障時，只有一部分的 VM 子集會受到影響，整體的應用程式則會保持運作狀態，可供客戶繼續使用。 如果您想要建置可靠的雲端解決方案，就一定要使用可用性設定組功能。
 
 請想想典型的 VM 架構解決方案，在此解決方案中，您可能有 4 個前端 Web 伺服器，並使用 2 個後端 VM 來裝載資料庫。 在使用 Azure 時，建議您先定義兩個可用性設定組，再部署 VM︰一個可用性設定組用來放置「Web」層，另一個可用性設定組用來放置「資料庫」層。 當您建立新的 VM 時，您便可以將可用性設定組指定為 az vm create 命令的參數，Azure 會自動確保您在可用性設定組內所建立的 VM，會跨多個實體硬體資源來隔離。 如果其中一個用來執行 Web 伺服器或資料庫伺服器 VM 的實體硬體發生問題，Web 伺服器和資料庫 VM 的其他執行個體會繼續執行，因為它們位於不同硬體上。
-
-如果您想要在 Azure 內部署可靠的 VM 架構解決方案，請使用可用性設定組。
 
 
 ## <a name="create-an-availability-set"></a>建立可用性設定組
@@ -117,3 +114,7 @@ az vm availability-set list-sizes \
 
 > [!div class="nextstepaction"]
 > [建立虛擬機器擴展集](tutorial-create-vmss.md)
+
+* 若要深入了解可用性區域，請造訪[可用性區域文件](../../availability-zones/az-overview.md)。
+* 您也可以在[這裡](./manage-availability.md)取得更多有關可用性設定組和可用性區域的文件。
+* 若要試用可用性區域，請造訪[使用 Azure CLI 在可用性區域中建立 Linux 虛擬機器](./create-cli-availability-zone.md)

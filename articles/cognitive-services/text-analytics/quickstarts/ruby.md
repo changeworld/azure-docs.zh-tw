@@ -1,34 +1,32 @@
 ---
 title: 快速入門：使用 Ruby 來呼叫文字分析 API
 titleSuffix: Azure Cognitive Services
-description: 取得資訊和程式碼範例，協助您在 Azure 認知服務中快速開始使用文字分析 API。
+description: 此快速入門示範如何取得資訊和程式碼範例，協助您在 Azure 認知服務中快速開始使用文字分析 API。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 04/16/2019
+ms.date: 07/06/2020
 ms.author: aahi
-ms.openlocfilehash: 3163b58a9b325f28ab253ca090314515cf82ccb2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 92a80dc69afbda76d57a09e01efc9b91ecb286ba
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007996"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027927"
 ---
 # <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>快速入門：使用 Ruby 來呼叫文字分析認知服務
 <a name="HOLTop"></a>
 
 本文示範如何使用 [文字分析 API](//go.microsoft.com/fwlink/?LinkID=759711)  與 Ruby 來[偵測語言](#Detect)、[分析情感](#SentimentAnalysis)、[擷取關鍵片語](#KeyPhraseExtraction)，以及[識別已連結實體](#Entities)。
 
-如需 API 的技術文件，請參閱 [API 定義](//go.microsoft.com/fwlink/?LinkID=759346)。
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
-
-您也必須具備在註冊時產生的[端點和存取金鑰](../How-tos/text-analytics-how-to-access-key.md)。 
 
 <a name="Detect"></a>
 
@@ -36,36 +34,24 @@ ms.locfileid: "60007996"
 
 語言偵測 API 會使用[偵測語言方法](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) \(英文\) 來偵測文字文件的語言。
 
-1. 在您慣用的 IDE 中建立新 Ruby 專案。
-2. 新增下方提供的程式碼。
-3. 將 `accessKey` 值取代為對您的訂用帳戶有效的存取金鑰。
-4. 將 `uri` 中的位置 (目前為 `westus`) 取代為您註冊的區域。
-5. 執行程式。
+1. 在您最愛的 IDE 中建立新的 Ruby 專案。
+1. 新增下方提供的程式碼。
+1. 將您的文字分析金鑰和端點複製到程式碼中。 
+1. 執行程式。
 
 ```ruby
+# encoding: UTF-8
+
 require 'net/https'
 require 'uri'
 require 'json'
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
+subscription_key = "<paste-your-text-analytics-key-here>"
+endpoint = "<paste-your-text-analytics-endpoint-here>"
 
-# Replace the accessKey string value with your valid access key.
-accessKey = 'enter key here'
+path = '/text/analytics/v3.0/languages'
 
-# Replace or verify the region.
-#
-# You must use the same region in your REST API call as you used to obtain your access keys.
-# For example, if you obtained your access keys from the westus region, replace 
-# "westcentralus" in the URI below with "westus".
-#
-# NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-# a free trial access key, you should not need to change this region.
-uri = 'https://westus.api.cognitive.microsoft.com'
-path = '/text/analytics/v2.1/languages'
-
-uri = URI(uri + path)
+uri = URI(endpoint + path)
 
 documents = { 'documents': [
     { 'id' => '1', 'text' => 'This is a document written in English.' },
@@ -77,7 +63,7 @@ puts 'Please wait a moment for the results to appear.'
 
 request = Net::HTTP::Post.new(uri)
 request['Content-Type'] = "application/json"
-request['Ocp-Apim-Subscription-Key'] = accessKey
+request['Ocp-Apim-Subscription-Key'] = subscription_key
 request.body = documents.to_json
 
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -92,83 +78,64 @@ puts JSON::pretty_generate (JSON (response.body))
 如以下範例所示，成功的回應會以 JSON 格式來傳回： 
 
 ```json
-
 {
-   "documents": [
-      {
-         "id": "1",
-         "detectedLanguages": [
-            {
-               "name": "English",
-               "iso6391Name": "en",
-               "score": 1.0
-            }
-         ]
-      },
-      {
-         "id": "2",
-         "detectedLanguages": [
-            {
-               "name": "Spanish",
-               "iso6391Name": "es",
-               "score": 1.0
-            }
-         ]
-      },
-      {
-         "id": "3",
-         "detectedLanguages": [
-            {
-               "name": "Chinese_Simplified",
-               "iso6391Name": "zh_chs",
-               "score": 1.0
-            }
-         ]
-      }
-   ],
-   "errors": [
-
-   ]
+    "documents": [
+        {
+            "id": "1",
+            "detectedLanguage": {
+                "name": "English",
+                "iso6391Name": "en",
+                "confidenceScore": 1.0
+            },
+            "warnings": []
+        },
+        {
+            "id": "2",
+            "detectedLanguage": {
+                "name": "Spanish",
+                "iso6391Name": "es",
+                "confidenceScore": 1.0
+            },
+            "warnings": []
+        },
+        {
+            "id": "3",
+            "detectedLanguage": {
+                "name": "Chinese_Simplified",
+                "iso6391Name": "zh_chs",
+                "confidenceScore": 1.0
+            },
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2019-10-01"
 }
-
-
 ```
 <a name="SentimentAnalysis"></a>
 
-## <a name="analyze-sentiment"></a>分析人氣
+## <a name="analyze-sentiment"></a>分析情感
 
 情感分析 API 會使用 [Sentiment 方法](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)，偵測一組文字記錄中的情緒態度。 下列範例會為兩份文件進行評分，一份是英文，另一份則是西班牙文。
 
-1. 在您慣用的 IDE 中建立新 Ruby 專案。
-2. 新增下方提供的程式碼。
-3. 將 `accessKey` 值取代為對您的訂用帳戶有效的存取金鑰。
-4. 將 `uri` 中的位置 (目前為 `westus`) 取代為您註冊的區域。
-5. 執行程式。
+1. 在您最愛的 IDE 中建立新的 Ruby 專案。
+1. 新增下方提供的程式碼。
+1. 將您的文字分析金鑰和端點複製到程式碼中。 
+1. 執行程式。
 
 ```ruby
+# encoding: UTF-8
+
 require 'net/https'
 require 'uri'
 require 'json'
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
+subscription_key = "<paste-your-text-analytics-key-here>"
+endpoint = "<paste-your-text-analytics-endpoint-here>"
 
-# Replace the accessKey string value with your valid access key.
-accessKey = 'enter key here'
+path = '/text/analytics/v3.0/sentiment'
 
-# Replace or verify the region.
-#
-# You must use the same region in your REST API call as you used to obtain your access keys.
-# For example, if you obtained your access keys from the westus region, replace 
-# "westcentralus" in the URI below with "westus".
-#
-# NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-# a free trial access key, you should not need to change this region.
-uri = 'https://westus.api.cognitive.microsoft.com'
-path = '/text/analytics/v2.1/sentiment'
-
-uri = URI(uri + path)
+uri = URI(endpoint + path)
 
 documents = { 'documents': [
     { 'id' => '1', 'language' => 'en', 'text' => 'I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
@@ -179,7 +146,7 @@ puts 'Please wait a moment for the results to appear.'
 
 request = Net::HTTP::Post.new(uri)
 request['Content-Type'] = "application/json"
-request['Ocp-Apim-Subscription-Key'] = accessKey
+request['Ocp-Apim-Subscription-Key'] = subscription_key
 request.body = documents.to_json
 
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -195,17 +162,56 @@ puts JSON::pretty_generate (JSON (response.body))
 
 ```json
 {
-   "documents": [
-      {
-         "score": 0.99984133243560791,
-         "id": "1"
-      },
-      {
-         "score": 0.024017512798309326,
-         "id": "2"
-      },
-   ],
-   "errors": [   ]
+    "documents": [
+        {
+            "id": "1",
+            "sentiment": "positive",
+            "confidenceScores": {
+                "positive": 1.0,
+                "neutral": 0.0,
+                "negative": 0.0
+            },
+            "sentences": [
+                {
+                    "sentiment": "positive",
+                    "confidenceScores": {
+                        "positive": 1.0,
+                        "neutral": 0.0,
+                        "negative": 0.0
+                    },
+                    "offset": 0,
+                    "length": 102,
+                    "text": "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."
+                }
+            ],
+            "warnings": []
+        },
+        {
+            "id": "2",
+            "sentiment": "negative",
+            "confidenceScores": {
+                "positive": 0.02,
+                "neutral": 0.05,
+                "negative": 0.93
+            },
+            "sentences": [
+                {
+                    "sentiment": "negative",
+                    "confidenceScores": {
+                        "positive": 0.02,
+                        "neutral": 0.05,
+                        "negative": 0.93
+                    },
+                    "offset": 0,
+                    "length": 92,
+                    "text": "Este ha sido un dia terrible, llegué tarde al trabajo debido a un accidente automobilistico."
+                }
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2020-04-01"
 }
 ```
 
@@ -215,37 +221,25 @@ puts JSON::pretty_generate (JSON (response.body))
 
 關鍵片語擷取 API 會使用[關鍵片語方法](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)從文字文件擷取關鍵片語。 以下範例會擷取英文和西班牙文文件的關鍵片語。
 
-1. 在您慣用的 IDE 中建立新 Ruby 專案。
-2. 新增下方提供的程式碼。
-3. 將 `accessKey` 值取代為對您的訂用帳戶有效的存取金鑰。
-4. 將 `uri` 中的位置 (目前為 `westus`) 取代為您註冊的區域。
-5. 執行程式。
+1. 在您最愛的 IDE 中建立新的 Ruby 專案。
+1. 新增下方提供的程式碼。
+1. 將您的文字分析金鑰和端點複製到程式碼中。
+1. 執行程式。
 
 
 ```ruby
+# encoding: UTF-8
+
 require 'net/https'
 require 'uri'
 require 'json'
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
+subscription_key = "<paste-your-text-analytics-key-here>"
+endpoint = "<paste-your-text-analytics-endpoint-here>"
 
-# Replace the accessKey string value with your valid access key.
-accessKey = 'enter key here'
+path = '/text/analytics/v3.0/keyPhrases'
 
-# Replace or verify the region.
-#
-# You must use the same region in your REST API call as you used to obtain your access keys.
-# For example, if you obtained your access keys from the westus region, replace 
-# "westcentralus" in the URI below with "westus".
-#
-# NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-# a free trial access key, you should not need to change this region.
-uri = 'https://westus.api.cognitive.microsoft.com'
-path = '/text/analytics/v2.1/keyPhrases'
-
-uri = URI(uri + path)
+uri = URI(endpoint + path)
 
 documents = { 'documents': [
     { 'id' => '1', 'language' => 'en', 'text' => 'I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
@@ -257,7 +251,7 @@ puts 'Please wait a moment for the results to appear.'
 
 request = Net::HTTP::Post.new(uri)
 request['Content-Type'] = "application/json"
-request['Ocp-Apim-Subscription-Key'] = accessKey
+request['Ocp-Apim-Subscription-Key'] = subscription_key
 request.body = documents.to_json
 
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -273,76 +267,67 @@ puts JSON::pretty_generate (JSON (response.body))
 
 ```json
 {
-   "documents": [
-      {
-         "keyPhrases": [
-            "HDR resolution",
-            "new XBox",
-            "clean look"
-         ],
-         "id": "1"
-      },
-      {
-         "keyPhrases": [
-            "Carlos",
-            "notificacion",
-            "algun problema",
-            "telefono movil"
-         ],
-         "id": "2"
-      },
-      {
-         "keyPhrases": [
-            "new hotel",
-            "Grand Hotel",
-            "review",
-            "center of Seattle",
-            "classiest decor",
-            "stars"
-         ],
-         "id": "3"
-      }
-   ],
-   "errors": [  ]
+    "documents": [
+        {
+            "id": "1",
+            "keyPhrases": [
+                "HDR resolution",
+                "new XBox",
+                "clean look"
+            ],
+            "warnings": []
+        },
+        {
+            "id": "2",
+            "keyPhrases": [
+                "Carlos",
+                "notificacion",
+                "algun problema",
+                "telefono movil"
+            ],
+            "warnings": []
+        },
+        {
+            "id": "3",
+            "keyPhrases": [
+                "new hotel",
+                "Grand Hotel",
+                "review",
+                "center of Seattle",
+                "classiest decor",
+                "stars"
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2019-10-01"
 }
 ```
 <a name="Entities"></a>
 
-## <a name="identify-entities"></a>識別實體
+## <a name="entity-recognition"></a>實體辨識
 
 實體 API 會使用[實體方法](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)來擷取文字文件中的實體。 以下範例會識別英文文件的實體。
 
-1. 在您慣用的 IDE 中建立新 Ruby 專案。
-2. 新增下方提供的程式碼。
-3. 將 `accessKey` 值取代為對您的訂用帳戶有效的存取金鑰。
-4. 將 `uri` 中的位置 (目前為 `westus`) 取代為您註冊的區域。
-5. 執行程式。
-
+1. 在您最愛的 IDE 中建立新的 Ruby 專案。
+1. 新增下方提供的程式碼。
+1. 將您的文字分析金鑰和端點複製到程式碼中。
+1. 執行程式。
 
 ```ruby
+# encoding: UTF-8
+
 require 'net/https'
 require 'uri'
 require 'json'
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
+subscription_key = "<paste-your-text-analytics-key-here>"
+endpoint = "<paste-your-text-analytics-endpoint-here>"
 
-# Replace the accessKey string value with your valid access key.
-accessKey = 'enter key here'
+path = '/text/analytics/v3.0/entities/recognition/general'
 
-# Replace or verify the region.
-#
-# You must use the same region in your REST API call as you used to obtain your access keys.
-# For example, if you obtained your access keys from the westus region, replace 
-# "westcentralus" in the URI below with "westus".
-#
-# NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-# a free trial access key, you should not need to change this region.
-uri = 'https://westus.api.cognitive.microsoft.com'
-path = '/text/analytics/v2.1/entities'
-
-uri = URI(uri + path)
+uri = URI(endpoint + path)
 
 documents = { 'documents': [
     { 'id' => '1', 'language' => 'en', 'text' => 'Microsoft is an It company.' }
@@ -352,7 +337,7 @@ puts 'Please wait a moment for the results to appear.'
 
 request = Net::HTTP::Post.new(uri)
 request['Content-Type'] = "application/json"
-request['Ocp-Apim-Subscription-Key'] = accessKey
+request['Ocp-Apim-Subscription-Key'] = subscription_key
 request.body = documents.to_json
 
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -367,47 +352,31 @@ puts JSON::pretty_generate (JSON (response.body))
 如以下範例所示，成功的回應會以 JSON 格式來傳回： 
 
 ```json
-{  
-   "documents":[  
-      {  
-         "id":"1",
-         "entities":[  
-            {  
-               "name":"Microsoft",
-               "matches":[  
-                  {  
-                     "wikipediaScore":0.20872054383103444,
-                     "entityTypeScore":0.99996185302734375,
-                     "text":"Microsoft",
-                     "offset":0,
-                     "length":9
-                  }
-               ],
-               "wikipediaLanguage":"en",
-               "wikipediaId":"Microsoft",
-               "wikipediaUrl":"https://en.wikipedia.org/wiki/Microsoft",
-               "bingId":"a093e9b9-90f5-a3d5-c4b8-5855e1b01f85",
-               "type":"Organization"
-            },
-            {  
-               "name":"Technology company",
-               "matches":[  
-                  {  
-                     "wikipediaScore":0.82123868042800585,
-                     "text":"It company",
-                     "offset":16,
-                     "length":10
-                  }
-               ],
-               "wikipediaLanguage":"en",
-               "wikipediaId":"Technology company",
-               "wikipediaUrl":"https://en.wikipedia.org/wiki/Technology_company",
-               "bingId":"bc30426e-22ae-7a35-f24b-454722a47d8f"
-            }
-         ]
-      }
-   ],
-    "errors":[]
+{
+    "documents": [
+        {
+            "id": "1",
+            "entities": [
+                {
+                    "text": "Microsoft",
+                    "category": "Organization",
+                    "offset": 0,
+                    "length": 9,
+                    "confidenceScore": 0.86
+                },
+                {
+                    "text": "IT",
+                    "category": "Skill",
+                    "offset": 16,
+                    "length": 2,
+                    "confidenceScore": 0.8
+                }
+            ],
+            "warnings": []
+        }
+    ],
+    "errors": [],
+    "modelVersion": "2020-04-01"
 }
 ```
 

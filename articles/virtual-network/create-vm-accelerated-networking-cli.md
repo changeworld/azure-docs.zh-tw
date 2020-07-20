@@ -1,5 +1,5 @@
 ---
-title: 使用加速網路來建立 Azure 虛擬機器 | Microsoft Docs
+title: 使用 Azure CLI 建立具有加速網路的 Azure VM
 description: 了解如何建立已啟用加速網路的 Linux 虛擬機器。
 services: virtual-network
 documentationcenter: na
@@ -10,20 +10,19 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 8ea17e5615c0256c084b0745a392fb49f8873f99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 1dc35b596d73f713aea99ea14ddb0ff8cbc8d203
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60713722"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84688615"
 ---
-# <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>使用加速網路建立 Linux 虛擬機器
+# <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>使用 Azure CLI 建立具有加速網路的 Linux 虛擬機器
 
 在本教學課程中，您將了解如何使用加速網路建立 Linux 虛擬機器 (VM)。 若要建立使用加速網路的 Windows VM，請參閱[建立使用加速網路的 Windows VM](create-vm-accelerated-networking-powershell.md)。 加速網路可以對 VM 啟用 Single Root I/O Virtualization (SR-IOV)，大幅提升其網路效能。 這個高效能路徑會略過資料路徑的主機，進而減少延遲、抖動和 CPU 使用率，供支援的 VM 類型中最嚴苛的網路工作負載使用。 下圖顯示兩部 VM 之間的通訊，一部具備加速網路而另一步沒有︰
 
@@ -40,27 +39,30 @@ ms.locfileid: "60713722"
 * **減少抖動︰** 虛擬交換器處理視需要套用的原則數量和正在進行處理的 CPU 工作負載而定。 將原則強制執行卸載到硬體透過將封包直接傳遞到 VM、移除主機到 VM 的通訊，以及所有軟體插斷和環境切換，而減少變化。
 * **降低 CPU 使用率︰** 略過主機中的虛擬交換器可減少處理網路流量的 CPU 使用率。
 
-## <a name="supported-operating-systems"></a>受支援的作業系統
+## <a name="supported-operating-systems"></a>支援的作業系統
 您可以從 Azure 資源庫直接使用下列發行版本： 
-* **使用 linux azure 核心的 Ubuntu 14.04**
+* **Ubuntu 14.04 與 linux-azure 核心**
 * **Ubuntu 16.04 或更新版本** 
 * **SLES12 SP3 或更新版本** 
 * **RHEL 7.4 或更新版本**
 * **CentOS 7.4 或更新版本**
 * **CoreOS Linux**
 * **具有反向移植核心的 Debian "Stretch"**
-* **Oracle Linux 7.4 和更新版本與 Red Hat 相容核心 (RHCK)**
-* **使用 UEK 第 5 版 7.5 和更新版本的 oracle Linux**
-* **FreeBSD 10.4、 11.1 和 12.0**
+* **使用 Red Hat 相容核心（RHCK） Oracle Linux 7.4 和更新版本**
+* **使用 UEK 第5版 Oracle Linux 7.5 和更新版本**
+* **FreeBSD 10.4、11.1 & 12。0**
 
 ## <a name="limitations-and-constraints"></a>限制和條件約束
 
 ### <a name="supported-vm-instances"></a>支援的 VM 執行個體
 大多數一般用途和具有 2 個以上 vCPU 的計算最佳化執行個體大小，皆支援加速網路。  這些支援的系列為：D/DSv2 和 F/Fs
 
-在支援超執行緒的執行個體中，加速網路可在具有 4 個以上 vCPU 的 VM 執行個體上進行支援作業。 支援的系列為：D/Dsv3、 E/Esv3、 Fsv2、 Lsv2、 Ms/Mms 和 Ms/Mmsv2。
+在支援超執行緒的執行個體中，加速網路可在具有 4 個以上 vCPU 的 VM 執行個體上進行支援作業。 支援的系列為： D/Dsv3、D/Dsv4、E/Esv3、Ea/Easv4、Fsv2、Lsv2、Ms/Mms 和 Ms/Mmsv2。
 
 如需 VM 執行個體的詳細資訊，請參閱 [Linux VM 大小](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+
+### <a name="custom-images"></a>自訂映像
+如果您使用自訂映射，而且您的映射支援加速網路，請確定有必要的驅動程式可搭配 Azure 上的 Mellanox ConnectX-3 和 ConnectX-4 Lx Nic 使用。
 
 ### <a name="regions"></a>區域
 適用於所有公用 Azure 區域和 Azure 政府雲端。
@@ -75,13 +77,13 @@ removed per issue https://github.com/MicrosoftDocs/azure-docs/issues/9772 -->
 
 ## <a name="create-a-linux-vm-with-azure-accelerated-networking"></a>建立使用 Azure 加速網路的 Linux VM
 ## <a name="portal-creation"></a>建立入口網站
-雖然本文提供使用 Azure CLI 來建立具有加速網路之虛擬機器的步驟，但您也可以[使用 Azure 入口網站來建立具有加速網路的虛擬機器](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 在中建立虛擬機器，在入口網站時**建立虛擬機器**刀鋒視窗中，選擇**網路** 索引標籤。在此索引標籤中，沒有適合**加速網路**。  如果您已選擇[支援的作業系統](#supported-operating-systems)並[VM 大小](#supported-vm-instances)，此選項便會自動填入為 [開啟]。  如果沒有，則會填入加速網路的 「 關閉 」 選項，並授與使用者為什麼它不會啟用的原因。   
+雖然本文提供使用 Azure CLI 來建立具有加速網路之虛擬機器的步驟，但您也可以[使用 Azure 入口網站來建立具有加速網路的虛擬機器](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 在入口網站中建立虛擬機器時，請在 [**建立虛擬機器**] 分頁中，選擇 [**網路**] 索引標籤。 在此索引標籤中，有**加速網路**的選項。  如果您已選擇[支援的作業系統](#supported-operating-systems)和[VM 大小](#supported-vm-instances)，此選項將會自動填入 [開啟]。  如果不是，它會在加速網路的 [關閉] 選項中填入，並提供使用者無法啟用的原因。   
 
-* *附註：* 可以透過入口網站中啟用僅支援的作業系統。  如果您使用自訂映像，而且您的映像支援加速網路，請建立您的 VM 使用 CLI 或 Powershell。 
+* *注意：* 只有支援的作業系統可以透過入口網站啟用。  如果您使用自訂映射，而且您的映射支援加速網路，請使用 CLI 或 PowerShell 來建立 VM。 
 
-建立虛擬機器之後，您可以確認加速網路中的指示會啟用[確認已啟用加速的網路](#confirm-that-accelerated-networking-is-enabled)。
+建立虛擬機器之後，您可以遵循[確認已啟用加速網路](#confirm-that-accelerated-networking-is-enabled)中的指示，確認已啟用加速網路。
 
-## <a name="cli-creation"></a>CLI 建立
+## <a name="cli-creation"></a>建立 CLI
 ### <a name="create-a-virtual-network"></a>建立虛擬網路
 
 請安裝最新的 [Azure CLI](/cli/azure/install-azure-cli)，並使用 [az login](/cli/azure/reference-index) 來登入 Azure 帳戶。 在下列範例中，請以您自己的值取代範例參數名稱。 範例參數名稱包含 *myResourceGroup*、*myNic* 和 *myVm*。
@@ -106,7 +108,7 @@ az network vnet create \
 ```
 
 ### <a name="create-a-network-security-group"></a>建立網路安全性群組
-使用 [az network nsg create](/cli/azure/network/nsg) 建立網路安全性群組。 下列範例建立名為 myNetworkSecurityGroup 的網路安全性群組：
+使用 [az network nsg create](/cli/azure/network/nsg) 建立網路安全性群組。 下列範例建立名為 myNetworkSecurityGroup  的網路安全性群組：
 
 ```azurecli
 az network nsg create \
@@ -174,7 +176,7 @@ az vm create \
 
 建立 VM 後，系統將傳回與下列範例輸出類似的輸出。 請記下 **publicIpAddress**。 在後續步驟中，將會使用此位址來存取 VM。
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -197,15 +199,15 @@ ssh azureuser@<your-public-ip-address>
 
 從 Bash 殼層中，輸入 `uname -r`，並確認核心版本是下列其中一個版本或更高版本：
 
-* **Ubuntu 16.04**：4.11.0-1013
-* **SLES SP3**：4.4.92-6.18
-* **RHEL**：7.4.2017120423
-* **CentOS**：7.4.20171206
+* **Ubuntu 16.04**: 4.11.0-1013
+* **SLES SP3**: 4.4.92-6.18
+* **RHEL**: 7.4.2017120423
+* **CentOS**: 7.4.20171206
 
 
 確認 Mellanox VF 裝置已使用 `lspci` 命令向 VM 公開。 傳回的輸出大致如下列所示：
 
-```bash
+```output
 0000:00:00.0 Host bridge: Intel Corporation 440BX/ZX/DX - 82443BX/ZX/DX Host bridge (AGP disabled) (rev 03)
 0000:00:07.0 ISA bridge: Intel Corporation 82371AB/EB/MB PIIX4 ISA (rev 01)
 0000:00:07.1 IDE interface: Intel Corporation 82371AB/EB/MB PIIX4 IDE (rev 01)
@@ -216,7 +218,7 @@ ssh azureuser@<your-public-ip-address>
 
 使用 `ethtool -S eth0 | grep vf_` 命令檢查 VF (虛擬函式) 上的活動。 如果您收到如下列範例輸出的輸出，則加速網路將會啟用並運作。
 
-```bash
+```output
 vf_rx_packets: 992956
 vf_rx_bytes: 2749784180
 vf_tx_packets: 2656684
@@ -224,6 +226,10 @@ vf_tx_bytes: 1099443970
 vf_tx_dropped: 0
 ```
 現在已啟用您 VM 的加速網路。
+
+## <a name="handle-dynamic-binding-and-revocation-of-virtual-function"></a>處理虛擬函式的動態繫結和撤銷 
+應用程式必須在 VM 中公開的綜合 NIC 上執行。 如果應用程式直接透過 VF NIC 執行，則不會收到**所有**目的地為 VM 的封包，因為某些封包會顯示在綜合介面上。
+如果您透過綜合 NIC 執行應用程式，它會保證應用程式會接收**所有**目的地的封包。 它也可確保應用程式繼續執行，即使在服務主機時已撤銷 VF 也一樣。 針對所有利用**加速網路**的應用程式，系結至綜合 NIC 的應用程式是**強制性**的需求。
 
 ## <a name="enable-accelerated-networking-on-existing-vms"></a>在現有的 VM 上啟用加速網路
 如果您已建立不含加速網路的 VM，那麼在現有 VM 上啟用此功能是可能的。  VM 必須符合前面也說明過的下列必要條件，才能支援加速網路：

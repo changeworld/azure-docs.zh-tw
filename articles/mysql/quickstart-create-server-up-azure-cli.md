@@ -1,19 +1,19 @@
 ---
-title: 快速入門 - 使用簡單的 Azure CLI 命令建立適用於 MySQL 的 Azure 資料庫 - az mysql up (預覽)
+title: 快速入門：使用 az mysql up 建立適用於 MySQL 的 Azure 資料庫
 description: 本快速入門指南說明如何使用 Azure CLI (命令列介面) up 命令建立適用於 MySQL 的 Azure 資料庫伺服器。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 3/18/2019
+ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: aa0d2a9e990faa8d99355744824f34e26aeb519e
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: f2d0d0517579608a76ccf8c1e63aa993556e8d58
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58137907"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608020"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>快速入門：使用簡單的 Azure CLI 命令建立適用於 MySQL 的 Azure 資料庫 - az mysql up (預覽)
 
@@ -64,7 +64,7 @@ sku-name | GP_Gen5_2 | SKU 的名稱。 遵循簡短形式的慣例 {pricing tie
 backup-retention | 7 | 備份應保留的時間長度。 單位為天。
 geo-redundant-backup | 已停用 | 是否應針對此伺服器啟用異地備援備份。
 location | westus2 | 伺服器的 Azure 位置。
-ssl-enforcement | 已停用 | 是否應針對此伺服器啟用 SSL。
+ssl-enforcement | 啟用 | 是否應針對此伺服器啟用 SSL。
 storage-size | 5120 | 伺服器的儲存體容量 (單位為 MB)。
 version | 5.7 | MySQL 主要版本。
 admin-user | 由系統產生 | 適用於系統管理員登入的使用者名稱。
@@ -76,7 +76,7 @@ admin-password | 由系統產生 | 系統管理員使用者的密碼。
 您的伺服器建立好之後，它會隨附下列設定：
 
 - 會建立名為 "devbox" 的防火牆規則。 Azure CLI 會嘗試偵測 `az mysql up` 命令執行來源的電腦 IP 位址，並將該 IP 位址加入允許清單。
-- [允許存取 Azure 服務] 設為 [開啟]。 此設定會設定伺服器的防火牆，以接受來自所有 Azure 資源的連線，其中也包括您未訂閱的資源。
+- [允許存取 Azure 服務] 設為 [開啟]。 此設定會將伺服器的防火牆設定為接受來自所有 Azure 資源的連線，其中也包括您未訂閱的資源。
 - `wait_timeout` 參數設為 8 小時
 - 建立名為 "sampledb" 的空白資料庫
 - 建立名為 "root"，且具有 "sampledb" 權限的新使用者

@@ -11,11 +11,11 @@ ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
 ms.openlocfilehash: 15047b9782ea86b91ba78e0d745c67892fdc8b76
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56740791"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67174296"
 ---
 用於新增範例語句的 `response` 陣列會以 `hasError` 屬性來指出每個範例語句成功或失敗。 下列 JSON 回應顯示已成功新增兩個語句。 
 

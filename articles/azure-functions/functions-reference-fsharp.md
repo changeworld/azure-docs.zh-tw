@@ -1,30 +1,24 @@
 ---
-title: Azure Functions F# 開發人員參考 | Microsoft Docs
+title: 'Azure Functions F # 開發人員參考'
 description: 了解如何使用 F# 指令碼來開發 Azure Functions。
-services: functions
-documentationcenter: fsharp
 author: sylvanc
-manager: jbronsk
-keywords: azure functions, 函式, 事件處理, webhook, 動態計算, 無伺服器架構, F#
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
-ms.service: azure-functions
-ms.devlang: fsharp
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: fbc5a149e59bff1897d3949185272e9ca664f989
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 005cb0044cb4d225c8b94602fb907fee09fb00b2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717817"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249184"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 開發人員參考
 
 Azure Functions 的 F# 是可在雲端輕鬆執行程式碼片段或「函式」的解決方案。 資料會透過函式引數流入您的 F# 函式。 引數名稱會指定於 `function.json`中，而且有預先定義的名稱可用來存取函式記錄器和取消權杖等項目。 
 
 >[!IMPORTANT]
->只有 [1.x 版](functions-versions.md#creating-1x-apps) Azure Functions 執行階段才支援 F# 指令碼 (.fsx)。 如果您想要搭配 2.x 版執行階段使用 F#，則必須使用已預先編譯的 F# 類別庫專案 (.fs)。 您需使用 Visual Studio 來建立、管理及發佈 F# 類別庫專案，就像對 [C# 類別庫專案](functions-dotnet-class-library.md)一樣。 如需有關 Functions 版本的詳細資訊，請參閱 [Azure Functions 執行階段版本概觀](functions-versions.md)。
+>只有 [1.x 版](functions-versions.md#creating-1x-apps) Azure Functions 執行階段才支援 F# 指令碼 (.fsx)。 如果您想要使用 F # 搭配2.x 版和更新版本的執行時間，則必須使用先行編譯的 F # 類別庫專案 (. fs) 。 您需使用 Visual Studio 來建立、管理及發佈 F# 類別庫專案，就像對 [C# 類別庫專案](functions-dotnet-class-library.md)一樣。 如需有關 Functions 版本的詳細資訊，請參閱 [Azure Functions 執行階段版本概觀](functions-versions.md)。
 
 本文假設您已經讀過 [Azure Functions 開發人員參考](functions-reference.md)。
 
@@ -54,7 +48,7 @@ FunctionsProject
 
 其中有一個可用來設定函數應用程式的共用 [host.json](functions-host-json.md) 檔案。 每個函式都具有本身的程式碼檔案 (.fsx) 和繫結設定檔 (function.json)。
 
-在函式執行階段的[版本 2.x](functions-versions.md) 中所需的繫結擴充功能，是以 `bin` 資料夾中的實際程式庫檔案在 `extensions.csproj` 檔案中所定義。 在本機開發時，您必須[註冊繫結擴充功能](./functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles)。 開發 Azure 入口網站中的函式時，就會為您完成這項註冊。
+在函式執行階段 [2.x 版和更新版本](functions-versions.md)中所需的繫結延伸模組，是以 `bin` 資料夾中的實際程式庫檔案在 `extensions.csproj` 檔案中所定義。 在本機開發時，您必須[註冊繫結擴充功能](./functions-bindings-register.md#extension-bundles)。 開發 Azure 入口網站中的函式時，就會為您完成這項註冊。
 
 ## <a name="binding-to-arguments"></a>繫結至引數
 如 [Azure Functions 觸發程序和繫結開發人員參考](functions-triggers-bindings.md)所述，每個繫結都支援某幾組引數。 例如，Blob 觸發程序支援的其中一個引數繫結是可使用 F# 記錄來表示的 POCO。 例如︰
@@ -147,7 +141,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `System.Net.Http`
 * `System.Threading.Tasks`
 * `Microsoft.Azure.WebJobs`
-* `Microsoft.Azure.WebJobs.Host` 。
+* `Microsoft.Azure.WebJobs.Host`.
 
 ## <a name="referencing-external-assemblies"></a>參考外部組件
 同樣地，在新增架構組件參考時也可以加上 `#r "AssemblyName"` 指示詞。
@@ -175,7 +169,7 @@ Azure Functions 裝載環境會自動加入下列組件︰
 * `Microsoft.Azure.WebJobs.Host`
 * `Microsoft.Azure.WebJobs.Extensions`
 * `System.Web.Http`
-* `System.Net.Http.Formatting`。
+* `System.Net.Http.Formatting`.
 
 此外，下列組件為特殊案例，可以使用簡單名稱來參考 (例如 `#r "AssemblyName"`)：
 
@@ -183,7 +177,7 @@ Azure Functions 裝載環境會自動加入下列組件︰
 * `Microsoft.WindowsAzure.Storage`
 * `Microsoft.ServiceBus`
 * `Microsoft.AspNet.WebHooks.Receivers`
-* `Microsoft.AspNEt.WebHooks.Common` 。
+* `Microsoft.AspNEt.WebHooks.Common`.
 
 如果您需要參考私用組件，您可以將組件檔案上傳至您函式的相對 `bin` 資料夾，然後使用檔案名稱來參考它 (例如 `#r "MyAssembly.dll"`)。 如需如何將檔案上傳至函數資料夾的資訊，請參閱以下的＜封裝管理＞小節。
 
@@ -208,7 +202,7 @@ let Run(blob: string, output: byref<string>, log: ILogger) =
 
 <a name="package"></a>
 
-## <a name="package-management"></a>封裝管理
+## <a name="package-management"></a>套件管理
 若要在 F# 函式中使用 NuGet 套件，請將 `project.json` 檔案新增至函式應用程式檔案系統中的函式資料夾。 以下的 `project.json` 範例檔案會對 `Microsoft.ProjectOxford.Face` 1.1.0 版新增 NuGet 封裝參考︰
 
 ```json
@@ -293,8 +287,8 @@ let mylog(log: ILogger, text: string) =
 ## <a name="next-steps"></a>後續步驟
 如需詳細資訊，請參閱下列資源：
 
-* [F# 指南](/dotnet/articles/fsharp/index)
-* [Azure Functions 的最佳作法](functions-best-practices.md)
+* [F # 指南](/dotnet/articles/fsharp/index)
+* [Azure Functions 的最佳做法](functions-best-practices.md)
 * [Azure Functions 開發人員參考](functions-reference.md)
 * [Azure Functions 觸發程序和繫結](functions-triggers-bindings.md)
 * [Azure Functions 測試](functions-test-a-function.md)

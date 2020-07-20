@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/17/2018
+ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: f09f66e81ec4878aedebfee9be4c0c67b75c8ad6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fda62ff0af29c7cf681d9438b02420d299535701
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61462960"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80293936"
 ---
 # <a name="sap-lama-connector-for-azure"></a>適用於 Azure 的 SAP LaMa 連接器
 
@@ -30,6 +29,7 @@ ms.locfileid: "61462960"
 [2562184]:https://launchpad.support.sap.com/#/notes/2562184
 [2628497]:https://launchpad.support.sap.com/#/notes/2628497
 [2445033]:https://launchpad.support.sap.com/#/notes/2445033
+[2815988]:https://launchpad.support.sap.com/#/notes/2815988
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 [dbms-guide]:dbms-guide.md
@@ -51,7 +51,7 @@ ms.locfileid: "61462960"
 
 下列 SAP 附註與 Azure 上的 SAP LaMa 主題相關︰
 
-| 附註編號 | 標題 |
+| 附註編號 | Title |
 | --- | --- |
 | [2343511] |適用於 SAP Landscape Management (LaMa) 的 Microsoft Azure 連接器 |
 | [2350235] |SAP Landscape Management 3.0 - 企業版 |
@@ -60,33 +60,40 @@ ms.locfileid: "61462960"
 
 ## <a name="general-remarks"></a>一般備註
 
-* 務必在 [安裝程式]-> [設定]-> [引擎] 中啟用 [自動掛接點建立]  
+* 務必在 [安裝程式]-> [設定]-> [引擎] 中啟用 [自動掛接點建立]**  
   如果 SAP LaMa 在虛擬機器上使用 SAP Adaptive Extensions 掛接磁碟區，若未啟用此設定，則掛接點必須存在。
 
 * 在部署新 VM 和取消準備 SAP 執行個體時，使用個別的子網路，請勿使用動態 IP 位址來防止 IP 位址「竊取」  
   如果您在子網路中使用動態 IP 位址配置 (也會由 SAP LaMa 使用)，則使用 SAP LaMa 準備 SAP 系統可能會失敗。 如果 SAP 系統毫無準備，則不會保留 IP 位址，並可能將其配置到其他虛擬機器。
 
-* 如果您登入受控主機，切勿封鎖檔案系統，使其無法取消掛接  
-  如果您登入 Linux 虛擬機器，並將工作目錄變更為掛接點中的目錄 (例如 /usr/sap/AH1/ASCS00/exe)，則無法取消掛接磁碟區，且重新放置或取消準備會失敗。
+* 如果您登入受管理的主機，請確定不封鎖卸載檔案系統  
+  如果您登入 Linux 虛擬機器，並將工作目錄變更為掛接點中的目錄（例如/usr/sap/AH1/ASCS00/exe），則無法卸載磁片區，且重新放置或 unprepare 會失敗。
+
+* 請務必停用 SUSE SLES Linux 虛擬機器上的 CLOUD_NETCONFIG_MANAGE。 如需詳細資訊，請參閱[SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633)。
 
 ## <a name="set-up-azure-connector-for-sap-lama"></a>設定適用於 SAP LaMa 的 Azure 連接器
 
-從 SAP LaMa 3.0 SP05 起隨附 Azure 連接器。 我們建議一律針安裝 SAP LaMa 3.0 的最新支援套件和修補程式。 Azure 連接器會使用服務主體來對 Microsoft Azure 授權。 請遵循下列步驟來建立適用於 SAP Landscape Management (LaMa) 的服務主體。
+從 SAP LaMa 3.0 SP05 起隨附 Azure 連接器。 我們建議一律針安裝 SAP LaMa 3.0 的最新支援套件和修補程式。
+
+Azure 連接器會使用 Azure Resource Manager API 來管理您的 Azure 資源。 SAP LaMa 可以使用服務主體或受控識別，來對此 API 進行驗證。 如果您的 SAP LaMa 是在 Azure VM 上執行，建議使用受控識別，如[使用受控識別取得 AZURE API 的存取權](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d)一章所述。 如果您想要使用服務主體，請依照[使用服務主體取得 AZURE API 的存取權一](lama-installation.md#913c222a-3754-487f-9c89-983c82da641e)章中的步驟進行。
+
+### <a name="use-a-service-principal-to-get-access-to-the-azure-api"></a><a name="913c222a-3754-487f-9c89-983c82da641e"></a>使用服務主體來取得 Azure API 的存取權
+
+Azure 連接器可以使用服務主體來授權 Microsoft Azure。 請遵循下列步驟來建立適用於 SAP Landscape Management (LaMa) 的服務主體。
 
 1. 移至 https://portal.azure.com。
 1. 開啟 [Azure Active Directory] 刀鋒視窗
 1. 按一下 [應用程式註冊]
-1. 按一下 [新增]
-1. 輸入名稱、 選取應用程式類型 [Web 應用程式/API]、 輸入登入 URL (例如 http:\//localhost)，然後按一下建立
-1. 登入 URL 並未使用，而且可以是任何有效的 URL
-1. 選取新的應用程式，然後按一下 [設定] 索引標籤中的金鑰
-1. 輸入新金鑰的說明、選取 [永不過期]，然後按一下 [儲存]
+1. 按一下 [新增註冊]
+1. 輸入名稱，然後按一下 [註冊]
+1. 選取新的應用程式，然後按一下 [設定] 索引標籤中的 [憑證 & 秘密]
+1. 建立新的用戶端密碼、輸入新金鑰的描述、選取密碼到期的時間，然後按一下 [儲存]
 1. 記下值。 此值用來作為服務主體的密碼
 1. 記下應用程式識別碼。 此值用來作為服務主體的使用者名稱
 
 服務主體預設沒有存取您 Azure 資源的權限。 您必須為服務主體提供其存取權限。
 
-1. 移至 https://portal.azure.com。
+1. 移至 https://portal.azure.com 。
 1. 開啟資源群組刀鋒視窗
 1. 選取您要使用的資源群組
 1. 選取 [存取控制 (IAM)]
@@ -96,17 +103,40 @@ ms.locfileid: "61462960"
 1. 按一下 [Save] \(儲存)。
 1. 針對您要使用於 SAP LaMa 的所有資源群組重複步驟 3 到 8
 
+### <a name="use-a-managed-identity-to-get-access-to-the-azure-api"></a><a name="af65832e-6469-4d69-9db5-0ed09eac126d"></a>使用受控識別來取得 Azure API 的存取權
+
+若要能夠使用受控識別，您的 SAP LaMa 實例必須在具有系統或使用者指派身分識別的 Azure VM 上執行。 如需受控識別的詳細資訊，請參閱[什麼是 Azure 資源的受控識別？](../../../active-directory/managed-identities-azure-resources/overview.md)和[使用 Azure 入口網站在 VM 上設定 azure 資源的受控](../../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)識別。
+
+根據預設，受控識別不具有存取 Azure 資源的許可權。 您必須授與它存取權限。
+
+1. 移至 https://portal.azure.com 。
+1. 開啟資源群組刀鋒視窗
+1. 選取您要使用的資源群組
+1. 選取 [存取控制 (IAM)]
+1. 按一下 [新增-> 新增角色指派]
+1. 選取 [參與者] 角色
+1. 針對 [指派存取權] 選取 [虛擬機器]
+1. 選取您的 SAP LaMa 實例執行所在的虛擬機器
+1. 按一下 [Save] \(儲存)。
+1. 針對您想要在 SAP LaMa 中使用的所有資源群組，重複執行步驟
+
+在您的 SAP LaMa Azure 連接器設定中，選取 [使用受控識別] 以啟用受控識別的使用方式。 如果您想要使用系統指派的身分識別，請務必將 [使用者名稱] 欄位保留空白。 如果您想要使用使用者指派的身分識別，請在 [使用者名稱] 欄位中輸入使用者指派的身分識別識別碼。
+
+### <a name="create-a-new-connector-in-sap-lama"></a>在 SAP LaMa 中建立新的連接器
+
 開啟 SAP LaMa 網站並瀏覽至基礎結構。 移至 Cloud Managers 索引標籤，然後按一下 [新增]。 選取 Microsoft Azure 雲端配接器並且按 [下一步]。 輸入以下資訊：
 
 * 標籤：選擇連接器執行個體的名稱
-* 使用者名稱：服務主體的應用程式識別碼
-* 密碼：服務主體金鑰/密碼
-* URL：保留預設值 https://management.azure.com/
-* 監視間隔 (秒)：應該至少 300 秒
+* 使用者名稱：虛擬機器之使用者指派身分識別的服務主體應用程式識別碼或識別碼。 如需詳細資訊，請參閱 [使用系統或使用者指派的身分識別]。
+* 密碼：服務主體金鑰/密碼。 如果您使用系統或使用者指派的身分識別，您可以將此欄位保留空白。
+* URL：保留預設值 `https://management.azure.com/`
+* 監視間隔 (秒)：應該至少 300
+* 使用受控識別： SAP LaMa 可以使用系統或使用者指派的身分識別，來對 Azure API 進行驗證。 請參閱本指南中的[使用受控識別取得 AZURE API 的存取權](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d)章節。
 * 訂用帳戶識別碼：Azure 訂用帳戶識別碼
-* Azure Active Directory 租用戶識別碼：Azure Active Directory 租用戶的識別碼
+* Active Directory 租用戶識別碼：Active Directory 租用戶的識別碼
 * Proxy 主機：如果 SAP LaMa 需要 Proxy 才能連線到網際網路，則為 Proxy 的主機名稱
 * Proxy 連接埠：Proxy 的 TCP 連接埠
+* 變更儲存類型以節省成本：如果 Azure 介面卡應該變更受控磁碟的儲存體類型，以節省磁片不在使用中的成本，請啟用此設定。 針對 SAP 實例設定中所參考的資料磁片，介面卡會在實例 unprepare 期間，將磁片類型變更為標準儲存體，並在實例準備期間，將其切換回原始儲存體類型。 如果您停止 SAP LaMa 中的虛擬機器，介面卡會變更所有連接磁片的儲存體類型，包括要標準儲存體的 OS 磁片。 如果您在 SAP LaMa 中啟動虛擬機器，介面卡會將儲存體類型變更回原始儲存體類型。
 
 按一下 [測試組態] 以驗證您的輸入。 您應該會看到
 
@@ -123,7 +153,7 @@ ms.locfileid: "61462960"
 > [!NOTE]
 > 可能的話，請移除所有虛擬機器擴充功能，因為它們可能導致中斷磁碟與虛擬機器連結時的長時間執行階段。
 
-確定使用者 \<hanasid>adm、\<sapsid>adm 和群組 sapsys 存在具有相同識別碼和 gid 或使用 LDAP 的目標電腦上。 在應該用來執行 SAP NetWeaver (A) SCS 的虛擬機器上，啟用並啟動 NFS 伺服器。
+請確定 \<hanasid> \<sapsid> 具有相同識別碼和 gid 或使用 LDAP 的目的電腦上有使用者 adm、adm 和群組 sapsys。 在應該用來執行 SAP NetWeaver (A) SCS 的虛擬機器上，啟用並啟動 NFS 伺服器。
 
 ### <a name="manual-deployment"></a>手動部署
 
@@ -133,7 +163,7 @@ SAP LaMa 會使用 SAP Host Agent 來與虛擬機器通訊。 如果您手動部
 
 使用 SAP 附註 [2343511] 中所列的其中一個支援作業系統，建立新的虛擬機器。 為 SAP 執行個體新增額外的 IP 組態。 每個執行個體至少需要一個 IP 位址，而且必須使用虛擬主機名稱進行安裝。
 
-SAP NetWeaver ASCS 執行個體需要可供 /sapmnt/\<SAPSID>、/usr/sap/\<SAPSID>、/usr/sap/trans 和 /usr/sap/\<sapsid>adm 使用的磁碟。 SAP NetWeaver 應用程式伺服器不需要額外的磁碟。 與 SAP 執行個體相關的所有項目必須儲存在 ASCS 上並透過 NFS 匯出。 否則，目前不可能使用 SAP LaMa 來新增其他應用程式伺服器。
+SAP NetWeaver ASCS 實例需要適用于/sapmnt/ \<SAPSID> 、/usr/sap/ \<SAPSID> 、/usr/sap/trans 和/usr/sap/adm 的磁片 \<sapsid> 。 SAP NetWeaver 應用程式伺服器不需要額外的磁碟。 與 SAP 執行個體相關的所有項目必須儲存在 ASCS 上並透過 NFS 匯出。 否則，目前不可能使用 SAP LaMa 來新增其他應用程式伺服器。
 
 ![Linux 上的 SAP NetWeaver ASCS](media/lama/sap-lama-ascs-app-linux.png)
 
@@ -182,7 +212,7 @@ SAP LaMa 本身無法重新放置 SQL Server，因此您想要用於重新放置
 
 範本具有下列參數：
 
-* sapSystemId：SAP 系統識別碼。 它用來建立磁碟配置 (例如 /usr/sap/\<sapsid>)。
+* sapSystemId：SAP 系統識別碼。 它是用來建立磁片版面配置（例如/usr/sap/ \<sapsid> ）。
 
 * computerName：新虛擬機器的電腦名稱。 SAP LaMa 也會使用這個參數。 當您使用此範本將新的虛擬機器佈建為系統複製(copy) 的一部分時，SAP LaMa 會等到可以觸達具有此電腦名稱的主機為止。
 
@@ -208,7 +238,7 @@ SAP LaMa 本身無法重新放置 SQL Server，因此您想要用於重新放置
 
 * sapacExtLocation：SAP Adaptive Extensions 的位置。 SAP 附註 [2343511] 會列出 Azure 所需的最低修補程式層級。
 
-* vcRedistLocation：需要有 VC 執行階段的位置，才能安裝 SAP Adaptive Extensions。 只有 Windows 需要這個參數。
+* vcRedistLocation:：需要有 VC 執行階段的位置，才能安裝 SAP Adaptive Extensions。 只有 Windows 需要這個參數。
 
 * odbcDriverLocation：您想要安裝的 ODBC 驅動程式位置。 僅支援 Microsoft ODBC Driver for SQL Server。
 
@@ -226,31 +256,118 @@ SAP LaMa 本身無法重新放置 SQL Server，因此您想要用於重新放置
 
 在下列範例中，我們假設您以系統識別碼 HN1 安裝 SAP HANA，並以系統識別碼 AH1 安裝 SAP NetWeaver 系統。 HANA 執行個體的虛擬主機名稱為 hn1-db、SAP NetWeaver 系統所用 HANA 租用戶的虛擬主機名稱為 ah1-db、SAP NetWeaver ASCS 的虛擬主機名稱為 ah1-ascs，以及第一個 SAP NetWeaver 應用程式伺服器的虛擬主機名稱為 ah1-di-0。
 
-#### <a name="install-sap-netweaver-ascs-for-sap-hana"></a>安裝 SAP NetWeaver ASCS for SAP HANA
+#### <a name="install-sap-netweaver-ascs-for-sap-hana-using-azure-managed-disks"></a>使用 Azure 受控磁碟安裝適用于 SAP Hana 的 SAP NetWeaver ASCS
 
 啟動 SAP Software Provisioning Manager (SWPM) 之前，您必須掛接 ASCS 的虛擬主機名稱 IP 位址。 建議的方式是使用 sapacext。 如果您使用 sapacext 掛接 IP 位址，請務必在重新開機後重新掛接 IP 位址。
 
-![ Linux][Logo_Linux] Linux
+![Linux][Logo_Linux] Linux
 
 ```bash
 # /usr/sap/hostctrl/exe/sapacext -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-ascs -n 255.255.255.128
 ```
 
-![ Windows][Logo_Windows]  Windows
+![Windows][Logo_Windows] Windows
 
 ```bash
 # C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-ascs -n 255.255.255.128
 ```
 
-執行 SWPM 並使用 *ah1-ascs* 作為 [ASCS 執行個體主機名稱]。
+執行 SWPM 並使用 *ah1-ascs* 作為 [ASCS 執行個體主機名稱]**。
 
 ![Linux][Logo_Linux] Linux  
 將下列設定檔參數新增至 SAP Host Agent 設定檔 (位於 /usr/sap/hostctrl/exe/host_profile)。 如需詳細資訊，請參閱 SAP 附註 [2628497]。
 ```
 acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
 ```
+
+#### <a name="install-sap-netweaver-ascs-for-sap-hana-on-azure-netappfiles-anf-beta"></a>在 Azure NetAppFiles （及） BETA 版上安裝適用于 SAP Hana 的 SAP NetWeaver ASCS
+
+> [!NOTE]
+> 此功能尚不是 GA。 如需詳細資訊，請參閱 SAP 附注[2815988] （僅供預覽客戶看見）。
+開啟元件 BC-BC-VCM-LVM-HYPERV-LVM-HYPERV 的 SAP 事件，並要求加入適用于 Azure NetApp Files preview 的 LaMa 儲存體介面卡
+
+及提供適用于 Azure 的 NFS。 在 SAP LaMa 的內容中，這可簡化 ABAP Central Services （ASCS）實例的建立，以及後續的應用程式伺服器安裝。 先前 ASCS 實例也必須作為 NFS 伺服器，而且必須將參數 acosprep/nfs_paths 新增至 SAP Hostagent 的 host_profile。
+
+#### <a name="anf-is-currently-available-in-these-regions"></a>及目前可在下欄區域使用：
+
+澳大利亞東部、美國中部、美國東部、美國東部2、歐洲北部、美國中南部、西歐和美國西部2。
+
+#### <a name="network-requirements"></a>網路需求
+
+及需要的委派子網必須與 SAP 伺服器屬於相同的 VNET。 以下是這類設定的範例。
+此畫面會顯示 VNET 和第一個子網的建立：
+
+![SAP LaMa 建立適用于 Azure 及的虛擬網路 ](media/lama/sap-lama-createvn-50.png)
+
+下一個步驟會建立適用于 Microsoft. NetApp/磁片區的委派子網。
+
+![SAP LaMa 新增委派的子網 ](media/lama/sap-lama-addsubnet-50.png)
+
+![SAP LaMa 子網清單 ](media/lama/sap-lama-subnets.png)
+
+現在，必須在 Azure 入口網站內建立 NetApp 帳戶：
+
+![SAP LaMa 建立 NetApp 帳戶 ](media/lama/sap-lama-create-netappaccount-50.png)
+
+![已建立 SAP LaMa NetApp 帳戶 ](media/lama/sap-lama-netappaccount.png)
+
+在 NetApp 帳戶內，容量集區會指定每個集區的磁片大小和類型：
+
+![SAP LaMa 建立 NetApp 容量集區 ](media/lama/sap-lama-capacitypool-50.png)
+
+![已建立 SAP LaMa NetApp 容量集區 ](media/lama/sap-lama-capacitypool-list.png)
+
+現在可以定義 NFS 磁片區。 由於一個集區中的多個系統將會有磁片區，因此應選擇自我說明的命名配置。 新增 SID 有助於將相關的磁片區群組在一起。 針對 ASCS 和 AS 實例，需要下列裝載： */sapmnt/ \<SID\> *、 */usr/sap/ \<SID\> *和 */home/ \<sid\> adm*。 （選擇性）需要 */usr/sap/trans*中央傳輸目錄，這至少是一個橫向的所有系統所使用的。
+
+> [!NOTE]
+> 在搶鮮版（BETA）階段中，磁片區的名稱在訂用帳戶內必須是唯一的。
+
+![SAP LaMa 建立磁片區1 ](media/lama/sap-lama-createvolume-80.png)
+
+![SAP LaMa 建立磁片區2 ](media/lama/sap-lama-createvolume2-80.png)
+
+![SAP LaMa 建立磁片區3 ](media/lama/sap-lama-createvolume3-80.png)
+
+這些步驟也必須針對其他磁片區重複執行。
+
+![SAP LaMa 已建立磁片區的清單 ](media/lama/sap-lama-volumes.png)
+
+現在，這些磁片區必須掛接到將執行與 SAP SWPM 進行初始安裝的系統上。
+
+首先，必須建立掛接點。 在此情況下，SID 會 AN1，因此必須執行下列命令：
+
+```bash
+mkdir -p /home/an1adm
+mkdir -p /sapmnt/AN1
+mkdir -p /usr/sap/AN1
+mkdir -p /usr/sap/trans
+```
+接下來，系統會使用下列命令來掛接及磁片區：
+
+```bash
+# sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/an1-home-sidadm /home/an1adm
+# sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/an1-sapmnt-sid /sapmnt/AN1
+# sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/an1-usr-sap-sid /usr/sap/AN1
+# sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 9.9.9.132:/global-usr-sap-trans /usr/sap/trans
+```
+掛接命令也可以從入口網站衍生。 本機掛接點需要調整。
+
+使用 df-h 命令來進行驗證。
+
+![SAP LaMa 掛接點作業系統層級 ](media/lama/sap-lama-mounts.png)
+
+現在必須執行具有 SWPM 的安裝。
+
+至少一個實例必須執行相同的步驟。
+
+成功安裝之後，必須在 SAP LaMa 中探索系統。
+
+針對 ASCS 和 AS 實例，掛接點看起來應該像這樣：
+
+![LaMa 中的 SAP LaMa 掛接點 ](media/lama/sap-lama-ascs.png) （這是一個範例。 IP 位址和匯出路徑與之前使用的不同
+
 
 #### <a name="install-sap-hana"></a>安裝 SAP HANA
 
@@ -264,20 +381,20 @@ acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-db -n 255.255.255.128
 ```
 
-在應用程式伺服器虛擬機器 (而不是在 HANA 虛擬機器) 上執行 SWPM 的資料庫執行個體安裝。 在 [適用於 SAP 系統的資料庫] 對話方塊中，使用 *ah1-db* 作為 [資料庫主機]。
+在應用程式伺服器虛擬機器 (而不是在 HANA 虛擬機器) 上執行 SWPM 的資料庫執行個體安裝。 在 [適用於 SAP 系統的資料庫]** 對話方塊中，使用 *ah1-db* 作為 [資料庫主機]**。
 
 #### <a name="install-sap-netweaver-application-server-for-sap-hana"></a>安裝適用於 SAP HANA 的 SAP NetWeaver 應用程式伺服器
 
 啟動 SAP Software Provisioning Manager (SWPM) 之前，您必須掛接應用程式伺服器的虛擬主機名稱 IP 位址。 建議的方式是使用 sapacext。 如果您使用 sapacext 掛接 IP 位址，請務必在重新開機後重新掛接 IP 位址。
 
-![ Linux][Logo_Linux] Linux
+![Linux][Logo_Linux] Linux
 
 ```bash
 # /usr/sap/hostctrl/exe/sapacext -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-di-0 -n 255.255.255.128
 ```
 
-![ Windows][Logo_Windows]  Windows
+![Windows][Logo_Windows] Windows
 
 ```bash
 # C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
@@ -300,13 +417,13 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-di
 /usr/sap/AH1/hdbclient/hdbuserstore SET DEFAULT ah1-db:35041@AH1 SAPABAP1 <password>
 ```
 
-在 [主要應用程式伺服器執行個體] 對話方塊中，使用 *ah1-di-0* 作為 [PAS 執行個體主機名稱]。
+在 [主要應用程式伺服器執行個體]** 對話方塊中，使用 *ah1-di-0* 作為 [PAS 執行個體主機名稱]**。
 
 #### <a name="post-installation-steps-for-sap-hana"></a>SAP HANA 的後續安裝步驟
 
 務必在您嘗試進行租用戶複製、租用戶移動或建立系統複寫之前，備份 SYSTEMDB 和所有的租用戶資料庫。
 
-### <a name="microsoft-sql-server"></a>連接字串
+### <a name="microsoft-sql-server"></a>Microsoft SQL Server
 
 在下列範例中，我們假設您以系統識別碼 AS1 安裝 SAP NetWeaver 系統。 SAP NetWeaver 系統所用 SQL Server 執行個體的虛擬主機名稱為 as1-db、SAP NetWeaver ASCS 的虛擬主機名稱為 as1-ascs，以及第一個 SAP NetWeaver 應用程式伺服器的虛擬主機名稱為 as1-di-0。
 
@@ -319,7 +436,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-di
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-ascs -n 255.255.255.128
 ```
 
-執行 SWPM 並使用 *as1-ascs* 作為 [ASCS 執行個體主機名稱]。
+執行 SWPM 並使用 *as1-ascs* 作為 [ASCS 執行個體主機名稱]**。
 
 #### <a name="install-sql-server"></a>安裝 SQL Server
 
@@ -343,7 +460,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-db
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di-0 -n 255.255.255.128
 ```
 
-在 [主要應用程式伺服器執行個體] 對話方塊中，使用 *as1-di-0* 作為 [PAS 執行個體主機名稱]。
+在 [主要應用程式伺服器執行個體]** 對話方塊中，使用 *as1-di-0* 作為 [PAS 執行個體主機名稱]**。
 
 ## <a name="troubleshooting"></a>疑難排解
 
@@ -352,7 +469,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
 * 已拒絕 SELECT 權限
   * [Microsoft][ODBC SQL Server Driver][SQL Server] SELECT 權限在物件 'log_shipping_primary_databases'、資料庫 'msdb'、結構描述 'dbo' 上遭拒。 [SOAPFaultException]  
   SELECT 權限在物件 'log_shipping_primary_databases'、資料庫 'msdb'、結構描述 'dbo' 上遭拒。
-  * 解決方法  
+  * 解決方案  
     確定 *NT AUTHORITY\SYSTEM* 可以存取 SQL Server。 請參閱 SAP 附註 [2562184]
 
 
@@ -362,120 +479,120 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
   * 請參閱記錄檢視器  
     com.sap.nw.lm.aci.monitor.api.validation.RuntimeValidationException：識別碼為 'RuntimeHDBConnectionValidator' 的驗證程式發生例外狀況 (驗證：'VALIDATION_HDB_USERSTORE')：無法擷取 hdbuserstore  
     HANA 使用者存放區不在正確的位置
-  * 解決方法  
+  * 解決方案  
     確定 /usr/sap/AH1/hdbclient/install/installation.ini 正確無誤
 
 ### <a name="errors-and-warnings-during-a-system-copy"></a>系統複製 (copy) 期間的錯誤和警告
 
 * 驗證系統佈建步驟時發生錯誤
   * 原因：com.sap.nw.lm.aci.engine.base.api.util.exception.HAOperationException Calling '/usr/sap/hostctrl/exe/sapacext -a ShowHanaBackups -m HN1 -f 50 -h hn1-db -o level=0\;status=5\;port=35013 pf=/usr/sap/hostctrl/exe/host_profile -R -T dev_lvminfo -u SYSTEM -p hook -r' | /usr/sap/hostctrl/exe/sapacext -a ShowHanaBackups -m HN1 -f 50 -h hn1-db -o level=0\;status=5\;port=35013 pf=/usr/sap/hostctrl/exe/host_profile -R -T dev_lvminfo -u SYSTEM -p hook -r
-  * 解決方法  
+  * 解決方案  
     備份來源 HANA 系統中的所有資料庫
 
-* 資料庫執行個體的系統複製(copy) 步驟「啟動」
+* 資料庫執行個體的系統複製(copy) 步驟「啟動」**
   * 主機代理程式作業 '000D3A282BC91EE8A1D76CF1F92E2944' 失敗 (OperationException。 FaultCode：'127'，訊息：「命令執行失敗。 ：[Microsoft][ODBC SQL Server Driver][SQL Server]使用者沒有更改資料庫 'AS2' 的全線，此資料庫不存在，或此資料庫不是處於允許存取檢查的狀態。」)
-  * 解決方法  
+  * 解決方案  
     確定 *NT AUTHORITY\SYSTEM* 可以存取 SQL Server。 請參閱 SAP 附註 [2562184]
 
 ### <a name="errors-and-warnings-during-a-system-clone"></a>系統複製 (clone) 期間的錯誤和警告
 
-* 嘗試在應用程式伺服器或 ASCS 的「強制註冊和啟動執行個體代理程式」步驟中註冊執行個體代理程式時發生錯誤
-  * 嘗試註冊執行個體代理程式時發生錯誤。 (RemoteException：「無法從設定檔 '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0' 載入執行個體資料：無法存取設定檔 '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0'：沒有這類檔案或目錄。」)
-  * 解決方法  
+* 嘗試在應用程式伺服器或 ASCS 的「強制註冊和啟動執行個體代理程式」** 步驟中註冊執行個體代理程式時發生錯誤
+  * 嘗試註冊執行個體代理程式時發生錯誤。 (RemoteException：「無法從 '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0' 載入執行個體資料：無法存取設定檔 '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0」：沒有這類檔案或目錄。」)
+  * 解決方案  
    確定在 ASCS/SCS 上的 sapmnt 共用具有 SAP_AS1_GlobalAdmin 的完整存取權
 
-* 「啟用複製 (clone) 的啟動保護」步驟發生錯誤
+* 「啟用複製 (clone) 的啟動保護」** 步驟發生錯誤
   * 無法開啟檔案 '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0' 原因：沒有這類檔案或目錄
-  * 解決方法  
+  * 解決方案  
     應用程式伺服器的電腦帳戶需要設定檔的寫入權限
 
 ### <a name="errors-and-warnings-during-create-system-replication"></a>建立系統複寫期間的錯誤和警告
 
 * 按一下 [建立系統複寫] 時發生例外狀況
   * 原因：com.sap.nw.lm.aci.engine.base.api.util.exception.HAOperationException   Calling '/usr/sap/hostctrl/exe/sapacext -a ShowHanaBackups -m HN1 -f 50 -h hn1-db -o level=0\;status=5\;port=35013 pf=/usr/sap/hostctrl/exe/host_profile -R -T dev_lvminfo -u SYSTEM -p hook -r' | /usr/sap/hostctrl/exe/sapacext -a ShowHanaBackups -m HN1 -f 50 -h hn1-db -o level=0\;status=5\;port=35013 pf=/usr/sap/hostctrl/exe/host_profile -R -T dev_lvminfo -u SYSTEM -p hook -r
-  * 解決方法  
+  * 解決方案  
     測試 sapacext 是否可以 `<hanasid`>adm 身分執行
 
 * 未在儲存體步驟中啟用完整複製時發生錯誤
   * 報告路徑 IStorageCopyData.storageVolumeCopyList:1 和欄位 targetStorageSystemId 的內容屬性訊息時發生錯誤
-  * 解決方法  
+  * 解決方案  
     忽略步驟中的警告並再試一次。 此問題將會在 SAP LaMa 的新支援套件/修補程式中修正。
 
 ### <a name="errors-and-warnings-during-relocate"></a>重新配置期間的錯誤和警告
 
 * nfs reexports 不允許使用路徑 '/usr/sap/AH1'。
   * 如需詳細資料，請查看 SAP 附註 [2628497]。
-  * 解決方法  
+  * 解決方案  
     將 ASCS 匯出新增至 ASCS HostAgent 設定檔。 請參閱 SAP 附註 [2628497]
 
 * 重新配置 ASCS 時未實作函式
   * 命令輸出：exportfs: host:/usr/sap/AX1：未實作函式
-  * 解決方法  
+  * 解決方案  
     確定 NFS 伺服器服務已在重新放置目標虛擬機器上啟用
 
 ### <a name="errors-and-warnings-during-application-server-installation"></a>應用程式伺服器安裝期間的錯誤和警告
 
 * 執行 SAPinst 步驟時發生錯誤：getProfileDir
-  * 錯誤：(此步驟所回報的最後一個錯誤：在模型呼叫中攔截到 ESAPinstException：步驟 '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_readProfileDir|ind|ind|ind|ind|readProfile|0|getProfileDir' 的驗證程式回報了一項錯誤：節點 \\\as1-ascs\sapmnt\AS1\SYS\profile 不存在。 以互動模式啟動 SAPinst 來解決此問題)
-  * 解決方法  
+  * 錯誤：(最後一個步驟所回報的錯誤：在模型呼叫中攔截到 ESAPinstException：步驟 '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_readProfileDir|ind|ind|ind|ind|readProfile|0|getProfileDir' 的驗證程式回報了一項錯誤：節點 \\\as1-ascs\sapmnt\AS1\SYS\profile 不存在。 以互動模式啟動 SAPinst 來解決此問題)
+  * 解決方案  
     確定 SWPM 是以具有設定檔存取權的使用者執行。 在應用程式伺服器安裝精靈中可以設定此使用者
 
 * 執行 SAPinst 步驟時發生錯誤：askUnicode
-  * 錯誤：(此步驟所回報的最後一個錯誤：在模型呼叫中攔截到 ESAPinstException：步驟 '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_getUnicode|ind|ind|ind|ind|unicode|0|askUnicode' 的驗證程式回報了一項錯誤：以互動模式啟動 SAPinst 來解決此問題)
-  * 解決方法  
+  * 錯誤：(最後一個步驟所回報的錯誤：在模型呼叫中攔截到 ESAPinstException：步驟 '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_getUnicode|ind|ind|ind|ind|unicode|0|askUnicode' 的驗證程式回報了一項錯誤：以互動模式啟動 SAPinst 以解決此問題)
+  * 解決方案  
     如果您使用最新的 SAP 核心，SWPM 便無法再使用 ASCS 的郵件伺服器來判斷系統是否為 unicode 系統。 如需詳細資訊，請參閱 SAP 附註 [2445033]。  
     此問題將會在 SAP LaMa 的新支援套件/修補程式中修正。  
     在 SAP 系統的預設設定檔中設定設定檔參數 OS_UNICODE=uc，以解決此問題。
 
 * 執行 SAPinst 步驟時發生錯誤：dCheckGivenServer
-  * 執行 SAPinst 步驟時發生錯誤：dCheckGivenServer" version="1.0" 錯誤：(此步驟所回報的最後一個錯誤：\<p> 使用者已取消安裝。 \</p>
-  * 解決方法  
+  * 執行 SAPinst 步驟時發生錯誤： dCheckGivenServer "version =" 1.0 "錯誤：（此步驟所回報的最後一個錯誤： \<p> 使用者已取消安裝。 \</p>
+  * 解決方案  
     確定 SWPM 是以具有設定檔存取權的使用者執行。 在應用程式伺服器安裝精靈中可以設定此使用者
 
 * 執行 SAPinst 步驟時發生錯誤：checkClient
-  * 執行 SAPinst 步驟時發生錯誤：checkClient" version="1.0" 錯誤：(此步驟所回報的最後一個錯誤：\<p> 使用者已取消安裝。 \</p>)
-  * 解決方法  
+  * 執行 SAPinst 步驟時發生錯誤： checkClient "version =" 1.0 "錯誤：（此步驟所回報的最後一個錯誤： \<p> 使用者已取消安裝。 \</p>)
+  * 解決方案  
     確定您要安裝應用程式伺服器的虛擬機器上已安裝 Microsoft ODBC Driver for SQL Server
 
 * 執行 SAPinst 步驟時發生錯誤：copyScripts
   * 此步驟所回報的最後一個錯誤：系統呼叫失敗。 詳細資料：在使用參數 (\\\as1-ascs/sapmnt/AS1/SYS/exe/uc/NTAMD64/strdbs.cmd, w) 執行系統呼叫 'fopenU' 時，檔案 (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/filesystem/syxxcfstrm2.cpp) 的行 (494) 發生錯誤 13 (0x0000000d) (權限被拒)，堆疊追蹤：  
-  CThrThread.cpp:85:CThrThread::threadFunction()  
-  CSiServiceSet.cpp:63:CSiServiceSet::executeService()  
-  CSiStepExecute.cpp:913:CSiStepExecute::execute()  
-  EJSController.cpp:179:EJSControllerImpl::executeScript()  
-  JSExtension.hpp:1136:CallFunctionBase::call()  
-  iaxxcfile.cpp:183: iastring CIaOsFileConnect::callMemberFunction(iastring const& name, args_t const& args)  
-  iaxxcfile.cpp:1849: iastring CIaOsFileConnect::newFileStream(args_t const& _args)  
-  iaxxbfile.cpp:773:CIaOsFile::newFileStream_impl(4)  
-  syxxcfile.cpp:233:CSyFileImpl::openStream(ISyFile::eFileOpenMode)  
-  syxxcfstrm.cpp:29:CSyFileStreamImpl::CSyFileStreamImpl(CSyFileStream*,iastring,ISyFile::eFileOpenMode)  
-  syxxcfstrm.cpp:265:CSyFileStreamImpl::open()  
-  syxxcfstrm2.cpp:58:CSyFileStream2Impl::CSyFileStream2Impl(const CSyPath & \\\aw1-ascs/sapmnt/AW1/SYS/exe/uc/NTAMD64/strdbs.cmd, 0x4)  
-  syxxcfstrm2.cpp:456:CSyFileStream2Impl::open()
-  * 解決方法  
+  CThrThread.cpp: 85: CThrThread::threadFunction()  
+  CSiServiceSet.cpp: 63: CSiServiceSet::executeService()  
+  CSiStepExecute.cpp: 913: CSiStepExecute::execute()  
+  EJSController.cpp: 179: EJSControllerImpl::executeScript()  
+  JSExtension.hpp: 1136: CallFunctionBase::call()  
+  iaxxcfile.cpp: 183: iastring CIaOsFileConnect::callMemberFunction(iastring const& name, args_t const& args)  
+  iaxxcfile.cpp: 1849: iastring CIaOsFileConnect::newFileStream(args_t const& _args)  
+  iaxxbfile.cpp: 773: CIaOsFile::newFileStream_impl(4)  
+  syxxcfile.cpp: 233: CSyFileImpl::openStream(ISyFile::eFileOpenMode)  
+  syxxcfstrm.cpp: 29: CSyFileStreamImpl::CSyFileStreamImpl(CSyFileStream*,iastring,ISyFile::eFileOpenMode)  
+  syxxcfstrm.cpp: 265: CSyFileStreamImpl::open()  
+  syxxcfstrm2.cpp: 58: CSyFileStream2Impl::CSyFileStream2Impl(const CSyPath & \\\aw1-ascs/sapmnt/AW1/SYS/exe/uc/NTAMD64/strdbs.cmd, 0x4)  
+  syxxcfstrm2.cpp: 456: CSyFileStream2Impl::open()
+  * 解決方案  
     確定 SWPM 是以具有設定檔存取權的使用者執行。 在應用程式伺服器安裝精靈中可以設定此使用者
 
 * 執行 SAPinst 步驟時發生錯誤：askPasswords
   * 此步驟所回報的最後一個錯誤：系統呼叫失敗。 詳細資料：在使用參數 (...) 執行系統呼叫 'NetValidatePasswordPolicy' 時，檔案 (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/account/synxcaccmg.cpp) 的一行 (359) 發生錯誤 5 (0x00000005) (存取遭拒)，堆疊追蹤：  
-  CThrThread.cpp:85:CThrThread::threadFunction()  
-  CSiServiceSet.cpp:63:CSiServiceSet::executeService()  
-  CSiStepExecute.cpp:913:CSiStepExecute::execute()  
-  EJSController.cpp:179:EJSControllerImpl::executeScript()  
-  JSExtension.hpp:1136:CallFunctionBase::call()  
-  CSiStepExecute.cpp:764:CSiStepExecute::invokeDialog()  
-  DarkModeGuiEngine.cpp:56:DarkModeGuiEngine::showDialogCalledByJs()  
-  DarkModeDialog.cpp:85:DarkModeDialog::submit()  
-  EJSController.cpp:179:EJSControllerImpl::executeScript()  
-  JSExtension.hpp:1136:CallFunctionBase::call()  
-  iaxxcaccount.cpp:107: iastring CIaOsAccountConnect::callMemberFunction(iastring const& name, args_t const& args)  
-  iaxxcaccount.cpp:1186: iastring CIaOsAccountConnect::validatePasswordPolicy(args_t const& _args)  
-  iaxxbaccount.cpp:430:CIaOsAccount::validatePasswordPolicy_impl()  
-  synxcaccmg.cpp:297:ISyAccountMgt::PasswordValidationMessage CSyAccountMgtImpl::validatePasswordPolicy(saponazure,*****) const )
-  * 解決方法  
+  CThrThread.cpp: 85: CThrThread::threadFunction()  
+  CSiServiceSet.cpp: 63: CSiServiceSet::executeService()  
+  CSiStepExecute.cpp: 913: CSiStepExecute::execute()  
+  EJSController.cpp: 179: EJSControllerImpl::executeScript()  
+  JSExtension.hpp: 1136: CallFunctionBase::call()  
+  CSiStepExecute.cpp: 764: CSiStepExecute::invokeDialog()  
+  DarkModeGuiEngine.cpp: 56: DarkModeGuiEngine::showDialogCalledByJs()  
+  DarkModeDialog.cpp: 85: DarkModeDialog::submit()  
+  EJSController.cpp: 179: EJSControllerImpl::executeScript()  
+  JSExtension.hpp: 1136: CallFunctionBase::call()  
+  iaxxcaccount.cpp: 107: iastring CIaOsAccountConnect::callMemberFunction(iastring const& name, args_t const& args)  
+  iaxxcaccount.cpp: 1186: iastring CIaOsAccountConnect::validatePasswordPolicy(args_t const& _args)  
+  iaxxbaccount.cpp: 430: CIaOsAccount::validatePasswordPolicy_impl()  
+  synxcaccmg.cpp: 297: ISyAccountMgt::PasswordValidationMessage CSyAccountMgtImpl::validatePasswordPolicy(saponazure,*****) const )
+  * 解決方案  
     務必在步驟 *Isolation* 中新增主機規則，以允許從 VM 至網域控制站的通訊
 
 ## <a name="next-steps"></a>後續步驟
-* [Azure 上的 SAP Hana 作業指南][hana-ops-guide]
+* [Azure 上的 SAP HANA 作業指南][hana-ops-guide]
 * [適用於 SAP 的 Azure 虛擬機器規劃和實作][planning-guide]
 * [適用於 SAP 的 Azure 虛擬機器部署][deployment-guide]
 * [適用於 SAP 的 Azure 虛擬機器 DBMS 部署][dbms-guide]

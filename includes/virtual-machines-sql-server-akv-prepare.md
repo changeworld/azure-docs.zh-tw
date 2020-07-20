@@ -13,17 +13,17 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 01020a23b102c896bbeb3d8cf455afabfc164917
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 66a3ecd82ab61f25c99fd1268d9ce7567b057d66
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58505753"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050357"
 ---
 ## <a name="prepare-for-akv-integration"></a>準備進行 AKV 整合
 若要使用 Azure 金鑰保存庫整合以設定 SQL Server VM，有幾項必要條件： 
 
-1. [安裝 Azure PowerShell](#install)
+1. [安裝 Azure Powershell](#install)
 2. [建立 Azure Active Directory](#register)
 3. [建立金鑰保存庫](#createkeyvault)
 
@@ -31,16 +31,16 @@ ms.locfileid: "58505753"
 
 [!INCLUDE [updated-for-az](./updated-for-az.md)]
 
-### <a id="install"></a> 安裝 Azure PowerShell
-確定您已安裝最新版本的 Azure PowerShell SDK。 如需詳細資訊，請參閱 [如何安裝及設定 Azure PowerShell](/powershell/azure/install-az-ps)。
+### <a name="install-azure-powershell"></a><a id="install"></a>安裝 Azure PowerShell
+請確定您已安裝最新的 Azure PowerShell 模組。 如需詳細資訊，請參閱[如何安裝和設定 Azure PowerShell](/powershell/azure/install-az-ps)。
 
-### <a id="register"></a> 在 Azure Active Directory 中註冊應用程式
+### <a name="register-an-application-in-your-azure-active-directory"></a><a id="register"></a>在您的 Azure Active Directory 中註冊應用程式
 
 首先，您必須在您的訂用帳戶中具有 [Azure Active Directory](https://azure.microsoft.com/trial/get-started-active-directory/) (AAD)。 在許多優點中，這可讓您將金鑰保存庫的權限授與特定使用者和應用程式。
 
-接下來，向 AAD 註冊應用程式。 如此將會提供您服務主體帳戶，可存取您 VM 需要的金鑰保存庫。 在 Azure 金鑰保存庫文章中，您可以找到這些步驟[註冊應用程式與 Azure Active Directory](../articles/key-vault/key-vault-manage-with-cli2.md#registering-an-application-with-azure-active-directory)區段中，或者您可以看到和螢幕擷取畫面中的步驟，**取得應用程式一節中的身分識別**的[此部落格文章](http://blogs.technet.com/b/kv/archive/2015/01/09/azure-key-vault-step-by-step.aspx)。 完成這些步驟之前，您需要收集此註冊期間的下列資訊，稍後當您在 SQL VM 上啟用 Azure 金鑰保存庫整合時需要該資訊。
+接下來，向 AAD 註冊應用程式。 如此將會提供您服務主體帳戶，可存取您 VM 需要的金鑰保存庫。 在 Azure Key Vault 篇文章中，您可以在[使用 Azure Active Directory 註冊應用程式](../articles/key-vault/key-vault-manage-with-cli2.md#registering-an-application-with-azure-active-directory)一節中找到這些步驟，或者您可以在[此 Blog 文章](https://blogs.technet.com/b/kv/archive/2015/01/09/azure-key-vault-step-by-step.aspx)的**取得應用程式的身分識別一節**中，看到具有螢幕擷取畫面的步驟。 完成這些步驟之前，您需要收集此註冊期間的下列資訊，稍後當您在 SQL VM 上啟用 Azure 金鑰保存庫整合時需要該資訊。
 
-* 新增應用程式後，請在 [註冊應用程式] 刀鋒視窗中找出**應用程式識別碼**。
+* 新增應用程式之後，在 [**註冊的應用**程式] 分頁上尋找**應用程式識別碼**（也稱為 AAD ClientID 或 AppID）。
     應用程式識別碼稍後會指派給 PowerShell 指令碼中的 **$spName** (服務主體名稱) 參數，以啟用 Azure Key Vault 整合。
 
    ![應用程式識別碼](./media/virtual-machines-sql-server-akv-prepare/aad-application-id.png)
@@ -51,12 +51,14 @@ ms.locfileid: "58505753"
 
 * 應用程式識別碼和秘密也將用來在 SQL Server 中建立認證。
 
-* 您必須授權讓這個新的用戶端識別碼擁有下列存取權限：**取得**、**包裝金鑰**、**解除包裝金鑰**。 做法是使用 [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) \(英文\) Cmdlet。 如需詳細資訊，請參閱 [Azure Key Vault 概觀](../articles/key-vault/key-vault-overview.md)。
+* 您必須授權這個新的應用程式識別碼（或用戶端識別碼）具有下列存取權限： **get**、 **wrapKey**、 **unwrapKey**。 做法是使用 [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) \(英文\) Cmdlet。 如需詳細資訊，請參閱 [Azure Key Vault 概觀](../articles/key-vault/key-vault-overview.md)。
 
-### <a id="createkeyvault"></a> 建立金鑰保存庫
+### <a name="create-a-key-vault"></a><a id="createkeyvault"></a>建立金鑰保存庫
 若要使用 Azure 金鑰保存庫來儲存您在 VM 中用於加密的金鑰，您需要金鑰保存庫的存取權。 如果您尚未設定您的金鑰保存庫，請依照[開始使用 Azure 金鑰保存庫](../articles/key-vault/key-vault-overview.md)一文中的步驟建立一個金鑰保存庫。 完成這些步驟之前，有一些資訊您需要在此安裝期間收集，稍後當您在 SQL VM 上啟用 Azure 金鑰保存庫整合時需要該資訊。
 
-    New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
+```azurepowershell
+New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
+```
 
 當您進行「建立」金鑰保存庫步驟時，請注意傳回的 **vaultUri** 屬性，它是金鑰保存庫 URL。 在該步驟提供的範例中 (如下所示)，金鑰保存庫名稱是 ContosoKeyVault，因此金鑰保存庫 URL 會是 https://contosokeyvault.vault.azure.net/。
 

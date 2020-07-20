@@ -1,24 +1,13 @@
 ---
 title: 使用 Azure Application Insights 進行使用量分析 | Microsoft Docs
 description: 了解您的使用者，以及他們如何運用您的應用程式。
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/10/2017
-ms.pm_owner: daviste;NumberByColors
-ms.reviewer: mbullwin
-ms.author: daviste
-ms.openlocfilehash: f2539d5250ff436a720fe10f748f40db29b0ee25
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 03/25/2019
+ms.openlocfilehash: 7f4f46f183291684fa59e5aa35b65c8ac3352563
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60783405"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797783"
 ---
 # <a name="usage-analysis-with-application-insights"></a>使用 Application Insights 進行使用量分析
 
@@ -33,19 +22,18 @@ Web 或行動應用程式的哪些功能最受歡迎？ 您的使用者是否利
     * *不想安裝伺服器程式碼嗎？請直接[建立 Azure Application Insights 資源](../../azure-monitor/app/create-new-resource.md )。*
 
 2. **網頁程式碼：** 將下列指令碼新增至網頁的右 ``</head>`` 之前。 使用 Application Insights 資源的適當值來取代檢測金鑰：
-
-   ```javascript
-      <script type="text/javascript">
-        var appInsights=window.appInsights||function(a){
-            function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
-        }({
-            instrumentationKey: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
-        });
-        
-        window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
+    
+    ```html
+    <script type="text/javascript">
+    var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
+    {
+      instrumentationKey:"INSTRUMENTATION_KEY"
+    }
+    );window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
     </script>
     ```
-    若要深入了解用於監視網站的進階組態，請參閱 [JavaScript SDK API 參考](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)。
+
+    若要深入了解用於監視網站的進階組態，請參閱 [JavaScript SDK 參考](https://docs.microsoft.com/azure/azure-monitor/app/javascript) \(部分機器翻譯\) 一文。
 
 3. **行動應用程式程式碼：** 使用 App Center SDK 從應用程式收集事件，然後將這些事件的複本傳送至 Application Insights，[按照此指南](../../azure-monitor/learn/mobile-center-quickstart.md)的指示進行分析。
 
@@ -132,18 +120,22 @@ Web 或行動應用程式的哪些功能最受歡迎？ 您的使用者是否利
 
 在 Application Insights 入口網站中，將資料依屬性值篩選並分割，以便比較不同版本。
 
-若要這樣做，[請設定遙測初始設定式](../../azure-monitor/app/api-filtering-sampling.md##add-properties-itelemetryinitializer)：
+若要這樣做，[請設定遙測初始設定式](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)：
+
+**ASP.NET 應用程式**
 
 ```csharp
-
-
     // Telemetry initializer class
     public class MyTelemetryInitializer : ITelemetryInitializer
     {
-        public void Initialize (ITelemetry telemetry)
-        {
-            telemetry.Properties["AppVersion"] = "v2.1";
-        }
+        public void Initialize(ITelemetry item)
+            {
+                var itemProperties = item as ISupportProperties;
+                if (itemProperties != null && !itemProperties.Properties.ContainsKey("AppVersion"))
+                {
+                    itemProperties.Properties["AppVersion"] = "v2.1";
+                }
+            }
     }
 ```
 
@@ -155,8 +147,24 @@ Web 或行動應用程式的哪些功能最受歡迎？ 您的使用者是否利
     {
         // ...
         TelemetryConfiguration.Active.TelemetryInitializers
-        .Add(new MyTelemetryInitializer());
+         .Add(new MyTelemetryInitializer());
     }
+```
+
+**ASP.NET Core 應用程式**
+
+> [!NOTE]
+> 使用 `ApplicationInsights.config` 或使用 `TelemetryConfiguration.Active` 新增初始設定式不適用於 ASP.NET Core 應用程式。 
+
+針對 [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) 應用程式，加入新的 `TelemetryInitializer` 是藉由將其新增至相依性插入容器來完成，如下所示。 這會在 `Startup.cs` 類別的 `ConfigureServices` 方法中完成。
+
+```csharp
+ using Microsoft.ApplicationInsights.Extensibility;
+ using CustomInitializer.Telemetry;
+ public void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
+}
 ```
 
 所有新的 TelemetryClients 都會自動新增您指定的屬性值。 個別的遙測事件可以覆寫預設值。
@@ -166,5 +174,5 @@ Web 或行動應用程式的哪些功能最受歡迎？ 您的使用者是否利
    - [漏斗圖](usage-funnels.md)
    - [保留](usage-retention.md)
    - [使用者流程](usage-flows.md)
-   - [活頁簿](../../azure-monitor/app/usage-workbooks.md)
+   - [活頁簿](../../azure-monitor/platform/workbooks-overview.md)
    - [新增使用者內容](usage-send-user-context.md)

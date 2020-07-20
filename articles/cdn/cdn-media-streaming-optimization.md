@@ -3,23 +3,23 @@ title: 使用 Azure CDN 的媒體串流最佳化
 description: 將串流媒體檔案最佳化以便傳遞順暢
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/01/2018
-ms.author: magattus
-ms.openlocfilehash: 9802296170f07bb8599058e230798f647e900d4d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: edc2198cff360b6f0d2f6ace3b76d35bf77fab97
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60636220"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206702"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>使用 Azure CDN 的媒體串流最佳化 
  
@@ -67,27 +67,26 @@ ms.locfileid: "60636220"
  
 您可以設定您的內容傳遞網路 (CDN) 端點，以最佳化透過 Azure 入口網站傳遞大型檔案。 使用 REST API 或任何用戶端 SDK 也都能達到相同目的。 下列步驟示範 **Azure CDN Standard from Akamai** 設定檔透過 Azure 入口網站執行的程序：
 
-1. 若要新增端點，請在 Akamai 的 [CDN 設定檔] 頁面上選取 [端點]。
+1. 若要新增端點，請在 Akamai 的 [CDN 設定檔]**** 頁面上選取 [端點]****。
   
     ![新增端點](./media/cdn-media-streaming-optimization/cdn-new-akamai-endpoint.png)
 
-2. 在 [最佳化對象] 下拉式清單中，為點播視訊資產選取 [點播視訊媒體串流]。 如果您結合即時和點播視訊串流處理，請選取 [General media streaming] \(一般媒體串流處理)。
+2. 在 [最佳化對象]**** 下拉式清單中，為點播視訊資產選取 [點播視訊媒體串流]****。 如果您結合即時和點播視訊串流處理，請選取 [General media streaming] \(一般媒體串流處理)****。
 
     ![選取的串流](./media/cdn-media-streaming-optimization/02_Creating.png) 
  
 建立端點後，最佳化就會套用到符合特定準則的所有檔案。 下一節會說明此程序。 
 
-### <a name="caching"></a>快取
+### <a name="caching"></a>Caching
 
-如果 **Azure CDN Standard from Akamai** 偵測到資產是串流資訊清單或片段，它會使用與一般 Web 傳遞不同的快取到期時間。 (請參閱下表中的完整清單。)如往常一樣接受從來源傳送的 cache-control 或 Expires 標頭。 如果資產不是媒體資產，就會使用一般 Web 傳遞的逾期時間快取。
+如果 **Azure CDN Standard from Akamai** 偵測到資產是串流資訊清單或片段，它會使用與一般 Web 傳遞不同的快取到期時間。  (查看下表中的完整清單。 ) 一律會接受從來源傳送的快取控制或過期標頭。 如果資產不是媒體資產，就會使用一般 Web 傳遞的逾期時間快取。
 
 當許多使用者要求還不存在的片段時，短的負快取時間對來源卸載就很有用。 例如該秒無法從原始伺服器取得封包的即時串流。 較長的快取間隔也有助於卸載原始伺服器的要求，因為通常不會修改影片內容。
- 
 
-|   | 一般 Web 傳遞 | 一般媒體串流處理 | 點播視訊媒體串流處理  
---- | --- | --- | ---
-Caching：Positive <br> HTTP 200、203、300、 <br> 301、302 和 410 | 7 天 |365 天 | 365 天   
-Caching：Neutral <br> HTTP 204、305、404 <br> 和 405 | None | 1 秒 | 1 秒
+| Caching  | 一般 Web 傳遞 | 一般媒體串流處理 | 點播視訊媒體串流處理  
+|--- | --- | --- | ---
+| 快取：正向 <br> HTTP 200、203、300、 <br> 301、302 和 410 | 7 天 |365 天 | 365 天   
+| 快取：負向 <br> HTTP 204、305、404 <br> 和 405 | 無 | 1 秒 | 1 秒
  
 ### <a name="deal-with-origin-failure"></a>處理原始伺服器失敗  
 

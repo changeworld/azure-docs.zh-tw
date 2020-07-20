@@ -1,22 +1,18 @@
 ---
 title: Azure 防火牆範例
-description: Azure 防火牆 PowerShell 範例
+description: 本文包含建立 Azure 防火牆 Azure PowerShell 腳本範例的連結。
 services: firewall
 author: vhorne
-manager: jpconnock
-editor: tysonn
-tags: azure-resource-manager
 ms.service: firewall
 ms.topic: article
-ms.date: 7/11/2018
+ms.date: 11/19/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 3dd751c5dd4edbc2c132859f142ef927e63298bc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 5e4fab3d632bca6eb62f1233f681a3611d7ccddf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60192960"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74168716"
 ---
 # <a name="azure-firewall-powershell-samples"></a>Azure 防火牆 PowerShell 範例
 

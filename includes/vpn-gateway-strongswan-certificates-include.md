@@ -2,45 +2,19 @@
 title: 包含檔案
 description: 包含檔案
 services: vpn-gateway
-author: WenJason
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-origin.date: 01/16/2019
-ms.date: 03/04/2019
-ms.author: v-jay
+ms.date: 09/12/2019
+ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c6f9065786879749eee6187e93283f4c026b7fff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1c2525b352c25f470814ce909a8d10ff821d9e32
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60766163"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "70961606"
 ---
-後續步驟使用下列電腦組態：
-
-  | | |
-  |---|---|
-  |Computer| Ubuntu Server 16.04<br>ID_LIKE=debian<br>PRETTY_NAME="Ubuntu 16.04.4 LTS"<br>VERSION_ID="16.04" |
-  |相依性| strongSwan |
-
-#### <a name="1-install-strongswan"></a>1.安裝 strongSwan
-
-使用下列命令來安裝所需的 strongSwan 組態：
-
-```
-apt-get install strongswan-ikev2 strongswan-plugin-eap-tls
-```
-
-```
-apt-get install libstrongswan-standard-plugins
-```
-
-```
-apt-get install strongswan-pki
-```
-
-#### <a name="2-generate-keys-and-certificate"></a>2.產生金鑰和憑證
-
 產生 CA 憑證。
 
   ```
@@ -48,7 +22,7 @@ apt-get install strongswan-pki
   ipsec pki --self --in caKey.pem --dn "CN=VPN CA" --ca --outform pem > caCert.pem
   ```
 
-列印 base64 格式的 CA 憑證。 這是 Azure 支援的格式。 您會稍後會將其上傳至 Azure 作為您 P2S 組態的一部分。
+列印 base64 格式的 CA 憑證。 這是 Azure 支援的格式。 您會在[P2S 設定步驟](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)中，將此憑證上傳至 Azure。
 
   ```
   openssl x509 -in caCert.pem -outform der | base64 -w0 ; echo

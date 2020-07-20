@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: damaerte
 ms.openlocfilehash: 2834bc7d9456c1177bdd2c235b8211a1edde6e42
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60199409"
 ---
-# <a name="pricing"></a>價格
+# <a name="pricing"></a>定價
 Cloud Shell 中的 Bash 和 Cloud Shell 中的 PowerShell 皆以下列資訊為準。
 
 ## <a name="compute-cost"></a>計算成本

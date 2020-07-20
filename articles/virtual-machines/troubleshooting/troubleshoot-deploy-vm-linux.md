@@ -1,26 +1,25 @@
 ---
 title: 針對 Azure 中的 Linux 虛擬機器部署問題進行疑難排解 | Microsoft Docs
-description: 在 Azure Resource Manager 部署模型中的部署 Linux 虛擬機器問題進行疑難排解。
+description: 針對 Azure Resource Manager 部署模型中的 Linux 虛擬機器部署問題進行疑難排解。
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 4e383427-4aff-4bf3-a0f4-dbff5c6f0c81
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 1317a4731d3598c5fba317167ba4a45d95823ca2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cf8fb383625ec2752264d6e5a70d8625f06689fc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60593289"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82628294"
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>針對 Azure 中的 Linux 虛擬機器部署問題進行疑難排解
 
@@ -28,20 +27,28 @@ ms.locfileid: "60593289"
 
 如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。
 
-## <a name="top-issues"></a>常见问题
+## <a name="top-issues"></a>常見問題
 [!INCLUDE [virtual-machines-linux-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-linux-troubleshoot-deploy-vm-top.md)]
 
 ## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>叢集無法支援要求的 VM 大小
-\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
+\<properties
+supportTopicIds="123456789"
+resourceTags="windows"
+productPesIds="1234, 5678"
+/>
 - 以較小的 VM 大小重試要求。
 - 如果無法變更要求的 VM 的大小︰
-    - 停止可用性設定組中的所有 VM。 按一下 [資源群組] > 您的資源群組 > [資源] > 您的可用性設定組 > [虛擬機器] > 您的虛擬機器 > [停止]。
+    - 停止可用性設定組中的所有 VM。 按一下 [資源群組]**** > 您的資源群組 > [資源]**** > 您的可用性設定組 > [虛擬機器]**** > 您的虛擬機器 > [停止]****。
     - 在所有 VM 都停止後，建立所需大小的 VM。
     - 先啟動新的 VM，然後選取每個已停止的 VM 並按一下 [啟動]。
 
 
 ## <a name="the-cluster-does-not-have-free-resources"></a>叢集沒有可用的資源
-\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
+\<properties
+supportTopicIds="123456789"
+resourceTags="windows"
+productPesIds="1234, 5678"
+/>
 - 稍後再重試要求。
 - 如果新的 VM 可以屬於不同的可用性設定組
     - 在不同的可用性設定組 (位於相同區域) 中建立 VM。
@@ -57,13 +64,13 @@ ms.locfileid: "60593289"
 
 ## <a name="my-drivers-are-missing-for-my-linux-n-series-vm"></a>我的 Linux N 系列 VM 遺失驅動程式
 
-Linux 型 VM 的驅動程式位於[這裡](../linux/n-series-driver-setup.md)。 
+安裝 Linux 型 Vm 驅動程式的指示位於[這裡](../sizes-gpu.md#supported-operating-systems-and-drivers)。
 
 ## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>在我的 N 系列 VM 內找不到 GPU 執行個體
 
-若要利用 Azure N 系列 VM (執行 Windows Server 2016 或 Windows Server 2012 R2) 的 GPU 功能，您必須在部署之後於每個 VM 上安裝 NVIDIA 圖形驅動程式。 您可以取得 [Windows VM](../windows/n-series-driver-setup.md) 和 [Linux VM](../linux/n-series-driver-setup.md) 的驅動程式設定資訊。
+若要利用 Azure N 系列 Vm 的 GPU 功能，您必須在部署之後于每個 VM 上安裝圖形驅動程式。 您可以[在這裡](../sizes-gpu.md#supported-operating-systems-and-drivers)取得驅動程式設定資訊。
 
-## <a name="is-n-series-vms-available-in-my-region"></a>我的區域是否有提供 N 系列 VM？
+## <a name="are-n-series-vms-available-in-my-region"></a>我的區域中是否有 N 系列 Vm 可用？
 
 您可以從[依區域提供的產品表](https://azure.microsoft.com/regions/services)查看是否有提供該產品，以及從[這裡](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series)查看定價。
 
@@ -83,10 +90,11 @@ Linux 型 VM 的驅動程式位於[這裡](../linux/n-series-driver-setup.md)。
 
 您可以在[經 Azure 背書的散發套件](../linux/endorsed-distros.md)上找到 Linux 的清單。
 
-## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>能否将现有经典 VM 添加到可用性集？
+## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>我是否可以將現有的傳統 VM 新增到可用性設定組？
 
 是。 您可以將現有的傳統 VM 新增到新的或現有的「可用性設定組」。 如需詳細資訊，請參閱[將現有的虛擬機器新增至可用性設定組](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine)。
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 ## <a name="next-steps"></a>後續步驟
 如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。

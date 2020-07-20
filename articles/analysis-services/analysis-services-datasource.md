@@ -1,109 +1,113 @@
 ---
 title: Azure Analysis Services 中支援的資料來源 | Microsoft Docs
-description: 說明 Azure Analysis Services 中資料模型支援的資料來源。
+description: 描述 Azure Analysis Services 中表格式 1200 和更高資料模型支援的資料來源和連接器。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2505ab5a9445256bd592dfa7f58a6dea79d25043
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: dc25c853a37de5c310d37e7ee64c6f762283cb0a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65506824"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077434"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支援的資料來源
 
-在 Visual Studio 「取得資料」或「匯入精靈」中顯示的資料來源和連接器，也會在 Azure Analysis Services 和 SQL Server Analysis Services 中顯示。 不過，這不表示 Azure Analysis Services 支援所有顯示的資料來源和連接器。 您可以連線的資料來源類型取決於多個因素，例如模型相容性層級、可用的資料連接器、驗證類型、提供者，以及內部部署資料閘道支援。 
+在 Visual Studio [取得資料精靈] 或 [資料表匯入精靈] 中顯示的 Analysis Services 專案資料來源和連接器，也會在 Azure Analysis Services 和 SQL Server Analysis Services 中顯示。 不過，這不表示 Azure Analysis Services 支援所有顯示的資料來源和連接器。 您可連接的資料來源類型取決於多個因素，例如模型相容性層級、可用的資料連接器、驗證類型，以及內部部署資料閘道支援。 下表描述 Azure Analysis Services 支援的資料來源。
 
 ## <a name="azure-data-sources"></a>Azure 資料來源
 
-|資料來源  |記憶體內  |DirectQuery  |
-|---------|---------|---------|
-|Azure SQL Database<sup>[2](#azsqlmanaged)</sup>     |   有      |    有      |
-|Azure SQL 資料倉儲     |   有      |   有       |
-|Azure Blob 儲存體<sup>[1](#tab1400a)</sup>     |   有       |    無      |
-|Azure 資料表儲存體<sup>[1](#tab1400a)</sup>    |   有       |    無      |
-|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  有        |  無        |
-|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup>[4](#gen2)</sup>      |   有       |    無      |
-|Azure HDInsight HDFS<sup>[1](#tab1400a)</sup>     |     有     |   無       |
-|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>、<sup>[3](#databricks)</sup>     |   有       |   無       |
+|資料來源  |記憶體內  |DirectQuery  |注意 |
+|---------|---------|---------|---------|
+|Azure SQL Database      |   是      |    是      |<sup>[2](#azprovider)</sup>、<sup>[3](#azsqlmanaged)</sup>|
+|Azure Synapse Analytics (SQL DW)      |   是      |   是       |<sup>[2](#azprovider)</sup>|
+|Azure Blob 儲存體      |   是       |    否      | <sup>[1](#tab1400a)</sup> |
+|Azure 表格儲存體     |   是       |    否      | <sup>[1](#tab1400a)</sup>|
+|Azure Cosmos DB     |  是        |  否        |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Store Gen1      |   是       |    否      |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Store Gen2       |   是       |    否      |<sup>[1](#tab1400a)</sup>、<sup>[5](#gen2)</sup>|
+|Azure HDInsight HDFS    |     是     |   否       |<sup>[1](#tab1400a)</sup> |
+|Azure HDInsight Spark     |   是       |   否       |<sup>[1](#tab1400a)</sup>、<sup>[4](#databricks)</sup>|
 ||||
 
-<a name="tab1400a">1</a> - 僅限 Tabular 1400 和更高模型。   
-<a name="azsqlmanaged">2</a> - 支援 Azure SQL Database 受控執行個體。 因為受控執行個體在具有私人 IP 位址的 Azure VNet 中執行，所以需要內部部署資料閘道。   
-<a name="databricks">3</a> - 目前不支援使用 Spark 連接器的 Azure Databricks。   
-<a name="gen2">4</a> - 目前不支援 ADLS Gen2。
+**注意：**
 
+<a name="tab1400a">1</a> - 僅限 Tabular 1400 和更高模型。  
+<a name="azprovider">2</a> - 在表格式 1200 和更高模型中指定為「提供者」資料來源時，記憶體內部和 DirectQuery 模型都需要 Microsoft OLE DB Driver for SQL Server MSOLEDBSQL (建議)、SQL Server Native Client 11.0 或 .NET Framework Data Provider for SQL Server。  
+<a name="azsqlmanaged">3</a> -支援 Azure SQL 受控執行個體。 因為 SQL 受控執行個體在具有私人 IP 位址的 Azure VNet 中執行，所以必須在實例上啟用公用端點。 如果未啟用，則需要[內部部署資料閘道](analysis-services-gateway.md)。  
+<a name="databricks">4</a> - 目前不支援使用 Spark 連接器的 Azure Databricks。  
+<a name="gen2">5</a> - 目前不支援 ADLS Gen2 連接器，但 Azure Blob 儲存體連接器可與 ADLS Gen2 資料來源搭配使用。
 
-**提供者**   
-連線至 Azure 資料來源的記憶體內部和 DirectQuery 模型會使用 .NET Framework Data Provider for SQL Server。
+## <a name="other-data-sources"></a>其他資料來源
 
-## <a name="on-premises-data-sources"></a>內部部署資料來源
-
-從 Azure AS 伺服器連線至內部部署資料來源需要內部部署閘道。 使用閘道時，需要 64 位元的提供者。
-
-### <a name="in-memory-and-directquery"></a>記憶體內部和 DirectQuery
-
-|資料來源 | 記憶體內部提供者 | DirectQuery 提供者 |
-|  --- | --- | --- |
-| SQL Server |SQL Server Native Client 11.0、Microsoft OLE DB Provider for SQL Server、.NET Framework Data Provider for SQL Server | .NET Framework Data Provider for SQL Server |
-| SQL Server 資料倉儲 |SQL Server Native Client 11.0、Microsoft OLE DB Provider for SQL Server、.NET Framework Data Provider for SQL Server | .NET Framework Data Provider for SQL Server |
-| Oracle | OLE DB Provider for Oracle，Oracle Data Provider for.NET |Oracle Data Provider for .NET |
-| Teradata |OLE DB Provider for Teradata、Teradata Data Provider for .NET |Teradata Data Provider for .NET |
+|資料來源 | 記憶體內 | DirectQuery |注意   |
+|  --- | --- | --- | --- |
+|Access 資料庫     |  是 | 否 |  |
+|Active Directory     |  是 | 否 | <sup>[6](#tab1400b)</sup>  |
+|Analysis Services     |  是 | 否 |  |
+|分析平台系統     |  是 | 否 |  |
+|CSV 檔案  |是 | 否 |  |
+|Dynamics 365     |  是 | 否 | <sup>[6](#tab1400b)</sup> |
+|Excel 活頁簿     |  是 | 否 |  |
+|Exchange      |  是 | 否 | <sup>[6](#tab1400b)</sup> |
+|資料夾      |是 | 否 | <sup>[6](#tab1400b)</sup> |
+|IBM Informix  |是 | 否 |  |
+|JSON 文件      |  是 | 否 | <sup>[6](#tab1400b)</sup> |
+|二進位檔中的程式行      | 是 | 否 | <sup>[6](#tab1400b)</sup> |
+|MySQL Database     | 是 | 否 |  |
+|OData 摘要      |  是 | 否 | <sup>[6](#tab1400b)</sup> |
+|ODBC 查詢     | 是 | 否 |  |
+|OLE DB     |   是 | 否 |  |
+|Oracle  | 是  |是  | <sup>[9](#oracle)</sup> |
+|PostgreSQL 資料庫   | 是 | 否 | <sup>[6](#tab1400b)</sup> |
+|Salesforce 物件|  是 | 否 | <sup>[6](#tab1400b)</sup> |
+|Salesforce 報表 |是 | 否 | <sup>[6](#tab1400b)</sup> |
+|SAP HANA     |  是 | 否 |  |
+|SAP Business Warehouse    |  是 | 否 | <sup>[6](#tab1400b)</sup> |
+|SharePoint 清單      |   是 | 否 | <sup>[6](#tab1400b)</sup>、<sup>[11](#filesSP)</sup> |
+|SQL Server |是   | 是  | <sup>[7](#sqlim)</sup>、<sup>[8](#instgw)</sup> |
+|SQL Server 資料倉儲 |是   | 是  | <sup>[7](#sqlim)</sup>、<sup>[8](#instgw)</sup> |
+|Sybase 資料庫     |  是 | 否 |  |
+|Teradata | 是  | 是  | <sup>[10](#teradata)</sup> |
+|TXT 檔案  |是 | 否 |  |
+|XML 表格    |  是 | 否 | <sup>[6](#tab1400b)</sup> |
 | | | |
 
-### <a name="in-memory-only"></a>僅限記憶體內部
+**注意：**  
+<a name="tab1400b">6</a> - 僅限表格式 1400 和更高模型。  
+<a name="sqlim">7</a> - 在表格式 1200 和更高模型中指定為「提供者」資料來源時，請指定 Microsoft OLE DB Driver for SQL Server MSOLEDBSQL (建議)、SQL Server Native Client 11.0 或 .NET Framework Data Provider for SQL Server。  
+<a name="instgw">8</a> - 如果指定 MSOLEDBSQL 作為資料提供者，則可能需要在與內部部署資料閘道相同的電腦上，下載並安裝 [Microsoft OLE DB Driver for SQL Server](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server)。  
+<a name="oracle">9</a> - 您可針對表格式 1200 模型指定 Oracle Data Provider for .NET，或將其指定為表格式 1400+ 模型中的「提供者」資料來源。  
+<a name="teradata">10</a> - 您可針對表格式 1200 模型指定 Teradata Data Provider for .NET，或將其指定為表格式 1400+ 模型中的「提供者」資料來源。  
+<a name="filesSP">11</a> - 不支援內部部署 SharePoint 中的檔案。
 
-|資料來源  |  
-|---------|
-|Access 資料庫     |  
-|Active Directory<sup>[1](#tab1400b)</sup>     |  
-|Analysis Services     |  
-|分析平台系統     |  
-|CSV 檔案  |
-|Dynamics CRM<sup>[1](#tab1400b)</sup>     |  
-|Excel 活頁簿     |  
-|Exchange<sup>[1](#tab1400b)</sup>     |  
-|資料夾<sup>[1](#tab1400b)</sup>     |
-|IBM Informix<sup>[1](#tab1400b)</sup> (搶鮮版 (Beta)) |
-|JSON 文件<sup>[1](#tab1400b)</sup>     |  
-|二進位檔中的程式行<sup>[1](#tab1400b)</sup>     | 
-|MySQL 資料庫     | 
-|OData 摘要<sup>[1](#tab1400b)</sup>     |  
-|ODBC 查詢     | 
-|OLE DB     |   
-|Postgre SQL Database<sup>[1](#tab1400b)</sup>    | 
-|Salesforce 物件<sup>[1](#tab1400b)</sup> |  
-|Salesforce 報告<sup>[1](#tab1400b)</sup> |
-|SAP HANA<sup>[1](#tab1400b)</sup>    |  
-|SAP Business Warehouse<sup>[1](#tab1400b)</sup>    |  
-|SharePoint 清單<sup>[1](#tab1400b)</sup>， <sup> [2](#filesSP)</sup>     |   
-|Sybase 資料庫     |  
-|TXT 文件  |
-|XML 表格<sup>[1](#tab1400b)</sup>    |  
-||
- 
-<a name="tab1400b">1</a> - 僅限 Tabular 1400 和更高模型。   
-<a name="filesSP">2</a> -不支援在內部部署 SharePoint 中的檔案。
+從 Azure Analysis Services 伺服器連接到內部部署資料來源需要[內部部署閘道](analysis-services-gateway.md)。 使用閘道時，需要 64 位元的提供者。
 
-## <a name="specifying-a-different-provider"></a>指定不同提供者
+## <a name="understanding-providers"></a>了解提供者
 
-Azure Analysis Services 中的資料模型連線至某些資料來源時，可能需要不同的資料提供者。 在某些情況下，使用原生提供者 (例如 SQL Server Native Client (SQLNCLI11)) 連接到資料來源的表格式模型可能會傳回錯誤。 如果使用 SQLOLEDB 以外的原生提供者，您可能會看到錯誤訊息：**未註冊 'SQLNCLI11.1' 提供者**。 或者，如果您的 DirectQuery 模型已與內部部署資料來源連線，而您使用了原生提供者，則可能會看見錯誤訊息：**Error creating OLE DB row set.Incorrect syntax near 'LIMIT'”** (建立 OLE DB 列集時發生錯誤。'LIMIT' 附近的語法錯誤)。
+在 Visual Studio 中建立表格式 1400 和更高模型專案時，預設不會在使用 [取得資料] 連接到資料來源時指定資料提供者。 表格式 1400 和更高模型會使用 [Power Query](/power-query/power-query-what-is-power-query) 連接器來管理資料來源與 Analysis Services 之間的連接、資料查詢和混搭。 這有時候稱為「結構化」資料來源連接，其會在連接屬性設定中設定。 不過，您可在 Visual Studio 中啟用模型專案的舊版資料來源。 啟用時，您可使用 [資料表匯入精靈] 來連接到表格式 1200 和更低模型傳統上支援作為「舊版」或「提供者」資料來源的特定資料來源。 指定為提供者資料來源時，您可指定特定資料提供者及其他進階連接屬性。 例如，您可以連接到 SQL Server 資料倉儲實例，甚至是 Azure SQL Database 做為舊版的資料來源。 然後，您可選取 OLE DB Driver for SQL Server MSOLEDBSQL 資料提供者。 在此情況下，選取 OLE DB 資料提供者可透過 Power Query 連接器來提供改善的效能。 
 
-將內部部署 SQL Server Analysis Services 表格式模型移轉至 Azure Analysis Services 時，可能需要變更提供者。
+在 Visual Studio 中使用 [資料表匯入精靈] 時，與任何資料來源的連接都需要資料提供者。 系統會選取預設資料提供者。 您可視需要變更資料提供者。 您選擇的提供者類型可能取決於效能、模型是否使用記憶體內部儲存體或 DirectQuery，以及要將模型部署到哪個 Analysis Services 平台。
 
-**指定提供者**
+### <a name="specify-provider-data-sources-in-tabular-1400-and-higher-model-projects"></a>在表格式 1400 和更高模型專案中指定提供者資料來源
 
-1. 在 SSDT > **Tabular Model Explorer** (表格式模型總管)  >  [資料來源] 中，以滑鼠右鍵按一下資料來源連線，然後按一下 [編輯資料來源]。
-2. 在 [編輯連線] 中按一下 [進階]，以開啟 [進階屬性] 視窗。
-3. 在[設定進階屬性]  >  [提供者] 中，然後選取適當的提供者。
+若要啟用提供者資料來源，請在 Visual Studio 中，按一下 [工具] > [選項] > [Analysis Services 表格式] > [資料匯入]，然後選取 [啟用舊版資料來源]。
+
+![啟用舊版資料來源](media/analysis-services-datasource/aas-enable-legacy-datasources.png)
+
+啟用舊版資料來源時，在 [表格式模型總管] 中，以滑鼠右鍵按一下 [資料來源] > [從資料來源匯入 (舊版)]。
+
+![[表格式模型總管] 中的舊版資料來源](media/analysis-services-datasource/aas-import-legacy-datasources.png)
+
+如同表格式 1200 模型專案，使用 [資料表匯入精靈] 來連接到資料來源。 在 [連接] 頁面上，按一下 [進階]。 在 [設定進階屬性] 中指定資料提供者及其他連接設定。
+
+![舊版資料來源的 [進階] 屬性](media/analysis-services-datasource/aas-import-legacy-advanced.png)
 
 ## <a name="impersonation"></a>模擬
-在某些情況下，可能需要指定不同的模擬帳戶。 模擬帳戶可以在 Visual Studio SSDT (SSDT) 或 SSMS 中指定。
+在某些情況下，可能需要指定不同的模擬帳戶。 您可在 Visual Studio 或 SQL Server Management Studio (SSMS) 中指定模擬帳戶。
 
 對於內部部署資料來源：
 
@@ -114,7 +118,13 @@ Azure Analysis Services 中的資料模型連線至某些資料來源時，可�
 
 * 如果使用 SQL 驗證，模擬應為服務帳戶。
 
-## <a name="next-steps"></a>後續步驟
-[內部部署閘道](analysis-services-gateway.md)   
-[管理您的伺服器](analysis-services-manage.md)   
+## <a name="oauth-credentials"></a>OAuth 認證
 
+若是1400和更高相容性層級的表格式模型使用記憶體中模式，Azure SQL Database、Azure Synapse （先前稱為 SQL 資料倉儲）、Dynamics 365 和 SharePoint 清單都支援 OAuth 認證。 Azure Analysis Services 會管理 OAuth 資料來源的權杖重新整理，以避免長時間執行的重新整理作業逾時。 若要產生有效的權杖，請使用 SSMS 來設定認證。
+
+OAuth 認證不支援 DirectQuery 模式。
+
+## <a name="next-steps"></a>後續步驟
+
+* [內部部署閘道](analysis-services-gateway.md)
+* [管理您的伺服器](analysis-services-manage.md)

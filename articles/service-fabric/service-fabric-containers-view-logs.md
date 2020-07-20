@@ -1,35 +1,23 @@
 ---
-title: 在 Azure Service Fabric 中檢視容器記錄 | Microsoft Docs
+title: 在 Azure 中查看容器記錄 Service Fabric
 description: 說明如何使用 Service Fabric Explorer，對執行中的 Service Fabric 容器服務檢視其容器記錄。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 05/15/2018
-ms.author: aljo
-ms.openlocfilehash: 0408010a49b8ec83aa02c74887139f663788ad80
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: c47a408b272f95dbfcf3d791c644bfeb52254a72
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60881467"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75458176"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>檢視 Service Fabric 容器服務的記錄
 Azure Service Fabric 是一種容器協調器，可支援 [Linux 和 Windows 容器](service-fabric-containers-overview.md)。  本文說明如何檢視執行中容器服務或無作用容器的容器記錄，以便您診斷問題並進行疑難排解。
 
 ## <a name="access-the-logs-of-a-running-container"></a>存取執行中容器的記錄
-您可以使用 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 來存取容器記錄。  在 Web 瀏覽器中瀏覽至 [http://mycluster.region.cloudapp.azure.com:19080/Explorer](http://mycluster.region.cloudapp.azure.com:19080/Explorer)，從叢集的管理端點開啟 Service Fabric Explorer。  
+您可以使用 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 來存取容器記錄。  在 Web 瀏覽器中瀏覽至 `http://mycluster.region.cloudapp.azure.com:19080/Explorer`，從叢集的管理端點開啟 Service Fabric Explorer。  
 
-容器記錄位於執行容器服務執行個體所在的叢集節點上。 例如，您可以取得 [Linux 投票範例應用程式](service-fabric-quickstart-containers-linux.md)的 Web 前端容器記錄。 在樹狀檢視中，依序展開 [Cluster]\(叢集\)>[Applications]\(應用程式\)>[VotingType]>[fabric:/Voting/azurevotefront]。  然後展開分割區 (在此範例中為 d1aa737e-f22a-e347-be16-eec90be24bc1)，並查看叢集節點 _lnxvm_0 上執行的容器。
+容器記錄位於執行容器服務執行個體所在的叢集節點上。 例如，您可以取得 [Linux 投票範例應用程式](service-fabric-quickstart-containers-linux.md)的 Web 前端容器記錄。 在樹狀檢視中 **，展開 [** 叢集 > **應用程式**] [ > **VotingType** > **fabric：/投票/azurevotefront**]。  然後展開分割區 (在此範例中為 d1aa737e-f22a-e347-be16-eec90be24bc1)，並查看叢集節點 _lnxvm_0** 上執行的容器。
 
-在樹狀結構檢視中尋找 _lnxvm_0 節點上的程式碼套件，請展開 [Nodes]\(節點\)>[_lnxvm_0]>[fabric:/Voting]>[azurevotfrontPkg]>[Code Packages]\(程式碼套件\)>[code]\(程式碼\)。  然後選取 [容器記錄] 選項以顯示容器記錄。
+在樹狀結構檢視中尋找 _lnxvm_0** 節點上的程式碼套件，請展開 [Nodes]\(節點\)****>[_lnxvm_0]****>[fabric:/Voting]****>[azurevotfrontPkg]****>[Code Packages]\(程式碼套件\)****>[code]\(程式碼\)****。  然後選取 [容器記錄]**** 選項以顯示容器記錄。
 
 ![Service Fabric 平台][Image1]
 
@@ -42,9 +30,9 @@ Azure Service Fabric 是一種容器協調器，可支援 [Linux 和 Windows 容
  <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
  ```
 
-**ContainersRetentionCount** 設定會指定容器失敗時要保留的容器數目。 如果指定負數值，就會保留所有失敗的容器。 如果未指定 **ContainersRetentionCount** 屬性，就不會保留任何容器。 **ContainersRetentionCount** 屬性也支援應用程式參數，因此使用者可以為測試和生產叢集指定不同的值。 使用此功能時，請使用位置限制將容器服務鎖定在特定節點上，以避免容器服務移到其他節點上。 使用此功能的所有容器皆需要手動移除。
+**ContainersRetentionCount** 設定會指定容器失敗時要保留的容器數目。 如果指定負數值，就會保留所有失敗的容器。 未指定**ContainersRetentionCount**屬性時，將不會保留任何容器。 **ContainersRetentionCount** 屬性也支援應用程式參數，因此使用者可以為測試和生產叢集指定不同的值。 使用此功能時，請使用位置限制將容器服務鎖定在特定節點上，以避免容器服務移到其他節點上。 使用此功能的所有容器皆需要手動移除。
 
-設定 **RunInteractive** 對應到 Docker 的 `--interactive` 和 `tty`[旗標](https://docs.docker.com/engine/reference/commandline/run/#options)。 在資訊清單檔中將此設定設為 true 時，這些旗標用於啟動容器。  
+設定 **RunInteractive** 對應到 Docker 的 `--interactive` 和 `tty` [旗標](https://docs.docker.com/engine/reference/commandline/run/#options)。 在資訊清單檔中將此設定設為 true 時，這些旗標用於啟動容器。  
 
 ### <a name="rest"></a>REST
 使用[取得部署在節點上的容器記錄](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode)作業，來取得已損毀容器的記錄。 指定執行容器的節點名稱、應用程式名稱、服務資訊清單名稱，以及程式碼套件名稱。  指定 `&Previous=true`。 回應包含的容器記錄會來自程式碼套件執行個體的無作用容器。

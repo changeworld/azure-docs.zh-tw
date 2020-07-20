@@ -1,27 +1,28 @@
 ---
-title: 透過 NFS 將資料複製到您的 Microsoft Azure 資料箱 | Microsoft Docs
+title: 透過 NFS 將資料複製到 Azure 資料箱的教學課程 | Microsoft Docs
 description: 了解如何透過 NFS 將資料複製到您的 Azure 資料箱
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/28/2019
+ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 423db264c8035f9b089524eb4b19a13baccdf2e0
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 2b5789acfbb088ca8dbeb731b1ce7748041233cb
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404700"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960502"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>教學課程：透過 NFS 將資料複製到 Azure 資料箱
 
-本教學課程說明如何使用本機 Web UI 連接主機電腦並從中複製資料。
+本教學課程說明如何使用本機 Web UI 來連線至主機電腦並從中複製資料。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
+>
 > * 必要條件
 > * 連線至資料箱
 > * 將資料複製到資料箱
@@ -47,7 +48,7 @@ ms.locfileid: "57404700"
 
 下表顯示您資料箱上的共用 UNC 路徑，以及用於上傳資料的 Azure 儲存體路徑 URL。 最終的 Azure 儲存體路徑 URL 可以衍生自 UNC 共用路徑。
  
-|                   |                                                            |
+| Azure 儲存體類型| 資料箱共用                                       |
 |-------------------|--------------------------------------------------------------------------------|
 | Azure 區塊 Blob | <li>共用的 UNC 路徑：`//<DeviceIPAddress>/<StorageAccountName_BlockBlob>/<ContainerName>/files/a.txt`</li><li>Azure 儲存體 URL：`https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
 | Azure 分頁 Blob  | <li>共用的 UNC 路徑：`//<DeviceIPAddres>/<StorageAccountName_PageBlob>/<ContainerName>/files/a.txt`</li><li>Azure 儲存體 URL：`https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
@@ -57,7 +58,7 @@ ms.locfileid: "57404700"
 
 1. 針對允許存取共用的用戶端提供其 IP 位址。 在本機 Web UI 中，移至 [連線並複製] 頁面。 在 [NFS 設定] 下方，按一下 [NFS 用戶端存取]。 
 
-    ![設定 NFS 用戶端存取 1](media/data-box-deploy-copy-data/nfs-client-access.png)
+    ![設定 NFS 用戶端存取 1](media/data-box-deploy-copy-data/nfs-client-access-1.png)
 
 2. 提供 NFS 用戶端的 IP 位址，然後按一下 [新增]。 您可以重複此步驟，以設定多個 NFS 用戶端的存取。 按一下 [確定]。
 
@@ -83,11 +84,19 @@ ms.locfileid: "57404700"
 
 連線至資料箱共用後，下一個步驟是複製資料。 開始複製資料之前，請檢閱下列注意事項：
 
-- 確實將資料複製到與適當資料格式相對應的共用。 例如，將區塊 Blob 資料複製到區塊 Blob 的共用。 將 VHD 複製到分頁 Blob。 如果資料格式不符合適當的共用類型，則在稍後步驟中，資料上傳至 Azure 的作業將會失敗。
--  複製資料時，請確定資料大小符合 [Azure 儲存體和資料箱限制](data-box-limits.md)中所述的大小限制。 
-- 如果資料 (由資料箱上傳) 同時由資料箱以外的其他應用程式上傳，則可能導致上傳作業失敗和資料損毀。
-- 建議您不要同時使用 SMB 與 NFS，或將相同的資料複製到 Azure 上的相同最終目的地。 在這種情況下，無法判斷最後的結果。
-- **一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾**。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 root 資料夾。
+* 確實將資料複製到與適當資料格式相對應的共用。 例如，將區塊 Blob 資料複製到區塊 Blob 的共用。 將 VHD 複製到分頁 Blob。 如果資料格式不符合適當的共用類型，則在稍後步驟中，資料上傳至 Azure 的作業將會失敗。
+*  複製資料時，請確定資料大小符合 [Azure 儲存體和資料箱限制](data-box-limits.md)中所述的大小限制。 
+* 如果資料 (由資料箱上傳) 同時由資料箱以外的其他應用程式上傳，則可能導致上傳作業失敗和資料損毀。
+* 建議您不要同時使用 SMB 與 NFS，或將相同的資料複製到 Azure 上的相同最終目的地。 在這種情況下，無法判斷最後的結果。
+* **一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾**。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 [root] 資料夾。
+* 如果從 NFS 共用內嵌區分大小寫的目錄和檔案名稱至資料箱上的 NFS：
+  * 在名稱中會保留大小寫。
+  * 檔案不區分大小寫。
+
+    例如，如果複製 `SampleFile.txt` 和 `Samplefile.Txt`，在複製到資料箱時，名稱將會保留大小寫，但第二個檔案將會覆寫第一個，因為兩者被視為相同的檔案。
+
+> [!IMPORTANT]
+> 在確認資料箱已將您的資料移轉至 Azure 儲存體之前，請務必先保留一份來源資料複本。
 
 如果您使用 Linux 主機電腦，請使用類似於 Robocopy 的複製公用程式。 在 Linux 中有替代工具可供使用，包括 [rsync](https://rsync.samba.org/)、[FreeFileSync](https://www.freefilesync.org/)、[Unison](https://www.cis.upenn.edu/~bcpierce/unison/) 或 [Ultracopier](https://ultracopier.first-world.info/)。  
 
@@ -95,31 +104,31 @@ ms.locfileid: "57404700"
 
 如果使用 rsync 選項進行多執行緒複製，請遵循下列指導方針：
 
- - 根據您的 Linux 用戶端所使用的檔案系統，安裝 **CIFS Utils** 或 **NFS Utils** 套件。
+* 根據您的 Linux 用戶端所使用的檔案系統，安裝 **CIFS Utils** 或 **NFS Utils** 套件。
 
     `sudo apt-get install cifs-utils`
 
     `sudo apt-get install nfs-utils`
 
- -  安裝 **Rsync** 和 **Parallel** (依 Linux 發行的版本而有所不同)。
+* 安裝 **Rsync** 和 **Parallel** (依 Linux 發行的版本而有所不同)。
 
     `sudo apt-get install rsync`
    
     `sudo apt-get install parallel` 
 
- - 建立掛接點。
+* 建立掛接點。
 
     `sudo mkdir /mnt/databox`
 
- - 掛接磁碟區。
+* 掛接磁碟區。
 
     `sudo mount -t NFS4  //Databox IP Address/share_name /mnt/databox` 
 
- - 鏡像資料夾目錄結構。  
+* 鏡像資料夾目錄結構。  
 
     `rsync -za --include='*/' --exclude='*' /local_path/ /mnt/databox`
 
- - 複製檔案。 
+* 複製檔案。
 
     `cd /local_path/; find -L . -type f | parallel -j X rsync -za {} /mnt/databox/{}`
 
@@ -130,23 +139,35 @@ ms.locfileid: "57404700"
 > [!IMPORTANT]
 > 不支援下列 Linux 檔案類型：符號連結、字元檔案、區塊檔案、通訊端和管線。 這些檔案類型會導致在**準備寄送**步驟期間發生失敗。
 
-- 為了確保資料完整性，在複製資料時會計算內嵌的總和檢查碼。 複製完成後，請確認您的裝置上已使用的空間和可用空間。
-    
-   ![確認儀表板上的可用空間和已使用的空間](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
+在複製程序期間如果發生任何錯誤，您會看到通知。
 
+![下載及檢視 [連線並複製] 頁面上的錯誤](media/data-box-deploy-copy-data/view-errors-1.png)
+
+選取 [下載問題清單]。
+
+![下載及檢視 [連線並複製] 頁面上的錯誤](media/data-box-deploy-copy-data/view-errors-2.png)
+
+開啟清單以檢視錯誤的詳細資料，並選取 [解析 URL] 以檢視建議的解決方法。
+
+![下載及檢視 [連線並複製] 頁面上的錯誤](media/data-box-deploy-copy-data/view-errors-3.png)
+
+如需詳細資訊，請參閱[在資料複製到資料箱期間檢視錯誤記錄](data-box-logs.md#view-error-log-during-data-copy)。 如需資料複製期間的詳細錯誤清單，請參閱[針對資料箱問題進行疑難排解](data-box-troubleshoot.md)。
+
+為了確保資料完整性，在複製資料時會計算內嵌的總和檢查碼。 複製完成後，請確認您的裝置上已使用的空間和可用空間。
+
+   ![確認儀表板上的可用空間和已使用的空間](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 ## <a name="next-steps"></a>後續步驟
 
 在本教學課程中，您已了解 Azure 資料箱的相關主題，像是：
 
 > [!div class="checklist"]
+>
 > * 必要條件
 > * 連線至資料箱
 > * 將資料複製到資料箱
-
 
 請繼續進行下一個教學課程，了解如何將資料箱送回給 Microsoft。
 
 > [!div class="nextstepaction"]
 > [將您的 Azure 資料箱寄送給 Microsoft](./data-box-deploy-picked-up.md)
-

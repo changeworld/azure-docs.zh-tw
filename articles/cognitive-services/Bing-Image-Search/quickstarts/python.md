@@ -1,5 +1,5 @@
 ---
-title: 快速入門：搜尋影像 - Bing 影像搜尋 REST API 和 Python
+title: 快速入門：使用 Bing 影像搜尋 REST API 和 Python 來搜尋影像
 titleSuffix: Azure Cognitive Services
 description: 使用此快速入門以運用 Python 來傳送影像搜尋要求給「Bing 影像搜尋 REST API」，並接收 JSON 回應。
 services: cognitive-services
@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 02/06/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 0fa60f8dc7a1bb0f72080e91adb1149c1c4c082d
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.custom: seodec2018, tracking-python
+ms.openlocfilehash: f818030f5fa7c562b4041543cb702d9673648dee
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234442"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603327"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>快速入門：使用 Bing 影像搜尋 REST API 和 Python 來搜尋影像
 
-使用本快速入門，開始將搜尋要求傳送至 Bing 影像搜尋 API。 這個 Python 應用程式會將搜尋查詢傳送至 API，並顯示結果中第一個影像的 URL。 雖然此應用程式是以 Python 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
+使用本快速入門，了解如何將搜尋要求傳送至 Bing 影像搜尋 API。 這個 Python 應用程式會將搜尋查詢傳送至 API，並顯示結果中第一個影像的 URL。 雖然此應用程式是以 Python 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
 
-您可以按一下 [launch Binder] \(啟動 Binder\) 徽章，在 [MyBinder](https://mybinder.org) \(英文\) 上以 Jupyter Notebook 執行此範例：
+若要在 [MyBinder](https://mybinder.org) 上以 Jupyter Notebook 執行此範例，請選取 [啟動文件夾] 徽章：
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingImageSearchAPI.ipynb)
 
@@ -40,7 +40,7 @@ ms.locfileid: "56234442"
 
 ## <a name="create-and-initialize-the-application"></a>建立應用程式並將其初始化
 
-1. 在您最愛的 IDE 或編輯器中建立新的 Python 檔案，並匯入下列模組。 建立訂用帳戶金鑰、搜尋端點和搜尋字詞的變數。
+1. 在您最愛的 IDE 或編輯器中建立新的 Python 檔案，並匯入下列模組。 建立訂用帳戶金鑰、搜尋端點和搜尋字詞的變數。 針對 [，您可使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的`search_url`自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
 
     ```python
     import requests
@@ -61,25 +61,28 @@ ms.locfileid: "56234442"
 
 ## <a name="create-and-send-a-search-request"></a>建立及傳送搜尋要求
 
-1. 建立搜尋要求參數的字典。 將您的搜尋字詞新增至 `q` 參數。 將 "public" 用於 `license` 參數，以搜尋公用網域中的影像。 將 "photo" 用於 `imageType` 以僅搜尋相片。
+1. 建立搜尋要求參數的字典。 將您的搜尋字詞新增至 `q` 參數。 將 `license` 參數設定為 `public`，以搜尋公用網域中的影像。 將 `imageType` 設定為 `photo`，只搜尋相片。
 
     ```python
     params  = {"q": search_term, "license": "public", "imageType": "photo"}
     ```
 
-2. 使用 `requests` 程式庫呼叫 Bing 影像搜尋 API。 將您的標頭和參數新增至要求，並傳回 JSON 物件形式的回應。 
+2. 使用 `requests` 程式庫呼叫 Bing 影像搜尋 API。 將您的標頭和參數新增至要求，並傳回 JSON 物件形式的回應。 從回應的 `thumbnailUrl` 欄位取得數個縮圖影像的 URL。
 
     ```python
     response = requests.get(search_url, headers=headers, params=params)
     response.raise_for_status()
     search_results = response.json()
+    thumbnail_urls = [img["thumbnailUrl"] for img in search_results["value"][:16]]
     ```
 
 ## <a name="view-the-response"></a>檢視回應
 
-1. 使用 matplotlib 程式庫建立包含四個資料行和四個資料列的新圖表。 
+1. 使用 matplotlib 程式庫，建立包含四個資料行和四個資料列的新圖表。 
 
 2. 逐一查看該圖表的資料列和資料行，並使用 PIL 程式庫的 `Image.open()` 方法將影像縮圖新增至每個空間。 
+
+3. 使用 `plt.show()` 繪製圖表並顯示影像。
 
     ```python
     f, axes = plt.subplots(4, 4)
@@ -90,9 +93,9 @@ ms.locfileid: "56234442"
             image = Image.open(BytesIO(image_data.content))        
             axes[i][j].imshow(image)
             axes[i][j].axis("off")
+    plt.show()
     ```
 
-3. 使用 `plt.show()` 繪製圖表並顯示影像。
 
 ## <a name="example-json-response"></a>範例 JSON 回應
 
@@ -148,7 +151,6 @@ ms.locfileid: "56234442"
 > [Bing 影像搜尋單頁應用程式教學課程](../tutorial-bing-image-search-single-page-app.md) (英文)
 
 * [什麼是 Bing 影像搜尋 API？](../overview.md)  
-* Bing 搜尋 API 的[定價詳細資料](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。 
-* [取得免費認知服務存取金鑰](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [Bing 搜尋 API 的定價詳細資料](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) 
 * [Azure 認知服務文件](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing 影像搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [Bing 影像搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒體服務來編碼以 URL 為基礎的遠端檔案及串流處理 - REST | Microsoft Docs
+title: 使用 Azure 媒體服務 v3 進行遠端檔案的編碼和串流
 description: 遵循此教學課程的步驟，透過使用 REST 的 Azure 媒體服務來編碼以 URL 為基礎的檔案及串流處理內容。
 services: media-services
 documentationcenter: ''
@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/22/2019
+ms.date: 03/16/2020
 ms.author: juliako
-ms.openlocfilehash: 15b2408113d8bd19d2e988643442ac5e3b305237
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 35be4ec2c4f5f8c299120c0ba7dbdcb1dd112473
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149215"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472028"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>教學課程：編碼以 URL 為基礎的遠端檔案及串流處理影片 - REST
 
@@ -40,7 +40,7 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [建立媒體服務帳戶](create-account-cli-how-to.md)。
 
@@ -58,26 +58,26 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
  git clone https://github.com/Azure-Samples/media-services-v3-rest-postman.git
  ```
 
-[!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
+## <a name="access-api"></a>存取 API
+
+如需詳細資訊，請參閱[取得認證以存取媒體服務 API](access-api-howto.md)
 
 ## <a name="configure-postman"></a>設定 Postman
 
-此區段會設定 Postman。
-
 ### <a name="configure-the-environment"></a>建立環境 
 
-1. 開啟 **Postman**。
-2. 選取畫面右側的 [管理環境] 選項。
+1. 開啟 **Postman** 應用程式。
+2. 選取畫面右側的 [管理環境]  選項。
 
     ![管理 env](./media/develop-with-postman/postman-import-env.png)
-4. 按一下 [管理環境] 對話方塊中的 [匯入]。
+4. 按一下 [管理環境]  對話方塊中的 [匯入]  。
 2. 瀏覽至您在複製 `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` 時下載的 `Azure Media Service v3 Environment.postman_environment.json` 檔案。
 6. 新增 **Azure Media Service v3 Environment** 環境。
 
     > [!Note]
     > 使用您從前述的**存取媒體服務 API** 一節中取得的值來更新存取變數。
 
-7. 按兩下選取的檔案，並輸入您依照[存取 API](#access-the-media-services-api) 步驟所取得的值。
+7. 按兩下選取的檔案，並輸入您依照[存取 API](#access-api) 步驟所取得的值。
 8. 關閉對話方塊。
 9. 從下拉式清單中選取 **Azure Media Service v3 Environment** 環境。
 
@@ -85,7 +85,7 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
    
 ### <a name="configure-the-collection"></a>設定集合
 
-1. 按一下 [匯入] 來匯入集合檔案。
+1. 按一下 [匯入]  來匯入集合檔案。
 1. 瀏覽至您在複製 `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` 時下載的 `Media Services v3.postman_collection.json` 檔案
 3. 選擇 **Media Services v3.postman_collection.json** 檔案。
 
@@ -96,10 +96,11 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 在本節中，我們會傳送與編碼和建立 URL 有關的要求，讓您能夠串流處理檔案。 具體來說，我們會傳送下列要求：
 
 1. 取得服務主體驗證的 Azure AD 權杖
+1. 啟動串流端點
 2. 建立輸出資產
-3. 建立 [轉換]
-4. 建立 [作業]
-5. 建立 [串流定位器]
+3. 建立轉換
+4. 建立作業
+5. 建立串流定位器
 6. 列出 [串流定位器] 的路徑
 
 > [!Note]
@@ -107,9 +108,9 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 ### <a name="get-azure-ad-token"></a>取得 Azure AD 權杖 
 
-1. 在 Postman 的左側視窗中，選取 [步驟 1:取得 AAD 驗證權杖]。
+1. 在 Postman 應用程式的左側視窗中，選取 [步驟 1:取得 AAD 驗證權杖]。
 2. 然後，選取 [取得服務主體驗證的 Azure AD 權杖]。
-3. 按 [傳送]。
+3. 按 [傳送]  。
 
     此時會傳送下列 **POST** 作業。
 
@@ -117,17 +118,44 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
     https://login.microsoftonline.com/:tenantId/oauth2/token
     ```
 
-4. 傳回的回應會包含權杖，並將 "AccessToken" 環境變數設定為權杖值。 若要查看設定 "AccessToken" 的程式碼，請按一下 [測試] 索引標籤。 
+4. 傳回的回應會包含權杖，並將 "AccessToken" 環境變數設定為權杖值。 若要查看設定 "AccessToken" 的程式碼，請按一下 [測試]  索引標籤。 
 
     ![取得 AAD 權杖](./media/develop-with-postman/postman-get-aad-auth-token.png)
+
+
+### <a name="start-a-streaming-endpoint"></a>啟動串流端點
+
+若要啟用串流處理，您必須先啟動要作為視訊串流處理來源的[串流端點](https://docs.microsoft.com/azure/media-services/latest/streaming-endpoint-concept)。
+
+> [!NOTE]
+> 只有當串流端點處於執行中狀態時，才會向您收取費用。
+
+1. 在 Postman 應用程式的左側視窗中，選取 [串流與即時]。
+2. 然後，選取 [啟動 StreamingEndpoint]。
+3. 按 [傳送]  。
+
+    * 此時會傳送下列 **POST** 作業：
+
+        ```
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaservices/:accountName/streamingEndpoints/:streamingEndpointName/start?api-version={{api-version}}
+        ```
+    * 如果要求成功，則會傳回 `Status: 202 Accepted`。
+
+        此狀態表示要求已經被接受而且正在處理，但處理尚未完成。 您可以根據 `Azure-AsyncOperation` 回應標頭中的值來查詢作業狀態。
+
+        例如，下列 GET 作業會傳回作業的狀態：
+        
+        `https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/<resourceGroupName>/providers/Microsoft.Media/mediaservices/<accountName>/streamingendpointoperations/1be71957-4edc-4f3c-a29d-5c2777136a2e?api-version=2018-07-01`
+
+        [追蹤非同步 Azure 作業](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)一文會深入說明如何透過回應中傳回的值，追蹤非同步 Azure 作業的狀態。
 
 ### <a name="create-an-output-asset"></a>建立輸出資產
 
 輸出[資產](https://docs.microsoft.com/rest/api/media/assets)會儲存您的編碼作業結果。 
 
-1. 在 Postman 的左側視窗中，選取 [資產]。
+1. 在 Postman 應用程式的左側視窗中，選取 [資產]。
 2. 然後，選取 [建立或更新資產]。
-3. 按 [傳送]。
+3. 按 [傳送]  。
 
     * 此時會傳送下列 **PUT** 作業：
 
@@ -147,18 +175,18 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 ### <a name="create-a-transform"></a>建立轉換
 
-在媒體服務中編碼或處理內容時，將編碼設定設為配方 (recipe) 是很常見的模式。 然後您可以透過提交**作業**，將該配方套用到影片。 藉由為每部新影片提交新的作業，您可以將該配方套用到媒體櫃中的所有影片。 配方在媒體服務中稱為「**轉換 (Transform)**」。 如需詳細資訊，請參閱[轉換和作業](transform-concept.md)。 本教學課程中所述的範例會定義編碼影片的配方，以便將影片串流到各種 iOS 和 Android 裝置。 
+在媒體服務中編碼或處理內容時，將編碼設定設為配方 (recipe) 是很常見的模式。 然後您可以透過提交**作業**，將該配方套用到影片。 藉由為每部新影片提交新的作業，您可以將該配方套用到媒體櫃中的所有影片。 配方在媒體服務中稱為「**轉換 (Transform)** 」。 如需詳細資訊，請參閱[轉換和作業](transform-concept.md)。 本教學課程中所述的範例會定義編碼影片的配方，以便將影片串流到各種 iOS 和 Android 裝置。 
 
-建立新的[轉換](https://docs.microsoft.com/rest/api/media/transforms)執行個體時，您需要指定想要其產生的輸出是什麼。 必要的參數是 **TransformOutput** 物件。 每個 **TransformOutput** 都會包含 **Preset (預設)**。 **Preset** 會描述影片和/或音訊處理作業的逐步指示，以產生所需的 **TransformOutput**。 本文中所述的範例會使用稱為 **AdaptiveStreaming** 的內建 Preset。 Preset 會根據輸入解析度和位元速率，將輸入影片編碼為自動產生的位元速率階梯 (位元速率-解析度配對)，並產生 H.264 影片與 AAC 音訊標準 (對應到每個 位元速率-解析度配對) 的 ISO MP4 檔案。 如需此 Preset 的相關資訊，請參閱[自動產生位元速率階梯](autogen-bitrate-ladder.md)。
+建立新的[轉換](https://docs.microsoft.com/rest/api/media/transforms)執行個體時，您需要指定想要其產生的輸出是什麼。 必要的參數是 **TransformOutput** 物件。 每個 **TransformOutput** 都會包含 **Preset (預設)** 。 **Preset** 會描述影片和/或音訊處理作業的逐步指示，以產生所需的 **TransformOutput**。 本文中所述的範例會使用稱為 **AdaptiveStreaming** 的內建 Preset。 Preset 會根據輸入解析度和位元速率，將輸入影片編碼為自動產生的位元速率階梯 (位元速率-解析度配對)，並產生 H.264 影片與 AAC 音訊標準 (對應到每個 位元速率-解析度配對) 的 ISO MP4 檔案。 如需此 Preset 的相關資訊，請參閱[自動產生位元速率階梯](autogen-bitrate-ladder.md)。
 
 您可以使用內建的 EncoderNamedPreset 或使用自訂預設值。 
 
 > [!Note]
 > 建立[轉換](https://docs.microsoft.com/rest/api/media/transforms)時，您應該先使用 **Get** 方法檢查是否已有轉換存在。 本教學課程假設您會使用唯一名稱建立轉換。
 
-1. 在 Postman 的左側視窗中，選取 [編碼和分析]。
+1. 在 Postman 應用程式的左側視窗中，選取 [編碼和分析]。
 2. 然後，選取 [建立轉換]。
-3. 按 [傳送]。
+3. 按 [傳送]  。
 
     * 此時會傳送下列 **PUT** 作業。
 
@@ -185,15 +213,15 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
         }
         ```
 
-### <a name="create-a-job"></a>建立工作
+### <a name="create-a-job"></a>建立作業
 
 [作業](https://docs.microsoft.com/rest/api/media/jobs)是要媒體服務將已建立的**轉換**套用至指定輸入視訊或音訊內容的實際要求。 **作業**會指定輸入影片的位置、輸出的位置等資訊。
 
 在此範例中，作業的輸入是以 HTTPS URL 為基礎 ("https:\//nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/")。
 
-1. 在 Postman 的左側視窗中，選取 [編碼和分析]。
+1. 在 Postman 應用程式的左側視窗中，選取 [編碼和分析]。
 2. 然後，選取 [建立或更新作業]。
-3. 按 [傳送]。
+3. 按 [傳送]  。
 
     * 此時會傳送下列 **PUT** 作業。
 
@@ -228,38 +256,40 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 #### <a name="job-error-codes"></a>作業錯誤碼
 
-請參閱[錯誤碼](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)。
+請參閱[錯誤碼](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode) \(英文\)。
 
 ### <a name="create-a-streaming-locator"></a>建立串流定位器
 
-編碼作業完成後，下一個步驟是要讓用戶端可播放輸出**資產**中的視訊。 您可以透過兩個步驟來執行此動作：第一步，建立[串流定位器](https://docs.microsoft.com/rest/api/media/streaminglocators)，第二步，建置用戶端可以使用的串流 URL。 
+編碼作業完成後，下一個步驟是要讓用戶端可播放輸出**資產**中的視訊。 您可以透過兩個步驟來執行此動作：第一步，建立[StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators)，第二步，建置用戶端可以使用的串流 URL。 
 
-建立 [串流定位器] 的程序稱為發佈。 根據預設，[串流定位器] 會在進行 API 呼叫後立即生效，而且會持續運作到遭到刪除為止 (除非您有設定選擇性的開始和結束時間)。 
+建立串流定位器的程序稱為發佈。 根據預設，串流定位器會在進行 API 呼叫後立即生效，而且會持續運作到遭到刪除為止 (除非您有設定選擇性的開始和結束時間)。 
 
-建立[串流定位器](https://docs.microsoft.com/rest/api/media/streaminglocators)時，您必須指定需要的 **StreamingPolicyName**。 在此範例中，您將串流處理乾淨 (或未加密的) 內容，而使用預先定義的乾淨串流原則 (**PredefinedStreamingPolicy.ClearStreamingOnly**)。
+建立 [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) 時，您必須指定需要的 **StreamingPolicyName**。 在此範例中，您將串流處理乾淨 (或未加密的) 內容，而使用預先定義的乾淨串流原則 "Predefined_ClearStreamingOnly"。
 
 > [!IMPORTANT]
 > 使用自訂的 [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) 時，您應該為媒體服務帳戶設計一組受限的這類原則，並且在需要相同的加密選項和通訊協定時，對 StreamingLocators 重新使用這些原則。 
 
-媒體服務帳戶有**串流原則**項目的數量配額。 不建議您對每個 [串流定位器] 建立新的 [串流原則]。
+媒體服務帳戶有**串流原則**項目的數量配額。 不建議您對每個串流定位器建立新的**串流原則**。
 
-1. 在 Postman 的左側視窗中，選取 [串流原則]。
-2. 然後，選取 [建立串流定位器]。
-3. 按 [傳送]。
+1. 在 Postman 應用程式的左側視窗中，選取 [串流原則和定位器]。
+2. 然後，選取 [建立串流定位器 (乾淨狀態)]。
+3. 按 [傳送]  。
 
     * 此時會傳送下列 **PUT** 作業。
 
         ```
-        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingPolicies/:streamingPolicyName?api-version={{api-version}}
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingLocators/:streamingLocatorName?api-version={{api-version}}
         ```
     * 作業會具有下列主體：
 
         ```json
         {
-            "properties":{
-            "assetName": "{{assetName}}",
-            "streamingPolicyName": "{{streamingPolicyName}}"
-            }
+          "properties": {
+            "streamingPolicyName": "Predefined_ClearStreamingOnly",
+            "assetName": "testAsset1",
+            "contentKeys": [],
+            "filters": []
+         }
         }
         ```
 
@@ -269,9 +299,9 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 
 建立了[串流定位器](https://docs.microsoft.com/rest/api/media/streaminglocators)之後，現在您就可以取得串流 URL。
 
-1. 在 Postman 的左側視窗中，選取 [串流原則]。
+1. 在 Postman 應用程式的左側視窗中，選取 [串流原則]。
 2. 然後，選取 [列出路徑]。
-3. 按 [傳送]。
+3. 按 [傳送]  。
 
     * 此時會傳送下列 **POST** 作業。
 
@@ -338,19 +368,19 @@ https://amsaccount-usw22.streaming.media.azure.net/cdb80234-1d94-42a9-b056-0eefa
 
 
 > [!NOTE]
-> 確定要作為串流來源的 [串流端點] 正在執行中。
+> 確定要作為串流來源的 [串流端點]  正在執行中。
 
 本文使用 Azure 媒體播放器測試串流。 
 
 1. 開啟瀏覽器並巡覽至 [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)。
-2. 在 [URL:] 方塊中，貼上您所建置的 URL。 
-3. 按一下 [更新播放程式]。
+2. 在 [URL:]  方塊中，貼上您所建置的 URL。 
+3. 按一下 [更新播放程式]  。
 
 Azure 媒體播放器可以用於測試，但不應用於生產環境。 
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>清除媒體服務帳戶中的資源
 
-一般而言，您應清除所有項目，只保留想要重複使用的物件 (您通常會重複使用 [轉換] 並且保存 [串流定位器] 等)。 如果您想要在實驗之後有乾淨的帳戶，您應刪除不打算重複使用的資源。  
+一般而言，您應清除所有項目，只保留想要重複使用的物件 (您通常會重複使用 [轉換]  並且保存 [串流定位器]  等)。 如果您想要在實驗之後有乾淨的帳戶，您應刪除不打算重複使用的資源。  
 
 若要刪除資源，請在您要刪除的任何資源下方選取 [刪除...] 作業。
 

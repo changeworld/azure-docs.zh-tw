@@ -1,22 +1,13 @@
 ---
-title: 在 Java Web 應用程式中篩選 Azure Application Insights 遙測 | Microsoft Docs
+title: 在您的 JAVA web 應用程式中篩選 Azure 應用程式 Insights 遙測
 description: 篩選出您不需要監視的事件，以減少遙測流量。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 11/23/2016
-ms.author: mbullwin
-ms.openlocfilehash: ee50a0e9c7fca8f01f12b3508c86d901b5315120
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 3/14/2019
+ms.openlocfilehash: 020e54132e0ca0a9f9ccf0236f94515877015637
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60897109"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77659912"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>在 Java Web 應用程式中篩選遙測
 
@@ -196,7 +187,7 @@ ms.locfileid: "60897109"
 
 ## <a name="custom-filters"></a>自訂篩選器
 
-### <a name="1-code-your-filter"></a>1.撰寫篩選器的程式碼
+### <a name="1-code-your-filter"></a>1. 撰寫篩選器的程式碼
 
 在您的程式碼中，建立類別來實作 `TelemetryProcessor`:
 
@@ -235,7 +226,7 @@ ms.locfileid: "60897109"
 ```
 
 
-### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2.在組態檔中叫用您的篩選器
+### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. 在設定檔案中叫用您的篩選器
 
 在 ApplicationInsights.xml 中：
 
@@ -254,9 +245,9 @@ ms.locfileid: "60897109"
 
 ```
 
-### <a name="3-invoke-your-filter-java-spring"></a>3.叫用您的篩選條件 (Java Spring)
+### <a name="3-invoke-your-filter-java-spring"></a>3. 叫用您的篩選（JAVA 彈簧）
 
-Spring framework 為基礎的應用程式，自訂的遙測處理器必須註冊您的主應用程式類別中為 bean。 應用程式啟動時，它們會被已自動連接。
+針對以春天架構為基礎的應用程式，自訂遙測處理器必須在您的主要應用程式類別中註冊為 bean。 然後會在應用程式啟動時 autowired 它們。
 
 ```Java
 @Bean
@@ -265,12 +256,12 @@ public TelemetryProcessor successFilter() {
 }
 ```
 
-您必須建立您自己的篩選參數，在`application.properties`並運用 Spring Boot 已外部化的組態架構將這些參數傳遞至您的自訂篩選。 
+您必須在中建立自己的篩選參數 `application.properties` ，並利用春季 Boot 的外部化設定架構，將這些參數傳遞至您的自訂篩選器。 
 
 
 ## <a name="troubleshooting"></a>疑難排解
 
-我的篩選器無法運作。
+我的篩選器無法運作。**
 
 * 請檢查您已提供有效的參數值。 例如，持續時間應該是整數。 無效的值會導致篩選器被忽略。 如果您的自訂篩選器從建構函式或 set 方法擲回例外狀況，該篩選器將被忽略。
 

@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: 99f756b5415811b3d4c2ee0167f98b31c905df1a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cc19c5ea7a45f78110818bc6c8cea8fbe25981c0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60657677"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243438"
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API 管理中的原則
 
@@ -26,16 +25,16 @@ ms.locfileid: "60657677"
 
 原則是在位於 API 取用者與受控 API 之間的閘道內套用。 閘道會接收所有要求，然後通常原封不動地轉送至基礎 API。 不過，原則可以套用至輸入要求和輸出要求。
 
-如果原則不另行指定，則可以在任何 API 管理原則中，使用原則運算式做為屬性值或文字值。 某些原則是以原則運算式為基礎，例如[控制流程][Control flow]和[設定變數][Set variable]原則。 如需詳細資訊，請參閱[進階原則][Advanced policies]和[原則運算式][Policy expressions]。
+如果原則不另行指定，則可以在任何 API 管理原則中，使用原則運算式做為屬性值或文字值。 某些原則是以原則運算式為基礎，例如[控制流程][Control flow]和[設定變數][Set variable]原則。 如需詳細資訊，請參閱[高級原則][Advanced policies]和[原則運算式][Policy expressions]。
 
-## <a name="sections"> </a>了解原則組態
+## <a name="understanding-policy-configuration"></a><a name="sections"> </a>了解原則組態
 
 原則定義是一份簡單的 XML 文件，描述一連串輸入和輸出陳述式。 可直接在定義視窗中編輯 XML。 右邊提供陳述式的清單，而且會啟用並醒目提示適用於目前範圍的陳述式。
 
 按一下已啟用的陳述式會在定義檢視中的游標位置上加入適當的 XML。 
 
 > [!NOTE]
-> 如果未啟用您想要新增的原則，請確定您是在該原則的正確範圍內。 每个策略语句都设计为在特定范围和策略部分中使用。 若要檢閱原則的原則區段和範圍，請檢查[原則參考][Policy Reference]中該原則的**使用方式**一節。
+> 如果未啟用您想要新增的原則，請確定您是在該原則的正確範圍內。 每個原則陳述式都是針對在特定範圍和原則區段中使用所設計。 若要檢閱原則的原則區段和範圍，請檢查 **原則參考** 中該原則的 [使用方式][Policy Reference]一節。
 > 
 > 
 
@@ -59,15 +58,15 @@ ms.locfileid: "60657677"
 </policies> 
 ```
 
-若在處理要求期間發生錯誤，便會略過 `inbound`、`backend` 或 `outbound` 區段中的所有剩餘步驟，且執行程序會跳至 `on-error` 區段中的陳述式。 將原則陳述式置於 `on-error` 區段中，您即可使用 `context.LastError` 屬性檢閱錯誤、使用 `set-body` 原則檢查和自訂錯誤回應，以及設定錯誤發生時採取的動作。 错误代码可针对内置步骤，也可针对在处理策略语句的过程中会发生的错误。 如需詳細資訊，請參閱 [API 管理原則中的錯誤處理方式](/azure/api-management/api-management-error-handling-policies)。
+若在處理要求期間發生錯誤，便會略過 `inbound`、`backend` 或 `outbound` 區段中的所有剩餘步驟，且執行程序會跳至 `on-error` 區段中的陳述式。 將原則陳述式置於 `on-error` 區段中，您即可使用 `context.LastError` 屬性檢閱錯誤、使用 `set-body` 原則檢查和自訂錯誤回應，以及設定錯誤發生時採取的動作。 會出現內建步驟的錯誤碼和處理原則陳述式期間可能會發生之錯誤的錯誤碼。 如需詳細資訊，請參閱 [API 管理原則中的錯誤處理方式](./api-management-error-handling-policies.md)。
 
-## <a name="scopes"> </a>如何設定原則
+## <a name="how-to-configure-policies"></a><a name="scopes"> </a>如何設定原則
 
 如需如何設定原則的資訊，請參閱[設定或編輯原則](set-edit-policies.md)。
 
 ## <a name="policy-reference"></a>原則參考文件
 
-如需原則陳述式及其設定的完整清單，請參閱[原則參考文件](api-management-policy-reference.md)。
+如需原則陳述式及其設定的完整清單，請參閱[原則參考文件](./api-management-policies.md)。
 
 ## <a name="policy-samples"></a>原則範例
 
@@ -119,17 +118,17 @@ ms.locfileid: "60657677"
 如需使用原則的詳細資訊，請參閱︰
 
 + [轉換 API](transform-api.md)
-+ [原則參考文件](api-management-policy-reference.md)，取得原則陳述式及其設定的完整清單
++ [原則參考文件](./api-management-policies.md)，取得原則陳述式及其設定的完整清單
 + [原則範例](policy-samples.md)   
 
-[Policy Reference]: api-management-policy-reference.md
+[Policy Reference]: ./api-management-policies.md
 [Product]: api-management-howto-add-products.md
 [API]: api-management-howto-add-products.md
-[Operation]: api-management-howto-add-operations.md
+[Operation]: ./mock-api-responses.md
 
-[Advanced policies]: https://msdn.microsoft.com/library/azure/dn894085.aspx
-[Control flow]: https://msdn.microsoft.com/library/azure/dn894085.aspx#choose
-[Set variable]: https://msdn.microsoft.com/library/azure/dn894085.aspx#set_variable
-[Policy expressions]: https://msdn.microsoft.com/library/azure/dn910913.aspx
+[Advanced policies]: ./api-management-advanced-policies.md
+[Control flow]: ./api-management-advanced-policies.md#choose
+[Set variable]: ./api-management-advanced-policies.md#set-variable
+[Policy expressions]: ./api-management-policy-expressions.md
 
 [policies-restrict]: ./media/api-management-howto-policies/api-management-policies-restrict.png

@@ -1,11 +1,11 @@
 ---
-ms.openlocfilehash: db88a166cd59e96b459f8d4dcaa6a6d2b8c4ff99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 5835e4c29fde280bcd00422ff71d28526a7f0f95
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60232725"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "76694233"
 ---
 ## <a name="set-properties"></a>設定屬性
 
-您可以選擇儲存您的雲端錨點時，加入一些屬性。 像物件的型別被儲存，或基本的屬性，例如是否應啟用互動。 這種方式可以探索時很有用： 您可以立即呈現使用者，例如圖片框具有空白內容的物件。 然後，在背景中不同的下載取得其他狀態的詳細資訊，比方說，要顯示在框架中的圖片。
+在儲存雲端空間錨點時，您可以選擇新增一些屬性。 例如要儲存的物件類型，或是決定是否要啟用其互動功能的基本屬性。 這樣做在探索時可能有其效用：您可以立即為使用者轉譯物件，例如具有空白內容的圖片框架。 然後，背景中的不同下載會取得其他狀態詳細資料，例如要在框架中顯示的圖片。

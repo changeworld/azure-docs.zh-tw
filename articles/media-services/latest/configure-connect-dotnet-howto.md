@@ -1,6 +1,6 @@
 ---
-title: 連線到 Azure 媒體服務 v3 API-.NET
-description: 了解如何連接到媒體服務 v3 API 與.NET。
+title: 連接到 Azure 媒體服務 v3 API-.NET
+description: 本文示範如何使用 .NET 連接到媒體服務 v3 API。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,63 +11,66 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 09/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8f8a1434af768180e34afcaacd6e92ab402ad8cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom: has-adal-ref
+ms.openlocfilehash: 6dc05f225e3585b83bd6a57ca47bd5adf97934ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736134"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83201123"
 ---
-# <a name="connect-to-media-services-v3-api---net"></a>連線到媒體服務 v3 API-.NET
+# <a name="connect-to-media-services-v3-api---net"></a>連接到媒體服務 v3 API-.NET
 
-這篇文章說明您如何連接到 Azure 媒體服務 v3.NET SDK 使用服務主體登入方法。
+本文說明如何使用服務主體登入方法來連接到 Azure 媒體服務 v3 .NET SDK。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- [建立媒體服務帳戶](create-account-cli-how-to.md)。 請務必記住的資源群組名稱和媒體服務帳戶名稱
-- 安裝您想要使用適用於.NET 開發的工具。 這篇文章中的步驟示範如何使用[Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 您可以使用 Visual Studio Code，請參閱[使用C# ](https://code.visualstudio.com/docs/languages/csharp)。 或者，您可以使用不同的程式碼編輯器。
+- [建立媒體服務帳戶](create-account-cli-how-to.md)。 請務必記住資源組名和媒體服務帳戶名稱
+- 安裝您想要用於 .NET 開發的工具。 本文中的步驟示範如何使用[Visual Studio 2019 的社區版](https://www.visualstudio.com/downloads/)。 您可以使用 Visual Studio Code，請參閱使用[c #](https://code.visualstudio.com/docs/languages/csharp)。 或者，您可以使用不同的程式碼編輯器。
+
+> [!IMPORTANT]
+> 檢查[命名慣例](media-services-apis-overview.md#naming-conventions)。
 
 ## <a name="create-a-console-application"></a>建立主控台應用程式
 
 1. 啟動 Visual Studio。 
-1. 從**檔案**功能表上，按一下**新增** > **專案**。 
-1. 建立 **.NET Core**主控台應用程式。
+1. **在 [檔案**] 功能表上，按一下 [**新增**  >  **專案**]。 
+1. 建立 **.Net Core**主控台應用程式。
 
-本主題中，範例應用程式為目標`netcoreapp2.0`。 程式碼會使用 'async main'，也就是可以使用開頭為C#7.1。 請參閱此[部落格](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/)如需詳細資訊。
+本主題中的範例應用程式，目標為 `netcoreapp2.0` 。 程式碼會使用「非同步 main」，從 c # 7.1 開始提供。 如需詳細資訊，請參閱此[blog](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) 。
 
-## <a name="add-required-nuget-packages"></a>新增必要的 NuGet 套件
+## <a name="add-required-nuget-packages"></a>新增必要的 NuGet 封裝
 
-1. 在 Visual Studio 中，選取**工具** > **NuGet 套件管理員** > **NuGet 管理員主控台**。
-2. 在  **Package Manager Console**視窗中，使用`Install-Package`命令以新增以下 NuGet 套件。 例如： `Install-Package Microsoft.Azure.Management.Media`。
+1. 在 Visual Studio 中，選取 [**工具**] [  >  **nuget 套件管理員**] [  >  **nuget 管理員主控台**]。
+2. 在 [**套件管理員主控台**] 視窗中，使用 `Install-Package` 命令來新增下列 NuGet 套件。 例如： `Install-Package Microsoft.Azure.Management.Media` 。
 
 |Package|描述|
 |---|---|
-|`Microsoft.Azure.Management.Media`|Azure 媒體服務 SDK。 <br/>若要確定您使用最新的 Azure 媒體服務封裝，請檢查[Microsoft.Azure.Management.Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media)。|
-|`Microsoft.Rest.ClientRuntime.Azure.Authentication`|Azure SDK for.NET 的 ADAL 驗證程式庫|
-|`Microsoft.Extensions.Configuration.EnvironmentVariables`|讀取環境變數和本機 JSON 檔案中的組態值|
-|`Microsoft.Extensions.Configuration.Json`|讀取環境變數和本機 JSON 檔案中的組態值
+|`Microsoft.Azure.Management.Media`|Azure 媒體服務 SDK。 <br/>若要確定您使用的是最新的 Azure 媒體服務套件，請檢查[Microsoft Azure. 管理媒體](https://www.nuget.org/packages/Microsoft.Azure.Management.Media)。|
+|`Microsoft.Rest.ClientRuntime.Azure.Authentication`|適用于 .NET 的 Azure SDK 的 ADAL 驗證程式庫|
+|`Microsoft.Extensions.Configuration.EnvironmentVariables`|讀取環境變數和本機 JSON 檔案中的設定值|
+|`Microsoft.Extensions.Configuration.Json`|讀取環境變數和本機 JSON 檔案中的設定值
 |`WindowsAzure.Storage`|儲存體 SDK|
 
-## <a name="create-and-configure-the-app-settings-file"></a>建立及設定應用程式設定檔
+## <a name="create-and-configure-the-app-settings-file"></a>建立和設定應用程式佈建檔案
 
-### <a name="create-appsettingsjson"></a>建立 appsettings.json
+### <a name="create-appsettingsjson"></a>建立 appsettings.js
 
-1. 移移**一般** > **文字檔**。
-1. 名稱"appsettings.json 」。
-1. 的.json 檔案，以"時才複製 」 的 「 複製到輸出的目錄 屬性設定 （使應用程式能夠存取該發行時）。
+1. Go go**一般**  >  **文字檔**。
+1. 將它命名為 "appsettings.json"。
+1. 將 json 檔案的 [複製到輸出目錄] 屬性設定為 [更新時才複製] （如此一來，應用程式就能夠在發行時存取它）。
 
-### <a name="set-values-in-appsettingsjson"></a>在 appsettings.json 中的設定值
+### <a name="set-values-in-appsettingsjson"></a>設定 appsettings.js中的值
 
-執行`az ams account sp create`命令中所述[存取 Api](access-api-cli-how-to.md)。 此命令會傳回 json，您應該將它複製到您 「 appsettings.json"。
+執行 `az ams account sp create` 命令，如[存取 api](access-api-cli-how-to.md)中所述。 命令會傳回您應該複製到「appsettings.js開啟」的 json。
  
 ## <a name="add-configuration-file"></a>新增組態檔
 
-為了方便起見，將會負責讀取值從"appsettings.json"的組態檔。
+為了方便起見，請新增負責讀取 "appsettings.json" 值的設定檔。
 
-1. 將新的.cs 類別新增至您的專案。 將它命名為 `ConfigWrapper` 
-1. 此檔案中貼上下列程式碼 (此範例假設您擁有的命名空間是`ConsoleApp1`)。
+1. 將新的 .cs 類別加入至您的專案。 請命名為 `ConfigWrapper`。 
+1. 將下列程式碼貼入此檔案（此範例假設您的命名空間為 `ConsoleApp1` ）。
 
 ```csharp
 using System;
@@ -138,9 +141,9 @@ namespace ConsoleApp1
 }
 ```
 
-## <a name="connect-to-the-net-client"></a>連線至.NET 用戶端
+## <a name="connect-to-the-net-client"></a>連接至 .NET 用戶端
 
-若要開始搭配使用媒體服務 API 與 .NET，您需要建立 **AzureMediaServicesClient** 物件。 若要建立物件，您需要提供必要的認證，讓用戶端使用 Azure AD 連線至 Azure。 下列程式碼，GetCredentialsAsync 函式會建立本機組態檔中提供的認證為基礎的 ServiceClientCredentials 物件。
+若要開始搭配使用媒體服務 API 與 .NET，您需要建立 **AzureMediaServicesClient** 物件。 若要建立物件，您需要提供必要的認證，讓用戶端使用 Azure AD 連線至 Azure。 在下列程式碼中，GetCredentialsAsync 函式會根據本機設定檔中提供的認證建立 ServiceClientCredentials 物件。
 
 1. 開啟 `Program.cs`。
 1. 貼上下列程式碼：
@@ -204,7 +207,7 @@ namespace ConsoleApp1
             //// ClientAssertionCertificate
             //// ApplicationTokenProvider.LoginSilentWithCertificateAsync
 
-            // Use ApplicationTokenProvider.LoginSilentAsync to get a token using a service principal with symetric key
+            // Use ApplicationTokenProvider.LoginSilentAsync to get a token using a service principal with symmetric key
             ClientCredential clientCredential = new ClientCredential(config.AadClientId, config.AadSecret);
             return await ApplicationTokenProvider.LoginSilentAsync(config.AadTenantId, clientCredential, ActiveDirectoryServiceSettings.Azure);
         }
@@ -225,9 +228,9 @@ namespace ConsoleApp1
 
 ## <a name="next-steps"></a>後續步驟
 
-- [教學課程：上傳、編碼和串流影片 - .NET](stream-files-tutorial-with-api.md) 
-- [教學課程：透過媒體服務 v3 進行即時串流 - .NET](stream-live-tutorial-with-api.md)
-- [教學課程：透過媒體服務 v3 分析影片 - .NET](analyze-videos-tutorial-with-api.md)
+- [教學課程：上傳、編碼和串流影片-.NET](stream-files-tutorial-with-api.md) 
+- [教學課程：使用媒體服務 v3 進行即時串流-.NET](stream-live-tutorial-with-api.md)
+- [教學課程：使用媒體服務 v3 來分析影片-.NET](analyze-videos-tutorial-with-api.md)
 - [從本機檔案建立作業輸入 - .NET](job-input-from-local-file-how-to.md)
 - [從 HTTPS URL 建立作業輸入 - .NET](job-input-from-http-how-to.md)
 - [使用自訂轉換進行編碼 - .NET](customize-encoder-presets-how-to.md)
@@ -237,6 +240,7 @@ namespace ConsoleApp1
 - [使用媒體服務建立篩選 - .NET](filters-dynamic-manifest-dotnet-howto.md)
 - [搭配使用 Azure Functions v2 與媒體服務 v3 的進階影片隨選範例](https://aka.ms/ams3functions)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
-[.NET 參考](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
+* [.NET 參考](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
+* 如需更多程式碼範例，請參閱[.NET SDK 範例](https://github.com/Azure-Samples/media-services-v3-dotnet)存放庫。

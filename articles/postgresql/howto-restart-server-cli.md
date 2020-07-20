@@ -1,19 +1,19 @@
 ---
-title: 重新啟動適用於 PostgreSQL-使用 Azure CLI 的單一伺服器的 Azure 資料庫
-description: 這篇文章將告訴您如何可以重新啟動 Azure Database for PostgreSQL-使用 Azure CLI 的單一伺服器
+title: 重新開機伺服器-Azure CLI-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
+description: 本文說明如何使用 Azure CLI 來重新開機適用於 PostgreSQL 的 Azure 資料庫單一伺服器
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 0a7cd815724fcebd6311860576e620eb9273523b
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: e6b3d6b4d08c699b9747bb5b0fe11ce471dc3fe9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65068985"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106640"
 ---
-# <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>重新啟動適用於 PostgreSQL-使用 Azure CLI 的單一伺服器的 Azure 資料庫
+# <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>重新開機適用於 PostgreSQL 的 Azure 資料庫-使用 Azure CLI 的單一伺服器
 本主題說明如何重新啟動適用於 PostgreSQL 的 Azure 資料庫伺服器。 您可能會為了進行維護而需要重新啟動伺服器，進而在伺服器執行作業時導致短暫中斷。
 
 如果服務忙碌中，系統會阻止伺服器重新啟動。 例如，該服務可能正在處理先前要求的作業，例如調整虛擬核心。
@@ -32,7 +32,7 @@ ms.locfileid: "65068985"
 
 ## <a name="restart-the-server"></a>重新啟動伺服器
 
-使用以下命令重启服务器：
+使用下列命令重新開機伺服器：
 
 ```azurecli-interactive
 az postgres server restart --name mydemoserver --resource-group myresourcegroup
@@ -40,4 +40,4 @@ az postgres server restart --name mydemoserver --resource-group myresourcegroup
 
 ## <a name="next-steps"></a>後續步驟
 
-了解[如何在 Azure Database for PostgreSQL 中设置参数](howto-configure-server-parameters-using-cli.md)
+瞭解[如何在適用於 PostgreSQL 的 Azure 資料庫中設定參數](howto-configure-server-parameters-using-cli.md)

@@ -1,0 +1,16 @@
+- name: 建立 Azure 遠端轉譯帳戶
+  href: create-an-account.md
+- name: 取得服務存取權杖
+  href: tokens.md
+- name: 設定驗證
+  href: authentication.md
+- name: 使用 Azure 前端 API 進行驗證
+  href: frontend-apis.md
+- name: 使用工作階段管理 REST API
+  href: session-rest-api.md
+- name: 轉換模型
+  href: conversion/toc.yml
+- name: 使用 Unity 進行遠端轉譯
+  href: unity/toc.yml
+- name: 建立用戶端效能追蹤
+  href: performance-tracing.md

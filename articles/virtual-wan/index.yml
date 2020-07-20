@@ -1,40 +1,69 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure 虛擬 WAN
+### YamlMime:Landing
+title: 虛擬 WAN 文件
+summary: 了解如何設定、建立和管理 Azure 虛擬 WAN。 建置安全的全域調整分支連線。
 metadata:
-  document_id: null
-  title: 虛擬 WAN 文件 - 教學課程和 API 參考 | Microsoft Docs
-  meta.description: 'Learn how to configure, create, and manage an Azure Virtual WAN. Build secure global scale branch connectivity.'
+  title: 虛擬 WAN 文件
+  description: 了解虛擬 WAN
   services: virtual-wan
-  author: cherylmc
-  manager: jeconnoc
   ms.service: virtual-wan
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 10/01/2018
+  author: cherylmc
   ms.author: cherylmc
-abstract:
-  description: 了解如何設定、建立和管理 Azure 虛擬 WAN。 建置安全的全域調整分支連線。
-sections:
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何使用 Azure 虛擬 WAN 來設定、建立和管理連線。
-      - type: list
-        style: unordered
-        className: spaced Bullet
-        items:
-          - html: <a href="/azure/virtual-wan/virtual-wan-site-to-site-portal">站對站連線</a>
-          - html: <a href="/azure/virtual-wan/virtual-wan-point-to-site-portal">點對站連線</a>
-          - html: <a href="/azure/virtual-wan/virtual-wan-expressroute-portal">ExpressRoute 連線</a>
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令列
-            html: '<p><a href="/powershell/module/az.network#networking">PowerShell</a></p><p><a href="/cli/azure/ext/virtual-wan">Azure CLI</a></p>'
-          - title: REST
-            html: '<p><a href="https://go.microsoft.com/fwlink/p/?linkid=2005000">REST API 參考</a></p>'
+  ms.date: 05/08/2020
+  ms.openlocfilehash: 14336a28630e7a62a19e2b3a51934950cf12e2f8
+  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 06/30/2020
+  ms.locfileid: "85564030"
+landingContent:
+- title: 關於虛擬 WAN
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是虛擬 WAN？
+      url: virtual-wan-about.md
+  - linkListType: concept
+    links:
+    - text: 使用位置與合作夥伴
+      url: virtual-wan-locations-partners.md
+    - text: 常見問題集
+      url: virtual-wan-faq.md
+- title: 開始使用
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 建立站對站連線
+      url: virtual-wan-site-to-site-portal.md
+    - text: 建立 ExpressRoute 關聯
+      url: virtual-wan-expressroute-portal.md
+    - text: 建立使用者 VPN (點對站) 連線
+      url: virtual-wan-point-to-site-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: 設定虛擬 WAN 夥伴自動化
+      url: virtual-wan-configure-automation-providers.md
+  - linkListType: concept
+    links:
+    - text: IPsec 連線的預設原則
+      url: virtual-wan-ipsec.md
+- title: 架構
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 遷移至虛擬 WAN
+      url: migrate-from-hub-spoke-topology.md
+    - text: 全域傳輸網路架構
+      url: virtual-wan-global-transit-network-architecture.md
+    - text: SD-WAN 連線架構
+      url: sd-wan-connectivity-architecture.md
+- title: 參考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/ext/virtual-wan/network
+    - text: Azure PowerShell
+      url: /powershell/module/az.network#networking
+    - text: REST
+      url: /rest/api/virtualwan

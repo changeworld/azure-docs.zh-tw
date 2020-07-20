@@ -1,29 +1,28 @@
 ---
-title: 快速入門 - 使用 PowerShell 建立 Azure Analysis Services 伺服器 | Microsoft Docs
+title: 快速入門 - 使用 PowerShell 建立 Azure Analysis Services - Azure Analysis Services | Microsoft Docs
 description: 了解如何使用 PowerShell 來建立 Azure Analysis Services 伺服器
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 01/09/2019
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fedc053d7869d9d5e85f890dcc707852a27df089
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: e2b772ac060e55d21341626772667d56245542ca
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011376"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80409942"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>快速入門：建立伺服器 - PowerShell
 
 本快速入門說明如何從命令列使用 PowerShell 在 Azure 訂用帳戶中建立 Azure Analysis Services 伺服器。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure 訂用帳戶**：瀏覽 [Azure 免費試用](https://azure.microsoft.com/offers/ms-azr-0044p/)來建立帳戶。
+- **Azure 訂用帳戶**︰瀏覽 [Azure 免費試用](https://azure.microsoft.com/offers/ms-azr-0044p/)建立帳戶。
 - **Azure Active Directory**：您的訂用帳戶必須與 Azure Active Directory 租用戶相關聯，而且您必須在該目錄中有一個帳戶。 若要深入了解，請參閱[驗證和使用者權限](analysis-services-manage-users.md)。
 - **Azure PowerShell**(英文)。 若要尋找已安裝的版本，請執行 `Get-Module -ListAvailable Az`。 若要安裝或升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。
 
@@ -45,7 +44,7 @@ Connect-AzAccount
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-[Azure 資源群組](../azure-resource-manager/resource-group-overview.md)是在其中以群組方式部署與管理 Azure 資源的邏輯容器。 當您建立伺服器時，必須指定您訂用帳戶中的資源群組。 如果您還沒有資源群組，可以使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令建立一個新的資源群組。 下列範例會在美國西部區域中建立一個名為 `myResourceGroup` 的資源群組。
+[Azure 資源群組](../azure-resource-manager/management/overview.md)是在其中以群組方式部署與管理 Azure 資源的邏輯容器。 當您建立伺服器時，必須指定您訂用帳戶中的資源群組。 如果您還沒有資源群組，可以使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令建立一個新的資源群組。 下列範例會在美國西部區域中建立一個名為 `myResourceGroup` 的資源群組。
 
 ```powershell
 New-AzResourceGroup -Name "myResourceGroup" -Location "WestUS"

@@ -1,88 +1,96 @@
 ---
 title: 匯入資料：模組參考
-titleSuffix: Azure Machine Learning service
-description: 了解如何在 Azure Machine Learning 服務中使用 「 匯入資料 」 模組，將資料載入到 machine learning 實驗中，從現有的雲端資料服務。
+titleSuffix: Azure Machine Learning
+description: 瞭解如何使用 Azure Machine Learning 中的匯入資料模組，將資料從現有的雲端資料服務載入機器學習管線。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: ed51c4e7b6c7d226c7827d1ba00bc96a7be1e6b0
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+author: likebupt
+ms.author: keli19
+ms.date: 10/22/2019
+ms.openlocfilehash: e47cb1180bbc6eaaaffd79b78563ab1b1d5e016a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028301"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611810"
 ---
 # <a name="import-data-module"></a>匯入資料模組
 
-本文說明 Azure Machine Learning 服務的視覺化介面 （預覽） 的模組。
+本文說明 Azure Machine Learning 設計工具 (預覽) 中的模組。
 
-使用此模組將資料載入到 machine learning 實驗中，從現有的雲端資料服務。  
-模組現在會提供精靈，可協助您選擇儲存體選項，並快速地設定所有的選項中選取 從現有的訂用帳戶和帳戶。 若要編輯現有的資料連接的需要嗎？ 沒問題，精靈會載入所有先前的組態詳細資料，讓您不必從頭重新啟動。 
-  
-定義您想要的資料連接到來源之後,[匯入資料](./import-data.md)推斷每個資料行的值，它包含，並將資料載入您的 Azure Machine Learning 工作區為基礎的資料類型。 輸出[匯入資料](./import-data.md)是可以搭配任何實驗的資料集。
+使用此模組，將資料從現有的雲端資料服務載入機器學習管線。 
 
-  
-如果您的來源資料變更時，您可以重新整理資料集，並加入新的資料重新執行[匯入資料](./import-data.md)。 不過，如果您不想重新讀取來源的每次執行實驗，選取**使用快取的結果**選項設為 TRUE。 選取此選項時，會檢查模組的實驗是否已執行先前使用相同的來源和相同的輸入的選項。 如果上一次執行找到，則使用快取中的資料，而不是重新載入從來源資料。
- 
+> [!Note]
+> 此模組所提供的所有功能都可以透過工作區登陸頁面中的**資料**存放區和**資料集**來完成。 我們建議**您使用資料**存放區和**資料集**，其中包含其他功能，例如資料監視。 若要深入瞭解，請參閱[如何存取資料](../how-to-access-data.md)和[如何註冊資料集](../how-to-create-register-datasets.md)一文。
+> 註冊資料集之後，您可以在設計工具介面的 [**資料**  ->  **集]** 類別目錄中找到它。 本課程模組已保留給 Studio （傳統）使用者使用，以獲得熟悉的體驗。 
+>
 
-## <a name="data-sources"></a>資料來源
+「匯**入資料**」模組支援從下列來源讀取資料：
 
-匯入資料模組支援下列資料來源。 按一下所需的詳細的指示和範例使用每個資料來源的連結。 
- 
-如果您不確定的方式或位置，您就應該儲存您的資料，請參閱本指南來 data science process 中的常見資料案例：[適用於 Azure Machine Learning 中進階分析案例](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-plan-sample-scenarios)。 
+- 透過 HTTP 的 URL
+- 透過[**資料存放區**](../how-to-access-data.md)的 Azure 雲端儲存體）
+    - Azure Blob 容器
+    - Azure 檔案共用
+    - Azure Data Lake
+    - Azure Data Lake Gen2
+    - Azure SQL Database
+    - Azure 于 postgresql    
+
+使用雲端存放裝置之前，您必須先在 Azure Machine Learning 工作區中註冊資料存放區。 如需詳細資訊，請參閱[如何存取資料](../how-to-access-data.md)。 
+
+定義您想要的資料並連接到來源之後，匯**[入資料](./import-data.md)** 會根據其包含的值來推斷每個資料行的資料類型，並將資料載入您的設計工具管線。 匯**入資料**的輸出是可以搭配任何設計工具管線使用的資料集。
+
+如果您的來源資料變更，您可以重新執行匯[入資料](./import-data.md)來重新整理資料集，並加入新的資料。
+
+> [!WARNING]
+> 如果您的工作區位於虛擬網路中，您必須將資料存放區設定為使用設計工具的資料視覺效果功能。 如需如何在虛擬網路中使用資料存放區和資料集的詳細資訊，請參閱[使用私人虛擬網路進行定型 & 推斷期間的網路隔離](../how-to-enable-virtual-network.md#machine-learning-studio)。
 
 
-|資料來源| 搭配使用|
-|-----------|-----------|  
-|[透過 HTTP 的 web URL](./import-from-web-url-via-http.md)|取得裝載於 web URL，會使用 HTTP，並已提供，以 CSV、 TSV、 ARFF 或 SvmLight 格式的資料|  
-|[從 Azure Blob 儲存體匯入](./import-from-azure-blob-storage.md) |取得儲存在 Azure blob 服務中的資料|  
+## <a name="how-to-configure-import-data"></a>如何設定匯入資料
 
-## <a name="how-to-use-import-data"></a>如何使用匯入資料
- 
-1. 新增**匯入資料**模組至您的實驗。 您可以找到此模組中的**資料輸入和輸出**介面中的類別。
+1. 將匯**入資料**模組新增至您的管線。 您可以在設計工具的 [**資料輸入和輸出**] 分類中找到此模組。
 
-2. 按一下 **啟動資料匯入精靈**設定資料來源，使用精靈。
+1. 選取模組以開啟右窗格。
 
-    精靈會取得帳戶名稱和認證，以及設定其他選項的說明。 如果您要編輯現有的組態，它會先載入目前的值。
+1. 選取 [**資料來源**]，然後選擇 [資料來源類型]。 它可以是 HTTP 或資料存放區。
 
-3. 如果您不想要使用此精靈，按一下**資料來源**，然後選擇您從讀取的雲端儲存體類型。 
+    如果您選擇 [資料存放區]，您可以選取已向 Azure Machine Learning 工作區註冊的現有資料存放區，或建立新的資料存放區。 然後在資料存放區中定義要匯入之資料的路徑。 您可以按一下 **[流覽路徑]** [匯 ![ 入-資料-路徑]，輕鬆地流覽路徑](media/module/import-data-path.png)
 
-    額外的設定取決於您選擇，儲存體類型和與否，是否保護儲存體。 您可能需要提供帳戶名稱、 檔案類型或認證。 某些來源不需要驗證;對於其他人，您可能需要知道帳戶名稱、 金鑰或容器名稱。
+1. 選取 [預覽] 架構，以篩選您想要包含的資料行。 您也可以在剖析選項中定義像是分隔符號的 advanced 設定。
 
-4. 選取 **使用快取的結果**選項，如果您想要快取在後續的執行中的重複使用的資料集。
+    ![匯入-資料-預覽](media/module/import-data.png)
 
-    假設已有模組參數沒有其他變更，則實驗會載入資料的第一個有更多的時間執行時，此模組，並之後使用 資料集的快取的版本。
+1. [重新產生**輸出**] 核取方塊會決定是否要執行模組，以便在執行時間重新產生輸出。 
 
-    如果您要重新載入資料每次執行實驗，請取消選取此選項。
+    預設為未選取，這表示如果模組先前已使用相同的參數執行，則系統會重複使用最後一次執行的輸出，以縮短執行時間。 
 
-5. 執行實驗。
+    如果選取此選項，系統會再次執行模組以重新產生輸出。 因此，當儲存體中的基礎資料更新時，請選取此選項，這有助於取得最新的資料。
 
-    當匯入資料會將資料載入的介面時，它會推斷值、 包含每個資料行的資料型別數值或類別。
 
-    - 如果標頭存在，標頭用來命名輸出資料集的資料行。
+1. 提交管線。
 
-    - 如果資料中不有任何現有的資料行標頭，使用格式 col1，col2，產生新的資料行名稱... coln *。
+    當 [匯入資料] 將資料載入設計工具時，它會根據其包含的值（數值或類別）來推斷每個資料行的資料類型。
+
+    如果標頭存在，則使用標頭來命名輸出資料集的資料行。
+
+    如果資料中沒有現有的資料行標頭，則會使用 col1 格式來產生新的資料行名稱，col2,.。。 , coln*.
 
 ## <a name="results"></a>結果
 
-匯入完成時，按一下 輸出資料集，然後選取**視覺化**以查看資料已成功匯入。
+當匯入完成時，按一下輸出資料集，然後選取 [**視覺化**] 以查看資料是否已成功匯入。
 
-如果您想要儲存的資料重複使用，而不是匯入新的資料集每次執行實驗時，請以滑鼠右鍵按一下輸出並選取**做為資料集儲存**。 選擇資料集的名稱。 儲存的資料集時儲存，保留的資料和資料時未更新重新執行實驗時，即使在實驗中的資料集的變更。 這可以方便建立快照集的資料。
+如果您想要儲存資料以供重複使用，而不是在每次執行管線時匯入新的資料集，請在模組的右面板中，選取 [**輸出**] 索引標籤底下的 [**註冊資料集**] 圖示。 選擇資料集的名稱。 儲存的資料集會在儲存時保留資料，而在重新執行管線時不會更新資料集，即使管線中的資料集變更也是一樣。 這有助於製作資料的快照集。
 
-在匯入資料之後, 它可能需要一些額外的準備工作，進行模型化和分析：
+匯入資料之後，可能需要一些額外的模型化和分析準備：
 
+- 使用 [[編輯中繼資料](./edit-metadata.md)] 來變更資料行名稱、將資料行處理為不同的資料類型，或表示某些資料行是標籤或特徵。
 
-- 使用[編輯中繼資料](./edit-metadata.md)變更資料行名稱，以處理資料行做為不同的資料類型，或是指出某些資料行是標籤或功能。
+- 使用 [[選取資料集中的資料行](./select-columns-in-dataset.md)]，即可選取要在模型化中轉換或使用的資料行子集。 您可以使用 [[加入資料行](./add-columns.md)] 模組，輕鬆地將已轉換或已移除的資料行重新加入至原始資料集。  
 
-- 使用 [選取資料集中的資料行](./select-columns-in-dataset.md)選取來轉換，或在模型中使用的資料行的子集。 已轉換或移除資料行可以輕鬆地重新加入至原始資料集使用[加入資料行](./add-columns.md)模組。  
-
-- 使用[資料分割和取樣](./partition-and-sample.md)來分割資料集、 執行取樣，或取得前 n 個資料列。
+- 使用[Partition 和 Sample](./partition-and-sample.md)來分割資料集、執行取樣，或取得前 n 個數據列。
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱[可用的模組集](module-reference.md)Azure Machine Learning 服務。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 

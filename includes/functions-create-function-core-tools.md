@@ -1,26 +1,24 @@
 ---
 title: 包含檔案
 description: 包含檔案
-services: functions
 author: ggailey777
-manager: jeconnoc
 ms.service: azure-functions
 ms.topic: include
 ms.date: 10/20/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 26789a12053fa6275b09836e706c391e181c8efd
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 21b7226bc82aa8041db6bbd29b4874814e2a47d0
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53429927"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279534"
 ---
 ## <a name="create-a-function"></a>建立函式
 
 下列命令會建立名為 `MyHttpTrigger` 的 HTTP 觸發函式。
 
-```bash
+```command
 func new --name MyHttpTrigger --template "HttpTrigger"
 ```
 

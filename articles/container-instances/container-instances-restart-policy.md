@@ -1,18 +1,14 @@
 ---
-title: 在 Azure Container Instances 中對於容器化工作使用重新啟動原則
+title: 執行一次工作的重新開機原則
 description: 了解如何使用 Azure Container Instances 來執行工作，該工作會執行到完成為止，例如建置、測試或映像轉譯作業。
-services: container-instances
-author: dlepow
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
-ms.author: danlep
-ms.openlocfilehash: 06872eefd0d500a22214109ad5055dd236b5a6ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a582036ae54a0b100b768e37bcf0d952521559d9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60608119"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261335"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>使用重新啟動原則執行容器化工作
 
@@ -46,7 +42,7 @@ az container create \
 
 ## <a name="run-to-completion-example"></a>執行至完成範例
 
-若要查看作用中的重新啟動原則，請從 Microsoft 中建立容器執行個體[aci wordcount] [ aci-wordcount-image]映像，並指定`OnFailure`重新啟動原則。 此範例容器會執行 Python 指令碼，根據預設，它會分析 Shakespeare 的 [Hamlet](http://shakespeare.mit.edu/hamlet/full.html) 的文字，將 10 個最常見的字詞寫入 STDOUT，然後結束。
+若要查看作用中的重新開機原則，請從 Microsoft [aci-wordcount][aci-wordcount-image]映射建立容器實例，然後指定 `OnFailure` 重新開機原則。 此範例容器會執行 Python 指令碼，根據預設，它會分析 Shakespeare 的 [Hamlet](http://shakespeare.mit.edu/hamlet/full.html) 的文字，將 10 個最常見的字詞寫入 STDOUT，然後結束。
 
 使用下列 [az container create][az-container-create] 命令執行範例容器：
 
@@ -58,10 +54,13 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Azure Container Instances 會啟動容器，然後在它的應用程式 (或者是這個案例中的指令碼) 結束時停止它。 當 Azure Container Instances 停止其重新啟動原則為 `Never` 或 `OnFailure` 的容器時，容器的狀態會設定為「已終止」。 您可以使用 [az container show][az-container-show] 命令來檢查容器的狀態：
+Azure Container Instances 會啟動容器，然後在它的應用程式 (或者是這個案例中的指令碼) 結束時停止它。 當 Azure Container Instances 停止其重新啟動原則為 `Never` 或 `OnFailure` 的容器時，容器的狀態會設定為「已終止」****。 您可以使用 [az container show][az-container-show] 命令來檢查容器的狀態：
 
 ```azurecli-interactive
-az container show --resource-group myResourceGroup --name mycontainer --query containers[0].instanceView.currentState.state
+az container show \
+    --resource-group myResourceGroup \
+    --name mycontainer \
+    --query containers[0].instanceView.currentState.state
 ```
 
 範例輸出︰
@@ -70,7 +69,7 @@ az container show --resource-group myResourceGroup --name mycontainer --query co
 "Terminated"
 ```
 
-一旦範例容器的狀態顯示「已終止」，您可以藉由檢視容器記錄來查看其工作輸出。 執行 [az container logs][az-container-logs] 命令以檢視指令碼的輸出：
+一旦範例容器的狀態顯示「已終止」**，您可以藉由檢視容器記錄來查看其工作輸出。 執行 [az container logs][az-container-logs] 命令以檢視指令碼的輸出：
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer
@@ -91,13 +90,13 @@ az container logs --resource-group myResourceGroup --name mycontainer
  ('HAMLET', 386)]
 ```
 
-這個範例會顯示指令碼傳送到 STDOUT 的輸出。 您容器化工作，不過，可能會改為將其輸出寫入永續性儲存體以供日後擷取。 例如，寫入至 [Azure 檔案共用](container-instances-mounting-azure-files-volume.md)。
+這個範例會顯示指令碼傳送到 STDOUT 的輸出。 您容器化工作，不過，可能會改為將其輸出寫入永續性儲存體以供日後擷取。 例如，寫入至 [Azure 檔案共用](./container-instances-volume-azure-files.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-以工作為基礎的案例，例如 batch 處理大型資料集與數個容器，可以利用自訂[環境變數](container-instances-environment-variables.md)或是[命令列](container-instances-start-command.md)在執行階段。
+以工作為基礎的案例，例如批次處理含有數個容器的大型資料集，可以在執行時間利用自訂[環境變數](container-instances-environment-variables.md)或[命令列](container-instances-start-command.md)。
 
-如需如何保存執行至完成之容器的輸入的詳細資訊，請參閱[使用 Azure Container Instances 來掛接 Azure 檔案共用](container-instances-mounting-azure-files-volume.md)。
+如需如何保存執行至完成之容器的輸入的詳細資訊，請參閱[使用 Azure Container Instances 來掛接 Azure 檔案共用](./container-instances-volume-azure-files.md)。
 
 <!-- LINKS - External -->
 [aci-wordcount-image]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount

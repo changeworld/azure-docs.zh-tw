@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: a3ccf76b2722c04a9353fcc7020ff1387bc454c6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60860303"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67174182"
 ---
 #### <a name="to-install-an-update-from-the-azure-portal"></a>從 Azure 入口網站安裝更新
 
@@ -17,15 +17,15 @@ ms.locfileid: "60860303"
 
     ![選取裝置](./media/storsimple-8000-install-update4-via-portal/update1.png)
 
-2. 瀏覽至 [裝置設定] > [裝置更新]。
+2. 流覽至 [**裝置設定**] [  >  **裝置更新**]。
 
     ![按一下 [裝置更新]](./media/storsimple-8000-install-update4-via-portal/update2.png)
 
-2. 有新的更新可用時，會顯示通知。 或者，在 [裝置更新] 刀鋒視窗中，按一下 [掃描更新]。 系統會建立用來掃描可用更新的作業。 當作業成功完成時，系統會通知您。
+2. 有新的更新可用時，會顯示通知。 或者，在 [裝置更新]**** 刀鋒視窗中，按一下 [掃描更新]****。 系統會建立用來掃描可用更新的作業。 當作業成功完成時，系統會通知您。
 
     ![按一下 [裝置更新]](./media/storsimple-8000-install-update4-via-portal/update3.png)
 
-3. 我們建議您先檢閱版本資訊，然後再於裝置上套用更新。 若要套用更新，請按一下 [安裝更新]。 在 [確認定期更新] 刀鋒視窗中，檢閱要完成的必要條件後，才能套用更新。 選取核取方塊，指出您已準備好更新裝置，然後按一下 [安裝]。
+3. 我們建議您先檢閱版本資訊，然後再於裝置上套用更新。 若要套用更新，請按一下 [安裝更新]****。 在 [確認定期更新]**** 刀鋒視窗中，檢閱要完成的必要條件後，才能套用更新。 選取核取方塊，指出您已準備好更新裝置，然後按一下 [安裝]****。
 
     ![按一下 [裝置更新]](./media/storsimple-8000-install-update4-via-portal/update4.png)
 
@@ -43,15 +43,15 @@ ms.locfileid: "60860303"
    
     接著，更新會套用到您的裝置上。
 
-9. 更新需要幾個小時才能完成。 隨時可選取更新工作並按一下 [詳細資料]  來檢視工作的詳細資料。
+9. 更新需要幾個小時才能完成。 隨時可選取更新工作並按一下 [詳細資料] **** 來檢視工作的詳細資料。
 
     ![建立更新工作](./media/storsimple-8000-install-update4-via-portal/update8.png)
 
-     您也可以從 [裝置設定] > [作業] 來監視更新作業的進度。 在 [作業] 刀鋒視窗中，您可以看到更新進度。
+     您也可以從 [裝置設定] > [作業]**** 來監視更新作業的進度。 在 [作業]**** 刀鋒視窗中，您可以看到更新進度。
 
      ![建立更新工作](./media/storsimple-8000-install-update4-via-portal/update7.png)
 
-10. 作業完成後，瀏覽至 [裝置設定] > [裝置更新]。 現在應該已更新軟體版本。
+10. 作業完成後，瀏覽至 [裝置設定] > [裝置更新]****。 現在應該已更新軟體版本。
 
    ![建立更新工作](./media/storsimple-8000-install-update4-via-portal/update9.png)
 

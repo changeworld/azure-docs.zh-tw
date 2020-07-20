@@ -1,0 +1,1309 @@
+### YamlMime:Hub
+title: Azure 文件
+summary: 了解如何使用 Microsoft Azure 雲端服務建置和管理功能強大的應用程式。 取得文件、程式碼範例、教學課程等資訊。
+brand: azure
+metadata:
+  title: Azure 文件
+  description: 了解如何使用 Microsoft Azure 雲端服務建置和管理功能強大的應用程式。 取得文件、程式碼範例、教學課程等資訊。
+  services: azure
+  ms.service: azure
+  ms.topic: hub-page
+  author: rolyon
+  ms.author: rolyon
+  ms.date: 02/27/2020
+  featureFlags:
+  - clicktale
+  ms.openlocfilehash: fe377424c1a10b1356718d3c8c0d90a6a3db4d63
+  ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 07/08/2020
+  ms.locfileid: "86134352"
+highlightedContent:
+  items:
+  - title: Azure 開發人員開始使用指南
+    itemType: get-started
+    url: guides/developer/azure-developer-guide.md
+  - title: 使用 Azure 架構中心設定應用程式
+    itemType: architecture
+    url: https://docs.microsoft.com/azure/architecture/
+  - title: 使用雲端採用架構準備您的組織
+    itemType: overview
+    url: https://docs.microsoft.com/azure/cloud-adoption-framework/
+  - title: 透過 Microsoft Learn 增進您的技巧
+    itemType: learn
+    url: https://docs.microsoft.com/learn/browse/?products=azure&resource_type=learning+path
+productDirectory:
+  title: 瀏覽 Azure 產品
+  items:
+  - title: 異常偵測器 (預覽)
+    summary: 輕鬆為應用程式賦予異常偵測功能
+    imageSrc: https://static.docs.com/ui/media/product/azure/anomaly-detector.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/anomaly-detector/index.yml
+  - title: Azure Bot 服務
+    summary: 智慧型、無伺服器 bot 服務，可依需求進行調整
+    imageSrc: https://static.docs.com/ui/media/product/azure/bot-service.svg
+    azureCategories:
+    - ai-machine-learning
+    url: https://docs.microsoft.com/azure/bot-service/
+  - title: Azue 認知搜尋
+    summary: 適用於行動和 Web 應用程式開發，並採用 AI 技術的雲端搜尋服務
+    imageSrc: https://static.docs.com/ui/media/product/azure/search.svg
+    azureCategories:
+    - ai-machine-learning
+    - web
+    url: search/index.yml
+  - title: Azure 認知服務
+    summary: 新增智慧 API 功能以進行內容相關的互動
+    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
+    azureCategories:
+    - featured
+    - ai-machine-learning
+    url: cognitive-services/index.yml
+  - title: Azure Databricks
+    summary: 快速、簡單且共同作業的 Apache Spark 架構分析平台
+    imageSrc: https://static.docs.com/ui/media/product/azure/databricks.svg
+    azureCategories:
+    - ai-machine-learning
+    - analytics
+    url: /azure/databricks/
+  - title: Azure Machine Learning
+    summary: 以包含測試和模型管理的端對端、可擴充且受信任的平台，將 AI 功能提供給所有人
+    imageSrc: https://static.docs.com/ui/media/product/azure/machine-learning.svg
+    azureCategories:
+    - ai-machine-learning
+    - iot
+    url: machine-learning/index.yml
+  - title: Azure 開放資料集
+    summary: 雲端平台可提供主機服務並共用策劃開放資料集，以加速機器學習模型的開發
+    imageSrc: https://static.docs.com/ui/media/product/azure/open-datasets.svg
+    azureCategories:
+    - ai-machine-learning
+    url: open-datasets/index.yml
+  - title: Azure RTOS
+    summary: 輕鬆開發和連線內嵌的 IoT
+    imageSrc: https://static.docs.com/ui/media/product/azure/rtos.svg
+    azureCategories:
+    - iot
+    url: https://docs.microsoft.com/azure/rtos/
+  - title: Bing 自動建議
+    summary: 為應用程式提供智慧型自動搜尋建議
+    imageSrc: ./media/index/API_Bing_AutoSuggest.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/bing-autosuggest/get-suggested-search-terms.md
+  - title: Bing 自訂搜尋
+    summary: 使用容易且全無廣告的商業級搜尋工具，可讓您提供所需的結果
+    imageSrc: ./media/index/API_Bing_Custom_Search.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/bing-custom-search/overview.md
+  - title: Bing 實體搜尋
+    summary: 從網路找出實體資訊並加以擴充，讓體驗更加豐富
+    imageSrc: ./media/index/API_Bing_Entity_Search.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/bing-entities-search/overview.md
+  - title: Bing 影像搜尋
+    summary: 搜尋影像並取得全面性的結果
+    imageSrc: ./media/index/API_Bing_Image_Search.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/bing-image-search/overview.md
+  - title: Bing 新聞搜尋
+    summary: 搜尋新聞並取得全面性的結果
+    imageSrc: ./media/index/API_Bing_News_Search.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/bing-news-search/search-the-web.md
+  - title: Bing 拼字檢查
+    summary: 偵測並校正應用程式中的拼字錯誤
+    imageSrc: ./media/index/API_Bing_Spell_Check.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/bing-spell-check/overview.md
+  - title: Bing 影片搜尋
+    summary: 搜尋影片並取得全面性的結果
+    imageSrc: ./media/index/API_Bing_Video_Search.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/bing-video-search/overview.md
+  - title: Bing 圖像式搜尋
+    summary: 取得豐富的各式想法，協助您在慣用的裝置上打造吸引人的影像應用程式
+    imageSrc: ./media/index/API_Bing_Visual_Search.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/bing-visual-search/overview.md
+  - title: Bing Web 搜尋
+    summary: 從數以十億計的 Web 文件取得增強的搜尋詳細資料
+    imageSrc: ./media/index/API_Bing_Web_Search.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/bing-web-search/overview.md
+  - title: 電腦視覺
+    summary: 從影像擷取可操作的資訊
+    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/computer-vision/index.yml
+  - title: 內容仲裁
+    summary: 自動審核影像、文字及影片
+    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/content-moderator/index.yml
+  - title: 自訂視覺
+    summary: 輕鬆自訂先進且適合您獨特使用案例的電腦視覺模型
+    imageSrc: https://static.docs.com/ui/media/product/azure/custom-vision.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/Custom-Vision-Service/index.yml
+  - title: 資料科學虛擬機器
+    summary: 為 AI 開發預先設定豐富的環境
+    imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
+    azureCategories:
+    - ai-machine-learning
+    url: machine-learning/data-science-virtual-machine/index.yml
+  - title: 臉部
+    summary: 偵測、識別、分析、組織和標記相片中的臉孔
+    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/face/index.yml
+  - title: 表單辨識器 (預覽)
+    summary: 具 AI 功能的文件擷取服務，能夠理解您的表單
+    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/form-recognizer/index.yml
+  - title: 沈浸式閱讀程式 (預覽)
+    summary: 讓年齡層和活動能力不同的使用者們都能閱讀和理解文字
+    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/immersive-reader/index.yml
+  - title: 筆跡辨識器 (預覽)
+    summary: 能夠辨識數位筆跡內容的 AI 服務，例如手寫、圖形及筆跡文件的版面配置
+    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/ink-recognizer/index.yml
+  - title: Kinect DK
+    summary: 使用具有進階 AI 感應器的開發人員套件構建電腦視覺和語音模型
+    imageSrc: ./media/index/kinect-viewer.svg
+    azureCategories:
+    - ai-machine-learning
+    - iot
+    - mixed-reality
+    url: kinect-dk/index.yml
+  - title: Language Understanding
+    summary: 教導您的應用程式理解使用者發出的命令
+    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/luis/index.yml
+  - title: Microsoft Genomics
+    summary: 支援基因組定序及研究深入解析
+    imageSrc: https://static.docs.com/ui/media/product/azure/genomics.svg
+    azureCategories:
+    - ai-machine-learning
+    url: genomics/index.yml
+  - title: 個人化工具
+    summary: 提供個人化使用者體驗的 AI 服務
+    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/personalizer/index.yml
+  - title: Project Bonsai (預覽)
+    summary: 使用模擬建立智慧型工業控制系統的機器教學服務
+    imageSrc: https://static.docs.com/ui/media/product/azure/bonsai.svg
+    azureCategories:
+    - ai-machine-learning
+    url: https://docs.microsoft.com/bonsai/
+  - title: QnA Maker
+    summary: 將資訊整理成易於導覽的交談式回答
+    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/qnamaker/index.yml
+  - title: 說話者辨識 (預覽)
+    summary: 使用語音來辨識及驗證各個說話者
+    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/speaker-recognition/home.md
+  - title: 語音轉換文字
+    summary: 將口語音訊轉換為文字，以進行更多自然互動
+    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
+    azureCategories:
+    - ai-machine-learning
+    url: https://docs.microsoft.com/azure/cognitive-services/speech-service/index#pivot=start&panel=speechtotext
+  - title: 語音翻譯
+    summary: 輕鬆地將即時語音翻譯整合到您的應用程式
+    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
+    azureCategories:
+    - ai-machine-learning
+    url: https://docs.microsoft.com/azure/cognitive-services/speech-service/index#pivot=start&panel=speechtranslation
+  - title: 文字分析
+    summary: 輕鬆解讀意見與話題，從而了解使用者的需求
+    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/text-analytics/index.yml
+  - title: 文字轉語音
+    summary: 將文字轉換成語音以建立更自然且容易存取的介面
+    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
+    azureCategories:
+    - ai-machine-learning
+    url: https://docs.microsoft.com/azure/cognitive-services/speech-service/index#pivot=start&panel=texttospeech
+  - title: 翻譯文字
+    summary: 使用簡單的 REST API 呼叫，輕鬆進行機器翻譯
+    imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
+    azureCategories:
+    - ai-machine-learning
+    url: cognitive-services/translator/index.yml
+  - title: 影片索引子
+    summary: 深入探索影片
+    imageSrc: https://static.docs.com/ui/media/product/azure/media-services.svg
+    azureCategories:
+    - ai-machine-learning
+    - media
+    url: media-services/video-indexer/index.yml
+  - title: Azure Analysis Services
+    summary: 企業級分析引擎即服務
+    imageSrc: https://static.docs.com/ui/media/product/azure/analysis-services.svg
+    azureCategories:
+    - analytics
+    url: analysis-services/index.yml
+  - title: Azure 資料總管
+    summary: 快速又可高度調整的資料探索服務
+    imageSrc: https://static.docs.com/ui/media/product/azure/data-explorer.svg
+    azureCategories:
+    - analytics
+    url: /azure/data-explorer
+  - title: Azure Data Lake 儲存體
+    summary: 建基於 Azure Blob 儲存體，能夠大幅調整且安全的 Data Lake 功能
+    imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
+    azureCategories:
+    - analytics
+    - storage
+    url: storage/blobs/data-lake-storage-introduction.md
+  - title: Azure Data Share
+    summary: 這是一項簡易又安全的服務，可用來與外部組織共用巨量資料
+    imageSrc: https://static.docs.com/ui/media/product/azure/data-shares.svg
+    azureCategories:
+    - analytics
+    - storage
+    url: data-share/index.yml
+  - title: Azure 串流分析
+    summary: 從數百萬台 IoT 裝置即時資料串流處理
+    imageSrc: https://static.docs.com/ui/media/product/azure/stream-analytics.svg
+    azureCategories:
+    - analytics
+    - iot
+    url: stream-analytics/index.yml
+  - title: Azure Synapse Analytics
+    summary: 無限制的分析服務，且深入解析時效超凡 (先前稱為 SQL 資料倉儲)
+    imageSrc: https://static.docs.com/ui/media/product/azure/synapse.svg
+    azureCategories:
+    - analytics
+    url: synapse-analytics/sql-data-warehouse/index.yml
+  - title: 資料目錄
+    summary: 讓企業資料資產發揮更大的價值
+    imageSrc: https://static.docs.com/ui/media/product/azure/data-catalog.svg
+    azureCategories:
+    - analytics
+    url: data-catalog/index.yml
+  - title: Data Factory
+    summary: 企業規模的輕鬆混合式資料整合
+    imageSrc: https://static.docs.com/ui/media/product/azure/data-factory.svg
+    azureCategories:
+    - analytics
+    url: data-factory/index.yml
+  - title: 資料湖分析
+    summary: 分散式分析服務讓巨量資料更容易上手
+    imageSrc: https://static.docs.com/ui/media/product/azure/data-lake-analytics.svg
+    azureCategories:
+    - analytics
+    url: data-lake-analytics/index.yml
+  - title: 事件中樞
+    summary: 從數百萬台裝置接收遙測
+    imageSrc: https://static.docs.com/ui/media/product/azure/event-hubs.svg
+    azureCategories:
+    - analytics
+    url: event-hubs/index.yml
+  - title: HDInsight
+    summary: 佈建雲端 Hadoop、Spark、R Server、HBase 及 Storm 叢集
+    imageSrc: https://static.docs.com/ui/media/product/azure/hdinsight.svg
+    azureCategories:
+    - analytics
+    url: hdinsight/index.yml
+  - title: Log Analytics
+    summary: 可完整檢視應用程式、基礎結構和網路
+    imageSrc: https://static.docs.com/ui/media/product/azure/log-analytics.svg
+    azureCategories:
+    - analytics
+    - management-and-governance
+    url: azure-monitor/index.yml
+  - title: Power BI Embedded
+    summary: 在應用程式中內嵌絢麗的全互動式資料視覺效果
+    imageSrc: https://static.docs.com/ui/media/product/azure/power-bi.svg
+    azureCategories:
+    - analytics
+    url: https://docs.microsoft.com/power-bi/developer/azure-pbie-what-is-power-bi-embedded
+  - title: R Server for HDInsight
+    summary: 適用於巨量資料的預測性分析、機器學習服務與統計模型
+    imageSrc: https://static.docs.com/ui/media/product/azure/hdinsight.svg
+    azureCategories:
+    - analytics
+    url: hdinsight/r-server/r-server-overview.md
+  - title: Azure 區塊鏈服務 (預覽)
+    summary: 建置、控管和擴展聯盟區塊鏈網路
+    imageSrc: https://static.docs.com/ui/media/product/azure/blockchain-service.svg
+    azureCategories:
+    - blockchain
+    url: blockchain/service/index.yml
+  - title: Azure Blockchain Workbench (預覽)
+    summary: 在雲端中輕鬆建立區塊鏈應用程式的原型
+    imageSrc: https://static.docs.com/ui/media/product/azure/blockchain-workbench.svg
+    azureCategories:
+    - blockchain
+    url: blockchain/workbench/index.yml
+  - title: Azure Cosmos DB
+    summary: 全域散發的多模型資料庫，適用於任何規模
+    imageSrc: https://static.docs.com/ui/media/product/azure/cosmos-db.svg
+    azureCategories:
+    - featured
+    - blockchain
+    - databases
+    - iot
+    url: cosmos-db/index.yml
+  - title: Logic Apps
+    summary: 無需撰寫程式碼，就能跨雲端自動存取並使用資料
+    imageSrc: https://static.docs.com/ui/media/product/azure/logic-apps.svg
+    azureCategories:
+    - blockchain
+    - integration
+    - iot
+    url: logic-apps/index.yml
+  - title: API Apps
+    summary: 輕鬆建置和取用雲端 API
+    imageSrc: https://static.docs.com/ui/media/product/azure/api-apps.svg
+    azureCategories:
+    - compute
+    - containers
+    - mobile
+    - web
+    url: app-service/index.yml
+  - title: App Service 方案
+    summary: 為網頁和行動裝置快速建立強大的雲端應用程式
+    imageSrc: https://static.docs.com/ui/media/product/azure/app-service.svg
+    azureCategories:
+    - featured
+    - compute
+    - mobile
+    - web
+    url: app-service/index.yml
+  - title: Azure CycleCloud
+    summary: 建立、管理及操作任何規模的 HPC 和大型計算叢集，並予以最佳化
+    imageSrc: ./media/index/logo_cyclecloud.svg
+    azureCategories:
+    - compute
+    url: https://docs.microsoft.com/azure/cyclecloud/index
+  - title: Azure 專用主機
+    summary: 裝載適用於 Windows 和 Linux 的 Azure VM 的專用實體伺服器
+    imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
+    azureCategories:
+    - compute
+    url: virtual-machines/windows/dedicated-hosts.md
+  - title: Azure Functions
+    summary: 以無伺服器程式碼處理事件
+    imageSrc: https://static.docs.com/ui/media/product/azure/functions.svg
+    azureCategories:
+    - featured
+    - compute
+    - containers
+    - iot
+    url: azure-functions/index.yml
+  - title: Azure Kubernetes Service (AKS)
+    summary: 簡化 Kubernetes 的部署、管理與作業
+    imageSrc: https://static.docs.com/ui/media/product/azure/kubernetes-services.svg
+    azureCategories:
+    - featured
+    - compute
+    - containers
+    url: aks/index.yml
+  - title: Azure Spring Cloud
+    summary: 與 Pivotal 共同建置和運作完全受控的 Spring Cloud 服務
+    imageSrc: https://static.docs.com/ui/media/product/azure/spring-cloud.svg
+    azureCategories:
+    - compute
+    - web
+    url: spring-cloud/index.yml
+  - title: Azure VMware 解決方案
+    summary: 在 Azure 上以原生方式執行 VMware 工作負載
+    imageSrc: ./media/index/azure-vmware.svg
+    azureCategories:
+    - compute
+    url: azure-vmware/index.yml
+  - title: Batch
+    summary: 雲端化作業排程和計算管理
+    imageSrc: https://static.docs.com/ui/media/product/azure/batch-accounts.svg
+    azureCategories:
+    - compute
+    url: batch/index.yml
+  - title: 雲端服務
+    summary: 建立高可用性、可無限擴充的雲端應用程式及 API
+    imageSrc: https://static.docs.com/ui/media/product/azure/cloud-services.svg
+    azureCategories:
+    - compute
+    url: cloud-services/index.yml
+  - title: Container Instances
+    summary: 輕鬆在 Azure 上執行容器而不必管理伺服器
+    imageSrc: https://static.docs.com/ui/media/product/azure/container-instances.svg
+    azureCategories:
+    - compute
+    - containers
+    url: container-instances/index.yml
+  - title: Linux 虛擬機器
+    summary: 佈建 Ubuntu、Red Hat 等的虛擬機器
+    imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
+    azureCategories:
+    - featured
+    - compute
+    url: virtual-machines/linux/index.yml
+  - title: Azure 上的 SAP HANA 大型執行個體
+    summary: 執行任何超大規模雲端提供者的最大 SAP HANA 工作負載
+    imageSrc: https://static.docs.com/ui/media/product/azure/sap.svg
+    azureCategories:
+    - compute
+    url: virtual-machines/workloads/sap/hana-overview-architecture.md
+  - title: Service Fabric
+    summary: 在 Windows 或 Linux 上開發微服務及協調容器
+    imageSrc: https://static.docs.com/ui/media/product/azure/service-fabric-clusters.svg
+    azureCategories:
+    - compute
+    - containers
+    url: service-fabric/index.yml
+  - title: Azure 虛擬機器上的 SQL Server
+    summary: 將企業 SQL Server 應用程式裝載於雲端
+    imageSrc: https://static.docs.com/ui/media/product/azure/sql-server-vm.svg
+    azureCategories:
+    - compute
+    - databases
+    url: https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json
+  - title: 靜態 Web 應用程式
+    summary: 從 GitHub 存放庫建立完整的堆疊 Web 應用程式並部署至 Azure
+    imageSrc: ./media/index/static-apps.svg
+    azureCategories:
+    - compute
+    - web
+    url: static-web-apps/index.yml
+  - title: 虛擬機器擴展集
+    summary: 管理及擴大到上千部 Linux 及 Windows 虛擬機器
+    imageSrc: https://static.docs.com/ui/media/product/azure/vm-scale-sets.svg
+    azureCategories:
+    - compute
+    url: virtual-machine-scale-sets/index.yml
+  - title: Web Apps
+    summary: 快速且大規模地建立及部署任務關鍵性 Web 應用程式
+    imageSrc: https://static.docs.com/ui/media/product/azure/app-service.svg
+    azureCategories:
+    - compute
+    - containers
+    - mobile
+    - web
+    url: app-service/index.yml
+  - title: Windows 虛擬桌面
+    summary: 由 Azure 傳遞的最佳虛擬桌面體驗
+    imageSrc: https://static.docs.com/ui/media/product/azure/windows-virtual-desktop.svg
+    azureCategories:
+    - featured
+    - compute
+    - windows-virtual-desktop
+    url: virtual-desktop/index.yml
+  - title: Windows 虛擬機器
+    summary: 在短短幾秒內就能佈建 Windows 虛擬機器
+    imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
+    azureCategories:
+    - featured
+    - compute
+    url: virtual-machines/windows/index.yml
+  - title: Azure 開發人員空間
+    summary: 在 Azure AKS 中測試並反覆開發微服務應用程式
+    imageSrc: ./media/index/AzureDevSpaceController_50x.svg
+    azureCategories:
+    - containers
+    - developer-tools
+    url: dev-spaces/index.yml
+  - title: Azure Red Hat OpenShift
+    summary: 與 Red Hat 共同經營的完全受控 OpenShift 服務
+    imageSrc: https://static.docs.com/ui/media/product/azure/openshift.svg
+    azureCategories:
+    - containers
+    url: virtual-machines/linux/openshift-get-started.md
+  - title: Container Registry
+    summary: 儲存及管理所有 Azure 部署類型的容器映像
+    imageSrc: https://static.docs.com/ui/media/product/azure/container-registry.svg
+    azureCategories:
+    - containers
+    url: container-registry/index.yml
+  - title: 適用於容器的 Web 應用程式
+    summary: 輕鬆部署及執行可隨業務調整的容器化 Web 應用程式
+    imageSrc: https://static.docs.com/ui/media/product/azure/web-apps-containers.svg
+    azureCategories:
+    - containers
+    - mobile
+    - web
+    url: app-service/containers/index.yml
+  - title: 適用於 FHIR 的 Azure API
+    summary: 輕鬆針對醫療資料解決方案與互通性建立與部署 FHIR 服務
+    imageSrc: https://static.docs.com/ui/media/product/azure/api-for-fhir.svg
+    azureCategories:
+    - databases
+    - integration
+    url: healthcare-apis/index.yml
+  - title: Azure Cache for Redis
+    summary: 讓應用程式具備高輸送量及低延遲資料存取
+    imageSrc: https://static.docs.com/ui/media/product/azure/cache-redis.svg
+    azureCategories:
+    - databases
+    url: azure-cache-for-redis/index.yml
+  - title: 適用於 MariaDB 的 Azure 資料庫
+    summary: 適用於應用程式開發人員的受控 MariaDB 資料庫服務
+    imageSrc: https://static.docs.com/ui/media/product/azure/database-mariadb-server.svg
+    azureCategories:
+    - databases
+    url: mariadb/index.yml
+  - title: 適用於 MySQL 的 Azure 資料庫
+    summary: 適用於應用程式開發人員的受控 MySQL 資料庫服務
+    imageSrc: https://static.docs.com/ui/media/product/azure/database-mysql-server.svg
+    azureCategories:
+    - databases
+    url: mysql/index.yml
+  - title: 適用於 PostgreSQL 的 Azure 資料庫
+    summary: 適用於應用程式開發人員的受控 PostgreSQL 資料庫服務
+    imageSrc: https://static.docs.com/ui/media/product/azure/database-postgresql-server.svg
+    azureCategories:
+    - databases
+    - hybrid
+    url: postgresql/index.yml
+  - title: Azure 資料庫移轉服務
+    summary: 簡化內部部署資料庫移轉到雲端的過程
+    imageSrc: https://static.docs.com/ui/media/product/azure/database-migration-services.svg
+    azureCategories:
+    - databases
+    - migration
+    url: dms/index.yml
+  - title: Azure SQL
+    summary: 適用於遷移和應用程式現代化的現代化 SQL 系列
+    imageSrc: https://static.docs.com/ui/media/product/azure/sql.svg
+    azureCategories:
+    - featured
+    - hybrid
+    - databases
+    url: azure-sql/index.yml
+  - title: Azure SQL Database
+    summary: 雲端中的智慧型受控 SQL
+    imageSrc: https://static.docs.com/ui/media/product/azure/sql-database.svg
+    azureCategories:
+    - databases
+    url: azure-sql/database/index.yml
+  - title: Azure SQL 受控執行個體
+    summary: 雲端中的受控、一律保持最新的 SQL 執行個體
+    imageSrc: https://static.docs.com/ui/media/product/azure/sql-managed-instance.svg
+    azureCategories:
+    - databases
+    url: azure-sql/managed-instance/index.yml
+  - title: Azure SQL Edge (預覽)
+    summary: 磁碟使用量低、邊緣最佳化的資料引擎，並內建 AI
+    imageSrc: https://static.docs.com/ui/media/product/azure/sql-database-edge.svg
+    azureCategories:
+    - databases
+    - iot
+    url: azure-sql-edge/index.yml
+  - title: 表格儲存體
+    summary: NoSQL 索引鍵值存放區，使用半結構化資料集
+    imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
+    azureCategories:
+    - databases
+    url: cosmos-db/table-storage-overview.md
+  - title: 應用程式組態
+    summary: 快速、可調整的應用程式組態參數儲存空間
+    imageSrc: https://static.docs.com/ui/media/product/azure/app-configuration.svg
+    azureCategories:
+    - developer-tools
+    url: azure-app-configuration/index.yml
+  - title: Azure Data Studio
+    summary: 一種可執行隨選 SQL 查詢、檢視結果並將其儲存為文字、JSON 或 Excel 的輕量編輯器。
+    imageSrc: https://docs.microsoft.com/sql/tools/media/overview-sql-tools/azure-data-studio.svg
+    azureCategories:
+    - developer-tools
+    url: https://docs.microsoft.com/sql/azure-data-studio/
+  - title: Azure DevOps
+    summary: 供團隊分享程式碼、追蹤工作及送出軟體的服務
+    imageSrc: https://static.docs.com/ui/media/product/azure/devops.svg
+    azureCategories:
+    - developer-tools
+    - devops
+    - hybrid
+    url: https://docs.microsoft.com/azure/devops/
+  - title: Azure DevTest Labs
+    summary: 使用可重複使用的範本及構件來快速建立環境
+    imageSrc: https://static.docs.com/ui/media/product/azure/devtest-labs.svg
+    azureCategories:
+    - developer-tools
+    - devops
+    url: lab-services/index.yml
+  - title: Azure 實驗室服務
+    summary: 為教室、試用、開發與測試以及其他案例設定實驗室
+    imageSrc: https://static.docs.com/ui/media/product/azure/lab-services.svg
+    azureCategories:
+    - developer-tools
+    url: lab-services/index.yml
+  - title: Azure Pipelines
+    summary: 持續建置、測試及部署到任何平台與雲端
+    imageSrc: https://static.docs.com/ui/media/product/azure/pipelines.svg
+    azureCategories:
+    - developer-tools
+    - devops
+    url: https://docs.microsoft.com/azure/devops/pipelines/
+  - title: Visual Studio
+    summary: 雲端中具彈性且功能強大的應用程式開發環境
+    imageSrc: https://docs.microsoft.com/media/logos/logo_visual-studio.svg
+    azureCategories:
+    - developer-tools
+    url: https://docs.microsoft.com/visualstudio/
+  - title: Visual Studio Code
+    summary: 適合雲端開發，功能強大的輕量型程式碼編輯器
+    imageSrc: https://docs.microsoft.com/media/logos/logo_vs-code.svg
+    azureCategories:
+    - developer-tools
+    url: https://code.visualstudio.com/docs
+  - title: Visual Studio 程式碼空間 (預覽)
+    summary: 可從所有位置存取且具雲端支援的開發環境
+    imageSrc: https://docs.microsoft.com/media/logos/logo_visual-studio.svg
+    azureCategories:
+    - developer-tools
+    url: https://docs.microsoft.com/visualstudio/online/overview/what-is-vsonline
+  - title: Application Insights
+    summary: 可完整觀察您的應用程式、基礎結構和網路
+    imageSrc: https://static.docs.com/ui/media/product/azure/application-insights.svg
+    azureCategories:
+    - devops
+    - management-and-governance
+    url: azure-monitor/index.yml
+  - title: Azure Artifacts
+    summary: 建立、裝載套件並與小組共用
+    imageSrc: https://static.docs.com/ui/media/product/azure/artifacts.svg
+    azureCategories:
+    - devops
+    url: https://docs.microsoft.com/azure/devops/artifacts/
+  - title: Azure Boards
+    summary: 所有小組一起規劃、追蹤及討論工作
+    imageSrc: https://static.docs.com/ui/media/product/azure/boards.svg
+    azureCategories:
+    - devops
+    url: https://docs.microsoft.com/azure/devops/boards/
+  - title: Azure 監視器
+    summary: 可完整觀察您的應用程式、基礎結構和網路
+    imageSrc: https://static.docs.com/ui/media/product/azure/monitor.svg
+    azureCategories:
+    - devops
+    - management-and-governance
+    url: azure-monitor/index.yml
+  - title: Azure Repos
+    summary: 為您的專案取得雲端上不受限制的私人 Git 保存庫
+    imageSrc: https://static.docs.com/ui/media/product/azure/repos.svg
+    azureCategories:
+    - devops
+    url: https://docs.microsoft.com/azure/devops/repos/
+  - title: Azure Test Plans
+    summary: 手動探勘測試工具組協助您掌握測試與出貨產品的可靠度
+    imageSrc: https://static.docs.com/ui/media/product/azure/test-plans.svg
+    azureCategories:
+    - devops
+    url: https://docs.microsoft.com/azure/devops/test/
+  - title: 適用於 Azure 的 GitHub Actions
+    summary: 從 GitHub 建立、測試應用程式並將任何應用程式部署至 Azure
+    imageSrc: ./media/index/github-actions-icon.svg
+    azureCategories:
+    - devops
+    - developer-tools
+    url: https://docs.microsoft.com/en-us/azure/developer/github/github-actions
+  - title: Azure Active Directory (AD)
+    summary: 同步處理內部部署目錄和啟用單一登入
+    imageSrc: https://static.docs.com/ui/media/product/azure/active-directory.svg
+    azureCategories:
+    - hybrid
+    - identity
+    - security
+    url: active-directory/index.yml
+  - title: Azure Arc (預覽)
+    summary: 將 Azure 服務及管理帶到任何基礎結構
+    imageSrc: https://static.docs.com/ui/media/product/azure/arc.svg
+    azureCategories:
+    - hybrid
+    url: azure-arc/index.yml
+  - title: Azure ExpressRoute
+    summary: Azure 的專用私人光纖網路連線
+    imageSrc: https://static.docs.com/ui/media/product/azure/expressroute.svg
+    azureCategories:
+    - hybrid
+    - networking
+    url: expressroute/index.yml
+  - title: Azure Sentinel
+    summary: 運用雲端原生 SIEM 與智慧安全性分析，協助保護您的企業
+    imageSrc: https://static.docs.com/ui/media/product/azure/sentinel.svg
+    azureCategories:
+    - hybrid
+    - security
+    url: sentinel/index.yml
+  - title: Azure Stack
+    summary: 跨越雲端界限，建置及執行創新的混合式應用程式
+    imageSrc: https://static.docs.com/ui/media/product/azure/stack.svg
+    azureCategories:
+    - hybrid
+    url: https://docs.microsoft.com/azure-stack/
+  - title: 資訊安全中心
+    summary: 統一混合式雲端工作負載中的安全性管理，並提供先進的威脅保護
+    imageSrc: https://static.docs.com/ui/media/product/azure/security-center.svg
+    azureCategories:
+    - hybrid
+    - security
+    url: security-center/index.yml
+  - title: Azure IoT Edge
+    summary: 將雲端智慧與分析延伸至邊緣裝置
+    imageSrc: https://static.docs.com/ui/media/product/azure/iot-edge.svg
+    azureCategories:
+    - hybrid
+    - iot
+    url: iot-edge/index.yml
+  - title: Azure Active Directory B2C
+    summary: 在雲端中管理消費者身分識別及存取
+    imageSrc: https://static.docs.com/ui/media/product/azure/active-directory-b2c.svg
+    azureCategories:
+    - identity
+    url: active-directory-b2c/index.yml
+  - title: Azure Active Directory Domain Services
+    summary: 將 Azure 虛擬機器加入沒有網域控制站的網域中
+    imageSrc: https://static.docs.com/ui/media/product/azure/ad-domain-services.svg
+    azureCategories:
+    - identity
+    - security
+    url: active-directory-domain-services/index.yml
+  - title: Azure 資訊保護
+    summary: 隨時隨地加強敏感性資訊的保護
+    imageSrc: https://static.docs.com/ui/media/product/azure/information-protection.svg
+    azureCategories:
+    - identity
+    - security
+    url: https://docs.microsoft.com/azure/information-protection/
+  - title: API 管理
+    summary: 透過安全且大規模的方式將 API 發佈給開發人員、合作夥伴和員工
+    imageSrc: https://static.docs.com/ui/media/product/azure/api-management.svg
+    azureCategories:
+    - integration
+    - iot
+    - mobile
+    - web
+    url: api-management/index.yml
+  - title: 事件方格
+    summary: 取得可靠的大規模事件傳遞
+    imageSrc: https://static.docs.com/ui/media/product/azure/event-grid-domains.svg
+    azureCategories:
+    - integration
+    - iot
+    url: event-grid/index.yml
+  - title: 服務匯流排
+    summary: 跨私人和公用雲端環境的連線
+    imageSrc: https://static.docs.com/ui/media/product/azure/service-bus.svg
+    azureCategories:
+    - integration
+    url: service-bus-messaging/index.yml
+  - title: Azure Digital Twins (預覽)
+    summary: 建置新一代 IoT 空間智慧解決方案
+    imageSrc: https://static.docs.com/ui/media/product/azure/digital-twins.svg
+    azureCategories:
+    - iot
+    - mixed-reality
+    url: digital-twins/index.yml
+  - title: Azure IoT 中心
+    summary: 加速建立 IoT 解決方案
+    imageSrc: https://static.docs.com/ui/media/product/azure/iot-central.svg
+    azureCategories:
+    - iot
+    url: iot-central/index.yml
+  - title: Azure IoT 中樞
+    summary: 與數十億個 IoT 資產連線，並加以監視及管理
+    imageSrc: https://static.docs.com/ui/media/product/azure/iot-hub.svg
+    azureCategories:
+    - iot
+    url: iot-hub/index.yml
+  - title: Azure IoT 解決方案加速器
+    summary: 利用常用 IoT 案例的範本來建立可完全自訂的解決方案
+    imageSrc: ./media/index/iot-solution-accelerators.svg
+    azureCategories:
+    - iot
+    url: iot-accelerators/index.yml
+  - title: Azure 地圖服務
+    summary: 簡單又安全的位置 API，可為資料提供地理空間內容
+    imageSrc: https://static.docs.com/ui/media/product/azure/maps.svg
+    azureCategories:
+    - iot
+    - mobile
+    - web
+    url: azure-maps/index.yml
+  - title: Azure Sphere
+    summary: 安全地將 MCU 裝置從矽晶圓開展至雲端
+    imageSrc: https://static.docs.com/ui/media/product/azure/sphere.svg
+    azureCategories:
+    - iot
+    url: https://docs.microsoft.com/azure-sphere/
+  - title: Azure Time Series Insights
+    summary: 探索及分析來自 IoT 裝置的時間序列資料
+    imageSrc: https://static.docs.com/ui/media/product/azure/time-series-insights-environments.svg
+    azureCategories:
+    - iot
+    url: time-series-insights/index.yml
+  - title: 通知中樞
+    summary: 從任何後端將推播通知傳送至任何平台
+    imageSrc: https://static.docs.com/ui/media/product/azure/notification-hubs.svg
+    azureCategories:
+    - iot
+    - mobile
+    - web
+    url: notification-hubs/index.yml
+  - title: Windows 10 IoT 核心版服務
+    summary: 長期作業系統支援和服務，可以管理裝置更新和評定裝置健康情況
+    imageSrc: https://static.docs.com/ui/media/product/azure/iot-windows10-core-services.svg
+    azureCategories:
+    - iot
+    url: https://docs.microsoft.com/windows/iot-core/
+  - title: IoT 的資訊安全中心
+    summary: 在 Azure IoT 解決方案中統一安全性管理並提供先進的威脅保護
+    imageSrc: https://static.docs.com/ui/media/product/azure/security-center.svg
+    azureCategories:
+    - iot
+    - security
+    url: asc-for-iot/index.yml
+  - title: 自動化
+    summary: 使用程序自動化來簡化雲端管理
+    imageSrc: https://static.docs.com/ui/media/product/azure/automation.svg
+    azureCategories:
+    - management-and-governance
+    url: automation/index.yml
+  - title: Azure Advisor
+    summary: 您的個人化 Azure 最佳做法建議引擎
+    imageSrc: https://static.docs.com/ui/media/product/azure/advisor.svg
+    azureCategories:
+    - management-and-governance
+    url: advisor/index.yml
+  - title: Azure 備份
+    summary: 將資料保護簡化並防範勒索軟體
+    imageSrc: https://static.docs.com/ui/media/product/azure/recovery-services-vaults.svg
+    azureCategories:
+    - management-and-governance
+    - storage
+    url: backup/index.yml
+  - title: Azure 藍圖 (預覽)
+    summary: 讓接受治理的環境快速並可重複建立
+    imageSrc: https://static.docs.com/ui/media/product/azure/blueprints.svg
+    azureCategories:
+    - management-and-governance
+    url: governance/blueprints/index.yml
+  - title: Azure Lighthouse
+    summary: 讓服務提供者能夠大規模管理客戶，同時顧及精確度
+    imageSrc: https://static.docs.com/ui/media/product/azure/lighthouse.svg
+    azureCategories:
+    - management-and-governance
+    url: lighthouse/index.yml
+  - title: Azure 受控應用程式
+    summary: 簡化雲端供應項目的管理
+    imageSrc: https://static.docs.com/ui/media/product/azure/managed-applications.svg
+    azureCategories:
+    - management-and-governance
+    url: azure-resource-manager/managed-applications/index.yml
+  - title: Azure Migrate
+    summary: 輕鬆探索、評定內部部署 VM，並在調整成適當大小後遷移到 Azure
+    imageSrc: https://static.docs.com/ui/media/product/azure/migrate.svg
+    azureCategories:
+    - management-and-governance
+    - migration
+    url: migrate/index.yml
+  - title: Azure 原則
+    summary: 對 Azure 資源大規模實作公司控管及標準
+    imageSrc: https://static.docs.com/ui/media/product/azure/policy.svg
+    azureCategories:
+    - management-and-governance
+    url: governance/policy/index.yml
+  - title: Azure Resource Manager
+    summary: 簡化管理應用程式資源的方式
+    imageSrc: https://static.docs.com/ui/media/product/azure/resource-groups.svg
+    azureCategories:
+    - management-and-governance
+    url: azure-resource-manager/index.yml
+  - title: Azure 資源管理員範本
+    summary: 使用 Resource Manager 將基礎結構作為程式碼提供給所有的 Azure 資源
+    imageSrc: https://static.docs.com/ui/media/product/azure/resource-groups.svg
+    azureCategories:
+    - management-and-governance
+    url: azure-resource-manager/templates/index.yml
+  - title: Azure 服務健康狀態
+    summary: 當 Azure 服務中的問題對您有所影響時，符合個人需求的指導方針及支援
+    imageSrc: https://static.docs.com/ui/media/product/azure/service-health.svg
+    azureCategories:
+    - management-and-governance
+    url: service-health/index.yml
+  - title: Azure Site Recovery
+    summary: 內建災害復原服務讓您的商務保持運作
+    imageSrc: https://static.docs.com/ui/media/product/azure/recovery-services-vaults.svg
+    azureCategories:
+    - management-and-governance
+    - migration
+    url: site-recovery/index.yml
+  - title: Azure Cloud Shell
+    summary: 透過瀏覽器式殼層簡化 Azure 管理
+    imageSrc: https://static.docs.com/ui/media/product/azure/cloud-shell.svg
+    azureCategories:
+    - management-and-governance
+    url: cloud-shell/overview.md
+  - title: 成本管理 + 計費
+    summary: 讓您在雲端上的投資更具效益，並將雲端潛能發揮到最大
+    imageSrc: https://static.docs.com/ui/media/product/azure/cost-management.svg
+    azureCategories:
+    - management-and-governance
+    - migration
+    url: cost-management-billing/index.yml
+  - title: Microsoft Azure 入口網站
+    summary: 在單一的整合主控台中建置、管理及監視所有 Azure 產品
+    imageSrc: https://static.docs.com/ui/media/product/azure/azure.svg
+    azureCategories:
+    - management-and-governance
+    url: azure-portal/index.yml
+  - title: 網路監看員
+    summary: 網路效能監視與診斷解決方案
+    imageSrc: https://static.docs.com/ui/media/product/azure/network-watcher.svg
+    azureCategories:
+    - management-and-governance
+    - networking
+    url: network-watcher/index.yml
+  - title: 排程器
+    summary: 依簡單或複雜的週期性排程執行工作
+    imageSrc: https://static.docs.com/ui/media/product/azure/scheduler.svg
+    azureCategories:
+    - management-and-governance
+    url: scheduler/index.yml
+  - title: 流量管理員
+    summary: 路由傳送連入流量以提供高效能及可用性
+    imageSrc: https://static.docs.com/ui/media/product/azure/traffic-manager.svg
+    azureCategories:
+    - management-and-governance
+    - networking
+    url: traffic-manager/index.yml
+  - title: Azure 媒體播放器
+    summary: 可滿足所有需求的單一播放器
+    imageSrc: https://static.docs.com/ui/media/product/azure/media-services.svg
+    azureCategories:
+    - media
+    url: media-services/latest/use-azure-media-player.md
+  - title: 內容傳遞網路
+    summary: 確保安全可靠的內容傳遞，觸角擴及全球
+    imageSrc: https://static.docs.com/ui/media/product/azure/cdn-profiles.svg
+    azureCategories:
+    - media
+    - networking
+    - web
+    url: cdn/index.yml
+  - title: 內容保護
+    summary: 使用 AES、PlayReady、Widevine 及 Fairplay 安全傳遞內容
+    imageSrc: ./media/index/media-protection.svg
+    azureCategories:
+    - media
+    url: media-services/latest/content-protection-overview.md
+  - title: 編碼
+    summary: 雲端規模的 Studio Grade 編碼
+    imageSrc: https://static.docs.com/ui/media/product/azure/media-services.svg
+    azureCategories:
+    - media
+    url: media-services/latest/encoding-concept.md
+  - title: 即時和隨選資料流處理
+    summary: 大規模地將內容傳遞至近乎所有裝置，以滿足商務需求
+    imageSrc: https://static.docs.com/ui/media/product/azure/media-services.svg
+    azureCategories:
+    - media
+    url: media-services/latest/stream-live-tutorial-with-api.md
+  - title: 媒體服務
+    summary: 編碼、儲存和串流大量視訊及音訊
+    imageSrc: https://static.docs.com/ui/media/product/azure/media-services.svg
+    azureCategories:
+    - media
+    url: media-services/latest/index.yml
+  - title: 資料箱
+    summary: 將資料傳輸到 Azure 的設備與解決方案
+    imageSrc: https://static.docs.com/ui/media/product/azure/data-box.svg
+    azureCategories:
+    - migration
+    - storage
+    url: databox/index.yml
+  - title: 空間錨點
+    summary: 建立多使用者的空間感知混合實境體驗
+    imageSrc: https://static.docs.com/ui/media/product/azure/spatial-anchor-accounts.svg
+    azureCategories:
+    - mixed-reality
+    url: spatial-anchors/index.yml
+  - title: 遠端轉譯 (預覽)
+    summary: 轉譯高品質的互動式 3D 內容，並將其即時串流到您的裝置
+    imageSrc: https://static.docs.com/ui/media/product/azure/remote-rendering.svg
+    azureCategories:
+    - mixed-reality
+    url: remote-rendering/index.yml
+  - title: Visual Studio App Center
+    summary: 持續地建置、測試、發行並監視您的行動和傳統型應用程式
+    imageSrc: https://docs.microsoft.com/media/logos/logo_vs-mobile-center.svg
+    azureCategories:
+    - mobile
+    url: https://docs.microsoft.com/appcenter/
+  - title: Xamarin
+    summary: 更快速地建立運用雲端能力的行動應用程式
+    imageSrc: https://docs.microsoft.com/media/logos/logo_xamarin.svg
+    azureCategories:
+    - mobile
+    url: https://docs.microsoft.com/xamarin/
+  - title: 應用程式閘道
+    summary: 在 Azure 中建置安全、可靈活調整及具高可用性的 Web 前端
+    imageSrc: https://static.docs.com/ui/media/product/azure/application-gateways.svg
+    azureCategories:
+    - networking
+    - security
+    url: application-gateway/index.yml
+  - title: Azure Bastion
+    summary: 對虛擬機器進行私人且完全受控的 RDP 和 SSH 存取
+    imageSrc: ./media/index/web_connect.svg
+    azureCategories:
+    - networking
+    url: bastion/index.yml
+  - title: Azure DDoS 保護
+    summary: 保護您的應用程式免於遭遇分散式阻斷服務 (DDoS) 攻擊
+    imageSrc: https://static.docs.com/ui/media/product/azure/ddos-protection.svg
+    azureCategories:
+    - networking
+    - security
+    url: virtual-network/ddos-protection-overview.md
+  - title: Azure DNS
+    summary: 在 Azure 上裝載您的 DNS 網域
+    imageSrc: https://static.docs.com/ui/media/product/azure/dns.svg
+    azureCategories:
+    - networking
+    url: dns/index.yml
+  - title: Azure 防火牆
+    summary: 內建高可用性、不受限制的雲端延展性及零維護的原生防火牆功能
+    imageSrc: https://static.docs.com/ui/media/product/azure/firewall.svg
+    azureCategories:
+    - networking
+    url: firewall/index.yml
+  - title: Azure 防火牆管理員
+    summary: 適用全域散發軟體定義周邊的中央網路安全性原則與路由管理
+    imageSrc: https://static.docs.com/ui/media/product/azure/firewall-manager.svg
+    azureCategories:
+    - networking
+    url: firewall-manager/index.yml
+  - title: Azure Front Door
+    summary: 可調整並已加強安全性的傳遞點，適用於以微服務為基礎的全域 Web 應用程式
+    imageSrc: https://static.docs.com/ui/media/product/azure/front-door.svg
+    azureCategories:
+    - networking
+    url: frontdoor/index.yml
+  - title: Azure Internet Analyzer (預覽)
+    summary: 測試網路基礎結構變更會對客戶效能造成的影響
+    imageSrc: https://static.docs.com/ui/media/product/azure/internet-analyzer.svg
+    azureCategories:
+    - networking
+    url: internet-analyzer/index.yml
+  - title: Azure Private Link
+    summary: 以私密方式存取 Azure 平台上託管的服務，將您的資料保留在 Microsoft 網路上
+    imageSrc: https://static.docs.com/ui/media/product/azure/private-link.svg
+    azureCategories:
+    - networking
+    url: private-link/index.yml
+  - title: 負載平衡器
+    summary: 為您的應用程式提供高可用性和網路效能
+    imageSrc: https://static.docs.com/ui/media/product/azure/load-balancer.svg
+    azureCategories:
+    - networking
+    url: load-balancer/index.yml
+  - title: 虛擬網路
+    summary: 佈建私人網路，可選擇性地連線至內部部署資料中心
+    imageSrc: https://static.docs.com/ui/media/product/azure/virtual-networks.svg
+    azureCategories:
+    - networking
+    url: virtual-network/index.yml
+  - title: 虛擬 WAN
+    summary: Microsoft 管理的中樞與輪輻服務，可提供連線能力和安全性
+    imageSrc: https://static.docs.com/ui/media/product/azure/virtual-wans.svg
+    azureCategories:
+    - networking
+    url: virtual-wan/index.yml
+  - title: VPN 閘道
+    summary: 建立安全的跨單位連線
+    imageSrc: https://static.docs.com/ui/media/product/azure/virtual-network-gateways.svg
+    azureCategories:
+    - networking
+    - security
+    url: vpn-gateway/index.yml
+  - title: Web 應用程式防火牆
+    summary: 雲端原生的 Web 應用程式防火牆 (WAF) 服務，可為 Web 應用程式提供強大的保護
+    imageSrc: https://static.docs.com/ui/media/product/azure/frontdoor-waf-policies.svg
+    azureCategories:
+    - networking
+    url: web-application-firewall/index.yml
+  - title: Azure 專用 HSM
+    summary: 管理您在雲端中使用的硬體安全模組
+    imageSrc: ./media/index/dedicated-hsm.svg
+    azureCategories:
+    - security
+    url: dedicated-hsm/index.yml
+  - title: Key Vault
+    summary: 保護並維護金鑰及其他祕密的控管
+    imageSrc: https://static.docs.com/ui/media/product/azure/key-vault.svg
+    azureCategories:
+    - security
+    url: key-vault/index.yml
+  - title: 封存儲存體
+    summary: 以業界最低的價位儲存極少存取的資料
+    imageSrc: https://static.docs.com/ui/media/product/azure/storage-explorer.svg
+    azureCategories:
+    - storage
+    url: storage/blobs/storage-blob-storage-tiers.md
+  - title: Avere vFXT for Azure
+    summary: 在雲端執行高效能的檔案工作負載
+    imageSrc: ./media/index/avere.svg
+    azureCategories:
+    - storage
+    url: avere-vfxt/index.yml
+  - title: Azure FXT Edge Filer
+    summary: 適用於 HPC 環境的混合式儲存體最佳化解決方案
+    imageSrc: https://static.docs.com/ui/media/product/azure/fxt-edge-filer.svg
+    azureCategories:
+    - storage
+    url: fxt-edge-filer/index.yml
+  - title: Azure HPC Cache
+    summary: 用於高效能運算的檔案快取 (HPC)
+    imageSrc: https://static.docs.com/ui/media/product/azure/hpc-cache.svg
+    azureCategories:
+    - storage
+    url: hpc-cache/index.yml
+  - title: Azure NetApp Files
+    summary: 企業級 Azure 檔案共用，由 NetApp 技術支援
+    imageSrc: https://static.docs.com/ui/media/product/azure/netapp-files.svg
+    azureCategories:
+    - storage
+    url: azure-netapp-files/index.yml
+  - title: Blob 儲存體
+    summary: 非結構化資料的 REST 式物件儲存體
+    imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
+    azureCategories:
+    - storage
+    url: storage/blobs/index.yml
+  - title: 磁碟儲存體
+    summary: 支援虛擬機器的持續性、安全磁碟選項
+    imageSrc: https://static.docs.com/ui/media/product/azure/disk-storage.svg
+    azureCategories:
+    - storage
+    url: virtual-machines/windows/managed-disks-overview.md
+  - title: Azure 檔案
+    summary: 檔案共用，使用標準 SMB 3.0 通訊協定
+    imageSrc: https://static.docs.com/ui/media/product/azure/storage-azure-files.svg
+    azureCategories:
+    - storage
+    url: storage/files/index.yml
+  - title: 受控磁碟
+    summary: 安全的永續性磁碟儲存體，適用於 Azure 虛擬機器
+    imageSrc: https://static.docs.com/ui/media/product/azure/disk.svg
+    azureCategories:
+    - storage
+    url: virtual-machines/windows/managed-disks-overview.md
+  - title: 佇列儲存體
+    summary: 根據流量有效地擴充應用程式
+    imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
+    azureCategories:
+    - storage
+    url: storage/queues/index.yml
+  - title: 儲存體
+    summary: 為您的資料、應用程式和工作負載，取得安全、可靈活調整的安全雲端儲存體
+    imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
+    azureCategories:
+    - storage
+    url: storage/index.yml
+  - title: 儲存體總管
+    summary: 檢視 Azure 儲存體資源並與其互動
+    imageSrc: https://static.docs.com/ui/media/product/azure/storage-explorer.svg
+    azureCategories:
+    - storage
+    url: vs-azure-tools-storage-manage-with-storage-explorer.md
+  - title: StorSimple
+    summary: 企業混合式雲端儲存體解決方案可降低成本
+    imageSrc: https://static.docs.com/ui/media/product/azure/storsimple-device-managers.svg
+    azureCategories:
+    - storage
+    url: storsimple/index.yml
+  - title: Azure SignalR 服務
+    summary: 輕鬆地新增即時 Web 功能
+    imageSrc: https://static.docs.com/ui/media/product/azure/signalr-service.svg
+    azureCategories:
+    - web
+    url: azure-signalr/index.yml
+tools:
+  title: 語言和工具
+  items:
+  - title: Python
+    imageSrc: https://docs.microsoft.com/media/logos/logo_python.svg
+    url: https://docs.microsoft.com/azure/developer/python/
+  - title: .NET
+    imageSrc: ./media/index/net-logo.svg
+    url: https://docs.microsoft.com/dotnet/azure/
+  - title: JavaScript
+    imageSrc: https://docs.microsoft.com/media/logos/logo_js.svg
+    url: https://docs.microsoft.com/azure/developer/javascript/
+  - title: Java
+    imageSrc: https://docs.microsoft.com/media/logos/logo_java.svg
+    url: https://docs.microsoft.com/azure/developer/java/
+  - title: Go
+    imageSrc: https://docs.microsoft.com/media/logos/logo_Go-lightblue.svg
+    url: https://docs.microsoft.com/azure/developer/go/
+  - title: REST API
+    imageSrc: https://docs.microsoft.com/media/logos/logo_REST.svg
+    url: https://docs.microsoft.com/rest/api/
+  - title: Azure PowerShell
+    imageSrc: https://docs.microsoft.com/media/logos/logo_powershell.svg
+    url: https://docs.microsoft.com/powershell/azure/
+  - title: Azure CLI
+    imageSrc: https://docs.microsoft.com/media/logos/logo_CLIgeneric.svg
+    url: https://docs.microsoft.com/cli/azure/
+  - title: ARM 範本
+    imageSrc: https://static.docs.com/ui/media/product/azure/resource-groups.svg
+    url: azure-resource-manager/templates/index.yml
+  - title: Jenkins
+    imageSrc: https://docs.microsoft.com/media/logos/logo_jenkins.svg
+    url: /azure/developer/jenkins
+  - title: Terraform
+    imageSrc: https://docs.microsoft.com/media/logos/logo_terraform.svg
+    url: /azure/developer/terraform/
+  - title: Ansible
+    imageSrc: ./media/index/ansible.svg
+    url: /azure/developer/ansible
+additionalContent:
+  sections:
+  - title: 主權雲端
+    items:
+    - title: Azure Government
+      summary: 適用於美國政府機構及其合作夥伴的專用雲端。
+      url: azure-government/index.yml
+    - title: Azure Germany
+      summary: 遵循德國資料處理法規的專用雲端。
+      url: germany/index.yml
+    - title: Azure China 21Vianet
+      summary: 位於中國並由 21Vianet 運營的專用雲端。
+      url: https://docs.microsoft.com/azure/china/

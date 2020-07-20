@@ -7,48 +7,43 @@ ms.custom: include file
 ms.topic: include
 author: sgilley
 ms.author: sgilley
-ms.date: 05/06/2019
-ms.openlocfilehash: 623e993dfbe6bbb3297fa6470865ab1a04f55b37
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 11/06/2019
+ms.openlocfilehash: 754c9799ed4c2fd90cbcf1e9717b0be21edd54cb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028586"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75659862"
 ---
 >[!IMPORTANT]
->您可以使用您所建立的資源做為其他 Azure Machine Learning 服務教學課程和 how-to 文章的必要條件。
+>您可以使用您所建立的資源，作為其他 Azure Machine Learning 教學課程和操作說明文章的先決條件。
 
+### <a name="delete-everything"></a>刪除所有內容
 
-### <a name="delete-everything"></a>刪除所有項目
+如果您不打算使用所建立的任何資源，請刪除整個資源群組，以免產生任何費用。
 
-如果您不打算使用您所建立的任何項目，刪除整個資源群組，因此您不會產生任何費用：
-
-1. 在 Azure 入口網站中，選取**資源群組**視窗的左邊。
+1. 在 Azure 入口網站中，於視窗左側選取 [資源群組]  。
  
    ![在 Azure 入口網站中刪除資源群組](./media/aml-ui-cleanup/delete-resources.png)
 
 1. 在清單中，選取您所建立的資源群組。
 
-1. 在視窗的右側，選取省略符號按鈕 (**...**).
+1. 選取 [刪除資源群組]  。
 
-1. 選取 [刪除資源群組]。
-
-刪除資源群組時，也會刪除您建立視覺介面中的所有資源。  
-
-### <a name="delete-only-the-compute-target"></a>刪除計算目標
-
-您在這裡建立的計算目標*自動相應*零時它未使用的節點。 這是為了將費用降至最低。 如果您想要刪除的計算目標，請執行下列步驟：
-
-1. 在 [Azure 入口網站](https://portal.azure.com)中，開啟您的工作區。
-
-    ![刪除計算目標](./media/aml-ui-cleanup/delete-compute-target.png)
-
-1. 在 **計算**區段的 工作區中，選取 資源。
-
-1. 選取 [刪除] 。
+刪除資源群組同時會刪除您在設計工具中建立的所有資源。 
 
 ### <a name="delete-individual-assets"></a>刪除個別資產
 
-在您用來建立您的實驗的視覺化介面，刪除個別資產選取它們，然後選取**刪除** 按鈕。
+在建立實驗的設計工具中，藉由選取個別資產，再選取 [刪除]  按鈕，即可刪除個別資產。
 
-![刪除實驗](./media/aml-ui-cleanup/delete-experiment.png)
+您在這裡建立的計算目標會在不使用時*自動調整*為零個節點。 如此可將費用降至最低。 如果您想要刪除計算目標，請採取下列步驟：
+
+![刪除資產](./media/aml-ui-cleanup/delete-asset.png)
+
+您可以選取每個資料集並選取 [取消註冊]  ，從工作區中將資料集取消註冊。
+
+![取消註冊資料集](./media/aml-ui-cleanup/unregister-dataset1225.png)
+
+若要刪除資料集，請使用 Azure 入口網站或 Azure 儲存體總管移至儲存體帳戶，並手動刪除這些資產。
+
+

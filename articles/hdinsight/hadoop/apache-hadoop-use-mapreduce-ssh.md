@@ -1,19 +1,19 @@
 ---
-title: MapReduce 和 SSH 連線與 HDInsight 中的 Apache Hadoop - Azure
+title: MapReduce 和 SSH 與 Apache Hadoop 的連線-Azure HDInsight
 description: 了解如何使用 SSH，以利用 HDInsight 上的 Apache Hadoop 來執行 MapReduce 作業。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
+ms.topic: how-to
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 04/10/2018
-ms.author: hrasheed
-ms.openlocfilehash: 3448a5e89f6930a5bdcb7d0d77b92576e58fc90b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 01/10/2020
+ms.openlocfilehash: 2736d0cfe514252e36ba6d7e0d71efe09da15aae
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64687303"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076295"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>搭配使用 MapReduce 與 HDInsight 上的 Apache Hadoop 和 SSH
 
@@ -24,34 +24,17 @@ ms.locfileid: "64687303"
 > [!NOTE]
 > 如果您已熟悉使用以 Linux 為基礎的 Apache Hadoop 伺服器，但剛接觸 HDInsight，請參閱 [以 Linux 為基礎的 HDInsight 秘訣](../hdinsight-hadoop-linux-information.md)。
 
-## <a id="prereq"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* 基于 Linux 的 HDInsight（HDInsight 上的 Hadoop）群集
+HDInsight 上的 Apache Hadoop 叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop](../hdinsight-hadoop-create-linux-clusters-portal.md)叢集。
 
-  > [!IMPORTANT]
-  > Linux 是唯一使用於 HDInsight 3.4 版或更新版本的作業系統。 如需詳細資訊，請參閱 [Windows 上的 HDInsight 淘汰](../hdinsight-component-versioning.md#hdinsight-windows-retirement)。
+## <a name="use-hadoop-commands"></a>使用 Hadoop 命令
 
-* SSH 用戶端。 如需詳細資訊，請參閱[搭配 HDInsight 使用 SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)來連線到您的叢集。 編輯以下命令並將 CLUSTERNAME 取代為您叢集的名稱，然後輸入命令：
 
-## <a id="ssh"></a>使用 SSH 連線
-
-使用 SSH 連線到叢集。 例如，下列命令會以 **sshuser** 帳戶的身分連線至名為 **myhdinsight** 的叢集：
-
-```bash
-ssh sshuser@myhdinsight-ssh.azurehdinsight.net
-```
-
-**如果您使用憑證金鑰進行 SSH 驗證**，您可能需要指定用戶端系統上私密金鑰的位置，例如：
-
-```bash
-ssh -i ~/mykey.key sshuser@myhdinsight-ssh.azurehdinsight.net
-```
-
-**如果您使用密碼進行 SSH 驗證**，您需要在接獲提示時提供密碼。
-
-如需搭配 HDInsight 使用 SSH 的詳細資訊，請參閱[搭配 HDInsight 使用 SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)。
-
-## <a id="hadoop"></a>使用 Hadoop 命令
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
 1. 連線到 HDInsight 叢集之後，請使用下列命令來啟動 MapReduce 作業：
 
@@ -64,14 +47,16 @@ ssh -i ~/mykey.key sshuser@myhdinsight-ssh.azurehdinsight.net
     > [!NOTE]
     > 如需關於此 MapReduce 工作和範例資料的詳細資訊，請參閱 [在 HDInsight 上的 Apache Hadoop 中使用 MapReduce](hdinsight-use-mapreduce.md)。
 
-2. 作業會在處理時發出詳細資料，並於作業完成時傳回類似下列文字的資訊：
+    作業會在處理時發出詳細資料，並於作業完成時傳回類似下列文字的資訊：
 
-        File Input Format Counters
-        Bytes Read=1395666
-        File Output Format Counters
-        Bytes Written=337623
+    ```output
+    File Input Format Counters
+    Bytes Read=1395666
+    File Output Format Counters
+    Bytes Written=337623
+    ```
 
-3. 作業完成時，請使用下列命令來列出輸出檔案︰
+1. 作業完成時，請使用下列命令來列出輸出檔案︰
 
     ```bash
     hdfs dfs -ls /example/data/WordCountOutput
@@ -82,33 +67,27 @@ ssh -i ~/mykey.key sshuser@myhdinsight-ssh.azurehdinsight.net
     > [!NOTE]  
     > 某些 MapReduce 工作可能會將結果分成多個 **part-r-#####** 檔案。 若是如此，請使用 ##### 尾碼指出檔案的順序。
 
-4. 若要檢視輸出，請使用下列命令：
+1. 若要檢視輸出，請使用下列命令：
 
     ```bash
     hdfs dfs -cat /example/data/WordCountOutput/part-r-00000
     ```
 
-    此命令會顯示 **wasb://example/data/gutenberg/davinci.txt** 檔案中所含的單字清單和每個單字的出現次數。 下列文字此檔案所包含之資料的範例：
+    此命令會顯示 **wasbs://example/data/gutenberg/davinci.txt** 檔案中所含的單字清單和每個單字的出現次數。 下列文字此檔案所包含之資料的範例：
 
-        wreathed        3
-        wreathing       1
-        wreaths         1
-        wrecked         3
-        wrenching       1
-        wretched        6
-        wriggling       1
+    ```output
+    wreathed        3
+    wreathing       1
+    wreaths         1
+    wrecked         3
+    wrenching       1
+    wretched        6
+    wriggling       1
+    ```
 
-## <a id="summary"></a>摘要
+## <a name="next-steps"></a>下一步
 
-如您所見，Hadoop 命令提供簡單的方法，在 HDInsight 叢集中執行 MapReduce 工作，然後檢視工作輸出。
-
-## <a id="nextsteps"></a>接續步驟
-
-如需 HDInsight 中 MapReduce 工作的一般資訊：
+如您所見，Hadoop 命令提供簡單的方法，在 HDInsight 叢集中執行 MapReduce 工作，然後檢視工作輸出。 如需您可以在 HDInsight 上使用 Hadoop 之其他方式的詳細資訊：
 
 * [在 HDInsight Hadoop 上使用 MapReduce](hdinsight-use-mapreduce.md)
-
-如需您可以在 HDInsight 上使用 Hadoop 之其他方式的詳細資訊：
-
-* [在 HDInsight 上搭配 Apache Hadoop 使用 Apache Hive](hdinsight-use-hive.md)
-* [在 HDInsight 上搭配 Apache Hadoop 使用 Apache Pig](hdinsight-use-pig.md)
+* [在 HDInsight 上將 Apache Hive 與 Apache Hadoop 搭配使用](hdinsight-use-hive.md)

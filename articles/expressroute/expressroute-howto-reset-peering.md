@@ -1,19 +1,18 @@
 ---
-title: 重設線路對等互連 - ExpressRoute：Azure | Microsoft Docs
+title: Azure ExpressRoute：重設線路對等互連
 description: 如何停用和啟用 ExpressRoute 線路對等互連。
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: conceptual
-ms.date: 08/15/2018
+ms.topic: how-to
+ms.date: 01/13/2018
 ms.author: charwen
-ms.custom: seodec18
-ms.openlocfilehash: 8541362a16c7d12a0e3a4cf009ed9cd5faf9f1cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cc4266a92d510ac84118922f7db09c99234045b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60366295"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84735246"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>重設 ExpressRoute 線路對等互連
 
@@ -21,11 +20,11 @@ ms.locfileid: "60366295"
 
 有數個案例可能會讓您覺得重設 ExpressRoute 對等互連很實用。
 * 測試您的災害復原設計和實作。 例如，您有兩個 ExpressRoute 線路。 您可以停用一個線路的對等互連，並強制將網路流量容錯移轉至另一個線路。
-* 在 ExpressRoute 線路的 Azure 私用對等互連上啟用雙向轉送偵測 (BFD)。 如果您的 ExpressRoute 線路是在 2018 年 8 月 1 日之後建立的，預設會啟用 BFD。 如果您的線路是在那之前建立的，則不會啟用 BFD。 您可以藉由停用對等互連並重新啟用它來啟用 BFD。 請務必注意，只有在 Azure 私用對等互連上才支援 BFD。
+* 在 Azure 私用對等互連或 ExpressRoute 線路的 Microsoft 對等互連上啟用雙向轉送偵測（BFD）。 如果您的 ExpressRoute 線路是在 1 2018 年8月之後建立，則在 Azure 私用對等互連上預設會啟用 BFD，如果您的 ExpressRoute 線路是在 10 2020 年1月之後建立的， 如果您的線路是在那之前建立的，則不會啟用 BFD。 您可以藉由停用對等互連並重新啟用它來啟用 BFD。 
 
 ### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
@@ -51,7 +50,7 @@ ms.locfileid: "60366295"
    ```azurepowershell-interactive
    $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
    ```
-5. 識別您想要停用或啟用的對等互連。 「對等互連」是一個陣列。 在下列範例中，Peerings[0] 是 Azure 私用對等互連，而 Peerings[1] 是 Microsoft 對等互連。
+5. 識別您想要停用或啟用的對等互連。 「對等互連」** 是一個陣列。 在下列範例中，Peerings[0] 是 Azure 私用對等互連，而 Peerings[1] 是 Microsoft 對等互連。
 
    ```azurepowershell-interactive
    Name                             : ExpressRouteARMCircuit
@@ -144,5 +143,5 @@ ms.locfileid: "60366295"
 
 ## <a name="next-steps"></a>後續步驟
 如果您需要協助以進行 ExpressRoute 問題的疑難排解，請參閱下列文章：
-* [驗證 ExpressRoute 連線能力](expressroute-troubleshooting-expressroute-overview.md)
+* [確認 ExpressRoute 連線](expressroute-troubleshooting-expressroute-overview.md)
 * [網路效能疑難排解](expressroute-troubleshooting-network-performance.md)

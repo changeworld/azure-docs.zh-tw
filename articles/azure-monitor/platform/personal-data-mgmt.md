@@ -1,24 +1,16 @@
 ---
 title: Azure Log Analytics 中所儲存個人資料的指引 | Microsoft Docs
 description: 本文說明如何管理 Azure Log Analytics 中所儲存的個人資料，以及用以識別和移除個人資料的方法。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 05/18/2018
-ms.author: magoedte
-ms.openlocfilehash: 0cf5a80e3eedbe7efb8463162b5b3ed489ac08c8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 569731faffd97e816567af3f6ed1cf8cdf49f240
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61087217"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740445"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>儲存在 Log Analytics 和 Application Insights 中的個人資料指引
 
@@ -31,11 +23,11 @@ Log Analytics 是有望找到個人資料的資料存放區。 Application Insig
 
 ## <a name="strategy-for-personal-data-handling"></a>個人資料處理策略
 
-雖然您和您的公司對於處理私人資料 (如果有的話) 的策略擁有最終決定權，以下提供一些可採行的方法。 這些方法是從技術觀點，依照推薦順序由高至低來列出：
+雖然您和您的公司對於處理私人資料 (如果有的話) 的策略擁有最終決定權，以下提供一些可採行的方法。 這些方法是從技術觀點，依照慣用程度列出：
 
 * 如果可以，請停止收集、模糊處理、匿名處理或調整所收集的資料，讓資料不致於成為「私人」資料。 這是截至目前為止最推薦的方法，可讓您不必建立成本極高、影響層面極大的資料處理策略。
-* 不行的話，請嘗試將資料標準化，以減少對資料平台和效能所造成的影響。 例如，不是記錄明確的使用者識別碼，而是建立查閱資料，將使用者名稱和其詳細資料關聯到某個可於隨後記錄到別處的內部識別碼。 這樣一來，如果某位使用者要求您刪除其個人資訊，您只要刪除查閱表中與該使用者對應的資料列可能便已足夠。 
-* 最後，如果您必須收集私人資料，請圍繞清除 API 路徑和現有查詢 API 路徑建置程序，以符合您在匯出和刪除使用者相關私人資料方面所該承擔的責任。 
+* 若是不行，請嘗試將資料標準化，以減少對資料平台和效能所造成的影響。 例如，不是記錄明確的使用者識別碼，而是建立查閱資料，將使用者名稱和其詳細資料關聯到某個可於隨後記錄到別處的內部識別碼。 這樣一來，如果某位使用者要求您刪除其個人資訊，您只要刪除查閱表中與該使用者對應的資料列可能便已足夠。 
+* 最後，如果您必須收集私人資料，請依據清除 API 路徑和現有查詢 API 路徑建置程序，以符合您在匯出和刪除使用者相關私人資料方面應盡的義務。 
 
 ## <a name="where-to-look-for-private-data-in-log-analytics"></a>Log Analytics 中的私人資料位於何處？
 
@@ -88,26 +80,31 @@ Log Analytics 是彈性的存放區，在指定資料結構描述的同時，允
 針對檢視和匯出資料的要求，均應使用 [Log Analytics 查詢 API](https://dev.loganalytics.io/) 或 [Application Insights 查詢 API](https://dev.applicationinsights.io/quickstart)。 至於要如何將資料轉換為適當形式以提供給使用者，其實作邏輯則由您自行決定。 [Azure Functions](https://azure.microsoft.com/services/functions/) 很適合用來裝載這類邏輯。
 
 > [!IMPORTANT]
->  雖然大部分的清除作業可能速度會比 SLA，完成**型式的清除作業完成的 SLA 在 30 天設定**由於大量使用的資料平台影響。 這是自動化程序;沒有任何方法來要求更快速處理作業。
+>  雖然絕大多數清除作業的完成速度應該都遠遠超過 SLA，但由於這些作業會對所使用的資料平台產生重大影響，所以**清除作業的正式完成 SLA 是設定為 30 天**。 這是自動化程序；沒有任何方法可以要求更快地處理作業。
 
-### <a name="delete"></a>Delete
+### <a name="delete"></a>刪除
 
 > [!WARNING]
 > Log Analytics 中的刪除動作具有破壞性，且將無法復原！ 進行這方面的作業時請格外小心。
 
 我們已將處理「清除」API 路徑的功能納入到隱私權中。 請謹慎使用此路徑，原因是這項操作會引發相關風險、可能影響效能，而且可能會扭曲整個彙總、量測和 Log Analytics 的其他方面。 如需替代的私人資料處理方法，請參閱[個人資料處理策略](#strategy-for-personal-data-handling)一節。
 
-清除作業需要極高的特殊權限，若未對 Azure 中的應用程式或使用者 (甚至包括資源擁有者) 明確授與 Azure Resource Manager 角色，其將無權執行此作業。 這個角色便是「資料清除者」，由於可能會遺失資料，委派此角色時請務必小心。 
+清除作業極需相關權限，若未對 Azure 中的應用程式或使用者 (甚至包括資源擁有者) 明確授與 Azure Resource Manager 角色，其將無權執行此作業。 這個角色便是「資料清除者」，由於可能會遺失資料，委派此角色時請務必小心。 
+
+> [!IMPORTANT]
+> 為管理系統資源，系統會將清除要求限制為每小時 50 個要求。 您應該藉由傳送單一命令 (其述詞包含需要清除的所有使用者身分識別) 來批次處理清除要求的執行。 使用 [in 運算子](/azure/kusto/query/inoperator)來指定多個身分識別。 您應該在執行清除要求之前先執行查詢，以確認結果是否符合預期。 
+
+
 
 獲派 Azure Resource Manager 角色後，就可使用兩個新的 API 路徑： 
 
 #### <a name="log-data"></a>記錄資料
 
-* [POST 清除](https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge) - 採用物件來指定要刪除的資料參數，並傳回參考 GUID 
-* GET 清除狀態 - POST 清除呼叫會傳回 'x-ms-status-location' 標頭，其中包含可供您呼叫的 URL，以便判斷清除 API 的狀態。 例如︰
+* [POST 清除](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/purge) - 採用物件來指定要刪除的資料參數，並傳回參考 GUID 
+* GET 清除狀態 - POST 清除呼叫會傳回 'x-ms-status-location' 標頭，其中包含可供您呼叫的 URL，以便判斷清除 API 的狀態。 例如：
 
     ```
-    x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.OperatonalInsights/workspaces/[WorkspaceName]/operations/purge-[PurgeOperationId]?api-version=2015-03-20
+    x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.OperationalInsights/workspaces/[WorkspaceName]/operations/purge-[PurgeOperationId]?api-version=2015-03-20
     ```
 
 > [!IMPORTANT]
@@ -116,7 +113,7 @@ Log Analytics 是彈性的存放區，在指定資料結構描述的同時，允
 #### <a name="application-data"></a>應用程式資料
 
 * [POST 清除](https://docs.microsoft.com/rest/api/application-insights/components/purge) - 採用物件來指定要刪除的資料參數，並傳回參考 GUID
-* GET 清除狀態 - POST 清除呼叫會傳回 'x-ms-status-location' 標頭，其中包含可供您呼叫的 URL，以便判斷清除 API 的狀態。 例如︰
+* GET 清除狀態 - POST 清除呼叫會傳回 'x-ms-status-location' 標頭，其中包含可供您呼叫的 URL，以便判斷清除 API 的狀態。 例如：
 
    ```
    x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/microsoft.insights/components/[ComponentName]/operations/purge-[PurgeOperationId]?api-version=2015-05-01

@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 710bb8cba7fbbe4bc9b9fdc52b0767c96f97fe72
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 5680bd1c3fadab8edcde1634c708ca8683c0e99c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630914"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "76021010"
 ---
 ## <a name="create-base-resources"></a>建立基底資源
 
-若要設定訊息路由，您必須先建立 IoT 中樞、儲存體帳戶和服務匯流排佇列。 您可以使用本教學課程第 1 部分所提供四篇文章的其中一篇來建立這些資源：Azure CLI、Azure PowerShell、Azure 入口網站或 Azure Resource Manager 範本。
+若要設定訊息路由，您必須先建立 IoT 中樞、儲存體帳戶和服務匯流排佇列。 您可以使用本教學課程第 1 部分所提供四篇文章的其中一篇來建立這些資源：Azure 入口網站、Azure Resource Manager 範本、Azure CLI 或 Azure PowerShell。
 
 請將所有資源建立在相同的資源群組和位置。 如此一來，您就可以在結束時，透過刪除資源群組的單一步驟來移除所有資源。
 
-下列各節說明所要執行的步驟。
+以下會摘要介紹後續各節所要執行的步驟： 
 
-1. 建立[資源群組](../articles/azure-resource-manager/resource-group-overview.md)。
+1. 建立[資源群組](../articles/azure-resource-manager/management/overview.md)。
 
 2. 在 S1 層建立 IoT 中樞。 將取用者群組新增至 IoT 中樞。 Azure 串流分析會在擷取資料時使用取用者群組。
 

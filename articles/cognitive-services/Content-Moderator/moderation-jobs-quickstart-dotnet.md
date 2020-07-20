@@ -1,34 +1,34 @@
 ---
-title: 使用仲裁作業使用.NET-Content Moderator
-titlesuffix: Azure Cognitive Services
-description: 您可以使用內容仲裁者.NET SDK 來起始 Azure 內容仲裁中的影像或文字內容的端對端的內容仲裁作業。
+title: 使用 .NET 進行審核作業-內容仲裁
+titleSuffix: Azure Cognitive Services
+description: 使用內容仲裁 .NET SDK，針對 Azure 內容仲裁中的影像或文字內容起始端對端內容審核作業。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
-ms.date: 03/18/2019
-ms.author: sajagtap
-ms.openlocfilehash: 24d5483cf3b418cada3c5b7f03eedbff13cc36d6
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.topic: conceptual
+ms.date: 10/24/2019
+ms.author: pafarley
+ms.openlocfilehash: fe1b5b4171dc5e61c1c82abfd723d0b77a05a5b9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757034"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "76294332"
 ---
-# <a name="define-and-use-moderation-jobs-net"></a>定義和使用仲裁作業 (.NET)
+# <a name="define-and-use-moderation-jobs-net"></a>定義和使用審核作業（.NET）
 
-仲裁作業可做為一種包裝函式的內容仲裁、 工作流程及檢閱功能。 本指南提供資訊和程式碼範例，可協助您開始使用[內容仲裁者 SDK for.NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)來：
+審核作業可做為內容仲裁、工作流程和評論功能的一種包裝函式。 本指南提供資訊和程式碼範例，可協助您開始使用[內容仲裁 SDK for .net](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)來執行下列動作：
 
 - 啟動審核作業以掃描和建立人工審核者的檢閱
 - 取得擱置中檢閱的狀態
 - 追蹤並取得檢閱的最終狀態
-- 送出的回呼 URL 將檢閱結果
+- 將審核結果提交至回呼 URL
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-- 登入或建立帳戶，在內容仲裁[審核工具](https://contentmoderator.cognitive.microsoft.com/)站台。
+- 在內容仲裁[審查工具](https://contentmoderator.cognitive.microsoft.com/)網站上登入或建立帳戶。
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>請確定您的 API 金鑰可呼叫審核 API 以建立審核項目
 
@@ -47,7 +47,7 @@ ms.locfileid: "58757034"
 
 ## <a name="create-your-visual-studio-project"></a>建立 Visual Studio 專案
 
-1. 將一個新的 [主控台應用程式 (.NET Framework)] 專案新增到您的解決方案。
+1. 將一個新的 [主控台應用程式 (.NET Framework)]**** 專案新增到您的解決方案。
 
    在範例程式碼中，將專案命名為 **CreateReviews**。
 
@@ -67,8 +67,7 @@ ms.locfileid: "58757034"
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -81,7 +80,7 @@ using System.Threading;
 新增下列程式碼，為您的訂用帳戶建立 Content Moderator 用戶端。
 
 > [!IMPORTANT]
-> 以您的區域識別碼和訂用帳戶訂用帳戶的值更新 **AzureRegion** 和 **CMSubscriptionKey** 欄位。
+> 使用您的端點 URL 和訂用帳戶金鑰值來更新**add-azureendpoint**和**CMSubscriptionKey**欄位。
 
 ```csharp
 /// <summary>
@@ -93,16 +92,9 @@ using System.Threading;
 public static class Clients
 {
     /// <summary>
-    /// The region/location for your Content Moderator account,
-    /// for example, westus.
-    /// </summary>
-    private static readonly string AzureRegion = "YOUR API REGION";
-
-    /// <summary>
     /// The base URL fragment for Content Moderator calls.
     /// </summary>
-    private static readonly string AzureBaseURL =
-        $"https://{AzureRegion}.api.cognitive.microsoft.com";
+    private static readonly string AzureEndpoint = "YOUR ENDPOINT URL";
 
     /// <summary>
     /// Your Content Moderator subscription key.
@@ -121,7 +113,7 @@ public static class Clients
         // Create and initialize an instance of the Content Moderator API wrapper.
         ContentModeratorClient client = new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey));
 
-        client.Endpoint = AzureBaseURL;
+        client.Endpoint = AzureEndpoint;
         return client;
     }
 }
@@ -132,10 +124,10 @@ public static class Clients
 將下列內容和靜態欄位新增至 Program.cs 中的 **Program** 類別。
 
 > [!NOTE]
-> 您可以將 TeamName 常數設定為建立 Content Moderator 訂用帳戶時所使用的名稱。 您可以從 [Content Moderator 網站](https://westus.contentmoderator.cognitive.microsoft.com/)擷取 TeamName。
-> 登入後，請從 [設定] (齒輪) 功能表選取 [認證]。
+> 您可以將 TeamName 常數設定為建立 Content Moderator 訂用帳戶時所使用的名稱。 您可以從 Content Moderator 網站擷取 TeamName。
+> 登入後，請從 [設定]**** (齒輪) 功能表選取 [認證]****。
 >
-> 小組名稱會是 [API] 區段中 [Id] 欄位的值。
+> 您的小組名稱是 [ **API** ] 區段中 [**識別碼**] 欄位的值。
 
 ```csharp
 /// <summary>
@@ -241,7 +233,7 @@ using (TextWriter writer = new StreamWriter(OutputFile, false))
 ```
 
 > [!NOTE]
-> 您的 Content Moderator 服務金鑰會有每秒要求數目 (RPS) 的速率限制。 如果您超出此限制，SDK 就會擲回錯誤碼為 429 的例外狀況。
+> Content Moderator 服務金鑰會有每秒要求數目 (RPS) 的速率限制。 如果您超出此限制，SDK 就會擲回錯誤碼為 429 的例外狀況。
 >
 > 免費層金鑰有一個 RPS 速率限制。
 
@@ -256,9 +248,9 @@ Then, press any key to continue.
 
 請登入 Content Moderator 檢閱工具，以查看擱置中的影像檢閱。
 
-使用 [下一步] 按鈕以提交影像。
+使用 [下一步]**** 按鈕以提交影像。
 
-![給人工審核者的影像檢閱](images/ocr-sample-image.PNG)
+![給人工仲裁的影像檢閱](images/ocr-sample-image.PNG)
 
 ## <a name="see-the-sample-output-in-the-log-file"></a>查看記錄檔中的輸出範例
 

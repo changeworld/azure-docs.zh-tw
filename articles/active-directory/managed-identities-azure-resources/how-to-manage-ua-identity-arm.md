@@ -1,6 +1,6 @@
 ---
-title: 如何使用 Azure Resource Manager 來建立及刪除使用者指派的受控識別
-description: 如何使用 Azure Resource Manager 來建立及刪除使用者指派受控識別的逐步說明。
+title: 使用 Azure Resource Manager 建立 & 刪除使用者指派的受控識別
+description: 如何使用 Azure Resource Manager 建立及刪除使用者指派的受控識別的逐步指示。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -9,24 +9,22 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/16/2018
+ms.date: 12/10/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cccf129ff4ed9389422ec900a4a23f489cf3c7a4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 466b0853648fab078af89f01a9aea157205e81d1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60443478"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608478"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>使用 Azure Resource Manager 來建立、列出及刪除使用者指派的受控識別
 
-[!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-適用於 Azure 資源的受控識別會在 Azure Active Directory 中為 Azure 服務提供受控識別。 您可以使用此身分識別來向支援 Azure AD 驗證的服務進行驗證，而不需要您程式碼中的認證。 
+適用于 Azure 資源的受控識別會在 Azure Active Directory 中提供具有受控識別的 Azure 服務。 您可以使用此身分識別來向支援 Azure AD 驗證的服務進行驗證，而不需要您程式碼中的認證。 
 
 在本文中，您會使用 Azure Resource Manager 建立使用者指派的受控身分識別。
 
@@ -36,17 +34,17 @@ ms.locfileid: "60443478"
 - [刪除使用者指派的受控識別](how-to-manage-ua-identity-cli.md#delete-a-user-assigned-managed-identity)
   ## <a name="prerequisites"></a>必要條件
 
-- 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#how-does-it-work)**。
+- 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#managed-identity-types)**。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
 
 ## <a name="template-creation-and-editing"></a>範本建立和編輯
 
 如同 Azure 入口網站和指令碼，Azure Resource Manager 範本可讓您部署由 Azure 資源群組所定義之新的或已修改的資源。 範本編輯和部署有幾個選項可用 (在本機和入口網站)，包括：
 
-- 使用 [Azure Marketplace 所提供的自訂範本](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)，可讓您從頭開始建立範本，或根據現有的常用範本或[快速入門範本](https://azure.microsoft.com/documentation/templates/)來建立範本。
-- 衍生自現有的資源群組，方法是從[原始部署](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)，或從[部署的目前狀態](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)匯出範本。
+- 使用 Azure Marketplace 中的[自訂範本](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)，可讓您從頭開始建立範本，或以現有的通用或[快速入門範本](https://azure.microsoft.com/documentation/templates/)作為基礎。
+- 衍生自現有的資源群組，方法是從[原始部署](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)，或從[部署的目前狀態](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)匯出範本。
 - 使用本機 [JSON 編輯器 (例如 VS Code)](../../azure-resource-manager/resource-manager-create-first-template.md)，然後使用 PowerShell 或 CLI 上傳和部署。
-- 使用 Visual Studio 的 [Azure 資源群組專案](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)來建立和部署範本。 
+- 使用 Visual Studio 的 [Azure 資源群組專案](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md)來建立和部署範本。 
 
 ## <a name="create-a-user-assigned-managed-identity"></a>建立使用者指派的受控識別 
 

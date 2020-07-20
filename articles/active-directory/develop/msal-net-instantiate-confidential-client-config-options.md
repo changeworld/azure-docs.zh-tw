@@ -1,45 +1,41 @@
 ---
-title: 具現化的機密用戶端應用程式，使用選項 (Microsoft Authentication Library for.NET) |Azure
-description: 了解如何使用 Microsoft Authentication Library for.NET (MSAL.NET) 的設定選項，機密用戶端應用程式具現化。
+title: 具現化機密用戶端應用程式（MSAL.NET） |Azure
+titleSuffix: Microsoft identity platform
+description: 瞭解如何使用適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET），以設定選項具現化機密用戶端應用程式。
 services: active-directory
-documentationcenter: dev-center-name
-author: rwike77
-manager: celested
-editor: ''
+author: mmacy
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/30/2019
-ms.author: ryanwi
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60b3b2fa2cdb7808e45f9142f1c1a351f470af50
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a76935c5b826f8aa686167f702f7170522744155
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65158831"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85477459"
 ---
-# <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>使用的組態選項使用 MSAL.NET，機密用戶端應用程式具現化
+# <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>使用 MSAL.NET 以設定選項具現化機密用戶端應用程式
 
-本文說明如何具現化[機密用戶端應用程式](msal-client-applications.md)使用 Microsoft Authentication Library for.NET (MSAL.NET)。  應用程式具現化的設定檔中定義的組態選項。
+本文說明如何使用適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）來具現化[機密用戶端應用程式](msal-client-applications.md)。  應用程式會使用設定檔中定義的設定選項來具現化。
 
-然後再初始化應用程式，您必須先[註冊](quickstart-register-app.md)它，讓您的應用程式可以與 Microsoft 身分識別平台整合。 註冊之後，您可能需要下列資訊 （這可以在 Azure 入口網站中找到）：
+在初始化應用程式之前，您必須先[註冊](quickstart-register-app.md)它，您的應用程式才能與 Microsoft 身分識別平臺整合。 註冊之後，您可能需要下列資訊（可在 Azure 入口網站中找到）：
 
-- 用戶端識別碼 （代表 GUID 的字串）
-- （具名執行個體） 的身分識別提供者 URL 和您的應用程式的登入對象。 這兩個參數統稱為授權單位。
-- 如果您正在撰寫企業營運應用程式僅供您的組織 （也命名單一租用戶的應用程式） 租用戶識別碼。
-- 應用程式祕密 （用戶端祕密的字串） 或憑證 （屬於類型 X509Certificate2） 如果它是機密用戶端應用程式。
-- 針對 web 應用程式，以及有時公用用戶端應用程式 （尤其當您的應用程式需要使用訊息代理程式），您必須也會將 redirectUri 身分識別提供者，請連絡後利用安全性權杖的應用程式。
+- 用戶端識別碼（代表 GUID 的字串）
+- 應用程式的身分識別提供者 URL （名為實例）和登入物件。 這兩個參數統稱為授權單位。
+- 租使用者識別碼，如果您要撰寫僅供組織使用的企業營運應用程式（也稱為單一租使用者應用程式）。
+- 應用程式密碼（用戶端密碼字串）或憑證（類型為 X509Certificate2）（如果它是機密用戶端應用程式）。
+- 對於 web 應用程式，有時也適用于公用用戶端應用程式（特別是當您的應用程式需要使用訊息代理程式時），您也會設定 redirectUri，其中身分識別提供者會使用安全性權杖來與您的應用程式連線。
 
-## <a name="configure-the-application-from-the-config-file"></a>設定應用程式，從組態檔
-MSAL.NET 中的選項屬性的名稱相符的屬性名稱`AzureADOptions`在 ASP.NET Core 中，因此您不需要撰寫任何黏附程式碼。
+## <a name="configure-the-application-from-the-config-file"></a>從設定檔設定應用程式
+MSAL.NET 中選項的屬性名稱符合 ASP.NET Core 中的屬性名稱 `AzureADOptions` ，因此您不需要撰寫任何粘連程式碼。
 
-ASP.NET Core 應用程式組態所述*appsettings.json*檔案：
+*appsettings.js*的檔案中會描述 ASP.NET Core 應用程式設定：
 
 ```json
 {
@@ -62,19 +58,19 @@ ASP.NET Core 應用程式組態所述*appsettings.json*檔案：
 }
 ```
 
-您可以從 MSAL.NET v3.x，來設定您的機密用戶端應用程式，從組態檔。 應用程式組態相關的類別位於`Microsoft.Identity.Client.AppConfig`命名空間。
+從 MSAL.NET v3. x 開始，您可以從設定檔設定您的機密用戶端應用程式。
 
-在類別中，您要設定並具現化您的應用程式，您需要宣告`ConfidentialClientApplicationOptions`物件。  應用程式選項的執行個體，繫結來源 （包括 appconfig.json 檔案） 中讀取的組態：
+在您要設定並具現化應用程式的類別中，您需要宣告 `ConfidentialClientApplicationOptions` 物件。  使用Microsoft.Extensions.Configuration 中的方法，將從來源讀取的設定（包括檔案中的 appconfig.js）系結至應用程式選項的實例 `IConfigurationRoot.Bind()` [。](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder)系結器 nuget 套件：
 
 ```csharp
-using Microsoft.Identity.Client.AppConfig;
+using Microsoft.Identity.Client;
 
 private ConfidentialClientApplicationOptions _applicationOptions;
 _applicationOptions = new ConfidentialClientApplicationOptions();
 configuration.Bind("AzureAD", _applicationOptions);
 ```
 
-這可讓 「 AzureAD 」 一節的內容*appsettings.json*檔案，以繫結至的對應屬性`ConfidentialClientApplicationOptions`物件。  接下來，建置`ConfidentialClientApplication`物件：
+這可讓檔案*上appsettings.js*之 "AzureAD" 區段的內容系結至物件的對應屬性 `ConfidentialClientApplicationOptions` 。  接下來，建立 `ConfidentialClientApplication` 物件：
 
 ```csharp
 IConfidentialClientApplication app;
@@ -82,8 +78,8 @@ app = ConfidentialClientApplicationBuilder.CreateWithApplicationOptions(_applica
         .Build();
 ```
 
-## <a name="add-runtime-configuration"></a>加入執行階段組態
-機密用戶端應用程式中，您通常會有每位使用者的快取。 因此，您必須取得使用者相關聯的快取，並告知您想要使用它的應用程式產生器。 在相同的方式，您可能必須動態計算的重新導向 URI。 在此情況下的程式碼如下：
+## <a name="add-runtime-configuration"></a>新增執行時間設定
+在機密用戶端應用程式中，您通常會有每位使用者的快取。 因此，您必須取得與使用者相關聯的快取，並通知應用程式產生器您想要使用它。 以同樣的方式，您可能會有動態計算的重新導向 URI。 在此情況下，程式碼如下所示：
 
 ```csharp
 IConfidentialClientApplication app;

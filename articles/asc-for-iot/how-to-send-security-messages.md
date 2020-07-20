@@ -1,62 +1,65 @@
 ---
-title: 傳送至 Azure 資訊安全中心的安全性訊息，IoT preview |Microsoft Docs
-description: 了解如何將傳送您 iot 使用 Azure 資訊安全中心的安全性訊息。
+title: 傳送裝置安全性訊息
+description: 瞭解如何使用適用于 IoT 的 Azure 資訊安全中心來傳送安全性訊息。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: c611bb5c-b503-487f-bef4-25d8a243803d
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: a91a3538a9c176e3c76e351eb53eb84decc85938
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
-ms.translationtype: MT
+ms.openlocfilehash: 4877493982671b1b5db686715ef854f25c2966ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65200542"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81310986"
 ---
 # <a name="send-security-messages-sdk"></a>傳送安全性訊息 SDK
 
-> [!IMPORTANT]
-> 適用於 IoT 的 Azure 資訊安全中心目前為公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+本操作指南說明當您選擇收集和傳送裝置安全性訊息，而不使用 IoT 代理程式的 Azure 資訊安全中心時，適用于 IoT 服務功能的 Azure 資訊安全中心，並說明如何執行此動作。
 
-本作法指南說明的 IoT 服務功能的 Azure 資訊安全中心 (ASC)，當您選擇要收集並傳送您的裝置安全性訊息，而不需使用 ASC IoT 代理程式，並說明如何執行這項操作。  
+在本指南中，您將了解如何：
 
-在本指南中，您將了解如何： 
 > [!div class="checklist"]
-> * 使用 C# 的傳送安全性訊息 API
-> * 使用 C 的傳送安全性訊息 API
+> * 使用 Azure IoT C SDK 傳送安全性訊息
+> * 使用 Azure IoT c # SDK 傳送安全性訊息
+> * 使用 Azure IoT Python SDK 傳送安全性訊息
+> * 使用 Azure IoT Node.js SDK 來傳送安全性訊息
+> * 使用 Azure IoT JAVA SDK 來傳送安全性訊息
 
-## <a name="asc-for-iot-capabilities"></a>針對 IoT 功能 ASC
+## <a name="azure-security-center-for-iot-capabilities"></a>IoT 功能的 Azure 資訊安全中心
 
-處理和分析任何種類的安全性訊息資料，只要傳送的資料符合 iot ASC [IoT 結構描述的 ASC](https://aka.ms/iot-security-schemas)和訊息已設定為安全性訊息。
+只要傳送的資料符合[IoT 架構的 Azure 資訊安全中心](https://aka.ms/iot-security-schemas)，而且訊息已設定為安全性訊息，IoT 的 Azure 資訊安全中心就可以處理及分析任何類型的安全性訊息資料。
 
 ## <a name="security-message"></a>安全性訊息
 
-Iot 的 ASC 定義安全性訊息，使用下列準則：
-- 如果訊息已傳送 Azure IoT C 與 /C# SDK
-- 如果訊息符合[安全性訊息結構描述](https://aka.ms/iot-security-schemas)
-- 如果訊息已設定為在傳送前的安全性訊息
+IoT 的 Azure 資訊安全中心會使用下列準則來定義安全性訊息：
 
-每個安全性訊息包含寄件者的中繼資料，例如`AgentId`， `AgentVersion`，`MessageSchemaVersion`和安全性事件的清單。
-結構描述定義的有效和必要屬性包括的事件類型的安全性訊息。
+- 如果訊息是透過 Azure IoT SDK 所傳送
+- 如果訊息符合[安全性訊息架構](https://aka.ms/iot-security-schemas)
+- 如果訊息在傳送之前已設定為安全性訊息
 
-[!NOTE]
-> 所傳送的訊息若不符合結構描述，則會遭到忽略。 請務必先確認結構描述再起始資料的傳送，因為系統目前並不會儲存遭到忽略的訊息。 
-> 未設定為使用 Azure IoT C 安全性訊息傳送的訊息 /C# SDK 將不會路由至 IoT 管線 ASC
+每個安全性訊息都包含寄件者的中繼資料 `AgentId` ，例如、 `AgentVersion` `MessageSchemaVersion` 和安全性事件清單。
+架構會定義安全性訊息（包括事件種類）的有效和必要屬性。
+
+> [!NOTE]
+> 所傳送的訊息若不符合結構描述，則會遭到忽略。 請務必先確認結構描述再起始資料的傳送，因為系統目前並不會儲存遭到忽略的訊息。
+
+> [!NOTE]
+> 未使用 Azure IoT SDK 設定為安全性訊息的已傳送訊息，將不會路由傳送至 IoT 管線的 Azure 資訊安全中心。
 
 ## <a name="valid-message-example"></a>有效的訊息範例
 
-下列範例會顯示有效的安全性訊息物件。 此範例包含的訊息中繼資料，另一個`ProcessCreate`安全性事件。
+下列範例顯示有效的安全性訊息物件。 此範例包含訊息中繼資料和一個 `ProcessCreate` 安全性事件。
 
-一次設定為安全性訊息並傳送此訊息會被處理 asc iot。
+一旦設定為安全性訊息並傳送之後，IoT 的 Azure 資訊安全中心就會處理此訊息。
 
 ```json
 "AgentVersion": "0.0.1",
@@ -75,28 +78,73 @@ Iot 的 ASC 定義安全性訊息，使用下列準則：
         "Payload":
             [
                 {
-                    "Executable": "/usr/bin/echo",
+                    "Executable": "/usr/bin/myApp",
                     "ProcessId": 11750,
                     "ParentProcessId": 1593,
-                    "UserName": "nginx",
-                    "CommandLine": "./backup .htaccess"
+                    "UserName": "aUser",
+                    "CommandLine": "myApp -a -b"
                 }
             ]
     }
 ]
 ```
 
-## <a name="send-security-messages"></a>傳送安全性訊息 
+## <a name="send-security-messages"></a>傳送安全性訊息
 
-傳送安全訊息而不使用 ASC IoT 代理程式，使用[Azure IoTC#裝置 SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview)或是[Azure IoT C 裝置 SDK](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview)。
+使用[Azure Iot c 裝置 sdk](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview)、 [Azure iot c # 裝置 Sdk](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview)、、 [azure IoT Node.js SDK](https://github.com/Azure/azure-iot-sdk-node)、 [Azure IOT Python SDK](https://github.com/Azure/azure-iot-sdk-python)或[azure iot JAVA SDK](https://github.com/Azure/azure-iot-sdk-java)，在*不*使用 IoT 代理程式 Azure 資訊安全中心的情況下傳送安全性訊息。
 
-若要從裝置傳送裝置資料供適用於 IoT 的 ASC 處理，請使用下列其中一個 API 來標記訊息，以便訊息能夠正確路由至適用於 IoT 的 ASC 處理管線。 以這種方式傳送的訊息在經過處理後，會在 IoT 中樞或 Azure 資訊安全中心內顯示為適用於 IoT 的 ASC 裡面的安全性深入解析。 
+若要從您的裝置傳送裝置資料以供 IoT Azure 資訊安全中心處理，請使用下列其中一個 Api 將訊息標示為正確路由至 IoT 處理管線的 Azure 資訊安全中心。
 
-傳送的所有資料 (即使已標上正確的標頭)，仍必須符合[適用於 IoT 的 ASC 訊息結構描述](https://aka.ms/iot-security-schemas)。 
+所有傳送的資料（即使以正確的標頭標記）也必須符合[IoT 訊息架構的 Azure 資訊安全中心](https://aka.ms/iot-security-schemas)。
 
 ### <a name="send-security-message-api"></a>傳送安全性訊息 API
 
-**傳送安全性訊息** API 目前適用於 C 和C#。  
+「**傳送安全性訊息**API」目前提供 c 和 c #、Python、Node.js 和 JAVA。
+
+#### <a name="c-api"></a>C API
+
+```c
+bool SendMessageAsync(IoTHubAdapter* iotHubAdapter, const void* data, size_t dataSize) {
+
+    bool success = true;
+    IOTHUB_MESSAGE_HANDLE messageHandle = NULL;
+
+    messageHandle = IoTHubMessage_CreateFromByteArray(data, dataSize);
+
+    if (messageHandle == NULL) {
+        success = false;
+        goto cleanup;
+    }
+
+    if (IoTHubMessage_SetAsSecurityMessage(messageHandle) != IOTHUB_MESSAGE_OK) {
+        success = false;
+        goto cleanup;
+    }
+
+    if (IoTHubModuleClient_SendEventAsync(iotHubAdapter->moduleHandle, messageHandle, SendConfirmCallback, iotHubAdapter) != IOTHUB_CLIENT_OK) {
+        success = false;
+        goto cleanup;
+    }
+
+cleanup:
+    if (messageHandle != NULL) {
+        IoTHubMessage_Destroy(messageHandle);
+    }
+
+    return success;
+}
+
+static void SendConfirmCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCallback) {
+    if (userContextCallback == NULL) {
+        //error handling
+        return;
+    }
+
+    if (result != IOTHUB_CLIENT_CONFIRMATION_OK){
+        //error handling
+    }
+}
+```
 
 #### <a name="c-api"></a>C# API
 
@@ -111,56 +159,79 @@ private static async Task SendSecurityMessageAsync(string messageContent)
 }
 ```
 
-#### <a name="c-api"></a>C API
+#### <a name="nodejs-api"></a>Node.js API
 
-```c
-bool SendMessageAsync(IoTHubAdapter* iotHubAdapter, const void* data, size_t dataSize) {
- 
-    bool success = true;
-    IOTHUB_MESSAGE_HANDLE messageHandle = NULL;
- 
-    messageHandle = IoTHubMessage_CreateFromByteArray(data, dataSize);
- 
-    if (messageHandle == NULL) {
-        success = false;
-        goto cleanup;
+```typescript
+var Protocol = require('azure-iot-device-mqtt').Mqtt
+
+function SendSecurityMessage(messageContent)
+{
+  var client = Client.fromConnectionString(connectionString, Protocol);
+
+  var connectCallback = function (err) {
+    if (err) {
+      console.error('Could not connect: ' + err.message);
+    } else {
+      var message = new Message(messageContent);
+      message.setAsSecurityMessage();
+      client.sendEvent(message);
+  
+      client.on('error', function (err) {
+        console.error(err.message);
+      });
+  
+      client.on('disconnect', function () {
+        clearInterval(sendInterval);
+        client.removeAllListeners();
+        client.open(connectCallback);
+      });
     }
- 
-    if (IoTHubMessage_SetAsSecurityMessage(messageHandle) != IOTHUB_MESSAGE_OK) {
-        success = false;
-        goto cleanup;
-    }
- 
-    if (IoTHubModuleClient_SendEventAsync(iotHubAdapter->moduleHandle, messageHandle, SendConfirmCallback, iotHubAdapter) != IOTHUB_CLIENT_OK) {
-        success = false;
-        goto cleanup;
-    }
- 
-cleanup:
-    if (messageHandle != NULL) {
-        IoTHubMessage_Destroy(messageHandle);
-    }
- 
-    return success;
+  };
+
+  client.open(connectCallback);
 }
- 
-static void SendConfirmCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCallback) {
-    if (userContextCallback == NULL) {
-        //error handling
-        return;
-    }
- 
-    if (result != IOTHUB_CLIENT_CONFIRMATION_OK){
-        //error handling
-    }
+```
+
+#### <a name="python-api"></a>Python API
+
+若要使用 Python API，您必須安裝[azure iot 裝置](https://pypi.org/project/azure-iot-device/)套件。
+
+使用 Python API 時，您可以透過模組或使用唯一的裝置或模組連接字串，透過裝置傳送安全性訊息。 搭配裝置使用下列 Python 腳本範例時，請使用**IoTHubDeviceClient**，並搭配模組使用**IoTHubModuleClient**。
+
+```python
+from azure.iot.device.aio import IoTHubDeviceClient, IoTHubModuleClient
+from azure.iot.device import Message
+
+async def send_security_message_async(message_content):
+    conn_str = os.getenv("<connection_string>")
+    device_client = IoTHubDeviceClient.create_from_connection_string(conn_str)
+    await device_client.connect()
+    security_message = Message(message_content)
+    security_message.set_as_security_message()
+    await device_client.send_message(security_message)
+    await device_client.disconnect()
+```
+
+#### <a name="java-api"></a>Java API
+
+```java
+public void SendSecurityMessage(string message)
+{
+    ModuleClient client = new ModuleClient("<connection_string>", IotHubClientProtocol.MQTT);
+    Message msg = new Message(message);
+    msg.setAsSecurityMessage();
+    EventCallback callback = new EventCallback();
+    string context = "<user_context>";
+    client.sendEventAsync(msg, callback, context);
 }
 ```
 
 ## <a name="next-steps"></a>後續步驟
-- 閱讀適用於 IoT 的 ASC 服務[概觀](overview.md)
-- 深入了解適用於 IoT 的 ASC [架構](architecture.md)
+
+- 閱讀 IoT 服務的 Azure 資訊安全中心[總覽](overview.md)
+- 深入瞭解 IoT[架構](architecture.md)的 Azure 資訊安全中心
 - 啟用[服務](quickstart-onboard-iot-hub.md)
-- 閱讀[常見問題集](resources-frequently-asked-questions.md)
+- 閱讀[常見問題](resources-frequently-asked-questions.md)
 - 了解如何存取[未經處理的安全性資料](how-to-security-data-access.md)
 - 了解[建議](concept-recommendations.md)
 - 了解[警示](concept-security-alerts.md)

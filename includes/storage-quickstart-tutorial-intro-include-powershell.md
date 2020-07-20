@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 1f8f8d314a8bb37a08b3696f597b395a8a4beb8e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56212971"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "67174203"
 ---
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -37,7 +37,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ## <a name="create-a-storage-account"></a>建立儲存體帳戶
 
-搭配使用 LRS 複寫與 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) 來建立標準的一般用途儲存體帳戶。 接下來，取得儲存體帳戶內容，定義您想要使用的儲存體帳戶。 使用儲存體帳戶時，請參考內容而非重複傳入認證。 使用下列範例來建立名為 mystorageaccount 的儲存體帳戶，其具有本機備援儲存體 (LRS) 和 blob 加密 (預設為啟用)。
+搭配使用 LRS 複寫與 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) 來建立標準的一般用途儲存體帳戶。 接下來，取得儲存體帳戶內容，定義您想要使用的儲存體帳戶。 使用儲存體帳戶時，請參考內容而非重複傳入認證。 使用下列範例來建立名為 mystorageaccount  的儲存體帳戶，其具有本機備援儲存體 (LRS) 和 blob 加密 (預設為啟用)。
 
 ```powershell
 $storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup `

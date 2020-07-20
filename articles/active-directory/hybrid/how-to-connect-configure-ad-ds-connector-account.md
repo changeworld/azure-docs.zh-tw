@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 04/29/2019
+ms.topic: how-to
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff151ff8e14b5cf9602d4e7e2e9c6cb2118a8a65
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 252c033c1a9d4d45c3d48256e65ae9ad10a93c51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64918517"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85360056"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect： 設定 AD DS 連接器帳戶權限 
 
@@ -25,7 +25,7 @@ ms.locfileid: "64918517"
 ## <a name="overview"></a>概觀 
 下列 PowerShell Cmdlet 可用來針對每個您選擇在 Azure AD Connect 中啟用的功能，設定 AD DS 連接器帳戶的 Active Directory 權限。 若要防止發生任何問題，只要您想要使用自訂網域帳戶安裝 Azure AD Connect 以連線到您的樹系，即應事先備妥 Active Directory 權限。 此 ADSyncConfig 模組也可在 Azure AD Connect 部署之後用來設定權限。
 
-![ad ds 帳戶的概觀](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
+![ad ds 帳戶概觀](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
 
 對於 Azure AD Connect Express 安裝，會有一個自動產生的帳戶 (MSOL_nnnnnnnnnn) 建立在 Active Directory 中，且具備所有必要的權限，因此，除非您已在組織單位或您要同步處理至 Azure AD 的特定 Active Directory 物件上封鎖權限繼承，否則不需要使用此 ADSyncConfig 模組。 
  
@@ -34,13 +34,13 @@ ms.locfileid: "64918517"
 
 | 功能 | 權限 |
 | --- | --- |
-| ms-DS-ConsistencyGuid 功能 |ms-DS-ConsistencyGuid 屬性 (詳情記載於[設計概念 - 使用 ms-DS-ConsistencyGuid 來作為 sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)) 的寫入權限。 | 
+| ms-DS-ConsistencyGuid 功能 |[設計概念 - 使用 ms-DS-ConsistencyGuid 作為 sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)中記載了對 ms-DS-ConsistencyGuid 屬性的讀取和寫入權限。 | 
 | 密碼雜湊同步處理 |<li>複寫目錄變更</li>  <li>複寫目錄變更 (全部) |
-| Exchange 混合式部署 |[Exchange 混合回寫](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)中記載了使用者、群組和連絡人適用的屬性的寫入權限。 |
-| Exchange 邮件公共文件夹 |公用資料夾屬性 (詳情記載於 [Exchange 郵件公用資料夾](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)) 的讀取權限。 | 
-| 密碼回寫 |[開始使用密碼管理](../authentication/howto-sspr-writeback.md)中記載了使用者適用的屬性的寫入權限。 |
-| 裝置回寫 |對裝置物件和容器的寫入權限皆列載於[裝置回寫](how-to-connect-device-writeback.md)中。 |
-| 群組回寫 |讀取、建立、更新和刪除已同步處理之 **Office 365 群組**的群組物件。  如需詳細資訊，請參閱[群組回寫](how-to-connect-preview.md#group-writeback)。|
+| Exchange 混合式部署 |[Exchange 混合回寫](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)中記載了使用者、群組和連絡人屬性的讀取和寫入權限。 |
+| Exchange 郵件公用資料夾 |公用資料夾屬性 (詳情記載於 [Exchange 郵件公用資料夾](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)) 的讀取權限。 | 
+| 密碼回寫 |[開始使用密碼管理](../authentication/howto-sspr-writeback.md)中記載了使用者屬性的讀取和寫入權限。 |
+| 裝置回寫 |[裝置回寫](how-to-connect-device-writeback.md)中記載了裝置物件和容器的讀取和寫入權限。 |
+| 群組回寫 |讀取、建立、更新和刪除已同步處理之 **Office 365 群組**的群組物件。|
 
 ## <a name="using-the-adsyncconfig-powershell-module"></a>使用 ADSyncConfig PowerShell 模組 
 ADSyncConfig 模組需要[適用於 AD DS 的遠端伺服器管理工具 (RSAT)](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools)，因為它依存於 AD DS PowerShell 模組和工具。 若要安裝適用於 AD DS 的 RSAT，請使用 [以系統管理員身分執行] 開啟 Windows PowerShell 視窗並執行： 
@@ -81,7 +81,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <ADAccountName> -A
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <ADAccountDN>
 ```
 
-請務必取代`<ADAccountName>`，`<ADDomainName>`和`<ADAccountDN>`搭配適當的值，為您的環境。
+請記得使用環境的正確值來取代 `<ADAccountName>`、`<ADDomainName>` 和 `<ADAccountDN>`。
 
 如果您不想修改 AdminSDHolder 容器的權限，請使用參數 `-SkipAdminSdHolders`。 
 
@@ -110,7 +110,7 @@ Get-ADSyncObjectsWithInheritanceDisabled -SearchBase '<DistinguishedName>' -Obje
 ```
  
 ### <a name="view-ad-ds-permissions-of-an-object"></a>檢視物件的 AD DS 權限 
-若要檢視的目前設定的提供其 DistinguishedName Active Directory 物件的權限清單，您可以使用下列 cmdlet: 
+您可使用以下 Cmdlet 來檢視目前在 Active Directory 物件上設定的權限清單，只要提供其 DistinguishedName 即可： 
 
 ``` powershell
 Show-ADSyncADObjectPermissions -ADobjectDN '<DistinguishedName>' 
@@ -136,19 +136,19 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 此 Cmdlet 會設定下列權限： 
  
 
-|類型 |名稱 |Access |套用至| 
+|類型 |名稱 |存取 |套用至| 
 |-----|-----|-----|-----|
-|允許 |AD DS 連接器帳戶 |讀取所有屬性 |子系裝置物件| 
-|允許 |AD DS 連接器帳戶|讀取所有屬性 |子系 InetOrgPerson 物件| 
-|允許 |AD DS 連接器帳戶 |讀取所有屬性 |子系電腦物件| 
-|允許 |AD DS 連接器帳戶 |讀取所有屬性 |子系 foreignSecurityPrincipal 物件| 
-|允許 |AD DS 連接器帳戶 |讀取所有屬性 |子系群組物件| 
-|允許 |AD DS 連接器帳戶 |讀取所有屬性 |子系使用者物件| 
-|允許 |AD DS 連接器帳戶 |讀取所有屬性 |子系連絡人物件| 
+|Allow |AD DS 連接器帳戶 |讀取所有屬性 |子系裝置物件| 
+|Allow |AD DS 連接器帳戶|讀取所有屬性 |子系 InetOrgPerson 物件| 
+|Allow |AD DS 連接器帳戶 |讀取所有屬性 |子系電腦物件| 
+|Allow |AD DS 連接器帳戶 |讀取所有屬性 |子系 foreignSecurityPrincipal 物件| 
+|Allow |AD DS 連接器帳戶 |讀取所有屬性 |子系群組物件| 
+|Allow |AD DS 連接器帳戶 |讀取所有屬性 |子系使用者物件| 
+|Allow |AD DS 連接器帳戶 |讀取所有屬性 |子系連絡人物件| 
 
  
 ### <a name="configure-ms-ds-consistency-guid-permissions"></a>設定 MS-DS-Consistency-Guid 權限 
-若要在使用 ms-Ds-Consistency-Guid 屬性作為來源錨點 (也稱為「讓 Azure 為我管理來源錨點」選項) 設定 AD DS 連接器的權限，請執行： 
+若要在使用 ms-Ds-Consistency-Guid 屬性作為來源錨點 (也稱為「讓 Azure 代為管理來源錨點」選項) 來設定 AD DS 連接器的權限，請執行： 
 
 ``` powershell
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
@@ -162,9 +162,9 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 
 此 Cmdlet 會設定下列權限： 
 
-|類型 |名稱 |Access |套用至|
+|類型 |名稱 |存取 |套用至|
 |-----|-----|-----|-----| 
-|允許|AD DS 連接器帳戶|讀取/寫入屬性|子系使用者物件|
+|Allow|AD DS 連接器帳戶|讀取/寫入屬性|子系使用者物件|
 
 ### <a name="permissions-for-password-hash-synchronization"></a>密碼雜湊同步處理的權限 
 若要在使用密碼雜湊同步處理時設定 AD DS 連接器帳戶的權限，請執行： 
@@ -182,10 +182,10 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonPar
 
 此 Cmdlet 會設定下列權限： 
 
-|類型 |名稱 |Access |套用至|
+|類型 |名稱 |存取 |套用至|
 |-----|-----|-----|-----| 
-|允許 |AD DS 連接器帳戶 |複寫目錄變更 |僅限此物件 (網域根)| 
-|允許 |AD DS 連接器帳戶 |複寫所有目錄變更 |僅限此物件 (網域根)| 
+|Allow |AD DS 連接器帳戶 |複寫目錄變更 |僅限此物件 (網域根)| 
+|Allow |AD DS 連接器帳戶 |複寫所有目錄變更 |僅限此物件 (網域根)| 
   
 ### <a name="permissions-for-password-writeback"></a>密碼回寫的權限 
 若要在使用密碼回寫時設定 AD DS 連接器帳戶的權限，請執行： 
@@ -202,11 +202,11 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 ```
 此 Cmdlet 會設定下列權限： 
 
-|類型 |名稱 |Access |套用至|
+|類型 |名稱 |存取 |套用至|
 |-----|-----|-----|-----| 
-|允許 |AD DS 連接器帳戶 |重設密碼 |子系使用者物件| 
-|允許 |AD DS 連接器帳戶 |寫入 lockoutTime 屬性 |子系使用者物件| 
-|允許 |AD DS 連接器帳戶 |寫入 pwdLastSet 屬性 |子系使用者物件| 
+|Allow |AD DS 連接器帳戶 |重設密碼 |子系使用者物件| 
+|Allow |AD DS 連接器帳戶 |寫入 lockoutTime 屬性 |子系使用者物件| 
+|Allow |AD DS 連接器帳戶 |寫入 pwdLastSet 屬性 |子系使用者物件| 
 
 ### <a name="permissions-for-group-writeback"></a>群組回寫的權限 
 若要在使用群組回寫時設定 AD DS 連接器帳戶的權限，請執行： 
@@ -222,11 +222,11 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
  
 此 Cmdlet 會設定下列權限： 
 
-|類型 |名稱 |Access |套用至|
+|類型 |名稱 |存取 |套用至|
 |-----|-----|-----|-----| 
-|允許 |AD DS 連接器帳戶 |一般讀取/寫入 |物件類型群組和子物件的所有屬性| 
-|允許 |AD DS 連接器帳戶 |建立/刪除子物件 |物件類型群組和子物件的所有屬性| 
-|允許 |AD DS 連接器帳戶 |刪除/刪除樹狀物件|物件類型群組和子物件的所有屬性|
+|Allow |AD DS 連接器帳戶 |一般讀取/寫入 |物件類型群組和子物件的所有屬性| 
+|Allow |AD DS 連接器帳戶 |建立/刪除子物件 |物件類型群組和子物件的所有屬性| 
+|Allow |AD DS 連接器帳戶 |刪除/刪除樹狀物件|物件類型群組和子物件的所有屬性|
 
 ### <a name="permissions-for-exchange-hybrid-deployment"></a>Exchange 混合部署的權限 
 若要在使用 Exchange 混合部署時設定 AD DS 連接器帳戶的權限，請執行： 
@@ -245,12 +245,12 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 此 Cmdlet 會設定下列權限：  
  
 
-|類型 |名稱 |Access |套用至|
+|類型 |名稱 |存取 |套用至|
 |-----|-----|-----|-----| 
-|允許 |AD DS 連接器帳戶 |讀取/寫入所有屬性 |子系使用者物件| 
-|允許 |AD DS 連接器帳戶 |讀取/寫入所有屬性 |子系 InetOrgPerson 物件| 
-|允許 |AD DS 連接器帳戶 |讀取/寫入所有屬性 |子系群組物件| 
-|允許 |AD DS 連接器帳戶 |讀取/寫入所有屬性 |子系連絡人物件| 
+|Allow |AD DS 連接器帳戶 |讀取/寫入所有屬性 |子系使用者物件| 
+|Allow |AD DS 連接器帳戶 |讀取/寫入所有屬性 |子系 InetOrgPerson 物件| 
+|Allow |AD DS 連接器帳戶 |讀取/寫入所有屬性 |子系群組物件| 
+|Allow |AD DS 連接器帳戶 |讀取/寫入所有屬性 |子系連絡人物件| 
 
 ### <a name="permissions-for-exchange-mail-public-folders-preview"></a>Exchange 郵件公用資料夾的權限 (預覽) 
 若要在使用 Exchange 郵件公用資料夾功能時設定 AD DS 連接器帳戶的權限，請執行： 
@@ -267,9 +267,9 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 ```
 此 Cmdlet 會設定下列權限： 
 
-|類型 |名稱 |Access |套用至|
+|類型 |名稱 |存取 |套用至|
 |-----|-----|-----|-----| 
-|允許 |AD DS 連接器帳戶 |讀取所有屬性 |子系 PublicFolder 物件| 
+|Allow |AD DS 連接器帳戶 |讀取所有屬性 |子系 PublicFolder 物件| 
 
 ### <a name="restrict-permissions-on-the-ad-ds-connector-account"></a>限制 AD DS 連接器帳戶的權限 
 此 PowerShell 指令碼會對以參數表示的 AD 連接器帳戶限定權限。 要限定權限必須執行下列步驟： 
@@ -292,18 +292,18 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=U
 
 此 Cmdlet 會設定下列權限： 
 
-|類型 |名稱 |Access |套用至|
+|類型 |名稱 |存取 |套用至|
 |-----|-----|-----|-----| 
-|允許 |系統 |完全控制 |此物件 
-|允許 |企業系統管理員 |完全控制 |此物件 
-|允許 |網域管理員 |完全控制 |此物件 
-|允許 |系統管理員 |完全控制 |此物件 
-|允許 |企業網域控制站 |清單內容 |此物件 
-|允許 |企業網域控制站 |讀取所有屬性 |此物件 
-|允許 |企業網域控制站 |讀取權限 |此物件 
-|允許 |驗證的使用者 |清單內容 |此物件 
-|允許 |驗證的使用者 |讀取所有屬性 |此物件 
-|允許 |驗證的使用者 |讀取權限 |此物件 
+|Allow |系統 |完全控制 |此物件 
+|Allow |企業系統管理員 |完全控制 |此物件 
+|Allow |網域管理員 |完全控制 |此物件 
+|Allow |系統管理員 |完全控制 |此物件 
+|Allow |企業網域控制站 |清單內容 |此物件 
+|Allow |企業網域控制站 |讀取所有屬性 |此物件 
+|Allow |企業網域控制站 |讀取權限 |此物件 
+|Allow |驗證的使用者 |清單內容 |此物件 
+|Allow |驗證的使用者 |讀取所有屬性 |此物件 
+|Allow |驗證的使用者 |讀取權限 |此物件 
 
 ## <a name="next-steps"></a>後續步驟
 - [Azure AD Connect：帳戶和權限](reference-connect-accounts-permissions.md)

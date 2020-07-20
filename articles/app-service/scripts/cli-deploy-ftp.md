@@ -1,26 +1,19 @@
 ---
-title: Azure CLI 指令碼範例 - 建立應用程式並使用 FTP 部署檔案 | Microsoft Docs
-description: Azure CLI 指令碼範例 - 建立 App Service 應用程式並使用 FTP 部署檔案
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI：使用 FTP 部署應用程式檔案
+description: 了解如何使用 Azure CLI 將 App Service 應用程式的部署和管理自動化。 此範例說明如何建立應用程式並使用 FTP 部署檔案。
+author: msangapu-msft
 tags: azure-service-management
-ms.service: app-service-web
-ms.workload: web
 ms.devlang: azurecli
-ms.tgt_pltfrm: sample
 ms.topic: sample
 ms.date: 12/12/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 7bca306911dc72a2f8ec31d2ac80f99b4925c9fd
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.custom: mvc, seodec18
+ms.openlocfilehash: ccef4443661f9227163b2bbe9cd8a6475f856caa
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634281"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044888"
 ---
 # <a name="create-an-app-service-app-and-deploy-files-with-ftp-using-azure-cli"></a>使用 Azure CLI 建立 App Service 應用程式並以 FTP 部署檔案
 
@@ -42,7 +35,7 @@ ms.locfileid: "53634281"
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | 建立用來存放所有資源的資源群組。 |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 建立 App Service 方案。 |

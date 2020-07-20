@@ -1,5 +1,5 @@
 ---
-title: 快速入門：使用 CLI 命令 az postgres up 建立適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
+title: 快速入門：建立伺服器 - az postgres up - 適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
 description: 本快速入門指南說明如何使用 Azure CLI (命令列介面) up 命令建立「適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器」。
 author: rachel-msft
 ms.author: raagyema
@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: 49f71c199a2832d763bb3c19d878fade47dfb8e4
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 1dd20d94737df3e799876323d2aeb555dcb9a381
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65069082"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82146801"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>快速入門：使用 Azure CLI 命令 az postgres up (預覽) 建立適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
 
@@ -21,7 +21,7 @@ ms.locfileid: "65069082"
 
 「適用於 PostgreSQL 的 Azure 資料庫」是一個受控服務，可讓您在雲端執行、管理及調整高可用性 PostgreSQL 資料庫。 Azure CLI 可用來從命令列或在指令碼中建立和管理 Azure 資源。 本快速入門說明如何使用 [az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) 命令，使用 Azure CLI 建立適用於 PostgreSQL 的 Azure 資料庫。 除了建立伺服器，`az postgres up` 命令還會建立範例資料庫、資料庫中的根使用者、開啟 Azure 服務的防火牆，以及建立用戶端電腦的預設防火牆規則。 這些預設值有助於加速開發程序。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -63,7 +63,7 @@ sku-name | GP_Gen5_2 | SKU 的名稱。 遵循簡短形式的慣例 {pricing tie
 backup-retention | 7 | 保留備份的時間長度。 單位為天。
 geo-redundant-backup | 已停用 | 是否應針對此伺服器啟用異地備援備份。
 location | westus2 | 伺服器的 Azure 位置。
-ssl-enforcement | 已停用 | 是否應針對此伺服器啟用 SSL。
+ssl-enforcement | 已停用 | 是否應針對此伺服器啟用 TLS/SSL。
 storage-size | 5120 | 伺服器的儲存體容量 (單位為 MB)。
 version | 10 | PostgreSQL 主要版本。
 admin-user | 由系統產生 | 系統管理員的使用者名稱。

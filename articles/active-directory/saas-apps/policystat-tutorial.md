@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 98ab9904f8afc5c74d9f043b0964bc56b49670cc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3e0e220467c8c16deb413f6c70f236f6de67f980
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59269770"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142005"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>教學課程：Azure Active Directory 與 PolicyStat 整合
 
@@ -34,7 +34,7 @@ PolicyStat 與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 PolicyStat 整合，您需要下列項目：
 
@@ -80,10 +80,9 @@ PolicyStat 與 Azure AD 整合提供下列優點：
 
 1. **[設定 Azure AD 單一登入](#configure-azure-ad-single-sign-on)** - 讓您的使用者能夠使用此功能。
 2. **[設定 PolicyStat 單一登入](#configure-policystat-single-sign-on)** - 在應用程式端設定單一登入設定。
-3. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 Britta Simon 測試 Azure AD 單一登入。
-4. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 Britta Simon 能夠使用 Azure AD 單一登入。
-5. **[建立 PolicyStat 測試使用者](#create-policystat-test-user)** - 使 PolicyStat 中對應的 Britta Simon 連結到該使用者在 Azure AD 中的代表項目。
-6. **[測試單一登入](#test-single-sign-on)**，驗證組態是否能運作。
+3. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 Britta Simon 能夠使用 Azure AD 單一登入。
+4. **[建立 PolicyStat 測試使用者](#create-policystat-test-user)** - 使 PolicyStat 中對應的 Britta Simon 連結到該使用者在 Azure AD 中的代表項目。
+5. **[測試單一登入](#test-single-sign-on)** ，驗證組態是否能運作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>設定 Azure AD 單一登入
 
@@ -99,7 +98,7 @@ PolicyStat 與 Azure AD 整合提供下列優點：
 
     ![單一登入選取模式](common/select-saml-option.png)
 
-3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。
+3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。   
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
@@ -118,21 +117,21 @@ PolicyStat 與 Azure AD 整合提供下列優點：
 
     ![憑證下載連結](common/metadataxml.png)
 
-5. PolicyStat 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增到 SAML 權杖屬性組態。 以下螢幕擷取畫面顯示預設屬性清單。 按一下 [編輯] **** 圖示，以開啟 [使用者屬性] **** 對話方塊。
+5. PolicyStat 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增到 SAML 權杖屬性組態。 以下螢幕擷取畫面顯示預設屬性清單。 按一下 **編輯** 圖示以開啟 [使用者屬性] 對話方塊。 
 
     ![image](common/edit-attribute.png)
 
 6. 除了以上屬性之外，PolicyStat 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [使用者屬性] 對話方塊的 [使用者宣告] 區段中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
 
-    | Name | 來源屬性 |
+    | 名稱 | 來源屬性 |
     |------------------- | -------------------- |
-    | UID | ExtractMailPrefix([mail]) |
+    | uid | ExtractMailPrefix([mail]) |
 
     a. 按一下 [新增宣告] 以開啟 [管理使用者宣告] 對話方塊。
     
-    ![映像](common/new-save-attribute.png)
+    ![image](common/new-save-attribute.png)
 
-    ![映像](./media/policystat-tutorial/attribute01.png)
+    ![image](./media/policystat-tutorial/attribute01.png)
 
     b. 在 [名稱] 文字方塊中，輸入該資料列所顯示的屬性名稱。
 
@@ -164,59 +163,34 @@ PolicyStat 與 Azure AD 整合提供下列優點：
    
     ![系統管理員功能表](./media/policystat-tutorial/ic808633.png "系統管理員功能表")
 
-3. 在 [安裝] 區段中，選取 [啟用單一登入整合]。
-   
-    ![單一登入設定](./media/policystat-tutorial/ic808634.png "單一登入設定")
-
-4. 按一下 [設定屬性]，然後在 [設定屬性]  區段中，執行下列步驟：
-   
-    ![單一登入設定](./media/policystat-tutorial/ic808635.png "單一登入設定")
-   
-    a. 在 [使用者名稱屬性] 文字方塊中，輸入 **uid**。
-
-    b. 在 [名字屬性] 文字方塊中，輸入使用者的**名字**：**Britta**。
-
-    c. 在 [姓氏屬性] 文字方塊中，輸入使用者的**姓氏**：**Simon**。
-
-    d. 在 [電子郵件屬性] 文字方塊中，輸入使用者 `BrittaSimon@contoso.com` 的**電子郵件地址**。
-
-    e. 按一下 [儲存變更] 。
-
-5. 按一下 [您的 IDP 中繼資料]，然後在 [您的 IDP 中繼資料] 區段中，執行下列步驟：
+3. 按一下 [您的 IDP 中繼資料]，然後在 [您的 IDP 中繼資料] 區段中，執行下列步驟：
    
     ![單一登入設定](./media/policystat-tutorial/ic808636.png "單一登入設定")
    
     a. 開啟您下載的中繼資料檔案，複製內容，然後貼到 [您的識別提供者中繼資料] 文字方塊中。
 
-    b. 按一下 [儲存變更] 。
+    b. 按一下 **[儲存變更]** 。
 
-### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
+4. 按一下 [設定屬性]，然後在 [設定屬性]  區段中，執行下列步驟：
+   
+    a. 在 [使用者名稱屬性] 文字方塊中，輸入 **uid**。
 
-本節的目標是要在 Azure 入口網站中建立一個名為 Britta Simon 的測試使用者。
+    b. 在 [名字屬性] 文字方塊中，輸入來自 Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`** 的名字屬性宣告名稱。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
+    c. 在 [姓氏屬性] 文字方塊中，輸入來自 Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`** 的姓氏屬性宣告名稱。
 
-    ![[使用者和群組] 與 [所有使用者] 連結](common/users.png)
+    d. 在 [電子郵件屬性] 文字方塊中，輸入來自 Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** 的電子郵件屬性宣告名稱。
 
-2. 在畫面頂端選取 [新增使用者]。
+    e. 按一下 **[儲存變更]** 。
 
-    ![[新增使用者] 按鈕](common/new-user.png)
+5. 在 [安裝] 區段中，選取 [啟用單一登入整合]。
+   
+    ![單一登入設定](./media/policystat-tutorial/ic808634.png "單一登入設定")
 
-3. 在 [使用者] 屬性中，執行下列步驟。
-
-    ![[使用者] 對話方塊](common/user-properties.png)
-
-    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
-  
-    b. 在 [使用者名稱] 欄位中，輸入 brittasimon@yourcompanydomain.extension。 例如， BrittaSimon@contoso.com
-
-    c. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
-
-    d. 按一下頁面底部的 [新增] 。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
-在本節中，您會將 PolicyStat 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
+在本節中，您會授與 PolicyStat 的存取權，讓自己的帳戶能夠使用 Azure 單一登入。
 
 1. 在 Azure 入口網站中，依序選取 [企業應用程式]、[所有應用程式] 及 [PolicyStat]。
 
@@ -234,7 +208,7 @@ PolicyStat 與 Azure AD 整合提供下列優點：
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
-5. 在 [使用者和群組] 對話方塊的 [使用者] 清單中，選取 [Britta Simon]，然後按一下畫面底部的 [選取] 按鈕。
+5. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取您的帳戶，然後按一下畫面底部的 [選取] 按鈕。
 
 6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色] 對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取] 按鈕。
 
@@ -260,4 +234,3 @@ PolicyStat 與 Azure AD 整合提供下列優點：
 - [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

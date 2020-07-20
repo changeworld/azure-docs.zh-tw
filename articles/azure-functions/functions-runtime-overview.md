@@ -1,21 +1,15 @@
 ---
-title: Azure Functions 執行階段概觀 | Microsoft Docs
+title: Azure Functions 執行階段概觀
 description: Azure Functions 執行階段預覽的概觀
-services: functions
 author: apwestgarth
-manager: stefsch
-ms.assetid: ''
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 2af9575c50ee522d6330ddf46c75b666132b7a84
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: ab04aa4ca7f54e8de120d078a313c3096a350aa5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61021181"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74226636"
 ---
 # <a name="azure-functions-runtime-overview-preview"></a>Azure Functions 執行階段概觀 (預覽)
 
@@ -50,7 +44,7 @@ Azure Functions 背景工作角色部署在 Windows 容器中，您的函式程�
 
 ## <a name="next-steps"></a>後續步驟
 
-安裝 [Azure Functions 執行階段預覽](https://aka.ms/azafrdoc)
+安裝[Azure Functions 執行階段預覽](https://aka.ms/azafrdoc)
 
 <!--Image references-->
 [1]: ./media/functions-runtime-overview/AzureFunctionsRuntime_Portal.png

@@ -1,11 +1,10 @@
 ---
-title: Azure CLI 指令碼範例 - 使用 WordPress 建立 Linux VM | Microsoft Docs
+title: Azure CLI 指令碼範例 - 使用 WordPress 建立 Linux VM
 description: Azure CLI 指令碼範例 - 使用 WordPress 建立 Linux VM
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -16,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3e4410a5acb852ea9cd7f5ca24e67e8335a45e30
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 3f046af1ce54654a5da5d92592adfb298d89f4fc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692659"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81458565"
 ---
 # <a name="create-a-vm-with-wordpress"></a>建立含 WordPress 的 VM
 
@@ -47,7 +46,7 @@ az group delete --name myResourceGroup
 
 此指令碼使用下列命令來建立資源群組、虛擬機器和所有相關資源。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | 建立用來存放所有資源的資源群組。 |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | 建立虛擬機器，並將它連線到網路卡、虛擬網路、子網路及 NSG。 此命令也會指定要使用的虛擬機器映像和管理認證。  |

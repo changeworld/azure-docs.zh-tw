@@ -1,31 +1,19 @@
 ---
-title: Azure 服務匯流排訊息傳輸、鎖定和安置 | Microsoft Docs
-description: 服務匯流排訊息傳輸和安置作業概觀
-services: service-bus-messaging
-documentationcenter: ''
-author: lingliw
-manager: digimobile
-editor: ''
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Azure 服務匯流排訊息傳輸、鎖定和結算
+description: 本文提供 Azure 服務匯流排訊息傳輸、鎖定和結算作業的總覽。
 ms.topic: article
-origin.date: 09/25/2018
-ms.date: 10/31/2018
-ms.author: v-lingwu
-ms.openlocfilehash: a78409a15acb4e60fc4200778d0f33b3fb566e85
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 22be139fccdeecee846c204a8035804fb897ae5a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60403936"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341159"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>訊息傳輸、鎖定和安置
 
-訊息代理程式 (例如服務匯流排) 的主要功能是將訊息接受至佇列或主題，並加以保留以供日後擷取。 「傳送」一詞通常會用來將訊息傳輸至訊息代理程式。 「接收」一詞通常會用來將訊息傳輸至擷取用戶端。
+訊息代理程式 (例如服務匯流排) 的主要功能是將訊息接受至佇列或主題，並加以保留以供日後擷取。 「傳送」** 一詞通常會用來將訊息傳輸至訊息代理程式。 「接收」** 一詞通常會用來將訊息傳輸至擷取用戶端。
 
-當用戶端傳送訊息時，它通常想要知道訊息是否已正確傳輸到並由訊息代理程式所接受，或者是否發生了某種錯誤。 這個肯定或否定的認可讓使用戶端和訊息代理程式能夠了解訊息傳輸狀態的相關資訊，因此稱為「安置」。
+當用戶端傳送訊息時，它通常想要知道訊息是否已正確傳輸到並由訊息代理程式所接受，或者是否發生了某種錯誤。 這個肯定或否定的認可讓使用戶端和訊息代理程式能夠了解訊息傳輸狀態的相關資訊，因此稱為「安置」**。
 
 同樣地，當訊息代理程式將訊息傳輸到用戶端時，訊息代理程式和用戶端會想要了解訊息是否已成功處理，因而可加以移除，或者訊息傳遞或處理是否失敗，因此可能必須再次傳遞訊息。
 
@@ -89,7 +77,7 @@ await Task.WhenAll(tasks);
 for (int i = 0; i < 100; i++)
 {
 
-  client.SendAsync(message); // DON'T DO THIS
+  client.SendAsync(message); // DON’T DO THIS
 }
 ```
 
@@ -97,11 +85,15 @@ for (int i = 0; i < 100; i++)
 
 ## <a name="settling-receive-operations"></a>安置接收作業
 
-對於接收作業，服務匯流排 API 用戶端會啟用兩個不同的 Explicit 模式：*Receive-and-Delete* 和 *Peek-Lock*。
+對於接收作業，服務匯流排 API 用戶端會啟用兩個不同的 Explicit 模式：「接收並刪除」** 和「查看鎖定」**。
+
+### <a name="receiveanddelete"></a>ReceiveAndDelete
 
 [接收並刪除](/dotnet/api/microsoft.servicebus.messaging.receivemode)模式會告知訊息代理程式，考慮它傳送給接收用戶端且在傳送時已安置的所有訊息。 那就表示訊息會被視為在訊息代理程式將其放在線路上之後立即取用。 如果訊息傳輸失敗，訊息就會遺失。
 
 此模式的優點是接收者不需對訊息採取進一步動作，同時也不會因為等候安置結果而變慢。 如果個別訊息中包含的資料值很低和 (或) 資料在極短時間內才有意義，則此模式是合理的選擇。
+
+### <a name="peeklock"></a>查看鎖定
 
 [查看鎖定](/dotnet/api/microsoft.servicebus.messaging.receivemode)模式會告知訊息代理程式，接收用戶端想要明確地安置已接收的訊息。 訊息可讓接收者用來加以處理，同時保留於服務的獨佔鎖定下，如此，其他競爭的接收者就無法看見該訊息。 鎖定的持續期間一開始會定義於佇列或訂用帳戶層級，可由擁有鎖定的用戶端透過 [RenewLock](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_) 作業來延長。
 
@@ -122,6 +114,14 @@ for (int i = 0; i < 100; i++)
 如果 **Complete** 失敗 (通常發生在訊息處理的最尾端，以及在處理工作進行數分鐘之後的某些情況下)，接收應用程式可以決定是否要保存工作的狀態，並且在訊息第二次傳遞時忽略相同的訊息，或者是否要丟棄工作結果並在重新傳遞訊息時進行重試。
 
 用來識別重複訊息傳遞的一般機制是檢查訊息識別碼，這可以且應該由傳送者設定為唯一值，可能會以來自原始處理序的識別碼為基準。 作業排程器可能會將訊息識別碼設為作業的識別碼，該作業是其嘗試使用指定的背景工作指派給某個背景工作的作業，而且，如果該作業已經完成，則該背景工作會忽略第二次的作業指派。
+
+> [!IMPORTANT]
+> 請務必注意，PeekLock 在訊息上取得的鎖定是暫時性的，而且可能會在下列情況中遺失
+>   * 服務更新
+>   * OS 更新
+>   * 在持有鎖定的情況下變更實體（佇列、主題、訂用帳戶）的屬性。
+>
+> 當鎖定遺失時，Azure 服務匯流排將會產生 LockLostException，這會顯示在用戶端應用程式的程式碼上。 在此情況下，用戶端的預設重試邏輯應該會自動開始，然後再次嘗試操作。
 
 ## <a name="next-steps"></a>後續步驟
 

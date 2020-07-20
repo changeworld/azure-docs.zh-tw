@@ -3,22 +3,20 @@ title: 讀取 NSG 流量記錄 | Microsoft Docs
 description: 本文說明如何剖析 NSG 流量記錄
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
-ms.author: kumud
-ms.openlocfilehash: 4126f27156ed8a75abebe02e5d67f35695f5235f
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.author: damendo
+ms.openlocfilehash: ffbf37730d5064edcd067c3383fe18c342a2b053
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205543"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738493"
 ---
 # <a name="read-nsg-flow-logs"></a>讀取 NSG 流量記錄
 
@@ -29,11 +27,11 @@ NSG 流量記錄會以[區塊 Blob](https://docs.microsoft.com/rest/api/storages
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
 在以下案例中，儲存體帳戶中已經存有一個範例流程記錄檔。 您已了解如何選擇性讀取 NSG 流量記錄中最新的事件。 在本文中，您會使用 PowerShell，但本文中所討論的概念並不限於該程式設計語言，且適用於 Azure 儲存體 API 所支援的所有語言。
 
-## <a name="setup"></a>設定
+## <a name="setup"></a>安裝程式
 
 開始之前，您必須在帳戶中的一或多個網路安全性群組上，啟用網路安全性群組流程記錄。 如需有關啟用網路安全性流程記錄的指示，請參閱下列文章︰[網路安全性群組的流程記錄簡介](network-watcher-nsg-flow-logging-overview.md)。
 
@@ -70,8 +68,8 @@ function Get-NSGFlowLogCloudBlockBlob {
         # Gets the storage blog
         $Blob = Get-AzStorageBlob -Context $ctx -Container $ContainerName -Blob $BlobName
 
-        # Gets the block blog of type 'Microsoft.WindowsAzure.Storage.Blob.CloudBlob' from the storage blob
-        $CloudBlockBlob = [Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob] $Blob.ICloudBlob
+        # Gets the block blog of type 'Microsoft.Azure.Storage.Blob.CloudBlob' from the storage blob
+        $CloudBlockBlob = [Microsoft.Azure.Storage.Blob.CloudBlockBlob] $Blob.ICloudBlob
 
         #Return the Cloud Block Blob
         $CloudBlockBlob
@@ -81,11 +79,11 @@ function Get-NSGFlowLogCloudBlockBlob {
 function Get-NSGFlowLogBlockList  {
     [CmdletBinding()]
     param (
-        [Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob] [Parameter(Mandatory=$true)] $CloudBlockBlob
+        [Microsoft.Azure.Storage.Blob.CloudBlockBlob] [Parameter(Mandatory=$true)] $CloudBlockBlob
     )
     process {
         # Stores the block list in a variable from the block blob.
-        $blockList = $CloudBlockBlob.DownloadBlockList()
+        $blockList = $CloudBlockBlob.DownloadBlockListAsync()
 
         # Return the Block List
         $blockList
@@ -116,14 +114,14 @@ ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      2      True
 
 ## <a name="read-the-block-blob"></a>讀取區塊 Blob
 
-接下來，您需要讀取 `$blocklist` 變數以擷取資料。 在這個範例中，我們會逐一查看區塊清單，從每個區塊讀取位元組，並將它們儲存在陣列中。 使用 [DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) 方法來擷取資料。
+接下來，您需要讀取 `$blocklist` 變數以擷取資料。 在這個範例中，我們會逐一查看區塊清單，從每個區塊讀取位元組，並將它們儲存在陣列中。 使用 [DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray) 方法來擷取資料。
 
 ```powershell
 function Get-NSGFlowLogReadBlock  {
     [CmdletBinding()]
     param (
         [System.Array] [Parameter(Mandatory=$true)] $blockList,
-        [Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob] [Parameter(Mandatory=$true)] $CloudBlockBlob
+        [Microsoft.Azure.Storage.Blob.CloudBlockBlob] [Parameter(Mandatory=$true)] $CloudBlockBlob
 
     )
     # Set the size of the byte array to the largest block
@@ -142,7 +140,7 @@ function Get-NSGFlowLogReadBlock  {
         $downloadArray = New-Object -TypeName byte[] -ArgumentList $maxvalue
 
         # Download the data into the ByteArray, starting with the current index, for the number of bytes in the current block. Index is increased by 3 when reading to remove preceding comma.
-        $CloudBlockBlob.DownloadRangeToByteArray($downloadArray,0,$index, $($blockList[$i].Length-1)) | Out-Null
+        $CloudBlockBlob.DownloadRangeToByteArray($downloadArray,0,$index, $($blockList[$i].Length)) | Out-Null
 
         # Increment the index by adding the current block length to the previous index
         $index = $index + $blockList[$i].Length
@@ -188,6 +186,9 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
 
 ## <a name="next-steps"></a>後續步驟
 
-造訪[使用彈性堆疊](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)、[使用 Grafana](network-watcher-nsg-grafana.md)，以及[使用 Graylog](network-watcher-analyze-nsg-flow-logs-graylog.md)，以深入了解檢視 NSG 流量記錄的方式。 在下方可找到開放原始碼的 Azure Function 方法，能夠直接使用 Blob 並發送給各種記錄分析取用者：[Azure 網路監看員 NSG 流量記錄連接器](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector)。
+
+造訪[使用彈性堆疊](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)、[使用 Grafana](network-watcher-nsg-grafana.md)，以及[使用 Graylog](network-watcher-analyze-nsg-flow-logs-graylog.md)，以深入了解檢視 NSG 流量記錄的方式。 在這裡可以找到用來直接使用 blob 併發出至各種 log analytics 取用者的開放原始碼 Azure Function 方法： [Azure 網路監看員 NSG 流量記錄連接器](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector)。
+
+您可以使用[Azure 流量分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)來取得流量流程的深入解析。 流量分析會使用[Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) ，讓您的流量可供查詢。
 
 若要深入了解儲存體 Blob，請造訪：[Azure Functions Blob 儲存體繫結](../azure-functions/functions-bindings-storage-blob.md)

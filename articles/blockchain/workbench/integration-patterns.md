@@ -1,21 +1,15 @@
 ---
-title: Azure Blockchain Workbench 中的智慧合約整合模式
-description: Azure Blockchain Workbench 中的智慧合約整合模式的概觀。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/09/2019
-ms.topic: article
-ms.service: azure-blockchain
+title: 智慧合約整合模式-Azure Blockchain Workbench
+description: Azure Blockchain Workbench Preview 中的智慧合約整合模式總覽。
+ms.date: 11/20/2019
+ms.topic: conceptual
 ms.reviewer: mmercuri
-manager: femila
-ms.openlocfilehash: 6be1d2b1e68c52d45a42027be5f6d69cc2c25adc
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 716255f5e71ec19b5b9c5a0a32740abc39f1a40b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65509935"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254628"
 ---
 # <a name="smart-contract-integration-patterns"></a>智慧合約整合模式
 
@@ -37,7 +31,7 @@ Azure Blockchain Workbench 產生的 Web 應用程式所包含的功能，可透
 
 REST API 主要用於互動式用戶端，例如 Web、行動和 Bot 應用程式。
 
-本節探討的模式著重在可將交易傳送至分散式總帳的 REST API 層面，以及可從 Azure Blockchain Workbench 的*鏈結關閉* SQL 資料庫查詢交易相關資料的模式。
+本節探討的模式著重于將交易傳送至分散式總帳的 REST API 層面，以及從 Azure Blockchain Workbench 的「*關閉鏈*」資料庫查詢交易相關資料的模式。
 
 ### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>從外部系統將交易傳送至分散式總帳
 
@@ -79,7 +73,7 @@ Azure Blockchain Workbench REST API 會傳送已驗證的要求，以查詢對�
 
 在此案例中，事件發生於智慧合約內，例如特定事件類型的狀態變更或執行。 此事件會透過事件方格廣播至下游取用者，讓這些取用者採取適當的動作。
 
-此案例的範例之一，是取用者在交易發生時會收到警示並可執行動作，例如在 SQL DB 或 Common Data Service 中記錄資訊。 此案例是 Workbench 填入其「鏈結關閉」SQL DB 時所依循的相同模式。
+此案例的範例之一，是取用者在交易發生時會收到警示並可執行動作，例如在 SQL DB 或 Common Data Service 中記錄資訊。 此案例是 Workbench 填入其「鏈結關閉」** SQL DB 時所依循的相同模式。
 
 另一個範例，是智慧合約轉換為特定狀態時，例如，當合約進入 *OutOfCompliance* 時。 當此狀態變更發生時，可能會觸發警示並傳送至系統管理員的行動電話。
 
@@ -180,7 +174,7 @@ Azure Blockchain Workbench REST API 會傳送已驗證的要求，以查詢對�
 
 常見的整合案例是在智慧合約納入擷取自感應器的遙測資料。 根據感應器所傳遞的資料，智慧合約可以採取正確的動作，並改變合約的狀態。
 
-例如，如果運送藥品的貨車溫度飆升至 110 度，則可能會影響到藥品的藥效，且若未偵測到此問題而從供應鏈中移除，可能會造成公共安全問題。 如果某駕駛加速至時速 100 英哩，產生的感應器資訊可能致使保險業者取消其保險。 對於租用的車輛，GPS 資料可以在駕駛的行車路徑超出其租用合約所涵蓋的地理位置時加以指出，而收取罰金。
+例如，如果運送藥品的貨車溫度飆升至 110 度，則可能會影響到藥品的藥效，且若未偵測到此問題而從供應鏈中移除，可能會造成公共安全問題。 如果驅動程式以每小時的速度加速到100英里，則產生的感應器資訊可能會觸發其保險提供者的取消保險。 對於租用的車輛，GPS 資料可以在駕駛的行車路徑超出其租用合約所涵蓋的地理位置時加以指出，而收取罰金。
 
 其困難之處在於感應器是否能穩定持續地傳遞資料，且將所有資料傳送至智慧合約，也並不妥當。 常見的方法是，限定傳送至區塊鏈的訊息數量，而將所有訊息傳遞至次要存放區。 例如，傳遞僅依固定間隔接收的訊息，例如每小時一次，以及在限定值超出智慧合約的協議範圍時傳遞。 檢查超出容許範圍的值，可確保能夠接收及執行合約商務邏輯的相關資料。 定期檢查值，可確認感應器仍在進行報告。 所有資料都會傳送至次要報告存放區，以便進行更廣泛的報告、分析和機器學習。 例如，雖然智慧合約不一定需要每分鐘都取得 GPS 感應器的數據，但對於報告或製圖路徑，這或許可提供有價值的資料。
 
@@ -210,7 +204,7 @@ Azure Blockchain Workbench REST API 會傳送已驗證的要求，以查詢對�
 
 -   Azure Blockchain Workbench 會儲存關於應用程式、工作流程、合約和交易的中繼資料，這是其正常作業行為的一部分。
 -   外部系統或工具會提供一或多個對話方塊，以利收集資料庫的相關資訊，例如資料庫伺服器名稱、資料庫名稱、驗證類型、登入認證，以及所要使用的資料庫檢視。
--   系統會根據 SQL 資料庫檢視撰寫查詢，以方便外部系統、服務、報告、開發人員工具和企業生產力工具的下游使用。
+-   查詢是針對資料庫檢視而撰寫，以協助外部系統、服務、報告、開發人員工具和企業生產力工具的下游耗用量。
 
 ## <a name="storage-integration"></a>儲存體整合
 

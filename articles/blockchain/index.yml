@@ -1,0 +1,99 @@
+### YamlMime:Hub
+title: Azure 區塊鏈服務文件
+summary: 了解如何使用 Azure 區塊鏈服務來開發、測試和部署安全的區塊鏈應用程式。
+brand: azure
+metadata:
+  title: Azure 區塊鏈服務文件
+  description: 了解如何使用 Azure 區塊鏈服務來開發、測試和部署安全的區塊鏈應用程式。
+  services: service
+  ms.service: azure-blockchain
+  ms.topic: hub-page
+  author: PatAltimore
+  ms.author: patricka
+  ms.date: 10/23/2019
+  ms.openlocfilehash: 11c3c464de5efc9b38426fa7ea015f63b37a8b52
+  ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 05/31/2020
+  ms.locfileid: "84235504"
+productDirectory:
+  items:
+  - title: Azure 區塊鏈服務
+    imageSrc: ./media/index/blockchain-service.svg
+    links:
+    - url: ./service/overview.md
+      text: 什麼是 Azure 區塊鏈服務？
+    - url: ./service/index.yml
+      text: 更多資訊 >
+  - title: Azure Blockchain Workbench
+    imageSrc: ./media/index/blockchain-workbench.svg
+    links:
+    - url: ./workbench/overview.md
+      text: 什麼是 Azure Blockchain Workbench？
+    - url: ./workbench/index.yml
+      text: 更多資訊 >
+conceptualContent:
+  title: 開始使用
+  items:
+  - title: 使用聯盟區塊鏈網路建立和開發
+    links:
+    - url: ./service/create-member.md
+      itemType: quickstart
+      text: 部署 Azure 區塊鏈服務的區塊鏈成員
+    - url: ./service/send-transaction.md
+      itemType: tutorial
+      text: 遵循教學課程並撰寫智慧型合約
+    - url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-I-Deploy-and-configure-your-network
+      itemType: video
+      text: 觀看如何部署和設定您的網路
+    - url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-II-Write-and-test-smart-contracts-with-VS-Code
+      itemType: video
+      text: 觀看如何使用 VS Code 撰寫智慧型合約
+  - title: 建立區塊鏈解決方案的原型
+    links:
+    - url: ./workbench/deploy.md
+      itemType: how-to-guide
+      text: 部署 Azure Blockchain Workbench
+    - url: ./workbench/create-app.md
+      itemType: tutorial
+      text: 遵循教學課程並建立 Blockchain Workbench 應用程式
+    - url: ./workbench/integration-patterns.md
+      itemType: concept
+      text: 了解如何整合解決方案與 Blockchain Workbench
+    - url: https://channel9.msdn.com/Shows/Blocktalk/Building-your-first-Azure-Blockchain-Workbench-application
+      itemType: video
+      text: 觀看如何建置第一個應用程式
+  - title: 使用區塊鏈資料管理員發佈區塊鏈資料
+    links:
+    - url: ./service/data-manager.md
+      itemType: concept
+      text: 什麼是適用於 Azure 區塊鏈服務的區塊鏈資料管理員？
+    - url: ./service/data-manager-portal.md
+      itemType: how-to-guide
+      text: 使用 Azure 入口網站建立區塊鏈資料管理員執行個體
+    - url: https://aka.ms/BTDataManager
+      itemType: video
+      text: 觀看區塊鏈資料管理員的簡介
+  - title: 請使用符合您使用案例的總帳來建置
+    links:
+    - url: ./templates/ethereum-poa-deployment.md
+      itemType: how-to-guide
+      text: 在 Azure 上部署多成員的聯盟授權 Ethereum 網路
+    - url: ./templates/hyperledger-fabric-consortium-azure-kubernetes-service.md
+      itemType: how-to-guide
+      text: 在 Azure Kubernetes Service 上部署 Hyperledger Fabric 聯盟網路
+additionalContent:
+  sections:
+  - title: 開發工具和範例
+    summary: 區塊鏈應用程式開發工具和程式碼範例。
+    items:
+    - title: 適用於 Ethereum 的 Azure 區塊鏈服務開發套件
+      summary: 開發、部署偵錯和管理您的 Azure 區塊鏈服務解決方案。
+      url: https://marketplace.visualstudio.com/items?itemName=azblockchain.azure-blockchain
+    - title: Ethereum 區塊鏈連接器
+      summary: 使用 Azure Logic Apps、Microsoft Flow 和 Microsoft PowerApps 來執行智慧型合約動作，例如提交交易、讀取合約狀態，以及觸發合約更新的流程。
+      url: https://docs.microsoft.com/connectors/blockchainethereum/
+    - title: 程式碼範例
+      summary: 您可以使用下列 GitHub 存放庫和程式碼範例。
+      url: https://github.com/Azure-Samples/blockchain

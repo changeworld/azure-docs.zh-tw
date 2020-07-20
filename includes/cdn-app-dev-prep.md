@@ -1,15 +1,15 @@
 ---
 author: zhangmanling
-ms.service: cdn
+ms.service: azure-cdn
 ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
-ms.openlocfilehash: 7f80c8f1773cfeb8ddfb222d068a5c6571c2e5c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 41f2d4540f665137d34d262546cdc1a2edfbae3a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564079"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "77608751"
 ---
 ## <a name="prerequisites"></a>必要條件
 在撰寫 CDN 管理程式碼之前，您必須做一些準備工作，讓程式碼與 Azure Resource Manager 進行互動。 若要執行這項準備作業，您必須：
@@ -32,7 +32,7 @@ ms.locfileid: "60564079"
     ![為資源群組命名](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
 
 ### <a name="creating-the-azure-ad-application-and-applying-permissions"></a>建立 Azure AD 應用程式，然後套用權限
-有兩種應用程式與 Azure Active Directory 的驗證方法：個別使用者或服務主體。 服務主體類似於 Windows 中的服務帳戶。  我們並未授與特定使用者權限來與 CDN 設定檔互動，而是改為將權限授與服務主體。  服務主體通常用於自動化的非互動式處理程序。  雖然本教學課程是撰寫互動式主控台應用程式，但我們將著重在服務主體處理方法。
+有兩種方式可使用 Azure Active Directory 來驗證應用程式︰個別使用者或服務主體。 服務主體類似於 Windows 中的服務帳戶。  我們並未授與特定使用者權限來與 CDN 設定檔互動，而是改為將權限授與服務主體。  服務主體通常用於自動化的非互動式處理程序。  雖然本教學課程是撰寫互動式主控台應用程式，但我們將著重在服務主體處理方法。
 
 建立服務主體包含數個步驟，其中包括建立 Azure Active Directory 應用程式。  若要建立它，我們將[遵循此教學課程](../articles/active-directory/develop/howto-create-service-principal-portal.md)。
 
@@ -41,7 +41,7 @@ ms.locfileid: "60564079"
 >
 > 當您要進入名為設定多租用戶應用程式的步驟時，選取 [否]。
 >
-> 當您要進入[將應用程式指派給角色](../articles/active-directory/develop/howto-create-service-principal-portal.md#assign-the-application-to-a-role)步驟時，請使用稍早建立的資源群組 *CdnConsoleTutorial*，但指派 [CDN 設定檔參與者] 角色，而不是 [讀取者] 角色。  當您將應用程式指派給資源群組中的 **CDN 設定檔參與者** 角色之後，請返回本教學課程。 
+> 當您要進入[將應用程式指派給角色](../articles/active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)步驟時，請使用稍早建立的資源群組 *CdnConsoleTutorial*，但指派 [CDN 設定檔參與者] 角色，而不是 [讀取者] 角色。  當您將應用程式指派給資源群組中的 **CDN 設定檔參與者** 角色之後，請返回本教學課程。 
 >
 >
 

@@ -1,25 +1,20 @@
 ---
-title: Azure CLI 指令碼範例 - 刪除 Azure 應用程式設定存放區 | Microsoft Docs
-description: Azure CLI 指令碼範例 - 刪除 Azure 應用程式設定存放區
+title: Azure CLI 指令碼範例 - 刪除 Azure 應用程式組態存放區
+titleSuffix: Azure App Configuration
+description: 使用 Azure CLI 指令碼來刪除 Azure 應用程式組態存放區
 services: azure-app-configuration
-documentationcenter: ''
-author: yegu-ms
-manager: balans
-editor: ''
+author: lisaguthrie
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: azure-app-configuration
-ms.date: 02/24/2019
-ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: 3482cc14e73801af6d0db910ded84adf722bc6f4
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.date: 02/19/2020
+ms.author: lcozzens
+ms.openlocfilehash: 7f73de459d8ce9f74e3925789af630b7c804d605
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884215"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "77523567"
 ---
 # <a name="delete-an-azure-app-configuration-store"></a>刪除 Azure 應用程式設定存放區
 
@@ -31,16 +26,12 @@ ms.locfileid: "56884215"
 
 如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
-您必須先執行下列命令，以安裝 Azure 應用程式設定 CLI 擴充功能：
-
-        az extension add -n appconfig
-
 ## <a name="sample-script"></a>範例指令碼
 
 ```azurecli-interactive
 #/bin/bash
 
-# Delete an app configuration store named myTestAppConfigStore from the Resource Group myResourceGroup
+# Delete an App Configuration store named myTestAppConfigStore from the Resource Group myResourceGroup
 az appconfig delete --name myTestAppConfigStore --resource-group myResourceGroup
 ```
 
@@ -48,14 +39,14 @@ az appconfig delete --name myTestAppConfigStore --resource-group myResourceGroup
 
 ## <a name="script-explanation"></a>指令碼說明
 
-此指令碼會使用下列命令來刪除應用程式設定存放區。 下表中的每個命令都會連結至命令特定的文件。
+此指令碼會使用下列命令來刪除應用程式組態存放區。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
-| [az appconfig delete](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-delete) | 刪除應用程式設定存放區資源。 |
+| [az appconfig delete](/cli/azure/appconfig#az-appconfig-delete) | 刪除應用程式組態存放區資源。 |
 
 ## <a name="next-steps"></a>後續步驟
 
 如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
-您可以在 [Azure 應用程式設定文件](../cli-samples.md)中找到其他的應用程式設定 CLI 指令碼範例。
+您可以在 [Azure 應用程式組態 CLI 範例](../cli-samples.md)中找到其他的應用程式組態 CLI 指令碼範例。

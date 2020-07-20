@@ -1,114 +1,145 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Language Understanding (LUIS) 文件
+summary: 了解 Language Understanding 如何讓應用程式了解人在文字中所表達的意思。
 metadata:
-  document_id: null
-  title: Language Understanding (LUIS) - 教學課程、快速入門、API 參考
-  description: 了解如何使用 Language Understanding 服務，讓應用程式了解人在文字中所表達的意思。
-  author: nitinme
-  manager: cgronlun
-  ms.service: cognitive-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 01/23/2019
+  ms.date: 06/15/2020
   ms.author: nitinme
-abstract:
-  description: Language Understanding 服務 (LUIS) 可讓應用程式了解人在文字中所表達的意思。 LUIS 使用機器學習，讓開發人員建置應用程式，來可接收使用者的自然語言輸入，並從其中擷取意義。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ../media/index/luis-landing-page-video.png
-      width: 250
-    title: 'LUIS 的最新消息 (18:28)'
-    href: 'https://azure.microsoft.com/resources/videos/whats-new-with-language-understanding-service-luis'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/luis/what-is-luis
-            html: <p>了解 Language Understanding 服務 (LUIS)。</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: LUIS 是什麼？
-          - href: /azure/cognitive-services/luis/luis-how-plan-your-app
-            html: <p>準備與您的應用程式相關的意圖與實體大綱。</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: 規劃 LUIS 應用程式
-          - href: /azure/cognitive-services/luis/luis-concept-best-practices
-            html: <p>建立 LUIS 應用程式時使用這些最佳做法。</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: LUIS 應用程式的最佳做法
-  - title: 5 分鐘快速入門
-    items:
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/logo_csharp.svg
-          - image:
-              src: media/index/logo_java.svg
-          - image:
-              src: media/index/logo_nodejs.svg
-          - image:
-              src: media/index/logo_python.svg
-        rows:
-          - title: 端點 API
-            values:
-              - href: luis-get-started-cs-get-intent
-              - href: luis-get-started-java-get-intent
-              - href: luis-get-started-node-get-intent
-              - href: luis-get-started-python-get-intent
-          - title: 編寫 API
-            values:
-              - href: luis-get-started-cs-add-utterance
-              - href: luis-get-started-java-add-utterance
-              - href: luis-get-started-node-add-utterance
-              - href: luis-get-started-python-add-utterance
-  - title: 逐步教學課程
-    items:
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="luis-quickstart-intents-only">建置適用於人力資源 (HR) 網域的應用程式</a>
-          - html: <a href="luis-tutorial-prebuilt-intents-entities">新增預先建置的意圖和實體</a>
-          - html: <a href="luis-quickstart-intents-regex-entity">新增規則運算式實體</a>
-          - html: <a href="luis-quickstart-intent-and-list-entity">新增清單實體</a>
-          - html: <a href="tutorial-entity-roles">使用實體角色</a>
-          - html: <a href="luis-quickstart-primary-and-secondary-data">新增簡單實體和片語清單</a>
-          - html: <a href="luis-quickstart-intent-and-key-phrase">新增 KeyPhrase 實體</a>
-          - html: <a href="luis-quickstart-intent-and-sentiment-analysis">新增情感分析</a>
-  - title: 範例
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://aka.ms/luis-code-samples">GitHub 上的範例</a><br/>'
-  - title: 影片
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player" >組建 2018 的 Azure Friday - 認知服務 - 語言 (LUIS)</a>'
-          - html: '<a href="https://channel9.msdn.com/events/Build/2018/BRK3208" >組建 2018 工作階段 - Bot 智慧、語音功能和 NLU 最佳做法</a>'
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST API v2
-            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2092356">端點 API</a></p><p><a href="https://go.microsoft.com/fwlink/?linkid=2092087">編寫 API</a></p>'
-          - title: SDK
-            html: '<p><a href="https://aka.ms/luis-endpoint-sdk">.NET 端點 SDK</a></p><p><a href="https://aka.ms/luis-authoring-sdk">.NET 編寫 SDK</a></p>'
-          - title: PowerShell
-            html: '<p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices">Azure CLI</a></p>'
+  author: nitinme
+  ms.service: cognitive-services
+  ms.subservice: language-understanding
+  services: cognitive-services
+  title: Language Understanding (LUIS) 文件
+  titleSuffix: Azure Cognitive Services
+  description: Language Understanding (LUIS) 服務可讓應用程式了解人在文字中所表達的意思。 LUIS 使用機器學習，讓開發人員建置應用程式，來可接收使用者的自然語言輸入，並從其中擷取意義。
+  ms.openlocfilehash: 0d941872670a5bdd559a2760f73cda72773fc887
+  ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 06/15/2020
+  ms.locfileid: "84791583"
+landingContent:
+- title: 關於 Language Understanding (LUIS)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Language Understanding？
+      url: what-is-luis.md
+    - text: LUIS 入口網站
+      url: https://www.luis.ai
+  - linkListType: concept
+    links:
+    - text: 規劃您的應用程式
+      url: luis-how-plan-your-app.md
+    - text: 反覆的應用程式設計
+      url: luis-concept-app-iteration.md
+    - text: DevOps 實務
+      url: luis-concept-devops-sourcecontrol.md
+  - linkListType: whats-new
+    links:
+    - text: 新功能
+      url: whats-new.md
+  - linkListType: video
+    links:
+    - text: Ignite 2019：使用 LUIS 的進階自然語言理解 (NLU) 模型
+      url: https://www.youtube.com/watch?v=JdJEV2jV0_Y
+- title: 建立意圖、實體和功能
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 對應方式
+      url: luis-concept-intent.md
+    - text: 實體
+      url: luis-concept-entity-types.md
+    - text: 表達方式
+      url: luis-concept-utterance.md
+    - text: 片語清單功能
+      url: luis-concept-feature.md
+  - linkListType: quickstart
+    links:
+    - text: 入口網站：建立新的 LUIS 應用程式
+      url: get-started-portal-build-app.md
+    - text: 使用 C# SDK
+      url: sdk-authoring.md?pivots=programming-language-csharp
+    - text: 使用 Python SDK
+      url: sdk-authoring.md?pivots=programming-language-python
+  - linkListType: how-to-guide
+    links:
+    - text: 建立新的 LUIS 應用程式
+      url: luis-how-to-start-new-app.md
+    - text: 新意圖搭配範例語句
+      url: luis-how-to-add-intents.md
+    - text: 新增實體
+      url: luis-how-to-add-example-utterances.md
+    - text: 新增片語清單功能
+      url: luis-how-to-add-features.md
+- title: 版本、定型、測試和發佈
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 版本控制
+      url: luis-concept-version.md
+    - text: 互動式測試
+      url: luis-concept-test.md
+    - text: 批次測試
+      url: luis-concept-batch-test.md
+  - linkListType: quickstart
+    links:
+    - text: 入口網站：將應用程式部署至預測端點
+      url: get-started-portal-deploy-app.md
+    - text: 使用 SDK
+      url: sdk-authoring.md
+  - linkListType: how-to-guide
+    links:
+    - text: 為您的應用程式設定版本
+      url: luis-how-to-manage-versions.md
+    - text: 執行互動式測試
+      url: luis-interactive-test.md
+    - text: 執行批次測試
+      url: luis-how-to-batch-test.md
+    - text: 訓練應用程式
+      url: luis-how-to-train.md
+    - text: 發佈預測端點
+      url: luis-how-to-publish-app.md
+- title: 從端點取得預測
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 SDK
+      url: sdk-query-prediction-endpoint.md
+  - linkListType: quickstart
+    links:
+    - text: 使用 REST 搭配 C#
+      url: luis-get-started-cs-get-intent.md
+    - text: 使用 REST 搭配 Go
+      url: luis-get-started-go-get-intent.md
+    - text: 使用 REST 搭配 Java
+      url: luis-get-started-java-get-intent.md
+    - text: 使用 REST 搭配 Node.js
+      url: luis-get-started-node-get-intent.md
+    - text: 使用 REST 搭配 Python
+      url: luis-get-started-python-get-intent.md
+- title: 參考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 開發人員資源
+      url: developer-reference-resource.md
+    - text: 應用程式限制
+      url: luis-limits.md
+    - text: 預先建置的實體
+      url: luis-reference-prebuilt-entities.md
+    - text: 自訂實體
+      url: luis-concept-entity-types.md#types-of-entities
+    - text: 預先建置的定義域
+      url: luis-reference-prebuilt-domains.md
+- title: 說明與意見反應
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 疑難排解
+      url: troubleshooting.md
+    - text: 提出 Stack Overflow 相關問題
+      url: https://stackoverflow.com/questions/tagged/LUIS
+    - text: 使用 UserVoice 影響服務
+      url: https://cognitive.uservoice.com/forums/551524-luis

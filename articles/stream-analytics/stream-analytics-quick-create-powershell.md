@@ -1,19 +1,18 @@
 ---
-title: 使用 Azure PowerShell 建立串流分析作業
+title: 快速入門 - 使用 Azure PowerShell 建立串流分析作業
 description: 本快速入門示範如何使用 Azure PowerShell 模組來部署和執行 Azure 串流分析作業。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: f46f437ffd79ae9d0457606a72719ef13314aa1c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: a12f74e1b96cd305ec7b7a89f8ad77725122ac75
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58442958"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724576"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立串流分析作業
 
@@ -29,7 +28,7 @@ ms.locfileid: "58442958"
 
 * 本快速入門需要 Azure PowerShell 模組。 執行 `Get-Module -ListAvailable Az` 來尋找本機電腦上所安裝的版本。 如果您需要安裝或升級，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
 
-* 某些 IoT 中樞動作不受 Azure PowerShell 支援，而且必須使用 Azure CLI 2.0.24 版或更新版本和適用於 Azure CLI 的 IoT 擴充功能完成。 [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)並使用 `az extension add --name azure-cli-iot-ext` 來安裝 IoT 擴充功能。
+* 某些 IoT 中樞動作不受 Azure PowerShell 支援，而且必須使用 Azure CLI 2.0.70 版或更新版本和適用於 Azure CLI 的 IoT 擴充功能完成。 [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)並使用 `az extension add --name azure-iot` 來安裝 IoT 擴充功能。
 
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
@@ -97,7 +96,7 @@ New-AzResourceGroup `
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"
     ```
 
-4. 使用 [az iot hub device-identity show-connection-string](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-show-connection-string) 命令取得裝置連接字串。 複製整個連接字串並加以儲存，以便在建立 Raspberry Pi 模擬器時使用。
+4. 使用 [az iot hub device-identity show-connection-string](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-show-connection-string) 命令取得裝置連接字串。 複製整個連接字串並加以儲存，以便在建立 Raspberry Pi 模擬器時使用。
 
     ```azurecli
     az iot hub device-identity show-connection-string --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice" --output table
@@ -105,7 +104,7 @@ New-AzResourceGroup `
 
     **輸出範例：**
 
-    ```azurecli
+    ```output
     HostName=MyASAIoTHub.azure-devices.net;DeviceId=MyASAIoTDevice;SharedAccessKey=a2mnUsg52+NIgYudxYYUNXI67r0JmNubmfVafojG8=
     ```
 
@@ -298,13 +297,14 @@ New-AzStreamAnalyticsTransformation `
   -File $jobTransformationDefinitionFile `
   -Name $jobTransformationName -Force
 ```
+
 ## <a name="run-the-iot-simulator"></a>執行 IoT 模擬器
 
 1. 開啟 [Raspberry Pi Azure IoT 線上模擬器](https://azure-samples.github.io/raspberry-pi-web-simulator/)。
 
 2. 以您在上一節中儲存的整個 Azure IoT 中樞裝置連接字串取代行 15 中的預留位置。
 
-3. 按一下 **[執行]**。 下列輸出會顯示傳送至 IoT 中樞的感應器資料和訊息。
+3. 按一下 **[執行]** 。 下列輸出會顯示傳送至 IoT 中樞的感應器資料和訊息。
 
     ![Raspberry Pi Azure IoT 線上模擬器](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
 

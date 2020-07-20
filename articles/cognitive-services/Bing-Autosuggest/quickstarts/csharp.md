@@ -1,6 +1,6 @@
 ---
 title: 快速入門：使用 Bing 自動建議 REST API 與 C# 建議搜尋查詢
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解如何快速開始使用 Bing 自動建議 API，即時建議搜尋字詞。
 services: cognitive-services
 author: aahill
@@ -8,29 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 10e25797c15a821579cd15333cdd833e491acbd0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: cf74d686a9156d6ccff1753a4f53abb5ecc6b7df
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546104"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929684"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>快速入門：使用 Bing 自動建議 REST API 與 C# 建議搜尋查詢
 
-使用本快速入門開始呼叫 Bing 自動建議 API，並取得 JSON 回應。 這個簡單的 C# 應用程式會將部分搜尋查詢傳送至 API，並傳回搜尋建議。 雖然此應用程式是以 C# 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs) 上有此範例的原始程式碼。
+本快速入門說明如何呼叫 Bing 自動建議 API，並讀取 JSON 回應。 這個簡單的 C# 應用程式會將部分搜尋查詢傳送至 API，並傳回搜尋建議。 雖然此應用程式是以 C# 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs) 上有此範例的原始程式碼。
 
 ## <a name="prerequisites"></a>必要條件
 
-* 任何一版的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
-* 如果您使用 Linux/MacOS，則可以使用 [Mono](https://www.mono-project.com/)來執行此應用程式。
+* [Visual Studio 2017 或更新版本](https://www.visualstudio.com/downloads/)的任何版本。
+* 如果您使用 Linux/MacOS，則可以使用 [Mono](https://www.mono-project.com/) 來執行此應用程式。
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
 ## <a name="create-a-visual-search-solution"></a>建立圖像式搜尋解決方案
 
-1. 在 Visual Studio 中建立新的主控台解決方案。 然後將下列命名空間新增至主要程式碼檔案。
+1. 在 Visual Studio 中建立新的主控台解決方案。 然後，將下列命名空間新增至主要程式碼檔案。
 
     ```csharp
     using System;
@@ -40,7 +40,7 @@ ms.locfileid: "57546104"
     using System.Text;
     ```
 
-2. 在新的類別中，為 API 主機與路徑、[市場代碼](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes)和局部搜尋查詢建立變數。
+2. 在新的類別中，為 API 主機與路徑、[市場代碼](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)和局部搜尋查詢建立變數。 請使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
 
     ```csharp
     static string host = "https://api.cognitive.microsoft.com";
@@ -65,7 +65,7 @@ ms.locfileid: "57546104"
     }
     ```
 
-2. 在和上方相同的函式中，結合 API 主機和路徑來建立要求 URI。 將市場連結到 `?mkt=` 參數，並將查詢連結到 `&query=` 參數。 請務必對您的查詢進行 URL 編碼。 
+2. 在和上方相同的函式中，結合 API 主機和路徑來建立要求 URI。 將市場連結到 `mkt=` 參數，並將查詢連結到 `query=` 參數。 請務必對您的查詢進行 URL 編碼。 
 
     ```csharp
     string uri = host + path + "?mkt=" + market + "&query=" + System.Net.WebUtility.UrlEncode (query);
@@ -166,4 +166,4 @@ ms.locfileid: "57546104"
 ## <a name="see-also"></a>另請參閱
 
 - [什麼是 Bing 自動建議？](../get-suggested-search-terms.md)
-- [Bing 自動建議 API v7 參考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)
+- [Bing 自動建議 API v7 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

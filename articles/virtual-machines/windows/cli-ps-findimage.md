@@ -1,34 +1,26 @@
 ---
-title: 在 Azure 中選取 Linux VM 映像 | Microsoft Docs
+title: 尋找及使用 Azure Marketplace 映射
 description: 使用 Azure PowerSHell 來判斷 Marketplace VM 映像的發行者、供應項目、SKU 及版本。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 188b8974-fabd-4cd3-b7dc-559cbb86b98a
-ms.service: virtual-machines-windows
-ms.devlang: na
+ms.service: virtual-machines
+ms.subservice: imaging
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 20fd8a0bfccea579ddef5a605d65f5643d4849bd
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: e1ddc354e95185b6b2ba8bcb821fcabd5721c442
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500010"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224242"
 ---
-# <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>使用 Azure PowerShell 在 Azure Marketplace 中尋找 Windows VM 映像
+# <a name="find-and-use-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>使用 Azure PowerShell 在 Azure Marketplace 中尋找和使用 VM 映射
 
-本文描述如何使用 Azure PowerShell 在 Azure Marketplace 中尋找 Windows VM 映像。 接著，您便可以在使用 PowerShell、Resource Manager 範本或其他工具以程式設計方式建立 VM 時，指定 Marketplace 映像。
+本文描述如何使用 Azure PowerShell 在 Azure Marketplace 中尋找 Windows VM 映像。 然後，您可以在建立 VM 時指定 Marketplace 映射。
 
 您也可以使用 [Azure Marketplace](https://azuremarketplace.microsoft.com/) 店面、[Azure 入口網站](https://portal.azure.com)或 [Azure CLI](../linux/cli-ps-findimage.md) 來瀏覽可用的映像和供應項目。 
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
@@ -46,8 +38,7 @@ ms.locfileid: "58500010"
 | MicrosoftWindowsServer |WindowsServer |2016-Datacenter-with-Containers |
 | MicrosoftWindowsServer |WindowsServer |2012-R2-Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2012-Datacenter |
-| MicrosoftDynamicsNAV |DynamicsNAV |2017 |
-| MicrosoftSharePoint |MicrosoftSharePointServer |2019 |
+| MicrosoftSharePoint |MicrosoftSharePointServer |sp2019 |
 | MicrosoftSQLServer |SQL2019-WS2016 |Enterprise |
 | MicrosoftRServer |RServer-WS2016 |Enterprise |
 
@@ -122,7 +113,7 @@ advantys
 ...
 ```
 
-針對 MicrosoftWindowsServer 發佈者：
+針對 MicrosoftWindowsServer** 發佈者：
 
 ```powershell
 $pubName="MicrosoftWindowsServer"
@@ -139,7 +130,7 @@ WindowsServer
 WindowsServerSemiAnnual
 ```
 
-針對 WindowsServer 供應項目：
+針對 WindowsServer** 供應項目：
 
 ```powershell
 $offerName="WindowsServer"
@@ -213,7 +204,7 @@ DataDiskImages   : []
 
 ```
 
-以下範例針對「資料科學虛擬機器 - Windows 2016」映像顯示類似的命令，其中包含下列 `PurchasePlan` 屬性：`name`、`product` 及 `publisher`。 有些映像也有 `promotion code` 屬性。 若要部署此映像，請參閱下列各節來接受條款，並啟用以程式設計方式部署。
+下列範例顯示*資料科學虛擬機器-Windows 2016*映射的類似命令，其具有下列 `PurchasePlan` 屬性： `name` 、 `product` 和 `publisher` 。 有些映像也有 `promotion code` 屬性。 若要部署此映像，請參閱下列各節來接受條款，並啟用以程式設計方式部署。
 
 ```powershell
 Get-AzVMImage -Location "westus" -PublisherName "microsoft-ads" -Offer "windows-data-science-vm" -Skus "windows2016" -Version "0.2.02"
@@ -325,7 +316,6 @@ $vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Off
 
 若要使用基本映像資訊透過 `New-AzVM` Cmdlet 快速建立虛擬機器，請參閱[使用 PowerShell 來建立 Windows 虛擬機器](quick-create-powershell.md)。
 
-
-請參閱 PowerShell 指令碼範例來[建立完整設定的虛擬機器](../scripts/virtual-machines-windows-powershell-sample-create-vm.md)。
+如需有關使用 Azure Marketplace 映射在共用映射資源庫中建立自訂映射的詳細資訊，請參閱[在建立映射時提供 Azure Marketplace 購買方案資訊](../marketplace-images.md)。
 
 

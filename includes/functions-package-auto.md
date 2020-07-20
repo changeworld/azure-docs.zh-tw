@@ -2,18 +2,18 @@
 title: 包含檔案
 description: 包含檔案
 services: functions
-author: tdykstra
+author: ggailey777
 manager: cfowler
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
 ms.date: 05/23/2018
-ms.author: tdykstra
+ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 9093733f4dedac8c95d1526e57abea9489c0138f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0276874f1f37533f7b5bd26be8e65204d9fbeb41
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62087984"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67608118"
 ---
 所有的開發環境中都會自動賦予此繫結的支援。 您不需要手動安裝套件或註冊擴充功能。

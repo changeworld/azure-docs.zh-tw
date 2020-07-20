@@ -4,25 +4,26 @@ description: 參閱 Azure 匯入/匯出服務常見問題集的解答。
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
-ms.date: 12/13/2018
+ms.topic: conceptual
+ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: ee2917c64843c8ab137e0122d63a328d6c19fedb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f3a41fbd3cbd5b7c8eccfbea8833fdfedee97510
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61478567"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512402"
 ---
-# <a name="azure-importexport-service-frequently-asked-questions"></a>Azure 匯入/匯出服務：常見問題集 
+# <a name="azure-importexport-service-frequently-asked-questions"></a>Azure 匯入/匯出服務：常見問題集
+
 以下是當您使用 Azure 匯入/匯出服務將資料轉送至 Azure 儲存體時可能會遇到的問題與解答。 問題和解答可分為下列幾個類別：
 
 - 關於 Azure 匯入/匯出服務
 - 準備匯入/匯出要用的磁碟
 - 匯入/匯出作業
 - 寄送磁碟
-- 其他資訊 
+- 其他
 
 ## <a name="about-importexport-service"></a>關於 Azure 匯入/匯出服務
 
@@ -44,61 +45,72 @@ ms.locfileid: "61478567"
 
 ### <a name="can-i-purchase-drives-for-importexport-jobs-from-microsoft"></a>我可以為了匯入/匯出作業向 Microsoft 購買磁碟機嗎？
 
-沒有。 您必須寄送自己的磁碟機來進行匯入和匯出作業。
-
+否。 您必須寄送自己的磁碟機來進行匯入和匯出作業。
 
 ## <a name="preparing-disks-for-importexport"></a>準備匯入/匯出要用的磁碟
 
 ### <a name="can-i-skip-the-drive-preparation-step-for-an-import-job-can-i-prepare-a-drive-without-copying"></a>我可以略過匯入作業的磁碟機準備步驟嗎？ 我可以在不進行複製的情況下準備磁碟機嗎？
 
-沒有。 用來匯入資料的任何磁碟機，都必須使用 Azure WAImportExport 工具備妥。 並使用此工具將資料複製到磁碟機。
+否。 用來匯入資料的任何磁碟機，都必須使用 Azure WAImportExport 工具備妥。 並使用此工具將資料複製到磁碟機。
 
 ### <a name="do-i-need-to-perform-any-disk-preparation-when-creating-an-export-job"></a>我需要在建立匯出作業時執行任何磁碟準備工作嗎？
 
-沒有。 但建議先執行一些前置檢查。 若要確認所需的磁碟數目，請使用 WAImportExport 工具的 PreviewExport 命令。 如需詳細資訊，請參閱 [Previewing Drive Usage for an Export Job (預覽匯出作業的磁碟機使用量)](https://msdn.microsoft.com/library/azure/dn722414.aspx)。 此命令可根據您要使用的磁碟機大小，協助您預覽所選 Blob 的磁碟機使用情況。 也請確認您可以對為了匯出作業而寄送的硬碟進行讀取和寫入。
+否。 但建議先執行一些前置檢查。 若要確認所需的磁碟數目，請使用 WAImportExport 工具的 PreviewExport 命令。 如需詳細資訊，請參閱 [Previewing Drive Usage for an Export Job (預覽匯出作業的磁碟機使用量)](https://msdn.microsoft.com/library/azure/dn722414.aspx)。 此命令可根據您要使用的磁碟機大小，協助您預覽所選 Blob 的磁碟機使用情況。 也請確認您可以對為了匯出作業而寄送的硬碟進行讀取和寫入。
 
 ## <a name="importexport-jobs"></a>匯入/匯出作業
 
 ### <a name="can-i-cancel-my-job"></a>我可以取消作業嗎？
-是。 您可以在作業狀態為 [建立中] 或 [運送中] 時取消作業。 如果在這些階段以外，即無法取消作業，而且作業會繼續進行到最後一個階段。
+
+是。 您可以在作業狀態為 [建立中]**** 或 [運送中]**** 時取消作業。 如果在這些階段以外，即無法取消作業，而且作業會繼續進行到最後一個階段。
 
 ### <a name="how-long-can-i-view-the-status-of-completed-jobs-in-the-azure-portal"></a>我可以在 Azure 入口網站中檢視已完成作業的狀態多久？
+
 您最多可以檢視之前 90 天內已完成作業的狀態。 已完成的作業會在 90 天後刪除。
 
 ### <a name="if-i-want-to-import-or-export-more-than-10-drives-what-should-i-do"></a>如果我想匯入或匯出的磁碟機超過 10 個，我該怎麼做？
-一項匯入或匯出作業只能參考單一作業中的 10 個磁碟機。 若要寄送的磁碟機超過 10 個，應建立多項作業。 與相同作業相關聯的磁碟機必須在相同的包裹中一起寄送。 如果資料容量需跨越多個磁碟匯入作業，請透過 bulkimport@microsoft.com 連絡 Microsoft，以取得詳細資訊與指引。 
+
+一項匯入或匯出作業只能參考單一作業中的 10 個磁碟機。 若要寄送的磁碟機超過 10 個，應建立多項作業。 與相同作業相關聯的磁碟機必須在相同的包裹中一起寄送。
+如需資料容量跨越多個磁片匯入作業的詳細資訊和指引，請聯絡 Microsoft 支援服務。
 
 ### <a name="the-uploaded-blob-shows-status-as-lease-expired-what-should-i-do"></a>所上傳的 Blob 顯示狀態為「租用已過期」。 我該怎麼辦？
-您可以略過「租用已過期」欄位。 「匯入/匯出」在上傳期間會租用 Blob，以確定沒有其他處理序會同時更新 Blob。 「租用已過期」表示匯入/匯出不再上傳至 Blob，該 Blob 可供您使用。 
+
+您可以忽略「租用已過期」欄位。 「匯入/匯出」在上傳期間會租用 Blob，以確定沒有其他處理序會同時更新 Blob。 「租用已過期」表示匯入/匯出不再上傳至 Blob，該 Blob 可供您使用。
 
 ## <a name="shipping-disks"></a>寄送磁碟
 
 ### <a name="what-is-the-maximum-number-of-hdd-for-in-one-shipment"></a>一次可寄送最多幾個 HDD？
-一次可寄送的 HDD 數量並沒有限制。 如果磁碟屬於多項作業，我們建議您： 
+
+一次可寄送的 HDD 數量並沒有限制。 如果磁碟屬於多項作業，我們建議您：
+
 - 在磁碟上貼上對應作業名稱的標籤。
 - 以帶有 -1、-2 等尾碼的追蹤號碼來更新作業。
 
 ### <a name="should-i-include-anything-other-than-the-hdd-in-my-package"></a>我的包裹中除了 HDD 以外還應該包含任何東西嗎？
+
 寄送包裹中只須包含您的硬碟。 請勿加入電源線或 USB 纜線等項目。
 
 ### <a name="do-i-have-to-ship-my-drives-using-fedex-or-dhl"></a>我必須用 FedEx 還是 DHL 寄送我的磁碟機？
+
 您可使用任何已知的貨運公司，例如 FedEx、DHL、UPS 或郵政服務將磁碟機寄送到 Azure 資料中心。 不過，針對將磁碟機從資料中心寄還給您的貨運，您必須提供：
 
 - 美國或歐洲地區的 FedEx 帳戶號碼，或是
 - 亞洲和澳洲地區的 DHL 帳戶號碼。
 
 > [!NOTE]
-> 在印度資料中心需要在您的信紙標頭 (傳遞 challan) 要傳回的磁碟機上宣告代號。 若要排列的必要項目傳遞，也必須預訂挑選，使用您所選的貨運公司並且共用詳細資料與資料中心。
+> 印度的資料中心在您的信頭上需要宣告字母（傳遞 challan）以傳回磁片磁碟機。 若要安排所需的進入階段，您也必須預訂您選取的貨運公司，並與資料中心分享詳細資訊。
 
-### <a name="are-there-any-restrictions-with-shipping-my-drive-internationally"></a>將我的磁碟機進行國際運送有任何限制嗎？
+### <a name="are-there-any-restrictions-with-shipping-and-returning-my-drive-internationally"></a>運送和傳回我的磁片磁碟機是否有任何限制？
+
 請注意，您寄送的實體媒體可能需要跨國界。 您必須確定實體媒體和資料的匯入和/或匯出符合相關管轄法律。 在寄出實體媒體之前，請洽詢顧問來確認您的媒體和資料可以合法地寄到所識別的資料中心。 這有助於確保及時送達 Microsoft。
 
-### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>是否有任何特殊的需求，以傳遞給資料中心的 我的磁碟？
+上傳完成之後，將磁片磁碟機傳回國際位址的程式，可能會比本機運送所需的標準2-3 天長。 在 Azure 入口網站列為封裝的階段中，資料箱小組會確保提供正確的檔，以確保出貨符合各種國際匯入和匯出需求。
 
-需求取決於特定的 Azure 資料中心的限制。
-- 有幾個網站，需要 Microsoft 資料中心要基於安全性理由一塊寫入輸入的 ID 編號。 您寄送您的磁碟機或磁碟到資料中心之前，請連絡 Azure 資料箱作業 (adbops@microsoft.com) 若要取得此數字。 沒有這個號碼，封裝將會遭到拒絕。
-- 在印度資料中心需要驅動程式，例如政府識別碼卡片或證明否。 個人詳細的資料 （例如移動瀏覽、 AADHAR、 DL），名稱、 連絡人及汽車版面來取得一門項目傳遞的數目。 若要避免傳遞延遲，通知您的電訊廠商有關這些需求。
+### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>將磁片傳遞至資料中心是否有任何特殊需求？
 
+這些需求取決於特定的 Azure 資料中心限制。
+
+- 有幾個網站（例如澳大利亞、德國和英國南部）需要在包裹上寫入 Microsoft datacenter 輸入識別碼，以確保安全的理由。 將您的磁片磁碟機或磁片寄送到資料中心之前，請洽詢 Azure DataBox 作業（ adbops@microsoft.com ）以取得此號碼。 若沒有此數位，將會拒絕封裝。
+- 印度的資料中心需要驅動程式的個人詳細資料，例如政府識別碼卡或證明否。 （例如，[PAN]、[AADHAR]、[DL]、[名稱]、[連絡人] 和 [汽車] 盤子編號，以取得閘道進入階段。 為避免傳遞延遲，請告知您的電訊廠商有關這些需求的資訊。
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>建立作業時，寄送地址是與我儲存體帳戶位置不同的位置。 我該怎麼辦？
 
@@ -108,8 +120,7 @@ ms.locfileid: "61478567"
 
 在建立作業時，提供電話號碼和 DC 地址。
 
-
-## <a name="miscellaneous"></a>其他資訊
+## <a name="miscellaneous"></a>其他
 
 ### <a name="what-happens-if-i-accidentally-send-an-hdd-that-does-not-conform-to-the-supported-requirements"></a>如果我不小心傳送不符支援需求的 HDD，則會發生什麼情況？
 
@@ -117,45 +128,33 @@ Azure 資料中心會將不符支援需求的磁碟機退回給您。 如果包�
 
 ### <a name="does-the-service-format-the-drives-before-returning-them"></a>服務會在退回磁碟機前進行格式化嗎？
 
-沒有。 所有磁碟機都使用 BitLocker 加密。
+否。 所有磁碟機都使用 BitLocker 加密。
 
 ### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>如何存取這個服務所匯入的資料？
 
-使用 Azure 入口網站或[儲存體總管](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)來存取您 Azure 儲存體帳戶下的資料。  
+使用 Azure 入口網站或[儲存體總管](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)來存取 Azure 儲存體帳戶下的資料。  
 
 ### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>匯入作業完成後，我的資料在儲存體帳戶中會是什麼樣子？ 我的目錄階層會保留嗎？
 
-準備匯入作業的硬碟時，目的地會由資料集 CSV 的 DstBlobPathOrPrefix 欄位指定。 這是硬碟的資料將複製到其中的儲存體帳戶目的地容器。 在此目的地容器內，會針對硬碟裡的資料夾建立虛擬目錄，並針對檔案建立 Blob。 
+準備匯入作業的硬碟時，目的地會由資料集 CSV 的 DstBlobPathOrPrefix 欄位指定。 這是硬碟的資料將複製到其中的儲存體帳戶目的地容器。 在此目的地容器內，會針對硬碟裡的資料夾建立虛擬目錄，並針對檔案建立 Blob。
 
 ### <a name="if-a-drive-has-files-that-already-exist-in-my-storage-account-does-the-service-overwrite-existing-blobs-or-files"></a>如果磁碟機中具有我儲存體帳戶裡已存在的檔案，那麼服務將會覆寫現有的 Blob 或檔案嗎？
 
 視情況而定。 準備磁碟機時，您可以使用資料集 CSV 檔案中名為 /Disposition:<rename|no-overwrite|overwrite> 的欄位，指定是否應該覆寫目的地檔案還是予以忽略。 根據預設，服務將為新檔案重新命名，而不會覆寫現有的 Blob 或檔案。
 
 ### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>WAImportExport 工具與 32 位元作業系統相容嗎？
-沒有。 WAImportExport 工具只與 64 位元 Windows 作業系統相容。 如需可支援作業系統的完整清單，請移至[支援的作業系統](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements)。 
 
+否。 WAImportExport 工具只與 64 位元 Windows 作業系統相容。 如需可支援作業系統的完整清單，請移至[支援的作業系統](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements)。
 
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Azure 匯入/匯出所支援的最大區塊 Blob 和分頁 Blob 大小是多少？
 
-最大區塊 Blob 大小大約是 4.768 TB 或 5,000,000 MB。
-最大页 Blob 大小为 8 TB。
-
+- 最大區塊 Blob 大小大約是 4.768 TB 或 5,000,000 MB。
+- 分頁 Blob 大小的最大值為8TB。
 
 ### <a name="does-azure-importexport-support-aes-256-encryption"></a>Azure 匯入/匯出是否支援 AES-256 加密？
-根據預設，Azure 匯入/匯出服務會使用 AES-128 bitlocker 加密。 您可以先透過手動執行 bitlocker 加密，將其變更為 AES-256，然後再複製資料。 
 
-- 如果使用 [WAImportExport V1](https://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip)，以下是命令範例
-    ```
-    WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>] 
-    ```
-- 如果使用 [WAImportExport V2](https://www.microsoft.com/download/details.aspx?id=55280)，請指定 "AlreadyEncrypted" 並提供磁碟機集 CSV 中的金鑰。
-    ```
-    DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
-    G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631 |
-    ```
+是。 Azure 匯入/匯出服務會使用 AES-256 BitLocker 加密。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [什麼是 Azure 匯入/匯出？](storage-import-export-service.md)
-
-

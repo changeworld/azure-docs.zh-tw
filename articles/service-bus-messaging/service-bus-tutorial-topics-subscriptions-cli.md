@@ -1,26 +1,22 @@
 ---
-title: 教學課程 - 透過 Azure CLI 使用發佈/訂閱通道和主題篩選來更新零售庫存商品 | Microsoft Docs
-description: 在本教學課程中，您將了解如何從主題和訂用帳戶傳送及接收訊息，以及如何使用 Azure CLI 新增和使用篩選規則
-services: service-bus-messaging
-author: spelluru
-manager: timlt
-ms.author: spelluru
-ms.date: 09/22/2018
+title: 教學課程：透過 Azure CLI 使用發佈/訂閱通道和主題篩選來更新零售庫存商品
+description: 教學課程：在本教學課程中，您將了解如何從主題和訂用帳戶傳送及接收訊息，以及如何使用 Azure CLI 新增和使用篩選規則
+ms.date: 06/23/2020
 ms.topic: tutorial
-ms.service: service-bus-messaging
-ms.custom: mvc
-ms.openlocfilehash: 60c4d1631717eea602e391387d57afe268efbace
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+author: spelluru
+ms.author: spelluru
+ms.openlocfilehash: 5340ec8d3d7a479fb349ce5ed1d32f917668d0d8
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075879"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341008"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>教學課程：使用 CLI 和主題/訂用帳戶來更新庫存
 
 Microsoft Azure 服務匯流排是一項多租用戶雲端傳訊服務，可在應用程式和服務之間傳送資訊。 非同步作業可讓您進行靈活的代理傳訊，搭配結構化的先進先出 (FIFO) 傳訊及發佈/訂閱功能。 本教學課程說明如何透過使用 Azure CLI 和 Java 的發佈/訂閱通道，在零售庫存案例中使用服務匯流排主題和訂用帳戶。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 > [!div class="checklist"]
 > * 使用 Azure CLI 建立服務匯流排主題，並建立該主題的一或多個訂用帳戶
 > * 使用 Azure CLI 新增主題篩選
@@ -34,7 +30,7 @@ Microsoft Azure 服務匯流排是一項多租用戶雲端傳訊服務，可在�
 
 如果您沒有 Azure 訂用帳戶，您可以在開始前建立[免費帳戶][]。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要使用 Java 開發服務匯流排應用程式，您必須安裝下列項目：
 
@@ -324,6 +320,9 @@ public CompletableFuture<Void> receiveAllMessageFromSubscription(String subscrip
     return new CompletableFuture().completedFuture(null);
 }
 ```
+
+> [!NOTE]
+> 您可以使用[服務匯流排總管](https://github.com/paolosalvatori/ServiceBusExplorer/)來管理服務匯流排資源。 服務匯流排總管可讓使用者連線到服務匯流排命名空間，並以簡便的方式管理傳訊實體。 此工具提供進階的功能 (例如匯入/匯出功能) 或測試主題、佇列、訂用帳戶、轉送服務、通知中樞和事件中樞的能力。 
 
 ## <a name="next-steps"></a>後續步驟
 

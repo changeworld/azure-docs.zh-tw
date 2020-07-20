@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure .NET SDK 管理 Azure Data Lake Analytics
-description: 本文說明如何使用 Azure.NET SDK 撰寫管理 Data Lake Analytics 作業、 資料來源，與使用者的應用程式。
+description: 本文說明如何使用 Azure .NET SDK 來撰寫應用程式，以管理 Data Lake Analytics 作業、資料來源 & 使用者。
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: 811d172d-9873-4ce9-a6d5-c1a26b374c79
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/18/2017
-ms.openlocfilehash: 0a10af73d754596e9b5bb34b2974d7f1647d06f8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aa2a128e25e3751813f056286fff4eb6caa24437
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60617702"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121379"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>管理 Azure Data Lake Analytics .NET 應用程式
 
@@ -30,7 +30,7 @@ ms.locfileid: "60617702"
 
 ### <a name="install-nuget-packages"></a>安裝 NuGet 套件
 
-|Package|Version|
+|套件|版本|
 |-------|-------|
 |[Microsoft.Rest.ClientRuntime.Azure.Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication)| 2.3.1|
 |[Microsoft.Azure.Management.DataLake.Analytics](https://www.nuget.org/packages/Microsoft.Azure.Management.DataLake.Analytics)|3.0.0|
@@ -57,7 +57,7 @@ string rg == "<value>"; // Resource  group name
 string clientid = "1950a258-227b-4e31-a9cf-717495945fc2"; // Sample client ID (this will work, but you should pick your own)
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>驗證
 
 您有多個可登入 Azure Data Lake Analytics 的選項。 下列程式碼片段說明使用快顯視窗進行互動式使用者驗證的驗證範例。
 
@@ -445,4 +445,4 @@ adlaAccountClient.ComputePolicies.CreateOrUpdate(rg, adla, "GaryMcDaniel", newPo
 
 * [Microsoft Azure Data Lake Analytics 概觀](data-lake-analytics-overview.md)
 * [使用 Azure 入口網站管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)
-* [使用 Azure 入口網站監視和疑難排解 Azure Data Lake Analytics 作業](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+* [使用 Azure 入口網站監視 Azure Data Lake Analytics 作業並進行疑難排解](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

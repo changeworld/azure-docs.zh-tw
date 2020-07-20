@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory 的角色和權限 | Microsoft Docs
+title: Azure Data Factory 的角色和權限
 description: 說明要建立 Data Factory 及使用子資源所需的角色和權限。
 ms.date: 11/5/2018
 ms.topic: conceptual
@@ -7,18 +7,20 @@ ms.service: data-factory
 services: data-factory
 documentationcenter: ''
 ms.workload: data-services
-ms.tgt_pltfrm: na
-author: gauravmalhot
-ms.author: gamal
-manager: craigg
-ms.openlocfilehash: 19666eb668dd120c1705c6a62a8ba1abd2321026
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+author: djpmsft
+ms.author: daperlov
+manager: anandsub
+ms.openlocfilehash: 923b3fbb617f46ba0551f6b21c384331559da2f9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61261804"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263240"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure Data Factory 的角色和權限
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 
 本文說明要建立和管理 Azure Data Factory 資源所需的角色，以及這些角色所授與的權限。
 
@@ -30,7 +32,7 @@ ms.locfileid: "61261804"
 - 若要在 Azure 入口網站中建立及管理子資源，您必須屬於資源群組層級或更高層級的 **Data Factory 參與者**角色。
 - 若要使用 PowerShell 或 SDK 來建立及管理子資源，具備資源層級或更高層級的**參與者**角色即已足夠。
 
-如需將使用者新增至角色的範例指示，請參閱[新增角色](../billing/billing-add-change-azure-subscription-administrator.md)一文。
+如需將使用者新增至角色的範例指示，請參閱[新增角色](../cost-management-billing/manage/add-change-subscription-administrator.md)一文。
 
 ## <a name="set-up-permissions"></a>設定權限
 
@@ -57,7 +59,7 @@ Azure Repos 和 GitHub 上的權限與 Data Factory 權限無關。 因此，具
 
 ### <a name="custom-scenarios-and-custom-roles"></a>自訂案例和自訂角色
 
-有時候，您可能需要對不同的資料處理站使用者授與不同的存取層級。 例如︰
+有時候，您可能需要對不同的資料處理站使用者授與不同的存取層級。 例如：
 - 您可能需要使用者只有特定資料處理站權限的群組。
 - 或者，您可能需要使用者只能監視而無法修改資料處理站 (一或多個) 的群組。
 
@@ -67,7 +69,7 @@ Azure Repos 和 GitHub 上的權限與 Data Factory 權限無關。 因此，具
 
 - 讓使用者從 Azure 入口網站在資源群組中建立、編輯或刪除任何資料處理站。
 
-  對使用者指派資源群組層級的內建 **Data Factory 參與者**角色。 如果您想要允許使用者存取訂用帳戶中的任何資料處理站，請指派訂用帳戶層級的角色。
+  對使用者指派資源群組層級的內建 **Data Factory 參與者**角色。 如果您想要允許使用者存取訂閱中的任何資料處理站，請指派訂閱層級的角色。
 
 - 讓使用者檢視 (讀取) 和監視資料處理站，但不能編輯或變更。
 
@@ -79,6 +81,10 @@ Azure Repos 和 GitHub 上的權限與 Data Factory 權限無關。 因此，具
 
   1. 指派資料處理站層級的內建**參與者**角色。
   2. 建立具有 **Microsoft.Resources/deployments/** 權限的自訂角色。 在資源群組層級對使用者指派這個自訂角色。
+
+- 讓使用者能夠在連結的服務中測試連接，或在資料集內預覽資料
+
+    建立具有下列動作之許可權的自訂角色： **DataFactory/factory/getFeatureValue/read**和**DataFactory/factory/getDataPlaneAccess/action**。 對使用者指派資料處理站資源的自訂角色。
 
 - 讓使用者從 PowerShell 或 SDK 更新資料處理站，而不是在 Azure 入口網站中進行。
 

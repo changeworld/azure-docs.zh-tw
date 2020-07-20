@@ -1,35 +1,40 @@
 - name: 使用者說明文件
-  href: index.md
+  href: index.yml
 - name: 雙步驟驗證說明
   items:
-    - name: 概觀
-      href: user-help-two-step-verification-overview.md
-    - name: 關閉我的帳戶
+    - name: 什麼是額外驗證頁面？
       href: multi-factor-authentication-end-user-first-time.md
+    - name: 設定驗證器應用程式
+      href: multi-factor-authentication-setup-auth-app.md
+    - name: 設定行動裝置
+      href: multi-factor-authentication-setup-phone-number.md
+    - name: 設定辦公室電話
+      href: multi-factor-authentication-setup-office-phone.md
     - name: 測試您的設定
       href: multi-factor-authentication-end-user-manage-settings.md
-    - name: 取得說明
-      href: multi-factor-authentication-end-user-troubleshoot.md
     - name: 管理應用程式密碼
       href: multi-factor-authentication-end-user-app-passwords.md
     - name: 登入方式
       href: user-help-sign-in.md?toc=./toc.json
+    - name: 取得說明
+      href: multi-factor-authentication-end-user-troubleshoot.md
 - name: 密碼重設說明
   items:
-    - name: 概觀
-      href: user-help-password-reset-overview.md
     - name: 註冊以進行密碼重設
       href: active-directory-passwords-reset-register.md
     - name: 重設密碼
-      href: user-help-reset-password.md
+      href: active-directory-passwords-update-your-own-password.md
+- name: 我的員工入口網站說明
+  items:
+    - name: 我的員工使用者管理
+      href: my-staff-team-manager.md
 - name: Microsoft Authenticator 應用程式說明
   items:
-    - name: 概觀
+    - name: 什麼是 Microsoft Authenticator 應用程式？
       href: user-help-auth-app-overview.md
     - name: 下載並安裝應用程式
       href: user-help-auth-app-download-install.md
-    - name: 新增帳戶概觀
-      href: user-help-auth-app-add-account-overview.md
+    - name: 新增帳戶
       items:
         - name: 新增公司或學校帳戶
           href: user-help-auth-app-add-work-school-account.md
@@ -41,30 +46,33 @@
           href: user-help-auth-app-add-account-manual.md
     - name: 使用 Microsoft Authenticator 應用程式登入
       href: user-help-auth-app-sign-in.md
+    - name: Android 在中國的限制
+      href: auth-app-android-china.md
     - name: 備份和復原您的帳戶
       href: user-help-auth-app-backup-recovery.md
     - name: 常見問題集
       href: user-help-auth-app-faq.md
-- name: 我的設定檔 (預覽) 入口網站說明
+- name: 我的帳戶入口網站說明
   items:
-    - name: 概觀
-      href: myprofile-portal-overview.md
+    - name: 什麼是「我的帳戶」入口網站？
+      href: my-account-portal-overview.md
     - name: 管理安全性資訊
-      href: user-help-security-info-overview.md
-    - name: 管理您的組織
-      href: myprofile-portal-organizations-page.md
+      href: security-info-setup-signin.md
     - name: 管理您的已連線裝置
-      href: myprofile-portal-devices-page.md
+      href: my-account-portal-devices-page.md
+    - name: 變更密碼
+      href: my-account-change-password-page.md
+    - name: 管理您的組織
+      href: my-account-portal-organizations-page.md
     - name: 檢視您的隱私權相關資訊
-      href: myprofile-portal-privacy-page.md
+      href: my-account-portal-privacy-page.md
+    - name: 檢視您最近的登入活動
+      href: my-account-portal-sign-ins-page.md
 - name: 安全性資訊 (預覽) 說明
   items:
-    - name: 概觀
-      href: user-help-security-info-overview.md
     - name: 在登入期間新增安全性資訊
       href: security-info-setup-signin.md
-    - name: 新增或更新安全性資訊的方法概觀
-      href: security-info-add-update-methods-overview.md
+    - name: 新增或更新安全性資訊方法
       items:
         - name: 設定驗證器應用程式
           href: security-info-setup-auth-app.md
@@ -72,6 +80,10 @@
           href: security-info-setup-text-msg.md
         - name: 設定撥打電話
           href: security-info-setup-phone-number.md
+        - name: 設定 SMS 登入
+          href: sms-sign-in-explainer.md
+        - name: 設定安全性金鑰
+          href: security-info-setup-security-key.md
         - name: 設定電子郵件
           href: security-info-setup-email.md
         - name: 設定安全性問題
@@ -82,8 +94,6 @@
       href: user-help-sign-in.md?toc=./toc.json
 - name: 管理裝置說明
   items:
-    - name: 概觀
-      href: user-help-device-mgmt-overview.md
     - name: 加入工作裝置
       href: user-help-join-device-on-network.md
     - name: 註冊用於工作的個人裝置
@@ -92,14 +102,16 @@
       href: user-help-device-remediation.md
 - name: 「我的應用程式」入口網站說明
   items:
-    - name: 概觀
-      href: my-apps-portal-end-user-overview.md
-    - name: 存取和使用「我的應用程式」入口網站
+    - name: 登入和使用「我的應用程式」入口網站
       href: my-apps-portal-end-user-access.md
     - name: 更新您的設定檔和帳戶資訊
       href: my-apps-portal-end-user-update-profile.md
     - name: 更新您的群組資訊
       href: my-apps-portal-end-user-groups.md
+    - name: 使用集合來組織應用程式
+      href: my-applications-portal-workspaces.md
+    - name: 編輯或撤銷應用程式權限
+      href: my-applications-portal-permissions-saved-accounts.md
     - name: 執行您自己的存取權檢閱
       href: my-apps-portal-end-user-access-reviews.md
     - name: 針對問題進行疑難排解

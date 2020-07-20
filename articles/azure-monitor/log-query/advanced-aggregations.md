@@ -1,24 +1,16 @@
 ---
 title: Azure 監視器記錄查詢中的進階彙總 | Microsoft Docs
 description: 說明可供「Azure 監視器」記錄查詢使用的一些更進階彙總選項。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 56e87da0353a41504035a070d4c10bab0dda2279
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 08/16/2018
+ms.openlocfilehash: e5dc290a40342e0797001dde6cab90e12dd5cf39
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60551748"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77662173"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Azure 監視器記錄查詢中的進階彙總
 
@@ -39,7 +31,7 @@ Event
 | summarize makelist(EventID) by Computer
 ```
 
-|Computer|list_EventID|
+|電腦|list_EventID|
 |---|---|
 | computer1 | [704,701,1501,1500,1085,704,704,701] |
 | computer2 | [326,105,302,301,300,102] |
@@ -47,7 +39,7 @@ Event
 
 `makelist` 會產生資料傳遞到其中的順序清單。 若要從最舊到最新為事件排序，請在順序陳述式中使用 `asc`，而非 `desc`. 
 
-建立只包含相異值的清單也很實用。 這稱為「集合」，而且可以使用 `makeset` 來產生：
+建立只包含相異值的清單也很實用。 這稱為「集合」__，而且可以使用 `makeset` 來產生：
 
 ```Kusto
 Event
@@ -56,7 +48,7 @@ Event
 | summarize makeset(EventID) by Computer
 ```
 
-|Computer|list_EventID|
+|電腦|list_EventID|
 |---|---|
 | computer1 | [704,701,1501,1500,1085] |
 | computer2 | [326,105,302,301,300,102] |
@@ -65,7 +57,7 @@ Event
 就像 `makelist` 一樣，`makeset` 也適用於已排序的資料，而且金會根據傳遞到其中的列順序來產生陣列。
 
 ## <a name="expanding-lists"></a>展開清單
-`makelist` 或 `makeset` 的反向作業是 `mvexpand`，它會展開值清單以分隔列。 它可以跨任何數目的動態欄 (包括 JSON 與陣列) 展開。 例如，您可以檢查「活動訊號」表格以了解過去一小時內從已傳送活動訊號之電腦傳送資料的解決方案：
+`makelist` 或 `makeset` 的反向作業是 `mvexpand`，它會展開值清單以分隔列。 它可以跨任何數目的動態欄 (包括 JSON 與陣列) 展開。 例如，您可以檢查「活動訊號」** 表格以了解過去一小時內從已傳送活動訊號之電腦傳送資料的解決方案：
 
 ```Kusto
 Heartbeat
@@ -73,7 +65,7 @@ Heartbeat
 | project Computer, Solutions
 ```
 
-| Computer | 解決方案 | 
+| 電腦 | 方案 | 
 |--------------|----------------------|
 | computer1 | 「安全性」、「更新」、「變更追蹤」 |
 | computer2 | 「安全性」、「更新」 |
@@ -89,7 +81,7 @@ Heartbeat
 | mvexpand Solutions
 ```
 
-| Computer | 解決方案 | 
+| 電腦 | 方案 | 
 |--------------|----------------------|
 | computer1 | 「安全性」 |
 | computer1 | 「更新」 |
@@ -111,7 +103,7 @@ Heartbeat
 | summarize makelist(Computer) by tostring(Solutions) 
 ```
 
-|解決方案 | list_Computer |
+|方案 | list_Computer |
 |--------------|----------------------|
 | 「安全性」 | ["computer1", "computer2"] |
 | 「更新」 | ["computer1", "computer2"] |
@@ -120,7 +112,7 @@ Heartbeat
 | ... | ... |
 
 ## <a name="handling-missing-bins"></a>處理遺失的間隔
-填寫遺失間隔的預設值是 `mvexpand` 的其中一個實用應用。例如，假設您正在透過探索特定機器的活動訊號以尋找其運作時間。 您可能也想要查看活動訊號來源，這位於「類別」欄。 一般而言，我們會使用簡單的 summarize 陳述式，如下所示：
+有一個有用的應用程式， `mvexpand` 就是需要針對遺漏的 bin 填入中的預設值。例如，假設您想要尋找特定機器的執行時間，方法是探索其心跳。 您可能也想要查看活動訊號來源，這位於「類別」__ 欄。 一般而言，我們會使用簡單的 summarize 陳述式，如下所示：
 
 ```Kusto
 Heartbeat
@@ -128,7 +120,7 @@ Heartbeat
 | summarize count() by Category, bin(TimeGenerated, 1h)
 ```
 
-| Category | TimeGenerated | count_ |
+| 類別 | TimeGenerated | count_ |
 |--------------|----------------------|--------|
 | 直接代理程式 | 2017-06-06T17:00:00Z | 15 |
 | 直接代理程式 | 2017-06-06T18:00:00Z | 60 |
@@ -144,7 +136,7 @@ Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 ```
 
-| Category | count_ | TimeGenerated |
+| 類別 | count_ | TimeGenerated |
 |---|---|---|
 | 直接代理程式 | [15,60,0,55,60,57,60,...] | ["2017-06-06T17:00:00.0000000Z","2017-06-06T18:00:00.0000000Z","2017-06-06T19:00:00.0000000Z","2017-06-06T20:00:00.0000000Z","2017-06-06T21:00:00.0000000Z",...] |
 | ... | ... | ... |
@@ -158,7 +150,7 @@ Heartbeat
 | project Category, TimeGenerated, count_
 ```
 
-| Category | TimeGenerated | count_ |
+| 類別 | TimeGenerated | count_ |
 |--------------|----------------------|--------|
 | 直接代理程式 | 2017-06-06T17:00:00Z | 15 |
 | 直接代理程式 | 2017-06-06T18:00:00Z | 60 |

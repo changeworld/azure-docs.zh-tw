@@ -1,97 +1,93 @@
 ---
-title: 連線到 Office 365 Outlook - Azure Logic Apps | Microsoft Docs
-description: 使用 Office 365 REST API 和 Azure Logic Apps 管理電子郵件、連絡人和行事曆
-author: ecfan
-manager: jeconnoc
-ms.author: v-yiso
-origin.date: 10/18/2016
-ms.date: 09/03/2018
-ms.topic: article
-ms.service: logic-apps
+title: 連線至 Office 365 Outlook
+description: 使用 Azure Logic Apps，將管理 Office 365 Outlook 電子郵件、連絡人和行事曆的工作和工作流程自動化
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
+ms.topic: article
+ms.date: 01/08/2020
 tags: connectors
-ms.openlocfilehash: 52abf17e869216e65780129a7b48df79bd79f67a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: b0f2b8b9c369fdb42c7e0e7f77fc090424ae3729
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62105049"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75732659"
 ---
-# <a name="get-started-with-the-office-365-outlook-connector"></a>開始使用 Office 365 Outlook 連接器
-Office 365 Outlook 連接器能夠與 Office 365 中的 Outlook 互動。 使用此連接器來建立、編輯和更新連絡人和行事曆項目，也可取得、傳送及回覆電子郵件。
+# <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 在 Office 365 Outlook 中管理電子郵件、連絡人和行事曆
 
-使用 Office 365 Outlook，您可以：
+有了[Azure Logic Apps](../logic-apps/logic-apps-overview.md)和[Office 365 Outlook connector](/connectors/office365connector/)，您就可以建立邏輯應用程式來建立自動化的工作和工作流程，以管理您的 Office 365 帳戶。 例如，您可以將這些工作自動化：
 
-* 使用 Office 365 中的電子郵件和行事曆功能來建置您的工作流程。 
-* 使用觸發程序，在有新的電子郵件時、行事曆項目更新時等情況啟動您的工作流程。
-* 使用傳送電子郵件、建立新的行事曆事件等等的動作。 例如，當 Salesforce 中有新的物件時，傳送電子郵件給您的 Office 365 Outlook (動作)。 
+* 取得、傳送和回復電子郵件。 
+* 在行事曆上排程會議。
+* 新增和編輯連絡人。 
 
-本文說明如何在邏輯應用程式中使用 Office 365 Outlook 連接器，並且也列出觸發程序和動作。
+您可以使用任何觸發程式來啟動您的工作流程，例如，當新的電子郵件送達時、行事曆專案更新時，或在差異服務（例如 Salesforce）中發生事件時。 您可以使用回應觸發程式事件的動作，例如傳送電子郵件或建立新的行事曆事件。 
 
 > [!NOTE]
-> 這個版本的文章適用於 Logic Apps 公開上市版本 (GA)。
-> 
-> 
+> 若要自動執行 @outlook.com 或帳戶的工作 @hotmail.com ，請使用[Outlook.com 連接器](../connectors/connectors-create-api-outlook.md)。
 
-若要深入瞭解 Logic Apps，請參閱[什麼是邏輯應用程式](../logic-apps/logic-apps-overview.md)以及[建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+## <a name="prerequisites"></a>必要條件
 
-## <a name="connect-to-office-365"></a>連接至 Office 365
-您必須先建立與服務的「連線」，才能透過邏輯應用程式存取任何服務。 連線可讓邏輯應用程式與另一個服務連線。 例如，若要連線到 Office 365 Outlook，您必須先有 Office 365「連線」。 若要建立連線，請輸入平常用來存取所要連線之服務的認證。 因此，在 Office 365 Outlook 中，請在 Office 365 帳戶輸入認證以建立連線。
+* [Office 365 帳戶](https://www.office.com/)
 
-## <a name="create-the-connection"></a>建立連線
-> [!INCLUDE [Steps to create a connection to Office 365](../../includes/connectors-create-api-office365-outlook.md)]
-> 
-> 
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
 
-## <a name="use-a-trigger"></a>使用觸發程序
-觸發程序是可用來啟動邏輯應用程式中所定義之工作流程的事件。 觸發程序會以您想要的間隔和頻率「輪詢」服務。 [深入了解觸發程序](../logic-apps/logic-apps-overview.md#logic-app-concepts)。
+* 您想要在其中存取 Office 365 Outlook 帳戶的邏輯應用程式。 若要使用 Office 365 Outlook 觸發程式啟動您的工作流程，您需要有[空白的邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要將 Office 365 Outlook 動作新增至您的工作流程，您的邏輯應用程式必須已經有觸發程式。
 
-1. 在邏輯應用程式中，輸入 "office 365" 以取得觸發程序的清單︰  
-   
-    ![](./media/connectors-create-api-office365-outlook/office365-trigger.png)
-2. 選取 [Office 365 Outlook - 即將來臨的事件快要開始時]。 如果連線已存在，則選取下拉式清單中的行事曆。
-   
-    ![](./media/connectors-create-api-office365-outlook/sample-calendar.png)
-   
-    如果系統提示您登入，則輸入登入詳細資料來建立連線。 本主題中的[建立連線](connectors-create-api-office365-outlook.md#create-the-connection)一節會列出步驟。 
-   
-   > [!NOTE]
-   > 在此範例中，邏輯應用程式會在行事曆事件更新時執行。 若要查看此觸發程序的結果，請新增另一個動作，以傳送簡訊給您。 例如，加入 Twilio「傳送訊息」動作，以便在行事曆事件於 15 分鐘內開始時傳送簡訊給您。 
-   > 
-   > 
-3. 選取 [編輯] 按鈕，然後設定 [頻率] 和 [間隔] 值。 例如，如果您希望觸發程序每隔 15 分鐘輪詢一次，則將 [頻率] 設定為 [分鐘] 並將 [間隔] 設定為 [15]。 
-   
-    ![](./media/connectors-create-api-office365-outlook/calendar-settings.png)
-4. **儲存**您的變更 (工具列的左上角)。 邏輯應用程式將會儲存，而且可能會自動啟用。
+## <a name="add-a-trigger"></a>新增觸發程序
 
-## <a name="use-an-action"></a>使用動作
-動作是由邏輯應用程式中定義的工作流程所執行的作業。 [深入了解動作](../logic-apps/logic-apps-overview.md#logic-app-concepts)。
+[觸發](../logic-apps/logic-apps-overview.md#logic-app-concepts)程式是在邏輯應用程式中啟動工作流程的事件。 這個範例邏輯應用程式會使用「輪詢」觸發程式，根據指定的間隔和頻率，檢查您的電子郵件帳戶中是否有任何更新的行事曆事件。
 
-1. 選取加號。 您會看到幾個選擇：**新增動作**，**新增條件**，或其中一個**詳細**選項。
+1. 在[Azure 入口網站](https://portal.azure.com)中，于邏輯應用程式設計工具中開啟空白邏輯應用程式。
+
+1. 在搜尋方塊中，輸入 `office 365 outlook` 作為篩選條件。 這個範例**會選取即將推出的事件何時即將開始**。
    
-    ![](./media/connectors-create-api-office365-outlook/add-action.png)
-2. 選擇 [新增動作] 。
-3. 在文字方塊中，輸入 “office 365” 以取得所有可用動作的清單。
-   
-    ![](./media/connectors-create-api-office365-outlook/office365-actions.png) 
-4. 在本例中，選擇 [Office 365 Outlook - 建立連絡人]。 如果連線已存在，則選擇 [資料夾識別碼]、[名字] 和其他屬性︰  
-   
-    ![](./media/connectors-create-api-office365-outlook/office365-sampleaction.png)
-   
-    如果系統提示您輸入連線資訊，請輸入詳細資料以建立連線。 本主題的[建立連線](connectors-create-api-office365-outlook.md#create-the-connection)一節會說明這些屬性。 
-   
-   > [!NOTE]
-   > 在此範例中，我們會在 Office 365 Outlook 中建立新連絡人。 您可以使用另一個觸發程序的輸出來建立連絡人。 例如，新增 SalesForce「當物件建立時」觸發程序。 然後新增 Office 365 Outlook「建立連絡人」動作，以使用 SalesForce 欄位在 Office 365 中建立新的連絡人。 
-   > 
-   > 
-5. **儲存**您的變更 (工具列的左上角)。 邏輯應用程式將會儲存，而且可能會自動啟用。
+   ![選取 [觸發] 以啟動邏輯應用程式](./media/connectors-create-api-office365-outlook/office365-trigger.png)
+
+1. 如果系統提示您登入，請提供您的 Office 365 認證，讓您的邏輯應用程式可以連線到您的帳戶。 否則，如果您的連接已經存在，請提供觸發程式屬性的資訊。
+
+   這個範例會選取觸發程式檢查的行事曆，例如：
+
+   ![設定觸發程式的屬性](./media/connectors-create-api-office365-outlook/select-calendar.png)
+
+1. 在觸發程式中，設定**頻率**和**間隔**值。 若要新增其他可用的觸發程式屬性，例如**時區**，請從 [**加入新的參數**] 清單中選取這些屬性。
+
+   例如，如果您希望觸發程式每隔15分鐘檢查一次行事曆，請將**Frequency**設定為**Minute**，並將**Interval**設定為 `15` 。 
+
+   ![設定觸發程式的頻率和間隔](./media/connectors-create-api-office365-outlook/calendar-settings.png)
+
+1. 在設計工具的工具列上，選取 [儲存]****。
+
+現在，新增在觸發程式引發之後執行的動作。 例如，您可以新增 Twilio**傳送訊息**動作，這會在行事曆事件于15分鐘內開始時傳送文字。
+
+## <a name="add-an-action"></a>新增動作
+
+[動作](../logic-apps/logic-apps-overview.md#logic-app-concepts)是由邏輯應用程式中的工作流程所執行的作業。 這個範例邏輯應用程式會在 Office 365 Outlook 中建立新的連絡人。 您可以使用另一個觸發程式或動作的輸出來建立連絡人。 例如，假設您的邏輯應用程式在建立**記錄時**使用 Dynamics 365 觸發程式。 您可以新增 Office 365 Outlook [**建立連絡人**] 動作，並使用 SalesForce 觸發程式的輸出來建立新的連絡人。
+
+1. 在 [Azure 入口網站](https://portal.azure.com)的邏輯應用程式設計工具中，開啟邏輯應用程式。
+
+1. 若要新增動作做為工作流程中的最後一個步驟，請選取 [**新增步驟**]。 
+
+   若要在步驟之間新增動作，請將指標移至這些步驟之間的箭頭上。 選擇出現的加號 ( **+** )，然後選取 [新增動作]。
+
+1. 在搜尋方塊中，輸入 `office 365 outlook` 作為篩選條件。 這個範例會選取 [**建立連絡人**]。
+
+   ![選取要在邏輯應用程式中執行的動作](./media/connectors-create-api-office365-outlook/office365-actions.png) 
+
+1. 如果系統提示您登入，請提供您的 Office 365 認證，讓您的邏輯應用程式可以連線到您的帳戶。 否則，如果您的連線已存在，請提供動作屬性的資訊。
+
+   這個範例會選取動作建立新連絡人的 [連絡人] 資料夾，例如：
+
+   ![設定動作的屬性](./media/connectors-create-api-office365-outlook/select-contacts-folder.png)
+
+   若要新增其他可用的動作內容，請從 [**加入新的參數**] 清單中選取這些屬性。
+
+1. 在設計工具的工具列上，選取 [儲存]****。
 
 ## <a name="connector-specific-details"></a>連接器特定的詳細資料
 
-檢視 Swagger 中定義的任何觸發程序和動作，另請參閱[連接器詳細資料](/connectors/office365connector/)的所有限制。 
+如需有關觸發程式、動作和限制的技術詳細資料（如連接器的 Swagger 檔案中所述），請參閱[連接器的參考頁面](/connectors/office365connector/)。 
 
 ## <a name="next-steps"></a>後續步驟
-[建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 請到我們的 [API 清單](apis-list.md)探索 Logic Apps 中其他可用的連接器。
 
+* 了解其他 [Logic Apps 連接器](../connectors/apis-list.md)

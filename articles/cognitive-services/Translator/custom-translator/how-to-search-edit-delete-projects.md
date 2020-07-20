@@ -2,19 +2,19 @@
 title: 如何搜尋、編輯和刪除專案 - 自訂翻譯工具
 titleSuffix: Azure Cognitive Services
 description: 自訂翻譯工具可讓您以不同方式有效率地管理專案。 您可以建立多個專案、依條件搜尋，以及編輯專案。 在自訂翻譯工具中也可刪除專案。
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
-ms.author: v-rada
+ms.date: 05/26/2020
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: a4277e8bbd130588e343019a8b02221593efad52
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 40a0429c4296426042e5baa58c9575ddb195cd7c
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772631"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996732"
 ---
 # <a name="search-edit-and-delete-projects"></a>搜尋、編輯和刪除專案
 
@@ -34,12 +34,12 @@ ms.locfileid: "57772631"
 
     ![搜尋專案篩選選項](media/how-to/how-to-search-project-filters.png)
 
-3.  點選 [清除]，以清除篩選條件並檢視您所有的專案。
+3.  藉由點擊 [清除]，清除篩選器來查看所有專案。
 
 
 ## <a name="edit-a-project"></a>編輯專案
 
-自訂轉譯器可讓您編輯的名稱和描述的專案。 其他專案中繼資料，例如類別、 原始碼語言和目標的語言沒有可用的編輯。 下列步驟說明如何編輯專案。
+自訂翻譯讓您能夠編輯專案的名稱和描述。 其他專案中繼資料（例如類別、來源語言和目的語言）無法進行編輯。 下列步驟說明如何編輯專案。
 
 1.  按一下您將滑鼠停留在專案上方時出現的鉛筆圖示。
 

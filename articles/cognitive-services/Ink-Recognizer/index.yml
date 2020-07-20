@@ -1,82 +1,66 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: 筆跡辨識器文件
+### YamlMime:Landing
+title: 筆跡辨識器 API 文件
+summary: 了解如何使用筆跡辨識器 API 將數位筆跡辨識功能帶入您的應用程式和服務。 API 是一種雲端式服務，使用機器學習來辨識任何內容中的手寫圖案和文字。
 metadata:
-  title: 筆跡辨識器文件 - 快速入門、教學課程和 API 參考 - Azure 認知服務 | Microsoft Docs
-  description: 了解如何使用翻譯工具文字翻譯多種語言的文字。
+  title: 筆跡辨識器 API - 教學課程、快速入門、API 參考
+  titleSuffix: Azure Cognitive Services
+  description: 數位筆跡是指能夠數位呈現手寫和繪圖等輸入的技術。 由於裝置能夠繼續提供豐富的數位筆跡體驗，因此人工智慧和機器學習能夠辨識任何內容中的書寫圖形和文字。 筆跡辨識器 API 是一項雲端式服務，可讓您傳送筆跡筆觸並取得其相關詳細資訊。
   services: cognitive-services
-  author: erhopf
+  author: aahill
   manager: nitinme
   ms.service: cognitive-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: ink-recognizer
   ms.topic: landing-page
-  ms.date: 05/02/2019
-  ms.author: erhopf
-abstract:
-  description: 數位筆跡是指能夠數位呈現手寫和繪圖等輸入的技術。 由於裝置能夠繼續提供豐富的數位筆跡體驗，因此人工智慧和機器學習能夠辨識任何內容中的書寫圖形和文字。 筆跡辨識器 API 是一項雲端式服務，可讓您傳送筆跡筆觸並取得其相關詳細資訊。
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/ink-recognizer/overview
-            html: <p>了解筆跡辨識器以及如何將它整合到您的產品中</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: 什麼是筆跡辨識器 API？
-          - href: concepts/send-ink-data.md
-            html: <p>了解使用 API 時的建議呼叫模式</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: 將筆跡資料傳送至筆跡辨識器 API
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 開始使用筆跡辨識器 API：
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/logo-csharp.svg
-            title: 'C#'
-          - image:
-              src: media/index/logo-java.svg
-            title: Java
-          - image:
-              src: media/index/logo-js.svg
-            title: Javascript
-        rows:
-          - title: 辨識數位筆跡筆觸
-            values:
-              - href: quickstarts/csharp.md
-              - href: quickstarts/java.md
-              - href: quickstarts/javascript.md
-  - title: 範例
-    items:
-      - type: paragraph
-        text: 使用下列範例程式來查看筆跡辨識器 API 如何整合到您的應用程式中：
-      - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089503">C# 和通用 Windows 平台 (UWP)</a>'
-      - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089804">C# 和 Windows Presentation Foundation (WPF)</a>'
-      - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089908">Javascript 網頁瀏覽器應用程式</a>'
-      - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089906">Java 和 Android 行動裝置應用程式</a>'
-      - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089805">Swift 和 iOS 行動裝置應用程式</a>'
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST API
-            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2089907">REST API 參考資料</a></p>'
-          - title: PowerShell
-            html: '<p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices">Azure CLI</a></p>'
+  ms.date: 09/23/2019
+  ms.author: aahi
+  ms.openlocfilehash: f7e273639e5a5efd5e52517d9729bb7ba8908604
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "79415710"
+landingContent:
+- title: 關於筆跡辨識器 API
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是筆跡辨識器 API？
+      url: overview.md
+- title: 辨識數位筆跡筆觸
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 C#
+      url: quickstarts/csharp.md
+    - text: 使用 Java
+      url: quickstarts/java.md
+    - text: 使用 Javascript
+      url: quickstarts/javascript.md
+  - linkListType: concept
+    links:
+    - text: 將筆跡筆觸資料傳送至 API
+      url: concepts/send-ink-data.md
+- title: 參考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: https://go.microsoft.com/fwlink/?linkid=2089907
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
+- title: 範例
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: C# 和通用 Windows 平台 (UWP)
+      url: https://go.microsoft.com/fwlink/?linkid=2089803
+    - text: C# 和 Windows Presentation Foundation (WPF)
+      url: https://go.microsoft.com/fwlink/?linkid=2089804
+    - text: Javascript 網頁瀏覽器應用程式
+      url: https://go.microsoft.com/fwlink/?linkid=2089908
+    - text: Java 和 Android 行動裝置應用程式
+      url: https://go.microsoft.com/fwlink/?linkid=2089906
+    - text: Swift 和 iOS 行動裝置應用程式
+      url: https://go.microsoft.com/fwlink/?linkid=2089805

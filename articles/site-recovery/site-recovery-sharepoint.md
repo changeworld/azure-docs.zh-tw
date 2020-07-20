@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure Site Recovery 設定多層式 SharePoint 應用程式的災害復原 | Microsoft Docs
+title: 使用 Azure Site Recovery 的多層式 SharePoint 應用程式的嚴重損壞修復
 description: 本文說明如何使用 Azure Site Recovery 功能設定多層式 SharePoint 應用程式的災害復原。
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5f477cf20b817d7a6c8be856636bf1e3755b5424
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 08e971e52f994ec5fa5663708fa9f173daf33d80
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61472030"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135396"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>使用 Azure Site Recovery 設定多層式 SharePoint 應用程式的災害復原，以便進行災害復原
 
-本文詳細說明如何使用 [Azure Site Recovery](site-recovery-overview.md) 保護 SharePoint 應用程式。
+本文詳細說明如何使用[Azure Site Recovery](site-recovery-overview.md)保護 SharePoint 應用程式。
 
 
 ## <a name="overview"></a>概觀
@@ -29,7 +29,7 @@ Microsoft SharePoint 是功能強大的應用程式，可協助群組或部門�
 
 本文詳細說明如何使用 [Azure Site Recovery](site-recovery-overview.md) 保護 SharePoint 應用程式。 本文將介紹最佳做法來將三層 SharePoint 應用程式複寫至 Azure、如何進行災害復原訓練，以及如何將應用程式容錯移轉至 Azure。
 
-您可以觀賞以下影片的相關復原至 Azure 的多層式應用程式。
+您可以觀看下列有關將多層式應用程式復原至 Azure 的影片。
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/Disaster-Recovery-of-load-balanced-multi-tier-applications-using-Azure-Site-Recovery/player]
 
@@ -38,8 +38,8 @@ Microsoft SharePoint 是功能強大的應用程式，可協助群組或部門�
 
 開始之前，請確定您瞭解下列項目︰
 
-1. [將虛擬機器複寫至 Azure](site-recovery-vmware-to-azure.md)
-2. 如何[設計修復網路](site-recovery-network-design.md)
+1. [將虛擬機器複寫至 Azure](./vmware-azure-tutorial.md)
+2. 如何[設計修復網路](./concepts-on-premises-to-azure-networking.md)
 3. [執行測試容錯移轉至 Azure](site-recovery-test-failover-to-azure.md)
 4. [執行容錯移轉至 Azure](site-recovery-failover.md)
 5. 如何[複寫網域控制站](site-recovery-active-directory.md)
@@ -47,7 +47,7 @@ Microsoft SharePoint 是功能強大的應用程式，可協助群組或部門�
 
 ## <a name="sharepoint-architecture"></a>SharePoint 架構
 
-可以使用分層式拓撲和伺服器角色在一或多部伺服器上部署 SharePoint，以實作符合特定目標的伺服器陣列設計。 支援大量並行使用者和大量內容項目的典型大型、高需求 SharePoint 伺服器陣列，會使用服務群組作為其延展性策略的一部分。 這種方法涉及在專用伺服器上執行服務、將這些服務群組在一起，然後將伺服器相應放大為群組。 下列拓撲說明三層式 SharePoint 伺服器陣列的服務與伺服器群組。 如需不同 SharePoint 拓撲的詳細指引，請參閱 SharePoint 文件集和產品線架構。 您可以在[這份文件](https://technet.microsoft.com/library/cc303422.aspx)中找到有關 SharePoint 2013 部署的詳細資訊。
+可以使用分層式拓撲和伺服器角色在一或多部伺服器上部署 SharePoint，以實作符合特定目標的伺服器陣列設計。 支援大量並行使用者和大量內容項目的典型大型、高需求 SharePoint 伺服器陣列，會使用服務群組作為其延展性策略的一部分。 這種方法涉及在專用伺服器上執行服務、將這些服務群組在一起，然後將伺服器相應放大為群組。 下列拓撲說明三層式 SharePoint 伺服器陣列的服務與伺服器群組。 如需不同 SharePoint 拓撲的詳細指引，請參閱 SharePoint 文件集和產品線架構。 您可以在[這份文件](/SharePoint/sharepoint-server)中找到有關 SharePoint 2013 部署的詳細資訊。
 
 
 
@@ -56,7 +56,7 @@ Microsoft SharePoint 是功能強大的應用程式，可協助群組或部門�
 
 ## <a name="site-recovery-support"></a>Site Recovery 支援
 
-為了建立這篇文章，使用了 VMware 虛擬機器搭配 Windows Server 2012 R2 Enterprise。 還使用 SharePoint 2013 Enterprise 版本和 SQL Server 2014 Enterprise 版本。 因為站台復原複寫應用程式無從驗證，此處提供的建議也都必須對下列案例保留。
+Site Recovery 與應用程式無關，而且應該與在支援的電腦上執行的任何 SharePoint 版本搭配運作。 為了建立這篇文章，使用了 VMware 虛擬機器搭配 Windows Server 2012 R2 Enterprise。 還使用 SharePoint 2013 Enterprise 版本和 SQL Server 2014 Enterprise 版本。
 
 ### <a name="source-and-target"></a>來源與目標
 
@@ -67,13 +67,6 @@ Microsoft SharePoint 是功能強大的應用程式，可協助群組或部門�
 **實體伺服器** | 是 | 是
 **Azure** | NA | 是
 
-### <a name="sharepoint-versions"></a>SharePoint 版本
-支援下列 SharePoint Server 版本。
-
-* SharePoint Server 2013 Standard
-* SharePoint Server 2013 Enterprise
-* SharePoint Server 2016 Standard
-* SharePoint Server 2016 Enterprise
 
 ### <a name="things-to-keep-in-mind"></a>要牢記在心的事項
 
@@ -81,7 +74,7 @@ Microsoft SharePoint 是功能強大的應用程式，可協助群組或部門�
 
 ## <a name="replicating-virtual-machines"></a>複寫虛擬機器
 
-請依照[本指引](site-recovery-vmware-to-azure.md)開始將虛擬機器複寫至 Azure。
+請依照[本指引](./vmware-azure-tutorial.md)開始將虛擬機器複寫至 Azure。
 
 * 複寫完成後，請務必移至每層的每部虛擬機器，然後在 [複寫項目 > 設定 > 屬性 > 計算和網路] 中選取相同的可用性設定組。 例如，如果您的 Web 層有 3 部 VM，請確定這 3 部 VM 全會設定為 Azure 中相同可用性設定組的一部分。
 
@@ -89,7 +82,7 @@ Microsoft SharePoint 是功能強大的應用程式，可協助群組或部門�
 
 * 如需保護 Active Directory 和 DNS 的指引，請參閱[保護 Active Directory 和 DNS](site-recovery-active-directory.md) 文件。
 
-* 如需保護在 SQL Server 上執行之資料庫層的指引，請參閱[保護 SQL Server](site-recovery-active-directory.md) 文件。
+* 如需保護在 SQL Server 上執行之資料庫層的指引，請參閱[保護 SQL Server](site-recovery-sql.md) 文件。
 
 ## <a name="networking-configuration"></a>網路設定
 
@@ -100,16 +93,16 @@ Microsoft SharePoint 是功能強大的應用程式，可協助群組或部門�
     ![選取網路](./media/site-recovery-sharepoint/select-network.png)
 
 
-* 如果您是使用靜態 IP 位址，然後在 [目標 IP] 欄位中指定您希望虛擬機器採用的 IP
+* 如果您是使用靜態 IP 位址，然後在 [目標 IP]**** 欄位中指定您希望虛擬機器採用的 IP
 
     ![設定靜態 IP](./media/site-recovery-sharepoint/set-static-ip.png)
 
 ### <a name="dns-and-traffic-routing"></a>DNS 和流量路由
 
-針對網際網路面向網站，在 Azure 訂用帳戶中[建立「優先順序」類型的流量管理員設定檔](../traffic-manager/traffic-manager-create-profile.md)。 然後以下列方式設定您的 DNS 和流量管理員設定檔。
+針對網際網路面向網站，在 Azure 訂用帳戶中[建立「優先順序」類型的流量管理員設定檔](../traffic-manager/quickstart-create-traffic-manager-profile.md)。 然後以下列方式設定您的 DNS 和流量管理員設定檔。
 
 
-| **其中** | **來源** | **目標**|
+| **希望** | **來源** | **目標**|
 | --- | --- | --- |
 | 公用 DNS | SharePoint 網站的 公用 DNS <br/><br/> 例如︰sharepoint.contoso.com | 流量管理員 <br/><br/> contososharepoint.trafficmanager.net |
 | 內部部署 DNS | sharepointonprem.contoso.com | 內部部署伺服器陣列上的公用 IP |
@@ -170,7 +163,7 @@ Microsoft SharePoint 是功能強大的應用程式，可協助群組或部門�
     * 此方法假設搜尋服務應用程式的備份已在災難性事件之前執行，而且可在 DR 網站上取得該備份。
     * 排定備份 (例如，每天一次) 並使用複製程序將備份置於 DR 網站上，即可輕鬆達成。 複製程序可能包含指令碼程式，例如 AzCopy (Azure 複製) 或設定 DFSR (分散式檔案服務複寫)。
     * 既然 SharePoint 伺服器陣列正在執行中，請瀏覽 [管理中心]、[備份及還原]，然後選取 [還原]。 還原會質詢所指定的備份位置 (您可能需要更新此值)。 選取您想要還原的搜尋服務應用程式備份。
-    * 已還原搜尋。 請記住，還原應會發現相同的拓撲 (相同的伺服器數目) 以及指派給這些伺服器的相同硬碟磁碟機代號。 如需詳細資訊，請參閱[在 SharePoint 2013 中還原搜尋服務應用程式](https://technet.microsoft.com/library/ee748654.aspx)文件。
+    * 已還原搜尋。 請記住，還原應會發現相同的拓撲 (相同的伺服器數目) 以及指派給這些伺服器的相同硬碟磁碟機代號。 如需詳細資訊，請參閱[在 SharePoint 2013 中還原搜尋服務應用程式](/SharePoint/administration/restore-a-search-service-application)文件。
 
 
 6. 如需從新的搜尋服務應用程式著手，請遵循下列步驟。
@@ -185,7 +178,7 @@ Microsoft SharePoint 是功能強大的應用程式，可協助群組或部門�
     ![已儲存的 RP](./media/site-recovery-sharepoint/saved-rp.png)
 
 ## <a name="doing-a-test-failover"></a>執行測試容錯移轉
-遵循[此指南](site-recovery-test-failover-to-azure.md)执行测试故障转移。
+請依照[本指引](site-recovery-test-failover-to-azure.md)來執行測試容錯移轉。
 
 1.  請移至 Azure 入口網站，然後選取您的復原服務保存庫。
 2.  按一下為 SharePoint 應用程式建立的復原方案。
@@ -196,7 +189,7 @@ Microsoft SharePoint 是功能強大的應用程式，可協助群組或部門�
 
 如需有關進行 AD 和 DNS 之測試容錯移轉的指引，請參閱 [AD 和 DNS 的測試容錯移轉考量](site-recovery-active-directory.md#test-failover-considerations)文件。
 
-如需有關進行 SQL Always ON 可用性群組之測試容錯移轉的指引，請參閱[進行 SQL Server Always On 的測試容錯移轉](site-recovery-sql.md#steps-to-do-a-test-failover)文件。
+如需針對 SQL Always ON 可用性群組進行測試容錯移轉的指引，請參閱[使用 Azure Site Recovery 執行應用程式 DR 和執行測試容錯移轉](site-recovery-sql.md#disaster-recovery-of-an-application)檔。
 
 ## <a name="doing-a-failover"></a>執行容錯移轉
 請依照[本指引](site-recovery-failover.md)來進行容錯移轉。

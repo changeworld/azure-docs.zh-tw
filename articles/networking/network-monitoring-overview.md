@@ -1,5 +1,5 @@
 ---
-title: 關於 Azure 監視器中的網路監視記錄檔 |Microsoft Docs
+title: 關於 Azure 監視器記錄中的網路監視 |Microsoft Docs
 description: 可管理跨雲端、內部部署和混合式環境之網路的網路監視解決方案 (包括 NPM) 概觀。
 services: monitoring-and-diagnostics
 documentationcenter: na
@@ -8,19 +8,19 @@ manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: monitoring-and-diagnostics
+ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
-ms.author: ajaycode
-ms.openlocfilehash: 42fb5d69a1f32d669ad5191e342b3f2f880b8c98
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: agummadi
+ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60564752"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67672185"
 ---
 # <a name="network-monitoring-solutions"></a>網路監視解決方案 
 
@@ -51,9 +51,11 @@ Azure 提供許多可監視網路資產的解決方案。 Azure 擁有的解決�
 
 如需詳細資訊，請觀看下列文章：
 
-* [在 Azure 監視器記錄檔中設定網路效能監控解決方案](../azure-monitor/insights/network-performance-monitor.md) 
+* [在 Azure 監視器記錄中設定網路效能監控解決方案](../azure-monitor/insights/network-performance-monitor.md) 
 * [使用案例](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
-*  產品更新：[2017 年 2 月](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)， [2017 年 8 月](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
+* 產品更新：
+  * [2017 年 2 月](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)
+  * [2017 年 8 月](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
 
 ## <a name="expressroute-monitor"></a>ExpressRoute 監視
 
@@ -70,7 +72,7 @@ Expressroute 的 NPM 提供對於 Azure 私用對等連線和 Microsoft 對等�
 
 如需詳細資訊，請參閱下列文章：
 
-* [設定 ExpressRoute 線路的網路效能監視器](../expressroute/how-to-npm.md)
+* [設定 ExpressRoute 的網路效能監控](../expressroute/how-to-npm.md)
 * [部落格文章](https://aka.ms/NPMExRmonitorGA)
 
 ## <a name="service-connectivity-monitor"></a>服務連線能力監視
@@ -120,6 +122,6 @@ Expressroute 的 NPM 提供對於 Azure 私用對等連線和 Microsoft 對等�
 相關連結：
 * [部落格文章](https://blogs.technet.microsoft.com/msoms/2017/04/19/introducing-oms-dns-analytics/)、[文件](https://docs.microsoft.com/azure/log-analytics/log-analytics-dns)
 
-## <a name="miscellaneous"></a>其他資訊
+## <a name="miscellaneous"></a>其他
 
 * [新定價](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor-pricing-faq)

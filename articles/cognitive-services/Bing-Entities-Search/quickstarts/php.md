@@ -1,6 +1,6 @@
 ---
-title: 快速入門：使用 PHP 將搜尋要求傳送至 Bing 實體搜尋 REST API
-titlesuffix: Azure Cognitive Services
+title: 快速入門：將搜尋要求傳送至以 PHP 撰寫的 REST API - Bing 實體搜尋
+titleSuffix: Azure Cognitive Services
 description: 使用此快速入門以運用 PHP 來傳送要求給「Bing 實體搜尋 REST API」，並接收 JSON 回應。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: f311216182f85da3dd6cf01269062cc9c555f868
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 21a8d47f80dae35553114f522c1c78a97a086518
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538522"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650228"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>快速入門：使用 PHP 將搜尋要求傳送至 Bing 實體搜尋 REST API
 
@@ -23,7 +23,7 @@ ms.locfileid: "57538522"
 
 雖然此應用程式是以 PHP 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [PHP 5.6.x](https://php.net/downloads.php) (英文) 或更新版本
 
@@ -31,12 +31,13 @@ ms.locfileid: "57538522"
 
 ## <a name="search-entities"></a>搜尋實體
 
-若要執行此應用程式，請遵循下列步驟。
+若要執行此應用程式，請遵循下列步驟：
 
 1. 在您最愛的 IDE 中建立新的 PHP 專案。
 2. 新增下方提供的程式碼。
 3. 以訂用帳戶有效的存取金鑰來取代 `key` 值。
-4. 執行程式。
+4. 您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
+5. 執行程式。
 
 ```php
 <?php
@@ -82,7 +83,7 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 ?>
 ```
 
-**回應**
+## <a name="example-json-response"></a>範例 JSON 回應
 
 如以下範例所示，成功的回應會以 JSON 格式來傳回： 
 
@@ -153,4 +154,4 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 > [建置單頁 Web 應用程式](../tutorial-bing-entities-search-single-page-app.md)
 
 * [什麼是 Bing 實體搜尋 API？](../overview.md )
-* [Bing 實體搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+* [Bing 實體搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)。

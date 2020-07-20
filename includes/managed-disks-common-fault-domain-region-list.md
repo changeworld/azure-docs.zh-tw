@@ -4,16 +4,16 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 0ee40c3ad692deccbc185fa7f8e51dd25eeaf95d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 984b6aed6ae1b36432b932afb7d0f9dfb0b2dc15
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60613813"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72783549"
 ---
 ### <a name="number-of-fault-domains-per-region"></a>每個區域的容錯網域數目
 
-| 區域              | 容錯網域的數目上限  |
+| 地區              | 容錯網域的數目上限  |
 |---------------------|-------------------------|
 | 美國東部             | 3                       |
 | 美國東部 2           | 3                       |
@@ -23,7 +23,7 @@ ms.locfileid: "60613813"
 | 美國中北部    | 3                       |
 | 美國中南部    | 3                       |
 | 美國中西部     | 2                       |
-| 加拿大中部      | 3                      |
+| 加拿大中部      | 3                       |
 | 加拿大東部         | 2                       |
 |                     |                         |
 | 北歐        | 3                       |
@@ -40,14 +40,22 @@ ms.locfileid: "60613813"
 | 印度西部          | 2                       |
 | 南韓中部       | 2                       |
 | 南韓南部         | 2                       |
+| 阿拉伯聯合大公國北部           | 2                       |
 |                     |                         |
-| 澳洲東部      | 2                       |
+| 中國東部          | 2                       |
+| 中國東部 2        | 2                       |
+| 中國北部         | 2                       |
+| 中國北部 2       | 2                       |
+|                     |                         |
+| 澳大利亞東部      | 2                       |
 | 澳大利亞東南部 | 2                       |
+| 澳大利亞中部   | 2                       |
+| 澳大利亞中部 2 | 2                       |
 |                     |                         |
 | 巴西南部        | 2                       |
 |                     |                         |
-| 美國政府維吉尼亞州     | 2                       |
-| 美國政府德克薩斯州        | 2                       |
-| 美國政府亞利桑那州      | 2                       |
-| 美國國防部中央      | 2                       |
-| 美國 DoD 東部         | 2                       |
+| US Gov 維吉尼亞州     | 2                       |
+| US Gov 德克薩斯州        | 2                       |
+| US Gov 亞利桑那州      | 2                       |
+| US DoD 中部      | 2                       |
+| US DoD 東部         | 2                       |

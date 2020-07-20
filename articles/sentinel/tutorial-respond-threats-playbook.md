@@ -1,32 +1,31 @@
 ---
-title: 在 Azure Sentinel 預覽版中執行劇本 | Microsoft Docs
-description: 本文說明如何在 Azure Sentinel 中執行劇本。
+title: 教學課程：在 Azure Sentinel 中執行劇本
+description: 使用本教學課程可協助您使用 Azure Sentinel 中的安全性劇本，對安全性相關問題設定自動化威脅回應。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: e4afc5c8-ffad-4169-8b73-98d00155fa5a
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
-ms.author: rkarlin
-ms.openlocfilehash: d5f055ce337cb43e0813bc9ff295d0958e06f561
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 02/18/2019
+ms.author: yelevin
+ms.openlocfilehash: 5bc6ca30b9dff3686b16fe5237f815f16f849e9e
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65205453"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85558467"
 ---
-# <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel-preview"></a>教學課程：在 Azure Sentinel 預覽版中設定自動化威脅回應
+# <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>教學課程：在 Azure Sentinel 中設定自動化威脅回應
 
-> [!IMPORTANT]
-> Azure Sentinel 目前為公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 
 本教學課程可協助您使用 Azure Sentinel 中的安全性劇本，來設定對 Azure Sentinel 所偵測到之安全性相關問題的自動化威脅回應。
 
@@ -35,6 +34,7 @@ ms.locfileid: "65205453"
 > * 了解劇本
 > * 建立劇本
 > * 執行劇本
+> * 將威脅回應自動化
 
 
 ## <a name="what-is-a-security-playbook-in-azure-sentinel"></a>什麼是 Azure Sentinel 中的安全性劇本？
@@ -64,7 +64,7 @@ ms.locfileid: "65205453"
 
    ![邏輯應用程式](./media/tutorial-respond-threats-playbook/playbookimg.png)
 
-3. 在 [Azure Sentinel - 劇本 (預覽)] 頁面中，按一下 [新增] 按鈕。
+3. 在 [Azure Sentinel - 劇本] 頁面中，按一下 [新增] 按鈕。
 
    ![建立邏輯應用程式](./media/tutorial-respond-threats-playbook/create-playbook.png) 
 
@@ -76,7 +76,9 @@ ms.locfileid: "65205453"
 
 6. 您會前往邏輯應用程式設計工具，您可以在其中建立新的或編輯範本。 請深入了解如何使用 [Logic Apps](../logic-apps/logic-apps-create-logic-apps-from-templates.md) 建立劇本。
 
-7. 如果您要建立空白劇本，在 [搜尋所有連接器及觸發程序] 欄位中，輸入 *Azure Sentinel*，然後選取 [當對 Azure Sentinel 警示的回應已觸發時]。 <br>建立之後，新的劇本會出現在 [劇本] 清單中。 如果它沒有出現，按一下 [重新整理]。 
+7. 如果您要建立空白劇本，在 [搜尋所有連接器及觸發程序] 欄位中，輸入 *Azure Sentinel*，然後選取 [當對 Azure Sentinel 警示的回應已觸發時]。 <br>建立之後，新的劇本會出現在 [劇本] 清單中。 如果它沒有出現，按一下 [重新整理]。
+
+1. 使用**取得實體**函式可讓您從 [實體] 清單內部取得相關實體，例如帳戶、IP 位址和主機。 這可讓您在特定實體上執行動作。
 
 7. 現在您可以定義當觸發劇本時會發生什麼事。 您可以新增動作、邏輯條件、切換案例條件或迴圈。
 
@@ -88,15 +90,33 @@ ms.locfileid: "65205453"
 
 視需要執行劇本：
 
-1. 在 [案例] 頁面中，選取一個案例，然後按一下 [檢視完整的詳細資料]。
+1. 在 [事件] 頁面中，選取一個事件，然後按一下 [檢視完整的詳細資料]。
 
 2. 在 [警示] 索引標籤中，按一下您想要執行劇本的警示、一路捲動到右邊並按一下 [檢視劇本]，然後從訂用帳戶的可用劇本清單中選取要**執行**的劇本。 
 
 
 
+## <a name="automate-threat-responses"></a>將威脅回應自動化
+
+定期傳來的安全性警示會讓 SIEM/SOC 小組應接不暇。 由於產生的警示數量龐大，所有有空的安全性系統管理員都會忙得昏天暗地。 這往往會導致許多警示並未受到調查，而讓組織容易不知不覺地遭到攻擊。 
+
+其中的許多 (但並非大多數) 警示會符合週期性模式，因此可透過特定且已定義的補救動作來加以解決。 Azure Sentinel 已可讓您在劇本中定義補救措施。 您也可以在劇本定義內設定即時自動化，以便能夠讓針對特定安全性警示所定義的回應完全自動地進行。 藉由使用即時自動化，回應小組可以藉由讓針對週期性類型的警示所制定的例行回應完全自動地進行、讓您能夠更專注地應付獨特警示、分析模式、威脅搜尋等等，而大幅降低工作量。
+
+若要讓回應自動化：
+
+1. 選取想要讓回應自動化的警示。
+1. 在 [編輯警示規則] 頁面的 [即時自動化] 底下，選擇要在符合此警示規則時執行的 [觸發劇本]。
+1. 選取 [儲存]。
+
+   ![即時自動化](./media/tutorial-detect-threats/rt-configuration.png)
+
+
+
+
+
 
 ## <a name="next-steps"></a>後續步驟
-在本文中，您已了解如何在 Azure Sentinel 中執行劇本。 若要深入了解 Azure Sentinel，請參閱下列文章：在本教學課程中，您已了解如何在 Azure Sentinel 中執行劇本。 繼續了解使用 Azure Sentine [主動尋找威脅的方式](hunting.md)。
-> [!div class="nextstepaction"]
-> [尋找威脅](hunting.md)以主動找出您網路上的威脅。
+
+在本教學課程中，您已了解如何在 Azure Sentinel 中執行劇本。 繼續了解使用 Azure Sentine [主動尋找威脅的方式](hunting.md)。
+
 

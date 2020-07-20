@@ -9,25 +9,24 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 68c516ee7ca2d76339760ce0ad95590686250603
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 4c3cc572dd9629605414cd88d7735c2b31f92249
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521932"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851262"
 ---
 # <a name="transform-and-protect-your-api"></a>轉換及保護您的 API
 
-此教學課程示範如何轉換您的 API，使它不會揭露私人的後端資訊。 例如，您可以隱藏在後端執行之技術堆疊的相關資訊。 您也可以隱藏 API HTTP 回應主體中出現的原始 URL，改為將它們重新導向至 APIM 閘道。
+本教學課程示範如何轉換您的 API，使它不會揭露私人的後端資訊。 例如，您可以隱藏在後端執行之技術堆疊的相關資訊。 您也可以隱藏 API HTTP 回應主體中出現的原始 URL，改為將它們重新導向至 APIM 閘道。
 
-此教學課程示範透過使用「Azure API 管理」設定速率限制，來為後端 API 新增保護是多麼簡單容易的工作。 例如，您可以限制呼叫 API 的呼叫次數，使得開發人員不會過度使用它。 如需詳細資訊，請參閱 [API 管理原則](api-management-policies.md)。
+本教學課程示範透過使用「Azure API 管理」設定速率限制，來為後端 API 新增保護是多麼簡單容易的工作。 例如，您可以限制呼叫 API 的呼叫次數，使得開發人員不會過度使用它。 如需詳細資訊，請參閱 [API 管理原則](api-management-policies.md)。
 
-在此教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 >
@@ -49,7 +48,7 @@ ms.locfileid: "59521932"
 
 ## <a name="transform-an-api-to-strip-response-headers"></a>轉換 API 以刪除回應標頭
 
-此節示範如何隱藏您不想向使用者顯示的 HTTP 標頭。 在此範例中，會在 HTTP 回應中刪除下列標頭：
+本節示範如何隱藏您不想向使用者顯示的 HTTP 標頭。 在此範例中，會在 HTTP 回應中刪除下列標頭：
 
 -   **X-Powered-By**
 -   **X-AspNet-Version**
@@ -83,8 +82,10 @@ ms.locfileid: "59521932"
 
 7. 修改您的 **\<outbound>** 程式碼，使它看起來如下：
 
-       <set-header name="X-Powered-By" exists-action="delete" />
-       <set-header name="X-AspNet-Version" exists-action="delete" />
+   ```
+   <set-header name="X-Powered-By" exists-action="delete" />
+   <set-header name="X-AspNet-Version" exists-action="delete" />
+   ```
 
    ![原則](./media/transform-api/set-policy.png)
 
@@ -92,7 +93,7 @@ ms.locfileid: "59521932"
 
 ## <a name="replace-original-urls-in-the-body-of-the-api-response-with-apim-gateway-urls"></a>使用 APIM 閘道 URL 取代 API 回應主體中的原始 URL
 
-此節示範如何隱藏 API HTTP 回應主體中出現的原始 URL，改為將它們重新導向至 APIM 閘道。
+本節示範如何隱藏 API HTTP 回應主體中出現的原始 URL，改為將它們重新導向至 APIM 閘道。
 
 ### <a name="test-the-original-response"></a>測試原始回應
 
@@ -113,15 +114,12 @@ ms.locfileid: "59521932"
 2.  選取 [所有作業]。
 3.  選取畫面頂端的 [設計] 索引標籤。
 4.  在 [輸出處理] 區段中，按一下 **</>** 圖示。
-5.  將游標放在 **&lt;outbound&gt;** 元素內部。
-6.  在右側視窗的 [轉換原則] 下方，按一下 [+ 尋找並取代主體中的字串]。
-7.  修改您的 **find-and-replace** 程式碼 (位於 **\<outbound\>** 元素中)，並用來取代 URL，以符合您的 APIM 閘道。 例如︰
-
-        <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
+5.  將游標放在 **&lt;outbound&gt;** 元素中，然後按一下右上角的 [顯示程式碼片段] 按鈕。
+6.  在右側視窗的 [轉換原則] 底下，按一下 [遮罩內容中的 URL]。
 
 ## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>新增速率限制原則 (節流) 來保護 API
 
-此節示範如何透過設定速率限制來為後端 API 新增保護。 例如，您可以限制呼叫 API 的呼叫次數，使得開發人員不會過度使用它。 在此範例中，會針對每個訂用帳戶 ID，將限制設定為每 15 秒呼叫 3 次。15 秒之後，開發人員就可重試呼叫 API。
+本節示範如何透過設定速率限制來為後端 API 新增保護。 例如，您可以限制呼叫 API 的呼叫次數，使得開發人員不會過度使用它。 在此範例中，會針對每個訂用帳戶 ID，將限制設定為每 15 秒呼叫 3 次。15 秒之後，開發人員就可重試呼叫 API。
 
 ![設定輸入原則](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png)
 
@@ -133,33 +131,37 @@ ms.locfileid: "59521932"
 6.  在右側視窗的 [存取限制原則] 下方，按一下 [+ 限制每個金鑰的呼叫速率]。
 7.  將您的 **rate-limit-by-key** 程式碼 (位於 **\<inbound\>** 元素中) 修改為下列程式碼：
 
-        <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
+    ```
+    <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
+    ```
 
 ## <a name="test-the-transformations"></a>測試轉換
 
 此時如果您在程式碼編輯器中查看程式碼，您的原則會顯示如下：
 
-    <policies>
-        <inbound>
-            <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
-            <base />
-        </inbound>
-        <backend>
-            <base />
-        </backend>
-        <outbound>
-            <set-header name="X-Powered-By" exists-action="delete" />
-            <set-header name="X-AspNet-Version" exists-action="delete" />
-            <find-and-replace from="://conferenceapi.azurewebsites.net:443" to="://apiphany.azure-api.net/conference"/>
-            <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
-            <base />
-        </outbound>
-        <on-error>
-            <base />
-        </on-error>
-    </policies>
+   ```
+   <policies>
+      <inbound>
+        <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
+        <base />
+      </inbound>
+      <backend>
+        <base />
+      </backend>
+      <outbound>
+        <set-header name="X-Powered-By" exists-action="delete" />
+        <set-header name="X-AspNet-Version" exists-action="delete" />
+        <find-and-replace from="://conferenceapi.azurewebsites.net:443" to="://apiphany.azure-api.net/conference"/>
+        <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
+        <base />
+      </outbound>
+      <on-error>
+        <base />
+      </on-error>
+   </policies>
+   ```
 
-此節的其餘部分將測試您在此文章中設定的原則轉換。
+本節的其餘部分將測試您在此文章中設定的原則轉換。
 
 ### <a name="test-the-stripped-response-headers"></a>測試已刪除的回應標頭
 
@@ -202,7 +204,7 @@ ms.locfileid: "59521932"
 
 ## <a name="next-steps"></a>後續步驟
 
-在此教學課程中，您已了解如何：
+在本教學課程中，您已了解如何：
 
 > [!div class="checklist"]
 >

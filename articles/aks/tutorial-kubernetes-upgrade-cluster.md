@@ -2,18 +2,15 @@
 title: Azure 上的 Kubernetes 教學課程 - 升級叢集
 description: 在本 Azure Kubernetes Service (AKS) 教學課程中，您將了解如何將現有的 AKS 叢集升級至最新的可用 Kubernetes 版本。
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
-ms.author: iainfou
+ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: b0d0d8326d6274252f4c4a865bc8f022daf9e199
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a89e8bb42bec4323d2189ca93dfe73171c4a128c
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61029347"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887989"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>教學課程：在 Azure Kubernetes Service (AKS) 中升級 Kubernetes
 
@@ -37,15 +34,30 @@ ms.locfileid: "61029347"
 在升級叢集之前，請使用 [az aks get-upgrades][] 命令檢查哪些 Kubernetes 版本可進行升級：
 
 ```azurecli
-az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
+az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
-在下列範例中，目前的版本是 *1.9.11*，可用版本則顯示於 [升級] 資料行下方。
+在下列範例中，目前版本是 1.15.11**，可用版本則顯示在 [升級]** 之下。
 
-```
-Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
--------  ---------------  ---------------  -----------------  --------------
-default  myResourceGroup  1.9.11           1.9.11             1.10.8, 1.10.9
+```json
+{
+  "agentPoolProfiles": null,
+  "controlPlaneProfile": {
+    "kubernetesVersion": "1.15.11",
+    ...
+    "upgrades": [
+      {
+        "isPreview": null,
+        "kubernetesVersion": "1.16.8"
+      },
+      {
+        "isPreview": null,
+        "kubernetesVersion": "1.16.9"
+      }
+    ]
+  },
+  ...
+}
 ```
 
 ## <a name="upgrade-a-cluster"></a>升級叢集
@@ -58,16 +70,19 @@ default  myResourceGroup  1.9.11           1.9.11             1.10.8, 1.10.9
 1. 當新節點準備好並加入叢集時，Kubernetes 排程器會開始在其上執行 Pod。
 1. 舊節點會遭到刪除，而叢集中的下一個節點會開始隔離和清空流程。
 
-使用 [az aks upgrade][] 命令升級 AKS 叢集。 下列範例會將叢集升級至 Kubernetes *1.10.9* 版。
-
-> [!NOTE]
-> 您一次只能升級一個次要版本。 例如，您可以從 *1.9.11* 升級至 *1.10.9*，但無法直接從 *1.9.6* 升級至 *1.11.x*。 若要從 *1.9.11* 升級至 *1.11.x*，必須先從 *1.9.11* 升級至 *1.10.x*，然後再執行從 *1.10.x* 到 *1.11.x* 的升級。
+使用 [az aks upgrade][] 命令升級 AKS 叢集。
 
 ```azurecli
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.10.9
+az aks upgrade \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --kubernetes-version KUBERNETES_VERSION
 ```
 
-下列扼要的範例輸出顯示 *kubernetesVersion* 現在回報 *1.10.9*：
+> [!NOTE]
+> 您一次只能升級一個次要版本。 例如，您可以從 1.14.x** 升級至 1.15.x**，但無法直接從 1.14.x** 升級至 1.16.x**。 若要從 1.14.x** 升級至 1.16.x**，必須先從 1.14.x** 升級至 1.15.x**，然後再執行從 1.15.x** 到 1.16.x** 的升級。
+
+下列扼要的範例輸出顯示升級至 *1.16.8*的結果。 請注意，*kubernetesVersion* 現在回報 *1.16.8*：
 
 ```json
 {
@@ -85,7 +100,7 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.10.9",
+  "kubernetesVersion": "1.16.8",
   "location": "eastus",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
@@ -100,15 +115,15 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-下列範例輸出顯示 AKS 叢集執行的是 *KubernetesVersion 1.10.9*：
+下列範例輸出顯示 AKS 叢集執行的是 KubernetesVersion 1.16.8**：
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.10.9               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.16.8               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
-## <a name="delete-the-cluster"></a>刪除叢集
+## <a name="delete-the-cluster"></a>選取叢集
 
 由於本教學課程是整個系列的最後一個部分，因此，您可以刪除 AKS 叢集。 Kubernetes 節點會在 Azure 虛擬機器 (VM) 上執行，所以即使您不使用叢集，這些節點仍會繼續產生費用。 請使用 [az group delete][az-group-delete] 命令來移除資源群組、容器服務以及所有相關資源。
 
@@ -117,7 +132,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> 當您刪除叢集時，不會移除 AKS 叢集所使用的 Azure Active Directory 服務主體。 如需有關如何移除服務主體的步驟，請參閱[AKS 服務主體的考量和刪除][sp-delete]。
+> 當您刪除叢集時，不會移除 AKS 叢集所使用的 Azure Active Directory 服務主體。 如需有關如何移除服務主體的步驟，請參閱 [AKS 服務主體的考量和刪除][sp-delete]。 如果您使用受控識別，則身分識別會由平台負責管理，因此您不需要佈建或輪替任何密碼。
 
 ## <a name="next-steps"></a>後續步驟
 

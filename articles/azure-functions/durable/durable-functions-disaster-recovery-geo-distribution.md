@@ -1,25 +1,17 @@
 ---
-title: Durable Functions 中的災難復原和地理分散 - Azure
+title: 嚴重損壞修復和異地散發 Azure Durable Functions
 description: 了解 Durable Functions 中的災難復原和地理分散。
-services: functions
 author: MS-Santi
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1363dd3c620789b9f3c8ce1dbe0892ee61d66051
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 7951f216143bef0d48a6b751beff3f8f4316b9bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60741329"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75433339"
 ---
-# <a name="disaster-recovery-and-geo-distribution"></a>災難復原和異地複寫
-
-## <a name="overview"></a>概觀
+# <a name="disaster-recovery-and-geo-distribution-in-azure-durable-functions"></a>Azure Durable Functions 中的嚴重損壞修復和異地散發
 
 在 Durable Functions 中，所有狀態會保存於 Azure 儲存體中。 [工作中樞](durable-functions-task-hubs.md)是協調流程所使用之 Azure 儲存體資源的邏輯容器。 協調器和活動函式必須屬於相同的工作中樞，才能彼此互動。
 所述的案例會提議部署選項，以在災難復原活動期間提升可用性和將停機時間降至最低。

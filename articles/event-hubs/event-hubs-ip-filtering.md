@@ -1,63 +1,60 @@
 ---
 title: Azure 事件中樞防火牆規則 | Microsoft Docs
 description: 使用「防火牆規則」以允許從特定 IP 位址連線至「Azure 事件中樞」。
-services: event-hubs
-documentationcenter: ''
-author: spelluru
-manager: timlt
-ms.service: event-hubs
-ms.devlang: na
-ms.custom: seodec18
 ms.topic: article
-ms.date: 12/06/2018
-ms.author: spelluru
-ms.openlocfilehash: ccb2fa7b0805b332957513c52c0c1051d068d2cc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/23/2020
+ms.openlocfilehash: fb9fa72af7127224afdcf70ecca1c851e9212c4d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60821668"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320417"
 ---
-# <a name="use-firewall-rules"></a>使用防火牆規則
+# <a name="configure-ip-firewall-rules-for-an-azure-event-hubs-namespace"></a>設定 Azure 事件中樞命名空間的 IP 防火牆規則
+根據預設，只要要求具備有效的驗證和授權，便可以從網際網路存取事件中樞命名空間。 透過 IP 防火牆，您可以將其進一步限制為僅允許一組 IPv4 位址，或是使用 [CIDR (無類別網域間路由)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 標記法來設定 IPv4 位址範圍。
 
-針對應該只能從特定已知網站存取「Azure 事件中樞」的情況，防火牆規則可讓您設定規則來接受源自特定 IPv4 位址的流量。 例如，這些位址可能是企業 NAT 閘道的位址。
-
-## <a name="when-to-use"></a>使用時機
-
-如果想要設定「事件中樞」命名空間，讓其應該只接收來自某個指定 IP 位址範圍的流量，並拒絕所有其他流量，您可以利用「防火牆規則」封鎖來自其他其他 IP 位址的事件中樞端點。 例如，如果您搭配 [Azure Express Route][express-route] 使用事件中樞，您可以建立*防火牆規則*限制來自您內部部署基礎結構 IP 位址的流量。
-
-## <a name="how-filter-rules-are-applied"></a>篩選器規則的套用方式
-
-IP 篩選器規則會套用在事件中樞命名空間層級。 因此，規則會套用至來自用戶端的所有連接 (使用任何受支援的通訊協定)。
-
-任何來自某個 IP 位址的連線嘗試，只要不符合「事件中樞」命名空間上的允許 IP 規則，系統就會將其視為未經授權而予以拒絕。 回應則不涉及 IP 規則。
-
-## <a name="default-setting"></a>預設設定
-
-根據預設，事件中樞入口網站中的 **IP 篩選器**方格是空的。 這個預設設定表示您的事件中樞會接受來自任何 IP 位址的連線。 這項預設設定等同於可接受 0.0.0.0/0 IP 位址範圍的規則。
-
-## <a name="ip-filter-rule-evaluation"></a>IP 篩選器規則評估
-
-IP 篩選器規則會依序套用，而且第一個符合 IP 位址的規則會決定接受或拒絕動作。
+此功能在只應該從特定知名網站存取 Azure 事件中樞的情況下會很有幫助。 防火牆規則可讓您設定規則以接受源自特定 IPv4 位址的流量。 例如，如果您搭配 [Azure Express Route][express-route] 使用事件中樞，您可以建立**防火牆規則**以僅允許來自您內部部署基礎結構 IP 位址的流量。 
 
 >[!WARNING]
-> 實作「防火牆」可防止其他 Azure 服務與「事件中樞」進行互動。
+> 啟用 IP 篩選可防止其他 Azure 服務與事件中樞互動。
 >
-> 實作「IP 篩選」(防火牆) 時，不支援受信任的 Microsoft 服務，但很快就會提供這項支援。
+> 實作「虛擬網路」時，不支援受信任的 Microsoft 服務。
 >
-> 無法與「IP 篩選」搭配運作的常見 Azure 案例 (請注意，這**不是**完整的清單) -
-> - Azure 監視器
+> 無法與「虛擬網路」搭配運作的常見 Azure 案例 (請注意，這**不是**完整的清單) -
+> - Azure 監視器 (診斷設定)
 > - Azure 串流分析
 > - 與 Azure 事件方格的整合
 > - Azure IoT 中樞路由
 > - Azure IoT Device Explorer
-> - Azure 資料總管
 >
 > 虛擬網路上必須有下列 Microsoft 服務
-> - Azure Web Apps 
+> - Azure Web Apps
 > - Azure Functions
 
-### <a name="creating-a-firewall-rule-with-azure-resource-manager-templates"></a>利用 Azure Resource Manager 範本來建立防火牆規則
+
+## <a name="ip-firewall-rules"></a>IP 防火牆規則
+IP 防火牆規則會在事件中樞命名空間層級套用。 因此，規則會套用至來自用戶端的所有連接 (使用任何受支援的通訊協定)。 任何來自某個 IP 位址的連線嘗試，只要不符合「事件中樞」命名空間上的允許 IP 規則，系統就會將其視為未經授權而予以拒絕。 回應則不涉及 IP 規則。 IP 篩選器規則會依序套用，而且第一個符合 IP 位址的規則會決定接受或拒絕動作。
+
+## <a name="use-azure-portal"></a>使用 Azure 入口網站
+此節會示範如何使用 Azure 入口網站來為事件中樞命名空間建立 IP 防火牆規則。 
+
+1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽到您的**事件中樞命名空間**。
+2. 在左側功能表上，選取 [網路] 選項。 如果您選取 [所有網路] 選項，事件中樞便會接受來自任何 IP 位址的連線。 此設定等同於接受 0.0.0.0/0 IP 位址範圍的規則。 
+
+    ![防火牆 - 已選取 [所有網路] 選項](./media/event-hubs-firewall/firewall-all-networks-selected.png)
+1. 若要將存取限制到特定網路和 IP 位址，請選取 [選取的網路] 選項。 在 [防火牆] 區段中，依照下列步驟執行：
+    1. 選取 [新增您的用戶端 IP 位址] 選項，來將命名空間的存取權授與您目前的用戶端 IP。 
+    2. 針對 [位址範圍]，輸入特定的 IPv4 位址，或是以 CIDR 標記法輸入 IPv4 位址的範圍。 
+    3. 指定您是否要 [允許受信任的 Microsoft 服務略過此防火牆]。 
+
+        > [!WARNING]
+        > 如果您選擇 [選取的網路] 選項，且不指定 IP 位址或位址範圍，服務將會允許來自所有網路的流量。 
+
+        ![防火牆 - 已選取 [所有網路] 選項](./media/event-hubs-firewall/firewall-selected-networks-trusted-access-disabled.png)
+3. 選取工具列上的 [儲存] 來儲存設定。 等候幾分鐘的時間，讓入口網站通知上顯示確認訊息。
+
+
+## <a name="use-resource-manager-template"></a>使用 Resource Manager 範本
 
 > [!IMPORTANT]
 > 「事件中樞」的**標準**和**專用**層級可支援防火牆規則。 基本層中不支援虛擬網路。
@@ -69,10 +66,10 @@ IP 篩選器規則會依序套用，而且第一個符合 IP 位址的規則會�
 - **ipMask** 是單一 IPv4 位址或以 CIDR 標記法表示的 IP 位址區塊。 例如，在 CIDR 標記法中，70.37.104.0/24 表示從 70.37.104.0 開始，到 70.37.104.255 為止，總共 256 個 IPv4 位址，而 24 則表示該範圍內的顯著前置詞位元。
 
 > [!NOTE]
-> 雖然無法使用任何拒絕規則，但 Azure Resource Manager 範本是將預設動作設定為不會限制連線的 **"Allow"**。
+> 雖然無法使用任何拒絕規則，但 Azure Resource Manager 範本是將預設動作設定為不會限制連線的 **"Allow"** 。
 > 在建立「虛擬網路」或「防火牆」規則時，我們必須將 ***"defaultAction"***
 > 
-> from
+> 從
 > ```json
 > "defaultAction": "Allow"
 > ```
@@ -135,6 +132,7 @@ IP 篩選器規則會依序套用，而且第一個符合 IP 位址的規則會�
                 "action":"Allow"
             }
           ],
+          "trustedServiceAccessEnabled": false,
           "defaultAction": "Deny"
         }
       }
@@ -143,7 +141,7 @@ IP 篩選器規則會依序套用，而且第一個符合 IP 位址的規則會�
   }
 ```
 
-若要部署範本，請依照 [Azure Resource Manager][lnk-deploy] 適用的指示執行。
+若要部署範本，請依照適用於 [Azure Resource Manager][lnk-deploy] 的指示執行。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -154,5 +152,5 @@ IP 篩選器規則會依序套用，而且第一個符合 IP 位址的規則會�
 <!-- Links -->
 
 [express-route]:  /azure/expressroute/expressroute-faqs#supported-services
-[lnk-deploy]: ../azure-resource-manager/resource-group-template-deploy.md
+[lnk-deploy]: ../azure-resource-manager/templates/deploy-powershell.md
 [lnk-vnet]: event-hubs-service-endpoints.md

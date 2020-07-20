@@ -12,17 +12,21 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/08/2018
+ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b8e9f12a549f71971c2da3b9865f6a74dad58f61
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60630133"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81460642"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple Virtual Array 的最佳作法
+
 ## <a name="overview"></a>概觀
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
+
 Microsoft Azure StorSimple Virtual Array 是一個整合式儲存體解決方案，可管理 Hypervisor 中執行之內部部署虛擬裝置與 Microsoft Azure 雲端儲存體之間的儲存體工作。 StorSimple Virtual Array 是 8000 系列實體陣列的替代品，它既有效率又符合成本效益。 虛擬陣列可在現有 Hypervisor 基礎結構上執行、支援 iSCSI 和 SMB 通訊協定，而且適合用於遠端辦公室/分公司案例。 如需 StorSimple 解決方案的詳細資訊，請前往 [Microsoft Azure StorSimple 概觀](https://www.microsoft.com/en-us/server-cloud/products/storsimple/overview.aspx)。
 
 本文內容涵蓋 StorSimple Virtual Array 的初始設定、部署和管理期間所實作的最佳作法。 這些最佳作法提供了經過驗證的指導方針，可讓您了解如何設定和管理虛擬陣列。 本文適用對象為部署和管理資料中心內虛擬陣列的 IT 系統管理員。
@@ -39,7 +43,7 @@ StorSimple Virtual Array 是佈建在主機伺服器 Hypervisor (Hyper-V 或 VMw
 
 |  | Hyper-V | VMware |
 | --- | --- | --- |
-| **虛擬機器類型** |可與 Windows Server 2012 或更新版本搭配使用的**第 2 代** VM 和「.vhdx」映像。 <br></br> 可與 Windows Server 2008 或更新版本搭配使用的**第 1 代** VM 和「.vhd」映像。 |在使用 .vmdk 映像時，請使用虛擬機器第 8 版。 |
+| **虛擬機器類型** |可與 Windows Server 2012 或更新版本搭配使用的**第 2 代** VM 和「.vhdx」** 映像。 <br></br> 可與 Windows Server 2008 或更新版本搭配使用的**第 1 代** VM 和「.vhd」** 映像。 |在使用 .vmdk** 映像時，請使用虛擬機器第 8 版。 |
 | **記憶體類型** |設定為 **靜態記憶體**。 <br></br> 請勿使用 **動態記憶體** 選項。 | |
 | **資料磁碟類型** |佈建為**動態擴充**。<br></br> **固定大小**需要很長的時間。 <br></br> 請勿使用**差異**選項。 |使用 **精簡佈建** 選項。 |
 | **資料磁碟修改** |不允許擴充或縮小。 嘗試這麼做會造成裝置上的本機資料遺失。 |不允許擴充或縮小。 嘗試這麼做會造成裝置上的本機資料遺失。 |
@@ -75,9 +79,9 @@ StorSimple Virtual Array 是佈建在主機伺服器 Hypervisor (Hyper-V 或 VMw
 * 120 GB 的本機保留空間 (針對 1 TB 的分層式磁碟區/共用)
 * 330 GB 的本機固定磁碟區或共用 (新增 10% 的本機保留空間至 300 GB 佈建大小)
 
-到目前為止在本機層所需的總空間是：240 GB + 120 GB + 330 GB = 690 GB。
+到目前為止，本機層所需的總空間是︰240 GB + 120 GB + 330 GB = 690 GB。
 
-其次，本機層所需的空間至少要和最大的單一保留空間一樣大。 萬一您需要從雲端快照還原，就會使用這個額外的空間量。 在此範例中，最大本機保留空間是 330 GB （包括檔案系統的保留空間），因此您可以把它新增為 690 GB:690 GB + 330 GB = 1020 GB。
+其次，本機層所需的空間至少要和最大的單一保留空間一樣大。 萬一您需要從雲端快照還原，就會使用這個額外的空間量。 在此範例中，最大的本機保留空間是 330 GB (包括檔案系統的保留空間)，因此，您要為 690 GB 加上該空間量：690 GB + 330 GB = 1020 GB。
 我們在執行其他後續還原作業時，一律可以釋放先前還原作業的空間。
 
 第三，到目前為止，我們需要本機總空間的 15% 來儲存本機快照，因此只剩 85% 的空間可以使用。 在此範例中，這大約是 1020 GB，而這等於 85% 的已佈建資料磁碟 TB。&ast; 因此，已佈建的資料磁碟會是 (1020&ast;(1/0.85)) = 1200 GB = 1.20 TB ~ 1.25 TB (四捨五入至最接近的四分位數)
@@ -99,7 +103,7 @@ StorSimple Virtual Array 是佈建在主機伺服器 Hypervisor (Hyper-V 或 VMw
 * 240 GB 的本機保留空間 (針對 2 TB 的分層式磁碟區/共用)
 * 330 GB 的本機固定磁碟區或共用 (新增 10% 的本機保留空間至 300 GB 佈建空間)
 
-在本機層所需的總空間是：240 GB + 330 GB = 570 GB
+本機層所需的總空間是︰240 GB + 330 GB = 570 GB
 
 還原所需的最小本機空間是 330 GB。
 
@@ -117,7 +121,7 @@ StorSimple Virtual Array 是佈建在主機伺服器 Hypervisor (Hyper-V 或 VMw
 * 確定虛擬陣列位於它自己的 Active Directory 組織單位 (OU) 中。
 * 確定虛擬陣列沒有套用群組原則物件 (GPO)。 您可以禁止繼承，以確保虛擬陣列 (子節點) 不會自動繼承父節點的任何 GPO。 如需詳細資訊，請移至 [禁止繼承](https://technet.microsoft.com/library/cc731076.aspx)。
 
-### <a name="networking"></a>網路功能
+### <a name="networking"></a>網路
 虛擬陣列的網路組態是透過本機 Web UI 來設定。 虛擬網路介面則是透過虛擬陣列佈建所在的 Hypervisor 來啟用。 使用 [網路設定](storsimple-virtual-array-deploy3-fs-setup.md) 頁面可設定虛擬網路介面的 IP 位址、子網路和閘道。  您也可以為裝置設定主要和次要 DNS 伺服器、時間設定和選用的 Proxy 設定。 大部分網路組態都是一次性設定。 在部署虛擬陣列之前，請檢閱 [StorSimple 網路需求](storsimple-ova-system-requirements.md#networking-requirements) 。
 
 在部署虛擬陣列時，建議您遵循下列最佳作法︰
@@ -129,11 +133,11 @@ StorSimple Virtual Array 是佈建在主機伺服器 Hypervisor (Hyper-V 或 VMw
 * 確定隨時都可以連線到網際網路。 裝置的網際網路連線若斷斷續續或不可靠，可能會導致無法存取雲端資料，並可能會導致組態不受支援。
 * 如果您打算將裝置部署為 iSCSI 伺服器︰
   
-  * 建議您停用 [自動取得 IP 位址]  選項 (DHCP)。
+  * 建議您停用 [自動取得 IP 位址] **** 選項 (DHCP)。
   * 設定靜態 IP 位址。 您必須設定主要和次要 DNS 伺服器。
   * 如果您在虛擬陣列定義多個網路介面，只有第一個網路介面 (根據預設，此介面是 **乙太網路**) 可以連線到雲端。 若要控制流量類型，您可以在虛擬陣列建立多個虛擬網路介面 (設定為 iSCSI 伺服器)，並將這些介面連線至不同子網路。
 * 若只要節流雲端頻寬 (虛擬陣列所使用)，請在路由器或防火牆設定節流。 如果您在 Hypervisor 定義節流，它會節流所有通訊協定 (包括 iSCSI 和 SMB)，而非只節流雲端頻寬。
-* 確定 Hypervisor 的時間同步處理會啟用。 如果使用 Hyper-V，請在 Hyper-V 管理員選取虛擬陣列，移至 [設定] &gt; [整合服務]，並確定已核取 [時間同步處理]。
+* 確定 Hypervisor 的時間同步處理會啟用。 如果使用 Hyper-V，請在 Hyper-V 管理員選取虛擬陣列，移至 [設定] &gt; [整合服務]****，並確定已核取 [時間同步處理]****。
 
 ### <a name="storage-accounts"></a>儲存體帳戶
 StorSimple Virtual Array 可與單一儲存體帳戶相關聯。 此儲存體帳戶可以是自動產生的儲存體帳戶、位於和服務相同的訂用帳戶內的帳戶，或是與另一個訂用帳戶有關的儲存體帳戶。 如需詳細資訊，請參閱如何 [管理虛擬陣列的儲存體帳戶](storsimple-virtual-array-manage-storage-accounts.md)。
@@ -155,19 +159,19 @@ StorSimple Virtual Array 可與單一儲存體帳戶相關聯。 此儲存體帳
 
 在虛擬裝置上佈建共用或磁碟區時，請記住下列最佳作法。
 
-* 相對於已佈建的分層式共用大小的檔案大小可能會影響分層效能。 使用大型檔案可能會導致緩慢分層輸出。使用大型檔案時，建議最大檔案不要超過共用大小的 3%。
+* 相對於已佈建的分層式共用大小的檔案大小可能會影響分層效能。 使用大型檔案可能會導致較慢的層級。使用大型檔案時，建議最大的檔案小於共用大小的3%。
 * 虛擬陣列上最多可以建立 16 個磁碟區/共用。 如需本機固定和分層式磁碟區/共用的大小限制，請一律參考 [StorSimple Virtual Array 限制](storsimple-ova-limits.md)。
-* 在建立磁碟區時，請將預期的資料使用量以及未來成長量納入考量。 無法於稍後展開磁碟區。
-* 一旦建立了磁碟區，就不能縮小 StorSimple 上磁碟區的大小。
+* 在建立磁碟區時，請將預期的資料使用量以及未來成長量納入考量。 稍後無法擴充磁片區或共用。
+* 建立磁片區/共用之後，您就無法壓縮 StorSimple 上的磁片區/共用大小。
 * 在寫入 StorSimple 上的分層式磁碟區時，當磁碟區資料到達特定臨界值 (相對於保留給磁碟區的本機空間)，就會節流 IO。 繼續寫入這個磁碟區會讓 IO 明顯變慢。 雖然您可以在分層式磁碟區寫入超過其佈建容量 (我們不要主動停止使用者寫入時超出已佈建的容量)，但您會看到警示通知指出您已超過訂閱量。 一旦您看到警示，請務必採取補救措施，例如刪除磁碟區資料 (目前不支援擴充磁碟區)。
 * 針對災害復原使用案例，可允許的共用/磁碟區數目為 16 個，而且可平行處理的共用/磁碟區數目上限也是 16 個，因此共用/磁碟區數目並不會影響到 RPO 和 RTO。
 
 #### <a name="volumeshare-type"></a>磁碟區/共用類型
-根據使用方式，StorSimple 可支援兩種磁碟區/共用類型︰固定在本機和分層。 固定在本機的磁碟區/共用會密集佈建，而分層式磁碟區/共用則會精簡佈建。 建立固定在本機的磁碟區/共用之後，即無法將其轉換成階層式磁碟區/共用，亦不能「反向操作」。
+根據使用方式，StorSimple 可支援兩種磁碟區/共用類型︰固定在本機和分層。 固定在本機的磁碟區/共用會密集佈建，而分層式磁碟區/共用則會精簡佈建。 建立固定在本機的磁碟區/共用之後，即無法將其轉換成階層式磁碟區/共用，亦不能「反向操作」**。
 
 在設定 StorSimple 磁碟區/共用時，建議您實作下列最佳作法︰
 
-* 在建立磁碟區之前，請先根據您想要部署的工作負載識別磁碟區類型。 對於需要確保資料位於本機 (即使在雲端中斷的期間) 以及需要低雲端延遲的工作負載，請使用固定在本機的磁碟區。 一旦在虛擬陣列上建立磁碟區，就無法將磁碟區類型從固定在本機變更為分層，「反之亦然」 。 例如，在部署 SQL 工作負載或裝載虛擬機器 (VM) 的工作負載時，請建立固定在本機的磁碟區；若為檔案共用工作負載，則使用分層式磁碟區。
+* 在建立磁碟區之前，請先根據您想要部署的工作負載識別磁碟區類型。 對於需要確保資料位於本機 (即使在雲端中斷的期間) 以及需要低雲端延遲的工作負載，請使用固定在本機的磁碟區。 一旦在虛擬陣列上建立磁碟區，就無法將磁碟區類型從固定在本機變更為分層，「反之亦然」 **。 例如，在部署 SQL 工作負載或裝載虛擬機器 (VM) 的工作負載時，請建立固定在本機的磁碟區；若為檔案共用工作負載，則使用分層式磁碟區。
 
 
 #### <a name="volume-format"></a>磁碟區格式
@@ -195,8 +199,8 @@ StorSimple Virtual Array 可與單一儲存體帳戶相關聯。 此儲存體帳
 ### <a name="data-security-and-encryption"></a>資料安全性與加密
 StorSimple Virtual Array 擁有資料安全性和加密功能，可確保資料的機密性和完整性。 在使用這些功能時，建議您遵循下列最佳作法︰ 
 
-* 先定義用來產生 AES-256 加密的雲端儲存體加密金鑰，再將資料從虛擬陣列傳送至雲端。 如果資料一開始就已加密，則不需要此金鑰。 使用金鑰管理系統 (例如 [Azure 金鑰保存庫](../key-vault/key-vault-whatis.md)) 即可產生並妥善保存金鑰。
-* 在透過 StorSimple Manager 服務設定儲存體帳戶時，請確實啟用 SSL 模式來建立供 StorSimple 裝置與雲端之間的網路通訊使用的安全通道。
+* 先定義用來產生 AES-256 加密的雲端儲存體加密金鑰，再將資料從虛擬陣列傳送至雲端。 如果資料一開始就已加密，則不需要此金鑰。 使用金鑰管理系統 (例如 [Azure 金鑰保存庫](../key-vault/general/overview.md)) 即可產生並妥善保存金鑰。
+* 透過 StorSimple Manager 服務來設定儲存體帳戶時，請確定您已啟用 TLS 模式，以建立 StorSimple 裝置與雲端之間網路通訊的安全通道。
 * 定期重新產生儲存體帳戶的金鑰 (藉由存取 Azure 儲存體服務)，以說明因為系統管理員清單變更而造成的存取權變更。
 * 虛擬陣列上的資料會先壓縮並進行重複資料刪除，再傳送至 Azure。 Windows Server 主機上不建議使用「重複資料刪除」角色服務。
 
@@ -211,7 +215,7 @@ StorSimple Virtual Array 擁有資料安全性和加密功能，可確保資料�
 * 將備份排程在離峰時間。 備份開始時間不應該與大量主機 IO 一致。
 * 在打算執行裝置容錯移轉時或在維護前，先起始手動的隨選備份，以保護虛擬陣列上的資料。
 
-### <a name="restore"></a>Restore
+### <a name="restore"></a>還原
 從備份組還原的方法有兩種︰還原到另一個磁碟區或共用，或執行項目層級復原 (僅適用於設定為檔案伺服器的虛擬陣列)。 項目層級復原可讓您從 StorSimple 裝置上所有共用的雲端備份執行檔案和資料夾的細微復原。 如需詳細資訊，請移至 [從備份還原](storsimple-virtual-array-clone.md)。
 
 在執行還原時，請記住下列指導方針︰
@@ -222,7 +226,7 @@ StorSimple Virtual Array 擁有資料安全性和加密功能，可確保資料�
 * 嘗試從備份組還原磁碟區或共用時，如果還原作業失敗，仍會在入口網站建立目標磁碟區或共用。 請務必在入口網站中刪除這個未使用的目標磁碟區或共用，以將未來這個項目所造成的任何問題降至最低。
 
 ### <a name="failover-and-disaster-recovery"></a>容錯移轉和災害復原
-裝置容錯移轉可讓您將資料中心的「來源」裝置資料移轉至位於相同或不同地理位置的另一個「目標」裝置。 裝置容錯移轉適用於整個裝置。 在容錯移轉期間，來源裝置的雲端資料會將擁有權變更為目標裝置雲端資料。
+裝置容錯移轉可讓您將資料中心的「來源」** 裝置資料移轉至位於相同或不同地理位置的另一個「目標」** 裝置。 裝置容錯移轉適用於整個裝置。 在容錯移轉期間，來源裝置的雲端資料會將擁有權變更為目標裝置雲端資料。
 
 針對 StorSimple Virtual Array，您只能容錯移轉至另一個由相同 StorSimple Manager 服務管理的虛擬陣列。 不允許容錯移轉至 8000 系列裝置或不同 StorSimple Manager 服務 (非來源裝置的服務) 管理的陣列。 若要深入了解容錯移轉考量，請移至 [裝置容錯移轉的必要條件](storsimple-virtual-array-failover-dr.md)。
 
@@ -283,6 +287,6 @@ StorSimple Virtual Array 可以自動將資料從本機層提升到 Microsoft Az
 * 從負載平衡的觀點來看，如果部署多個虛擬陣列，建議您將這些陣列分散到不同的 Hypervisor 主機。
 * 分散式檔案系統命名空間中可以部署多個虛擬陣列 (設定為檔案伺服器或 iSCSI 伺服器時)。 如需詳細步驟，請移至 [使用混合式雲端儲存體的分散式檔案系統命名空間解決方案部署指南](https://www.microsoft.com/download/details.aspx?id=45507)。 分散式檔案系統複寫目前不建議用於虛擬陣列。 
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 了解如何透過 StorSimple Manager 服務 [管理 StorSimple Virtual Array](storsimple-virtual-array-manager-service-administration.md) 。
 

@@ -1,20 +1,16 @@
 ---
-title: 快速入門 - 將 Hello World 部署至 Azure Service Fabric Mesh | Microsoft Docs
+title: 快速入門 - 將 Hello World 部署至 Azure Service Fabric Mesh
 description: 本快速入門說明如何將 Service Fabric Mesh 應用程式部署至 Azure Service Fabric Mesh。
-services: service-fabric-mesh
-keywords: 請勿在未諮詢 SEO 之前新增或編輯關鍵字。
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: quickstart
-ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: 5ca622602c71976917a07005bf349dd98086327c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 5373cbf76b55b86e4851e1d7c6b53222871faa4c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336978"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254328"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>快速入門：將 Hello World 部署至 Service Fabric Mesh
 
@@ -114,4 +110,4 @@ az group delete --name myResourceGroup
 
 <!-- Links / Internal -->
 [az-group-delete]: /cli/azure/group
-[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli-install]: /cli/azure/install-azure-cli?view=azure-cli-latest

@@ -1,119 +1,213 @@
 ---
-title: 了解如何使用 Microsoft 驗證程式庫 (MSAL) 來與 Azure AD B2C 整合
-description: Microsoft 驗證程式庫 (MSAL) 可讓應用程式開發人員與 Azure AD B2C 整合並取得權杖，以便呼叫安全的 Web API。 這些 Web API 可以是 Microsoft Graph、其他 Microsoft API、第三方 Web API 或您自己的 Web API。
+title: 搭配 Azure AD B2C 使用 MSAL.js
+titleSuffix: Microsoft identity platform
+description: 適用于 JavaScript 的 Microsoft 驗證程式庫（MSAL.js）可讓應用程式使用 Azure AD B2C 並取得權杖，以呼叫受保護的 web Api。 這些 Web API 可以是 Microsoft Graph、其他 Microsoft API、來自其他發行者的 Web API，或是您自己的 Web API。
 services: active-directory
-documentationcenter: dev-center-name
 author: negoe
-manager: celested
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: overview
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/04/2019
+ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87bd8834f840c2246bf3adc1d1f9cd9b8f635915
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
-ms.translationtype: HT
+ms.openlocfilehash: f43711652bb205c75870fdb969c44298087a2b07
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191004"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84308556"
 ---
-# <a name="integrate-microsoft-authentication-library-msal-with-azure-active-directory-b2c"></a>整合 Microsoft 驗證程式庫 (MSAL) 與 Azure Active Directory B2C
+# <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>使用適用于 JavaScript 的 Microsoft 驗證程式庫來處理 Azure AD B2C
 
-Microsoft 驗證程式庫 (MSAL) 可讓應用程式開發人員使用 [Azure Active Directory (Azure AD) B2C](https://docs.microsoft.com/azure/active-directory-b2c/)，以社交和本機身分識別驗證使用者。 Azure Active Directory (Azure AD) B2C 是一項身分識別管理服務，可讓您自訂和控制客戶在使用您的應用程式時如何註冊、登入及管理其設定檔。
+[適用于 javascript 的 Microsoft 驗證程式庫（MSAL.js）](https://github.com/AzureAD/microsoft-authentication-library-for-js)可讓 javascript 開發人員使用[Azure Active Directory B2C](../../active-directory-b2c/overview.md) （Azure AD B2C）來驗證具有社交和本機身分識別的使用者。
 
-Azure Active Directory (Azure AD) B2C 也可讓您為您的應用程式設定品牌及自訂其使用者介面 (UI)，進而為您的客戶提供順暢的體驗。
+藉由使用 Azure AD B2C 做為身分識別管理服務，您可以自訂和控制客戶在使用您的應用程式時，註冊、登入及管理其設定檔的方式。 Azure AD B2C 也可讓您為應用程式在驗證過程中顯示的 UI 進行品牌和自訂。
 
-本教學課程會示範如何使用 Microsoft 驗證程式庫 (MSAL) 來與 Azure Active Directory (Azure AD) B2C 整合。
+下列各節將示範如何：
 
+- 保護 Node.js Web API
+- 支援單一頁面應用程式（SPA）中的登入，並呼叫受保護*的*Web API
+- 啟用密碼重設支援
 
 ## <a name="prerequisites"></a>必要條件
 
-如果您尚未建立自己的 [Azure AD B2C 租用戶](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)，請立即建立一個。 您可以使用現有的 Azure AD B2C 租用戶。 
+如果您還沒有這麼做，請建立[Azure AD B2C 租](../../active-directory-b2c/tutorial-create-tenant.md)使用者。
 
-## <a name="javascript"></a>Javascript
+## <a name="nodejs-web-api"></a>Node.js Web API
 
-下列步驟示範單頁應用程式如何使用 Azure AD B2C 進行使用者註冊、登入及呼叫受保護的 Web API。
+下列步驟會示範**Web API**如何使用 Azure AD B2C 來保護自己，並將選取的範圍公開給用戶端應用程式。
 
-### <a name="step-1-register-your-application"></a>步驟 1：註冊您的應用程式
+節點的 MSAL.js 目前正在開發中。 如需詳細資訊，請參閱 GitHub 上的[藍圖](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)。 我們目前建議使用[passport-azure-ad](https://github.com/AzureAD/passport-azure-ad)，這是 Microsoft 所開發和支援 Node.js 的驗證程式庫。
 
-若要實作驗證，首先需要註冊您的應用程式。 若要註冊您的應用程式，請遵循[註冊您的應用程式](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#step-4-register-your-own-web-application-with-azure-ad-b2c)中的詳細步驟。
+### <a name="step-1-register-your-application"></a>步驟 1:註冊您的應用程式
 
-### <a name="steps-2-download-applications"></a>步驟 2：下載應用程式
+若要使用 Azure AD B2C 保護您的 Web API，您必須先註冊它。 請參閱[註冊您的應用程式](../../active-directory-b2c/add-web-application.md) \(英文\) 以取得詳細步驟。
 
-下載 zip 檔案，或從 GitHub 複製範例。
->git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
+### <a name="step-2-download-the-sample-application"></a>步驟2：下載範例應用程式
 
-### <a name="steps-3-authentication"></a>步驟 3：Authentication
+將範例下載為 ZIP 檔案，或是從 GitHub 複製它：
 
-1. 開啟範例中的 index.html 檔案。
-
-2. 使用您稍早在註冊應用程式時所記錄的應用程式識別碼與金鑰來設定範例。 變更下列幾行程式碼，做法是將其中的值取代為您的目錄和 API 名稱：
-
-```javascript
-// The current application coordinates were pre-registered in a B2C directory.
-
-const msalConfig = {
-    auth:{
-        clientId: "Enter_the_Application_Id_here",
-        authority: "https://login.microsoftonline.com/tfp/<your-tenant-name>.onmicrosoft.com/<your-sign-in-sign-up-policy>",
-        b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/hello/demo.read"],
-        webApi: 'http://localhost:5000/hello',
-  };
-
-// create UserAgentApplication instance
-const myMSALObj = new UserAgentApplication(msalConfig);
+```console
+git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi.git
 ```
 
-本教學課程中使用的[使用者流程](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies)名稱是 B2C_1_signupsignin1。 如果您使用不同的使用者流程名稱，請在 authority 值中使用您的使用者流程名稱。
+### <a name="step-3-configure-authentication"></a>步驟3：設定驗證
 
+1. 開啟範例中的 `config.js` 檔案。
 
-### <a name="configure-application-to-use-b2clogincom"></a>將應用程式設定為使用 `b2clogin.com`
+2. 使用您稍早在註冊應用程式時取得的應用程式認證來設定範例。 將值取代為您的 clientID、主機、tenantId 和原則名稱的名稱，以變更下列幾行程式碼。
 
-當您為 Azure Active Directory (Azure AD) B2C 應用程式中的註冊和登入設定識別提供者時，您可以使用 `b2clogin.com` 取代 `login.microsoftonline.com` 作為重新導向 url。
-
-**`b2clogin.com`** 亦即 
-`https://your-tenant-name.b2clogin.com/your-tenant-guid` 用於下列項目：
-
-- Microsoft 服務在 Cookie 標頭中所耗用的空間會縮小。
-- 您的 URL 不再包含對 Microsoft 的參考。 例如，您的 Azure AD B2C 應用程式可能會參考 login.microsoftonline.com
-
-
- 若要使用 'b2clogin.com'，您需要更新您應用程式的組態。  
-
-1. 更新 ValidateAuthority：將 **validateAuthority** 屬性設定為 `false`。 當 **validateAuthority** 設定為 false 時，可允許重新導向到 b2clogin.com。
-
-下列範例示範如何設定該屬性：
-```javascript
-// The current application coordinates were pre-registered in a B2C directory.
-
-const msalConfig = {
-    auth:{
-        clientId: "Enter_the_Application_Id_here",
-        authority: "https://contoso.b2clogin.com/tfp/contoso.onmicrosoft.com/B2C_1_signupsignin1",
-        b2cScopes: ["https://contoso.onmicrosoft.com/demoapi/demo.read"],
-        webApi: 'https://contosohello.azurewebsites.net/hello',
-        validateAuthority: false;
-
-};
-// create UserAgentApplication instance
-const myMSALObj = new UserAgentApplication(msalConfig);
+```JavaScript
+const clientID = "<Application ID for your Node.js web API - found on Properties page in Azure portal e.g. 93733604-cc77-4a3c-a604-87084dd55348>";
+const b2cDomainHost = "<Domain of your B2C host eg. fabrikamb2c.b2clogin.com>";
+const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can use your Directory (tenant) ID (GUID)
+const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsignin1>";
 ```
 
-> [!NOTE]
-> 您 Azure AD B2C 應用程式可能有數個地方 (例如使用者流程參考和權杖端點) 都會參考 login.microsoftonline.com。 請確定您的授權端點、權杖端點及簽發者都已更新成使用 your-tenant-name.b2clogin.com。
+如需詳細資訊，請參閱此[Node.js B2C Web API 範例](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)。
 
-請遵循此 [MSAL JS 範例](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#single-page-application-built-on-msaljs-with-azure-ad-b2c)中有關如何使用適用於 JavaScript 的 Microsoft 驗證程式庫預覽版 (msal.js) 來取得存取權杖，以及呼叫受 Azure AD B2C 保護的 API。
+## <a name="javascript-spa"></a>JavaScript SPA
+
+下列步驟會示範**單頁應用程式**如何使用 Azure AD B2C 來註冊、登入及呼叫受保護的 Web API。
+
+### <a name="step-1-register-your-application"></a>步驟 1:註冊您的應用程式
+
+若要實作驗證，您必須先註冊您的應用程式。 請參閱[註冊您的應用程式](../../active-directory-b2c/tutorial-register-applications.md) \(英文\) 以取得詳細步驟。
+
+### <a name="step-2-download-the-sample-application"></a>步驟2：下載範例應用程式
+
+下載程式代碼範例[。ZIP](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip)封存或複製 GitHub 存放庫：
+
+```console
+git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
+```
+
+### <a name="step-3-configure-authentication"></a>步驟3：設定驗證
+
+設定應用程式時有兩個重點：
+
+- 設定 API 端點和公開的範圍
+- 設定驗證參數和權杖範圍
+
+1. 開啟範例中的*apiConfig.js*檔案。
+
+2. 使用您稍早在註冊 Web API 時取得的參數來設定範例。 將值取代為您的 Web API 和公開範圍的位址，以變更下列幾行程式碼。
+
+   ```javascript
+    // The current application coordinates were pre-registered in a B2C tenant.
+    const apiConfig = {
+        b2cScopes: ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"], //API scopes you exposed during api registration
+        webApi: "https://fabrikamb2chello.azurewebsites.net/hello"
+    };
+   ```
+
+1. 開啟範例中的*authConfig.js*檔案。
+
+1. 使用您稍早在註冊單一頁面應用程式時取得的參數來設定範例。 藉由將值取代為您的 ClientId、授權中繼資料和權杖要求範圍，來變更下列幾行程式碼。
+
+   ```javascript
+    // Config object to be passed to Msal on creation.
+    const msalConfig = {
+        auth: {
+            clientId: "e760cab2-b9a1-4c0d-86fb-ff7084abd902",
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/B2C_1_signupsignin1",
+            validateAuthority: false
+        },
+        cache: {
+            cacheLocation: "localStorage", // This configures where your cache will be stored
+            storeAuthStateInCookie: false // Set this to "true" to save cache in cookies
+        }
+    };
+
+    // Add here scopes for id token to be used at the MS Identity Platform endpoint
+    const loginRequest = {
+        scopes: ["openid", "profile"],
+    };
+   ```
+
+如需詳細資訊，請參閱此[JAVASCRIPT B2C 單一頁面應用程式範例](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)。
+
+## <a name="support-password-reset"></a>支援密碼重設
+
+在本節中，您會擴充單一頁面應用程式，以使用 Azure AD B2C 的密碼重設使用者流程。 雖然 MSAL.js 目前不會以原生方式支援多個使用者流程或自訂原則，但您還是可以使用程式庫來處理常見的使用案例，例如密碼重設。
+
+下列步驟假設您已遵循先前的[JAVASCRIPT SPA](#javascript-spa)一節中的步驟進行。
+
+### <a name="step-1-define-the-authority-string-for-password-reset-user-flow"></a>步驟1：定義密碼重設使用者流程的授權字串
+
+1. 首先，建立您用來儲存授權單位 Uri 的物件：
+
+    ```javascript
+        const b2cPolicies = {
+            names: {
+                signUpSignIn: "b2c_1_susi",
+                forgotPassword: "b2c_1_reset"
+            },
+            authorities: {
+                signUpSignIn: {
+                    authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_susi",
+                },
+                forgotPassword: {
+                    authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_reset",
+                },
+            },
+        }
+    ```
+
+1. 接下來，使用 `signInSignUp` 原則做為預設值來初始化您的 MSAL 物件（請參閱上述的程式碼片段）。 當使用者嘗試登入時，就會看到下列畫面：
+
+    :::image type="content" source="media/msal-b2c-overview/user-journey-01-signin.png" alt-text="Azure AD B2C 顯示的登入畫面":::
+
+### <a name="step-2-catch-and-handle-authentication-errors-in-your-login-method"></a>步驟2：在您的登入方法中攔截和處理驗證錯誤
+
+當使用者選取 [**忘記密碼**] 時，您的應用程式會擲回錯誤，您應該會在程式碼中攔截，然後藉由呈現適當的使用者流程來處理。 在此情況下，就是 `b2c_1_reset` 密碼重設流程。
+
+1. 擴充您的登入方法，如下所示：
+
+    ```javascript
+    function signIn() {
+      myMSALObj.loginPopup(loginRequest)
+        .then(loginResponse => {
+            console.log("id_token acquired at: " + new Date().toString());
+
+            if (myMSALObj.getAccount()) {
+              updateUI();
+            }
+
+        }).catch(function (error) {
+          console.log(error);
+
+          // error handling
+          if (error.errorMessage) {
+            // check for forgot password error
+            if (error.errorMessage.indexOf("AADB2C90118") > -1) {
+
+              //call login method again with the password reset user flow
+              myMSALObj.loginPopup(b2cPolicies.authorities.forgotPassword)
+                .then(loginResponse => {
+                  console.log(loginResponse);
+                  window.alert("Password has been reset successfully. \nPlease sign-in with your new password.");
+                })
+            }
+          }
+        });
+    }
+    ```
+
+1. 上述程式碼片段會示範如何在使用程式碼攔截錯誤之後，顯示密碼重設畫面 `AADB2C90118` 。
+
+    重設其密碼之後，使用者會回到應用程式重新登入。
+
+    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Azure AD B2C 顯示的密碼重設流程畫面" border="false":::
+
+    如需錯誤碼和處理例外狀況的詳細資訊，請參閱[MSAL 錯誤和例外狀況代碼](msal-handling-exceptions.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-深入了解：
+深入瞭解這些 Azure AD B2C 概念：
 
-- [自訂原則](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)
-- [使用者介面自訂](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-overview)
+- [使用者流程](../../active-directory-b2c/tutorial-create-user-flows.md)
+- [自訂原則](../../active-directory-b2c/custom-policy-get-started.md)
+- [UX 自訂](../../active-directory-b2c/custom-policy-configure-user-input.md)

@@ -1,25 +1,20 @@
 ---
 title: 在 Azure Kubernetes Service (AKS) 中檢視 kubelet 記錄
-description: 了解如何在 Azure Kubernetes 服务 (AKS) 节点的 kubelet 日志中查看故障排除信息
+description: 瞭解如何在 Azure Kubernetes Service （AKS）節點的 kubelet 記錄中查看疑難排解資訊
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: article
-origin.date: 03/05/2019
-ms.date: 04/08/2019
-ms.author: v-yeche
-ms.openlocfilehash: b381145fef7e6fb399fac3387ab01fdc9a51b154
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 03/05/2019
+ms.openlocfilehash: b7a74803af916f9e9de72dd528273007ce37832f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60465014"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77595377"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>從 Azure Kubernetes Service (AKS) 叢集節點取得 kubelet 記錄
 
-在操作 AKS 群集的过程中，可能需要查看日志来排查问题。 Azure 门户内置了查看 [AKS 主组件][aks-master-logs]或 [AKS 群集中容器][azure-container-logs]的日志的功能。 有时，可能需要从 AKS 节点获取 *kubelet* 日志以进行故障排除。
+在操作 AKS 叢集的過程中，您可能需要檢查記錄檔以疑難排解問題。 內建的 Azure 入口網站可讓您在 AKS 叢集中查看[AKS 主要元件][aks-master-logs]或[容器][azure-container-logs]的記錄。 有時候，您可能需要從 AKS 節點取得*kubelet*記錄，以供疑難排解之用。
 
-本文介绍如何在 AJS 节点上使用 `journalctl` 查看 *kubelet* 日志。
+本文說明如何使用 `journalctl` 來查看 AKS 節點上的*kubelet*記錄。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -27,17 +22,17 @@ ms.locfileid: "60465014"
 
 ## <a name="create-an-ssh-connection"></a>建立 SSH 連線
 
-首先，請針對您需要檢視 kubelet 記錄的節點建立 SSH 連線。 這項作業會在[透過 SSH 連線至 Azure Kubernetes Service (AKS) 叢集節點][aks-ssh]文件中詳細說明。
+首先，請針對您需要檢視 kubelet** 記錄的節點建立 SSH 連線。 這項作業會在[透過 SSH 連線至 Azure Kubernetes Service (AKS) 叢集節點][aks-ssh]文件中詳細說明。
 
 ## <a name="get-kubelet-logs"></a>取得 kubelet 記錄
 
-一旦您已連線到節點後，請執行下列命令以提取 kubelet 記錄：
+一旦您已連線到節點後，請執行下列命令以提取 kubelet** 記錄：
 
 ```console
 sudo journalctl -u kubelet -o cat
 ```
 
-下列範例輸出顯示 kubelet 記錄資料：
+下列範例輸出顯示 kubelet** 記錄資料：
 
 ```
 I0508 12:26:17.905042    8672 kubelet_node_status.go:497] Using Node Hostname from cloudprovider: "aks-agentpool-11482510-0"

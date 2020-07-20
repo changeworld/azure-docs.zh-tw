@@ -1,0 +1,58 @@
+### YamlMime:Landing
+title: Azure 資料表儲存體文件
+summary: Azure 表格儲存體是可將結構化的 NoSQL 資料儲存在雲端中的服務，並提供具有無結構描述設計的索引鍵/屬性存放區。
+metadata:
+  title: Azure 資料表儲存體文件
+  description: Azure 表格儲存體是可將結構化的 NoSQL 資料儲存在雲端中的服務，並提供具有無結構描述設計的索引鍵/屬性存放區。
+  ms.service: storage
+  ms.subservice: tables
+  ms.topic: landing-page
+  ms.collection: collection
+  author: tamram
+  ms.author: tamram
+  ms.date: 12/23/2019
+  ms.openlocfilehash: 73dc70fb31508667ebcab4803a9263c716ce35c2
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "75551891"
+landingContent:
+- title: 關於資料表儲存體
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure 資料表儲存體？
+      url: table-storage-overview.md
+    - text: 選擇資料表儲存體或資料表 API
+      url: ../../cosmos-db/table-support.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fstorage%2Ftables%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fbread%2Ftoc.json
+- title: 資料表設計指引
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 為有效讀取和寫入而設計
+      url: table-storage-design-guidelines.md
+    - text: 查詢的設計
+      url: table-storage-design-for-query.md
+    - text: 資料修改的設計
+      url: table-storage-design-for-modification.md
+    - text: 資料表設計模式
+      url: table-storage-design-patterns.md
+- title: 效能、調整和成本最佳化
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 資料表儲存體的效能檢查清單
+      url: storage-performance-checklist.md
+    - text: 為最佳效能而設計
+      url: table-storage-design.md
+  - linkListType: reference
+    links:
+    - text: 資料表儲存體的延展性目標
+      url: scalability-targets.md
+- title: 開始使用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 在 Azure 入口網站中建立資料表
+      url: table-storage-quickstart-portal.md

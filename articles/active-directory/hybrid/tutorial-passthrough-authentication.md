@@ -1,5 +1,5 @@
 ---
-title: 教學課程：使用傳遞驗證 (PTA) 整合單一 AD 樹系 | Microsoft Docs
+title: 教學課程：使用 PTA 整合單一 AD 樹系
 description: 示範如何使用傳遞驗證來設定混合式身分識別環境。
 services: active-directory
 author: billmath
@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/18/2018
+ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b951cc81d2f957214eb4c78125bde36b61ff64b8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 96846d75111fe11b225704a248baeb006a3df3fb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098037"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "66473000"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>教學課程：使用傳遞驗證整合單一 AD 樹系 (PTA)
 
@@ -24,16 +24,16 @@ ms.locfileid: "58098037"
 
 下列教學課程將逐步說明如何使用傳遞驗證來建立混合式身分識別環境。  此環境可用於測試或更熟悉混合式身分識別的運作。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 下列是完成此教學課程的必要條件
 - 已安裝 [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) 的電腦。  建議您在 [Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) 或 [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) 電腦上執行此作業。
 - [Azure 訂用帳戶](https://azure.microsoft.com/free)
 - - [外部網路介面卡](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network)用於讓虛擬機器與網際網路通訊。
-- 一份 Windows Server 2016
+- Windows Server 2016 複本
 - 可驗證的[自訂網域](../../active-directory/fundamentals/add-custom-domain.md)
 
 > [!NOTE]
-> 此教學課程使用 PowerShell 指令碼，因此您可以在最快的時間內建立教學課程環境。  每個指令碼都使用在指令碼開頭處宣告的變數。  您可以且應該變更變數以反映您的環境。
+> 此教學課程使用 PowerShell 指令碼，可讓您在最快的時間內建立教學課程環境。  每個指令碼都使用在指令碼開頭處宣告的變數。  您可以且應該變更變數以反映您的環境。
 >
 >用來在安裝 Azure AD Connect 之前建立一般 Active Directory 環境的指令碼。  它們在所有指令碼中都通用。
 >
@@ -81,12 +81,12 @@ Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
 1. Hyper-V 管理員，按兩下虛擬機器
 2. 按一下 [啟動] 按鈕。
 3. 系統將提示您「按任意鍵從 CD 或 DVD 開機」。 按任意鍵繼續。
-4. 在 Windows Server 啟動畫面上選取您的語言，然後按一下 [下一步]。
-5. 按一下 [立即安裝] 。
-6. 輸入您的授權金鑰，然後按一下 [下一步]。
-7. 選取 [我接受授權條款]，然後按一下 [下一步]。
+4. 在 Windows Server 啟動畫面上選取您的語言，然後按一下 [下一步]  。
+5. 按一下 [立即安裝]  。
+6. 輸入您的授權金鑰，然後按一下 [下一步]  。
+7. 選取 [我接受授權條款]，然後按一下 [下一步]  。
 8. 選取**自訂：只安裝 Windows (進階)**
-9. 按一下 [下一步] 
+9. 按 **[下一步]**
 10. 安裝完成之後，請重新啟動虛擬機器、登入並執行 Windows 更新，以確保 VM 為最新。  安裝最新的更新。
 
 ## <a name="install-active-directory-prerequisites"></a>安裝 Active Directory 必要條件
@@ -143,6 +143,7 @@ $LogPath = "c:\windows\NTDS"
 $SysVolPath = "c:\windows\SYSVOL"
 $featureLogPath = "c:\poshlog\featurelog.txt" 
 $Password = "Pass1w0rd"
+$SecureString = ConvertTo-SecureString $Password -AsPlainText -Force
 
 #Install AD DS, DNS and GPMC 
 start-job -Name addFeature -ScriptBlock { 
@@ -153,7 +154,7 @@ Wait-Job -Name addFeature
 Get-WindowsFeature | Where installed >>$featureLogPath
 
 #Create New AD Forest
-Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath $DatabasePath -DomainMode $DomainMode -DomainName $DomainName -SafeModeAdministratorPassword $Password -DomainNetbiosName $DomainNetBIOSName -ForestMode $ForestMode -InstallDns:$true -LogPath $LogPath -NoRebootOnCompletion:$false -SysvolPath $SysVolPath -Force:$true
+Install-ADDSForest -CreateDnsDelegation:$false -DatabasePath $DatabasePath -DomainMode $DomainMode -DomainName $DomainName -SafeModeAdministratorPassword $SecureString -DomainNetbiosName $DomainNetBIOSName -ForestMode $ForestMode -InstallDns:$true -LogPath $LogPath -NoRebootOnCompletion:$false -SysvolPath $SysVolPath -Force:$true
 ```
 
 ## <a name="create-a-windows-server-ad-user"></a>建立 Windows Server AD 使用者
@@ -185,19 +186,19 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)並使用具有 Azure 訂用帳戶的帳戶登入。
 2. 選取**加號圖示 (+)** 並搜尋 **Azure Active Directory**。
-3. 在搜尋結果中選取 [Azure Active Directory]。
-4. 選取 [建立] 。</br>
+3. 在搜尋結果中選取 [Azure Active Directory]  。
+4. 選取 [建立]  。</br>
 ![建立](media/tutorial-password-hash-sync/create1.png)</br>
-5. 提供**組織名稱**與**初始網域名稱**。 然後選取 [建立]。 這將會建立您的目錄。
+5. 提供**組織名稱**與**初始網域名稱**。 然後選取 [建立]  。 這將會建立您的目錄。
 6. 完成此動作之後，請按一下**這裡**以管理目錄。
 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>在 Azure AD 中建立全域系統管理員
 現在我們已有 Azure AD 租用戶，我們將建立全域系統管理員帳戶。  此帳戶會用來在 Azure AD Connect 安裝期間建立 Azure AD Connector 帳戶。  Azure AD Connector 帳戶會用來將資訊寫入到 Azure AD。   若要建立全域系統管理員帳戶，請執行下列動作。
 
-1.  在 [管理] 底下選取 [使用者]。</br>
+1.  在 [管理]  底下選取 [使用者]  。</br>
 ![建立](media/tutorial-password-hash-sync/gadmin1.png)</br>
-2.  選取 [所有使用者 ]，然後選取 [+ 新增使用者]。
-3.  提供此使用者的名稱與使用者名稱。 這將成為您租用戶的全域系統管理員。 建議您將 [目錄角色] 變更為 [全域系統管理員]。 您也可以顯示暫時密碼。 完成之後，請選取 [建立]。</br>
+2.  選取 [所有使用者 ]  ，然後選取 [+ 新增使用者]  。
+3.  提供此使用者的名稱與使用者名稱。 這將成為您租用戶的全域系統管理員。 建議您將 [目錄角色]  變更為 [全域系統管理員]  。 您也可以顯示暫時密碼。 完成之後，請選取 [建立]  。</br>
 ![建立](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. 完成此動作之後，請開啟新的網頁瀏覽器，並使用新的全域系統管理員帳戶與臨時密碼登入 myapps.microsoft.com。
 5. 將全域系統管理員密碼變更為您可以記住的密碼。
@@ -205,37 +206,37 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 ## <a name="add-the-custom-domain-name-to-your-directory"></a>在目錄中新增自訂網域名稱
 既然我們已經有租用戶與全域系統管理員，我們必須新增我們的自訂網域，以便 Azure 可以驗證該網域。  執行下列動作：
 
-1. 返回 [Azure 入口網站](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)，並關閉 [所有使用者] 刀鋒視窗。
-2. 在左側選取 [自訂網域名稱]。
-3. 選取 [新增自訂網域]。</br>
-![自訂](media/tutorial-federation/custom1.png)</br>
-4. 在 [自訂網域名稱] 上，於方塊中輸入您的自訂網域名稱，然後按一下 [新增網域]。
+1. 返回 [Azure 入口網站](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)，並關閉 [所有使用者]  刀鋒視窗。
+2. 在左側選取 [自訂網域名稱]  。
+3. 選取 [新增自訂網域]  。</br>
+![Custom](media/tutorial-federation/custom1.png)</br>
+4. 在 [自訂網域名稱]  上，於方塊中輸入您的自訂網域名稱，然後按一下 [新增網域]  。
 5. 在自訂網域名稱畫面上，我們將提供 TXT 或 MX 資訊給您。  此資訊必須新增到網域註冊機構中您的網域下的 DNS 資訊中。  因此，您必須移至您的網域註冊機構，然後將 TXT 或 MX 資訊輸入到您網域的 DNS 設定中。  這將可允許 Azure 驗證您的網域。  Azure 最多可能需要 24 小時才能驗證該網域。  如需詳細資訊，請參閱[新增自訂網域](../../active-directory/fundamentals/add-custom-domain.md)文件。</br>
-![自訂](media/tutorial-federation/custom2.png)</br>
+![Custom](media/tutorial-federation/custom2.png)</br>
 6. 若要確定系統會驗證它，請按一下 [驗證] 按鈕。</br>
-![自訂](media/tutorial-federation/custom3.png)</br>
+![Custom](media/tutorial-federation/custom3.png)</br>
 
 ## <a name="download-and-install-azure-ad-connect"></a>下載並安裝 Azure AD Connect
 現在您可以下載並安裝 Azure AD Connect。  安裝之後，我們將會執行快速安裝。  執行下列動作：
 
 1. 下載 [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)
 2. 瀏覽並按兩下 **AzureADConnect.msi**。
-3. 在 [歡迎] 畫面上，選取同意授權條款的方塊，然後按一下 [繼續] 。  
-4. 在 [快速設定] 畫面上，按一下 [自訂]。  
-5. 在 [安裝所需的元件] 畫面上。 按一下 [Install] 。  
-6. 在 [使用者登入] 畫面上，選取 [傳遞驗證] 與 [啟用單一登入]，然後按一下 [下一步]。</br>
+3. 在 [歡迎] 畫面上，選取同意授權條款的方塊，然後按一下 [繼續]  。  
+4. 在 [快速設定] 畫面上，按一下 [自訂]  。  
+5. 在 [安裝所需的元件] 畫面上。 按一下 [Install]  。  
+6. 在 [使用者登入] 畫面上，選取 [傳遞驗證]  與 [啟用單一登入]  ，然後按一下 [下一步]  。</br>
 ![PTA](media/tutorial-passthrough-authentication/pta1.png)</b>
-7. 在 [連線到 Azure AD] 畫面上，輸入我們在上面的步驟中建立的全域系統管理員使用者名稱與密碼，然後按一下 [下一步]。
-2. 在 [連線您的目錄] 畫面上，按一下 [新增目錄]。  接著，選取 [建立新的 AD 帳戶] 並輸入 contoso\Administrator 使用者名稱與密碼，然後按一下 [確定]。
-3. 按 [下一步] 。
-4. 在 [Azure AD 登入設定] 畫面上，選取 [不將所有 UPN 尾碼比對至已驗證網域就繼續]，然後按一下 [下一步]。
-5. 在 [網域與 OU 篩選] 畫面上，按一下 [下一步]。
-6. 在 [專門識別您的使用者] 畫面上，按一下 [下一步]。
-7. 在 [篩選使用者和裝置] 畫面上，按一下 [下一步]。
-8. 在 [選用功能] 畫面上，按一下 [下一步]。
-9. 在 [啟用單一登入認證] 頁面上，輸入 contoso\Administrator 使用者名稱與密碼，然後按一下 [下一步]。
-10. 在 [準備好設定] 畫面中，按一下 [安裝] 。
-11. 當安裝完成時，按一下 [結束] 。
+7. 在 [連線到 Azure AD] 畫面上，輸入我們在上面的步驟中建立的全域系統管理員使用者名稱與密碼，然後按一下 [下一步]  。
+2. 在 [連線您的目錄] 畫面上，按一下 [新增目錄]  。  接著，選取 [建立新的 AD 帳戶]  並輸入 contoso\Administrator 使用者名稱與密碼，然後按一下 [確定]  。
+3. 按 [下一步]  。
+4. 在 [Azure AD 登入設定] 畫面上，選取 [不將所有 UPN 尾碼比對至已驗證網域就繼續]  ，然後按一下 [下一步]  。
+5. 在 [網域與 OU 篩選] 畫面上，按一下 [下一步]  。
+6. 在 [專門識別您的使用者] 畫面上，按一下 [下一步]  。
+7. 在 [篩選使用者和裝置] 畫面上，按一下 [下一步]  。
+8. 在 [選用功能] 畫面上，按一下 [下一步]  。
+9. 在 [啟用單一登入認證] 頁面上，輸入 contoso\Administrator 使用者名稱與密碼，然後按一下 [下一步]  。
+10. 在 [準備好設定] 畫面中，按一下 [安裝]  。
+11. 當安裝完成時，按一下 [結束]  。
 12. 安裝完成後，請先登出並重新登入，再使用 Synchronization Service Manager 或同步處理規則編輯器。
 
 
@@ -244,11 +245,11 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 
 
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)並使用具有 Azure 訂用帳戶的帳戶登入。
-2. 選取左邊的 [Azure Active Directory]
-3. 在 [管理] 底下選取 [使用者]。
+2. 選取左邊的 [Azure Active Directory] 
+3. 在 [管理]  底下選取 [使用者]  。
 4. 確認您看到新使用者存在於我們的租用戶 ![同步](media/tutorial-password-hash-sync/synch1.png)
 
-## <a name="test-signing-in-with-one-of-our-users"></a>使用我們的其中一個使用者來測試登入
+## <a name="test-signing-in-with-one-of-our-users"></a>使用我們其中一個使用者來測試登入
 
 1. 瀏覽至 [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. 使用我們在新租用戶中建立的使用者來登入。  您必須使用下列格式登入：(user@domain.onmicrosoft.com)。 透過該使用者在內部部署用來登入的密碼登入。

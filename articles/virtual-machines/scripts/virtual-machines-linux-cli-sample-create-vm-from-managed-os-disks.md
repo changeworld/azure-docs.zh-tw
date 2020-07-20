@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 指令碼範例 - 連結受控磁碟作為 OS 磁碟以建立 VM | Microsoft Docs
+title: 連結受控磁碟作為 OS 磁碟以建立 VM - CLI 範例
 description: Azure CLI 指令碼範例 - 連結受控磁碟作為 OS 磁碟以建立 VM | Microsoft Docs
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 3ec3d152864ab8caf9f0c68966b6d4f8fd9e64dd
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 1616466619c7c7627106c09de703d02a7c40d248
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695231"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75458413"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-cli"></a>使用現有受控 OS 磁碟搭配 CLI 以建立虛擬機器
 
@@ -50,7 +50,7 @@ az group delete --name myResourceGroup
 
 此指令碼會使用下列命令來取得受控磁碟屬性、將受控磁碟連結至新的 VM，以及建立 VM。 下表中的每個項目都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [az disk show](https://docs.microsoft.com/cli/azure/disk) | 使用磁碟名稱和資源群組名稱取得受控磁碟屬性。 Id 屬性用來將受控磁碟連結至新的 VM |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | 建立使用受控 OS 磁碟的 VM |

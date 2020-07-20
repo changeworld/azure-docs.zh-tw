@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: article
 ms.date: 04/09/2019
 ms.author: ninarn
-ms.openlocfilehash: 99f19971eafaa1ddad1f96b187e18b79810560a2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6d4f0c50f57661576f97ddd3772d78b9fa293153
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61244454"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040515"
 ---
 # <a name="sql-database-documentation"></a>SQL Database 文件
 
@@ -29,7 +29,7 @@ Azure SQL Database 可讓您使用 Azure 入口網站、Azure CLI 和 Azure Powe
 
 ## <a name="step-by-step-tutorials"></a>逐步教學課程
 
-了解如何使用 SQL DB 建立、管理和移轉資料庫。
+了解如何使用 SQL Database 建立、管理和移轉資料庫。
 
 - 使用我們的快速入門指南開始使用[單一資料庫](/azure/sql-database/sql-database-single-database-quickstart-guide)
 - 使用 [SSMS](/azure/sql-database/sql-database-design-first-database) 或 [.NET](/azure/sql-database/sql-database-design-first-database-csharp) 建立和設計新單一資料庫的結構描述

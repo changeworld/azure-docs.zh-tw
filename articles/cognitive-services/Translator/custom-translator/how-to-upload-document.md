@@ -1,20 +1,20 @@
 ---
 title: 如何上傳文件 - 自訂翻譯工具
 titleSuffix: Azure Cognitive Services
-description: 您可以使用文件上傳功能來上傳用於訓練的平行文件。 平行文件是配對文件，其中的一份文件是另一份文件的翻譯。 該配對中的一份文件會包含原始語言的句子，而另一分文件會包含已翻譯成目標語言的這些句子。
-author: rajdeep-in
-manager: christw
+description: 檔上傳功能會將平行檔（兩個檔，其中一個是原點，另一個則是轉譯）上傳至服務。
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
-ms.author: v-rada
+ms.date: 05/26/2020
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 7df7dd44716e98c74282bd0f0700ec7881ef31ef
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: aaebf849cc69db7c85d1472f4d71774bc599be11
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766937"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994298"
 ---
 # <a name="upload-a-document"></a>上傳文件
 
@@ -24,7 +24,7 @@ ms.locfileid: "57766937"
 
 ## <a name="how-to-upload-document"></a>如何上傳文件？
 
-從[自訂翻譯工具](https://portal.customtranslator.azure.ai)入口網站中，按一下 [文件] 索引標籤，即可移至文件頁面。
+從[自訂翻譯](https://portal.customtranslator.azure.ai)入口網站中，按一下 [檔] 索引標籤以移至 [檔] 頁面。
 
 ![文件上傳連結](media/how-to/how-to-upload-1.png)
 
@@ -50,7 +50,7 @@ ms.locfileid: "57766937"
     d.  填寫平行資料或組合資料的相關區段。
 
     -  平行資料：
-        -  來源檔案：從本機電腦選取來源語言檔案。
+        -  原始檔案：從本機電腦選取原始語言檔案。
         -  目標檔案：從本機電腦選取目標語言檔案。
         -  文件名稱：只在您上傳平行檔案時才會用到。
 
@@ -61,11 +61,11 @@ ms.locfileid: "57766937"
 
     ![上傳文件對話方塊](media/how-to/how-to-upload-dialog.png)
 
-3.  此時，我們會處理您的文件，並嘗試擷取句子。 您可以按一下 [檢視上傳進度] 來檢查文件的處理狀態。
+3.  此時，我們會處理您的文件，並嘗試擷取句子。 您可以按一下 [查看上傳進度]，在檔處理時檢查其狀態。
 
     ![上傳文件的處理對話方塊](media/how-to/how-to-upload-processing-dialog.png)
 
-4.  此頁面會顯示上傳期間每個檔案的狀態及任何錯誤。 按一下 [上傳記錄] 索引標籤，即可檢視過去任何時間的上傳狀態。
+4.  此頁面會顯示上傳期間每個檔案的狀態及任何錯誤。 您可以隨時按一下 [上傳歷程記錄] 索引標籤，以查看過去的上傳狀態。
 
     ![上傳文件記錄對話方塊](media/how-to/how-to-upload-document-history.png)
 

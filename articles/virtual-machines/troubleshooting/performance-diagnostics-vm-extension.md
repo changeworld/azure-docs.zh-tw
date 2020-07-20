@@ -4,22 +4,21 @@ description: 介紹適用於 Windows 的 Azure 效能診斷 VM 擴充功能。
 services: virtual-machines-windows'
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: na
 tags: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 769305cc3d838832f8f445ac9623a1724603f968
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 763e948f58dfc76c3aa7ba67f461438fc752c689
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307850"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135282"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>適用於 Windows 的 Azure 效能診斷 VM 擴充功能
 
@@ -33,7 +32,7 @@ Azure 效能診斷 VM 擴充功能可協助從 Windows VM 收集效能診斷資�
 此擴充功能可安裝於 Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 及 Windows Server 2016。 它也可以安裝於 Windows 8.1 和 Windows 10。
 
 ## <a name="extension-schema"></a>擴充功能結構描述
-下列 JSON 會顯示 Azure 效能診斷 VM 擴充功能的結構描述。 此擴充功能需要儲存體帳戶的名稱與金鑰，才能儲存診斷輸出與報告。 這些都是機密值。 儲存體帳戶金鑰應該儲存在受保護的設定組態內。 Azure VM 擴充功能保護的設定資料會經過加密，只會在目標虛擬機器上解密。 請注意，**storageAccountName** 和 **storageAccountKey** 須區分大小寫。 其他必要的參數會列在下一節中。
+下列 JSON 會顯示 Azure 效能診斷 VM 擴充功能的結構描述。 此擴充功能需要儲存體帳戶的名稱與金鑰，才能儲存診斷輸出與報告。 這些都是機密值。 儲存體帳戶金鑰應該儲存在受保護的設定組態內。 Azure VM 擴充功能保護的設定資料會經過加密，只會在目標虛擬機器上解密。 請注意， **storageAccountName**和**storageAccountKey**區分大小寫。 其他必要的參數會列在下一節中。
 
 ```JSON
     {
@@ -67,25 +66,25 @@ Azure 效能診斷 VM 擴充功能可協助從 Windows VM 收集效能診斷資�
 
 ### <a name="property-values"></a>屬性值
 
-|   **名稱**   |**值 / 範例**|       **說明**      |
+|   **名稱**   |**值 / 範例**|       **描述**      |
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|API 的版本。
 |publisher|Microsoft.Azure.Performance.Diagnostics|擴充功能的發行者命名空間。
-|type|AzurePerformanceDiagnostics|VM 擴充功能的類型。
+|類型|AzurePerformanceDiagnostics|VM 擴充功能的類型。
 |typeHandlerVersion|1.0|擴充功能處理常式的版本。
 |performanceScenario|basic|要對其擷取資料的效能案例。 有效值為：**basic**、**vmslow**、**azurefiles** 及 **custom**。
 |traceDurationInSeconds|300|追蹤的持續時間 (若有選取任何追蹤選項)。
 |perfCounterTrace|p|啟用效能計數器追蹤的選項。 有效值為 **p** 或空值。 如果您不想要擷取此追蹤，請將值保持空白即可。
 |networkTrace|n|用於啟用網路追蹤的選項。 有效值為 **n** 或空值。 如果您不想要擷取此追蹤，請將值保持空白即可。
 |xperfTrace|x|啟用 XPerf 追蹤的選項。 有效值為 **x** 或空值。 如果您不想要擷取此追蹤，請將值保持空白即可。
-|storPortTrace|s|啟用 StorPort 追蹤的選項。 有效值為 **s** 或空值。 如果您不想要擷取此追蹤，請將值保持空白即可。
+|storPortTrace|s|啟用 StorPort 追蹤的選項。 有效值為**s**或空值。 如果您不想要擷取此追蹤，請將值保持空白即可。
 |srNumber|123452016365929|支援票證號碼 (若可用)。 如果您沒有此值，請保持空白。
 |requestTimeUtc|2017-09-28T22:08:53.736Z|目前的日期時間 (UTC)。 如果您使用入口網站來安裝此擴充功能，就不需提供此值。
 |resourceId|/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}|VM 的唯一識別碼。
 |storageAccountName|mystorageaccount|要儲存診斷記錄和結果的儲存體帳戶名稱。
 |storageAccountKey|lDuVvxuZB28NNP…hAiRF3voADxLBTcc==|儲存體帳戶的金鑰。
 
-## <a name="install-the-extension"></a>安裝擴充功能
+## <a name="install-the-extension"></a>安裝延伸模組
 
 遵循下列指示以在 Windows 虛擬機器上安裝擴充功能：
 
@@ -93,13 +92,13 @@ Azure 效能診斷 VM 擴充功能可協助從 Windows VM 收集效能診斷資�
 2. 選取您要安裝此擴充功能的虛擬機器。
 
     ![Azure 入口網站的螢幕擷取畫面 (已醒目提示 [虛擬機器])](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
-3. 選取 [擴充功能] 刀鋒視窗，然後選取 [新增]。
+3. 選取 [擴充功能]**** 刀鋒視窗，然後選取 [新增]****。
 
     ![[擴充功能] 刀鋒視窗的螢幕擷取畫面 (已醒目提示 [新增])](media/performance-diagnostics-vm-extension/select-extensions.png)
-4. 選取 [Azure 效能診斷]，檢閱條款及條件，然後選取 [建立]。
+4. 選取 [Azure 效能診斷]****，檢閱條款及條件，然後選取 [建立]****。
 
     ![新資源畫面的螢幕擷取畫面 (已醒目提示 [Azure 效能診斷])](media/performance-diagnostics-vm-extension/create-azure-performance-diagnostics-extension.png)
-5. 提供安裝的參數值，然後選取 [確定] 以安裝擴充功能。 如需支援案例的詳細資訊，請參閱[如何使用 PerfInsights](how-to-use-perfInsights.md#supported-troubleshooting-scenarios)。 
+5. 提供安裝的參數值，然後選取 [確定]**** 以安裝擴充功能。 如需支援案例的詳細資訊，請參閱[如何使用 PerfInsights](how-to-use-perfinsights.md#supported-troubleshooting-scenarios)。 
 
     ![安裝擴充功能對話方塊的螢幕擷取畫面](media/performance-diagnostics-vm-extension/install-the-extension.png)
 6. 安裝成功時，您會看到指出此狀態的訊息。
@@ -112,13 +111,13 @@ Azure 效能診斷 VM 擴充功能可協助從 Windows VM 收集效能診斷資�
 ## <a name="remove-the-extension"></a>移除擴充功能
 若要從虛擬機器移除擴充功能，請遵循下列步驟：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)，選取您要從中移除此擴充功能的虛擬機器，然後選取 [擴充功能] 刀鋒視窗。 
-2. 從清單中選取效能診斷擴充功能項目的 (**...**)，然後選取 [解除安裝]。
+1. 登入 [Azure 入口網站](https://portal.azure.com)，選取您要從中移除此擴充功能的虛擬機器，然後選取 [擴充功能]**** 刀鋒視窗。 
+2. 從清單中選取效能診斷擴充功能項目的 (**...**)，然後選取 [解除安裝]****。
 
     ![[擴充功能] 刀鋒視窗的螢幕擷取畫面 (已醒目提示 [解除安裝])](media/performance-diagnostics-vm-extension/uninstall-the-extension.png)
 
     > [!NOTE]
-    > 您也可以選取擴充功能項目，然後選取 [解除安裝] 選項。
+    > 您也可以選取擴充功能項目，然後選取 [解除安裝]**** 選項。
 
 ## <a name="template-deployment"></a>範本部署
 可以使用 Azure Resource Manager 範本部署 Azure 虛擬機器擴充功能。 上一節中詳述的 JSON 結構描述可使用於 Azure Resource Manager 範本。 這會在 Azure Resource Manager 範本部署期間執行 Azure 效能診斷 VM 擴充功能。 以下是範例範本：
@@ -234,7 +233,7 @@ PerfInsights 工具會根據所選取的案例，收集各種記錄、組態和�
 
 ## <a name="view-and-share-the-results"></a>檢視並共用結果
 
-在上傳到安裝期間指定的儲存體帳戶及使用[共用存取簽章 (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) 共用 30 天的 zip 檔案中，可找到延伸模組的輸出。 這個 zip 檔案包含診斷記錄及具有結果和建議的報告。 連結至輸出 zip 檔案的 SAS 連結，可以在 **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\\\<version>** 資料夾底下名為 zipfilename_saslink.txt 的文字檔中找到。 任何具有此連結的人員都能夠下載該 zip 檔案。
+在上傳到安裝期間指定的儲存體帳戶及使用[共用存取簽章 (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) 共用 30 天的 zip 檔案中，可找到延伸模組的輸出。 這個 zip 檔案包含診斷記錄及具有結果和建議的報告。 輸出 zip 檔案的 SAS 連結可以在名為*zipfilename*的文字檔中找到，_saslink.txt 在**C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<version> **資料夾底下。 任何具有此連結的人員都能夠下載該 zip 檔案。
 
 若要協助支援工程師處理支援票證，Microsoft 可能會使用此 SAS 連結來下載診斷資料。
 
@@ -254,6 +253,6 @@ PerfInsights 工具會根據所選取的案例，收集各種記錄、組態和�
     只要擴充功能狀態表示已成功佈建擴充功能，就可以放心地忽略這個問題。
 - 您可以使用擴充功能記錄來解決安裝期間發生的一些問題。 擴充功能執行輸出會記錄至下列目錄中的檔案︰
 
-        C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>
+    `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>`
 
-如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
+如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 移至 [ [Azure 支援] 網站](https://azure.microsoft.com/support/options/)，然後選取 [**取得支援**]。 如需使用 Azure 支援的相關資訊，請參閱[Microsoft Azure 支援常見問題](https://azure.microsoft.com/support/faq/)。

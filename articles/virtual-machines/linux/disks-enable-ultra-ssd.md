@@ -1,22 +1,21 @@
 ---
-title: 適用於 Linux VM 的 Ultra 磁碟 - Azure 受控磁碟 | Microsoft Docs
-description: 了解適用於 Azure VM 的 Ultra 受控磁碟
-services: virtual-machines-linux
+title: 適用于 Linux Vm 的 Ultra 磁片-Azure 受控磁片
+description: 瞭解適用于 Azure Vm 的 ultra 磁片
 author: roygara
-ms.service: virtual-machines-linux
-ms.workload: storage
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
-ms.topic: article
-ms.date: 09/24/2018
+ms.service: virtual-machines
+ms.topic: how-to
+ms.date: 05/11/2020
 ms.author: rogarana
-ms.custom: seodec18
 ms.subservice: disks
-ms.openlocfilehash: c0642b9985b987b479da1d426a504e652cdee0b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 900781efa2a000c1062db45c6b8d0543f3939443
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60204006"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84659251"
 ---
+# <a name="using-azure-ultra-disks"></a>使用 Azure ultra 磁片
+
+本文說明如何部署和使用 ultra 磁片，如需有關 ultra 磁片的概念性資訊，請參閱[Azure 中可用的磁片類型為何？](disks-types.md#ultra-disk)。
+
 [!INCLUDE [virtual-machines-disks-ultra-ssd](../../../includes/virtual-machines-disks-getting-started-ultra-ssd.md)]

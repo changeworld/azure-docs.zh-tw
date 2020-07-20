@@ -1,44 +1,49 @@
 ---
-title: 認知搜尋中自訂技能的介面定義 - Azure 搜尋服務
-description: Azure 搜尋服務的認知搜尋管線中，web-api 自訂技能的自訂資料擷取介面。
-manager: pablocas
+title: 自訂技能的介面定義
+titleSuffix: Azure Cognitive Search
+description: Azure 認知搜尋中 AI 擴充管線內 web api 自訂技能的自訂資料提取介面。
+manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.devlang: NA
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: 1bf42e5f418f99f5e5327d790c1adffe2357b84e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
-ms.translationtype: MT
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 05/06/2020
+ms.openlocfilehash: 7a1a2aa92549bcab35532120c4af5bd0b6904f58
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021941"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82891253"
 ---
-# <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>如何將自訂技能新增至認知搜尋管線
+# <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>如何將自訂技能新增至 Azure 認知搜尋擴充管線
 
-Azure 搜尋服務中的[認知搜尋索引管線](cognitive-search-concept-intro.md)可從[預先定義的技能](cognitive-search-predefined-skills.md)以及自行建立並新增至管線的[自訂技能](cognitive-search-custom-skill-web-api.md)來組合。 在本文中，了解如何建立自訂技能，公開介面以讓它包含在認知搜尋管線中。 
+> [!VIDEO https://www.youtube.com/embed/fHLCE-NZeb4?version=3&start=172&end=221]
 
-建置自訂技能可讓您插入內容獨有的轉換。 自訂技能會獨立執行，可套用在任何所需的擴充步驟。 例如，您可以定義欄位特定的自訂實體、建立自訂的分類模型以區分商務和財務合約和文件，或者新增語音辨識技能以深入觸及音訊檔案來了解相關內容。 如需逐步範例，請參閱[範例：建立自訂技能](cognitive-search-create-custom-skill-example.md)。
+Azure 認知搜尋中的[擴充管線](cognitive-search-concept-intro.md)可以從[內建認知技能](cognitive-search-predefined-skills.md)，以及您個人建立並新增至管線的[自訂技能](cognitive-search-custom-skill-web-api.md)來組合。 在本文中，您將瞭解如何建立自訂技能，以公開介面，讓它包含在 AI 擴充管線中。 
+
+建置自訂技能可讓您插入內容獨有的轉換。 自訂技能會獨立執行，可套用在任何所需的擴充步驟。 例如，您可以定義欄位特定的自訂實體、建立自訂的分類模型以區分商務和財務合約和文件，或者新增語音辨識技能以深入觸及音訊檔案來了解相關內容。 如需逐步範例，請參閱[範例：建立 AI 擴充的自訂技能](cognitive-search-create-custom-skill-example.md)。
 
  無論您需要哪一種自訂功能，都有一個簡單且清楚的介面，可將自訂技能連接到擴充管線的其餘部分。 要包含[技能集](cognitive-search-defining-skillset.md)中的唯一需求，便是以在技能集內可整體取用的方式，接受輸入並發出輸出的能力。 本文著重於擴充管線所需的輸入和輸出格式。
 
 ## <a name="web-api-custom-skill-interface"></a>Web API 自訂技能介面
 
-如果您未在 30 秒內傳回回應，自訂 WebAPI 技能端點便會依預設而逾時。 索引管線是同步的，且如果未在該時段內收到回應，則索引會產生逾時錯誤。  您可藉由設定逾時參數，來設定最多 90 秒的逾時：
+如果您未在 30 秒內傳回回應，自訂 WebAPI 技能端點便會依預設而逾時。 索引管線是同步的，且如果未在該時段內收到回應，則索引會產生逾時錯誤。  您可以設定 timeout 參數，將 timeout 設定為最多230秒：
 
 ```json
         "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
-        "description": "This skill has a 90 second timeout",
+        "description": "This skill has a 230 second timeout",
         "uri": "https://[your custom skill uri goes here]",
-        "timeout": "PT90S",
+        "timeout": "PT230S",
 ```
+
+請確定 URI 是安全的（HTTPS）。
 
 目前與自訂技能互動的唯一機制是透過 Web API 介面。 Web API 的需求必須符合本節所描述的需求。
 
-### <a name="1--web-api-input-format"></a>1.Web API 輸入格式
+### <a name="1--web-api-input-format"></a>1. Web API 輸入格式
+
+
+> [!VIDEO https://www.youtube.com/embed/fHLCE-NZeb4?version=3&start=294&end=340]
+
 
 Web API 必須接受要處理的記錄陣列。 每一筆記錄都必須包含「屬性包」，也就是提供給 Web API 的輸入。 
 
@@ -83,7 +88,7 @@ Web API 必須接受要處理的記錄陣列。 每一筆記錄都必須包含�
 ```
 事實上，您的服務可能會有數百筆或數千筆記錄的呼叫，而不是只像下面所顯示的三筆記錄。
 
-### <a name="2-web-api-output-format"></a>2.Web API 輸出格式
+### <a name="2-web-api-output-format"></a>2. Web API 輸出格式
 
 輸出的格式是一組包含 *recordId* 和屬性包的記錄。 
 
@@ -124,7 +129,7 @@ Web API 必須接受要處理的記錄陣列。 每一筆記錄都必須包含�
 
 ## <a name="consuming-custom-skills-from-skillset"></a>取用技能集的自訂技能
 
-當您建立 Web API 擴充程式時，可以在要求中描述 HTTP 標頭和參數。 以下程式碼片段示範如何在技能集定義中描述要求參數和 HTTP 標頭。
+當您建立 Web API 擴充程式時，可以在要求中描述 HTTP 標頭和參數。 下列程式碼片段顯示如何將要求參數和*選擇性*HTTP 標頭描述為技能集定義的一部分。 HTTP 標頭不是必要條件，但可讓您將額外的設定功能新增至您的技能，並從技能集定義加以設定。
 
 ```json
 {
@@ -156,7 +161,11 @@ Web API 必須接受要處理的記錄陣列。 每一筆記錄都必須包含�
 
 ## <a name="next-steps"></a>後續步驟
 
-+ [範例：建立翻譯文字 API 的自訂技能](cognitive-search-create-custom-skill-example.md)
+本文涵蓋將自訂技能整合到技能集所需的介面需求。 若要深入瞭解自訂技能和技能集組合，請按一下下列連結。
+
++ [觀看我們關於自訂技能的影片](https://youtu.be/fHLCE-NZeb4)
++ [電力技能：自訂技能的存放庫](https://github.com/Azure-Samples/azure-search-power-skills)
++ [範例：建立 AI 擴充的自訂技能](cognitive-search-create-custom-skill-example.md)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)
 + [建立技能集 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-+ [如何對應擴充的欄位](cognitive-search-output-field-mapping.md)
++ [如何對應豐富型欄位](cognitive-search-output-field-mapping.md) (英文)

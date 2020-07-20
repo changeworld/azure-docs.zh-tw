@@ -9,19 +9,17 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5182b621779cf31f3c7da99674ab24fe6efe702d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 15f94e93c270c8d62436b81a7caedbf181c1aeb8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60835255"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022537"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署
 
@@ -78,8 +76,8 @@ ms.locfileid: "60835255"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide.md 
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 
@@ -236,7 +234,7 @@ ms.locfileid: "60835255"
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -250,7 +248,7 @@ ms.locfileid: "60835255"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -282,9 +280,9 @@ ms.locfileid: "60835255"
 [virtual-machines-sizes-windows]:../../windows/sizes.md
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[virtual-machines-sql-server-infrastructure-services]:./../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
+[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+[virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+[virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/resources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
@@ -319,7 +317,7 @@ Oracle 支援 Oracle 軟體在 Microsoft Azure 上執行。 如需 Windows Hyper
 
 以下是與 Azure 上的 SAP 有關的 SAP 附註。
 
-| 附註編號 | 標題 |
+| 附註編號 | Title |
 | --- | --- |
 | [1928533] |Azure 上的 SAP 應用程式：支援的產品和 Azure VM 類型 |
 | [2015553] |Microsoft Azure 上的 SAP：支援的必要條件 |
@@ -367,17 +365,17 @@ Oracle Database 檔案不支援網路磁碟機或遠端共用 (例如 Azure 檔�
 
 如果您是使用以 Azure 分頁 Blob 儲存體或受控磁碟為基礎的磁碟，在[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)中所述的內容同樣適用於搭配 Oracle Database 所做的部署。
 
-Azure 磁碟具有 IOPS 輸送量上的配額。 此概念已詳述於[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)。 確切的配額會根據您使用的 VM 類型而定。 如需 VM 類型及其配額的清單，請參閱 [Azure 中的 Windows 虛擬機器大小][virtual-machines-sizes-windows]。
+Azure 磁碟具有 IOPS 輸送量上的配額。 此概念已詳述於[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)。 確切的配額會根據您使用的 VM 類型而定。 您可在 [Azure 中 Windows 虛擬機器的大小][virtual-machines-sizes-windows]中找到 VM 類型清單及其個別的配額。
 
 若要識別支援的 Azure VM 類型，請參閱 SAP 附註 [1928533]。
 
 最小設定如下： 
 
-| 元件 | 磁碟 | 快取 | 儲存體集區 |
+| 元件 | 磁碟 | Caching | 儲存體集區 |
 | --- | ---| --- | --- |
-| \oracle\<SID>\origlogaA & mirrlogB | 進階 | None | 不需要 |
-| \oracle\<SID>\origlogaB & mirrlogA | 進階 | None | 不需要 |
-| \oracle\<SID>\sapdata1...n | 進階 | 唯讀 | 可以使用 |
+| \oracle\<SID>\origlogaA & mirrlogB | Premium | None | 不需要 |
+| \oracle\<SID>\origlogaB & mirrlogA | Premium | None | 不需要 |
+| \oracle\<SID>\sapdata1...n | Premium | 唯讀 | 可以使用 |
 | \oracle\<SID>\oraarch | 標準 | None | 不需要 |
 | Oracle Home、saptrace... | 作業系統磁碟 | | 不需要 |
 
@@ -386,15 +384,15 @@ Azure 磁碟具有 IOPS 輸送量上的配額。 此概念已詳述於[適用於
 
 效能設定如下：
 
-| 元件 | 磁碟 | 快取 | 儲存體集區 |
+| 元件 | 磁碟 | Caching | 儲存體集區 |
 | --- | ---| --- | --- |
-| \oracle\<SID>\origlogaA | 進階 | None | 可以使用  |
-| \oracle\<SID>\origlogaB | 進階 | None | 可以使用 |
-| \oracle\<SID>\mirrlogAB | 進階 | None | 可以使用 |
-| \oracle\<SID>\mirrlogBA | 進階 | None | 可以使用 |
-| \oracle\<SID>\sapdata1...n | 進階 | 唯讀 | 建議  |
-| \oracle\SID\sapdata(n+1)* | 進階 | None | 可以使用 |
-| \oracle\<SID>\oraarch* | 進階 | None | 不需要 |
+| \oracle\<SID>\origlogaA | Premium | None | 可以使用  |
+| \oracle\<SID>\origlogaB | Premium | None | 可以使用 |
+| \oracle\<SID>\mirrlogAB | Premium | None | 可以使用 |
+| \oracle\<SID>\mirrlogBA | Premium | None | 可以使用 |
+| \oracle\<SID>\sapdata1...n | Premium | 唯讀 | 建議  |
+| \oracle\SID\sapdata(n+1)* | Premium | None | 可以使用 |
+| \oracle\<SID>\oraarch* | Premium | None | 不需要 |
 | Oracle Home、saptrace... | 作業系統磁碟 | 不需要 |
 
 *(n+1)：裝載 SYSTEM、TEMP 及 UNDO 資料表空間。 System 和 Undo 資料表空間的 I/O 模式，與其他裝載應用程式資料的資料表空間不同。 對於 System 和 Undo 資料表空間的效能來說，無快取是最佳選項。
@@ -457,18 +455,18 @@ Oracle Database 檔案不支援網路磁碟機或遠端共用 (例如 Azure 檔�
 
 如果您是使用以 Azure 分頁 Blob 儲存體或受控磁碟為基礎的磁碟，在[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)中所述的內容同樣適用於搭配 Oracle Database 所做的部署。
 
- Azure 磁碟具有 IOPS 輸送量上的配額。 此概念已詳述於[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)。確切的配額會根據使用的 VM 類型而定。 如需 VM 類型及其配額的清單，請參閱 [Azure 中的 Linux 虛擬機器大小][virtual-machines-sizes-linux]。
+ Azure 磁碟具有 IOPS 輸送量上的配額。 此概念已詳述於[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)。確切的配額會根據使用的 VM 類型而定。 如需 VM 類型及其配額的清單，請參閱 [Azure 中 Linux 虛擬機器的大小][virtual-machines-sizes-linux]。
 
 若要識別支援的 Azure VM 類型，請參閱 SAP 附註 [1928533]。
 
 最小設定：
 
-| 元件 | 磁碟 | 快取 | 移除* |
+| 元件 | 磁碟 | Caching | 移除* |
 | --- | ---| --- | --- |
-| /oracle/\<SID > / origlogaA & mirrlogB | 進階 | None | 不需要 |
-| /oracle/\<SID > / origlogaB & mirrlogA | 進階 | None | 不需要 |
-| /oracle/\<SID>/sapdata1...n | 進階 | 唯讀 | 可以使用 |
-| /oracle/\<SID > / oraarch | 標準 | None | 不需要 |
+| /oracle/\<SID>/origlogaA & mirrlogB | Premium | None | 不需要 |
+| /oracle/\<SID>/origlogaB & mirrlogA | Premium | None | 不需要 |
+| /oracle/\<SID>/sapdata1...n | Premium | 唯讀 | 可以使用 |
+| /oracle/\<SID>/oraarch | 標準 | None | 不需要 |
 | Oracle Home、saptrace... | 作業系統磁碟 | | 不需要 |
 
 *移除：使用 RAID0 的 LVM stripe 或 MDADM
@@ -477,15 +475,15 @@ Oracle Database 檔案不支援網路磁碟機或遠端共用 (例如 Azure 檔�
 
 效能設定：
 
-| 元件 | 磁碟 | 快取 | 移除* |
+| 元件 | 磁碟 | Caching | 移除* |
 | --- | ---| --- | --- |
-| /oracle/\<SID>/origlogaA | 進階 | None | 可以使用  |
-| /oracle/\<SID > / origlogaB | 進階 | None | 可以使用 |
-| /oracle/\<SID>/mirrlogAB | 進階 | None | 可以使用 |
-| /oracle/\<SID>/mirrlogBA | 進階 | None | 可以使用 |
-| /oracle/\<SID>/sapdata1...n | 進階 | 唯讀 | 建議  |
-| /oracle/\<SID>/sapdata(n+1)* | 進階 | None | 可以使用 |
-| /oracle/\<SID > / oraarch * | 進階 | None | 不需要 |
+| /oracle/\<SID>/origlogaA | Premium | None | 可以使用  |
+| /oracle/\<SID>/origlogaB | Premium | None | 可以使用 |
+| /oracle/\<SID>/mirrlogAB | Premium | None | 可以使用 |
+| /oracle/\<SID>/mirrlogBA | Premium | None | 可以使用 |
+| /oracle/\<SID>/sapdata1...n | Premium | 唯讀 | 建議  |
+| /oracle/\<SID>/sapdata(n+1)* | Premium | None | 可以使用 |
+| /oracle/\<SID>/oraarch* | Premium | None | 不需要 |
 | Oracle Home、saptrace... | 作業系統磁碟 | 不需要 |
 
 *移除：使用 RAID0 的 LVM stripe 或 MDADM

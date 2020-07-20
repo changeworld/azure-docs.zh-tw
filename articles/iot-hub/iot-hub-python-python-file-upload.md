@@ -1,22 +1,21 @@
 ---
 title: 將裝置中的檔案上傳至使用 Python 的 Azure IoT 中樞 | Microsoft Docs
 description: 如何使用適用於 Python 的 Azure IoT 裝置 SDK 將檔案從裝置上傳至雲端。 上傳的檔案會儲存在 Azure 儲存體 blob 容器中。
-author: kgremban
-manager: philmea
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 01/22/2019
-ms.author: kgremban
-ms.openlocfilehash: 6195c37780acaf8c8f432fa09c5ac01a75363c04
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 03/31/2020
+ms.author: robinsh
+ms.custom: mqtt, tracking-python
+ms.openlocfilehash: 9a3782c0d5791f20f14aabb53d486fc012518c1f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61441271"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84608497"
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>使用 IoT 中樞將檔案從裝置上傳至雲端
+# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>使用 IoT 中樞（Python）將檔案從裝置上傳至雲端
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
@@ -26,27 +25,19 @@ ms.locfileid: "61441271"
 
 * 使用 Python 用戶端透過 IoT 中樞上傳檔案。
 
-[將遙測傳送至 IoT 中樞](quickstart-send-telemetry-python.md)快速入門會示範「IoT 中樞」的基本裝置到雲端傳訊功能。 不過，在某些情況下，您無法輕易地將裝置傳送的資料對應到 IoT 中樞接受且相對較小的裝置到雲端訊息。 當您需要從裝置上傳檔案時，您仍然可以使用安全可靠的 IoT 中樞。
-
-> [!NOTE]
-> IoT 中樞 Python SDK 目前僅支援上傳諸如 **.txt** 檔案等以字元為基礎的檔案。
+[將遙測從裝置傳送至 IoT 中樞](quickstart-send-telemetry-python.md)快速入門會示範 IoT 中樞的基本裝置到雲端傳訊功能。 不過，在某些情況下，您無法輕易地將裝置傳送的資料對應到 IoT 中樞接受且相對較小的裝置到雲端訊息。 當您需要從裝置上傳檔案時，您仍然可以使用安全可靠的 IoT 中樞。
 
 在本教學課程結尾，您會執行 Python 主控台應用程式：
 
 * **FileUpload.py**，其會使用 Python 裝置 SDK 將檔案上傳至儲存體。
 
-> [!NOTE]
-> IoT 中樞透過 Azure IoT 裝置 SDK 來支援許多裝置平台和語言 (包括 C、.NET、Javascript、Python 和 Java)。 如需如何將您的裝置連接到 Azure IoT 中樞的逐步指示，請參閱 [Azure IoT 開發人員中心](https://azure.microsoft.com/develop/iot)。
+[!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-若要完成此教學課程，您需要下列項目：
+## <a name="prerequisites"></a>必要條件
 
-* [Python 2.x 或 3.x](https://www.python.org/downloads/)。 請務必使用安裝程式所需的 32 位元或 64 位元安裝。 在安裝期間出現系統提示時，務必將 Python 新增至平台特有的環境變數。 如果您是使用 Python 2.x，可能需要[安裝或升級 pip (Python 套件管理系統](https://pip.pypa.io/en/stable/installing/))。
+[!INCLUDE [iot-hub-include-python-v2-async-installation-notes](../../includes/iot-hub-include-python-v2-async-installation-notes.md)]
 
-* 如果您是使用 Windows 作業系統，則 [Visual C++ 可轉散發套件](https://www.microsoft.com/download/confirmation.aspx?id=48145)允許使用 Python 的原生 DLL。
-
-* 使用中的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立 [免費帳戶](https://azure.microsoft.com/pricing/free-trial/) 。
-
-* Azure 帳戶中的 IoT 中樞，並有裝置身分識別可供測試檔案上傳功能。 
+* 請確定您的防火牆已開啟連接埠 8883。 本文中的裝置範例會使用 MQTT 通訊協定，其會透過連接埠 8883 進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
@@ -54,84 +45,136 @@ ms.locfileid: "61441271"
 
 在本節中，您可以建立裝置應用程式來將檔案上傳到 IoT 中樞。
 
-1. 在命令提示字元上執行下列命令，以安裝 **azure-iothub-device-client** 套件：
+1. 在命令提示字元中，執行下列命令來安裝**azure iot 裝置**套件。 您可以使用此套件來協調檔案上傳與您的 IoT 中樞。
 
     ```cmd/sh
-    pip install azure-iothub-device-client
+    pip install azure-iot-device
     ```
 
-2. 使用文字編輯器來建立您會上傳至 Blob 儲存體的測試檔案。
+1. 在命令提示字元中，執行下列命令以安裝[**azure. 儲存體 blob**](https://pypi.org/project/azure-storage-blob/)套件。 您可以使用此套件來執行檔案上傳。
 
-    > [!NOTE]
-    > IoT 中樞 Python SDK 目前僅支援上傳諸如 **.txt** 檔案等以字元為基礎的檔案。
+    ```cmd/sh
+    pip install azure.storage.blob
+    ```
 
-3. 使用文字編輯器，在工作資料夾中建立 **FileUpload.py** 檔案。
+1. 建立要上傳至 blob 儲存體的測試檔案。
 
-4. 在 **FileUpload.py** 檔案開頭處新增下列 `import` 陳述式和變數。 
+1. 使用文字編輯器，在工作資料夾中建立 **FileUpload.py** 檔案。
+
+1. 在 **FileUpload.py** 檔案開頭處新增下列 `import` 陳述式和變數。
 
     ```python
-    import time
-    import sys
-    import iothub_client
     import os
-    from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult, IoTHubError
+    import asyncio
+    from azure.iot.device.aio import IoTHubDeviceClient
+    from azure.core.exceptions import AzureError
+    from azure.storage.blob import BlobClient
 
     CONNECTION_STRING = "[Device Connection String]"
-    PROTOCOL = IoTHubTransportProvider.HTTP
-
-    PATHTOFILE = "[Full path to file]"
-    FILENAME = "[File name for storage]"
+    PATH_TO_FILE = r"[Full path to local file]"
     ```
 
-5. 在您的檔案中，將 `[Device Connection String]` 更換為您 IoT 中樞裝置的連接字串。 將 `[Full path to file]` 更換為用來測試所建立檔案的路徑，或更換為您想要上傳的任何裝置檔案。 將 `[File name for storage]` 更換為您想要在檔案上傳至 Blob 儲存體之後，對檔案提供的名稱。 
+1. 在您的檔案中，將 `[Device Connection String]` 更換為您 IoT 中樞裝置的連接字串。 取代為您所建立之測試檔案的 `[Full path to local file]` 路徑，或您要上傳之裝置上的任何檔案。
 
-6. 建立 **upload_blob** 函式的回呼：
+1. 建立函式以將檔案上傳至 blob 儲存體：
 
     ```python
-    def blob_upload_conf_callback(result, user_context):
-        if str(result) == 'OK':
-            print ( "...file uploaded successfully." )
-        else:
-            print ( "...file upload callback returned: " + str(result) )
+    async def store_blob(blob_info, file_name):
+        try:
+            sas_url = "https://{}/{}/{}{}".format(
+                blob_info["hostName"],
+                blob_info["containerName"],
+                blob_info["blobName"],
+                blob_info["sasToken"]
+            )
+
+            print("\nUploading file: {} to Azure Storage as blob: {} in container {}\n".format(file_name, blob_info["blobName"], blob_info["containerName"]))
+
+            # Upload the specified file
+            with BlobClient.from_blob_url(sas_url) as blob_client:
+                with open(file_name, "rb") as f:
+                    result = blob_client.upload_blob(f, overwrite=True)
+                    return (True, result)
+
+        except FileNotFoundError as ex:
+            # catch file not found and add an HTTP status code to return in notification to IoT Hub
+            ex.status_code = 404
+            return (False, ex)
+
+        except AzureError as ex:
+            # catch Azure errors that might result from the upload operation
+            return (False, ex)
     ```
 
-7. 新增下列程式碼以連線用戶端並上傳檔案。 另包含 `main` 常式：
+    此函式會剖析傳入它的*blob_info*結構，以建立用來初始化[BlobClient](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.blobclient?view=azure-python)的 URL。 然後，它會使用此用戶端將您的檔案上傳至 Azure blob 儲存體。
+
+1. 新增下列程式碼，以連接用戶端並上傳檔案：
 
     ```python
-    def iothub_file_upload_sample_run():
+    async def main():
         try:
             print ( "IoT Hub file upload sample, press Ctrl-C to exit" )
 
-            client = IoTHubClient(CONNECTION_STRING, PROTOCOL)
+            conn_str = CONNECTION_STRING
+            file_name = PATH_TO_FILE
+            blob_name = os.path.basename(file_name)
 
-            f = open(PATHTOFILE, "r")
-            content = f.read()
+            device_client = IoTHubDeviceClient.create_from_connection_string(conn_str)
 
-            client.upload_blob_async(FILENAME, content, len(content), blob_upload_conf_callback, 0)
+            # Connect the client
+            await device_client.connect()
 
-            print ( "" )
-            print ( "File upload initiated..." )
+            # Get the storage info for the blob
+            storage_info = await device_client.get_storage_info_for_blob(blob_name)
 
-            while True:
-                time.sleep(30)
+            # Upload to blob
+            success, result = await store_blob(storage_info, file_name)
 
-        except IoTHubError as iothub_error:
-            print ( "Unexpected error %s from IoTHub" % iothub_error )
-            return
+            if success == True:
+                print("Upload succeeded. Result is: \n") 
+                print(result)
+                print()
+
+                await device_client.notify_blob_upload_status(
+                    storage_info["correlationId"], True, 200, "OK: {}".format(file_name)
+                )
+
+            else :
+                # If the upload was not successful, the result is the exception object
+                print("Upload failed. Exception is: \n") 
+                print(result)
+                print()
+
+                await device_client.notify_blob_upload_status(
+                    storage_info["correlationId"], False, result.status_code, str(result)
+                )
+
+        except Exception as ex:
+            print("\nException:")
+            print(ex)
+
         except KeyboardInterrupt:
-            print ( "IoTHubClient sample stopped" )
-        except:
-            print ( "generic error" )
+            print ( "\nIoTHubDeviceClient sample stopped" )
 
-    if __name__ == '__main__':
-        print ( "Simulating a file upload using the Azure IoT Hub Device SDK for Python" )
-        print ( "    Protocol %s" % PROTOCOL )
-        print ( "    Connection string=%s" % CONNECTION_STRING )
+        finally:
+            # Finally, disconnect the client
+            await device_client.disconnect()
 
-        iothub_file_upload_sample_run()
+
+    if __name__ == "__main__":
+        asyncio.run(main())
+        #loop = asyncio.get_event_loop()
+        #loop.run_until_complete(main())
+        #loop.close()
     ```
 
-8. 儲存並關閉 **UploadFile.py** 檔案。
+    此程式碼會建立異步**IoTHubDeviceClient** ，並使用下列 api 來管理使用您的 IoT 中樞的檔案上傳：
+
+    * **get_storage_info_for_blob**會從您的 IoT 中樞取得您先前建立之連結儲存體帳戶的相關資訊。 此資訊包括主機名稱、容器名稱、blob 名稱和 SAS 權杖。 儲存體資訊會傳遞至**store_blob**函式（在上一個步驟中建立），因此該函式中的**BlobClient**可以向 Azure 儲存體進行驗證。 **Get_storage_info_for_blob**方法也會傳回 correlation_id，用於**notify_blob_upload_status**方法中。 Correlation_id 是用來標記您正在處理之 blob 的 IoT 中樞方式。
+
+    * **notify_blob_upload_status**會通知 IoT 中樞 blob 儲存體作業的狀態。 您會將**get_storage_info_for_blob**方法取得的 correlation_id 傳遞給它。 IoT 中樞會使用它來通知任何可能接聽檔案上傳工作狀態通知的服務。
+
+1. 儲存並關閉 **UploadFile.py** 檔案。
 
 ## <a name="run-the-application"></a>執行應用程式
 
@@ -145,11 +188,11 @@ ms.locfileid: "61441271"
 
 2. 下列螢幕擷取畫面顯示 **FileUpload** 應用程式的輸出：
 
-    ![simulated-device 應用程式的輸出](./media/iot-hub-python-python-file-upload/1.png)
+    ![simulated-device 應用程式的輸出](./media/iot-hub-python-python-file-upload/run-device-app.png)
 
 3. 您可以使用入口網站檢視您所設定之儲存體容器中的上傳檔案：
 
-    ![上傳的檔案](./media/iot-hub-python-python-file-upload/2.png)
+    ![上傳的檔案](./media/iot-hub-python-python-file-upload/view-blob.png)
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -160,3 +203,9 @@ ms.locfileid: "61441271"
 * [C SDK 簡介](iot-hub-device-sdk-c-intro.md)
 
 * [Azure IoT SDK](iot-hub-devguide-sdks.md)
+
+若要深入瞭解 Azure Blob 儲存體，請使用下列連結：
+
+* [Azure Blob 儲存體檔](https://docs.microsoft.com/azure/storage/blobs/)
+
+* [Python API 的 Azure Blob 儲存體檔](https://docs.microsoft.com/python/api/overview/azure/storage-blob-readme?view=azure-python)

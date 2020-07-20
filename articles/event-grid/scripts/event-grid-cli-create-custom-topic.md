@@ -1,22 +1,15 @@
 ---
 title: Azure CLI 指令碼範例 - 建立自訂主題 | Microsoft Docs
-description: Azure CLI 指令碼範例 - 建立自訂主題
-services: event-grid
-documentationcenter: na
-author: tfitzmac
-ms.service: event-grid
+description: 本文提供範例 Azure CLl 指令碼，示範如何建立 Azure 事件方格自訂主題。
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/02/2018
-ms.author: tomfitz
-ms.openlocfilehash: 16c6586939a6dad248cef3abdabd78faf04a2381
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.date: 07/08/2020
+ms.openlocfilehash: 951008a2bf3919f69429ca15382334a9618b912f
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034263"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171307"
 ---
 # <a name="create-event-grid-custom-topic-with-azure-cli"></a>使用 Azure CLI 建立 Event Grid 自訂主題
 
@@ -34,7 +27,7 @@ ms.locfileid: "51034263"
 
 此指令碼會使用下列命令來建立自訂主題。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [az eventgrid topic create](https://docs.microsoft.com/cli/azure/eventgrid/topic#az-eventgrid-topic-create) | 建立 Event Grid 自訂主題。 |
 

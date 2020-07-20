@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell 指令碼範例 - 篩選 VM 網路流量 | Microsoft Docs
+title: 篩選 VM 網路流量 - Azure PowerShell 指令碼範例
 description: Azure PowerShell 指令碼範例 - 篩選輸入和輸出 VM 網路流量。
 services: virtual-network
 documentationcenter: virtual-network
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 1bebb81670b4e8cac5fb6f9ea1b60ef1cc6b60fe
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c11a2249b66d56706783c865a77c14a276d870ed
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717878"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74091357"
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic-script-sample"></a>篩選輸入和輸出 VM 網路流量的指令碼範例
 
@@ -48,7 +48,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 此指令碼會使用下列命令來建立資源群組、虛擬網路及網路安全性群組。 下表中的每個命令都會連結至命令特定的文件：
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 建立用來存放所有資源的資源群組。 |
 | [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | 建立子網路設定物件 |

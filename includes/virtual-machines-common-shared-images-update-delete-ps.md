@@ -9,18 +9,18 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: d2a85f3947e9993e5d1853e45c6d03586a074cf6
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191738"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67173942"
 ---
 ## <a name="update-resources"></a>更新資源
 
-有一些限制可以更新項目。 可以更新下列項目： 
+可更新的內容有一些限制。 可以更新下列專案： 
 
 共用映像庫：
-- 描述
+- Description
 
 映像定義：
 - 建議的 vCPU
@@ -34,9 +34,9 @@ ms.locfileid: "65191738"
 - 從最新版排除
 - 生命週期結束日期
 
-如果您打算加入複本區域，不會刪除來源受控映像。 來源受控映像所需的映像版本複寫到其他地區。 
+如果您計畫新增複本區域，請勿刪除來源受控映射。 需要來源受控映射，才能將映射版本複寫到其他區域。 
 
-若要更新資源庫的描述，請使用[更新 AzGallery](https://docs.microsoft.com/powershell/module/az.compute/update-azgallery)。
+若要更新資源庫的描述，請使用[AzGallery](https://docs.microsoft.com/powershell/module/az.compute/update-azgallery)。
 
 ```azurepowershell-interactive
 Update-AzGallery `
@@ -44,7 +44,7 @@ Update-AzGallery `
    -ResourceGroupName $resourceGroup.Name
 ```
 
-此範例示範如何使用[更新 AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimagedefinition)更新我們的映像定義的生命週期結束日期。
+這個範例示範如何使用[更新 AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimagedefinition)來更新映射定義的生命循環結束日期。
 
 ```azurepowershell-interactive
 Update-AzGalleryImageDefinition `
@@ -54,7 +54,7 @@ Update-AzGalleryImageDefinition `
    -EndOfLifeDate 01/01/2030
 ```
 
-此範例示範如何使用[更新 AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion)要排除此映像版本做*最新*映像。
+這個範例示範如何使用[new-azgalleryimageversion](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion)來排除此映射版本，使其無法當做*最新*的映射使用。
 
 ```azurepowershell-interactive
 Update-AzGalleryImageVersion `
@@ -68,7 +68,7 @@ Update-AzGalleryImageVersion `
 
 ## <a name="clean-up-resources"></a>清除資源
 
-當刪除資源，您需要與巢狀資源-也就是映像版本中的最後一個項目開始。 之後會刪除版本，您可以刪除映像定義。 您無法刪除資源庫，除非已刪除其下的所有資源。
+刪除資源時，您必須從 [嵌套資源] 中的最後一個專案（映射版本）開始。 一旦刪除版本之後，您就可以刪除映射定義。 您無法刪除圖庫，直到其底下的所有資源都已刪除為止。
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroup"

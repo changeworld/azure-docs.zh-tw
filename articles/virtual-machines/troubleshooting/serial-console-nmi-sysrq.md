@@ -4,29 +4,27 @@ description: 在 Azure 虛擬機器中使用適用於 SysRq 和 NMI 呼叫的序
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: ad29bbd038c8982778f2dbca63756f6995077dce
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
-ms.translationtype: MT
+ms.openlocfilehash: 3ad68438f5fc015b6a9150d67485b90a095f1a4a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204925"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79250084"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>使用適用於 SysRq 和 NMI 呼叫的序列主控台
 
 ## <a name="system-request-sysrq"></a>系統要求 (SysRq)
-SysRq 是可讓 Linux 作業系統核心理解的按鍵序列，可觸發一組預先定義的動作。 疑難排解虛擬機器或復原無法透過傳統的系統管理 （例如，如果 VM 未回應） 時，會經常會使用這些命令。 使用 Azure 序列主控台的 SysRq 功能，就像按下 SysRq 鍵及在實體鍵盤上輸入的字元。
+SysRq 是可讓 Linux 作業系統核心理解的按鍵序列，可觸發一組預先定義的動作。 當虛擬機器疑難排解或復原無法透過傳統系統管理（例如，如果 VM 沒有回應）執行時，通常會使用這些命令。 使用 Azure 序列主控台的 SysRq 功能，就像按下 SysRq 鍵及在實體鍵盤上輸入的字元。
 
-SysRq 序列傳遞出去後，核心組態將會控制系統的回應方式。 如需啟用和停用 SysRq 的資訊，請參閱＜SysRq 系統管理指南＞ [文字](https://aka.ms/kernelorgsysreqdoc) | [markdown](https://aka.ms/linuxsysrq)。  
+SysRq 序列傳遞出去後，核心組態將會控制系統的回應方式。 如需啟用和停用 SysRq 的資訊，請參閱＜SysRq 系統管理指南＞** [文字](https://aka.ms/kernelorgsysreqdoc) | [markdown](https://aka.ms/linuxsysrq)。
 
 使用命令列中的鍵盤圖示，即可使用 Azure 序列主控台將 SysRq 傳送至 Azure 虛擬機器，如下所示。
 
@@ -38,21 +36,21 @@ SysRq 序列傳遞出去後，核心組態將會控制系統的回應方式。 �
 
 SysRq 命令不能在已停止或其核心處於無回應狀態 (例如內核錯誤) 的虛擬機器上使用 。
 
-### <a name="enable-sysrq"></a>啟用 SysRq 
-如上方＜SysRq 系統管理指南＞中所述，您可以將 SysRq 設定為可使用全部命令、不使用命令或只使用特定命令。 您可以使用下列步驟來啟用所有 SysRq 命令，但重新開機後並不會保留此設定：
+### <a name="enable-sysrq"></a>啟用 SysRq
+如上方＜SysRq 系統管理指南＞** 中所述，您可以將 SysRq 設定為可使用全部命令、不使用命令或只使用特定命令。 您可以使用下列步驟來啟用所有 SysRq 命令，但重新開機後並不會保留此設定：
 ```
 echo "1" >/proc/sys/kernel/sysrq
 ```
 若要保留 SysReq 設定，您可以執行下列命令來啟用所有 SysRq 命令
-1. 將這一行新增至 /etc/sysctl.conf <br>
+1. 將這一行新增至 /etc/sysctl.conf** <br>
     `kernel.sysrq = 1`
 1. 執行下列命令來重新開機或更新 sysctl <br>
     `sysctl -p`
 
-### <a name="command-keys"></a>命令鍵 
+### <a name="command-keys"></a>命令鍵
 來自上述的 SysRq 系統管理指南：
 
-|命令| 函式
+|Command| 函式
 | ------| ----------- |
 |``b``  |   將立即重新啟動系統，並且不會同步或取消掛接磁碟。
 |``c``  |   將執行 NULL 指標取值 (Dereference) 引起的系統損壞。 如有設定，將會採用損毀傾印 (crashdump)。
@@ -98,8 +96,8 @@ echo "1" >/proc/sys/kernel/sysrq
 #### <a name="coreos"></a>CoreOS ####
 - [收集損毀記錄](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
-## <a name="non-maskable-interrupt-nmi"></a>非遮罩式插斷 (NMI) 
-非遮罩式插斷 (NMI) 旨在建立虛擬機器上軟體不會忽略的訊號。 在過去，NMI 已用來監視系統上需要特定回應時間的硬體問題。  今天，程式設計人員和系統管理員通常會使用做為機制 NMI 偵錯或疑難排解都沒有回應的系統。
+## <a name="non-maskable-interrupt-nmi"></a>非遮罩式插斷 (NMI)
+非遮罩式插斷 (NMI) 旨在建立虛擬機器上軟體不會忽略的訊號。 在過去，NMI 已用來監視系統上需要特定回應時間的硬體問題。  現在，程式設計人員和系統管理員通常會使用 NMI 作為對無回應系統進行偵錯和疑難排解的機制。
 
 使用序列主控台命令列中的鍵盤圖示，即可將 NMI 傳送至 Azure 虛擬機器，如下所示。 NMI 序列傳遞出去後，虛擬機器組態將會控制系統的回應方式。  Linux 作業系統可以設定為損毀，並在作業系統收到 NMI 時，建立記憶體傾印。
 
@@ -107,29 +105,29 @@ echo "1" >/proc/sys/kernel/sysrq
 
 ### <a name="enable-nmi"></a>啟用 NMI
 針對支援 sysctl 來設定核心參數的 Linux 系統，您可以在收到此 NMI 時，使用下列命令來引發系統異常：
-1. 將這一行新增至 /etc/sysctl.conf <br>
+1. 將這一行新增至 /etc/sysctl.conf** <br>
     `kernel.panic_on_unrecovered_nmi=1`
 1. 執行下列命令來重新開機或更新 sysctl <br>
     `sysctl -p`
 
 如需有關 Linux 核心組態的資訊 (包括 `unknown_nmi_panic`、`panic_on_io_nmi` 和 `panic_on_unrecovered_nmi`)，請參閱：[/proc/sys/kernel/* 的文件](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt)。 如需散發版本特有的 NMI 相關文件，以及在 Linux 收到 NMI 時，可建立損毀傾印的設定步驟，請參閱下列連結：
- 
-### <a name="ubuntu"></a>Ubuntu 
+
+### <a name="ubuntu"></a>Ubuntu
  - [核心損毀傾印](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
 
-### <a name="red-hat"></a>Red Hat 
+### <a name="red-hat"></a>Red Hat
  - [什麼是 NMI？該如何使用？](https://access.redhat.com/solutions/4127)
  - [如何在推送 NMI 參數時，將我的系統設定為損毀？](https://access.redhat.com/solutions/125103)
  - [損毀傾印的系統管理指南](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/pdf/kernel_crash_dump_guide/kernel-crash-dump-guide.pdf)
 
-### <a name="suse"></a>SUSE 
+### <a name="suse"></a>SUSE
 - [設定核心的核心傾印擷取](https://www.suse.com/support/kb/doc/?id=3374462)
 
-### <a name="coreos"></a>CoreOS 
+### <a name="coreos"></a>CoreOS
 - [收集損毀記錄](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
 ## <a name="next-steps"></a>後續步驟
 * 主要序列主控台 Linux 文件頁面在[這裡](serial-console-linux.md)。
 * 使用序列主控台在開機時進入 [GRUB 並進入單一使用者模式](serial-console-grub-single-user-mode.md)
-* 序列主控台也適用於 [Windows](serial-console-windows.md) VM
-* 深入了解[開機診斷](boot-diagnostics.md)
+* 「序列主控台」也適用於 [Windows](serial-console-windows.md) VM
+* 深入瞭解[開機診斷](boot-diagnostics.md)

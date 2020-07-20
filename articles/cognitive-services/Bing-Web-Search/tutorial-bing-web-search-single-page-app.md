@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 09/12/2018
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 6c28b02d68239bac658954caf447b6ff738c1b65
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 085bfd51ae6eabfc26201897a124a6272e0221fa
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881232"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603582"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>教學課程：使用 Bing Web 搜尋 API 建立單頁應用程式
 
@@ -30,16 +30,16 @@ ms.locfileid: "55881232"
 > * 管理訂用帳戶金鑰
 > * 處理錯誤
 
-若要使用此應用程式，需要具備 [Azure 認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)及 Bing 搜尋 API。 如果您還沒有帳戶，可以使用[免費試用](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)來取得訂用帳戶金鑰。
+若要使用此應用程式，需要具備 [Azure 認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)及 Bing 搜尋 API。
 
 ## <a name="prerequisites"></a>必要條件
 
 以下是數個您執行應用程式所需的項目：
 
-* Node.js 8 或更新版本
-* 訂用帳戶金鑰
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="建立 Bing 搜尋資源"  target="_blank">建立 Bing 搜尋資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
 
-## <a name="get-the-source-code-and-install-dependencies"></a>取得原始程式碼並安裝相依性
+* Node.js 8 或更新版本
 
 第一個步驟是使用範例應用程式的原始程式碼來複製存放庫。
 
@@ -80,9 +80,9 @@ npm install
 
 ## <a name="query-options"></a>查詢選項
 
-HTML 表單包含對應到 [Bing Web 搜尋 API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query-parameters) \(英文\) 中查詢參數的選項。 下表提供使用者如何使用範例應用程式來篩選搜尋結果的明細：
+HTML 表單包含對應到 [Bing Web 搜尋 API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) \(英文\) 中查詢參數的選項。 下表提供使用者如何使用範例應用程式來篩選搜尋結果的明細：
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 |-----------|-------------|
 | `query` | 可輸入查詢字串的文字欄位。 |
 | `where` | 可選取市場 (位置和語言) 的下拉式選單。 |
@@ -93,7 +93,7 @@ HTML 表單包含對應到 [Bing Web 搜尋 API v7](https://docs.microsoft.com/r
 | `offset` | 隱藏的欄位。 要求中第一個搜尋結果的位移，其可用於分頁。 它會隨著每個新要求重設為 `0`。 |
 
 > [!NOTE]
-> Bing Web 搜尋 API 會提供其他查詢參數來協助精簡搜尋結果。 此範例只使用數個參數。 如需可用參數的完整清單，請參閱 [Bing Web 搜尋 API v7 參考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query-parameters) \(英文\)。
+> Bing Web 搜尋 API 會提供其他查詢參數來協助精簡搜尋結果。 此範例只使用數個參數。 如需可用參數的完整清單，請參閱 [Bing Web 搜尋 API v7 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) \(英文\)。
 
 `bingSearchOptions()` 函式會轉換這些選項，以符合 Bing 搜尋 API 所需的格式。
 
@@ -105,7 +105,7 @@ function bingSearchOptions(form) {
     // Where option.
     options.push("mkt=" + form.where.value);
     // SafeSearch option.
-    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "off"));
+    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "moderate"));
     // Freshness option.
     if (form.when.value.length) options.push("freshness=" + form.when.value);
     var what = [];
@@ -128,7 +128,7 @@ function bingSearchOptions(form) {
 }
 ```
 
-您可以使用 `moderate` (此為 Bing Web 搜尋的預設設定)，將 `SafeSearch` 設定為 `strict`、`moderate` 或 `off`。 此表單使用具備兩種狀態的核取方塊。 在此程式碼片段中，會將 SafeSearch 設定為 `strict` 或 `off`，但不使用 `moderate`。
+您可以使用 `moderate` (此為 Bing Web 搜尋的預設設定)，將 `SafeSearch` 設定為 `strict`、`moderate` 或 `off`。 此表單使用具備兩種狀態的核取方塊：`strict` 或 `moderate`。
 
 如果選取了任何 [升階] 核取方塊，即會將 `answerCount` 參數加入至查詢。 如果使用 `promote` 參數，則必須使用 `answerCount`。 在此程式碼片段中，會將值設定為 `9`，以傳回所有可用的結果類型。
 > [!NOTE]
@@ -386,7 +386,7 @@ searchItemRenderers = {
 
 內容引數包括：
 
-| 參數  | 說明 |
+| 參數  | 描述 |
 |------------|-------------|
 | `section` | 顯示項目的結果區段 (`pole`、`mainline` 或 `sidebar`)。 |
 | `index`<br>`count` | 如果 `RankingResponse` 項目指定要顯示給定集合中的所有結果，則可供使用，否則會使用 `undefined`。 其集合內的項目索引，以及該集合中的項目總數。 您可以使用此資訊來為結果編號，以便為第一個或最後一個結果 (或其他結果) 產生不同的 HTML。 |
@@ -442,7 +442,7 @@ searchItemRenderers = {
 > [!NOTE]
 > 在生產 Web 應用程式中，無論如何都應該執行要求伺服器端。 否則，您的 Bing 搜尋 API 訂用帳戶金鑰必須包含在網頁中，以提供給檢視來源的任何人。 您會根據 API 訂用帳戶金鑰的所有使用量付費，即使是未經授權的合作對象所提出的要求，因此請務必不要公開您的金鑰。
 
-您可以基於開發目的，透過 CORS Proxy 提出要求。 來自這個類型 Proxy 的回應包含 `Access-Control-Expose-Headers` 標頭，可將回應標頭列入白名單並提供給 JavaScript 使用。
+您可以基於開發目的，透過 CORS Proxy 提出要求。 來自這個類型 Proxy 的回應包含 `Access-Control-Expose-Headers` 標頭，可將回應標頭列入允許清單並提供給 JavaScript 使用。
 
 您可以輕鬆安裝 CORS Proxy，讓我們的範例應用程式能夠存取用戶端識別碼標頭。 請執行這個命令：
 

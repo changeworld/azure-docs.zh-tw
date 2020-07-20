@@ -1,42 +1,39 @@
 ---
-title: 支援 Azure Marketplace 和 AppSource | Azure
-description: Azure Marketplace 和 AppSource 的支援資訊和連結
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: yijenj
-manager: nunoc
+title: Microsoft 商業市集支援 - Azure Marketplace
+description: 合作夥伴中心內 Azure Marketplace 和 AppSource 的支援資訊和連結
 ms.service: marketplace
-ms.topic: article
-ms.date: 10/05/2018
-ms.author: yijenj
-ms.openlocfilehash: 496fef7cfd93004e77a710942cffabbf23d6b29a
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+author: keferna
+ms.author: keferna
+ms.date: 04/14/2020
+ms.openlocfilehash: 1e4539dcec1f3f57f7fcc0ca0b8d8c266dc1bc99
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937691"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121498"
 ---
-# <a name="support-for-the-marketplace"></a>Marketplace 的支援  
-以下是 Marketplace 的支援選項清單。  
+# <a name="support-for-microsoft-commercial-marketplace"></a>Microsoft 商業市集的支援
 
-此外，您可以在 [C + AI 社群論壇的 Marketplace 頻道](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)取得許多問題的解答。  
+您對以 Microsoft 商業市集發行者身分開始使用有任何疑問嗎？ 以下是商業市集的支援選項清單。 除了下列資源之外，您也可以在 [C + AI 社群論壇的 Marketplace 頻道](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)取得許多問題的解答。  
 
 ## <a name="onboarding"></a>登入
 
-與 Microsoft 建立票證[marketplace 發行者支援人員](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820)和 [快速入門] 的上架，或與 Microsoft 的問題[合作夥伴支援](https://partner.microsoft.com/support)如果您在 Microsoft 合作夥伴網路有問題。
+透過 Microsoft [Marketplace 發行者支援服務](https://aka.ms/marketplacepublishersupport)開立票證，以解決有關上線及入門的問題。
 
-## <a name="cloud-partner-portal"></a>雲端合作夥伴入口網站  
+## <a name="partner-center"></a>合作夥伴中心
 
 | 支援通道 | 描述 | 可用性 |  
 |:--- |:--- |:--- |  
-| 如需協助，請瀏覽位於 [Marketplace 支援服務](https://go.microsoft.com/fwlink/?linkid=844975) \(英文\) 的「建立事件」頁面</li> </ul> | 支援「Cloud Partner 入口網站」。 | 提供支援的時間為太平洋標準時間早上 6 點到晚上 6 點。 |  
+| 如需協助，請瀏覽位於 [Marketplace 支援服務](https://aka.ms/marketplacepublishersupport) \(英文\) 的「建立事件」頁面</li> </ul> | 合作夥伴中心的支援。 | 提供週一至週五全天候支援。 |  
 
 ## <a name="technical"></a>技術需求  
 
 | 支援通道 | 描述 |  
 |:--- |:--- |  
-| MSDN 論壇：Marketplace：[social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Microsoft Developer Network 論壇。 |  
+| MSDN 論壇：位於 [Microsoft 問與答問題頁面](https://docs.microsoft.com/answers/products/azure)的 Marketplace | Microsoft Developer Network 論壇。 |  
 | Stack Overflow：Azure 位於 [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | 可供取得解決方案及詢問 Azure Marketplace 所有相關問題的 Stack Overflow 環境。<ul> <li>Stack Overflow：Azure Marketplace 位於 [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Stack Overflow：Azure Resource Manager 位於 [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Stack Overflow：Azure 上位於 [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine) 的虛擬機器</li> <li>Stack Overflow：Azure 上位於 [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container) 的容器</li> </ul> |
-| AppSource 的支援：[appsourcecrm@Microsoft.com](mailto:appsourcecrm@microsoft.com) | 支援「Dynamics 應用程式」的發佈 |
 
 ## <a name="marketing-resources"></a>行銷資源  
 
@@ -46,8 +43,9 @@ ms.locfileid: "64937691"
 | 電子郵件：[gtm@microsoft.com](mailto:gtm@microsoft.com) | 支援 GTM 權益和計劃問題。 | 上班時間採用美國太平洋時區。 |  
 | 電子郵件：[cebrand@microsoft.com](mailto:cebrand@microsoft.com) | 回答和 Azure 標誌與商標的使用方式有關的問題。 |  |  
 
-
 ## <a name="next-steps"></a>後續步驟
-請瀏覽 [Azure Marketplace 和 AppSource 發行者指南](./marketplace-publishers-guide.md)網頁。  
- 
+
+* 瀏覽[商業市集發行者指南頁面](index.yml)。
+* 深入了解[合作夥伴中心的商業市集計畫支援](partner-center-portal/support.md)。
+
 ---

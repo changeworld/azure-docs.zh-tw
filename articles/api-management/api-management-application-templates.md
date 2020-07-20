@@ -10,19 +10,18 @@ ms.assetid: f3122c4d-e10e-4cdf-977b-36e8f4133fc8
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 732fdf3f9210a1484895e0b43e061b4bbc586b43
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1452f380cec711fb224f532ccb02d11c5bbad697
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60657891"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255178"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Azure API 管理中的應用程式範本
-通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页的内容。 使用這些範本時，您可以運用 [DotLiquid](http://dotliquidmarkup.org/) 語法和您選擇的編輯器 (例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers))，以及一組提供的當地語系化[字串資源](api-management-template-resources.md#strings)、[字符資源](api-management-template-resources.md#glyphs)和[頁面控制項](api-management-page-controls.md)，依照您的想法自由靈活地設定頁面內容。  
+「Azure API 管理」可讓您使用一組可設定開發人員入口網站頁面內容的範本，來自訂那些頁面的內容。 使用這些範本時，您可以運用 [DotLiquid](http://dotliquidmarkup.org/) 語法和您選擇的編輯器 (例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers))，以及一組提供的當地語系化[字串資源](api-management-template-resources.md#strings)、[字符資源](api-management-template-resources.md#glyphs)和[頁面控制項](api-management-page-controls.md)，依照您的想法自由靈活地設定頁面內容。  
   
  本節的範本可讓您自訂開發人員入口網站中「應用程式」頁面的內容。  
   
@@ -31,12 +30,14 @@ ms.locfileid: "60657891"
 -   [應用程式](#Application)  
   
 > [!NOTE]
->  下列文件中包含範例預設範本，但範本可能會因持續進行的改善而有變更。 您可以瀏覽至想要的個別範本，來檢視開發人員入口網站中的即時預設範本。 如需有關使用範本的詳細資訊，請參閱[如何使用範本自訂 API 管理開發人員入口網站](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
+>  下列文件中包含範例預設範本，但範本可能會因持續進行的改善而有變更。 您可以瀏覽至想要的個別範本，來檢視開發人員入口網站中的即時預設範本。 如需有關使用範本的詳細資訊，請參閱[如何使用範本自訂 API 管理開發人員入口網站](./api-management-developer-portal-templates.md)。  
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="ProductList"></a> 應用程式清單  
- 「應用程式清單」範本可讓您自訂開發人員入口網站中應用程式清單頁面的主體。  
+##  <a name="application-list"></a><a name="ProductList"></a>應用程式清單  
+ 「應用程式清單」**** 範本可讓您自訂開發人員入口網站中應用程式清單頁面的主體。  
   
  ![應用程式清單頁面開發人員入口網站範本](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM 應用程式清單頁面開發人員入口網站範本")  
   
@@ -72,18 +73,18 @@ ms.locfileid: "60657891"
 </div>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控制項  
  `Product list` 範本可能會使用下列[頁面控制項](api-management-page-controls.md)。  
   
--   [paging-control](api-management-page-controls.md#paging-control)  
+-   [分頁控制](api-management-page-controls.md#paging-control)  
   
 ### <a name="data-model"></a>資料模型  
   
 |屬性|類型|描述|  
 |--------------|----------|-----------------|  
-|`Paging`|[分頁](api-management-template-data-model-reference.md#Paging)實體。|应用程序集合的分页信息。|  
-|`Applications`|[应用程序](api-management-template-data-model-reference.md#Application)实体的集合。|目前使用者可看見的應用程式。|  
-|`CategoryName`|string|應用程式的類別。|  
+|`Paging`|[分頁](api-management-template-data-model-reference.md#Paging)實體。|應用程式集合的分頁資訊。|  
+|`Applications`|[應用程式](api-management-template-data-model-reference.md#Application)實體的集合。|目前使用者可看見的應用程式。|  
+|`CategoryName`|字串|應用程式的類別。|  
   
 ### <a name="sample-template-data"></a>範例範本資料  
   
@@ -136,8 +137,8 @@ ms.locfileid: "60657891"
 }  
 ```  
   
-##  <a name="Application"></a> 應用程式  
- 「應用程式」範本可讓您自訂開發人員入口網站中應用程式頁面的主體。  
+##  <a name="application"></a><a name="Application"></a>應用程式  
+ 「應用程式」**** 範本可讓您自訂開發人員入口網站中應用程式頁面的主體。  
   
  ![應用程式頁面開發人員入口網站範本](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM 應用程式頁面開發人員入口網站範本")  
   
@@ -179,7 +180,7 @@ ms.locfileid: "60657891"
   
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控制項  
  `Application` 範本不允許使用任何[頁面控制項](api-management-page-controls.md)。  
   
 ### <a name="data-model"></a>資料模型  

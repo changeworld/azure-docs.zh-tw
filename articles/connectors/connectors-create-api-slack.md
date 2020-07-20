@@ -1,22 +1,17 @@
 ---
-title: 從 Azure Logic Apps 連線到 Slack | Microsoft Docs
+title: 從 Azure Logic Apps 連線到 Slack
 description: 藉由使用 Azure Logic Apps，讓在 Slack 帳戶中監視檔案及管理通道、群組和訊息的工作和工作流程自動化
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: 234cad64-b13d-4494-ae78-18b17119ba24
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 675e37120b06af3add58b564495f22875647a0fa
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+tags: connectors
+ms.openlocfilehash: 194f75fbb486d5c53a8e650631c16fcf2649f277
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62105644"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826021"
 ---
 # <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>使用 Azure Logic Apps 來監視及管理 Slack
 
@@ -29,9 +24,9 @@ ms.locfileid: "62105644"
 
 您可以使用觸發程序，從您的 Slack 帳戶收到回應，並且讓輸出可供其他動作使用。 您可以使用動作，該動作會使用您的 Slack 帳戶來執行工作。 您也可以讓其他動作使用 Slack 動作的輸出。 例如，建立新檔案時，您可以使用 Office 365 Outlook 連接器來傳送電子郵件。 如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先<a href="https://azure.microsoft.com/free/" target="_blank">註冊免費的 Azure 帳戶</a>。 
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
 
 * 您的 [Slack](https://slack.com/) (英文) 帳戶和使用者認證
 
@@ -53,10 +48,10 @@ ms.locfileid: "62105644"
 
    若是現有的邏輯應用程式，請在想要新增動作的最後一個步驟底下，選擇 [新增步驟]。 
    在搜尋方塊中，輸入 "slack" 作為篩選條件。 
-   請在動作清單底下，選取您想要的動作。
+   在動作清單底下，選取您想要的動作。
 
    若要在步驟之間新增動作，將指標移至步驟之間的箭號。 
-   選擇顯示的加號 (**+**)，然後選取 [新增動作]。
+   選擇顯示的加號 ( **+** )，然後選取 [新增動作]。
 
 1. 如果系統提示您登入 Slack，請登入您的 Slack 工作區。 
 
@@ -74,7 +69,7 @@ ms.locfileid: "62105644"
 
 ## <a name="get-support"></a>取得支援
 
-* 如有問題，請瀏覽 [Azure Logic Apps 論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有任何問題，請瀏覽 [Microsoft 問與答的 Azure Logic Apps 問題頁面](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 * 若要提交或票選功能構想，請造訪 [Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>後續步驟

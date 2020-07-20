@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 入口網站中標幟為有風險的使用者安全性報告 | Microsoft Docs
+title: 在 Azure Active Directory 入口網站中標示有風險的使用者 |Microsoft Docs
 description: 了解 Azure Active Directory 入口網站中標幟為有風險的使用者安全性報告
 services: active-directory
 author: MarkusVi
@@ -7,7 +7,7 @@ manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7209f468f493e226fae22ccd260e8ceb2e570494
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3037dd2e03062ebab0c48438aa4345a766a22fc8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60286682"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608920"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>補救 Azure Active Directory 入口網站中標幟為有風險的使用者
 
@@ -32,7 +32,7 @@ Microsoft 致力於協助保護您的環境。 為此承諾，Microsoft 會持�
 
 ## <a name="access-the-users-flagged-for-risk-report"></a>存取標幟為有風險的使用者報告
 
-您可以透過 Azure 入口網站中的[有風險的使用者報告](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers)，檢閱標幟為有風險的使用者。 如果您沒有 Azure AD，則可以在 [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD) 註冊免費版。 
+您可以透過 Azure 入口網站中的[有風險的使用者報告](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers)，檢閱標幟為有風險的使用者。 如果您沒有 Azure AD，可以在免費註冊 [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD) 。 
 
 從標幟為有風險的使用者報告，您可以為每位使用者採取下列動作：
 
@@ -46,14 +46,14 @@ Microsoft 致力於協助保護您的環境。 為此承諾，Microsoft 會持�
 
 您也可以使用 Office 365 認證來存取 **Azure 系統管理中心**。 在您啟動 Azure AD 存取後，您就會重新導向至 Azure AD 入口網站。 在基本訂閱等級，報告中提供的詳細資料數量有限。 其他資料和分析資料則適用於 Azure 進階訂閱者。
 
-若要存取**標幟有風險的使用者**Microsoft 365 系統管理中心中的報表：
+若要存取 Microsoft 365 系統管理中心內**標示為有風險的使用者**報告：
 
-1.  從左側的導覽功能表中，選取 [系統管理中心]。 
-2.  選取 [Azure AD]。
-3.  登入 [Azure Active Directory 系統管理中心]。
-4.  如果頁面頂端顯示的橫幅表示「查看新的入口網站」，請選取此連結。
-4.  在左側導覽功能表中，選取 [Azure Active Directory]。 
-5.  在導覽窗格中，從 [安全性] 區段選取 [標幟為有風險的使用者]。
+1.  從左側的導覽功能表中，選取 [系統管理中心]****。 
+2.  選取 [Azure AD]****。
+3.  登入 [Azure Active Directory 系統管理中心]****。
+4.  如果頁面頂端顯示的橫幅表示「查看新的入口網站」****，請選取此連結。
+4.  在左側導覽功能表中，選取 [Azure Active Directory]****。 
+5.  在導覽窗格中，從 [安全性]**** 區段選取 [標幟為有風險的使用者]****。
 
 ## <a name="remediation-actions"></a>補救動作
 
@@ -75,9 +75,9 @@ Microsoft 致力於協助保護您的環境。 為此承諾，Microsoft 會持�
 
     f. 將帳戶的密碼複雜性設定為很高。
 
-    g. 啟用信箱稽核。
+    如 啟用信箱稽核。
 
-    h.如果该值不存在，请单击“添加行”。 產生稽核記錄，以供系統管理員檢閱。
+    h. 產生稽核記錄，以供系統管理員檢閱。
 
 4. 調查您的 Office 365 租用戶和其他 IT 基礎結構是否可能修改，包括檢閱所有租用戶設定、使用者帳戶，以及每個使用者的組態設定。 檢查持續性方法的指標，以及入侵者可能已利用初始據點來取得 VPN 認證，或存取其他組織資源的指標。 
 
@@ -87,7 +87,6 @@ Microsoft 致力於協助保護您的環境。 為此承諾，Microsoft 會持�
 
 - 讀取及實作這個[關於處理異常活動的指引](https://aka.ms/fixaccount)。 
 - [啟用稽核管線](https://aka.ms/improvesecurity)可協助您分析租用戶中的活動。 完成後，您的稽核存放區會開始填入活動記錄。 此時，您也能夠運用[安全性和規範中心的搜尋與調查資源](https://aka.ms/sccsearch)。 
-- 使用此[指令碼來為所有帳戶啟用信箱稽核](https://aka.ms/mailboxaudit1)。 
 - 檢閱您所有信箱的委派權限和郵件轉寄規則。 您可以使用此 [PowerShell 指令碼](https://aka.ms/delegateforwardrules)來執行此工作。 
 
 ## <a name="next-steps"></a>後續步驟

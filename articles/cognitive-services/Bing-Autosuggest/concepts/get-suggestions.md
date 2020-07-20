@@ -1,21 +1,21 @@
 ---
 title: 使用 Bing 自動建議 API 建議搜尋字詞
-titlesuffix: Azure Cognitive Services
-description: 了解如何使用 Bing 自動建議 API。
+titleSuffix: Azure Cognitive Services
+description: 本文討論使用 Bing 自動建議 API 建議查詢詞彙的概念，以及查詢長度對相關性的影響。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 293dcaadfc20116455983b3fc0069f9e9df3f843
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
-ms.translationtype: HT
+ms.openlocfilehash: 060dbd29ee4ddb78e8ae9b2ed4e7814da3c4eebf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010543"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "74072896"
 ---
 # <a name="suggesting-query-terms"></a>建議查詢字詞
 
@@ -23,7 +23,7 @@ ms.locfileid: "57010543"
 
 ## <a name="example-request"></a>範例要求
 
-下列範例顯示針對 *sail* 傳回建議查詢字串的要求。 請記得在設定 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#query) 查詢參數時，對使用者的部分查詢字詞進行 URL 編碼。 例如，如果使用者輸入「sailing les」，請將 `q` 設定為 `sailing+les` 或 `sailing%20les`。
+下列範例顯示針對 *sail* 傳回建議查詢字串的要求。 請記得在設定 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#query) 查詢參數時，對使用者的部分查詢字詞進行 URL 編碼。 例如，如果使用者輸入「sailing les」**，請將 `q` 設定為 `sailing+les` 或 `sailing%20les`。
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/suggestions?q=sail&mkt=en-us HTTP/1.1
@@ -34,7 +34,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-下列回應會包含一份 [SearchAction](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#searchaction) 物件清單，其中包含建議的查詢字詞。
+下列回應會包含一份 [SearchAction](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#searchaction) 物件清單，其中包含建議的查詢字詞。
 
 ```json
 {

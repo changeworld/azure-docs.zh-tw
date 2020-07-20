@@ -1,38 +1,57 @@
 - name: Azure 服務健康狀態
-  href: index.md
+  href: index.yml
 - name: 概觀
   items:
-    - name: 什麼是 Azure 狀態？
+    - name: Azure 服務健康狀態服務
+      href: overview.md
+- name: 快速入門
+  items:
+    - name: 設定適用於服務健康狀態事件的警示
+      items:
+        - name: Azure 入口網站
+          href: alerts-activity-log-service-notifications-portal.md
+        - name: ARM 範本
+          displayName: Resource Manager
+          href: alerts-activity-log-service-notifications-arm.md
+- name: 概念
+  items:
+    - name: Azure 狀態頁面
       href: azure-status-overview.md
-    - name: 什麼是服務健康狀態？
+    - name: 服務健康情況
       href: service-health-overview.md
-    - name: 什麼是資源健康狀態？
+    - name: 資源健全狀況
       href: resource-health-overview.md
 - name: 作法
   items:
     - name: 設定適用於服務健康狀態事件的警示
-      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
-      items:
-        - name: 使用 Azure 入口網站檢視服務健康情況通知
-          href: ../azure-monitor/platform/service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json
-    - name: 使用 Webhook 設定服務健康狀態通知
+      href: alerts-activity-log-service-notifications.md
+    - name: 使用 Azure 入口網站檢視服務健康情況通知
+      href: service-notifications.md
+    - name: 透過 Webhook 將警示傳送至外部系統
       href: service-health-alert-webhook-guide.md
-      items:
-        - name: 以 ServiceNow 設定
-          href: service-health-alert-webhook-servicenow.md
-        - name: 以 PagerDuty 設定
-          href: service-health-alert-webhook-pagerduty.md
-        - name: 以 OpsGenie 設定
-          href: service-health-alert-webhook-opsgenie.md
-        - name: 使用 REST 擷取健康狀態事件
-          href: service-health-rest.md
-    - name: 設定適用於資源健康狀態事件的警示
+    - name: 將警示傳送至 ServiceNow
+      href: service-health-alert-webhook-servicenow.md
+    - name: 將警示傳送至 PagerDuty
+      href: service-health-alert-webhook-pagerduty.md
+    - name: 將警示傳送至 OpsGenie
+      href: service-health-alert-webhook-opsgenie.md
+    - name: 使用 Azure 入口網站設定資源健康情況警示
+      href: resource-health-alert-monitor-guide.md
+    - name: 使用 Resource Manager 範本設定資源健康狀態警示
       href: resource-health-alert-arm-template-guide.md
+- name: 參考
+  items:
+    - name: 服務健康狀態通知屬性
+      href: service-health-notifications-properties.md
+    - name: 資源健康情況類型和檢查
+      href: resource-health-checks-resource-types.md
+    - name: 資源健康狀態常見問題集
+      href: resource-health-faq.md
 - name: 資源
   items:
-    - name: 常見問題集
-      href: resource-health-faq.md
+    - name: Azure 藍圖
+      href: 'https://azure.microsoft.com/roadmap/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: 可透過 Azure 資源健康狀態取得的資源類型和健康狀態檢查
-      href: resource-health-checks-resource-types.md
+    - name: 通知價格
+      href: 'https://azure.microsoft.com/pricing/details/monitor/'

@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 8e06ee33-18f9-4c05-9168-e6b162079d88
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d0295162acdf358bd798e86bd7d3479f5e78d72
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 393557531fe69a494a16e0f4c49ac07891e490ec
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65407911"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74233408"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>教學課程：Azure Active Directory 與 TOPdesk - Secure 整合
 
@@ -34,7 +35,7 @@ ms.locfileid: "65407911"
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 TOPdesk - Secure 整合，您需要下列項目：
 
@@ -53,19 +54,19 @@ ms.locfileid: "65407911"
 
 **若要從資源庫新增 TOPdesk - Secure，請執行下列步驟：**
 
-1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory] 圖示。
+1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory]  圖示。
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
-2. 瀏覽至 [企業應用程式]，然後選取 [所有應用程式] 選項。
+2. 瀏覽至 [企業應用程式]  ，然後選取 [所有應用程式]  選項。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-3. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式] 按鈕。
+3. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式]  按鈕。
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **TOPdesk - Secure**，從結果面板中選取 [TOPdesk - Secure]，然後按一下 [新增] 按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **TOPdesk - Secure**，從結果面板中選取 [TOPdesk - Secure]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 TOPdesk - Secure](common/search-new-app.png)
 
@@ -81,7 +82,7 @@ ms.locfileid: "65407911"
 3. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 Britta Simon 測試 Azure AD 單一登入。
 4. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 Britta Simon 能夠使用 Azure AD 單一登入。
 5. **[建立 TOPdesk - Secure 測試使用者](#create-topdesk---secure-test-user)** - 使 TOPdesk - Secure 中對應的 Britta Simon 連結到該使用者在 Azure AD 中的代表項目。
-6. **[測試單一登入](#test-single-sign-on)**，驗證組態是否能運作。
+6. **[測試單一登入](#test-single-sign-on)** ，驗證組態是否能運作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>設定 Azure AD 單一登入
 
@@ -89,36 +90,36 @@ ms.locfileid: "65407911"
 
 若要設定與 TOPdesk - Secure 搭配運作的 Azure AD 單一登入，請執行下列步驟：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [TOPdesk - Secure] 應用程式整合頁面上，選取 [單一登入]。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [TOPdesk - Secure]  應用程式整合頁面上，選取 [單一登入]  。
 
     ![設定單一登入連結](common/select-sso.png)
 
-2. 在 [選取單一登入方法] 對話方塊中，選取 [SAML/WS-Fed] 模式以啟用單一登入。
+2. 在 [選取單一登入方法]  對話方塊中，選取 [SAML/WS-Fed]  模式以啟用單一登入。
 
     ![單一登入選取模式](common/select-saml-option.png)
 
-3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。
+3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。   
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
-4. 在 [基本 SAML 組態] 區段上，執行下列步驟：
+4. 在 [基本 SAML 組態]  區段上，執行下列步驟：
 
     ![TOPdesk - Secure 網域及 URL 單一登入資訊](common/sp-identifier-reply.png)
 
-    a. 在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://<companyname>.topdesk.net`
+    a. 在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<companyname>.topdesk.net`
 
-    b. 在 [識別碼] 方塊中，使用下列模式輸入 URL：`https://<companyname>.topdesk.net/tas/secure/login/verify`
+    b. 在 [識別碼 URL]  方塊中，填入您可以從 TOPdesk 設定中擷取的 TOPdesk 中繼資料 URL。 它應該使用下列模式：`https://<companyname>.topdesk.net/saml-metadata/<identifier>`
 
-    c. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://<companyname>.topdesk.net/tas/public/login/saml`
+    c. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<companyname>.topdesk.net/tas/secure/login/verify`
 
     > [!NOTE]
     > 這些都不是真正的值。 使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 請連絡 [TOPdesk - Secure 用戶端支援小組](https://www.topdesk.com/us/support/) \(英文\) 以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-5. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中按一下 [下載]，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
-6. 在 [設定 TOPdesk - Secure] 區段上，依據您的需求複製適當的 URL。
+6. 在 [設定 TOPdesk - Secure]  區段上，依據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -132,15 +133,15 @@ ms.locfileid: "65407911"
 
 1. 以系統管理員身分登入您的 **TOPdesk - Secure** 公司網站。
 
-2. 在 [TOPdesk] 功能表中按一下 [設定]。
+2. 在 [TOPdesk]  功能表中按一下 [設定]  。
 
     ![設定](./media/topdesk-secure-tutorial/ic790598.png "設定")
 
-3. 按一下 [登入設定] 。
+3. 按一下 [登入設定]  。
 
     ![登入設定](./media/topdesk-secure-tutorial/ic790599.png "登入設定")
 
-4. 展開 [登入設定] 功能表，然後按一下 [一般]。
+4. 展開 [登入設定]  功能表，然後按一下 [一般]  。
 
     ![一般](./media/topdesk-secure-tutorial/ic790600.png "一般")
 
@@ -154,11 +155,11 @@ ms.locfileid: "65407911"
 
     ![判斷提示取用者服務](./media/topdesk-secure-tutorial/ic790856.png "判斷提示取用者服務")
 
-    c. 複製 **AssertionConsumerService** 值，在 [TOPdesk - Secure 網域及 URL] 區段的 [回覆 URL] 文字方塊中，貼上此值。
+    c. 複製 **AssertionConsumerService** 值，在 [TOPdesk - Secure 網域及 URL]  區段的 [回覆 URL] 文字方塊中，貼上此值。
 
 6. 若要建立憑證檔案，請執行下列步驟：
 
-    ![憑證](./media/topdesk-secure-tutorial/ic790606.png "憑證")
+    ![[MSSQLSERVER 的通訊協定內容]](./media/topdesk-secure-tutorial/ic790606.png "憑證")
 
     a. 從 Azure 入口網站開啟下載的中繼資料檔案。
 
@@ -168,37 +169,37 @@ ms.locfileid: "65407911"
 
     d. 儲存複製的 **X509Certificate** 值到本機電腦的檔案中。
 
-7. 在 **Public** 區段中，按一下 [加入]。
+7. 在 **Public** 區段中，按一下 [加入]  。
 
-    ![新增](./media/topdesk-secure-tutorial/ic790607.png "新增")
+    ![加入](./media/topdesk-secure-tutorial/ic790607.png "加")
 
 8. 在 [SAML 組態輔助程式]  對話頁面上，執行下列步驟：
 
     ![SAML 組態輔助程式](./media/topdesk-secure-tutorial/ic790608.png "SAML 組態輔助程式")
 
-    a. 若要上傳您從 Azure 入口網站下載的中繼資料檔案，請在 [同盟中繼資料] 下按一下 [瀏覽]。
+    a. 若要上傳您從 Azure 入口網站下載的中繼資料檔案，請在 [同盟中繼資料]  下按一下 [瀏覽]  。
 
-    b. 若要上傳您的憑證檔案，請在 [憑證 (RSA)] 下按一下 [瀏覽]。
+    b. 若要上傳您的憑證檔案，請在 [憑證 (RSA)]  下按一下 [瀏覽]  。
 
-    c. 針對 **私密金鑰 (RSA、PKCS8、DER)**，您可以上傳您自己的私密金鑰，也可以連絡 [TOPdesk - Secure 用戶端支援小組](https://www.topdesk.com/us/support)以取得私密金鑰。
+    c. 針對 **私密金鑰 (RSA、PKCS8、DER)** ，您可以上傳您自己的私密金鑰，也可以連絡 [TOPdesk - Secure 用戶端支援小組](https://www.topdesk.com/us/support)以取得私密金鑰。
 
-    d. 若要上傳您從 TOPdesk 支援小組取得的標誌檔案，請在 [標誌圖示] 下按一下 [瀏覽]。
+    d. 若要上傳您從 TOPdesk 支援小組取得的標誌檔案，請在 [標誌圖示]  下按一下 [瀏覽]  。
 
-    e. 在 [使用者名稱屬性] 文字方塊中，輸入 `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。
+    e. 在 [使用者名稱屬性]  文字方塊中，輸入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。
 
     f. 在 [顯示名稱]  文字方塊中，輸入您的組態名稱。
 
-    g. 按一下 [檔案] 。
+    g. 按一下 [檔案]  。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
 本節的目標是要在 Azure 入口網站中建立一個名為 Britta Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
 
     ![[使用者和群組] 與 [所有使用者] 連結](common/users.png)
 
-2. 在畫面頂端選取 [新增使用者]。
+2. 在畫面頂端選取 [新增使用者]  。
 
     ![[新增使用者] 按鈕](common/new-user.png)
 
@@ -206,20 +207,20 @@ ms.locfileid: "65407911"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
   
-    b. 在 [使用者名稱] 欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
+    b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
-    c. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
+    c. 選取 [顯示密碼]  核取方塊，然後記下 [密碼] 方塊中顯示的值。
 
-    d. 按一下頁面底部的 [新增] 。
+    d. 按一下頁面底部的 [新增]  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 TOPdesk - Secure 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]、[所有應用程式] 及 [TOPdesk - Secure]。
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]  、[所有應用程式]  及 [TOPdesk - Secure]  。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
@@ -227,7 +228,7 @@ ms.locfileid: "65407911"
 
     ![應用程式清單中的 [TOPdesk - Secure] 連結](common/all-applications.png)
 
-3. 在左側功能表中，選取 [使用者和群組]。
+3. 在左側功能表中，選取 [使用者和群組]  。
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
@@ -235,11 +236,11 @@ ms.locfileid: "65407911"
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
-5. 在 [使用者和群組] 對話方塊的 [使用者] 清單中，選取 [Britta Simon]，然後按一下畫面底部的 [選取] 按鈕。
+5. 在 [使用者和群組]  對話方塊的 [使用者] 清單中，選取 [Britta Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
 
-6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色] 對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取] 按鈕。
+6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色]  對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取]  按鈕。
 
-7. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
+7. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
 
 ### <a name="create-topdesk---secure-test-user"></a>建立 TOPdesk - Secure 測試使用者
 
@@ -252,24 +253,24 @@ TOPdesk - Secure 需以手動的方式佈建。
 
 2. 在上方功能表中按一下 [TOPdesk] \> [新增] \> [支援檔案] \> [操作員]。
 
-    ![操作員](./media/topdesk-secure-tutorial/ic790610.png "操作員")
+    ![運算子](./media/topdesk-secure-tutorial/ic790610.png "運算子")
 
 3. 在 [新增操作員]  對話方塊上，執行下列步驟：
 
     ![新增操作員](./media/topdesk-secure-tutorial/ic790611.png "新增操作員")
 
-    a. 按一下 [General] \(一般\) 索引標籤。
+    a. 按一下 [General] \(一般\)  索引標籤。
 
-    b. 在 [Surname] \(姓氏\) 文字方塊中，輸入使用者的姓氏，例如 **Simon**。
+    b. 在 [Surname] \(姓氏\)  文字方塊中，輸入使用者的姓氏，例如 **Simon**。
 
     c. 在 [位置] 區段中選取該帳戶的 [網站]。
 
     d. 在 [TOPdesk 登入] 區段的 [登入名稱] 文字方塊中，輸入使用者的登入名稱。
 
-    e. 按一下 [檔案] 。
+    e. 按一下 [檔案]  。
 
 > [!NOTE]
-> 您可以使用任何其他的 TOPdesk - Secure 使用者帳戶建立工具或 TOPdesk - Secure 提供的 API 來佈建 AAD 使用者帳戶。
+> 您可以使用任何其他的 TOPdesk - Secure 使用者帳戶建立工具或 TOPdesk - Secure 提供的 API，來佈建 Azure AD 使用者帳戶。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 

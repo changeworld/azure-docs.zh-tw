@@ -4,29 +4,29 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 0755c01fe8e13e8e39c0b453198f2b67c51a2bc4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 89ad3dfffa82f062ef8bc808da19440adfa32f05
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60860310"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050424"
 ---
 #### <a name="to-download-hotfixes"></a>下載 Hofix
 
 請執行下列步驟，從 Microsoft Update Catalog 下載軟體更新。
 
-1. 啟動 Internet Explorer 並瀏覽至 [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com)。
-2. 如果這是您第一次在此電腦上使用 Microsoft Update Catalog，請在系統提示您安裝 Microsoft Update Catalog 附加元件時，按一下 [安裝]  。
+1. 啟動 Internet Explorer 並流覽至 [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com) 。
+2. 如果這是您第一次在此電腦上使用 Microsoft Update Catalog，請在系統提示您安裝 Microsoft Update Catalog 附加元件時，按一下 [安裝] **** 。
 
     ![安裝目錄](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
 
-3. 在 Microsoft Update Catalog 的搜尋方塊中，輸入您要下載的 Hotfix 知識庫 (KB) 編號 (例如 **4011839**)，然後按一下 [搜尋]。
+3. 在 Microsoft Update Catalog 的搜尋方塊中，輸入您要下載的 Hotfix 知識庫 (KB) 編號 (例如 **4011839**)，然後按一下 [搜尋]****。
    
     Hotfix 清單隨即出現，例如**適用於 StorSimple 8000 系列的累積軟體套件組合更新 4.0**。
    
     ![搜尋目錄](./media/storsimple-install-update2-hotfix/HCS_SearchCatalog1-include.png)
 
-4. 按一下 [下載] 。 指定或「瀏覽」  至您想要儲存下載項目的本機位置。 按一下要下載到指定位置和資料夾的檔案。 資料夾也可以複製到裝置可連線的網路共用位置。
+4. 按一下 [下載] 。 指定或「瀏覽」 **** 至您想要儲存下載項目的本機位置。 按一下要下載到指定位置和資料夾的檔案。 資料夾也可以複製到裝置可連線的網路共用位置。
 5. 搜尋上表所列的任何其他 Hotfix (**4011841**)，並將對應檔案下載到上表所列的特定資料夾。
 
 > [!NOTE]
@@ -39,7 +39,7 @@ ms.locfileid: "60860310"
 執行下列步驟來安裝及驗證一般模式 Hotfix。 如果您已使用 Azure 傳統入口網站安裝這些 Hotfix，請直接跳到[安裝及驗證維護模式 Hotfix](#to-install-and-verify-maintenance-mode-hotfixes)。
 
 1. 若要安裝 Hotfix，請存取 StorSimple 裝置序列主控台上的 Windows PowerShell 介面。 請依照[使用 PuTTy 連接到序列主控台](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)中的詳細指示執行作業。 在命令提示字元中，按 **Enter**鍵。
-2. 選取選項 1 [以完整存取權登入]。 建議您先在被動控制站上安裝此 Hotfix。
+2. 選取選項 1 [以完整存取權登入]****。 建議您先在被動控制站上安裝此 Hotfix。
 3. 若要安裝 Hotfix，請在命令提示字元中輸入：
    
     `Start-HcsHotfix -Path <path to update file> -Credential <credentials in domain\username format>`
@@ -52,18 +52,18 @@ ms.locfileid: "60860310"
    
     下面會顯示安裝第一級更新的範例輸出。 對於第一級更新，您需要指向特定檔案。
    
-        ```
-        Controller0>Start-HcsHotfix -Path \\10.100.100.100\share
-        \FirstOrderUpdate\HcsSoftwareUpdate.exe -Credential contoso\John
+    ```output
+    Controller0>Start-HcsHotfix -Path \\10.100.100.100\share
+    \FirstOrderUpdate\HcsSoftwareUpdate.exe -Credential contoso\John
    
-        Confirm
+    Confirm
    
-        This operation starts the hotfix installation and could reboot one or
-        both of the controllers. If the device is serving I/Os, these will not
-        be disrupted. Are you sure you want to continue?
-        [Y] Yes [N] No [?] Help (default is "Y"): Y
-   
-        ```
+    This operation starts the hotfix installation and could reboot one or
+    both of the controllers. If the device is serving I/Os, these will not
+    be disrupted. Are you sure you want to continue?
+    [Y] Yes [N] No [?] Help (default is "Y"): Y
+
+    ```
 4. 當系統提示您確認 Hotfix 安裝時，請輸入 **Y** 。
 5. 使用 `Get-HcsUpdateStatus` Cmdlet 來監視更新。 會先在被動控制站上完成更新。 更新被動控制器之後，將進行容錯移轉，然後更新將套用到另一個控制器。 兩個控制器皆更新後，即更新完畢。
    
@@ -107,7 +107,7 @@ ms.locfileid: "60860310"
      > 您必須先透過 `Restart-HcsController` Cmdlet 重新啟動主動控制器，再套用下一個更新。
      
 7. 重複步驟 3 至 5，以安裝下載到 _FirstOrderUpdate_ 資料夾的 Cis/MDS 代理程式。 
-8. 重複步驟 3-5 來安裝第二級更新。 **對於第二級更新，只要執行 `Start-HcsHotfix cmdlet` 並指向第二級更新所在的資料夾，即可安裝多個更新。此 Cmdlet 會執行資料夾中所有可用的更新。** 如果有已安裝的更新，更新邏輯會偵測到，而不套用該更新。 
+8. 重複步驟 3-5 來安裝第二級更新。 **針對第二個訂單更新，只要執行 `Start-HcsHotfix cmdlet` 並指向第二個訂單更新所在的資料夾，即可安裝多個更新。此 Cmdlet 會執行資料夾中所有可用的更新。** 如果有已安裝的更新，更新邏輯會偵測到，而不套用該更新。 
 
 安裝所有 Hotfix 之後，請使用 `Get-HcsSystem` Cmdlet。 版本應該是︰
 
@@ -123,31 +123,33 @@ ms.locfileid: "60860310"
 
 若要安裝磁碟韌體更新，請依照下面的指示執行。
 
-1. 使裝置處於維護模式。 **請注意，連線至處於維護模式的裝置時，您不應該使用 Windows PowerShell 遠端執行功能。透過裝置序列主控台連線時，請在裝置控制器上執行此 Cmdlet。** 輸入：
+1. 使裝置處於維護模式。 **請注意，連線至處於維護模式的裝置時，不應使用 Windows PowerShell 遠端功能。透過裝置序列主控台連線時，請改為在裝置控制器上執行此 Cmdlet。** 輸入：
    
     `Enter-HcsMaintenanceMode`
    
     下方顯示一項範例輸出。
+
+    ```output
+    Controller0>Enter-HcsMaintenanceMode
+    Checking device state...
    
-        Controller0>Enter-HcsMaintenanceMode
-        Checking device state...
+    In maintenance mode, your device will not service IOs and will be disconnected from the Microsoft Azure StorSimple Manager service. Entering maintenance mode will end the current session and reboot both controllers, which takes a few minutes to complete. Are you sure you want to enter maintenance mode?
+    [Y] Yes [N] No (Default is "Y"): Y
    
-        In maintenance mode, your device will not service IOs and will be disconnected from the Microsoft Azure StorSimple Manager service. Entering maintenance mode will end the current session and reboot both controllers, which takes a few minutes to complete. Are you sure you want to enter maintenance mode?
-        [Y] Yes [N] No (Default is "Y"): Y
+    -----------------------MAINTENANCE MODE------------------------
+    Microsoft Azure StorSimple Appliance Model 8600
+    Name: Update4-8600-mystorsimple
+    Copyright (C) 2014 Microsoft Corporation. All rights reserved.
+    You are connected to Controller0 - Passive
+    ---------------------------------------------------------------
    
-        -----------------------MAINTENANCE MODE------------------------
-        Microsoft Azure StorSimple Appliance Model 8600
-        Name: Update4-8600-mystorsimple
-        Copyright (C) 2014 Microsoft Corporation. All rights reserved.
-        You are connected to Controller0 - Passive
-        ---------------------------------------------------------------
-   
-        Serial Console Menu
-        [1] Log in with full access
-        [2] Log into peer controller with full access
-        [3] Connect with limited access
-        [4] Change language
-        Please enter your choice>
+    Serial Console Menu
+    [1] Log in with full access
+    [2] Log into peer controller with full access
+    [3] Connect with limited access
+    [4] Change language
+    Please enter your choice>
+    ```
    
     接著，兩個控制器就會重新啟動以進入維護模式。
 2. 若要安裝磁碟韌體更新，請輸入：
@@ -155,16 +157,19 @@ ms.locfileid: "60860310"
     `Start-HcsHotfix -Path <path to update file> -Credential <credentials in domain\username format>`
    
     下方顯示一項範例輸出。
-   
-        Controller1>Start-HcsHotfix -Path \\10.100.100.100\share\ThirdOrderUpdates\ -Credential contoso\john
-        Enter Password:
-        WARNING: In maintenance mode, hotfixes should be installed on each controller sequentially. After the hotfix is installed on this controller, install it on the peer controller.
-        Confirm
-        This operation starts a hotfix installation and could reboot one or both of the controllers. By installing new updates you agree to, and accept any additional terms associated with, the new functionality listed in the release notes (https://go.microsoft.com/fwLink/?LinkID=613790). Are you sure you want to continue?
-        [Y] Yes [N] No (Default is "Y"): Y
-        WARNING: Installation is currently in progress. This operation can take several minutes to complete.
+
+    ```output
+    Controller1>Start-HcsHotfix -Path \\10.100.100.100\share\ThirdOrderUpdates\ -Credential contoso\john
+    Enter Password:
+    WARNING: In maintenance mode, hotfixes should be installed on each controller sequentially. After the hotfix is installed on this controller, install it on the peer controller.
+    Confirm
+    This operation starts a hotfix installation and could reboot one or both of the controllers. By installing new updates you agree to, and accept any additional terms associated with, the new functionality listed in the release notes (https://go.microsoft.com/fwLink/?LinkID=613790). Are you sure you want to continue?
+    [Y] Yes [N] No (Default is "Y"): Y
+    WARNING: Installation is currently in progress. This operation can take several minutes to complete.
+    ```
+
 3. 使用 `Get-HcsUpdateStatus` 命令監視安裝進度。 當 `RunInProgress` 變成 `False` 時，代表更新完成。
-4. 安裝完成之後，維護模式 Hotfix 安裝所在的控制器將會重新開機。 利用 [以完整存取權登入] 的選項 1 登入，並驗證磁碟韌體版本。 輸入：
+4. 安裝完成之後，維護模式 Hotfix 安裝所在的控制器將會重新開機。 利用 [以完整存取權登入]**** 的選項 1 登入，並驗證磁碟韌體版本。 輸入：
    
    `Get-HcsFirmwareVersion`
    
@@ -173,87 +178,89 @@ ms.locfileid: "60860310"
    `XMGJ, XGEG, KZ50, F6C2, VR08, N002, 0106`
    
    下方顯示一項範例輸出。
-   
-       -----------------------MAINTENANCE MODE------------------------
-       Microsoft Azure StorSimple Appliance Model 8600
-       Name: Update4-8600-mystorsimple
-       Software Version: 6.3.9600.17820
-       Copyright (C) 2014 Microsoft Corporation. All rights reserved.
-       You are connected to Controller1
-       ---------------------------------------------------------------
-   
-       Controller1>Get-HcsFirmwareVersion
-   
-       Controller0 : TalladegaFirmware
-           ActiveBIOS:0.45.0010
-              BackupBIOS:0.45.0006
-              MainCPLD:17.0.000b
-              ActiveBMCRoot:2.0.001F
-              BackupBMCRoot:2.0.001F
-              BMCBoot:2.0.0002
-              LsiFirmware:20.00.04.00
-              LsiBios:07.37.00.00
-              Battery1Firmware:06.2C
-              Battery2Firmware:06.2C
-              DomFirmware:X231600
-              CanisterFirmware:3.5.0.56
-              CanisterBootloader:5.03
-              CanisterConfigCRC:0x9134777A
-              CanisterVPDStructure:0x06
-              CanisterGEMCPLD:0x19
-              CanisterVPDCRC:0x142F7DC2
-              MidplaneVPDStructure:0x0C
-              MidplaneVPDCRC:0xA6BD4F64
-              MidplaneCPLD:0x10
-              PCM1Firmware:1.00|1.05
-              PCM1VPDStructure:0x05
-              PCM1VPDCRC:0x41BEF99C
-              PCM2Firmware:1.00|1.05
-              PCM2VPDStructure:0x05
-              PCM2VPDCRC:0x41BEF99C
 
-           EbodFirmware
-              CanisterFirmware:3.5.0.56
-              CanisterBootloader:5.03
-              CanisterConfigCRC:0xB23150F8
-              CanisterVPDStructure:0x06
-              CanisterGEMCPLD:0x14
-              CanisterVPDCRC:0xBAA55828
-              MidplaneVPDStructure:0x0C
-              MidplaneVPDCRC:0xA6BD4F64
-              MidplaneCPLD:0x10
-              PCM1Firmware:3.11
-              PCM1VPDStructure:0x03
-              PCM1VPDCRC:0x6B58AD13
-              PCM2Firmware:3.11
-              PCM2VPDStructure:0x03
-              PCM2VPDCRC:0x6B58AD13
+    ```output
+    -----------------------MAINTENANCE MODE------------------------
+    Microsoft Azure StorSimple Appliance Model 8600
+    Name: Update4-8600-mystorsimple
+    Software Version: 6.3.9600.17820
+    Copyright (C) 2014 Microsoft Corporation. All rights reserved.
+    You are connected to Controller1
+    ---------------------------------------------------------------
+   
+    Controller1>Get-HcsFirmwareVersion
+   
+    Controller0 : TalladegaFirmware
+        ActiveBIOS:0.45.0010
+           BackupBIOS:0.45.0006
+           MainCPLD:17.0.000b
+           ActiveBMCRoot:2.0.001F
+           BackupBMCRoot:2.0.001F
+           BMCBoot:2.0.0002
+           LsiFirmware:20.00.04.00
+           LsiBios:07.37.00.00
+           Battery1Firmware:06.2C
+           Battery2Firmware:06.2C
+           DomFirmware:X231600
+           CanisterFirmware:3.5.0.56
+           CanisterBootloader:5.03
+           CanisterConfigCRC:0x9134777A
+           CanisterVPDStructure:0x06
+           CanisterGEMCPLD:0x19
+           CanisterVPDCRC:0x142F7DC2
+           MidplaneVPDStructure:0x0C
+           MidplaneVPDCRC:0xA6BD4F64
+           MidplaneCPLD:0x10
+           PCM1Firmware:1.00|1.05
+           PCM1VPDStructure:0x05
+           PCM1VPDCRC:0x41BEF99C
+           PCM2Firmware:1.00|1.05
+           PCM2VPDStructure:0x05
+           PCM2VPDCRC:0x41BEF99C
 
-           DisksFirmware
-              SmrtStor:TXA2D20800GA6XYR:KZ50
-              SmrtStor:TXA2D20800GA6XYR:KZ50
-              SmrtStor:TXA2D20800GA6XYR:KZ50
-              SmrtStor:TXA2D20800GA6XYR:KZ50
-              SmrtStor:TXA2D20800GA6XYR:KZ50
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
-              WD:WD4001FYYG-01SL3:VR08
+        EbodFirmware
+           CanisterFirmware:3.5.0.56
+           CanisterBootloader:5.03
+           CanisterConfigCRC:0xB23150F8
+           CanisterVPDStructure:0x06
+           CanisterGEMCPLD:0x14
+           CanisterVPDCRC:0xBAA55828
+           MidplaneVPDStructure:0x0C
+           MidplaneVPDCRC:0xA6BD4F64
+           MidplaneCPLD:0x10
+           PCM1Firmware:3.11
+           PCM1VPDStructure:0x03
+           PCM1VPDCRC:0x6B58AD13
+           PCM2Firmware:3.11
+           PCM2VPDStructure:0x03
+           PCM2VPDCRC:0x6B58AD13
+
+        DisksFirmware
+           SmrtStor:TXA2D20800GA6XYR:KZ50
+           SmrtStor:TXA2D20800GA6XYR:KZ50
+           SmrtStor:TXA2D20800GA6XYR:KZ50
+           SmrtStor:TXA2D20800GA6XYR:KZ50
+           SmrtStor:TXA2D20800GA6XYR:KZ50
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+           WD:WD4001FYYG-01SL3:VR08
+    ```
    
     在第二個控制站上執行 `Get-HcsFirmwareVersion` 命令來驗證軟體版本已經更新。 然後您就可以結束維護模式。 若要這麼做，請針對每個裝置控制器輸入以下命令：
    

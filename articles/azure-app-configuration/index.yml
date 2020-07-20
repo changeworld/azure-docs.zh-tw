@@ -1,79 +1,142 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure 應用程式組態預覽文件
+### YamlMime:Landing
+title: Azure 應用程式組態文件
+summary: 了解如何使用 Azure 應用程式組態，這是一項受控服務，可協助開發人員簡單且安全地集中管理其應用程式與功能設定。
 metadata:
-  title: Azure 應用程式組態文件 - 教學課程和 API 參考
-  description: Azure 應用程式組態是一項受控服務，可協助開發人員簡單且安全地集中管理其應用程式、功能設定與功能。
-  author: yegu-ms
-  manager: maiye
-  ms.author: yegu
+  title: Azure 應用程式組態文件
+  description: 了解如何使用 Azure 應用程式組態，這是一項受控服務，可協助開發人員簡單且安全地集中管理其應用程式與功能設定。
+  author: lisaguthrie
+  ms.author: lcozzens
   ms.service: azure-app-configuration
   ms.topic: landing-page
-  ms.date: 04/19/2019
-abstract:
-  description: Azure 應用程式組態是一項受控服務，可協助開發人員簡單且安全地集中管理其應用程式與功能設定。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/videos/getting-started.png
-      width: 250
-    title: '開始使用 (14:41)'
-    href: 'https://channel9.msdn.com/Shows/Azure-Friday/Getting-started-with-Azure-App-Configuration'
-    width: 250
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何使用 Azure 應用程式組態開發第一個應用程式：
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_NETcore.svg'
-            title: ASP.NET Core
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_NETcore.svg'
-            title: .NET Core
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_net.svg'
-            title: .NET
-          - image:
-              src: 'https://docs.microsoft.com/azure/media/index/azurefunctions.svg'
-            title: .NET Core
-          - image:
-              src: 'https://docs.microsoft.com/java/docs-ref-conceptual/media/spring.svg'
-            title: Java Spring
-        rows:
-          - title: 組態
-            values:
-              - href: /azure/azure-app-configuration/quickstart-aspnet-core-app
-              - href: /azure/azure-app-configuration/quickstart-dotnet-core-app
-              - href: /azure/azure-app-configuration/quickstart-dotnet-app
-              - href: /azure/azure-app-configuration/quickstart-azure-function-csharp
-              - href: /azure/azure-app-configuration/quickstart-java-spring-app
-          - title: 功能管理
-            values:
-              - href: /azure/azure-app-configuration/quickstart-feature-flag-aspnet-core
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何在各種情況中使用 Azure 應用程式組態
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/azure-app-configuration/enable-dynamic-configuration-aspnet-core">啟用 ASP.NET Core 中的動態組態</a>
-          - html: <a href="/azure/azure-app-configuration/use-feature-flags-dotnet-core">在 .NET Core 應用程式中使用功能旗標</a>
-          - html: <a href="/azure/azure-app-configuration/manage-feature-flags">編輯功能旗標</a>
-          - html: <a href="/azure/azure-app-configuration/integrate-ci-cd-pipeline">與 CI/CD 管線整合</a>
-  - title: 範例
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/azure-app-configuration/cli-samples">Azure CLI</a>
+  ms.date: 02/03/2020
+  ms.openlocfilehash: 29baead8dbb41b004a9ace8576029c9bd8af3290
+  ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 05/05/2020
+  ms.locfileid: "82790774"
+landingContent:
+- title: 關於 Azure 應用程式組態
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure 應用程式設定？
+      url: overview.md
+    - text: 常見問題集
+      url: faq.md
+  - linkListType: video
+    links:
+    - text: 開始使用 Azure 應用程式組態
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Getting-started-with-Azure-App-Configuration
+    - text: 功能管理
+      url: https://channel9.msdn.com/Shows/NET-Community-Standups/ASPNET-Community-Standup-May-21st-2019-Introducing-MicrosoftFeatureManagement
+    - text: 簡化集中式組態
+      url: https://channel9.msdn.com/Events/dotnetConf/NET-Conf-2019/B210
+    - text: 在雲端原生節目 (Cloud Native Show) 上的 Azure 應用程式組態
+      url: https://www.youtube.com/watch?v=DJqmA5PcfzE
+  - linkListType: whats-new
+    links:
+    - text: 遵循我們的公告
+      url: https://github.com/Azure/AppConfiguration-Announcements/issues/
+    - text: Azure 更新資訊
+      url: https://azure.microsoft.com/updates/?query=%22App%20Configuration%22
+  - linkListType: concept
+    links:
+    - text: 應用程式組態中的索引鍵和值
+      url: concept-key-value.md
+    - text: 使用 GitHub Actions 將您的應用程式組態執行個體進行同步處理
+      url: concept-github-action.md
+- title: 使用 Azure 應用程式組態建立和撰寫程式碼
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 撰寫 .NET Core 應用程式的程式碼
+      url: quickstart-dotnet-core-app.md
+    - text: 撰寫 .NET Framework 應用程式的程式碼
+      url: quickstart-dotnet-app.md
+    - text: 撰寫 ASP.NET Core 應用程式的程式碼
+      url: quickstart-aspnet-core-app.md
+    - text: 在 C# 中撰寫 Azure Functions 應用程式的程式碼
+      url: quickstart-azure-functions-csharp.md
+    - text: 撰寫 Spring Boot 應用程式的程式碼
+      url: quickstart-java-spring-app.md
+    - text: Azure Resource Manager 範本
+      url: quickstart-resource-manager.md
+  - linkListType: tutorial
+    links:
+    - text: 在 ASP.NET Core 中使用動態組態
+      url: enable-dynamic-configuration-aspnet-core.md
+    - text: 在 .NET Core 中使用動態組態
+      url: enable-dynamic-configuration-dotnet-core.md
+    - text: 在 .NET Framework 中使用動態組態
+      url: enable-dynamic-configuration-dotnet.md
+    - text: 在 Azure Functions 中使用動態組態
+      url: enable-dynamic-configuration-azure-functions-csharp.md
+  - linkListType: tutorial
+    links:
+    - text: 與 CI/CD 管線整合
+      url: integrate-ci-cd-pipeline.md
+    - text: 使用 Helm 與 Kubernetes 部署整合
+      url: integrate-kubernetes-deployment-helm.md
+  - linkListType: tutorial
+    links:
+    - text: 在 ASP.NET Core 應用程式中使用 Key Vault 參考
+      url: use-key-vault-references-dotnet-core.md
+    - text: 在 Spring Boot 應用程式中使用 Key Vault 參考
+      url: use-key-vault-references-spring-boot.md
+  - linkListType: sample
+    links:
+    - text: 使用 Azure CLI 中的索引鍵/值
+      url: scripts/cli-work-with-keys.md
+- title: 將功能旗標新增至應用程式
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 什麼是功能旗標？
+      url: concept-feature-management.md
+  - linkListType: quickstart
+    links:
+    - text: .NET Core 應用程式
+      url: use-feature-flags-dotnet-core.md
+    - text: ASP.NET Core 應用程式
+      url: quickstart-feature-flag-aspnet-core.md
+    - text: .NET Framework 應用程式
+      url: quickstart-feature-flag-dotnet.md
+    - text: Spring Boot 應用程式
+      url: quickstart-feature-flag-spring-boot.md
+  - linkListType: tutorial
+    links:
+    - text: 管理功能旗標
+      url: manage-feature-flags.md
+  - linkListType: reference
+    links:
+    - text: .NET Core 程式庫
+      url: https://go.microsoft.com/fwlink/?linkid=2091700
+    - text: .NET Core 篩選程式庫
+      url: https://go.microsoft.com/fwlink/?linkid=2091601
+- title: 設定 SDK 和範例
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: Azure CLI 範例
+      url: cli-samples.md
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest
+    - text: .NET Core 提供者
+      url: https://go.microsoft.com/fwlink/?linkid=2074664
+    - text: .NET Framework 建立器
+      url: https://go.microsoft.com/fwlink/?linkid=2074663
+    - text: 適用於 .Net 的 Azure SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2092056
+    - text: Spring Boot 提供者
+      url: https://go.microsoft.com/fwlink/?linkid=2074659
+    - text: Azure SDK for Java
+      url: https://go.microsoft.com/fwlink/?linkid=2098196
+    - text: 適用於 Python 的 Azure SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2103727
+    - text: 適用於 JavaScript 的 Azure SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2103664
+    - text: REST
+      url: https://go.microsoft.com/fwlink/?linkid=2078296

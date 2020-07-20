@@ -1,20 +1,14 @@
 ---
-title: Azure 轉譯參考架構 - Azure Batch
+title: Azure 轉譯參考架構
 description: 使用 Azure Batch 和其他 Azure 服務，藉由高載至雲端來擴充內部部署轉譯伺服器陣列的架構
-services: batch
-ms.service: batch
-author: davefellows
-manager: jeconnoc
-ms.author: lahugh
 ms.date: 02/07/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seodec18
-ms.openlocfilehash: ae4680c948ce8e1efd32207dc37821d61182f2d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 784fd89c3dea88e25a2058713897c7a655c8a3af
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60774141"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726514"
 ---
 # <a name="reference-architectures-for-azure-rendering"></a>Azure 轉譯的參考架構
 

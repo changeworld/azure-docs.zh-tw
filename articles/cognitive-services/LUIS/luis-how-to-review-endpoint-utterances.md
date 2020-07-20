@@ -1,96 +1,70 @@
 ---
-title: 檢閱使用者語句
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: 主動學習擷取端點的查詢，並選取使用者的不確定的結束點談話。 您檢閱這些談話選取目的，並將標示這些讀取世界的發音的實體。 接受範例談話到這些變更，則定型和發佈。 LUIS 然後更精確地識別談話。
+title: 審查使用者語句-LUIS
+titleSuffix: Azure Cognitive Services
+description: 審查由主動式學習所捕捉到的語句，以選取意圖並標記實體以供讀取世界語句;接受變更、定型和發佈。
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 03/25/2019
+ms.topic: how-to
+ms.date: 05/07/2020
 ms.author: diberry
-ms.openlocfilehash: 8fac360682ef11c438cdec333fac21d6f8cfc117
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 58674bf38ec1efb970fa8e79f7d970ecefb36712
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791043"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055608"
 ---
-# <a name="how-to-review-endpoint-utterances-in-luis-portal-for-active-learning"></a>如何檢閱主動式學習 LUIS 入口網站中的端點表達方式
+# <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>如何藉由審查端點語句來改善 LUIS 應用程式
 
-[主動學習](luis-concept-review-endpoint-utterances.md)擷取端點的查詢，並選取使用者的不確定的結束點談話。 您檢閱這些談話選取目的，並將標示這些讀取世界的發音的實體。 接受範例談話到這些變更，則定型和發佈。 LUIS 然後更精確地識別談話。
+針對正確的預測來審查端點語句的程式稱為[主動式學習](luis-concept-review-endpoint-utterances.md)。 主動式學習會捕捉端點查詢，並選取不確定的使用者端點語句。 您可以複習這些語句來選取意圖，並標記這些真實世界語句的實體。 在您的範例語句中接受這些變更，然後進行定型和發佈。 然後，LUIS 會更準確地識別語句。
 
+## <a name="enable-active-learning"></a>啟用主動式學習
 
-## <a name="enable-active-learning"></a>啟用主動學習
+若要啟用主動式學習，您必須記錄使用者查詢。 這是藉由呼叫具有 querystring 參數和值的[端點查詢](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)來完成 `log=true` 。
 
-若要啟用主動式學習，記錄使用者的查詢。 這可以藉由設定[端點查詢](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance)使用`log=true`querystring 參數和值。
+使用 LUIS 入口網站來建立正確的端點查詢。
 
-## <a name="disable-active-learning"></a>停用主動學習
+1. 登入 [LUIS 入口網站](https://www.luis.ai)，然後選取您的 [訂用帳戶] 和 [撰寫資源]，以查看指派給該撰寫資源的應用程式。
+1. 在**我的應用程式**] 頁面上選取您的應用程式名稱，以開啟它。
+1. 移至 [**管理**] 區段，然後選取 [ **Azure 資源**]。
+1. 針對指派的預測資源，選取 [**變更查詢參數**]。
 
-若要停用主動式學習，不會記錄使用者的查詢。 這可以藉由設定[端點查詢](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance)使用`log=false`querystring 參數和值。
+    > [!div class="mx-imgBorder"]
+    > ![使用 LUIS 入口網站來儲存主動學習所需的記錄。](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
 
-## <a name="filter-utterances"></a>篩選語句
+1. 藉由選取 [**完成**] 來切換**儲存記錄**檔，然後再加以儲存。
 
-1. 在 [我的應用程式] 頁面上選取您的應用程式名稱加以開啟 (例如，TravelAgent)，然後選取頂端列中的 [建置]。
+    > [!div class="mx-imgBorder"]
+    > ![使用 LUIS 入口網站來儲存主動學習所需的記錄。](./media/luis-tutorial-review-endpoint-utterances/luis-portal-manage-azure-resource-save-logs.png)
 
-1. 在 [改善應用程式效能] 之下，選取 [檢閱端點意圖]。
+     此動作會藉由新增 `log=true` 查詢字串參數來變更範例 URL。 對執行階段端點進行預測查詢時，請複製並使用已變更的範例查詢 URL。
 
-1. 在 [檢閱端點意圖] 頁面上，選取 [依意圖或實體篩選器清單] 文字方塊。 此下拉式清單包含 [意圖] 之下的所有意圖，以及 [實體] 之下的所有實體。
+## <a name="correct-intent-predictions-to-align-utterances"></a>更正意圖預測以對齊語句
 
-    ![語句篩選條件](./media/label-suggested-utterances/filter.png)
+每個意圖都有建議的意圖顯示在 [一致的意圖]**** 資料行中。
 
-1. 在下拉式清單中選取類別 (意圖或實體) 並檢閱意圖。
+> [!div class="mx-imgBorder"]
+> [![審查 LUIS 不確定的端點語句](./media/label-suggested-utterances/review-endpoint-utterances.png)](./media/label-suggested-utterances/review-endpoint-utterances.png#lightbox)
 
-    ![意圖語句](./media/label-suggested-utterances/intent-utterances.png)
+如果您同意該意圖，請選取核取記號。 如果您不同意該建議，請從一致的意圖下拉式清單中選取正確的意圖，然後選取一致的意圖右邊的核取記號。 在您選取核取記號之後，語句會移至意圖，並從 [**審核端點語句**] 清單中移除。
 
-## <a name="label-entities"></a>標示實體
-LUIS 會以藍色醒目提示的實體名稱取代實體語彙基元 (字組)。 如果語句有未標示的實體，請在語句中加以標示。 
-
-1. 在語句中選取字組。 
-
-1. 從清單中選取實體。
-
-    ![標示實體](./media/label-suggested-utterances/label-entity.png)
-
-## <a name="align-single-utterance"></a>對齊單一語句
-
-每個意圖都有建議的意圖顯示在 [一致的意圖] 資料行中。 
-
-1. 如果您同意該建議，請選取核取記號。
-
-    ![保留一致的意圖](./media/label-suggested-utterances/align-intent-check.png)
-
-1. 如果您不同意該建議，請從一致的意圖下拉式清單中選取正確的意圖，然後選取一致的意圖右邊的核取記號。 
-
-    ![對齊意圖](./media/label-suggested-utterances/align-intent.png)
-
-1. 在您選取核取記號之後，語句就會從清單中移除。 
-
-## <a name="align-several-utterances"></a>對齊數個語句
-
-若要對齊數個語句，請核取語句左邊的方塊，然後選取 [新增所選] 按鈕。 
-
-![對齊數個](./media/label-suggested-utterances/add-selected.png)
-
-## <a name="verify-aligned-intent"></a>驗證一致的意圖
-
-您可以移至 [意圖] 頁面，選取意圖名稱，然後檢閱意圖，以確認語句與正確的意圖一致。 [檢閱端點意圖] 中的意圖會位於清單中。
+> [!TIP]
+> 請務必移至意圖詳細資料頁面，以從**審核端點語句**清單中的所有範例語句來審查和更正實體預測。
 
 ## <a name="delete-utterance"></a>刪除語句
 
-您可以從檢閱清單中刪除每個語句。 刪除後，它就不再出現於清單中。 即使使用者從端點輸入相同意圖，情況也是如此。 
+您可以從檢閱清單中刪除每個語句。 刪除後，它就不再出現於清單中。 即使使用者從端點輸入相同意圖，情況也是如此。
 
-如果您不確定是否應該刪除意圖，請將它移至 [無] 意圖，或建立新意圖 (例如「其他」) 並將語句移至該意圖。 
+如果您不確定是否應該刪除語句，請將它移至 [無] 意圖，或建立新的意圖（例如）， `miscellaneous` 並將語句移至該意圖。
 
-## <a name="delete-several-utterances"></a>刪除數個語句
+## <a name="disable-active-learning"></a>停用主動式學習
 
-若要刪除數個語句，請選取每個項目並選取 [新增所選] 按鈕右側的垃圾桶。
-
-![刪除數個](./media/label-suggested-utterances/delete-several.png)
-
+若要停用主動式學習，請不要記錄使用者查詢。 這是藉由使用 querystring 參數和值來設定[端點查詢](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) `log=false` ，或不使用 querystring 值來完成，因為預設值為 false。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要在您標示建議的語句之後，測試效能有何改善，您可以選取頂端面板中的 [測試] 來存取測試主控台。 如需有關如何使用測試主控台來測試應用程式的指示，請參閱[訓練和測試您的應用程式](luis-interactive-test.md)。
+若要在您標示建議的語句之後，測試效能有何改善，您可以選取頂端面板中的 [測試]**** 來存取測試主控台。 如需有關如何使用測試主控台來測試應用程式的指示，請參閱[訓練和測試您的應用程式](luis-interactive-test.md)。

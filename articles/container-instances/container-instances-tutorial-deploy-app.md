@@ -1,19 +1,15 @@
 ---
-title: 將容器應用程式部署至 Azure 容器執行個體
+title: 教學課程 - 將容器應用程式部署至容器執行個體
 description: Azure 容器執行個體教學課程第 3 部分 (共 3 部分) - 將容器應用程式部署至 Azure 容器執行個體
-services: container-instances
-author: dlepow
-ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 210254a4404a5280e326bf40057331a784ff6148
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 757b41bd69d69deb901e3b5b9a633dce3b9e133a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326734"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "78249961"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>教學課程：將容器應用程式部署至 Azure 容器執行個體
 
@@ -36,7 +32,9 @@ ms.locfileid: "56326734"
 
 ### <a name="get-registry-credentials"></a>取得登錄認證
 
-當您部署私人容器登錄 (類似[第二個教學課程](container-instances-tutorial-prepare-acr.md)中建立的容器登錄) 中裝載的映像時，必須提供用來存取登錄的認證。 如[使用來自 Azure 容器執行個體的 Azure Container Registry 進行驗證](../container-registry/container-registry-auth-aci.md)中所示，許多案例的最佳做法都是建立並設定具有登錄「提取」權限的 Azure Active Directory 服務主體。 請參閱該文章，從中取得指令碼範例來建立具有必要權限的服務主體。 請記下服務主體識別碼和服務主體密碼。 在部署容器時會用到這些認證。
+當您部署私人 Azure 容器登錄 (類似於[第二個教學課程](container-instances-tutorial-prepare-acr.md)中建立的容器登錄) 中裝載的映像時，必須提供用來存取登錄的認證。 
+
+許多案例的最佳做法都是建立並設定具有登錄「提取」  權限的 Azure Active Directory 服務主體。 請參閱[使用來自 Azure 容器執行個體的 Azure Container Registry 進行驗證](../container-registry/container-registry-auth-aci.md)，從中取得範例指令碼以建立具有必要權限的服務主體。 請記下*服務主體識別碼*和*服務主體密碼*。 您在部署容器時會使用這些認證來存取登錄。
 
 您也需要容器登錄登入伺服器的完整名稱 (以您的登錄名稱取代 `<acrName>`)：
 
@@ -46,7 +44,7 @@ az acr show --name <acrName> --query loginServer
 
 ### <a name="deploy-container"></a>部署容器
 
-現在使用 [az container create][az-container-create] 命令來部署容器。 將 `<acrLoginServer>` 更換為您從上一個命令取得的值。 將 `<service-principal-ID>` 和 `<service-principal-password>` 更換為為了存取登錄而建立的服務主體識別碼和密碼。 將 `<aciDnsLabel>` 更換為所需的 DNS 名稱。
+現在，使用 [az container create][az-container-create] 命令來部署容器。 將 `<acrLoginServer>` 更換為您從上一個命令取得的值。 將 `<service-principal-ID>` 和 `<service-principal-password>` 更換為為了存取登錄而建立的服務主體識別碼和密碼。 將 `<aciDnsLabel>` 更換為所需的 DNS 名稱。
 
 ```azurecli
 az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <service-principal-ID> --registry-password <service-principal-password> --dns-name-label <aciDnsLabel> --ports 80
@@ -62,19 +60,18 @@ az container create --resource-group myResourceGroup --name aci-tutorial-app --i
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query instanceView.state
 ```
 
-重複執行 [az container show][az-container-show] 命令，直到狀態從 Pending (暫止) 變更為 Running (執行中) 為止，這應該會在一分鐘內完成。 當容器狀態為 *Running* (執行中) 時，請繼續進行下一個步驟。
+重複執行 [az container show][az-container-show] 命令，直到狀態從 [擱置]  變更為 [執行中]  ，這應該會在一分鐘內完成。 當容器狀態為 *Running* (執行中) 時，請繼續進行下一個步驟。
 
 ## <a name="view-the-application-and-container-logs"></a>檢視應用程式和容器記錄
 
 部署成功之後，請使用 [az container show][az-container-show] 命令來顯示容器的完整網域名稱 (FQDN)：
 
-```bash
+```azurecli
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
-例如︰
-```console
-$ az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
+例如：
+```output
 "aci-demo.eastus.azurecontainer.io"
 ```
 
@@ -90,8 +87,7 @@ az container logs --resource-group myResourceGroup --name aci-tutorial-app
 
 範例輸出︰
 
-```bash
-$ az container logs --resource-group myResourceGroup --name aci-tutorial-app
+```output
 listening on port 80
 ::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET / HTTP/1.1" 200 1663 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
 ::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://aci-demo.eastus.azurecontainer.io/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
@@ -99,7 +95,7 @@ listening on port 80
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果您已不再需要這個教學課程系列中建立的任何資源，便可以執行 [az group delete][az-group-delete] 命令來移除資源群組及其包含的所有資源。 此命令除了會刪除執行中的容器和所有相關資源之外，也會刪除您所建立的容器登錄。
+如果您已不再需要在這個教學課程系列中建立的任何資源，便可以執行 [az group delete][az-group-delete] 命令來移除資源群組及其包含的所有資源。 此命令除了會刪除執行中的容器和所有相關資源之外，也會刪除您所建立的容器登錄。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

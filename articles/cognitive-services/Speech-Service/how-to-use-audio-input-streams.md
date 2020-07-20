@@ -8,31 +8,31 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: f34504dddaa21cc162476d1fdb462e7be5c48629
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 23a426bf8cc3f30516fff0a672d7118a49666433
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877298"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584921"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>關於語音 SDK 音訊輸入資料流 API
 
-語音 SDK 的**音訊輸入資料流** API 提供將音訊資料流串流到辨識器中的方法，而不需使用麥克風或輸入檔 API。
+語音 SDK 的**音訊輸入資料流程**API 提供將音訊串流至辨識器的方式，而不是使用麥克風或輸入檔 api。
 
 使用音訊輸入資料流時，必須執行下列步驟：
 
 - 識別音訊資料流的格式。 語音 SDK 和語音服務必須支援此格式。 目前僅支援下列設定：
 
-  PCM 格式、一個通道、每秒 16000 個樣本、每秒 32000 個位元組、兩個區塊對齊 (一個樣本 16 位元，包含填補)、每個樣本 16 位元 的音訊樣本。
+  PCM 格式的音訊樣本、一個頻道、每個樣本16位、8000或每秒16000個樣本（16000或每秒32000位元組）、兩個區塊對齊（包含樣本的16位，包括填補）。
 
   SDK 中用於建立音訊格式相對應程式碼看起來像這樣：
 
-  ```
+  ```csharp
   byte channels = 1;
   byte bitsPerSample = 16;
-  int samplesPerSecond = 16000;
+  int samplesPerSecond = 16000; // or 8000
   var audioFormat = AudioStreamFormat.GetWaveFormatPCM(samplesPerSecond, bitsPerSample, channels);
   ```
 
@@ -40,7 +40,7 @@ ms.locfileid: "55877298"
 
 - 建立自己衍生自 `PullAudioInputStreamCallback` 的音訊輸入資料流類別。 實作`Read()` 和 `Close()` 成員。 確切的函式簽章視語言而定，但程式碼看起來類似此程式碼範例：
 
-  ```
+  ```csharp
    public class ContosoAudioStream : PullAudioInputStreamCallback {
       ContosoConfig config;
 
@@ -59,9 +59,9 @@ ms.locfileid: "55877298"
    };
   ```
 
-- 根據您的音訊格式與輸入資料流建立音訊設定。 在建立自己的辨識器時，請傳入一般語音設定和音訊輸入設定。 例如︰
+- 根據您的音訊格式與輸入資料流建立音訊設定。 在建立自己的辨識器時，請傳入一般語音設定和音訊輸入設定。 例如：
 
-  ```
+  ```csharp
   var audioConfig = AudioConfig.FromStreamInput(new ContosoAudioStream(config), audioFormat);
 
   var speechConfig = SpeechConfig.FromSubscription(...);
@@ -75,5 +75,5 @@ ms.locfileid: "55877298"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [試用認知服務](https://azure.microsoft.com/try/cognitive-services/)
-* [了解如何以 C# 辨識語音](quickstart-csharp-dotnet-windows.md) (英文)
+- [試用認知服務](https://azure.microsoft.com/try/cognitive-services/)
+- [了解如何以 C# 辨識語音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet) (英文)

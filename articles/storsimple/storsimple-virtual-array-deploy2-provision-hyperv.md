@@ -12,20 +12,22 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/15/2017
+ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5104d630e2b4e97b80a6fedfb6d863061c2722fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 9d3f4f4ab6cc1c928761fce740d39f3f73426e62
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61415944"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79267530"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>部署 StorSimple Virtual Array：在 Hyper-V 中佈建
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
+
 本教學課程說明如何在執行 Windows Server 2012 R2、Windows Server 2012 或 Windows Server 2008 R2 之 Hyper-V 的主機系統上佈建 StorSimple Virtual Array。 本文適用於在 Azure 入口網站及 Microsoft Azure 政府服務雲端部署 StorSimple Virtual Array。
 
 您需要有系統管理員權限，才能佈建及設定虛擬陣列。 佈建及初始安裝程序可能需要大約 10 分鐘的時間才能完成。
@@ -37,7 +39,7 @@ ms.locfileid: "61415944"
 在您開始前，請確定：
 
 * 您已完成 [準備入口網站以使用 StorSimple Virtual Array](storsimple-virtual-array-deploy1-portal-prep.md)中的所有步驟。
-* 您已經從 Azure 入口網站下載適用於 Hyper-V 的虛擬陣列映像。 如需詳細資訊，請參閱**步驟 3：下載虛擬陣列映像** (在[準備入口網站以使用 StorSimple Virtual Array 指南](storsimple-virtual-array-deploy1-portal-prep.md)中)。
+* 您已經從 Azure 入口網站下載適用於 Hyper-V 的虛擬陣列映像。 如需詳細資訊，請參閱[準備入口網站以使用 StorSimple Virtual Array 指南](storsimple-virtual-array-deploy1-portal-prep.md)的**步驟 3︰下載虛擬陣列映像**。
 
   > [!IMPORTANT]
   > StorSimple Virtual Array 上執行的軟體只能搭配 Storsimple 裝置管理員服務來使用。
@@ -85,22 +87,22 @@ ms.locfileid: "61415944"
 
 #### <a name="to-provision-a-virtual-array"></a>若要佈建虛擬陣列
 1. 在 Windows Server 主機上，將虛擬陣列映像複製到本機磁碟機。 您已透過 Azure 入口網站下載此映像 (VHD 或 VHDX)。 請記下您複製映像的位置，因為稍後會在程序中使用此映像。
-2. 開啟 [伺服器管理員] 。 按一下右上角的 [工具]，然後選取 [Hyper-V 管理員]。
+2. 開啟 **[伺服器管理員]** 。 按一下右上角的 [工具]****，然後選取 [Hyper-V 管理員]****。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image1.png)  
 
-   如果您執行的是 Windows Server 2008 R2，請開啟「Hyper-V 管理員」。 在 [伺服器管理員] 中，按一下 [角色] > [Hyper-V] > [Hyper-V 管理員]。
-3. 在 [Hyper-V 管理員] 的範圍窗格中，於您的系統節點上按一下滑鼠右鍵以開啟操作功能表，然後按一下 [新增]  >  [虛擬機器]。
+   如果您執行的是 Windows Server 2008 R2，請開啟「Hyper-V 管理員」。 在 [伺服器管理員] 中，按一下 [角色] > [Hyper-V] > [Hyper-V 管理員]****。
+3. 在 [Hyper-V 管理員] 的範圍窗格中，於您的系統節點上按一下滑鼠右鍵以開啟操作功能表，然後按一下 [新增] >  [虛擬機器]。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image2.png)
 4. 在「新增虛擬機器精靈」的 [開始之前] 頁面上，按一下 [下一步]。
-5. 在 [指定名稱和位置] 頁面上，提供虛擬陣列的 [名稱]。 单击“下一步”。
+5. 在 [指定名稱和位置]**** 頁面上，提供虛擬陣列的 [名稱]****。 按 [下一步] 。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image4.png)
-6. 在 [指定世代] 頁面上，選擇裝置映像類型，然後按一下 [下一步]。 如果您使用的是 Windows Server 2008 R2，則不會出現此頁面。
+6. 在 [指定世代]**** 頁面上，選擇裝置映像類型，然後按一下 [下一步]****。 如果您使用的是 Windows Server 2008 R2，則不會出現此頁面。
 
-   * 如果您已下載適用於 Windows Server 2012 或更新版本的 .vhdx 映像，請選擇 [第 2 代]  。
-   * 如果您已下載適用於 Windows Server 2008 R2 或更新版本的 .vhd 映像，請選擇 [第 1 代]  。
+   * 如果您已下載適用於 Windows Server 2012 或更新版本的 .vhdx 映像，請選擇 [第 2 代] **** 。
+   * 如果您已下載適用於 Windows Server 2008 R2 或更新版本的 .vhd 映像，請選擇 [第 1 代] **** 。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image5.png)
 7. 在 [指派記憶體] 頁面上，至少指定 **8192 MB** 的「啟動記憶體」，請勿啟用動態記憶體，然後按一下 [下一步]。
@@ -109,7 +111,7 @@ ms.locfileid: "61415944"
 8. 在 [設定網路功能] 頁面上，指定連線到網際網路的虛擬交換器，然後按一下 [下一步]。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image7.png)
-9. 在 [連接虛擬硬碟] 頁面上，選擇 [使用現有的虛擬硬碟]，指定虛擬陣列映像 (.vhdx 或.vhd) 的位置，然後按一下 [下一步]。
+9. 在 [連接虛擬硬碟]**** 頁面上，選擇 [使用現有的虛擬硬碟]****，指定虛擬陣列映像 (.vhdx 或.vhd) 的位置，然後按一下 [下一步]****。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image8m.png)
 10. 檢閱「摘要」，然後按一下 [結束] 來建立虛擬機器。
@@ -131,16 +133,16 @@ ms.locfileid: "61415944"
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image13.png)
 15. 在「新增虛擬硬碟精靈」的 [開始之前] 頁面上，按一下 [下一步]。
-16. 在 [選擇磁碟格式] 頁面上，接受 [VHDX] 格式預設選項。 单击“下一步”。 如果您執行的是 Windows Server 2008 R2，則不會出現此畫面。
+16. 在 [選擇磁碟格式] 頁面上，接受 [VHDX] 格式預設選項。 按 [下一步] 。 如果您執行的是 Windows Server 2008 R2，則不會出現此畫面。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image15.png)
-17. 在 [選擇磁碟類型] 頁面上，將虛擬硬碟類型設定為 [動態擴充] \(建議選項)。 [固定大小] 磁碟可以運作，但您可能需要等待很長一段時間。 建議您不要使用 [差異]  選項。 单击“下一步”。 在 Windows Server 2012 R2 和 Windows Server 2012 中，[動態擴充] 是預設選項，而在 Windows Server 2008 R2 中，預設值是 [固定大小]。
+17. 在 [選擇磁碟類型] 頁面上，將虛擬硬碟類型設定為 [動態擴充] \(建議選項)。 [固定大小] 磁碟可以運作，但您可能需要等待很長一段時間。 建議您不要使用 [差異]  選項。 按 [下一步] 。 在 Windows Server 2012 R2 和 Windows Server 2012 中，[動態擴充]**** 是預設選項，而在 Windows Server 2008 R2 中，預設值是 [固定大小]****。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image16.png)
-18. 在 [指定名稱和位置] 頁面上，提供資料磁碟的「名稱」和「位置」(您可以瀏覽至該位置)。 单击“下一步”。
+18. 在 [指定名稱和位置] 頁面上，提供資料磁碟的「名稱」和「位置」(您可以瀏覽至該位置)。 按 [下一步] 。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image17.png)
-19. 在「設定磁碟」頁面上，選取 [建立新的空白虛擬硬碟] 選項，然後將大小指定為 **500 GB** (或更多)。 500 GB 是最低需求，您永遠可以佈建更大的磁碟。 請注意，佈建之後您無法擴充或縮小磁碟。 如需有關要佈建之磁碟大小的詳細資訊，請檢閱[最佳作法文件](storsimple-ova-best-practices.md)中的＜調整大小＞一節。 单击“下一步”。
+19. 在「設定磁碟」**** 頁面上，選取 [建立新的空白虛擬硬碟]**** 選項，然後將大小指定為 **500 GB** (或更多)。 500 GB 是最低需求，您永遠可以佈建更大的磁碟。 請注意，佈建之後您無法擴充或縮小磁碟。 如需布建磁片大小的詳細資訊，請參閱[最佳作法檔](storsimple-ova-best-practices.md)中的調整大小一節。 按 [下一步] 。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image18.png)
 20. 在 [摘要] 頁面上，檢閱虛擬資料磁碟的詳細資料，如果您對這些資料感到滿意，請按一下 [完成] 來建立磁碟。 精靈會關閉，虛擬硬碟會新增至您的電腦。
@@ -205,13 +207,13 @@ ms.locfileid: "61415944"
        >
        >
 
-如果裝置不符合最低設定需求，橫幅文字中會出現下列錯誤 (如下所示)。 請修改裝置設定，讓電腦有足夠的資源符合最低需求。 然後您就可以將裝置重新啟動，並連線到該裝置。 請參閱以下步驟 1 中的最低設定需求：確定主機系統符合最低的虛擬陣列需求。
+如果裝置不符合最低設定需求，橫幅文字中會出現下列錯誤 (如下所示)。 請修改裝置設定，讓電腦有足夠的資源符合最低需求。 然後您就可以將裝置重新啟動，並連線到該裝置。 請參閱步驟 1：確定主機系統符合最低的虛擬陣列需求中的最低設定需求。
 
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image32.png)
 
 如果您在使用本機 Web UI 進行初始設定時碰到其他任何錯誤，請參閱下列工作流程：
 
-* 執行診斷測試來 [疑難排解 Web UI 安裝程式錯誤](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors)。
+* 執行診斷測試來[疑難排解 WEB UI 安裝程式](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors)。
 * [產生記錄檔封裝及檢視記錄檔](storsimple-ova-web-ui-admin.md#generate-a-log-package)。
 
 ## <a name="next-steps"></a>後續步驟

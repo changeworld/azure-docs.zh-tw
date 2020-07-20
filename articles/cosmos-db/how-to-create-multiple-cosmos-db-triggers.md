@@ -1,44 +1,44 @@
 ---
-title: 如何建立多個獨立的 Azure Cosmos DB 觸發程序
-description: 了解如何設定多個獨立的 Azure Cosmos DB 觸發程序，以建立事件驅動的 Azure Functions 架構。
+title: 為 Cosmos DB 建立多個獨立的 Azure Functions 觸發程式
+description: 了解如何設定多個獨立的「Azure Functions 的 Cosmos DB 觸發程序」，以建立事件驅動的架構。
 author: ealsur
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 4/15/2019
+ms.topic: how-to
+ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 7a47a928e97d52535a6d3baa808f1fcb81d9bb55
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 695513bb572f5931ee1f0fa54a330cfa0574fc21
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59700271"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261591"
 ---
-# <a name="create-multiple-azure-cosmos-db-triggers"></a>建立多個 Azure Cosmos DB 觸發程序
+# <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>建立多個 Azure Functions 的 Cosmos DB 觸發程序
 
-本文說明如何將多個 Cosmos DB 觸發程序設定為以平行方式運作並獨立回應變更。
+本文說明如何將多個「Azure Functions 的 Cosmos DB 觸發程序」設定為以平行方式運作並獨立回應變更。
 
-![以無伺服器事件為基礎的 Functions，其使用 Azure Cosmos DB 觸發程序並共用一個租用容器](./media/change-feed-functions/multi-trigger.png)
+:::image type="content" source="./media/change-feed-functions/multi-trigger.png" alt-text="以無伺服器事件為基礎的 Functions，使用 Azure Functions 的 Cosmos DB 觸發程序，並共用一個租用容器" border="false":::
 
 ## <a name="event-based-architecture-requirements"></a>以事件為基礎的架構需求
 
 使用 [Azure Functions](../azure-functions/functions-overview.md) 建置無伺服器架構時，[建議](../azure-functions/functions-best-practices.md#avoid-long-running-functions)您建立一起運作的小型函式集，而不是大量長時間執行的函式。
 
-當您使用 [Azure Cosmos DB 觸發程序](./change-feed-functions.md)建置事件型無伺服器流程時，您會遇到以下情況：每當特定 [Azure Cosmos 容器](./databases-containers-items.md#azure-cosmos-containers)中有新事件時，您就想執行多個動作。 如果您想要觸發的動作彼此獨立，則理想的解決方式是為您想執行的**每個動作建立一個 Cosmos DB 觸發程序**，全都接聽相同 Azure Cosmos 容器的變更。
+當您使用 [Azure Functions 的 Cosmos DB 觸發程序](./change-feed-functions.md)建置以事件為基礎的無伺服器流程時，您會遇到以下情況：每當特定 [Azure Cosmos 容器](./databases-containers-items.md#azure-cosmos-containers)中有新事件時，您就想執行多個動作。 如果您想要觸發的動作彼此獨立，則理想的解決方式是為您想執行的**每個動作各建立一個 Azure Functions 的 Cosmos DB 觸發程序**，且全都接聽相同 Azure Cosmos 容器的變更。
 
 ## <a name="optimizing-containers-for-multiple-triggers"></a>最佳化多個觸發程序的容器
 
-考慮到 Cosmos DB 觸發程序的「需求」，我們需要第二個容器來儲存狀態，該容器也稱為「租用容器」。 這表示每個 Azure 函式都需要個別的租用容器嗎？
+考慮到「Azure Functions 的 Cosmos DB 觸發程序」的需求**，我們需要第二個容器來儲存狀態，該容器也稱為「租用容器」**。 這表示每個 Azure 函式都需要個別的租用容器嗎？
 
 在此，您有兩個選項：
 
-* 建立**每個函式一個租用容器**：除非您使用[共用輸送量資料庫](./set-throughput.md#set-throughput-on-a-database)，否則這種方法可能會轉變成額外的費用。 請記住，容器層級的最小輸送量為 400 個[要求單位](./request-units.md)，而在租用容器的案例中，只會用來檢查進度及維護狀態。
-* 取得**一個租用容器並加以共用** (針對您所有的函式)：此第二個選項可更加妥善使用容器上佈建的要求單位，因為它可讓多個 Azure 函式共用及使用相同佈建的輸送量。
+* **針對每個函式建立一個租用容器**：除非您使用的是[共用輸送量資料庫](./set-throughput.md#set-throughput-on-a-database)，否則此方法會轉譯為額外成本。 請記住，容器層級的最小輸送量為 400 個[要求單位](./request-units.md)，而在租用容器的案例中，只會用來檢查進度及維護狀態。
+* 有**一個租用容器，並將它共用**于您所有的函式：第二個選項可讓您更有效地使用容器上已布建的要求單位，因為它可讓多個 Azure Functions 共用並使用相同的布建輸送量。
 
 本文的目標是引導您完成第二個選項。
 
 ## <a name="configuring-a-shared-leases-container"></a>設定共用租用容器
 
-若要設定共用的租用容器，您必須對觸發程序進行的唯一額外設定就是新增 `LeaseCollectionPrefix` [屬性](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---c-attributes) (若使用 C#) 或 `leaseCollectionPrefix` [屬性](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---javascript-example) (若使用 JavaScript)。 屬性值應該是該特定觸發程序的邏輯描述項。
+若要設定共用的租用容器，您必須對觸發程序進行的唯一額外設定就是新增 `LeaseCollectionPrefix` [屬性](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) (若使用 C#) 或 `leaseCollectionPrefix` [屬性](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) (若使用 JavaScript)。 屬性值應該是該特定觸發程序的邏輯描述項。
 
 例如，如果您有三個觸發程序：一個會傳送電子郵件、一個會進行彙總以建立具體化檢視，還有一個會將變更傳送至另一個儲存體以供稍後分析，您可以將 `LeaseCollectionPrefix` 為 "emails" 指派給第一個、將其值為 "materialized" 指派給第二個，以及將其值為 "analytics" 指派給第三個。
 
@@ -108,6 +108,6 @@ public static void MaterializedViews([CosmosDBTrigger(
 
 ## <a name="next-steps"></a>後續步驟
 
-* 請參閱 [Azure Cosmos DB 觸發程序](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)的完整組態
-* 請檢查擴充的[範例清單](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---example)以取得所有語言。
+* 請參閱 [Azure Functions 的 Cosmos DB 觸發程序](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)的完整組態
+* 請檢查擴充的[範例清單](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md)以取得所有語言。
 * 請瀏覽 [GitHub 存放庫](https://github.com/ealsur/serverless-recipes/tree/master/cosmosdbtriggerscenarios)中 Azure Cosmos DB 與 Azure Functions 的無伺服器訣竅，以取得更多範例。

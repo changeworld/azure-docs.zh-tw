@@ -13,11 +13,13 @@
       href: quick-create-cli.md
     - name: 使用 Azure PowerShell 建立
       href: quick-create-powershell.md
-    - name: 使用範本建立
+    - name: 使用 ARM 範本建立
       items:
         - name: Linux 擴展集
+          displayName: 'ARM, resource manager'
           href: quick-create-template-linux.md
         - name: Windows 擴展集
+          displayName: 'ARM, resource manager'
           href: quick-create-template-windows.md
 - name: 教學課程
   items:
@@ -45,7 +47,7 @@
           href: tutorial-install-apps-cli.md
         - name: Azure PowerShell
           href: tutorial-install-apps-powershell.md
-        - name: 範本
+        - name: '[範本]'
           href: tutorial-install-apps-template.md
     - name: 5 - 自動調整擴展集
       items:
@@ -53,25 +55,67 @@
           href: tutorial-autoscale-cli.md
         - name: Azure PowerShell
           href: tutorial-autoscale-powershell.md
-        - name: 範本
+        - name: '[範本]'
           href: tutorial-autoscale-template.md
 - name: 範例
   items:
     - name: Azure CLI
-      href: cli-samples.md
+      items:
+        - name: 建立虛擬機器擴展集
+          href: ./scripts/cli-sample-create-simple-scale-set.md
+        - name: 從自訂 VM 映像建立擴展集
+          href: ./scripts/cli-sample-create-scale-set-from-custom-image.md
+        - name: 將應用程式安裝到擴展集
+          href: ./scripts/cli-sample-install-apps.md
+        - name: 建立磁碟並將其連結至擴展集
+          href: ./scripts/cli-sample-attach-disks.md
+        - name: 啟用主機型自動調整
+          href: ./scripts/cli-sample-enable-autoscale.md
+        - name: 建立單一區域擴展集
+          href: ./scripts/cli-sample-single-availability-zone-scale-set.md
+        - name: 建立區域備援擴展集
+          href: ./scripts/cli-sample-zone-redundant-scale-set.md
     - name: PowerShell
-      href: powershell-samples.md
+      items:
+        - name: 建立簡單虛擬機器擴展集
+          href: ./scripts/powershell-sample-create-simple-scale-set.md
+        - name: 建立完整虛擬機器擴展集
+          href: ./scripts/powershell-sample-create-complete-scale-set.md
+        - name: 從自訂 VM 映像建立擴展集
+          href: ./scripts/powershell-sample-create-scale-set-from-custom-image.md
+        - name: 將應用程式安裝到擴展集
+          href: ./scripts/powershell-sample-install-apps.md
+        - name: 建立磁碟並將其連結至擴展集
+          href: ./scripts/powershell-sample-attach-disks.md
+        - name: 啟用主機型自動調整
+          href: ./scripts/powershell-sample-enable-autoscale.md
+        - name: 建立單一區域擴展集
+          href: ./scripts/powershell-single-av-zone-scale-set.md
+        - name: 建立區域備援擴展集
+          href: ./scripts/powershell-sample-zone-redundant-scale-set.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: Azure Resource Manager
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
       maintainContext: true
-    - name: 區域和可用性
-      href: ../virtual-machines/windows/regions-and-availability.md
+    - name: 區域
+      href: ../virtual-machines/windows/regions.md
+    - name: 可用性和效能
       maintainContext: true
       items:
+        - name: 可用性
+          href: availability.md
+        - name: 位於相同位置
+          href: co-location.md
+        - name: 網路效能
+          href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machine-scale-sets%2fwindows%2ftoc.json
         - name: 在擴展集中管理容錯網域
           href: virtual-machine-scale-sets-manage-fault-domains.md
+    - name: 影像
+      href: shared-image-galleries.md
     - name: VM 類型和大小
       href: ../virtual-machines/windows/sizes.md
       maintainContext: true
@@ -100,7 +144,7 @@
           href: ../virtual-machines/windows/sizes-gpu.md
           maintainContext: true
           items:
-            - name: 設定 GPU 驅動程式
+            - name: 設定 NVIDIA GPU 驅動程式
               href: ../virtual-machines/windows/n-series-driver-setup.md
               maintainContext: true
         - name: 高效能計算
@@ -118,6 +162,8 @@
     - name: 維護和更新
       href: ../virtual-machines/windows/maintenance-and-updates.md
       maintainContext: true
+    - name: 協調流程模式
+      href: orchestration-modes.md
     - name: 磁碟儲存體
       items:
         - name: 受控磁碟
@@ -125,6 +171,9 @@
           maintainContext: true
         - name: 選取磁碟類型
           href: ../virtual-machines/windows/disks-types.md
+          maintainContext: true
+        - name: 加密
+          href: ../virtual-machines/windows/disk-encryption.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json
           maintainContext: true
         - name: 進階儲存體效能
           href: ../virtual-machines/windows/premium-storage-performance.md
@@ -143,13 +192,19 @@
     - name: 基礎結構自動化
       href: ../virtual-machines/windows/infrastructure-automation.md
       maintainContext: true
-    - name: 安全性與原則
-      href: ../virtual-machines/windows/security-policy.md
+    - name: 安全性
+      items:
+        - name: 安全性與原則
+          href: ../virtual-machines/windows/security-policy.md
+        - name: Azure 磁碟加密
+          href: disk-encryption-overview.md
+        - name: 內建安全性控制
+          href: virtual-machine-scale-sets-security-controls.md
       maintainContext: true
     - name: 監視
       href: ../virtual-machines/windows/monitor.md
       maintainContext: true
-    - name: 部署考量
+    - name: 部署考量因素
       items:
         - name: vCPU 配額
           href: ../virtual-machines/windows/quotas.md
@@ -164,6 +219,56 @@
           href: virtual-machine-scale-sets-design-overview.md
         - name: 了解執行個體識別碼
           href: virtual-machine-scale-sets-instance-ids.md
+    - name: 使用映像
+      displayName: 'SIG, AMI, image'
+      items:
+        - name: 共用映像資源庫
+          items:
+            - name: PowerShell
+              items:
+                - name: 建立資源庫
+                  href: ../virtual-machines/shared-images-powershell.md
+                - name: 建立映像
+                  items:
+                    - name: 從 VM
+                      href: ../virtual-machines/image-version-vm-powershell.md
+                    - name: 從受控映像遷移
+                      href: ../virtual-machines/image-version-managed-image-powershell.md
+                    - name: 從另一個資源庫複製
+                      href: ../virtual-machines/image-version-another-gallery-powershell.md
+                - name: 建立擴展集
+                  items:
+                    - name: 特製化
+                      href: instance-specialized-image-version-powershell.md
+                    - name: 一般化
+                      href: instance-generalized-image-version-powershell.md
+                - name: 更新影像資源
+                  href: ../virtual-machines/update-image-resources-powershell.md
+            - name: CLI
+              items:
+                - name: 建立資源庫
+                  href: ../virtual-machines/shared-images-cli.md
+                - name: 建立映像
+                  items:
+                    - name: 從 VM
+                      href: ../virtual-machines/image-version-vm-cli.md
+                    - name: 從受控映像遷移
+                      href: ../virtual-machines/image-version-managed-image-cli.md
+                    - name: 從另一個資源庫複製
+                      href: ../virtual-machines/image-version-another-gallery-cli.md
+                - name: 建立擴展集
+                  items:
+                    - name: 特製化
+                      href: instance-specialized-image-version-cli.md
+                    - name: 一般化
+                      href: instance-generalized-image-version-cli.md
+                - name: 更新影像資源
+                  href: ../virtual-machines/update-image-resources-cli.md
+            - name: 針對共用映像進行疑難排解
+              href: ../virtual-machines/troubleshooting-shared-images.md
+            - name: 使用客戶管理的金鑰
+              displayName: 'SSE, CMK, encrypt'
+              href: ../virtual-machines/image-version-encryption.md
     - name: 建立範本
       items:
         - name: 了解擴展集範本
@@ -203,18 +308,21 @@
         - name: 在擴展集中加密磁碟
           items:
             - name: 使用 PowerShell
-              href: virtual-machine-scale-sets-encrypt-disks-ps.md
+              href: disk-encryption-powershell.md
             - name: 使用 Azure CLI
-              href: virtual-machine-scale-sets-encrypt-disks-cli.md
+              href: disk-encryption-cli.md
+            - name: 使用 Azure 資源管理員範本
+              href: disk-encryption-azure-resource-manager.md
             - name: 擴充功能排序
-              href: ../security/azure-security-disk-encryption-extension-sequencing.md
-              maintainContext: true
+              href: disk-encryption-extension-sequencing.md
+            - name: 適用於 Azure 磁碟加密的金鑰保存庫
+              href: disk-encryption-key-vault.md
         - name: 使用大型擴展集
           href: virtual-machine-scale-sets-placement-groups.md
         - name: 將擴展集範本轉換為使用受控磁碟
           href: virtual-machine-scale-sets-convert-template-to-md.md
-        - name: 使用低優先順序
-          href: virtual-machine-scale-sets-use-low-priority.md
+        - name: 使用定點執行個體
+          href: use-spot.md
     - name: 管理
       items:
         - name: 一般管理工作
@@ -223,6 +331,20 @@
               href: virtual-machine-scale-sets-manage-cli.md
             - name: 使用 Azure PowerShell
               href: virtual-machine-scale-sets-manage-powershell.md
+        - name: 修改擴展集
+          href: virtual-machine-scale-sets-upgrade-scale-set.md
+        - name: 擴展集的網路功能
+          href: virtual-machine-scale-sets-networking.md
+        - name: 作業系統自動升級
+          href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: 自動執行個體修復
+          href: virtual-machine-scale-sets-automatic-instance-repairs.md
+        - name: 執行個體保護
+          href: virtual-machine-scale-sets-instance-protection.md
+        - name: 相應縮小原則
+          href: virtual-machine-scale-sets-scale-in-policy.md
+        - name: 刪除時終止通知
+          href: virtual-machine-scale-sets-terminate-notification.md
         - name: 共用映像資源庫
           items:
             - name: 概觀
@@ -235,16 +357,12 @@
               href: share-images-across-tenants.md
             - name: 針對共用映像進行疑難排解
               href: troubleshooting-shared-images.md
+        - name: 建立鄰近放置群組
+          href: proximity-placement-groups.md
         - name: 擴展集內的垂直縮放比例
           href: virtual-machine-scale-sets-vertical-scale-reprovision.md
-        - name: 作業系統自動升級
-          href: virtual-machine-scale-sets-automatic-upgrade.md
-        - name: 修改擴展集
-          href: virtual-machine-scale-sets-upgrade-scale-set.md
         - name: 使用 DSC 與擴展集
           href: virtual-machine-scale-sets-dsc.md
-        - name: 擴展集的網路功能
-          href: virtual-machine-scale-sets-networking.md
         - name: 將範本轉換為受控磁碟
           href: virtual-machine-scale-sets-convert-template-to-md.md
         - name: 預定的維修
@@ -274,7 +392,7 @@
   items:
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
-    - name: 價格
+    - name: 定價
       items:
         - name: Linux
           href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/'
@@ -282,5 +400,5 @@
           href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-vm-scale-set'

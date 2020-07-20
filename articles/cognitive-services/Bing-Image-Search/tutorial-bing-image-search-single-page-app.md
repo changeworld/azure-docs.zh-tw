@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 03/04/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 353641c514c9171e211221b84b13c5f09a413a48
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 3d4ccc6ecf18eb2eecc3ccc69ed97bf1094b2035
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341217"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206458"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>教學課程：使用 Bing 影像搜尋 API 來建立單頁應用程式
 
@@ -40,7 +40,7 @@ ms.locfileid: "57341217"
 
 ## <a name="manage-and-store-user-subscription-keys"></a>管理及儲存使用者訂用帳戶金鑰
 
-此應用程式使用網頁瀏覽器的永續性儲存體來儲存 API 訂用帳戶金鑰。 如果未儲存任何金鑰，網頁將會提示使用者提供金鑰，並儲存該金鑰以供稍後使用。 如果該金鑰稍後被 API 拒絕，應用程式就會從儲存體中移除它。
+此應用程式使用網頁瀏覽器的永續性儲存體來儲存 API 訂用帳戶金鑰。 如果未儲存任何金鑰，網頁將會提示使用者提供金鑰，並儲存該金鑰以供稍後使用。 如果該金鑰稍後被 API 拒絕，應用程式就會從儲存體中移除它。 這個範例會使用全域端點。 您也可以使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
 
 
 請定義 `storeValue` 和 `retrieveValue` 函式以使用 `localStorage` 物件 (如果瀏覽器支援此物件) 或 Cookie。
@@ -116,9 +116,9 @@ bingSearchOptions(this), getSubscriptionKey())">
 
 ![[Bing 影像搜尋表單]](media/cognitive-services-bing-images-api/image-search-spa-form.png)
 
-「Bing 影像搜尋 API」提供數個[篩選查詢參數](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#filter-query-parameters)，可針對搜尋結果縮小範圍及進行篩選。 此應用程式中的 HTML 表單會使用及顯示下列參數選項：
+「Bing 影像搜尋 API」提供數個[篩選查詢參數](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters)，可針對搜尋結果縮小範圍及進行篩選。 此應用程式中的 HTML 表單會使用及顯示下列參數選項：
 
-|              |                                                                                                                                                                                    |
+| 選項 | 描述 |
 |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `where`      | 可供選取市場 (位置和語言) 以用於搜尋的下拉式功能表。                                                                                             |
 | `query`      | 要在其中輸入搜尋字詞的文字欄位。                                                                                                                                 |
@@ -316,7 +316,7 @@ function renderImageResults(items) {
 
 「Bing 影像搜尋 API」可以傳回四種類型的搜尋建議來協助引導使用者的搜尋體驗，其中每種建議都在自己的最上層物件中：
 
-| 建議         | 說明                                                                                                                                                                                                         |
+| 建議         | 描述                                                                                                                                                                                                         |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `pivotSuggestions` | 將原始搜尋中的樞紐字組取代為不同樞紐字組的查詢。 比方說，若您搜尋「紅色花卉」，樞紐字組可能是「紅色」，而樞紐建議可能是「黃色花卉」。 |
 | `queryExpansions`  | 藉由新增多個字詞以縮小原始搜尋範圍的查詢。 比方說，若您搜尋 "Microsoft Surface"，可能是查詢擴充可能是 "Microsoft Surface Pro"。                                   |
@@ -338,7 +338,7 @@ searchItemRenderers = {
 
 這些轉譯器函式可接受下列參數：
 
-| 參數         | 說明                                                                                              |
+| 參數         | 描述                                                                                              |
 |---------|----------------------------------------------------------------------------------------------|
 | `item`  | JavaScript 物件，其中包含項目的屬性，例如其 URL 及其描述。 |
 | `index` | 集合內結果項目的索引。                                          |
@@ -369,7 +369,7 @@ searchItemRenderers = {
     }, // relatedSearches renderer omitted
 ```
 
-縮圖影像的 `height` 和 `width` 會同時用於 `<img>` 標記及縮圖 URL 中的 `h` 和 `w` 欄位。 這讓 Bing 能夠傳回與該大小完全相同的[縮圖](resize-and-crop-thumbnails.md)。
+縮圖影像的 `height` 和 `width` 會同時用於 `<img>` 標記及縮圖 URL 中的 `h` 和 `w` 欄位。 這讓 Bing 能夠傳回與該大小完全相同的[縮圖](../bing-web-search/resize-and-crop-thumbnails.md)。
 
 ## <a name="persisting-client-id"></a>保存用戶端識別碼
 
@@ -386,19 +386,22 @@ searchItemRenderers = {
 > [!NOTE]
 > 在生產 Web 應用程式中，無論如何都應該執行要求伺服器端。 否則，您的 Bing 搜尋 API 金鑰必須包含在網頁中，以提供給檢視來源的任何人。 您會根據 API 訂用帳戶金鑰的所有使用量付費，即使是未經授權的合作對象所提出的要求，因此請務必不要公開您的金鑰。
 
-若要進行開發，您可以透過 CORS Proxy 提出 Bing Web 搜尋 API 要求。 來自這類 Proxy 的回應包含 `Access-Control-Expose-Headers` 標頭，可將回應標頭列入白名單並提供給 JavaScript 使用。
+若要進行開發，您可以透過 CORS Proxy 提出 Bing Web 搜尋 API 要求。 來自這類 Proxy 的回應包含 `Access-Control-Expose-Headers` 標頭，可讓回應標頭列入允許清單並提供給 JavaScript 使用。
 
 您可以輕鬆安裝 CORS Proxy，讓我們的教學課程應用程式存取用戶端識別碼標頭。 首先，請[安裝 Node.js](https://nodejs.org/en/download/) (若尚未安裝)。 然後在命令視窗中發出下列命令：
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-接下來，將 HTML 檔案中的 Bing Web 搜尋端點變更為：
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+接下來，將 HTML 檔案中的 Bing Web 搜尋端點變更為：\
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 最後，使用下列命令啟動 CORS Proxy：
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 當您使用教學課程應用程式時，請保持開啟命令視窗；關閉視窗會停止 Proxy。 在可展開的 [HTTP 標頭] 區段搜尋結果下，您現在可以看到 `X-MSEdge-ClientID` 標頭 (及其他標頭)，並確認每個要求的此標頭都相同。
 

@@ -1,6 +1,6 @@
 ---
 title: 使用 .NET SDK 來管理串流端點。 | Microsoft Docs
-description: 本文章說明如何透過 Azure 入口網站管理串流端點。
+description: 本文示範如何使用 Azure 入口網站來管理串流端點。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 0222450e1b85c255f2028adff750b9257f109be7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: b6c6fccd473ae57139c0b46bf32dc9468a4ba1a8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61464958"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74901266"
 ---
 # <a name="manage-streaming-endpoints-with-net-sdk"></a>使用 .NET SDK 來管理串流端點  
 
@@ -50,7 +49,7 @@ ms.locfileid: "61464958"
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>建立和設定 Visual Studio 專案
 
-設定您的開發環境並在 app.config 檔案中填入連線資訊，如[使用 .NET 進行 Media Services 開發](media-services-dotnet-how-to-use.md)所述。 
+設定您的開發環境，並在 app.config 檔案中填入連接資訊，如[使用 .net 進行媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
 
 ## <a name="add-code-that-manages-streaming-endpoints"></a>新增可管理串流端點的程式碼
     

@@ -1,124 +1,201 @@
 ---
 title: 使用 Visual Studio Code 在 Azure 中建立第一個函式
 description: 使用 Visual Studio Code 中的 Azure Functions 擴充功能建立簡單 HTTP 觸發函式並發佈至 Azure。
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: azure functions, 函式, 事件處理, 計算, 無伺服器架構
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
-ms.date: 09/07/2018
-ms.author: glenga
-ms.custom: mvc, devcenter
-ms.openlocfilehash: cbe4dbd2ae741f4225cfdc628c31508956cbb95c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 01/10/2020
+ms.custom: mvc, devcenter, seo, tracking-python
+zone_pivot_groups: programming-languages-set-functions
+ms.openlocfilehash: 819fdec23d00929db34942434f66a6ffa5d4a1d8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59490528"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833735"
 ---
-# <a name="create-your-first-function-using-visual-studio-code"></a>使用 Visual Studio Code 建立第一個函式
+# <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>快速入門：使用 Visual Studio Code 在 Azure 中建立函式
 
-Azure Functions 可讓您在[無伺服器](https://azure.microsoft.com/solutions/serverless/)環境中執行程式碼，而不需要先建立 VM 或發佈 Web 應用程式。
+::: zone pivot="programming-language-csharp"  
+在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的 C# 類別庫函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 
+::: zone-end  
+::: zone pivot="programming-language-javascript"
+在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的 JavaScript 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 
+::: zone-end
+::: zone pivot="programming-language-typescript"
+在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的 TypeScript 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 
+::: zone-end   
+::: zone pivot="programming-language-powershell"
+在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的 PowerShell 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 
+::: zone-end  
+::: zone pivot="programming-language-python" 
+在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的 Python 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 
+::: zone-end  
+::: zone pivot="programming-language-java" 
+在本文中，您會使用 Visual Studio Code 建立可回應 HTTP 要求的 Java 函式。 在本機測試程式碼之後，您可以將其部署到 Azure Functions 的無伺服器環境。 
+::: zone-end
 
-在本文中，您將了解如何使用[適用於 Visual Studio Code 的 Azure Functions 擴充功能]，在使用 Microsoft Visual Studio Code 的本機電腦上建立和測試 "hello world" 函式。 然後將函式程式碼從 Visual Studio Code 發佈至 Azure。
+完成本快速入門後，您的 Azure 帳戶中會產生幾美分或更少的少許費用。 
 
-![Visual Studio 專案中的 Azure Functions 程式碼](./media/functions-create-first-function-vs-code/functions-vscode-intro.png)
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
+本文還有 [CLI 型版本](functions-create-first-azure-function-azure-cli.md)。
+::: zone-end
+::: zone pivot="programming-language-java"  
+> [!NOTE]
+> 如果 Visual Studio Code 不是您慣用的開發工具，請參閱供 JAVA 開發人員參考的類似教學課程，內容分別使用 [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)、[Gradle](/azure/azure-functions/functions-create-first-java-gradle) 和 [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) 等開發工具。
+::: zone-end  
 
-此擴充功能目前可完整支援 C#、JavaScript 和 Java 函式，而 Python 的支援目前為預覽狀態。 本文中的步驟可能會因為您為 Azure Functions 專案選擇的語言不同而有所差異。 此擴充功能目前為預覽狀態。 若要進一步了解，請參閱[適用於 Visual Studio Code 的 Azure Functions 擴充功能]的擴充功能頁面。
+## <a name="configure-your-environment"></a>設定環境
 
-## <a name="prerequisites"></a>必要條件
+開始使用之前，請先確定您具備下列必要項目︰
 
-若要完成本快速入門：
++ 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-* 在其中一個[支援的平台](https://code.visualstudio.com/docs/supporting/requirements#_platforms)上安裝 [Visual Studio Code](https://code.visualstudio.com/)。 本文已在執行 macOS (High Sierra) 的裝置上進行開發與測試。
+::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-python"  
++ [Node.js](https://nodejs.org/)，Windows 需要將其用於 npm。 僅限[作用中 LTS 和維修 LTS 版本](https://nodejs.org/about/releases/)。 請使用 `node --version` 命令來檢查您的版本。
+    macOS 和 Linux 上的本機開發不需要此項目。   
+::: zone-end  
+::: zone pivot="programming-language-javascript,programming-language-typescript"  
++ [Node.js](https://nodejs.org/)、作用中 LTS 和維修 LTS 版本 (建議使用 10.14.1)。 請使用 `node --version` 命令來檢查您的版本。
+::: zone-end 
+::: zone pivot="programming-language-python"
++ Azure Functions (x64) 支援 [Python 3.8](https://www.python.org/downloads/release/python-381/)、[Python 3.7](https://www.python.org/downloads/release/python-375/)、[Python 3.6](https://www.python.org/downloads/release/python-368/)。
+::: zone-end   
+::: zone pivot="programming-language-powershell"
++ [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-* 安裝 2.x 版的 [Azure Functions Core Tools](functions-run-local.md#v2) (仍是預覽版)。
++ [.NET Core SDK 2.2+](https://www.microsoft.com/net/download)  
+::: zone-end  
+::: zone pivot="programming-language-java"  
++ [Java Developer Kit](https://aka.ms/azure-jdks) 第 8 版。
 
-* 安裝所選語言的特定需求：
++ [Apache Maven](https://maven.apache.org) 3.0 版或更高版本。
+::: zone-end  
++ 其中一個[支援的平台](https://code.visualstudio.com/docs/supporting/requirements#_platforms)上有 [Visual Studio Code](https://code.visualstudio.com/)。  
+::: zone pivot="programming-language-csharp"  
++ 適用於 Visual Studio Code 的 [ 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。  
+::: zone-end  
+::: zone pivot="programming-language-python"
++ 適用於 Visual Studio Code 的 [Python 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-python.python)。  
+::: zone-end  
+::: zone pivot="programming-language-powershell"
++ [適用於 Visual Studio Code 的 PowerShell 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)。 
+::: zone-end  
+::: zone pivot="programming-language-java"  
++ [Java 延伸模組套件](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
+::: zone-end  
 
-    | 語言 | 分機 |
-    | -------- | --------- |
-    | **C#** | [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[.NET Core CLI 工具](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)*   |
-    | **Java** | [適用於 Java 的偵錯工具](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3+](https://maven.apache.org/) |
-    | **JavaScript** | [Node 8.0+](https://nodejs.org/)  |
++ 適用於 Visual Studio Code 的 [Azure Functions 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)。 
 
-    \* 也是 Core Tools 的必要條件。
+## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>建立本機專案 
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+在這一節中，您會使用 Visual Studio Code 在您所選的語言中建立本機 Azure Functions 專案。 稍後在本文中，您會將函式程式碼發佈至 Azure。 
 
-[!INCLUDE [functions-install-vs-code-extension](../../includes/functions-install-vs-code-extension.md)]
+1. 選擇活動列中的 Azure 圖示，然後在 [Azure：  函式] 區域，選取 [建立新專案...]  圖示。
 
-[!INCLUDE [functions-create-function-app-vs-code](../../includes/functions-create-function-app-vs-code.md)]
+    ![選擇建立新專案](media/functions-create-first-function-vs-code/create-new-project.png)
 
-## <a name="create-an-http-triggered-function"></a>建立由 HTTP 觸發的函式
+1. 選擇您專案工作區的目錄位置，然後選擇 [選取]  。
 
-1. 從 [Azure: 函式] 中，選擇 [建立函式] 圖示。
+    > [!NOTE]
+    > 這些步驟主要設計為在工作區以外的地方完成。 在此案例中，請勿選取屬於工作區的專案資料夾。
 
-    ![建立函式](./media/functions-create-first-function-vs-code/create-function.png)
+1. 依照提示提供下列資訊：
 
-1. 選取具有函式應用程式專案的資料夾，然後選取 [HTTP 觸發程序] 函式範本。
+    ::: zone pivot="programming-language-csharp"
+    + **為您的函式專案選取語言**：選擇 `C#`。
+    ::: zone-end
+    ::: zone pivot="programming-language-javascript"
+    + **為您的函式專案選取語言**：選擇 `JavaScript`。
+    ::: zone-end
+    ::: zone pivot="programming-language-typescript"
+    + **為您的函式專案選取語言**：選擇 `TypeScript`。
+    ::: zone-end
+    ::: zone pivot="programming-language-powershell"
+    + **為您的函式專案選取語言**：選擇 `PowerShell`。
+    ::: zone-end
+    ::: zone pivot="programming-language-python"
+    + **為您的函式專案選取語言**：選擇 `Python`。
 
-    ![選擇 HTTP 觸發程序範本](./media/functions-create-first-function-vs-code/create-function-choose-template.png)
+    + **選取 Python 別名以建立虛擬環境**：選擇 Python 解譯器的位置。 如果未顯示位置，請輸入 Python 二進位檔的完整路徑。  
+    ::: zone-end
 
-1. 輸入 `HTTPTrigger` 作為函式名稱，並按下 Enter，然後選取 [匿名] 驗證。
+    ::: zone pivot="programming-language-java"  
+    + **為您的函式專案選取語言**：選擇 `Java`。
 
-    ![選擇匿名驗證](./media/functions-create-first-function-vs-code/create-function-anonymous-auth.png)
+    + **提供群組識別碼**：選擇 `com.function`。
 
-    系統隨即會使用由 HTTP 觸發的函式範本，以您所選的語言來建立函式。
+    + **提供成品識別碼**：選擇 `myFunction`。
 
-    ![Visual Studio Code 中的 HTTP 觸發函式範本](./media/functions-create-first-function-vs-code/new-function-full.png)
+    + **提供版本**：選擇 `1.0-SNAPSHOT`。
 
-您可以藉由修改 function.json 檔案，將輸入和輸出繫結新增至您的函式。 如需詳細資訊，請參閱 [Azure Functions 觸發程序和繫結概念](functions-triggers-bindings.md)。
+    + **提供套件名稱**：選擇 `com.function`。
 
-您現在已建立函式專案和 HTTP 觸發的函式，可以在本機電腦上進行測試。
+    + **提供應用程式名稱**：選擇 `myFunction-12345`。
+    ::: zone-end  
+    ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
+    + **選取您的專案第一個函式的範本**：選擇 `HTTP trigger`。
+    
+    + **提供函式名稱**：輸入 `HttpExample`。
+    ::: zone-end  
+    ::: zone pivot="programming-language-csharp"
+    + **提供命名空間**：輸入 `My.Functions`。 
+    ::: zone-end  
+    ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
+    + **授權層級**選擇 `Anonymous`，讓任何人都能呼叫您的函式端點。 若要了解授權層級，請參閱[授權金鑰](functions-bindings-http-webhook-trigger.md#authorization-keys)。
+    ::: zone-end  
+    + **選取您開啟專案的方式**：選擇 `Add to workspace`。
 
-## <a name="test-the-function-locally"></a>在本機測試函式
+1. Visual Studio Code 會使用這項資訊產生具有 HTTP 觸發程序的 Azure Functions 專案。 您可以在 Explorer 中檢視本機專案檔。 若要深入了解所建立的檔案，請參閱[產生的專案檔](functions-develop-vs-code.md#generated-project-files)。 
 
-Azure Functions Core Tools 可讓您在本機開發電腦上執行 Azure Functions 專案。 第一次從 Visual Studio Code 啟動函式時，系統會提示您安裝這些工具。  
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python,programming-language-java"
 
-1. 若要測試您的函式，可在函式程式碼中設定中斷點，並按 F5 以啟動函式應用程式專案。 Core Tools 的輸出會顯示在**終端機**面板中。
+[!INCLUDE [functions-run-function-test-local-vs-code](../../includes/functions-run-function-test-local-vs-code.md)]
 
-1. 在**終端機**面板中，複製 HTTP 觸發函式的 URL 端點。
+::: zone-end
 
-    ![Azure 本機輸出](./media/functions-create-first-function-vs-code/functions-vscode-f5.png)
+::: zone pivot="programming-language-powershell"
 
-1. 將 HTTP 要求的 URL 貼到瀏覽器的網址列。 將查詢字串 `?name=<yourname>` 附加至此 URL 並執行要求。 觸及中斷點時，執行就會暫停。
+[!INCLUDE [functions-run-function-test-local-vs-code-ps](../../includes/functions-run-function-test-local-vs-code-ps.md)]
 
-    ![函式在 Visual Studio Code 中觸及中斷點](./media/functions-create-first-function-vs-code/function-debug-vscode-js.png)
+::: zone-end
 
-1. 當您繼續此執行時，下圖顯示瀏覽器中對 GET 要求所做出的回應︰
-
-    ![瀏覽器中的函式 localhost 回應](./media/functions-create-first-function-vs-code/functions-test-local-browser.png)
-
-1. 若要停止偵錯，請按 Shift + F5。
-
-確認函式在本機電腦上正確執行之後，就可以將專案發佈到 Azure。
+確認函式在本機電腦上正確執行之後，就可以使用 Visual Studio Code 將專案直接發佈到 Azure。 
 
 [!INCLUDE [functions-sign-in-vs-code](../../includes/functions-sign-in-vs-code.md)]
 
 [!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 
-## <a name="test-your-function-in-azure"></a>在 Azure 中測試您的函式
+## <a name="run-the-function-in-azure"></a>在 Azure 中執行函式
 
-1. 從 [輸出] 面板中複製 HTTP 觸發程序的 URL。 如同以往，務必將查詢字串 `?name=<yourname>` 新增至此 URL 的結尾並執行要求。
+1. 返回 [Azure：  函式] 區域 (位於提要欄位中)，在訂用帳戶下展開新的函式應用程式。 展開 [函式]  ，以滑鼠右鍵按一下 (Windows) 或按住 Ctrl 並在 (macOS) **HttpExample** 上按一下，然後選擇 [複製函式 URL]  。
 
-    呼叫 HTTP URL 觸發函式的 URL 應採用下列格式：
+    ![複製新 HTTP 觸發程序的函數 URL](./media/functions-create-first-function-vs-code/function-copy-endpoint-url.png)
 
-        http://<functionappname>.azurewebsites.net/api/<functionname>?name=<yourname> 
+1. 將 HTTP 要求的這個 URL 貼到瀏覽器的網址列中，並在此 URL 的結尾處新增 `name` 查詢字串 `?name=Functions`，然後執行要求。 呼叫 HTTP URL 觸發函式的 URL 應採用下列格式：
 
-1. 將 HTTP 要求的新 URL 貼到瀏覽器的網址列。 下圖顯示瀏覽器中對於函式傳回之遠端 GET 要求所做出的回應︰ 
+    ```http
+    http://<functionappname>.azurewebsites.net/api/httpexample?name=Functions
+    ```
+        
+    下列範例顯示瀏覽器中對於函式所傳回遠端 GET 要求所做出的回應︰ 
 
     ![瀏覽器中的函式回應](./media/functions-create-first-function-vs-code/functions-test-remote-browser.png)
 
+## <a name="clean-up-resources"></a>清除資源
+
+當您繼續進行下一個步驟[將 Azure 儲存體佇列繫結新增至您的函式](functions-add-output-binding-storage-queue-vs-code.md)時，您必須保留所有資源，以您所完成的工作為基礎。
+
+否則，您可以使用下列步驟來刪除函式應用程式及其相關資源，以避免產生任何額外的成本。
+
+[!INCLUDE [functions-cleanup-resources-vs-code.md](../../includes/functions-cleanup-resources-vs-code.md)]
+
+若要深入了解 Functions 成本，請參閱[估計使用量方案成本](functions-consumption-costs.md)。
+
 ## <a name="next-steps"></a>後續步驟
 
-您已透過 Visual Studio Code，使用簡單的 HTTP 觸發函式建立函式應用程式。 您也可以深入了解如何使用 Azure Functions Core Tools，[從終端機或命令提示字元進行本機測試和偵錯](functions-run-local.md)。
+您已透過 Visual Studio Code，使用簡單的 HTTP 觸發函式建立函式應用程式。 在下一篇文章中，您可以藉由新增輸出繫結來展開該函式。 這個繫結會從 HTTP 要求將字串寫入 Azure 佇列儲存體佇列中的訊息。 
 
 > [!div class="nextstepaction"]
-> [啟用 Application Insights 整合](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [將 Azure 儲存體佇列繫結新增至您的函式](functions-add-output-binding-storage-queue-vs-code.md)
 
 [Azure Functions Core Tools]: functions-run-local.md
-[適用於 Visual Studio Code 的 Azure Functions 擴充功能]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions
+[Azure Functions extension for Visual Studio Code]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions

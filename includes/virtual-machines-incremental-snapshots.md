@@ -8,14 +8,13 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 06e6e491fa1e9a047527efb78149855b125771ef
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f30518c3bfc9876cbddaf8295ff9e8b667a70200
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60543757"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74014534"
 ---
-# <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>以遞增快照集備份 Azure 非受控 VM 磁碟
 ## <a name="overview"></a>概觀
 Azure 儲存體提供拍攝 Blob 快照的功能。 快照會擷取該時間點的 Blob 狀態。 在本文中，我們會說明使用快照集維護虛擬機器磁碟備份的案例。 當您選擇不使用 Azure 的備份和復原服務，但是想要為虛擬機器磁碟建立自訂的備份策略時，您可以使用這個方法。
 
@@ -58,7 +57,7 @@ Blob 快照是在某個時間點擷取的 Blob 唯讀版本。 一旦建立快�
 * Blob 是在 2016 年 1 月 1 日或之後建立。
 * 在兩個快照集之間，Blob 不會覆寫為 [PutPage](https://docs.microsoft.com/rest/api/storageservices/Put-Page) 或[複製 Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob)。
 
-**注意**：這項功能是適用於進階和標準 Azure 分頁 Blob。
+**注意**︰此功能適用於進階和標準 Azure 分頁 Blob。
 
 當您有使用快照集的自訂備份策略時，將快照集從一個儲存體帳戶複製到另一個儲存體帳戶可能會很慢，而且會耗用大量的儲存空間。 您可以將連續快照集之間的差異寫入備份分頁 Blob，而不是將整個快照集複製到備份儲存體帳戶。 如此一來，將大量減少複製的時間和儲存備份的空間。
 
@@ -74,7 +73,7 @@ Blob 快照是在某個時間點擷取的 Blob 唯讀版本。 一旦建立快�
 
 在下一節中，我們將詳細說明如何使用增量快照複製維護磁碟的備份
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 在本節中，我們會使用快照說明涉及虛擬機器磁碟的自訂備份策略的案例。
 
 請考慮使用連接進階儲存體 P30 磁碟的 DS 系列 Azure VM。 稱為 *mypremiumdisk* 的 P30 磁碟會儲存在稱為 *mypremiumaccount* 的進階儲存體帳戶中。 稱為 *mybackupstdaccount* 的標準儲存體帳戶用於儲存 *mypremiumdisk* 的備份。 我們想要每 12 小時保留一個 *mypremiumdisk* 的快照集。

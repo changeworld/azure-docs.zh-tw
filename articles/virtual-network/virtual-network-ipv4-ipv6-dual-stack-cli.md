@@ -1,57 +1,40 @@
 ---
-title: 部署 Azure 虛擬網路-CLI 中的 IPv6 雙重堆疊應用程式
+title: 部署 IPv6 雙重堆疊應用程式-基本 Load Balancer-CLI
 titlesuffix: Azure Virtual Network
-description: 這篇文章示範如何部署 IPv6 雙重堆疊應用程式使用 Azure CLI 的 Azure 虛擬網路中。
+description: 本文說明如何使用 Azure CLI 在 Azure 虛擬網路中部署 IPv6 雙重堆疊應用程式。
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/22/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 12fbf2ae5387ac0a9350cc203f4a6f2587c8dafe
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: fd5fcd2356742222b162e31a3178db135acd8ccf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130869"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84703103"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>部署 Azure 虛擬網路-CLI （預覽） 中的 IPv6 雙重堆疊應用程式
+# <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---cli"></a>使用基本 Load Balancer-CLI 部署 IPv6 雙重堆疊應用程式
 
-本文說明如何部署雙重堆疊 （IPv4 + IPv6） 中的應用程式包含具有雙重堆疊子網路，使用雙 （IPv4 + IPv6） 前端組態，具有有雙重 IP 組態的 Nic 的 Vm 負載平衡器的雙重堆疊虛擬網路的 Azure雙重的網路安全性群組規則和 「 雙重的公用 Ip。
+本文說明如何 Azure CLI 使用基本 Load Balancer 部署雙重堆疊（IPv4 + IPv6）應用程式，其中包含具有雙重堆疊子網的雙協定堆疊虛擬網路、具有雙重（IPv4 + IPv6）前端設定的基本 Load Balancer、具有雙重 IP 設定的 Vm、雙重網路安全性群組規則，以及雙重公用 Ip。
 
-> [!Important]
-> Azure 虛擬網路的 IPv6 雙重堆疊目前處於公開預覽狀態。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽專用的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+若要使用 Standard Load Balancer 部署雙重堆疊（IPV4 + IPv6）應用程式，請參閱[使用 Azure CLI 部署具有 Standard Load Balancer 的 IPv6 雙重堆疊應用程式](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md)。
+
 
 如果您沒有 Azure 訂用帳戶，請立即建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您決定安裝，而改為在本機使用 Azure CLI，本快速入門需要您使用 Azure CLI 2.0.49 版或更新版本。 若要尋找您安裝的版本，請執行 `az --version`。 如需安裝或升級的資訊，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+如果您決定改為在本機安裝和使用 CLI，本快速入門會要求您使用 Azure CLI 2.0.49 版或更新版本。 若要尋找您安裝的版本，請執行 `az --version`。 如需安裝或升級的資訊，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
-## <a name="prerequisites"></a>必要條件
-若要使用 IPv6 的 Azure 虛擬網路功能，您必須設定您的訂用帳戶使用 Azure PowerShell，如下所示：
-
-```azurecli
-az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-```
-需要 30 分鐘才能完成功能註冊。 您可以執行下列 Azure CLI 命令來檢查您的註冊狀態：
-
-```azurelci
-az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-```
-註冊完成之後，請執行下列命令：
-
-```azurelci
-az provider register --namespace Microsoft.Network
-```
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-您可以建立雙重堆疊虛擬網路之前，您必須建立的資源群組[az 群組建立](/cli/azure/group)。 下列範例會建立名為的資源群組*myRGDualStack*中*eastus*位置：
+您必須先使用[az group create](/cli/azure/group)建立資源群組，才可以建立雙重堆疊虛擬網路。 下列範例會在*eastus*位置中建立名為*DsResourceGroup01*的資源群組：
 
 ```azurecli
 az group create \
@@ -59,8 +42,8 @@ az group create \
 --location eastus
 ```
 
-## <a name="create-ipv4-and-ipv6-public-ip-addresses-for-load-balancer"></a>建立 IPv4 和 IPv6 公用 IP 位址的負載平衡器
-若要存取您在網際網路上的 IPv4 和 IPv6 端點，您會需要 IPv4 和 IPv6 公用 IP 位址的負載平衡器。 使用 [az network public-ip create](/cli/azure/network/public-ip) 建立公用 IP 位址。 下列範例會建立 IPv4 和 IPv6 公用 IP 位址名為*dsPublicIP_v4*並*dsPublicIP_v6*中*myRGDualStack*資源群組：
+## <a name="create-ipv4-and-ipv6-public-ip-addresses-for-load-balancer"></a>建立負載平衡器的 IPv4 和 IPv6 公用 IP 位址
+若要存取網際網路上的 IPv4 和 IPv6 端點，您需要有適用于負載平衡器的 IPv4 和 IPv6 公用 IP 位址。 使用 [az network public-ip create](/cli/azure/network/public-ip) 建立公用 IP 位址。 下列範例會建立名為*dsPublicIP_v4*的 IPv4 和 IPV6 公用 IP 位址，並在*DsResourceGroup01*資源群組中*dsPublicIP_v6* ：
 
 ```azurecli
 # Create an IPV4 IP address
@@ -83,9 +66,9 @@ az network public-ip create \
 
 ```
 
-## <a name="create-public-ip-addresses-for-vms"></a>為 Vm 建立公用 IP 位址
+## <a name="create-public-ip-addresses-for-vms"></a>建立 Vm 的公用 IP 位址
 
-若要從遠端存取您在網際網路上的 Vm，您會需要 IPv4 公用 IP 位址的 vm。 使用 [az network public-ip create](/cli/azure/network/public-ip) 建立公用 IP 位址。
+若要從遠端存取您在網際網路上的 Vm，您需要 Vm 的 IPv4 公用 IP 位址。 使用 [az network public-ip create](/cli/azure/network/public-ip) 建立公用 IP 位址。
 
 ```azurecli
 az network public-ip create \
@@ -107,11 +90,11 @@ az network public-ip create \
 
 ## <a name="create-basic-load-balancer"></a>建立基本負載平衡器
 
-在本節中，您會設定 （IPv4 和 IPv6） 的雙重的前端 IP 與負載平衡器的後端位址集區，然後再建立基本負載平衡器。
+在本節中，您會設定負載平衡器的雙重前端 IP （IPv4 和 IPv6）和後端位址集區，然後建立基本 Load Balancer。
 
 ### <a name="create-load-balancer"></a>建立負載平衡器
 
-建立基本 Load Balancer 與[建立 az 網路 lb](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest)名為**dsLB** ，其中包含名為前端集區**dsLbFrontEnd_v4**，名為後端集區**dsLbBackEndPool_v4** IPv4 公用 IP 位址與相關聯**dsPublicIP_v4**您在上一個步驟中建立。 
+使用[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest)建立名為**dsLB**的基本 Load Balancer，其中包含名為**dsLbFrontEnd_v4**的前端集區、名為**dsLbBackEndPool_v4**的後端集區，與您在上一個步驟中建立的 IPv4 公用 IP 位址**dsPublicIP_v4**相關聯。 
 
 ```azurecli
 az network lb create \
@@ -126,9 +109,9 @@ az network lb create \
 
 ### <a name="create-ipv6-frontend"></a>建立 IPv6 前端
 
-建立具有 IPV6 前端 IP [az 網路 lb 前端 ip 建立](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create)。 下列範例會建立名為的前端 IP 組態*dsLbFrontEnd_v6* ，並將附加*dsPublicIP_v6*位址：
+使用[az network lb 前端-IP create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create)建立 IPV6 前端 IP。 下列範例會建立名為*dsLbFrontEnd_v6*的前端 IP 設定，並附加*dsPublicIP_v6*位址：
 
-```azurepowershell-interactive
+```azurecli
 az network lb frontend-ip create \
 --lb-name dsLB  \
 --name dsLbFrontEnd_v6  \
@@ -139,7 +122,7 @@ az network lb frontend-ip create \
 
 ### <a name="configure-ipv6-back-end-address-pool"></a>設定 IPv6 後端位址集區
 
-建立 IPv6 後端位址集區[az network lb ip-config address-pool 建立](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create)。 下列範例會建立名為的後端位址集區*dsLbBackEndPool_v6*來包含具有 IPv6 NIC 組態的 Vm:
+使用[az network lb 位址集區建立](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create)建立 IPv6 後端位址集區。 下列範例會建立名為*dsLbBackEndPool_v6*的後端位址集區，以包含具有 IPv6 NIC 設定的 vm：
 
 ```azurecli
 az network lb address-pool create \
@@ -148,11 +131,18 @@ az network lb address-pool create \
 --resource-group DsResourceGroup01
 ```
 
+### <a name="create-a-health-probe"></a>建立健康狀態探查
+使用 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) 建立健康狀態探查，以檢視虛擬機器的健康狀態。 
+
+```azurecli
+az network lb probe create -g DsResourceGroup01  --lb-name dsLB -n dsProbe --protocol tcp --port 3389
+```
+
 ### <a name="create-a-load-balancer-rule"></a>建立負載平衡器規則
 
 負載平衡器規則用來定義如何將流量分散至 VM。 您可定義連入流量的前端 IP 組態及後端 IP 集區來接收流量，以及所需的來源和目的地連接埠。 
 
-使用 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) 建立負載平衡器規則。 下列範例會建立名為負載平衡器規則*dsLBrule_v4*並*dsLBrule_v6*並在平衡流量*TCP*連接埠*80*至IPv4 和 IPv6 前端 IP 組態：
+使用 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) 建立負載平衡器規則。 下列範例會建立名為*dsLBrule_v4*的負載平衡器規則，並*DsLBrule_v6*並將*TCP*埠*80*上的流量平衡至 IPv4 和 IPv6 前端 IP 設定：
 
 ```azurecli
 az network lb rule create \
@@ -163,10 +153,11 @@ az network lb rule create \
 --protocol Tcp  \
 --frontend-port 80  \
 --backend-port 80  \
+--probe-name dsProbe \
 --backend-pool-name dsLbBackEndPool_v4
 
 
-az network lb rule create \ 
+az network lb rule create \
 --lb-name dsLB  \
 --name dsLBrule_v6  \
 --resource-group DsResourceGroup01 \
@@ -174,16 +165,17 @@ az network lb rule create \
 --protocol Tcp  \
 --frontend-port 80 \
 --backend-port 80  \
+--probe-name dsProbe \
 --backend-pool-name dsLbBackEndPool_v6
 
 ```
 
 ## <a name="create-network-resources"></a>建立網路資源
-部署一些 Vm 之前，您必須建立支援網路資源的可用性設定組、 網路安全性群組、 虛擬網路與虛擬 Nic。 
+部署一些 Vm 之前，您必須先建立支援的網路資源-可用性設定組、網路安全性群組、虛擬網路和虛擬 Nic。 
 ### <a name="create-an-availability-set"></a>建立可用性設定組
-若要改善您的應用程式的可用性，請將 Vm 放在可用性設定組中。
+若要改善應用程式的可用性，請將您的 Vm 放在可用性設定組中。
 
-使用 [az vm availability-set create](https://docs.microsoft.com/cli/azure/vm/availability-set?view=azure-cli-latest) 建立可用性設定組。 下列範例會建立可用性設定組*dsAVset*:
+使用 [az vm availability-set create](https://docs.microsoft.com/cli/azure/vm/availability-set?view=azure-cli-latest) 建立可用性設定組。 下列範例會建立名為*dsAVset*的可用性設定組：
 
 ```azurecli
 az vm availability-set create \
@@ -196,11 +188,11 @@ az vm availability-set create \
 
 ### <a name="create-network-security-group"></a>建立網路安全性群組
 
-建立網路安全性群組的規則，將會管理您的 VNET 中的輸入和輸出通訊。
+針對將在 VNET 中管理輸入和輸出通訊的規則，建立網路安全性群組。
 
 #### <a name="create-a-network-security-group"></a>建立網路安全性群組
 
-建立網路安全性群組與[az 網路 nsg 建立](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create)
+使用[az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create)建立網路安全性群組
 
 
 ```azurecli
@@ -211,9 +203,9 @@ az network nsg create \
 
 ```
 
-#### <a name="create-a-network-security-group-rule-for-inbound-and-outbound-connections"></a>建立網路安全性群組規則的輸入和輸出連線
+#### <a name="create-a-network-security-group-rule-for-inbound-and-outbound-connections"></a>為輸入和輸出連線建立網路安全性群組規則
 
-建立網路安全性群組規則以允許透過連接埠 3389，網際網路連線的 RDP 連線，透過連接埠 80，以及使用輸出連線[az 網路的 nsg 規則建立](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create)。
+建立網路安全性群組規則，以允許透過埠3389的 RDP 連接、透過埠80的網際網路連線，以及使用[az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create)的輸出連接。
 
 ```azurecli
 # Create inbound rule for port 3389
@@ -266,7 +258,7 @@ az network nsg rule create \
 
 ### <a name="create-a-virtual-network"></a>建立虛擬網路
 
-使用 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) 建立虛擬網路。 下列範例會建立名為虛擬網路*dsVNET*具有子網路*dsSubNET_v4*並*dsSubNET_v6*:
+使用 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) 建立虛擬網路。 下列範例會建立名為*dsVNET*的虛擬網路，其中包含*dsSubNET_v4*和*dsSubNET_v6*的子網：
 
 ```azurecli
 # Create the virtual network
@@ -288,8 +280,8 @@ az network vnet subnet create \
 
 ### <a name="create-nics"></a>建立 NIC
 
-用於每個 VM 建立虛擬 Nic [az 網路 nic 建立](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create)。 下列範例會針對每個 VM 建立虛擬 NIC。 每個 NIC 會有兩個 IP 組態 （1 個 IPv4 組態，1 IPv6 組態）。 建立具有 IPV6 組態[az 網路 nic ip 組態建立](https://docs.microsoft.com/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-create)。
- 
+使用[az network nic create](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create)為每個 VM 建立虛擬 nic。 下列範例會為每個 VM 建立虛擬 NIC。 每個 NIC 都有兩個 IP 設定（1個 IPv4 config、1個 IPv6 設定）。 您可以使用[az network nic ip-config create](https://docs.microsoft.com/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-create)來建立 IPV6 設定。
+
 ```azurecli
 # Create NICs
 az network nic create \
@@ -350,8 +342,9 @@ az network nic ip-config create \
 --nics dsNIC0 \
 --size Standard_A2 \
 --availability-set dsAVset \
---image MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest  
+--image MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest  
 ```
+
 建立虛擬機器*dsVM1* ，如下所示：
 
 ```azurecli
@@ -361,18 +354,16 @@ az vm create \
 --nics dsNIC1 \
 --size Standard_A2 \
 --availability-set dsAVset \
---image MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest 
+--image MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest 
 ```
 
-## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>在 Azure 入口網站中檢視虛擬網路的 IPv6 雙重堆疊
-您可以在 Azure 入口網站中檢視 IPv6 雙重堆疊的虛擬網路，如下所示：
+## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>在 Azure 入口網站中查看 IPv6 雙重堆疊虛擬網路
+您可以在 Azure 入口網站中查看 IPv6 雙重堆疊虛擬網路，如下所示：
 1. 在入口網站的搜尋列中，輸入*dsVnet*。
-2. 當搜尋結果中出現 **myVirtualNetwork** 時加以選取。 這會啟動**概觀**名為雙重堆疊虛擬網路頁面*dsVnet*。 雙重堆疊的虛擬網路位於名為雙重堆疊子網路的 IPv4 和 IPv6 組態會顯示兩個 Nic *dsSubnet*。
+2. 當搜尋結果中出現 **myVirtualNetwork** 時加以選取。 這會啟動名為*dsVnet*的雙重堆疊虛擬網路的 [**總覽**] 頁面。 雙重堆疊虛擬網路會顯示兩個 Nic，其中 IPv4 和 IPv6 設定都位於名為*dsSubnet*的雙重堆疊子網中。
 
-  ![在 Azure 中 IPv6 雙重堆疊虛擬網路](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
+  ![Azure 中的 IPv6 雙重堆疊虛擬網路](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
 
-> [!NOTE]
-> Azure 虛擬網路的 IPv6 是在 Azure 入口網站中，您可以使用此預覽版本為唯讀。
 
 
 ## <a name="clean-up-resources"></a>清除資源
@@ -380,9 +371,9 @@ az vm create \
 若不再需要，您可以使用 [az group delete](/cli/azure/group#az-group-delete) 命令來移除資源群組、VM 和所有相關資源。
 
 ```azurecli
- az group delete --name DsRG1
+ az group delete --name DsResourceGroup01
 ```
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中中,，您可以建立基本的 Load Balancer 的雙重的前端 IP 設定 （IPv4 和 IPv6）。 您也會建立包含 Nic 具有雙重 IP 組態 （IPV4 + IPv6） 新增至負載平衡器的後端集區的兩部虛擬機器。 若要深入了解 Azure 虛擬網路中的 IPv6 支援，請參閱[什麼是 Azure 虛擬網路的 IPv6？](ipv6-overview.md)
+在本文中，您已建立具有雙重前端 IP 設定（IPv4 和 IPv6）的基本 Load Balancer。 您也建立了兩部虛擬機器，其中包含已新增至負載平衡器後端集區的雙 IP 設定（IPV4 + IPv6） Nic。 若要深入瞭解 Azure 虛擬網路中的 IPv6 支援，請參閱[什麼是適用于 azure 虛擬網路的 ipv6？](ipv6-overview.md)

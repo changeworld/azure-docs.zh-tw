@@ -4,61 +4,65 @@ description: 了解如何排解因 Azure VM 已停用 NIC 而導致 RDP 失敗�
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 742026a8ff35f318f58674ebc2fb5c03e45161a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6bce1616ce0c7f7e42810a551acb2f02165ccf93
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60318998"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078624"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>因網路介面已停用而無法將遠端桌面連線到 VM
 
 此文章說明如何解決因網路介面已停用而無法使用遠端桌面連線方式連線到 Azure Windows 虛擬機器 (VM) 的問題。
 
-> [!NOTE]
-> Azure 建立和處理資源的部署模型有二種：[Resource Manager 和傳統](../../azure-resource-manager/resource-manager-deployment-model.md)。 本文說明如何使用 Resource Manager 部署模型，我們建議將它用於新部署，而非用於傳統部署模型。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 您無法經由任何其他連接埠對 Azure 中的 VM 進行 RDP 連線或任何其他類型的連線，因為 VM 中的網路介面已停用。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 在遵循下列步驟之前，請擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。
 
-若要啟用 VM 的介面，請使用序列控制項或為 VM [重設網路介面](##reset-network-interface)。
+若要啟用 VM 的介面，請使用序列控制項或為 VM [重設網路介面](#reset-network-interface)。
 
 ### <a name="use-serial-control"></a>使用序列主控台
 
 1. 連線至[序列主控台並開啟 CMD 執行個體](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-)。 如果未在 VM 上啟用序列主控台，請參閱[重設網路介面](#reset-network-interface)。
+)。 如果 VM 上未啟用序列主控台，請參閱[重設網路介面](#reset-network-interface)。
 2. 檢查網路介面的狀態：
 
-        netsh interface show interface
+    ```console
+    netsh interface show interface
+    ```
 
     記下停用的網路介面名稱。
 
 3. 啟用網路介面：
 
-        netsh interface set interface name="interface Name" admin=enabled
+    ```console
+    netsh interface set interface name="interface Name" admin=enabled
+    ```
 
     例如，如果交互作用介面名稱為「乙太網路 2」，請執行下列命令：
 
-        netsh interface set interface name=""Ethernet 2" admin=enabled
-
+    ```console
+    netsh interface set interface name="Ethernet 2" admin=enabled
+    ```
 
 4.  再次檢查網路介面的狀態，確定網路介面已啟用。
 
-        netsh interface show interface
+    ```console
+    netsh interface show interface
+    ```
 
     此時您不需要重新啟動 VM。 您可回頭連線 VM。
 

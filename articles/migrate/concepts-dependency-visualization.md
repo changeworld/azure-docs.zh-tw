@@ -1,80 +1,90 @@
 ---
-title: Azure Migrate 的相依性視覺效果 | Microsoft Docs
-description: 概括介紹 Azure Migrate 服務中的評量計算。
-author: rayne-wiselman
-ms.service: azure-migrate
+title: Azure Migrate Server 評估中的相依性分析
+description: 說明如何使用相依性分析進行評估，使用 Azure Migrate Server 評估。
 ms.topic: conceptual
-ms.date: 12/05/2018
-ms.author: raynew
-ms.openlocfilehash: 8df587db7655e2aafd876d80581f3296c8c99fbf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/14/2020
+ms.openlocfilehash: 386a8cefce722c4bff09e2a7fe6d25957630ff61
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60201540"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118795"
 ---
-# <a name="dependency-visualization"></a>相依性視覺效果
+# <a name="dependency-analysis"></a>相依性分析
 
-[Azure Migrate](migrate-overview.md) 服務會評估要移轉至 Azure 的內部部署機器群組。 您可以使用 Azure Migrate 的相依性視覺效果功能來建立群組。 本文提供此功能的相關資訊。
+本文描述 Azure Migrate 中的相依性分析：伺服器評估。
 
-> [!NOTE]
-> 在 Azure Government 中無法使用相依性視覺效果功能。
 
-## <a name="overview"></a>概觀
+相依性分析會識別探索到的內部部署機器之間的相依性。 它提供下列優點： 
 
-Azure Migrate 的相依性視覺效果可建立用於移轉評估且值得高度信賴的群組。 使用相依性視覺效果，您可以檢視機器的網路相依性，並找出有必要一起移轉到 Azure 的相關機器。 當您並不完全了解構成應用程式和需要一起移轉到 Azure 的機器時，此功能會很實用。
+- 您可以更安心地將機器收集成群組，以進行評估。
+- 您可以識別必須一起遷移的機器。 如果您不確定哪些機器屬於您想要遷移至 Azure 的應用程式部署的一部分，這會特別有用。
+- 您可以識別機器是否正在使用中，以及哪些機器可以解除委任而不是遷移。
+- 分析相依性有助於確保不會留下任何內容，進而避免在遷移後發生意外的中斷。
+- [查看](common-questions-discovery-assessment.md#what-is-dependency-visualization)相依性分析的相關常見問題。
 
-## <a name="how-does-it-work"></a>運作方式
 
-Azure Migrate 採用[服務對應](../operations-management-suite/operations-management-suite-service-map.md)中的解決方案[Azure 監視器記錄](../log-analytics/log-analytics-overview.md)的相依性視覺效果。
-- 若要利用相依性視覺效果，您需要將新的或現有的 Log Analytics 工作區與 Azure Migrate 專案建立關聯。
-- 您只能在建立移轉專案的相同訂用帳戶中，建立或連結工作區。
-- 若要將 Log Analytics 工作區連結至專案，請移至專案 [概觀] 頁面的 [基本資訊] 區段，按一下 [需要設定]
+## <a name="analysis-types"></a>分析類型
 
-    ![與 Log Analytics 工作區建立關聯](./media/concepts-dependency-visualization/associate-workspace.png)
+有兩個選項可用於部署相依性分析
 
-- 與工作區建立關聯時，您可以選擇建立新的工作區，或連結現有的工作區：
-  - 建立新工作區時，您必須指定工作區的名稱。 然後會在和移轉專案相同之 [Azure 地理區](https://azure.microsoft.com/global-infrastructure/geographies/)的區域中建立工作區。
-  - 當您連結現有的工作區時，您能以和移轉專案相同的方式，從相同訂用帳戶中所有的可用工作區中挑選。 請注意，系統只會列出那些在[支援服務對應](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions)的區域中建立的工作區。 若要能夠連結工作區，請確定您有工作區的「讀取者」存取權。
+**選項** | **詳細資料** | **公用雲端** | **Azure Government**
+----  |---- | ---- 
+**無代理程式** | 使用 vSphere Api 來輪詢 VMware Vm 的資料。<br/><br/> 您不需要在 Vm 上安裝代理程式。<br/><br/> 此選項目前為預覽狀態，僅適用于 VMware Vm。 | 支援。 | 支援。
+**以代理程式為基礎的分析** | 使用 Azure 監視器中的[服務對應方案](../azure-monitor/insights/service-map.md)，啟用相依性視覺效果和分析。<br/><br/> 您需要在您想要分析的每個內部部署機器上安裝代理程式。 | 支援 | 不支援。
 
-  > [!NOTE]
-  > 一旦您將工作區連結到專案，您之後便無法變更它。
 
-- 相關聯的工作區會以索引鍵 **Migration Project** 和**專案名稱**的值標記，您可用來在 Azure 入口網站中搜尋。
-- 若要瀏覽到與專案相關聯的工作區，您可以移至專案 [概觀] 頁面的 [基本資訊] 區段，然後存取該工作區
+## <a name="agentless-analysis"></a>無代理程式分析
 
-    ![瀏覽 Log Analytics 工作區](./media/concepts-dependency-visualization/oms-workspace.png)
+無代理程式相依性分析的運作方式是從已啟用它的機器中，捕獲 TCP 連接資料。 Vm 上未安裝任何代理程式。 具有相同來源伺服器和進程的連線，以及目的地伺服器、進程和埠，會以邏輯方式分組成相依性。 您可以在地圖視圖中以視覺化方式呈現已捕捉的相依性資料，或將它匯出為 CSV。 您想要分析的機器上未安裝任何代理程式。
 
-若要使用相依性視覺效果，您需要在待分析的每個內部部署機器上，下載及安裝代理程式。  
+### <a name="dependency-data"></a>相依性資料
 
-- 必須在每個機器上安裝 [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)。
-- 必須在每個機器上安裝[相依性代理程式](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure)。
-- 此外，如果您有無法連線至網際網路的機器，則必須在該機器上下載並安裝 Log Analytics 閘道。
+開始探索相依性資料之後，就會開始輪詢：
 
-您不需要在所要評量的機器上有這些代理程式，除非您使用相依性視覺效果。
+- Azure Migrate 設備會每隔五分鐘從電腦輪詢 TCP 連線資料，以收集資料。
+- 您可使用 vSphere Api，透過 vCenter Server，從來賓 Vm 收集資料。
+- 輪詢會收集這種資料：
 
-## <a name="do-i-need-to-pay-for-it"></a>我需要支付多少費用？
+    - 具有使用中連接之進程的名稱。
+    - 執行具有使用中連接之進程的應用程式名稱。
+    - 作用中連接上的目的地埠。
 
-不須額外費用即可使用 Azure Migrate。 使用 Azure Migrate 的相依性視覺效果功能需要服務對應，並需要將 Log Analytics 工作區與全新或現有 Azure Migrate 專案建立關聯。 Azure Migrate 的相依性視覺效果功能前 180 天不收取任何費用。
+- 收集的資料會在 Azure Migrate 設備上處理，以推算身分識別資訊，並每隔六小時傳送至 Azure Migrate
 
-1. 在此 Log Analytics 工作區內使用服務對應以外的任何解決方案，將會產生[標準 Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) 費用。
-2. 為了支援不需額外成本的移轉案例，自 Log Analytics 工作區與 Azure Migrate 專案建立關聯當天算起的前 180 天，服務對應解決方案將不會產生任何費用，而 180 天則適用標準收費方式。 經過 180 天後，會套用標準 Log Analytics 費用。
 
-當您將代理程式註冊至工作區時，請使用專案在安裝代理程式步驟頁面上提供的識別碼和金鑰。
+## <a name="agent-based-analysis"></a>以代理程式為基礎的分析
 
-刪除 Azure Migrate 專案時，工作區不會隨之刪除。 在專案刪除後，服務對應就無法免費使用，系統會根據 Log Analytics 工作區的付費層向每個節點收取費用。
+針對以代理程式為基礎的分析，伺服器評估會使用 Azure 監視器中的[服務對應](../azure-monitor/insights/service-map.md)解決方案。 您會在想要分析的每部機器上安裝[Microsoft Monitoring Agent/Log Analytics 代理程式](../azure-monitor/platform/agents-overview.md#log-analytics-agent)和[Dependency Agent](../azure-monitor/platform/agents-overview.md#dependency-agent)。
 
-> [!NOTE]
-> 相依性視覺效果功能會透過 Log Analytics 工作區使用服務對應。 Azure Migrate 於 2018 年 2 月 28 日 宣告正式運作，現在可以免費使用該功能。 您必須建立新的專案，才能使用免費的工作區。 在正式運作之前存在的工作區仍需收費，因此建議您移至新的專案。
+### <a name="dependency-data"></a>相依性資料
 
-[在此](https://azure.microsoft.com/pricing/details/azure-migrate/)深入了解 Azure Migrate 定價。
+以代理程式為基礎的分析會提供這種資料：
 
-## <a name="how-do-i-manage-the-workspace"></a>如何管理工作區？
+- 來源電腦伺服器名稱、進程、應用程式名稱。
+- 目的地電腦伺服器名稱、進程、應用程式名稱和埠。
+- 系統會收集連線、延遲和資料傳輸資訊的數目，並可供 Log Analytics 查詢使用。 
 
-您可以使用 Azure Migrate 外部的 Log Analytics 工作區。 如果您刪除建立工作區的移轉專案，並不會刪除工作區。 如果不再需要工作區中，請手動[刪除工作區](../azure-monitor/platform/manage-access.md)。
 
-除非您刪除移轉專案，否則請勿刪除 Azure Migrate 建立的工作區。 如果這樣做，相依性視覺效果功能不會如預期般運作。
+
+## <a name="compare-agentless-and-agent-based"></a>比較無代理程式和代理程式型
+
+「無代理程式」視覺效果和以代理程式為基礎的視覺效果之間的差異摘要于表格中。
+
+**需求** | **無代理程式** | **以代理程式為基礎**
+--- | --- | ---
+**支援** | 僅適用于 VMware Vm 的預覽版本。 [檢查](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)支援的作業系統。 | 正式運作（GA）。
+**代理程式** | 您想要分析的電腦上不需要代理程式。 | 您想要分析的每個內部部署機器上都需要代理程式。
+**Log Analytics** | 不需要。 | Azure Migrate 使用[Azure 監視器記錄](../azure-monitor/log-query/log-query-overview.md)中的[服務對應](../azure-monitor/insights/service-map.md)解決方案進行相依性分析。 
+**處理程序** | 捕獲 TCP 連接資料。 探索之後，它會以五分鐘的間隔收集資料。 | 安裝在電腦上的服務對應代理程式會收集 TCP 進程的相關資料，以及每個進程的輸入/輸出連接。
+**Data** | 來源電腦伺服器名稱、進程、應用程式名稱。<br/><br/> 目的地電腦伺服器名稱、進程、應用程式名稱和埠。 | 來源電腦伺服器名稱、進程、應用程式名稱。<br/><br/> 目的地電腦伺服器名稱、進程、應用程式名稱和埠。<br/><br/> 系統會收集連線、延遲和資料傳輸資訊的數目，並可供 Log Analytics 查詢使用。 
+**視覺效果** | 單一伺服器的相依性對應可以在一小時到30天的期間內查看。 | 單一伺服器的相依性對應。<br/><br/> 伺服器群組的相依性對應。<br/><br/>  只能在一小時內查看對應。<br/><br/> 從地圖視圖新增和移除群組中的伺服器。
+資料匯出 | 過去30天的資料可以 CSV 格式下載。 | 您可以使用 Log Analytics 來查詢資料。
+
+
 
 ## <a name="next-steps"></a>後續步驟
-- [使用機器相依性的群組機器](how-to-create-group-machine-dependencies.md)
-- [深入了解](https://docs.microsoft.com/azure/migrate/resources-faq#dependency-visualization)相依性視覺效果的常見問題集。
+
+- [設定](how-to-create-group-machine-dependencies.md)以代理程式為基礎的相依性視覺效果。
+- [試用](how-to-create-group-machine-dependencies-agentless.md)VMware vm 的無代理程式相依性視覺效果。
+- 查看關於相依性視覺效果的[常見問題](common-questions-discovery-assessment.md#what-is-dependency-visualization)。

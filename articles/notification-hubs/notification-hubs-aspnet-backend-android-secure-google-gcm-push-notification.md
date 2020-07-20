@@ -3,9 +3,9 @@ title: 使用 Azure 通知中樞傳送安全的推播通知
 description: 了解如何從 Azure 將安全的推播通知傳送至 Android 應用程式。 程式碼範例是以 Java 及 C# 撰寫。
 documentationcenter: android
 keywords: 推播通知,推播訊息,android 推播通知
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 services: notification-hubs
 ms.assetid: daf3de1c-f6a9-43c4-8165-a76bfaa70893
 ms.service: notification-hubs
@@ -14,13 +14,15 @@ ms.tgt_pltfrm: android
 ms.devlang: java
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 27536b0a3d7e0858a5660b4c7b33cb6679b5fbf1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 419a9f9b5ce698c7516edd55856cbea9891ba029
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60874543"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "71212176"
 ---
 # <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>使用 Azure 通知中樞傳送安全的推播通知
 
@@ -61,7 +63,7 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
 現在您已將應用程式後端修改為只傳送推播通知的*識別碼*，就必須變更 Android 應用程式來處理該通知，並回呼後端以擷取要顯示的安全訊息。
 為了達成此目標，您必須確定您的 Android 應用程式知道在收到推播通知時，如何使用後端自我驗證。
 
-為了將驗證標頭值儲存在您的應用程式共用喜好設定中，現在將修改登入流程。 類別機制可用來儲存任何驗證權杖 (例如 OAuth tokens)，應用程式在不需要使用者認證的情況下，必須使用這些驗證權杖。
+為了將驗證標頭值儲存在您的應用程式共用喜好設定中，現在將修改登入** 流程。 類別機制可用來儲存任何驗證權杖 (例如 OAuth tokens)，應用程式在不需要使用者認證的情況下，必須使用這些驗證權杖。
 
 1. 在您的 Android 應用程式專案中，在 `MainActivity` 類別開頭處新增下列常數：
 
@@ -143,4 +145,4 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
 1. 確定 Azure 中已部署 **AppBackend** 。 如果使用 Visual Studio，則執行 **AppBackend** Web API 應用程式。 [ASP.NET Web] 頁面便會隨即顯示。
 2. 在 Eclipse 中，在實體 Android 裝置或模擬器上執行此應用程式。
 3. 在 Android 應用程式 UI 中，輸入使用者名稱和密碼。 這些可以是任何字串，但必須是相同值。
-4. 在 Android 應用程式 UI 中，按一下 [登入] 。 然後按一下 [傳送推播] 。
+4. 在 Android 應用程式 UI 中，按一下 [登入] ****。 然後按一下 [傳送推播] ****。

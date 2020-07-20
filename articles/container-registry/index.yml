@@ -1,75 +1,91 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Container Registry 文件
+summary: Azure Container Registry 可讓您建置、儲存及管理所部署之各類型容器之私人登錄中的映像及成品。 將 Azure 容器登錄與您現有的容器開發與部署管線搭配使用。 使用 Azure Container Registry 工作依需求在 Azure 中建置容器映像，或透過來源程式碼更新、容器基礎映像更新或計時器，觸發自動建置。
 metadata:
-  title: Azure Container Registry 文件 - 教學課程 | Microsoft Docs
-  description: Azure Container Registry 可讓您建置、儲存和管理所有容器部署類型的映像。 了解如何透過我們的快速入門、教學課程和範例來使用 Azure Container Registry。
+  title: Azure Container Registry 文件
+  description: 了解 Azure 的私人登錄服務，以裝載 Docker 容器映像和相關成品。 Azure Container Registry 服務也支援 ACR 工作，這是一套用來建置、管理及修補容器映像的服務套件。
   services: container-registry
-  author: czeumault
-  manager: carolz
   ms.service: container-registry
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: subservice
   ms.topic: landing-page
-  ms.date: 07/26/2017
-  ms.author: carolz
-abstract:
-  description: Azure Container Registry 可讓您建置、儲存和管理所有容器部署類型的映像。 了解如何透過我們的快速入門、教學課程和範例來使用 Azure Container Registry。
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何部署 Azure Container Registry。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Azure CLI
-            href: /azure/container-registry/container-registry-get-started-azure-cli
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure 入口網站
-            href: /azure/container-registry/container-registry-get-started-portal
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
-            text: Azure PowerShell
-            href: /azure/container-registry/container-registry-get-started-powershell
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何透過這些教學課程來使用 Azure Container Registry。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/container-registry/container-registry-tutorial-quick-build">使用 ACR 工作建置容器映像</a>
-          - html: <a href="/azure/container-registry/container-registry-tutorial-prepare-registry">容器登錄異地複寫</a>
-          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Container Registry 搭配 Azure Container Instances</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">Container Registry 搭配 Azure Kubernetes Service (AKS)</a>
-          - html: <a href="/azure/service-fabric/service-fabric-tutorial-create-container-images">容器登錄搭配 Service Fabric</a>
-  - title: 透過 Microsoft Learn 增進您的技巧
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: 使用 Azure Container Registry 建置及存放容器映像
-            href: /learn/modules/build-and-store-container-images/
-            image:
-              src: /learn/achievements/build-and-store-container-images.svg
-              href: /learn/modules/build-and-store-container-images/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-container-registry">更多互動式學習...</a>
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令列
-            html: <p><a href="/cli/azure/acr">Azure CLI</a></p><p><a href="/powershell/module/az.containerregistry">PowerShell</a></p>
-          - title: Languages
-            html: <p><a href="/dotnet/api/overview/azure/containerregistry">.NET</a></p><p><a href="/python/api/overview/azure/container-registry">Python</a></p><p><a href="/java/api/overview/azure/containerregistry">Java</a></p><p><a href="/javascript/api/overview/azure/container-registry">Node.js</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/containerregistry">REST API 參考</a></p><p><a href="/azure/templates/microsoft.containerregistry/registries">Resource Manager 範本</a></p><p><a href="/azure/container-registry/container-registry-webhook-reference">Webhook 結構描述</a></p>
+  ms.collection: collection
+  author: dlepow
+  ms.author: danlep
+  ms.date: 11/08/2019
+  ms.openlocfilehash: 53c66bd6dc7e9be548533650d9d3ee7540e1e5c3
+  ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 07/11/2020
+  ms.locfileid: "86260057"
+landingContent:
+- title: 關於 Azure Container Registry
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure 容器登錄庫？
+      url: container-registry-intro.md
+    - text: 登錄、存放庫和映像
+      url: container-registry-concepts.md
+- title: 開始使用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 建立容器登錄 - CLI
+      url: container-registry-get-started-azure-cli.md
+    - text: 建立容器登錄 - 入口網站
+      url: container-registry-get-started-portal.md
+    - text: 建立容器登錄 - ARM 範本
+      url: container-registry-get-started-geo-replication-template.md
+    - text: 使用 Docker 推送和提取映像
+      url: container-registry-get-started-docker-cli.md
+  - linkListType: concept
+    links:
+    - text: 服務層
+      url: container-registry-skus.md
+  - linkListType: learn
+    links:
+    - text: 使用 Azure Container Registry 建置及存放容器映像
+      url: /learn/modules/build-and-store-container-images/
+  - linkListType: video
+    links:
+    - text: Azure Container Registry 影片
+      url: https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest
+- title: 管理登錄
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 檢視存放庫和標籤
+      url: container-registry-repositories.md
+    - text: 匯入映像
+      url: container-registry-import-images.md
+    - text: 鎖定映像
+      url: container-registry-image-lock.md
+    - text: 刪除映像
+      url: container-registry-delete.md
+  - linkListType: concept
+    links:
+    - text: 異地複寫
+      url: container-registry-geo-replication.md
+    - text: 驗證
+      url: container-registry-authentication.md
+    - text: 最佳作法
+      url: container-registry-best-practices.md
+    - text: 常見問題集
+      url: container-registry-faq.md
+- title: ACR 工作
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 關於 ACR 工作
+      url: container-registry-tasks-overview.md
+    - text: 多步驟工作
+      url: container-registry-tasks-multi-step.md
+  - linkListType: quickstart
+    links:
+    - text: 在雲端中建置映像 - CLI
+      url: container-registry-quickstart-task-cli.md
+  - linkListType: tutorial
+    links:
+    - text: 自動化映像建置
+      url: container-registry-tutorial-quick-task.md

@@ -5,32 +5,43 @@
     - name: 關於 Spatial Anchors
       href: overview.md
 - name: 快速入門
+  expanded: true
   items:
     - name: 建立 Unity 應用程式
-      href: unity-overview.yml
       expanded: true
       items:
+        - name: Unity 概觀
+          href: unity-overview.md
         - name: HoloLens
           href: quickstarts/get-started-unity-hololens.md
         - name: Android
           href: quickstarts/get-started-unity-android.md
         - name: iOS
           href: quickstarts/get-started-unity-ios.md
-    - name: 建立 iOS 應用程式
-      href: quickstarts/get-started-ios.md
-    - name: 建立 Android 應用程式
-      href: quickstarts/get-started-android.md
     - name: 建立 HoloLens 應用程式
       href: quickstarts/get-started-hololens.md
+    - name: 建立 Android 應用程式
+      href: quickstarts/get-started-android.md
+    - name: 建立 iOS 應用程式
+      href: quickstarts/get-started-ios.md
+    - name: 建立 Xamarin 應用程式
+      items:
+        - name: Android
+          href: quickstarts/get-started-xamarin-android.md
+        - name: iOS
+          href: quickstarts/get-started-xamarin-ios.md
 - name: 教學課程
   items:
-    - name: 在 Unity 中共用
+    - name: 跨工作階段和裝置共用
       href: tutorials/tutorial-share-anchors-across-devices.md
-    - name: 透過 Azure Cosmos DB 在 Unity 中共用
-      href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
+      items:
+        - name: 透過 Azure Cosmos DB 持續共用
+          href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
+    - name: 啟動新的 Unity HoloLens 應用程式
+      href: tutorials/tutorial-new-unity-hololens-app.md
     - name: 啟動新的 Android 應用程式
       href: tutorials/tutorial-new-android-app.md
-- name: 作法
+- name: 操作方式
   items:
     - name: 建立並找出錨點
       href: create-locate-anchors-overview.md
@@ -47,18 +58,36 @@
           href: how-tos/create-locate-anchors-cpp-ndk.md
         - name: 使用 C++/WinRT
           href: how-tos/create-locate-anchors-cpp-winrt.md
+    - name: 使用粗略重新定位來探索附近的錨點
+      items:
+        - name: '使用 C#/Unity'
+          href: how-tos/set-up-coarse-reloc-unity.md
+        - name: 使用 Objective-C
+          href: how-tos/set-up-coarse-reloc-objc.md
+        - name: 使用 Swift
+          href: how-tos/set-up-coarse-reloc-swift.md
+        - name: 使用 Java
+          href: how-tos/set-up-coarse-reloc-java.md
+        - name: 使用 C++/NDK
+          href: how-tos/set-up-coarse-reloc-cpp-ndk.md
+        - name: 使用 C++/WinRT
+          href: how-tos/set-up-coarse-reloc-cpp-winrt.md
 - name: 範例
   items:
     - name: Azure Spatial Anchors 範例 (GitHub)
       href: 'https://github.com/Azure/azure-spatial-anchors-samples'
 - name: 概念
   items:
+    - name: 驗證
+      href: concepts/authentication.md
     - name: 錨點關聯性
       href: concepts/anchor-relationships-way-finding.md
     - name: 經驗指導方針
       href: concepts/guidelines-effective-anchor-experiences.md
     - name: 記錄和診斷
       href: concepts/logging-diagnostics.md
+    - name: 粗略地重新當地語系化
+      href: concepts/coarse-reloc.md
 - name: 參考
   items:
     - name: 適用於 Unity 的 SDK
@@ -71,13 +100,19 @@
       href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/'
     - name: 適用於 HoloLens C++/WinRT 的 SDK
       href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/'
+    - name: Azure CLI
+      href: /cli/azure/ext/mixed-reality/spatial-anchors-account
 - name: 資源
   items:
+    - name: 版本資訊
+      href: 'https://github.com/Azure/azure-spatial-anchors-samples/releases'
+    - name: Azure 混合實境資源管理 REST API
+      href: 'https://docs.microsoft.com/rest/api/mixedreality/'
     - name: 常見問題集
       href: spatial-anchor-faq.md
     - name: 提供產品意見反應
       href: 'https://feedback.azure.com/forums/919252-azure-spatial-anchors'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-spatial-anchors'
     - name: 支援
       href: spatial-anchor-support.md

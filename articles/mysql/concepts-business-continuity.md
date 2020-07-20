@@ -1,21 +1,21 @@
 ---
-title: 使用適用於 MySQL 的 Azure 資料庫的商務持續性概觀
-description: 使用「適用於 MySQL 的 Azure 資料庫」的商務持續性概觀。
+title: 商務持續性-適用於 MySQL 的 Azure 資料庫
+description: 瞭解使用適用於 MySQL 的 Azure 資料庫服務時， (時間點還原、資料中心中斷、異地還原) 的商務持續性。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: a09c1934ecb34518b191a8e730a72efecc85aa2f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 7/7/2020
+ms.openlocfilehash: 74fdfb9f3a3f59f55b0f0ed4865601c0ddb7b7f2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60525451"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241959"
 ---
-# <a name="overview-of-business-continuity-with-azure-database-for-mysql"></a>使用適用於 MySQL 的 Azure 資料庫的商務持續性概觀
+# <a name="understand-business-continuity-in-azure-database-for-mysql"></a>瞭解適用於 MySQL 的 Azure 資料庫中的商務持續性
 
-本概觀說明適用於 MySQL 的 Azure 資料庫針對商務持續性和災害復原所提供的功能。 了解有哪些選項可讓您從可能導致資料遺失或造成資料庫和應用程式無法使用的干擾性事件中復原。 了解當使用者或應用程式錯誤影響資料完整性、Azure 區域中斷，或您的應用程式需要維護時該如何處理。
+本文說明適用於 MySQL 的 Azure 資料庫針對商務持續性和嚴重損壞修復所提供的功能。 了解有哪些選項可讓您從可能導致資料遺失或造成資料庫和應用程式無法使用的干擾性事件中復原。 了解當使用者或應用程式錯誤影響資料完整性、Azure 區域中斷，或您的應用程式需要維護時該如何處理。
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>可用來提供商務持續性的功能
 
@@ -33,7 +33,7 @@ ms.locfileid: "60525451"
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>在使用者或應用程式錯誤之後復原伺服器
 
-您可以使用服務的備份，在各種干擾性事件發生之後復原伺服器。 使用者可能會不小心刪除某些資料、不小心卸除重要的資料表，或甚至是卸除整個資料庫。 應用程式可能會因為應用程式缺陷或其他原因，而不慎以不正確的資料覆寫正確的資料。
+您可以使用服務的備份，從各種干擾性事件復原伺服器。 使用者可能會不小心刪除某些資料、不小心卸除重要的資料表，或甚至是卸除整個資料庫。 應用程式可能會因為應用程式缺陷或其他原因，而不慎以不正確的資料覆寫正確的資料。
 
 您可以執行時間點還原，為伺服器建立已知良好時間點的複本。 此時間點必須在您為伺服器設定的備份保留期間內。 資料還原至新的伺服器之後，您可以將原始伺服器取代為還原的新伺服器，或從還原的伺服器將所需的資料複製到原始伺服器。
 
@@ -47,6 +47,14 @@ ms.locfileid: "60525451"
 
 > [!IMPORTANT]
 > 只有使用異地備援備份儲存體來佈建伺服器時，才可進行異地還原。 如果您希望將現有伺服器從本機備援切換到異地備援備份，您必須先透過現有伺服器的 mysqldump 進行傾印後，再將其還原至已設定為異地備援備份的新建伺服器。
+
+## <a name="cross-region-read-replicas"></a>跨區域讀取複本
+
+您可以使用跨區域讀取複本來增強您的商務持續性和嚴重損壞修復規劃。 讀取複本會使用 MySQL 的二進位記錄複寫技術以非同步方式更新。 深入瞭解讀取複本、可用區域，以及如何從[讀取複本概念一文](concepts-read-replicas.md)進行故障切換。 
+
+## <a name="faq"></a>常見問題集
+### <a name="where-does-azure-database-for-mysql-store-customer-data"></a>適用於 MySQL 的 Azure 資料庫儲存客戶資料的位置？
+根據預設，適用於 MySQL 的 Azure 資料庫不會在其部署所在的區域中移動或儲存客戶資料。 不過，客戶可以選擇性地選擇啟用[異地多餘備份](concepts-backup.md#backup-redundancy-options)或建立[跨區域讀取複本](concepts-read-replicas.md#cross-region-replication)，以便將資料儲存在另一個區域中。
 
 ## <a name="next-steps"></a>後續步驟
 

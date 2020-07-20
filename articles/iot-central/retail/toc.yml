@@ -1,0 +1,146 @@
+- name: 適用於零售業的 Azure IoT Central 文件
+  href: index.yml
+- name: 概觀
+  items:
+    - name: 使用 Azure IoT Central 建置零售解決方案
+      href: overview-iot-central-retail.md
+- name: 教學課程
+  items:
+    - name: 店內分析簽出
+      items:
+        - name: 1 - 建立零售應用程式
+          href: tutorial-in-store-analytics-create-app.md
+        - name: 2 - 自訂操作員儀表板
+          href: tutorial-in-store-analytics-customize-dashboard.md
+        - name: 3 - 匯出資料和呈現深入解析
+          href: tutorial-in-store-analytics-export-data-visualize-insights.md
+    - name: 智慧庫存管理
+      items:
+        - name: 建立智慧庫存管理應用程式
+          href: tutorial-iot-central-smart-inventory-management.md
+    - name: 連線物流
+      items:
+        - name: 建立連線物流應用程式
+          href: tutorial-iot-central-connected-logistics.md
+    - name: 數位配送中心
+      items:
+        - name: 建立數位配送中心應用程式
+          href: tutorial-iot-central-digital-distribution-center.md
+    - name: 微型物流中心
+      items:
+        - name: 建立微型物流中心應用程式
+          href: tutorial-micro-fulfillment-center.md
+- name: 概念
+  items:
+    - name: 連線物流應用程式範本架構
+      href: architecture-connected-logistics.md
+    - name: 數位配送中心應用程式範本架構
+      href: architecture-digital-distribution-center.md
+    - name: 智慧庫存管理應用程式範本架構
+      href: architecture-smart-inventory-management.md
+    - name: 商店分析架構
+      href: store-analytics-architecture.md
+    - name: 微型物流中心應用程式範本架構
+      href: architecture-micro-fulfillment-center.md
+    - name: 連線能力
+      href: ../core/concepts-get-connected.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+    - name: 什麼是應用程式範本？
+      href: ../core/concepts-app-templates.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+- name: 操作指南
+  items:
+    - name: 連線裝置
+      items:
+        - name: 準備及連線 MXChip IoT DevKit
+          href: ../core/howto-connect-devkit.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: 準備及連線 Rigado Cascade 500
+          href: ../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: 準備及連線 RuuviTag 裝置
+          href: ../core/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: 使用 Azure CLI 監視裝置連線能力
+          href: ../core/howto-monitor-devices-azure-cli.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+    - name: 管理裝置
+      items:
+        - name: 管理您的裝置
+          href: ../core/howto-manage-devices.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: 執行作業
+          href: ../core/howto-run-a-job.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: 版本裝置範本
+          href: ../core/howto-version-device-template.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+    - name: 監視和分析
+      items:
+        - name: 分析您的裝置資料
+          href: ../core/howto-create-analytics.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: 建立規則的 Webhook
+          href: ../core/howto-create-webhooks.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+    - name: 動作和擴充性
+      items:
+        - name: 設定連續資料匯出
+          href: ../core/howto-export-data.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: 建立自訂規則
+          href: ../core/howto-create-custom-rules.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: 使用 Databricks 建立自訂分析
+          href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+    - name: 系統管理
+      items:
+        - name: 變更應用程式設定
+          href: ../core/howto-administer.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: 匯出您的應用程式
+          href: ../core/howto-use-app-templates.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: 管理使用者和角色
+          href: ../core/howto-manage-users-roles.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: 管理您的帳單
+          href: ../core/howto-view-bill.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: 自訂應用程式 UI
+          href: ../core/howto-customize-ui.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: 將圖格新增至您的儀表板
+          href: ../core/howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: 從 Azure 入口網站管理
+          href: ../core/howto-manage-iot-central-from-portal.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: 從 Azure CLI 管理
+          href: ../core/howto-manage-iot-central-from-cli.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: 從 Azure PowerShell 管理
+          href: ../core/howto-manage-iot-central-from-powershell.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: 從 CSP 入口網站管理
+          href: ../core/howto-create-and-manage-applications-csp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+    - name: 個人化
+      items:
+        - name: 建立 Azure IoT Central 個人儀表板
+          href: ../core/howto-create-personal-dashboards.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: 管理您的個人喜好設定
+          href: ../core/howto-manage-preferences.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: 切換即時聊天
+          href: ../core/howto-show-hide-chat.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+- name: 資源
+  items:
+    - name: 支援和協助選項
+      href: /azure/iot-fundamentals/iot-support-help
+    - name: Azure IoT 服務
+      items:
+        - name: IoT 中樞
+          href: /azure/iot-hub
+        - name: IoT 中樞裝置佈建服務
+          href: /azure/iot-dps
+        - name: IoT 中心
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT 解決方案加速器
+          href: /azure/iot-accelerators
+        - name: IoT 隨插即用
+          href: /azure/iot-pnp
+        - name: Azure 地圖服務
+          href: /azure/azure-maps
+        - name: 時間序列深入解析
+          href: /azure/time-series-insights
+    - name: Azure IoT SDK
+      items:
+        - name: IoT 服務 SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: IoT 裝置 SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+    - name: 客戶資料要求
+      href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+    - name: 支援的瀏覽器
+      href: ../core/iot-central-supported-browsers.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+    - name: Azure IoT Central (舊版範本)
+      href: 'https://docs.microsoft.com/previous-versions/azure/iot-central/core/overview-iot-central'

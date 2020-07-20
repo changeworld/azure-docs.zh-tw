@@ -1,5 +1,5 @@
 ---
-title: 遠端監視資料的存取控制-Azure |Microsoft Docs
+title: 遠端監視資料存取控制 - Azure | Microsoft Docs
 description: 此文章提供如何在遠端監視解決方案加速器中設定時間序列深入解析遙測總管之存取控制的相關資訊
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
-ms.openlocfilehash: 778637b7488b7c5c21b600673890da79a76b4997
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9d5d572c3e32e3645e65ba8d6fc28b567b3c1e9a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61443152"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "65827251"
 ---
 # <a name="configure-access-controls-for-the-time-series-insights-telemetry-explorer"></a>設定時間序列深入解析遙測總管的存取控制
 
@@ -21,7 +21,38 @@ ms.locfileid: "61443152"
 
 資料存取原則可授與下列權限：發出資料查詢、在環境中操作參考資料，以及共用與環境相關聯的已儲存查詢和檢視方塊。
 
-[!INCLUDE [iot-tsi-data-access](../../includes/iot-tsi-data-access.md)]
+## <a name="grant-data-access"></a>授與資料存取
+
+依照下列步驟來授與使用者主體的資料存取權︰
+
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+
+2. 找到您的時間序列深入解析環境。 在**搜尋**方塊中輸入**時間序列深入解析**。 選取搜尋結果中的 [時間序列環境]****。 
+
+3. 從清單中選取 Time Series Insights 環境。
+
+4. 選取 [資料存取原則]****，然後選取 [+新增]****。
+    ![管時間序列深入解析來源 - 環境](media/iot-accelerators-remote-monitoring-rbac-tsi/getstarted-grant-data-access1.png)
+
+5. 選取 [選取使用者]****。  搜尋使用者名稱或電子郵件地址，以找出您想要新增的使用者。 按一下 [選取]**** 以確認選取項目。 
+
+    ![管理 Time Series Insights 來源 - 新增](media/iot-accelerators-remote-monitoring-rbac-tsi/getstarted-grant-data-access2.png)
+
+6. 選取 [選取角色]****。 為使用者選擇適當的存取角色：
+   - 如果您想要允許使用者變更參考資料，並與其他環境使用者共用已儲存的查詢和觀點，請選取 [**參與者**]。 
+   - 否則，請選取 [**讀取器**] 以允許環境中的使用者查詢資料，並在環境中儲存個人（非共用）查詢。
+
+     選取 **[確定]** 以確認角色選擇。
+
+     ![管理 Time Series Insights 來源 - 選取使用者](media/iot-accelerators-remote-monitoring-rbac-tsi/getstarted-grant-data-access3.png)
+
+7. 在 [選取使用者角色]**** 頁面中選取 [確定]****。
+
+    ![管理 Time Series Insights 來源 - 選取角色](media/iot-accelerators-remote-monitoring-rbac-tsi/getstarted-grant-data-access4.png)
+
+8. [資料存取原則]**** 頁面會列出使用者和每個使用者的角色。
+
+    ![管理 Time Series Insights 來源 - 結果](media/iot-accelerators-remote-monitoring-rbac-tsi/getstarted-grant-data-access5.png)
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,0 +1,477 @@
+### YamlMime:ZonePivotGroups
+groups:
+- id: client-operating-system
+  title: 程式設計語言
+  prompt: 選擇用戶端作業系統
+  pivots:
+  - id: client-operating-system-linux
+    title: Linux
+  - id: client-operating-system-macos
+    title: macOS
+  - id: client-operating-system-windows
+    title: Windows
+- id: URL-test-interface
+  title: URL 測試工具
+  prompt: 選擇下列其中一個
+  pivots:
+  - id: url-test-tool-curl
+    title: cURL
+  - id: url-test-tool-postman
+    title: postman
+- id: programming-languages-set-one
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-python
+    title: Python
+- id: programming-languages-set-two
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-more
+    title: 更多語言...
+- id: programming-languages-set-three
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-javascript
+    title: JavaScript
+- id: programming-languages-set-four
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-more
+    title: 更多語言...
+- id: programming-languages-set-five
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-ruby
+    title: Ruby
+- id: programming-languages-set-six
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-python
+    title: Python
+- id: programming-languages-set-seven
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+- id: programming-languages-set-eight
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
+- id: programming-languages-set-nine
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+- id: programming-languages-text-analytics
+  title: 程式設計語言
+  prompt: 選擇程式設計語言。
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-other
+    title: 其他語言...
+- id: programming-languages-set-ten
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-python
+    title: Python
+- id: programming-languages-set-eleven
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+- id: programming-languages-set-fifteen
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-go
+    title: Go
+- id: cogsvcs-text-analytics-features
+  title: 文字分析 API
+  prompt: 選擇文字分析的功能供應項目
+  pivots:
+  - id: text-analytics-key-phrase-extraction
+    title: 關鍵片語擷取
+  - id: text-analytics-language-detection
+    title: 語言偵測
+  - id: text-analytics-sentiment-analysis
+    title: 情感分析
+- id: programming-languages-set-functions
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-powershell
+    title: PowerShell
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-typescript
+    title: TypeScript
+- id: programming-languages-text-analytics
+  title: 程式設計語言
+  prompt: 選擇程式設計語言。
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-other
+    title: 其他語言...
+- id: programming-languages-set-diberry-3core
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-python
+    title: Python
+- id: java-build-tools-set
+  title: 建置工具
+  prompt: 選擇組建工具
+  pivots:
+  - id: java-build-tools-maven
+    title: Maven
+  - id: java-build-tools-gradle
+    title: Gradle
+- id: platforms-set-of-three
+  title: 平台
+  prompt: 選擇平台
+  pivots:
+  - id: platform-windows
+    title: Windows
+  - id: platform-linux
+    title: Linux
+  - id: platform-android
+    title: Android
+- id: programming-languages-set-twelve
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C+
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-objectivec
+    title: Objective-C
+- id: programming-languages-set-thirteen
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C+
+  - id: programming-language-java
+    title: Java
+- id: code-editors-set-one
+  title: 程式碼編輯器
+  prompt: 選擇程式碼編輯器
+  pivots:
+  - id: code-editor-vscode
+    title: Visual Studio Code
+  - id: code-editor-visualstudio
+    title: Visual Studio
+- id: programming-languages-set-fourteen
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-more
+    title: 更多語言...
+- id: programming-languages-set-fifteen
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-more
+    title: 更多語言...
+- id: programming-languages-set-sixteen
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-more
+    title: 更多語言...
+- id: programming-languages-set-seventeen
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-python
+    title: Python
+- id: programming-languages-set-eighteen
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-python
+    title: Python
+- id: programming-languages-set-two-with-js
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-more
+    title: 更多語言...
+- id: programming-languages-set-two-with-js-spx
+  title: 程式設計語言
+  prompt: 選擇程式設計語言或 CLI
+  pivots:
+  - id: programmer-tool-spx
+    title: CLI
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-more
+    title: 更多語言...
+- id: programming-languages-set-two-with-js-go
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-more
+    title: 更多語言...
+- id: programming-languages-set-two-with-js-go-spx
+  title: 程式設計語言
+  prompt: 選擇程式設計語言或 CLI
+  pivots:
+  - id: programmer-tool-spx
+    title: CLI
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-more
+    title: 更多語言...
+- id: programming-languages-speech-services-one-nomore
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-javascript
+    title: JavaScript
+- id: programming-languages-speech-services-one-nomore-no-go
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-javascript
+    title: JavaScript
+- id: programming-languages-speech-services-nomore-variant
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-objectivec
+    title: Objective-C
+- id: programming-languages-set-nineteen
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-objectivec
+    title: Objective-C
+- id: programming-languages-set-twenty
+  title: 程式設計語言
+  prompt: 選擇程式設計語言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-nodejs
+    title: Node.js
+  - id: programming-language-java-android
+    title: Java (Android)
+  - id: programming-language-kotlin
+    title: Kotlin (Android)
+  - id: programming-language-swift
+    title: Swift (iOS)
+metadata:
+  ms.openlocfilehash: 1b217a4cece304da740c5402c8ae1665404a7d91
+  ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 07/07/2020
+  ms.locfileid: "86040532"

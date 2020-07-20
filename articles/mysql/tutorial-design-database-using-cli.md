@@ -1,19 +1,19 @@
 ---
-title: 教學課程：使用 Azure CLI 來設計適用於 MySQL 的 Azure 資料庫
+title: 教學課程：設計伺服器 - Azure CLI - 適用於 MySQL 的 Azure 資料庫
 description: 本教學課程說明如何使用 Azure CLI 從命令列建立和管理 Azure Database for MySQL 伺服器和資料庫。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 04/01/2018
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 951cf377c7e33dd3dd5e13a7b42fa05bec06245d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 080e4b119048f2c204e6617405c7c053c7f24cea
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012380"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "80382829"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>教學課程：使用 Azure CLI 來設計適用於 MySQL 的 Azure 資料庫
 
@@ -34,7 +34,7 @@ ms.locfileid: "58012380"
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。 
+如果您選擇在本機安裝和使用 Azure CLI，本文會要求您執行 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 如果您有多個訂用帳戶，請選擇資源所在或作為計費對象的適當訂用帳戶。 使用 [az account set](/cli/azure/account#az-account-set) 命令來選取您帳戶底下的特定訂用帳戶 ID。
 ```azurecli-interactive
@@ -53,7 +53,7 @@ az group create --name myresourcegroup --location westus
 ## <a name="create-an-azure-database-for-mysql-server"></a>建立適用於 MySQL 的 Azure 資料庫伺服器
 使用 az mysql server create 命令來建立「適用於 MySQL 的 Azure 資料庫」伺服器。 一部伺服器可以管理多個資料庫。 一般而言，每個專案或每個使用者會使用個別的資料庫。
 
-下列範例會在資源群組 `myresourcegroup` 的 `westus` 中建立名稱為 `mydemoserver` 的「適用於 MySQL 的 Azure 資料庫」伺服器。 此伺服器具有一個名為 `myadmin` 的系統管理員登入。 這是一部一般用途、具有 2 個 vCore 的第 5 代伺服器。 將 `<server_admin_password>` 替換成您自己的值。
+下列範例會在資源群組 `myresourcegroup` 的 `westus` 中建立名稱為 `mydemoserver` 的「適用於 MySQL 的 Azure 資料庫」伺服器。 此伺服器有一個名為 `myadmin` 的系統管理員。 這是一部一般用途、具有 2 個 vCore 的第 5 代伺服器。 將 `<server_admin_password>` 替換成您自己的值。
 
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7
@@ -118,7 +118,7 @@ az mysql server show --resource-group myresourcegroup --name mydemoserver
 ## <a name="connect-to-the-server-using-mysql"></a>使用 mysql 來連線到伺服器
 使用 [mysql 命令列工具](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)建立對「適用於 MySQL 的 Azure 資料庫」伺服器的連線。 在此範例中，命令是：
 ```cmd
-mysql -h mydemoserver.database.windows.net -u myadmin@mydemoserver -p
+mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
 ```
 
 ## <a name="create-a-blank-database"></a>建立空白資料庫
@@ -185,10 +185,10 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 
 `az mysql server restore` 命令需要下列參數：
 
-| 設定 | 建議的值 | 說明  |
+| 設定 | 建議的值 | 描述  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  來源伺服器所在的資源群組。  |
-| name | mydemoserver-restored | 還原命令所建立之新伺服器的名稱。 |
+| NAME | mydemoserver-restored | 還原命令所建立之新伺服器的名稱。 |
 | restore-point-in-time | 2017-04-13T13:59:00Z | 選取所要還原的時間點。 這個日期和時間必須在來源伺服器的備份保留期限內。 請使用 ISO8601 日期和時間格式。 例如，您可能會使用您自己的本地時區，例如 `2017-04-13T05:59:00-08:00`，或使用 UTC Zulu 格式 `2017-04-13T13:59:00Z`。 |
 | source-server | mydemoserver | 要進行還原的來源伺服器之名稱或識別碼。 |
 

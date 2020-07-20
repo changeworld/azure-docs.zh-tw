@@ -1,21 +1,21 @@
 ---
 title: 什麼是 Bing 拼字檢查 API？
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 了解 Bing 拼字檢查 API，其會使用機器學習服務和統計機器翻譯來對內容進行拼字檢查。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 22f75efb3cb4baa645030e7ad64072674de662ed
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 205d7991551ca48c3ea2e61baef53f5d06bdcbd2
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890836"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200489"
 ---
 # <a name="what-is-the-bing-spell-check-api"></a>什麼是 Bing 拼字檢查 API？
 
@@ -23,8 +23,7 @@ Bing 拼字檢查 API 可讓您對文字的內容執行文法與拼字檢查。 
 
 ## <a name="features"></a>特性
 
-
-|  |  |
+| 功能 | 描述 |
 |---------|---------|
 |多個拼字檢查模式     | 多個拼字檢查模式可讓您獲得專注於文法和/或拼字的校正。 |
 |辨識俚語與非正式用語     | 可辨識文字中所用的常用語和非正式用語。         |
@@ -43,4 +42,6 @@ Bing 拼字檢查 API 可輕易地從任何可發出 HTTP 要求及剖析 JSON �
 
 首先，請嘗試 Bing 拼字檢查搜尋 API 的[互動式示範](https://azure.microsoft.com/services/cognitive-services/spell-check/)，以了解如何快速地檢查各種不同的文字。
 
-當您準備好要呼叫 API 時，請建立[認知服務 API 帳戶](../../cognitive-services/cognitive-services-apis-create-account.md)。 如果您沒有 Azure 訂用帳戶，可以[建立免費帳戶](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)。
+當您準備好要呼叫 API 時，請建立[認知服務 API 帳戶](../../cognitive-services/cognitive-services-apis-create-account.md)。 如果您沒有 Azure 訂用帳戶，可以[建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
+
+您也可以瀏覽 [Bing 搜尋 API 中樞頁面](../bing-web-search/search-the-web.md)來探索其他可用的 API。

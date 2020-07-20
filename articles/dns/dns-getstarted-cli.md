@@ -1,18 +1,19 @@
 ---
-title: 快速入門 - 使用 Azure CLI 建立 Azure DNS 區域和記錄
+title: 快速入門：建立 Azure DNS 區域和記錄 - Azure CLI
+titleSuffix: Azure DNS
 description: 快速入門 - 了解如何在 Azure DNS 中建立 DNS 區域和記錄。 這份逐步指南將引導您使用 Azure CLI 建立和管理第一個 DNS 區域和記錄。
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: 7a2c300e30050e7e46a2b2c724258539df85e410
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: rohink
+ms.openlocfilehash: e6904c013cf2ed897bdc7c8b32f04fe500fc31d9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093417"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "76937204"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>快速入門：使用 Azure CLI 建立 Azure DNS 區域和記錄
 
@@ -20,11 +21,11 @@ ms.locfileid: "58093417"
 
 DNS 區域用來裝載特定網域的 DNS 記錄。 若要開始將網域裝載到 Azure DNS 中，您必須建立該網域名稱的 DNS 區域。 接著在此 DNS 區域內，建立網域的每筆 DNS 記錄。 最後，若要將 DNS 區域發佈至網際網路，您需要設定網域的名稱伺服器。 以下說明上述各步驟。
 
-Azure DNS 現在也支援私人 DNS 區域 (目前處於公開預覽狀態)。 若要深入了解私人 DNS 區域，請參閱[使用 Azure DNS 私人網域](private-dns-overview.md)。 如需如何建立私人 DNS 區域的範例，請參閱[利用 CLI 開始使用 Azure DNS 私人區域](./private-dns-getstarted-cli.md)。
+Azure DNS 也支援私人 DNS 區域。 若要深入了解私人 DNS 區域，請參閱[使用 Azure DNS 私人網域](private-dns-overview.md)。 如需如何建立私人 DNS 區域的範例，請參閱[利用 CLI 開始使用 Azure DNS 私人區域](./private-dns-getstarted-cli.md)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="create-the-resource-group"></a>建立資源群組
 
@@ -38,7 +39,7 @@ az group create --name MyResourceGroup --location "East US"
 
 使用 `az network dns zone create` 命令建立 DNS 區域。 若要查看此命令的說明，請輸入 `az network dns zone create -h`。
 
-下列範例會在 MyResourceGroup 資源群組中建立稱為 contoso.xyz 的 DNS 區域。 使用範例來建立 DNS 區域，並將值替換為您自己的值。
+下列範例會在 MyResourceGroup  資源群組中建立稱為 contoso.xyz  的 DNS 區域。 使用範例來建立 DNS 區域，並將值替換為您自己的值。
 
 ```azurecli
 az network dns zone create -g MyResourceGroup -n contoso.xyz
@@ -82,7 +83,7 @@ az network dns record-set list -g MyResourceGroup -z contoso.xyz
    nslookup www.contoso.xyz <name server name>
    ```
 
-   例如︰
+   例如：
 
    ```
    nslookup www.contoso.xyz ns1-08.azure-dns.com.

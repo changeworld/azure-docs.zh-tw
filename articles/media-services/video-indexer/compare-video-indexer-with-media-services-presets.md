@@ -1,30 +1,30 @@
 ---
-title: 影片索引子與 Azure 媒體服務 v3 預設值的比較 | Microsoft Docs
-description: 本主題會比較影片索引子與 Azure 媒體服務 v3 的預設值。
+title: 影片索引子和 Azure 媒體服務 v3 預設值的比較
+description: 本文會比較影片索引子功能和 Azure 媒體服務 v3 預設值。
 services: media-services
 documentationcenter: ''
 author: juliako
 manager: femila
 editor: ''
 ms.service: media-services
+ms.subservice: video-indexer
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/07/2019
+ms.date: 02/24/2020
 ms.author: juliako
-ms.openlocfilehash: 2c98f6d12f4868e5f90874fe3210fe5368f7ca2d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: dcfc6ea4afe23424e72c625518356be52f62bc81
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60195992"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77602183"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>比較 Azure 媒體服務 v3 預設值與影片索引子 
 
 本文將比較**影片索引子 API** 與**媒體服務 v3 API** 的功能。 
 
-目前沒有所提供的功能之間重疊[影片索引子 Api](https://api-portal.videoindexer.ai/)並[媒體服務 v3 Api](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json)。 下表提供了解其差異和相似性的現行指導方針。 
+目前，[影片索引子 api](https://api-portal.videoindexer.ai/)和[媒體服務 v3 api](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json)所提供的功能有重迭。 下表提供了解其差異和相似性的現行指導方針。 
 
 ## <a name="compare"></a>比較
 
@@ -33,9 +33,9 @@ ms.locfileid: "60195992"
 |媒體深入解析|[增強](video-indexer-output-json-v2.md) |[基礎](../latest/intelligence-concept.md)|
 |體驗|請參閱支援功能的完整清單︰ <br/> [概觀](video-indexer-overview.md)|僅傳回影片深入解析|
 |計費|[媒體服務定價](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[媒體服務定價](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
-|法規遵循|[ISO 27001](https://www.microsoft.com/TrustCenter/Compliance/ISO-IEC-27001)， [ISO 27018](https://www.microsoft.com/trustcenter/Compliance/ISO-IEC-27018)， [SOC 1 2、 3](https://www.microsoft.com/TrustCenter/Compliance/SOC)， [HIPAA](https://www.microsoft.com/trustcenter/compliance/hipaa)， [FedRAMP](https://www.microsoft.com/TrustCenter/Compliance/fedramp)， [PCI](https://www.microsoft.com/trustcenter/compliance/pci)，以及[HITRUST](https://www.microsoft.com/TrustCenter/Compliance/hitrust)認證。 如需最新的更新，造訪[影片索引器的目前認證狀態](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)。|媒體服務符合多項認證。 請參閱 [Azure Compliance Offerings.pdf](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) 並搜尋「媒體服務」，以確認它是否符合相關憑證。|
-|免費試用|美國東部|尚未提供|
-|區域可用性|美國東部 2、 美國中南部、 美國西部 2、 北歐、 西歐、 東南亞、 東亞、 和澳大利亞東部。  如需最新的更新，造訪[依區域的產品](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)頁面。|請參閱 [Azure 狀態](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)。|
+|法規遵循|如需最新的合規性更新，請造訪[Azure 合規性 Offerings.pdf](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf)並搜尋「影片索引子」，以查看它是否符合您感關注的憑證。|如需最新的合規性更新，請造訪[Azure 合規性 Offerings.pdf](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf)並搜尋「媒體服務」，以查看它是否符合您感關注的憑證。|
+|免費試用|美國東部|無法使用|
+|區域可用性|查看[依區域的認知服務可用性](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)|請參閱[依區域的媒體服務可用性](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)。|
 
 ## <a name="next-steps"></a>後續步驟
 

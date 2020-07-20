@@ -1,16 +1,15 @@
 ---
-author: rockboyfor
+author: rothja
 ms.service: virtual-machines-sql
 ms.topic: include
-origin.date: 10/26/2018
-ms.date: 11/26/2018
-ms.author: v-yeche
-ms.openlocfilehash: 22f16a7382cb0fe1f3fe2a6ef5e7c00a6989623c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 10/26/2018
+ms.author: jroth
+ms.openlocfilehash: e0ff4e91ed55a37e710a5655e7da9ec76b7d1dd5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129600"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84014686"
 ---
 ## <a name="next-steps"></a>後續步驟
 
@@ -18,15 +17,15 @@ ms.locfileid: "62129600"
 
 有數種形式的加密可供您利用：
 
-* [透明資料加密 (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
-* [加密的備份](https://msdn.microsoft.com/library/dn449489.aspx)
-* [資料行層級加密 (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)
+* [透明資料加密 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption)
+* [加密的備份](/sql/relational-databases/backup-restore/backup-encryption)
+* [資料行層級加密 (CLE)](/sql/t-sql/functions/cryptographic-functions-transact-sql)
 
 下列 Transact-SQL 指令碼為每個區域提供範例。
 
 ### <a name="prerequisites-for-examples"></a>範例的必要條件
 
-每個範例是根據兩個必要條件：您的金鑰保存庫的非對稱金鑰 (稱為 **CONTOSO_KEY**)，和 AKV 整合功能所建立的認證 (稱為 **Azure_EKM_TDE_cred**)。 下列 Transact-SQL 命令會設定這些必要條件，以用於執行範例。
+每個範例都是以兩個必要條件為基礎：金鑰保存庫中的非對稱金鑰稱為**CONTOSO_KEY** ，以及 AKV 整合功能所建立的認證，稱為**Azure_EKM_cred**。 下列 Transact-SQL 命令會設定這些必要條件，以用於執行範例。
 
 ``` sql
 USE master;
@@ -34,14 +33,16 @@ GO
 
 --create credential
 --The <<SECRET>> here requires the <Application ID> (without hyphens) and <Secret> to be passed together without a space between them.
-CREATE CREDENTIAL sysadmin_ekm_cred
+CREATE CREDENTIAL Azure_EKM_cred
     WITH IDENTITY = 'keytestvault', --keyvault
     SECRET = '<<SECRET>>'
 FOR CRYPTOGRAPHIC PROVIDER AzureKeyVault_EKM_Prov;
 
+
 --Map the credential to a SQL login that has sysadmin permissions. This allows the SQL login to access the key vault when creating the asymmetric key in the next step.
 ALTER LOGIN [SQL_Login]
-ADD CREDENTIAL sysadmin_ekm_cred;
+ADD CREDENTIAL Azure_EKM_cred;
+
 
 CREATE ASYMMETRIC KEY CONTOSO_KEY
 FROM PROVIDER [AzureKeyVault_EKM_Prov]
@@ -145,6 +146,4 @@ CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 
 如需有關如何使用這些加密功能的詳細資訊，請參閱 [以 SQL Server 加密功能使用 EKM](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM)。
 
-請注意，本文中的步驟假設您已在 Azure 虛擬機器上執行 SQL Server。 如果沒有，請參閱[在 Azure 中佈建 SQL Server 虛擬機器](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md)。 如需在 Azure VM 中執行 SQL Server 的其他指引，請參閱[Azure 虛擬機器上的 SQL Server 概觀](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)。
-
-<!--Update_Description: wording update, update link-->
+請注意，本文中的步驟假設您已在 Azure 虛擬機器上執行 SQL Server。 如果沒有，請參閱[在 Azure 中佈建 SQL Server 虛擬機器](../articles/azure-sql/virtual-machines/windows/create-sql-vm-portal.md)。 如需在 Azure VM 中執行 SQL Server 的其他指引，請參閱[Azure 虛擬機器上的 SQL Server 概觀](../articles/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)。

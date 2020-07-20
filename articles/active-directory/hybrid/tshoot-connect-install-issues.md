@@ -10,19 +10,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e077127681f8bd7b650ab22f2d036efd7f9733ee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6da21e9aa3b3b4cafec71a4d1881b9eb32b4dedc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60454762"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356214"
 ---
-# <a name="troubleshoot-azure-ad-connect-install-issues"></a>疑難排解：Azure AD Connect 安裝問題
+# <a name="troubleshoot-azure-ad-connect-install-issues"></a>疑難排解： Azure AD Connect 安裝問題
 
 ## <a name="recommended-steps"></a>**建議的步驟**
 請確認您適用何種 [Azure AD Connect 安裝類型](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation)。 如果您符合快速安裝的條件，則強烈建議您使用快速安裝。 快速安裝可讓您以最基本的選項完成安裝，因此發生問題的可能性較低。 
@@ -41,11 +41,11 @@ ms.locfileid: "60454762"
 
 ### <a name="common-issues"></a>**常見問題**
 
-* [本地 Active Directory 的连接问题](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adconnectivitytools)。
+* 內部[部署 Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adconnectivitytools)的連線問題。
 
 * [線上 Azure Active Directory 的連線問題](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-connectivity)。
 
-* [在內部部署 Active Directory 的權限問題](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account)。
+* 內部[部署 Active Directory 的許可權問題](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account)。
 
 ## <a name="recommended-documents"></a>**建議的文件**
 * [Azure AD Connect 的必要條件](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites)
@@ -58,7 +58,7 @@ ms.locfileid: "60454762"
 
 ## <a name="next-steps"></a>後續步驟
 - [Azure AD Connect 同步](how-to-connect-sync-whatis.md)。
-- [什麼是混合式身分識別？](whatis-hybrid-identity.md)。
+- [什麼是混合式身分識別？](whatis-hybrid-identity.md)
 
 
 

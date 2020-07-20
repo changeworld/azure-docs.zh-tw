@@ -1,24 +1,13 @@
 ---
 title: Azure 服務匯流排重複訊息偵測 | Microsoft 文件
-description: 偵測重複的服務匯流排訊息
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+description: 本文說明如何偵測 Azure 服務匯流排訊息中的重複專案。 可以忽略和捨棄重複的訊息。
 ms.topic: article
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: d9f814a49924ca95078f3b3decca4f3922c74c2b
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: c8935fa67dda28bb2fec663c5e714982933f0f22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65413648"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337899"
 ---
 # <a name="duplicate-detection"></a>重複偵測
 
@@ -37,11 +26,11 @@ ms.locfileid: "65413648"
 *MessageId* 永遠都可以是某個 GUID，不過將識別碼錨定在商務程序中會產生可預測的重複性，這是有效運用重複偵測功能不可或缺的一環。
 
 > [!NOTE]
-> 如果已啟用重複偵測，而且未設定工作階段識別碼或資料分割索引鍵，將訊息識別碼可做為資料分割索引鍵。 如果也沒有設定的訊息識別碼，.NET 和 AMQP 程式庫會自動產生之訊息的訊息識別碼。 如需詳細資訊，請參閱 <<c0> [ 使用的資料分割索引鍵](service-bus-partitioning.md#use-of-partition-keys)。
+> 如果已啟用重複偵測，而且未設定會話識別碼或分割區索引鍵，則會使用訊息識別碼做為分割區索引鍵。 如果訊息識別碼也未設定，則 .NET 和 AMQP 程式庫會自動產生訊息的訊息識別碼。 如需詳細資訊，請參閱[使用資料分割索引鍵](service-bus-partitioning.md#use-of-partition-keys)。
 
-## <a name="enable-duplicate-detection"></a>重複資料偵測
+## <a name="enable-duplicate-detection"></a>啟用重複偵測
 
-在入口網站中，於建立實體時勾選 [啟用重複偵測] 核取方塊可開啟該功能 (預設為關閉)。 建立新主題的設定也是如此。
+在入口網站中，於建立實體時勾選 [啟用重複偵測]**** 核取方塊可開啟該功能 (預設為關閉)。 建立新主題的設定也是如此。
 
 ![][1]
 
@@ -67,6 +56,8 @@ ms.locfileid: "65413648"
 * [服務匯流排佇列、主題和訂用帳戶](service-bus-queues-topics-subscriptions.md)
 * [開始使用服務匯流排佇列](service-bus-dotnet-get-started-with-queues.md)
 * [如何使用服務匯流排主題和訂用帳戶](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+
+在用戶端程式代碼無法使用與之前相同的*MessageId*重新提交訊息的案例中，請務必設計可安全重新處理的訊息。 這[篇關於等冪的文章](https://particular.net/blog/what-does-idempotent-mean)會說明如何執行這方面的各種技術。
 
 [1]: ./media/duplicate-detection/create-queue.png
 [2]: ./media/duplicate-detection/queue-prop.png

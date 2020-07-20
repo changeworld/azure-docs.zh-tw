@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 指令碼範例 - 建立使用 SignalR 服務和 GitHub 驗證的 Web 應用程式
+title: 建立使用 SignalR 服務和 GitHub 驗證的 Web 應用程式
 description: Azure CLI 指令碼範例 - 建立使用 SignalR 服務和 GitHub 驗證的 Web 應用程式
 author: sffamily
 ms.service: signalr
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/22/2018
 ms.author: zhshang
 ms.custom: mvc
-ms.openlocfilehash: 84020448019867744d08806acbbd47adbc1a83e3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d30804d132eec3c9f324413acd68014d1adaa710
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546462"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74158039"
 ---
 # <a name="create-a-web-app-that-uses-signalr-service-and-github-authentication"></a>建立使用 SignalR 服務和 GitHub 驗證的 Web 應用程式
 
@@ -27,13 +27,75 @@ ms.locfileid: "57546462"
 
 ## <a name="sample-script"></a>範例指令碼
 
-此指令碼會使用適用於 Azure CLI 的 signalr 擴充功能。 在使用這個範例指令碼之前，請執行下列命令以安裝適用於 Azure CLI 2.0 的 signalr 擴充功能：
+此指令碼會使用適用於 Azure CLI 的 signalr  擴充功能。 在使用這個範例指令碼之前，請執行下列命令以安裝適用於 Azure CLI 2.0 的 signalr  擴充功能：
 
 ```azurecli-interactive
-az extension add -n signalr
-```
+#!/bin/bash
 
-[!code-azurecli-interactive[main](../../../cli_scripts/azure-signalr/create-signalr-with-app-service-github-oauth/create-signalr-with-app-service-github-oauth.sh "Create a new SignalR Service and Web App configured to use SignalR, GitHub OAuth, and local Git repository deployment source.")]
+#========================================================================
+#=== Update these values based on your desired deployment username    ===
+#=== and password.                                                    ===
+#========================================================================
+deploymentUser=<Replace with your desired username>
+deploymentUserPassword=<Replace with your desired password>
+
+#========================================================================
+#=== Update these values based on your GitHub OAuth App registration. ===
+#========================================================================
+GitHubClientId=<Replace with your GitHub OAuth app Client ID>
+GitHubClientSecret=<Replace with your GitHub OAuth app Client Secret>
+
+
+# Generate a unique suffix for the service name
+let randomNum=$RANDOM*$RANDOM
+
+# Generate unique names for the SignalR service, resource group, 
+# app service, and app service plan
+SignalRName=SignalRTestSvc$randomNum
+#resource name must be lowercase
+mySignalRSvcName=${SignalRName,,}
+myResourceGroupName=$SignalRName"Group"
+myWebAppName=SignalRTestWebApp$randomNum
+myAppSvcPlanName=$myAppSvcName"Plan"
+
+# Create resource group 
+az group create --name $myResourceGroupName --location eastus
+
+# Create the Azure SignalR Service resource
+az signalr create \
+  --name $mySignalRSvcName \
+  --resource-group $myResourceGroupName \
+  --sku Standard_S1 \
+  --unit-count 1 \
+  --service-mode Default
+
+# Create an App Service plan.
+az appservice plan create --name $myAppSvcPlanName --resource-group $myResourceGroupName --sku FREE
+
+# Create the Web App
+az webapp create --name $myWebAppName --resource-group $myResourceGroupName --plan $myAppSvcPlanName  
+
+# Get the SignalR primary connection string
+primaryConnectionString=$(az signalr key list --name $mySignalRSvcName \
+  --resource-group $myResourceGroupName --query primaryConnectionString -o tsv)
+
+#Add an app setting to the web app for the SignalR connection
+az webapp config appsettings set --name $myWebAppName --resource-group $myResourceGroupName \
+  --settings "Azure:SignalR:ConnectionString=$primaryConnectionString" 
+
+#Add app settings to use with GitHub authentication
+az webapp config appsettings set --name $myWebAppName --resource-group $myResourceGroupName \
+  --settings "GitHubClientId=$GitHubClientId" 
+az webapp config appsettings set --name $myWebAppName --resource-group $myResourceGroupName \
+  --settings "GitHubClientSecret=$GitHubClientSecret" 
+
+# Add the desired deployment user name and password
+az webapp deployment user set --user-name $deploymentUser --password $deploymentUserPassword
+
+# Configure Git deployment and note the deployment URL in the output
+az webapp deployment source config-local-git --name $myWebAppName --resource-group $myResourceGroupName \
+  --query [url] -o tsv
+```
 
 記下新資源群組所產生的實際名稱。 此名稱會顯示在輸出中。 當您想要刪除所有群組資源時，就會用到該資源群組名稱。
 
@@ -43,11 +105,11 @@ az extension add -n signalr
 
 下表中的每個命令都會連結至命令特定的文件。 此指令碼會使用下列命令：
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
-| [az signalr create](/cli/azure/ext/signalr/signalr#ext-signalr-az-signalr-create) | 建立 Azure SignalR 服務資源。 |
-| [az signalr key list](/cli/azure/ext/signalr/signalr/key#ext-signalr-az-signalr-key-list) | 列出應用程式在使用 SignalR 推送即時內容更新時，所會使用的金鑰。 |
+| [az signalr create](/cli/azure/signalr#az-signalr-create) | 建立 Azure SignalR 服務資源。 |
+| [az signalr key list](/cli/azure/signalr/key#az-signalr-key-list) | 列出應用程式在使用 SignalR 推送即時內容更新時，所會使用的金鑰。 |
 | [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) | 建立用來裝載 Web 應用程式的 Azure App Service 方案。 |
 | [az webapp create](/cli/azure/webapp#az-webapp-create) | 使用 App Service 主控方案建立 Azure Web 應用程式。 |
 | [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | 新增 Web 應用程式的應用程式設定。 這些應用程式設定會用來儲存 SignalR 連接字串和 GitHub OAuth 應用程式祕密。 |

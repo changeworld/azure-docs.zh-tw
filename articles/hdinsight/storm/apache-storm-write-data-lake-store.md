@@ -1,73 +1,48 @@
 ---
-title: Apache Storm 寫入儲存體/Data Lake Storage - Azure HDInsight
-description: 了解如何使用 Apache Storm 寫入 HDInsight 的 HDFS 相容儲存體。
+title: 教學課程：HDInsight Apache Storm 至儲存體 - Azure/Data Lake
+description: 教學課程 - 了解如何使用 Apache Storm 寫入 Azure HDInsight 的 HDFS 相容儲存體。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 02/27/2018
-ms.openlocfilehash: 4ba0c861674eb2308cf1f96c33d0792f3e1a0f94
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.topic: tutorial
+ms.date: 06/24/2019
+ms.openlocfilehash: 579163180f6c7ba19927ca66d20bd92d1b2de52e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64683686"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "73241203"
 ---
-# <a name="write-to-apache-hadoop-hdfs-from-apache-storm-on-hdinsight"></a>從 HDInsight 上的 Apache Storm 寫入 Apache Hadoop HDFS
+# <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>教學課程：從 Azure HDInsight 上的 Apache Storm 寫入 Apache Hadoop HDFS
 
-了解如何使用 [Apache Storm](https://storm.apache.org/) 將資料寫入 HDInsight 上的 Apache Storm 所使用的 HDFS 相容儲存體。 HDInsight 可以同時使用 Azure 儲存體以及 Azure Data Lake Storage 作為 HDFS 相容儲存體。 Storm 提供了將資料寫入 HDFS 的 [HdfsBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) 元件。 本文件提供從 HdfsBolt 寫入任一類型儲存體的資訊。 
+本教學課程會示範如何使用 Apache Storm 將資料寫入 HDInsight 上 Apache Storm 所使用的 HDFS 相容儲存體。 HDInsight 可以同時使用 Azure 儲存體以及 Azure Data Lake Storage 作為 HDFS 相容儲存體。 Storm 提供了將資料寫入 HDFS 的 [HdfsBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) 元件。 本文件提供從 HdfsBolt 寫入任一類型儲存體的資訊。
 
-> [!IMPORTANT]  
-> 本文件使用的範例拓撲依賴 Storm on HDInsight 隨附的元件。 它可能需要進行修改，才能在與其他 Apache Storm 叢集搭配使用時使用 Azure Data Lake Storage。
+本文件使用的範例拓撲依賴 Storm on HDInsight 隨附的元件。 它可能需要進行修改，才能在與其他 Apache Storm 叢集搭配使用時使用 Azure Data Lake Storage。
 
-## <a name="get-the-code"></a>取得程式碼
+在本教學課程中，您會了解如何：
 
-包含此拓撲的專案可從 [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) 下載。
+> [!div class="checklist"]
+> * 使用指令碼動作來設定叢集
+> * 建置和封裝拓撲
+> * 部署並執行拓撲
+> * 檢視輸出資料
+> * 停止拓撲
 
-若要編譯此專案，您需要開發環境的下列設定：
+## <a name="prerequisites"></a>Prerequisites
 
-* [Java JDK 1.8](https://aka.ms/azure-jdks) 或更新版本。 HDInsight 3.5 或更新版本需要 Java 8。
+* [Java Developer Kit (JDK) 第 8 版](https://aka.ms/azure-jdks)
 
-* [Maven 3.x](https://maven.apache.org/download.cgi)
+* 根據 Apache 正確[安裝](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是適用於 Java 專案的專案建置系統。
 
-當您在開發工作站上安裝 Java 和 JDK 時可能會設定下列環境變數。 不過，您應該檢查它們是否存在，以及它們是否包含您系統的正確值。
+* SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-* `JAVA_HOME` - 應指向已安裝 JDK 的目錄。
-* `PATH` - 應該包含下列路徑：
-  
-    * `JAVA_HOME` (或對等的路徑)。
-    * `JAVA_HOME\bin`（或等效路径）。
-    * 已安裝 Maven 的目錄。
+* 您叢集主要儲存體的 [URI 配置](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 `wasb://` 適用於 Azure 儲存體，`abfs://` 適用於 Azure Data Lake Storage Gen2 或 `adl://` 適用於 Azure Data Lake Storage Gen1。 如果已對 Azure 儲存體啟用安全傳輸，URI 會是 `wasbs://`。  另請參閱[安全傳輸](../../storage/common/storage-require-secure-transfer.md)。
 
-## <a name="how-to-use-the-hdfsbolt-with-hdinsight"></a>如何搭配 HDInsight 使用 HdfsBolt
+### <a name="example-configuration"></a>範例設定
 
-> [!IMPORTANT]  
-> 在搭配 Storm on HDInsight 使用 HdfsBolt 之前，您必須先使用指令碼動作，將所需的 Jar 檔案複製到 Storm 的 `extpath`。 如需詳細資訊，請參閱設定叢集一節。
-
-HdfsBolt 會使用您提供的檔案配置來了解如何寫入 HDFS。 利用 HDInsight 時，請使用下列其中一項配置：
-
-* `wasb://`:搭配使用 Azure 儲存體帳戶。
-* `abfs://`:搭配 Azure Data Lake Storage Gen2 使用。
-* `adl://`:搭配 Azure Data Lake Storage Gen1 使用。
-
-下表提供針對不同案例使用檔案配置的範例：
-
-| 配置 | 注意 |
-| ----- | ----- |
-| `wasb:///` | 預設儲存體帳戶是 Azure 儲存體帳戶中的 Blob 容器 |
-| `abfs:///` | 預設儲存體帳戶是 Azure Data Lake Storage Gen2 帳戶中的目錄 |
-| `adl:///` | 預設儲存體帳戶是 Azure Data Lake Storage Gen1 中的目錄。 叢集建立期間，您可以指定 Data Lake Storage 中其為叢集 HDFS 根目錄的目錄。 例如，`/clusters/myclustername/` 目錄。 |
-| `wasb://CONTAINER@ACCOUNT.blob.core.windows.net/` | 與叢集建立關聯的非預設 (其他) Azure 儲存體帳戶。 |
-| `abfs://CONTAINER@ACCOUNT.dfs.core.windows.net/` | 與叢集建立關聯的非預設 (其他) Azure 儲存體帳戶。 |
-| `adl://STORENAME/` | 叢集所使用的 Data Lake Storage 根目錄。 此配置可讓您存取位於叢集檔案系統所在目錄外部的資料。 |
-
-如需詳細資訊，請參閱 Apache.org 上的 [HdfsBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) 參考。
-
-### <a name="example-configuration"></a>設定範例
-
-下列 YAML 是摘錄自範例中隨附的 `resources/writetohdfs.yaml` 檔案。 此檔案會使用 Apache Storm 的 [Flux](https://storm.apache.org/releases/1.1.2/flux.html) 架構定義 Storm 拓撲。
+下列 YAML 是摘錄自範例中隨附的 `resources/writetohdfs.yaml` 檔案。 此檔案會使用 Apache Storm 的 [Flux](https://storm.apache.org/releases/current/flux.html) 架構定義 Storm 拓撲。
 
 ```yaml
 components:
@@ -135,60 +110,63 @@ bolts:
 
 ## <a name="configure-the-cluster"></a>設定叢集
 
-根據預設，Storm on HDInsight 未包含 HdfsBolt 用來與 Storm Classpath 中出現的 Azure 儲存體或 Data Lake Storage 進行通訊的元件。 請使用下列指令碼動作，將這些元件新增至叢集上 Storm 的 `extlib` 目錄：
+根據預設，Storm on HDInsight 未包含 `HdfsBolt` 用來與 Storm Classpath 中出現的 Azure 儲存體或 Data Lake Storage 進行通訊的元件。 請使用下列指令碼動作，將這些元件新增至叢集上 Storm 的 `extlib` 目錄：
 
-* 指令碼 URI：`https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh`
-* 要套件的節點：Nimbus、Supervisor
-* 參數：None
+| 屬性 | 值 |
+|---|---|
+|指令碼類型 |- 自訂|
+|Bash 指令碼 URI |`https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh`|
+|節點類型 |Nimbus、Supervisor|
+|參數 |None|
 
 如需搭配叢集使用此指令碼的資訊，請參閱[使用指令碼動作自訂 HDInsight 叢集](./../hdinsight-hadoop-customize-cluster-linux.md)文件。
 
 ## <a name="build-and-package-the-topology"></a>建置和封裝拓撲
 
-1. 下載範例專案[ https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store)至開發環境。
+1. 從 [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) 下載範例專案到您的部署環境。
 
 2. 從命令提示字元、終端機或 Shell 工作階段，將目錄變更為所下載專案的根目錄。 若要建置和封裝拓撲，請使用下列命令：
-   
-        mvn compile package
-   
+
+    ```cmd
+    mvn compile package
+    ```
+
     建置和封裝完成之後，會有名為 `target` 的新目錄，其中包含名為 `StormToHdfs-1.0-SNAPSHOT.jar` 的檔案。 此檔案包含已編譯的拓撲。
 
 ## <a name="deploy-and-run-the-topology"></a>部署並執行拓撲
 
-1. 使用下列命令將拓撲複製到 HDInsight 叢集。 將 **USER** 取代為建立叢集時所使用的 SSH 使用者名稱。 將 **CLUSTERNAME** 取代為叢集的名稱。
-   
-        scp target\StormToHdfs-1.0-SNAPSHOT.jar USER@CLUSTERNAME-ssh.azurehdinsight.net:StormToHdfs-1.0-SNAPSHOT.jar
-   
-    出現提示時，請輸入建立叢集的 SSH 使用者時所使用的密碼。 如果您使用公開金鑰而非密碼，則可能必須使用 `-i` 參數來指定相對應私密金鑰的路徑。
-   
-   > [!NOTE]  
-   > 如需搭配 HDInsight 使用 `scp` 的詳細資訊，請參閱[搭配 HDInsight 使用 SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)。
+1. 使用下列命令將拓撲複製到 HDInsight 叢集。 將 `CLUSTERNAME` 取代為叢集的名稱。
 
-2. 上傳完成後，使用下列命令來透過 SSH 連接到 HDInsight 叢集。 將 **USER** 取代為建立叢集時所使用的 SSH 使用者名稱。 將 **CLUSTERNAME** 取代為叢集的名稱。
-   
-        ssh USER@CLUSTERNAME-ssh.azurehdinsight.net
-   
-    出現提示時，請輸入建立叢集的 SSH 使用者時所使用的密碼。 如果您使用公開金鑰而非密碼，則可能必須使用 `-i` 參數來指定相對應私密金鑰的路徑。
-   
-   如需詳細資訊，請參閱[搭配 HDInsight 使用 SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)。
+    ```cmd
+    scp target\StormToHdfs-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:StormToHdfs-1.0-SNAPSHOT.jar
+    ```
 
-3. 連接之後，使用下列命令來建立名為 `dev.properties` 的檔案：
+1. 上傳完成後，使用下列命令來透過 SSH 連接到 HDInsight 叢集。 將 `CLUSTERNAME` 取代為叢集的名稱。
 
-        nano dev.properties
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
-4. 使用下列文字做為 `dev.properties` 檔案的內容：
+1. 連接之後，使用下列命令來建立名為 `dev.properties` 的檔案：
 
-        hdfs.write.dir: /stormdata/
-        hdfs.url: wasb:///
+    ```bash
+    nano dev.properties
+    ```
 
-    > [!IMPORTANT]  
-    > 這個範例假設您的叢集使用 Azure 儲存體帳戶作為預設儲存體。 如果叢集使用 Azure Data Lake Storage Gen2，請改為使用 `hdfs.url: abfs:///`。 如果叢集使用 Azure Data Lake Storage Gen1，請改為使用 `hdfs.url: adl:///`。
-    
-    若要儲存檔案，使用 __Ctrl + X__，然後是 __Y__，最後按 __Enter__。 此檔案中的值會設定 Data Lake Storage URL，以及要寫入資料的目錄名稱。
+1. 使用下列文字做為 `dev.properties` 檔案的內容。 根據您的 [URI 配置](../hdinsight-hadoop-linux-information.md#URI-and-scheme)視需要進行修訂。
 
-3. 使用下列命令來啟動拓撲：
-   
-        storm jar StormToHdfs-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /writetohdfs.yaml --filter dev.properties
+    ```
+    hdfs.write.dir: /stormdata/
+    hdfs.url: wasbs:///
+    ```
+
+    若要儲存檔案，使用 __Ctrl + X__，然後是 __Y__，最後按 __Enter__。 此檔案中的值會設定儲存體 URL，以及要寫入資料的目錄名稱。
+
+1. 使用下列命令來啟動拓撲：
+
+    ```bash
+    storm jar StormToHdfs-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /writetohdfs.yaml --filter dev.properties
+    ```
 
     此命令藉由將拓撲提交給叢集的 Nimbus 節點，以使用 Flux 架構來啟動拓撲。 拓撲是由 jar 中包含的 `writetohdfs.yaml` 檔案所定義。 `dev.properties` 檔案會傳遞來做為篩選，而檔案中包含的值是透過拓撲來讀取。
 
@@ -196,32 +174,44 @@ bolts:
 
 若要檢視資料，請使用下列命令：
 
-    hdfs dfs -ls /stormdata/
+  ```bash
+  hdfs dfs -ls /stormdata/
+  ```
 
-隨即會顯示此拓撲所建立的檔案清單。
+隨即會顯示此拓撲所建立的檔案清單。 下列清單是前一個命令所傳回的資料範例：
 
-下列清單是前一個命令所傳回的資料範例：
-
-    Found 30 items
-    -rw-r-----+  1 sshuser sshuser       488000 2017-03-03 19:13 /stormdata/hdfs-bolt-3-0-1488568403092.txt
-    -rw-r-----+  1 sshuser sshuser       444000 2017-03-03 19:13 /stormdata/hdfs-bolt-3-1-1488568404567.txt
-    -rw-r-----+  1 sshuser sshuser       502000 2017-03-03 19:13 /stormdata/hdfs-bolt-3-10-1488568408678.txt
-    -rw-r-----+  1 sshuser sshuser       582000 2017-03-03 19:13 /stormdata/hdfs-bolt-3-11-1488568411636.txt
-    -rw-r-----+  1 sshuser sshuser       464000 2017-03-03 19:13 /stormdata/hdfs-bolt-3-12-1488568411884.txt
+```output
+Found 23 items
+-rw-r--r--   1 storm supergroup    5242880 2019-06-24 20:25 /stormdata/hdfs-bolt-3-0-1561407909895.txt
+-rw-r--r--   1 storm supergroup    5242880 2019-06-24 20:25 /stormdata/hdfs-bolt-3-1-1561407915577.txt
+-rw-r--r--   1 storm supergroup    5242880 2019-06-24 20:25 /stormdata/hdfs-bolt-3-10-1561407943327.txt
+-rw-r--r--   1 storm supergroup    5242880 2019-06-24 20:25 /stormdata/hdfs-bolt-3-11-1561407946312.txt
+-rw-r--r--   1 storm supergroup    5242880 2019-06-24 20:25 /stormdata/hdfs-bolt-3-12-1561407949320.txt
+-rw-r--r--   1 storm supergroup    5242880 2019-06-24 20:25 /stormdata/hdfs-bolt-3-13-1561407952662.txt
+-rw-r--r--   1 storm supergroup    5242880 2019-06-24 20:25 /stormdata/hdfs-bolt-3-14-1561407955502.txt
+```
 
 ## <a name="stop-the-topology"></a>停止拓撲
 
 Storm 拓撲會一直執行，直到其停止或叢集遭到刪除為止。 若要停止拓撲，請使用下列命令：
 
-    storm kill hdfswriter
+```bash
+storm kill hdfswriter
+```
 
-## <a name="delete-your-cluster"></a>刪除叢集
+## <a name="clean-up-resources"></a>清除資源
 
-[!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
+若要清除本教學課程所建立的資源，您可以刪除資源群組。 刪除資源群組也會刪除相關聯的 HDInsight 叢集，以及與資源群組相關聯的任何其他資源。
+
+若要使用 Azure 入口網站移除資源群組：
+
+1. 在 Azure 入口網站中展開左側功能表，以開啟服務的功能表，然後選擇 [資源群組]  以顯示資源群組的清單。
+2. 找出要刪除的資源群組，然後以滑鼠右鍵按一下清單右側的 [更多]  按鈕 (...)。
+3. 選取 [刪除資源群組]  ，並加以確認。
 
 ## <a name="next-steps"></a>後續步驟
 
-現在，您已了解如何使用 Apache Storm 來寫入 Azure 儲存體和 Azure Data Lake Storage，接下來請探索其他[適用於 HDInsight 的 Apache Storm 範例](apache-storm-example-topology.md)。
+在本教學課程中，您會了解如何使用 Apache Storm 將資料寫入 HDInsight 上 Apache Storm 所使用的 HDFS 相容儲存體。
 
-## <a name="see-also"></a>請參閱
-* [搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
+> [!div class="nextstepaction"]
+> 探索其他[適用於 HDInsight 的 Apache Storm 範例](apache-storm-example-topology.md)

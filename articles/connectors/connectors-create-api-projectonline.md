@@ -1,22 +1,17 @@
 ---
-title: 從 Azure Logic Apps 連線至 Project Online | Microsoft Docs
+title: 從 Azure Logic Apps 連線至 Project Online
 description: 使用 Azure Logic Apps，將監視、建立和管理 Project Online 專案、工作和資源的工作流程自動化
 services: logic-apps
-ms.service: logic-apps
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.assetid: 40ce621e-4925-4653-93bb-71ab9abcbdf1
-tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 663363d05c1875d22a0ecc0478abcf7e0ec89c99
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+tags: connectors
+ms.openlocfilehash: a3e90fa3e3f57c1575a7ab09f9ce6941c13adcd1
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62105625"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834861"
 ---
 # <a name="manage-project-online-projects-tasks-and-resources-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 來管理 Project Online 專案、工作和資源
 
@@ -29,9 +24,9 @@ ms.locfileid: "62105625"
 
 Project Online 可藉由提供強大的專案管理功能，協助您規劃、設定優先順序以及管理專案和專案組合投資，不受場地和裝置的限制。 您可以使用 Project Online 觸發程序，以取得 Project Online 的回應，並且讓輸出可供其他動作使用。 您可以在邏輯應用程式中使用動作，以在 Project Online 中執行各種工作。 如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先<a href="https://azure.microsoft.com/free/" target="_blank">註冊免費的 Azure 帳戶</a>。 
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
 
 * Project Online，可透過 [Office 365 帳戶](https://www.office.com/)取得。 
 
@@ -66,7 +61,7 @@ Project Online 可藉由提供強大的專案管理功能，協助您規劃、�
 
 ## <a name="get-support"></a>取得支援
 
-* 如有問題，請瀏覽 [Azure Logic Apps 論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有任何問題，請瀏覽 [Microsoft 問與答的 Azure Logic Apps 問題頁面](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 * 若要提交或票選功能構想，請造訪 [Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>後續步驟

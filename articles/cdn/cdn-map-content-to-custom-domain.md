@@ -3,30 +3,30 @@ title: 教學課程 - 將自訂網域新增至 Azure CDN 端點 | Microsoft Docs
 description: 在本教學課程中，您會將 Azure CDN 端點對應至自訂網域。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/11/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: b80cb0d68e6875881f2a9fc97fa52531525c1cdc
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: ab4845a93771bace5bca15ea3afa7027884e36f4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579184"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260576"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>教學課程：將自訂網域新增至 Azure CDN 端點
 本教學課程說明如何將自訂網域新增至 Azure 內容傳遞網路 (CDN) 端點。 使用 CDN 端點來傳遞內容時，如果您想要在 CDN URL 中顯示您自己的網域名稱，則需要自訂網域。 有可見的網域名稱對您的客戶而言較為方便，並且也有助於宣傳商標。 
 
 當您在設定檔中建立 CDN 端點後，端點名稱 (azureedge.net 的子網域) 會包含在依預設傳遞 CDN 內容的 URL 中 (例如 https:\//contoso.azureedge.net/photo.png)。 為了方便起見，Azure CDN 會提供在自訂網域與 CDN 端點之間建立關聯的選項。 使用此選項時，您會在 URL 中使用自訂網域來傳遞內容，而不是使用端點名稱 (例如 https:\//www.contoso.com/photo.png)。 
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 > [!div class="checklist"]
 > - 建立 CNAME DNS 記錄。
 > - 將自訂網域與您的 CDN 端點產生關聯。
@@ -34,7 +34,7 @@ ms.locfileid: "59579184"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須先建立 CDN 設定檔和至少一個 CDN 端點，才能完成本教學課程中的步驟。 如需詳細資訊，請參閱[快速入門：建立 Azure CDN 設定檔和端點](cdn-create-new-endpoint.md)。
 
@@ -50,7 +50,7 @@ ms.locfileid: "59579184"
 自訂網域及其子網域一次只能與單一端點相關聯。 不過，您可以使用多個 CNAME 記錄，將來自相同自訂網域的不同子網域用於不同的 Azure 服務端點。 您也可以將具有不同子網域的自訂網域對應至相同的 CDN 端點。
 
 > [!NOTE]
-> 如果您使用 Azure DNS 作為網域提供者，則可將任何別名記錄類型用於自訂網域。 本逐步解說會使用 CNAME 記錄類型。 如果您使用 A 或 AAAA 記錄類型，請遵循以下相同步驟並以您選擇的記錄類型取代 CNAME。 如果您使用別名記錄來新增根網域作為自訂網域，並且想要啟用 SSL，則必須使用手動驗證，如[本文](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint)所述。 如需詳細資訊，請參閱[將區域 Apex 指向 Azure CDN 端點](https://docs.microsoft.com/azure/dns/dns-alias#point-zone-apex-to-azure-cdn-endpoints)。
+> 如果您使用 Azure DNS 作為網域提供者，則可將任何別名記錄類型用於自訂網域。 本逐步解說會使用 CNAME 記錄類型。 如果您使用 A 或 AAAA 記錄類型，請遵循以下相同步驟並以您選擇的記錄類型取代 CNAME。 如果您使用別名記錄來新增根網域作為自訂網域，並且想要啟用 TLS，則必須使用手動驗證，如[本文](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint)所述。 如需詳細資訊，請參閱[將區域 Apex 指向 Azure CDN 端點](https://docs.microsoft.com/azure/dns/dns-alias#point-zone-apex-to-azure-cdn-endpoints)。
 
 ## <a name="map-the-temporary-cdnverify-subdomain"></a>對應暫時 cdnverify 子網域
 
@@ -66,15 +66,15 @@ ms.locfileid: "59579184"
 
 3. 建立自訂網域的 CNAME 記錄項目，並完成下表說明的欄位 (欄位名稱可能有所不同)：
 
-    | 來源                    | 類型  | 目的地                     |
+    | 來源                    | 類型  | Destination                     |
     |---------------------------|-------|---------------------------------|
-    | cdnverify.www.contoso.com | CNAME | cdnverify.contoso.azureedge.net |
+    | cdnverify. www.contoso.com | CNAME | cdnverify.contoso.azureedge.net |
 
-    - 來源：以下列格式輸入您的自訂網域名稱 (包括 cdnverify 子網域)：cdnverify.&lt;自訂網域名稱&gt;。 例如 cdnverify.www.contoso.com。
+    - 來源：以下列格式輸入您的自訂網域名稱 (包括 cdnverify 子網域)：cdnverify.&lt;自訂網域名稱&gt;。 例如 cdnverify. www.contoso.com。
 
-    - 輸入：輸入 CNAME。
+    - 輸入：輸入 CNAME  。
 
-    - 目的地：以下列格式輸入您的 CDN 端點主機名稱 (包括 cdnverify 子網域)：cdnverify._&lt;端點名稱&gt;_.azureedge.net。 例如 cdnverify.contoso.azureedge.net。
+    - 目的地：以下列格式輸入您的 CDN 端點主機名稱 (包括 cdnverify 子網域)：cdnverify. _&lt;端點名稱&gt;_ .azureedge.net。 例如 cdnverify.contoso.azureedge.net。
 
 4. 儲存您的變更。
 
@@ -82,25 +82,25 @@ ms.locfileid: "59579184"
 
 1. 登入並選取您要使用的自訂網域。
 
-2. 在 [網域] 區段中選取 [管理全部]，然後選取 [DNS] | [管理區域]。
+2. 在 [網域] 區段中選取 [管理全部]  ，然後選取 [DNS]   | [管理區域]  。
 
-3. 針對 [網域名稱]，輸入您的自訂網域，然後選取 [搜尋]。
+3. 針對 [網域名稱]  ，輸入您的自訂網域，然後選取 [搜尋]  。
 
-4. 在 [DNS 管理] 頁面中選取 [新增]，然後在 [類型] 清單中選取 [CNAME]。
+4. 在 [DNS 管理]  頁面中選取 [新增]  ，然後在 [類型]  清單中選取 [CNAME]  。
 
 5. 完成 CNAME 項目的下列欄位：
 
     ![CNAME 項目](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-cname-entry.png)
 
-    - 輸入：保留已選取的 [CNAME]。
+    - 輸入：保留已選取的 [CNAME]  。
 
     - 主機：輸入要使用的自訂網域的子網域，包括 cdnverify 子網域名稱。 例如 cdnverify.www。
 
     - 指向：輸入 CDN 端點的主機名稱，包括 cdnverify 子網域名稱。 例如 cdnverify.contoso.azureedge.net。 
 
-    - TTL：保留已選取的 [1 小時]。
+    - TTL：保留已選取的 [1 小時]  。
 
-6. 選取 [ **儲存**]。
+6. 選取 [儲存]  。
  
     CNAME 項目會新增至 DNS 記錄資料表。
 
@@ -113,23 +113,23 @@ ms.locfileid: "59579184"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)，然後瀏覽至要對應到自訂網域的端點所在的 CDN 設定檔。
     
-2. 在 [CDN 設定檔] 頁面上，選取要與自訂網域產生關聯的 CDN 端點。
+2. 在 [CDN 設定檔]  頁面上，選取要與自訂網域產生關聯的 CDN 端點。
 
-   [端點] 頁面隨即開啟。
+   [端點]  頁面隨即開啟。
     
-3. 選取 [自訂網域]。 
+3. 選取 [自訂網域]  。 
 
    ![CDN 自訂網域按鈕](./media/cdn-map-content-to-custom-domain/cdn-custom-domain-button.png)
 
-   [新增自訂網域] 頁面隨即開啟。
+   [新增自訂網域]  頁面隨即開啟。
 
-4. 對於 [端點主機名稱]，系統會從您的 CDN 端點 URL 衍生要作為 CNAME 記錄之目的地網域的端點主機名稱，並預先填入：*&lt;endpoint hostname&gt;*.azureedge.net。 無法予以變更。
+4. 對於 [端點主機名稱]  ，系統會從您的 CDN 端點 URL 衍生要作為 CNAME 記錄之目的地網域的端點主機名稱，並預先填入： *&lt;endpoint hostname&gt;* .azureedge.net。 無法予以變更。
 
-5. 針對 [自訂主機名稱]，請輸入您的自訂網域 (包括子網域)，以作為 CNAME 記錄的來源網域。 例如 www\.contoso.com 或 cdn.contoso.com。 請勿使用 cdnverify 子網域名稱。
+5. 針對 [自訂主機名稱]  ，請輸入您的自訂網域 (包括子網域)，以作為 CNAME 記錄的來源網域。 例如 www\.contoso.com 或 cdn.contoso.com。 請勿使用 cdnverify 子網域名稱。
 
    ![CDN 自訂網域對話方塊](./media/cdn-map-content-to-custom-domain/cdn-add-custom-domain.png)
 
-6. 選取 [新增] 。
+6. 選取 [新增]  。
 
    Azure 會確認您所輸入的自訂網域名稱有 CNAME 記錄存在。 如果 CNAME 正確，就會驗證您的自訂網域。 
 
@@ -145,7 +145,7 @@ ms.locfileid: "59579184"
  
 1. 確定您有在端點上快取的公用內容。 例如，如果您的 CDN 端點與儲存體帳戶相關聯，則 Azure CDN 會快取公用容器中的內容。 若要測試自訂網域，請確認您的容器設定為允許公用存取，且至少包含一個檔案。
 
-2. 在瀏覽器中，使用自訂網域瀏覽至檔案的位址。 例如，如果您的自訂網域是 cdn.contoso.com，則快取檔案的 URL 應會類似於下列 URL：http:\//cdn.contoso.com/my-public-container/my-file.jpg。 確認結果與您直接在 *&lt;endpoint hostname&gt;*.azureedge.net 上存取 CDN 端點時相同。
+2. 在瀏覽器中，使用自訂網域瀏覽至檔案的位址。 例如，如果您的自訂網域是 `www.contoso.com`，則快取檔案的 URL 應與以下 URL 類似：`http://www.contoso.com/my-public-container/my-file.jpg`。 確認結果與您直接在 *&lt;endpoint hostname&gt;* .azureedge.net 上存取 CDN 端點時相同。
 
 
 ## <a name="map-the-permanent-custom-domain"></a>對應永久自訂網域
@@ -160,15 +160,15 @@ ms.locfileid: "59579184"
 
 3. 建立自訂網域的 CNAME 記錄項目，並完成下表說明的欄位 (欄位名稱可能有所不同)：
 
-    | 來源          | 類型  | 目的地           |
+    | 來源          | 類型  | Destination           |
     |-----------------|-------|-----------------------|
     | <www.contoso.com> | CNAME | contoso.azureedge.net |
 
    - 來源：輸入您的自訂網域名稱 (例如 www\.contoso.com)。
 
-   - 輸入：輸入 CNAME。
+   - 輸入：輸入 CNAME  。
 
-   - 目的地：輸入您的 CDN 端點主機名稱。 此名稱必須是下列格式：_&lt;端點名稱&gt;_.azureedge.net。 例如 contoso.azureedge.net。
+   - 目的地：輸入您的 CDN 端點主機名稱。 此名稱必須是下列格式： _&lt;端點名稱&gt;_ .azureedge.net。 例如 contoso.azureedge.net。
 
 4. 儲存您的變更。
 
@@ -180,25 +180,25 @@ ms.locfileid: "59579184"
 
 1. 登入並選取您要使用的自訂網域。
 
-2. 在 [網域] 區段中選取 [管理全部]，然後選取 [DNS] | [管理區域]。
+2. 在 [網域] 區段中選取 [管理全部]  ，然後選取 [DNS]   | [管理區域]  。
 
-3. 針對 [網域名稱]，輸入您的自訂網域，然後選取 [搜尋]。
+3. 針對 [網域名稱]  ，輸入您的自訂網域，然後選取 [搜尋]  。
 
-4. 在 [DNS 管理] 頁面中選取 [新增]，然後在 [類型] 清單中選取 [CNAME]。
+4. 在 [DNS 管理]  頁面中選取 [新增]  ，然後在 [類型]  清單中選取 [CNAME]  。
 
 5. 完成 CNAME 項目的欄位：
 
     ![CNAME 項目](./media/cdn-map-content-to-custom-domain/cdn-cname-entry.png)
 
-    - 輸入：保留已選取的 [CNAME]。
+    - 輸入：保留已選取的 [CNAME]  。
 
     - 主機：輸入要使用的自訂網域的子網域。 例如 www 或 cdn。
 
     - 指向：輸入 CDN 端點的主機名稱。 例如 contoso.azureedge.net。 
 
-    - TTL：保留已選取的 [1 小時]。
+    - TTL：保留已選取的 [1 小時]  。
 
-6. 選取 [ **儲存**]。
+6. 選取 [儲存]  。
  
     CNAME 項目會新增至 DNS 記錄資料表。
 
@@ -206,7 +206,7 @@ ms.locfileid: "59579184"
 
 7. 如果您有 cdnverify CNAME 記錄，請選取它旁邊的鉛筆圖示，然後選取資源回收筒圖示。
 
-8. 選取 [刪除]，將 CNAME 記錄刪除。
+8. 選取 [刪除]  ，將 CNAME 記錄刪除。
 
 
 ## <a name="clean-up-resources"></a>清除資源
@@ -215,7 +215,7 @@ ms.locfileid: "59579184"
  
 1. 在您的 CDN 設定檔中，選取您要移除的自訂網域所在的端點。
 
-2. 在 [端點] 頁面的 [自訂網域] 下，以滑鼠右鍵按一下您要移除的自訂網域，然後從內容功能表中選取 [刪除]。  
+2. 在 [端點]  頁面的 [自訂網域] 下，以滑鼠右鍵按一下您要移除的自訂網域，然後從內容功能表中選取 [刪除]  。  
 
    自訂網域會與您的端點解除關聯。
 

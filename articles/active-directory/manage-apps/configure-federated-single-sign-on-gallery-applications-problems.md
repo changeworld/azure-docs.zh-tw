@@ -1,26 +1,25 @@
 ---
-title: 為 Azure AD 資源庫應用程式設定同盟單一登入時遇到的問題 | Microsoft Docs
+title: 設定 Azure AD 資源庫應用程式的同盟 SSO 時發生問題
 description: 解決您可能會在為 Azure AD 應用程式庫中所列的應用程式，使用 SAML 設定同盟單一登入時遇到的一些常見問題
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31e9746c0739a2ddd6267428f428e977151077b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 858e61c6371aac28d709a9016e4b9cbed6befe3f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60292098"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763596"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>為 Azure AD 資源庫應用程式設定同盟單一登入時遇到的問題
 
@@ -42,7 +41,7 @@ ms.locfileid: "60292098"
 
 了解針對應用程式預先設定的模式：
 
-1. 開啟 [Azure 入口網站](https://portal.azure.com/)，然後以**全域管理員**或**共同管理員**身分登入。移至步驟 7。 如果您已經有位於 Azure AD 的應用程式設定刀鋒視窗中。
+1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。** 移至步驟7。 如果您已經有位於 Azure AD 的應用程式設定刀鋒視窗中。
 
 2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
@@ -56,19 +55,19 @@ ms.locfileid: "60292098"
 
 6. 選取您要設定單一登入的應用程式。
 
-7. 應用程式載入後，按一下應用程式的左側導覽功能表中的 [單一登入]。
+7. 應用程式載入後，按一下應用程式的左側導覽功能表中的 [單一登入]****。
 
-8. 從 [模式] 下拉式清單選取 [SAML 登入]。
+8. 從 [模式]**** 下拉式清單選取 [SAML 登入]****。
 
-9. 移至 [網域及 URL] 區段下方的 [識別碼] 或 [回覆 URL] 文字方塊。
+9. 移至 [網域及 URL]**** 區段下方的 [識別碼]**** 或 [回覆 URL]**** 文字方塊。
 
 10. 有三種方式可以知道應用程式支援的模式：
 
-    * 在文字方塊中，您會看到支援的模式是以預留位置的形式出現 (範例︰<https://contoso.com>)。
+    * 在文字方塊中，您會看到支援的模式是以預留位置的形式出現 (範例︰** <https://contoso.com>)。
 
     * 如果模式不受支援，則當您嘗試在文字方塊中輸入值時，會看到紅色驚嘆號。 如果您將滑鼠移到紅色驚嘆號上方，就會看到支援的模式。
 
-    * 在應用程式的教學課程中，您也可以取得支援模式的詳細資訊。 在**設定 Azure AD 單一登入**一節中。 移至在 [網域及 URL] 區段下方設定值的步驟。
+    * 在應用程式的教學課程中，您也可以取得支援模式的詳細資訊。 在**設定 Azure AD 單一登入**一節中。 移至在 [網域及 URL]**** 區段下方設定值的步驟。
 
 如果值不符合 Azure AD 上預先設定的模式。 您可以：
 
@@ -86,7 +85,7 @@ Azure AD 會根據應用程式在 SAML AuthRequest 中選取的值或要求的�
 
 若要從 Azure AD 下載應用程式中繼資料或憑證，請遵循下列步驟：
 
-1. 開啟 [Azure 入口網站](https://portal.azure.com/)，然後以**全域管理員**或**共同管理員**身分登入。
+1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。**
 
 2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
@@ -100,9 +99,9 @@ Azure AD 會根據應用程式在 SAML AuthRequest 中選取的值或要求的�
 
 6. 選取您已設定單一登入的應用程式。
 
-7. 應用程式載入後，按一下應用程式的左側導覽功能表中的 [單一登入]。
+7. 應用程式載入後，按一下應用程式的左側導覽功能表中的 [單一登入]****。
 
-8. 移至 [SAML 簽署憑證] 區段，然後按一下 [下載] 資料行值。 根據應用程式設定單一登入時所需的項目，您會看到下載中繼資料 XML 或憑證的選項。
+8. 移至 [SAML 簽署憑證]**** 區段，然後按一下 [下載]**** 資料行值。 根據應用程式設定單一登入時所需的項目，您會看到下載中繼資料 XML 或憑證的選項。
 
 Azure AD 不提供取得中繼資料的 URL。 只能將中繼資料擷取為 XML 檔案。
 
@@ -111,4 +110,4 @@ Azure AD 不提供取得中繼資料的 URL。 只能將中繼資料擷取為 XM
 若要了解如何自訂傳送至應用程式的 SAML 屬性宣告，請參閱 [Azure Active Directory 中的宣告對應](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)以取得詳細資訊。
 
 ## <a name="next-steps"></a>後續步驟
-[使用 Azure Active Directory 管理應用程式](what-is-application-management.md)
+[使用 Azure Active Directory 來管理應用程式](what-is-application-management.md)

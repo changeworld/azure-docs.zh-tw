@@ -1,29 +1,26 @@
 ---
-title: Data Factory - .NET API 變更記錄 | Microsoft Docs
-description: 描述 Azure Data Factory 的特定版本 NET API 中的重大變更、新增功能、錯誤修正等等...
+title: Data Factory-.NET API 變更記錄檔
+description: 描述 Azure Data Factory 的特定 .NET API 版本中的重大變更、新增功能、bug 修正等等。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
-ms.assetid: 8208271b-7f4c-4214-b665-d2ff503c4470
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/22/2018
-ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 863f3500c84eeab1c3dac19141cd334fc6961694
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 01/22/2018
+ms.openlocfilehash: dbbbdebdcf1db7afe485166f5744f2291b757d50
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60567243"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74978997"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory - .NET API 變更記錄
 > [!NOTE]
-> 本文適用於 Data Factory 的第 1 版。 
+> 本文適用於 Data Factory 第 1 版。 
 
 本文章提供 Azure Data Factory SDK 在特定版本中有何變更的相關資訊。 您可以在 [這裡](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactories)
 
@@ -56,14 +53,14 @@ ms.locfileid: "60567243"
   * 可將多個 Web 服務輸入傳遞到 Azure Machine Learning 實驗
 
 ## <a name="version-491"></a>版本 4.9.1
-### <a name="bug-fix"></a>錯誤修正
+### <a name="bug-fix"></a>錯誤 (bug) 修正
 * 取代 [WebLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.weblinkedservice.authenticationtype.aspx)的 WebApi 型驗證。
 
 ## <a name="version-490"></a>版本 4.9.0
 ### <a name="feature-additions"></a>新增功能
 * 新增 CopyActivity 的 [EnableStaging](https://msdn.microsoft.com/library/mt767916.aspx) 和 [StagingSettings](https://msdn.microsoft.com/library/mt767918.aspx) 屬性。 如需功能的詳細資訊，請參閱 [分段複製](data-factory-copy-activity-performance.md#staged-copy) 。
 
-### <a name="bug-fix"></a>錯誤修正
+### <a name="bug-fix"></a>錯誤 (bug) 修正
 * 導入 [ActivityWindowOperationExtensions.List](https://msdn.microsoft.com/library/mt767915.aspx) 方法的多載，它會採用 [ActivityWindowsByActivityListParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.activitywindowsbyactivitylistparameters.aspx) 執行個體。
 * 將 [WriteBatchSize](https://msdn.microsoft.com/library/dn884293.aspx) 和 [WriteBatchTimeout](https://msdn.microsoft.com/library/dn884245.aspx) 標示為 CopySink 中的選擇性項目。
 
@@ -80,7 +77,7 @@ ms.locfileid: "60567243"
   * 允許使用 PolyBase 將資料複製到「SQL 資料倉儲」。
 
 ## <a name="version-461"></a>4.6.1 版
-### <a name="bug-fixes"></a>錯誤修正
+### <a name="bug-fixes"></a>Bug 修正
 * 修正用於列出活動時段的 HTTP 要求。
   * 從要求承載移除資源群組名稱和 Data Factory 名稱。
 
@@ -118,7 +115,7 @@ ms.locfileid: "60567243"
 
 ## <a name="version-420"></a>4.2.0 版
 ### <a name="feature-additions"></a>新增功能
-* 已新增下列新的活動類型：[AzureMLUpdateResourceActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity.aspx)。 如需有關活動的詳細資訊，請參閱[使用更新資源活動更新 Azure ML 模型](data-factory-azure-ml-batch-execution-activity.md)。
+* 新增下列新的活動類型： [AzureMLUpdateResourceActivity](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremlupdateresourceactivity.aspx)。 如需有關活動的詳細資訊，請參閱[使用更新資源活動更新 Azure ML 模型](data-factory-azure-ml-batch-execution-activity.md)。
 * 新的選擇性屬性 [updateResourceEndpoint](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.updateresourceendpoint.aspx) 已加入至 [AzureMLLinkedService 類別](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuremllinkedservice.aspx)。
 * [LongRunningOperationInitialTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationinitialtimeout.aspx) 和 [LongRunningOperationRetryTimeout](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.longrunningoperationretrytimeout.aspx) 屬性已加入至 [DataFactoryManagementClient](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.datafactorymanagementclient.aspx) 類別。
 * 允許設定用戶端呼叫 Data Factory 服務的逾時值。
@@ -156,7 +153,7 @@ ms.locfileid: "60567243"
 | 舊名稱 | 新名稱 |
 |:--- |:--- |
 | ITableOperations |[IDatasetOperations](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.idatasetoperations.aspx) |
-| 資料表 |[Dataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.dataset.aspx) |
+| 資料表 |[資料集](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.dataset.aspx) |
 | TableProperties |[DatasetProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetproperties.aspx) |
 | TableTypeProprerties |[DatasetTypeProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasettypeproperties.aspx) |
 | TableCreateOrUpdateParameters |[DatasetCreateOrUpdateParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdateparameters.aspx) |
@@ -165,7 +162,7 @@ ms.locfileid: "60567243"
 | TableListResponse |[DatasetListResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetlistresponse.aspx) |
 | CreateOrUpdateWithRawJsonContentParameters |[DatasetCreateOrUpdateWithRawJsonContentParameters](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.datasetcreateorupdatewithrawjsoncontentparameters.aspx) |
 
-* **List** 方法現在會傳回分頁式結果。 如果回應包含非空白的 **NextLink** 屬性，用戶端應用程式需要繼續提取下一個頁面，直到傳回了所有頁面為止。  下列是一個範例：
+* **List** 方法現在會傳回分頁式結果。 如果回應包含非空白的 **NextLink** 屬性，用戶端應用程式需要繼續提取下一個頁面，直到傳回了所有頁面為止。  範例如下：
 
     ```csharp
     PipelineListResponse response = client.Pipelines.List("ResourceGroupName", "DataFactoryName");

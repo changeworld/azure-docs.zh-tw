@@ -1,31 +1,20 @@
 ---
-title: 對 Azure Service Fabric 應用程式進行封裝 | Microsoft Docs
-description: 如何在將 Service Fabric 應用程式部署至叢集之前對它進行封裝。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: mani-ramaswamy
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
+title: 封裝 Azure Service Fabric 應用程式
+description: 瞭解如何封裝 Azure Service Fabric 應用程式，以及如何準備部署至叢集。
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: b8e66a9d5bba0c48f15b1ccd3f2d47e5405db792
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c00e46915c7bf147d224911ef4988d9fedd691c7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60718358"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260966"
 ---
-# <a name="package-an-application"></a>打包应用程序
+# <a name="package-an-application"></a>封裝應用程式
 
 本文說明如何對 Service Fabric 應用程式進行封裝，並使其準備好進行部署。
 
-## <a name="package-layout"></a>包布局
+## <a name="package-layout"></a>封裝版面配置
 
 應用程式資訊清單、一或多個服務資訊清單及其他必要的封裝檔案必須以特定的配置組織後，才能部署到 Service Fabric 叢集。 在本文中的範例資訊清單必須組織成下列目錄結構：
 
@@ -56,10 +45,10 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 使用 **SetupEntryPoint** 的一般案例，是當您必須在服務啟動之前執行可執行檔，或必須使用提高的權限來執行作業時。 例如︰
 
-* 设置和初始化服务可执行文件所需的环境变量。 這不僅限於透過 Service Fabric 程式設計模型撰寫的可執行檔。 例如，npm.exe 部署 node.js 應用程式，需要設定某些環境變數。
+* 設定及初始化服務可執行檔需要的環境變數。 這不僅限於透過 Service Fabric 程式設計模型撰寫的可執行檔。 例如，npm.exe 部署 node.js 應用程式，需要設定某些環境變數。
 * 透過安裝安全性憑證設定存取控制。
 
-如需有關如何設定 **SetupEntryPoint** 的詳細資訊，請參閱[設定服務設定進入點的原則](service-fabric-application-runas-security.md)
+如需有關如何設定**SetupEntryPoint**的詳細資訊，請參閱[設定服務安裝程式進入點的原則](service-fabric-application-runas-security.md)
 
 <a id="Package-App"></a>
 
@@ -67,13 +56,13 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ### <a name="build-a-package-by-using-visual-studio"></a>使用 Visual Studio 建置封裝
 
-如果您使用 Visual Studio 2015 來建立您的應用程式，您可以使用 [封裝] 命令來自動建立符合上述版面配置的封裝。
+如果您使用 Visual Studio 來建立應用程式，您可以使用 [*封裝*] 命令，自動建立符合上述版面配置的套件。
 
-若要建立封裝，請以滑鼠右鍵按一下方案總管中的應用程式專案，然後選擇 [封裝] 命令，如下所示：
+若要建立封裝，請以滑鼠右鍵按一下*方案總管*中的應用程式專案，然後選擇 [**封裝**] 命令：
 
 ![使用 Visual Studio 封裝應用程式][vs-package-command]
 
-封裝完成時，您會在 [輸出]  視窗中找到封裝的位置。 當您在 Visual Studio 中部署或偵錯應用程式時，封裝步驟會自動執行。
+封裝完成時，您會在 [輸出] **** 視窗中找到封裝的位置。 當您在 Visual Studio 中部署或偵錯應用程式時，封裝步驟會自動執行。
 
 ### <a name="build-a-package-by-command-line"></a>透過命令列建置封裝
 
@@ -86,7 +75,7 @@ D:\Temp> msbuild HelloWorld.sfproj /t:Package
 ## <a name="test-the-package"></a>測試封裝
 
 您可以使用 [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) 命令，透過 PowerShell 在本機上驗證封裝結構。
-此命令會檢查有無資訊清單剖析問題，並驗證所有參考。 此命令只验证包中目录与文件结构的正确性。
+此命令會檢查有無資訊清單剖析問題，並驗證所有參考。 這個命令只會驗證封裝中目錄與檔案的結構正確性。
 除了檢查所有必要檔案是否都在之外，它不會驗證任何程式碼或資料封裝內容。
 
 ```powershell
@@ -142,7 +131,7 @@ True
 當封裝很大或有許多檔案時，您可以壓縮它以加快部署速度。 壓縮會減少檔案數目並降低封裝大小。
 如果是壓縮的應用程式封裝，[上傳應用程式封裝](service-fabric-deploy-remove-applications.md#upload-the-application-package)可能會比上傳未壓縮的封裝花費更長的時間，尤其當壓縮作業是在複製過程中進行時，更是如此。 使用壓縮，[註冊應用程式類型](service-fabric-deploy-remove-applications.md#register-the-application-package)和[取消註冊應用程式類型](service-fabric-deploy-remove-applications.md#unregister-an-application-type)會比較快。
 
-已壓縮及未壓縮套件的部署機制皆相同。 如果为压缩包，则存储在群集映像存储等位置，并且在应用程序运行前在节点上解压缩。
+已壓縮及未壓縮套件的部署機制皆相同。 如果封裝已壓縮，它會以壓縮的形式儲存在叢集映像存放區中，並在應用程式執行之前於節點上解壓縮。
 壓縮會將有效的 Service Fabric 封裝以壓縮的版本取代。 該資料夾必須允許寫入權限。 在已經壓縮的封裝上執行壓縮將不會產生任何變化。
 
 您可以執行 PowerShell 命令 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps)，並搭配 `CompressPackage` 參數來壓縮封裝。 您可以使用相同的命令，並搭配 `UncompressPackage` 參數來將封裝解壓縮。
@@ -222,7 +211,7 @@ Service Fabric 會在內部針對驗證計算應用程式封裝的總和檢查�
 `sfpkg` 檔案是一個包含初始應用程式封裝的 zip，副檔名為 ".sfpkg"。
 在 zip 中，應用程式封裝可能是已經過壓縮或未壓縮的。 zip 內應用程式封裝的壓縮是在 code、config 和 data 封裝層級完成，如[先前所述](service-fabric-package-apps.md#compress-a-package)。
 
-若要建立 `sfpkg`，請先建立一個包含原始已壓縮或未壓縮應用程式封裝的資料夾。 然後，使用任何公用程式，以副檔名 ".sfpkg" 壓縮資料夾。 例如，使用 [ZipFile.CreateFromDirectory](https://msdn.microsoft.com/library/hh485721(v=vs.110).aspx)。
+若要建立 `sfpkg`，請先建立一個包含原始已壓縮或未壓縮應用程式封裝的資料夾。 然後，使用任何公用程式，以副檔名 ".sfpkg" 壓縮資料夾。 例如，使用 [ZipFile.CreateFromDirectory](/dotnet/api/system.io.compression.zipfile.createfromdirectory?view=netcore-3.1#System_IO_Compression_ZipFile_CreateFromDirectory_System_String_System_String_System_IO_Compression_CompressionLevel_System_Boolean_)。
 
 ```csharp
 ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);
@@ -237,7 +226,7 @@ ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);
 
 ## <a name="next-steps"></a>後續步驟
 
-[部署與移除應用程式][10]說明如何使用 PowerShell 來管理應用程式執行個體。
+[部署和移除應用程式][10]說明如何使用 PowerShell 來管理應用程式實例
 
 [管理多個環境的應用程式參數][11]說明如何為不同的應用程式執行個體設定參數和環境變數。
 

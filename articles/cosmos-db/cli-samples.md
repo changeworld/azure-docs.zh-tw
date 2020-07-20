@@ -1,41 +1,31 @@
 ---
-title: 適用於 Azure Cosmos DB 的 Azure CLI 範例
-description: Azure CLI 範例：建立及管理 Azure Cosmos DB 帳戶、資料庫、容器、區域和防火牆。
+title: 適用於 Azure Cosmos DB SQL (Core) API 的 Azure CLI 範例
+description: 適用於 Azure Cosmos DB SQL (Core) API 的 Azure CLI 範例
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 10/26/2018
+ms.date: 06/03/2020
 ms.author: mjbrown
-ms.reviewer: sngun
-ms.openlocfilehash: a6348024d4e84c27610f1294f916cca9a851b6b9
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 39550c3da7a5ed129e26dec3d33f19c65d76cdfa
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034194"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560532"
 ---
-# <a name="azure-cli-samples-for-azure-cosmos-db"></a>適用於 Azure Cosmos DB 的 Azure CLI 範例
+# <a name="azure-cli-samples-for-azure-cosmos-db-core-sql-api"></a>適用於 Azure Cosmos DB Core (SQL) API 的 Azure CLI 範例
 
-下表包含適用於 Azure Cosmos DB 之範例 Azure CLI 指令碼的連結。 您可以在 [Azure CLI 參考](/cli/azure/cosmosdb)中取得所有 Azure Cosmos DB CLI 命令的參考頁面。
+下表包含適用於 Azure Cosmos DB Core (SQL) API 之範例 Azure CLI 指令碼的連結。 您可以在 [Azure CLI 參考](/cli/azure/cosmosdb)中取得所有 Azure Cosmos DB CLI 命令的參考頁面。 如需其他 Azure Cosmos DB API 的 Azure CLI 範例，請參閱 [Cassandra API](cli-samples-cassandra.md)、[MongoDB API](cli-samples-mongodb.md)、[Gremlin API](cli-samples-gremlin.md)和[資料表 API](cli-samples-table.md)。 您可以在 [Azure Cosmos DB CLI GitHub 存放庫](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)中找到所有 Azure Cosmos DB CLI 指令碼範例。
 
-| |  |
+|Task | 描述 |
 |---|---|
-|**建立 Azure Cosmos DB 帳戶、資料庫和容器**||
-| [使用 SQL API 建立 Azure Cosmos DB 帳戶](scripts/create-database-account-collections-cli.md?toc=%2fcli%2fazure%2ftoc.json)| 建立單一 Azure Cosmos DB 帳戶、資料庫和容器。 |
-| [使用適用於 MongoDB 的 Cosmos DB API 建立 Azure Cosmos DB 帳戶](scripts/create-mongodb-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 建立單一 Azure Cosmos DB 帳戶、資料庫和集合。 |
-| [使用 Gremlin API 建立 Azure Cosmos DB 帳戶](scripts/create-gremlin-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 建立單一 Azure Cosmos DB 帳戶、資料庫和圖表。 |
-| [使用 Cassandra API 建立 Azure Cosmos DB 帳戶](scripts/create-cassandra-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 建立單一 Azure Cosmos DB 帳戶和資料庫。 |
-| [使用資料表 API 建立 Azure Cosmos DB 帳戶](scripts/create-table-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 建立單一 Azure Cosmos DB 帳戶、資料庫和資料表。 |
-|**調整 Azure Cosmos DB**||
-| [調整容器輸送量](scripts/scale-collection-throughput-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 變更容器的已佈建輸送量。|
-| [複寫多個區域中的 Azure Cosmos DB 資料庫帳戶和設定容錯移轉優先順序](scripts/scale-multiregion-cli.md?toc=%2fcli%2fazure%2ftoc.json)|使用指定的容錯移轉優先順序，將帳戶資料複寫到全球多個區域中。|
-|**保護 Azure Cosmos DB**||
-| [取得帳戶金鑰](scripts/secure-get-account-key-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 取得帳戶主要和次要的主要 (master) 寫入金鑰，以及主要和次要唯讀金鑰。|
-| [針對使用 Azure Cosmos DB MongoDB API 所設定的 Cosmos 帳戶取得其連接字串](scripts/secure-mongo-connection-string-cli.md?toc=%2fcli%2fazure%2ftoc.json) | 取得連接字串以將 MongoDB 應用程式連線到 Azure Cosmos DB 帳戶。|
-| [重新產生帳戶金鑰](scripts/secure-regenerate-key-cli.md?toc=%2fcli%2fazure%2ftoc.json)|重新產生帳戶的金鑰。|
-| [建立防火牆](scripts/create-firewall-cli.md?toc=%2fcli%2fazure%2ftoc.json)| 建立輸入 IP 存取控制原則，以限制從核准的電腦集合和/或雲端服務存取帳戶。|
-|**高可用性、災害復原、備份和還原**||
-| [設定容錯移轉原則](scripts/ha-failover-policy-cli.md?toc=%2fcli%2fazure%2ftoc.json)|針對要在其中複寫帳戶的每個區域，設定容錯移轉優先順序。|
-|**將 Azure Cosmos DB 連線到資源**||
-| [將 Web 應用程式連線到 Azure Cosmos DB](../app-service/scripts/cli-connect-to-documentdb.md?toc=%2fcli%2fazure%2ftoc.json)|建立 Azure Cosmos DB 資料庫和 Azure Web 應用程式並將兩者連線。|
+| [建立 Azure Cosmos 帳戶、資料庫和容器](scripts/cli/sql/create.md?toc=%2fcli%2fazure%2ftoc.json)| 建立適用於 SQL (Core) API 的 Azure Cosmos DB 帳戶、資料庫和容器。 |
+| [變更輸送量](scripts/cli/sql/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | 更新資料庫和容器的 RU/秒。|
+| [新增或容錯移轉區域](scripts/cli/common/regions.md?toc=%2fcli%2fazure%2ftoc.json) | 新增區域、變更容錯移轉優先順序、觸發手動容錯移轉。|
+| [帳戶金鑰和連接字串](scripts/cli/common/keys.md?toc=%2fcli%2fazure%2ftoc.json) | 列出帳戶金鑰、唯讀金鑰、重新產生金鑰及列出連接字串。|
+| [使用 IP 防火牆保護安全](scripts/cli/common/ipfirewall.md?toc=%2fcli%2fazure%2ftoc.json)| 建立已設定 IP 防火牆的 Cosmos 帳戶。|
+| [使用服務端點保護新的帳戶](scripts/cli/common/service-endpoints.md?toc=%2fcli%2fazure%2ftoc.json)| 建立 Cosmos 帳戶並使用服務端點來保護其安全。|
+| [使用服務端點保護現有帳戶](scripts/cli/common/service-endpoints-ignore-missing-vnet.md?toc=%2fcli%2fazure%2ftoc.json)| 終於設定好子網路後，將 Cosmos 帳戶更新為使用服務端點來保護其安全。|
+| [鎖定資源避免刪除](scripts/cli/sql/lock.md?toc=%2fcli%2fazure%2ftoc.json)| 使用資源鎖定避免刪除資源。|
 |||

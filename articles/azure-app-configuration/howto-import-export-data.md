@@ -1,71 +1,66 @@
 ---
-title: 匯入或匯出資料與 Azure 應用程式設定 |Microsoft Docs
-description: 了解如何匯入或匯出資料，或從 Azure 應用程式組態
+title: 使用 Azure 應用程式組態匯入或匯出資料
+description: 瞭解如何在 Azure 應用程式組態匯入或匯出資料
 services: azure-app-configuration
-documentationcenter: ''
-author: yegu-ms
-manager: balans
-editor: ''
-ms.assetid: ''
+author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 02/24/2019
-ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: 6557f3a4129076c1e8708208e5d4e0d4f53dcec3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 02/25/2020
+ms.author: lcozzens
+ms.openlocfilehash: 5b3d6d0561d7d6d6b23cb4f579b0988850da9771
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60741735"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80056873"
 ---
 # <a name="import-or-export-configuration-data"></a>匯入或匯出設定資料
 
-Azure 應用程式組態支援的資料匯入和匯出作業。 使用這些作業可使用您的應用程式組態存放區和程式碼之間的大量和交換資料中的組態資料的專案。 例如，您可以設定一個應用程式進行測試的組態存放區，另一個用於生產環境。 您接著可以複製它們透過檔案之間的應用程式設定，讓您不需要輸入兩次的資料。
+Azure 應用程式組態支援資料匯入和匯出作業。 使用這些作業來處理大量的設定資料，並在您的應用程式組態存放區和程式碼專案之間交換資料。 例如，您可以設定一個應用程式組態存放區進行測試，另一個用於生產環境。 您可以在它們之間複製應用程式設定，如此一來，您就不需要輸入資料兩次。
 
-這篇文章提供匯入和匯出資料與應用程式設定的指南。
+本文提供使用應用程式組態匯入和匯出資料的指南。 如果您想要設定與 GitHub 存放庫的持續同步，請查看我們的[Github 動作](https://aka.ms/azconfig-gha1)。
 
 ## <a name="import-data"></a>匯入資料
 
-匯入會將為應用程式組態的資料存放區從現有的來源，而不是手動輸入它的組態。 使用匯入函式將資料移轉至的應用程式組態存放區或多個來源的彙總資料。 應用程式設定支援從 JSON、 YAML 或內容檔案匯入。
+[匯入] 會將設定資料從現有來源帶入應用程式組態存放區。 使用匯入函式，將資料移轉至應用程式組態存放區，或匯總多個來源的資料。 應用程式組態支援從 JSON、YAML 或 properties 檔案匯入。
 
-使用匯入資料[Azure 入口網站](https://aka.ms/azconfig/portal)或[Azure CLI](./scripts/cli-import.md)。 從 Azure 入口網站中，請遵循下列步驟：
+使用[Azure 入口網站](https://portal.azure.com)或[Azure CLI](./scripts/cli-import.md)來匯入資料。 在 Azure 入口網站中執行下列步驟：
 
-1. 瀏覽至您的應用程式的組態存放區，然後選取**匯入/匯出**。
+1. 流覽至您的應用程式組態存放區，然後從 [**作業**] 功能表中選取 [匯**入/匯出**]。
 
-2. 在 **匯入**索引標籤上，選取**來源服務** > **組態檔**。
+1. 在 [匯**入**] 索引標籤上，選取 [**來源服務**  >  **設定檔**]。
 
-3. 選取 **語言** > **檔案類型**。
+1. 針對 [語言] 選取，然後選取您想**要的**輸入類型。
 
-4. 選取 **資料夾**圖示，並瀏覽至要匯入檔案。
+1. 選取**資料夾**圖示，然後流覽至要匯入的檔案。
 
     ![匯入檔案](./media/import-file.png)
 
-5. 選取 **分隔符號**，並視需要輸入**前置詞**来用於匯入的索引鍵名稱。
+1. 選取**分隔符號**，並選擇性地輸入要用於匯入索引鍵名稱的**前置**詞。
 
-6. （選擇性） 選取**標籤**。
+1. （選擇性）選取**標籤**。
 
-7. 選取 **套用**完成匯入。
+1. 選取 **[** 套用] 以完成匯入。
 
-    ![完成匯入檔案](./media/import-file-complete.png)
+    ![匯入檔案已完成](./media/import-file-complete.png)
 
 ## <a name="export-data"></a>匯出資料
 
-匯出會寫入到另一個目的地應用程式組態中儲存組態資料。 比方說，使用匯出函式中，將資料儲存至檔案與應用程式程式碼內嵌在部署期間的應用程式組態存放區中。
+Export 會將儲存在應用程式組態中的設定資料寫入另一個目的地。 例如，使用 export 函式，將應用程式組態存放區中的資料儲存至在部署期間與應用程式代碼內嵌的檔案。
 
-使用其中一種匯出資料[Azure 入口網站](https://aka.ms/azconfig/portal)或[Azure CLI](./scripts/cli-export.md)。 從 Azure 入口網站中，請遵循下列步驟：
+使用[Azure 入口網站](https://portal.azure.com)或[Azure CLI](./scripts/cli-export.md)來匯出資料。 在 Azure 入口網站中執行下列步驟：
 
-1. 瀏覽至您的應用程式的組態存放區，然後選取**匯入/匯出**。
+1. 流覽至您的應用程式組態存放區，然後選取 [匯**入/匯出**]。
 
-2. 在 **匯出**索引標籤上，選取**目標服務** > **組態檔**。
+1. 在 [**匯出**] 索引標籤上，選取 [**目標服務**  >  **設定檔**]。
 
-3. （選擇性） 輸入**前置詞**，然後選取**標籤**和在時間點要匯出的金鑰。
+1. 選擇性地輸入**前置**詞，然後選取**標籤**和金鑰的時間點以進行匯出。
 
-4. 選取 **檔案類型** > **分隔符號**。
+1. 選取**檔案類型**  >  **分隔符號**。
 
-5. 選取 **套用**完成匯出。
+1. 選取 **[** 套用] 以完成匯出。
 
-    ![已完成的匯出檔案](./media/export-file-complete.png)
+    ![匯出檔案已完成](./media/export-file-complete.png)
 
 ## <a name="next-steps"></a>後續步驟
 

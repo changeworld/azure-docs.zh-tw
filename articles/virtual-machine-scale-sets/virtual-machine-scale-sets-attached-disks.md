@@ -1,26 +1,19 @@
 ---
-title: Azure 虛擬機器擴展集連結資料磁碟 | Microsoft Docs
-description: 了解如何搭配使用連線資料磁碟與虛擬機器擴展集
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: mayanknayar
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
+title: Azure 虛擬機器擴展集連接的資料磁片
+description: 瞭解如何透過特定使用案例的概述，使用連接的資料磁片搭配虛擬機器擴展集。
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
+ms.subservice: disks
 ms.date: 4/25/2017
-ms.author: manayar
-ms.openlocfilehash: 5482e082e3e37d279c4374a8642f2cb6db588dd5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: e5bdb30929b4d93b05d850a56c9a6baf32f9856b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60328828"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83125004"
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure 虛擬機器擴展集和連結的資料磁碟
 若要擴充可用的儲存體，Azure [虛擬機器擴展集](/azure/virtual-machine-scale-sets/)支援 VM 執行個體連結資料磁碟。 您可以在擴展集建立時連結資料磁碟，或將資料磁碟連結至現有擴展集。
@@ -39,7 +32,7 @@ ms.locfileid: "60328828"
 
 
 ## <a name="create-a-service-fabric-cluster-with-attached-data-disks"></a>使用連結的資料磁碟建立 Service Fabric 叢集
-在 Azure 中執行之 [Service Fabric](/azure/service-fabric) 叢集中的每個[節點類型](../service-fabric/service-fabric-cluster-nodetypes.md)都是由虛擬機器擴展集提供支援。 使用 Azure Resource Manager 範本，您可以將資料磁碟連結到構成 Service Fabric 叢集的擴展集。 您可使用[現有範本](https://github.com/Azure-Samples/service-fabric-cluster-templates)作為起點。 在範本中，於 Microsoft.Compute/virtualMachineScaleSets 資源的 storageProfile 中包含 dataDisks 區段並部署範本。 下列範例會連結 128 GB 資料磁碟：
+在 Azure 中執行之[Service Fabric](/azure/service-fabric)叢集中的每個[節點類型](../service-fabric/service-fabric-cluster-nodetypes.md)都是由虛擬機器擴展集所支援。 使用 Azure Resource Manager 範本，您可以將資料磁碟連結到構成 Service Fabric 叢集的擴展集。 您可使用[現有範本](https://github.com/Azure-Samples/service-fabric-cluster-templates)作為起點。 在範本中，於 Microsoft.Compute/virtualMachineScaleSets__ 資源的 storageProfile__ 中包含 dataDisks__ 區段並部署範本。 下列範例會連結 128 GB 資料磁碟：
 
 ```json
 "dataDisks": [
@@ -51,7 +44,7 @@ ms.locfileid: "60328828"
 ]
 ```
 
-您可以在部署叢集時自動分割、格式化及掛接資料磁碟。 將自訂指令碼擴充新增至擴展集之 virtualMachineProfile的 extensionProfile。
+您可以在部署叢集時自動分割、格式化及掛接資料磁碟。 將自訂指令碼擴充新增至擴展集之 virtualMachineProfile__ 的 extensionProfile__。
 
 若要在 Windows 叢集中自動準備資料磁碟，請新增下列內容：
 
@@ -93,12 +86,12 @@ ms.locfileid: "60328828"
 
 
 ## <a name="adding-pre-populated-data-disks-to-an-existing-scale-set"></a>將預先填入的資料磁碟新增至現存的擴展集
-在擴展集模型中指定的資料磁碟一律是空的。 不過，您可以將現有資料磁碟連結至擴展集中的特定 VM。 這項功能處於預覽狀態，其範例位於 [GitHub](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk)。 如果您希望將資料傳播到擴展集中的所有 VM，您可以複製資料磁碟並將它連結至擴展集中的每個 VM，您可以建立包含資料的自訂映像並從此自訂映像佈建擴展集，您也可以使用 Azure 檔案服務或類似的資料儲存體供應項目。
+在擴展集模型中指定的資料磁碟一律是空的。 不過，您可以將現有資料磁碟連結至擴展集中的特定 VM。 如果您想要將資料傳播到擴展集中的所有 Vm，您可以複製您的資料磁片，並將其連結至擴展集中的每個 VM，或建立包含資料的自訂映射，並從這個自訂映射布建擴展集，或者您可以使用 Azure 檔案儲存體或類似的資料儲存體供應專案。
 
 
 ## <a name="additional-notes"></a>其他注意事項
 API 版本 [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/compute/resource-manager/Microsoft.Compute/preview/2016-04-30-preview/compute.json) 或更新版本的 Microsoft.Compute API 中提供 Azure 受控磁碟和擴展集連結資料磁碟的支援。
 
-Azure 入口網站對於擴展集中連結資料磁碟的支援一開始就有限制。 視您的需求而定，您可以使用 Azure 範本、CLI、PowerShell、SDK 和 REST API 來管理連結磁碟。
+擴展集中連接資料磁片的 Azure 入口網站支援受到限制。 視您的需求而定，您可以使用 Azure 範本、CLI、PowerShell、SDK 和 REST API 來管理連結磁碟。
 
 

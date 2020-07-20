@@ -1,31 +1,23 @@
 ---
 title: Azure 監視器記錄查詢範例 | Microsoft Docs
 description: Azure 監視器中使用 Kusto 查詢語言進行的記錄查詢範例。
-services: log-analytics
-documentationcenter: ''
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 10/03/2018
 ms.author: bwren
-ms.openlocfilehash: 2c35bc4026c81cbc8b95225e688a3922bc320554
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 03/16/2020
+ms.openlocfilehash: 18cd74ac9298b7dd058de2b224f677ec0d8f2d64
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60759906"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79480278"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure 監視器記錄查詢範例
 本文包含多個使用 [Kusto 查詢語言](/azure/kusto/query/)的[查詢](log-query-overview.md)範例，以從 Azure 監視器擷取不同的記錄資料類型。 您可以透過方法來合併和分析資料，以使用這些範例識別用於您的要求的不同策略。  
 
 請參閱 [Kusto 語言參考](https://docs.microsoft.com/azure/kusto/query/)了解在這些範例中使用不同關鍵字的詳細資料。 如果您不熟悉 Azure 監視器，請逐步查看[建立查詢的課程](get-started-queries.md)。
 
-## <a name="events"></a>活動
+## <a name="events"></a>事件
 
 ### <a name="search-application-level-events-described-as-cryptographic"></a>搜尋說明為「密碼編譯」的應用程式層級事件
 此範例會搜尋 **Events** 資料表，找出 **EventLog** 是 _Application_ 且 **RenderedDescription** 包含 _cryptographic_ 的記錄。 包含過去 24 小時的記錄。
@@ -34,7 +26,7 @@ ms.locfileid: "60759906"
 Event
 | where EventLog == "Application" 
 | where TimeGenerated > ago(24h) 
-| where RenderedDescription == "cryptographic"
+| where RenderedDescription contains "cryptographic"
 ```
 
 ### <a name="search-events-related-to-unmarshaling"></a>搜尋解除封送處理相關的事件
@@ -181,7 +173,6 @@ let EndTime = now()-4d;
 Perf
 | where CounterName == "% Processor Time"  
 | where TimeGenerated > StartTime and TimeGenerated < EndTime
-and TimeGenerated < EndTime
 | project TimeGenerated, Computer, cpu=CounterValue 
 | join kind= inner (
    Perf
@@ -237,7 +228,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>使用活動識別碼計算安全性事件的數目
 
 
-此範例仰賴**活動**資料行的固定結構：\<識別碼\>-\<名稱\>。
+這個範例依賴**活動**資料行的固定結構： \<ID\> - \<Name\> 。
 它會將**活動**的值剖析為兩個新的資料行，並計算每個**活動識別碼**的發生次數。
 
 ```Kusto
@@ -278,7 +269,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>剖析活動名稱和識別碼
-下列兩個範例仰賴**活動**資料行的固定結構：\<識別碼\>-\<名稱\>。 第一個範例使用**剖析**運算子來將值指派給兩個新的資料行：**activityID** 和 **activityDesc**。
+下列兩個範例依賴**活動**資料行的固定結構： \<ID\> - \<Name\> 。 第一個範例使用**剖析**運算子來將值指派給兩個新的資料行：**activityID** 和 **activityDesc**。
 
 ```Kusto
 SecurityEvent
@@ -381,42 +372,49 @@ let suspicious_users_that_later_logged_in =
 suspicious_users_that_later_logged_in
 ```
 
-## <a name="usage"></a>使用量
+## <a name="usage"></a>使用方式
 
-### <a name="calculate-the-average-size-of-perf-usage-reports-per-computer"></a>計算每部電腦的效能使用量報告的平均大小
+`Usage`資料類型可以用來依解決方案或資料類型追蹤內嵌資料量。 還有其他技術可依[電腦](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-computer)或[Azure 訂用帳戶、資源群組或資源](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-azure-resource-resource-group-or-subscription)來研究內嵌資料量。
 
-此範例會計算過去 3 小時內每部電腦的效能使用量報告的平均大小。
-結果會以橫條圖顯示。
-```Kusto
+#### <a name="data-volume-by-solution"></a>依方案分類的資料量
+
+若要檢視上個月 (不含未滿一天的最後一天) 依解決方案分類的可計費資料量，所用的查詢為：
+
+```kusto
 Usage 
-| where TimeGenerated > ago(3h)
-| where DataType == "Perf" 
-| where QuantityUnit == "MBytes" 
-| summarize avg(Quantity) by Computer
-| sort by avg_Quantity desc nulls last
-| render barchart
+| where TimeGenerated > ago(32d)
+| where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
 ```
 
-### <a name="timechart-latency-percentiles-50-and-95"></a>時間圖表延遲百分位數為 50 和 95
+請注意，子句 `where IsBillable = true` 會篩選掉來自無擷取成本之特定解決方案的資料類型。  和的子句 `TimeGenerated` ，只是為了確保 Azure 入口網站中的查詢體驗會看起來超過預設的24小時。 在使用 Usage 資料類型時，`StartTime` 和 `EndTime` 代表所顯示結果所屬的時段。 
 
-此範例會計算過去 24 小時內，報告每小時的 **avgLatency** 第 50 個和第 95 個百分位數，並製作成圖表。
+#### <a name="data-volume-by-type"></a>資料量 (依類型)
 
-```Kusto
-Usage
-| where TimeGenerated > ago(24h)
-| summarize percentiles(AvgLatencyInSeconds, 50, 95) by bin(TimeGenerated, 1h) 
-| render timechart
+您可以進一步向下切入，以查看依資料類型的資料趨勢：
+
+```kusto
+Usage 
+| where TimeGenerated > ago(32d)
+| where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType | render barchart
 ```
 
-### <a name="usage-of-specific-computers-today"></a>特定電腦今天的使用量
-此範例會從前一天包含字串 _ContosoFile_ 的電腦名稱擷取**使用量**資料。 結果的排序依據為 **TimeGenerated**。
+或者，若要查看上個月的資料表 (依解決方案和類型)，
 
-```Kusto
-Usage
-| where TimeGenerated > ago(1d)
-| where  Computer contains "ContosoFile" 
-| sort by TimeGenerated desc nulls last
+```kusto
+Usage 
+| where TimeGenerated > ago(32d)
+| where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by Solution, DataType
+| sort by Solution asc, DataType asc
 ```
+
+> [!NOTE]
+> [使用量] 資料類型的部分欄位雖然仍位於結構描述中，但皆已過時，且系統將不再填入其值。 這包括 [Computer]，以及其他與擷取相關的欄位 ([TotalBatches]、[BatchesWithinSla]、[BatchesOutsideSla]、[BatchesCapped]，以及 [AverageProcessingTimeMs])。
 
 ## <a name="updates"></a>更新
 
@@ -425,13 +423,12 @@ Usage
 
 ```Kusto
 let ComputersMissingUpdates3DaysAgo = Update
-| where TimeGenerated between (ago(3d)..ago(2d))
-| where  Classification == "Critical Updates" and UpdateState != "Not needed" and UpdateState != "NotNeeded"
+| where TimeGenerated between (ago(30d)..ago(1h))
+| where Classification !has "Critical" and UpdateState =~ "Needed"
 | summarize makeset(Computer);
-
 Update
 | where TimeGenerated > ago(1d)
-| where  Classification == "Critical Updates" and UpdateState != "Not needed" and UpdateState != "NotNeeded"
+| where Classification has "Critical" and UpdateState =~ "Needed"
 | where Computer in (ComputersMissingUpdates3DaysAgo)
 | summarize UniqueUpdatesCount = dcount(Product) by Computer, OSType
 ```

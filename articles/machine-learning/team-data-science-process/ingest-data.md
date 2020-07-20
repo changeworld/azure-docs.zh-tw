@@ -1,34 +1,33 @@
 ---
-title: 將資料載入至 Azure 儲存體環境 - Team Data Science Process
-description: 從 Azure Blob 儲存體來回移動資料
+title: 將資料載入 Azure 儲存體環境-小組資料科學流程
+description: 瞭解如何將資料內嵌至儲存和處理資料的各種目標環境。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 56c45bf6db79ded64574a44399712951e82c1c3e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: f8eab59d810fb825dbebf80d01d8efd2dd0a9841
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60303582"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76720532"
 ---
 # <a name="load-data-into-storage-environments-for-analytics"></a>將資料載入至儲存體環境以便進行分析
 
-Team Data Science Process 要求將資料內嵌或載入至各種不同的儲存體環境，以便在程序的每個階段中以最適當的方式處理或分析。 通常用於處理的資料目的地包括 Azure Blob 儲存體、SQL Azure 資料庫、Azure VM 上的 SQL Server、HDInsight (Hadoop) 和 Azure Machine Learning。 
+小組資料科學程式需要在每個階段中，將資料內嵌或載入至最適當的方式。 資料目的地可以包含 Azure Blob 儲存體、SQL Azure 資料庫、Azure VM 上的 SQL Server、HDInsight （Hadoop）、Synapse 分析，以及 Azure Machine Learning。 
 
 下列文章說明如何將資料內嵌至可儲存和處理資料的各種目標環境中。
 
 * 內嵌至/自 [Azure Blob 儲存體](move-azure-blob.md)
 * 內嵌至 [Azure VM 上的 SQL Server](move-sql-server-virtual-machine.md)
-* 內嵌至 [Azure SQL 資料庫](move-sql-azure.md)
+* 若要[Azure SQL Database](move-sql-azure.md)
 * 內嵌至 [Hive 資料表](move-hive-tables.md)
 * 內嵌至 [SQL 分割資料表](parallel-load-sql-partitioned-tables.md)
 * 內嵌自[內部部署 SQL Server](move-sql-azure-adf.md)
 
-技術和商務需求以及資料的初始位置、格式和大小，會決定需要擷取資料到其中的目標環境以達成您的分析目標。 以下案例並不常見：要求在數個環境之間移動資料來達成建構預測模型所需的各種工作。 比方說，這一系列工作可以包含資料瀏覽、前置處理、清除、向下取樣和模型定型。
+技術和商務需求，以及資料的初始位置、格式和大小，將會決定最佳的資料內嵌計畫。 最好的計畫有幾個步驟並不常見。 比方說，這一系列工作可以包含資料瀏覽、前置處理、清除、向下取樣和模型定型。  Azure Data Factory 是建議的 Azure 資源，可協調資料移動和轉換。

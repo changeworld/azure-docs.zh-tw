@@ -1,6 +1,6 @@
 ---
 title: 設定連線處理站拓撲 - Azure | Microsoft Docs
-description: 如何設定連線處理站解決方案加速器的拓撲。
+description: 本文說明如何設定連線的工廠解決方案加速器，包括其拓撲。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,12 +8,11 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 3fd160fbccfb5298cefed6a731797ca6962b997c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 5fa3d4d4fdfa0dd81cd8ab8772ffb3903dda289f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61450018"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73820123"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>設定連線的處理站解決方案加速器
 
@@ -29,7 +28,7 @@ ms.locfileid: "61450018"
 * 測試站台
 * 封裝站台
 
-這些 OPC UA 伺服器會讓 OPC UA 節點和 [OPC 發行者](https://github.com/Azure/iot-edge-opc-publisher) \(英文\) 將這些節點的值傳送至連線的處理站。 其中包括：
+這些 OPC UA 伺服器會讓 OPC UA 節點和 [OPC 發行者](overview-opc-publisher.md) \(英文\) 將這些節點的值傳送至連線的處理站。 其中包括：
 
 * 目前的操作狀態，例如目前的耗電量。
 * 生產資訊，例如所生產的產品數目。
@@ -264,11 +263,11 @@ ms.locfileid: "61450018"
 
 此分類中的屬性會定義連線處理站儀表板的視覺外觀。 範例包括：
 
-* 名稱
-* 描述
+* Name
+* 說明
 * Image
 * 位置
-* Units
+* 單位
 * 可見
 
 ### <a name="internal-topology-tree-addressing"></a>內部拓樸樹狀結構定址
@@ -282,7 +281,7 @@ WebApp 可維護其中包含所有拓撲節點相關資訊的內部資料字典�
 * 要包含在計算中的 OPC UA 節點值。
 * 如何從遙測值計算數據。
 
-連線的處理站會使用如 https://www.oeefoundation.org 所發行的 OEE 公式。
+連線的處理站會使用所發佈的 OEE 公式 [http://www.oeefoundation.org](http://www.oeefoundation.org) 。
 
 站台中的 OPC UA 節點物件會啟用可在 OEE/KPI 計算中使用的標記。 **Relevance** 屬性指出 OPC UA 節點值應該用於哪個 OEE/KPI 數據。 **OpCode** 屬性定義如何將值包含在計算中。
 
@@ -291,7 +290,7 @@ WebApp 可維護其中包含所有拓撲節點相關資訊的內部資料字典�
 連線的處理站支援簡易的最小/最大閾值型警示產生機制。 為回應那些警示，有數個可以設定的預先定義動作。 下列屬性可控制這個機制：
 
 * 最大值
-* 最小值
+* 最低需求
 * MaximumAlertActions
 * MinimumAlertActions
 
@@ -307,7 +306,7 @@ WebApp 可維護其中包含所有拓撲節點相關資訊的內部資料字典�
 
   識別 OPC UA 伺服器中的節點值。 此屬性的格式必須是如在 OPC UA 規格中所指定。 在內嵌訊息中，此屬性會當作 **NodeId** 傳送。
 
-如需如何使用 OPC 發行者來將遙測資料內嵌於連線處理站的詳細資訊，請查閱[這個](https://github.com/Azure/iot-edge-opc-publisher) \(英文\) GitHub 頁面。
+如需有關如何將遙測資料內嵌至連線的處理站的詳細資訊，請參閱[什麼是 OPC 發行者](overview-opc-publisher.md)。
 
 ## <a name="example-how-kpi1-is-calculated"></a>範例：如何計算 KPI1
 
@@ -340,4 +339,4 @@ WebApp 可維護其中包含所有拓撲節點相關資訊的內部資料字典�
 
 ## <a name="next-steps"></a>後續步驟
 
-下一個建議步驟是了解如何[在 Windows 或 Linux 上部署連線的處理站解決方案加速器的閘道](iot-accelerators-connected-factory-gateway-deployment.md)。
+建議的下一個步驟是瞭解如何[自訂連線的](iot-accelerators-connected-factory-customize.md)處理站解決方案。

@@ -1,20 +1,18 @@
 ---
 title: 包含檔案
 description: 包含檔案
-services: functions
 author: ggailey777
-manager: jeconnoc
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
 ms.date: 10/19/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 7d8773cc12b50382f6f300987ec6ce504cd238af
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
-ms.translationtype: HT
+ms.openlocfilehash: a925076dfccd30c73febb2aadc8692667ea01525
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251261"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76279559"
 ---
 控制 [Application Insights 中的取樣功能](../articles/azure-functions/functions-monitoring.md#configure-sampling)。
 
@@ -29,7 +27,7 @@ ms.locfileid: "50251261"
 }
 ```
 
-|屬性  |預設值 | 說明 |
+|屬性  |預設 | 描述 |
 |---------|---------|---------| 
 |isEnabled|true|啟用或停用取樣。| 
 |maxTelemetryItemsPerSecond|5|取樣的開始臨界值。| 

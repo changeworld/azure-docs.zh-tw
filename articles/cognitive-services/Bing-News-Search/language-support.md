@@ -3,19 +3,19 @@ title: 語言支援 - Bing 新聞搜尋 API
 titleSuffix: Azure Cognitive Services
 description: Bing 新聞搜尋 API 支援的自然語言、國家/地區和區域清單。
 services: cognitive-services
-author: MikeDodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
-ms.author: v-gedod
-ms.openlocfilehash: f94ebb9b46ade0c03f65fdeb78bc7be96794a3d2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866742"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710553"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Bing 新聞搜尋 API 支援的語言和區域
 
@@ -31,26 +31,26 @@ Bing 新聞搜尋 API 支援多個國家/地區，許多國家/地區具有一�
 
 如需可在 `cc` 查詢參數中指定的國家/地區代碼，請參閱[國家/地區代碼](#countrycodes)。  
 
-|國家/區域|語言|市場代碼|  
+|國家/區域|Language|市場代碼|  
 |---------------------|--------------|-----------------|
 |丹麥|丹麥文|da-DK|
 |奧地利|德文|de-AT|
 |瑞士|德文|de-CH|
 |德國|德文|de-DE|
-|澳大利亞|English|en-AU|
-|加拿大|English|en-CA|
-|英國|English|en-GB|
-|印尼|English|en-ID|
-|愛爾蘭|English|en-IE|
-|印度|English|en-IN|
-|馬來西亞|English|en-MY|
-|紐西蘭|English|en-NZ|
-|菲律賓共和國|English|en-PH|
-|新加坡|English|en-SG|
-|美國|English|en-US|
-|English|一般|en-WW|
-|English|一般|en-XA|
-|南非|English|en-ZA|
+|澳大利亞|英文|en-AU|
+|Canada|英文|en-CA|
+|United Kingdom|英文|en-GB|
+|印尼|英文|en-ID|
+|愛爾蘭|英文|en-IE|
+|印度|英文|en-IN|
+|馬來西亞|英文|en-MY|
+|紐西蘭|英文|en-NZ|
+|菲律賓共和國|英文|en-PH|
+|新加坡|英文|en-SG|
+|美國|英文|zh-TW|
+|英文|一般|en-WW|
+|英文|一般|en-XA|
+|南非|英文|en-ZA|
 |阿根廷|西班牙文|es-AR|
 |智利|西班牙文|es-CL|
 |西班牙|西班牙文|es-ES|
@@ -59,7 +59,7 @@ Bing 新聞搜尋 API 支援多個國家/地區，許多國家/地區具有一�
 |西班牙文|一般|es-XL|
 |芬蘭|芬蘭文|fi-FI|  
 |法國|法文|fr-BE|
-|加拿大|法文|fr-CA|
+|Canada|法文|fr-CA|
 |比利時|荷蘭文|nl-BE|
 |瑞士|法文|fr-CH|
 |法國|法文|fr-FR|  
@@ -80,19 +80,19 @@ Bing 新聞搜尋 API 支援多個國家/地區，許多國家/地區具有一�
 
 如需可在 `cc` 查詢參數中指定的國家/地區代碼，請參閱[國家/地區代碼](#countrycodes)。  
 
-|國家/區域|語言|市場代碼|  
+|國家/區域|Language|市場代碼|  
 |---------------------|--------------|-----------------|
 |丹麥|丹麥文|da-DK|
 |德國|德文|de-DE|
-|澳大利亞|English|en-AU|
-|英國|English|en-GB|
-|美國|English|en-US|
-|English|一般|en-WW|
+|澳大利亞|英文|en-AU|
+|United Kingdom|英文|en-GB|
+|美國|英文|zh-TW|
+|英文|一般|en-WW|
 |智利|西班牙文|es-CL|
 |墨西哥|西班牙文|es-MX|
 |美國|西班牙文|es-US|
 |芬蘭|芬蘭文|fi-FI|  
-|加拿大|法文|fr-CA|
+|Canada|法文|fr-CA|
 |法國|法文|fr-FR|  
 |義大利|義大利文|it-IT|
 |巴西|葡萄牙文|pt-BR|
@@ -103,16 +103,16 @@ Bing 新聞搜尋 API 支援多個國家/地區，許多國家/地區具有一�
 
 如需可在 `cc` 查詢參數中指定的國家/地區代碼，請參閱[國家/地區代碼](#countrycodes)。  
 
-|國家/區域|語言|市場代碼|  
+|國家/區域|Language|市場代碼|  
 |---------------------|--------------|-----------------|
 |德國|德文|de-DE|
-|澳大利亞|English|en-AU|
-|英國|English|en-GB|
-|美國|English|en-US|
-|加拿大|English|en-CA|
-|印度|English|en-IN|
+|澳大利亞|英文|en-AU|
+|United Kingdom|英文|en-GB|
+|美國|英文|zh-TW|
+|Canada|英文|en-CA|
+|印度|英文|en-IN|
 |法國|法文|fr-FR|
-|加拿大|法文|fr-CA|
+|Canada|法文|fr-CA|
 |巴西|葡萄牙文|pt-BR|
 |中華人民共和國|中文|zh-CN|
 
@@ -129,7 +129,7 @@ Bing 新聞搜尋 API 支援多個國家/地區，許多國家/地區具有一�
 |奧地利|AT|  
 |比利時|BE|  
 |巴西|BR|  
-|加拿大|CA|  
+|Canada|CA|  
 |智利|CL|  
 |丹麥|DK|  
 |芬蘭|FI|  
@@ -158,8 +158,8 @@ Bing 新聞搜尋 API 支援多個國家/地區，許多國家/地區具有一�
 |瑞士|CH|  
 |台灣|TW|  
 |土耳其|TR|  
-|英國|GB|  
-|美國|US|
+|United Kingdom|GB|  
+|美國|美國|
 
 ## <a name="next-steps"></a>後續步驟
-如需 Bing 新聞搜尋端點的詳細資訊，請參閱[新聞搜尋 API v7 參考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) \(英文\)。
+如需 Bing 新聞搜尋端點的詳細資訊，請參閱[新聞搜尋 API v7 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) \(英文\)。

@@ -8,25 +8,25 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: d34ac159a216c5c77214b4c8b799a233c3671235
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0a42763ff47cccfa506acbbbd95d20d41eb0827f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61447347"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "72965380"
 ---
 # <a name="add-an-iot-edge-device-to-your-remote-monitoring-solution-accelerator"></a>將 IoT Edge 裝置新增至遠端監視解決方案加速器
 
 若要將 [IoT Edge](../iot-edge/about-iot-edge.md) 裝置新增至解決方案加速器，請完成下列兩個步驟：
 
-1. 新增 Edge 裝置上**Device Explorer**在遠端監視解決方案加速器 web UI 中的頁面。
+1. 在遠端監視解決方案加速器 web UI 中的 [ **Device Explorer** ] 頁面上新增 Edge 裝置。
 1. 在 Edge 裝置上安裝 IoT Edge 執行階段。
 
 ## <a name="add-the-iot-edge-device"></a>新增 IoT Edge 裝置
 
-若要將 IoT Edge 裝置新增至遠端監視解決方案加速器，請瀏覽至 Web UI 中的 [Device Explorer] 頁面，然後按一下 [+ 新增裝置]。
+若要將 IoT Edge 裝置新增至遠端監視解決方案加速器，請瀏覽至 Web UI 中的 [Device Explorer]**** 頁面，然後按一下 [+ 新增裝置]****。
 
-在 [新增裝置] 面板中，選擇 [IoT Edge 裝置]。 您可以將其他設定保留為預設值。 然後，按一下 [套用]：
+在 [新增裝置]**** 面板中，選擇 [IoT Edge 裝置]****。 您可以將其他設定保留為預設值。 然後按一下 **[** 套用]：
 
 ![新增 IoT Edge 裝置](media/iot-accelerators-remote-monitoring-add-edge-device/addedgedevice.png)
 
@@ -34,11 +34,11 @@ ms.locfileid: "61447347"
 
 您也可以在解決方案加速器中，直接向 IoT 中樞執行個體註冊 IoT Edge 裝置。 您必須先知道解決方案加速器中 IoT 中樞的名稱，才能依照下列任何操作指南執行作業：
 
-- [從 Azure 入口網站註冊新的 Azure IoT Edge 裝置](../iot-edge/how-to-register-device-portal.md)
-- [使用 Azure CLI 來註冊新的 Azure IoT Edge 裝置](../iot-edge/how-to-register-device-cli.md)
-- [從 Visual Studio Code 註冊新的 Azure IoT Edge 裝置](../iot-edge/how-to-register-device-vscode.md)
+- [從 Azure 入口網站註冊新的 Azure IoT Edge 裝置](../iot-edge/how-to-register-device.md#register-in-the-azure-portal)
+- [使用 Azure CLI 來註冊新的 Azure IoT Edge 裝置](../iot-edge/how-to-register-device.md#register-with-the-azure-cli)
+- [從 Visual Studio Code 註冊新的 Azure IoT Edge 裝置](../iot-edge/how-to-register-device.md#register-with-visual-studio-code)
 
-當您直接與遠端監視解決方案加速器的 IoT 中樞註冊裝置時，它會列在**Device Explorer** web UI 中的頁面。
+當您在遠端監視解決方案加速器中直接向 IoT 中樞註冊裝置時，它會列在 web UI 的 [ **Device Explorer** ] 頁面上。
 
 ## <a name="install-the-iot-edge-runtime"></a>安裝 IoT Edge 執行階段
 

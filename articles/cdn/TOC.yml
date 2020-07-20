@@ -1,19 +1,20 @@
-- name: CDN 文件
+- name: 內容傳遞網路文件
   href: index.yml
 - name: 概觀
   items:
-    - name: 什麼是 Azure CDN？
+    - name: 什麼是 Azure 內容傳遞網路 (Azure CDN)？
       href: cdn-overview.md
     - name: 比較產品功能
       href: cdn-features.md
 - name: 快速入門
   items:
-    - name: 建立設定檔和端點
-      href: cdn-create-new-endpoint.md
     - name: 整合儲存體帳戶
       href: cdn-create-a-storage-account-with-cdn.md
-    - name: 使用 Azure Resource Manager 範本建立設定檔
-      href: create-profile-resource-manager-template.md
+    - name: 建立設定檔和端點
+      href: cdn-create-new-endpoint.md
+    - name: 建立設定檔和端點 - ARM 範本
+      displayName: Resource Manager
+      href: create-profile-endpoint-template.md
 - name: 教學課程
   items:
     - name: 將 Azure CDN 新增 Web 應用程式
@@ -26,6 +27,8 @@
       href: cdn-custom-ssl.md
     - name: 設定快取規則
       href: cdn-caching-rules-tutorial.md
+    - name: 使用標準規則引擎強制執行 HTTPS
+      href: cdn-standard-rules-engine.md
 - name: 範例
   items:
     - name: 程式碼範例
@@ -38,13 +41,13 @@
       href: cdn-china-delivery.md
     - name: HTTP/2 支援
       href: cdn-http2.md
-    - name: 取出 Verizon POP 清單
+    - name: 擷取 POP IP 的
       href: cdn-pop-list-api.md
-    - name: 從標準 Verizon 標準移轉至進階 Verizon
+    - name: 從標準 Verizon 遷移至進階 Verizon
       href: cdn-migrate.md
-    - name: DDoS保護
+    - name: DDoS 保護
       href: cdn-ddos.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 最佳化內容
       href: cdn-optimization-overview.md
@@ -59,15 +62,15 @@
       items:
         - name: 建立端點
           href: cdn-create-endpoint-how-to.md
-        - name: 使用 Azure PowerShell 管理
+        - name: 使用 Azure PowerShell 進行管理
           href: cdn-manage-powershell.md
-        - name: 依國家/地區限制存取
+        - name: 依國家或地區限制存取
           href: cdn-restrict-access-by-country.md
         - name: 藉由壓縮檔案來改善效能
           href: cdn-improve-performance.md
         - name: 控制快取行為
           items:
-            - name: 透過快取規則控制快取行為
+            - name: 透過使用快取規則控制快取行為
               href: cdn-caching-rules.md
             - name: 依查詢字串區分的快取內容
               items:
@@ -79,7 +82,7 @@
               href: cdn-purge-endpoint.md
             - name: 預先載入快取資產
               href: cdn-preload-endpoint.md
-        - name: 設定存留時間
+        - name: 設定存留時間 (TTL)
           items:
             - name: Azure 網頁內容
               href: cdn-manage-expiration-of-cloud-service-content.md
@@ -87,19 +90,21 @@
               href: cdn-manage-expiration-of-blob-content.md
         - name: 權杖驗證
           href: cdn-token-auth.md
-        - name: SAS 儲存體支援
+        - name: 共用存取簽章儲存體支援
           href: cdn-sas-storage-support.md
         - name: 跨原始資源共用
           href: cdn-cors.md
         - name: 監視資源
           href: cdn-resource-health.md
         - name: 使用規則覆寫行為
-          href: cdn-rules-engine.md
+          href: cdn-verizon-premium-rules-engine.md
         - name: 使用流量管理員
           href: cdn-traffic-manager.md
     - name: 分析
       href: cdn-log-analysis.md
       items:
+        - name: HTTP 原始記錄
+          href: enable-raw-logs.md
         - name: Azure 診斷記錄
           href: cdn-azure-diagnostic-logs.md
         - name: 來自 Verizon 的 Azure CDN 分析工具
@@ -108,7 +113,7 @@
               href: cdn-analyze-usage-patterns.md
             - name: 來自 Verizon 的自訂報告
               href: cdn-verizon-custom-reports.md
-        - name: 來自 Verizon 的 Azure CDN Premium 分析工具
+        - name: 來自 Verizon 的進階 Azure CDN 分析工具
           items:
             - name: 產生進階 HTTP 報告
               href: cdn-advanced-http-reports.md
@@ -134,15 +139,22 @@
           href: cdn-troubleshoot-allowed-ca.md
 - name: 參考
   items:
-    - name: 規則引擎參考
-      href: cdn-rules-engine-reference.md
+    - name: 標準規則引擎參考
+      href: cdn-standard-rules-engine-reference.md
+      items:
+        - name: 標準規則引擎比對條件
+          href: cdn-standard-rules-engine-match-conditions.md
+        - name: 標準規則引擎動作
+          href: cdn-standard-rules-engine-actions.md
+    - name: Verizon Premium 規則引擎參考
+      href: cdn-verizon-premium-rules-engine-reference.md
       items:
         - name: 規則引擎條件運算式
-          href: cdn-rules-engine-reference-conditional-expressions.md
+          href: cdn-verizon-premium-rules-engine-reference-conditional-expressions.md
         - name: 規則引擎比對條件
-          href: cdn-rules-engine-reference-match-conditions.md
+          href: cdn-verizon-premium-rules-engine-reference-match-conditions.md
         - name: 規則引擎功能
-          href: cdn-rules-engine-reference-features.md
+          href: cdn-verizon-premium-rules-engine-reference-features.md
         - name: HTTP 變數
           href: cdn-http-variables.md
     - name: Verizon 特定的 HTTP 標題
@@ -150,6 +162,8 @@
       items:
         - name: X-EC-Debug 標題
           href: cdn-http-debug-headers.md
+    - name: Microsoft 特定的 HTTP 標題
+      href: cdn-msft-http-debug-headers.md
     - name: Azure PowerShell
       href: /powershell/module/az.cdn
     - name: .NET
@@ -158,8 +172,6 @@
       href: /java/api/com.microsoft.azure.management.cdn
     - name: REST
       href: /rest/api/cdn/
-    - name: Resource Manager 範本
-      href: /azure/templates/microsoft.cdn/allversions
 - name: 資源
   items:
     - name: Azure CDN POP 位置
@@ -168,19 +180,19 @@
           href: cdn-pop-locations.md
         - name: 依縮寫的 POP 位置
           href: cdn-pop-abbreviations.md
-    - name: 了解 Azure CDN 計費
+    - name: Azure 內容傳遞網路帳單
       href: cdn-billing.md
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: MSDN 論壇
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=azurecdn'
-    - name: 價格
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-cdn.html'
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/cdn/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=cdn'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-cdn'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=cdn'

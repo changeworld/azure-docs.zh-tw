@@ -1,6 +1,6 @@
 ---
-title: Licensing Microsoft® Smooth Streaming Client Porting Kit
-description: 了解如何授權 Microsoft® Smooth Streaming Client Porting Kit。
+title: 授權 Microsoft &reg; Smooth Streaming 用戶端移植套件
+description: 瞭解如何授權 Microsoft &reg; Smooth Streaming 用戶端移植套件。
 services: media-services
 documentationcenter: ''
 author: xpouyat
@@ -12,24 +12,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 505def9cde7cddf2ddcc23408fa3159de886167a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 7fce1fc529f3af71cac17d8011fe065c6381a419
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61472683"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677147"
 ---
-# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licensing Microsoft® Smooth Streaming Client Porting Kit 
-## <a name="overview"></a>概觀
+# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>授權 Microsoft &reg; Smooth Streaming 用戶端移植套件 
+## <a name="overview"></a>總覽
 Microsoft Smooth Streaming Client Porting Kit (簡稱**SSPK** ) 是最佳化的 Smooth Streaming 用戶端實作，可協助內嵌裝置製造商、有線電視和行動業者、內容服務提供者、手持式裝置製造商、獨立軟體廠商 (ISV) 和解決方案提供者打造產品和服務，以供串流 Smooth Streaming 格式的彈性內容。 SSPK 是 Smooth Streaming 用戶端的裝置和平台獨立實作，可由被授權者移植到任何裝置和平台。 
 
 以下是一個高層級架構，而 IIS Smooth Streaming Porting Kit 方塊是 Microsoft 所提供的 Smooth Streaming 用戶端實作並包含播放 Smooth Streaming 內容的所有核心邏輯。 然而，特定裝置或平台的合作夥伴可藉由實作適當的介面來移植此內容。 
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>描述
+## <a name="description"></a>Description
 SSPK 是根據可提供絕佳商業價值的條款授權。 SSPK 授權提供給業界：
 
 * Smooth Streaming Porting Kit 的 C++ 原始碼 
@@ -71,13 +70,14 @@ Smooth Streaming 用戶端最終產品乃根據權利金模型提供，細節如
 * 每年前 10,000 個裝置實作不需權利金 
 
 ## <a name="licensing-procedure-and-sspk-access"></a>授權程序和 SSPK 存取
-有關所有授權查詢，請寄送電子郵件至 [sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com)。
+[sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com)所有授權查詢的電子郵件。
 
-已註冊的中期被授權者可以存取 [SSPK 發佈入口網站](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/) 。
+已註冊的中期被授權者可以存取 SSPK 發佈入口網站 。
 
-中期和最終 SSPK 被授權者都可以將技術問題提交到 [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)。
+已授權的過渡和最終 SSPK 可以將技術問題提交至 [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com) 。
 
 ## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>Microsoft Smooth Streaming 用戶端中期產品合約被授權者
+
 * Adroit Business Solutions, Inc
 * Advanced Digital Broadcast SA
 * AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
@@ -90,10 +90,10 @@ Smooth Streaming 用戶端最終產品乃根據權利金模型提供，細節如
 * EchoStar Purchasing Corporation
 * Enseo, Inc.
 * Fluendo S.A.
+* 廣州 Shikun 的電子公司。
 * HANDAN BroadInfoCom Co., Ltd.
 * Infomir GMBH
 * Irdeto USA Inc.
-* iWEDIA S.A. 
 * Liberty Global Services BV
 * MediaTek Inc.
 * MStar Co, Ltd
@@ -104,7 +104,6 @@ Smooth Streaming 用戶端最終產品乃根據權利金模型提供，細節如
 * SoftAtHome
 * 索尼公司
 * Tatung Technology Inc.
-* TCL Technology Electronics (Huizhou) Co., Ltd.
 * Top Victory Investments, Ltd.
 * Vestel Elektronik Sanayi ve Ticaret A.S.
 * VisualOn, Inc.
@@ -113,51 +112,41 @@ Smooth Streaming 用戶端最終產品乃根據權利金模型提供，細節如
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Microsoft Smooth Streaming 用戶端最終產品合約被授權者
 * Advanced Digital Broadcast SA
 * AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
-* Albis Technologies Ltd.
-* Amazon Digital Services, Inc.
-* AmTRAN Technology Co., Ltd.
 * Arcadyan Technology Corporation
-* Arion Technology, Inc.
-* ATMACA ELEKTRONİK SAN. VE TİC. A.Ş
-* British Sky Broadcasting Limited
-* CastPal Technology Inc., Shenzhen
+* Arcelik A. S
 * Compal Electronics, Inc.
-* Dongguan Digital AV Technology Corp., Ltd.
-* EchoStar Purchasing Corporation
-* Enseo, Inc.
-* FilmFlex Movies Limited
+* EXPRESS 好運技術有限
 * Fluendo S.A.
-* FUNAI ELECTRIC CO., LTD
-* Gibson Innovations Limited
-* Haier Information Applicantion S.R.L
-* HANDAN BroadInfoCom Co., Ltd.
+* FUNAI 電動 CO，公司
 * Hisense International Co., Ltd. 
-* Homecast Co., Ltd
-* Hon Hai Precision Industry Co., Ltd.
-* Infomir GMBH
+* HKC Corporation 有限
+* 香港特別行政區 Konka 有限公司
+* Innolux Corporation
+* Innopia 技術，Inc。
 * Kaonmedia Co., Ltd.
 * KDDI Corporation
+* Co 成名的電氣
+* MIRC 的電子產品有限
 * Nintendo Co., Ltd.
-* Orange SA
-* Saffron Digital Limited
-* Sagemcom Broadband SAS
-* Shenzhen Coship Electronics CO., LTD
+* ONEPLUS 電子（SHENZHEN）有限公司。
+* Panasonic Corporation
+* Qingdao Haier Optronics 有限公司。
+* Shenzhen ATEKO 相片電力 Co，公司。
+* Shenzhen Chuangwei-RGB 電子產品 Co。
 * Shenzhen Jiuzhou Electric Co., Ltd
+* Shenzhen KTC 技術 Co。 
+* Shenzhen Maxmade 技術 Co
+* Shenzhen MTC Co.，公司
 * Shenzhen Skyworth Digital Technology Co., Ltd
 * Sichuan Changhong Electric Co., Ltd.
-* Skardin Industrial Corp.
+* 致振企業股份有限公司
 * Sky Deutschland Fernsehen GmbH & Co. KG
-* SmarDTV S.A.
+* SMARDTV GLOBAL SAS
 * SoftAtHome
 * 索尼公司
-* TCL Overseas Marketing (Macao Commercial Offshore) Limited
 * Technicolor Delivery Technologies, SAS
-* Tongfang Global Ltd.
 * Top Victory Investments, Ltd.
-* Toshiba Lifestyle Products & Services Corporation
-* Universal Media Corporation /Slovakia/ s.r.o.
-* VIZIO, Inc.
-* Wistron Corporation
+* UMC 波蘭 sp。 z. o.o。
 * ZTE Corporation
 
 ## <a name="media-services-learning-paths"></a>媒體服務學習路徑

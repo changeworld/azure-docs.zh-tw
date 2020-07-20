@@ -2,29 +2,28 @@
 title: 註冊 Premium 版本 - Azure Active Directory | Microsoft Docs
 description: 關於如何註冊 Azure Active Directory Premium 版本的指示。
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 09/07/2017
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed01b2b122724ba1428fb685bb3f1f52b7099a7b
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
-ms.translationtype: HT
+ms.openlocfilehash: c146640112190fe08bb1b3b806c95a2854da9083
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287055"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604449"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>註冊 Azure Active Directory Premium 版本
 您可以使用您的 Azure 訂用帳戶來購買 Azure Active Directory (Azure AD) Premium 版本並與其產生關聯。 如果您需要建立新的 Azure 訂用帳戶，您也需要啟用授權方案及 Azure AD 服務存取。
 
 > [!NOTE]
->Azure AD Premium 和 Basic 版本適用於使用全球 Azure Active Directory 執行個體的中國客戶。 由 21Vianet 在中國營運的 Azure 服務目前不支援 Azure AD Premium 和 Basic 版本。 如需詳細資訊，請使用 [Azure Active Directory 論壇](https://feedback.azure.com/forums/169401-azure-active-directory/) \(英文\) 與我們連絡。
+>Azure AD Premium 和 Basic 版本適用於使用全球 Azure Active Directory 執行個體的中國客戶。 由 21Vianet 在中國營運的 Azure 服務目前不支援 Azure AD Premium 和 Basic 版本。 如需詳細資訊，請使用 [Azure Active Directory 論壇](https://feedback.azure.com/forums/169401-azure-active-directory/) (英文) 與我們連絡。
 
 在註冊 Active Directory Premium 1 或 Premium 2 之前，您必須先決定要使用哪一個現有的訂用帳戶或方案：
 
@@ -37,7 +36,7 @@ ms.locfileid: "58287055"
 使用具有先前已購買並啟用之 Azure AD 授權的 Azure 訂用帳戶註冊，將能自動在相同的目錄中啟用授權。 如果沒有自動啟用，您仍必須啟用您的授權方案和 Azure AD 存取。 如需啟用授權方案的詳細資訊，請參閱[啟用您的新授權方案](#activate-your-new-license-plan)。 如需啟用 Azure AD 存取的詳細資訊，請參閱[啟用您的 Azure AD 存取](#activate-your-azure-ad-access)。 
 
 ## <a name="sign-up-using-your-existing-azure-or-office-365-subscription"></a>使用現有的 Azure 或 Office 365 訂用帳戶註冊
-身為 Azure 或 Office 365 訂閱者，您可以在線上購買 Azure Active Directory Premium 版本。 如需詳細步驟，請參閱[如何購買 Azure Active Directory Premium - 現有客戶](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer)或[如何購買 Azure Active Directory Premium - 新客戶](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers)。
+身為 Azure 或 Office 365 訂閱者，您可以在線上購買 Azure Active Directory Premium 版本。 如需詳細步驟，請參閱[如何購買 Azure Active Directory Premium - 新客戶](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers) \(英文\)。
 
 ## <a name="sign-up-using-your-enterprise-mobility--security-licensing-plan"></a>使用 Enterprise Mobility + Security 授權方案註冊
 Enterprise Mobility + Security 是一個套件，其中包含 Azure AD Premium、Azure 資訊保護，以及 Microsoft Intune。 如果您已經擁有 EMS 授權，則可以利用下列其中一個授權選項開始使用 Azure AD：
@@ -63,13 +62,13 @@ Enterprise Mobility + Security 是一個套件，其中包含 Azure AD Premium�
 如果您是使用新的 Azure AD 授權方案註冊，您必須使用在購買後傳送的確認電子郵件來為您的組織啟用該方案。
 
 ### <a name="to-activate-your-license-plan"></a>啟用您的授權方案
-- 開啟您在註冊後從 Microsoft 接收到的確認電子郵件，然後按一下 [登入] 或 [註冊]。
+- 開啟您在註冊後從 Microsoft 接收到的確認電子郵件，然後按一下 [登入]  或 [註冊]  。
    
     ![含有登入與註冊連結的確認電子郵件](media/active-directory-get-started-premium/MOLSEmail.png)
 
     - **登入**： 如果您有現有的租用戶，請選擇這個連結，然後使用現有的系統管理員帳戶登入。 您必須是要啟用授權之租用戶的全域管理員。
 
-    - **註冊**： 如果您想要開啟 [建立帳戶設定檔] 頁面，並針對授權方案建立新的 Azure AD 租用戶，請選擇這個連結。
+    - **註冊**： 如果您想要開啟 [建立帳戶設定檔]  頁面，並針對授權方案建立新的 Azure AD 租用戶，請選擇這個連結。
 
         ![包含範例資訊的建立帳戶設定檔頁面](media/active-directory-get-started-premium/MOLSAccountProfile.png)
 
@@ -87,7 +86,7 @@ Enterprise Mobility + Security 是一個套件，其中包含 Azure AD Premium�
 
 ### <a name="to-activate-your-azure-ad-access"></a>啟用您的 Azure AD 存取
 
-1. 開啟**歡迎電子郵件**，然後按一下 [登入]。
+1. 開啟**歡迎電子郵件**，然後按一下 [登入]  。
    
     ![反白顯示登入連結的歡迎電子郵件](media/active-directory-get-started-premium/AADEmail.png)
 

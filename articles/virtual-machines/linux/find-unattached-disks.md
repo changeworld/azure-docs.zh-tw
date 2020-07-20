@@ -1,29 +1,19 @@
 ---
-title: 尋找及刪除未連結的 Azure 受控和非受控磁碟 | Microsoft Docs
+title: 尋找及刪除未連結的 Azure 受控和非受控磁碟
 description: 如何使用 Azure CLI 尋找及刪除未連結的 Azure 受控和非受控 (VHD/分頁 Blob) 磁碟。
-services: virtual-machines-linux
-documentationcenter: ''
 author: roygara
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
-ms.topic: article
+ms.service: virtual-machines
+ms.topic: how-to
 ms.date: 03/30/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 21c15a943974b80469eb9bd71cbaf11a7bc34b4a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 87fe277bbd2fa618d43ce3274c1d2c05a5d7b396
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721827"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84660162"
 ---
-# <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>尋找及刪除未連結的 Azure 受控和非受控磁碟
+# <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks-using-the-azure-cli"></a>使用 Azure CLI 尋找及刪除未連結的 Azure 受控和非受控磁碟
 當您在 Azure 中刪除虛擬機器 (VM) 時，不會刪除任何連結至 VM 的磁碟。 這項功能有助於預防因為不小心刪除 VM 所造成的資料遺失。 刪除 VM 之後，您將繼續支付未連結的磁碟。 本文示範如何尋找及刪除任何未連結的磁碟，並減少不必要的成本。 
 
 
@@ -61,7 +51,7 @@ done
 
 ## <a name="unmanaged-disks-find-and-delete-unattached-disks"></a>非受控磁碟：尋找及刪除未連結的磁碟 
 
-非受控磁碟是 VHD 檔案，會以[分頁 Blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) 的形式儲存在 [Azure 儲存體帳戶](../../storage/common/storage-create-storage-account.md)中。 下列指令碼會藉由檢查 **LeaseStatus** 屬性的值，以尋找未連結的非受控磁碟 (分頁 Blob)。 如果非受控磁碟已連結至虛擬機器，則 **LeaseStatus** 屬性會設為 **Locked**。 如果未連結非受控磁碟，則 **LeaseStatus** 屬性會設為 **Unlocked**。 指令碼會檢查 Azure 訂用帳戶中所有 Azure 儲存體帳戶的所有非受控磁碟。 當指令碼找到 **LeaseStatus** 屬性設為 **Unlocked** 的非受控磁碟時，指令碼會判定該磁碟並未連結。
+非受控磁碟是 VHD 檔案，會以[分頁 Blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) 的形式儲存在 [Azure 儲存體帳戶](../../storage/common/storage-account-overview.md)中。 下列指令碼會藉由檢查 **LeaseStatus** 屬性的值，以尋找未連結的非受控磁碟 (分頁 Blob)。 如果非受控磁碟已連結至虛擬機器，則 **LeaseStatus** 屬性會設為 **Locked**。 如果未連結非受控磁碟，則 **LeaseStatus** 屬性會設為 **Unlocked**。 指令碼會檢查 Azure 訂用帳戶中所有 Azure 儲存體帳戶的所有非受控磁碟。 當指令碼找到 **LeaseStatus** 屬性設為 **Unlocked** 的非受控磁碟時，指令碼會判定該磁碟並未連結。
 
 >[!IMPORTANT]
 >首先，將 **deleteUnattachedVHDs** 變數設為 0 來執行指令碼。 這個動作可讓您尋找和檢視所有未連結的非受控 VHD。
@@ -114,7 +104,6 @@ done
 
 ## <a name="next-steps"></a>後續步驟
 
-[刪除儲存體帳戶](../../storage/common/storage-create-storage-account.md)
-
+如需詳細資訊，請參閱[刪除儲存體帳戶](../../storage/common/storage-account-create.md#delete-a-storage-account)。
 
 

@@ -5,29 +5,27 @@ services: app-service
 author: cephalin
 ms.service: app-service
 ms.topic: include
-ms.date: 02/02/2018
+ms.date: 06/14/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: cd7fc7487a41979f37c9a55baeb0b8e172e808c4
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
-ms.translationtype: HT
+ms.openlocfilehash: 4e699707db02de07f3d1ebb7d1fa8d0575a10aa3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59586991"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "67836871"
 ---
-在 Azure Cloud Shell 中，使用 [`az webapp deployment user set`](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) 命令來設定部署認證。 需要這個部署使用者，才能將 FTP 和本機 Git 部署至 Web 應用程式。 使用者名稱和密碼是帳戶等級。 _它們與您的 Azure 訂用帳戶認證不同。_
+FTP 和本機 Git 可以透過使用「部署使用者」  部署到 Azure Web 應用程式。 部署使用者只需設定一次，就能供所有 Azure 部署使用。 使用者名稱和密碼屬於帳戶等級部署，因此與 Azure 訂用帳戶認證不同。 
 
-在下列範例中，請以新的使用者名稱和密碼取代 *\<username>* 和 *\<password>* (包括括弧)。 使用者名稱在 Azure 內必須是唯一的。 密碼長度必須至少為 8 個字元，包含下列三個元素其中兩個：字母、數字及符號。 
+若要設定部署使用者，請在 Azure Cloud Shell 中執行 [az webapp deployment user set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) 命令。 以部署使用者的使用者名稱和和密碼來取代「username」\<\<和「password」。 
+
+- 使用者名稱在 Azure 服務及本機 Git 推送中都必須是唯一的，且不能包含 ‘@’ 符號。 
+- 密碼長度必須至少為 8 個字元，包含下列三個元素其中兩個：字母、數字及符號。 
 
 ```azurecli-interactive
 az webapp deployment user set --user-name <username> --password <password>
 ```
 
-您會獲得一個密碼顯示為 `null` 的 JSON 輸出。 如果您收到 `'Conflict'. Details: 409` 錯誤，請變更使用者名稱。 如果您收到 `'Bad Request'. Details: 400` 錯誤，請使用更強的密碼。 本機 Git 推送的部署使用者名稱不能包含 '@' 符號。
+JSON 輸出會將密碼顯示為 `null`。 如果您收到 `'Conflict'. Details: 409` 錯誤，請變更使用者名稱。 如果您收到 `'Bad Request'. Details: 400` 錯誤，請使用更強的密碼。 
 
-您只需設定此部署使用者一次。 您可以將它用於所有 Azure 部署。
-
-> [!NOTE]
-> 請記錄使用者名稱和密碼。 您稍後需要它們來部署 Web 應用程式。
->
->
+將使用者名稱和密碼記錄下來，在部署 Web 應用程式時還會用到。

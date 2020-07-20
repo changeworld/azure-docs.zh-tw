@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 27b09ea9cc7ce3cf2559304a26d0c04f3ea30b54
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 70b7a869c8b8147f978987b99b4918f573da6d0f
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262910"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014806"
 ---
 除了自動將用戶端連線至主要複本，接聽程式可用來將唯讀工作負載重新導向至次要複本。 此用法可以改善整體解決方案的效能和延展性。 如需詳細資訊，請參閱[使用 ReadIntent 路由搭配 Azure AlwaysOn 可用性群組接聽程式](https://go.microsoft.com/fwlink/?LinkId=522515)。
 
@@ -18,5 +18,5 @@ ms.locfileid: "51262910"
 > 
 > 
 
-如需在 Azure 中使用 SQL Server 的詳細資訊，請參閱 [Azure 虛擬機器上的 SQL Server](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)。
+如需在 Azure 中使用 SQL Server 的詳細資訊，請參閱 [Azure 虛擬機器上的 SQL Server](../articles/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)。
 

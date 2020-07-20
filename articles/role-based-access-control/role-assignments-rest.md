@@ -1,6 +1,6 @@
 ---
-title: 使用 RBAC 和 REST API 管理对 Azure 资源的访问 - Azure | Microsoft Docs
-description: 了解如何使用角色型存取控制 (RBAC) 和 REST API 來管理使用者、群組和應用程式對 Azure 資源的存取權。 這包括如何列出存取權、授與存取權以及移除存取權。
+title: 使用 REST API 新增或移除 Azure 角色指派-Azure RBAC
+description: 瞭解如何使用 REST API 和 Azure 角色型存取控制（Azure RBAC），為使用者、群組、服務主體或受控識別授與 Azure 資源的存取權。
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -11,50 +11,30 @@ ms.service: role-based-access-control
 ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 06/20/2018
+ms.topic: how-to
+ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0e0c83d411242be38992dd763dea72eda70ffbf4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d66b4c8e9f41f661cfc399f72a9ad97405a860fc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60531835"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84790841"
 ---
-# <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>使用 RBAC 和 REST API 管理對 Azure 資源的存取
+# <a name="add-or-remove-azure-role-assignments-using-the-rest-api"></a>使用 REST API 新增或移除 Azure 角色指派
 
-[角色型存取控制 (RBAC)](overview.md) 是您對 Azure 資源存取進行管理的機制。 本文將描述如何使用 RBAC 和 REST API 來管理使用者、群組和應用程式的存取權。
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]本文說明如何使用 REST API 指派角色。
 
-## <a name="list-access"></a>列出存取權
+## <a name="prerequisites"></a>必要條件
 
-在 RBAC 中，若要列出存取權，您可以列出角色指派。 若要列出角色指派，請使用其中一個[角色指派 - 列出](/rest/api/authorization/roleassignments/list) REST API。 若要精簡您的結果，請指定範圍和選擇性篩選條件。
+若要新增或移除角色指派，您必須具有：
 
-1. 從下列要求著手：
+- `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 權限，例如[使用者存取系統管理員](built-in-roles.md#user-access-administrator)或[擁有者](built-in-roles.md#owner)
 
-    ```http
-    GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter={filter}
-    ```
+## <a name="add-a-role-assignment"></a>新增角色指派
 
-1. 在 URI 中，將 *{scope}* 取代為要列出角色指派的範圍。
-
-    | 影響範圍 | 類型 |
-    | --- | --- |
-    | `subscriptions/{subscriptionId}` | 訂用帳戶 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 資源群組 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
-
-1. 將 *{filter}* 取代為您要針對角色指派清單篩選套用的條件。
-
-    | Filter | 描述 |
-    | --- | --- |
-    | `$filter=atScope()` | 僅列出指定範圍的角色指派，不包括子範圍內的角色指派。 |
-    | `$filter=principalId%20eq%20'{objectId}'` | 列出所指定使用者、群組或服務主體的角色指派。 |
-    | `$filter=assignedTo('{objectId}')` | 列出所指定使用者的角色指派，包括從群組繼承的角色指派。 |
-
-## <a name="grant-access"></a>授與存取權
-
-在 RBAC 中，若要授與存取權，您可以建立角色指派。 若要建立角色指派，請使用 [角色指派 - 建立](/rest/api/authorization/roleassignments/create) REST API，並指定安全性主體、角色定義和範圍。 若要呼叫這個 API，您必須具有 `Microsoft.Authorization/roleAssignments/write` 作業的存取權。 在內建角色中，只有[擁有者](built-in-roles.md#owner)和[使用者存取系統管理員](built-in-roles.md#user-access-administrator)會獲得這項作業的存取權。
+在 Azure RBAC 中，若要授與存取權，您可以新增角色指派。 若要新增角色指派，請使用[角色指派-建立](/rest/api/authorization/roleassignments/create)REST API 並指定安全性主體、角色定義和範圍。 若要呼叫這個 API，您必須具有 `Microsoft.Authorization/roleAssignments/write` 作業的存取權。 在內建角色中，只有[擁有者](built-in-roles.md#owner)和[使用者存取系統管理員](built-in-roles.md#user-access-administrator)會獲得這項作業的存取權。
 
 1. 使用[角色定義 - 列出](/rest/api/authorization/roledefinitions/list) REST API 或參閱[內建角色](built-in-roles.md)，以取得您要指派角色定義的識別碼。
 
@@ -63,58 +43,132 @@ ms.locfileid: "60531835"
 1. 從下列要求和本文著手：
 
     ```http
-    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}?api-version=2015-07-01
+    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}?api-version=2015-07-01
     ```
 
     ```json
     {
       "properties": {
-        "roleDefinitionId": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}",
+        "roleDefinitionId": "/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}",
         "principalId": "{principalId}"
       }
     }
     ```
-    
+
 1. 在 URI 中，將 *{scope}* 取代為角色指派的範圍。
 
-    | 影響範圍 | 類型 |
-    | --- | --- |
-    | `subscriptions/{subscriptionId}` | 訂用帳戶 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 資源群組 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    > [!div class="mx-tableFixed"]
+    > | 影響範圍 | 類型 |
+    > | --- | --- |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理群組 |
+    > | `subscriptions/{subscriptionId1}` | 訂用帳戶 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 資源群組 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | 資源 |
 
-1. 將 *{roleAssignmentName}* 取代為角色指派的 GUID 識別碼。
+    在上述範例中，microsoft web 是參考 App Service 實例的資源提供者。 同樣地，您可以使用任何其他資源提供者並指定範圍。 如需詳細資訊，請參閱[Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md)和支援的[Azure Resource Manager 資源提供者作業](resource-provider-operations.md)。  
 
-1. 在要求本文中，將 *{subscriptionId}* 取代為您的訂用帳戶識別碼。
+1. 將 *{roleAssignmentId}* 取代為角色指派的 GUID 識別碼。
+
+1. 在要求主體中，將 *{scope}* 取代為角色指派的範圍。
+
+    > [!div class="mx-tableFixed"]
+    > | 影響範圍 | 類型 |
+    > | --- | --- |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理群組 |
+    > | `subscriptions/{subscriptionId1}` | 訂用帳戶 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 資源群組 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | 資源 |
 
 1. 將 *{roleDefinitionId}* 取代為角色定義識別碼。
 
 1. 將 *{principalId}* 取代為使用者、群組或服務主體 (將獲得角色指派) 的物件識別碼。
 
-## <a name="remove-access"></a>移除存取
+下列要求和主體會將[備份讀取](built-in-roles.md#backup-reader)者角色指派給訂用帳戶範圍中的使用者：
 
-在 RBAC 中，若要移除存取權，您可以移除角色指派。 若要移除角色指派，請使用[角色指派 - 刪除](/rest/api/authorization/roleassignments/delete) REST API。 若要呼叫這個 API，您必須具有 `Microsoft.Authorization/roleAssignments/delete` 作業的存取權。 在內建角色中，只有[擁有者](built-in-roles.md#owner)和[使用者存取系統管理員](built-in-roles.md#user-access-administrator)會獲得這項作業的存取權。
+```http
+PUT https://management.azure.com/subscriptions/{subscriptionId1}/providers/microsoft.authorization/roleassignments/{roleAssignmentId1}?api-version=2015-07-01
+```
+
+```json
+{
+  "properties": {
+    "roleDefinitionId": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/a795c7a0-d4a2-40c1-ae25-d81f01202912",
+    "principalId": "{objectId1}"
+  }
+}
+```
+
+以下顯示輸出的範例：
+
+```json
+{
+    "properties": {
+        "roleDefinitionId": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/a795c7a0-d4a2-40c1-ae25-d81f01202912",
+        "principalId": "{objectId1}",
+        "scope": "/subscriptions/{subscriptionId1}",
+        "createdOn": "2020-05-06T23:55:23.7679147Z",
+        "updatedOn": "2020-05-06T23:55:23.7679147Z",
+        "createdBy": null,
+        "updatedBy": "{updatedByObjectId1}"
+    },
+    "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId1}",
+    "type": "Microsoft.Authorization/roleAssignments",
+    "name": "{roleAssignmentId1}"
+}
+```
+
+## <a name="remove-a-role-assignment"></a>移除角色指派
+
+在 Azure RBAC 中，若要移除存取權，您可以移除角色指派。 若要移除角色指派，請使用[角色指派 - 刪除](/rest/api/authorization/roleassignments/delete) REST API。 若要呼叫這個 API，您必須具有 `Microsoft.Authorization/roleAssignments/delete` 作業的存取權。 在內建角色中，只有[擁有者](built-in-roles.md#owner)和[使用者存取系統管理員](built-in-roles.md#user-access-administrator)會獲得這項作業的存取權。
 
 1. 取得角色指派識別碼 (GUID)。 您第一次建立角色指派時會傳回這個識別碼，或者可藉由列出角色指派來取得它。
 
 1. 從下列要求著手：
 
     ```http
-    DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}?api-version=2015-07-01
+    DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}?api-version=2015-07-01
     ```
 
 1. 在 URI 中，將 *{scope}* 取代為要移除角色指派的範圍。
 
-    | 影響範圍 | 類型 |
-    | --- | --- |
-    | `subscriptions/{subscriptionId}` | 訂用帳戶 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 資源群組 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    > [!div class="mx-tableFixed"]
+    > | 影響範圍 | 類型 |
+    > | --- | --- |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理群組 |
+    > | `subscriptions/{subscriptionId1}` | 訂用帳戶 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 資源群組 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | 資源 |
 
-1. 將 *{roleAssignmentName}* 取代為角色指派的 GUID 識別碼。
+1. 將 *{roleAssignmentId}* 取代為角色指派的 GUID 識別碼。
+
+下列要求會在訂用帳戶範圍中移除指定的角色指派：
+
+```http
+DELETE https://management.azure.com/subscriptions/{subscriptionId1}/providers/microsoft.authorization/roleassignments/{roleAssignmentId1}?api-version=2015-07-01
+```
+
+以下顯示輸出的範例：
+
+```json
+{
+    "properties": {
+        "roleDefinitionId": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/a795c7a0-d4a2-40c1-ae25-d81f01202912",
+        "principalId": "{objectId1}",
+        "scope": "/subscriptions/{subscriptionId1}",
+        "createdOn": "2020-05-06T23:55:24.5379478Z",
+        "updatedOn": "2020-05-06T23:55:24.5379478Z",
+        "createdBy": "{createdByObjectId1}",
+        "updatedBy": "{updatedByObjectId1}"
+    },
+    "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId1}",
+    "type": "Microsoft.Authorization/roleAssignments",
+    "name": "{roleAssignmentId1}"
+}
+```
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 Resource Manager 範本和 Resource Manager REST API 部署資源](../azure-resource-manager/resource-group-template-deploy-rest.md)
+- [使用 REST API 列出 Azure 角色指派](role-assignments-list-rest.md)
+- [使用 Resource Manager 範本和 Resource Manager 部署資源 REST API](../azure-resource-manager/templates/deploy-rest.md)
 - [Azure REST API 參考](/rest/api/azure/)
-- [使用 REST API 建立 Azure 資源的自訂角色](custom-roles-rest.md)
+- [使用 REST API 建立或更新 Azure 自訂角色](custom-roles-rest.md)

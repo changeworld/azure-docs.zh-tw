@@ -1,14 +1,14 @@
 ---
-ms.openlocfilehash: 685d982835042aa4a697d19a650e8dcb1476b400
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 7b9954930c668e338cc289e948a5591c09ec2654
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60232514"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "76694610"
 ---
-## <a name="provide-feedback-to-the-user"></a>提供給使用者的意見反應
+## <a name="provide-feedback-to-the-user"></a>將意見反應提供給使用者
 
-您可以撰寫程式碼來處理更新的工作階段事件。 每次在工作階段改善的鳥瞰了解，就會引發此事件。 如此一來，可讓您：
+您可以撰寫程式碼以處理工作階段更新的事件。 每當工作階段增進其對環境的了解時，就會引發此事件。 這麼做可讓您：
 
-- 裝置會移動，並在工作階段更新環境了解，請為使用者提供意見。
-- 判斷何時那里足夠的追蹤建立的空間資料，或找出空間的錨點-我們將進一步了解在稍後的步驟。
+- 在裝置移動時，使用 `UserFeedback` 類別將意見反應提供給使用者，且工作階段會更新其對環境的了解。 若要這樣做：
+- 判斷何時有足夠的追蹤空間資料可建立空間錨點。 您可以使用 `ReadyForCreateProgress` 或 `RecommendedForCreateProgress` 進行此判斷。 一旦 `ReadyForCreateProgress` 高於1，即表示有足夠的資料可儲存雲端空間錨點，但建議您等到 `RecommendedForCreateProgress` 高於 1 時再執行此作業。

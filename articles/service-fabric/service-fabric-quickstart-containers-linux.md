@@ -1,26 +1,16 @@
 ---
-title: 在 Azure 中的 Service Fabric 上建立 Linux 容器應用程式 | Microsoft Docs
+title: 在 Azure 中的 Service Fabric 上建立 Linux 容器應用程式
 description: 在此快速入門中，您將使用您的應用程式建置 Docker 映像、將映像推送到容器登錄，然後將您的容器部署至 Service Fabric 叢集。
-services: service-fabric
-documentationcenter: linux
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: python
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 01/30/2019
-ms.author: aljo,suhuruli
+ms.date: 07/22/2019
+ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 183f27d752b99c04a711d8141db512c77b9848f9
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d765168ea2eddaf42715536b5da67f15bb8a8cee
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664874"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258556"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>快速入門：將 Linux 容器部署至 Service Fabric
 
@@ -90,7 +80,7 @@ az sf cluster create --resource-group $ResourceGroupName --location $Location --
 > Web 前端服務設定為在連接埠 80 上接聽傳入流量。 根據預設，連接埠 80 在您的叢集 VM 和 Azure 負載平衡器上是開啟的。
 >
 
-## <a name="configure-your-environment"></a>設定您的環境
+## <a name="configure-your-environment"></a>設定環境
 
 Service Fabric 提供了數項可用來管理叢集及其應用程式的工具：
 
@@ -118,7 +108,7 @@ Mozilla Firefox 是 Ubuntu 16.04 中的預設瀏覽器。 若要將憑證匯入 
     ./install.sh
     ```
 
-3. 開啟網頁瀏覽器，並瀏覽至叢集的 Service Fabric Explorer 端點。 此端點具有下列格式：**https://\<my-azure-service-fabric-cluster-url>:19080/Explorer**；例如 `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`。 </br>
+3. 開啟網頁瀏覽器，並瀏覽至叢集的 Service Fabric Explorer 端點。 端點的格式如下：**https://\<my-azure-service-fabric-cluster-url>:19080/Explorer**；例如，`https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`。 </br>
 
 4. 展開 [應用程式] 節點，您可以看到投票應用程式類型和您建立的執行個體現在有一個項目。
 
@@ -188,8 +178,8 @@ ResourceGroupName="containertestcluster"
 az group delete --name $ResourceGroupName
 ```
 
-如果您已完成叢集的處理，可以從憑證存放區中移除憑證。 例如︰
-- 在 Windows 上：使用[憑證 MMC 嵌入式管理單元](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)。 在新增嵌入式管理單元時，請務必選取 [我的使用者帳戶]。 瀏覽至 `Certificates - Current User\Personal\Certificates` 並移除憑證。
+如果您已完成叢集的處理，可以從憑證存放區中移除憑證。 例如：
+- 在 Windows 上：使用[憑證 MMC 嵌入式管理單元](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)。 在新增嵌入式管理單元時，請務必選取 [我的使用者帳戶]。 瀏覽至 `Certificates - Current User\Personal\Certificates` 並移除憑證。
 - 在 Mac 上：使用 Keychain 應用程式。
 - 在 Ubuntu 上：依照您用來檢視憑證的步驟，將憑證移除。
 

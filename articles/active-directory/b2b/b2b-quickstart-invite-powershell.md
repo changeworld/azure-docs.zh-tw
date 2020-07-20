@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 新增來賓使用者的快速入門 - Azure Active Directory | Microsoft Docs
+title: 快速入門：使用 PowerShell 新增來賓使用者 - Azure AD
 description: 在此快速入門中，您將了解如何使用 PowerShell 向外部的 Azure AD B2B 共同作業使用者傳送邀請。
 services: active-directory
 ms.service: active-directory
@@ -8,15 +8,16 @@ ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: mimart
 author: msmimart
+manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b9274652b7164a4aef71499912cb8b38ace29ff
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b0faaf0394bddc2e443afc194bbd0ecef72625f9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57854444"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690943"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>快速入門：使用 PowerShell 新增來賓使用者
 
@@ -24,7 +25,7 @@ ms.locfileid: "57854444"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="install-the-latest-azureadpreview-module"></a>安裝最新的 AzureADPreview 模組
 請務必安裝最新版的 Azure AD PowerShell for Graph 模組 (AzureADPreview)。 
@@ -68,7 +69,7 @@ Get-Module -ListAvailable AzureAD*
 ```powershell
 Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 ```
-例如： `Connect-AzureAD -TenantDomain "contoso.onmicrosoft.com"`。
+例如： `Connect-AzureAD -TenantDomain "contoso.onmicrosoft.com"` 。
 
 出現提示時，請輸入您的認證。
 
@@ -77,7 +78,7 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 1. 若要向測試電子郵件帳戶傳送邀請，請執行下列 PowerShell 命令 (將 **"Sanda"** 與 **sanda\@fabrikam.com** 取代為您的測試電子郵件帳戶名稱與電子郵件地址)： 
 
    ```powershell
-   New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.azure.com -SendInvitationMessage $true
+   New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.microsoft.com -SendInvitationMessage $true
    ```
 2. 此命令會向指定的電子郵件地址傳送邀請。 請檢查輸出，它看起來應類似下列範例：
 
@@ -101,7 +102,7 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 ```powershell
  Remove-AzureADUser -ObjectId "<UPN>"
 ```
-例如：`Remove-AzureADUser -ObjectId "sanda_fabrikam.com#EXT#@contoso.onmicrosoft.com"`
+例如： `Remove-AzureADUser -ObjectId "sanda_fabrikam.com#EXT#@contoso.onmicrosoft.com"`
 
 
 ## <a name="next-steps"></a>後續步驟

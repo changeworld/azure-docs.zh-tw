@@ -1,44 +1,44 @@
 ---
-author: erikre
+author: georgewallace
 ms.service: multiple
 ms.topic: include
 ms.date: 11/25/2018
-ms.author: erikre
-ms.openlocfilehash: 96c4da8465a87fee4c00bfc6177515c94910704a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: gwallace
+ms.openlocfilehash: e38cecfe206f21f9189493e7ed6e8f0cadda9cd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60444731"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75463461"
 ---
-Azure 客戶每月可以解除鎖定 25,000 封免費電子郵件。 這些每月 25,000 封的免費電子郵件可讓您存取進階報告與分析及 [所有 API][all APIs] (Web、SMTP、Event、Parse 及更多)。 如需 SendGrid 所提供其他服務的相關資訊，請參閱 [SendGrid 解決方案 (英文)][SendGrid Solutions] 頁面。
+Azure 客戶每月可以解除鎖定 25,000 封免費電子郵件。 這些25000免費的每月電子郵件可讓您存取先進的報告和分析以及[所有 api][all APIs] （WEB、SMTP、Event、Parse 等等）。 如需 SendGrid 所提供其他服務的相關資訊，請參閱 [SendGrid 解決方案 (英文)][SendGrid Solutions] 頁面。
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>註冊 SendGrid 帳戶
 1. 登入 [Azure 入口網站][Azure portal]。
-2. 在左側功能表中，按一下 [建立資源]。
+2. 在 [Azure 入口網站] 功能表或 [首頁] 頁面上，選取 [**建立資源**]。
 
     ![command-bar-new][command-bar-new]
-3. 依序按一下 [附加元件] 和 [SendGrid 電子郵件傳遞]。
+3. 搜尋並選取 [ **SendGrid**]。
 
     ![sendgrid-store][sendgrid-store]
-4. 完成註冊表單，然後選取 [建立]。
+4. 完成註冊表單，然後選取 [建立]****。
 
     ![sendgrid-create][sendgrid-create]
 5. 在您的 Azure 設定中輸入可識別 SendGrid 服務的**名稱**。 名稱的長度必須介於 1 到 100 個字元之間，而且只能包含英數字元、連字號、句點和底線。 此名稱在已訂用的 Azure 市集項目清單中必須是唯一的。
 6. 輸入並確認您的**密碼**。
 7. 選擇您的**訂用帳戶**。
 8. 建立新的**資源群組**或使用現有的資源群組。
-9. 在 [定價層] 區段中，選取您想要註冊的 SendGrid 方案。
+9. 在 [定價層]**** 區段中，選取您想要註冊的 SendGrid 方案。
 
     ![sendgrid-pricing][sendgrid-pricing]
 10. 輸入**促銷代碼** (如果有的話)。
 11. 輸入**連絡人資訊**。
-12. 檢閱並接受**法律條款**。
-13. 確認購買之後，您將會看到 [部署成功] 快顯視窗，並看到您的帳戶列於 [所有資源] 區段中。
+12. 請審查並接受**法律條款**。
+13. 確認您的購買之後，您會看到 [**部署成功**] 快顯視窗，而您會看到您的帳戶已列出。
 
     ![all-resources][all-resources]
 
-    當您完成購買，並按下 [管理] 按鈕以起始電子郵件驗證程序之後，將收到一封來自 SendGrid 的電子郵件，詢問您是否要驗證您的帳戶。 如果您未收到這封電子郵件，或者無法驗證您的帳戶，請參閱本常見問題集。
+    當您完成購買，並按下 [管理]**** 按鈕以起始電子郵件驗證程序之後，將收到一封來自 SendGrid 的電子郵件，詢問您是否要驗證您的帳戶。 如果您未收到這封電子郵件，或在驗證您的帳戶時發生問題，請參閱我們的常見問題。
 
     ![manage][manage]
 
@@ -46,33 +46,33 @@ Azure 客戶每月可以解除鎖定 25,000 封免費電子郵件。 這些每�
 
     若要修改您的訂用計畫或查看 SendGrid 連絡人設定，請按一下您的 SendGrid 服務名稱，以開啟 SendGrid Marketplace 儀表板。
 
-    ![settings][settings]
+    ![設定][settings]
 
     若要使用 SendGrid 傳送電子郵件，您必須提供您的 API 金鑰。
 
 ### <a name="to-find-your-sendgrid-api-key"></a>尋找您的 SendGrid API 金鑰
-1. 按一下 [管理] 。
+1. 按一下 [管理] ****。
 
     ![manage][manage]
-2. 在 SendGrid 儀表板的左側功能表中，依序選取 [設定] 和 [API 金鑰]。
+2. 在 SendGrid 儀表板的左側功能表中，依序選取 [設定]**** 和 [API 金鑰]****。
 
     ![api-keys][api-keys]
 
-3. 按一下 [建立 API 金鑰]。
+3. 按一下 [建立 API 金鑰]****。
 
     ![general-api-key][general-api-key]
-4. 至少需要提供**這個金鑰的名稱**，並提供**郵件傳送**的完整存取權，然後選取 [儲存]。
+4. 至少需要提供**這個金鑰的名稱**，並提供**郵件傳送**的完整存取權，然後選取 [儲存]****。
 
     ![access][access]
 5. 您的 API 將會在此時顯示一次。 請務必安全地儲存它。
 
-### <a name="to-find-your-sendgrid-credentials"></a>查找 SendGrid 凭据
+### <a name="to-find-your-sendgrid-credentials"></a>尋找您的 SendGrid 認證
 1. 按一下金鑰圖示來尋找您的**使用者名稱**。
 
-    ![key][key]
-2. 密碼是您在安裝期間所選擇的密碼。 您可以選取 [變更密碼] 或 [重設密碼] 來進行任何變更。
+    ![索引鍵][key]
+2. 密碼是您在安裝期間所選擇的密碼。 您可以選取 [變更密碼]**** 或 [重設密碼]**** 來進行任何變更。
 
-若要管理电子邮件传递设置，请单击“管理”按钮。 這將會重新導向至您的 SendGrid 儀表板。
+若要管理電子郵件傳遞能力設定，按一下 [管理]**** 按鈕。 這將會重新導向至您的 SendGrid 儀表板。
 
 ![manage][manage]
 

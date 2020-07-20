@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: overview
-ms.date: 11/20/2017
+ms.date: 07/26/2019
 ms.author: sngun
-ms.openlocfilehash: 68190ad15ed70ac831c21582d60bc54da5d3c14b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 91a6ae308faf31b3d3eb0c9f287dd5bd791f628e
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043918"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557530"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB 簡介：資料表 API
 
@@ -22,23 +22,26 @@ ms.locfileid: "54043918"
 * 全球[專用的輸送量](partition-data.md)。
 * 99 百分位數的單一數字毫秒延遲。
 * 保證高可用性。
-* [自動次要索引](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)。
+* 自動次要索引。
 
 針對 Azure 資料表儲存體所撰寫的應用程式可使用資料表 API (不變更程式碼) 來移轉至 Azure Cosmos DB，並且利用進階功能。 資料表 API 具有適用於 .NET、Java、Python 和 Node.js 的用戶端 SDK。
+
+> [!IMPORTANT]
+> .NET Framework SDK [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) 現為維護模式，且即將被取代。 請升級至新的.NET Standard 程式庫[Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)，才能繼續取得資料表 API 支援的最新功能。
 
 ## <a name="table-offerings"></a>表格供應項目
 如果您目前是使用 Azure 資料表儲存體，移至 Azure Cosmos DB 資料表 API 可獲得下列好處：
 
-| | Azure 資料表儲存體 | Azure Cosmos DB 資料表 API |
+| 功能 | Azure 資料表儲存體 | Azure Cosmos DB 資料表 API |
 | --- | --- | --- |
-| Latency | 快速，但延遲沒有上限。 | 一位數毫秒的讀取和寫入延遲，並在世界各地支援任何規模的 <10 毫秒延遲讀取和 <15 毫秒延遲寫入 (第 99 個百分位數)。 |
+| Latency | 快速，但延遲沒有上限。 | 一位數毫秒的讀取和寫入延遲，並在世界各地支援任何規模的 <10 毫秒延遲讀取和寫入 (第 99 個百分位數)。 |
 | Throughput | 變數輸送量模型。 資料表每秒 20,000 個作業的延展性限制。 | 高延展性且[每個資料表都有專用的保留輸送量](request-units.md) (由 SLA 支援)。 帳戶沒有輸送量上限，而且支援每個資料表每秒 > 1 千萬個作業。 |
-| 全球發佈 | 具有一個選擇性高可用性可讀取次要讀取區域的單一區域。 您無法起始容錯移轉。 | [周全的全域發佈](distribute-data-globally.md)介於 1 到 30+ 個區域。 隨時隨地在世界各地支援[自動和手動容錯移轉](high-availability.md)。 |
-| 編製索引 | PartitionKey 和 RowKey 只有主要索引。 沒有次要索引。 | 對所有屬性自動執行完整的編製索引，但沒有索引管理。 |
+| 全球發佈 | 具有一個選擇性高可用性可讀取次要讀取區域的單一區域。 您無法起始容錯移轉。 | [周全的全域發佈](distribute-data-globally.md)介於 1 到任何數量的區域。 隨時隨地在世界各地支援[自動和手動容錯移轉](high-availability.md)。 可讓任何區域接受寫入作業的多重主機功能。 |
+| 編製索引 | PartitionKey 和 RowKey 只有主要索引。 沒有次要索引。 | 根據預設，對所有屬性自動執行完整的編製索引，但不進行索引管理。 |
 | 查詢 | 查詢執行作業會使用主索引鍵的索引，要不然會進行掃描。 | 查詢可以利用自動編製屬性的索引，加快查詢速度。 |
 | 一致性 | 主要區域內的強式。 次要區域內的事件式。 | [五個定義完善的一致性層級](consistency-levels.md)，可以您應用程式的需求作為基礎，進行可用性、延遲、輸送量及一致性的取捨。 |
-| 價格 | 儲存體最佳化。 | 輸送量最佳化。 |
-| SLA | 99.99% 可用性。 | 99.99% 可用性 SLA 適用於一致性很寬鬆的所有單一區域帳戶和所有多重區域帳戶，而所有多重區域資料庫帳戶有 99.999% 的讀取可用性[領先業界的全方位 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) (公開上市)。 |
+| 定價 | 儲存體最佳化。 | 輸送量最佳化。 |
+| SLA | 視複寫策略而定，99.9% 到 99.99% 的可用性。 | 單一區域帳戶上 99.999% 的讀取可用性、99.99% 的寫入可用性，以及多區域帳戶上 99.999% 的寫入可用性。 涵蓋可用性、延遲、輸送量和一致性的[完整 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/)。 |
 
 ## <a name="get-started"></a>開始使用
 
@@ -55,8 +58,8 @@ ms.locfileid: "54043918"
 * [在 .NET 中利用資料表 API 進行開發](tutorial-develop-table-dotnet.md)
 * [使用資料表 API 來查詢資料表資料](tutorial-query-table.md)
 * [了解如何使用資料表 API 來設定 Azure Cosmos DB 全域發佈](tutorial-global-distribution-table.md)
-* [Azure Cosmos DB 資料表 .NET API](table-sdk-dotnet.md)
-* [Azure Cosmos DB 資料表 Java API](table-sdk-java.md)
-* [Azure Cosmos DB 資料表 Node.js API](table-sdk-nodejs.md)
+* [Azure Cosmos DB 資料表 .NET Standard SDK](table-sdk-dotnet-standard.md)
+* [Azure Cosmos DB 資料表 .NET SDK](table-sdk-dotnet.md)
+* [Azure Cosmos DB 資料表 Java SDK](table-sdk-java.md)
+* [Azure Cosmos DB 資料表 Node.js SDK](table-sdk-nodejs.md)
 * [適用於 Python 的 Azure Cosmos DB 資料表](table-sdk-python.md)
-

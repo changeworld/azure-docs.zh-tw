@@ -9,13 +9,13 @@ ms.date: 07/18/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 99f8edd816688324058d80d92a5f97f6fa8b8263
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61444525"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67174409"
 ---
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要依循本教學課程進行操作，您需要在 Azure 訂用帳戶中有一個已部署的遠端監視解決方案加速器執行個體。
 

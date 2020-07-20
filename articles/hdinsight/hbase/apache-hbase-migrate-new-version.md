@@ -1,37 +1,36 @@
 ---
 title: 將 HBase 叢集移轉至新的版本 - Azure HDInsight
-description: 如何將 HBase 叢集移轉至新的版本。
+description: 如何在 Azure HDInsight 中將 Apache HBase 叢集遷移至較新的版本。
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
+ms.topic: how-to
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/06/2019
-ms.author: ashishth
-ms.openlocfilehash: a152b815daeefa4c199af9b159eee8e5783971e2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 01/02/2020
+ms.openlocfilehash: 23843743b58db91d457b509fa38243f110b76b41
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65143312"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079542"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>將 Apache HBase 叢集移轉至新的版本
 
-這篇文章討論您在 Azure HDInsight 上的 Apache HBase 叢集更新為較新版本所需的步驟。
+本文討論將 Azure HDInsight 上的 Apache HBase 叢集更新為較新版本所需的步驟。
 
-> [!NOTE]  
-> 升級時的停機時間不應太長，為大約幾分鐘。 這個停機時間是因排清所有記憶體內部資料的步驟，接著在新叢集上設定及重新啟動服務的時間所造成。 您的結果會依節點數目、資料量和其他變數而有所不同。
+升級時的停機時間不應太長，為大約幾分鐘。 這個停機時間是因排清所有記憶體內部資料的步驟，接著在新叢集上設定及重新啟動服務的時間所造成。 您的結果會依節點數目、資料量和其他變數而有所不同。
 
 ## <a name="review-apache-hbase-compatibility"></a>檢閱 Apache HBase 相容性
 
 在升級 Apache HBase 之前，請確認來源和目的地叢集上的 HBase 版本相容。 如需詳細資訊，請參閱[可搭配 HDInsight 使用的 Apache Hadoop 元件和版本](../hdinsight-component-versioning.md)。
 
 > [!NOTE]  
-> 強烈建議您檢閱 [HBase 書籍](https://hbase.apache.org/book.html#upgrading)中的版本相容性矩陣。
+> 強烈建議您檢閱 [HBase 書籍](https://hbase.apache.org/book.html#upgrading)中的版本相容性矩陣。 任何重大的不相容都需在 HBase 版本的版本資訊中加以說明。
 
-以下是範例版本相容性比較表。 Y 表示相容性，N 表示潛在的不相容：
+以下是範例版本相容性矩陣。 Y 表示相容性，而 N 表示可能不相容：
 
-| 相容性類型 | 主要版本| 次要版本 | 修補程式 |
+| 相容性類型 | 主要版本| 次要版本 | Patch |
 | --- | --- | --- | --- |
 | 用戶端-伺服器連線相容性 | N | Y | Y |
 | 伺服器-伺服器相容性 | N | Y | Y |
@@ -39,26 +38,23 @@ ms.locfileid: "65143312"
 | 用戶端 API 相容性 | N | Y | Y |
 | 用戶端二進位相容性 | N | N | Y |
 | **伺服器端有限的 API 相容性** |  |  |  |
-| Stable | N | Y | Y |
+| 穩定 | N | Y | Y |
 | 發展中 | N | N | Y |
 | 不穩定 | N | N | N |
 | 相依性相容性 | N | Y | Y |
 | 作業相容性 | N | N | Y |
 
-> [!NOTE]  
-> 任何重大的不相容都需在 HBase 版本的版本資訊中加以說明。
-
 ## <a name="upgrade-with-same-apache-hbase-major-version"></a>以相同的 Apache HBase 主要版本進行升級
 
-若要升級您在 Azure HDInsight 上的 Apache HBase 叢集，請完成下列步驟：
+若要升級 Azure HDInsight 上的 Apache HBase 叢集，請完成下列步驟：
 
 1. 請確定您的應用程式與新的版本相容，如 HBase 相容性矩陣和版本資訊中所示。 在執行 HDInsight 和 HBase 目標版本的叢集中測試您的應用程式。
 
-2. 使用包含不同容器名稱的相同儲存體帳戶來[設定新的目的地 HDInsight 叢集](../hdinsight-hadoop-provision-linux-clusters.md)：
+1. 使用包含不同容器名稱的相同儲存體帳戶來[設定新的目的地 HDInsight 叢集](../hdinsight-hadoop-provision-linux-clusters.md)：
 
     ![使用相同的儲存體帳戶，但建立不同的容器](./media/apache-hbase-migrate-new-version/same-storage-different-container.png)
 
-3. 排清來源 HBase 叢集，也就是您要升級叢集。 HBase 會將內送資料寫入名為 _memstore_ 的記憶體內部存放區中。 Memstore 觸達特定的大小之後，HBase 排清到磁碟以長期儲存在叢集的儲存體帳戶。 將舊的叢集刪除時，會回收 memstores，可能還會遺失資料。 若要將每個資料表的 memstore 手動排清至磁碟，請執行下列指令碼。 此指令碼的最新版本位於 Azure 的 [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/flush_all_tables.sh)。
+1. 排清您的來源 HBase 叢集，也就是您要升級的叢集。 HBase 會將內送資料寫入名為 _memstore_ 的記憶體內部存放區中。 在 memstore 達到特定大小時，HBase 會將它排清到磁片，以在叢集的儲存體帳戶中長期儲存。 將舊的叢集刪除時，會回收 memstores，可能還會遺失資料。 若要將每個資料表的 memstore 手動排清至磁碟，請執行下列指令碼。 此指令碼的最新版本位於 Azure 的 [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/flush_all_tables.sh)。
 
     ```bash
     #!/bin/bash
@@ -98,7 +94,7 @@ ms.locfileid: "65143312"
     
             Provide Script URL.
     
-            Provide hostname as a parameter (i.e. hn0, hn1 or wn2 etc.).
+            Provide hostname as a parameter (i.e. hn0, hn1, hn2.. or wn2 etc.).
     ...
             exit
         fi
@@ -175,47 +171,53 @@ ms.locfileid: "65143312"
     ...
     
     ```
-    
-4. 停止擷取舊的 HBase 叢集。
-5. 若要確定系統已排清 memstore 中的任何新資料，請再次執行上述指令碼。
-6. 登入[Apache Ambari](https://ambari.apache.org/)舊叢集上 (https://OLDCLUSTERNAME.azurehdidnsight.net)並停止 HBase 服務。 當系統提示您確認您想要停止服務，請核取方塊，若要開啟 HBase 的維護模式。 如需連線至 Ambari 及使用 Ambari 的詳細資訊，請參閱[使用 Ambari Web UI 管理 HDInsight 叢集](../hdinsight-hadoop-manage-ambari.md)。
 
-    ![在 Ambari 中，按一下 [服務 > HBase > 停止服務動作] 底下](./media/apache-hbase-migrate-new-version/stop-hbase-services.png)
+1. 停止擷取舊的 HBase 叢集。
+
+1. 若要確定系統已排清 memstore 中的任何新資料，請再次執行上述指令碼。
+
+1. 在舊叢集上登入[Apache Ambari](https://ambari.apache.org/) （ `https://OLDCLUSTERNAME.azurehdidnsight.net` ），並停止 HBase 服務。 當系統提示您確認是否要停止服務時，請核取 [開啟 HBase 的維護模式] 核取方塊。 如需連線至 Ambari 及使用 Ambari 的詳細資訊，請參閱[使用 Ambari Web UI 管理 HDInsight 叢集](../hdinsight-hadoop-manage-ambari.md)。
+
+    ![在 [Ambari] 中，按一下 [服務]，> HBase > 停止](./media/apache-hbase-migrate-new-version/stop-hbase-services1.png)
 
     ![勾選 [開啟 HBase 的維護模式] 核取方塊，然後確認](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
 
-7. 在新的 HDInsight 叢集上登入 Ambari。 變更 `fs.defaultFS` HDFS 設定，以指向原始叢集所使用的容器名稱。 此設定位於 [HDFS] > [設定] > [進階] > [進階核心網站] 之下。
+1. 在新的 HDInsight 叢集上登入 Ambari。 變更 `fs.defaultFS` HDFS 設定，以指向原始叢集所使用的容器名稱。 此設定位於 [HDFS] > [設定] > [進階] > [進階核心網站]**** 之下。
 
-    ![在 Ambari 中，按一下 服務 > HDFS > 設定 > 進階](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
+    ![在 [Ambari] 中，按一下 [服務 > HDFS >] [> Advanced]](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
 
     ![在 Ambari 中，變更容器名稱](./media/apache-hbase-migrate-new-version/change-container-name.png)
 
-8. **如果您未使用 HBase 叢集使用增強式寫入功能，請略過此步驟。它只需用於 HBase 叢集使用增強式寫入功能。**
-   
-   變更`hbase.rootdir`路徑以指向原始叢集的容器。
+1. 如果您未搭配使用 HBase 叢集與增強式寫入功能，請略過此步驟。 只有具有增強式寫入功能的 HBase 叢集才需要它。
+
+   將 `hbase.rootdir` 路徑變更為指向原始叢集的容器。
 
     ![在 Ambari 中，變更 HBase rootdir 的容器名稱](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
-1. 如果您要升級 HDInsight 3.6 4.0，請遵循下列步驟，否則請跳至步驟 10:
-    1. 在 Ambari 中重新啟動所有必要的服務，方法是選取**Services** > **重新啟動所有必要**。
+
+1. 如果您要將 HDInsight 3.6 升級至4.0，請遵循下列步驟，否則請跳至步驟10：
+    1. 選取 [**服務**] [  >  **全部必要**]，重新開機 Ambari 中所有必要的服務。
     1. 停止 HBase 服務。
-    1. 透過 ssh 連線到 Zookeeper 節點，然後執行[zkCli](https://github.com/go-zkcli/zkcli)命令`rmr /hbase-unsecure`從 Zookeeper 移除 HBase 根的 znode。
-    1. 重新啟動 HBase。
-1. 如果您要升級到其他任何 HDInsight 版本除了 4.0，請遵循下列步驟：
+    1. 透過 SSH 連線至 Zookeeper 節點，並執行[zkCli](https://github.com/go-zkcli/zkcli)命令 `rmr /hbase-unsecure` 以從 Zookeeper 移除 HBase 根 znode。
+    1. 重新開機 HBase。
+
+1. 如果您要升級至4.0 以外的任何其他 HDInsight 版本，請遵循下列步驟：
     1. 儲存您的變更。
     1. 如 Ambari 所示，重新啟動所有必要的服務。
+
 1. 將您的應用程式指向新的叢集。
 
     > [!NOTE]  
     > 您應用程式的靜態 DNS 會在升級時變更。 您不必將此 DNS 寫入程式碼，而是可以在網域名稱的 DNS 設定中設定 CNAME，以指向叢集的名稱。 另一個選項是使用您應用程式的組態檔，以便您無須重新部署即可進行更新。
 
-12. 開始擷取，以查看一切是否皆如預期運作。
-13. 如果新的叢集令人滿意，請將原始叢集刪除。
+1. 開始擷取，以查看一切是否皆如預期運作。
 
-## <a name="next-steps"></a>後續步驟
+1. 如果新的叢集令人滿意，請將原始叢集刪除。
+
+## <a name="next-steps"></a>下一步
 
 若要深入了解 [Apache HBase](https://hbase.apache.org/) 和升級 HDInsight 叢集，請參閱下列文章：
 
 * [將 HDInsight 叢集升級為更新的版本](../hdinsight-upgrade-cluster.md)
 * [使用 Apache Ambari Web UI 監視和管理 Azure HDInsight](../hdinsight-hadoop-manage-ambari.md)
 * [Apache Hadoop 元件和版本](../hdinsight-component-versioning.md)
-* [使用 Apache Ambari 將組態最佳化](../hdinsight-changing-configs-via-ambari.md#apache-hbase-optimization-with-the-ambari-web-ui)
+* [將 Apache HBase 最佳化](../optimize-hbase-ambari.md)

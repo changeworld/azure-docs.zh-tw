@@ -1,90 +1,86 @@
 ---
-title: 適用於 Azure Cosmos DB 的 azure Resource Manager 範本
-description: 使用 Azure Resource Manager 範本來建立和設定 Azure Cosmos DB。
+title: 使用 Resource Manager 範本建立和管理 Azure Cosmos DB
+description: 使用 Azure Resource Manager 範本建立和設定 Azure Cosmos DB for Core (SQL) API
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 05/08/2019
+ms.topic: how-to
+ms.date: 06/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: f61a9246b1edc5ac10b64f32cc27fd51dcedde94
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: MT
+ms.openlocfilehash: 2b4a572abec8007fe6f1c7e963be19d28c7b48d6
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65077751"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028150"
 ---
-# <a name="create-azure-cosmos-db-core-sql-api-resources-from-a-resource-manager-template"></a>從 Resource Manager 範本建立 Azure Cosmos DB 核心 (SQL) API 資源
+# <a name="manage-azure-cosmos-db-core-sql-api-resources-with-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本管理 Azure Cosmos DB Core (SQL) API 資源
 
-了解如何建立使用 Azure Resource Manager 範本的 Azure Cosmos DB 資源。 下列範例會建立從 Azure Cosmos DB 帳戶[Azure 快速入門範本](https://aka.ms/sql-arm-qs)。 此範本會建立 Azure Cosmos 帳戶，有兩個共用 400 RU/秒的輸送量，在資料庫層級的容器。
+在本文中，您會了解如何利用 Azure Resource Manager 範本來部署和管理 Azure Cosmos DB 帳戶、資料庫和容器。
 
-以下是範本的複本：
+本文僅顯示 Core (SQL) API 帳戶的 Azure Resource Manager 範本範例。 您也可以尋找 [Cassandra](manage-cassandra-with-resource-manager.md)、[Gremlin](manage-gremlin-with-resource-manager.md)、[MongoDB](manage-mongodb-with-resource-manager.md) 和[資料表](manage-table-with-resource-manager.md) API 的範本範例。
 
-[!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
+> [!IMPORTANT]
+>
+> * 帳戶名稱限制為 44 個字元，全部小寫。
+> * 若要變更輸送量值，請使用已更新的 RU/秒重新部署範本。
+> * 您在新增或移除 Azure Cosmos 帳戶的位置時，無法同時修改其他屬性。 這些作業必須個別執行。
 
-## <a name="deploy-via-powershell"></a>透過 PowerShell 進行部署
+若要建立下列任何 Azure Cosmos DB 資源，請將下列範例範本複製到新的 JSON 檔案中。 當您使用不同的名稱和值來部署相同資源的多個執行個體時，可以選擇建立參數 JSON 檔案以供使用。 部署 Azure Resource Manager 範本的方式有很多種，包括 [Azure 入口網站](../azure-resource-manager/templates/deploy-portal.md)、[Azure CLI](../azure-resource-manager/templates/deploy-cli.md)、[Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) 和 [GitHub](../azure-resource-manager/templates/deploy-to-azure-button.md)。
 
-若要部署使用 PowerShell、 Resource Manager 範本**複製**指令碼，然後選取**試試**開啟 Azure Cloud shell 中。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
+<a id="create-autoscale"></a>
 
-```azurepowershell-interactive
+## <a name="azure-cosmos-account-with-autoscale-throughput"></a>具有自動調整輸送量的 Azure Cosmos 帳戶
 
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-$accountName = Read-Host -Prompt "Enter the account name"
-$location = Read-Host -Prompt "Enter the location (i.e. westus2)"
-$primaryRegion = Read-Host -Prompt "Enter the primary region (i.e. westus2)"
-$secondaryRegion = Read-Host -Prompt "Enter the secondary region (i.e. eastus2)"
-$databaseName = Read-Host -Prompt "Enter the database name"
-$container1Name = Read-Host -Prompt "Enter the first container name"
-$container2Name = Read-Host -Prompt "Enter the second container name"
+此範本會在兩個區域中建立 Azure Cosmos 帳戶，其中包含一致性和容錯移轉的選項，以及針對已啟用多數原則選項的自動調整輸送量進行設定的資料庫和容器。 此範本也適用於從 Azure 快速入門範本資源庫執行的單鍵式部署。
 
-New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment `
-    -ResourceGroupName $resourceGroupName `
-    -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-cosmosdb-sql/azuredeploy.json" `
-    -primaryRegion $primaryRegion `
-    -secondaryRegion $secondaryRegion `
-    -databaseName $databaseName `
-    -container1Name $container1Name `
-    -container2Name $container2Name
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署至 Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-autoscale%2Fazuredeploy.json)
 
- (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2015-04-08" --ResourceGroupName $resourceGroupName).name
-```
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql-autoscale/azuredeploy.json":::
 
-如果您選擇要使用的 PowerShell，而不是從 Azure Cloud shell 在本機安裝的版本，您必須[安裝](/powershell/azure/install-az-ps)Azure PowerShell 模組。 執行 `Get-Module -ListAvailable Az` 以尋找版本。 
+<a id="create-analytical-store"></a>
 
-在上述範例中，您已參考儲存在 GitHub 中的範本。 您可以也將範本下載至本機電腦或建立新的範本並指定本機路徑`--template-file`參數。
+## <a name="azure-cosmos-account-with-analytical-store"></a>具有分析存放區的 Azure Cosmos 帳戶
 
-## <a name="deploy-via-azure-cli"></a>透過 Azure CLI 進行部署
+此範本會在一個區域中建立 Azure Cosmos 帳戶，以及已啟用分析 TTL、並且有手動或自動調整輸送量選項的容器。 此範本也適用於從 Azure 快速入門範本資源庫執行的單鍵式部署。
 
-若要部署使用 Azure CLI Resource Manager 範本，請選取**試試**開啟 Azure Cloud shell 中。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署至 Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-analytical-store%2Fazuredeploy.json)
 
-```azurecli-interactive
-read -p 'Enter the Resource Group name: ' resourceGroupName
-read -p 'Enter the location (i.e. westus2): ' location
-read -p 'Enter the account name: ' accountName
-read -p 'Enter the primary region (i.e. westus2): ' primaryRegion
-read -p 'Enter the secondary region (i.e. eastus2): ' secondaryRegion
-read -p 'Enter the database name: ' databaseName
-read -p 'Enter the first container name: ' container1Name
-read -p 'Enter the second container name: ' container2Name
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql-analytical-store/azuredeploy.json":::
 
-az group create --name $resourceGroupName --location $location
-az group deployment create --resource-group $resourceGroupName \
-   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-sql/azuredeploy.json \
-   --parameters accountName=$accountName primaryRegion=$primaryRegion secondaryRegion=$secondaryRegion databaseName=$databaseName \
-   container1Name=$container1Name container2Name=$container2Name
+<a id="create-manual"></a>
 
-az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
-```
+## <a name="azure-cosmos-account-with-standard-provisioned-throughput"></a>Azure Cosmos 帳戶，具有標準佈建的輸送量
 
-`az cosmosdb show`已佈建之後，命令會顯示新建立的 Azure Cosmos 帳戶。 如果您選擇使用在本機安裝的 Azure CLI 的版本，而不是使用 CloudShell，請參閱[Azure 命令列介面 (CLI)](/cli/azure/)文章。
+此範本會在兩個區域中建立 Azure Cosmos 帳戶，其中包含一致性和容錯移轉的選項，以及針對已啟用多數原則選項的標準輸送量進行設定的資料庫和容器。 此範本也適用於從 Azure 快速入門範本資源庫執行的單鍵式部署。
 
-在上述範例中，您已參考儲存在 GitHub 中的範本。 您可以也將範本下載至本機電腦或建立新的範本並指定本機路徑`--template-file`參數。
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署至 Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
+
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
+
+<a id="create-sproc"></a>
+
+## <a name="azure-cosmos-db-container-with-server-side-functionality"></a>具有伺服器端功能的 Azure Cosmos DB 容器
+
+此範本會建立具有預存程序、觸發程序和使用者定義函式的 Azure Cosmos 帳戶、資料庫和容器。 此範本也適用於從 Azure 快速入門範本資源庫執行的單鍵式部署。
+
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署至 Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql-container-sprocs%2Fazuredeploy.json)
+
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json":::
+
+<a id="free-tier"></a>
+
+## <a name="free-tier-azure-cosmos-db-account"></a>免費層 Azure Cosmos DB 帳戶
+
+此範本會建立免費層的 Azure Cosmos 帳戶，以及具有共用輸送量 (最多可與 25 個容器共用) 的資料庫。 此範本也適用於從 Azure 快速入門範本資源庫執行的單鍵式部署。
+
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署至 Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-free%2Fazuredeploy.json)
+
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-free/azuredeploy.json":::
 
 ## <a name="next-steps"></a>後續步驟
 
 以下是一些其他資源：
 
-- [Azure Resource Manager 文件](/azure/azure-resource-manager/)
-- [Azure Cosmos DB 資源提供者結構描述](/azure/templates/microsoft.documentdb/allversions)
-- [Azure Cosmos DB 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [針對常見的 Azure Resource Manager 部署錯誤進行疑難排解](../azure-resource-manager/resource-manager-common-deployment-errors.md)
+* [Azure Resource Manager 文件](/azure/azure-resource-manager/)
+* [Azure Cosmos DB 資源提供者結構描述](/azure/templates/microsoft.documentdb/allversions)
+* [Azure Cosmos DB 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb&pageNumber=1&sort=Popular)
+* [對常見的 Azure Resource Manager 部署錯誤進行疑難排解](../azure-resource-manager/templates/common-deployment-errors.md)

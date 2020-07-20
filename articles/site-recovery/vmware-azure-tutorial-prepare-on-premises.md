@@ -1,20 +1,19 @@
 ---
-title: 準備內部部署 VMware 伺服器以進行 VMware VM 至 Azure 的災害復原| Microsoft Docs
+title: 使用 Azure Site Recovery 進行 VMware VM 災害復原的準備
 description: 了解如何準備內部部署 VMware 伺服器，以使用 Azure Site Recovery 服務來進行 Azure 的災害復原。
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1095a80ba05aa3e0ae6dfcd526db7ffd18fb9d4d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b8fd34c8f1e3a32a8252074941a49d61aa540207
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59359364"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134903"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>準備內部部署 VMware 伺服器以進行 Azure 的災害復原
 
@@ -23,7 +22,7 @@ ms.locfileid: "59359364"
 這是一系列中的第二個教學課程，說明如何為內部部署 VMware VM 設定 Azure 的災害復原。 在第一個教學課程中，我們針對 VMware 災害復原需求[設定 Azure 元件](tutorial-prepare-azure.md)。
 
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 在 vCenter Server 或 vSphere ESXi 主機上，準備一個用來將 VM 探索自動化的帳戶。
@@ -55,8 +54,8 @@ Site Recovery 需要存取 VMware 伺服器才能：
 
 **Task** | **角色/權限** | **詳細資料**
 --- | --- | ---
-**VM 探索** | 至少是唯讀使用者<br/><br/> 資料中心物件 –> 傳播至子物件、role=Read-only | 在資料中心層級指派的使用者，且能夠存取資料中心內的所有物件。<br/><br/> 如果要限制存取權，請將具備 [傳播至子物件] 權限的 [沒有存取權] 角色指派給子物件 (vSphere 主機、資料存放區、VM 及網路)。
-**完整複寫、容錯移轉、容錯回復** |  建立具有必要權限的角色 (Azure_Site_Recovery)，然後將角色指派給 VMware 使用者或群組<br/><br/> 資料中心物件 –> 傳播至子物件、role=Azure_Site_Recovery<br/><br/> 資料存放區 -> 配置空間、瀏覽資料存放區、底層檔案作業、移除檔案、更新虛擬機器檔案<br/><br/> 網路 -> 網路指派<br/><br/> 資源 -> 指派 VM 至資源集區、移轉已關閉電源的 VM、移轉已開啟電源的 VM<br/><br/> 工作 -> 建立工作、更新工作<br/><br/> 虛擬機器 -> 組態<br/><br/> 虛擬機器 -> 互動 -> 回答問題、裝置連線、設定 CD 媒體、設定磁碟片媒體、電源關閉、電源開啟、VMware 工具安裝<br/><br/> 虛擬機器 -> 清查 -> 建立、註冊、取消註冊<br/><br/> 虛擬機器 -> 佈建 -> 允許虛擬機器下載、允許虛擬機器檔案上傳<br/><br/> 虛擬機器 -> 快照 -> 移除快照 | 在資料中心層級指派的使用者，且能夠存取資料中心內的所有物件。<br/><br/> 如果要限制存取權，請將具備 [傳播至子物件] 權限的 [沒有存取權] 角色指派給子物件 (vSphere 主機、資料存放區、VM 及網路)。
+**VM 探索** | 至少是唯讀使用者<br/><br/> 資料中心物件 –> 傳播至子物件、role=Read-only | 在資料中心層級指派的使用者，且能夠存取資料中心內的所有物件。<br/><br/> 如果要限制存取權，請將具備 [傳播至子物件]  權限的 [沒有存取權]  角色指派給子物件 (vSphere 主機、資料存放區、VM 及網路)。
+**完整複寫、容錯移轉、容錯回復** |  建立具有必要權限的角色 (Azure_Site_Recovery)，然後將角色指派給 VMware 使用者或群組<br/><br/> 資料中心物件 –> 傳播至子物件、role=Azure_Site_Recovery<br/><br/> 資料存放區 -> 配置空間、瀏覽資料存放區、底層檔案作業、移除檔案、更新虛擬機器檔案<br/><br/> 網路 -> 網路指派<br/><br/> 資源 -> 指派 VM 至資源集區、移轉已關閉電源的 VM、移轉已開啟電源的 VM<br/><br/> 工作 -> 建立工作、更新工作<br/><br/> 虛擬機器 -> 組態<br/><br/> 虛擬機器 -> 互動 -> 回答問題、裝置連線、設定 CD 媒體、設定磁碟片媒體、電源關閉、電源開啟、VMware 工具安裝<br/><br/> 虛擬機器 -> 清查 -> 建立、註冊、取消註冊<br/><br/> 虛擬機器 -> 佈建 -> 允許虛擬機器下載、允許虛擬機器檔案上傳<br/><br/> 虛擬機器 -> 快照 -> 移除快照 | 在資料中心層級指派的使用者，且能夠存取資料中心內的所有物件。<br/><br/> 如果要限制存取權，請將具備 [傳播至子物件]  權限的 [沒有存取權]  角色指派給子物件 (vSphere 主機、資料存放區、VM 及網路)。
 
 ## <a name="prepare-an-account-for-mobility-service-installation"></a>準備一個用來安裝行動服務的帳戶
 
@@ -69,8 +68,8 @@ Site Recovery 需要存取 VMware 伺服器才能：
 
 準備有權限可以在 VM 上安裝的網域或本機帳戶。
 
-- **Windows VM**：在 Windows VM 上安裝時，如果您不是使用網域帳戶，請停用本機電腦上的「遠端使用者存取」控制。 若要執行此動作，請在登錄的 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** 下，新增 DWORD 登錄 **LocalAccountTokenFilterPolicy**，其值為 1。
-- **Linux VM**：若要在 Linux VM 上安裝，請在來源 Linux 伺服器上準備根帳戶。
+- **Windows VMs**：若要在 Windows VM 上安裝，如果您不使用網域帳戶，請停用本機電腦上的遠端使用者存取控制。 若要執行此動作，請在登錄的 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** 下，新增 DWORD 登錄 **LocalAccountTokenFilterPolicy**，其值為 1。
+- **Linux VMs**：若要在 Linux VM 上安裝，請在來源 Linux 伺服器上準備根帳戶。
 
 
 ## <a name="check-vmware-requirements"></a>檢查 VMware 需求
@@ -91,25 +90,25 @@ Site Recovery 需要存取 VMware 伺服器才能：
 
 若要在容錯移轉後使用 RDP 連線到 Windows VM，請執行下列作業：
 
-- **網際網路存取**。 在容錯移轉前，請在內部部署 VM 上啟用 RDP。 確定已針對 [公用] 設定檔新增 TCP 和 UDP 規則，且在 [Windows 防火牆] > [允許的應用程式] 中已針對所有設定檔允許 RDP。
+- **網際網路存取**。 在容錯移轉前，請在內部部署 VM 上啟用 RDP。 確定已針對 [公用]  設定檔新增 TCP 和 UDP 規則，且在 [Windows 防火牆]   > [允許的應用程式]  中已針對所有設定檔允許 RDP。
 - **站對站 VPN 存取**：
     - 在容錯移轉前，請在內部部署電腦上啟用 RDP。
-    - 您應該在 [Windows 防火牆] -> [允許的應用程式與功能] 中，針對 [網域] 和 [私人] 網路允許 RDP。
-    - 確認作業系統的 SAN 原則已設為 [OnlineAll]。 [深入了解](https://support.microsoft.com/kb/3031135)。
+    - 您應該在 [Windows 防火牆]   -> [允許的應用程式與功能]  中，針對 [網域] 和 [私人]  網路允許 RDP。
+    - 確認作業系統的 SAN 原則已設為 [OnlineAll]  。 [詳細資訊](https://support.microsoft.com/kb/3031135)。
 - 觸發容錯移轉時，VM 上不應該有任何擱置的 Windows 更新。 如果有，在更新完成之前，您將無法登入虛擬機器。
-- 在容錯移轉之後，於 Windows Azure VM 上，勾選 [開機診斷] 以檢視 VM 的螢幕擷取畫面。 如果您無法連線，請檢查 VM 是否正在執行，並檢閱這些[疑難排解祕訣](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
+- 在容錯移轉之後，於 Windows Azure VM 上，勾選 [開機診斷]  以檢視 VM 的螢幕擷取畫面。 如果您無法連線，請檢查 VM 是否正在執行，並檢閱這些[疑難排解祕訣](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
 
 若要在容錯移轉後使用 SSH 連線到 Linux VM，請執行下列作業：
 
 - 在容錯移轉之前，於內部部署機器上，確認安全殼層服務已設定為在系統開機時自動啟動。
 - 確認防火牆規則允許 SSH 連線。
 - 在容錯移轉之後，於 Azure VM 上，針對已容錯移轉之 VM 上的網路安全性群組規則及其所連線的 Azure 子網路，允許 SSH 連接埠的連入連線。
-- [新增 VM 的公用 IP 位址](site-recovery-monitoring-and-troubleshooting.md)。
-- 您可以勾選 [開機診斷] 以檢視 VM 的螢幕擷取畫面。
+- [新增 VM 的公用 IP 位址](./site-recovery-monitor-and-troubleshoot.md)。
+- 您可以勾選 [開機診斷]  以檢視 VM 的螢幕擷取畫面。
 
 
 ## <a name="failback-requirements"></a>容錯回復需求
-如果您打算容錯回復到內部部署網站，則有一些[容錯回復必要條件](vmware-azure-reprotect.md##before-you-begin)。 您現在可以準備這些項目，但不需要這麼做。 您可以在容錯移轉至 Azure 之後準備。
+如果您打算容錯回復到內部部署網站，則有一些[容錯回復必要條件](vmware-azure-reprotect.md#before-you-begin)。 您現在可以準備這些項目，但不需要這麼做。 您可以在容錯移轉至 Azure 之後準備。
 
 
 

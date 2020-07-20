@@ -1,5 +1,5 @@
 ---
-title: 透過使用 Azure 入口網站的內部部署編碼器即時串流 |Microsoft Docs
+title: 使用 Azure 入口網站的內部部署編碼器進行即時串流 |Microsoft Docs
 description: 本教學課程將逐步引導您建立針對即時通行傳遞設定的通道。
 services: media-services
 documentationcenter: ''
@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 9a8ab024443744f50482dd2ca1cfb33db43359e9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: a83d6ae2e3ed13f0d03e0fdc87a3b45a4119ba88
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61463260"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77162747"
 ---
-# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>透過使用 Azure 入口網站的內部部署編碼器執行即時串流
+# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>使用 Azure 入口網站以內部部署編碼器執行即時串流
 > [!div class="op_single_selector"]
 > * [入口網站](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -30,32 +29,32 @@ ms.locfileid: "61463260"
 > 
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 至 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 本教學課程將逐步引導您使用 Azure 入口網站建立針對即時通行傳遞設定的 **通道** 。 
 
 ## <a name="prerequisites"></a>必要條件
 需要有下列項目，才能完成教學課程：
 
-* 一個 Azure 帳戶。 如需詳細資訊，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
-* 一个媒体服务帐户。 若要建立媒體服務帳戶，請參閱[如何建立媒體服務帳戶](media-services-portal-create-account.md)。
-* 網路攝影機。 例如， [Telestream Wirecast 編碼器](https://www.telestream.net/wirecast/overview.htm)。
+* 一個 Azure 帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
+* 媒體服務帳戶。 若要建立媒體服務帳戶，請參閱[如何建立媒體服務帳戶](media-services-portal-create-account.md)。
+* 網路攝影機。 例如， [Telestream Wirecast 編碼器](media-services-configure-wirecast-live-encoder.md)。 
 
 強烈建議您先檢閱下列文章：
 
 * [Azure 媒體服務 RTMP 支援和即時編碼器](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
-* [使用 Azure 媒体服务实时传送视频流概述](media-services-manage-channels-overview.md)
+* [使用 Azure 媒體服務之即時串流的概觀](media-services-manage-channels-overview.md)
 * [使用會建立多位元速率串流的內部部署編碼器執行即時串流](media-services-live-streaming-with-onprem-encoders.md)
 
-## <a id="scenario"></a>常见实时流式处理方案
+## <a name="common-live-streaming-scenario"></a><a id="scenario"></a>常見的即時串流案例
 
 下列步驟描述當我們建立一般即時串流應用程式 (其使用針對即時通行傳遞設定的通道) 時，會涉及到的各種工作。 本教學課程示範如何建立及管理即時通行通道和即時事件。
 
 > [!NOTE]
-> 確定您想要串流內容的串流端點已處於 [執行中] 狀態。 
+> 確定您想要串流內容的串流端點已處於 [執行中]**** 狀態。 
     
 1. 將攝影機連接到電腦。 <br/>如需了解裝備，請參閱[簡單的可攜式活動視訊器材裝備]( https://link.medium.com/KNTtiN6IeT) \(英文\)。
-1. 啟動並設定內部部署即時編碼器，讓它輸出多位元速率 RTMP 或 Fragmented MP4 串流。 如需詳細資訊，請參閱 [Azure 媒體服務 RTMP 支援和即時編碼器](https://go.microsoft.com/fwlink/?LinkId=532824)。<br/>此外，也請參閱這個部落格：[使用 OBS 來產生即時串流](https://link.medium.com/ttuwHpaJeT) \(英文\)。
+1. 啟動並設定內部部署即時編碼器，讓它輸出多位元速率 RTMP 或 Fragmented MP4 串流。 如需詳細資訊，請參閱 [Azure 媒體服務 RTMP 支援和即時編碼器](https://go.microsoft.com/fwlink/?LinkId=532824)。<br/>此外，請參閱此 blog：[使用 OBS 的即時串流生產](https://link.medium.com/ttuwHpaJeT)。
    
     此步驟也可以在您建立通道之後執行。
 1. 建立並啟動即時通行通道。
@@ -69,10 +68,10 @@ ms.locfileid: "61463260"
    
     使用 Azure 入口網站時，建立即時事件也會建立資產。 
 
-1. 在准备好开始流式传输和存档时，启动事件/节目。
+1. 當您準備好開始串流和封存時，請啟動事件/程式。
 1. 即時編碼器會收到啟動公告的信號 (選擇性)。 公告會插入輸出串流中。
 1. 每當您想要停止串流處理和封存事件時，請停止事件/程式。
-1. 删除事件/节目（并选择性地删除资产）。     
+1. 刪除事件/程式 (並選擇性地刪除資產)。     
 
 > [!IMPORTANT]
 > 請檢閱[使用會建立多位元速率串流的內部部署編碼器執行即時串流](media-services-live-streaming-with-onprem-encoders.md)，以了解具有內部部署編碼器和傳遞通道之即時串流的相關概念和考量。
@@ -91,41 +90,41 @@ ms.locfileid: "61463260"
 
 每個事件都是與資產相關聯。 若要發佈事件，您必須建立相關聯資產的 OnDemand 定位器。 擁有此定位器，可讓您建置可提供給用戶端的串流 URL。
 
-通道支援最多三個同時執行的事件，因此您可以建立相同內送串流的多個封存。 這可讓您視需要發行和封存事件的不同部分。 例如，您的商務需求是封存 6 小時的程式，但只廣播最後 10 分鐘。 為了達成此目的，您必須建立兩個同時執行的程式。 其中一個程式設定為封存 6 小時的事件，但是未發行該程式。 另一个节目设置为存档 10 分钟的事件，并且要发布该节目。
+通道支援最多三個同時執行的事件，因此您可以建立相同內送串流的多個封存。 這可讓您視需要發行和封存事件的不同部分。 例如，您的商務需求是封存 6 小時的程式，但只廣播最後 10 分鐘。 為了達成此目的，您必須建立兩個同時執行的程式。 其中一個程式設定為封存 6 小時的事件，但是未發行該程式。 另一個程式則設定為封存 10 分鐘，並發行程式。
 
 您不應該重複使用現有的即時事件。 而是針對每個事件建立並啟動新事件。
 
 當您準備好開始串流和封存時，請啟動事件。 每當您想要停止串流處理和封存事件時，請停止程式。 
 
-若要刪除封存的內容，請停止並刪除事件，然後刪除相關聯的資產。 如果资产被某个事件使用，则无法将其删除，必须先删除该事件。 
+若要刪除封存的內容，請停止並刪除事件，然後刪除相關聯的資產。 如果事件使用資產，則無法刪除資產；必須先刪除事件。 
 
 只要您未刪除資產，即使在停止並刪除事件之後，使用者還是可以視需求將封存的內容串流為視訊。
 
 如果想要保留封存的內容，但不要讓它可進行串流，請刪除串流定位器。
 
 ### <a name="to-use-the-portal-to-create-a-channel"></a>使用 Azure 入口網站來建立通道
-本節示範如何使用 [快速建立]  選項來建立即時通行通道。
+本節示範如何使用 [快速建立] **** 選項來建立即時通行通道。
 
 如需傳遞通道的詳細資訊，請參閱[使用會從建立多位元速率串流的內部部署編碼器執行即時串流](media-services-live-streaming-with-onprem-encoders.md)。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您的 Azure 媒體服務帳戶。
-2. 在 [設定] 視窗中，按一下 [即時視訊串流]。 
+2. 在 [設定]**** 視窗中，按一下 [即時視訊串流]****。 
    
     ![開始使用](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
    
-    [即時視訊串流]  視窗隨即出現。
-3. 按一下 [快速建立]  ，使用 RTMP 內嵌通訊協定建立即時通行通道。
+    [即時視訊串流] **** 視窗隨即出現。
+3. 按一下 [快速建立] **** ，使用 RTMP 內嵌通訊協定建立即時通行通道。
    
-    [建立新的通道]  視窗隨即出現。
-4. 提供新通道的名稱，然後按一下 [建立] 。 
+    [建立新的通道] **** 視窗隨即出現。
+4. 提供新通道的名稱，然後按一下 [建立] ****。 
    
     這會使用 RTMP 內嵌通訊協定建立即時通行通道。
 
 ## <a name="create-events"></a>建立事件
 1. 選取您要新增事件的通道。
-2. 按下 [即時事件]  按鈕。
+2. 按下 [即時事件] **** 按鈕。
 
-![Event](./media/media-services-portal-passthrough-get-started/media-services-create-events.png)
+![事件](./media/media-services-portal-passthrough-get-started/media-services-create-events.png)
 
 ## <a name="get-ingest-urls"></a>取得內嵌 URL
 建立通道之後，即可取得您提供給即時編碼器的內嵌 URL。 編碼器會使用這些 URL 來輸入即時串流。
@@ -133,7 +132,7 @@ ms.locfileid: "61463260"
 ![建立時間](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
 
 ## <a name="watch-the-event"></a>監看事件
-若要監看事件，請按一下 Azure 入口網站中的 [監看]  ，或複製串流 URL 並使用您選擇的播放程式。 
+若要監看事件，請按一下 Azure 入口網站中的 [監看] **** ，或複製串流 URL 並使用您選擇的播放程式。 
 
 ![建立時間](./media/media-services-portal-passthrough-get-started/media-services-default-event.png)
 
@@ -145,14 +144,14 @@ ms.locfileid: "61463260"
 * 只有當通道上的所有事件/程式都已停止時，才能停止通道。  停止通道之後，就不會產生任何費用。 當您需要重新啟動它時，它會具有相同的內嵌 URL，因此您不需要重新設定編碼器。
 * 只有當通道上的所有事件都已刪除時，才能刪除通道。
 
-## <a name="view-archived-content"></a>查看存档的内容
+## <a name="view-archived-content"></a>檢視封存的內容
 只要您未刪除資產，即使在停止並刪除事件之後，使用者還是可以視需求將封存的內容串流為視訊。 如果事件使用資產，則無法刪除資產；必須先刪除事件。 
 
-若要管理您的資產，請選取 [設定]，然後按一下 [資產]。
+若要管理您的資產，請選取 [設定]****，然後按一下 [資產]****。
 
-![資產](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
+![Assets](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 
-## <a name="next-step"></a>後續步驟
+## <a name="next-step"></a>下一步
 檢閱媒體服務學習路徑。
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

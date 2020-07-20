@@ -1,0 +1,66 @@
+### YamlMime:Landing
+title: Azure Analysis Services 文件
+summary: 了解如何在雲端使用 Analysis Services 設定資料模型。 文件會示範如何使用表格式資料模型來建立企業 BI 解決方案。
+metadata:
+  title: Azure Analysis Services 文件 | Microsoft Docs
+  description: Azure Analysis Services 是完全受控的平台即服務 (PaaS)，可在雲端提供企業級資料模型。
+  ms.service: analysis-services
+  ms.topic: landing-page
+  ms.collection: 
+  author: minewiskan
+  ms.author: owend
+  manager: mtillman
+  ms.date: 10/30/2019
+  ms.openlocfilehash: 8c0d92cc7f50ec72b33d86335291580a477db056
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "78273658"
+landingContent:
+- title: 關於 Azure Analysis Services
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure Analysis Services？
+      url: analysis-services-overview.md
+- title: 開始使用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 建立伺服器 - 入口網站
+      url: analysis-services-create-server.md
+    - text: 建立伺服器 - PowerShell
+      url: analysis-services-create-powershell.md
+    - text: 設定伺服器防火牆 - 入口網站
+      url: analysis-services-qs-firewall.md
+- title: 了解
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 驗證和使用者權限
+      url: analysis-services-manage-users.md
+    - text: 使用服務主體進行自動化
+      url: analysis-services-service-principal.md
+    - text: 連線至內部部署資料來源
+      url: analysis-services-gateway.md
+- title: 管理和連線
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 設定伺服器管理員和使用者角色
+      url: tutorials/analysis-services-tutorial-roles.md
+    - text: 從入口網站新增範例模型
+      url: analysis-services-create-sample-model.md
+    - text: 使用 Power BI Desktop 進行連線
+      url: tutorials/analysis-services-tutorial-pbid.md
+- title: 指令碼和 API
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: PowerShell
+      url: /azure/analysis-services/analysis-services-powershell
+    - text: REST API
+      url: /rest/api/analysisservices/
+    - text: 表格式模型指令碼語言 (TMSL)
+      url: /analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference

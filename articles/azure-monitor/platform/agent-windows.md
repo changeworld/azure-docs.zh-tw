@@ -1,30 +1,22 @@
 ---
-title: 將 Windows 電腦連接到 Azure Log Analytics | Microsoft Docs
-description: 本文說明如何使用 Microsoft Monitoring Agent (MMA) 將其他雲端中託管的 Windows 電腦或內部部署電腦連線至 Log Analytics。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: 將 Windows 電腦連線到 Azure 監視器 | Microsoft Docs
+description: 本文描述如何使用適用於 Microsoft 的 Log Analytics 代理程式，將其他雲端中託管的 Windows 電腦或內部部署電腦連線至 Azure 監視器。
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 04/29/2019
-ms.author: magoedte
-ms.openlocfilehash: 34f02b1d72f08ef5da6b8a5740243b6e557bfb4a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+author: bwren
+ms.author: bwren
+ms.date: 10/07/2019
+ms.openlocfilehash: 644d1094ec57e148804941297d50398e36b1b068
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138134"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996433"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>將 Windows 電腦連線到 Azure 監視器
 
-若要監視及管理虛擬機器或本機資料中心或其他雲端環境中使用 Azure 監視器的實體電腦，您必須部署 Log Analytics 代理程式 （也稱為做為 Microsoft Monitoring Agent (MMA)），並將它設定為回報給一或多個 Log Analytics 工作區。 此代理程式也支援 Azure 自動化的混合式 Runbook 背景工作角色。  
+為了要使用Azure 監視器監視及管理本機資料中心或其他雲端環境中的虛擬機器或實體電腦，則需要部署 Log Analytics 代理程式 (也稱為 Microsoft Monitoring Agent (MMA))，並將其設定為向一或多個 Log Analytics 工作區報告。 此代理程式也支援 Azure 自動化的混合式 Runbook 背景工作角色。  
 
-在受監視的 Windows 電腦上，會將此代理程式列為 Microsoft Monitoring Agent 服務。 Microsoft Monitoring Agent 服務會從記錄檔和 Windows 事件記錄檔、效能資料及其他遙測收集事件。 即使代理程式無法與 Azure 監視器，它會報告來通訊，代理程式會繼續執行，並在磁碟上的受監視的電腦上收集的資料排入佇列。 當連線恢復時，Microsoft Monitoring Agent 服務會將收集的資料傳送給服務。
+在受監視的 Windows 電腦上，會將此代理程式列為 Microsoft Monitoring Agent 服務。 Microsoft Monitoring Agent 服務會從記錄檔和 Windows 事件記錄檔、效能資料及其他遙測收集事件。 即使代理程式無法與 Azure 監視器 (其報告對象) 通訊，代理程式仍會繼續執行，並將所收集到資料佇列在受監視電腦的磁碟上。 當連線恢復時，Microsoft Monitoring Agent 服務會將收集的資料傳送給服務。
 
 可以使用下列其中一種方法安裝代理程式。 大部分安裝會使用這些方法的組合，視需要為不同的電腦集合進行安裝。  使用每種方法的詳細資料會在本文稍後提供。
 
@@ -34,29 +26,33 @@ ms.locfileid: "65138134"
 * 針對 Azure Stack 中執行內部部署 Windows 的虛擬機器，使用 Resource Manager 範本。 
 
 >[!NOTE]
->Azure 資訊安全中心 (ASC) 取決於 Microsoft Monitoring Agent （也稱為 「 Log Analytics Windows 代理程式 」），將會安裝並設定它，以回報至 Log Analytics 工作區，為其部署的一部分。 ASC 會包括自動佈建選項可讓您的訂用帳戶中的所有 Vm 的 Log Analytics Windows 代理程式的自動安裝，並將它設定為特定的工作區回報。 如需有關這個選項的詳細資訊，請參閱 <<c0> [ 啟用的 Log Analytics 代理程式的自動佈建](../../security-center/security-center-enable-data-collection.md#enable-automatic-provisioning-of-microsoft-monitoring-agent-)。
+>Azure 資訊安全中心 (ASC) 取決於 Microsoft Monitoring Agent (也稱為 Log Analytics Windows 代理程式)，且會將其安裝並設定為在部署期間向 Log Analytics 工作區報告。 ASC 包含自動佈建選項，其可供在訂用帳戶中的所有 VM 上自動安裝 Log Analytics Windows 代理程式，並將其設定為向特定工作區報告。 如需此選項的詳細資訊，請參閱[啟用 Log Analytics 代理程式的自動佈建](../../security-center/security-center-enable-data-collection.md#auto-provision-mma)。
 >
 
-如果您需要設定一個以上的工作區回報的代理程式，這無法執行初始安裝期間，只之後從控制台或 PowerShell 設定的更新，如中所述[新增或移除工作區](agent-manage.md#adding-or-removing-a-workspace).  
+如果需要將代理程式設定為向多個工作區報告，則無法在初始安裝期間執行這項作業，只能在稍後透過更新 [控制台] 或 PowerShell 中的設定來執行 (如[新增或移除工作區](agent-manage.md#adding-or-removing-a-workspace)中所述)。  
 
-若要了解支援的組態，請檢閱[支援的 Windows 作業系統](log-analytics-agent.md#supported-windows-operating-systems)和[網路防火牆組態](log-analytics-agent.md#network-firewall-requirements)。
+若要了解支援的組態，請檢閱[支援的 Windows 作業系統](log-analytics-agent.md#supported-windows-operating-systems)和[網路防火牆組態](log-analytics-agent.md#network-requirements)。
 
 ## <a name="obtain-workspace-id-and-key"></a>取得工作區識別碼和金鑰
-安裝適用於 Windows 的 Log Analytics 代理程式之前，您需要 Log Analytics 工作區的工作區識別碼和金鑰。  這項資訊才能正確設定代理程式，並確保與 Azure 監視器中 Azure commercial 和 US Government 雲端可以順利進行通訊的每種安裝方法安裝期間是必要的。 
+安裝適用於 Windows 的 Log Analytics 代理程式之前，您需要 Log Analytics 工作區的工作區識別碼和金鑰。  每種安裝方法在安裝期間都需要這項資訊，才能正確設定代理程式，並確保其能與 Azure Commercial 和 US Government 雲端中的 Azure 監視器順利進行通訊。 
 
-1. 在 Azure 入口網站中，按一下 [所有服務]。 在資源清單中輸入 **Log Analytics**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics]。
+1. 在 Azure 入口網站中，搜尋並選取 **Log Analytics 工作區**。
 2. 在您的 Log Analytics 工作區清單中，選取您要設定讓代理程式向哪個工作區報告。
 3. 選取 [進階設定]。<br><br> ![Log Analytics 進階設定](media/agent-windows/log-analytics-advanced-settings-01.png)<br><br>  
 4. 選取 [連接的來源]，然後選取 [Windows 伺服器]。   
 5. 將 [工作區識別碼] 和 [主要金鑰] 複製並貼到您最愛的編輯器。    
    
 ## <a name="configure-agent-to-use-tls-12"></a>設定代理程式以使用 TLS 1.2
-若要設定將 [TLS 1.2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) 通訊協定用於 Windows 代理程式和 Log Analytics 服務之間的通訊，您可以遵循下列步驟，以在將代理程式安裝於虛擬機器之前或之後啟用此功能。   
+若要設定將 [TLS 1.2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) 通訊協定用於 Windows 代理程式和 Log Analytics 服務之間的通訊，您可以遵循下列步驟，以在將代理程式安裝於虛擬機器之前或之後啟用此功能。
+
+>[!NOTE]
+>如果正在將執行 Windows Server 2008 SP2 x64 的 VM 設定為使用 TLS 1.2，則必須先安裝下列 [SHA-2 程式碼簽署支援更新](https://support.microsoft.com/help/4474419/sha-2-code-signing-support-update)，才能執行下列步驟。 
+>
 
 1. 找出下列登錄子機碼：**HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
-2. 在 **Protocols** 底下針對 TLS 1.2 建立子機碼：**HKLM\System\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2**
-3. 在您先前所建立的 TLS 1.2 通訊協定版本子機碼底下，建立 **Client** 子機碼。 例如，**HKLM\System\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client**。
-4. 在 **HKLM\System\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client**底下建立下列 DWORD 值：
+2. 在 **Protocols** 下針對 TLS 1.2 建立子機碼：**HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2**
+3. 在您先前所建立的 TLS 1.2 通訊協定版本子機碼底下，建立 **Client** 子機碼。 例如，**HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client**。
+4. 在 **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client** 下建立下列 DWORD 值：
 
     * **Enabled** [Value = 1]
     * **DisabledByDefault** [Value = 0]  
@@ -70,7 +66,7 @@ ms.locfileid: "65138134"
 5. 重新啟動系統來使設定生效。 
 
 ## <a name="install-the-agent-using-setup-wizard"></a>使用安裝精靈安裝代理程式
-下列步驟安裝，並在 Azure 和 Azure Government 雲端中設定 Log Analytics 代理程式，使用您的電腦上的代理程式安裝精靈。 如果您想要了解如何設定代理程式，以同時回報至 System Center Operations Manager 管理群組，請參閱[使用代理程式安裝精靈部署 Operations Manager 代理程式](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-manually#to-deploy-the-operations-manager-agent-with-the-agent-setup-wizard)。
+下列步驟會在電腦上使用代理程式的安裝精靈來安裝並設定 Azure 和 Azure Government 雲端中 Log Analytics 代理程式。 如果您想要了解如何設定代理程式，以同時回報至 System Center Operations Manager 管理群組，請參閱[使用代理程式安裝精靈部署 Operations Manager 代理程式](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-manually#to-deploy-the-operations-manager-agent-with-the-agent-setup-wizard)。
 
 1. 在 Log Analyics 工作區中，從您稍早瀏覽的 [Windows 伺服器] 頁面，根據 Windows 作業系統的處理器架構，選取適當的 [下載 Windows 代理程式] 版本來下載。   
 2. 執行安裝程式以在您的電腦上安裝代理程式。
@@ -79,7 +75,7 @@ ms.locfileid: "65138134"
 4. 在 [目的資料夾] 頁面上，變更或保留預設的安裝資料夾，然後按 [下一步]。
 5. 在 [代理程式安裝選項] 頁面上，選擇將代理程式連線到 Azure Log Analytics，然後按 [下一步]。   
 6. 在 [Azure Log Analytics] 頁面上，執行下列操作：
-   1. 貼上您先前複製的**工作區識別碼**和**工作區金鑰 (主要金鑰)**。  如果電腦應該向 Azure Government Cloud 中的 Log Analytics 工作區回報，請從 [Azure 雲端] 下拉式清單中選取 [Azure 美國政府]。  
+   1. 貼上您先前複製的**工作區識別碼**和**工作區金鑰 (主要金鑰)** 。  如果電腦應該向 Azure Government Cloud 中的 Log Analytics 工作區回報，請從 [Azure 雲端] 下拉式清單中選取 [Azure US Gov]。  
    2. 如果電腦需要透過 Proxy 伺服器與 Log Analytics 服務進行通訊，請按一下 [進階]，然後提供 Proxy 伺服器的 URL 和連接埠號碼。  如果您的 Proxy 伺服器會要求驗證，請輸入要向 Proxy 伺服器進行驗證的使用者名稱和密碼，然後按 [下一步]。  
 7. 提供完必要的組態設定之後，按 [下一步]。<br><br> ![貼上工作區識別碼和主索引鍵](media/agent-windows/log-analytics-mma-setup-laworkspace.png)<br><br>
 8. 在 [安裝準備就緒] 頁面上，檢閱您的選擇，然後按一下 [安裝]。
@@ -110,14 +106,16 @@ ms.locfileid: "65138134"
 2. 若要以無訊息方式安裝代理程式，並設定它向 Azure 商業雲端中的工作區報告，在您解壓縮安裝檔案的資料夾中輸入： 
    
      ```dos
-    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID=<your workspace ID> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
+    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID="<your workspace ID>" OPINSIGHTS_WORKSPACE_KEY="<your workspace key>" AcceptEndUserLicenseAgreement=1
     ```
 
    或者，若要設定代理程式向 Azure 美國政府雲端報告，請輸入： 
 
      ```dos
-    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID=<your workspace ID> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
+    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID="<your workspace ID>" OPINSIGHTS_WORKSPACE_KEY="<your workspace key>" AcceptEndUserLicenseAgreement=1
     ```
+    >[!NOTE]
+    >*OPINSIGHTS_WORKSPACE_ID* 和 *OPINSIGHTS_WORKSPACE_KEY* 參數的字串值必須以雙引號封裝，以指示 Windows Installer 將其解譯為套件的有效選項。 
 
 ## <a name="install-the-agent-using-dsc-in-azure-automation"></a>使用 Azure 自動化中的 DSC 安裝代理程式
 
@@ -137,48 +135,48 @@ ms.locfileid: "65138134"
 若要直接從代理程式安裝套件擷取產品代碼，您可以使用[適用於 Windows Installer 開發人員的 Windows SDK 元件](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) (Windows 軟體開發套件的元件之一) 中的 Orca.exe，或依循 Microsoft Valuable Professional (MVP) 撰寫的[範例指令碼](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/)使用 PowerShell。  針對任一方法，您都必須先從 MMASetup 安裝套件擷取 **MOMagent.msi** 檔案。  這在前面[使用命令列安裝代理程式](#install-the-agent-using-the-command-line)一節底下的第一個步驟中有所敘述。  
 
 1. 將 xPSDesiredStateConfiguration DSC 模組從 [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) 匯入 Azure 自動化。  
-2.  建立 Azure 自動化的 *OPSINSIGHTS_WS_ID* 和 *OPSINSIGHTS_WS_KEY* 變數資產。 將 OPSINSIGHTS_WS_ID 設定為您的 Log Analytics 工作區識別碼，將 OPSINSIGHTS_WS_KEY 設定為您的工作區主索引鍵。
-3.  複製指令碼，並將其儲存為 MMAgent.ps1。
+2.    建立 Azure 自動化的 *OPSINSIGHTS_WS_ID* 和 *OPSINSIGHTS_WS_KEY* 變數資產。 將 OPSINSIGHTS_WS_ID 設定為您的 Log Analytics 工作區識別碼，將 OPSINSIGHTS_WS_KEY 設定為您的工作區主索引鍵。
+3.    複製指令碼，並將其儲存為 MMAgent.ps1。
 
-    ```powershell
-    Configuration MMAgent
-    {
-        $OIPackageLocalPath = "C:\Deploy\MMASetup-AMD64.exe"
-        $OPSINSIGHTS_WS_ID = Get-AutomationVariable -Name "OPSINSIGHTS_WS_ID"
-        $OPSINSIGHTS_WS_KEY = Get-AutomationVariable -Name "OPSINSIGHTS_WS_KEY"
+```powershell
+Configuration MMAgent
+{
+    $OIPackageLocalPath = "C:\Deploy\MMASetup-AMD64.exe"
+    $OPSINSIGHTS_WS_ID = Get-AutomationVariable -Name "OPSINSIGHTS_WS_ID"
+    $OPSINSIGHTS_WS_KEY = Get-AutomationVariable -Name "OPSINSIGHTS_WS_KEY"
 
-        Import-DscResource -ModuleName xPSDesiredStateConfiguration
-        Import-DscResource -ModuleName PSDesiredStateConfiguration
+    Import-DscResource -ModuleName xPSDesiredStateConfiguration
+    Import-DscResource -ModuleName PSDesiredStateConfiguration
 
-        Node OMSnode {
-            Service OIService
-            {
-                Name = "HealthService"
-                State = "Running"
-                DependsOn = "[Package]OI"
-            }
+    Node OMSnode {
+        Service OIService
+        {
+            Name = "HealthService"
+            State = "Running"
+            DependsOn = "[Package]OI"
+        }
 
-            xRemoteFile OIPackage {
-                Uri = "https://go.microsoft.com/fwlink/?LinkId=828603"
-                DestinationPath = $OIPackageLocalPath
-            }
+        xRemoteFile OIPackage {
+            Uri = "https://go.microsoft.com/fwlink/?LinkId=828603"
+            DestinationPath = $OIPackageLocalPath
+        }
 
-            Package OI {
-                Ensure = "Present"
-                Path  = $OIPackageLocalPath
-                Name = "Microsoft Monitoring Agent"
-                ProductId = "8A7F2C51-4C7D-4BFD-9014-91D11F24AAE2"
-                Arguments = '/C:"setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=' + $OPSINSIGHTS_WS_ID + ' OPINSIGHTS_WORKSPACE_KEY=' + $OPSINSIGHTS_WS_KEY + ' AcceptEndUserLicenseAgreement=1"'
-                DependsOn = "[xRemoteFile]OIPackage"
-            }
+        Package OI {
+            Ensure = "Present"
+            Path  = $OIPackageLocalPath
+            Name = "Microsoft Monitoring Agent"
+            ProductId = "8A7F2C51-4C7D-4BFD-9014-91D11F24AAE2"
+            Arguments = '/C:"setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=' + $OPSINSIGHTS_WS_ID + ' OPINSIGHTS_WORKSPACE_KEY=' + $OPSINSIGHTS_WS_KEY + ' AcceptEndUserLicenseAgreement=1"'
+            DependsOn = "[xRemoteFile]OIPackage"
         }
     }
+}
 
-    ```
+```
 
 4. 使用稍早建議的方法，將指令碼中的 `ProductId` 值更新為從最新版代理程式安裝套件擷取的產品代碼。 
-5. [將 MMAgent.ps1 設定指令碼匯入](../../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation)您的自動化帳戶。 
-5. 為設定[指派 Windows 電腦或節點](../../automation/automation-dsc-getting-started.md#onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration)。 在 15 分鐘內，節點會檢查其設定，然後系統會將代理程式推送至節點。
+5. [將 MMAgent.ps1 設定指令碼匯入](../../automation/automation-dsc-getting-started.md#import-a-configuration-into-azure-automation)您的自動化帳戶。 
+6. 為設定[指派 Windows 電腦或節點](../../automation/automation-dsc-getting-started.md#enable-an-azure-resource-manager-vm-for-management-with-state-configuration)。 在 15 分鐘內，節點會檢查其設定，然後系統會將代理程式推送至節點。
 
 ## <a name="verify-agent-connectivity-to-log-analytics"></a>確認代理程式能夠連線到 Log Analytics
 
@@ -186,11 +184,11 @@ ms.locfileid: "65138134"
 
 在電腦的 [控制台] 中，找到 [Microsoft Monitoring Agent]。  選取它，然後代理程式應該會在 [Azure Log Analytics] 索引標籤上顯示訊息，指出：[Microsoft Monitoring Agent 已成功與 Microsoft Operations Management Suite 服務連線。]<br><br> ![MMA 對 Log Analytics 的連線狀態](media/agent-windows/log-analytics-mma-laworkspace-status.png)
 
-您也可以在 Azure 入口網站中執行簡單的記錄檔查詢。  
+您也可以在 Azure 入口網站中執行簡單的記錄查詢。  
 
-1. 在 Azure 入口網站中，按一下 [所有服務]。 在資源清單中，輸入**Azure 監視器**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取  **Azure 監視器**。  
-2. 選取 **記錄檔**功能表中。 
-2. 在 [記錄] 窗格的查詢欄位中輸入：  
+1. 在 Azure 入口網站中，搜尋並選取 [監視器]。
+1. 在功能表中選取 [記錄]。
+1. 在 [記錄] 窗格的查詢欄位中鍵入：  
 
     ```
     Heartbeat 
@@ -202,4 +200,6 @@ ms.locfileid: "65138134"
 
 ## <a name="next-steps"></a>後續步驟
 
-檢閱[管理和維護適用於 Windows 和 Linux 的 Log Analytics 代理程式](agent-manage.md)，了解如何在電腦上代理程式的部署生命週期內管理代理程式。  
+- 檢閱[管理及維護適用於 Windows 和 Linux 的 Log Analytics 代理程式](agent-manage.md)，以了解如何重新設定、升級或移除虛擬機器中的代理程式。
+
+- 如果在安裝或管理代理程式時遇到問題，請檢閱[針對 Windows 代理程式進行疑難排解](agent-windows-troubleshoot.md)。

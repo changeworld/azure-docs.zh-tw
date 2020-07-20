@@ -1,51 +1,62 @@
 ---
-title: Azure 容器執行個體資源可用性
+title: 依區域的資源可用性
 description: Azure 容器執行個體服務的計算和記憶體資源在不同 Azure 區域中的可用性。
-services: container-instances
-author: dlepow
-ms.service: container-instances
-ms.topic: overview
-ms.date: 03/01/2019
+ms.topic: article
+ms.date: 04/27/2020
 ms.author: danlep
-ms.openlocfilehash: 1ca23a95c746139963aa70ed20bb888152fd5cd8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: HT
+ms.openlocfilehash: 119c1202fe59e02a1b6ff802e3dbdc4d52133abe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554849"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82583889"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure 容器執行個體在 Azure 區域中的資源可用性
 
-本文詳細說明 Azure 容器執行個體的計算和記憶體資源在 Azure 區域中的可用性。 
+本文詳細說明 azure 容器實例的計算、記憶體和儲存體資源在 Azure 區域中的可用性，以及目標作業系統。 
 
-顯示的值為每個[容器群組](container-instances-container-groups.md)部署可用的最大資源。 以下是本文章發行時的值。 如需最新資訊，請使用[清單功能](/rest/api/container-instances/listcapabilities/listcapabilities) API。 
+顯示的值為每個[容器群組](container-instances-container-groups.md)部署可用的最大資源。 以下是本文章發行時的值。 
 
 > [!NOTE]
-> 在這些資源限制下建立的容器群組會受限於部署區域的可用性。 地區負載過重時，您在部署執行個體時可能會失敗。 若要減少這類的部署失敗，請嘗試以較低的資源設定部署執行個體，或過一段時間再部署。
+> 在這些資源限制下建立的容器群組會受限於部署區域的可用性。 地區負載過重時，您在部署執行個體時可能會失敗。 若要減輕這類部署失敗，請嘗試以較低的資源設定部署實例，或稍後嘗試部署，或在具有可用資源的不同區域中進行部署。
 
 如需部署中的配額和其他限制的相關資訊，請參閱 [Azure 容器執行個體的配額和限制](container-instances-quotas.md)。
 
 ## <a name="availability---general"></a>可用性 - 一般
 
-| 位置 | 作業系統 | CPU | 記憶體 (GB) |
-| -------- | -- | :---: | :-----------: |
-| 加拿大中部、美國中部、美國東部 2、美國中南部 | Linux | 4 | 16 |
-| 美國東部、北歐、西歐、美國西部、美國西部 2 | Linux | 4 | 14 |
-| 日本東部 | Linux | 2 | 8 |
-| 澳大利亞東部、東南亞 | Linux | 2 | 7 |
-| 印度中部、東亞、美國中北部、印度南部 | Linux | 2 | 3.5 |
-| 美國東部、西歐、美國西部 | Windows | 4 | 14 |
-| 澳大利亞東部、加拿大中部、印度中部、美國中部、東亞、美國東部 2、日本東部、美國中北部、北歐、美國中南部、印度南部、東南亞、美國西部 2 | Windows | 2 | 3.5 |
+下欄區域和最大資源可供具有 Linux 和[支援](container-instances-faq.md#what-windows-base-os-images-are-supported)的 Windows Server 2016 容器的容器群組使用。
 
-## <a name="availability---virtual-network-deployment-preview"></a>可用性 - 虛擬網路部署模型 (預覽)
+| 區域 | OS | 最大 CPU | 最大記憶體（GB） | 儲存體 (GB) |
+| -------- | -- | :---: | :-----------: | :---: |
+| 巴西南部、加拿大中部、印度中部、美國中部、東亞、美國東部、美國東部2、歐洲北部、美國中南部、東南亞、印度南部、英國南部、西歐、美國西部、美國西部2 | Linux | 4 | 16 | 50 |
+| 澳大利亞東部、日本東部 | Linux | 2 | 8 | 50 |
+| 美國中北部 | Linux | 2 | 3.5 | 50 |
+| 巴西南部、日本東部、西歐 | Windows | 4 | 16 | 20 |
+| 美國東部、美國西部 | Windows | 4 | 14 | 20 |
+| 澳大利亞東部、加拿大中部、印度中部、美國中部、東亞、美國東部2、美國中北部、北歐、美國中南部、東南亞、印度南部、英國南部、美國西部2 | Windows | 2 | 3.5 | 20 |
 
-下列區域和資源可用於 [Azure 虛擬網路](container-instances-vnet.md) (預覽) 中部署的容器群組，
+## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>可用性 - Windows Server 2019 LTSC，1809年部署 (預覽)
+
+下欄區域和最大資源可供具有 Windows Server 2019 容器（預覽）的容器群組使用。
+
+| 區域 | OS | 最大 CPU | 最大記憶體（GB） | 儲存體 (GB) |
+| -------- | -- | :---: | :-----------: | :---: |
+| 澳大利亞東部、巴西南部、加拿大中部、印度中部、美國中部、東亞、美國東部、日本東部、美國中北部、北歐、美國中南部、東南亞、印度南部、英國南部、西歐 | Windows | 4 | 16 | 20 |
+| 美國東部2、美國西部2 | Windows | 2 | 3.5 | 20 |
+
+
+## <a name="availability---virtual-network-deployment"></a>可用性-虛擬網路部署
+
+[Azure 虛擬網路](container-instances-vnet.md)中部署的容器群組可使用下欄區域和資源上限。
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
 ## <a name="availability---gpu-resources-preview"></a>可用性 - GPU 資源 (預覽)
 
-下列區域和資源可用於隨 [CPU 資源](container-instances-gpu.md) (預覽) 部署的容器群組，
+下欄區域和最大資源可供使用[GPU 資源](container-instances-gpu.md)（預覽）部署的容器群組使用。
+
+> [!IMPORTANT]
+> 只有在要求時，才可以使用 GPU 資源。 若要要求存取 GPU 資源，請提交[Azure 支援要求][azure-support]。
 
 [!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
@@ -55,3 +66,6 @@ ms.locfileid: "57554849"
 如果您想要了解其他區域或增加的資源可用性，請經由 [aka.ms/aci/feedback](https://aka.ms/aci/feedback) 告知小組人員。
 
 如需對容器執行個體部署疑難排解的相關資訊，請參閱[對 Azure 容器執行個體的部署問題進行疑難排解](container-instances-troubleshooting.md)。
+
+
+[azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

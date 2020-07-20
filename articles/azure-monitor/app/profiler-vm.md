@@ -1,23 +1,16 @@
 ---
-title: 使用 Application Insights Profiler 來分析 Azure VM 上所執行的 Web 應用程式 | Microsoft Docs
+title: 分析 Azure VM 上的 web 應用程式-Application Insights Profiler
 description: 使用 Application Insights Profiler 來分析 Azure VM 上的 Web 應用程式。
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 4cca65e2be44d2c846cd4034f0a9d7e8c7d9af28
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
-ms.translationtype: MT
+ms.date: 11/08/2019
+ms.reviewer: mbullwin
+ms.openlocfilehash: 7c5dfe6ed08df01f78346c76fd5a35e7d64ab520
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58260038"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77671574"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>使用 Application Insights Profiler 來分析 Azure 虛擬機器或虛擬機器擴展集上所執行的 Web 應用程式
 
@@ -31,7 +24,8 @@ ms.locfileid: "58260038"
 ## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>在虛擬機器或虛擬機器擴展集上部署 Profiler
 本文示範如何在 Azure 虛擬機器 (VM) 或 Azure 虛擬機器擴展集上執行 Application Insights Profiler。 Profiler 會與 VM 的 Azure 診斷擴充功能一起安裝。 設定擴充功能以執行 Profiler，並將 Application Insights SDK 建置到您的應用程式中。
 
-1. 將 Application Insights SDK 新增至 [ASP.NET 應用程式](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net)或一般的 [.NET 應用程式。](windows-services.md?toc=/azure/azure-monitor/toc.json)  
+1. 將 Application Insights SDK 新增至[ASP.NET 應用程式](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net)。
+
    若要檢視您要求的設定檔，您必須將要求遙測傳送至 Application Insights。
 
 1. 在 VM 上安裝 Azure 診斷擴充功能。 如需完整的 Resource Manager 範本範例，請參閱：  
@@ -59,7 +53,7 @@ ms.locfileid: "58260038"
 
    套用修改通常會牽涉到完整範本部署或透過 PowerShell Cmdlet 或 Visual Studio 的雲端服務型發佈。  
 
-   下列 PowerShell 命令會觸及 Azure 診斷擴充功能的現有虛擬機器的替代方法。 新增先前所述的 ProfilerSink Get AzVMDiagnosticsExtension 命令所傳回的設定。 然後傳遞給組 AzVMDiagnosticsExtension 命令的已更新的組態。
+   下列 PowerShell 命令是一種替代方法，適用于僅接觸 Azure 診斷擴充功能的現有虛擬機器。 將先前提到的 ProfilerSink 新增至 Set-azvmdiagnosticsextension 命令所傳回的 config。 然後將更新的 config 傳遞至 Set-azvmdiagnosticsextension 命令。
 
     ```powershell
     $ConfigFilePath = [IO.Path]::GetTempFileName()
@@ -85,24 +79,24 @@ ms.locfileid: "58260038"
 
 1. 部署應用程式。
 
-## <a name="set-profiler-sink-using-azure-resource-explorer"></a>設定 Profiler 接收使用 Azure 資源總管
-我們還沒有從入口網站中設定 Application Insights Profiler 接收的方法。 而不是使用 powershell，如上面所述，您可以使用 Azure 資源總管設定的接收。 但是請注意，如果您重新部署 VM，接收將會遺失。 您將需要更新部署的 VM，以保留此設定時，您使用的設定。
+## <a name="set-profiler-sink-using-azure-resource-explorer"></a>使用 Azure 資源總管設定 Profiler 接收
+我們尚未提供從入口網站設定 Application Insights Profiler 接收的方式。 您可以使用 Azure 資源總管來設定接收，而不使用上述的 powershell。 但請注意，如果您再次部署 VM，接收將會遺失。 您必須更新您在部署 VM 時所使用的設定，以保留此設定。
 
-1. 檢查安裝的 Windows Azure 診斷擴充功能時，藉由檢視您的虛擬機器安裝的擴充功能。  
+1. 藉由查看為您的虛擬機器安裝的擴充功能，檢查是否已安裝 Windows Azure 診斷延伸模組。  
 
-    ![檢查是否已安裝 WAD 延伸模組][wadextension]
+    ![檢查是否已安裝 WAD 擴充功能][wadextension]
 
-1. 尋找您的 VM 中的 VM 診斷擴充功能。 展開您的資源群組、 Microsoft.Compute virtualMachines、 虛擬機器名稱和延伸模組。  
+2. 尋找 VM 的 VM 診斷擴充功能。 移至 [https://resources.azure.com](https://resources.azure.com)。 展開您的資源群組、[Microsoft]、[計算] virtualMachines、[虛擬機器名稱] 和 [擴充功能]。  
 
-    ![瀏覽至 Azure 資源總管 中的 WAD 設定][azureresourceexplorer]
+    ![流覽至 Azure 資源總管中的 WAD config][azureresourceexplorer]
 
-1. 在 WadCfg SinksConfig 節點中新增 Application Insights Profiler 接收。 如果您還沒有 SinksConfig 區段，您可能需要新增一個。 請務必在您的設定中指定適當的 Application Insights iKey。 您必須切換為讀取/寫入的總管模式，在右上角，然後按 的藍色的 編輯 按鈕。
+3. 將 Application Insights Profiler 接收新增至 Diagnostics.wadcfg 下的 SinksConfig 節點。 如果您還沒有 SinksConfig 區段，您可能需要新增一個區段。 請務必在您的設定中指定適當的 Application Insights iKey。 您必須將 [瀏覽器] 模式切換至右上角的 [讀取/寫入]，然後按下藍色的 [編輯] 按鈕。
 
     ![新增 Application Insights Profiler 接收][resourceexplorersinksconfig]
 
-1. 當您完成編輯組態中，按下 'Put'。 如果成功 put，綠色的核取記號會出現在畫面中間。
+4. 編輯完設定之後，請按 [Put]。 如果 put 成功，畫面中間會出現綠色的核取記號。
 
-    ![傳送 put 的要求，以套用變更][resourceexplorerput]
+    ![傳送 put 要求以套用變更][resourceexplorerput]
 
 
 
@@ -115,7 +109,7 @@ ms.locfileid: "58260038"
 ## <a name="next-steps"></a>後續步驟
 
 - 產生應用程式的流量 (例如，啟動[可用性測試](monitor-web-app-availability.md))。 然後，等待 10 到 15 分鐘，讓追蹤開始傳送到 Application Insights 執行個體。
-- 請參閱 Azure 入口網站中的 [Profiler 追蹤](profiler-overview.md?toc=/azure/azure-monitor/toc.json)。
+- 請參閱 Azure 入口網站中的[Profiler 追蹤](profiler-overview.md?toc=/azure/azure-monitor/toc.json)。
 - 如需 Profiler 問題的疑難排解說明，請參閱 [Profiler 疑難排解](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json)。
 
 [azureresourceexplorer]: ./media/profiler-vm/azure-resource-explorer.png

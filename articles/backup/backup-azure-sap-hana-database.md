@@ -1,194 +1,214 @@
 ---
-title: 備份至 Azure 備份使用 Azure 的 SAP HANA 資料庫 |Microsoft Docs
-description: 本教學課程說明如何使用 Azure 備份服務將 SAP HANA 資料庫備份至 Azure。
-services: backup
-author: rayne-wiselman
-manager: carmonm
-ms.service: backup
+title: 使用 Azure 備份將 SAP Hana 資料庫備份至 Azure
+description: 在本文中，您將了解如何使用 Azure 備份服務，將 SAP Hana 資料庫備份至 Azure 虛擬機器。
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.author: raynew
-ms.openlocfilehash: 5ed41013535e4591d88bff5c017c1fcf4c4053cc
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
-ms.translationtype: MT
+ms.date: 11/12/2019
+ms.openlocfilehash: c9f9841ac40a39fc51c0e722415c871650bec86d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65237803"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84667313"
 ---
-# <a name="back-up-an-sap-hana-database"></a>備份 SAP HANA 資料庫
+# <a name="back-up-sap-hana-databases-in-azure-vms"></a>將 SAP Hana 資料庫備份到 Azure VM
 
-[Azure 備份](backup-overview.md)支援備份至 Azure 的 SAP HANA 資料庫。
+SAP Hana 資料庫是需要低復原點目標 (RPO) 和長期保留的重要工作負載。 您可以使用 [Azure 備份](backup-overview.md)來備份在 Azure 虛擬機器 (VM) 上執行的 SAP Hana 資料庫。
 
-> [!NOTE]
-> 此功能目前為公開預覽狀態。 它目前不適合在生產環境，並沒有保證的 SLA。 
+本文將說明如何將執行於 Azure VM 上的 SAP Hana 資料庫備份至 Azure 備份復原服務保存庫。
 
+在本文中，您將了解如何：
+> [!div class="checklist"]
+>
+> * 建立和設定保存庫
+> * 探索資料庫
+> * 設定備份
+> * 執行隨選備份作業
 
-## <a name="scenario-support"></a>案例支援
+>[!NOTE]
+>[開始使用](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db)適用於 RHEL (7.4、7.6、7.7 或 8.1) 的 SAP Hana 備份預覽。 如有其他問題，請透過此地址發送電子郵件給我們：[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com)。
 
-**支援** | **詳細資料**
---- | ---
-**支援的地區** | 澳大利亞東南部、 澳大利亞東部 <br> 巴西南部 <br> 加拿大中部、 加拿大東部 <br> 東南亞、 東亞 <br> 美國東部、 美國東部 2、 美國中西部、 美國西部、 美國西部 2、 North Central US、 美國中部、 美國中南部<br> 印度中部、 印度南部 <br> 日本東部、日本西部<br> 南韓中部、南韓南部 <br> 北歐、西歐 <br> 英國南部、 英國西部
-**支援的 VM 作業系統** | SLES 12 SP2 或 SP3。
-**支援的 HANA 版本** | 在 HANA 上的 SSDC 1.x，MDC HANA 上 2.x < = SPS03
+>[!NOTE]
+>**Azure VM 中的 SQL server 虛刪除和 Azure VM 工作負載中的 SAP Hana 虛刪除**現在已有預覽版。<br>
+>若要註冊預覽版，請將寫入我們的 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 。
 
+## <a name="prerequisites"></a>Prerequisites
 
-### <a name="current-limitations"></a>目前的限制
+請參閱[必要條件](tutorial-backup-sap-hana-db.md#prerequisites)和[預先註冊指令碼功能](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)區段來設定用於備份的資料庫。
 
-- 您可以只備份 Azure Vm 上執行的 SAP HANA 資料庫。
-- 您只可以在 Azure 入口網站中設定 SAP HANA 備份。 使用 PowerShell、 CLI 或 REST API，就無法設定此功能。
-- 您可以只備份資料庫以相應增加模式。
-- 每隔 15 分鐘，您可以將資料庫記錄備份中。 記錄備份只會開始流向成功的完整資料庫備份完成後。
-- 您可以建立完整和差異備份。 目前不支援增量備份。
-- 適用於 SAP HANA 備份之後，您無法修改備份原則。 如果您想要使用不同的設定備份，建立新的原則，或將不同原則指派。 
-    - 若要建立新的原則，請在保存庫中按一下**原則** > **備份原則** > **+ 新增** > **中的 SAP HANAAzure VM**，並指定原則設定。
-    - 若要指派不同的原則，在執行資料庫的 vm 屬性中按一下目前的原則名稱。 接著，在**備份原則**頁面，您可以選取要用於備份不同的原則。
+### <a name="establish-network-connectivity"></a>建立網路連線
 
+進行所有作業時，在 Azure VM 上執行的 SAP Hana 資料庫都需要連線到 Azure 備份服務、Azure 儲存體和 Azure Active Directory。 這可以藉由使用私人端點，或允許存取所需的公用 IP 位址或 FQDN 來達成。 若不允許正確連線到所需的 Azure 服務，可能會導致資料庫探索、設定備份、執行備份和還原資料等作業失敗。
 
+下表列出您可以用來建立連線的各種替代方案：
 
+| **選項**                        | **優點**                                               | **缺點**                                            |
+| --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 私人端點                 | 允許透過虛擬網路內的私人 IP 進行備份  <br><br>   可對網路和保存庫端進行更細微的控制 | 會產生標準私人端點的[費用](https://azure.microsoft.com/pricing/details/private-link/) |
+| NSG 服務標籤                  | 會自動合併範圍變更，因此更容易管理   <br><br>   沒有額外的成本 | 只能搭配 NSG 使用  <br><br>    提供整個服務的存取權 |
+| Azure 防火牆 FQDN 標籤          | 會自動管理所需的 FQDN，因此更容易管理 | 只能搭配 Azure 防火牆使用                         |
+| 允許存取服務 FQDN/IP | 沒有額外的成本   <br><br>  適用於所有網路安全性應用裝置和防火牆 | 可能需要存取一組廣泛的 IP 或 FQDN   |
+| 使用 HTTP Proxy                 | VM 的單一網際網路存取點                       | 使用 Proxy 軟體執行 VM 時的額外成本         |
 
-## <a name="prerequisites"></a>必要條件
+如需使用這些選項的更多詳細資料，請瀏覽下列內容：
 
-請確定您在設定備份之前，執行下列動作：
+#### <a name="private-endpoints"></a>私人端點
 
-1. 在 VM 上執行 SAP HANA 資料庫，安裝 Microsoft 的官方[.NET Core 執行階段 2.1](https://dotnet.microsoft.com/download/linux-package-manager/sles/runtime-current)封裝。 請注意：
-    - 您只需要**dotnet 執行階段 2.1**封裝。 您不需要**aspnetcore 執行階段 2.1**。
-    - 如果 VM 沒有網際網路存取、 鏡像或 dotnet 執行階段 2.1 （以及所有相依的 Rpm） 從 Microsoft 套件摘要指定提供離線快取中的頁面。
-    - 在套件安裝期間可能會要求您指定要使用的選項。 如果是的話，指定**解決方案 2**。
+私人端點可讓您從虛擬網路內的伺服器安全地連線到您的復原服務保存庫。 私人端點會針對您的保存庫使用 VNET 位址空間中的 IP。 您在虛擬網路內的資源與保存庫之間的網路流量，會透過您的虛擬網路和 Microsoft 骨幹網路上的私人連結來傳輸。 這可避免資料在公用網際網路暴露。 請在[這裡](https://docs.microsoft.com/azure/backup/private-endpoints)詳讀 Azure 備份的私人端點詳細資料。
 
-        ![封裝的安裝選項](./media/backup-azure-sap-hana-database/hana-package.png)
+#### <a name="nsg-tags"></a>NSG 標籤
 
-2.  在 VM 上安裝並啟用從官方 SLES 套件/媒體，如下所示使用 zypper，ODBC 驅動程式套件：
+如果您使用網路安全性群組 (NSG)，請使用 AzureBackup 服務標籤，以允許對 Azure 備份進行輸出存取。 除了 Azure 備份標籤之外，您還需要為 Azure AD 和 Azure 儲存體建立類似的 [NSG](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) 規則，以允許用於驗證和資料傳輸的連線。  下列步驟說明建立 Azure 備份標籤規則的程序：
 
-    ``` 
-    sudo zypper update
-    sudo zypper install unixODBC
-    ```
-4.  允許連線從 VM 到網際網路，以便它可以連線到 Azure，如下列程序中所述。
+1. 在 [所有服務] 中，移至 [網路安全性群組]，然後選取網路安全性群組。
 
+1. 選取 [設定]**** 底下的 [輸出安全性規則]****。
 
-### <a name="set-up-network-connectivity"></a>設定網路連線
+1. 選取 [新增]。 輸入可供用於建立新規則的所有必要詳細資料，如[安全性規則設定](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)中所述。 請確定 [目的地] 選項已設定為 [服務標籤]，且 [目的地服務標籤] 已設定為 [AzureBackup]。
 
-SAP HANA VM 的所有作業，都必須連線到 Azure 的公用 IP 位址。 連線無法運作 （資料庫探索、 設定備份、 排程備份、 還原復原點等等） 的 VM 作業。 建立連線，藉由允許存取 Azure 資料中心 IP 範圍： 
+1. 按一下 [新增] 以儲存新建立的輸出安全性規則。
 
-- 您可以下載[IP 位址範圍](https://www.microsoft.com/download/details.aspx?id=41653)Azure 資料中心，然後讓這些 IP 位址的存取權。
-- 如果您使用網路安全性群組 (Nsg)，您可以使用 AzureCloud[服務標籤](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)若要允許所有 Azure 公用 IP 位址。 您可以使用[Set-azurenetworksecurityrule cmdlet](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurenetworksecurityrule?view=azuresmps-4.0.0)修改 NSG 規則。
+同樣地，您也可以建立 Azure 儲存體和 Azure AD 的 NSG 輸出安全性規則。
 
-## <a name="onboard-to-the-public-preview"></a>上架到公開預覽
+#### <a name="azure-firewall-tags"></a>Azure 防火牆標籤
 
-上架到公開預覽版本中，如下所示：
+如果您使用的是 Azure 防火牆，請使用 [AzureBackup] 的 [Azure 防火牆標籤](https://docs.microsoft.com/azure/firewall/fqdn-tags)來建立應用程式規則。 這會允許對 Azure 備份進行的所有輸出存取。
 
-- 在入口網站，註冊復原服務的服務提供者，藉由您訂用帳戶 ID[遵循這篇文章](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal)。 
-- 針對 PowerShell，請執行這個指令程式。 它應該為 「 已註冊 」 完成。
+#### <a name="allow-access-to-service-ip-ranges"></a>允許存取服務 IP 範圍
 
-    ```
-    PS C:>  Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
-    ```
+如果您選擇允許存取服務 IP，請在[此處](https://www.microsoft.com/download/confirmation.aspx?id=56519)參閱 JSON 檔案中可用的 IP 範圍。 您必須允許存取對應至 Azure 備份、Azure 儲存體和 Azure Active Directory 的 IP。
 
+#### <a name="allow-access-to-service-fqdns"></a>允許存取服務 FQDN
 
+您也可以使用下列 FQDN 來允許從伺服器存取所需的服務：
+
+| 服務    | 要存取的網域名稱                             |
+| -------------- | ------------------------------------------------------------ |
+| Azure 備份  | `*.backup.windowsazure.com`                             |
+| Azure 儲存體 | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` |
+| Azure AD      | 請遵循[本文](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)中第 56 和第 59 節來允許存取 FQDN |
+
+#### <a name="use-an-http-proxy-server-to-route-traffic"></a>使用 HTTP Proxy 伺服器以路由流量
+
+當您備份執行於 Azure VM 上的 SAP Hana 資料庫時，VM 上的備份擴充功能會使用 HTTPS API 將管理命令傳送至 Azure 備份，並將資料傳送至 Azure 儲存體。 備份延伸模組也會使用 Azure AD 進行驗證。 透過 HTTP Proxy 路由傳送這三項服務的備份延伸模組流量。 使用上述的 IP 和 FQDN 清單來允許存取所需的服務。 不支援已驗證的 Proxy 伺服器。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ## <a name="discover-the-databases"></a>探索資料庫
 
+1. 在保存庫的 [使用者入門]**** 中，按一下 [備份]****。 在 [工作負載的執行位置？]**** 中，選取 [Azure VM 中的 SAP HANA]****。
+2. 按一下 [開始探索]****。 這會對保存庫區域中未受保護的 Linux VM 起始探索。
 
-1. 在保存庫中，在**快速入門**，按一下**備份**。 在 **地方執行您的工作負載？**，選取**Azure VM 中的 SAP HANA**。
-2. 按一下 **開始探索**。 這會起始的未受保護的 Linux Vm，在保存庫區域中的探索。
+   * 進行探索之後，未受保護的 VM 會出現在入口網站中，並依照名稱和資源群組列出。
+   * 如果 VM 未如預期列出，請檢查該 VM 是否已備份在保存庫中。
+   * 多個 VM 可以有相同名稱，但會屬於不同的資源群組。
 
-   - 在探索之後，未受保護的 Vm 會出現在入口網站中，依照名稱和資源群組。
-   - 如果沒有列出 VM，如預期般運作，請檢查是否已經備份保存庫中。
-   - 多個 Vm 可以有相同的名稱，但它們屬於不同的資源群組。
+3. 在 [選取虛擬機器] 中按一下連結，以下載提供權限讓 Azure 備份服務存取 SAP Hana VM 以進行資料庫探索的指令碼。
+4. 在每個裝載 SAP Hana 資料庫以進行備份的 VM 上執行指令碼。
+5. 在 VM 上執行指令碼後，在 [選取虛擬機器] 中選取 VM。 然後，按一下 [探索資料庫]。
+6. Azure 備份會探索 VM 上的所有 SAP HANA 資料庫。 在探索期間，Azure 備份會向保存庫註冊 VM，並在 VM 上安裝延伸模組。 資料庫上不會安裝代理程式。
 
-3. 在 **選取虛擬機器**，按一下連結即可下載提供 Azure 備份服務來存取資料庫探索 SAP HANA Vm 的權限的指令碼
-4. 在主控您想要備份的 SAP HANA 資料庫的每個 VM 上執行指令碼。
-5. 在 Vm 上，執行指令碼時，也將在之後**選取虛擬機器**，選取的 Vm。 然後按一下**探索 Db**。
-6. Azure 備份會探索所有在 VM 上的 SAP HANA 資料庫。 在探索期間 Azure 備份保存庫註冊 VM，並在 VM 上安裝擴充功能。 在資料庫上不安裝任何代理程式。
+    ![探索 SAP Hana 資料庫](./media/backup-azure-sap-hana-database/hana-discover.png)
 
-    ![探索 SAP HANA 資料庫](./media/backup-azure-sap-hana-database/hana-discover.png)
-    
 ## <a name="configure-backup"></a>設定備份  
 
-立即啟用備份。
+現在，啟用備份。
 
-1. 在步驟 2 中，按一下**設定備份**。
-2. 在 **選取要備份項目**，選取您想要保護的所有資料庫 >**確定**。
-3. 在  **備份原則** > **選擇備份原則**，建立新的備份原則，對於資料庫，請依照下列指示。
-4. 在 建立原則之後,**備份**功能表上，按一下**啟用備份**。
-5. 備份組態中追蹤進度 **通知** 入口網站的區域。
+1. 在步驟 2 中，按一下 [設定備份]。
+
+    ![設定備份](./media/backup-azure-sap-hana-database/configure-backup.png)
+2. 在 [選取要備份的項目] 中，選取您想要保護的所有資料庫 > [確定]。
+
+    ![選取要備份的項目](./media/backup-azure-sap-hana-database/select-items.png)
+3. 在 [備份原則] > [選擇備份原則] 中，根據下方指示，為資料庫建立新的備份原則。
+
+    ![選擇備份原則](./media/backup-azure-sap-hana-database/backup-policy.png)
+4. 在建立原則後，在 [備份] 功能表上按一下 [啟用備份]。
+
+    ![啟用備份](./media/backup-azure-sap-hana-database/enable-backup.png)
+5. 在入口網站的 [通知] 區域中，追蹤備份設定進度。
 
 ### <a name="create-a-backup-policy"></a>建立備份原則
-備份原則會定義包含執行備份，以及要保留的時間長度。
 
-- 原則會建立於保存庫層級上。
-- 多個保存庫可以使用相同的備份原則，但您必須將備份原則套用至每個保存庫。
+備份原則會定義備份的進行時間和備份的保留時間長度。
 
-指定的原則設定，如下所示：
+* 原則會建立於保存庫層級上。
+* 多個保存庫可以使用相同的備份原則，但您必須將備份原則套用至每個保存庫。
+
+>[!NOTE]
+>在 Azure VM 中執行 SAP Hana 資料庫備份時，Azure 備份不會自動調整日光節約時間變更。
+>
+>請視需要手動修改原則。
+
+指定原則設定，如下所示：
 
 1. 在 [原則名稱] 中，為新原則輸入名稱。
+
+   ![輸入原則名稱](./media/backup-azure-sap-hana-database/policy-name.png)
 2. 在 [完整備份原則] 中選取 [備份頻率]，然後選擇 [每日] 或 [每週]。
-   - **每日**：選取小時和備份作業會開始的時區。
-   
-       - 您必須執行完整備份。 您無法關閉此選項。
-       - 按一下 [完整備份] 以檢視原則。
-       - 您無法為每日完整備份建立差異備份。
-       
-   - **每週**:選取星期幾、 小時與備份工作執行所在的時區的日期。
-3. 在 **保留範圍**，進行完整備份的保留設定。
-    - 依預設會選取所有選項。 清除您不打算使用，並設定您所執行的任何保留期範圍限制。
-    - 任何類型 （完整/差異/記錄檔） 的最小保留期限是備份的七天。
-    - 復原點會根據其保留範圍標記為保留。 例如，如果您選取每日完整備份，每天只會觸發一次完整備份。
-    - 備份會標記特定一天，並將其保留為基礎的每週的保留範圍和設定。
-    - 每月和每年保留範圍會以類似方式運作。
+   * **每日**：選取備份作業的開始時間和時區。
+       * 您必須執行完整備份。 您無法關閉此選項。
+       * 按一下 [完整備份] 以檢視原則。
+       * 您無法為每日完整備份建立差異備份。
+   * **每週**：選取備份作業的執行日期 (星期幾)、時間和時區。
 
-4. 在 **完整的備份原則**功能表上，按一下**確定**接受設定。
-5. 選取 **差異備份**新增差異原則。
+   ![選取備份頻率](./media/backup-azure-sap-hana-database/backup-frequency.png)
+
+3. 在 [保留範圍] 中，設定完整備份的保留期設定。
+    * 依預設會選取所有選項。 請清除您不想要使用的任何保留範圍限制，並設定您要使用的限制。
+    * 所有備份類型 (完整/差異/記錄) 的最小保留期間皆為七天。
+    * 復原點會根據其保留範圍標記為保留。 例如，如果您選取每日完整備份，每天只會觸發一次完整備份。
+    * 系統會根據每週保留範圍和設定，標記和保留特定日期的備份。
+    * 每月和每年保留範圍會以類似方式運作。
+
+4. 在 [完整備份原則] 功能表中，按一下 [確定] 以接受設定。
+5. 選取 [差異備份] 以新增差異原則。
 6. 在 [差異備份原則] 中，選取 [啟用] 以開啟頻率和保留控制項。
-    - 您每天最多可以觸發一次差異備份。
-    - 差異備份最多可以保留 180 天。 如果您需要保留更久，則必須使用完整備份。
+    * 您每天最多可以觸發一次差異備份。
+    * 差異備份最多可以保留 180 天。 如果您需要保留更久，則必須使用完整備份。
+
+    ![差異備份原則](./media/backup-azure-sap-hana-database/differential-backup-policy.png)
 
     > [!NOTE]
-    > 目前不支援增量備份。 
+    > 目前不支援增量備份。
 
-7. 按一下  **確定**以儲存原則，並返回 主要**備份原則**功能表。
-8. 選取 **記錄檔備份**將交易記錄備份原則
-    - 在 **記錄檔備份**，選取**啟用**。
-    - 設定的頻率和保留的控制項。
+7. 按一下 [確定]**** 以儲存原則，然後返回主要 [備份原則]**** 功能表。
+8. 選取 [記錄備份]，以新增交易記錄備份原則。
+    * 在 [記錄備份] 中，選取 [啟用]。  此選項無法停用，因為 SAP HANA 管理所有的記錄備份。
+    * 設定頻率和保留控制。
 
     > [!NOTE]
-    > 只會記錄備份開始流程成功的完整備份完成之後。
+    > 只有在順利完成一個完整備份後，記錄備份才會開始運作。
 
-9. 按一下  **確定**以儲存原則，並返回 主要**備份原則**功能表。
-10. 在您完成定義備份原則之後，請按一下**確定**。
+9. 按一下 [確定] 以儲存原則，然後返回主要 [備份原則] 功能表。
+10. 在完成備份原則的定義後，按一下 [確定]。
 
+> [!NOTE]
+> 每個記錄備份都會連結到先前的完整備份，以形成復原鏈。 系統會保留此完整備份，直到最後一個記錄備份的保留期到期為止。 這可能表示完整備份會保留一段額外的時間，以確保可以復原所有記錄。 假設使用者已設定每週進行完整備份、每日進行差異備份和每 2 小時進行記錄備份。 所有這些項目都會保留 30 天。 但是，只有在下一次的完整備份可以使用之後 (也就是 30 + 7 天之後)，才能真正清除/刪除每週的完整備份。 比方說，每週的完整備份會在 11 月 16 日執行。 根據保留原則，它應該保留到12月16日為止。 此完整備份的最後一個記錄備份會在下一次排定的完整備份 (也就是 11 月 22 日) 之前進行。 直到 12 月 22 日，也就是此記錄備份到期之前，您都無法刪除 11 月 16 日的完整備份。 因此，11 月 16 日的完整備份會保留到 12 月 22 日。
 
 ## <a name="run-an-on-demand-backup"></a>執行隨選備份
 
-根據原則的排程執行備份。 您可以視需要執行備份，如下所示：
-
+備份會根據原則排程執行。 您可以視需要執行備份，如下所示：
 
 1. 在保存庫功能表中，按一下 [備份項目]。
-2. 在 **備份項目**，選取 執行 SAP HANA 資料庫的 VM，然後按一下**立即備份**。
-3. 在“立即备份”中，使用日历控件选择恢复点的最后保留日期。 然後按一下 [確定] 。
-4. 監視入口網站通知。 您可以監視作業進度，在保存庫儀表板 >**備份作業**> 進行中。 根據您的資料庫大小，建立初始備份可能需要一段時間。
+2. 在 [備份項目] 中，選取執行 SAP Hana 資料庫的 VM，然後按一下 [立即備份]。
+3. 在 [**立即備份**] 中，選擇您想要執行的備份類型。 然後按一下 [確定] 。 系統會根據與此備份專案相關聯的原則來保留此備份。
+4. 監視入口網站通知。 您可以在保存庫儀表板中監視作業進度 > [備份作業] > [進行中]。 根據您的資料庫大小，建立初始備份可能需要花一點時間。
 
-## <a name="run-sap-hana-studio-backup-on-a-database-with-azure-backup-enabled"></a>使用 Azure 備份已啟用的資料庫上執行 SAP HANA Studio 備份
+## <a name="run-sap-hana-studio-backup-on-a-database-with-azure-backup-enabled"></a>在已啟用 Azure 備份的資料庫上執行 SAP Hana Studio 備份
 
-如果您想要進行本機備份 （使用 HANA Studio） 之資料庫的備份使用 Azure 備份，執行下列作業：
+如果您想要針對使用 Azure 備份來備份的資料庫，取得本機備份 (使用 HANA Studio)，請執行下列動作：
 
-1. 等候任何完整或記錄備份的資料庫能夠完成。 檢查 SAP HANA Studio 中的狀態。
-2. 停用記錄檔備份，並設定為相關資料庫的檔案系統的 備份類別目錄。
-3. 若要這樣做，請按兩下**systemdb** > **組態** > **選取資料庫** > **篩選器 （記錄）**.
-4. 設定**enable_auto_log_backup**要**No**。
-5. 設定**log_backup_using_backint**要**False**。
-6. 進行臨機操作的完整資料庫備份。
-7. 等候類別目錄來完成的備份與完整備份。
-8. 還原先前的設定，來與 Azure:
-    - 設定**enable_auto_log_backup**要**是**。
-    - 設定**log_backup_using_backint**要 **，則為 True**。
-
-
+1. 等待資料庫的完整或記錄備份完成。 檢查 SAP HANA Studio / Cockpit 中的狀態。
+2. 停用記錄備份，並將備份類別目錄設定為相關資料庫的檔案系統。
+3. 若要這麼做，請按兩下 **systemdb** >  > **選取資料庫** > **篩選 (記錄)** 。
+4. 將 **enable_auto_log_backup** 設定為 [否]。
+5. 將 **log_backup_using_backint** 設定為 [False]。
+6. 對於資料庫進行隨選完整備份。
+7. 等待完整備份和目錄備份完成。
+8. 將先前的設定還原回 Azure：
+    * 將 **enable_auto_log_backup** 設定為 [是]。
+    * 將 **log_backup_using_backint** 設定為 [True]。
 
 ## <a name="next-steps"></a>後續步驟
 
-[深入了解](backup-azure-arm-vms-prepare.md)備份 Azure Vm。
-
-
+* 了解如何[還原執行於 Azure VM 上的 SAP HANA 資料庫](https://docs.microsoft.com/azure/backup/sap-hana-db-restore)
+* 了解如何[管理使用 Azure 備份進行備份的 SAP Hana 資料庫](https://docs.microsoft.com/azure/backup/sap-hana-db-manage)

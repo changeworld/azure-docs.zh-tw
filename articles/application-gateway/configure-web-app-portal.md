@@ -1,78 +1,99 @@
 ---
-title: 使用 Azure 应用程序网关管理发往多租户应用（例如应用服务 Web 应用）的流量 - 门户
-description: 本文提供有关如何在现有或新的应用程序网关上将 Azure 应用服务 Web 应用配置为后端池成员的指导。
+title: 使用入口網站管理多租使用者應用程式的流量
+titleSuffix: Azure Application Gateway
+description: 本文提供如何在現有或新的應用程式閘道上，將 Azure App 服務 web 應用程式設定為後端集區成員的指導方針。
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
-ms.date: 3/11/2019
+ms.topic: how-to
+ms.date: 06/09/2020
 ms.author: absha
-ms.openlocfilehash: 4dae04c14f9132c54dcc0575ccb2841a4742a626
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1109dae90790c9667b3c60afb6416c20061a95fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60831153"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808098"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>透過應用程式閘道設定 App Service
 
-使用 Azure 应用程序网关可将应用服务 Web 应用或其他多租户服务配置为后端池成员。 
+由於 app service 是多租使用者服務，而不是專用的部署，因此它會在連入要求中使用主機標頭，以將要求解析為正確的 app service 端點。 通常，應用程式的 DNS 名稱（也就是與 app service 面向的應用程式閘道相關聯的 DNS 名稱）與後端 app 服務的功能變數名稱不同。 因此，應用程式閘道收到的原始要求中的主機標頭與後端服務的主機名稱不同。 因此，除非從應用程式閘道到後端的要求中的主機標頭變更為後端服務的主機名稱，否則多租使用者後端無法將要求解析為正確的端點。
 
-在本文中，您將了解：
+應用程式閘道提供一個稱為的交換器， `Pick host name from backend address` 其會在要求從應用程式閘道路由傳送至後端時，以後端的主機名稱覆寫要求中的主機標頭。 這項功能可支援多租使用者後端，例如 Azure app service 和 API 管理。 
+
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 >
-> - 创建后端池并将一个应用服务添加到其中
-> - 在启用“选取主机名”开关的情况下创建 HTTP 设置和自定义探测
+> - 建立後端集區，並在其中新增 App Service
+> - 建立 HTTP 設定和自訂探查並啟用「挑選主機名稱」交換器
 
 ## <a name="prerequisites"></a>必要條件
 
-- 应用程序网关：如果没有应用程序网关，请参阅如何[创建应用程序网关](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
-- 应用服务：如果没有应用服务，请参阅[应用服务文档](https://docs.microsoft.com/azure/app-service/)。
+- 應用程式閘道：如果您沒有現有的應用程式閘道，請參閱如何[建立應用程式閘道](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
+- App service：如果您沒有現有的 App service，請參閱[app service 檔](https://docs.microsoft.com/azure/app-service/)。
 
-## <a name="add-app-service-as-backend-pool"></a>将应用服务添加为后端池
+## <a name="add-app-service-as-backend-pool"></a>將應用程式服務新增為後端集區
 
-1. 在 Azure 门户中，打开应用程序网关的配置视图。
+1. 在 [Azure 入口網站中，開啟應用程式閘道的 [設定] 視圖。
 
-2. 在“后端池”下，单击“添加”以创建新的后端池。
+2. 在 [**後端**集區] 底下，按一下 [**新增**] 以建立新的後端集區。
 
-3. 为后端池提供适当的名称。 
+3. 為後端集區提供適當的名稱。 
 
-4. 在“目标”下，单击下拉列表并选择“应用服务”作为选项。
+4. 在 [**目標**] 底下，按一下下拉式清單，然後選擇 [**應用程式服務**] 做為選項。
 
-5. 紧靠在“目标”下拉列表的下面会显示另一个下拉列表，其中包含应用服务的列表。 在此下拉列表中，选择要添加为后端池成员的应用服务，然后单击“添加”。
+5. [**目標**] 下拉式清單正下方的下拉式清單隨即出現，其中會包含您的應用程式服務清單。 從這個下拉式清單中，選擇您要新增為後端集區成員的 App Service，然後按一下 [新增]。
 
-   ![应用服务后端](./media/configure-web-app-portal/backendpool.png)
+   ![App service 後端](./media/configure-web-app-portal/backendpool.png)
+   
+   > [!NOTE]
+   > 下拉式清單只會填入與您的應用程式閘道位於相同訂用帳戶中的應用程式服務。 如果您想要使用的應用程式服務與應用程式閘道的訂用帳戶不同，請選擇 [ **IP 位址或主機名稱**] 選項並輸入主機名稱（例如，），而不是在 [**目標**] 下拉式清單中選擇 [**應用程式服務**]。 azurewebsites.net）。
 
-## <a name="create-http-settings-for-app-service"></a>创建应用服务的 HTTP 设置
+## <a name="create-http-settings-for-app-service"></a>建立 App service 的 HTTP 設定
 
-1. 在“HTTP 设置”下，单击“添加”以创建新的 HTTP 设置。
+1. 在 [ **HTTP 設定**] 底下 **，按一下 [新增]** 以建立新的 HTTP 設定。
 
-2. 输入该 HTTP 设置的名称，并根据要求启用或禁用“基于 Cookie 的相关性”。
+2. 輸入 HTTP 設定的名稱，您可以依據您的需求啟用或停用 Cookie 型親和性。
 
-3. 根据用例选择“HTTP”或“HTTPS”作为协议。 
+3. 依據您的使用案例，選擇 HTTP 或 HTTPS 通訊協定。 
 
-4. 选中“用于应用服务”对应的框。这会启用“通过从后端地址中选取主机名来创建探测”和“从后端地址中选取主机名”选项。 此选项还会创建一个启用该开关的探测，并将其关联到此 HTTP 设置。
+   > [!NOTE]
+   > 如果您選取 [HTTPS]，則不需要上傳任何驗證憑證或受信任的根憑證，即可允許 app service 後端，因為 app service 是受信任的 Azure 服務。
 
-5. 单击“确定”以创建该 HTTP 设置。
+4. 勾選 [用於**App Service**的方塊。 請注意， `Create a probe with pick host name from backend address` 和參數 `Pick host name from backend address` 會自動啟用。`Pick host name from backend address` 將要求從應用程式閘道路由傳送至後端時，會以後端的主機名稱覆寫要求中的主機標頭。  
+
+   `Create a probe with pick host name from backend address`會自動建立健康狀態探查，並將其與此 HTTP 設定產生關聯。 您不需要為此 HTTP 設定建立任何其他健全狀況探查。 您可以檢查是否已 <HTTP Setting name> <Unique GUID> 在健康情況探查清單中新增名稱為的新探查，而且它已經有參數 `Pick host name from backend http settings enabled` 。
+
+   如果您已經有一或多個用於 App service 的 HTTP 設定，而這些 HTTP 設定使用的通訊協定與您在所建立的相同，則 `Create a probe with pick host name from backend address` 您會看到一個下拉式清單來選取其中一個自訂探查。 這是因為應用程式服務已經有 HTTP 設定，因此也有一個具有交換器的健全狀況探查 `Pick host name from backend http settings enabled` 。 從下拉式清單中選擇自訂探查。
+
+5. 按一下 **[確定]** 以建立 HTTP 設定。
 
    ![HTTP-setting1](./media/configure-web-app-portal/http-setting1.png)
 
    ![HTTP-setting2](./media/configure-web-app-portal/http-setting2.png)
 
-## <a name="create-rule-to-tie-the-listener-backend-pool-and-http-setting"></a>创建用于绑定侦听器、后端池和 HTTP 设置的规则
 
-1. 在“规则”下，单击“基本”以创建新的基本规则。
 
-2. 提供适当的名称，并选择用于接受应用服务传入请求的侦听器。
+## <a name="create-rule-to-tie-the-listener-backend-pool-and-http-setting"></a>建立規則以系結接聽程式、後端集區和 HTTP 設定
 
-3. 在“后端池”下拉列表中，选择前面创建的后端池。
+1. 在 [**規則**] 底下，按一下 [**基本**] 以建立新的基本規則。
 
-4. 在“HTTP 设置”下拉列表中，选择前面创建的 HTTP 设置。
+2. 提供適當的名稱，然後選取將接受 App service 傳入要求的接聽程式。
 
-5. 单击“确定”以保存此规则。
+3. 在 [**後端集**區] 下拉式清單中，選擇您先前建立的後端集區。
+
+4. 在 [ **HTTP 設定**] 下拉式清單中，選擇您在上面建立的 HTTP 設定。
+
+5. 按一下 **[確定]** 以儲存此規則。
 
    ![規則](./media/configure-web-app-portal/rule.png)
+
+## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>重新導向至 app service 的相對路徑時的其他設定
+
+當 app service 將重新導向回應傳送至用戶端以重新導向至其相對路徑（例如，從 contoso.azurewebsites.net/path1 重新導向至 contoso.azurewebsites.net/path2）時，它會在其回應的位置標頭中使用相同的主機名稱，如同它從應用程式閘道收到的要求。 因此，用戶端會直接向 contoso.azurewebsites.net/path2 提出要求，而不是透過應用程式閘道（contoso.com/path2）。 不需要略過應用程式閘道。
+
+如果您使用的是，應用程式服務必須將重新導向回應傳送至用戶端的案例，請執行[額外的步驟來重寫 location 標頭](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url#sample-configuration)。
 
 ## <a name="restrict-access"></a>限制存取
 
@@ -82,6 +103,4 @@ ms.locfileid: "60831153"
 
 ## <a name="next-steps"></a>後續步驟
 
-若要详细了解应用服务和应用程序网关的其他多租户支持，请参阅[应用程序网关的多租户服务支持](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview)。
-
-如果应用服务的响应重定向到应用服务的 URL，请参阅如何[排查重定向到应用服务 URL 的问题](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url)。
+若要深入瞭解應用程式閘道的 App service 和其他多租使用者支援，請參閱[應用程式閘道的多租使用者服務支援](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview)。

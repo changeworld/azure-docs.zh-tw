@@ -1,34 +1,35 @@
 ---
-title: 使用 Node.js 將模擬 X.509 裝置佈建到 Azure IoT 中樞 | Microsoft Docs
-description: 使用適用於 Azure IoT 中樞裝置佈建服務的 Node.js 裝置 SDK 來建立及佈建模擬 X.509 裝置。本快速入門使用個別註冊。
+title: 使用 Node.js 將模擬 X.509 裝置佈建到 Azure IoT 中樞
+description: 使用適用於 Azure IoT 中樞裝置佈建服務 (DPS) 的 Node.js 裝置 SDK 來建立及佈建模擬 X.509 裝置。本快速入門使用個別註冊。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/09/2018
+ms.date: 11/08/2018
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: e0f7fa544efcdd20e9ed567c6de55a8b1aecfe41
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 746f4adbf616f95c21874d7c1c48881f88c38d34
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126506"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "77605397"
 ---
-# <a name="create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>使用適用於 IoT 中樞裝置佈建服務的 Node.js 裝置 SDK 來建立及佈建 X.509 模擬裝置
+# <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入門：使用適用於 IoT 中樞裝置佈建服務的 Node.js 裝置 SDK 來建立及佈建 X.509 模擬裝置
+
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
-下列步驟說明如何在裝置佈建服務中建立註冊項目、在您的開發電腦上模擬 X.509 裝置、將模擬裝置與裝置佈建服務連線，並使用 [Azure IoT 中樞 Node.js 裝置 SDK](https://github.com/Azure/azure-iot-sdk-node) 在您的 IoT 中樞上註冊裝置。
+在本快速入門中，您會在 Windows 電腦上建立模擬的 X.509 裝置。 您可以使用裝置範例 Node.js 程式碼，使用以裝置佈建服務 (DPS) 所進行的個別註冊，讓此模擬裝置與 IoT 中樞進行連線。
 
-如果您不熟悉自動佈建程序，請務必也要檢閱[自動佈建概念](concepts-auto-provisioning.md)。 繼續之前，請務必完成[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](./quick-setup-auto-provision.md)中的步驟。 
+## <a name="prerequisites"></a>Prerequisites
 
-Azure IoT 裝置佈建服務支援兩種類型的註冊：
-- [註冊群組](concepts-service.md#enrollment-group)：用來註冊多個相關的裝置。
-- [個別註冊](concepts-service.md#individual-enrollment)：用來註冊單一裝置。
-
-本文將示範個別註冊。
+- 檢閱[自動佈建概念](concepts-auto-provisioning.md)。
+- 完成[使用 Azure 入口網站設定 IoT 中樞裝置佈建服務](./quick-setup-auto-provision.md)。
+- 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [Node.js v4.0+](https://nodejs.org)。
+- [Git](https://git-scm.com/download/)。
+- [OpenSSL](https://www.openssl.org/)。
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
@@ -55,6 +56,12 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 
 您會使用[適用於 Node.js 的 Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-node.git) 中的範例程式碼建立憑證，以便與模擬裝置的個別註冊項目搭配使用。
 
+Azure IoT 裝置佈建服務支援兩種類型的註冊：
+
+- [註冊群組](concepts-service.md#enrollment-group)：用來註冊多個相關的裝置。
+- [個別註冊](concepts-service.md#individual-enrollment)：用來註冊單一裝置。
+
+本文會示範個別註冊。
 
 1. 開啟命令提示字元。 複製程式碼範例的 GitHub 存放庫：
     
@@ -75,28 +82,28 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
     node create_test_cert.js device {certificate-name}
     ```
 
-4. 登入 [Azure 入口網站](https://portal.azure.com)，按一下左側功能表上的 [所有資源] 按鈕，然後開啟您的裝置佈建服務執行個體。
+4. 登入 [Azure 入口網站](https://portal.azure.com)，選取左側功能表上的 [所有資源]  按鈕，然後開啟您的裝置佈建服務執行個體。
 
-5. 在裝置佈建服務摘要刀鋒視窗上，選取 [管理註冊]。 選取 [個別註冊] 索引標籤，然後按一下頂端的 [新增個別註冊] 按鈕。 
+5. 從 [裝置佈建服務] 功能表中，選取 [管理註冊]  。 選取 [個別註冊]  索引標籤，然後選取頂端的 [新增個別註冊]  按鈕。 
 
-6. 在 [新增註冊] 面板之下，輸入下列資訊：
-   - 選取 [X.509] 作為身分識別證明「機制」。
-   - 在 [主要 .pem 或 .cer 憑證檔案] 之下，按一下 [選取檔案] 以選取在先前步驟中建立的憑證檔案 **{certificate-name}_cert.pem**。  
+6. 在 [新增註冊]  面板中，輸入下列資訊：
+   - 選取 [X.509]  作為身分識別證明「機制」  。
+   - 在 [主要 .pem 或 .cer 憑證檔案]  之下，選擇 [選取檔案]  以選取在先前步驟中建立的憑證檔案 **{certificate-name}_cert.pem**。  
    - 您可以選擇性地提供下列資訊：
      - 選取與您的佈建服務連結的 IoT 中樞。
      - 輸入唯一的裝置識別碼。 替您的裝置命名時，務必避免使用敏感性資料。 
      - 使用裝置所需的初始組態更新**初始裝置對應項狀態**。
-     - 完成後，按一下 [儲存] 按鈕。 
+     - 完成後，按 [儲存]  按鈕。 
 
      [![在入口網站中新增 X.509 證明的個別註冊](./media/quick-create-simulated-device-x509-node/device-enrollment.png)](./media/quick-create-simulated-device-x509-node/device-enrollment.png#lightbox)
 
-     註冊成功時，您的 X.509 裝置會在 [個別註冊] 索引標籤下的 [註冊識別碼] 資料行中顯示為 **{certificatename}**。請記下此值供後續使用。
+     註冊成功時，您的 X.509 裝置會在 [個別註冊]  索引標籤下的 [註冊識別碼]  資料行中顯示為 **{certificatename}** 。請記下此值供後續使用。
 
 ## <a name="simulate-the-device"></a>模擬裝置
 
 [Azure IoT 中樞 Node.js 裝置 SDK](https://github.com/Azure/azure-iot-sdk-node) 可讓您輕鬆模擬裝置。 如需詳細資訊，請參閱[裝置概念](https://docs.microsoft.com/azure/iot-dps/concepts-device)。
 
-1. 在 Azure 入口網站中，選取裝置佈建服務的 [概觀] 刀鋒視窗，並記下 [全域裝置端點] 和 [識別碼範圍] 值。
+1. 在 Azure 入口網站中，選取裝置佈建服務的 [概觀]  刀鋒視窗，並記下 [全域裝置端點]  和 [識別碼範圍]  值。
 
     ![從入口網站刀鋒視窗擷取裝置佈建服務端點資訊](./media/quick-create-simulated-device-x509-node/extract-dps-endpoints.png) 
 
@@ -116,8 +123,8 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 
 4. 編輯 **register\_x509.js** 檔案。 在進行下列變更後儲存檔案。
     - 將 `provisioning host` 取代為先前在 **步驟 1** 中記下的 **_全域裝置端點_** 。
-    - 將 `id scope` 取代為先前在 **步驟 1** 中記下的 **_識別碼範圍_** 。 
-    - 將 `registration id` 取代為在上一節中記下的 **_註冊識別碼_** 。
+    - 將 `id scope` 取代為先前在 **步驟 1** 中記下的 [識別碼範圍]  。 
+    - 將 `registration id` 取代為在上一節中記下的 [註冊識別碼]  。
     - 將 `cert filename` 和 `key filename` 取代為您先前在 **步驟 2** 中複製的檔案。 
 
 5. 執行指令碼，並確認裝置已成功佈建。
@@ -126,7 +133,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
     node register_x509.js
     ```   
 
-6. 在入口網站中，瀏覽到連結至您佈建服務的 IoT 中樞，並開啟 [IoT 裝置] 刀鋒視窗。 X.509 模擬裝置成功佈建到 IoT 中樞時，其裝置識別碼會出現在 [IoT 裝置] 刀鋒視窗上，且 [狀態] 顯示為 [已啟用]。 如果您在執行範例裝置應用程式之前開啟了刀鋒視窗，可能需要按一下頂端的 [重新整理] 按鈕。 
+6. 在入口網站中，瀏覽到連結至您佈建服務的 IoT 中樞，並開啟 [IoT 裝置]  刀鋒視窗。 X.509 模擬裝置成功佈建到 IoT 中樞時，其裝置識別碼會出現在 [IoT 裝置]  刀鋒視窗上，且 [狀態]  顯示為 [已啟用]  。 如果您在執行範例裝置應用程式之前開啟了刀鋒視窗，可能需要按頂端的 [重新整理]  按鈕。 
 
     ![已向 IoT 中樞註冊裝置](./media/quick-create-simulated-device-x509-node/hubregistration.png) 
 
@@ -138,8 +145,8 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 如果您打算繼續使用並探索裝置用戶端範例，請勿清除在此快速入門中建立的資源。 如果您不打算繼續，請使用下列步驟來刪除本快速入門建立的所有資源。
 
 1. 在您的電腦上關閉裝置用戶端範例輸出視窗。
-2. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]，然後選取您的裝置佈建服務。 開啟您服務的 [管理註冊] 刀鋒視窗，然後按一下 [個別註冊] 索引標籤。選取您在本快速入門中註冊的裝置之 [註冊識別碼]，然後按一下頂端的 [刪除] 按鈕。 
-3. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]，然後選取您的 IoT 中樞。 開啟您中樞的 [IoT 裝置] 刀鋒視窗，選取您在本快速入門中註冊之裝置的 [裝置識別碼]，然後按一下頂端的 [刪除] 按鈕。
+2. 從 Azure 入口網站的左側功能表中，選取 [所有資源]  ，然後選取您的裝置佈建服務。 開啟您服務的 [管理註冊]  刀鋒視窗，然後選取 [個別註冊]  索引標籤。選取您在本快速入門中所註冊裝置的 [註冊識別碼]  旁的核取方塊，然後按窗格頂端的 [刪除]  按鈕。 
+3. 從 Azure 入口網站的左側功能表中，選取 [所有資源]  ，然後選取您的 IoT 中樞。 開啟您中樞的 [IoT 裝置]  刀鋒視窗，選取您在本快速入門所註冊裝置的 [裝置識別碼]  旁的核取方塊，然後按窗格頂端的 [刪除]  按鈕。
 
 
 ## <a name="next-steps"></a>後續步驟

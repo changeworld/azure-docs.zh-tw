@@ -1,10 +1,10 @@
 ---
 title: Azure 虛擬機器客體作業系統防火牆設定不正確 | Microsoft Docs
-description: ''
+description: 瞭解如何使用序列主控台或離線方法來診斷和修正遠端 Azure VM 上設定錯誤的客體作業系統防火牆。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: fcea5e4e6bb108f1a8d8036e51a5dae8a9e6431b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e6f42bdf462ac5261f77bc05c62e50500345fe37
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60711011"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80422541"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Azure 虛擬機器客體作業系統防火牆設定不正確
 
 本文介紹如何修正 Azure 虛擬機器上設定錯誤的客體作業系統防火牆。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 1.  虛擬機器 (VM) 的 [歡迎使用] 畫面顯示已完全載入虛擬機器。
 
@@ -35,7 +35,7 @@ ms.locfileid: "60711011"
 
 若客體系統防火牆設計不正確，可能會封鎖部分前往 VM 的網路流量，或是將所有類型的流量全數擋下。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 在按照下列步驟進行之前，請先擷取受影響虛擬機器系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。
 
@@ -43,7 +43,7 @@ ms.locfileid: "60711011"
 
 ## <a name="online-mitigations"></a>線上風險降低措施
 
-請連線至[序列主控台，然後開啟 PowerShell 執行個體](serial-console-windows.md#use-cmd-or-powershell-in-serial-console)。 如果 VM 上未啟用序列主控台，請移至以下Azure文章的〈修復離線的 VM〉一節：
+連線至[序列主控台，然後開啟 PowerShell 執行個體](serial-console-windows.md#use-cmd-or-powershell-in-serial-console)。 如果 VM 上未啟用序列主控台，請移至以下Azure文章的〈修復離線的 VM〉一節：
 
  [嘗試透過遠端桌面連線至 Azure VM 時發生內部錯誤](troubleshoot-rdp-internal-error.md#repair-the-vm-offline)
 
@@ -98,7 +98,7 @@ ms.locfileid: "60711011"
 
 ### <a name="offline-mitigations"></a>離線風險降低措施
 
-1.  若要启用或禁用防火墙规则，请参阅[在 Azure VM 来宾 OS 上启用或禁用防火墙规则](enable-disable-firewall-rule-guest-os.md)。
+1.  若要啟用或停用防火牆規則，請參閱[啟用或停用 AZURE VM 的客體作業系統上的防火牆規則](enable-disable-firewall-rule-guest-os.md)。
 
 2.  請檢查您是否處於[客體作業系統防火牆封鎖傳入流量的情況](guest-os-firewall-blocking-inbound-traffic.md) (英文)。
 

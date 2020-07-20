@@ -1,28 +1,28 @@
 ---
-title: 修改 ExpressRoute 線路：PowerShell：Azure 傳統 | Microsoft Docs
+title: Azure ExpressRoute：修改線路： PowerShell：傳統
 description: 本文將逐步引導您檢查狀態、更新或刪除，以及取消佈建 ExpressRoute 傳統部署模型線路。
 services: expressroute
-author: ganesr
+author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: ganesr;cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 1d6fc4a54ca600bd094a68e5eaab1306e7e831ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 11/05/2019
+ms.author: cherylmc
+ms.openlocfilehash: 2f2aac6dd7e073634d4114d33fae6bebd51fe176
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60370256"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736317"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>使用 PowerShell 修改 ExpressRoute 線路 (傳統)
 
 > [!div class="op_single_selector"]
-> * [Azure 门户](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Azure 入口網站](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [影片 - Azure 入口網站](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
-> * [PowerShell (傳統)](expressroute-howto-circuit-classic.md)
+> * [Azure Resource Manager 範本](expressroute-howto-circuit-resource-manager-template.md)
+> * [影片-Azure 入口網站](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
+> * [PowerShell （傳統）](expressroute-howto-circuit-classic.md)
 >
 
 本文將逐步引導您檢查狀態、更新或刪除，以及取消佈建 ExpressRoute 傳統部署模型線路。 本文適用於傳統部署模型。
@@ -33,43 +33,9 @@ ms.locfileid: "60370256"
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="before-you-begin"></a>開始之前
 
-安裝最新版的 Azure 服務管理 (SM) PowerShell 模組和 ExpressRoute 模組。  當您使用下列範例時，請注意版本號碼 (此範例中為 5.1.1) 會因為發行較新的 Cmdlet 版本而變更。
-
-```powershell
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
-```
-
-如需 Azure PowerShell 的詳細資訊，請參閱[開始使用 Azure PowerShell Cmdlet](/powershell/azure/overview)，來取得如何設定您的電腦以使用 Azure PowerShell 模組的逐步指引。
-
-若要登入您的 Azure 帳戶，請使用下列範例：
-
-1. 以提高的權限開啟 PowerShell 主控台並連接到您的帳戶。 使用下列範例來協助您連接：
-
-   ```powershell
-   Connect-AzAccount
-   ```
-2. 檢查帳戶的訂用帳戶。
-
-   ```powershell
-   Get-AzSubscription
-   ```
-3. 如果您有多個訂用帳戶，請選取您要使用的訂用帳戶。
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-4. 接下來，使用下列 Cmdlet，將您的 Azure 訂用帳戶新增到 PowerShell，以供傳統部署模型使用。
-
-   ```powershell
-   Add-AzureAccount
-   ```
+[!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
 ## <a name="get-the-status-of-a-circuit"></a>取得線路狀態
 
@@ -125,9 +91,9 @@ get-help get-azurededicatedcircuit -detailed
 您可以執行下列工作，而無需中途停機：
 
 * 啟用或停用 ExpressRoute 線路的 ExpressRoute 進階附加元件。
-* 只要連接埠有可用的容量，就增加 ExpressRoute 線路的頻寬。 不支援將線路的頻寬降級。 
+* 只要連接埠有可用的容量，就增加 ExpressRoute 線路的頻寬。 不支援將線路的頻寬降級。
 * 將計量方案從 [計量付費] 變更為 [無限制]。 不支援將計量方案從 [無限制資料] 變更為 [已計量資料]。
-* 您可以啟用和停用 [允許傳統作業] 。
+* 您可以啟用和停用 [允許傳統作業] **。
 
 如需限制的詳細資訊，請參閱 [ExpressRoute 常見問題集](expressroute-faqs.md) 。
 
@@ -154,8 +120,8 @@ Status                           : Enabled
 
 > [!IMPORTANT]
 > 如果您使用的資源超出標準線路所允許的數量，這項作業可能會失敗。
-> 
-> 
+>
+>
 
 #### <a name="considerations"></a>考量
 
@@ -183,14 +149,14 @@ Status                           : Enabled
 
 ### <a name="update-the-expressroute-circuit-bandwidth"></a>更新 ExpressRoute 線路頻寬
 
-請查閱 [ExpressRoute 常見問題集](expressroute-faqs.md) ，以取得提供者支援的頻寬選項。 只要在其上创建线路的物理端口允许，即可选取大于现有线路大小的任何大小。
+請查閱 [ExpressRoute 常見問題集](expressroute-faqs.md) ，以取得提供者支援的頻寬選項。 只要實體連接埠 (您的線路在此建立) 允許，您可以選擇大於現有線路的任何大小。
 
 > [!IMPORTANT]
-> 如果現有的連接埠上沒有足夠的容量，您可能必須重新建立 ExpressRoute 線路。 如果该位置没有额外的可用容量，则不能升级线路。
+> 如果現有的連接埠上沒有足夠的容量，您可能必須重新建立 ExpressRoute 線路。 如果該位置已無額外的容量，您無法升級線路。
 >
 > 降低 ExpressRoute 線路的頻寬時必須中斷運作。 頻寬降級需要取消佈建 ExpressRoute 線路，然後重新佈建新的 ExpressRoute 線路。
-> 
-> 
+>
+>
 
 #### <a name="resize-a-circuit"></a>調整電路大小
 
@@ -228,8 +194,8 @@ At line:1 char:1
 ### <a name="considerations"></a>考量
 
 * 您必須取消連結 ExpressRoute 線路的所有虛擬網路，此作業才會成功。 如果此作業失敗，請檢查您是否有任何虛擬網路連結至線路。
-* 如果 ExpressRoute 線路服務提供者佈建狀態為 **Provisioning** 或 **Provisioned**，您就必須與服務提供者一起合作，取消佈建他們那邊的線路。 我們會繼續保留資源並向您收取費用，直到線路服務提供者完成取消佈建並通知我們。
-* 若服務提供者已取消佈建線路 (服務提供者佈建狀態設定為 [未佈建])，您便可以刪除線路。 這樣會停止針對線路計費。
+* 如果 ExpressRoute 線路服務提供者布建狀態為 [布建] 或 [已布建]，您必須與服務提供者合作，以在其端取消布**建**線路。 **Provisioning** 我們會繼續保留資源並向您收取費用，直到線路服務提供者完成取消佈建並通知我們。
+* 若服務提供者已取消佈建線路 (服務提供者佈建狀態設定為 [未佈建]****)，您便可以刪除線路。 這樣會停止針對線路計費。
 
 #### <a name="delete-a-circuit"></a>刪除電路
 

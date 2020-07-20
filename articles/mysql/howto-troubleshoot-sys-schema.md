@@ -1,19 +1,18 @@
 ---
-title: 如何使用 sys_schema 在適用於 MySQL 的 Azure 資料庫中進行效能微調和資料庫維護
-description: 本文說明如何使用 sys_schema 在適用於 MySQL 的 Azure 資料庫中找出效能問題及維護資料庫。
+title: 使用 sys_schema - 適用於 MySQL 的 Azure 資料庫
+description: 學習如何使用 sys_schema 在適用於 MySQL 的 Azure 資料庫中找出效能問題及維護資料庫。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 08/01/2018
-ms.openlocfilehash: 993c77056c09c1dc21d5317ddbfe8e937341718d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.topic: troubleshooting
+ms.date: 3/30/2020
+ms.openlocfilehash: d2ed06041e8ee0e2993289cdde5fe92f7664b476
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61422291"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829510"
 ---
-# <a name="how-to-use-sysschema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>如何使用 sys_schema 在適用於 MySQL 的 Azure 資料庫中進行效能微調和資料庫維護
+# <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>如何使用 sys_schema 在適用於 MySQL 的 Azure 資料庫中進行效能微調和資料庫維護
 
 最先在 MySQL 5.5 中導入的 MySQL performance_schema，能針對許多重要伺服器資源 (例如記憶體配置、預存程式、中繼資料鎖定等) 提供檢測功能。不過，performance_schema 包含超過 80 個資料表，且通常需要聯結 performance_schema 內的資料表以及 information_schema 中的資料表，才能取得所需的資訊。 sys_schema 是以 performance_schema 與 information_schema 為基礎而建置的，它於唯讀資料庫中提供功能強大的[易用檢視](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) \(英文\) 集合，並已於適用於 MySQL 的 Azure 資料庫 5.7 版中完整啟用。
 
@@ -33,7 +32,7 @@ sys_schema 中有 52 個檢視，每個檢視分別具有下列其中一個前�
 
 ## <a name="performance-tuning"></a>效能微調
 
-### <a name="sysusersummarybyfileio"></a>*sys.user_summary_by_file_io*
+### <a name="sysuser_summary_by_file_io"></a>*sys.user_summary_by_file_io*
 
 IO 是資料庫中成本最高的作業。 我們可以藉由查詢 *sys.user_summary_by_file_io* 檢視來找出平均 IO 延遲。 使用 125 GB 的預設佈建儲存體時，我的 IO 延遲大約是 15 秒。
 
@@ -43,13 +42,13 @@ IO 是資料庫中成本最高的作業。 我們可以藉由查詢 *sys.user_su
 
 ![IO 延遲：1TB](./media/howto-troubleshoot-sys-schema/io-latency-1TB.png)
 
-### <a name="sysschematableswithfulltablescans"></a>*sys.schema_tables_with_full_table_scans*
+### <a name="sysschema_tables_with_full_table_scans"></a>*sys.schema_tables_with_full_table_scans*
 
 儘管經過仔細規劃，許多查詢仍可能導致完整資料表掃描。 如需關於索引類型和如何對它們加以最佳化的詳細資訊，您可以參閱這篇文章：[如何對查詢效能進行疑難排解](./howto-troubleshoot-query-performance.md)。 完整資料表掃描會耗用大量資源，並降低資料庫效能。 透過完整資料表掃描來尋找資料表的最快方式是查詢 *sys.schema_tables_with_full_table_scans* 檢視。
 
 ![完整資料表掃描](./media/howto-troubleshoot-sys-schema/full-table-scans.png)
 
-### <a name="sysusersummarybystatementtype"></a>*sys.user_summary_by_statement_type*
+### <a name="sysuser_summary_by_statement_type"></a>*sys.user_summary_by_statement_type*
 
 對資料庫效能問題進行疑難排解時，識別您的資料庫內發生的事件可能會有幫助，而使用 *sys.user_summary_by_statement_type* 檢視可能可以協助做到這一點。
 
@@ -59,7 +58,10 @@ IO 是資料庫中成本最高的作業。 我們可以藉由查詢 *sys.user_su
 
 ## <a name="database-maintenance"></a>資料庫維護
 
-### <a name="sysinnodbbufferstatsbytable"></a>*sys.innodb_buffer_stats_by_table*
+### <a name="sysinnodb_buffer_stats_by_table"></a>*sys.innodb_buffer_stats_by_table*
+
+[!IMPORTANT]
+> 查詢此檢視表可能會影響效能。 建議在離峰上班時間執行此疑難排解。
 
 InnoDB 緩衝集區存在於記憶體中，是 DBMS 與儲存體之間的主要快取機制。 InnoDB 緩衝集區的大小會繫結至效能層，除非選擇不同的產品 SKU，否則無法變更。 如同作業系統中的記憶體，系統會移出舊的頁面以騰出空間給最新的資料。 若要了解哪些資料表耗用了大部分的 InnoDB 緩衝集區記憶體，您可以查詢 *sys.innodb_buffer_stats_by_table* 檢視。
 
@@ -67,7 +69,7 @@ InnoDB 緩衝集區存在於記憶體中，是 DBMS 與儲存體之間的主要�
 
 從上圖可以明顯看出，除了系統資料表和檢視以外，mysqldatabase033 資料庫 (其裝載其中一個「我的 WordPress」網站) 中的每個資料表都在記憶體中佔用了 16 KB (或 1 頁) 的資料。
 
-### <a name="sysschemaunusedindexes--sysschemaredundantindexes"></a>*Sys.schema_unused_indexes* & *sys.schema_redundant_indexes*
+### <a name="sysschema_unused_indexes--sysschema_redundant_indexes"></a>*Schema_unused_indexes* & *sys. schema_redundant_indexes*
 
 索引是提升讀取效能的理想工具，但它們會造成插入和儲存方面的額外成本。 *Sys.schema_unused_indexes* 和 *sys.schema_redundant_indexes* 可為您提供未使用或重複索引的見解。
 
@@ -80,4 +82,4 @@ InnoDB 緩衝集區存在於記憶體中，是 DBMS 與儲存體之間的主要�
 總而言之，sys_schema 對效能調整和資料庫維護而言，都是很理想的工具。 請務必在您適用於 MySQL 的 Azure 資料庫中充分運用這項功能。 
 
 ## <a name="next-steps"></a>後續步驟
-- 若想知道是否有人可解答您最關切的問題，或是要張貼新問題/解答，請造訪 [MSDN 論壇](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL)或[堆疊溢位](https://stackoverflow.com/questions/tagged/azure-database-mysql)。
+- 若想知道是否有人可解答您最關切的問題，或是要張貼新問題/解答，請造訪 [Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-database-mysql.html)或 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)。

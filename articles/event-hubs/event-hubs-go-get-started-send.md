@@ -1,44 +1,37 @@
 ---
-title: 傳送與接收使用 Go-Azure 事件中樞的事件 |Microsoft Docs
-description: 本文將逐步解說如何建立一個會從 Azure 事件中樞傳送事件的 Go 應用程式。
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: kamalb
-ms.service: event-hubs
-ms.workload: core
-ms.topic: article
-ms.custom: seodec18
-ms.date: 04/15/2019
-ms.author: shvija
-ms.openlocfilehash: 823ebc985c77785f8b48d12d5919dbbd1b2b1459
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+title: 快速入門：使用 Go 來傳送和接收事件 - Azure 事件中樞
+description: 快速入門：本文將逐步解說如何建立一個會從 Azure 事件中樞傳送事件的 Go 應用程式。
+ms.topic: quickstart
+ms.date: 06/23/2020
+ms.openlocfilehash: 18b139db32e806ac2bdbf440a9dfa8a10ab1ecf3
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60821680"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320347"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-using-go"></a>傳送事件至或使用 Go 從事件中樞接收事件
+# <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>快速入門：使用 Go 將事件傳送至事件中樞或從中接收事件
 Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可接收和處理數百萬個事件。 事件中樞可以處理及儲存分散式軟體和裝置所產生的事件、資料或遙測。 傳送至事件中樞的資料可以透過任何即時分析提供者或批次/儲存體配接器來轉換和儲存。 如需事件中樞的詳細概觀，請參閱[事件中樞概觀](event-hubs-about.md)和[事件中樞功能](event-hubs-features.md)。
 
-本教學課程說明如何撰寫 Go 應用程式傳送事件至或接收來自事件中樞的事件。 
+本教學課程說明如何撰寫 Go 應用程式，以將事件傳送至事件中樞或從中接收事件。 
 
 > [!NOTE]
 > 您可以從 [GitHub](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/eventhubs) 下載此快速入門來作為範例，並以您事件中樞的值取代 `EventHubConnectionString` 和 `EventHubName` 字串，然後執行。 或者，您可以遵循本教學課程中的步驟，來建立自己的解決方案。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要下列必要條件：
 
 - 安裝在本機的 Go。 如果有需要，請依照[這些指示](https://golang.org/doc/install) \(英文\) 執行。
-- 使用中的 Azure 帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶][] 。
-- **建立事件中樞命名空間和事件中樞**。 使用[Azure 入口網站](https://portal.azure.com)建立類型為事件中樞的命名空間，並取得您的應用程式與事件中樞進行通訊所需的管理認證。 若要建立命名空間和事件中樞，請依照[這篇文章](event-hubs-create.md)中的程序操作。
+- 使用中的 Azure 帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶][]。
+- **建立事件中樞命名空間和事件中樞**。 請使用 [Azure 入口網站](https://portal.azure.com)建立「事件中樞」類型的命名空間，然後取得您的應用程式與「事件中樞」進行通訊所需的管理認證。 若要建立命名空間和事件中樞，請依照[這篇文章](event-hubs-create.md)中的程序操作。
 
 ## <a name="send-events"></a>傳送事件
-本節將說明如何建立 Go 應用程式將事件傳送至事件中樞。 
+本節說明如何建立可將事件傳送至事件中樞的 Go 應用程式。 
 
 ### <a name="install-go-package"></a>安裝 Go 套件
 
-使用 `go get` 或 `dep` 取得適用於事件中樞的 Go 套件。 例如︰
+使用 `go get` 或 `dep` 取得適用於事件中樞的 Go 套件。 例如：
 
 ```bash
 go get -u github.com/Azure/azure-event-hubs-go
@@ -137,7 +130,7 @@ log.Printf("got partition IDs: %s\n", info.PartitionIDs)
 
 搭配 Go SDK 建立儲存體構件的範例，可於 [Go 範例存放庫](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/storage) \(英文\) 和本教學課程所對應的範例中取得。
 
-### <a name="go-packages"></a>移套件
+### <a name="go-packages"></a>Go 套件
 
 若要接收訊息，請透過 `go get` 或 `dep` 取得適用於事件中樞的 Go 套件：
 
@@ -214,9 +207,9 @@ if err != nil {
 }
 ```
 
-### <a name="create-a-check-pointer-and-a-leaser"></a>建立核取指標和 leaser 
+### <a name="create-a-check-pointer-and-a-leaser"></a>建立 Checkpointer 和 Leaser 
 
-建立**leaser**負責租用給特定的接收者，資料分割，以及**檢查指標**，負責撰寫訊息資料流的檢查點，讓其他接收者可以開始讀取從正確的位移。
+建立負責將分割區租用給特定接收者的 **Leaser**，以及負責為訊息資料流撰寫檢查點，使其他接收者可以從正確的位移開始讀取的 **Checkpointer**。
 
 目前有提供單一的 **StorageLeaserCheckpointer**，能使用相同的儲存體容器來管理租用和檢查點。 除了儲存體帳戶和容器名稱之外，**StorageLeaserCheckpointer** 也需要在上個步驟中所建立的認證及 Azure 環境結構以正確存取容器。
 
@@ -233,7 +226,7 @@ if err != nil {
 
 ### <a name="construct-event-processor-host"></a>建構事件處理器主機
 
-您現在已具備以下列方式建構 EventProcessorHost 所需的所有項目。 相同**StorageLeaserCheckpointer**做 leaser 」 和 「 檢查指標，如先前所述：
+您現在已具備以下列方式建構 EventProcessorHost 所需的所有項目。 如前所述，相同的 **StorageLeaserCheckpointer** 會同時作為 Leaser 和 Checkpointer：
 
 ```go
 ctx := context.Background()
@@ -285,7 +278,7 @@ if err != nil {
 請閱讀下列文章：
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
-- [功能與 Azure 事件中樞中的術語](event-hubs-features.md)
+- [Azure 事件中樞的功能與術語](event-hubs-features.md)
 - [事件中樞常見問題集](event-hubs-faq.md)
 
 

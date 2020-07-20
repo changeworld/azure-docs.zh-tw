@@ -1,62 +1,64 @@
 ---
-title: Azure 通知中樞和 Google Firebase 雲端通訊 (FCM) 移轉
-description: 說明 Azure 通知中樞如何解決 FCM 移轉至 Google GCM。
+title: Azure 通知中樞和 Google Firebase 雲端通訊（FCM）遷移
+description: 說明 Azure 通知中樞如何將 Google GCM 定址以 FCM 遷移。
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 04/10/2019
-ms.author: jowargo
-ms.openlocfilehash: 4cbfc67bc66e84b4743f3326db40872241e5d474
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 04/10/2019
+ms.openlocfilehash: 2f2ca4b56445b3f399477e396de579d8a8c539e3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61458292"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80127030"
 ---
-# <a name="azure-notification-hubs-and-the-google-firebase-cloud-messaging-fcm-migration"></a>Azure 通知中樞和 Google Firebase 雲端通訊 (FCM) 移轉
+# <a name="azure-notification-hubs-and-google-firebase-cloud-messaging-migration"></a>Azure 通知中樞和 Google Firebase 雲端訊息遷移
 
 ## <a name="current-state"></a>目前狀態
 
-當 Google 宣布其移轉從 Google 雲端通訊 (GCM) 至 Firebase 雲端通訊 (FCM)，我們必須調整我們如何傳送通知至 Android 裝置，以因應變更推播服務。
+當 Google 宣佈從 Google 雲端通訊（GCM）遷移至 Firebase 雲端通訊（FCM）時，推播服務（如我們）必須調整我們將通知傳送至 Android 裝置以因應變更的方式。
 
-我們更新我們的服務後端，然後發佈到我們的 API 和 Sdk 所需的更新。 使用我們的實作中，我們擬定決策來維持與現有客戶的影響降到最低的 GCM 通知結構描述相容性。 這表示我們目前將通知傳送至 Android 裝置使用 FCM FCM 舊版模式。 最後，我們想要新增的 FCM，包括新功能及裝載格式，則為 true 的支援。 這是較長期的變更，和目前的移轉致力於維持與現有的應用程式和 Sdk 相容性。 您可以使用 GCM 或 FCM Sdk （以及我們的 SDK) 的應用程式中，我們會確保會正確地傳送通知。
+我們已更新服務後端，然後視需要將更新發佈至我們的 API 和 Sdk。 隨著我們的實行，我們決定維護與現有 GCM 通知架構的相容性，以將客戶的影響降至最低。 這表示我們目前使用 FCM 傳統模式的 FCM，將通知傳送至 Android 裝置。 最後，我們想要新增 FCM 的真正支援，包括新功能和承載格式。 這是較長期的變更，而目前的遷移著重于維持與現有應用程式和 Sdk 的相容性。 您可以在應用程式中使用 GCM 或 FCM Sdk （連同我們的 SDK），並確定已正確傳送通知。
 
-有些客戶最近收到一封電子郵件，從 Google 的 GCM 端點用於通知的應用程式的相關的警告。 這是只是警告，不會中斷 – 您的應用程式的 Android 通知仍會傳送至 Google 進行處理和 Google 仍會處理它們。 有些客戶在其服務組態中明確指定 GCM 端點仍使用已被取代的端點。 我們已識別出此鴻溝，並努力修正此問題，Google 傳送電子郵件時。
+某些客戶最近收到有關使用 GCM 端點進行通知之應用程式的 Google 警告電子郵件。 這只是警告，而且不會有任何中斷-您的應用程式的 Android 通知仍會傳送至 Google 進行處理，而 Google 仍然會處理它們。 某些已明確在其服務設定中指定 GCM 端點的客戶仍在使用已淘汰的端點。 我們已識別出此缺口，並正努力在 Google 傳送電子郵件時解決問題。
 
-我們已取代該已被取代的端點，並部署修正程式。
+我們已取代該已淘汰的端點，並已部署修正程式。
 
-## <a name="going-forward"></a>從現在開始
+## <a name="going-forward"></a>往後
 
-Google 的 FCM 常見問題集是說您不需要採取任何動作。 在  [FCM 常見問題集](https://developers.google.com/cloud-messaging/faq)，Google 說 「 用戶端 Sdk 和 GCM 語彙基元會繼續無限期地運作。 不過，您無法為目標的 Google Play 服務 Android 應用程式中的最新版本，除非您將移轉至 FCM。 」
+Google 的 FCM 常見問題指出您不需要採取任何動作。 在[FCM 常見問題](https://developers.google.com/cloud-messaging/faq)中，Google 說「用戶端 SDK 和 GCM 權杖將會無限期地繼續工作。 不過，除非您遷移至 FCM，否則您將無法以 Android 應用程式中的最新 Google Play Services 版本為目標。
 
-如果您的應用程式使用 GCM 程式庫，請繼續進行，並遵循升級至 FCM 程式庫，在您的應用程式的 Google 的指示。 我們的 SDK 與都相容，因此您不需要更新我們這一端的應用程式中的任何項目 （只要您是我們的 SDK 版本最新狀態）。
+如果您的應用程式使用 GCM 程式庫，請繼續進行，並遵循 Google 的指示升級至您應用程式中的 FCM 程式庫。 我們的 SDK 與這兩者相容，因此您不需要在我們的應用程式中更新任何專案（前提是您已使用我們的 SDK 版本保持最新狀態）。
 
-## <a name="questions-and-answers"></a>問與答
+## <a name="questions-and-answers"></a>問題和回答
 
-以下是一些常見問題的答案我們從客戶聽過：
+以下是我們從客戶聽到的常見問題的解答：
 
-**問：** 我要做為相容的截止日期的項目 (Google 的目前截止日期是 5 月 29 日，並可能變更)？
+**問：** 我需要執行哪些動作才能與截止日期相容（Google 的目前截止日期可能是29，而且可能會變更）？
 
-**答：** 不做任何動作。 我們會維持與現有的 GCM 通知結構描述的相容性。 GCM 金鑰仍能運作正常，將任何 GCM Sdk 和應用程式所使用的程式庫。
+**答：** 這裡. 我們會維持與現有 GCM 通知架構的相容性。 您的 GCM 金鑰會繼續正常運作，就像您的應用程式所使用的任何 GCM Sdk 和程式庫一樣。
 
-即使您決定要升級至 FCM Sdk 和程式庫，以善用新功能、 GCM 金鑰仍可運作。 您可能會切換成使用 FCM 索引鍵，如果您想，但請確定您要 Firebase 新增至您現有的 GCM 專案建立新的 Firebase 專案時。 這樣會保證與客戶執行的應用程式仍然使用 GCM Sdk 和程式庫的較舊版本的回溯相容性。
+如果您決定要升級至 FCM Sdk 和程式庫以利用新功能，您的 GCM 金鑰仍然可以使用。 如有需要，您可以切換為使用 FCM 金鑰，但在建立新的 Firebase 專案時，請確定您已將 Firebase 新增至現有的 GCM 專案。 這可保證與執行繼承應用程式的客戶回溯相容性，但仍會使用 GCM Sdk 和程式庫。
 
-如果您是建立新的 FCM 專案，並且未附加至現有的 GCM 專案中，以新的 FCM 密碼更新通知中樞後，您將無法將通知推播到您目前的應用程式安裝，因為新的 FCM 金鑰有沒有連結至舊的 GCM專案。
+如果您要建立新的 FCM 專案，而不是附加至現有的 GCM 專案，一旦您使用新的 FCM 秘密來更新通知中樞，就無法將通知推送至目前的應用程式安裝，因為新的 FCM 金鑰沒有舊 GCM 專案的連結。
 
-**問：** 為什麼我會收到這封電子郵件有關所使用的舊 GCM 端點？ 我不得不？
+**問：** 為什麼我會收到有關使用舊 GCM 端點的這封電子郵件？ 我該怎麼做？
 
-**答：** 不做任何動作。 我們已將其移轉至新的端點，並即將完成，因此不不需要任何變更。 不會中斷，我們有一個遺漏的端點只將來自 Google 造成警告訊息。
+**答：** 這裡. 我們已遷移至新的端點，即將完成，因此不需要進行任何變更。 沒有任何東西會中斷，我們的一個錯過的端點只會導致來自 Google 的警告訊息。
 
-**問：** 如何才能轉至新的 FCM Sdk 和程式庫而不會中斷現有的使用者？
+**問：** 如何轉換至新的 FCM Sdk 和程式庫而不會中斷現有的使用者？
 
-答：隨時升級。 Google 也還沒有宣佈現有 GCM Sdk 和程式庫的任何已被取代。 若要確保您不會中斷推播通知給您現有的使用者，請確定當您建立新的 Firebase 專案，您要與您現有的 GCM 專案產生關聯。 這可確保新的 Firebase 密碼適用於 GCM Sdk 和程式庫，執行較舊版本的應用程式的使用者，以及使用 FCM Sdk 和程式庫的應用程式的新使用者。
+答：隨時升級。 Google 尚未宣佈現有的 GCM Sdk 和程式庫已淘汰。 為確保您不會將推播通知分解到現有的使用者，請確定您是在建立與現有 GCM 專案相關聯的新 Firebase 專案時。 這可確保新的 Firebase 秘密適用于使用 GCM Sdk 和程式庫執行繼承應用程式的使用者，以及使用 FCM Sdk 和程式庫的應用程式新使用者。
 
-**問：** 何時我的通知使用 FCM 的新功能和結構描述？
+**問：** 何時可以將新的 FCM 功能和架構用於我的通知？
 
-**答：** 一旦我們將更新發佈到我們的 API 和 Sdk，但請密切注意 – 我們希望能有任何您未來的幾個月。
+**答：** 一旦我們將更新發佈至我們的 API 和 Sdk 之後，請繼續進行調整-我們預期您會在未來幾個月內有一些專案。

@@ -1,30 +1,28 @@
 ---
-title: 使用 Azure 網路監看員管理網路安全性群組流量記錄 - REST API | Microsoft Docs
+title: 管理 NSG 流量記錄-Azure REST API
+titleSuffix: Azure Network Watcher
 description: 此頁面說明如何使用 REST API 在 Azure 網路監看員中管理網路安全性群組流量記錄
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 2ab25379-0fd3-4bfe-9d82-425dfc7ad6bb
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: ab4b283449ec6c0174f380b0231dd2e78dea419d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: 936501674fcf1d428de936174575440edad71de2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688036"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738510"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>使用 REST API 設定網路安全性群組流量記錄
 
 > [!div class="op_single_selector"]
-> - [Azure 门户](network-watcher-nsg-flow-logging-portal.md)
+> - [Azure 入口網站](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
@@ -33,14 +31,14 @@ ms.locfileid: "64688036"
 
 ## <a name="before-you-begin"></a>開始之前
 
-使用 ARMclient 透過 PowerShell 呼叫 REST API。 您可以在 chocolatey 的 [ARMClient on Chocolatey](https://chocolatey.org/packages/ARMClient) 上找到 ARMClient
+使用 ARMclient 透過 PowerShell 呼叫 REST API。 ARMClient 可在 chocolatey 的[ARMClient 上找到 chocolatey](https://chocolatey.org/packages/ARMClient)
 
 此案例假設您已依照[建立網路監看員](network-watcher-create.md)中的步驟建立網路監看員。
 
 > [!Important]
 > 針對網路監看員 REST API 呼叫，要求 URI 中的資源群組名稱是包含網路監看員的資源群組，而非您要執行診斷動作的資源。
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
 本文章涵蓋的案例會示範如何使用 REST API 啟用、停用以及查詢流程記錄。 若要深入了解網路安全性群組流程記錄，請造訪[網路安全性群組流程記錄 - 概觀](network-watcher-nsg-flow-logging-overview.md)。
 
@@ -209,7 +207,7 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 
 ## <a name="download-a-flow-log"></a>下載流量記錄
 
-流量記錄的儲存位置會在建立時定義。 若要存取這些儲存至儲存體帳戶的流量記錄，Microsoft Azure 儲存體總管是很便利的工具，您可以在這裡下載︰ https://storageexplorer.com/
+流量記錄的儲存位置會在建立時定義。 若要存取這些儲存至儲存體帳戶的流量記錄，Microsoft Azure 儲存體總管是很便利的工具，您可以在這裡下載︰https://storageexplorer.com/
 
 如果指定了儲存體帳戶，封包擷取檔案便會儲存到儲存體帳戶的下列位置︰
 

@@ -1,26 +1,15 @@
 ---
-title: App Service 上的作業系統功能 - Azure
-description: 了解 Azure App Service 上 Web 應用程式、行動應用程式後端和 API Apps 可以使用的作業系統功能
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: mollybos
+title: 作業系統功能
+description: 瞭解 Windows Azure App Service 中的 OS 功能。 瞭解您的應用程式所取得的檔、網路和登錄存取類型。
 ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e5ab6651503766844b2aeef1849bffff9cf4d7bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: ed84cb2b0cb8d98b12fe787e49c400ba47e4e38a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60835493"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74671617"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service 上的作業系統功能
 本文說明在 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)上執行的所有 Windows 應用程式可用的一般基礎作業系統功能。 此功能包含檔案、網路、登錄存取、診斷記錄和事件。 
@@ -32,11 +21,11 @@ ms.locfileid: "60835493"
 <a id="tiers"></a>
 
 ## <a name="app-service-plan-tiers"></a>App Service 計劃層
-App Service 會在多租用戶裝載環境中執行客戶應用程式。 部署在「免費」和「共用」層的應用程式，會在共用虛擬機器的背景工作角色處理序中執行，而部署在「標準」和「Premium」層的應用程式，則會在與單一客戶應用程式相關聯的專用虛擬機器上執行。
+App Service 會在多租用戶裝載環境中執行客戶應用程式。 部署在「免費」**** 和「共用」**** 層的應用程式，會在共用虛擬機器的背景工作角色處理序中執行，而部署在「標準」**** 和「Premium」**** 層的應用程式，則會在與單一客戶應用程式相關聯的專用虛擬機器上執行。
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-由于应用服务支持不同层之间的无缝缩放体验，因此，为应用服务应用实施的安全配置保持不变。 這可確保當 App Service 在不同層之間切換時，應用程式不會突然出現不同的行為，發生非預期的失敗。
+因為 App Service 支援不同層之間的完美縮放體驗，所以強制 App Service 應用程式採用的安全性設定維持不變。 這可確保當 App Service 在不同層之間切換時，應用程式不會突然出現不同的行為，發生非預期的失敗。
 
 <a id="developmentframeworks"></a>
 
@@ -61,11 +50,11 @@ App Service 中的各種磁碟機，包含本機磁碟機和網路磁碟機。
 - 應用程式磁碟機，包含 App Service 專用的 Azure 封裝 cspkg 檔案 (客戶無法存取)
 - 「使用者」磁碟機 (C:\ 磁碟機)，它的大小會隨著虛擬機器大小而異。 
 
-請務必在您應用程式增加之際監視磁碟使用狀況。 如果達到磁碟配額時，可能會對您的應用程式造成不良影響。 例如︰ 
+請務必在您應用程式增加之際監視磁碟使用狀況。 如果達到磁碟配額時，可能會對您的應用程式造成不良影響。 例如： 
 
 - 應用程序可能會擲回錯誤，指出磁碟上沒有足夠的空間。
 - 瀏覽至 Kudu 主控台時，您可能會看到磁碟錯誤。
-- 從 VSTS 或 Visual Studio 部署可能會因 `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)` 而失敗。
+- 從 Azure DevOps 或 Visual Studio 的部署可能會失敗，並出現 `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)` 。
 - 您的應用程式可能會效能變慢。
 
 <a id="NetworkDrives"></a>
@@ -86,7 +75,7 @@ App Service 將所有使用者內容儲存在一組 UNC 共用上，此種獨特
 
 App Service 對於暫存本機儲存體的兩種使用方式範例：暫存 ASP.NET 檔案的目錄和 IIS 壓縮檔案的目錄。 ASP.NET 編譯系統會使用 "Temporary ASP.NET Files" 目錄作為暫存編譯快取位置。 IIS 則使用 "IIS Temporary Compressed Files" 目錄來儲存壓縮回應輸出。 這兩種檔案使用方式 (和其他方式) 都會在 App Service 中重新對應至每個應用程式的暫存本機儲存體。 此重新對應可確保功能如預期般繼續運作。
 
-App Service 中的每個應用程式都會以隨機獨特的低權限背景工作角色處理序身分識別 (稱為「應用程式集區身分識別」) 執行，進一步的說明如下：[https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities)。 應用程式程式碼會將此識別用於作業系統磁碟機 (D:\ 磁碟機) 的基本唯讀存取。 這表示應用程式程式碼可以列出通用目錄結構和讀取作業系統磁碟機上的通用檔案。 雖然這似乎是有點廣泛的存取層級，但是當您在 Azure 託管服務中佈建背景工作角色和讀取磁碟機內容時，可以存取的目錄和檔案相同。 
+App Service 中的每個應用程式都會以隨機唯一的低許可權背景工作進程身分識別來執行，稱為「應用程式集區身分識別」，如下所述： [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities) 。 應用程式程式碼會將此識別用於作業系統磁碟機 (D:\ 磁碟機) 的基本唯讀存取。 這表示應用程式程式碼可以列出通用目錄結構和讀取作業系統磁碟機上的通用檔案。 雖然這似乎是有點廣泛的存取層級，但是當您在 Azure 託管服務中佈建背景工作角色和讀取磁碟機內容時，可以存取的目錄和檔案相同。 
 
 <a name="multipleinstances"></a>
 
@@ -96,7 +85,7 @@ App Service 中的每個應用程式都會以隨機獨特的低權限背景工�
 <a id="NetworkAccess"></a>
 
 ## <a name="network-access"></a>網路存取
-應用程式程式碼可以使用 TCP/IP 和 UDP 型通訊協定，對公開外部服務的網際網路可存取端點進行輸出網路連線。 應用程式可以使用這些相同通訊協定來連接至 Azure&#151; 內的服務，例如，建立與 SQL Database 的 HTTPS 連線。
+應用程式程式碼可以使用 TCP/IP 和 UDP 型通訊協定，對公開外部服務的網際網路可存取端點進行輸出網路連線。 應用程式可以使用這些相同的通訊協定來連線到 Azure 中的服務，例如，藉由建立 SQL Database 的 HTTPS 連線。
 
 此外，應用程式可以在有限的情況下建立一個本機回送連線，並且讓應用程式在該本機回送通訊端上接聽。 這項功能主要是讓在本機回送通訊端上接聽的應用程式成為其功能的一部分。 每個應用程式都會看到「私人」回送連線。 應用程式 "A" 無法接聽由應用程式 "B" 建立的本機回送通訊端。
 
@@ -133,7 +122,7 @@ App Service 中的每個應用程式都會以隨機獨特的低權限背景工�
 
 App Service 並未提供對 VM 執行個體的遠端桌面存取。
 
-## <a name="more-information"></a>詳細資訊
+## <a name="more-information"></a>更多資訊
 
 [Azure App Service 沙箱](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) - 有關 App Service 執行環境的最新資訊。 本頁面由 App Service 開發團隊直接維護。
 

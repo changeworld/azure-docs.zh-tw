@@ -1,22 +1,15 @@
 ---
 title: 使用 Azure 入口網站建立 Durable Functions
 description: 了解如何安裝 Azure Functions 的 Durable Functions 擴充，供入口網站開發使用。
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
-origin.date: 10/23/2018
-ms.date: 03/25/2019
-ms.author: v-junlch
-ms.openlocfilehash: 1c60bd4dae6c279ccff637ff0aa798c48ebec6f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/10/2020
+ms.reviewer: azfuncdf
+ms.openlocfilehash: 7eee3c36620d0cc9f5906e355b76e7418c61b477
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60710812"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807956"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>使用 Azure 入口網站建立 Durable Functions
 
@@ -24,12 +17,12 @@ NuGet 套件 [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.
 
 > [!NOTE]
 > 
-> * 如果您正在使用 C# 開發長期函式，則應考慮 [Visual Studio 2017 開發](durable-functions-create-first-csharp.md)。
+> * 如果您正在使用 C# 開發長期函式，則應考慮 [Visual Studio 2019 開發](durable-functions-create-first-csharp.md)。
 > * 如果您正在使用 JavaScript 開發長期函式，則應考慮 [Visual Studio Code 開發](./quickstart-js-vscode.md)。
 
 ## <a name="create-a-function-app"></a>建立函數應用程式
 
-您必須擁有函式應用程式以便主控任何函式的執行。 函式應用程式可讓您將您的多個函式群組為邏輯單位，以方便您管理、部署和共用資源。 您可以建立 .NET 或 JavaScript 應用程式。
+您必須擁有函式應用程式以便主控任何函式的執行。 函式應用程式可讓您將多個函式群組為邏輯單位，方便管理、部署、調整和共用資源。 您可以建立 .NET 或 JavaScript 應用程式。
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
@@ -37,49 +30,47 @@ NuGet 套件 [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.
 
 ## <a name="install-the-durable-functions-npm-package-javascript-only"></a>安裝 Durable Functions npm 套件 (僅限 JavaScript)
 
-如果您要建立 JavaScript Durable Functions，您必須安裝 [`durable-functions` npm 套件](https://www.npmjs.com/package/durable-functions)。
+如果您要建立 JavaScript Durable Functions，您必須安裝 [`durable-functions`npm 套件](https://www.npmjs.com/package/durable-functions)：
 
-1. 選取您的函式應用程式名稱，後面接著**平台功能**，然後**進階工具 (Kudu)**。
+1. 從函式應用程式的頁面，選取左窗格中 [開發工具] 之下的 [進階工具]。
 
-   ![函式平台功能會選擇 Kudu](./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png)
+   :::image type="content" source="./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png" alt-text="函式平台功能會選擇 Kudu":::
 
-2. 在 Kudu 主控台中，選取 [偵錯主控台]，然後選擇 [CMD]。
+2. 在 [進階工具] 頁面中，選取 [執行]。
 
-   ![Kudu 偵錯主控台](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+3. 在 Kudu 主控台中，選取 [偵錯主控台]，然後選取 [CMD]。
+
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu 偵錯主控台":::
 
 3. 函式應用程式的檔案目錄結構應該會顯示。 瀏覽到 `site/wwwroot` 資料夾。 從這裡，您可以將 `package.json` 檔案拖放到檔案目錄視窗來上傳該檔案。 範例 `package.json` 如下：
 
     ```json
     {
       "dependencies": {
-        "durable-functions": "^1.1.2"
+        "durable-functions": "^1.3.1"
       }
     }
     ```
 
-   ![Kudu upload package.json](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu upload package.json":::
 
 4. `package.json` 上傳之後，請從 Kudu 遠端執行主控台執行 `npm install` 命令。
 
    ![Kudu run npm install](./media/durable-functions-create-portal/kudu-npm-install.png)
+   
+5. 最後，藉由新增值為的應用程式設定來[啟用相容性模式](https://docs.microsoft.com/azure/azure-functions/durable/quickstart-js-vscode#enable-compatibility-mode-1) `FUNCTIONS_V2_COMPATIBILITY_MODE` `true` 。
 
 ## <a name="create-an-orchestrator-function"></a>建立協調器函式
 
-1. 展開函式應用程式，然後按一下 [Functions] 旁的 [+] 按鈕。 如果這是函式應用程式中的第一個函式，請依序選取 [入口網站內] 和 [繼續]。 否則，請移至步驟三。
+1. 在您的函式應用程式中，從左側窗格選取 [函式]，然後從頂端功能表選取 [新增]。 
 
-   ![Azure 入口網站中的 Functions 快速入門](./media/durable-functions-create-portal/function-app-quickstart-choose-portal.png)
+1. 在 [新函式] 的搜尋欄位中，輸入 `durable`，然後選擇 [Durable Functions HTTP 入門] 範本。
 
-1. 依序選擇 [更多範本] 和 [完成並檢視範本]。
+   :::image type="content" source="./media/durable-functions-create-portal/durable-functions-http-starter-template.png" alt-text="選取 Durable Functions HTTP 入門":::
 
-    ![Functions 快速入門選擇更多範本](./media/durable-functions-create-portal/add-first-function.png)
+1. 針對 [新函式] 名稱，輸入 `HttpStart`，然後選取 [建立函式]。
 
-1. 在搜尋欄位中，輸入 `durable`，然後選擇 [Durable Functions HTTP 入門] 範本。
-
-1. 出現提示時，請選取 [安裝]，以在函式應用程式中安裝 Azure DurableTask 延伸模組的任何相依性。 您只需要為指定的函式應用程式安裝一次延伸模組。 安裝成功之後，請選取 [繼續]。
-
-    ![安裝繫結延伸模組](./media/durable-functions-create-portal/install-durabletask-extension.png)
-
-1. 安裝完成後，將新的函式命名為 `HttpStart`，然後選擇 [建立]。 建立的函式用來啟動協調流程。
+   建立的函式用來啟動協調流程。
 
 1. 在函式應用程式中建立另一個函式，這次是使用 **Durable Functions 協調器**範本。 將新的協調流程函式命名為 `HelloSequence`。
 
@@ -87,12 +78,12 @@ NuGet 套件 [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.
 
 ## <a name="test-the-durable-function-orchestration"></a>測試長期函式的協調流程
 
-1. 返回 **HttpStart** 函式中，選擇 **</> Get 函式 URL** 並**複製**該 URL。 您可以使用此 URL 來啟動 **HelloSequence** 函式。
+1. 回到 **HttpStart** 函式，選擇 [取得函式 URL]，然後選取 [複製到剪貼簿] 圖示以複製該 URL。 您可以使用此 URL 來啟動 **HelloSequence** 函式。
 
 1. 使用 Postman 或 cURL 等 HTTP 工具，將 POST 要求傳送至您複製的 URL。 下列範例是 cURL 命令，它向長期函式傳送 POST 要求：
 
     ```bash
-    curl -X POST https://{your-function-app-name}.chinacloudsites.cn/api/orchestrators/HelloSequence
+    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence --header "Content-Length: 0"
     ```
 
     在此範例中，`{your-function-app-name}` 是網域 (您的函式應用程式名稱)。 回應訊息包含一組可用於監視和管理執行的 URI 端點，如下列範例所示︰
@@ -140,6 +131,4 @@ NuGet 套件 [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [了解常見的耐久函式模式](durable-functions-concepts.md)
-
-<!-- Update_Description: wording update -->
+> [了解常見的耐久函式模式](durable-functions-overview.md#application-patterns)

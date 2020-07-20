@@ -1,0 +1,76 @@
+### YamlMime:Landing
+title: 語音轉文字文件
+summary: 語音服務的語音轉換文字（也稱為語音辨識）可將音訊串流的即時和批次轉譯成文字。 透過其他的參考文字輸入，它也會啟用即時發音評估，並提供說話者的精確度和順暢的演講意見反應。
+metadata:
+  title: 語音轉換文字檔-教學課程和 API 參考-Azure 認知服務 |Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: trevorbye
+  manager: nitinme
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 03/19/2020
+  ms.author: trbye
+  ms.openlocfilehash: c1f4b6b43f661251f764e65e5d5378952ab99d10
+  ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+  ms.translationtype: MT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 05/22/2020
+  ms.locfileid: "83800868"
+landingContent:
+- title: 關於語音轉換文字
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是即時語音轉文字？
+      url: speech-to-text.md
+    - text: 什麼是批次語音轉文字？
+      url: batch-transcription.md
+    - text: 語音辨識基本概念
+      url: speech-to-text-basics.md
+    - text: 使用適用于語音轉換文字的語音 CLI，而不使用任何程式碼
+      url: spx-overview.md
+  - linkListType: quickstart
+    links:
+    - text: 以麥克風輸入辨識語音
+      url: quickstarts/speech-to-text-from-microphone.md
+    - text: 辨識來自音訊檔案的語音
+      url: quickstarts/speech-to-text-from-file.md
+    - text: 辨識儲存在 Blob 儲存體中的語音
+      url: quickstarts/from-blob.md
+    - text: 具有參考輸入的發音評量
+      url: rest-speech-to-text.md#pronunciation-assessment-parameters
+- title: 使用語音轉換文字進行開發
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 選擇語音辨識模式
+      url: how-to-choose-recognition-mode.md
+    - text: 變更語音辨識的來源語言
+      url: how-to-specify-source-language.md
+    - text: 以自訂語音提高精確度
+      url: how-to-custom-speech.md
+    - text: 使用壓縮的音訊輸入格式
+      url: how-to-use-codec-compressed-audio-input-streams.md
+  - linkListType: tutorial
+    links:
+    - text: 以租用戶模型提高精確度
+      url: tutorial-tenant-model.md
+  - linkListType: concept
+    links:
+    - text: 準備自訂語音的資料
+      url: how-to-custom-speech-test-and-train.md
+    - text: 定型自訂語音的模型
+      url: how-to-custom-speech-train-model.md
+    - text: 建立人為標記的轉譯
+      url: how-to-custom-speech-human-labeled-transcriptions.md
+- title: 參考資料
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 語言支援
+      url: language-support.md#speech-to-text
+    - text: 語音轉換文字常見問題集
+      url: faq-stt.md
+    - text: 語音轉換文字定價
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services

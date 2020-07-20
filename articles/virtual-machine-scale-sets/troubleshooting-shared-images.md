@@ -1,27 +1,20 @@
 ---
-title: 針對 Azure 中的共用映像問題進行疑難排解 |Microsoft Docs
-description: 了解如何針對共用映像資源庫的問題進行疑難排解。
-services: virtual-machine-scale-sets
+title: 針對 Azure 中的共用映像問題進行疑難排解
+description: 了解如何針對 Azure 虛擬機器擴展集內的共用映像庫問題進行疑難排解。
 documentationcenter: virtual-machine-scale-sets
 author: axayjo
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
+ms.author: akjosh
+ms.topic: troubleshooting
 ms.service: virtual-machine-scale-sets
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: infrastructure
+ms.subservice: imaging
 ms.date: 04/25/2019
-ms.author: akjosh; cynthn
-ms.custom: ''
-ms.openlocfilehash: ea8758934f5209228e9c6697b5f0497e68baf62e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.reviewer: cynthn
+ms.custom: akjosh
+ms.openlocfilehash: dd79d923689a95f0c9a25efcb1377db253247baf
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65149634"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700867"
 ---
 # <a name="troubleshoot-shared-image-galleries"></a>針對共用映像資源庫進行疑難排解
 

@@ -1,10 +1,10 @@
 ---
 title: 針對使用 RDP 來連線至 Azure VM 時的驗證錯誤進行疑難排解 | Microsoft Docs
-description: ''
+description: 瞭解如何對使用遠端桌面通訊協定（RDP）連線到 Azure 虛擬機器（VM）時所發生的驗證錯誤進行疑難排解。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,32 +14,32 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 47d3b827099d3a4a7520ac66765d2928795b6e49
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 03356c0b4a93f4befdbc529523e58642137a8887
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60594933"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80420823"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>針對使用 RDP 來連線至 Azure VM 時的驗證錯誤進行疑難排解
 
 本文可協助您針對使用「遠端桌面通訊協定」(RDP) 連線來連線至 Azure 虛擬機器 (VM) 時發生的驗證錯誤進行疑難排解。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 您擷取一個顯示「歡迎」畫面並指出作業系統正在執行的 Azure VM 螢幕擷取畫面。 不過，當您嘗試使用「遠端桌面連線」來連線到該 VM 時，收到下列其中一個錯誤訊息。
 
 ### <a name="error-message-1"></a>錯誤訊息 1
 
-**發生驗證錯誤。無法連絡到本機安全性授權單位。**
+**發生驗證錯誤。無法連絡本地安全機構。**
 
 ### <a name="error-message-2"></a>錯誤訊息 2
 
-**您嘗試連線的遠端電腦需要網路層級驗證 (NLA)，但無法連絡您的 Windows 網域控制站以執行 NLA。如果您是遠端電腦上的系統管理員，可以使用 [系統內容] 對話方塊中 [遠端] 索引標籤上的選項停用 NLA。**
+**您嘗試連線的遠端電腦需要網路層級驗證（NLA），但無法連線到您的 Windows 網域控制站來執行 NLA。如果您是遠端電腦上的系統管理員，您可以使用 [系統內容] 對話方塊的 [遠端] 索引標籤上的選項來停用 NLA。**
 
 ### <a name="error-message-3-generic-connection-error"></a>錯誤訊息 3 (一般連線錯誤)
 
-**這部電腦無法連線到遠端電腦。請再次嘗試連線。如果繼續發生問題，請連絡遠端電腦的擁有者或您的網路系統管理員。**
+**這部電腦無法連接到遠端電腦。再次嘗試連線，如果問題持續發生，請洽詢遠端電腦的擁有者或您的網路系統管理員。**
 
 ## <a name="cause"></a>原因
 
@@ -161,7 +161,7 @@ Reset-ComputerMachinePassword -Server "<COMPUTERNAME>" -Credential <DOMAIN CREDE
 
 如果 DC 與 VM 之間的通訊良好，但 DC 狀況未良好到足以開啟 RDP 工作階段，則您可以嘗試重新啟動 DC。
 
-如果上述命令無法修正與網域的通訊問題，您可以將 VM 重新加入網域。 若要這樣做，請遵循下列步驟：
+如果上述命令無法修正與網域的通訊問題，您可以將 VM 重新加入網域。 若要這樣做，請執行下列步驟：
 
 1. 使用下列內容來建立名為 Unjoin.ps1 的指令碼，然後在 Azure 入口網站上將該指令碼部署為「自訂指令碼延伸模組」：
 
@@ -246,7 +246,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Prot
 > [!Note]
 > 請從 SCHANNEL 錯誤相關「客體 OS 記錄」取得 SSH/TLS 版本 x.x。
 
-#### <a name="fips-compliant"></a> 檢查符合 FIPS 規範的演算法連線
+#### <a name="check-fips-compliant-algorithms-connections"></a><a name="fips-compliant"></a> 檢查符合 FIPS 規範的演算法連線
 
 您可以強制遠端桌面只使用符合 FIPS 規範的演算法連線。 使用登錄機碼即可進行此設定。 若要這樣做，請開啟已提升權限的命令提示字元視窗，然後查詢下列機碼：
 

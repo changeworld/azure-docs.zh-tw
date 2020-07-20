@@ -1,56 +1,47 @@
 ---
-title: 啟動和停止叢集節點以測試 Azure Service Fabric 應用程式 | Microsoft Docs
+title: 啟動和停止叢集節點
 description: 了解如何使用錯誤插入，藉由啟動和停止叢集節點的方式，測試 Service Fabric 應用程式。
-services: service-fabric
-documentationcenter: .net
 author: LMWF
-manager: rsinha
-editor: ''
-ms.assetid: f4e70f6f-cad9-4a3e-9655-009b4db09c6d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/12/2017
 ms.author: lemai
-ms.openlocfilehash: df0e53736c08fd2c26c467def7328e85f2989f26
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e24faa22445ddc40fad63a91442e7cec3e14a5e1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60718133"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246086"
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>以節點轉換 API 取代啟動節點和停止節點 API
 
 ## <a name="what-do-the-stop-node-and-start-node-apis-do"></a>啟動節點和停止節點 API 有什麼功用？
 
-停止節點 API (受控：[StopNodeAsync()][stopnode]、PowerShell：[Stop-ServiceFabricNode][stopnodeps]) 可停止 Service Fabric 節點。  Service Fabric 節點是處理序，不是 VM 或機器 – VM 或機器仍將繼續執行。  在文件的其餘部分，「節點」是指 Service Fabric 節點。  停止節點時是將其放入「停止」狀態，此時節點不是叢集的成員，無法裝載服務，因此就像是個「關閉」的節點。  在將錯誤插入系統以測試應用程式系統時，這非常有用。  啟動節點 API (受控：[StartNodeAsync()][startnode]、PowerShell：[Start-ServiceFabricNode][startnodeps]) 會反轉停止節點 API，將節點帶回一般狀態。
+停止節點 API (受控︰[StopNodeAsync()][stopnode]、PowerShell：[Stop-ServiceFabricNode][stopnodeps]) 會停止 Service Fabric 節點。  Service Fabric 節點是處理序，不是 VM 或機器 – VM 或機器仍將繼續執行。  在文件的其餘部分，「節點」是指 Service Fabric 節點。  停止節點時是將其放入「停止」** 狀態，此時節點不是叢集的成員，無法裝載服務，因此就像是個「關閉」** 的節點。  在將錯誤插入系統以測試應用程式系統時，這非常有用。  啟動節點 API (受控︰[StartNodeAsync()][startnode]、PowerShell：[Start-ServiceFabricNode][startnodeps]) 會反轉停止節點 API，將節點帶回一般狀態。
 
 ## <a name="why-are-we-replacing-these"></a>為什麼要取代它們？
 
-如先前所述，「停止」的 Service Fabric 節點是使用停止節點 API 刻意鎖定目標的節點。  「關閉」節點是基於其他因素 (例如 VM 或機器已關閉) 而關閉的節點。  使用停止節點 API 時，系統不會公開資訊，您無法區分「停止」節點和「關閉」節點。
+如先前所述，「停止」** 的 Service Fabric 節點是使用停止節點 API 刻意鎖定目標的節點。  「關閉」** 節點是基於其他因素 (例如 VM 或機器已關閉) 而關閉的節點。  使用停止節點 API 時，系統不會公開資訊，您無法區分「停止」** 節點和「關閉」** 節點。
 
-此外，這些 API 傳回的某些錯誤的描述不明確。  例如，在已經「停止」的節點上叫用停止節點 API 會傳回 *InvalidAddress* 錯誤。  這種經驗可以改善。
+此外，這些 API 傳回的某些錯誤的描述不明確。  例如，在已經「停止」** 的節點上叫用停止節點 API 會傳回 *InvalidAddress* 錯誤。  這種經驗可以改善。
 
-此外，節點停止的持續時間是「無限期」，直到 Start Node API 被叫用。  我們發現這可能會造成問題，比較容易出錯。  例如，我們已經看到使用者在節點叫用停止節點 API 之後將它忘得一乾二淨的問題。  之後，將無從得知它是「關閉」或「停止」節點。
+此外，節點停止的持續時間是「無限期」，直到 Start Node API 被叫用。  我們發現這可能會造成問題，比較容易出錯。  例如，我們已經看到使用者在節點叫用停止節點 API 之後將它忘得一乾二淨的問題。  之後，將無從得知它是「關閉」** 或「停止」** 節點。
 
 
 ## <a name="introducing-the-node-transition-apis"></a>節點轉換 API 簡介
 
-我們已經用一組新的 API 解決上述問題。  新的節點轉換 API (受控：[StartNodeTransitionAsync()][snt]) 可用來將 Service Fabric 節點轉換為「停止」狀態，或將它從「停止」狀態轉換為一般狀態。  請注意，此 API 名稱中的 "Start" 不是啟動節點之意。  是指開始系統將執行、會將節點轉換為「停止」或啟動狀態的非同步作業。
+我們已經用一組新的 API 解決上述問題。  新的節點轉換 API (受控︰[StartNodeTransitionAsync()][snt]) 可用來將 Service Fabric 節點轉換為「停止」** 狀態，或將它從「停止」** 狀態轉換為一般狀態。  請注意，此 API 名稱中的 "Start" 不是啟動節點之意。  是指開始系統將執行、會將節點轉換為「停止」** 或啟動狀態的非同步作業。
 
 **使用量**
 
-如果節點轉換 API 被呼叫時沒有擲回例外狀況，則系統已接受非同步作業，並將執行它。  成功的呼叫並不表示作業完成。  若要取得作業的目前狀態資訊，請呼叫節點轉換進度 API (受控︰[GetNodeTransitionProgressAsync()][gntp])，並搭配此作業叫用節點轉換 API 時使用的 guid。  節點轉換進度 API 會傳回 NodeTransitionProgress 物件。  此物件的 State 屬性會指定作業的目前狀態。  如果狀態是 "Running"，則作業正在執行。  如果是 "Completed"，則作業完成沒有錯誤。  如果是 "Faulted"，則表示執行作業發生問題。  Result 屬性的 Exception 屬性會指出問題為何。  請參閱 https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate 了解 State 屬性的相關資訊，以及之後的「範例用法」一節中的程式碼範例。
+如果節點轉換 API 被呼叫時沒有擲回例外狀況，則系統已接受非同步作業，並將執行它。  成功的呼叫並不表示作業完成。  若要取得作業的目前狀態資訊，請呼叫節點轉換進度 API (受控︰ [GetNodeTransitionProgressAsync()][gntp])，並搭配此作業叫用節點轉換 API 時使用的 guid。  節點轉換進度 API 會傳回 NodeTransitionProgress 物件。  此物件的 State 屬性會指定作業的目前狀態。  如果狀態是 "Running"，則作業正在執行。  如果是 "Completed"，則作業完成沒有錯誤。  如果是 "Faulted"，則表示執行作業發生問題。  Result 屬性的 Exception 屬性會指出問題為何。  請參閱 https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate 了解 State 屬性的相關資訊，以及之後的「範例用法」一節中的程式碼範例。
 
 
-**區分停止節點和關閉節點** 如果是使用節點轉換 API *停止*節點，節點查詢的輸出 (受控：[GetNodeListAsync()][nodequery]、PowerShell：[Get-ServiceFabricNode][nodequeryps]) 將顯示此節點的 *IsStopped* 屬性值為 true。  請注意，這和 NodeStatus屬性的值 (Down) 不同。  如果 NodeStatus屬性的值為 Down，但 IsStopped 為 false，則節點並非使用節點轉換 API 停止，而是因其他原因而「關閉」。  如果 IsStopped屬性為 true，而NodeStatus 屬性為 Down，則是使用節點轉換 API 停止節點。
+**區分停止節點和關閉節點** 如果是使用節點轉換 API *停止*節點，節點查詢的輸出 (受控：[GetNodeListAsync()][nodequery]、PowerShell：[Get-ServiceFabricNode][nodequeryps]) 將顯示此節點的 *IsStopped* 屬性值為 true。  請注意，這和 NodeStatus** 屬性的值 (Down**) 不同。  如果 NodeStatus** 屬性的值為 Down**，但 IsStopped** 為 false，則節點並非使用節點轉換 API 停止，而是因其他原因而「關閉」**。  如果 IsStopped** 屬性為 true，而NodeStatus** 屬性為 Down**，則是使用節點轉換 API 停止節點。
 
-使用節點轉換 API 啟動「停止」節點會將它恢復運作，再次成為叢集的一般成員。  節點查詢 API 的輸出會顯示IsStopped 是 false，而 NodeStatus 是 Down 以外的值 (例如 Up)。
+使用節點轉換 API 啟動「停止」** 節點會將它恢復運作，再次成為叢集的一般成員。  節點查詢 API 的輸出會顯示IsStopped** 是 false，而 NodeStatus** 是 Down 以外的值 (例如 Up)。
 
 
-**有限的持續時間** 使用節點轉換 API停止節點時，其中一個必要參數 stopNodeDurationInSeconds 表示該節點要保持「停止」的時間，單位為秒。  這個值必須在允許範圍內，最低 600，最高 14400。  此時間過期之後，節點本身會自動重新啟動到 Up 狀態。  請參閱以下範例 1 的範例用法。
+**有限的持續時間** 使用節點轉換 API停止節點時，其中一個必要參數 stopNodeDurationInSeconds** 表示該節點要保持「停止」** 的時間，單位為秒。  這個值必須在允許範圍內，最低 600，最高 14400。  此時間過期之後，節點本身會自動重新啟動到 Up 狀態。  請參閱以下範例 1 的範例用法。
 
 > [!WARNING]
 > 避免混用節點轉換 API 和啟動節點、停止節點 API。  建議只使用節點轉換 API。  > 如果已經使用停止節點 API 停止節點，則應該先使用啟動節點 API 啟動它，再使用 > 節點轉換 API。
@@ -59,7 +50,7 @@ ms.locfileid: "60718133"
 > 在相同節點上無法平行呼叫多個節點轉換 API。  在這種情況下，節點轉換 API 將   > 擲回 FabricException，其 ErrorCode 屬性的值為 NodeTransitionInProgress。  一旦特定節點的節點轉換  > 已經開始，您應該等到作業到達終止狀態 (Completed、Faulted 或 ForceCancelled)，才開始  > 對同一節點進行新的轉換。  允許在不同節點上平行呼叫節點轉換。
 
 
-#### <a name="sample-usage"></a>示例用法
+#### <a name="sample-usage"></a>範例用法
 
 
 **範例 1** - 下列範例會使用節點轉換 API 來停止節點。
@@ -164,7 +155,7 @@ ms.locfileid: "60718133"
         }
 ```
 
-**範例 2** - 下列範例會啟動「停止」節點。  它會使用第一個範例中的一些協助程式方法。
+**範例 2** - 下列範例會啟動「停止」** 節點。  它會使用第一個範例中的一些協助程式方法。
 
 ```csharp
         static async Task StartNodeAsync(FabricClient fc, string nodeName)
@@ -207,7 +198,7 @@ ms.locfileid: "60718133"
         }
 ```
 
-**範例 3** - 下列範例示範錯誤用法。  這種用法不正確，是因為它提供的 stopDurationInSeconds 大於允許的範圍。  由於 StartNodeTransitionAsync() 將會失敗並發生嚴重錯誤，作業將不被接受，應該不會呼叫進度 API。  這個範例會使用第一個範例中的一些協助程式方法。
+**範例 3** - 下列範例示範錯誤用法。  這種用法不正確，是因為它提供的 stopDurationInSeconds** 大於允許的範圍。  由於 StartNodeTransitionAsync() 將會失敗並發生嚴重錯誤，作業將不被接受，應該不會呼叫進度 API。  這個範例會使用第一個範例中的一些協助程式方法。
 
 ```csharp
         static async Task StopNodeWithOutOfRangeDurationAsync(FabricClient fc, string nodeName)
@@ -280,11 +271,11 @@ ms.locfileid: "60718133"
         }
 ```
 
-[stopnode]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.faultmanagementclient?redirectedfrom=MSDN
-[stopnodeps]: https://msdn.microsoft.com/library/mt125982.aspx
-[startnode]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.faultmanagementclient?redirectedfrom=MSDN
-[startnodeps]: https://msdn.microsoft.com/library/mt163520.aspx
-[nodequery]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient
-[nodequeryps]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode
-[snt]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.testmanagementclient
-[gntp]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.testmanagementclient
+[stopnode]: /dotnet/api/system.fabric.fabricclient.faultmanagementclient
+[stopnodeps]: /previous-versions/azure/mt125982(v=azure.100)
+[startnode]: /dotnet/api/system.fabric.fabricclient.faultmanagementclient
+[startnodeps]: /previous-versions/azure/mt163520(v=azure.100)
+[nodequery]: /dotnet/api/system.fabric.fabricclient.queryclient
+[nodequeryps]: /powershell/module/servicefabric/get-servicefabricnode
+[snt]: /dotnet/api/system.fabric.fabricclient.testmanagementclient
+[gntp]: /dotnet/api/system.fabric.fabricclient.testmanagementclient

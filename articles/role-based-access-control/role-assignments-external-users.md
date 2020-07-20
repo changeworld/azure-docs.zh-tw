@@ -1,6 +1,6 @@
 ---
-title: 使用 RBAC 來管理外部使用者的 Azure 資源存取權 | Microsoft Docs
-description: 了解如何使用角色型存取控制 (RBAC) 來管理組織外部使用者的 Azure 資源存取權。
+title: 使用 Azure 入口網站為外部使用者新增或移除 Azure 角色指派-Azure RBAC
+description: 瞭解如何使用 Azure 入口網站和 Azure 角色型存取控制（Azure RBAC），為組織外部的使用者授與 Azure 資源的存取權。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -9,126 +9,211 @@ editor: ''
 ms.assetid: ''
 ms.service: role-based-access-control
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 03/20/2018
+ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 91548a4df4a77623978ea4bcb214b76427c026a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 870c9c91e285988cdc1fb294b3fc9b3270de7483
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60345216"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361899"
 ---
-# <a name="manage-access-to-azure-resources-for-external-users-using-rbac"></a>使用 RBAC 來管理外部使用者的 Azure 資源存取權
+# <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>使用 Azure 入口網站為外部來賓使用者新增或移除 Azure 角色指派
 
-不論是大型組織，還是與需要存取您環境中特定資源，但不一定需要存取整個基礎結構或任何計費相關範圍的外部共同作業者、廠商或自由工作者合作的 SMB，角色型存取控制 (RBAC) 都可為其提供更好的安全性管理。 RBAC 能提供彈性，可擁有一個系統管理員帳戶 (訂用帳戶等級中的服務系統管理員角色) 所管理的 Azure 訂用帳戶，並邀請多個使用者在相同的訂用帳戶下運作，而無需任何系統管理權限。
+[Azure 角色型存取控制（AZURE RBAC）](overview.md)可讓大型組織及小型和中型企業使用需要存取您環境中特定資源，但不一定是整個基礎結構或任何計費相關範圍的中小型企業進行更好的安全性管理。 您可以使用[AZURE ACTIVE DIRECTORY B2B](../active-directory/b2b/what-is-b2b.md)中的功能，與外部來賓使用者共同作業，而且您可以使用 Azure RBAC 僅授與來賓使用者在您的環境中所需的許可權。
 
-> [!NOTE]
-> 从 Microsoft 365 管理中心预配的 Office 365 订阅或 Azure Active Directory 许可证（例如：Azure Active Directory 访问权限）不符合 RBAC 的使用条件。
+## <a name="prerequisites"></a>必要條件
 
-## <a name="assign-rbac-roles-at-the-subscription-scope"></a>指派訂用帳戶範圍內的 RBAC 角色
+若要新增或移除角色指派，您必須具有：
 
-使用 RBAC 時，有兩個常見的範例 (但是不限於)︰
+- `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 權限，例如[使用者存取系統管理員](built-in-roles.md#user-access-administrator)或[擁有者](built-in-roles.md#owner)
 
-* 邀請來自組織 (並非管理使用者 Azure Active Directory 租用戶的一部分) 外部的使用者來管理特定的資源或是整個訂用帳戶
-* 與組織內部但屬於不同小組或群組的使用者 (使用者之 Azure Active Directory 租用戶的成員) 合作，而這些使用者需要整個訂用帳戶或環境中特定資源群組或資源範圍的細微存取權
+## <a name="when-would-you-invite-guest-users"></a>何時會邀請來賓使用者？
 
-## <a name="grant-access-at-a-subscription-level-for-a-user-outside-of-azure-active-directory"></a>為 Azure Active Directory 外部的使用者授與訂用帳戶等級的存取權
+以下是一些範例案例，當您可能會邀請來賓使用者到您的組織並授與許可權時：
 
-只有訂用帳戶的**擁有者**可以授與 RBAC 角色。 因此，管理員必須以已預先指派此角色或已建立 Azure 訂用帳戶的使用者身分登入。
+- 允許只有電子郵件帳戶的外部自營廠商存取專案的 Azure 資源。
+- 允許外部合作夥伴管理特定資源或整個訂用帳戶。
+- 允許不在貴組織 (例如 Microsoft 支援服務) 的支援工程師暫時存取您的 Azure 資源，針對問題進行疑難排解。
 
-從 Azure 入口網站中，在您以管理員身分登入之後，請選取「訂用帳戶」，並選擇所需的訂用帳戶。
-![Azure 入口網站中的訂用帳戶刀鋒視窗](./media/role-assignments-external-users/0.png) 根據預設，如果管理使用者已購買 Azure 訂用帳戶，使用者就會顯示為**帳戶管理員**，這是訂用帳戶角色。 如需 Azure 訂用帳戶角色的詳細資訊，請參閱[新增或變更 Azure 訂用帳戶管理員](../billing/billing-add-change-azure-subscription-administrator.md)。
+## <a name="permission-differences-between-member-users-and-guest-users"></a>成員使用者與來賓使用者之間的許可權差異
 
-在此範例中，使用者 "alflanigan@outlook.com" 是「預設租用戶 Azure」AAD 租用戶中的「免費試用版」訂用帳戶之**擁有者**。 由於此使用者是具有初始 Microsoft 帳戶 “Outlook” (Microsoft 帳戶 = Outlook、Live 等) 的 Azure 訂用帳戶建立者，因此這個租用戶中所新增其他所有使用者的預設網域名稱會是 **"\@alflaniganuoutlook.onmicrosoft.com"**。 根據設計，新網域的語法構成方式是，將建立租用戶的使用者之使用者名稱和網域名稱加以組合，並新增 **".onmicrosoft.com"** 延伸。
-此外，使用者在新增及驗證新租用戶的自訂網域名稱之後，即可使用租用戶中的自訂網域名稱進行登入。 如需有關如何驗證 Azure Active Directory 租用戶中自訂網域名稱的詳細資訊，請參閱[將自訂網域名稱新增至您的目錄](../active-directory/fundamentals/add-custom-domain.md)。
+目錄的原生成員（成員使用者）所擁有的許可權，與另一個目錄的 B2B 共同作業來賓（來賓使用者）不同。 例如，成員使用者可以讀取幾乎所有的目錄資訊，而來賓使用者則擁有限制的目錄許可權。 如需成員使用者和來賓使用者的詳細資訊，請參閱[Azure Active Directory 中的預設使用者權力為何？](../active-directory/fundamentals/users-default-permissions.md)。
 
-在此範例中，「預設租用戶 Azure」目錄僅包含具有 "\@alflanigan.onmicrosoft.com" 網域名稱的使用者。
+## <a name="add-a-guest-user-to-your-directory"></a>將來賓使用者新增至您的目錄
 
-選取訂用帳戶之後，管理使用者必須依序按一下 [存取控制 (IAM)] 以及 [新增角色]。
+請遵循下列步驟，使用 [Azure Active Directory] 頁面，將來賓使用者新增至您的目錄。
 
-![Azure 入口網站中的存取控制 IAM 功能](./media/role-assignments-external-users/1.png)
+1. 請確定貴組織的外部共同作業設定已設定為允許您邀請來賓。 如需詳細資訊，請參閱[啟用 B2B 外部共同作業和管理可以邀請來賓的人員](../active-directory/b2b/delegate-invitations.md)。
 
-![在 Azure 入口網站的存取控制 IAM 功能中新增使用者](./media/role-assignments-external-users/2.png)
+1. 在 [Azure 入口網站中，按一下 [ **Azure Active Directory**  >  **使用者**] [  >  **新增來賓使用者**]。
 
-下一個步驟是選取要指派的角色，以及要指派 RBAC 角色的使用者。 在 [角色] 下拉式功能表中，管理使用者只會看到 Azure 中提供的內建 RBAC 角色。 如需每個角色及其可指派範圍的詳細說明，請參閱 [Azure 資源的內建角色](built-in-roles.md)。
+    ![Azure 入口網站中的新來賓使用者功能](./media/role-assignments-external-users/invite-guest-user.png)
 
-然後，管理使用者必須新增外部使用者的電子郵件地址。 預期的行為是要使外部使用者不顯示在現有的租用戶中。 外部使用者受邀請之後，將會與目前在「訂用帳戶」範圍獲指派 RBAC 角色的所有目前使用者一起顯示在 [訂用帳戶] > [存取控制 (IAM)] 下。
+1. 遵循步驟來新增來賓使用者。 如需詳細資訊，請參閱[在 Azure 入口網站中新增 AZURE ACTIVE DIRECTORY B2B](../active-directory/b2b/add-users-administrator.md#add-guest-users-to-the-directory)共同作業使用者。
 
-![將權限新增至新的 RBAC 角色](./media/role-assignments-external-users/3.png)
+將來賓使用者新增至目錄之後，您就可以將共用應用程式的直接連結傳送給來賓使用者，或者來賓使用者可以按一下邀請電子郵件中的兌換 URL。
 
-![訂用帳戶等級的 RBAC 角色清單](./media/role-assignments-external-users/4.png)
+![來賓使用者邀請電子郵件](./media/role-assignments-external-users/invite-email.png)
 
-已邀請使用者 "chessercarlton@gmail.com" 成為「免費試用」訂用帳戶的**擁有者**。 傳送邀請之後，外部使用者會收到包含啟用連結的電子郵件確認。
-![RBAC 角色的電子郵件邀請](./media/role-assignments-external-users/5.png)
+若要讓來賓使用者能夠存取您的目錄，他們必須完成邀請程式。
 
-在組織外部的新使用者，沒有任何「預設租用戶 Azure」目錄中的現有屬性。 在外部使用者同意被記錄在與他獲指派角色之訂用帳戶關聯的目錄中之後，便會建立這些屬性。
+![來賓使用者邀請審查許可權](./media/role-assignments-external-users/invite-review-permissions.png)
 
-![RBAC 角色的電子郵件邀請訊息](./media/role-assignments-external-users/6.png)
+如需有關邀請程式的詳細資訊，請參閱[AZURE ACTIVE DIRECTORY B2B 共同作業邀請兌換](../active-directory/b2b/redemption-experience.md)。
 
-從現在起，外部使用者在 Azure Active Directory 租用戶中就會顯示為外部使用者，而在 Azure 入口網站中即可檢視此資訊。
+## <a name="add-a-role-assignment-for-a-guest-user"></a>新增來賓使用者的角色指派
 
-![使用者刀鋒視窗 Azure Active Directory Azure 入口網站](./media/role-assignments-external-users/7.png)
+在 Azure RBAC 中，若要授與存取權，請指派角色。 若要新增來賓使用者的角色指派，請遵循與成員使用者、群組、服務主體或受控識別[相同的步驟](role-assignments-portal.md#add-a-role-assignment)。 請遵循下列步驟，為不同範圍的來賓使用者新增角色指派。
 
-在 Azure 入口網站的 [使用者] 檢視中，可由不同的圖示類型來辨識外部使用者。
+1. 在 Azure 入口網站中，按一下 [所有服務]。
 
-不過，除非**全域管理員**加以允許，否則將**擁有者**或**參與者**存取權授與給**訂用帳戶**範圍內的外部使用者，並不允許存取管理使用者的目錄。 在使用者屬性中，可以識別 [使用者類型]，其中包含兩個常見的參數 [成員] 和 [來賓]。 成員是已在目錄中註冊的使用者，來賓則是從外部來源邀請到目錄的使用者。 如需詳細資訊，請參閱 [Azure Active Directory 系統管理員如何新增 B2B 共同作業使用者](../active-directory/active-directory-b2b-admin-add-users.md)。
+1.  選取要套用存取權的資源集，也稱為「範圍」。 例如，您可以選取 [管理群組]****、[訂用帳戶]****、[資源群組]**** 或資源。
 
-> [!NOTE]
-> 請確定外部使用者在入口網站中輸入認證之後，選取正確的目錄進行登入。 相同使用者可以存取多個目錄，並且可以選擇其中一個目錄，方法是按一下 Azure 入口網站右上角的使用者名稱，然後從下拉式清單中選取適當的目錄。
+1. 按一下特定的資源。
 
-在目錄中使用來賓身分時，外部使用者可以管理 Azure 訂用帳戶的所有資源，但無法存取目錄。
+1. 按一下 [存取控制 (IAM)]。
 
-![存取限於 Azure Active Directory Azure 入口網站](./media/role-assignments-external-users/9.png)
+    下列螢幕擷取畫面顯示資源群組的 [存取控制（IAM）] 分頁範例。 如果您在這裡進行任何存取控制變更，它們只會套用至資源群組。
 
-Azure Active Directory 和 Azure 訂用帳戶沒有父子式關聯性，如同其他 Azure 資源 (例如︰虛擬機器、虛擬網路、Web Apps、儲存體等) 與 Azure 訂用帳戶。 所有後者都是在 Azure 訂用帳戶底下建立、管理及計費，而 Azure 訂用帳戶則是用來管理對 Azure 目錄的存取權。 如需詳細資訊，請參閱 [Azure 訂用帳戶如何與 Azure AD 相關](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
+    ![資源群組的存取控制 (IAM) 刀鋒視窗](./media/role-assignments-external-users/access-control-resource-group.png)
 
-所有內建 RBAC 角色的**擁有者**和**參與者**會提供對環境中所有資源的完整管理存取權，差異在於參與者無法建立新的 RBAC 角色並加以刪除。 其他內建角色 (例如**虛擬機器參與者**) 僅對該名稱所表示的資源提供完整管理存取權，不論它們要建立在哪一個**資源群組**。
+1. 按一下 [角色指派]**** 索引標籤以檢視此範圍中的所有角色指派。
 
-在訂用帳戶等級指派**虛擬機器參與者**的內建 RBAC 角色，表示使用者指派角色︰
+1. 按一下 [新增]   > [新增角色指派]  ，以開啟 [新增角色指派] 窗格。
 
-* 可以檢視所有虛擬機器，不論其部署日期和所屬的資源群組
-* 具有訂用帳戶中虛擬機器的完整管理存取權
-* 無法檢視訂用帳戶中任何其他資源類型
-* 無法從計費觀點來操作任何變更
+    若您沒有指派角色的權限，[新增角色指派] 選項將會被停用。
 
-## <a name="assign-a-built-in-rbac-role-to-an-external-user"></a>將內建的 RBAC 角色指派給外部使用者
+    ![[新增角色指派] 功能表](./media/shared/add-role-assignment-menu.png)
 
-這項測試的不同案例中，會將外部使用者 "alflanigan@gmail.com" 新增為**虛擬機器參與者**。
+    [新增角色指派] 窗格隨即開啟。
 
-![虛擬機器參與者內建角色](./media/role-assignments-external-users/11.png)
+1. 在 [角色]**** 下拉式清單中選取角色，例如 [虛擬機器參與者]****。
 
-這個具有此內建角色之外部使用者的正常行為，就是僅查看和管理虛擬機器，以及其相鄰 Resource Manager 僅在部署時所需的資源。 就設計而言，這些受限角色所提供的存取權僅限在 Azure 入口網站中所建立與它們對應的資源。
+1. 在 [**選取**] 清單中，選取來賓使用者。 如果您在清單中看不到該使用者，您可以在 [**選取**] 方塊中輸入，以在目錄中搜尋顯示名稱、電子郵件地址和物件識別碼。
 
-![Azure 入口網站中的虛擬機器參與者角色概觀](./media/role-assignments-external-users/12.png)
+   ![[新增角色指派] 窗格](./media/role-assignments-external-users/add-role-assignment.png)
 
-## <a name="grant-access-at-a-subscription-level-for-a-user-in-the-same-directory"></a>為相同目錄中的使用者授與訂用帳戶等級的存取權
+1. 按一下 [**儲存**]，在選取的範圍指派角色。
 
-程序流程與新增外部使用者的相同，從授與 RBAC 角色的系統管理員觀點以及取得角色存取權的使用者皆然。 此處的差異在於，受邀的使用者無法接收任何電子郵件邀請，因為訂用帳戶內的所有資源範圍在登入之後都會在儀表板中提供使用。
+    ![虛擬機器參與者的角色指派](./media/role-assignments-external-users/access-control-role-assignments.png)
 
-## <a name="assign-rbac-roles-at-the-resource-group-scope"></a>指派資源群組範圍內的 RBAC 角色
+## <a name="add-a-role-assignment-for-a-guest-user-not-yet-in-your-directory"></a>為尚未在您目錄中的來賓使用者新增角色指派
 
-對於兩種類型的使用者 - 外部或內部 (相同目錄的一部分)，指派**資源群組**範圍內的 RBAC 角色與指派訂用帳戶等級的角色程序相同。 獲指派 RBAC 角色的使用者在其環境中所看到的資源群組，僅限於已從 Azure 入口網站中的 [資源群組] 圖示指派存取權給他們的資源群組。
+若要新增來賓使用者的角色指派，請遵循與成員使用者、群組、服務主體或受控識別[相同的步驟](role-assignments-portal.md#add-a-role-assignment)。
 
-## <a name="assign-rbac-roles-at-the-resource-scope"></a>指派資源範圍內的 RBAC 角色
+如果來賓使用者尚未在您的目錄中，您可以直接從 [新增角色指派] 窗格邀請使用者。
 
-在 Azure 中指派資源範圍內的角色與指派訂用帳戶等級或資源群組等級的角色程序相同，這兩個案例皆遵循相同的工作流程。 同樣地，獲指派 RBAC 角色的使用者所能看到的項目，也僅限於在 [所有資源] 索引標籤或直接在其儀表板中指派存取權給他們的項目。
+1. 在 Azure 入口網站中，按一下 [所有服務]。
 
-不論是在資源群組範圍還是資源範圍，RBAC 都有一個重要層面，就是讓使用者確定登入正確的目錄。
+1.  選取要套用存取權的資源集，也稱為「範圍」。 例如，您可以選取 [管理群組]****、[訂用帳戶]****、[資源群組]**** 或資源。
 
-![Azure 入口網站中的目錄登入](./media/role-assignments-external-users/13.png)
+1. 按一下特定的資源。
 
-## <a name="assign-rbac-roles-for-an-azure-active-directory-group"></a>為 Azure Active Directory 群組指派 RBAC 角色
+1. 按一下 [存取控制 (IAM)]。
 
-在於 Azure 的三種不同範圍使用 RBAC 的所有案例中，都提供以指派的使用者身分進行各種資源之管理、部署及系統管理的權限，而無須管理個人訂用帳戶。 不論 RBAC 角色是指派給訂用帳戶、資源群組還是資源範圍，所有由所指派使用者進一步建立的資源，都會在使用者能夠存取的一個 Azure 訂用帳戶下計費。 如此一來，擁有整個 Azure 訂用帳戶計費系統管理員權限的使用者，可以完整概觀耗用量，不論資源管理者是誰。
+1. 按一下 [角色指派]**** 索引標籤以檢視此範圍中的所有角色指派。
 
-對於較大型組織，考慮到管理使用者想要將細微存取授與小組或整個部門的方面，而非個別授與每位使用者，可透過相同的方式來套用 Azure Active Directory 群組的 RBAC 角色，因此考慮將它作為非常有效率的時間和管理選項。 為了說明此範例中，**參與者**角色已新增至訂用帳戶等級之租用戶的其中一個群組。
+1. 按一下 [新增]   > [新增角色指派]  ，以開啟 [新增角色指派] 窗格。
 
-![新增 AAD 群組的 RBAC 角色](./media/role-assignments-external-users/14.png)
+    ![[新增角色指派] 功能表](./media/shared/add-role-assignment-menu.png)
 
-這些群組是安全性群組，只在 Azure Active Directory 內進行佈建和管理。
+    [新增角色指派] 窗格隨即開啟。
 
+1. 在 [角色]**** 下拉式清單中選取角色，例如 [虛擬機器參與者]****。
+
+1. 在 [**選取**] 清單中，輸入您想要邀請之人員的電子郵件地址，然後選取該人員。
+
+   ![邀請 [新增角色指派] 窗格中的來賓使用者](./media/role-assignments-external-users/add-role-assignment-new-guest.png)
+
+1. 按一下 [**儲存**]，將來賓使用者新增至您的目錄、指派角色，以及傳送邀請。
+
+    幾分鐘後，您會看到角色指派的通知和邀請的相關資訊。
+
+    ![角色指派和受邀的使用者通知](./media/role-assignments-external-users/invited-user-notification.png)
+
+1. 若要手動邀請來賓使用者，請以滑鼠右鍵按一下並複製通知中的邀請連結。 請不要按一下邀請連結，因為它會開始邀請程式。
+
+    邀請連結的格式如下：
+
+    `https://invitations.microsoft.com/redeem/...`
+
+1. 將邀請連結傳送給來賓使用者，以完成邀請程式。
+
+    如需有關邀請程式的詳細資訊，請參閱[AZURE ACTIVE DIRECTORY B2B 共同作業邀請兌換](../active-directory/b2b/redemption-experience.md)。
+
+## <a name="remove-a-guest-user-from-your-directory"></a>從您的目錄中移除來賓使用者
+
+從目錄中移除來賓使用者之前，您應該先移除該來賓使用者的任何角色指派。 請遵循下列步驟，從目錄中移除來賓使用者。
+
+1. 開啟範圍中的**存取控制（IAM）** ，例如管理群組、訂用帳戶、資源群組或資源，其中來賓使用者具有角色指派。
+
+1. 按一下 [**角色指派**] 索引標籤，以查看所有角色指派。
+
+1. 在角色指派清單中，在具有您要移除之角色指派的來賓使用者旁新增核取記號。
+
+   ![移除角色指派](./media/role-assignments-external-users/remove-role-assignment-select.png)
+
+1. 按一下 **[移除]** 。
+
+   ![移除角色指派訊息](./media/role-assignments-external-users/remove-role-assignment.png)
+
+1. 在顯示的移除角色指派訊息中，按一下 [是]  。
+
+1. 在左側導覽列中，按一下 [ **Azure Active Directory**  >  **使用者**]。
+
+1. 按一下您要移除的來賓使用者。
+
+1. 按一下 **[刪除]** 。
+
+   ![刪除來賓使用者](./media/role-assignments-external-users/delete-guest-user.png)
+
+1. 在出現的 [刪除] 訊息中，按一下 [**是]**。
+
+## <a name="troubleshoot"></a>疑難排解
+
+### <a name="guest-user-cannot-browse-the-directory"></a>來賓使用者無法流覽目錄
+
+來賓使用者具有受限的目錄權限。 例如，來賓使用者無法流覽目錄，也無法搜尋群組或應用程式。 如需詳細資訊，請參閱[Azure Active Directory 中的預設使用者許可權為何？](../active-directory/fundamentals/users-default-permissions.md)。
+
+![來賓使用者無法流覽目錄中的使用者](./media/role-assignments-external-users/directory-no-users.png)
+
+如果來賓使用者需要目錄中的其他許可權，您可以將目錄角色指派給來賓使用者。 如果您真的想讓來賓使用者擁有目錄的完整讀取權限，您可以在 Azure AD 中將來賓使用者新增至[目錄讀取](../active-directory/users-groups-roles/directory-assign-admin-roles.md)者角色。 如需詳細資訊，請參閱[將許可權授與您 Azure Active Directory 租使用者中合作夥伴組織的使用者](../active-directory/b2b/add-guest-to-role.md)。
+
+![指派目錄讀取者角色](./media/role-assignments-external-users/directory-roles.png)
+
+### <a name="guest-user-cannot-browse-users-groups-or-service-principals-to-assign-roles"></a>來賓使用者無法流覽使用者、群組或服務主體來指派角色
+
+來賓使用者具有受限的目錄權限。 即使來賓使用者是範圍中的[擁有](built-in-roles.md#owner)者，如果他們嘗試新增角色指派以授與其他人存取權，他們就無法流覽使用者、群組或服務主體的清單。
+
+![來賓使用者無法流覽安全性主體來指派角色](./media/role-assignments-external-users/directory-no-browse.png)
+
+如果來賓使用者知道某人在目錄中的確切登入名稱，他們就可以授與存取權。 如果您真的想讓來賓使用者擁有目錄的完整讀取權限，您可以在 Azure AD 中將來賓使用者新增至[目錄讀取](../active-directory/users-groups-roles/directory-assign-admin-roles.md)者角色。 如需詳細資訊，請參閱[將許可權授與您 Azure Active Directory 租使用者中合作夥伴組織的使用者](../active-directory/b2b/add-guest-to-role.md)。
+
+### <a name="guest-user-cannot-register-applications-or-create-service-principals"></a>來賓使用者無法註冊應用程式或建立服務主體
+
+來賓使用者具有受限的目錄權限。 如果來賓使用者需要能夠註冊應用程式或建立服務主體，您可以將來賓使用者新增至 Azure AD 中的[應用程式開發人員](../active-directory/users-groups-roles/directory-assign-admin-roles.md)角色。 如需詳細資訊，請參閱[將許可權授與您 Azure Active Directory 租使用者中合作夥伴組織的使用者](../active-directory/b2b/add-guest-to-role.md)。
+
+![來賓使用者無法註冊應用程式](./media/role-assignments-external-users/directory-access-denied.png)
+
+### <a name="guest-user-does-not-see-the-new-directory"></a>來賓使用者看不到新的目錄
+
+如果來賓使用者已被授與目錄的存取權，但當他們嘗試在其 [**目錄 + 訂**用帳戶] 窗格中切換時，看不到 Azure 入口網站列出的新目錄，請確定來賓使用者已完成邀請程式。 如需有關邀請程式的詳細資訊，請參閱[AZURE ACTIVE DIRECTORY B2B 共同作業邀請兌換](../active-directory/b2b/redemption-experience.md)。
+
+### <a name="guest-user-does-not-see-resources"></a>來賓使用者沒有看到資源
+
+如果來賓使用者已被授與目錄的存取權，但他們在 Azure 入口網站中看不到他們已被授與存取權的資源，請確定來賓使用者已選取正確的目錄。 來賓使用者可能有多個目錄的存取權。 若要切換目錄，請在左上方按一下 [**目錄 + 訂**用帳戶]，然後按一下適當的目錄。
+
+![Azure 入口網站中的 [目錄 + 訂用帳戶] 窗格](./media/role-assignments-external-users/directory-subscription.png)
+
+## <a name="next-steps"></a>後續步驟
+
+- [在 Azure 入口網站中新增 Azure Active Directory B2B 共同作業使用者](../active-directory/b2b/add-users-administrator.md)
+- [Azure Active Directory B2B 共同作業使用者的屬性](../active-directory/b2b/user-properties.md)
+- [B2B 共同作業邀請電子郵件的元素 - Azure Active Directory](../active-directory/b2b/invitation-email-elements.md)
+- [將來賓使用者新增為共同管理員](classic-administrators.md#add-a-guest-user-as-a-co-administrator)

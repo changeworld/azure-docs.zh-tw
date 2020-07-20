@@ -3,7 +3,7 @@ title: 部署 StorSimple Snapshot Manager | Microsoft Docs
 description: 了解如何下載及安裝 StorSimple Snapshot Manager MMC 嵌入式管理單元，來管理 StorSimple 資料保護和備份功能。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: f0128f57-519e-49ec-9187-23575809cdbe
@@ -13,17 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: ee17e4b69d1e6c9de465e4241ee2237361e320b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: twooley
+ms.openlocfilehash: 6d3e3d6cdf7a831bf09d9c4709c1a60d27683438
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61077410"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75933373"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>部署 StorSimple Snapshot Manager MMC 嵌入式管理單元
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 StorSimple Snapshot Manager 是 Microsoft Management Console (MMC) 嵌入式管理單元，可在 Microsoft Azure StorSimple 環境中簡化資料保護和備份管理。 利用 StorSimple Snapshot Manager，您可以管理 Microsoft Azure StorSimple 內部部署和雲端儲存體，就好像是完全整合的儲存系統，並藉此簡化備份和還原程序並降低成本。 
 
 本教學課程描述組態需求，以及安裝、移除及升級 StorSimple Snapshot Manager 的程序。
@@ -66,7 +65,7 @@ StorSimple Snapshot Manager 可以安裝在執行 Windows Server 2008 R2 SP1、W
    * 鏡像動態磁碟區 (RAID 1)
    * 叢集共用磁碟區
      
-     如需在 StorSimple 裝置或 StorSimple 虛擬裝置上建立磁碟區的詳細資訊，請移至[步驟 6：建立磁碟區](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) (在[部署您的內部部署 StorSimple 裝置](storsimple-8000-deployment-walkthrough-u2.md)中)。
+     如需在 StorSimple 裝置或 StorSimple 虛擬裝置上建立磁碟區的詳細資訊，請移至[部署您的內部部署 StorSimple 裝置](storsimple-8000-deployment-walkthrough-u2.md)中的[步驟 6：建立磁碟區](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume)。
 
 ## <a name="install-a-new-storsimple-snapshot-manager"></a>安裝新的 StorSimple Snapshot Manager
 安裝 StorSimple Snapshot Manager 之前，請確定您在 StorSimple 裝置或 StorSimple 虛擬裝置上建立的磁碟區會掛接、初始化和格式化，如 [設定必要條件](#configure-prerequisites)中所述。
@@ -79,7 +78,7 @@ StorSimple Snapshot Manager 可以安裝在執行 Windows Server 2008 R2 SP1、W
 請遵循下列步驟來完成 StorSimple Snapshot Manager 的全新安裝。 如果您要安裝升級，請至 [升級或重新安裝 StorSimple Snapshot Manager](#upgrade-or-reinstall-storsimple-snapshot-manager)。
 
 * 步驟 1：安裝 StorSimple Snapshot Manager 
-* 步驟 2：將 StorSimple Snapshot Manager 連線到裝置 
+* 步驟 2：連接 StorSimple Snapshot Manager 和裝置 
 * 步驟 3：確認裝置的連接 
 
 ### <a name="step-1-install-storsimple-snapshot-manager"></a>步驟 1：安裝 StorSimple Snapshot Manager
@@ -87,54 +86,54 @@ StorSimple Snapshot Manager 可以安裝在執行 Windows Server 2008 R2 SP1、W
 
 #### <a name="to-install-storsimple-snapshot-manager"></a>安裝 StorSimple Snapshot Manager
 1. 下載 StorSimple Snapshot Manager 軟體 (移至 Microsoft 下載中心的 [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220) ) 並將軟體儲存在本機主機上。
-2. 在檔案總管中，以滑鼠右鍵按一下壓縮的資料夾，然後按一下 [ **全部解壓縮**]。
-3. 在 [解壓縮壓縮 (壓縮) 資料夾] 視窗的 [選取目的地並解壓縮檔案] 方塊中，輸入或瀏覽至您想要解壓縮檔案的路徑。
+2. 在檔案總管中，以滑鼠右鍵按一下壓縮資料夾，然後按一下 **[解壓縮全部]**。
+3. 在 **[解壓縮壓縮 (Zipped) 資料夾]** 視窗的 **[選取目的地並解壓縮檔案]** 方塊中，輸入或瀏覽至您要解壓縮檔案的路徑。
    
     > [!IMPORTANT]
     > 您必須在 C: 磁碟機上安裝 StorSimple Snapshot Manager。
     
-4. 選取 [完成時顯示解壓縮檔案] 核取方塊，然後再按一下 [解壓縮]。
+4. 選取 **[完成時顯示解壓縮的檔案]** 核取方塊，然後按一下 **[解壓縮]**。
    
     ![解壓縮檔案對話方塊](./media/storsimple-snapshot-manager-deployment/HCS_SSM_extract_files.png) 
 5. 解壓縮完成時，目的地資料夾會隨即開啟。 按兩下出現在目的地資料夾中的應用程式安裝圖示。
-6. 當**安裝成功**訊息出現時，按一下 [關閉]。 您應該會在桌面上看到 StorSimple Snapshot Manager 圖示。
+6. 當 [安裝成功]**** 訊息出現時，按一下 [關閉]****。 您應該會在桌面上看到 StorSimple Snapshot Manager 圖示。
    
     ![桌面圖示](./media/storsimple-snapshot-manager-deployment/HCS_SSM_desktop_icon.png) 
 
-### <a name="step-2-connect-storsimple-snapshot-manager-to-a-device"></a>步驟 2：將 StorSimple Snapshot Manager 連線到裝置
+### <a name="step-2-connect-storsimple-snapshot-manager-to-a-device"></a>步驟 2：連接 StorSimple Snapshot Manager 和裝置
 使用下列步驟連接 StorSimple Snapshot Manager 和 StorSimple 裝置。
 
 #### <a name="to-connect-storsimple-snapshot-manager-to-a-device"></a>連接 StorSimple Snapshot Manager 和裝置
-1. 按一下桌面上的 StorSimple Snapshot Manager 圖示。 StorSimple Snapshot Manager 視窗隨即出現。 此視窗包含 [範圍] 窗格、[結果] 窗格和 [動作] 窗格。 
+1. 按一下桌面上的 StorSimple Snapshot Manager 圖示。 StorSimple Snapshot Manager 視窗隨即出現。 此視窗包含 [領域]**** 窗格、[結果]**** 窗格和 [動作]**** 窗格。 
    
     ![StorSimple Snapshot Manager 使用者介面](./media/storsimple-snapshot-manager-deployment/HCS_SSM_gui_panes.png)
    
-   * [ **範圍** ] 窗格 (左窗格) 包含在樹狀結構中組織的節點清單。 您可以展開一些節點來選取檢視或與該節點相關的特定資料。 按一下箭頭圖示來展開或摺疊節點。 以滑鼠右鍵按一下 [ **範圍** ] 窗格中的項目，以查看該項目之可用動作的清單。
-   * [結果] 窗格 (中央窗格) 包含您在 [範圍] 窗格中選取之節點、檢視或資料的相關詳細狀態資訊。
-   * [動作] 窗格會列出您在 [範圍] 窗格中選取的節點、檢視或資料上可以執行的作業。
+   * **[領域]** 窗格 (左窗格) 包含以樹狀結構組織的節點清單。 您可以展開一些節點來選取檢視或與該節點相關的特定資料。 按一下箭頭圖示來展開或摺疊節點。 在 **[領域]** 窗格中的項目上按一下滑鼠右鍵，查看該項目可用的動作清單。
+   * **[結果]** 窗格 (中央窗格) 包含您在 **[領域]** 窗格中選取的節點、檢視或資料的詳細狀態資訊。
+   * **[動作]** 窗格列出您在 **[領域]** 窗格中選取的節點、檢視或資料上可執行的作業。
      
      如需 StorSimple Snapshot Manager 使用者介面的完整描述，請參閱 [StorSimple Snapshot Manager 使用者介面](storsimple-use-snapshot-manager.md)。
-2. 在 [範圍] 窗格中，以滑鼠右鍵按一下 [裝置] 節點，然後按一下 [設定裝置]。 [ **設定裝置** ] 對話方塊隨即出現。
+2. 在 [領域]**** 窗格中，以滑鼠右鍵按一下 [裝置]**** 節點，然後按一下 [設定裝置]****。 此時會出現 [設定裝置]**** 對話方塊。
    
     ![設定裝置](./media/storsimple-snapshot-manager-deployment/HCS_SSM_config_device.png) 
-3. 在 [ **裝置** ] 清單方塊中，選取 Microsoft Azure StorSimple 裝置或虛擬裝置的 IP 位址。 在 [密碼] 文字方塊中，輸入您在 Azure 入口網站中為裝置建立的 StorSimple Snapshot Manager 密碼。 按一下 [確定]。
+3. 在 [ **裝置** ] 清單方塊中，選取 Microsoft Azure StorSimple 裝置或虛擬裝置的 IP 位址。 在 [密碼]**** 文字方塊中，輸入您在 Azure 入口網站中為裝置建立的 StorSimple Snapshot Manager 密碼。 按一下 [確定]。
 4. StorSimple Snapshot Manager 會搜尋您所識別的裝置。 如果裝置可供使用，StorSimple Snapshot Manager 會新增連接。 您可以 [確認裝置連接](#to-verify-the-connection) 以確認連接已成功新增。
    
-    如果由於任何原因而無法使用裝置，StorSimple Snapshot Manager 會傳回錯誤訊息。 按一下 [確定] 以關閉錯誤訊息，然後按一下 [取消] 以關閉 [設定裝置] 對話方塊。
-5. 當它連接到裝置時，StorSimple Snapshot Manager 會匯入為該裝置設定的每個磁碟區群組，前提是磁碟區群組具有相關聯的備份。 不會匯入沒有相關聯備份的磁碟區群組。 此外，不會匯入為磁碟區群組建立的備份原則。 若要查看匯入的群組，請以滑鼠右鍵按一下 [範圍] 窗格中最上層的 [磁碟區群組] 節點，然後按一下 [切換匯入的群組]。
+    如果由於任何原因而無法使用裝置，StorSimple Snapshot Manager 會傳回錯誤訊息。 按一下 [確定]**** 以關閉錯誤訊息，然後按一下 [取消]**** 以關閉 [設定裝置]**** 對話方塊。
+5. 當它連接到裝置時，StorSimple Snapshot Manager 會匯入為該裝置設定的每個磁碟區群組，前提是磁碟區群組具有相關聯的備份。 不會匯入沒有相關聯備份的磁碟區群組。 此外，不會匯入為磁碟區群組建立的備份原則。 若要查看已匯入的群組，請在 **[領域]** 窗格中的最上層 **[磁碟區群組]** 節點上按一下滑鼠右鍵，然後按一下 **[切換已匯入的群組]**。
 
-### <a name="step-3-verify-the-connection-to-the-device"></a>步驟 3：確認裝置連線
+### <a name="step-3-verify-the-connection-to-the-device"></a>步驟 3：確認裝置的連接
 使用下列步驟來確認 StorSimple Snapshot Manager 已連接至 StorSimple 裝置。
 
 #### <a name="to-verify-the-connection"></a>確認連接
-1. 在 [範圍] 窗格中，按一下 [裝置] 節點。
+1. 在 **[領域]** 窗格中，按一下 **[裝置]** 節點。
    
     ![StorSimple Snapshot Manager 裝置狀態](./media/storsimple-snapshot-manager-deployment/HCS_SSM_Device_status.png) 
-2. 檢查 [ **結果** ] 窗格： 
+2. 檢查 **[結果]** 窗格： 
    
-   * 如果裝置圖示上出現綠色指標和且 [狀態] 資料行顯示為 [可用]，表示裝置已連接。 
+   * 如果裝置圖示上出現綠色指標和且 [狀態]**** 資料行顯示為 [可用]****，表示裝置已連接。 
    * 如果裝置圖示上出現紅色指標，且 [ **狀態** ] 資料行中顯示為無法使用，表示裝置未連接。 
-   * 如果 [狀態] 資料行中顯示為 [正在重新整理]，表示 StorSimple Snapshot Manager 正在擷取磁碟區群組及連接裝置的相關聯備份。
+   * 如果 [狀態]**** 資料行中顯示為 [正在重新整理]****，表示 StorSimple Snapshot Manager 正在擷取磁碟區群組及連接裝置的相關聯備份。
 
 ## <a name="upgrade-or-reinstall-storsimple-snapshot-manager"></a>升級或重新安裝 StorSimple Snapshot Manager
 您應該先完全解除安裝 StorSimple Snapshot Manager 之後再升級或重新安裝軟體。 
@@ -151,16 +150,16 @@ StorSimple Snapshot Manager 可以安裝在執行 Windows Server 2008 R2 SP1、W
 使用下列步驟來解除安裝 StorSimple Snapshot Manager。
 
 #### <a name="to-uninstall-storsimple-snapshot-manager"></a>解除安裝 StorSimple Snapshot Manager
-1. 在主機電腦上，開啟 [控制台]，按一下 [程式]，然後按一下 [程式和功能]。
-2. 在左窗格中，按一下 [ **解除安裝或變更程式**]。
-3. 以滑鼠右鍵按一下 [StorSimple Snapshot Manager]，然後按一下 [解除安裝]。
-4. 這樣會啟動 StorSimple Snapshot Manager 安裝程式。 按一下 [修改安裝程式]，然後按一下 [解除安裝]。
+1. 在主機電腦上，開啟 [控制台]****、按一下 [程式集]****，然後按一下 [程式和功能]****。
+2. 在左窗格中，按一下 [解除安裝或變更程式]****。
+3. 在 [StorSimple Snapshot Manager]**** 上按一下滑鼠右鍵，然後按一下 [解除安裝]****。
+4. 這樣會啟動 StorSimple Snapshot Manager 安裝程式。 按一下 [修改安裝]****，然後按一下 [解除安裝]****。
    
    > [!NOTE]
-   > 如果有任何 MMC 程序在背景執行，例如 StorSimple Snapshot Manager 或磁碟管理，解除安裝將會失敗，而且在您嘗試解除安裝程式之前，您會收到關閉所有 MMC 執行個體的訊息。 選取 [自動關閉應用程式，並嘗試在安裝完成後重新啟動]，然後按一下 [確定]。
+   > 如果有任何 MMC 程序在背景執行，例如 StorSimple Snapshot Manager 或磁碟管理，解除安裝將會失敗，而且在您嘗試解除安裝程式之前，您會收到關閉所有 MMC 執行個體的訊息。 選取 [自動關閉應用程式並在安裝完成後嘗試重新啟動]****，然後按一下 [確定]****。
    > 
    > 
-5. 解除安裝程序完成時， **安裝成功** 訊息隨即出現。 按一下 [關閉] 。
+5. 當解除安裝程序完成時，[安裝成功]**** 訊息即會出現。 按一下 [關閉] 。
 
 ### <a name="step-2-back-up-the-storsimple-snapshot-manager-database"></a>步驟 2：備份 StorSimple Snapshot Manager 資料庫
 使用下列步驟建立和儲存 StorSimple Snapshot Manager 資料庫的複本。
@@ -169,9 +168,9 @@ StorSimple Snapshot Manager 可以安裝在執行 Windows Server 2008 R2 SP1、W
 1. 停止 Microsoft StorSimple 管理服務：
    
    1. 啟動伺服器管理員。
-   2. 在伺服器管理員儀表板的 [工具] 功能表上，選取 [服務]。
-   3. 在 [服務] 頁面上，選取 [Microsoft StorSimple 管理服務]。
-   4. 在右窗格的 [Microsoft StorSimple 管理服務] 之下，按一下 [停止服務]。
+   2. 在伺服器管理員儀表板的 [工具]**** 功能表上，選取 [服務]****。
+   3. 在 [服務]**** 頁面上，選取 [Microsoft StorSimple 管理服務]****。
+   4. 在右窗格的 [Microsoft StorSimple 管理服務]**** 下方，按一下 [停止服務]****。
       
         ![停止 StorSimple 裝置管理員服務](./media/storsimple-snapshot-manager-deployment/HCS_SSM_stop_service.png)
 2. 瀏覽至 C:\ProgramData\Microsoft\StorSimple\BACatalog。 
@@ -184,9 +183,9 @@ StorSimple Snapshot Manager 可以安裝在執行 Windows Server 2008 R2 SP1、W
     ![StorSimple 備份目錄檔案](./media/storsimple-snapshot-manager-deployment/HCS_SSM_bacatalog.png)
 4. 重新啟動 Microsoft StorSimple 管理服務： 
    
-   1. 在伺服器管理員儀表板的 [工具] 功能表上，選取 [服務]。
-   2. 在 [服務] 頁面上，選取 [Microsoft StorSimple 管理服務]。
-   3. 在右窗格的 [Microsoft StorSimple 管理服務] 之下，按一下 [重新啟動服務]。 
+   1. 在伺服器管理員儀表板的 [工具]**** 功能表上，選取 [服務]****。
+   2. 在 [服務]**** 頁面上，選取 [Microsoft StorSimple 管理服務]****。
+   3. 在右窗格的 [Microsoft StorSimple 管理服務]**** 下方，按一下 [重新啟動服務]****。 
 
 ### <a name="step-3-reinstall-storsimple-snapshot-manager-and-restore-the-database"></a>步驟 3：重新安裝 StorSimple Snapshot Manager 並還原資料庫
 如果要重新安裝 StorSimple Snapshot Manager，請遵循 [安裝新的 StorSimple Snapshot Manager](#install-a-new-storsimple-snapshot-manager)中的步驟。 然後，使用下列程序來還原 StorSimple Snapshot Manager 資料庫。
@@ -195,9 +194,9 @@ StorSimple Snapshot Manager 可以安裝在執行 Windows Server 2008 R2 SP1、W
 1. 停止 Microsoft StorSimple 管理服務：
    
    1. 啟動伺服器管理員。
-   2. 在伺服器管理員儀表板的 [工具] 功能表上，選取 [服務]。
-   3. 在 [服務] 頁面上，選取 [Microsoft StorSimple 管理服務]。
-   4. 在右窗格的 [Microsoft StorSimple 管理服務] 之下，按一下 [停止服務]。
+   2. 在伺服器管理員儀表板的 [工具]**** 功能表上，選取 [服務]****。
+   3. 在 [服務]**** 頁面上，選取 [Microsoft StorSimple 管理服務]****。
+   4. 在右窗格的 [Microsoft StorSimple 管理服務]**** 下方，按一下 [停止服務]****。
 2. 瀏覽至 C:\ProgramData\Microsoft\StorSimple\BACatalog。
    
    > [!NOTE]
@@ -207,9 +206,9 @@ StorSimple Snapshot Manager 可以安裝在執行 Windows Server 2008 R2 SP1、W
 3. 刪除目錄 XML 檔案，並以您稍早儲存的版本取代它。
 4. 重新啟動 Microsoft StorSimple 管理服務： 
    
-   1. 在伺服器管理員儀表板的 [工具] 功能表上，選取 [服務]。
-   2. 在 [服務] 頁面上，選取 [Microsoft StorSimple 管理服務]。
-   3. 在右窗格的 [Microsoft StorSimple 管理服務] 之下，按一下 [重新啟動服務]。
+   1. 在伺服器管理員儀表板的 [工具]**** 功能表上，選取 [服務]****。
+   2. 在 [服務]**** 頁面上，選取 [Microsoft StorSimple 管理服務]****。
+   3. 在右窗格的 [Microsoft StorSimple 管理服務]**** 下方，按一下 [重新啟動服務]****。
 
 ## <a name="next-steps"></a>後續步驟
 * 若要深入了解 StorSimple Snapshot Manager，請移至 [什麼是 StorSimple Snapshot Manager？](storsimple-what-is-snapshot-manager.md)

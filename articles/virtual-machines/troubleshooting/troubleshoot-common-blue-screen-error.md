@@ -4,27 +4,24 @@ description: 了解如何針對在開機時收到藍色畫面錯誤問題的疑�
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
-ms.openlocfilehash: 26306489b11e24ab50f0ae893f11137d279c6127
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 30b4386c223240217096550330c0920ad9ab6871
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64719822"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132913"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>當 Azure VM 開機時 Windows 顯示藍色畫面錯誤
 本文描述當您在 Microsoft Azure 中將 Windows 虛擬機器 (VM) 開機時可能碰到的藍色畫面錯誤。 它提供步驟，以協助您收集支援票證的資料。 
 
-> [!NOTE] 
-> Azure 針對建立和使用資源方面，有二種不同的的部署模型：[Resource Manager 和傳統](../../azure-resource-manager/resource-manager-deployment-model.md)。 本文說明如何使用「資源管理員」部署模型，我們建議將它用於新部署，而非用於傳統部署模型。
 
 ## <a name="symptom"></a>徵狀 
 
@@ -50,13 +47,13 @@ Windows 虛擬機器未啟動。 當您檢查[開機診斷](./boot-diagnostics.m
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>將 OS 磁碟連結至復原 VM
 
 1. 擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。
-2. [將 OS 磁碟連結至復原 VM](../windows/troubleshoot-recovery-disks-portal.md)。 
+2. [將 OS 磁片連結至復原 VM](../windows/troubleshoot-recovery-disks-portal.md)。 
 3. 以遠端桌面連線到復原 VM。
 
 ### <a name="locate-dump-file-and-submit-a-support-ticket"></a>找出傾印檔案，並提交支援票證
 
 1. 在復原 VM 上，移至已連結 OS 磁碟的 Windows 資料夾。 如果指派給已連結 OS 磁碟的磁碟機代號是 F，您必須移至 F:\Windows。
-2. 找到 memory.dmp 檔案，然後[提交支援票證](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)傾印檔案。 
+2. 找出記憶體 dmp 檔案，然後提交包含傾印檔案的[支援票證](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。 
 
 如果找不到傾印檔案，請移到下一個步驟來啟用傾印記錄檔和序列主控台。
 
@@ -94,12 +91,14 @@ Windows 虛擬機器未啟動。 當您檢查[開機診斷](./boot-diagnostics.m
     1. 確定磁碟上有足夠的空間可配置和 RAM 一樣多的記憶體，這取決於您為此 VM 選取的大小。
     2. 如果沒有足夠的空間，或這是大型 VM (G、GS 或 E 系列)，則您可以變更此檔案將建立的位置，並將它參考至連結到 VM 的其他任何資料磁碟。 若要這樣做，您必須變更下列機碼：
 
-            reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
+    ```config-reg
+    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
 
-            REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
-            REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
 
-            reg unload HKLM\BROKENSYSTEM
+    reg unload HKLM\BROKENSYSTEM
+    ```
 
 3. [卸離 OS 磁碟，然後將 OS 磁碟重新連結至受影響的 VM](../windows/troubleshoot-recovery-disks-portal.md)。
 4. 啟動 VM 以重現問題，然後便會產生傾印檔案。

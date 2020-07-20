@@ -1,22 +1,17 @@
 ---
 title: Azure 監視器資源群組深入解析 | Microsoft Docs
 description: 透過 Azure 監視器了解您的分散式應用程式與服務在資源群組層級的健康狀態與效能
-services: azure-monitor
-author: NumberByColors
-manager: carmonm
-ms.service: azure-monitor
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.subservice: ''
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.author: daviste
-ms.openlocfilehash: d5c07e0d4aca8bda42ea9f78a1475ea7bb5861f0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: 06bdedf1dac92a2010718ffd3eb5c6e43bb51e6c
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62119412"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798132"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>使用 Azure 監視器監視資源群組 (預覽)
 
@@ -121,6 +116,6 @@ ms.locfileid: "62119412"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure 監視器活頁簿](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
+- [Azure 監視器活頁簿](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
 - [Azure 資源健康狀態](https://docs.microsoft.com/azure/service-health/resource-health-overview)
 - [Azure 監視器警示](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)

@@ -1,0 +1,166 @@
+### YamlMime:Hub
+title: Azure 認知服務文件
+summary: 了解如何在應用程式、網站和 Bot 中融入智慧型和支援的演算法，來查看、聆聽、述說、了解及詮釋您的使用者需求。
+brand: azure
+metadata:
+  title: Azure 認知服務文件
+  description: 了解如何在應用程式、網站和 Bot 中融入智慧型和支援的演算法，來查看、聆聽、述說、了解及詮釋您的使用者需求。
+  ms.service: cognitive-services
+  ms.topic: hub-page
+  author: nitinme
+  ms.author: nitinme
+  manager: nitinme
+  ms.date: 03/24/2020
+  ms.openlocfilehash: 18c854389122c7e05a84ea0fd42b0cd2fd0c4c1c
+  ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 07/10/2020
+  ms.locfileid: "86224361"
+highlightedContent:
+  items:
+  - title: 認知服務是什麼？
+    itemType: overview
+    url: ./welcome.md
+  - title: Docs 有哪些新功能？
+    itemType: whats-new
+    url: whats-new-docs.md
+  - title: 認知服務和機器學習
+    itemType: concept
+    url: ./cognitive-services-and-machine-learning.md
+  - title: 認知服務中的語言支援
+    itemType: reference
+    url: ./language-support.md
+  - title: 建立認知服務資源
+    itemType: how-to-guide
+    url: ./cognitive-services-apis-create-account.md
+  - title: 在容器中使用認知服務
+    itemType: concept
+    url: ./cognitive-services-container-support.md
+  - title: 認知服務的虛擬網路
+    itemType: architecture
+    url: cognitive-services-virtual-networks.md
+  - title: 認知服務安全性
+    itemType: concept
+    url: cognitive-services-security.md
+conceptualContent:
+  items:
+  - title: 視覺
+    summary: 辨識、識別、仲裁您的圖片、影片和數位筆跡內容，並為其製作標題及編製索引。
+    links:
+    - url: ./computer-vision/index.yml
+      itemType: overview
+      text: 電腦視覺
+    - url: ./Custom-Vision-Service/index.yml
+      itemType: overview
+      text: 自訂視覺
+    - url: ./face/index.yml
+      itemType: overview
+      text: 臉部
+    - url: ./form-recognizer/index.yml
+      itemType: overview
+      text: 表單辨識器
+    - url: ./ink-recognizer/index.yml
+      itemType: overview
+      text: 筆跡辨識器 (預覽)
+    - url: ../media-services/video-indexer/index.yml
+      itemType: overview
+      text: 影片索引子
+  - title: Language
+    summary: 允許您的應用程式使用預先建立的指令碼處理自然語言、評估情感，以及了解如何辨識使用者想要的內容。
+    links:
+    - url: ./immersive-reader/index.yml
+      itemType: overview
+      text: 沈浸式閱讀程式 (預覽)
+    - url: ./luis/index.yml
+      itemType: overview
+      text: 語言理解 (LUIS)
+    - url: ./qnamaker/index.yml
+      itemType: overview
+      text: QnA Maker
+    - url: ./text-analytics/index.yml
+      itemType: overview
+      text: 文字分析
+    - url: ./translator/index.yml
+      itemType: overview
+      text: 轉譯程式
+  - title: 語音
+    summary: 將語音轉換成文字，並將文字轉換成自然發音語音。 從一種語言翻譯成另一種語言，並啟用說話者驗證和辨識。
+    links:
+    - url: ./speech-service/index.yml
+      itemType: overview
+      text: 語音服務
+  - title: 決策
+    summary: 建置應用程式，以顯示有助於做出明智與高效決策的建議。
+    links:
+    - url: ./anomaly-detector/index.yml
+      itemType: overview
+      text: 異常偵測器 (預覽)
+    - url: ./content-moderator/index.yml
+      itemType: overview
+      text: 內容仲裁
+    - url: ./personalizer/index.yml
+      itemType: overview
+      text: 個人化工具
+  - title: 搜尋
+    summary: 將 Bing 搜尋 API 新增至您的應用程式，並充分利用以單一 API 呼叫合併數十億個網頁、影像、影片和新聞的能力。
+    links:
+    - url: ./Bing-web-search/index.yml
+      itemType: overview
+      text: Bing 搜尋 API 中樞頁面
+  - title: 認知服務容器
+    summary: Azure 認知服務中的容器支援可讓開發人員使用 Azure 中可用的相同豐富 API，並同時享有 Docker 容器所帶來的部署及裝載服務彈性。
+    links:
+    - url: ./cognitive-services-container-support.md
+      itemType: overview
+      text: 認知服務容器
+    - url: ./containers/container-reuse-recipe.md
+      itemType: learn
+      text: 建立要重複使用的容器
+    - url: ./containers/azure-container-instance-recipe.md
+      itemType: how-to-guide
+      text: 在 Azure 容器執行個體上部署及執行容器
+    - url: ./containers/azure-kubernetes-recipe.md
+      itemType: deploy
+      text: 部署到 Azure Kubernetes Service
+    - url: ./containers/docker-compose-recipe.md
+      itemType: get-started
+      text: 使用 Docker Compose 來部署多個容器
+    - url: ./containers/container-faq.md
+      itemType: reference
+      text: 認知服務容器常見問題集
+tools:
+  title: 軟體開發套件 (SDK)
+  summary: 以您慣用的程式設計語言開始使用認知服務 SDK。
+  items:
+  - title: C#
+    imageSrc: https://docs.microsoft.com/media/logos/logo_Csharp.svg
+    url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client?view=azure-dotnet
+  - title: Go
+    imageSrc: https://docs.microsoft.com/media/logos/logo_Go-lightblue.svg
+    url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices
+  - title: Java
+    imageSrc: https://docs.microsoft.com/media/logos/logo_java.svg
+    url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client?view=azure-java-stable
+  - title: JavaScript
+    imageSrc: https://docs.microsoft.com/media/logos/logo_js.svg
+    url: https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest
+  - title: Python
+    imageSrc: https://docs.microsoft.com/media/logos/logo_python.svg
+    url: https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python
+  - title: R
+    imageSrc: https://docs.microsoft.com/media/logos/logo_R.svg
+    url: https://github.com/Azure/AzureCognitive
+additionalContent:
+  sections:
+  - items:
+    - title: 其他資源
+      links:
+      - text: Azure CLI
+        url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
+      - text: PowerShell
+        url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-2.5.0#cognitive_services
+    - title: REST API
+      links:
+      - text: 認知服務管理
+        url: https://docs.microsoft.com/rest/api/cognitiveservices/

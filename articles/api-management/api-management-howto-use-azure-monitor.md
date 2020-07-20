@@ -2,34 +2,30 @@
 title: 在 Azure API 管理中監視發佈的原則 | Microsoft Docs
 description: 依照此教學課程的步驟，了解如何在 Azure API 管理中監視您的 API。
 services: api-management
-documentationcenter: ''
 author: vladvino
 manager: cfowler
-editor: ''
 ms.service: api-management
 ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: c3148adc42cb4f899a87d894909eedff4c798575
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 7f6c7a651e133122dab86d6ed81572f239718b43
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680227"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243234"
 ---
 # <a name="monitor-published-apis"></a>監視發佈的 API
 
 您可以使用 Azure 監視器來視覺化、查詢、路由、封存及針對來自 Azure 資源的度量或記錄採取行動。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 檢視活動記錄
-> * 檢視診斷記錄
+> * 檢視資源記錄
 > * 檢視 API 的計量 
 > * 在 API 收到未經授權的呼叫時，設定警示規則
 
@@ -47,25 +43,25 @@ ms.locfileid: "59680227"
 
 ## <a name="view-metrics-of-your-apis"></a>檢視 API 的計量
 
-API 管理會每分鐘發出計量，讓您近乎即時地了解 API 的狀態和健康情況。 以下是一些可用計量的摘要：
+API 管理會每分鐘發出計量，讓您近乎即時地了解 API 的狀態和健康情況。 以下是兩個最常使用的計量。 如需所有可用計量的清單，請參閱[支援的計量](../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice)。
 
-* 容量 (預覽)：協助您決定是否升級/降級 APIM 服務。 計量每分鐘發出，並反映提出報告時的閘道容量。 計量的範圍為 0 到 100，是根據 CPU 和記憶體使用率等閘道資源計算而來。
-* 閘道要求總數︰該期間內的 API 要求數目。 
-* 成功的閘道要求︰收到 HTTP 成功回應碼的 API 要求數目，這些回應碼包括 304、307 和任何小於 301 的代碼 (例如 200)。
-* 失敗的閘道要求︰收到 HTTP 錯誤回應碼的 API 要求數目，這些回應碼包括 400 和任何大於 500 的代碼。
-* 未經授權閘道器要求︰收到 401、403 和 429 HTTP 回應碼的 API 要求數目。
-* 其他閘道要求︰所收到的 HTTP 回應碼不屬於上述任何類別 (例如 418) 的 API 要求數目。
+* 容量：協助您決定是否升級/降級 APIM 服務。 計量每分鐘發出，並反映提出報告時的閘道容量。 計量的範圍為 0 到 100，是根據 CPU 和記憶體使用率等閘道資源計算而來。
+* 要求：協助您分析通過 APIM 服務的 API 流量。 計量會每分鐘發出，並回報具有維度的閘道要求數目，包括回應碼、位置、主機名稱和錯誤。 
+
+> [!IMPORTANT]
+> 下列計量已於 2019 年 5 月被取代，將於 2023 日 8 月淘汰：閘道要求總數、成功的閘道要求、未經授權的閘道要求、失敗的閘道要求、其他閘道要求。 請遷移至可提供對等功能的要求計量。
 
 ![計量圖表](./media/api-management-azure-monitor/apim-monitor-metrics.png)
 
 存取計量：
 
-1. 從靠近頁面底部的功能表中，選取 [計量]。
+1. 從靠近頁面底部的功能表中，選取 [計量]****。
 
     ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-2. 從下拉式清單中，選取您想了解的計量。 例如，**成功的閘道器要求**。 您也可以將更多計量新增至圖表。
-3. 圖表會顯示成功 API 呼叫的總數。
+2. 從下拉式清單中，選取您想了解的計量。 例如， **要求**。 
+3. 該圖表會顯示 API 呼叫的總數。
+4. 您可以使用 [要求]**** 計量的維度來篩選圖表。 例如，按一下 [新增篩選]****，選擇 [後端回應碼]****，輸入500 作為值。 現在，圖表會顯示 API 後端中已失敗的要求數目。   
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>針對未經授權的要求設定警示規則
 
@@ -77,18 +73,18 @@ API 管理會每分鐘發出計量，讓您近乎即時地了解 API 的狀態�
 
 設定警示：
 
-1. 從靠近頁面底部的功能表列中選取 [警示]。
+1. 從靠近頁面底部的功能表列中選取 [警示]****。
 
     ![alerts](./media/api-management-azure-monitor/alert-menu-item.png)
 
-2. 按一下此警示的 [新警示規則]。
-3. 按一下 [新增條件]。
-4. 在 [訊號類型] 下拉式清單中選取 [計量]。
-5. 選取 [未經授權的閘道要求] 作為要監視的訊號。
+2. 按一下此警示的 [新警示規則]****。
+3. 按一下 [新增條件]****。
+4. 在 [訊號類型] 下拉式清單中選取 [計量]****。
+5. 選取 [未經授權的閘道要求]**** 作為要監視的訊號。
 
     ![alerts](./media/api-management-azure-monitor/signal-type.png)
 
-6. 在 [設定訊號邏輯] 檢視中，指定應觸發警示的閾值，然後按一下 [完成]。
+6. 在 [設定訊號邏輯]**** 檢視中，指定應觸發警示的閾值，然後按一下 [完成]****。
 
     ![alerts](./media/api-management-azure-monitor/threshold.png)
 
@@ -97,7 +93,7 @@ API 管理會每分鐘發出計量，讓您近乎即時地了解 API 的狀態�
     ![alerts](./media/api-management-azure-monitor/action-details.png)
 
 8. 提供警示規則的名稱和描述，並選擇嚴重性層級。 
-9. 按 [建立警示規則]。
+9. 按 [建立警示規則]****。
 10. 現在，嘗試呼叫沒有 API 金鑰的會議 API。 系統會觸發警示並傳送電子郵件送給系統管理員。 
 
 ## <a name="activity-logs"></a>活動記錄
@@ -114,26 +110,26 @@ API 管理會每分鐘發出計量，讓您近乎即時地了解 API 的狀態�
 檢視活動記錄：
 
 1. 選取您的 APIM 服務執行個體。
-2. 按一下 [活動記錄]。
+2. 按一下 [活動記錄]****。
 
     ![活動記錄](./media/api-management-azure-monitor/api-management-activity-logs-blade.png)
 
-3. 選取所需的篩選範圍，然後按一下 [套用]。
+3. 選取所需的篩選範圍，然後按一下 [套用]****。
 
-## <a name="diagnostic-logs"></a>診斷記錄
+## <a name="resource-logs"></a>資源記錄
 
-診斷記錄可提供豐富的作業與錯誤資訊，這些資訊對於稽核和疑難排解用途來說很重要。 診斷記錄與活動記錄不同。 活動記錄可讓您深入了解 Azure 資源上所執行的作業。 診斷記錄能讓您了解資源執行的作業。
+資源記錄可提供豐富的作業與錯誤資訊，這些資訊對於稽核和疑難排解用途來說很重要。 資源記錄與活動記錄不同。 活動記錄可讓您深入了解 Azure 資源上所執行的作業。 資源記錄能讓您了解資源執行的作業。
 
-若要設定診斷記錄：
+若要設定資源記錄：
 
 1. 選取您的 APIM 服務執行個體。
-2. 按一下 [診斷設定]。
+2. 按一下 [診斷設定]****。
 
-    ![診斷記錄](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
+    ![資源記錄](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
 
-3. 按一下 [開啟診斷]。 您可以將診斷記錄連同計量封存至儲存體帳戶、將其串流至事件中樞，或將其傳送至 Azure 監視器記錄。 
+3. 按一下 [開啟診斷]****。 您可以將資源記錄連同計量封存至儲存體帳戶、將其串流至事件中樞，或將其傳送至 Azure 監視器記錄。 
 
-API 管理目前提供關於個別 API 要求的診斷記錄 (每小時提供一批)，且每個要求項目都有下列結構描述︰
+APIM 目前提供關於個別 API 要求的資源記錄 (每小時提供一批)，且每個要求項目都有下列結構描述︰
 
 ```json
 {  
@@ -180,19 +176,19 @@ API 管理目前提供關於個別 API 要求的診斷記錄 (每小時提供一
 }  
 ```
 
-| 屬性  | 類型 | 說明 |
+| 屬性  | 類型 | 描述 |
 | ------------- | ------------- | ------------- |
-| isRequestSuccess | 布林值 | 如果已完成 HTTP 要求，但回應狀態碼在 2xx 或 3xx 範圍內，則為 true |
-| time | date-time | 閘道接收 HTTP 要求的時間戳記 |
+| isRequestSuccess | boolean | 如果已完成 HTTP 要求，但回應狀態碼在 2xx 或 3xx 範圍內，則為 true |
+| time | date-time | 閘道開始處理要求時的時間戳記 |
 | operationName | 字串 | 常數值 'Microsoft.ApiManagement/GatewayLogs' |
 | category | 字串 | 常數值 'GatewayLogs' |
-| durationMs | integer | 從閘道收到要求直到傳入完整回應時的毫秒數 |
+| durationMs | integer | 從閘道收到要求到完整傳送回應時的毫秒數。 其中包括 clienTime、cacheTime 和 backendTime。 |
 | callerIpAddress | 字串 | 立即閘道呼叫端的 IP 位址 (可以是中繼項目) |
 | correlationId | 字串 | API 管理所指派的唯一 http 要求識別碼 |
 | location | 字串 | 處理要求的閘道所在的 Azure 區域名稱 |
 | httpStatusCodeCategory | 字串 | HTTP 回應狀態碼的類別：成功 (301 或更小或 304 或 307)、未經授權 (401、403、429)、錯誤 (400，介於 500 與 600 之間)、其他 |
 | resourceId | 字串 | API 管理資源的識別碼 /SUBSCRIPTIONS/\<subscription>/RESOURCEGROUPS/\<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<name> |
-| properties | 物件 | 目前要求的屬性 |
+| properties | 物件 (object) | 目前要求的屬性 |
 | method | 字串 | 連入要求的 HTTP 方法 |
 | url | 字串 | 連入要求的 URL |
 | clientProtocol | 字串 | 連入要求的 HTTP 通訊協定版本 |
@@ -203,7 +199,7 @@ API 管理目前提供關於個別 API 要求的診斷記錄 (每小時提供一
 | backendProtocol | 字串 | 傳送至後端之要求的 HTTP 通訊協定版本 | 
 | requestSize | integer | 在要求處理期間從用戶端接收的位元組數目 | 
 | responseSize | integer | 在要求處理期間傳送至用戶端的位元組數目 | 
-| cache | 字串 | 要求處理中 API 管理快取參與的狀態 (亦即，命中、錯過、無) | 
+| 快取 | 字串 | 要求處理中 API 管理快取參與的狀態 (亦即，命中、錯過、無) | 
 | cacheTime | integer | 整體 API 管理快取 IO (連線、傳送及接收位元組) 所耗費的毫秒數 | 
 | backendTime | integer | 整體後端 IO (連線、傳送及接收位元組) 所耗費的毫秒數 | 
 | clientTime | integer | 整體用戶端 IO (連線、傳送及接收位元組) 所耗費的毫秒數 | 
@@ -213,8 +209,8 @@ API 管理目前提供關於個別 API 要求的診斷記錄 (每小時提供一
 | userId | 字串 | 目前要求的使用者實體識別碼 | 
 | apimSubscriptionId | 字串 | 目前要求的訂用帳戶實體識別碼 | 
 | backendId | 字串 | 目前要求的後端實體識別碼 | 
-| LastError | 物件 | 上次要求處理錯誤 | 
-| elapsed | integer | 從閘道收到要求直到發生錯誤時所經過的毫秒數 | 
+| LastError | 物件 (object) | 上次要求處理錯誤 | 
+| elapsed | integer | 從閘道收到要求到發生錯誤時所經過的毫秒數 | 
 | source | 字串 | 導致錯誤的原則或處理內部處理常式名稱 | 
 | scope | 字串 | 包含導致錯誤之原則的原則文件範圍 | 
 | section | 字串 | 包含導致錯誤之原則的原則文件區段 | 
@@ -227,7 +223,7 @@ API 管理目前提供關於個別 API 要求的診斷記錄 (每小時提供一
 
 > [!div class="checklist"]
 > * 檢視活動記錄
-> * 檢視診斷記錄
+> * 檢視資源記錄
 > * 檢視 API 的計量
 > * 在 API 收到未經授權的呼叫時，設定警示規則
 

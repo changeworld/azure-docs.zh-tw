@@ -1,0 +1,94 @@
+### YamlMime:Landing
+title: 使用者說明文件
+summary: 身為員工、IT 工作者或終端使用者，您會為公司或學校帳戶設定驗證、設自己的密碼、設定並加入裝置、設定 Microsoft Authenticator 應用程式並使用各種入口網站。
+metadata:
+  title: 關於驗證、應用程式和裝置的使用者說明
+  description: 身為員工或終端使用者，您會了解如何設定和使用驗證、Microsoft Authenticator 應用程式和「我的應用程式」入口網站。
+  services: active-directory
+  ms.service: active-directory
+  ms.subservice: user-help
+  ms.topic: landing-page
+  author: curtand
+  ms.author: curtand
+  ms.date: 08/26/2019
+  ms.openlocfilehash: 3c110b34cee9f281654150f150aa12445284fc6c
+  ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 05/01/2020
+  ms.locfileid: "82652869"
+landingContent:
+- title: 設定並使用 Microsoft Authenticator 應用程式
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Microsoft Authenticator 應用程式？
+      url: user-help-auth-app-overview.md
+  - linkListType: download
+    links:
+    - text: 下載並安裝應用程式
+      url: user-help-auth-app-download-install.md
+  - linkListType: how-to-guide
+    links:
+    - text: 備份及復原帳戶資訊
+      url: user-help-auth-app-backup-recovery.md
+    - text: 使用應用程式登入
+      url: user-help-auth-app-sign-in.md
+- title: 在「我的帳戶」入口網站中管理資訊
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是「我的帳戶」入口網站？
+      url: my-account-portal-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 管理您的已連線裝置
+      url: my-account-portal-devices-page.md
+    - text: 管理您的組織
+      url: my-account-portal-organizations-page.md
+    - text: 檢視您最近的登入活動
+      url: my-account-portal-sign-ins-page.md
+- title: 設定和管理您的安全性資訊 (預覽)
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 設定驗證器應用程式以進行安全性驗證
+      url: security-info-setup-auth-app.md
+    - text: 設定安全性驗證的文字訊息
+      url: security-info-setup-text-msg.md
+    - text: 設定安全性驗證的來電
+      url: security-info-setup-phone-number.md
+    - text: 在登入提示期間新增資訊
+      url: security-info-setup-signin.md
+- title: 在我的應用程式 (預覽) 入口網站上存取和啟用應用程式
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 存取「我的應用程式」入口網站
+      url: my-apps-portal-end-user-access.md
+  - linkListType: how-to-guide
+    links:
+    - text: 存取和使用工作區
+      url: my-applications-portal-workspaces.md
+- title: 選擇雙步驟驗證方法
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是額外驗證頁面？
+      url: user-help-two-step-verification-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 設定驗證方法
+      url: multi-factor-authentication-end-user-first-time.md
+    - text: 管理設定
+      url: multi-factor-authentication-end-user-manage-settings.md
+    - text: 取得說明
+      url: multi-factor-authentication-end-user-troubleshoot.md
+- title: 重設您自己的密碼
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 註冊以進行密碼重設
+      url: active-directory-passwords-reset-register.md
+    - text: 重設密碼
+      url: active-directory-passwords-update-your-own-password.md

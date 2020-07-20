@@ -1,27 +1,17 @@
 ---
-title: 範例 Azure 基礎結構逐步解說 | Microsoft Docs
+title: 範例 Azure 基礎結構逐步解說
 description: 了解適合用來在 Azure 中部署範例基礎結構的關鍵設計和實作指導方針。
-documentationcenter: ''
-services: virtual-machines-linux
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 281fc2c0-b533-45fa-81a3-728c0049c73d
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 00357641f51be703d2e5c52c5b9cc6187ce05ff6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 6040bf8862131f5a8a5564cd2f5d845fa0490a95
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60543037"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78944893"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>適用於 Linux VM 的範例 Azure 基礎結構逐步解說
 本文將逐步解說建置範例應用程式基礎結構的方法。 我們會詳述設計簡單線上商店基礎結構的方式，此線上商店能將所有命名慣例、可用性設定組、虛擬網路及負載平衡器的指導方針和決定集合在一起，並實際部署您的虛擬機器 (VM)。
@@ -59,12 +49,12 @@ Adventure Works Cycles 想要在 Azure 中建置一個線上商店，該商店�
 * 虛擬機器名稱會使用 azos-use-vm-**[vmname]**
 
 ## <a name="azure-subscriptions-and-accounts"></a>Azure 訂用帳戶與帳戶
-Adventure Works Cycles 使用名为 Adventure Works 企业订阅的企业订阅为此 IT 工作负荷提供计费。
+Adventure Works Cycles 正在使用名稱為 Adventure Works Enterprise Subscription 的企業訂用帳戶，來提供這個 IT 工作負載的計費。
 
 ## <a name="storage"></a>儲存體
 Adventure Works Cycles 決定他們應該使用 Azure 受控磁碟。 建立 VM 時，會使用這兩個可用儲存體的儲存層：
 
-* **标准存储**用于 Web 服务器、应用程序服务器和域控制器及其数据磁盘。
+* **標準儲存體**，適用於 Web 伺服器、應用程式伺服器，以及網域控制站及其資料磁碟。
 * **進階儲存體**，適用於 MongoDB 共用叢集伺服器及其資料磁碟。
 
 ## <a name="virtual-network-and-subnets"></a>虛擬網路和子網路
@@ -73,7 +63,7 @@ Adventure Works Cycles 決定他們應該使用 Azure 受控磁碟。 建立 VM 
 他們透過 Azure 入口網站，使用下列設定來建立僅限雲端的虛擬網路：
 
 * 名稱：AZOS-USE-VN01
-* 位置：美國東部 2
+* 位置：East US 2
 * 虛擬網路位址空間：10.0.0.0/8
 * 第一個子網路：
   * 名稱：FrontEnd

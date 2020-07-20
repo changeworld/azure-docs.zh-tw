@@ -3,9 +3,7 @@ title: 在 Azure 中透過 Twilio 使用語音、VoIP 和簡訊功能
 description: 了解如何在 Azure 上使用 Twilio API 服務撥打電話及傳送簡訊。 程式碼範例以 Node.js 撰寫。
 services: ''
 documentationcenter: nodejs
-author: devinrader
-manager: wpickett
-editor: ''
+author: georgewallace
 ms.assetid: f558cbbd-13d2-416f-b9b1-33a99c426af9
 ms.service: multiple
 ms.workload: na
@@ -13,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/25/2014
-ms.author: wpickett
-ms.openlocfilehash: d9f419c48f64ba697e031dfc680bc9cb12bba5c4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: gwallace
+ms.openlocfilehash: 164bedffcf9a1aca9f1fa46dea254fb928abcf04
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60422901"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "69637261"
 ---
 # <a name="using-twilio-for-voice-voip-and-sms-messaging-in-azure"></a>在 Azure 中透過 Twilio 使用語音、VoIP 和簡訊功能
 本指南將說明如何建置可在 Azure 上與 Twilio 和 node.js 通訊的應用程式。
@@ -36,7 +34,7 @@ Twilio 可讓開發人員[購買可程式化的電話號碼][purchase_phone]，�
 開發人員可對 Twilio Web 服務 API 發出 HTTP 要求，以傳送簡訊或向外撥打電話。 對於外撥電話，開發人員還必須指定一個 URL 以傳回相關指示，說明在接通後應如何處理外撥電話。
 
 ### <a name="embedding-voip-capabilities-in-ui-code-javascript-ios-or-android"></a>在 UI 程式碼中內嵌 VoIP 功能 (JavaScript、iOS 或 Android)
-Twilio 提供了一個可將任何桌面 Web 瀏覽器、iOS 應用程式或 Android 應用程式轉換為 VoIP 電話的用戶端 SDK。 在本文中，我們僅討論如何在瀏覽器中使用 VoIP 通話。 除了在瀏覽器中執行 *Twilio JavaScript SDK* 以外，同時也須使用伺服器端應用程式 (node.js 應用程式)，將「功能權杖」發出至 JavaScript 用戶端。 如需透過 node.js 使用 VoIP 的詳細資訊，請參閱 [Twilio 開發人員部落格][voipnode]。
+Twilio 提供了一個可將任何桌面 Web 瀏覽器、iOS 應用程式或 Android 應用程式轉換為 VoIP 電話的用戶端 SDK。 在本文中，我們僅討論如何在瀏覽器中使用 VoIP 通話。 除了在瀏覽器中執行的*Twilio JAVASCRIPT SDK* ，伺服器端應用程式（我們的 node.js 應用程式）必須用來將「功能權杖」發出至 JavaScript 用戶端。 如需透過 node.js 使用 VoIP 的詳細資訊，請參閱 [Twilio 開發人員部落格][voipnode]。
 
 <a id="signup"/>
 

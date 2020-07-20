@@ -1,120 +1,120 @@
 ---
-title: Azure 的 VMware 解決方案由 CloudSimple-私用雲端之 VMware 元件
-description: 描述如何在私人雲端上安裝 VMware 元件
+title: 私用雲端 VMware 元件
+titleSuffix: Azure VMware Solution by CloudSimple
+description: 說明如何在私人雲端上安裝 VMware 元件
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/30/2019
+ms.date: 08/15/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5e6548a5a04e32b374a8a9c29d2ca5f89fd65c78
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.openlocfilehash: 9c9b80cd4d8a7a7ac5597d10bbb87095564bd461
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160181"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84702817"
 ---
-# <a name="private-cloud-vmware-components"></a>私人雲端之 VMware 元件
+# <a name="private-cloud-vmware-components"></a>私用雲端 VMware 元件
 
-私人雲端是隔離的 VMware 堆疊 （ESXi 主機、 vCenter、 vSAN 和 NSX） 由 vCenter 伺服器管理網域中受管理的環境。  CloudSimple 服務可讓您部署 VMware 原生 Azure bare metal 基礎結構中的 Azure 位置。  私用雲端會與其餘的 Azure 雲端整合。  私用雲端的部署具有下列的 VMware 堆疊元件：
+私人雲端是由管理網域中的 vCenter server 所管理的隔離 VMware 堆疊（ESXi 主機、vCenter、vSAN 和 NSX）環境。  CloudSimple 服務可讓您以原生方式在 azure 中的 Azure 裸機基礎結構上部署 VMware。  私人雲端與 Azure 雲端的其他部分整合。  使用下列 VMware 堆疊元件部署私人雲端：
 
-* **VMware ESXi-** 在 Azure 上的 Hypervisor 專用節點
-* **VMware vCenter-** 私用雲端 vSphere 環境的集中管理的應用裝置
-* **VMware 的 vSAN-** 超交集基礎結構解決方案
-* **VMware NSX 資料中心-** 網路虛擬化與安全性軟體  
+* **VMware ESXi-** Azure 專用節點上的虛擬程式
+* **VMware vCenter-** 用於集中管理私人雲端 vSphere 環境的設備
+* **VMware vSAN-** 超融合式基礎結構解決方案
+* **VMWARE NSX 資料中心-** 網路虛擬化和安全性軟體  
 
 ## <a name="vmware-component-versions"></a>VMware 元件版本
 
-私用雲端的 VMware 堆疊會部署下列軟體版本。
+私用雲端 VMware 堆疊是以下列軟體版本進行部署。
 
-| 元件 | 版本 | 授權的版本 |
+| 元件 | 版本 | 授權版本 |
 |-----------|---------|------------------|
-| ESXi | 6.7U1 | 企業加上 |
-| vCenter | 6.7U1 | vCenter 標準 |
+| ESXi | 6.7 u2 | 企業加 |
+| vCenter | 6.7 u2 | vCenter 標準 |
 | vSAN | 6.7 | Enterprise |
-| NSX 資料中心 | 2.3 | 進階 |
+| NSX 資料中心 | 2.4.1 | 進階 |
 
 ## <a name="esxi"></a>ESXi
 
-當您建立私用雲端時，會購買 CloudSimple 節點上安裝 VMware ESXi。  ESXi 提供 hypervisor 的部署工作負載的虛擬機器 (Vm)。  節點對您的私用雲端提供超交集基礎結構 （計算和儲存體）。  節點是於私人雲端在 vSphere 叢集的一部分。  每個節點有四個實體網路介面連接到為網路。  用來建立兩個實體網路介面**vSphere 分散式切換 (VDS)** vCenter 和兩個用來建立**NSX 管理分散式的交換器 (N-VDS)**。  網路介面設定為高可用性的主動-主動模式。
+當您建立私人雲端時，VMware ESXi 會安裝在已布建的 CloudSimple 節點上。  ESXi 提供用於部署工作負載虛擬機器（Vm）的管理程式。  節點提供私人雲端上的超融合式基礎結構（計算和儲存體）。  節點是私人雲端上 vSphere 叢集的一部分。  每個節點都有四個連線到 underlay 網路的實體網路介面。  有兩個實體網路介面可用來在 vCenter 上建立**VSphere 分散式交換器（VDS）** ，而兩者則用來建立以**NSX 管理的虛擬分散式交換器（N-VDS）**。  網路介面是以主動-主動模式設定，以提供高可用性。
 
-深入了解 VMware ESXi
+深入瞭解 VMware ESXi
 
 ## <a name="vcenter-server-appliance"></a>vCenter server 應用裝置
 
-vCenter server 應用裝置 (VCSA) 提供驗證、 管理和協調流程函式由 CloudSimple VMware 的解決方案。 當您建立私人雲端時，會部署 VCSA 與內嵌平台服務控制站 (PSC)。  當您部署您的私人雲端時，會建立在 vSphere 叢集上部署 VCSA。  每個私人雲端都有它自己 VCSA。  私用雲端的擴充會將節點加入至私人雲端上 VCSA。
+vCenter server 應用裝置（VCSA）提供 CloudSimple 的 VMware 解決方案的驗證、管理和協調流程功能。 當您建立私人雲端時，會部署 VCSA 與內嵌平臺服務控制站（PSC）。  VCSA 部署在部署私人雲端時所建立的 vSphere 叢集上。  每個私人雲端都有自己的 VCSA。  擴充私用雲端會將節點新增至私人雲端上的 VCSA。
 
 ### <a name="vcenter-single-sign-on"></a>vCenter 單一登入
 
-內嵌的平台服務控制站上 VCSA 相關聯**單一登入網域 vCenter**。  網域名稱**cloudsimple.local**。  預設使用者**CloudOwner@cloudsimple.com**為您建立可存取 vCenter。  您可以加入您在內部部署/Azure active directory [vCenter 的身分識別來源](https://docs.azure.cloudsimple.com/set-vcenter-identity/)。
+VCSA 上的內嵌平臺服務控制器與**VCenter 單一登入網域**相關聯。  功能變數名稱為**cloudsimple。**  **CloudOwner@cloudsimple.com**系統會為您建立預設使用者，以供您存取 vCenter。  您可以新增適用于 vCenter 的內部部署/Azure active directory 身分[識別來源](set-vcenter-identity.md)。
 
-## <a name="vsan-storage"></a>vSAN 的儲存體
+## <a name="vsan-storage"></a>vSAN 儲存體
 
-私人雲端建立完整設定的全快閃 vSAN 儲存體中，本機叢集。  相同 SKU 的最小的三個節點，才能使用 vSAN 資料存放區建立 vSphere 叢集。  根據預設，會將重複資料刪除和壓縮啟用 vSAN 資料存放區上。  在 vSphere 叢集的每個節點上建立兩個磁碟群組。 每個磁碟群組包含一個快取磁碟和三個磁碟的容量。
+建立私用雲端時，會使用完整設定的全部 flash vSAN 儲存體（本機到叢集）。  建立包含 vSAN 資料存放區的 vSphere 叢集時，必須至少有三個相同 SKU 的節點。  預設會在 vSAN 資料存放區上啟用重復資料刪除和壓縮。  VSphere 叢集的每個節點上都會建立兩個磁片群組。 每個磁片群組都包含一個快取磁片和三個容量磁片。
 
-預設 vSAN 儲存體原則是在 vSphere 叢集上建立和套用至 vSAN 資料存放區。  此原則會決定 VM 儲存體物件方式進行佈建和配置內的資料存放區，以確保必要的服務等級。  儲存體原則會定義**容許 (FTT) 失敗**並**失敗容錯方法**。  您可以建立新的存放裝置原則，並將它們套用至 Vm。 若要維持 SLA，25%的備用容量必須維護 vSAN 資料存放區上。  
+預設的 vSAN 儲存原則會建立在 vSphere 叢集上，並套用至 vSAN 資料存放區。  此原則會決定如何在資料存放區中布建和配置 VM 儲存體物件，以確保所需的服務層級。  儲存體原則會定義**可容忍的失敗（FTT）** 和**失敗容錯方法**。  您可以建立新的存放裝置原則，並將其套用至 Vm。 若要維護 SLA，必須在 vSAN 資料存放區上維護25% 的備用容量。  
 
-### <a name="default-vsan-storage-policy"></a>預設 vSAN 存放裝置原則
+### <a name="default-vsan-storage-policy"></a>預設 vSAN 儲存原則
 
-下表顯示 vSAN 儲存體原則參數的預設值。
+下表顯示預設 vSAN 儲存體原則參數。
 
-| 在 vSphere 叢集的節點數目 | FTT | 失敗容錯方法 |
+| VSphere 叢集中的節點數目 | FTT | 失敗容錯方法 |
 |------------------------------------|-----|--------------------------|
-| 3 和 4 個節點 | 1 | RAID 1 （鏡像）-建立 2 個複本 |
-| 5 到 16 個節點 | 2 | RAID 1 （鏡像）-建立 3 個複本 |
+| 3和4個節點 | 1 | RAID 1 （鏡像）-建立2個複本 |
+| 5到16個節點 | 2 | RAID 1 （鏡像）-建立3個複本 |
 
 ## <a name="nsx-data-center"></a>NSX 資料中心
 
-NSX 資料中心提供私人雲端網路虛擬化、 micro 分割和網路安全性功能。  您可以設定 NSX NSX 透過私人雲端上的資料中心所支援的所有服務。  當您建立私用雲端時，會安裝並設定下列 NSX 元件。
+NSX 資料中心在您的私人雲端上提供網路虛擬化、微分割和網路安全性功能。  您可以透過 NSX 設定您私人雲端上的 NSX 資料中心所支援的所有服務。  當您建立私人雲端時，會安裝並設定下列的 NSX 元件。
 
 * NSXT 管理員
-* 傳輸的區域
-* 主應用程式和 Edge 上行設定檔
-* Edge Transport、 Ext1，和 Ext2 的邏輯交換器
-* 針對 ESXi 傳輸節點的 IP 集區
-* 邊緣傳輸節點的 IP 集區
+* 傳輸區域
+* 主機和邊緣上行連結設定檔
+* 邊緣傳輸、Ext1 和 Ext2 的邏輯交換器
+* ESXi 傳輸節點的 IP 集區
+* Edge 傳輸節點的 IP 集區
 * 邊緣節點
-* DRS 反親和性規則的控制站和邊緣 Vm
-* 第 0 層路由器
-* 啟用 Tier0 路由器上的 BGP
+* 適用于控制器和邊緣 Vm 的 DRS 反親和性規則
+* 第0層路由器
+* 在 Tier0 路由器上啟用 BGP
 
 ## <a name="vsphere-cluster"></a>vSphere 叢集
 
-ESXi 主機被設定為以確保私用雲端的高可用性叢集。  當您建立私用雲端時，第一個叢集部署 vSphere 的管理元件。  資源集區建立管理元件，並管理的所有 Vm 會都部署在此資源集區中。 無法刪除第一個叢集，以壓縮私用雲端。  vSphere 叢集提供高可用性 Vm 使用**vSphere HA**。  要容許的失敗根據叢集中可用的節點數目。  您可以使用公式```Number of nodes = 2N+1```其中```N```是要容許的失敗數目。
+ESXi 主機會設定為叢集，以確保私用雲端的高可用性。  當您建立私人雲端時，vSphere 的管理元件會部署在第一個叢集上。  系統會為管理元件建立資源集區，並將所有管理 Vm 部署在此資源集區中。 無法刪除第一個叢集來壓縮私用雲端。  vSphere 叢集會使用**VSPHERE HA**為 vm 提供高可用性。  可容忍的失敗是根據叢集中可用的節點數目。  您可以使用公式， ```Number of nodes = 2N+1``` 其中 ```N``` 是要容許的失敗數目。
 
 ### <a name="vsphere-cluster-limits"></a>vSphere 叢集限制
 
 | 資源 | 限制 |
 |----------|-------|
-| 若要建立私人雲端的節點數目下限 （第一個 vSphere 叢集） | 3 |
-| 叢集在私人雲端上的 vSphere 中的節點數目上限 | 16 |
+| 建立私人雲端的節點數目下限（第一個 vSphere 叢集） | 3 |
+| 私人雲端上 vSphere 叢集中的節點數目上限 | 16 |
 | 私人雲端中的節點數目上限 | 64 |
-| 最大數目 vSphere 叢集在私人雲端 | 21 |
-| 新的 vSphere 叢集上的節點數目下限 | 3 |
+| 私人雲端中的 vSphere 叢集數目上限 | 21 |
+| 新 vSphere 叢集上的節點數目下限 | 3 |
 
 ## <a name="vmware-infrastructure-maintenance"></a>VMware 基礎結構維護
 
-偶爾也會需要 VMware 基礎結構的組態進行變更。 目前，這些間隔可能會發生每隔 1 到 2 月，但是頻率應該拒絕一段時間。 這種類型的維護通常可以完成而不會中斷正常 CloudSimple 服務耗用量。 在 VMware 維護間隔內，下列服務繼續運作而造成的影響：
+有時候，您必須對 VMware 基礎結構的設定進行變更。 目前，這些間隔可能每隔1-2 個月發生一次，但頻率預期會隨著時間而遭到拒絕。 這種類型的維護通常可以執行，而不會中斷 CloudSimple 服務的一般耗用量。 在 VMware 維護間隔期間，下列服務會繼續運作而不會產生任何影響：
 
 * VMware 管理平面和應用程式
 * vCenter 存取
-* 所有的網路和儲存體
-* Azure 的所有流量
+* 所有網路功能和存放裝置
+* 所有 Azure 流量
 
-## <a name="updates-and-upgrades"></a>更新和升級
+## <a name="updates-and-upgrades"></a>更新與升級
 
-CloudSimple 負責生命週期管理的 VMware （ESXi、 vCenter、 PSC 和 NSX） 軟體的私人雲端。
+CloudSimple 負責在私人雲端中管理 VMware 軟體（ESXi、vCenter、PSC 和 NSX）的生命週期。
 
 軟體更新包括：
 
-* **修補程式**。 安全性修補程式或 VMware 所發行的 bug 修正。
-* **更新**。 次要版本的 VMware 堆疊元件的變更。
-* **升級**。 主要版本的 VMware 堆疊元件的變更。
+* **修補程式**。 VMware 發行的安全性修補程式或錯誤修正。
+* **更新**。 VMware 堆疊元件的次要版本變更。
+* **升級**。 VMware 堆疊元件的主要版本變更。
 
-CloudSimple 可用從 VMware 時，測試重大安全性修補程式。 每個 SLA，CloudSimple 推出的安全性修補程式到私用雲端環境一週內。
+CloudSimple 會在從 VMware 提供重大安全性修補程式後立即進行測試。 根據 SLA，CloudSimple 會在一周內匯總私人雲端環境的安全性修補程式。
 
-CloudSimple 提供 VMware 軟體元件的每季的維護更新。 VMware 軟體的新主要版本可用時，CloudSimple 的運作方式與客戶合作，協調適當的維護期間升級。  
+CloudSimple 提供 VMware 軟體元件的每季維護更新。 當 VMware 軟體有新的主要版本可供使用時，CloudSimple 會與客戶合作，協調適合的維護時段進行升級。  
 
 ## <a name="next-steps"></a>後續步驟
 

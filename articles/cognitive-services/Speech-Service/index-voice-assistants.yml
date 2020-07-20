@@ -1,0 +1,82 @@
+### YamlMime:Landing
+title: 語音助理文件
+summary: 語音助理使用語音服務，可讓開發人員為其應用程式和體驗建立自然、人類類似的對話介面。
+metadata:
+  title: 語音助理檔-教學課程和 API 參考-Azure 認知服務 |Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: trevorbye
+  manager: nitinme
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 03/10/2020
+  ms.author: trbye
+  ms.openlocfilehash: 4fae88de9ad6c48e8079fc7d9ff2d7527d9e7208
+  ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+  ms.translationtype: MT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 06/24/2020
+  ms.locfileid: "85299376"
+landingContent:
+- title: 關於語音助理
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是語音助理？
+      url: voice-assistants.md
+    - text: 什麼是自訂命令應用程式？
+      url: custom-commands.md
+    - text: 什麼是 Direct Line Speech？
+      url: direct-line-speech.md
+  - linkListType: reference
+    links:
+    - text: 語音助理常見問題集
+      url: faq-voice-assistants.md
+    - text: 語音助理定價
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+  - linkListType: get-started
+    links:
+    - text: 建立範例語音助理並將其部署至您的 Azure 訂用帳戶（GitHub）
+      url: https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant
+- title: 使用自訂命令進行開發
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用自訂命令建立語音助理
+      url: quickstart-custom-commands-application.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用簡單的命令建立應用程式
+      url: how-to-custom-commands-create-application-with-simple-commands.md
+    - text: 將參數新增至您的命令
+      url: how-to-custom-commands-add-parameters-to-commands.md
+    - text: 將驗證新增至參數，並提示更正
+      url: how-to-custom-commands-add-parameter-configuration.md
+    - text: 使用語音 SDK 進行整合
+      url: how-to-custom-commands-setup-speech-sdk.md
+    - text: 使用 Azure DevOps 設定自訂命令應用程式的持續部署
+      url: how-to-custom-commands-deploy-cicd.md
+- title: 使用 Direct Line Speech 進行開發
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: C# (UWP)
+      url: quickstart-voice-assistant-csharp-uwp.md
+    - text: Java (Windows、macOS、Linux)
+      url: quickstart-voice-assistant-java-jre.md
+    - text: Java (Android)
+      url: quickstart-voice-assistant-java-android.md
+  - linkListType: tutorial
+    links:
+    - text: 使用語音 SDK 透過聲音啟用 Bot
+      url: tutorial-voice-enable-your-bot-speech-sdk.md
+- title: 使用自訂關鍵字進行開發
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 建立自訂關鍵字
+      url: speech-devices-sdk-create-kws.md
+  - linkListType: reference
+    links:
+    - text: 自訂關鍵字命名指導方針
+      url: speech-devices-sdk-kws-guidelines.md

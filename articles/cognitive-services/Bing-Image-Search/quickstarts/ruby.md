@@ -1,5 +1,5 @@
 ---
-title: 快速入門：搜尋影像 - Bing 影像搜尋 REST API 和 Ruby
+title: 快速入門：使用 Bing 影像搜尋 REST API 和 Ruby 來搜尋影像
 titleSuffix: Azure Cognitive Services
 description: 使用此快速入門以運用 Ruby 來傳送影像搜尋要求給「Bing 影像搜尋 REST API」，並接收 JSON 回應。
 services: cognitive-services
@@ -9,15 +9,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 03/04/2019
+ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 2adefca6c560110bc4d3ff3b2b5a9599e9e635e0
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: ee1308f08b5ca2192bb429acbb5bdaec199fb26f
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337187"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603262"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-ruby"></a>快速入門：使用 Bing 影像搜尋 REST API 和 Ruby 來搜尋影像
 
@@ -26,17 +26,18 @@ ms.locfileid: "57337187"
 雖然此應用程式是以 Ruby 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
 
 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingImageSearchv7.rb) 上有此範例的原始程式碼。
+
 ## <a name="prerequisites"></a>必要條件
 
 * [最新版的 Ruby](https://www.ruby-lang.org/en/downloads/)。
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-另請參閱[認知服務定價 - Bing 搜尋 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
+如需詳細資訊，請參閱[認知服務定價 - Bing 搜尋 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
 ## <a name="create-and-initialize-the-application"></a>建立應用程式並將其初始化
 
-1. 將下列套件匯入至您的程式碼檔案中。
+1. 將下列套件匯入您的程式碼檔案中：
 
     ```ruby
     require 'net/https'
@@ -44,7 +45,7 @@ ms.locfileid: "57337187"
     require 'json'
     ```
 
-2. 建立適用於 API 端點、影像 API 搜尋路徑、您訂用帳戶金鑰及搜尋字詞的變數。
+2. 建立適用於 API 端點、影像 API 搜尋路徑、您訂用帳戶金鑰及搜尋字詞的變數。 針對 `uri`，您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
 
     ```ruby
     uri  = "https://api.cognitive.microsoft.com"
@@ -54,7 +55,7 @@ ms.locfileid: "57337187"
 
 ## <a name="format-and-make-an-api-request"></a>製作 API 要求格式並提出 API 要求
 
-使用上一個步驟中的變數來製作適用於 API 要求的搜尋 URL 格式。 然後傳送要求。
+使用前一個步驟中的變數將 API 要求的搜尋 URL 格式化。 然後，傳送要求。
 
 ```ruby
 uri = URI(uri + path + "?q=" + URI.escape(term))
@@ -144,8 +145,7 @@ puts "Url to the thumbnail of the first returned search result: #{first_result}"
 
 ## <a name="see-also"></a>另請參閱
 
-* [什麼是 Bing 影像搜尋？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [試用線上互動式示範](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-* [取得免費認知服務存取金鑰](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [什麼是 Bing 影像搜尋 API？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [試用線上互動式示範](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)   
 * [Azure 認知服務文件](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing 影像搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [Bing 影像搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

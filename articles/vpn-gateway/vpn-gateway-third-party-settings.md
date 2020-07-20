@@ -1,26 +1,18 @@
 ---
-title: 適用於 Azure VPN 閘道的社群建議協力廠商 VPN 或防火牆裝置設定 | Microsoft Docs
+title: 適用于 Azure VPN 閘道的社區建議協力廠商 VPN 或防火牆裝置設定
 description: 了解適用於 Azure VPN 閘道的社群建議協力廠商 VPN 或防火牆裝置設定。
 services: vpn-gateway
-documentationcenter: ''
 author: chadmath
-manager: cshepard
-editor: ''
-tags: azure-vpn-gateway
-ms.assetid: ''
+manager: dcscontentpm
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: fae790f9b2d5ecc492f7ece5d259809e8664898d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: b87340fbb3f94eee106fc5d0d72117d30e331035
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60457097"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75862708"
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>適用於 Azure VPN 閘道的社群建議協力廠商 VPN 或防火牆裝置設定
 
@@ -29,11 +21,11 @@ ms.locfileid: "60457097"
 > [!Note]
 > 協力廠商 VPN 或防火牆裝置的技術支援是由裝置廠商提供。 
 
-## <a name="more-information"></a>詳細資訊
+## <a name="more-information"></a>更多資訊
 
 下表列出數個常見裝置和相關說明：
 
-|产品    |參考                                                |
+|產品    |參考                                                |
 |-----------|-----------------------------------------------------------|
 |Cisco ASA  |[適用於 Azure VPN 上 Cisco ASA 的社群建議解決方案](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASA&locale=enUS&tab=Cisco) \(英文\)   |
 |Cisco ISR  |[適用於 Azure VPN 上 Cisco ISR 的社群建議解決方案](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ISR&locale=enUS&tab=Cisco) \(英文\)   |
@@ -46,7 +38,7 @@ ms.locfileid: "60457097"
 |Palo       |[適用於 Azure VPN 上 Palo 的社群建議解決方案](https://live.paloaltonetworks.com/t5/forums/searchpage/tab/message?q=Azure+VPN) \(英文\)        |
 |Watchguard |[適用於 Azure VPN 上 Watchguard 的社群建議解決方案](http://watchguardsupport.force.com/SupportSearch#q=Azure%20VPN&t=All&sort=relevancy) \(英文\)  |
 
-## <a name="next-step"></a>後續步驟
+## <a name="next-step"></a>下一步
 
 [Azure 閘道設定](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)
 

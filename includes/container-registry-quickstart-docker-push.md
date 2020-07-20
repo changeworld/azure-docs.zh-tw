@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 09eaf9465ec3912dea6e1f3ee1693f6bfed50abc
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: b10bf18fde850223bda80a597f448747558113f1
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985391"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752173"
 ---
 ## <a name="push-image-to-registry"></a>將映像推送至登錄
 
@@ -23,24 +23,24 @@ ms.locfileid: "55985391"
 docker pull hello-world
 ```
 
-您必須使用 ACR 登入伺服器的完整名稱來標記映像，才能將映像推送至您的登錄。 登入伺服器名稱的格式為 *\<registry-name\>.azurecr.io* (全部小寫)，例如 *mycontainerregistry007.azurecr.io*。
+您必須使用登錄登入伺服器的完整名稱來標記映像，才能將映像推送至您的登錄。 登入伺服器名稱的格式為 *\<registry-name\>.azurecr.io* (全部小寫)，例如 *mycontainerregistry007.azurecr.io*。
 
-使用 [docker tag][docker-tag] 命令來標記映像。 將 `<acrLoginServer>` 取代為 ACR 執行個體的登入伺服器名稱。
-
-```
-docker tag hello-world <acrLoginServer>/hello-world:v1
-```
-
-最後，使用 [docker push][docker-push] 將映像推送到 ACR 執行個體。 將 `<acrLoginServer>` 取代為 ACR 執行個體的登入伺服器名稱。 此範例會建立 **hello-world** 存放庫，其中包含 `hello-world:v1` 映像。
+使用 [docker tag][docker-tag] 命令來標記映像。 將 `<login-server>` 取代為 ACR 執行個體的登入伺服器名稱。
 
 ```
-docker push <acrLoginServer>/hello-world:v1
+docker tag hello-world <login-server>/hello-world:v1
+```
+
+最後，使用 [docker push][docker-push] 將映像推送到登錄執行個體。 將 `<login-server>` 取代為登錄執行個體的登入伺服器名稱。 此範例會建立 **hello-world** 存放庫，其中包含 `hello-world:v1` 映像。
+
+```
+docker push <login-server>/hello-world:v1
 ```
 
 將映像推送至您的容器登錄之後，請從您的本機 Docker 環境中移除 `hello-world:v1` 映像。 (請注意，此 [docker rmi][docker-rmi] 命令並不會從 Azure 容器登錄中的 **hello-world** 存放區移除映像。)
 
 ```
-docker rmi <acrLoginServer>/hello-world:v1
+docker rmi <login-server>/hello-world:v1
 ```
 
 <!-- LINKS - External -->

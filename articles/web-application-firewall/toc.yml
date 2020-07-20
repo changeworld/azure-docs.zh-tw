@@ -1,0 +1,187 @@
+- name: Azure Web 應用程式防火牆文件
+  href: index.yml
+- name: 概觀
+  items:
+    - name: 什麼是 Azure Web 應用程式防火牆？
+      href: overview.md
+    - name: 應用程式閘道
+      items:
+        - name: 應用程式閘道上的 Web 應用程式防火牆
+          href: ./ag/ag-overview.md
+        - name: 新功能
+          href: ./ag/whats-new.md
+    - name: Front Door
+      items:
+        - name: Azure Front Door 上的 Web 應用程式防火牆
+          href: ./afds/afds-overview.md
+    - name: 內容傳遞網路
+      items:
+        - name: Azure CDN 上的 Web 應用程式防火牆
+          href: ./cdn/cdn-overview.md
+- name: 快速入門
+  expanded: true
+  items:
+    - name: 應用程式閘道
+      expanded: true
+      items:
+        - name: 部署 WAF v2 - ARM 範本
+          displayName: Resource Manager
+          href: ./ag/quick-create-template.md
+- name: 教學課程
+  items:
+    - name: 應用程式閘道
+      items:
+        - name: 啟用 Web 應用程式防火牆
+          href: ./ag/application-gateway-web-application-firewall-portal.md
+    - name: Front Door
+      items:
+        - name: 設定 WAF 原則 - 入口網站
+          href: ./afds/waf-front-door-create-portal.md
+    - name: 內容傳遞網路
+      items:
+        - name: 設定 WAF 原則 - 入口網站
+          href: ./cdn/waf-cdn-create-portal.md
+- name: 範例
+  items:
+    - name: Azure PowerShell
+      href: ./ag/powershell-samples.md
+    - name: Resource Manager 範本
+      href: ./ag/resource-manager-template-samples.md
+- name: 概念
+  items:
+    - name: 應用程式閘道
+      items:
+        - name: 受控規則
+          href: ./ag/application-gateway-crs-rulegroups-rules.md
+        - name: 自訂規則概觀
+          href: ./ag/custom-waf-rules-overview.md
+        - name: 地區比對自訂規則
+          href: ./ag/geomatch-custom-rules.md
+        - name: 要求大小限制與排除清單
+          href: ./ag/application-gateway-waf-configuration.md
+        - name: WAF 原則概觀
+          href: ./ag/policy-overview.md
+        - name: Bot 保護概觀
+          href: ./ag/bot-protection-overview.md
+        - name: 常見問題集
+          href: ./ag/application-gateway-waf-faq.md
+    - name: Front Door
+      items:
+        - name: 自訂規則
+          href: ./afds/waf-front-door-custom-rules.md
+        - name: 排除清單
+          href: ./afds/waf-front-door-exclusion.md
+        - name: 原則設定
+          href: ./afds/waf-front-door-policy-settings.md
+        - name: 地區篩選
+          href: ./afds/waf-front-door-geo-filtering.md
+        - name: 常見問題集
+          href: ./afds/waf-faq.md
+    - name: WAF 和 Azure 原則
+      href: ./shared/waf-azure-policy.md
+- name: 操作指南
+  items:
+    - name: 應用程式閘道
+      items:
+        - name: 建立 WAF 原則
+          href: ./ag/create-waf-policy-ag.md
+        - name: 設定 Web 應用程式防火牆
+          items:
+            - name: Azure PowerShell
+              href: ./ag/tutorial-restrict-web-traffic-powershell.md
+            - name: Azure CLI
+              href: ./ag/tutorial-restrict-web-traffic-cli.md
+        - name: 每個網站的原則
+          href: ./ag/per-site-policies.md
+        - name: 遷移 WAF 原則
+          href: ./ag/migrate-policy.md
+        - name: 自訂 WAF 規則
+          items:
+            - name: Azure 入口網站
+              href: ./ag/application-gateway-customize-waf-rules-portal.md
+            - name: Azure PowerShell
+              href: ./ag/application-gateway-customize-waf-rules-powershell.md
+            - name: Azure CLI
+              href: ./ag/application-gateway-customize-waf-rules-cli.md
+        - name: 設定 WAF v2 自訂規則 - PowerShell
+          href: ./ag/configure-waf-custom-rules.md
+        - name: 自訂規則範例
+          href: ./ag/create-custom-waf-rules.md
+        - name: Bot 保護
+          href: ./ag/bot-protection.md
+        - name: 建立原則與現有應用程式閘道的關聯
+          href: ./ag/associate-waf-policy-existing-gateway.md
+        - name: 資源記錄
+          href: ./ag/web-application-firewall-logs.md
+        - name: 針對 WAF 進行疑難排解
+          href: ./ag/web-application-firewall-troubleshoot.md
+    - name: Front Door
+      items:
+        - name: 設定 WAF 原則 - PowerShell
+          href: ./afds/waf-front-door-custom-rules-powershell.md
+        - name: 設定 Bot 保護
+          href: ./afds/waf-front-door-policy-configure-bot-protection.md
+        - name: 設定自訂回應碼
+          href: ./afds/waf-front-door-configure-custom-response-code.md
+        - name: 設定 IP 限制
+          href: ./afds/waf-front-door-configure-ip-restriction.md
+        - name: 設定速率限制 - PowerShell
+          href: ./afds/waf-front-door-rate-limit-powershell.md
+        - name: 設定地區篩選 WAF 原則
+          href: ./afds/waf-front-door-tutorial-geo-filtering.md
+        - name: 監視和記錄
+          href: ./afds/waf-front-door-monitor.md
+    - name: 疑難排解
+      items:
+        - name: 應用程式閘道
+          items:
+            - name: 針對 WAF 進行疑難排解
+              href: ./ag/web-application-firewall-troubleshoot.md
+            - name: Log Analytics
+              href: ./ag/log-analytics.md
+- name: 參考
+  items:
+    - name: CRS 規則
+      href: ./ag/application-gateway-crs-rulegroups-rules.md
+    - name: Azure CLI
+      items:
+        - name: Front Door
+          href: 'https://docs.microsoft.com/cli/azure/ext/front-door/network?view=azure-cli-latest'
+        - name: 應用程式閘道
+          href: 'https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest'
+        - name: CDN
+          href: 'https://docs.microsoft.com/cli/azure/cdn/waf?view=azure-cli-latest'
+    - name: Azure PowerShell
+      items:
+        - name: Front Door
+          href: 'https://docs.microsoft.com/powershell/module/az.frontdoor/?view=azps-3.3.0'
+        - name: 應用程式閘道
+          href: 'https://docs.microsoft.com/powershell/module/az.network/?view=azps-3.3.0#application_gateway'
+        - name: CDN
+          href: 'https://www.powershellgallery.com/packages/Az.Cdn/1.5.0-preview'
+    - name: REST API
+      items:
+        - name: Front Door
+          href: 'https://docs.microsoft.com/rest/api/frontdoorservice/webapplicationfirewall/policies'
+        - name: 應用程式閘道
+          href: 'https://docs.microsoft.com/rest/api/virtualnetwork/webapplicationfirewallpolicies'
+    - name: .NET
+      href: /dotnet/api
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+- name: 資源
+  items:
+    - name: 作者範本
+      href: ../azure-resource-manager/templates/template-syntax.md
+    - name: Azure 藍圖
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 社群範本
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: 定價
+      href: 'https://azure.microsoft.com/pricing/details/web-application-firewall/'
+    - name: 區域可用性
+      href: 'https://azure.microsoft.com/regions/services/'

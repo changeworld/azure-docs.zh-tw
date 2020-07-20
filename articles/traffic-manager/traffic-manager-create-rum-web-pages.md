@@ -1,24 +1,23 @@
 ---
-title: 使用網頁將實際使用者度量傳送給 Azure 流量管理員 | Microsoft Docs
-description: 設定您的網頁將實際使用者度量傳送給流量管理員
+title: 使用網頁進行實際使用者度量-Azure 流量管理員
+description: 在本文中，您將瞭解如何設定您的網頁，以將實際使用者度量傳送至 Azure 流量管理員。
 services: traffic-manager
 documentationcenter: traffic-manager
-author: KumudD
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: kumud
+ms.author: rohink
 ms.custom: ''
-ms.openlocfilehash: d6b669f5baae13f9fb57c5c58060e70a8f871e17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: f297057549263cd62783778b363665bfb4368c91
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884075"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711641"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>如何使用網頁將實際使用者度量傳送給 Azure 流量管理員
 
@@ -31,8 +30,8 @@ ms.locfileid: "60884075"
 若要使用 Azure 入口網站取得 RUM 金鑰：
 1. 從瀏覽器登入 Azure 入口網站。 如果您沒有帳戶，可以註冊免費試用一個月。
 2. 在入口網站的搜尋列中，搜尋您想要修改的流量管理員設定檔名稱，然後按一下結果中顯示的流量管理員設定檔。
-3. 在流量管理員設定檔刀鋒視窗上，按一下 [設定] 底下的 [實際使用者度量]。
-4. 按一下 [產生金鑰] 以建立新的 RUM 金鑰。
+3. 在流量管理員設定檔刀鋒視窗上，按一下 [設定]**** 底下的 [實際使用者度量]****。
+4. 按一下 [產生金鑰]**** 以建立新的 RUM 金鑰。
  
    ![產生實際使用者度量金鑰](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
@@ -44,7 +43,7 @@ ms.locfileid: "60884075"
 
     **圖 2：實際使用者度量金鑰和度量 JavaScript**
  
-6. 按一下 [複製] 按鈕以複製 JavaScript 程式碼。 
+6. 按一下 [複製]**** 按鈕以複製 JavaScript 程式碼。 
 
 >[!IMPORTANT]
 > 針對「實際使用者度量」功能使用產生的 JavaScript，讓功能正常運作。 對這個指令碼或實際使用者度量使用的指令碼所做的任何變更，都可能會導致無法預期的行為。

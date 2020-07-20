@@ -1,113 +1,107 @@
 ---
-title: 使用 Azure 入口網站建立和管理適用於 MySQL 的 Azure 資料庫伺服器
-description: 本文說明如何使用 Azure 入口網站，快速建立新的「適用於 MySQL 的 Azure 資料庫」伺服器和管理伺服器。
+title: 管理伺服器-Azure 入口網站-適用於 MySQL 的 Azure 資料庫
+description: 瞭解如何從 Azure 入口網站管理適用於 MySQL 的 Azure 資料庫伺服器。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 6d6f24475497382dd9e04d3335fb89d6f0bdd514
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 3/18/2020
+ms.openlocfilehash: d2fba3666e4e35c4f8492b0017f859c0bb80a160
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61459437"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120597"
 ---
-# <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>使用 Azure 入口網站建立和管理適用於 MySQL 的 Azure 資料庫伺服器
-本主題說明如何快速建立新的適用於 MySQL 的 Azure 資料庫伺服器。 它也包含有關如何使用 Azure 入口網站來管理伺服器的資訊。 伺服器管理包括檢視伺服器詳細資料和資料庫、重設密碼、調整資源及刪除伺服器。
+# <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>使用 Azure 入口網站管理適用於 MySQL 的 Azure 資料庫伺服器
+本文說明如何管理您的適用於 MySQL 的 Azure 資料庫伺服器。 管理工作包括計算和儲存體調整、系統管理員密碼重設，以及查看伺服器詳細資料。
 
-## <a name="log-in-to-the-azure-portal"></a>登入 Azure 入口網站
+## <a name="sign-in"></a>登入
 登入 [Azure 入口網站](https://portal.azure.com)。
 
-## <a name="create-an-azure-database-for-mysql-server"></a>建立適用於 MySQL 的 Azure 資料庫伺服器
-請遵循下列步驟建立名為 "mydemoserver" 的「適用於 MySQL 的 Azure 資料庫」伺服器。
+## <a name="create-a-server"></a>建立伺服器
+請造訪[快速入門](quickstart-create-mysql-server-database-using-azure-portal.md)，以瞭解如何建立適用於 MySQL 的 Azure 資料庫伺服器並開始使用。
 
-1. 按一下位於 Azure 入口網站左上角的 [建立資源] 按鈕。
+## <a name="scale-compute-and-storage"></a>調整計算和儲存體
 
-2. 在 [新增] 頁面上，選取 [資料庫]，然後在 [資料庫] 頁面上選取 [適用於 MySQL 的 Azure 資料庫]。
+伺服器建立之後，您可以隨著需求的變更，在一般用途和記憶體優化層之間調整。 您也可以藉由增加或減少虛擬核心來調整計算和記憶體。 儲存體可以相應增加（不過，您無法相應縮小存放裝置）。
 
-    > 建立的「適用於 MySQL 的 Azure 資料庫」伺服器會有一組已定義的[計算和儲存體](./concepts-pricing-tiers.md)資源。 建立的資料庫位於 Azure 資源群組和「適用於 MySQL 的 Azure 資料庫」伺服器中。
+### <a name="scale-between-general-purpose-and-memory-optimized-tiers"></a>在一般用途和記憶體優化層之間調整
 
-   ![建立新的伺服器](./media/howto-create-manage-server-portal/create-new-server.png)
+您可以從一般用途擴充至記憶體優化，反之亦然。 不支援在伺服器建立之後，從基本層進行變更。 
 
-3. 在「適用於 MySQL 的 Azure 資料庫」表單中填寫下列資訊︰
+1. 在 [Azure 入口網站中選取您的伺服器。 選取位於 [**設定**] 區段中的 [**定價層**]。
 
-    | **表單欄位** | **欄位描述** |
-    |----------------|-----------------------|
-    | *伺服器名稱* | mydemoserver (伺服器名稱是全域唯一的) |
-    | *訂用帳戶* | mysubscription (從下拉式功能表中選取) |
-    | *資源群組* | myresourcegroup (建立新的資源群組，或使用現有的資源群組) |
-    | *選取來源* | 空白 (建立空白的 MySQL 伺服器) |
-    | *伺服器管理員登入* | myadmin (設定管理帳戶名稱) |
-    | *密碼* | 設定管理帳戶密碼 |
-    | *確認密碼* | 確認管理帳戶密碼 |
-    | *位置* | 東南亞 (選取 [北歐] 或 [美國西部]) |
-    | *版本* | 5.7 (選擇適用於 MySQL 的 Azure 資料庫伺服器版本) |
+2. 選取 **[一般用途**] 或 [**記憶體優化**]，視您要調整的內容而定。 
 
-4. 按一下 [定價層] 指定新資料庫的服務層級和效能等級。 選取 [一般用途] 索引標籤。Gen 5、2 個虛擬核心、5 GB 和 7 天是**計算世代**、**虛擬核心**、**儲存體**和**備份保留期限**的預設值。 您可以讓這些滑桿保留原狀。 若要啟用異地備援儲存體中的伺服器備份，請從 [備份備援選項] 中選取 [異地備援]。
+    ![變更-定價層](./media/howto-create-manage-server-portal/change-pricing-tier.png)
 
-   ![建立伺服器定價層](./media/howto-create-manage-server-portal/create-server-pricing-tier.png)
+    > [!NOTE]
+    > 變更層會導致伺服器重新開機。
 
-5. 按一下 [建立] 以佈建伺服器。 佈建需要幾分鐘的時間。
+4. 選取 **[確定]** 以儲存變更。
 
-    > 選擇 [釘選到儀表板] 選項以輕鬆追蹤部署。
 
-## <a name="update-an-azure-database-for-mysql-server"></a>更新適用於 MySQL 的 Azure 資料庫伺服器
-佈建新的伺服器之後，使用者會有數個設定現有伺服器的選項，包括重設系統管理員密碼，以及透過變更 vCore 或儲存體來相應增加或相應減少伺服器。
+### <a name="scale-vcores-up-or-down"></a>向上或向下調整虛擬核心
 
-### <a name="change-the-administrator-user-password"></a>變更系統管理員使用者密碼
-1. 從伺服器 [概觀]，按一下 [重設密碼] 來顯示密碼重設視窗。
+1. 在 [Azure 入口網站中選取您的伺服器。 選取位於 [**設定**] 區段中的 [**定價層**]。
 
-   ![概觀](./media/howto-create-manage-server-portal/overview.png)
+2. 將滑桿移至所需的值來變更 [vCore]**** 設定。
 
-2. 在視窗中輸入新密碼並確認密碼，如下所示︰
+    ![scale-compute](./media/howto-create-manage-server-portal/scaling-compute.png)
+
+    > [!NOTE]
+    > 調整虛擬核心會導致伺服器重新開機。
+
+3. 選取 **[確定]** 以儲存變更。
+
+
+### <a name="scale-storage-up"></a>相應增加儲存體規模
+
+1. 在 [Azure 入口網站中選取您的伺服器。 選取位於 [**設定**] 區段中的 [**定價層**]。
+
+2. 將滑杆移至您想要的值，以變更**儲存**設定。
+
+    ![scale-storage](./media/howto-create-manage-server-portal/scaling-storage.png)
+
+    > [!NOTE]
+    > 無法相應減少存放裝置。
+
+3. 選取 **[確定]** 以儲存變更。
+
+
+## <a name="update-admin-password"></a>更新管理員密碼
+您可以使用 Azure 入口網站變更系統管理員角色的密碼。
+
+1. 在 [Azure 入口網站中選取您的伺服器。 在 [**總覽**] 視窗中，選取 [**重設密碼**]。
+
+   ![概觀](./media/howto-create-manage-server-portal/overview-reset-password.png)
+
+2. 輸入新密碼並確認密碼。 文字方塊會提示您有關密碼複雜性需求。
 
    ![reset-password](./media/howto-create-manage-server-portal/reset-password.png)
 
-3. 按一下 [確定] 儲存新密碼。
+3. 選取 **[確定]** 以儲存新密碼。
 
-### <a name="scale-vcores-updown"></a>相應增加/減少 vCores
 
-1. 按一下 [設定] 底下的 [定價層]。
+## <a name="delete-a-server"></a>刪除伺服器
 
-2. 將滑桿移至所需的值來變更 [vCore] 設定。
+如果您不再需要伺服器，可以將它刪除。 
 
-    ![scale-compute](./media/howto-create-manage-server-portal/scale-compute.png)
+1. 在 [Azure 入口網站中選取您的伺服器。 在 [**總覽**] 視窗中，選取 [**刪除**]。
 
-3. 按一下 [確定] 儲存變更。
+    ![delete](./media/howto-create-manage-server-portal/overview-delete.png)
 
-### <a name="scale-storage-up"></a>相應增加儲存體
+2. 在輸入方塊中輸入伺服器的名稱，確認這是您想要刪除的伺服器。
 
-1. 按一下 [設定] 底下的 [定價層]。
+    ![confirm-delete](./media/howto-create-manage-server-portal/confirm-delete.png)
 
-2. 將滑桿移至所需的值來變更 [儲存體] 設定。
+    > [!NOTE]
+    > 刪除伺服器是無法復原的動作。
 
-    ![scale-storage](./media/howto-create-manage-server-portal/scale-storage.png)
+3. 選取 [刪除] 。
 
-3. 按一下 [確定] 儲存變更。
-
-## <a name="delete-an-azure-database-for-mysql-server"></a>刪除適用於 MySQL 的 Azure 資料庫伺服器
-
-1. 從伺服器 [概觀] 中，按一下 [刪除] 按鈕，開啟刪除確認提示。
-
-    ![delete](./media/howto-create-manage-server-portal/delete.png)
-
-2. 將伺服器的名稱輸入至輸入方塊中以便再次確認。
-
-    ![confirm-delete](./media/howto-create-manage-server-portal/confirm.png)
-
-3. 按一下 [刪除]按鈕，確認刪除伺服器。 等待「已成功刪除 MySQL 伺服器」出現在通知列中。
-
-## <a name="list-the-azure-database-for-mysql-databases"></a>列出「適用於 MySQL 的 Azure 資料庫」資料庫
-從伺服器 [概觀] 中，向下捲動直到在底部看到資料庫圖格。 資料表中會列出伺服器中的所有資料庫。
-
-   ![顯示資料庫](./media/howto-create-manage-server-portal/show-databases.png)
-
-## <a name="show-details-of-an-azure-database-for-mysql-server"></a>顯示「適用於 MySQL 的 Azure 資料庫」伺服器的詳細資料
-按一下位於 [設定] 下的 [屬性]檢視有關伺服器的詳細資訊。
-
-![properties](./media/howto-create-manage-server-portal/properties.png)
 
 ## <a name="next-steps"></a>後續步驟
-
-[快速入門：使用 Azure 入口網站建立適用於 MySQL 的 Azure 資料庫伺服器](./quickstart-create-mysql-server-database-using-azure-portal.md)
+- 瞭解[備份和伺服器還原](howto-restore-server-portal.md)
+- 瞭解[適用於 MySQL 的 Azure 資料庫中的微調和監視選項](concepts-monitoring.md)

@@ -1,25 +1,15 @@
 ---
-title: Azure Service Fabric 中度量的重組 | Microsoft Docs
-description: 使用重組或封裝作為 Service Fabric 中度量策略的概觀
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric 中的計量磁碟重組
+description: 瞭解如何使用磁碟重組或封裝，作為 Service Fabric 中計量的策略。 這項技術適用于非常大型的服務。
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: e5ebfae5-c8f7-4d6c-9173-3e22a9730552
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 6e041e41372c72c6792c1fb4a1fbdc3bbe475b21
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: bba459be4408f4a4bc438bb33b0570a91e84f2cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60844382"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75563355"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>度量的重組和 Service Fabric 中的負載
 Service Fabric 叢集資源管理員對於管理叢集中負載計量的預設策略是分散負載。 確保平均使用節點，以避免忙碌和閒置位置，導致爭用和浪費的資源。 就故障情況下幸存而言，分散工作負載是最安全的，因為這可確保不會因為故障而使指定的工作負載損失慘重。 
@@ -42,7 +32,7 @@ Service Fabric 叢集資源管理員支援管理負載的不同策略，也就�
 
 <center>
 
-![比较均衡的群集与重整的群集][Image1]
+![比較平衡和重組的叢集][Image1]
 </center>
 
 在平衡情況下，請注意放置其中一個最大服務物件所需的移動次數。 在重組的叢集中，大型工作負載可以放置於四或五個節點，而不需要等待其他服務移動。
@@ -54,7 +44,7 @@ Service Fabric 叢集資源管理員支援管理負載的不同策略，也就�
 | --- | --- |
 | 能夠更快速建立大型服務 |將負載集中到較少數的節點，提高爭用 |
 | 在建立期間啟用較低的資料移動 |失敗會影響更多服務，並導致更多流失 |
-| 能夠豐富描述需求和空間的回收 |更复杂的整体资源管理配置 |
+| 能夠豐富描述需求和空間的回收 |較複雜的整體資源管理組態 |
 
 您可以在相同叢集中混用重組計量和一般計量。 叢集資源管理員會嘗試儘可能合併重組計量，而分散其他計量。 混合重組和平衡策略的結果取決於許多因素，包括：
   - 平衡計量數目與重組計量數目
@@ -76,7 +66,7 @@ ClusterManifest.xml：
 </Section>
 ```
 
-通过用于独立部署的 ClusterConfig.json 或用于 Azure 托管群集的 Template.json：
+獨立部署透過 ClusterConfig.json，Azure 託管叢集透過 Template.json：
 
 ```json
 "fabricSettings": [
@@ -98,7 +88,7 @@ ClusterManifest.xml：
 
 
 ## <a name="next-steps"></a>後續步驟
-- 叢集資源管理員有許多描述叢集的選項。 若要深入了解這些選項，請參閱關於[描述 Service Fabric 叢集](service-fabric-cluster-resource-manager-cluster-description.md)一文
-- 度量是 Service Fabric 叢集資源管理員管理叢集中的耗用量和容量的方式。 若要深入了解計量及其設定方式，請查看[這篇文章](service-fabric-cluster-resource-manager-metrics.md)
+- 叢集資源管理員有許多描述叢集的選項。 若要深入瞭解它們，請參閱本文，以瞭解如何[描述 Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md)叢集
+- 度量是 Service Fabric 叢集資源管理員管理叢集中的耗用量和容量的方式。 若要深入瞭解計量和其設定方式，請參閱[這篇文章](service-fabric-cluster-resource-manager-metrics.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-defragmentation-metrics/balancing-defrag-compared.png

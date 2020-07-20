@@ -1,27 +1,22 @@
 ---
-title: 適用於 Windows 的 Azure 診斷擴充功能 | Microsoft Docs
+title: 適用于 Windows 的 Azure 診斷擴充功能
 description: 使用 Azure 診斷延伸模組來監視 Azure Windows VM
-services: virtual-machines-windows
-documentationcenter: ''
 author: johnkemnetz
 manager: ashwink
-editor: ''
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: 58c520ecbaf764140748167e458c301ab56de375
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 1d38a3cac5525de6835bbb0f9873cbd0636d44a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60232870"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81869664"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>適用於 Windows VM 的 Azure 診斷延伸模組
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 「Azure 診斷」VM 延伸模組可讓您從 Windows VM 收集監視資料，例如效能計數器和事件記錄。 您可以細微地指定您想要收集的資料，以及要將資料移至何處，例如 Azure 儲存體帳戶或 Azure 事件中樞。 您也可以在 Azure 入口網站中使用此資料建立圖表，或建立度量警示。
 
@@ -37,7 +32,7 @@ ms.locfileid: "60232870"
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 
-[本文件說明 Azure 診斷延伸模組結構描述和屬性值。](../../azure-monitor/platform/diagnostics-extension-schema-1dot3.md)
+[本文件說明 Azure 診斷延伸模組結構描述和屬性值。](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
 
 ## <a name="template-deployment"></a>範本部署
 
@@ -61,7 +56,7 @@ az vm extension set \
 
 `Set-AzVMDiagnosticsExtension` 命令可用來將「Azure 診斷」延伸模組新增到現有的虛擬機器。 另請參閱[使用 PowerShell 在執行 Windows 的虛擬機器中啟用 Azure 診斷](ps-extensions-diagnostics.md)。
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 
 ```powershell
@@ -92,4 +87,4 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ## <a name="next-steps"></a>後續步驟
 * [深入了解 Azure 診斷延伸模組](../../azure-monitor/platform/diagnostics-extension-overview.md)
-* [檢閱擴充功能結構描述和版本](../../azure-monitor/platform/diagnostics-extension-schema.md)
+* [檢閱擴充功能結構描述和版本](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)

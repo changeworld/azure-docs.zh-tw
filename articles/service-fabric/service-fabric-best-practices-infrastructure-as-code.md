@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric 基礎結構即程式碼最佳做法 | Microsoft Docs
-description: 管理 Service Fabric 為基礎結構即程式碼的最佳做法。
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric 基礎結構即程式碼最佳做法
+description: 將 Azure Service Fabric 當作基礎結構即程式碼來管理的最佳做法和設計考慮。
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 9224ecebed35a631514c5254703ad2694675d40e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c381c6e7d692eda32fea2033779bacddafc267bb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793809"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253672"
 ---
 # <a name="infrastructure-as-code"></a>基礎結構即程式碼
 
@@ -53,52 +44,95 @@ New-AzResourceGroupDeployment -Name $ResourceGroupName -TemplateFile $Template -
 
 ## <a name="azure-service-fabric-resources"></a>Azure Service Fabric 資源
 
-您可以透過 Azure Resource Manager 將應用程式和服務部署到 Service Fabric 叢集。 請參閱[將應用程式和服務視為 Azure Resource Manager 資源進行管理](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-arm-resource)了解詳細資訊。 以下是在 Resource Manager 範本資源中包含 Service Fabric 應用程式特定資源的最佳做法。
+您可以透過 Azure Resource Manager 將應用程式和服務部署到 Service Fabric 叢集。 請參閱[將應用程式和服務視為 Azure Resource Manager 資源進行管理](./service-fabric-application-arm-resource.md)了解詳細資訊。 以下是在 Resource Manager 範本資源中包含 Service Fabric 應用程式特定資源的最佳做法。
 
 ```json
 {
-    "apiVersion": "2017-07-01-preview",
+    "apiVersion": "2019-03-01",
     "type": "Microsoft.ServiceFabric/clusters/applicationTypes",
     "name": "[concat(parameters('clusterName'), '/', parameters('applicationTypeName'))]",
     "location": "[variables('clusterLocation')]",
 },
 {
-    "apiVersion": "2017-07-01-preview",
+    "apiVersion": "2019-03-01",
     "type": "Microsoft.ServiceFabric/clusters/applicationTypes/versions",
     "name": "[concat(parameters('clusterName'), '/', parameters('applicationTypeName'), '/', parameters('applicationTypeVersion'))]",
     "location": "[variables('clusterLocation')]",
 },
 {
-    "apiVersion": "2017-07-01-preview",
+    "apiVersion": "2019-03-01",
     "type": "Microsoft.ServiceFabric/clusters/applications",
     "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'))]",
     "location": "[variables('clusterLocation')]",
 },
 {
-    "apiVersion": "2017-07-01-preview",
+    "apiVersion": "2019-03-01",
     "type": "Microsoft.ServiceFabric/clusters/applications/services",
     "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'), '/', parameters('serviceName'))]",
     "location": "[variables('clusterLocation')]"
 }
 ```
 
-若要 Azure Resource Manager 部署您的應用程式，必須先[建立 sfpkg](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg) Service Fabric 應用程式封裝。 以下 python 指令碼為示範如何建立 sfpkg 的範例：
+若要 Azure Resource Manager 部署您的應用程式，必須先[建立 sfpkg](./service-fabric-package-apps.md#create-an-sfpkg) Service Fabric 應用程式封裝。 以下 python 指令碼為示範如何建立 sfpkg 的範例：
 
 ```python
 # Create SFPKG that needs to be uploaded to Azure Storage Blob Container
-microservices_sfpkg = zipfile.ZipFile(self.microservices_app_package_name, 'w', zipfile.ZIP_DEFLATED)
+microservices_sfpkg = zipfile.ZipFile(
+    self.microservices_app_package_name, 'w', zipfile.ZIP_DEFLATED)
 package_length = len(self.microservices_app_package_path)
 
 for root, dirs, files in os.walk(self.microservices_app_package_path):
     root_folder = root[package_length:]
     for file in files:
-        microservices_sfpkg.write(os.path.join(root, file), os.path.join(root_folder, file))
+        microservices_sfpkg.write(os.path.join(
+            root, file), os.path.join(root_folder, file))
 
 microservices_sfpkg.close()
 ```
 
+## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Azure 虛擬機器作業系統自動升級設定 
+升級您的虛擬機器是使用者起始的作業，建議您針對 Azure Service Fabric 叢集主機修補程式管理使用[虛擬機器擴展集的自動作業系統升級](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md);修補程式協調流程應用程式是一種替代方案，適用于在 azure 外部託管時，雖然 POA 可以在 azure 中使用，但在 Azure 中裝載 POA 的額外負荷，是偏好將虛擬機器作業系統自動升級至 POA 的常見原因。 以下是計算虛擬機器擴展集 Resource Manager 範本屬性，以啟用自動 OS 升級：
+
+```json
+"upgradePolicy": {
+   "mode": "Automatic",
+   "automaticOSUpgradePolicy": {
+        "enableAutomaticOSUpgrade": true,
+        "disableAutomaticRollback": false
+    }
+},
+```
+搭配 Service Fabric 使用自動 OS 升級時，新的 OS 映射會一次推出一個更新網域，以維持 Service Fabric 中執行之服務的高可用性。 若要在 Service Fabric 中利用自動 OS 升級，您的叢集必須設定為使用銀級耐久性層或更高。
+
+請確認下列登錄機碼設定為 false，以防止您的 windows 主機電腦起始未經協調更新： HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU。
+
+以下是計算虛擬機器擴展集 Resource Manager 範本屬性，以將 Windowsupdate.log 登錄機碼設定為 false：
+```json
+"osProfile": {
+        "computerNamePrefix": "{vmss-name}",
+        "adminUsername": "{your-username}",
+        "secrets": [],
+        "windowsConfiguration": {
+          "provisionVMAgent": true,
+          "enableAutomaticUpdates": false
+        }
+      },
+```
+
+## <a name="azure-service-fabric-cluster-upgrade-configuration"></a>Azure Service Fabric 叢集升級設定
+以下是 Service Fabric 叢集 Resource Manager 範本] 屬性，以啟用自動升級：
+```json
+"upgradeMode": "Automatic",
+```
+若要手動升級您的叢集，請將 cab/deb 散發套件下載到叢集虛擬機器，然後叫用下列 PowerShell：
+```powershell
+Copy-ServiceFabricClusterPackage -Code -CodePackagePath <"local_VM_path_to_msi"> -CodePackagePathInImageStore ServiceFabric.msi -ImageStoreConnectionString "fabric:ImageStore"
+Register-ServiceFabricClusterPackage -Code -CodePackagePath "ServiceFabric.msi"
+Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <"msi_code_version">
+```
+
 ## <a name="next-steps"></a>後續步驟
 
-* 在 VM 或執行 Windows Server 的電腦上建立叢集：[適用於 Windows Server 的 Service Fabric 叢集建立](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+* 在執行 Windows Server 的 VM 或電腦上建立叢集： [建立適用於 Windows Server 的 Service Fabric 叢集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 * 在 VM 或執行 Linux 的電腦上建立叢集：[建立 Linux 叢集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
-* 了解 [Service Fabric 支援選項](service-fabric-support.md)
+* 瞭解[Service Fabric 支援選項](service-fabric-support.md)

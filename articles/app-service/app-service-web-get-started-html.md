@@ -1,26 +1,18 @@
 ---
-title: 建立靜態 HTML Web 應用程式 - Azure App Service | Microsoft Docs
-description: 藉由部署靜態 HTML 範例應用程式，了解如何在 Azure App Service 中執行 Web 應用程式。
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 快速入門：建立靜態 HTML Web 應用程式
+description: 在短短幾分鐘內將您的第一個 HTML Hello World 部署至 Azure App Service。 您可以使用 Git 進行部署，這是部署至 App Service 的眾多方式之一。
+author: msangapu-msft
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 11/20/2018
+ms.date: 08/23/2019
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 064466b73e03e9648b78c32b7e6ffcd83defd607
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 04cd28db52630e9de26e30ef4bf35db983f48b50
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079353"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086057"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>在 Azure 中建立靜態 HTML Web 應用程式
 
@@ -50,14 +42,12 @@ git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 
 ## <a name="create-a-web-app"></a>建立 Web 應用程式
 
-變更為包含範例程式碼的目錄，並執行 `az webapp up` 命令。
-
-在下列範例中，使用唯一的應用程式名稱取代 <app_name>。
+變更為包含範例程式碼的目錄，並執行 `az webapp up` 命令。 在下列範例中，使用唯一的應用程式名稱取代 <app_name>。 靜態內容會以 `--html` 旗標表示。
 
 ```bash
 cd html-docs-hello-world
 
-az webapp up --location westeurope --name <app_name>
+az webapp up --location westeurope --name <app_name> --html
 ```
 
 `az webapp up` 命令會執行下列動作：
@@ -72,19 +62,19 @@ az webapp up --location westeurope --name <app_name>
 
 此命令可能會花數分鐘執行。 執行上述命令時，會顯示類似下列範例的資訊：
 
-```json
+<pre>
 {
-  "app_url": "https://<app_name>.azurewebsites.net",
+  "app_url": "https://&lt;app_name&gt;.azurewebsites.net",
   "location": "westeurope",
-  "name": "<app_name>",
+  "name": "&lt;app_name&gt;",
   "os": "Windows",
   "resourcegroup": "appsvc_rg_Windows_westeurope",
   "serverfarm": "appsvc_asp_Windows_westeurope",
   "sku": "FREE",
-  "src_path": "/home/<username>/quickstart/html-docs-hello-world ",
-  < JSON data removed for brevity. >
+  "src_path": "/home/&lt;username&gt;/quickstart/html-docs-hello-world ",
+  &lt; JSON data removed for brevity. &gt;
 }
-```
+</pre>
 
 記下 `resourceGroup` 的值。 您在[清除資源](#clean-up-resources)一節將會用到此值。
 
@@ -109,7 +99,7 @@ az webapp up --location westeurope --name <app_name>
 您現在將使用相同的 `az webapp up` 命令重新部署應用程式。
 
 ```bash
-az webapp up --location westeurope --name <app_name>
+az webapp up --location westeurope --name <app_name> --html
 ```
 
 部署完成後，切換回在**瀏覽至應用程式**步驟中開啟的瀏覽器視窗，然後重新整理頁面。
@@ -118,9 +108,11 @@ az webapp up --location westeurope --name <app_name>
 
 ## <a name="manage-your-new-azure-app"></a>管理新的 Azure 應用程式
 
-請移至 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>，以管理您所建立的 Web 應用程式。
+若要管理您建立的 web 應用程式，請在 [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 [應用程式服務]  。 
 
-按一下左側功能表中的 [應用程式服務]，然後按一下 Azure 應用程式的名稱。
+![在 Azure 入口網站中選取應用程式服務](./media/app-service-web-get-started-html/portal0.png)
+
+在 [應用程式服務]  頁面上，選取您的 Azure 應用程式名稱。
 
 ![入口網站瀏覽至 Azure 應用程式](./media/app-service-web-get-started-html/portal1.png)
 

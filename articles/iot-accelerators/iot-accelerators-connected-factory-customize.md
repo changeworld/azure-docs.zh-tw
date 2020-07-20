@@ -9,22 +9,22 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
-ms.openlocfilehash: 7d4e95d066e191e1d5b6d083ede65843dbe73f31
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6062f8b3992732e0e0f9bbdae9549e69c393f4ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61450356"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67080493"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>自訂連線處理站解決方案顯示 OPC UA 伺服器資料的方式
 
-連線的處理站解決方案會彙總並顯示連線到解決方案的 OPC UA 伺服器資料。 您可以瀏覽並傳送命令至解決方案的 OPC UA 伺服器。 如需 OPC UA 的詳細資訊，請參閱[連線的處理站常見問題集](iot-accelerators-faq-cf.md)。
+連線的處理站解決方案會彙總並顯示連線到解決方案的 OPC UA 伺服器資料。 您可以瀏覽並傳送命令至解決方案的 OPC UA 伺服器。 如需 OPC UA 的詳細資訊，請參閱連線的處理站[常見問題](iot-accelerators-faq-cf.md)。
 
-解決方案中的彙總資料範例包括「整體設備效率 (OEE)」和「關鍵效能指標 (KPI)」，您可以在儀表板的工廠、生產線與工作站層級分別檢視這些資料。 下列螢幕擷取畫面顯示 [Munich (慕尼黑)] 工廠的 [Production line 1 (生產線 1)] 的 [Assembly (組件)] 工作站的 OEE 和 KPI 值：
+解決方案中的彙總資料範例包括「整體設備效率 (OEE)」和「關鍵效能指標 (KPI)」，您可以在儀表板的工廠、生產線與工作站層級分別檢視這些資料。 下列螢幕擷取畫面顯示 [Munich (慕尼黑)]**** 工廠的 [Production line 1 (生產線 1)]**** 的 [Assembly (組件)]**** 工作站的 OEE 和 KPI 值：
 
 ![解決方案中的 OEE 和 KPI 值範例][img-oee-kpi]
 
-解決方案可讓您檢視 OPC UA 伺服器 (稱為「工作站」) 中特定資料項目的詳細資訊。 下列螢幕擷取畫面顯示特定工作站製造的項目數的繪圖︰
+解決方案可讓您檢視 OPC UA 伺服器 (稱為「工作站」**) 中特定資料項目的詳細資訊。 下列螢幕擷取畫面顯示特定工作站製造的項目數的繪圖︰
 
 ![製造項目數的繪圖][img-manufactured-items]
 
@@ -32,22 +32,22 @@ ms.locfileid: "61450356"
 
 ![使用 Time Series Insights 探索資料][img-tsi]
 
-本文介绍：
+本文章說明：
 
 - 解決方案中各種檢視的資料是如何取得的。
 - 如何自訂解決方案顯示資料的方式。
 
 ## <a name="data-sources"></a>資料來源
 
-連線的處理站解決方案會顯示連線到解決方案的 OPC UA 伺服器資料。 預設安裝包含數台執行工廠模擬的 OPC UA 伺服器。 您可以將[透過閘道連線][lnk-connect-cf]的自有 OPC UA 伺服器新增到解決方案。
+連線的處理站解決方案會顯示連線到解決方案的 OPC UA 伺服器資料。 預設安裝包含數台執行工廠模擬的 OPC UA 伺服器。 您可以將您自己的 OPC UA 伺服器 [透過閘道連接] [.lnk-connect-cf] 新增至您的解決方案。
 
 您可以在儀表板中瀏覽連線的 OPC UA 伺服器可傳送至您的解決方案的資料項目︰
 
-1. 選取 [瀏覽器] 以瀏覽至 [選取 OPC UA 伺服器] 檢視︰
+1. 選取 [瀏覽器]**** 以瀏覽至 [選取 OPC UA 伺服器]**** 檢視︰
 
     ![瀏覽至 [Select an OPC UA server (選取 OPC UA 伺服器)] 檢視][img-select-server]
 
-1. 選取伺服器，然後按一下 [Connect (連線)]。 出現安全性警告時，按一下 [Proceed (繼續)]。
+1. 選取伺服器，然後按一下 [Connect (連線)]****。 出現安全性警告時，按一下 [Proceed (繼續)]****。
 
     > [!NOTE]
     > 這個警告每台伺服器只會出現一次，是建立解決方案儀表板和伺服器之間的信任關係。
@@ -56,7 +56,7 @@ ms.locfileid: "61450356"
 
     ![發行的項目][img-published]
 
-1. 如果您是解決方案的「管理員」，則可以選擇發行資料項目，以便在連線的處理站解決方案中加以提供。 身為管理員，您也可以變更 OPC UA 伺服器中的資料項目值及呼叫方法。
+1. 如果您是解決方案中的*系統管理員*，您可以選擇發行資料項目，使其可在連線的處理站解決方案中使用。 身為管理員，您也可以變更 OPC UA 伺服器中的資料項目值及呼叫方法。
 
 ## <a name="map-the-data"></a>對應資料
 
@@ -71,7 +71,7 @@ ms.locfileid: "61450356"
 
 ## <a name="deploy-the-changes"></a>部署變更
 
-完成 **ContosoTopologyDescription.json** 檔案的變更後，您必須將連線的處理站解決方案重新部署到您的 Azure 帳戶。
+當您完成對檔案的**ContosoTopologyDescription.js**變更時，您必須將連線的處理站解決方案重新部署到您的 Azure 帳戶。
 
 **azure-iot-connected-factory** 存放庫包含一個 **build.ps1** PowerShell 指令碼，可用於重新建置並部署解決方案。
 
@@ -79,9 +79,7 @@ ms.locfileid: "61450356"
 
 閱讀下列文章，深入了解連線的處理站解決方案加速器：
 
-* [連線的處理站解決方案加速器逐步解說][lnk-rm-walkthrough]
-* [為連線的處理站部署閘道][lnk-connect-cf]
-* [Azureiotsolutions.com 網站的權限][lnk-permissions]
+* [azureiotsolutions.com 網站的權限][lnk-permissions]
 * [連線的處理站常見問題集](iot-accelerators-faq-cf.md)
 * [常見問題集][lnk-faq]
 
@@ -93,7 +91,5 @@ ms.locfileid: "61450356"
 [img-published]: ./media/iot-accelerators-connected-factory-customize/published.png
 
 
-[lnk-rm-walkthrough]:iot-accelerators-connected-factory-sample-walkthrough.md
-[lnk-connect-cf]:iot-accelerators-connected-factory-gateway-deployment.md
 [lnk-permissions]: iot-accelerators-permissions.md
 [lnk-faq]: iot-accelerators-faq.md

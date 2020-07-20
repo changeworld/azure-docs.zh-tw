@@ -1,25 +1,19 @@
 ---
-title: 在 Azure 中使用 Windows 用戶端映像 | Microsoft Docs
+title: 在 Azure 中使用 Windows 用戶端映射
 description: 如何使用 Visual Studio 訂用帳戶權益，在 Azure 中部署 Windows 7、Windows 8 或 Windows 10，以進行開發/測試案例
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-ms.assetid: 91c3880a-cede-44f1-ae25-f8f9f5b6eaa4
+ms.subservice: imaging
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: f791b17f2729af3efd2dff5d7884a168f8377154
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 51e4862fe55428f112841ef7176cdb916653de0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61403052"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82083269"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>在 Azure 中使用 Windows 用戶端進行開發/測試案例
 假設您有適當的 Visual Studio (先前稱為 MSDN) 訂閱，您可以在 Azure 中使用 Windows 7、Windows 8 或 Windows 10 企業版(x64) 進行開發/測試案例。 這篇文章概述在 Azure 中執行 Windows 7、Windows 8.1、Windows 10 企業版和使用下列「Azure 資源庫」映像的資格需求。
@@ -27,8 +21,8 @@ ms.locfileid: "61403052"
 ![Azure 入口網站中的映像詳細資料](./media/client-images/windows-client-msdn-images.png) 
 
 > [!NOTE]
-> 針對 Azure 資源庫中的 Windows 10 專業版和 Windows 10 Pro N 映像，請參閱[如何使用多租用戶主機權限在 Azure 上部署 Windows 10](windows-desktop-multitenant-hosting-deployment.md)
->![Azure 入口網站中的映像詳細資料](./media/client-images/windows-client-pro-images.png) 
+> 如需 azure 資源庫中的 windows 10 專業版和 windows 10 專業版 N 映射，請參閱[如何在 azure 上部署 windows 10 （含](windows-desktop-multitenant-hosting-deployment.md)多組織使用者共用許可權 
+> ![ Pro）的詳細資料，Azure 入口網站](./media/client-images/windows-client-pro-images.png) 
 >
 
 ## <a name="subscription-eligibility"></a>訂用帳戶資格
@@ -53,11 +47,11 @@ ms.locfileid: "61403052"
 ## <a name="check-your-azure-subscription"></a>檢查您的 Azure 訂用帳戶
 如果您不知道您的供應項目識別碼，您可以透過 Azure 入口網站以下列兩種方式取得：  
 
-- 在 [訂用帳戶] 視窗上︰
+- 在 [訂用帳戶]** 視窗上︰
 
   ![Azure 入口網站中的供應項目識別碼詳細資料](./media/client-images/offer-id-azure-portal.png) 
 
-- 或者，按一下 [計費]，然後按一下訂用帳戶識別碼。 供應項目識別碼隨即會出現在 [計費] 視窗中。
+- 或者，按一下 [計費]****，然後按一下訂用帳戶識別碼。 供應項目識別碼隨即會出現在 [計費]** 視窗中。
 
 您也可以從 Azure 帳戶入口網站的 [[訂用帳戶] 索引標籤](https://account.windowsazure.com/Subscriptions) 檢視供應項目識別碼︰
 

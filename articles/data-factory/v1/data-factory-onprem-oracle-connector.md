@@ -1,28 +1,27 @@
 ---
-title: 使用 Data Factory 將資料複製到 Oracle 或複製其中的資料 | Microsoft Docs
+title: 使用 Data Factory 在 Oracle 之間複製資料
 description: 了解如何使用 Azure Data Factory 將資料複製到內部部署 Oracle 資料庫或複製其中的資料。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 3c20aa95-a8a1-4aae-9180-a6a16d64a109
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4ff7f92d1d13966be5d17f37210bef961f64faf2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1aa8708701af37834ae3b6cdc42de9c691ccacec
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61462378"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084285"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料複製到內部部署 Oracle 或複製其中的資料
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [第 1 版](data-factory-onprem-oracle-connector.md)
 > * [第 2 版 (目前的版本)](../connector-oracle.md)
 
@@ -66,12 +65,12 @@ Data Factory 支援使用資料管理閘道連接至內部部署 Oracle 來源�
     > 不支援 Oracle Proxy 伺服器。
 
     > [!IMPORTANT]
-    > 目前，適用於 Oracle 的 Microsoft 驅動程式僅支援從 Oracle 複製資料。 驅動程式不支援寫入至 Oracle。 資料管理閘道 [診斷] 索引標籤中的測試連線功能不支援此驅動程式。 您可以選擇使用複製精靈來驗證連線。
+    > 目前，適用於 Oracle 的 Microsoft 驅動程式僅支援從 Oracle 複製資料。 驅動程式不支援寫入至 Oracle。 資料管理閘道 [診斷]**** 索引標籤中的測試連線功能不支援此驅動程式。 您可以選擇使用複製精靈來驗證連線。
     >
 
-- **Oracle Data Provider for .NET**：您可以使用 Oracle Data Provider，從 Oracle 複製資料或將資料複製到 Oracle。 此元件包含於 [適用於 Windows 的 Oracle 資料存取元件](https://www.oracle.com/technetwork/topics/dotnet/downloads/)中。 在安裝閘道的電腦上安裝相關版本 (32 位元或 64 位元)。 [Oracle Data Provider .NET 12.1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) 可以存取 Oracle Database 10g Release 2 和更新版本。
+- **Oracle Data Provider for .NET**︰您可以使用 Oracle Data Provider，從 Oracle 複製資料或將資料複製到 Oracle。 此元件包含於 [適用於 Windows 的 Oracle 資料存取元件](https://www.oracle.com/technetwork/topics/dotnet/downloads/)中。 在安裝閘道的電腦上安裝相關版本 (32 位元或 64 位元)。 [Oracle Data Provider .NET 12.1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) 可以存取 Oracle Database 10g Release 2 和更新版本。
 
-    如果您選取 [XCopy 安裝]，請完成 readme.htm 檔案中所述的步驟。 建議您選取具有 UI 的安裝程式 (不是 XCopy 安裝程式)。
+    如果您選取 [XCopy 安裝]****，請完成 readme.htm 檔案中所述的步驟。 建議您選取具有 UI 的安裝程式 (不是 XCopy 安裝程式)。
 
     安裝提供者之後，請使用 [服務] 小程式或資料管理閘道組態管理員，重新啟動您電腦上的資料管理閘道主機服務。
 
@@ -81,15 +80,15 @@ Data Factory 支援使用資料管理閘道連接至內部部署 Oracle 來源�
 
 您可以建立具有複製活動的管線。 管線會使用不同的工具或 API，將資料移進或移出內部部署 Oracle 資料庫。
 
-若要建立管線，最簡單的方式就是使用複製精靈。 請參閱[教學課程：使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md)，以取得使用資料複製精靈建立管線的快速逐步解說。
+若要建立管線，最簡單的方式就是使用複製精靈。 如需使用資料複製精靈建立管線的快速逐步解說，請參閱[教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md)。
 
-您也可以使用下列其中一個工具來建立管線：**Azure 入口網站**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager 範本**、**.NET API** 或 **REST API**。 如需逐步指示來了解如何建立內含複製活動的管線，請參閱[複製活動教學課程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+您也可以使用下列其中一個工具來建立管線： **Visual Studio**、 **Azure PowerShell**、 **Azure Resource Manager 範本**、 **.net API**或**REST API**。 如需逐步指示來了解如何建立內含複製活動的管線，請參閱[複製活動教學課程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 不論您是使用工具還是 API，都需完成下列步驟以建立將資料從來源資料存放區移到接收資料存放區的管線：
 
-1. 建立 **Data Factory**。 資料處理站可以包含一或多個管線。
+1. 建立**資料**處理站。 資料處理站可以包含一或多個管線。
 2. 建立**連結服務**，將輸入和輸出資料存放區連結到資料處理站。 例如，如果您從 Oralce 資料庫將資料複製到 Azure Blob 儲存體，請建立兩個連結服務，將 Oracle 資料庫和 Azure 儲存體帳戶連結至資料處理站。 針對 Oracle 專屬的連結服務屬性，請參閱[連結服務屬性](#linked-service-properties)。
-3. 建立**資料集**，代表複製作業的輸入和輸出資料。 在前先前步驟的範例中，您會建立資料集，以指定您 Oracle 資料庫中包含輸入資料的資料表。 還會建立另一個資料集來指定 blob 容器和資料夾，該資料夾會保存從 Oracle 資料庫複製的資料。 針對 Oracle 專屬的資料集屬性，請參閱[資料集屬性](#dataset-properties)。
+3. 建立**資料集**來代表複製作業的輸入和輸出資料。 在前先前步驟的範例中，您會建立資料集，以指定您 Oracle 資料庫中包含輸入資料的資料表。 還會建立另一個資料集來指定 blob 容器和資料夾，該資料夾會保存從 Oracle 資料庫複製的資料。 針對 Oracle 專屬的資料集屬性，請參閱[資料集屬性](#dataset-properties)。
 4. 建立**管線**，其中含有以一個資料集作為輸入、一個資料集作為輸出的複製活動。 在先前範例中，您使用 **OracleSource** 作為來源，以及使用 **BlobSink** 作為複製活動的接收端。 同樣地，如果您是從 Azure Blob 儲存體複製到 Oracle 資料庫，則在複製活動中使用 **BlobSource** 和 **OracleSink**。 如需 Oracle 資料庫專屬的複製活動屬性，請參閱[複製活動屬性](#copy-activity-properties)。 如需有關如何使用資料存放區作為來源或接收端的詳細資訊，請選取上一節中資料存放區的連結。
 
 使用精靈時，精靈會自動為您建立這些 Data Factory 實體的 JSON 定義：連結服務、資料集及管線。 使用工具或 API (.NET API 除外) 時，您需使用 JSON 格式來定義這些資料處理站實體。 如需相關範例，其中具有用來將資料複製到內部部署 Oracle 資料庫 (或從內部部署 Oracle 資料庫複製資料) 之 Data Factory 實體的 JSON 定義，請參閱「JSON 範例」。
@@ -100,17 +99,17 @@ Data Factory 支援使用資料管理閘道連接至內部部署 Oracle 來源�
 
 下表說明 Oracle 連結服務專屬的 JSON 元素：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
-| type |**type** 屬性必須設為 **OnPremisesOracle**。 |是 |
-| driverType | 指定要用來從 Oracle 複製資料或將資料複製到 Oracle 資料庫的驅動程式。 允許的值為 **Microsoft** 和 **ODP** (預設值)。 如需驅動程式詳細資料，請參閱[支援的版本和安裝](#supported-versions-and-installation)。 | 否 |
-| connectionString | 針對 **connectionString** 屬性指定連線到 Oracle 資料庫執行個體所需的資訊。 | 是 |
-| gatewayName | 用來連線內部部署 Oracle 伺服器的閘道名稱。 |是 |
+| type |**Type**屬性必須設定為**OnPremisesOracle**。 |Yes |
+| driverType | 指定要用來從 Oracle 複製資料或將資料複製到 Oracle 資料庫的驅動程式。 允許的值為 **Microsoft** 和 **ODP** (預設值)。 如需驅動程式詳細資料，請參閱[支援的版本和安裝](#supported-versions-and-installation)。 | No |
+| connectionString | 針對 **connectionString** 屬性指定連線到 Oracle 資料庫執行個體所需的資訊。 | Yes |
+| gatewayName | 用來連線內部部署 Oracle 伺服器的閘道名稱。 |Yes |
 
-**範例：使用 Microsoft 驅動程式**
+**範例︰使用 Microsoft 驅動程式**
 
 > [!TIP]
-> 如果您看見錯誤訊息表示「ORA-01025:UPI 參數超出範圍」的錯誤，而且您的 Oracle 版本為 8i，請將 `WireProtocolMode=1` 新增至連接字串並再試一次：
+> 如果您看見指出「ORA-01025: UPI 參數超出範圍」的錯誤，而且您的 Oracle 版本為 8i，請將 `WireProtocolMode=1` 新增至連接字串並再試一次：
 
 ```json
 {
@@ -126,7 +125,7 @@ Data Factory 支援使用資料管理閘道連接至內部部署 Oracle 來源�
 }
 ```
 
-**範例：使用 ODP 驅動程式**
+**範例︰使用 ODP 驅動程式**
 
 若要了解允許的格式，請參閱 [Oracle Data Provider for .NET ODP](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/)。
 
@@ -149,9 +148,9 @@ Data Factory 支援使用資料管理閘道連接至內部部署 Oracle 來源�
 
 所有資料集類型 (例如，Oracle、Azure Blob 儲存體和 Azure 資料表儲存體的資料集類型) 的資料集 JSON 檔案區段很類似 (例如結構、可用性及原則)。
 
-每個資料集類型的 **typeProperties** 區段都不同，可提供資料存放區中的資料位置資訊。 **OracleTable** 類型資料集的 **typeProperties** 區段具有下列屬性：
+每個資料集類型的**typeProperties**區段都不同，並提供資料存放區中資料位置的相關資訊。 **OracleTable**類型資料集的**typeProperties**區段具有下列屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | tableName |Oracle 資料庫中連結服務所參照的資料表名稱。 |否 (如果已指定 **OracleSource** 的 **oracleReaderQuery**) |
 
@@ -170,24 +169,24 @@ Data Factory 支援使用資料管理閘道連接至內部部署 Oracle 來源�
 
 在複製活動中，如果來源為 **OracleSource** 類型，則 **typeProperties** 區段有下列可用屬性：
 
-| 屬性 | 描述 | 允許的值 | 必要項 |
+| 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| oracleReaderQuery |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如："select \* from **MyTable**"。 <br/><br/>如果未指定，則會執行此 SQL 陳述式："select \* from **MyTable**" |否<br />(如果已指定 **dataset** 的 **tableName**) |
+| oracleReaderQuery |使用自訂查詢來讀取資料。 |SQL 查詢字串。 例如："select \* from **MyTable**"。 <br/><br/>如果未指定，則會執行此 SQL 陳述式："select \* from **MyTable**" |No<br />(如果已指定 **dataset** 的 **tableName**) |
 
 ### <a name="oraclesink"></a>管線
 
 **OracleSink** 支援下列屬性：
 
-| 屬性 | 描述 | 允許的值 | 必要項 |
+| 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| writeBatchTimeout |在逾時前等待批次插入作業完成的時間。 |**timespan**<br/><br/> 範例：00:30:00 (30 分鐘) |否 |
+| writeBatchTimeout |在逾時前等待批次插入作業完成的時間。 |**時間範圍**<br/><br/> 範例：00:30:00 (30 分鐘) |否 |
 | writeBatchSize |當緩衝區大小達到 **writeBatchSize** 值時，將資料插入 SQL 資料表中。 |整數 (資料列數目) |否 (預設值：100) |
-| sqlWriterCleanupScript |指定要讓複製活動執行的查詢，以便清除特定配量的資料。 |查詢陳述式。 |否 |
-| sliceIdentifierColumnName |指定複製活動的資料行名稱，以填入自動產生的配量識別碼。 **sliceIdentifierColumnName** 值用於在重新執行時清除特定配量的資料。 |資料類型為 **binary(32)** 之資料行的資料行名稱。 |否 |
+| sqlWriterCleanupScript |指定要讓複製活動執行的查詢，以便清除特定配量的資料。 |查詢陳述式。 |No |
+| sliceIdentifierColumnName |指定複製活動的資料行名稱，以填入自動產生的配量識別碼。 **sliceIdentifierColumnName** 值用於在重新執行時清除特定配量的資料。 |資料類型為 **binary(32)** 之資料行的資料行名稱。 |No |
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>將資料複製到 Oracle 資料庫以及複製其中資料的 JSON 範例
 
-以下範例提供可用來使用 [Azure 入口網站](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) 建立管線的範例 JSON 定義。 這些範例示範如何將資料複製到 Oracle 資料庫和 Azure Blob 儲存體，或複製其中的資料。 不過，您可以使用 Azure Data Factory 中的複製活動，將資料複製到[支援的資料存放區和格式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)中所列的任何接收端。
+下列範例提供可用來使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)建立管線的範例 JSON 定義。 這些範例示範如何將資料複製到 Oracle 資料庫和 Azure Blob 儲存體，或複製其中的資料。 不過，您可以使用 Azure Data Factory 中的複製活動，將資料複製到[支援的資料存放區和格式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)中所列的任何接收端。
 
 **範例：將資料從 Oracle 複製到 Azure Blob 儲存體**
 
@@ -196,7 +195,7 @@ Data Factory 支援使用資料管理閘道連接至內部部署 Oracle 來源�
 * [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties)類型的連結服務。
 * [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)類型的連結服務。
 * [OracleTable](data-factory-onprem-oracle-connector.md#dataset-properties) 類型的輸入[資料集](data-factory-create-datasets.md)。
-* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 類型的輸出[資料集](data-factory-create-datasets.md)。
+* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)類型的輸出[資料集](data-factory-create-datasets.md)。
 * 具有複製活動的[管線](data-factory-create-pipelines.md)，該活動使用 [OracleSource](data-factory-onprem-oracle-connector.md#copy-activity-properties) 作為來源和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 作為接收端。
 
 此範例會每小時將資料從內部部署 Oracle 資料庫中的資料表移動到 Blob。 如需範例中使用的各種屬性的詳細資訊，請參閱範例後面幾節。
@@ -266,7 +265,7 @@ Data Factory 支援使用資料管理閘道連接至內部部署 Oracle 來源�
 
 **Azure Blob 輸出資料集**
 
-資料會每小時寫入至新的 Blob (**frequency**：**hour**，**interval**：**1**)。 根據正在處理之配量的開始時間，以動態方式評估 Blob 的資料夾路徑和檔案名稱。 資料夾路徑會使用開始時間的年、月、日和小時部分。
+資料會每小時寫入至新的 blob （**frequency**： **hour**， **interval**： **1**）。 根據正在處理之配量的開始時間，以動態方式評估 Blob 的資料夾路徑和檔案名稱。 資料夾路徑會使用開始時間的年、月、日和小時部分。
 
 ```json
 {
@@ -377,7 +376,7 @@ Data Factory 支援使用資料管理閘道連接至內部部署 Oracle 來源�
 
 **範例：將資料從 Azure Blob 儲存體複製到 Oracle**
 
-此範例示範如何將資料從 Azure Blob 儲存體帳戶複製到內部部署 Oracle 資料庫。 不過，您可以使用 Azure Data Factory 中的複製活動，「直接」從[支援的資料存放區和格式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)中所列的任何來源複製資料。
+此範例示範如何將資料從 Azure Blob 儲存體帳戶複製到內部部署 Oracle 資料庫。 不過，您可以使用 Azure Data Factory 中的複製活動，「直接」** 從[支援的資料存放區和格式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)中所列的任何來源複製資料。
 
 範例有下列 Data Factory 實體：
 
@@ -421,7 +420,7 @@ Data Factory 支援使用資料管理閘道連接至內部部署 Oracle 來源�
 
 **Azure Blob 輸入資料集**
 
-每小時從新的 Blob 挑選資料 (**frequency**：**hour**，**interval**：**1**)。 根據正在處理之配量的開始時間，以動態方式評估 Blob 的資料夾路徑和檔案名稱。 資料夾路徑會使用開始時間的年、月和日部分。 檔案名稱會使用開始時間的小時部分。 **external**: **true** 設定會通知 Data Factory 服務：這是 Data Factory 外部的資料表而且不是由 Data Factory 中的活動所產生。
+每小時從新的 Blob 挑選資料 (**頻率**：**小時**，**間隔**：**1**)。 根據正在處理之配量的開始時間，以動態方式評估 Blob 的資料夾路徑和檔案名稱。 資料夾路徑會使用開始時間的年、月和日部分。 檔案名稱會使用開始時間的小時部分。 **external**: **true** 設定會通知 Data Factory 服務：這是 Data Factory 外部的資料表而且不是由 Data Factory 中的活動所產生。
 
 ```json
 {
@@ -557,7 +556,9 @@ Data Factory 支援使用資料管理閘道連接至內部部署 Oracle 來源�
 
 **錯誤訊息**
 
-    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .NET Framework Data Provider. It may not be installed.
+```text
+Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .NET Framework Data Provider. It may not be installed.
+```
 
 **可能的原因**
 
@@ -569,21 +570,25 @@ Data Factory 支援使用資料管理閘道連接至內部部署 Oracle 來源�
 * 如果您尚未安裝 .NET Provider for Oracle，請 [安裝它](https://www.oracle.com/technetwork/topics/dotnet/downloads/) ，然後重試此案例。
 * 如果即使在安裝提供者之後，您仍會看到錯誤訊息，請完成下列步驟：
     1. 從資料夾 <system disk\>:\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config 開啟 .NET 2.0 的電腦組態檔。
-    2. 搜尋 **Oracle Data Provider for .NET**。 您應該能夠在 **system.data** > **DbProviderFactories** 之下找到如下列範例所示的項目：`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
-* 將此項目複製到下列 .NET 4.0 資料夾中的 machine.config 檔案：<系統磁碟\>:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config。然後，將版本變更為 4.xxx.x.x。
+    2. 搜尋 **Oracle Data Provider for .NET**。 如下列範例所示，您應該能夠找到如 [ **system.data**  >  **DbProviderFactories**] 底下的專案：`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
+* 將此專案複製到下列 .NET 4.0 資料夾中的 machine.config 檔案： <系統磁片 \>:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config。然後，將版本變更為 x.x.。
 * 執行 **gacutil /i [provider path]**，在全域組件快取 (GAC) 中安裝 <ODP.NET 安裝路徑\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll。
 
-### <a name="problem-2-datetime-formatting"></a>問題 2：日期/時間格式
+### <a name="problem-2-datetime-formatting"></a>問題 2︰日期/時間格式
 
 **錯誤訊息**
 
-    Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
+```text
+Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
+```
 
 **解決方案**
 
 您可能需要根據 Oracle 資料庫中的日期設定來調整查詢字串。 範例 (使用 **to_date** 函式) 如下：
 
-    "oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
+```console   
+"oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
+```
 
 
 ## <a name="type-mapping-for-oracle"></a>Oracle 的類型對應
@@ -599,27 +604,27 @@ Data Factory 支援使用資料管理閘道連接至內部部署 Oracle 來源�
 | --- | --- |
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>(使用 Microsoft 驅動程式時，僅在 Oracle 10g 和更新版本上提供支援) |
-| CHAR |字串 |
-| CLOB |字串 |
-| 日期 |DateTime |
+| CHAR |String |
+| CLOB |String |
+| 日期 |Datetime |
 | FLOAT |Decimal，字串 (如果精確度 > 28) |
 | INTEGER |Decimal，字串 (如果精確度 > 28) |
-| 間隔年至月 |Int32 |
-| 間隔日至秒鐘 |時間範圍 |
-| 長 |字串 |
-| 長 RAW |Byte[] |
-| NCHAR |字串 |
-| NCLOB |字串 |
-| 數字 |Decimal，字串 (如果精確度 > 28) |
-| NVARCHAR2 |字串 |
+| INTERVAL YEAR TO MONTH |Int32 |
+| INTERVAL DAY TO SECOND |TimeSpan |
+| LONG |String |
+| LONG RAW |Byte[] |
+| NCHAR |String |
+| NCLOB |String |
+| NUMBER |Decimal，字串 (如果精確度 > 28) |
+| NVARCHAR2 |String |
 | RAW |Byte[] |
-| ROWID |字串 |
-| 時間戳記 |DateTime |
-| 本地時區的時間戳記 |DateTime |
-| 時區的時間戳記 |DateTime |
-| 不帶正負號的整數 |數字 |
-| VARCHAR2 |字串 |
-| XML |字串 |
+| ROWID |String |
+| timestamp |Datetime |
+| TIMESTAMP WITH LOCAL TIME ZONE |Datetime |
+| TIMESTAMP WITH TIME ZONE |Datetime |
+| 不帶正負號的整數 |Number |
+| VARCHAR2 |String |
+| XML |String |
 
 > [!NOTE]
 > 使用 Microsoft 驅動程式時，不支援資料類型 **INTERVAL YEAR TO MONTH** 和 **INTERVAL DAY TO SECOND**。

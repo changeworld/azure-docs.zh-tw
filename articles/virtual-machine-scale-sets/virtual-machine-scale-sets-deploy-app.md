@@ -1,26 +1,19 @@
 ---
-title: 將應用程式部署到 Azure 虛擬機器擴展集 | Microsoft Docs
+title: 將應用程式部署至 Azure 虛擬機器擴展集
 description: 了解如何將應用程式部署到擴展集中的 Linux 和 Windows 虛擬機器執行個體
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: f8892199-f2e2-4b82-988a-28ca8a7fd1eb
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: management
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: 09145612821cb669e26e3ccb8d15611112eca700
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.reviewer: avverma
+ms.custom: avverma
+ms.openlocfilehash: 7c39088890680b6cfc903083283ed09cb7618d16
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60618620"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124919"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>在虛擬機器擴展集上部署您的應用程式
 
@@ -36,8 +29,8 @@ ms.locfileid: "60618620"
 - [Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 
-## <a name="already-provisioned"></a>安裝包含自訂指令碼延伸模組的應用程式
-自訂指令碼擴充功能會在 Azure VM 上下載並執行指令碼。 此擴充功能適用於部署後組態、軟體安裝或其他任何組態/管理工作。 您可以從 Azure 儲存體或 GitHub 下載指令碼，或是在擴充功能執行階段將指令碼提供給 Azure 入口網站。 若要進一步了解如何建立及使用含擴展集的自訂 VM 映像，請參閱下列教學課程：
+## <a name="install-an-app-with-the-custom-script-extension"></a><a name="already-provisioned"></a>安裝包含自訂指令碼延伸模組的應用程式
+自訂指令碼擴充功能會在 Azure VM 上下載並執行指令碼。 此擴充功能適用於部署後組態、軟體安裝或其他任何組態/管理工作。 您可以從 Azure 儲存體或 GitHub 下載指令碼，或是在擴充功能執行階段將指令碼提供給 Azure 入口網站。 如需如何使用自訂指令碼延伸模組安裝應用程式的詳細資訊，請參閱下列教學課程：
 
 - [Azure CLI](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
@@ -45,9 +38,9 @@ ms.locfileid: "60618620"
 
 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>使用 PowerShell DSC 將應用程式安裝到 Windows VM
-[PowerShell 預期狀態設定 (DSC)](https://msdn.microsoft.com/powershell/dsc/overview) 是一個管理平台，可定義目標電腦的設定。 DSC 設定會定義要在電腦上安裝的項目，以及設定主機的方式。 本機設定管理員 (LCM) 引擎會在每個目標節點上執行，這些節點會以推送組態作為基礎來處理要求的動作。
+[PowerShell 預期狀態設定 (DSC)](/powershell/scripting/dsc/overview/overview) 是一個管理平台，可定義目標電腦的設定。 DSC 設定會定義要在電腦上安裝的項目，以及設定主機的方式。 本機設定管理員 (LCM) 引擎會在每個目標節點上執行，這些節點會以推送組態作為基礎來處理要求的動作。
 
-PowerShell DSC 延伸模組可讓您在擴展集中使用 PowerShell 來自訂 VM 執行個體。 下列範例：
+PowerShell DSC 延伸模組可讓您在擴展集中使用 PowerShell 來自訂 VM 執行個體。 下列範例將：
 
 - 指示 VM 執行個體從 GitHub 下載 DSC 套件 - *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
 - 設定延伸模組來執行安裝指令碼 - `configure-http.ps1`

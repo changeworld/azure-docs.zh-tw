@@ -1,398 +1,474 @@
 ---
-title: Microsoft 身分識別平台 UWP 使用者入門 | Azure
-description: 通用 Windows 平台應用程式 (UWP) 可以呼叫需要由 Microsoft 身分識別平台端點存取權杖的 API。
+title: 開始使用 Microsoft 身分識別平台 UWP | Azure
+description: 通用 Windows 平台 (UWP) 應用程式可以呼叫需要由 Microsoft 身分識別平台端點存取權杖的 API。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 12/13/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 448858efeaae4c3e2a41d41181e9ec74b03223f6
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.custom: aaddev, identityplatformtop40
+ms.openlocfilehash: 7193affad3da212a6a40c0d9479473ec597e86f6
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65138261"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85807616"
 ---
-# <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>自通用 Windows 平台應用程式 (XAML) 呼叫 Microsoft Graph API
+# <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>自通用 Windows 平台應用程式 (XAML) 呼叫 Microsoft Graph API
 
 > [!div renderon="docs"]
-> [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
-本指南說明原生通用 Windows 平台 (UWP) 應用程式如何要求存取權杖，然後呼叫 Microsoft Graph API。 此指南也適用於需要來自 Microsoft 身分識別平台端點之存取權杖的其他 API。
+本指南說明原生通用 Windows 平台 (UWP) 應用程式如何要求存取權杖。 應用程式接著會呼叫 Microsoft Graph API。 此指南也適用於需要來自 Microsoft 身分識別平台端點之存取權杖的其他 API。
 
 在本指南結尾，您的應用程式會使用個人帳戶呼叫受保護的 API。 例如，outlook.com、live.com 等。 您的應用程式也會從具有 Azure Active Directory (Azure AD) 的任何公司或組織呼叫工作和學校帳戶。
 
 >[!NOTE]
-> 本指南需安裝具備通用 Windows 平台開發功能的 Visual Studio 2017。 如需下載及設定 Visual Studio 以開發通用 Windows 平台應用程式的說明，請參閱[開始設定](https://docs.microsoft.com/windows/uwp/get-started/get-set-up)。
+> 本指南需安裝具備通用 Windows 平台開發功能的 Visual Studio。 如需下載及設定 Visual Studio 以開發通用 Windows 平台應用程式的說明，請參閱[開始設定](https://docs.microsoft.com/windows/uwp/get-started/get-set-up)。
+
+>[!NOTE]
+> 如果您不熟悉 Microsoft 身分識別平台，請從[從通用 Windows 平台 (UWP) 應用程式快速入門呼叫 Microsoft Graph API](quickstart-v2-uwp.md) 開始了解。
 
 ## <a name="how-this-guide-works"></a>本指南使用方式
 
 ![示範本教學課程所產生的應用程式範例如何運作](./media/tutorial-v2-windows-uwp/uwp-intro.svg)
 
-此指南建立的範例 UWP 應用程式會查詢可接受來自 Microsoft 身分識別平台端點之存取權杖的 Microsoft 圖形 API 或 Web API。 針對這個案例，系統會透過授權標頭將一個權杖新增到 HTTP 要求。 Microsoft 驗證程式庫 (MSAL) 會處理權杖取得和更新作業。
+本指南會建立可查詢 Microsoft Graph API 的範例 UWP 應用程式。 針對這個案例，系統會透過使用 Authorization 標頭將一個權杖新增到 HTTP 要求。 Microsoft 驗證程式庫會處理權杖取得和更新作業。
 
 ## <a name="nuget-packages"></a>NuGet 套件
 
 本指南會使用以下 NuGet 套件：
 
-|程式庫|說明|
+|程式庫|描述|
 |---|---|
 |[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft 驗證程式庫|
+|[Microsoft.Graph](https://www.nuget.org/packages/Microsoft.Graph)|Microsoft Graph 用戶端程式庫|
 
 ## <a name="set-up-your-project"></a>設定專案
 
-本節提供整合 Windows 傳統型 .NET 應用程式 (XAML) 與「使用 Microsoft 登入」的逐步教學說明。 然後，它會查詢需要權杖的 Web API，例如 Microsoft Graph API。
+本節提供整合 Windows 傳統型 .NET 應用程式 (XAML) 與「使用 Microsoft 登入」的逐步指示。 然後，應用程式可以查詢需要權杖的 Web API，例如 Microsoft Graph API。
 
-本指南建立的應用程式會顯示查詢圖形 API 的按鈕、登出按鈕以及顯示呼叫結果的文字方塊。
+本指南所建立的應用程式會顯示一個可查詢 Microsoft Graph API 的按鈕，以及一個用來登出的按鈕。它也會顯示包含呼叫結果的文字方塊。
 
 > [!NOTE]
-> 您想要改為下載此範例的 Visual Studio 專案嗎？ [下載專案](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)並跳至[應用程式註冊](#register-your-application "應用程式註冊步驟")步驟，以在執行之前先設定程式碼範例。
+> 您想要下載此範例的 Visual Studio 專案而非加以建立嗎？ [下載專案](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)，並跳到[應用程式註冊](#register-your-application "應用程式註冊步驟")步驟，以在執行之前先設定程式碼範例。
 
 ### <a name="create-your-application"></a>建立您的應用程式
 
-1. 在 Visual Studio 中，選取 [檔案]  >  [新增]  >  [專案]。
-2. 在 [範本] 底下，選取 [Visual C#]。
-3. 選取 [空白應用程式] \(通用 Windows\)。
-4. 命名應用程式，然後選取 [確定]。
-5. 如果出現提示，請為 [目標] 和 [最低] 版本選取任一版本，然後選取 [確定]。
+1. 開啟 Visual Studio，然後選取 [建立新專案]。
+1. 在 [建立新專案] 中，針對 C# 選擇 [空白應用程式 (通用 Windows)]，然後選取 [下一步]。
+1. 在 [設定新的專案] 中，為應用程式命名，然後選取 [建立]。
+1. 如果出現提示，請在 [新增通用 Windows 平台專案]中，為 [目標] 和 [最低] 版本選取任一版本，然後選取 [確定]。
 
-    >![最低和目標版本](./media/tutorial-v2-windows-uwp/vs-minimum-target.png)
+   ![最低和目標版本](./media/tutorial-v2-windows-uwp/select-uwp-target-minimum.png)
 
-## <a name="add-microsoft-authentication-library-to-your-project"></a>將 Microsoft 驗證程式庫新增至您的專案
-1. 在 Visual Studio 中，選取 [工具]  >  [NuGet 套件管理員]  >  [套件管理員主控台]。
-2. 在 [套件管理器主控台] 視窗中，複製並貼上下列命令：
+### <a name="add-microsoft-authentication-library-to-your-project"></a>將 Microsoft 驗證程式庫新增至您的專案
+
+1. 在 Visual Studio 中，選取 [工具] >  [NuGet 套件管理員] >  [套件管理員主控台]。
+1. 在 [套件管理器主控台] 視窗中，複製並貼上下列命令：
 
     ```powershell
-    Install-Package Microsoft.Identity.Client -IncludePrerelease
+    Install-Package Microsoft.Identity.Client
+    Install-Package Microsoft.Graph
     ```
 
-> [!NOTE]
-> 此命令會安裝 [Microsoft 驗證程式庫](https://aka.ms/msal-net)。 MSAL 會取得、快取並重新整理使用者權杖，以存取受 Microsoft 身分識別平台保護的 API。
+   > [!NOTE]
+   > 第一個命令會安裝 [Microsoft 驗證程式庫 (MSAL.NET)](https://aka.ms/msal-net)。 MSAL.NET 會取得、快取並重新整理使用者權杖，以存取受 Microsoft 身分識別平台保護的 API。 第二個命令會安裝 [Microsoft Graph .NET 用戶端程式庫](https://github.com/microsoftgraph/msgraph-sdk-dotnet)，以驗證對 Microsoft Graph 的要求，並對服務進行呼叫。
 
-## <a name="create-your-applications-ui"></a>建立您應用程式的 UI
+### <a name="create-your-applications-ui"></a>建立您應用程式的 UI
 
-系統會自動建立 **MainPage.xaml** 檔案，作為專案範本的一部分。 請開啟這個檔案，然後遵循指示操作：
+Visual Studio 會在專案範本中建立 *MainPage.xaml*。 開啟此檔案，然後將應用程式的 **Grid** 節點取代為下列程式碼：
 
-* 將應用程式的 **Grid** 節點取代為下列程式碼：
-
-    ```xml
-    <Grid>
-        <StackPanel Background="Azure">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="CallGraphButton" Content="Call Microsoft Graph API" HorizontalAlignment="Right" Padding="5" Click="CallGraphButton_Click" Margin="5" FontFamily="Segoe Ui"/>
-                <Button x:Name="SignOutButton" Content="Sign-Out" HorizontalAlignment="Right" Padding="5" Click="SignOutButton_Click" Margin="5" Visibility="Collapsed" FontFamily="Segoe Ui"/>
-            </StackPanel>
-            <TextBlock Text="API Call Results" Margin="2,0,0,-5" FontFamily="Segoe Ui" />
-            <TextBox x:Name="ResultText" TextWrapping="Wrap" MinHeight="120" Margin="5" FontFamily="Segoe Ui"/>
-            <TextBlock Text="Token Info" Margin="2,0,0,-5" FontFamily="Segoe Ui" />
-            <TextBox x:Name="TokenInfoText" TextWrapping="Wrap" MinHeight="70" Margin="5" FontFamily="Segoe Ui"/>
+```xml
+<Grid>
+    <StackPanel Background="Azure">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="CallGraphButton" Content="Call Microsoft Graph API" HorizontalAlignment="Right" Padding="5" Click="CallGraphButton_Click" Margin="5" FontFamily="Segoe Ui"/>
+            <Button x:Name="SignOutButton" Content="Sign-Out" HorizontalAlignment="Right" Padding="5" Click="SignOutButton_Click" Margin="5" Visibility="Collapsed" FontFamily="Segoe Ui"/>
         </StackPanel>
-    </Grid>
-    ```
-    
-## <a name="use-msal-to-get-a-token-for-microsoft-graph-api"></a>使用 MSAL 取得 Microsoft Graph API 的權杖
+        <TextBlock Text="API Call Results" Margin="2,0,0,-5" FontFamily="Segoe Ui" />
+        <TextBox x:Name="ResultText" TextWrapping="Wrap" MinHeight="120" Margin="5" FontFamily="Segoe Ui"/>
+        <TextBlock Text="Token Info" Margin="2,0,0,-5" FontFamily="Segoe Ui" />
+        <TextBox x:Name="TokenInfoText" TextWrapping="Wrap" MinHeight="70" Margin="5" FontFamily="Segoe Ui"/>
+    </StackPanel>
+</Grid>
+```
 
-本節說明如何使用 MSAL 取得 Microsoft Graph API 的權杖。
+### <a name="use-microsoft-authentication-library-to-get-a-token-for-the-microsoft-graph-api"></a>使用 Microsoft Authentication Library 取得 Microsoft Graph API 的權杖
 
-1.  在 **MainPage.xaml.cs** 中，將 MSAL 的參考新增至類別：
+本節說明如何使用 Microsoft Authentication Library 取得 Microsoft Graph API 的權杖。 變更 *MainPage.xaml.cs* 檔案。
+
+1. 在 *MainPage.xaml.cs* 中新增下列參考：
 
     ```csharp
     using Microsoft.Identity.Client;
+    using Microsoft.Graph;
+    using System.Diagnostics;
+    using System.Threading.Tasks;
     ```
 
-2. 以下列程式碼取代 <code>MainPage</code> 類別的程式碼：
+1. 以下列程式碼取代 `MainPage` 類別：
 
     ```csharp
     public sealed partial class MainPage : Page
     {
-        //Set the API Endpoint to Graph 'me' endpoint
-        string graphAPIEndpoint = "https://graph.microsoft.com/v1.0/me";
-
+       
         //Set the scope for API call to user.read
-        string[] scopes = new string[] { "user.read" };
+        private string[] scopes = new string[] { "user.read" };
 
-        // Below are the clientId (Application Id) of your app registration and the tenant information. 
+        // Below are the clientId (Application Id) of your app registration and the tenant information.
         // You have to replace:
         // - the content of ClientID with the Application Id for your app registration
-        // - Te content of Tenant by the information about the accounts allowed to sign-in in your application:
-        //   - For Work or School account in your org, use your tenant ID, or domain
-        //   - for any Work or School accounts, use organizations
-        //   - for any Work or School accounts, or Microsoft personal account, use common
-        //   - for Microsoft Personal account, use consumers
-        private const string ClientId = "0b8b0665-bc13-4fdc-bd72-e0227b9fc011";        
+        private const string ClientId = "[Application Id pasted from the application registration portal]";
 
-        public IPublicClientApplication PublicClientApp { get; } 
+        private const string Tenant = "common"; // Alternatively "[Enter your tenant, as obtained from the Azure portal, e.g. kko365.onmicrosoft.com]"
+        private const string Authority = "https://login.microsoftonline.com/" + Tenant;
+
+        // The MSAL Public client app
+        private static IPublicClientApplication PublicClientApp;
+
+        private static string MSGraphURL = "https://graph.microsoft.com/v1.0/";
+        private static AuthenticationResult authResult;
 
         public MainPage()
         {
-          this.InitializeComponent();
-
-          PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
-                .WithAuthority(AadAuthorityAudience.AzureAdAndPersonalMicrosoftAccount)
-                .WithLogging((level, message, containsPii) =>
-                {
-                    Debug.WriteLine($"MSAL: {level} {message} ");
-                }, LogLevel.Warning, enablePiiLogging:false,enableDefaultPlatformLogging:true)
-                .WithUseCorporateNetwork(true)
-                .Build();
+            this.InitializeComponent();
         }
 
         /// <summary>
-        /// Call AcquireTokenAsync - to acquire a token requiring user to sign-in
+        /// Call AcquireTokenAsync - to acquire a token requiring user to sign in
         /// </summary>
         private async void CallGraphButton_Click(object sender, RoutedEventArgs e)
         {
-         AuthenticationResult authResult = null;
-         ResultText.Text = string.Empty;
-         TokenInfoText.Text = string.Empty;
+            try
+            {
+                // Sign in user using MSAL and obtain an access token for Microsoft Graph
+                GraphServiceClient graphClient = await SignInAndInitializeGraphServiceClient(scopes);
 
-         // It's good practice to not do work on the UI thread, so use ConfigureAwait(false) whenever possible.            
-         IEnumerable<IAccount> accounts = await PublicClientApp.GetAccountsAsync().ConfigureAwait(false); 
-         IAccount firstAccount = accounts.FirstOrDefault();
+                // Call the /me endpoint of Graph
+                User graphUser = await graphClient.Me.Request().GetAsync();
 
-         try
-         {
-          authResult = await PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
-                                                  .ExecuteAsync();
-         }
-         catch (MsalUiRequiredException ex)
-         {
-          // A MsalUiRequiredException happened on AcquireTokenSilent.
-          // This indicates you need to call AcquireTokenInteractive to acquire a token
-          System.Diagnostics.Debug.WriteLine($"MsalUiRequiredException: {ex.Message}");
-
-          try
-          {
-           authResult = await PublicClientApp.AcquireTokenInteractive(scopes)
-                                                      .ExecuteAsync()
-                                                      .ConfigureAwait(false);
-           }
-           catch (MsalException msalex)
-           {
-            await DisplayMessageAsync($"Error Acquiring Token:{System.Environment.NewLine}{msalex}");
-           }
-          }
-          catch (Exception ex)
-          {
-           await DisplayMessageAsync($"Error Acquiring Token Silently:{System.Environment.NewLine}{ex}");
-           return;
-          }
-
-          if (authResult != null)
-          {
-           var content = await GetHttpContentWithToken(graphAPIEndpoint,
-                                                       authResult.AccessToken).ConfigureAwait(false);
-
-           // Go back to the UI thread to make changes to the UI
-           await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
-           {
-            ResultText.Text = content;
-            DisplayBasicTokenInfo(authResult);
-            this.SignOutButton.Visibility = Visibility.Visible;
-           });
-          }
+                // Go back to the UI thread to make changes to the UI
+                await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                {
+                    ResultText.Text = "Display Name: " + graphUser.DisplayName + "\nBusiness Phone: " + graphUser.BusinessPhones.FirstOrDefault()
+                                      + "\nGiven Name: " + graphUser.GivenName + "\nid: " + graphUser.Id
+                                      + "\nUser Principal Name: " + graphUser.UserPrincipalName;
+                    DisplayBasicTokenInfo(authResult);
+                    this.SignOutButton.Visibility = Visibility.Visible;
+                });
+            }
+            catch (MsalException msalEx)
+            {
+                await DisplayMessageAsync($"Error Acquiring Token:{System.Environment.NewLine}{msalEx}");
+            }
+            catch (Exception ex)
+            {
+                await DisplayMessageAsync($"Error Acquiring Token Silently:{System.Environment.NewLine}{ex}");
+                return;
+            }
         }
+                /// <summary>
+        /// Signs in the user and obtains an access token for Microsoft Graph
+        /// </summary>
+        /// <param name="scopes"></param>
+        /// <returns> Access Token</returns>
+        private static async Task<string> SignInUserAndGetTokenUsingMSAL(string[] scopes)
+        {
+            // Initialize the MSAL library by building a public client application
+            PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
+                .WithAuthority(Authority)
+                .WithUseCorporateNetwork(false)
+                .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
+                 .WithLogging((level, message, containsPii) =>
+                 {
+                     Debug.WriteLine($"MSAL: {level} {message} ");
+                 }, LogLevel.Warning, enablePiiLogging: false, enableDefaultPlatformLogging: true)
+                .Build();
+
+            // It's good practice to not do work on the UI thread, so use ConfigureAwait(false) whenever possible.
+            IEnumerable<IAccount> accounts = await PublicClientApp.GetAccountsAsync().ConfigureAwait(false);
+            IAccount firstAccount = accounts.FirstOrDefault();
+
+            try
+            {
+                authResult = await PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
+                                                  .ExecuteAsync();
+            }
+            catch (MsalUiRequiredException ex)
+            {
+                // A MsalUiRequiredException happened on AcquireTokenSilentAsync. This indicates you need to call AcquireTokenAsync to acquire a token
+                Debug.WriteLine($"MsalUiRequiredException: {ex.Message}");
+
+                authResult = await PublicClientApp.AcquireTokenInteractive(scopes)
+                                                  .ExecuteAsync()
+                                                  .ConfigureAwait(false);
+
+            }
+            return authResult.AccessToken;
+        }
+    }
     ```
 
-### <a name="more-information"></a>詳細資訊
+#### <a name="get-a-user-token-interactively"></a>以互動方式取得使用者權杖<a name="more-information"></a>
 
-#### <a name="get-a-user-token-interactively"></a>以互動方式取得使用者權杖
-
-呼叫 `AcquireTokenInteractive` 方法時會顯示一個視窗，提示使用者登入。 當使用者第一次需要存取受保護的資源時，應用程式通常會要求使用者以互動方式登入。 當取得權杖的無訊息作業失敗時，使用者也可能需要登入。 例如，使用者的密碼過期時。
+`AcquireTokenInteractive` 方法會顯示一個視窗，提示使用者登入。 當使用者第一次需要存取受保護的資源時，應用程式通常會要求使用者以互動方式登入。 當取得權杖的無訊息作業失敗時，使用者也可能需要登入。 例如，使用者的密碼過期時。
 
 #### <a name="get-a-user-token-silently"></a>以無訊息方式取得使用者權杖
 
-`AcquireTokenSilent` 方法會處理權杖取得和更新作業，不需要與使用者進行任何互動。 第一次執行 `AcquireTokenInteractive` 之後，系統會提示使用者輸入認證，您應該在後續呼叫中使用 `AcquireTokenSilent` 方法來要求權杖，因為這會以無訊息方式取得權杖。 MSAL 會處理權杖快取和更新作業。
+`AcquireTokenSilent` 方法會處理權杖取得和更新作業，不需要與使用者進行任何互動。 第一次執行 `AcquireTokenInteractive`，並提示使用者提供認證時，請使用 `AcquireTokenSilent` 方法來要求權杖，以供稍後呼叫。 該方法會以無訊息方式取得權杖。 Microsoft 驗證程式庫會處理權杖快取和更新作業。
 
-最後，`AcquireTokenSilent` 方法會失敗。 失敗的原因可能是使用者已經登出，或已經在其他裝置上變更其密碼。 當 MSAL 偵測到可透過要求執行互動式動作來解決問題時，就會發出一個 `MsalUiRequiredException` 例外狀況。 您的應用程式可以透過兩種方式處理此例外狀況：
+最後，`AcquireTokenSilent` 方法會失敗。 失敗的原因包括使用者已登出，或已在其他裝置上變更其密碼。 當 Microsoft 驗證程式庫偵測到需要互動式動作的問題時，就會擲回 `MsalUiRequiredException` 例外狀況。 您的應用程式可以透過兩種方式處理此例外狀況：
 
-* 它可以立即對 `AcquireTokenInteractive` 進行呼叫。 此呼叫會促使系統提示使用者登入。 一般而言，此模式會用於沒有離線內容可供使用者使用的線上應用程式。 此引導式設定所產生的範例會遵循該模式。 您可以在第一次執行範例時查看其運作方式。
-  * 因為沒有任何使用者用過該應用程式，所以 `accounts.FirstOrDefault()` 會包含一個 null 值，而且會擲回 `MsalUiRequiredException` 例外狀況。
-  * 然後範例中的程式碼會透過呼叫 `AcquireTokenInteractive` 來處理例外狀況。 此呼叫會促使系統提示使用者登入。
+* 您的應用程式會立即呼叫 `AcquireTokenInteractive`。 此呼叫會促使系統提示使用者登入。 一般而言，將此方法用於沒有離線內容可供使用者使用的線上應用程式。 此引導式設定所產生的範例會遵循該模式。 您可以在第一次執行範例時查看其運作方式。
 
-* 或者，改為對使用者呈現視覺指示，這需要互動式登入。 然後，使用者可以選取正確的登入時機。 或者，應用程式可以稍後重試 `AcquireTokenSilent`。 通常，當使用者可以在不需要中斷的情況下使用其他應用程式功能時，就會使用此模式。 例如，應用程式中有離線內容可供使用時。 在此情況下，使用者可以決定何時登入以存取受保護的資源，或重新整理過期的資訊。 或者，當網路暫時無法使用而後還原時，應用程式可以決定是否重試 `AcquireTokenSilent`。
+   因為沒有任何使用者用過該應用程式，所以 `accounts.FirstOrDefault()` 會包含一個 null 值，並擲回 `MsalUiRequiredException` 例外狀況。
 
-## <a name="call-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>使用您剛剛取得的權杖呼叫 Microsoft Graph API
+   然後範例中的程式碼會透過呼叫 `AcquireTokenInteractive` 來處理例外狀況。 此呼叫會促使系統提示使用者登入。
 
-* 將下列新方法新增至 **MainPage.xaml.cs**。 使用此方法透過 `Authorization` 標頭對圖形 API 提出 `GET` 要求：
+* 您的應用程式會向需要登入的使用者呈現視覺指示。 然後，使用者可以選取正確的登入時機。 應用程式可以稍後重試 `AcquireTokenSilent`。 當使用者可以在不需要中斷的情況下使用其他應用程式功能時，請使用此方法。 例如，應用程式中有離線內容可供使用時。 在此情況下，使用者可以決定何時要登入。 在網路暫時無法使用後，應用程式可以重試 `AcquireTokenSilent`。
 
-    ```csharp
-    /// <summary>
-    /// Perform an HTTP GET request to a URL using an HTTP Authorization header
-    /// </summary>
-    /// <param name="url">The URL</param>
-    /// <param name="token">The token</param>
-    /// <returns>String containing the results of the GET operation</returns>
-    public async Task<string> GetHttpContentWithToken(string url, string token)
+### <a name="instantiate-the-microsoft-graph-service-client-by-obtaining-the-token-from-the-signinuserandgettokenusingmsal-method"></a>從 SignInUserAndGetTokenUsingMSAL 方法取得權杖，藉此具現化 Microsoft Graph 服務用戶端
+
+將下列新方法新增至 *MainPage.xaml.cs*：
+
+```csharp
+      /// <summary>
+     /// Sign in user using MSAL and obtain a token for Microsoft Graph
+     /// </summary>
+     /// <returns>GraphServiceClient</returns>
+     private async static Task<GraphServiceClient> SignInAndInitializeGraphServiceClient(string[] scopes)
+     {
+         GraphServiceClient graphClient = new GraphServiceClient(MSGraphURL,
+             new DelegateAuthenticationProvider(async (requestMessage) =>
+             {
+                 requestMessage.Headers.Authorization = new AuthenticationHeaderValue("bearer", await SignInUserAndGetTokenUsingMSAL(scopes));
+             }));
+
+         return await Task.FromResult(graphClient);
+     }
+```
+
+#### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>針對受保護 API 進行 REST 呼叫的詳細資訊
+
+在此範例應用程式中，`GetGraphServiceClient` 方法會使用存取權杖來具現化 `GraphServiceClient`。 然後，`GraphServiceClient` 可用來從 **me** 端點取得使用者的設定檔資訊。
+
+### <a name="add-a-method-to-sign-out-the-user"></a>新增方法來將使用者登出
+
+將下列方法新增至 *MainPage.xaml.cs* 來將使用者登出：
+
+```csharp
+/// <summary>
+/// Sign out the current user
+/// </summary>
+private async void SignOutButton_Click(object sender, RoutedEventArgs e)
+{
+    IEnumerable<IAccount> accounts = await PublicClientApp.GetAccountsAsync().ConfigureAwait(false);
+    IAccount firstAccount = accounts.FirstOrDefault();
+
+    try
     {
-        var httpClient = new System.Net.Http.HttpClient();
-        System.Net.Http.HttpResponseMessage response;
-        try
+        await PublicClientApp.RemoveAsync(firstAccount).ConfigureAwait(false);
+        await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
         {
-            var request = new System.Net.Http.HttpRequestMessage(System.Net.Http.HttpMethod.Get, url);
-            // Add the token in Authorization header
-            request.Headers.Authorization = 
-              new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-            response = await httpClient.SendAsync(request);
-            var content = await response.Content.ReadAsStringAsync();
-            return content;
+            ResultText.Text = "User has signed out";
+            this.CallGraphButton.Visibility = Visibility.Visible;
+                this.SignOutButton.Visibility = Visibility.Collapsed;
+            });
         }
-        catch (Exception ex)
+        catch (MsalException ex)
         {
-            return ex.ToString();
+            ResultText.Text = $"Error signing out user: {ex.Message}";
         }
     }
-    ```
-
-### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>針對受保護 API 進行 REST 呼叫的詳細資訊
-
-在此範例應用程式中，使用 `GetHttpContentWithToken` 方法對需要權杖的受保護資源提出 HTTP `GET` 要求。 然後，該方法會將內容傳回給呼叫端。 此方法會在 **HTTP 授權**標頭中新增取得的權杖。 對於此範例，資源為 Microsoft Graph API **me** 端點，它會顯示使用者的設定檔資訊。
-<!--end-collapse-->
-
-## <a name="add-a-method-to-sign-out-the-user"></a>新增方法來將使用者登出
-
-* 將下列方法新增至 **MainPage.xaml.cs** 來將使用者登出：
-
-    ```csharp
-    /// <summary>
-    /// Sign out the current user
-    /// </summary>
-    private async void SignOutButton_Click(object sender, RoutedEventArgs e)
-    {
-        IEnumerable<IAccount> accounts = await PublicClientApp.GetAccountsAsync
-                                                              .ConfigureAwait(false);
-        IAccount firstAccount = accounts.FirstOrDefault();
-
-        try
-        {
-            await PublicClientApp.RemoveAsync(firstAccount).ConfigureAwait(false);
-            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
-            {
-                ResultText.Text = "User has signed-out";
-                this.CallGraphButton.Visibility = Visibility.Visible;
-                    this.SignOutButton.Visibility = Visibility.Collapsed;
-                });
-            }
-            catch (MsalException ex)
-            {
-                ResultText.Text = $"Error signing-out user: {ex.Message}";
-            }
-        }
-    ```
+```
 
 > [!NOTE]
-> MSAL.NET 使用非同步方法來取得權杖和操作帳戶，所以您需要在 UI 執行緒中處理執行 UI 動作，因此 `Dispatcher.RunAsync` 和預防措施要呼叫 `ConfigureAwait(false)`
+> MSAL.NET 會使用非同步方法來取得權杖或管理帳戶。 您必須在 UI 執行緒中支援 UI 動作。 這就是 `Dispatcher.RunAsync` 呼叫的原因，以及呼叫 `ConfigureAwait(false)` 的預防措施。
 
-### <a name="more-information-on-sign-out"></a>登出的詳細資訊
+#### <a name="more-information-about-signing-out"></a>有關登出的詳細資訊<a name="more-information-on-sign-out"></a>
 
-`SignOutButton_Click` 方法會從 MSAL 使用者快取中移除使用者。 此方法會有效告知 MSAL 忘記目前的使用者。 然後，只有將此作業設為互動式作業，未來取得權杖的要求才能成功。
-此範例中的應用程式支援單一使用者。 但 MSAL 支援可同時登入多個帳戶的案例。 例如，使用者擁有數個帳戶的電子郵件應用程式。
+`SignOutButton_Click` 方法會從 Microsoft 驗證程式庫使用者快取中移除使用者。 這個方法會有效告知 Microsoft 驗證程式庫忘記目前的使用者。 只有互動方式，未來取得權杖的要求才能成功。
 
-## <a name="display-basic-token-information"></a>顯示基本權杖資訊
+此範例中的應用程式支援單一使用者。 Microsoft 驗證程式庫支援使用者可在多個帳戶上登入的案例。 例如，使用者擁有數個帳戶的電子郵件應用程式。
 
-* 將下列方法新增至 **MainPage.xaml.cs**，以顯示和權杖相關的基本資訊：
+### <a name="display-basic-token-information"></a>顯示基本權杖資訊
 
-    ```csharp
-    /// <summary>
-    /// Display basic information contained in the token. Needs to be called from the UI thead.
-    /// </summary>
-    private void DisplayBasicTokenInfo(AuthenticationResult authResult)
+將下列方法新增至 *MainPage.xaml.cs*，以顯示和權杖相關的基本資訊：
+
+```csharp
+/// <summary>
+/// Display basic information contained in the token. Needs to be called from the UI thread.
+/// </summary>
+private void DisplayBasicTokenInfo(AuthenticationResult authResult)
+{
+    TokenInfoText.Text = "";
+    if (authResult != null)
     {
-        TokenInfoText.Text = "";
-        if (authResult != null)
-        {
-            TokenInfoText.Text += $"User Name: {authResult.Account.Username}" + Environment.NewLine;
-            TokenInfoText.Text += $"Token Expires: {authResult.ExpiresOn.ToLocalTime()}" + Environment.NewLine;
-        }
+        TokenInfoText.Text += $"User Name: {authResult.Account.Username}" + Environment.NewLine;
+        TokenInfoText.Text += $"Token Expires: {authResult.ExpiresOn.ToLocalTime()}" + Environment.NewLine;
     }
-    ```
+}
+```
 
-### <a name="more-information"></a>詳細資訊
+#### <a name="more-information"></a>詳細資訊<a name="more-information-1"></a>
 
-透過 **OpenID Connect** 取得的識別碼權杖也包含一小部分與使用者有關的資訊。 `DisplayBasicTokenInfo` 會顯示權杖中包含的基本資訊。 例如，使用者的顯示名稱和識別碼、權杖的到期日，以及代表存取權杖本身的字串。 如果您選取 [呼叫 Microsoft Graph API] 按鈕多次，您就會了解相同的權杖如何重複用於後續要求。 您也可以在 MSAL 決定應該要更新權杖時，看到延長的到期日。
+使用 **OpenID Connect** 取得的識別碼權杖也包含一小部分與使用者有關的資訊。 `DisplayBasicTokenInfo` 會顯示權杖中包含的基本資訊。 此資訊包括使用者的顯示名稱和識別碼。 還包括權杖的到期日，以及代表存取權杖本身的字串。 如果您選取 [呼叫 Microsoft Graph API] 按鈕多次，您就會了解相同的權杖如何重複用於後續要求。 您也可以在 Microsoft 驗證程式庫決定應該要更新權杖時，看到延長的到期日。
+
+### <a name="display-message"></a>顯示訊息
+
+將下列新方法新增至 *MainPage.xaml.cs*：
+
+```csharp
+/// <summary>
+/// Displays a message in the ResultText. Can be called from any thread.
+/// </summary>
+private async Task DisplayMessageAsync(string message)
+{
+     await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,
+         () =>
+         {
+             ResultText.Text = message;
+         });
+     }
+```
 
 ## <a name="register-your-application"></a>註冊您的應用程式
 
-現在您需要在 Microsoft 應用程式註冊入口網站註冊應用程式：
+您現在需要註冊您的應用程式：
 
-1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 如果您的帳戶在超過一個 Azure AD 租用戶中呈現，請在頁面頂端功能表的右上角選取 `Directory + Subscription`，並將您的入口網站工作階段切換到所需的 Azure AD 租用戶。
-1. 瀏覽至 Microsoft 身分識別平台，以取得開發人員的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面。
-1. 選取 [新增註冊]。
-   - 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱，例如 `UWP-App-calling-MSGraph`。
-   - 在 [支援的帳戶類型] 區段中，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶 (例如 Skype、Xbox、Outlook.com)]。
-   - 選取 [註冊] 以建立應用程式。
-1. 在應用程式 [概觀] 頁面上，尋找 [應用程式 (用戶端) 識別碼] 值並將它記下供稍後使用。 接著返回 Visual Studio 並開啟 **MainPage.xaml.cs**，然後用您剛註冊的應用程式識別碼取代 ClientId 的值：
-1. 在應用程式頁面清單中，選取 [驗證]。
-   1. 在「重新導向 URI」清單的 [重新導向 URI] 區段中：
-   1. 在 [型別] 欄中，選取 [公開用戶端 (行動裝置及桌上型電腦)]。
-   1. 在 [重新導向 URI] 欄中輸入 `urn:ietf:wg:oauth:2.0:oob`。
-1. 選取 [ **儲存**]。
-1. 在應用程式頁面清單中，選取 [API 權限]
-   - 按一下 [新增權限] 按鈕，然後
-   - 確定已選取 [Microsoft API] 索引標籤
-   - 在 [常用的 Microsoft API] 區段中，按一下 [Microsoft Graph]
-   - 在 [委派的權限] 區段中，請確定已選取正確的權限：[User.Read]。 如有需要請使用搜尋方塊。
-   - 選取 [新增權限] 按鈕
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 選取 [Azure Active Directory] > [應用程式註冊]。
+1. 選取 [新增註冊]。 輸入將對應用程式使用者顯示且有意義的應用程式名稱，例如 UWP-App-calling-MSGraph。
+1. 在 [支援的帳戶類型] 底下，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶] (例如 Skype、Xbox)。 接著，選取 [註冊] 以繼續。
+1. 在概觀頁面上，尋找 [應用程式 (用戶端) 識別碼] 值並加以複製。 返回 Visual Studio，開啟 *MainPage.xaml.cs*，然後使用此值取代 `ClientId` 的值。
+
+設定應用程式的驗證：
+
+1. 回到 [Azure 入口網站](https://portal.azure.com)，在 [管理]之下選取 [驗證]。
+1. 在 [重新導向 URI] | [公用用戶端 (行動、傳統型) 的建議重新導向 URI] 區段，然後核取 https://login.microsoftonline.com/common/oauth2/nativeclient 。
+1. 選取 [儲存]。
+
+設定應用程式的 API 權限：
+
+1. 在 [管理] 之下選取 [API 權限]。
+1. 選取 [新增權限]，然後確定您已選取 [Microsoft API]。
+1. 選取 [Microsoft Graph]。
+1. 選取 [委派權限]，搜尋 *User.Read* 並確認已選取 **User.Read**。
+1. 如果您進行了任何變更，請選取 [新增權限] 來儲存變更。
 
 ## <a name="enable-integrated-authentication-on-federated-domains-optional"></a>啟用同盟網域上的整合式驗證 (選擇性)
 
-搭配 Azure AD 同盟網域使用時，若要啟用 Windows 整合式驗證，應用程式資訊清單必須啟用其他功能：
+搭配 Azure AD 同盟網域使用時，若要啟用整合式 Windows 驗證，應用程式資訊清單必須啟用其他功能。 在 Visual Studio 中回到您的應用程式。
 
-1. 按兩下 **Package.appxmanifest**。
-2. 選取 [功能] 索引標籤，並確定已啟用下列設定：
+1. 開啟 *Package.appxmanifest*。
+1. 選取 [功能] 並啟用下列設定：
 
-    - 企業驗證
-    - 私人網路 (用戶端和伺服器)
-    - 共用使用者憑證
+   * **企業驗證**
+   * **私人網路 (用戶端和伺服器)**
+   * **共用使用者憑證**
 
 > [!IMPORTANT]
-> 在此範例中，預設不會設定[整合式 Windows 驗證](https://aka.ms/msal-net-iwa)。 要求 [企業驗證] 或 [共用使用者憑證] 功能的應用程式需要更高的 Windows 市集驗證層級。 此外，並非所有開發人員都需要執行更高的驗證層級。 只有當您需要具有 Azure AD 同盟網域的 Windows 整合式驗證時，才啟用此設定。
+> 在此範例中，預設不會設定[整合式 Windows 驗證](https://aka.ms/msal-net-iwa)。 要求 `Enterprise Authentication` 或 `Shared User Certificates` 功能的應用程式需要更高的 Windows 市集驗證層級。 此外，並非所有開發人員都需要執行更高的驗證層級。 只有當您需要具有 Azure AD 同盟網域的整合式 Windows 驗證時，才啟用此設定。
 
+## <a name="alternate-approach-to-using-withdefaultredirecturi"></a>使用 WithDefaultRedirectURI() 的替代方法
+
+在目前的範例中，會使用 `WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")` 方法。 若要使用 `WithDefaultRedirectURI()`，請完成下列步驟：
+
+1. 在 MainPage.XAML.cs 中，以 `WithDefaultRedirectUri` 取代 `WithRedirectUri`：
+
+   **目前的程式碼**
+
+   ```csharp
+
+   PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
+       .WithAuthority(Authority)
+       .WithUseCorporateNetwork(false)
+       .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
+       .WithLogging((level, message, containsPii) =>
+        {
+            Debug.WriteLine($"MSAL: {level} {message} ");
+        }, LogLevel.Warning, enablePiiLogging: false, enableDefaultPlatformLogging: true)
+       .Build();
+
+   ```
+
+   **更新的程式碼**
+
+   ```csharp
+
+   PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
+       .WithAuthority("https://login.microsoftonline.com/common")
+       .WithUseCorporateNetwork(false)
+       .WithDefaultRedirectUri()
+       .WithLogging((level, message, containsPii) =>
+        {
+            Debug.WriteLine($"MSAL: {level} {message} ");
+        }, LogLevel.Warning, enablePiiLogging: false, enableDefaultPlatformLogging: true)
+       .Build();
+   ```
+
+2.  在 *MainPage.xaml.cs* 中新增 `redirectURI` 欄位並在其中設定中斷點，藉此尋找應用程式的回呼 URI：
+
+    ```csharp
+
+    public sealed partial class MainPage : Page
+    {
+            ...
+
+            string redirectURI = Windows.Security.Authentication.Web.WebAuthenticationBroker
+                                .GetCurrentApplicationCallbackUri().ToString();
+            public MainPage()
+            {
+                ...
+            }
+           ...
+    }
+  
+    ```
+
+    執行應用程式，然後在到達中斷點時複製 `redirectUri` 的值。 此值看起來應該與下列值類似：  
+    `ms-app://s-1-15-2-1352796503-54529114-405753024-3540103335-3203256200-511895534-1429095407/`
+
+    接著，您可以移除程式碼，因為其只需要一次，即可擷取值。 
+
+3. 在應用程式註冊入口網站中，於 [驗證] 窗格的 [RedirectUri] 中新增傳回的值。
+   
 ## <a name="test-your-code"></a>測試您的程式碼
 
-若要測試您的應用程式，請選取 F5 以在 Visual Studio 中執行專案。 您的主視窗隨即出現：
+若要測試您的應用程式，請選取 **F5** 以在 Visual Studio 中執行專案。 您的主視窗隨即出現：
 
-![應用程式的使用者介面](./media/tutorial-v2-windows-uwp/testapp-ui.png)
+![應用程式的使用者介面](./media/tutorial-v2-windows-uwp/testapp-ui-vs2019.png)
 
-當您準備好進行測試時，請選取**呼叫 Microsoft Graph API**。 然後，使用 Azure AD 組織帳戶或 Microsoft 帳戶 (例如 live.com 或 outlook.com) 登入。 如果這是第一次進行此操作，系統會顯示視窗要求使用者登入：
-
-![登入頁面](./media/tutorial-v2-windows-uwp/sign-in-page.png)
+當您準備好進行測試時，請選取**呼叫 Microsoft Graph API**。 然後，使用 Azure AD 組織帳戶或 Microsoft 帳戶 (例如 live.com 或 outlook.com) 登入。 使用者第一次執行此測試時，應用程式會顯示一個視窗，要求使用者登入。
 
 ### <a name="consent"></a>同意
 
-第一次登入應用程式時，系統會顯示如下所示的類似同意畫面。 選取 [是] 以明確同意存取：
+第一次登入應用程式時，系統會顯示如下圖所示的類似同意畫面。 選取 [是] 以明確同意存取：
 
-![存取同意畫面](./media/tutorial-v2-windows-uwp/consentscreen.png)
+![存取同意畫面](./media/tutorial-v2-windows-uwp/consentscreen-vs2019.png)
 
 ### <a name="expected-results"></a>預期的結果
 
 您會在 [API 呼叫結果] 畫面上看到由 Microsoft Graph API 呼叫傳回的使用者設定檔資訊：
 
-![API 呼叫結果畫面](./media/tutorial-v2-windows-uwp/uwp-results-screen.PNG)
+![API 呼叫結果畫面](./media/tutorial-v2-windows-uwp/uwp-results-screen-vs2019.png)
 
 您也會在 [權杖資訊] 方塊中，看到透過 `AcquireTokenInteractive` 或 `AcquireTokenSilent` 取得之權杖的相關基本資訊：
 
-|屬性  |格式  |說明 |
+|屬性  |[格式]  |描述 |
 |---------|---------|---------|
-|**使用者名稱** |<span>user@domain.com</span> |識別使用者的使用者名稱。|
-|**權杖到期** |Datetime |權杖的到期時間。 MSAL 會視需要更新權杖來延展到期日。|
+|`Username` |`user@domain.com` |識別使用者的使用者名稱。|
+|`Token Expires` |`DateTime` |權杖的到期時間。 Microsoft 驗證程式庫會視需要更新權杖來延展到期日。|
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>與範圍和委派的權限有關的詳細資訊
 
-Microsoft Graph API 需要 *user.read* 範圍才能讀取使用者的設定檔。 根據預設，在應用程式註冊入口網站註冊的每個應用程式中，都會自動新增此範圍。 Microsoft Graph 的其他 API 與您後端伺服器的自訂 API 一樣，需要其他範圍。 Microsoft Graph API 需要 *Calendars.Read* 範圍才能列出使用者的行事曆。
+Microsoft Graph API 需要 `user.read` 範圍以讀取使用者的設定檔。 根據預設，在應用程式註冊入口網站註冊的每個應用程式中都會新增此範圍。 Microsoft Graph 的其他 API 與您後端伺服器的自訂 API 一樣，需要其他範圍。 例如，Microsoft Graph API 需要 `Calendars.Read` 範圍才能列出使用者的行事曆。
 
-為了在應用程式內容中存取使用者的行事曆，請將 Calendars.Read 委派權限新增至應用程式註冊資訊。 接著，將 *Calendars.Read* 範圍新增至 `acquireTokenSilent` 呼叫。
+為了在應用程式內容中存取使用者的行事曆，請將 `Calendars.Read` 委派權限新增至應用程式註冊資訊。 接著，將 `Calendars.Read` 範圍新增至 `acquireTokenSilent` 呼叫。
 
 > [!NOTE]
 > 系統可能會在您增加範圍數目時，提示使用者同意其他事項。
@@ -403,19 +479,19 @@ Microsoft Graph API 需要 *user.read* 範圍才能讀取使用者的設定檔�
 
 當您在 Azure AD 同盟網域中登入應用程式時，您會收到下列錯誤訊息：
 
-* 在要求中找不到有效的用戶端憑證。
-* 在使用者的憑證存放區中找不到有效的憑證。
-* 請選擇不同的驗證方法後再試一次。
+* 「在要求中找不到有效的用戶端憑證。」
+* 「在使用者的憑證存放區中找不到有效的憑證。」
+* 「請選擇不同的驗證方法後再試一次。」
 
 **原因：** 企業和憑證功能未啟用。
 
-**解決方案：** 請遵循[同盟網域上的整合式驗證](#enable-integrated-authentication-on-federated-domains-optional)中的步驟進行。
+**解決方案：** 依照[啟用同盟網域上的整合式驗證 (選擇性)](#enable-integrated-authentication-on-federated-domains-optional)中的步驟操作。
 
 ### <a name="issue-2"></a>問題 2
 
-您啟用[同盟網域上的整合式驗證](#enable-integrated-authentication-on-federated-domains-optional)，並嘗試在 Windows 10 電腦上使用 Windows Hello 來登入設定多重要素驗證的環境。 憑證清單隨即顯示。 不過，如果您選擇使用 PIN，絕不會顯示 [PIN] 視窗。
+您啟用[同盟網域上的整合式驗證](#enable-integrated-authentication-on-federated-domains-optional)，並嘗試在 Windows 10 電腦上使用 Windows Hello 來登入設定多重要素驗證的環境。 憑證清單隨即出現。 如果您選擇使用 PIN，絕不會顯示 [PIN] 視窗。
 
-**原因：** 此問題是在 Windows 10 桌上型電腦上執行的 UWP 應用程式中之 Web 驗證訊息代理程式的已知限制。 它在 Windows 10 行動裝置版上會正常運作。
+**原因：** 此問題是在 Windows 10 桌上型電腦上執行的 UWP 應用程式中，Web 驗證訊息代理程式的已知限制。 它在 Windows 10 行動裝置版上會正常運作。
 
 **因應措施：** 選取 [使用其他選項登入]。 然後選取 [以您的使用者名稱和密碼登入]。 選取 [提供您的密碼]。 然後完成電話驗證程序。
 

@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: ef874e5d773e87963b6de8371986ac2196fc38f3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6c71b88f43570a65edb5d0bea24f623c861f8111
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901384"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206292"
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>建立新的 Azure API 管理服務執行個體
 
@@ -27,29 +27,31 @@ ms.locfileid: "57901384"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-![新執行個體](./media/get-started-create-service-instance/get-started-create-service-instance-created.png)
+![API 管理執行個體](./media/get-started-create-service-instance/get-started-create-service-instance-created.png)
 
-## <a name="log-in-to-azure"></a>登入 Azure
+## <a name="sign-in-to-azure"></a>登入 Azure
 
-在 https://portal.azure.com 上登入 Azure 入口網站。
+登入 [Azure 入口網站](https://portal.azure.com)。
 
 ## <a name="create-a-new-service"></a>建立新的服務
 
-![Azure API 管理執行個體](./media/get-started-create-service-instance/00-CreateResource-01.png)
-
-1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取 [建立資源] > [企業整合] > [API 管理]。
-
-    或者，選擇 [新增]，在搜尋方塊中輸入 `API management`，然後按 Enter 鍵。 按一下頁面底部的 [新增] 。
-
-2. 在 [API 管理服務] 視窗中，輸入設定。
-
-    ![新執行個體](./media/get-started-create-service-instance/get-started-create-service-instance-create-new.png)
-
-    | 設定                 | 建議的值                               | 說明                                                                                                                                                                                                                                                                                                                         |
+1. 從 Azure 入口網站功能表選取 [建立資源]。 您也可以在 Azure **首頁**上選取 [建立資源]。 
+   
+   ![選取 [建立資源]](./media/get-started-create-service-instance/00-CreateResource-01.png)
+   
+1. 在 [新增] 畫面中，選取 [整合]，然後選取 [API 管理]。
+   
+   ![Azure API 管理執行個體](./media/get-started-create-service-instance/00-CreateResource-02.png)
+   
+1. 在 [API 管理服務] 畫面中，輸入設定。
+   
+   ![新執行個體](./media/get-started-create-service-instance/get-started-create-service-instance-create-new.png)
+   
+   | 設定                 | 建議的值                               | 描述                                                                                                                                                                                                                                                                                                                         |
 |-------------------------|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **名稱**                | API 管理服務的唯一名稱 | 此名稱無法在之後變更。 服務名稱用來產生預設網域名稱，格式為 *{name}.azure-api.net*。 如果您想要使用自訂網域名稱，請參閱[設定自訂網域](configure-custom-domain.md)。 <br/> 服務名稱用來參考服務和對應的 Azure 資源。 |
 | **訂用帳戶**        | 您的訂用帳戶                             | 將在其下建立這個新服務執行個體的訂用帳戶。 您可以從可存取的不同 Azure 訂用帳戶之中，選取一個訂用帳戶。                                                                                                                                                            |
-| **資源群組**      | *apimResourceGroup*                           | 您可以選取新的或現有的資源。 資源群組是共用生命週期、權限及原則的資源集合。 [在此](../azure-resource-manager/resource-group-overview.md#resource-groups)深入了解。                                                                                                  |
+| **資源群組**      | *apimResourceGroup*                           | 您可以選取新的或現有的資源。 資源群組是共用生命週期、權限及原則的資源集合。 [在此](../azure-resource-manager/management/overview.md#resource-groups)深入了解。                                                                                                  |
 | **位置**            | *美國西部*                                    | 選取您附近的地理區域。 只有可用的 API 管理服務區域才會出現在下拉式清單方塊中。                                                                                                                                                                                                          |
 | **組織名稱**   | 您的組織名稱                 | 此名稱會在有許多地方使用，包括開發人員入口網站的標題和通知電子郵件的傳送者。                                                                                                                                                                                                             |
 | **管理員電子郵件** | *admin\@org.com*                               | 設定電子郵件地址以接收所有來自 **API 管理**的通知。                                                                                                                                                                                                                                              |
@@ -60,24 +62,25 @@ ms.locfileid: "57901384"
     > [!TIP]
     > 建立 API 管理服務通常需要 20 到 30 分鐘。 選取 [釘選到儀表板]以更輕鬆找到新建立的服務。
 
-[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
+[!INCLUDE [api-management-navigate-to-instance](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="clean-up-resources"></a>清除資源
 
 若不再需要，您可以遵循下列步驟來移除資源群組和所有相關資源：
 
-1. 在 Azure 入口網站中，選取 [所有服務]。
-2. 在搜尋方塊中輸入 `resource groups`，然後按一下結果。
+1. 在 Azure 入口網站中，搜尋並選取 [資源群組]。 您也可以在**首頁**上選取 [資源群組]。 
 
-    ![資源群組導覽](./media/get-started-create-service-instance/00-DeleteResource-01.png)
+   ![資源群組導覽](./media/get-started-create-service-instance/00-DeleteResource-01.png)
 
-3. 找到您的資源群組並按一下。
-4. 按一下 [刪除資源群組]。
+1. 在 [資源群組] 頁面中，選取您的資源群組。
 
-    ![資源群組導覽](./media/get-started-create-service-instance/00-DeleteResource-02.png)
+   ![資源群組導覽](./media/get-started-create-service-instance/00-DeleteResource-02.png)
 
-5. 輸入您資源群組的名稱，以確認刪除。
-6. 按一下 [刪除] 。
+1. 在 [資源群組] 頁面中，選取 [刪除資源群組]。 
+   
+1. 輸入您的資源群組名稱，然後選取 [刪除]。
+
+   ![刪除資源群組](./media/get-started-create-service-instance/00-DeleteResource-03.png)
 
 ## <a name="next-steps"></a>後續步驟
 

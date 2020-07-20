@@ -1,0 +1,38 @@
+- name: Internet Analyzer 文件
+  href: index.yml
+- name: 概觀
+  items:
+    - name: 關於 Internet Analyzer
+      href: internet-analyzer-overview.md
+- name: 教學課程
+  items:
+    - name: 使用入口網站建立 Internet Analyzer 測試
+      href: internet-analyzer-create-test-portal.md
+    - name: 使用 CLI 建立 Internet Analyzer 測試
+      href: internet-analyzer-cli.md
+- name: 操作指南
+  items:
+    - name: 內嵌用戶端
+      href: internet-analyzer-embed-client.md
+    - name: 設定自訂端點
+      href: internet-analyzer-custom-endpoint.md
+    - name: 解譯您的計分卡
+      href: internet-analyzer-scorecard.md
+- name: 資源
+  items:
+    - name: Internet Analyzer 常見問題集
+      href: internet-analyzer-faq.md
+    - name: Internet Analyzer 疑難排解
+      href: troubleshoot.md
+    - name: Internet Analyzer CLI 參考
+      href: 'https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest'
+    - name: Azure 藍圖
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: 部落格
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
+    - name: 預覽 SLA
+      href: 'https://azure.microsoft.com/support/legal/preview-supplemental-terms'
+    - name: SLA
+      href: 'https://azure.microsoft.com/support/legal/sla'

@@ -1,26 +1,17 @@
 ---
-title: Azure PowerShell 指令碼範例 - 建立應用程式並從本機 Git 存放庫部署 | Microsoft Docs
-description: Azure PowerShell 指令碼範例 - 建立 Web 應用程式並從本機 Git 存放庫部署程式碼
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: PowerShell：從本機 Git 存放庫部署
+description: 了解如何使用 Azure PowerShell 將 App Service 的部署和管理自動化。 此範例說明如何從本機 Git 存放庫部署程式碼。
 tags: azure-service-management
 ms.assetid: 5a927f23-8e70-45fd-9aae-980d4e7a007d
-ms.service: app-service-web
-ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 03/20/2017
-ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 8103777b85d8e11416811c694103c58755f1a23a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 7355f2730cc54ca027e20c48e989e9f28dac7487
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114428"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74684829"
 ---
 # <a name="create-a-web-app-and-deploy-code-from-a-local-git-repository"></a>建立 Web 應用程式並從本機 Git 存放庫部署程式碼
 
@@ -46,7 +37,7 @@ Remove-AzResourceGroup -Name $webappname -Force
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | 建立具有必要資源群組和 App Service 群組的 Web 應用程式。 如果目前的目錄包含 Git 存放庫，也要新增 `azure` 遠端。 |
 

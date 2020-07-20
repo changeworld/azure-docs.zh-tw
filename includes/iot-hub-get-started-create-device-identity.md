@@ -8,32 +8,26 @@ ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 40a5416f15b0e2d66d6ce4b4787573560ee4af00
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 68260bf8aafbbe5afd46ec7dfb763eb88ee2123e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60346122"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "78893105"
 ---
-## <a name="create-a-device-identity"></a>建立裝置識別
+在本節中，您會使用 Azure CLI 建立本文中的裝置身分識別。 裝置識別碼會區分大小寫。
 
-在本節中，您可以針對本教學課程使用 Azure CLI 建立裝置身分識別。 Azure CLI 會預先安裝在 [Azure Cloud Shell](~/articles/cloud-shell/overview.md)中，或是您可以將其[安裝在本機上](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 裝置識別碼會區分大小寫。
+1. 開啟 [Azure Cloud Shell](https://shell.azure.com/)。
 
-1. 在您使用 Azure CLI 安裝 IoT 擴充功能的命令列環境中，執行下列命令：
+1. 在 Azure Cloud Shell 中執行下列命令，以安裝適用於 Azure CLI 的 Microsoft Azure IoT 延伸模組：
 
-    ```cmd/sh
-    az extension add --name azure-cli-iot-ext
+    ```azurecli-interactive
+    az extension add --name azure-iot
     ```
 
-1. 如果您在本機執行 Azure CLI，請使用下列命令來登入您的 Azure 帳戶 (如果您使用 Cloud Shell，您會自動登入，而且不需要執行此命令)：
+2. 建立稱為 `myDeviceId` 的新裝置身分識別，並使用下列命令擷取裝置連接字串：
 
-    ```cmd/sh
-    az login
-    ```
-
-1. 最後，建立稱為 `myDeviceId` 的新裝置身分識別，並使用下列命令擷取裝置連接字串：
-
-    ```cmd/sh
+    ```azurecli-interactive
     az iot hub device-identity create --device-id myDeviceId --hub-name {Your IoT Hub name}
     az iot hub device-identity show-connection-string --device-id myDeviceId --hub-name {Your IoT Hub name} -o table
     ```

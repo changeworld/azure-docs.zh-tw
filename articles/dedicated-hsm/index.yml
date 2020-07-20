@@ -1,59 +1,52 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure 專用 HSM 文件
+summary: 了解如何使用 Azure 專用 HSM 建立及維護金鑰，以便存取和加密您的雲端資源、應用程式和解決方案。 教學課程、API 參考等等。
 metadata:
-  title: Azure 專用 HSM 文件 - 教學課程和 API 參考 | Microsoft Docs
-  meta.description: 'Learn how to use Azure Dedicated HSM to create and maintain keys that access and encrypt your cloud resources, apps, and solutions. Tutorials, API references, and more.'
+  title: Azure 專用 HSM 文件
+  description: 了解如何使用 Azure 專用 HSM 建立及維護金鑰，以便存取和加密您的雲端資源、應用程式和解決方案。 教學課程、API 參考等等。
   services: dedicated-hsm
-  author: barclayn
-  manager: barbkess
-  layout: LandingPage
-  ms.assetid: null
   ms.service: dedicated-hsm
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/21/2018
-  ms.author: barclayn
-abstract:
-  description: 了解有關專用 HSM 功能，以及是否適用於您的環境。
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/dedicated-hsm/overview
-            html: <p>了解 Azure 專用 HSM 相關資訊。</p>
-            image:
-              src: media/index/hsm.svg
-            title: Azure 專用 HSM 概觀
-          - href: /azure/dedicated-hsm/faq
-            html: <p>使用專用 HSM 的設計考量</p>
-            image:
-              src: media/index/guide.svg
-            title: 決定部署架構
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: ''
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/cli.svg
-            text: Azure CLI
-            href: /azure/dedicated-hsm/tutorial-deploy-hsm-cli
-          - image:
-              src: media/index/logo_powershell.svg
-            text: PowerShell
-            href: /azure/dedicated-hsm/tutorial-deploy-hsm-powershell
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 常見問題集
-            html: <p><a href="/azure/dedicated-hsm/faq/">常見問題集</a></p>
+  author: msmbaldwin
+  ms.author: mbaldwin
+  manager: rkarlin
+  ms.date: 09/19/2019
+  ms.openlocfilehash: 9e592fdb5fa87487f131bb0aca0c6176175e5385
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "71300109"
+landingContent:
+- title: 關於專用 HSM
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 專用硬體安全模組 (HSM) 是什麼？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 高可用性
+      url: high-availability.md
+    - text: 實體安全性
+      url: physical-security.md
+    - text: 網路功能
+      url: networking.md
+    - text: 支援能力
+      url: supportability.md
+    - text: 監視
+      url: monitoring.md
+- title: 開始使用
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: 使用 Azure CLI 部署虛擬網路
+      url: tutorial-deploy-hsm-cli.md
+    - text: 使用 Azure PowerShell 部署虛擬網路
+      url: tutorial-deploy-hsm-powershell.md
+- title: 案例
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Azure 專用 HSM 部署架構
+      url: deployment-architecture.md

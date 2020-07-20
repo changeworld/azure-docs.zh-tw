@@ -1,100 +1,89 @@
 ---
 title: 中繼資料與 GenerateAnswer API - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: QnA Maker 可讓您將索引鍵/值組形式的中繼資料新增至問答集。 這項資訊可用來篩選使用者查詢的結果，並儲存待處理的交談中可用的其他資訊。
+description: QnA Maker 可讓您將中繼資料（以索引鍵/值組的形式）新增至您的問題/答案配對。 您可以將結果篩選為使用者查詢，並儲存可在後續交談中使用的其他資訊。
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 04/16/2019
-ms.author: tulasim
-ms.openlocfilehash: b634467381dc97e4a733e862e86632a089bf5f67
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.topic: conceptual
+ms.date: 03/31/2020
+ms.author: diberry
+ms.openlocfilehash: 171efd0e5750555130588f783c4a858def11afec
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64727322"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83993502"
 ---
-# <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>取得與 GenerateAnswer API 和中繼資料的知識答案
+# <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>取得 GenerateAnswer API 和中繼資料的解答
 
-若要取得使用者的問題的預測的答案，請使用 GenerateAnswer API。 當您發行知識庫時，這項資訊來使用此 API 會顯示在 [發行] 頁面上。 您也可以設定 API 來篩選根據中繼資料標記的答案，並測試 「 知識庫 」 從測試查詢字串參數的端點。
+若要取得使用者問題的預測答案，請使用 GenerateAnswer API。 當您發佈知識庫時，您可以在 [**發行**] 頁面上看到如何使用此 API 的相關資訊。 您也可以設定 API，根據元資料標記篩選答案，並使用測試查詢字串參數從端點測試知識庫。
 
-QnA Maker 可讓您將索引鍵和值組形式的中繼資料新增至問答集。 這項資訊可用來篩選使用者查詢的結果，並儲存待處理的交談中可用的其他資訊。 如需詳細資訊，請參閱[知識庫](../Concepts/knowledge-base.md)。
+QnA Maker 可讓您將中繼資料（以索引鍵和值組的形式）新增至您的問題和答案配對。 接著，您可以使用這項資訊來篩選使用者查詢的結果，以及儲存可在後續交談中使用的其他資訊。 如需詳細資訊，請參閱[知識庫](../Concepts/knowledge-base.md)。
 
 <a name="qna-entity"></a>
 
-## <a name="storing-questions-and-answers-with-a-qna-entity"></a>儲存與 QnA 實體的問題和答案
+## <a name="store-questions-and-answers-with-a-qna-entity"></a>使用 QnA 實體來儲存問題和答案
 
-了解 QnA Maker 如何儲存問題/解答資料，是第一要務。 下圖說明某個 QnA 實體：
+請務必瞭解 QnA Maker 如何儲存問題和解答資料。 下圖說明某個 QnA 實體：
 
-![QnA 實體](../media/qnamaker-how-to-metadata-usage/qna-entity.png)
+![QnA 實體的圖例](../media/qnamaker-how-to-metadata-usage/qna-entity.png)
 
-每個 QnA 實體都有唯一且持續性的識別碼。 此識別碼可以用來對特定 QnA 實體進行更新。
+每個 QnA 實體都有唯一且持續性的識別碼。 您可以使用此識別碼來對特定 QnA 實體進行更新。
 
 <a name="generateanswer-api"></a>
 
-## <a name="get-answer-predictions-with-the-generateanswer-api"></a>取得使用 GenerateAnswer API 的回應預測
+## <a name="get-answer-predictions-with-the-generateanswer-api"></a>使用 GenerateAnswer API 取得答案預測
 
-您可以在聊天機器人或應用程式中使用 GenerateAnswer API 來查詢使用者問題的知識庫，而從問答集中取得最佳相符項目。
+您可以在 bot 或應用程式中使用[GENERATEANSWER API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) ，以使用者問題查詢您的知識庫，以取得最符合的問題和答案配對。
 
 <a name="generateanswer-endpoint"></a>
 
-## <a name="publish-to-get-generateanswer-endpoint"></a>若要取得 GenerateAnswer 端點發行 
+## <a name="publish-to-get-generateanswer-endpoint"></a>發行以取得 GenerateAnswer 端點
 
-在您從 [QnA Maker 入口網站](https://www.qnamaker.ai)或使用 [API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) 發佈知識庫之後，您可以取得 GenerateAnswer 端點的詳細資料。
+從[QnA Maker 入口網站](https://www.qnamaker.ai)或使用[API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)發佈知識庫之後，您可以取得 GenerateAnswer 端點的詳細資料。
 
 若要取得端點詳細資料：
 1. 登入 [https://www.qnamaker.ai](https://www.qnamaker.ai)。
-1. 在 [我的知識庫] 中，對您的知識庫按一下 [檢視程式碼]。
-    ![我的知識庫](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
+1. 在 [**我的知識庫**] 中，選取您知識庫的 [查看程式**代碼**]。
+    ![我知識庫的螢幕擷取畫面](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
 1. 取得 GenerateAnswer 端點詳細資料。
 
-    ![端點詳細資料](../media/qnamaker-how-to-metadata-usage/view-code.png)
+    ![端點詳細資料的螢幕擷取畫面](../media/qnamaker-how-to-metadata-usage/view-code.png)
 
-您也可以從知識庫的 [設定] 索引標籤取得端點詳細資料。
+您也可以從知識庫的 [設定]**** 索引標籤取得端點詳細資料。
 
 <a name="generateanswer-request"></a>
 
 ## <a name="generateanswer-request-configuration"></a>GenerateAnswer 要求設定
 
-您可以透過 HTTP POST 要求來呼叫 GenerateAnswer。 如需示範如何呼叫 GenerateAnswer 的範例程式碼，請參閱[快速入門](../quickstarts/csharp.md)。
+您可以透過 HTTP POST 要求來呼叫 GenerateAnswer。 如需示範如何呼叫 GenerateAnswer 的範例程式碼，請參閱[快速入門](../quickstarts/quickstart-sdk.md#generate-an-answer-from-the-knowledge-base)。
 
-**要求 URL**具有下列格式： 
+POST 要求會使用：
+
+* 必要的[URI 參數](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
+* 必要的標頭屬性， `Authorization` 用於安全性
+* 必要的[主體屬性](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto)。
+
+GenerateAnswer URL 的格式如下：
 
 ```
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-|HTTP 要求的屬性|名稱|類型|目的|
-|--|--|--|--|
-|URL 路由參數|知識庫識別碼|string|測試您知識庫的 GUID。|
-|URL 路由參數|QnAMaker 端點主機|string|您的 Azure 訂用帳戶中，部署端點的主機名稱。 在發行知識庫之後，這是可在 [設定] 頁面上取得。 |
-|頁首|Content-Type|string|傳送至 API 的本文媒體類型。 預設值是: '|
-|頁首|授權|string|您的端點金鑰 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
-|張貼本文|JSON 物件|JSON|與設定問題|
+請記得將的 HTTP 標頭屬性設定為，並將 `Authorization` 字串的值 `EndpointKey` 加上尾端空格，然後在 [**設定**] 頁面上找到端點金鑰。
 
-
-JSON 主體具有數個設定：
-
-|JSON 本文屬性|必要項|類型|目的|
-|--|--|--|--|
-|`question`|必要|string|使用者問題傳送到您的知識庫。|
-|`top`|選用|integer|要包含在輸出中的排名結果數目。 預設值為 1。|
-|`userId`|選用|string|用來識別使用者的唯一識別碼。 此識別碼會記錄在交談記錄中。|
-|`scoreThreshold`|選用|integer|會傳回信心分數高於此臨界值的解答。 預設值為 0。|
-|`isTest`|選用|boolean|如果為 true，傳回結果集`testkb`搜尋服務索引，而不是已發行的索引。|
-|`strictFilters`|選用|string|如果指定，將會指示 QnA Maker 僅傳回含有指定中繼資料的解答。 使用`none`以指出回應應該會有任何中繼資料篩選。 |
-
-範例 JSON 主體看起來像：
+範例 JSON 主體如下所示：
 
 ```json
 {
     "question": "qna maker and luis",
     "top": 6,
     "isTest": true,
-    "scoreThreshold": 20,
+    "scoreThreshold": 30,
+    "rankerType": "" // values: QuestionOnly
     "strictFilters": [
     {
         "name": "category",
@@ -104,29 +93,21 @@ JSON 主體具有數個設定：
 }
 ```
 
+深入瞭解[rankerType](../concepts/best-practices.md#choosing-ranker-type)。
+
+先前的 JSON 只要求30% 或高於閾值分數的答案。
+
 <a name="generateanswer-response"></a>
 
 ## <a name="generateanswer-response-properties"></a>GenerateAnswer 回應屬性
 
-成功的回應會傳回狀態 200 和 JSON 回應。 
-
-|答案屬性 （依分數排序）|目的|
-|--|--|
-|分數|0 和 100 之間的排名分數。|
-|id|指派給解答的唯一識別碼。|
-|問題|使用者所提供的問題。|
-|接聽|問題的答案。|
-|source|從中擷取解答或將其儲存在知識庫中的來源名稱。|
-|中繼資料|與解答相關聯的中繼資料。|
-|metadata.name|中繼資料名稱。 (字串，最大長度：100，必要)|
-|metadata.value:中繼資料值。 (字串，最大長度：100，必要)|
-
+[回應](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#successful-query)是 JSON 物件，其中包含在交談中顯示答案和下一個回合時所需的所有資訊（如果有的話）。
 
 ```json
 {
     "answers": [
         {
-            "score": 28.54820341616869,
+            "score": 38.54820341616869,
             "Id": 20,
             "answer": "There is no direct integration of LUIS with QnA Maker. But, in your bot code, you can use LUIS and QnA Maker together. [View a sample bot](https://github.com/Microsoft/BotBuilder-CognitiveServices/tree/master/Node/samples/QnAMaker/QnAWithLUIS)",
             "source": "Custom Editorial",
@@ -144,21 +125,60 @@ JSON 主體具有數個設定：
 }
 ```
 
+先前的 JSON 回應分數為38.5% 的答案。
+
+## <a name="use-qna-maker-with-a-bot-in-c"></a>搭配使用 QnA Maker 與 C 中的 bot#
+
+Bot framework 可讓您使用[GETANSWER API](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.ai.qna.qnamaker.getanswersasync?view=botbuilder-dotnet-stable#Microsoft_Bot_Builder_AI_QnA_QnAMaker_GetAnswersAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Builder_AI_QnA_QnAMakerOptions_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_Double__)來存取 QnA Maker 的屬性：
+
+```csharp
+using Microsoft.Bot.Builder.AI.QnA;
+var metadata = new Microsoft.Bot.Builder.AI.QnA.Metadata();
+var qnaOptions = new QnAMakerOptions();
+
+metadata.Name = Constants.MetadataName.Intent;
+metadata.Value = topIntent;
+qnaOptions.StrictFilters = new Microsoft.Bot.Builder.AI.QnA.Metadata[] { metadata };
+qnaOptions.Top = Constants.DefaultTop;
+qnaOptions.ScoreThreshold = 0.3F;
+var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnContext, qnaOptions);
+```
+
+先前的 JSON 只要求30% 或高於閾值分數的答案。
+
+## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>使用 QnA Maker 搭配 node.js 中的 bot
+
+Bot framework 可讓您使用[GETANSWER API](https://docs.microsoft.com/javascript/api/botbuilder-ai/qnamaker?view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-)來存取 QnA Maker 的屬性：
+
+```javascript
+const { QnAMaker } = require('botbuilder-ai');
+this.qnaMaker = new QnAMaker(endpoint);
+
+// Default QnAMakerOptions
+var qnaMakerOptions = {
+    ScoreThreshold: 0.30,
+    Top: 3
+};
+var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOptions);
+```
+
+先前的 JSON 只要求30% 或高於閾值分數的答案。
+
 <a name="metadata-example"></a>
 
-## <a name="using-metadata-allows-you-to-filter-answers-by-custom-metadata-tags"></a>使用中繼資料可讓您自訂的中繼資料標記來篩選的解答
+## <a name="use-metadata-to-filter-answers-by-custom-metadata-tags"></a>使用中繼資料來篩選自訂元資料標記的答案
 
-新增中繼資料，可讓您依這些中繼資料標記篩選的解答。 請考慮下面的常見問題集資料。 請按一下中繼資料圖示，將中繼資料新增至至您的知識庫。
+新增中繼資料可讓您依這些元資料標記篩選答案。 從 [**視圖選項**] 功能表新增 [中繼資料] 資料行。 藉由選取中繼資料 **+** 圖示來新增中繼資料組，以將中繼資料新增至您的知識庫。 此配對包含一個索引鍵和一個值。
 
-![新增中繼資料](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
+![新增中繼資料的螢幕擷取畫面](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 
 <a name="filter-results-with-strictfilters-for-metadata-tags"></a>
 
 ## <a name="filter-results-with-strictfilters-for-metadata-tags"></a>使用中繼資料標記的 strictFilters 篩選結果
 
-請考量使用者針對 "Paradise" 餐廳而提出的問題 「飯店何時會打烊」。
+請考慮使用者問題「此飯店何時關閉？」，其中的意圖是針對餐廳「天堂」所隱含。
 
-由於只需要 "Paradise" 餐廳的結果，因此您可以在 GenerateAnswer 呼叫中設定「餐廳名稱」中繼資料的篩選條件，如下所示。
+由於只有餐廳 "天堂" 才需要結果，因此您可以在 GenerateAnswer 呼叫中設定中繼資料「餐廳名稱」的篩選準則。 下列範例顯示這種情況：
 
 ```json
 {
@@ -172,11 +192,11 @@ JSON 主體具有數個設定：
 }
 ```
 
-<name="keep-context"></a>
+<a name="keep-context"></a>
 
-## <a name="use-question-and-answer-results-to-keep-conversation-context"></a>使用問題和答案的結果來保存交談內容
+## <a name="use-question-and-answer-results-to-keep-conversation-context"></a>使用問題和答案結果來保持交談內容
 
-GenerateAnswer 的回應會包含相符的問題/答案組的對應中繼資料資訊。 這項資訊可以用於用戶端應用程式，以更新版本的交談中儲存先前用於交談的內容。 
+GenerateAnswer 的回應包含相符的問題和答案配對的對應中繼資料資訊。 您可以在用戶端應用程式中使用這項資訊來儲存上一個交談的內容，以便在稍後的交談中使用。
 
 ```json
 {
@@ -204,9 +224,36 @@ GenerateAnswer 的回應會包含相符的問題/答案組的對應中繼資料�
 }
 ```
 
+## <a name="match-questions-only-by-text"></a>只比對問題（依文字）
+
+根據預設，QnA Maker 會搜尋問題和答案。 如果您只想要搜尋問題，若要產生解答，請 `RankerType=QuestionOnly` 在 GenerateAnswer 要求的 POST 主體中使用。
+
+您可以使用在測試 kb 中搜尋已發佈的 kb、使用 `isTest=false` 或 `isTest=true` 。
+
+```json
+{
+  "question": "Hi",
+  "top": 30,
+  "isTest": true,
+  "RankerType":"QuestionOnly"
+}
+```
+
+## <a name="common-http-errors"></a>常見的 HTTP 錯誤
+
+|程式碼|說明|
+|:--|--|
+|2xx|成功|
+|400|要求的參數不正確，表示必要參數遺失、格式不正確或太大|
+|400|要求的本文不正確，表示 JSON 遺失、格式不正確或太大|
+|401|金鑰無效|
+|403|禁止 - 您沒有正確的權限|
+|404|KB 不存在|
+|410|此 API 已被淘汰且不再提供|
+
 ## <a name="next-steps"></a>後續步驟
 
-發佈頁面也會提供資訊，搭配 [Postman](../Quickstarts/get-answer-from-kb-using-postman.md) 和 [cURL](../Quickstarts/get-answer-from-kb-using-curl.md) 來產生答案。 
+[**發佈**] 頁面也會提供資訊，以使用 Postman 或捲曲[產生答案](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md)。
 
 > [!div class="nextstepaction"]
-> [建立知識庫](./create-knowledge-base.md)
+> [取得知識庫的分析](../how-to/get-analytics-knowledge-base.md)

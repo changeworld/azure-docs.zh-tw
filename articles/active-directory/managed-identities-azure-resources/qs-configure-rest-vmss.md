@@ -1,6 +1,6 @@
 ---
-title: 如何使用 REST 在 Azure VMSS 上設定系統和使用者指派的受控識別
-description: 逐步說明如何 CURL 進行 REST API 呼叫，在 Azure VMSS 上設定系統和使用者指派的受控識別。
+title: 使用 REST Azure AD 在 Azure 虛擬機器擴展集上設定受控識別
+description: 使用捲曲在 Azure 虛擬機器擴展集上設定系統和使用者指派的受控識別，以進行 REST API 呼叫的逐步指示。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -9,18 +9,18 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cafb3c97befd64cc6413a2eefa5e5baa9e01bf93
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 06bce15dfbd2ccd3ac97f6a4f1e4efb5a24db85d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60308273"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609091"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>使用 REST API 呼叫在虛擬機器擴展集上設定 Azure 資源受控識別
 
@@ -35,7 +35,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 ## <a name="prerequisites"></a>必要條件
 
-- 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#how-does-it-work)**。
+- 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#managed-identity-types)**。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
 - 若要執行本文中的管理作業，您的帳戶需要下列 Azure 角色型存取控制指派：
 
@@ -60,7 +60,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 若要啟用系統指派的受控識別來建立虛擬機器擴展集，您需要建立虛擬機器擴展集，並擷取存取權杖，才能使用 CURL 以系統指派的受控識別類型值呼叫 Resource Manager 端點。
 
-1. 使用 [az group create](/cli/azure/group/#az-group-create)，為您的虛擬機器擴展集和其相關資源建立[資源群組](../../azure-resource-manager/resource-group-overview.md#terminology)。 如果您已經有想要使用的資源群組，您可以略過此步驟：
+1. 使用 [az group create](/cli/azure/group/#az-group-create)，為您的虛擬機器擴展集和其相關資源建立[資源群組](../../azure-resource-manager/management/overview.md#terminology)。 如果您已經有想要使用的資源群組，您可以略過此步驟：
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
@@ -93,7 +93,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    |要求標頭  |描述  |
    |---------|---------|
    |*Content-Type*     | 必要。 設定為 `application/json`。        |
-   |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
+   |*驗證*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
 
    **要求本文**
 
@@ -170,7 +170,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    az account get-access-token
    ```
 
-2. 使用下列 CURL 命令呼叫 Azure Resource Manager REST 端點，以便在您的虛擬機器擴展集上啟用系統指派的受控識別 (如同在要求本文中由 myVMSS 虛擬機器擴展集的 `{"identity":{"type":"SystemAssigned"}` 值所識別)。  將上一個步驟中要求持有人存取權杖時所收到的值用以取代 `<ACCESS TOKEN>`值，`<SUBSCRIPTION ID>` 的值則為適用於您的環境的值。
+2. 使用下列 CURL 命令呼叫 Azure Resource Manager REST 端點，以便在您的虛擬機器擴展集上啟用系統指派的受控識別 (如同在要求本文中由 myVMSS** 虛擬機器擴展集的 `{"identity":{"type":"SystemAssigned"}` 值所識別)。  將上一個步驟中要求持有人存取權杖時所收到的值用以取代 `<ACCESS TOKEN>`值，`<SUBSCRIPTION ID>` 的值則為適用於您的環境的值。
    
    > [!IMPORTANT]
    > 若要確保您不會刪除虛擬機器擴展集指派的任何現有使用者指派識別，需要使用下列 CURL 命令來列出使用者指派的受控識別：`curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`。 如有任何使用者指派的受控識別是指派給回應中 `identity` 值識別的虛擬機器擴展集，請跳至步驟 3，此步驟將說明如何保留使用者指派的受控識別，同時在虛擬機器擴展集上啟用系統指派的受控識別。
@@ -188,7 +188,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    |要求標頭  |描述  |
    |---------|---------|
    |*Content-Type*     | 必要。 設定為 `application/json`。        |
-   |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
+   |*驗證*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
 
    **要求本文**
 
@@ -221,7 +221,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    |要求標頭  |描述  |
    |---------|---------|
    |*Content-Type*     | 必要。 設定為 `application/json`。        |
-   |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。 |
+   |*驗證*     | 必要。 設定為有效的 `Bearer` 存取權杖。 |
  
    **要求本文**
 
@@ -255,7 +255,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    |要求標頭  |描述  |
    |---------|---------|
    |*Content-Type*     | 必要。 設定為 `application/json`。        |
-   |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
+   |*驗證*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
 
    **要求本文**
 
@@ -281,7 +281,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    az account get-access-token
    ```
 
-2. 使用 CURL 呼叫 Azure Resource Manager REST 端點來停用系統指派的受控識別，以便更新虛擬機器擴展集。  下列範例會停用系統指派的受控識別 (如同在要求本文中由 myVMSS 虛擬機器擴展集中的 `{"identity":{"type":"None"}}` 值所識別)。  將上一個步驟中要求持有人存取權杖時所收到的值用以取代 `<ACCESS TOKEN>`值，`<SUBSCRIPTION ID>` 的值則為適用於您的環境的值。
+2. 使用 CURL 呼叫 Azure Resource Manager REST 端點來停用系統指派的受控識別，以便更新虛擬機器擴展集。  下列範例會停用系統指派的受控識別 (如同在要求本文中由 myVMSS** 虛擬機器擴展集中的 `{"identity":{"type":"None"}}` 值所識別)。  將上一個步驟中要求持有人存取權杖時所收到的值用以取代 `<ACCESS TOKEN>`值，`<SUBSCRIPTION ID>` 的值則為適用於您的環境的值。
 
    > [!IMPORTANT]
    > 若要確保您不會刪除虛擬機器擴展集指派的任何現有使用者指派識別，需要使用下列 CURL 命令來列出使用者指派的受控識別：`curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSS NAME>?api-version=2018-06-01' -H "Authorization: Bearer <ACCESS TOKEN>"`。 如有任何使用者指派的受控識別是指派給虛擬機器擴展集，請跳至步驟 3，此步驟將說明如何保留使用者指派的受控識別，同時從虛擬機器擴展集移除系統指派的受控識別。
@@ -299,7 +299,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    |要求標頭  |描述  |
    |---------|---------|
    |*Content-Type*     | 必要。 設定為 `application/json`。        |
-   |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
+   |*驗證*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
 
    **要求本文**
 
@@ -337,9 +337,9 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    az account get-access-token
    ``` 
 
-4. 使用以下找到的指示建立使用者指派的受控識別：[建立使用者指派的受控識別](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity)。
+4. 使用以下找到的指示建立使用者指派的受控識別：[建立使用者指派的受控](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity)識別。
 
-5. 使用 CURL 呼叫 Azure Resource Manager REST 端點來建立虛擬機器擴展集。 下列範例會使用使用者指派的受控識別 `ID1` (如同在要求本文中由 `"identity":{"type":"UserAssigned"}` 值所識別)，在資源群組 myResourceGroup 中建立名為 myVMSS 的虛擬機器擴展集。 將上一個步驟中要求持有人存取權杖時所收到的值用以取代 `<ACCESS TOKEN>`值，`<SUBSCRIPTION ID>` 的值則為適用於您的環境的值。
+5. 使用 CURL 呼叫 Azure Resource Manager REST 端點來建立虛擬機器擴展集。 下列範例會使用使用者指派的受控識別 `ID1` (如同在要求本文中由 `"identity":{"type":"UserAssigned"}` 值所識別)，在資源群組 myResourceGroup** 中建立名為 myVMSS** 的虛擬機器擴展集。 將上一個步驟中要求持有人存取權杖時所收到的值用以取代 `<ACCESS TOKEN>`值，`<SUBSCRIPTION ID>` 的值則為適用於您的環境的值。
  
    **API 版本 2018-06-01**
 
@@ -356,7 +356,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    |要求標頭  |描述  |
    |---------|---------|
    |*Content-Type*     | 必要。 設定為 `application/json`。        |
-   |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
+   |*驗證*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
 
    **要求本文**
 
@@ -443,7 +443,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    |要求標頭  |描述  |
    |---------|---------|
    |*Content-Type*     | 必要。 設定為 `application/json`。        |
-   |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。 |
+   |*驗證*     | 必要。 設定為有效的 `Bearer` 存取權杖。 |
  
    **要求本文**
 
@@ -559,7 +559,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    |要求標頭  |描述  |
    |---------|---------|
    |*Content-Type*     | 必要。 設定為 `application/json`。        |
-   |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
+   |*驗證*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
 
    **要求本文**
 
@@ -591,7 +591,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    |要求標頭  |描述  |
    |---------|---------|
    |*Content-Type*     | 必要。 設定為 `application/json`。        |
-   |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
+   |*驗證*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
 
    **要求本文**
 
@@ -627,7 +627,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    |要求標頭  |描述  |
    |---------|---------|
    |*Content-Type*     | 必要。 設定為 `application/json`。        |
-   |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
+   |*驗證*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
 
    **要求本文**
 
@@ -666,7 +666,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    |要求標頭  |描述  |
    |---------|---------|
    |*Content-Type*     | 必要。 設定為 `application/json`。        |
-   |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
+   |*驗證*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
 
    **要求本文**
 
@@ -727,7 +727,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    |要求標頭  |描述  |
    |---------|---------|
    |*Content-Type*     | 必要。 設定為 `application/json`。        |
-   |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
+   |*驗證*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
 
    **要求本文**
 
@@ -759,7 +759,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    |要求標頭  |描述  |
    |---------|---------|
    |*Content-Type*     | 必要。 設定為 `application/json`。        |
-   |*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
+   |*驗證*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
 
    **要求本文**
 
@@ -789,7 +789,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 |要求標頭  |描述  |
 |---------|---------|
 |*Content-Type*     | 必要。 設定為 `application/json`。        |
-|*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
+|*驗證*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
 
 **要求本文**
 
@@ -816,7 +816,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 |要求標頭  |描述  |
 |---------|---------|
 |*Content-Type*     | 必要。 設定為 `application/json`。        |
-|*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
+|*驗證*     | 必要。 設定為有效的 `Bearer` 存取權杖。 | 
 
 **要求本文**
 

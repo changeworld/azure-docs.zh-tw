@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：當您已經有 Azure AD 時 | Microsoft Docs
+title: Azure AD Connect︰當您已經有 Azure AD 時 | Microsoft Docs
 description: 本主題描述當您有現有的 Azure AD 租用戶時，如何使用 Connect。
 services: active-directory
 documentationcenter: ''
@@ -11,30 +11,30 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1495c14ae4c588661452aa3696019da00be47548
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 001706d63b22899016cc2c45e384597db3d6747f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64571367"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358823"
 ---
-# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect：當您有現有的租用戶時
+# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect︰當您有存在的租用戶
 大部分說明如何使用 Azure AD Connect 的主題會假設您開始使用新的 Azure AD 租用戶，而且沒有任何使用者或其他物件。 但如果您開始使用 Azure AD 租用戶，且以使用者和其他物件填入，而現在想要使用 Connect，則這個主題很適用於您。
 
 ## <a name="the-basics"></a>基本概念
 Azure AD 中的物件可能會在雲端 (Azure AD) 中受控或內部部署。 針對一個單一物件，您無法管理內部部署的某些屬性和 Azure AD 中的一些其他屬性。 每個物件都有表示物件受控位置的旗標。
 
-您可以在內部部署管理部分使用者，並在雲端中管理其他使用者。 混合著會計工作者和銷售工作者的組織是此組態的常見案例。 會計工作者具有內部部署 AD 帳戶，但銷售工作者沒有這種帳戶，他們在 Azure AD 中有帳戶。 这样，就需要在本地管理一些用户，在 Azure AD 中管理另一些用户。
+您可以在內部部署管理部分使用者，並在雲端中管理其他使用者。 混合著會計工作者和銷售工作者的組織是此組態的常見案例。 會計工作者具有內部部署 AD 帳戶，但銷售工作者沒有這種帳戶，他們在 Azure AD 中有帳戶。 您可在內部部署管理部分使用者，並在 Azure AD 管理其他使用者。
 
 如果您開始管理 Azure AD 且也在內部部署 AD 中的使用者，且稍後想要使用 Connect，則您必須考慮一些其他考量。
 
 ## <a name="sync-with-existing-users-in-azure-ad"></a>在 Azure AD 中與現有的使用者同步處理
-當您安裝 Azure AD Connect 時，您開始同步處理，Azure AD 同步服務 (在 Azure AD 中) 會檢查每個新的物件，然後嘗試尋找要比對的現有物件。 有三種屬性用於此處理程序︰**userPrincipalName**、**proxyAddresses** 和 **sourceAnchor**/**immutableID**。 比對 **userPrincipalName** 和 **proxyAddresses** 稱為**大致比對**。 比對 **sourceAnchor** 稱為**精確比對**。 針對 **proxyAddresses** 屬性，僅具有 **SMTP:** 的值 (也就是主要電子郵件地址) 會用來進行評估。
+當您安裝 Azure AD Connect 並開始進行同步處理時，Azure AD 同步處理服務（在 Azure AD 中）會對每個新的物件進行檢查，並嘗試尋找現有的物件以符合。 有三種屬性用於此處理程序︰**userPrincipalName**、**proxyAddresses** 和 **sourceAnchor**/**immutableID**。 比對 **userPrincipalName** 和 **proxyAddresses** 稱為**大致比對**。 比對 **sourceAnchor** 稱為**精確比對**。 針對 **proxyAddresses** 屬性，僅具有 **SMTP:** 的值 (也就是主要電子郵件地址) 會用來進行評估。
 
 比對只會評估來自 Connect 的新物件。 如果您變更現有的物件，而其與這些屬性中任何一項相符，則您會看到錯誤。
 
@@ -59,12 +59,13 @@ Azure AD 中的物件可能會在雲端 (Azure AD) 中受控或內部部署。 �
 ### <a name="other-objects-than-users"></a>使用者以外的其他物件
 對於擁有郵件功能的群組和連絡人，您可以根據 proxyAddresses 來大致比對。 精確比對不適用，因為您只能更新使用者的 sourceAnchor/immutableID (使用 PowerShell)。 對於未擁有郵件功能的群組，目前不支援大致比對或精確比對。
 
-### <a name="admin-role-considerations"></a>系統管理員角色的考量
-若要防止不受信任內部部署使用者符合具有任何管理員角色的雲端使用者，Azure AD Connect 不會符合內部部署使用者物件，與具有系統管理員角色的物件。 這是預設值。 若要解決此行為，您可以執行下列動作：
+### <a name="admin-role-considerations"></a>管理員角色考慮
+為避免不受信任的內部部署使用者與具有任何系統管理員角色的雲端使用者進行比對，Azure AD Connect 不會將內部部署使用者物件與具有管理員角色的物件進行比對。 這是預設的結果。 若要解決此行為，您可以執行下列動作：
 
-1.  從僅限雲端使用者物件中移除目錄角色
-2.  觸發同步處理
-3.  （選擇性） 之後發生的比對，請回到使用者物件，在雲端中新增目錄角色。
+1.  從僅限雲端的使用者物件移除目錄角色。
+2.  如果使用者同步嘗試失敗，請實刪除雲端中的隔離物件。
+3.  觸發同步處理。
+4.  一旦發生比對，即可選擇性地將目錄角色新增回雲端中的使用者物件。
 
 
 

@@ -1,25 +1,24 @@
 ---
-title: 將內部部署應用程式與 Cloud App Security 整合 - Azure Active Directory | Microsoft Docs
-description: 設定 Azure Active Directory 中的內部部署應用程式，以便與 Microsoft Cloud App Security (MCAS) 搭配運作。 使用 MCAS 條件式存取應用程式控制，可根據條件式存取原則即時監視和控制工作階段。 您可以將這些原則套用至內部部署應用程式，以在 Azure Active Directory (Azure AD) 中使用應用程式 Proxy。
-author: CelesteDG
-manager: mtillman
+title: 整合內部部署應用程式與 Cloud App Security Azure AD
+description: 設定 Azure Active Directory 中的內部部署應用程式，以便與 Microsoft Cloud App Security (MCAS) 搭配運作。 使用 MCAS 條件式存取應用程式控制，根據條件式存取原則即時監視和控制會話。 您可以將這些原則套用至內部部署應用程式，以在 Azure Active Directory (Azure AD) 中使用應用程式 Proxy。
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2018
-ms.author: celested
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21c197dace3088ceb89270b7e3e8a1b91e9c8ebc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 889168782acabaafa4200a8ebd097e431a68ede3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60292804"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764565"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>使用 Microsoft Cloud App Security 與 Azure Active Directory 設定即時應用程式存取監視
-設定 Azure Active Directory (Azure AD) 中的內部部署應用程式，以使用 Microsoft Cloud App Security (MCAS) 進行即時監視。 MCAS 會使用條件式存取應用程式控制，根據條件式存取原則即時監視和控制工作階段。 您可以將這些原則套用至內部部署應用程式，以在 Azure Active Directory (Azure AD) 中使用應用程式 Proxy。
+設定 Azure Active Directory (Azure AD) 中的內部部署應用程式，以使用 Microsoft Cloud App Security (MCAS) 進行即時監視。 MCAS 會使用條件式存取應用程式控制，根據條件式存取原則即時監視和控制會話。 您可以將這些原則套用至內部部署應用程式，以在 Azure Active Directory (Azure AD) 中使用應用程式 Proxy。
 
 以下一些範例是您可以使用 MCAS 建立的原則類型：
 
@@ -30,7 +29,7 @@ ms.locfileid: "60292804"
 
 如需詳細資訊，請參閱[使用 Microsoft Cloud App Security 條件式存取應用程式控制來保護應用程式](/cloud-app-security/proxy-intro-aad)。
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 
 授權：
 
@@ -47,10 +46,10 @@ ms.locfileid: "60292804"
 
 ## <a name="add-on-premises-application-to-azure-ad"></a>將內部部署應用程式新增至 Azure AD
 
-將內部部署應用程式新增至 Azure AD。 如需快速入門，請參閱[將內部部署應用程式新增至 Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)。 新增應用程式時，請務必在 [新增內部部署應用程式] 刀鋒視窗中設定下列兩項設定：
+將內部部署應用程式新增至 Azure AD。 如需快速入門，請參閱[將內部部署應用程式新增至 Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)。 新增應用程式時，請務必在 [新增內部部署應用程式]**** 刀鋒視窗中設定下列兩項設定：
 
-- **預先驗證**：輸入 **Azure Active Directory**。
-- **轉譯應用程式主體中的 URL**：選擇 [是]。
+- **預先驗證**：輸入**Azure Active Directory**。
+- **轉譯應用程式主體中的 url**：選擇 **[是]**。
 
 應用程式若要與 MCAS 搭配運作，就需要這兩個設定。
 

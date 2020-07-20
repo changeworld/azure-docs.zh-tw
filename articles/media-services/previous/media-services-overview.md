@@ -1,6 +1,6 @@
 ---
 title: Azure 媒體服務概觀 | Microsoft Docs
-description: 本主題提供 Azure 媒體服務的概觀
+description: Microsoft Azure 媒體服務是一個可延伸的雲端型平台，供開發人員建置可擴充的媒體管理和傳遞應用程式。 本文提供 Azure 媒體服務的總覽。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,52 +13,60 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
-ms.openlocfilehash: 7f0a071012685ee192d4f866396a5953d0a4508c
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
-ms.translationtype: MT
+ms.openlocfilehash: 1c2d6287a89c7816c30cf26978859c07dba0251d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64937260"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78197499"
 ---
 # <a name="azure-media-services-overview"></a>Azure 媒體服務概觀 
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="選取您要使用的媒體服務版本："]
 > * [第 3 版](../latest/media-services-overview.md)
 > * [第 2 版](media-services-overview.md)
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 至 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 中不會新增任何新功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 Microsoft Azure 媒體服務 (AMS) 是一個可延伸的雲端式平台，供開發人員建置可擴充的媒體管理和傳遞應用程式。 媒體服務是以 REST API 為基礎，可讓您安全地上傳、儲存、編碼和封裝視訊或音訊內容，以用於隨選和即時資料流傳遞給各種用戶端 (例如電視、電腦和行動裝置)。
 
 您可以建置完全採用媒體服務的端對端工作流程。 您也可以選擇在工作流程的某些部分採用第三方元件。 例如，使用第三方編碼器來進行編碼； 然後使用媒體服務上傳、保護、封裝、傳遞。 您可以選擇即時串流您的內容或隨選傳遞內容。 
 
+
+## <a name="compliance-privacy-and-security"></a>合規性、隱私權和安全性
+
+重要提醒是，您必須遵守使用 Azure 媒體服務時的所有相關法律，而且不得以違反其他人的權利或可能對其他人有害的方式使用媒體服務或任何 Azure 服務。
+
+將任何影片/影像上傳至媒體服務之前，您必須擁有所有適當的許可權，才能使用影片/影像，包括在法律要求的情況下，所有必要的同意（如果有的話）在影片/影像中，以便在媒體服務和 Azure 中使用、處理和儲存其資料。 有些司法管轄區可能會對特定資料類別 (例如生物識別資料) 的收集、線上處理和儲存施加特殊的法律要求。 在使用媒體服務和 Azure 來處理及儲存任何資料，以因應特殊法律需求之前，您必須確保符合貴使用者可能適用的任何這類法律需求。
+
+若要瞭解媒體服務的合規性、隱私權和安全性，請流覽 Microsoft[信任中心](https://www.microsoft.com/trust-center/?rtc=1)。 如需 Microsoft 的隱私權義務、資料處理和保留做法，包括如何刪除您的資料，請參閱 Microsoft 的[隱私權聲明](https://privacy.microsoft.com/PrivacyStatement)、[線上服務條款](https://www.microsoft.com/licensing/product-licensing/products?rtc=1)（「OST」）和[資料處理](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)增補（「DPA」）。 藉由使用媒體服務，即表示您同意遵守 OST、DPA 和隱私權聲明。
+ 
 ## <a name="prerequisites"></a>必要條件
 
 若要開始使用 Azure 媒體服務，您應該具備下列項目：
 
-* 一個 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資訊，請參閱 [Azure 免費試用](https://azure.microsoft.com)。
+* 一個 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com)。
 * Azure 媒體服務帳戶。 如需詳細資訊，請參閱[建立帳戶](media-services-portal-create-account.md)。
 * (選擇性) 設定開發環境。 針對開發環境選擇 .NET 或 REST API。 如需詳細資訊，請參閱 [設定環境](media-services-dotnet-how-to-use.md)。
 
     此外，請了解如何[以程式設計方式連線至 AMS API](media-services-use-aad-auth-to-access-ams-api.md)。
-* 处于已启动状态的标准或高级流式处理终结点。  有关详细信息，请参阅[管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)
+* 已啟動狀態的標準或進階串流端點。  如需詳細資訊，請參閱[管理串流端點](media-services-portal-manage-streaming-endpoints.md)
 
 ## <a name="sdks-and-tools"></a>SDK 及工具
 
 若要建置媒體服務解決方案，您可以使用：
 
-* [媒体服务 REST API](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
+* [媒體服務 REST API](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
 * 其中一個可用的用戶端 SDK：
-    * Azure Media Services SDK for.NET
+    * 適用于 .NET 的 Azure 媒體服務 SDK
     
         * [Nuget 套件](https://www.nuget.org/packages/windowsazure.mediaservices/)
-        * [Github 的原始程式碼](https://github.com/Azure/azure-sdk-for-media-services)
-    * [Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)、
+        * [GitHub 原始程式碼](https://github.com/Azure/azure-sdk-for-media-services)
+    * [適用于 JAVA 的 AZURE SDK](https://github.com/Azure/azure-sdk-for-java)，
     * [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php)、
     * [Azure Media Services for Node.js](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) (這是非 Microsoft 版本的 Node.js SDK。 它是由社群維護，且目前並沒有 AMS API 的 100% 涵蓋範圍)。
 * 現有的工具：
-    * [Azure 门户](https://portal.azure.com/)
+    * [Azure 入口網站](https://portal.azure.com/)
     * [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (Azure 媒體服務總管 (AMSE) 是適用於 Windows 的 Winforms/C# 應用程式)
 
 > [!NOTE]
@@ -67,7 +75,7 @@ Microsoft Azure 媒體服務 (AMS) 是一個可延伸的雲端式平台，供開
 
 ## <a name="code-samples"></a>程式碼範例
 
-在 **Azure 程式碼範例**資源庫中尋找多個程式碼範例：[Azure 媒體服務程式碼範例](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0)。
+在 **Azure 程式碼範例**資源庫中找到多個程式碼範例：[Azure 媒體服務程式碼範例](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0)。
 
 ## <a name="concepts"></a>概念
 

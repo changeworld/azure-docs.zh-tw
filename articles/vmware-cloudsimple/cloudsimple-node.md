@@ -1,61 +1,61 @@
 ---
-title: 節點由 CloudSimple-Azure 的 VMware 解決方案的概觀
-description: 深入了解 CloudSimple 節點和概念。
+title: 依 CloudSimple 的 Azure VMware 解決方案-節點總覽
+description: 深入瞭解 CloudSimple 節點和概念。
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/20/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b3c8fca1dd93f379860cc3b084fbb14d4a0c6380
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 65afe26a98a53b00b72a1ea2b49799db2049b727
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64577356"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77024920"
 ---
-# <a name="cloudsimple-nodes-overview"></a>CloudSimple 節點概觀
+# <a name="cloudsimple-nodes-overview"></a>CloudSimple 節點總覽
 
-節點是：
+節點是私用雲端的基礎構件。 節點為：
 
-* 專用的裸機計算安裝 VMware ESXi hypervisor 的主機  
-* 計算您可以購買或保留的一個單位來建立私人雲端  
-* 若要購買，或保留 CloudSimple 服務可用的區域中可用
+* 已安裝 VMware ESXi 程式管理程式的專用裸機計算主機  
+* 您可以布建或保留以建立私人雲端的計算單位
+* 可在 CloudSimple 服務可供使用的區域中布建或保留
 
-節點是私用雲端的建置組塊。  若要建立私人雲端，您需要三個節點的相同 SKU 的最小值。  若要展開私人雲端，請新增其他節點。  您可以將節點新增至現有的叢集。 或者，您可以購買 Azure 的入口網站中的節點，並將它們關聯 CloudSimple 服務建立新的叢集。  購買的所有節點都已顯示 CloudSimple 服務下的。  您可以建立私用雲端從 CloudSimple 入口網站上購買的節點。
+您可以從已布建的節點建立私人雲端。 若要建立私人雲端，您至少需要相同 SKU 的三個節點。 若要擴充私人雲端，請新增其他節點。  您可以將節點新增至現有的叢集，或藉由在 Azure 入口網站中布建節點來建立新的叢集，並將它們與 CloudSimple 服務產生關聯。  所有已布建的節點都會顯示在 CloudSimple 服務底下。  
 
-## <a name="purchased-nodes"></a>已購買的節點
+## <a name="provisioned-nodes"></a>已布建的節點
 
-已購買的節點提供隨用隨付的容量。 購買節點，可協助您快速調整隨選 VMware 叢集。 您可以視需要新增節點，或刪除已購買的節點，以縮小您的 VMware 叢集。 購買的節點計費以每月為基礎，並購買所在的訂用帳戶計費：
+布建的節點提供隨用隨付容量。 布建節點可協助您視需要快速調整 VMware 叢集。 您可以視需要新增節點，或刪除已布建的節點，以相應減少您的 VMware 叢集。 已布建的節點會每月計費，並向其布建所在的訂用帳戶收費。
 
-* 如果您以信用卡支付 Azure 訂用帳戶，卡片會立即計費。
-* 如果您透過發票計費，費用會出現在您下一步 的發票上。
+* 如果您使用信用卡支付您的 Azure 訂用帳戶費用，則卡片會立即計費。
+* 如果您是按發票計費，則費用會顯示在下一個發票上。
 
-## <a name="vmware-solution-by-cloudsimple-nodes-sku"></a>VMware CloudSimple 節點 SKU 的解決方案
+## <a name="vmware-solution-by-cloudsimple-nodes-sku"></a>依 CloudSimple 節點 SKU 的 VMware 解決方案
 
-下列節點的型別可供購買或保留項目。
+以下是可供布建或保留的節點類型。
 
-| SKU | CS28-節點 | CS36-節點 |
-|-----|-------------|-------------|
-| CPU | 2x2.2 GHz、 核心，28 (56 HT) | 2x2.3 GHz，36 個核心 (72 HT) |
-| RAM | 256 GB | 512 GB |
-| 快取磁碟 |  1.6-TB NVMe | 3.2-TB NVMe |
-| 容量的磁碟 | 5.625 未經處理的 TB | 11.25 未經處理的 TB |
-| 儲存體類型 | All Flash | All Flash |
+| SKU           | CS28-Node                 | CS36-Node                 | CS36m-Node                |
+|---------------|-----------------------------|-----------------------------|-----------------------------|
+| 區域        | 美國東部、美國西部            | 美國東部、美國西部            | 西歐                 |
+| CPU           | 2x 2.2 GHz，28核心（56 HT） | 2x 2.3 GHz，36核心（72 HT） | 2x 2.3 GHz，36核心（72 HT） |
+| RAM           | 256 GB                      | 512 GB                      | 576 GB                      |
+| 快取磁片    | 1.6-TB NVMe                 | 3.2-TB NVMe                 | 3.2-TB NVMe                 |
+| 容量磁片 | 5.625 TB 原始                | 11.25 TB 原始                | 15.36 TB 原始                |
+| 儲存類型  | All Flash                   | All Flash                   | All Flash                   |
 
 ## <a name="limits"></a>限制
 
-下列的節點限制適用於私人雲端。
+下列節點限制適用于私人雲端。
 
-| Resource | 限制 |
+| 資源 | 限制 |
 |----------|-------|
-| 若要建立私人雲端的節點數目下限 | 3 |
-| 在私人雲端上的叢集中的節點數目上限 | 16 |
+| 建立私人雲端的節點數目下限 | 3 |
+| 私人雲端上叢集中的節點數目上限 | 16 |
 | 私人雲端中的節點數目上限 | 64 |
-| 在新叢集上的節點數目下限 | 3 |
+| 新叢集上節點的最小數目 | 3 |
 
 ## <a name="next-steps"></a>後續步驟
 
-* 了解如何[購買節點](create-nodes.md)
-* 深入了解[私用雲端](cloudsimple-private-cloud.md)
+* 瞭解如何布建[節點](create-nodes.md)
+* 瞭解[私人](cloudsimple-private-cloud.md)雲端

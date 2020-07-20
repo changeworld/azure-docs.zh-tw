@@ -1,24 +1,16 @@
 ---
-title: 使用 Azure Application Insights 進行 Web 應用程式的使用者保留期分析 | Microsoft Docs
+title: 使用 Azure Application Insights 分析 Web 應用程式使用者保留期
 description: 有多少使用者會回來使用您的應用程式？
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/03/2017
-ms.pm_owner: daviste;NumberByColors
-ms.reviewer: mbullwin
+author: NumberByColors
 ms.author: daviste
-ms.openlocfilehash: bda79520dd86cc14161f6f22cd24feb2e35849ab
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 05/03/2017
+ms.reviewer: mbullwin
+ms.openlocfilehash: 654dba968ba4efec1c30c94082726da04059adc0
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60372601"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797741"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>使用 Application Insights 進行 Web 應用程式的使用者保留期分析
 
@@ -70,7 +62,7 @@ ms.locfileid: "60372601"
     - [使用者、工作階段、事件](usage-segmentation.md)
     - [漏斗圖](usage-funnels.md)
     - [使用者流程](usage-flows.md)
-    - [活頁簿](../../azure-monitor/app/usage-workbooks.md)
+    - [活頁簿](../../azure-monitor/platform/workbooks-overview.md)
     - [新增使用者內容](usage-send-user-context.md)
 
 

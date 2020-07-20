@@ -1,27 +1,20 @@
 ---
-title: Azure CLI 指令碼範例 - 將應用程式連線至 MongoDB (Cosmos DB) | Microsoft Docs
-description: Azure CLI 指令碼範例 - 將應用程式連線至 MongoDB (Cosmos DB)
-services: appservice
-documentationcenter: appservice
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI：將應用程式連線至 Cosmos DB
+description: 了解如何使用 Azure CLI 將 App Service 應用程式的部署和管理自動化。 此範例說明如何將應用程式連線至 MongoDB (Cosmos DB)。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: bbbdbc42-efb5-4b4f-8ba6-c03c9d16a7ea
-ms.service: app-service
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 68c69413322d87fc557686701c474730d2ed8405
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 911282e71491c86fefa86d342e916cdff4fa8c9b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358279"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80058657"
 ---
 # <a name="connect-an-app-service-app-to-cosmos-db-using-cli"></a>使用 CLI 將 App Service 應用程式連線至 Cosmos DB
 
@@ -43,7 +36,7 @@ ms.locfileid: "54358279"
 
 此指令碼會使用下列命令來建立資源群組、App Service 應用程式、Cosmos DB 及所有相關資源。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | 建立用來存放所有資源的資源群組。 |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 建立 App Service 方案。 |

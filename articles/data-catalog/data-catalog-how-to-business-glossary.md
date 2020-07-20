@@ -1,17 +1,16 @@
 ---
-title: 設定 Azure 資料目錄中的商務詞彙
+title: 在 Azure 資料目錄中設定商務詞彙
 description: 強調 Azure 資料目錄中商務詞彙的操作說明文章，可定義和使用一般商務詞彙來標記註冊的資料資產。
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: 649a842c8c8890713bda938c8e11740c5c8be7aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 08/01/2019
+ms.openlocfilehash: 1065abecb1f0ef57eb13b1ec3f194f07ae01eaee
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61001872"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "68976800"
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>設定控管標記的商務詞彙
 
@@ -24,27 +23,27 @@ Azure 資料目錄啟用了資料來源探索功能，讓您能夠輕鬆地探�
 不過，標記有時會造成自己的問題。 標記可能會造成問題的部分範例如下：
 
 * 對某些資產使用縮寫，但對其他資產使用展開的文字。 雖然目的是要使用相同的標籤標記資產，但是這項不一致會防礙資產的探索。
-* 意義的潛在變化取決於內容。 例如，稱為「營收」的標籤在客戶資料集上可能表示客戶的營收，但是相同的標籤在每季銷售資料集上可能表示公司的每季營收。  
+* 意義的潛在變化取決於內容。 例如，稱為「營收」** 的標籤在客戶資料集上可能表示客戶的營收，但是相同的標籤在每季銷售資料集上可能表示公司的每季營收。  
 
 為了協助解決上述和其他類似的挑戰，資料目錄包含商務詞彙。
 
-透過使用資料目錄商務詞彙，組織可記錄關鍵商務字詞及其定義，以建立常用的商務詞彙。 此控管可達成整個組織的資料使用一致性。 在商務詞彙中定義字詞之後，該字詞便可指派給目錄中的資料資產。 「控管標記」這種方法與標記方法相同。
+透過使用資料目錄商務詞彙，組織可記錄關鍵商務字詞及其定義，以建立常用的商務詞彙。 此控管可達成整個組織的資料使用一致性。 在商務詞彙中定義字詞之後，該字詞便可指派給目錄中的資料資產。 「控管標記」** 這種方法與標記方法相同。
 
 ## <a name="glossary-availability-and-privileges"></a>詞彙可用性和權限
 
-商務詞彙只能在標準版 Azure 資料目錄中使用。 資料目錄免費版不包含詞彙，以及它並不提供控管標記的功能。
+商務詞彙只能在標準版 Azure 資料目錄中使用。 免費版的資料目錄不包含詞彙，而且它不會提供用於控管標記的功能。
 
-您可透過資料目錄入口網站之瀏覽功能表中的 [詞彙] 選項存取商務詞彙。  
+您可透過資料目錄入口網站之瀏覽功能表中的 [詞彙]**** 選項存取商務詞彙。  
 
-![存取商務詞彙](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
+![資料目錄-存取商務詞彙](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
 
 資料目錄管理員和詞彙管理員角色的成員可以建立、編輯及刪除商務詞彙中的詞彙。 所有的資料目錄使用者都可以檢視字詞定義，而且可以利用詞彙標記資產。
 
-![新增字彙](./media/data-catalog-how-to-business-glossary/02-new-term.png)
+![資料目錄-新增詞彙詞彙](./media/data-catalog-how-to-business-glossary/02-new-term.png)
 
 ## <a name="creating-glossary-terms"></a>建立詞彙
 
-資料目錄管理員和詞彙管理員可以按一下 [新增詞彙] 按鈕來建立詞彙。 每個詞彙包含下列欄位：
+資料目錄管理員和詞彙管理員可以按一下 [新增詞彙]**** 按鈕來建立詞彙。 每個詞彙包含下列欄位：
 
 * 詞彙的商務定義
 * 會擷取資產/資料行之指定用途或商務規則的描述
@@ -76,7 +75,7 @@ Azure 資料目錄啟用了資料來源探索功能，讓您能夠輕鬆地探�
 
 詞彙標籤和使用者標籤都可供搜尋，您可以將它們套用到搜尋中作為篩選。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 透過使用 Azure 資料目錄中的商務詞彙和它啟用的控管標記，您可以利用一致的方式識別、管理與探索資料資產。 商務詞彙可提升組織成員對商務詞彙的學習。 詞彙也支援擷取有意義的中繼資料，其可簡化資產探索及了解。
 

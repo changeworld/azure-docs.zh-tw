@@ -1,43 +1,45 @@
 ---
-title: 將 EDIFACT 訊息編碼 - Azure Logic Apps | Microsoft Docs
+title: 編碼 EDIFACT 訊息
 description: 在採用 Enterprise Integration Pack 的 Azure Logic Apps 中使用 EDIFACT 訊息編碼器來驗證 EDI 及產生 XML
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jonfan, divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
-ms.assetid: 974ac339-d97a-4715-bc92-62d02281e900
-ms.date: 01/27/2017
-ms.openlocfilehash: 7396aee56acdf2476ed1bb3cc5a9909349662dc7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 04/22/2020
+ms.openlocfilehash: cee97fddc619840de821ebb70d32e0cab1bbe040
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705533"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82106520"
 ---
 # <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 將 Azure Logic Apps 的 EDIFACT 訊息編碼
 
 使用編碼 EDIFACT 訊息連接器，可以驗證 EDI 和夥伴特定屬性，產生每個交易集的 XML 文件，以及要求技術通知、功能通知或兩者。
 若要使用此連接器，您必須將連接器新增至邏輯應用程式中的現有觸發程序。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 以下是您所需的項目︰
 
 * Azure 帳戶；您可以建立一個 [免費帳戶](https://azure.microsoft.com/free)
-* 已經定義並與 Azure 訂用帳戶相關聯的[整合帳戶](logic-apps-enterprise-integration-create-integration-account.md)。 您必須有整合帳戶才能使用編碼 EDIFACT 訊息連接器。 
+* 已定義且與您的 Azure 訂用帳戶相關聯的[整合帳戶](logic-apps-enterprise-integration-create-integration-account.md)。 您必須有整合帳戶才能使用編碼 EDIFACT 訊息連接器。 
 * 至少已經在整合帳戶中定義兩個[夥伴](logic-apps-enterprise-integration-partners.md)
 * 已經在整合帳戶中定義的 [EDIFACT 合約](logic-apps-enterprise-integration-edifact.md)
 
 ## <a name="encode-edifact-messages"></a>編碼 EDIFACT 訊息
 
+> [!IMPORTANT]
+> EDIFACT 連接器僅支援 UTF-8 字元。
+> 如果您的輸出包含未預期的字元，請檢查您的 EDIFACT 訊息是否使用 UTF-8 字元集。
+
 1. [建立邏輯應用程式](quickstart-create-first-logic-app-workflow.md)。
 
 2. 編碼 EDIFACT 訊息連接器沒有觸發程序，因此您必須新增觸發程序 (例如要求觸發程序) 來啟動邏輯應用程式。 在 Logic Apps 設計工具中，新增觸發程序，然後將動作新增至您的邏輯應用程式。
 
-3.  在搜尋方塊中，輸入 "EDIFACT" 做為篩選條件。 選取 [依照合約名稱編碼為 EDIFACT 訊息] 或是 [依照身分識別編碼為 EDIFACT 訊息]。
+3.  在搜尋方塊中，輸入 "EDIFACT" 做為篩選條件。 選取 [**依合約名稱編碼 Edifact 訊息**] 或 [依身分識別**編碼為 edifact 訊息**]。
    
     ![搜尋 EDIFACT](media/logic-apps-enterprise-integration-edifact-encode/edifactdecodeimage1.png)  
 
@@ -52,7 +54,7 @@ ms.locfileid: "64705533"
     | 連線名稱 * |為連接器輸入任何名稱。 |
     | 整合帳戶 * |輸入整合帳戶的名稱。 確定您的整合帳戶和邏輯應用程式位於相同的 Azure 位置。 |
 
-5.  當您完成時，連線詳細資料看起來類似此範例。 若要完成連線建立，請選擇 [建立]。
+5.  當您完成時，連線詳細資料看起來類似此範例。 若要完成連線建立，請選擇 [建立]****。
 
     ![整合帳戶連線詳細資料](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage2.png)
 
@@ -62,7 +64,7 @@ ms.locfileid: "64705533"
 
 #### <a name="encode-edifact-message-by-agreement-name"></a>依協議名稱將 EDIFACT 訊息編碼
 
-如果您選擇依協議名稱將 EDIFACT 訊息編碼，請開啟 [EDIFACT 協議名稱] 清單，輸入或選取您的 EDIFACT 協議名稱。 輸入 XML 訊息進行編碼。
+如果您選擇依協議名稱將 EDIFACT 訊息編碼，請開啟 [EDIFACT 協議名稱]**** 清單，輸入或選取您的 EDIFACT 協議名稱。 輸入 XML 訊息進行編碼。
 
 ![輸入 EDIFACT 協議名稱和 XML 訊息進行編碼](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage6.png)
 
@@ -94,5 +96,5 @@ ms.locfileid: "64705533"
 若要檢視 EDIFACT 連接器的 Swagger 詳細資料，請參閱 [EDIFACT](/connectors/edifact/)。
 
 ## <a name="next-steps"></a>後續步驟
-[深入了解企業整合套件](logic-apps-enterprise-integration-overview.md "了解企業整合套件") 
+[深入了解企業整合套件](logic-apps-enterprise-integration-overview.md "瞭解企業整合套件") 
 

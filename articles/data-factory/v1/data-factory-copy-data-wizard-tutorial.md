@@ -1,30 +1,28 @@
 ---
-title: 教學課程：使用複製精靈建立管線 | Microsoft Docs
+title: '教學課程：使用複製精靈建立管線 '
 description: 在本教學課程中，您會使用 Data Factory 所支援的複製精靈，建立具有複製活動的 Azure Data Factory 管線。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: b87afb8e-53b7-4e1b-905b-0343dd096198
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ace2ffdacf775a3c0c5a579e9a4208641c20f661
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d1b17a3e4556f6a963f3ecacd31472ce3f75b0fe
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025754"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248542"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>教學課程：使用 Data Factory 複製精靈建立具有複製活動的管線
 > [!div class="op_single_selector"]
 > * [概觀和必要條件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [複製精靈](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure 入口網站](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager 範本](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -35,11 +33,11 @@ ms.locfileid: "54025754"
 > 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[複製活動教學課程](../quickstart-create-data-factory-dot-net.md)。 
 
 
-本教學課程說明如何使用**複製精靈**，將資料從 Azure Blob 儲存體複製到 Azure SQL 資料庫。 
+本教學課程說明如何使用**複製精靈**，將資料從 Azure Blob 儲存體複製到 Azure SQL Database。 
 
 Azure Data Factory 的[複製精靈] 可讓您快速建立資料管線，以將資料從支援的來源資料存放區複製到支援的目的地資料存放區。 因此，建議在第一個步驟中使用精靈來建立資料移動案例的範例管線。 如需作為來源和目的地支援的資料存放區清單，請參閱[支援的資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。  
 
-本教學課程說明如何建立 Azure data factory、啟動 [複製精靈]、執行一系列的步驟，以提供有關資料擷取/移動案例的詳細資料。 當您完成精靈中的步驟時，精靈會自動建立具有複製活動的管線，以將資料從 Azure Blob 儲存體複製到 Azure SQL 資料庫。 如需複製活動的詳細資訊，請參閱[資料移動活動](data-factory-data-movement-activities.md)。
+本教學課程說明如何建立 Azure data factory、啟動 [複製精靈]、執行一系列的步驟，以提供有關資料擷取/移動案例的詳細資料。 當您完成精靈中的步驟時，精靈會自動建立具有複製活動的管線，以將資料從 Azure Blob 儲存體複製到 Azure SQL Database。 如需複製活動的詳細資訊，請參閱[資料移動活動](data-factory-data-movement-activities.md)。
 
 ## <a name="prerequisites"></a>必要條件
 請先完成 [教學課程概觀](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 一文中列出的必要條件，再執行本教學課程。
@@ -63,10 +61,10 @@ Azure Data Factory 的[複製精靈] 可讓您快速建立資料管線，以將�
       - 選取 [使用現有的] 以選取現有的資源群組。
       - 選取 [建立新的] 以輸入資源群組的名稱。
           
-        本教學課程的某些步驟會假設您使用名為**ADFTutorialResourceGroup** 的資源群組。 若要了解資源群組，請參閱 [使用資源群組管理您的 Azure 資源](../../azure-resource-manager/resource-group-overview.md)。
+        本教學課程的某些步驟會假設您使用名為：**ADFTutorialResourceGroup** 的資源群組。 若要了解資源群組，請參閱 [使用資源群組管理您的 Azure 資源](../../azure-resource-manager/management/overview.md)。
    4. 選取 Data Factory 的 [位置]。
    5. 選取刀鋒視窗底部的 [釘選到儀表板] 核取方塊。  
-   6. 按一下頁面底部的 [新增] 。
+   6. 按一下 [建立]。
       
        ![新增 Data Factory 刀鋒視窗](media/data-factory-copy-data-wizard-tutorial/new-data-factory-blade.png)            
 3. 建立完成之後，您會看到 [Data Factory] 刀鋒視窗，如下圖所示：
@@ -121,7 +119,7 @@ Azure Data Factory 的[複製精靈] 可讓您快速建立資料管線，以將�
    5. 輸入 [使用者名稱] 和 [密碼]。
    6. 按 [下一步] 。  
       
-      ![複製工具 - 指定 Azure SQL 資料庫](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
+      ![複製工具 - 指定 Azure SQL Database](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
 10. 在 [資料表對應] 頁面上，從 [目的地] 欄位的下拉式清單中選取 **emp**，按一下**向下箭號** (選擇性) 以查看結構描述及預覽資料。
     
      ![複製工具 - 資料表對應](./media/data-factory-copy-data-wizard-tutorial/copy-tool-table-mapping-page.png) 
@@ -152,7 +150,7 @@ Azure Data Factory 的[複製精靈] 可讓您快速建立資料管線，以將�
     如需使用此應用程式的詳細資訊，請參閱[使用監視應用程式來監視和管理管線](data-factory-monitor-manage-app.md)。
 
 ## <a name="next-steps"></a>後續步驟
-在本教學課程中，您可使用 Azure Blob 儲存體作為來源資料存放區以及使用 Azure SQL 資料庫作為複製作業的目的地資料存放區。 下表提供複製活動所支援作為來源或目的地的資料存放區清單： 
+在本教學課程中，您可使用 Azure Blob 儲存體作為來源資料存放區以及使用 Azure SQL Database 作為複製作業的目的地資料存放區。 下表提供複製活動所支援作為來源或目的地的資料存放區清單： 
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 

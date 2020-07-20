@@ -1,5 +1,5 @@
 ---
-title: 偵測特定網域內容 - 電腦視覺
+title: 特定領域內容-電腦視覺
 titleSuffix: Azure Cognitive Services
 description: 了解如何指定影像分類網域，以傳回影像的詳細資訊。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e4b64e00f71768a8821c83a73b019f77089e1b3a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 8d6dc91ae7bb0f6d7a24064749d9295558a7d39c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59994481"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "68946331"
 ---
 # <a name="detect-domain-specific-content"></a>偵測特定領域內容
 
@@ -30,7 +30,7 @@ ms.locfileid: "59994481"
 
 以下是針對指定的影像由 **models/celebrities/analyze** API 傳回的 JSON 回應範例：
 
-![Satya Nadella 釐、 面帶笑容](./images/satya.jpeg)
+![Satya Nadella 的梯，微笑](./images/satya.jpeg)
 
 ```json
 {
@@ -57,7 +57,7 @@ ms.locfileid: "59994481"
 
 ### <a name="enhanced-categorization-analysis"></a>強化分類分析
 
-也可以使用特定領域模型，來補足一般的影像分析。 您可以在 [Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 呼叫的 details 參數中指定特定領域模型，做為[高階分類](concept-categorizing-images.md)的一環來進行。
+也可以使用特定領域模型，來補足一般的影像分析。 您可以在 [Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 呼叫的 details ** 參數中指定特定領域模型，做為[高階分類](concept-categorizing-images.md)的一環來進行。
 
 在此情況下，必須先呼叫 86 類別分類器。 如果任何偵測到的類別符合特定領域模型，即會透過該模型傳遞影像，並新增結果。
 

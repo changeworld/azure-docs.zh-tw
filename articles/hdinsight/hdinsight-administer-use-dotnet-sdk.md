@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 06e3178e344ee46f67cfd8a6feaf08d56d3c86e7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 36a77d49b507d3d0158d1b4b492d0141350de50f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724141"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80240646"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>使用 .NET SDK 管理 HDInsight 中的 Apache Hadoop 叢集
 
@@ -21,7 +21,7 @@ ms.locfileid: "64724141"
 
 了解如何使用 [HDInsight.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)管理 HDInsight 叢集。
 
-**先决条件**
+**先決條件**
 
 開始閱讀本文之前，您必須符合下列必要條件：
 
@@ -108,9 +108,6 @@ namespace HDInsightManagement
 
 當您執行此程式時，應該會看到提示。  如果您不想要看到提示，請參閱 [建立非互動式驗證 .NET HDInsight 應用程式](hdinsight-create-non-interactive-authentication-dotnet-applications.md)。
 
-## <a name="create-clusters"></a>建立叢集
-
-請參閱 [使用 .NET SDK 在 HDInsight 中建立 Linux 型叢集](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)
 
 ## <a name="list-clusters"></a>列出叢集
 
@@ -135,7 +132,7 @@ _hdiManagementClient.Clusters.Delete("<Resource Group Name>", "<Cluster Name>");
 _hdiManagementClient.Clusters.DeleteAsync("<Resource Group Name>", "<Cluster Name>");
 ```
 
-## <a name="scale-clusters"></a>缩放群集
+## <a name="scale-clusters"></a>調整叢集
 
 叢集調整功能可讓您變更在 Azure HDInsight 中執行的叢集所用的背景工作節點數目，而不需要重新建立叢集。
 
@@ -178,7 +175,7 @@ _hdiManagementClient.Clusters.DeleteAsync("<Resource Group Name>", "<Cluster Nam
     以下是如何使用 CLI 命令重新平衡 Storm 拓撲的範例：
     
 
-    ```cli
+    ```console
     ## Reconfigure the topology "mytopology" to use 5 worker processes,
     ## the spout "blue-spout" to use 3 executors, and
     ## the bolt "yellow-bolt" to use 10 executors
@@ -194,7 +191,7 @@ _hdiManagementClient.Clusters.ResizeAsync("<Resource Group Name>", "<Cluster Nam
 
 ## <a name="grantrevoke-access"></a>授與/撤銷存取權
 
-HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样式的终结点）：
+HDInsight 叢集具有下列 HTTP Web 服務 (所有這些服務都有 RESTful 端點)：
 
 * ODBC
 * JDBC
@@ -229,7 +226,7 @@ _hdiManagementClient.Clusters.ConfigureHttpSettings("<Resource Group Name>, <Clu
 > [!NOTE]  
 > 透過授與/撤銷存取權，您將重設叢的使用者名稱和密碼。
 
-這也可以透過入口網站完成。 请参阅[使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集](hdinsight-administer-use-portal-linux.md)。
+這也可以透過入口網站完成。 請參閱[使用 Azure 入口網站來管理 HDInsight 中的 Apache Hadoop](hdinsight-administer-use-portal-linux.md)叢集。
 
 ## <a name="update-http-user-credentials"></a>更新 HTTP 使用者認證
 
@@ -257,10 +254,6 @@ foreach (var key in results.Configuration.Keys)
 
 請參閱[使用 .NET SDK 執行 Apache Hive 查詢](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)。
 
-**提交 Apache Pig 作業**
-
-請參閱[使用 .NET SDK 執行 Apache Pig 作業](hadoop/apache-hadoop-use-pig-dotnet-sdk.md)。
-
 **提交 Apache Sqoop 作業**
 
 請參閱[搭配 HDInsight 使用 Apache Sqoop](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md)。
@@ -273,7 +266,7 @@ foreach (var key in results.Configuration.Keys)
 
 請參閱[將資料上傳至 HDInsight][hdinsight-upload-data]。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>另請參閱
 
 * [HDInsight .NET SDK 參考文件](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
 * [使用 Azure 入口網站管理 HDInsight 中的 Apache Hadoop 叢集](hdinsight-administer-use-portal-linux.md)

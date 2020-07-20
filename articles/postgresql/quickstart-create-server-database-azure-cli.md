@@ -1,19 +1,19 @@
 ---
-title: 快速入門 - 使用 Azure CLI 建立適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
-description: 本快速入門指南說明如何使用 Azure CLI (命令列介面) 建立及管理「適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器」。
+title: 快速入門：建立伺服器 - Azure CLI - 適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
+description: 本快速入門指南說明如何使用 Azure CLI (命令列介面) 建立「適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器」。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 05/06/2019
+ms.date: 06/25/2019
 ms.custom: mvc
-ms.openlocfilehash: 5b16d87a69ecdac578da2a90be22013744c32bd7
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: de46eeb20f3c99eb7a459965d17e2dd55728a9db
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65069061"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82146650"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>快速入門：使用 Azure CLI 建立適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
 
@@ -40,7 +40,7 @@ az account set --subscription <subscription id>
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-使用 [az group create](../azure-resource-manager/resource-group-overview.md) 命令建立 [Azure 資源群組](/cli/azure/group)。 資源群組是在其中以群組方式部署與管理 Azure 資源的邏輯容器。 請提供唯一的名稱。 下列範例會在 `westus` 位置建立名為 `myresourcegroup` 的資源群組。
+使用 [az group create](../azure-resource-manager/management/overview.md) 命令建立 [Azure 資源群組](/cli/azure/group)。 資源群組是在其中以群組方式部署與管理 Azure 資源的邏輯容器。 請提供唯一的名稱。 下列範例會在 `westus` 位置建立名為 `myresourcegroup` 的資源群組。
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
@@ -52,13 +52,13 @@ az group create --name myresourcegroup --location westus
 
 **設定** | **範例值** | **說明**
 ---|---|---
-name | mydemoserver | 選擇可識別 Azure Database for PostgreSQL 伺服器的唯一名稱。 伺服器名稱只能包含小寫字母、數字及連字號 (-) 字元。 此名稱必須包含 3 到 63 個字元。
+NAME | mydemoserver | 選擇可識別 Azure Database for PostgreSQL 伺服器的唯一名稱。 伺服器名稱只能包含小寫字母、數字及連字號 (-) 字元。 此名稱必須包含 3 到 63 個字元。
 resource-group | myresourcegroup | 提供 Azure 資源群組的名稱。
 sku-name | GP_Gen5_2 | SKU 的名稱。 遵循簡短形式的慣例 {pricing tier}\_{compute generation}\_{vCores}。 請參閱下表，以取得有關 sku-name 參數的詳細資訊。
 backup-retention | 7 | 備份應保留的時間長度。 單位為天。 範圍為 7-35 天。 
 geo-redundant-backup | 已停用 | 是否應針對此伺服器啟用異地備援備份。 允許的值：Enabled、Disabled。
 location | westus | 伺服器的 Azure 位置。
-ssl-enforcement | 已啟用 | 是否應針對此伺服器啟用 SSL。 允許的值：Enabled、Disabled。
+ssl-enforcement | 啟用 | 是否應針對此伺服器啟用 TLS/SSL。 允許的值：Enabled、Disabled。
 storage-size | 51200 | 伺服器的儲存體容量 (單位為 MB)。 有效 storage-size 的最小值為 5120 MB，並以 1024 MB 的增量增加。 如需儲存體大小限制的詳細資訊，請參閱[定價層](./concepts-pricing-tiers.md)文件。 
 version | 9.6 | PostgreSQL 主要版本。
 admin-user | myadmin | 適用於系統管理員登入的使用者名稱。 此名稱不得為 **azure_superuser**、**admin**、**administrator**、**root**、**guest** 或 **public**。
@@ -72,7 +72,7 @@ sku-name 參數值會遵循慣例 {pricing tier}\_{compute generation}\_{vCores}
 
 請參閱[定價層](./concepts-pricing-tiers.md)文件，以了解每個區域和每一層的有效值。
 
-下列範例會使用伺服器系統管理員登入 `myadmin` 在 `myresourcegroup` 您的資源群組中建立且名為 `mydemoserver` 的 PostgreSQL 9.6 伺服器 (位於美國西部)。 這是**第 4 代** **一般用途**伺服器，它具有 2 個 **vCore**。 將 `<server_admin_password>` 替換成您自己的值。
+下列範例會使用伺服器系統管理員登入 `myadmin` 在 `myresourcegroup` 您的資源群組中建立且名為 `mydemoserver` 的 PostgreSQL 9.6 伺服器 (位於美國西部)。 這是**第 4 代** **一般用途**伺服器，它具有 **2 個 vCore**。 將 `<server_admin_password>` 替換成您自己的值。
 ```azurecli-interactive
 az postgres server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 9.6
 ```
@@ -145,6 +145,13 @@ az postgres server show --resource-group myresourcegroup --name mydemoserver
    psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
    ```
 
+   > [!TIP]
+   > 如果您想要使用 URL 路徑來連線到 Postgres，在進行 URL 編碼時，請將使用者名稱中的 @ 符號編碼為 `%40`。 例如，psql 的連接字串會是
+   > ```
+   > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
+   > ```
+
+
 2. 連線到伺服器後，請在提示字元建立空白資料庫。
    ```sql
    CREATE DATABASE mypgsqldb;
@@ -161,50 +168,50 @@ pgAdmin 是搭配 PostgreSQL 使用的開放原始碼工具。 您可以從 [pgA
 
 1. 在您的用戶端電腦上開啟 pgAdmin 應用程式。
 
-2. 移至工具列中的 [物件]，將滑鼠停留在 [建立] 上方，然後選取 [伺服器]。
+2. 移至工具列中的 [物件]  ，將滑鼠停留在 [建立]  上方，然後選取 [伺服器]  。
 
-3. 在 [建立 - 伺服器] 對話方塊的 [一般] 索引標籤上，輸入伺服器的唯一易記名稱，例如 **mydemoserver**。
+3. 在 [建立 - 伺服器]  對話方塊的 [一般]  索引標籤上，輸入伺服器的唯一易記名稱，例如 **mydemoserver**。
 
    ![[一般] 索引標籤](./media/quickstart-create-server-database-azure-cli/9-pgadmin-create-server.png)
 
-4. 在 [建立 - 伺服器] 對話方塊的 [連線] 索引標籤上，填寫設定資料表。
+4. 在 [建立 - 伺服器]  對話方塊的 [連線]  索引標籤上，填寫設定資料表。
 
    ![[連線] 索引標籤](./media/quickstart-create-server-database-azure-cli/10-pgadmin-create-server.png)
 
-    pgAdmin 參數 |值|說明
+    pgAdmin 參數 |值|描述
     ---|---|---
-    主機名稱/位址 | 伺服器名稱 | 您稍早建立 Azure Database for PostgreSQL 伺服器時所用的伺服器名稱值。 我們的範例伺服器是 **mydemoserver.postgres.database.azure.com**。 使用如範例所示的完整網域名稱 (**\*.postgres.database.azure.com**)。 如果您不記得您的伺服器名稱，請依照上一節中的步驟執行，以取得連線資訊。 
-    Port | 5432 | 當您連線至 Azure Database for PostgreSQL 伺服器時所要使用的連接埠。 
+    主機名稱/位址 | 伺服器名稱 | 您稍早建立 Azure Database for PostgreSQL 伺服器時所用的伺服器名稱值。 我們的範例伺服器是 **mydemoserver.postgres.database.azure.com**。 使用如範例所示的完整網域名稱 ( **\*.postgres.database.azure.com**)。 如果您不記得您的伺服器名稱，請依照上一節中的步驟執行，以取得連線資訊。 
+    連接埠 | 5432 | 當您連線至 Azure Database for PostgreSQL 伺服器時所要使用的連接埠。 
     維護資料庫 | *postgres* | 系統產生的預設資料庫名稱。
     使用者名稱 | 伺服器管理員登入名稱 | 您稍早建立 Azure Database for PostgreSQL 時所提供的伺服器管理員登入使用者名稱。 如果您不記得使用者名稱，請依照上一節中的步驟執行，以取得連線資訊。 格式是 *username\@servername*。
     密碼 | 您的系統管理員密碼 | 您在本快速入門稍早建立伺服器時所選擇的密碼。
     角色 | 保留空白 | 此時不需要提供角色名稱。 將欄位保留空白。
-    SSL 模式 | *必要* | 您可以在 pgAdmin 的 [SSL] 索引標籤中設定 SSL 模式。根據預設，所有適用於 PostgreSQL 的 Azure 資料庫伺服器建立時都會開啟強制執行 SSL。 若要關閉強制執行 SSL，請參閱[強制執行 SSL](./concepts-ssl-connection-security.md)。
+    SSL 模式 | *必要* | 您可以在 pgAdmin 的 [SSL] 索引標籤中設定 TLS/SSL 模式。根據預設，所有適用於 PostgreSQL 的 Azure 資料庫伺服器建立時都會開啟強制執行 TLS。 若要關閉強制執行 TLS，請參閱[設定 TLS 的強制執行](./concepts-ssl-connection-security.md#configure-enforcement-of-tls)。
     
-5. 選取 [ **儲存**]。
+5. 選取 [儲存]  。
 
-6. 在左側的 [瀏覽器] 窗格中，展開 [伺服器] 節點。 選取您的伺服器，例如 **mydemoserver**。 按一下以連線到它。
+6. 在左側的 [瀏覽器]  窗格中，展開 [伺服器]  節點。 選取您的伺服器，例如 **mydemoserver**。 按一下以連線到它。
 
-7. 展開伺服器節點，然後展開其下的 [資料庫]。 此清單應包含現有 postgres 資料庫和其他您已建立的資料庫。 您可以使用適用於 PostgreSQL 的 Azure 資料庫，為每一部伺服器建立多個資料庫。
+7. 展開伺服器節點，然後展開其下的 [資料庫]  。 此清單應包含現有 postgres  資料庫和其他您已建立的資料庫。 您可以使用適用於 PostgreSQL 的 Azure 資料庫，為每一部伺服器建立多個資料庫。
 
-8. 以滑鼠右鍵按一下 [資料庫]，選擇 [建立] 功能表，然後選取 [資料庫]。
+8. 以滑鼠右鍵按一下 [資料庫]  ，選擇 [建立]  功能表，然後選取 [資料庫]  。
 
-9. 在 [資料庫] 欄位中輸入您選擇的資料庫名稱，例如 **mypgsqldb2**。
+9. 在 [資料庫]  欄位中輸入您選擇的資料庫名稱，例如 **mypgsqldb2**。
 
-10. 從清單方塊中選取資料庫的 [擁有者]。 選擇您的伺服器管理員登入名稱，例如範例中的 **my admin**。
+10. 從清單方塊中選取資料庫的 [擁有者]  。 選擇您的伺服器管理員登入名稱，例如範例中的 **my admin**。
 
     ![在 pgadmin 中建立資料庫](./media/quickstart-create-server-database-azure-cli/11-pgadmin-database.png)
 
-11. 選取 [儲存] 以建立新的空白資料庫。
+11. 選取 [儲存]  以建立新的空白資料庫。
 
-12. 在 [瀏覽器] 窗格中，您可以在伺服器名稱之下的 [資料庫] 清單中看到您所建立的資料庫。
+12. 在 [瀏覽器]  窗格中，您可以在伺服器名稱之下的 [資料庫] 清單中看到您所建立的資料庫。
 
 
 
 
 ## <a name="clean-up-resources"></a>清除資源
 
-刪除 [Azure 資源群組](../azure-resource-manager/resource-group-overview.md)以清除您在快速入門中建立的所有資源。
+刪除 [Azure 資源群組](../azure-resource-manager/management/overview.md)以清除您在快速入門中建立的所有資源。
 
 > [!TIP]
 > 此集合中的其他快速入門會以本快速入門為基礎。 若您打算繼續進行後續的快速入門，請勿清除在此快速入門中建立的資源。 如果您不打算繼續，請使用下列步驟，在 Azure CLI 中刪除本快速入門所建立的所有資源。

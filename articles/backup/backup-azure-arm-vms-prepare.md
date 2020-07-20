@@ -1,285 +1,203 @@
 ---
-title: 使用 Azure 备份将 Azure VM 备份到恢复服务保管库中
-description: 介绍如何使用 Azure 备份将 Azure VM 备份到恢复服务保管库中
-service: backup
-author: rayne-wiselman
-manager: carmonm
-ms.service: backup
+title: 備份復原服務保存庫中的 Azure VM
+description: 說明如何使用 Azure 備份將 Azure VM 備份到備份復原服務保存庫
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: raynew
-ms.openlocfilehash: 98934216c0860c79575874df26603b1187e35978
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: cba042efb08f121d4cd9fa5693edd69c827f1465
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60647496"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727007"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>備份復原服務保存庫中的 Azure VM
 
-本文介绍如何使用 [Azure 备份](backup-overview.md)服务将 Azure VM 备份到恢复服务保管库中。 
+本文說明如何使用 [Azure 備份](backup-overview.md)服務，將 Azure VM 備份到備份復原服務保存庫。
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
+>
 > * 準備 Azure VM。
 > * 建立保存庫。
-> * 发现 VM 并配置备份策略。
-> * 为 Azure VM 启用备份。
+> * 探索 VM 並設定備份原則。
+> * 啟用 Azure VM 的備份。
 > * 執行初始備份。
 
-
 > [!NOTE]
-> 本文将会介绍如何设置保管库以及选择要备份的 VM。 這有助於您備份多個 VM。 或者，可以直接从 VM 设置[备份单个 Azure VM](backup-azure-vms-first-look-arm.md)。
+> 本文說明如何設定保存庫，並選取要備份的 VM。 這有助於您備份多個 VM。 或者，您可以直接根據 VM 設定來[備份單一 Azure VM](backup-azure-vms-first-look-arm.md)。
 
 ## <a name="before-you-start"></a>開始之前
 
+* [檢閱](backup-architecture.md#architecture-built-in-azure-vm-backup) Azure VM 備份架構。
+* [深入了解](backup-azure-vms-introduction.md) Azure VM 備份和備份擴充功能。
+* 設定備份之前，請[檢閱支援矩陣](backup-support-matrix-iaas.md)。
 
-- [查看](backup-architecture.md#architecture-direct-backup-of-azure-vms) Azure VM 备份体系结构。
-- [深入了解](backup-azure-vms-introduction.md) Azure VM 備份和備份擴充功能。
-- [請檢閱支援對照表](backup-support-matrix-iaas.md)設定備份之前。
+此外，在某些情況下，您可能還需要做幾件事：
 
-此外，在某些情况下，还需要完成几项操作：
-
-- **在 VM 上安装 VM 代理**：為機器上執行的 Azure VM 代理程式安裝擴充功能，以 Azure 備份來備份 Azure VM。 如果 VM 是从 Azure 市场映像创建的，则代理已安装并正在运行。 如果创建了自定义 VM 或者迁移了本地计算机，则可能需要[手动安装代理](#install-the-vm-agent)。
-- **显式允许出站访问**：一般情况下，无需显式允许 Azure VM 的出站网络访问即可让它与 Azure 备份进行通信。 但是，某些 VM 在尝试进行连接时可能会遇到连接问题并显示 **ExtensionSnapshotFailedNoNetwork** 错误。 如果发生这种情况，应该[显式允许出站访问](#explicitly-allow-outbound-access)，使 Azure 备份扩展能够与备份流量的 Azure 公共 IP 地址通信。
-
+* **在 VM 上安裝 VM 代理程式**：為機器上執行的 Azure VM 代理程式安裝擴充功能，以 Azure 備份來備份 Azure VM。 如果您的 VM 是從 Azure 市集映像建立，則代理程式已安裝且正在執行。 如果您建立自訂 VM，或遷移內部部署機器，您可能需要[手動安裝代理程式](#install-the-vm-agent)。
 
 ## <a name="create-a-vault"></a>建立保存庫
 
- 保存庫會儲存在一段時間內建立的備份和復原點，並儲存與備份的機器相關聯的備份原則。 請依照下列方式建立保存庫：    
+ 保存庫會儲存在一段時間內建立的備份和復原點，並儲存與備份的機器相關聯的備份原則。 請依照下列方式建立保存庫：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com/)。    
-2. 在搜索框中键入“恢复服务”。 在“服务”下，单击“恢复服务保管库”。   
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+2. 在 [搜尋] 中，輸入**復原服務**。 在 [服務] 下，按一下 [復原服務保存庫]。
 
-     ![搜索恢复服务保管库](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/> 
+     ![搜尋復原服務保存庫](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png)
 
-3. 在“恢复服务保管库”菜单中，单击“+添加”。    
+3. 在 [復原服務保存庫] 功能表中，按一下 [+新增]。
 
-     ![建立復原服務保存庫的步驟 2](./media/backup-azure-arm-vms-prepare/rs-vault-menu.png)   
+     ![建立復原服務保存庫的步驟 2](./media/backup-azure-arm-vms-prepare/rs-vault-menu.png)
 
-4. 在“恢复服务保管库”中，键入一个易记名称用于标识保管库。   
-    - 必須是 Azure 訂用帳戶中唯一的名稱。   
-    - 它可以包含 2 到 50 個字元。    
-    - 該名稱必須以字母開頭，而且只可以包含字母、數字和連字號。   
-5. 选择要在其中创建保管库的 Azure 订阅、资源组和地理区域。 接著，按一下 [建立]。    
-    - 建立保存庫可能需要一些時間。  
-    - 請監視入口網站右上方區域中的狀態通知。   
+4. 在 [復原服務保存庫] 中，輸入易記名稱來識別保存庫。
+    * 必須是 Azure 訂用帳戶中唯一的名稱。
+    * 它可以包含 2 到 50 個字元。
+    * 該名稱必須以字母開頭，而且只可以包含字母、數字和連字號。
+5. 選取要在其中建立保存庫的 Azure 訂用帳戶、資源群組和地理區域。 接著，按一下 [建立]。
+    * 建立保存庫可能需要一些時間。
+    * 請監視入口網站右上方區域中的狀態通知。
 
+保存庫建立之後，就會出現在 [復原服務保存庫] 清單中。 如果您沒有看到保存庫，請選取 [重新整理]。
 
- 创建保管库后，它会显示在恢复服务保管库列表中。 如果您沒有看到保存庫，請選取 [重新整理]。
- 
-![備份保存庫的清單](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)    
+![備份保存庫的清單](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
-### <a name="modify-storage-replication"></a>修复存储复制
+>[!NOTE]
+> Azure 備份現在允許自訂由 Azure 備份服務所建立的資源群組名稱。 如需詳細資訊，請參閱[虛擬機器的 Azure 備份資源群組](backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines)。
 
-默认情况下，保管库使用[异地冗余存储 (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。
+### <a name="modify-storage-replication"></a>修改儲存體複寫
 
-- 如果保管库是主要备份机制，我们建议使用 GRS。
-- [本地冗余存储 (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 的费用更低。
+根據預設，保存庫會使用[異地備援儲存體 (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。
 
-按如下所述修改存储复制类型：
+* 如果保存庫是您的主要備份機制，則建議使用 GRS。
+* 您可以使用[本地備援儲存體 (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)，這是較便宜的選項。
 
-1. 在新保管库的“设置”部分单击“属性”。
-2. 在“属性”中的“备份配置”下，单击“更新”。
-3. 选择存储复制类型，然后单击“保存”。
+修改儲存體複寫類型，如下所示：
+
+1. 在新的保存庫中，按一下 [設定] 區段中的 [屬性]。
+2. 在 [屬性] 的 [備份設定] 下，按一下 [更新]。
+3. 選取儲存體複寫類型，然後按一下 [儲存]。
 
       ![為新保存庫設定儲存體組態](./media/backup-try-azure-backup-in-10-mins/full-blade.png)
+
 > [!NOTE]
-   > 在保管库经过设置并且包含备份项之后，无法修改存储复制类型。 若要修改，需要重新创建保管库。 
+   > 當保存庫設定完成且包含備份項目之後，您就無法修改儲存體複寫類型。 如果想要修改，則必須重新建立保存庫。
 
-## <a name="apply-a-backup-policy"></a>应用备份策略
+## <a name="apply-a-backup-policy"></a>套用備份原則
 
-配置保管库的备份策略。
+設定保存庫的備份原則。
 
-1. 在保管库的“概述”部分，单击“+备份”。
+1. 在保存庫中，按一下 [概觀] 區段中的 [+備份]。
 
    ![備份按鈕](./media/backup-azure-arm-vms-prepare/backup-button.png)
 
-
-2. 在“备份目标” > “工作负荷在哪里运行?”中，选择“Azure”。 在“要备份哪些内容?”中，选择“虚拟机” >  “确定”。 這會在保存庫中註冊 VM 擴充功能。
+2. 在 [備份目標] > [您的工作負載在何處執行?] 中，選取 [Azure]。 在 [您要備份什麼?] 中，選取 [虛擬機器] >  [確定]。 這會在保存庫中註冊 VM 擴充功能。
 
    ![備份和備份目標窗格](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
 
-3. 在 [備份原則] 中，選取要與保存庫產生關聯的原則。 
-    - 默认策略每天备份 VM 一次。 每日备份将保留 30 天。 即时恢复快照将保留两天。
-    - 如果不想要使用默认策略，请选择“新建”，然后按下一过程中所述创建自定义策略。
+3. 在 [備份原則] 中，選取要與保存庫產生關聯的原則。
+    * 預設原則每天備份一次 VM。 每日備份保留 30 天。 立即復原快照集保留兩天。
+    * 如果您不要使用預設原則，請選取 [建立新項目]，然後建立自訂原則，如下一個程序所述。
 
-      ![默认备份策略](./media/backup-azure-arm-vms-prepare/default-policy.png)
+      ![預設備份原則](./media/backup-azure-arm-vms-prepare/default-policy.png)
 
-4. 在“选择虚拟机”中，选择要使用该策略备份的 VM。 然後按一下 [確定] 。
+4. 在 [選取虛擬機器] 中，選取您要使用原則來備份的 VM。 然後按一下 [確定] 。
 
-   - 随后将验证选定的 VM。
-   - 您只能選取與保存庫位於相同區域中的 VM。
-   - VM 只能在單一保存庫中備份。
+   * 選取的 VM 會經過驗證。
+   * 您只能選取與保存庫位於相同區域中的 VM。
+   * VM 只能在單一保存庫中備份。
 
      ![[選取虛擬機器] 窗格](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
-5. 在“备份”中，单击“启用备份”。 這會將原則部署到保存庫和 VM，並在執行於 Azure VM 的 VM 代理程式上安裝備份擴充功能。
-     
+    >[!NOTE]
+    > 只有與保存庫位於相同區域和訂用帳戶中的 VM，才可供設定備份。
+
+5. 在 [備份] 中，按一下 [啟用備份]。 這會將原則部署到保存庫和 VM，並在執行於 Azure VM 的 VM 代理程式上安裝備份擴充功能。
+
      ![[啟用備份] 按鈕](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
 
 啟用備份後：
 
-- 無論 VM 是否在執行，備份服務都會安裝備份擴充功能。
-- 初始备份将根据备份计划运行。
-- 运行备份时，请注意：
-    - 正在运行的 VM 最有可能捕获应用程序一致的恢复点。
-    - 但是，即使 VM 已关闭，也仍会将其备份。 此类 VM 称为脱机 VM。 在这种情况下，恢复点是崩溃一致的。
-    
+* 無論 VM 是否在執行，備份服務都會安裝備份擴充功能。
+* 初始備份會根據備份排程執行。
+* 當備份執行時，請注意：
+  * 執行中的 VM 最有機會捕捉到應用程式一致的復原點。
+  * 不過，即使 VM 已關閉，還是會備份。 這種 VM 稱為離線 VM。 在此情況下，復原點是「當機時保持一致」。
+* 不需要明確的輸出連線能力，也允許備份 Azure VM。
 
 ### <a name="create-a-custom-policy"></a>建立自訂原則
 
-如果已选择创建新的备份策略，请填写策略设置。
+如果您選擇建立新的備份原則，請填寫原則設定。
 
-1. 在“策略名称”中指定有意义的名称。
-2. 在“备份计划”中指定何时创建备份。 可为 Azure VM 创建每日或每周备份。
-2. 在“即时还原”中，指定要在本地将用于即时还原的快照保留多长时间。
-    - 还原时，已备份的 VM 磁盘将通过网络从存储复制到恢复存储位置。 使用即时还原时，可以利用在执行备份作业期间创建的存储于本地的快照，而无需等待将备份数据传输到保管库。
-    - 可将用于即时还原的快照保留一到五天。 默认设置为两天。
-3. 在“保留期”中，指定要将每日或每周备份点保留多长时间。
-4. 在“保留每月备份点”中，指定是否要保留每日或每周备份的每月备份。 
-5. 按一下 [ **確定** ] 儲存原則。
+1. 在 [原則名稱] 中，指定有意義的名稱。
+2. 在 [備份排程] 中，指定應該何時備份。 您可以每日或每週備份 Azure VM。
+3. 在 [立即還原] 中，指定快照集要在本機保留多久，以供立即還原。
+    * 還原時，已備份的 VM 磁碟會從儲存體經由網路，複製到復原儲存位置。 透過立即還原，您可以利用備份作業期間所建立儲存在本機的快照集，而不需要等待備份資料傳輸到保存庫。
+    * 可供立即還原的快照集可以保留一到五天。 預設值是兩天。
+4. 在 [保留期間] 中，指定每日或每週備份點要保留多久。
+5. 在 [每月備份點保留期] 中，指定是否要保留每日或每週備份的每月備份。
+6. 按一下 [ **確定** ] 儲存原則。
 
-    ![新建备份策略](./media/backup-azure-arm-vms-prepare/new-policy.png)
+    ![新增備份原則](./media/backup-azure-arm-vms-prepare/new-policy.png)
 
 > [!NOTE]
-   > Azure 備份在進行 Azure VM 備份時不支援依據日光節約變更而自動調整時鐘。 发生时间变化时，可根据需要手动修改备份策略。
+   > Azure 備份在進行 Azure VM 備份時不支援依據日光節約變更而自動調整時鐘。 當時間變更時，請視需要手動修改備份原則。
 
-## <a name="trigger-the-initial-backup"></a>触发初始备份
+## <a name="trigger-the-initial-backup"></a>觸發初始備份
 
-初始备份将根据计划运行，但你可以按如下所述手动运行：
+初始備份會根據排程執行，但也可以立即執行，如下所示：
 
 1. 在保存庫功能表中，按一下 [備份項目]。
 2. 在 [備份項目] 中，按一下 [Azure 虛擬機器]。
-3. 在“备份项”列表中，单击省略号 (...)。
+3. 在 [備份項目] 清單中，按一下省略符號 (...)。
 4. 按一下 [立即備份]。
-5. 在“立即备份”中，使用日历控件选择恢复点的最后保留日期。 然後按一下 [確定] 。
+5. 在 [立即備份] 中，使用行事曆控制項來選取復原點應該保留的最後一天。 然後按一下 [確定] 。
 6. 監視入口網站通知。 您可以在保存庫儀表板中監視作業進度 > [備份作業] > [進行中]。 根據您的 VM 大小，建立初始備份可能需要花一點時間。
 
-## <a name="optional-steps-install-agentallow-outbound"></a>可选步骤（安装代理/允许出站访问）
+## <a name="verify-backup-job-status"></a>驗證備份作業狀態
+
+每個 VM 備份的備份作業詳細資料包含兩個階段：**快照集** 階段，接著**將資料傳輸至保存庫**階段。<br/>
+快照集階段保證隨磁碟一起儲存的復原點可供**立即還原**，而且最多保留五天，視使用者所設定的快照集保留期而定。 「將資料傳輸至保存庫」在保存庫中建立復原點以長期保留。 只有在快照集階段完成之後，才會開始「將資料傳輸至保存庫」。
+
+  ![備份作業狀態](./media/backup-azure-arm-vms-prepare/backup-job-status.png)
+
+有兩個**子工作**在後端執行，一個用於前端備份作業，您可以從 [備份作業] 詳細資料刀鋒視窗中查看，如下所示：
+
+  ![備份作業狀態](./media/backup-azure-arm-vms-prepare/backup-job-phase.png)
+
+**將資料傳輸至保存庫**階段可能需要很多天才能完成，視磁碟大小、每個磁碟的變換和其他幾個因素而定。
+
+作業狀態根據下列情況而有所不同：
+
+**快照式** | **將資料傳輸至保存庫** | **作業狀態**
+--- | --- | ---
+Completed | 進行中 | 進行中
+Completed | 已略過 | Completed
+Completed | Completed | Completed
+Completed | 失敗 | 已完成但有警告
+失敗 | 失敗 | 失敗
+
+現在透過這項功能，對於相同的 VM，可以平行執行兩個備份，但在任一階段 (快照集、將資料傳輸至保存庫)，只有一個子工作可以執行。 因此，透過這項分離功能，將可避免進行中的備份作業導致次日的備份失敗。 接下來一天的備份可以完成快照集，而如果前一天的備份作業處於進行中狀態，則會略過**將資料傳輸至保存庫**。
+在保存庫中建立的增量復原點，將會從保存庫中建立的最後一個復原點來捕捉所有變換。 使用者的成本不受影響。
+
+## <a name="optional-steps"></a>選擇性步驟
+
 ### <a name="install-the-vm-agent"></a>安裝 VM 代理程式
 
-為機器上執行的 Azure VM 代理程式安裝擴充功能，以 Azure 備份來備份 Azure VM。 如果 VM 是从 Azure 市场映像创建的，则代理已安装并正在运行。 如果创建了自定义 VM 或者迁移了本地计算机，则可能需要根据下表中的摘要手动安装代理。
+為機器上執行的 Azure VM 代理程式安裝擴充功能，以 Azure 備份來備份 Azure VM。 如果您的 VM 是從 Azure Marketplace 映像建立，則代理程式已安裝且正在執行。 如果您建立自訂 VM，或遷移內部部署機器，您可能需要手動安裝代理程式，如下表概述。
 
 **VM** | **詳細資料**
 --- | ---
-**Windows** | 1.[下載並安裝](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)代理程式 MSI 檔案。<br/><br/> 2.以機器的系統管理員權限安裝。<br/><br/> 3.验证安装。 在 VM 上的“C:\WindowsAzure\Packages”中，右键单击“WaAppAgent.exe” >  选择“属性”。 在“详细信息”选项卡上，“产品版本”应为 2.6.1198.718 或更高。<br/><br/> 若要更新代理，请确保没有备份操作正在运行，并[重新安装代理](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。
-**Linux** | 使用分发版包存储库中的 RPM 或 DEB 包安装代理。 这是安装和升级 Azure Linux 代理的首选方法。 所有[認可的散發套件提供者](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)都會將 Azure Linux 代理程式套件整合於本身的映像和儲存機制中。 代理程式可從 [GitHub](https://github.com/Azure/WALinuxAgent) 取得，但不建議從該處安裝。<br/><br/> 若要更新代理，请确保没有备份操作正在运行，并更新二进制文件。
+**Windows** | 1.[下載並安裝](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)代理程式 MSI 檔案。<br/><br/> 2.以機器的系統管理員權限安裝。<br/><br/> 3.驗證安裝。 在 VM 的 *C:\WindowsAzure\Packages* 中，以滑鼠右鍵按一下 **WaAppAgent.exe** > [內容]。 在 [詳細資料] 索引標籤上，[產品版本] 應該為 2.6.1198.718 或更高版本。<br/><br/> 如果您要更新代理程式，請確定沒有任何備份作業正在執行，然後[重新安裝代理程式](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。
+**Linux** | 從散發套件中存放庫，使用 RPM 或 DEB 套件進行安裝。 這是安裝和升級 Azure Linux 代理程式的慣用方法。 所有[認可的散發套件提供者](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)都會將 Azure Linux 代理程式套件整合於本身的映像和儲存機制中。 代理程式可從 [GitHub](https://github.com/Azure/WALinuxAgent) 取得，但不建議從該處安裝。<br/><br/> 如果您要更新代理程式，請確定沒有任何備份作業正在執行，然後更新二進位檔。
 
-### <a name="explicitly-allow-outbound-access"></a>显式允许出站访问
-
-VM 上运行的备份扩展需要对 Azure 公共 IP 地址进行出站访问。
-
-- 一般情况下，无需显式允许 Azure VM 的出站网络访问即可让它与 Azure 备份进行通信。
-- 如果 VM 连接遇到问题，或者在尝试连接时出现 **ExtensionSnapshotFailedNoNetwork** 错误，应显式允许访问，使备份扩展能够与备份流量的 Azure 公共 IP 地址通信。 下表汇总了访问方法。
-
-
-**選項** | **Action** | **詳細資料** 
---- | --- | --- 
-**設定 NSG 規則** | 允許 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。<br/><br/> 可以添加一个允许使用[服务标记](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure)访问 Azure 备份服务的规则，而无需允许并管理每个地址范围。 | [深入了解](../virtual-network/security-overview.md#service-tags)服務標記。<br/><br/> 服务标记可以简化访问管理，且不会产生额外的费用。
-**部署 Proxy** | 部署 HTTP Proxy 伺服器來路由傳送流量。 | 提供整個 Azure 的存取權，而不只是儲存體的存取權。<br/><br/> 可精確控制儲存體 URL。<br/><br/> VM 具有單一網際網路存取點。<br/><br/> Proxy 需要額外成本。
-**設定 Azure 防火牆** | 使用 Azure 備份服務的 FQDN 標記，允許流量通過 VM 上的 Azure 防火牆 | 如果在 VNet 子网中设置了 Azure 防火墙，则 FQDN 标记很容易使用。<br/><br/> 无法创建自己的 FQDN 标记，无法修改标记中的 FQDN。<br/><br/> 如果 Azure VM 包含托管磁盘，则你可能需要在防火墙上额外打开一个端口 (8443)。
-
-#### <a name="establish-network-connectivity"></a>建立網路連線
-
-通过代理或防火墙与 NSG 建立连接
-
-##### <a name="set-up-an-nsg-rule-to-allow-outbound-access-to-azure"></a>設定 NSG 規則以允許對 Azure 的輸出存取
-
-如果对 VM 的访问由 NSG 管理，请允许通过所需的范围和端口对备份存储进行出站访问。
-
-1. 在 VM 属性 >“网络”中，选择“添加出站端口规则”。
-2. 在“添加出站安全规则”中，选择“高级”。
-3. 在 [來源] 中，選取 [VirtualNetwork]。
-4. 在“源端口范围”中输入一个星号 (*)，以允许从任何端口进行出站访问。
-5. 在 [目的地] 中，選取 [服務標記]。 從清單中選取 [儲存體區域]。 区域是保管库和要备份的 VM 所在的位置。
-6. 在 [目的地連接埠範圍] 中，選取連接埠。
-    - 使用未加密儲存體帳戶的未受控 VM：80
-    - 使用加密儲存體帳戶的未受控 VM：443 (預設設定)
-    - 受控 VM：8443。
-7. 在 [通訊協定] 中，選取 [TCP]。
-8. 在 [優先順序] 中，指定比任何優先順序較高的拒絕規則都小的優先順序值。
-   
-   如果某个规则拒绝访问，则新的允许规则的优先级必须更高。 例如，如果您有優先順序設為 1000 的 **Deny_All** 規則，則新規則必須設為小於 1000。
-9. 提供规则的名称和说明，然后选择“确定”。
-
-您可以將 NSG 規則套用至多個 VM 來允許輸出存取。 這段影片將逐步說明其程序。
-
->[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
-
-
-##### <a name="route-backup-traffic-through-a-proxy"></a>透過 Proxy 路由備份流量
-
-您可以透過 Proxy 來路由備份流量，然後提供對所需 Azure 範圍的 Proxy 存取權。 将代理 VM 配置为允许以下操作：
-
-- Azure VM 應透過 Proxy 路由所有連往公用網際網路的 HTTP 流量。
-- 代理应该允许适用虚拟网络中的 VM 传入的流量。
-- NSG **NSF-lockdown** 需要一個規則，以允許從 Proxy VM 輸出的網際網路流量。
-
-###### <a name="set-up-the-proxy"></a>設定 Proxy
-
-如果您沒有系統帳戶 Proxy，請以下列方式設定一個：
-
-1. 下載 [PsExec](https://technet.microsoft.com/sysinternals/bb897553)。
-2. 執行 **PsExec.exe -i -s cmd.exe**，在系統帳戶下執行命令提示字元。
-3. 在系統內容中執行瀏覽器。 例如：对于 Internet Explorer，请使用 **%PROGRAMFILES%\Internet Explorer\iexplore.exe**。  
-4. 定義 Proxy 設定。
-   - 在 Linux 機器上：
-     - 將以下這一行新增至 **/etc/environment** 檔案：
-       - **http_proxy=http:\//代理 IP 地址:代理端口**
-     - 將以下幾行新增至 **/etc/waagent.conf** 檔案：
-         - **HttpProxy.Host=proxy IP address**
-         - **HttpProxy.Port=proxy port**
-   - 在 Windows 機器上，在瀏覽器設定中指定應使用 Proxy。 如果您目前使用使用者帳戶上的 Proxy，您可以使用此指令碼，將此設定套用至系統帳戶層級。
-       ```powershell
-      $obj = Get-ItemProperty -Path Registry::"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections"
-      Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name DefaultConnectionSettings -Value $obj.DefaultConnectionSettings
-      Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name SavedLegacySettings -Value $obj.SavedLegacySettings
-      $obj = Get-ItemProperty -Path Registry::"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
-      Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name ProxyEnable -Value $obj.ProxyEnable
-      Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name Proxyserver -Value $obj.Proxyserver
-
-       ```
-
-###### <a name="allow-incoming-connections-on-the-proxy"></a>允許 Proxy 上的連入連線
-
-在 Proxy 設定中允許連入連線。
-
-1. 在 Windows 防火墙中，打开“高级安全 Windows 防火墙”。
-2. 以滑鼠右鍵按一下 [輸入規則] > [新增規則]。
-3. 在“规则类型”中，选择“自定义” > “下一步”。
-4. 在 [程式] 中，選取 [所有程式] > [下一步]。
-5. 在“协议和端口”中：
-   - 将类型设置为“TCP”。
-   - 将“本地端口”设置为“特定端口”。
-   - 将“远程端口”设置为“所有端口”。
-  
-6. 完成精靈，並指定規則的名稱。
-
-###### <a name="add-an-exception-rule-to-the-nsg-for-the-proxy"></a>新增 Proxy 的 NSG 例外規則
-
-在 NSG **NSF-lockdown** 上，允許從 10.0.0.5 上的任何連接埠傳輸至 80 (HTTP) 或 443 (HTTPS) 連接埠上的任何網際網路位址的流量。
-
-下列 PowerShell 指令碼提供允許流量的範例。
-如果不想要允许对所有公共 Internet 地址进行出站访问，可以指定 IP 地址范围 (`-DestinationPortRange`)，或使用 storage.region 服务标记。   
-
-```powershell
-Get-AzureNetworkSecurityGroup -Name "NSG-lockdown" |
-Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -Type Outbound -Priority 200 -SourceAddressPrefix "10.0.0.5/32" -SourcePortRange "*" -DestinationAddressPrefix Internet -DestinationPortRange "80-443"
-```
-
-##### <a name="allow-firewall-access-with-an-fqdn-tag"></a>使用 FQDN 标记允许通过防火墙访问
-
-可以设置 Azure 防火墙，以允许网络流量对 Azure 备份进行出站访问。
-
-- [了解](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)如何部署 Azure 防火牆。
-- [閱讀](https://docs.microsoft.com/azure/firewall/fqdn-tags) FQDN 標記的相關資訊。
-
-
+>[!NOTE]
+> **Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇性磁碟備份和還原。**
+>
+>目前，Azure 備份支援使用虛擬機器備份解決方案來同時備份 VM 中的所有磁碟 (作業系統與資料)。 使用排除磁碟功能時，您可以從 VM 的諸多資料磁碟中，選擇備份一個或多個磁碟。 如此可提供有效率且符合成本效益的解決方案，以滿足您的備份和還原需求。 每個復原點都有備份作業所含磁碟的資料，這進一步可讓您在還原作業期間，從給定的復原點還原磁碟子集。 從快照集和保存庫還原時都是如此。
+>
+>**若要註冊預覽版，請將電子郵件寄到 AskAzureBackupTeam@microsoft.com**
 
 ## <a name="next-steps"></a>後續步驟
 
-- 排查 [Azure VM 代理](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)或 [Azure VM 备份](backup-azure-vms-troubleshoot.md)出现的任何问题。
-- [还原](backup-azure-arm-restore-vms.md) Azure VM。
-
+* 對 [Azure VM 代理程式](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)或 [Azure VM 備份](backup-azure-vms-troubleshoot.md)的任何問題進行疑難排解。
+* [還原](backup-azure-arm-restore-vms.md) Azure VM。

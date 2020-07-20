@@ -1,50 +1,33 @@
 ---
-title: Azure Service Fabric 生產環境整備檢查清單 | Microsoft Docs
+title: Azure Service Fabric 生產整備度檢查清單
 description: 遵循最佳做法來使您的 Service Fabric 應用程式和叢集生產環境準備就緒。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 7/10/2018
-ms.author: aljo
-ms.openlocfilehash: e94280f9df1d4ac59856a73f6f6c2b7f7a0b9cc0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 6/05/2019
+ms.openlocfilehash: 7011860b8e1162b35cbfee3a9e796163710b7fdc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60726582"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610025"
 ---
 # <a name="production-readiness-checklist"></a>實際執行整備檢查清單
 
 您的應用程式和叢集已經準備好要接受生產環境流量嗎？ 執行並測試您的應用程式和叢集，不一定表示它已經準備好進入生產環境。 完成下列檢查清單，使您的應用程式和叢集保持順暢執行。 我們強烈建議您檢查這些所有項目。 您顯然可以選擇針對特定明細項目 (例如，您自己的診斷架構) 使用替代的解決方案。
 
 
-## <a name="pre-requisites-for-production"></a>適用於生產環境的必要條件
-1. [Azure Service Fabric 安全性最佳做法](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices)如下： 
-1. 使用 X.509 憑證
-1. 設定安全性原則
-1. 設定 Azure Service Fabric 的 SSL
-1. 使用網路隔離和安全性搭配 Azure Service Fabric
-1. 設定 Azure Key Vault 以提供安全性
-1. Microsoft.Network/loadBalancers 將使用者新增至角色
-1. 如果使用 Actors 程式設計模型，請實作 Reliable Actors 安全性設定
+## <a name="prerequisites-for-production"></a>生產環境的必要條件
+1. Azure Service Fabric 最佳做法：[應用程式設計](./service-fabric-best-practices-applications.md)、[安全性](./service-fabric-best-practices-security.md)、[網路](./service-fabric-best-practices-networking.md)、[容量規劃和調整](./service-fabric-best-practices-capacity-scaling.md)、[基礎結構](./service-fabric-best-practices-infrastructure-as-code.md)即程式碼，以及[監視和診斷](./service-fabric-best-practices-monitoring.md)。 
+1. 如果您使用 Reliable Actors 程式設計模型，而且需要安全的服務間通訊，請[設定 FabricTransport 設定](./service-fabric-reliable-actors-fabrictransportsettings.md)。
 1. 若叢集的核心超過 20 個或節點超過 10 個，請建立系統服務專用的主要節點類型。 新增[放置條件約束](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)，以保留系統服務的主要節點類型。
 1. 針對主要節點類型使用 D2v2 或更高的 SKU。 建議挑選至少具有 50 GB 硬碟容量的 SKU。
 1. 生產環境叢集必須是[安全的](service-fabric-cluster-security.md)。 如需設定安全叢集的範例，請參閱此[叢集範本](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG) \(英文\)。 針對憑證使用通用名稱，並避免使用自我簽署的憑證。
 1. 新增[容器和服務的資源條件約束](service-fabric-resource-governance.md)，如此一來，它們就不會耗用超過 75% 的節點資源。 
-1. 了解並設定[持久性層級](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)。 建議針對執行具狀態工作負載的節點類型使用銀級或更高的持久性層級。 主要節點類型的持久性層級應該設定為銀級或更高層級。
-1. 了解並挑選節點類型的[可靠性層級](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster)。 建議採用銀級或更高層級的可靠性。
+1. 了解並設定[持久性層級](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)。 建議針對執行具狀態工作負載的節點類型使用銀級或更高的持久性層級。 主要節點類型的持久性層級應該設定為銀級或更高層級。
+1. 了解並挑選節點類型的[可靠性層級](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster)。 建議採用銀級或更高層級的可靠性。
 1. 載入您的工作負載並進行調整測試，以識別叢集的[容量需求](service-fabric-cluster-capacity.md)。 
-1. 您的服務和應用程式會受到監視，並產生及儲存應用程式記錄，而且會發出警示。 例如，請參閱[將記錄新增至 Service Fabric 應用程式](service-fabric-how-to-diagnostics-log.md)並[使用 Azure 監視器記錄檔監視容器](service-fabric-diagnostics-oms-containers.md)。
-1. 叢集會監視與警示 (例如，使用[Azure 監視器記錄](service-fabric-diagnostics-event-analysis-oms.md))。 
-1. 基礎的虛擬機器擴展集基礎結構監視與警示 (例如，使用[Azure 監視器記錄](service-fabric-diagnostics-oms-agent.md)。
+1. 您的服務和應用程式會受到監視，並產生及儲存應用程式記錄，而且會發出警示。 例如，請參閱[將記錄新增至您的 Service Fabric 應用程式](service-fabric-how-to-diagnostics-log.md)和[使用 Azure 監視器記錄監視容器](service-fabric-diagnostics-oms-containers.md)。
+1. 叢集會受到警示監視（例如，使用[Azure 監視器記錄](service-fabric-diagnostics-event-analysis-oms.md)）。 
+1. 基礎虛擬機器擴展集基礎結構會受到警示監視（例如，使用[Azure 監視器記錄](service-fabric-diagnostics-oms-agent.md)）。
 1. 叢集一律具有[主要和次要憑證](service-fabric-cluster-security-update-certs-azure.md) (讓您不會遭到鎖定)。
 1. 分別維護適用於開發、預備及生產環境的叢集。 
 1. [應用程式升級](service-fabric-application-upgrade.md)和[叢集升級](service-fabric-tutorial-upgrade-cluster.md)均會先在開發和預備叢集中進行測試。 

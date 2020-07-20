@@ -1,19 +1,14 @@
 ---
 title: Azure 事件格線訂用帳戶的結構描述
-description: 描述訂閱具有 Azure 事件格線之事件的屬性。
-services: event-grid
-author: banisadr
-manager: timlt
-ms.service: event-grid
+description: 本文說明使用 Azure 事件方格來訂閱事件的屬性。 事件方格訂用帳戶架構。
 ms.topic: reference
-ms.date: 01/02/2019
-ms.author: babanisa
-ms.openlocfilehash: 9464ab89e08f53f61cb6f5a4b1e91da35b785af0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 07/07/2020
+ms.openlocfilehash: 21016627e545cc4935b4ac213df675e894c12d95
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60822793"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119067"
 ---
 # <a name="event-grid-subscription-schema"></a>事件格線訂用帳戶的結構描述
 
@@ -35,24 +30,24 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
 
 | 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
-| 目的地 | 物件 | 定義端點的物件。 |
-| filter | 物件 | 篩選事件類型的選擇性欄位。 |
+| 目的地 | 物件 (object) | 定義端點的物件。 |
+| filter | 物件 (object) | 篩選事件類型的選擇性欄位。 |
 
 ### <a name="destination-object"></a>目的地物件
 
 | 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
-| endpointType | string | 訂用帳戶的端點類型 (webhook/HTTP、事件中樞或佇列)。 | 
-| endpointUrl | string | 此事件訂用帳戶中事件的目的地 URL。 | 
+| endpointType | 字串 | 訂用帳戶的端點類型 (webhook/HTTP、事件中樞或佇列)。 | 
+| endpointUrl | 字串 | 此事件訂用帳戶中事件的目的地 URL。 | 
 
 ### <a name="filter-object"></a>篩選物件
 
 | 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | includedEventTypes | array | 事件訊息中的事件類型完全符合這些事件類型名稱其中之一時，即會符合。 事件名稱不符合事件來源的已註冊事件類型名稱時，會引發錯誤。 預設會符合所有事件類型。 |
-| subjectBeginsWith | string | 事件訊息中對主體欄位的前置詞符合篩選。 預設值或空字串會符合全部。 | 
-| subjectEndsWith | string | 事件訊息中對主體欄位的後置詞符合篩選。 預設值或空字串會符合全部。 |
-| isSubjectCaseSensitive | string | 控制篩選的區分大小寫比對。 |
+| subjectBeginsWith | 字串 | 事件訊息中對主體欄位的前置詞符合篩選。 預設值或空字串會符合全部。 | 
+| subjectEndsWith | 字串 | 事件訊息中對主體欄位的後置詞符合篩選。 預設值或空字串會符合全部。 |
+| isSubjectCaseSensitive | 字串 | 控制篩選的區分大小寫比對。 |
 
 
 ## <a name="example-subscription-schema"></a>範例訂用帳戶的結構描述
@@ -68,7 +63,7 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
     },
     "filter": {
       "includedEventTypes": [ "Microsoft.Storage.BlobCreated", "Microsoft.Storage.BlobDeleted" ],
-      "subjectBeginsWith": "blobServices/default/containers/mycontainer/log",
+      "subjectBeginsWith": "/blobServices/default/containers/mycontainer/log",
       "subjectEndsWith": ".jpg",
       "isSubjectCaseSensitive ": "true"
     }

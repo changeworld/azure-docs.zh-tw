@@ -1,5 +1,5 @@
 ---
-title: 使用 Windows VM 系統指派的受控識別，以利用 SAS 認證存取 Azure 儲存體
+title: 教學課程`:`使用受控識別透過 SAS 認證存取 Azure 儲存體 - Azure AD
 description: 本教學課程說明如何使用 Windows VM 系統指派的受控識別，以利用 SAS 認證 (而非儲存體帳戶來存取金鑰) 來存取 Azure 儲存體。
 services: active-directory
 documentationcenter: ''
@@ -9,18 +9,18 @@ editor: daveba
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/24/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23ec4d2a67beb9b5f903aa0b7f03196b47db3f78
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.openlocfilehash: c1ed86db85de8d4665c9eecfbde96b0909b12362
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443506"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608308"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>教學課程：使用 Windows VM 系統指派的受控識別，透過 SAS 認證來存取 Azure 儲存體
 
@@ -50,7 +50,7 @@ ms.locfileid: "58443506"
 3. 輸入儲存體帳戶的名稱，您稍後將會使用它。  
 4. [部署模型] 和 [帳戶類型] 應該分別設定為「資源管理員」和「一般用途」。 
 5. 確定 [訂用帳戶] 和 [資源群組] 符合您在上一個步驟中建立 VM 時指定的值。
-6. 按一下頁面底部的 [新增] 。
+6. 按一下 [建立]。
 
     ![建立新的儲存體帳戶](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -112,7 +112,7 @@ Azure 儲存體原生並不支援 Azure AD 驗證。  不過，您可以使用�
 
 現在請使用上一節中取出的存取權杖，使用 PowerShell 對資源管理員進行呼叫，以建立儲存體 SAS 認證。 擁有 SAS 認證後，便可以呼叫儲存體作業。
 
-對於此要求，我們會使用下列 HTTP 要求參數建立 SAS 認證：
+針對此要求，我們將使用下列 HTTP 要求參數來建立 SAS 認證：
 
 ```JSON
 {

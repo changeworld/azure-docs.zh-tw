@@ -1,30 +1,29 @@
 ---
-title: Azure PowerShell 指令碼範例 - 新增網路安全性群組規則 | Microsoft Docs
+title: 在 Powershell 中新增網路安全性群組規則
 description: Azure PowerShell 指令碼範例 - 新增網路安全性群組，以便允許特定連接埠上的輸入流量。
 services: service-fabric
 documentationcenter: ''
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
-ms.devlang: na
 ms.topic: sample
 ms.date: 11/28/2017
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 526a568bbcd7249e4f8917e8cdd82a0de71bfb0a
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 33ee8028031bf94d69d11b08c347f84db94494a3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664993"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75610415"
 ---
 # <a name="add-an-inbound-network-security-group-rule"></a>新增輸入網路安全性群組規則
 
-本範例指令碼會建立網路安全性群組規則，以允許連接埠 8081 上的輸入流量。  指令碼會取得叢集所在的 `Microsoft.Network/networkSecurityGroups` 資源、建立新的網路安全性設定規則，並更新網路安全性群組。 視需要自訂參數。
+本範例指令碼會建立網路安全性群組規則，以允許連接埠 8081 上的輸入流量。  指令碼會取得網路安全性群組、建立新的網路安全性設定規則，並更新網路安全性群組。 視需要自訂參數。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -38,7 +37,7 @@ ms.locfileid: "58664993"
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | 取得 `Microsoft.Network/networkSecurityGroups` 資源。 |
 |[Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup)| 依名稱取得網路安全性群組。|

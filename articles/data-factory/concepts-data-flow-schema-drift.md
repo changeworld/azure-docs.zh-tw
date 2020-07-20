@@ -1,76 +1,79 @@
 ---
-title: Azure Data Factory 對應資料流程結構描述漂移
+title: 對應資料流程中的架構漂移
 description: 透過結構描述漂移在 Azure Data Factory 中建置復原性資料流程
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/04/2018
-ms.openlocfilehash: aadab68185347dc0a12e0802f675efe13ecea545
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: seo-lt-2019
+ms.date: 04/15/2020
+ms.openlocfilehash: 5b7fe9cf6c751bfb96dff8aa911172ae91a17653
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61261872"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84886635"
 ---
-# <a name="mapping-data-flow-schema-drift"></a>對應資料流程結構描述漂移
+# <a name="schema-drift-in-mapping-data-flow"></a>對應資料流程中的架構漂移
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-結構描述漂移的概念是您的來源經常變更中繼資料的情況。 欄位、資料行、類型等都可以即時新增、移除或變更。 不需要處理結構描述漂移，您的結構描述變得容易受上游資料來源變更所影響。 當傳入的資料行和欄位變更時，典型的 ETL 模式會失敗，因為它們通常會繫結至這些來源名稱。
+架構漂移是您的來源通常會變更中繼資料的情況。 欄位、資料行和、類型可以即時加入、移除或變更。 如果沒有處理架構漂移的情況，您的資料流程就會變得容易受到上游資料來源變更的影響。 當傳入的資料行和欄位變更時，一般 ETL 模式會失敗，因為它們通常會系結至這些來源名稱。
 
-若要防止結構描述漂移，資料流程工具中一定要有一些設施，可讓您以資料工程師的身分：
+若要防止架構漂移，請務必讓資料流程工具中的設備可讓您（身為數據工程師）：
 
-* 定義具有可變動欄位名稱、資料類型、值和大小的來源
+* 定義具有可變功能變數名稱、資料類型、值和大小的來源
 * 定義可搭配資料模式 (而不是硬式編碼的欄位和值) 運作的轉換參數
 * 定義一些運算式，以了解要比對傳入欄位的模式，而不需使用具名欄位
 
-## <a name="how-to-implement-schema-drift"></a>如何實作結構描述漂移
+Azure Data Factory 原本就支援從執行變更為執行的彈性架構，讓您可以建立泛型資料轉換邏輯，而不需要重新編譯您的資料流程。
 
-* 選擇在您的來源轉換中 [允許結構描述漂移]
+您需要在資料流程中做出架構決策，才能接受整個流程的結構描述漂移。 當您這樣做時，您可以抵抗來自來源的結構描述變更。 不過，您將會失去整個資料流程中的資料行和類型的早期繫結。 Azure Data Factory 會將架構漂移流程視為晚期繫結流程，因此當您建立轉換時，在整個流程的架構視圖中，不會提供漂移的資料行名稱。
 
-<img src="media/data-flow/schemadrift001.png" width="400">
+這段影片提供一些複雜解決方案的簡介，您可以在 ADF 中使用資料流程的架構漂移功能輕鬆建立。 在此範例中，我們會根據彈性資料庫架構來建立可重複使用的模式：
 
-* 在您選取此選項後，每次執行資料流程時都會從您的來源讀取所有傳入欄位，而這些欄位會通過整個流程送至接收。
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tyx7]
 
-* 請務必使用「自動對應」來對應「接收轉換」中的所有新欄位，以便選取所有新欄位並置入您的目的地：
+## <a name="schema-drift-in-source"></a>來源中的架構漂移
 
-<img src="media/data-flow/automap.png" width="400">
+從來源定義傳入資料流程的資料行會定義為 "漂移"，但不存在於您的來源投射中。 您可以從來源轉換中的 [投射] 索引標籤，查看您的來源投射。 當您選取來源的資料集時，ADF 會自動從資料集取得架構，並從該資料集架構定義建立投射。
 
-* 在採用簡單 [來源] -> [接收] (也稱為複製) 對應的情況下引進新欄位，一切都能運作。
+在來源轉換中，架構漂移定義為讀取未定義資料集架構的資料行。 若要啟用架構漂移，請選取 [允許來源轉換中的**架構漂移**]。
 
-* 若要在處理結構描述漂移的工作流程中新增轉換，您可以使用模式比對，依照名稱、類型和值比對資料行。
+![架構漂移來源](media/data-flow/schemadrift001.png "架構漂移來源")
 
-* 如果您想要建立了解「結構描述漂移」的轉換，請按一下 [衍生資料行] 或 [彙總] 轉換中的 [新增資料行模式]。
+啟用架構漂移時，會在執行期間從您的來源讀取所有傳入欄位，並將整個流程傳遞至接收。 根據預設，所有新偵測到的資料行（稱為*漂移 columns*）都會以字串資料類型的形式抵達。 如果您希望資料流程自動推斷漂移資料行的資料類型，請核取 [推斷來源設定中的**漂移資料行類型**]。
 
-<img src="media/data-flow/columnpattern.png" width="400">
+## <a name="schema-drift-in-sink"></a>接收中的架構漂移
 
-> [!NOTE]
-> 您需要在資料流程中做出架構決策，才能接受整個流程的結構描述漂移。 當您這樣做時，您可以抵抗來自來源的結構描述變更。 不過，您會遺失整個資料流程中早期的資料行與類型繫結。 Azure Data Factory 會將結構描述漂移流程視為晚期繫結的流程，因此當您建置轉換時，資料行名稱無法供您在整個流程的結構描述檢視中使用。
+在接收轉換中，當您在接收資料架構中定義的內容之上撰寫其他資料行時，架構漂移就是。 若要啟用架構漂移，請選取 [在您的接收轉換中**允許架構漂移**]。
 
-<img src="media/data-flow/taxidrift1.png" width="400">
+![架構漂移接收](media/data-flow/schemadrift002.png "架構漂移接收")
 
-在「計程車示範」範例資料流程中，底部資料流程中有一個採用 TripFare 來源的範例結構描述漂移。 請注意在 [彙總] 轉換中，我們對彙總欄位使用「資料行模式」設計。 我們假設資料可以變更，且在執行之間可能不會以相同的順序出現，而不需命名特定資料行，或依照位置尋找資料行。
+如果已啟用架構漂移，請確定 [對應] 索引標籤中的 [**自動對應**] 滑杆已開啟。 在上使用此滑杆，所有傳入的資料行都會寫入至您的目的地。 否則，您必須使用以規則為基礎的對應來寫入漂移資料行。
 
-在此 Azure Data Factory 資料流程結構描述漂移處理的範例中，我們已建置彙總以掃描 'double' 類型的資料行，並且知道資料網域包含每趟車程的價格。 不論資料行置於何處，也不論資料行的命名為何，我們接著都可以跨來源中的所有 double 欄位執行彙總數學計算。
+![接收自動對應](media/data-flow/automap.png "接收自動對應")
 
-Azure Data Factory 資料流程語法會使用 $$ 表示您的比對模式中每個相符的資料行。 您也可以使用複雜的字串搜尋和規則運算式函式來比對資料行名稱。 在此情況下，我們將根據 'double' 類型資料行的每個相符項目，建立新的彙總欄位名稱，並將 ```_total``` 文字附加至每個相符的名稱： 
+## <a name="transforming-drifted-columns"></a>轉換漂移資料行
 
-```concat($$, '_total')```
+當您的資料流程具有漂移資料行時，您可以使用下列方法在轉換中存取它們：
 
-然後，我們將會捨入並加總每個相符資料行的值：
+* 使用 `byPosition` 和 `byName` 運算式，依名稱或位置號碼明確參考資料行。
+* 在衍生的資料行或匯總轉換中加入資料行模式，以符合名稱、資料流程、位置或類型的任何組合
+* 在 Select 或 Sink 轉換中新增以規則為基礎的對應，以透過模式將漂移的資料行與資料行的別名進行比對
 
-```round(sum ($$))```
+如需如何執行資料行模式的詳細資訊，請參閱[對應資料流程中的資料行模式](concepts-data-flow-column-pattern.md)。
 
-您可以使用 Azure Data Factory 資料流程範例「計程車示範」測試看看。 使用 [資料流程] 設計介面頂端的 [偵錯] 切換開關來開啟 [偵錯] 工作階段，您便可以互動方式查看您的結果：
+### <a name="map-drifted-columns-quick-action"></a>地圖漂移資料行快速動作
 
-<img src="media/data-flow/taxidrift2.png" width="800">
+若要明確參考漂移資料行，您可以透過資料預覽快速動作，快速產生這些資料行的對應。 開啟 [ [debug] 模式](concepts-data-flow-debug-mode.md)之後，移至 [資料預覽] 索引標籤，然後按一下 [重新整理] 以提取資料預覽。 **Refresh** 如果 data factory 偵測到漂移資料行存在，您可以按一下 [**對應漂移**] 並產生衍生的資料行，讓您在下游的架構視圖中參考所有的漂移資料行。
 
-## <a name="access-new-columns-downstream"></a>下游存取新的資料行
+![地圖漂移](media/data-flow/mapdrifted1.png "地圖漂移")
 
-當您產生新的資料行與資料行模式時，您可以存取這些新的資料行，稍後您使用 「 byName"運算式函數資料流程轉換。
+在產生的「衍生的資料行」轉換中，每個漂移資料行都會對應到其偵測到的名稱和資料類型。 在上述資料預覽中，會偵測到資料行 ' movieId ' 為整數。 按一下**對應漂移**之後，movieId 就會在衍生的資料行中定義為 `toInteger(byName('movieId'))` ，並包含在下游轉換的架構視圖中。
+
+![地圖漂移](media/data-flow/mapdrifted2.png "地圖漂移")
 
 ## <a name="next-steps"></a>後續步驟
-
-在 [流程運算式語言](data-flow-expression-functions.md)您會發現額外的功能資料行模式和包括 「 byName"和"byPosition"的結構描述漂移。
+在[資料流程運算式語言](data-flow-expression-functions.md)中，您會發現資料行模式和架構漂移的其他功能，包括 "byName" 和 "byPosition"。

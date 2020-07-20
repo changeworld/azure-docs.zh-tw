@@ -1,0 +1,53 @@
+### YamlMime:Hub
+title: 適用於產業的 Azure 文件
+summary: 了解如何使用 Azure，來針對常見的產業使用案例建置解決方案。
+brand: azure
+metadata:
+  title: 適用於產業的 Azure 文件
+  description: 了解如何使用 Azure，來針對常見的產業使用案例建置解決方案。
+  ms.service: azure-industry
+  ms.topic: hub-page
+  ms.collection: collection
+  author: DCtheGeek
+  ms.author: dacoulte
+  ms.date: 11/04/2019
+  ms.openlocfilehash: 1ea17f2aef7cd2dc55b93db7e9114adcd534d004
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "75435158"
+highlightedContent:
+  items:
+  - title: Azure FarmBeats
+    itemType: overview
+    url: ./agriculture/overview-azure-farmbeats.md
+  - title: Community 論壇
+    itemType: concept
+    url: https://aka.ms/FarmBeatsMSDN
+  - title: UserVoice (意見反應)
+    itemType: get-started
+    url: https://aka.ms/FarmBeatsForum
+productDirectory:
+  title: 產業解決方案區域
+  items:
+  - title: Azure FarmBeats
+    imageSrc: ../media/index/industry-agriculture-farmbeats.svg
+    summary: 在雲端中快速建置數位農業解決方案。
+    url: ./agriculture/overview-azure-farmbeats.md
+  - title: 金融服務
+    imageSrc: ../media/index/industry-financial.png
+    summary: 金融服務業相關的解決方案和使用案例。
+    url: /azure/industry-marketing/financial/
+  - title: 醫療保健與生命科學服務
+    imageSrc: ../media/index/industry-health.png
+    summary: 醫療保健與生命科學相關的解決方案和使用案例。
+    url: /azure/industry-marketing/health/
+  - title: 製造
+    imageSrc: ../media/index/industry-manufacturing.png
+    summary: 製造業相關的解決方案和使用案例。
+    url: /azure/industry-marketing/manufacturing/
+  - title: 零售
+    imageSrc: ../media/index/industry-retail.png
+    summary: 零售業相關的解決方案和使用案例。
+    url: /azure/industry-marketing/retail/

@@ -9,11 +9,11 @@ ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: c79b6f854dc78670a7eb8a1275c3e2fc46fcdd99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61450207"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67174414"
 ---
 ### <a name="code-walkthrough"></a>程式碼逐步解說
 
@@ -26,7 +26,7 @@ ms.locfileid: "61450207"
 - 裝置支援的方法清單。
 - 裝置所傳送之遙測訊息的結構描述。
 
-
+[!code-cpp[Define data structures for Chiller](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=datadefinition "Define data structures for Chiller")]
 
 範例包括 **serializeToJson** 函式，此函式會使用 Parson 程式庫來序列化此資料結構。
 
@@ -39,15 +39,15 @@ ms.locfileid: "61450207"
 
 下列程式碼片段會顯示 **device_method_callback** 回呼函式。 此函式會決定當從解決方案加速器收到方法呼叫時要採取的動作。 函式會在 **userContextCallback**參數中收到對 **Chiller** 資料結構的參考。 在 **main** 函式中設定回呼函式時，會設定 **userContextCallback** 的值：
 
-
+[!code-cpp[Device method callback](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=devicemethodcallback "Device method callback")]
 
 當解決方案加速器呼叫韌體更新方法時，範例會還原序列化 JSON 承載並啟動背景執行緒以完成更新程序。 下列程式碼片段顯示在執行緒上執行的 **do_firmware_update**：
 
-
+[!code-cpp[Firmware update thread](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=firmwareupdate "Firmware update thread")]
 
 下列程式碼片段顯示用戶端如何將遙測訊息傳送到解決方案加速器。 訊息屬性包括訊息結構描述，有助於解決方案加速器在儀表板上顯示遙測：
 
-
+[!code-cpp[Send telemetry](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=sendmessage "Send telemetry")]
 
 範例中的 **main** 函式：
 
@@ -57,4 +57,4 @@ ms.locfileid: "61450207"
 - 設定裝置方法回呼函式。
 - 傳送模擬的遙測值給解決方案加速器。
 
-
+[!code-cpp[Main](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=main "Main")]

@@ -1,32 +1,29 @@
 ---
-title: 將 X12 訊息解碼 - Azure Logic Apps | Microsoft Docs
+title: 解碼 X12 訊息
 description: 在採用 Enterprise Integration Pack 的 Azure Logic Apps 中，使用 X12 訊息解碼器來驗證 EDI 並產生通知
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jonfan, divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: 4fd48d2d-2008-4080-b6a1-8ae183b48131
 ms.date: 01/27/2017
-ms.openlocfilehash: 4a19462f4f849602fd14fe1204f1c7e3c01e6ec4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 918516a5629f8570d54c641ffc29f2367937266f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701453"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74792365"
 ---
 # <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 將 Azure Logic Apps 中的 X12 訊息解碼
 
 使用 Decode X12 訊息連接器，您可以對照交易夥伴協議來驗證信封、驗證 EDI 和夥伴特定的屬性、將交換分割為交易集或保留整個交換，並產生已處理交易的通知。 若要使用此連接器，您必須將連接器新增至邏輯應用程式中的現有觸發程序。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 以下是您所需的項目︰
 
 * Azure 帳戶；您可以建立一個 [免費帳戶](https://azure.microsoft.com/free)
-* 已經定義並與 Azure 訂用帳戶相關聯的[整合帳戶](logic-apps-enterprise-integration-create-integration-account.md)。 您必須有整合帳戶才能使用解碼 X12 訊息連接器。
+* 已定義且與您的 Azure 訂用帳戶相關聯的[整合帳戶](logic-apps-enterprise-integration-create-integration-account.md)。 您必須有整合帳戶才能使用解碼 X12 訊息連接器。
 * 至少已經在整合帳戶中定義兩個[夥伴](logic-apps-enterprise-integration-partners.md)
 * 已經在整合帳戶中定義的 [X12 合約](logic-apps-enterprise-integration-x12.md)
 
@@ -36,7 +33,7 @@ ms.locfileid: "64701453"
 
 2. 解碼 X12 訊息連接器沒有觸發程序，因此您必須新增觸發程序 (例如要求觸發程序) 來啟動邏輯應用程式。 在 Logic Apps 設計工具中，新增觸發程序，然後將動作新增至您的邏輯應用程式。
 
-3.  在搜尋方塊中，輸入 "X12" 做為篩選條件。 選取 [X12 - 將 X12 訊息]。
+3.  在搜尋方塊中，輸入 "X12" 做為篩選條件。 選取 [X12 - 將 X12 訊息]****。
    
     ![搜尋 "x12"](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage1.png)  
 
@@ -51,7 +48,7 @@ ms.locfileid: "64701453"
     | 連線名稱 * |為連接器輸入任何名稱。 |
     | 整合帳戶 * |輸入整合帳戶的名稱。 確定您的整合帳戶和邏輯應用程式位於相同的 Azure 位置。 |
 
-5.  當您完成時，連線詳細資料看起來類似此範例。 若要完成連線建立，請選擇 [建立]。
+5.  當您完成時，連線詳細資料看起來類似此範例。 若要完成連線建立，請選擇 [建立]****。
    
     ![整合帳戶連線詳細資料](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage5.png) 
 
@@ -59,7 +56,7 @@ ms.locfileid: "64701453"
 
     ![整合帳戶連線已建立](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage6.png) 
 
-    例如︰
+    例如：
 
     ![選取 X12 一般檔案訊息進行解碼](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage7.png) 
 
@@ -89,13 +86,13 @@ X12 解碼連接器會執行下列工作︰
   * 針對交換中的其他群組控制編號檢查群組控制編號。
   * 針對該群組中其他交易集控制編號檢查交易集控制編號。
 * 將交換分割為交易集，或保留整個交換︰
-  * 將交換分割為交易集-暫止交易集發生錯誤：將交換分割交易集，並剖析每個交易集。 
+  * 將交換分割為交易集 - 暫止發生錯誤的交易集︰將交換分割為交易集，並剖析每個交易集。 
   X12 Decode 動作只會輸出未通過 `badMessages` 驗證的交易集，並將剩餘的交易輸出到 `goodMessages`。
-  * 將交換分割為交易集-發生錯誤時暫停交換：將交換分割交易集，並剖析每個交易集。 
+  * 將交換分割為交易集 - 暫止發生錯誤的交換︰將交換分割為交易集，並剖析每個交易集。 
   如果交換中有一或多個交易集無法通過驗證，X12 Decode 動作會將該交換中的所有交易集輸出到 `badMessages`。
-  * 保留交換-發生錯誤時暫停交易集：保留交換並處理整個批次的交換。 
+  * 保留交換 - 暫止發生錯誤的交易集︰保留交換並處理整個批次交換。 
   X12 Decode 動作只會輸出未通過 `badMessages` 驗證的交易集，並將剩餘的交易輸出到 `goodMessages`。
-  * 保留交換-發生錯誤時暫停交換：保留交換並處理整個批次的交換。 
+  * 保留交換 - 暫止發生錯誤的交換︰保留交換並處理整個批次交換。 
   如果交換中有一或多個交易集無法通過驗證，X12 Decode 動作會將該交換中的所有交易集輸出到 `badMessages`。 
 * 產生技術和/或功能確認 (若已設定)。
   * 標頭驗證後會產生技術確認。 技術確認會報告位址接收者處理交換標頭和結尾的狀態。
@@ -105,5 +102,5 @@ X12 解碼連接器會執行下列工作︰
 請參閱 [Swagger 詳細資料](/connectors/x12/)。 
 
 ## <a name="next-steps"></a>後續步驟
-[深入了解企業整合套件](../logic-apps/logic-apps-enterprise-integration-overview.md "了解企業整合套件") 
+[深入了解企業整合套件](../logic-apps/logic-apps-enterprise-integration-overview.md "瞭解企業整合套件") 
 

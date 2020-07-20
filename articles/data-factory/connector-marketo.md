@@ -1,25 +1,24 @@
 ---
-title: 使用 Azure Data Factory 複製 Marketo 中的資料 (預覽) | Microsoft Docs
+title: 使用 Azure Data Factory 複製 Marketo 中的資料 (預覽)
 description: 了解如何使用 Azure Data Factory 管線中的複製活動，將資料從 Marketo 複製到支援的接收資料存放區。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 06/04/2020
 ms.author: jingwang
-ms.openlocfilehash: d6d6517a85997265021573b2f9d481c81283c216
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 08f117e2fc4939eee1458c0807cac5a292785608
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61400452"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669863"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>使用 Azure Data Factory 複製 Marketo 中的資料 (預覽)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何使用 Azure Data Factory 中的「複製活動」，從 Marketo 複製資料。 本文是根據[複製活動概觀](copy-activity-overview.md)一文，該文提供複製活動的一般概觀。
 
@@ -28,12 +27,17 @@ ms.locfileid: "61400452"
 
 ## <a name="supported-capabilities"></a>支援的功能
 
+下列活動支援此 Marketo 連接器：
+
+- 含[支援來源/接收器矩陣](copy-activity-overview.md)的[複製活動](copy-activity-overview.md)
+- [查閱活動](control-flow-lookup-activity.md)
+
 您可以將資料從 Marketo 複製到任何支援的接收資料存放區。 如需複製活動所支援作為來源/接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
 
-Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此連接器您不需要手動安裝任何驅動程式。
+目前不支援與外部 CRM 整合的 Marketo 實例。
 
 >[!NOTE]
->此 Marketo 連接器會建置在 Marketo REST API 上方。 請注意，Marketo 在服務端上有[並行要求限制](https://developers.marketo.com/rest-api/)。 如果您收到錯誤，當中指出「嘗試使用 REST API 時發生錯誤：在 '20' 秒內超出速率上限 '100' (606)」，或「嘗試使用 REST API 時發生錯誤：已達到並行存取限制 '10' (615)」，請考慮降低並行複製活動回合數，以縮減對服務發出的要求數。
+>此 Marketo 連接器會建置在 Marketo REST API 上方。 請注意，Marketo 在服務端上有[並行要求限制](https://developers.marketo.com/rest-api/)。 如果您遇到錯誤指出「嘗試使用 REST API 時發生錯誤：'20' 秒內超過比率上限 '100' (606)」或「嘗試使用 REST API 時發生錯誤：已達到並行存取限制 '10' (615)」，請考慮減少並行複製活動的執行，以減少對服務發出的要求數目。
 
 ## <a name="getting-started"></a>開始使用
 
@@ -45,17 +49,17 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 以下是針對 Marketo 已連結服務支援的屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| type | 類型屬性必須設定為：**Marketo** | 是 |
-| endpoint | Marketo 伺服器的端點。 (亦即 123-ABC-321.mktorest.com)  | 是 |
-| clientId | Marketo 服務的用戶端識別碼。  | 是 |
+| type | type 屬性必須設定為：**Marketo** | Yes |
+| 端點 | Marketo 伺服器的端點。 (亦即 123-ABC-321.mktorest.com)  | Yes |
+| clientId | Marketo 服務的用戶端識別碼。  | Yes |
 | clientSecret | Marketo 服務的用戶端密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
-| useEncryptedEndpoints | 指定是否使用 HTTPS 來加密資料來源端點。 預設值為 true。  | 否 |
-| useHostVerification | 指定在透過 SSL 連線時，是否要求伺服器憑證中的主機名稱符合伺服器的主機名稱。 預設值為 true。  | 否 |
-| usePeerVerification | 指定在透過 SSL 連線時，是否要確認伺服器的身分識別。 預設值為 true。  | 否 |
+| useEncryptedEndpoints | 指定是否使用 HTTPS 來加密資料來源端點。 預設值為 true。  | No |
+| useHostVerification | 指定在透過 TLS 連線時，是否要求伺服器憑證中的主機名稱符合伺服器的主機名稱。 預設值為 true。  | No |
+| usePeerVerification | 指定在透過 TLS 連接時，是否要確認伺服器的身分識別。 預設值為 true。  | 否 |
 
-**範例：**
+**範例︰**
 
 ```json
 {
@@ -80,9 +84,9 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 若要從 Marketo 複製資料，請將資料集的 type 屬性設定為 **MarketoObject**。 以下是支援的屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的類型屬性必須設定為：**MarketoObject** | 是 |
+| type | 資料集的類型屬性必須設定為： **MarketoObject** | 是 |
 | tableName | 資料表的名稱。 | 否 (如果已指定活動來源中的「查詢」) |
 
 **範例**
@@ -92,11 +96,12 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
     "name": "MarketoDataset",
     "properties": {
         "type": "MarketoObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Marketo linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -109,12 +114,12 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 若要從 Marketo 複製資料，請將複製活動中的來源類型設定為 **MarketoSource**。 複製活動的 **source** 區段支援下列屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動來源的類型屬性必須設定為：**MarketoSource** | 是 |
-| query | 使用自訂 SQL 查詢來讀取資料。 例如： `"SELECT * FROM Activitiy_Types"` 。 | 否 (如果已指定資料集中的 "tableName") |
+| type | 複製活動來源的 type 屬性必須設定為：**MarketoSource** | Yes |
+| 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如： `"SELECT * FROM Activitiy_Types"` 。 | 否 (如果已指定資料集中的 "tableName") |
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -145,6 +150,11 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>查閱活動屬性
+
+若要了解關於屬性的詳細資料，請參閱[查閱活動](control-flow-lookup-activity.md)。
+
 
 ## <a name="next-steps"></a>後續步驟
 如需 Azure Data Factory 中的複製活動所支援作為來源和接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。

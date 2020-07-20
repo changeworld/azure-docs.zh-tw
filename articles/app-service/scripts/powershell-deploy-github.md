@@ -1,26 +1,17 @@
 ---
-title: Azure PowerShell 指令碼範例 - 建立 Web 應用程式並從 GitHub 部署程式碼 | Microsoft Docs
-description: Azure PowerShell 指令碼範例 - 建立 Web 應用程式並從 GitHub 部署程式碼
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: PowerShell：從 GitHub 部署程式碼
+description: 了解如何使用 Azure PowerShell 將 App Service 的部署和管理自動化。 此範例說明如何從 GitHub 部署程式碼。
 tags: azure-service-management
 ms.assetid: 0f9c8bc5-3789-4eb3-8deb-ae6e2200795a
-ms.service: app-service-web
-ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 03/20/2017
-ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: e4daa27fa7ea441e571adcf0e90dfcab8b5e3256
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 22b6a50b76c7d2e29f4705823db904e2c35f2717
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110382"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74684858"
 ---
 # <a name="create-a-web-app-and-deploy-code-from-github"></a>建立 Web 應用程式並從 GitHub 部署程式碼
 
@@ -46,7 +37,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 建立用來存放所有資源的資源群組。 |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | 建立 App Service 方案。 |

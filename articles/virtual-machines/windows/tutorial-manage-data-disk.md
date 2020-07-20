@@ -1,28 +1,21 @@
 ---
-title: 教學課程 - 使用 Azure PowerShell 管理 Azure 磁碟 | Microsoft Docs
+title: 教學課程 - 使用 Azure PowerShell 管理 Azure 磁碟
 description: 在本教學課程中，您會了解如何使用 Azure PowerShell 來建立及管理虛擬機器的 Azure 磁碟
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
+ms.subservice: disks
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.subservice: disks
-ms.openlocfilehash: 4a60d3d77408e7c05311a2bd6bcceeb9331bd1af
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: c9f514b70eda7d74950576a1a6f3a1199cddb232
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924690"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82100323"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>教學課程 - 使用 Azure PowerShell 管理 Azure 磁碟
 
@@ -45,13 +38,13 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 
 建立 Azure 虛擬機器後，有兩個磁碟會自動連結到虛擬機器。 
 
-**作業系統磁碟** - 作業系統磁碟可裝載 VM 作業系統，其大小可高達 4 TB。  依預設會將磁碟機代號 *C:* 指派給 OS 磁碟。 OS 磁碟的磁碟快取組態已針對 OS 效能進行最佳化。 OS 磁碟**不得**裝載應用程式或資料。 請對應用程式和資料使用資料磁碟，本文稍後會詳細說明。
+**作業系統磁碟** - 作業系統磁碟可裝載 VM 作業系統，其大小可高達 4 TB。 如果您從 [Azure Marketplace](https://azure.microsoft.com/marketplace/) 映像建立新的虛擬機器 (VM)，則通常是 127 GB (但有些映像的 OS 磁碟大小較小)。 依預設會將磁碟機代號 *C:* 指派給 OS 磁碟。 OS 磁碟的磁碟快取組態已針對 OS 效能進行最佳化。 OS 磁碟**不得**裝載應用程式或資料。 請對應用程式和資料使用資料磁碟，本文稍後會詳細說明。
 
 **暫存磁碟** - 暫存磁碟會使用與 VM 位於相同 Azure 主機的固態磁碟機。 暫存磁碟的效能非常好，可用於暫存資料處理等作業。 不過，如果 VM 移至新的主機，則會移除儲存在暫存磁碟上的任何資料。 暫存磁碟的大小取決於 [VM 大小](sizes.md)。 依預設會將磁碟機代號 *D:* 指派給暫存磁碟。
 
 ## <a name="azure-data-disks"></a>Azure 資料磁碟
 
-您可以新增額外資料磁碟，以便安裝應用程式和儲存資料。 只要需要持久且有回應的資料儲存體，即應使用資料磁碟。 虛擬機器的大小會決定可連結到 VM 的資料磁碟數目。 每個 VM vCPU 可以連結四個資料磁碟。
+您可以新增額外資料磁碟，以便安裝應用程式和儲存資料。 只要需要持久且有回應的資料儲存體，即應使用資料磁碟。 虛擬機器的大小會決定可連結到 VM 的資料磁碟數目。
 
 ## <a name="vm-disk-types"></a>VM 磁碟類型
 

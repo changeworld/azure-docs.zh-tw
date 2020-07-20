@@ -1,32 +1,23 @@
 ---
-title: Azure 虛擬網路的常用 PowerShell 命令 | Microsoft Docs
+title: Azure 虛擬網路的常用 PowerShell 命令
 description: 常用 PowerShell 命令，可讓您開始為 VM 建立虛擬網路與其相關聯的資源。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 56e1a73c-8299-4996-bd03-f74585caa1dc
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 020f2a4171a5bd656e53c91e59edb16931b20d0d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 78aac1e49b23cf7fd294314f335aa429e8458639
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60597668"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233356"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Azure 虛擬網路的常用 PowerShell 命令
 
 如果您想要建立虛擬機器，您需要建立 [虛擬網路](../../virtual-network/virtual-networks-overview.md) 或了解可以加入 VM 的現有虛擬網路。 一般而言，當您建立 VM 時，您也需要考慮建立本文中所述的資源。
 
-有关安装最新版 Azure PowerShell、选择订阅和登录到帐户的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+如需如何安裝最新版 Azure PowerShell、選取訂用帳戶，以及登入帳戶的相關資訊，請參閱[如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。
 
 如果您要執行本文中的多個命令，有些變數可能會相當實用：
 
@@ -35,11 +26,11 @@ ms.locfileid: "60597668"
 
 ## <a name="create-network-resources"></a>建立網路資源
 
-| Task | 命令 |
+| Task | Command |
 | ---- | ------- |
 | 建立子網路組態 |$subnet1 = [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) -Name "mySubnet1" -AddressPrefix XX.X.X.X/XX<BR>$subnet2 = New-AzVirtualNetworkSubnetConfig -Name "mySubnet2" -AddressPrefix XX.X.X.X/XX<BR><BR>一般網路可能有[網際網路面向負載平衡器](../../load-balancer/load-balancer-internet-overview.md)的子網路和[內部負載平衡器](../../load-balancer/load-balancer-internal-overview.md)的不同子網路。 |
 | 建立虛擬網路 |$vnet = [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) -Name "myVNet" -ResourceGroupName $myResourceGroup -Location $location -AddressPrefix XX.X.X.X/XX -Subnet $subnet1, $subnet2 |
-| 唯一網域名稱的測試 |[Test-AzDnsAvailability](https://docs.microsoft.com/powershell/module/az.network/test-azdnsavailability) -DomainNameLabel "myDNS" -Location $location<BR><BR>您可以指定[公用 IP 資源](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)的 DNS 網域名稱，以建立 domainname.location.cloudapp.azure.com 與 Azure 受控 DNS 伺服器中的公用 IP 位址的對應。 名稱只能包含字母、數字和連字號。 第一個和最後一個字元必須是字母或數字，而網域名稱必須是其 Azure 位置內唯一的。 如果傳回 **True** ，表示您提出的名稱是全域唯一的。 |
+| 唯一網域名稱的測試 |[Test-AzDnsAvailability](https://docs.microsoft.com/powershell/module/az.network/test-azdnsavailability) -DomainNameLabel "myDNS" -Location $location<BR><BR>您可以指定[公用 IP 資源](../../virtual-network/public-ip-addresses.md)的 DNS 網域名稱，以建立 domainname.location.cloudapp.azure.com 與 Azure 受控 DNS 伺服器中的公用 IP 位址的對應。 名稱只能包含字母、數字和連字號。 第一個和最後一個字元必須是字母或數字，而網域名稱必須是其 Azure 位置內唯一的。 如果傳回 **True** ，表示您提出的名稱是全域唯一的。 |
 | 建立公用 IP 位址 |$pip = [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) -Name "myPublicIp" -ResourceGroupName $myResourceGroup -DomainNameLabel "myDNS" -Location $location -AllocationMethod Dynamic<BR><BR>公用 IP 位址會使用您先前測試並由負載平衡器前端組態使用的網域名稱。 |
 | 建立前端 IP 組態 |$frontendIP = [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) -Name "myFrontendIP" -PublicIpAddress $pip<BR><BR>前端組態包含您先前針對連入網路流量建立的公用 IP 位址。 |
 | 建立後端位址集區 |$beAddressPool = [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) -Name "myBackendAddressPool"<BR><BR>提供可透過網路介面存取的負載平衡器後端內部位址。 |
@@ -51,7 +42,7 @@ ms.locfileid: "60597668"
 
 ## <a name="get-information-about-network-resources"></a>取得關於網路資源的資訊
 
-| Task | 命令 |
+| Task | Command |
 | ---- | ------- |
 | 列出虛擬網路 |[Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) -ResourceGroupName $myResourceGroup<BR><BR>列出資源群組中的所有虛擬網路。 |
 | 取得虛擬網路的相關資訊 |Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName $myResourceGroup |
@@ -65,7 +56,7 @@ ms.locfileid: "60597668"
 
 ## <a name="manage-network-resources"></a>管理網路資源
 
-| Task | 命令 |
+| Task | Command |
 | ---- | ------- |
 | 將子網路新增至虛擬網路 |[Add-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/add-azvirtualnetworksubnetconfig) -AddressPrefix XX.X.X.X/XX -Name "mySubnet1" -VirtualNetwork $vnet<BR><BR>可將子網路新增現有虛擬網路。 $Vnet 值代表 Get-AzVirtualNetwork 所傳回的物件。 |
 | 刪除虛擬網路 |[Remove-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetwork) -Name "myVNet" -ResourceGroupName $myResourceGroup<BR><BR>從資源群組移除指定的虛擬網路。 |
@@ -74,6 +65,6 @@ ms.locfileid: "60597668"
 | 刪除公用 IP 位址 |[Remove-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/remove-azpublicipaddress)-Name "myIPAddress" -ResourceGroupName $myResourceGroup<BR><BR>從資源群組移除指定的公用 IP 位址。 |
 
 ## <a name="next-steps"></a>後續步驟
-* 使用您剛才[建立 VM](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 時所建立的網路介面。
-* 深入了解如何 [建立具有多個網路介面的 VM](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md)。
+使用您剛才[建立 VM](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 時所建立的網路介面。
+
 

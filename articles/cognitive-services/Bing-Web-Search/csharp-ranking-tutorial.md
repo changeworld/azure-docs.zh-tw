@@ -3,20 +3,20 @@ title: 使用順位顯示搜尋結果
 titleSuffix: Azure Cognitive Services
 description: 示範如何使用 Bing RankingResponse 答案，以順位的順序顯示搜尋結果。
 services: cognitive-services
-author: bradumbaugh
+author: aahill
 manager: nitinme
 ms.assetid: 2575A80C-FC74-4631-AE5D-8101CF2591D3
 ms.service: cognitive-services
 ms.subservice: bing-web-search
-ms.topic: conceptual
-ms.date: 05/08/2017
-ms.author: bking
-ms.openlocfilehash: 7c074d5d25453e2b2a1ddfc32422790235815f1c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.topic: tutorial
+ms.date: 06/24/2020
+ms.author: aahi
+ms.openlocfilehash: 272a10e211e99e200b82807b188d828a9ece42d8
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872512"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85609430"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>使用 C# 建置主控台應用程式搜尋用戶端
 
@@ -31,8 +31,9 @@ ms.locfileid: "55872512"
 
 若要繼續進行本教學課程，您需要：
 
-- Visual Studio。 如果您沒有此產品，請先[下載並安裝免費的 Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。
-- 適用於 Bing Web 搜尋 API 的訂用帳戶金鑰。 如果您沒有金鑰，請[註冊免費試用](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)。
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="建立 Bing 搜尋資源"  target="_blank">建立 Bing 搜尋資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
+* [Visual Studio IDE](https://www.visualstudio.com/downloads/)。
 
 ## <a name="create-a-new-console-app-project"></a>建立新的主控台應用程式專案
 
@@ -42,7 +43,7 @@ ms.locfileid: "55872512"
 
 將應用程式命名為 **MyConsoleSearchApp**，然後按一下 [確定]。
 
-## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>將 JSON.net Nuget 套件新增到專案
+## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>將 JSON.net NuGet 套件新增到專案
 
 JSON.net 讓您能夠使用 API 所傳回的 JSON 回應。 將它的 NuGet 套件新增到您的專案：
 
@@ -221,11 +222,11 @@ static void RunQueryAndDisplayResults(string userQuery)
 }
 ```
 
-`rankingResponse` JSON 物件 ([文件](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse)) 會說明搜尋結果的適當顯示順序。 它會包含下列一或多個已設定優先順序的群組：
+`rankingResponse` JSON 物件 ([文件](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) 會說明搜尋結果的適當顯示順序。 它會包含下列一或多個已設定優先順序的群組：
 
-- `pole`：獲得最明顯處理的搜尋結果 (例如，顯示在主線和資訊看板上方)。
-- `mainline`：要顯示在主線中的搜尋結果。
-- `sidebar`：要顯示在資訊看板中的搜尋結果。 如果沒有資訊看板，則會在主線下方顯示結果。
+- `pole`:獲得最明顯處理的搜尋結果 (例如，顯示在主線和資訊看板上方)。
+- `mainline`:要顯示在主線中的搜尋結果。
+- `sidebar`:要顯示在資訊看板中的搜尋結果。 如果沒有資訊看板，則會在主線下方顯示結果。
 
 已設定順位的回應 JSON 可能包括一或多個群組。
 

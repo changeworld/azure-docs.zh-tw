@@ -1,62 +1,78 @@
 ---
-title: 在 Azure 地圖服務中新增影像圖層 | Microsoft Docs
-description: 如何在 Javascript 地圖中新增影像圖層
+title: 將影像圖層新增至地圖 |Microsoft Azure 對應
+description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Web SDK 來覆迭地圖上的影像。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/3/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5396fefca3a60dea7a503f8b4e84cc575753ea30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 69bf41f9d88081b9a416b9bee91e8650a84f12c7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60769561"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77209710"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>在地圖中新增影像圖層
 
-本文說明如何在地圖上的一組固定座標覆蓋影像。 在許多情況下，地圖上會覆蓋影像。 以下是幾種常會覆蓋在地圖上的影像類型範例：
+本文說明如何將影像重迭成一組固定的座標。 以下是幾個可在地圖上重迭之不同影像類型的範例：
 
-* 無人機所擷取的影像。
-* 建物平面圖。
-* 歷史性或其他特製化地圖影像。
-* 施工現場的藍圖。
-* 氣象雷達影像。
+* 從無人機所捕獲的映射
+* 建立 floorplans
+* 歷程記錄或其他特製化地圖影像
+* 作業網站的藍圖
+* 氣象雷達圖影像
 
 > [!TIP]
-> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) 可讓您輕鬆快速地在地圖上覆蓋影像。 不過，如果影像很大，瀏覽器可能會很難載入它。 在此情況下，請考慮將影像分拆成小影像，再將小影像載入地圖作為 [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)。
+> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)是一種簡單的方式，可在地圖上疊加影像。 請注意，瀏覽器可能難以載入大型影像。 在此情況下，請考慮將您的影像分解成磚，並將其載入至地圖中做為[TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)。
+
+影像層支援下列影像格式：
+
+- JPEG
+- PNG
+- BMP
+- GIF （沒有動畫）
 
 ## <a name="add-an-image-layer"></a>新增映像圖層
 
-此範例說明如何在地圖上覆蓋 [1922 年紐澤西紐瓦克地圖](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)的影像。
+下列程式碼會從地圖上的[1922 中，覆迭紐華克、New Jersey 的地圖](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)影像。 [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)的建立方式是將 URL 傳遞給影像，並以格式來協調四個角落的座標 `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` 。
+
+```javascript
+//Create an image layer and add it to the map.
+map.layers.add(new atlas.layer.ImageLayer({
+    url: 'newark_nj_1922.jpg',
+    coordinates: [
+        [-74.22655, 40.773941], //Top Left Corner
+        [-74.12544, 40.773941], //Top Right Corner
+        [-74.12544, 40.712216], //Bottom Right Corner
+        [-74.22655, 40.712216]  //Bottom Left Corner
+    ]
+}));
+```
+
+以下是上述程式碼的完整執行程式碼範例。
 
 <br/>
 
 <iframe height='500' scrolling='no' title='簡單的影像圖層' src='//codepen.io/azuremaps/embed/eQodRo/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看 Pen <a href='https://codepen.io/azuremaps/pen/eQodRo/'>簡單的影像圖層</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
-在上述程式碼中，程式碼的第一個區塊會建構地圖物件。 如需相關指示，您可以查看[建立對應](./map-create.md)。
+## <a name="import-a-kml-file-as-ground-overlay"></a>匯入 KML 檔案作為基礎重迭
 
-程式碼的第二個區塊會建立 [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)，所用方法是傳遞影像 URL 和四個角落的座標 (格式為 `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]`)。
+這個範例會示範如何將 KML 地面重迭資訊新增為地圖上的影像圖層。 KML 地面重迭提供北、南、東和西座標，以及逆時針旋轉。 但是，影像圖層預期影像的每個角落都會有座標。 此範例中的 KML 基礎重迭適用于 Chartres cathedral，其來自[Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)。
 
-## <a name="import-a-kml-ground-overlay"></a>匯入 KML Ground Overlay
-
-此範例說明如何在地圖上覆蓋 KML Ground Overlay 資訊來作為影像圖層。 KML Ground Overlay 會提供北、南、東和西四個座標和逆時針方向的旋轉 (因為影像圖層預期要有影像四個角落的座標)。 此範例中的 KML Ground Overlay 是沙特爾主教座堂，其來源是 [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)。
+程式碼會使用 `getCoordinatesFromEdges` [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)類別中的靜態函式。 它會使用 KML 地面重迭的北部、南部、東、west 和旋轉資訊來計算影像的四個角落。
 
 <br/>
 
 <iframe height='500' scrolling='no' title='KML Ground Overlay 作為影像圖層' src='//codepen.io/azuremaps/embed/EOJgpj/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看 Pen <a href='https://codepen.io/azuremaps/pen/EOJgpj/'>KML Ground Overlay 作為影像圖層</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
-上述程式碼會使用 [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) 類別的靜態 `getCoordinatesFromEdges` 函式，透過 KML Ground Overlay 中的北、南、東和西和旋轉等資訊來計算影像的四個角落。
-
-
 ## <a name="customize-an-image-layer"></a>自訂影像圖層
 
-影像圖層有許多樣式選項。 以下是可讓您試用這些選項的工具。
+影像圖層有許多樣式選項。 以下是用來試用的工具。
 
 <br/>
 

@@ -1,28 +1,27 @@
 ---
-title: 從 Azure Data Factory 複製活動叫用預存程序 | Microsoft Docs
+title: 從 Azure Data Factory 複製活動叫用預存程式
 description: 了解如何從 Azure Data Factory 複製活動叫用 Azure SQL Database 或 SQL Server 中的預存程序。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 35e9347039a7b9939ab4d2719f9738429dec168c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f687901601ba517a50710610d4c827524b8ec565
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60824247"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320976"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>從 Azure Data Factory 中的複製活動叫用預存程序
 > [!NOTE]
-> 本文適用於 Data Factory 的第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[在 Data Factory 中使用預存程序活動來轉換資料](../transform-data-using-stored-procedure.md)。
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[在 Data Factory 中使用預存程序活動來轉換資料](../transform-data-using-stored-procedure.md)。
 
 
 將資料複製到 [SQL Server](data-factory-sqlserver-connector.md) 或 [Azure SQL Database](data-factory-azure-sql-connector.md) 時，您可以在複製活動中設定 **SqlSink** 以叫用預存程序。 您可以使用預存程序來執行將資料插入到目的地資料表之前所需的任何額外處理 (合併資料行、查詢值、插入到多個資料表等)。 此功能會利用[資料表值參數](https://msdn.microsoft.com/library/bb675163.aspx)。 
@@ -30,7 +29,7 @@ ms.locfileid: "60824247"
 下列範例示範如何從 Data Factory 管線 (複製活動) 叫用 SQL Server 資料庫中的預存程序：  
 
 ## <a name="output-dataset-json"></a>輸出資料集 JSON
-在輸出資料集 JSON 中，將 **type** 設定為：**SqlServerTable**。 請將它設定為 **AzureSqlTable**，以與 Azure SQL 資料庫搭配使用。 **tableName** 屬性的值必須與預存程序第一個參數的名稱相符。  
+在輸出資料集 JSON 中，將 **type** 設定為：**SqlServerTable**。 將它設定為**AzureSqlTable** ，以與 Azure SQL Database 搭配使用。 **tableName** 屬性的值必須與預存程序第一個參數的名稱相符。  
 
 ```json
 {
@@ -82,7 +81,7 @@ END
 ```
 
 ## <a name="table-type-definition"></a>資料表類型定義
-在資料庫中，使用與 **SqlWriterTableType** 相同的名稱來定義資料表類型。 資料表類型的結構描述必須與輸入資料集的結構描述相符。
+在您的資料庫中，使用與**SqlWriterTableType**相同的名稱來定義資料表類型。 資料表類型的結構描述必須與輸入資料集的結構描述相符。
 
 ```sql
 CREATE TYPE [dbo].[MarketingType] AS TABLE(

@@ -1,11 +1,11 @@
 ---
-title: 使用 Azure 通知中樞將通知推送至特定 Android 應用程式使用者 | Microsoft Docs
+title: 使用 Azure 通知中樞將推播通知傳送至特定 Android 應用程式
 description: 了解如何使用 Azure 通知中樞將推播通知傳送至特定的使用者。
 documentationcenter: android
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: ae0e17a8-9d2b-496e-afd2-baa151370c25
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/01/2019
-ms.author: jowargo
-ms.openlocfilehash: 86a2cd824d1896211efd40bb8aa1d007149ef2db
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 09/11/2019
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 09/11/2019
+ms.openlocfilehash: 16191dfd33d5211fbd082bc1f7e458a238bb2138
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203566"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224208"
 ---
-# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將通知推送至特定 Android 應用程式使用者
+# <a name="tutorial-send-push-notifications-to-specific-android-apps-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將推播通知傳送至特定 Android 應用程式
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
@@ -149,7 +151,7 @@ ms.locfileid: "65203566"
 
     您的 `main_activity.xml` 圖形版面配置現在應如下圖所示：
 
-    ![][A1]
+    ![顯示主要活動 X M L 圖形版面配置外觀的模擬器螢幕擷取畫面。][A1]
 3. 在與 `MainActivity` 類別相同的套件中，建立名為 `RegisterClient` 的新類別。 將下列程式碼使用於新的類別檔案。
 
     ```java
@@ -259,7 +261,7 @@ ms.locfileid: "65203566"
     ```
 
     此元件會實作連絡應用程式後端所需的 REST 呼叫，以註冊推播通知。 它也會在本機儲存通知中心所建立的 *registrationIds* ，如 [從您的應用程式後端註冊](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)中的詳細說明。 當您按一下 [登入] 按鈕時，系統便會使用儲存在本機儲存體中的授權權杖。
-4. 在您的 `MainActivity` 類別中，為 `RegisterClient` 類別新增一個欄位，以及為 ASP.NET 後端的端點新增一個字串。 請務必將 `<Enter Your Backend Endpoint>` 取代為您先前取得的實際後端端點。 例如： `http://mybackend.azurewebsites.net`。
+4. 在您的 `MainActivity` 類別中，為 `RegisterClient` 類別新增一個欄位，以及為 ASP.NET 後端的端點新增一個字串。 請務必將 `<Enter Your Backend Endpoint>` 取代為您先前取得的實際後端端點。 例如： `http://mybackend.azurewebsites.net` 。
 
     ```java
     private RegisterClient registerClient;
@@ -276,7 +278,7 @@ ms.locfileid: "65203566"
         super.onCreate(savedInstanceState);
 
         mainActivity = this;
-        MyHandler.createChannelAndHandleNotifications(getApplicationContext());
+        FirebaseService.createChannelAndHandleNotifications(getApplicationContext());
         fcm = FirebaseInstanceId.getInstance();
         registerClient = new RegisterClient(this, BACKEND_ENDPOINT);
         setContentView(R.layout.activity_main);
@@ -470,7 +472,14 @@ ms.locfileid: "65203566"
     ```java
     useLibrary 'org.apache.http.legacy'
     ```
-13. 建置專案。
+13. 如果您的應用程式是以 API 層級 28 (Android 9.0) 或更高版本為目標，請在 `AndroidManifest.xml` 的 `<application>` 元素內包含下列宣告。
+
+    ```xml
+    <uses-library
+        android:name="org.apache.http.legacy"
+        android:required="false" />
+    ```
+14. 建置專案。
 
 ## <a name="test-the-app"></a>測試應用程式
 
@@ -478,7 +487,7 @@ ms.locfileid: "65203566"
 2. 在 Android 應用程式中，輸入使用者名稱和密碼。 兩者必須是相同的字串值，而且不得包含空格或特殊字元。
 3. 在 Android 應用程式中，按一下 [登入]。 等待快顯訊息出現，指出 [已登入並註冊]。 這會啟用 [傳送通知] 按鈕。
 
-    ![][A2]
+    ![模擬器的螢幕擷取畫面，顯示通知中樞通知使用者應用程式在登入之後的樣子。][A2]
 4. 按一下切換按鈕，啟用您已執行應用程式並註冊使用者的所有平台。
 5. 輸入會收到通知訊息的使用者名稱。 該使用者必須在目標裝置上註冊通知。
 6. 輸入做為推播通知訊息的訊息，以便使用者接收。

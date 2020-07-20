@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: 4d6dce952eca3d528a310685106a017dd7e3b80f
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 1b7b4d3c25794a62bc19925ade278159ebb37615
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699953"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80066537"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>在 Azure VM 上安裝彈性堆疊
 
@@ -45,7 +45,7 @@ ms.locfileid: "55699953"
 
 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
@@ -53,9 +53,9 @@ az group create --name myResourceGroup --location eastus
 
 使用 [az vm create](/cli/azure/vm) 命令來建立 VM。 
 
-下列範例會建立名為 myVM 的 VM，並建立 SSH 金鑰 (如果它們不存在於預設金鑰位置)。 若要使用一組特定金鑰，請使用 `--ssh-key-value` 選項。  
+下列範例會建立名為 myVM  的 VM，並建立 SSH 金鑰 (如果它們不存在於預設金鑰位置)。 若要使用一組特定金鑰，請使用 `--ssh-key-value` 選項。  
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create \
     --resource-group myResourceGroup \
     --name myVM \
@@ -66,7 +66,7 @@ az vm create \
 
 建立 VM 後，Azure CLI 會顯示類似下列範例的資訊。 記下 `publicIpAddress`。 此位址用來存取 VM。
 
-```azurecli-interactive 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -226,11 +226,11 @@ sudo systemctl start kibana.service
 az vm open-port --port 5601 --resource-group myResourceGroup --name myVM
 ```
 
-開啟 Kibana 主控台，然後選取 [建立]，以便根據您稍早傳送至 Elasticsearch 的 syslog 資料，產生預設索引。 
+開啟 Kibana 主控台，然後選取 [建立]  ，以便根據您稍早傳送至 Elasticsearch 的 syslog 資料，產生預設索引。 
 
 ![瀏覽 Kibana 中的 Syslog 事件](media/elasticsearch-install/kibana-index.png)
 
-選取 Kibana 主控台上的 [探索]，以搜尋、瀏覽並篩選 syslog 事件。
+選取 Kibana 主控台上的 [探索]  ，以搜尋、瀏覽並篩選 syslog 事件。
 
 ![瀏覽 Kibana 中的 Syslog 事件](media/elasticsearch-install/kibana-search-filter.png)
 

@@ -8,25 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: c0c1b9c1e9afc84e9702f6c1897d372a017be868
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: ccf4d68b90713212685f2583ba5a8db11bd1d050
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629885"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986573"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>快速入門：使用 REST API 和 Java 偵測影像中的人臉
 
 在本快速入門中，您將使用 Azure Face REST API 搭配 Java 來偵測影像中的人臉。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。 
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
 ## <a name="prerequisites"></a>必要條件
 
-- 臉部 API 訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=face-api)取得免費的試用訂用帳戶金鑰。 或是，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱臉部 API 服務並取得金鑰。
-- 您選擇的任何 Java IDE。
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="建立 Face 資源"  target="_blank">建立 Face 資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]****。
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至 Face API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
+* 您選擇的任何 Java IDE。
 
 ## <a name="create-the-java-project"></a>建立 Java 專案
 
@@ -65,7 +68,9 @@ import org.json.JSONObject;
 
 ### <a name="add-essential-fields"></a>新增必要欄位
 
-將 **Main** 類別取代為下列程式碼。 這項資料會指定連線到 Face 服務的方式，以及接收輸入資料的位置。 您將需要以訂用帳戶金鑰更新 `subscriptionKey` 欄位的值，而且可能需要變更 `uriBase` 字串，使其包含正確的區域識別碼 (請參閱[臉部 API 文件](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)以取得所有區域端點的清單)。 您可以將 `imageWithFaces` 值設定為指向不同影像檔的路徑。
+將 **Main** 類別取代為下列程式碼。 這項資料會指定連線到 Face 服務的方式，以及接收輸入資料的位置。 您將需要以訂用帳戶金鑰值更新 `subscriptionKey` 欄位，並變更 `uriBase` 字串，使它包含正確的端點字串。 您可以將 `imageWithFaces` 值設定為指向不同影像檔的路徑。
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 `faceAttributes` 欄位只是特定屬性類型的清單。 其用於指定要對偵測到的臉部擷取哪些資訊。
 
@@ -74,15 +79,8 @@ public class Main {
     // Replace <Subscription Key> with your valid subscription key.
     private static final String subscriptionKey = "<Subscription Key>";
 
-    // NOTE: You must use the same region in your REST call as you used to
-    // obtain your subscription keys. For example, if you obtained your
-    // subscription keys from westus, replace "westcentralus" in the URL
-    // below with "westus".
-    //
-    // Free trial subscription keys are generated in the "westus" region. If you
-    // use a free trial subscription key, you shouldn't need to change this region.
     private static final String uriBase =
-        "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+        "https://<My Endpoint String>.com/face/v1.0/detect";
 
     private static final String imageWithFaces =
         "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}";
@@ -159,7 +157,7 @@ public class Main {
 
 ## <a name="run-the-app"></a>執行應用程式
 
-編譯程式碼並加以執行。 在主控台視窗中，成功的回應會以可輕鬆閱讀的 JSON 格式顯示臉部資料。 例如︰
+編譯程式碼並加以執行。 在主控台視窗中，成功的回應會以可輕鬆閱讀的 JSON 格式顯示臉部資料。 例如：
 
 ```json
 [{
@@ -253,7 +251,7 @@ public class Main {
 
 ## <a name="next-steps"></a>後續步驟
 
-在此快速入門中，您已建立簡單的 Java 主控台應用程式來搭配使用 REST 呼叫和 Azure 臉部 API，進而偵測影像中的臉部並傳回其屬性。 接下來，您可以了解如何在 Android 應用程式中使用此功能來執行更多動作。
+在本快速入門中，您已建立簡單的 Java 主控台應用程式以對 Azure 臉部 API 使用 REST 呼叫，進而偵測影像中的臉部並傳回其屬性。 接下來，請瀏覽臉部 API 參考文件，以深入了解支援的案例。
 
 > [!div class="nextstepaction"]
-> [教學課程：建立 Android 應用程式來偵測並框出臉部](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
+> [臉部 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

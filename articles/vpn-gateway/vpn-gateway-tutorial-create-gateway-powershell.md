@@ -1,19 +1,18 @@
 ---
-title: 使用 PowerShell 建立和管理 Azure VPN 閘道 | Microsoft Docs
+title: 教學課程 - 使用 Azure VPN 閘道建立和管理閘道
 description: 教學課程 - 使用 Azure PowerShell 模組建立和管理 VPN 閘道
 services: vpn-gateway
-author: yushwang
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 02/11/2019
-ms.author: yushwang
-ms.custom: mvc
-ms.openlocfilehash: 790a8b74f437fe8fd7b8660c2ac9d208328b487f
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.date: 03/11/2020
+ms.author: cherylmc
+ms.openlocfilehash: 66efa0f2922e70908616c7c447d782efee8f6b1b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445210"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79137172"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>教學課程：使用 PowerShell 建立和管理 VPN 閘道
 
@@ -29,13 +28,30 @@ Azure VPN 閘道提供客戶組織內部與 Azure 之間的跨單位連線。 �
 
 ![VNet 和 VPN 閘道](./media/vpn-gateway-tutorial-create-gateway-powershell/vnet1-gateway.png)
 
-### <a name="azure-cloud-shell-and-azure-powershell"></a>Azure Cloud Shell 和 Azure PowerShell
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+### <a name="working-with-azure-cloud-shell-and-azure-powershell"></a>使用 Azure Cloud Shell 和 Azure PowerShell
 
 [!INCLUDE [working with cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
 ## <a name="common-network-parameter-values"></a>一般網路參數值
+
+以下是本教學課程使用的參數值。 在範例中，變數會轉譯為下列項目：
+
+```
+#$RG1         = The name of the resource group
+#$VNet1       = The name of the virtual network
+#$Location1   = The location region
+#$FESubnet1   = The name of the first subnet
+#$BESubnet1   = The name of the second subnet
+#$VNet1Prefix = The address range for the virtual network
+#$FEPrefix1   = Addresses for the first subnet
+#$BEPrefix1   = Addresses for the second subnet
+#$GwPrefix1   = Addresses for the GatewaySubnet
+#$VNet1ASN    = ASN for the virtual network
+#$DNS1        = The IP address of the DNS server you want to use for name resolution
+#$Gw1         = The name of the virtual network gateway
+#$GwIP1       = The public IP address for the virtual network gateway
+#$GwIPConf1   = The name of the IP configuration
+```
 
 請根據您的環境和網路設定變更下列值，然後複製並貼上以設定本教學課程的變數。 如果您的 Cloud Shell 工作階段逾時，或您需要使用不同的 PowerShell 視窗，請變數複製並貼到您的新工作階段，再繼續進行教學課程。
 
@@ -45,7 +61,6 @@ $VNet1       = "VNet1"
 $Location1   = "East US"
 $FESubnet1   = "FrontEnd"
 $BESubnet1   = "Backend"
-$GwSubnet1   = "GatewaySubnet"
 $VNet1Prefix = "10.1.0.0/16"
 $FEPrefix1   = "10.1.0.0/24"
 $BEPrefix1   = "10.1.1.0/24"
@@ -59,7 +74,7 @@ $GwIPConf1   = "gwipconf1"
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 必須先建立資源群組。 在下列範例中，會在 [美國東部] 區域中建立名為 *TestRG1* 的資源群組：
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 必須先建立資源群組。 在下列範例中，會在 [美國東部]  區域中建立名為 *TestRG1* 的資源群組：
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName $RG1 -Location $Location1
@@ -67,12 +82,12 @@ New-AzResourceGroup -ResourceGroupName $RG1 -Location $Location1
 
 ## <a name="create-a-virtual-network"></a>建立虛擬網路
 
-Azure VPN 閘道可為您的虛擬網路提供跨單位連線和 P2S VPN 伺服器功能。 請將 VPN 閘道新增至現有的虛擬網路，或建立新的虛擬網路和閘道。 此範例會建立具有三個子網路 (Frontend、Backend 和 GatewaySubnet) 的新虛擬網路：其做法是使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 和 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)：
+Azure VPN 閘道可為您的虛擬網路提供跨單位連線和 P2S VPN 伺服器功能。 請將 VPN 閘道新增至現有的虛擬網路，或建立新的虛擬網路和閘道。 請注意，此範例會特別指定閘道子網路的名稱。 您必須一律將閘道子網路的名稱指定為 "GatewaySubnet"，它才能正常運作。 此範例會建立具有三個子網路 (Frontend、Backend 和 GatewaySubnet) 的新虛擬網路：其做法是使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 和 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)：
 
 ```azurepowershell-interactive
 $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubnet1 -AddressPrefix $FEPrefix1
 $besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubnet1 -AddressPrefix $BEPrefix1
-$gwsub1 = New-AzVirtualNetworkSubnetConfig -Name $GWSubnet1 -AddressPrefix $GwPrefix1
+$gwsub1 = New-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -AddressPrefix $GwPrefix1
 $vnet   = New-AzVirtualNetwork `
             -Name $VNet1 `
             -ResourceGroupName $RG1 `
@@ -110,7 +125,7 @@ New-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
 金鑰參數值：
 * GatewayType：使用 **Vpn** 進行站對站和 VNet 對 VNet 連線
 * VpnType：使用 **RouteBased** 與較大範圍的 VPN 裝置和較多路由功能互動
-* GatewaySku：**VpnGw1** 是預設值；如果您需要更高的輸送量或更多連線，請將其變更為 VpnGw2 或 VpnGw3。 如需詳細資訊，請參閱[閘道 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
+* GatewaySku：**VpnGw1** 是預設值；如果您需要更高的輸送量或更多連線，請將其變更為其他 VpnGw SKU。 如需詳細資訊，請參閱[閘道 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
 
 如果您使用 TryIt，則工作階段可能會逾時。沒關係。 閘道仍會建立。
 

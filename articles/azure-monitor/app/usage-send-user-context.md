@@ -1,25 +1,16 @@
 ---
-title: 傳送使用者內容識別碼以啟用 Azure Application Insights 中的使用體驗 | Microsoft Docs
+title: 用來追蹤活動的使用者內容識別碼 - Azure Application Insights
 description: 追蹤使用者如何在您的服務移動，方法是為每個使用者指派 Application Insights 中唯一的持續性識別碼字串。
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
-ms.devlang: csharp
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 7c458867b89a76a2f19bbd632c8a884c629f5765
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: ecdcc8a84cdccb05ec514003d63f808583d719c9
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60371830"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797689"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>傳送使用者內容識別碼以啟用 Azure Application Insights 中的使用體驗
 
@@ -30,7 +21,7 @@ Application Insights 可讓您透過一組產品使用量工具來監控並追�
 - [使用者、工作階段、事件](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
 - [漏斗圖](https://docs.microsoft.com/azure/application-insights/usage-funnels)
 - [保留](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention)世代
-- [活頁簿](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
+- [活頁簿](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
 
 若要追蹤使用者在一段時間內所做的行為，Application Insights 需要每個使用者或工作階段的識別碼。 包括下列每個自訂事件或頁面檢視畫面中的識別碼。
 
@@ -54,7 +45,7 @@ Application Insights 可讓您透過一組產品使用量工具來監控並追�
 
 ## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET 應用程式：在 ITelemetryInitializer 中設定使用者內容
 
-建立遙測初始設定式，詳細說明請見[這裡](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer)。 透過要求遙測傳遞工作階段識別碼，並設定 Context.User.Id 和 Context.Session.Id。
+建立遙測初始設定式，詳細說明請見[這裡](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#addmodify-properties-itelemetryinitializer)。 透過要求遙測傳遞工作階段識別碼，並設定 Context.User.Id 和 Context.Session.Id。
 
 此範例會將使用者識別碼設定為在工作階段之後到期的識別碼。 如果可能，請使用工作階段期間持續存在的使用者識別碼。
 
@@ -142,4 +133,4 @@ namespace MvcWebRole.Telemetry
     - [使用者、工作階段和事件](usage-segmentation.md)
     - [漏斗圖](usage-funnels.md)
     - [保留](usage-retention.md)
-    - [活頁簿](../../azure-monitor/app/usage-workbooks.md)
+    - [活頁簿](../../azure-monitor/platform/workbooks-overview.md)

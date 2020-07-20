@@ -9,11 +9,11 @@ ms.date: 02/20/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: c1259584e91461865b0c7e7bbbd6aced1781827b
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246233"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67708425"
 ---
 若要在資源群組中新增兩個標記，請使用 [az group update](/cli/azure/group) 命令：
 

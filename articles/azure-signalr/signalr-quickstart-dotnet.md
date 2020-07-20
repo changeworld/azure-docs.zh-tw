@@ -1,5 +1,5 @@
 ---
-title: 了解如何搭配 ASP.NET 使用 Azure SignalR 服務的快速入門
+title: 使用 ASP.NET 進行開發 - Azure SignalR Service
 description: 適用於使用 Azure SignalR 服務搭配 ASP.NET 架構建立聊天室的快速入門。
 author: sffamily
 ms.service: signalr
@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/20/2019
 ms.author: zhshang
-ms.openlocfilehash: cda1eddc5fa40e97038274cf9b4c3c2cb9552871
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: ec5b7a75bced4b7cd81a120925558b8c1be57818
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65154490"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "74158186"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>快速入門：使用 ASP.NET 和 SignalR 服務建立聊天室
 
@@ -24,7 +24,7 @@ Azure SignalR 服務依據的是 [SignalR for ASP.NET Core 2.0](https://docs.mic
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 * [.NET 4.6.1](https://www.microsoft.com/net/download/windows)
@@ -58,7 +58,7 @@ Azure SignalR 服務依據的是 [SignalR for ASP.NET Core 2.0](https://docs.mic
 
 1. 在開啟 Azure 入口網站的瀏覽器中，尋找並選取您建立的執行個體。
 
-1. 選取 [金鑰] 以檢視 SignalR 服務執行個體的連接字串。
+1. 選取 [金鑰]  以檢視 SignalR 服務執行個體的連接字串。
 
 1. 選取並複製主要連接字串。
 
@@ -83,7 +83,7 @@ Azure SignalR 服務依據的是 [SignalR for ASP.NET Core 2.0](https://docs.mic
     }
     ```
 
-    您也需要參考服務 SDK，才能使用這些 API。 開啟 [工具] | [NuGet 套件管理員] | [套件管理員主控台]，並執行命令：
+    您也需要參考服務 SDK，才能使用這些 API。 開啟 [工具] | [NuGet 套件管理員] | [套件管理員主控台]  ，並執行命令：
 
     ```powershell
     Install-Package Microsoft.Azure.SignalR.AspNet
@@ -105,9 +105,9 @@ Azure SignalR 服務依據的是 [SignalR for ASP.NET Core 2.0](https://docs.mic
 > 
 > 
 
-登入 [Azure 入口網站](https://portal.azure.com)，然後按一下 [資源群組]。
+登入 [Azure 入口網站](https://portal.azure.com)，然後按一下 [資源群組]  。
 
-在 [依名稱篩選...] 文字方塊中，輸入您的資源群組名稱。 本快速入門的指示是使用名為 *SignalRTestResources* 的資源群組。 在結果清單中的目標資源群組上方，按一下 **...**，然後按一下 [刪除資源群組]。
+在 [依名稱篩選...]  文字方塊中，輸入您的資源群組名稱。 本快速入門的指示是使用名為 *SignalRTestResources* 的資源群組。 在結果清單中的目標資源群組上方，按一下 **...** ，然後按一下 [刪除資源群組]  。
 
    
 ![刪除](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)

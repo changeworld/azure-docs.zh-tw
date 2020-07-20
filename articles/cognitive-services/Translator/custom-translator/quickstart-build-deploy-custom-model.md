@@ -2,19 +2,19 @@
 title: 快速入門：建置、部署和使用自訂模型 - 自訂翻譯工具
 titleSuffix: Azure Cognitive Services
 description: 在本快速入門中，您會進行「使用自訂翻譯工具來建置翻譯系統」的逐步程序。
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
-ms.author: v-rada
+ms.date: 05/26/2020
+ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: 7875a32274ddf0ea886727cdc55a0bbb874b2296
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b0992c4d18fdb9cb5201ab3ef52fba8ee3feb7a2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762988"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964374"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>快速入門：建置、部署和使用自訂模型來進行翻譯
 
@@ -24,9 +24,23 @@ ms.locfileid: "57762988"
 
 1. 若要使用[自訂翻譯工具](https://portal.customtranslator.azure.ai)入口網站，您必須擁有 [Microsoft 帳戶](https://signup.live.com)或 [Azure AD 帳戶](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (裝載於 Azure 上的組織帳戶) 以便進行登入。
 
-2. 可透過 Azure 入口網站來使用的翻譯工具文字 API 訂用帳戶。 您必須有翻譯工具文字 API 訂用帳戶金鑰，才能與工作區相關聯。 請參閱[如何註冊翻譯工具文字 API](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup)。
+2. 透過 Azure 入口網站訂閱翻譯工具。 您必須要有翻譯工具訂用帳戶金鑰，才能與自訂翻譯工具中的工作區相關聯。 請參閱[如何註冊翻譯工具](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup)。
 
-3. 上述兩項皆具備時，請登入[自訂翻譯工具](https://portal.customtranslator.azure.ai)入口網站。 進入自訂翻譯工具入口網站後，請瀏覽至 [設定] 頁面，在其中將 Microsoft 翻譯工具文字 API 訂用帳戶金鑰與工作區相關聯。
+3. 當您擁有上述兩帳戶時，請登入[自訂翻譯](https://portal.customtranslator.azure.ai)入口網站來建立工作區、專案、上傳檔案，以及建立/部署模型。
+
+## <a name="create-a-workspace"></a>建立工作區
+
+如果您是第一次登入的使用者，系統會要求您先同意服務條款，才能建立工作區，並將您的工作區與翻譯工具訂用帳戶建立關聯。
+
+![建立工作區](media/quickstart/terms-of-service.png)
+![建立工作區](media/quickstart/create-workspace-1.png)
+![建立工作區](media/quickstart/create-workspace-2.png)
+![建立工作區e](media/quickstart/create-workspace-3.png)
+![建立工作區](media/quickstart/create-workspace-4.png)
+![建立工作區](media/quickstart/create-workspace-5.png)
+![建立工作區](media/quickstart/create-workspace-6.png)
+
+之後造訪自訂翻譯入口網站時，您可以瀏覽至可管理工作區的 [設定] 頁面、建立更多工作區、將翻譯工具訂用帳戶金鑰與您的工作區建立關聯、新增共同擁有者，以及變更訂用帳戶金鑰。
 
 ## <a name="create-a-project"></a>建立專案
 
@@ -37,7 +51,7 @@ ms.locfileid: "57762988"
 
 ## <a name="upload-documents"></a>上傳文件
 
-接著，上傳[訓練](training-and-model.md#training-dataset-for-custom-translator)、[微調](training-and-model.md#tuning-dataset-for-custom-translator)和[測試](training-and-model.md#testing-dataset-for-custom-translator)文件集。 您可以上傳[平行處理](what-are-parallel-documents.md)和組合文件。 您也可以上傳[字典](what-is-dictionary.md)。
+接著，上傳[訓練](training-and-model.md#training-document-type-for-custom-translator)、[微調](training-and-model.md#tuning-document-type-for-custom-translator)和[測試](training-and-model.md#testing-dataset-for-custom-translator)文件集。 您可以上傳[平行處理](what-are-parallel-documents.md)和組合文件。 您也可以上傳[字典](what-is-dictionary.md)。
 
 您可以從 [文件] 索引標籤或從特定專案的頁面上傳文件。
 
@@ -49,7 +63,7 @@ ms.locfileid: "57762988"
 
 所有必要文件皆已上傳時，下一步是建置模型。
 
-選取您所建立的專案。 您會看到所有已上傳、且與這個專案共用語言組的文件。 選取您想要包含在模型中的文件。 您可以選取[訓練](training-and-model.md#training-dataset-for-custom-translator)、[微調](training-and-model.md#tuning-dataset-for-custom-translator)和[測試](training-and-model.md#testing-dataset-for-custom-translator)資料，也可以只選取訓練資料，然後讓自訂翻譯工具自動建置模型的微調和測試集。
+選取您所建立的專案。 您會看到所有已上傳、且與這個專案共用語言組的文件。 選取您想要包含在模型中的文件。 您可以選取[訓練](training-and-model.md#training-document-type-for-custom-translator)、[微調](training-and-model.md#tuning-document-type-for-custom-translator)和[測試](training-and-model.md#testing-dataset-for-custom-translator)資料，也可以只選取訓練資料，然後讓自訂翻譯工具自動建置模型的微調和測試集。
 
 ![建立模型](media/quickstart/ct-how-to-train.png)
 
@@ -69,7 +83,7 @@ ms.locfileid: "57762988"
 
 ## <a name="use-a-deployed-model"></a>使用已部署的模型
 
-已部署的模型可透過 Microsoft 翻譯工具[文字 API V3 (藉由指定 CategoryID)](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) 來存取。 如需翻譯工具文字 API 的詳細資訊，請參閱 [API 參考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)網頁。
+您可以藉由指定 CategoryID](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) ，透過翻譯工具存取已部署的模型。 如需翻譯工具的詳細資訊，請參閱 [API 參考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)網頁。
 
 ## <a name="next-steps"></a>後續步驟
 

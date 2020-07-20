@@ -1,49 +1,42 @@
 ---
-title: Azure 備份：使用 REST API 來還原 Azure VM
-description: 使用 REST API 管理 Azure VM 備份的還原作業
-services: backup
-author: pvrk
-manager: shivamg
-keywords: REST API; Azure VM 備份; Azure VM 還原;
-ms.service: backup
+title: 使用 REST API 來還原 Azure VM
+description: 在本文中，您將瞭解如何使用 REST API 來管理 Azure 虛擬機器備份的還原作業。
 ms.topic: conceptual
 ms.date: 09/12/2018
-ms.author: pullabhk
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 4a65e8a855b9be797c1ceeacf4b74fea74697d00
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 87e3d75d925968b6521324f5b776cf8df1f6af11
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60646640"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84247794"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>使用 REST API 還原 Azure 虛擬機器
 
-使用 Azure 備份完成 Azure 虛擬機器的備份後，您可以從相同的備份複本還原整個 Azure 虛擬機器、磁碟或檔案。 本文說明如何使用 REST API 還原 Azure VM 或磁碟。
+一旦使用 Azure 備份完成 Azure 虛擬機器的備份，就可以從相同的備份複本還原整個 Azure 虛擬機器或磁片或檔案。 本文說明如何使用 REST API 還原 Azure VM 或磁碟。
 
 對於任何還原作業，您必須先識別相關的復原點。
 
 ## <a name="select-recovery-point"></a>選取復原點
 
-使用[列出復原點 REST API](https://docs.microsoft.com/rest/api/backup/recoverypoints/list)，可以列出備份項目可用的復原點。 這是一項具備所有相關值的簡單 GET 作業。
+使用[列出復原點 REST API](https://docs.microsoft.com/rest/api/backup/recoverypoints/list)，可以列出備份項目可用的復原點。 這是一項具備所有相關值的簡單 GET** 作業。
 
 ```http
-GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2016-12-01
+GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13
 ```
 
 `{containerName}` 和 `{protectedItemName}` 的建構方式在[這裡](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)。 `{fabricName}` 是 "Azure"。
 
-GET URI 具備所有必要參數。 不需要額外的要求內文
+*GET* URI 具備所有必要參數。 不需要額外的要求內文
 
 ### <a name="responses"></a>回應
 
-|名稱  |類型  |描述  |
+|名稱  |類型  |Description  |
 |---------|---------|---------|
-|200 確定     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
+|200 確定     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       確定  |
 
 #### <a name="example-response"></a>範例回應
 
-一旦提交 GET URI，就會傳回 200 (確定) 回應。
+一旦提交 GET** URI，就會傳回 200 (確定) 回應。
 
 ```http
 HTTP/1.1 200 OK
@@ -123,12 +116,12 @@ X-Powered-By: ASP.NET
 
 ## <a name="restore-disks"></a>還原磁碟
 
-如果需要自訂從備份資料建立 VM，您只要將磁碟還原至所選的儲存體帳戶，並根據需求從這些磁碟建立 VM。 儲存體帳戶應與復原服務保存庫位於相同的區域中，且不得區域備援。 磁碟以及已備份 VM 的組態 ("vmconfig.json") 會儲存在指定的儲存體帳戶中。
+如果需要從備份資料自訂 VM 的建立，您可以將磁片還原到所選的儲存體帳戶，並根據其需求從這些磁片建立 VM。 儲存體帳戶應與復原服務保存庫位於相同的區域中，且不得區域備援。 磁片以及已備份 VM 的設定（「vmconfig.js」）將會儲存在指定的儲存體帳戶中。
 
 觸發還原磁碟為 *POST* 要求。 若要深入了解還原磁碟作業，請參閱[「觸發還原」REST API](https://docs.microsoft.com/rest/api/backup/restores/trigger)。
 
 ```http
-POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2016-12-01
+POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
 ```
 
 `{containerName}` 和 `{protectedItemName}` 的建構方式在[這裡](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)。 `{fabricName}` 是 "Azure"，而 `{recoveryPointId}` 是[上述](#example-response)復原點的 `{name}` 欄位。
@@ -137,7 +130,7 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 若要觸發從 Azure VM 備份還原磁碟，以下是要求本文的元件。
 
-|名稱  |類型  |描述  |
+|名稱  |類型  |Description  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -165,25 +158,25 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 }
 ```
 
-### <a name="response"></a>Response
+### <a name="response"></a>回應
 
 還原磁碟的觸發為[非同步作業](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 這表示此作業會建立另一項需要個別追蹤的作業。
 
 它會傳回兩個回應：在建立另一項作業時傳回 202 (已接受)，然後在該作業完成時傳回 200 (確定)。
 
-|名稱  |類型  |描述  |
+|名稱  |類型  |Description  |
 |---------|---------|---------|
 |202 已接受     |         |     已接受    |
 
 #### <a name="example-responses"></a>範例回應
 
-一旦提交 POST URI 以供觸發還原磁碟，初始回應為 202 (已接受) 以及位置標頭或 Azure-async-header。
+一旦提交 POST** URI 以供觸發還原磁碟，初始回應為 202 (已接受) 以及位置標頭或 Azure-async-header。
 
 ```http
 HTTP/1.1 202 Accepted
 Pragma: no-cache
 Retry-After: 60
-Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2016-12-01
+Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2019-05-13
 X-Content-Type-Options: nosniff
 x-ms-request-id: 893fe372-8d6c-4c56-b589-45a95eeef95f
 x-ms-client-request-id: a15ce064-25bd-4ac6-87e5-e3bc6ec65c0b; a15ce064-25bd-4ac6-87e5-e3bc6ec65c0b
@@ -193,14 +186,14 @@ x-ms-correlation-request-id: 893fe372-8d6c-4c56-b589-45a95eeef95f
 x-ms-routing-request-id: SOUTHINDIA:20180604T130003Z:893fe372-8d6c-4c56-b589-45a95eeef95f
 Cache-Control: no-cache
 Date: Mon, 04 Jun 2018 13:00:03 GMT
-Location: https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2016-12-01
+Location: https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2019-05-13
 X-Powered-By: ASP.NET
 ```
 
-然後，使用位置標頭或 Azure-AsyncOperation 標頭搭配簡單的 GET 命令，追蹤所產生的作業。
+然後，使用位置標頭或 Azure-AsyncOperation 標頭搭配簡單的 *GET* 命令，來追蹤所產生的作業。
 
 ```http
-GET https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2016-12-01
+GET https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2019-05-13
 ```
 
 當作業完成時，它會傳回 200 (確定) 以及回應本文中所產生還原作業的識別碼。
@@ -253,7 +246,7 @@ X-Powered-By: ASP.NET
         "containerName": "IaasVMContainer;iaasvmcontainerv2;testRG;testVM",
         "protectedItemName": "VM;iaasvmcontainerv2;testRG;testVM",
         "recoveryPointId": "348916168024334",
-        "api-version": "2016-12-01",
+        "api-version": "2019-05-13",
       "parameters": {
         "properties": {
           "objectType":  "IaasVMRestoreRequest",

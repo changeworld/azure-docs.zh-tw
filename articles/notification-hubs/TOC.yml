@@ -7,10 +7,16 @@
     - name: 與 App Service Mobile Apps 整合
       href: notification-hubs-app-service.md
 - name: 快速入門
+  expanded: true
   items:
     - name: 建立通知中樞 - Azure 入口網站
       href: create-notification-hub-portal.md
-    - name: 設定通知中樞 - Azure 入口網站
+    - name: 建立通知中樞 - Azure CLI
+      href: create-notification-hub-azure-cli.md
+    - name: 建立通知中樞 - ARM 範本
+      displayName: Resource Manager
+      href: create-notification-hub-template.md
+    - name: 設定通知中樞
       href: configure-notification-hub-portal-pns-settings.md
 - name: 教學課程
   items:
@@ -18,7 +24,9 @@
       items:
         - name: Firebase Cloud Messaging
           items:
-            - name: 將推播通知傳送到所有註冊
+            - name: 將推播通知傳送至所有註冊 (SDK 1.0.0 版-preview1)
+              href: android-sdk.md
+            - name: 將推播通知傳送至所有註冊 (SDK 0.6 版)
               href: notification-hubs-android-push-notification-google-fcm-get-started.md
             - name: 將推播通知傳送至特定裝置
               href: push-notifications-android-specific-devices-firebase-cloud-messaging.md
@@ -28,53 +36,61 @@
               href: xamarin-notification-hubs-push-notifications-android-gcm.md
         - name: Google 雲端通訊 (已淘汰)
           items:
-            - name: 將推播通知傳送到所有註冊
+            - name: 將推播通知傳送至所有註冊
               href: notification-hubs-android-push-notification-google-gcm-get-started.md
             - name: 將推播通知傳送至特定裝置
               href: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
             - name: 將推播通知傳送給特定使用者
               href: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
-    - name: Baidu
-      items:
-        - name: 使用百度雲推送傳送推播通知
-          href: notification-hubs-baidu-china-android-notifications-get-started.md
-    - name: Chrome
-      items:
-        - name: 向 Chrome 應用程式傳送推播通知
-          href: notification-hubs-chrome-push-notifications-get-started.md
     - name: iOS
       items:
-        - name: 向 iOS 使用者傳送推播通知
-          href: notification-hubs-ios-apple-push-notification-apns-get-started.md
+        - name: 適用於 iOS 13 的通知中樞更新
+          href: push-notification-updates-ios-13.md
+        - name: 將推播通知傳送至 iOS 應用程式
+          items:
+            - name: iOS 教學課程的必要條件
+              href: ios-sdk-get-started.md
+            - name: Objective-C (版本 3.0.0-preview1)
+              href: ios-sdk-300.md
+            - name: Objective-C (版本 2.0.4)
+              href: ios-sdk-204.md
+            - name: Swift
+              href: ios-sdk-swift-rest.md
         - name: 將推播通知傳送至特定裝置
           href: notification-hubs-ios-xplat-segmented-apns-push-notification.md
         - name: 將推播通知傳送給特定使用者
           href: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
-        - name: 向 Xamarin iOS 應用程式傳送推播通知
+        - name: 將推播通知傳送至 Xamarin iOS 應用程式
           href: xamarin-notification-hubs-ios-push-notification-apns-get-started.md
-        - name: 向 iOS 裝置推送當地語系化的通知
+        - name: 將當地語系化推播通知傳送至 iOS 裝置
           href: notification-hubs-ios-xplat-localized-apns-push-notification.md
-    - name: Kindle
+    - name: 跨平台
       items:
-        - name: 使用 Amazon 裝置傳訊傳送推播通知
-          href: notification-hubs-kindle-amazon-adm-push-notification.md
+        - name: 透過後端服務傳送推播通知
+          items:
+            - name: Xamarin.Forms
+              href: notification-hubs-backend-service-xamarin-forms.md
+            - name: Flutter
+              href: notification-hubs-backend-service-flutter.md
+            - name: React Native
+              href: notification-hubs-backend-service-react-native.md
     - name: Windows Phone
       items:
-        - name: 向使用者傳送推播通知
+        - name: 將推播通知傳送至應用程式
           href: notification-hubs-windows-mobile-push-notifications-mpns.md
         - name: 將推播通知傳送至特定裝置
           href: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
-    - name: ' Windows'
+    - name: Windows
       items:
         - name: 將推播通知傳送至通用 Windows 平台應用程式
           href: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
         - name: 將推播通知傳送至特定裝置
           href: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-        - name: 將當地語系化通知推送至應用程式
+        - name: 將當地語系化推播通知傳送至應用程式
           href: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
         - name: 將推播通知傳送給特定使用者
           href: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-        - name: 推送以位置為基礎的通知
+        - name: 傳送以位置為基礎的通知
           href: notification-hubs-push-bing-spatial-data-geofencing-notification.md
 - name: 範例
   items:
@@ -84,6 +100,8 @@
       href: samples-powershell.md
 - name: 概念
   items:
+    - name: 傳輸層安全性 (TLS)
+      href: notification-hubs-tls12.md
     - name: 企業推播架構指引
       href: notification-hubs-enterprise-push-notification-architecture.md
     - name: 裝置登錄
@@ -95,7 +113,7 @@
           href: notification-hubs-templates-cross-platform-push-messages.md
     - name: 安全性模型
       href: notification-hubs-push-notification-security.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 變更定價層
       href: change-pricing-tier.md
@@ -133,20 +151,24 @@
           href: configure-windows-push-notification-service.md
         - name: 設定 Microsoft 推播通知服務
           href: configure-microsoft-push-notification-service.md
-        - name: 設定 Android 裝置傳訊
-          href: configure-android-device-messaging.md
         - name: 設定百度雲端推播
           href: configure-baidu-cloud-push.md
     - name: 向應用程式後端註冊
       href: notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md
     - name: 搭配 Apple 裝置使用以權杖為基礎的驗證
-      href: notification-hubs-push-notification-http2-token-authentification.md
+      href: notification-hubs-push-notification-http2-token-authentication.md
     - name: 針對已捨棄通知進行疑難排解
       href: notification-hubs-push-notification-fixer.md
+    - name: 使用百度雲推送傳送推播通知
+      href: notification-hubs-baidu-china-android-notifications-get-started.md
+    - name: 透過通知中樞使用 APNS VOIP
+      href: voip-apns.md
 - name: 參考
   items:
     - name: .NET
       href: /dotnet/api/microsoft.azure.notificationhubs
+    - name: Azure CLI
+      href: /cli/azure/ext/notification-hub/notification-hub
     - name: PowerShell
       href: /powershell/module/az.notificationhubs
     - name: REST
@@ -163,11 +185,11 @@
       href: notification-hubs-sdks.md
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/notification-hubs/'
-    - name: MSDN 論壇
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=notificationhubs'
-    - name: 堆疊溢位
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-notification-hubs.html'
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-notificationhub'
     - name: 要求功能
       href: 'https://feedback.azure.com/forums/218849-notification-hubs'

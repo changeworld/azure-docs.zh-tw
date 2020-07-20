@@ -1,27 +1,19 @@
 ---
-title: 在 Azure 中建立一般化 VM 非受控映像 | Microsoft Docs
+title: 在 Azure 中建立一般化 VM 的非受控映像
 description: 建立一般化的 Windows VM 未受管理的映像，在 Azure 中用以建立多個 VM 複本。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: e1ed419892412c1fb9334fed74b82c53154723ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom: storage-accounts
+ms.openlocfilehash: 31b8200b63780388fb53db588c418951c500ac19
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60252411"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84232912"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>如何從 Azure VM 建立非受控 VM 映像
 
@@ -29,7 +21,7 @@ ms.locfileid: "60252411"
 
 本文示範如何使用 Azure PowerShell 建立使用儲存體帳戶的一般化 Azure VM 的映像。 然後可以使用映像來建立另一個 VM。 此映像包含作業系統磁碟與連結到虛擬機器的資料磁碟。 映像不包含虛擬網路資源，因此您需要在建立新的 VM 時設定這些資源。 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="generalize-the-vm"></a>一般化 VM 
 本節說明如何將 Windows 虛擬機器一般化以做為映像。 將 VM 一般化會移除您的所有個人帳戶資訊，以及其他項目，並準備電腦作為映像。 如需 Sysprep 的詳細資訊，請參閱[如何使用 Sysprep：簡介](https://technet.microsoft.com/library/bb457073.aspx) \(英文\)。
@@ -41,11 +33,11 @@ ms.locfileid: "60252411"
 > 
 > 
 
-您也可以使用 `sudo waagent -deprovision+user` 將 Linux VM 一般化，然後使用 PowerShell 來擷取該 VM. 有关使用 CLI 捕获 VM 的信息，请参阅[如何使用 Azure CLI 通用化和捕获 Linux 虚拟机](../linux/capture-image.md)。
+您也可以使用 `sudo waagent -deprovision+user` 將 Linux VM 一般化，然後使用 PowerShell 來擷取該 VM. 如需如何使用 CLI 來擷取 VM 的資訊，請參閱[如何使用 Azure CLI 來一般化和擷取 Linux 虛擬機器](../linux/capture-image.md)。
 
 
 1. 登入 Windows 虛擬機器。
-2. 以系統管理員身分開啟 [命令提示字元] 視窗。 将目录切换到 **%windir%\system32\sysprep**，然后运行 `sysprep.exe`。
+2. 以系統管理員身分開啟 [命令提示字元] 視窗。 切換至 **%windir%\system32\sysprep** 目錄，然後執行 `sysprep.exe`。
 3. 在 [系統準備工具] 對話方塊中，選取 [進入系統全新體驗 (OOBE)]，並確認已勾選 [一般化] 核取方塊。
 4. 在 [關機選項] 中選取 [關機]。
 5. 按一下 [確定]。
@@ -104,7 +96,7 @@ ms.locfileid: "60252411"
 
 ## <a name="create-the-image"></a>建立映像
 
-使用這個命令，在目的地儲存體容器中建立非受控虛擬機器映像。 此映像會建立在與原始虛擬機器相同的儲存體帳戶中。 `-Path` 參數會將來源 VM 的 JSON 範本複本儲存到本機電腦。 `-DestinationContainerName` 參數是要用以保存映像的容器名稱。 如果该容器不存在，系统自动创建。
+使用這個命令，在目的地儲存體容器中建立非受控虛擬機器映像。 此映像會建立在與原始虛擬機器相同的儲存體帳戶中。 `-Path` 參數會將來源 VM 的 JSON 範本複本儲存到本機電腦。 `-DestinationContainerName` 參數是要用以保存映像的容器名稱。 如果此容器不存在，則會為您建立。
    
 ```powershell
 Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
@@ -112,7 +104,7 @@ Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
     -Path <C:\local\Filepath\Filename.json>
 ```
    
-您可以從 JSON 檔案範本取得映像的 URL。 請依序前往 [資源]  >  [storageProfile]  >  [osDisk]  >  [映像]  >  [uri] 區段，取得您映像的完整路徑。 映像的 URL 如下所示： `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`
+您可以從 JSON 檔案範本取得映像的 URL。 請依序前往 [資源] >  [storageProfile] >  [osDisk] >  [映像] >  [uri] 區段，取得您映像的完整路徑。 映像的 URL 如下所示： `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`
    
 您也可以在入口網站中驗證 URI。 系統會將映像複製到儲存體帳戶中名為 **system** 的容器中。 
 
@@ -149,7 +141,7 @@ $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vh
     ```    
 
 ### <a name="create-a-public-ip-address-and-network-interface"></a>建立公用 IP 位址和網路介面
-若要与虚拟网络中的虚拟机通信，需要一个 [公共 IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) 和网络接口。
+若要能夠與虛擬網路中的虛擬機器進行通訊，您需要 [公用 IP 位址](../../virtual-network/public-ip-addresses.md) 和網路介面。
 
 1. 建立公用 IP 位址。 此範例會建立名為 **myPip** 的公用 IP 位址。 
    
@@ -169,7 +161,7 @@ $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vh
 ### <a name="create-the-network-security-group-and-an-rdp-rule"></a>建立網路安全性群組和 RDP 規則
 若要能夠使用 RDP 登入 VM，您必須有可在連接埠 3389 上允許 RDP 存取的安全性規則。 
 
-此範例會建立名為 **myNsg** 的 NSG，其包含的規則 **myRdpRule** 可允許透過連接埠 3389 的 RDP 流量。 有关 NSG 的详细信息，请参阅 [Opening ports to a VM in Azure using PowerShell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（使用 PowerShell 在 Azure 中打开 VM 端口）。
+此範例會建立名為 **myNsg** 的 NSG，其包含的規則 **myRdpRule** 可允許透過連接埠 3389 的 RDP 流量。 如需 NSG 的詳細資訊，請參閱[使用 PowerShell 對 Azure 中的 VM 開啟連接埠](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ```powershell
 $nsgName = "myNsg"
@@ -185,13 +177,13 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgName -Location $location
 
 
 ### <a name="create-a-variable-for-the-virtual-network"></a>建立虛擬網路的變數
-为完成的虚拟网络创建变量。 
+為已完成的虛擬網路建立變數。 
 
 ```powershell
 $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
-### <a name="create-the-vm"></a>创建 VM
+### <a name="create-the-vm"></a>建立 VM
 下列 PowerShell 會完成虛擬機器設定，並使用非受控映像當做新安裝的來源。
 
 </br>
@@ -249,7 +241,7 @@ $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
     New-AzVM -ResourceGroupName $rgName -Location $location -VM $vm
 ```
 
-### <a name="verify-that-the-vm-was-created"></a>验证是否已创建 VM
+### <a name="verify-that-the-vm-was-created"></a>確認已建立 VM
 完成時，在 [Azure 入口網站](https://portal.azure.com)的 [瀏覽] > [虛擬機器] 底下，或是使用下列 PowerShell 命令，應該就可以看到新建立的 VM：
 
 ```powershell

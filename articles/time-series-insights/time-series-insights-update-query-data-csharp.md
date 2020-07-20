@@ -1,47 +1,84 @@
 ---
-title: 查詢資料從 Azure 時間序列深入解析預覽環境使用C#程式碼 |Microsoft Docs
-description: 本文說明如何編製以 C# (c-sharp) .NET 語言撰寫的自訂應用程式，以從 Azure 時間序列深入解析環境查詢資料。
+title: 使用 C# 從預覽環境查詢資料 - Azure 時間序列見解 | Microsoft Docs
+description: 了解如何使用以 C# 撰寫的應用程式，從 Azure 時間序列見解環境查詢資料。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
-ms.author: anshan
+author: deepakpalled
+ms.author: dpalled
 manager: cshankar
-reviewer: jasonwhowell, kfile, tsidocs
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: ebd5cb92b510da56446ca9e559b03a56cb2af7cf
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: fbc2cbc29cb23a21e7d3713091fc22f01bb1b15a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65515275"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81379819"
 ---
-# <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>從 Azure 時間序列深入解析預覽環境使用的查詢資料C#
+# <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>使用 C# 從 Azure 時間序列見解預覽環境查詢資料
 
-這個C#範例示範如何從 Azure 時間序列深入解析預覽環境查詢資料。
+此 C# 範例示範如何從 Azure 時間序列見解預覽環境中的[預覽資料存取 API](https://docs.microsoft.com/rest/api/time-series-insights/preview) 查詢資料。
 
-範例會顯示查詢 API 使用方式的數個基本範例︰
+> [!TIP]
+> 請檢視 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample) 中的預覽 C# 程式碼範例。
 
-1. 在準備步驟中，透過 Azure Active Directory API 取得存取權杖。 在每個「查詢」API 要求的 `Authorization` 標頭中傳遞此權杖。 若要了解如何設定非互動式應用程式，請參閱[驗證與授權](time-series-insights-authentication-and-authorization.md)。 此外，請務必正確設定在此範例開頭定義的所有常數。
-1. 取得使用者可存取的環境清單。 挑選其中一個環境作為使用環境，並針對此環境查詢進一步資料。
-1. 在 HTTPS 要求的範例中，要求感興趣環境的可用性資料。
-1. 在 Web 通訊端要求的範例中，要求感興趣環境的事件彙總資料。 要求整個可用性時間範圍內的資料。
+## <a name="summary"></a>摘要
 
-> [!NOTE]
-> 此程式碼範例也會提供在[ https://github.com/Azure-Samples/Azure-Time-Series-Insights ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample)。
+以下範例程式碼會示範下列功能：
 
-## <a name="c-example"></a>C# 範例
+* [Azure AutoRest](https://github.com/Azure/AutoRest) 中的 SDK 自動產生支援。
+* 如何使用 [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) 透過 Azure Active Directory 取得存取權杖。
+* 如何在後續資料存取 API 要求的 `Authorization` 標頭中傳遞該取得的存取權杖。 
+* 本範例會提供主控台介面，其示範如何針對下列項目提出 HTTP 要求：
+
+    * [預覽環境 API](https://docs.microsoft.com/rest/api/time-series-insights/preview#preview-environments-apis) (機器翻譯)
+        * [取得環境可用性 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/getavailability) (機器翻譯) 和[取得事件結構描述 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/geteventschema) (機器翻譯)
+    * [預覽查詢 API](https://docs.microsoft.com/rest/api/time-series-insights/preview#query-apis) (機器翻譯)
+        * [取得事件 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#getevents) (機器翻譯)、[取得數列 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#getseries) (機器翻譯) 和[取得彙總數列 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#aggregateseries) (機器翻譯)
+    * [時間序列模型 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#aggregateseries) (機器翻譯)
+        * [取得階層 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeserieshierarchies/get) (機器翻譯) 和[階層批次 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeserieshierarchies/executebatch) (機器翻譯)
+        * [取得類型 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriestypes/get) (機器翻譯) 和[類型批次 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriestypes/executebatch) (機器翻譯)
+        * [取得執行個體 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriesinstances/get) (機器翻譯) 和[執行個體批次 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriesinstances/executebatch) (機器翻譯)
+* 進階[搜尋](https://docs.microsoft.com/rest/api/time-series-insights/preview#search-features) (機器翻譯) 和 [TSX](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) (機器翻譯) 功能。
+
+## <a name="prerequisites-and-setup"></a>先決條件和設定
+
+編譯及執行範例程式碼之前，您必須先完成下列步驟：
+
+1. [佈建 Azure 時間序列見解預覽](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-how-to-manage#create-the-environment) (機器翻譯) 環境。
+1. 針對 Azure Active Directory 設定 Azure 時間序列見解環境，如[驗證和授權](time-series-insights-authentication-and-authorization.md)中所述。 
+1. 執行 [Readme.md](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/Readme.md) 中所指定的 [GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/GenerateCode.bat)，以產生時間序列見解預覽用戶端相依性。
+1. 在 Visual Studio 中開啟 `TSIPreviewDataPlaneclient.sln` 方案，並將 `DataPlaneClientSampleApp` 設定為預設專案。
+1. 使用[以下](#project-dependencies)所述步驟來安裝必要的專案相依性，並將範例編譯為可執行檔 `.exe`。
+1. 按兩下 `.exe` 檔案加以執行。
+
+## <a name="project-dependencies"></a>專案相依性
+
+建議使用最新版的 Visual Studio：
+
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) - Version 16.4.2+
+
+本範例程式碼有數個必要的相依性，您可在 [packages.config](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClientSampleApp/packages.config) 檔案中檢視這些相依性。
+
+選取 [建置] > [建置方案]，以下載 Visual Studio 2019 中的套件。 
+
+或者，使用 [NuGet 2.12+](https://www.nuget.org/) 新增每個套件。 例如：
+
+* `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 4.5.1`
+
+## <a name="c-sample-code"></a>C# 範例程式碼
 
 [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-preview-sample/DataPlaneClientSampleApp/Program.cs)]
 
 > [!NOTE]
-> 上述程式碼範例可以執行而不需變更預設環境的值。
+> * 您可在不改變預設環境變數的情況下執行此程式碼範例。
+> * 此程式碼範例會編譯為 .NET 可執行檔主控台應用程式。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要深入了解查詢，請閱讀[查詢 API 參考](/rest/api/time-series-insights/preview-query)。
+- 若要深入了解查詢，請參閱[查詢 API 參考](https://docs.microsoft.com/rest/api/time-series-insights/preview-query) (機器翻譯)。
 
-- 如何讀取到[JavaScript 單一頁面應用程式連線](tutorial-create-tsi-sample-spa.md)至時間序列深入解析。
+- 請參閱如何[使用用戶端 SDK 將 JavaScript 應用程式連線到時間序列見解](https://github.com/microsoft/tsiclient) (英文)。

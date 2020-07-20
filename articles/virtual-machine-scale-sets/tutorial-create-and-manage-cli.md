@@ -1,27 +1,20 @@
 ---
-title: 教學課程 - 建立及管理 Azure 虛擬機器擴展集 | Microsoft Docs
+title: 教學課程 - 建立及管理 Azure 虛擬機器擴展集
 description: 了解如何使用 Azure CLI 建立虛擬機器擴展集，以及一些常見的管理工作，例如如何啟動和停止執行個體，或變更擴展集容量。
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ju-shim
+ms.author: jushiman
 ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
 ms.date: 03/27/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: b0d2a72567783ca1c127f76d94ddc9c5e007ea89
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: ff4a2b9cb66013900b5b9969a4281d1a20d9c122
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751016"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736436"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>教學課程：使用 Azure CLI 建立及管理虛擬機器擴展集
 虛擬機器擴展集可讓您部署和管理一組相同、自動調整的虛擬機器。 在虛擬機器擴展集生命週期期間，您可能需要執行一或多個管理工作。 在本教學課程中，您將了解如何：
@@ -41,7 +34,7 @@ ms.locfileid: "55751016"
 
 
 ## <a name="create-a-resource-group"></a>建立資源群組
-Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 資源群組必須在虛擬機器擴展集之前建立。 使用 [az group create](/cli/azure/group) 命令來建立資源群組。 在此範例中，會在 eastus 區域中建立名為 myResourceGroup 的資源群組。 
+Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 資源群組必須在虛擬機器擴展集之前建立。 使用 [az group create](/cli/azure/group) 命令來建立資源群組。 在此範例中，會在 eastus** 區域中建立名為 myResourceGroup** 的資源群組。 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -51,7 +44,7 @@ az group create --name myResourceGroup --location eastus
 
 
 ## <a name="create-a-scale-set"></a>建立擴展集
-您可以使用 [az vmss create](/cli/azure/vmss) 命令建立虛擬機器擴展集。 下列範例會建立名為 myScaleSet 的擴展集，以及產生 SSH 金鑰 (如果不存在)︰
+您可以使用 [az vmss create](/cli/azure/vmss) 命令建立虛擬機器擴展集。 下列範例會建立名為 myScaleSet** 的擴展集，以及產生 SSH 金鑰 (如果不存在)︰
 
 ```azurecli-interactive
 az vmss create \
@@ -77,7 +70,7 @@ az vmss list-instances \
 
 下列範例輸出顯示擴展集中的兩個 VM 執行個體：
 
-```bash
+```output
   InstanceId  LatestModelApplied    Location    Name          ProvisioningState    ResourceGroup    VmId
 ------------  --------------------  ----------  ------------  -------------------  ---------------  ------------------------------------
            1  True                  eastus      myScaleSet_1  Succeeded            MYRESOURCEGROUP  c059be0c-37a2-497a-b111-41272641533c
@@ -108,7 +101,7 @@ az vmss list-instance-connection-info \
 
 下列範例輸出顯示執行個體名稱、負載平衡器的公用 IP 位址，以及 NAT 規則將流量轉送到的連接埠號碼：
 
-```bash
+```output
 {
   "instance 1": "13.92.224.66:50001",
   "instance 3": "13.92.224.66:50003"
@@ -117,13 +110,13 @@ az vmss list-instance-connection-info \
 
 透過 SSH 連線至您的第一個 VM 執行個體。 請使用 `-p` 參數指定您的公用 IP 位址和連接埠號碼，如先前的命令所示：
 
-```azurecli-interactive
+```console
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
 登入該 VM 執行個體後，您可以視需要執行一些手動組態變更。 目前，請如常關閉 SSH 工作階段：
 
-```bash
+```console
 exit
 ```
 
@@ -137,7 +130,7 @@ az vm image list --output table
 
 下列範例輸出顯示 Azure 上最常用的 VM 映像。 *UrnAlias* 可用來指定這些在您建立擴展集時最常用的映像之一。
 
-```bash
+```output
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
 -------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
 CentOS         OpenLogic               7.3                 OpenLogic:CentOS:7.3:latest                                     CentOS               latest
@@ -161,7 +154,7 @@ az vm image list --offer CentOS --all --output table
 
 下列的扼要的輸出會顯示部分可用的 CentOS 7.3 映像：
 
-```azurecli-interactive 
+```output
 Offer    Publisher   Sku   Urn                                 Version
 -------  ----------  ----  ----------------------------------  -------------
 CentOS   OpenLogic   7.3   OpenLogic:CentOS:7.3:7.3.20161221   7.3.20161221
@@ -173,6 +166,9 @@ CentOS   OpenLogic   7.3   OpenLogic:CentOS:7.3:7.3.20170925   7.3.20170925
 ```
 
 若要部署使用特定映像的擴展集，請使用 *Urn* 資料行中的值。 指定映像時，可以使用 *latest* 來取代映像版本號碼，這會選取最新的散發版本。 在下列範例中，會使用 `--image` 引數來指定最新版的 CentOS 7.3 映像。
+
+> [!IMPORTANT]
+> 我們建議使用「最新」** 的映像版本。 指定「最新」以使用部署階段可用的最新映像版本。 請注意，即使您使用「最新」辦本，VM 映像也不會在部署階段後自動更新，即使有新版本可供使用也一樣。
 
 建立及設定所有擴展集資源和 VM 執行個體需要幾分鐘的時間，而您並不需要部署下列擴展集：
 
@@ -192,7 +188,7 @@ VM 執行個體大小 (或 *SKU*) 會決定可供 VM 執行個體使用的計算
 ### <a name="vm-instance-sizes"></a>VM 執行個體大小
 下表會將一般 VM 大小分類成各種使用案例。
 
-| 類型                     | 一般大小           |    說明       |
+| 類型                     | 一般大小           |    描述       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [一般用途](../virtual-machines/linux/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0-7| 平衡的 CPU 對記憶體。 適用於開發/測試及小型到中型應用程式和資料解決方案。  |
 | [計算最佳化](../virtual-machines/linux/sizes-compute.md)   | Fs、F             | CPU 與記憶體的比例高。 適用於中流量應用程式、網路設備，以及批次處理。        |
@@ -210,7 +206,7 @@ az vm list-sizes --location eastus --output table
 
 其輸出類似於下列扼要的範例，顯示指派給每個 VM 大小的資源：
 
-```azurecli-interactive
+```output
   MaxDataDiskCount    MemoryInMb  Name                      NumberOfCores    OsDiskSizeInMb    ResourceDiskSizeInMb
 ------------------  ------------  ----------------------  ---------------  ----------------  ----------------------
                  4          3584  Standard_DS1_v2                       1           1047552                    7168

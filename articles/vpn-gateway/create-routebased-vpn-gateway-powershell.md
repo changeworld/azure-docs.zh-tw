@@ -1,38 +1,40 @@
 ---
-title: 建立路由式 Azure VPN 閘道：PowerShell | Microsoft Docs
+title: Azure VPN 閘道：建立以路由為基礎的閘道： PowerShell
 description: 使用 PowerShell 來快速建立路由型 VPN 閘道
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
-ms.date: 02/11/2019
+ms.topic: how-to
+ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4775a3eb12f48026cca78856a6197e89ddd2c75d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5cd0971b04d1bad140cf3aac29a8c153977cfa62
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60390115"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987636"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-powershell"></a>使用 PowerShell 來建立路由型 VPN 閘道
 
 本文將協助您使用 PowerShell 來快速建立路由型 Azure VPN 閘道。 建立與內部部署網路的 VPN 連線時，會使用 VPN 閘道。 您也可以使用 VPN 閘道來連線至 VNet。
 
-本文中的步驟將會建立 VNet、子網路、閘道子網路，以及路由型 VPN 閘道 (虛擬網路閘道)。 完成閘道建立之後，您接著就可建立連線。 這些步驟需要 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+## <a name="before-you-begin"></a>開始之前
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+本文中的步驟將會建立 VNet、子網路、閘道子網路，以及路由型 VPN 閘道 (虛擬網路閘道)。 完成閘道建立之後，您接著就可建立連線。 這些步驟需要 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
+
+[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 來建立 Azure 資源群組。 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 來建立 Azure 資源群組。 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 建立資源群組。 如果您在本機執行 PowerShell，請以較高的許可權開啟 PowerShell 主控台，並使用命令連接到 Azure `Connect-AzAccount` 。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name TestRG1 -Location EastUS
 ```
 
-## <a name="vnet"></a>建立虛擬網路
+## <a name="create-a-virtual-network"></a><a name="vnet"></a>建立虛擬網路
 
 使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 建立虛擬網路。 下列範例會在 **EastUS** 位置中建立名為 **VNet1** 的虛擬網路：
 
@@ -60,7 +62,7 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
 $virtualNetwork | Set-AzVirtualNetwork
 ```
 
-## <a name="gwsubnet"></a>新增閘道子網路
+## <a name="add-a-gateway-subnet"></a><a name="gwsubnet"></a>新增閘道子網路
 
 閘道子網路包含虛擬網路閘道服務所使用的保留 IP 位址。 請使用下列範例來新增閘道子網路：
 
@@ -79,10 +81,10 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0
 使用 [Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) Cmdlet 來設定虛擬網路的子網路設定。
 
 ```azurepowershell-interactive
-$virtualNetwork | Set-AzVirtualNetwork
+$vnet | Set-AzVirtualNetwork
 ```
 
-## <a name="PublicIP"></a>要求公用 IP 位址
+## <a name="request-a-public-ip-address"></a><a name="PublicIP"></a>要求公用 IP 位址
 
 VPN 閘道必須具有動態配置的公用 IP 位址。 當您建立與 VPN 閘道的連線時，這就是您指定的 IP 位址。 請使用下列範例來要求公用 IP 位址：
 
@@ -90,7 +92,7 @@ VPN 閘道必須具有動態配置的公用 IP 位址。 當您建立與 VPN 閘
 $gwpip= New-AzPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1 -Location 'East US' -AllocationMethod Dynamic
 ```
 
-## <a name="GatewayIPConfig"></a>建立閘道 IP 位址設定
+## <a name="create-the-gateway-ip-address-configuration"></a><a name="GatewayIPConfig"></a>建立閘道 IP 位址設定
 
 閘道器組態定義要使用的子網路和公用 IP 位址。 使用下列範例來建立閘道組態：
 
@@ -99,7 +101,7 @@ $vnet = Get-AzVirtualNetwork -Name VNet1 -ResourceGroupName TestRG1
 $subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
 $gwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id
 ```
-## <a name="CreateGateway"></a>建立 VPN 閘道
+## <a name="create-the-vpn-gateway"></a><a name="CreateGateway"></a>建立 VPN 閘道
 
 VPN 閘道建立作業可能需要花費 45 分鐘以上的時間。 閘道建立完成之後，您便可以在您的虛擬網路與另一個 VNet 之間建立連線。 或是在您的虛擬網路與內部部署位置之間建立連線。 請使用 [New-AzVirtualNetworkGateway](/powershell/module/az.network/New-azVirtualNetworkGateway) Cmdlet 來建立 VPN 閘道。
 
@@ -109,7 +111,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -VpnType RouteBased -GatewaySku VpnGw1
 ```
 
-## <a name="viewgw"></a>檢視 VPN 閘道
+## <a name="view-the-vpn-gateway"></a><a name="viewgw"></a>檢視 VPN 閘道
 
 您可以使用 [Get-AzVirtualNetworkGateway](/powershell/module/az.network/Get-azVirtualNetworkGateway) Cmdlet 來檢視 VPN 閘道。
 
@@ -162,7 +164,7 @@ BgpSettings            : {
      
 ```
 
-## <a name="viewgwpip"></a>檢視公用 IP 位址
+## <a name="view-the-public-ip-address"></a><a name="viewgwpip"></a>檢視公用 IP 位址
 
 若要檢視 VPN 閘道的公用 IP 位址，請使用 [Get-AzPublicIpAddress](/powershell/module/az.network/Get-azPublicIpAddress) Cmdlet。
 

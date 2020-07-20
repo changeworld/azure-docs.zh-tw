@@ -1,6 +1,6 @@
 ---
 title: Azure Cloud Shell 功能 | Microsoft Docs
-description: Azure Cloud Shell 中 Bash 的功能概觀
+description: Azure Cloud Shell 中的功能總覽
 services: Azure
 documentationcenter: ''
 author: maertendMSFT
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: f873f20f97b822e1f4dee716cb69535b0522dc2c
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 409e8667f03843ae1b1bad56f189ff17b29d549a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64866525"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85506560"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell 的功能和工具
 
@@ -44,22 +44,22 @@ Cloud Shell 會安全地自動驗證 Azure CLI 和 Azure PowerShell 的帳戶存
 
 ### <a name="azure-drive-azure"></a>Azure 磁碟機 (Azure:)
 
-Cloud Shell 中的 PowerShell 可讓您在 Azure 磁碟機 (`Azure:`) 中開始。
+Cloud Shell 中的 PowerShell 會提供 Azure 磁片磁碟機（ `Azure:` ）。 您可以使用切換至 Azure 磁片磁碟機，並將其 `cd Azure:` 返回您的主目錄 `cd  ~` 。
 Azure 磁碟機可讓您輕鬆探索和導覽與檔案系統導覽類似的 Azure 資源 (例如計算、網路、儲存體等等)。
 無論您使用哪個磁碟機，都可以繼續使用熟悉的 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure) 來管理這些資源。
 對 Azure 資源進行的任何變更 (在 Azure 入口網站中直接進行，或透過 Azure PowerShell Cmdlet) 都會反映在 Azure 磁碟機中。  您可以執行 `dir -Force` 以重新整理您的資源。
 
 ![](media/features-powershell/azure-drive.png)
 
-### <a name="manage-exchange-online"></a>Manage Exchange Online
+### <a name="manage-exchange-online"></a>管理 Exchange Online
 
-Cloud Shell 中的 PowerShell 包含私用組建的 Exchange Online 的模組。  執行`Connect-EXOPSSession`以取得您的 Exchange 指令程式。
+Cloud Shell 中的 PowerShell 包含 Exchange Online 模組的私用組建。  執行 `Connect-EXOPSSession` 以取得您的 Exchange Cmdlet。
 
 ![](media/features-powershell/exchangeonline.png)
 
- 執行 `Get-Command -Module tmp_*`
+ `Get-Command -Module tmp_*`執行
 > [!NOTE]
-> 模組名稱應以開頭`tmp_`，如果您已安裝模組具有相同的前置詞，將也會呈現其 cmdlet。 
+> 模組名稱的開頭應該是 `tmp_` ，如果您已安裝具有相同前置詞的模組，則也會顯示其 Cmdlet。 
 
 ![](media/features-powershell/exchangeonlinecmdlets.png)
 
@@ -69,30 +69,30 @@ Cloud Shell 包含預先設定的驗證，可用於開放原始碼工具，例�
 
 ## <a name="tools"></a>工具
 
-|Category   |名稱   |
+|類別   |Name   |
 |---|---|
 |Linux 工具            |Bash<br> zsh<br> sh<br> tmux<br> dig<br>               |
-|Azure 工具            |[Azure CLI](https://github.com/Azure/azure-cli) 和 [Azure 傳統 CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#writing-your-first-azcopy-command)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
+|Azure 工具            |[Azure CLI](https://github.com/Azure/azure-cli) 和 [Azure 傳統 CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)<br> [Azure Functions CLI](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
 |文字編輯器           |code (Cloud Shell 編輯器)<br> vim<br> nano<br> emacs    |
 |原始檔控制         |git                    |
 |建置工具            |make<br> maven<br> npm<br> pip         |
-|容器             |[Docker 機器](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/) \(英文\)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS CLI](https://github.com/dcos/dcos-cli) \(英文\)         |
-|資料庫              |MySQL 用戶端<br> PostgreSql 用戶端<br> [sqlcmd 公用程式](https://docs.microsoft.com/sql/tools/sqlcmd-utility) \(英文\)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
-|其他                  |iPython 用戶端<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli) \(英文\)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)|
+|容器             |[Docker 機器](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS CLI](https://github.com/dcos/dcos-cli)         |
+|資料庫              |MySQL 用戶端<br> PostgreSql 用戶端<br> [sqlcmd 公用程式](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
+|其他                  |iPython 用戶端<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli) \(英文\)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)<br> [Puppet 的螺栓](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp Packer](https://www.packer.io/)<br> [Office 365 CLI](https://pnp.github.io/office365-cli/)|
 
 ## <a name="language-support"></a>語言支援
 
-|語言   |Version   |
+|語言   |版本   |
 |---|---|
-|.NET Core  |2.0.0       |
+|.NET Core  |2.2.402       |
 |Go         |1.9        |
 |Java       |1.8        |
-|Node.js    |8.9.4      |
-|PowerShell |[6.2.0](https://github.com/PowerShell/powershell/releases)       |
+|Node.js    |8.16.0      |
+|PowerShell |[7.0.0](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2.7 和 3.5 (預設)|
 
 ## <a name="next-steps"></a>後續步驟
-[Cloud Shell 中 Bash 的快速入門](quickstart.md) <br>
-[Cloud Shell 中 PowerShell 的快速入門](quickstart-powershell.md) <br>
+[Cloud Shell 快速入門中的 Bash](quickstart.md) <br>
+[Cloud Shell 快速入門中的 PowerShell](quickstart-powershell.md) <br>
 [了解 Azure CLI](https://docs.microsoft.com/cli/azure/) <br>
 [了解 Azure PowerShell](https://docs.microsoft.com/powershell/azure/) <br>

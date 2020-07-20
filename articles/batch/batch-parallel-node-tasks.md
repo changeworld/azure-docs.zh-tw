@@ -1,30 +1,19 @@
 ---
-title: 平行執行工作以便有效率地使用計算資源 - Azure Batch | Microsoft Docs
+title: 平行執行工作以最佳化計算資源
 description: 在 Azure Batch 集區中的每個節點上執行並行工作時，使用較少的運算節點以增加效率和降低成本
-services: batch
-documentationcenter: .net
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-ms.assetid: 538a067c-1f6e-44eb-a92b-8d51c33d3e1a
-ms.service: batch
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
+ms.topic: how-to
 ms.date: 04/17/2019
-ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79b45bd423ed6715cdb7cc7c0e079c150eefede5
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 1b13f7f276740cd4f37e8d4c4ba1f2967d919ccf
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63763692"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961569"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>並行執行工作以充分使用 Batch 計算節點 
 
-通过在 Azure Batch 池中的每个计算节点上同时运行多个任务，可在池中的较少节点上最大程度利用资源。 對於某些工作負載來說，這會產生縮短作業時間和降低成本的效益。
+藉由在 Azure Batch 集區的每個計算模式同時執行一個以上的工作，您可以用較少的集中區節點將資源使用量最大化。 對於某些工作負載來說，這會產生縮短作業時間和降低成本的效益。
 
 雖然某些案例受益於將節點的所有資源配置給單一工作，但是許多案例受益於允許多個工作共用這些資源：
 
@@ -41,10 +30,10 @@ ms.locfileid: "63763692"
 ## <a name="enable-parallel-task-execution"></a>啟用平行工作執行
 您可以針對集區層級的平行工作執行，設定計算節點。 使用 Batch .NET 程式庫時，請在建立集區時設定 [CloudPool.MaxTasksPerComputeNode][maxtasks_net] 屬性。 如果您使用 Batch REST API，請在集區建立期間於要求本文中設定 [maxTasksPerNode][rest_addpool] 元素。
 
-Azure Batch 可讓您設定每個節點倍 （4） 工作的核心節點數目。 例如，如果集區設定的節點大小為 [大] \(四個核心)，則 `maxTasksPerNode` 可以設定為 16。 不過，不論該節點有多少核心，您不能超過 256 個每個節點的工作。 如需每個節點大小的核心數目的詳細資料，請參閱 [雲端服務的大小](../cloud-services/cloud-services-sizes-specs.md)。 有关服务限制的详细信息，请参阅 [Azure Batch 服务的配额和限制](batch-quota-limit.md)。
+Azure Batch 允許您將每個節點的工作數目設定為多達核心節點數目的4 倍。 例如，如果集區設定的節點大小為 [大] \(四個核心)，則 `maxTasksPerNode` 可以設定為 16。 不過，不論節點具有多少核心，每個節點的工作都不能超過 256 個。 如需每個節點大小的核心數目的詳細資料，請參閱 [雲端服務的大小](../cloud-services/cloud-services-sizes-specs.md)。 如需服務限制的詳細資訊，請參閱 [Azure Batch 服務的配額和限制](batch-quota-limit.md)。
 
 > [!TIP]
-> 為您的集區建構[自動調整公式][enable_autoscaling]時，請務必考慮 `maxTasksPerNode` 值。 例如，如果增加每个节点的任务数，则可能会极大地影响对 `$RunningTasks` 求值的公式。 如需詳細資訊，請參閱 [自動調整 Azure Batch 集區中的運算節點](batch-automatic-scaling.md) 。
+> 為您的集區建構[自動調整公式][enable_autoscaling]時，請務必考慮 `maxTasksPerNode` 值。 例如，評估 `$RunningTasks` 的公式可能大幅受到每個節點的工作增加的影響。 如需詳細資訊，請參閱 [自動調整 Azure Batch 集區中的運算節點](batch-automatic-scaling.md) 。
 >
 >
 
@@ -90,7 +79,7 @@ pool.Commit();
 ```
 
 > [!NOTE]
-> 您只能在建立集區時設定 `maxTasksPerNode` 元素和 [MaxTasksPerComputeNode][maxtasks_net] 屬性。 创建完池以后，不能对上述元素和属性进行修改。
+> 您只能在建立集區時設定 `maxTasksPerNode` 元素和 [MaxTasksPerComputeNode][maxtasks_net] 屬性。 建立集區後無法加以修改。
 >
 >
 
@@ -126,19 +115,19 @@ Duration: 00:08:48.2423500
 
 ## <a name="next-steps"></a>後續步驟
 ### <a name="batch-explorer-heat-map"></a>Batch 總管熱圖
-[Batch Explorer][batch_labs] 是免費、功能豐富、獨立用戶端的工具，可以協助建立、偵錯及監視 Azure Batch 應用程式。 Batch Explorer 包含「熱圖」功能，可提供工作執行的視覺效果。 執行 [ParallelTasks][parallel_tasks_sample] 範例應用程式時，您可以使用熱圖功能輕易地視覺化每個節點上的平行工作執行。
+[Batch Explorer][batch_labs]是免費、功能豐富、獨立用戶端的工具，可以協助建立、偵錯及監視 Azure Batch 應用程式。 Batch Explorer 包含「熱圖」功能，可提供工作執行的視覺效果。 執行 [ParallelTasks][parallel_tasks_sample] 範例應用程式時，您可以使用熱圖功能輕易地視覺化每個節點上的平行工作執行。
 
 
-[api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
-[api_rest]: https://msdn.microsoft.com/library/azure/dn820158.aspx
+[api_net]: /dotnet/api/microsoft.azure.batch
+[api_rest]: /rest/api/batchservice/
 [batch_labs]: https://azure.github.io/BatchExplorer/
-[cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
-[enable_autoscaling]: https://msdn.microsoft.com/library/azure/dn820173.aspx
-[fill_type]: https://msdn.microsoft.com/library/microsoft.azure.batch.common.computenodefilltype.aspx
+[cloudpool]: /dotnet/api/microsoft.azure.batch.cloudpool
+[enable_autoscaling]: /rest/api/batchservice/pool/enableautoscale
+[fill_type]: /dotnet/api/microsoft.azure.batch.common.computenodefilltype
 [github_samples]: https://github.com/Azure/azure-batch-samples
-[maxtasks_net]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.maxtaskspercomputenode.aspx
-[rest_addpool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
+[maxtasks_net]: /dotnet/api/microsoft.azure.batch.cloudpool
+[rest_addpool]: /rest/api/batchservice/pool/add
 [parallel_tasks_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ParallelTasks
-[poolcreate_net]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.createpool.aspx
-[task_schedule]: https://msdn.microsoft.com/library/microsoft.azure.batch.cloudpool.taskschedulingpolicy.aspx
+[poolcreate_net]: /dotnet/api/microsoft.azure.batch.pooloperations
+[task_schedule]: /dotnet/api/microsoft.azure.batch.cloudpool
 

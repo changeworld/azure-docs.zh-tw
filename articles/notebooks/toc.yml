@@ -16,13 +16,15 @@
       href: quickstart-migrate-local-jupyter-notebook.md
     - name: 使用自訂環境
       href: quickstart-create-jupyter-notebook-project-environment.md
+    - name: 匯出專案
+      href: quickstart-export-jupyter-notebook-project.md
 - name: 教學課程
   items:
     - name: 建立及執行筆記本
       href: tutorial-create-run-jupyter-notebook.md
 - name: 範例
   items:
-    - name: 範例 Notebook
+    - name: 範例筆記本
       href: azure-notebooks-samples.md
 - name: 概念
   items:
@@ -30,7 +32,7 @@
       href: azure-notebooks-user-account.md
     - name: 設定檔
       href: azure-notebooks-user-profile.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 建立及複製專案
       href: create-clone-jupyter-notebooks.md
@@ -44,5 +46,5 @@
       href: work-with-project-data-files.md
     - name: 存取資料資源
       href: access-data-resources-jupyter-notebooks.md
-    - name: 使用 Azure 機器學習服務
-      href: use-machine-learning-services-jupyter-notebooks.md
+    - name: 使用資料科學虛擬機器
+      href: use-data-science-virtual-machine.md

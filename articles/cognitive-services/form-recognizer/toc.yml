@@ -1,22 +1,55 @@
 - name: 表單辨識器文件
   href: index.yml
 - name: 概觀
+  expanded: true
   items:
     - name: 什麼是表單辨識器？
       href: overview.md
+    - name: 新功能
+      href: whats-new.md
 - name: 快速入門
   expaned: true
   items:
-    - name: 定型模型和擷取資料
+    - name: 使用用戶端程式庫
+      href: quickstarts/client-library.md
+    - name: 使用範例標籤工具
       items:
-        - name: 使用 REST API
+        - name: 定型具有標籤的自訂模型
+          href: quickstarts/label-tool.md
+    - name: 使用 REST API
+      items:
+        - name: 定型和使用沒有標籤的自訂模型
           items:
             - name: cURL
               href: quickstarts/curl-train-extract.md
             - name: Python
               href: quickstarts/python-train-extract.md
-- name: 使用說明指南
+        - name: 定型和使用具有標籤的自訂模型
+          items:
+            - name: Python
+              href: quickstarts/python-labeled-data.md
+        - name: 使用預先建置的回條模型
+          items:
+            - name: cURL
+              href: quickstarts/curl-receipts.md
+            - name: Python
+              href: quickstarts/python-receipts.md
+        - name: 取得文字版面配置資訊
+          items:
+            - name: Python
+              href: quickstarts/python-layout.md
+- name: 教學課程
   items:
+    - name: 使用表單辨識器搭配 Logic Apps
+      href: tutorial-form-recognizer-with-logic-apps.md
+    - name: 使用表單辨識器搭配認知搜尋
+      href: 'https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-form'
+- name: 操作指南
+  items:
+    - name: 建置訓練資料集
+      href: build-training-data-set.md
+    - name: 部署範例標籤工具
+      href: deploy-label-tool.md
     - name: 使用容器
       items:
         - name: 安裝及執行容器
@@ -25,19 +58,41 @@
         - name: 設定容器
           href: form-recognizer-container-configuration.md
           displayName: 'docker, container, run, billing, apikey, logging'
+        - name: 使用容器執行個體
+          href: deploy-form-recognizer-on-container-instances.md
+    - name: 備份和復原模型
+      href: disaster-recovery.md
 - name: 參考
   items:
-    - name: 表單辨識器 API
-      href: 'https://aka.ms/form-recognizer/api'
+    - name: 表單辨識器 API v2.0
+      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm'
+    - name: 表單辨識器 API v1.0
+      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel'
+    - name: SDK
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer'
+        - name: Java
+          href: 'https://docs.microsoft.com/java/api/overview/azure/formrecognizer'
+        - name: JavaScript
+          href: 'https://docs.microsoft.com/azure/cognitive-services/form-recognizer/'
 - name: 資源
   items:
     - name: 價格和限制
       href: 'https://go.microsoft.com/fwlink/?linkid=2087258'
     - name: UserVoice
       href: 'https://go.microsoft.com/fwlink/?linkid=2090535'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://go.microsoft.com/fwlink/?linkid=2087186'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: 區域可用性
       href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
+    - name: 語言支援
+      href: language-support.md
+    - name: 法規遵循
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 加密
+      href: form-recognizer-encryption-of-data-at-rest.md

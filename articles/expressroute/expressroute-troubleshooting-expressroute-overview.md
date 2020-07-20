@@ -1,388 +1,326 @@
 ---
-title: 確認連線 - ExpressRoute 疑難排解指南：Azure | Microsoft Docs
+title: Azure ExpressRoute：驗證連線能力-疑難排解指南
 description: 此頁面提供 ExpressRoute 路線的端對端連線確認和疑難排解的指示。
 services: expressroute
 author: rambk
 ms.service: expressroute
-ms.topic: article
-ms.date: 09/26/2017
+ms.topic: troubleshooting
+ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 888f4dedf2fda0f54297d42a5f813abf73ded748
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4525ea6e23c4f1c2c96ab2beb21e8bfd5b66ca50
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121514"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204223"
 ---
 # <a name="verifying-expressroute-connectivity"></a>確認 ExpressRoute 連線
-本文將協助您確認 ExpressRoute 連線及針對連線問題進行疑難排解。 ExpressRoute 透過連線提供者所提供的私人連線將內部部署網路擴充至 Microsoft 雲端，涉及三個不同的網路區域：
+本文將協助您確認 ExpressRoute 連線及針對連線問題進行疑難排解。 ExpressRoute 透過連線提供者經常提供的私人連線，將內部部署網路延伸至 Microsoft 雲端。 ExpressRoute 連線通常牽涉到三個不同的網路區域，如下所示：
 
 -   客戶網路
 -   提供者網路
 -   Microsoft 資料中心
 
-本文件的目的是協助使用者識別連線有沒有問題、在哪一個區域，藉此尋找適當的小組來解決問題。 如果需要 Microsoft 支援服務解決問題，請利用 [Microsoft 支援服務][Support]開啟支援票證。
+> [!NOTE]
+> 在 ExpressRoute direct connectivity 模型 (以 10/100 Gbps 頻寬) 提供，客戶可以直接連線到 Microsoft Enterprise Edge (MSEE) 路由器] 埠。 因此，在直接連線模型中，只有 [客戶] 和 [Microsoft] 網路區域。
+>
+
+
+本檔的目的是要協助使用者識別連線問題是否存在及發生的位置。 因此，為了協助尋求來自適當小組的支援來解決問題。 如果需要 Microsoft 支援服務解決問題，請利用 [Microsoft 支援服務][Support]開啟支援票證。
 
 > [!IMPORTANT]
-> 本文件旨在協助診斷並修正簡單的問題。 它不是为了替代 Microsoft 支持部门。 如果無法使用本文提供的指引來解決問題，請利用 [Microsoft 支援服務][Support]開啟支援票證。
+> 本文件旨在協助診斷並修正簡單的問題。 它無法取代 Microsoft 支援服務。 如果無法使用本文提供的指引來解決問題，請利用 [Microsoft 支援服務][Support]開啟支援票證。
 >
 >
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>概觀
 下圖顯示使用 ExpressRoute 從客戶網路連至 Microsoft 網路的邏輯連線。
 [![1]][1]
 
-在上圖中，數字指出重要的網路點。 本文提及不同網路點會附上其圖中的編號。
-
-網路點 3 和 4 可能互換 (第 2 層裝置)，取決於 ExpressRoute 連線模型 (雲端 Exchange 共置、點對點乙太網路連線、或任何對任何 (IPVPN))。 圖中的重要網路點分別是︰
+在上圖中，數字指出重要的網路點。 這些網路點會依其相關聯的數目，在本文中參照。 根據 ExpressRoute 連線模型--雲端 Exchange 共置、點對點乙太網路連線，或任何對任何 (IPVPN) --網路點3和4可能會交換器 (第2層裝置) 或路由器 () 第3層裝置。 在直接連線模型中，沒有任何網路點3和4。相反地，CEs (2) 會透過暗光纖直接連線到 Msee。 圖中的重要網路點分別是︰
 
 1.  客戶計算裝置 (例如，伺服器或電腦)
-2.  CE：客戶邊緣路由器 
+2.  CE︰客戶邊緣路由器 
 3.  PE (面對 CE)︰面對客戶邊緣路由器的提供者邊緣路由器/交換器。 在本文件中稱為 PE-CE。
 4.  PE (面對 MSEE)︰面對 MSEE 的提供者邊緣路由器/交換器。 在本文件中稱為 PE-MSEE。
 5.  MSEE：Microsoft Enterprise Edge (MSEE) ExpressRoute 路由器
 6.  虛擬網路 (VNet) 閘道器
 7.  Azure VNet 上的計算裝置
 
-如果使用雲端 Exchange 共置或點對點乙太網路連線的連線模型，客戶邊緣路由器 (2) 會建立與 MSEE (5) 的 BGP 對等互連。 網路點 3 和 4 仍會存在，但會化做透明的第 2 層裝置。
+如果使用雲端交換共置、點對點乙太網路或直接連線模型，CEs (2) 會建立與 Msee (5) 的 BGP 對等互連。 
 
-如果使用任何對任何 (IPVPN) 連線模型，PE (面對 MSEE)(4) 會建立與 MSEE (5) 的 BGP 對等互連。 然後，路由會透過 IPVPN 服務網路提供者的網路傳播回客戶網路。
+如果使用任何對任何 (IPVPN) 連線模型，則 PE Msee (4) 使用 Msee 建立 BGP 對等互連 (5) 。 PE Msee 會透過 IPVPN 服務提供者網路，將從 Microsoft 收到的路由傳回到客戶網路。
 
 > [!NOTE]
->為了讓 ExpressRoute 有高可用性，Microsoft 需要在 MSEE (5) 和 PE-MSEE (4) 之間有一組備援的 BGP 工作階段。 我們也鼓勵您在客戶網路和 PE-CE 之間有一組備援的網路路徑。 但是，在“任意位置之间的连接 (IPVPN)”模型中，单个 CE 设备 (2) 可能会连接到一个或多个 PE (3)。
+>為了達到高可用性，Microsoft 會在 Msee (5) 和 PE Msee (4) 組之間，建立完全多餘的平行連接。 在客戶網路與 PE-CEs 配對之間，也鼓勵使用完全多餘的平行網路路徑。 如需有關高可用性的詳細資訊，請參閱[使用 ExpressRoute 設計高可用性][HA]一文
 >
 >
 
-若要確認 ExpressRoute 路線，需要下列步驟 (附網路點編號)︰
-1. [確認路線的佈建和狀態 (5)](#validate-circuit-provisioning-and-state)
-2. [確認至少已設定一個 ExpressRoute 對等互連 (5)](#validate-peering-configuration)
-3. [確認 Microsoft 與服務之間的提供者之間的 ARP (4 和 5 之間的連結)](#validate-arp-between-microsoft-and-the-service-provider)
-4. [確認 BGP 和 MSEE 上的路由 (BGP 在4 到 5 之間，如果連接 VNet 則在 5 至 6 之間) ](#validate-bgp-and-routes-on-the-msee)
-5. [檢查流量統計資料 (通過 5 的流量)](#check-the-traffic-statistics)
+以下是針對 ExpressRoute 線路進行疑難排解的邏輯步驟：
 
-未來將加入更多確認和檢查，請每個月回來查看！
+* [確認線路布建和狀態](#verify-circuit-provisioning-and-state)
+  
+* [確認對等互連組態](#validate-peering-configuration)
+  
+* [驗證 ARP](#validate-arp)
+  
+* [確認 MSEE 上的 BGP 和路由](#validate-bgp-and-routes-on-the-msee)
+  
+* [確認流量](#confirm-the-traffic-flow)
 
-## <a name="validate-circuit-provisioning-and-state"></a>確認路線的佈建和狀態
-不論是何種連線模型，皆必須建立 ExpressRoute 路線，系統才會為佈建的路線產生服務機碼。 佈建 ExpressRoute 路線會在 PE-MSEE (4) 和 MSEE (5) 之間建立備援的第 2 層連線。 如需有關如何建立、修改、佈建、確認 ExpressRoute 路線的詳細資訊，請參閱[建立和修改 ExpressRoute 路線][CreateCircuit]一文。
+
+## <a name="verify-circuit-provisioning-and-state"></a>確認線路布建和狀態
+布建 ExpressRoute 電路會在 CEs/PE-Msee (2) / (4) 和 Msee (5) 之間，建立一個重複的第2層連線。 如需有關如何建立、修改、佈建、確認 ExpressRoute 路線的詳細資訊，請參閱[建立和修改 ExpressRoute 路線][CreateCircuit]一文。
 
 >[!TIP]
->服務機碼可唯一識別 ExpressRoute 路線。 本文中所述的 Powershell 命令大多需要有這個機碼。 此外，如果您需 Microsoft 或 ExpressRoute 合作夥伴協助進行問題的疑難排解，請提供服務機碼以利輕易識別路線。
+>服務機碼可唯一識別 ExpressRoute 路線。 如果您需要來自 Microsoft 或 ExpressRoute 合作夥伴的協助，以疑難排解 ExpressRoute 問題，請提供服務金鑰來輕鬆地識別線路。
 >
 >
 
 ### <a name="verification-via-the-azure-portal"></a>透過 Azure 入口網站進行確認
-在 Azure 入口網站中，選取功能表左欄中的 ![2][2]，然後選取 ExpressRoute 路線，便可以檢查 ExpressRoute 路線狀態。 選取 [所有資源] 底下列出的 ExpressRoute 路線，會開啟 ExpressRoute 路線刀鋒視窗。 在  ![3][3]區段的刀鋒視窗中，列出的 ExpressRoute 的基本會如下列螢幕擷取畫面所示：
+在 [Azure 入口網站中，開啟 [ExpressRoute 線路] 分頁。 在分頁的![3][3]區段中，會列出 ExpressRoute 基本功能，如下列螢幕擷取畫面所示：
 
 ![4][4]    
 
-在 ExpressRoute [基本資料] 中，[路線狀態] 指出 Microsoft 端路線的狀態。 [提供者狀態] 指出在服務提供者端是否「已佈建/未佈建」路線。 
+在 ExpressRoute [基本資料] 中，[路線狀態]** 指出 Microsoft 端路線的狀態。 [提供者狀態]** 指出在服務提供者端是否「已佈建/未佈建」** 路線。 
 
-[路線狀態] 必須是 [已啟用]，且[提供者狀態] 必須是 [已佈建]，ExpressRoute 路線才能運作。
+[路線狀態]** 必須是 [已啟用]**，且[提供者狀態]** 必須是 [已佈建]**，ExpressRoute 路線才能運作。
 
 > [!NOTE]
-> 如果 [路線狀態] 未啟用，請連絡 [Microsoft 支援服務][Support]。 如果 [提供者狀態] 是未佈建，請連絡您的服務提供者。
+> 設定 ExpressRoute 線路之後，如果*線路狀態*為 [未啟用] 狀態，請[Microsoft 支援服務][Support][連線]。 另一方面，如果*提供者狀態*為 [未布建狀態]，請洽詢您的服務提供者。
 >
 >
 
 ### <a name="verification-via-powershell"></a>透過 PowerShell 進行確認
 若要列出資源群組中的所有 ExpressRoute 路線，使用下列命令：
 
-    Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
+```azurepowershell
+Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
+```
 
 >[!TIP]
->您可以透過 Azure 取得您的資源群組名稱。 請參閱本文件先前小節，並請注意，資源群組名稱列範例螢幕擷取畫面中。
+>如果您要尋找資源群組的名稱，您可以使用*remove-azresourcegroup*命令，藉由列出訂用帳戶中的所有資源群組來取得它
 >
->
+
 
 若要選取資源群組中的特定 ExpressRoute 路線，使用下列命令：
 
-    Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+```azurepowershell
+Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+```
 
 範例回應：
 
-    Name                             : Test-ER-Ckt
-    ResourceGroupName                : Test-ER-RG
-    Location                         : westus2
-    Id                               : /subscriptions/***************************/resourceGroups/Test-ER-RG/providers/***********/expressRouteCircuits/Test-ER-Ckt
-    Etag                             : W/"################################"
-    ProvisioningState                : Succeeded
-    Sku                              : {
-                                        "Name": "Standard_UnlimitedData",
-                                        "Tier": "Standard",
-                                        "Family": "UnlimitedData"
-                                        }
-    CircuitProvisioningState         : Enabled
-    ServiceProviderProvisioningState : Provisioned
-    ServiceProviderNotes             : 
-    ServiceProviderProperties        : {
-                                        "ServiceProviderName": "****",
-                                        "PeeringLocation": "******",
-                                        "BandwidthInMbps": 100
-                                        }
-    ServiceKey                       : **************************************
-    Peerings                         : []
-    Authorizations                   : []
+```output
+Name                             : Test-ER-Ckt
+ResourceGroupName                : Test-ER-RG
+Location                         : westus2
+Id                               : /subscriptions/***************************/resourceGroups/Test-ER-RG/providers/***********/expressRouteCircuits/Test-ER-Ckt
+Etag                             : W/"################################"
+ProvisioningState                : Succeeded
+Sku                              : {
+                                    "Name": "Standard_UnlimitedData",
+                                    "Tier": "Standard",
+                                    "Family": "UnlimitedData"
+                                    }
+CircuitProvisioningState         : Enabled
+ServiceProviderProvisioningState : Provisioned
+ServiceProviderNotes             : 
+ServiceProviderProperties        : {
+                                    "ServiceProviderName": "****",
+                                    "PeeringLocation": "******",
+                                    "BandwidthInMbps": 100
+                                    }
+ServiceKey                       : **************************************
+Peerings                         : []
+Authorizations                   : []
+```
 
 若要確認 ExpressRoute 路線是否在運作，請特別注意下列欄位︰
 
-    CircuitProvisioningState         : Enabled
-    ServiceProviderProvisioningState : Provisioned
+```output
+CircuitProvisioningState         : Enabled
+ServiceProviderProvisioningState : Provisioned
+```
 
 > [!NOTE]
-> 如果 CircuitProvisioningState 不是 enabled，請連絡 [Microsoft 支援服務][Support]。 如果 ServiceProviderProvisioningState 不是 provisioned，請連絡您的服務提供者。
->
->
-
-### <a name="verification-via-powershell-classic"></a>透過 PowerShell (傳統) 進行確認
-若要列出訂用帳戶下的所有 ExpressRoute 路線，使用下列命令：
-
-    Get-AzureDedicatedCircuit
-
-若要選取特定 ExpressRoute 路線，使用下列命令：
-
-    Get-AzureDedicatedCircuit -ServiceKey **************************************
-
-範例回應：
-
-    andwidth                         : 100
-    BillingType                      : UnlimitedData
-    CircuitName                      : Test-ER-Ckt
-    Location                         : westus2
-    ServiceKey                       : **************************************
-    ServiceProviderName              : ****
-    ServiceProviderProvisioningState : Provisioned
-    Sku                              : Standard
-    Status                           : Enabled
-
-若要確認 ExpressRoute 路線是否在運作，請特別注意下列欄位︰ServiceProviderProvisioningState :Provisioned Status                           :已啟用
-
-> [!NOTE]
-> 如果 Status 不是 enabled，請連絡 [Microsoft 支援服務][Support]。 如果 ServiceProviderProvisioningState 不是 provisioned，請連絡您的服務提供者。
+> 設定 ExpressRoute 線路之後，如果*線路狀態*為 [未啟用] 狀態，請[Microsoft 支援服務][Support][連線]。 另一方面，如果*提供者狀態*為 [未布建狀態]，請洽詢您的服務提供者。
 >
 >
 
 ## <a name="validate-peering-configuration"></a>確認對等互連組態
-服務提供者已完成 ExpressRoute 路之線佈建後，可以透過 MSEE-PR (4) 和 MSEE (5) 之間的 ExpressRoute 路線建立路由組態。 每個 ExpressRoute 線路可以啟用一個、兩個或三個路由內容：Azure 私用對等互連 (傳送至 Azure 中私人虛擬網路的流量)、Azure 公用對等互連 (傳送至 Azure 中公用 IP 位址的流量) 及 Microsoft 對等互連 (傳送至 Office 365 和 Dynamics 365 的流量)。 如需有關如何建立及修改路由組態的詳細資訊，請參閱[建立和修改 ExpressRoute 路線的路由][CreatePeering]一文。
+在服務提供者完成布建 ExpressRoute 線路之後，您可以在 CEs/MSEE-Pe 之間，透過 ExpressRoute 線路建立多個以 eBGP 為基礎的路由設定 (2) / (4) 和 Msee (5) 。 每個 ExpressRoute 線路都可以有： Azure 私人對等互連 (Azure) 中私人虛擬網路的流量，以及/或 Microsoft 對等互連 (PaaS 和 SaaS) 公用端點的流量。 如需有關如何建立及修改路由組態的詳細資訊，請參閱[建立和修改 ExpressRoute 路線的路由][CreatePeering]一文。
 
 ### <a name="verification-via-the-azure-portal"></a>透過 Azure 入口網站進行確認
 
 > [!NOTE]
-> 如果第 3 層是由服務提供者所提供，且對等互連在入口網站中為空白，請使用入口網站上的 [重新整理] 按鈕將循環組態重新整理。 此作業將套用在您線路上的正確路由組態。 
->
+> 在 IPVPN 連線模型中，服務提供者會負責設定對等互連 (第3層服務) 的責任。 在這種模型中，在服務提供者已設定對等互連，且入口網站中的對等互連為空白之後，請嘗試使用入口網站上的 [重新整理] 按鈕來重新整理線路設定。 此作業會從您的線路提取目前的路由設定。 
 >
 
-在 Azure 入口網站中，選取功能表左欄中的 ![2][2]，然後選取 ExpressRoute 路線，便可以查看 ExpressRoute 路線的狀態。 選取 [所有資源] 底下列出的 ExpressRoute 路線，會開啟 ExpressRoute 路線刀鋒視窗。 在 [ ![3][3] ] 刀鋒視窗，如下列螢幕擷取畫面所示，就會列出 essentials ExpressRoute 的區段：
+在 Azure 入口網站中，您可以在 [ExpressRoute 線路] 分頁底下，檢查 ExpressRoute 線路對等互連的狀態。 在分頁的![3][3]區段中，會列出 ExpressRoute 對等互連，如下列螢幕擷取畫面所示：
 
 ![5][5]
 
-在以上範例中，啟用了 Azure 私人對等互連的路由內容，但沒有啟用 Azure 公用路由內容和 Microsoft 對等互連路由內容。 啟用成功的對等互連內容也會列出主要和次要點對點 (BGP 所需) 子網路。 /30 子網路是用於 MSEE 和 PE-MSEE 的介面 IP 位址。 
+在上述範例中，如同已布建 Azure 私用對等互連，而 Azure 公用和 Microsoft 對等互連並未布建。 已成功布建的對等互連內容也會列出主要和次要點對點子網。 /30 子網是用於 Msee 和 CEs/PE Msee 的介面 IP 位址。 針對已布建的對等互連，清單也會指出上次修改設定的物件。 
 
 > [!NOTE]
-> 若對等互連沒有啟用，檢查指派的主要和次要子網路是否符合 PE-MSEE 上的設定。 如果不符，若要變更 MSEE 路由器上的組態，請參閱[建立和修改 ExpressRoute 路線的路由][CreatePeering]。
+> 如果啟用對等互連失敗，請檢查指派的主要和次要子網是否符合連結的 CE/PE MSEE 上的設定。 也請檢查 Msee 上是否使用正確的*VlanId*、 *AzureASN*和*PeerASN* ，以及這些值是否對應至連結的 CE/PE-MSEE 所使用的。 如果選擇了 MD5 雜湊，則 MSEE 和 MSEE/CE 配對上的共用金鑰應相同。 基於安全性理由，將不會顯示先前設定的共用金鑰。 如果您需要變更 MSEE 路由器上的任何設定，請參閱[建立和修改 ExpressRoute 線路的路由][CreatePeering]。  
 >
+
+> [!NOTE]
+> 在為介面指派的/30 子網上，Microsoft 會為 MSEE 介面挑選子網的第二個可用 IP 位址。 因此，請確定子網的第一個可用 IP 位址已在對等互連 CE/PE-MSEE 上指派。
 >
+
 
 ### <a name="verification-via-powershell"></a>透過 PowerShell 進行確認
 若要取得 Azure 私人對等互連的組態詳細資料，使用下列命令︰
 
-    $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
+```azurepowershell
+$ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
+```
 
 以下是已成功設定私人對等互連的回應範例︰
 
-    Name                       : AzurePrivatePeering
-    Id                         : /subscriptions/***************************/resourceGroups/Test-ER-RG/providers/***********/expressRouteCircuits/Test-ER-Ckt/peerings/AzurePrivatePeering
-    Etag                       : W/"################################"
-    PeeringType                : AzurePrivatePeering
-    AzureASN                   : 12076
-    PeerASN                    : ####
-    PrimaryPeerAddressPrefix   : 172.16.0.0/30
-    SecondaryPeerAddressPrefix : 172.16.0.4/30
-    PrimaryAzurePort           : 
-    SecondaryAzurePort         : 
-    SharedKey                  : 
-    VlanId                     : 300
-    MicrosoftPeeringConfig     : null
-    ProvisioningState          : Succeeded
+```output
+Name                       : AzurePrivatePeering
+Id                         : /subscriptions/***************************/resourceGroups/Test-ER-RG/providers/***********/expressRouteCircuits/Test-ER-Ckt/peerings/AzurePrivatePeering
+Etag                       : W/"################################"
+PeeringType                : AzurePrivatePeering
+AzureASN                   : 12076
+PeerASN                    : 123##
+PrimaryPeerAddressPrefix   : 172.16.0.0/30
+SecondaryPeerAddressPrefix : 172.16.0.4/30
+PrimaryAzurePort           : 
+SecondaryAzurePort         : 
+SharedKey                  : 
+VlanId                     : 200
+MicrosoftPeeringConfig     : null
+ProvisioningState          : Succeeded
+```
 
- 成功启用的对等互连上下文会列出主要的和辅助的地址前缀。 /30 子網路是用於 MSEE 和 PE-MSEE 的介面 IP 位址。
+ 成功啟用的對等互連內容也會列出主要和次要位址前置詞。 /30 子網是用於 Msee 和 CEs/PE Msee 的介面 IP 位址。
 
 若要取得 Azure 公用對等互連的組態詳細資料，使用下列命令︰
 
-    $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
+```azurepowershell
+$ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
+```
 
 若要取得 Microsoft 對等互連的組態詳細資料，使用下列命令︰
 
-    $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-     Get-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
+```azurepowershell
+$ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+Get-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
+```
 
 如未設定對等互連，會顯示錯誤訊息。 未設定所述對等互連 (在此範例中是 Azure 公用互對等連) 的回應範例︰
 
-    Get-AzExpressRouteCircuitPeeringConfig : Sequence contains no matching element
-    At line:1 char:1
-        + Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering ...
-        + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            + CategoryInfo          : CloseError: (:) [Get-AzExpr...itPeeringConfig], InvalidOperationException
-            + FullyQualifiedErrorId : Microsoft.Azure.Commands.Network.GetAzureExpressRouteCircuitPeeringConfigCommand
-
+```azurepowershell
+Get-AzExpressRouteCircuitPeeringConfig : Sequence contains no matching element
+At line:1 char:1
+    + Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering ...
+    + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        + CategoryInfo          : CloseError: (:) [Get-AzExpr...itPeeringConfig], InvalidOperationException
+        + FullyQualifiedErrorId : Microsoft.Azure.Commands.Network.GetAzureExpressRouteCircuitPeeringConfigCommand
+```
 
 > [!NOTE]
-> 若對等互連沒有啟用，檢查指派的主要和次要子網路是否符合連結之 PE-MSEE 上的設定。 也請檢查 MSEE 上是否使用正確的 VlanId、AzureASN、PeerASN，以及這些值是否對應至連結的 PE-MSEE 上使用的項目。 如果選擇 MD5 雜湊，共用的金鑰應該和「MSEE 與 PE-MSEE」對上的金鑰相同。 若要變更 MSEE 路由器上的組態，請參閱[建立和修改 ExpressRoute 路線的路由][CreatePeering]。  
->
->
-
-### <a name="verification-via-powershell-classic"></a>透過 PowerShell (傳統) 進行確認
-若要取得 Azure 私人對等互連的組態詳細資料，使用下列命令︰
-
-    Get-AzureBGPPeering -AccessType Private -ServiceKey "*********************************"
-
-以下是已成功設定私人對等互連的回應範例︰
-
-    AdvertisedPublicPrefixes       : 
-    AdvertisedPublicPrefixesState  : Configured
-    AzureAsn                       : 12076
-    CustomerAutonomousSystemNumber : 
-    PeerAsn                        : ####
-    PrimaryAzurePort               : 
-    PrimaryPeerSubnet              : 10.0.0.0/30
-    RoutingRegistryName            : 
-    SecondaryAzurePort             : 
-    SecondaryPeerSubnet            : 10.0.0.4/30
-    State                          : Enabled
-    VlanId                         : 100
-
-啟用成功的對等互連內容也會列出主要和次要位址前置詞。 /30 子網路是用於 MSEE 和 PE-MSEE 的介面 IP 位址。
-
-若要取得 Azure 公用對等互連的組態詳細資料，使用下列命令︰
-
-    Get-AzureBGPPeering -AccessType Public -ServiceKey "*********************************"
-
-若要获取 Microsoft 对等互连配置详细信息，请使用以下命令：
-
-    Get-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************"
-
-> [!IMPORTANT]
-> 如果第 3 層對等互連是由服務提供者設定，透過入口網站或 PowerShell 設定 ExpressRoute 對等互連可覆寫服務提供者的設定。 重設提供者端的對等互連設定需要服務提供者的支援。 只有當確定服務提供者僅提供第 2 層服務時，才修改 ExpressRoute 對等互連！
+> 如果啟用對等互連失敗，請檢查指派的主要和次要子網是否符合連結的 CE/PE MSEE 上的設定。 也請檢查 Msee 上是否使用正確的*VlanId*、 *AzureASN*和*PeerASN* ，以及這些值是否對應至連結的 CE/PE-MSEE 所使用的。 如果選擇了 MD5 雜湊，則 MSEE 和 MSEE/CE 配對上的共用金鑰應相同。 基於安全性理由，將不會顯示先前設定的共用金鑰。 如果您需要變更 MSEE 路由器上的任何設定，請參閱[建立和修改 ExpressRoute 線路的路由][CreatePeering]。  
 >
 >
 
 > [!NOTE]
-> 若對等互連沒有啟用，檢查指派的主要和次要對等互連子網路是否符合連結之 PE-MSEE 上的設定。 也請檢查 MSEE 上是否使用正確的 VlanId、AzureAsn、PeerAsn，以及這些值是否對應至連結的 PE-MSEE 上使用的項目。 若要變更 MSEE 路由器上的組態，請參閱[建立和修改 ExpressRoute 路線的路由][CreatePeering]。
->
->
-
-## <a name="validate-arp-between-microsoft-and-the-service-provider"></a>確認 Microsoft 與服務提供者之間的 ARP
-本節使用 PowerShell (傳統) 命令。 如果您一向使用 PowerShell 的 Azure Resource Manager 命令，請確定您具有可以存取訂用帳戶的系統管理員/共同管理員存取權。 如需針對使用 Azure Resource Manager 命令進行疑難排解，請參閱[在 Resource Manager 部署模型中取得 ARP 資料表][ARP]文件。
-
-> [!NOTE]
->若要获取 ARP，可以使用 Azure 门户和 Azure Resource Manager PowerShell 命令。 如果使用 Azure Resource Manager PowerShell 命令時發生錯誤，傳統 PowerShell 命令也可以用於 Azure Resource Manager 的 ExpressRoute 路線。
->
+> 在為介面指派的/30 子網上，Microsoft 會為 MSEE 介面挑選子網的第二個可用 IP 位址。 因此，請確定子網的第一個可用 IP 位址已在對等互連 CE/PE-MSEE 上指派。
 >
 
-若要從主要 MSEE 路由器取得 ARP 表格以用於私人對等互連，使用下列命令︰
+## <a name="validate-arp"></a>驗證 ARP
 
-    Get-AzureDedicatedCircuitPeeringArpInfo -AccessType Private -Path Primary -ServiceKey "*********************************"
+ARP 資料表提供特定對等互連的 IP 位址和 MAC 位址的對應。 適用於 ExpressRoute 線路對等互連的 ARP 表格能提供各個介面 (主要和次要) 的下列資訊：
+* 內部部署路由器介面 IP 位址到 MAC 位址的對應
+* ExpressRoute 路由器介面 IP 位址到 MAC 位址的對應
+* 對應 ARP 資料表的存留期有助於驗證第2層設定，並針對基本第2層連線問題進行疑難排解。
 
-在成功的案例中，命令的回應範例如下︰
 
-    ARP Info:
+如需瞭解 ExpressRoute 對等互連的 ARP 表格，以及如何使用此資訊來疑難排解第2層連線問題的方法，請參閱在[Resource Manager 部署模型檔中取得 arp][ARP]表格。
 
-                 Age           Interface           IpAddress          MacAddress
-                 113             On-Prem       10.0.0.1           e8ed.f335.4ca9
-                   0           Microsoft       10.0.0.2           7c0e.ce85.4fc9
-
-同樣地，您可以查看 Primary/Secondary 路徑中 MSEE 的 ARP 表，用於 Private/Public/Microsoft 對等互連。
-
-以下是對等互連不存在時此命令的回應範例。
-
-    ARP Info:
-       
-> [!NOTE]
-> 如果 ARP 表沒有對應到 MAC 位址之介面的 IP 位址，請檢閱下列條件︰
->1. 針對 MSEE-PR 和 MSEE 之間的連結所指派的 /30 子網路的第一個 IP 位址，是用在 MSEE-PR 的介面上。 Azure 一律為 MSEE 使用第二個 IP 位址。
->2. 验证客户型 (C-Tag) 和服务型 (S-Tag) VLAN 标记在 MSEE-PR 和 MSEE 对上是否均匹配。
->
->
 
 ## <a name="validate-bgp-and-routes-on-the-msee"></a>確認 MSEE 上的 BGP 和路由
-本節使用 PowerShell (傳統) 命令。 如果您一向使用 PowerShell 的 Azure Resource Manager 命令，請確定您具有可以存取訂用帳戶的系統管理員/共同管理員存取權。
 
-> [!NOTE]
->若要取得 BGP 資訊，可以使用 Azure 入口網站和 Azure Resource Manager PowerShell 命令。 如果使用 Azure Resource Manager PowerShell 命令時發生錯誤，傳統 PowerShell 命令也可以用於 Azure Resource Manager 的 ExpressRoute 路線。
->
->
+若要從*私人*路由內容的*主要*路徑上的 MSEE 取得路由表，請使用下列命令：
 
-若要取得特定路由內容的路由表 (BGP 芳鄰) 摘要，使用下列命令︰
-
-    Get-AzureDedicatedCircuitPeeringRouteTableSummary -AccessType Private -Path Primary -ServiceKey "*********************************"
+```azurepowershell
+Get-AzExpressRouteCircuitRouteTable -DevicePath Primary -ExpressRouteCircuitName ******* -PeeringType AzurePrivatePeering -ResourceGroupName ****
+```
 
 以下是回應範例：
 
-    Route Table Summary:
+```output
+Network : 10.1.0.0/16
+NextHop : 10.17.17.141
+LocPrf  : 
+Weight  : 0
+Path    : 65515
 
-            Neighbor                   V                  AS              UpDown         StatePfxRcd
-            10.0.0.1                   4                ####                8w4d                  50
+Network : 10.1.0.0/16
+NextHop : 10.17.17.140*
+LocPrf  : 
+Weight  : 0
+Path    : 65515
 
-如以上範例所示，此命令在判斷路由內容已建立多久時十實用分。 它也會指出對等互連路由器通告的路由前置詞數目。
+Network : 10.2.20.0/25
+NextHop : 172.16.0.1
+LocPrf  : 
+Weight  : 0
+Path    : 123##
+```
 
 > [!NOTE]
-> 如果狀態是作用中或閒置，檢查指派的主要和次要對等互連子網路是否符合連結之 PE-MSEE 上的設定。 也請檢查 MSEE 上是否使用正確的 VlanId、AzureAsn、PeerAsn，以及這些值是否對應至連結的 PE-MSEE 上使用的項目。 如果選擇 MD5 雜湊，共用的金鑰應該和「MSEE 與 PE-MSEE」對上的金鑰相同。 若要變更 MSEE 路由器上的組態，請參閱[建立和修改 ExpressRoute 路線的路由][CreatePeering]。
+> 如果 MSEE 與 CE/PE MSEE 之間的 eBGP 對等互連狀態為作用中或閒置，請檢查指派的主要和次要對等子網是否符合連結的 CE/PE MSEE 上的設定。 也請檢查 Msee 上是否使用正確的*VlanId*、 *AzureAsn*和*PeerAsn* ，以及這些值是否對應至連結的 PE-MSEE/CE 上所使用的。 如果選擇了 MD5 雜湊，則 MSEE 和 CE/PE MSEE 配對上的共用金鑰應相同。 如果您需要變更 MSEE 路由器上的任何設定，請參閱[建立和修改 ExpressRoute 線路的路由][CreatePeering]。
 >
->
+
 
 > [!NOTE]
-> 如果無法透過特定對等互連連線到特定目的地，請確認 MSEE 的路由表屬於該特定對等互連內容。 如果路由表中有符合的前置詞 (可能是 NATed IP)，則請確認路徑上有防火牆/NSG/ACL，且防火牆/NSG/ACL 允許流量。
+> 如果無法透過對等互連連線到特定目的地，請檢查 Msee 的路由表中是否有對應的對等互連內容。 如果對應的前置詞 (可能 NATed IP) 存在於路由表中，請檢查是否有封鎖流量的路徑上有防火牆/NSG/Acl。
 >
->
 
-对于特定的“专用”路由上下文，若要获取“主要”路径上的 MSEE 提供的完整路由表，请使用以下命令：
 
-    Get-AzureDedicatedCircuitPeeringRouteTableInfo -AccessType Private -Path Primary -ServiceKey "*********************************"
+下列範例顯示不存在對等互連之命令的回應：
 
-以下是此命令的成功結果範例︰
+```azurepowershell
+Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
+StatusCode: 400
+```
 
-    Route Table Info:
-
-             Network             NextHop              LocPrf              Weight                Path
-         10.1.0.0/16            10.0.0.1                                       0    #### ##### #####     
-         10.2.0.0/16            10.0.0.1                                       0    #### ##### #####
-    ...
-
-同樣地，您可以查看 Primary/Secondary 路徑中 MSEE 的路由表，用於 Private/Public/Microsoft 對等互連內容。
-
-以下是對等互連不存在時此命令的回應範例：
-
-    Route Table Info:
-
-## <a name="check-the-traffic-statistics"></a>檢查流量統計資料
+## <a name="confirm-the-traffic-flow"></a>確認流量
 若要取得對等互連內容的主要和次要路徑的合併流量統計資料，包括進和出的位元組，使用下列命令︰
 
-    Get-AzureDedicatedCircuitStats -ServiceKey 97f85950-01dd-4d30-a73c-bf683b3a6e5c -AccessType Private
+```azurepowershell
+Get-AzExpressRouteCircuitStats -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType 'AzurePrivatePeering'
+```
 
 此命令的輸出範例如下：
 
-    PrimaryBytesIn PrimaryBytesOut SecondaryBytesIn SecondaryBytesOut
-    -------------- --------------- ---------------- -----------------
-         240780020       239863857        240565035         239628474
+```output
+PrimaryBytesIn PrimaryBytesOut SecondaryBytesIn SecondaryBytesOut
+-------------- --------------- ---------------- -----------------
+     240780020       239863857        240565035         239628474
+```
 
 對等互連不存在時，命令的輸出範例如下︰
 
-    Get-AzureDedicatedCircuitStats : ResourceNotFound: Can not find any subinterface for peering type 'Public' for circuit '97f85950-01dd-4d30-a73c-bf683b3a6e5c' .
-    At line:1 char:1
-    + Get-AzureDedicatedCircuitStats -ServiceKey 97f85950-01dd-4d30-a73c-bf ...
-    + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        + CategoryInfo          : CloseError: (:) [Get-AzureDedicatedCircuitStats], CloudException
-        + FullyQualifiedErrorId : Microsoft.WindowsAzure.Commands.ExpressRoute.GetAzureDedicatedCircuitPeeringStatsCommand
+```azurepowershell
+Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
+StatusCode: 400
+```
 
 ## <a name="next-steps"></a>後續步驟
 如需詳細資訊或協助，請看看下列連結：
 
 - [Microsoft 支援服務][Support]
-- [建立和修改 ExpressRoute 路線][CreateCircuit]
+- [建立和修改 ExpressRoute 線路][CreateCircuit]
 - [建立和修改 ExpressRoute 路線的路由][CreatePeering]
 
 <!--Image References-->
@@ -390,14 +328,15 @@ ms.locfileid: "58121514"
 [2]: ./media/expressroute-troubleshooting-expressroute-overview/portal-all-resources.png "所有資源圖示"
 [3]: ./media/expressroute-troubleshooting-expressroute-overview/portal-overview.png "概觀圖示"
 [4]: ./media/expressroute-troubleshooting-expressroute-overview/portal-circuit-status.png "ExpressRoute 基本資料螢幕擷取畫面範例"
-[5]: ./media/expressroute-troubleshooting-expressroute-overview/portal-private-peering.png "ExpressRoute 概要示例屏幕截图"
+[5]: ./media/expressroute-troubleshooting-expressroute-overview/portal-private-peering.png "ExpressRoute 基本資料螢幕擷取畫面範例"
 
 <!--Link References-->
 [Support]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade
 [CreateCircuit]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-circuit-portal-resource-manager 
 [CreatePeering]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-routing-portal-resource-manager
 [ARP]: https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager
-
+[HA]: https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute
+[DR-Pvt]: https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering
 
 
 

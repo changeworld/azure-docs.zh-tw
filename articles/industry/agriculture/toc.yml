@@ -1,0 +1,53 @@
+- name: 概觀
+  items:
+    - name: 什麼是 Azure FarmBeats？
+      href: overview-azure-farmbeats.md
+- name: 教學課程
+  expanded: true
+  items:
+    - name: 產生泥土濕度地圖
+      href: generate-soil-moisture-map-in-azure-farmbeats.md
+    - name: 內嵌歷程記錄遙測資料
+      href: ingest-historical-telemetry-data-in-azure-farmbeats.md
+    - name: 查詢內嵌的遙測資料
+      href: query-telemetry-data-from-azure-farmbeats.md
+- name: 概念
+  items:
+    - name: 整合模式
+      href: integration-patterns-in-azure-farmbeats.md
+    - name: 感應器合作夥伴整合
+      href: sensor-partner-integration-in-azure-farmbeats.md
+    - name: 氣象合作夥伴整合
+      href: weather-partner-integration-in-azure-farmbeats.md
+    - name: 影像合作夥伴整合
+      href: imagery-partner-integration-in-azure-farmbeats.md
+- name: 使用說明指南
+  items:
+    - name: 安裝 Azure FarmBeats
+      href: install-azure-farmbeats.md
+    - name: 管理使用者
+      href: manage-users-in-azure-farmbeats.md
+    - name: 管理農場
+      href: manage-farms-in-azure-farmbeats.md
+    - name: 取得感應器資料
+      href: get-sensor-data-from-sensor-partner.md
+    - name: 取得天氣資料
+      href: get-weather-data-from-weather-partner.md
+    - name: 產生地圖
+      href: generate-maps-in-azure-farmbeats.md
+    - name: 設定規則和管理警示
+      href: configure-rules-alerts-in-azure-farmbeats.md
+    - name: 取得無人機影像
+      href: get-drone-imagery-in-azure-farmbeats.md
+    - name: 災害復原
+      href: disaster-recovery-for-farmbeats.md
+- name: 疑難排解
+  items:
+    - name: 針對 Azure FarmBeats 進行疑難排解
+      href: troubleshoot-azure-farmbeats.md
+- name: 參考
+  items:
+    - name: 參考
+      href: references-for-azure-farmbeats.md
+    - name: REST API
+      href: rest-api-in-azure-farmbeats.md

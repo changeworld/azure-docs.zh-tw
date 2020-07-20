@@ -1,21 +1,21 @@
 ---
-title: 將搜尋要求傳送至 Bing 影片搜尋 API
-titlesuffix: Azure Cognitive Services
-description: 了解如何將搜尋查詢傳送至 Bing 影片搜尋 API。
+title: 使用 Bing 影片搜尋 API 搜尋影片
+titleSuffix: Azure Cognitive Services
+description: Bing 影片搜尋從 web APIfinds 並傳回相關的影片，它提供了幾項功能，可讓您在網路上進行智慧型且專注的影片抓取。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
-ms.topic: overview
-ms.date: 01/31/2019
+ms.topic: conceptual
+ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 08e8050fde6d2cf6249826911117dad9f595b6e4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 5add9597924aa77ede875d0056e83eceb4f99598
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879594"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "79221385"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>使用 Bing 影片搜尋 API 來搜尋影片
 
@@ -45,7 +45,7 @@ Host: api.cognitive.microsoft.com
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
 ```
 
-回應包含一個 [Videos](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) 答案，其中包含 Bing 認為與查詢相關的影片清單。 清單中的每個 [Video](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video) 物件都包含影片的 URL、持續時間、維度、編碼格式和其他屬性。 影片物件也包含了影片縮圖的 URL 和縮圖的維度。
+回應包含一個 [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) 答案，其中包含 Bing 認為與查詢相關的影片清單。 清單中的每個 [Video](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video) 物件都包含影片的 URL、持續時間、維度、編碼格式和其他屬性。 影片物件也包含了影片縮圖的 URL 和縮圖的維度。
 
 ```json
 {
@@ -98,9 +98,9 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghi
 
 ## <a name="video-thumbnails"></a>影片縮圖
 
-您可以顯示 Bing 影片搜尋 API 所傳回的所有影片縮圖或影片縮圖子集。 如果您顯示子集，請提供使用者檢視其餘影片的選項。 由於 Bing API 的[使用和顯示需求](../UseAndDisplayRequirements.md)，您必須以回應中提供的順序來顯示影片。 如需調整縮圖大小的詳細資訊，請參閱[調整縮圖大小及裁切](../resize-and-crop-thumbnails.md)。 
+您可以顯示 Bing 影片搜尋 API 所傳回的所有影片縮圖或影片縮圖子集。 如果您顯示子集，請提供使用者檢視其餘影片的選項。 由於 Bing API 的[使用和顯示需求](../UseAndDisplayRequirements.md)，您必須以回應中提供的順序來顯示影片。 如需調整縮圖大小的詳細資訊，請參閱[調整縮圖大小及裁切](../../bing-web-search/resize-and-crop-thumbnails.md)。 
 
-當使用者將滑鼠停留在縮圖上時，您可以使用 [motionThumbnailUrl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video-motionthumbnailurl) 來播放影片的縮圖版本。 當您顯示它時，請務必將其歸類為動態縮圖。
+當使用者將滑鼠停留在縮圖上時，您可以使用 [motionThumbnailUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-motionthumbnailurl) 來播放影片的縮圖版本。 當您顯示它時，請務必將其歸類為動態縮圖。
 
 <!-- Removing until the images can be sanitized.
 ![Motion thumbnail of a video](../bing-web-search/media/cognitive-services-bing-web-api/bing-web-video-motion-thumbnail.PNG)
@@ -108,27 +108,27 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghi
 
 按一下縮圖時會有三個選項可用來檢視影片：
 
-- 使用 [hostPageUrl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video-hostpageurl) 可在主機網站 (例如，YouTube) 上檢視影片
-- 使用 [webSearchUrl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video-websearchurl) 可在 Bing 影片瀏覽器中檢視影片
-- 使用 [embdedHtml](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video-embedhtml) 可將影片內嵌到您自己的體驗中 
+- 使用 [hostPageUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-hostpageurl) 可在主機網站 (例如，YouTube) 上檢視影片
+- 使用 [webSearchUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-websearchurl) 可在 Bing 影片瀏覽器中檢視影片
+- 使用 [embdedHtml](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-embedhtml) 可將影片內嵌到您自己的體驗中 
 
 在播放影片時，請務必使用發行者和建立者來歸納影片。
 
-如需關於使用 [videoId](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video-videoid) 來深入了解影片的詳細資訊，請參閱[影片深入解析](../video-insights.md)。
+如需關於使用 [videoId](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) 來深入了解影片的詳細資訊，請參閱[影片深入解析](../video-insights.md)。
 
 ## <a name="filtering-videos"></a>篩選影片
 
 根據預設，影片搜尋 API 會傳回與查詢相關的所有影片。 如果您只需要長度不超過五分鐘的免費影片，您可以使用下列篩選查詢參數：
 
-- [pricing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#pricing)&mdash;依定價篩選影片 (例如，免費或必須付費的影片)
-- [resolution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#resolution)&mdash;依解析度篩選影片 (例如，720p 或更高解析度的影片)
-- [videoLength](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videolength)&mdash;依影片長度篩選影片 (例如，長度少於五分鐘的影片)
-- [freshness](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#freshness)&mdash;依存留期篩選影片 (例如，Bing 在過去一週探索的影片)
+- [定價](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing)&mdash;依據定價篩選影片（例如，免費或您必須支付的影片）
+- [解析度](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution)&mdash;篩選影片（例如，具有720p 或更高解析度的影片）
+- [videoLength](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength)&mdash;依影片長度篩選影片（例如，長度少於五分鐘的影片）
+- [freshness](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness) &mdash;依年齡的有效性篩選影片（例如，Bing 在過去一周探索到的影片）
 
 若要取得特定網域中的影片，請在查詢字串中加入 [site:](https://msdn.microsoft.com/library/ff795613.aspx) 查詢運算子。
 
 > [!NOTE]
-> 視查詢而定，如果您使用 `site:` 查詢運算子，不論 [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#safesearch) 設定為何，回應都有可能包含成人內容。 只有在您了解網站上的內容，而且您的案例支援成人內容的可能性時，才得以使用 `site:`。
+> 視查詢而定，如果您使用 `site:` 查詢運算子，不論 [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#safesearch) 設定為何，回應都有可能包含成人內容。 只有在您了解網站上的內容，而且您的案例支援成人內容的可能性時，才得以使用 `site:`。
 
 下列範例說明如何從 ContosoSailing.com 取得解析度不低於 720p、且 Bing 在過去一個月曾探索過的免費影片。
 
@@ -144,7 +144,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>擴展查詢
 
-如果 Bing 可以擴展查詢來縮小原始搜尋範圍，則 [Videos](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) 物件會包含 `queryExpansions` 欄位。 例如，如果查詢為 *Cleaning Gutters*，擴展後的查詢可能會是：Gutter Cleaning **Tools**、Cleaning Gutters **From the Ground**、Gutter Cleaning **Machine** 和 **Easy** Gutter Cleaning。
+如果 Bing 可以擴展查詢來縮小原始搜尋範圍，則 [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) 物件會包含 `queryExpansions` 欄位。 例如，如果原本的查詢是 *Cleaning Gutters*，擴展的查詢可能是：Gutter Cleaning **Tools**、Cleaning Gutters **From the Ground**、Gutter Cleaning **Machine** 和 **Easy** Gutter Cleaning。
 
 下列範例說明 *Cleaning Gutters* 的擴展查詢。
 
@@ -171,11 +171,11 @@ Host: api.cognitive.microsoft.com
 }
 ```
 
-`queryExpansions` 欄位包含 [Query](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#query_obj) 物件的清單。 `text` 欄位包含擴展的查詢，而 `displayText` 欄位包含擴展字詞。 如果擴展查詢字串就是使用者所要尋找的內容，您可以使用文字和縮圖欄位對使用者顯示擴展查詢字串。 使用 `webSearchUrl` URL 或 `searchLink` URL，讓縮圖和文字可以點選。 使用 `webSearchUrl` 將 Bing 搜尋結果傳送給使用者，而如果您提供自己的結果頁面，則使用 `searchLink`。
+`queryExpansions` 欄位包含 [Query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query_obj) 物件的清單。 `text` 欄位包含擴展的查詢，而 `displayText` 欄位包含擴展字詞。 如果擴展查詢字串就是使用者所要尋找的內容，您可以使用文字和縮圖欄位對使用者顯示擴展查詢字串。 使用 `webSearchUrl` URL 或 `searchLink` URL，讓縮圖和文字可以點選。 使用 `webSearchUrl` 將 Bing 搜尋結果傳送給使用者，而如果您提供自己的結果頁面，則使用 `searchLink`。
 
 ## <a name="pivoting-the-query"></a>樞紐分析查詢
 
-如果 Bing 可以分割原始搜尋查詢，則 [Videos](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) 物件會包含 `pivotSuggestions` 欄位。 例如，如果原始查詢為 *Cleaning Gutters*，則 Bing 可能會將查詢分割為 *Cleaning* 和 *Gutters*。
+如果 Bing 可以分割原始搜尋查詢，則 [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) 物件會包含 `pivotSuggestions` 欄位。 例如，如果原始查詢為 *Cleaning Gutters*，則 Bing 可能會將查詢分割為 *Cleaning* 和 *Gutters*。
 
 下列範例說明 *Cleaning Gutters* 的樞紐建議。
 
@@ -222,7 +222,7 @@ Host: api.cognitive.microsoft.com
 }
 ```
 
-對於每個樞紐，回應會包含一份[查詢](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#query_obj)物件清單，其中包含建議的查詢。 `text` 欄位包含建議的查詢，而 `displayText` 欄位包含一個字詞，其可取代原始查詢中的樞紐。 例如，Window Cleaning。
+對於每個樞紐，回應會包含一份[查詢](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query_obj)物件清單，其中包含建議的查詢。 `text` 欄位包含建議的查詢，而 `displayText` 欄位包含一個字詞，其可取代原始查詢中的樞紐。 例如，Window Cleaning。
 
 如果擴展查詢字串就是使用者所要尋找的內容，您可以使用 `text` 和 `thumbnail` 欄位對使用者顯示擴展查詢字串。 使用 `webSearchUrl` URL 或 `searchLink` URL，讓縮圖和文字可以點選。 使用 `webSearchUrl` 將 Bing 搜尋結果傳送給使用者，而如果您提供自己的結果頁面，則使用 `searchLink`。
 

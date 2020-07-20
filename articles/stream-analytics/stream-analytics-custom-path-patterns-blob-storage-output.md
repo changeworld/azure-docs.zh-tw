@@ -1,7 +1,6 @@
 ---
 title: Azure 串流分析自訂 Blob 輸出資料分割
 description: 本文說明 Azure 串流分析作業的 Blob 儲存體輸出所適用的自訂日期時間路徑模式與自訂欄位或屬性功能。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,12 +8,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9cdf99884845a9cb83ac26723c3ea0e7a779ebff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: dc37cb985ae561ddbd06c2236ab77d6d20d9242c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60771768"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747626"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure 串流分析自訂 Blob 輸出資料分割
 
@@ -26,11 +24,11 @@ Azure 串流分析支援使用自訂欄位或屬性以及自訂日期時間路�
 
 ### <a name="partition-key-options"></a>分割區索引鍵選項
 
-用於分割輸入資料的分割區索引鍵或資料行名稱可能包含帶有連字號、底線和空白字元的英數字元。 除非搭配別名使用，否則無法將巢狀欄位作為分割區索引鍵。
+用於分割輸入資料的分割區索引鍵或資料行名稱可能包含帶有連字號、底線和空白字元的英數字元。 除非搭配別名使用，否則無法將巢狀欄位作為分割區索引鍵。 分割區索引鍵必須為 NVARCHAR(MAX)。
 
 ### <a name="example"></a>範例
 
-假設作業會從連接到視訊遊戲服務的即時使用者工作階段取得輸入資料，其中所擷取的資料包含資料行 **client_id** 以識別工作階段。 若要依 **client_id** 對資料進行分割，請在建立作業時將 [Blob 路徑模式] 欄位設定為在 Blob 輸出屬性中包含分割區權杖 **{client_id}**。 由於具有各種 **client_id** 值的資料流經串流分析作業，因此輸出資料將根據每個文件夾的單一 **client_id** 值儲存到不同的資料夾中。
+假設作業會從連接到視訊遊戲服務的即時使用者工作階段取得輸入資料，其中所擷取的資料包含資料行 **client_id** 以識別工作階段。 若要依 **client_id** 對資料進行分割，請在建立作業時將 [Blob 路徑模式] 欄位設定為在 Blob 輸出屬性中包含分割區權杖 **{client_id}** 。 由於具有各種 **client_id** 值的資料流經串流分析作業，因此輸出資料將根據每個文件夾的單一 **client_id** 值儲存到不同的資料夾中。
 
 ![路徑模式與用戶端識別碼](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-path-pattern-client-id.png)
 
@@ -58,15 +56,15 @@ Azure 串流分析支援使用自訂欄位或屬性以及自訂日期時間路�
    * cluster1/{date}/{aFieldInMyData}  
    * cluster1/{time}/{aFieldInMyData}  
    * cluster1/{aFieldInMyData}  
-   * cluster1/{date}/{time}/{aFieldInMyData}  
+   * cluster1/{date}/{time}/{aFieldInMyData} 
+   
+2. 分割區索引鍵不區分大小寫，因此 "John" 和 "john" 之類的分割區索引鍵是相等的。 此外，運算式不能作為分割區索引鍵。 例如， **{columnA + columnB}** 無法運作。  
 
-2. 分割區索引鍵不區分大小寫，因此 "John" 和 "john" 之類的分割區索引鍵是相等的。 此外，運算式不能作為分割區索引鍵。 例如，**{columnA + columnB}** 無法運作。  
-
-3. 當輸入資料流由分割區索引鍵基數低於 8000 的記錄組成時，記錄將附加至現有的 Blob，並且僅在必要時建立新的 Blob。 如果基數超過 8000，則不保證會寫入至現有的 Blob，並且不會為具有相同分割區索引鍵的任意數目的記錄建立新的 Blob。  
+3. 當輸入資料流由分割區索引鍵基數低於 8000 的記錄組成時，記錄將附加至現有的 Blob，並且僅在必要時建立新的 Blob。 如果基數超過 8000，則不保證會寫入至現有的 Blob，並且不會為具有相同分割區索引鍵的任意數目的記錄建立新的 Blob。
 
 ## <a name="custom-datetime-path-patterns"></a>自訂日期時間路徑模式
 
-自訂日期時間路徑模式可讓您指定與 Hive 串流慣例一致的輸出格式，讓 Azure 串流分析得以將資料傳送至 Azure HDInsight 和 Azure Databricks 以進行下游處理。 自訂日期時間路徑模式可以使用您 Blob 輸出 [路徑前置詞] 欄位中的 `datetime` 關鍵字，輕易地實作。 例如： `{datetime:yyyy}`。
+自訂日期時間路徑模式可讓您指定與 Hive 串流慣例一致的輸出格式，讓 Azure 串流分析得以將資料傳送至 Azure HDInsight 和 Azure Databricks 以進行下游處理。 自訂日期時間路徑模式可以使用您 Blob 輸出 [路徑前置詞] 欄位中的 `datetime` 關鍵字，輕易地實作。 例如： `{datetime:yyyy}` 。
 
 ### <a name="supported-tokens"></a>支援的權杖
 
@@ -78,10 +76,10 @@ Azure 串流分析支援使用自訂欄位或屬性以及自訂日期時間路�
 |{datetime:MM}|從 01 到 12 的月份|01|
 |{datetime:M}|從 1 到 12 的月份|1|
 |{datetime:dd}|從 01 到 31 的日期|02|
-|{datetime:d}|從 1 到 12 的日期|2|
+|{datetime:d}|從 1 到 31 的日期|2|
 |{datetime:HH}|使用 24 小時格式的小時，從 00 到 23|10|
-|{datetime:mm}|從 00 到 24 的分鐘數|06|
-|{datetime:m}|從 0 到 24 的分鐘數|6|
+|{datetime:mm}|從 00 到 60 的分鐘數|06|
+|{datetime:m}|從 0 到 60 的分鐘數|6|
 |{datetime:ss}|從 00 到 60 的秒數|08|
 
 如果您不希望使用自訂日期時間模式，可以將 {date} 和/或 {time} 權杖新增至 [路徑前置詞]，以產生具有內建日期時間格式的下拉式清單。
@@ -104,7 +102,7 @@ Azure 串流分析支援使用自訂欄位或屬性以及自訂日期時間路�
 
 Blob 儲存體的自訂路徑模式可與 Hive 串流慣例一起使用，該慣例預期資料夾以資料夾名稱中的 `column=` 標示。
 
-例如： `year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}/hour={datetime:HH}`。
+例如： `year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}/hour={datetime:HH}` 。
 
 自訂輸出可以免除改變資料表及手動將分割新增至 Azure 串流分析與 Hive 之間連接埠資料的麻煩。 相反地，許多資料夾可以使用以下方式自動新增：
 

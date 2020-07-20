@@ -1,25 +1,21 @@
 ---
-title: 在 Azure 容器執行個體中掛接 gitRepo 磁碟區
+title: 將 gitRepo 磁片區掛接至容器群組
 description: 了解如何掛接 gitRepo 磁碟區，以將 Git 存放庫複製到您的容器執行個體中
-services: container-instances
-author: dlepow
-ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
-ms.author: danlep
-ms.openlocfilehash: 70593bffbf30b3a0c0978e56c2af1a856a22f2ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5f361b0bbd4a02f754e47c8321a664af05036601
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60563014"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260710"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>在 Azure 容器執行個體中掛接 gitRepo 磁碟區
 
 了解如何掛接 *gitRepo* 磁碟區，以將 Git 存放庫複製到您的容器執行個體中。
 
 > [!NOTE]
-> 目前只有 Linux 容器才能掛接 *gitRepo* 磁碟區。 雖然我們致力於將所有功能帶入 Windows 容器，但是您可以在 [Azure 容器執行個體配額和區域可用性](container-instances-quotas.md)中找到目前的平台差異。
+> 目前只有 Linux 容器才能掛接 *gitRepo* 磁碟區。 雖然我們正致力於將所有功能帶入 Windows 容器，但是您可以在[總覽](container-instances-overview.md#linux-and-windows-containers)中找到目前的平臺差異。
 
 ## <a name="gitrepo-volume"></a>gitRepo 磁碟區
 
@@ -27,7 +23,7 @@ ms.locfileid: "60563014"
 
 當您掛接 *gitRepo* 磁碟區時，您可以設定三個屬性來設定磁碟區：
 
-| 屬性 | 必要項 | 描述 |
+| 屬性 | 必要 | 描述 |
 | -------- | -------- | ----------- |
 | `repository` | 是 | 要複製之 Git 存放庫的完整 URL，包括 `http://` 或 `https://`。|
 | `directory` | 否 | 要在其中複製存放庫的目錄。 路徑不能包含或開頭為 "`..`"。  如果您指定 "`.`"，存放庫會複製到磁碟區的目錄中。 否則，Git 存放庫會複製到磁碟區目錄內指定名稱的子目錄中。 |
@@ -37,7 +33,7 @@ ms.locfileid: "60563014"
 
 當您使用 [Azure CLI](/cli/azure) 部署容器執行個體時，若要掛接 gitRepo 磁碟區，請將 `--gitrepo-url` 和 `--gitrepo-mount-path` 參數提供給 [az container create][az-container-create] 命令。 您可以選擇性地指定磁碟區內要複製存放庫到其中的目錄 (`--gitrepo-dir`)，以及要複製的修訂認可雜湊 (`--gitrepo-revision`)。
 
-此範例命令會複製 Microsoft [aci helloworld] [ aci-helloworld]範例應用程式到`/mnt/aci-helloworld`容器執行個體中：
+此範例命令會將 Microsoft [aci-helloworld][aci-helloworld]範例應用程式複製到 `/mnt/aci-helloworld` 容器實例中的：
 
 ```azurecli-interactive
 az container create \
@@ -52,8 +48,11 @@ az container create \
 
 若要確認已掛接 gitRepo 磁碟區，請使用 [az container exec][az-container-exec] 來啟動容器中的 Shell 並列出目錄：
 
-```console
-$ az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
+```azurecli
+az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
+```
+
+```output
 /usr/src/app # ls -l /mnt/aci-helloworld/
 total 16
 -rw-r--r--    1 root     root           144 Apr 16 16:35 Dockerfile
@@ -64,7 +63,7 @@ drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 
 ## <a name="mount-gitrepo-volume-resource-manager"></a>掛接 gitRepo 磁碟區：Resource Manager
 
-當您使用 [Azure Resource Manager 範本](/azure/templates/microsoft.containerinstance/containergroups)部署容器執行個體時，若要掛接 gitRepo 磁碟區，請先在範本的容器群組 `properties` 區段中填入 `volumes` 陣列。 然後，針對您想要掛接 gitRepo 磁碟區所在容器群組中的每個容器，填入容器定義 `properties` 區段中的 `volumeMounts` 陣列。
+當您使用 [Azure Resource Manager 範本](/azure/templates/microsoft.containerinstance/containergroups)部署容器執行個體時，若要掛接 gitRepo 磁碟區，請先在範本的容器群組 `properties` 區段中填入 `volumes` 陣列。 然後，針對您想要掛接 gitRepo** 磁碟區所在容器群組中的每個容器，填入容器定義 `properties` 區段中的 `volumeMounts` 陣列。
 
 例如，下列 Resource Manager 範本會建立一個由單一容器組成的容器群組。 容器會複製由 *gitRepo* 磁碟區區塊所指定的兩個 GitHub 存放庫。 第二個磁碟區包含指定要複製到其中之目錄的其他屬性，和要複製之指定修訂的認可雜湊。
 
@@ -86,21 +85,21 @@ drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 
 例如，私人 GitHub 存放庫的 Azure CLI `--gitrepo-url` 參數會類似下列項目 (其中 "gituser" 是 GitHub 使用者名稱，"abcdef1234fdsa4321abcdef" 是使用者的個人存取權杖)：
 
-```azurecli
+```console
 --gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository
 ```
 
 針對 Azure Repos Git 存放庫，指定任何使用者名稱 (您可以如同下列範例一樣使用 "azurereposuser") 與有效的 PAT 搭配使用：
 
-```azurecli
+```console
 --gitrepo-url https://azurereposuser:abcdef1234fdsa4321abcdef@dev.azure.com/your-org/_git/some-private-repository
 ```
 
 如需 GitHub 和 Azure Repos 的個人存取權杖詳細資訊，請參閱下列項目：
 
-GitHub:[建立個人存取權杖以供命令列][pat-github]
+GitHub：[針對命令列建立個人存取權杖][pat-github]
 
-Azure Repos：[建立個人存取權杖來驗證的存取][pat-repos]
+Azure Repos：[建立個人存取權杖來驗證存取][pat-repos]
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -113,7 +112,7 @@ Azure Repos：[建立個人存取權杖來驗證的存取][pat-repos]
 <!-- LINKS - External -->
 [aci-helloworld]: https://github.com/Azure-Samples/aci-helloworld
 [pat-github]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
-[pat-repos]: https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate
+[pat-repos]: /azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

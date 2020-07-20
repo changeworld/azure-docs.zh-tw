@@ -4,16 +4,16 @@ description: Azure 入口網站內 Azure Functions 概觀的說明內容
 services: functions
 author: sewatson
 manager: lwelicki
-ms.service: functions
+ms.service: azure-functions
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: sewatson
-ms.openlocfilehash: cc37fbe218dd94da865e61e4b4275a7171fdbe7a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6ece125cbbaf13062bc7c5e8b313784b4d52c726
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344135"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "67605192"
 ---
 # <a name="azure-functions-documentation"></a>Azure Functions 文件
 

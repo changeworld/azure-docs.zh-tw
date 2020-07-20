@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 147dd0f454bd85673bcba5cd6148c5da9716c580
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
-ms.translationtype: MT
+ms.custom: mqtt
+ms.openlocfilehash: 5c14e8cfcbf8df86b0f71d6b12025594d2e648c4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65409040"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81730112"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>排程多個裝置上的作業
 
@@ -36,7 +36,7 @@ ms.locfileid: "65409040"
 
 ## <a name="jobs-to-execute-direct-methods"></a>用以執行直接方法的作業
 
-以下程式碼片段顯示使用作業在一組裝置上執行[直接方法](iot-hub-devguide-direct-methods.md)的 HTTPS 1.1 要求詳細資料︰
+以下程式碼片段顯示 HTTPS 1.1 要求詳細資料，適用於使用作業在一組裝置上執行[直接方法](iot-hub-devguide-direct-methods.md)的情況︰
 
 ```
 PUT /jobs/v2/<jobId>?api-version=2018-06-30
@@ -66,9 +66,9 @@ Content-Type: application/json; charset=utf-8
 "queryCondition" = "deviceId IN ['MyDevice1']"
 ```
 
-[IoT 中樞查詢語言](iot-hub-devguide-query-language.md)涵蓋了「IoT 中樞」查詢語言的其他詳細資料。
+[IoT 中樞查詢語言](iot-hub-devguide-query-language.md)涵蓋了IoT 中樞查詢語言的其他詳細資料。
 
-下列程式碼片段顯示的要求和回應工作，排程呼叫直接方法，名為 contoso-中樞 1 上的所有裝置上的 testMethod:
+下列程式碼片段顯示已排定在 contoso--1 上的所有裝置上呼叫名為 testMethod 之直接方法的作業要求和回應：
 
 ```
 PUT https://contoso-hub-1.azure-devices.net/jobs/v2/job01?api-version=2018-06-30 HTTP/1.1
@@ -121,9 +121,9 @@ Content-Type: application/json; charset=utf-8
 ```
 
 > [!NOTE]
-> *UpdateTwin*屬性需要有效的 etag 相符項目，例如`etag="*"`。
+> *UpdateTwin*屬性需要有效的 etag 相符;例如， `etag="*"` 。
 
-下列程式碼片段顯示的要求和回應工作，排程更新 contoso-中樞-1 的測試裝置的裝置對應項屬性：
+下列程式碼片段顯示排程在 contoso--1 上更新測試裝置之裝置對應項屬性的作業的要求和回應：
 
 ```
 PUT https://contoso-hub-1.azure-devices.net/jobs/v2/job02?api-version=2018-06-30 HTTP/1.1
@@ -180,25 +180,25 @@ ContinuationToken 會從回應來提供。
 | 屬性 | 說明 |
 | --- | --- |
 | **jobId** |應用程式所提供的作業識別碼。 |
-| **startTime** |應用程式所提供的作業開始時間 (ISO-8601)。 |
+| **時間** |應用程式所提供的作業開始時間 (ISO-8601)。 |
 | **endTime** |IoT 中樞所提供的作業完成日期 (ISO-8601)。 在作業到達「已完成」狀態後才有效。 |
 | **type** |作業類型： |
-| | **scheduleUpdateTwin**:用來更新一組所需的屬性或標記的作業。 |
-| | **scheduleDeviceMethod**:用來叫用裝置方法，在一組裝置對應項上的作業。 |
+| | **scheduleUpdateTwin**：用來更新一組所需屬性或標記的作業。 |
+| | **scheduleDeviceMethod**：用來在一組裝置 twins 上叫用裝置方法的作業。 |
 | **status** |作業的目前狀態。 狀態的可能值︰ |
-| | **暫止**:已排定並等候作業服務挑選。 |
-| | **排程**:已排定未來時間。 |
-| | **執行**:目前作用中的作業。 |
-| | **取消**:已取消作業。 |
-| | **無法**:作業失敗。 |
-| | **完成**:工作已完成。 |
+| | **pending**︰已排定並等候作業服務執行。 |
+| | **scheduled**︰已排定未來時間。 |
+| | **running**︰目前作用中的作業。 |
+| | **canceled**：作業已被取消。 |
+| | **failed**：作業失敗。 |
+| | **completed**作業完成。 |
 | **deviceJobStatistics** |作業執行的相關統計資料。 |
-| | **deviceJobStatistics** 屬性： |
-| | **deviceJobStatistics.deviceCount**:作業中的裝置數目。 |
-| | **deviceJobStatistics.failedCount**:作業失敗的裝置數目。 |
-| | **deviceJobStatistics.succeededCount**:作業成功的裝置數目。 |
-| | **deviceJobStatistics.runningCount**:目前正在執行作業的裝置數目。 |
-| | **deviceJobStatistics.pendingCount**:等待執行作業的裝置數目。 |
+| | **deviceJobStatistics**屬性： |
+| | **deviceJobStatistics.deviceCount**：作業中的裝置數目。 |
+| | **deviceJobStatistics.failedCount**：作業失敗的裝置數目。 |
+| | **deviceJobStatistics.succeededCount**：作業成功的裝置數目。 |
+| | **deviceJobStatistics.runningCount**目前正在執行作業的裝置數目。 |
+| | **deviceJobStatistics.pendingCount**：等待執行作業的裝置數目。 |
 
 ### <a name="additional-reference-material"></a>其他參考資料
 
@@ -206,7 +206,7 @@ IoT 中樞開發人員指南中的其他參考主題包括︰
 
 * [IoT 中樞端點](iot-hub-devguide-endpoints.md)說明每個 IoT 中樞公開給執行階段和管理作業的各種端點。
 
-* [節流和配額](iot-hub-devguide-quotas-throttling.md)說明適用於「IoT 中樞」服務的配額，以及使用此服務時所預期的節流行為。
+* [節流和配額](iot-hub-devguide-quotas-throttling.md)說明適用於 IoT 中樞服務的配額，和使用服務時所預期的節流行為。
 
 * [Azure IoT 裝置和服務 SDK](iot-hub-devguide-sdks.md) 列出各種語言 SDK，可供您在開發與「IoT 中樞」互動的裝置和服務應用程式時使用。
 

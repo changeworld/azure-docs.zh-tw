@@ -1,45 +1,37 @@
 ---
-title: 在 Azure 中的 OpenSUSE VM 上安裝 MySQL | Microsoft Docs
+title: 在 Azure 中的 OpenSUSE VM 上安裝 MySQL
 description: 了解如何在 Azure 中的 OpenSUSE Linux 虛擬機器上安裝 MySQL。
 services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 1594e10e-c314-455a-9efb-a89441de364b
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
-ms.author: za-rhoads
-ms.openlocfilehash: 19f53449e21b39eb212f94b100eaf5d26ca4cf13
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.author: cynthn
+ms.openlocfilehash: 0d3f0a61da3654c31c99cfac43c86b081876f700
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006661"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78944582"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>在 Azure 中執行 OpenSUSE Linux 的虛擬機器上安裝 MySQL
 
 [MySQL](https://www.mysql.com) 是一種很受歡迎的開放原始碼 SQL 資料庫。 本教學課程會示範如何建立執行 OpenSUSE Linux 的虛擬機器，然後安裝 MySQL。
 
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
 如果您選擇在本機安裝和使用 CLI，需要 Azure CLI 2.0 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-virtual-machine-running-opensuse-linux"></a>建立執行 OpenSUSE Linux 的虛擬機器
 
-首先，建立資源群組。 在此範例中，資源群組的名稱為 mySQSUSEResourceGroup，並且會建立在「美國東部」區域。
+首先，建立資源群組。 在此範例中，資源群組的名稱為 mySQSUSEResourceGroup**，並且會建立在「美國東部」** 區域。
 
 ```azurecli-interactive
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-建立 VM。 在此範例中，VM 的名稱為 myVM，而 VM 的大小為 Standard_D2s_v3，但您應該選擇您認為最適合您工作負載的 [VM 大小](sizes.md)。
+建立 VM。 在此範例中，VM 的名稱為 myVM**，而 VM 的大小為 Standard_D2s_v3**，但您應該選擇您認為最適合您工作負載的 [VM 大小](sizes.md)。
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -149,7 +141,7 @@ GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
    
 只有連線到資料庫的指令碼會使用資料庫使用者名稱和密碼。  資料庫使用者帳戶名稱不一定代表系統上的實際使用者帳戶。
 
-啟用從另一部電腦登入。 在此範例中，允許從中登入的電腦 IP 位址是 10.112.113.114。
+啟用從另一部電腦登入。 在此範例中，允許從中登入的電腦 IP 位址是 10.112.113.114**。
 
 ```sql
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'10.112.113.114' IDENTIFIED BY 'password';
@@ -163,7 +155,7 @@ quit
 
 
 ## <a name="next-steps"></a>後續步驟
-如需 MySQL 的詳細資料，請參閱 [MySQL 文件](https://dev.mysql.com/doc)。
+如需 MySQL 的詳細資訊，請參閱 [MySQL 文件](https://dev.mysql.com/doc)。
 
 
 

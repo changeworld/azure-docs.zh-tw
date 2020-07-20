@@ -1,44 +1,27 @@
 ---
-title: Linux 上的 App Service 簡介 - Azure | Microsoft Docs
-description: 了解 Linux 上的 Azure App Service。
+title: 在預設的 Linux 容器上執行程式碼
+description: Azure App Service 可以在預先建置的 Linux 容器上執行您的程式碼。 了解如何在 Azure 上執行您的 Linux Web 應用程式。
 keywords: azure app service, linux, oss
-services: app-service
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+author: msangapu-msft
 ms.assetid: bc85eff6-bbdf-410a-93dc-0f1222796676
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 1/11/2019
-ms.author: msangapu;yili
-ms.custom: seodec18
-ms.openlocfilehash: 22c4096711bbc1d47ff6684e38ac829d77681a9f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: msangapu
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 891e0c18b3f95dca905fbc14b957af773135eeec
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793436"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557888"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Linux 上的 Azure App Service 簡介
 
-[App Service 服務](../overview.md)是完全受控的計算平台，非常適合用來裝載網站和 Web Apps。 針對支援的應用程式堆疊，客戶可以使用 Linux 上的 App Service，以原生方式將 Web 應用程式裝載於 Linux。 [Languages](#languages) 區段會列出目前支援的應用程式堆疊。
+[App Service 服務](../overview.md)是完全受控的計算平台，非常適合用來裝載網站和 Web Apps。 針對支援的應用程式堆疊，客戶可以使用 Linux 上的 App Service，以原生方式將 Web 應用程式裝載於 Linux。
 
 ## <a name="languages"></a>Languages
 
-Linux 上的 App Service 可支援一些內建映像，以增加開發人員的生產力。 如果您的應用程式需要的執行階段在內建映像中不受支援，則有指示可讓您知道如何[建置自有 Docker 映像](tutorial-custom-docker-image.md)以部署至用於容器的 Web 應用程式。
-
-| 語言 | 支援的版本 |
-|---|---|
-| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 8.11, 9.4, 10.1,10.10 |
-| Java * | Tomcat 8.5, 9.0, Java SE, WildFly 14 (全都執行 JRE 8) |
-| PHP | 5.6, 7.0, 7.2 |
-| Python (預覽) | 2.7, 3.6, 3.7 |
-| .NET Core | 1.0, 1.1, 2.0, 2.1 |
-| Ruby | 2.3 |
+Linux 上的 App Service 可支援一些內建映像，以增加開發人員的生產力。 語言包括：Node.js、Java (JRE 8 和 JRE 11)、PHP、Python、.NET Core 和 Ruby。 執行 [`az webapp list-runtimes --linux`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) 以檢視最新的語言和支援的版本。 如果您的應用程式需要的執行階段在內建映像中不受支援，則有指示可讓您知道如何[建置自有 Docker 映像](tutorial-custom-docker-image.md)以部署至用於容器的 Web 應用程式。
 
 ## <a name="deployments"></a>部署
 
@@ -71,18 +54,18 @@ Linux 上的 App Service 可支援一些內建映像，以增加開發人員的�
 
 Azure 入口網站只會顯示 Web App for Containers 目前可用的功能。 隨著我們啟用更多功能，您會在入口網站中看到它們。
 
-Linux 上的 App Service 只在[「基本」、「標準」和「進階」](https://azure.microsoft.com/pricing/details/app-service/plans/)App Service 方案中才支援，而且沒有[「免費」或「共用」](https://azure.microsoft.com/pricing/details/app-service/plans/)層。 在已裝載非 Linux Web Apps 的 App Service 方案中，您無法建立 Web App for Containers。  
+Linux 上的 App Service 只在[免費、基本、標準、進階和隔離](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service 方案中才支援，而且沒有[共用](https://azure.microsoft.com/pricing/details/app-service/plans/)層。 您無法在已裝載非 Linux Web App 的 App Service 方案中，建立 Linux Web App。  
 
-根據目前的限制，您無法在相同資源群組中混合使用 Windows 和 Linux 應用程式。
+根據目前的限制，您無法在相同的區域中，對相同的資源群組混用 Windows 和 Linux 應用程式。
 
 ## <a name="troubleshooting"></a>疑難排解
 
-當您的應用程式無法啟動或您想要檢查應用程式的記錄時，請檢查 LogFiles 目錄中的 Docker 記錄。 您可以透過 SCM 網站或 FTP 來存取此目錄。
-若要從您的容器記錄 `stdout` 和 `stderr`，您必須啟用 [診斷記錄] 下的 [Docker 容器記錄]。
+> [!NOTE]
+> [Azure 監視 (預覽)](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#send-logs-to-azure-monitor-preview) 有新的整合式記錄功能。 
+>
+>
 
-![啟用記錄][2]
-
-設定會立即生效。 App Service 會偵測設定變更，而且會自動為您重新啟動容器。
+當您的應用程式無法啟動或您想要檢查應用程式的記錄時，請檢查 LogFiles 目錄中的 Docker 記錄。 您可以透過 SCM 網站或 FTP 來存取此目錄。 若要從您的容器記錄 `stdout` 和 `stderr`，您必須啟用 [App Service 記錄] 下的 [應用程式記錄]。 設定會立即生效。 App Service 會偵測變更，且自動重新啟動容器。
 
 您可以在 [開發工具] 功能表中從 [進階工具] 存取 SCM 網站。
 
@@ -108,7 +91,7 @@ Linux 上的 App Service 只在[「基本」、「標準」和「進階」](http
 * [在 App Service 中設定預備環境](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 * [Docker 中樞連續部署](app-service-linux-ci-cd.md)
 
-您可以在[我們的論壇](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)張貼問題和疑難。
+您可以在[我們的論壇](https://docs.microsoft.com/answers/topics/azure-webapps.html)張貼問題和疑難。
 
 <!--Image references-->
 [1]: ./media/app-service-linux-intro/kudu-docker-logs.png

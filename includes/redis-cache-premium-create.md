@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
 ms.openlocfilehash: 2627554647c6c20cbdedfec53c1028b3edfa9c9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60541325"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67173791"
 ---
-若要建立進階快取，請登入 [Azure 入口網站](https://portal.azure.com)，然後按一下 [建立資源] > [資料庫] > [Azure Cache for Redis]。
+若要建立進階快取，請登入 [Azure 入口網站](https://portal.azure.com)，然後按一下 [建立資源]**** > [資料庫]**** > [Azure Cache for Redis]****。
 
 ![Create cache](media/redis-cache-premium-create/redis-cache-new-cache-menu.png)
 
@@ -20,7 +20,7 @@ ms.locfileid: "60541325"
 > 
 > 
 
-若要設定進階功能，請先在 [定價層]  下拉式清單中選取其中一個進階定價層。 如需有關每個定價層的詳細資訊，請按一下 [檢視完整定價詳細資料] 並從 [選擇定價層] 刀鋒視窗中選取定價層。
+若要設定進階功能，請先在 [定價層] **** 下拉式清單中選取其中一個進階定價層。 如需有關每個定價層的詳細資訊，請按一下 [檢視完整定價詳細資料]**** 並從 [選擇定價層]**** 刀鋒視窗中選取定價層。
 
 ![進階](media/redis-cache-premium-create/redis-cache-premium-pricing-tier.png)
 

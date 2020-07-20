@@ -10,16 +10,15 @@ ms.assetid: 49f9254c-4c5f-4ed4-9c8d-798f44e805ee
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 14090e21fb7c6ca07fe63220ffd1d44d483ac869
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4c8cd4aa3e91c5d69c40e47683818ed8bc9be338
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61088159"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249898"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Azure API 管理中的產品範本
 
@@ -32,11 +31,13 @@ ms.locfileid: "61088159"
 -   [產品](#Product)  
   
 > [!NOTE]
->  下列文件中包含範例預設範本，但範本可能會因持續進行的改善而有變更。 您可以瀏覽至想要的個別範本，來檢視開發人員入口網站中的即時預設範本。 如需有關使用範本的詳細資訊，請參閱[如何使用範本自訂 API 管理開發人員入口網站](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
+>  下列文件中包含範例預設範本，但範本可能會因持續進行的改善而有變更。 您可以瀏覽至想要的個別範本，來檢視開發人員入口網站中的即時預設範本。 如需有關使用範本的詳細資訊，請參閱[如何使用範本自訂 API 管理開發人員入口網站](./api-management-developer-portal-templates.md)。  
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="ProductList"></a>產品清單  
+##  <a name="product-list"></a><a name="ProductList"></a>產品清單  
  **清單**範本可讓您自訂開發人員入口網站中產品清單頁面的主體。  
   
  ![產品清單](./media/api-management-product-templates/APIM_ProductsListTemplatePage.png "APIM_ProductsListTemplatePage")  
@@ -69,20 +70,20 @@ ms.locfileid: "61088159"
 </div>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控制項  
  `Product list` 範本可能會使用下列[頁面控制項](api-management-page-controls.md)。  
   
--   [paging-control](api-management-page-controls.md#paging-control)  
+-   [分頁控制](api-management-page-controls.md#paging-control)  
   
--   [search-control](api-management-page-controls.md#search-control)  
+-   [搜尋-控制項](api-management-page-controls.md#search-control)  
   
 ### <a name="data-model"></a>資料模型  
   
 |屬性|類型|描述|  
 |--------------|----------|-----------------|  
-|Paging|[分页](api-management-template-data-model-reference.md#Paging)实体。|產品集合的分頁資訊。|  
-|Filtering|[篩選](api-management-template-data-model-reference.md#Filtering)實體。|產品清單頁面的篩選資訊。|  
-|Products|[產品](api-management-template-data-model-reference.md#Product)實體的集合。|目前使用者可看見的產品。|  
+|Paging|[分頁](api-management-template-data-model-reference.md#Paging)實體。|產品集合的分頁資訊。|  
+|篩選|[篩選](api-management-template-data-model-reference.md#Filtering)實體。|產品清單頁面的篩選資訊。|  
+|產品|[產品](api-management-template-data-model-reference.md#Product)實體的集合。|目前使用者可看見的產品。|  
   
 ### <a name="sample-template-data"></a>範例範本資料  
   
@@ -122,10 +123,10 @@ ms.locfileid: "61088159"
 }  
 ```  
   
-##  <a name="Product"></a>Product  
+##  <a name="product"></a><a name="Product"></a>基礎  
  **產品**範本可讓您自訂開發人員入口網站的產品頁面主體。  
   
- ![開發人員入口網站的產品頁面](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
+ ![開發人員入口網站產品頁面](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
   
 ### <a name="default-template"></a>預設範本  
   
@@ -196,23 +197,23 @@ ms.locfileid: "61088159"
 {% endif %}  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控制項  
  `Product list` 範本可能會使用下列[頁面控制項](api-management-page-controls.md)。  
   
--   [subscribe-button](api-management-page-controls.md#subscribe-button)  
+-   [訂閱-按鈕](api-management-page-controls.md#subscribe-button)  
   
 ### <a name="data-model"></a>資料模型  
   
 |屬性|類型|描述|  
 |--------------|----------|-----------------|  
-|Products|[產品](api-management-template-data-model-reference.md#Product)|指定的產品。|  
+|乘積|[產品](api-management-template-data-model-reference.md#Product)|指定的產品。|  
 |IsDeveloperSubscribed|boolean|目前的使用者是否已訂閱此產品。|  
-|SubscriptionState|数字|订阅的状态。 可能的狀態為：<br /><br /> -   `0 - suspended` – 訂用帳戶已遭封鎖，而且訂閱者無法呼叫產品的任何 API。<br />-   `1 - active` – 訂用帳戶是作用中狀態。<br />-   `2 - expired` – 訂用帳戶已達到期日，因此已停用。<br />-   `3 - submitted` – 開發人員已提出訂用帳戶要求，但尚未進行核准或拒絕。<br />-   `4 - rejected` – 系統管理員已拒絕訂用帳戶要求。<br />-   `5 - cancelled` – 開發人員或系統管理員已取消訂用帳戶。|  
-|Limits|array|此屬性已被取代而不應該使用。|  
-|DelegatedSubscriptionEnabled|boolean|此訂用帳戶是否已啟用[委派](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/)。|  
-|DelegatedSubscriptionUrl|string|如果已啟用委派，則是所委派的訂用帳戶 URL。|  
+|SubscriptionState|number|訂用帳戶的狀態。 可能的狀態為：<br /><br /> -   `0 - suspended` – 訂用帳戶已遭封鎖，而且訂閱者無法呼叫產品的任何 API。<br />-   `1 - active` – 訂用帳戶是作用中狀態。<br />-   `2 - expired` – 訂用帳戶已達到期日，因此已停用。<br />-   `3 - submitted` – 開發人員已提出訂用帳戶要求，但尚未進行核准或拒絕。<br />-   `4 - rejected` – 系統管理員已拒絕訂用帳戶要求。<br />-   `5 - cancelled` – 開發人員或系統管理員已取消訂用帳戶。|  
+|限制|array|此屬性已過時而不應使用。|  
+|DelegatedSubscriptionEnabled|boolean|此訂用帳戶是否已啟用[委派](./api-management-howto-setup-delegation.md)。|  
+|DelegatedSubscriptionUrl|字串|如果已啟用委派，則是所委派的訂用帳戶 URL。|  
 |IsAgreed|boolean|如果產品有條款，目前的使用者是否已同意條款。|  
-|Subscriptions|[訂用帳戶摘要](api-management-template-data-model-reference.md#SubscriptionSummary)實體的集合。|產品的訂用帳戶。|  
+|訂用帳戶|[訂用帳戶摘要](api-management-template-data-model-reference.md#SubscriptionSummary)實體的集合。|產品的訂用帳戶。|  
 |Apis|[API](api-management-template-data-model-reference.md#API) 實體的集合。|此產品中的 API。|  
 |CannotAddBecauseSubscriptionNumberLimitReached|boolean|就訂用帳戶限制而言，目前的使用者是否有資格訂閱此產品。|  
 |CannotAddBecauseMultipleSubscriptionsNotAllowed|boolean|就是否允許多個訂用帳戶而言，目前的使用者是否有資格訂閱此產品。|  

@@ -1,416 +1,332 @@
 ---
 title: 小組負責人在 Team Data Science Process Team 中的工作
-description: 本大綱為資料科學小組專案的小組負責人，為其資料科學小組所預期要完成的工作。
+description: 小組負責人在 Team 資料科學程式小組工作的詳細逐步解說
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 45be3d7f865c7b72ae62efbf99dbbb4594b1846f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60812548"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75864276"
 ---
-# <a name="tasks-for-the-team-lead-in-the-team-data-science-process-team"></a>小組負責人在 Team Data Science Process Team 中的工作
+# <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Team 資料科學程式小組的小組負責人工作
 
-本主題概述希望小組負責人為其資料科學小組完成的工作。 目標是建立在 [Team 資料科學程序](overview.md) (TDSP) 上標準化的共同作業小組環境。 TDSP 是一種敏捷式反覆資料科學方法，可有效產出預測分析解決方案和智慧型應用程式。 它的設計目的是協助改進共同作業和小組學習。 程序是從 Microsoft 以及產業淬練出來的最佳作法和結構，是成功實作資料科學不可或缺的，以便協助公司完全實現其分析程式的優點。 如需人員角色的大綱，以及對此程序進行標準化之資料科學小組所處理相關聯工作的大綱，請參閱 [Team 資料科學程序角色和工作](roles-tasks.md)。
+本文說明*小組負責人*為其資料科學小組完成的工作。 小組負責人的目標是要建立共同作業的小組環境，以便在[Team 資料科學](overview.md)程式（TDSP）上標準化。 TDSP 的設計是為了協助改善共同作業和小組學習。 
 
-**小組負責人**會管理企業資料科學單位中的小組。 小組是由多個資料科學家所組成。 若為只有少數資料科學家的資料科學單位，**群組管理員**和**小組負責人**可能是同一人，或者可以將其工作委派給代理人。 但是，工作本身不會變更。 由小組負責人完成以便設定此環境之工作的工作流程，如下圖所述：
+TDSP 是一種敏捷式反復資料科學方法，可有效率地提供預測性分析解決方案和智慧型應用程式。 此程式會抽取 Microsoft 和產業的最佳作法和結構。  目標是成功實行資料科學計畫，並完全實現其分析程式的優點。 如需在 TDSP 上標準化之資料科學小組的人員角色和相關工作的大綱，請參閱[Team 資料科學程式角色和](roles-tasks.md)工作。
 
-![1](./media/team-lead-tasks/team-leads-1-creating-teams.png)
+小組負責人負責管理由企業資料科學單位中的數個數據科學家組成的小組。 視資料科學單位的大小和結構而定，[群組管理員](group-manager-tasks.md)和小組負責人可能是同一人，也可以將他們的工作委派給代理。 但是，工作本身不會變更。 
 
->[AZURE.NOTE] 如果您使用 Azure DevOps 作為程式碼裝載平台，而且您想要讓自己的小組有個別的 Azure DevOps 專案，則需要上圖區塊 1 和 2 中的工作。 一旦這些工作完成，就可以在此專案底下建立您小組的所有存放庫。 
+下圖顯示小組組長完成設定小組環境之工作的工作流程：
 
-由群組管理員滿足後續章節中指定的數個必要條件工作之後，有五個您要在此教學課程完成的主體工作 (有些是選擇性的)。 這些工作對應本主題的主要編號章節：
+![小組負責人工作流程](./media/team-lead-tasks/team-leads-1-creating-teams.png)
 
-1. 在群組的 Azure DevOps Services 伺服器上建立**專案**，以及在專案中建立兩個小組存放庫：
-    - **ProjectTemplate 存放庫** 
-    - **TeamUtilities 存放庫**
-2. 從 **GroupProjectTemplate** 存放庫植入 **ProjectTemplate** 存放庫，前者已由群組管理員設定。 
-3. 建立小組資料與分析資源：
-    - 將小組特定公用程式新增至 **TeamUtilities** 存放庫。 
-    - (選擇性) 建立 **Azure 檔案儲存體**，用來儲存對整個小組而言很實用的資料資產。 
-4. (選擇性) 將 Azure 檔案儲存體掛接至小組負責人的**資料科學虛擬機器** (DSVM) 並在其上新增資料資產。
-5. 藉由新增小組成員和設定其權限來設定**安全性控制**。
+1. 在 Azure DevOps 中，于群組的組織中建立**team 專案**。 
+  
+1. 將預設的 team 存放庫重新命名為**TeamUtilities**。
+  
+1. 在 team 專案中建立新的**TeamTemplate**存放庫。 
+  
+1. 將群組的**GroupUtilities**和**GroupProjectTemplate**存放庫的內容匯入**TeamUtilities**和**TeamTemplate**存放庫。 
+  
+1. 藉由新增小組成員和設定其許可權來設定**安全性控制**。
+  
+1. 如有需要，請建立小組資料和分析資源：
+   - 將小組特有的公用程式新增至**TeamUtilities**存放庫。 
+   - 建立**Azure 檔案儲存體**來儲存適用于整個小組的資料資產。 
+   - 將 Azure 檔案儲存體掛接至小組負責人的**資料科學虛擬機器**（DSVM），並在其中新增資料資產。
 
->[AZURE.NOTE] 我們概述在下列指示中使用 Azure DevOps 設定 TDSP 小組環境所需的步驟。 我們會指定如何使用 Azure DevOps 完成這些工作，因為這是我們在 Microsoft 中實作 TDSP 的方式。 如果針對您的群組使用另一個程式碼裝載平台，必須由小組負責人完成的工作通常不會變更。 但是完成這些工作的方式將會不同。
+下列教學課程將逐步解說詳細的步驟。
 
-## <a name="repositories-and-directories"></a>存放庫和目錄
+> [!NOTE] 
+> 本文使用 Azure DevOps 和 DSVM 來設定 TDSP 小組環境，因為這是在 Microsoft 執行 TDSP 的方式。 如果您的小組使用其他程式碼裝載或開發平臺，小組負責人工作會相同，但完成這些工作的方式可能會不同。
 
-本主題會使用存放庫和目錄的縮寫名稱。 這些名稱讓您更容易遵循存放庫和目錄之間的作業。 這個標記法 (**R** 適用於 Git 存放庫、**D** 適用於您 DSVM 上的本機目錄) 在下列各節中使用：
+## <a name="prerequisites"></a>必要條件
 
-- **R1**：Git 上的 **GroupProjectTemplate** 存放庫，由您的群組管理員在 Azure DevOps 群組伺服器上進行設定。
-- **R3**：在 Git 上，您設定的小組 **ProjectTemplate** 存放庫。
-- **R4**：在 Git 上，您設定的 **TeamUtilities** 存放庫。
-- **D1**：從 R1 複製並且複製到 D3 的本機目錄。
-- **D3**：從 R3 複製、自訂，並且複製回 R3 的本機目錄。
-- **D4**：從 R4 複製、自訂，並且複製回 R4 的本機目錄。
+本教學課程假設您的[群組管理員](group-manager-tasks.md)已設定下列資源和許可權：
 
-本教學課程中為存放庫和目錄指定的名稱，均假設您的目標是為了要在較大的資料科學群組中為您自己的小組建立個別專案。 但是還有其他選項為身為小組負責人的您開放：
+- 適用于您資料單位的 Azure DevOps**組織**
+- **GroupProjectTemplate**和**GroupUtilities**存放庫，其中填入了 Microsoft TDSP 團隊的**ProjectTemplate**和**公用程式**存放庫的內容
+- 您組織帳戶的許可權，可讓您為小組建立專案和存放庫
 
-- 整個群組可以選擇建立單一專案。 其後，所有資料科學小組的所有專案都會在這個單一專案底下。 為此，您可以指定 git 系統管理員須遵循這些指示來建立單一專案。 這個案例對於下列情形有效，例如：
-    -  沒有多個資料科學小組的小型資料科學群組 
-    -  具有多個資料科學小組的較大資料科學群組，想要使用例如群組層級短期衝刺計劃的活動來最佳化小組間共同作業。 
-- 小組可以選擇讓整個群組的單一專案下包含小組特定專案範本或小組特定公用程式。 在此情況下，小組負責人應該在相同的專案下建立專案範本存放庫和/或小組公用程式存放庫。 將這些存放庫命名為 <TeamName\>ProjectTemplate 和 <TeamName\>Utilities，例如，TeamJohnProjectTemplate 和 TeamJohnUtilities。 
+若要能夠複製存放庫，並在本機電腦或 DSVM 上修改其內容，或設定 Azure 檔案儲存體並將其掛接至您的 DSVM，您需要下列各項：
 
-在任何情況下，小組負責人都必須讓小組成員知道當他們設定及複製專案和公用程式存放庫時，要採用哪個範本和公用程式存放庫。 專案負責人應遵循[資料科學小組的專案負責人工作](project-lead-tasks.md)以建立專案存放庫，無論是在個別專案下還是單一專案下。 
+- Azure 訂用帳戶。
+- 已在您的電腦上安裝 Git。 如果您使用 DSVM，則會預先安裝 Git。 否則，請參閱[平台和工具附錄](platforms-and-tools.md#appendix)。
+- 如果您想要使用 DSVM，則會在 Azure 中建立並設定 Windows 或 Linux DSVM。 如需詳細資訊和指示，請參閱[資料科學虛擬機器檔](/azure/machine-learning/data-science-virtual-machine/)。
+- 針對安裝在您電腦上的 Windows DSVM， [Git 認證管理員（GCM）](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) 。 在*README.md*檔案中，向下卷到 [**下載並安裝**] 區段，然後選取**最新的安裝程式**。 從安裝程式頁面下載 *.exe*安裝程式，並加以執行。 
+- 針對 Linux DSVM，在您的 DSVM 上設定的 SSH 公開金鑰，並新增到 Azure DevOps 中。 如需詳細資訊和指示，請參閱[平臺和工具附錄](platforms-and-tools.md#appendix)中的**建立 SSH 公用金鑰**一節。 
 
+## <a name="create-a-team-project-and-repositories"></a>建立 Team 專案和存放庫
 
-## <a name="0-prerequisites"></a>0.必要條件
+在本節中，您會在群組的 Azure DevOps 組織中建立下列資源：
 
-完成[資料科學小組的群組管理員工作](group-manager-tasks.md)中所述，指派給您的群組管理員的工作，即可滿足必要條件。 簡單來說，就是在您開始小組負責人工作之前，必須符合下列需求： 
+- 中的**MyTeam**專案 Azure DevOps
+- **TeamTemplate**存放庫
+- **TeamUtilities**存放庫
 
-- 您的**群組 Azure DevOps Services** (或其他某些程式碼裝載平台上的群組帳戶) 已由您的群組管理員設定。
-- 您的 **GroupProjectTemplate 存放庫** (R1) 已由您計劃使用之程式碼裝載平台上的群組管理員，在群組帳戶上設定。
-- 您已經被群組管理員**授權**，為您的小組建立存放庫。
-- Git 必須安裝在您的機器上。 如果您使用資料科學虛擬機器 (DSVM)，則已預先安裝 Git，而您可以繼續作業。 否則，請參閱[平台和工具附錄](platforms-and-tools.md#appendix)。  
-- 如果您使用 **Windows DSVM**，您必須在機器上安裝 [Git 認證管理員 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) \(英文\)。 在 README.md 檔案中，向下捲動至 [下載並安裝] 區段，然後按一下 [最新的安裝程式]。 這樣會帶您到最新的安裝程式分頁。 從這裡下載 .exe 安裝程式並執行它。 
-- 如果您使用 **Linux DSVM**，請在您的 DSVM 上建立 SSH 公開金鑰，並將它新增到您的群組 Azure DevOps Services。 如需 SSH 的詳細資訊，請參閱[平台和工具附錄](platforms-and-tools.md#appendix)中的**建立 SSH 公開金鑰**一節。 
-    
-## <a name="1-create-a-project-and-repositories"></a>1.建立專案和存放庫
+本教學課程中為存放庫和目錄指定的名稱會假設您想要在較大的資料科學組織中為自己的小組建立個別的專案。 不過，整個群組可以選擇在由群組管理員或組織系統管理員所建立的單一專案下工作。 然後，所有資料科學小組都會在這個單一專案下建立存放庫。 此案例對而言可能是有效的：
+- 不具有多個資料科學小組的小型資料科學群組。 
+- 具有多個資料科學小組的較大型資料科學群組，但想要使用群組層級短期衝刺計畫，將小組間共同作業優化。 
 
-如果您使用 Azure DevOps 作為版本設定和共同作業的程式碼裝載平台，請完成這個步驟。 在本節中，您會在群組的 Azure DevOps Services 中建立三個成品：
+如果小組選擇在單一群組專案下擁有其小組專屬的存放庫，小組負責人應該使用* \<TeamName> 範本*和* \<TeamName> 公用程式*之類的名稱來建立存放庫。 例如： *TeamATemplate*和*TeamAUtilities*。 
 
-- Azure DevOps 中的 **MyTeam** 專案
-- Git 上的 **MyProjectTemplate** 存放庫 (**R3**)
-- Git 上的 **MyTeamUtilities** 存放庫 (**R4**)
+在任何情況下，小組負責人都必須讓其小組成員知道要設定和複製的範本和公用程式存放庫。 專案負責人應遵循[資料科學小組的專案負責人](project-lead-tasks.md)工作來建立專案存放庫，無論是在個別專案或單一專案下。 
 
 ### <a name="create-the-myteam-project"></a>建立 MyTeam 專案
 
-- 移至您群組的 Azure DevOps Services 首頁，位於 URL：`https://<Azure DevOps Services Name\>.visualstudio.com`。 
-- 按一下 [新增] 以建立專案。 
-
-    ![2](./media/team-lead-tasks/team-leads-2-create-new-team.png)
-
-- [建立專案] 視窗會要求您輸入專案名稱 (在此範例中為 **MyTeam**)。 請確定您選取 **Agile** 作為**程序範本**，以及選取 **Git** 作為**版本控制**。 
-
-    ![3](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
-
-- 按一下 [建立專案]。 您的專案 **MyTeam** 會在 1 分鐘內建立。 
-
-- 專案 **MyTeam** 建立之後，請按一下 [瀏覽至專案] 按鈕，以導向專案的首頁。 
-
-    ![4](./media/team-lead-tasks/team-leads-4-create-new-team-3.png)
-
-- 如果您看到 [恭喜！] 快顯視窗，請按一下 [新增程式碼] (紅色方塊中的按鈕)。 否則，請按一下 [程式碼] (黃色方塊中)。 這樣會將您導向至專案的 Git 存放庫頁面。 
-
-    ![5](./media/team-lead-tasks/team-leads-5-team-project-home.png)
-
-### <a name="create-the-myprojecttemplate-repository-r3-on-git"></a>在 Git 上建立 MyProjectTemplate 存放庫 (R3)
-
-- 在專案的 Git 存放庫頁面上，按一下存放庫名稱 **MyTeam** 旁的向下箭號，然後選取 [管理存放庫...]。
-
-    ![6](./media/team-lead-tasks/team-leads-6-rename-team-project-repo.png)
-
-- 在專案的控制台上，按一下 [版本控制] 索引標籤上的 [MyTeam]，然後選取 [重新命名存放庫...]。 
-
-    ![7](./media/team-lead-tasks/team-leads-7-rename-team-project-repo-2.png)
-
-- 在 [重新命名 MyTeam 存放庫] 視窗中，輸入存放庫的新名稱。 在此範例中為 *MyTeamProjectTemplate*。 您可以選擇類似 <您的小組名稱\>ProjectTemplate 這樣的名稱。 按一下 [重新命名] 繼續作業。
-
-    ![8](./media/team-lead-tasks/team-leads-8-rename-team-project-repo-3.png)
-
-### <a name="create-the-myteamutilities-repository-r4-on-git"></a>在 Git 上建立 MyTeamUtilities 存放庫 (R4)
-
-- 若要在專案下建立新的存放庫 <您的小組名稱\>Utilities，請在專案控制台的 [版本控制] 索引標籤上，按一下 [新增存放庫...]。  
-
-    ![9](./media/team-lead-tasks/team-leads-9-create-team-utilities.png)
-
-- 在快顯的 [建立新存放庫] 視窗中，提供這個存放庫的名稱。 在此範例中，我們將其命名為 MyTeamUtilities，在我們的標記法中它是 **R4**。 選擇類似 <您的小組名稱\>Utilities 這樣的名稱。 請確定您針對 **類型**選取 **Git**。 接著，按一下 [建立] 繼續作業。
-
-    ![10](./media/team-lead-tasks/team-leads-10-create-team-utilities-2.png)
-
-- 確認您看到兩個新的 Git 存放庫建立於專案 **MyTeam** 下。 在此範例中： 
-
-- **MyTeamProjectTemplate** (R3) 
-- **MyTeamUtilities** (R4)。
-
-    ![11](./media/team-lead-tasks/team-leads-11-two-repo-in-team.png)
-
-
-## <a name="2-seed-your-projecttemplate-and-teamutilities-repositories"></a>2.植入您的 ProjectTemplate 和 TeamUtilities 存放庫
-
-植入程序會使用本機 DSVM 上的目錄作為中繼暫存網站。 如果您需要自訂 **ProjectTemplate** 和 **TeamUtilities** 存放庫以符合一些特定小組需求，您要在下列程序的倒數第二個步驟執行這項操作。 以下是用來為資料科學小組植入 **MyTeamProjectTemplate** 和 **MyTeamUtilities** 存放庫內容的步驟摘要。 個別步驟對應至植入程序中的各小節：
-
-- 將群組存放庫複製到本機目錄：小組 R1 - 複製到 -> 本機 D1
-- 將小組存放庫複製到本機目錄：小組 R3 & R4 - 複製到 -> 本機 D3 & D4
-- 將群組專案範本內容複製到本機小組資料夾：D1 - 內容複製到 -> D3
-- (選擇性) 自訂本機 D3 & D4
-- 將本機目錄內容推送至小組存放庫：D3 & D4 - 內容新增到 -> 小組 R3 & R4
-
-
-### <a name="initialize-the-team-repositories"></a>初始化小組存放庫
-
-在此步驟中，您會從群組專案範本存放庫初始化專案範本存放庫：
-
-- 來自 **GroupProjectTemplate** (**R1**) 存放庫的 **MyTeamProjectTemplate** 存放庫 (**R3**)
-
-
-### <a name="clone-group-repositories-into-local-directories"></a>將群組存放庫複製到本機目錄
-
-若要開始此程序：
-
-- 在您的本機電腦上建立目錄：
-    - 若是 **Windows**：**C:\GitRepos\GroupCommon** 和 **C:\GitRepos\MyTeam**
-    - 若是 **Linux**：在您的主目錄上的 **GitRepos\GroupCommon** 和 **GitRepos\MyTeam** 
-- 將目錄變更為 **GitRepos\GroupCommon**。
-- 視需要在本機電腦作業系統上執行下列命令。
-
-**Windows**
-
-    git clone https://<Your Azure DevOps Services name>.visualstudio.com/GroupCommon/_git/GroupProjectTemplate
-    
-
-![12](./media/team-lead-tasks/team-leads-12-create-two-group-repos.png)
-
-**Linux**
-    
-    git clone ssh://<Your Azure DevOps Services name>@<Your Azure DevOps Services name>.visualstudio.com:22/GroupCommon/_git/GroupProjectTemplate
-    
-    
-![13](./media/team-lead-tasks/team-leads-13-clone_two_group_repos_linux.png)
-
-這些命令會將群組 Azure DevOps Services 上的 **GroupProjectTemplate** (R1) 存放庫，複製到本機電腦上 **GitRepos\GroupCommon** 中的本機目錄。 在複製之後，目錄 **GroupProjectTemplate** (D1) 會在目錄 **GitRepos\GroupCommon** 中建立。 在此，我們假設您的群組管理員已建立專案 **GroupCommon**，且 **GroupProjectTemplate** 存放庫位於此專案下。 
-
-
-### <a name="clone-your-team-repositories-into-local-directories"></a>將小組存放庫複製到本機目錄
-
-這些命令會將群組 Azure DevOps Services 上的專案 **MyTeam** 下的 **MyTeamProjectTemplate** (R3) 和 **MyTeamUtilities** (R4) 存放庫，複製到本機電腦上 **GitRepos\MyTeam** 中的 **MyTeamProjectTemplate** (D3) 和 **MyTeamUtilities** (D4) 目錄。 
-
-- 將目錄變更為 **GitRepos\MyTeam**
-- 視需要在本機電腦作業系統上執行下列命令。 
-
-**Windows**
-
-    git clone https://<Your Azure DevOps Services name>.visualstudio.com/<Your Team Name>/_git/MyTeamProjectTemplate
-    git clone https://<Your Azure DevOps Services name>.visualstudio.com/<Your Team Name>/_git/MyTeamUtilities
-
-![14](./media/team-lead-tasks/team-leads-14-clone_two_empty_team_repos.png)
-        
-**Linux**
-    
-    git clone ssh://<Your Azure DevOps Services name>@<Your Azure DevOps Services name>.visualstudio.com:22/<Your Team Name>/_git/MyTeamProjectTemplate
-    git clone ssh://<Your Azure DevOps Services name>@<Your Azure DevOps Services name>.visualstudio.com:22/<Your Team Name>/_git/MyTeamUtilities
-    
-![15](./media/team-lead-tasks/team-leads-15-clone_two_empty_team_repos_linux.png)
-
-在複製之後，兩個目錄 **MyTeamProjectTemplate** (D3) 和 **MyTeamUtilities** (D4) 會在 **GitRepos\MyTeam** 會在目錄中建立。 在此，我們假設您已將專案範本和公用程式存放庫命名為 **MyTeamProjectTemplate** 和 **MyTeamUtilities**。 
-
-### <a name="copy-the-group-project-template-content-to-the-local-project-template-directory"></a>將群組專案範本內容複製到本機專案範本目錄
-
-若要將本機 **GroupProjectTemplate** (D1) 資料夾的內容複製到本機 **MyTeamProjectTemplate** (D3)，請執行下列其中一個殼層指令碼： 
-
-#### <a name="from-the-powershell-command-line-for-windows"></a>從適用於 Windows 的 PowerShell 命令列       
-
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_win.ps1" -outfile "tdsp_local_copy_win.ps1"
-    .\tdsp_local_copy_win.ps1 2
-
-    
-![16](./media/team-lead-tasks/team-leads-16-local_copy_team_lead_new.png)
-
-#### <a name="from-the-linux-shell-for-the-linux-dsvm"></a>從適用於 **Linux DSVM** 的 Linux 殼層
-    
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_linux.sh"
-    bash tdsp_local_copy_linux.sh 2
-    
-![17](./media/team-lead-tasks/team-leads-17-local-copy-team-lead-linux-new.png)
-
-指令碼排除 .git 目錄的內容。 指令碼會提示您提供來源目錄 D1 和目的地目錄 D3 的**完整路徑**。
-        
-
-### <a name="customize-your-project-template-or-team-utilities-optional"></a>自訂您的專案範本或小組公用程式 (選擇性)
-
-視需要在設定程序的這個階段，自訂 **MyTeamProjectTemplate** (D3) 和 **MyTeamUtilities** (D4)。 
-
-- 如果您想要自訂 D3 的內容以符合小組的特定需求，您可以修改範本文件或變更目錄結構。
-
-- 如果您的小組已開發一些您想要與整個小組共用的公用程式，請將這些公用程式複製並貼上到目錄 D4。 
-
-
-### <a name="push-local-directory-content-to-team-repositories"></a>將本機目錄內容推送至小組存放庫
-
-若要將 (選擇性自訂) 本機目錄 D3 和 D4 的內容新增至小組存放庫 R3 和 R4，請從 Windows PowerShell 主控台或 Linux 殼層執行下列 git bash 命令。 從 **GitRepos\MyTeam\MyTeamProjectTemplate** 目錄執行命令。
-
-    git status
-    git add .
-    git commit -m"push from DSVM"
-    git push
-    
-![18](./media/team-lead-tasks/team-leads-18-push-to-group-server-2.png)
-
-在此指令碼執行時，群組 Azure DevOps Services 的 MyTeamProjectTemplate 存放庫會以幾近即時的方式同步其檔案。
-
-![19](./media/team-lead-tasks/team-leads-19-push-to-group-server-showed-up.png)
-
-現在從 **GitRepos\MyTeam\MyTeamUtilities** 目錄執行相同一組的四個 git 命令。 
-
-> [AZURE.NOTE]如果這是第一次認可 Git 存放庫，您必須在執行 `git commit` 命令之前，設定全域參數 user.name 和 user.email。 執行下列兩個命令：
-        
-    git config --global user.name <your name>
-    git config --global user.email <your email address>
- 
-> 如果您認可多個 Git 存放庫，請在認可各個存放庫時使用相同名稱和電子郵件地址。 使用相同名稱和電子郵件地址，會讓您日後建置 PowerBI 儀表板以追蹤多個存放庫上的 Git 活動時，更為便利。
-
-![20](./media/team-lead-tasks/team-leads-20-git-config-name.png)
-
-
-## <a name="3-create-team-data-and-analytics-resources-optional"></a>3.建立小組資料與分析資源 (選擇性)
-
-與您的整個小組共用資料與分析資源，有效能和成本的優點：小組成員可以在共用的資源上執行其專案、節省預算，以及更有效率地共同作業。 在本節中，我們提供了有關如何建立 Azure 檔案儲存體的指示。 在下一節中，我們會提供如何將 Azure 檔案儲存體掛接至本機電腦的指示。 如需有關共用其他資源，例如 Azure 資料科學虛擬機器、Azure HDInsight Spark 叢集的詳細資訊，請參閱[平台和工具](platforms-and-tools.md)。 本主題提供從資料科學觀點選取適合您需求的資源的指引，產品分頁的連結，以及我們已發佈之其他相關且有用的教學課程。
-
->[AZURE.NOTE] 若要避免資料在資料中心之間傳輸，因為這麼做既緩慢又耗費成本，請確定資源群組、儲存體帳戶和 Azure VM (例如，DSVM) 是在相同的 Azure 資料中心。 
-
-執行下列指令碼，為您的小組建立 Azure 檔案儲存體。 小組的 Azure 檔案儲存體可以用來儲存對整個小組而言很實用的資料資產。 指令碼會提示您 Azure 帳戶和訂用帳戶資訊，讓這些認證準備就緒以便輸入。 
-
-### <a name="create-azure-file-storage-with-powershell-from-windows"></a>從 Windows 使用 PowerShell 建立 Azure 檔案儲存體
-
-從 PowerShell 命令列執行此指令碼：
-
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/CreateFileShare.ps1" -outfile "CreateFileShare.ps1"
-    .\CreateFileShare.ps1
-
-![21](./media/team-lead-tasks/team-leads-21-create-fileshare-win.png)   
-
-當系統提示時，登入您的 Microsoft Azure 帳戶：
-
-![22](./media/team-lead-tasks/team-leads-22-file-create-s1.png)
-
-選取您要使用的 Azure 訂用帳戶：
-
-![23](./media/team-lead-tasks/team-leads-23-file-create-s2.png)
-
-選取要使用儲存體帳戶，或是在選取的訂用帳戶底下建立一個新帳戶：
-
-![24](./media/team-lead-tasks/team-leads-24-file-create-s3.png)
-
-輸入要建立之 Azure 檔案儲存體的名稱。 只接受小寫字元、數字和 -：
-
-![25](./media/team-lead-tasks/team-leads-25-file-create-s4.png)
-
-為了協助在建立這個儲存體之後掛接及共用，將 Azure 檔案儲存體資訊儲存到文字檔並記下其位置路徑。 您在下一個章節特別需要此檔案，以將您的 Azure 檔案儲存體掛接至 Azure 虛擬機器。 
-
-將此文字檔簽入 ProjectTemplate 存放庫中，是很好的作法。 我們建議您放入目錄 **Docs\DataDictionaries**。 因此，這個資料資產可以被小組中的所有專案存取。 
-
-![26](./media/team-lead-tasks/team-leads-26-file-create-s5.png)
-
-
-### <a name="create-azure-file-storage-with-a-linux-script"></a>使用 Linux 指令碼建立 Azure 檔案儲存體
-
-從 Linux 殼層中執行此指令碼：
-
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/CreateFileShare.sh"
-    bash CreateFileShare.sh
-
-遵循此畫面上的指示，登入 Microsoft Azure 帳戶：
-
-![27](./media/team-lead-tasks/team-leads-27-file-create-linux-s1.png)
-
-選取您要使用的 Azure 訂用帳戶：
-
-![28](./media/team-lead-tasks/team-leads-28-file-create-linux-s2.png)
-
-選取要使用儲存體帳戶，或是在選取的訂用帳戶底下建立一個新帳戶：
-
-![29](./media/team-lead-tasks/team-leads-29-file-create-linux-s3.png)
-
-輸入要建立之 Azure 檔案儲存體的名稱，只接受小寫字元、數字和 -：
-
-![30](./media/team-lead-tasks/team-leads-30-file-create-linux-s4.png)
-
-為了協助在建立這個儲存體之後進行存取，將 Azure 檔案儲存體資訊儲存到文字檔並記下其位置路徑。 您在下一個章節特別需要此檔案，以將您的 Azure 檔案儲存體掛接至 Azure 虛擬機器。
-
-將此文字檔簽入 ProjectTemplate 存放庫中，是很好的作法。 我們建議您放入目錄 **Docs\DataDictionaries**。 因此，這個資料資產可以被小組中的所有專案存取。 
-
-![31](./media/team-lead-tasks/team-leads-31-file-create-linux-s5.png)
-
-
-## <a name="4-mount-azure-file-storage-optional"></a>4.掛接 Azure 檔案儲存體 (選擇性)
-
-在成功建立 Azure 檔案儲存體之後，可以使用下列其中一個 PowerShell 或 Linux 指令碼，將它掛接至您的本機電腦。
-
-### <a name="mount-azure-file-storage-with-powershell-from-windows"></a>從 Windows 使用 PowerShell 掛接 Azure 檔案儲存體
-
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/AttachFileShare.ps1" -outfile "AttachFileShare.ps1"
-    .\AttachFileShare.ps1
-    
-如果您尚未登入，系統會要求您先登入。 
-
-當系統詢問您是否有 Azure 檔案儲存體資訊檔案時，按一下 **Enter** 鍵或 **y** 鍵以繼續，然後輸入您在上一個步驟中建立之檔案的 ***完整路徑和名稱**。 掛接 Azure 檔案儲存體的資訊會直接從該檔案讀取，您已經準備就緒可以進行下一個步驟。
-
-![32](./media/team-lead-tasks/team-leads-32-attach-s1.png)
-
-> [AZURE.NOTE] 如果您沒有包含 Azure 檔案儲存體資訊的檔案，從鍵盤輸入資訊的步驟會在此章節結尾提供。
-
-然後，系統會要求您輸入要新增至虛擬機器之磁碟機的名稱。 現有磁碟機名稱的清單會列印在畫面上。 您應該提供清單上沒有的磁碟機名稱。
-
-![33](./media/team-lead-tasks/team-leads-33-attach-s2.png)
-
-確認新的 F 磁碟機已成功掛接到您的電腦。
-
-![34](./media/team-lead-tasks/team-leads-34-attach-s3.png)
-
-**如何以手動方式輸入 Azure 檔案儲存體資訊：** 如果您的 Azure 檔案儲存體資訊不在文字檔中，可以遵循以下畫面的指示，輸入必要的訂用帳戶、儲存體帳戶，及 Azure 檔案儲存體資訊：
-
-![35](./media/team-lead-tasks/team-leads-35-attach-s4.png)
-
-輸入您的 Azure 訂用帳戶名稱、選取建立 Azure 檔案儲存體所在的儲存體帳戶，以及輸入 Azure 檔案儲存體名稱：
-
-![36](./media/team-lead-tasks/team-leads-36-attach-s5.png)
-
-### <a name="mount-azure-file-storage-with-a-linux-script"></a>使用 Linux 指令碼掛接 Azure 檔案儲存體
-
-    wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/AttachFileShare.sh"
-    bash AttachFileShare.sh
-
-![37](./media/team-lead-tasks/team-leads-37-attach-s1-linux.png)
-
-如果您尚未登入，系統會要求您先登入。 
-
-當系統詢問您是否有 Azure 檔案儲存體資訊檔案時，按一下 **Enter** 鍵或 **y** 鍵以繼續，然後輸入您在上一個步驟中建立之檔案的 ***完整路徑和名稱**。 掛接 Azure 檔案儲存體的資訊會直接從該檔案讀取，您已經準備就緒可以進行下一個步驟。
-
-![38](./media/team-lead-tasks/team-leads-38-attach-s2-linux.png)
-
-然後，系統會要求您輸入要新增至虛擬機器之磁碟機的名稱。 現有磁碟機名稱的清單會列印在畫面上。 您應該提供清單上沒有的磁碟機名稱。
-
-![39](./media/team-lead-tasks/team-leads-39-attach-s3-linux.png)
-
-確認新的 F 磁碟機已成功掛接到您的電腦。
-
-![40](./media/team-lead-tasks/team-leads-40-attach-s4-linux.png)
-
-**如何以手動方式輸入 Azure 檔案儲存體資訊：** 如果您的 Azure 檔案儲存體資訊不在文字檔中，可以遵循以下畫面的指示，輸入必要的訂用帳戶、儲存體帳戶，及 Azure 檔案儲存體資訊：
-
-- 輸入 **n**。
-- 選取訂用帳戶名稱的索引，該訂用帳戶是在上一個步驟中建立 Azure 檔案儲存體的位置：
-
-    ![41](./media/team-lead-tasks/team-leads-41-attach-s5-linux.png)
-
-- 選取訂用帳戶底下的儲存體帳戶，並且輸入 Azure 檔案儲存體名稱：
-
-    ![42](./media/team-lead-tasks/team-leads-42-attach-s6-linux.png)
-
-- 輸入要新增至電腦的磁碟機名稱，該名稱應該與現有的任何磁碟機名稱有所區隔：
-
-    ![43](./media/team-lead-tasks/team-leads-43-attach-s7-linux.png)
-
-
-## <a name="5-set-up-security-control-policy"></a>5.設定安全性控制原則 
-
-群組 Azure DevOps Services 首頁的右上角，按一下您的使用者名稱旁邊的**齒輪圖示**，然後選取 [安全性] 索引標籤。您可以在這裡將成員新增至您的小組，並且授與各種權限。
-
-![44](./media/team-lead-tasks/team-leads-44-add-team-members.png)
+若要為您的小組建立個別的專案：
+
+1. 在您的網頁瀏覽器中，移至您群組的 Azure DevOps 組織首頁，網址為*HTTPs： \/ / \<server name> / \<organization name> *，然後選取 [**新增專案**]。 
+   
+   ![選取 [新增專案]](./media/team-lead-tasks/team-leads-2-create-new-team.png)
+   
+1. 在 [**建立專案**] 對話方塊中，于 [**專案名稱**] 下輸入您的小組名稱（例如*MyTeam*），然後選取 [ **Advanced**]。 
+   
+1. 在 [**版本控制**] 底下，選取 [ **Git**]，然後在 [**工作專案進程**] 下選取 [ **Agile**]。 然後選取 [建立]。 
+   
+   ![建立專案](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
+   
+[Team 專案**摘要**] 頁面隨即開啟，頁面 URL 為*HTTPs： \/ / \<server name> / \<organization name> / \<team name> *。
+
+### <a name="rename-the-myteam-default-repository-to-teamutilities"></a>將 MyTeam 預設存放庫重新命名為 TeamUtilities
+
+1. 在 [ **MyTeam**專案**摘要**] 頁面的 [**您要以何種服務開頭？**] 底下，選取 [**存放庫**]。 
+   
+   ![選取存放庫](./media/team-lead-tasks/team-leads-6-rename-team-project-repo.png)
+   
+1. 在 [ **MyTeam**存放庫] 頁面上，選取頁面頂端的 [ **MyTeam**儲存機制]，然後從下拉式清單中選取 [**管理存放庫**]。 
+   
+   ![選取 [管理存放庫]](./media/team-lead-tasks/team-leads-7-rename-team-project-repo-2.png)
+1. 在 [**專案設定**] 頁面上，選取 [ **MyTeam** ] 存放庫旁的 [ **...** ]，然後選取 [**重新命名存放庫**]。 
+   
+   ![選取 [重新命名存放庫]](./media/team-lead-tasks/team-leads-8-rename-team-project-repo-3.png)
+   
+1. 在 [**重新命名 MyTeam 存放庫**] 快顯視窗中，輸入*TeamUtilities*，然後選取 [**重新命名**]。 
+
+### <a name="create-the-teamtemplate-repository"></a>建立 TeamTemplate 存放庫
+
+1. 在 [**專案設定**] 頁面上，選取 [**新增存放庫]。** 
+   
+   ![選取新的存放庫](./media/team-lead-tasks/team-leads-9-create-team-utilities.png)
+   
+   或者，從 [ **MyTeam**專案**摘要**] 頁面的左側導覽中選取 [**存放庫**]，選取頁面頂端的 [存放庫]，然後從下拉式清單中選取 [**新增存放庫**]。
+   
+1. 在 [**建立新**的存放庫] 對話方塊中，確認已在 [**類型**] 底下選取 [ **Git** ]。 在 [存放**庫名稱**] 底下輸入*TeamTemplate* ，然後選取 [**建立**]。
+   
+   ![建立存放庫](./media/team-lead-tasks/team-leads-10-create-team-utilities-2.png)
+   
+1. 確認您可以在 [專案設定] 頁面上看到兩個存放庫**TeamUtilities**和**TeamTemplate** 。 
+   
+   ![兩個小組存放庫](./media/team-lead-tasks/team-leads-11-two-repo-in-team.png)
+
+### <a name="import-the-contents-of-the-group-common-repositories"></a>匯入群組通用存放庫的內容
+
+若要使用群組管理員所設定的群組通用存放庫內容填入您的小組存放庫：
+
+1. 從您的**MyTeam**專案首頁中，選取左側導覽中的 [**存放庫**]。 如果您收到一則訊息，指出找不到**MyTeam**範本，請選取中的連結 **，否則請流覽至您的預設 TeamTemplate 存放庫。** 
+   
+   預設的**TeamTemplate**存放庫隨即開啟。 
+   
+1. 在 [ **TeamTemplate 是空**的] 頁面上，選取 [匯**入**]。 
+   
+   ![選取 [匯入]](./media/team-lead-tasks/import-repo.png)
+   
+1. 在 [匯**入 git 存放庫**] 對話方塊中，選取 [ **Git** ] 作為 [**來源類型**]，然後在 [**複製 URL**] 底下輸入群組通用範本存放庫的 URL。 URL 為*HTTPs： \/ / \<server name> / \<organization name> /_git/ \<repository name> *。 例如： *HTTPs： \/ /dev.azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*。 
+   
+1. 選取 [匯入]。 群組範本存放庫的內容會匯入至您的小組範本存放庫。 
+   
+   ![匯入群組通用範本存放庫](./media/team-lead-tasks/import-repo-2.png)
+   
+1. 在專案的 [**存放庫**] 頁面頂端，下拉並選取 [ **TeamUtilities** ] 存放庫。
+   
+1. 重複匯入程式，將您的群組的內容（例如*GroupUtilities*）匯入您的**TeamUtilities**存放庫。 
+   
+您兩個 team 存放庫中的每個現在都包含對應的群組一般存放庫中的檔案。 
+
+### <a name="customize-the-contents-of-the-team-repositories"></a>自訂小組存放庫的內容
+
+如果您想要自訂小組存放庫的內容，以符合小組的特定需求，您可以立即這麼做。 您可以修改檔案、變更目錄結構，或新增檔案和資料夾。
+
+若要直接在 Azure DevOps 中修改、上傳或建立檔案或資料夾：
+
+1. 在 [ **MyTeam**專案**摘要**] 頁面上，選取 [**存放庫**]。 
+   
+1. 在頁面頂端，選取您想要自訂的存放庫。
+
+1. 在存放庫目錄結構中，流覽至您要變更的資料夾或檔案。 
+   
+   - 若要建立新的資料夾或檔案，請選取 [**新增**] 旁邊的箭號。 
+     
+     ![建立新檔案](./media/team-lead-tasks/new-file.png)
+     
+   - 若要上傳檔案，請選取 **[上傳**檔案]。 
+     
+     ![上傳檔案](./media/team-lead-tasks/upload-files.png)
+     
+   - 若要編輯現有的檔案，請流覽至該檔案，然後選取 [**編輯**]。 
+     
+     ![編輯檔案](./media/team-lead-tasks/edit-file.png)
+     
+1. 新增或編輯檔案之後，請選取 [**認可**]。
+   
+   ![認可變更](./media/team-lead-tasks/commit.png)
+
+若要在本機電腦或 DSVM 上使用存放庫，您必須先*將存放庫複製或複製*到本機電腦，然後再認可並推送您的變更到共用的小組存放庫， 
+
+若要複製存放庫：
+
+1. 在 [ **MyTeam**專案**摘要**] 頁面上，選取 [**存放庫**]，然後在頁面頂端選取您要複製的存放庫。
+   
+1. 在 [存放庫] 頁面上，選取右上方的 [**複製**]。
+   
+1. 在 [**複製存放庫**] 對話方塊的 [**命令列**] 底下 **，針對 [** ssh 連線] 選取 [ **HTTPS** ]，並將複製 URL 複製到剪貼簿。
+   
+   ![複製複本 URL](./media/team-lead-tasks/clone.png)
+   
+1. 在您的本機電腦上，建立下列目錄：
+   
+   - 針對 Windows： **C:\GitRepos\MyTeam**
+   - 針對 Linux， **$home/gitrepos/myteam** 
+   
+1. 變更至您所建立的目錄。
+   
+1. 在 Git Bash 中，執行命令 `git clone <clone URL>` ，其中 \<clone URL> 是您從 [複製] 對話方塊**Clone**複製的 URL。
+   
+   例如，使用下列其中一個命令，將**TeamUtilities**存放庫複製到本機電腦上的*MyTeam*目錄。 
+   
+   **HTTPS 連線：**
+   
+   ```bash
+   git clone https://DataScienceUnit@dev.azure.com/DataScienceUnit/MyTeam/_git/TeamUtilities
+   ```
+   
+   **SSH 連線：**
+   
+   ```bash
+   git clone git@ssh.dev.azure.com:v3/DataScienceUnit/MyTeam/TeamUtilities
+   ```
+
+在存放庫的本機複本中進行任何變更之後，請認可並將變更推送至共用的小組存放庫。 
+
+從您的本機**GitRepos\MyTeam\TeamTemplate**或**GitRepos\MyTeam\TeamUtilities**目錄執行下列 Git Bash 命令。
+
+```bash
+git add .
+git commit -m "push from local"
+git push
+```
+
+> [!NOTE]
+> 如果這是您第一次認可至 Git 存放庫，您可能需要在執行命令之前，先設定全域參數*user.name*和*user. email* `git commit` 。 執行下列兩個命令：
+> 
+> `git config --global user.name <your name>`
+> 
+> `git config --global user.email <your email address>`
+> 
+> 如果您要認可數個 Git 存放庫，請針對所有儲存機制使用相同的名稱和電子郵件地址。 建立 Power BI 儀表板以追蹤多個存放庫中的 Git 活動時，使用相同的名稱和電子郵件地址會很方便。
+
+## <a name="add-team-members-and-configure-permissions"></a>新增小組成員及設定許可權
+
+若要將成員加入至小組：
+
+1. 在 Azure DevOps 中，從**MyTeam**專案首頁，從左側導覽中選取 [**專案設定**]。 
+   
+1. 從 [**專案設定**] [左側流覽] 選取 [**小組**]，然後在 [**小組**] 頁面上選取 [ **MyTeam] 小組**。 
+   
+   ![設定小組](./media/team-lead-tasks/teams.png)
+   
+1. 在 [**小組設定檔**] 頁面上，選取 [**新增**]。
+   
+   ![新增至 MyTeam 小組](./media/team-lead-tasks/add-to-team.png)
+   
+1. 在 [**新增使用者和群組**] 對話方塊中，搜尋並選取要新增至群組的成員，然後選取 [**儲存變更**]。 
+   
+   ![新增使用者和群組](./media/team-lead-tasks/add-users.png)
+   
+
+若要設定小組成員的許可權：
+
+1. 從 [**專案設定**] 左側導覽中，選取 [**許可權**]。 
+   
+1. 在 [**許可權**] 頁面上，選取您想要新增成員的群組。 
+   
+1. 在該群組的頁面上，選取 [**成員**]，然後選取 [**新增**]。 
+   
+1. 在 [**邀請成員**] 快顯視窗中，搜尋並選取要新增至群組的成員，然後選取 [**儲存**]。 
+   
+   ![授與許可權給成員](./media/team-lead-tasks/grant-permissions.png)
+
+## <a name="create-team-data-and-analytics-resources"></a>建立小組資料與分析資源
+
+此步驟是選擇性的，但與您的整個小組共用資料和分析資源有其效能和成本效益。 小組成員可以在共用資源上執行其專案、節省預算，以及更有效率地共同作業。 您可以建立 Azure 檔案儲存體，並將它裝載在您的 DSVM 上，以與小組成員共用。 
+
+如需與您的小組（例如 Azure HDInsight Spark 叢集）共用其他資源的詳細資訊，請參閱[平臺和工具](platforms-and-tools.md)。 該主題提供從資料科學觀點來看，針對您的需求選取適當資源的指引，以及產品頁面的連結，以及其他相關且實用的教學課程。
+
+>[!NOTE]
+> 若要避免跨資料中心傳輸資料，這可能會變慢且成本高昂，請確定您的 Azure 資源群組、儲存體帳戶和 DSVM 全都裝載于相同的 Azure 區域中。 
+
+### <a name="create-azure-file-storage"></a>建立 Azure 檔案儲存體
+
+1. 執行下列腳本，為適用于整個小組的資料資產建立 Azure 檔案儲存體。 此腳本會提示您輸入您的 Azure 訂用帳戶資訊，因此請準備好進入。 
+
+   - 在 Windows 電腦上，從 PowerShell 命令提示字元執行腳本：
+     
+     ```powershell
+     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/CreateFileShare.ps1" -outfile "CreateFileShare.ps1"
+     .\CreateFileShare.ps1
+     ```
+     
+   - 在 Linux 機器上，從 Linux shell 執行腳本：
+     
+     ```shell
+     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/CreateFileShare.sh"
+     bash CreateFileShare.sh
+     ```
+   
+1. 出現提示時，登入您的 Microsoft Azure 帳戶，然後選取您想要使用的訂用帳戶。
+   
+1. 選取要使用的儲存體帳戶，或在您選取的訂用帳戶底下建立一個新帳戶。 您可以針對 Azure 檔案儲存體名稱使用小寫字元、數位和連字號。
+   
+1. 若要協助掛接和共用存放裝置，請按 Enter 或輸入*Y* ，將 Azure 檔案儲存體資訊儲存到您目前目錄中的文字檔。 您可以將此文字檔簽入**TeamTemplate**存放庫（最好是在**Docs\DataDictionaries**下），讓您小組中的所有專案都可以存取它。 在下一節中，您也需要檔案資訊，將 Azure 檔案儲存體掛接至您的 Azure DSVM。 
+   
+### <a name="mount-azure-file-storage-on-your-local-machine-or-dsvm"></a>在您的本機電腦或 DSVM 上掛接 Azure 檔案儲存體
+
+1. 若要將 Azure 檔案儲存體掛接至本機電腦或 DSVM，請使用下列腳本。
+   
+   - 在 Windows 電腦上，從 PowerShell 命令提示字元執行腳本：
+     
+     ```powershell
+     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/AttachFileShare.ps1" -outfile "AttachFileShare.ps1"
+     .\AttachFileShare.ps1
+     ```
+     
+   - 在 Linux 機器上，從 Linux shell 執行腳本：
+     
+     ```shell
+     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/AttachFileShare.sh"
+     bash AttachFileShare.sh
+     ```
+   
+1. 如果您在上一個步驟中儲存了 Azure 檔案儲存體資訊檔案，請按 Enter 或輸入*Y*繼續。 輸入您所建立之檔案的完整路徑和名稱。 
+   
+   如果您沒有 Azure 檔案儲存體資訊檔案，請輸入*n*，並遵循指示來輸入您的訂用帳戶、azure 儲存體帳戶和 azure 檔案儲存體資訊。
+   
+1. 輸入要在其中掛接檔案共用的本機或 TDSP 磁片磁碟機名稱。 畫面會顯示現有磁片磁碟機名稱的清單。 提供尚未存在的磁片磁碟機名稱。
+   
+1. 確認新的磁片磁碟機和存放裝置已成功掛接在您的電腦上。
 
 ## <a name="next-steps"></a>後續步驟
 
-以下是 Team 資料科學程序定義之角色和工作更詳細描述的連結：
+以下是小組資料科學程式所定義之其他角色和工作的詳細描述連結：
 
 - [資料科學小組的群組管理員工作](group-manager-tasks.md)
-- [資料科學小組的小組負責人工作](team-lead-tasks.md)
 - [資料科學小組的專案負責人工作](project-lead-tasks.md)
-- [資料科學小組的專案個別參與者](project-ic-tasks.md)
+- [資料科學小組的專案個別參與者工作](project-ic-tasks.md)

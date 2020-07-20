@@ -1,46 +1,44 @@
 ---
 title: 加入資料列：模組參考
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure Machine Learning 服務中加入資料列模組串連兩個資料集。
+titleSuffix: Azure Machine Learning
+description: 瞭解如何使用 Azure Machine Learning 中的 [加入資料列] 模組來串連兩個資料集。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: ffd693ea3452ef48dc3e05e7bc4a6d3988a487b0
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
-ms.translationtype: MT
+author: likebupt
+ms.author: keli19
+ms.date: 02/22/2020
+ms.openlocfilehash: cd9b5f8f182c4deab746d2c41e516a6ac23fb7aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65028751"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79477726"
 ---
-# <a name="add-rows-module"></a>新增資料列的模組
+# <a name="add-rows-module"></a>新增資料列模組
 
-本文說明 Azure Machine Learning 服務的視覺化介面 （預覽） 的模組。
+本文說明 Azure Machine Learning 設計工具 (預覽) 中的模組。
 
-您可以使用此模組來串連兩個資料集。 在串連的第二個資料集的資料列會加入至第一個資料集的結尾。  
+使用此模組來串連兩個資料集。 在串連中，第二個資料集的資料列會加入至第一個資料集的結尾。  
   
-串連的資料列是在下列情況很有用：  
+資料列串連在如下的案例中很有用：  
   
-+ 您已經產生一系列評估統計資料，和您想要將它們結合成一個資料表，以更輕鬆的報告。  
++ 您已經產生一系列評估統計資料，想要將它們結合成一個資料表，以更輕鬆地產生報告。  
   
-+ 您已使用不同的資料集，以及您想要合併的資料集來建立最終資料集。  
++ 您已使用不同的資料集，想要合併資料集來建立最終資料集。  
 
-## <a name="how-to-use-add-rows"></a>如何使用 加入資料列  
+## <a name="how-to-use-add-rows"></a>如何使用加入資料列  
 
-若要串連兩個資料集的資料列，資料列必須有完全相同的結構描述。 這表示，相同數目的資料行，而且相同的資料行中的資料類型。
+若要串連兩個資料集中的資料列，資料列必須有完全相同的架構。 這表示資料行中的資料行數目和相同的資料類型。
 
-1.  拖曳**加入資料列**到您的實驗的模組，您可以找到下**Data Transformation**，請在**操控**類別目錄。
+1.  將 [**加入資料列**] 模組拖曳至管線中，您可以在 [**資料轉換**] 下找到它。
 
-2. 兩個輸入連接埠來連接資料集。 您想要附加的資料集應該連接到第二個 （右） 的連接埠。 
+2. 連接至兩個輸入連接埠的資料集。 您想要附加的資料集應該連接到第二個 (右) 的連接埠。 
   
-3.  執行實驗。 輸出資料集中的資料列數目應該等於兩個輸入資料集的資料列的總和。
+3.  提交管線。 輸出資料集中的資料列數目應該等於這兩個輸入資料集的資料列總和。
 
-    如果您將加入的兩個輸入的相同資料集**加入資料列**重複模組，將資料集。 
+    如果您將相同的資料集加入至 [**加入資料列**] 模組的兩個輸入，則資料集會重複。 
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱[可用的模組集](module-reference.md)Azure Machine Learning 服務。 
+請參閱 Azure Machine Learning 的[可用模組集](module-reference.md)。 

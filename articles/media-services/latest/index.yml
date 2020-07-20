@@ -1,128 +1,117 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure 媒體服務文件 v3 文件
+### YamlMime:Landing
+title: Azure 媒體服務 v3 雲端式平台文件
+summary: 了解如何使用媒體服務 v3 來編碼和封裝內容、串流隨選影片、即時廣播及分析您的影片。 教學課程、API 參考和其他文件會示範如何安全地提供可針對數百萬位使用者調整的隨選和即時視訊或音訊串流。
 metadata:
-  document_id: null
-  title: Azure 媒體服務 v3 文件 - 教學課程和 API 參考 | Microsoft Docs
-  description: 了解如何使用媒體服務 v3 來編碼和封裝內容、串流隨選影片、即時廣播及分析您的影片。 教學課程、API 參考和其他文件會示範如何安全地提供可針對數百萬位使用者調整的隨選和即時視訊或音訊串流。
+  title: Azure 媒體服務 v3 雲端式平台文件
+  description: 了解如何使用媒體服務 v3 來編碼和封裝內容、串流隨選影片、即時廣播及分析您的影片。
   services: media-services
-  author: Juliako
-  manager: femila
   ms.service: media-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: 
   ms.topic: landing-page
-  ms.date: 04/12/2019
+  ms.collection: collection
+  author: Juliako
   ms.author: juliako
-abstract:
-  description: '了解如何使用媒體服務 v3 來編碼和封裝內容、串流隨選影片、即時廣播及分析您的影片。 教學課程、API 參考和其他文件會示範如何安全地提供可針對數百萬位使用者調整的隨選和即時視訊或音訊串流。 <br/> SDK 是以<a href="https://aka.ms/ams-v3-rest-sdk">媒體服務 v3 OpenAPI 規格 (Swagger)</a>為根據。'
-sections:
-  - title: null
-    items:
-      - type: list
-        style: cards
-        className: cardImageOuter
-        items:
-          - title: 了解概念
-            html: '<p><a href="https://docs.microsoft.com/azure/media-services/latest/storage-account-concept">雲端上傳和儲存體</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/encoding-concept">編碼</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/reacting-to-media-services-events">監視</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept">媒體分析</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/dynamic-packaging-overview">封裝</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/content-protection-overview">保護</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/live-streaming-overview">即時資料流</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/use-azure-media-player">播放機用戶端</a></p>'
-          - title: 使用 v3 API 進行開發
-            html: '<p><a href="https://docs.microsoft.com/azure/media-services/latest/media-rest-apis-with-postman">以 REST 開發</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/developers-guide">以 SDK 開發</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-java-howto">使用 Java 進行連線</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-dotnet-howto">使用 .NET 進行連線</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-nodejs-howto">使用 Node.js 進行連線</a></p>'
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何建立媒體服務帳戶、開始編碼、封裝和串流您的影片：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/dotnet.svg
-            text: 使用 .NET 編碼和串流
-            href: /azure/media-services/latest/stream-files-dotnet-quickstart
-          - image:
-              src: media/index/cli.svg
-            text: 使用 CLI 編碼和串流
-            href: /azure/media-services/latest/stream-files-cli-quickstart
-          - image:
-              src: media/index/logo_nodejs.svg
-            text: 使用 Node.js 編碼和串流
-            href: /azure/media-services/latest/stream-files-nodejs-quickstart
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 教學課程會示範如何安全地針對隨選和即時影片進行 Just-In-Time 封裝，並透過功能強大的整合式 Azure CDN 進行調整：
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 1
-        items:
-          - image:
-              src: media/index/dotnet.svg
-            html: <p>教學課程會上傳本機影片檔案、將檔案編碼並串流已編碼的內容。<p/>
-            href: /azure/media-services/latest/stream-files-tutorial-with-api
-            title: 將已上傳檔案編碼和串流影片
-          - image:
-              src: media/index/dotnet.svg
-            html: <p>教學課程會說明如何設定即時事件。 接著會說明如何使用 .NET 建立即時事件的傳遞類型。</p>
-            href: /azure/media-services/latest/stream-live-tutorial-with-api
-            title: 即時廣播
-          - image:
-              src: media/index/dotnet.svg
-            html: <p>本教學課程會示範如何使用 Azure 媒體服務 API 分析影片。</p>
-            href: /azure/media-services/latest/analyze-videos-tutorial-with-api
-            title: 分析您的影片
-          - image:
-              src: media/index/dotnet.svg
-            html: <p>了解如何設定並使用媒體服務 API，透過 AES-128 將內容動態加密。</p>
-            href: /azure/media-services/latest/protect-with-aes128
-            title: 透過 AES-128 進行動態加密
-          - image:
-              src: media/index/dotnet.svg
-            html: <p>了解如何設定並使用媒體服務 API，透過多重 DRM (PlayReady、Widevine 和 FairPlay) 將內容動態加密。</p>
-            href: /azure/media-services/latest/protect-with-drm
-            title: 透過多重 DRM 進行動態加密
-          - image:
-              src: media/index/rest.svg
-            html: <p>教學課程會顯示如何將 URL 為基礎的遠端檔案編碼及串流影片。</p>
-            href: /azure/media-services/latest/stream-files-tutorial-with-rest
-            title: 編碼遠端檔案和串流影片
-  - title: 範例
-    items:
-      - type: paragraph
-        text: 下列 GitHub 範例說明如何透過媒體服務 v3，使用 API 來串流影片、即時廣播及分析您的影片：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/cli.svg
-            text: Azure CLI
-            href: 'https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services'
-          - image:
-              src: media/index/rest.svg
-            text: REST with Postman
-            href: 'https://github.com/Azure-Samples/media-services-v3-rest-postman'
-          - image:
-              src: media/index/logo_dotnet_core.svg
-            text: .NET Core with Visual Studio Code
-            href: 'https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials'
-          - image:
-              src: media/index/dotnet.svg
-            text: .NET 搭配 Visual Studio
-            href: 'https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials'
-          - image:
-              src: media/index/logo_nodejs.svg
-            text: Node .js
-            href: 'https://github.com/Azure-Samples/media-services-v3-node-tutorials'
-  - title: 參考
-    items:
-      - type: paragraph
-        text: ''
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://aka.ms/ams-v3-cli-ref">Azure CLI</a>'
-          - html: '<a href="https://aka.ms/ams-v3-rest-ref">REST</a>'
-          - html: '<a href="https://aka.ms/ams-v3-dotnet-ref">.NET</a>'
-          - html: '<a href="https://aka.ms/ams-v3-java-ref">Java</a>'
-          - html: '<a href="https://aka.ms/ams-v3-python-ref">Python</a>'
-          - html: '<a href="https://aka.ms/ams-v3-nodejs-ref">Node.js</a>'
+  ms.date: 21/16/2020
+  ms.openlocfilehash: 1cd7e2a4cb4e86e6acfc0ec3d3909bc887a6f943
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79472113"
+landingContent:
+- title: 關於媒體服務
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是媒體服務 v3？
+      url: media-services-overview.md
+    - text: 媒體服務中有哪些新功能？
+      url: release-notes.md
+  - linkListType: concept
+    links:
+    - text: 媒體服務帳戶
+      url: media-services-account-concept.md
+    - text: 儲存體帳戶
+      url: storage-account-concept.md
+    - text: 包裝
+      url: dynamic-packaging-overview.md
+    - text: 監視
+      url: reacting-to-media-services-events.md
+    - text: 播放程式用戶端
+      url: use-azure-media-player.md
+    - text: 使用 v3 API 開發指導方針
+      url: media-services-apis-overview.md
+- title: 開始使用
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 建立帳戶
+      url: create-account-cli-how-to.md
+    - text: 存取 API
+      url: access-api-cli-how-to.md
+  - linkListType: download
+    links:
+    - text: .NET SDK 範例
+      url: https://github.com/Azure-Samples/media-services-v3-dotnet
+    - text: Java SDK 範例
+      url: https://github.com/Azure-Samples/media-services-v3-java
+    - text: REST Postman 集合範例
+      url: https://github.com/Azure-Samples/media-services-v3-rest-postman
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: https://aka.ms/ams-v3-cli-ref
+    - text: REST
+      url: https://docs.microsoft.com/rest/api/media/
+    - text: .NET
+      url: https://aka.ms/ams-v3-dotnet-ref
+    - text: Java
+      url: https://aka.ms/ams-v3-java-ref
+- title: 即時串流
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 即時串流
+      url: live-streaming-overview.md
+  - linkListType: tutorial
+    links:
+    - text: 即時串流
+      url: stream-live-tutorial-with-api.md
+- title: 依需求進行串流
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 上傳
+      url: assets-concept.md
+    - text: 編碼
+      url: encoding-concept.md
+  - linkListType: tutorial
+    links:
+    - text: 編碼遠端檔案和串流
+      url: stream-files-tutorial-with-rest.md
+    - text: 將已上傳檔案編碼和串流
+      url: stream-files-tutorial-with-api.md
+- title: 加密內容
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 保護
+      url: content-protection-overview.md
+  - linkListType: tutorial
+    links:
+    - text: 透過 AES-128 進行動態加密
+      url: protect-with-aes128.md
+    - text: 透過 DRM 進行動態加密
+      url: protect-with-drm.md
+- title: 分析內容
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 媒體分析
+      url: analyzing-video-audio-files-concept.md
+    - text: 合規性、隱私權和安全性
+      url: analyzing-video-audio-files-concept.md#compliance-privacy-and-security
+  - linkListType: tutorial
+    links:
+    - text: 分析影片
+      url: analyze-videos-tutorial-with-api.md

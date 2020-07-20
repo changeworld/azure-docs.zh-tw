@@ -1,25 +1,25 @@
 ---
-title: 教學課程：建立具有保留 IP 位址的自動調整規模、區域備援應用程式閘道 - Azure PowerShell
+title: 教學課程：改善 Web 應用程式的存取 - Azure 應用程式閘道
 description: 在本教學課程中，您將了解如何使用 Azure PowerShell 建立具有保留 IP 位址且可自動調整規模的區域備援應用程式閘道。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 2/14/2019
+ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8ee43a54df019b862d1f8698363d8b0a022bdcb4
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: e07fc34c7177e3a1dace34ab298b64dc3aa6a06a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64947151"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74011373"
 ---
 # <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>教學課程：建立改善 Web 應用程式存取的應用程式閘道
 
 如果您是 IT 系統管理員，並且想改善 Web 應用程式的存取，您可以最佳化應用程式閘道，以根據客戶需求並跨越多個可用性區域來調整規模。 本教學課程可協助您設定 Azure 應用程式閘道功能，以完成：自動調整、區域備援及保留的 VIP (靜態 IP)。 若要解決此問題，您將使用 Azure PowerShell Cmdlet 和 Azure Resource Manager 部署模型。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 建立自我簽署憑證
@@ -30,9 +30,9 @@ ms.locfileid: "64947151"
 > * 建立應用程式閘道
 > * 測試應用程式閘道
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -101,7 +101,7 @@ $vnet = New-AzvirtualNetwork -Name "AutoscaleVNet" -ResourceGroupName $rg `
 
 ## <a name="create-a-reserved-public-ip"></a>建立保留公用 IP
 
-將 PublicIPAddress 的配置方法指定為 [靜態]。 自動調整應用程式閘道 VIP 只能是靜態。 不支援動態 IP。 只支援標準 PublicIpAddress SKU。
+將 PublicIPAddress 的配置方法指定為 [靜態]  。 自動調整應用程式閘道 VIP 只能是靜態。 不支援動態 IP。 只支援標準 PublicIpAddress SKU。
 
 ```azurepowershell
 #Create static public IP

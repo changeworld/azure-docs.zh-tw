@@ -4,40 +4,142 @@
   items:
     - name: 關於虛擬 WAN
       href: virtual-wan-about.md
+    - name: 架構
+      items:
+        - name: 遷移至虛擬 WAN
+          href: migrate-from-hub-spoke-topology.md
+        - name: 全域傳輸網路架構
+          href: virtual-wan-global-transit-network-architecture.md
+        - name: SD-WAN 連線架構
+          href: sd-wan-connectivity-architecture.md
+        - name: 與中國互連
+          href: interconnect-china.md
 - name: 教學課程
   items:
     - name: 建立站對站連線
       href: virtual-wan-site-to-site-portal.md
+    - name: 建立使用者 VPN (點對站) 連線
+      href: virtual-wan-point-to-site-portal.md
     - name: 建立 ExpressRoute 連線
       href: virtual-wan-expressroute-portal.md
-    - name: 建立點對站連線
-      href: virtual-wan-point-to-site-portal.md
 - name: 概念
   items:
-    - name: 位置與合作夥伴
-      href: virtual-wan-locations-partners.md
-    - name: 全域傳輸網路架構
-      href: virtual-wan-global-transit-network-architecture.md
-    - name: 虛擬 WAN 中的 Office 365 控制平面
-      href: virtual-wan-office365-overview.md
-- name: 使用說明指南
-  items:
-    - name: 將流量從虛擬中樞路由傳送至 NVA
+    - name: 遠端工作
       items:
-        - name: Azure 入口網站
-          href: virtual-wan-route-table-portal.md
-        - name: Azure PowerShell
-          href: virtual-wan-route-table.md
-    - name: 虛擬 WAN 夥伴 - 自動化
-      href: virtual-wan-configure-automation-providers.md
+        - name: 遠端工作的支援
+          href: ../networking/working-remotely-support.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
+        - name: 運用虛擬 WAN
+          href: work-remotely-support.md
+    - name: 位置與合作夥伴
+      items:
+        - name: 中樞位置與合作夥伴
+          href: virtual-wan-locations-partners.md
+        - name: 合作夥伴的自動化指導方針
+          href: virtual-wan-configure-automation-providers.md
+    - name: 定價概念
+      href: pricing-concepts.md
+    - name: 路由
+      items:
+        - name: 關於虛擬中樞路由
+          href: about-virtual-hub-routing.md
+        - name: 案例
+          items:
+            - name: 任意對任意
+              href: scenario-any-to-any.md
+            - name: 隔離 VNet
+              href: scenario-isolate-vnets.md
+            - name: 隔離 VNet - 自訂
+              href: scenario-isolate-vnets-custom.md
+            - name: 共用服務 VNet
+              href: scenario-shared-services-vnet.md
+            - name: 透過 NVA 路由傳送
+              href: scenario-route-through-nva.md
+            - name: 透過 NVA 路由傳送 - 自訂 (預覽)
+              href: scenario-route-through-nvas-custom.md
+            - name: Azure 防火牆 - Interhub (預覽)
+              href: scenario-route-between-hubs-firewall.md
+            - name: Azure 防火牆 - 自訂
+              href: scenario-route-between-vnets-firewall.md
+    - name: 網站間
+      items:
+        - name: 關於 IPsec 原則
+          href: virtual-wan-ipsec.md
+        - name: 多個 ISP 連結 - Azure 路徑選擇
+          href: path-selection-multiple-links.md
+- name: 操作指南
+  items:
+    - name: 升級虛擬 WAN SKU
+      href: upgrade-virtual-wan.md
+    - name: ExpressRoute
+      items:
+        - name: 建立 ExpressRoute 連線
+          href: virtual-wan-expressroute-portal.md
+        - name: 設定 ExpressRoute 加密
+          href: vpn-over-expressroute.md
+    - name: 網站間
+      items:
+        - name: 建立站對站連線
+          href: virtual-wan-site-to-site-portal.md
+        - name: 將虛擬網路閘道連線到虛擬 WAN
+          href: connect-virtual-network-gateway-vwan.md
+        - name: 設定自訂 IPsec 原則
+          href: virtual-wan-custom-ipsec-portal.md
+    - name: 使用者 VPN (點對站)
+      items:
+        - name: 建立使用者 VPN 連線
+          href: virtual-wan-point-to-site-portal.md
+        - name: 產生憑證
+          href: certificates-point-to-site.md
+        - name: 設定 Azure AD 租用戶
+          href: openvpn-azure-ad-tenant.md
+        - name: 用戶端設定檔
+          href: about-vpn-profile-download.md
+        - name: 全域型和中樞型設定檔
+          href: global-hub-profile.md
+        - name: 設定 OpenVPN 用戶端
+          href: howto-openvpn-clients.md?
+        - name: 設定 Always On VPN 使用者通道
+          href: howto-always-on-user-tunnel.md
+        - name: 設定 Always On VPN 裝置通道
+          href: howto-always-on-device-tunnel.md
+        - name: 啟用 Multi-Factor Authentication (MFA)
+          href: openvpn-azure-ad-mfa.md
+        - name: 設定 Azure AD 驗證
+          href: virtual-wan-point-to-site-azure-ad.md
+        - name: 設定適用於 Windows 10 的 Azure VPN Client
+          href: openvpn-azure-ad-client.md
+        - name: 設定多應用程式 Azure AD 驗證
+          href: openvpn-azure-ad-tenant-multi-app.md
+    - name: 路由
+      items:
+        - name: 如何設定虛擬中樞路由
+          href: how-to-virtual-hub-routing.md
+        - name: 如何檢視虛擬中樞的有效路由
+          href: effective-routes-virtual-hub.md
+        - name: 將流量從虛擬中樞路由傳送至 NVA (舊版)
+          items:
+            - name: Azure 入口網站
+              href: virtual-wan-route-table-nva-portal.md
+            - name: Azure PowerShell
+              href: virtual-wan-route-table-nva.md
+    - name: 安全性
+      items:
+        - name: 在中樞安裝 Azure 防火牆
+          href: howto-firewall.md
+    - name: 監視
+      items:
+        - name: 記錄和計量
+          href: logs-metrics.md
 - name: 參考
   items:
     - name: Azure PowerShell
-      href: '/powershell/module/az.network#networking'
+      href: /powershell/module/az.network#networking
     - name: REST
       href: /rest/api/azure
     - name: Azure CLI
       href: /cli/azure/ext/virtual-wan
+    - name: Python SDK
+      href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-mgmt-network/10.0.0/azure.mgmt.network.v2019_02_01.operations.html#azure.mgmt.network.v2019_02_01.operations.VirtualWansOperations'
 - name: 資源
   items:
     - name: 常見問題集
@@ -47,8 +149,8 @@
     - name: 部落格
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: 訂用帳戶與服務限制
-      href: ../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
-    - name: 價格
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/virtual-wan'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'

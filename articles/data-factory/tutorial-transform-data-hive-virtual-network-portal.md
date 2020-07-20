@@ -1,24 +1,26 @@
 ---
-title: 在 Azure 虛擬網路中使用 Hive 轉換資料 | Microsoft Docs
+title: 在 Azure 虛擬網路中使用 Azure 入口網站轉換資料
 description: 本教學課程提供逐步指示，說明如何使用 Azure Data Factory 中的 Hive 活動來轉換資料。
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.topic: tutorial
-ms.date: 01/04/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: 9cea3e7494ee81638923cbcaff9f1b82d08a1ad1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+manager: anandsub
+ms.topic: tutorial
+ms.custom: seo-dt-2019
+ms.date: 01/04/2018
+ms.openlocfilehash: 18f72ff32b29ff5832c363601ed63280339079df
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085026"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083055"
 ---
-# <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>在 Azure 虛擬網路中使用 Azure Data Factory 中的 Hive 活動轉換資料
+# <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory-using-the-azure-portal"></a>使用 Azure 入口網站，在 Azure 虛擬網路中使用 Azure Data Factory 的 Hive 活動轉換資料
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 在本教學課程中，您會使用 Azure 入口網站建立 Data Factory 管線，以在 Azure 虛擬網路 (VNet) 中的 HDInsight 叢集上，使用 Hive 活動來轉換資料。 您會在本教學課程中執行下列步驟：
 
 > [!div class="checklist"]
@@ -32,7 +34,7 @@ ms.locfileid: "58085026"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -81,18 +83,18 @@ ms.locfileid: "58085026"
  
    Azure Data Factory 的名稱必須是 **全域唯一的**。 如果您收到下列錯誤，請變更資料處理站的名稱 (例如 yournameMyAzureSsisDataFactory)，然後試著重新建立。 請參閱 [Data Factory - 命名規則](naming-rules.md)一文，以了解 Data Factory 成品的命名規則。
   
-       `Data factory name “MyAzureSsisDataFactory” is not available`
+    *Data factory 名稱 "MyAzureSsisDataFactory" 無法使用*
 3. 選取您要在其中建立資料處理站的 Azure **訂用帳戶**。 
 4. 針對 [資源群組]，請執行下列其中一個步驟︰
      
    - 選取 [使用現有的] ，然後從下拉式清單選取現有的資源群組。 
    - 選取 [建立新的] ，然後輸入資源群組的名稱。   
          
-     若要了解資源群組，請參閱 [使用資源群組管理您的 Azure 資源](../azure-resource-manager/resource-group-overview.md)。  
+     若要了解資源群組，請參閱 [使用資源群組管理您的 Azure 資源](../azure-resource-manager/management/overview.md)。  
 4. 針對 [版本] 選取 [V2]。
 5. 選取 Data Factory 的 [位置]  。 清單中只會顯示資料處理站建立所支援的位置。
 6. 選取 [釘選到儀表板]。     
-7. 按一下頁面底部的 [新增] 。
+7. 按一下 [建立]。
 8. 在儀表板上，您會看到狀態如下的下列圖格︰**部署 Data Factory**。 
 
      ![部署資料處理站圖格](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
@@ -164,7 +166,7 @@ ms.locfileid: "58085026"
 
     1. 輸入 **AzureStorageLinkedService** 作為 [名稱]。
     2. 在 [透過整合執行階段連線] 選取 [MySelfHostedIR]。
-    3. 在 [儲存體帳戶名稱] 選取您的 Azure 儲存體帳戶。 
+    3. 針對 [儲存體帳戶名稱] 選取您的 Azure 儲存體帳戶。 
     4. 若要測試與儲存體帳戶的連線，按一下 [測試連線]。
     5. 按一下 [檔案] 。
    
@@ -200,8 +202,8 @@ ms.locfileid: "58085026"
 
 請注意下列幾點：
 
-- **scriptPath** 指向您用於 MyStorageLinkedService 的 Azure 儲存體帳戶上的 Hive 指令碼路徑。 路徑區分大小寫。
-- **Output** 是 Hive 指令碼中使用的引數。 請使用 `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` 格式，以指向您的 Azure 儲存體上現有的資料夾。 路徑區分大小寫。 
+- **scriptPath** 指向您用於 MyStorageLinkedService 的 Azure 儲存體帳戶上的 Hive 指令碼路徑。 路徑會區分大小寫。
+- **Output** 是 Hive 指令碼中使用的引數。 請使用 `wasbs://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` 格式，以指向您的 Azure 儲存體上現有的資料夾。 路徑會區分大小寫。 
 
 1. 在 Data Factory 使用者介面中，按一下左窗格中的 [+] \(加號)，然後按一下 [管線]。 
 
@@ -226,7 +228,7 @@ ms.locfileid: "58085026"
         ![指令碼設定](./media/tutorial-transform-data-using-hive-in-vnet-portal/confirm-hive-script-settings.png)
     5. 在 [指令碼] 索引標籤中，展開 [進階] 區段。 
     6. 針對 [參數]，按一下 [從指令碼自動填滿]。 
-    7. 以下列格式輸入 **Output** 參數的值：`wasb://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`。 例如： `wasb://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/` 。
+    7. 以下列格式輸入 **Output** 參數的值：`wasbs://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`。 例如： `wasbs://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/` 。
  
         ![指令碼引數](./media/tutorial-transform-data-using-hive-in-vnet-portal/script-arguments.png)
 1. 若要將成品發佈至 Data Factory，按一下 [發佈]。
@@ -235,7 +237,7 @@ ms.locfileid: "58085026"
 
 ## <a name="trigger-a-pipeline-run"></a>觸發管線執行
 
-1. 首先，按一下工具列上的 [驗證] 按鈕驗證管線。 按一下[>>] (右箭頭) 關閉 [管線驗證輸出] 視窗。 
+1. 首先，按一下工具列上的 [驗證] 按鈕驗證管線。 按一下[>>] \(右箭頭) 關閉 [管線驗證輸出] 視窗。 
 
     ![驗證管線](./media/tutorial-transform-data-using-hive-in-vnet-portal/validate-pipeline.png) 
 2. 若要觸發管線執行，按一下工具列上的 [觸發程序]，然後按一下 [立即觸發]。 

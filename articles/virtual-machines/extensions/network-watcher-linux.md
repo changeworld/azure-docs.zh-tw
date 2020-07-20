@@ -1,30 +1,28 @@
 ---
-title: 適用於 Linux 的 Azure 網路監看員代理程式虛擬機器擴充功能 | Microsoft Docs
+title: 適用于 Linux 的 Azure 網路監看員代理程式虛擬機器擴充功能
 description: 使用虛擬機器擴充功能在 Linux 虛擬機器上部署網路監看員代理程式。
 services: virtual-machines-linux
 documentationcenter: ''
-author: gurudennis
-manager: amku
+author: mimckitt
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 5c81e94c-e127-4dd2-ae83-a236c4512345
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
-ms.author: dennisg
-ms.openlocfilehash: 5ed5e791cd6e611218769650115c78afd1869f67
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: mimckitt
+ms.openlocfilehash: 476241ad3d4077f2da0c513e3c989218701232ba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60743423"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81255748"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>適用於 Linux 的網路監看員代理程式虛擬機器擴充功能
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 [Azure 網路監看員](/azure/network-watcher/)是網路效能的監視、診斷和分析服務，可讓您監視 Azure 網路。 Azure 虛擬機器 (VM) 上某些網路監看員功能 (如依需求擷取網路流量) 及其他進階功能，均需要網路監看員代理程式虛擬機器擴充功能。
 
@@ -36,7 +34,7 @@ ms.locfileid: "60743423"
 
 下列 Linux 散發套件可設定網路監看員代理程式擴充功能：
 
-| 配送映像 | Version |
+| 散發 | 版本 |
 |---|---|
 | Ubuntu | 12+ |
 | Debian | 7 和 8 |
@@ -80,7 +78,7 @@ ms.locfileid: "60743423"
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.Azure.NetworkWatcher |
-| type | NetworkWatcherAgentLinux |
+| 類型 | NetworkWatcherAgentLinux |
 | typeHandlerVersion | 1.4 |
 
 ## <a name="template-deployment"></a>範本部署
@@ -89,9 +87,11 @@ ms.locfileid: "60743423"
 
 ## <a name="azure-classic-cli-deployment"></a>Azure 傳統 CLI 部署
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 以下範例會將網路監看員代理程式 VM 擴充功能，部署到透過傳統部署模型部署的現有 VM：
 
-```azurecli
+```console
 azure config mode asm
 azure vm extension set myVM1 NetworkWatcherAgentLinux Microsoft.Azure.NetworkWatcher 1.4
 ```
@@ -110,18 +110,6 @@ az vm extension set --resource-group myResourceGroup1 --vm-name myVM1 --name Net
 
 您可以使用 Azure 入口網站或 Azure CLI 擷取有關擴充功能部署狀態的資料。
 
-下列範例會使用 Azure 傳統 CLI，顯示透過傳統部署模型部署之 VM 的延伸模組部署狀態：
-
-```azurecli
-azure config mode asm
-azure vm extension get myVM1
-```
-擴充功能執行輸出會記錄至下列目錄中的檔案︰
-
-```
-/var/log/azure/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentLinux/
-```
-
 下列範例會使用 Azure CLI，顯示透過資源管理員部署之 VM 的 NetworkWatcherAgentLinux 延伸模組部署狀態：
 
 ```azurecli
@@ -130,4 +118,4 @@ az vm extension show --name NetworkWatcherAgentLinux --resource-group myResource
 
 ### <a name="support"></a>支援
 
-對於本文內容，如有任何需要協助的地方，可參閱[網路監看員文件](/azure/network-watcher/)，或連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的相關資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
+如果您在本文中有任何需要協助的地方，您可以參閱[網路監看員檔](/azure/network-watcher/)，或與[MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 azure 專家聯絡。 或者，您可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的相關資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。

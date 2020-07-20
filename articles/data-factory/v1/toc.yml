@@ -22,8 +22,6 @@
       items:
         - name: 複製精靈
           href: data-factory-copy-data-wizard-tutorial.md
-        - name: Azure 入口網站
-          href: data-factory-copy-activity-tutorial-using-azure-portal.md
         - name: Visual Studio
           href: data-factory-copy-activity-tutorial-using-visual-studio.md
         - name: Azure PowerShell
@@ -78,7 +76,7 @@
               href: data-factory-azure-documentdb-connector.md
             - name: Azure Data Lake Storage Gen1
               href: data-factory-azure-datalake-connector.md
-            - name: Azure 搜尋服務
+            - name: Azue 認知搜尋
               href: data-factory-azure-search-connector.md
             - name: Azure SQL Database
               href: data-factory-azure-sql-connector.md
@@ -147,14 +145,14 @@
           href: data-factory-azure-ml-update-resource-activity.md
         - name: 預存程序活動
           href: data-factory-stored-proc-activity.md
-        - name: 資料湖分析 U-SQL 活動
+        - name: Data Lake Analytics U-SQL 活動
           href: data-factory-usql-activity.md
         - name: .NET 自訂活動
           href: data-factory-use-custom-activities.md
         - name: 叫用 R 指令碼
-          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample'
+          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample'
         - name: 重新處理 Azure Analysis Services 中的模型
-          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample'
+          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/AzureAnalysisServicesProcessSample'
         - name: 計算連結服務
           href: data-factory-compute-linked-services.md
     - name: 開發
@@ -201,11 +199,9 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 個案研究
       href: data-factory-customer-case-studies.md
-    - name: 學習路徑
-      href: 'https://azure.microsoft.com/documentation/learning-paths/data-factory'
-    - name: MSDN 論壇
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDataFactory'
-    - name: 價格
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-data-factory.html'
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/data-factory/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
@@ -215,7 +211,7 @@
       href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=data-factory'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=data-factory'

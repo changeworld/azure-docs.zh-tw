@@ -1,32 +1,28 @@
 ---
 title: 建立與 Azure Logic Apps 整合的函式
 description: 建立可整合 Azure Logic Apps 和 Azure 認知服務的函數，以將推文情感進行分類，並在偵測到不佳的情感時傳送通知。
-services: functions, logic-apps, cognitive-services
-keywords: 工作流程, 雲端應用程式, 雲端服務, 商務程序, 系統整合, 企業應用程式整合, EAI
 author: craigshoemaker
-manager: jeconnoc
 ms.assetid: 60495cc5-1638-4bf0-8174-52786d227734
-ms.service: azure-functions
 ms.topic: tutorial
-ms.date: 11/06/2018
+ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 5e0ef8287b7ce257cd551a1ace043ccbed72b50b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: aa4087f3eafcd217eedc707697d093155b13b9e6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087086"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116311"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>建立與 Azure Logic Apps 整合的函式
 
 Azure Functions 與 Logic Apps 設計工具中的 Azure Logic Apps 進行整合。 這項整合可讓您搭配其他 Azure 和第三方服務，使用協調流程中的 Functions 計算能力。 
 
-本教學課程說明如何使用 Functions 搭配 Logic Apps 和 Azure 上的認知服務，從 Twitter 貼文執行情感分析。 HTTP 觸發函式會以情感分數作為基礎，將推文分類為綠色、黃色或紅色。 偵測到不佳的情感時，會傳送一封電子郵件。 
+本教學課程說明如何使用 Azure Functions 搭配 Azure 上的 Logic Apps 和認知服務，從 Twitter 貼文執行情感分析。 HTTP 觸發程序函式會以情感分數作為基礎，將推文分類為綠色、黃色或紅色。 偵測到不佳的情感時，會傳送一封電子郵件。 
 
 ![此映像顯示邏輯應用程式設計工具中應用程式的前兩個步驟](media/functions-twitter-email/00-logic-app-overview.png)
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 建立認知服務 API 資源。
@@ -36,11 +32,15 @@ Azure Functions 與 Logic Apps 設計工具中的 Azure Logic Apps 進行整合�
 > * 將邏輯應用程式連線至函式。
 > * 以函式的回應作為基礎來傳送電子郵件。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 + 使用中的 [Twitter](https://twitter.com/) 帳戶。 
 + [Outlook.com](https://outlook.com/) 帳戶 (用於傳送通知)。
-+ 本文使用[從 Azure 入口網站建立您的第一個函式](functions-create-first-azure-function.md)中所建立的資源作為起點。  
+
+> [!NOTE]
+> 如果您想要使用 Gmail 連接器，只有 G-Suite 的商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用 Gmail 連接器搭配特定的 Google 核准應用程式及服務，或者您可以[建立 Google 用戶端應用程式，以用來在 Gmail 連接器中進行驗證](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 如需詳細資訊，請參閱 [Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
+
++ 本文使用[從 Azure 入口網站建立您的第一個函式](functions-create-first-azure-function.md)中所建立的資源作為起點。
 如果您尚未這麼做，請立即完成這些步驟，才能建立函式應用程式。
 
 ## <a name="create-a-cognitive-services-resource"></a>建立認知服務資源
@@ -55,7 +55,7 @@ Azure Functions 與 Logic Apps 設計工具中的 Azure Logic Apps 進行整合�
 
     ![建立 [識別資源] 頁面](media/functions-twitter-email/01-create-text-analytics.png)
 
-    | 設定      |  建議的值   | 說明                                        |
+    | 設定      |  建議的值   | 描述                                        |
     | --- | --- | --- |
     | **名稱** | MyCognitiveServicesAccnt | 請選擇唯一的帳戶名稱。 |
     | **位置** | 美國西部 | 使用距離您最近的位置。 |
@@ -74,21 +74,21 @@ Azure Functions 與 Logic Apps 設計工具中的 Azure Logic Apps 進行整合�
 
 ## <a name="create-the-function-app"></a>建立函式應用程式
 
-Functions 提供的絕佳方法，可讓您將 Logic Apps 工作流程中的處理工作進行卸載。 本教學課程會使用 HTTP 觸發函式來處理認知服務的推文情感分數，並將類別值傳回。  
+Azure Functions 提供的絕佳方法，可讓您將 Logic Apps 工作流程中的處理工作卸載。 本教學課程會使用 HTTP 觸發程序函式來處理認知服務的推文情感分數，並傳回類別值。  
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-## <a name="create-an-http-triggered-function"></a>建立由 HTTP 觸發的函式  
+## <a name="create-an-http-trigger-function"></a>建立 HTTP 觸發程序函式  
 
-1. 展開函式應用程式，然後按一下 [Functions] 旁的 [+] 按鈕。 如果這是函式應用程式中的第一個函式，請選取 [入口網站內]。
+1. 從 [函式] 視窗的左側功能表選取 [函式]，然後從頂端功能表選取 [新增]。
 
-    ![Azure 入口網站中的 Functions 快速入門](media/functions-twitter-email/05-function-app-create-portal.png)
+2. 從 [新增函式] 視窗中，選取 [HTTP 觸發程式]。
 
-2. 接著，選取 [WebHook + API]，然後按一下 [建立]。 
+    ![選擇 HTTP 觸發程序函式](./media/functions-twitter-email/06-function-http-trigger.png)
 
-    ![選擇 HTTP 觸發程序](./media/functions-twitter-email/06-function-webhook.png)
+3. 從 [新增函式] 頁面上，選取 [建立函式]。
 
-3. 使用下列程式碼取代 `run.csx` 檔案的內容，然後按一下 [儲存]：
+4. 在新的 HTTP 觸發程序函式中，從左側功能表中選取 [程式碼 + 測試]，並將 `run.csx` 檔案的內容取代為下列程式碼，然後選取 [儲存]：
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -123,17 +123,18 @@ Functions 提供的絕佳方法，可讓您將 Logic Apps 工作流程中的處�
             : new BadRequestObjectResult("Please pass a value on the query string or in the request body");
     }
     ```
+
     此函式程式碼會以要求中所收到的情感分數作為基礎，將色彩類別傳回。 
 
-4. 若要測試函式，請按一下最右邊的 [測試] 以展開 [測試] 索引標籤。輸入 `0.2` 的值作為**要求本文**，然後按一下 [執行]。 會在回應本文中傳回 **RED** 的值。 
+5. 若要測試函式，請從頂端功能表中選取 [測試]。 在 [輸入] 索引標籤的 [主體] 中輸入 `0.2` 的值，然後選取 [執行]。 [輸出] 索引標籤上的 [HTTP 回應內容] 中會傳回 **RED** 值。 
 
-    ![在 Azure 入口網站中測試函式](./media/functions-twitter-email/07-function-test.png)
+    :::image type="content" source="./media/functions-twitter-email/07-function-test.png" alt-text="定義 Proxy 設定":::
 
 現在您的函式可將情感分數進行分類。 接下來，您可以建立邏輯應用程式，將您的函式與 Twitter 和認知服務 API 進行。 
 
 ## <a name="create-a-logic-app"></a>建立邏輯應用程式   
 
-1. 在 Azure 入口網站中，按一下 Azure 入口網站左上角的 [新增] 按鈕。
+1. 在 Azure 入口網站中，按一下其左上角的 [建立資源] 按鈕。
 
 2. 按一下 [Web] > [邏輯應用程式]。
  
@@ -141,7 +142,7 @@ Functions 提供的絕佳方法，可讓您將 Logic Apps 工作流程中的處�
 
     ![在 Azure 入口網站中建立邏輯應用程式](./media/functions-twitter-email/08-logic-app-create.png)
 
-    | 設定      |  建議的值   | 說明                                        |
+    | 設定      |  建議的值   | 描述                                        |
     | ----------------- | ------------ | ------------- |
     | **名稱** | TweetSentiment | 為您的應用程式選擇適當名稱。 |
     | **資源群組** | myResourceGroup | 選擇與之前相同的現有資源群組。 |
@@ -165,11 +166,11 @@ Functions 提供的絕佳方法，可讓您將 Logic Apps 工作流程中的處�
 
     ![Twitter 連接器設定](media/functions-twitter-email/10-tweet-settings.png)
 
-    | 設定      |  建議的值   | 說明                                        |
+    | 設定      |  建議的值   | 描述                                        |
     | ----------------- | ------------ | ------------- |
     | **搜尋文字** | #Azure | 使用熱門程度足夠在指定間隔內產生新推文的雜湊標記。 當您是使用免費層且您的雜湊標記太熱門時，可能很快就會將認知服務 API 中的交易配額用完。 |
     | **間隔** | 15 | Twitter 要求之間所經過的時間 (以頻率為單位)。 |
-    | **頻率** | 分鐘 | 用於輪詢 Twitter 的頻率單位。  |
+    | **頻率** | Minute | 用於輪詢 Twitter 的頻率單位。  |
 
 3.  按一下 [儲存] 可連線到您的 Twitter 帳戶。 
 
@@ -209,13 +210,13 @@ Functions 提供的絕佳方法，可讓您將 Logic Apps 工作流程中的處�
 
 4. 在**要求本文**中，依序按一下 [分數] 和 [儲存]。
 
-    ![分數](media/functions-twitter-email/17-function-input-score.png)
+    ![Score](media/functions-twitter-email/17-function-input-score.png)
 
 現在，當邏輯應用程式傳送出情感分數時，就會觸發您的函式。 函式會將以色彩標示的類別傳回至邏輯應用程式。 接下來，您要新增當函式傳回 **RED** 情感值時要傳送的電子郵件通知。 
 
 ## <a name="add-email-notifications"></a>新增電子郵件通知
 
-工作流程的最後一個部分是當情感計分為 _RED_ 時要觸發電子郵件。 此主題使用 Outlook.com 連接器。 您可以執行類似的步驟，來使用 Gmail 或 Office 365 Outlook 連接器。   
+工作流程的最後一個部分是當情感計分為 _RED_ 時要觸發電子郵件。 本文使用 Outlook.com 連接器。 您可以執行類似的步驟，來使用 Gmail 或 Office 365 Outlook 連接器。   
 
 1. 在 Logic Apps 設計工具中，按一下 [新增步驟] > [新增條件]。 
 
@@ -236,11 +237,11 @@ Functions 提供的絕佳方法，可讓您將 Logic Apps 工作流程中的處�
 
     ![設定傳送電子郵件動作的電子郵件。](media/functions-twitter-email/21-configure-email.png)
     
-| 設定      |  建議的值   | 說明  |
+| 設定      |  建議的值   | 描述  |
 | ----------------- | ------------ | ------------- |
-| **To** | 輸入您的電子郵件地址 | 接收通知電子郵件地址。 |
+| **若要** | 輸入您的電子郵件地址 | 接收通知電子郵件地址。 |
 | **主旨** | 偵測到負面的推文情感  | 電子郵件通知的主旨列。  |
-| **內文** | 推文文字、位置 | 按一下 [推文文字] 和 [位置] 參數。 |
+| **本文** | 推文文字、位置 | 按一下 [推文文字] 和 [位置] 參數。 |
 
 1. 按一下 [檔案] 。
 

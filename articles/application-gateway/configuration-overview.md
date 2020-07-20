@@ -1,142 +1,187 @@
 ---
-title: Azure 应用程序网关配置概述
-description: 本文介绍如何配置 Azure 应用程序网关的组件
+title: Azure 應用程式閘道設定總覽
+description: 本文說明如何設定 Azure 應用程式閘道的元件
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 4/30/2019
+ms.topic: conceptual
+ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: 5bfd1f930c190e717e435856f424f0cdf80deb2c
-ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
+ms.openlocfilehash: 1e3ef1133628f0470ee92237abf20d3bb0a9e21a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64946817"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254662"
 ---
-# <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
+# <a name="application-gateway-configuration-overview"></a>應用程式閘道設定總覽
 
-Azure 应用程序网关由多个组件构成，可根据不同的方案以不同的方式配置这些组件。 本文将会介绍如何配置每个组件。
+Azure 應用程式閘道是由數個元件所組成，您可以在不同的案例中以各種方式進行設定。 本文說明如何設定每個元件。
 
-![应用程序网关组件流程图](./media/configuration-overview/configuration-overview1.png)
+![應用程式閘道元件流程圖](./media/configuration-overview/configuration-overview1.png)
 
-此图演示了包含三个侦听器的应用程序。 前两个侦听器是分别用于 `http://acme.com/*` 和 `http://fabrikam.com/*` 的多站点侦听器， 两者在端口 80 上侦听。 第三个侦听器是支持端到端安全套接字层 (SSL) 终止的基本侦听器。
+此圖說明具有三個接聽程式的應用程式。 前兩個分別是和的多網站接聽程式 `http://acme.com/*` `http://fabrikam.com/*` 。 兩者都在埠80上接聽。 第三個是具有端對端傳輸層安全性（TLS）終止的基本接聽程式，先前稱為安全通訊端層（SSL）終止。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>必要條件
 
-### <a name="azure-virtual-network-and-dedicated-subnet"></a>Azure 虚拟网络和专用子网
+### <a name="azure-virtual-network-and-dedicated-subnet"></a>Azure 虛擬網路和專用子網
 
-应用程序网关是虚拟网络中的专用部署。 需要在虚拟网络中为应用程序网关配置一个专用子网。 在子网中，可以创建给定应用程序网关部署的多个实例。 还可以在该子网中部署其他应用程序网关。 但不能在应用程序网关子网中部署其他任何资源。
+應用程式閘道是您虛擬網路中的專用部署。 在您的虛擬網路中，應用程式閘道需要專用的子網。 在子網中，您可以有多個指定應用程式閘道部署的實例。 您也可以在子網中部署其他應用程式閘道。 但是，您無法在應用程式閘道子網中部署任何其他資源。
 
 > [!NOTE]
-> 不能在同一子网中混合使用 Standard_v2 和 Standard Azure 应用程序网关。
+> 您無法在相同的子網上混用 Standard_v2 和標準 Azure 應用程式閘道。
 
 #### <a name="size-of-the-subnet"></a>子網路的大小
 
-如果配置了专用前端 IP，则应用程序网关将使用每个实例的 1 个专用 IP 地址，以及另一个专用 IP 地址。
+應用程式閘道會針對每個實例使用一個私人 IP 位址，再加上另一個私人 IP 位址（如果已設定私人前端 IP）。
 
-另外，Azure 会在每个子网中保留 5 个 IP 地址供内部使用：前 4 个 IP 地址和最后一个 IP 地址。 例如，假设有 15 个应用程序网关实例没有专用前端 IP。 至少需要为此子网提供 20 个 IP 地址：5个 IP 地址供内部使用，15 个 IP 地址用于应用程序网关实例。 因此，需要 /27 或更大的子网大小。
+Azure 也會在每個子網中保留五個 IP 位址供內部使用：前四個和最後一個 IP 位址。 例如，請考慮15個沒有私人前端 IP 的應用程式閘道實例。 此子網需要至少20個 IP 位址：五個供內部使用，而15個用於應用程式閘道實例。 因此，您需要/27 子網大小或更大。
 
-假设某个子网包含 27 个应用程序网关实例，并且包含一个用作专用前端 IP 的 IP 地址。 在这种情况下，需要 33 个 IP 地址：27 个 IP 地址用于应用程序网关实例，1 个 IP 地址用于专用前端，5 个 IP 地址供内部使用。 因此，需要 /26 或更大的子网大小。
+請考慮有27個應用程式閘道實例的子網，以及私人前端 IP 的 IP 位址。 在此情況下，您需要33個 IP 位址：27個用於應用程式閘道實例，一個用於私人前端，而五個供內部使用。 因此，您需要/26 個子網大小或更大。
 
-我们建议至少使用 /28 子网大小。 这种大小可以提供 11 个可用的 IP 地址。 如果应用程序负载需要 10 个以上的 IP 地址，请考虑 /27 或 /26 子网大小。
+我們建議使用至少為/28 的子網大小。 此大小會提供您11個可用的 IP 位址。 如果您的應用程式負載需要10個以上的應用程式閘道實例，請考慮使用/27 或/26 子網大小。
 
-#### <a name="network-security-groups-on-the-application-gateway-subnet"></a>应用程序网关子网中的网络安全组
+#### <a name="network-security-groups-on-the-application-gateway-subnet"></a>應用程式閘道子網上的網路安全性群組
 
-应用程序网关支持网络安全组 (NSG)。 但同时存在多种限制：
+應用程式閘道支援網路安全性群組（Nsg）。 但有一些限制：
 
-- 您必須包括 v2 sku 的連接埠 65503-65534 v1 應用程式閘道的 sku 和 65200-65535 之間的連接埠上的連入流量的例外狀況。 Azure 基礎結構通訊需要此連接埠範圍。 这些端口受 Azure 证书的保护（处于锁定状态）。 如果没有适当的证书，外部实体（包括这些网关的客户）将无法对这些终结点做出任何更改。
+- 針對應用程式閘道 v1 SKU 的 TCP 通訊埠 65503-65534，以及 v2 SKU 的 TCP 通訊埠 65200-65535，您必須允許目的地子網路為 **Any** 且來源為 **GatewayManager** 服務標記的連入網際網路流量。 Azure 基礎結構通訊需要此連接埠範圍。 這些埠會受到 Azure 憑證的保護（鎖定）。 外部實體（包括這些閘道的客戶）無法在這些端點上進行通訊。
 
-- 無法封鎖輸出網際網路連線。 NSG 中的默认出站规则允许 Internet 连接。 建議您：
+- 無法封鎖輸出網際網路連線。 NSG 中的預設輸出規則允許網際網路連線能力。 建議您：
 
-  - 不要删除默认出站规则。
-  - 不要创建拒绝出站 Internet 连接的其他出站规则。
+  - 請勿移除預設輸出規則。
+  - 請勿建立會拒絕任何輸出連線能力的其他輸出規則。
 
-- 必须允许来自 **AzureLoadBalancer** 标记的流量。
+- 必須允許來自**AzureLoadBalancer**標記的流量。
 
-##### <a name="whitelist-application-gateway-access-to-a-few-source-ips"></a>将应用程序网关列入白名单以便能够访问一些源 IP
+#### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>允許應用程式閘道存取一些來源 Ip
 
-对于此方案，请在应用程序网关子网中使用 NSG。 按以下优先顺序对子网施加以下限制：
+針對此案例，請在應用程式閘道子網上使用 Nsg。 依照優先順序，將下列限制放在子網上：
 
-1. 允许来自源 IP/IP 范围的传入流量。
-2. 允许来自所有源的请求传入端口 65503-65534，以实现[后端运行状况通信](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)。 Azure 基礎結構通訊需要此連接埠範圍。 这些端口受 Azure 证书的保护（处于锁定状态）。 如果没有适当的证书，外部实体将无法对这些终结点做出任何更改。
-3. 允许[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)中的传入 Azure 负载均衡器探测（*AzureLoadBalancer* 标记）和入站虚拟网络流量（*VirtualNetwork* 标记）。
-4. 使用“全部拒绝”规则阻止其他所有传入流量。
+1. 允許來自來源 IP 或 IP 範圍的連入流量，並以目的地作為您的輸入存取埠（例如，用於 HTTP 存取的埠80）做為整個應用程式閘道子網位址範圍和目的地埠。
+2. 允許來自來源的傳入要求做為**GatewayManager**服務標籤和目的地，做為應用程式閘道 v1 SKU 的**任何**和目的地埠（65503-65534），以及 v2 sku 的埠65200-65535 （適用于[後端健康狀態通訊](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)）。 Azure 基礎結構通訊需要此連接埠範圍。 這些埠會受到 Azure 憑證的保護（鎖定）。 若沒有適當的憑證，外部實體就無法在這些端點上起始變更。
+3. 允許[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview)上的傳入 Azure Load Balancer 探查（*AzureLoadBalancer*標記）和輸入虛擬網路流量（*VirtualNetwork*標記）。
+4. 使用「全部拒絕」規則封鎖所有其他連入流量。
 5. 允許所有目的地對網際網路的輸出流量。
 
-#### <a name="user-defined-routes-supported-on-the-application-gateway-subnet"></a>应用程序网关子网支持用户定义的路由
+#### <a name="user-defined-routes-supported-on-the-application-gateway-subnet"></a>應用程式閘道子網路上支援的使用者定義路由
 
-使用 v1 SKU 时，只要用户定义的路由 (UDR) 未更改端到端请求/响应通信，则应用程序网关子网就会支持这些 UDR。 例如，可以在应用程序网关子网中设置一个指向防火墙设备的、用于检查数据包的 UDR。 但是，必须确保数据包在检查后可以访问其预期目标。 否则，可能会导致不正确的运行状况探测或流量路由行为。 这包括已探测到的路由，或者通过 Azure ExpressRoute 或 VPN 网关在虚拟网络中传播的默认 0.0.0.0/0 路由。
+> [!IMPORTANT]
+> 在應用程式閘道子網上使用 Udr 可能會導致[後端健康](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health)情況中的健康狀態顯示為 [**未知**]。 它也可能會產生應用程式閘道記錄和計量的產生失敗。 我們建議您不要在應用程式閘道子網上使用 Udr，以便您可以查看後端健康情況、記錄和計量。
 
-V2 sku，不支援應用程式閘道子網路的 Udr。 如需詳細資訊，請參閱 < [Azure 應用程式閘道 v2 SKU](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku)。
+- **v1**
 
-> [!NOTE]
-> 在应用程序网关子网中使用 UDR 会导致[后端运行状况视图](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health)中的运行状态显示为“未知”。 此外，还会导致应用程序网关日志和指标生成失败。 建议不要在应用程序网关子网中使用 UDR，以便能够查看后端运行状况、日志和指标。
+   就 v1 SKU 而言，應用程式閘道子網支援使用者定義的路由（Udr），但前提是它們不會改變端對端要求/回應通訊。 例如，您可以在應用程式閘道子網中設定 UDR，以指向防火牆設備以進行封包檢查。 但是您必須確定封包在檢查之後可以到達其預定目的地。 如果無法這樣做，可能會導致健康情況探查或流量路由行為不正確。 這包括學習到的路由，或虛擬網路中的 Azure ExpressRoute 或 VPN 閘道所傳播的預設 0.0.0.0/0 路由。
+
+- **v2**
+
+   針對 v2 SKU，有支援和不支援的案例：
+
+   **v2 支援的案例**
+   > [!WARNING]
+   > 路由表的設定不正確可能會導致應用程式閘道 v2 中的非對稱路由。 確保所有管理/控制平面流量都直接傳送到網際網路，而不是透過虛擬裝置。 記錄和計量也可能受到影響。
+
+
+  **案例 1**：停用邊界閘道協定（BGP）路由傳播至應用程式閘道子網的 UDR
+
+   有時會透過與應用程式閘道虛擬網路相關聯的 ExpressRoute 或 VPN 閘道來公告預設閘道路由（0.0.0.0/0）。 這會中斷管理平面流量，這需要網際網路的直接路徑。 在這種情況下，您可以使用 UDR 來停用 BGP 路由傳播。 
+
+   若要停用 BGP 路由傳播，請使用下列步驟：
+
+   1. 在 Azure 中建立路由表資源。
+   2. 停用**虛擬網路閘道路由傳播**參數。 
+   3. 將路由表與適當的子網建立關聯。 
+
+   啟用此案例的 UDR 時，不應該中斷任何現有的設置。
+
+  **案例 2**： UDR 至將 0.0.0.0/0 導向網際網路
+
+   您可以建立 UDR，將 0.0.0.0/0 流量直接傳送到網際網路。 
+
+  **案例 3**：使用 kubenet Azure Kubernetes Service 的 UDR
+
+  如果您使用具有 Azure Kubernetes Service （AKS）和應用程式閘道輸入控制器（AGIC）的 kubenet，您將需要路由表，以允許從應用程式閘道傳送到 pod 的流量路由至正確的節點。 如果您使用 Azure CNI，就不需要這麼做。 
+
+  若要使用路由表來允許 kubenet 工作，請遵循下列步驟：
+
+  1. 移至 AKS 所建立的資源群組（資源群組的名稱應該以 "MC_" 開頭）
+  2. 在該資源群組中尋找 AKS 所建立的路由表。 路由表應該填入下列資訊：
+     - 位址首碼應該是您想要在 AKS 中到達的 pod IP 範圍。 
+     - 下一個躍點類型應該是虛擬裝置。 
+     - 下一個躍點位址應該是主控 pod 之節點的 IP 位址。
+  3. 將此路由表與應用程式閘道子網建立關聯。 
+    
+  **v2 不支援的案例**
+
+  **案例 1**：針對虛擬裝置 UDR
+
+  任何需要透過任何虛擬應用裝置、中樞/輪輻虛擬網路或內部部署（強制通道）重新導向 0.0.0.0/0 的案例，都不支援 V2。
 
 ## <a name="front-end-ip"></a>前端 IP
 
-可将应用程序网关配置为使用公共 IP 地址和/或专用 IP 地址。 托管需要由客户端在 Internet 中通过面向 Internet 的虚拟 IP (VIP) 访问的后端时，必须使用公共 IP。 
+您可以將應用程式閘道設定為具有公用 IP 位址、私人 IP 位址或兩者。 當您裝載的後端必須透過網際網路對向的虛擬 IP （VIP）來存取用戶端時，就需要公用 IP。 
 
-不向 Internet 公开的内部终结点不需要公共 IP。 该终结点称为内部负载均衡器 (ILB) 终结点。 应用程序网关 ILB 适合用于不向 Internet 公开的内部业务线应用程序。 对于位于不向 Internet 公开的安全边界内的多层级应用程序中的服务和层级，ILB 也很有用，但需要启用轮循机制负载分配、会话粘性或 SSL 终止。
+不會對網際網路公開的內部端點，不需要公用 IP。 這稱為*內部負載平衡器*（ILB）端點或私人前端 IP。 應用程式閘道 ILB 適用于不會向網際網路公開的內部企業營運系統應用程式。 對於不會公開至網際網路，但需要迴圈配置資源負載分配、會話粘性或 TLS 終止的安全性界限內的服務和層級，它也很有用。
 
-仅支持 1 个公共 IP 地址或 1 个专用 IP 地址。 在创建应用程序网关时选择前端 IP。
+僅支援1個公用 IP 位址或一個私人 IP 位址。 當您建立應用程式閘道時，請選擇前端 IP。
 
-- 对于公共 IP，可以在应用程序网关所在的同一位置创建新的公共 IP 地址或使用现有的公共 IP。 如果创建新的公共 IP，则以后无法更改选定的 IP 地址类型（静态或动态）。 有关详细信息，请参阅[静态与动态公共 IP 地址](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-vs-dynamic-public-ip-address)。
+- 針對公用 IP，您可以建立新的公用 IP 位址，或使用與應用程式閘道位於相同位置的現有公用 IP。 如需詳細資訊，請參閱[靜態與動態公用 IP 位址](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address)。
 
-- 对于专用 IP，可以在创建应用程序网关的子网中指定一个专用 IP 地址。 如果不显式指定专用 IP 地址，则系统会在子网中自动选择一个任意 IP 地址。 有关详细信息，请参阅[创建包含内部负载均衡器的应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm)。
+- 若是私人 IP，您可以從建立應用程式閘道的子網指定私人 IP 位址。 如果您未指定，則會自動從子網中選取任意 IP 位址。 您選取的 IP 位址類型（靜態或動態）稍後無法變更。 如需詳細資訊，請參閱[建立具有內部負載平衡器的應用程式閘道](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm)。
 
-某个前端 IP 地址将关联到检查前端 IP 上的传入请求的侦听器。
+前端 IP 位址會與接聽程式相關*聯，以*檢查前端 ip 上的傳入要求。
 
 ## <a name="listeners"></a>接聽程式
 
-侦听器是一个逻辑实体，它可以使用端口、协议、主机和 IP 地址检查传入的连接请求。 配置侦听器时，必须输入与网关上传入请求中的对应值相匹配的值。
+接聽程式是一個邏輯實體，會使用埠、通訊協定、主機和 IP 位址來檢查傳入的連線要求。 當您設定接聽程式時，必須輸入這些值，以符合閘道上傳入要求中的對應值。
 
-使用 Azure 门户创建应用程序网关时，还可以通过选择侦听器的协议和端口来创建默认的侦听器。 可以选择是否要在侦听器上启用 HTTP2 支持。 创建应用程序网关后，可以编辑该默认侦听器的设置 (*appGatewayHttpListener*/*appGatewayHttpsListener*) 或创建新的侦听器。
+當您使用 Azure 入口網站建立應用程式閘道時，也會藉由選擇接聽項的通訊協定和埠來建立預設接聽項。 您可以選擇是否要在接聽程式上啟用 HTTP2 支援。 建立應用程式閘道之後，您可以編輯該預設接聽項的設定（*appGatewayHttpListener*），或建立新的接聽程式。
 
-### <a name="listener-type"></a>侦听器类型
+### <a name="listener-type"></a>接聽程式類型
 
-创建新侦听器时，可以选择[“基本”或“多站点”](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#types-of-listeners)。
+當您建立新的接聽程式時，您可以選擇 [ [*基本*] 和 [*多網站*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#types-of-listeners)]。
 
-- 如果在应用程序网关后面托管单个站点，请选择“基本”。 了解[如何创建包含基本侦听器的应用程序网关](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)。
+- 如果您想要接受所有要求（適用于任何網域）並轉送至後端集區，請選擇 [基本]。 瞭解[如何建立具有基本接聽程式的應用程式閘道](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)。
 
-- 如果在同一个应用程序网关实例上配置具有相同父域的多个 Web 应用程序或多个子域，请选择多站点侦听器。 对于多站点侦听器，还需要输入主机名。 这是因为，应用程序网关需要使用 HTTP 1.1 主机标头才能在相同的公共 IP 地址和端口上托管多个网站。
+- 如果您想要根據*主機*標頭或主機名稱，將要求轉送至不同的後端集區，請選擇 [多網站接聽程式]，您也必須指定符合連入要求的主機名稱。 這是因為應用程式閘道依賴 HTTP 1.1 主機標頭，在同一個公用 IP 位址和埠上裝載多個網站。
 
-#### <a name="order-of-processing-listeners"></a>侦听器的处理顺序
+#### <a name="order-of-processing-listeners"></a>處理接聽程式的順序
 
-使用 v1 SKU 时，侦听器将按其列出顺序进行处理。 如果基本侦听器与传入请求匹配，该侦听器会先处理该请求。 因此，请先配置多站点侦听器，再配置基本侦听器，以确保将流量路由到正确的后端。
+對於 v1 SKU，要求會根據規則的順序和接聽程式的類型來進行比對。 如果具有基本接聽程式的規則優先于訂單，則會先進行處理，並接受該埠和 IP 組合的任何要求。 若要避免這個情況，請先設定具有多網站接聽程式的規則，並將具有基本接聽程式的規則推送至清單中的最後一個。
 
-V2 sku，多站台接聽程式會處理之前基本接聽程式。
+針對 v2 SKU，多網站接聽程式會在基本接聽程式之前處理。
 
 ### <a name="front-end-ip"></a>前端 IP
 
-选择要与此侦听器关联的前端 IP 地址。 侦听器将在此 IP 上侦听传入的请求。
+選擇您計畫要與此接聽程式產生關聯的前端 IP 位址。 接聽程式會接聽此 IP 上的傳入要求。
 
-### <a name="front-end-port"></a>前端端口
+### <a name="front-end-port"></a>前端埠
 
-选择前端端口。 选择现有端口或新建一个端口。 选择[允许的端口范围](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports)内的任意值。 不仅可以使用已知的端口（例如 80 和 443），而且还能使用任何适用的且允许的自定义端口。 一个端口可用于公共侦听器或专用侦听器。
+選擇前端埠。 選取現有的埠，或建立一個新的。 選擇[允許的埠範圍](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports)中的任何值。 您不只可以使用已知的埠，例如80和443，而是適用的任何允許的自訂埠。 埠可用於對外公開的接聽程式或私用的接聽程式。
 
-### <a name="protocol"></a>Protocol
+### <a name="protocol"></a>通訊協定
 
-选择 HTTP 或 HTTPS：
+選擇 [HTTP] 或 [HTTPS]：
 
-- 如果选择 HTTP，则客户端与应用程序网关之间的流量将不会加密。
+- 如果您選擇 HTTP，則會加密用戶端與應用程式閘道之間的流量。
 
-- 如果想要实现 [SSL 终止](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssl-terminationl)或[端到端 SSL 加密](https://docs.microsoft.com/azure/application-gateway/ssl-overview)，请选择 HTTPS。 客户端与应用程序网关之间的流量将会加密。 SSL 连接将在应用程序网关上终止。 若要实现端到端的 SSL 加密，必须选择 HTTPS，并配置**后端 HTTP** 设置。 这可以确保流量在从应用程序网关传输到后端时重新得到加密。
+- 如果您想要[tls 終止](features.md#secure-sockets-layer-ssltls-termination)或[端對端 tls 加密](https://docs.microsoft.com/azure/application-gateway/ssl-overview)，請選擇 [HTTPS]。 用戶端和應用程式閘道之間的流量會經過加密。 而且 TLS 連接會在應用程式閘道上終止。 如果您想要端對端 TLS 加密，則必須選擇 [HTTPS] 並設定**後端 HTTP**設定。 這可確保在從應用程式閘道傳送至後端時，會重新加密流量。
 
-若要配置 SSL 终止和端到端 SSL 加密，必须将一个证书添加到侦听器，使应用程序网关能够派生对称密钥。 派生过程中根据 SSL 协议规范进行的。 使用该对称密钥可以加密和解密发送到网关的流量。 网关证书必须采用个人信息交换 (PFX) 格式。 使用此格式可以导出私钥，供网关用来加密和解密流量。
 
-#### <a name="supported-certificates"></a>支持的证书
+若要設定 TLS 終止和端對端 TLS 加密，您必須將憑證新增至接聽程式，讓應用程式閘道可以衍生對稱金鑰。 這取決於 TLS 通訊協定規格。 對稱金鑰是用來加密和解密傳送至閘道的流量。 閘道憑證必須採用「個人資訊交換」（PFX）格式。 此格式可讓您匯出閘道用來加密和解密流量的私密金鑰。
 
-请参阅[支持用于 SSL 终止的证书](https://docs.microsoft.com/azure/application-gateway/ssl-overview#certificates-supported-for-ssl-termination)。
+#### <a name="supported-certificates"></a>支援的憑證
 
-### <a name="additional-protocol-support"></a>其他协议支持
+請參閱[TLS 終止支援的憑證](https://docs.microsoft.com/azure/application-gateway/ssl-overview#certificates-supported-for-ssl-termination)。
 
-#### <a name="http2-support"></a>HTTP2 支持
+### <a name="additional-protocol-support"></a>其他通訊協定支援
 
-仅针对连接到应用程序网关侦听器的客户端提供 HTTP/2 协议支持。 与后端服务器池的通信是通过 HTTP/1.1 进行的。 預設已停用 HTTP/2 支援。 以下 Azure PowerShell 代码片段演示如何启用此支持：
+#### <a name="http2-support"></a>HTTP2 支援
+
+HTTP/2 通訊協定支援僅供連接至應用程式閘道接聽程式的用戶端使用。 與後端伺服器集區的通訊是透過 HTTP/1.1。 預設已停用 HTTP/2 支援。 下列 Azure PowerShell 程式碼片段顯示如何啟用此動作：
 
 ```azurepowershell
 $gw = Get-AzApplicationGateway -Name test -ResourceGroupName hm
@@ -148,202 +193,208 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 #### <a name="websocket-support"></a>WebSocket 支援
 
-默认已启用 WebSocket 支持。 没有任何用户可配置的设置可以启用或禁用此支持。 可对 HTTP 和 HTTPS 侦听器使用 WebSocket。
+預設會啟用 WebSocket 支援。 沒有使用者可設定的設定，無法啟用或停用它。 您可以搭配 HTTP 和 HTTPS 接聽程式使用 Websocket。
 
 ### <a name="custom-error-pages"></a>自訂錯誤頁面
 
-可以在全局级别以及侦听器级别定义自定义错误。 但是，目前不支持在 Azure 门户中创建全局级别的自定义错误页。 可以在侦听器级别为 403 Web 应用程序防火墙错误或 502 维护页配置自定义错误页。 此外，必须为给定的错误状态代码指定一个可公开访问的 Blob URL。 如需詳細資訊，請參閱[建立應用程式閘道的自訂錯誤頁面](https://docs.microsoft.com/azure/application-gateway/custom-error)。
+您可以在全域層級或接聽程式層級定義自訂錯誤。 但目前不支援從 Azure 入口網站建立全域層級的自訂錯誤頁面。 您可以在接聽程式層級設定 403 web 應用程式防火牆錯誤或502維護頁面的自訂錯誤頁面。 您也必須為給定的錯誤狀態碼指定可公開存取的 blob URL。 如需詳細資訊，請參閱[建立應用程式閘道的自訂錯誤頁面](https://docs.microsoft.com/azure/application-gateway/custom-error)。
 
 ![應用程式閘道錯誤碼](https://docs.microsoft.com/azure/application-gateway/media/custom-error/ag-error-codes.png)
 
-若要配置全局自定义错误页，请参阅 [Azure PowerShell 配置](https://docs.microsoft.com/azure/application-gateway/custom-error#azure-powershell-configuration)。
+若要設定全域自訂錯誤頁面，請參閱[Azure PowerShell](https://docs.microsoft.com/azure/application-gateway/custom-error#azure-powershell-configuration)設定。
 
-### <a name="ssl-policy"></a>SSL 原則
+### <a name="tls-policy"></a>TLS 原則
 
-可以集中管理 SSL 证书，以及减小后端服务器场的加密-解密开销。 采用集中式 SSL 处理还能指定符合安全要求的集中 SSL 策略。 可以选择默认、预定义或自定义的 SSL 策略。
+您可以集中化 TLS/SSL 憑證管理，並降低後端伺服器陣列的加密解密額外負荷。 集中式 TLS 處理也可讓您指定適合您安全性需求的中央 TLS 原則。 您可以選擇 [*預設*]、[*預先定義*] 或 [*自訂*TLS 原則]。
 
-可以配置 SSL 策略来控制 SSL 协议版本。 可将应用程序网关配置为拒绝 TLS1.0、TLS1.1 和 TLS1.2。 默认情况下，SSL 2.0 和 3.0 已禁用且不可配置。 有关详细信息，请参阅[应用程序网关 SSL 策略概述](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview)。
+您可以設定 TLS 原則來控制 TLS 通訊協定版本。 您可以設定應用程式閘道使用最低通訊協定版本，從 TLS 1.0、TLS 1.1 和 TLS 1.2 進行 TLS 交握。 預設會停用 SSL 2.0 和3.0，且無法設定。 如需詳細資訊，請參閱[應用程式閘道 TLS 原則總覽](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview)。
 
-创建侦听器后，请将它关联到某个请求路由规则。 该规则确定如何将侦听器上收到的请求路由到后端。
+建立接聽程式之後，您可以將它與要求路由規則產生關聯。 該規則會決定如何將接聽程式收到的要求路由傳送至後端。
 
-## <a name="request-routing-rules"></a>请求路由规则
+## <a name="request-routing-rules"></a>要求路由規則
 
-使用 Azure 门户创建应用程序网关时，可创建一个默认规则 (*rule1*)。 此规则会将默认侦听器 (*appGatewayHttpListener*) 绑定到默认后端池 (*appGatewayBackendPool*) 和默认后端 HTTP 设置 (*appGatewayBackendHttpSettings*)。 创建网关后，可以编辑该默认规则的设置，或创建新的规则。
+當您使用 Azure 入口網站建立應用程式閘道時，會建立預設規則（*rule1*）。 此規則會將預設的接聽程式（*appGatewayHttpListener*）與預設後端集區（*appGatewayBackendPool*）和預設的後端 HTTP 設定（*appGatewayBackendHttpSettings*）系結。 建立閘道之後，您可以編輯預設規則的設定，或建立新的規則。
 
 ### <a name="rule-type"></a>規則型別
 
-创建规则时，可以选择[“基本”或“基于路径”](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rule)。
+當您建立規則時，您可以選擇 [ [*基本*] 和 [*路徑型*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rules)]。
 
-- 若要将关联的侦听器（例如 *blog<i></i>.contoso.com/\**）上的所有请求转发到单个后端池，请选择“基本”。
-- 若要将来自特定 URL 路径的请求路由到特定的后端池，请选择“基于路径”。 路径模式仅应用到 URL 的路径，而不应用到该 URL 的查询参数。
+- 如果您想要將相關接聽程式（例如， * <i></i> contoso.com/ \* ）* 的所有要求轉送到單一後端集區，請選擇 [基本]。
+- 如果您想要將來自特定 URL 路徑的要求路由至特定後端集區，請選擇路徑型。 路徑模式只會套用至 URL 的路徑，而不會套用至其查詢參數。
 
-#### <a name="order-of-processing-rules"></a>规则的处理顺序
+#### <a name="order-of-processing-rules"></a>處理規則的順序
 
-使用 v1 SKU 时，将按照路径在基于路径的规则的 URL 路径映射中的列出顺序处理传入请求的模式匹配。 如果某个请求与 URL 路径映射中的两个或更多个路径的模式相匹配，则会匹配最先列出的路径。 请求将转发到与该路径关联的后端。
+就 v1 和 v2 SKU 而言，傳入要求的模式比對是以路徑為基礎之規則的 URL 路徑對應中列出路徑的順序來處理。 如果要求與路徑對應中的兩個或多個路徑中的模式相符，則會比對第一個列出的路徑。 然後將要求轉送至與該路徑相關聯的後端。
 
-V2 sku，確切的相符項目會是較高的優先順序高於在 URL 路徑對應中的路徑順序。 如果要求符合兩個或多個路徑中的模式，此要求被轉送至後端完全符合要求的路徑與相關聯。 如果連入要求中的路徑不完全符合對應中的任何路徑，模式比對要求的處理路徑型規則路徑對應順序 清單中。
+### <a name="associated-listener"></a>相關聯的接聽程式
 
-### <a name="associated-listener"></a>关联的侦听器
+將接聽程式與規則產生關聯，以評估與接聽程式相關聯的*要求路由規則*，以判斷要將要求路由至其中的後端集區。
 
-将一个侦听器关联到该规则，以评估与该侦听器关联的请求路由规则，从而确定请求要路由到的后端池。
+### <a name="associated-back-end-pool"></a>相關聯的後端集區
 
-### <a name="associated-back-end-pool"></a>关联的后端池
+將包含後端目標的後端集區，與服務接聽程式接收的要求提供給規則的關聯。
 
-将规则关联到包含后端目标的后端池，该池为侦听器收到的请求提供服务。
+ - 針對基本規則，只允許一個後端集區。 相關聯接聽程式上的所有要求都會轉送到該後端集區。
 
- - 如果使用基本规则，则只允许一个后端池。 关联的侦听器上的所有请求将转发到该后端池。
+ - 如需以路徑為基礎的規則，請新增多個對應至每個 URL 路徑的後端集區。 符合所輸入 URL 路徑的要求會轉送到對應的後端集區。 此外，新增預設後端集區。 不符合規則中任何 URL 路徑的要求會轉送到該集區。
 
- - 如果使用基于路径的规则，请添加对应于每个 URL 路径的多个后端池。 与输入的 URL 路径匹配的请求将转发到相应的后端池。 另请添加默认后端池。 与规则中的任何 URL 路径都不匹配的请求将转发到该池。
+### <a name="associated-back-end-http-setting"></a>相關聯的後端 HTTP 設定
 
-### <a name="associated-back-end-http-setting"></a>关联的后端 HTTP 设置
+為每個規則新增後端 HTTP 設定。 系統會使用此設定中指定的埠號碼、通訊協定和其他資訊，從應用程式閘道將要求路由傳送至後端目標。
 
-为每个规则添加后端 HTTP 设置。 系统使用此设置中指定的端口号、协议和其他信息，将请求从应用程序网关路由到后端目标。
+針對基本規則，只允許一個後端 HTTP 設定。 相關聯接聽程式上的所有要求都會使用此 HTTP 設定轉送到對應的後端目標。
 
-如果使用基本规则，则只允许一个后端 HTTP 设置。 系统会使用此 HTTP 设置将关联的侦听器上的所有请求转发到相应的后端目标。
+如需以路徑為基礎的規則，請新增多個與每個 URL 路徑對應的後端 HTTP 設定。 符合此設定中 URL 路徑的要求，會使用對應至每個 URL 路徑的 HTTP 設定轉送到對應的後端目標。 此外，新增預設的 HTTP 設定。 如果要求不符合此規則中的任何 URL 路徑，則會使用預設 HTTP 設定來轉送到預設的後端集區。
 
-为每个规则添加后端 HTTP 设置。 系统使用此设置中指定的端口号、协议和其他信息，将请求从应用程序网关路由到后端目标。
+### <a name="redirection-setting"></a>重新導向設定
 
-如果使用基本规则，则只允许一个后端 HTTP 设置。 系统会使用此 HTTP 设置将关联的侦听器上的所有请求转发到相应的后端目标。
+如果已針對基本規則設定重新導向，則相關聯接聽程式上的所有要求都會重新導向至目標。 這是*全域*重新導向。 如果已針對以路徑為基礎的規則設定重新導向，則只會重新導向特定網站區域中的要求。 例如， */cart/ \* *所表示的購物車區域。 這是以*路徑為基礎的重新導向*。
 
-如果使用基于路径的规则，请添加对应于每个 URL 路径的多个后端 HTTP 设置。 系统使用对应于每个 URL 路径的 HTTP 设置，将与此设置中的 URL 路径匹配的请求转发到相应的后端目标。 另请添加默认 HTTP 设置。 系统会使用默认 HTTP 设置，将与此规则中的任何 URL 路径都不匹配的请求转发到默认后端池。
-
-### <a name="redirection-setting"></a>重定向设置
-
-如果为基本规则配置了重定向，则关联的侦听器上的所有请求将重定向到目标。 此过程称为全局重定向。 如果为基于路径的规则配置了重定向，则只会重定向特定站点区域中的请求。 区域的示例包括 */cart/\** 表示的购物车区域。 此过程称为基于路径的重定向。
-
-有关重定向的详细信息，请参阅[应用程序网关重定向概述](https://docs.microsoft.com/azure/application-gateway/redirect-overview)。
+如需重新導向的詳細資訊，請參閱[應用程式閘道重新導向總覽](redirect-overview.md)。
 
 #### <a name="redirection-type"></a>重新導向類型
 
-选择所需的重定向类型：*Permanent(301)*、*Temporary(307)*、*Found(302)* 或 *See other(303)*。
+選擇所需的重新導向類型： [*永久（301）*]、[*暫存（307）*]、 *[找到（302）*] 或 [*查看其他（303）*]。
 
 #### <a name="redirection-target"></a>重新導向目標
 
-选择另一个侦听器或外部站点作为重定向目标。
+選擇另一個接聽程式或外部網站做為重新導向目標。
 
 ##### <a name="listener"></a>接聽程式
 
-选择侦听器作为重定向目标可将来自网关上的一个侦听器的流量重定向到另一个侦听器。 想要启用 HTTP 到 HTTPS 的重定向时，必须指定此设置。 此设置将来自源侦听器（用于检查 HTTP 请求）的流量重定向到目标侦听器（用于检查传入的 HTTPS 请求）。 还可以选择在转发到重定向目标的请求中包含来自原始请求的查询字符串和路径。
+選擇 [接聽程式] 做為重新導向目標，將流量從一個接聽程式重新導向至閘道上的另一個接聽程式 當您想要啟用 HTTP 對 HTTPS 重新導向時，這是必要的設定。 它會將來源接聽程式的流量，從檢查傳入的 HTTP 要求，重新導向至檢查傳入 HTTPS 要求的目的地接聽程式。 您也可以選擇在轉送至重新導向目標的要求中包含查詢字串和來自原始要求的路徑。
 
-![应用程序网关组件对话框](./media/configuration-overview/configure-redirection.png)
+![應用程式閘道元件] 對話方塊](./media/configuration-overview/configure-redirection.png)
 
-有关 HTTP 到 HTTPS 的重定向的详细信息，请参阅：
-- [使用 Azure 入口網站的 HTTP 至 HTTPS 重新導向](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal)
-- [使用 PowerShell 的 HTTP 至 HTTPS 重新導向](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell)
-- [使用 Azure CLI 的 HTTP 至 HTTPS 重新導向](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
+如需有關 HTTP 對 HTTPS 重新導向的詳細資訊，請參閱：
+- [使用 Azure 入口網站的 HTTP 對 HTTPS 重新導向](redirect-http-to-https-portal.md)
+- [使用 PowerShell 的 HTTP 對 HTTPS 重新導向](redirect-http-to-https-powershell.md)
+- [使用 Azure CLI 的 HTTP 對 HTTPS 重新導向](redirect-http-to-https-cli.md)
 
 ##### <a name="external-site"></a>外部網站
 
-若要将与此类规则关联的侦听器上的流量重定向到外部站点，请选择外部站点。 可以选择在转发到重定向目标的请求中包含来自原始请求的查询字符串。 无法将原始请求中的路径转发到外部站点。
+當您想要將與此規則相關聯之接聽程式上的流量重新導向至外部網站時，請選擇 [外部網站]。 您可以從轉送至重新導向目標的要求中，選擇包含原始要求中的查詢字串。 您無法將路徑轉送到原始要求中的外部網站。
 
-有关重定向的详细信息，请参阅：
-- [使用 PowerShell 将流量重定向到外部站点](https://docs.microsoft.com/azure/application-gateway/redirect-external-site-powershell)
-- [使用 CLI 将流量重定向到外部站点](https://docs.microsoft.com/azure/application-gateway/redirect-external-site-cli)
+如需重新導向的詳細資訊，請參閱：
+- [使用 PowerShell 將流量重新導向至外部網站](redirect-external-site-powershell.md)
+- [使用 CLI 將流量重新導向至外部網站](redirect-external-site-cli.md)
 
-#### <a name="rewrite-the-http-header-setting"></a>請重寫的 HTTP 標頭設定
+#### <a name="rewrite-the-http-header-setting"></a>重寫 HTTP 標頭設定
 
-這項設定會新增、 移除或更新 HTTP 要求和回應標頭時要求和回應封包將用戶端與後端集區之間移動。 您可以只設定這項功能，透過 PowerShell。 Azure 入口網站和 CLI 支援尚無法使用。 如需詳細資訊，請參閱
+此設定會在要求和回應封包于用戶端與後端集區之間移動時，新增、移除或更新 HTTP 要求和回應標頭。 如需詳細資訊，請參閱：
 
- - [重新撰寫 HTTP 標頭概觀](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
- - [設定 HTTP 標頭重寫](https://docs.microsoft.com/azure/application-gateway/add-http-header-rewrite-rule-powershell#specify-your-http-header-rewrite-rule-configuration)
+ - [重寫 HTTP 標頭總覽](rewrite-http-headers.md)
+ - [設定 HTTP 標頭重寫](rewrite-http-headers-portal.md)
 
 ## <a name="http-settings"></a>HTTP 設定
 
-应用程序网关使用此处指定的配置将流量路由到后端服务器。 创建 HTTP 设置后，必须将其关联到一个或多个请求路由规则。
+應用程式閘道會使用您在此處指定的設定，將流量路由傳送至後端伺服器。 建立 HTTP 設定之後，您必須將它與一或多個要求路由規則產生關聯。
 
 ### <a name="cookie-based-affinity"></a>以 Cookie 為基礎的同質性
 
-需要在同一台服务器上保留用户会话时，此功能非常有用。 使用网关托管的 Cookie，应用程序网关可将来自用户会话的后续流量定向到同一服务器进行处理。 如果用户会话的会话状态保存在服务器本地，则此功能十分重要。 如果应用程序无法处理基于 Cookie 的相关性，则你无法使用此功能。 若要使用此功能，请确保客户端支持 Cookie。
+Azure 應用程式閘道會使用閘道管理的 cookie 來維護使用者會話。 當使用者將第一個要求傳送至應用程式閘道時，它會在回應中設定具有包含會話詳細資料之雜湊值的親和性 cookie，因此攜帶親和性 cookie 的後續要求將會路由至相同的後端伺服器，以維護其對應。 
+
+當您想要在相同的伺服器上保留使用者會話，以及在使用者會話的本機儲存會話狀態時，這項功能就很有用。 如果應用程式無法處理以 cookie 為基礎的親和性，您就無法使用這項功能。 若要使用它，請確定用戶端支援 cookie。
+
+[Chromium 瀏覽器](https://www.chromium.org/Home) [v80 更新](https://chromiumdash.appspot.com/schedule)已提出強制，其中不含[SameSite](https://tools.ietf.org/id/draft-ietf-httpbis-rfc6265bis-03.html#rfc.section.5.3.7)屬性的 HTTP cookie 必須被視為 SameSite = 不嚴格。 在 CORS （跨原始資源分享）要求的情況下，如果 cookie 必須在協力廠商內容中傳送，則必須使用*SameSite = None;安全*屬性，而且只能透過 HTTPS 傳送。 否則，在僅限 HTTP 的案例中，瀏覽器不會傳送協力廠商內容中的 cookie。 這項更新自 Chrome 的目標是要加強安全性，並避免跨網站偽造要求（CSRF）攻擊。 
+
+若要支援這項變更，從 17 2020 年2月開始，應用程式閘道（所有 SKU 類型）除了現有的*ApplicationGatewayAffinity* cookie 之外，也會插入另一個稱為*ApplicationGatewayAffinityCORS*的 cookie。 *ApplicationGatewayAffinityCORS* cookie 已新增兩個屬性（*"SameSite = None;Secure "*），以便即使跨原始來源要求，仍會維護粘滯會話。
+
+請注意，預設的親和性 cookie 名稱是*ApplicationGatewayAffinity* ，您可以變更它。 如果您使用自訂的親和性 cookie 名稱，則會加入額外的 cookie，並以 CORS 作為尾碼。 例如， *CustomCookieNameCORS*。
+
+> [!NOTE]
+> 如果設定了屬性*SameSite = None* ，cookie 就必須同時包含*安全*旗標，而且必須透過 HTTPS 傳送。  如果需要透過 CORS 的會話親和性，您必須將工作負載遷移至 HTTPS。 如需應用程式閘道的詳細資訊，請參閱 TLS 卸載和端對端 TLS 檔-[總覽](ssl-overview.md)、[使用 AZURE 入口網站設定具有 TLS 終止的應用程式閘道](create-ssl-portal.md)、使用[應用程式閘道搭配入口網站設定端對端 tls](end-to-end-ssl-portal.md)。
 
 ### <a name="connection-draining"></a>清空連線
 
-连接清空可帮助你在计划内服务更新期间正常删除后端池成员。 在创建规则期间，可将此设置应用到后端池的所有成员。 此设置可确保后端池的所有已取消注册实例不再收到任何新请求。 同时，允许现有请求在所配置的时间限制内完成。 连接清空将应用到已通过 API 调用从后端池中显式删除的后端实例。 它还会应用到被运行状况探测报告为“不正常”的后端实例。
+清空連線可協助您在規劃的服務更新期間，正常地移除後端集區成員。 您可以藉由啟用 HTTP 設定的連線清空，將這項設定套用至後端集區的所有成員。 它可確保後端集區的所有取消註冊實例繼續維持現有的連線，並提供可設定的超時時間的要求，而且不會收到任何新的要求或連接。 唯一的例外是因為閘道管理的會話親和性，而系結至取消註冊實例的要求，而且會繼續轉送到取消註冊的實例。 清空連接會套用至從後端集區明確移除的後端實例。
 
-### <a name="protocol"></a>Protocol
+### <a name="protocol"></a>通訊協定
 
-应用程序网关支持使用 HTTP 和 HTTPS 将请求路由到后端服务器。 如果选择了 HTTP 协议，则流量将以未加密的形式传送到后端服务器。 如果不能接受未加密的通信，请选择 HTTPS。
+應用程式閘道支援 HTTP 和 HTTPS，以將要求路由傳送至後端伺服器。 如果您選擇 HTTP，則會加密對後端伺服器的流量。 如果無法接受未加密的通訊，請選擇 [HTTPS]。
 
-在侦听器中结合 HTTPS 使用此设置将有助于实现[端到端的 SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview)。 这样，就可以安全地将敏感数据以加密的形式传输到后端。 后端池中每个已启用端到端 SSL 的后端服务器都必须配置证书，以便能够进行安全的通信。
+這項設定與接聽程式中的 HTTPS 結合，[可支援端對端 TLS](ssl-overview.md)。 這可讓您安全地將加密的機密資料傳輸至後端。 後端集區中已啟用端對端 TLS 的每部後端伺服器，都必須使用憑證來設定，以允許安全通訊。
 
 ### <a name="port"></a>Port
 
-此设置指定后端服务器要在哪个端口上侦听来自应用程序网关的流量。 可以配置 1 到 65535 的端口号。
+此設定會指定後端伺服器用來接聽來自應用程式閘道之流量的埠。 您可以設定範圍從1到65535的埠。
 
 ### <a name="request-timeout"></a>要求逾時
 
-此设置表示应用程序网关等待后端池做出响应的秒数，如此超过此秒数，则会返回“连接超时”错误消息。
+此設定是應用程式閘道等候從後端伺服器接收回應的秒數。
 
-### <a name="override-back-end-path"></a>替代后端路径
+### <a name="override-back-end-path"></a>覆寫後端路徑
 
-使用此设置可以配置可选的自定义转发路径，以便在将请求转发到后端时使用。 与“替代后端路径”字段中的自定义路径匹配的任意传入路径部分将复制到转发的路径。 下表描述了此功能的工作原理：
+此設定可讓您設定選擇性的自訂轉送路徑，以在要求轉送至後端時使用。 傳入路徑中符合 [覆**寫後端路徑**] 欄位中自訂路徑的任何部分，都會複製到轉送的路徑。 下表顯示這項功能的運作方式：
 
-- 将 HTTP 设置附加到基本请求路由规则时：
+- 當 HTTP 設定附加至基本要求路由規則時：
 
-  | 原始请求  | 替代后端路径 | 转发到后端的请求 |
+  | 原始要求  | 覆寫後端路徑 | 已將要求轉送到後端 |
   | ----------------- | --------------------- | ---------------------------- |
-  | /home/            | /override/            | /override/home/              |
-  | /home/secondhome/ | /override/            | /override/home/secondhome/   |
+  | /home/            | 覆寫            | /override/home/              |
+  | /home/secondhome/ | 覆寫            | /override/home/secondhome/   |
 
-- 将 HTTP 设置附加到基于路径的请求路由规则时：
+- 當 HTTP 設定附加至以路徑為基礎的要求路由規則時：
 
-  | 原始请求           | 路径规则       | 替代后端路径 | 转发到后端的请求 |
+  | 原始要求           | 路徑規則       | 覆寫後端路徑 | 已將要求轉送到後端 |
   | -------------------------- | --------------- | --------------------- | ---------------------------- |
-  | /pathrule/home/            | /pathrule*      | /override/            | /override/home/              |
-  | /pathrule/home/secondhome/ | /pathrule*      | /override/            | /override/home/secondhome/   |
-  | /home/                     | /pathrule*      | /override/            | /override/home/              |
-  | /home/secondhome/          | /pathrule*      | /override/            | /override/home/secondhome/   |
-  | /pathrule/home/            | /pathrule/home* | /override/            | /override/                   |
-  | /pathrule/home/secondhome/ | /pathrule/home* | /override/            | /override/secondhome/        |
+  | /pathrule/home/            | pathrule      | 覆寫            | /override/home/              |
+  | /pathrule/home/secondhome/ | pathrule      | 覆寫            | /override/home/secondhome/   |
+  | /home/                     | pathrule      | 覆寫            | /override/home/              |
+  | /home/secondhome/          | pathrule      | 覆寫            | /override/home/secondhome/   |
+  | /pathrule/home/            | /pathrule/home* | 覆寫            | 覆寫                   |
+  | /pathrule/home/secondhome/ | /pathrule/home* | 覆寫            | /override/secondhome/        |
+  | pathrule                 | pathrule      | 覆寫            | 覆寫                   |
 
-### <a name="use-for-app-service"></a>用于应用服务
+### <a name="use-for-app-service"></a>針對 app service 使用
 
-这是一个 UI 快捷方式，用于选择 Azure 应用服务后端的两个所需设置。 它会启用“从后端地址中选取主机名”，并创建新的自定义探测。 （有关详细信息，请参阅本文的[从后端地址中选取主机名](#pick)设置部分。）将创建新的探测，并从后端成员的地址中选取探测标头。
+這是僅限 UI 的快捷方式，可選取 Azure App Service 後端所需的兩個設定。 它會啟用**從後端位址挑選主機名稱**，如果您還沒有自訂探查，則會建立新的。 （如需詳細資訊，請參閱本文的[從後端位址設定挑選主機名稱](#pick)一節）。隨即會建立新的探查，並從後端成員的位址中挑選探查標頭。
 
 ### <a name="use-custom-probe"></a>使用自訂探查
 
-此设置用于将[自定义探测](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe)与某个 HTTP 设置相关联。 只能将一个自定义探测关联到某个 HTTP 设置。 如果未显式关联自定义探测，则会使用[默认探测](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe-settings)来监视后端的运行状况。 我们建议创建自定义探测，以便更好地控制后端的运行状况监视。
+此設定會將[自訂探查](application-gateway-probe-overview.md#custom-health-probe)與 HTTP 設定產生關聯。 您只能將一個自訂探查與 HTTP 設定產生關聯。 如果您未明確建立自訂探查的關聯，則會使用[預設探查](application-gateway-probe-overview.md#default-health-probe-settings)來監視後端的健全狀況。 我們建議您建立自訂探查，以便更充分掌控後端的健全狀況監視。
 
 > [!NOTE]
-> 只有在将相应的 HTTP 设置显式关联到某个侦听器之后，自定义探测才会监视后端池的运行状况。
+> 自訂探查不會監視後端集區的健康情況，除非對應的 HTTP 設定已明確與接聽程式相關聯。
 
-### <a id="pick"/></a>从后端地址中选取主机名
+### <a name="pick-host-name-from-back-end-address"></a><a id="pick"/></a>從後端位址挑選主機名稱
 
-此功能将请求中的 *host* 标头动态设置为后端池的主机名。 主机名使用 IP 地址或 FQDN。
+這項功能會將要求中的*主機*標頭動態設定為後端集區的主機名稱。 它會使用 IP 位址或 FQDN。
 
-如果后端的域名不同于应用程序网关的 DNS 名称，并且后端必须使用特定的 host 标头或服务器名称指示 (SNI) 扩展才能解析为正确的终结点，则此功能会很有帮助。
+當後端的功能變數名稱與應用程式閘道的 DNS 名稱不同，而且後端依賴特定主機標頭來解析為正確的端點時，這項功能會有説明。
 
-例如，使用多租户服务作为后端时。 应用服务是使用共享空间和单个 IP 地址的多租户服务。 因此，只能通过自定义域设置中配置的主机名访问应用服务。
+範例案例是多租使用者服務，做為後端。 App service 是一種多租使用者服務，它會使用具有單一 IP 位址的共用空間。 因此，應用程式服務只能透過自訂網域設定中設定的主機名稱來存取。
 
-自定义域名默认为 *example.azurewebsites.<i></i>net*。 若要通过未显式注册到应用服务中的主机名或者通过应用程序网关的 FQDN 使用应用程序网关访问应用服务，请将原始请求中的主机名替代为应用服务的主机名。 为此，请启用“从后端地址中选取主机名”设置。
+根據預設，自訂功能變數名稱為*example.azurewebsites.net*。 若要透過未在 app service 中明確註冊的主機名稱，或透過應用程式閘道的 FQDN，使用應用程式閘道來存取您的 app service，您可以將原始要求中的主機名稱覆寫至 app service 的主機名稱。 若要這麼做，請啟用 [**從後端位址挑選主機名稱**] 設定。
 
-对于其现有自定义 DNS 名称已映射到应用服务的自定义域，不需要启用此设置。
+針對現有自訂 DNS 名稱對應至 app service 的自訂網域，您不需要啟用此設定。
 
 > [!NOTE]
-> 适用于 PowerApps 的应用服务环境不需要此设置，因为它属于专用部署。
+> App Service 環境（這是專用部署）不需要此設定。
 
-### <a name="host-name-override"></a>主机名替代
+### <a name="host-name-override"></a>主機名稱覆寫
 
-此功能可将应用程序网关上的传入请求中的 *host* 标头替换为指定的主机名。
+這項功能會以您指定的主機名稱取代應用程式閘道上的傳入要求中的*主機*標頭。
 
-例如，如果*www.contoso<i></i>.com*中指定**主機名稱**設定時，原始要求*https:/<i></i>/appgw.eastus.cloudapp.net/path1*變更為*https:/<i></i>/www.contoso.com/path1*時將要求轉送至後端伺服器。
+例如，如果在 [**主機名稱**] 設定中指定*www.contoso.com* ，則將 `https://appgw.eastus.cloudapp.azure.com/path1` `https://www.contoso.com/path1` 要求轉寄至後端伺服器時，原始要求 * 會變更為 * *。
 
-## <a name="back-end-pool"></a>后端池
+## <a name="back-end-pool"></a>後端集區
 
-可将后端池指向四种类型的后端成员：特定的虚拟机、虚拟机规模集、IP 地址/FQDN 或应用服务。 每个后端池可以指向同一类型的多个成员。 不支持指向同一后端池中不同类型的成员。
+您可以將後端集區指向四種類型的後端成員：特定的虛擬機器、虛擬機器擴展集、IP 位址/FQDN 或應用程式服務。 
 
-创建后端池后，必须将其关联到一个或多个请求路由规则。 此外，必须为应用程序网关上的每个后端池配置运行状况探测。 满足请求路由规则条件时，应用程序网关会将流量转发到相应后端池中正常运行的服务器（是否正常由运行状况探测决定）。
+建立後端集區之後，您必須將它與一或多個要求路由規則產生關聯。 您也必須為應用程式閘道上的每個後端集區設定健康情況探查。 符合要求路由規則條件時，應用程式閘道會將流量轉送到對應後端集區中狀況良好的伺服器（由健康情況探查所決定）。
 
 ## <a name="health-probes"></a>健康狀態探查
 
-应用程序网关默认会监视其后端中所有资源的运行状况。 但是，我们强烈建议为每个后端 HTTP 设置创建一个自定义探测，以便更好地控制运行状况监视。 若要了解如何配置自定义探测，请参阅[自定义运行状况探测设置](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe-settings)。
+應用程式閘道預設會監視其後端中所有資源的健全狀況。 但強烈建議您為每個後端 HTTP 設定建立自訂探查，以進一步掌控健全狀況監視。 若要瞭解如何設定自訂探查，請參閱[自訂健康情況探查設定](application-gateway-probe-overview.md#custom-health-probe-settings)。
 
 > [!NOTE]
-> 创建自定义运行状况探测后，需将其关联到后端 HTTP 设置。 只有在将相应的 HTTP 设置显式关联到某个侦听器之后，自定义探测才会监视后端池的运行状况。
+> 建立自訂健康情況探查之後，您必須將它與後端 HTTP 設定產生關聯。 自訂探查不會監視後端集區的健康情況，除非對應的 HTTP 設定已明確與使用規則的接聽程式相關聯。
 
 ## <a name="next-steps"></a>後續步驟
 
-了解应用程序网关组件后，可以：
+現在您已瞭解應用程式閘道元件，您可以：
 
-- [在 Azure 门户中创建应用程序网关](quick-create-portal.md)
-- [使用 PowerShell 创建应用程序网关](quick-create-powershell.md)
-- [使用 Azure CLI 创建应用程序网关](quick-create-cli.md)
+- [在 Azure 入口網站中建立應用程式閘道](quick-create-portal.md)
+- [使用 PowerShell 建立應用程式閘道](quick-create-powershell.md)
+- [使用 Azure CLI 建立應用程式閘道](quick-create-cli.md)

@@ -1,27 +1,17 @@
 ---
-title: Azure PowerShell 指令碼範例 - 將應用程式連線至儲存體帳戶 | Microsoft Docs
-description: Azure PowerShell 指令碼範例 - 將 App Service 應用程式連線至儲存體帳戶
-services: app-service\web
-documentationcenter: ''
-author: syntaxc4
-manager: erikre
-editor: ''
+title: PowerShell：連線至儲存體帳戶
+description: 了解如何使用 Azure PowerShell 將 App Service 的部署和管理自動化。 此範例說明如何將應用程式連線至儲存體帳戶。
 tags: azure-service-management
 ms.assetid: e4831bdc-2068-4883-9474-0b34c2e3e255
-ms.service: app-service
-ms.devlang: multiple
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 03/20/2017
-ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 523ab8aa242b2c5eab2d9c2aa5b61485d84185eb
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: d1c8951445c0be6a3d4b9c4763d719fc7d79d2d5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106795"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74685323"
 ---
 # <a name="connect-an-app-service-app-to-a-storage-account"></a>將 App Service 應用程式連線至儲存體帳戶
 
@@ -47,7 +37,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 建立用來存放所有資源的資源群組。 |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | 建立 App Service 方案。 |

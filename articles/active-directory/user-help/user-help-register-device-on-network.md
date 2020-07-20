@@ -1,25 +1,23 @@
 ---
-title: 註冊個人的裝置上組織的網路-Azure Active Directory |Microsoft Docs
+title: 在組織的網路上註冊個人裝置 - Azure AD
 description: 了解如何在組織的網路上註冊您的個人裝置，讓您可以存取組織的受保護資源。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 01/04/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 041c8bb6b4de2bbe2cbeb4c1a89e452239ae57bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 68d7b06aa6473a99422d8cfb51f6e3a465933a0f
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60473642"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747398"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>在組織的網路上註冊您的個人裝置
 在組織的網路上註冊您的個人裝置 (通常是手機或平板電腦)。 註冊您的裝置之後，它將能夠存取組織的受限資源。
@@ -50,7 +48,7 @@ ms.locfileid: "60473642"
 
     ![醒目提示連線選項的存取公司或學校資源畫面](./media/user-help-register-device-on-network/register-device-access-work-school-connect.png)
 
-3. 在 [新增公司或學校帳戶] 畫面中，輸入您公司或學校帳戶的電子郵件地址，然後選取 [下一步]。 例如： alain@contoso.com。
+3. 在 [新增公司或學校帳戶] 畫面中，輸入您公司或學校帳戶的電子郵件地址，然後選取 [下一步]。 例如： alain@contoso.com 。
 
 4. 登入您的公司或學校帳戶，然後選取 [登入]。
 

@@ -1,74 +1,69 @@
 ---
-title: 在 Azure Functions 中的網路功能的相關常見問題的解答
-description: 最常見的問題和案例的網路功能搭配 Azure Functions 的一些解答。
-services: functions
+title: 有關 Azure Functions 網路功能的常見問題
+description: 解決一些最常見的問題，以及 Azure Functions 的網路功能案例的解答。
 author: alexkarcher-msft
-manager: jeconnoc
-ms.service: azure-functions
 ms.topic: troubleshooting
 ms.date: 4/11/2019
-ms.author: alkarche, glenga
-ms.openlocfilehash: b673e625e1a50c32e3d8580ec442792ed8611703
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.author: alkarche
+ms.reviewer: glenga
+ms.openlocfilehash: acb1e942c1f342ce6fee7d8aeacafcc1d7b6fd91
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64572591"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75409535"
 ---
-# <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>在 Azure Functions 中的網路功能的相關常見問題的解答
+# <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>有關 Azure Functions 網路功能的常見問題
 
-本文列出 Azure Functions 中的網路功能的相關常見問題的解答。 如需更完整的概觀，請參閱[函式網路功能選項](functions-networking-options.md)。
+本文列出 Azure Functions 中網路功能的常見問題。 如需更完整的總覽，請參閱函式[網路功能選項](functions-networking-options.md)。
 
-## <a name="how-do-i-set-a-static-ip-in-functions"></a>如何設定函式中的靜態 ip 位址？
+## <a name="how-do-i-set-a-static-ip-in-functions"></a>如何? 在函數中設定靜態 IP 嗎？
 
-部署 App Service Environment 中的函式是目前唯一的方式有您的函式的輸入和輸出靜態 IP。 如需使用 App Service Environment 的詳細資訊，開始使用發行項[建立及使用內部負載平衡與 App Service Environment](../app-service/environment/create-ilb-ase.md)。
+在 App Service 環境中部署函式目前是為您的函式提供靜態輸入和輸出 IP 的唯一方法。 如需使用 App Service 環境的詳細資訊，請從[建立和使用內部負載平衡器和 App Service 環境一](../app-service/environment/create-ilb-ase.md)文開始。
 
-## <a name="how-do-i-restrict-internet-access-to-my-function"></a>如何在我的函式來限制網際網路存取？
+## <a name="how-do-i-restrict-internet-access-to-my-function"></a>如何? 限制對我的函式的網際網路存取？
 
-您可以限制網際網路存取數種方式：
+您可以用幾種方式限制網際網路存取：
 
-* [IP 限制](../app-service/app-service-ip-restrictions.md):函式應用程式限制輸入的流量的 IP 範圍。
-    * 在 IP 限制，您就也能夠設定[服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)，限制您的函式只接受來自特定的虛擬網路的輸入的流量。
-* 移除所有的 HTTP 觸發程序。 對於某些應用程式，就已足夠只要避免 HTTP 觸發程序，並觸發您的函式中使用任何其他的事件來源。
+* [Ip 限制](../app-service/app-service-ip-restrictions.md)：依 ip 範圍限制函數應用程式的輸入流量。
+    * 在 [IP 限制] 下，您也可以設定[服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)，這會限制您的函式只接受來自特定虛擬網路的輸入流量。
+* 移除所有 HTTP 觸發程式。 對於某些應用程式，只需避免 HTTP 觸發程式，並使用任何其他事件來源來觸發您的函式就夠了。
 
-請記住 Azure 入口網站的編輯器，需要您執行的函式的直接存取。 您用來瀏覽入口網站，將其 IP 允許清單中的裝置時，會需要變更任何程式碼，透過 Azure 入口網站。 但您仍然可以使用平台功能 索引標籤底下的任何項目使用中適當的網路限制。
+請記住，Azure 入口網站編輯器需要直接存取您的執行中函式。 透過 Azure 入口網站的任何程式碼變更都需要您用來流覽入口網站的裝置，以將其 IP 列入允許清單。 但是您仍然可以使用 [平臺功能] 索引標籤下的任何專案，並提供網路限制。
 
-## <a name="how-do-i-restrict-my-function-app-to-a-virtual-network"></a>如何在虛擬網路限制我的函式應用程式？
+## <a name="how-do-i-restrict-my-function-app-to-a-virtual-network"></a>如何? 將我的函數應用程式限制為虛擬網路嗎？
 
-您可以限制**傳入**虛擬網路，使用函數應用程式的流量[服務端點](./functions-networking-options.md#private-site-access)。 此組態仍會允許到網際網路的傳出呼叫此函式應用程式。
+您可以使用[服務端點](./functions-networking-options.md#private-site-access)，將函式應用程式的**輸入**流量限制為虛擬網路。 此設定仍然允許函數應用程式對網際網路進行輸出呼叫。
 
-完全限制函式，使所有的流量流經虛擬網路的唯一方式是使用內部負載平衡 App Service 環境。 此選項會部署您的網站上的虛擬網路內的專用基礎結構，並將傳送所有的觸發程序和透過虛擬網路的流量。 
+完全限制函式的唯一方法，就是透過虛擬網路的所有流量都是使用內部負載平衡的 App Service 環境。 此選項會將您的網站部署在虛擬網路內的專用基礎結構上，並透過虛擬網路傳送所有觸發程式和流量。 
 
-如需使用 App Service Environment 的詳細資訊，開始使用發行項[建立及使用內部負載平衡與 App Service Environment](../app-service/environment/create-ilb-ase.md)。
+如需使用 App Service 環境的詳細資訊，請從[建立和使用內部負載平衡器和 App Service 環境一](../app-service/environment/create-ilb-ase.md)文開始。
 
-## <a name="how-can-i-access-resources-in-a-virtual-network-from-a-function-app"></a>如何存取函數應用程式中的虛擬網路中的資源？
+## <a name="how-can-i-access-resources-in-a-virtual-network-from-a-function-app"></a>如何從函數應用程式存取虛擬網路中的資源？
 
-您可以使用虛擬網路整合，從執行的函式存取中的虛擬網路的資源。 如需詳細資訊，請參閱 <<c0> [ 虛擬網路整合](functions-networking-options.md#virtual-network-integration)。
+您可以使用虛擬網路整合，從執行中的功能存取虛擬網路中的資源。 如需詳細資訊，請參閱[虛擬網路整合](functions-networking-options.md#virtual-network-integration)。
 
-## <a name="how-do-i-access-resources-protected-by-service-endpoints"></a>如何存取受保護的服務端點資源？
+## <a name="how-do-i-access-resources-protected-by-service-endpoints"></a>如何? 存取由服務端點保護的資源嗎？
 
-（目前處於預覽階段） 中使用虛擬網路整合，您可以從執行的函式來存取服務端點保護的資源。 如需詳細資訊，請參閱 <<c0> [ 預覽的虛擬網路整合](functions-networking-options.md#preview-version-of-virtual-network-integration)。
+藉由使用虛擬網路整合，您可以從執行中的函式存取服務端點保護的資源。 如需詳細資訊，請參閱[虛擬網路整合](functions-networking-options.md#virtual-network-integration)。
 
-## <a name="how-can-i-trigger-a-function-from-a-resource-in-a-virtual-network"></a>如何觸發的函式，從虛擬網路中的資源？
+## <a name="how-can-i-trigger-a-function-from-a-resource-in-a-virtual-network"></a>如何從虛擬網路中的資源觸發函式？
 
-您可允許從虛擬網路，使用呼叫的 HTTP 觸發程序[服務端點](./functions-networking-options.md#private-site-access)。 
+您可以使用[服務端點](./functions-networking-options.md#private-site-access)，允許從虛擬網路呼叫 HTTP 觸發程式。 
 
-您也可以將您的函式應用程式部署至 App Service 環境，以觸發的函式，從虛擬網路中的資源。 如需使用 App Service Environment 的詳細資訊，請參閱 <<c0> [ 建立及使用內部負載平衡與 App Service Environment](../app-service/environment/create-ilb-ase.md)。
+您也可以將函式應用程式部署至 Premium 方案、App Service 方案或 App Service 環境，以從虛擬網路中的所有其他資源觸發函式。 如需詳細資訊，請參閱[非 HTTP 虛擬網路觸發](./functions-networking-options.md#virtual-network-triggers-non-http)程式
 
-Premium 和 App Service 計劃支援 HTTP 觸發程序從虛擬網路，但只有 App Service 環境支援所有其他函式觸發程序類型透過虛擬網路。
+## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>如何在虛擬網路中部署函數應用程式？
 
-## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>如何部署我的虛擬網路中的函式應用程式？
+部署到 App Service 環境是建立完全位於虛擬網路內之函式應用程式的唯一方法。 如需將內部負載平衡器與 App Service 環境搭配使用的詳細資訊，請從[建立和使用內部負載平衡器和 App Service 環境一](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase)文開始。
 
-部署至 App Service Environment 是唯一的方法來建立完全是在虛擬網路內的函式應用程式。 如需在 App Service 環境中使用內部負載平衡器的詳細資訊，文章開始[建立及使用內部負載平衡與 App Service Environment](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase)。
-
-您需要只單向存取虛擬網路資源，或小於完整的網路隔離的情況下，請參閱[函式網路功能概觀](functions-networking-options.md)。
+對於只需要單向存取虛擬網路資源，或較不全面的網路隔離的情況，請參閱函式[網路功能總覽](functions-networking-options.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解網路功能和函式： 
+若要深入瞭解網路和功能： 
 
-* [在本教學課程，解如何開始使用虛擬網路整合](./functions-create-vnet.md)
-* [深入了解在 Azure Functions 中網路功能選項](./functions-networking-options.md)
-* [深入了解與 App Service 及 Functions 的虛擬網路整合](../app-service/web-sites-integrate-with-vnet.md)
-* [深入了解在 Azure 中的虛擬網路](../virtual-network/virtual-networks-overview.md)
-* [啟用更多的網路功能和使用 App Service 環境的控制](../app-service/environment/intro.md)
+* [遵循有關開始使用虛擬網路整合的教學課程](./functions-create-vnet.md)
+* [深入瞭解 Azure Functions 中的網路功能選項](./functions-networking-options.md)
+* [深入瞭解虛擬網路與 App Service 和功能的整合](../app-service/web-sites-integrate-with-vnet.md)
+* [深入了解 Azure 中的虛擬網路](../virtual-network/virtual-networks-overview.md)
+* [透過 App Service 環境啟用更多網路功能與控制](../app-service/environment/intro.md)

@@ -1,23 +1,13 @@
 ---
-title: 智慧偵測 - Azure Application Insights 的磁碟區例外狀況異常升高 | Microsoft Docs
-description: 透過 Azure Application Insights 監控應用程式例外狀況，以偵測磁碟區例外狀況的異常模式。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: 例外狀況磁片區中異常上升-Azure 應用程式深入解析
+description: 針對例外狀況磁片區中不尋常的模式，使用 Azure 應用程式 Insights 中的智慧型偵測來監視應用程式例外狀況。
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.author: mbullwin
-ms.openlocfilehash: a6e7e8e01ccb623a3ff340c318c9c238c919cb38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: a08fae4774a8afb9959f55ea3196cd1a45c33439
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61298579"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77671761"
 ---
 # <a name="abnormal-rise-in-exception-volume-preview"></a>磁碟區例外狀況異常升高 (預覽)
 
@@ -34,6 +24,6 @@ Application Insights 會自動分析應用程式中擲回的例外狀況，並�
 
 ## <a name="how-do-i-fix-it"></a>如何修正問題？
 通知包括要在診斷程序中支援的診斷資訊：
-1. **分級。** 通知會顯示受影響的使用者人數或要求數。 這可協助您將優先順序指派給此問題。
-2. **範圍。** 此問題是否會影響所有流量，還是只會影響某些作業？ 可以從通知取得這項資訊。
-3. **診斷。** 偵測包含了擲回例外狀況的方法及例外狀況類型的相關資訊。 您也可以使用連結到支援資訊的相關項目和報表，協助您進一步診斷問題。
+1. **選.** 通知會顯示受影響的使用者人數或要求數。 這可協助您將優先順序指派給此問題。
+2. **範圍.** 此問題是否會影響所有流量，還是只會影響某些作業？ 可以從通知取得這項資訊。
+3. **診斷.** 偵測包含了擲回例外狀況的方法及例外狀況類型的相關資訊。 您也可以使用連結到支援資訊的相關項目和報表，協助您進一步診斷問題。

@@ -1,21 +1,22 @@
 ---
-title: 快速入門：資料表 API 與 Java - Azure Cosmos DB
+title: 使用資料表 API 和 JAVA 建立應用程式 - Azure Cosmos DB
 description: 本快速入門示範如何使用 Azure Cosmos DB 資料表 API，以使用 Azure 入口網站與 Java 建立應用程式
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 04/10/2018
+ms.date: 05/28/2020
 ms.author: sngun
-ms.openlocfilehash: b0fda94f3120f1f228836713456d584d33c08a48
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.custom: seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 88a98c05b09d8e76159199fd5035a15d62bc293b
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033112"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115110"
 ---
-# <a name="quickstart-build-a-table-api-app-with-java-and-azure-cosmos-db"></a>快速入門：使用 Java 與 Azure Cosmos DB 建置資料表 API 應用程式
+# <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-table-api-data"></a>快速入門：建置 JAVA 應用程式來管理 Azure Cosmos DB 資料表 API 資料
 
 > [!div class="op_single_selector"]
 > * [.NET](create-table-dotnet.md)
@@ -24,24 +25,14 @@ ms.locfileid: "54033112"
 > * [Python](create-table-python.md)
 > 
 
-本快速入門示範如何使用 Java 與 Azure Cosmos DB [資料表 API](table-introduction.md)，以藉由從 GitHub 複製範例來建置應用程式。 本快速入門也會示範如何建立 Azure Cosmos DB 帳戶，以及如何使用資料總管在以 Web 為基礎的 Azure 入口網站中建立資料表和實體。
-
-Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以快速建立及查詢文件、索引鍵/值及圖形資料庫，所有這些都受惠於位於 Azure Cosmos DB 核心的全域散發和水平調整功能。 
+在本快速入門中，您會建立 Azure Cosmos DB 資料表 API 帳戶，並使用從 GitHub 複製的資料總管和 Java 應用程式來建立資料表和實體。 Azure Cosmos DB 是多模型的資料庫服務，可讓您快速建立及查詢具有全域散發和水平調整功能的文件、資料表、索引鍵/值及圖形資料庫。
 
 ## <a name="prerequisites"></a>必要條件
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
-
-此外： 
-
-* [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)
-    * 在 Ubuntu 上，執行 `apt-get install default-jdk` 來安裝 JDK。
-    * 務必設定 JAVA_HOME 環境變數，以指向 JDK 安裝所在的資料夾。
-* [下載](https://maven.apache.org/download.cgi)和[安裝 ](https://maven.apache.org/install.html) [Maven](https://maven.apache.org/) 二進位封存檔
-    * 在 Ubuntu 上，您可以執行 `apt-get install maven` 來安裝 Maven。
-* [Git](https://www.git-scm.com/)
-    * 在 Ubuntu 上，您可以執行 `sudo apt-get install git` 來安裝 Git。
+- 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 或[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) (不需 Azure 訂用帳戶)。 您也可以搭配使用 [Azure Cosmos DB 模擬器](https://aka.ms/cosmosdb-emulator)與 `https://localhost:8081` 的 URI 和金鑰 `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`。
+- [Java 開發套件 (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk) \(英文\)。 將 `JAVA_HOME` 環境變數指向 JDK 安裝所在的資料夾。
+- [Maven 二進位檔封存](https://maven.apache.org/download.cgi)。 
+- [Git](https://www.git-scm.com/downloads)。 
 
 ## <a name="create-a-database-account"></a>建立資料庫帳戶
 
@@ -61,7 +52,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 ## <a name="clone-the-sample-application"></a>複製範例應用程式
 
-現在，我們將從 GitHub 複製「資料表」應用程式、設定連接字串，然後加以執行。 您會看到，以程式設計方式來處理資料有多麼的容易。 
+現在，我們將從 GitHub 複製「資料表」應用程式、設定連接字串，然後加以執行。 您會看到，以程式設計方式來處理資料有多麼的容易。
 
 1. 開啟命令提示字元，建立名為 git-samples 的新資料夾，然後關閉命令提示字元。
 
@@ -81,13 +72,94 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
     git clone https://github.com/Azure-Samples/storage-table-java-getting-started.git 
     ```
 
+> [!TIP]
+> 如需類似程式碼的詳細逐步解說，請參閱 [Cosmos DB 資料表 API 範例](table-storage-how-to-use-java.md)一文。 
+
+## <a name="review-the-code"></a>檢閱程式碼
+
+此為選用步驟。 若您想要瞭解如何在程式碼中建立資料庫資源，則可檢閱下列程式碼片段。 或是，您可以跳至本文件的[更新您的連接字串](#update-your-connection-string)一節。
+
+* 下列程式碼會示範如何在 Azure 儲存體內建立資料表：
+
+  ```java
+  private static CloudTable createTable(CloudTableClient tableClient, String tableName) throws StorageException, RuntimeException, IOException, InvalidKeyException,   IllegalArgumentException, URISyntaxException, IllegalStateException {
+  
+    // Create a new table
+    CloudTable table = tableClient.getTableReference(tableName);
+    try {
+        if (table.createIfNotExists() == false) {
+            throw new IllegalStateException(String.format("Table with name \"%s\" already exists.", tableName));
+        }
+    }
+    catch (StorageException s) {
+        if (s.getCause() instanceof java.net.ConnectException) {
+            System.out.println("Caught connection exception from the client. If running with the default configuration please make sure you have started the storage emulator.");
+        }
+        throw s;
+    }
+
+    return table;
+  }
+  ```
+
+* 下列程式碼會示範如何在資料表中插入資料：
+
+  ```javascript
+  private static void batchInsertOfCustomerEntities(CloudTable table) throws StorageException {
+  
+  // Create the batch operation
+  TableBatchOperation batchOperation1 = new TableBatchOperation();
+  for (int i = 1; i <= 50; i++) {
+      CustomerEntity entity = new CustomerEntity("Smith", String.format("%04d", i));
+      entity.setEmail(String.format("smith%04d@contoso.com", i));
+      entity.setHomePhoneNumber(String.format("425-555-%04d", i));
+      entity.setWorkPhoneNumber(String.format("425-556-%04d", i));
+      batchOperation1.insertOrMerge(entity);
+  }
+  
+  // Execute the batch operation
+  table.execute(batchOperation1);
+  }
+  ```
+
+* 下列程式碼會示範如何查詢資料表中的資料：
+
+  ```java
+  private static void partitionScan(CloudTable table, String partitionKey) throws StorageException {
+  
+      // Create the partition scan query
+      TableQuery<CustomerEntity> partitionScanQuery = TableQuery.from(CustomerEntity.class).where(
+          (TableQuery.generateFilterCondition("PartitionKey", QueryComparisons.EQUAL, partitionKey)));
+  
+      // Iterate through the results
+      for (CustomerEntity entity : table.execute(partitionScanQuery)) {
+          System.out.println(String.format("\tCustomer: %s,%s\t%s\t%s\t%s", entity.getPartitionKey(), entity.getRowKey(), entity.getEmail(), entity.getHomePhoneNumber(), entity.  getWorkPhoneNumber()));
+      }
+  }
+  ```
+
+* 下列程式碼會示範如何刪除資料表中的資料：
+
+  ```java
+  
+  System.out.print("\nDelete any tables that were created.");
+  
+  if (table1 != null && table1.deleteIfExists() == true) {
+      System.out.println(String.format("\tSuccessfully deleted the table: %s", table1.getName()));
+  }
+  
+  if (table2 != null && table2.deleteIfExists() == true) {
+      System.out.println(String.format("\tSuccessfully deleted the table: %s", table2.getName()));
+  }
+  ```
+
 ## <a name="update-your-connection-string"></a>更新您的連接字串
 
 現在，返回 Azure 入口網站以取得連接字串資訊，並將它複製到應用程式中。 這可讓您的應用程式與託管資料庫進行通訊。 
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)中，按一下 [連接字串]。 
+1. 在 [Azure 入口網站](https://portal.azure.com/)中的 Azure Cosmos DB 帳戶中，選取 [連接字串]。 
 
-   ![在 [連接字串] 窗格中檢視及複製所需的連接字串資訊](./media/create-table-java/connection-string.png)
+   :::image type="content" source="./media/create-table-java/cosmos-db-quickstart-connection-string.png" alt-text="在 [連接字串] 窗格中檢視連接字串資訊":::
 
 2. 使用右側的複製按鈕複製 PRIMARY CONNECTION STRING。
 
@@ -95,7 +167,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 5. 註解化第一行，並取消註解第二行。 前兩行現在應顯示如下。
 
-    ```
+    ```xml
     #StorageConnectionString = UseDevelopmentStorage=true
     StorageConnectionString = DefaultEndpointsProtocol=https;AccountName=[ACCOUNTNAME];AccountKey=[ACCOUNTKEY]
     ```
@@ -118,7 +190,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
     cd "C:\git-samples\storage-table-java-getting-started"
     ```
 
-2. 在 git 終端機視窗中，執行下列命令以執行啟動 JAVA 應用程式。
+2. 在 git 終端機視窗中，執行下列命令以執行 Java 應用程式。
 
     ```git
     mvn compile exec:java 
@@ -138,7 +210,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已了解如何建立 Azure Cosmos DB 帳戶、如何使用資料總管來建立資料表，以及如何執行應用程式。  現在，您可以使用資料表 API 來查詢您的資料。  
+在本快速入門中，您已了解如何建立 Azure Cosmos DB 帳戶、如何使用資料總管來建立資料表，以及如何執行 Java 應用程式來新增資料表的資料。  現在，您可以使用資料表 API 來查詢您的資料。  
 
 > [!div class="nextstepaction"]
 > [將資料表資料匯入至資料表 API](table-import.md)

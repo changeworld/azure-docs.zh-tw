@@ -1,23 +1,13 @@
 ---
-title: 智慧偵測 - Azure Application Insights 偵測到的潛在記憶體流失 | Microsoft Docs
+title: 偵測記憶體流失-Azure 應用程式 Insights 智慧型偵測
 description: 使用 Azure Application Insights 監視應用程式的潛在記憶體流失。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/12/2017
-ms.author: mbullwin
-ms.openlocfilehash: e430b1e976ac26f7320b28d50dd39923066cfa41
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 85d138518dfb1313a810657016e9fe3143887b6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306338"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77671693"
 ---
 # <a name="memory-leak-detection-preview"></a>記憶體流失偵測 (預覽)
 
@@ -33,6 +23,6 @@ Application Insights 會自動分析應用程式中每個處理序的記憶體�
 
 ## <a name="how-do-i-fix-it"></a>如何修正問題？
 通知包括要在診斷分析程序中支援的診斷資訊：
-1. **分級。** 通知會顯示記憶體增加數量 (以 GB 為單位)，以及記憶體增加的時間範圍。 這可協助您將優先順序指派給此問題。
-2. **範圍。** 有多少部機器呈現記憶體流失模式？ 潛在記憶體流失期間觸發多少例外狀況？ 可以從通知取得這項資訊。
-3. **診斷。** 偵測包含記憶體流失模式，顯示一段時間的處理序記憶體耗用量。 您也可以使用連結到支援資訊的相關項目和報表，協助您進一步診斷問題。
+1. **選.** 通知會顯示記憶體增加數量 (以 GB 為單位)，以及記憶體增加的時間範圍。 這可協助您將優先順序指派給此問題。
+2. **範圍.** 有多少部機器呈現記憶體流失模式？ 潛在記憶體流失期間觸發多少例外狀況？ 可以從通知取得這項資訊。
+3. **診斷.** 偵測包含記憶體流失模式，顯示一段時間的處理序記憶體耗用量。 您也可以使用連結到支援資訊的相關項目和報表，協助您進一步診斷問題。

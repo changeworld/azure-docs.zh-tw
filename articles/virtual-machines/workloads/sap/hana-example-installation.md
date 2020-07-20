@@ -4,22 +4,20 @@ description: 如何在 SAP HANA on Azure (大型執行個體) 上安裝 HANA。
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: jeconnoc
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f4629894933507bda7359fb034c4079d38100029
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: 023f32fce01ffbd974b182fa89fd604e62332936
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62098470"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77617216"
 ---
 # <a name="install-hana-on-sap-hana-on-azure-large-instances"></a>在 SAP HANA on Azure (大型執行個體) 上安裝 HANA
 
@@ -40,7 +38,7 @@ HANA 大型執行個體單位不會直接連線到網際網路。 您無法直�
 
 您需要 SAP S-user 或其他使用者，以便能夠存取 SAP Marketplace。
 
-1. 登入並移至 [SAP Service Marketplace](https://support.sap.com/en/index.html)。 選取 [下載軟體] > [安裝和升級] > [依字母順序排列索引]。 然後選取 [在 H – SAP HANA 平台版本下] > [SAP HANA 平台版本 2.0] > [安裝]。 下載下列螢幕擷取畫面所示的檔案。
+1. 登入並移至 [SAP Service Marketplace](https://support.sap.com/en/index.html)。 選取**Download Software**[依  >  字母順序的索引下載軟體**安裝及升級**]  >  ** **。 然後選取 [ **H – SAP Hana platform edition**]  >  **SAP Hana platform edition 2.0**  >  **安裝**。 下載下列螢幕擷取畫面所示的檔案。
 
    ![螢幕擷取畫面：要下載的檔案](./media/hana-installation/image16_download_hana.PNG)
 
@@ -76,11 +74,11 @@ rpm –qa | grep gtk2
 ```
 ./hdblcmgui 
 ```
-此時，您會經歷一連串的畫面，請在其中提供資料來進行安裝。 在此範例中，我們要安裝 SAP HANA 資料庫伺服器和 SAP HANA 用戶端元件。 因此我們選取 [SAP HANA 資料庫]。
+此時，您會經歷一連串的畫面，請在其中提供資料來進行安裝。 在此範例中，我們要安裝 SAP HANA 資料庫伺服器和 SAP HANA 用戶端元件。 因此我們選取 [SAP HANA 資料庫]****。
 
 ![螢幕擷取畫面：SAP HANA 生命週期管理畫面 (已選取 [SAP HANA 資料庫])](./media/hana-installation/image18_hana_selection.PNG)
 
-在下一個畫面上，選取 [安裝新系統]。
+在下一個畫面上，選取 [安裝新系統]****。
 
 ![螢幕擷取畫面：SAP HANA 生命週期管理畫面 (已選取 [安裝新系統])](./media/hana-installation/image19_select_new.PNG)
 
@@ -88,7 +86,7 @@ rpm –qa | grep gtk2
 
 ![螢幕擷取畫面：SAP HANA 生命週期管理畫面 (含其他元件的清單)](./media/hana-installation/image20_select_components.PNG)
 
-在此，我們選擇 SAP HANA 用戶端和 SAP HANA Studio。 我們也會安裝相應增加執行個體。 然後，選擇 [單一主機系統]。 
+在此，我們選擇 SAP HANA 用戶端和 SAP HANA Studio。 我們也會安裝相應增加執行個體。 然後，選擇 [單一主機系統]****。 
 
 ![螢幕擷取畫面：SAP HANA 生命週期管理畫面 (已選取 [單一主機系統])](./media/hana-installation/image21_single_host.PNG)
 
@@ -116,7 +114,7 @@ rpm –qa | grep gtk2
 ![螢幕擷取畫面：SAP HANA 生命週期管理 (以及要定義的系統管理員欄位)](./media/hana-installation/image25_provide_guid.PNG)
 
 > [!Important]
-> 請提供在訂購單位部署時提供給 Microsoft 的相同 [系統管理員使用者識別碼] 和 [使用者群組識別碼]。 否則，在 HANA 大型執行個體單位上安裝 SAP HANA 就會失敗。
+> 請提供在訂購單位部署時提供給 Microsoft 的相同 [系統管理員使用者識別碼]**** 和 [使用者群組識別碼]****。 否則，在 HANA 大型執行個體單位上安裝 SAP HANA 就會失敗。
 
 接下來的兩個畫面不會顯示於此。 這兩個畫面可讓您提供 SAP HANA 資料庫的 SYSTEM 使用者密碼，以及 sapadm 使用者的密碼。 後者會作為 SAP 主機代理程式來安裝為 SAP HANA 資料庫執行個體的一部分。
 
@@ -133,5 +131,5 @@ SAP HANA 執行個體現在應該會啟動並執行，且隨時可供使用。 �
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure 上的 SAP HANA (大型執行個體) 高可用性和災害復原](hana-overview-high-availability-disaster-recovery.md)
+- [在 Azure 上 SAP Hana 大型實例高可用性和嚴重損壞修復](hana-overview-high-availability-disaster-recovery.md)
 

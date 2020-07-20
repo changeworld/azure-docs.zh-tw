@@ -1,72 +1,141 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure 原則服務文件
+### YamlMime:Landing
+title: Azure 原則文件
+summary: Azure 原則可協助您進行管理，同時透過原則定義讓您的資源強制執行規則並產生效果，避免發生 IT 問題。
 metadata:
-  title: Azure 原則文件 - 教學課程、API 參考
-  description: Azure 原則可協助您進行管理，同時透過原則定義讓您的資源強制執行規則並產生效果，避免發生 IT 問題。 當您使用 Azure 原則時，資源會符合您的公司標準及服務等級協定規範。
-  author: DCtheGeek
-  manager: carmonm
+  title: Azure 原則文件
+  description: Azure 原則可協助您進行管理，同時透過原則定義讓您的資源強制執行規則並產生效果，避免發生 IT 問題。
   ms.service: azure-policy
   ms.topic: landing-page
-  ms.date: 03/16/2019
+  ms.collection: collection
+  author: DCtheGeek
   ms.author: dacoulte
-abstract:
-  description: Azure 原則可協助您進行管理，同時透過原則定義讓您的資源強制執行規則並產生效果，避免發生 IT 問題。 當您使用 Azure 原則時，資源會符合您的公司標準及服務等級協定規範。
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何在 Azure 中建立、指派和管理原則定義。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              alt: Azure 入口網站
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure 入口網站
-            href: ./assign-policy-portal
-          - image:
-              alt: Azure PowerShell
-              src: ./media/powershell.svg
-            text: Azure PowerShell
-            href: ./assign-policy-powershell
-          - image:
-              alt: Azure CLI
-              src: ./media/cli.svg
-            text: Azure CLI
-            href: ./assign-policy-azurecli
-          - image:
-              alt: Resource Manager 範本
-              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
-            text: Resource Manager 範本
-            href: ./assign-policy-template
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何在 Azure 中建立、指派和管理原則定義。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/governance/policy/tutorials/create-and-manage">建立和管理 Azure 原則</a>
-          - html: <a href="/azure/governance/policy/tutorials/create-custom-policy-definition">建立自訂原則定義</a>
-  - title: 範例
-    items:
-      - type: paragraph
-        text: 檢閱可用的範例協助您在 Azure 中建立原則定義。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/governance/policy/samples/index">範例索引</a>
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令列
-            html: '<p><a href="/cli/azure/policy">Azure CLI</a></p><p><a href="/powershell/module/az.resources/#policies">Azure PowerShell (原則)</a></p><p><a href="/powershell/module/az.policyinsights#policy_insights">Azure PowerShell (原則深入解析)</a></p><p><a href="https://www.powershellgallery.com/packages/Az.GuestConfiguration">Azure PowerShell (來賓組態)</a></p>'
-          - title: Resource Manager 範本
-            html: <p><a href="/azure/templates/microsoft.authorization/policyassignments">指派</a></p><p><a href="/azure/templates/microsoft.authorization/policydefinitions">原則定義</a></p><p><a href="/azure/templates/microsoft.authorization/policysetdefinitions">計劃定義</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/policy-insights/policyevents">事件</a></p><p><a href="/rest/api/policy-insights/policystates">狀態</a></p><p><a href="/rest/api/resources/policyassignments">指派</a></p><p><a href="/rest/api/resources/policydefinitions">原則定義</a></p><p><a href="/rest/api/resources/policysetdefinitions">計劃定義</a></p><p><a href="/rest/api/policy-insights/policytrackedresources">已追蹤原則的資源</a></p><p><a href="/rest/api/policy-insights/remediations">補救</a></p><p><a href="/rest/api/guestconfiguration/">來賓組態</a></p>
+  ms.date: 06/29/2020
+  ms.openlocfilehash: c066c3a7cc5b8208a61962ce4f51f7eef4be192b
+  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 06/30/2020
+  ms.locfileid: "85549938"
+landingContent:
+- title: 關於 Azure 原則
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure 原則？
+      url: ./overview.md
+    - text: 原則效果
+      url: ./concepts/effects.md
+    - text: 定義結構
+      url: ./concepts/definition-structure.md
+    - text: 指派結構
+      url: ./concepts/assignment-structure.md
+  - linkListType: video
+    links:
+    - text: Azure 原則組建 2018
+      url: https://channel9.msdn.com/events/Build/2018/THR2030
+- title: 開始使用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 指派原則 (入口網站)
+      url: ./assign-policy-portal.md
+    - text: 指派原則 (Azure CLI)
+      url: ./assign-policy-azurecli.md
+    - text: 指派原則 (Azure PowerShell)
+      url: ./assign-policy-powershell.md
+    - text: 指派原則 (ARM 範本)
+      url: ./assign-policy-template.md
+  - linkListType: tutorial
+    links:
+    - text: 建立和管理原則
+      url: ./tutorials/create-and-manage.md
+    - text: 使用 VS Code 擴充功能
+      url: ./how-to/extension-for-vscode.md
+    - text: 設計原則即程式碼工作流程
+      url: ./concepts/policy-as-code.md
+  - linkListType: deploy
+    links:
+    - text: 原則範例索引
+      url: ./samples/index.md
+- title: 建立者原則
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 建立自訂原則
+      url: ./tutorials/create-custom-policy-definition.md
+    - text: 管理標籤治理
+      url: ./tutorials/govern-tags.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 SDK 建立原則
+      url: ./how-to/programmatically-create.md
+    - text: 適用於陣列的建立者原則
+      url: ./how-to/author-policies-for-arrays.md
+  - linkListType: concept
+    links:
+    - text: 法規合規性
+      url: ./concepts/regulatory-compliance.md
+    - text: 適用於 Kubernetes 的原則
+      url: ./concepts/policy-for-kubernetes.md
+    - text: 適用於 VM 的原則
+      url: ./concepts/guest-configuration.md
+- title: 檢閱和補救資源
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 取得合規性資料
+      url: ./how-to/get-compliance-data.md
+    - text: 判斷不符合的原因
+      url: ./how-to/determine-non-compliance.md
+    - text: 補救不相容的資源
+      url: ./how-to/remediate-resources.md
+- title: 積極參與
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 適用於 Azure 原則的 Microsoft 問答集
+      url: /answers/topics/azure-policy.html
+    - text: Azure Governance YouTube 頻道
+      url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
+    - text: 要求產品功能
+      url: https://feedback.azure.com/forums/915958-azure-governance?category_id=345055
+    - text: Azure Governance 技術社群
+      url: https://techcommunity.microsoft.com/t5/Azure-Governance/bd-p/AzureGovernance
+- title: 參考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/policy
+    - text: Azure PowerShell (原則)
+      url: /powershell/module/az.resources/#policies
+    - text: Azure PowerShell (原則深入解析)
+      url: /powershell/module/az.policyinsights#policy_insights
+    - text: REST (原則深入解析)
+      url: /rest/api/policy-insights/
+    - text: REST (指派)
+      url: /rest/api/resources/policyassignments
+    - text: REST (定義)
+      url: /rest/api/resources/policydefinitions
+    - text: REST (計劃)
+      url: /rest/api/resources/policysetdefinitions
+    - text: Resource Manager 範本
+      url: /azure/templates/microsoft.authorization/allversions
+- title: 參考 (更多)
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 適用於 .NET 的 Azure SDK (指派)
+      url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
+    - text: 適用於 .NET 的 Azure SDK (原則定義)
+      url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+    - text: Azure SDK for JavaScript (原則)
+      url: /javascript/api/@azure/arm-policy
+    - text: Azure SDK for JavaScript (原則深入解析)
+      url: /javascript/api/@azure/arm-policyinsights
+    - text: Azure SDK for Python (原則)
+      url: /python/api/azure-mgmt-resource/azure.mgmt.resource.policy
+    - text: Azure SDK for Python (原則用戶端)
+      url: /python/api/azure-mgmt-resource/azure.mgmt.resource.policyclient
+    - text: Azure SDK for Python (原則深入解析)
+      url: /python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights

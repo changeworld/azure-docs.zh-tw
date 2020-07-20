@@ -1,20 +1,14 @@
 ---
-title: 將自訂事件傳送至 Web 端點 - 事件方格、PowerShell
-description: 使用 Azure 事件方格和 PowerShell 發佈自訂主題，以及訂閱該主題的事件。 事件是由 Web 應用程式處理。
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 12/07/2018
+title: 快速入門：將自訂事件傳送至 Web 端點 - 事件方格、PowerShell
+description: 快速入門：使用 Azure 事件方格和 PowerShell 發佈自訂主題，以及訂閱該主題的事件。 事件是由 Web 應用程式處理。
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: fa703defdda17a69aec99d3fbe479e9867781d68
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4dbed993b4123045ae6233466cd9ca0565465a1e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58175580"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115021"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>快速入門：使用 PowerShell 和事件方格將自訂事件路由傳送至 Web 端點
 
@@ -36,7 +30,7 @@ Event Grid 為 Azure 資源，必須放入 Azure 資源群組中。 資源群組
 
 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令來建立資源群組。
 
-下列範例會在 westus2 位置建立名為 gridResourceGroup 的資源群組。
+下列範例會在 westus2  位置建立名為 gridResourceGroup  的資源群組。
 
 ```powershell-interactive
 New-AzResourceGroup -Name gridResourceGroup -Location westus2

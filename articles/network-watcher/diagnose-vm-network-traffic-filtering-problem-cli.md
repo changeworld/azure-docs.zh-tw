@@ -1,5 +1,6 @@
 ---
-title: 診斷虛擬機器網路流量篩選問題 - 快速入門 - Azure CLI | Microsoft Docs
+title: 快速入門：診斷 VM 網路流量篩選問題 - Azure CLI
+titleSuffix: Azure Network Watcher
 description: 在本快速入門中，您將了解如何使用 Azure 網路監看員的 IP 流量驗證功能來診斷虛擬機器網路流量篩選問題。
 services: network-watcher
 documentationcenter: network-watcher
@@ -17,32 +18,32 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 460513e4818cbef8fca0cd1b84d69b3021afaab7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b3919a016613da2470c14995663acc9c5415e483
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690436"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382846"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>快速入門：診斷虛擬機器網路流量篩選問題 - Azure CLI
 
 本快速入門中，您可部署虛擬機器 (VM)，然後檢查送至 IP 位址和 URL 以及來自 IP 位址的通訊。 您可判斷通訊失敗的原因及其解決方式。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.28 版或更新版本。 若要尋找已安裝的版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 驗證 CLI 版本之後，請執行 `az login` 以建立與 Azure 的連線。 本快速入門的 CLI 命令會經過格式化以在 Bash 殼層中執行。
+如果您選擇在本機安裝和使用 Azure CLI，本快速入門會要求您執行 Azure CLI 2.0.28 版或更新版本。 若要尋找已安裝的版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 驗證 Azure CLI 版本之後，請執行 `az login` 以建立與 Azure 的連線。 本快速入門的 Azure CLI 命令會經過格式化以在 Bash 殼層中執行。
 
 ## <a name="create-a-vm"></a>建立 VM
 
-您必須先建立資源群組來包含 VM，才能建立 VM。 使用 [az group create](/cli/azure/group) 來建立資源群組。 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組：
+您必須先建立資源群組來包含 VM，才能建立 VM。 使用 [az group create](/cli/azure/group) 來建立資源群組。 下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-使用 [az vm create](/cli/azure/vm) 建立 VM。 如果預設金鑰位置中還沒有 SSH 金鑰，此命令將會建立這些金鑰。 若要使用一組特定金鑰，請使用 `--ssh-key-value` 選項。 下列範例會建立名為 myVm 的 VM：
+使用 [az vm create](/cli/azure/vm) 建立 VM。 如果預設金鑰位置中還沒有 SSH 金鑰，此命令將會建立這些金鑰。 若要使用一組特定金鑰，請使用 `--ssh-key-value` 選項。 下列範例會建立名為 myVm  的 VM：
 
 ```azurecli-interactive
 az vm create \
@@ -52,7 +53,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-建立 VM 需要幾分鐘的時間。 在建立 VM 且 CLI 傳回輸出之前，請勿繼續進行其餘步驟。
+建立 VM 需要幾分鐘的時間。 在建立 VM 且 Azure CLI 傳回輸出之前，請勿繼續進行其餘步驟。
 
 ## <a name="test-network-communication"></a>測試網路通訊
 
@@ -73,7 +74,7 @@ az network watcher configure \
 
 根據預設，當您建立 VM 時，Azure 會允許及拒絕 VM 的雙向網路流量。 您稍後可能會覆寫 Azure 的預設值，並允許或拒絕其他類型的流量。 若要測試允許或拒絕送至不同目的地的流量和來自來源 IP 位址的流量，請使用 [az network watcher test-ip-flow](/cli/azure/network/watcher#az-network-watcher-test-ip-flow) 命令。
 
-測試從 VM 輸出至 www.bing.com 的其中一個 IP 位址的通訊：
+測試從 VM 輸出至 www.bing.com 其中一個 IP 位址的通訊：
 
 ```azurecli-interactive
 az network watcher test-ip-flow \
@@ -133,7 +134,7 @@ az network nic list-effective-nsg \
 
 對於在[使用 IP 流量驗證](#use-ip-flow-verify) 底下的先前步驟中允許對外存取 www.bing.com 的 **AllowInternetOutbound** 規則，傳回的輸出包含下列文字：
 
-```azurecli
+```
 {
  "access": "Allow",
  "additionalProperties": {},
@@ -174,7 +175,7 @@ az network nic list-effective-nsg \
 
 當您在[使用 IP 流量驗證](#use-ip-flow-verify)中執行 `az network watcher test-ip-flow` 命令來測試輸出至 172.131.0.100 的通訊時，輸出會告知您 **DefaultOutboundDenyAll** 規則拒絕通訊。 **DefaultOutboundDenyAll** 規則等同於 `az network nic list-effective-nsg` 命令的下列輸出中所列的 **DenyAllOutBound** 規則：
 
-```azurecli
+```
 {
  "access": "Deny",
  "additionalProperties": {},
@@ -207,7 +208,7 @@ az network nic list-effective-nsg \
 
 當您在[使用 IP 流量驗證](#use-ip-flow-verify)中執行 `az network watcher test-ip-flow` 命令來測試從 172.131.0.100 輸入的通訊時，輸出會告知您 **DefaultInboundDenyAll** 規則拒絕通訊。 **DefaultInboundDenyAll** 規則等同於 `az network nic list-effective-nsg` 命令的下列輸出中所列的 **DenyAllInBound** 規則：
 
-```azurecli
+```
 {
  "access": "Deny",
  "additionalProperties": {},

@@ -1,6 +1,6 @@
 ---
-title: 快速入門：使用 C# 將搜尋要求傳送至 Bing 實體搜尋 REST API
-titlesuffix: Azure Cognitive Services
+title: 快速入門：將搜尋要求傳送至以 C# 撰寫的 REST API - Bing 實體搜尋
+titleSuffix: Azure Cognitive Services
 description: 使用此快速入門以運用 C# 來傳送要求給「Bing 實體搜尋 REST API」，並接收 JSON 回應。
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: d31be245d906ba0405a44d4482272051982c943c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: cd89f2ae13b10c83c3fc22023fc2e3cae1770c98
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59488332"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650268"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>快速入門：使用 C# 將搜尋要求傳送至 Bing 實體搜尋 REST API
 
@@ -24,23 +24,24 @@ ms.locfileid: "59488332"
 雖然此應用程式是以 C# 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* 任何一版的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
-* [Json.NET](https://www.newtonsoft.com/json) 架構 (以 NuGet 套件形式提供)。
-    * 在 Visual Studio 中安裝 NuGet 套件：
-        1. 以滑鼠右鍵按一下方案總管
-        2. 按一下 [管理 NuGet 套件...]
-        3. 搜尋 **newtonsoft.json** 並安裝套件
+- [Visual Studio 2017 或更新版本](https://www.visualstudio.com/downloads/)的任何版本。
 
-* 如果您使用 Linux/MacOS，則可以使用 [Mono](https://www.mono-project.com/)來執行此應用程式。
+- [Json.NET](https://www.newtonsoft.com/json) 架構 (以 NuGet 套件形式提供)。 在 Visual Studio 中安裝 NuGet 套件：
+
+   1. 以滑鼠右鍵按一下 [方案總管] 中的專案。
+   2. 選取 [管理 NuGet 套件]。
+   3. 搜尋並選取 Newtonsoft.Json，然後安裝此套件。
+
+- 如果您使用 Linux/MacOS，則可以使用 [Mono](https://www.mono-project.com/) 來執行此應用程式。
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>建立專案並將其初始化
 
-1. 在 Visual Studio 中建立新的 C# 主控台解決方案。 然後將下列命名空間新增至主要程式碼檔案。
+1. 在 Visual Studio 中建立新的 C# 主控台解決方案。 然後將下列命名空間新增至主要程式碼檔案：
     
     ```csharp
     using Newtonsoft.Json;
@@ -49,7 +50,7 @@ ms.locfileid: "59488332"
     using System.Text;
     ```
 
-2. 建立新的類別，然後新增 API 端點變數、您的訂用帳戶金鑰和您想要搜尋的查詢。
+2. 建立新的類別，然後新增 API 端點變數、您的訂用帳戶金鑰和您想要搜尋的查詢。 您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
 
     ```csharp
     namespace EntitySearchSample
@@ -72,11 +73,13 @@ ms.locfileid: "59488332"
 
 ## <a name="send-a-request-and-get-the-api-response"></a>傳送要求並取得 API 回應
 
-1. 在該類別內建立稱為 `Search()` 的函式。 建立新的 `HttpClient` 物件，並將您的訂用帳戶金鑰新增至 `Ocp-Apim-Subscription-Key` 標頭。
+1. 在該類別內建立稱為 `Search()` 的函式。 在此函式中，建立新的 `HttpClient` 物件，並將您的訂用帳戶金鑰新增至 `Ocp-Apim-Subscription-Key` 標頭。
 
-   1. 藉由結合主機和路徑，來建構要求的 URI。 然後新增您的市場，並為查詢進行 URL 編碼。
-   2. 等待 `client.GetAsync()` 取得 HTTP 回應，然後藉由等待 `ReadAsStringAsync()` 來儲存 json 回應。
-   3. 以 `JsonConvert.DeserializeObject()` 格式化 JSON 字串，並將其列印到主控台。
+2. 藉由結合主機和路徑，來建構要求的 URI。 然後新增您的市場，並為查詢進行 URL 編碼。
+
+3. 等待 `client.GetAsync()` 取得 HTTP 回應，然後藉由等待 `ReadAsStringAsync()` 來儲存 JSON 回應。
+
+4. 以 `JsonConvert.DeserializeObject()` 格式化 JSON 字串，並將其列印到主控台。
 
       ```csharp
       async static void Search()
@@ -95,7 +98,7 @@ ms.locfileid: "59488332"
       }
       ```
 
-2. 在應用程式的 Main 方法中，呼叫 `Search()` 函式。
+5. 在應用程式的 `Main()` 方法中，呼叫 `Search()` 函式。
     
     ```csharp
     static void Main(string[] args)
@@ -177,4 +180,4 @@ ms.locfileid: "59488332"
 > [建置單頁 Web 應用程式](../tutorial-bing-entities-search-single-page-app.md)
 
 * [什麼是 Bing 實體搜尋 API？](../overview.md )
-* [Bing 實體搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+* [Bing 實體搜尋 API 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)。

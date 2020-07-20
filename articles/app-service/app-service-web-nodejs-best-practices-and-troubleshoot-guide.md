@@ -1,26 +1,19 @@
 ---
-title: Node.js 的最佳作法和疑難排解 - Azure App Service
-description: 了解 Azure App Service 上節點應用程式的最佳作法和疑難排解步驟。
-services: app-service\web
-documentationcenter: nodejs
-author: ranjithr
-manager: wadeh
-editor: ''
+title: Node.js 最佳做法和疑難排解
+description: 瞭解在 Azure App Service 中執行之 Node.js 應用程式的最佳作法和疑難排解步驟。
+author: msangapu-msft
 ms.assetid: 387ea217-7910-4468-8987-9a1022a99bef
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: ranjithr
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 321dbf891c77007952f01b32bb509a15c2ac3e6f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e2c60e851d61a5f33e1b050412b0e91b81e20a16
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60853026"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169973"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows 上節點應用程式的最佳作法和疑難排解指南
 
@@ -94,7 +87,7 @@ IIS 的預設行為是在排清之前或直到回應結束時 (取決於何者�
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
-預設值為 False。 若已啟用，節點應用程式可以連接至具名管道 (環境變數 IISNODE\_CONTROL\_PIPE) 並傳送「回收」訊息。 這會導致正常回收 w3wp。
+預設值為 false。 若已啟用，節點應用程式可以連接至具名管道 (環境變數 IISNODE\_CONTROL\_PIPE) 並傳送「回收」訊息。 這會導致正常回收 w3wp。
 
 ### <a name="idlepageouttimeperiod"></a>idlePageOutTimePeriod
 
@@ -106,7 +99,7 @@ IIS 的預設行為是在排清之前或直到回應結束時 (取決於何者�
 
 ### <a name="debugheaderenabled"></a>debugHeaderEnabled
 
-預設值為 False。 如果設為 True，iisnode 會將 HTTP 回應標頭 `iisnode-debug` 新增至它所傳送的每個 HTTP 回應，而 `iisnode-debug` 標頭值是 URL。 查看 URL 片段即可取得個別的診斷資訊，但在瀏覽器中開啟 URL 可顯示視覺效果。
+預設值為 false。 如果設為 True，iisnode 會將 HTTP 回應標頭 `iisnode-debug` 新增至它所傳送的每個 HTTP 回應，而 `iisnode-debug` 標頭值是 URL。 查看 URL 片段即可取得個別的診斷資訊，但在瀏覽器中開啟 URL 可顯示視覺效果。
 
 ### <a name="loggingenabled"></a>loggingEnabled
 
@@ -114,7 +107,7 @@ IIS 的預設行為是在排清之前或直到回應結束時 (取決於何者�
 
 ### <a name="deverrorsenabled"></a>devErrorsEnabled
 
-預設值為 False。 若設為 True，iisnode 會在瀏覽器上顯示 HTTP 狀態碼和 Win32 錯誤碼。 在偵錯特定類型的問題時，Win32 程式碼很有幫助。
+預設值為 false。 若設為 True，iisnode 會在瀏覽器上顯示 HTTP 狀態碼和 Win32 錯誤碼。 在偵錯特定類型的問題時，Win32 程式碼很有幫助。
 
 ### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>debuggingEnabled (請勿在實際生產網站上啟用)
 
@@ -130,7 +123,7 @@ IIS 的預設行為是在排清之前或直到回應結束時 (取決於何者�
 
 agentkeepalive 模組可確保通訊端會在您的 Azure webapp VM 上重複使用。 在每一個輸出要求上建立新通訊端會增加應用程式的負擔。 讓應用程式重複使用輸出要求的通訊端，可確保您的應用程式不會超過每個 VM 配置的 maxSockets。 對於 Azure App Service 的建議是將 agentKeepAlive maxSockets 值設為每個 VM 總計有 160 個通訊端 (4 個 node.exe 執行個體 \* 40 個 maxSockets/執行個體)。
 
-範例 [agentKeepALive](https://www.npmjs.com/package/agentkeepalive) 設定：
+範例[agentKeepALive](https://www.npmjs.com/package/agentkeepalive)設定：
 
 ```nodejs
 let keepaliveAgent = new Agent({
@@ -177,9 +170,9 @@ http.createServer(function (req, res) {
 
 進入 site/wwwroot 目錄。 您會看到如下列範例所示的命令提示字元：
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
+![顯示網站/wwwroot 目錄和命令提示字元的螢幕擷取畫面。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
 
-執行命令 `npm install v8-profiler`。
+執行 `npm install v8-profiler` 命令。
 
 此命令會在 node\_modules 目錄與其所有的相依項目之下安裝 v8 分析工具。
 現在，編輯 server.js 以剖析您的應用程式。
@@ -210,11 +203,11 @@ http.createServer(function (req, res) {
 
 上述程式碼會剖析 WriteConsoleLog 函式，然後將設定檔輸出寫入至您的網站 wwwroot 下的 'profile.cpuprofile' 檔案。 將要求傳送至您的應用程式。 您會在您的網站 wwwroot 下看到建立的 'profile.cpuprofile' 檔案。
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
+![顯示 profile.cpuprofile 檔案的螢幕擷取畫面。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
-下載此檔案，並使用 Chrome F12 工具開啟檔案。 在 Chrome 上按 F12，然後選擇 [設定檔] 索引標籤。選擇 [載入] 按鈕。 選取您下載的 profile.cpuprofile 檔案。 按一下您剛下載的設定檔
+下載此檔案，並使用 Chrome F12 工具開啟檔案。 在 Chrome 上按 F12，然後選擇 [**設定檔**] 索引標籤。選擇 [**載入**] 按鈕。 選取您下載的 profile.cpuprofile 檔案。 按一下您剛下載的設定檔
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
+![螢幕擷取畫面：顯示您載入的 profile.cpuprofile 檔案。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 
 您會看到 WriteConsoleLog 函式已耗用 95%的時間。 輸出也會顯示造成此問題的確切行號和來源檔案。
 
@@ -281,7 +274,7 @@ NODE.exe 具有稱為 `NODE_PENDING_PIPE_INSTANCES` 的設定。 在 Azure App S
 請遵循下列連結以深入了解 Azure App Service 上的 node.js 應用程式。
 
 * [在 Azure App Service 中開始使用 Node.js Web 應用程式](app-service-web-get-started-nodejs.md)
-* [如何在 Azure App Service 中偵錯 Node.js Web 應用程式](app-service-web-tutorial-nodejs-mongodb-app.md)
+* [如何在 Azure App Service 中偵錯 Node.js Web 應用程式](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)
 * [使用 Node.js 模組與 Azure 應用程式搭配](../nodejs-use-node-modules-azure-apps.md)
 * [Azure App Service Web Apps：Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
 * [Node.js 開發人員中心](../nodejs-use-node-modules-azure-apps.md)

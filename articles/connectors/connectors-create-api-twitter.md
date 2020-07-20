@@ -1,22 +1,17 @@
 ---
-title: 從 Azure Logic Apps 連線到 Twitter | Microsoft Docs
+title: 從 Azure Logic Apps 連線到 Twitter
 description: 藉由使用 Azure Logic Apps，讓監視及管理推文，加上從您的 Twitter 帳戶取得跟隨者、您跟隨的使用者、其他使用者、時間軸等等相關資訊的工作和工作流程自動化
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: 8bce2183-544d-4668-a2dc-9a62c152d9fa
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 0fbd89202796cb4543dbecbeee605c9b87cc9d05
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+tags: connectors
+ms.openlocfilehash: f2db6d614c3c12cb1be87724e79d79a16769d6b8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62104981"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829591"
 ---
 # <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>藉由使用 Azure Logic Apps 來監視及管理 Twitter
 
@@ -27,9 +22,9 @@ ms.locfileid: "62104981"
 
 您可以使用觸發程序，從您的 Twitter 帳戶收到回應，並且讓輸出可供其他動作使用。 您可以使用動作，該動作會使用您的 Twitter 帳戶來執行工作。 您也可以讓其他動作使用 Twitter 動作的輸出。 例如，當具有特定主題標籤的新推文出現時，您可以使用 Slack 連接器來傳送訊息。 如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先<a href="https://azure.microsoft.com/free/" target="_blank">註冊免費的 Azure 帳戶</a>。 
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
 
 * 您的 Twitter 帳戶和使用者認證
 
@@ -59,10 +54,10 @@ ms.locfileid: "62104981"
        -或-
 
      * 請在想要新增動作的步驟之間，將指標移至步驟之間的箭號。 
-     選擇顯示的加號 (**+**)，然後選取 [新增動作]。
+     選擇顯示的加號 ( **+** )，然後選取 [新增動作]。
      
        在搜尋方塊中，輸入 "twitter" 作為篩選條件。 
-       請在動作清單底下，選取您想要的動作。
+       在動作清單底下，選取您想要的動作。
 
 1. 如果系統提示您登入 Twitter，請立即登入，方可授與邏輯應用程式存取權。
 
@@ -76,7 +71,7 @@ ms.locfileid: "62104981"
 
 您可以選擇性地包含條件，要求合格的推文必須來自至少具有指定跟隨者數目的使用者。
 
-**企業範例**：您可以使用此觸發程序來監視公司相關的推文，並將推文的內容上傳到 SQL database。
+**企業範例**：您可以使用此觸發程序來監視與貴公司有關的推文，以及將推文內容上傳至 SQL 資料庫。
 
 ### <a name="twitter-action-post-a-tweet"></a>Twitter 動作：張貼推文
 
@@ -88,7 +83,7 @@ ms.locfileid: "62104981"
 
 ## <a name="get-support"></a>取得支援
 
-* 如有問題，請瀏覽 [Azure Logic Apps 論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有任何問題，請瀏覽 [Microsoft 問與答的 Azure Logic Apps 問題頁面](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 * 若要提交或票選功能構想，請造訪 [Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>後續步驟

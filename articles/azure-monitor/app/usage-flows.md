@@ -1,28 +1,21 @@
 ---
-title: 在 Azure Application Insights 中使用使用者流程分析使用者瀏覽模式 | Microsoft docs
+title: Azure 應用程式 Insights 消費者流程分析導覽流程
 description: 分析使用者如何在 Web 應用程式的分頁和功能之間進行瀏覽。
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 91274fad4e56c69777333c81ea3b32dccdcf64ff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6583a2fe5abd0193f37502e07c7b3fa0ee58ba9d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60373253"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963411"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>在 Application Insights 中使用使用者流程分析使用者瀏覽模式
 
-![Application Insights 使用者流程工具](./media/usage-flows/00001-flows.png)
+![Application Insights 使用者流程工具](./media/usage-flows/flows.png)
 
 「使用者流程」工具會視覺化使用者如何在網站的分頁和功能之間進行瀏覽。 適合用來回答問題，例如：
 
@@ -40,32 +33,32 @@ ms.locfileid: "60373253"
 
 ## <a name="start-by-choosing-an-initial-event"></a>一開始先選擇初始事件
 
-![為使用者流程選擇初始事件](./media/usage-flows/00002-flows-initial-event.png)
+![為使用者流程選擇初始事件](./media/usage-flows/initial-event.png)
 
 若要開始使用「使用者流程」工具回答問題，請選擇初始網頁檢視、自訂事件或例外狀況來作為視覺效果的起點：
 
-1. 按一下**使用者在...之後要怎麼做？** 標題中的連結，或按一下 [編輯] 按鈕。
-2. 從 [初始事件] 下拉式清單選取網頁檢視、自訂事件或例外狀況。
-3. 按一下 [建立圖形]。
+1. 按一下**使用者在...之後要怎麼做？** 標題中的連結，或按一下 [編輯]**** 按鈕。
+2. 從 [初始事件]**** 下拉式清單選取網頁檢視、自訂事件或例外狀況。
+3. 按一下 [**建立圖形]**。
 
 視覺效果的 [步驟 1] 資料行會顯示使用者最常在初始事件之後做什麼，由上到下依序為最常做至最不常做的事。 [步驟 2] 和後續的資料行會顯示使用者之後的動作，建立使用者瀏覽您的網站一路下來的圖片。
 
 根據預設，「使用者流程」工具會從您的網站隨機取樣僅過去 24 小時的分頁檢視和自訂事件。 您可以增加時間範圍，並變更在 [編輯] 功能表中隨機取樣的效能和精確度平衡。
 
-如果某些網頁檢視、自訂事件和例外狀況與您不相關，請在您要隱藏的節點上按一下 [X]。 一旦您已選取要隱藏的節點，按一下視覺效果下方的 [建立圖形] 按鈕。 若要查看您已隱藏的所有節點，請按一下 [編輯] 按鈕，然後查看 [已排除的事件] 區段。
+如果某些網頁檢視、自訂事件和例外狀況與您不相關，請在您要隱藏的節點上按一下 [X]****。 選取您想要隱藏的節點之後，請按一下視覺效果下方的 [**建立圖形]** 按鈕。 若要查看您已隱藏的所有節點，請按一下 [**編輯**] 按鈕，然後查看 [**排除的事件**] 區段。
 
 如果分頁檢視或自訂事件遺失，您預期會在視覺效果上看到：
 
-* 在 [編輯] 功能表中檢查 [已排除的事件] 區段。
-* 使用 [其他] 節點上的加號按鈕，在視覺效果中納入較不常見的事件。
-* 如果使用者不常傳送您預期的網頁檢視或自訂事件，請試著在 [編輯] 功能表中增加視覺效果的時間範圍。
+* 檢查 [**編輯**] 功能表中的 [**排除的事件**] 區段。
+* 使用 [其他]**** 節點上的加號按鈕，在視覺效果中納入較不常見的事件。
+* 如果使用者不常傳送您預期的網頁檢視或自訂事件，請嘗試在 [**編輯**] 功能表中增加視覺效果的時間範圍。
 * 請確定您預期的網頁檢視、自訂事件或例外狀況已設定為由網站原始程式碼中的 Application Insights SDK 來收集。 [深入了解收集自訂事件。](../../azure-monitor/app/api-custom-events-metrics.md)
 
-如果您想要看到更多視覺效果中的步驟，請使用視覺效果上方的 [先前的步驟] 和 [後續步驟] 下拉式清單。
+如果您想要看到更多視覺效果中的步驟，請使用視覺效果上方的 [先前的步驟]**** 和 [後續步驟]**** 下拉式清單。
 
 ## <a name="after-visiting-a-page-or-feature-where-do-users-go-and-what-do-they-click"></a>造訪分頁或功能之後，使用者的去向以及他們按了什麼？
 
-![使用「使用者流程」以了解使用者點擊的位置](./media/usage-flows/00003-flows-one-step.png)
+![使用「使用者流程」以了解使用者點擊的位置](./media/usage-flows/one-step.png)
 
 如果您的初始事件是分頁檢視，視覺效果的第一個資料行 ([步驟 1]) 是了解使用者造訪分頁之後隨即做了什麼的快速方法。 請嘗試在「使用者流程」視覺效果旁邊的視窗中開啟您的網站。 比較您預期使用者與分頁的互動方式與 [步驟 1] 資料行中的事件清單。 通常，看起來對於小組微不足道之分頁的 UI 元素，會是分頁上的最常用元素之一。 它是為網站設計增強功能的絕佳起點。
 
@@ -73,9 +66,9 @@ ms.locfileid: "60373253"
 
 ## <a name="where-are-the-places-that-users-churn-most-from-your-site"></a>使用者最常從您的網站變換的位置是哪裡？
 
-查看出現在視覺效果中資料行上層的**工作階段已結束**節點，特別是流程的早期。 這表示許多使用者可能在遵循分頁和 UI 互動的前面路徑之後，從您的網站變換。 有時候變換是預期的 - 例如，在電子商務網站上完成購買之後 - 但是變換通常是設計問題、效能不佳，或您的網站可以改善之其他問題的徵兆。
+監看在視覺效果的資料行中顯示為高的**會話已結束**節點，特別是在流程初期。 這表示許多使用者可能在遵循分頁和 UI 互動的前面路徑之後，從您的網站變換。 有時候變換是預期的 - 例如，在電子商務網站上完成購買之後 - 但是變換通常是設計問題、效能不佳，或您的網站可以改善之其他問題的徵兆。
 
-請記住，**工作階段已結束**節點只會以這個 Application Insights 資源所收集的遙測為基礎。 如果 Application Insights 未收到特定使用者互動的遙測，使用者仍然可以在「使用者流程」工具指出工作階段已結束之後，使用那些方式與網站互動。
+請記住，**會話結束**的節點只會以此 Application Insights 資源所收集的遙測為基礎。 如果 Application Insights 未收到特定使用者互動的遙測，使用者仍然可以在「使用者流程」工具指出工作階段已結束之後，使用那些方式與網站互動。
 
 ## <a name="are-there-places-where-users-repeat-the-same-action-over-and-over"></a>有使用者一再重複相同動作的位置嗎？
 
@@ -85,14 +78,14 @@ ms.locfileid: "60373253"
 
 ### <a name="does-the-initial-event-represent-the-first-time-the-event-appears-in-a-session-or-any-time-it-appears-in-a-session"></a>初始事件代表事件第一次出現在工作階段中，或是出現在工作階段中的任一次？
 
-視覺效果的初始事件只代表使用者第一次在工作期間傳送該分頁檢視或自訂事件。 如果使用者可以在工作階段中傳送初始事件多次，則 [步驟 1] 資料行只會顯示使用者在初始事件  第一個執行個體 (而非所有執行個體) 之後的行為方式。
+視覺效果的初始事件只代表使用者第一次在工作期間傳送該分頁檢視或自訂事件。 如果使用者可以在工作階段中傳送初始事件多次，則 [步驟 1] 資料行只會顯示使用者在初始事件 ** 第一個執行個體 (而非所有執行個體) 之後的行為方式。
 
 ### <a name="some-of-the-nodes-in-my-visualization-are-too-high-level-for-example-a-node-that-just-says-button-clicked-how-can-i-break-it-down-into-more-detailed-nodes"></a>我的視覺效果中有某些節點過於概略。 例如，有某個節點只說「已按下的按鈕」。 要如何將期細分為更詳細的節點？
 
-請使用 [編輯] 功能表中的 [分割依據] 選項：
+請使用 [編輯]**** 功能表中的 [分割依據]**** 選項：
 
-1. 在 [事件] 功能表中選擇您想要細分的事件。
-2. 在 [維度] 功能表中選擇維度。 例如，如果您有名稱為「已按下的按鈕」的事件，請嘗試使用名稱為「按鈕名稱」的自訂屬性。
+1. 在 [事件]**** 功能表中選擇您想要細分的事件。
+2. 在 [維度]**** 功能表中選擇維度。 例如，如果您有名稱為「已按下的按鈕」的事件，請嘗試使用名稱為「按鈕名稱」的自訂屬性。
 
 ## <a name="next-steps"></a>後續步驟
 

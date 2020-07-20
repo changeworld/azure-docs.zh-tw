@@ -1,41 +1,37 @@
 ---
-title: 取得同意幾項資源 (Microsoft Authentication Library for.NET) |Azure
-description: 了解使用者如何取得預先同意使用 Microsoft Authentication Library for.NET (MSAL.NET) 的幾項資源。
+title: 取得幾個資源的同意（MSAL.NET） |Azure
+titleSuffix: Microsoft identity platform
+description: 瞭解使用者如何使用適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET），來預先同意數個資源。
 services: active-directory
-documentationcenter: dev-center-name
-author: rwike77
-manager: celested
-editor: ''
+author: mmacy
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/30/2019
-ms.author: ryanwi
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45bad9a03e8eff6f22ebb99fd2ef4bcd5fecf9b5
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: e36237e67b4498ca6aad4b7ffa8c645abeff6143
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65158816"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85477289"
 ---
-# <a name="user-gets-consent-for-several-resources-using-msalnet"></a>使用者取得同意使用 MSAL.NET 的幾項資源
-Microsoft 身分識別平台端點不允許您一次取得多項資源的權杖。 當使用 Microsoft Authentication Library for.NET (MSAL.NET)，在取得權杖方法的範圍參數應該只包含單一資源的範圍。 不過，您可以預先同意預付數個資源指定使用的其他範圍`.WithExtraScopeToConsent`產生器方法。
+# <a name="user-gets-consent-for-several-resources-using-msalnet"></a>使用者使用 MSAL.NET 取得數個資源的同意
+Microsoft 身分識別平臺端點不允許您一次取得數個資源的權杖。 使用適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）時，取得權杖方法中的範圍參數應僅包含單一資源的範圍。 不過，您可以使用產生器方法來指定其他範圍，預先同意數個資源 `.WithExtraScopeToConsent` 。
 
 > [!NOTE]
-> 取得數個資源適用於 Microsoft 身分識別平台，但不適用於 Azure AD B2C 中的同意。 Azure AD B2C 支援唯一的系統管理員同意，沒有使用者同意。
+> 針對 Microsoft 身分識別平臺取得數項資源的同意，但不適用於 Azure AD B2C。 Azure AD B2C 僅支援管理員同意，而非使用者同意。
 
-例如，如果您有兩個資源具有 2 範圍每個：
+例如，如果您有兩個資源，每個都有2個範圍：
 
-- https://mytenant.onmicrosoft.com/customerapi (2 個領域`customer.read`和`customer.write`)
-- https://mytenant.onmicrosoft.com/vendorapi (2 個領域`vendor.read`和`vendor.write`)
+- HTTPs： \/ /mytenant.onmicrosoft.com/customerapi （具有2個範圍 `customer.read` 和 `customer.write` ）
+- HTTPs： \/ /mytenant.onmicrosoft.com/vendorapi （具有2個範圍 `vendor.read` 和 `vendor.write` ）
 
-您應該使用`.WithExtraScopeToConsent`修飾詞具有*extraScopesToConsent*參數，在下列範例所示：
+您應該使用 `.WithExtraScopeToConsent` 具有*extraScopesToConsent*參數的修飾詞，如下列範例所示：
 
 ```csharp
 string[] scopesForCustomerApi = new string[]
@@ -56,7 +52,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .ExecuteAsync();
 ```
 
-這可讓您存取權杖的第一個 web API。 然後，當您需要存取第二個 web API 時您可以以無訊息模式取得權杖的快取的權杖：
+這會讓您取得第一個 Web API 的存取權杖。 然後，當您需要存取第二個 Web API 您可以從權杖快取以無訊息方式取得權杖：
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();

@@ -1,23 +1,19 @@
 ---
-title: 在 Windows VM 的 Azure Resource Manager 範本中使用受控磁碟 | Microsoft Docs
-description: 詳細說明如何在 Windows VM 的 Azure Resource Manager 範本中使用受控磁碟
-services: virtual-machines-windows
-documentationcenter: ''
+title: 受控磁片-Azure Resource Manager 範本
+description: 詳細說明如何在 Vm 的 Azure Resource Manager 範本中使用受控磁片
 author: jboeshart
-manager: ''
-ms.service: virtual-machines-windows
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: storage
+ms.service: virtual-machines
+ms.topic: how-to
+ms.workload: infrastructure
 ms.date: 06/01/2017
 ms.author: jaboes
 ms.subservice: disks
-ms.openlocfilehash: a0cbc52a61e1ea023ea78493c68a83c8fc8c5ea3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 353fd368c0470309c8d753317da33341e77caa43
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60581068"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82100085"
 ---
+# <a name="using-managed-disks-in-azure-resource-manager-templates"></a>在 Azure Resource Manager 範本中使用受控磁碟
 [!INCLUDE [virtual-machines-using-managed-disks-template-deployments](../../../includes/virtual-machines-using-managed-disks-template-deployments.md)]

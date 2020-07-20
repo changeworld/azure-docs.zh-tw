@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure PowerShell 設定 Azure IoT 中樞的訊息路由 | Microsoft Docs
-description: 使用 Azure PowerShell 設定 Azure IoT 中樞的訊息路由
+title: 使用 Azure PowerShell 設定 Azure IoT 中樞的訊息路由
+description: 使用 Azure PowerShell 設定 Azure IoT 中樞的訊息路由。 根據訊息中的屬性，路由至儲存體帳戶或服務匯流排佇列。
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 51e9bc85c2ee843aa096674a25a1f634bd08b838
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 68338c56419316e561bb072c1a0555e89d3de85b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58660918"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74084445"
 ---
 # <a name="tutorial-use-azure-powershell-to-configure-iot-hub-message-routing"></a>教學課程：使用 Azure PowerShell 來設定 IoT 中樞訊息路由
 
@@ -34,17 +34,17 @@ ms.locfileid: "58660918"
 
 ### <a name="use-powershell-to-create-your-base-resources"></a>使用 PowerShell 來建立基底資源
 
-有數個資源名稱必須是全域唯一的，例如 IoT 中樞名稱和儲存體帳戶名稱。 為求簡化，那些資源的名稱會加上稱為 randomValue 的隨機英數字元值。 randomValue 會在指令碼頂端產生一次，並於需要時加到整個指令碼的資源名稱後面。 如果您不想使用隨機值，則可將其設定為空字串，或設定為特定值。 
+將下列指令碼複製並貼到 Cloud Shell，然後按 Enter 鍵。 系統便會一次執行一行指令碼。 這是指令碼的第一個區段，會建立本教學課程的基底資源，包括儲存體帳戶、IoT 中樞、服務匯流排命名空間和服務匯流排佇列。 在進行本教學課程的過程中，請複製指令碼的每個區塊並將其貼到 Cloud Shell 中來加以執行。
+
+有數個資源名稱必須是全域唯一的，例如 IoT 中樞名稱和儲存體帳戶名稱。 為求簡化，那些資源的名稱會加上稱為 randomValue  的隨機英數字元值。 randomValue 會在指令碼頂端產生一次，並於需要時加到整個指令碼的資源名稱後面。 如果您不想使用隨機值，則可將其設定為空字串，或設定為特定值。 
 
 > [!IMPORTANT]
 > 初始指令碼中所設定的變數會供路由指令碼使用，因此，請讓所有指令碼在相同的 Cloud Shell 工作階段中執行。 如果您開啟新的工作階段來執行用於設定路由的指令碼，將會有數個變數遺漏值。 
 >
 
-將下列指令碼複製並貼到 Cloud Shell，然後按 Enter 鍵。 系統便會一次執行一行指令碼。 這是指令碼的第一個區段，會建立本教學課程的基底資源，包括儲存體帳戶、IoT 中樞、服務匯流排命名空間和服務匯流排佇列。 在進行本教學課程的過程中，請複製指令碼的每個區塊並將其貼到 Cloud Shell 中來加以執行。
-
 ```azurepowershell-interactive
 # This command retrieves the subscription id of the current Azure account.
-# This field is used when setting up the routing rules.
+# This field is used when setting up the routing queries.
 $subscriptionID = (Get-AzContext).Subscription.Id
 
 # Concatenate this number onto the resources that have to be globally unique.
@@ -140,7 +140,7 @@ New-AzServiceBusQueue -ResourceGroupName $resourceGroup `
 
 [!INCLUDE [iot-hub-include-blob-storage-format](../../includes/iot-hub-include-blob-storage-format.md)]
 
-要設定的變數如下：
+這些是指令碼所使用的變數，必須在您的 Cloud Shell 工作階段內設定：
 
 **resourceGroup**：此欄位會出現兩次，請都設定為您的資源群組。
 
@@ -162,7 +162,7 @@ New-AzServiceBusQueue -ResourceGroupName $resourceGroup `
 
 **condition**：此欄位是用來篩選此端點所收到訊息的查詢。 路由傳送至儲存體的訊息會有 `level="storage"` 的查詢條件。
 
-**enabled**：此欄位預設為 `true`，以指出應於建立訊息路由後加以啟用。
+**enabled**：此欄位預設為 `true`，表示應於建立訊息路由後加以啟用。
 
 將此指令碼複製並貼到 Cloud Shell 視窗。
 
@@ -232,7 +232,7 @@ $sbqkey = Get-AzServiceBusKey `
     -Name "sbauthrule"
 ```
 
-現在，請設定服務匯流排佇列的路由端點和訊息路由。 要設定的變數如下：
+現在，請設定服務匯流排佇列的路由端點和訊息路由。 這些是指令碼所使用的變數，必須在您的 Cloud Shell 工作階段內設定：
 
 **endpointName**：此欄位是用來識別端點的名稱。 
 

@@ -1,33 +1,32 @@
 ---
 title: 要移轉 Microsoft Translator Hub 工作區和專案嗎？ - 自訂翻譯工具
 titleSuffix: Azure Cognitive Services
-description: 將您的中樞工作區和專案移轉至自訂翻譯工具。
-author: rajdeep-in
-manager: christw
+description: 本文說明如何將您的中樞工作區和專案遷移至 Azure 認知服務自訂翻譯。
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
-ms.author: v-rada
+ms.date: 05/26/2020
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 73fc0d26612d32f2614899c62f680ff9e85d1609
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 02e6d776dbb47ee8e30409f6b8adc5a61fc5fe52
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698386"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958917"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>將中樞工作區和專案移轉至自訂翻譯工具
 
 您可以輕鬆地將 [Microsoft Translator Hub](https://hub.microsofttranslator.com/) 工作區和專案移轉至自訂翻譯工具。 若要從 Microsoft Hub 起始移轉，只要選取工作區或專案，然後選取自訂翻譯工具中的工作區，再選取您要移轉的訓練即可。 移轉開始後，選取的訓練設定將會連同所有相關的文件一起移轉。 已部署的模型已定型，並且可在完成後自動部署。
 
 在移轉期間會執行下列動作：
-* 所有文件和專案定義的名稱都會在前面加上 "hub_" 再進行移轉。 自動產生的測試和調整資料將會命名為 hub_systemtune_\<modelid> 或 hub_systemtest_\<modelid>。
+* 所有檔和專案定義都會以名稱前面加上 "hub_" 的方式傳送其名稱。 自動產生的測試和調整資料將會命名為 hub_systemtune_\<modelid> 或 hub_systemtest_\<modelid>。
 * 任何在移轉執行時處於已部署狀態的訓練，都將使用 Hub 訓練的文件自動定型。 此訓練不會對您的訂用帳戶產生費用。 如果在移轉時選取了自動部署，已定型的模型就會在完成後隨即部署。 這適用一般裝載費用。
 * 任何已移轉、但未處於已部署狀態的訓練，都會進入已移轉的草稿狀態中。 在此狀態下，您可以選擇使用已移轉的定義為模型定型，但需支付一般訓練費用。
-* 您隨時都可在模型的 TrainingDetails 頁面中找到從 Hub 訓練移轉的 BLEU 分數，其標題為「MT Hub 中的 Bleu 分數」。
+* 在任何時間點，從中樞訓練遷移的 BLEU 分數，都可以在模型的 [TrainingDetails] 頁面中找到，其位於 [MT 中樞的 Bleu 分數] 標題中。
 
-> [!Note]
-> 對於成功的訓練，10000 的唯一擷取句子至少需要自訂轉譯器。 自訂轉譯器不能進行訓練，少於[建議的最小](sentence-alignment.md#suggested-minimum-number-of-extracted-and-aligned-sentences)。
+> [!Note] 
+> 若要成功定型，自訂翻譯需要至少10000個唯一的解壓縮句子。 自訂翻譯無法以少於[建議的最小值](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences)來進行定型。
 
 ## <a name="find-custom-translator-workspace-id"></a>尋找自訂翻譯工具工作區識別碼
 
@@ -80,9 +79,9 @@ ms.locfileid: "59698386"
 
 4. 在下一個頁面上，選取下列兩個選項之一：
 
-    a. 僅限已部署的訓練：若選取此選項，將只會移轉您已部署的系統和相關文件。
+    a. 僅限已部署的定型：若選取此選項，將只會移轉您已部署的系統和相關文件。
 
-    b. 所有成功的訓練：若選取此選項，將會移轉您所有成功的訓練和相關文件。
+    b. 所有成功的定型：若選取此選項，將會移轉您所有成功的定型和相關文件。
 
     c. 輸入您在自訂翻譯工具中的目的地工作區識別碼。
 
@@ -92,7 +91,7 @@ ms.locfileid: "59698386"
 
 ## <a name="migration-history"></a>移轉歷程記錄
 
-如果您要求從中樞進行工作區/專案移轉，您將可在自訂翻譯工具的 [設定] 頁面中找到移轉歷程記錄。
+當您從中樞要求工作區/專案遷移時，您會在自訂翻譯設定] 頁面中找到您的遷移歷程記錄。
 
 若要檢視移轉歷程記錄，請遵循下列步驟：
 
@@ -110,7 +109,7 @@ ms.locfileid: "59698386"
 
 3. 專案：要求移轉的專案數目與成功移轉的專案數目。
 
-4. 訓練：要求移轉的訓練數目與成功移轉的訓練數目。
+4. 定型：要求移轉的定型數目與成功移轉的定型數目。
 
 5. 文件：要求移轉的文件數目與成功移轉的文件數目。
 
@@ -119,10 +118,10 @@ ms.locfileid: "59698386"
 如果您希望專案、定型和文件有更詳細的相關移轉報告，您可以選擇將詳細資料匯出為 CSV。
 
 ## <a name="implementation-notes"></a>實作附註
-* 系統語言組不還提供自訂轉譯器僅可供存取資料，或透過自訂轉譯器解除部署。 這些專案將標示為 「 無法使用 」，在 [專案] 頁面上。 隨著我們啟用新的語言組和自訂轉譯器時，專案會變成作用來定型和部署。 
+* 自訂翻譯中尚未提供語言組的系統，將只能透過自訂翻譯存取資料或解除部署。 這些專案在 [專案] 頁面上會標示為 [無法使用]。 當我們以自訂翻譯啟用新語言組時，專案將會變成作用中以進行定型和部署。 
 * 將專案從 Hub 移轉至自訂翻譯工具，並不會對您的 Hub 訓練或專案造成任何影響。 在移轉期間，我們不會從 Hub 中刪除專案或文件，也不會將模型解除部署。
 * 您的每個專案只能移轉一次。 如果您需要重複移轉某個專案，請與我們連絡。
-* 自訂轉譯器支援從英文來回 NMT 語言組。 [檢視支援語言的完整清單](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)。 Hub 不需要基準模型，因此可支援數千種語言。 您可以移轉不受支援的語言組，但我們只會執行文件和專案定義的移轉。 我們無法為新模型定型。 此外，這些文件和專案將會顯示為非作用中，以指出它們目前無法使用。 如果新增了這些專案和 (或) 文件的支援，它們就會變成作用中狀態，且可以定型。
+* 自訂翻譯支援與英文的 NMT 語言組。 請[參閱支援語言的完整清單](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)。 Hub 不需要基準模型，因此可支援數千種語言。 您可以移轉不受支援的語言組，但我們只會執行文件和專案定義的移轉。 我們無法為新模型定型。 此外，這些文件和專案將會顯示為非作用中，以指出它們目前無法使用。 如果新增了這些專案和 (或) 文件的支援，它們就會變成作用中狀態，且可以定型。
 * 自訂翻譯工具目前不支援單一語言定型資料。 和不受支援的語言組一樣，您可以移轉單一語言文件，但在單一語言資料受到支援之前，這些文件都會顯示為非作用中。
 * 自訂翻譯工具需要 10k 個平行句子才能執行定型。 Microsoft Hub 無法對較小的資料集定型。 不符合此需求的訓練若進行移轉，則不會定型。
 
@@ -132,18 +131,18 @@ ms.locfileid: "59698386"
 
 |   | 中樞 | 自訂翻譯工具 |
 |:-----|:----:|:----:|
-|自訂功能狀態   | 正式運作  | 正式運作 |
-| 文字 API 版本  | V2    | V3  |
-| SMT 自訂 | 是   | 否 |
-| NMT 自訂 | 否    | 是 |
-| 新的統一語音服務自訂 | 否    | 是 |
-| 不追蹤 | 是 | 是 |
+|自訂功能狀態    | 正式運作    | 正式運作 |
+| 文字 API 版本    | V2     | V3  |
+| SMT 自訂    | 是    | 否 |
+| NMT 自訂    | 否    | 是 |
+| 新的統一語音服務自訂    | 否    | 是 |
+| 不追蹤 | Yes | Yes |
 
-## <a name="new-languages"></a>新的語言
+## <a name="new-languages"></a>新語言
 
-如果您是社群或組織的 Microsoft Translator 中建立新的語言系統，向[ custommt@microsoft.com ](mailto:custommt@microsoft.com)如需詳細資訊。
+如果您是使用為 Translator 建立新語言系統的社區或組織，請聯繫以 [custommt@microsoft.com](mailto:custommt@microsoft.com) 取得詳細資訊。
 
 ## <a name="next-steps"></a>後續步驟
 
 - [將模型定型](how-to-train-model.md)。
-- 透過 [Microsoft Translator Text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) 開始使用您已部署的自訂翻譯模型。
+- 從[Translator V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)開始使用您已部署的自訂翻譯模型。

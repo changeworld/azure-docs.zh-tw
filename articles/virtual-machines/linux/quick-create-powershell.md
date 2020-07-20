@@ -1,39 +1,31 @@
 ---
-title: 快速入門 - 使用 Azure PowerShell 建立 Linux VM | Microsoft Docs
+title: 快速入門 - 使用 Azure PowerShell 建立 Linux VM
 description: 在本快速入門中，您會了解如何使用 Azure PowerShell 來建立 Linux 虛擬機器
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 46ab5cae7514adfc4ec31ad88f5445a09e3c0e6a
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 397fac7609d9527165a1a0a35215a2e2bac23c6d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55975291"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81759211"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>快速入門：使用 PowerShell 在 Azure 中建立 Linux 虛擬機器
 
 Azure PowerShell 模組用於從 PowerShell 命令列或在指令碼中建立和管理 Azure 資源。 本快速入門說明如何使用 Azure PowerShell 模組，在 Azure 中部署 Linux 虛擬機器 (VM)。 本快速入門會從 Canonical 使用 Ubuntu 16.04 LTS 市集映像。 為了查看作用中的 VM，您還會以 SSH 連線至 VM，並安裝 NGINX 網頁伺服器。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="launch-azure-cloud-shell"></a>啟動 Azure Cloud Shell
 
 Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 
 
-若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看] 即可。 選取 [複製] 即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
+若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看]  即可。 選取 [複製]  即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
 
 ## <a name="create-ssh-key-pair"></a>建立 SSH 金鑰組
 
@@ -192,7 +184,7 @@ Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
 ssh azureuser@10.111.12.123
 ```
 
-出現提示時，登入使用者名稱為 azureuser。 如果 SSH 金鑰搭配使用複雜密碼，則需要在提示時輸入該複雜密碼。
+出現提示時，登入使用者名稱為 azureuser  。 如果 SSH 金鑰搭配使用複雜密碼，則需要在提示時輸入該複雜密碼。
 
 
 ## <a name="install-nginx"></a>安裝 NGINX
@@ -211,7 +203,7 @@ sudo apt-get -y install nginx
 
 使用所選的網頁瀏覽器來查看預設 NGINX 歡迎使用頁面。 輸入 VM 的公用 IP 位址作為網址。 您可以在 VM 的 [概觀] 頁面找到公用 IP 位址，也可以在您稍早使用的 SSH 連接字串中找到。
 
-![預設 NGINX 網站](./media/quick-create-cli/nginx.png)
+![NGINX 預設的歡迎頁面](./media/quick-create-cli/nginix-welcome-page.png)
 
 ## <a name="clean-up-resources"></a>清除資源
 

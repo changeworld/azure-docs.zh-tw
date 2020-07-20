@@ -1,19 +1,19 @@
 ---
-title: 如何使用 PHP 的 Azure 儲存體表格服務或 Azure Cosmos DB 資料表 API
+title: 使用 PHP 的 Azure 儲存體表格服務或 Azure Cosmos DB 資料表 API
 description: 使用 Azure 資料表儲存體或 Azure Cosmos DB 資料表 API 將結構化資料儲存在雲端。
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
-ms.openlocfilehash: aac6755ed90c795b8fff09d9ffde33878ad21a32
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dcea83b9452b33baef8d563c7776aa9bd258a5f4
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111492"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389678"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>如何使用 PHP 的 Azure 儲存體表格服務或 Azure Cosmos DB 資料表 API
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -314,7 +314,7 @@ foreach($entities as $entity){
 ```
 
 ## <a name="retrieve-a-subset-of-entity-properties"></a>擷取實體屬性的子集
-查詢可以擷取實體屬性的子集。 這項稱為「投射」 的技術可減少頻寬並提高查詢效能 (尤其是對大型實體而言)。 若要指定要擷取的屬性，請將屬性的名稱傳遞給 **Query->addSelectField** 方法。 您可以呼叫此方法許多次以新增其他屬性。 執行 **TableRestProxy->queryEntities** 之後，傳回的實體將只具有選取的屬性。 (如果您想要傳回資料表實體的子集，請使用篩選條件，如上面的查詢所示。)
+查詢可以擷取實體屬性的子集。 這項稱為「投射」  的技術可減少頻寬並提高查詢效能 (尤其是對大型實體而言)。 若要指定要擷取的屬性，請將屬性的名稱傳遞給 **Query->addSelectField** 方法。 您可以呼叫此方法許多次以新增其他屬性。 執行 **TableRestProxy->queryEntities** 之後，傳回的實體將只具有選取的屬性。 (如果您想要傳回資料表實體的子集，請使用篩選條件，如上面的查詢所示。)
 
 ```php
 require_once 'vendor/autoload.php';
@@ -509,8 +509,8 @@ catch(ServiceException $e){
 
 [download]: https://packagist.org/packages/microsoft/azure-storage-table
 [require_once]: https://php.net/require_once
-[table-service-timeouts]: https://docs.microsoft.com/rest/api/storageservices/setting-timeouts-for-table-service-operations
+[table-service-timeouts]: /rest/api/storageservices/setting-timeouts-for-table-service-operations
 
-[table-data-model]: https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model
-[filters]: https://docs.microsoft.com/rest/api/storageservices/Querying-Tables-and-Entities
-[entity-group-transactions]: https://docs.microsoft.com/rest/api/storageservices/Performing-Entity-Group-Transactions
+[table-data-model]: /rest/api/storageservices/Understanding-the-Table-Service-Data-Model
+[filters]: /rest/api/storageservices/Querying-Tables-and-Entities
+[entity-group-transactions]: /rest/api/storageservices/Performing-Entity-Group-Transactions

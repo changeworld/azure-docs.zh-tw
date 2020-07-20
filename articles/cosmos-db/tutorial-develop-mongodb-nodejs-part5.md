@@ -1,6 +1,5 @@
 ---
-title: 使用 Azure Cosmos DB 適用於 MongoDB 的 API 建立 Angular 應用程式
-titleSuffix: Azure Cosmos DB
+title: 使用 Mongoose 將 Angular 應用程式連線到適用於 MongoDB 的 Azure Cosmos DB API
 description: 本教學課程說明如何使用 Angular 和 Express 建置 Node.js 應用程式，以管理 Cosmos DB 中儲存的資料。 在這個部分中，您會使用 Mongoose 連線至 Azure Cosmos DB。
 author: johnpapa
 ms.service: cosmos-db
@@ -11,13 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Cosmos DB.
-ms.openlocfilehash: c8cab3c723b7e507b0f3b05b933cca9e2c24fb39
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1bed17084af39fa75fe01d68fbdd33c586d48e67
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075470"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114277"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>使用 Azure Cosmos DB 適用於 MongoDB 的 API 建立 Angular 應用程式
 
@@ -236,9 +234,9 @@ Mongoose 是適用於 MongoDB 及 Node.js 的物件資料模型 (ODM) 程式庫�
 
 1. 現在切換至瀏覽器。 開啟 [開發人員工具] 和 [網路] 索引標籤。移至 `http://localhost:3000`，您會看到我們的應用程式。
 
-    ![Azure 入口網站中的新 Azure Cosmos DB 帳戶](./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png" alt-text="Azure 入口網站中的新 Azure Cosmos DB 帳戶":::
 
-應用程式中尚未儲存任何 Hero。 在本教學課程的下一個部分，我們會新增 put、push 和 delete 功能。 然後我們可以使用 Azure Cosmos DB 資料庫的 Mongoose 連線，在 UI 中新增、更新和刪除 Hero。 
+應用程式中尚未儲存任何 Hero。 在本教學課程的下一個部分，我們會新增 put、push 和 delete 功能。 然後我們可以使用 Azure Cosmos 資料庫的 Mongoose 連線，在 UI 中新增、更新和刪除 Hero。 
 
 ## <a name="clean-up-resources"></a>清除資源
 

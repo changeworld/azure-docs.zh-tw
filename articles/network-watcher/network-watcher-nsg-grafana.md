@@ -1,37 +1,32 @@
 ---
-title: 使用網路監看員和 Grafana 管理網路安全性群組流量記錄 | Microsoft Docs
+title: 使用 Grafana 管理 NSG 流量記錄
+titleSuffix: Azure Network Watcher
 description: 使用網路監看員和 Grafana 在 Azure 中管理和分析網路安全性群組流量記錄。
 services: network-watcher
 documentationcenter: na
-author: mattreatMSFT
-manager: vitinnan
-editor: ''
+author: damendo
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
-ms.author: mareat
-ms.openlocfilehash: 73173c144f979d4a10b90a16aec783fe51a3f90e
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.author: damendo
+ms.openlocfilehash: 4d07feb54a689c32e119d997275416a5dd8f0aad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62116234"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84725081"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>使用網路監看員和 Grafana 來管理和分析網路安全性群組流量記錄
 
 [網路安全性群組 (NSG) 流量記錄](network-watcher-nsg-flow-logging-overview.md)提供的資訊可讓您用來了解網路介面上的輸入和輸出 IP 流量。 這些流量記錄會顯示每一個 NSG 規則的輸出和輸入流量、套用流量的 NIC、有關流量的 5 Tuple 資訊 (來源/目的地 IP、來源/目的地連接埠、通訊協定)，以及流量是獲得允許還是遭到拒絕。
 
-> [!Warning]  
-> 下列步驟適用於流量記錄第 1 版。 如需詳細資訊，請參閱[網路安全性群組流量記錄簡介](network-watcher-nsg-flow-logging-overview.md)。 下列指示若未經修改，則不適用於第 2 版的記錄檔。
-
 您可以在已啟用流量記錄的網路中擁有許多個 NSG。 這樣的記錄資料量會讓您在剖析以及從記錄中取得見解時變得很麻煩。 本文提供了可使用 Grafana (開放原始碼的繪圖工具)、ElasticSearch (分散式的搜尋和分析引擎) 以及 Logstash (開放原始碼的伺服器端資料處理管線) 來集中管理這些 NSG 流量記錄的解決方案。  
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
 NSG 流量記錄可使用網路監看員來啟用，並且會儲存在 Azure Blob 儲存體中。 Logstash 外掛程式可用來從 Blob 儲存體連線和處理流量記錄，並將記錄傳送到 ElasticSearch。  流量記錄儲存在 ElasticSearch 後，就可供進行分析並於 Grafana 的自訂儀表板中視覺化呈現。
 
@@ -41,7 +36,7 @@ NSG 流量記錄可使用網路監看員來啟用，並且會儲存在 Azure Blo
 
 ### <a name="enable-network-security-group-flow-logging"></a>啟用網路安全性群組流量記錄
 
-在此案例中，您必須在您的帳戶中至少一個網路安全性群組上啟用「網路安全性群組流量記錄」。 如需有關啟用網路安全性流量記錄的指示，請參閱下列文章︰[網路安全性群組的流量記錄簡介](network-watcher-nsg-flow-logging-overview.md)。
+在此案例中，您必須在您的帳戶中至少一個網路安全性群組上啟用「網路安全性群組流量記錄」。 如需有關啟用網路安全性流程記錄的指示，請參閱下列文章：[網路安全性群組的流量記錄簡介](network-watcher-nsg-flow-logging-overview.md)。
 
 ### <a name="setup-considerations"></a>設定考量
 
@@ -108,6 +103,11 @@ NSG 流量記錄可使用網路監看員來啟用，並且會儲存在 Azure Blo
           "protocol" => "%{[records][properties][flows][flows][flowTuples][5]}"
           "trafficflow" => "%{[records][properties][flows][flows][flowTuples][6]}"
           "traffic" => "%{[records][properties][flows][flows][flowTuples][7]}"
+      "flowstate" => "%{[records][properties][flows][flows][flowTuples][8]}"
+      "packetsSourceToDest" => "%{[records][properties][flows][flows][flowTuples][9]}"
+      "bytesSentSourceToDest" => "%{[records][properties][flows][flows][flowTuples][10]}"
+      "packetsDestToSource" => "%{[records][properties][flows][flows][flowTuples][11]}"
+      "bytesSentDestToSource" => "%{[records][properties][flows][flows][flowTuples][12]}"
         }
         add_field => {
           "time" => "%{[records][time]}"
@@ -186,13 +186,13 @@ sudo service grafana-server start
 
 #### <a name="add-the-elasticsearch-server-as-a-data-source"></a>將 ElasticSearch 伺服器新增為資料來源
 
-接下來，您必須將包含流量記錄的 ElasticSearch 索引新增為資料來源。 您可以藉由選取 [新增資料來源] 並在表單內填妥相關資訊，來新增資料來源。 您可以在下列螢幕擷取畫面找到這項設定的範例：
+接下來，您必須將包含流量記錄的 ElasticSearch 索引新增為資料來源。 您可以藉由選取 [新增資料來源]**** 並在表單內填妥相關資訊，來新增資料來源。 您可以在下列螢幕擷取畫面找到這項設定的範例：
 
 ![新增資料來源](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig2.png)
 
 #### <a name="create-a-dashboard"></a>建立儀表板
 
-您已成功地將 Grafana 設定為讀取包含 NSG 流量記錄的 ElasticSearch 索引，接下來您可以建立儀表板並將其個人化。 若要建立新的儀表板，請選取 [建立第一個儀表板]。 下列圖形設定範例會顯示依 NSG 規則所區分的流量：
+您已成功地將 Grafana 設定為讀取包含 NSG 流量記錄的 ElasticSearch 索引，接下來您可以建立儀表板並將其個人化。 若要建立新的儀表板，請選取 [建立第一個儀表板]****。 下列圖形設定範例會顯示依 NSG 規則所區分的流量：
 
 ![儀表板圖形](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig3.png)
 

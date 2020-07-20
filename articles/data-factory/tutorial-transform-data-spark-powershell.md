@@ -1,24 +1,26 @@
 ---
-title: 使用 Azure Data Factory 中的 Spark 轉換資料 | Microsoft Docs
+title: '使用 Azure Data Factory 中的 Spark 來轉換資料 '
 description: 本教學課程提供逐步指示，說明如何使用 Azure Data Factory 中的 Spark 活動來轉換資料。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: f273237431373aa69423ba244d4e7c509ffe7bfe
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+manager: anandsub
+ms.openlocfilehash: bef80cdeab32d14aeaae350adda869a8ea7b05c7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57577104"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81409093"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>使用 Azure Data Factory 中的 Spark 活動來轉換雲端中的資料
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 在本教學課程中，您會使用 Azure PowerShell 建立 Data Factory 管道，以使用 Spark 活動和隨選 HDInsight 連結服務來轉換資料。 您會在本教學課程中執行下列步驟：
 
 > [!div class="checklist"]
@@ -30,7 +32,7 @@ ms.locfileid: "57577104"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -64,7 +66,7 @@ ms.locfileid: "57577104"
     if __name__ == "__main__":
         main()
     ```
-2. 以您的 Azure 儲存體帳戶名稱取代 **&lt;storageAccountName&gt;**。 然後儲存檔案。 
+2. 以您的 Azure 儲存體帳戶名稱取代 **&lt;storageAccountName&gt;** 。 然後儲存檔案。 
 3. 在 Azure Blob 儲存體中，建立名為 **adftutorial** 的容器 (如果不存在)。 
 4. 建立名為 **spark** 的資料夾。
 5. 在 **spark** 資料夾下，建立名為 **script** 的子資料夾。 
@@ -91,10 +93,7 @@ ms.locfileid: "57577104"
     "properties": {
       "type": "AzureStorage",
       "typeProperties": {
-        "connectionString": {
-          "value": "DefaultEndpointsProtocol=https;AccountName=<storageAccountName>;AccountKey=<storageAccountKey>",
-          "type": "SecureString"
-        }
+        "connectionString": "DefaultEndpointsProtocol=https;AccountName=<storageAccountName>;AccountKey=<storageAccountKey>"
       }
     }
 }
@@ -137,7 +136,7 @@ ms.locfileid: "57577104"
 
 - **hostSubscriptionId**。 以您的 Azure 訂用帳戶識別碼取代 &lt;subscriptionID&gt;。 隨選 HDInsight 叢集會在此訂用帳戶中建立。 
 - **tenant**. 以您的 Azure 租用戶識別碼取代 &lt;tenantID&gt;。 
-- **servicePrincipalId**、**servicePrincipalKey**。 以您在 Azure Active Directory 中的服務主體識別碼與金鑰，取代 &lt;servicePrincipalID&gt; 和 &lt;servicePrincipalKey&gt;。 此服務主體必須是訂用帳戶之參與者角色的成員，或其中建立叢集之資源群組的成員。 如需詳細資料，請參閱[建立 Azure Active Directory 應用程式和服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。 
+- **servicePrincipalId**、**servicePrincipalKey**。 以您在 Azure Active Directory 中的服務主體識別碼與金鑰，取代 &lt;servicePrincipalID&gt; 和 &lt;servicePrincipalKey&gt;。 此服務主體必須是訂用帳戶之參與者角色的成員，或其中建立叢集之資源群組的成員。 如需詳細資料，請參閱[建立 Azure Active Directory 應用程式和服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。 **服務主體識別碼**相當於「應用程式識別碼」  ，而**服務主體金鑰**則相當於「用戶端密碼」  的值。
 - **clusterResourceGroup**。 以需要在其中建立 HDInsight 叢集的資源群組名稱，取代&lt;resourceGroupOfHDICluster&gt;。 
 
 > [!NOTE]
@@ -201,7 +200,7 @@ ms.locfileid: "57577104"
     ```powershell
     $pipelineName = "MySparkOnDemandPipeline" # Name of the pipeline
     ```
-2. 啟動 **PowerShell**。 保持開啟 Azure PowerShell，直到本快速入門結束為止。 如果您關閉並重新開啟，則需要再次執行這些命令。 如需目前可使用 Data Factory 的 Azure 區域清單，請在下列頁面上選取您感興趣的區域，然後展開 [分析] 以找出 [Data Factory]：[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料處理站所使用的資料存放區 (Azure 儲存體、Azure SQL Database 等) 和計算 (HDInsight 等) 可位於其他區域。
+2. 啟動 **PowerShell**。 保持開啟 Azure PowerShell，直到本快速入門結束為止。 如果您關閉並重新開啟，則需要再次執行這些命令。 如需目前可使用 Data Factory 的 Azure 區域清單，請在下列頁面上選取您感興趣的區域，然後展開 [分析]  以找出 [Data Factory]  ：[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料處理站所使用的資料存放區 (Azure 儲存體、Azure SQL Database 等) 和計算 (HDInsight 等) 可位於其他區域。
 
     執行下列命令，並輸入您用來登入 Azure 入口網站的使用者名稱和密碼：
         
@@ -252,7 +251,7 @@ ms.locfileid: "57577104"
     
 ## <a name="start-and-monitor-a-pipeline-run"></a>啟動及監視管道執行  
 
-1. 啟動管道執行。 它也會擷取管道執行識別碼，方便後續監視。
+1. 啟動管線執行。 它也會擷取管線執行識別碼，方便後續監視。
 
     ```powershell
     $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName  

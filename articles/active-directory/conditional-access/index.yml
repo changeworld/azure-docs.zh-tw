@@ -1,56 +1,71 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure AD 條件式存取文件
+summary: 了解如何設定及測試 Azure Active Directory 條件式存取
 metadata:
-  document_id: null
-  title: Azure Active Directory 條件式存取文件 - 教學課程、快速入門、概念和參考 | Microsoft Docs
-  description: 了解如何設定及測試 Azure Active Directory 條件式存取。
+  title: Azure AD 條件式存取文件
+  description: 了解如何設定及測試 Azure Active Directory 條件式存取
   services: active-directory
-  ms.subservice: conditional-access
-  author: MicrosoftGuyJFlo
-  manager: daveba
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: conditional-access
   ms.topic: landing-page
-  ms.date: 08/14/2018
+  author: MicrosoftGuyJFlo
   ms.author: joflore
-abstract:
-  description: 了解如何設定 Azure AD 條件式存取，控制安全性與生產力之間的平衡。 透過條件式存取原則，您可以找出如何判斷雲端應用程式的存取因素。 例如，您可以在存取決策中解決以下問題：<ul><li>使用者的網路位置為何？</li><li>一開始是否從受控裝置嘗試存取？</li><li>從哪個用戶端應用程式開始嘗試連線？</li><li>是否曾經嘗試從有風險的登入進行存取？</li></ul>下列資源可協助您快速開始使用。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ./media/index/video.png
-      width: 246
-    title: 條件式存取說明
-    href: 'https://www.youtube.com/watch?v=XruceejcCKQ'
-    width: 246
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何針對常見的存取案例，設定條件式存取原則。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_security-management.png
-            text: 特定應用程式需要 MFA
-            href: app-based-mfa.md
-          - image:
-              src: ./media/index/i_security-management.png
-            text: 偵測到工作階段風險時封鎖存取
-            href: app-sign-in-risk.md
-          - image:
-              src: ./media/index/i_security-management.png
-            text: 需要接受使用條款
-            href: require-tou.md
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何遷移傳統的條件式存取原則。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/conditional-access/policy-migration-mfa">遷移要求多重要素驗證的傳統原則</a>
+  ms.date: 08/20/2019
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: d44745bcea348f944a2434e1164e59e32d1f92dc
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "77186070"
+landingContent:
+- title: 關於條件式存取
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 何謂條件式存取？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 什麼是條件？
+      url: concept-conditional-access-conditions.md
+    - text: 如何定義位置？
+      url: location-condition.md
+    - text: 什麼是控制項？
+      url: controls.md
+    - text: 條件式存取的服務相依性
+      url: service-dependencies.md
+- title: 部署條件式存取
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 規劃條件式存取部署
+      url: plan-conditional-access.md
+  - linkListType: how-to-guide
+    links:
+    - text: 封鎖舊式驗證
+      url: block-legacy-authentication.md
+    - text: 使用 What If 工具進行疑難排解
+      url: troubleshoot-conditional-access-what-if.md
+- title: 一般條件式存取原則
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 一般條件式存取原則
+      url: concept-conditional-access-policy-common.md
+  - linkListType: how-to-guide
+    links:
+    - text: 需要管理員的 MFA
+      url: howto-conditional-access-policy-admin-mfa.md
+    - text: 需要 Azure 管理的 MFA
+      url: howto-conditional-access-policy-azure-management.md
+    - text: 封鎖舊式驗證
+      url: howto-conditional-access-policy-block-legacy.md
+    - text: 以風險為依據的條件式存取 (需要 Azure AD Premium P2)
+      url: howto-conditional-access-policy-risk.md
+    - text: 需要受信任的位置進行 MFA 註冊
+      url: howto-conditional-access-policy-registration.md
+    - text: 依位置封鎖存取
+      url: howto-conditional-access-policy-location.md
+    - text: 需要符合規範裝置
+      url: howto-conditional-access-policy-compliant-device.md

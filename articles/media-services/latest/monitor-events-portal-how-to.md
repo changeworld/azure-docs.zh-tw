@@ -1,5 +1,5 @@
 ---
-title: 在入口網站中使用事件方格監視 Azure 媒體服務事件 | Microsoft Docs
+title: 透過入口網站使用事件方格監視 Azure 媒體服務事件
 description: 本文說明如何訂閱事件方格以監視 Azure 媒體服務事件。
 services: media-services
 documentationcenter: na
@@ -13,20 +13,19 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 10/15/2018
+ms.date: 01/21/2020
 ms.author: juliako
-ms.openlocfilehash: d4592c93cb7969c45a107d7365a1b9dabf11f412
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 18503e64dc6f38daab61599153cd0e0fb6fadb20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60326505"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76509218"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>在 Azure 入口網站中使用事件方格建立和監視媒體服務事件
 
-Azure Event Grid 是一項雲端事件服務。 此服務會使用[事件訂用帳戶](../../event-grid/concepts.md#event-subscriptions)將事件訊息路由至訂閱者。 媒體事件包含了回應資料變更時所需的一切資訊。 因為 eventType 屬性開頭為 “Microsoft.Media”，所以您可以藉此識別出媒體服務事件。 如需詳細資訊，請參閱[媒體服務事件結構描述](media-services-event-schemas.md)。
+Azure Event Grid 是一項雲端事件服務。 此服務會使用[事件訂閱](../../event-grid/concepts.md#event-subscriptions)將事件訊息路由傳送至訂閱者。 媒體事件包含了回應資料變更時所需的一切資訊。 因為 eventType 屬性開頭為 “Microsoft.Media”，所以您可以藉此識別出媒體服務事件。 如需詳細資訊，請參閱[媒體服務事件結構描述](media-services-event-schemas.md)。
 
-在本文中，您會使用 Azure 入口網站訂閱 Azure 媒體服務帳戶的事件。 然後，您會觸發事件以檢視結果。 通常，您會將事件傳送至可處理事件資料及採取行動的端點。 在本文中，我們會將事件傳送至 web 應用程式，來收集及顯示的訊息。
+在本文中，您會使用 Azure 入口網站訂閱 Azure 媒體服務帳戶的事件。 然後，您會觸發事件以檢視結果。 通常，您會將事件傳送至可處理事件資料及採取行動的端點。 在本文中，我們會將事件傳送至 web 應用程式，以收集並顯示訊息。
 
 當您完成時，您會看到事件資料已傳送至 Web 應用程式。
 
@@ -53,20 +52,20 @@ Azure Event Grid 是一項雲端事件服務。 此服務會使用[事件訂用�
 
 您可訂閱主題，告知 Event Grid 您想要追蹤的事件，以及要將事件傳送至何處。
 
-1. 在入口網站中選取您的媒體服務帳戶，然後選取 [事件]。
+1. 在入口網站中選取您的媒體服務帳戶，然後選取 [事件]****。
 1. 若要將事件傳送至您的檢視器應用程式，請使用端點的 Web Hook。 
 
    ![選取 Web Hook](./media/monitor-events-portal/select-web-hook.png)
 
 1. 事件訂用帳戶中會預先填入您媒體服務帳戶的值。 
-1. 選取 [Web Hook] 作為 [端點類型]。
-1. 在此主題中，我們將 [訂閱所有事件類型] 保留為核取狀態。 不過，您可以將其取消核取，並篩選特定事件類型。 
-1. 按一下 [選取端點] 連結。
+1. 針對**端點類型**選取 [網頁攔截]。
+1. 在此主題中，我們將 [訂閱所有事件類型]**** 保留為核取狀態。 不過，您可以將其取消核取，並篩選特定事件類型。 
+1. 按一下 [選取端點]**** 連結。
 
     針對 Web Hook 端點，提供您的 Web 應用程式 URL，並將 `api/updates` 新增至首頁 URL。 
 
-1. 按 [確認選取項目]。
-1. 按下 [建立] 。
+1. 按 [確認選取項目]****。
+1. 按下 [建立] ****。
 1. 請為您的訂用帳戶指定名稱。
 
    ![選取記錄](./media/monitor-events-portal/create-subscription.png)

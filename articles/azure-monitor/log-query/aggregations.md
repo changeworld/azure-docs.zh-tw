@@ -1,24 +1,16 @@
 ---
 title: Azure 監視器記錄查詢中的彙總 | Microsoft Docs
 description: 說明 Azure 監視器記錄查詢中提供實用方式來分析資料的彙總函式。
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 864e9586082ed95bf17135414ec4b879e3034ace
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 08/16/2018
+ms.openlocfilehash: d164c53e7e2be55f3cede389901a256ba388808d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60589618"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77670299"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Azure 監視器記錄查詢中的彙總
 
@@ -79,7 +71,7 @@ Heartbeat
 ```
 
 ### <a name="evaluating-subgroups"></a>評估子群組
-若要為您資料中的子群組執行計算或其他彙總，請使用 `by` 關鍵字。 例如，若要計算在每個國家/地區傳送活動訊號的相異 Linux 電腦數目：
+若要為您資料中的子群組執行計算或其他彙總，請使用 `by` 關鍵字。 例如，若要計算在每個國家/地區傳送了心跳的相異 Linux 電腦數目：
 
 ```Kusto
 Heartbeat 
@@ -96,7 +88,7 @@ Heartbeat
 |荷蘭      | 2                   |
 
 
-若要分析更小的資料子群組，請將額外欄名加到 `by` 區段。 例如，您可能想要計算每個國家/地區依 OSType 的相異電腦數：
+若要分析更小的資料子群組，請將額外欄名加到 `by` 區段。 例如，您可能會想要計算每個 OSType 每個國家/地區的相異電腦數：
 
 ```Kusto
 Heartbeat 

@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 5704d151-afb8-40a4-b286-8bacd4f279ee
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06a4546864d2447049bc56491cdc37097760a678
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 15b31bf14b01a215d99814ce57eb9cd5f2cb2773
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57854733"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81869442"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cs-stars"></a>教學課程：Azure Active Directory 與 CS Stars 整合
 
@@ -81,7 +82,7 @@ CS Stars 與 Azure AD 整合提供下列優點：
 3. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 Britta Simon 測試 Azure AD 單一登入。
 4. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 Britta Simon 能夠使用 Azure AD 單一登入。
 5. **[建立 CS Stars 測試使用者](#create-cs-stars-test-user)** - 使 CS Stars 中對應的 Britta Simon 連結到該使用者在 Azure AD 中的代表項目。
-6. **[測試單一登入](#test-single-sign-on)**，驗證組態是否能運作。
+6. **[測試單一登入](#test-single-sign-on)** ，驗證組態是否能運作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>設定 Azure AD 單一登入
 
@@ -97,7 +98,7 @@ CS Stars 與 Azure AD 整合提供下列優點：
 
     ![單一登入選取模式](common/select-saml-option.png)
 
-3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。
+3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。   
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
@@ -110,7 +111,7 @@ CS Stars 與 Azure AD 整合提供下列優點：
     b. 在 [識別碼 (實體識別碼)] 文字方塊中，使用下列模式輸入 URL：`https://<subdomain>.csstars.com/enterprise/`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [CS Stars 用戶端支援小組](https://www.marshclearsight.com/support/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [CS Stars 用戶端支援小組](https://riskonnect.com/support/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
 4. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中按一下 [下載]，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
 
@@ -128,7 +129,7 @@ CS Stars 與 Azure AD 整合提供下列優點：
 
 ### <a name="configure-cs-stars-single-sign-on"></a>設定 CS Stars 單一登入
 
-若要在 **CS Stars** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML] 和複製的適當 URL 傳送給 [CS Stars 支援小組](https://www.marshclearsight.com/support/)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **CS Stars** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML] 和複製的適當 URL 傳送給 [CS Stars 支援小組](https://riskonnect.com/support/)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
@@ -153,7 +154,7 @@ CS Stars 與 Azure AD 整合提供下列優點：
 
     c. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
 
-    d. 按一下頁面底部的 [新增] 。
+    d. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
@@ -183,7 +184,7 @@ CS Stars 與 Azure AD 整合提供下列優點：
 
 ### <a name="create-cs-stars-test-user"></a>建立 CS Stars 測試使用者
 
-在本節中，您會在 CS Stars 中建立名為 Britta Simon 的使用者。 請與  [CS Stars 支援小組](https://www.marshclearsight.com/support/)合作，在 CS Stars 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您會在 CS Stars 中建立名為 Britta Simon 的使用者。 請與  [CS Stars 支援小組](https://riskonnect.com/support/)合作，在 CS Stars 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 

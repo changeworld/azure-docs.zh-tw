@@ -1,0 +1,10 @@
+---
+ms.openlocfilehash: a155a3ab9f050b2611229724af92bedbb154cd64
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81408990"
+---
+<Token>**適用於：** ![是](../media/applies-to/yes.png)Azure Data Factory ![是](../media/applies-to/yes.png)Azure Synapse Analytics (預覽) </Token>
+

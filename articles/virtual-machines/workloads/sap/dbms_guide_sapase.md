@@ -9,354 +9,168 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/1/2018
+ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f50f013020c704ddc294a59f8c6c5dac24bbd5a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 25d911869c95baba6ac9db3b893292e702e9c0e9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60835272"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81273200"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>適用於 SAP 工作負載的 SAP ASE Azure 虛擬機器 DBMS 部署
 
-[767598]:https://launchpad.support.sap.com/#/notes/767598
-[773830]:https://launchpad.support.sap.com/#/notes/773830
-[826037]:https://launchpad.support.sap.com/#/notes/826037
-[965908]:https://launchpad.support.sap.com/#/notes/965908
-[1031096]:https://launchpad.support.sap.com/#/notes/1031096
-[1114181]:https://launchpad.support.sap.com/#/notes/1114181
-[1139904]:https://launchpad.support.sap.com/#/notes/1139904
-[1173395]:https://launchpad.support.sap.com/#/notes/1173395
-[1245200]:https://launchpad.support.sap.com/#/notes/1245200
-[1409604]:https://launchpad.support.sap.com/#/notes/1409604
-[1558958]:https://launchpad.support.sap.com/#/notes/1558958
-[1585981]:https://launchpad.support.sap.com/#/notes/1585981
-[1588316]:https://launchpad.support.sap.com/#/notes/1588316
-[1590719]:https://launchpad.support.sap.com/#/notes/1590719
-[1597355]:https://launchpad.support.sap.com/#/notes/1597355
-[1605680]:https://launchpad.support.sap.com/#/notes/1605680
-[1619720]:https://launchpad.support.sap.com/#/notes/1619720
-[1619726]:https://launchpad.support.sap.com/#/notes/1619726
-[1619967]:https://launchpad.support.sap.com/#/notes/1619967
-[1750510]:https://launchpad.support.sap.com/#/notes/1750510
-[1752266]:https://launchpad.support.sap.com/#/notes/1752266
-[1757924]:https://launchpad.support.sap.com/#/notes/1757924
-[1757928]:https://launchpad.support.sap.com/#/notes/1757928
-[1758182]:https://launchpad.support.sap.com/#/notes/1758182
-[1758496]:https://launchpad.support.sap.com/#/notes/1758496
-[1772688]:https://launchpad.support.sap.com/#/notes/1772688
-[1814258]:https://launchpad.support.sap.com/#/notes/1814258
-[1882376]:https://launchpad.support.sap.com/#/notes/1882376
-[1909114]:https://launchpad.support.sap.com/#/notes/1909114
-[1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
-[1941500]:https://launchpad.support.sap.com/#/notes/1941500
-[1956005]:https://launchpad.support.sap.com/#/notes/1956005
-[1973241]:https://launchpad.support.sap.com/#/notes/1973241
-[1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
-[2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2039619]:https://launchpad.support.sap.com/#/notes/2039619
-[2069760]:https://launchpad.support.sap.com/#/notes/2069760
-[2121797]:https://launchpad.support.sap.com/#/notes/2121797
-[2134316]:https://launchpad.support.sap.com/#/notes/2134316
-[2171857]:https://launchpad.support.sap.com/#/notes/2171857
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
-[2233094]:https://launchpad.support.sap.com/#/notes/2233094
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+本文介紹在 Azure IaaS 中部署 SAP ASE 時，幾個要考量到的地方。 在閱讀本文件之前，您應該先參閱[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)文件，以及 [Azure 上的 SAP 工作負載文件](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)中的其他指南。 本檔涵蓋在 Linux 和 Windows 作業系統上執行的 SAP ASE。 Azure 上支援的最低版本是 SAP ASE 16.0.02 （版本16支援套件2）。 建議您部署最新版本的 SAP 和最新的修補程式等級。  建議使用最少的 SAP ASE 16.0.03.07 （版本16支援套件3修補程式等級7）。  您可以在[目標 ASE 16.0 發行排程和 CR 清單資訊](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information)中找到最新版本的 SAP。
 
-[azure-cli]:../../../cli-install-nodejs.md
-[azure-portal]:https://portal.azure.com
-[azure-ps]:/powershell/azureps-cmdlets-docs
-[azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
-[azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+除了下列位置的 SAP 產品可用性矩陣以外，還會找到有關 SAP 應用程式或安裝媒體位置的版本支援的其他資訊：
 
-[dbms-guide]:dbms-guide.md 
-[dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 
-[dbms-guide-2.2]:dbms-guide.md#c8e566f9-21b7-4457-9f7f-126036971a91 
-[dbms-guide-2.3]:dbms-guide.md#10b041ef-c177-498a-93ed-44b3441ab152 
-[dbms-guide-2]:dbms-guide.md#65fa79d6-a85f-47ee-890b-22e794f51a64 
-[dbms-guide-3]:dbms-guide.md#871dfc27-e509-4222-9370-ab1de77021c3 
-[dbms-guide-5.5.1]:dbms-guide.md#0fef0e79-d3fe-4ae2-85af-73666a6f7268 
-[dbms-guide-5.5.2]:dbms-guide.md#f9071eff-9d72-4f47-9da4-1852d782087b 
-[dbms-guide-5.6]:dbms-guide.md#1b353e38-21b3-4310-aeb6-a77e7c8e81c8 
-[dbms-guide-5.8]:dbms-guide.md#9053f720-6f3b-4483-904d-15dc54141e30 
-[dbms-guide-5]:dbms-guide.md#3264829e-075e-4d25-966e-a49dad878737 
-[dbms-guide-8.4.1]:dbms-guide.md#b48cfe3b-48e9-4f5b-a783-1d29155bd573 
-[dbms-guide-8.4.2]:dbms-guide.md#23c78d3b-ca5a-4e72-8a24-645d141a3f5d 
-[dbms-guide-8.4.3]:dbms-guide.md#77cd2fbb-307e-4cbf-a65f-745553f72d2c 
-[dbms-guide-8.4.4]:dbms-guide.md#f77c1436-9ad8-44fb-a331-8671342de818 
-[dbms-guide-900-sap-cache-server-on-premises]:dbms-guide.md#642f746c-e4d4-489d-bf63-73e80177a0a8
-[dbms-guide-managed-disks]:dbms-guide.md#f42c6cb5-d563-484d-9667-b07ae51bce29
+- [SAP 支援附注 #2134316](https://launchpad.support.sap.com/#/notes/2134316)
+- [SAP 支援附注 #1941500](https://launchpad.support.sap.com/#/notes/1941500)
+- [SAP 支援附注 #1590719](https://launchpad.support.sap.com/#/notes/1590719)
+- [SAP 支援附注 #1973241](https://launchpad.support.sap.com/#/notes/1973241)
 
-[dbms-guide-figure-100]:media/virtual-machines-shared-sap-dbms-guide/100_storage_account_types.png
-[dbms-guide-figure-200]:media/virtual-machines-shared-sap-dbms-guide/200-ha-set-for-dbms-ha.png
-[dbms-guide-figure-300]:media/virtual-machines-shared-sap-dbms-guide/300-reference-config-iaas.png
-[dbms-guide-figure-400]:media/virtual-machines-shared-sap-dbms-guide/400-sql-2012-backup-to-blob-storage.png
-[dbms-guide-figure-500]:media/virtual-machines-shared-sap-dbms-guide/500-sql-2012-backup-to-blob-storage-different-containers.png
-[dbms-guide-figure-600]:media/virtual-machines-shared-sap-dbms-guide/600-iaas-maxdb.png
-[dbms-guide-figure-700]:media/virtual-machines-shared-sap-dbms-guide/700-livecach-prod.png
-[dbms-guide-figure-800]:media/virtual-machines-shared-sap-dbms-guide/800-azure-vm-sap-content-server.png
-[dbms-guide-figure-900]:media/virtual-machines-shared-sap-dbms-guide/900-sap-cache-server-on-premises.png
+批註：在 SAP 世界內外的檔中，產品的名稱會被視為 Sybase ASE 或 SAP ASE，或在某些情況下都是。 為了保持一致，我們會在本檔中使用**SAP ASE**的名稱。
 
-[deployment-guide]:deployment-guide.md 
-[deployment-guide-2.2]:deployment-guide.md#42ee2bdb-1efc-4ec7-ab31-fe4c22769b94 
-[deployment-guide-3.1.2]:deployment-guide.md#3688666f-281f-425b-a312-a77e7db2dfab 
-[deployment-guide-3.2]:deployment-guide.md#db477013-9060-4602-9ad4-b0316f8bb281 
-[deployment-guide-3.3]:deployment-guide.md#54a1fc6d-24fd-4feb-9c57-ac588a55dff2 
-[deployment-guide-3.4]:deployment-guide.md#a9a60133-a763-4de8-8986-ac0fa33aa8c1 
-[deployment-guide-3]:deployment-guide.md#b3253ee3-d63b-4d74-a49b-185e76c4088e 
-[deployment-guide-4.1]:deployment-guide.md#604bcec2-8b6e-48d2-a944-61b0f5dee2f7 
-[deployment-guide-4.2]:deployment-guide.md#7ccf6c3e-97ae-4a7a-9c75-e82c37beb18e 
-[deployment-guide-4.3]:deployment-guide.md#31d9ecd6-b136-4c73-b61e-da4a29bbc9cc 
-[deployment-guide-4.4.2]:deployment-guide.md#6889ff12-eaaf-4f3c-97e1-7c9edc7f7542 
-[deployment-guide-4.4]:deployment-guide.md#c7cbb0dc-52a4-49db-8e03-83e7edc2927d 
-[deployment-guide-4.5.1]:deployment-guide.md#987cf279-d713-4b4c-8143-6b11589bb9d4 
-[deployment-guide-4.5.2]:deployment-guide.md#408f3779-f422-4413-82f8-c57a23b4fc2f 
-[deployment-guide-4.5]:deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca 
-[deployment-guide-5.1]:deployment-guide.md#bb61ce92-8c5c-461f-8c53-39f5e5ed91f2 
-[deployment-guide-5.2]:deployment-guide.md#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1
-[deployment-guide-5.3]:deployment-guide.md#fe25a7da-4e4e-4388-8907-8abc2d33cfd8 
+## <a name="operating-system-support"></a>作業系統支援
+SAP 產品可用性對照表包含每個 SAP 應用程式支援的作業系統和 SAP 核心組合。  Linux 散發版 SUSE 12. x、SUSE 15. x、Red Hat 7. x 完全受到支援。  不支援作為 SAP ASE 的作業系統 Oracle Linux。  建議使用最新可用的 Linux 版本。 Windows 客戶應使用 Windows Server 2016 或 Windows Server 2019 發行版本。  較舊版本的 Windows （例如 Windows 2012）在技術上受到支援，但最新的 Windows 版本一律是建議的做法。
 
-[deployment-guide-configure-monitoring-scenario-1]:deployment-guide.md#ec323ac3-1de9-4c3a-b770-4ff701def65b 
-[deployment-guide-configure-proxy]:deployment-guide.md#baccae00-6f79-4307-ade4-40292ce4e02d 
-[deployment-guide-figure-100]:media/virtual-machines-shared-sap-deployment-guide/100-deploy-vm-image.png
-[deployment-guide-figure-1000]:media/virtual-machines-shared-sap-deployment-guide/1000-service-properties.png
-[deployment-guide-figure-11]:deployment-guide.md#figure-11
-[deployment-guide-figure-1100]:media/virtual-machines-shared-sap-deployment-guide/1100-azperflib.png
-[deployment-guide-figure-1200]:media/virtual-machines-shared-sap-deployment-guide/1200-cmd-test-login.png
-[deployment-guide-figure-1300]:media/virtual-machines-shared-sap-deployment-guide/1300-cmd-test-executed.png
-[deployment-guide-figure-14]:deployment-guide.md#figure-14
-[deployment-guide-figure-1400]:media/virtual-machines-shared-sap-deployment-guide/1400-azperflib-error-servicenotstarted.png
-[deployment-guide-figure-300]:media/virtual-machines-shared-sap-deployment-guide/300-deploy-private-image.png
-[deployment-guide-figure-400]:media/virtual-machines-shared-sap-deployment-guide/400-deploy-using-disk.png
-[deployment-guide-figure-5]:deployment-guide.md#figure-5
-[deployment-guide-figure-50]:media/virtual-machines-shared-sap-deployment-guide/50-forced-tunneling-suse.png
-[deployment-guide-figure-500]:media/virtual-machines-shared-sap-deployment-guide/500-install-powershell.png
-[deployment-guide-figure-6]:deployment-guide.md#figure-6
-[deployment-guide-figure-600]:media/virtual-machines-shared-sap-deployment-guide/600-powershell-version.png
-[deployment-guide-figure-7]:deployment-guide.md#figure-7
-[deployment-guide-figure-700]:media/virtual-machines-shared-sap-deployment-guide/700-install-powershell-installed.png
-[deployment-guide-figure-760]:media/virtual-machines-shared-sap-deployment-guide/760-azure-cli-version.png
-[deployment-guide-figure-900]:media/virtual-machines-shared-sap-deployment-guide/900-cmd-update-executed.png
-[deployment-guide-figure-azure-cli-installed]:deployment-guide.md#402488e5-f9bb-4b29-8063-1c5f52a892d0
-[deployment-guide-figure-azure-cli-version]:deployment-guide.md#0ad010e6-f9b5-4c21-9c09-bb2e5efb3fda
-[deployment-guide-install-vm-agent-windows]:deployment-guide.md#b2db5c9a-a076-42c6-9835-16945868e866
-[deployment-guide-troubleshooting-chapter]:deployment-guide.md#564adb4f-5c95-4041-9616-6635e83a810b
-
-[deploy-template-cli]:../../../resource-group-template-deploy-cli.md
-[deploy-template-portal]:../../../resource-group-template-deploy-portal.md
-[deploy-template-powershell]:../../../resource-group-template-deploy.md
-
-[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
-
-[getting-started]:get-started.md
-[getting-started-dbms]:get-started.md#1343ffe1-8021-4ce6-a08d-3a1553a4db82
-[getting-started-deployment]:get-started.md#6aadadd2-76b5-46d8-8713-e8d63630e955
-[getting-started-planning]:get-started.md#3da0389e-708b-4e82-b2a2-e92f132df89c
-
-[getting-started-windows-classic]:../../virtual-machines-windows-classic-sap-get-started.md
-[getting-started-windows-classic-dbms]:../../virtual-machines-windows-classic-sap-get-started.md#c5b77a14-f6b4-44e9-acab-4d28ff72a930
-[getting-started-windows-classic-deployment]:../../virtual-machines-windows-classic-sap-get-started.md#f84ea6ce-bbb4-41f7-9965-34d31b0098ea
-[getting-started-windows-classic-dr]:../../virtual-machines-windows-classic-sap-get-started.md#cff10b4a-01a5-4dc3-94b6-afb8e55757d3
-[getting-started-windows-classic-ha-sios]:../../virtual-machines-windows-classic-sap-get-started.md#4bb7512c-0fa0-4227-9853-4004281b1037
-[getting-started-windows-classic-planning]:../../virtual-machines-windows-classic-sap-get-started.md#f2a5e9d8-49e4-419e-9900-af783173481c
-
-[ha-guide-classic]:https://go.microsoft.com/fwlink/?LinkId=613056
-
-[install-extension-cli]:virtual-machines-linux-enable-aem.md
-
-[Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
-[Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
-
-[msdn-set-azurermvmaemextension]:https://msdn.microsoft.com/library/azure/mt670598.aspx
-
-[planning-guide]:planning-guide.md 
-[planning-guide-1.2]:planning-guide.md#e55d1e22-c2c8-460b-9897-64622a34fdff 
-[planning-guide-11]:planning-guide.md#7cf991a1-badd-40a9-944e-7baae842a058 
-[planning-guide-11.4.1]:planning-guide.md#5d9d36f9-9058-435d-8367-5ad05f00de77 
-[planning-guide-11.5]:planning-guide.md#4e165b58-74ca-474f-a7f4-5e695a93204f 
-[planning-guide-2.1]:planning-guide.md#1625df66-4cc6-4d60-9202-de8a0b77f803 
-[planning-guide-2.2]:planning-guide.md#f5b3b18c-302c-4bd8-9ab2-c388f1ab3d10 
-[planning-guide-3.1]:planning-guide.md#be80d1b9-a463-4845-bd35-f4cebdb5424a 
-[planning-guide-3.2.1]:planning-guide.md#df49dc09-141b-4f34-a4a2-990913b30358 
-[planning-guide-3.2.2]:planning-guide.md#fc1ac8b2-e54a-487c-8581-d3cc6625e560 
-[planning-guide-3.2.3]:planning-guide.md#18810088-f9be-4c97-958a-27996255c665 
-[planning-guide-3.2]:planning-guide.md#8d8ad4b8-6093-4b91-ac36-ea56d80dbf77 
-[planning-guide-3.3.2]:planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 
-[planning-guide-5.1.1]:planning-guide.md#4d175f1b-7353-4137-9d2f-817683c26e53 
-[planning-guide-5.1.2]:planning-guide.md#e18f7839-c0e2-4385-b1e6-4538453a285c 
-[planning-guide-5.2.1]:planning-guide.md#1b287330-944b-495d-9ea7-94b83aff73ef 
-[planning-guide-5.2.2]:planning-guide.md#57f32b1c-0cba-4e57-ab6e-c39fe22b6ec3 
-[planning-guide-5.2]:planning-guide.md#6ffb9f41-a292-40bf-9e70-8204448559e7 
-[planning-guide-5.3.1]:planning-guide.md#6e835de8-40b1-4b71-9f18-d45b20959b79 
-[planning-guide-5.3.2]:planning-guide.md#a43e40e6-1acc-4633-9816-8f095d5a7b6a 
-[planning-guide-5.4.2]:planning-guide.md#9789b076-2011-4afa-b2fe-b07a8aba58a1 
-[planning-guide-5.5.1]:planning-guide.md#4efec401-91e0-40c0-8e64-f2dceadff646 
-[planning-guide-5.5.3]:planning-guide.md#17e0d543-7e8c-4160-a7da-dd7117a1ad9d 
-[planning-guide-7.1]:planning-guide.md#3e9c3690-da67-421a-bc3f-12c520d99a30 
-[planning-guide-7]:planning-guide.md#96a77628-a05e-475d-9df3-fb82217e8f14 
-[planning-guide-9.1]:planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 
-[planning-guide-azure-premium-storage]:planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 
-
-[planning-guide-figure-100]:media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
-[planning-guide-figure-1300]:media/virtual-machines-shared-sap-planning-guide/1300-ref-config-iaas-for-sap.png
-[planning-guide-figure-1400]:media/virtual-machines-shared-sap-planning-guide/1400-attach-detach-disks.png
-[planning-guide-figure-1600]:media/virtual-machines-shared-sap-planning-guide/1600-firewall-port-rule.png
-[planning-guide-figure-1700]:media/virtual-machines-shared-sap-planning-guide/1700-single-vm-demo.png
-[planning-guide-figure-1900]:media/virtual-machines-shared-sap-planning-guide/1900-vm-set-vnet.png
-[planning-guide-figure-200]:media/virtual-machines-shared-sap-planning-guide/200-multiple-vms-in-azure.png
-[planning-guide-figure-2100]:media/virtual-machines-shared-sap-planning-guide/2100-s2s.png
-[planning-guide-figure-2200]:media/virtual-machines-shared-sap-planning-guide/2200-network-printing.png
-[planning-guide-figure-2300]:media/virtual-machines-shared-sap-planning-guide/2300-sapgui-stms.png
-[planning-guide-figure-2400]:media/virtual-machines-shared-sap-planning-guide/2400-vm-extension-overview.png
-[planning-guide-figure-2500]:media/virtual-machines-shared-sap-planning-guide/2500-vm-extension-details.png
-[planning-guide-figure-2600]:media/virtual-machines-shared-sap-planning-guide/2600-sap-router-connection.png
-[planning-guide-figure-2700]:media/virtual-machines-shared-sap-planning-guide/2700-exposed-sap-portal.png
-[planning-guide-figure-2800]:media/virtual-machines-shared-sap-planning-guide/2800-endpoint-config.png
-[planning-guide-figure-2900]:media/virtual-machines-shared-sap-planning-guide/2900-azure-ha-sap-ha.png
-[planning-guide-figure-300]:media/virtual-machines-shared-sap-planning-guide/300-vpn-s2s.png
-[planning-guide-figure-3000]:media/virtual-machines-shared-sap-planning-guide/3000-sap-ha-on-azure.png
-[planning-guide-figure-3200]:media/virtual-machines-shared-sap-planning-guide/3200-sap-ha-with-sql.png
-[planning-guide-figure-400]:media/virtual-machines-shared-sap-planning-guide/400-vm-services.png
-[planning-guide-figure-600]:media/virtual-machines-shared-sap-planning-guide/600-s2s-details.png
-[planning-guide-figure-700]:media/virtual-machines-shared-sap-planning-guide/700-decision-tree-deploy-to-azure.png
-[planning-guide-figure-800]:media/virtual-machines-shared-sap-planning-guide/800-portal-vm-overview.png
-[planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
-[planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
-
-[resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
-[resource-groups-networking]:../../../networking/networking-overview.md
-[sap-pam]:https://support.sap.com/pam 
-[sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
-[sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
-[sap-templates-2-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-image%2Fazuredeploy.json
-[sap-templates-3-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image%2Fazuredeploy.json
-[sap-templates-3-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-user-image%2Fazuredeploy.json
-[storage-azure-cli]:../../../storage/common/storage-azure-cli.md
-[storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
-[storage-introduction]:../../../storage/common/storage-introduction.md
-[storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
-[storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
-[storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
-[template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
-[templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
-[templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image
-[virtual-machines-linux-attach-disk-portal]:../../linux/attach-disk-portal.md
-[virtual-machines-azure-resource-manager-architecture]:../../../resource-manager-deployment-model.md
-[virtual-machines-azurerm-versus-azuresm]:../../../resource-manager-deployment-model.md
-[virtual-machines-windows-classic-configure-oracle-data-guard]:../../virtual-machines-windows-classic-configure-oracle-data-guard.md
-[virtual-machines-linux-cli-deploy-templates]:../../linux/cli-deploy-templates.md 
-[virtual-machines-deploy-rmtemplates-powershell]:../../virtual-machines-windows-ps-manage.md 
-[virtual-machines-linux-agent-user-guide]:../../linux/agent-user-guide.md
-[virtual-machines-linux-agent-user-guide-command-line-options]:../../linux/agent-user-guide.md#command-line-options
-[virtual-machines-linux-capture-image]:../../linux/capture-image.md
-[virtual-machines-linux-capture-image-resource-manager]:../../linux/capture-image.md
-[virtual-machines-linux-capture-image-resource-manager-capture]:../../linux/capture-image.md#step-2-capture-the-vm
-[virtual-machines-linux-configure-raid]:../../linux/configure-raid.md
-[virtual-machines-linux-configure-lvm]:../../linux/configure-lvm.md
-[virtual-machines-linux-classic-create-upload-vhd-step-1]:../../virtual-machines-linux-classic-create-upload-vhd.md#step-1-prepare-the-image-to-be-uploaded
-[virtual-machines-linux-create-upload-vhd-suse]:../../linux/suse-create-upload-vhd.md
-[virtual-machines-linux-redhat-create-upload-vhd]:../../linux/redhat-create-upload-vhd.md
-[virtual-machines-linux-how-to-attach-disk]:../../linux/add-disk.md
-[virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux]:../../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk
-[virtual-machines-linux-tutorial]:../../linux/quick-create-cli.md
-[virtual-machines-linux-update-agent]:../../linux/update-agent.md
-[virtual-machines-manage-availability-linux]:../../linux/manage-availability.md
-[virtual-machines-manage-availability-windows]:../../windows/manage-availability.md
-[virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]:virtual-machines-windows-create-powershell.md
-[virtual-machines-sizes-linux]:../../linux/sizes.md
-[virtual-machines-sizes-windows]:../../windows/sizes.md
-[virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
-[virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[virtual-machines-sql-server-infrastructure-services]:./../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
-[virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
-[virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
-[virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/resources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
-[virtual-network-deploy-multinic-arm-cli]:../linux/multiple-nics.md
-[virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
-[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/template-samples.md
-[virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
-[virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/manage-virtual-network.md#create-a-virtual-network
-[virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
-[virtual-networks-multiple-nics]:../../../virtual-network/virtual-network-deploy-multinic-classic-ps.md
-[virtual-networks-nsg]:../../../virtual-network/security-overview.md
-[virtual-networks-reserved-private-ip]:../../../virtual-network/virtual-networks-static-private-ip-arm-ps.md
-[virtual-networks-static-private-ip-arm-pportal]:../../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md
-[virtual-networks-udr-overview]:../../../virtual-network/virtual-networks-udr-overview.md
-[vpn-gateway-about-vpn-devices]:../../../vpn-gateway/vpn-gateway-about-vpn-devices.md
-[vpn-gateway-create-site-to-site-rm-powershell]:../../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md
-[vpn-gateway-cross-premises-options]:../../../vpn-gateway/vpn-gateway-plan-design.md
-[vpn-gateway-site-to-site-create]:../../../vpn-gateway/vpn-gateway-site-to-site-create.md
-[vpn-gateway-vpn-faq]:../../../vpn-gateway/vpn-gateway-vpn-faq.md
-[xplat-cli]:../../../cli-install-nodejs.md
-[xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
-
-
-
-本文介紹在 Azure IaaS 中部署 SAP ASE 時，幾個要考量到的地方。 在閱讀本文件之前，您應該先參閱[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)文件，以及 [Azure 上的 SAP 工作負載文件](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)中的其他指南。 
 
 ## <a name="specifics-to-sap-ase-on-windows"></a>Windows 上 SAP ASE 專屬的詳細資料
 從 Microsoft Azure 開始，您即可將現有的 SAP ASE 應用程式遷移至 Azure 虛擬機器。 Azure 虛擬機器中的 SAP ASE 可讓您輕鬆地將這些應用程式移轉到 Microsoft Azure，藉以減少部署、管理和維護企業級應用程式的擁有權總成本。 透過 Azure 虛擬機器中的 SAP ASE，系統管理員和開發人員仍然可以使用可在內部部署使用的相同開發和管理工具。
 
-Azure 虛擬機器的 SLA 可在此找到：<https://azure.microsoft.com/support/legal/sla/virtual-machines>
+Microsoft Azure 提供許多不同的虛擬機器類型，可讓您執行最小的 SAP 系統和架構，以至具有數千個使用者的大型 SAP 系統和架構。 [Sap 支援附注 #1928533](https://launchpad.support.sap.com/#/notes/1928533)中提供了不同 sap 認證之 VM SKU 的 sap 大小調整 sap 數目。
 
-Microsoft Azure 提供許多不同的虛擬機器類型，可讓您執行最小的 SAP 系統和架構，以至具有數千個使用者的大型 SAP 系統和架構。 如需不同 SAP 認證的 VM SKU SAP 大小調整 SAPS 數目，請參閱 SAP 附註 [1928533]。
+如需在 Windows 上安裝 SAP ASE 的檔，請參閱[適用于 windows 的 SAP Ase 安裝指南](https://help.sap.com/viewer/36031975851a4f82b1022a9df877280b/16.0.3.7/en-US/a660d3f1bc2b101487cbdbf10069c3ac.html)
 
-[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)中關於 Azure 儲存體使用方式、部署 SAP VM 或 SAP 監視的陳述與建議也適用於部署 SAP ASE。
+[鎖定記憶體中的分頁] 是一項設定，可防止 SAP ASE 資料庫緩衝區被分頁出來。 這項設定適用于具有大量記憶體的大型忙碌系統。 請聯絡 BC-DB-SYB 以取得詳細資訊。 
 
-### <a name="sap-ase-version-support"></a>SAP ASE 版本支援
-SAP 目前支援 SAP ASE 版本 16.0，可與 SAP 商務套件產品搭配使用。 不論是適用於 SAP ASE 伺服器的所有更新，還是要與「SAP 商務套件」產品搭配使用的 JDBC 和 ODBC 驅動程式，都只會透過 SAP Service Marketplace 來提供，網址是：<https://support.sap.com/swdc>。
 
-不要直接從 Sybase 網站下載適用於 SAP ASE 伺服器或適用於 JDBC 和 ODBC 驅動程式的更新。 如需在內部部署和 Azure 虛擬機器中支援與 SAP 產品搭配使用的修補程式詳細資訊，請參閱下列 SAP 附註：
+## <a name="linux-operating-system-specific-settings"></a>Linux 作業系統特定設定
+在 Linux Vm 上，以 `saptune` 設定檔執行的 SAP-ASE Linux 大型頁面應該預設為啟用，而且可以使用命令進行驗證  
 
-* [1590719]
-* [1973241]
+`cat /proc/meminfo` 
 
-如需有關在 SAP ASE 上執行「SAP 商務套件」的一般資訊，請參閱 [SCN](https://www.sap.com/community/topic/ase.html)
+頁面大小通常是 2048 KB。 如需詳細資訊，請參閱[Linux 上的龐大頁面](https://help.sap.com/viewer/ecbccd52e7024feaa12f4e780b43bc3b/16.0.3.7/en-US/a703d580bc2b10149695f7d838203fad.html)一文 
 
-### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>在 Azure VM 中安裝 SAP 相關之 SAP ASE 的 SAP ASE 組態指導方針
-#### <a name="structure-of-the-sap-ase-deployment"></a>SAP ASE 部署結構
-SAP ASE 可執行檔應該位於或安裝於 VM OS 磁碟的系統磁碟機 (磁碟機 c:\)。 一般而言，大部分的 SAP ASE 系統和工具資料庫都不會遭遇高工作負載。 因此，系統和工具資料庫 (master、model、saptools、sybmgmtdb、sybsystemdb) 可以保留於 C:\ 磁碟機上。 
 
-有一個例外狀況就是暫存資料庫在某些 SAP ERP 和所有 BW 工作負載中，可能需要較高的資料量或 I/O 作業量。 VM 的 OS 磁碟無法提供的磁碟區或 IOPS (磁碟機 C:\)。
+## <a name="recommendations-on-vm-and-disk-structure-for-sap-ase-deployments"></a>適用于 SAP ASE 部署的 VM 和磁片結構建議
 
-根據用來安裝的 SAPInst/SWPM 版本而言，SAP ASE 執行個體組態可能如下所示︰
+在[sap 支援附注](https://launchpad.support.sap.com/#/notes/1928533)中列出的任何 vm 類型都支援 sap ASE For Sap NetWeaver 應用程式 #1928533 一般用於中型大小 SAP ASE 資料庫伺服器的 vm 類型包含 Esv3。  大型的多 tb 資料庫可以利用 M 系列的 VM 類型。 藉由啟用 M 系列寫入加速器，可以改善 SAP ASE 交易記錄磁片寫入效能。 由於 SAP ASE 執行記錄檔寫入的方式，因此應謹慎地使用 SAP ASE 來測試寫入加速器。  [請參閱 SAP 支援附注 #2816580](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) ，並考慮執行效能測試。  
+寫入加速器僅適用于交易記錄檔磁片。 磁片層級快取應設定為 [無]。 如果 Azure 寫入加速器不會顯示與其他 DBMS 類似的改良功能，千萬別驚訝。 根據 SAP ASE 寫入交易記錄檔的方式，Azure 寫入加速器不需要加速。
+建議將不同的磁片用於資料裝置和記錄裝置。  系統資料庫 sybsecurity 且 `saptools` 不需要專用磁片，而且可以放在包含 SAP 資料庫資料和記錄裝置的磁片上 
 
-* 安裝 SAP ASE 時建立單一的 SAP ASE tempdb
-* 安裝 SAP ASE 時建立的 SAP ASE tempdb，以及 SAP 安裝常式所建立的其他 saptempdb
-* 透過安裝 SAP ASE 來建立的 SAP ASE tempdb，以及手動建立 (例如依照 SAP 附註 [1752266]) 來符合 ERP/BW 特定 tempdb 需求的其他 tempdb
+![SAP ASE 的儲存體設定](./media/dbms-guide-sap-ase/sap-ase-disk-structure.png)
 
-基於特定 ERP 或所有 BW 工作負載的效能因素，在 C:\ 以外的磁碟機上儲存另外建立的 tempdb 裝置很合理。 如果沒有其他 tempdb 存在，則建議您建立一個 (SAP 附註 [1752266])。
+### <a name="file-systems-stripe-size--io-balancing"></a>檔案系統，等量大小 & IO 平衡 
+除非另有設定，否則 SAP ASE 會依序將資料寫入磁片儲存體裝置。 這表示具有四個裝置的空白 SAP ASE 資料庫，只會將資料寫入到第一個裝置。  只有當第一個裝置已滿時，才會將其他磁片裝置寫入。  每個 SAP ASE 裝置的讀取和寫入 IO 數量可能會不同。 若要在所有可用的 Azure 磁片之間平衡磁片 IO，必須使用 Windows 儲存空間或 Linux LVM2。 在 Linux 上，建議使用 XFS 檔案系統來格式化磁片。 LVM 等量區大小應使用效能測試進行測試。 128 KB 等量大小是不錯的起點。 在 Windows 上，應該測試 NTFS 配置單位大小（au）。 64 KB 可用來做為起始值。 
 
-針對這類系統，應該針對另外建立的 tempdb 執行下列步驟︰
+建議您設定自動資料庫擴充，如在 SAP 調適型伺服器企業和[sap 支援](https://launchpad.support.sap.com/#/notes/1815695)[中設定自動資料庫空間擴充](https://blogs.sap.com/2014/07/09/configuring-automatic-database-space-expansion-in-sap-adaptive-server-enterprise/)一文中所述 #1815695。 
 
-* 將第一個 tempdb 裝置移至 SAP 資料庫的第一個裝置
-* 將 tempdb 裝置新增至每個包含 SAP 資料庫裝置的 VHD
+### <a name="sample-sap-ase-on-azure-virtual-machine-disk-and-file-system-configurations"></a>Azure 虛擬機器上的 SAP ASE 範例、磁片和檔案系統設定 
+下列範本顯示 Linux 和 Windows 的範例設定。 確認虛擬機器和磁片設定之前，請確定個別 VM 的網路和儲存體頻寬配額足以滿足商務需求。 同時請記住，不同的 Azure VM 類型具有可連結至 VM 的磁片數目上限不同。 例如，E4s_v3 VM 的儲存體 IO 輸送量限制為 48 MB/秒。 如果資料庫備份活動所需的儲存體輸送量要求超過 48 MB/秒，則具有更多儲存頻寬輸送量的較大 VM 類型是無法避免的。 設定 Azure 儲存體時，您也必須記住，特別是使用[Azure Premium 儲存體](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance)時，每 GB 容量的輸送量和 IOPS 都會有所變更。 如需瞭解 Azure 中有[哪些磁片類型](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types)，請參閱此主題的詳細資訊。 特定 Azure VM 類型的配額記載于與它連結的[記憶體優化虛擬機器大小](https://docs.microsoft.com/azure/virtual-machines/sizes-memory)和文章文章中。 
 
-這個組態讓 tempdb 所耗用的空間比系統磁碟機能夠提供的還多。 作為參考，您可以在內部部署執行的現有系統上檢查 tempdb 裝置的大小。 或者，這類組態可針對無法使用系統磁碟機來提供的 tempdb 啟用 IOPS 數目。 內部部署執行的系統可以用來監視 tempdb 的 I/O 工作負載。
+> [!NOTE]
+>  如果 DBMS 系統已從內部部署移至 Azure，建議您在 VM 上執行監視，並評估 CPU、記憶體、IOPS 和儲存體輸送量。 比較觀察到的尖峰值與前述文章中記載的 VM 配額限制
 
-永遠不要將任何 SAP ASE 裝置放入 VM 的 D:\ 磁碟機。 對於 SAP ASE，此裝置也適用於 tempdb，即使 tempdb 中保留的物件只是暫時性的。
+下面提供的範例僅供參考，而且可以根據個別需求加以修改。 由於 SAP ASE 的設計，資料裝置的數目與其他資料庫的重要性並不相同。 本檔中詳述的資料裝置數目僅為指南。 
 
-如需資料和交易記錄檔部署，請參閱在[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)中提出的陳述和建議。 在以 Windows 為主的部署案例中，建議將 Windows 儲存空間用來建置具有足夠 IOPS、輸送量和磁碟區的等量磁碟區組。  
+針對資料庫大小介於 50 GB – 250 GB （例如 SAP solution Manager）的小型 SAP ASE DB 伺服器，其設定範例可能如下所示：
 
-#### <a name="impact-of-database-compression"></a>資料庫壓縮的影響
-在 I/O 頻寬可能變成限制因素的組態中，減少 IOPS 的每個量值可能都有助於延展您可以在類似 Azure 的 IaaS 案例中執行的工作負載。 因此，建議您在將現有的 SAP 資料庫上傳至 Azure 之前，確定已使用 SAP ASE 壓縮。
+| 組態 | Windows | Linux | 註解 |
+| --- | --- | --- | --- |
+| VM 類型 | E4s_v3 （4 vCPU/32 GB RAM） | E4s_v3 （4 vCPU/32 GB RAM） | --- |
+| 加速網路 | 啟用 | 啟用 | ---|
+| SAP ASE 版本 | 16.0.03.07 或更高版本 | 16.0.03.07 或更高版本 | --- |
+| 資料裝置數目 | 4 | 4 | ---|
+| 記錄裝置數 | 1 | 1 | --- |
+| 暫存裝置數目 | 1 | 1 | SAP BW 工作負載的更多 |
+| 作業系統 | Windows Server 2019 | SUSE 12 SP4/15 SP1 或 RHEL 7。6 | --- |
+| 磁片匯總 | 儲存空間 | LVM2 | --- |
+| 檔案系統 | NTFS | XFS |
+| 格式區塊大小 | 需要工作負載測試 | 需要工作負載測試 | --- |
+| 資料磁片的數目和類型 | Premium 儲存體： 2 x P10 （RAID0） | Premium 儲存體： 2 x P10 （RAID0）| Cache = 唯讀 |
+| 記錄檔磁片的數目和類型 | Premium 儲存體： 1 x P20  | Premium 儲存體： 1 x P20 | Cache = 無 |
+| ASE MaxMemory 參數 | 90% 的實體 RAM | 90% 的實體 RAM | 假設單一實例 |
+| 備份裝置數目 | 4 | 4| --- |
+| 備份磁片的數目和類型 | 1 | 1 | --- |
+
+
+針對資料庫大小介於 250 GB – 750 GB （例如較小的 SAP Business Suite 系統）的中型 SAP ASE DB 伺服器，其設定範例可能如下所示：
+
+| 組態 | Windows | Linux | 註解 |
+| --- | --- | --- | --- |
+| VM 類型 | E16s_v3 （16 vCPU/128 GB RAM） | E16s_v3 （16 vCPU/128 GB RAM） | --- |
+| 加速網路 | 啟用 | 啟用 | ---|
+| SAP ASE 版本 | 16.0.03.07 或更高版本 | 16.0.03.07 或更高版本 | --- |
+| 資料裝置數目 | 8 | 8 | ---|
+| 記錄裝置數 | 1 | 1 | --- |
+| 暫存裝置數目 | 1 | 1 | SAP BW 工作負載的更多 |
+| 作業系統 | Windows Server 2019 | SUSE 12 SP4/15 SP1 或 RHEL 7。6 | --- |
+| 磁片匯總 | 儲存空間 | LVM2 | --- |
+| 檔案系統 | NTFS | XFS |
+| 格式區塊大小 | 需要工作負載測試 | 需要工作負載測試 | --- |
+| 資料磁片的數目和類型 | Premium 儲存體： 4 x P20 （RAID0） | Premium 儲存體： 4 x P20 （RAID0）| Cache = 唯讀 |
+| 記錄檔磁片的數目和類型 | Premium 儲存體： 1 x P20  | Premium 儲存體： 1 x P20 | Cache = 無 |
+| ASE MaxMemory 參數 | 90% 的實體 RAM | 90% 的實體 RAM | 假設單一實例 |
+| 備份裝置數目 | 4 | 4| --- |
+| 備份磁片的數目和類型 | 1 | 1 | --- |
+
+針對資料庫大小介於 750 GB – 2000 GB （例如較大的 SAP Business Suite 系統）的小型 SAP ASE DB 伺服器，其設定範例可能如下所示：
+
+| 組態 | Windows | Linux | 註解 |
+| --- | --- | --- | --- |
+| VM 類型 | E64s_v3 （64 vCPU/432 GB RAM） | E64s_v3 （64 vCPU/432 GB RAM） | --- |
+| 加速網路 | 啟用 | 啟用 | ---|
+| SAP ASE 版本 | 16.0.03.07 或更高版本 | 16.0.03.07 或更高版本 | --- |
+| 資料裝置數目 | 16 | 16 | ---|
+| 記錄裝置數 | 1 | 1 | --- |
+| 暫存裝置數目 | 1 | 1 | SAP BW 工作負載的更多 |
+| 作業系統 | Windows Server 2019 | SUSE 12 SP4/15 SP1 或 RHEL 7。6 | --- |
+| 磁片匯總 | 儲存空間 | LVM2 | --- |
+| 檔案系統 | NTFS | XFS |
+| 格式區塊大小 | 需要工作負載測試 | 需要工作負載測試 | --- |
+| 資料磁片的數目和類型 | Premium 儲存體： 4 x P30 （RAID0） | Premium 儲存體： 4 x P30 （RAID0）| Cache = 唯讀 |
+| 記錄檔磁片的數目和類型 | Premium 儲存體： 1 x P20  | Premium 儲存體： 1 x P20 | Cache = 無 |
+| ASE MaxMemory 參數 | 90% 的實體 RAM | 90% 的實體 RAM | 假設單一實例 |
+| 備份裝置數目 | 4 | 4| --- |
+| 備份磁片的數目和類型 | 1 | 1 | --- |
+
+
+適用于小型 SAP ASE DB 伺服器的設定範例，其資料庫大小為 2 TB +，例如較大的全域使用的 SAP Business Suite 系統，可能如下所示：
+
+| 組態 | Windows | Linux | 註解 |
+| --- | --- | --- | --- |
+| VM 類型 | M 系列（1.0 到 4.0 TB 的 RAM）  | M 系列（1.0 到 4.0 TB 的 RAM） | --- |
+| 加速網路 | 啟用 | 啟用 | ---|
+| SAP ASE 版本 | 16.0.03.07 或更高版本 | 16.0.03.07 或更高版本 | --- |
+| 資料裝置數目 | 32 | 32 | ---|
+| 記錄裝置數 | 1 | 1 | --- |
+| 暫存裝置數目 | 1 | 1 | SAP BW 工作負載的更多 |
+| 作業系統 | Windows Server 2019 | SUSE 12 SP4/15 SP1 或 RHEL 7。6 | --- |
+| 磁片匯總 | 儲存空間 | LVM2 | --- |
+| 檔案系統 | NTFS | XFS |
+| 格式區塊大小 | 需要工作負載測試 | 需要工作負載測試 | --- |
+| 資料磁片的數目和類型 | Premium 儲存體： 4 + x P30 （RAID0） | Premium 儲存體： 4 + x P30 （RAID0）| Cache = 唯讀，請考慮 Azure Ultra 磁片 |
+| 記錄檔磁片的數目和類型 | Premium 儲存體： 1 x P20  | Premium 儲存體： 1 x P20 | Cache = 無，請考慮 Azure Ultra 磁片 |
+| ASE MaxMemory 參數 | 90% 的實體 RAM | 90% 的實體 RAM | 假設單一實例 |
+| 備份裝置數目 | 16 | 16 | --- |
+| 備份磁片的數目和類型 | 4 | 4 | 使用 LVM2/儲存空間 |
+
+
+### <a name="backup--restore-considerations-for-sap-ase-on-azure"></a>Azure 上 SAP ASE 的備份 & 還原考慮
+增加資料和備份裝置的數目會增加備份和還原效能。 建議您將裝載 SAP ASE 備份裝置的 Azure 磁片等量分割，如稍早所示的表格中所顯示。 請小心平衡備份裝置和磁片的數目，並確保備份輸送量不應超過 40%-總 VM 輸送量配額的50%。 建議使用 SAP 備份壓縮做為預設值。 您可以在下列文章中找到更多詳細資料：
+
+- [SAP 支援附注 #1588316](https://launchpad.support.sap.com/#/notes/1588316)
+- [SAP 支援附注 #1801984](https://launchpad.support.sap.com/#/notes/1801984)
+- [SAP 支援附注 #1585981](https://launchpad.support.sap.com/#/notes/1585981) 
+
+請勿使用磁片磁碟機 D:\或/temp 空間做為資料庫或記錄傾印目的地。
+
+### <a name="impact-of-database-compression"></a>資料庫壓縮的影響
+在 i/o 頻寬可能變成限制因素的設定中，可減少 IOPS 的量值可能有助於延展工作負載，其中一個可以在 Azure 之類的 IaaS 案例中執行。 因此，建議您在將現有的 SAP 資料庫上傳至 Azure 之前，確定已使用 SAP ASE 壓縮。
 
 在上傳至 Azure 之前套用壓縮的建議是出自下列數個因素︰
 
@@ -364,12 +178,49 @@ SAP ASE 可執行檔應該位於或安裝於 VM OS 磁碟的系統磁碟機 (磁
 * 假設您可以使用功能更強大的硬體，其在內部部署中使用更多 CPU 或更高 I/O 頻寬或更少 I/O 延遲，則執行壓縮的持續時間較短
 * 較小的資料庫大小可能會使磁碟配置的成本降低
 
-資料壓縮和 LOB 壓縮可以在 Azure 虛擬機器上裝載的 VM 中運作，如同它在內部部署中的運作方式。 如需有關如何檢查在現有 SAP ASE 資料庫中是否已經使用壓縮的更多詳細資料，請參閱 SAP 附註 [1750510]。
+資料壓縮和 LOB 壓縮可以在 Azure 虛擬機器上裝載的 VM 中運作，如同它在內部部署中的運作方式。 如需如何檢查現有 SAP ASE 資料庫中是否已經使用壓縮的詳細資訊，請參閱[SAP 支援附注 1750510](https://launchpad.support.sap.com/#/notes/1750510)。 如需 SAP ASE 資料庫壓縮的詳細資訊，請參閱[sap 支援附注 #2121797](https://launchpad.support.sap.com/#/notes/2121797)
 
-#### <a name="using-dbacockpit-to-monitor-database-instances"></a>使用 DBACockpit 監視資料庫執行個體
-針對使用 SAP ASE 作為資料庫平台的 SAP 系統，可以存取 DBACockpit 作為交易 DBACockpit 中內嵌的瀏覽器視窗或作為 Webdynpro。 不過，監視和管理資料庫的完整功能只能在 DBACockpit 的 Webdynpro 實作中取得。
+## <a name="high-availability-of-sap-ase-on-azure"></a>Azure 上 SAP ASE 的高可用性 
+HADR 使用者指南會詳細說明2個節點 SAP ASE 「永遠開啟」解決方案的安裝和設定。  此外，也支援第三個嚴重損壞修復節點。 SAP ASE 支援許多高可用性設定，包括共用磁片和原生 OS 叢集（浮動 IP）。 Azure 上唯一支援的設定是使用沒有浮動 IP 的錯誤管理員。  浮動 IP 位址方法將無法在 Azure 上使用。  SAP 核心是「HA 感知」應用程式，並瞭解主要和次要 SAP ASE 伺服器。 SAP ASE 與 Azure 之間沒有緊密的整合，因此不會使用 Azure 內部負載平衡器。 因此，標準的 SAP ASE 檔應遵循從[SAP ASE HADR 使用者指南](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.3.7/en-US/a6645e28bc2b1014b54b8815a64b87ba.html)開始 
 
-做為內部部署系統，需要使用數個步驟，才能啟用 DBACockpit 之 Webdynpro 實作所使用的所有 SAP NetWeaver 功能。 請依照 SAP 附註 [1245200] 來啟用 Webdynpro 的使用，以及產生所需的 Webdynpro。 遵循上述附註中的指示時，您也可設定網際網路通訊管理員 (icm) 以及針對 http 和 https 連線所使用的連接埠。 Http 的預設設定看起來如下︰
+> [!NOTE]
+> Azure 上唯一支援的設定是使用沒有浮動 IP 的錯誤管理員。  浮動 IP 位址方法將無法在 Azure 上使用。 
+
+### <a name="third-node-for-disaster-recovery"></a>嚴重損壞修復的第三個節點
+除了使用 SAP ASE Always On 來進行本機高可用性之外，您可能會想要將設定延伸至另一個 Azure 區域中的非同步複寫節點。 這類案例的檔可在[這裡](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)找到。
+
+## <a name="sap-ase-database-encryption--ssl"></a>& SSL 的 SAP ASE 資料庫加密 
+SAP 軟體布建管理員（SWPM）提供在安裝期間加密資料庫的選項。  如果您想要使用加密，建議使用 SAP 完整資料庫加密。  請參閱中記載的詳細資料：
+
+- [SAP 支援附注 #2556658](https://launchpad.support.sap.com/#/notes/2556658)
+- [SAP 支援附注 #2224138](https://launchpad.support.sap.com/#/notes/2224138)
+- [SAP 支援附注 #2401066](https://launchpad.support.sap.com/#/notes/2401066)
+- [SAP 支援附注 #2593925](https://launchpad.support.sap.com/#/notes/2593925) 
+
+> [!NOTE]
+> 如果 SAP ASE 資料庫已加密，則備份傾印壓縮將無法使用。 另請參閱[SAP 支援附注 #2680905](https://launchpad.support.sap.com/#/notes/2680905) 
+
+## <a name="sap-ase-on-azure-deployment-checklist"></a>Azure 部署檢查清單上的 SAP ASE
+ 
+- 部署 SAP ASE 16.0.03.07 或更高版本
+- 更新至 FaultManager 和 SAPHostAgent 的最新版本和修補程式
+- 部署可用的最新認證 OS，例如 Windows 2019、Suse 15.1 或 Redhat 7.6 或更高版本
+- 使用 SAP 認證的 Vm –建議您使用高記憶體的 Azure VM Sku （例如 Es_v3 或適用于 x 大型系統 M 系列 VM Sku）
+- 將 VM 的磁片 IOPS 和總 VM 匯總輸送量配額與磁片設計進行比對。  部署足夠的磁片數目
+- 使用具有正確等量大小和檔案系統的 Windows 儲存空間或 Linux LVM2 來匯總磁片
+- 建立足夠數目的裝置，供資料、記錄、暫存及備份之用
+- 針對 x 大型系統，請考慮使用 UltraDisk 
+- `saptune`在 LINUX OS 上執行 SAP-ASE 
+- 使用 DB 加密保護資料庫–在 Azure Key Vault 中手動儲存金鑰 
+- 完成[Azure 上的 SAP 檢查清單](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist) 
+- 設定記錄備份與完整備份 
+- 測試 HA/DR、備份和還原，以及執行壓力 & 大量測試 
+- 確認自動資料庫延伸模組正在運作 
+
+## <a name="using-dbacockpit-to-monitor-database-instances"></a>使用 DBACockpit 來監視資料庫實例
+針對使用 SAP ASE 作為資料庫平台的 SAP 系統，可以存取 DBACockpit 作為交易 DBACockpit 中內嵌的瀏覽器視窗或作為 Webdynpro。 不過，僅在 DBACockpit 的 Webdynpro 實施中提供監視和管理資料庫的完整功能。
+
+做為內部部署系統，需要使用數個步驟，才能啟用 DBACockpit 之 Webdynpro 實作所使用的所有 SAP NetWeaver 功能。 遵循[SAP 支援附注 #1245200](https://launchpad.support.sap.com/#/notes/1245200) ，以啟用 webdynpros 的使用方式並產生所需的資訊。 遵循上述附注中的指示時，您也會設定網際網路通訊管理員（ `ICM` ）以及要用於 HTTP 和 HTTPs 連接的埠。 Http 的預設設定看起來如下︰
 
 > icm/server_port_0 = PROT=HTTP,PORT=8000,PROCTIMEOUT=600,TIMEOUT=600
 > 
@@ -379,27 +230,27 @@ SAP ASE 可執行檔應該位於或安裝於 VM OS 磁碟的系統磁碟機 (磁
 
 此外，在交易 DBACockpit 中產生的連結看起來如下︰
 
-> https:\//\<fullyqualifiedhostname>:44300/sap/bc/webdynpro/sap/dba_cockpit
+> HTTPs： \/ / \<fullyqualifiedhostname> ： 44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
-> http:\//\<fullyqualifiedhostname>:8000/sap/bc/webdynpro/sap/dba_cockpit
+> HTTP： \/ / \<fullyqualifiedhostname> ： 8000/sap/bc/webdynpro/sap/dba_cockpit
 > 
 > 
 
-取決於裝載 SAP 系統的 Azure 虛擬機器是否連線到您的 AD 和 DNS，您需要確定 ICM 會使用完整的主機名稱，此名稱可在您嘗試從中開啟 DBACockpit 的電腦上加以解析。 請參閱 SAP 附註 [773830] 以了解 ICM 如何根據設定檔參數決定完整的主機名稱，並於必要時明確設定 icm/host_name_full 參數。
+取決於裝載 SAP 系統的 Azure 虛擬機器是否連線到您的 AD 和 DNS，您需要確定 ICM 會使用完整的主機名稱，此名稱可在您嘗試從中開啟 DBACockpit 的電腦上加以解析。 請參閱[SAP 支援附注 #773830](https://launchpad.support.sap.com/#/notes/773830) ，以瞭解 ICM 如何根據設定檔參數判斷完整主機名稱，並在必要時明確設定參數 ICM/host_name_full。
 
-如果您在僅限雲端的案例中部署 VM，而不需要在內部部署與 Azure 之間跨單位的連線能力，您需要定義一個公用 IP 位址和一個 domainlabel。 然後 VM 的公用 DNS 名稱格式如下所示︰
+如果您已在僅限雲端的案例中部署 VM，但內部部署與 Azure 之間沒有跨單位連線，則您需要定義公用 IP 位址和 `domainlabel` 。 然後 VM 的公用 DNS 名稱格式如下所示︰
 
 > `<custom domainlabel`>.`<azure region`>.cloudapp.azure.com
 > 
 > 
 
-如需有關 DNS 名稱的更多詳細資料，請參閱[這裡][virtual-machines-azurerm-versus-azuresm]。
+如需更多與 DNS 名稱相關的詳細資料，請參閱 [這裡] [azurerm-vs-virtual-machines-azurerm-versus-azuresm 找到]。
 
 將 SAP 設定檔參數 icm/host_name_full 設定為 Azure VM 的 DNS 名稱，其連結看起來可能如下︰
 
-> https:\//mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
+> HTTPs： \/ /mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
-> http:\//mydomainlabel.westeurope.cloudapp.net:8000/sap/bc/webdynpro/sap/dba_cockpit
+> HTTP： \/ /mydomainlabel.westeurope.cloudapp.net:8000/sap/bc/webdynpro/sap/dba_cockpit
 
 在此情況下，您需要確定︰
 
@@ -408,206 +259,55 @@ SAP ASE 可執行檔應該位於或安裝於 VM OS 磁碟的系統磁碟機 (磁
 
 針對自動匯入所有可用修正的功能，建議定期套用適用於您 SAP 版本的修正集合 SAP 附註︰
 
-* [1558958]
-* [1619967]
-* [1882376]
+* [SAP 支援附注 #1558958](https://launchpad.support.sap.com/#/notes/1558958)
+* [SAP 支援附注 #1619967](https://launchpad.support.sap.com/#/notes/1619967)
+* [SAP 支援附注 #1882376](https://launchpad.support.sap.com/#/notes/1882376)
 
 您可以在下列 SAP 附註中找到適用於 SAP ASE 之 DBA Cockpit 的進一步資訊︰
 
-* [1605680]
-* [1757924]
-* [1757928]
-* [1758182]
-* [1758496]    
-* [1814258]
-* [1922555]
-* [1956005]
+* [SAP 支援附注 #1605680](https://launchpad.support.sap.com/#/notes/1605680)
+* [SAP 支援附注 #1757924](https://launchpad.support.sap.com/#/notes/1757924)
+* [SAP 支援附注 #1757928](https://launchpad.support.sap.com/#/notes/1757928)
+* [SAP 支援附注 #1758182](https://launchpad.support.sap.com/#/notes/1758182)
+* [SAP 支援附注 #1758496](https://launchpad.support.sap.com/#/notes/1758496)    
+* [SAP 支援附注 #1814258](https://launchpad.support.sap.com/#/notes/1814258)
+* [SAP 支援附注 #1922555](https://launchpad.support.sap.com/#/notes/1922555)
+* [SAP 支援附注 #1956005](https://launchpad.support.sap.com/#/notes/1956005)
 
-#### <a name="backuprecovery-considerations-for-sap-ase"></a>SAP ASE 的備份/復原考量
-將 SAP ASE 部署至 Azure 時，必須檢閱您的備份方法。 即使在非生產系統中，SAP 資料庫都必須定期備份。 由於 Azure 儲存體會保留三個映像，因此在補償儲存體損毀方面，備份已變得較不重要。 維護適當備份和還原方案的主要原因是，您可以藉由提供時間點復原功能來補償邏輯/手動錯誤。 因此，目標是使用備份來將資料庫還原回到某個時間點，或者藉由複製現有的資料庫，在 Azure 中使用備份來植入另一個系統。 
 
-在 Azure 中備份和還原資料庫的運作方式，與內部部署中的運作方式一樣。 請參閱 SAP 附註︰
+## <a name="useful-links-notes--whitepapers-for-sap-ase"></a>適用于 SAP ASE & 白皮書的實用連結，請注意
+[SAP ASE 16.0.03.07 檔](https://help.sap.com/viewer/product/SAP_ASE/16.0.3.7/en-US)的起始頁面提供下列各項檔的連結：
 
-* [1588316]
-* [1585981]
+- SAP ASE 學習旅程-管理 & 監視
+- SAP ASE 學習旅程-安裝 & 升級
 
-以取得建立傾印組態和排程備份的詳細資料。 根據您的策略和需求，您可以在其中一個現有的磁碟上將資料庫和記錄傾印設定至磁碟，或者新增其他磁碟以供備份使用。 為了減少在發生錯誤時產生資料遺失的風險，建議使用其上沒有任何資料庫檔案的磁碟。
+很有説明。 另一個有用的檔是 sap[應用程式，適用于 sap 彈性伺服器企業的遷移和執行時間最佳做法](https://assets.cdn.sap.com/sapcom/docs/2016/06/26450353-767c-0010-82c7-eda71af511fa.pdf)。
 
-除了資料壓縮與 LOB 壓縮之外，SAP ASE 也會提供備份壓縮。 若要讓資料庫和記錄傾印取用較少的空間，建議使用備份壓縮。 如需詳細資訊，請參閱 SAP 附註 [1588316]。 如果您打算從 Azure 虛擬機器將備份或包含備份傾印的 VHD 下載至內部部署，則壓縮備份對於降低要傳輸的資料量來說也很重要。
+其他實用的 SAP 支援注意事項如下：
 
-請勿使用磁碟機 D:\ 做為資料庫或記錄傾印目的地。
+- [SAP 支援附注 #2134316](https://launchpad.support.sap.com/#/notes/2134316) 
+- [SAP 支援附注 #1748888](https://launchpad.support.sap.com/#/notes/1748888) 
+- [SAP 支援附注 #2588660](https://launchpad.support.sap.com/#/notes/2588660) 
+- [SAP 支援附注 #1680803](https://launchpad.support.sap.com/#/notes/1680803) 
+- [SAP 支援附注 #1724091](https://launchpad.support.sap.com/#/notes/1724091) 
+- [SAP 支援附注 #1775764](https://launchpad.support.sap.com/#/notes/1775764) 
+- [SAP 支援附注 #2162183](https://launchpad.support.sap.com/#/notes/2162183) 
+- [SAP 支援附注 #1928533](https://launchpad.support.sap.com/#/notes/1928533)
+- [SAP 支援附注 #2015553](https://launchpad.support.sap.com/#/notes/2015553)
+- [SAP 支援附注 #1750510](https://launchpad.support.sap.com/#/notes/1750510) 
+- [SAP 支援附注 #1752266](https://launchpad.support.sap.com/#/notes/1752266) 
+- [SAP 支援附注 #2162183](https://launchpad.support.sap.com/#/notes/2162183) 
+- [SAP 支援附注 #1588316](https://launchpad.support.sap.com/#/notes/158831) 
 
-#### <a name="performance-considerations-for-backupsrestores"></a>備份/還原的效能考量
-如同裸機部署，備份/還原效能取決於可以平行讀取的磁碟區數目，以及這些磁碟區可能的輸送量。 請記住，備份壓縮會取用 CPU 資源。 備份壓縮的 CPU 耗用量在具有少量 CPU 執行緒的 VM 上扮演重要的角色。 因此，您可以假設︰
+其他資訊發佈于 
 
-* 用來儲存資料庫裝置的磁碟數目越少，讀取的整體輸送量就越小
-* VM 中 CPU 執行緒數目越小，備份壓縮的影響就越嚴重
-* 要寫入備份的目標 (等量目錄、磁碟) 越少，輸送量就越低
+- [SAP 彈性伺服器企業上的 SAP 應用程式](https://community.sap.com/topics/applications-on-ase)
+- [SAP ASE 資訊中心](http://infocenter.sybase.com/help/index.jsp) 
+- [使用第三個 DR 節點設定的 SAP ASE Always on](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)
 
-若要增加要寫入的目標數目，根據您的需求，有兩個選項可以使用/相結合：
+每月電子報會透過[SAP 支援附注發佈 #2381575](https://launchpad.support.sap.com/#/notes/2381575) 
 
-* 在多個掛接的磁碟上等量配置備份目標磁碟區，以改善該等量磁碟區上的 IOPS 輸送量
-* 在 SAP ASE 層級上建立傾印組態，該層級會使用一個以上的目標目錄來寫入傾印
 
-在多個掛接的磁碟上等量配置磁碟區的方式，已在[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)中討論過。 如需有關在 SAP ASE 傾印組態中使用多個目錄的詳細資訊，請參閱 sp_config_dump 預存程序的相關文件，此預存程序可用來在 [Sybase Infocenter](http://infocenter.sybase.com/help/index.jsp) 上建立傾印組態。
+## <a name="next-steps"></a>後續步驟
+請參閱[Azure 上的 SAP 工作負載一文：規劃和部署檢查清單](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
 
-### <a name="disaster-recovery-with-azure-vms"></a>使用 Azure VM 的災害復原
-#### <a name="data-replication-with-sap-sybase-replication-server"></a>利用 SAP Sybase 複寫伺服器的資料複寫
-利用 SAP Sybase 複寫伺服器 (SRS)，SAP ASE 可提供暖待命的解決方案，以非同步方式將資料庫交易傳輸到遠端位置。 
-
-安裝及操作 SRS 也可以在 Azure 虛擬機器中裝載的 VM 上運作，就像它在內部部署的運作方式。
-
-SAP ASE HADR 不需要使用 Azure Internal Load Balancer，對 OS 層級叢集也沒有相依性。 它可在 Azure Windows 和 Linux VM 上運作。 如需 SAP ASE HADR 的詳細資訊，請參閱 [SAP ASE HADR 使用者指南](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.3.3/en-US/a6645e28bc2b1014b54b8815a64b87ba.html)。
-
-## <a name="specifics-to-sap-ase-on-linux"></a>Linux 上 SAP ASE 專屬的詳細資料
-從 Microsoft Azure 開始，您就能輕易地將現有的 SAP ASE 應用程式移轉至 Azure 虛擬機器。 虛擬機器中的 SAP ASE 可讓您輕鬆地將這些應用程式移轉到 Microsoft Azure，藉以減少部署、管理和維護企業級應用程式的擁有權總成本。 透過 Azure 虛擬機器中的 SAP ASE，系統管理員和開發人員仍然可以使用可在內部部署使用的相同開發和管理工具。
-
-若要部署 Azure VM，請務必了解官方 SLA，請參閱：<https://azure.microsoft.com/support/legal/sla>
-
-SAP 附註 [1928533] 會提供 SAP 大小調整資訊和 SAP 認證的 VM SKU 清單。 Azure 虛擬機器的其他 SAP 大小調整文件可在 <https://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> 和 <https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx> 找到
-
-關於 Azure 儲存體使用方式、部署 SAP VM 或 SAP 監視的陳述與建議適用於搭配 SAP 應用程式來部署 SAP ASE，如本文件前四章所述。
-
-下列這兩個 SAP 附註會提供有關 Linux 上的 ASE 以及雲端中 ASE 的通用資訊：
-
-* [2134316]
-* [1941500]
-
-### <a name="sap-ase-version-support"></a>SAP ASE 版本支持
-SAP 目前支援 SAP ASE 版本 16.0，可與 SAP 商務套件產品搭配使用。 不論是適用於 SAP ASE 伺服器的所有更新，還是要與「SAP 商務套件」產品搭配使用的 JDBC 和 ODBC 驅動程式，都只會透過 SAP Service Marketplace 來提供，網址是：<https://support.sap.com/swdc>。
-
-如同內部部署安裝，不要直接從 Sybase 網站下載適用於 SAP ASE 伺服器或適用於 JDBC 和 ODBC 驅動程式的更新。 如需在內部部署和 Azure 虛擬機器中支援與 SAP 商務套件產品搭配使用之修補程式的詳細資訊，請參閱下列 SAP 附註：
-
-* [1590719]
-* [1973241]
-
-如需有關在 SAP ASE 上執行「SAP 商務套件」的一般資訊，請參閱 [SCN](https://www.sap.com/community/topic/ase.html)
-
-### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>在 Azure VM 中安裝 SAP 相關之 SAP ASE 的 SAP ASE 組態指導方針
-#### <a name="structure-of-the-sap-ase-deployment"></a>SAP ASE 部署結構
-SAP ASE 可執行檔應該位於或安裝於 VM 的根檔案系統 ( /sybase )。 一般而言，大部分的 SAP ASE 系統和工具資料庫都不會遭遇高工作負載。 因此，系統和工具資料庫 (master、model、saptools、sybmgmtdb、sybsystemdb) 可以儲存在根檔案系統上。 
-
-有一個例外狀況就是暫存資料庫在某些 SAP ERP 和所有 BW 工作負載中，可能需要較高的資料量或 I/O 作業量。 VM 的 OS 磁碟無法提供的磁碟區或 IOPS 
-
-根據用來安裝系統的 SAPInst/SWPM 版本，資料庫可能包含︰
-
-* 安裝 SAP ASE 時建立單一的 SAP ASE tempdb
-* 安裝 SAP ASE 時建立的 SAP ASE tempdb，以及 SAP 安裝常式所建立的其他 saptempdb
-* 透過安裝 SAP ASE 來建立的 SAP ASE tempdb，以及手動建立 (例如依照 SAP 附註 [1752266]) 來符合 ERP/BW 特定 tempdb 需求的其他 tempdb
-
-基於特定 ERP 或所有 BW 工作負載的效能因素，在個別檔案系統上儲存另外建立的 tempdb (透過 SWPM 或手動) tempdb 裝置很合理，該檔案系統可以利用單一 Azure 資料磁碟或橫跨多個 Azure 資料磁碟的 Linux RAID 來表示。 如果沒有其他 tempdb 存在，則建議您建立一個 (SAP 附註 [1752266])。
-
-針對這類系統，應該針對另外建立的 tempdb 執行下列步驟︰
-
-* 將第一個 tempdb 目錄移至 SAP 資料庫的第一個檔案系統
-* 將 tempdb 目錄新增至每個包含 SAP 資料庫檔案系統的磁碟
-
-這個組態讓 tempdb 所耗用的空間比系統磁碟機能夠提供的還多。 作為參考，您可以在內部部署執行的現有系統上檢查 tempdb 裝置的大小。 或者，這類組態可針對無法使用系統磁碟機來提供的 tempdb 啟用 IOPS 數目。 內部部署執行的系統可以用來監視 tempdb 的 I/O 工作負載。
-
-永遠不要將任何 SAP ASE 目錄放置於 VM 的 /mnt 或 /mnt/resource 上。 對於 SAP ASE，此裝置也適用於 tempdb，即使 tempdb 中保留的物件只是暫時性的。 因為 /mnt 或 /mnt/resource 是預設的 Azure VM 暫存空間，而不是永續性空間。 如需有關 Azure VM 暫存空間的更多詳細資料，請參閱[這篇文章][virtual-machines-linux-how-to-attach-disk]
-
-如需資料和交易記錄檔部署，請參閱在[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)中提出的陳述和建議。 在以 Linux 為主的部署案例中，建議將 LVM 或 MDADM 的使用量用來建置具有足夠 IOPS、輸送量和磁碟區的等量磁碟區組。 
-
-#### <a name="impact-of-database-compression"></a>資料庫壓縮的影響
-在 I/O 頻寬可能變成限制因素的組態中，減少 IOPS 的每個量值可能都有助於延展您可以在類似 Azure 的 IaaS 案例中執行的工作負載。 因此，建議您在將現有的 SAP 資料庫上傳至 Azure 之前，確定已使用 SAP ASE 壓縮。
-
-在上傳至 Azure 之前套用壓縮的建議是出自下列數個因素︰
-
-* 降低要上傳至 Azure 的資料量
-* 假設您可以使用功能更強大的硬體，其在內部部署中使用更多 CPU 或更高 I/O 頻寬或更少 I/O 延遲，則執行壓縮的持續時間較短
-* 較小的資料庫大小可能會使磁碟配置的成本降低
-
-資料壓縮和 LOB 壓縮可以在 Azure 虛擬機器上裝載的 VM 中運作，如同它在內部部署中的運作方式。 如需有關如何檢查在現有 SAP ASE 資料庫中是否已經使用壓縮的更多詳細資料，請參閱 SAP 附註 [1750510]。 如需有關資料庫壓縮的詳細資訊，請參閱 SAP 附註 [2121797]。
-
-#### <a name="using-dbacockpit-to-monitor-database-instances"></a>使用 DBACockpit 監視資料庫執行個體
-針對使用 SAP ASE 作為資料庫平台的 SAP 系統，可以存取 DBACockpit 作為交易 DBACockpit 中內嵌的瀏覽器視窗或作為 Webdynpro。 不過，監視和管理資料庫的完整功能只能在 DBACockpit 的 Webdynpro 實作中取得。
-
-做為內部部署系統，需要使用數個步驟，才能啟用 DBACockpit 之 Webdynpro 實作所使用的所有 SAP NetWeaver 功能。 請依照 SAP 附註 [1245200] 來啟用 Webdynpro 的使用，以及產生所需的 Webdynpro。 遵循上述附註中的指示時，您也可設定網際網路通訊管理員 (icm) 以及針對 http 和 https 連線所使用的連接埠。 Http 的預設設定看起來如下︰
-
-> icm/server_port_0 = PROT=HTTP,PORT=8000,PROCTIMEOUT=600,TIMEOUT=600
-> 
-> icm/server_port_1 = PROT=HTTPS,PORT=443$$,PROCTIMEOUT=600,TIMEOUT=600
-> 
-> 
-
-而且在交易 DBACockpit 中產生的連結看起來如下︰
-
-> https:\//\<fullyqualifiedhostname>:44300/sap/bc/webdynpro/sap/dba_cockpit
-> 
-> http:\//\<fullyqualifiedhostname>:8000/sap/bc/webdynpro/sap/dba_cockpit
-> 
-> 
-
-取決於裝載 SAP 系統的 Azure 虛擬機器是否連線到您的 AD 和 DNS，您需要確定 ICM 會使用完整的主機名稱，此名稱可在您嘗試從中開啟 DBACockpit 的電腦上加以解析。 請參閱 SAP 附註 [773830] 以了解 ICM 如何根據設定檔參數決定完整的主機名稱，並於必要時明確設定 icm/host_name_full 參數。
-
-如果您在僅限雲端的案例中部署 VM，而不需要在內部部署與 Azure 之間跨單位的連線能力，您需要定義一個公用 IP 位址和一個 domainlabel。 然後 VM 的公用 DNS 名稱格式如下所示︰
-
-> `<custom domainlabel`>.`<azure region`>.cloudapp.azure.com
-> 
-> 
-
-如需有關 DNS 名稱的更多詳細資料，請參閱[這裡][virtual-machines-azurerm-versus-azuresm]。
-
-將 SAP 設定檔參數 icm/host_name_full 設定為 Azure VM 的 DNS 名稱，其連結看起來可能如下︰
-
-> https:\//mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
-> 
-> http:\//mydomainlabel.westeurope.cloudapp.net:8000/sap/bc/webdynpro/sap/dba_cockpit
-
-在此情況下，您需要確定︰
-
-* 在 Azure 入口網站中，針對用來與 ICM 通訊的 TCP/IP 連接埠，將輸入規則新增至網路安全性群組
-* 針對用來與 ICM 通訊的 TCP/IP 連接埠，將輸入規則新增至 Windows 防火牆組態
-
-針對自動匯入所有可用修正的功能，建議定期套用適用於您 SAP 版本的修正集合 SAP 附註︰
-
-* [1558958]
-* [1619967]
-* [1882376]
-
-您可以在下列 SAP 附註中找到適用於 SAP ASE 之 DBA Cockpit 的進一步資訊︰
-
-* [1605680]
-* [1757924]
-* [1757928]
-* [1758182]
-* [1758496]    
-* [1814258]
-* [1922555]
-* [1956005]
-
-#### <a name="backuprecovery-considerations-for-sap-ase"></a>SAP ASE 的備份/復原考量
-將 SAP ASE 部署至 Azure 時，必須檢閱您的備份方法。 即使在非生產系統中，SAP 資料庫都必須定期備份。 由於 Azure 儲存體會保留三個映像，因此在補償儲存體損毀方面，備份已變得較不重要。 維護適當備份和還原方案的主要原因是，您可以藉由提供時間點復原功能來補償邏輯/手動錯誤。 因此，目標是使用備份來將資料庫還原回到某個時間點，或者藉由複製現有的資料庫，在 Azure 中使用備份來植入另一個系統。 
-
-在 Azure 中備份和還原資料庫的運作方式，與內部部署中的運作方式一樣。 請參閱 SAP 附註︰
-
-* [1588316]
-* [1585981]
-
-以取得建立傾印組態和排程備份的詳細資料。 根據您的策略和需求，您可以在其中一個現有的磁碟上將資料庫和記錄傾印設定至磁碟，或者新增其他磁碟以供備份使用。 為了減少在發生錯誤時產生資料遺失的風險，建議使用磁碟 (不會有任何資料庫目錄/檔案位於其中)。
-
-除了資料壓縮與 LOB 壓縮之外，SAP ASE 也會提供備份壓縮。 若要讓資料庫和記錄傾印取用較少的空間，建議使用備份壓縮。 如需詳細資訊，請參閱 SAP 附註 [1588316]。 如果您打算從 Azure 虛擬機器將備份或包含備份傾印的 VHD 下載至內部部署，則壓縮備份對於降低要傳輸的資料量來說也很重要。
-
-不要使用 Azure VM 暫存空間 /mnt 或 /mnt/resource 做為資料庫或記錄傾印目的地。
-
-#### <a name="performance-considerations-for-backupsrestores"></a>备份/还原的性能注意事项
-如同裸機部署，備份/還原效能取決於可以平行讀取的磁碟區數目，以及這些磁碟區可能的輸送量。 請記住，備份壓縮會取用 CPU 資源。 備份壓縮的 CPU 耗用量在具有少量 CPU 執行緒的 VM 上扮演重要的角色。  因此，您可以假設︰
-
-* 用來儲存資料庫裝置的磁碟數目越少，讀取的整體輸送量就越小
-* VM 中 CPU 執行緒數目越小，備份壓縮的影響就越嚴重
-* 要寫入備份的目標 (Linux 軟體 RAID、磁碟) 越少，輸送量就越低
-
-若要增加要寫入的目標數目，根據您的需求，有兩個選項可以使用/相結合：
-
-* 在多個掛接的磁碟上等量配置備份目標磁碟區，以改善該等量磁碟區上的 IOPS 輸送量
-* 在 SAP ASE 層級上建立傾印組態，該層級會使用一個以上的目標目錄來寫入傾印
-
-在多個掛接的磁碟上等量配置磁碟區的方式，已在[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)中討論過。 如需有關在 SAP ASE 傾印組態中使用多個目錄的詳細資訊，請參閱 sp_config_dump 預存程序的相關文件，此預存程序可用來在 [Sybase Infocenter](http://infocenter.sybase.com/help/index.jsp) 上建立傾印組態。
-
-### <a name="disaster-recovery-with-azure-vms"></a>使用 Azure VM 的災害復原
-#### <a name="data-replication-with-sap-sybase-replication-server"></a>利用 SAP Sybase 複寫伺服器的資料複寫
-利用 SAP Sybase 複寫伺服器 (SRS)，SAP ASE 可提供暖待命的解決方案，以非同步方式將資料庫交易傳輸到遠端位置。 
-
-安裝及操作 SRS 也可以在 Azure 虛擬機器中裝載的 VM 上運作，就像它在內部部署的運作方式。
-
-支援透過 SAP 複寫伺服器的 ASE HADR。 強烈建議使用 SAP ASE 16.03 來嘗試這種組態。 如需安裝這類組態的更詳細指示，請參閱這個[部落格](https://blogs.msdn.microsoft.com/saponsqlserver/2018/06/18/installation-procedure-for-sybase-16-3-patch-level-3-always-on-dr-on-suse-12-3-recent-customer-proof-of-concept/)。

@@ -1,25 +1,13 @@
 ---
-title: 對 Azure Service Fabric 中的具狀態服務進行單元測試 | Microsoft Docs
+title: 在 Azure Service Fabric 中對具狀態服務進行單元測試
 description: 了解對 Service Fabric 具狀態服務進行單元測試的概念和做法。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: vturecek
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/04/2018
-ms.author: atsenthi
-ms.openlocfilehash: ca473b9947a9b0df610a9c3dac66914b06cc9217
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 12e8a47d9685dee12594f4e2afaa848d9688d185
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60881448"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75433916"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>對 Service Fabric 中的具狀態服務進行單元測試
 
@@ -36,7 +24,7 @@ ms.locfileid: "60881448"
 
 ## <a name="common-practices"></a>常見做法
 
-下一節會針對進行具狀態服務單元測試時最常見的做法提出建議。 其中也會建議模擬層應該具有怎樣的環境，才能緊密配合 Service Fabric 協調流程和狀態管理。 所模擬的程式庫必須是確實提供這項功能的程式庫。 [ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) 3.3.0 以上的版本便是這樣的程式庫，其可提供所建議的模擬功能，並遵循下面所述的做法。
+下一節會針對進行具狀態服務單元測試時最常見的做法提出建議。 其中也會建議模擬層應該具有怎樣的環境，才能緊密配合 Service Fabric 協調流程和狀態管理。 [ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) 3.3.0 以上的版本便是這樣的程式庫，其可提供所建議的模擬功能，並遵循下面所述的做法。
 
 ### <a name="arrangement"></a>安排
 
@@ -51,8 +39,8 @@ ms.locfileid: "60881448"
 狀態管理員應該視為是遠端資源，並因此加以模擬。 在模擬狀態管理員時，您必須有一些基礎記憶體內部儲存體，以便追蹤儲存到狀態管理員的項目，從而能夠讀取並驗證狀態管理員。 針對可靠集合的每種類型建立模擬執行個體即可輕鬆達到此目的。 在這些模擬中，所使用的資料類型必須密切配合針對該集合所執行的作業。 以下是針對每個可靠集合所建議的一些資料類型
 
 - IReliableDictionary<TKey, TValue> -> System.Collections.Concurrent.ConcurrentDictionary<TKey, TValue>
-- IReliableQueue<T> -> System.Collections.Generic.Queue<T>
-- IReliableConcurrentQueue<T> -> System.Collections.Concurrent.ConcurrentQueue<T>
+- IReliableQueue\<T> -> System.Collections.Generic.Queue\<T>
+- IReliableConcurrentQueue\<T> -> System.Collections.Concurrent.ConcurrentQueue\<T>
 
 #### <a name="many-state-manager-instances-single-storage"></a>多個狀態管理員執行個體搭配單一儲存體
 之前提到，狀態管理員和可靠集合應該視為是遠端資源。 因此，您應該且將會在單元測試中模擬這些資源。 不過，在為具狀態服務執行多個執行個體時，要讓每個模擬的狀態管理員在不同的具狀態服務執行個體中保持同步並不容易。 當具狀態服務在叢集上執行時，Service Fabric 會負責讓每個次要複本的狀態管理員與主要複本保持一致。 因此，測試的行為應該相同，才能模擬角色變更。

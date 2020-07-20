@@ -1,0 +1,78 @@
+### YamlMime:Landing
+title: Azure 遠端轉譯文件
+summary: Azure 遠端轉譯 (ARR) 是一項服務，可讓您在裝置 (例如 HoloLens 2) 上即時轉譯高度複雜的 3D 模型。 ARR 目前為公開預覽狀態。
+metadata:
+  title: Azure 遠端轉譯文件
+  description: 了解如何使用 Azure 遠端轉譯 (ARR) 服務，即時遠端轉譯高度複雜的 3D 模型，並在裝置 (例如 HoloLens 2) 上顯示結果。
+  ms.service: azure-remote-rendering
+  ms.topic: landing-page
+  author: florianborn71
+  ms.author: flborn
+  ms.date: 03/26/2020
+  ms.openlocfilehash: e740fd08dc3e616b0768c6c15fd4191cb58e261a
+  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 06/30/2020
+  ms.locfileid: "85565429"
+landingContent:
+- title: 關於 Azure 遠端轉譯
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure 遠端轉譯？
+      url: overview/about.md
+    - text: 系統需求
+      url: overview/system-requirements.md
+    - text: 建立 Azure 遠端轉譯帳戶
+      url: how-tos/create-an-account.md
+- title: 了解開始使用 Azure 遠端轉譯的重要概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 設定驗證
+      url: how-tos/authentication.md
+    - text: 遠端轉譯工作階段
+      url: concepts/sessions.md
+    - text: 實體
+      url: concepts/entities.md
+    - text: 元件
+      url: concepts/components.md
+    - text: 模型
+      url: concepts/models.md
+    - text: 轉換模型
+      url: how-tos/conversion/model-conversion.md
+- title: 轉換和轉譯您的第一個模型
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 Unity 轉譯模型
+      url: quickstarts/render-model.md
+    - text: 將 Unity 範例部署至 HoloLens
+      url: quickstarts/deploy-to-hololens.md
+    - text: 將 Unity 範例部署到桌面
+      url: quickstarts/deploy-to-desktop.md
+    - text: 將原生 C++ 範例部署至 HoloLens
+      url: quickstarts/native-cpp/hololens/deploy-native-cpp-tutorial.md
+    - text: 轉換模型以進行轉譯
+      url: quickstarts/convert-model.md
+- title: 了解如何建立自己的應用程式
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 概觀
+      url: tutorials/unity/tutorial-landing.md
+    - text: 檢視遠端轉譯模型
+      url: tutorials/unity/view-remote-models/view-remote-models.md
+    - text: 管理自訂模型
+      url: tutorials/unity/custom-models/custom-models.md
+    - text: 操作模型
+      url: tutorials/unity/manipulate-models/manipulate-models.md
+    - text: 調整材質、光源和效果
+      url: tutorials/unity/materials-lighting-effects/materials-lighting-effects.md
+    - text: 保護 Azure 遠端轉譯和模型儲存體
+      url: tutorials/unity/security/security.md
+    - text: 建立商業就緒的 Azure 遠端轉譯應用程式
+      url: tutorials/unity/commercial-ready/commercial-ready.md
+    - text: Native C++：將遠端轉譯整合到 Hololens 全像攝影應用程式
+      url: tutorials/native-cpp/hololens/integrate-remote-rendering-into-holographic-app.md

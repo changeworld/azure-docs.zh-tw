@@ -1,25 +1,18 @@
 ---
-title: Windows VM 在 Azure 中的生命週期和狀態 | Microsoft Docs
+title: Azure 中 Windows VM 的生命週期和狀態
 description: 概述 Windows VM 在 Azure 中的生命週期，其中會說明 VM 在各個階段所處的不同狀態。
-services: virtual-machines-windows
-documentationcenter: ''
 author: shandilvarun
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines-windows
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: 921da2808757255a2a39ae8e7b927dbfde2fc627
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: dbe236cc4a407cca78f7f7ab64f3809797c02614
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60583548"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82100595"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>虛擬機器的生命週期和狀態
 

@@ -1,27 +1,27 @@
 ---
 title: 教學課程：Bing 實體搜尋單頁 Web 應用程式
-titlesuffix: Azure Cognitive Services
-description: 示範如何在單頁 Web 應用程式中使用 Bing 實體搜尋 API。
+titleSuffix: Azure Cognitive Services
+description: 本教學課程說明如何在單頁 Web 應用程式中使用 Bing 實體搜尋 API。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: tutorial
-ms.date: 02/01/2019
+ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 1b8cf36c631755458bc0c531773a6b2aba7f1038
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 53731540c4a2861c77c02b1a4b25b60fd0e23872
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406385"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184135"
 ---
 # <a name="tutorial-single-page-web-app"></a>教學課程：單一頁面 Web 應用程式
 
 Bing 實體搜尋 API 可讓您搜尋網路上的「實體」和「地點」相關資訊。 您可以在指定查詢中要求任何一種結果，或兩者都要求。 以下提供地點和實體的定義。
 
-|||
+| 結果 | 描述 |
 |-|-|
 |實體|您可以依名稱尋找的已知人物、地點和事項|
 |地點|您可以依名稱「或」類型 (義大利餐廳) 尋找的餐廳、旅館及其他本地商家|
@@ -37,7 +37,7 @@ Bing 實體搜尋 API 可讓您搜尋網路上的「實體」和「地點」相�
 -->
 
 > [!NOTE]
-> 按下時，頁面底部的 JSON 和 HTTP 標題會顯示 JSON 回應和 HTTP 要求資訊。 這些詳細資料有助於探索服務。
+> 點按時，頁面底部的 JSON 和 HTTP 標題會顯示 JSON 回應和 HTTP 要求資訊。 這些詳細資料有助於探索服務。
 
 本教學課程應用程式說明如何：
 
@@ -49,12 +49,21 @@ Bing 實體搜尋 API 可讓您搜尋網路上的「實體」和「地點」相�
 > * 處理 Bing 用戶端識別碼和 API 訂用帳戶金鑰
 > * 解決可能出現的任何錯誤
 
-本教學課程頁完全獨立，不會使用任何外部架構、樣式表或甚至影像檔。 其中僅使用廣受支援的 JavaScript 語言功能，並且與所有主要網頁瀏覽器的目前版本搭配使用。
+本教學課程頁面完全獨立，不會使用任何外部架構、樣式表甚或影像檔案。 它使用唯一且廣泛支援的 JavaScript 語言功能，適用於所有主要網頁瀏覽器的目前版本。
 
-在本教學課程中，我們只會討論原始程式碼的特定部分。 完整的原始程式碼位於[另一個頁面上](tutorial-bing-entities-search-single-page-app-source.md)。 請將此程式碼複製並貼到文字編輯器中，然後另存為 `bing.html`。
+在本教學課程中，我們只會討論原始程式碼的特定部分。 完整的原始程式碼位於[另一個頁面上](tutorial-bing-entities-search-single-page-app-source.md)。 將此程式碼複製並貼到文字編輯器，並儲存為 `bing.html`。
 
 > [!NOTE]
 > 本教學課程與[單頁 Bing Web 搜尋應用程式教學課程](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md)非常類似，但只會處理實體搜尋結果。
+
+## <a name="prerequisites"></a>必要條件
+
+若要依照本教學課程，您需要 Bing 搜尋 API 和 Bing 地圖服務 API 的訂用帳戶金鑰。 
+
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
+* 擁有 Azure 訂用帳戶之後：
+  * <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="建立 Bing 搜尋資源"  target="_blank">在 Azure 入口網站中建立 Bing 搜尋資源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
+  * 在 Azure 入口網站中<a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title="建立電腦視覺資源"  target="_blank">建立 Azure 地圖服務資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
 
 ## <a name="app-components"></a>應用程式元件
 
@@ -73,7 +82,7 @@ HTML 包含搜尋表單，使用者可在其中輸入查詢並選擇搜尋選項
 <form name="bing" onsubmit="return newBingEntitySearch(this)">
 ```
 
-`onsubmit` 處理常式會傳回 `false`，這可防止表單提交至伺服器。 JavaScript 程式碼實際上會從表單收集所需的資訊，並執行搜尋。
+`onsubmit` 處理常式會傳回 `false`，這可防止表單提交至伺服器。 JavaScript 程式碼會實際從表單收集所需的資訊，並執行搜尋。
 
 搜尋會分兩個階段完成。 首先，若使用者已輸入位置限制，則會執行 Bing 地圖服務將它轉換成座標。 此查詢的回呼會接著開始執行 Bing 實體搜尋查詢。
 
@@ -82,11 +91,11 @@ HTML 也包含顯示搜尋結果的區域 (HTML `<div>` 標籤)。
 ## <a name="managing-subscription-keys"></a>管理訂用帳戶金鑰
 
 > [!NOTE]
-> 此應用程式同時需要 Bing 搜尋 API 和 Bing 地圖服務 API 的訂用帳戶金鑰。 您可以使用[試用版的 Bing 搜尋金鑰](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)和[基本 Bing 地圖服務金鑰](https://www.microsoft.com/maps/create-a-bing-maps-key)。
+> 此應用程式同時需要 Bing 搜尋 API 和 Bing 地圖服務 API 的訂用帳戶金鑰。
 
 為了避免必須在程式碼中包含 Bing 搜尋和 Bing 地圖服務 API 訂用帳戶金鑰，我們使用瀏覽器的永續性儲存體來儲存這些金鑰。 若尚未儲存任何一個金鑰，則會出現提示要求儲存以供稍後使用。 若 API 稍後拒絕金鑰，我們會讓儲存的金鑰失效，以便在使用者下次搜尋時，要求使用者提供金鑰。
 
-我們會定義 `storeValue` 和 `retrieveValue` 函式，以使用 `localStorage` 物件 (若瀏覽器支援的話) 或 Cookie。 我們的 `getSubscriptionKey()` 函式使用這些函式來儲存及擷取使用者的金鑰。
+我們會定義 `storeValue` 和 `retrieveValue` 函式，以使用 `localStorage` 物件 (若瀏覽器支援的話) 或 Cookie。 我們的 `getSubscriptionKey()` 函式會使用這些函式來儲存及擷取使用者的金鑰。 您可以使用下方的全域端點，也可以使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
 
 ```javascript
 // cookie names for data we store
@@ -132,7 +141,7 @@ HTML `<body>` 標籤包含 `onload` 屬性，以在頁面完成載入時呼叫 `
 
 HTML 表單包含下列控制項：
 
-| | |
+| 控制 | 描述 |
 |-|-|
 |`where`|可供選取市場 (位置和語言) 以用於搜尋的下拉式功能表。|
 |`query`|要在其中輸入搜尋字詞的文字欄位。|
@@ -308,7 +317,7 @@ function bingEntitySearch(query, latlong, options, key) {
 }
 ```
 
-HTTP 要求成功完成時，JavaScript 會呼叫我們的 `load` 事件處理常式 `handleBingResponse()` 函式，來處理成功傳遞至 API 的 HTTP GET 要求。 
+HTTP 要求成功完成時，JavaScript 會呼叫我們的 `load` 事件處理常式 (`handleBingResponse()` 函式)，來處理成功傳遞至 API 的 HTTP GET 要求。 
 
 ```javascript
 // handle Bing search request results
@@ -378,7 +387,7 @@ function handleBingResponse() {
 > [!IMPORTANT]
 > 成功的 HTTP 要求「不」一定表示搜尋本身成功。 若搜尋作業中發生錯誤，Bing 實體搜尋 API 會傳回非 200 HTTP 狀態碼，並在 JSON 回應中包含錯誤資訊。 此外，若要求速率受到限制，API 會傳回空白回應。
 
-上述兩個函式中大部分的程式碼都是專門用來處理錯誤的。 下列階段可能會發生錯誤：
+上述兩個函式中的大部分程式碼都是專用於錯誤處理。 下列階段可能會發生錯誤：
 
 |階段|可能的錯誤|處理者|
 |-|-|-|
@@ -394,15 +403,15 @@ Bing 實體搜尋 API [要求您依指定順序顯示結果](use-display-require
 
 相反地，我們會在搜尋結果中使用 `rankingResponse` 集合，以排序要顯示的結果。 此物件是指 `Entitiess` 及/或 `Places` 集合中的項目。
 
-`rankingResponse` 最多可能包含三個搜尋結果集合，並已指定 `pole`、`mainline` 和 `sidebar`。 
+`rankingResponse` 最多可包含三個搜尋結果集合，並已指定 `pole`、`mainline` 和 `sidebar`。 
 
 `pole` (若存在) 是最相關的搜尋結果，應該優先顯示。 `mainline` 會參照大量搜尋結果。 Mainline 結果應該在 `pole` 之後立即顯示 (若 `pole` 不存在，則優先顯示)。 
 
-最後， `sidebar` 是指輔助搜尋結果。 它們可能會在實際 sidebar 中顯示，或直接在 mainline 結果之後顯示。 我們已為教學課程應用程式選擇後者。
+最後， `sidebar` 會參照輔助搜尋結果。 它們可能會在實際 sidebar 中顯示，或直接在 mainline 結果之後顯示。 我們已為教學課程應用程式選擇後者。
 
 `rankingResponse` 集合中的每個項目是指兩個不同但方式相同的實際搜尋結果項目。
 
-| | |
+| Item | 描述 |
 |-|-|
 |`id`|`id` 看起來像是 URL，但不應該用於連結。 排名結果的 `id` 類型符合回應集合中任一搜尋結果項目的 `id`，「或」整個回應集合 (例如`Entities`)。
 |`answerType`<br>`resultIndex`|`answerType` 會參照包含結果的最上層答案集合 (例如 `Entities`)。 `resultIndex` 會參照該集合內的結果索引。 若省略 `resultIndex`，排名結果是指整個集合。
@@ -432,7 +441,7 @@ function renderSearchResults(results) {
 
 ## <a name="rendering-result-items"></a>轉譯結果項目
 
-在我們的 JavaScript 程式碼中有一個物件 `searchItemRenderers`，其中包含 *renderers:* 函式，可為每種搜尋結果產生 HTML。
+我們的 JavaScript 程式碼中有一個物件 `searchItemRenderers`，其中包含 *renderers:* 函式，可為每種搜尋結果產生 HTML。
 
 ```javascript
 searchItemRenderers = { 
@@ -443,7 +452,7 @@ searchItemRenderers = {
 
 轉譯器函式可接受下列參數：
 
-| | |
+| 參數 | 描述 |
 |-|-|
 |`item`|JavaScript 物件，其中包含項目的屬性，例如其 URL 及其描述。|
 |`index`|集合內結果項目的索引。|
@@ -451,7 +460,7 @@ searchItemRenderers = {
 
 `index` 和 `count` 參數可用來編號結果、為集合開頭或結尾產生特殊 HTML、在特定數量的項目之後插入分行符號等。 若轉譯器不需要此功能，則不需要接受這兩個參數。 事實上，我們不會將其用於教學課程應用程式的轉譯器中。
 
-讓我們仔細看看 `entities` 轉譯器：
+以下我們將深入觀察 `entities` 轉譯器：
 
 ```javascript
     entities: function(item) {
@@ -527,19 +536,22 @@ searchItemRenderers = {
 > [!NOTE]
 > 在生產 Web 應用程式中，無論如何都應該執行要求伺服器端。 否則，您的 Bing 搜尋 API 金鑰必須包含在網頁中，以提供給檢視來源的任何人。 您會根據 API 訂用帳戶金鑰的所有使用量付費，即使是未經授權的合作對象所提出的要求，因此請務必不要公開您的金鑰。
 
-若要進行開發，您可以透過 CORS Proxy 提出 Bing Web 搜尋 API 要求。 來自這類 Proxy 的回應包含 `Access-Control-Expose-Headers` 標頭，可將回應標頭列入白名單並提供給 JavaScript 使用。
+若要進行開發，您可以透過 CORS Proxy 提出 Bing Web 搜尋 API 要求。 來自這類 Proxy 的回應包含 `Access-Control-Expose-Headers` 標頭，可列出回應標頭並提供給 JavaScript 使用。
 
 您可以輕鬆安裝 CORS Proxy，讓我們的教學課程應用程式存取用戶端識別碼標頭。 首先，請[安裝 Node.js](https://nodejs.org/en/download/) (若尚未安裝)。 然後在命令視窗中發出下列命令：
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-接下來，將 HTML 檔案中的 Bing Web 搜尋端點變更為：
-
-    https://localhost:9090/httpss://api.cognitive.microsoft.com/bing/v7.0/search
+接下來，將 HTML 檔案中的 Bing Web 搜尋端點變更為：\
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 最後，使用下列命令啟動 CORS Proxy：
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 當您使用教學課程應用程式時，請保持開啟命令視窗；關閉視窗會停止 Proxy。 在可展開的 [HTTP 標頭] 區段搜尋結果下，您現在可以看到 `X-MSEdge-ClientID` 標頭 (及其他標頭)，並確認每個要求的此標頭都相同。
 

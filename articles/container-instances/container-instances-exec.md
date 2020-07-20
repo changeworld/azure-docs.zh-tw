@@ -1,18 +1,13 @@
 ---
-title: 在 Azure 容器執行個體的執行中容器內執行命令
+title: 執行容器實例中的命令
 description: 了解如何在目前正在 Azure 容器執行個體中執行的容器內執行命令
-services: container-instances
-author: dlepow
-ms.service: container-instances
 ms.topic: article
 ms.date: 03/30/2018
-ms.author: danlep
-ms.openlocfilehash: 577e2386c352798bc21a2c78b22726128ac7cf0a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: de48e6ac246e2b0751561b4c60bb63d88b599bdf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60579741"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79247198"
 ---
 # <a name="execute-a-command-in-a-running-azure-container-instance"></a>在執行中的 Azure 容器執行個體內執行命令
 
@@ -34,8 +29,7 @@ az container exec --resource-group myResourceGroup --name mynginx --exec-command
 
 在下列範例輸出中，會在執行中的 Linux 容器內啟動 Bash 殼層，以提供 `ls` 執行所在的終端機：
 
-```console
-$ az container exec --resource-group myResourceGroup --name mynginx --exec-command "/bin/bash"
+```output
 root@caas-83e6c883014b427f9b277a2bba3b7b5f-708716530-2qv47:/# ls
 bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
 boot  etc  lib   media  opt  root  sbin  sys  usr
@@ -46,8 +40,11 @@ Bye.
 
 在此範例中，會在執行中的 Nanoserver 容器內啟動命令提示字元：
 
-```console
-$ az container exec --resource-group myResourceGroup --name myiis --exec-command "cmd.exe"
+```azurecli
+az container exec --resource-group myResourceGroup --name myiis --exec-command "cmd.exe"
+```
+
+```output
 Microsoft Windows [Version 10.0.14393]
 (c) 2016 Microsoft Corporation. All rights reserved.
 

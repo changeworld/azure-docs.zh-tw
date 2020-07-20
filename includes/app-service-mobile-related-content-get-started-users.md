@@ -2,18 +2,19 @@
 author: conceptdev
 ms.service: app-service-mobile
 ms.topic: include
-ms.date: 08/23/2018
+ms.date: 09/02/2019
 ms.author: crdun
-ms.openlocfilehash: 942c165a53ad07c0d359854fc737c195c6f2d50a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 405efee7221bcfaca17e0334bd9be46d9b34b74c
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60850922"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860508"
 ---
-* [App Service 驗證/授權概觀](../articles/app-service/overview-authentication-authorization.md)
-* 將驗證新增至行動裝置應用程式：[iOS][ios-get-started-users]、[Android][android-get-started-users]、[Windows Universal][windows-get-started-users]、[Xamarin.Android][xamarin-android-get-started-users]、[Xamarin.iOS][xamarin-ios-get-started-users]、[Xamarin.Forms][xamarin-forms-get-started-users]、[Cordova][cordova-get-started-users]  
-  深入了解如何將 App Service 驗證新增至行動應用程式。
+* [App Service 驗證/授權概觀](../articles/app-service/overview-authentication-authorization.md)。
+* [在 Azure App Service 中進階使用驗證和授權](../articles/app-service/app-service-authentication-how-to.md)
+* [教學課程：在 Azure App Service 中對使用者進行端對端驗證和授權](../articles/app-service/app-service-web-tutorial-auth-aad.md)
+* 將驗證新增至行動裝置應用程式：[iOS][ios-get-started-users]、[Android][android-get-started-users]、[Windows Universal][windows-get-started-users]、[Xamarin.Android][xamarin-android-get-started-users]、[Xamarin.iOS][xamarin-ios-get-started-users]、[Xamarin.Forms][xamarin-forms-get-started-users]、[Cordova][cordova-get-started-users]。  
 
 [android-get-started-users]: ../articles/app-service-mobile/app-service-mobile-android-get-started-users.md
 [cordova-get-started-users]: ../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md

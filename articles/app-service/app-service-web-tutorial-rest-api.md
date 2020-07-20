@@ -1,32 +1,23 @@
 ---
-title: 裝載具有 CORS 支援的 RESTful API - Azure App Service | Microsoft Docs
-description: 了解 Azure App Service 如何協助您裝載具有 CORS 支援的 RESTful API。
-services: app-service\api
-documentationcenter: dotnet
-author: cephalin
-manager: cfowler
-editor: ''
+title: 教學課程：裝載具有 CORS 的 RESTful API
+description: 了解 Azure App Service 如何協助您裝載具有 CORS 支援的 RESTful API。 App Service 可裝載前端 Web 應用程式和後端 API。
 ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 11/21/2018
-ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: b8c1130a45f60b9caaacd365cd1c256f50ed7675
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.date: 04/28/2020
+ms.custom: mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
+ms.openlocfilehash: c59ff344cc3e24387c764ba2f23bc3fe0065b371
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629557"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559791"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>教學課程：在 Azure App Service 中裝載具有 CORS 支援的 RESTful API
 
 [Azure App Service](overview.md) 可提供可高度擴充、自我修復的 Web 主控服務。 此外，App Service 有 RESTful API 的內建[跨原始資源共用 (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) 支援。 本教學課程示範如何將 ASP.NET Core API 應用程式部署至具有 CORS 支援的 App Service。 您可使用命令列工具來設定應用程式，以及使用 Git 部署應用程式。 
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 使用 Azure CLI 建立 App Service 資源
@@ -37,12 +28,12 @@ ms.locfileid: "53629557"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程：
 
-* [安裝 Git](https://git-scm.com/)。
-* [安裝 .NET Core](https://www.microsoft.com/net/core/)。
+* <a href="https://git-scm.com/" target="_blank">安裝 Git</a>
+ * <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">安裝最新的 .NET Core 3.1 SDK</a>
 
 ## <a name="create-local-aspnet-core-app"></a>建立本機 ASP.NET Core 應用程式
 
@@ -72,11 +63,11 @@ dotnet run
 
 在瀏覽器中瀏覽至 `http://localhost:5000/swagger` 以使用 Swagger UI 播放。
 
-![在本機執行的 ASP.NET Core API](./media/app-service-web-tutorial-rest-api/local-run.png)
+![在本機執行的 ASP.NET Core API](./media/app-service-web-tutorial-rest-api/azure-app-service-local-swagger-ui.png)
 
 瀏覽至 `http://localhost:5000/api/todo` 並查看 ToDo JSON 項目清單。
 
-瀏覽至 `http://localhost:5000` 並使用瀏覽器應用程式播放。 稍後，您會將瀏覽器應用程式指向 App Service 中的遠端 API，以測試 CORS 功能。 瀏覽器應用程式的程式碼位於存放庫的 wwwroot 目錄中。
+瀏覽至 `http://localhost:5000` 並使用瀏覽器應用程式播放。 稍後，您會將瀏覽器應用程式指向 App Service 中的遠端 API，以測試 CORS 功能。 瀏覽器應用程式的程式碼位於存放庫的 wwwroot  目錄中。
 
 如需隨時停止 ASP.NET Core，請在終端機上按下 `Ctrl+C`。
 
@@ -106,39 +97,40 @@ dotnet run
 
 [!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
-```bash
-Counting objects: 98, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100% (92/92), done.
-Writing objects: 100% (98/98), 524.98 KiB | 5.58 MiB/s, done.
-Total 98 (delta 8), reused 0 (delta 0)
+<pre>
+Enumerating objects: 83, done.
+Counting objects: 100% (83/83), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (78/78), done.
+Writing objects: 100% (83/83), 22.15 KiB | 3.69 MiB/s, done.
+Total 83 (delta 26), reused 0 (delta 0)
 remote: Updating branch 'master'.
-remote: .
 remote: Updating submodules.
-remote: Preparing deployment for commit id '0c497633b8'.
+remote: Preparing deployment for commit id '509236e13d'.
 remote: Generating deployment script.
-remote: Project file path: ./DotNetCoreSqlDb.csproj
+remote: Project file path: .\TodoApi.csproj
+remote: Generating deployment script for ASP.NET MSBuild16 App
 remote: Generated deployment script files
 remote: Running deployment command...
-remote: Handling ASP.NET Core Web Application deployment.
+remote: Handling ASP.NET Core Web Application deployment with MSBuild16.
 remote: .
 remote: .
 remote: .
 remote: Finished successfully.
 remote: Running post deployment command(s)...
+remote: Triggering recycle (preview mode disabled).
 remote: Deployment successful.
-remote: App container will begin restart within 10 seconds.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git
+To https://&lt;app_name&gt;.scm.azurewebsites.net/&lt;app_name&gt;.git
  * [new branch]      master -> master
-```
+</pre>
 
 ### <a name="browse-to-the-azure-app"></a>瀏覽至 Azure 應用程式
 
 在瀏覽器中瀏覽至 `http://<app_name>.azurewebsites.net/swagger` 並使用 Swagger UI 播放。
 
-![在 Azure App Service 中執行的 ASP.NET Core API](./media/app-service-web-tutorial-rest-api/azure-run.png)
+![在 Azure App Service 中執行的 ASP.NET Core API](./media/app-service-web-tutorial-rest-api/azure-app-service-browse-app.png)
 
-瀏覽至 `http://<app_name>.azurewebsites.net/swagger/v1/swagger.json` 以查看您已部署 API 的 swagger.json。
+瀏覽至 `http://<app_name>.azurewebsites.net/swagger/v1/swagger.json` 以查看您已部署 API 的 swagger.json  。
 
 瀏覽至 `http://<app_name>.azurewebsites.net/api/todo` 以查看您已部署的 API 是否能運作。
 
@@ -148,9 +140,9 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 
 ### <a name="test-cors-in-sample-app"></a>在範例應用程式中測試 CORS
 
-在您的本機存放庫中，開啟 wwwroot/index.html。
+在您的本機存放庫中，開啟 wwwroot/index.html  。
 
-在第 51 行中，將 `apiEndpoint` 變數設定為已部署 API 的 URL (`http://<app_name>.azurewebsites.net`)。 以您在 App Service 中的應用程式名稱取代 _\<appname>_。
+在第 51 行中，將 `apiEndpoint` 變數設定為已部署 API 的 URL (`http://<app_name>.azurewebsites.net`)。 以您在 App Service 中的應用程式名稱取代 _\<appname>_ 。
 
 在您的本機終端機視窗中，再次執行範例應用程式。
 
@@ -158,9 +150,9 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 dotnet run
 ```
 
-瀏覽至位於 `http://localhost:5000` 的瀏覽器應用程式。 在瀏覽器中開啟 [開發人員工具] 視窗 (在適用於 Windows 的 Chrome 中按 `Ctrl`+`Shift`+`i`)，並檢查 [主控台] 索引標籤。您現在會看到錯誤訊息：`No 'Access-Control-Allow-Origin' header is present on the requested resource`。
+瀏覽至位於 `http://localhost:5000` 的瀏覽器應用程式。 在瀏覽器中開啟 [開發人員工具] 視窗 (在適用於 Windows 的 Chrome 中按 `Ctrl`+`Shift`+`i`)，並檢查 [主控台]  索引標籤。您現在會看到錯誤訊息：`No 'Access-Control-Allow-Origin' header is present on the requested resource`。
 
-![瀏覽器用戶端中的 CORS 錯誤](./media/app-service-web-tutorial-rest-api/cors-error.png)
+![瀏覽器用戶端中的 CORS 錯誤](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-error.png)
 
 因為瀏覽器應用程式 (`http://localhost:5000`) 與遠端資源 (`http://<app_name>.azurewebsites.net`) 之間的網域不相符，加上 App Service 中您的 API 並未傳送 `Access-Control-Allow-Origin` 標頭的這個事實，以致瀏覽器無法將跨網域內容載入瀏覽器應用程式中。
 
@@ -168,10 +160,10 @@ dotnet run
 
 ### <a name="enable-cors"></a>啟用 CORS 
 
-在 Cloud Shell 中，使用 [`az resource update`](/cli/azure/resource#az-resource-update) 命令，對您的用戶端 URL 啟用 CORS。 取代 _&lt;appname>_ 預留位置。
+在 Cloud Shell 中，使用 [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) 命令，對您的用戶端 URL 啟用 CORS。 取代 _&lt;app-name>_ 預留位置。
 
 ```azurecli-interactive
-az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.cors.allowedOrigins="['http://localhost:5000']" --api-version 2015-06-01
+az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-origins 'http://localhost:5000'
 ```
 
 您可以在 `properties.cors.allowedOrigins` (`"['URL1','URL2',...]"`) 中設定多個用戶端 URL。 您也可以使用 `"['*']"` 來啟用所有的用戶端 URL。
@@ -181,9 +173,9 @@ az resource update --name web --resource-group myResourceGroup --namespace Micro
 
 ### <a name="test-cors-again"></a>再次測試 CORS
 
-重新整理位於 `http://localhost:5000` 的瀏覽器應用程式。 [主控台] 視窗中的錯誤訊息現已消失，而且您可看到來自已部署 API 的資料並與其互動。 您的遠端 API 現在對在本機執行的瀏覽器應用程式支援 CORS。 
+重新整理位於 `http://localhost:5000` 的瀏覽器應用程式。 [主控台]  視窗中的錯誤訊息現已消失，而且您可看到來自已部署 API 的資料並與其互動。 您的遠端 API 現在對在本機執行的瀏覽器應用程式支援 CORS。 
 
-![瀏覽器用戶端中的 CORS 成功](./media/app-service-web-tutorial-rest-api/cors-success.png)
+![瀏覽器用戶端中的 CORS 成功](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-success.png)
 
 恭喜，您正在 Azure App Service 中執行具有 CORS 支援的 API。
 

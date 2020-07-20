@@ -1,5 +1,5 @@
 ---
-title: 安裝 Linux 主要目標伺服器以便容錯回復至內部部署網站 | Microsoft Docs
+title: 安裝以 Azure Site Recovery 進行 Linux VM 容錯回復所需的主要目標伺服器
 description: 了解如何使用 Azure Site Recovery 在從 VMware VM 至 Azure 的災害復原期間，將 Linux 主要目標伺服器設定為容錯回復至內部部署網站。
 author: mayurigupta13
 services: site-recovery
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 98718709038d7fd753e5eb3d45c130085c5accd9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 281743268364b0e9d39c7bea28afc17d753db2f6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60600043"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130147"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>安裝 Linux 主要目標伺服器以便進行容錯回復
 您可以在將虛擬機器容錯移轉至 Azure 之後，將虛擬機器容錯回復至內部部署網站。 若要進行容錯回復，您需要在從 Azure 到內部部署網站的過程中重新保護虛擬機器。 針對此程序，您需要內部部署的主要目標伺服器以接收流量。 
@@ -27,9 +27,9 @@ ms.locfileid: "60600043"
 ## <a name="overview"></a>概觀
 本文提供如何安裝 Linux 主要目標的指示。
 
-在本文末尾或 [Azure Recovery Services Forum (Azure 復原服務論壇)](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr) 中張貼意見或問題。
+請在本文最後或 [Microsoft 的 Azure 復原服務問與答頁面](/answers/topics/azure-site-recovery.html)中張貼留言或問題。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 若要選擇要在其中部署主要目標的主機，請確定容錯回復的目的地是現有內部部署虛擬機器還是新的虛擬機器。 
     * 若是現有虛擬機器，主要目標的主機應該要能存取虛擬機器的資料存放區。
@@ -37,6 +37,9 @@ ms.locfileid: "60600043"
 * 主要目標應位於可與處理序伺服器及組態伺服器通訊的網路上。
 * 主要目標的版本必須等於或早於處理序伺服器和組態伺服器的版本。 例如，若組態伺服器的版本是 9.4，則主要目標的版本可以是 9.4 或 9.3，但不能是 9.5。
 * 主要目標只能是 VMware 虛擬機器，不能是實體伺服器。
+
+> [!NOTE]
+> 請確定您未在任何管理元件 (例如主要目標) 上啟動 Storage vMotion。 如果在成功重新保護之後主要目標有移動，則無法中斷連結虛擬機器磁碟 (VMDK)。 在此情況下，容錯回復會失敗。
 
 ## <a name="sizing-guidelines-for-creating-master-target-server"></a>適用於建立主要目標伺服器的調整大小指導方針
 
@@ -46,7 +49,7 @@ ms.locfileid: "60600043"
 - **用於保留磁碟機的額外磁碟大小**：1 TB
 - **CPU 核心**：4 個核心或更多
 
-支援下列受支援的 Ubuntu 核心。
+支援下列 Ubuntu 核心。
 
 
 |核心系列  |最多支援  |
@@ -56,13 +59,13 @@ ms.locfileid: "60600043"
 |4.10     |4.10.0-24-generic        |
 
 
-## <a name="deploy-the-master-target-server"></a>部署主目标服务器
+## <a name="deploy-the-master-target-server"></a>部署主要目標伺服器
 
 ### <a name="install-ubuntu-16042-minimal"></a>安裝 Ubuntu 16.04.2 極簡版
 
 請依循下列步驟以安裝 Ubuntu 16.04.2 64 位元作業系統。
 
-1.   移至[下載連結](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso)，選擇最接近的鏡像，然後下載 Ubuntu 16.04.2 極簡版 64 位元 ISO。
+1.   前往[下載連結](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso) ，選擇最接近的鏡像，然後下載 Ubuntu 16.04.2 極簡版 64 位元 ISO。
 將 Ubuntu 16.04.2 極簡版 64 位元 ISO 放在 DVD 光碟機中，並啟動系統。
 
 1.  選取 [English] \(英文\) 作為慣用語言，然後選取 **Enter**。
@@ -83,7 +86,7 @@ ms.locfileid: "60600043"
 1. 選取 [No] \(否\) (預設選項)，然後選取 **Enter**。
 
      ![設定鍵盤](./media/vmware-azure-install-linux-master-target/image5.png)
-1. 選取 [English (US)] \(英文 (美國)\) 作為鍵盤的國家/地區，然後選取 **Enter**。
+1. 選取 [中文 (繁體)] 作為鍵盤的出產國家/地區，然後選取 **Enter**。
 
 1. 選取 [English (US)] \(英文 (美國)\) 作為鍵盤配置，然後選取 **Enter**。
 
@@ -176,7 +179,7 @@ ms.locfileid: "60600043"
 
    - 在名稱欄位中新增 **disk.EnableUUID**，然後將值設定為 [TRUE]。
 
-     ![检查 disk.EnableUUID 是否存在](./media/vmware-azure-install-linux-master-target/image25.png)
+     ![檢查 disk.EnableUUID 是否已存在](./media/vmware-azure-install-linux-master-target/image25.png)
 
 #### <a name="disable-kernel-upgrades"></a>停用核心升級
 
@@ -193,7 +196,7 @@ Azure Site Recovery 主要目標伺服器需要特定版本的 Ubuntu，因此�
 
 如果您的主要目標有網際網路連線，您可以使用下列步驟下載安裝程式。 否則，您可以從處理序伺服器複製安裝程式並加以安裝。
 
-#### <a name="download-the-master-target-installation-packages"></a>下载主目标安装包
+#### <a name="download-the-master-target-installation-packages"></a>下載主要目標安裝套件
 
 [下載最新的 Linux 主要目標安裝位元](https://aka.ms/latestlinuxmobsvc)。
 
@@ -214,16 +217,15 @@ Azure Site Recovery 主要目標伺服器需要特定版本的 Ubuntu，因此�
 
 ### <a name="apply-custom-configuration-changes"></a>套用自訂組態變更
 
-若要套用自訂組態變更，請使用下列步驟︰
-
+若要套用自訂設定變更，請以 ROOT 使用者身分使用下列步驟︰
 
 1. 執行下列命令來解壓縮二進位檔。
 
-    `tar -zxvf latestlinuxmobsvc.tar.gz`
+    `tar -xvf latestlinuxmobsvc.tar.gz`
 
     ![所執行命令的螢幕擷取畫面](./media/vmware-azure-install-linux-master-target/image16.png)
 
-2. 运行以下命令来指定权限。
+2. 執行下列命令來授與權限。
 
     `chmod 755 ./ApplyCustomChanges.sh`
 
@@ -245,7 +247,7 @@ Azure Site Recovery 主要目標伺服器需要特定版本的 Ubuntu，因此�
 
     ![多重路徑識別碼](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. 格式化磁碟機，然後在新的磁碟機上建立一個檔案系統：**mkfs.ext4 /dev/mapper/<保留磁碟的多重路徑識別碼>**。
+3. 將磁片磁碟機格式化，然後在新磁片磁碟機上建立檔案系統： **mkfs. ext4/dev/mapper/ \<Retention disk's multipath id> **。
     
     ![檔案系統](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -260,31 +262,37 @@ Azure Site Recovery 主要目標伺服器需要特定版本的 Ubuntu，因此�
     
     `vi /etc/fstab`
     
-    按 **Insert** 鍵來開始編輯檔案。 建立新的一行，並插入下列文字。 根据前一命令中突出显示的多路径 ID 编辑磁盘多路径 ID。
+    按 **Insert** 鍵來開始編輯檔案。 建立新的一行，並插入下列文字。 根據前一個命令中醒目提示的多重路徑識別碼，編輯磁碟多重路徑識別碼。
 
-    **/dev/mapper/<Retention disks multipath id> /mnt/retention ext4 rw 0 0**
+    **/dev/mapper/\<Retention disks multipath id> /mnt/retention ext4 rw 0 0**
 
     按 **Esc** 鍵，然後輸入 **:wq** (寫入和結束)，以關閉編輯器視窗。
 
 ### <a name="install-the-master-target"></a>安裝主要目標
 
 > [!IMPORTANT]
-> 主目标服务器的版本应该低于或等于进程服务器和配置服务器的版本。 如果不符合此條件，重新保護會成功，但複寫會失敗。
+> 主要目標伺服器的版本必須等於或早於處理序伺服器和組態伺服器的版本。 如果不符合此條件，重新保護會成功，但複寫會失敗。
 
 
 > [!NOTE]
 > 在安裝主要目標伺服器之前，請確認虛擬機器上的 **/etc/hosts** 檔案包含會將本機主機名稱對應到所有網路介面卡相關 IP 位址的項目。
 
-1. 在組態伺服器上從 **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase** 複製複雜密碼。 然後執行下列命令，將其儲存在同個本機目錄中的 **passphrase.txt**：
+1. 執行下列命令來安裝主要目標。
+
+    ```
+    ./install -q -d /usr/local/ASR -r MT -v VmWare
+    ```
+
+2. 在組態伺服器上從 **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase** 複製複雜密碼。 然後執行下列命令，將其儲存在同個本機目錄中的 **passphrase.txt**：
 
     `echo <passphrase> >passphrase.txt`
 
     範例： 
 
-       `echo itUx70I47uxDuUVY >passphrase.txt`
+    `echo itUx70I47uxDuUVY >passphrase.txt`
     
 
-2. 記下設定伺服器的 IP 位址。 執行下列命令來安裝主要目標伺服器，並向組態伺服器註冊伺服器。
+3. 記下設定伺服器的 IP 位址。 執行下列命令，向設定伺服器註冊伺服器。
 
     ```
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
@@ -309,22 +317,16 @@ Azure Site Recovery 主要目標伺服器需要特定版本的 Ubuntu，因此�
 
 2. 選擇預設安裝位置，然後按 **Enter** 以繼續。
 
-    ![选择主目标的默认安装位置](./media/vmware-azure-install-linux-master-target/image17.png)
+    ![選擇主要目標的預設安裝位置](./media/vmware-azure-install-linux-master-target/image17.png)
 
 安裝完成之後，使用命令列來註冊組態伺服器。
 
 1. 記下組態伺服器的 IP 位址。 您在下一步需要用到它。
 
-2. 執行下列命令來安裝主要目標伺服器，並向組態伺服器註冊伺服器。
+2. 執行下列命令，向設定伺服器註冊伺服器。
 
     ```
-    ./install -q -d /usr/local/ASR -r MT -v VmWare
-    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
-    ```
-    範例： 
-
-    ```
-    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
+    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh
     ```
 
      等候指令碼完成。 如果主要目標註冊成功，主要目標會列在入口網站的 [Site Recovery 基礎結構] 頁面上。
@@ -347,11 +349,15 @@ Azure Site Recovery 主要目標伺服器需要特定版本的 Ubuntu，因此�
 
 * 請確定您未在任何管理元件 (例如主要目標) 上啟動 Storage vMotion。 如果在成功重新保護之後主要目標有移動，則無法中斷連結虛擬機器磁碟 (VMDK)。 在此情況下，容錯回復會失敗。
 
-* 主目标不应在虚拟机上留下任何快照。 如果有快照集，容錯回復會失敗。
+* 主要目標在虛擬機器上不應該有任何快照集。 如果有快照集，容錯回復會失敗。
 
-* 由於一些自訂 NIC 組態，因而會在啟動期間停用網路介面，並導致主要目標代理程式無法初始化。 請確定已正確設定下列屬性。 在乙太網路卡檔案的 /etc/sysconfig/network-scripts/ifcfg-eth* 中檢查這些屬性。
-    * BOOTPROTO=dhcp
-    * ONBOOT=yes
+* 由於一些自訂 NIC 組態，因而會在啟動期間停用網路介面，並導致主要目標代理程式無法初始化。 請確定已正確設定下列屬性。 在乙太網路卡檔案的/etc/network/interfaces. 中檢查這些屬性
+    * auto eth0
+    * iface eth0 inet dhcp <br>
+
+    使用下列命令重新開機網路服務： <br>
+
+`sudo systemctl restart networking`
 
 
 ## <a name="next-steps"></a>後續步驟

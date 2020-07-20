@@ -1,29 +1,21 @@
 ---
-title: 建立使用入口網站的 Windows 共用的 Azure 虛擬機器映像 |Microsoft Docs
-description: 了解如何使用 Azure 入口網站來建立及共用虛擬機器映像。
-services: virtual-machines-windows
-documentationcenter: virtual-machines
+title: 使用入口網站建立 Azure 共用映射資源庫
+description: 瞭解如何使用 Azure 入口網站來建立及共用虛擬機器映射。
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.subservice: imaging
+ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 05/06/2019
+ms.date: 11/06/2019
 ms.author: cynthn
-ms.custom: ''
-ms.openlocfilehash: d46c545db9e1950988b49cdb577d074b6d04380c
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: e484cccb2dc15266fb7889c335a0acc981053e5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65236589"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82792134"
 ---
-# <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>建立使用 Azure 入口網站共用映像庫
+# <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>使用入口網站建立 Azure 共用映射資源庫
 
 [共用映像資源庫](shared-image-galleries.md)可簡化跨組織共用自訂映像。 自訂映像類似 Marketplace 映像，但您要自行建立它們。 自訂映像可用於啟動部署工作，例如，預先載入應用程式、應用程式設定和其他 OS 設定。 
 
@@ -33,47 +25,40 @@ ms.locfileid: "65236589"
 
 共用映像庫具有多個資源類型。 我們將在這篇文章中使用或建置這些資源類型：
 
-| 資源 | 說明|
-|----------|------------|
-| **受控映像** | 這是基本映像，既可單獨使用，也可用來在映像庫中建立個**映像版本**。 受控映像是從一般化 VM 建立的。 受控映像是一種特殊的 VHD 類型，可用來產生多個 VM，現在可以用來建立共用映像版本。 |
-| **映像庫** | 和 Azure Marketplace 一樣，**映像庫**是用於管理和共用映像的存放庫，但您可以控制哪些使用者能夠存取。 |
-| **映像定義** | 映像會在資源庫內定義，並帶有映像資訊以及在內部使用時所需滿足的需求。 這包括映像是 Windows 還是 Linux、版本資訊以及最小和最大的記憶體需求。 這是映像類型的定義。 |
-| **映像版本** | **映像版本**是在使用資源庫時用來建立 VM 的項目。 您可以視需要為環境準備多個映像版本。 和受控映像一樣，當您使用**映像版本**來建立 VM 時，系統會使用映像版本來建立 VM 的新磁碟。 映像版本可以使用多次。 |
 
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
-## <a name="before-you-begin"></a>開始之前
+<br>
 
-若要完成本文中的範例，您必須具有現有的受控映像。 您可以遵循[教學課程：使用 Azure PowerShell 建立 Azure VM 的自訂映像](tutorial-custom-images.md)來建立一個 (如有需要)。 如果受控映像會包含資料磁碟，資料磁碟大小不得超過 1 TB。
 
 逐步完成本文之後，請視需要取代資源群組和 VM 名稱。
 
 
 [!INCLUDE [virtual-machines-common-shared-images-portal](../../../includes/virtual-machines-common-shared-images-portal.md)]
  
-## <a name="create-vms-from-an-image"></a>從映像建立 VM
+## <a name="create-vms"></a>建立 VM
 
-映像版本完成之後，您可以建立一或多個新的 VM。 
+現在您可以建立一或多個新的 Vm。 這個範例會在*美國東部*資料中心的*myResourceGroup*中建立名為*myVM*的 VM。
 
-此範例在*美國東部*資料中心的 *myResourceGroup* 中建立名為 *myVMfromImage* 的 VM。
-
-1. 在您的映像版本頁面上，選取**建立 VM**從頁面頂端的功能表。
-1. 針對**資源群組**，選取**新建**和型別*myResourceGroup*的名稱。
-1. 在 **虛擬機器名稱**，型別*myVM*。
-1. 針對**地區**，選取*美國東部*。
-1. 針對**可用性選項**，保留預設值是*沒有所需的基礎結構備援性*。
-1. 值**映像**應該自動填入，如果您從映像版本的頁面開始。
-1. 針對**大小**，從可用大小清單中選擇的 VM 大小，然後按一下 選取。
-1. 在 [系統管理員帳戶] 底下提供使用者名稱 (例如 azureuser) 和密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。
-1. 如果您想要允許遠端存取 VM，底下**公用輸入連接埠**，選擇**允許選取的連接埠**，然後選取**RDP (3389)** 從下拉式清單。 如果您不想允許遠端存取 VM，請勿**無**選取**公用輸入連接埠**。
-1. 當您完成時，請選取**檢閱 + 建立**在頁面底部的按鈕。
-1. VM 通過驗證之後，請選取**建立**底部的頁面以開始部署。
+1. 移至您的映射定義。 您可以使用資源篩選器來顯示所有可用的映射定義。
+1. 在映射定義的頁面上，從頁面頂端的功能表中選取 [**建立 VM** ]。
+1. 針對 [**資源群組**]，選取 [**建立新**的]，然後在 [名稱] 中輸入*myResourceGroup* 。
+1. 在 [**虛擬機器名稱**] 中，輸入*myVM*。
+1. 在 [區域]**** 中，選取 [美國東部]**。
+1. 針對 [**可用性選項**]，保留 [*不需要基礎結構冗余*] 的預設值。
+1. **Image** `latest` 如果您從影像定義的頁面啟動，影像的值會自動填入映射版本。
+1. 針對 [**大小**]，從可用的大小清單中選擇 VM 大小，然後選擇 [**選取**]。
+1. 在 [**系統管理員帳戶**] 下，如果映射已一般化，您需要提供使用者名稱，例如*azureuser*和密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](faq.md#what-are-the-password-requirements-when-creating-a-vm)。 如果您的映射是特製化的，[使用者名稱] 和 [密碼] 欄位會呈現灰色，因為會使用來源 VM 的使用者名稱和密碼。
+1. 如果您想要允許遠端存取 VM，請在 [**公用輸入埠**] 底下，選擇 [**允許選取的埠**]，然後從下拉式選單中選取 [ **RDP （3389）** ]。 如果您不想要允許對 VM 的遠端存取，請將 [**公用輸入埠**] 選取為 [**無**]。
+1. 當您完成時，請選取頁面底部的 [**審查 + 建立**] 按鈕。
+1. 在 VM 通過驗證之後，請選取頁面底部的 [**建立**] 以開始部署。
 
 
 ## <a name="clean-up-resources"></a>清除資源
 
-若不再需要，您可以刪除資源群組、虛擬機器和所有相關資源。 若要這樣做，請選取虛擬機器的資源群組，選取 [刪除]，然後確認要刪除的資源群組名稱。
+若不再需要，您可以刪除資源群組、虛擬機器和所有相關資源。 若要這樣做，請選取虛擬機器的資源群組，選取 [刪除]  ，然後確認要刪除的資源群組名稱。
 
-如果您想要刪除個別的資源，您需要以相反順序加以刪除。 例如，若要刪除的映像定義，您需要刪除所有從該映像建立的映像版本。
+如果您想要刪除個別的資源，您必須以相反順序刪除它們。 例如，若要刪除映射定義，您必須刪除所有從該映射建立的映射版本。
 
 ## <a name="next-steps"></a>後續步驟
 

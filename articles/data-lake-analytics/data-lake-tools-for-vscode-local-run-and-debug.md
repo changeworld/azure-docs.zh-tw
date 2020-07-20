@@ -1,5 +1,5 @@
 ---
-title: 以 Azure Data Lake Tools for Visual Studio Code 本機執行 U-SQL 及偵錯
+title: Debug U-SQL 作業-Azure Data Lake Tools for Visual Studio 程式碼
 description: 了解如何使用 Azure Data Lake Tools for Visual Studio Code 在本機執行 U-SQL 作業並對其進行偵錯。
 services: data-lake-analytics
 ms.service: data-lake-analytics
@@ -7,14 +7,14 @@ author: jejiang
 ms.author: jejiang
 ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/14/2017
-ms.openlocfilehash: 765bcaab0f91e097be827bfa6e8f505ef5330d57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 141be5c2747ae5d0a812b1301b6af7203fe24351
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60814399"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110601"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>以 Visual Studio Code 在本機執行 U-SQL 及偵錯
 本文說明如何在本機開發電腦上執行 U-SQL 作業，以便加速早期的編碼階段，或以 Visual Studio Code 在本機對程式碼進行偵錯。 如需如何使用 Azure Data Lake Tools for Visual Studio Code 的指示，請參閱[使用 Azure Data Lake Tools for Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)。
@@ -23,11 +23,11 @@ ms.locfileid: "60814399"
 
 ## <a name="set-up-the-u-sql-local-run-environment"></a>設定 U-SQL 本機執行環境
 
-1. 選取 Ctrl + Shift + P 以開啟 命令選擇區中，然後輸入**ADL:下載本機執行套件**來下載套件。  
+1. 按 Ctrl+Shift+P 開啟命令選擇區，然後輸入 **ADL: Download Local Run Package** 下載套件。  
 
    ![下載 ADL LocalRun 相依性套件](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/downloadtheadllocalrunpackage.png)
 
-2. 從 [輸出] 窗格中顯示的路徑找出相依性套件，然後安裝 BuildTools 和 Win10SDK 10240。 路徑範例如下：  
+2. 從 [輸出]**** 窗格中顯示的路徑找出相依性套件，然後安裝 BuildTools 和 Win10SDK 10240。 路徑範例如下：  
 `C:\Users\xxx\AppData\Roaming\LocalRunDependency` 
 
    ![找出相依性套件](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/LocateDependencyPath.png)
@@ -45,19 +45,19 @@ ms.locfileid: "60814399"
 
 
 ## <a name="start-the-local-run-service-and-submit-the-u-sql-job-to-a-local-account"></a>啟動本機執行服務並將 U-SQL 作業提交給本機帳戶 
-針對第一次的使用者，使用 **ADL:下載本機執行套件** 下載本機執行的套件，如果您還沒 [設定 U-SQL 本機執行環境](#set-up-the-u-sql-local-run-environment)。
+若是第一次使用者，請使用**ADL：下載本機執行套件**下載本機執行套件（如果您尚未 [設定 U-SQL 本機執行環境](#set-up-the-u-sql-local-run-environment)）。
 
-1. 選取 Ctrl + Shift + P 以開啟 命令選擇區中，然後輸入**ADL:啟動本機執行的服務**。   
-2. 選取 [接受] 來首次接受 Microsoft 軟體授權條款。 
+1. 選取 Ctrl+Shift+P 來開啟命令選擇區，然後輸入 **ADL: Start Local Run Service**。   
+2. 選取 [接受]**** 來首次接受 Microsoft 軟體授權條款。 
 
    ![接受 Microsoft 軟體授權條款](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/AcceptEULA.png)   
-3. 隨即會開啟 CMD 主控台。 如果您是初次使用者，就必須輸入 **3**，然後找出用於資料輸入和輸出的本機資料夾路徑。 其他選項則可以使用預設值。 
+3. 隨即會開啟 CMD 主控台。 如果您是初次使用者，就必須輸入 **3**，然後找出用於資料輸入和輸出的本機資料夾路徑。 如果您不成功定義具有反斜線的路徑，請嘗試使用正斜線。 其他選項則可以使用預設值。
 
    ![Data Lake Tools for Visual Studio Code 本機執行 CMD](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-cmd.png)
-4. 選取 Ctrl + Shift + P 以開啟 命令選擇區中，輸入**ADL:提交作業**，然後選取**本機**將作業提交至您的本機帳戶。
+4. 選取 Ctrl+Shift+P 來開啟命令選擇區，輸入 **ADL: Submit Job**，然後選取 [Local] \(本機\)**** 以將作業提交給您的本機帳戶。
 
    ![Data Lake Tools for Visual Studio Code 選取本機](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-select-local.png)
-5. 在提交作業後，您就可以檢視提交詳細資料。 若要檢視提交詳細資料，選取 [輸出] 視窗中的 [jobUrl]。 您也可以從 CMD 主控台檢視作業提交狀態。 如果您想要知道更多的作業詳細資料，請在 CMD 主控台中輸入 **7**。
+5. 在提交作業後，您就可以檢視提交詳細資料。 若要查看提交詳細資料，請在 [**輸出**] 視窗中選取 [ **[[joburl** ]。 您也可以從 CMD 主控台檢視作業提交狀態。 如果您想要知道更多的作業詳細資料，請在 CMD 主控台中輸入 **7**。
 
    ![Data Lake Tools for Visual Studio Code 本機執行輸出](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-result.png)
    ![Data Lake Tools for Visual Studio Code 本機執行 CMD 狀態](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-localrun-cmd-status.png) 
@@ -66,19 +66,19 @@ ms.locfileid: "60814399"
 ## <a name="start-a-local-debug-for-the-u-sql-job"></a>開始 U-SQL 作業的本機偵錯  
 初次使用者：
 
-1. 使用 **ADL:下載本機執行套件** 下載本機執行的套件，如果您還沒 [設定 U-SQL 本機執行環境](#set-up-the-u-sql-local-run-environment)。
-2. 安裝.NET Core SDK 2.0 建議在訊息方塊中，如果未安裝。
+1. 如果您尚未 [設定 U-SQL 本機執行環境](#set-up-the-u-sql-local-run-environment)，請使用**ADL：下載本機執行套件**來下載本機執行套件。
+2. 如訊息方塊中的建議安裝 .NET Core SDK 2.0 (如果尚未安裝)。
  
   ![提醒安裝 Dotnet](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/remind-install-dotnet.png)
-3. 安裝C#for Visual Studio Code 的建議在訊息方塊，如果未安裝。 按一下  **安裝** 才能繼續，然後再重新啟動 VSCode。
+3. 如訊息方塊中的建議安裝 C# for Visual Studio Code (如果尚未安裝)。按一下 [安裝]**** 繼續作業，然後重新啟動 VSCode。
 
     ![提醒安裝 C#](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/install-csharp.png)
 
 遵循下列步驟執行本機偵錯：
   
-1. 選取 Ctrl + Shift + P 以開啟 命令選擇區中，然後輸入**ADL:啟動本機執行的服務**。 隨即會開啟 CMD 主控台。 請確定您已設定 **DataRoot**。
+1. 選取 Ctrl+Shift+P 來開啟命令選擇區，然後輸入 **ADL: Start Local Run Service**。 隨即會開啟 CMD 主控台。 請確定您已設定 **DataRoot**。
 2. 在您的 C# 程式碼後置中設定中斷點。
-3. 回到指令碼編輯器，以滑鼠右鍵按一下並選取  **ADL:本機偵錯**。
+3. 回到指令碼編輯器，以滑鼠右鍵按一下並選取 **ADL: Local Debug**。
     
    ![Data Lake Tools for Visual Studio Code 本機偵錯結果](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-debug-result.png)
 

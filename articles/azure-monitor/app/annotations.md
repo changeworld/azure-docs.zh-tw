@@ -1,108 +1,116 @@
 ---
 title: Application Insights 的發行註解 | Microsoft Docs
 description: 在 Application Insights 中對計量瀏覽器新增部署或建置標記。
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 23173e33-d4f2-4528-a730-913a8fd5f02e
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 11/08/2018
-ms.author: mbullwin
-ms.openlocfilehash: 652591fc4539e6f19c0606c1502609a823327f2b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 07/01/2019
+ms.openlocfilehash: 0ad773ca6a7102ac718d43dfbbf6a4f834e681a0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60794715"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81010699"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights 中度量圖表上的註解
 
-[計量瀏覽器](../../azure-monitor/app/metrics-explorer.md)圖表上的註解會顯示您在哪裡部署了新的組建，或是其他重要事件。 註解可讓您輕鬆查看變更是否對應用程式的效能有任何影響。 [Azure DevOps Services 建置系統](https://docs.microsoft.com/azure/devops/pipelines/tasks/)可以自動建立這些註解。 您也可以從 PowerShell 建立註解來標記您想要的任何事件。
+批註會顯示您部署新組建或其他重要事件的位置。 批註可讓您輕鬆查看您的變更是否對應用程式效能有任何影響。 [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/tasks/)組建系統可以自動建立這些元件。 您也可以從 PowerShell 建立註解來標記您想要的任何事件。
 
-> [!NOTE]
-> 本文反映已被取代的**傳統計量體驗**。 註解目前僅適用於傳統經驗和**[活頁簿](../../azure-monitor/app/usage-workbooks.md)** 中。 若要深入了解目前的計量體驗，您可以查閱[這篇文章](../../azure-monitor/platform/metrics-charts.md)。
+## <a name="release-annotations-with-azure-pipelines-build"></a>Azure Pipelines 組建的發行批註
 
-![註解範例，其會顯示與伺服器回應時間的相互關聯](./media/annotations/00.png)
-
-## <a name="release-annotations-with-azure-devops-services-build"></a>與 Azure DevOps Services 組建搭配的發行註解
-
-發行註解是 Azure DevOps Services 的雲端式 Azure Pipelines 服務的功能。 
+發行批註是 Azure DevOps 的雲端式 Azure Pipelines 服務的一項功能。
 
 ### <a name="install-the-annotations-extension-one-time"></a>安裝註解擴充功能 (一次)
-若要能夠建立發行註解，必須安裝 Visual Studio Marketplace 中的許多可用 Azure DevOps Services 擴充功能之一。
 
-1. 登入您的 [Azure DevOps Services](https://visualstudio.microsoft.com/vso/) 專案。
-2. 在 Visual Studio Marketplace 中[取得發行註解擴充功能](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)，並將其新增至您的 Azure DevOps Services 組織。
+若要能夠建立發行批註，您必須安裝 Visual Studio Marketplace 中提供的許多 Azure DevOps 擴充功能之一。
 
-![在 Azure DevOps Services 網頁右上方開啟 Marketplace。 選取 Azure DevOps Services，然後在 Azure Pipelines 下方選擇 [查看更多]。](./media/annotations/10.png)
-
-您只需要為 Azure DevOps Services 組織執行一次此動作。 現在，您即可為組織中的任何專案設定發行註解。 
+1. 登入您的[Azure DevOps](https://azure.microsoft.com/services/devops/)專案。
+   
+1. 在 [Visual Studio Marketplace[版本注釋延伸](https://marketplace.visualstudio.com/items/ms-appinsights.appinsightsreleaseannotations)模組] 頁面上，選取您的 Azure DevOps 組織，然後選取 [**安裝**]，將擴充功能新增至您的 Azure DevOps 組織。
+   
+   ![選取 Azure DevOps 組織，然後選取 [安裝]。](./media/annotations/1-install.png)
+   
+您只需要為您的 Azure DevOps 組織安裝此延伸模組一次。 您現在可以為組織中的任何專案設定發行批註。
 
 ### <a name="configure-release-annotations"></a>設定發行註解
 
-您必須為每個 Azure DevOps Services 發行範本取得個別的 API 金鑰。
+為每個 Azure Pipelines 版本範本建立個別的 API 金鑰。
 
-1. 登入 [Microsoft Azure 入口網站](https://portal.azure.com)，然後開啟監視您應用程式的 Application Insights 資源。 (或如果您尚未建立該資源，請[立即建立一個](../../azure-monitor/app/app-insights-overview.md))。
-2. 開啟 [API 存取]、[Application Insights 識別碼]。
+1. 登入[Azure 入口網站](https://portal.azure.com)，然後開啟監視您應用程式的 Application Insights 資源。 或者，如果您沒有，請[建立新的 Application Insights 資源](../../azure-monitor/app/app-insights-overview.md)。
    
-    ![在 portal.azure.com 中，開啟您的 Application Insights 資源然後選擇 [設定]。 開啟 [API 存取]。 複製應用程式識別碼](./media/annotations/20.png)
+1. 開啟 [ **API 存取**] 索引標籤，並複製**Application Insights 識別碼**。
+   
+   ![在 [API 存取] 底下，複製 [應用程式識別碼]。](./media/annotations/2-app-id.png)
 
-4. 在另一個瀏覽器視窗中，開啟 (或建立) 可從 Azure DevOps Services 管理部署的發行範本。 
+1. 在另一個瀏覽器視窗中，開啟或建立管理 Azure Pipelines 部署的發行範本。
    
-    新增工作，然後從功能表中選取 Application Insights 發行註解工作。
+1. 選取 [**新增**工作]，然後從功能表中選取 [ **Application Insights 發行注釋**] 工作。
    
-    將您從 [API 存取] 刀鋒視窗複製的應用程式識別碼  貼上。
-   
-    ![在 Azure DevOps Services 中開啟 [發行]，選取一個發行管線，然後選擇 [編輯]。 按一下 [新增工作] 然後選取 [Application Insights 發行註解]。 貼上 Application Insights 識別碼。](./media/annotations/30.png)
-4. 將 [APIKey] 欄位設定為變數 `$(ApiKey)`。
+   ![選取 [新增工作]，然後選取 [Application Insights 版本注釋]。](./media/annotations/3-add-task.png)
 
-5. 回到 Azure 視窗，建立新的「API 金鑰」並複製它。
+   > [!NOTE]
+   > 發行批註工作目前僅支援以 Windows 為基礎的代理程式;它不會在 Linux、macOS 或其他類型的代理程式上執行。
    
-    ![在 [Azure] 視窗的 [API 存取] 刀鋒視窗中，按一下 [建立 API 金鑰]。 提供註解，檢查 [寫入註解]，然後按一下 [產生金鑰]。 複製新的金鑰。](./media/annotations/40.png)
+1. 在 [**應用程式識別碼**] 底下，貼上您從 [ **API 存取**] 索引標籤複製的 Application Insights 識別碼。
+   
+   ![貼上 Application Insights 識別碼](./media/annotations/4-paste-app-id.png)
+   
+1. 回到 [Application Insights **API 存取**] 視窗中，選取 [**建立 API 金鑰**]。 
+   
+   ![在 [API 存取] 索引標籤中，選取 [建立 API 金鑰]。](./media/annotations/5-create-api-key.png)
+   
+1. 在 [**建立 API 金鑰**] 視窗中，輸入描述，選取 [**寫入注釋**]，然後選取 [**產生金鑰**]。 複製新的金鑰。
+   
+   ![在 [建立 API 金鑰] 視窗中，輸入描述，選取 [寫入注釋]，然後選取 [產生金鑰]。](./media/annotations/6-create-api-key.png)
+   
+1. 在 [發行範本] 視窗的 [**變數**] 索引標籤上 **，選取 [新增]** 以建立新 API 金鑰的變數定義。
 
-6. 開啟發行範本的 [設定] 索引標籤。
+1. 在 [**名稱**] 下輸入 `ApiKey` ，然後在 [**值**] 下，貼上您從 [ **api 存取**] 索引標籤複製的 api 金鑰。
    
-    建立 `ApiKey`的變數定義。
+   ![在 [Azure DevOps 變數] 索引標籤中，選取 [新增]，將變數命名為 ApiKey，並將 API 金鑰貼入 [值] 底下。](./media/annotations/7-paste-api-key.png)
    
-    將您的 API 金鑰貼上至 ApiKey 變數定義。
-   
-    ![在 [Azure DevOps Services] 視窗中選取 [組態] 索引標籤，然後按一下 [新增變數]。 設定 ApiKey 的名稱，並在 [值] 中，貼上剛才產生的金鑰，然後按一下鎖定圖示。](./media/annotations/50.png)
-7. 最後，**儲存**發行管線。
-
+1. 在主要發行範本視窗中選取 [**儲存**]，以儲存範本。
 
 ## <a name="view-annotations"></a>檢視註解
-現在，每當您使用發行範本來部署新的發行，就會將註解傳送至 Application Insights。 註解將會出現在計量瀏覽器的圖表上。
 
-按一下任一註解標記可開啟關於發行的詳細資料，包括要求者、原始檔控制分支、發行管線、環境等。
 
-![按一下任一版本註解標記。](./media/annotations/60.png)
+   > [!NOTE]
+   > 版本注釋目前無法在的 [計量] 窗格中使用 Application Insights
+
+現在，每當您使用發行範本來部署新的版本時，就會將批註傳送至 Application Insights。 批註可以在下列位置中看到：
+
+[使用方式] 窗格，您也可以手動建立發行批註：
+
+![橫條圖的螢幕擷取畫面，其中顯示一段時間內的使用者造訪次數。 發行批註會顯示為圖表上方的綠色核取記號，表示發生發行的時間點](./media/annotations/usage-pane.png)
+
+在任何以記錄為基礎的活頁簿查詢中，視覺效果會沿著 X 軸顯示時間。
+
+![[活頁簿] 窗格的螢幕擷取畫面，其中包含顯示批註的時間序列記錄式查詢](./media/annotations/workbooks-annotations.png)
+
+若要啟用活頁簿中的注釋，請移至 [**高級設定**]，然後選取 [**顯示批註**]
+
+![[高級設定] 功能表的螢幕擷取畫面，其中顯示醒目提示的批註，並在設定旁邊加上核取記號，以啟用它。](./media/annotations/workbook-show-annotations.png)
+
+選取任何註解標記以開啟有關發行的詳細資料，包括要求者、原始檔控制分支、發行管線和環境。
 
 ## <a name="create-custom-annotations-from-powershell"></a>從 PowerShell 建立自訂註解
-您也可以從任何您慣用的程序建立註解 (不使用 Azure DevOps Services)。 
+您可以使用來自 GitHub 的[CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) PowerShell 腳本，從任何您喜歡的進程建立批註，而不需要使用 Azure DevOps。 
 
+1. 建立[CreateReleaseAnnotation.ps1](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)的本機複本。
+   
+1. 使用上述程式中的步驟來取得您的 Application Insights 識別碼，並從您的 Application Insights **Api 存取**索引標籤建立 API 金鑰。
+   
+1. 使用下列程式碼呼叫 PowerShell 腳本，並以您的值取代以角括弧括住的預留位置。 `-releaseProperties`是選擇性的。 
+   
+   ```powershell
+   
+        .\CreateReleaseAnnotation.ps1 `
+         -applicationId "<applicationId>" `
+         -apiKey "<apiKey>" `
+         -releaseName "<releaseName>" `
+         -releaseProperties @{
+             "ReleaseDescription"="<a description>";
+             "TriggerBy"="<Your name>" }
+   ```
 
-1. 建立一個[來自 GitHub 的 Powershell 指令碼](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)的本機複本。
-
-2. 從 [API 存取] 刀鋒視窗中取得「應用程式識別碼」並建立 API 金鑰。
-
-3. 依下列方式呼叫指令碼：
-
-```PS
-
-     .\CreateReleaseAnnotation.ps1 `
-      -applicationId "<applicationId>" `
-      -apiKey "<apiKey>" `
-      -releaseName "<myReleaseName>" `
-      -releaseProperties @{
-          "ReleaseDescription"="a description";
-          "TriggerBy"="My Name" }
-```
-
-修改指令碼很簡單，例如，修改成建立過去的註解。
+您可以修改腳本，例如建立過去的注釋。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,27 +1,23 @@
 ---
-title: 暫時的 OS 磁碟的 Azure Windows 虛擬機器 |Microsoft Docs
-description: 進一步了解暫時的 OS 磁碟的 Azure Vm。
-services: virtual-machines-windows
+title: Azure Windows 虛擬機器的暫時 OS 磁片
+description: 深入瞭解 Azure Vm 的暫時 OS 磁片。
 author: cynthn
-manager: jeconnoc
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
-ms.date: 05/02/2019
+ms.topic: how-to
+ms.date: 07/01/2019
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 1e5d37b860a5809806f11df2d13cffc113402ac2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.openlocfilehash: fb9a77a63351e87e20b9e92e09133aa46db80880
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65159191"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81869703"
 ---
-# <a name="preview-ephemeral-os-disks-for-azure-vms"></a>預覽：暫時的 Azure Vm 的 OS 磁碟
+# <a name="ephemeral-os-disks-for-azure-vms"></a>Azure Vm 的暫時 OS 磁片
 
 [!INCLUDE [virtual-machines-common-ephemeral](../../../includes/virtual-machines-common-ephemeral.md)]
  
 ## <a name="next-steps"></a>後續步驟
-您可以使用暫時性 OS 磁碟建立 VM [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)。
+您可以使用[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)來建立具有暫時 OS 磁片的 VM。
 

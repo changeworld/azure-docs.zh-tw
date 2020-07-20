@@ -1,22 +1,21 @@
 ---
-title: Azure Data Lake Storage Gen2 效能微調指導方針 | Microsoft Docs
+title: 優化效能的 Azure Data Lake Storage Gen2 |Microsoft Docs
 description: Azure Data Lake Storage Gen2 效能微調指導方針
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
-ms.date: 12/06/2018
+ms.topic: how-to
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 6f831dd0cde4641eb48f3c23e010f8c5e8aa3fa2
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: bf22ce87ed3d535a7c1bd03a8d7f747bee3ab13a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939367"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106385"
 ---
-# <a name="tuning-azure-data-lake-storage-gen2-for-performance"></a>調整 Azure Data Lake Storage Gen2 的效能
+# <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>優化效能 Azure Data Lake Storage Gen2
 
 Azure Data Lake Storage Gen2 支援 I/O 密集分析和資料移動的高輸送量。  在 Data Lake Storage Gen2 中，使用所有可用的輸送量 (每秒可以讀取或寫入的資料量) 是取得最佳效能的重要部分。  這可以藉由盡可能平行執行讀取和寫入來達成。
 
@@ -66,13 +65,13 @@ Data Lake Storage Gen2 可以調整以提供所有分析情節的必要輸送量
 
 擷取時間序列資料的這些管線，通常會以檔案和資料夾結構命名非常嚴謹的方式來處理檔案。 以下是很常見的範例，依日期結構化資料：
 
-    \DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv
+*\DataSet\YYYY\MM\DD\ datafile_YYYY_MM_DD tsv*
 
 請注意，日期時間資訊會同時在資料夾和檔案名稱中顯示。
 
 對於日期和時間，以下是常見的模式
 
-    \DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv
+*\DataSet\YYYY\MM\DD\HH\mm\ datafile_YYYY_MM_DD_HH_mm tsv*
 
 同樣地，您對於資料夾和檔案組織的選擇，應該針對較大的檔案大小以及每個資料夾中合理的檔案數目進行最佳化。
 
@@ -81,7 +80,7 @@ Data Lake Storage Gen2 可以調整以提供所有分析情節的必要輸送量
 作業屬於下列三個類別之一：
 
 * **CPU 密集作業**  這些作業有很長的計算時間和最短的 I/O 時間。  範例包括機器學習和自然語言處理作業。  
-* **記憶體密集作業**  這些作業會使用大量記憶體。  範例包括 PageRank 和即時分析作業。  
+* **記憶體密集。**  這些作業會使用大量記憶體。  範例包括 PageRank 和即時分析作業。  
 * **I/O 密集作業**  這些作業花費大部分時間執行 I/O。  常見範例是僅執行讀取和寫入作業的複製作業。  其他範例包括讀取大量資料、執行某些資料轉換，然後將資料寫回存放區的資料準備作業。  
 
 下列指南僅適用於 I/O 密集作業。
@@ -94,7 +93,7 @@ Data Lake Storage Gen2 可以調整以提供所有分析情節的必要輸送量
 ### <a name="general-considerations-for-an-hdinsight-cluster"></a>HDInsight 叢集的一般考量
 
 * **HDInsight 版本** 為了達到最佳效能，請使用最新版本的 HDInsight。
-* **區域** 將 Data Lake Storage Gen2 帳戶放置在與 HDInsight 叢集相同的區域中。  
+* **各地.** 將 Data Lake Storage Gen2 帳戶放置在與 HDInsight 叢集相同的區域中。  
 
 HDInsight 叢集是由兩個前端節點和一些背景工作角色節點所組成。 每個背景工作角色節點提供特定數目的核心和記憶體，由 VM 類型決定。  執行作業時，YARN 是資源交涉程式，它會配置可用記憶體和核心來建立容器。  每個容器會執行完成作業所需的工作。  平行執行容器以快速地處理工作。 因此，盡可能平行執行最多容器可提升效能。
 
@@ -139,5 +138,5 @@ HDInsight 叢集內有三個層級可以微調，以增加容器數目並且使�
 | [MapReduce on HDInsight](data-lake-storage-performance-tuning-mapreduce.md) | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
 | [Storm on HDInsight](data-lake-storage-performance-tuning-storm.md)| <ul><li>背景工作處理序數目</li><li>Spout 執行程式執行個體數目</li><li>Bolt 執行程式執行個體數目 </li><li>Spout 工作數目</li><li>Bolt 工作數目</li></ul>|
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 * [Azure Data Lake Storage Gen2 概觀](data-lake-storage-introduction.md)

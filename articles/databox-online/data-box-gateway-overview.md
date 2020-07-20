@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 04/08/2019
+ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 2905cae6d5d97062d5a2fc1da41d55290d89fb4a
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: aa68b746ef5c22c97fcfdcca889bf71577c19479
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924510"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100761"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>什麼是 Azure Data Box Gateway？
 
@@ -49,7 +49,7 @@ Azure 資料箱閘道是可讓您順利將資料傳送到 Azure 的儲存體解�
 
 資料箱閘道具有下列功能：
 
-|功能 |說明  |
+|功能 |描述  |
 |---------|---------|
 |速度     | 完全自動化且高度最佳化的資料傳輸與頻寬。|
 |支援的通訊協定     | 支援用於資料擷取的標準 SMB 與 NFS 通訊協定。 <br> 如需支援版本的詳細資訊，請移至[資料箱閘道系統需求](data-box-gateway-system-requirements.md)。|
@@ -57,7 +57,6 @@ Azure 資料箱閘道是可讓您順利將資料傳送到 Azure 的儲存體解�
 |快速存取     | 裝置上的本機快取可讓您快速存取最近使用的檔案。|
 |離線上傳     | 中斷連線模式支援離線上傳案例。|
 |資料重新整理     | 能夠以來自雲端的最新檔案對本機檔案進行重新整理。|
-|加密    | BitLocker 支援本機加密資料，以及透過 *https* 對雲端的安全資料傳輸       |
 |災害復原     | 內建的網路災害復原        |
 
 
@@ -65,7 +64,7 @@ Azure 資料箱閘道是可讓您順利將資料傳送到 Azure 的儲存體解�
 
 資料箱閘道虛擬裝置具有下列規格：
 
-| 規格                                          | 說明              |
+| 規格                                          | 描述              |
 |---------------------------------------------------------|--------------------------|
 | 虛擬處理器 (核心)   | 最少 4 個 |
 | 記憶體  |最少 8 GB|
@@ -90,12 +89,7 @@ Azure 資料箱閘道是可讓您順利將資料傳送到 Azure 的儲存體解�
 
 Data Box Gateway 實體裝置、Azure 資源，以及您要將資料轉送至其中的目標儲存體帳戶，並不需要全都位於相同的區域。
 
-- **資源可用性** - 針對此版本，在下列支援公用雲端的區域中可取得 Data Box Gateway 資源：
-    - **美國** - 美國東部
-    - **歐盟** - 西歐
-    - **亞太地區** - 東南亞
-
-    Data Box Gateway 也可部署在 Azure Government 雲端中。 如需詳細資訊，請參閱[何謂 Azure Government？](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)。
+- **資源可用性** - 如需 Azure 資料箱閘道資源適用區域的完整清單，請移至[依區域提供的 Azure 產品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox)。 Data Box Gateway 也可部署在 Azure Government 雲端中。 如需詳細資訊，請參閱[何謂 Azure Government？](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)。
 
 - **目的地儲存體帳戶** - 儲存資料的儲存體帳戶在所有 Azure 區域都可用。
 

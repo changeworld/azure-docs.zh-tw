@@ -1,24 +1,26 @@
 ---
-title: 以程式設計方式監視 Azure Data Factory | Microsoft Docs
+title: 以程式設計方式監視 Azure Data Factory
 description: 了解如何使用不同的軟體開發套件 (SDK) 來監視資料處理站中的管線。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
-author: gauravmalhot
-ms.author: gamal
-manager: craigg
-ms.openlocfilehash: 035e12da67d28e8e3fb46ac295717dd6b579922c
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+author: djpmsft
+ms.author: daperlov
+manager: anandsub
+ms.custom: tracking-python
+ms.openlocfilehash: 983beb70ef1919dc3230d5daa6d29fb7209f69aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486608"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84561226"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>以程式設計方式監視 Azure Data Factory
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 本文說明如何使用不同的軟體開發套件 (SDK) 來監視資料處理站中的管線。 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -73,11 +75,13 @@ Data Factory 只會儲存管線執行資料 45 天。 當您以程式設計方�
 若要監視管線執行，請新增下列程式碼：
 
 ```python
-#Monitor the pipeline run
+# Monitor the pipeline run
 time.sleep(30)
-pipeline_run = adf_client.pipeline_runs.get(rg_name, df_name, run_response.run_id)
+pipeline_run = adf_client.pipeline_runs.get(
+    rg_name, df_name, run_response.run_id)
 print("\n\tPipeline run status: {}".format(pipeline_run.status))
-activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(rg_name, df_name, pipeline_run.run_id, datetime.now() - timedelta(1),  datetime.now() + timedelta(1)))
+activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(
+    rg_name, df_name, pipeline_run.run_id, datetime.now() - timedelta(1),  datetime.now() + timedelta(1)))
 print_activity_run_details(activity_runs_paged[0])
 ```
 

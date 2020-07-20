@@ -1,21 +1,20 @@
 ---
-title: 將來自 SQL Database 的參考資料用於 Azure 串流分析作業 (預覽)
+title: 在 Azure 串流分析作業中使用 SQL Database 參考資料
 description: 本文說明如何在 Azure 入口網站和 Visual Studio 中使用 SQL Database 作為 Azure 串流分析作業的參考資料輸入。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 3368be291770133cdfa10158f6e30540e17b8223
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e00ab059c68d7a3f2288d94894199773cab63ac5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61363314"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039291"
 ---
-# <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>將來自 SQL Database 的參考資料用於 Azure 串流分析作業 (預覽)
+# <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>將來自 SQL Database 的參考資料用於 Azure 串流分析作業
 
 Azure 串流分析支援以 Azure SQL Database 作為參考資料輸入的來源。 在 Azure 入口網站和 Visual Studio 中，您可以搭配串流分析工具使用 SQL Database 作為串流分析作業的參考資料。 本文會示範這兩種方法的執行方式。
 
@@ -41,7 +40,7 @@ Azure 串流分析支援以 Azure SQL Database 作為參考資料輸入的來源
 
    ![SQL Database 參考設定](./media/sql-reference-data/sql-input-config.png)
 
-3. 在 SQL 查詢編輯器中測試快照集查詢。 如需詳細資訊，請參閱[使用 Azure 入口網站的 SQL 查詢編輯器進行連線並查詢資料](../sql-database/sql-database-connect-query-portal.md)
+3. 在 SQL 查詢編輯器中測試快照集查詢。 如需詳細資訊，請參閱[使用 Azure 入口網站的 SQL 查詢編輯器進行連線並查詢資料](../azure-sql/database/connect-query-portal.md)
 
 ### <a name="specify-storage-account-in-job-config"></a>在作業設定中指定儲存體帳戶
 
@@ -59,20 +58,18 @@ Azure 串流分析支援以 Azure SQL Database 作為參考資料輸入的來源
 
 ### <a name="visual-studio-prerequisites"></a>Visual Studio 必要條件
 
-1. 如果您是使用 Visual Studio 2017，請更新至 15.8.2 或更新版本。 請注意，目前不支援 16.0 和更新版本。
-
-2. [安裝適用於 Visual Studio 的串流分析工具](stream-analytics-tools-for-visual-studio-install.md)。 支援下列其中一個 Visual Studio 版本：
+1. [安裝適用於 Visual Studio 的串流分析工具](stream-analytics-tools-for-visual-studio-install.md)。 支援下列其中一個 Visual Studio 版本：
 
    * Visual Studio 2015
-   * Visual Studio 2017
+   * Visual Studio 2019
 
-3. 熟悉[適用於 Visual Studio 的串流分析工具](stream-analytics-quick-create-vs.md)快速指南。
+2. 熟悉[適用於 Visual Studio 的串流分析工具](stream-analytics-quick-create-vs.md)快速指南。
 
-4. 建立儲存體帳戶。
+3. 建立儲存體帳戶。
 
 ### <a name="create-a-sql-database-table"></a>建立 SQL Database 資料表
 
-使用 SQL Server Management Studio 來建立資料表以儲存您的參考資料。 請參閱[使用 SSMS 設計您的第一個 Azure SQL 資料庫](../sql-database/sql-database-design-first-database.md)以取得詳細資料。
+使用 SQL Server Management Studio 來建立資料表以儲存您的參考資料。 如需詳細資訊，請參閱[使用 SSMS 設計您的第一個 Azure SQL Database](../azure-sql/database/design-first-database-tutorial.md) 。
 
 用於下列範例中的範例資料表是建立自下列陳述式：
 
@@ -112,13 +109,13 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
    ![Visual Studio 中的輸入程式碼後置](./media/sql-reference-data/once-or-periodically-codebehind.png)
 
-   如果您選擇 [搭配差異定期重新整理]，系統會產生兩個 SQL 程式碼後置檔案：**[Input Alias].snapshot.sql** 和 **[Input Alias].delta.sql**。
+   如果您選擇 [搭配差異定期重新整理]，系統會產生兩個 SQL 程式碼後置檔案： **[Input Alias].snapshot.sql** 和 **[Input Alias].delta.sql**。
 
    ![方案總管中的程式碼後置](./media/sql-reference-data/periodically-delta-codebehind.png)
 
 4. 在編輯器中開啟該 SQL 檔案，並寫入 SQL 查詢。
 
-5. 如果您是使用 Visual Studio 2017，且已安裝 SQL Server Data Tools，便可以按一下 [執行] 來測試查詢。 精靈視窗將會顯示以協助您連線到 SQL 資料庫，查詢結果將會出現在底部視窗中。
+5. 如果您是使用 Visual Studio 2019，且已安裝 SQL Server Data Tools，便可以按一下 [執行] 來測試查詢。 [Wizard] 視窗會快顯以協助您連接到 SQL Database，而查詢結果會出現在視窗的底部。
 
 ### <a name="specify-storage-account"></a>指定儲存體帳戶
 
@@ -132,9 +129,9 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 ## <a name="delta-query"></a>差異查詢
 
-使用差異查詢時，建議使用 [Azure SQL Database 中的時態表](../sql-database/sql-database-temporal-tables.md)。
+使用差異查詢時，建議使用 [Azure SQL Database 中的時態表](../azure-sql/temporal-tables.md)。
 
-1. Azure SQL Database 中建立的時態表。
+1. 在 Azure SQL Database 中建立時態表。
    
    ```SQL 
       CREATE TABLE DeviceTemporal 
@@ -150,7 +147,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
    ```
 2. 撰寫快照集查詢。 
 
-   使用 **\@snapshotTime**參數來指示 Stream Analytics 執行階段，以取得從 SQL database 時態表上的系統時間有效的參考資料集。 如果您不提供此參數，則可能會因時鐘誤差而取得不正確的基底參考資料集。 完整快照集查詢的範例如下所示：
+   您可以使用** \@ snapshotTime**參數來指示串流分析執行時間從 SQL Database 時態表取得參考資料集，這是在系統期間有效的。 如果您不提供此參數，則可能會因時鐘誤差而取得不正確的基底參考資料集。 完整快照集查詢的範例如下所示：
    ```SQL
       SELECT DeviceId, GroupDeviceId, [Description]
       FROM dbo.DeviceTemporal
@@ -159,21 +156,24 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
  
 2. 撰寫差異查詢。 
    
-   此查詢會擷取所有插入或刪除在 開始時間，SQL database 中的資料列 **\@deltaStartTime**，和結束時間 **\@deltaEndTime**。 差異查詢必須傳回和快照集查詢相同的資料行，以集 **_operation_** 資料行。 此資料行定義，如果資料列插入或刪除之間 **\@deltaStartTime**並 **\@deltaEndTime**。 如果記錄已插入，結果的資料列會被標示為 **1**；如果已刪除，則會被標示為 **2**。 
+   此查詢會抓取在開始時間、 ** \@ deltaStartTime**和結束時間** \@ deltaEndTime**內插入或刪除之 SQL Database 中的所有資料列。 差異查詢必須傳回和快照集查詢相同的資料行，以集 **_operation_** 資料行。 此資料行會定義資料列是否是在 **\@deltaStartTime** 和 **\@deltaEndTime** 之間插入或刪除。 如果記錄已插入，結果的資料列會被標示為 **1**；如果已刪除，則會被標示為 **2**。 查詢也必須新增來自 SQL Server 端的**浮水印**，以確保系統能適當地擷取差異期間中的所有更新。 在沒有**浮水印**的情況下使用差異查詢，可能會導致不正確的參考資料集。  
 
    針對已更新的記錄，時態表會透過擷取插入和刪除作業來進行記錄。 串流分析執行階段接著便會將差異查詢的結果套用到先前的快照集，以將參考資料保持為最新狀態。 差異查詢的範例如下所示：
 
    ```SQL
-      SELECT DeviceId, GroupDeviceId, Description, 1 as _operation_
+      SELECT DeviceId, GroupDeviceId, Description, ValidFrom as _watermark_, 1 as _operation_
       FROM dbo.DeviceTemporal
       WHERE ValidFrom BETWEEN @deltaStartTime AND @deltaEndTime   -- records inserted
       UNION
-      SELECT DeviceId, GroupDeviceId, Description, 2 as _operation_
+      SELECT DeviceId, GroupDeviceId, Description, ValidTo as _watermark_, 2 as _operation_
       FROM dbo.DeviceHistory   -- table we created in step 1
       WHERE ValidTo BETWEEN @deltaStartTime AND @deltaEndTime     -- record deleted
    ```
  
    請注意，除了差異查詢之外，串流分析執行階段可能會定期執行快照集查詢以儲存檢查點。
+
+## <a name="test-your-query"></a>測試查詢
+   請務必確認您的查詢會傳回串流分析作業將作為參考資料使用的預期資料集。 若要測試查詢，請移至入口網站上 [工作拓撲] 區段底下的 [輸入]。 您接著可以選取您 SQL Database 參考輸入上的 [範例資料]。 在範例可供使用之後，您便可以下載該檔案，並檢查傳回的資料是否與預期一致。 如果您想要將開發和測試反覆項目最佳化，建議您使用[適用於 Visual Studio 的串流分析工具](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install) \(部分機器翻譯\)。 您也可以使用您偏好的任何其他工具，來先確認查詢能從 Azure SQL Database 傳回正確的結果，再將其用於您的串流分析作業。 
 
 ## <a name="faqs"></a>常見問題集
 
@@ -183,20 +183,16 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 **如何確認已從 SQL DB 查詢資料快照集，並已將它用於 Azure 串流分析作業？**
 
-有兩個由邏輯 （在計量的 Azure 入口網站） 的名稱可用來監視 SQL 資料庫的參考資料輸入的健全狀況篩選的計量。
+有兩個依邏輯名稱篩選的計量（在 [計量 Azure 入口網站] 底下），您可以用來監視 SQL Database 參考資料輸入的健全狀況。
 
-   * InputEvents：此計量會測量從 SQL 資料庫參考資料集載入的記錄數目。
+   * InputEvents：此計量會測量從 SQL Database 參考資料集載入的記錄數目。
    * InputEventBytes：此計量會測量載入串流分析作業之記憶體的參考資料快照集大小。 
 
-結合這兩個計量，便可以推斷作業是否正在查詢 SQL 資料庫以擷取參考資料集，並將它載入記憶體。
+這兩個度量的組合可以用來推斷工作是否正在查詢 SQL Database 以提取參考資料集，然後將它載入記憶體。
 
 **我是否需要特別類型的 Azure SQL Database？**
 
 Azure 串流分析可搭配任何類型的 Azure SQL Database 運作。 不過，請務必了解針對參考資料輸入所設定的重新整理頻率，可能會影響查詢負載。 若要使用差異查詢選項，建議使用 Azure SQL Database 中的時態表。
-
-**是否可以從 SQL Database 參考資料輸入取得輸入範例？**
-
-此功能無法使用。
 
 **為何 Azure 串流分析會將快照集儲存在 Azure 儲存體帳戶？**
 

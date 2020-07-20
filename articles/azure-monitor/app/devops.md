@@ -1,23 +1,13 @@
 ---
-title: Web 應用程式效能監視 - Azure Application Insights | Microsoft Docs
+title: Web 應用程式效能監視-Azure 應用程式深入資訊
 description: Application Insights 如何融入 DevOps 循環
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 479522a9-ff5c-471e-a405-b8fa221aedb3
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/21/2018
-ms.author: mbullwin
-ms.openlocfilehash: 24b0bc01b5cb4f1d2696a7c9526d586c9b42d0fc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 24095aade80022d1e1ebb38357971512bfc873c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60899606"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77669687"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>使用 Application Insights 深入診斷 Web 應用程式
 ## <a name="why-do-i-need-application-insights"></a>我為什麼需要 Application Insights 呢？
@@ -78,7 +68,7 @@ Web 系統中的失敗通常是由組態問題或其許多元件之間的互動�
 * 您可以用來追蹤商務事件的自訂事件
 * 用來偵錯的記錄追蹤。
 
-## <a name="case-study-real-madrid-fc"></a>案例研究：皇家馬德里足球俱樂部
+## <a name="case-study-real-madrid-fc"></a>案例研究：西班牙皇家馬德里隊
 [皇家馬德里足球俱樂部](https://www.realmadrid.com/) 的 Web 服務可服務世界各地大約 450 百萬名球迷。 球迷可透過 Web 瀏覽器和俱樂部的行動應用程式來存取此服務。 球迷不只可預約門票，也能存取比賽結果、選手及即將舉行的比賽相關資訊和影片剪輯。 他們會使用像是得分進球數等篩選條件進行搜尋。 另外還提供社交媒體的連結。 使用者體驗已高度個人化，並設計為可讓球迷參與的雙向溝通。
 
 此解決方案[是一個 Microsoft Azure 上應用程式和服務的系統](https://www.microsoft.com/inculture/sports/real-madrid/)。 延展性是關鍵需求︰流量變化無常，而且可在比賽期間和接近比賽時達到非常高的量。
@@ -133,7 +123,7 @@ Web 系統中的失敗通常是由組態問題或其許多元件之間的互動�
 * 針對特定使用者追蹤工作階段與回應時間，讓支援和營運團隊能夠提供即時客戶支援。
 * 判斷常用的應用程式功能來回答應優先考慮的功能問題。
 
-客戶 DNN 說：「Application Insights 為我們提供了方程式中遺漏的部分，以便我們能夠視需要結合、排序、查詢及篩選資料。 讓我們的團隊可以使用他們自己的創意和體驗，利用功能強大的查詢語言來尋找資料，讓我們能夠得到相關見解，並解決我們甚至不曾知道我們發生的問題。 許多有趣的答案都是來自開頭為『我想知道如果...』的問題。」
+客戶 DNN 說：「Application Insights 為我們提供了方程式中遺漏的部分，以便我們能夠視需要結合、排序、查詢及篩選資料。 讓我們的團隊可以使用他們自己的創意和體驗，利用功能強大的查詢語言來尋找資料，讓我們能夠得到相關見解，並解決我們甚至不曾知道我們發生的問題。 許多有趣的答案都是來自開頭為『我想知道如果...』** 的問題。」
 
 ## <a name="development-tools-integration"></a>開發工具整合
 ### <a name="configuring-application-insights"></a>設定 Application Insights
@@ -166,7 +156,7 @@ Visual Studio 和 Eclipse 提供工具，可為您正在開發的專案設定正
 ## <a name="next-steps"></a>後續步驟
 開始使用 Application Insights 很簡單。 主要選項包括：
 
-* [IIS 伺服器](../../azure-monitor/app/monitor-performance-live-website-now.md)，以及[Azure App Service](../../azure-monitor/app/app-insights-overview.md)。
+* [IIS 伺服器](../../azure-monitor/app/monitor-performance-live-website-now.md)，也適用于[Azure App Service](../../azure-monitor/app/app-insights-overview.md)。
 * 在開發期間檢測您的專案。 您可以針對 [ASP.NET](../../azure-monitor/app/asp-net.md) 或 [Java](../../azure-monitor/app/java-get-started.md) 應用程式，以及 [Node.js](../../azure-monitor/app/nodejs.md) 和許多[其他類型](../../azure-monitor/app/platforms.md)執行此動作。 
 * 藉由新增簡短的程式碼片段來檢測 [任何網頁](../../azure-monitor/app/javascript.md) 。
 

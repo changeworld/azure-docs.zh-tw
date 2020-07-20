@@ -5,16 +5,25 @@
     - name: 何謂 Azure 防火牆？
       href: overview.md
 - name: 教學課程
-  expanded: true
   items:
     - name: 部署及設定
       href: tutorial-firewall-deploy-portal.md
     - name: 在混合式網路中部署
-      href: tutorial-hybrid-ps.md
+      href: tutorial-hybrid-portal.md
     - name: 使用 DNAT 篩選輸入流量
       href: tutorial-firewall-dnat.md
-    - name: 監視器診斷記錄
-      href: tutorial-diagnostics.md
+- name: 快速入門
+  expanded: true
+  items:
+    - name: 使用 IP 群組進行部署 - ARM 範本
+      displayName: Resource Manager
+      href: quick-create-ipgroup-template.md
+    - name: 使用多個位址進行部署 - ARM 範本
+      displayName: Resource Manager
+      href: quick-create-multiple-ip-template.md
+    - name: 使用可用性區域進行部署 - ARM 範本
+      displayName: Resource Manager
+      href: deploy-template.md
 - name: 範例
   items:
     - name: Azure PowerShell
@@ -23,6 +32,8 @@
       href: log-analytics-samples.md
 - name: 概念
   items:
+    - name: Azure 防火牆功能
+      href: features.md
     - name: FQDN 標記
       href: fqdn-tags.md
     - name: 基礎結構 FQDN
@@ -35,18 +46,50 @@
       href: rule-processing.md
     - name: 服務標籤
       href: service-tags.md
-- name: 使用說明指南
+    - name: IP 群組
+      href: ip-groups.md
+    - name: 強制通道
+      href: forced-tunneling.md
+    - name: 認證
+      href: compliance-certifications.md
+    - name: 中央管理
+      href: central-management.md
+    - name: 遠端工作支援
+      href: remote-work-support.md
+    - name: 網路規則中的 FQDN
+      href: fqdn-filtering-network-rules.md
+- name: 操作指南
   items:
     - name: 使用 Azure PowerShell 進行部署
       href: deploy-ps.md
-    - name: 使用範本部署
-      href: deploy-template.md
+    - name: 在混合式網路中部署 - PowerShell
+      href: tutorial-hybrid-ps.md
+    - name: 使用 Azure CLI 部署
+      href: deploy-cli.md
+    - name: 使用多個公用 IP 部署
+      href: deploy-multi-public-ip-powershell.md
+    - name: 使用可用性區域部署
+      href: deploy-availability-zone-powershell.md
     - name: 與負載平衡器整合
       href: integrate-lb.md
+    - name: 使用 SQL FQDN 的應用程式規則
+      href: sql-fqdn-filtering.md
+    - name: SNAT 私人範圍
+      href: snat-private-range.md
+    - name: 建立 IP 群組
+      href: create-ip-group.md
+    - name: 保護 Windows 虛擬桌面
+      href: protect-windows-virtual-desktop.md
+    - name: 保護 Azure Kubernetes Service (AKS)
+      href: protect-azure-kubernetes-service.md
+    - name: DNS 設定
+      href: dns-settings.md
+    - name: 監視器診斷記錄
+      href: firewall-diagnostics.md
 - name: 參考
   items:
     - name: Azure CLI
-      href: /cli/azure/network
+      href: /cli/azure/ext/azure-firewall/network/firewall
     - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewall
     - name: .NET
@@ -60,18 +103,18 @@
     - name: REST
       href: /rest/api/firewall
     - name: Azure Resource Manager
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
 - name: 資源
   items:
     - name: 常見問題集
       href: firewall-faq.md
     - name: 作者範本
-      href: ../azure-resource-manager/resource-group-authoring-templates.md
+      href: ../azure-resource-manager/templates/template-syntax.md
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 社群範本
       href: 'https://azure.microsoft.com/documentation/templates'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/azure-firewall/'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'

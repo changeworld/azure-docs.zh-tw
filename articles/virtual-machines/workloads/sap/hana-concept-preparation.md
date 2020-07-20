@@ -4,22 +4,21 @@ description: Azure 上的 SAP HANA (大型執行個體) 災害復原準則和準
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 73643cd6954932f933e200baad09e4301300aac2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 33d52f871de75a7f7d34016b040e44d6f1623fd8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60794762"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "70101266"
 ---
 # <a name="disaster-recovery-principles"></a>災害復原原則
 
@@ -81,7 +80,7 @@ HANA 大型執行個體提供了能在不同 Azure 區域的 HANA 大型執行�
 - 針對交易記錄備份磁碟區 (快照集類型為 **logs**)，設定為每隔 3 分鐘就會複寫到災害復原網站中對等的存放磁碟區目標。
 
 若要盡量縮減復原點目標，請設定下列各項：
-- 執行 **hana** 類型的儲存體快照集 (請參閱「步驟 7：執行快照集」)，每隔 30 分鐘到 1 小時執行一次。
+- 每隔 30 分鐘到 1 小時執行一次 **hana** 類型的儲存體快照集 (請參閱「步驟 7：執行快照集」)。
 - 每隔 5 分鐘執行一次 SAP HANA 交易記錄備份。
 - 每隔 5-15 分鐘執行一次 **logs** 類型的儲存體快照集。 使用此間隔期間，您會達到約 15-25 分鐘的 RPO。
 

@@ -1,25 +1,23 @@
 ---
-title: 使用 Power BI 將 Azure 網路安全性群組流程記錄視覺化 | Microsoft Docs
+title: 視覺化 Azure NSG 流量記錄-Power BI
+titleSuffix: Azure Network Watcher
 description: 此頁面說明如何使用 Power BI 將 NSG 流程記錄視覺化。
 services: network-watcher
 documentationcenter: na
-author: mattreatMSFT
-manager: vitinnan
-editor: ''
-ms.assetid: 1e4f95fa-f5f0-4e03-bc25-008fbfc4934c
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: mareat
-ms.openlocfilehash: 6df49f9cd308f4bb9b1fef6e5860872526ce8bb7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: damendo
+ms.openlocfilehash: 1ef2e32614b5a57208f91ac0fe5a4c17affa38e4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60860701"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738544"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>使用 Power BI 將網路安全性群組流程記錄視覺化
 
@@ -30,7 +28,7 @@ ms.locfileid: "60860701"
 > [!Warning]  
 > 下列步驟適用於流量記錄第 1 版。 如需詳細資訊，請參閱[網路安全性群組流量記錄簡介](network-watcher-nsg-flow-logging-overview.md)。 下列指示若未經修改，則不適用於第 2 版的記錄檔。
 
-## <a name="scenario"></a>案例
+## <a name="scenario"></a>狀況
 
 在下列案例中，我們將 Power BI Desktop 連線至我們已設定的儲存體帳戶，做為 NSG 流程記錄資料的接收器。 當我們連線至儲存體帳戶之後，Power BI 會下載並剖析記錄，以視覺表示法呈現網路安全性群組所記錄的流量。
 
@@ -44,7 +42,7 @@ ms.locfileid: "60860701"
 
 提供的範本是可編輯的，您可以修改它來新增資料、視覺效果或編輯查詢，以符合您的需求。
 
-## <a name="setup"></a>設定
+## <a name="setup"></a>安裝程式
 
 開始之前，您必須在帳戶中的一或多個網路安全性群組上，啟用網路安全性群組流程記錄。 如需有關啟用網路安全性流程記錄的指示，請參閱下列文章︰[網路安全性群組的流程記錄簡介](network-watcher-nsg-flow-logging-overview.md)。
 
@@ -61,7 +59,7 @@ ms.locfileid: "60860701"
 
       ![power BI 主畫面][2]
 
-1. 輸入儲存體帳戶的存取金鑰。 您可以在 Azure 入口網站瀏覽至您的儲存體帳戶，然後從 [設定] 功能表選取 [存取金鑰]，即可找到有效的存取金鑰。 按一下 [連線]，然後套用變更。
+1. 輸入儲存體帳戶的存取金鑰。 您可以在 Azure 入口網站瀏覽至您的儲存體帳戶，然後從 [設定] 功能表選取 [存取金鑰]****，即可找到有效的存取金鑰。 按一下 [連線]****，然後套用變更。
 
     ![access keys][3]
 
@@ -111,7 +109,7 @@ ms.locfileid: "60860701"
 
 請儘管自訂此範本以符合您的需求。 Power BI 和網路安全性群組流程記錄互相搭配有許多做法。 
 
-## <a name="notes"></a>注意
+## <a name="notes"></a>備註
 
 * 記錄依預設儲存於 `https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/`
 

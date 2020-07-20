@@ -5,225 +5,161 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 02/27/2019
+ms.date: 06/29/2020
 ms.author: alzam
-Customer intent: As someone with a networking background, I want to connect remote users to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 9fe0c7f7ae0c19833421b647449f0e4100904f5b
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 9c93ad0357011008c45b2898260a655509b02dc2
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226227"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560677"
 ---
-# <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>教學課程：使用 Azure 虛擬 WAN 建立點對站連線 (預覽)
+# <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>教學課程：使用 Azure 虛擬 WAN 建立使用者 VPN 連線
 
-本教學課程會示範如何使用虛擬 WAN，透過 IPsec/IKE (IKEv2) 或 OpenVPN VPN 連線來與 Azure 中的資源連線。 此類型的連線需要在用戶端電腦上設定用戶端。 如需有關虛擬 WAN 的詳細資訊，請參閱[虛擬 WAN 概觀](virtual-wan-about.md)。
+本教學課程會示範如何使用虛擬 WAN，透過 IPsec/IKE (IKEv2) 或 OpenVPN VPN 連線來與 Azure 中的資源連線。 此類型的連線需要在用戶端電腦上設定用戶端。 如需有關虛擬 WAN 的詳細資訊，請參閱[虛擬 WAN 概觀](virtual-wan-about.md)
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 建立 WAN
 > * 建立 P2S 設定
 > * 建立中樞
-> * 將 P2S 設定套用到中樞
-> * 將 VNet 連線至中樞
-> * 下載並套用 VPN 用戶端設定
+> * 指定 DNS 伺服器
+> * 下載 VPN 用戶端設定檔
 > * 檢視您的虛擬 WAN
-> * 檢視資源健康情況
-> * 監視連線
 
-> [!IMPORTANT]
-> 此公開預覽版是在沒有服務等級協定的情況下提供，不得用於生產工作負載。 可能不支援特定功能、可能已經限制功能，或者可能無法在所有 Azure 位置提供使用。 如需詳細資訊，請參閱 [Microsoft Azure 預覽專用的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
+![虛擬 WAN 的圖表](./media/virtual-wan-about/virtualwanp2s.png)
 
 ## <a name="before-you-begin"></a>開始之前
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+在開始設定之前，請確認您已符合下列條件：
 
-[!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
+* 您有一個要連線的虛擬網路。 驗證沒有任何內部部署網路的子網路與您要連線的虛擬網路子網路重疊。 若要在 Azure 入口網站中建立虛擬網路，請參閱[快速入門](../virtual-network/quick-create-portal.md)。
 
-## <a name="register"></a>註冊此功能
+* 您的虛擬網路沒有任何虛擬網路閘道。 如果您的虛擬網路有閘道 (VPN 或 ExpressRoute)，則必須移除所有閘道。 此設定需要將虛擬網路改為連線到虛擬 WAN 中樞閘道。
 
-按一下 [TryIt] 即可輕鬆地使用 Azure Cloud Shell 註冊此功能。 如果您要在本機執行 PowerShell，請確定您擁有最新版本，並使用 **Connect-AzAccount** 和 **Select-AzSubscription** 命令登入。
+* 取得中樞區域的 IP 位址範圍。 中樞是虛擬 WAN 建立和使用的虛擬網路。 您為中樞區域指定的位址範圍不能與任何連線的現有虛擬網路重疊。 也不能與連線至內部部署的位址範圍重疊。 如果您不熟悉位於內部部署網路設定的 IP 位址範圍，請與能夠提供那些詳細資料的人員協調。
 
->[!NOTE]
->如果您未註冊此功能，將無法使用它，或在入口網站中看到它。
->
->
+* 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-按一下 [TryIt] 可開啟 Azure Cloud Shell，請複製並貼上下列命令：
+## <a name="create-a-virtual-wan"></a><a name="wan"></a>建立虛擬 WAN
 
-```azurepowershell-interactive
-Register-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2SCortexAccess
-```
- 
-```azurepowershell-interactive
-Register-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
-```
+透過瀏覽器瀏覽至 [Azure 入口網站](https://portal.azure.com) ，並使用您的 Azure 帳戶登入。
 
-```azurepowershell-interactive
-Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2SCortexAccess
-```
+1. 瀏覽至 [虛擬 WAN] 頁面。 在入口網站中，選取 [+建立資源]。 在搜尋方塊中鍵入**虛擬 WAN** 並選取 [輸入]。
+1. 從結果中選取 [虛擬 WAN]。 在 [虛擬 WAN] 頁面中，選取 [建立]，以開啟 [建立 WAN] 頁面。
+1. 在 [建立 WAN] 頁面的 [基本] 索引標籤中，填寫下列欄位：
 
-```azurepowershell-interactive
-Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
-```
+   ![虛擬 WAN](./media/virtual-wan-point-to-site-portal/vwan.png)
 
-一旦該功能顯示為已註冊，請將訂用帳戶註冊到 Microsoft.Network 命名空間。
+   * **訂用帳戶** - 選取您要使用的訂用帳戶。
+   * **資源群組** - 建立新的或使用現有的資源群組。
+   * **資源群組位置** - 從下拉式清單中選擇資源位置。 WAN 是全域資源，並不會在特定區域存留。 不過，您必須選取一個區域以方便管理，以及放置所建立的 WAN 資源。
+   * **名稱** - 鍵入要用來稱呼 WAN 的名稱。
+   * **類型：** 標準。 如果您建立基本 WAN，則只能建立基本中樞。 基本中樞只能進行 VPN 站對站連線。
+1. 填寫完欄位之後，選取 [檢閱 + 建立]。
+1. 驗證通過後，選取 [建立]，以建立虛擬 WAN。
 
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Network
-```
-
-## <a name="vnet"></a>1.建立虛擬網路
-
-[!INCLUDE [Create a virtual network](../../includes/virtual-wan-tutorial-vnet-include.md)]
-
-## <a name="openvwan"></a>2.建立虛擬 WAN
-
-透過瀏覽器瀏覽至 [Azure 入口網站 (預覽)](https://aka.ms/azurevirtualwanpreviewfeatures)，並使用您的 Azure 帳戶登入。
-
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
-
-## <a name="hub"></a>3.建立中樞
-
-> [!NOTE]
-> 請勿在此步驟中選取「包含點對站閘道」設定。
->
-
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-hub-include.md)]
-
-## <a name="site"></a>4.建立 P2S 設定
+## <a name="create-a-p2s-configuration"></a><a name="p2sconfig"></a>建立 P2S 設定
 
 P2S 設定會定義用於連線遠端用戶端的參數。
 
 1. 瀏覽至 [所有資源]。
-2. 按一下您建立的虛擬 WAN。
-3. 在 [虛擬 WAN 架構] 底下，按一下 [點對站設定]。
-4. 按一下頁面頂端的 [+ 新增點對站設定] 以開啟 [建立新的點對站設定] 頁面。
-5. 在 [建立新的點對站設定] 頁面上，填寫下列欄位：
+1. 選取您所建立的虛擬 WAN。
+1. 選取頁面頂端的 [+建立使用者 VPN 設定]，以開啟 [建立新的使用者 VPN 設定] 頁面。
 
-   *  **設定名稱** - 這是您要用來指稱設定的名稱。
-   *  **通道類型** - 用於通道的通訊協定。
-   *  **位址集區** - 這是會指派給用戶端的 IP 位址所來自的集區。
-   *  **根憑證名稱** - 憑證的描述性名稱。
-   *  **根憑證資料** - Base-64 編碼的 X.509 憑證資料。
+   :::image type="content" source="media/virtual-wan-point-to-site-portal/p2s1.jpg" alt-text="使用者 VPN 設定":::
 
-6. 按一下 [建立] 來建立設定。
+1. 在 [建立新的使用者 VPN 設定] 頁面上，填入下列欄位：
 
-## <a name="hub"></a>5.編輯中樞指派
+   * **設定名稱** - 這是您要用來指稱設定的名稱。
+   * **通道類型** - 用於通道的通訊協定。
+   * **根憑證名稱** - 憑證的描述性名稱。
+   * **公用憑證資料** - Base-64 編碼的 X.509 憑證資料。
+  
+1. 選取 [建立] 來建立設定。
 
-1. 在您的虛擬 WAN 頁面上，按一下 [中樞]。
-2. 選取要將點對站組態指派至的中樞。
-3. 按一下 **"..."**，並挑選 [編輯虛擬中樞]
-4. 請核取 [包含點對站閘道]。
-5. 從下拉式清單選取 [閘道縮放單位]。
-6. 從下拉式清單選取您建立的 [點對站設定]。
-7. 設定用戶端的 [位址集區]。
-8. 按一下 [確認]。 此作業最多可能需要 30 分鐘才能完成。
+## <a name="create-hub-with-point-to-site-gateway"></a><a name="hub"></a>建立具有點對站閘道的中樞
 
-## <a name="vnet"></a>6.將 VNet 連線至中樞
+1. 在您的虛擬 WAN 下選取 [中樞]，然後選取 [+新增中樞]。
 
-在此步驟中，您會在中樞和 VNet 之間建立等互連的連線。 為您想要連線的每個 VNet 重複這些步驟。
+   :::image type="content" source="media/virtual-wan-point-to-site-portal/hub1.jpg" alt-text="新增中樞":::
 
-1. 在虛擬 WAN 頁面上，按一下 [虛擬網路連線]。
-2. 在 [虛擬網路連線] 頁面上，按一下 [+ 新增連線]。
-3. 在 [新增連線] 頁面上，填寫下列欄位︰
+1. 在 [建立虛擬中樞] 頁面上，填入下列欄位。
 
-    * **名稱** - 為您的連線命名。
-    * **中樞** - 選取要與此連線產生關聯的中樞。
-    * **訂用帳戶** - 請確認訂用帳戶。
-    * **虛擬網路** - 選取要與此中樞連線的虛擬網路。 虛擬網路不能有現有的虛擬網路閘道。
-4. 按一下 [確定] 以新增連線。
+   * **區域** - 選取您要在其中部署虛擬中樞的區域。
+   * **名稱** - 輸入要用來稱呼虛擬中樞的名稱。
+   * **中樞私人位址空間** - 採用 CIDR 標記法的中樞位址範圍。
 
-## <a name="device"></a>7.下載 VPN 設定檔
+   :::image type="content" source="media/virtual-wan-point-to-site-portal/hub2.jpg" alt-text="建立虛擬中樞":::
+
+1. 在 [點對站] 索引標籤中，完成以下欄位：
+
+   * **閘道縮放單位** - 代表使用者 VPN 閘道的彙總容量。
+   * **指向網站設定** - 這是您在上一個步驟中建立的。
+   * **用戶端位址集區** - 適用於遠端使用者。
+   * **自訂 DNS 伺服器 IP**。
+
+   :::image type="content" source="media/virtual-wan-point-to-site-portal/hub-with-p2s.png" alt-text="具有點對站的中樞":::
+
+1. 選取 [檢閱 + 建立]。
+1. 在 [驗證成功] 頁面上，選取 [建立]。
+
+## <a name="specify-dns-server"></a><a name="dns"></a>指定 DNS 伺服器
+
+虛擬 WAN 使用者 VPN 閘道可讓您指定最多 5 部 DNS 伺服器。 您可以在中樞建立過程中進行此設定，或在稍後修改。 若要這麼做，請找出虛擬中樞。 在**使用者 VPN (點對站)** 上按一下 [設定]，然後在 [自訂 DNS 伺服器] 文字方塊中輸入 DNS 伺服器 IP 位址。
+
+   :::image type="content" source="media/virtual-wan-point-to-site-portal/custom-dns.png" alt-text="自訂 DNS" lightbox="media/virtual-wan-point-to-site-portal/custom-dns-expand.png":::
+
+## <a name="download-vpn-profile"></a><a name="download"></a>下載 VPN 設定檔
 
 使用 VPN 設定檔來設定用戶端。
 
-1. 在您的虛擬 WAN 頁面上，按一下 [中樞]。
-2. 選取您想要下載設定檔的中樞。
-3. 按一下 **"..."** 並挑選 [下載設定檔]。 
-4. 檔案建立完成之後，您可以按一下連結來下載。
-4. 使用設定檔檔案來設定點對站用戶端。
+1. 在虛擬 WAN 的頁面上，選取 [使用者 VPN 設定]。
+2. 在頁面頂端，選取 [下載使用者 VPN 設定]。下載 WAN 層級設定可提供以流量管理員為基礎的內建使用者 VPN 設定檔。 如需全域設定檔或以中樞為基礎的設定檔詳細資訊，請參閱此[中樞設定檔](https://docs.microsoft.com/azure/virtual-wan/global-hub-profile)。   全域設定檔簡化了容錯移轉案例。
 
-## <a name="device"></a>8.設定點對站用戶端
+   如果因為某些原因而無法使用中樞，服務所提供的內建流量管理可確保透過不同的中樞連線至點對站使用者的 Azure 資源連線。 您可以瀏覽至特定的中樞，以下載中樞特定的 VPN 設定。 在**使用者 VPN (點對站)** 中下載虛擬中樞**使用者 VPN** 設定檔。
+
+1. 檔案建立完成之後，您可以選取連結來下載。
+1. 使用設定檔檔案來設定 VPN 用戶端。
+
+### <a name="configure-user-vpn-clients"></a>設定使用者 VPN 用戶端
+
 使用下載的設定檔來設定遠端存取用戶端。 每個作業系統的程序不同，請遵循下面的正確指示：
 
-### <a name="microsoft-windows"></a>Microsoft Windows
-#### <a name="openvpn"></a>OpenVPN
+#### <a name="microsoft-windows"></a>Microsoft Windows
+##### <a name="openvpn"></a>OpenVPN
 
-1.  從官方網站下載並安裝 OpenVPN 用戶端。
-2.  下載閘道的 VPN 設定檔。 這可透過 Azure 入口網站中的 [點對站設定] 索引標籤，或是 PowerShell 中的 New-AzVpnClientConfiguration 來完成。
-3.  將設定檔解壓縮。 在記事本中開啟 OpenVPN 資料夾中的 vpnconfig.ovpn 設定檔。
-4.  以 Base64 的 P2S 用戶端憑證公開金鑰填入 P2S 用戶端憑證區段。 在 PEM 格式的憑證中，您只需開啟 .cer 檔案並在憑證標題之間複製 Base64 金鑰。 在這裡查看如何匯出憑證來取得編碼的公開金鑰。
-5.  以 base64 的 P2S 用戶端憑證私密金鑰填入私密金鑰區段。 在這裡查看如何擷取私密金鑰。
-6.  請勿變更任何其他欄位。 使用用戶端輸入中填入的設定來連線至 VPN。
-7.  將 vpnconfig.ovpn 檔案複製到 C:\Program Files\OpenVPN\config 資料夾。
-8.  以滑鼠右鍵按一下系統匣中的 OpenVPN 圖示，然後按一下 [連線]。
+1. 從官方網站下載並安裝 OpenVPN 用戶端。
+1. 下載閘道的 VPN 設定檔。 這可從 Azure 入口網站中的 [使用者 VPN 設定] 索引標籤，或是 PowerShell 中的 New-AzureRmVpnClientConfiguration 來完成。
+1. 將設定檔解壓縮。 在記事本中開啟 OpenVPN 資料夾中的 vpnconfig.ovpn 設定檔。
+1. 以 Base64 的 P2S 用戶端憑證公開金鑰填入 P2S 用戶端憑證區段。 在 PEM 格式的憑證中，您只需開啟 .cer 檔案並在憑證標題之間複製 Base64 金鑰。 如需相關步驟，請參閱[如何匯出憑證來取得編碼的公開金鑰](certificates-point-to-site.md)。
+1. 以 Base64 的 P2S 用戶端憑證私密金鑰填入私密金鑰區段。 如需相關步驟，請參閱[如何擷取私密金鑰](howto-openvpn-clients.md#windows)。
+1. 請勿變更任何其他欄位。 使用用戶端輸入中填入的設定來連線至 VPN。
+1. 將 vpnconfig.ovpn 檔案複製到 C:\Program Files\OpenVPN\config 資料夾。
+1. 以滑鼠右鍵按一下系統匣中的 OpenVPN 圖示，然後選取 [連線]。
 
-#### <a name="ikev2"></a>IKEv2
+##### <a name="ikev2"></a>IKEv2
 
 1. 選取 Windows 電腦架構所對應的 VPN 用戶端組態檔。 若是 64 位元的處理器架構，請選擇 'VpnClientSetupAmd64' 安裝程式套件。 若是 32 位元的處理器架構，請選擇 'VpnClientSetupX86' 安裝程式套件。
-2. 對套件按兩下來加以安裝。 如果您看到 SmartScreen 快顯視窗，請按一下 [更多資訊]，然後按一下 [仍要執行]。
-3. 在用戶端電腦上，瀏覽至 [網路設定]，然後按一下 [VPN]。 VPN 連線會顯示其連線的虛擬網路名稱。
-4. 嘗試連線之前，請確認您已在用戶端電腦上安裝用戶端憑證。 使用原生 Azure 憑證驗證類型時，必須提供用戶端憑證才能通過驗證。 如需有關產生憑證的詳細資訊，請參閱產生憑證。 如需有關如何安裝用戶端憑證的資訊，請參閱安裝用戶端憑證。
+1. 對套件按兩下來加以安裝。 如果您看到 SmartScreen 快顯視窗，請選取 [更多資訊]，然後選取 [仍要執行]。
+1. 在用戶端電腦上，瀏覽至**網路設定**，然後按一下 [VPN]。 VPN 連線會顯示其連線的虛擬網路名稱。
+1. 嘗試連線之前，請確認您已在用戶端電腦上安裝用戶端憑證。 使用原生 Azure 憑證驗證類型時，必須提供用戶端憑證才能通過驗證。 如需有關產生憑證的詳細資訊，請參閱[產生憑證](certificates-point-to-site.md)。 如需有關如何安裝用戶端憑證的資訊，請參閱[安裝用戶端憑證](../vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md)。
 
-### <a name="mac-os-x"></a>Mac (OS X)
-#### <a name="openvpn"></a>OpenVPN
-
-1.  下載並安裝 OpenVPN 用戶端，例如 https://tunnelblick.net/downloads.html 中的 TunnelBlik 
-2.  下載閘道的 VPN 設定檔。 這可透過 Azure 入口網站中的 [點對站設定] 索引標籤，或是 PowerShell 中的 New-AzVpnClientConfiguration 來完成。
-3.  將設定檔解壓縮。 在記事本中開啟 OpenVPN 資料夾中的 vpnconfig.ovpn 設定檔。
-4.  以 Base64 的 P2S 用戶端憑證公開金鑰填入 P2S 用戶端憑證區段。 在 PEM 格式的憑證中，您只需開啟 .cer 檔案並在憑證標題之間複製 Base64 金鑰。 在這裡查看如何匯出憑證來取得編碼的公開金鑰。
-5.  以 base64 的 P2S 用戶端憑證私密金鑰填入私密金鑰區段。 在這裡查看如何擷取私密金鑰。
-6.  請勿變更任何其他欄位。 使用用戶端輸入中填入的設定來連線至 VPN。
-7.  按兩下設定檔檔案以在 tunnelblik 中建立設定檔
-8.  從應用程式資料夾啟動 Tunnelblik
-9.  按一下系統匣中的 Tunneblik 圖示並挑選連線
-
-#### <a name="ikev2"></a>IKEv2
-
-Azure 不提供用於原生 Azure 憑證驗證的 mobileconfig 檔案。 您必須在將會連線到 Azure 的每部 Mac 上，手動設定原生 IKEv2 VPN 用戶端。 Generic 資料夾含有設定所需的所有資訊。 如果未出現下載的 Generic 資料夾，則可能是未將 IKEv2 選為通道型別。 一旦選取 IKEv2 後，重新產生 zip 檔案以擷取 Generic 資料夾。 Generic 資料夾包含下列檔案：
-
-- VpnSettings.xml，此檔案包含重要的設定，例如伺服器位址和通道類型。
-- VpnServerRoot.cer，此檔案包含所需的根憑證，以供您在 P2S 連線設定期間驗證 Azure VPN 閘道。
-
-## <a name="viewwan"></a>9.檢視您的虛擬 WAN
+## <a name="view-your-virtual-wan"></a><a name="viewwan"></a>檢視您的虛擬 WAN
 
 1. 瀏覽至虛擬 WAN。
-2. 在 [概觀] 頁面中，地圖上的每個點都代表著中樞。 暫留在任一點上，即可檢視中樞健康情況摘要。
-3. 在 [中樞與連線] 區段中，您可以檢視中樞狀態、網站、區域、VPN 連線狀態和輸入與輸出位元組。
+1. 在 [概觀] 頁面中，地圖上的每個點都代表著中樞。
+1. 在**中樞與連線**區段中，您可以檢視中樞狀態、網站、區域、VPN 連線狀態和輸入與輸出位元組。
 
-## <a name="viewhealth"></a>10.檢視資源健康情況
+## <a name="clean-up-resources"></a><a name="cleanup"></a>清除資源
 
-1. 瀏覽至您的 WAN。
-2. 在 WAN 頁面上的 [支援 + 疑難排解] 區段中，按一下 [健康情況] 並檢視您的資源。
-
-## <a name="connectmon"></a>11.監視連線
-
-建立連線以監視 Azure VM 和遠端站台之間的通訊。 如需有關如何設定連線監視的資訊，請參閱[監視網路通訊](~/articles/network-watcher/connection-monitor.md)。 來源欄位是 Azure 中的 VM IP，目的地 IP 是位址是網站 IP。
-
-## <a name="cleanup"></a>12.清除資源
-
-您可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 來移除不再需要的資源群組，以及其所包含的所有資源。 將 "myResourceGroup" 取代為您的資源群組名稱，然後執行下列 PowerShell 命令：
+您可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 來移除不再需要的資源群組，以及其所包含的所有資源。 將 "myResourceGroup" 取代為您的資源群組名稱，然後執行下列 PowerShell 命令：
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>後續步驟
-
-在本教學課程中，您已了解如何：
-
-> [!div class="checklist"]
-> * 建立 WAN
-> * 建立網站
-> * 建立中樞
-> * 將中樞連線至網站
-> * 將 VNet 連線至中樞
-> * 下載並套用 VPN 裝置組態
-> * 檢視您的虛擬 WAN
-> * 檢視資源健康情況
-> * 監視連線
 
 若要深入了解虛擬 WAN，請參閱[虛擬 WAN 概觀](virtual-wan-about.md)頁面。

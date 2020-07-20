@@ -4,35 +4,34 @@ description: Azure 計算中的節流錯誤、重試和輪詢。
 services: virtual-machines
 documentationcenter: ''
 author: changov
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines
-ms.devlang: na
 ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
-ms.author: vashan, rajraj, changov
-ms.openlocfilehash: efa10f5beae64105857b00b186683d491edb00f5
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
-ms.translationtype: MT
+ms.author: changov
+ms.reviewer: vashan, rajraj
+ms.openlocfilehash: f5fbd80fc9a8e519cf8f49ab16d7e747c6a8171b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233777"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76045354"
 ---
-# <a name="troubleshooting-api-throttling-errors"></a>對 API 節流錯誤進行疑難排解 
+# <a name="troubleshooting-api-throttling-errors"></a>針對 API 節流錯誤進行疑難排解 
 
 Azure 計算要求可在訂用帳戶上和個別區域中受到節流，以利提升服務的整體效能。 對於負責管理 Microsoft.Compute 命名空間下各項資源的 Azure 計算資源提供者 (CRP)，我們會確保對其發出的所有呼叫不會超過所允許 API 要求率的上限。 本文件將說明 API 節流，並詳細解說如何對節流問題進行疑難排解，以及避免受到節流的最佳做法。  
 
 ## <a name="throttling-by-azure-resource-manager-vs-resource-providers"></a>Azure Resource Manager 與資源提供者的節流  
 
-作為 Azure 的主要進入點，Azure Resource Manager 會對所有內送的 API 要求進行驗證、一級驗證和節流。 Azure Resource Manager 的呼叫率限制和相關的診斷回應 HTTP 標頭說明於[此處](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-request-limits)。
+作為 Azure 的主要進入點，Azure Resource Manager 會對所有內送的 API 要求進行驗證、一級驗證和節流。 Azure Resource Manager 的呼叫率限制和相關的診斷回應 HTTP 標頭說明於[此處](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling)。
  
 當 Azure API 用戶端發生節流錯誤時，HTTP 狀態會是「429 要求太多」。 若要了解要求節流是由 Azure Resource Manager 還是 CRP 之類的基礎資源提供者所執行，請檢查 GET 要求的 `x-ms-ratelimit-remaining-subscription-reads` 和非 GET 要求的 `x-ms-ratelimit-remaining-subscription-writes` 回應標頭。 如果剩餘的呼叫計數趨近於 0，表示已達到 Azure 資源管理員所定義的訂用帳戶一般呼叫限制。 所有訂用帳戶用戶端的活動會一起計算。 若非如此，表示節流來自於目標資源提供者 (要求 URL 的 `/providers/<RP>` 區段所指出的提供者)。 
 
 ## <a name="call-rate-informational-response-headers"></a>呼叫率資訊回應標頭 
 
-| 頁首                            | 值格式                           | 範例                               | 說明                                                                                                                                                                                               |
+| Header                            | 值格式                           | 範例                               | 描述                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | x-ms-ratelimit-remaining-resource |```<source RP>/<policy or bucket>;<count>```| Microsoft.Compute/HighCostGet3Min;159 | 涵蓋資源貯體或作業群組 (包括此要求的目標) 的節流原則剩餘的 API 呼叫計數                                                                   |
 | x-ms-request-charge               | ```<count>```                             | 1                                     | 此 HTTP 要求計入適用原則限制的呼叫計數。 此值通常是 1。 對於批次要求 (例如，用來調整虛擬機器擴展集)，則可能計入多個計數。 |
@@ -80,7 +79,7 @@ Content-Type: application/json; charset=utf-8
 ## <a name="api-call-rate-and-throttling-error-analyzer"></a>API 呼叫率和節流處理錯誤分析器
 「計算」資源提供者的 API 有一個可用的預覽版疑難排解功能。 這些 PowerShell Cmdlet 提供與每一作業每一時間間隔之 API 要求率及每一作業群組 (原則) 之節流處理違規相關的統計資料：
 -   [Export-AzLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
--   [Export-AzLogAnalyticThrottledRequest](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequest)
+-   [匯出-AzLogAnalyticThrottledRequest](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequest)
 
 API 呼叫統計資料可提供訂用帳戶用戶端行為的絕佳深入解析，讓您能夠輕鬆識別出造成節流的呼叫模式。
 
@@ -89,7 +88,7 @@ API 呼叫統計資料可提供訂用帳戶用戶端行為的絕佳深入解析�
 PowerShell Cmdlet 目前使用 REST 服務 API，這是用戶端可直接輕鬆呼叫的 API (但尚未正式支援)。 若要查看 HTTP 要求格式，請執行 Cmdlet 搭配 -Debug 參數，或使用 Fiddler 在其執行時進行窺探。
 
 
-## <a name="best-practices"></a>最佳做法 
+## <a name="best-practices"></a>最佳作法 
 
 - 請勿無條件和/或立即地重試 Azure 服務 API 錯誤。 在發生不可重試的錯誤時讓用戶端程式碼進入快速重試迴圈，是經常發生的狀況。 重試最終會耗盡目標作業的群組允許的呼叫限制次數，而對訂用帳戶的其他用戶端造成影響。 
 - 在大量 API 自動化的案例中，請在目標作業群組的可用呼叫計數低於某個低閾值時考慮實作主動用戶端自我節流。 

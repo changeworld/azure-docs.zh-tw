@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/21/2018
 ms.author: cephalin
 ms.openlocfilehash: e7494db94c7d8f0fc610ab297798749bffd55e7c
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52330822"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "67174326"
 ---
 ## <a name="clean-up-resources"></a>清除資源
 

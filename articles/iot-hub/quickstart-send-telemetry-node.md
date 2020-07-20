@@ -1,39 +1,40 @@
 ---
-title: 將遙測傳送至 Azure IoT 中樞快速入門 (Node.js) | Microsoft Docs
+title: 快速入門：將遙測傳送至 Azure IoT (Node.js)
 description: 本快速入門中，您會執行兩個範例 Node.js 應用程式，以將模擬的遙測資料傳送至 IoT 中樞和從 IoT 中樞讀取遙測資料，以便在雲端中處理。
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
-ms.devlang: node
+ms.devlang: nodejs
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 02/22/2019
-ms.openlocfilehash: a4f0761af7da1add6a295b7627783daae6fac07c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.custom:
+- mvc
+- seo-javascript-september2019
+- mqtt
+ms.date: 06/21/2019
+ms.openlocfilehash: 5c34dcc606e87e11a3a018df1b2d6bbedb262d04
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59007099"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82209106"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-nodejs"></a>快速入門：將遙測從裝置傳送至 IoT 中樞，並使用後端應用程式讀取遙測 (Node.js)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷取到雲端進行儲存或處理。 在此快速入門中，您透過 IoT 中樞，將遙測從模擬裝置應用程式傳送到後端應用程式以進行處理。
+ 在此快速入門中，您透過 Azure IoT 中樞，將遙測從模擬裝置應用程式傳送到後端應用程式以進行處理。 IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷取到雲端進行儲存或處理。 本快速入門會使用兩個預先撰寫的 Node.js 應用程式：一個用來傳送遙測，而另一個用來從中樞讀取遙測。 在執行下列兩個應用程式之前，您需要建立一個 IoT 中樞，並向中樞註冊一個裝置。
 
-本快速入門會使用兩個預先撰寫的 Node.js 應用程式，一個用來傳送遙測，而另一個用來從中樞讀取遙測。 在執行下列兩個應用程式之前，您需要建立一個 IoT 中樞，並向中樞註冊一個裝置。
+## <a name="prerequisites"></a>Prerequisites
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+* 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+* [Node.js 10+](https://nodejs.org)。 如果您使用 Azure Cloud Shell，請勿更新已安裝的 Node.js 版本。 Azure Cloud Shell 已具有最新的 Node.js 版本。
 
-## <a name="prerequisites"></a>必要條件
+* [範例 Node.js 專案](https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip)。
 
-您在此快速入門中執行的兩個範例應用程式是使用 Node.js 所撰寫的。 您的開發電腦上需要 Node.js 4.x.x 版或更高版本。
-
-您可以從 [nodejs.org](https://nodejs.org) 下載適用於多種平台的 Node.js。
+* 在您的防火牆中開啟的連接埠 8883。 本快速入門中的裝置範例會使用 MQTT 通訊協定，其會透過連接埠 8883 進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 您可以使用下列命令，以確認開發電腦上目前的 Node.js 版本：
 
@@ -41,13 +42,17 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
 node --version
 ```
 
-執行下列命令，將適用於 Azure CLI 的 Microsoft Azure IoT 擴充功能新增至您的 Cloud Shell 執行個體。 IoT 擴充功能可將 IoT 中樞、IoT Edge 和 IoT 裝置佈建服務的特定命令新增至 Azure CLI。
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+### <a name="add-azure-iot-extension"></a>新增 Azure IoT 擴充功能
+
+執行下列命令，將適用於 Azure CLI 的 Microsoft Azure IoT 擴充功能新增至您的 Cloud Shell 執行個體。 IoT 擴充功能可將 IoT 中樞、IoT Edge 和 IoT 裝置佈建服務 (DPS) 的特定命令新增至 Azure CLI。
 
 ```azurecli-interactive
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 ```
 
-從 https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip 下載範例 Node.js 專案並將 ZIP 封存檔解壓縮。
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
@@ -61,39 +66,39 @@ az extension add --name azure-cli-iot-ext
 
    **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
-   **MyNodeDevice**：您所註冊的裝置名稱。 使用所示的 **MyNodeDevice**。 如果您為裝置選擇不同的名稱，則必須在本文中使用該名稱，並先在應用程式範例中更新該裝置名稱，再執行應用程式。
+   **MyNodeDevice**：這是您要註冊之裝置的名稱。 建議您使用 **MyNodeDevice**，如下所示。 如果您為裝置選擇不同的名稱，則也必須在本文中使用該名稱，並先在範例應用程式中更新該裝置名稱，再執行應用程式。
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyNodeDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyNodeDevice
     ```
 
-1. 在 Azure Cloud Shell 中執行下列命令，以針對您剛註冊的裝置取得_裝置連接字串_：
+1. 在 Azure Cloud Shell 中執行下列命令，以針對您剛註冊的裝置取得「裝置連接字串」  ：
 
    **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyNodeDevice --output table
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyNodeDevice --output table
     ```
 
     記下裝置連接字串，它看起來如下：
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
 
-    您稍後會在快速入門中使用此值。
+    您稍後將會在快速入門中使用此值。
 
-1. 您也需要_服務連接字串_，讓後端應用程式能夠連線到您的 IoT 中樞並擷取訊息。 下列命令可擷取 IoT 中樞的服務連接字串：
+1. 您還需要 IoT 中樞的「事件中樞相容端點」  、「事件中樞相容路徑」  和「服務主要金鑰」  ，以便讓後端應用程式連線到 IoT 中樞並擷取訊息。 下列命令會針對您的 IoT 中樞擷取這些值：
 
    **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
     ```azurecli-interactive
-    az iot hub show-connection-string --name YourIoTHubName --output table
+    az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}
+
+    az iot hub show --query properties.eventHubEndpoints.events.path --name {YourIoTHubName}
+
+    az iot hub policy show --name service --query primaryKey --hub-name {YourIoTHubName}
     ```
 
-    記下服務連接字串，它看起來如下：
-
-   `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={YourSharedAccessKey}`
-
-    您稍後會在快速入門中使用此值。 服務連接字符串與裝置連接字串不同。
+    請記下這三個值，您稍後將會在快速入門中使用。
 
 ## <a name="send-simulated-telemetry"></a>傳送模擬的遙測
 
@@ -103,7 +108,7 @@ az extension add --name azure-cli-iot-ext
 
 1. 在您選擇的文字編輯器中開啟 **SimulatedDevice.js** 檔案。
 
-    使用先前所記錄的裝置連接字串來取代 `connectionString` 變數的值。 然後將變更儲存到 **SimulatedDevice.js** 檔案。
+    使用您稍早所記錄的裝置連接字串來取代 `connectionString` 變數的值。 然後將變更儲存到 **SimulatedDevice.js**。
 
 1. 在本機終端機視窗中，執行下列命令以安裝模擬裝置應用程式所需的程式庫，並執行模擬裝置應用程式：
 
@@ -122,9 +127,13 @@ az extension add --name azure-cli-iot-ext
 
 1. 開啟另一個本機終端機視窗，瀏覽至範例 Node.js 專案的根資料夾。 然後瀏覽至 **iot-hub\Quickstarts\read-d2c-messages** 資料夾。
 
-1. 在您選擇的文字編輯器中開啟 **ReadDeviceToCloudMessages.js** 檔案。
+1. 在您選擇的文字編輯器中開啟 **ReadDeviceToCloudMessages.js** 檔案。 更新下列變數，並將您的變更儲存至檔案。
 
-    使用先前所記錄的服務連接字串來取代 `connectionString` 變數的值。 然後將您的變更儲存到 **ReadDeviceToCloudMessages.js** 檔案。
+    | 變數 | 值 |
+    | -------- | ----------- |
+    | `eventHubsCompatibleEndpoint` | 使用您稍早所記錄的事件中樞相容端點來取代變數的值。 |
+    | `eventHubsCompatiblePath`     | 使用您稍早所記錄的事件中樞相容路徑來取代變數的值。 |
+    | `iotHubSasKey`                | 使用您稍早所記錄的服務主要金鑰來取代變數的值。 |
 
 1. 在本機終端機視窗中，執行下列命令安裝所需的程式庫並執行後端應用程式：
 
@@ -143,7 +152,7 @@ az extension add --name azure-cli-iot-ext
 
 ## <a name="next-steps"></a>後續步驟
 
-在此快速入門中，您已經設定 IoT 中樞、註冊裝置、使用 Node.js 應用程式將模擬的遙測傳送到中樞，並使用簡單的後端應用程式從中樞讀取遙測。
+在此快速入門中，您會設定 IoT 中樞、註冊裝置、使用 Node.js 應用程式將模擬的遙測傳送到中樞，並使用簡單的後端應用程式從中樞讀取遙測。
 
 若要了解如何從後端應用程式控制您的模擬裝置，請繼續下一個快速入門。
 

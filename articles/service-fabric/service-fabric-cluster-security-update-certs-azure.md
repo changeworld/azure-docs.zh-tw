@@ -1,30 +1,18 @@
 ---
-title: 管理 Azure Service Fabric 叢集中的憑證 | Microsoft Docs
+title: 管理 Azure Service Fabric 叢集上的憑證
 description: 說明如何在 Service Fabric 叢集新增新的憑證、變換憑證及移除憑證。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chakdan
-editor: ''
-ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/13/2018
-ms.author: aljo
-ms.openlocfilehash: 0038de621a02a2edf3198686e1f2fc88fb917d9c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 43e9c95e0fb8484f7b24c5a0c409d3aa6a68eabc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050232"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658380"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>新增或移除 Azure 中 Service Fabric 叢集的憑證
 建議您熟悉 Service Fabric 使用 X.509 憑證的方式，以及熟悉[叢集安全性案例](service-fabric-cluster-security.md)。 您必須瞭解什麼是叢集憑證及其用途，方可繼續進行後續作業。
 
-Azure Service Fabric SDK 的預設憑證載入行為，是部署和使用到期日最久的已定義憑證；而不管其主要或次要設定定義為何。 切換回傳統行為非，建議使用進階的動作，而且需要將 「 UseSecondaryIfNewer"設定參數值設為 false Fabric.Code 設定中。
+Azure Service Fabric SDK 的預設憑證載入行為是部署和使用到期日最晚的已定義憑證，而不論其主要或次要設定定義為何。 回復為傳統行為是不建議採取的進階動作，而且需要在 `Fabric.Code` 設定內將 "UseSecondaryIfNewer" 設定參數值設為 false。
 
 當您在叢集建立期間設定憑證安全性時，除了用戶端憑證之外，Service Fabric 還可讓您指定兩個叢集憑證：主要與次要。 請參閱[透過入口網站建立 Azure 叢集](service-fabric-cluster-creation-via-portal.md)或[透過 Azure Resource Manager 建立 Azure 叢集](service-fabric-cluster-creation-via-arm.md)，以詳細了解如何在建立這些叢集時進行叢集設定。 如果您在建立時僅指定一個叢集憑證，該憑證就會作為主要憑證。 在叢集建立完成後，您可新增憑證做為次要憑證。
 
@@ -40,26 +28,24 @@ Azure Service Fabric SDK 的預設憑證載入行為，是部署和使用到期�
 您無法透過 Azure 入口網站使用 Azure PowerShell 新增次要叢集憑證。 本文件稍後會簡要說明此程序。
 
 ## <a name="remove-a-cluster-certificate-using-the-portal"></a>使用入口網站來移除叢集憑證
-針對安全叢集，您一律必須至少有一個有效 (未撤銷或過期) 的憑證。 系統會使用部署了最久到期日的憑證，若將它移除，則叢集會停止運作；請務必只移除過期的憑證，或移除最快到期的未使用憑證。
+針對安全叢集，您一律必須至少有一個有效 (未撤銷或過期) 的憑證。 以最晚到期日部署的憑證一定在使用中，如果移除，叢集會停止運作；請確保只移除過期的憑證，或未使用且最快到期的憑證。
 
 若要移除未使用的叢集安全性憑證，請瀏覽至 [安全性] 區段，然後在未使用的憑證上，從快顯功能表中選取 [刪除] 選項。
 
 如果您的目的是要移除標記為主要的憑證，則必須部署到期日比主要憑證還久的次要憑證，以啟用自動變換行為；再於自動變換完成後刪除主要憑證。
 
-## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>使用 Resource Manager Powershell 來新增次要憑證
-> [!TIP]
-> 現在很好也更容易的方式來新增次要憑證，使用[新增 AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) cmdlet。 您不需要遵循本節中的其餘步驟。  此外，您不需要原本用來建立及部署叢集時使用的範本[新增 AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) cmdlet。
+## <a name="add-a-secondary-certificate-using-azure-resource-manager"></a>使用 Azure Resource Manager 新增次要憑證
 
 這些步驟是假設您已熟悉 Resource Manager 的運作方式，並已使用 Resource Manager 範本至少部署一個 Service Fabric 叢集，而且已讓您使用的範本將叢集設定妥當。 此外亦假設您可輕鬆自如地使用 JSON。
 
 > [!NOTE]
-> 如果您正在尋找可用來依循或作為起點的範例範本和參數，可從這個 [git 存放庫](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample)下載。 
+> 如果您正在尋找可用來依循或作為起點的範例範本和參數，可從這個 [git 存放庫](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)下載。 
 > 
 > 
 
 ### <a name="edit-your-resource-manager-template"></a>編輯您的 Resource Manager 範本
 
-為了便於跟著操作，範例 5-VM-1-NodeTypes-Secure_Step2.JSON 包含我們將進行的所有編輯。 您可以從 [git 存放庫](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample)取得該範例。
+為了便於跟著操作，範例 5-VM-1-NodeTypes-Secure_Step2.JSON 包含我們將進行的所有編輯。 您可以從 [git 存放庫](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)取得該範例。
 
 **務必依照所有步驟操作**
 
@@ -117,7 +103,7 @@ Azure Service Fabric SDK 的預設憑證載入行為，是部署和使用到期�
          }
     ``` 
 
-4. 對**所有** **Microsoft.Compute/virtualMachineScaleSets** 資源定義進行變更 - 找出 Microsoft.Compute/virtualMachineScaleSets 資源定義。 在“virtualMachineProfile”下，滚动到“publisher”：“Microsoft.Azure.ServiceFabric”。
+4. 對**所有** **Microsoft.Compute/virtualMachineScaleSets** 資源定義進行變更 - 找出 Microsoft.Compute/virtualMachineScaleSets 資源定義。 捲動至 "publisher":"Microsoft.Azure.ServiceFabric" (在 "virtualMachineProfile" 下)。
 
     在 Service Fabric 發行者設定中，您應該會看到像這樣的畫面。
     
@@ -178,7 +164,7 @@ Azure Service Fabric SDK 的預設憑證載入行為，是部署和使用到期�
 > 
 
 ### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>編輯您的範本檔案，以反映先前加入的新參數
-如果您是依循來自 [git 儲存機制](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample)的範例進行操作，則可以開始在範例 5-VM-1-NodeTypes-Secure.parameters_Step2.JSON 中進行變更 
+如果您是依循來自 [git 儲存機制](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample)的範例進行操作，則可以開始在範例 5-VM-1-NodeTypes-Secure.parameters_Step2.JSON 中進行變更 
 
 請編輯您的 Resource Manager 範本參數檔，新增 secCertificateThumbprint 和 secCertificateUrlValue 的兩個新參數。 
 
@@ -210,7 +196,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName <Resource Group that your clus
 
 ```
 
-將範本部署至您的資源群組。 使用您目前在其中部署叢集的同一個資源群組。 執行新增 AzResourceGroupDeployment 命令。 您無須指定模式，因為預設值為 **增量**。
+將範本部署至您的資源群組。 使用您目前在其中部署叢集的同一個資源群組。 執行 New-AzResourceGroupDeployment 命令。 您無須指定模式，因為預設值為 **增量**。
 
 > [!NOTE]
 > 若您將 [模式] 設為 [完整]，您可能會無意間刪除不在您範本中的資源。 因此請勿在此案例中使用該模式。
@@ -262,7 +248,7 @@ Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveInterval
 Get-ServiceFabricClusterHealth 
 ```
 
-## <a name="deploying-client-certificates-to-the-cluster"></a>用戶端憑證部署至叢集。
+## <a name="deploying-client-certificates-to-the-cluster"></a>將用戶端憑證部署到叢集。
 
 您可以使用與上述步驟 5 中所述的相同步驟，將憑證從金鑰保存庫部署到節點。 您只需定義和使用不同的參數即可。
 
@@ -288,11 +274,15 @@ Get-ServiceFabricClusterHealth
 
 若要移除次要憑證，使其不用於叢集安全性，請瀏覽至 [安全性] 區段，然後從特定憑證上的操作功能表中選取 [刪除] 選項。
 
-## <a name="next-steps"></a>後續步驟
-有关群集管理的详细信息，请阅读以下文章：
+## <a name="adding-application-certificates-to-a-virtual-machine-scale-set"></a>將應用程式憑證新增至虛擬機器擴展集
 
-* [Service Fabric 群集升级过程和用户预期](service-fabric-cluster-upgrade.md)
-* [为客户端设置基于角色的访问](service-fabric-cluster-security-roles.md)
+若要將您用於應用程式的憑證部署到叢集，請參閱[此範例 Powershell 指令碼](scripts/service-fabric-powershell-add-application-certificate.md)。
+
+## <a name="next-steps"></a>後續步驟
+如需有關叢集管理的詳細資訊，請參閱下列文件︰
+
+* [Service Fabric 叢集升級程序與您的期望](service-fabric-cluster-upgrade.md)
+* [設定用戶端的角色型存取](service-fabric-cluster-security-roles.md)
 
 <!--Image references-->
 [Add_Client_Cert]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_13.PNG

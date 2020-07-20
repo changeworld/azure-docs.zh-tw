@@ -1,18 +1,14 @@
 ---
-title: 範例 - ISO 27001 共用服務藍圖 - 概觀
-description: ISO 27001 共用服務藍圖範例的概觀和架構。
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 03/14/2019
+title: ISO 27001 共用服務藍圖範例概觀
+description: ISO 27001 共用服務藍圖範例的概觀和架構。 此藍圖範例可協助客戶評定特定 ISO 27001 控制措施。
+ms.date: 04/15/2020
 ms.topic: sample
-ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: c54d8aedb9464364f93a087de4bdb00c693a96ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5a18af942e1d1088b681712f7035f57d354ecb19
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60875140"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "81458449"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共用服務藍圖範例概觀
 
@@ -25,7 +21,7 @@ ISO 27001 共用服務藍圖範例提供一組符合規範的基礎結構模式�
 ISO 27001 共用服務藍圖範例會在 Azure 中部署基礎結構，讓組織使用此結構來裝載多個以虛擬資料中心 (VDC) 方法為基礎的工作負載。
 VDC 是經過實證的一組參考架構、自動化工具和業務開發模型，由 Microsoft 和其最大企業客戶所使用。 共用服務藍圖範例會以完全原生的 Azure VDC 環境為基礎，如下所示。
 
-![ISO 27001 共用服務藍圖範例設計](../../media/sample-iso27001-shared/iso27001-shared-services-blueprint-sample-design.png)
+:::image type="content" source="../../media/sample-iso27001-shared/iso27001-shared-services-blueprint-sample-design.png" alt-text="ISO 27001 共用服務藍圖範例設計" border="false":::
 
 此環境包含數個 Azure 服務，用來提供以 ISO 27001 標準為基礎且完全受到監視的企業級安全共用服務基礎結構。 此環境包含：
 
@@ -38,7 +34,7 @@ VDC 是經過實證的一組參考架構、自動化工具和業務開發模型�
   - 作為管理用途的 Jumpbox 或防禦主機，其只能透過輸入堆疊子網路中部署的 [Azure 防火牆](../../../../firewall/overview.md)來存取
   - 執行 Active Directory Domain Services (ADDS) 和 DNS 的兩部虛擬機器，這兩部虛擬機器只能透過 Jumpbox 存取，而且可設定為只能透過 VPN 或 [ExpressRoute](../../../../expressroute/expressroute-introduction.md) 連線來複寫 AD (不是由藍圖所部署)
   - 使用 [Azure 網路監看員](../../../../network-watcher/network-watcher-monitoring-overview.md)與標準 DDoS 保護
-- [Azure Key Vault](../../../../key-vault/key-vault-whatis.md) 執行個體，用來裝載共用服務環境中已部署 VM 所使用的祕密
+- [Azure Key Vault](../../../../key-vault/general/overview.md) 執行個體，用來裝載共用服務環境中已部署 VM 所使用的祕密
 
 所有這些項目皆遵循 [Azure 架構中心 - 參考架構](/azure/architecture/reference-architectures/)中所發佈且經過實證的做法。
 

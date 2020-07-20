@@ -1,34 +1,34 @@
 ---
-title: 使用 ImageInsightsToken 尋找先前搜尋中的類似影像 - Bing 圖像式搜尋
+title: 使用影像深入解析權杖和 Bing 圖像式搜尋 API 尋找先前搜尋中的類似影像
 titleSuffix: Azure Cognitive Services
-description: 使用 Bing 圖像式搜尋 SDK 來取得 ImageInsightsToken 所指定影像的 URL。
+description: 使用 Bing 圖像式搜尋用戶端程式庫，從先前的搜尋中取得影像的 URL。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
-ms.topic: article
-ms.date: 04/05/2019
-ms.author: rosh
-ms.openlocfilehash: 39a95e877c766eb8f491c166edeb9d96f21db7dd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.topic: tutorial
+ms.date: 03/31/2020
+ms.author: aahi
+ms.openlocfilehash: a867560edfb66527c09e349328246a8fc24dbbd3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59493940"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207241"
 ---
-# <a name="find-similar-images-from-previous-searches-using-imageinsightstoken"></a>使用 ImageInsightsToken 尋找先前搜尋中的類似影像
+# <a name="tutorial-find-similar-images-from-previous-searches-using-an-image-insights-token"></a>教學課程：使用影像深入解析權杖尋找先前搜尋中的類似影像
 
-圖像式搜尋 SDK 可讓您從先前傳回 `ImageInsightsToken` 的搜尋中，線上尋找影像。 此應用程式可取得 `ImageInsightsToken`，並在後續搜尋中使用權杖。 然後，將傳送`ImageInsightsToken`Bing 和傳回的結果，包括 Bing 搜尋 Url 和在線上找到的類似影像的 Url。
+圖像式搜尋用戶端程式庫可讓您從先前傳回 `ImageInsightsToken` 的搜尋中，線上尋找影像。 此應用程式可取得 `ImageInsightsToken`，並在後續搜尋中使用權杖。 然後會將 `ImageInsightsToken` 傳送到 Bing 並傳回結果，結果中包含 Bing 搜尋 URL 和線上所找到類似影像的 URL。
 
-本教學課程的完整原始程式碼都位於與其他錯誤處理和附註[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchInisghtsTokens.cs)。
+在 [Github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchInsightsTokens.cs) 上可找到此教學課程的完整原始程式碼，其中含有其他錯誤處理和註釋。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* 任何一版的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
-* 如果您使用 Linux/MacOS，您可以執行此應用程式使用[Mono](https://www.mono-project.com/)。
+* 任何版本的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
+* 如果您使用 Linux/MacOS，則可以使用 [Mono](https://www.mono-project.com/) 來執行此應用程式。
 * NuGet 圖像式搜尋和 Bing 影像搜尋套件。
-    - 在 Visual Studio 中方案總管 中以滑鼠右鍵按一下專案，然後選取**管理 NuGet 套件**從功能表。 安裝 `Microsoft.Azure.CognitiveServices.Search.CustomSearch` 套件和 `Microsoft.Azure.CognitiveServices.Search.ImageSearch` 套件。 安裝 NuGet 套件也會安裝：
+    - 在 Visual Studio 的 [方案總管] 中，以滑鼠右鍵按一下專案，然後從功能表選取 [管理 NuGet 套件]  。 安裝 `Microsoft.Azure.CognitiveServices.Search.CustomSearch` 套件和 `Microsoft.Azure.CognitiveServices.Search.ImageSearch` 套件。 安裝 NuGet 套件也會安裝：
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure
         - Newtonsoft.Json
@@ -36,12 +36,12 @@ ms.locfileid: "59493940"
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
-## <a name="get-the-imageinsightstoken-from-the-bing-image-search-sdk"></a>從 Bing 影像搜尋 SDK 取得 ImageInsightsToken
+## <a name="get-the-imageinsightstoken-from-the-bing-image-search-client-library"></a>從 Bing 影像搜尋用戶端程式庫取得 ImageInsightsToken
 
-此應用程式會使用透過 [Bing 影像搜尋 SDK](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart) 所取得的 `ImageInsightsToken`。 在新的 C# 主控台應用程式中，建立會使用 `ImageSearchAPI()` 來呼叫 API 的用戶端。 然後使用`SearchAsync()`與您的查詢：
+此應用程式會使用透過 [Bing 影像搜尋用戶端程式庫](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart)所取得的 `ImageInsightsToken`。 在新的 C# 主控台應用程式中，建立會使用 `ImageSearchClient()` 來呼叫 API 的用戶端。 然後搭配使用 `SearchAsync()` 與您的查詢：
 
 ```csharp
-var client = new ImageSearchAPI(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));
+var client = new ImageSearchClient(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));
 var imageResults = client.Images.SearchAsync(query: "canadian rockies").Result;
 Console.WriteLine("Search images for query \"canadian rockies\"");
 ```
@@ -62,7 +62,7 @@ else
 }
 ```
 
-這`ImageInsightsToken`會傳送給 Bing 圖像式搜尋要求。
+這個 `ImageInsightsToken` 會在要求中傳送至 Bing 圖像式搜尋。
 
 ## <a name="add-the-imageinsightstoken-to-a-visual-search-request"></a>在圖像式搜尋要求中新增 ImageInsightsToken
 
@@ -85,7 +85,7 @@ var visualSearchResults = client.Images.VisualSearchMethodAsync(knowledgeRequest
 
 ## <a name="iterate-through-the-visual-search-results"></a>逐一查看圖像式搜尋結果
 
-圖像式搜尋的結果為 `ImageTag` 物件。 每個標記都包含 `ImageAction` 物件清單。 每個`ImageAction`包含`Data`欄位，也就是一份取決於動作類型的值。 例如，您可以逐一查看 `visualSearchResults.Tags` 中的 `ImageTag` 物件，並從中取得 `ImageAction` 標記。 下列範例會列印的詳細資料`PagesIncluding`動作：
+圖像式搜尋的結果為 `ImageTag` 物件。 每個標記都包含 `ImageAction` 物件清單。 每個 `ImageAction` 都包含 `Data` 欄位，這是會取決於動作類型的值清單。 例如，您可以逐一查看 `visualSearchResults.Tags` 中的 `ImageTag` 物件，並從中取得 `ImageAction` 標記。 下列範例會列印 `PagesIncluding` 動作的詳細資料：
 
 ```csharp
 if (visualSearchResults.Tags.Count > 0)
@@ -111,7 +111,7 @@ if (visualSearchResults.Tags.Count > 0)
 
 ### <a name="pagesincluding-actiontypes"></a>PagesIncluding ActionType
 
-從動作類型取得實際的影像 URL 需要進行轉換，以將 `ActionType` 讀取為 `ImageModuleAction`，其中包含具有值清單的 `Data` 元素。 每個值都是某個影像的 URL。  下列轉換`PagesIncluding`動作類型`ImageModuleAction`和讀取的值：
+從動作類型取得實際的影像 URL 需要進行轉換，以將 `ActionType` 讀取為 `ImageModuleAction`，其中包含具有值清單的 `Data` 元素。 每個值都是某個影像的 URL。  下列程式碼會將 `PagesIncluding` 動作類型轉換為 `ImageModuleAction`，並讀取那些值：
 
 ```csharp
     if (i.ActionType == "PagesIncluding")
@@ -129,19 +129,19 @@ if (visualSearchResults.Tags.Count > 0)
 
 完整的應用程式會傳回下列 URL：
 
-|ActionType  |URL  | |
-|---------|---------|---------|
+|ActionType  |URL  |
+|---------|---------|
 |MoreSizes -> WebSearchUrl     |         |
 |VisualSearch -> WebSearchUrl     |         |
 |ImageById -> WebSearchUrl    |         |
 |RelatedSearches -> WebSearchUrl:    |         |
 |DocumentLevelSuggestions -> WebSearchUrl:     |         |
-|TopicResults -> WebSearchUrl    | https://www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=BcQifmzdKFyyBusjLxxgO42kzq1Geh7RucVVqvH-900&v=1&r=https%3a%2f%2fwww.bing.com%2fdiscover%2fcanadian%2brocky&p=DevEx,5823.1       |
-|ImageResults -> WebSearchUrl    |  https://www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=PV9GzMFOI0AHZp2gKeWJ8DcveSDRE3fP2jHDKMpJSU8&v=1&r=https%3a%2f%2fwww.bing.com%2fimages%2fsearch%3fq%3doutdoor&p=DevEx,5831.1       |
+|TopicResults -> WebSearchUrl    | https:\//www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=BcQifmzdKFyyBusjLxxgO42kzq1Geh7RucVVqvH-900&v=1&r=https%3a%2f%2f www.bing.com%2fdiscover%2fcanadian%2brocky&p=DevEx,5823.1       |
+|ImageResults -> WebSearchUrl    |  https:\//www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID=1BA795A21EAF6A63175699B71FC36B7C&rd=1&h=PV9GzMFOI0AHZp2gKeWJ8DcveSDRE3fP2jHDKMpJSU8&v=1&r=https%3a%2f%2f www.bing.com%2fimages%2fsearch%3fq%3doutdoor&p=DevEx,5831.1       |
 
 如上所示，`TopicResults` 和 `ImageResults` 類型包含針對相關影像的查詢。 URL 會連結至 Bing 搜尋結果。
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [建立圖像式搜尋單一頁面 web 應用程式](tutorial-bing-visual-search-single-page-app.md)
+> [建立圖像式搜尋單頁 Web 應用程式](tutorial-bing-visual-search-single-page-app.md)

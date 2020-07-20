@@ -1,37 +1,29 @@
 ---
-title: 為 App Service 環境設定 Web 應用程式防火牆 (WAF) - Azure
-description: 了解如何設定 Web 應用程式防火牆來保護 App Service 環境。
-services: app-service\web
-documentationcenter: ''
-author: naziml
-manager: erikre
-editor: jimbe
+title: 設定 WAF
+description: 了解如何使用 Azure 應用程式閘道或第三方 WAF，在 App Service 環境前方設定 Web 應用程式防火牆 (WAF)。
+author: ccompy
 ms.assetid: a2101291-83ba-4169-98a2-2c0ed9a65e8d
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/03/2018
-ms.author: naziml
-ms.custom: seodec18
-ms.openlocfilehash: c1930777f44266755f20400d063ec938ee631adb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: stefsch
+ms.custom: mvc, seodec18
+ms.openlocfilehash: d629aca791794de6c3e065fdc9f4a9e7f6d8a5df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089313"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833176"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>設定 App Service 環境的 Web 應用程式防火牆 (WAF)
 ## <a name="overview"></a>概觀
 
 Web 應用程式防火牆 (WAF) 會檢查輸入的 Web 流量以封鎖 SQL 插入、跨網站指令碼、惡意程式碼上傳和應用程式 DDoS 以及其他攻擊，以保護您的 Web 應用程式。 它們也會檢查來自後端 Web 伺服器的回應，以進行資料外洩防護 (DLP)。 這與隔離以及 App Service 環境所提供的額外調整合併使用，以提供裝載商務關鍵 Web 應用程式的理想環境，而這些 Web 應用程式需要防禦惡意要求和大量流量。 Azure 提供隨附於[應用程式閘道](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction)的 WAF 功能。  若想了解如何整合您的 App Service 環境與應用程式閘道，請參閱[整合您的 ILB ASE 與應用程式閘道](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)一文。
 
-除了 Azure 應用程式閘道以外，[Azure Marketplace](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/) 還提供多個市集選項，例如 [Barracuda WAF for Azure](https://www.barracuda.com/programs/azure)。 本文的其餘內容將著重於如何整合您的 App Service 環境與 Barracuda WAF 裝置。
+除了 Azure 應用程式閘道以外，[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf?tab=PlansAndPrice) 還提供多個市集選項，例如 [Barracuda WAF for Azure](https://www.barracuda.com/programs/azure)。 本文的其餘內容將著重於如何整合您的 App Service 環境與 Barracuda WAF 裝置。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)] 
 
-## <a name="setup"></a>設定
+## <a name="setup"></a>安裝程式
 在本文中，我們會設定受多個 Barracuda WAF 負載平衡執行個體保護的 App Service 環境，只讓來自 WAF 的流量到達 App Service 環境，而且無法從 DMZ 存取。 在 Barracuda WAF 執行個體之前，我們也有「Azure 流量管理員」可在 Azure 資料中心和區域中進行負載平衡。 設定的概覽圖表看起來會如下圖所示：
 
 ![架構][Architecture] 
@@ -79,7 +71,7 @@ Barracuda WAF 使用 TCP 連接埠 8000，以透過其管理入口網站進行�
 ![管理加入服務][ManagementAddServices]
 
 > [!NOTE]
-> 根據應用程式的設定方式與 App Service 環境中正在使用的功能而定，您需要轉送非 80 和 443 之 TCP 連接埠的流量 (例如，如果您為 App Service 應用程式設定了 IP SSL)。 如需 App Service 環境中所使用網路連接埠的清單，請參閱[控制輸入流量文件](app-service-app-service-environment-control-inbound-traffic.md)的＜網路連接埠＞一節。
+> 根據應用程式的設定方式與 App Service 環境中正在使用的功能而定，您需要轉送非 80 和 443 之 TCP 連接埠的流量 (例如，如果您為 App Service 應用程式設定了 IP TLS)。 如需 App Service 環境中所使用網路連接埠的清單，請參閱[控制輸入流量文件](app-service-app-service-environment-control-inbound-traffic.md)的＜網路連接埠＞一節。
 > 
 > 
 
@@ -97,9 +89,11 @@ Barracuda WAF 使用 TCP 連接埠 8000，以透過其管理入口網站進行�
 ![網站轉譯][WebsiteTranslations]
 
 ## <a name="securing-traffic-to-app-service-environment-using-network-security-groups-nsg"></a>使用網路安全性群組 (NSG) 保護 App Service 環境流量的安全
-如需使用雲端服務的 VIP 位址只限制從 WAF 流入 App Service 環境之流量的詳細資訊，請遵循 [控制輸入流量文件](app-service-app-service-environment-control-inbound-traffic.md) 。 以下是針對 TCP 通訊埠 80 執行這項工作的範例 Powershell 命令。
+如需使用雲端服務的 VIP 位址只限制從 WAF 流入 App Service 環境之流量的詳細資訊，請遵循 [控制輸入流量文件](app-service-app-service-environment-control-inbound-traffic.md) 。 以下是針對 TCP 通訊埠 80 執行這項工作的範例 PowerShell 命令。
 
-    Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+```azurepowershell-interactive
+Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+```
 
 將 SourceAddressPrefix 取代為 WAF 雲端服務的虛擬 IP 位址 (VIP)。
 

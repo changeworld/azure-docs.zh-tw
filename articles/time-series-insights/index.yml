@@ -1,61 +1,79 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Time Series Insights 文件
+summary: 了解如何使用快速入門、教學課程、JavaScript 範例和 REST API 文件，透過完全受控事件處理在雲端中執行 Azure IoT 分析。 即時分析來自應用程式、感應器、裝置等的資料。
 metadata:
   title: Azure 時間序列深入解析文件 - 快速入門、教學課程和 API 參考 | Microsoft Docs
-  description: 了解如何透過完全受控事件處理，在雲端執行 Azure IoT 分析。 即時分析來自應用程式、感應器、裝置等的資料。
+  description: 了解如何使用快速入門、教學課程、JavaScript 範例和 REST API 文件，透過完全受控事件處理在雲端中執行 Azure IoT 分析。
   services: time-series-insights
-  author: anshan
-  manager: cshankar
   ms.service: time-series-insights
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: time-series-insights
   ms.topic: landing-page
-  ms.date: 04/23/2019
-  ms.author: anshan
-abstract:
-  description: 歡迎使用 Azure 時間序列深入解析。 Azure 時間序列深入解析提供強大的資料探索和各種遙測工具，協助您改進操作上的分析。 本文件會說明服務的各項功能、如何開始使用、用戶端 SDK、並介紹各種強大的時間序列深入解析 API。 文件中提供兩種版本的資訊，分別是與已推出的時間序列深入解析 GA 相關的資訊，以及時間序列深入解析預覽版本的重大服務更新資訊。
-  aside:
-    image:
-      alt: Azure 時間序列深入解析功能提供影片介紹。
-      height: 110
-      src: media/index/new-tsi-intro.png
-      width: 250
-    title: '適用於 IoT 應用程式的時間序列深入解析。 (13:31)'
-    href: 'https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics'
-    width: 250
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 探索快速入門範例，協助您快速了解 Azure 時間序列深入解析的相關資訊。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/time-series-insights/media/index/time-series-insights.svg'
-            text: 探索 Azure 時間序列深入解析 GA
-            href: /azure/time-series-insights/time-series-quickstart
-      - html: <p><a href="/azure/time-series-insights/time-series-insights-update-quickstart">探索 Azure 時間序列深入解析預覽</a></p>
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何建立 Azure 時間序列深入解析環境及單頁 Web 應用程式，並透過數個逐步說明範例深入了解。
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Azure 時間序列深入解析 GA
-            html: <p><a href="/azure/time-series-insights/tutorial-create-populate-tsi-environment">建立一個環境</a></p> <p><a href="/azure/time-series-insights/tutorial-create-tsi-sample-spa">建立單頁 Web 應用程式</a></p> <p><a href="/azure/time-series-insights/tutorial-explore-js-client-lib">探索 JavaScript 用戶端程式庫</a></p>
-          - title: Azure 時間序列深入解析預覽
-            html: <p><a href="/azure/time-series-insights/time-series-insights-update-create-environment">預覽教學課程</a></p>
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 時間序列深入解析 GA API
-            html: <p><a href="/rest/api/time-series-insights-management">資源管理 API</a></p> <p><a href="/rest/api/time-series-insights/ga-query-api">查詢 API</a></p> <p><a href="/rest/api/time-series-insights/ga-query-syntax">查詢語法</a></p>
-          - title: 時間序列深入解析預覽 API
-            html: <p><a href="/rest/api/time-series-insights/preview-query">查詢 API</a></p> <p><a href="/rest/api/time-series-insights/preview-model">模型 API</a></p> <p><a href="/rest/api/time-series-insights/preview-env">環境 API</a></p> <p><a href="/rest/api/time-series-insights/preview-tsx">時間序列運算式 API</a></p>
+  ms.collection: collection
+  author: KingdomOfEnds
+  ms.author: v-adgera
+  ms.date: 02/12/2020
+  ms.openlocfilehash: 1119c4ec7c0b57f1b3707708ecb9227d737e2898
+  ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 07/07/2020
+  ms.locfileid: "86043116"
+landingContent:
+- title: 關於 Azure 時間序列深入解析
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure 時間序列深入解析預覽版？
+      url: time-series-insights-update-overview.md
+    - text: 關於 Azure 時間序列深入解析 GA
+      url: time-series-insights-overview.md
+    - text: 用戶端 SDK 範例視覺效果
+      url: https://tsiclientsample.azurewebsites.net/
+  - linkListType: concept
+    links:
+    - text: 在時間序列深入解析總管預覽版中將資料視覺化
+      url: time-series-insights-update-explorer.md
+    - text: 時間序列模型
+      url: concepts-model-overview.md
+  - linkListType: video
+    links:
+    - text: 適用於 IoT 應用程式的時間序列深入解析。 (13:31)
+      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics
+- title: 開始使用預覽版
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 探索 Azure 時間序列深入解析預覽
+      url: time-series-insights-update-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Azure 時間序列深入解析預覽教學課程
+      url: time-series-insights-update-create-environment.md
+  - linkListType: deploy
+    links:
+    - text: 連線至事件中樞
+      url: time-series-insights-how-to-add-an-event-source-eventhub.md
+    - text: 連線至 IoT 中樞
+      url: time-series-insights-how-to-add-an-event-source-iothub.md
+    - text: 規劃您的環境
+      url: time-series-insights-update-plan.md
+    - text: 資料擷取概觀
+      url: concepts-ingestion-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 佈建和管理
+      url: time-series-insights-update-how-to-manage.md
+    - text: 授與資料存取
+      url: time-series-insights-data-access.md
+- title: API 參考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure Time Series Insights
+      url: /rest/api/time-series-insights/
+    - text: 資料存取概念預覽
+      url: /rest/api/time-series-insights/preview
+    - text: 資料存取 GA
+      url: /rest/api/time-series-insights/ga
+    - text: JavaScript 用戶端 SDK
+      url: https://github.com/microsoft/tsiclient/blob/master/docs/API.md

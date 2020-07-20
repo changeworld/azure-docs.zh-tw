@@ -4,12 +4,12 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: 654bc3745768fccea41d7c3991142bf7183b54be
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
-ms.translationtype: HT
+ms.openlocfilehash: e66e7d4646b650d2d811d3807db04605dfddeded
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42809509"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67174493"
 ---
 1. 在您的 **app** 專案中開啟 `AndroidManifest.xml` 檔案。 在 `application` 起始標籤後新增下列程式碼：
 
@@ -34,7 +34,7 @@ ms.locfileid: "42809509"
         import com.google.firebase.iid.FirebaseInstanceId;
         ```
 
-    - 將 `MobileServiceClient` 的定義從 [私人] 變更為 [公用靜態]，如下所示：
+    - 將 `MobileServiceClient` 的定義從 [私人]**** 變更為 [公用靜態]****，如下所示：
 
         ```java
         private static MobileServiceClient mClient;
@@ -62,7 +62,7 @@ ms.locfileid: "42809509"
         registerPush();
         ```
 
-3. 新增類別來處理通知。 在 [專案總管] 中，開啟 **app** > **java** > **your-project-namespace** 節點，然後以滑鼠右鍵按一下套件名稱節點。 按一下 [新增]，然後按一下 [Java 類別]。 在 [名稱] 中，輸入 `ToDoMessagingService`，然後按一下 [確定]。 然後，將類別宣告取代為：
+3. 新增類別來處理通知。 在專案資源管理器中，打開**應用** > **java** > **您的專案命名空間**節點，然後按右鍵包名稱節點。 按一下 [新增]****，然後按一下 [Java 類別]****。 在 [名稱] 中，輸入 `ToDoMessagingService`，然後按一下 [確定]。 然後，將類別宣告取代為：
 
     ```java
     import android.app.Notification;

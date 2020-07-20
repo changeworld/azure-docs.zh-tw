@@ -1,21 +1,21 @@
 ---
 title: 在 Azure Cosmos DB 中最佳化儲存體成本
 description: 本文說明如何針對儲存在 Azure Cosmos DB 中的資料管理儲存體成本
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: rimman
-ms.openlocfilehash: aed32db257ddbc8cb5b8f4af5f27024c23583798
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/21/2019
+ms.openlocfilehash: 1508adda761fcba7ba70df3bb212d3eb4e32f242
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60928908"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "72754952"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中最佳化儲存體成本
 
-Azure Cosmos DB 能提供無限制的儲存體和輸送量。 不同於輸送量 (需要在 Azure Cosmos 容器或資料庫上進行佈建/設定)，儲存體是根據耗用量來計費。 您只需為自己所耗用的邏輯儲存體支付費用，且不需要事先保留任何儲存體。 儲存體會根據您針對 Azure Cosmos DB 容器所新增或移除的資料，自動相應增加和減少。
+Azure Cosmos DB 能提供無限制的儲存體和輸送量。 不同於輸送量 (需要在 Azure Cosmos 容器或資料庫上進行佈建/設定)，儲存體是根據耗用量來計費。 您只需為自己所耗用的邏輯儲存體支付費用，且不需要事先保留任何儲存體。 儲存體會根據您在 Azure Cosmos 容器中新增或移除的資料，自動相應增加和減少。
 
 ## <a name="storage-cost"></a>儲存成本
 
@@ -39,7 +39,7 @@ Azure Cosmos DB 能提供無限制的儲存體和輸送量。 不同於輸送量
 
 ## <a name="check-storage-consumed"></a>檢查已耗用的儲存體
 
-若要檢查 Azure Cosmos 容器的儲存體耗用量，您可以在容器上執行 HEAD 或 GET 要求，然後檢查 `x-ms-request-quota` 和 `x-ms-request-usage` 標頭。 或者，當使用.NET SDK，您可以使用[Resourceresponse<t](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))，並[Documentsizequota](https://msdn.microsoft.com/library/azure/dn850324.aspx)屬性，以取得使用的儲存體。
+若要檢查 Azure Cosmos 容器的儲存體耗用量，您可以在容器上執行 HEAD 或 GET 要求，然後檢查 `x-ms-request-quota` 和 `x-ms-request-usage` 標頭。 或者，在使用 .NET SDK 時，您可以使用[DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))和[DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx)屬性來取得使用的儲存體。
 
 ## <a name="using-sdk"></a>使用 SDK
 

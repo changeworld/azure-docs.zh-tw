@@ -1,19 +1,18 @@
 ---
 title: 透過 macOS 的 SMB 掛接 Azure 檔案共用 | Microsoft Docs
 description: 了解如何透過 macOS 的 SMB 掛接 Azure 檔案共用。
-services: storage
-author: roygara
+author: RenaShahMSFT
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/19/2017
-ms.author: rogarana
+ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: 7f2abbb355513c175329d01b9d5ed8884f2c27ef
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 87271cfc602ff81a65a63426360f3bc0a8a8f030
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64715943"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509824"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>透過 macOS 的 SMB 掛接 Azure 檔案共用
 [Azure 檔案服務](storage-files-introduction.md)是 Microsoft 易於使用的雲端檔案系統。 您可以使用 macOS El Capitan 10.11+ 所推出的業界標準 SMB 3 通訊協定來掛接 Azure 檔案共用。 本文說明兩種在 macOS 上掛接 Azure 檔案共用的不同方式：使用 Finder UI 和使用終端機。
@@ -32,15 +31,15 @@ ms.locfileid: "64715943"
 
 * **儲存體帳戶金鑰**：若要掛接 Azure 檔案共用，您將需要主要 (或次要) 儲存體金鑰。 掛接目前不支援 SAS 金鑰。
 
-* **請確定已開啟連接埠 445**：SMB 會透過 TCP 連接埠 445 進行通訊。 在用戶端電腦 (Mac) 中，請檢查並確定您的防火牆不會封鎖 TCP 通訊埠 445。
+* **請確定已開啟連接埠 445**SMB 透過 TCP 通訊埠 445 進行通訊。 在用戶端電腦 (Mac) 中，請檢查並確定您的防火牆不會封鎖 TCP 通訊埠 445。
 
 ## <a name="mount-an-azure-file-share-via-finder"></a>透過搜尋工具掛接 Azure 檔案共用
 1. **開啟搜尋工具**：搜尋工具在 macOS 中為預設開啟，但是您可以按一下 Dock 上的 [macOS 臉部圖示] 確保它是目前選取的應用程式：  
     ![macOS 臉部圖示](./media/storage-how-to-use-files-mac/mount-via-finder-1.png)
 
-2. **從 [前往] 功能表選取 [連線至伺服器]**：使用必要條件中的 UNC 路徑，將開頭的雙反斜線 (`\\`) 轉換為 `smb://`，並將其他所有的反斜線 (`\`) 轉換為正斜線 (`/`)。 您的連結看起來應該如下所示：![[連線至伺服器] 對話方塊](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
+2. **從 [執行] 功能表中選取 [連線到伺服器**]：使用必要條件的 UNC 路徑，將開頭的雙反斜線（ `\\` ）轉換為 `smb://` ，並將所有其他反斜線（）轉換為 `\` 轉送斜線（ `/` ）。 您的連結應看起來如下所示：![[連線至伺服器] 對話方塊](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
 
-3. **提示您輸入使用者名稱和密碼時，使用儲存體帳戶名稱和儲存體帳戶金鑰**：當您在 [連線至伺服器] 對話方塊中按一下 [連線] 時，系統會提示您輸入使用者名稱和密碼 (這會使用您的 macOS 使用者名稱自動填入)。 您可以選擇將儲存體帳戶名稱/儲存體帳戶金鑰置於您的 macOS 金鑰鏈。
+3. **提示您輸入使用者名稱和密碼時，使用儲存體帳戶名稱和儲存體帳戶金鑰**：當您在 [連線至伺服器] 對話方塊中按一下 [連線] 時，系統會提示您的使用者名稱和密碼 (這會使用您的 macOS 使用者名稱自動填入)。 您可以選擇將儲存體帳戶名稱/儲存體帳戶金鑰置於您的 macOS 金鑰鏈。
 
 4. **視需要使用 Azure 檔案共用**：在使用共用名稱和儲存體帳戶金鑰替換使用者名稱和密碼之後，系統將掛接共用。 您可以依照平常使用本機資料夾/檔案共用的方式使用，包括將檔案拖放到檔案共用中：
 

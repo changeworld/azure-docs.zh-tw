@@ -1,31 +1,29 @@
 ---
-title: Azure Data Lake Storage Gen2 Storm 效能微調指導方針 | Microsoft Docs
+title: 微調效能：風暴、HDInsight & Azure Data Lake Storage Gen2 |Microsoft Docs
 description: Azure Data Lake Storage Gen2 Storm 效能微調指導方針
-services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
-ms.date: 12/06/2018
+ms.topic: how-to
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: aa3c942448be6444044981eacc2bbc3214b9c1b4
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
-ms.translationtype: MT
+ms.openlocfilehash: 60e0d3fc22fdfc158110e9936748cc0bda280853
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64939397"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465910"
 ---
-# <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>HDInsight 和 Azure Data Lake Storage Gen2 上的 Storm 效能微調方針
+# <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>微調效能：風暴、HDInsight & Azure Data Lake Storage Gen2
 
 了解在微調 Azure Storm 拓撲的效能時應考量的因素。 例如，務必要了解由 Spout 和 Bolt 所完成之工作 (不論是 I/O 密集或記憶體密集工作) 的特性。 本文探討各種效能微調指導方針，包括疑難排解方面的常見問題。
 
 ## <a name="prerequisites"></a>必要條件
 
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure Data Lake Storage Gen2 帳戶**。 如需如何建立帳戶的指示，請參閱[快速入門：建立用於分析的儲存體帳戶](data-lake-storage-quickstart-create-account.md)。
+* **Azure Data Lake Storage Gen2 帳戶**。 如需有關如何建立的指示，請參閱[快速入門：建立儲存體帳戶以進行分析](data-lake-storage-quickstart-create-account.md)。
 * 可存取 Data Lake Storage Gen2 帳戶的 **Azure HDInsight 叢集**。 請參閱[搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)。 請確實為叢集啟用遠端桌面。
-* **在 Data Lake Storage Gen2 上執行 Storm 叢集**。 如需詳細資訊，請參閱 [HDInsight 上的 Storm](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview)。
+* **在 Data Lake Storage Gen2 上執行 Storm 叢集**。 如需詳細資訊，請參閱[在 HDInsight 上的風暴](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview)。
 * **Data Lake Storage Gen2 的效能微調方針**。  如需一般的效能概念，請參閱 [Data Lake Storage Gen2 效能微調指導方針](data-lake-storage-performance-tuning-guidance.md)。   
 
 ## <a name="tune-the-parallelism-of-the-topology"></a>調整拓撲的平行處理原則
@@ -64,7 +62,7 @@ ms.locfileid: "64939397"
 在擁有基本拓撲之後，您可以考慮是否要調整任何參數︰
 * **每個背景工作節點的 JVM 數目。** 如果您在記憶體中裝載了一個大型資料結構 (例如，查閱資料表)，每個 JVM 都需要個別的複本。 或者，如果您的 JVM 較少，您可以使用跨多個執行緒的資料結構。 針對 Bolt 的 I/O，JVM 數目所造成的差異，不會比跨這些 JVM 所新增的執行緒數目還多。 為了簡單起見，最好讓每個背景工作有一個 JVM。 但根據 Bolt 所執行的作業或您所需的應用程式處理而定，您可能需要變更此數量。
 * **Spout 執行程式的數目。** 因為上述範例使用 Bolt 來寫入至 Data Lake Storage Gen2，所以 Spout 的數目不會與 Bolt 的效能直接相關。 不過，根據 Spout 中發生的處理或 I/O 數量，最好是微調 Spout 以獲得最佳效能。 確定您有足夠的 Spout 能讓 Bolt 保持忙碌。 Spout 的輸出速率應該符合 Bolt 的輸送量。 實際組態取決於 Spout。
-* **工作數目。** 每個 Bolt 都會以單一執行緒的形式來執行。 每個 Bolt 的其他工作不會提供任何額外的並行能力。 如果認可 Tuple 的處理序會佔用 Bolt 大部分的執行時間，它們的優點才會浮現。 您最好先將許多 Tuple 群組成較大的附加項目，再從 Bolt 傳送認可。 因此，在大部分情況下，多個工作不會提供額外的好處。
+* **工作數目。** 每個 Bolt 都會以單一執行緒的形式來執行。 每個 Bolt 的其他工作不會提供任何額外的並行能力。 如果認可 Tuple 的處理序會佔用 Bolt 大部分的執行時間，它們的優點才會浮現。 在您從螺栓傳送通知之前，最好先將許多元組組成較大的附加。 因此，在大部分情況下，多個工作不會提供額外的好處。
 * **本機或隨機群組。** 本設定啟用時，會將 Tuple 傳送至相同背景工作處理序內的 Bolt。 這可降低處理序間的通訊和網路呼叫。 這是大部分拓撲的建議作法。
 
 這個基本案例是不錯的起點。 使用您自己的資料進行測試來調整前述參數，以達到最佳效能。
@@ -73,7 +71,7 @@ ms.locfileid: "64939397"
 
 您可以修改下列設定來微調 Spout。
 
-- **Tuple 逾時︰topology.message.timeout.secs**。 此設定會決定訊息完成和接收認可所需的時間量，在此時間後，便會將訊息視為失敗。
+- **Tuple 逾時︰topology.message.timeout.secs**。 此設定會決定訊息完成所需的時間量，並在被視為失敗之前接收認可。
 
 - **每個背景工作處理序的記憶體上限：worker.childopts**。 此設定可讓您指定 Java 背景工作的其他命令列參數。 這裡最常使用的設定是 XmX，它會決定配置給 JVM 堆積的記憶體上限。
 
@@ -90,17 +88,17 @@ ms.locfileid: "64939397"
 
 * **總處理序執行延遲。** 這是一個 Tuple 由 Spout 發出、由 Bolt 處理並受到認可所花費的平均時間。
 
-* **總 Bolt 處理序延遲。** 這是 Tuple 收到認可之前在 Bolt 所花費的平均時間。
+* **總 Bolt 處理序延遲。** 這是在螺栓上的元組所花費的平均時間，直到它收到認可為止。
 
 * **總 Bolt 執行延遲。** 這是 Bolt 在 execute 方法所花費的平均時間。
 
 * **失敗次數。** 這是指 Tuple 在逾時之前能夠無法完全處理的次數。
 
-* **容量。** 這是系統忙碌程度的量值。 如果這個數字為 1，Bolt 會以它最快的速度工作。 如果小於 1，將會增加平行處理原則。 如果大於 1，則會減少平行處理原則。
+* **存儲.** 這是系統忙碌程度的量值。 如果這個數字為 1，Bolt 會以它最快的速度工作。 如果小於 1，將會增加平行處理原則。 如果大於 1，則會減少平行處理原則。
 
 ## <a name="troubleshoot-common-problems"></a>針對常見問題進行疑難排解
 以下是一些常見的疑難排解案例。
-* **許多 Tuple 逾時。** 查看拓撲中的每個節點，以判斷瓶頸所在。 最常見的原因是 Bolt 無法跟上 Spout。 這導致 Tuple 在等待處理時阻塞了內部緩衝區。 請考慮增加逾時值，或減少 Spout 暫止上限。
+* **許多元組都會計時。** 查看拓撲中的每個節點，以判斷瓶頸所在的位置。 最常見的原因是 Bolt 無法跟上 Spout。 這導致 Tuple 在等待處理時阻塞了內部緩衝區。 請考慮增加逾時值，或減少 Spout 暫止上限。
 
 * **總處理序執行延遲很高，但 Bolt 處理序延遲卻很低。** 在此情況下，認可 Tuple 的速度可能不夠快。 請確認認可者的數量足夠。 另一個可能的原因是，它們在佇列中等待很久之後，Bolt 才開始處理。 減少 Spout 暫止上限。
 
@@ -111,10 +109,10 @@ ms.locfileid: "64939397"
 
 若要檢查您是否遭到節流，請在用戶端啟用偵錯記錄：
 
-1. 在 [Ambari] > [Storm] > [設定] > [Advanced storm-worker-log4j] 中，將 **&lt;root level="info"&gt;** 變更為 **&lt;root level=”debug”&gt;**。 重新啟動所有節點/服務，以便讓設定生效。
+1. 在**Ambari**  >  **暴**設定的  >  **Config**  >  [**Advanced**log4j] 中，將** &lt; 根層級 = "info &gt; "** 變更為** &lt; 根層級 = &gt; "debug"**。 重新啟動所有節點/服務，以便讓設定生效。
 2. 監視背景工作節點上的 Storm 拓撲記錄 (在 /var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log 下)，注意是否有 Data Lake Storage Gen2 節流例外狀況。
 
 ## <a name="next-steps"></a>後續步驟
-Storm 的其他效能微調請參考[此部落格](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)。
+您可以在[此 blog](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)中參考其他風暴的效能微調。
 
 如需可執行的其他範例，請參閱 [GitHub 上的這一個](https://github.com/hdinsight/storm-performance-automation)。

@@ -10,35 +10,36 @@ ms.assetid: e57df269-1019-4b74-b74d-53155b809d59
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 1fbafcdab938a0f8653df48631d7733cc58a3668
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 78866804f10d12beda46f1fab9c8c78509a5a0b2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60656771"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249966"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Azure API 管理中的頁面範本
 「Azure API 管理」可讓您使用一組可設定開發人員入口網站頁面內容的範本，來自訂那些頁面的內容。 使用這些範本時，您可以運用 [DotLiquid](http://dotliquidmarkup.org/) 語法和您選擇的編輯器 (例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers))，以及一組提供的當地語系化[字串資源](api-management-template-resources.md#strings)、[字符資源](api-management-template-resources.md#glyphs)和[頁面控制項](api-management-page-controls.md)，依照您的想法自由靈活地設定頁面內容。  
   
  本節中的範本可讓您自訂開發人員入口網站中下列頁面的內容：登入、註冊及找不到頁面。  
   
--   [登录](#SignIn)  
+-   [登入](#SignIn)  
   
--   [注册](#SignUp)  
+-   [登記](#SignUp)  
   
 -   [找不到頁面](#PageNotFound)  
   
 > [!NOTE]
->  下列文件中包含範例預設範本，但範本可能會因持續進行的改善而有變更。 您可以瀏覽至想要的個別範本，來檢視開發人員入口網站中的即時預設範本。 如需有關使用範本的詳細資訊，請參閱[如何使用範本自訂 API 管理開發人員入口網站](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
+>  下列文件中包含範例預設範本，但範本可能會因持續進行的改善而有變更。 您可以瀏覽至想要的個別範本，來檢視開發人員入口網站中的即時預設範本。 如需有關使用範本的詳細資訊，請參閱[如何使用範本自訂 API 管理開發人員入口網站](./api-management-developer-portal-templates.md)。  
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="SignIn"></a> 登入  
- 「登入」範本可讓您自訂開發人員入口網站中的登入頁面。  
+##  <a name="sign-in"></a><a name="SignIn"></a>登錄  
+ 「登入」**** 範本可讓您自訂開發人員入口網站中的登入頁面。  
   
  ![登入頁面](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM 登入頁面開發人員入口網站範本")  
   
@@ -98,7 +99,7 @@ ms.locfileid: "60656771"
 </div>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控制項  
  此範本可能會使用下列[頁面控制項](api-management-page-controls.md)。  
   
 -   [basic-signin](api-management-page-controls.md#basic-signin)  
@@ -136,8 +137,8 @@ ms.locfileid: "60656771"
 }
 ```  
   
-##  <a name="SignUp"></a> 註冊  
- 「註冊」範本可讓您自訂開發人員入口網站中的註冊頁面。  
+##  <a name="sign-up"></a><a name="SignUp"></a>登記  
+ 「註冊」**** 範本可讓您自訂開發人員入口網站中的註冊頁面。  
   
  ![註冊頁面](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM 註冊頁面開發人員入口網站範本")  
   
@@ -157,7 +158,7 @@ ms.locfileid: "60656771"
 </div>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控制項  
  此範本可能會使用下列[頁面控制項](api-management-page-controls.md)。  
   
 -   [sign-up](api-management-page-controls.md#sign-up)  
@@ -184,8 +185,8 @@ ms.locfileid: "60656771"
 }  
 ```  
   
-##  <a name="PageNotFound"></a> 找不到頁面  
- 「找不到頁面」範本可讓您自訂開發人員入口網站中的「找不到頁面」頁面。  
+##  <a name="page-not-found"></a><a name="PageNotFound"></a>找不到頁面  
+ 「找不到頁面」**** 範本可讓您自訂開發人員入口網站中的「找不到頁面」頁面。  
   
  ![找不到頁面](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM 找不到頁面開發人員入口網站範本")  
   
@@ -221,18 +222,18 @@ ms.locfileid: "60656771"
 </p>  
 ```  
   
-### <a name="controls"></a>控制  
+### <a name="controls"></a>控制項  
  此範本可能不使用任何[頁面控制項](api-management-page-controls.md)。  
   
 ### <a name="data-model"></a>資料模型  
   
 |屬性|類型|描述|  
 |--------------|----------|-----------------|  
-|referenceCode|string|因發生內部錯誤而顯示此頁面時所產生的代碼。|  
-|errorCode|string|因發生內部錯誤而顯示此頁面時所產生的代碼。|  
-|emailBody|string|因發生內部錯誤而顯示此頁面時所產生的電子郵件本文。|  
-|requestedUrl|string|找不到頁面時所要求的 URL。|  
-|referrerUrl|string|所要求 URL 的查閱者 URL。|  
+|referenceCode|字串|因發生內部錯誤而顯示此頁面時所產生的代碼。|  
+|errorCode|字串|因發生內部錯誤而顯示此頁面時所產生的代碼。|  
+|emailBody|字串|因發生內部錯誤而顯示此頁面時所產生的電子郵件本文。|  
+|requestedUrl|字串|找不到頁面時所要求的 URL。|  
+|referrerUrl|字串|所要求 URL 的查閱者 URL。|  
   
 ### <a name="sample-template-data"></a>範例範本資料  
   

@@ -1,27 +1,18 @@
 ---
-title: 在 Azure 中使用共用 VM 映像來建立擴展集 | Microsoft Docs
+title: 在 Azure 中使用共用 VM 映射建立擴展集
 description: 了解如何使用 Azure PowerShell 來建立共用 VM 映像，以用來在 Azure 中部署虛擬機器擴展集。
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: axayjo
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: cynthn
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/25/2019
-ms.author: akjosh; cynthn
-ms.custom: ''
-ms.openlocfilehash: ff8d94213e4e07b6597f6195126116a607c18bf7
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
-ms.translationtype: MT
+ms.subservice: imaging
+ms.topic: how-to
+ms.date: 05/04/2020
+ms.author: cynthn
+ms.reviewer: akjosh
+ms.openlocfilehash: d0912958aaa897e4f8bc18aa88e0c41078d375a8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191722"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82792780"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-powershell"></a>使用 Azure PowerShell 為虛擬機器擴展集建立及使用共用映像
 
@@ -31,52 +22,24 @@ ms.locfileid: "65191722"
 
 資源庫是一種頂層資源，可提供完整的角色型存取控制 (RBAC)。 可建立映像版本，並且您可以選擇將每個映像版本複寫到不同的 Azure 區域集合。 資源庫僅適用於受控映像。 
 
-共用映像庫具有多個資源類型。 我們將在這篇文章中使用或建置這些資源類型：
+共用映像庫具有多個資源類型。 
 
-| 資源 | 描述|
-|----------|------------|
-| **受控映像** | 這是基本映像，既可單獨使用，也可用來在映像庫中建立個**映像版本**。 受控映像是從一般化 VM 建立的。 受控映像是一種特殊的 VHD 類型，可用來產生多個 VM，現在可以用來建立共用映像版本。 |
-| **映像庫** | 和 Azure Marketplace 一樣，**映像庫**是用於管理和共用映像的存放庫，但您可以控制哪些使用者能夠存取。 |
-| **映像定義** | 映像會在資源庫內定義，並帶有映像資訊以及在內部使用時所需滿足的需求。 這包括映像是 Windows 還是 Linux、版本資訊以及最小和最大的記憶體需求。 這是映像類型的定義。 |
-| **映像版本** | **映像版本**是在使用資源庫時用來建立 VM 的項目。 您可以視需要為環境準備多個映像版本。 和受控映像一樣，當您使用**映像版本**來建立 VM 時，系統會使用映像版本來建立 VM 的新磁碟。 映像版本可以使用多次。 |
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
-[!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>開始之前
 
 下列步驟將詳細說明如何將現有 VM 轉換成可重複使用的自訂映像，以便讓您用來建立新的 VM 執行個體。
 
-若要完成本文中的範例，您必須具有現有的受控映像。 您可以遵循[教學課程：使用 Azure PowerShell 建立及使用虛擬機器擴展集的自訂映像](tutorial-use-custom-image-powershell.md)來建立一個 (如有需要)。 如果受控映像會包含資料磁碟，資料磁碟大小不得超過 1 TB。
+若要完成本文中的範例，您必須具有現有的受控映像。 您可以遵循[教學課程：建立及使用虛擬機器擴展集的自訂映射與 Azure PowerShell](tutorial-use-custom-image-powershell.md) ，以在需要時建立一個。 如果受控映射包含資料磁片，資料磁片大小不能超過 1 TB。
 
 逐步完成本文之後，請視需要取代資源群組和 VM 名稱。
 
 
 [!INCLUDE [virtual-machines-common-shared-images-ps](../../includes/virtual-machines-common-shared-images-powershell.md)]
 
-## <a name="create-a-scale-set-from-the-shared-image-version"></a>從共用映像版本建立擴展集
 
-使用 [New-AzVmss](/powershell/module/az.compute/new-azvmss) 建立虛擬機器擴展集。 下列範例會從美國西部資料中心的新的映像版本建立擴展集。 系統會自動建立虛擬網路、公用 IP 位址和負載平衡器的 Azure 網路資源。 出現提示時，請為擴展集中的 VM 執行個體設定自己的系統管理認證：
-
-```azurepowershell-interactive
-New-AzVmss `
-  -ResourceGroupName myVMSSRG `
-  -Location 'South Central US' `
-  -VMScaleSetName 'myScaleSet' `
-  -VirtualNetworkName 'myVnet' `
-  -SubnetName 'mySubnet'`
-  -PublicIpAddressName 'myPublicIPAddress' `
-  -LoadBalancerName 'myLoadBalancer' `
-  -UpgradePolicyMode 'Automatic' `
-  -ImageName $imageVersion.Id
-```
-
-建立及設定所有擴展集資源和 VM 需要幾分鐘的時間。
-
-[!INCLUDE [virtual-machines-common-gallery-list-ps](../../includes/virtual-machines-common-gallery-list-ps.md)]
-
-[!INCLUDE [virtual-machines-common-shared-images-update-delete-ps](../../includes/virtual-machines-common-shared-images-update-delete-ps.md)]
 
 
 ## <a name="next-steps"></a>後續步驟

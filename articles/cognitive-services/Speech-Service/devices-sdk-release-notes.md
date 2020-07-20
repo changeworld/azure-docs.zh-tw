@@ -1,78 +1,112 @@
 ---
 title: 語音裝置 SDK 文件
 titleSuffix: Azure Cognitive Services
-description: 版本資訊 - 最近版本中的變更
+description: 版本資訊提供「語音裝置 SDK」的更新、增強功能、錯誤修正和變更記錄。 這篇文章已在每個版本的語音裝置 SDK 中更新。
 services: cognitive-services
 author: wsturman
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/07/2018
-ms.author: gracez
-ms.openlocfilehash: 9147f02f6ef2e2f3f776e67aa1f103e95ef132aa
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 02/12/2020
+ms.author: wellsi
+ms.openlocfilehash: a2fe1c7c1ac8799d615c26fdaee40b92bf3e294b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153043"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212491"
 ---
-# <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>認知服務語音裝置 SDK 的版本資訊
+# <a name="release-notes-speech-devices-sdk"></a>版本資訊：語音裝置 SDK
 
 下列各節列出最新版本中的變更。
 
-## <a name="cognitive-services-speech-devices-sdk-150-2019-may-release"></a>SDK 1.5.0 認知服務語音裝置：2019 年發行
+## <a name="speech-devices-sdk-1110"></a>語音裝置 SDK 1.11.0：
 
-*   語音裝置 SDK 現在是 GA，而不再受管制的預覽。
-*   更新[語音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) 1.5.0 版的元件。 如需詳細資訊，請參閱其[版本資訊](https://aka.ms/csspeech/whatsnew)。
-*   新的線上醒機 word 技術帶來顯著的品質改良功能，請參閱重大變更。
-*   改善的最欄位辨識的新音效處理管線。
+- 支援[任意麥克風陣列幾何](how-to-devices-microphone-array-configuration.md)，並透過[設定檔](https://aka.ms/sdsdk-micarray-json)設定工作角度。
+- 支援[URBETTER DDK](http://www.urbetter.com/products_56/278.html)。
+- [語音助理範例](https://aka.ms/sdsdk-speaker)中使用的[GGEC 說話者](https://aka.ms/sdsdk-download-speaker)已發行的二進位檔。
+- 適用于 Raspberry Pi 和類似裝置的[LINUX ARM32](https://aka.ms/sdsdk-download-linux-arm32)和[linux ARM 64](https://aka.ms/sdsdk-download-linux-arm64)已發行二進位檔。
+- 已將[語音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference)元件更新為版本1.11.0。 如需詳細資訊，請參閱其[版本資訊](https://aka.ms/csspeech/whatsnew)。
+
+## <a name="speech-devices-sdk-190"></a>語音裝置 SDK 1.9.0：
+
+- 提供[URBETTER DDK](https://aka.ms/sdsdk-download-urbetter)的初始二進位檔（Linux ARM64）。
+- Roobo v1 現在會使用適用于語音 SDK 的 Maven
+- 已將[語音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference)元件更新為版本1.9.0。 如需詳細資訊，請參閱其[版本資訊](https://aka.ms/csspeech/whatsnew)。
+
+## <a name="speech-devices-sdk-170"></a>語音裝置 SDK 1.7.0：
+
+- 現在支援 Linux ARM。
+- 系統會提供[Roobo V2 DDK](https://aka.ms/sdsdk-download-roobov2)的初始二進位檔（Linux ARM64）。
+- Windows 使用者可以使用 `AudioConfig.fromDefaultMicrophoneInput()` 或 `AudioConfig.fromMicrophoneInput(deviceName)` 來指定要使用的麥克風。
+- 程式庫大小已經過優化。
+- 支援使用相同的語音/意圖辨識器物件進行多重回合辨識。
+- 修正在停止辨識時，進程會停止回應的偶爾問題。
+- 範例應用程式現在包含範例參與者. properties 檔案，以示範檔案的格式。
+- 已將[語音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference)元件更新為版本1.7.0。 如需詳細資訊，請參閱其[版本資訊](https://aka.ms/csspeech/whatsnew)。
+
+## <a name="speech-devices-sdk-160"></a>語音裝置 SDK 1.6.0：
+
+- 使用通用[範例應用程式](https://aka.ms/sdsdk-download)支援 Windows 和 Linux 上的[Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)
+- 已將[語音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference)元件更新為版本1.6.0。 如需詳細資訊，請參閱其[版本資訊](https://aka.ms/csspeech/whatsnew)。
+
+## <a name="speech-devices-sdk-151"></a>語音裝置 SDK 1.5.1：
+
+- 在範例應用程式中包含[交談](conversation-transcription-service.md)轉譯。
+- 已將[語音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference)元件更新為版本1.5.1。 如需詳細資訊，請參閱其[版本資訊](https://aka.ms/csspeech/whatsnew)。
+
+## <a name="speech-devices-sdk-150-2019-may-release"></a>語音裝置 SDK 1.5.0： 2019-可能發行
+
+- 語音裝置 SDK 現已正式推出，不再是閘道預覽。
+- 已將[語音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference)元件更新為1.5.0 版。 如需詳細資訊，請參閱其[版本資訊](https://aka.ms/csspeech/whatsnew)。
+- New 關鍵字技術帶來重大的品質改進，請參閱重大變更。
+- 新的音訊處理管線，改善了遠欄位辨識。
 
 **重大變更**
 
-*   因為新的線上醒機 word 技術所有網路喚醒文字時，必須在我們改善網路喚醒 word 入口網站重新建立。 若要完全移除舊的關鍵字，從裝置解除安裝舊版的應用程式。
-    - adb uninstall com.microsoft.coginitiveservices.speech.samples.sdsdkstarterapp
+- 由於新的關鍵字技術，所有關鍵詞都必須在我們改良的關鍵字入口網站上重新建立。 若要從裝置中完全移除舊的關鍵字，請卸載舊的應用程式。
+  - adb 卸載 cognitiveservices. sdsdkstarterapp。
 
-## <a name="cognitive-services-speech-devices-sdk-140-2019-apr-release"></a>認知服務語音裝置 SDK 1.4.0:2019 年 4 月版本 
+## <a name="speech-devices-sdk-140-2019-apr-release"></a>語音裝置 SDK 1.4.0： 2019-Apr 版本
 
-* 更新[語音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) 1.4.0 版的元件。 如需詳細資訊，請參閱其[版本資訊](https://aka.ms/csspeech/whatsnew)。 
+- 已將[語音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference)元件更新為版本1.4.0。 如需詳細資訊，請參閱其[版本資訊](https://aka.ms/csspeech/whatsnew)。
 
-## <a name="cognitive-services-speech-devices-sdk-131-2019-mar-release"></a>認知服務語音裝置 SDK 1.3.1:2019 年 5 月版本 
+## <a name="speech-devices-sdk-131-2019-mar-release"></a>語音裝置 SDK 1.3.1： 2019-Mar 版本
 
-* 更新[語音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) 1.3.1 版的元件。 如需詳細資訊，請參閱其[版本資訊](https://aka.ms/csspeech/whatsnew)。 
-*   更新網路喚醒 word 處理，請參閱重大變更。
-*   範例應用程式新增語音辨識和翻譯語言的選擇。
+- 已將[語音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference)元件更新為版本1.3.1。 如需詳細資訊，請參閱其[版本資訊](https://aka.ms/csspeech/whatsnew)。
+- 已更新關鍵字處理，請參閱重大變更。
+- 範例應用程式會為語音辨識和翻譯新增語言選擇。
 
-**重大變更** 
+**重大變更**
 
-*   [安裝 網路喚醒 word](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg#run-a-sample-application)已經過簡化，它現在是應用程式的一部分並不需要另外安裝在裝置上的。
-*   網路喚醒字詞辨識已變更，且支援兩個事件。
-    - RecognizingKeyword，表示語音結果包含文字 （未經驗證） 的關鍵字。
-    - RecognizedKeyword，指出辨識給定的關鍵字該關鍵字辨識已完成。
+- [安裝關鍵字](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)已簡化，它現在已是應用程式的一部分，而且不需要在裝置上個別安裝。
+- 關鍵字識別已變更，而且支援兩個事件。
+  - `RecognizingKeyword,`指出語音結果包含（未經驗證）的關鍵字文字。
+  - `RecognizedKeyword`，表示關鍵字辨識已完成辨識指定的關鍵字。
 
+## <a name="speech-devices-sdk-110-2018-nov-release"></a>語音裝置 SDK 1.1.0： 2018-11 月版本
 
-## <a name="cognitive-services-speech-devices-sdk-110-2018-nov-release"></a>認知服務語音裝置 SDK 1.1.0：2018 年 11 月版本 
+- 已將[語音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) 元件版本更新至 1.1.0。 如需詳細資訊，請參閱其[版本資訊](https://aka.ms/csspeech/whatsnew)。
+- 遠場語音辨識精確度已藉由增強的音訊處理演算法獲得提升。
+- 範例應用程式新增了中文語音辨識支援。
 
-* 已將[語音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) 元件版本更新至 1.1.0。 如需詳細資訊，請參閱其[版本資訊](https://aka.ms/csspeech/whatsnew)。 
-* 遠場語音辨識精確度已藉由增強的音訊處理演算法獲得提升。
-* 範例應用程式新增了中文語音辨識支援。
+## <a name="speech-devices-sdk-101-2018-oct-release"></a>語音裝置 SDK 1.0.1： 2018-Oct 版本
 
-## <a name="cognitive-services-speech-devices-sdk-101-2018-oct-release"></a>認知服務語音裝置 SDK 1.0.1：2018 年 10 月版本 
+- 已將[語音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) 元件版本更新至 1.0.1。 如需詳細資訊，請參閱其[版本資訊](https://aka.ms/csspeech/whatsnew)。
+- 語音辨識精確度將藉由我們已改良的音訊處理演算法獲得提升
+- 已修正一個連續辨識音訊工作階段 Bug。
 
-* 已將[語音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) 元件版本更新至 1.0.1。 如需詳細資訊，請參閱其[版本資訊](https://aka.ms/csspeech/whatsnew)。 
-* 語音辨識精確度將藉由我們已改良的音訊處理演算法獲得提升  
-* 已修正一個連續辨識音訊工作階段 Bug。
+**重大變更**
 
-**重大變更** 
+- 此版本引進了幾個重大變更。 如需有關 API 的詳細資料，請參閱[此頁面](https://aka.ms/csspeech/breakingchanges_1_0_0) \(英文\)。
+- KWS 模型檔案與「語音裝置 SDK 1.0.1」不相容。 將新的關鍵字檔案寫入裝置之後，將會刪除現有的關鍵字檔案。
 
-* 此版本引進了幾個重大變更。 如需有關 API 的詳細資料，請參閱[此頁面](https://aka.ms/csspeech/breakingchanges_1_0_0) \(英文\)。 
-* KWS 模型檔案與「語音裝置 SDK 1.0.1」不相容。 在將新的「喚醒字」檔案寫入裝置之後，便會刪除現有的「喚醒字」檔案。 
+## <a name="speech-devices-sdk-050-2018-aug-release"></a>語音裝置 SDK 0.5.0： 2018-8 月版本
 
-## <a name="cognitive-services-speech-devices-sdk-050-2018-aug-release"></a>認知服務語音裝置 SDK 0.5.0：2018 年 8 月版本
+- 已透過修正音訊處理程式碼中的錯誤，改善語音辨識的精確度。
+- 將[語音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) 元件版本更新至 0.5.0。 如需詳細資訊，請參閱其[版本資訊](releasenotes.md#cognitive-services-speech-sdk-050-2018-july-release)。
 
-* 已透過修正音訊處理程式碼中的錯誤，改善語音辨識的精確度。
-* 將[語音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) 元件版本更新至 0.5.0。 如需詳細資訊，請參閱其[版本資訊](releasenotes.md#cognitive-services-speech-sdk-050-2018-july-release)。
-
-## <a name="cognitive-services-speech-devices-sdk-0212733-2018-may-release"></a>認知服務語音裝置 SDK 0.2.12733：2018 年 5 月版本
+## <a name="speech-devices-sdk-0212733-2018-may-release"></a>語音裝置 SDK 0.2.12733： 2018-可能發行
 
 認知服務語音裝置 SDK 的第一個公開預覽版本。

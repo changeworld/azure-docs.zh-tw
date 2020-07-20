@@ -3,20 +3,20 @@ title: 如何從備份還原 Azure Cosmos DB 資料
 description: 本文將說明如何從備份還原 Azure Cosmos DB 資料、如何連絡 Azure 支援人員來還原資料，以及還原資料後應採取的步驟。
 author: kanshiG
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 11/15/2018
+ms.topic: how-to
+ms.date: 09/01/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 1d886e146e9e18eb735e6f88d2cb2c1a4a472924
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1a0075f9b4fc3ff919d4db4bd440a5435d711c83
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61059619"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261727"
 ---
 # <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中從備份還原資料 
 
-如果您不小心刪除資料庫或容器，可以[提出支援票證]( https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)或[連絡 Azure 支援]( https://azure.microsoft.com/support/options/)，從自動線上備份還原資料。 Azure 支援僅適用於選取的方案這類**標準**，**開發人員**，和高於它們的計劃。 Azure 支援不適用於**基本**方案。 若要深入了解不同的支援方案，請參閱 [Azure 支援方案](https://azure.microsoft.com/support/plans/)頁面。 
+如果您不小心刪除資料庫或容器，可以[提出支援票證]( https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)或[連絡 Azure 支援]( https://azure.microsoft.com/support/options/)，從自動線上備份還原資料。 Azure 支援僅適用于選取的方案，例如**標準**、**開發人員**和方案高於其版本。 Azure 支援不適用於**基本**方案。 若要深入了解不同的支援方案，請參閱 [Azure 支援方案](https://azure.microsoft.com/support/plans/)頁面。 
 
 若要還原特定的備份快照集，Azure Cosmos DB 需要該資料在該快照的備份週期持續時間內為可用狀態。
 
@@ -34,16 +34,16 @@ ms.locfileid: "61059619"
 
 * 如果一個或多個容器遭到刪除，您應該提供 Azure Cosmos 帳戶名稱、資料庫名稱和容器名稱， 並指出是否有使用相同名稱的容器存在。
 
-* 如果意外删除或损坏了数据，则应在 8 小时内联系 [Azure 支持](https://azure.microsoft.com/support/options/)，以便 Azure Cosmos DB 团队帮助你从备份中还原数据。
+* 如果您不小心刪除或損毀您的資料，應該在8小時內與[Azure 支援](https://azure.microsoft.com/support/options/)聯繫，讓 Azure Cosmos DB 團隊可以協助您從備份還原資料。
   
-  * 如果意外删除了数据库或容器，请提交一个严重性级别为 B 或 C 的 Azure 支持案例。 
-  * 如果意外删除或损坏了容器中的某些文档，请提交一个严重性级别为 A 的支持案例。 
+  * 如果您不小心刪除了您的資料庫或容器，請開啟嚴重性 B 或嚴重性 C Azure 支援案例。 
+  * 如果您不小心刪除或損毀容器中的某些檔，請開啟嚴重性的支援案例。 
 
-發生資料損毀及容器內的文件遭到修改或刪除時，請**儘速刪除容器**。 藉由刪除容器，您可以避免 Azure Cosmos DB 覆寫備份。 如果基於某些原因而無法進行刪除，應儘速提出票證。 除了 Azure Cosmos 帳戶名稱、資料庫名稱和集合名稱，您應指定資料可以還原到哪個時間點。 愈精確愈好，如此可協助我們判斷該時間的最佳可用備份。 也請務必以 UTC 指定時間。 
+發生資料損毀及容器內的文件遭到修改或刪除時，請**儘速刪除容器**。 藉由刪除容器，您可以避免 Azure Cosmos DB 覆寫備份。 如果基於某些原因而無法進行刪除，應儘速提出票證。 除了 Azure Cosmos 帳戶名稱、資料庫名稱、容器名稱之外，您還應該指定資料可以還原到的時間點。 愈精確愈好，如此可協助我們判斷該時間的最佳可用備份。 也請務必以 UTC 指定時間。 
 
 下列螢幕擷取畫面說明如何使用 Azure 入口網站，為要還原資料的容器 (集合/圖表/資料表) 建立支援要求。 提供其他詳細資料，例如資料類型、還原目的和資料遭到刪除的時間，以協助我們優先處理此要求。
 
-![使用 Azure 入口網站建立備份支援要求](./media/how-to-backup-and-restore/backup-support-request-portal.png)
+:::image type="content" source="./media/how-to-backup-and-restore/backup-support-request-portal.png" alt-text="使用 Azure 入口網站建立備份支援要求":::
 
 ## <a name="post-restore-actions"></a>還原後的動作
 

@@ -1,46 +1,38 @@
 ---
-title: 使用 App Service 環境建立內部負載平衡器 - Azure
-description: 如何建立及使用與網際網路隔離的 Azure App Service Environment 的詳細資料
-services: app-service
-documentationcenter: na
+title: 使用 ARM 建立 ILB ASE
+description: 了解如何使用 Azure Resource Manager 範本建立具有內部負載平衡器 (ILB ASE) 的 App Service 環境。 將您的應用程式完全與網際網路隔離。
 author: ccompy
-manager: stefsch
 ms.assetid: 0f4c1fa4-e344-46e7-8d24-a25e247ae138
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 06/12/2018
+ms.date: 08/05/2019
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 8508dbecceb9984f53a133d9634882603549cdd1
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.custom: mvc, seodec18
+ms.openlocfilehash: b7fa447e8564fcbf77702f1d3d474cceb48705c5
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65199632"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114625"
 ---
-# <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>建立及使用內部負載平衡器與 App Service Environment #
+# <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>建立及使用內部負載平衡器 App Service 環境 
 
- Azure App Service Environment (ASE) 是將 Azure App Service 部署到客戶 Azure 虛擬網路 (VNet) 中子網路的一種部署。 有二種方法可以部署 App Service Environment (ASE)： 
+Azure App Service 環境 (ASE) 是將 Azure App Service 部署到客戶 Azure 虛擬網路 (VNet) 中子網路的一種部署。 有二種方法可以部署 App Service Environment (ASE)： 
 
 - 使用外部 IP 位址上的 VIP，通常稱為「外部 ASE」。
 - 使用內部 IP 位址上的 VIP，通常稱為 「ILB ASE」，因為內部端點是內部負載平衡器 (ILB)。 
 
 本文說明如何建立 ILB ASE。 如需 ASE 的概觀，請參閱 [App Service Environment 簡介][Intro]。 若要深了解如何建立外部 ASE，請參閱[建立外部 ASE][MakeExternalASE]。
 
-## <a name="overview"></a>概觀 ##
+## <a name="overview"></a>概觀 
 
-您可以使用網際網路可存取端點或是您的 VNet 中的 IP 位址來部署 ASE。 為了將 IP 位址設定為 VNet 位址，ASE 必須與 ILB 一起部署。 在部署 ASE 與 ILB 時，必須提供：
+您可以使用網際網路可存取端點或是您的 VNet 中的 IP 位址來部署 ASE。 為了將 IP 位址設定為 VNet 位址，ASE 必須與 ILB 一起部署。 在部署 ASE 與 ILB 時，您必須提供您的 ASE 名稱。 ASE 名稱使用於您的 ASE 中應用程式的網域尾碼。  ILB ASE 的網域尾碼是 &lt;ASE 名稱&gt;.appserviceenvironment.net。 在 ILB ASE 中製作的應用程式不會放在公用 DNS 中。 
 
--   當您建立您的應用程式時，所使用的您自己的網域。
--   用於 HTTPS 的憑證。
--   您的網域的 DNS 管理。
+舊版的 ILB ASE 會要求您提供網域尾碼和預設憑證，以便進行 HTTPS 連線。 網域尾碼不再於 ILB ASE 建立時收集，而且也不會再收集預設憑證。 當您立即建立 ILB ASE 時，預設憑證是由 Microsoft 提供並受到瀏覽器信任。 您仍可在 ASE 中的應用程式上設定自訂網域名稱，並在這些自訂網域名稱上設定憑證。 
 
-相對的，您可以執行以下動作：
+使用 ILB ASE，您可以執行以下動作：
 
--   在您可以透過「端對端」或 Azure ExpressRoute VPN 存取的雲端，安全地裝載內部網路應用程式。
+-   在您可透過端對端或 ExpressRoute 存取的雲端，安全地裝載內部網路應用程式。
+-   使用 WAF 裝置保護應用程式
 -   在雲端裝載未在公用 DNS 伺服器中列出的應用程式。
 -   建立與網際網路隔離，且您的前端 app 可以安全地與之整合的後端應用程式。
 
@@ -56,54 +48,37 @@ ms.locfileid: "65199632"
 
 若要建立 ILB ASE：
 
-1. 在 Azure 入口網站中，選取 [建立資源] > [Web] > [App Service 環境]。
+1. 在 Azure 入口網站中，選取 [建立資源]   > [Web]   > [App Service 環境]  。
 
 2. 選取您的訂用帳戶。
 
 3. 選取或建立資源群組。
 
-4. 選取或建立 VNet。
+4. 輸入您的 App Service 環境名稱。
 
-5. 如果您選取現有的 VNet，則需要建立子網路來存放 ASE。 確定將子網路的大小設為足以容納 ASE 的任何未來成長。 建議的大小是 `/24`，具有 256 個位址，而且可以處理最大大小的 ASE 和任何縮放需求。 
+5. 選取內部虛擬 IP 類型。
 
-6. 選取 [虛擬網路/位置]  >  [虛擬網路設定]， 並將 [VIP 類型] 設定為 [內部]。
+    ![ASE 建立](media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase.png)
 
-7. 輸入網域名稱。 這個網域會成為在此 ASE 中建立之應用程式所使用的網域。 有某些限制。 不能是：
+> [!NOTE]
+> App Service 環境名稱不能超過 37 個字元。
 
-    * net   
+6. 選取網路
 
-    * azurewebsites.net
+7. 選取或建立虛擬網路。 如果您在此建立新的 VNet，將會以 192.168.250.0/23 的位址範圍定義。 若要建立具有不同位址範圍的 VNet，或在與 ASE 不同的資源群組中建立 VNet，請使用 Azure 虛擬網路建立入口網站。 
 
-    * p.azurewebsites.net
+8. 選取或建立空的子網路。 如果您想要選取子網路，它必須是空的而且未委派。 ASE 建立之後，便無法變更子網路大小。 建議的大小是 `/24`，具有 256 個位址，而且可以處理最大大小的 ASE 和任何縮放需求。 
 
-    * &lt;asename&gt;.p.azurewebsites.net
+    ![ASE 網路][1]
 
-   您可以[將現有的 DNS 名稱對應至您的應用程式][customdomain]。 應用程式使用的自訂網域名稱，與您的 ASE 使用的網域名稱不可重疊。 若 ILB ASE 的網域名稱為 contoso.com，則您的應用程式不能使用像這樣的自訂網域名稱：
-
-   * www\.contoso.com
-
-   * abcd.def.contoso.com
-
-   * abcd.contoso.com
-
-   如果您知道您的應用程式自訂網域名稱，請為 ILB ASE 選擇不會與這些自訂網域名稱相衝突的網域。 在此範例中，您可以為您的 ASE 使用類似 contoso internal.com 的網域，因為不會與 contoso.com結尾的自訂網域名稱衝突。
-
-8. 選取 [確定]，然後選取 [建立]。
-
-    ![ASE 建立][1]
-
-在 [虛擬網路] 刀鋒視窗中，會有一個 [虛擬網路設定] 選項。 您可以用來選擇 [外部 VIP] 或 [內部 VIP]。 預設為「外部」。 如果您選取 [外部]，您的 ASE 會使用一個網際網路可存取的 VIP。 如果您選取 [內部]，您的 ASE 會使用您的 VNet 內 IP 位址搭配 ILB 進行設定。
-
-選取 [內部] 之後，系統會移除把更多 IP 位址新增至您 ASE 的功能。 取而代之的是您必須提供 ASE 的網域。 在使用外部 VIP 的 ASE 中，ASE 的名稱會在網域中用於在該 ASE 中建立的 app。
-
-如果您將 [VIP 類型] 設定為 [內部]，您的 ASE 名稱不會在 ASE 的網域中使用。 您可以明確地指定網域。 如果您的網域是 contoso.corp.net 而您在該 ASE 中建立一個名為 timereporting 的應用程式，該應用程式的 URL 會是 timereporting.contoso.corp.net。
+7. 選取 [檢閱並建立]  ，然後選取 [建立]  。
 
 
 ## <a name="create-an-app-in-an-ilb-ase"></a>在 ILB ASE 中建立應用程式： ##
 
 在 ILB ASE 中建立應用程式的做法，與在 ASE 中建立應用程式相同。
 
-1. 在 Azure 入口網站中，選取 [建立資源] >  [Web + 行動] > [Web 應用程式]。
+1. 在 Azure 入口網站中，選取 [建立資源]   > [Web]   > [Web 應用程式]  。
 
 1. 輸入應用程式的名稱。
 
@@ -111,124 +86,57 @@ ms.locfileid: "65199632"
 
 1. 選取或建立資源群組。
 
-1. 選取您的作業系統。 
+1. 選取您的 [發佈]、[執行階段堆疊] 和 [作業系統]。
 
-    * 如果您想要使用自訂的 Docker 容器建立 Linux 應用程式，則可以使用[這裡][linuxapp]的指示以使用自己的容器。 
+1. 選取位於現有 ILB ASE 的位置。  您也可以選取 [隔離的 App Service] 方案，以在應用程式建立期間建立新的 ASE。 如果您想要建立新的 ASE，請選取您要在其中建立 ASE 的區域。
 
-1. 選取或建立 App Service 方案。 如果您想建立新的 App Service 方案，請選取您的 ASE 作為位置。 選取您想要建立 App Service 方案的背景工作集區。 當您建立 App Service 方案時，選取您的 ASE 作為位置與背景工作角色集區。 指定應用程式的名稱時，會看見您的應用程式名稱底下的網域已被您的 ASE 網域取代。
+1. 選取或建立 App Service 方案。 
 
-1. 選取 [建立] 。 如果希望應用程式顯示在儀表板上，選取 [釘選到儀表板] 核取方塊。
+1. 選取 [檢閱並建立]  ，然後在準備就緒時選取 [建立]  。
 
-    ![App Service 方案建立][2]
+### <a name="web-jobs-functions-and-the-ilb-ase"></a>Web 工作、函式和 ILB ASE 
 
-    在 [應用程式名稱] 底下，網域名稱會更新，以反映您的 ASE 網域。
+ILB ASE 支援函式和 Web 工作，但若要讓入口網站可以使用，您必須具有 SCM 網站的網路存取。  這表示您的瀏覽器必須在主機上，或是在虛擬網路中或已連線到虛擬網路。 如果 ILB ASE 的網域名稱結尾不是 *appserviceenvironment.net*，您就必須讓您的瀏覽器信任您的 scm 網站所使用的 HTTPS 憑證。
 
-## <a name="post-ilb-ase-creation-validation"></a>ILB ASE 建立後驗證 ##
+## <a name="dns-configuration"></a>DNS 組態 
 
-ILB ASE 與非 ILB ASE 稍微有些不同。 如先前所述，您需要管理自己的 DNS。 您也必須提供您自己的 HTTPS 連線憑證。
+當您使用外部 VIP，DNS 是由 Azure 管理。 在您 ASE 中建立的任何 app 都會自動新增至 Azure DNS，這是一個公用 DNS。 在 ILB ASE 中，您必須管理您自己的 DNS。 搭配 ILB ASE 使用的網域尾碼取決於 ASE 的名稱。 網域尾碼是 *&lt;ASE 名稱&gt;.appserviceenvironment.net*。 您的 ILB IP 位址位於入口網站中的 [IP 位址]  底下。 
 
-建立 ASE 之後，網域名稱會顯示您所指定的網域。 在 [設定] 功能表中會出現新的項目 [ILB 憑證]。 ASE 使用憑證建立，該憑證未指定 ILB ASE 網域。 如果您使用 ASE 與該憑證，您的瀏覽器會告訴您它是無效的。 此憑證可讓您更輕鬆地測試 HTTPS，但您必須上傳您自己的繫結至 ILB ASE 網域的憑證。 無論您的憑證是自我簽署或是從憑證授權單位取得，這個步驟都是必要的。
+若要設定您的 DNS：
 
-![ILB ASE 網域名稱][3]
+- 為 *&lt;ASE 名稱&gt;.appserviceenvironment.net* 建立一個區域
+- 在該區域中建立一個指向 ILB IP 位址的 A 記錄
+- 在該區域中建立一個將 @ 指向 ILB IP 位址的 A 記錄
+- 在名為 scm 的 *&lt;ASE 名稱&gt;.appserviceenvironment.net* 中建立一個區域
+- 在 scm 區域中建立一個將 * 指向 ILB IP 位址的 A 記錄
 
-您的 ILB ASE 需要有效的 SSL 憑證。 使用內部憑證授權單位、向外部簽發者購買憑證、或使用自我簽署的憑證。 無論 SSL 憑證的來源，都需要正確設定下列憑證屬性︰
+## <a name="publish-with-an-ilb-ase"></a>使用 ILB ASE 發佈
 
-* **主體**：此屬性必須設定為 *\..your-root-domain-here。
-* **主體別名**：此屬性必須同時包含 *.your-root-domain-here* 和 *.scm.your-root-domain-here*。 系統將使用 your-app-name.scm.your-root-domain-here 形式的位址，進行與每個應用程式相關聯的 SCM/Kudu 網站的 SSL 連線。
+每一個建立的應用程式，都有兩個端點。 在 ILB ASE 中，您有 *&lt;應用程式名稱&gt;.&lt;ILB ASE 網域&gt;* 和 *&lt;應用程式名稱&gt;.scm.&lt;ILB ASE 網域&gt;* 。 
 
-將 SSL 憑證轉換/儲存為 .pfx 檔案。 .pfx 檔案必須包含所有中繼和根憑證。 使用密碼保護其安全。
-
-如果您想要建立自我簽署憑證，可以使用這裡的 PowerShell命令。 務必使用您的 ILB ASE 網域名稱，而不是 internal.contoso.com： 
-
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
-    
-    $certThumbprint = "cert:\localMachine\my\" +$certificate.Thumbprint
-    $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
-    
-    $fileName = "exportedcert.pfx" 
-    Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password
-
-這些 PowerShell 命令產生的憑證會被瀏覽器標示，因為憑證不是由瀏覽器信任鏈結中的憑證授權單位建立。 若要取得瀏覽器信任的憑證，可向瀏覽器信任鏈結中的商業憑證授權單位購買。 
-
-![設定 ILB 憑證][4]
-
-若要上傳您自己的憑證並測試存取：
-
-1. 建立 ASE 之後，移至 ASE UI。 選取 [ASE]  >  [設定]  >  [ILB 憑證]。
-
-1. 若要設定 ILB 憑證，選取憑證的 .pfx 檔案並輸入密碼。 這個步驟需要一些處理時間。 會出現訊息指出上傳作業正在進行中。
-
-1. 取得 ASE 的 ILB 位址。 選取 [ASE]  >  [屬性]  >  [虛擬 IP 位址]。
-
-2. 建立您的 ASE 後，在 ASE 中建立應用程式。
-
-3. 如果您在該 VNet 中還沒有 VM，則建立 VM。
-
-    > [!NOTE] 
-    > 請勿嘗試在與 ASE 相同的子網路中建立此 VM，因為會失敗或造成問題。
-    >
-
-4. 設定 ASE 網域的 DNS。 您可以在您的 DNS 中使用萬用字元搭配您的網域。 若要執行一些簡單測試，請編輯 VM 上的主機檔案來將應用程式名稱設定為 VIP IP 位址：
-
-    a. 如果您的 ASE 網域名稱為 .ilbase.com，且您建立名為 mytestapp 的應用程式，則它將定址為 mytestapp.ilbase.com。 然後，您設定 mytestapp.ilbase.com 以解析 ILB 位址。 (在 Windows 上，主機檔案位於 C:\Windows\System32\drivers\etc\\。)
-
-    b. 若要測試 Web 部署發佈或存取進階主控台，建立 mytestapp.scm.ilbase.com 的記錄。
-
-5. 在該 VM 上使用瀏覽器並移至 https://mytestapp.ilbase.com。 (或移至任何名稱含您的網域的應用程式。)
-
-6. 在該 VM 上使用瀏覽器並移至 https://mytestapp.ilbase.com。 如果您使用自我簽署憑證，就必須接受安全性不足。
-
-    您的 ILB IP 位址列在 [IP 位址] 底下。 此清單中也有外部 VIP 使用的 IP 位址以及用於輸入管理流量的 IP 位址。
-
-    ![ILB IP 位址][5]
-
-## <a name="web-jobs-functions-and-the-ilb-ase"></a>Web 工作、函式和 ILB ASE ##
-
-ILB ASE 支援函式和 Web 工作，但若要讓入口網站可以使用，您必須具有 SCM 網站的網路存取。  這表示您的瀏覽器必須在主機上，或是在虛擬網路中或已連線到虛擬網路。  
-
-當您在 ILB ASE 中使用 Azure Functions 時，可能會遇到錯誤，指出「我們無法立即擷取您的函式。 請稍後再試。」 由於 Functions UI 透過 HTTPS 利用 SCM 網站，而且根憑證不在瀏覽器信任鏈結中，因此會發生此錯誤。 Web 工作具有類似的問題。 若要避免此問題，您可以執行下列其中一個動作：
-
-- 將憑證新增至您的信任憑證存放區。 這會解除封鎖 Microsoft Edge 及 Internet Explorer。
-- 先使用 Chrome 並前往 SCM 網站，接受不受信任的憑證，然後前往入口網站。
-- 使用瀏覽器信任鏈結中的商業憑證。  這是最佳選擇。  
-
-## <a name="dns-configuration"></a>DNS 組態 ##
-
-當您使用外部 VIP，DNS 是由 Azure 管理。 在您 ASE 中建立的任何 app 都會自動新增至 Azure DNS，這是一個公用 DNS。 在 ILB ASE 中，您必須管理您自己的 DNS。 針對指定的網域 (例如 _contoso.net_)，您必須為下列項目，在 DNS 中建立指向您 ILB 位址的 DNS A 記錄︰
-
-- *.contoso.net
-- *.scm.contoso.net
-
-如果 ILB ASE 網域用於此 ASE 之外的多項作業，您可能需要針對每個應用程式名稱進行 DNS 管理。 這個做法更有挑戰性，因為每當您建立應用程式時，必須將新的應用程式名稱新增至您的 DNS。 基於這個理由，建議使用專用網域。
-
-## <a name="publish-with-an-ilb-ase"></a>使用 ILB ASE 發佈 ##
-
-每一個建立的應用程式，都有兩個端點。 在 ILB ASE 中，您有 &lt;app name>.&lt;ILB ASE Domain> 和 &lt;app name>.scm.&lt;ILB ASE Domain>。 
-
-SCM 網站名稱會帶您前往 Azure 入口網站中的 Kudu 主控台，稱為 [進階入口網站]。 Kudu 主控台可讓您檢視環境變數、探索磁碟、使用主控台等等。 如需詳細資訊，請參閱 [Azure App Service 的 Kudu 主控台][Kudu]。 
-
-在多租用戶 App Service 和外部 ASE 中，Azure 入口網站與 Kudu 主控台之間有單一登入。 不過，對於 ILB ASE，您必須使用發佈認證來登入 Kudu 主控台。
+SCM 網站名稱會帶您前往 Azure 入口網站中的 Kudu 主控台，稱為 [進階入口網站]  。 Kudu 主控台可讓您檢視環境變數、探索磁碟、使用主控台等等。 如需詳細資訊，請參閱 [Azure App Service 的 Kudu 主控台][Kudu]。 
 
 網際網路型的 CI 系統 (如 GitHub 和 Azure DevOps)，依然可以搭配 ILB ASE 使用，前提是組建代理程式可以存取網際網路，而且位在與 ILB ASE 相同的網路中。 對於 Azure DevOps，如果建立組建代理程式的 VNET 與 ILB ASE 相同 (子網路不同沒關係)，就能從 Azure DevOps git 提取程式碼，並部署到 ILB ASE。 如果您不想要建立自己的組建代理程式，便需要使用採用提取模型的 CI 系統，如 Dropbox。
 
-ILB ASE 中應用程式的發佈端點會使用用來建立 ILB ASE 的網域。 在應用程式的發行設定檔中，以及應用程式的入口網站刀鋒視窗中可以看到這個網域 (在 [概觀]  >  [基本資訊] 以及 [屬性] 中)。 如果您的 ILB ASE 具有子網域 contoso.net，且應用程式名為 mytest，則要在 FTP 中使用 mytest.contoso.net，在 Web 部署中使用 mytest.scm.contoso.net。
+ILB ASE 中應用程式的發佈端點會使用用來建立 ILB ASE 的網域。 在應用程式的發行設定檔中，以及應用程式的入口網站刀鋒視窗中可以看到這個網域 (在 [概觀]   >  [基本資訊]  以及 [屬性]  中)。 如果您的 ILB ASE 具有網域尾碼 *&lt;ASE 名稱&gt;.appserviceenvironment.net*，且應用程式名為 *mytest*，則要在 FTP 中使用 *mytest.&lt;ASE 名稱&gt;.appserviceenvironment.net*，在 Web 部署中使用 *mytest.scm.contoso.net*。
 
-## <a name="couple-an-ilb-ase-with-a-waf-device"></a>將 ILB ASE 與 WAF 裝置耦合 ##
+## <a name="configure-an-ilb-ase-with-a-waf-device"></a>設定具有 WAF 裝置的 ILB ASE ##
 
-Azure App Service 提供許多安全性措施來保護您的系統。 它們也可協助您判斷應用程式是否遭到駭客入侵。 Web 應用程式的最佳保護是耦合裝載平台，例如 Azure App Service 與 Web 應用程式防火牆 (WAF)。 由於 ILB ASE 具有與網路隔離的應用程式端點，因此適合這樣的使用方式。
+您可以結合 Web 應用程式防火牆 (WAF) 裝置與您的 ILB ASE，只公開您想要連到網際網路的應用程式，而其餘的應用程式只能在 VNet 中存取。 不說別的，這可讓您建置安全的多層式應用程式。
 
 若要深入了解如何設定 ILB ASE 與 WAF 裝置，請參閱[使用 App Service Environment 設定 Web 應用程式防火牆][ASEWAF]。 此文章說明如何搭配使用您的 ASE 與 Barracuda 虛擬應用裝置。 另一個選項是使用 Azure 應用程式閘道。 應用程式閘道會使用 OWASP 核心規則來保護後面的任何應用程式。 如需有關應用程式閘道的詳細資訊，請參閱 [Azure Web 應用程式防火牆簡介][AppGW]。
 
+## <a name="ilb-ases-made-before-may-2019"></a>在 2019 年 5 月前製作的 ILB ASE
+
+在 2019 年 5 月前製作的 ILB ASE 需要您在 ASE 建立期間設定網域尾碼。 您也需要上傳以該網域尾碼為基礎的預設憑證。 此外，使用較舊的 ILB ASE，您就無法使用該 ILB ASE 中的應用程式，對 Kudu 主控台執行單一登入。 針對較舊的 ILB ASE 設定 DNS 時，您需要在符合您網域尾碼的區域中設定萬用字元 A 記錄。 
+
 ## <a name="get-started"></a>開始使用 ##
 
-* 若要開始使用ASE，請參閱 [App Service Environment 簡介][Intro]。
- 
+* 若要開始使用ASE，請參閱 [App Service Environment 簡介][Intro]。 
 
 <!--Image references-->
 [1]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-network.png
 [2]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-webapp.png
-[3]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-certificate.png
-[4]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-certificate2.png
 [5]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-ipaddresses.png
 
 <!--Links-->
@@ -246,8 +154,8 @@ Azure App Service 提供許多安全性措施來保護您的系統。 它們也�
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
-[ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
+[ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md

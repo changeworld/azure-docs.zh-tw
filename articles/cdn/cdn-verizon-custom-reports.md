@@ -1,25 +1,25 @@
 ---
 title: 來自 Verizon 的自訂報告 | Microsoft Docs
-description: 您可以使用下列報告，來檢視 CDN 使用模式：頻寬、 傳輸資料量、 點擊、 快取狀態、 快取點擊率，IPV4/IPV6 傳送的資料。
+description: 您可以使用下列報告檢視 CDN 的使用模式：頻寬、傳輸的資料、點擊、快取狀態、快取點擊率、已傳輸的 IPV4/IPV6 資料。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/11/2017
-ms.author: magattus
-ms.openlocfilehash: 75a1fb4beb4025dc3ec63d29944331d07be35d8a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: cff355aeb74efc9dec2780840ae57fea4c5764cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60323546"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888714"
 ---
 # <a name="custom-reports-from-verizon"></a>來自 Verizon 的自訂報告
 
@@ -29,12 +29,12 @@ ms.locfileid: "60323546"
 
 
 ## <a name="accessing-verizon-custom-reports"></a>存取 Verizon 自訂報告
-1. 在 [CDN 設定檔] 刀鋒視窗中，按一下 [管理]  按鈕。
+1. 在 [CDN 設定檔] 刀鋒視窗中，按一下 [管理] **** 按鈕。
    
     ![CDN 設定檔 [管理] 按鈕](./media/cdn-reports/cdn-manage-btn.png)
    
     隨即開啟 CDN 管理入口網站。
-2. 將滑鼠移至 [分析] 索引標籤上，然後將滑鼠移至 [自訂報告] 飛出視窗上。 按一下 [Edge CNAMEs]。
+2. 將滑鼠移至 [分析]**** 索引標籤上，然後將滑鼠移至 [自訂報告]**** 飛出視窗上。 按一下 [Edge CNAMEs]****。
    
     ![CDN 管理入口網站 - 自訂報告功能表](./media/cdn-reports/cdn-custom-reports.png)
 
@@ -45,30 +45,30 @@ Edge CNAMES 自訂報告提供已啟用自訂報告記錄之 Edge CNAMEs 的命�
 
 請定義下列的報告選項產生自訂報表：
 
-- 度量：支援下列選項：
+- 計量：支援下列選項：
 
-   - 點閱數:表示會被導向至在其啟用自訂報告功能之 edge CNAME 的要求總數。 此計量不包含傳回給用戶端的狀態碼。
+   - 命中：指出已導向至啟用自訂報告功能之 Edge CNAME 的要求總數。 此計量不包含傳回給用戶端的狀態碼。
 
-   - 已傳輸資料：表示從 edge server 傳輸至 HTTP 用戶端 （例如，網頁瀏覽器） 的資料總量會被導向至在其啟用自訂報告功能之 edge CNAME 的要求。 已傳輸的資料量是將 HTTP 回應標頭與回應本文相加來計算。 因此，每個資產已傳輸的資料量會大於實際的檔案大小。
+   - 已傳輸資料：指出針對導向至已啟用自訂報告功能之 Edge CNAME 的要求，從 Edge Server 傳輸至 HTTP 用戶端 (例如，網頁瀏覽器) 的資料總量。 已傳輸的資料量是將 HTTP 回應標頭與回應本文相加來計算。 因此，每個資產已傳輸的資料量會大於實際的檔案大小。
 
-- 群組：決定橫條圖如下所示的統計資料的型別。 支援下列選項：
+- 群組：決定要在橫條圖下方顯示的統計資料類型。 支援下列選項：
 
-   - HTTP 回應碼：依 HTTP 回應碼組織統計資料 （例如 200、 403 等等） 傳回給用戶端。 
+   - HTTP 回應碼：依傳回給用戶端的 HTTP 回應碼 (例如 200、403 等等) 組織統計資料。 
 
    - 快取狀態：依快取狀態組織統計資料。
 
 
-若要設定報告的日期範圍，您可以從下拉式清單選取預先定義的日期範圍，例如 [今天] 或 [本週]，或者可以選取 [自訂] 並按一下日曆圖示，手動輸入日期範圍。 
+若要設定報告的日期範圍，您可以從下拉式清單選取預先定義的日期範圍，例如 [今天]**** 或 [本週]****，或者可以選取 [自訂]**** 並按一下日曆圖示，手動輸入日期範圍。 
 
-選取日期範圍之後，按一下 [執行] 以產生報告。
+選取日期範圍之後，按一下 [執行]**** 以產生報告。
 
-您可以按一下 [執行] 按鈕右邊的 Excel 符號，以 Excel 格式匯出資料。
+您可以按一下 [執行]**** 按鈕右邊的 Excel 符號，以 Excel 格式匯出資料。
 
 ![CNAMEs 報告](./media/cdn-reports/cdn-cnames-report.png)
 
 ## <a name="edge-cnames-custom-report-fields"></a>Edge CNAMES 自訂報告欄位
 
-| 欄位                     | 描述   |
+| 欄位                     | 說明   |
 |---------------------------|---------------|
 | 2xx                       | 指出產生 2xx HTTP 狀態碼 (例如 200 OK) 之 Edge CNAME 的要求總數或已傳輸資料 (MB)。 |
 | 3xx                       | 指出產生 3xx HTTP 狀態碼 (例如 302 已找到或 304 未修改) 之 Edge CNAME 的要求總數或已傳輸資料 (MB)。 |
@@ -77,7 +77,7 @@ Edge CNAMES 自訂報告提供已啟用自訂報告記錄之 Edge CNAMEs 的命�
 | 快取名中百分比               | 指出從快取直接為要求者服務的可快取要求百分比。 |
 | 快取點擊                | 指出產生快取命中 (TCP_EXPIRED_HIT、TCP_HIT 或 TCP_PARTIAL_HIT) 之 Edge CNAME 的要求總數或已傳輸資料 (MB)。 當找到所要求內容的快取版本時，就會發生快取命中。 |
 | 已傳輸資料 (MB)     | 指出 Edge CNAME 從 Edge Server 傳輸到 HTTP 用戶端 (網頁瀏覽器) 的資料總量 (MB)。 已傳輸的資料量是將 HTTP 回應標頭與回應本文相加來計算。 因此，每個資產已傳輸的資料量會大於實際的檔案大小。 |
-| 描述               | 依主機名稱識別 Edge CNAME |
+| Description               | 依主機名稱識別 Edge CNAME |
 | 點擊                      | 指出 Edge CNAME 的要求總數 |
 | 遺漏                    | 指出產生快取遺漏 (TCP_CLIENT_REFRESH_MISS、TCP_EXPIRED_MISS 或 TCP_MISS) 之 Edge CNAME 的要求總數或已傳輸資料 (MB)。 當接受要求的 Edge Server 上未快取要求的內容時，就會發生快取遺漏。 | 
 | 無快取                  | 指出產生 CONFIG_NOCACHE 快取狀態碼之 Edge CNAME 的要求總數或已傳輸資料 (MB)。  |

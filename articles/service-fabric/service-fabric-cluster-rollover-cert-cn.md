@@ -1,25 +1,14 @@
 ---
-title: 變換 Azure Service Fabric 叢集憑證 | Microsoft Docs
-description: 了解如何變換以憑證通用名稱辨識的 Service Fabric 叢集憑證。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: aljo
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
+title: 變換 Azure Service Fabric 叢集憑證
+description: 瞭解如何變換憑證一般名稱所識別的 Service Fabric 叢集憑證。
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 04/24/2018
-ms.author: aljo
-ms.openlocfilehash: dd4b6026772a20c522532e1ba65c6846addfa161
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 09/06/2019
+ms.openlocfilehash: 7a5fe2a7f2a05295605ef0e1d5db321a83b96712
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046354"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82611903"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>手動變換 Service Fabric 叢集憑證
 當 Service Fabric 叢集憑證即將到期時，您需要更新憑證。  只要叢集已[設定為使用基於通用名稱的憑證](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (而非指紋)，變換憑證將會是一件很簡單的事。  向憑證授權單位索取新到期日的新憑證。  自我簽署的憑證不支援生產 Service Fabric 叢集包含在 Azure 入口網站的叢集建立工作流程期間所產生的憑證。 新憑證的通用名稱必須與舊憑證相同。 
@@ -54,7 +43,7 @@ $resourceId = $keyVault.ResourceId
 
 # Add the certificate to the key vault.
 $PasswordSec = ConvertTo-SecureString -String $Password -AsPlainText -Force
-$KVSecret = Import-AzureKeyVaultCertificate -VaultName $vaultName -Name $certName  -FilePath $certFilename -Password $PasswordSec
+$KVSecret = Import-AzKeyVaultCertificate -VaultName $vaultName -Name $certName  -FilePath $certFilename -Password $PasswordSec
 
 $CertificateThumbprint = $KVSecret.Thumbprint
 $CertificateURL = $KVSecret.SecretId
@@ -75,7 +64,7 @@ $certConfig = New-AzVmssVaultCertificateConfig -CertificateUrl $CertificateURL -
 $vmss = Get-AzVmss -ResourceGroupName $VmssResourceGroupName -VMScaleSetName $VmssName
 
 # Add new secret to the VM scale set.
-$vmss = Add-AzVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $SourceVault -VaultCertificate $certConfig
+$vmss.VirtualMachineProfile.OsProfile.Secrets[0].VaultCertificates.Add($newVaultCertificate)
 
 # Update the VM scale set 
 Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -VirtualMachineScaleSet $vmss  -Verbose
@@ -84,7 +73,7 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -Virtual
 >[!NOTE]
 > 計算虛擬機器擴展集祕密不支援將相同的資源識別碼用於兩個不同的祕密，因為每個祕密都是已設定版本的唯一資源。 
 
-若要深入了解，請閱讀以下文章：
-* 了解[叢集安全性](service-fabric-cluster-security.md)。
-* [更新及管理叢集憑證](service-fabric-cluster-security-update-certs-azure.md)
+## <a name="next-steps"></a>後續步驟
 
+* 深入瞭解叢集[安全性](service-fabric-cluster-security.md)。
+* [更新及管理叢集憑證](service-fabric-cluster-security-update-certs-azure.md)

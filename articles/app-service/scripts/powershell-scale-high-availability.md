@@ -1,27 +1,17 @@
 ---
-title: Azure PowerShell 指令碼範例 - 使用流量管理員將應用程式調整為全球可用 | Microsoft Docs
-description: Azure PowerShell 指令碼範例 - 透過高可用性架構將 Web 應用程式調整為全球可用
-services: app-service\web
-documentationcenter: ''
-author: syntaxc4
-manager: erikre
-editor: ''
+title: PowerShell：使用流量管理員進行調整
+description: 了解如何使用 Azure PowerShell 將 App Service 的部署和管理自動化。 此範例說明如何使用流量管理員將應用程式調整為全球可用。
 tags: azure-service-management
 ms.assetid: 470f0129-1efe-462c-a029-5c66e04158a8
-ms.service: app-service
-ms.devlang: multiple
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 03/20/2017
-ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 46e5a6bc0e7d4ff615b3adda878b9b31bfe200f0
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6ffcf22b640d6393ed48d803f6f52bac5334d4b7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116944"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74684333"
 ---
 # <a name="scale-a-web-app-worldwide-with-a-high-availability-architecture"></a>透過高可用性架構將 Web 應用程式調整為全球可用
 
@@ -47,7 +37,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 建立用來存放所有資源的資源群組。 |
 | [New-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/new-aztrafficmanagerprofile) | 建立流量管理員設定檔。 |

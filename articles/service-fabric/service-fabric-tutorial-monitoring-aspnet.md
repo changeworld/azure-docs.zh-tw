@@ -1,26 +1,17 @@
 ---
-title: 在 Azure 中的 Service Fabric 上監視和診斷 ASP.NET Core 服務 | Microsoft Docs
+title: 監視及診斷 ASP.NET Core 服務
 description: 在本教學課程中，您會了解如何設定 Azure Service Fabric ASP.NET Core 應用程式的監視和診斷。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 3/21/2019
+ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 9de11c0049cf3db3feea311a2541640437ba8632
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f06387ea317029f5648ab0884cea80262e8640a2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665197"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245002"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>教學課程：使用 Application Insights 監視和診斷 Service Fabric 上的 ASP.NET Core 應用程式
 
@@ -46,7 +37,7 @@ ms.locfileid: "58665197"
 開始進行本教學課程之前：
 
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [安裝 Visual Studio 2017](https://www.visualstudio.com/) 並安裝 **Azure 開發**以及 **ASP.NET 和 Web 開發**工作負載。
+* [安裝 Visual Studio 2019](https://www.visualstudio.com/)，並安裝 **Azure 開發**以及 **ASP.NET 和 Web 開發**工作負載。
 * [安裝 Service Fabric SDK](service-fabric-get-started.md)
 
 ## <a name="download-the-voting-sample-application"></a>下載投票應用程式範例
@@ -74,7 +65,7 @@ Application Insights 是 Azure 的應用程式效能管理平台，也是 Servic
 
 ## <a name="add-application-insights-to-the-applications-services"></a>將 Application Insights 新增至應用程式的服務
 
-以滑鼠右鍵按一下 [開始] 功能表中的 Visual Studio 圖示，然後選擇 [以系統管理員身分執行]，使用較高的權限啟動 Visual Studio 2017。 按一下 [檔案] > **[開啟]** > **[專案/方案]**，並瀏覽至投票應用程式 (在教學課程的第一部分中建立，或透過 git 複製)。 開啟 Voting.sln。 如果系統提示您還原應用程式的 NuGet 套件，請按一下 [是]。
+以滑鼠右鍵按一下 [開始] 功能表中的 Visual Studio 圖示，然後選擇 [以系統管理員身分執行]，使用較高的權限啟動 Visual Studio 2019。 按一下 [檔案] >  **[開啟]**  >  **[專案/方案]** ，並瀏覽至投票應用程式 (在教學課程的第一部分中建立，或透過 git 複製)。 開啟 Voting.sln。 如果系統提示您還原應用程式的 NuGet 套件，請按一下 [是]。
 
 請遵循下列步驟來設定 VotingWeb 和 VotingData 服務的 Application Insights：
 
@@ -177,7 +168,7 @@ ConfigureServices(services => services
 >[!NOTE]
 >如果您未安裝最新版的 .NET Core SDK，則可能收到建置錯誤。
 
-完成應用程式部署後，請移至 [localhost:8080](localhost:8080)，您應該可以看到「投票範例」單一頁面應用程式。 票選您喜歡的幾個不同項目，以建立一些樣本資料和遙測資料 - 我去吃甜點了！
+完成應用程式部署後，請移至 `localhost:8080`，您應該可以看到「投票範例」單一頁面應用程式。 票選您喜歡的幾個不同項目，以建立一些樣本資料和遙測資料 - 我去吃甜點了！
 
 ![AI 範例投票](./media/service-fabric-tutorial-monitoring-aspnet/vote-sample.png)
 
@@ -260,7 +251,7 @@ public async Task<IActionResult> Delete(string name)
 }
 ```
 
-完成這些變更之後，請**啟動**應用程式，以建置和部署最新版本。 應用程式部署完成之後，請移至 [localhost:8080](localhost:8080)，並新增和刪除一些投票選項。 然後，回到 Application Insights 資源，以查看最後一次執行的追蹤 (同樣地，追蹤需要 1-2 分鐘，才會出現在 Application Insights 中)。 針對您新增和刪除的所有選票，您現在應該會看到「自訂事件」\*及所有回應遙測資料。
+完成這些變更之後，請**啟動**應用程式，以建置和部署最新版本。 應用程式部署完成之後，請移至 `localhost:8080`，並新增和刪除一些投票選項。 然後，回到 Application Insights 資源，以查看最後一次執行的追蹤 (同樣地，追蹤需要 1-2 分鐘，才會出現在 Application Insights 中)。 針對您新增和刪除的所有選票，您現在應該會看到「自訂事件」\*及所有回應遙測資料。
 
 ![自訂事件](./media/service-fabric-tutorial-monitoring-aspnet/custom-events.png)
 
@@ -277,4 +268,4 @@ public async Task<IActionResult> Delete(string name)
 
 * [在 Service Fabric 中進一步探索監視和診斷](service-fabric-diagnostics-overview.md)
 * [使用 Application Insights 分析 Service Fabric 事件](service-fabric-diagnostics-event-analysis-appinsights.md)
-* 若要深入了解 Application Insights，請參閱 [Application Insights 文件](https://docs.microsoft.com/azure/application-insights/)
+* 若要深入了解 Application Insights，請參閱 [Application Insights 文件](/azure/application-insights/)

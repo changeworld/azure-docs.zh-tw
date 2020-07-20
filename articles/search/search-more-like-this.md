@@ -1,54 +1,74 @@
 ---
-title: Azure 搜尋服務中的 moreLikeThis (預覽) - Azure 搜尋服務
-description: Azure Search REST API 中公開的 moreLikeThis (預覽) 功能預備文件。
+title: moreLikeThis （預覽）查詢功能
+titleSuffix: Azure Cognitive Search
+description: 說明 moreLikeThis （預覽）功能，其可在預覽版本的 Azure 認知搜尋 REST API 中取得。
+manager: nitinme
 author: brjohnstmsft
-manager: jlembicz
-services: search
-ms.service: search
-ms.devlang: rest-api
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: d18069335bb20f78a5bcda85eb6fcb2a5abe75f7
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.devlang: rest-api
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 9fb43a0d39beacf02a6949228eaa32a719164987
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024680"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552231"
 ---
-# <a name="morelikethis-in-azure-search-preview"></a>Azure 搜尋服務中的 moreLikeThis (預覽)
+# <a name="morelikethis-preview-in-azure-cognitive-search"></a>Azure 認知搜尋中的 moreLikeThis （預覽）
 
-`moreLikeThis=[key]` 是中的查詢參數[搜尋文件 API](https://docs.microsoft.com/rest/api/searchservice/search-documents)所尋找的文件類似文件索引鍵所指定的文件。 使用 `moreLikeThis` 提出搜尋要求時，系統會利用最能描述該文件的指定文件中擷取的搜尋詞彙，產生查詢。 然後將產生的查詢用於提出搜尋要求。 根據預設，所有可搜尋欄位的內容會被視為，減去使用指定的任何限制欄位`searchFields`參數。 `moreLikeThis` 參數無法搭配搜尋參數 `search=[string]` 使用。
+> [!IMPORTANT] 
+> 此功能目前為公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2020-06-30-Preview](search-api-preview.md)提供這項功能。 目前沒有入口網站或 .NET SDK 支援。
 
-根據預設，會被視為所有最上層的可搜尋欄位的內容。 如果您想要改為指定特定欄位，您可以使用`searchFields`參數。 
+`moreLikeThis=[key]`是[搜尋檔 API](https://docs.microsoft.com/rest/api/searchservice/search-documents)中的查詢參數，可尋找類似檔索引鍵所指定檔的檔。 使用 `moreLikeThis` 提出搜尋要求時，系統會利用最能描述該文件的指定文件中擷取的搜尋詞彙，產生查詢。 然後將產生的查詢用於提出搜尋要求。 根據預設，所有可搜尋欄位的內容都會被視為，減去您使用參數指定的任何限制欄位 `searchFields` 。 `moreLikeThis` 參數無法搭配搜尋參數 `search=[string]` 使用。
 
-> [!NOTE]
-> `moreLikeThis` 預覽中可搜尋的子欄位上無法運作[複雜型別](search-howto-complex-data-types.md)。
+根據預設，會考慮所有最上層可搜尋欄位的內容。 如果您想要改為指定特定欄位，您可以使用 `searchFields` 參數。 
 
-## <a name="examples"></a>範例 
+您無法在 `MoreLikeThis` [複雜類型](search-howto-complex-data-types.md)中的可搜尋子欄位上使用。
 
-以下是 moreLikeThis 查詢的範例。 查詢會尋找其描述欄位最類似 `moreLikeThis` 參數所指定來源文件之欄位的文件。
+## <a name="examples"></a>範例
+
+下列所有範例都使用[快速入門：在 Azure 入口網站中建立搜尋索引中](search-get-started-portal.md)的飯店範例。
+
+### <a name="simple-query"></a>簡單查詢
+
+下列查詢會尋找其描述欄位最類似于參數所指定之來源文件欄位的檔 `moreLikeThis` ：
 
 ```
-Get /indexes/hotels/docs?moreLikeThis=1002&searchFields=description&api-version=2019-05-06-Preview
+GET /indexes/hotels-sample-index/docs?moreLikeThis=29&searchFields=Description&api-version=2020-06-30-Preview
 ```
 
+在此範例中，要求會搜尋類似于29的飯店 `HotelId` 。
+您也可以使用 HTTP POST 叫用，而不是使用 HTTP GET `MoreLikeThis` ：
+
 ```
-POST /indexes/hotels/docs/search?api-version=2019-05-06-Preview
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30-Preview
     {
-      "moreLikeThis": "1002",
-      "searchFields": "description"
+      "moreLikeThis": "29",
+      "searchFields": "Description"
     }
 ```
 
-## <a name="feature-availability"></a>功能可用性
+### <a name="apply-filters"></a>套用篩選
 
-`moreLikeThis`參數是僅供預覽 REST Api (`api-version=2019-05-06-Preview`)。
+`MoreLikeThis`可以與其他常見的查詢參數（例如）結合 `$filter` 。 例如，您可以將查詢限制為只有其類別為「預算」且評等高於3.5 的飯店：
+
+```
+GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$filter=(Category eq 'Budget' and Rating gt 3.5)&api-version=2020-06-30-Preview
+```
+
+### <a name="select-fields-and-limit-results"></a>選取欄位並限制結果
+
+`$top`選取器可以用來限制查詢中應該傳回的結果數目 `MoreLikeThis` 。 此外，也可以使用來選取欄位 `$select` 。 這裡會選取前三個飯店，以及其識別碼、名稱和評等： 
+
+```
+GET /indexes/hotels-sample-index/docs?moreLikeThis=20&searchFields=Description&$filter=(Category eq 'Budget' and Rating gt 3.5)&$top=3&$select=HotelId,HotelName,Rating&api-version=2020-06-30-Preview
+```
 
 ## <a name="next-steps"></a>後續步驟
 
-您可以使用任何 web 測試工具，來試驗這項功能。  我們建議針對此練習中使用 Postman。
+您可以使用任何 web 測試控管來試驗這項功能。  我們建議您在此練習中使用 Postman。
 
 > [!div class="nextstepaction"]
-> [探索 Azure 搜尋服務 REST Api 使用 Postman](search-fiddler.md)
+> [使用 Postman 探索 Azure 認知搜尋 REST Api](search-get-started-postman.md)

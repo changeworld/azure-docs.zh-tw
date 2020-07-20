@@ -1,29 +1,22 @@
 ---
-title: Azure AD 應用程式開發人員的支援和協助選項 | Microsoft Docs
+title: Azure AD 應用程式開發人員的支援和協助選項
 description: 了解如何在建立應用程式以與 Microsoft 身分識別 (Azure Active Directory 和 Microsoft 帳戶) 整合時，取得開發相關疑難和問題的協助和支援
 services: active-directory
-documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+author: rwike77
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/14/2019
-ms.author: celested
-ms.reviewer: jmprieur, dadobali
+ms.date: 05/23/2019
+ms.author: ryanwi
+ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0de9b3e3535253724d068f806b219736f6889477
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: ea1afd2ecac8974c0e865e235288da545a9f1244
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299731"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80885526"
 ---
 # <a name="support-and-help-options-for-developers"></a>開發人員的支援和協助選項
 
@@ -32,11 +25,11 @@ ms.locfileid: "60299731"
 > [!div class="checklist"]
 > * 如何搜尋社群是否尚未回答您的問題，或您嘗試實作的功能是否已有現存文件
 > * 在某些情況下，您只想使用我們的支援工具來協助您進行特定問題的偵錯
-> * 如果您找不到所需的解答，就可以在「Stack Overflow」上發問
-> * 如果您發現我們的驗證程式庫有問題，請提出 GitHub 問題
+> * 如果您找不到所需的解答，就可以在「Stack Overflow」** 上發問
+> * 如果您發現我們的驗證程式庫有問題，請提出 GitHub** 問題
 > * 最後，如果您需要與人對談，您可以開啟支援要求
 
-## <a name="search"></a>Search
+## <a name="search"></a>搜尋
 
 如果您有開發相關問題，您可以在文件、[GitHub 範例](https://github.com/azure-samples)，或 [Stack Overflow](https://www.stackoverflow.com) 問題的解答中，找到您需要的答案。
 
@@ -52,7 +45,7 @@ ms.locfileid: "60299731"
 
 ## <a name="use-the-development-support-tools"></a>使用開發支援工具
 
-| 工具  | 描述  |
+| 工具  | 說明  |
 |---------|---------|
 | [jwt.ms](https://jwt.ms) | 貼上識別碼或存取權杖以將宣告名稱和值解碼。 |
 | [Microsoft Graph 總管](https://developer.microsoft.com/graph/graph-explorer)| 此工具可讓您針對 Microsoft Graph API 提出要求並查看回應。 |
@@ -63,15 +56,15 @@ Stack Overflow 是適用於開發相關問題的慣用管道。 開發人員社�
 
 若無法透過搜尋找到問題的解答，請將新問題提交至 Stack Overflow。 在提出問題時使用下列其中一個標記，以協助社群更快速地識別和回答您的問題：
 
-|元件/區域  | 標記 |
+|元件/區域  | Tags |
 |---------|---------|
-| ADAL 程式庫 | [[adal]](https://stackoverflow.com/questions/tagged/adal) |
-| MSAL 程式庫     | [[msal]](https://stackoverflow.com/questions/tagged/msal) |
-| OWIN 中介軟體  | [[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
+| ADAL 程式庫 | [adal](https://stackoverflow.com/questions/tagged/adal) |
+| MSAL 程式庫     | [msal](https://stackoverflow.com/questions/tagged/msal) |
+| OWIN 中介軟體  | [[azure-active directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
 | [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | [[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
 | [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[azure-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
 | [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[microsoft-graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
-| 與驗證或授權主題相關的其他任何區域 | [[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
+| 與驗證或授權主題相關的其他任何區域 | [[azure-active directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
 
 Stack Overflow 的下列貼文包含如何提出問題以及如何新增原始程式碼的提示。 遵循這些指導方針以增加社群成員快速評估並回應您問題的機會：
 
@@ -82,10 +75,10 @@ Stack Overflow 的下列貼文包含如何提出問題以及如何新增原始�
 
 如果您發現與我們的程式庫有關的錯誤或問題，請在我們的 GitHub 存放庫上提出問題。 我們的程式庫屬於開放原始碼，因此您也可以提交提取要求。
 
-若要查看程式庫及其 GitHub 存放庫的清單，請參閱下列文章：
+如需程式庫及其 GitHub 存放庫的清單，請參閱下列各項：
 
-* [ADAL](active-directory-authentication-libraries.md) 程式庫以及 GitHub 存放庫
-* [MSAL](reference-v2-libraries.md) 程式庫以及 GitHub 存放庫
+* [Azure Active Directory Authentication Library （ADAL）](../azuread-dev/active-directory-authentication-libraries.md)程式庫和 GitHub 存放庫
+* [Microsoft 驗證程式庫（MSAL）](reference-v2-libraries.md)程式庫和 GitHub 存放庫
 
 ## <a name="open-a-support-request"></a>開啟支援要求
 
@@ -96,9 +89,3 @@ Stack Overflow 的下列貼文包含如何提出問題以及如何新增原始�
 * 如果您不是 Azure 的客戶，您也可以透過[我們的商業支援](https://support.microsoft.com/en-us/gp/contactus81?Audience=Commercial)，向 Microsoft 開啟支援要求。
 
 您也可以嘗試[虛擬專員](https://support.microsoft.com/contactus/?ws=support)，以取得支援或提出問題。
-
-### <a name="free-chat-support-for-a-limited-time"></a>限時的免費交談支援
-
-您也可以使用我們的交談支援，Microsoft 合作夥伴可於有限時間內免費使用。 如果貴公司不是 Microsoft 合作夥伴，您可以在[這裡](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx)免費註冊此功能，並獲得其他好處。
-
-為貴公司註冊後，您就可以在[這裡](https://aka.ms/devchat)啟動交談要求。

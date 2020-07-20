@@ -1,26 +1,18 @@
 ---
 title: Azure Resource Manager 範本中的虛擬機器 | Microsoft Azure
 description: 進一步了解在 Azure Resource Manager 範本中定義虛擬機器資源的方式。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: f63ab5cc-45b8-43aa-a4e7-69dc42adbb99
 ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
+ms.workload: infrastructure
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: d234e7f8a6005722a33a797f2b8ae6a1e1f4b98b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 04dba192488744d1b54b0a0e2d885c0b1766bdc6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327760"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82100527"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager 範本中的虛擬機器
 
@@ -28,7 +20,7 @@ ms.locfileid: "56327760"
 
 有許多[組件庫中的範本](https://azure.microsoft.com/documentation/templates/?term=VM)包含 VM 資源。 此處並未說明可以包含在範本中的所有項目。
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+ 
 
 此範例顯示用來建立指定數目之 VM 範本的一般資源區段︰
 
@@ -156,7 +148,7 @@ ms.locfileid: "56327760"
 
 當您使用範本部署資源時，必須指定要使用的 API 版本。 此範例會使用這個 apiVersion 項目顯示虛擬機器資源︰
 
-```
+```json
 "apiVersion": "2016-04-30-preview",
 ```
 
@@ -173,7 +165,7 @@ ms.locfileid: "56327760"
 
 [參數](../../resource-group-authoring-templates.md)方便您執行它時指定範本的值。 此參數章節用於範例中︰
 
-```        
+```json
 "parameters": {
   "adminUsername": { "type": "string" },
   "adminPassword": { "type": "securestring" },
@@ -185,7 +177,7 @@ ms.locfileid: "56327760"
 
 [變數](../../resource-group-authoring-templates.md)方便您設定範本中整個重複使用或會隨著時間而改變的值。 此變數章節用於範例中︰
 
-```
+```json
 "variables": { 
   "storageName": "mystore1",
   "accountid": "[concat('/subscriptions/', subscription().subscriptionId, 
@@ -222,7 +214,7 @@ ms.locfileid: "56327760"
 
 您的應用程式需要一部以上的虛擬機器時，您可以在範本中使用複製項目。 此選擇性項目會透過建立您指定為參數的 VM 數目來執行迴圈︰
 
-```
+```json
 "copy": {
   "name": "virtualMachineLoop", 
   "count": "[parameters('numberOfInstances')]"
@@ -231,7 +223,7 @@ ms.locfileid: "56327760"
 
 另外，在範例中請注意指定某些資源的值時會使用迴圈索引。 例如，如果您輸入三個執行個體計數，則作業系統磁碟的名稱為 myOSDisk1、myOSDisk2 和 myOSDisk3：
 
-```
+```json
 "osDisk": { 
   "name": "[concat('myOSDisk', copyindex())]",
   "caching": "ReadWrite", 
@@ -246,7 +238,7 @@ ms.locfileid: "56327760"
 
 請記住，在範本中建立一個資源的迴圈，可能會在建立或存取其他資源時要求您使用迴圈。 例如，多個 VM 無法使用相同的網路介面，因此如果您的範本透過建立三個 VM 來執行迴圈，則它也必須透過建立三個網路介面來執行迴圈。 將網路介面指派至 VM 時，迴圈索引會用來識別它︰
 
-```
+```json
 "networkInterfaces": [ { 
   "id": "[resourceId('Microsoft.Network/networkInterfaces',
     concat('myNIC', copyindex()))]" 
@@ -257,7 +249,7 @@ ms.locfileid: "56327760"
 
 大部分的資源相依於其他資源才能正確地運作。 虛擬機器必須與虛擬網路相關聯，且需要網路介面才能執行它。 [ependsOn](../../resource-group-define-dependencies.md) 項目用來確定網路介面在 VM 建立之前已備妥可供使用：
 
-```
+```json
 "dependsOn": [
   "[concat('Microsoft.Network/networkInterfaces/', 'myNIC', copyindex())]" 
 ],
@@ -267,7 +259,7 @@ Resource Manager 會以平行方式部署任何不依存於另一個要部署資
 
 如何知道是否需要相依性？ 看看您在範本中設定的值。 如果虛擬機器資源定義點中的項目指向在相同範本中部署的另一個資源，則您需要相依性。 例如，範例虛擬機器會定義網路設定檔︰
 
-```
+```json
 "networkProfile": { 
   "networkInterfaces": [ { 
     "id": "[resourceId('Microsoft.Network/networkInterfaces',
@@ -282,8 +274,8 @@ Resource Manager 會以平行方式部署任何不依存於另一個要部署資
 
 定義虛擬機器資源時，會使用數個設定檔項目。 某些是必要的而有些則是選擇性。 例如，hardwareProfile、osProfile、storageProfile 和 networkProfile 元素是必要的，但 diagnosticsProfile 為選擇性。 這些設定檔會定義設定，例如︰
    
-- [大小](sizes.md)
-- [名稱](/azure/architecture/best-practices/naming-conventions)和認證
+- [size](sizes.md)
+- [名稱](/azure/architecture/best-practices/resource-naming)和認證
 - 磁碟和[作業系統設定](cli-ps-findimage.md)
 - [網路介面](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
 - 開機診斷
@@ -296,7 +288,7 @@ Resource Manager 會以平行方式部署任何不依存於另一個要部署資
 
 當您建立 VM 時，您必須決定要使用哪個作業系統。 ImageReference 項目用來定義新 VM 的作業系統。 此範例示範適用於 Windows Server 作業系統的定義︰
 
-```
+```json
 "imageReference": { 
   "publisher": "MicrosoftWindowsServer", 
   "offer": "WindowsServer", 
@@ -307,7 +299,7 @@ Resource Manager 會以平行方式部署任何不依存於另一個要部署資
 
 如果您想要建立 Linux 作業系統，您可以使用此定義︰
 
-```
+```json
 "imageReference": {
   "publisher": "Canonical",
   "offer": "UbuntuServer",
@@ -316,9 +308,9 @@ Resource Manager 會以平行方式部署任何不依存於另一個要部署資
 },
 ```
 
-作業系統磁碟的組態設定會使用 OsDisk 項目指派。 此範例會定義新的受控磁碟，其快取模式設定為 [ReadWrite]，而此磁碟會從[平台映像](cli-ps-findimage.md)建立：
+作業系統磁碟的組態設定會使用 OsDisk 項目指派。 此範例會定義新的受控磁碟，其快取模式設定為 [ReadWrite]****，而此磁碟會從[平台映像](cli-ps-findimage.md)建立：
 
-```
+```json
 "osDisk": { 
   "name": "[concat('myOSDisk', copyindex())]",
   "caching": "ReadWrite", 
@@ -330,7 +322,7 @@ Resource Manager 會以平行方式部署任何不依存於另一個要部署資
 
 如果您想要從現有磁碟建立虛擬機器，移除 imageReference 和 osProfile 項目，並定義這些磁碟的設定︰
 
-```
+```json
 "osDisk": { 
   "osType": "Windows",
   "managedDisk": { 
@@ -345,7 +337,7 @@ Resource Manager 會以平行方式部署任何不依存於另一個要部署資
 
 如果您想要從受控映像建立虛擬機器，請變更 imageReference 元素並定義這些磁碟設定︰
 
-```
+```json
 "storageProfile": { 
   "imageReference": {
     "id": "[resourceId('Microsoft.Compute/images', 'myImage')]"
@@ -363,7 +355,7 @@ Resource Manager 會以平行方式部署任何不依存於另一個要部署資
 
 您可以選擇性地將資料磁碟新增至 VM。 [磁碟數量](sizes.md)取決於您使用的作業系統磁碟大小。 將 VM 大小設定為 Standard_DS1_v2，則可以新增到它們的資料磁碟數目上限為 2。 在範例中，有一個受控資料磁碟會新增至每部 VM：
 
-```
+```json
 "dataDisks": [
   {
     "name": "[concat('myDataDisk', copyindex())]",
@@ -375,11 +367,11 @@ Resource Manager 會以平行方式部署任何不依存於另一個要部署資
 ],
 ```
 
-## <a name="extensions"></a>擴充功能
+## <a name="extensions"></a>延伸模組
 
 雖然[擴充功能](extensions-features.md)是不同的資源，它們會緊密繫結至 VM。 擴充功能可新增為 VM 的子資源或不同的資源。 範例會示範要新增至 VM 的[診斷擴充功能](extensions-diagnostics-template.md)：
 
-```
+```json
 { 
   "name": "Microsoft.Insights.VMDiagnosticsSettings", 
   "type": "extensions", 
@@ -414,7 +406,7 @@ Resource Manager 會以平行方式部署任何不依存於另一個要部署資
 
 有許多您可以在 VM 上安裝的擴充功能，而最有用的可能是[自訂指令碼擴充功能](extensions-customscript.md)。 在範例中，名為 start.ps1 的 PowerShell 指令碼第一次啟動時會在每個 VM 上執行︰
 
-```
+```json
 {
   "name": "MyCustomScriptExtension",
   "type": "extensions",
@@ -455,7 +447,7 @@ Start.ps1 指令碼可以完成許多組態工作。 例如，範例中新增至
 
 ![取得部署資訊](./media/template-description/virtual-machines-deployment-info.png)
     
-使用相同的範本來建立資源或更新現有的資源並不是問題。 當您使用命令來部署範本時，有機會說您想要使用的[模式](../../resource-group-template-deploy.md)。 模式可以設定為 [完成] 或 [累加]。 預設值是執行累加式更新。 使用 [完成] 模式請小心，因為您可能會不小心刪除資源。 當您將模式設定為 [完成] 時，Resource Manager 就會刪除不在範本中的資源群組之任何資源。
+使用相同的範本來建立資源或更新現有的資源並不是問題。 當您使用命令來部署範本時，有機會說您想要使用的[模式](../../resource-group-template-deploy.md)。 模式可以設定為 [完成]**** 或 [累加]****。 預設值是執行累加式更新。 使用 [完成]**** 模式請小心，因為您可能會不小心刪除資源。 當您將模式設定為 [完成]**** 時，Resource Manager 就會刪除不在範本中的資源群組之任何資源。
 
 ## <a name="next-steps"></a>後續步驟
 

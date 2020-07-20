@@ -3,9 +3,7 @@ title: Azure 網路監看員 | Microsoft Azure
 description: 了解 Azure 網路監看員可對虛擬網路中的資源運用的監視、診斷、計量和記錄功能。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 Customer intent: As someone with basic Azure network experience, I want to understand how Azure Network Watcher can help me resolve some of the network-related problems I've encountered and provide insight into how I use Azure networking.
 ms.assetid: 14bc2266-99e3-42a2-8d19-bd7257fec35e
 ms.service: network-watcher
@@ -14,22 +12,22 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/24/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: ddc577af945c01b94dae5a75725082e4e6689fd9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 81621a2b63eec804aaa7c74e1d77b06ef1adb79a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697147"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "76844984"
 ---
 # <a name="what-is-azure-network-watcher"></a>什麼是 Azure 網路監看員？
 
-Azure 網路監看員提供了相關工具，可對 Azure 虛擬網路中的資源進行監視、診斷、檢視計量，以及啟用或停用記錄。
+Azure 網路監看員提供了相關工具，可對 Azure 虛擬網路中的資源進行監視、診斷、檢視計量，以及啟用或停用記錄。 網路監看員是設計來監視及修復 IaaS (基礎結構即服務) 產品的網路健康情況，這包括虛擬機器、虛擬網路、應用程式閘道、負載平衡器等等。注意:它並不適用也無法搭配 PaaS 監視或 Web 分析運作。 
 
 ## <a name="monitoring"></a>監視
 
-### <a name = "connection-monitor"></a>監視虛擬機器與端點之間的通訊
+### <a name="monitor-communication-between-a-virtual-machine-and-an-endpoint"></a><a name = "connection-monitor"></a>監視虛擬機器與端點之間的通訊
 
 端點可以是另一個虛擬機器 (VM)、完整網域名稱 (FQDN)、統一資源識別項 (URI) 或 IPv4 位址。 *連線監視器*功能可定期監視 VM 與端點之間的存取性、延遲和網路拓撲變更，並對您發出通知。 例如，您可能會有與資料庫伺服器 VM 通訊的 Web 伺服器 VM。 您的組織中可能會有您不認識的人將自訂路由或網路安全性規則套用至 Web 伺服器或資料庫伺服器 VM 或子網路。
 
@@ -57,7 +55,7 @@ Azure 網路監看員提供了相關工具，可對 Azure 虛擬網路中的資�
 
 當您建立虛擬網路時，Azure 會為網路流量建立數個預設輸出路由。 所有資源 (例如在虛擬網路中部署的 VM) 的輸出流量都會根據 Azure 的預設路由進行路由傳送。 您可以覆寫 Azure 的預設路由，或建立其他路由。 您可能會發現 VM 因特定的路徑而無法再與其他資源通訊。 *下一個躍點*功能可讓您指定來源和目的地 IPv4 位址。 接著，下一個躍點會測試通訊，並向您指出用來路由流量的何種類型的下一個躍點。 其後，您可以移除、變更或新增路由，以解決路由問題。 深入了解[下一個躍點](diagnose-vm-network-routing-problem.md)功能。
 
-### <a name="connection-troubleshoot"></a>診斷來自 VM 的輸出連線
+### <a name="diagnose-outbound-connections-from-a-vm"></a><a name="connection-troubleshoot"></a>診斷來自 VM 的輸出連線
 
 *測試疑難排解*功能可讓您測試不同 VM 之間的連線、FQDN、URI 或 IPv4 位址。 此測試會傳回使用[連線監視器](#connection-monitor)功能時傳回的類似資訊，但會測試某個時間點的連線，而不是像連線監視器一樣監視連線一段時間。 深入了解如何使用[連線疑難排解](network-watcher-connectivity-overview.md)對連線進行疑難排解。
 
@@ -77,9 +75,9 @@ Azure 網路監看員提供了相關工具，可對 Azure 虛擬網路中的資�
 
 網路介面的有效安全性規則，是所有對網路介面和網路介面所在的子網路套用的安全性規則的組合。  *安全性群組檢視*功能可為您顯示所有對網路介面和網路介面所在的子網路套用的安全性規則，以及兩者的彙總。 了解對網路介面套用了哪些規則後，您將可新增、移除或變更規則 (如果這些允許或拒絕您想要變更的流量)。 深入了解[安全性群組檢視](network-watcher-security-group-view-overview.md)。
 
-## <a name="metrics"></a>度量
+## <a name="metrics"></a>計量
 
-您可以在 Azure 訂用帳戶和區域內建立的網路資源數目有其[限制](../azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#azure-resource-manager-virtual-networking-limits)。 當您達到限制時，即無法在訂用帳戶或區域內建立更多資源。 *網路訂用帳戶限制*功能可概略歸納出您在訂用帳戶和區域中已部署的各種網路資源數目，以及各項資源的限制。 下圖顯示範例訂用帳戶在美東地區已部署之網路資源的部分輸出：
+您可以在 Azure 訂用帳戶和區域內建立的網路資源數目有其[限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#azure-resource-manager-virtual-networking-limits)。 當您達到限制時，即無法在訂用帳戶或區域內建立更多資源。 *網路訂用帳戶限制*功能可概略歸納出您在訂用帳戶和區域中已部署的各種網路資源數目，以及各項資源的限制。 下圖顯示範例訂用帳戶在美東地區已部署之網路資源的部分輸出：
 
 ![訂用帳戶限制](./media/network-watcher-monitoring-overview/subscription-limit.png)
 

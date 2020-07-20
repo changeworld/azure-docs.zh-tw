@@ -1,6 +1,6 @@
 ---
-title: API HTTP 回應碼
-titleSuffix: Azure
+title: API HTTP 回應碼-LUIS
+titleSuffix: Azure Cognitive Services
 description: 了解哪些 HTTP 回應碼會從 LUIS 撰寫和 API 端點傳回
 services: cognitive-services
 author: diberry
@@ -8,24 +8,24 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
+ms.topic: reference
 ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 18ec59200d3cf820794ac353e38106ad26aca697
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 405381a2d80ee6469b2b90bcb25923004fe55882
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337239"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "78270257"
 ---
 # <a name="common-api-response-codes-and-their-meaning"></a>常見的 API 回應碼及其意義
 
-[撰寫](https://aka.ms/luis-authoring-apis)和[端點](https://aka.ms/luis-endpoint-apis) API 會傳回 HTTP 回應碼。 當回應訊息包含專屬於要求的資訊時，HTTP 回應狀態碼為一般。 
+[撰寫](https://go.microsoft.com/fwlink/?linkid=2092087)和[端點](https://go.microsoft.com/fwlink/?linkid=2092356) API 會傳回 HTTP 回應碼。 當回應訊息包含專屬於要求的資訊時，HTTP 回應狀態碼為一般。
 
 ## <a name="common-status-codes"></a>常見狀態碼
-下表針對[撰寫](https://aka.ms/luis-authoring-apis)和[端點](https://aka.ms/luis-endpoint-apis) API 列出一些最常見的 HTTP 回應狀態碼：
+下表針對[撰寫](https://go.microsoft.com/fwlink/?linkid=2092087)和[端點](https://go.microsoft.com/fwlink/?linkid=2092356) API 列出一些最常見的 HTTP 回應狀態碼：
 
-|代碼|API|說明|
+|程式碼|API|說明|
 |:--|--|--|
 |400|撰寫、端點|要求的參數不正確，表示必要參數遺失、格式不正確或太大|
 |400|撰寫、端點|要求的本文不正確，表示 JSON 遺失、格式不正確或太大|

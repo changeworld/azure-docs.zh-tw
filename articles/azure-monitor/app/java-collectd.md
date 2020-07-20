@@ -1,23 +1,13 @@
 ---
 title: 監視 Linux - Azure 上的 Java Web 應用程式效能 | Microsoft Docs
 description: 使用 Application Insights 的 CollectD 外掛程式擴充您的 Java 網站的應用程式效能監視功能。
-services: application-insights
-documentationcenter: java
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 40c68f45-197a-4624-bf89-541eb7323002
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/24/2016
-ms.author: mbullwin
-ms.openlocfilehash: 783cef6ff4e107838bb3ff7502fb4a8e9189ec3d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 03/14/2019
+ms.openlocfilehash: 62a723dad7e9f6c2bfdabde159968d507d2d5d41
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60897731"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81537520"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd：Application Insights 中的 Linux 效能計量
 
@@ -37,7 +27,7 @@ ms.locfileid: "60897731"
 在您的 Linux 伺服器機器上：
 
 1. 安裝 [collectd](https://collectd.org/) 5.4.0 版或更新版本。
-2. 下載 [Application Insights collectd 寫入器外掛程式](https://aka.ms/aijavasdk)。 記下版本號碼。
+2. 下載 [Application Insights collectd 寫入器外掛程式](https://github.com/microsoft/ApplicationInsights-Java/tree/master/collectd/src/main/java/com/microsoft/applicationinsights/collectd/internal)。 記下版本號碼。
 3. 將外掛程式 JAR 複製到 `/usr/share/collectd/java`。
 4. 編輯 `/etc/collectd/collectd.conf`：
    * 確定 [Java 外掛程式](https://collectd.org/wiki/index.php/Plugin:Java) 已啟用。
@@ -91,7 +81,7 @@ ms.locfileid: "60897731"
 根據其 [手冊](https://collectd.org/wiki/index.php/First_steps)重新啟動 collectd。
 
 ## <a name="view-the-data-in-application-insights"></a>在 Application Insights 中檢視資料
-在 Application Insights 資源中，開啟[計量並新增圖表][metrics]，選取您想要從 [自訂] 類別中查看的度量。
+在您的 Application Insights 資源中，開啟 [[計量] 和 [新增圖表][metrics]]，從 [自訂] 類別選取您想要查看的度量。
 
 根據預設，會對收集度量來源的所有主機電腦彙總度量。 若要檢視每一主機的度量，在圖表的 [詳細資料] 刀鋒視窗中，開啟 [群組]，然後選擇依 CollectD-Host 群組。
 
@@ -124,7 +114,7 @@ ms.locfileid: "60897731"
 
 Application Insights 的「寫入」外掛程式與某些「讀取」外掛程式不相容。 有些外掛程式有時會在 Application Insights 外掛程式預期要有浮點數的位置傳送 "NaN"。
 
-徵狀：collectd 記錄會顯示包含下列資訊的錯誤：「AI: ...SyntaxError:未預期的權杖 N」。
+徵兆： collectd 記錄檔會顯示錯誤，其中包括「AI： .。。SyntaxError：未預期的 token N」。
 
 因應措施：排除有問題的「寫入」外掛程式所收集的資料。 
 
@@ -137,6 +127,6 @@ Application Insights 的「寫入」外掛程式與某些「讀取」外掛程�
 [eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/app/metrics-explorer.md
+[metrics]: ../../azure-monitor/platform/metrics-charts.md
 
 

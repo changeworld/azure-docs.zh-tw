@@ -1,26 +1,16 @@
 ---
-title: 在 Linux 上建立 PHP 應用程式 - Azure App Service | Microsoft Docs
-description: 短短幾分鐘內在 Linux 上的 App Service 中部署第一個 PHP Hello World。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 快速入門：在 Linux 上建立 PHP 應用程式
+description: 藉由將您的第一個 PHP 應用程式部署至 App Service 中的 Linux 容器，在 Azure App Service 上開始使用 Linux 應用程式。
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/27/2019
-ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: c0dde4c59c2fe9cde23a9f88c69f3e2673942812
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.date: 05/25/2020
+ms.custom: mvc, cli-validatem seodec18
+ms.openlocfilehash: f0307088d274c9afee8fb8816b41a6357b4ce9f2
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546806"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848063"
 ---
 # <a name="create-a-php-app-in-app-service-on-linux"></a>在 Linux 上的 App Service 中建立 PHP 應用程式
 
@@ -28,7 +18,7 @@ ms.locfileid: "59546806"
 > 本文會將應用程式部署至 Linux 上的 App Service。 若要在 _Windows_ 上部署至 App Service，請參閱[在 Azure 中建立 PHP 應用程式](../app-service-web-get-started-php.md)。
 >
 
-[Linux 上的 App Service](app-service-linux-intro.md) 使用 Linux 作業系統提供可高度擴充、自我修復的 Web 主機服務。 本快速入門教學課程會說明如何將 PHP 應用程式部署至 Linux 上的 Azure App Service。 您將會在 Cloud Shell 中使用 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)，透過內建映像建立應用程式，並使用 Git 將 PHP 程式碼部署至 App Service 應用程式。
+[Linux 上的 App Service](app-service-linux-intro.md) 使用 Linux 作業系統提供可高度擴充、自我修復的 Web 主機服務。 本快速入門教學課程會說明如何使用 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) \(部分機器翻譯\) 將 PHP 應用程式部署至 Linux 上的 Azure App Service。
 
 ![在 Azure 中執行的範例應用程式](media/quickstart-php/hello-world-in-browser.png)
 
@@ -80,10 +70,10 @@ php -S localhost:8080
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-linux-no-h.md)] 
 
-瀏覽至網站以查看您使用內建映像新建立的應用程式。 以您的應用程式名稱取代 _&lt;app name>_。
+瀏覽至網站以查看您使用內建映像新建立的應用程式。 以您的應用程式名稱取代 _&lt;app name>_ 。
 
 ```bash
-http://<app_name>.azurewebsites.net
+http://<app-name>.azurewebsites.net
 ```
 
 新的應用程式看起來應該像這樣：
@@ -92,37 +82,35 @@ http://<app_name>.azurewebsites.net
 
 [!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
 
-```bash
-Counting objects: 2, done.
+<pre>
+Counting objects: 26, done.
 Delta compression using up to 4 threads.
-Compressing objects: 100% (2/2), done.
-Writing objects: 100% (2/2), 352 bytes | 0 bytes/s, done.
-Total 2 (delta 1), reused 0 (delta 0)
+Compressing objects: 100% (23/23), done.
+Writing objects: 100% (26/26), 4.95 KiB | 0 bytes/s, done.
+Total 26 (delta 9), reused 0 (delta 0)
+remote: Deploy Async
 remote: Updating branch 'master'.
 remote: Updating submodules.
-remote: Preparing deployment for commit id '25f18051e9'.
-remote: Generating deployment script.
-remote: Running deployment command...
-remote: Handling Basic Web Site deployment.
-remote: Kudu sync from: '/home/site/repository' to: '/home/site/wwwroot'
-remote: Copying file: '.gitignore'
-remote: Copying file: 'LICENSE'
-remote: Copying file: 'README.md'
-remote: Copying file: 'index.php'
-remote: Ignoring: .git
-remote: Finished successfully.
-remote: Running post deployment command(s)...
+remote: Preparing deployment for commit id 'df425ea6ef'.
+remote: Repository path is /home/site/repository
+remote: Running oryx build...
+remote: Build orchestrated by Microsoft Oryx, https://github.com/Microsoft/Oryx
+remote: You can report issues at https://github.com/Microsoft/Oryx/issues
+remote: .
+remote: .
+remote: .
 remote: Deployment successful.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git
-   cc39b1e..25f1805  master -> master
-```
+remote: Deployment Logs : 'https://&lt;app-name&gt;.scm.azurewebsites.net/newui/jsonviewer?view_url=/api/deployments/.../log'
+To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
+ * [new branch]      master -> master
+</pre>
 
 ## <a name="browse-to-the-app"></a>瀏覽至應用程式
 
 使用 web 瀏覽器瀏覽至已部署的應用程式。
 
 ```bash
-http://<app_name>.azurewebsites.net
+http://<app-name>.azurewebsites.net
 ```
 
 具有內建映像的 PHP 程式碼範例正在 Linux 上的 App Service 中執行。

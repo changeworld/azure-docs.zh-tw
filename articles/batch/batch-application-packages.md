@@ -1,26 +1,15 @@
 ---
-title: 在運算節點上安裝應用程式封裝 - Azure Batch | Microsoft Docs
-description: 使用 Azure Batch 的应用程序包功能轻松管理要安装在 Batch 计算节点上的多个应用程序和版本。
-services: batch
-documentationcenter: .net
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-ms.assetid: 3b6044b7-5f65-4a27-9d43-71e1863d16cf
-ms.service: batch
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
-ms.date: 04/05/2019
-ms.author: lahugh
+title: 將應用程式套件部署到計算節點
+description: 使用 Azure Batch 的應用程式封裝功能輕鬆地管理多個應用程式和版本，以便安裝在 Batch 計算節點。
+ms.topic: how-to
+ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ee54d37050991763e60a6feb96c75d80384a42ac
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 328b08acbc6d13dd03956bb501b4d4a51310c9c0
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64726661"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147227"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>使用 Batch 應用程式套件將應用程式部署至計算節點
 
@@ -43,7 +32,7 @@ Azure Batch 的應用程式套件功能可讓您輕鬆管理工作應用程式�
 
 ![應用程式和應用程式套件的高階圖表][1]
 
-### <a name="applications"></a>[應用程式]
+### <a name="applications"></a>應用程式
 Batch 中的應用程式包含一或多個應用程式封裝，並且會指定應用程式的組態選項。 例如，應用程式可以指定要安裝在計算節點上的預設應用程式套件版本，以及應用程式的套件是否可以更新或刪除。
 
 ### <a name="application-packages"></a>應用程式封裝
@@ -51,7 +40,7 @@ Batch 中的應用程式包含一或多個應用程式封裝，並且會指定�
 
 您可以在集區和工作層級指定應用程式套件。 當您建立集區或工作時，您可以指定這些套件之中的一個或多個，以及 (選擇性) 指定版本。
 
-* **集區應用程式套件**會部署到集區中的「每個」節點。 当节点加入池以及重新启动或重置映像时，就会部署应用程序。
+* **集區應用程式套件**會部署到集區中的「每個」節點。 當節點加入集區以及重新啟動或重新安裝映像時，就會部署應用程式。
   
     當集區中的所有節點都執行某作業的工作時，便適合使用集區應用程式套件。 您可以在建立集區時指定一或多個應用程式套件，而且可以新增或更新現有集區的套件。 如果您更新現有集區的應用程式套件，您必須重新啟動它的節點，以安裝新的套件。
 * **工作應用程式套件** 只會部署到排程要執行工作的計算節點。 如果節點上已有指定的應用程式套件和版本，則不會重新部署，而會使用現有套件。
@@ -68,7 +57,7 @@ Batch 中的應用程式包含一或多個應用程式封裝，並且會指定�
 ### <a name="benefits-of-application-packages"></a>應用程式封裝的優點
 應用程式套件可以簡化 Batch 解決方案中的程式碼，以及降低工作所執行之應用程式的必要管理成本。
 
-使用應用程式套件，集區的啟動工作就不需要指定在節點上安裝一長串的個別資源檔案。 您不需要在 Azure 儲存體中或在節點上手動管理應用程式檔案的多個版本。 再者，您也不必費心產生 [SAS URL](../storage/common/storage-dotnet-shared-access-signature-part-1.md) 來提供這些檔案在儲存體帳戶中的存取權限。 Batch 會在背景中與 Azure 儲存體合作來儲存應用程式套件，並將其部署到計算節點。
+使用應用程式套件，集區的啟動工作就不需要指定在節點上安裝一長串的個別資源檔案。 您不需要在 Azure 儲存體中或在節點上手動管理應用程式檔案的多個版本。 再者，您也不必費心產生 [SAS URL](../storage/common/storage-sas-overview.md) 來提供這些檔案在儲存體帳戶中的存取權限。 Batch 會在背景中與 Azure 儲存體合作來儲存應用程式套件，並將其部署到計算節點。
 
 > [!NOTE] 
 > 啟動工作的總大小必須小於或等於 32768 個字元，包括資源檔案和環境變數。 如果啟動工作超過此限制，就可另外選擇使用應用程式套件。 您可以也建立包含資源檔的壓縮封存、將它作為 blob 上傳到 Azure 儲存體，然後從啟動工作的命令列將它解壓縮。 
@@ -79,7 +68,7 @@ Batch 中的應用程式包含一或多個應用程式封裝，並且會指定�
 您可以使用 [Azure 入口網站][portal]或 Batch Management API 來管理 Batch 帳戶中的應用程式套件。 在接下來的幾節中，我們會先示範如何連結儲存體帳戶，接著討論如何使用入口網站來新增應用程式和套件以及管理它們。
 
 ### <a name="link-a-storage-account"></a>連結儲存體帳戶
-若要使用應用程式套件，您必須先將 [Azure 儲存體帳戶](batch-api-basics.md#azure-storage-account)連結到 Batch 帳戶。 如果您尚未設定儲存體帳戶，Azure 入口網站會在您第一次按下 Batch 帳戶中的 [應用程式] 時顯示警告。
+若要使用應用程式套件，您必須先將 [Azure 儲存體帳戶](accounts.md#azure-storage-accounts)連結到 Batch 帳戶。 如果您尚未設定儲存體帳戶，Azure 入口網站會在您第一次按下 Batch 帳戶中的 [應用程式] 時顯示警告。
 
 
 
@@ -91,13 +80,11 @@ Batch 服務會使用相關聯的儲存體帳戶來儲存應用程式套件。 �
 
 我們建議您建立「專門」用來與 Batch 帳戶搭配使用的儲存體帳戶，並在此處選取它。 在建立儲存體帳戶之後，您可以使用 [儲存體帳戶]  視窗，將它連結到 Batch 帳戶。
 
-> [!NOTE] 
-> 您目前無法使用應用程式套件搭配使用已設定[防火牆規則](../storage/common/storage-network-security.md)的 Azure 儲存體帳戶。
-> 
+> [!IMPORTANT] 
+> - 您目前無法使用應用程式套件搭配使用已設定[防火牆規則](../storage/common/storage-network-security.md)的 Azure 儲存體帳戶。
+> - 搭配**階層命名空間**且設定為 [已啟用] 的 Azure 儲存體帳戶無法用於應用程式封裝。
 
-Batch 服務會使用 Azure 儲存體將應用程式套件儲存為區塊 Blob。 針對區塊 Blob 資料，您需[支付標準費用][storage_pricing]，而每個套件的大小則不能超過[區塊 Blob 大小上限](../storage/common/storage-scalability-targets.md#azure-blob-storage-scale-targets)。 請務必考量應用程式套件的大小和數目，並定期移除過時的套件以降低成本。
-> 
-> 
+Batch 服務會使用 Azure 儲存體將應用程式套件儲存為區塊 Blob。 針對區塊 Blob 資料，您需[支付標準費用][storage_pricing]，而每個套件的大小則不能超過區塊 Blob 大小上限。 如需詳細資訊，請參閱[儲存體帳戶的 Azure 儲存體延展性和效能目標](../storage/blobs/scalability-targets.md)。 請務必考量應用程式套件的大小和數目，並定期移除過時的套件以降低成本。
 
 ### <a name="view-current-applications"></a>檢視目前的應用程式
 若要檢視 Batch 帳戶中的應用程式，請在檢視 [Batch 帳戶] 視窗時按一下左側功能表中的 [應用程式] 功能表項目。
@@ -111,16 +98,16 @@ Batch 服務會使用 Azure 儲存體將應用程式套件儲存為區塊 Blob�
 此視窗會顯示帳戶中每個應用程式的識別碼，以及下列屬性︰
 
 * **套件**：與此應用程式相關聯的版本號碼。
-* **預設版本**：如果您在指定集區的應用程式時未指定版本，系統會安裝的應用程式版本。 這項設定是選擇性的。
+* **預設版本**：如果您在指定集區的應用程式時未指定版本，系統會安裝的應用程式版本。 這個設定是選擇性的。
 * **允許更新**：此值會指定是否允許更新、刪除和新增套件。 如果此值設為 [否]，應用程式會停用套件的更新和刪除， 而只能新增新的應用程式封裝版本。 預設值為 [是]。
 
-如果您想要看見檔案結構的應用程式封裝的計算節點上，瀏覽至您在入口網站中的 Batch 帳戶。 從您的 Batch 帳戶，瀏覽至**集區**。 選取包含您感興趣的計算節點的集區。
+如果您想要在計算節點上查看應用程式套件的檔案結構，請在入口網站中瀏覽至您的 Batch 帳戶。 從您的 Batch 帳戶中，瀏覽至 [集區]。 選取一個集區，其中包含您感興趣的計算節點。
 
 ![集區中的節點][13]
 
-一旦您已選取您的集區，請瀏覽到計算節點上所安裝的應用程式封裝。 從該處，應用程式封裝的詳細資料位於**應用程式**資料夾。 在計算節點上的其他資料夾包含其他檔案，例如啟動工作、 輸出檔案，錯誤輸出等。
+一旦選取了您的集區，就會瀏覽至應用程式套件安裝所在的計算節點。 從該處，應用程式套件的詳細資料位於 **applications** 資料夾中。 計算節點上的其他資料夾包含其他檔案，例如啟動工作、輸出檔案、錯誤輸出等。
 
-![在節點上的檔案][14]
+![節點上的檔案][14]
 
 ### <a name="view-application-details"></a>檢視應用程式詳細資料
 若要查看應用程式的詳細資料，請在 [應用程式] 視窗中選取應用程式。
@@ -189,7 +176,7 @@ Batch 服務會使用 Azure 儲存體將應用程式套件儲存為區塊 Blob�
 
 ![Azure 入口網站中的更新套件刀鋒視窗][11]
 
-**删除**
+**刪除**
 
 當您按一下 [刪除] 時，系統會要求您確認要刪除套件版本，隨後 Batch 會從 Azure 儲存體中刪除該套件。 如果您刪除應用程式的預設版本，系統會移除應用程式的 [預設版本]  設定。
 
@@ -233,7 +220,7 @@ await myCloudPool.CommitAsync();
 ### <a name="install-task-application-packages"></a>安裝工作應用程式套件
 類似於集區，您可以為工作指定應用程式套件「參考」  。 在節點上排程要執行的工作時，會先下載並解壓縮套件，再執行工作的命令列。 如果節點上已安裝指定的套件和版本，則不會下載套件，而會使用現有套件裝。
 
-若要安裝工作應用程式套件，請設定工作的 [CloudTask][net_cloudtask].[ApplicationPackageReferences][net_cloudtask_pkgref] 屬性︰
+若要安裝工作應用程式套件，請設定工作的 [CloudTask][net_cloudtask].[ApplicationPackageReferences][net_cloudtask_pkgref] 屬性：
 
 ```csharp
 CloudTask task =
@@ -261,7 +248,7 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-在 Linux 節點上，格式稍有不同。 句號 (.)、連字號 (-) 和數字記號 (#) 已壓平合併為環境變數中的底線。 另外請注意，會保留應用程式識別碼的大小寫。 例如︰
+在 Linux 節點上，格式稍有不同。 句號 (.)、連字號 (-) 和數字記號 (#) 已壓平合併為環境變數中的底線。 另外請注意，會保留應用程式識別碼的大小寫。 例如：
 
 ```
 Linux:
@@ -298,9 +285,7 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 ```
 
 > [!TIP]
-> 如需計算節點環境設定的詳細資訊，請參閱 [Batch 功能概觀](batch-api-basics.md)中的[工作的環境設定](batch-api-basics.md#environment-settings-for-tasks)。
-> 
-> 
+> 如需計算節點環境設定的詳細資訊，請參閱[工作的環境設定](jobs-and-tasks.md#environment-settings-for-tasks)。 
 
 ## <a name="update-a-pools-application-packages"></a>更新集區的應用程式封裝
 如果您已設定現有集區的應用程式封裝，可以指定集區的新封裝。 如果您為集區指定新的封裝參考，則會適用下列情況：
@@ -309,7 +294,7 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 * 在更新封裝參考時已存在集區中的計算節點不會自動安裝新應用程式封裝。 這些計算節點必須重新啟動或重新安裝映像才能接收新封裝。
 * 部署新的封裝之後，所建立的環境變數會反映新的應用程式封裝參考。
 
-在此範例中，現有集區已將 Blender 應用程式的 2.7 版設定為其中一個 [CloudPool][net_cloudpool].[ApplicationPackageReferences][net_cloudpool_pkgref]。 若要將集區的節點更新為 2.76b 版，請將 [ApplicationPackageReference][net_pkgref] 指定為新版本並認可變更。
+在此範例中，現有集區已將 *Blender* 應用程式的 2.7 版設定為其中一個 [CloudPool][net_cloudpool].[ApplicationPackageReferences][net_cloudpool_pkgref]。 若要將集區的節點更新為 2.76b 版，請將 [ApplicationPackageReference][net_pkgref] 指定為新版本並認可變更。
 
 ```csharp
 string newVersion = "2.76b";
@@ -346,27 +331,27 @@ foreach (ApplicationSummary app in applications)
 透過應用程式封裝，您可以協助客戶選取其作業適用的應用程式，以及指定在以啟用 Batch 功能的服務處理作業時所要使用的確切版本。 您也可以在服務中提供讓客戶上傳及追蹤其應用程式的功能。
 
 ## <a name="next-steps"></a>後續步驟
-* [Batch REST API][api_rest] 也提供應用程式套件的使用支援。 例如，請參閱[將集區新增至帳戶][rest_add_pool]中的 [applicationPackageReferences][rest_add_pool_with_packages] 項目，以取得如何使用 REST API 來指定要安裝之套件的相關資訊。 如需如何使用 Batch REST API 來取得應用程式資訊的詳細資料，請參閱[應用程式][rest_applications]。
+* [Batch REST API][api_rest] 也提供應用程式套件的使用支援。 例如，請參閱[將集區新增至帳戶][rest_add_pool]中的 [applicationPackageReferences][rest_add_pool_with_packages] 元素，以取得如何使用 REST API 來指定要安裝之套件的相關資訊。 如需如何使用 Batch REST API 來取得應用程式資訊的詳細資料，請參閱[應用程式][rest_applications]。
 * 了解如何以程式設計方式 [使用 Batch Management .NET 管理 Azure Batch 帳戶和配額](batch-management-dotnet.md)。 [Batch Management .NET][api_net_mgmt] 程式庫可以啟用 Batch 應用程式或服務的帳戶建立和刪除功能。
 
-[api_net]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/client?view=azure-dotnet
-[api_net_mgmt]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/management?view=azure-dotnet
-[api_rest]: https://docs.microsoft.com/rest/api/batchservice/
+[api_net]: /dotnet/api/overview/azure/batch/client?view=azure-dotnet
+[api_net_mgmt]: /dotnet/api/overview/azure/batch/management?view=azure-dotnet
+[api_rest]: /rest/api/batchservice/
 [batch_mgmt_nuget]: https://www.nuget.org/packages/Microsoft.Azure.Management.Batch/
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [storage_pricing]: https://azure.microsoft.com/pricing/details/storage/
-[net_appops]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.applicationoperations.aspx
-[net_appops_listappsummaries]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.applicationoperations.listapplicationsummaries.aspx
-[net_cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
-[net_cloudpool_pkgref]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.applicationpackagereferences.aspx
-[net_cloudtask]: https://msdn.microsoft.com/library/microsoft.azure.batch.cloudtask.aspx
-[net_cloudtask_pkgref]: https://msdn.microsoft.com/library/microsoft.azure.batch.cloudtask.applicationpackagereferences.aspx
-[net_nodestate]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.computenode.state.aspx
-[net_pkgref]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.applicationpackagereference.aspx
+[net_appops]: /dotnet/api/microsoft.azure.batch.applicationoperations
+[net_appops_listappsummaries]: /dotnet/api/microsoft.azure.batch.applicationoperations
+[net_cloudpool]: /dotnet/api/microsoft.azure.batch.cloudpool
+[net_cloudpool_pkgref]: /dotnet/api/microsoft.azure.batch.cloudpool
+[net_cloudtask]: /dotnet/api/microsoft.azure.batch.cloudtask
+[net_cloudtask_pkgref]: /dotnet/api/microsoft.azure.batch.cloudtask
+[net_nodestate]: /dotnet/api/microsoft.azure.batch.computenode
+[net_pkgref]: /dotnet/api/microsoft.azure.batch.applicationpackagereference
 [portal]: https://portal.azure.com
-[rest_applications]: https://msdn.microsoft.com/library/azure/mt643945.aspx
-[rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
-[rest_add_pool_with_packages]: https://msdn.microsoft.com/library/azure/dn820174.aspx#bk_apkgreference
+[rest_applications]: /rest/api/batchservice/application
+[rest_add_pool]: /rest/api/batchservice/pool/add
+[rest_add_pool_with_packages]: /rest/api/batchservice/pool/add#bk_apkgreference
 
 [1]: ./media/batch-application-packages/app_pkg_01.png "應用程式套件高階圖表"
 [2]: ./media/batch-application-packages/app_pkg_02.png "Azure 入口網站中的應用程式圖格"
@@ -379,5 +364,5 @@ foreach (ApplicationSummary app in applications)
 [10]: ./media/batch-application-packages/app_pkg_10.png "Azure 入口網站中的選擇儲存體帳戶刀鋒視窗"
 [11]: ./media/batch-application-packages/app_pkg_11.png "Azure 入口網站中的更新套件刀鋒視窗"
 [12]: ./media/batch-application-packages/app_pkg_12.png "Azure 入口網站中的刪除套件確認對話方塊"
-[13]: ./media/batch-application-packages/package-file-structure.png "計算在 Azure 入口網站中的節點資訊"
-[14]: ./media/batch-application-packages/package-file-structure-node.png "在 Azure 入口網站中顯示的計算節點上的檔案"
+[13]: ./media/batch-application-packages/package-file-structure.png "Azure 入口網站中的計算節點資訊"
+[14]: ./media/batch-application-packages/package-file-structure-node.png "計算節點上顯示在 Azure 入口網站上的檔案"

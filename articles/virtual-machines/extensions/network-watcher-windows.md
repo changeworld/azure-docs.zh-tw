@@ -1,26 +1,25 @@
 ---
-title: 適用於 Windows 的 Azure 網路監看員代理程式虛擬機器擴充功能 | Microsoft Docs
+title: 適用於 Windows 的 Azure 網路監看員代理程式虛擬機器擴充功能 \(部分機器翻譯\)
 description: 使用虛擬機器擴充功能在 Windows 虛擬機器上部署網路監看員代理程式。
 services: virtual-machines-windows
 documentationcenter: ''
-author: gurudennis
-manager: amku
+author: mimckitt
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 27e46af7-2150-45e8-b084-ba33de8c5e3f
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
-ms.author: dennisg
-ms.openlocfilehash: 6e02f5a5b42da9c99a08782903cdc05ee32ec9d4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: mimckitt
+ms.openlocfilehash: e78a18055d85e2105ea604d568c154c889ab0655
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60743321"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206026"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>適用於 Windows 的網路監看員代理程式虛擬機器擴充功能
 
@@ -35,7 +34,7 @@ ms.locfileid: "60743321"
 
 ### <a name="operating-system"></a>作業系統
 
-適用於 Windows 的網路監看員代理程式擴充功能可以在 Windows Server 2008 R2、2012、2012 R2 和 2016 版本上執行。 目前不支援 Nano Server。
+適用于 Windows 的網路監看員代理程式擴充功能可以針對 Windows Server 2008 R2、2012、2012 R2、2016和2019版本執行。 目前不支援 Nano Server。
 
 ### <a name="internet-connectivity"></a>網際網路連線
 
@@ -69,7 +68,7 @@ ms.locfileid: "60743321"
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.Azure.NetworkWatcher |
-| type | NetworkWatcherAgentWindows |
+| 類型 | NetworkWatcherAgentWindows |
 | typeHandlerVersion | 1.4 |
 
 

@@ -1,0 +1,53 @@
+- name: 沈浸式閱讀程式文件
+  href: index.yml
+- name: 概觀
+  items:
+    - name: 什麼是沈浸式閱讀程式？
+      href: Overview.md
+- name: 快速入門
+  expanded: true
+  items:
+    - name: 使用用戶端程式庫
+      href: ./quickstarts/client-libraries.md
+- name: 教學課程
+  items:
+    - name: 啟動沈浸式閱讀程式 (Android)
+      href: tutorial-android.md
+    - name: 啟動沈浸式閱讀程式 (iOS)
+      href: tutorial-ios.md
+    - name: 啟動沈浸式閱讀程式 (Python)
+      href: tutorial-python.md
+    - name: 使用多個沉浸式讀取器資源
+      href: tutorial-multiple-resources.md
+- name: 作法
+  items:
+    - name: 建立沉浸式讀取器資源
+      href: how-to-create-immersive-reader.md
+    - name: 設定 Cookie 原則
+      href: how-to/set-cookie-policy.md
+    - name: 顯示數學
+      href: how-to/display-math.md
+    - name: 使用 HTML 內容啟動沈浸式閱讀程式
+      href: how-to-launch-with-html.md
+    - name: 自訂沉浸式讀取器按鈕
+      href: how-to-customize-launch-button.md
+    - name: 快取驗證權杖
+      href: how-to-cache-token.md
+    - name: 設定大聲朗讀
+      href: how-to-configure-read-aloud.md
+    - name: 設定翻譯
+      href: how-to-configure-translation.md
+    - name: 儲存使用者喜好設定
+      href: how-to-store-user-preferences.md
+- name: 參考
+  items:
+    - name: JavaScript SDK
+      href: reference.md
+- name: 資源
+  items:
+    - name: Azure 藍圖
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+    - name: 語言支援
+      href: language-support.md
+    - name: 區域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'

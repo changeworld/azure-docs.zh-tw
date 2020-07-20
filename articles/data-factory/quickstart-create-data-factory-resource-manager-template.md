@@ -1,28 +1,29 @@
 ---
-title: 使用 Resource Manager 範本建立 Azure Data Factory | Microsoft Docs
+title: 使用 Resource Manager 範本建立 Azure Data Factory
 description: 在本教學課程中，您會使用 Azure Resource Manager 範本來建立範例 Azure Data Factory 管線。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 02/20/2019
-author: gauravmalhot
-ms.author: gamal
-manager: craigg
-ms.openlocfilehash: 2b25dff29563dcf44077465f3e563d04f04b3119
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+author: djpmsft
+ms.author: daperlov
+manager: anandsub
+ms.openlocfilehash: 5ea45346de5ea841867dd13dd4c9a0ed26647448
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483109"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81419114"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>教學課程：使用 Azure Resource Manager 範本建立 Azure Data Factory
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [第 1 版](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [目前的版本](quickstart-create-data-factory-resource-manager-template.md)
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本快速入門說明如何使用 Azure Resource Manager 範本建立 Azure Data Factory。 在此資料處理站中建立的管線會將資料從 Azure Blob 儲存體中的一個資料夾**複製**到其他資料夾。 如需如何使用 Azure Data Factory **轉換**資料的教學課程，請參閱[教學課程︰使用 Spark 轉換資料](transform-data-using-spark.md)。
 
@@ -39,7 +40,7 @@ ms.locfileid: "58483109"
 
 ## <a name="resource-manager-templates"></a>Resource Manager 範本
 
-若要了解一般的 Azure Resource Manager 範本，請參閱[撰寫 Azure Resource Manager 範本](../azure-resource-manager/resource-group-authoring-templates.md)。
+若要了解一般的 Azure Resource Manager 範本，請參閱[撰寫 Azure Resource Manager 範本](../azure-resource-manager/templates/template-syntax.md)。
 
 下節會提供完整的 Resource Manager 範本來定義 Data Factory 實體，如此您可以快速執行教學課程並測試範本。 若要了解每個 Data Factory 實體的定義方式，請參閱[範本中的 Data Factory 實體](#data-factory-entities-in-the-template)一節。
 
@@ -47,71 +48,34 @@ ms.locfileid: "58483109"
 
 ## <a name="data-factory-json"></a>Data Factory JSON
 
-在 **C:\ADFTutorial** 資料夾中，使用下列內容建立名為 **ADFTutorialARM.json** 的 JSON 檔案：
+在 **C:\ADFTutorial** 資料夾中 (如果 ADFTutorial 資料夾尚未存在，請加以建立)，使用下列內容建立名為 **ADFTutorialARM.json** 的 JSON 檔案：
 
 ```json
-{
-    "contentVersion": "1.0.0.0",
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "parameters": {
-        "dataFactoryName": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the data factory. Must be globally unique."
+{  
+    "$schema":"http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion":"1.0.0.0",
+    "parameters":{  
+        "dataFactoryName":{  
+            "type":"string",
+            "metadata":"Data Factory Name"
+        },
+        "dataFactoryLocation":{  
+            "type":"string",
+            "defaultValue":"East US",
+            "metadata":{  
+                "description":"Location of the data factory. Currently, only East US, East US 2, and West Europe are supported. "
             }
         },
-        "dataFactoryLocation": {
-            "type": "string",
-            "allowedValues": [
-                "East US",
-                "East US 2",
-                "West Europe"
-            ],
-            "defaultValue": "East US",
-            "metadata": {
-                "description": "Location of the data factory. Currently, only East US, East US 2, and West Europe are supported. "
+        "storageAccountName":{  
+            "type":"string",
+            "metadata":{  
+                "description":"Name of the Azure storage account that contains the input/output data."
             }
         },
-        "storageAccountName": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the Azure storage account that contains the input/output data."
-            }
-        },
-        "storageAccountKey": {
-            "type": "securestring",
-            "metadata": {
-                "description": "Key for the Azure storage account."
-            }
-        },
-        "blobContainer": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the blob container in the Azure Storage account."
-            }
-        },
-        "inputBlobFolder": {
-            "type": "string",
-            "metadata": {
-                "description": "The folder in the blob container that has the input file."
-            }
-        },
-        "inputBlobName": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the input file/blob."
-            }
-        },
-        "outputBlobFolder": {
-            "type": "string",
-            "metadata": {
-                "description": "The folder in the blob container that will hold the transformed data."
-            }
-        },
-        "outputBlobName": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the output file/blob."
+        "storageAccountKey":{  
+            "type":"securestring",
+            "metadata":{  
+                "description":"Key for the Azure storage account."
             }
         },
         "triggerStartTime": {
@@ -126,198 +90,233 @@ ms.locfileid: "58483109"
                 "description": "End time for the trigger."
             }
         }
+    },      
+    "variables":{  
+        "factoryId":"[concat('Microsoft.DataFactory/factories/', parameters('dataFactoryName'))]"
     },
-    "variables": {
-        "azureStorageLinkedServiceName": "ArmtemplateStorageLinkedService",
-        "inputDatasetName": "ArmtemplateTestDatasetIn",
-        "outputDatasetName": "ArmtemplateTestDatasetOut",
-        "pipelineName": "ArmtemplateSampleCopyPipeline",
-        "triggerName": "ArmTemplateTestTrigger"
-    },
-    "resources": [{
-        "name": "[parameters('dataFactoryName')]",
-        "apiVersion": "2018-06-01",
-        "type": "Microsoft.DataFactory/factories",
-        "location": "[parameters('dataFactoryLocation')]",
-        "identity": {
-            "type": "SystemAssigned"
-        },
-        "resources": [{
-                "type": "linkedservices",
-                "name": "[variables('azureStorageLinkedServiceName')]",
-                "dependsOn": [
-                    "[parameters('dataFactoryName')]"
-                ],
-                "apiVersion": "2018-06-01",
-                "properties": {
-                    "type": "AzureStorage",
-                    "description": "Azure Storage linked service",
-                    "typeProperties": {
-                        "connectionString": {
-                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',parameters('storageAccountKey'))]",
-                            "type": "SecureString"
+    "resources":[  
+        {  
+            "name":"[parameters('dataFactoryName')]",
+            "apiVersion":"2018-06-01",
+            "type":"Microsoft.DataFactory/factories",
+            "location":"[parameters('dataFactoryLocation')]",
+            "identity":{  
+                "type":"SystemAssigned"
+            },
+            "resources":[  
+                {  
+                    "name":"[concat(parameters('dataFactoryName'), '/ArmtemplateStorageLinkedService')]",
+                    "type":"Microsoft.DataFactory/factories/linkedServices",
+                    "apiVersion":"2018-06-01",
+                    "properties":{  
+                        "annotations":[  
+
+                        ],
+                        "type":"AzureBlobStorage",
+                        "typeProperties":{  
+                            "connectionString":"[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',parameters('storageAccountKey'))]"
                         }
-                    }
-                }
-            },
-            {
-                "type": "datasets",
-                "name": "[variables('inputDatasetName')]",
-                "dependsOn": [
-                    "[parameters('dataFactoryName')]",
-                    "[variables('azureStorageLinkedServiceName')]"
-                ],
-                "apiVersion": "2018-06-01",
-                "properties": {
-                    "type": "AzureBlob",
-                    "typeProperties": {
-                        "folderPath": "[concat(parameters('blobContainer'), '/', parameters('inputBlobFolder'), '/')]",
-                        "fileName": "[parameters('inputBlobName')]"
                     },
-                    "linkedServiceName": {
-                        "referenceName": "[variables('azureStorageLinkedServiceName')]",
-                        "type": "LinkedServiceReference"
-                    }
-                }
-            },
-            {
-                "type": "datasets",
-                "name": "[variables('outputDatasetName')]",
-                "dependsOn": [
-                    "[parameters('dataFactoryName')]",
-                    "[variables('azureStorageLinkedServiceName')]"
-                ],
-                "apiVersion": "2018-06-01",
-                "properties": {
-                    "type": "AzureBlob",
-                    "typeProperties": {
-                        "folderPath": "[concat(parameters('blobContainer'), '/', parameters('outputBlobFolder'), '/')]",
-                        "fileName": "[parameters('outputBlobName')]"
-                    },
-                    "linkedServiceName": {
-                        "referenceName": "[variables('azureStorageLinkedServiceName')]",
-                        "type": "LinkedServiceReference"
-                    }
-                }
-            },
-            {
-                "type": "pipelines",
-                "name": "[variables('pipelineName')]",
-                "dependsOn": [
-                    "[parameters('dataFactoryName')]",
-                    "[variables('azureStorageLinkedServiceName')]",
-                    "[variables('inputDatasetName')]",
-                    "[variables('outputDatasetName')]"
-                ],
-                "apiVersion": "2018-06-01",
-                "properties": {
-                    "activities": [{
-                        "type": "Copy",
-                        "typeProperties": {
-                            "source": {
-                                "type": "BlobSource"
-                            },
-                            "sink": {
-                                "type": "BlobSink"
+                    "dependsOn":[  
+                        "[parameters('dataFactoryName')]"
+                    ]
+                },
+                {  
+                    "name":"[concat(parameters('dataFactoryName'), '/ArmtemplateTestDatasetIn')]",
+                    "type":"Microsoft.DataFactory/factories/datasets",
+                    "apiVersion":"2018-06-01",
+                    "properties":{  
+                        "linkedServiceName":{  
+                            "referenceName":"ArmtemplateStorageLinkedService",
+                            "type":"LinkedServiceReference"
+                        },
+                        "annotations":[  
+
+                        ],
+                        "type":"Binary",
+                        "typeProperties":{  
+                            "location":{  
+                                "type":"AzureBlobStorageLocation",
+                                "fileName":"emp.txt",
+                                "folderPath":"input",
+                                "container":"adftutorial"
                             }
-                        },
-                        "name": "MyCopyActivity",
-                        "inputs": [{
-                            "referenceName": "[variables('inputDatasetName')]",
-                            "type": "DatasetReference"
-                        }],
-                        "outputs": [{
-                            "referenceName": "[variables('outputDatasetName')]",
-                            "type": "DatasetReference"
-                        }]
-                    }]
-                }
-            },
-            {
-                "type": "triggers",
-                "name": "[variables('triggerName')]",
-                "dependsOn": [
-                    "[parameters('dataFactoryName')]",
-                    "[variables('azureStorageLinkedServiceName')]",
-                    "[variables('inputDatasetName')]",
-                    "[variables('outputDatasetName')]",
-                    "[variables('pipelineName')]"
-                ],
-                "apiVersion": "2018-06-01",
-                "properties": {
-                    "type": "ScheduleTrigger",
-                    "typeProperties": {
-                        "recurrence": {
-                            "frequency": "Hour",
-                            "interval": 1,
-                            "startTime": "[parameters('triggerStartTime')]",
-                            "endTime": "[parameters('triggerEndTime')]",
-                            "timeZone": "UTC"
                         }
                     },
-                    "pipelines": [{
-                        "pipelineReference": {
-                            "type": "PipelineReference",
-                            "referenceName": "ArmtemplateSampleCopyPipeline"
+                    "dependsOn":[  
+                        "[parameters('dataFactoryName')]",
+                        "[concat(variables('factoryId'), '/linkedServices/ArmtemplateStorageLinkedService')]"
+                    ]
+                },
+                {  
+                    "name":"[concat(parameters('dataFactoryName'), '/ArmtemplateTestDatasetOut')]",
+                    "type":"Microsoft.DataFactory/factories/datasets",
+                    "apiVersion":"2018-06-01",
+                    "properties":{  
+                        "linkedServiceName":{  
+                            "referenceName":"ArmtemplateStorageLinkedService",
+                            "type":"LinkedServiceReference"
                         },
-                        "parameters": {}
-                    }]
+                        "annotations":[  
+
+                        ],
+                        "type":"Binary",
+                        "typeProperties":{  
+                            "location":{  
+                                "type":"AzureBlobStorageLocation",
+                                "folderPath":"output",
+                                "container":"adftutorial"
+                            }
+                        }
+                    },
+                    "dependsOn":[  
+                        "[parameters('dataFactoryName')]",
+                        "[concat(variables('factoryId'), '/linkedServices/ArmtemplateStorageLinkedService')]"
+                    ]
+                },
+                {  
+                    "name":"[concat(parameters('dataFactoryName'), '/ArmtemplateSampleCopyPipeline')]",
+                    "type":"Microsoft.DataFactory/factories/pipelines",
+                    "apiVersion":"2018-06-01",
+                    "properties":{  
+                        "activities":[  
+                            {  
+                                "name":"MyCopyActivity",
+                                "type":"Copy",
+                                "dependsOn":[  
+
+                                ],
+                                "policy":{  
+                                    "timeout":"7.00:00:00",
+                                    "retry":0,
+                                    "retryIntervalInSeconds":30,
+                                    "secureOutput":false,
+                                    "secureInput":false
+                                },
+                                "userProperties":[  
+
+                                ],
+                                "typeProperties":{  
+                                    "source":{  
+                                        "type":"BinarySource",
+                                        "storeSettings":{  
+                                            "type":"AzureBlobStorageReadSettings",
+                                            "recursive":true
+                                        }
+                                    },
+                                    "sink":{  
+                                        "type":"BinarySink",
+                                        "storeSettings":{  
+                                            "type":"AzureBlobStorageWriteSettings"
+                                        }
+                                    },
+                                    "enableStaging":false
+                                },
+                                "inputs":[  
+                                    {  
+                                        "referenceName":"ArmtemplateTestDatasetIn",
+                                        "type":"DatasetReference",
+                                        "parameters":{  
+
+                                        }
+                                    }
+                                ],
+                                "outputs":[  
+                                    {  
+                                        "referenceName":"ArmtemplateTestDatasetOut",
+                                        "type":"DatasetReference",
+                                        "parameters":{  
+
+                                        }
+                                    }
+                                ]
+                            }
+                        ],
+                        "annotations":[  
+
+                        ]
+                    },
+                    "dependsOn":[  
+                        "[parameters('dataFactoryName')]",
+                        "[concat(variables('factoryId'), '/datasets/ArmtemplateTestDatasetIn')]",
+                        "[concat(variables('factoryId'), '/datasets/ArmtemplateTestDatasetOut')]"
+                    ]
+                },
+                {  
+                    "name":"[concat(parameters('dataFactoryName'), '/ArmTemplateTestTrigger')]",
+                    "type":"Microsoft.DataFactory/factories/triggers",
+                    "apiVersion":"2018-06-01",
+                    "properties":{  
+                        "annotations":[  
+
+                        ],
+                        "runtimeState":"Started",
+                        "pipelines":[  
+                            {  
+                                "pipelineReference":{  
+                                    "referenceName":"ArmtemplateSampleCopyPipeline",
+                                    "type":"PipelineReference"
+                                },
+                                "parameters":{  
+
+                                }
+                            }
+                        ],
+                        "type":"ScheduleTrigger",
+                        "typeProperties":{  
+                            "recurrence":{  
+                                "frequency":"Hour",
+                                "interval":1,
+                                "startTime":"[parameters('triggerStartTime')]",
+                                "endTime":"[parameters('triggerEndTime')]",
+                                "timeZone":"UTC"
+                            }
+                        }
+                    },
+                    "dependsOn":[  
+                        "[parameters('dataFactoryName')]",
+                        "[concat(variables('factoryId'), '/pipelines/ArmtemplateSampleCopyPipeline')]"
+                    ]
                 }
-            }
-        ]
-    }]
+            ]
+        }
+    ]
 }
 ```
-
 ## <a name="parameters-json"></a>參數 JSON
 
 建立名為 **ADFTutorialARM Parameters.json** 的 JSON 檔案，其中包含 Azure Resource Manager 範本的參數。
 
 > [!IMPORTANT]
 > - 針對此參數檔案中的 **storageAccountName** 和 **storageAccountKey** 參數指定您 Azure 儲存體帳戶的名稱和金鑰。 您已建立 adftutorial 容器並將範例檔案 (emp.txt) 上傳到此 Azure blob 儲存體中的輸入資料夾。
-> - 為 **dataFactoryName** 參數的資料處理站指定全域唯一的名稱。 例如︰ARMTutorialFactoryJohnDoe11282017。
-> - 針對 **triggerStartTime**，指定以下格式的當天日期：`2017-11-28T00:00:00`。
-> - 針對 **triggerEndTime**，指定以下格式的隔天日期：`2017-11-29T00:00:00`。 您也可檢查目前的 UTC 時間，並指定下一個小時或兩個小時作為結束時間。 例如，如果現在的 UTC 時間為上午 1:32，則指定 `2017-11-29:03:00:00` 作為結束時間。 在此情況下，觸發程序會執行管線兩次 (在上午 2 點和上午 3 點)。
+> - 為 **dataFactoryName** 參數的資料處理站指定全域唯一的名稱。 例如：ARMTutorialFactoryJohnDoe11282017。
+> - 針對 **triggerStartTime**，指定以下格式的當天日期：`2019-09-08T00:00:00`。
+> - 針對 **triggerEndTime**，指定以下格式的隔天日期：`2019-09-09T00:00:00`。 您也可檢查目前的 UTC 時間，並指定下一個小時或兩個小時作為結束時間。 例如，如果現在的 UTC 時間為上午 1:32，則指定 `2019-09-09:03:00:00` 作為結束時間。 在此情況下，觸發程序會執行管線兩次 (在上午 2 點和上午 3 點)。
 
 ```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "dataFactoryName": {
-      "value": "<datafactoryname>"
-    },
-    "dataFactoryLocation": {
-      "value": "East US"
-    },
-    "storageAccountName": {
-      "value": "<yourstorageaccountname>"
-    },
-    "storageAccountKey": {
-      "value": "<yourstorageaccountkey>"
-    },
-    "blobContainer": {
-      "value": "adftutorial"
-    },
-    "inputBlobFolder": {
-      "value": "input"
-    },
-    "inputBlobName": {
-      "value": "emp.txt"
-    },
-    "outputBlobFolder": {
-      "value": "output"
-    },
-    "outputBlobName": {
-      "value": "emp.txt"
-    },
-    "triggerStartTime": {
-        "value": "2017-11-28T00:00:00. Set to today"
-    },
-    "triggerEndTime": {
-        "value": "2017-11-29T00:00:00. Set to tomorrow"
+{  
+    "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion":"1.0.0.0",
+    "parameters":{  
+        "dataFactoryName":{  
+            "value":"<datafactoryname>"
+        },
+        "dataFactoryLocation":{  
+            "value":"East US"
+        },
+        "storageAccountName":{  
+            "value":"<yourstorageaccountname>"
+        },
+        "storageAccountKey":{  
+            "value":"<yourstorageaccountkey>"
+        },
+        "triggerStartTime":{  
+            "value":"2019-09-08T11:00:00"
+        },
+        "triggerEndTime":{  
+            "value":"2019-09-08T14:00:00"
+        }
     }
-  }
 }
 ```
 
@@ -326,7 +325,7 @@ ms.locfileid: "58483109"
 
 ## <a name="deploy-data-factory-entities"></a>部署 Data Factory 實體
 
-在 PowerShell 中，執行下列命令，使用您稍早在本快速入門中建立的 Resource Manager 範本來部署 Data Factory 實體。
+在 PowerShell 中，執行下列命令，使用您稍早在本快速入門中建立的 Resource Manager 範本在資源群組中部署 Data Factory 實體 (在此情況下，以 ADFTutorialResourceGroup 為例)。
 
 ```powershell
 New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFTutorial\ADFTutorialARM.json -TemplateParameterFile C:\ADFTutorial\ADFTutorialARM-Parameters.json
@@ -338,26 +337,21 @@ New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutori
 DeploymentName          : MyARMDeployment
 ResourceGroupName       : ADFTutorialResourceGroup
 ProvisioningState       : Succeeded
-Timestamp               : 11/29/2017 3:11:13 AM
+Timestamp               : 9/8/2019 10:52:29 AM
 Mode                    : Incremental
-TemplateLink            :
-Parameters              :
-                          Name                 Type            Value
-                          ===============      ============    ==========
-                          dataFactoryName      String          <data factory name>
-                          dataFactoryLocation  String          East US
-                          storageAccountName   String          <storage account name>
-                          storageAccountKey    SecureString
-                          blobContainer        String          adftutorial
-                          inputBlobFolder      String          input
-                          inputBlobName        String          emp.txt
-                          outputBlobFolder     String          output
-                          outputBlobName       String          emp.txt
-                          triggerStartTime     String          11/29/2017 12:00:00 AM
-                          triggerEndTime       String          11/29/2017 4:00:00 AM
-
-Outputs                 :
-DeploymentDebugLogLevel :
+TemplateLink            : 
+Parameters              : 
+                          Name                   Type                       Value     
+                          =====================  =========================  ==========
+                          dataFactoryName        String                     <data factory name>
+                          dataFactoryLocation    String                     East US   
+                          storageAccountName     String                     <storage account name>
+                          storageAccountKey      SecureString                         
+                          triggerStartTime       String                     9/8/2019 11:00:00 AM
+                          triggerEndTime         String                     9/8/2019 2:00:00 PM
+                          
+Outputs                 : 
+DeploymentDebugLogLevel : 
 ```
 
 ## <a name="start-the-trigger"></a>啟動觸發程序
@@ -365,7 +359,7 @@ DeploymentDebugLogLevel :
 此範本會部署下列 Data Factory 實體：
 
 - Azure 儲存體連結服務
-- Azure Blob 資料集 (輸入和輸出)
+- 二進位資料集 (輸入和輸出)
 - 具有複製活動的管線
 - 可觸發管線的觸發程序
 
@@ -395,14 +389,15 @@ DeploymentDebugLogLevel :
     以下是範例輸出：
 
     ```json
+
     TriggerName       : ArmTemplateTestTrigger
     ResourceGroupName : ADFTutorialResourceGroup
-    DataFactoryName   : ARMFactory1128
+    DataFactoryName   : ADFQuickstartsDataFactory0905
     Properties        : Microsoft.Azure.Management.DataFactory.Models.ScheduleTrigger
     RuntimeState      : Stopped
     ```
     
-    請注意，觸發程序的執行階段狀態為 [已停止]。
+    請注意，觸發程序的執行階段狀態為 [已停止]  。
 5. **啟動觸發程序**。 觸發程序會在整點執行範本中定義的管線。 也就是，如果您在下午 2:25 執行此命令，則觸發程序會在下午 3 點第一次執行管線。 然後，它會每小時執行管線，直到您為觸發程序指定的結束時間為止。
 
     ```powershell
@@ -428,42 +423,33 @@ DeploymentDebugLogLevel :
     ```console
     TriggerName       : ArmTemplateTestTrigger
     ResourceGroupName : ADFTutorialResourceGroup
-    DataFactoryName   : ARMFactory1128
+    DataFactoryName   : ADFQuickstartsDataFactory0905
     Properties        : Microsoft.Azure.Management.DataFactory.Models.ScheduleTrigger
     RuntimeState      : Started
     ```
 
 ## <a name="monitor-the-pipeline"></a>監視管線
 
-1. 登入 [Azure 入口網站](https://portal.azure.com/)後，按一下 [所有服務]，以 **data fa** 等關鍵字進行搜尋，然後選取 [資料處理站]。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)後，按一下 [所有服務]  ，以 **data fa** 等關鍵字進行搜尋，然後選取 [資料處理站]  。
 
-    ![瀏覽資料處理站功能表](media/quickstart-create-data-factory-resource-manager-template/browse-data-factories-menu.png)
+2. 在 [資料管理站]  頁面中，按一下您建立的資料管理站。 如有需要，以您的資料管理站名稱篩選清單。
 
-2. 在 [資料管理站] 頁面中，按一下您建立的資料管理站。 如有需要，以您的資料管理站名稱篩選清單。
+3. 在 [Data Factory] 頁面中，按一下 [撰寫和監視]  圖格。
 
-    ![選取 Data Factory](media/quickstart-create-data-factory-resource-manager-template/select-data-factory.png)
-
-3. 在資料管理站頁面上，按一下 [監視及管理] 圖格。
-
-    ![監視及管理圖格](media/quickstart-create-data-factory-resource-manager-template/monitor-manage-tile.png)
-
-4. [資料整合應用程式] 應該在網頁瀏覽器的個別索引標籤中開啟。 如果監視索引標籤不在作用中，請切換到 [監視索引標籤]。請注意，**排程器觸發程序**已觸發管線執行。
-
-    ![監視管線執行](media/quickstart-create-data-factory-resource-manager-template/monitor-pipeline-run.png)
+4. 在 [立即開始]  頁面中，選取 [監視]  索引標籤。![監視管線執行](media/doc-common-process/get-started-page-monitor-button.png)
 
     > [!IMPORTANT]
-    > 您只會在整點看到管線執行 (例如：4 AM、5 AM、6 AM 等)。 按一下工具列上的 [重新整理]，以在時間達到下一個小時時重新整理清單。
+    > 您只會在整點看到管線執行 (例如：4 AM、5 AM、6 AM 等)。 按一下工具列上的 [重新整理]  ，以在時間達到下一個小時時重新整理清單。
 
-5. 按一下 [動作] 資料行中的連結。
+5. 按一下 [動作]  資料行中的 [檢視活動執行]  連結。
 
     ![管線動作連結](media/quickstart-create-data-factory-resource-manager-template/pipeline-actions-link.png)
 
 6. 您會看到與管線執行相關聯的活動執行。 在本快速入門中，管線只有一個以下類型的活動：複製。 因此，您會看到該活動的執行。
 
     ![活動執行](media/quickstart-create-data-factory-resource-manager-template/activity-runs.png)
-7. 按一下 [輸出] 資料行底下的連結。 您會在 [輸出] 視窗中看到複製作業的輸出。 按一下最大化按鈕，以查看完整的輸出。 您可以關閉最大化的輸出視窗，或將它關閉。
+7. 按一下 [動作] 資料行底下的 [輸出]  連結。 您會在 [輸出]  視窗中看到複製作業的輸出。 按一下最大化按鈕，以查看完整的輸出。 您可以關閉最大化的輸出視窗，或將它關閉。
 
-    ![[輸出] 視窗](media/quickstart-create-data-factory-resource-manager-template/output-window.png)
 8. 一旦您看到成功/失敗執行，請停止觸發程序。 觸發程序會一小時執行一次管線。 管線會將相同的檔案從每次執行的輸入資料夾複製到輸出資料夾。 若要停止觸發程序，請在 PowerShell 視窗中執行下列命令。
     
     ```powershell
@@ -472,13 +458,13 @@ DeploymentDebugLogLevel :
 
 [!INCLUDE [data-factory-quickstart-verify-output-cleanup.md](../../includes/data-factory-quickstart-verify-output-cleanup.md)]
 
-## <a name="data-factory-entities-in-the-template"></a>實體的 JSON 定義
+## <a name="json-definitions-for-entities"></a><a name="data-factory-entities-in-the-template"></a>實體的 JSON 定義
 
 下列的 Data Factory 實體定義於 JSON 範本中︰
 
 - [Azure 儲存體連結服務](#azure-storage-linked-service)
-- [Azure Blob 輸入資料集](#azure-blob-input-dataset)
-- [Azure Blob 輸出資料集](#azure-blob-output-dataset)
+- [二進位輸入資料集](#binary-input-dataset)
+- [二進位輸出資料集](#binary-output-dataset)
 - [具有複製活動的管線](#data-pipeline)
 - [觸發程序](#trigger)
 
@@ -487,157 +473,209 @@ DeploymentDebugLogLevel :
 AzureStorageLinkedService 會將 Azure 儲存體帳戶連結至資料處理站。 您已建立容器並將資料上傳到此儲存體帳戶，作為必要條件的一部分。 在此區段中指定您 Azure 儲存體帳戶的名稱和金鑰。 如需用來定義 Azure 儲存體連結服務之 JSON 屬性的詳細資料，請參閱 [Azure 儲存體連結服務](connector-azure-blob-storage.md#linked-service-properties)。
 
 ```json
-{
-    "type": "linkedservices",
-    "name": "[variables('azureStorageLinkedServiceName')]",
-    "dependsOn": [
-        "[parameters('dataFactoryName')]"
-    ],
-    "apiVersion": "2018-06-01",
-    "properties": {
-        "type": "AzureStorage",
-        "description": "Azure Storage linked service",
-        "typeProperties": {
-            "connectionString": {
-                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',parameters('storageAccountKey'))]",
-                "type": "SecureString"
-            }
+{  
+    "name":"[concat(parameters('dataFactoryName'), '/ArmtemplateStorageLinkedService')]",
+    "type":"Microsoft.DataFactory/factories/linkedServices",
+    "apiVersion":"2018-06-01",
+    "properties":{  
+        "annotations":[  
+
+        ],
+        "type":"AzureBlobStorage",
+        "typeProperties":{  
+            "connectionString":"[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('storageAccountName'),';AccountKey=',parameters('storageAccountKey'))]"
         }
-    }
+    },
+    "dependsOn":[  
+        "[parameters('dataFactoryName')]"
+    ]
 }
 ```
 
 connectionString 會使用 storageAccountName 和 storageAccountKey 參數。 使用組態檔傳遞這些參數的值。 定義也會使用在範本中定義的變數︰azureStorageLinkedService 和 dataFactoryName。
 
-#### <a name="azure-blob-input-dataset"></a>Azure Blob 輸入資料集
+#### <a name="binary-input-dataset"></a>二進位輸入資料集
 
-Azure 儲存體連結服務會指定 Data Factory 服務在執行階段用來連線到 Azure 儲存體帳戶的連接字串。 在 Azure Blob 資料集定義中，您可指定 Blob 容器、資料夾和包含輸入資料之檔案的名稱。 請參閱 [Azure Blob 資料集屬性](connector-azure-blob-storage.md#dataset-properties)，以取得用來定義 Azure Blob 資料集之 JSON 屬性的詳細資訊。
+Azure 儲存體連結服務會指定 Data Factory 服務在執行階段用來連線到 Azure 儲存體帳戶的連接字串。 在二進位資料集定義中，您可指定 Blob 容器、資料夾和包含輸入資料之檔案的名稱。 請參閱[二進位資料集屬性](format-binary.md#dataset-properties)，以取得用來定義二進位資料集的 JSON 屬性相關詳細資訊。
 
 ```json
-{
-    "type": "datasets",
-    "name": "[variables('inputDatasetName')]",
-    "dependsOn": [
-        "[parameters('dataFactoryName')]",
-        "[variables('azureStorageLinkedServiceName')]"
-    ],
-    "apiVersion": "2018-06-01",
-    "properties": {
-        "type": "AzureBlob",
-        "typeProperties": {
-            "folderPath": "[concat(parameters('blobContainer'), '/', parameters('inputBlobFolder'), '/')]",
-            "fileName": "[parameters('inputBlobName')]"
+{  
+    "name":"[concat(parameters('dataFactoryName'), '/ArmtemplateTestDatasetIn')]",
+    "type":"Microsoft.DataFactory/factories/datasets",
+    "apiVersion":"2018-06-01",
+    "properties":{  
+        "linkedServiceName":{  
+            "referenceName":"ArmtemplateStorageLinkedService",
+            "type":"LinkedServiceReference"
         },
-        "linkedServiceName": {
-            "referenceName": "[variables('azureStorageLinkedServiceName')]",
-            "type": "LinkedServiceReference"
+        "annotations":[  
+
+        ],
+        "type":"Binary",
+        "typeProperties":{  
+            "location":{  
+                "type":"AzureBlobStorageLocation",
+                "fileName":"emp.txt",
+                "folderPath":"input",
+                "container":"adftutorial"
+            }
         }
-    }
-},
+    },
+    "dependsOn":[  
+        "[parameters('dataFactoryName')]",
+        "[concat(variables('factoryId'), '/linkedServices/ArmtemplateStorageLinkedService')]"
+    ]
+}
 ```
 
-#### <a name="azure-blob-output-dataset"></a>Azure Blob 輸出資料集
+#### <a name="binary-output-dataset"></a>二進位輸出資料集
 
-您可在 Azure Blob 儲存體中指定資料夾名稱，該資料夾可保留從輸入資料夾複製的資料。 請參閱 [Azure Blob 資料集屬性](connector-azure-blob-storage.md#dataset-properties)，以取得用來定義 Azure Blob 資料集之 JSON 屬性的詳細資訊。
+您可在 Azure Blob 儲存體中指定資料夾名稱，該資料夾可保留從輸入資料夾複製的資料。 請參閱[二進位資料集屬性](format-binary.md#dataset-properties)，以取得用來定義二進位資料集的 JSON 屬性相關詳細資訊。
 
 ```json
-{
-    "type": "datasets",
-    "name": "[variables('outputDatasetName')]",
-    "dependsOn": [
-        "[parameters('dataFactoryName')]",
-        "[variables('azureStorageLinkedServiceName')]"
-    ],
-    "apiVersion": "2018-06-01",
-    "properties": {
-        "type": "AzureBlob",
-        "typeProperties": {
-            "folderPath": "[concat(parameters('blobContainer'), '/', parameters('outputBlobFolder'), '/')]",
-            "fileName": "[parameters('outputBlobName')]"
+{  
+    "name":"[concat(parameters('dataFactoryName'), '/ArmtemplateTestDatasetOut')]",
+    "type":"Microsoft.DataFactory/factories/datasets",
+    "apiVersion":"2018-06-01",
+    "properties":{  
+        "linkedServiceName":{  
+            "referenceName":"ArmtemplateStorageLinkedService",
+            "type":"LinkedServiceReference"
         },
-        "linkedServiceName": {
-            "referenceName": "[variables('azureStorageLinkedServiceName')]",
-            "type": "LinkedServiceReference"
+        "annotations":[  
+
+        ],
+        "type":"Binary",
+        "typeProperties":{  
+            "location":{  
+                "type":"AzureBlobStorageLocation",
+                "folderPath":"output",
+                "container":"adftutorial"
+            }
         }
-    }
+    },
+    "dependsOn":[  
+        "[parameters('dataFactoryName')]",
+        "[concat(variables('factoryId'), '/linkedServices/ArmtemplateStorageLinkedService')]"
+    ]
 }
 ```
 
 #### <a name="data-pipeline"></a>Data Pipeline
 
-定義可將資料從 Azure blob 資料集複製到 Azure blob 資料集的管線。 請參閱[管線 JSON](concepts-pipelines-activities.md#pipeline-json)，以取得用來在此範例中定義管線的 JSON 元素之描述。
+定義可將資料從一個二進位資料集複製到另一個二進位資料集的管線。 請參閱[管線 JSON](concepts-pipelines-activities.md#pipeline-json)，以取得用來在此範例中定義管線的 JSON 元素之描述。
 
 ```json
-{
-    "type": "pipelines",
-    "name": "[variables('pipelineName')]",
-    "dependsOn": [
-        "[parameters('dataFactoryName')]",
-        "[variables('azureStorageLinkedServiceName')]",
-        "[variables('inputDatasetName')]",
-        "[variables('outputDatasetName')]"
-    ],
-    "apiVersion": "2018-06-01",
-    "properties": {
-        "activities": [{
-            "type": "Copy",
-            "typeProperties": {
-                "source": {
-                    "type": "BlobSource"
+{  
+    "name":"[concat(parameters('dataFactoryName'), '/ArmtemplateSampleCopyPipeline')]",
+    "type":"Microsoft.DataFactory/factories/pipelines",
+    "apiVersion":"2018-06-01",
+    "properties":{  
+        "activities":[  
+            {  
+                "name":"MyCopyActivity",
+                "type":"Copy",
+                "dependsOn":[  
+
+                ],
+                "policy":{  
+                    "timeout":"7.00:00:00",
+                    "retry":0,
+                    "retryIntervalInSeconds":30,
+                    "secureOutput":false,
+                    "secureInput":false
                 },
-                "sink": {
-                    "type": "BlobSink"
-                }
-            },
-            "name": "MyCopyActivity",
-            "inputs": [{
-                "referenceName": "[variables('inputDatasetName')]",
-                "type": "DatasetReference"
-            }],
-            "outputs": [{
-                "referenceName": "[variables('outputDatasetName')]",
-                "type": "DatasetReference"
-            }]
-        }]
-    }
+                "userProperties":[  
+
+                ],
+                "typeProperties":{  
+                    "source":{  
+                        "type":"BinarySource",
+                        "storeSettings":{  
+                            "type":"AzureBlobStorageReadSettings",
+                            "recursive":true
+                        }
+                    },
+                    "sink":{  
+                        "type":"BinarySink",
+                        "storeSettings":{  
+                            "type":"AzureBlobStorageWriteSettings"
+                        }
+                    },
+                    "enableStaging":false
+                },
+                "inputs":[  
+                    {  
+                        "referenceName":"ArmtemplateTestDatasetIn",
+                        "type":"DatasetReference",
+                        "parameters":{  
+
+                        }
+                    }
+                ],
+                "outputs":[  
+                    {  
+                        "referenceName":"ArmtemplateTestDatasetOut",
+                        "type":"DatasetReference",
+                        "parameters":{  
+
+                        }
+                    }
+                ]
+            }
+        ],
+        "annotations":[  
+
+        ]
+    },
+    "dependsOn":[  
+        "[parameters('dataFactoryName')]",
+        "[concat(variables('factoryId'), '/datasets/ArmtemplateTestDatasetIn')]",
+        "[concat(variables('factoryId'), '/datasets/ArmtemplateTestDatasetOut')]"
+    ]
 }
 ```
 
 #### <a name="trigger"></a>觸發程序
 
-定義一小時執行一次管線的觸發程序。 部署的觸發程序處於已停止狀態。 使用 **Start-AzDataFactoryV2Trigger** Cmdlet 啟動觸發程序。 如需觸發程序的詳細資訊，請參閱[管線執行和觸發程序](concepts-pipeline-execution-triggers.md#triggers)一文。
+定義一小時執行一次管線的觸發程序。 部署的觸發程序處於已停止狀態。 使用 **Start-AzDataFactoryV2Trigger** Cmdlet 啟動觸發程序。 如需觸發程序的詳細資訊，請參閱[管線執行和觸發程序](concepts-pipeline-execution-triggers.md#trigger-execution)一文。
 
 ```json
-{
-    "type": "triggers",
-    "name": "[variables('triggerName')]",
-    "dependsOn": [
-        "[parameters('dataFactoryName')]",
-        "[variables('azureStorageLinkedServiceName')]",
-        "[variables('inputDatasetName')]",
-        "[variables('outputDatasetName')]",
-        "[variables('pipelineName')]"
-    ],
-    "apiVersion": "2018-06-01",
-    "properties": {
-        "type": "ScheduleTrigger",
-        "typeProperties": {
-            "recurrence": {
-                "frequency": "Hour",
-                "interval": 1,
-                "startTime": "2017-11-28T00:00:00",
-                "endTime": "2017-11-29T00:00:00",
-                "timeZone": "UTC"
+{  
+    "name":"[concat(parameters('dataFactoryName'), '/ArmTemplateTestTrigger')]",
+    "type":"Microsoft.DataFactory/factories/triggers",
+    "apiVersion":"2018-06-01",
+    "properties":{  
+        "annotations":[  
+
+        ],
+        "runtimeState":"Started",
+        "pipelines":[  
+            {  
+                "pipelineReference":{  
+                    "referenceName":"ArmtemplateSampleCopyPipeline",
+                    "type":"PipelineReference"
+                },
+                "parameters":{  
+
+                }
             }
-        },
-        "pipelines": [{
-            "pipelineReference": {
-                "type": "PipelineReference",
-                "referenceName": "ArmtemplateSampleCopyPipeline"
-            },
-            "parameters": {}
-        }]
-    }
+        ],
+        "type":"ScheduleTrigger",
+        "typeProperties":{  
+            "recurrence":{  
+                "frequency":"Hour",
+                "interval":1,
+                "startTime":"[parameters('triggerStartTime')]",
+                "endTime":"[parameters('triggerEndTime')]",
+                "timeZone":"UTC"
+            }
+        }
+    },
+    "dependsOn":[  
+        "[parameters('dataFactoryName')]",
+        "[concat(variables('factoryId'), '/pipelines/ArmtemplateSampleCopyPipeline')]"
+    ]
 }
 ```
 

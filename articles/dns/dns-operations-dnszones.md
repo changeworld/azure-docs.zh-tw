@@ -3,22 +3,19 @@ title: 管理 Azure DNS 中的 DNS 區域 - PowerShell | Microsoft Docs
 description: 您可以使用 Azure Powershell 管理 DNS 區域。 本文說明如何在 Azure DNS 上更新、刪除及建立 DNS 區域
 services: dns
 documentationcenter: na
-author: vhorne
-manager: timlt
-ms.assetid: a67992ab-8166-4052-9b28-554c5a39e60c
+author: rohinkoul
 ms.service: dns
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
-ms.author: victorh
-ms.openlocfilehash: 1ef44c16a8ae3b6254a6cea252501b72ddb24a5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: rohink
+ms.openlocfilehash: d46e2d31c8d6c5a175239c76795359ad64b1abd3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61293609"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84686200"
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>如何管理使用 PowerShell 的 DNS 區域
 
@@ -41,7 +38,7 @@ ms.locfileid: "61293609"
 
 使用 `New-AzureRmDnsZone` Cmdlet 建立 DNS 區域。
 
-下列範例會在稱為 *MyResourceGroup* 的資源群組中建立稱為 *contoso.com* 的 DNS 區域：
+下列範例會在名為*MyResourceGroup*的資源群組中建立名為*contoso.com*的 DNS 區域：
 
 ```powershell
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
@@ -53,7 +50,7 @@ New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
 ```
 
-Azure DNS 現在也支援私人 DNS 區域 (目前處於公開預覽狀態)。  若要深入了解私人 DNS 區域，請參閱[使用 Azure DNS 私人網域](private-dns-overview.md)。 如需如何建立私人 DNS 區域的範例，請參閱[利用 PowerShell 開始使用 Azure DNS 私人區域](./private-dns-getstarted-powershell.md)。
+Azure DNS 也支援私人 DNS 區域。  若要深入了解私人 DNS 區域，請參閱[使用 Azure DNS 私人網域](private-dns-overview.md)。 如需如何建立私人 DNS 區域的範例，請參閱[利用 PowerShell 開始使用 Azure DNS 私人區域](./private-dns-getstarted-powershell.md)。
 
 ## <a name="get-a-dns-zone"></a>取得 DNS 區域
 

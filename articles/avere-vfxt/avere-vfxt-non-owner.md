@@ -3,15 +3,15 @@ title: Avere vFXT 非擁有者因應措施 - Azure
 description: 可讓沒有訂用帳戶擁有者權限的使用者部署 Avere vFXT for Azure 的因應措施
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
-ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: e72e6d969649de09389ee38b94e874fad98ee08f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 12/19/2019
+ms.author: rohogue
+ms.openlocfilehash: 0d9b1060ee35af6cbc2e1b95b0f7813072c52d2e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60409204"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505370"
 ---
 # <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>授權非擁有者部署 Avere vFXT
 
@@ -19,11 +19,11 @@ ms.locfileid: "60409204"
 
 (部署 Avere vFXT 系統的建議方式是讓具有擁有者權限的使用者執行建立步驟，如[準備建立 Avere vFXT](avere-vfxt-prereqs.md)中所述。)  
 
-此因應措施牽涉到建立額外的存取角色，讓其使用者有足夠的權限可安裝叢集。 該角色必須由訂用帳戶擁有者建立，而且擁有者必須將它指派給適當的使用者。 
+此因應措施牽涉到建立額外的存取角色，讓其使用者有足夠的權限可安裝叢集。 該角色必須由訂用帳戶擁有者建立，而且擁有者必須將它指派給適當的使用者。
 
-訂用帳戶擁有者也必須為 Avere vFXT Marketplace [接受使用規定](avere-vfxt-prereqs.md)。 
+訂用帳戶擁有者也必須為 Avere vFXT Marketplace [接受使用規定](avere-vfxt-prereqs.md)。
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > 這些步驟全都必須由具有訂用帳戶擁有者權限的使用者 (將用於叢集) 執行。
 
 1. 複製這些行並將它們儲存在檔案中 (例如 `averecreatecluster.json`)。 在 `AssignableScopes` 陳述式中使用您的訂用帳戶識別碼。
@@ -49,7 +49,7 @@ ms.locfileid: "60409204"
            "Microsoft.Network/routeTables/routes/delete",
            "Microsoft.Network/virtualNetworks/subnets/join/action",
            "Microsoft.Network/virtualNetworks/subnets/read",
-   
+
            "Microsoft.Resources/subscriptions/resourceGroups/read",
            "Microsoft.Resources/subscriptions/resourceGroups/resources/read",
            "Microsoft.Storage/*/read",
@@ -63,6 +63,7 @@ ms.locfileid: "60409204"
    `az role definition create --role-definition <PATH_TO_FILE>`
 
     範例：
+
     ```azurecli
     az role definition create --role-definition ./averecreatecluster.json
     ```
@@ -71,7 +72,7 @@ ms.locfileid: "60409204"
 
    `az role assignment create --assignee <USERNAME> --scope /subscriptions/<SUBSCRIPTION_ID> --role 'avere-create-cluster'`
 
-在此程序之後，任何或指派此角色的使用者都有訂用帳戶的下列權限： 
+完成此程式之後，此角色會為任何使用者指派訂用帳戶的下列許可權：
 
 * 建立並設定網路基礎結構
 * 建立叢集控制器

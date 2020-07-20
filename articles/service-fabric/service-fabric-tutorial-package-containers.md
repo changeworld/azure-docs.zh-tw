@@ -1,27 +1,17 @@
 ---
-title: 封裝和部署容器作為 Azure 中的 Service Fabric 應用程式 | Microsoft Docs
+title: 封裝和部署容器
 description: 在本教學課程中，您會了解如何使用 Yeoman 來產生 Azure Service Fabric 應用程式定義以及封裝應用程式。
-services: service-fabric
-documentationcenter: ''
 author: suhuruli
-manager: chackdan
-editor: suhuruli
-tags: servicefabric
-keywords: Docker、容器、微服務、Service Fabric、Azure
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/31/2019
+ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0dbd0445f4167485172a2b98cec3bb2b2a47ac20
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668410"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "78252756"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>教學課程：使用 Yeoman 封裝和部署容器作為 Service Fabric 應用程式
 
@@ -35,7 +25,7 @@ ms.locfileid: "58668410"
 > * 部署和執行應用程式
 > * 清除應用程式
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 使用推送到在本教學課程系列的[第 1 部分](service-fabric-tutorial-create-container-images.md)中建立之 Azure Container Registry 的容器映像。
 * 已[設定](service-fabric-tutorial-create-container-images.md) Linux 開發環境。
@@ -93,7 +83,7 @@ Service Fabric 提供 Scaffolding 工具，可協助您使用 Yeoman 範本產�
 若要將其他容器服務新增至已使用 Yeoman 建立的應用程式，請執行下列步驟︰
 
 1. 將目錄變更一個層級至 **TestContainer** 目錄，例如 *./TestContainer*
-2. 執行 `yo azuresfcontainer:AddService`
+2. `yo azuresfcontainer:AddService`執行 {2}
 3. 將服務命名為 'azurevoteback'
 4. 為 Redis 提供容器映像路徑 - 'alpine:redis'
 5. 按 Enter 鍵，讓 Commands 區段保留空白
@@ -111,7 +101,7 @@ Service Fabric 提供 Scaffolding 工具，可協助您使用 Yeoman 範本產�
    create TestContainer/azurevotebackPkg/code/Dummy.txt
 ```
 
-針對本教學課程的其餘部分，我們會在 **TestContainer** 目錄中運作。 例如，*./TestContainer/TestContainer*。 此目錄的內容應該如下所示。
+針對本教學課程的其餘部分，我們會在 **TestContainer** 目錄中運作。 例如， *./TestContainer/TestContainer*。 此目錄的內容應該如下所示。
 
 ```bash
 $ ls
@@ -124,7 +114,7 @@ ApplicationManifest.xml azurevotefrontPkg azurevotebackPkg
 
 登入您的 ACR 執行個體。 使用 **az acr login** 命令來完成此作業。 在建立容器登錄時，為它提供唯一名稱。
 
-```bash
+```azurecli
 az acr login --name <acrName>
 ```
 
@@ -132,7 +122,7 @@ az acr login --name <acrName>
 
 接下來，執行下列命令以取得容器登錄的密碼。 Service Fabric 會使用此密碼來向 ACR 進行驗證以提取容器映像。
 
-```bash
+```azurecli
 az acr credential show -n <acrName> --query passwords[0].value
 ```
 
@@ -150,7 +140,7 @@ az acr credential show -n <acrName> --query passwords[0].value
 
 ### <a name="configure-communication-port"></a>設定通訊連接埠
 
-設定 HTTP 端點，讓用戶端可以與您的服務通訊。 開啟 ./TestContainer/azurevotefrontPkg/ServiceManifest.xml 檔案，並在 **ServiceManifest** 元素中宣告端點資源。  新增通訊協定、連接埠和名稱。 在本教學課程中，服務會接聽連接埠 80。 下列程式碼片段放在資源中的 *ServiceManifest* 標記下方。
+設定 HTTP 端點，讓用戶端可以與您的服務通訊。 開啟 ./TestContainer/azurevotefrontPkg/ServiceManifest.xml  檔案，並在 **ServiceManifest** 元素中宣告端點資源。  新增通訊協定、連接埠和名稱。 在本教學課程中，服務會接聽連接埠 80。 下列程式碼片段放在資源中的 *ServiceManifest* 標記下方。
 
 ```xml
 <Resources>
@@ -209,7 +199,7 @@ az acr credential show -n <acrName> --query passwords[0].value
 
 前端服務會讀取環境變數，以了解 Redis 執行個體的 DNS 名稱。 此環境變數已經定義在用來產生 Docker 映像的 Docerkfile 中，這裡不需要採取任何動作。
 
-```Dockerfile
+```dockerfile
 ENV REDIS redisbackend.testapp
 ```
 

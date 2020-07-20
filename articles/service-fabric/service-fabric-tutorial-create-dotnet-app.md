@@ -1,32 +1,21 @@
 ---
-title: 在 Azure 中的 Service Fabric 上建立 .NET 應用程式 | Microsoft Docs
+title: 在 Azure 中的 Service Fabric 上建立 .NET 應用程式
 description: 在本教學課程中，您會了解如何建立含有 ASP.NET Core 前端和具狀態可靠服務後端的應用程式，並將應用程式部署到叢集。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 01/14/2019
-ms.author: aljo
+ms.date: 07/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 097cb554523a9e75b265ca16e79769daf0a49b40
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: dc869dce536449a901826db3b0d964bf17abbbec
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665792"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257124"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>教學課程：建立和部署含有 ASP.NET Core Web API 前端服務和具狀態後端服務的應用程式
 
-本教學課程是一個系列的第一部分。  您將了解如何建立含有 ASP.NET Core Web API 前端和具狀態後端服務的 Azure Service Fabric 應用程式來儲存您的資料。 當您完成時，您會有一個投票應用程式，其 ASP.NET Core Web 前端會將投票結果儲存在叢集中具狀態的後端服務。 如果您不需要以手動建立投票應用程式，可以[下載已完成應用程式的原始程式碼](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)並直接前往[逐步解說投票範例應用程式](#walkthrough_anchor)。  您也可以視需要觀看本教學課程的[視訊逐步解說](https://channel9.msdn.com/Events/Connect/2017/E100)。
+本教學課程是一個系列的第一部分。  您將了解如何建立含有 ASP.NET Core Web API 前端和具狀態後端服務的 Azure Service Fabric 應用程式來儲存您的資料。 當您完成時，您會有一個投票應用程式，其 ASP.NET Core Web 前端會將投票結果儲存在叢集中具狀態的後端服務。 本教學課程系列需要 Windows 開發人員電腦。 如果您不需要以手動建立投票應用程式，可以[下載已完成應用程式的原始程式碼](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)並直接前往[逐步解說投票範例應用程式](#walkthrough_anchor)。  您也可以視需要觀看本教學課程的[視訊逐步解說](https://channel9.msdn.com/Events/Connect/2017/E100)。
 
-![應用程式圖表](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
+![AngularJS+ASP.NET API 後端，連線到 Service Fabric 上的具狀態後端服務](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
 
 在系列的第一部分中，您將了解如何：
 
@@ -47,12 +36,12 @@ ms.locfileid: "58665792"
 
 開始進行本教學課程之前：
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [安裝 Visual Studio 2017](https://www.visualstudio.com/) 15.5 版或更新版本，其中包含 **Azure 開發**及 **ASP.NET 和 Web 開發**工作負載。
+* [安裝 Visual Studio 2019](https://www.visualstudio.com/) 15.5 版或更新版本，其中包含 **Azure 開發**及 **ASP.NET 和 Web 開發**工作負載。
 * [安裝 Service Fabric SDK](service-fabric-get-started.md)
 
 ## <a name="create-an-aspnet-web-api-service-as-a-reliable-service"></a>建立 ASP.NET Web API 服務成為可靠的服務
 
-首先，使用 ASP.NET Core 建立投票應用程式的 web 前端。 ASP.NET Core 是輕量型、跨平台的 Web 開發架構，可供您用來建立新式 Web UI 和 Web API。 若要完整了解 ASP.NET Core 如何與 Service Fabric 整合，強烈建議您仔細閱讀 [Service Fabric Reliable Services 中的 ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) 文章。 現在，您可以依照本教學課程來快速上手。 若要深入了解 ASP.NET Core，請參閱 [ASP.NET Core 文件](https://docs.microsoft.com/aspnet/core/)。
+首先，使用 ASP.NET Core 建立投票應用程式的 web 前端。 ASP.NET Core 是輕量型、跨平台的 Web 開發架構，可供您用來建立新式 Web UI 和 Web API。 若要完整了解 ASP.NET Core 如何與 Service Fabric 整合，強烈建議您仔細閱讀 [Service Fabric Reliable Services 中的 ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) 文章。 現在，您可以依照本教學課程來快速上手。 若要深入了解 ASP.NET Core，請參閱 [ASP.NET Core 文件](/aspnet/core/)。
 
 1. 以**系統管理員**身分啟動 Visual Studio。
 
@@ -180,7 +169,7 @@ app.controller('VotingAppController', ['$rootScope', '$scope', '$http', '$timeou
 </div>
 ```
 
-### <a name="update-the-layoutcshtml-file"></a>更新 _Layout.cshtml 檔案
+### <a name="update-the-_layoutcshtml-file"></a>更新 _Layout.cshtml 檔案
 
 開啟 **Views/Shared/_Layout.cshtml**，ASP.NET 應用程式的預設版面配置。  將其內容取代為下列項目，然後儲存變更。
 
@@ -356,7 +345,7 @@ Service Fabric 可讓您使用可靠集合，直接在服務內以一致且可�
 
     Visual Studio 會建立 VotingData 服務專案並顯示在 [方案總管] 中。
 
-    ![Controllers\HomeController.cs](./media/service-fabric-tutorial-create-dotnet-app/solution-explorer-aspnetcore-webapi-service.png)
+    ![方案總管](./media/service-fabric-tutorial-create-dotnet-app/solution-explorer-aspnetcore-webapi-service.png)
 
 ### <a name="add-the-votedatacontrollercs-file"></a>新增 VoteDataController.cs 檔案
 
@@ -626,8 +615,8 @@ public class VotesController : Controller
       ![新增投票前端服務](./media/service-fabric-tutorial-create-dotnet-app/addvote-frontend.png)
 
    2. 首先，請針對後端服務 **(1)** 建構 ReverseProxy 的 URL。
-   3. 接著，將 HTTP PUT 要求傳送至 ReverseProxy **(2)**。
-   4. 最後，將後端服務的回應傳回至用戶端 **(3)**。
+   3. 接著，將 HTTP PUT 要求傳送至 ReverseProxy **(2)** 。
+   4. 最後，將後端服務的回應傳回至用戶端 **(3)** 。
 
 5. 按 **F5** 繼續。
    1. 您現在位於後端服務的中斷點。
@@ -636,7 +625,7 @@ public class VotesController : Controller
 
    2. 在方法 **(1)** 的第一行中，使用 `StateManager` 來取得或新增名為 `counts` 的可靠字典。
    3. 與可靠字典中的值進行的所有互動，都需要交易，這會使用陳述式 **(2)** 建立該交易。
-   4. 在交易中，更新投票選項的相關索引鍵值，然後認可作業 **(3)**。 一旦傳回認可方法，字典中的資料會更新並複寫至叢集中的其他節點。 資料現在會安全地儲存在叢集中，而且後端服務可以容錯移轉到仍有可用資料的其他節點。
+   4. 在交易中，更新投票選項的相關索引鍵值，然後認可作業 **(3)** 。 一旦傳回認可方法，字典中的資料會更新並複寫至叢集中的其他節點。 資料現在會安全地儲存在叢集中，而且後端服務可以容錯移轉到仍有可用資料的其他節點。
 6. 按 **F5** 繼續。
 
 若要停止偵錯工作階段，請按 **Shift+F5**。

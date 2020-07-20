@@ -1,0 +1,37 @@
+### YamlMime:Landing
+title: Azure 排程器文件
+summary: Azure Logic Apps 會取代 Azure 排程器，Azure 排程器之後將無法使用。 若要繼續使用您在排程器中設定的作業，請儘快遷移到 Azure Logic Apps。
+metadata:
+  title: Azure 排程器文件
+  description: 在雲端中建立、排程及執行自動化作業，例如週期性應用程式動作和例行維護。 Azure Logic Apps 會取代 Azure 排程器，Azure 排程器之後將無法使用。 若要繼續使用您在排程器中設定的作業，請儘快移轉到 Azure Logic Apps。
+  services: scheduler
+  ms.service: scheduler
+  ms.topic: landing-page
+  author: derek1ee
+  ms.author: estfan
+  ms.date: 03/30/2020
+  ms.openlocfilehash: 04be683d3bd3d874efb44685b0d40b8c2d5a9698
+  ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/31/2020
+  ms.locfileid: "80422973"
+landingContent:
+- title: 遷移
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 何謂 Azure 排程器？
+      url: scheduler-intro.md
+    - text: 什麼是 Azure Logic Apps？
+      url: ../logic-apps/logic-apps-overview.md
+  - linkListType: get-started
+    links:
+    - text: 將 Azure 排程器作業移轉至 Azure Logic Apps
+      url: migrate-from-scheduler-to-logic-apps.md
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/scheduler/
+    - text: PowerShell
+      url: scheduler-powershell-reference.md

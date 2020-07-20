@@ -1,5 +1,5 @@
 ---
-title: 從 Azure IoT 中樞控制裝置快速入門 (Node.js) | Microsoft Docs
+title: 快速入門：從 Azure IoT 控制裝置 (Node.js)
 description: 在此快速入門中，您會執行兩個範例 Node.js 應用程式。 其中一個應用程式是後端應用程式，可以從遠端控制連線到中樞的裝置。 另一個應用程式則是模擬可以從遠端控制且連線到中樞的裝置。
 author: wesmc7777
 manager: philmea
@@ -8,36 +8,34 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 02/27/2019
-ms.openlocfilehash: 1fca4f6e3aacfee52f348f338806b98d6e61994b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.custom:
+- mvc
+- seo-javascript-september2019
+- seo-javascript-october2019
+- mqtt
+ms.date: 06/21/2019
+ms.openlocfilehash: 39d136815e3808c907e190773b9303075a5093e6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006417"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81769369"
 ---
-# <a name="quickstart-control-a-device-connected-to-an-iot-hub-nodejs"></a>快速入門：控制連線到 IoT 中樞的裝置 (Node.js)
+# <a name="quickstart-use-nodejs-to-control-a-device-connected-to-an-azure-iot-hub"></a>快速入門：使用 Node.js 來控制連線到 Azure IoT 中樞的裝置
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量遙測擷取到雲端，並從雲端管理您的裝置。 在此快速入門中，您可以使用「直接方法」來控制連線到 IoT 中樞的模擬裝置。 您可以使用直接方法，針對連線到 IoT 中樞的裝置，從遠端變更裝置的行為。
+在此快速入門中，您可以使用直接方法來控制連線到 IoT 中樞的模擬裝置。 IoT 中樞是一項 Azure 服務，可讓您從雲端管理您的 IoT 裝置，並將大量的裝置遙測內嵌到雲端進行儲存或處理。 您可以使用直接方法，針對連線到 IoT 中樞的裝置，從遠端變更裝置的行為。 本快速入門使用兩個 Node.js 應用程式：可回應從後端應用程式所呼叫直接方法的模擬裝置應用程式，以及在模擬裝置上呼叫直接方法的後端應用程式。
 
-快速入門會使用兩個預先撰寫的 Node.js 應用程式：
+## <a name="prerequisites"></a>Prerequisites
 
-* 可回應後端應用程式直接方法呼叫的模擬裝置應用程式。 為了接收直接方法呼叫，此應用程式會連線到 IoT 中樞上的特定裝置端點。
+* 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-* 在模擬裝置上呼叫直接方法的後端應用程式。 為了在裝置上呼叫直接方法，此應用程式會連線到 IoT 中樞上的服務端端點。
+* [Node.js 10+](https://nodejs.org)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+* [範例 Node.js 專案](https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip)。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
-
-## <a name="prerequisites"></a>必要條件
-
-您在此快速入門中執行的兩個範例應用程式是使用 Node.js 所撰寫的。 您的開發電腦上需要 Node.js 4.x.x 版或更高版本。
-
-您可以從 [nodejs.org](https://nodejs.org) 下載適用於多種平台的 Node.js。
+* 在您的防火牆中開啟的連接埠 8883。 本快速入門中的裝置範例會使用 MQTT 通訊協定，其會透過連接埠 8883 進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 您可以使用下列命令，以確認開發電腦上目前的 Node.js 版本：
 
@@ -45,13 +43,17 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量遙測擷取�
 node --version
 ```
 
-執行下列命令，將適用於 Azure CLI 的 Microsoft Azure IoT 擴充功能新增至您的 Cloud Shell 執行個體。 IoT 擴充功能可將 IoT 中樞、IoT Edge 和 IoT 裝置佈建服務的特定命令新增至 Azure CLI。
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+### <a name="add-azure-iot-extension"></a>新增 Azure IoT 擴充功能
+
+執行下列命令，將適用於 Azure CLI 的 Microsoft Azure IoT 擴充功能新增至您的 Cloud Shell 執行個體。 IoT 擴充功能可將 IoT 中樞、IoT Edge 和 IoT 裝置佈建服務 (DPS) 的特定命令新增至 Azure CLI。
 
 ```azurecli-interactive
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 ```
 
-如果您尚未這樣做，請從 https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip 下載範例 Node.js 專案並將 ZIP 封存檔解壓縮。
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
@@ -69,11 +71,11 @@ az extension add --name azure-cli-iot-ext
 
    **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
-   **MyNodeDevice**：您所註冊的裝置名稱。 使用所示的 **MyNodeDevice**。 如果您為裝置選擇不同的名稱，則必須在本文中使用該名稱，並先在應用程式範例中更新該裝置名稱，再執行應用程式。
+   **MyNodeDevice**：這是您要註冊之裝置的名稱。 建議您使用 **MyNodeDevice**，如下所示。 如果您為裝置選擇不同的名稱，則也必須在本文中使用該名稱，並先在範例應用程式中更新該裝置名稱，再執行應用程式。
 
     ```azurecli-interactive
     az iot hub device-identity create \
-      --hub-name YourIoTHubName --device-id MyNodeDevice
+      --hub-name {YourIoTHubName} --device-id MyNodeDevice
     ```
 
 2. 在 Azure Cloud Shell 中執行下列命令，以針對您剛註冊的裝置取得_裝置連接字串_：
@@ -82,7 +84,7 @@ az extension add --name azure-cli-iot-ext
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
-      --hub-name YourIoTHubName \
+      --hub-name {YourIoTHubName} \
       --device-id MyNodeDevice \
       --output table
     ```
@@ -99,14 +101,15 @@ az extension add --name azure-cli-iot-ext
 
     ```azurecli-interactive
     az iot hub show-connection-string \
-      --name YourIoTHubName --output table
+      --policy-name service --name {YourIoTHubName} --output table
+
     ```
 
     記下服務連接字串，它看起來如下：
 
-   `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={YourSharedAccessKey}`
+   `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
 
-    您稍後會在快速入門中使用此值。 服務連接字符串與裝置連接字串不同。
+    您稍後會在快速入門中使用此值。 服務連接字符串與您在上一個步驟中記下的裝置連接字串不同。
 
 ## <a name="listen-for-direct-method-calls"></a>接聽直接方法呼叫
 
@@ -116,7 +119,7 @@ az extension add --name azure-cli-iot-ext
 
 2. 在您選擇的文字編輯器中開啟 **SimulatedDevice.js** 檔案。
 
-    使用先前所記錄的裝置連接字串來取代 `connectionString` 變數的值。 然後將變更儲存到 **SimulatedDevice.js** 檔案。
+    使用您稍早所記錄的裝置連接字串來取代 `connectionString` 變數的值。 然後將變更儲存到 **SimulatedDevice.js**。
 
 3. 在本機終端機視窗中，執行下列命令以安裝模擬裝置應用程式所需的程式庫，並執行模擬裝置應用程式：
 
@@ -127,7 +130,7 @@ az extension add --name azure-cli-iot-ext
 
     下列螢幕擷取畫面顯示模擬裝置應用程式將遙測傳送到 IoT 中樞時的輸出：
 
-    ![執行模擬的裝置](./media/quickstart-control-device-node/SimulatedDevice-1.png)
+    ![執行模擬的裝置](./media/quickstart-control-device-node/simulated-device-telemetry-iot-hub.png)
 
 ## <a name="call-the-direct-method"></a>呼叫直接方法
 
@@ -137,7 +140,7 @@ az extension add --name azure-cli-iot-ext
 
 2. 在您選擇的文字編輯器中開啟 **BackEndApplication.js** 檔案。
 
-    使用先前所記錄的服務連接字串來取代 `connectionString` 變數的值。 然後將您的變更儲存到 **BackEndApplication.js** 檔案。
+    使用稍早所記錄的服務連接字串來取代 `connectionString` 變數的值。 然後將您的變更儲存到 **BackEndApplication.js**。
 
 3. 在本機終端機視窗中，執行下列命令安裝所需的程式庫並執行後端應用程式：
 
@@ -148,11 +151,11 @@ az extension add --name azure-cli-iot-ext
 
     下列螢幕擷取畫面顯示應用程式對裝置進行直接方法呼叫並接收通知時的輸出：
 
-    ![執行後端應用程式](./media/quickstart-control-device-node/BackEndApplication.png)
+    ![應用程式對裝置發出直接方法呼叫時的輸出](./media/quickstart-control-device-node/direct-method-device-call.png)
 
     執行後端應用程式之後，在執行模擬裝置的主控台視窗中將會出現一則訊息，且它傳送訊息的速率也會變更：
 
-    ![模擬用戶端的變更](./media/quickstart-control-device-node/SimulatedDevice-2.png)
+    ![模擬用戶端發生變更時的輸出](./media/quickstart-control-device-node/simulated-device-message-change.png)
 
 ## <a name="clean-up-resources"></a>清除資源
 

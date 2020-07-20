@@ -1,28 +1,25 @@
 ---
 title: Azure Event Grid 概念
 description: 說明 Azure Event Grid 與其概念。 定義 Event Grid 的數個重要元件。
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/03/2018
-ms.author: spelluru
-ms.openlocfilehash: 1c77d0ea9e67c8d69f3f632cace164d8a0c4d921
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 07/07/2020
+ms.openlocfilehash: 003139374a056da6ddc22dd1453d28761ff58871
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60562350"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116483"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure Event Grid 中的概念
 
 本文說明 Azure 事件方格中的主要概念。
 
-## <a name="events"></a>活動
+## <a name="events"></a>事件
 
 事件是完整說明系統中發生內容的最小量資訊。 每個事件都有一般資訊，例如：事件來源、事件發生的時間，以及唯一識別碼。 每個事件也有只與特定事件類型相關的特定資訊。 例如，在 Azure 儲存體中建立新檔案的相關事件含有該檔案的相關詳細資料，例如 `lastTimeModified` 值。 或者，事件中樞事件含有「擷取」檔案的 URL。 
 
-每個事件會限制為 64 KB 資料。
+[公開上市（GA）服務等級協定（SLA）] 涵蓋大小上限為 64 KB 的事件。 大小上限為 1 MB 的事件支援目前為預覽狀態。 超過 64 KB 的事件會以 64-KB 的增量計費。 
+
 
 關於事件中傳送的屬性，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
 
@@ -34,15 +31,15 @@ ms.locfileid: "60562350"
 
 事件來源是事件發生的地點。 每個事件來源都與一或多個事件類型相關。 例如，Azure 儲存體是 Blob 建立事件的事件來源。 IoT 中樞是裝置建立事件的事件來源。 您的應用程式是您定義之自訂事件本身的事件來源。 事件來源負責將事件傳送至 Event Grid。
 
-如需與實作任何支援的事件方格來源有關的資訊，請參閱 [Azure 事件方格中的事件來源](event-sources.md)。
+如需與實作任何支援的事件方格來源有關的資訊，請參閱 [Azure 事件方格中的事件來源](overview.md#event-sources)。
 
 ## <a name="topics"></a>主題
 
 Event Grid 主題提供來源傳送事件的端點。 發行者會建立 Event Grid 主題，並決定事件來源是否需要一個主題或多個主題。 主題可用於相關事件的集合。 若要回應某些類型的事件，訂閱者會決定要訂閱的主題。
 
-系統主題是由 Azure 服務提供的內建主題。 您不會在您的 Azure 訂用帳戶中看見系統主題，因為發行者擁有主題，但是您可以訂閱這些主題。 若要訂閱，您可以提供與您想要接收事件的資源有關的資訊。 只要您有資源的存取權，您可以訂閱其事件。
+系統主題是 Azure 服務（例如 Azure 儲存體、Azure 事件中樞和 Azure 服務匯流排）提供的內建主題。 您可以在 Azure 訂用帳戶中建立系統主題，並加以訂閱。 如需詳細資訊，請參閱[系統主題的總覽](system-topics.md)。 
 
-自訂主題是應用程式和協力廠商的主題。 您建立或指派自訂主題的存取時，會在您的訂用帳戶中看見該自訂主題。
+自訂主題是應用程式和協力廠商的主題。 您建立或指派自訂主題的存取時，會在您的訂用帳戶中看見該自訂主題。 如需詳細資訊，請參閱[自訂主題](custom-topics.md)。
 
 在設計應用程式時，您將有足夠的彈性可決定要建立多少個主題。 對於大型解決方案，請為每個類別的相關事件建立一個自訂主題。 例如，請考慮使用應用程式來傳送與修改使用者帳戶和處理訂單有關的事件。 任何事件處理常式不太需要兩種類別的事件。 建立兩個自訂主題，並讓事件處理常式訂閱其感興趣的自訂主題。 對於小型解決方案，您可能會想要將所有事件傳送至單一主題。 事件訂閱者可以篩選出他們想要的事件類型。
 
@@ -59,9 +56,6 @@ Event Grid 主題提供來源傳送事件的端點。 發行者會建立 Event G
 如需取得目前 Event Grid 訂用帳戶的資訊，請參閱[查詢 Event Grid 訂用帳戶](query-event-subscriptions.md)。
 
 ## <a name="event-subscription-expiration"></a>事件訂閱過期
-
-適用於 Azure CLI 的[事件方格擴充功能](/cli/azure/azure-cli-extensions-list)可讓您在建立事件訂閱時設定到期日。 如果您使用 REST API，請使用 `api-version=2018-09-15-preview`
-
 事件訂閱會在該日期之後自動過期。 針對只在限定期間內需要的事件訂閱設定到期，而您不需擔心如何清理那些訂閱。 例如，建立事件訂閱來測試案例時，您可能想要設定到期。 
 
 如需設定到期的範例，請參閱[搭配進階篩選進行訂閱](how-to-filter-events.md#subscribe-with-advanced-filters)。
@@ -82,7 +76,10 @@ Event Grid 提供訂閱主題和發佈主題的安全性。 訂閱時，您必�
 
 ## <a name="batching"></a>批次處理
 
-在使用自訂主題時，事件必須一律發佈在陣列中。 在低輸送量的案例中，這可以是單一批次，但在大量使用案例中，建議您在每次發佈時一併批次處理數個事件，以達到更高的效率。 批次最多可達 1 MB。 每個事件仍不應大於 64 KB。
+在使用自訂主題時，事件必須一律發佈在陣列中。 在低輸送量的案例中，這可以是單一批次，但在大量使用案例中，建議您在每次發佈時一併批次處理數個事件，以達到更高的效率。 批次最多可達 1 MB。 每個事件仍應大於 64 KB （一般可用性）或 1 MB （預覽）。
+
+> [!NOTE]
+> [公開上市（GA）服務等級協定（SLA）] 涵蓋大小上限為 64 KB 的事件。 大小上限為 1 MB 的事件支援目前為預覽狀態。 超過 64 KB 的事件會以 64 KB 的增量計費。 
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,6 +1,6 @@
 ---
 title: H264 單一位元速率 4K 音訊 5.1 | Microsoft Docs
-description: 本主題提供 **H264 單一位元速率 4K 音訊 5.1** 工作預設的概觀。
+description: 本主題提供**H264 單一位元速率4K 音訊 5.1**工作預設的總覽。
 author: Juliako
 manager: femila
 editor: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 9c4b133ae74438def30f4fcd9e49a5ca5e6f9cd4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61463560"
 ---
 # <a name="h264-single-bitrate-4k-audio-51"></a>H264 單一位元速率 4K 音訊 5.1
@@ -26,10 +26,10 @@ ms.locfileid: "61463560"
   
  本主題說明 XML 和 JSON 格式的 `H264 Single Bitrate 4K Audio 5.1` 預設。  
   
- 此預設會產生位元速率為 18000 kbps 的單一 MP4 檔案，而且是 AAC 5.1 音訊。 如需此預設的設定檔、位元速率、取樣率等的詳細資訊，請檢查以下定義的 XML 或 JSON。 如需每個元素的意義說明，以及每個元素的有效值，請參閱[媒體編碼器標準結構描述](media-services-mes-schema.md)。  
+ 此預設會產生位元速率為 18000 kbps 的單一 MP4 檔案，而且是 AAC 5.1 音訊。 如需此預設的設定檔、位元速率、取樣率等的詳細資訊，請檢查以下定義的 XML 或 JSON。 如需每個元素的意義說明，以及每個元素的有效值，請參閱[媒體編碼器標準架構](media-services-mes-schema.md)。  
   
 > [!NOTE]
->  您應該會取得具有 4K 編碼的進階保留單元類型。 有关详细信息，请参阅 [如何缩放编码](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)。  
+>  您應該會取得具有 4K 編碼的進階保留單元類型。 如需詳細資訊，請參閱 [如何調整編碼](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)。  
   
  XML  
   

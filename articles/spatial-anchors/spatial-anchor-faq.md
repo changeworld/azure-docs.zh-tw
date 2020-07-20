@@ -1,19 +1,19 @@
 ---
-title: Azure Spatial Anchors 的相關常見問題集 | Microsoft Docs
-description: Azure Spatial Anchors 是一個受控雲端服務和開發人員平台，可在 HoloLens、iOS 和 Android 裝置之間支援跨裝置、多使用者的混合實境體驗。 這些常見問題集可解決服務在技術方面的相關問題。
+title: 常見問題集
+description: Azure Spatial Anchors 服務的相關常見問題。
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
-ms.author: ramonarguelles
-ms.date: 02/24/2019
+ms.author: rgarcia
+ms.date: 05/18/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: d38f7a22d90c62b245e49e6bdb0a3041c4f1023f
-ms.sourcegitcommit: 68ba7916a6ff8dd40f5037e57059733d74374954
+ms.openlocfilehash: 4bf55daa64319cfd47efd2e38a368d76f3814b4e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753588"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296664"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure Spatial Anchors 的相關常見問題集
 
@@ -49,6 +49,10 @@ Azure Spatial Anchors 是一個受控雲端服務和開發人員平台，可在 
 
 **答：** 錨點會依 Azure 帳戶隔離。 應用程式必須已獲得帳戶的存取權，才能存取該帳戶中的錨點。
 
+**問：Azure Spatial Anchors 如何儲存資料？**
+
+**答：** 所有資料都會使用 Microsoft 管理的資料加密金鑰進行加密儲存。
+
 **問：使用 Azure Spatial Anchors 時，會在服務上傳送和儲存哪些環境相關資訊？是否會傳送及儲存環境的圖片？**
 
 **答**：在建立或尋找錨點時，環境的圖片會在裝置上處理成衍生的格式。 這個衍生的格式傳送至服務並儲存於其中。
@@ -57,9 +61,8 @@ Azure Spatial Anchors 是一個受控雲端服務和開發人員平台，可在 
 
 Azure Spatial Anchors 會遵循 [Azure 服務合約條款](https://go.microsoft.com/fwLink/?LinkID=522330&amp;amp;clcid=0x9)和 [Microsoft 隱私權聲明](https://go.microsoft.com/fwlink/?LinkId=521839&amp;clcid=0x409)。
 
-![環境及其衍生的疏鬆點雲](./media/sparce-point-cloud.png)
+![環境及其衍生的疏鬆點雲](./media/sparse-point-cloud.png)
 *圖 1：環境及其衍生的疏鬆點雲*
-
 
 **問：是否有方法可將診斷資訊傳送給 Microsoft？**
 
@@ -69,21 +72,21 @@ Azure Spatial Anchors 會遵循 [Azure 服務合約條款](https://go.microsoft.
 
 **問：您是否提供 SLA？**
 
-**答：** 比照 Azure 服務的標準，我們預計提供超過 99.9% 的可用性。 請注意，Azure Spatial Anchors 目前處於預覽階段，因此適用[預覽補充規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)套用。
+**答：** 比照 Azure 服務的標準，我們預計提供超過 99.9% 的可用性。 
 
 **問：我是否可將使用 Azure Spatial Anchors 的應用程式發佈至應用程式市集？是否可將 Azure Spatial Anchors 用於任務關鍵性生產案例？**
 
-**答：** Azure Spatial Anchors 目前處於預覽階段，在此期間，我們邀請您開發應用程式、針對產品[提供意見反應](https://feedback.azure.com/forums/919252-azure-spatial-anchors)，以及規劃您的生產環境部署。
-
-正式運作 (GA) 日期會在近期公布。
+**答：** 是，Azure Spatial Anchors 已正式推出，並具有標準的 Azure 服務 SLA。 邀請您開發適用您生產環境部署的應用程式，並與我們[分享您對產品的相關意見反應](https://feedback.azure.com/forums/919252-azure-spatial-anchors)。
 
 **問：您是否已設置任何節流限制？**
- 
-**答**：是，我們設有節流限制。  您的一般應用程式開發和測試應該不會達到這些限制。 針對生產環境部署，我們已有能力支援客戶的高度延展需求。 請[與我們連絡](mailto:azuremrs@microsoft.com)以了解詳情。 在此預覽階段期間，我們尚未發佈分層與定價結構，但預計於近期發佈。
+
+**答**：是，我們設有節流限制。  您的一般應用程式開發和測試應該不會達到這些限制。 針對生產環境部署，我們已有能力支援客戶的高度延展需求。 請[與我們連絡](mailto:azuremrs@microsoft.com)以了解詳情。 
 
 **問：Azure Spatial Anchors 的適用區域為何？**
 
-**答：** 您可以立即在 Azure 美國東部 2 區域建立 Azure Spatial Anchors 帳戶。 這表示，此區域支援這項服務所需的計算和儲存能力。 不過，用戶端的所在位置並沒有限制。 未來，我們預計將服務的區域可用性擴展至所有主要的 Azure 區域。
+**答：** Azure Spatial Anchors 目前適用於美國西部 2、美國東部、美國東部 2、美國中南部、西歐、北歐、英國南部和澳大利亞東部。 未來將在其他區域提供。
+
+這表示支援這項服務所需的計算和儲存能力位於這些區域。 不過，用戶端的所在位置並沒有限制。 
 
 **問：使用 Azure Spatial Anchors 需要付費嗎？未來是否會收費？**
 
@@ -112,6 +115,7 @@ Azure Spatial Anchors 會遵循 [Azure 服務合約條款](https://go.microsoft.
 **答：** 開發人員可以使用他們熟悉的工具和裝置架構，透過 Azure Spatial Anchors 建置應用程式：
 
 - 適用於 HoloLens、iOS 和 Android 的 Unity
+- iOS 和 Android 上的 Xamarin
 - iOS 上的 Swift 或 Objective-C
 - Android 上的 Java 或 Android NDK
 - HoloLens 上的 C++/WinRT
@@ -120,8 +124,8 @@ Azure Spatial Anchors 會遵循 [Azure 服務合約條款](https://go.microsoft.
 
 **問：它是否適用於 Unreal？**
 
-**答：** Unreal 的支援可望在近期提供。
+**答：** 未來會考慮加入 Unreal 的支援。
 
-**問：它是否適用於 Xamarin？**
+**問：Azure Spatial Anchors 使用哪些連接埠和通訊協定？**
 
-**答：** 是。 雖然我們未提供 Xamarin SDK，我們預期開發人員可藉由 Azure Spatial Anchors API 的整合在其 Xamarin 應用程式中使用 Azure Spatial Anchors。
+**答：** Azure Spatial Anchors 使用加密通訊協定，透過 TCP 連接埠 443 進行通訊。 針對驗證，它使用 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)，使用 HTTPS 透過連接埠 443 進行通訊。

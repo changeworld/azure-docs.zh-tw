@@ -1,67 +1,67 @@
 ---
-title: 使用 REST API 主控台-Content Moderator 審核工作
-titlesuffix: Azure Cognitive Services
+title: 使用仲裁作業搭配 REST API 主控台-內容仲裁
+titleSuffix: Azure Cognitive Services
 description: 使用檢閱 API 的作業操作來對 Azure Content Moderator 中的影像或文字內容起始端對端內容審核。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
-ms.date: 03/18/2019
-ms.author: sajagtap
-ms.openlocfilehash: 7827cee2af2dfc0c1fddc407c1d146dc9a66c514
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.topic: conceptual
+ms.date: 10/24/2019
+ms.author: pafarley
+ms.openlocfilehash: 83ee8e0c0583cba72da8702e196f0f38128f8d8a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756086"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "72935960"
 ---
-# <a name="define-and-use-moderation-jobs-rest"></a>定義和使用仲裁作業 (REST)
+# <a name="define-and-use-moderation-jobs-rest"></a>定義和使用審核作業（REST）
 
-仲裁作業可做為一種包裝函式的內容仲裁、 工作流程及檢閱功能。 本指南將說明如何使用 REST Api 作業來起始，並檢查內容仲裁作業。 一旦您了解 Api 的結構，您可以輕鬆地移植這些呼叫任何 REST 相容平台。
+審核作業可做為內容仲裁、工作流程和評論功能的一種包裝函式。 本指南說明如何使用作業 REST Api 來起始及檢查內容審核作業。 一旦您瞭解 Api 的結構之後，就可以輕鬆地將這些呼叫移植到任何與 REST 相容的平臺。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-- 登入或建立帳戶，在內容仲裁[審核工具](https://contentmoderator.cognitive.microsoft.com/)站台。
-- （選擇性）[定義的自訂工作流程](./Review-Tool-User-Guide/Workflows.md)以搭配您的工作; 您也可以使用預設的工作流程。
+- 在內容仲裁[審查工具](https://contentmoderator.cognitive.microsoft.com/)網站上登入或建立帳戶。
+- 選擇性定義要與您的作業搭配使用[的自訂工作流程](./Review-Tool-User-Guide/Workflows.md);您也可以使用預設工作流程。
 
-## <a name="create-a-job"></a>建立工作
+## <a name="create-a-job"></a>建立作業
 
-若要建立仲裁作業時，請前往[作業-建立](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5)API 參考頁面，然後選取您的主要區域 按鈕 (您可以在端點 URL 上找到**認證**頁面[檢閱工具](https://contentmoderator.cognitive.microsoft.com/))。 這會啟動 API 主控台中，您可以輕鬆地建構並執行 REST API 呼叫。
+若要建立審核作業，請移至 [[作業-建立](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5)API 參考] 頁面，然後選取訂用帳戶區域的按鈕（您可以在 [[審核] 工具](https://contentmoderator.cognitive.microsoft.com/)的 [**認證**] 頁面上的 [端點 URL] 中找到此資訊）。 這會啟動 API 主控台，您可以在其中輕鬆地建立和執行 REST API 呼叫。
 
-![作業-建立頁面地區選取項目](images/test-drive-job-1.png)
+![[作業 - 建立] 頁面區域選取項目](images/test-drive-job-1.png)
 
-### <a name="enter-rest-call-parameters"></a>輸入 REST 呼叫的參數
+### <a name="enter-rest-call-parameters"></a>輸入 REST 呼叫參數
 
-輸入下列值來建構 REST 呼叫：
+輸入下列值以建立 REST 呼叫：
 
-- **teamName**：當您設定時，您建立 「 小組識別碼您[審核工具](https://contentmoderator.cognitive.microsoft.com/)帳戶 (位於**識別碼**檢閱工具的 [認證] 畫面上的欄位)。
-- **ContentType**:這可以是 「 映像 」、 「 文字 」 或 「 視訊 」。
-- **ContentId**：自訂識別項字串。 這個字串會傳遞至 API 並透過回呼傳回。 它可用於與仲裁作業的結果產生關聯的內部識別項或中繼資料。
-- **workflowname**:您先前建立的工作流程 （或預設工作流程的 「 預設 」） 的名稱。
-- **CallbackEndpoint**:（選擇性）若要檢閱完成時接收回呼資訊 URL。
-- **Ocp-Apim-Subscription-Key**：您的內容仲裁者金鑰。 您可以找到這**設定**索引標籤[審核工具](https://contentmoderator.cognitive.microsoft.com)。
+- **teamName**：當您設定[審核工具](https://contentmoderator.cognitive.microsoft.com/)帳戶時所建立的小組識別碼（可在審核工具的 [認證] 畫面上的 [**識別碼**] 欄位中找到）。
+- **ContentType**：這可以是「影像」、「文字」或「影片」。
+- **ContentId**：自訂識別碼字串。 這個字串會傳遞至 API 並透過回呼傳回。 這適用于將內部識別碼或中繼資料與審核作業的結果產生關聯。
+- **Workflowname**：您先前建立的工作流程名稱（或預設工作流程的預設值）。
+- **CallbackEndpoint**：（選擇性）完成審核時，用來接收回呼資訊的 URL。
+- **Ocp-Apim-訂**用帳戶金鑰：您的內容仲裁金鑰。 您可以在[審核工具](https://contentmoderator.cognitive.microsoft.com)的 [**設定**] 索引標籤上找到此資訊。
 
-### <a name="fill-in-the-request-body"></a>要求主體中填滿
+### <a name="fill-in-the-request-body"></a>填寫要求本文
 
-您的 REST 呼叫的主體會包含一個欄位**ContentValue**。 如果您仲裁文字、 未經處理的文字內容中貼上或輸入影像或影片 URL，如果您要調節影像/影片。 您可以使用下列的範例影像 URL: [https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)
+REST 呼叫的主體包含一個欄位**ContentValue**。 如果您要仲裁文字，請貼上原始文字內容; 如果您要仲裁影像/影片，請輸入影像或影片 URL。 您可以使用下列範例影像 URL：[https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)
 
 ![[作業 - 建立] 主控台查詢參數、標頭和要求本文方塊](images/job-api-console-inputs.PNG)
 
 ### <a name="submit-your-request"></a>提交您的要求
 
-選取 [傳送]。 如果作業成功，**回應狀態**是`200 OK`，而**回應內容**方塊會顯示作業的識別碼。 複製此識別碼以在下列步驟中使用。
+選取 [**傳送**]。 如果作業成功，**回應狀態**會是， `200 OK`而 [**回應內容**] 方塊會顯示工作的識別碼。 複製此識別碼以在下列步驟中使用。
 
 ![[審查 - 建立] 主控台的 [回應內容] 方塊會顯示審查識別碼](images/test-drive-job-3.PNG)
 
 ## <a name="get-job-status"></a>取得作業狀態
 
-若要取得 [狀態] 和 [執行中或已完成作業的詳細資訊，請前往[作業-取得](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c3)API 參考頁面，然後選取您的區域] 按鈕 （取決於您的金鑰所在的區域）。
+若要取得執行中或已完成工作的狀態和詳細資料，請移至 [[作業-取得](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c3)API 參考] 頁面，然後選取您的區域（您的金鑰管理所在的區域）的按鈕。
 
-![作業-Get 地區選取項目](images/test-drive-region.png)
+![作業-取得區域選取範圍](images/test-drive-region.png)
 
-輸入上述節所述的 REST 呼叫參數。 此步驟中，如**JobId**是建立工作時所收到的唯一 ID 字串。 選取 [傳送]。 如果作業成功，**回應狀態**是`200 OK`，而**回應內容**方塊會顯示作業，以 JSON 格式，如下所示：
+輸入 REST 呼叫參數，如上一節所示。 在此步驟中， **JobId**是您在建立作業時所收到的唯一識別碼字串。 選取 [**傳送**]。 如果作業成功，**回應狀態**會是， `200 OK`而 [**回應內容**] 方塊會以 JSON 格式顯示工作，如下所示：
 
 ```json
 {  
@@ -113,10 +113,10 @@ ms.locfileid: "58756086"
 
 ![作業-取得 REST 呼叫回應](images/test-drive-job-5.png)
 
-### <a name="examine-the-new-reviews"></a>檢查新 review(s)
+### <a name="examine-the-new-reviews"></a>檢查新的評論
 
-如果您內容的工作並檢閱的建立，您可以檢視它在[審核工具](https://contentmoderator.cognitive.microsoft.com)。 選取 **檢閱** > **映像**/**文字**/**影片**（取決於您內容項目使用）。 內容應該會出現，可供人工審核。 人力仲裁者檢閱自動指派的標記和預測資料，並且提交的最終仲裁決策後，作業 API 提交所有的這項資訊來指定的回呼端點的端點。
+如果您的內容作業導致建立審查，您可以在[審核工具](https://contentmoderator.cognitive.microsoft.com)中加以查看。 選取 [**審查** > **影像**/**文字**/] [**影片**] （視您使用的內容而定）。 內容應該會出現，準備好進行人工審核。 在人力仲裁者審查自動指派的標記和預測資料並提交最終審核決策之後，作業 API 會將所有這項資訊提交至指定的回呼端點端點。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本指南中，您已了解如何建立及查詢使用 REST API 的內容仲裁作業。 接下來，將工作整合的端對端審核案例，例如[電子商務仲裁](./ecommerce-retail-catalog-moderation.md)教學課程。
+在本指南中，您已瞭解如何使用 REST API 來建立及查詢內容仲裁作業。 接下來，將作業整合到端對端仲裁案例，例如[電子商務審核](./ecommerce-retail-catalog-moderation.md)教學課程。

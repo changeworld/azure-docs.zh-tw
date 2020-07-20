@@ -7,15 +7,15 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: b035be727df2dfecb613da79681affd740c69bec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cd696539cda5b24d801da692822b13de143249dd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60333815"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121515"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>如何設定 Azure Data Lake Analytics 的 CI/CD 管線  
 
@@ -50,7 +50,7 @@ Azure Data Lake Tools for Visual Studio 提供 U-SQL 專案類型，有助於編
 
 MSBuild 並未內建對 U-SQL 專案的支援。 若要獲得這項支援，您需要為解決方案新增對於 [Microsoft.Azure.DataLake.USQL.SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) NuGet 套件的參考，以新增所需的語言服務。
 
-若要新增 NuGet 套件參考，請在 Visual Studio 方案總管中以滑鼠右鍵按一下解決方案，然後選擇 [管理 NuGet 套件]。 您也可以在解決方案資料夾內新增名為 `packages.config` 的檔案，然後於檔案中新增以下內容：
+若要新增 NuGet 套件參考，請在 Visual Studio 方案總管中以滑鼠右鍵按一下解決方案，然後選擇 [管理 NuGet 套件]****。 您也可以在解決方案資料夾內新增名為 `packages.config` 的檔案，然後於檔案中新增以下內容：
 
 ```xml 
 <?xml version="1.0" encoding="utf-8"?>
@@ -66,7 +66,7 @@ U-SQL 專案中的 U-SQL 指令碼可能有 U-SQL 資料庫物件的查詢陳述
 深入了解 [U-SQL 資料庫專案](data-lake-analytics-data-lake-tools-develop-usql-database.md)。
 
 >[!NOTE]
->DROP 陳述式可能會導致意外刪除問題。 若要啟用 DROP 陳述式，您需要明確指定的 MSBuild 引數。 **AllowDropStatement**可讓非資料相關卸除作業，例如卸除組件和卸除資料表值函式。 **AllowDataDropStatement**會啟用卸除作業，例如卸除資料表和卸除結構描述相關的資料。 您必須先使用 AllowDataDropStatement 啟用 AllowDropStatement。
+>DROP 語句可能會導致意外刪除問題。 若要啟用 DROP 語句，您必須明確指定 MSBuild 引數。 **AllowDropStatement**會啟用非資料相關的 drop 作業，例如 drop assembly 和 drop table 值函式。 **AllowDataDropStatement**會啟用資料相關的 drop 作業，例如 drop table 和 drop schema。 您必須先啟用 AllowDropStatement，才能使用 AllowDataDropStatement。
 >
 
 ### <a name="build-a-u-sql-project-with-the-msbuild-command-line"></a>使用 MSBuild 命令列建置 U-SQL 專案
@@ -79,11 +79,11 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 
 引數的定義和值如下：
 
-* **USQLSDKPath =\<U-SQL Nuget 封裝 > \build\runtime**。 此參數代表 U-SQL 語言服務的 NuGet 套件安裝路徑。
+* **USQLSDKPath = \<U-SQL Nuget package> \build\runtime**。 此參數代表 U-SQL 語言服務的 NuGet 套件安裝路徑。
 * **USQLTargetType=Merge 或 SyntaxCheck**：
     * **Merge**。 Merge 模式會編譯程式碼後置檔案。 範例為 **.cs**、**.py** 和 **.r** 檔案。 其會將產生的使用者定義程式碼程式庫內嵌到 U-SQL 指令碼中。 範圍為 dll 二進位、Python 或 R 程式碼。
     * **SyntaxCheck**。 SyntaxCheck 模式會先將程式碼後置檔案合併到 U-SQL 指令碼中。 然後會編譯 U-SQL 指令碼來驗證程式碼。
-* **DataRoot =\<DataRoot 路徑 >**。 唯有 SyntaxCheck 模式需要 DataRoot。 MSBuild 在使用 SyntaxCheck 模式建置指令碼時，會檢查指令碼中對於資料庫物件的參考。 請在建置之前，於組建電腦的 DataRoot 資料夾內設定相符的本機環境，加入來自 U-SQL 資料庫的參考物件。 若要管理這些資料庫相依性，您也可以[參考 U-SQL 資料庫專案](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)。 MSBuild 只會檢查資料庫物件參考，不會檢查檔案。
+* **DataRoot=\<DataRoot path>**。 唯有 SyntaxCheck 模式需要 DataRoot。 MSBuild 在使用 SyntaxCheck 模式建置指令碼時，會檢查指令碼中對於資料庫物件的參考。 請在建置之前，於組建電腦的 DataRoot 資料夾內設定相符的本機環境，加入來自 U-SQL 資料庫的參考物件。 若要管理這些資料庫相依性，您也可以[參考 U-SQL 資料庫專案](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)。 MSBuild 只會檢查資料庫物件參考，不會檢查檔案。
 * **EnableDeployment=true** 或 **false**。 EnableDeployment 指出它是否在建置過程中，允許部署參考的 U-SQL 資料庫。 如果您參考 U-SQL 資料庫專案，並在您的 U-SQL 指令碼中使用資料庫物件，請將這個參數設定為 **true**。
 
 ### <a name="continuous-integration-through-azure-pipelines"></a>透過 Azure Pipelines 的持續整合
@@ -92,7 +92,7 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 
 ![U-SQL 專案的 MSBuild 工作](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
 
-1.  新增 NuGet 還原工作以取得解決方案參考的 NuGet 套件 (包括 `Azure.DataLake.USQL.SDK`)，讓 MSBuild 找得到 U-SQL 語言目標。 如果您想要直接在步驟 2 中使用 MSBuild 引數範例，可以將 [進階] > [目的地目錄] 設定為 `$(Build.SourcesDirectory)/packages`。
+1.  新增 NuGet 還原工作以取得解決方案參考的 NuGet 套件 (包括 `Azure.DataLake.USQL.SDK`)，讓 MSBuild 找得到 U-SQL 語言目標。 **Advanced**  >  **Destination directory** `$(Build.SourcesDirectory)/packages` 如果您想要直接在步驟2中使用 MSBuild 引數範例，請將 [高級目的地目錄] 設定為。
 
     ![U-SQL 專案的 NuGet 還原工作](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
@@ -302,7 +302,7 @@ Azure Data Lake Tools for Visual Studio 會提供 U-SQL 資料庫專案範本，
 
 MSBuild 未提供內建的 U-SQL 資料庫專案支援。 若要獲得這項功能，您需要為解決方案新增對於 [Microsoft.Azure.DataLake.USQL.SDK](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/) NuGet 套件的參考，以新增所需的語言服務。
 
-若要新增 NuGet 套件參考，請在 Visual Studio 方案總管中以滑鼠右鍵按一下解決方案。 選擇 [管理 NuGet 套件]。 然後搜尋並安裝 NuGet 套件。 您也可以在解決方案資料夾內新增名為 **packages.config** 的檔案，然後將以下內容放入檔案中：
+若要新增 NuGet 套件參考，請在 Visual Studio 方案總管中以滑鼠右鍵按一下解決方案。 選擇 [管理 NuGet 封裝]****。 然後搜尋並安裝 NuGet 套件。 您也可以在解決方案資料夾內新增名為 **packages.config** 的檔案，然後將以下內容放入檔案中：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -315,7 +315,7 @@ MSBuild 未提供內建的 U-SQL 資料庫專案支援。 若要獲得這項功�
 
 若要建置 U-SQL 資料庫專案，請呼叫標準 MSBuild 命令列，再以額外引數的形式傳遞 U-SQL SDK NuGet 套件參考。 請參閱下列範例： 
 
-```
+```console
 msbuild DatabaseProject.usqldbproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL.SDK.1.3.180615\build\runtime
 ```
 
@@ -325,21 +325,20 @@ msbuild DatabaseProject.usqldbproj /p:USQLSDKPath=packages\Microsoft.Azure.DataL
 
 除了命令列之外，您可以使用 Visual Studio Build 或 MSBuild 工作，在 Azure Pipelines 中建置 U-SQL 資料庫專案。 若要設定組建工作，請務必在組建管線中新增兩個工作：NuGet 還原工作，以及 MSBuild 工作。
 
-   ![U-SQL 專案的 CI/CD MSBuild 工作](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
+   ![U-SQL 專案的 CI/CD MSBuild 工作](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png)
 
-
-1. 新增 NuGet 還原工作以取得解決方案參考的 NuGet 套件 (包括 `Azure.DataLake.USQL.SDK`)，讓 MSBuild 找得到 U-SQL 語言目標。 如果您想要直接在步驟 2 中使用 MSBuild 引數範例，可以將 [進階] > [目的地目錄] 設定為 `$(Build.SourcesDirectory)/packages`。
+1. 新增 NuGet 還原工作以取得解決方案參考的 NuGet 套件 (包括 `Azure.DataLake.USQL.SDK`)，讓 MSBuild 找得到 U-SQL 語言目標。 **Advanced**  >  **Destination directory** `$(Build.SourcesDirectory)/packages` 如果您想要直接在步驟2中使用 MSBuild 引數範例，請將 [高級目的地目錄] 設定為。
 
    ![U-SQL 專案的 CI/CD NuGet 工作](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
 2. 在 Visual Studio Build Tools 中或 MSBuild 工作中設定 MSBuild 引數，如下列範例所示。 或者，您可以在 Azure Pipelines 組建管線中，定義這些引數的變數。
 
-   ![定義 U-SQL 資料庫專案的 CI/CD MSBuild 變數](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables-database-project.png) 
+   ![定義 U-SQL 資料庫專案的 CI/CD MSBuild 變數](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables-database-project.png)
 
-   ```
+   ```console
    /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime
    ```
- 
+
 ### <a name="u-sql-database-project-build-output"></a>U-SQL 資料庫專案建置輸出
 
 U-SQL 資料庫專案的建置輸出，是一個名稱加上 `.usqldbpack` 尾碼的 U-SQL 資料庫部署套件。 `.usqldbpack` 套件是一個 ZIP 檔案，其中的 DDL 資料夾含有單一 U-SQL 指令碼中的所有 DDL 陳述式。 其含有 Temp 資料夾內組件的所有 **.dll** 和額外檔案。
@@ -369,7 +368,7 @@ U-SQL 資料庫專案的建置輸出，是一個名稱加上 `.usqldbpack` 尾�
     <#
         This script is used for getting dependencies and SDKs for U-SQL database deployment.
         PowerShell command line support for deploying U-SQL database package(.usqldbpack file) will come soon.
-        
+
         Example :
             GetUSQLDBDeploymentSDK.ps1 -AzureSDK "AzureSDKFolderPath" -DBDeploymentTool "DBDeploymentToolFolderPath"
     #>
@@ -454,22 +453,22 @@ U-SQL 資料庫專案的建置輸出，是一個名稱加上 `.usqldbpack` 尾�
 
 #### <a name="common-parameters"></a>一般參數
 
-| 參數 | 說明 | 預設值 | 必要 |
+| 參數 | 描述 | 預設值 | 必要 |
 |---------|-----------|-------------|--------|
-|Package|待部署的 U-SQL 資料庫部署套件路徑。|null|true|
+|套件|待部署的 U-SQL 資料庫部署套件路徑。|null|true|
 |資料庫|要作為部署目標或要建立的資料庫名稱。|master|false|
 |LogFile|記錄檔的路徑。 預設為標準輸出 (主控台)。|null|false|
 |LogLevel|記錄層級：詳細資訊、一般、警告或錯誤。|LogLevel.Normal|false|
 
 #### <a name="parameter-for-local-deployment"></a>本機部署參數
 
-|參數|說明|預設值|必要|
+|參數|描述|預設值|必要|
 |---------|-----------|-------------|--------|
 |DataRoot|本機資料根資料夾的路徑。|null|true|
 
 #### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Azure Data Lake Analytics 部署參數
 
-|參數|說明|預設值|必要|
+|參數|描述|預設值|必要|
 |---------|-----------|-------------|--------|
 |帳戶|依照帳戶名稱指定部署的目的地 Azure Data Lake Analytics 帳戶。|null|true|
 |ResourceGroup|Azure Data Lake Analytics 帳戶的 Azure 資源群組名稱。|null|true|
@@ -486,5 +485,5 @@ U-SQL 資料庫專案的建置輸出，是一個名稱加上 `.usqldbpack` 尾�
 ## <a name="next-steps"></a>後續步驟
 
 - [如何測試 Azure Data Lake Analytics 程式碼](data-lake-analytics-cicd-test.md)。
-- [在本機電腦上執行 U-SQL 指令碼](data-lake-analytics-data-lake-tools-local-run.md)。
+- [在您的本機電腦上執行 U-SQL 腳本](data-lake-analytics-data-lake-tools-local-run.md)。
 - [使用 U-SQL 資料庫專案來開發 U-SQL 資料庫](data-lake-analytics-data-lake-tools-develop-usql-database.md)。

@@ -5,31 +5,32 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 54f6473954c73de6ec29602c3d1563579b3e8cc6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9688df6c27717cc74c874c75a9df0b47ffd24853
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60754378"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564013"
 ---
-# <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>針對 Azure 資料箱閘道問題進行疑難排解 
+# <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>針對 Azure 資料箱閘道問題進行疑難排解
 
-本文說明如何針對 Azure 資料箱閘道問題進行疑難排解。 在本文中，您將了解：
+本文說明如何針對 Azure 資料箱閘道問題進行疑難排解。
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
+>
 > * 執行診斷
 > * 收集支援套件
 > * 使用記錄進行疑難排解
-
 
 ## <a name="run-diagnostics"></a>執行診斷
 
 若要診斷任何裝置錯誤並進行疑難排解，您可以執行診斷測試。 在您裝置的本機 Web UI 中執行下列步驟，以執行診斷測試。
 
-1. 在本機 Web UI 中，移至 [疑難排解] > [診斷測試]。 選取您想要執行的測試，然後按一下 [執行測試]。 這會執行測試，以診斷您的網路、裝置、Web Proxy、時間或雲端設定的任何可能問題。 您會收到裝置正在執行測試的通知。
+1. 在本機 Web UI 中，移至 [疑難排解] > [診斷測試]****。 選取您想要執行的測試，然後按一下 [執行測試]****。 這會執行測試，以診斷您的網路、裝置、Web Proxy、時間或雲端設定的任何可能問題。 您會收到裝置正在執行測試的通知。
 
     ![按一下 [新增使用者]](media/data-box-gateway-troubleshoot/run-diag-1.png)
  
@@ -40,15 +41,15 @@ ms.locfileid: "60754378"
 
 ## <a name="collect-support-package"></a>收集支援套件
 
-記錄套件包含有助於 Microsoft 支援小組疑難排解任何裝置問題的所有相關記錄。 您可以透過本機 Web UI 產生記錄套件。
+記錄套件包含有助於 Microsoft 支援小組疑難排解任何裝置問題的所有相關記錄。 您可以透過本機 Web UI 產生記錄套件。 
 
 執行下列步驟來收集支援套件。 
 
-1. 在本機 Web UI 中，移至 [疑難排解] > [支援]。 按一下 [建立支援套件]。 系統會開始收集支援套件。 套件收集可能需要幾分鐘的時間。
+1. 在本機 Web UI 中，移至 [疑難排解] > [支援]****。 按一下 [建立支援套件]****。 系統會開始收集支援套件。 套件收集可能需要幾分鐘的時間。
 
     ![按一下 [新增使用者]](media/data-box-gateway-troubleshoot/collect-logs-1.png)
  
-2. 建立支援套件之後，按一下 [下載支援套件]。 壓縮的套件會下載至您所選的路徑。 您可以將套件解壓縮。
+2. 建立支援套件之後，按一下 [下載支援套件]****。 壓縮的套件會下載至您所選的路徑。 您可以將套件解壓縮。
 
     ![按一下 [新增使用者]](media/data-box-gateway-troubleshoot/collect-logs-2.png)
 
@@ -60,7 +61,7 @@ ms.locfileid: "60754378"
 
       ![按一下 [新增使用者]](media/data-box-gateway-troubleshoot/troubleshoot-logs-1.png)
 
-2. 按一下 [Microsoft 資料箱閘道] 資料夾。 這個資料夾有兩個子資料夾：
+2. 按一下 [Microsoft 資料箱閘道]__ 資料夾。 這個資料夾有兩個子資料夾：
 
    - 具有上傳錯誤記錄檔的 [上傳] 資料夾。
    - 在重新整理期間發生錯誤的 [重新整理] 資料夾。
@@ -75,7 +76,7 @@ ms.locfileid: "60754378"
 
 3. 當您在此檔案中看到錯誤 (已在此範例中醒目提示) 時，請記下錯誤碼，在此例中是 16001。 針對下列錯誤參考，查閱此錯誤碼的說明。
 
-    |     錯誤碼     |     例外狀況名稱                                         |     錯誤說明                                                                                                                                                                                                                     |
+    |     錯誤碼     |     例外狀況名稱                                         |     錯誤描述                                                                                                                                                                                                                     |
     |--------------------|------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     |    100             |    ERROR_CONTAINER_OR_SHARE_NAME_LENGTH                    |    容器或共用名稱必須介於 3 到 63 個字元之間。                                                                                                                                                                     |
     |    101             |    ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH        |    容器或共用名稱只能包含字母、數字或連字號。                                                                                                                                                       |

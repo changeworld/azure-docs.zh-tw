@@ -1,25 +1,26 @@
 ---
 title: 使用服務主體讓 Azure Analysis Services 工作自動化 | Microsoft Docs
-description: 了解如何建立服務主體來自動化 Azure Analysis Services 工作。
+description: 了解如何建立服務主體來自動化 Azure Analysis Services 管理工作。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a440494b183d18c1d888b5d39836eb4317190d02
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 28947d1fa4ece5d6285651ef07342cae06ad8bc8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708310"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077366"
 ---
 # <a name="automation-with-service-principals"></a>使用服務主體進行自動化
 
 服務主體是您在租用戶內建立的 Azure Active Directory 應用程式資源，用來執行自動資源和服務層級作業。 它們是種唯一的「使用者身分識別」，具有應用程式識別碼和密碼或憑證。 服務主體只有執行角色所定義工作所需的權限，以及為此所指派給服務主體的權限。 
 
-在 Analysis Services 中，服務主體會與 Azure 自動化、PowerShell 自動模式、自訂用戶端應用程式和 Web 應用程式搭配使用，讓一般工作自動化。 例如，佈建伺服器、部署模型、資料重新整理、相應增加/相應減少，以及暫停/繼續都可以藉由使用服務主體來進行自動化。 權限會透過角色成員資格指派給服務主體；這與一般 Azure AD UPN 帳戶的做法很像。
+在 Analysis Services 中，服務主體會與 Azure 自動化、PowerShell 自動模式、自訂用戶端應用程式和 Web 應用程式搭配使用，讓一般工作自動化。 例如，佈建伺服器、部署模型、資料重新整理、擴大/縮減，以及暫停/繼續都可以藉由使用服務主體來進行自動化。 權限會透過角色成員資格指派給服務主體；這與一般 Azure AD UPN 帳戶的做法很像。
+
+Analysis Services 也支援使用服務主體的受控識別所執行的作業。 若要深入了解，請參閱[適用於 Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/overview.md)和[支援 Azure AD 驗證的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services)。    
 
 ## <a name="create-service-principals"></a>建立服務主體
  
@@ -37,7 +38,7 @@ ms.locfileid: "64708310"
 
 ## <a name="add-service-principals-to-server-admin-role"></a>將服務主體新增至伺服器管理員角色
 
-在您針對 Analysis Services 伺服器管理作業使用服務主體之前，必須將其新增至伺服器管理員角色。 若要深入了解，請參閱[將服務主體新增至伺服器管理員角色](analysis-services-addservprinc-admins.md)。
+在您針對 Analysis Services 伺服器管理作業使用服務主體之前，必須將其新增至伺服器管理員角色。 服務主體必須直接新增至伺服器管理員角色。 不支援將服務主體新增至安全性群組，然後將該安全性群組新增至伺服器管理員角色。 若要深入了解，請參閱[將服務主體新增至伺服器管理員角色](analysis-services-addservprinc-admins.md)。
 
 ## <a name="service-principals-in-connection-strings"></a>連接字串中的服務主體
 
@@ -47,11 +48,11 @@ ms.locfileid: "64708310"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-#### <a name="a-nameazmodule-using-azanalysisservices-module"></a><a name="azmodule" />使用 Az.AnalysisServices 模組
+#### <a name="using-azanalysisservices-module"></a><a name="azmodule"></a>使用 Az.AnalysisServices 模組
 
-将服务主体与 [Az.AnalysisServices](/powershell/module/az.analysisservices) 模块配合使用以进行资源管理操作时，请使用 `Connect-AzAccount` cmdlet。 
+透過 [Az.AnalysisServices](/powershell/module/az.analysisservices) 模組針對資源管理作業使用服務主體時，請使用 `Connect-AzAccount` Cmdlet。 
 
-在下列範例中，appID 和密碼用來執行針對至唯讀複本的同步處理的控制平面作業，並相應增加/相應放大：
+在下列範例中，會使用 appID 和密碼來執行控制平面作業，以同步處理唯讀複本並擴大/擴增：
 
 ```powershell
 Param (
@@ -91,11 +92,11 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO 和 ADOMD 
 
-與用戶端應用程式和 Web 應用程式連線時，來自 NuGet 的 [AMO 和 ADOMD 用戶端程式庫](analysis-services-data-providers.md) 15.0.2 版及更新版本的可安裝套件，會使用下列語法在連接字串中支援服務主體：`app:AppID` 和密碼或 `cert:thumbprint`。 
+與用戶端應用程式和 Web 應用程式連線時，來自 NuGet 的 [AMO 和 ADOMD 用戶端程式庫](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) 15.0.2 版及更新版本的可安裝套件，會使用下列語法在連接字串中支援服務主體：`app:AppID` 和密碼或 `cert:thumbprint`。 
 
 在下列範例中，`appID` 和 `password` 可用來執行模型資料庫重新整理作業：
 
-```C#
+```csharp
 string appId = "xxx";
 string authKey = "yyy";
 string connString = $"Provider=MSOLAP;Data Source=asazure://westus.asazure.windows.net/<servername>;User ID=app:{appId};Password={authKey};";
@@ -109,4 +110,7 @@ db.Model.SaveChanges();
 
 ## <a name="next-steps"></a>後續步驟
 [使用 Azure PowerShell 登入](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
-[將服務主體新增至伺服器管理員角色](analysis-services-addservprinc-admins.md)   
+[使用 Logic Apps 重新整理](analysis-services-refresh-logic-app.md)  
+[使用 Azure 自動化重新整理](analysis-services-refresh-azure-automation.md)  
+[將服務主體新增至伺服器管理員角色](analysis-services-addservprinc-admins.md)  
+[使用服務主體將 Power BI Premium 工作區和資料集工作自動化](https://docs.microsoft.com/power-bi/admin/service-premium-service-principal) 

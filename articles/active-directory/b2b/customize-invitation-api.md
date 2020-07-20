@@ -1,22 +1,22 @@
 ---
-title: B2B 共同作業 API 和自訂-Azure Active Directory |Microsoft Docs
+title: B2B 共同作業 API 和自訂-Azure Active Directory
 description: Azure Active Directory B2B 共同作業讓企業合作夥伴選擇性地存取您的公司應用程式，以支援公司間的關係
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: reference
+ms.topic: how-to
 ms.date: 04/11/2017
 ms.author: mimart
 author: msmimart
-manager: daveba
-ms.reviewer: sasubram
+manager: celestedg
+ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17b472b647dd27306ca95345e49dfeb3aee60665
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e9f62ece12732c45037bcad328eec162bebb4e6a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60413554"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387196"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B 共同作業 API 和自訂
 
@@ -80,7 +80,7 @@ API 可以在下列授權模型中執行：
 
 在僅應用程式模式中，應用程式需要 User.Invite.All 範圍，邀請才能成功。
 
-如需詳細資訊，請參閱： https://developer.microsoft.com/graph/docs/authorization/permission_scopes
+如需詳細資訊，請參閱：https://developer.microsoft.com/graph/docs/authorization/permission_scopes
 
 
 ## <a name="powershell"></a>PowerShell
@@ -105,7 +105,7 @@ New-AzureADMSInvitation
 * **UserState** 指出邀請為 **PendingAcceptance** 或 **Accepted**。
 * **UserStateChangedOn** 顯示最近 **UserState** 屬性變更的時間戳記。
 
-您可以使用 [篩選] 選項，依 **UserState** 篩選結果。 以下範例示範如何篩選結果，只顯示具有待決邀請的使用者。 此範例也顯示 **Format-list** 選項，其可讓您指定要顯示的屬性。 
+您可以使用 [篩選]**** 選項，依 **UserState** 篩選結果。 以下範例示範如何篩選結果，只顯示具有待決邀請的使用者。 此範例也顯示 **Format-list** 選項，其可讓您指定要顯示的屬性。 
  
 
 ```powershell
@@ -115,9 +115,9 @@ Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Proper
 > [!NOTE]
 > 請確定您有最新版的 AzureAD PowerShell 模組或 AzureADPreview PowerShell 模組。 
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
-請查看 [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) 中的邀請 API 參考。
+請參閱中的邀請 API 參考 [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) 。
 
 ## <a name="next-steps"></a>後續步驟
 

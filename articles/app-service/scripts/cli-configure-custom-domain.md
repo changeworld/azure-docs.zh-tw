@@ -1,27 +1,18 @@
 ---
-title: Azure CLI 指令碼範例 - 將自訂網域對應至應用程式 | Microsoft Docs
-description: Azure CLI 指令碼範例 - 將自訂網域對應至應用程式
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: CLI：將自訂網域對應至應用程式
+description: 了解如何使用 Azure CLI 將 App Service 應用程式的部署和管理自動化。 此範例說明如何將自訂網域對應至應用程式。
 tags: azure-service-management
 ms.assetid: 5ac4a680-cc73-4578-bcd6-8668c08802c2
-ms.service: app-service-web
-ms.workload: web
 ms.devlang: azurecli
-ms.tgt_pltfrm: na
 ms.topic: sample
 ms.date: 12/11/2017
-ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 58d13498e1b86421ae04f5a3aa60cf0c44242a39
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 888e0e66c4dafbe7d2613a4b92b1f7b0dfd55eab
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629130"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80058610"
 ---
 # <a name="map-a-custom-domain-to-an-app-service-app-using-cli"></a>使用 CLI 將自訂網域對應至 App Service 應用程式
 
@@ -43,7 +34,7 @@ ms.locfileid: "53629130"
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | 建立用來存放所有資源的資源群組。 |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 建立 App Service 方案。 |

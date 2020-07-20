@@ -1,23 +1,14 @@
 ---
-title: Azure Application Insights 遙測資料模型 - 追蹤遙測 | Microsoft Docs
+title: Azure 應用程式 Insights 資料模型-追蹤遙測
 description: 追蹤遙測的 Application Insights 資料模型
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: df85aafc81b199610c02f0faecb06e804fda24bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 31958b26cdb8a7897cf0051af6600014c07949fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60899278"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77671948"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>追蹤遙測：Application Insights 資料模型
 
@@ -27,7 +18,7 @@ ms.locfileid: "60899278"
 
 追蹤訊息。
 
-最大長度：32768 個字元
+最大長度︰32768 個字元
 
 ## <a name="severity-level"></a>嚴重性層級
 
@@ -39,8 +30,8 @@ ms.locfileid: "60899278"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [在 Application Insights 中探索 .NET 追蹤記錄](../../azure-monitor/app/asp-net-trace-logs.md)。
-- [在 Application Insights 中探索 Java 追蹤記錄](../../azure-monitor/app/java-trace-logs.md)。
+- [在 Application Insights 中探索 .net 追蹤記錄](../../azure-monitor/app/asp-net-trace-logs.md)。
+- [探索 Application Insights 中的 JAVA 追蹤記錄](../../azure-monitor/app/java-trace-logs.md)。
 - 如需 Application Insights 類型和資料模型，請參閱[資料模型](data-model.md)。
 - [撰寫自訂追蹤遙測](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)
 - 查看 Application Insights 支援的[平台](../../azure-monitor/app/platforms.md)。

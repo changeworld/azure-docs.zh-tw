@@ -11,25 +11,25 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/29/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 940a35d89996b1eb9600fe4214863d2b5304750e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 70e91ff8fa3666a2dfc5aaad07be7927852b08bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60242131"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85357693"
 ---
-# <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Azure AD Connect 同步：變更預設組態的最佳做法
+# <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Azure AD Connect 同步處理：變更預設組態的最佳作法
 本主題的目的旨在說明支援及不支援的 Azure AD Connect 同步處理變更。
 
 Azure AD Connect 所建立的組態適用於大部分同步內部部署 Active Directory 與 Azure AD 的「現狀」環境。 不過，在某些情況下，組態必須套用某些變更以滿足特定需要或需求。
 
 ## <a name="changes-to-the-service-account"></a>服務帳戶的變更
-Azure AD Connect 同步處理會使用安裝精靈所建立的服務帳戶執行。 這個服務帳戶會存放同步處理所使用的資料庫加密金鑰。它是使用 127 個字元長的密碼所建立的，而且密碼已設定為永不到期。
+Azure AD Connect 同步處理會使用安裝精靈所建立的服務帳戶執行。 此服務帳戶會保留同步處理所使用之資料庫的加密金鑰。它是使用127個字元長的密碼所建立，且密碼設定為不過期。
 
 * 它 **不支援** 變更或重設服務帳戶的密碼。 這麼做會損毀加密金鑰，而服務無法存取資料庫且無法啟動。
 
@@ -60,13 +60,13 @@ Azure AD Connect 同步處理會使用安裝精靈所建立的服務帳戶執行
 
 在上圖中，安裝精靈已在帳戶樹系中找到舊的 Exchange 2003 結構描述。 此結構描述擴充是在 Fabrikam 的環境中引進資源樹系之前新增的。 若要確保不會同步處理任何來自舊的 Exchange 實作的屬性，就必須以所述的方式停用同步處理規則。
 
-### <a name="change-an-out-of-box-rule"></a>更改现成的规则
+### <a name="change-an-out-of-box-rule"></a>變更現成可用的規則
 只有當您需要變更聯結規則時，才應該變更內建規則。 如果您需要變更屬性流程，則您應該建立其優先順序高於內建規則的同步處理規則。 您實際上唯一需要複製的規則是 **In from AD - User Join** 規則。 您可以使用具有較高優先順序的規則來覆寫所有其他規則。
 
 如果您需要對現成可用的規則進行變更，則您應該複製該現成可用的規則，然後停用原始的規則。 接著對複製的規則進行變更。 同步處理規則編輯器會協助您完成這些步驟。 當您開啟現成可用的規則時，即會顯示此對話方塊：  
 ![對現成可用的規則發出警告](./media/how-to-connect-sync-best-practices-changing-default-configuration/warningoutofboxrule.png)
 
-選取 [是]  來建立規則的複本。 隨即會開啟複製的規則。  
+選取 [是] **** 來建立規則的複本。 隨即會開啟複製的規則。  
 ![複製的規則](./media/how-to-connect-sync-best-practices-changing-default-configuration/clonedrule.png)
 
 在這個複製的規則上，對範圍、聯結和轉換進行任何必要變更。

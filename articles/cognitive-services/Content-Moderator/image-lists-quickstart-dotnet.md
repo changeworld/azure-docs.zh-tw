@@ -1,23 +1,23 @@
 ---
-title: 快速入門：在 C# 中根據自訂清單檢查影像 - Content Moderator
-titlesuffix: Azure Cognitive Services
+title: 在 C# 中根據自訂清單檢查影像 - Content Moderator
+titleSuffix: Azure Cognitive Services
 description: 如何使用 Content Moderator SDK for C# 以自訂影像清單仲裁影像。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: quickstart
-ms.date: 10/10/2018
-ms.author: sajagtap
-ms.openlocfilehash: ded5b097e7c8feab56e2d82cb44f92e3127519e2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.topic: conceptual
+ms.date: 10/24/2019
+ms.author: pafarley
+ms.openlocfilehash: e650529f3adb998ce683354565acdeb3928b50c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881786"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "72931762"
 ---
-# <a name="quickstart-moderate-with-custom-image-lists-in-c"></a>快速入門：在 C# 中使用自訂影像清單進行仲裁
+# <a name="moderate-with-custom-image-lists-in-c"></a>在 C# 中使用自訂影像清單進行仲裁
 
 本文提供資訊和範例程式碼，可協助您開始使用 [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 來執行下列操作：
 - 建立自訂影像清單
@@ -32,9 +32,9 @@ ms.locfileid: "55881786"
 > [!NOTE]
 > 上限是 **5 個影像清單**，且每個清單**不可超過 10,000 個影像**。
 
-本快速入門的主控台應用程式會模擬一些您可以使用影像清單 API 來執行的工作。
+本指南的主控台應用程式會模擬一些您可以使用影像清單 API 來執行的工作。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。 
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
 ## <a name="sign-up-for-content-moderator-services"></a>註冊 Content Moderator 服務
 
@@ -42,7 +42,7 @@ ms.locfileid: "55881786"
 
 ## <a name="create-your-visual-studio-project"></a>建立 Visual Studio 專案
 
-1. 將一個新的 [主控台應用程式 (.NET Framework)] 專案新增到您的解決方案。
+1. 將一個新的 [主控台應用程式 (.NET Framework)]**** 專案新增到您的解決方案。
 
    在範例程式碼中，將專案命名為 **ImageLists**。
 
@@ -62,8 +62,7 @@ ms.locfileid: "55881786"
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -73,10 +72,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>建立 Content Moderator 用戶端
 
-新增下列程式碼，為您的訂用帳戶建立 Content Moderator 用戶端。
-
-> [!IMPORTANT]
-> 以您的區域識別碼和訂用帳戶訂用帳戶的值更新 **AzureRegion** 和 **CMSubscriptionKey** 欄位。
+新增下列程式碼，為您的訂用帳戶建立 Content Moderator 用戶端。 使用您`AzureEndpoint`的`CMSubscriptionKey`端點 URL 和訂用帳戶金鑰值，更新和欄位。 您可以在 Azure 入口網站資源的 [**快速入門**] 索引標籤中找到這些選項。
 
 ```csharp
 /// <summary>
@@ -88,16 +84,9 @@ using System.Threading;
 public static class Clients
 {
     /// <summary>
-    /// The region/location for your Content Moderator account, 
-    /// for example, westus.
+    /// The base URL for Content Moderator calls.
     /// </summary>
-    private static readonly string AzureRegion = "YOUR API REGION";
-
-    /// <summary>
-    /// The base URL fragment for Content Moderator calls.
-    /// </summary>
-    private static readonly string AzureBaseURL =
-        $"https://{AzureRegion}.api.cognitive.microsoft.com";
+    private static readonly string AzureEndpoint = "YOUR ENDPOINT URL";
 
     /// <summary>
     /// Your Content Moderator subscription key.
@@ -116,7 +105,7 @@ public static class Clients
         // Create and initialize an instance of the Content Moderator API wrapper.
         ContentModeratorClient client = new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey));
 
-        client.Endpoint = AzureBaseURL;
+        client.Endpoint = AzureEndpoint;
         return client;
     }
 }
@@ -303,7 +292,7 @@ private static ImageList CreateCustomList(ContentModeratorClient client)
 
 ## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>建立方法以將影像集合新增至清單
 
-將下列方法新增至 **Program** 類別。 本快速入門並不示範如何將標籤套用至清單中的影像。 
+將下列方法新增至 **Program** 類別。 本指南不會示範如何將標籤套用至清單中的影像。 
 
 ```csharp
 /// <summary>
@@ -598,7 +587,7 @@ private static IList<ImageList> GetAllListIds(ContentModeratorClient client)
 
 ## <a name="add-code-to-simulate-the-use-of-an-image-list"></a>新增程式碼以模擬影像清單的使用
 
-將以下程式碼新增至 **Main** 方法。 此程式碼會模擬許多您在定義和管理清單，以及使用清單來過濾影像時，會執行的作業。 記錄功能可讓您查看對 Content Moderator 服務發出的 SDK 呼叫所產生的回應物件。
+將下列程式碼新增至**Main**方法。 此程式碼會模擬許多您在定義和管理清單，以及使用清單來過濾影像時，會執行的作業。 記錄功能可讓您查看對 Content Moderator 服務發出的 SDK 呼叫所產生的回應物件。
 
 ```csharp
 // Create the text writer to use for logging, and cache a static reference to it.

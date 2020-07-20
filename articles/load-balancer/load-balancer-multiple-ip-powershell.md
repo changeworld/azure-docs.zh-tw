@@ -1,24 +1,24 @@
 ---
 title: 在多個 IP 設定上進行負載平衡 - Azure CLI
-titlesuffix: Azure Load Balancer
-description: 在主要和次要 IP 組態間進行負載平衡。
+titleSuffix: Azure Load Balancer
+description: 在本文中，您將瞭解如何使用 Azure CLI，在主要和次要 IP 設定間進行負載平衡。
 services: load-balancer
 documentationcenter: na
-author: anavinahar
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: annahar
-ms.openlocfilehash: 1b130dff9d290dcce566570fd015d227d44a1310
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.author: allensu
+ms.openlocfilehash: 8f1273f1476ea7da03eb44b700519482deac3284
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57191896"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809165"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>使用 PowerShell 在多個 IP 組態上進行負載平衡
 
@@ -34,11 +34,11 @@ ms.locfileid: "57191896"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>在多个 IP 配置上进行负载均衡的步骤
+## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>在多個 IP 組態上進行負載平衡的步驟
 
-按照以下步骤来实现本文所概述的场景：
+請遵循下列步驟來達成本文所述案例︰
 
-1. 安裝 Azure PowerShell。 有关安装最新版本的 Azure PowerShell、选择订阅和登录帐户的信息，请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview) 。
+1. 安裝 Azure PowerShell。 如需如何安裝最新版 Azure PowerShell、選取訂用帳戶，以及登入帳戶的相關資訊，請參閱[如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。
 2. 使用下列設定建立資源群組：
 
     ```powershell
@@ -48,7 +48,7 @@ ms.locfileid: "57191896"
 
     如需詳細資訊，請參閱[建立資源群組](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)的步驟 2。
 
-3. [建立可用性設定組](../virtual-machines/windows/tutorial-availability-sets.md?toc=%2fazure%2fload-balancer%2ftoc.json)以容納 VM。 对于此场景，请使用以下命令：
+3. [建立可用性設定組](../virtual-machines/windows/tutorial-availability-sets.md?toc=%2fazure%2fload-balancer%2ftoc.json)以容納 VM。 在此案例中，請使用下列命令：
 
     ```powershell
     New-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset" -Location "West Central US"
@@ -143,4 +143,4 @@ ms.locfileid: "57191896"
 
 ## <a name="next-steps"></a>後續步驟
 - 若要深入了解如何在 Azure 中合併負載平衡服務，請參閱[在 Azure 中使用負載平衡服務](../traffic-manager/traffic-manager-load-balancing-azure.md)。
-- 了解如何，您可以在 Azure 中使用不同類型的記錄檔來管理和疑難排解負載平衡器[Azure 監視器記錄的 Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md)。
+- 瞭解如何在 Azure 中使用不同類型的記錄來管理[Azure 監視器記錄中的](../load-balancer/load-balancer-monitor-log.md)負載平衡器，並針對 Azure Load Balancer 進行疑難排解。

@@ -1,25 +1,14 @@
 ---
-title: 升級 Azure Service Fabric 叢集 | Microsoft Docs
+title: 升級叢集的 Azure Service Fabric 版本
 description: 升級執行 Service Fabric 叢集的 Service Fabric 程式碼和/或組態，包括設定叢集更新模式、升級憑證、新增應用程式連接埠、修補作業系統等等。 執行升級時，您可以期待些什麼？
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: 15190ace-31ed-491f-a54b-b5ff61e718db
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/12/2018
-ms.author: aljo
-ms.openlocfilehash: 234bff5049babf0c4b1d036b40201720b2736228
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b0fef612725d606f1415e7e8d004aacee025cedf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60714680"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261046"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>升級叢集的 Service Fabric 版本
 
@@ -30,7 +19,7 @@ ms.locfileid: "60714680"
 作法是在入口網站上設定 “upgrademode” 叢集組態，或是建立時或稍後在即時叢集上使用 Resource Manager 來設定。 
 
 > [!NOTE]
-> 請務必保持您的叢集一律執行支援的網狀架構版本。 當我們宣布發行新版本的 Service Fabric 時，從當日起至少 60 天後，舊版就會標示為結束支援。 新的版本會於 [Service Fabric 小組部落格上](https://blogs.msdn.microsoft.com/azureservicefabric/)發佈。 那時就有新的版本可選擇。 
+> 請務必保持您的叢集一律執行支援的網狀架構版本。 當我們宣布發行新版本的 Service Fabric 時，從當日起至少 60 天後，舊版就會標示為結束支援。 新的版本會於 [Service Fabric 小組部落格上](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)發佈。 那時就有新的版本可選擇。 
 > 
 > 
 
@@ -48,7 +37,7 @@ ms.locfileid: "60714680"
 
 如果不符合叢集健康狀態原則，則會回復升級。 請往下捲動本文，以深入了解如何設定這些自訂的健康狀態原則。 
 
-修复造成回滚的问题后，需要按照与之前完全相同的步骤重新启动升级。
+在解決導致復原的問題後，您需要依照之前的相同步驟再次起始升級。
 
 ![Manage_Automaticmode][Manage_Automaticmode]
 
@@ -65,7 +54,7 @@ ms.locfileid: "60714680"
 在解決導致復原的問題後，您需要依照之前的相同步驟再次起始升級。
 
 ## <a name="set-custom-health-polices-for-upgrades"></a>設定升級的自訂健康情況原則
-您可以為網狀架構升級指定自訂的健全狀況原則。 如果已將您的叢集設定為自動網狀架構升級，這些原則會套用於[自動網狀架構升級的階段 1](service-fabric-cluster-upgrade.md#fabric-upgrade-behavior-during-automatic-upgrades)。
+您可以為網狀架構升級指定自訂的健全狀況原則。 如果您已將叢集設定為自動網狀架構升級，則這些原則會套用至[自動網狀架構升級的階段 1](service-fabric-cluster-upgrade.md#fabric-upgrade-behavior-during-automatic-upgrades)。
 如果已將您的叢集設定為手動網狀架構升級，則每當您選取新版本而觸發系統開始在叢集中展開網狀架構升級時，就會套用這些原則。 如果您不覆寫原則，則會使用預設值。
 
 在 [網狀架構升級] 刀鋒視窗下，您可以選取進階升級設定來指定自訂的健康狀態原則，或檢閱目前的設定。 檢閱下列作法圖片。 
@@ -75,7 +64,7 @@ ms.locfileid: "60714680"
 ## <a name="list-all-available-versions-for-all-environments-for-a-given-subscription"></a>針對指定的訂用帳戶列出所有環境的所有可用版本
 執行下列命令，應該會得到類似如下的輸出。
 
-“supportExpiryUtc”告知给定的版本何时即将到期或已过期。 最新版本並無有效日期 - 它的值為 "9999-12-31T23:59:59.9999999"，這只是表示到期日還沒有設定。
+“supportExpiryUtc” 會告訴您給定的版本即將到期或已過期。 最新版本並無有效日期 - 它的值為 "9999-12-31T23:59:59.9999999"，這只是表示到期日還沒有設定。
 
 ```REST
 GET https://<endpoint>/subscriptions/{{subscriptionId}}/providers/Microsoft.ServiceFabric/locations/{{location}}/clusterVersions?api-version=2016-09-01
@@ -120,9 +109,9 @@ Output:
 ```
 
 ## <a name="next-steps"></a>後續步驟
-* 了解如何自訂一些 [Service Fabric 叢集網狀架構設定](service-fabric-cluster-fabric-settings.md)
-* 了解如何 [相應放大和相應縮小叢集](service-fabric-cluster-scale-up-down.md)
-* 了解 [應用程式升級](service-fabric-application-upgrade.md)
+* 瞭解如何自訂一些[service fabric 叢集網狀架構設定](service-fabric-cluster-fabric-settings.md)
+* 了解如何 [相應放大和相應縮小叢集](service-fabric-cluster-scale-in-out.md)
+* 瞭解[應用程式升級](service-fabric-application-upgrade.md)
 
 <!--Image references-->
 [CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png

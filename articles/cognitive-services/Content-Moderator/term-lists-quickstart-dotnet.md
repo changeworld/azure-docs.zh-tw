@@ -1,27 +1,27 @@
 ---
 title: 在 C# 中根據自訂字詞清單檢查文字 - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 如何使用 Content Moderator SDK for C# 以自訂字詞清單仲裁文字。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: quickstart
-ms.date: 10/10/2018
-ms.author: sajagtap
-ms.openlocfilehash: da8ad71ccf8b58ddf3ef7cc6a2f9e9c732913caa
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.topic: conceptual
+ms.date: 10/24/2019
+ms.author: pafarley
+ms.openlocfilehash: 68da335875752d326ee718cade3d501623c70b49
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858394"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "72935948"
 ---
-# <a name="quickstart-check-text-against-a-custom-term-list-in-c"></a>快速入門：在 C# 中根據自訂字詞清單檢查文字
+# <a name="check-text-against-a-custom-term-list-in-c"></a>在 C# 中根據自訂字詞清單檢查文字
 
 Azure Content Moderator 中的預設全域字詞清單已可滿足大部分內容審核需求。 不過，您可能會需要審查屬於您組織的特定字詞。 例如，您可能要標記競爭對手名稱以供進一步檢閱。 
 
-您可以使用 [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 建立自訂字詞清單，以搭配文字仲裁 API 使用。
+您可以使用[適用于 .net 的內容仲裁 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)來建立自訂字詞清單，以搭配文字審核 API 使用。
 
 本文提供資訊和範例程式碼，可協助您開始使用 Content Moderator SDK for .NET 來執行下列操作：
 - 建立清單。
@@ -32,7 +32,7 @@ Azure Content Moderator 中的預設全域字詞清單已可滿足大部分內�
 - 編輯清單資訊。
 - 重新整理索引，以便將清單變更包含在新的掃描中。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。 
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
 ## <a name="sign-up-for-content-moderator-services"></a>註冊 Content Moderator 服務
 
@@ -40,7 +40,7 @@ Azure Content Moderator 中的預設全域字詞清單已可滿足大部分內�
 
 ## <a name="create-your-visual-studio-project"></a>建立 Visual Studio 專案
 
-1. 將一個新的 [主控台應用程式 (.NET Framework)] 專案新增到您的解決方案。
+1. 將一個新的 [主控台應用程式 (.NET Framework)]**** 專案新增到您的解決方案。
 
 1. 將專案命名為 **TermLists**。 選取此專案作為解決方案的單一啟始專案。
 
@@ -59,8 +59,7 @@ Azure Content Moderator 中的預設全域字詞清單已可滿足大部分內�
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -70,10 +69,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>建立 Content Moderator 用戶端
 
-新增下列程式碼，為您的訂用帳戶建立 Content Moderator 用戶端。
-
-> [!IMPORTANT]
-> 以您的區域識別碼和訂用帳戶訂用帳戶的值更新 **AzureRegion** 和 **CMSubscriptionKey** 欄位。
+新增下列程式碼，為您的訂用帳戶建立 Content Moderator 用戶端。 使用您`AzureEndpoint`的`CMSubscriptionKey`端點 URL 和訂用帳戶金鑰值，更新和欄位。 您可以在 Azure 入口網站資源的 [**快速入門**] 索引標籤中找到這些選項。
 
 ```csharp
 /// <summary>
@@ -85,16 +81,9 @@ using System.Threading;
 public static class Clients
 {
     /// <summary>
-    /// The region/location for your Content Moderator account, 
-    /// for example, westus.
-    /// </summary>
-    private static readonly string AzureRegion = "YOUR API REGION";
-
-    /// <summary>
     /// The base URL fragment for Content Moderator calls.
     /// </summary>
-    private static readonly string AzureBaseURL =
-        $"https://{AzureRegion}.api.cognitive.microsoft.com";
+    private static readonly string AzureEndpoint = "YOUR ENDPOINT URL";
 
     /// <summary>
     /// Your Content Moderator subscription key.
@@ -113,7 +102,7 @@ public static class Clients
         // Create and initialize an instance of the Content Moderator API wrapper.
         ContentModeratorClient client = new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey));
 
-        client.Endpoint = AzureBaseURL;
+        client.Endpoint = AzureEndpoint;
         return client;
     }
 }
@@ -275,7 +264,7 @@ static void RefreshSearchIndex (ContentModeratorClient client, string list_id)
 - MIME 類型，其可以是 "text/html"、"text/xml"、"text/markdown" 或 "text/plain"。
 - 要審查的文字。
 - 布林值。 將此欄位設為 **true**，可在審查文字前自動校正文字。
-- 布林值。 將此欄位設為 **true**，可偵測文字中的個人識別資訊 (PII)。
+- 布林值。 將此欄位設定為**true** ，以偵測文字中的個人資料。
 - 字詞清單識別碼。
 
 如需詳細資訊，請參閱 [API 參考](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) \(英文\)。
@@ -373,7 +362,7 @@ static void DeleteTermList (ContentModeratorClient client, string list_id)
 }
 ```
 
-## <a name="putting-it-all-together"></a>總整理
+## <a name="compose-the-main-method"></a>撰寫 Main 方法
 
 將 **Main** 方法定義新增至 **TermLists** 命名空間、**Program** 類別。 最後，關閉 **Program** 類別和 **TermLists** 命名空間。
 
@@ -415,9 +404,9 @@ static void Main(string[] args)
 
 ## <a name="run-the-application-to-see-the-output"></a>執行應用程式以查看此輸出
 
-下列幾行將是您的輸出，但是資料可能會有所差異。
+您的主控台輸出看起來會像下面這樣：
 
-```
+```console
 Creating term list.
 Term list created. ID: 252.
 Updating information for term list with ID 252.

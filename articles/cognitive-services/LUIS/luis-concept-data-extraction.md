@@ -1,39 +1,40 @@
 ---
-title: 資料擷取
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: 擷取與意圖和實體的 [utterance] 文字方塊中的資料。 了解何種資料可以擷取從 Language Understanding (LUIS)。
-services: cognitive-services
+title: 資料解壓縮-LUIS
+description: 使用意圖和實體從語句文字中解壓縮資料。 瞭解哪些類型的資料可以從 Language Understanding （LUIS）中解壓縮。
 author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
-ms.author: diberry
-ms.openlocfilehash: 15d6b0d28f926bdb39b35b763b89422cddcccc84
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 05/01/2020
+ms.openlocfilehash: 35f015691b15c6451a66509671c7dc2fc72f38e4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65150689"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682184"
 ---
-# <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>擷取與意圖和實體的 [utterance] 文字方塊中的資料
+# <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>使用意圖與實體從表達文字擷取資料
 LUIS 可讓您從使用者的自然語言語句取得資訊。 此資訊的擷取方式使得它可供程式、應用程式或 Chatbot 用來執行動作。 在下列各節中，您將透過 JSON 範例，了解從意圖和實體會傳回哪些資料。
 
-最難擷取的資料是機器學習資料，因為它不是全文相符的資料。 機器學習[實體](luis-concept-entity-types.md)的資料擷取必須是[撰寫循環](luis-concept-app-iteration.md)的一部分，直到您確信收到預期的資料為止。
+最難解壓縮的資料是機器學習資料，因為它不是完全相符的文字。 機器學習[實體](luis-concept-entity-types.md)的資料提取必須是[撰寫週期](luis-concept-app-iteration.md)的一部分，直到您確信收到預期的資料為止。
 
 ## <a name="data-location-and-key-usage"></a>資料位置和金鑰使用方式
-LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTPS 要求** (POST 或 GET) 除了包含一些額外的設定 (例如預備或生產環境) 之外，也包含語句。
+LUIS 會從已發佈[端點](luis-glossary.md#endpoint)的使用者語句中，解壓縮資料。 **HTTPS 要求** (POST 或 GET) 除了包含一些額外的設定 (例如預備或生產環境) 之外，也包含語句。
+
+**V2 預測端點要求**
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-當您編輯 LUIS 應用程式時，從該 LUIS 應用程式的 [設定] 頁面，以及從您 URL 的一部分 (在 `/apps/` 之後)，都可以取得 `appID`。 `subscription-key` 是用來查詢您應用程式的端點金鑰。 在學習 LUIS 期間，雖然您可以使用免費的撰寫/入門金鑰，但請務必將端點金鑰變更為支援[預期的 LUIS 使用方式](luis-boundaries.md#key-limits)的金鑰。 `timezoneOffset` 單位為分鐘。
+**V3 預測端點要求**
 
-**HTTPS 回應**包含 LUIS 可以根據目前已發佈之預備或生產環境端點模型來判斷的所有意圖和實體資訊。 端點 URL 是在 [LUIS](luis-reference-regions.md) 網站、[管理] 區段、[金鑰和端點] 頁面上找到的。
+`https://westus.api.cognitive.microsoft.com/luis/v3.0-preview/apps/<appID>/slots/<slot-type>/predict?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&query=book 2 tickets to paris`
+
+當您編輯 LUIS 應用程式時，從該 LUIS 應用程式的 [設定]**** 頁面，以及從您 URL 的一部分 (在 `/apps/` 之後)，都可以取得 `appID`。 `subscription-key` 是用來查詢您應用程式的端點金鑰。 在學習 LUIS 期間，雖然您可以使用免費的撰寫/入門金鑰，但請務必將端點金鑰變更為支援[預期的 LUIS 使用方式](luis-limits.md#key-limits)的金鑰。 `timezoneOffset` 單位為分鐘。
+
+**HTTPS 回應**包含 LUIS 可以根據目前已發佈之預備或生產環境端點模型來判斷的所有意圖和實體資訊。 端點 URL 是在 [LUIS](luis-reference-regions.md) 網站、[管理]**** 區段、[金鑰和端點]**** 頁面上找到的。
 
 ## <a name="data-from-intents"></a>來自意圖的資料
-主要資料是最高分的**意圖名稱**。 使用 `MyStore` [快速入門](luis-quickstart-intents-only.md) 時，端點回應為：
+主要資料是最高分的**意圖名稱**。 端點回應為：
+
+#### <a name="v2-prediction-endpoint-response"></a>[V2 預測端點回應](#tab/V2)
 
 ```JSON
 {
@@ -46,11 +47,38 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 }
 ```
 
-|資料物件|数据类型|資料位置|Value|
-|--|--|--|--|
-|意圖|字串|topScoringIntent.intent|"GetStoreInfo"|
+#### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
-如果您的 Chatbot 或 LUIS 呼叫應用程式會根據多個意圖分數進行決策，則請設定查詢字串參數 `verbose=true` 來傳回所有意圖的分數。 端點回應為：
+```JSON
+{
+  "query": "when do you open next?",
+  "prediction": {
+    "normalizedQuery": "when do you open next?",
+    "topIntent": "GetStoreInfo",
+    "intents": {
+        "GetStoreInfo": {
+            "score": 0.984749258
+        }
+    }
+  },
+  "entities": []
+}
+```
+
+深入了解 [V3 預測端點](luis-migration-api-v3.md)。
+
+* * *
+
+|資料物件|資料類型|資料位置|值|
+|--|--|--|--|
+|Intent|String|topScoringIntent.intent|"GetStoreInfo"|
+
+如果您的聊天機器人或 LUIS 呼叫應用程式根據一個以上的意圖分數進行決策，則會傳回所有意圖的分數。
+
+
+#### <a name="v2-prediction-endpoint-response"></a>[V2 預測端點回應](#tab/V2)
+
+設定 querystring 參數 `verbose=true` 。 端點回應為：
 
 ```JSON
 {
@@ -73,14 +101,44 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 }
 ```
 
+#### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
+
+設定 querystring 參數 `show-all-intents=true` 。 端點回應為：
+
+```JSON
+{
+    "query": "when do you open next?",
+    "prediction": {
+        "normalizedQuery": "when do you open next?",
+        "topIntent": "GetStoreInfo",
+        "intents": {
+            "GetStoreInfo": {
+                "score": 0.984749258
+            },
+            "None": {
+                 "score": 0.2040639
+            }
+        },
+        "entities": {
+        }
+    }
+}
+```
+
+深入了解 [V3 預測端點](luis-migration-api-v3.md)。
+
+* * *
+
 意圖會依最高分到最低分排序。
 
-|資料物件|数据类型|資料位置|Value|分數|
+|資料物件|資料類型|資料位置|值|Score|
 |--|--|--|--|:--|
-|意圖|字串|intents[0].intent|"GetStoreInfo"|0.984749258|
-|意圖|字串|intents[1].intent|"None"|0.0168218873|
+|Intent|String|intents[0].intent|"GetStoreInfo"|0.984749258|
+|Intent|String|intents[1].intent|"None"|0.0168218873|
 
 如果您新增預先建置的定義域，則意圖名稱除了會指出意圖之外，也會指出該定義域，例如 `Utilties` 或 `Communication`：
+
+#### <a name="v2-prediction-endpoint-response"></a>[V2 預測端點回應](#tab/V2)
 
 ```JSON
 {
@@ -106,657 +164,104 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 }
 ```
 
-|網域|資料物件|数据类型|資料位置|Value|
-|--|--|--|--|--|
-|公用事業|意圖|字串|intents[0].intent|"<b>Utilities</b>.ShowNext"|
-|通訊|意圖|字串|intents[1].intent|<b>Communication</b>.StartOver"|
-||意圖|字串|intents[2].intent|"None"|
-
-
-## <a name="data-from-entities"></a>來自實體的資料
-大多數 Chatbot 和應用程式都不僅僅只是需要意圖名稱。 這個額外的選擇性資料來自在語句中探索到的實體。 每個類型的實體會傳回與比對相關的不同資訊。
-
-語句中的單一單字或片語可能會與多個實體相符。 在該情況下，系統會傳回每個相符的實體及其分數。
-
-所有實體都會在端點回應的**實體**陣列中傳回：
-
-```JSON
-"entities": [
-  {
-    "entity": "bob jones",
-    "type": "Name",
-    "startIndex": 0,
-    "endIndex": 8,
-    "score": 0.473899543
-  },
-  {
-    "entity": "3",
-    "type": "builtin.number",
-    "startIndex": 16,
-    "endIndex": 16,
-    "resolution": {
-      "value": "3"
-    }
-  }
-]
-```
-
-## <a name="tokenized-entity-returned"></a>傳回的 Token 化實體
-有數個[文化特性](luis-language-support.md#tokenization)會傳回 `entity` 值已[Token 化](luis-glossary.md#token)的實體物件。 LUIS 在實體物件中傳回的 startIndex 和 endIndex 不會對應至新的 Token 化值，而是會對應至原始查詢，以便讓您透過程式設計方式擷取原始實體。 
-
-例如，在德文中，`das Bauernbrot` 會經由 Token 化變成 `das bauern brot`。 系統會傳回 Token 化值 `das bauern brot`，而只要透過程式設計方式，即可從原始查詢的 startIndex 和 endIndex 判斷出原始值，將 `das Bauernbrot` 提供給您。
-
-## <a name="simple-entity-data"></a>簡單實體資料
-
-[簡單實體](luis-concept-entity-types.md)是一個機器學習值。 它可以是一個單字或片語。
-
-`Bob Jones wants 3 meatball pho`
-
-在先前的語句中，`Bob Jones` 被標記為簡單的 `Customer` 實體。
-
-從端點傳回的資料會包含實體名稱、從語句探索到的文字，所探索文字的位置，以及分數：
-
-```JSON
-"entities": [
-  {
-  "entity": "bob jones",
-  "type": "Customer",
-  "startIndex": 0,
-  "endIndex": 8,
-  "score": 0.473899543
-  }
-]
-```
-
-|資料物件|實體名稱|Value|
-|--|--|--|
-|簡單實體|`Customer`|`bob jones`|
-
-## <a name="composite-entity-data"></a>複合實體資料
-[複合](luis-concept-entity-types.md)實體是機器學習實體，並可包含單字或片語。 例如，思考一下與下列語句搭配之預先建置 `number` 與 `Location::ToLocation` 的複合實體：
-
-`book 2 tickets to paris`
-
-請注意，數字 `2` 與 ToLocation `paris` 之間有不屬於任何實體的單字。 [LUIS](luis-reference-regions.md) 網站中用於所標示語句的綠色底線表示複合實體。
-
-![複合實體](./media/luis-concept-data-extraction/composite-entity.png)
-
-複合實體會在 `compositeEntities` 陣列中傳回，而複合項目內的所有實體則會一併在 `entities` 陣列中傳回：
-
-```JSON
-
-"entities": [
-    {
-    "entity": "2 tickets to cairo",
-    "type": "ticketInfo",
-    "startIndex": 0,
-    "endIndex": 17,
-    "score": 0.67200166
-    },
-    {
-    "entity": "2",
-    "type": "builtin.number",
-    "startIndex": 0,
-    "endIndex": 0,
-    "resolution": {
-        "subtype": "integer",
-        "value": "2"
-    }
-    },
-    {
-    "entity": "cairo",
-    "type": "builtin.geographyV2",
-    "startIndex": 13,
-    "endIndex": 17
-    }
-],
-"compositeEntities": [
-    {
-    "parentType": "ticketInfo",
-    "value": "2 tickets to cairo",
-    "children": [
-        {
-        "type": "builtin.geographyV2",
-        "value": "cairo"
-        },
-        {
-        "type": "builtin.number",
-        "value": "2"
-        }
-    ]
-    }
-]
-```    
-
-|資料物件|實體名稱|Value|
-|--|--|--|
-|預先建置的實體 - number|"builtin.number"|"2"|
-|Prebuilt Entity - GeographyV2|"Location::ToLocation"|"paris"|
-
-## <a name="list-entity-data"></a>清單實體資料
-
-[清單](luis-concept-entity-types.md)實體不是機器學習實體。 它是全文相符的項目。 清單代表清單中的項目及這些項目的同義字。 LUIS 會將與任何清單中項目相符的項目，在回應中標示為實體。 一個同義字可以出現在多個清單中。
-
-假設應用程式具有一個名為 `Cities` 的清單，其中可允許城市名稱的各種變化，包括機場城市 (Sea-tac)、機場代碼 (SEA)、郵遞區號 (98101) 及電話區碼 (206)。
-
-|清單項目|項目同義字|
-|---|---|
-|`Seattle`|`sea-tac`、`sea`、`98101`、`206`、`+1` |
-|`Paris`|`cdg`、`roissy`、`ory`、`75001`、`1`、`+33`|
-
-`book 2 tickets to paris`
-
-在上述語句中，`paris` 一字會對應至 `Cities` 清單實體中的 paris 項目。 此清單實體會同時比對項目的正規化名稱及項目同義字。
-
-```JSON
-"entities": [
-  {
-    "entity": "paris",
-    "type": "Cities",
-    "startIndex": 18,
-    "endIndex": 22,
-    "resolution": {
-      "values": [
-        "Paris"
-      ]
-    }
-  }
-]
-```
-
-使用 Paris 同義字的另一個範例語句：
-
-`book 2 tickets to roissy`
-
-```JSON
-"entities": [
-  {
-    "entity": "roissy",
-    "type": "Cities",
-    "startIndex": 18,
-    "endIndex": 23,
-    "resolution": {
-      "values": [
-        "Paris"
-      ]
-    }
-  }
-]
-```
-
-## <a name="prebuilt-entity-data"></a>預先建置的實體資料
-探索[預先建置](luis-concept-entity-types.md)實體時，會使用開放原始碼 [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) 專案，根據規則運算式比對進行探索。 預先建置的實體會在實體陣列中傳回，並使用前面加上 `builtin::` 的類別名稱。 以下文字是一個範例語句，其中含有所傳回的預先建置實體：
-
-`Dec 5th send to +1 360-555-1212`
-
-```JSON
-"entities": [
-    {
-      "entity": "dec 5th",
-      "type": "builtin.datetimeV2.date",
-      "startIndex": 0,
-      "endIndex": 6,
-      "resolution": {
-        "values": [
-          {
-            "timex": "XXXX-12-05",
-            "type": "date",
-            "value": "2017-12-05"
-          },
-          {
-            "timex": "XXXX-12-05",
-            "type": "date",
-            "value": "2018-12-05"
-          }
-        ]
-      }
-    },
-    {
-      "entity": "1",
-      "type": "builtin.number",
-      "startIndex": 18,
-      "endIndex": 18,
-      "resolution": {
-        "value": "1"
-      }
-    },
-    {
-      "entity": "360",
-      "type": "builtin.number",
-      "startIndex": 20,
-      "endIndex": 22,
-      "resolution": {
-        "value": "360"
-      }
-    },
-    {
-      "entity": "555",
-      "type": "builtin.number",
-      "startIndex": 26,
-      "endIndex": 28,
-      "resolution": {
-        "value": "555"
-      }
-    },
-    {
-      "entity": "1212",
-      "type": "builtin.number",
-      "startIndex": 32,
-      "endIndex": 35,
-      "resolution": {
-        "value": "1212"
-      }
-    },
-    {
-      "entity": "5th",
-      "type": "builtin.ordinal",
-      "startIndex": 4,
-      "endIndex": 6,
-      "resolution": {
-        "value": "5"
-      }
-    },
-    {
-      "entity": "1 360 - 555 - 1212",
-      "type": "builtin.phonenumber",
-      "startIndex": 18,
-      "endIndex": 35,
-      "resolution": {
-        "value": "1 360 - 555 - 1212"
-      }
-    }
-  ]
-```
-
-## <a name="regular-expression-entity-data"></a>規則運算式實體資料
-探索[規則運算式](luis-concept-entity-types.md)實體時，會使用您建立實體時所提供的運算式，根據規則運算式比對進行探索。 使用 `kb[0-9]{6}` 作為規則運算式實體定義時，以下 JSON 回應是一個範例語句，其中含有 `When was kb123456 published?` 查詢的所傳回規則運算式實體：
+#### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
 ```JSON
 {
-  "query": "when was kb123456 published?",
-  "topScoringIntent": {
-    "intent": "FindKBArticle",
-    "score": 0.933641255
-  },
-  "intents": [
-    {
-      "intent": "FindKBArticle",
-      "score": 0.933641255
-    },
-    {
-      "intent": "None",
-      "score": 0.04397359
+    "query": "Turn on the lights next monday at 9am",
+    "prediction": {
+        "normalizedQuery": "Turn on the lights next monday at 9am",
+        "topIntent": "Utilities.ShowNext",
+        "intents": {
+            "Utilities.ShowNext": {
+                "score": 0.07842206
+            },
+            "Communication.StartOver": {
+                "score": 0.0239675418
+            },
+            "None": {
+                "score": 0.00085447653
+            }
+        },
+        "entities": []
     }
-  ],
-  "entities": [
-    {
-      "entity": "kb123456",
-      "type": "KB number",
-      "startIndex": 9,
-      "endIndex": 16
-    }
-  ]
 }
 ```
+
+深入了解 [V3 預測端點](luis-migration-api-v3.md)。
+
+* * *
+
+|網域|資料物件|資料類型|資料位置|值|
+|--|--|--|--|--|
+|公用程式|Intent|String|intents[0].intent|"<b>Utilities</b>.ShowNext"|
+|通訊|Intent|String|intents[1].intent|<b>Communication</b>.StartOver"|
+||Intent|String|intents[2].intent|"None"|
+
+
+## <a name="data-from-entities"></a>來自實體的資料
+大部分的聊天機器人和應用程式需要的不只是意圖名稱。 這個額外的選擇性資料來自在語句中探索到的實體。 每個類型的實體會傳回與比對相關的不同資訊。
+
+語句中的單一單字或片語可能會與多個實體相符。 在該情況下，系統會傳回每個相符的實體及其分數。
+
+所有實體都會在來自端點之回應的**實體**陣列中傳回
+
+## <a name="tokenized-entity-returned"></a>傳回的 Token 化實體
+
+請參閱 LUIS 中的[權杖支援](luis-language-support.md#tokenization)。
+
+
+## <a name="prebuilt-entity-data"></a>預先建置的實體資料
+探索[預先建置](luis-concept-entity-types.md)實體時，會使用開放原始碼 [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) 專案，根據規則運算式比對進行探索。 預先建置的實體會在實體陣列中傳回，並使用前面加上 `builtin::` 的類別名稱。
+
+## <a name="list-entity-data"></a>清單實體資料
+
+[清單實體](reference-entity-list.md)代表一組固定且封閉的相關單字及其同義字。 LUIS 並不會探索清單實體的額外值。 使用**建議**功能，以根據目前的清單查看適用於新字組的建議。 如果有多個清單實體具有相同的值，則在端點查詢中會傳回每個實體。
+
+## <a name="regular-expression-entity-data"></a>規則運算式實體資料
+
+[正則運算式實體](reference-entity-regular-expression.md)會根據您所提供的正則運算式來解壓縮實體。
 
 ## <a name="extracting-names"></a>擷取名稱
 從語句中取得名稱相當困難，因為名稱幾乎可以是字母與單字的任何組合。 視所要擷取的名稱類型而定，您會有數個選項。 下列建議不是規定，而是指導方針。
 
 ### <a name="add-prebuilt-personname-and-geographyv2-entities"></a>新增預建的 PersonName 和 GeographyV2 實體
 
-[PersonName](luis-reference-prebuilt-person.md) 和 [GeographyV2](luis-reference-prebuilt-geographyV2.md) 實體可在某些[語言文化特性](luis-reference-prebuilt-entities.md)中使用。 
+[PersonName](luis-reference-prebuilt-person.md) 和 [GeographyV2](luis-reference-prebuilt-geographyV2.md) 實體可在某些[語言文化特性](luis-reference-prebuilt-entities.md)中使用。
 
 ### <a name="names-of-people"></a>人名
 
-人名可依據語言和文化特性而有些微的格式。 使用其中一個預先建置好**[personName](luis-reference-prebuilt-person.md)** 實體或**[簡單實體](luis-concept-entity-types.md#simple-entity)** 使用[角色](luis-concept-roles.md)第一個和最後一個名稱。 
+人名可依據語言和文化特性而有些微的格式。 請使用預先建立的**[personName](luis-reference-prebuilt-person.md)** 實體或具有名字和姓氏[角色](luis-concept-roles.md)的**[簡單實體](luis-concept-entity-types.md#simple-entity)**。
 
-如果您使用簡單的實體，請務必提供跨所有用途，包括 無使用第一個和最後一個名稱，在 utterance 的不同長度的表達方式和談話中的不同部分的範例意圖。 請定期[檢閱](luis-how-to-review-endoint-utt.md)端點語句，以標記任何未正確預測的名稱。
+如果您使用簡單實體，請務必提供在語句的不同部分中使用名字和姓氏的範例、語句不同的長度，以及跨所有意圖的語句，包括 None 意圖。 請定期[檢閱](luis-how-to-review-endoint-utt.md)端點語句，以標記任何未正確預測的名稱。
 
 ### <a name="names-of-places"></a>地名
 
-位置名稱已設定且已如城市、 縣市、 狀態、 省和國家/地區。 使用預先建置的實體**[geographyV2](luis-reference-prebuilt-geographyv2.md)** 擷取位置資訊。
+位置名稱已設定且已知，例如城市、縣/市、州、省和國家/地區。 使用預先建立的實體**[geographyV2](luis-reference-prebuilt-geographyv2.md)** 來解壓縮位置資訊。
 
 ### <a name="new-and-emerging-names"></a>全新和新興的名稱
 
-有些應用程式需要能夠尋找全新和新興的名稱，例如產品或公司。 這些類型的名稱是最困難的一種資料擷取。 開頭**[簡單實體](luis-concept-entity-types.md#simple-entity)** ，並新增[片語清單](luis-concept-feature.md)。 請定期[檢閱](luis-how-to-review-endoint-utt.md)端點語句，以標記任何未正確預測的名稱。
-
-## <a name="pattern-roles-data"></a>模式角色資料
-角色是實體的內容相關差異。
-
-```JSON
-{
-  "query": "move bob jones from seattle to redmond",
-  "topScoringIntent": {
-    "intent": "MoveAssetsOrPeople",
-    "score": 0.9999998
-  },
-  "intents": [
-    {
-      "intent": "MoveAssetsOrPeople",
-      "score": 0.9999998
-    },
-    {
-      "intent": "None",
-      "score": 1.02040713E-06
-    },
-    {
-      "intent": "GetEmployeeBenefits",
-      "score": 6.12244548E-07
-    },
-    {
-      "intent": "GetEmployeeOrgChart",
-      "score": 6.12244548E-07
-    },
-    {
-      "intent": "FindForm",
-      "score": 1.1E-09
-    }
-  ],
-  "entities": [
-    {
-      "entity": "bob jones",
-      "type": "Employee",
-      "startIndex": 5,
-      "endIndex": 13,
-      "score": 0.922820568,
-      "role": ""
-    },
-    {
-      "entity": "seattle",
-      "type": "Location",
-      "startIndex": 20,
-      "endIndex": 26,
-      "score": 0.948008537,
-      "role": "Origin"
-    },
-    {
-      "entity": "redmond",
-      "type": "Location",
-      "startIndex": 31,
-      "endIndex": 37,
-      "score": 0.7047979,
-      "role": "Destination"
-    }
-  ]
-}
-```
+有些應用程式需要能夠尋找全新和新興的名稱，例如產品或公司。 這些類型的名稱是最棘手的資料解壓縮類型。 從**[簡單實體](luis-concept-entity-types.md#simple-entity)** 開始，並新增[片語清單](luis-concept-feature.md)。 請定期[檢閱](luis-how-to-review-endoint-utt.md)端點語句，以標記任何未正確預測的名稱。
 
 ## <a name="patternany-entity-data"></a>Pattern.any 實體資料
-Pattern.any 實體是在[模式](luis-concept-patterns.md)範本語句中使用的可變長度實體。
 
-```JSON
-{
-  "query": "where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?",
-  "topScoringIntent": {
-    "intent": "FindForm",
-    "score": 0.999999464
-  },
-  "intents": [
-    {
-      "intent": "FindForm",
-      "score": 0.999999464
-    },
-    {
-      "intent": "GetEmployeeBenefits",
-      "score": 4.883697E-06
-    },
-    {
-      "intent": "None",
-      "score": 1.02040713E-06
-    },
-    {
-      "intent": "GetEmployeeOrgChart",
-      "score": 9.278342E-07
-    },
-    {
-      "intent": "MoveAssetsOrPeople",
-      "score": 9.278342E-07
-    }
-  ],
-  "entities": [
-    {
-      "entity": "understand your responsibilities as a member of the community",
-      "type": "FormName",
-      "startIndex": 18,
-      "endIndex": 78,
-      "role": ""
-    }
-  ]
-}
-```
-
+[Pattern。 any](reference-entity-pattern-any.md)是僅用於模式範本語句的可變長度預留位置，用來標記實體開始和結束的位置。 您必須在模式中找到使用的實體，才能套用模式。
 
 ## <a name="sentiment-analysis"></a>情感分析
-如果已設定情感分析，LUIS JSON 回應就會包含情感分析。 若要深入了解情感分析，請參閱[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)文件。
+如果在[發行](luis-how-to-publish-app.md#sentiment-analysis)時設定了情感分析，LUIS json 回應就會包含情感分析。 若要深入了解情感分析，請參閱[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)文件。
 
-### <a name="sentiment-data"></a>情感資料
-情感資料是一個介於 1 與 0 之間的分數，指出資料的正面 (較接近 1) 或負面 (較接近 0) 情感。
-
-當文化特性為 `en-us` 時，回應為：
-
-```JSON
-"sentimentAnalysis": {
-  "label": "positive",
-  "score": 0.9163064
-}
-```
-
-針對所有其他文化特性，回應為：
-
-```JSON
-"sentimentAnalysis": {
-  "score": 0.9163064
-}
-```
-
-
-### <a name="key-phrase-extraction-entity-data"></a>關鍵片語擷取實體資料
-關鍵片語擷取實體會傳回語句中[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)所提供的關鍵片語。
-
-```JSON
-{
-  "query": "Is there a map of places with beautiful views on a favorite trail?",
-  "topScoringIntent": {
-    "intent": "GetJobInformation",
-    "score": 0.764368951
-  },
-  "intents": [
-    ...
-  ],
-  "entities": [
-    {
-      "entity": "beautiful views",
-      "type": "builtin.keyPhrase",
-      "startIndex": 30,
-      "endIndex": 44
-    },
-    {
-      "entity": "map of places",
-      "type": "builtin.keyPhrase",
-      "startIndex": 11,
-      "endIndex": 23
-    },
-    {
-      "entity": "favorite trail",
-      "type": "builtin.keyPhrase",
-      "startIndex": 51,
-      "endIndex": 64
-    }
-  ]
-}
-```
+## <a name="key-phrase-extraction-entity-data"></a>關鍵片語擷取實體資料
+[關鍵字組提取實體](luis-reference-prebuilt-keyphrase.md)會傳回語句中的主要片語（由[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)所提供）。
 
 ## <a name="data-matching-multiple-entities"></a>與多個實體相符的資料
 
-LUIS 會傳回在語句中探索到的所有實體。 因此，您的 Chatbot 可能需要根據結果進行決策。 一個語句可以包含許多實體：
-
-`book me 2 adult business tickets to paris tomorrow on air france`
-
-LUIS 端點可以探索不同實體中的相同資料：
-
-```JSON
-{
-  "query": "book me 2 adult business tickets to paris tomorrow on air france",
-  "topScoringIntent": {
-    "intent": "BookFlight",
-    "score": 1.0
-  },
-  "intents": [
-    {
-      "intent": "BookFlight",
-      "score": 1.0
-    },
-    {
-      "intent": "Concierge",
-      "score": 0.04216196
-    },
-    {
-      "intent": "None",
-      "score": 0.03610297
-    }
-  ],
-  "entities": [
-    {
-      "entity": "air france",
-      "type": "Airline",
-      "startIndex": 54,
-      "endIndex": 63,
-      "score": 0.8291798
-    },
-    {
-      "entity": "adult",
-      "type": "Category",
-      "startIndex": 10,
-      "endIndex": 14,
-      "resolution": {
-        "values": [
-          "adult"
-        ]
-      }
-    },
-    {
-      "entity": "paris",
-      "type": "Cities",
-      "startIndex": 36,
-      "endIndex": 40,
-      "resolution": {
-        "values": [
-          "Paris"
-        ]
-      }
-    },
-    {
-      "entity": "tomorrow",
-      "type": "builtin.datetimeV2.date",
-      "startIndex": 42,
-      "endIndex": 49,
-      "resolution": {
-        "values": [
-          {
-            "timex": "2018-02-21",
-            "type": "date",
-            "value": "2018-02-21"
-          }
-        ]
-      }
-    },
-    {
-      "entity": "paris",
-      "type": "Location::ToLocation",
-      "startIndex": 36,
-      "endIndex": 40,
-      "score": 0.9730773
-    },
-    {
-      "entity": "2",
-      "type": "builtin.number",
-      "startIndex": 8,
-      "endIndex": 8,
-      "resolution": {
-        "value": "2"
-      }
-    },
-    {
-      "entity": "business",
-      "type": "Seat",
-      "startIndex": 16,
-      "endIndex": 23,
-      "resolution": {
-        "values": [
-          "business"
-        ]
-      }
-    },
-    {
-      "entity": "2 adult business",
-      "type": "TicketSeatOrder",
-      "startIndex": 8,
-      "endIndex": 23,
-      "score": 0.8784727
-    }
-  ],
-  "compositeEntities": [
-    {
-      "parentType": "TicketSeatOrder",
-      "value": "2 adult business",
-      "children": [
-        {
-          "type": "Category",
-          "value": "adult"
-        },
-        {
-          "type": "builtin.number",
-          "value": "2"
-        },
-        {
-          "type": "Seat",
-          "value": "business"
-        }
-      ]
-    }
-  ]
-}
-```
+LUIS 會傳回在語句中探索到的所有實體。 因此，您的聊天機器人可能需要根據結果做出決策。
 
 ## <a name="data-matching-multiple-list-entities"></a>與多個清單實體相符的資料
 
 如果單字或片語與多個清單實體相符，端點查詢會傳回每個清單實體。
 
-如果查詢為 `when is the best time to go to red rock?`，且應用程式在多個清單中有 `red` 一字，LUIS 就會辨識所有實體，並在 JSON 端點回應中傳回實體陣列： 
-
-```JSON
-{
-  "query": "when is the best time to go to red rock?",
-  "topScoringIntent": {
-    "intent": "Calendar.Find",
-    "score": 0.06701678
-  },
-  "entities": [
-    {
-      "entity": "red",
-      "type": "Colors",
-      "startIndex": 31,
-      "endIndex": 33,
-      "resolution": {
-        "values": [
-          "Red"
-        ]
-      }
-    },
-    {
-      "entity": "red rock",
-      "type": "Cities",
-      "startIndex": 31,
-      "endIndex": 38,
-      "resolution": {
-        "values": [
-          "Destinations"
-        ]
-      }
-    }
-  ]
-}
-```
+針對查詢 `when is the best time to go to red rock?` ，且應用程式在 `red` 多個清單中包含單字，LUIS 會辨識所有實體，並在 JSON 端點回應中傳回實體陣列。
 
 ## <a name="next-steps"></a>後續步驟
 

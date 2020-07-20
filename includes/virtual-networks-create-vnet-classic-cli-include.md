@@ -9,11 +9,11 @@ ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
 ms.openlocfilehash: cd686e1bf62bbd7f37f61ced767e92918edf919c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60597030"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67173897"
 ---
 ## <a name="how-to-create-a-classic-vnet-using-azure-cli"></a>如何使用 Azure CLI 建立傳統 VNet
 您可以使用 Azure CLI 透過任何 Windows、Linux 或 OSX 電腦命令提示字元管理 Azure 資源。
@@ -31,13 +31,13 @@ ms.locfileid: "60597030"
             + Setting network configuration
             info:    network vnet create command OK
    
-   * **--vnet**。 即將建立的 VNet 名稱。 在本文案例中為 TestVNet
-   * **-e (或 --address-space)**。 VNet 位址空間。 在本文案例中為 192.168.0.0
-   * **-i (或 -cidr)**。 CIDR 格式的網路遮罩。 在本文案例中為 16。
-   * **-n (或 --subnet-name**)。 第一個子網路的名稱。 在本文案例中為 FrontEnd。
-   * **-p (或 --subnet-start-ip)**。 子網路的起始 IP 位址或子網路位址空間。 在本文案例中為 192.168.1.0。
-   * **-r (或 --subnet-cidr)**。 CIDR 格式的子網路網路遮罩。 在本文案例中為 24。
-   * **-l (或 --location)**。 在其中建立 VNet 的 Azure 區域。 在本文案例中為「美國中部」。
+   * **--vnet**。 即將建立的 VNet 名稱。 在本文案例中為 TestVNet 
+   * **-e (或 --address-space)** 。 VNet 位址空間。 在本文案例中為 192.168.0.0 
+   * **-i (或 -cidr)** 。 CIDR 格式的網路遮罩。 在本文案例中為 16  。
+   * **-n (或 --subnet-name**)。 第一個子網路的名稱。 在本文案例中為 FrontEnd  。
+   * **-p (或 --subnet-start-ip)** 。 子網路的起始 IP 位址或子網路位址空間。 在本文案例中為 192.168.1.0  。
+   * **-r (或 --subnet-cidr)** 。 CIDR 格式的子網路網路遮罩。 在本文案例中為 24  。
+   * **-l (或 --location)** 。 在其中建立 VNet 的 Azure 區域。 在本文案例中為「美國中部」  。
 3. 若要建立子網路，請執行 **azure network vnet subnet create** 命令：
    
             azure network vnet subnet create -t TestVNet -n BackEnd -a 192.168.2.0/24
@@ -54,9 +54,9 @@ ms.locfileid: "60597030"
             data:    Address prefix                  : 192.168.2.0/24
             info:    network vnet subnet create command OK
    
-   * **-t (或 --vnet-name)**。 將會建立子網路的 VNet 名稱。 在本文案例中為 TestVNet。
-   * **-n (or --name)**。 新子網路的名稱。 在本文案例中為 BackEnd。
-   * **-a (或 --address-prefix)**。 子網路 CIDR 區塊。 在本文案例中為 192.168.2.0/24。
+   * **-t (或 --vnet-name)** 。 將會建立子網路的 VNet 名稱。 在本文案例中為 TestVNet  。
+   * **-n (or --name)** 。 新子網路的名稱。 在本文案例中為 BackEnd  。
+   * **-a (或 --address-prefix)** 。 子網路 CIDR 區塊。 在本文案例中為 192.168.2.0/24  。
 4. 若要檢視新 Vnet 的屬性，請執行 **azure network vnet show** 命令：
    
             azure network vnet show

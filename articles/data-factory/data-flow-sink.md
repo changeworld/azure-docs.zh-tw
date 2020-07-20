@@ -1,87 +1,85 @@
 ---
-title: Azure Data Factory 對應資料流程接收轉換
-description: Azure Data Factory 對應資料流程接收轉換
+title: 對應資料流程中的接收轉換
+description: 瞭解如何在對應的資料流程中設定接收轉換。
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
+manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/03/2019
-ms.openlocfilehash: a39fa0949276b7e86c7fdd0d0861492a9a0b723e
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.custom: seo-lt-2019
+ms.date: 06/03/2020
+ms.openlocfilehash: 49cfc4899379698cab78a5e22fcffacb60636052
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438627"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223630"
 ---
-# <a name="mapping-data-flow-sink-transformation"></a>對應資料流程接收轉換
+# <a name="sink-transformation-in-mapping-data-flow"></a>對應資料流程中的接收轉換
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-![接收選項](media/data-flow/sink1.png "接收 1")
+在您完成資料的轉換後，請使用「接收」轉換將資料寫入目的地存放區。 每個資料流程都需要至少一個接收轉換，但是您可以視需要寫入至多個接收器來完成轉換流程。 若要寫入其他接收，請透過新的分支和條件式分割來建立新的資料流程。
 
-在資料流程轉換完成時，您可以將已轉換的資料接收到目的地資料集中。 在「接收」轉換中，您可以選擇您要用於目的地輸出資料的資料集定義。 您可以有資料流程所需數量的接收轉換。
+每個接收轉換只會與一個 Azure Data Factory 資料集物件或連結服務相關聯。 「接收」轉換會決定您想要寫入之資料的形狀和位置。
 
-可供變更傳入資料及結構描述漂移的常見做法，就是將輸出資料接收到資料夾，而不需要在輸出資料集中定義的結構描述。 您可藉由在來源選取 [允許結構描述漂移]，另外處理您來源中的所有資料行變更，然後自動對應的「接收」中的所有欄位。
+## <a name="inline-datasets"></a>內嵌資料集
 
-您可以在接收到資料集時，選擇覆寫、附加資料流程或使資料流程失效。
+建立接收轉換時，請選擇您的接收資訊是在資料集物件內或在接收轉換內定義。 大部分的格式僅適用于其中一種。 請參考適當的連接器檔，以瞭解如何使用特定的連接器。
 
-您也可以選擇「自動對應」以接收所有傳入的欄位。 如果您希望選擇您想接收至目的地的欄位，或想要變更目的地的欄位名稱，請針對 [自動對應] 選擇 [關閉]，然後按一下 [對應] 索引標籤來對應輸出欄位：
+當內嵌和 dataset 物件都支援格式時，兩者都有其優點。 Dataset 物件是可重複使用的實體，可以在其他資料流程和活動（例如複製）中運用。 這些在使用強化的架構時特別有用。 資料集不是以 Spark 為基礎，有時候您可能需要覆寫接收轉換中的特定設定或架構投射。
 
-![接收選項](media/data-flow/sink2.png "接收 2")
+使用彈性架構、一次性接收實例或參數化接收時，建議您使用內嵌資料集。 如果您的接收是高度參數化的，內嵌資料集可讓您不建立「虛擬」物件。 內嵌資料集是以 spark 為基礎，而其屬性是資料流程的原生。
 
-## <a name="output-to-one-file"></a>輸出至一個檔案
-對於 Azure 儲存體 Blob 或 Data Lake 接收類型，您將會已轉換的資料輸出到資料夾中。 Spark 會根據「接收」轉換中使用的資料分割配置，產生已分割的輸出資料檔案。 您可以按一下 [最佳化] 索引標籤，以設定資料分割配置。如果您希望 ADF 將您的輸出合併成單一檔案，請按一下 [單一資料分割] 選項按鈕。
+若要使用內嵌資料集，請在 [**接收器類型**] 選取器中選取想要的格式。 您不需要選取接收資料集，而是選取您想要連接的連結服務。
 
-![接收選項](media/data-flow/opt001.png "接收選項")
+![內嵌資料集](media/data-flow/inline-selector.png "內嵌資料集")
+
+##  <a name="supported-sink-types"></a><a name="supported-sinks"></a>支援的接收類型
+
+對應資料流程遵循解壓縮、載入、轉換 (ELT) 方法，並可與 Azure 中所有的*暫存*資料集搭配運作。 目前，下列資料集可以用於來源轉換：
+
+| 連接器 | 格式 | 資料集/內嵌 |
+| --------- | ------ | -------------- |
+| [Azure Blob 儲存體](connector-azure-blob-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [分隔符號文字](format-delimited-text.md#mapping-data-flow-properties) <br> [差異 (預覽) ](format-delta.md) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> ✓/- <br> -/✓ <br> ✓/- |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [分隔符號文字](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) \(部分機器翻譯\) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [分隔符號文字](format-delimited-text.md#mapping-data-flow-properties) <br> [差異 (預覽) ](format-delta.md) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  <br> [Common Data Model (預覽) ](format-common-data-model.md#sink-properties) | ✓/- <br> ✓/- <br> ✓/- <br> -/✓ <br> ✓/- <br> -/✓ |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure CosmosDB (SQL API) ](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+
+這些連接器的特定設定位於 [**設定**] 索引標籤中。這些設定的資訊和資料流程腳本範例位於連接器檔中。 
+
+Azure Data Factory 可以存取超過 [90 種原生連接器](connector-overview.md)。 若要將資料從您的資料流程寫入其他來源，請使用複製活動從支援的接收載入該資料。
+
+## <a name="sink-settings"></a>接收設定
+
+新增接收之後，請透過 [**接收**] 索引標籤進行設定。您可以在這裡挑選或建立接收所寫入的資料集。 以下影片解說文字分隔檔案類型的數個不同接收選項：
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4tf7T]
+
+![接收設定](media/data-flow/sink-settings.png "接收設定")
+
+**架構漂移：** [架構漂移](concepts-data-flow-schema-drift.md)是 data factory 能夠以原生方式處理您資料流程中的彈性架構，而不需要明確地定義資料行變更。 啟用 [**允許架構漂移**]，在接收資料架構中定義的內容之上寫入其他資料行。
+
+**驗證架構：** 如果選取 [驗證架構]，則如果在來源投射中找不到傳入來源架構的任何資料行，或資料類型不符，資料流程將會失敗。 使用此設定來強制來源資料符合您定義之投影的合約。 這在資料庫來源案例中非常有用，表示資料行名稱或類型已經變更。
 
 ## <a name="field-mapping"></a>欄位對應
 
-在接收轉換的 [對應] 索引標籤上，您可以將傳入 (左側) 資料行對應到目的地 (右側)。 當您將資料流程接收到檔案時，ADF 一律會將新檔案寫入資料夾。 當您對應到資料庫資料集時，您可以選擇利用此結構描述產生新的資料表 (將「儲存原則」設定為 [覆寫])，或將新資料列插入現有資料表中，並將欄位對應到現有的結構描述。
+類似于 [選取] 轉換，在接收器的 [**對應**] 索引標籤中，您可以決定要寫入的傳入資料行。 根據預設，所有輸入資料行（包括漂移資料行）都會對應。 這就是所謂的「**自動對應**」。
 
-您可以使用對應資料表中的複選來連結多個資料行，只要按一下、 delink 多個資料行或將多個資料列對應至相同的資料行名稱。
+當您關閉自動對應時，您可以加入宣告固定的資料行對應或以規則為基礎的對應。 以規則為基礎的對應可讓您撰寫具有模式比對的運算式，而固定對應則會對應邏輯和實體資料行名稱。 如需以規則為基礎之對應的詳細資訊，請參閱[對應資料流程中的資料行模式](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink)。
 
-當您想要一律採用傳入一組欄位，並將它們對應到目標集，請將 「 允許結構描述漂移 」 設定。
+## <a name="custom-sink-ordering"></a>自訂接收順序
 
-![欄位對應](media/data-flow/multi1.png "多個選項")
+根據預設，資料會以非決定性的順序寫入至多個接收。 執行引擎會在轉換邏輯完成時以平行方式寫入資料，而且接收順序可能會因每次執行而異。 若要指定和精確的接收順序，請在資料流程的 [一般] 索引標籤中啟用**自訂接收順序**。 啟用時，會依遞增順序順序寫入接收。
 
-如果您想要重設您的資料行對應，請按 [重新對應] 按鈕來重設對應。
+![自訂接收順序](media/data-flow/custom-sink-ordering.png "自訂接收順序")
 
-![接收選項](media/data-flow/sink1.png "接收一")
+## <a name="data-preview-in-sink"></a>接收中的資料預覽
 
-![接收選項](media/data-flow/sink2.png "接收")
-
-* 讓 [結構描述漂移] 和 [驗證結構描述] 選項現已在「接收」中提供。 這可讓您指示 ADF 完全接受彈性結構描述定義 (結構描述漂移)，而如果結構描述變更 (驗證結構描述)，則讓「接收」失效。
-
-* 清除資料夾。 ADF 會在目標資料夾中寫入目的地檔案之前，先截斷接收資料夾內容。
-
-## <a name="file-name-options"></a>檔案名稱選項
-
-   * 預設值：可讓 Spark 根據 PART 預設值來命名檔案
-   * 模式：輸入您的輸出檔案的模式。 比方說，將會建立 「 貸款 [n]"loans1.csv、 loans2.csv，...
-   * 每個分割區：輸入每個分割區的檔案名稱
-   * 作為資料行中的資料：將輸出檔案設定為資料行的值
-
-> [!NOTE]
-> 檔案作業只會在您執行「執行資料流程」活動時執行，而不是在「資料流程偵錯」模式中執行
-
-## <a name="database-options"></a>資料庫選項
-
-* 允許插入、 更新、 刪除、 更新插入。 預設值是允許插入。 如果您想要更新、 更新插入或刪除資料列，您必須先將 alter 資料列轉換加入標記資料列，這些特定的動作。 關閉 「 允許插入 」，將 ADF 停止從來源插入新資料列。
-* 截斷的資料表 （移除所有資料列目標資料表中完成的資料流程之前）
-* 重新建立的資料表 （不會執行卸除/建立目標資料表的資料流程在完成之前）
-* 大型資料載入的批次大小。 貯體寫入輸入的數字分成多個區塊
-* 啟用預備環境：這將指示 ADF 載入 Azure 為您的接收資料集的資料倉儲時使用 Polybase
-
-> [!NOTE]
-> 在資料流程中，您可以提出 ADF 到目標資料庫中建立新的資料表定義，藉由設定中有新的資料表名稱的 「 接收 」 轉換的資料集。 在 SQL 資料集，按一下 [編輯] 下方的資料表名稱並輸入新的資料表名稱。 然後，在 「 接收 」 轉換中，開啟 「 允許結構描述漂移 」。 Seth 「 匯入結構描述 」 設定為 None。
-
-![來源轉換結構描述](media/data-flow/dataset2.png "SQL 結構描述")
-
-![SQL 接收選項](media/data-flow/alter-row2.png "SQL 選項")
-
-> [!NOTE]
-> 當更新或刪除資料庫接收中的資料列時，您必須設定索引鍵資料行。 如此一來，就能夠判斷唯一的資料列中的 DML Alter 資料列。
+在 debug 叢集上提取資料預覽時，不會有任何資料寫入至您的接收。 會傳回資料外觀的快照集，但不會將任何內容寫入目的地。 若要測試將資料寫入至您的接收，請從管線畫布執行管線偵錯工具。
 
 ## <a name="next-steps"></a>後續步驟
-
-既然您已建立資料流程，請將[執行資料流程活動新增到您的管線](concepts-data-flow-overview.md)。
+既然您已建立資料流程，請將「資料流程」[活動新增至您的管線](concepts-data-flow-overview.md)。

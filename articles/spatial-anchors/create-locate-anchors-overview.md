@@ -1,19 +1,19 @@
 ---
-title: 如何使用 Azure Spatial Anchors 建立和尋找錨點 | Microsoft Docs
+title: 建立及尋找錨點的概觀
 description: 深入說明如何使用 Azure Spatial Anchors 建立和尋找錨點。
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
-ms.author: ramonarguelles
+ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 780c3da24d20418919670f09aa064003e3d96b90
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: f406edb42204e7ffc94bcbfa1e22b269aea67b32
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629671"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "74270449"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors"></a>如何使用 Azure Spatial Anchors 建立和尋找錨點
 

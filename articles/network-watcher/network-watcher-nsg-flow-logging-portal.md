@@ -3,9 +3,7 @@ title: 記錄往返 VM 的流量 - 教學課程 - Azure 入口網站 | Microsoft
 description: 了解如何使用網路監看員的 NSG 流量記錄功能來記錄往返 VM 的流量。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 tags: azure-resource-manager
 Customer intent: I need to log the network traffic to and from a VM so I can analyze it for anomalies.
 ms.assetid: 01606cbf-d70b-40ad-bc1d-f03bb642e0af
@@ -15,18 +13,25 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 550755b1215dd25045845d78ab3d6248ef840062
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: da7d56a0fd8571e796567331a7543074f0bf1eda
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705943"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808695"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站記錄往返於虛擬機器的網路流量
 
-網路安全性群組 (NSG) 可讓您篩選虛擬機器 (VM) 的輸入流量和輸出流量。 您可以使用網路監看員的 NSG 流量記錄功能，記錄流經 NSG 的網路流量。 在本教學課程中，您了解如何：
+> [!div class="op_single_selector"]
+> - [Azure 入口網站](network-watcher-nsg-flow-logging-portal.md)
+> - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
+> - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
+> - [REST API](network-watcher-nsg-flow-logging-rest.md)
+> - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
+
+網路安全性群組 (NSG) 可讓您篩選虛擬機器 (VM) 的輸入流量和輸出流量。 您可以使用網路監看員的 NSG 流量記錄功能，記錄流經 NSG 的網路流量。 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 建立具有網路安全性群組的 VM
@@ -35,7 +40,7 @@ ms.locfileid: "64705943"
 > * 下載記錄的資料
 > * 檢視記錄的資料
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="create-a-vm"></a>建立 VM
 
@@ -45,12 +50,12 @@ ms.locfileid: "64705943"
 
     |設定|值|
     |---|---|
-    |Name|myVm|
-    |使用者名稱| 輸入您選擇的使用者名稱。|
+    |名稱|myVm|
+    |[使用者名稱]| 輸入您選擇的使用者名稱。|
     |密碼| 輸入您選擇的密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |訂用帳戶| 選取您的訂用帳戶。|
     |資源群組| 選取 [新建]，然後輸入 **myResourceGroup**。|
-    |位置| 選取 [美國東部]|
+    |Location| 選取 [美國東部]|
 
 4. 選取 VM 的大小，然後選取 [選取]。
 5. 在 [設定] 底下，接受所有預設值，然後選取 [確定]。
@@ -88,11 +93,11 @@ NSG 流量記錄需要 **Microsoft.Insights** 提供者。 若要註冊提供者
 
     | 設定        | 值                                                        |
     | ---            | ---   |
-    | Name           | 3-24 個字元長，只能包含小寫英文字母和數字，並且必須是所有 Azure 儲存體帳戶中唯一的名稱。                                                               |
-    | 位置       | 選取 [美國東部]                                           |
+    | 名稱           | 3-24 個字元長，只能包含小寫英文字母和數字，並且必須是所有 Azure 儲存體帳戶中唯一的名稱。                                                               |
+    | Location       | 選取 [美國東部]                                           |
     | 資源群組 | 選取 [使用現有的]，然後選取 [myResourceGroup] |
 
-    建立儲存體帳戶可能需要一分鐘的時間。 建好儲存體帳戶之前，請不要繼續其餘步驟。 如果您使用現有儲存體帳戶，而不是新建一個，請確定在所選儲存體帳戶的 [設定] 下方，[防火牆與虛擬網路] 的 [所有網路] (預設值) 已選取。
+    建立儲存體帳戶可能需要一分鐘的時間。 建好儲存體帳戶之前，請不要繼續其餘步驟。 在所有情況下，儲存體帳戶必須與 NSG 位在同一個區域中。
 4. 在入口網站的左上角，選取 [所有服務]。 在 [篩選] 方塊中，輸入*網路監看員*。 當搜尋結果中出現**網路監看員**時，請加以選取。
 5. 在 [記錄] 下，選取 [NSG 流量記錄]，如下列圖所示：
 
@@ -105,6 +110,9 @@ NSG 流量記錄需要 **Microsoft.Insights** 提供者。 若要註冊提供者
    ![選取流量記錄版本](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
 
 9. 選取您在步驟 3 建立的儲存體帳戶。
+   > [!NOTE]
+   > NSG 流量記錄無法與已啟用[階層式命名空間](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)的儲存體帳戶搭配使用。
+1. 在入口網站的左上角，選取 [所有服務]。 在 [篩選] 方塊中，輸入*網路監看員*。 當搜尋結果中出現**網路監看員**時，請加以選取。
 10. 將 [保留 (天數)] 設定為 5，然後選取 [儲存]。
 
 ## <a name="download-flow-log"></a>下載流量記錄
@@ -115,7 +123,7 @@ NSG 流量記錄需要 **Microsoft.Insights** 提供者。 若要註冊提供者
    ![下載流量記錄](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. 選取您在步驟 2 ([啟用 NSG 流量記錄](#enable-nsg-flow-log)) 設定的儲存體帳戶。
-4. 在 [Blob 服務] 下選取 [Blob]，然後選取 **insights-logs-networksecuritygroupflowevent** 容器。
+4. 在 [Blob 服務] 下選取 [容器]，然後選取 **insights-logs-networksecuritygroupflowevent** 容器。
 5. 在容器中，瀏覽資料夾階層，直到看到 PT1H.json 檔案為止，如下圖所示。 記錄檔會寫入至遵循下列命名慣例的資料夾階層： https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 
    ![流量記錄](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
@@ -206,13 +214,13 @@ NSG 流量記錄需要 **Microsoft.Insights** 提供者。 若要註冊提供者
 | 443         | 目的地連接埠       | 流量流向的目的地連接埠。 因為流量已流向連接埠 443，記錄檔中名為 **UserRule_default-allow-rdp** 的規則會處理此流量。                                                |
 | T            | 通訊協定               | 流量的通訊協定是 TCP (T) 或 UDP (U)。                                  |
 | O            | 方向              | 流量是輸入 (I) 或輸出 (O)。                                     |
-| 具有使用             | 動作                 | 允許 (A) 或拒絕 (D) 流量。  
+| A            | 動作                 | 允許 (A) 或拒絕 (D) 流量。  
 | C            | 流程狀態 **僅限第 2 版** | 擷取流程的狀態。 可能的狀態為 **B**：開始，當流量建立時。 不提供統計資料。 **C**：繼續進行中的流量。 提供 5 分鐘間隔的統計資料。 **E**：結束，當流量終止時。 提供統計資料。 |
 | 30 | 已傳送的封包數 - 來源到目的地 **僅限第 2 版** | 上次更新之後從來源傳送到目的地的 TCP 或 UDP 封包總數。 |
-| 16978 | 已傳送的位元組數 - 來源到目的地 **僅限第 2 版** | 上次更新之後從來源傳送到目的地的 TCP 或 UDP 封包位元組總數。 封包位元組包括封包標頭與承載。 | 
+| 16978 | 已傳送的位元組數 - 來源到目的地 **僅限第 2 版** | 上次更新之後從來源傳送到目的地的 TCP 或 UDP 封包位元組總數。 封包位元組包括封包標頭與承載。 |
 | 24 | 已傳送的封包數 - 目的地到來源 **僅限第 2 版** | 上次更新之後從目的地傳送到來源的 TCP 或 UDP 封包總數。 |
 | 14008| 已傳送的位元組數 - 目的地到來源 **僅限第 2 版** | 上次更新之後從目的地傳送到來源的 TCP 與 UDP 封包位元組總數。 封包位元組包括封包標頭與承載。|
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何啟用 NSG 的 NSG 流量記錄。 您也了解如何下載和檢視記錄在檔案中的資料。 Json 檔案中的原始資料可能難以解譯。 若要將資料視覺化，您可以使用網路監看員的[流量分析](traffic-analytics.md)、Microsoft [PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md)和其他工具。
+在本教學課程中，您已了解如何啟用 NSG 的 NSG 流量記錄。 您也了解如何下載和檢視記錄在檔案中的資料。 Json 檔案中的原始資料可能難以解譯。 若要將流程記錄資料視覺化，您可以使用 [Azure 流量分析](traffic-analytics.md)、[Microsoft PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md) 和其他工具。 您可以嘗試其他方法來啟用 NSG 流量記錄，例如 [PowerShell](network-watcher-nsg-flow-logging-powershell.md)、[Azure CLI](network-watcher-nsg-flow-logging-cli.md)、[REST API](network-watcher-nsg-flow-logging-rest.md) 和 [ARM 範本](network-watcher-nsg-flow-logging-azure-resource-manager.md)。

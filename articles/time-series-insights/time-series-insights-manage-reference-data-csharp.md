@@ -1,245 +1,307 @@
 ---
-title: 使用 C# 來管理 Azure 時間序列深入解析環境中的參考資料 | Microsoft Docs
-description: 本文說明如何建立使用 C# (c-sharp) .NET 語言撰寫的自訂應用程式來管理 Azure 時間序列深入解析環境的參考資料。
+title: 使用 C# 管理 GA 環境中的參考資料 - Azure 時間序列見解 | Microsoft Docs
+description: 了解如何透過建立以 C# 所撰寫自訂應用程式來管理 GA 環境的參考資料。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
-ms.author: anshan
+author: deepakpalled
+ms.author: dpalled
 manager: cshankar
-ms.reviewer: jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 04/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: a8bd4e02b03a20e348feb2d6c9424f5eb6cf5f9e
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: f0ce0f7d90540274d24a7e0248e6f197b74033a1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510037"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81416974"
 ---
-# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>使用管理 Azure Time Series Insights 環境的 GA 參考資料C#
+# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>使用 C# 管理 Azure 時間序列見解環境的 GA 參考資料
 
-本文說明您可以編譯的範例 C# 專案來管理 Azure 時間序列深入解析環境的參考資料。
+本文示範如何合併 C#、[MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) 和 Azure Active Directory 來以程式設計方式向 Azure 時間序列見解 GA [參考資料管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)發出 API 要求。
 
-## <a name="prerequisites"></a>必要條件
+> [!TIP]
+> 在 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) 檢視 GA C# 程式碼範例。
+
+## <a name="summary"></a>摘要
+
+以下範例程式碼會示範下列功能：
+
+* 使用 [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication** 取得存取權杖。
+* 針對 GA [參考資料管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) 循序進行 CREATE、READ、UPDATE 和 DELETE 作業。
+* 常見的回應碼包括[常見錯誤碼](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling)。
+    
+    參考資料管理 API 會個別處理每個項目，且其中一個項目的錯誤不會防止其他項目成功完成。 例如，若要求包含 100 個項目，且其中一個項目發生錯誤，則會寫入 99 個項目，並拒絕一個項目。
+
+## <a name="prerequisites-and-setup"></a>先決條件和設定
 
 編譯及執行範例程式碼之前，您必須先完成下列步驟：
 
-1. [建立參考資料集](time-series-insights-add-reference-data-set.md)。
+1. [佈建 GA Azure 時間序列見解](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
+)環境。
 
-1. 設定應用程式的授權存取權杖。 請務必透過 Azure Active Directory API 取得該權杖。 您應該在每個查詢 API 要求的 `Authorization` 標頭中傳遞此權杖。
+1. 在環境內[建立參考資料集](time-series-insights-add-reference-data-set.md)。 使用下列參考資料配置：
 
-   如需如何設定非互動式應用程式的相關資訊，請參閱[驗證與授權](time-series-insights-authentication-and-authorization.md)。
+   | 機碼名稱 | 類型 |
+   | --- | --- |
+   | uuid | String | 
 
-1. 編輯範例程式碼以取代在接近程式碼開頭之 **#DUMMY#** 所指定的範例常數。
+1. 針對 Azure Active Directory 設定 Azure 時間序列見解環境，如[驗證和授權](time-series-insights-authentication-and-authorization.md)中所述。 使用 `http://localhost:8080/` 作為**重新導向 URI**。
 
-> [!NOTE]
-> 檢視在 GA 範例程式碼[ https://github.com/Azure-Samples/Azure-Time-Series-Insights ](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-ga-preview-sample)。
+1. 安裝必要的專案相依性。
+
+1. 將每個 **#PLACEHOLDER** 取代為適當的環境識別碼來編輯以下範例程式碼。
+
+1. 在專案的根目錄內執行 `dotnet run`。 出現提示時，請以使用者設定檔來登入 Azure。 
 
 ## <a name="project-dependencies"></a>專案相依性
 
-為此範例新增 NuGet 封裝 `Microsoft.IdentityModel.Clients.ActiveDirectory` 和 `Newtonsoft.Json`。
+建議使用最新的 Visual Stuio 和 **NETCore.app** 版本：
+
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) - 版本 16.4.2+
+* [NETCore.app](https://www.nuget.org/packages/Microsoft.NETCore.App/2.2.8) - 版本 2.2.8
+
+範例程式碼有兩個必要的相依性：
+
+* MSAL.NET [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client/) -  4.7.1 套件。
+* [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) - 12.0.3 套件。
+
+使用 [NuGet 2.12+](https://www.nuget.org/) 新增套件：
+
+* `dotnet add package Newtonsoft.Json --version 12.0.3`
+* `dotnet add package Microsoft.Identity.Client --version 4.7.1`
+
+或：
+
+1. 宣告 `csharp-tsi-msal-ga-sample.csproj` 檔案：
+
+    ```XML
+    <Project Sdk="Microsoft.NET.Sdk">
+      <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp2.1</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <RootNamespace>csharp-tsi-msal-ga-sample</RootNamespace>
+        <RunWorkingDirectory>$(MSBuildThisFileDirectory)</RunWorkingDirectory>
+      </PropertyGroup>
+      <ItemGroup>
+        <PackageReference Include="Microsoft.Identity.Client" Version="4.7.1.0" Culture="neutral" PublicKeyToken="0a613f4dd989e8ae" />
+        <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+      </ItemGroup>
+    </Project>
+    ```
+1. 然後執行 `dotnet restore`。
 
 ## <a name="c-sample-code"></a>C# 範例程式碼
 
 ```csharp
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 
-using System;
-using System.IO;
-using System.Net;
-using System.Threading.Tasks;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
-namespace TimeSeriesInsightsReferenceDataSampleApp
+namespace CsharpTsiMsalGaSample
 {
+    using Microsoft.Identity.Client;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+    using System;
+    using System.IO;
+    using System.Net.Http;
+    using System.Text;
+    using System.Threading.Tasks;
+
     public static class Program
     {
-        // SET the environment fqdn.
-        private static string EnvironmentFqdn = "#DUMMY#.env.timeseries.azure.com";
+        /**
+         * Review the product documentation for detailed configuration steps or skip ahead and configure your environment settings.
+         * 
+         * https://docs.microsoft.com/azure/time-series-insights/time-series-insights-authentication-and-authorization
+         */
 
-        // SET the environment reference data set name used when creating it.
-        private static string EnvironmentReferenceDataSetName = "#DUMMY#";
+        // Azure Time Series Insights environment configuration
+        internal static string EnvironmentFqdn = "#PLACEHOLDER#.env.timeseries.azure.com";
+        internal static string EnvironmentReferenceDataSetName = "#PLACEHOLDER#";
 
-        // For automated execution under application identity,
-        // use application created in Active Directory.
-        // To create the application in AAD, follow the steps provided here:
-        // https://docs.microsoft.com/azure/time-series-insights/time-series-insights-authentication-and-authorization
-
-        // SET the application ID of application registered in your Azure Active Directory
-        private static string ApplicationClientId = "#DUMMY#";
-
-        // SET the application key of the application registered in your Azure Active Directory
-        private static string ApplicationClientSecret = "#DUMMY#";
-
-        // SET the Azure Active Directory tenant.
-        private static string Tenant = "#DUMMY#.onmicrosoft.com";
-
-        private static async Task DemoReferenceDataAsync()
-        {
-            // 1. Acquire an access token.
-            string accessToken = await AcquireAccessTokenAsync();
-
-            // 2. Put a new reference data item.
-            {
-                HttpWebRequest request = CreateWebRequest(accessToken);
-                string input = @"
-{
-    ""put"": [{
-        ""DeviceId"": ""Fan1"",
-        ""Type"": ""Fan"",
-        ""BladeCount"": ""3""
-    }]
-}";
-                await SendRequestAsync(request, input);
-                string output = await GetResponseAsync(request);
-                PrintInputOutput(action: "Put", input: input, output: output);
-            }
-
-            // 3. Get reference data item.
-            {
-                HttpWebRequest request = CreateWebRequest(accessToken);
-                string input = @"
-{
-    ""get"": [{
-        ""DeviceId"": ""Fan1""
-    }]
-}";
-                await SendRequestAsync(request, input);
-                string output = await GetResponseAsync(request);
-                PrintInputOutput(action: "Get", input: input, output: output);
-            }
-
-            // 4. Patch an existing reference data item.
-            // Update BladeCount and add Colour.
-            {
-                HttpWebRequest request = CreateWebRequest(accessToken);
-                string input = @"
-{
-    ""patch"": [{
-        ""DeviceId"": ""Fan1"",
-        ""BladeCount"": ""4"",
-        ""Colour"": ""Brown""
-    }]
-}";
-                await SendRequestAsync(request, input);
-                string output = await GetResponseAsync(request);
-                PrintInputOutput(action: "Patch", input: input, output: output);
-            }
-
-            // 5. Delete a property from an existing reference data item.
-            {
-                HttpWebRequest request = CreateWebRequest(accessToken);
-                string input = @"
-{
-    ""deleteproperties"": [{
-        ""key"": {
-            ""DeviceId"": ""Fan1""
-    },
-        ""properties"": [""BladeCount""]
-    }]
-}";
-                await SendRequestAsync(request, input);
-                string output = await GetResponseAsync(request);
-                PrintInputOutput(action: "DeleteProperties", input: input, output: output);
-            }
-
-            // 6. Delete an existing reference data item.
-            {
-                HttpWebRequest request = CreateWebRequest(accessToken);
-                string input = @"
-{
-    ""delete"": [{
-        ""DeviceId"": ""Fan1""
-    }]
-}";
-                await SendRequestAsync(request, input);
-                string output = await GetResponseAsync(request);
-                PrintInputOutput(action: "Delete", input: input, output: output);
-            }
-        }
+        // Azure Active Directory application configuration
+        internal static string AadClientApplicationId = "#PLACEHOLDER#";
+        internal static string[] AadScopes = new string[] { "https://api.timeseries.azure.com//user_impersonation" };
+        internal static string AadRedirectUri = "http://localhost:8080/";
+        internal static string AadTenantName = "#PLACEHOLDER#";
+        internal static string AadAuthenticationAuthority = "https://login.microsoftonline.com/" + AadTenantName + ".onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/";
 
         private static async Task<string> AcquireAccessTokenAsync()
         {
-            if (ApplicationClientId == "#DUMMY#" || ApplicationClientSecret == "#DUMMY#" || Tenant.StartsWith("#DUMMY#"))
+            if (AadClientApplicationId == "#PLACEHOLDER#" || AadScopes.Length == 0 || AadRedirectUri == "#PLACEHOLDER#" || AadTenantName.StartsWith("#PLACEHOLDER#"))
             {
-                throw new Exception(
-                    $"Use the link {"https://docs.microsoft.com/azure/time-series-insights/time-series-insights-authentication-and-authorization"} to update the values of 'ApplicationClientId', 'ApplicationClientSecret' and 'Tenant'.");
+                throw new Exception($"Use the link {"https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started"} to update the values of 'AadClientApplicationId', 'AadScopes', 'AadRedirectUri', and 'AadAuthenticationAuthority'.");
             }
 
-            var authenticationContext = new AuthenticationContext(
-                $"https://login.windows.net/{Tenant}",
-                TokenCache.DefaultShared);
+            /**
+             * MSAL.NET configuration. Review the product documentation for more information about MSAL.NET authentication options.
+             * 
+             * https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/
+             */
 
-            AuthenticationResult token = await authenticationContext.AcquireTokenAsync(
-                resource: "https://api.timeseries.azure.com/",
-                clientCredential: new ClientCredential(
-                    clientId: ApplicationClientId,
-                    clientSecret: ApplicationClientSecret));
+            IPublicClientApplication app = PublicClientApplicationBuilder
+                .Create(AadClientApplicationId)
+                .WithRedirectUri(AadRedirectUri)
+                .WithAuthority(AadAuthenticationAuthority)
+                .Build();
 
-            // Show interactive logon dialog to acquire token on behalf of the user.
-            // Suitable for native apps, and not on server-side of a web application.
-            //AuthenticationResult token = await authenticationContext.AcquireTokenAsync(
-            //    resource: "https://api.timeseries.azure.com/",
-            //    // Set well-known client ID for Azure PowerShell
-            //    clientId: "1950a258-227b-4e31-a9cf-717495945fc2",
-            //    // Set redirect URI for Azure PowerShell
-            //    redirectUri: new Uri("urn:ietf:wg:oauth:2.0:oob"),
-            //    parameters: new PlatformParameters(PromptBehavior.Auto));
+            AuthenticationResult result = await app
+                .AcquireTokenInteractive(AadScopes)
+                .ExecuteAsync();
 
-            return token.AccessToken;
+            Console.WriteLine("MSAL Authentication Token Acquired: {0}", result.AccessToken);
+            Console.WriteLine("");
+            return result.AccessToken;
         }
 
-        private static HttpWebRequest CreateWebRequest(string accessToken)
+        // System.Net.HttpClient helper to wrap HTTP POST made to the GA Reference Data API
+        private static async Task<HttpResponseMessage> AsyncHttpPostRequestHelper(HttpClient httpClient, string input)
         {
-            Uri uri = new UriBuilder("https", EnvironmentFqdn)
-            {
+             if (EnvironmentFqdn.StartsWith("#PLACEHOLDER#") || EnvironmentReferenceDataSetName == "#PLACEHOLDER#")
+             {
+                throw new Exception($"Use the link {"https://docs.microsoft.com/azure/time-series-insights/time-series-insights-authentication-and-authorization"} to update the values of 'EnvironmentFqdn' and 'EnvironmentReferenceDataSetName'.");
+             }
+
+             Console.WriteLine("HTTP JSON Request Body: {0}", input);
+             Console.WriteLine("");
+             HttpContent requestBody = new StringContent(input, Encoding.UTF8, "application/json");
+
+             Uri uri = new UriBuilder("https", EnvironmentFqdn)
+             {
                 Path = $"referencedatasets/{EnvironmentReferenceDataSetName}/$batch",
                 Query = "api-version=2016-12-12"
-            }.Uri;
-            HttpWebRequest request = WebRequest.CreateHttp(uri);
-            request.Method = "POST";
-            request.Headers.Add("x-ms-client-application-name", "TimeSeriesInsightsReferenceDataSample");
-            request.Headers.Add("Authorization", "Bearer " + accessToken);
-            return request;
+             }.Uri;
+                
+             Console.WriteLine("Making HTTP POST to URI: {0}", uri);
+             Console.WriteLine("");
+
+             HttpResponseMessage response = await httpClient.PostAsync(uri, requestBody);
+             if (response.IsSuccessStatusCode)
+             {
+                var jsonString = await response.Content.ReadAsStringAsync();
+                var jsonStringTransferObject = JsonConvert.DeserializeObject<object>(jsonString);
+                Console.WriteLine("HTTP JSON Response Body: {0}", jsonStringTransferObject);
+                Console.WriteLine("");
+                return response;
+             }
+
+             return null;
         }
 
-        private static async Task SendRequestAsync(HttpWebRequest request, string json)
+        private static async Task TsiMsalGaSample()
         {
-            using (var stream = await request.GetRequestStreamAsync())
-            using (var streamWriter = new StreamWriter(stream))
-            {
-                await streamWriter.WriteAsync(json);
-                await streamWriter.FlushAsync();
-                streamWriter.Close();
+            Console.WriteLine("Beginning demo...");
+            Console.WriteLine("");
+            Console.WriteLine("The following samples assume a single Key Name (uuid) with String type...");
+            Console.WriteLine("");
+
+            string accessToken = await AcquireAccessTokenAsync();
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
+
+            {   
+                // CREATE reference data
+                Console.WriteLine("CREATE reference data example...");
+                Console.WriteLine("");
+                string createInput = @"
+                    {
+                        ""put"": [
+                            {
+                                ""uuid"": ""Fan1""
+                            },
+                            {
+                                ""uuid"": ""Fan2"",
+                                ""color"": ""White"",
+                                ""floor"": 2
+                            },
+                            {
+                                ""uuid"": ""Fan3"",
+                                ""color"": ""Red"",
+                                ""maxSpeed"": 5
+                            }
+                        ]
+                    }";
+
+
+                var createResponse = await AsyncHttpPostRequestHelper(httpClient, createInput);
+
+                // READ reference data
+                Console.WriteLine("READ reference data example...");
+                Console.WriteLine("");
+                string readInput = @"
+                    {
+                        ""get"": [
+                            {
+                                ""uuid"": ""Fan1""
+                            },
+                            {
+                                ""uuid"": ""Fan2"",
+                                ""color"": ""White"",
+                                ""desc"": ""example""
+                            },
+                            {
+                                ""uuid"": ""Fan3"",
+                                ""color"": ""Red"",
+                                ""maxSpeed"": 5
+                            }
+                        ]
+                    }";
+
+                var readResponse = await AsyncHttpPostRequestHelper(httpClient, readInput);
+
+                // UPDATE reference data
+                Console.WriteLine("UPDATE reference data example...");
+                Console.WriteLine("");
+                string updateInput = @"
+                    {
+                        ""patch"": [
+                            {
+                                ""uuid"": ""Fan1"",
+                                ""color"": ""Red""
+                            },
+                            {
+                                ""uuid"": ""Fan2"",
+                                ""color"": ""Orange""
+                            },
+                            {
+                                ""uuid"": ""Fan3"",
+                                ""desc"": ""Example""
+                            }
+                        ]
+                    }";
+
+                var inputResponse = await AsyncHttpPostRequestHelper(httpClient, updateInput);
+
+                // DELETE reference data
+                Console.WriteLine("DELETE reference data example...");
+                Console.WriteLine("");
+                string deleteInput = @"
+                    {
+                        ""delete"": [
+                            {
+                                ""uuid"": ""Fan1""
+                            },
+                            {
+                                ""uuid"": ""Fan2"",
+                                ""color"": ""Orange""
+                            },
+                            {
+                                ""uuid"": ""Fan2"",
+                                ""desc"": ""Blue""
+                            }
+                        ]
+                    }";
+
+                var deleteResponse = await AsyncHttpPostRequestHelper(httpClient, deleteInput);
             }
         }
 
-        private static async Task<string> GetResponseAsync(HttpWebRequest request)
+        internal static void Main(string[] args)
         {
-            using (WebResponse webResponse = await request.GetResponseAsync())
-            using (var sr = new StreamReader(webResponse.GetResponseStream()))
-            {
-                string result = await sr.ReadToEndAsync();
-                return result;
-            }
-        }
-
-        private static void PrintInputOutput(string action, string input, string output)
-        {
-            Console.WriteLine("=== {0} request ===", action);
-            Console.WriteLine("Input: {0}", JsonConvert.SerializeObject(JsonConvert.DeserializeObject<JObject>(input), Formatting.Indented));
-            Console.WriteLine("Output: {0}", JsonConvert.SerializeObject(JsonConvert.DeserializeObject<JObject>(output), Formatting.Indented));
-            Console.WriteLine();
-        }
-
-        static void Main(string[] args)
-        {
-            Task.Run(async () => await DemoReferenceDataAsync()).Wait();
+            Task.Run(async () => await TsiMsalGaSample()).Wait();
         }
     }
 }
@@ -247,4 +309,4 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
 
 ## <a name="next-steps"></a>後續步驟
 
-- 讀取[參考資料 API](/rest/api/time-series-insights/ga-reference-data-api)。
+- 閱讀 GA [參考資料管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)參考文件。

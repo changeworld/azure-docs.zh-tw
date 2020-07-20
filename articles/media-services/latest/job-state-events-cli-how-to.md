@@ -11,22 +11,22 @@ ms.workload: ''
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: juliako
-ms.openlocfilehash: f6243bbc21466361aed7cbb7193f3a7b7c7e539f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 619d40ab56715b4444d8e5649c7fb3401b3f57ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322660"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "71937293"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>在 Azure CLI 中使用事件方格建立和監視媒體服務事件
 
-Azure Event Grid 是一項雲端事件服務。 此服務會使用[事件訂用帳戶](../../event-grid/concepts.md#event-subscriptions)將事件訊息路由至訂閱者。 媒體事件包含了回應資料變更時所需的一切資訊。 因為 eventType 屬性開頭為 “Microsoft.Media”，所以您可以藉此識別出媒體服務事件。 如需詳細資訊，請參閱[媒體服務事件結構描述](media-services-event-schemas.md)。
+Azure Event Grid 是一項雲端事件服務。 此服務會使用[事件訂閱](../../event-grid/concepts.md#event-subscriptions)將事件訊息路由傳送至訂閱者。 媒體事件包含了回應資料變更時所需的一切資訊。 因為 eventType 屬性開頭為 “Microsoft.Media”，所以您可以藉此識別出媒體服務事件。 如需詳細資訊，請參閱[媒體服務事件結構描述](media-services-event-schemas.md)。
 
 在本文中，您會使用 Azure CLI 訂閱 Azure 媒體服務帳戶的事件。 然後，您會觸發事件以檢視結果。 通常，您會將事件傳送至可處理事件資料及採取行動的端點。 在本文中，您會將事件傳送至可收集及顯示訊息的 Web 應用程式。
 
 ## <a name="prerequisites"></a>必要條件
 
-- 有效的 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) 。
+- 有效的 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)，再開始進行。
 - 在本機安裝和使用 CLI，本文需要 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找您擁有的版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 
 
     目前，並非所有[媒體服務 v3 CLI](https://aka.ms/ams-v3-cli-ref) 命令都可在 Azure Cloud Shell 中運作。 建議在本機使用 CLI。
@@ -59,7 +59,7 @@ az account set --subscription mySubscriptionId
 
 ## <a name="subscribe-to-media-services-events"></a>訂閱媒體服務事件
 
-您可訂閱文章，告知事件格線您想追蹤的事件。下列範例會訂閱您所建立的媒體服務帳戶，並傳遞您建立的網站所具備的 URL，作為事件通知的端點。 
+您訂閱文章，告訴事件方格您想要追蹤的事件。下列範例會訂閱您所建立的媒體服務帳戶，並從您建立的網站傳遞 URL 作為事件通知的端點。 
 
 將 `<event_subscription_name>` 換成事件訂用帳戶的唯一名稱。 針對 `<resource_group_name>` 和 `<ams_account_name>`，請使用您建立「媒體服務」帳戶時所使用的值。 針對 `<endpoint_URL>`，提供您的 Web 應用程式 URL，並將 `api/updates` 新增至首頁 URL。 藉由在訂閱時指定端點，事件方格即可將事件路由至該端點。 
 
@@ -69,7 +69,7 @@ az account set --subscription mySubscriptionId
     amsResourceId=$(az ams account show --name <ams_account_name> --resource-group <resource_group_name> --query id --output tsv)
     ```
 
-    例如︰
+    例如：
 
     ```
     amsResourceId=$(az ams account show --name amsaccount --resource-group amsResourceGroup --query id --output tsv)
@@ -79,15 +79,15 @@ az account set --subscription mySubscriptionId
 
     ```azurecli
     az eventgrid event-subscription create \
-    --resource-id $amsResourceId \
+    --source-resource-id $amsResourceId \
     --name <event_subscription_name> \
     --endpoint <endpoint_URL>
     ```
 
-    例如︰
+    例如：
 
     ```
-    az eventgrid event-subscription create --resource-id $amsResourceId --name amsTestEventSubscription --endpoint https://amstesteventgrid.azurewebsites.net/api/updates/
+    az eventgrid event-subscription create --source-resource-id $amsResourceId --name amsTestEventSubscription --endpoint https://amstesteventgrid.azurewebsites.net/api/updates/
     ```    
 
     > [!TIP]

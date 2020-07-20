@@ -1,29 +1,27 @@
 ---
 title: Azure 防火牆的基礎結構 FQDN
-description: 深入了解 Azure 防火牆中的基礎結構 FQDN
+description: Azure 防火牆包含內建的規則集合，適用於依預設允許的基礎結構 FQDN。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 9/24/2018
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 34201a0eb4139de64261f77f285096a2aa2dd3aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: d4de81bad1ddda2f5b54f47c1be78925ad4cdbf3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61066316"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74168969"
 ---
 # <a name="infrastructure-fqdns"></a>基礎結構 FQDN
 
-Azure 防火牆包含內建的規則集合，適用於依預設允許的基礎結構 FQDN。 這些 FQDN 特定於平台，且無法用於其他用途。 
+Azure 防火牆包含內建的規則集合，適用於依預設允許的基礎結構 FQDN。 這些 FQDN 是平台特定的，且無法用於其他用途。 
 
 下列服務包含在內建規則集合中：
 
 - 儲存體平台映像存放庫 (PIR) 的計算存取權
 - 受控磁碟狀態儲存體存取權
 - Azure 診斷和記錄 (MDS)
-- Azure Active Directory
 
 ## <a name="overriding"></a>覆寫 
 
@@ -31,4 +29,4 @@ Azure 防火牆包含內建的規則集合，適用於依預設允許的基礎�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入了解如何[部署和設定 Azure 防火牆](tutorial-firewall-deploy-portal.md)。
+- 瞭解如何[部署和設定 Azure 防火牆](tutorial-firewall-deploy-portal.md)。

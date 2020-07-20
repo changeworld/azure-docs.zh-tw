@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: c40d8b93a7487619cc94586c7e6b4cdc550435cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 63b534f67aa5cf39f7549a467be28ec1212897d2
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60825526"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86172004"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>如何使用 Adobe Open Source Media Framework 的 Microsoft Smooth Streaming 外掛程式  
 ## <a name="overview"></a>概觀
@@ -30,7 +30,7 @@ SS for OSMF 包含兩個外掛程式版本：
 * OSMF 的靜態 Smooth Streaming 外掛程式 (.swc)
 * OSMF 的動態 Smooth Streaming 外掛程式 (.swf)
 
-本文假設讀者具備使用 OSMF 和 OSMF 外掛程式的一般知識。如需 OSMF 的詳細資訊，請參閱 [OSMF 官方網站](http://osmf.org/)上的文件。
+本檔假設讀者具有 OSMF 和 OSMF 外掛程式的一般使用知識。如需 OSMF 的詳細資訊，請參閱[官方 OSMF 網站](http://osmf.org/)上的檔。
 
 ### <a name="smooth-streaming-plugin-for-osmf-20"></a>OSMF 2.0 的 Smooth Streaming 外掛程式
 此外掛程式支援以下列功能載入及播放隨選的 Smooth Streaming 內容：
@@ -47,7 +47,7 @@ SS for OSMF 包含兩個外掛程式版本：
 * 此版本僅支援 OSMF 2.0。
 
 ## <a name="supported-features-and-known-issues"></a>支援的功能和已知問題
-如需支援功能、不支援功能和已知問題的完整清單，請參閱 [這份文件](https://download.microsoft.com/download/3/1/B/31B63D97-574E-4A8D-BF8D-170744181724/Smooth_Streaming_Plugin_for_OSMF.pdf)。
+如需支援功能、不支援功能和已知問題的完整清單，請參閱 [這份文件](https://azure.microsoft.com/blog/microsoft-adaptive-streaming-plugin-for-osmf-update/)。
 
 ## <a name="loading-the-plugin"></a>載入外掛程式
 OSMF 外掛程式可以靜態方式 (在編譯時) 或動態方式 (在執行階段) 載入。 OSMF 的 Smooth Streaming 外掛程式下載，會同時包含動態和靜態版本。
@@ -60,7 +60,7 @@ OSMF 外掛程式可以靜態方式 (在編譯時) 或動態方式 (在執行階
 ### <a name="ss-for-osmf-static-loading"></a>SS for OSMF 靜態載入
 下方的程式碼片段將說明如何以靜態方式載入 OSMF 的 SS 外掛程式，並使用 OSMF MediaFactory 類別播放基本視訊。 在加入 SS for OSMF 程式碼之前，請確定專案參考包含 "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swc" 靜態外掛程式。
 
-```
+```csharp
 package 
 {
 
@@ -196,7 +196,9 @@ package
 ### <a name="ss-for-osmf-dynamic-loading"></a>SS for OSMF 動態載入
 下方的程式碼片段將說明如何以動態方式載入 OSMF 的 SS 外掛程式，並使用 OSMF MediaFactory 類別播放基本視訊。 在加入 SS for OSMF 程式碼之前，請將 "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" 動態外掛程式複製到專案資料夾 (如果您要使用 FILE 通訊協定進行載入)，或是在 Web 伺服器下複製 (以進行 HTTP 載入)。 您不需要在專案參考中加入 "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swc"。
 
-package {
+```csharp
+package 
+{
 
     import flash.display.*;
     import org.osmf.media.*;
@@ -326,60 +328,65 @@ package {
 
     }
 }
+```
 
 ## <a name="strobe-media--playback-with-the-ss-odmf-dynamic-plugin"></a>Strobe Media Playback 與 SS ODMF 動態外掛程式
-Smooth Streaming for OSMF 動態外掛程式與 [Strobe Media Playback (SMP)](http://osmf.org/strobe_mediaplayback.html)是相容的。 您可以使用 SS for OSMF 外掛程式，將 Smooth Streaming 內容播放新增至 SMP。 若要這麼做，請使用下列步驟，在 Web 伺服器下複製 "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf"，以進行 HTTP 載入：
+Smooth Streaming for OSMF 動態外掛程式與 [Strobe Media Playback (SMP)](https://sourceforge.net/adobe/smp/home/Strobe%20Media%20Playback/)是相容的。 您可以使用 SS for OSMF 外掛程式，將 Smooth Streaming 內容播放新增至 SMP。 若要這麼做，請使用下列步驟，在 Web 伺服器下複製 "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf"，以進行 HTTP 載入：
 
 1. 瀏覽 [Strobe Media Playback 設定頁面](http://osmf.org/dev/2.0gm/setup.html)。 
-2. 將 src 設為 Smooth Streaming 來源，(例如， http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest) 
+2. 將 src 設定為 Smooth Streaming 來源， (例如 HTTP： \/ /devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest)  
 3. 進行所需的組態變更，然後按一下 [Preview and Update]。
    
    **注意** 您的內容 Web 伺服器需要有效的 crossdomain.xml。 
 4. 使用您慣用的文字編輯器，將程式碼複製並貼至簡單的 HTML 頁面，如下列範例所示：
 
-        <html>
-        <body>
-        <object width="920" height="640"> 
-        <param name="movie" value="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf"></param>
-        <param name="flashvars" value="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest &autoPlay=true"></param>
-        <param name="allowFullScreen" value="true"></param>
-        <param name="allowscriptaccess" value="always"></param>
-        <param name="wmode" value="direct"></param>
-        <embed src="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf" 
-            type="application/x-shockwave-flash" 
-            allowscriptaccess="always" 
-            allowfullscreen="true" 
-            wmode="direct" 
-            width="920" 
-            height="640" 
-            flashvars=" src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true">
-        </embed>
-        </object>
-        </body>
-        </html>
-
+    ```html
+    <html>
+    <body>
+    <object width="920" height="640"> 
+    <param name="movie" value="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf"></param>
+    <param name="flashvars" value="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest &autoPlay=true"></param>
+    <param name="allowFullScreen" value="true"></param>
+    <param name="allowscriptaccess" value="always"></param>
+    <param name="wmode" value="direct"></param>
+    <embed src="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf" 
+        type="application/x-shockwave-flash" 
+        allowscriptaccess="always" 
+        allowfullscreen="true" 
+        wmode="direct" 
+        width="920" 
+        height="640" 
+        flashvars=" src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true">
+    </embed>
+    </object>
+    </body>
+    </html>
+    ```
 
 
 1. 將 Smooth Streaming OSMF 外掛程式新增至內嵌程式碼，並加以儲存。
    
-        <html>
-        <object width="920" height="640"> 
-        <param name="movie" value="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf"></param>
-        <param name="flashvars" value="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true&plugin_AdaptiveStreamingPlugin=http://yourdomain/MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10"></param>
-        <param name="allowFullScreen" value="true"></param>
-        <param name="allowscriptaccess" value="always"></param>
-        <param name="wmode" value="direct"></param>
-        <embed src="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf" 
-            type="application/x-shockwave-flash" 
-            allowscriptaccess="always" 
-            allowfullscreen="true" 
-            wmode="direct" 
-            width="920" 
-            height="640" 
-            flashvars="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true&plugin_AdaptiveStreamingPlugin=http://yourdomain/MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10">
-        </embed>
-        </object>
-        </html>
+    ```html
+    <html>
+    <object width="920" height="640"> 
+    <param name="movie" value="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf"></param>
+    <param name="flashvars" value="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true&plugin_AdaptiveStreamingPlugin=http://yourdomain/MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10"></param>
+    <param name="allowFullScreen" value="true"></param>
+    <param name="allowscriptaccess" value="always"></param>
+    <param name="wmode" value="direct"></param>
+    <embed src="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf" 
+        type="application/x-shockwave-flash" 
+        allowscriptaccess="always" 
+        allowfullscreen="true" 
+        wmode="direct" 
+        width="920" 
+        height="640" 
+        flashvars="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true&plugin_AdaptiveStreamingPlugin=http://yourdomain/MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10">
+    </embed>
+    </object>
+    </html>
+    ```
+
 2. 儲存您的 HTML 頁面，並發佈至 Web 伺服器。 使用您慣用且具有 Flash&reg; Player 功能的網際網路瀏覽器 (Internet Explorer、Chrome、Firefox 等)，瀏覽至已發佈的網頁。
 3. 在 Adobe&reg; Flash&reg; Player 內欣賞 Smooth Streaming 內容。
 
@@ -391,6 +398,6 @@ Smooth Streaming for OSMF 動態外掛程式與 [Strobe Media Playback (SMP)](ht
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>另請參閱
 [OSMF 的 Microsoft 彈性資料流外掛程式更新 (英文)](https://azure.microsoft.com/blog/2014/10/27/microsoft-adaptive-streaming-plugin-for-osmf-update/) 
 

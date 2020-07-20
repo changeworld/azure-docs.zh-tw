@@ -1,6 +1,6 @@
 ---
 title: 詢問可回答的問題資料
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) - Azure
 description: 了解如何在「適用於初學者的資料科學」影片 3 中制訂明確的資料科學問題。 包含分類和迴歸問題的比較。
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,11 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: 815aeb9ae6036f08fc87e41980a623e2be8414e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 3f0a92b86a2c18863052249d401e70fa36e17a12
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60751236"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82930245"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>詢問您可以使用資料回答的問題
 ## <a name="video-3-data-science-for-beginners-series"></a>影片 3：適用於初學者的資料科學系列
@@ -28,10 +27,10 @@ ms.locfileid: "60751236"
 >
 
 ## <a name="other-videos-in-this-series"></a>系列中的其他影片
- 是一個資料科學的快速簡介，包含五個簡短影片。
+** 是一個資料科學的快速簡介，包含五個簡短影片。
 
 * 影片 1：[資料科學可以回答的 5 個問題](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
-* 影片 2：[已備妥適用於資料科學的資料嗎？](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
+* 影片 2： [您的資料已經可以進行資料科學了嗎？](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 分 56 秒)*
 * 影片 3：詢問您可以使用資料回答的問題
 * 影片 4：[利用簡單模型預測答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 分 42 秒)*
 * 影片 5：[複製其他人的工作進行資料科學](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
@@ -41,20 +40,20 @@ ms.locfileid: "60751236"
 
 您可以從這個影片中獲得一些秘訣，在制訂可以使用資料回答的問題時使用。
 
-如果您先觀看本系列中前兩段影片，就能更充分運用此影片：「資料科學可以回答的 5 個問題」和「已備妥適用於資料科學的資料嗎？」
+如果您已先觀賞過本系列中的前兩個影片，則可從這個影片中獲得更多資訊：「5 個資訊科學可以回答的問題」和「已備妥資料來進行資料科學嗎？」
 
 ## <a name="ask-a-sharp-question"></a>詢問明確的問題
-我們已經討論過資料科學是一個程序，可使用名稱 (亦稱為類別或標籤) 和數字來預測問題的答案， 但不能只是任意的問題，它必須是「明確的問題」。
+我們已經討論過資料科學是一個程序，可使用名稱 (亦稱為類別或標籤) 和數字來預測問題的答案， 但不能只是任意的問題，它必須是「明確的問題」**。
 
 含糊不清的問題不需要使用名稱或數字來回答。 必須是明確的問題。
 
-假設您找到一個神燈，其中的精靈將如實回答您詢問的任何問題。 但他是個喜歡惡作劇的精靈，將試著以含糊不清且令人困惑的方式回答問題，好讓他能夠僥倖脫身。 您希望用一個無懈可擊的問題來約束他，讓他不得不告訴您，您想要得到的訊息。
+假設您找到一個神燈，其中的精靈將如實回答您詢問的任何問題。 但這是一個 mischievous 的 genie，他們會試著將它們的答案設為不清楚，而令人困惑。 您想要將其釘選到有問題的無懈可擊，讓他們無法協助，但告訴您想要知道的內容。
 
 如果您詢問了含糊不清的問題，例如「我的股票會發生什麼事？」，精靈可能會回答「價格將有所變化」。 這是如實的回答，但不是很有幫助。
 
 但如果您詢問明確的問題，例如「我的股票下週售價是多少？」，精靈就不得不給您一個特定的答案並預測銷售價格。
 
-## <a name="examples-of-your-answer-target-data"></a>您的答案範例：目標資料
+## <a name="examples-of-your-answer-target-data"></a>您的答案範例︰目標資料
 一旦制定問題之後，請檢查資料中是否有答案的範例。
 
 如果問題是「我的股票下週售價是多少？ 」，則我們必須確定資料包含股票價格記錄。
@@ -70,9 +69,9 @@ ms.locfileid: "60751236"
 ## <a name="reformulate-your-question"></a>重新制訂您的問題
 有時候您可以重寫問題，以取得更有用的答案。
 
-「這個資料點是 A 或 B？ 」的問題會預測某個項目的類別 (或名稱或標籤)。 我們使用「分類演算法」 來回答問題。
+「這個資料點是 A 或 B？ 」的問題會預測某個項目的類別 (或名稱或標籤)。 我們使用「分類演算法」 ** 來回答問題。
 
-「多少？ 」或「有多少？ 」這類問題會預測數量。 我們使用「迴歸演算法」 來回答問題。
+「多少？ 」或「有多少？ 」這類問題會預測數量。 我們使用「迴歸演算法」 ** 來回答問題。
 
 為了解我們如何轉換這些問題，讓我們看看下列問題：「這位讀者對哪一個新聞報導最感興趣？ 」 它要求從多個可能性中預測單一選擇 (換句話說，就是「這是 A 或 B 或 C 或 D？ 」)，並會使用分類演算法。
 
@@ -88,8 +87,8 @@ ms.locfileid: "60751236"
 
 我們談論了一些基本原則，讓您在詢問可使用資料回答的問題時使用。
 
-請務必查看 Microsoft Azure Machine Learning Studio 中「適用於初學者的資料科學」的其他影片。
+請務必查看「適用于初學者的資料科學」的其他影片，Microsoft Azure Machine Learning Studio （傳統）。
 
 ## <a name="next-steps"></a>後續步驟
-* [嘗試使用 Machine Learning Studio 進行您的第一個資料科學實驗](create-experiment.md)
-* [在 Microsoft Azure 上取得 Machine Learning 簡介](/azure/machine-learning/preview/overview-what-is-azure-ml)
+* [嘗試使用 Machine Learning Studio 的第一個資料科學實驗（傳統）](create-experiment.md)
+* [在 Microsoft Azure 上取得 Machine Learning 簡介](/azure/machine-learning/overview-what-is-azure-ml)

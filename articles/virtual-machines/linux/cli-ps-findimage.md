@@ -1,27 +1,17 @@
 ---
-title: 使用 Azure CLI 選取 Linux VM 映像 | Microsoft Docs
+title: 使用 Azure CLI 選取 Linux VM 映像
 description: 了解如何使用 Azure CLI 來判斷發行者、供應項目、SKU 和 Marketplace VM 映像的版本。
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 7a858e38-4f17-4e8e-a28a-c7f801101721
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 453628dca04fbc3c48564f15b6cf61802165b0cf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0026c70a3a1a6b5e635e6b43e74b557d4218e6d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60880542"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711590"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>使用 Azure CLI 在 Azure Marketplace 中尋找 Linux VM 映像
 
@@ -41,7 +31,7 @@ ms.locfileid: "60880542"
 az vm image list --output table
 ```
 
-輸出會包含映像 URN ([Urn] 欄中的值)。 使用其中一個常用 Marketplace 映像建立 VM 時，您也可以指定 UrnAlias，例如 UbuntuLTS 的縮短格式。
+輸出會包含映像 URN ([Urn]** 欄中的值)。 使用其中一個常用 Marketplace 映像建立 VM 時，您也可以指定 UrnAlias**，例如 UbuntuLTS** 的縮短格式。
 
 ```
 You are viewing an offline list of images, use --all to retrieve an up-to-date list
@@ -310,7 +300,7 @@ az vm image show --location westus --urn Canonical:UbuntuServer:18.04-LTS:latest
 }
 ```
 
-針對 RabbitMQ Certified by Bitnami 映像執行類似的命令會顯示下列 `plan` 屬性：`name`、`product` 和 `publisher`。 (某些映像也有 `promotion code` 屬性。)若要部署此映像，請參閱下列各節，以接受條款並啟用以程式設計方式部署。
+針對 RabbitMQ Certified by Bitnami 映像執行類似的命令會顯示下列 `plan` 屬性：`name`、`product` 和 `publisher`。 （有些映射也有 `promotion code` 屬性。）若要部署此映射，請參閱下列各節以接受條款並啟用以程式設計方式部署。
 
 ```azurecli
 az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
@@ -337,7 +327,7 @@ az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
 
 ### <a name="accept-the-terms"></a>接受條款
 
-若要檢視並接受授權條款，請使用 [az vm image accept-terms](/cli/azure/vm/image?) 命令。 當您接受條款時，您會在訂用帳戶中啟用以程式設計方式部署。 您只需針對映像的每個訂用帳戶接受一次條款。 例如︰
+若要檢視並接受授權條款，請使用 [az vm image accept-terms](/cli/azure/vm/image?) 命令。 當您接受條款時，您會在訂用帳戶中啟用以程式設計方式部署。 您只需針對映像的每個訂用帳戶接受一次條款。 例如：
 
 ```azurecli
 az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest

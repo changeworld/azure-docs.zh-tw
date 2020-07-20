@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: c44effe0bde3c7e880e53706fcb59d91a8605e7b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61488620"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67174030"
 ---
 #### <a name="to-complete-the-minimum-storsimple-device-setup"></a>完成最小的 StorSimple 裝置安裝
 
    > [!NOTE]
    > 一旦完成最基本的裝置設定，您就無法變更裝置名稱。
    
-1. 從 [裝置] 刀鋒視窗的表格式裝置清單中，選取並按一下您的裝置。 裝置處於 [就緒可進行設定] 狀態。 [設定裝置] 刀鋒視窗隨即開啟。
+1. 從 [裝置]**** 刀鋒視窗的表格式裝置清單中，選取並按一下您的裝置。 裝置處於 [就緒可進行設定]**** 狀態。 [設定裝置]**** 刀鋒視窗隨即開啟。
 
      ![StorSimple 最小裝置設定網路介面](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig1.png)
 
-2. 在 [設定裝置] 刀鋒視窗中︰
+2. 在 [設定裝置]**** 刀鋒視窗中︰
    
-   1. 為裝置提供 [易記名稱]  。 預設的裝置名稱會反映裝置型號及序號等資訊。 您最多可為易記名稱指定 64 個字元來管理您的裝置。
-   2. 根據部署裝置的地理位置來設定 [時區]  。 裝置將針對所有排程作業使用這個時區。
+   1. 為裝置提供 [易記名稱] **** 。 預設的裝置名稱會反映裝置型號及序號等資訊。 您最多可為易記名稱指定 64 個字元來管理您的裝置。
+   2. 根據部署裝置的地理位置來設定 [時區] **** 。 裝置將針對所有排程作業使用這個時區。
    3. 在 **DATA 0 設定**下：
 
        1. 您的 DATA 0 網路介面顯示為已啟用，且透過安裝精靈設定網路設定 (IP、子網路、閘道)。 也會針對雲端以及 iSCSI 將 DATA 0 自動啟用。
@@ -36,7 +36,7 @@ ms.locfileid: "61488620"
 
             ![Test-HcsmConnection 顯示可路由傳送 IP](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig3.png)
 
-1. 按一下 [確定]。 裝置設定隨即啟動。 完成裝置設定時，您會收到通知。 [裝置] 刀鋒視窗中的裝置狀態會變更為 [上線]。
+1. 按一下 [確定]。 裝置設定隨即啟動。 完成裝置設定時，您會收到通知。 [裝置]**** 刀鋒視窗中的裝置狀態會變更為 [上線]****。
 
     ![StorSimple 最小裝置設定網路介面](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig4.png)
 

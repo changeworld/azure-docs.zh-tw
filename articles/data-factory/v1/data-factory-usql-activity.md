@@ -1,32 +1,30 @@
 ---
-title: 使用 U-SQL 指令碼轉換資料 - Azure | Microsoft Docs
+title: 使用 U-SQL 腳本轉換資料-Azure
 description: 了解如何在 Azure Data Lake Analytics 計算服務上執行 U-SQL 指令碼來處理或轉換資料。
 services: data-factory
 documentationcenter: ''
 ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/01/2017
 author: nabhishek
 ms.author: abnarain
-manager: craigg
+manager: anandsub
 robots: noindex
-ms.openlocfilehash: 5835c37363c7e9d2dd3253c08ab97f17852725f5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: c6d3510dfdd02bf2eb07d656c706c44d895c582d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61248142"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74927909"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>在 Azure Data Lake Analytics 上執行 U-SQL 指令碼來轉換資料 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [第 1 版](data-factory-usql-activity.md)
 > * [第 2 版 (目前的版本)](../transform-data-using-data-lake-analytics.md)
 
 > [!NOTE]
-> 本文適用於 Data Factory 的第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 U-SQL 活動](../transform-data-using-data-lake-analytics.md)。
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 U-SQL 活動](../transform-data-using-data-lake-analytics.md)。
 
 Azure Data Factory 中的「管線」會使用連結的計算服務，來處理連結的儲存體服務中的資料。 它包含一系列活動，其中每個活動都會執行特定的處理作業。 本文將說明 **Data Lake Analytics U-SQL 活動**，它在 **Azure Data Lake Analytics** 計算連結的服務上執行 **U-SQL** 指令碼。 
 
@@ -46,9 +44,9 @@ U-SQL 活動支援以下針對 Data Lake Analytics 的驗證類型：
 
 下表提供 JSON 定義中所使用之一般屬性的描述。 您可以在服務主體與使用者認證驗證之間進一步選擇。
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
-| **type** |type 屬性應設為：**AzureDataLakeAnalytics**。 |是 |
+| **type** |type 屬性應設為：**AzureDataLakeAnalytics**。 |Yes |
 | **accountName** |Azure Data Lake Analytics 帳戶名稱。 |是 |
 | **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI。 |否 |
 | **subscriptionId** |Azure 訂用帳戶識別碼 |否 (如果未指定，便會使用 Data Factory 的訂用帳戶)。 |
@@ -62,10 +60,10 @@ U-SQL 活動支援以下針對 Data Lake Analytics 的驗證類型：
 
 指定下列屬性以使用服務主體驗證：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | 指定應用程式的用戶端識別碼。 | 是 |
-| **servicePrincipalKey** | 指定應用程式的金鑰。 | 是 |
+| **servicePrincipalId** | 指定應用程式的用戶端識別碼。 | Yes |
+| **servicePrincipalKey** | 指定應用程式的金鑰。 | Yes |
 | **tenant** | 指定您的應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 將滑鼠游標暫留在 Azure 入口網站右上角，即可擷取它。 | 是 |
 
 **範例：服務主體驗證**
@@ -90,12 +88,12 @@ U-SQL 活動支援以下針對 Data Lake Analytics 的驗證類型：
 ### <a name="user-credential-authentication"></a>使用者認證驗證
 或者，您也可以藉由指定下列屬性，使用 Data Lake Analytics 的使用者認證驗證：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| **authorization** | 按一下「資料處理站編輯器」中的 [授權] 按鈕，然後輸入您的認證，此動作會將自動產生的授權 URL 指派給此屬性。 | 是 |
-| **sessionId** | OAuth 授權工作階段的 OAuth 工作階段識別碼。 每個工作階段識別碼都是唯一的，只能使用一次。 當您使用「資料處理站編輯器」時便會自動產生此設定。 | 是 |
+| **驗證** | 按一下「資料處理站編輯器」中的 [授權]**** 按鈕，然後輸入您的認證，此動作會將自動產生的授權 URL 指派給此屬性。 | Yes |
+| **Id** | OAuth 授權工作階段的 OAuth 工作階段識別碼。 每個工作階段識別碼都是唯一的，只能使用一次。 當您使用「資料處理站編輯器」時便會自動產生此設定。 | Yes |
 
-**範例：使用者認證驗證**
+**範例：使用者認證授權**
 ```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",
@@ -114,14 +112,14 @@ U-SQL 活動支援以下針對 Data Lake Analytics 的驗證類型：
 ```
 
 #### <a name="token-expiration"></a>權杖到期
-您使用 [授權] 按鈕所產生的授權碼在一段時間後會到期。 請參閱下表以了解不同類型的使用者帳戶的到期時間。 當驗證的「權杖到期時」，您可能會看見下列錯誤訊息：認證作業錯誤：invalid_grant - AADSTS70002：驗證認證時發生錯誤。 AADSTS70008：提供的存取授權已過期或撤銷。 追蹤識別碼：d18629e8-af88-43c5-88e3-d8419eb1fca1 相互關連識別碼：fac30a0c-6be6-4e02-8d69-a776d2ffefd7 時間戳記：2015-12-15 21:09:31Z
+您使用 [授權]**** 按鈕所產生的授權碼在一段時間後會到期。 請參閱下表以了解不同類型的使用者帳戶的到期時間。 當驗證**權杖到期**時，您可能會看到下列錯誤訊息：認證作業發生錯誤：invalid_grant - AADSTS70002：驗證認證時發生錯誤。 AADSTS70008：提供的存取授權已過期或撤銷。 追蹤識別碼：d18629e8-af88-43c5-88e3-d8419eb1fca1 相互關連識別碼：fac30a0c-6be6-4e02-8d69-a776d2ffefd7 時間戳記：2015-12-15 21:09:31Z
 
 | 使用者類型 | 到期時間 |
 |:--- |:--- |
 | 不受 Azure Active Directory 管理的使用者帳戶 (@hotmail.com、@live.com 等) |12 小時 |
 | 受 Azure Active Directory (AAD) 管理的使用者帳戶 |最後一次執行配量後的 14 天。 <br/><br/>如果以 OAuth 式連結服務為基礎的配量至少每 14 天執行一次，則為 90 天。 |
 
-如果要避免/解決此錯誤，請在**權杖到期**時使用 [授權] 按鈕重新授權，然後重新部署連結服務。 您也可以如下使用程式碼，以程式設計方式產生 **sessionId** 和 **authorization** 屬性的值：
+如果要避免/解決此錯誤，請在**權杖到期**時使用 [授權]**** 按鈕重新授權，然後重新部署連結服務。 您也可以如下使用程式碼，以程式設計方式產生 **sessionId** 和 **authorization** 屬性的值：
 
 ```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||
@@ -148,7 +146,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-請參閱 [AzureDataLakeStoreLinkedService 類別](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)、[AzureDataLakeAnalyticsLinkedService 類別](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)和 [AuthorizationSessionGetResponse 類別](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)主題，以取得在程式碼中使用的 Data Factory 類別的詳細資訊。 新增對下列項目的參考：適用於 WindowsFormsWebAuthenticationDialog 類別的 Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll。 
+請參閱 [AzureDataLakeStoreLinkedService 類別](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)、[AzureDataLakeAnalyticsLinkedService 類別](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)和 [AuthorizationSessionGetResponse 類別](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)主題，以取得在程式碼中使用的 Data Factory 類別的詳細資訊。 請針對 WindowsFormsWebAuthenticationDialog 類別，新增對下列項目的參考：Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll。 
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL 活動
 下列 JSON 片段會定義具有 Data Lake Analytics U-SQL 活動的管線。 活動定義具有您稍早建立的 Azure Data Lake Analytics 連結服務的參考。   
@@ -206,16 +204,16 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 下表描述此活動特有的屬性之名稱和描述。 
 
-| 屬性            | 描述                              | 必要項                                 |
+| 屬性            | 說明                              | 必要                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
-| type                | 類型屬性必須設為 DataLakeAnalyticsU-SQL 。 | 是                                      |
-| 預設容器   | 參考 Azure Data Lake Analytics 註冊為 Data Factory 中的連結服務 | 是                                      |
+| type                | 類型屬性必須設為 DataLakeAnalyticsU-SQL ****。 | Yes                                      |
+| linkedServiceName   | 參考 Azure Data Lake Analytics 註冊為 Data Factory 中的連結服務 | 是                                      |
 | scriptPath          | 包含 U-SQL 指令碼的資料夾的路徑。 檔案的名稱有區分大小寫。 | 否 (如果您使用指令碼)                   |
 | scriptLinkedService | 連結服務會連結包含 Data Factory 的指令碼的儲存體 | 否 (如果您使用指令碼)                   |
-| script              | 指定內嵌指令碼而不是指定 scriptPath 和 scriptLinkedService。 例如： `"script": "CREATE DATABASE test"` 。 | 否 (如果您使用 scriptPath 和 scriptLinkedService) |
-| degreeOfParallelism | 同時用來執行作業的節點數目上限。 | 否                                       |
-| 優先順序            | 判斷應該選取排入佇列的哪些工作首先執行。 編號愈低，優先順序愈高。 | 否                                       |
-| parameters          | U-SQL 指令碼的參數          | 否                                       |
+| 指令碼              | 指定內嵌指令碼而不是指定 scriptPath 和 scriptLinkedService。 例如： `"script": "CREATE DATABASE test"` 。 | 否 (如果您使用 scriptPath 和 scriptLinkedService) |
+| degreeOfParallelism | 同時用來執行作業的節點數目上限。 | No                                       |
+| priority            | 判斷應該選取排入佇列的哪些工作首先執行。 編號愈低，優先順序愈高。 | 否                                       |
+| 參數          | U-SQL 指令碼的參數          | 否                                       |
 | runtimeVersion      | 所要使用之 U-SQL 引擎的執行階段版本 | 否                                       |
 | compilationMode     | <p>U-SQL 的編譯模式。 必須是下列其中一個值：</p> <ul><li>**Semantic：** 僅執行語意檢查和必要的例行性檢查。</li><li>**Full：** 執行完整編譯，包括語法檢查、最佳化、程式碼產生等。</li><li>**SingleBox：** 在將 TargetType 設定為 SingleBox 的情況下，執行完整編譯。</li></ul><p>如果您沒有為此屬性指定值，伺服器將會判斷最佳的編譯模式。 </p> | 否                                       |
 
@@ -317,7 +315,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-值**\@中**並**\@出**U-SQL 指令碼中的參數來動態傳遞 ADF 使用 'parameters' 區段。 請參閱管線定義中的 ‘parameters’ 區段。
+ADF 會使用 ' parameters ' 區段，以動態方式傳遞** \@ in**和** \@ OUT**參數在 U-SQL 腳本中的值。 請參閱管線定義中的 ‘parameters’ 區段。
 
 您也可以在管線定義中，針對在 Azure Data Lake Analytics 服務上執行的作業，指定其他屬性 (例如 degreeOfParallelism 和 priority)。
 
@@ -331,7 +329,7 @@ OUTPUT @rs1
 }
 ```
 
-您可改為使用動態參數。 例如︰ 
+您可改為使用動態參數。 例如： 
 
 ```json
 "parameters": {

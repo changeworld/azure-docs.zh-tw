@@ -8,56 +8,45 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 03/26/2019
-ms.openlocfilehash: 58b4acb3ebfc1ff22c04dafb3063f197d2866311
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.custom:
+- mvc
+- mqtt
+- tracking-python
+ms.date: 01/09/2020
+ms.openlocfilehash: c03209413235b0d6fca22039756d6c19b643034b
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59005839"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84606474"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>快速入門：控制連線到 IoT 中樞的裝置 (Python)
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量遙測擷取到雲端，並從雲端管理您的裝置。 在此快速入門中，您可以使用「直接方法」來控制連線到 IoT 中樞的模擬裝置。 您可以使用直接方法，針對連線到 IoT 中樞的裝置，從遠端變更裝置的行為。
+在此快速入門中，您可以使用直接方法來控制連線到 IoT 中樞的模擬裝置。 IoT 中樞是一項 Azure 服務，可讓您從雲端管理您的 IoT 裝置，並將大量的裝置遙測內嵌到雲端進行儲存或處理。 您可以使用直接方法，針對連線到 IoT 中樞的裝置，從遠端變更裝置的行為。 本快速入門使用兩個 Python 應用程式：可回應從後端應用程式所呼叫直接方法的模擬裝置應用程式，以及在模擬裝置上呼叫直接方法的後端應用程式。
 
-快速入門會使用兩個預先撰寫的 Python 應用程式：
+## <a name="prerequisites"></a>Prerequisites
 
-* 可回應後端應用程式直接方法呼叫的模擬裝置應用程式。 為了接收直接方法呼叫，此應用程式會連線到 IoT 中樞上的特定裝置端點。
+* 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-* 在模擬裝置上呼叫直接方法的後端應用程式。 為了在裝置上呼叫直接方法，此應用程式會連線到 IoT 中樞上的服務端端點。
+* [Python 3.7+](https://www.python.org/downloads/)。 如需其他支援的 Python 版本，請參閱 [Azure IoT 裝置功能](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features)。
+
+* [範例 Python 專案](https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip)。
+
+* 在您的防火牆中開啟的連接埠 8883。 本快速入門中的裝置範例會使用 MQTT 通訊協定，其會透過連接埠 8883 進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+### <a name="add-azure-iot-extension"></a>新增 Azure IoT 擴充功能
 
-## <a name="prerequisites"></a>必要條件
-
-您在此快速入門中執行的兩個範例應用程式是使用 Python 所撰寫的。 目前，適用於 Python 的 Microsoft Azure IoT SDK 只對每個平台支援特定版本的 Python。 若要深入了解，請參閱 [Python SDK 讀我檔案](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues)。
-
-本快速入門假設您使用 Windows 開發電腦。 對於 Windows 系統，僅支援 [Python 3.6.x](https://www.python.org/downloads/release/python-368/)。 您選擇的 Python 安裝程式應該要以您正在使用的系統架構為基礎。 如果您的系統 CPU 架構是 32 位元，則下載 x86 安裝程式；若是 64 位元架構，則下載 x86-64 安裝程式。 此外，請確定[適用於 Visual Studio 2017 的 Microsoft Visual C++ 可轉散發套件](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)已針對您的架構 (x86 或 x64) 安裝。
-
-您可以從 [Python.org](https://www.python.org/downloads/) 下載適用於其他平台的 Python。
-
-您可以使用下列命令之一，以確認開發電腦上目前的 Python 版本：
-
-```python
-python --version
-```
-
-```python
-python3 --version
-```
-
-執行下列命令，將適用於 Azure CLI 的 Microsoft Azure IoT 擴充功能新增至您的 Cloud Shell 執行個體。 IoT 擴充功能可將 IoT 中樞、IoT Edge 和 IoT 裝置佈建服務的特定命令新增至 Azure CLI。
+執行下列命令，將適用於 Azure CLI 的 Microsoft Azure IoT 擴充功能新增至您的 Cloud Shell 執行個體。 IoT 擴充功能可將 IoT 中樞、IoT Edge 和 IoT 裝置佈建服務 (DPS) 的特定命令新增至 Azure CLI。
 
 ```azurecli-interactive
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 ```
 
-如果您尚未這樣做，請從 https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip 下載範例 Python 專案並將 ZIP 封存檔解壓縮。
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
@@ -75,10 +64,10 @@ az extension add --name azure-cli-iot-ext
 
     **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
-    **MyPythonDevice**：這是為已註冊裝置指定的名稱。 使用所示的 MyPythonDevice。 如果您為裝置選擇不同的名稱，則也必須在本文中使用該名稱，並先在範例應用程式中更新該裝置名稱，再執行應用程式。
+    **MyPythonDevice**：這是您要註冊之裝置的名稱。 建議您使用 **MyPythonDevice**，如下所示。 如果您為裝置選擇不同的名稱，則也必須在本文中使用該名稱，並先在範例應用程式中更新該裝置名稱，再執行應用程式。
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyPythonDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyPythonDevice
     ```
 
 2. 在 Azure Cloud Shell 中執行下列命令，以針對您剛註冊的裝置取得_裝置連接字串_：
@@ -86,7 +75,7 @@ az extension add --name azure-cli-iot-ext
     **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyPythonDevice --output table
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
     ```
 
     記下裝置連接字串，它看起來如下：
@@ -101,15 +90,16 @@ az extension add --name azure-cli-iot-ext
 
     ```azurecli-interactive
     az iot hub show-connection-string \
-      --name YourIoTHubName \
+      --policy-name service \
+      --name {YourIoTHubName} \
       --output table
     ```
 
     記下服務連接字串，它看起來如下：
 
-   `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={YourSharedAccessKey}`
+   `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
 
-    您稍後會在快速入門中使用此值。 服務連接字符串與裝置連接字串不同。
+    您稍後會在快速入門中使用此值。 服務連接字符串與您在上一個步驟中記下的裝置連接字串不同。
 
 ## <a name="listen-for-direct-method-calls"></a>接聽直接方法呼叫
 
@@ -119,12 +109,12 @@ az extension add --name azure-cli-iot-ext
 
 1. 在您選擇的文字編輯器中開啟 **SimulatedDevice.py** 檔案。
 
-    使用先前所記錄的裝置連接字串來取代 `CONNECTION_STRING` 變數的值。 然後將變更儲存到 **SimulatedDevice.py** 檔案。
+    使用您稍早所記錄的裝置連接字串來取代 `CONNECTION_STRING` 變數的值。 然後將變更儲存到 **SimulatedDevice.py** 檔案。
 
 1. 在本機終端機視窗中，執行下列命令以安裝模擬裝置應用程式所需的程式庫：
 
     ```cmd/sh
-    pip install azure-iothub-device-client
+    pip install azure-iot-device
     ```
 
 1. 在本機終端機視窗中，執行下列命令以執行模擬裝置應用程式：
@@ -135,7 +125,7 @@ az extension add --name azure-cli-iot-ext
 
     下列螢幕擷取畫面顯示模擬裝置應用程式將遙測傳送到 IoT 中樞時的輸出：
 
-    ![執行模擬的裝置](./media/quickstart-control-device-python/SimulatedDevice-1.png)
+    ![執行模擬的裝置](./media/quickstart-control-device-python/simulated-device-1.png)
 
 ## <a name="call-the-direct-method"></a>呼叫直接方法
 
@@ -145,12 +135,12 @@ az extension add --name azure-cli-iot-ext
 
 1. 在您選擇的文字編輯器中開啟 **BackEndApplication.py** 檔案。
 
-    使用先前所記錄的服務連接字串來取代 `CONNECTION_STRING` 變數的值。 然後將您的變更儲存到 **BackEndApplication.py** 檔案。
+    使用稍早所記錄的服務連接字串來取代 `CONNECTION_STRING` 變數的值。 然後將您的變更儲存到 **BackEndApplication.py**。
 
 1. 在本機終端機視窗中，執行下列命令以安裝模擬裝置應用程式所需的程式庫：
 
     ```cmd/sh
-    pip install azure-iothub-service-client future
+    pip install azure-iot-hub
     ```
 
 1. 在本機終端機視窗中，執行下列命令以執行後端應用程式：
@@ -161,11 +151,11 @@ az extension add --name azure-cli-iot-ext
 
     下列螢幕擷取畫面顯示應用程式對裝置進行直接方法呼叫並接收通知時的輸出：
 
-    ![執行後端應用程式](./media/quickstart-control-device-python/BackEndApplication.png)
+    ![執行後端應用程式](./media/quickstart-control-device-python/backend-application.png)
 
     執行後端應用程式之後，在執行模擬裝置的主控台視窗中將會出現一則訊息，且它傳送訊息的速率也會變更：
 
-    ![模擬用戶端的變更](./media/quickstart-control-device-python/SimulatedDevice-2.png)
+    ![模擬用戶端的變更](./media/quickstart-control-device-python/simulated-device-2.png)
 
 ## <a name="clean-up-resources"></a>清除資源
 

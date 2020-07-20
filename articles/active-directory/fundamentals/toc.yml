@@ -5,31 +5,75 @@
   items:
     - name: 什麼是 Azure Active Directory？
       href: active-directory-whatis.md
+    - name: 比較 Azure AD 與 ADDS
+      href: active-directory-compare-azure-ad-to-ad.md
     - name: Azure Active Directory 的新增功能
       href: whats-new.md
+    - name: Microsoft 365 Government 的最新消息
+      href: whats-new-microsoft-365-government.md
+    - name: 封存 Azure AD 的新功能
+      href: whats-new-archive.md
 - name: 快速入門
+  expanded: true
   items:
     - name: 存取入口網站並建立租用戶
       href: active-directory-access-create-new-tenant.md
     - name: 檢視已指派成員的群組
       href: active-directory-groups-view-azure-portal.md
 - name: 概念
+  expanded: true
   items:
-    - name: 身分識別安全分數
-      href: identity-secure-score.md
-    - name: 群組和存取管理
-      href: active-directory-manage-groups.md
-    - name: 群組型授權
-      href: active-directory-licensing-whatis-azure-portal.md
-    - name: Azure AD 架構
-      href: active-directory-architecture.md
-    - name: 預設使用者權限
-      href: users-default-permissions.md
-    - name: 部署 30、90 及更多
-      href: active-directory-deployment-checklist-p2.md
-    - name: 適用於歐盟的身分識別資料儲存體
-      href: active-directory-data-storage-eu.md
-- name: 使用說明指南
+    - name: 安全性
+      items:
+        - name: 啟用 MFA
+          href: concept-fundamentals-mfa-get-started.md
+        - name: 安全性預設值
+          href: concept-fundamentals-security-defaults.md
+        - name: 封鎖舊式驗證
+          href: concept-fundamentals-block-legacy-authentication.md
+        - name: 身分識別安全分數
+          href: identity-secure-score.md
+        - name: 保護遠端工作者
+          href: concept-secure-remote-workers.md
+        - name: 持續存取評估
+          href: concept-fundamentals-continuous-access-evaluation.md
+    - name: 群組和使用者
+      items:
+        - name: 群組和存取管理
+          href: active-directory-manage-groups.md
+        - name: 群組型授權
+          href: active-directory-licensing-whatis-azure-portal.md
+        - name: 預設使用者權限
+          href: users-default-permissions.md
+    - name: 架構
+      items:
+        - name: Azure AD 架構
+          href: active-directory-architecture.md
+    - name: 部署指南
+      items:
+        - name: 部署 30、90 及更多
+          href: active-directory-deployment-checklist-p2.md
+        - name: Azure Active Directory 部署方案
+          href: active-directory-deployment-plans.md
+    - name: 資料儲存體
+      items:
+        - name: 適用於歐洲的身分識別資料儲存體
+          href: active-directory-data-storage-eu.md
+        - name: 適用於澳大利亞與紐西蘭的身分識別資料儲存體
+          href: active-directory-data-storage-australia-newzealand.md
+    - name: Azure AD Operations 參考
+      items:
+        - name: 簡介
+          href: active-directory-ops-guide-intro.md
+        - name: 身分識別和存取管理
+          href: active-directory-ops-guide-iam.md
+        - name: 驗證管理
+          href: active-directory-ops-guide-auth.md
+        - name: 身分識別治理
+          href: active-directory-ops-guide-govern.md
+        - name: 作業
+          href: active-directory-ops-guide-ops.md
+- name: 操作指南
   expanded: true
   items:
     - name: 組織
@@ -42,6 +86,8 @@
           href: add-custom-domain.md
         - name: 新增公司商標
           href: customize-branding.md
+        - name: 設定「保持登入？」
+          href: keep-me-signed-in.md
         - name: 與 Azure 訂用帳戶建立關聯
           href: active-directory-how-subscriptions-associated-directory.md
         - name: 新增您的隱私權資訊
@@ -60,6 +106,8 @@
           href: active-directory-groups-settings-azure-portal.md
         - name: 新增或移除群組擁有者
           href: active-directory-accessmanagement-managing-group-owners.md
+        - name: 使用群組管理對資源的存取
+          href: active-directory-manage-groups.md
     - name: 使用者
       items:
         - name: 新增或刪除新的使用者
@@ -74,13 +122,10 @@
           href: license-users-groups.md
         - name: 還原已刪除的使用者
           href: active-directory-users-restore.md
-- name: 資源
+- name: 疑難排解
+  expanded: true
   items:
     - name: 取得 Azure Active Directory 支援
       href: active-directory-troubleshooting-support-howto.md
     - name: Azure Active Directory 常見問題集
       href: active-directory-faq.md
-    - name: Azure Active Directory 部署方案
-      href: active-directory-deployment-plans.md
-    - name: 封存 Azure AD 的新功能
-      href: whats-new-archive.md

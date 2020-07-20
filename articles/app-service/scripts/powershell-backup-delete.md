@@ -1,26 +1,19 @@
 ---
-title: Azure PowerShell 指令碼範例 - 刪除 Web 應用程式的備份 | Microsoft Docs
-description: Azure PowerShell 指令碼範例 - 刪除 Web 應用程式的備份
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: PowerShell：刪除應用程式備份
+description: 了解如何使用 Azure PowerShell 將 App Service 的部署和管理自動化。 此範例說明如何刪除應用程式備份。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: ebcadb49-755d-4202-a5eb-f211827a9168
-ms.service: app-service-web
-ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: dbe8417e8a26cb222fe52ac7c0284b3956ed65fb
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 93b53bedef291b9aa740f5bbe9c492185f035f89
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106931"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044825"
 ---
 # <a name="delete-a-backup-for-a-web-using-azure-powershell"></a>使用 Azure PowerShell 來刪除 Web 備份
 
@@ -46,7 +39,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | 取得 Web 應用程式的備份清單。 |
 | [Remove-AzWebAppBackup](/powershell/module/az.websites/remove-azwebappbackup) | 移除指定的 Web 應用程式備份。 |

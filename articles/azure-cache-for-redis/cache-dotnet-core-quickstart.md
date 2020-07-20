@@ -1,45 +1,29 @@
 ---
-title: 了解如何搭配使用 Azure Cache for Redis 與 .NET Core 應用程式的快速入門 | Microsoft Docs
+title: 快速入門：使用 Azure Cache for Redis 搭配 .NET Core 應用程式
 description: 在本快速入門中，了解如何在 .NET Core 應用程式中存取 Azure Cache for Redis
-services: cache,app-service
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: ''
-ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: dotnet
-ms.topic: quickstart
-ms.date: 05/18/2018
 ms.author: yegu
+ms.service: cache
+ms.devlang: dotnet
 ms.custom: mvc
-ms.openlocfilehash: df615b940873cd59341424d0b40a9e399d710126
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.topic: quickstart
+ms.date: 06/18/2020
+ms.openlocfilehash: 2c02f6858711173a2ddd2217bbb9e241a5a2109d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57896240"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201464"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>快速入門：搭配使用 Azure Cache for Redis 與 .NET Core 應用程式
 
+在本快速入門中，您會將 Azure Cache for Redis 納入 .NET Core 應用程式中，以便存取可從 Azure 內的任何應用程式存取的安全專用快取。 您會在 .NET Core 主控台應用程式中明確地搭配使用 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) 用戶端與 C# 程式碼。
 
+## <a name="prerequisites"></a>Prerequisites
 
-本快速入門示範如何開始搭配使用 Microsoft Azure Cache for Redis 與 .NET Core。 Microsoft Azure Cache for Redis 會以熱門的開放原始碼 Azure Cache for Redis 為根據。 它可讓您存取由 Microsoft 所管理的安全、專用 Azure Cache for Redis。 使用 Azure Cache for Redis 建立的快取，可透過 Microsoft Azure 內的任何應用程式加以存取。
-
-在本快速入門中，您會在 .NET Core 主控台應用程式中搭配使用 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) 用戶端與 C\# 程式碼。 您會建立快取，並設定 .NET Core 用戶端應用程式。 然後，您會在快取中新增並更新物件。 
-
-您可以使用任何程式碼編輯器來完成本快速入門中的步驟。 不過，於 Windows、macOS 和 Linux 平台上所提供的 [Visual Studio Code](https://code.visualstudio.com/) 是項不錯的選擇。
-
-![主控台應用程式已完成](./media/cache-dotnet-core-quickstart/cache-console-app-complete.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-## <a name="prerequisites"></a>必要條件
-
-* [.NET SDK 2.0](https://www.microsoft.com/net/learn/get-started/windows) 或更新版本。
-* StackExchange.Redis 用戶端需要 [.NET Framework 4 或更新版本](https://www.microsoft.com/net/download/dotnet-framework-runtime)。
+- Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
+- [.NET Core SDK](https://dotnet.microsoft.com/download)
+- [.NET Framework 4 或更新版本](https://www.microsoft.com/net/download/dotnet-framework-runtime)，這是 StackExchange.Redis 用戶端的必要項目。
 
 ## <a name="create-a-cache"></a>建立快取
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -70,15 +54,14 @@ dotnet new console -o Redistest
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
-    <UserSecretsId>Redistest</UserSecretsId>
-  </PropertyGroup>
-  <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
-  </ItemGroup>
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp2.0</TargetFramework>
+        <UserSecretsId>Redistest</UserSecretsId>
+    </PropertyGroup>
+    <ItemGroup>
+        <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
+    </ItemGroup>
 </Project>
 ```
 
@@ -109,16 +92,16 @@ using Microsoft.Extensions.Configuration;
 將下列成員新增至 *Program.cs* 中的 `Program` 類別。 此程式碼會將針對 Azure Cache for Redis 連接字串存取使用者祕密的設定初始化。
 
 ```csharp
-        private static IConfigurationRoot Configuration { get; set; }
-        const string SecretName = "CacheConnection";
+private static IConfigurationRoot Configuration { get; set; }
+const string SecretName = "CacheConnection";
 
-        private static void InitializeConfiguration()
-        {
-            var builder = new ConfigurationBuilder()
-                .AddUserSecrets<Program>();
+private static void InitializeConfiguration()
+{
+    var builder = new ConfigurationBuilder()
+        .AddUserSecrets<Program>();
 
-            Configuration = builder.Build();
-        }
+    Configuration = builder.Build();
+}
 ```
 
 ## <a name="configure-the-cache-client"></a>設定快取用戶端
@@ -147,19 +130,19 @@ using StackExchange.Redis;
 在 *Program.cs* 中，對主控台應用程式的 `Program` 類別新增下列成員：
 
 ```csharp
-        private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-        {
-            string cacheConnection = Configuration[SecretName];
-            return ConnectionMultiplexer.Connect(cacheConnection);
-        });
+private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+{
+    string cacheConnection = Configuration[SecretName];
+    return ConnectionMultiplexer.Connect(cacheConnection);
+});
 
-        public static ConnectionMultiplexer Connection
-        {
-            get
-            {
-                return lazyConnection.Value;
-            }
-        }
+public static ConnectionMultiplexer Connection
+{
+    get
+    {
+        return lazyConnection.Value;
+    }
+}
 ```
 
 這個在應用程式中共用 `ConnectionMultiplexer` 執行個體的方法，會使用可傳回已連線執行個體的靜態屬性。 此程式碼會提供安全執行緒方式，只初始化一個已連線的 `ConnectionMultiplexer` 執行個體。 `abortConnect` 會設為 false，這表示即使無法建立與 Azure Cache for Redis 的連線，呼叫也會成功。 `ConnectionMultiplexer` 的主要功能之一，就是一旦網路問題或其他原因獲得解決，它就會自動恢復與快取的連接。
@@ -171,42 +154,42 @@ using StackExchange.Redis;
 在 *Program.cs* 中，對主控台應用程式 `Program` 類別的 `Main` 程序新增下列程式碼：
 
 ```csharp
-        static void Main(string[] args)
-        {
-            InitializeConfiguration();
+static void Main(string[] args)
+{
+    InitializeConfiguration();
 
-            // Connection refers to a property that returns a ConnectionMultiplexer
-            // as shown in the previous example.
-            IDatabase cache = lazyConnection.Value.GetDatabase();
+    // Connection refers to a property that returns a ConnectionMultiplexer
+    // as shown in the previous example.
+    IDatabase cache = lazyConnection.Value.GetDatabase();
 
-            // Perform cache operations using the cache object...
+    // Perform cache operations using the cache object...
 
-            // Simple PING command
-            string cacheCommand = "PING";
-            Console.WriteLine("\nCache command  : " + cacheCommand);
-            Console.WriteLine("Cache response : " + cache.Execute(cacheCommand).ToString());
+    // Simple PING command
+    string cacheCommand = "PING";
+    Console.WriteLine("\nCache command  : " + cacheCommand);
+    Console.WriteLine("Cache response : " + cache.Execute(cacheCommand).ToString());
 
-            // Simple get and put of integral data types into the cache
-            cacheCommand = "GET Message";
-            Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
-            Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
+    // Simple get and put of integral data types into the cache
+    cacheCommand = "GET Message";
+    Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
+    Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
 
-            cacheCommand = "SET Message \"Hello! The cache is working from a .NET Core console app!\"";
-            Console.WriteLine("\nCache command  : " + cacheCommand + " or StringSet()");
-            Console.WriteLine("Cache response : " + cache.StringSet("Message", "Hello! The cache is working from a .NET Core console app!").ToString());
+    cacheCommand = "SET Message \"Hello! The cache is working from a .NET Core console app!\"";
+    Console.WriteLine("\nCache command  : " + cacheCommand + " or StringSet()");
+    Console.WriteLine("Cache response : " + cache.StringSet("Message", "Hello! The cache is working from a .NET Core console app!").ToString());
 
-            // Demonstrate "SET Message" executed as expected...
-            cacheCommand = "GET Message";
-            Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
-            Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
+    // Demonstrate "SET Message" executed as expected...
+    cacheCommand = "GET Message";
+    Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
+    Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
 
-            // Get the client list, useful to see if connection list is growing...
-            cacheCommand = "CLIENT LIST";
-            Console.WriteLine("\nCache command  : " + cacheCommand);
-            Console.WriteLine("Cache response : \n" + cache.Execute("CLIENT", "LIST").ToString().Replace("id=", "id="));
+    // Get the client list, useful to see if connection list is growing...
+    cacheCommand = "CLIENT LIST";
+    Console.WriteLine("\nCache command  : " + cacheCommand);
+    Console.WriteLine("Cache response : \n" + cache.Execute("CLIENT", "LIST").ToString().Replace("id=", "id="));
 
-            lazyConnection.Value.Dispose();
-        }
+    lazyConnection.Value.Dispose();
+}
 ```
 
 儲存 *Program.cs*。
@@ -252,38 +235,38 @@ dotnet add package Newtonsoft.json
 using Newtonsoft.Json;
 ```
 
-將下列 `Employee` 類別定義新增至 Program.cs：
+將下列 `Employee` 類別定義新增至 Program.cs  ：
 
 ```csharp
-        class Employee
-        {
-            public string Id { get; set; }
-            public string Name { get; set; }
-            public int Age { get; set; }
+class Employee
+{
+    public string Id { get; set; }
+    public string Name { get; set; }
+    public int Age { get; set; }
 
-            public Employee(string EmployeeId, string Name, int Age)
-            {
-                this.Id = EmployeeId;
-                this.Name = Name;
-                this.Age = Age;
-            }
-        }
+    public Employee(string EmployeeId, string Name, int Age)
+    {
+        this.Id = EmployeeId;
+        this.Name = Name;
+        this.Age = Age;
+    }
+}
 ```
 
 在  *Program.cs* 中的 `Main()` 程序底部，於 `Dispose()` 呼叫之前，對快取新增下列程式碼，並擷取已序列化的 .NET 物件：
 
 ```csharp
-            // Store .NET object to cache
-            Employee e007 = new Employee("007", "Davide Columbo", 100);
-            Console.WriteLine("Cache response from storing Employee .NET object : " + 
-                cache.StringSet("e007", JsonConvert.SerializeObject(e007)));
+    // Store .NET object to cache
+    Employee e007 = new Employee("007", "Davide Columbo", 100);
+    Console.WriteLine("Cache response from storing Employee .NET object : " + 
+    cache.StringSet("e007", JsonConvert.SerializeObject(e007)));
 
-            // Retrieve .NET object from cache
-            Employee e007FromCache = JsonConvert.DeserializeObject<Employee>(cache.StringGet("e007"));
-            Console.WriteLine("Deserialized Employee .NET object :\n");
-            Console.WriteLine("\tEmployee.Name : " + e007FromCache.Name);
-            Console.WriteLine("\tEmployee.Id   : " + e007FromCache.Id);
-            Console.WriteLine("\tEmployee.Age  : " + e007FromCache.Age + "\n");
+    // Retrieve .NET object from cache
+    Employee e007FromCache = JsonConvert.DeserializeObject<Employee>(cache.StringGet("e007"));
+    Console.WriteLine("Deserialized Employee .NET object :\n");
+    Console.WriteLine("\tEmployee.Name : " + e007FromCache.Name);
+    Console.WriteLine("\tEmployee.Id   : " + e007FromCache.Id);
+    Console.WriteLine("\tEmployee.Age  : " + e007FromCache.Age + "\n");
 ```
 
 儲存 *Program.cs*，並使用下列命令重建應用程式：
@@ -311,13 +294,13 @@ dotnet run
 > 刪除資源群組是無法回復的動作，資源群組和其內的所有資源將會永久刪除。 請確定您不會不小心刪除錯誤的資源群組或資源。 如果您是在包含有需要保留之資源的現有資源群組內，建立用來裝載此範例的資源，則可以從每個資源各自的刀鋒視窗中個別刪除每個資源，而不必刪除正個資源群組。
 >
 
-登入 [Azure 入口網站](https://portal.azure.com)，然後按一下 [資源群組]。
+登入 [Azure 入口網站](https://portal.azure.com)，然後按一下 [資源群組]  。
 
-在 [依名稱篩選...] 文字方塊中，輸入您的資源群組名稱。 本文的指示是使用名為 TestResources 的資源群組。 在結果清單中的目標資源群組上方，按一下 **...**，然後按一下 [刪除資源群組]。
+在 [依名稱篩選...]  文字方塊中，輸入您的資源群組名稱。 本文的指示是使用名為 TestResources  的資源群組。 在結果清單中的目標資源群組上方，按一下 **...** ，然後按一下 [刪除資源群組]  。
 
 ![刪除](./media/cache-dotnet-core-quickstart/cache-delete-resource-group.png)
 
-系統將會要求您確認是否刪除資源。 輸入您的資源群組名稱來確認，然後按一下 [刪除]。
+系統將會要求您確認是否刪除資源。 輸入您的資源群組名稱來確認，然後按一下 [刪除]  。
 
 片刻過後，系統便會刪除該資源群組及其所有內含的資源。
 
@@ -332,6 +315,7 @@ dotnet run
 > [!div class="nextstepaction"]
 > [建立可使用 Azure Cache for Redis 的 ASP.NET Web 應用程式。](./cache-web-app-howto.md)
 
+想要最佳化並節省您的雲端費用嗎？
 
-
-
+> [!div class="nextstepaction"]
+> [使用成本管理開始分析成本](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

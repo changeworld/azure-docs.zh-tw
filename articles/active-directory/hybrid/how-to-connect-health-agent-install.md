@@ -8,49 +8,55 @@ manager: daveba
 editor: curtand
 ms.assetid: 1cc8ae90-607d-4925-9c30-6770a4bd1b4e
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2be8455a3fb0a60cea056e9bda1f41b076dfec9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 86e7f1fc18738eef39f8ec29da8763b862cdcc2b
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60350752"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849967"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理程式安裝
 
 本文件會逐步引導您安裝和設定 Azure AD Connect Health 代理程式。 您可以從 [這裡](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent)下載代理程式。
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 
 下表是使用 Azure AD Connect Health 的需求清單。
 
-| 需求 | 描述 |
+| 需求 | 說明 |
 | --- | --- |
 | Azure AD Premium |Azure AD Connect Health 是 Azure AD Premium 的一個功能，而且需要 Azure AD Premium。 <br /><br />如需詳細資訊，請參閱[開始使用 Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) <br />若要開始使用 30 天免費試用版，請參閱[開始使用試用版](https://azure.microsoft.com/trial/get-started-active-directory/)。 |
-| 您必須是 Azure AD 的全域系統管理員，才能開始使用 Azure AD Connect Health |依預設，只有全域系統管理員可以安裝和設定 Health 代理程式，以便開始使用、存取入口網站，以及在 Azure AD Connect Health 內執行任何作業。 如需詳細資訊，請參閱[管理您的 Azure AD 目錄](../fundamentals/active-directory-administer.md)。 <br /><br /> 使用角色型存取控制，您可以允許貴組織中的其他使用者存取 Azure AD Connect Health。 如需詳細資訊，請參閱[適用於 Azure AD Connect Health 的角色型存取控制](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)。 <br /><br />**重要事項：** 安裝代理程式時所使用的帳戶必須是公司或學校帳戶。 不能是 Microsoft 帳戶。 如需詳細資訊，請參閱[以組織身分註冊 Azure](../fundamentals/sign-up-organization.md) |
+| 您必須是 Azure AD 的全域系統管理員，才能開始使用 Azure AD Connect Health |依預設，只有全域系統管理員可以安裝和設定 Health 代理程式，以便開始使用、存取入口網站，以及在 Azure AD Connect Health 內執行任何作業。 如需詳細資訊，請參閱[管理您的 Azure AD 目錄](../fundamentals/active-directory-administer.md)。 <br /><br /> 使用角色型存取控制，您可以允許貴組織中的其他使用者存取 Azure AD Connect Health。 如需詳細資訊，請參閱[適用於 Azure AD Connect Health 的角色型存取控制](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)。 <br /><br />**重要：** 在安裝代理程式時使用的帳戶必須是工作或學校帳戶。 不能是 Microsoft 帳戶。 如需詳細資訊，請參閱[以組織身分註冊 Azure](../fundamentals/sign-up-organization.md) |
 | Azure AD Connect Health 代理程式安裝在每部目標伺服器上 | Azure AD Connect Health 會要求在目標伺服器上安裝及設定 Health 代理程式，才能接收資料及提供監視和分析功能。 <br /><br />例如，若要從 AD FS 基礎結構取得資料，代理程式必須安裝於 AD FS 及 Web 應用程式 Proxy 伺服器上。 同樣地，若要取得內部部署 AD DS 基礎結構的相關資料，代理程式必須安裝在網域控制站上。 <br /><br /> |
 | Azure 服務端點的輸出連線 | 在安裝期間和執行階段，代理程式需要連線至 Azure AD Connect Health 服務端點。 如果使用防火牆封鎖輸出連線，請確定已將下列端點新增至允許清單。 請參閱[輸出連線端點](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) |
 |以 IP 位址為基礎的輸出連線 | 如需防火牆上以 IP 位址為基礎的篩選，請參閱 [Azure IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。|
-| 已篩選或停用輸出流量的 SSL 檢查 | 如果網路層的輸出流量有 SSL 檢查或終止，代理程式註冊步驟或資料上傳作業可能會失敗。 深入了解[如何設定 SSL 檢查](https://technet.microsoft.com/library/ee796230.aspx) |
+| 已篩選或停用輸出流量的 TLS 檢查 | 如果在網路層對輸出流量進行 TLS 檢查或終止，則代理程式註冊步驟或資料上傳作業可能會失敗。 深入瞭解[如何設定 TLS 檢查](https://technet.microsoft.com/library/ee796230.aspx) |
 | 防火牆連接埠 (位於執行代理程式的伺服器上) |為了讓代理程式能與 Azure AD Health 服務端點進行通訊，代理程式要求開啟下列防火牆連接埠。<br /><br /><li>TCP 通訊埠 443</li><li>TCP 通訊埠 5671</li> <br />請注意，最新版的代理程式不再需要連接埠 5671。 升級到最新版本，因此只需要連接埠 443。 深入了解[啟用防火牆連接埠](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) |
-| 如果啟用 IE 增強式安全性，則允許下列網站 |如果啟用 IE 增強式安全性，則在即將安裝代理程式的伺服器上必須允許下列網站。<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>Azure Active Directory 所信任適用於您組織的同盟伺服器。 例如：https:\//sts.contoso.com</li> 深入了解[如何設定 IE](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing) |
+| 如果啟用 IE 增強式安全性，則允許下列網站 |如果啟用 IE 增強式安全性，則在即將安裝代理程式的伺服器上必須允許下列網站。<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>HTTPs： \/ /aadcdn.msftauth.net</li><li>Azure Active Directory 所信任適用於您組織的同盟伺服器。 例如：https:\//sts.contoso.com</li> 深入瞭解[如何設定 IE](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing)。 如果您的網路中有 proxy，請參閱下面的附注。|
 | 確定已安裝 PowerShell 4.0 版或更新版本 | <li>Windows Server 2008 R2 隨附了 PowerShell 2.0 版，它對代理程式來說並不足夠。 如以下的 [Windows Server 2008 R2 伺服器上的代理程式安裝](#agent-installation-on-windows-server-2008-r2-servers)中所述，更新 PowerShell。</li><li>Windows Server 2012 隨附了 PowerShell 3.0 版，它對代理程式來說並不足夠。  [更新](https://www.microsoft.com/download/details.aspx?id=40855) Windows Management Framework。</li><li>Windows Server 2012 R2 和更新版本隨附了足夠的 PowerShell 最新版本。</li>|
 |停用 FIPS|Azure AD Connect Health 代理程式不支援 FIPS。|
 
+
+> [!NOTE]
+> 如果您有高度鎖定且非常受限的環境，則除了上述的 [允許的 IE 增強式安全性設定] 中所列的 Url 以外，您還需要將下列服務端點清單中所述的 Url 列入白名單。 
+>
+
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Azure 服務端點的輸出連線
 
- 在安裝期間和執行階段，代理程式需要連線至 Azure AD Connect Health 服務端點。 如果使用防火牆封鎖輸出連線，請確定依預設不會封鎖下列 URL。 請勿停用安全性監視或檢查這些 URL，但允許它們，如同其他網際網路流量。 它們允許與 Azure AD Connect Health 服務端點進行通訊。 深入了解[檢查輸出連線](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)
+ 在安裝期間和執行階段，代理程式需要連線至 Azure AD Connect Health 服務端點。 如果使用防火牆封鎖輸出連線，請確定依預設不會封鎖下列 URL。 請勿停用安全性監視或檢查這些 URL，但允許它們，如同其他網際網路流量。 它們允許與 Azure AD Connect Health 服務端點進行通訊。 瞭解如何[使用測試 test-azureadconnecthealthconnectivity 檢查輸出連線能力](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install#test-connectivity-to-azure-ad-connect-health-service)。
 
 | 網域環境 | 必要 Azure 服務端點 |
 | --- | --- |
-| 一般公用 | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>&#42;.servicebus.windows.net - 連接埠：5671 </li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *此端點在註冊期間僅用於探索目的。</li> |
-| Azure Germany | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https:\//www.office.de *此端點在註冊期間僅用於探索目的。</li> |
+| 一般公用 | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>&#42;.servicebus.windows.net - Port: 5671 </li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *此端點在註冊期間僅用於探索目的。</li> |
+| Azure 德國 | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https:\//www.office.de *此端點在註冊期間僅用於探索目的。</li> |
 | Azure Government | <li>&#42;.blob.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *此端點在註冊期間僅用於探索目的。</li> |
 
 
@@ -63,7 +69,7 @@ ms.locfileid: "60350752"
 * 開始使用適用於同步處理的 Azure AD Connect Health
     * [下載並安裝最新版的 Azure AD Connect](https://go.microsoft.com/fwlink/?linkid=615771)。 適用於同步處理的健康狀態代理程式將會隨著 Azure AD Connect 安裝 (1.0.9125.0 或更高版本) 一起安裝。
 * 開始使用適用於 AD DS 的 Azure AD Connect Health
-    * [下載適用於 AD DS 的 Azure AD Connect Health 代理程式](https://go.microsoft.com/fwlink/?LinkID=820540)。
+    * [下載 AD DS 的 Azure AD Connect Health 代理程式](https://go.microsoft.com/fwlink/?LinkID=820540)。
     * [請參閱安裝指示](#installing-the-azure-ad-connect-health-agent-for-ad-ds)。
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-ad-fs"></a>安裝適用於 AD FS 的 Azure AD Connect Health 代理程式
@@ -124,43 +130,43 @@ ms.locfileid: "60350752"
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2008-r2"></a>在 Windows Server 2008 R2 上啟用 AD FS 的稽核
 
-1. 按一下 [開始]，依序指向 [程式集] 和 [系統管理工具]，然後按一下 [本機安全性原則]。
-2. 瀏覽至 **Security Settings\Local Policies\User Rights Assignment** 資料夾，然後按兩下 [產生安全性稽核]。
-3. 在 [本機安全性設定]  索引標籤上，確認已列出 AD FS 2.0 服務帳戶。 如果不存在，按一下 [新增使用者或群組]，並將其新增至清單中，然後按一下 [確定]。
+1. 按一下 [開始]****，依序指向 [程式集]**** 和 [系統管理工具]****，然後按一下 [本機安全性原則]****。
+2. 瀏覽至**安全性設定\本機原則\使用者權限指派**資料夾，然後再按兩下 [產生安全性稽核]****。
+3. 在 [本機安全性設定]**** 索引標籤上，確認 AD FS 2.0 服務帳戶已列出。 如果帳戶不存在，請按一下 [新增使用者或群組]**** 並將它加入清單中，然後按一下 [確定]****。
 4. 若要啟用稽核，請使用提高的權限開啟命令提示字元，然後執行下列命令：<code>auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable</code>
-5. 關閉 [本機安全性原則]。
+5. 關閉 [本機安全性原則]****。
 <br />   -- **只有主要 AD FS 伺服器才需要執行下列步驟。** -- <br />
-6. 開啟 [AD FS 管理] 嵌入式管理單元。 若要開啟 [AD FS 管理] 嵌入式管理單元，按一下 [開始]，依序指向 [程式集] 和 [系統管理工具]，然後按一下 [AD FS 2.0 管理]。
-7. 在 [動作] 窗格中，按一下 [編輯同盟服務屬性]。
-8. 在 [同盟服務屬性] 對話方塊中，按一下 [事件] 索引標籤。
-9. 選取 [成功稽核] 和 [失敗稽核] 核取方塊。
+6. 開啟 [AD FS 管理]**** 嵌入式管理單元。 若要開啟 [AD FS 管理] 嵌入式管理單元，按一下 [開始]****，依序指向 [程式集]**** 和 [系統管理工具]****，然後按一下 [AD FS 2.0 管理]****。
+7. 在 [動作]**** 窗格中，按一下 [編輯 Federation Service 屬性]****。
+8. 在 [Federation Service 屬性]**** 對話方塊中，按一下 [事件]**** 索引標籤。
+9. 選取 [成功稽核]**** 和 [失敗稽核]**** 核取方塊。
 10. 按一下 [確定]。
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>在 Windows Server 2012 R2 上啟用 AD FS 的稽核
 
-1. 在 [開始] 畫面上開啟 [伺服器管理員]，或在桌面上的工作列中開啟 [伺服器管理員]，以開啟 [本機安全性原則]，然後按一下 [工具/本機安全性原則]。
-2. 瀏覽至 **Security Settings\Local Policies\User Rights Assignment** 資料夾，然後按兩下 [產生安全性稽核]。
-3. 在 [本機安全性設定]  索引標籤上，確認已列出 AD FS 服務帳戶。 如果不存在，按一下 [新增使用者或群組]，並將其新增至清單中，然後按一下 [確定]。
+1. 在 [開始] 畫面上開啟 [伺服器管理員]****，或在桌面上的工作列中開啟 [伺服器管理員]，以開啟 [本機安全性原則]****，然後按一下 [工具/本機安全性原則]****。
+2. 瀏覽至**安全性設定\本機原則\使用者權限指派**資料夾，然後再按兩下 [產生安全性稽核]****。
+3. 在 [本機安全性設定]**** 索引標籤上，確認 AD FS 服務帳戶已列出。 如果帳戶不存在，請按一下 [新增使用者或群組]**** 並將它加入清單中，然後按一下 [確定]****。
 4. 若要啟用稽核，請使用提高的權限開啟命令提示字元，然後執行下列命令：```auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable```
-5. 關閉 [本機安全性原則]。
+5. 關閉 [本機安全性原則]****。
 <br />   -- **只有主要 AD FS 伺服器才需要執行下列步驟。** -- <br />
-6. 開啟 [AD FS 管理] 嵌入式管理單元 (在 [伺服器管理員] 中按一下 [工具]，然後選取 [AD FS 管理])。
-7. 在 [動作] 窗格中，按一下 [編輯同盟服務屬性]。
-8. 在 [同盟服務屬性] 對話方塊中，按一下 [事件] 索引標籤。
-9. 選取 [成功稽核] 和 [失敗稽核] 核取方塊，然後按一下 [確定]。
+6. 開啟 [AD FS 管理]**** 嵌入式管理單元 (在 [伺服器管理員] 中按一下 [工具]，然後選取 [AD FS 管理])。
+7. 在 [動作]**** 窗格中，按一下 [編輯 Federation Service 屬性]****。
+8. 在 [Federation Service 屬性]**** 對話方塊中，按一下 [事件]**** 索引標籤。
+9. 選取 [成功稽核] 和 [失敗稽核]**** 核取方塊，然後按一下 [確定]****。
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2016"></a>在 Windows Server 2016 上啟用 AD FS 的稽核
 
-1. 在 [開始] 畫面上開啟 [伺服器管理員]，或在桌面上的工作列中開啟 [伺服器管理員]，以開啟 [本機安全性原則]，然後按一下 [工具/本機安全性原則]。
-2. 瀏覽至 **Security Settings\Local Policies\User Rights Assignment** 資料夾，然後按兩下 [產生安全性稽核]。
-3. 在 [本機安全性設定]  索引標籤上，確認已列出 AD FS 服務帳戶。 如果不存在，按一下 [新增使用者或群組]，並將 AD FS 服務帳戶新增至清單，然後按一下 [確定]。
+1. 在 [開始] 畫面上開啟 [伺服器管理員]****，或在桌面上的工作列中開啟 [伺服器管理員]，以開啟 [本機安全性原則]****，然後按一下 [工具/本機安全性原則]****。
+2. 瀏覽至**安全性設定\本機原則\使用者權限指派**資料夾，然後再按兩下 [產生安全性稽核]****。
+3. 在 [本機安全性設定]**** 索引標籤上，確認 AD FS 服務帳戶已列出。 如果不存在，按一下 [新增使用者或群組]****，並將 AD FS 服務帳戶新增至清單，然後按一下 [確定]****。
 4. 若要啟用稽核，請使用提高的權限開啟命令提示字元，然後執行下列命令：<code>auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable</code>
-5. 關閉 [本機安全性原則]。
+5. 關閉 [本機安全性原則]****。
 <br />   -- **只有主要 AD FS 伺服器才需要執行下列步驟。** -- <br />
-6. 開啟 [AD FS 管理] 嵌入式管理單元 (在 [伺服器管理員] 中按一下 [工具]，然後選取 [AD FS 管理])。
-7. 在 [動作] 窗格中，按一下 [編輯同盟服務屬性]。
-8. 在 [同盟服務屬性] 對話方塊中，按一下 [事件] 索引標籤。
-9. 選取 [成功稽核] 和 [失敗稽核] 核取方塊，然後按一下 [確定]。 預設會啟用此功能。
+6. 開啟 [AD FS 管理]**** 嵌入式管理單元 (在 [伺服器管理員] 中按一下 [工具]，然後選取 [AD FS 管理])。
+7. 在 [動作]**** 窗格中，按一下 [編輯 Federation Service 屬性]****。
+8. 在 [Federation Service 屬性]**** 對話方塊中，按一下 [事件]**** 索引標籤。
+9. 選取 [成功稽核] 和 [失敗稽核]**** 核取方塊，然後按一下 [確定]****。 預設會啟用此功能。
 10. 開啟 PowerShell 視窗並執行下列命令：```Set-AdfsProperties -AuditLevel Verbose```。
 
 請注意，預設會啟用「基本」稽核層級。 深入了解 [Windows Server 2016 中的 AD FS 稽核增強功能](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server)
@@ -168,10 +174,10 @@ ms.locfileid: "60350752"
 
 #### <a name="to-locate-the-ad-fs-audit-logs"></a>找出 AD FS 稽核記錄
 
-1. 開啟 [事件檢視器] 。
-2. 移至 [Windows 記錄]，然後選取 [安全性] 。
-3. 按一下右側的 [篩選目前的記錄] 。
-4. 在 [事件來源] 下，選取 [AD FS 稽核] 。
+1. 開啟 [事件檢視器]。
+2. 移至 [Windows 記錄]，然後選取 [安全性] ****。
+3. 按一下右側的 [篩選目前的記錄] ****。
+4. 在 [事件來源] 下，選取 [AD FS 稽核] ****。
 
     以及稽核記錄的快速[常見問題集附註](reference-connect-health-faq.md#operations-questions)。
 
@@ -249,12 +255,12 @@ ms.locfileid: "60350752"
 
 ![驗證 Azure AD Connect Health](./media/how-to-connect-health-agent-install/aadconnect-health-adds-agent-install5.png)
 
-### <a name="quick-agent-installation-in-multiple-servers"></a>快速的代理程式安裝在多部伺服器
+### <a name="quick-agent-installation-in-multiple-servers"></a>多部伺服器中的快速代理程式安裝
 
-1. 在 Azure AD 中使用密碼建立使用者帳戶。
-2. 指派**擁有者**此本機的 AAD 帳戶，Azure AD Connect Health 中透過入口網站的角色。 請依照[此處](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)。 將角色指派給 所有服務執行個體。 
-3. 下載安裝本機網域控制站中的.exe 」 的 MSI 檔案。
-4. 執行下列指令碼來註冊。 建立新的使用者帳戶和其密碼以取代參數。 
+1. 在 Azure AD 中建立具有密碼的使用者帳戶。
+2. 透過入口網站，在 Azure AD Connect Health 中指派此本機 AAD 帳戶的 [**擁有**者] 角色。 請依照[這裡](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)的步驟進行。 將角色指派給所有服務實例。 
+3. 下載本機網域控制站中的 .exe MSI 檔案以進行安裝。
+4. 執行下列腳本進行註冊。 將參數取代為新建立的使用者帳戶及其密碼。 
 
 ```powershell
 AdHealthAddsAgentSetup.exe /quiet
@@ -264,13 +270,13 @@ $secpasswd = ConvertTo-SecureString "PASSWORD" -AsPlainText -Force
 $myCreds = New-Object System.Management.Automation.PSCredential ($userName, $secpasswd)
 import-module "C:\Program Files\Azure Ad Connect Health Adds Agent\PowerShell\AdHealthAdds"
  
-Register-AzureADConnectHealthADDSAgent -UserPrincipalName $USERNAME -Credential $myCreds
+Register-AzureADConnectHealthADDSAgent -Credential $myCreds
 
 ```
 
-1. 完成之後，您可以藉由一或多個項目中移除本機帳戶的存取權： 
-    * 移除 AAD Connect Health 的角色指派的本機帳戶
-    * 旋轉的本機帳戶的密碼。 
+1. 完成後，您可以執行下列一或多項作業，以移除本機帳戶的存取權： 
+    * 移除 AAD Connect Health 的本機帳戶角色指派
+    * 輪替本機帳戶的密碼。 
     * 停用 AAD 本機帳戶
     * 刪除 AAD 本機帳戶  
 
@@ -312,8 +318,8 @@ Register-AzureADConnectHealthADDSAgent -UserPrincipalName $USERNAME -Credential 
 您有下列選項來設定 Azure AD Connect Health 代理程式使用 HTTP Proxy。
 
 > [!NOTE]
-> 所有的 Azure AD Connect Health 代理程式服務都必須重新啟動，才會更新 Proxy 設定。 執行以下命令：<br />
->  Restart-Service AdHealth*
+> 所有的 Azure AD Connect Health 代理程式服務都必須重新啟動，才會更新 Proxy 設定。 執行下列命令：<br />
+> 重新開機-服務 AzureADConnectHealth *
 >
 >
 
@@ -323,21 +329,27 @@ Register-AzureADConnectHealthADDSAgent -UserPrincipalName $USERNAME -Credential 
 
 可以匯入 Internet Explorer HTTP Proxy 設定，以供 Azure AD Connect Health 代理程式使用。 在每部執行 Health 代理程式的伺服器上，執行下列 PowerShell 命令︰
 
-    Set-AzureAdConnectHealthProxySettings -ImportFromInternetSettings
+```powershell
+Set-AzureAdConnectHealthProxySettings -ImportFromInternetSettings
+```
 
 ##### <a name="import-from-winhttp"></a>從 WinHTTP 匯入
 
 可以匯入 WinHTTP Proxy 設定，以供 Azure AD Connect Health 代理程式使用。 在每部執行 Health 代理程式的伺服器上，執行下列 PowerShell 命令︰
 
-    Set-AzureAdConnectHealthProxySettings -ImportFromWinHttp
+```powershell
+Set-AzureAdConnectHealthProxySettings -ImportFromWinHttp
+```
 
 #### <a name="specify-proxy-addresses-manually"></a>以手動方式指定 Proxy 位址
 
 您可以執行下列 PowerShell 命令，以在每部執行 Health 代理程式的伺服器上手動指定 Proxy 伺服器：
 
-    Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
+```powershell
+Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
+```
 
-範例：*Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserver:443*
+範例：*Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserver: 443*
 
 * 「位址」可以是可解析的 DNS 伺服器名稱或 IPv4 位址
 * 「連接埠」可以省略。 如果省略，則會選擇 443 做為預設連接埠。
@@ -346,23 +358,27 @@ Register-AzureADConnectHealthADDSAgent -UserPrincipalName $USERNAME -Credential 
 
 您可以執行下列命令來清除現有的 Proxy 設定：
 
-    Set-AzureAdConnectHealthProxySettings -NoProxy
-
+```powershell
+Set-AzureAdConnectHealthProxySettings -NoProxy
+```
 
 ### <a name="read-current-proxy-settings"></a>讀取目前的 Proxy 設定
 
 您可以執行下列命令來讀取目前設定的 Proxy 設定：
 
-    Get-AzureAdConnectHealthProxySettings
-
+```powershell
+Get-AzureAdConnectHealthProxySettings
+```
 
 ## <a name="test-connectivity-to-azure-ad-connect-health-service"></a>測試對 Azure AD Connect Health 服務的連線
 
 有可能會發生導致 Azure AD Connect Health 代理程式與 Azure AD Connect Health 服務連線中斷的問題。 這些包括網路問題、權限問題或各種其他原因。
 
-如果代理程式無法將資料傳送給 Azure AD Connect Health 服務達 2 小時以上，入口網站中的下列警示就會指出：「健全狀況服務的資料並非最新」。 您可以執行下列 PowerShell 命令，以確認受影響的 Azure AD Connect Health 代理程式是否能夠將資料上傳到 Azure AD Connect Health 服務：
+如果代理程式無法將資料傳送給 Azure AD Connect Health 服務達 2 小時以上，入口網站中的下列警示會指出：「Health 服務資料不是最新的資料」。 您可以執行下列 PowerShell 命令，以確認受影響的 Azure AD Connect Health 代理程式是否能夠將資料上傳到 Azure AD Connect Health 服務：
 
-    Test-AzureADConnectHealthConnectivity -Role ADFS
+```powershell
+Test-AzureADConnectHealthConnectivity -Role ADFS
+```
 
 角色參數目前可接受下列值：
 
@@ -379,8 +395,8 @@ Register-AzureADConnectHealthADDSAgent -UserPrincipalName $USERNAME -Credential 
 
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
 * [Azure AD Connect Health 操作](how-to-connect-health-operations.md)
-* [使用 Azure AD Connect Health 來搭配 AD FS](how-to-connect-health-adfs.md)
+* [使用 Azure AD Connect Health 搭配 AD FS](how-to-connect-health-adfs.md)
 * [使用 Azure AD Connect Health 進行同步處理](how-to-connect-health-sync.md)
 * [在 AD DS 使用 Azure AD Connect Health](how-to-connect-health-adds.md)
 * [Azure AD Connect Health 常見問題集](reference-connect-health-faq.md)
-* [Azure AD Connect Health 版本历史记录](reference-connect-health-version-history.md)
+* [Azure AD Connect Health 版本歷程記錄](reference-connect-health-version-history.md)

@@ -1,30 +1,31 @@
 ---
 title: 使用範例資料集
-titleSuffix: Azure Machine Learning Studio
-description: Machine Learning Studio 中包含的範例模型所使用之資料集的描述。 您可以為您的實驗使用這些範例資料集。
+titleSuffix: ML Studio (classic) - Azure
+description: Machine Learning Studio (傳統版) 中包含的範例模型所使用之資料集的描述。 您可以為您的實驗使用這些範例資料集。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+ms.topic: sample
+author: likebupt
+ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: f86ae4977621927a09d9b83287a00dfa3bc17196
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 3cd7d880efaa5c69301c25c69d55f4b21dd97242
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736610"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85321836"
 ---
-# <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>在 Azure Machine Learning Studio 中使用範例資料集
+# <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>在 Azure Machine Learning Studio (傳統版) 中使用範例資料集
+
 [top]: #machine-learning-sample-datasets
 
-當您在 Azure Machine Learning Studio 中建立新的工作區時，預設會包含一些範例資料集和實驗。 其中許多範例資料集由 [Azure AI 資源庫](https://gallery.azure.ai/)中的範例模型使用。 其他則是機器學習中經常使用的各種範例。
+在 Azure Machine Learning Studio (傳統版) 中建立新的工作區時，預設會包含一些範例資料集和實驗。 其中許多範例資料集由 [Azure AI 資源庫](https://gallery.azure.ai/)中的範例模型使用。 其他則是機器學習中經常使用的各種範例。
 
 其中的部分資料集可在 Azure Blob 儲存體中使用。 下表提供這些資料集的直接連結。 您也可以透過[匯入資料][import-data]模組在實驗中使用這些資料集。
 
-在**儲存的資料集**之下的工作區中可使用這些範例資料集的其餘部分。 您可以在 Machine Learning Studio 的實驗畫布左邊的模組調色盤中找到這個。
+在**儲存的資料集**之下的工作區中可使用這些範例資料集的其餘部分。 您可以在 Machine Learning Studio (傳統版) 的實驗畫布左邊的模組調色盤中找到這個。
 您可以將資料集拖曳到您的實驗畫布上，在自己的實驗中使用任一資料集。
 
 ## <a name="datasets"></a>資料集
@@ -169,7 +170,7 @@ KDD Cup 2009 客戶關係預測挑戰 (<a href="http://www.sigkdd.org/site/2009/
   <td>
 美國交通部收集的 TranStats 資料所包含的客機航班準點率資料(<a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">準點</a>)。
 <p></p>
-此資料集涵蓋的其間為 2013 年 4 月至 10 月。 上傳至 Azure Machine Learning Studio 之前，資料集已經過下列處理：
+此資料集涵蓋的其間為 2013 年 4 月至 10 月。 上傳至 Azure Machine Learning Studio (傳統版) 之前，資料集已經過下列處理：
 <ul>
   <li>資料集已經過篩選，僅涵蓋美國大陸 70 個最繁忙的機場</li>
   <li>取消的航班已標示為誤點達 15 分鐘以上</li>
@@ -232,7 +233,7 @@ UCI Statlog (德國信用卡) 資料集 (<a href="https://archive.ics.uci.edu/ml
 <tr>
   <td>影片推文</td>
   <td>
-資料集是 Movie Tweetings 資料集的擴充版本。 資料集包含 17 萬個影片的分級，擷取自 Twitter 上結構良好的推文。 每個執行個體代表推文，並且是 tuple： 使用者識別碼、 IMDB 影片識別碼、 分級、 時間戳記、 的我的最愛，以這個推文，以及這個推文的轉推數。 資料集是由 A. Said、S. Dooms、B. Loni 和 D. Tikk 為 Recommender Systems Challenge 2014 提供。
+資料集是 Movie Tweetings 資料集的擴充版本。 資料集包含 17 萬個影片的分級，擷取自 Twitter 上結構良好的推文。 每個執行個體代表推文，並且是 Tuple：使用者識別碼、IMDB 影片識別碼、分級、時間戳記、推文的收藏數，以及這個推文的轉推數。 資料集是由 A. Said、S. Dooms、B. Loni 和 D. Tikk 為 Recommender Systems Challenge 2014 提供。
   </td>
 </tr>
 
@@ -302,7 +303,7 @@ National Institute of Diabetes and Digestive and Kidney Diseases 資料庫中的
 <p></p>
 <b>相關研究：</b>Sterling, D. & Buntine, W.(NA)。 UCI Machine Learning Repository <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 Irvine, CA:University of California, School of Information and Computer Science
 <p></p>
-鋼鐵等級的實用指南可在這裡找到：<a href="https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf">https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf</a>
+鋼鐵等級的實用指南可在這裡找到：<a href="https://www.steamforum.com/pictures/Outokumpu-steel-grades-properties-global-standards.pdf">https://www.steamforum.com/pictures/Outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>
 </tr>
 
@@ -329,7 +330,7 @@ National Institute of Diabetes and Digestive and Kidney Diseases 資料庫中的
   <td>
 NOAA 提供的每小時起降天候觀測值 (<a href="https://az754797.vo.msecnd.net/data/WeatherDataset.csv">將 201304 的資料合併至 201310</a>)。
 <p></p>
-天氣資料涵蓋從機場天候觀測站進行的觀測，涵蓋期間為 2013 年 4 月至 10 月。 上傳至 Azure Machine Learning Studio 之前，資料集已經過下列處理：
+天氣資料涵蓋從機場天候觀測站進行的觀測，涵蓋期間為 2013 年 4 月至 10 月。 上傳至 Azure Machine Learning Studio (傳統版) 之前，資料集已經過下列處理：
 <ul>
   <li>天候觀測站識別碼已對應至相對應的機場識別碼</li>
   <li>已篩選掉與 70 個最繁忙的機場沒有關聯的天候觀測站</li>
@@ -344,7 +345,7 @@ NOAA 提供的每小時起降天候觀測值 (<a href="https://az754797.vo.msecn
   <td>
 資料是從 Wikipedia (<a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a>) 上每家 S&P 500 公司的文章衍生而來 (儲存為 XML 資料)。
 <p></p>
-上傳至 Azure Machine Learning Studio 之前，資料集已經過下列處理：
+上傳至 Azure Machine Learning Studio (傳統版) 之前，資料集已經過下列處理：
 <ul>
   <li>擷取每家特定公司的文字內容</li>
   <li>移除 wiki 格式</li>
@@ -367,14 +368,14 @@ NOAA 提供的每小時起降天候觀測值 (<a href="https://az754797.vo.msecn
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test.csv</a></td>
   <td>
-RCV1-V2 路透社新聞資料集中測試功能的範例。 資料集有 78 萬 1 千篇新聞文章，以及它們的識別碼 (資料集的第一個資料行)。 每篇文章均執行語彙基元化、停用字詞和詞幹分析。 資料集由 David. D. Lewis  D. 提供。
+RCV1-V2 路透社新聞資料集中測試功能的範例。 資料集有 78 萬 1 千篇新聞文章，以及它們的識別碼 (資料集的第一個資料行)。 每篇文章均執行語彙基元化、停用字詞和詞幹分析。 資料集由 David. D. Lewis D. 提供。
   </td>
 </tr>
 
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train.csv</a></td>
   <td>
-RCV1-V2 路透社新聞資料集中訓練功能的範例。 資料集有 2 萬 3 千篇新聞文章，以及它們的識別碼 (資料集的第一個資料行)。 每篇文章均執行語彙基元化、停用字詞和詞幹分析。 資料集由 David. D. Lewis  D. 提供。
+RCV1-V2 路透社新聞資料集中訓練功能的範例。 資料集有 2 萬 3 千篇新聞文章，以及它們的識別碼 (資料集的第一個資料行)。 每篇文章均執行語彙基元化、停用字詞和詞幹分析。 資料集由 David. D. Lewis D. 提供。
   </td>
 </tr>
 
@@ -390,7 +391,7 @@ RCV1-V2 路透社新聞資料集中訓練功能的範例。 資料集有 2 萬 3
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2.topics.qrels.csv</a></td>
   <td>
-RCV1-V2 路透社新聞資料集中新聞文章的主題指派。 一篇新聞文章可以指派給數個主題。 每個資料列的格式為 "&lt;topic name&gt; &lt;document id&gt; 1"。 資料集包含 260 萬個主題指派。 資料集由 David. D. Lewis  D. 提供。
+RCV1-V2 路透社新聞資料集中新聞文章的主題指派。 一篇新聞文章可以指派給數個主題。 每個資料列的格式為 "&lt;topic name&gt;&lt;document id&gt; 1"。 資料集包含 260 萬個主題指派。 資料集由 David. D. Lewis D. 提供。
   </td>
 </tr>
 
@@ -408,7 +409,7 @@ RCV1-V2 路透社新聞資料集中新聞文章的主題指派。 一篇新聞�
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [著手進行您的實驗範例](sample-experiments.md)
+> [透過範例開始進行您的實驗](sample-experiments.md)
 
 <!-- Module References -->
 [import-data]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/

@@ -1,27 +1,16 @@
 ---
-title: 如何使用 Azure CLI 重新調整 Linux VM 的大小 | Microsoft Docs
+title: 如何使用 Azure CLI 調整 Linux VM 的大小
 description: 如何藉由變更 VM 的大小來相應增加或相應減少 Linux 虛擬機器。
-services: virtual-machines-linux
-documentationcenter: na
-author: mikewasson
-manager: jeconnoc
-editor: ''
-tags: ''
-ms.assetid: e163f878-b919-45c5-9f5a-75a64f3b14a0
+author: DavidCBerry13
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 02/10/2017
-ms.author: mwasson
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8bd8136c61a277e730c07c8789afd1bf3214bd7c
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.author: daberry
+ms.openlocfilehash: cf2716ce5d24aa86e32f6f521134590c671d5011
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127067"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83120975"
 ---
 # <a name="resize-a-linux-virtual-machine-using-azure-cli"></a>使用 Azure CLI 調整 Linux 虛擬機器大小 
 
@@ -53,10 +42,10 @@ ms.locfileid: "62127067"
     ```
    
    > [!WARNING]
-   > 將 VM 解除配置也會釋出指派給該 VM 的任何動態 IP 位址。 OS 和数据磁盘不受影响。
+   > 將 VM 解除配置也會釋出指派給該 VM 的任何動態 IP 位址。 不會影響作業系統和資料磁碟。
 
 ## <a name="next-steps"></a>後續步驟
-如需提高延展性，可執行多個 VM 執行個體並相應放大。如需詳細資訊，請參閱[在虛擬機器擴展集中自動調整 Linux 機器][scale-set]。 
+如需更多的擴充性，請執行多個 VM 實例並向外延展。如需詳細資訊，請參閱[在虛擬機器擴展集中自動調整 Linux 機器][scale-set]。 
 
 <!-- links -->
 [boot-diagnostics]: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/

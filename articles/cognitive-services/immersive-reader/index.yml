@@ -1,0 +1,81 @@
+### YamlMime:Landing
+title: 沈浸式閱讀程式文件
+summary: 沈浸式閱讀程式是一種工具，可實作經實證的技術並針對沈浸式讀者、語言學習者及存在學習差異的人士改善其閱讀理解程度。 您可以使用沈浸式閱讀程式 SDK，在 Web 應用程式中使用沈浸式閱讀程式。
+metadata:
+  title: 沈浸式閱讀程式文件
+  description: 沈浸式閱讀程式是一種工具，可實作經實證的技術並針對沈浸式讀者、語言學習者及存在學習差異的人士改善其閱讀理解程度。 您可以使用沈浸式閱讀程式 SDK，在 Web 應用程式中使用沈浸式閱讀程式。
+  services: service
+  ms.service: cognitive-services
+  ms.subservice: immersive-reader
+  ms.topic: landing-page
+  ms.collection: collection
+  author: IEvangelist
+  ms.author: dapine
+  ms.date: 01/23/2020
+  ms.openlocfilehash: 9f0ed5265bc4371169097d2fedcbfcddb62d3bff
+  ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 07/07/2020
+  ms.locfileid: "86045428"
+landingContent:
+- title: 關於沈浸式閱讀程式
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是沈浸式閱讀程式？
+      url: overview.md
+  - linkListType: video
+    links:
+    - text: 快速入門 - 短期工程影片
+      url: https://aka.ms/ImmersiveReaderSDKVideos
+- title: 開始使用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 C# (ASP.NET Core)
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-csharp
+    - text: 使用 Node.js
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-nodejs
+    - text: 使用 Java (Android)
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-java-android
+    - text: 使用 Kotlin (Android)
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-kotlin
+    - text: 使用 Swift (iOS)
+      url: ./quickstarts/client-libraries.md?pivots=programming-language-swift
+  - linkListType: tutorial
+    links:
+    - text: Android
+      url: tutorial-android.md
+    - text: iOS
+      url: tutorial-ios.md
+    - text: Python
+      url: tutorial-python.md
+    - text: 使用多個沉浸式讀取器資源
+      url: tutorial-multiple-resources.md
+- title: 探索沈浸式閱讀程式
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 建立沉浸式讀取器資源
+      url: how-to-create-immersive-reader.md
+    - text: 設定 Cookie 原則
+      url: how-to/set-cookie-policy.md
+    - text: 顯示數學
+      url: how-to/display-math.md
+    - text: 使用 HTML 內容啟動沈浸式閱讀程式
+      url: how-to-launch-with-html.md
+    - text: 自訂沉浸式讀取器按鈕
+      url: how-to-customize-launch-button.md
+    - text: 快取驗證權杖
+      url: how-to-cache-token.md
+    - text: 設定大聲朗讀
+      url: how-to-configure-read-aloud.md
+    - text: 設定翻譯
+      url: how-to-configure-translation.md
+    - text: 儲存使用者喜好設定
+      url: how-to-store-user-preferences.md
+  - linkListType: reference
+    links:
+    - text: JavaScript SDK
+      url: reference.md

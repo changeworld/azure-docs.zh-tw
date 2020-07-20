@@ -1,23 +1,21 @@
 ---
 title: 將 Azure Blob 儲存體事件傳送至 Web 端點 - Azure CLI | Microsoft Docs
 description: 使用 Azure Event Grid 以訂閱 Blob 儲存體事件。 將事件傳送到 Webhook。 在 Web 應用程式中處理事件。
-services: storage,event-grid
 author: normesta
 ms.author: normesta
-ms.reviewer: cbrooks
-ms.date: 12/06/2018
-ms.topic: quickstart
+ms.reviewer: dineshm
+ms.date: 03/05/2020
+ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
-ms.custom: seodec18
-ms.openlocfilehash: 7d92614556fdc6822f749002d2e5a8fc92946d0a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: HT
+ms.openlocfilehash: f6cf929af951a6bbd498d13cd514b8cae8e353f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65141120"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809146"
 ---
-# <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>快速入門：使用 Azure CLI 將儲存體事件路由至 Web 端點
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>快速入門：使用 Azure CLI 將儲存體事件路由至 web 端點
 
 Azure Event Grid 是一項雲端事件服務。 在本文中，您可使用 Azure CLI 訂閱 Blob 儲存體事件，以及觸發事件來檢視結果。
 
@@ -27,12 +25,11 @@ Azure Event Grid 是一項雲端事件服務。 在本文中，您可使用 Azur
 
 ![訂用訂用帳戶事件](./media/storage-blob-event-quickstart/view-results.png)
 
-
 [!INCLUDE [quickstarts-free-trial-note.md](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本文會要求您執行最新版的 Azure CLI (2.0.24 或更新版本)。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+如果您選擇在本機安裝和使用 CLI，本文會要求您執行最新版的 Azure CLI （2.0.70 或更新版本）。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 如果您未使用 Cloud Shell，必須先使用 `az login` 登入。
 
@@ -50,7 +47,7 @@ az group create --name <resource_group_name> --location westcentralus
 
 ## <a name="create-a-storage-account"></a>建立儲存體帳戶
 
-您可以在一般用途 v2 儲存體帳戶與 Blob 儲存體帳戶中找到 Blob 儲存體事件。 **一般用途 v2** 儲存體帳戶支援所有儲存體服務 (包括 Blob、檔案、佇列和表格) 的所有功能。 **Blob 儲存體帳戶**是特製化的儲存體帳戶，可將非結構化資料儲存為 Azure 儲存體中的 Blob (物件)。 Blob 儲存體帳戶類似於一般用途儲存體帳戶，可共用所有強大的持續性、可用性、延展性以及您現今使用的效能功能，包括區塊 Blob 和附加 Blob 的 100% API 一致性。 如需詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../common/storage-account-overview.md)。
+您可以在一般用途 v2 儲存體帳戶與 Blob 儲存體帳戶中找到 Blob 儲存體事件。 **一般用途 v2** 儲存體帳戶支援所有儲存體服務 (包括 Blob、檔案、佇列和表格) 的所有功能。 **Blob 儲存體帳戶**是特殊的儲存體帳戶，可將非結構化資料儲存為 Azure 儲存體中的 blob （物件）。 Blob 儲存體帳戶類似於一般用途儲存體帳戶，可共用所有強大的持續性、可用性、延展性以及您現今使用的效能功能，包括區塊 Blob 和附加 Blob 的 100% API 一致性。 如需詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../common/storage-account-overview.md)。
 
 以儲存體帳戶的唯一名稱取代 `<storage_account_name>`，並以您稍早建立的資源群組取代 `<resource_group_name>`。
 
@@ -96,7 +93,7 @@ storageid=$(az storage account show --name <storage_account_name> --resource-gro
 endpoint=https://$sitename.azurewebsites.net/api/updates
 
 az eventgrid event-subscription create \
-  --resource-id $storageid \
+  --source-resource-id $storageid \
   --name <event_subscription_name> \
   --endpoint $endpoint
 ```

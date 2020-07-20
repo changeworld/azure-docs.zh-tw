@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 04/16/2019
+ms.date: 11/26/2019
 ms.author: tamram
 ms.custom: include
-ms.openlocfilehash: 3076065d23d4701711c0ecb60349e77ee5c9b7c8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 694501fdaaaa92e898f4973838d86343e29144e3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61593528"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74895272"
 ---
-Azure 儲存體支援待用加密，使用 Microsoft 管理的金鑰或客戶管理的金鑰。 客戶管理的金鑰可讓您建立、 輪替、 停用和撤銷的存取控制。
+Azure 儲存體會加密待用儲存體帳戶中的所有資料。 根據預設，資料是以使用 Microsoft 管理的金鑰加密。 若要進一步控制加密金鑰，您可以提供客戶管理的金鑰，以用於加密 blob 和檔案資料。
 
-您可以使用 Azure 金鑰保存庫來管理您的金鑰並稽核金鑰的使用方式。 您可以建立您自己的金鑰，並將它們儲存在金鑰保存庫，或您可以使用 Azure 金鑰保存庫 Api，來產生金鑰。 儲存體帳戶與金鑰保存庫必須位於相同區域，但可位於不同的訂用帳戶中。 如需 Azure 金鑰保存庫的詳細資訊，請參閱 [什麼是 Azure 金鑰保存庫？](../articles/key-vault/key-vault-overview.md)
+客戶管理的金鑰必須儲存在 Azure Key Vault 中。 您可以建立自己的金鑰並將其儲存在金鑰保存庫中，或是使用 Azure Key Vault API 來產生金鑰。 儲存體帳戶與金鑰保存庫必須位於相同區域，但可位於不同的訂用帳戶中。 如需 Azure 儲存體加密和金鑰管理的詳細資訊，請參閱[靜態資料的 Azure 儲存體加密](../articles/storage/common/storage-service-encryption.md)。 如需 Azure 金鑰保存庫的詳細資訊，請參閱 [什麼是 Azure 金鑰保存庫？](../articles/key-vault/key-vault-overview.md)

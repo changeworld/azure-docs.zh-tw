@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒體服務串流視訊檔案 - .NET | Microsoft Docs
-description: 按照本快速入門的步驟建立新的 Azure 媒體服務帳戶、對檔案進行編碼，然後將它串流到 Azure 媒體播放器。
+description: 按照本教學課程的步驟建立新的 Azure 媒體服務帳戶、對檔案進行編碼，然後將它串流到 Azure 媒體播放器。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,29 +9,29 @@ editor: ''
 keywords: Azure 媒體服務, 串流
 ms.service: media-services
 ms.workload: media
-ms.topic: quickstart
+ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/20/2019
+ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3a50d78645630e499b11f012da122b12b026ae6b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: df4092ecc3f7d075f1a2821854cdb668ee2cebe5
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57857856"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "77191212"
 ---
-# <a name="quickstart-stream-video-files---net"></a>快速入門：串流視訊檔案 - .NET
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>教學課程：編碼以 URL 為基礎的遠端檔案及串流處理影片 - .NET
 
-此快速入門說明使用 Azure 媒體服務在各種不同的瀏覽器和裝置上編碼和開始串流視訊是多麼容易。 您可以使用 HTTP(S) URL、SAS URL 或 Azure Blob 儲存體中的檔案路徑來指定輸入內容。
+此教學課程說明使用 Azure 媒體服務在各種不同的瀏覽器和裝置上編碼和開始串流視訊是多麼容易。 您可以使用 HTTP(S) URL、SAS URL 或 Azure Blob 儲存體中的檔案路徑來指定輸入內容。
 此主題中的範例會將您透過 HTTPS URL 提供的內容編碼。 請注意，目前 AMS v3 不支援透過 HTTPS URL 的區塊傳送編碼。
 
-完成快速入門時，您將能夠串流視訊。  
+完成教學課程時，您將能夠串流視訊。  
 
 ![播放影片](./media/stream-files-dotnet-quickstart/final-video.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 如果沒有安裝 Visual Studio，您可以取得 [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)。
 - [建立媒體服務帳戶](create-account-cli-how-to.md)。<br/>請務必記住您用於資源群組名稱和「媒體服務」帳戶名稱的值。
@@ -65,8 +65,8 @@ ms.locfileid: "57857856"
 
 當您執行應用程式時，會顯示可以使用其他不同通訊協定播放該影片的 URL。 
 
-1. 按下 Ctrl+F5 來執行 *EncodeAndStreamFiles* 應用程式。
-2. 選擇 Apple 的 **HLS** 通訊協定 (結尾是 *manifest(format=m3u8-aapl)*) 並從主控台複製串流 URL。
+1. 按下 Ctrl+F5 來執行 EncodeAndStreamFiles  應用程式。
+2. 選擇 Apple 的 **HLS** 通訊協定 (結尾是 *manifest(format=m3u8-aapl)* ) 並從主控台複製串流 URL。
 
 ![輸出](./media/stream-files-tutorial-with-api/output.png)
 
@@ -80,16 +80,16 @@ ms.locfileid: "57857856"
 > 如果播放程式裝載在 HTTPS 網站上，請務必將 URL 更新為 "https"。
 
 1. 開啟瀏覽器並巡覽至 [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)。
-2. 在 [URL:] 方塊中，貼上您在執行應用程式時取得的其中一個串流 URL 值。 
+2. 在 [URL:]  方塊中，貼上您在執行應用程式時取得的其中一個串流 URL 值。 
  
      您可以貼上 HLS、Dash 或 Smooth 格式的 URL，Azure 媒體播放器將會切換至適當的串流通訊協定，以便在您的裝置上自動播放。
-3. 按一下 [更新播放程式]。
+3. 按一下 [更新播放程式]  。
 
 Azure 媒體播放器可以用於測試，但不應用於生產環境。 
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果您不再需要資源群組中的任何資源 (包含在此快速入門中建立的媒體服務和儲存體帳戶)，請將資源群組刪除。
+如果您不再需要資源群組中的任何資源 (包含在此教學課程中建立的媒體服務和儲存體帳戶)，請將資源群組刪除。
 
 執行下列 CLI 命令：
 
@@ -105,7 +105,7 @@ az group delete --name amsResourceGroup
 
 ### <a name="job-error-codes"></a>作業錯誤碼
 
-請參閱[錯誤碼](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)。
+請參閱[錯誤碼](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode) \(英文\)。
 
 ## <a name="multithreading"></a>多執行緒
 

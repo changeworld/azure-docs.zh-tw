@@ -1,27 +1,21 @@
 ---
 title: 將 Azure 事件方格用於 CloudEvents 結構描述中的事件
-description: 說明如何在 Azure 事件方格中設定事件的 CloudEvents 結構描述。
-services: event-grid
-author: banisadr
-manager: timlt
-ms.service: event-grid
+description: 說明如何在 Azure 事件方格中將 CloudEvents 結構描述用於事件。 此服務支援雲端事件的 JSON 實作中的事件。
 ms.topic: conceptual
-ms.date: 11/07/2018
-ms.author: babanisa
-ms.openlocfilehash: 0195ce82396a7b05335242a38a2881e1b2d1afb3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 07/07/2020
+ms.openlocfilehash: 0bcd14356c4d52bb8a5b270966097d47dfc92c3c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61436591"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113950"
 ---
-# <a name="use-cloudevents-schema-with-event-grid"></a>透過事件方格使用 CloudEvents 結構描述
-
-除了[預設事件結構描述](event-schema.md)以外，Azure 事件方格原本也就支援 [CloudEvents JSON 結構描述](https://github.com/cloudevents/spec/blob/master/json-format.md)中的事件。 [CloudEvents](https://cloudevents.io/) 是用來說明事件資料的[開放式規格](https://github.com/cloudevents/spec/blob/master/spec.md)。
+# <a name="use-cloudevents-v10-schema-with-event-grid"></a>搭配使用 CloudEvents v1.0 結構描述與事件方格
+除了[預設事件結構描述](event-schema.md)以外，Azure 事件方格在本質上也支援 [CloudEvents v1.0 的 JSON 實作](https://github.com/cloudevents/spec/blob/v1.0/json-format.md)和 [HTTP 通訊協定繫結](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)中的事件。 [CloudEvents](https://cloudevents.io/) 是用來說明事件資料的[開放式規格](https://github.com/cloudevents/spec/blob/v1.0/spec.md)。
 
 CloudEvents 提供用以發佈和取用雲端型事件的常見事件結構描述，可簡化互通性。 此結構描述可支援統一的工具、路由和處理事件的標準方式，以及將外部事件結構描述還原序列化的通用方式。 透過通用結構描述，您將可更輕鬆地跨平台整合工作。
 
-目前有數個[共同作業者](https://github.com/cloudevents/spec/blob/master/community/contributors.md) (包括 Microsoft) 正透過 [Cloud Native Computing Foundation](https://www.cncf.io/) 建置 CloudEvents。 目前可用的版本為 0.1。
+目前有數個[共同作業者](https://github.com/cloudevents/spec/blob/master/community/contributors.md) (包括 Microsoft) 正透過 [Cloud Native Computing Foundation](https://www.cncf.io/) 建置 CloudEvents。 目前可用的版本為 1.0。
 
 本文說明如何透過事件方格使用 CloudEvents 結構描述。
 
@@ -37,45 +31,31 @@ CloudEvents 提供用以發佈和取用雲端型事件的常見事件結構描�
 
 ``` JSON
 {
-    "cloudEventsVersion" : "0.1",
-    "eventType" : "Microsoft.Storage.BlobCreated",
-    "eventTypeVersion" : "",
-    "source" : "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-account}#blobServices/default/containers/{storage-container}/blobs/{new-file}",
-    "eventID" : "173d9985-401e-0075-2497-de268c06ff25",
-    "eventTime" : "2018-04-28T02:18:47.1281675Z",
-    "data" : {
-      "api": "PutBlockList",
-      "clientRequestId": "6d79dbfb-0e37-4fc4-981f-442c9ca65760",
-      "requestId": "831e1650-001e-001b-66ab-eeb76e000000",
-      "eTag": "0x8D4BCC2E4835CD0",
-      "contentType": "application/octet-stream",
-      "contentLength": 524288,
-      "blobType": "BlockBlob",
-      "url": "https://oc2d2817345i60006.blob.core.windows.net/oc2d2817345i200097container/oc2d2817345i20002296blob",
-      "sequencer": "00000000000004420000000000028963",
-      "storageDiagnostics": {
-        "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
-      }
+    "specversion": "1.0",
+    "type": "Microsoft.Storage.BlobCreated",  
+    "source": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-account}",
+    "id": "9aeb0fdf-c01e-0131-0922-9eb54906e209",
+    "time": "2019-11-18T15:13:39.4589254Z",
+    "subject": "blobServices/default/containers/{storage-container}/blobs/{new-file}",
+    "dataschema": "#",
+    "data": {
+        "api": "PutBlockList",
+        "clientRequestId": "4c5dd7fb-2c48-4a27-bb30-5361b5de920a",
+        "requestId": "9aeb0fdf-c01e-0131-0922-9eb549000000",
+        "eTag": "0x8D76C39E4407333",
+        "contentType": "image/png",
+        "contentLength": 30699,
+        "blobType": "BlockBlob",
+        "url": "https://gridtesting.blob.core.windows.net/testcontainer/{new-file}",
+        "sequencer": "000000000000000000000000000099240000000000c41c18",
+        "storageDiagnostics": {
+            "batchId": "681fe319-3006-00a8-0022-9e7cde000000"
+        }
     }
 }
 ```
 
-CloudEvents v0.1 具有下列可用屬性：
-
-| CloudEvents        | 類型     | 範例 JSON 值             | 描述                                                        | 事件方格對應
-|--------------------|----------|--------------------------------|--------------------------------------------------------------------|-------------------------
-| eventType          | 字串   | "com.example.someevent"          | 發生的事件類型                                   | eventType
-| eventTypeVersion   | 字串   | "1.0"                            | eventType 的版本 (選用)                            | dataVersion
-| cloudEventsVersion | 字串   | "0.1"                            | 事件使用之 CloudEvents 規格的版本        | *已傳遞*
-| source             | URI      | "/mycontext"                     | 說明事件產生者                                       | topic#subject
-| eventID            | 字串   | "1234-1234-1234"                 | 事件的識別碼                                                    | id
-| eventTime          | Timestamp| "2018-04-05T17:31:00Z"           | 事件發生時的時間戳記 (選用)                    | eventTime
-| schemaURL          | URI      | "https:\//myschema.com"           | 資料屬性所符合之結構描述的連結 (選用) | *未使用*
-| contentType        | 字串   | "application/json"               | 說明資料編碼格式 (選用)                       | *未使用*
-| 擴充功能         | 對應      | { "extA": "vA", "extB", "vB" }  | 任何其他中繼資料 (選用)                                 | *未使用*
-| data               | Object   | { "objA": "vA", "objB", "vB" }  | 事件承載 (選用)                                       | data
-
-如需詳細資訊，請參閱 [CloudEvents 規格](https://github.com/cloudevents/spec/blob/master/spec.md#context-attributes)。
+如需 CloudEvents v1.0 中的可用欄位、其類型和定義的詳細說明，請參閱[這裡](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes)。
 
 在 CloudEvents 結構描述中傳遞的事件標頭值與事件方格結構描述的該值相同，不同之處在於 `content-type`。 針對 CloudEvents 結構描述，該標頭值是 `"content-type":"application/cloudevents+json; charset=utf-8"`。 針對事件方格結構描述，該標頭值是 `"content-type":"application/json; charset=utf-8"`。
 
@@ -88,7 +68,6 @@ CloudEvents v0.1 具有下列可用屬性：
 |--------------------|---------------------
 | CloudEvents 格式 | CloudEvents 格式
 | 事件方格格式  | CloudEvents 格式
-| CloudEvents 格式 | 事件方格格式
 | 事件方格格式  | 事件方格格式
 
 對於所有的事件結構描述，事件方格在發佈至事件方格主題和建立事件訂閱時，都需要進行驗證。 如需詳細資訊，請參閱 [Event Grid 安全性和驗證](security-authentication.md)。
@@ -108,7 +87,7 @@ az eventgrid topic create \
   --name <topic_name> \
   -l westcentralus \
   -g gridResourceGroup \
-  --input-schema cloudeventv01schema
+  --input-schema cloudeventschemav1_0
 ```
 
 對於 PowerShell，請使用：
@@ -122,10 +101,8 @@ New-AzureRmEventGridTopic `
   -ResourceGroupName gridResourceGroup `
   -Location westcentralus `
   -Name <topic_name> `
-  -InputSchema CloudEventV01Schema
+  -InputSchema CloudEventSchemaV1_0
 ```
-
-CloudEvents 的目前版本不支援事件的批次處理。 若要透過 CloudEvent 結構描述將事件發佈至主題，請個別發佈每個事件。
 
 ### <a name="output-schema"></a>輸出結構描述
 
@@ -140,7 +117,7 @@ az eventgrid event-subscription create \
   --name <event_subscription_name> \
   --source-resource-id $topicID \
   --endpoint <endpoint_URL> \
-  --event-delivery-schema cloudeventv01schema
+  --event-delivery-schema cloudeventschemav1_0
 ```
 
 對於 PowerShell，請使用：
@@ -151,13 +128,87 @@ New-AzureRmEventGridSubscription `
   -ResourceId $topicid `
   -EventSubscriptionName <event_subscription_name> `
   -Endpoint <endpoint_URL> `
-  -DeliverySchema CloudEventV01Schema
+  -DeliverySchema CloudEventSchemaV1_0
 ```
 
-CloudEvents 的目前版本不支援事件的批次處理。 為 CloudEvent 結構描述設定的事件訂閱會個別接收每個事件。 目前，當事件是在 CloudEvents 結構描述中傳遞時，您無法針對 Azure Functions 應用程式使用事件方格觸發程序。 使用 HTTP 觸發程序。 如需實作 HTTP 觸發程序 (該觸發程序會接收 CloudEvents 結構描述中的事件) 的範例，請參閱[使用 HTTP 觸發程序作為事件方格觸發程序](../azure-functions/functions-bindings-event-grid.md#use-an-http-trigger-as-an-event-grid-trigger)。
+ 目前，當事件是在 CloudEvents 結構描述中傳遞時，您無法針對 Azure Functions 應用程式使用事件方格觸發程序。 使用 HTTP 觸發程序。 如需實作 HTTP 觸發程序 (該觸發程序會接收 CloudEvents 結構描述中的事件) 的範例，請參閱[搭配使用 CloudEvents 與 Azure Functions](#azure-functions)。
+
+ ## <a name="endpoint-validation-with-cloudevents-v10"></a>使用 CloudEvents v1.0 進行端點驗證
+
+如果您已經熟悉事件方格，則可能會注意到事件方格的端點驗證交握可防止濫用。 CloudEvents v1.0 會使用 HTTP OPTIONS 方法，實作自己的[濫用保護語義](webhook-event-delivery.md)。 您可以在 [此處](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)閱讀相關資訊。 使用 CloudEvents 結構描述進行輸出時，事件方格會使用 CloudEvents v1.0 濫用保護來取代事件方格驗證事件機制。
+
+<a name="azure-functions"></a>
+
+## <a name="use-with-azure-functions"></a>與 Azure Functions 搭配使用
+
+[Azure Functions 事件方格繫結](../azure-functions/functions-bindings-event-grid.md)未提供 CloudEvents 的原生支援，因此會使用 HTTP 觸發的函式來讀取 CloudEvents 訊息。 如果使用 HTTP 觸發程序來讀取 CloudEvents，則必須撰寫程式碼來處理 Event Grid 觸發程序自動執行的作業：
+
+* 將驗證回應傳送給[訂用帳戶驗證要求](../event-grid/webhook-event-delivery.md)。
+* 為要求本文中包含的每個事件陣列元素分別叫用一次函式。
+
+如需在本機叫用函式時或在 Azure 中執行函式時所使用的 URL 相關資訊，請參閱 [HTTP 觸發程序繫結參考文件](../azure-functions/functions-bindings-http-webhook.md)
+
+HTTP 觸發程序的下列範例 C# 程式碼會模擬事件格線觸發程序的行為。  使用此範例示範以 CloudEvents 結構描述傳送的事件。
+
+```csharp
+[FunctionName("HttpTrigger")]
+public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", "options", Route = null)]HttpRequestMessage req, ILogger log)
+{
+    log.LogInformation("C# HTTP trigger function processed a request.");
+    if (req.Method == "OPTIONS")
+    {
+        // If the request is for subscription validation, send back the validation code
+        
+        var response = req.CreateResponse(HttpStatusCode.OK);
+        response.Add("Webhook-Allowed-Origin", "eventgrid.azure.net");
+
+        return response;
+    }
+
+    var requestmessage = await req.Content.ReadAsStringAsync();
+    var message = JToken.Parse(requestmessage);
+
+    // The request is not for subscription validation, so it's for an event.
+    // CloudEvents schema delivers one event at a time.
+    log.LogInformation($"Source: {message["source"]}");
+    log.LogInformation($"Time: {message["eventTime"]}");
+    log.LogInformation($"Event data: {message["data"].ToString()}");
+
+    return req.CreateResponse(HttpStatusCode.OK);
+}
+```
+
+HTTP 觸發程序的下列範例 JavaScript 程式碼會模擬事件格線觸發程序行為。 使用此範例示範以 CloudEvents 結構描述傳送的事件。
+
+```javascript
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+    
+    if (req.method == "OPTIONS") {
+        // If the request is for subscription validation, send back the validation code
+        
+        context.log('Validate request received');
+        context.res = { status: 200 };
+        context.res.headers.append('Webhook-Allowed-Origin', 'eventgrid.azure.net');
+    }
+    else
+    {
+        var message = req.body;
+        
+        // The request is not for subscription validation, so it's for an event.
+        // CloudEvents schema delivers one event at a time.
+        var event = JSON.parse(message);
+        context.log('Source: ' + event.source);
+        context.log('Time: ' + event.eventTime);
+        context.log('Data: ' + JSON.stringify(event.data));
+    }
+ 
+    context.done();
+};
+```
 
 ## <a name="next-steps"></a>後續步驟
 
 * 如需關於監視事件傳遞的資訊，請參閱[監視 Event Grid 訊息傳遞](monitor-event-delivery.md)。
-* 建議您測試、評論和[參與](https://github.com/cloudevents/spec/blob/master/CONTRIBUTING.md) CloudEvents。
+* 建議您測試、評論和[參與](https://github.com/cloudevents/spec/blob/master/community/CONTRIBUTING.md) CloudEvents。
 * 若要了解 Event Grid 訂用帳戶的建立，請參閱 [Event Grid 訂用帳戶結構描述](subscription-creation-schema.md)。

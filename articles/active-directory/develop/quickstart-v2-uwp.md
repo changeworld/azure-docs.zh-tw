@@ -2,35 +2,25 @@
 title: Microsoft 身分識別平台 Windows UWP 快速入門 | Azure
 description: 了解通用 Windows 平台 (UWP) 應用程式如何取得存取權杖，以及呼叫受 Microsoft 身分識別平台端點保護的 API。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/12/2019
+ms.date: 12/12/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c45cd1627eb1eb98b2fc19f6663d5635b001ce0c
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
+ms.openlocfilehash: d68017bcddf43066dd989904578b7d09a84f4a9e
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067780"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85553859"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>快速入門：自通用 Windows 平台 (UWP) 應用程式呼叫 Microsoft Graph API
 
-[!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
-
-此快速入門包含程式碼範例，用以示範通用 Windows 平台 (UWP) 應用程式如何登入個人帳戶或公司與學校帳戶的使用者、取得存取權杖，以及呼叫 Microsoft Graph API。
-
-![示範本快速入門所產生之範例應用程式的運作方式](media/quickstart-v2-uwp/uwp-intro.svg)
+此快速入門包含程式碼範例，用以示範通用 Windows 平台 (UWP) 應用程式如何登入個人帳戶或公司與學校帳戶的使用者、取得存取權杖，以及呼叫 Microsoft Graph API。 (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>註冊並下載快速入門應用程式
@@ -47,7 +37,7 @@ ms.locfileid: "65067780"
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>選項 2：註冊並手動設定您的應用程式和程式碼範例
 > [!div renderon="docs"]
-> #### <a name="step-1-register-your-application"></a>步驟 1：註冊您的應用程式
+> #### <a name="step-1-register-your-application"></a>步驟 1:註冊您的應用程式
 > 若要註冊您的應用程式，並將應用程式註冊資訊新增到您的解決方案，請執行下列步驟：
 > 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
 > 1. 如果您的帳戶可讓您存取多個租用戶，請在右上角選取帳戶，然後將您的入口網站工作階段設定為想要的 Azure AD 租用戶。
@@ -58,34 +48,46 @@ ms.locfileid: "65067780"
 >      - 在 [支援的帳戶類型] 區段中，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶]，例如 Skype、Xbox、Outlook.com。
 >      - 選取 [註冊] 以建立應用程式。
 > 1. 在應用程式頁面清單中，選取 [驗證]。
-> 1. 展開 [桌面 + 裝置] 區段。  (如果看不到 [桌面 + 裝置]，請先按一下頂端橫幅，以檢視預覽驗證體驗)
-> 1. 在 [重新導向 URI] 區段之下，選取 [新增 URI]。  輸入 **urn:ietf:wg:oauth:2.0:oob**。
-> 1. 選取 [ **儲存**]。
+> 1. 在 [重新導向 URI] | [公用用戶端 (行動、傳統型) 的建議重新導向 URI] 區段，然後核取 **https://login.microsoftonline.com/common/oauth2/nativeclient** 。
+> 1. 選取 [儲存]。
 
-> [!div renderon="portal" class="sxs-lookup alert alert-info"]
-> #### <a name="step-1-configure-your-application"></a>步驟 1：設定您的應用程式
-> 若要讓此快速入門中的程式碼範例正確運作，您必須將重新導向 URI 加入為 **urn:ietf:wg:oauth:2.0:oob**。
+> [!div renderon="portal" class="sxs-lookup"]
+> #### <a name="step-1-configure-your-application"></a>步驟 1:設定您的應用程式
+> 若要讓本快速入門中的程式碼範例能正常運作，您需要新增 **https://login.microsoftonline.com/common/oauth2/nativeclient** 作為重新導向 URI。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [為我進行這項變更]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![已設定](media/quickstart-v2-uwp/green-check.png) 您的應用程式已設定了這些屬性。
 
-#### <a name="step-2-download-your-visual-studio-project"></a>步驟 2：下載您的 Visual Studio 專案
-
- - [下載 Visual Studio 專案](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
-
-#### <a name="step-3-configure-your-visual-studio-project"></a>步驟 3：設定您的 Visual Studio 專案
-
-1. 將 Zip 檔案解壓縮至磁碟根目錄附近的本機資料夾，例如 **C:\Azure-Samples**。
-1. 在 Visual Studio 中開啟專案。 系統可能會提示您安裝 UWP SDK。 在此情況下，請同意安裝。
-1. 編輯 **MainPage.Xaml.cs**，並取代 `ClientId` 欄位的值：
-
-    ```csharp
-    private const string ClientId = "Enter_the_Application_Id_here";
-    ```
+#### <a name="step-2-download-your-visual-studio-project"></a>步驟 2:下載您的 Visual Studio 專案
 
 > [!div renderon="docs"]
+> [下載 Visual Studio 專案](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
+
+> [!div class="sxs-lookup" renderon="portal"]
+> 使用 Visual Studio 2019 執行專案。
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [下載程式碼範例](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
+
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步驟 3：您的應用程式已設定並準備好執行
+> 我們已使用您的應用程式屬性值來設定您的專案，且專案已可供執行。
+
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > `Enter_the_Supported_Account_Info_Here`
+
+> [!div renderon="docs"]
+> #### <a name="step-3-configure-your-visual-studio-project"></a>步驟 3：設定您的 Visual Studio 專案
+>
+> 1. 將 Zip 檔案解壓縮至磁碟根目錄附近的本機資料夾，例如 **C:\Azure-Samples**。
+> 1. 在 Visual Studio 中開啟專案。 系統可能會提示您安裝 UWP SDK。 在此情況下，請同意安裝。
+> 1. 編輯 **MainPage.Xaml.cs**，並取代 `ClientId` 欄位的值：
+>
+>    ```csharp
+>    private const string ClientId = "Enter_the_Application_Id_here";
+>    ```
 > 其中：
 > - `Enter_the_Application_Id_here` - 是您註冊的應用程式所具備的應用程式識別碼。
 >
@@ -96,20 +98,22 @@ ms.locfileid: "65067780"
 
 如果您想要在 Windows 機器上嘗試快速入門：
 
-1. 在 Visual Studio 工具列中，選擇正確的平台 (可能是 **x64** 或 **x86**，但不是 ARM)。
-   > 您會看到目標裝置從「裝置」變成「本機電腦」
+1. 在 Visual Studio 工具列中，選擇正確的平台 (可能是 **x64** 或 **x86**，但不是 ARM)。 您會看到目標裝置從「裝置」變成「本機電腦」
 1. 選取偵錯 | **未經偵錯即啟動**
 
 ## <a name="more-information"></a>詳細資訊
 
 此區段提供相關快速入門的詳細資訊。
 
+### <a name="how-the-sample-works"></a>此範例的運作方式
+![示範本快速入門所產生之範例應用程式的運作方式](media/quickstart-v2-uwp/uwp-intro.svg)
+
 ### <a name="msalnet"></a>MSAL.NET
 
 MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) 是用來登入使用者並要求安全性權杖的程式庫。 API 若是由適用於開發人員的 Microsoft 身分識別平台所保護，則需使用安全性權杖來存取。 您可以在 Visual Studio 的 [套件管理員主控台] 中，透過執行下列命令來安裝 MSAL：
 
 ```powershell
-Install-Package Microsoft.Identity.Client -IncludePrerelease
+Install-Package Microsoft.Identity.Client
 ```
 
 ### <a name="msal-initialization"></a>MSAL 初始化
@@ -124,11 +128,12 @@ using Microsoft.Identity.Client;
 
 ```csharp
 public static IPublicClientApplication PublicClientApp;
-PublicClientApp = new PublicClientApplicationBuilder.Create(ClientId)
+PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
+                                                .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
                                                     .Build();
 ```
 
-> |其中： ||
+> |其中： | 描述 |
 > |---------|---------|
 > | `ClientId` | 是註冊於 Azure 入口網站中的應用程式所具備的**應用程式 (用戶端) 識別碼**。 您可以在 Azure 入口網站的應用程式 [概觀] 頁面中找到此值。 |
 
@@ -150,13 +155,13 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)
                       .ExecuteAsync();
 ```
 
-> |其中：||
+> |其中：| 描述 |
 > |---------|---------|
 > | `scopes` | 包含所要求的範圍，例如適用於 Microsoft Graph 的 `{ "user.read" }` 或適用於自訂 Web API 的 `{ "api://<Application ID>/access_as_user" }`。 |
 
 #### <a name="get-a-user-token-silently"></a>以無訊息方式取得使用者權杖
 
-在初始的 `AcquireTokenAsync` 方法之後，使用 `AcquireTokenSilent` 方法來取得權杖以存取受保護的資源。 您不應該在每次使用者需要存取資源時都要求使用者驗證其認證。 在大部分情況下，您應該以不需要與使用者進行任何互動的方式處理權杖取得和更新作業
+在初始的 `AcquireTokenInteractive` 方法之後，使用 `AcquireTokenSilent` 方法來取得權杖以存取受保護的資源。 您不應該在每次使用者需要存取資源時都要求使用者驗證其認證。 在大部分情況下，您應該以不需要與使用者進行任何互動的方式處理權杖取得和更新作業
 
 ```csharp
 var accounts = await App.PublicClientApp.GetAccountsAsync();
@@ -165,7 +170,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |其中： ||
+> |其中： | 描述 |
 > |---------|---------|
 > | `scopes` | 包含所要求的範圍，例如適用於 Microsoft Graph 的 `{ "user.read" }` 或適用於自訂 Web API 的 `{ "api://<Application ID>/access_as_user" }` |
 > | `firstAccount` | 指定快取中的第一個使用者帳戶 (MSAL 在單一應用程式中支援多個使用者) |

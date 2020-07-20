@@ -1,24 +1,23 @@
 ---
-title: 監視和管理資料管線 - Azure |Microsoft Docs
+title: 監視及管理資料管線-Azure
 description: 了解如何使用監視及管理應用程式來監視及管理 Azure Data Factory 及管線。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.assetid: f3f07bc4-6dc3-4d4d-ac22-0be62189d578
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 5b70edd4f65538b52c70881258bc500a34b04d80
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60826422"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846903"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>使用監視及管理應用程式，以監視和管理 Azure Data Factory 管線
 > [!div class="op_single_selector"]
@@ -39,7 +38,7 @@ ms.locfileid: "60826422"
 >
 
 ## <a name="launch-the-monitoring-and-management-app"></a>啟動監視及管理應用程式
-若要啟動監視及管理應用程式，針對您的 Data Factory 按一下 [Data Factory] 刀鋒視窗上的 [監視及管理] 圖格。
+若要啟動監視及管理應用程式，針對您的 Data Factory 按一下 [Data Factory]**** 刀鋒視窗上的 [監視及管理]**** 圖格。
 
 ![Data Factory 首頁上的監視磚](./media/data-factory-monitor-manage-app/MonitoringAppTile.png)
 
@@ -48,26 +47,26 @@ ms.locfileid: "60826422"
 ![監視及管理應用程式](./media/data-factory-monitor-manage-app/AppLaunched.png)
 
 > [!NOTE]
-> 如果您看到網頁瀏覽器停滯在「授權中...」，請清除 [封鎖第三方 Cookie 和站台資料] 核取方塊，或保留選取該核取方塊但建立 **login.microsoftonline.com** 的例外狀況，然後再試一次開啟應用程式。
+> 如果您看到網頁瀏覽器停滯在「授權中...」，請清除 [封鎖第三方 Cookie 和站台資料]**** 核取方塊，或保留選取該核取方塊但建立 **login.microsoftonline.com** 的例外狀況，然後再試一次開啟應用程式。
 
 
 在中間窗格的 [活動時段] 清單中，您會在每次執行活動時看到活動時段。 例如，如果您有活動排程在五個小時內每小時執行，您會看到與五個資料配量與相關聯的五個活動時段。 如果您沒有在底部的清單中看到活動時段，請執行下列作業：
  
-- 更新頂端的**開始時間**和**結束時間**篩選以符合管線的開始和結束時間，然後按一下 [套用] 按鈕。  
-- [活動時段] 清單不會自動重新整理。 按一下 [活動時段] 清單中工具列上的 [重新整理] 按鈕。  
+- 更新頂端的**開始時間**和**結束時間**篩選以符合管線的開始和結束時間，然後按一下 [套用]**** 按鈕。  
+- [活動時段] 清單不會自動重新整理。 按一下 [活動時段]**** 清單中工具列上的 [重新整理]**** 按鈕。  
 
 如果您還沒有用來測試這些步驟的 Data Factory 應用程式，請進行教學課程：[使用 Data Factory 將資料從 Blob 儲存體複製到 SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 ## <a name="understand-the-monitoring-and-management-app"></a>了解監視及管理應用程式
-左側有三個索引標籤︰[資源總管]、[監視檢視] 以及 [警示]。 預設會選取第一個索引標籤 ([資源總管])。
+左側有三個索引標籤︰[資源總管]****、[監視檢視]**** 以及 [警示]****。 預設會選取第一個索引標籤 ([資源總管]****)。
 
 ### <a name="resource-explorer"></a>資源總管
 這時會顯示下列項目：
 
 * 左窗格中的資源總管**樹狀檢視**。
 * 中間窗格頂端的**圖表檢視**。
-* 中間窗格底部的 [活動時段] 清單。
-* 右窗格中的 [屬性]、[活動時段總管] 和 [指令碼] 索引標籤。
+* 中間窗格底部的 [活動時段]**** 清單。
+* 右窗格中的 [屬性]****、[活動時段總管]**** 和 [指令碼]**** 索引標籤。
 
 在資源總管中，您可以在樹狀檢視的 Data Factory 看到所有資源 (管線、資料集、連結的服務)。 當您在 [資源總管] 中選取物件時：
 
@@ -105,7 +104,7 @@ Data Factory 的圖表檢視提供單一窗格，可用來監視和管理 Data F
 
 ![管線的內容功能表](./media/data-factory-monitor-manage-app/right-click-menu-for-pipeline.png)
 
-按一下 [開啟管線] 選項，查看管線中的所有活動。 
+按一下 [開啟管線]**** 選項，查看管線中的所有活動。 
 
 ![開啟管線功能表](./media/data-factory-monitor-manage-app/OpenPipelineMenu.png)
 
@@ -119,19 +118,19 @@ Data Factory 的圖表檢視提供單一窗格，可用來監視和管理 Data F
 
 ![活動時段快顯視窗](./media/data-factory-monitor-manage-app/ActivityWindowsPopup.png)
 
-只要按一下某個活動時段，即可在右窗格的 [屬性] 視窗中看到該活動時段的詳細資料。
+只要按一下某個活動時段，即可在右窗格的 [屬性]**** 視窗中看到該活動時段的詳細資料。
 
 ![活動時段屬性](./media/data-factory-monitor-manage-app/ActivityWindowProperties.png)
 
-在右窗格中，切換到 [活動時段總管] 索引標籤，即可看到更多詳細資料。
+在右窗格中，切換到 [活動時段總管]**** 索引標籤，即可看到更多詳細資料。
 
 ![活動時段總管](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
 
-您也可以在 [嘗試次數] 區段中看到每個活動執行嘗試的**解析的變數**。
+您也可以在 [嘗試次數]**** 區段中看到每個活動執行嘗試的**解析的變數**。
 
 ![解析的變數](./media/data-factory-monitor-manage-app/ResolvedVariables.PNG)
 
-切換至 [指令碼]  索引標籤，以查看所選物件的 JSON 指令碼定義。   
+切換至 [指令碼] **** 索引標籤，以查看所選物件的 JSON 指令碼定義。   
 
 ![指令碼索引標籤](./media/data-factory-monitor-manage-app/ScriptTab.png)
 
@@ -145,7 +144,7 @@ Data Factory 的圖表檢視提供單一窗格，可用來監視和管理 Data F
 
 ![活動時段總管的向左/向右箭號](./media/data-factory-monitor-manage-app/ActivityWindowExplorerLeftRightArrows.png)
 
-在 [圖表檢視] 的底部，您會看到下列按鈕：放大、縮小、縮放至適當比例、顯示比例 100%、鎖定配置。 [鎖定配置] 按鈕會防止您在 [圖表檢視] 中不小心移動了資料表和管線。 此按鈕預設為開啟。 但您可以關閉該設定，以便移動圖表中的實體。 當您關閉該設定，您可以使用上一個按鈕來自動把資料表和管線移動到適當的地方。 您也可以使用滑鼠滾輪來放大或縮小。
+在 [圖表檢視] 的底部，您會看到 [放大]、[縮小]、[縮放至適當比例]、[顯示比例 100%]、[鎖定配置] 等按鈕。 [鎖定配置]**** 按鈕會防止您在 [圖表檢視] 中不小心移動了資料表和管線。 此按鈕預設為開啟。 但您可以關閉該設定，以便移動圖表中的實體。 當您關閉該設定，您可以使用上一個按鈕來自動把資料表和管線移動到適當的地方。 您也可以使用滑鼠滾輪來放大或縮小。
 
 ![圖表檢視縮放命令](./media/data-factory-monitor-manage-app/DiagramViewZoomCommands.png)
 
@@ -160,7 +159,7 @@ Data Factory 的圖表檢視提供單一窗格，可用來監視和管理 Data F
 
 <table>
 <tr>
-    <th align="left">狀態</th><th align="left">子狀態</th><th align="left">描述</th>
+    <th align="left">狀態</th><th align="left">子狀態</th><th align="left">Description</th>
 </tr>
 <tr>
     <td rowspan="8">等候</td><td>ScheduleTime</td><td>活動時段執行的時間還沒到。</td>
@@ -178,7 +177,7 @@ Data Factory 的圖表檢視提供單一窗格，可用來監視和管理 Data F
 <td>ActivityResume</td><td>活動已暫停，除非活動繼續，否則無法執行活動時段。</td>
 </tr>
 <tr>
-<td>Retry</td><td>正在重試活動執行。</td>
+<td>重試</td><td>正在重試活動執行。</td>
 </tr>
 <tr>
 <td>驗證</td><td>驗證尚未啟動。</td>
@@ -194,10 +193,10 @@ Data Factory 的圖表檢視提供單一窗格，可用來監視和管理 Data F
 <td>系統正在處理該活動時段。</td>
 </tr>
 <tr>
-<td rowspan="4">Failed</td><td>TimedOut</td><td>活動執行超過活動所允許的時間。</td>
+<td rowspan="4">失敗</td><td>TimedOut</td><td>活動執行超過活動所允許的時間。</td>
 </tr>
 <tr>
-<td>Canceled</td><td>使用者動作已取消活動時段。</td>
+<td>已取消</td><td>使用者動作已取消活動時段。</td>
 </tr>
 <tr>
 <td>驗證</td><td>驗證失敗。</td>
@@ -208,7 +207,7 @@ Data Factory 的圖表檢視提供單一窗格，可用來監視和管理 Data F
 <td>就緒</td><td>-</td><td>活動時段已可供使用。</td>
 </tr>
 <tr>
-<td>Skipped</td><td>-</td><td>活動時段未處理。</td>
+<td>已略過</td><td>-</td><td>活動時段未處理。</td>
 </tr>
 <tr>
 <td>None</td><td>-</td><td>曾經以不同的狀態存在，但目前已重設的活動時段。</td>
@@ -216,22 +215,22 @@ Data Factory 的圖表檢視提供單一窗格，可用來監視和管理 Data F
 </table>
 
 
-當您按一下清單中的某個活動時段時，您會在右側的 [活動時段總管] 或 [屬性] 視窗中看到其詳細資料。
+當您按一下清單中的某個活動時段時，您會在右側的 [活動時段總管]**** 或 [屬性]**** 視窗中看到其詳細資料。
 
 ![活動時段總管](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
 
 ### <a name="refresh-activity-windows"></a>重新整理活動時段
 詳細資料並不會自動重新整理，因此您必須使用命令列上的 [重新整理] 按鈕 (第二個按鈕) 來手動重新整理活動時段清單。  
 
-### <a name="properties-window"></a>[屬性] 視窗
+### <a name="properties-window"></a>屬性視窗
 [屬性] 視窗在監視及管理應用程式最右側的窗格中。
 
-![[屬性] 視窗](./media/data-factory-monitor-manage-app/PropertiesWindow.png)
+![屬性視窗](./media/data-factory-monitor-manage-app/PropertiesWindow.png)
 
 它會顯示您在 [資源總管] \(樹狀檢視)、[圖表檢視] 或 [活動時段清單] 中所選取項目的屬性。
 
 ### <a name="activity-window-explorer"></a>活動時段總管
-[活動時段總管] 視窗在監視及管理應用程式最右側的窗格中。 它會顯示您在 [活動時段] 快顯視窗或 [活動時段清單] 中所選取活動時段的詳細資料。
+[活動時段總管]**** 視窗在監視及管理應用程式最右側的窗格中。 它會顯示您在 [活動時段] 快顯視窗或 [活動時段清單] 中所選取活動時段的詳細資料。
 
 ![活動時段總管](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-3.png)
 
@@ -240,22 +239,22 @@ Data Factory 的圖表檢視提供單一窗格，可用來監視和管理 Data F
 您可以使用底部窗格中的工具列按鈕重新執行活動時段，或是重新整理窗格中的詳細資料。
 
 ### <a name="script"></a>指令碼
-您可以使用 [指令碼] 索引標籤，檢視所選取 Data Factory 實體 (連結服務、資料集或管線) 的 JSON 定義。
+您可以使用 [指令碼]**** 索引標籤，檢視所選取 Data Factory 實體 (連結服務、資料集或管線) 的 JSON 定義。
 
 ![指令碼索引標籤](./media/data-factory-monitor-manage-app/ScriptTab.png)
 
 ## <a name="use-system-views"></a>使用系統檢視
 監視及管理應用程式包含預先建置的系統檢視 (**最近的活動時段**、**失敗的活動時段**、**進行中的活動時段**)，可讓您檢視 Data Factory 最近/失敗/進行中的活動時段。
 
-只要按一下左側的 [監視檢視]  索引標籤，就能切換到 [監視檢視]。
+只要按一下左側的 [監視檢視] **** 索引標籤，就能切換到 [監視檢視]。
 
 ![[監視檢視] 索引標籤](./media/data-factory-monitor-manage-app/MonitoringViewsTab.png)
 
 目前，有三個支援的系統檢視。 請選取某個選項，以便在 [活動時段] 清單 (位於中間窗格底部) 中查看最近的活動時段、失敗的活動時段，或進行中的活動時段。
 
-當您選取 [最近的活動時段] 選項時，您會看到以 [上次嘗試時間] 的遞減順序排列之所有最近的活動時段。
+當您選取 [最近的活動時段]**** 選項時，您會看到以 [上次嘗試時間]**** 的遞減順序排列之所有最近的活動時段。
 
-您可以使用 [失敗的活動時段]  檢視，查看清單中所有失敗的活動時段。 選取清單中某個失敗的活動時段，就能在 [屬性] 視窗或 [活動時段總管] 中看到該活動時段的詳細資料。 您也可以下載失敗的活動時段的任何記錄。
+您可以使用 [失敗的活動時段] **** 檢視，查看清單中所有失敗的活動時段。 選取清單中某個失敗的活動時段，就能在 [屬性]**** 視窗或 [活動時段總管]**** 中看到該活動時段的詳細資料。 您也可以下載失敗的活動時段的任何記錄。
 
 ## <a name="sort-and-filter-activity-windows"></a>排序與篩選活動時段
 在命令列中變更**開始時間**及**結束時間**設定來篩選活動時段。 當您變更開始時間及結束時間之後，請按一下結束時間旁邊的按鈕來重新整理 [活動時段] 清單。
@@ -267,11 +266,11 @@ Data Factory 的圖表檢視提供單一窗格，可用來監視和管理 Data F
 >
 >
 
-請在 [活動時段清單] 中，按一下某個資料行的名稱 (例如：狀態)。
+請在 [活動時段清單] **** 中，按一下某個資料行的名稱 (例如：[狀態])。
 
 ![活動時段清單的資料行功能表](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
 
-您可以執行下列動作：
+您可以執行下列工作：
 
 * 以遞增順序排序。
 * 以遞減順序排序。
@@ -287,10 +286,10 @@ Data Factory 的圖表檢視提供單一窗格，可用來監視和管理 Data F
 
 ## <a name="perform-batch-actions"></a>執行批次動作
 ### <a name="rerun-selected-activity-windows"></a>重新執行已選取的活動時段
-選取某個活動時段、按一下第一個命令列按鈕旁的向下箭號，然後選取 [重新執行] / [搭配管線上游來重新執行]。 當您選取 [搭配管線上游來重新執行] 時，系統也會傳回所有上游的活動時段。
+選取 [活動] 視窗，按一下第一個命令列按鈕的向下箭號，然後選取 [**重新**執行  /  **管線中的上游重新**執行]。 當您選取 [搭配管線上游來重新執行]**** 時，系統也會傳回所有上游的活動時段。
     ![重新執行某個活動時段](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
-您也可以選取清單中的數個活動時段，然後同時重新執行這些活動時段。 您可能會想要根據狀態來篩選活動時段 (例如：[失敗])，然後在修正導致活動時段執行失敗的問題之後，重新執行失敗的活動時段。 請參閱下一節來取得如何篩選清單中活動時段的詳細資料。  
+您也可以選取清單中的數個活動時段，然後同時重新執行這些活動時段。 您可能會想要根據狀態 (例如 [失敗]****) 來篩選活動時段，然後在修正導致活動時段執行失敗的問題之後，重新執行失敗的活動時段。 請參閱下一節來取得如何篩選清單中活動時段的詳細資料。  
 
 ### <a name="pauseresume-multiple-pipelines"></a>暫停/繼續多個管線
 您可以使用 Ctrl 鍵，以多重選取兩個以上的管線。 您可以使用命令列按鈕 (在下圖以紅色矩形反白顯示) 來暫停/繼續這些管線。

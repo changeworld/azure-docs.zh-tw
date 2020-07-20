@@ -1,25 +1,16 @@
 ---
-title: 在 Windows 上設定 Azure Service Fabric Linux 叢集 | Microsoft Docs
+title: 在 Windows 上設定 Azure Service Fabric Linux 叢集
 description: 本文說明如何設定在 Windows 開發電腦上執行的 Service Fabric Linux 叢集。 這特別適用於跨平台開發。
-services: service-fabric
-documentationcenter: .net
 author: suhuruli
-manager: mfussell
-editor: ''
-ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: e700250a6ebcdb82f99c1b460a510811d7ceb96c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 91d055a480748ef012120aac4d329d474491e2c5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60719935"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258576"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>在 Windows 開發人員電腦上設定 Linux Service Fabric 叢集
 
@@ -30,7 +21,7 @@ ms.locfileid: "60719935"
 
 * 至少 4 GB 的 RAM
 * 最新版 [Docker](https://store.docker.com/editions/community/docker-ce-desktop-windows)
-* Docker 必须在 Linux 模式下运行
+* Docker 必須在 Linux 模式上執行
 
 >[!TIP]
 > * 您可以遵循官方 Docker [文件](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions)中所述的步驟，在 Windows 上安裝 Docker。 
@@ -54,7 +45,7 @@ ms.locfileid: "60719935"
 2. 在新目錄中建立一個名為 `Dockerfile` 的檔案，以建置 Service Fabric 映像：
 
     ```Dockerfile
-    FROM microsoft/service-fabric-onebox
+    FROM mcr.microsoft.com/service-fabric/onebox:latest
     WORKDIR /home/ClusterDeployer
     RUN ./setup.sh
     #Generate the local
@@ -95,10 +86,10 @@ ms.locfileid: "60719935"
     >
     >如果您的應用程式正在特定連接埠上接聽，這些連接埠就必須使用額外的 `-p` 標籤來加以指定。 例如，如果您的應用程式正在連接埠 8080 上接聽，請新增下列 `-p` 標籤：
     >
-    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
+    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
     >
 
-5. 叢集會在短時間內啟動，您可以使用下列命令來檢視記錄，或跳到儀表板檢視叢集健康情況 [http://localhost:19080](http://localhost:19080)：
+5. 叢集會在短時間內啟動，您可使用下列命令來檢視記錄，或跳至儀表板來檢視叢集健康狀態 `http://localhost:19080`：
 
     ```powershell 
     docker logs sftestcluster
@@ -122,7 +113,7 @@ ms.locfileid: "60719935"
  * DNS 服務未執行，且不受支援 ([問題 #132](https://github.com/Microsoft/service-fabric/issues/132))
 
 ## <a name="next-steps"></a>後續步驟
-* 開始使用 [Eclipse](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-eclipse)
+* 開始使用 [Eclipse](./service-fabric-get-started-eclipse.md)
 * 查看其他 [Java 範例](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 

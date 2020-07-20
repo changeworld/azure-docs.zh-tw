@@ -9,20 +9,19 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: bc791fea1dfd184749e84cb7b7a912972c6a9f12
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f8b2238eb0fab9aeeb42d11b4176c0d681b5f8e5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60657592"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "70073531"
 ---
 # <a name="create-subscriptions-in-azure-api-management"></a>在 Azure API 管理中建立訂用帳戶
 
-透過 Azure API 管理發佈 API 時，安全地存取這些 API 的簡單常用方式是使用訂用帳戶金鑰。 必須使用已發佈 API 的用戶端應用程式在呼叫這些 API 時，必須在 HTTP 要求中包含有效的訂用帳戶金鑰。 若要取得用於存取 API 的訂用帳戶金鑰，則需要訂用帳戶。 如需訂用帳戶的詳細資訊，請參閱 [Azure API 管理中的訂用帳戶](api-management-subscriptions.md)。
+透過 Azure API 管理發佈 API 時，安全地存取這些 API 的簡單常用方式是使用訂用帳戶金鑰。 必須使用已發佈 API 的用戶端應用程式在呼叫這些 API 時，必須在 HTTP 要求中包含有效的訂用帳戶金鑰。 若要取得用於存取 API 的訂用帳戶金鑰，則需要訂用帳戶。 如需訂用帳戶的詳細資訊，請參閱[AZURE API 管理中](api-management-subscriptions.md)的訂用帳戶。
 
 本文將逐步引導您在 Azure 入口網站中建立訂用帳戶。
 
@@ -30,16 +29,16 @@ ms.locfileid: "60657592"
 
 若要採取本文中的步驟，必要條件如下：
 
-+ [建立 API 管理執行個體](get-started-create-service-instance.md)。
++ [建立 API 管理實例](get-started-create-service-instance.md)。
 + 了解 [API 管理中的訂用帳戶](api-management-subscriptions.md)。
 
 ## <a name="create-a-new-subscription"></a>建立新的訂用帳戶
 
-1. 選取左邊功能表的 [訂用帳戶]。
-2. 選取 [訂用帳戶]。
+1. 選取左邊功能表的 [訂用帳戶]****。
+2. 選取 [訂用帳戶]****。
 3. 提供訂用帳戶的名稱並選取範圍。
-4. （可选）选择订阅是否应当与某个用户关联。
-5. 選取 [ **儲存**]。
+4. （選擇性）選擇訂用帳戶是否應與使用者相關聯。
+5. 選取 [儲存]。
 
 ![彈性的訂用帳戶](./media/api-management-subscriptions/flexible-subscription.png)
 

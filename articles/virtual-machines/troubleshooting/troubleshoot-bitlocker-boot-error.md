@@ -4,27 +4,27 @@ description: 了解如何針對 Azure VM 中的 BitLocker 開機錯誤進行疑�
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: v-jesits
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 03/25/2019
+ms.date: 08/23/2019
 ms.author: genli
-ms.openlocfilehash: 5ac40e3c98da613b53c06908bcde927cc2e81b08
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.custom: has-adal-ref
+ms.openlocfilehash: e0e0d9bfe46a473210b89701b5a8c56e999771d3
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64684765"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132959"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 上的 BitLocker 開機錯誤
 
  本文說明當您在 Microsoft Azure 中啟動 Windows 虛擬機器 (VM) 時，可能會遇到的 BitLocker 錯誤。
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="symptom"></a>徵狀
 
@@ -41,14 +41,14 @@ ms.locfileid: "64684765"
 
 如果 VM 無法找到 BitLocker 復原金鑰 (BEK) 檔案來將已加密的磁碟解密，就可能發生此問題。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 若要解決此問題，請先將 VM 停止並解除配置，再加以重新啟動。 此作業會強制讓 VM 從 Azure Key Vault 擷取 BEK 檔案，然後放到加密的磁碟中。 
 
 如果此方法未解決問題，請遵循下列步驟來手動還原 BEK 檔案：
 
 1. 擷取受影響虛擬機器系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。
-2. [將系統磁碟連結至由 BitLocker 加密的復原 VM](troubleshoot-recovery-disks-portal-windows.md)。 必須這麼做才能執行 [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) 命令，原因是此命令只能在 BitLocker 加密 VM 中使用。
+2. [將系統磁碟連結至復原 VM](troubleshoot-recovery-disks-portal-windows.md)。 若要在步驟7中執行[manage-bde 命令，](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde)必須在復原 VM 中啟用**BitLocker 磁碟機加密**功能。
 
     當您連結至受控磁碟時，可能會收到「包含加密設定，因此無法作為資料磁碟」的錯誤訊息。 在此情況下，請執行下列程式碼以重新試著連結磁碟：
 
@@ -83,7 +83,7 @@ ms.locfileid: "64684765"
     ```powershell
     $vmName = "myVM"
     $vault = "myKeyVault"
-    Get-AzureKeyVaultSecret -VaultName $vault | where {($_.Tags.MachineName -eq $vmName) -and ($_.ContentType -match 'BEK')} `
+    Get-AzKeyVaultSecret -VaultName $vault | where {($_.Tags.MachineName -eq $vmName) -and ($_.ContentType -match 'BEK')} `
             | Sort-Object -Property Created `
             | ft  Created, `
                 @{Label="Content Type";Expression={$_.ContentType}}, `
@@ -104,49 +104,54 @@ ms.locfileid: "64684765"
 
     如果您看到兩個重複的磁碟區，時間戳記較新的磁碟區是復原 VM 目前使用的 BEK 檔案。
 
-    如果 [內容類型] 值是 [包裝的 BEK]，請移至[金鑰加密金鑰 (KEK) 案例](#key-encryption-key-scenario)。
+    如果 [內容類型]**** 值是 [包裝的 BEK]****，請移至[金鑰加密金鑰 (KEK) 案例](#key-encryption-key-scenario)。
 
-    您已得到磁碟機的 BEK 檔案名稱，接下來您必須建立 secret-file-name.BEK 檔案，以將磁碟機解除鎖定。 
+    您已得到磁碟機的 BEK 檔案名稱，接下來您必須建立 secret-file-name.BEK 檔案，以將磁碟機解除鎖定。
 
 6.  將 BEK 檔案下載到復原磁碟。 下列範例會將 BEK 檔案儲存至 C:\BEK 資料夾。 請先確定 `C:\BEK\` 路徑存在，再執行指令碼。
 
     ```powershell
     $vault = "myKeyVault"
-    $bek = " EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK"
-    $keyVaultSecret = Get-AzureKeyVaultSecret -VaultName $vault -Name $bek
+    $bek = " EF7B2F5A-50C6-4637-9F13-7F599C12F85C"
+    $keyVaultSecret = Get-AzKeyVaultSecret -VaultName $vault -Name $bek
     $bekSecretBase64 = $keyVaultSecret.SecretValueText
     $bekFileBytes = [Convert]::FromBase64String($bekSecretbase64)
     $path = "C:\BEK\DiskEncryptionKeyFileName.BEK"
     [System.IO.File]::WriteAllBytes($path,$bekFileBytes)
     ```
 
-7.  若要使用 BEK 檔案將連結的磁碟解除鎖定，請執行下列命令：
+7.  若要使用 BEK 檔案來解除鎖定已連接的磁片，請執行下列命令。
 
     ```powershell
     manage-bde -unlock F: -RecoveryKey "C:\BEK\EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK
     ```
     在此範例中，連結的 OS 磁碟是磁碟機 F。請確定您使用的是正確的磁碟機代號。 
 
-    - 如果成功地使用 BEK 金鑰將磁碟解除鎖定， 我們可以認為 BItLocker 問題已解決。 
+8. 使用 BEK 金鑰成功解除鎖定磁片之後，請從復原 VM 卸離磁片，然後使用這個新的 OS 磁片重新建立 VM。
 
-    - 如果使用 BEK 金鑰未能將該磁碟解除鎖定，則可以使用暫止保護，藉由執行下列命令將 BitLocker 暫時關閉
-    
-        ```powershell
-        manage-bde -protectors -disable F: -rc 0
-        ```      
-    - 如果您要使用 dytem 磁碟來重建 VM，則必須將磁碟機完全解密。 若要這樣做，請執行下列命令：
+    > [!NOTE]
+    > 使用磁片加密的 Vm 不支援交換 OS 磁片。
 
-        ```powershell
-        manage-bde -off F:
-        ```
-8.  將磁碟與復原 VM 中斷連結，然後再將磁碟當作系統磁碟重新連結至受影響的 VM。 如需詳細資訊，請參閱[將 OS 磁碟連結至復原 VM，以針對 Windows VM 進行疑難排解](troubleshoot-recovery-disks-windows.md)。
+9. 如果新的 VM 仍無法正常開機，請在解除鎖定磁片磁碟機之後，嘗試下列其中一個步驟：
+
+    - 藉由執行下列動作，暫停保護以暫時關閉 BitLocker：
+
+    ```console
+    manage-bde -protectors -disable F: -rc 0
+    ```
+
+    - 完整解密磁片磁碟機。 若要這樣做，請執行下列命令：
+
+    ```console
+    manage-bde -off F:
+    ```
 
 ### <a name="key-encryption-key-scenario"></a>金鑰加密金鑰案例
 
 若為金鑰加密金鑰案例，請遵循下列步驟：
 
 1. 確定所登入的使用者帳戶需要 Key Vault 存取原則 (**使用者|金鑰權限|密碼編譯作業|解除包裝金鑰**) 中的「解除包裝」權限。
-2. 將下列指令碼儲存至 .PS1 檔案：
+2. 將下列腳本儲存至。PS1 檔案：
 
     ```powershell
     #Set the Parameters for the script
@@ -184,6 +189,7 @@ ms.locfileid: "64684765"
     # Create Authentication Context tied to Azure AD Tenant
     $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
     # Acquire token
+    $platformParameters = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.PlatformParameters" -ArgumentList "Auto"
     $authResult = $authContext.AcquireTokenAsync($resourceAppIdURI, $clientId, $redirectUri, $platformParameters).result
     # Generate auth header 
     $authHeader = $authResult.CreateAuthorizationHeader()
@@ -198,7 +204,7 @@ ms.locfileid: "64684765"
     ########################################################################################################################
 
     #Get wrapped BEK and place it in JSON object to send to KeyVault REST API
-    $keyVaultSecret = Get-AzureKeyVaultSecret -VaultName $keyVaultName -Name $secretName
+    $keyVaultSecret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name $secretName
     $wrappedBekSecretBase64 = $keyVaultSecret.SecretValueText
     $jsonObject = @"
     {
@@ -208,7 +214,7 @@ ms.locfileid: "64684765"
     "@
 
     #Get KEK Url
-    $kekUrl = (Get-AzureKeyVaultKey -VaultName $keyVaultName -Name $kekName).Key.Kid;
+    $kekUrl = (Get-AzKeyVaultKey -VaultName $keyVaultName -Name $kekName).Key.Kid;
     $unwrapKeyRequestUrl = $kekUrl+ "/unwrapkey?api-version=2015-06-01";
 
     #Call KeyVault REST API to Unwrap 
@@ -231,21 +237,21 @@ ms.locfileid: "64684765"
     $bekFileBytes = [System.Convert]::FromBase64String($base64Bek);
     [System.IO.File]::WriteAllBytes($bekFilePath,$bekFileBytes)
     ```
-3. 設定參數。 此指令碼會處理 KEK 祕密以建立 BEK 金鑰，再將它儲存到復原 VM 上的本機資料夾。
+3. 設定參數。 此指令碼會處理 KEK 祕密以建立 BEK 金鑰，再將它儲存到復原 VM 上的本機資料夾。 如果您在執行腳本時收到錯誤，請參閱[腳本疑難排解](#script-troubleshooting)一節。
 
 4. 指令碼開始時，您會看到下列輸出：
 
-        GAC    Version        Location                                                                              
-        ---    -------        --------                                                                              
-        False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\...
-        False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\...
+    GAC 版本位置                                                                              
+    ---    -------        --------                                                                              
+    False v 4.0.30319 C:\Program Files\WindowsPowerShell\Modules\Az.Accounts \. .。 False v 4.0.30319 C:\Program Files\WindowsPowerShell\Modules\Az.Accounts \. .。
 
     指令碼完成時，您會看到下列輸出︰
 
-        VERBOSE: POST https://myvault.vault.azure.net/keys/rondomkey/<KEY-ID>/unwrapkey?api-
-        version=2015-06-01 with -1-byte payload
-        VERBOSE: received 360-byte response of content type application/json; charset=utf-8
-
+    ```output
+    VERBOSE: POST https://myvault.vault.azure.net/keys/rondomkey/<KEY-ID>/unwrapkey?api-
+    version=2015-06-01 with -1-byte payload
+    VERBOSE: received 360-byte response of content type application/json; charset=utf-8
+    ```
 
 5. 若要使用 BEK 檔案將連結的磁碟解除鎖定，請執行下列命令：
 
@@ -254,17 +260,43 @@ ms.locfileid: "64684765"
     ```
     在此範例中，連結的 OS 磁碟是磁碟機 F。請確定您使用的是正確的磁碟機代號。 
 
-    - 如果成功地使用 BEK 金鑰將磁碟解除鎖定， 我們可以認為 BItLocker 問題已解決。 
+6. 使用 BEK 金鑰成功解除鎖定磁片之後，請從復原 VM 卸離磁片，然後使用這個新的 OS 磁片重新建立 VM。 
 
-    - 如果使用 BEK 金鑰未能將該磁碟解除鎖定，則可以使用暫止保護，藉由執行下列命令將 BitLocker 暫時關閉
-    
-        ```powershell
-        manage-bde -protectors -disable F: -rc 0
-        ```      
-    - 如果您要使用 dytem 磁碟來重建 VM，則必須將磁碟機完全解密。 若要這樣做，請執行下列命令：
+    > [!NOTE]
+    > 使用磁片加密的 Vm 不支援交換 OS 磁片。
 
-        ```powershell
-        manage-bde -off F:
-        ```
+7. 如果新的 VM 仍無法正常開機，請在解除鎖定磁片磁碟機之後，嘗試下列其中一個步驟：
 
-6. 將磁碟與復原 VM 中斷連結，然後再將磁碟當作系統磁碟重新連結至受影響的 VM。 如需詳細資訊，請參閱[將 OS 磁碟連結至復原 VM，以針對 Windows VM 進行疑難排解](troubleshoot-recovery-disks-windows.md)。
+    - 藉由執行下列命令，暫停保護以暫時關閉 BitLocker：
+
+    ```console
+    manage-bde -protectors -disable F: -rc 0
+    ```
+
+    - 完整解密磁片磁碟機。 若要這樣做，請執行下列命令：
+
+    ```console
+    manage-bde -off F:
+    ```
+
+## <a name="script-troubleshooting"></a>腳本疑難排解
+
+**錯誤：無法載入檔案或元件**
+
+之所以發生此錯誤，是因為 ADAL 元件的路徑錯誤。 如果僅針對目前的使用者安裝 AZ 模組，ADAL 元件將位於 `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>` 。
+
+您也可以搜尋 `Az.Accounts` 資料夾來尋找正確的路徑。
+
+**錯誤： AzKeyVaultSecret 或 Get-AzKeyVaultSecret 無法辨識為 Cmdlet 的名稱**
+
+如果您使用舊的 AZ PowerShell 模組，您必須將這兩個命令變更為 `Get-AzureKeyVaultSecret` 和 `Get-AzureKeyVaultSecret` 。
+
+**參數範例**
+
+| 參數  | 值範例  |註解   |
+|---|---|---|
+|  $keyVaultName | myKeyVault2112852926  | 金鑰保存庫的名稱，用來儲存金鑰 |
+|$kekName   |mykey   | 用來加密 VM 的金鑰名稱|
+|$secretName   |7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D  | VM 金鑰的密碼名稱|
+|$bekFilePath   |c:\bek\7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D.BEK |用來寫入 BEK 檔的路徑。|
+|$adTenant  |contoso.onmicrosoft.com   | 裝載金鑰保存庫之 Azure Active Directory 的 FQDN 或 GUID |

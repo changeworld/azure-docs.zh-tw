@@ -1,24 +1,23 @@
 ---
-title: 利用 Azure 網路監看員進行連線疑難排解 - Azure 入口網站 | Microsoft Docs
+title: 疑難排解連接-Azure 入口網站
+titleSuffix: Azure Network Watcher
 description: 了解如何運用 Azure 入口網站，來使用 Azure 網路監看員的連線疑難排解功能。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2017
-ms.author: kumud
-ms.openlocfilehash: 783bcd0cdc97328f16c4a0defa18daa46a065842
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: a16e99df57da66d2633947f8aecdf1d2cef9ab15
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702009"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737405"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>使用 Azure 入口網站利用 Azure 網路監看員進行連線疑難排解
 
@@ -44,15 +43,15 @@ ms.locfileid: "64702009"
 
 這個範例會檢查透過連接埠 80 的目的地虛擬機器連線。
 
-瀏覽至您的網路監看員，然後按一下 [連線疑難排解]。 選取要作為連線能力檢查起點的虛擬機器。 在 [目的地] 區段中選擇 [選取虛擬機器]，然後選擇要測試的正確虛擬機器和連接埠。
+瀏覽至您的網路監看員，然後按一下 [連線疑難排解]****。 選取要作為連線能力檢查起點的虛擬機器。 在 [目的地]**** 區段中選擇 [選取虛擬機器]****，然後選擇要測試的正確虛擬機器和連接埠。
 
-按一下 [檢查] 之後，系統就會檢查指定連接埠上虛擬機器之間的連線能力。 在範例中，目的地 VM 無法連線，因此會顯示躍點清單。
+按一下 [檢查]**** 之後，系統就會檢查指定連接埠上虛擬機器之間的連線能力。 在範例中，目的地 VM 無法連線，因此會顯示躍點清單。
 
 ![查看虛擬機器的連線能力結果][1]
 
 ## <a name="check-remote-endpoint-connectivity"></a>檢查遠端端點的連線能力
 
-若要檢查遠端端點的連線能力和延遲，請在 [目的地] 區段中選擇 [手動指定] 選項按鈕，輸入 URL 和連接埠，然後按一下 [檢查]。  這會用於網站與儲存體端點之類的遠端端點。
+若要檢查遠端端點的連線能力和延遲，請在 [目的地]**** 區段中選擇 [手動指定]**** 選項按鈕，輸入 URL 和連接埠，然後按一下 [檢查]****。  這會用於網站與儲存體端點之類的遠端端點。
 
 ![查看網站的連線能力結果][2]
 
@@ -60,7 +59,7 @@ ms.locfileid: "64702009"
 
 檢視[建立由警示觸發的封包擷取](network-watcher-alert-triggered-packet-capture.md)來了解如何透過虛擬機器警示自動化封包擷取
 
-造訪[檢查 IP 流量驗證](diagnose-vm-network-traffic-filtering-problem.md)來得知 VM 是否允許特定流量流入或流出
+造訪[檢查 IP 流量驗證](diagnose-vm-network-traffic-filtering-problem.md)來尋找 VM 是否允許特定流量流入或流出
 
 [1]: ./media/network-watcher-connectivity-portal/figure1.png
 [2]: ./media/network-watcher-connectivity-portal/figure2.png

@@ -9,11 +9,11 @@ ms.date: 07/18/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 078d9548b4fd7e2a73fc4b71cd4774986ccceaee
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56653589"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "67174410"
 ---
 ## <a name="clean-up-resources"></a>清除資源
 

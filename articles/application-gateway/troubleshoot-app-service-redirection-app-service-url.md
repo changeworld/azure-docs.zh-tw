@@ -1,58 +1,61 @@
 ---
-title: App Service-重新導向至 App Service 的 URL 使用的 Azure 應用程式閘道進行疑難排解
-description: 本文介绍如何排查将 Azure 应用程序网关与 Azure 应用服务配合使用时出现的重定向问题
+title: 針對重新導向至 App Service URL 進行疑難排解
+titleSuffix: Azure Application Gateway
+description: 本文提供有關如何在搭配 Azure App Service 使用 Azure 應用程式閘道時，針對重新導向問題進行疑難排解的資訊。
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
-ms.date: 02/22/2019
+ms.topic: troubleshooting
+ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: f456cfec82a315a2be877a52e4f3f1850b992736
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2af52d1e7c211ccc0b5c18ed1ecda66d46d80786
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60715164"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806487"
 ---
-# <a name="troubleshoot-application-gateway-with-app-service"></a>排查包含应用服务的应用程序网关的问题
+# <a name="troubleshoot-app-service-issues-in-application-gateway"></a>針對應用程式閘道中的 App Service 問題進行疑難排解
 
-了解如何诊断和解决充当后端服务器的应用程序网关和应用服务遇到的问题。
+瞭解如何診斷並解決當您使用 Azure App Service 做為 Azure 應用程式閘道的後端目標時可能會遇到的問題。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
-本文介绍如何排查以下问题：
+在本文中，您將瞭解如何針對下列問題進行疑難排解：
 
 > [!div class="checklist"]
-> * 有重定向时，应用服务的 URL 公开在浏览器中
-> * App Service 的 ARRAffinity Cookie 的網域設為應用程式服務主機名稱 (example.azurewebsites.net) 而不是原始主機
+> * 當有重新導向時，就會在瀏覽器中公開 app service URL。
+> * App service ARRAffinity cookie 網域會設定為 app service 主機名稱 example.azurewebsites.net，而不是原始主機。
 
-在应用程序网关后端池中配置面向公众的应用服务时，如果在应用程序代码中配置了重定向，访问应用程序网关时你可能会看到，浏览器会直接将你重定向到应用服务 URL。
+當後端應用程式傳送重新導向回應時，您可能會想要將用戶端重新導向至不同于後端應用程式所指定的 URL。 當 app service 裝載于應用程式閘道後方時，您可能會想要這麼做，而且需要用戶端重新導向至其相對路徑。 例如，從 contoso.azurewebsites.net/path1 重新導向至 contoso.azurewebsites.net/path2。 
 
-此问题的主要可能原因如下：
+當 app service 傳送重新導向回應時，它會在其回應的位置標頭中使用與它從應用程式閘道接收之要求中的相同主機名稱。 例如，用戶端會直接向 contoso.azurewebsites.net/path2 提出要求，而不是透過應用程式閘道 contoso.com/path2。 您不想要略過應用程式閘道。
 
-- 在应用服务中配置了重定向。 只需在请求中添加一个尾随的斜杠即可配置重定向。
-- Azure AD 身份验证导致重定向。
-- 在应用程序网关的 HTTP 设置中启用了“从后端地址中选取主机名”开关。
-- 未将自定义域注册到应用服务。
+發生此問題的主要原因如下：
 
-此外，當您使用應用程式閘道背後的應用程式服務，而且您用來存取應用程式閘道的自訂網域，可能會看到由 App Service 設定 ARRAffinity cookie 的網域值將會執行"example.azurewebsites.net 」 網域名稱。 如果希望原始主机名也是 Cookie 域，则请按本文中解决方案的要求操作。
+- 您已在 app service 上設定重新導向。 重新導向可以簡單到將尾端斜線加入至要求。
+- 您有 Azure Active Directory 驗證，這會導致重新導向。
+
+此外，當您使用應用程式閘道後方的應用程式服務時，與應用程式閘道（example.com）相關聯的功能變數名稱會與 app service 的功能變數名稱（例如 example.azurewebsites.net）不同。 App service 所設定之 ARRAffinity cookie 的定義域值會攜帶 example.azurewebsites.net 功能變數名稱，這不是必要的名稱。 原始的主機名稱 example.com 應該是 cookie 中的功能變數名稱值。
 
 ## <a name="sample-configuration"></a>範例組態
 
-- HTTP 侦听器：“基本”或“多站点”
-- 后端地址池：App Service 方案
-- HTTP 设置：已启用“从后端地址中选取主机名”
-- 探测：已启用“从 HTTP 设置中选取主机名”
+- HTTP 接聽程式：基本或多網站
+- 後端位址集區： App Service
+- HTTP 設定：**從已啟用的後端位址挑選主機名稱**
+- 探查：**從啟用的 HTTP 設定中挑選主機名稱**
 
 ## <a name="cause"></a>原因
 
-App Service 可以只能存取含有已設定的主機名稱，在自訂網域設定中，依預設，「 example.azurewebsites.net"，而且如果您想要存取您的 App Service 使用主機名稱未註冊在 App Service 中或使用應用程式閘道應用程式閘道的 FQDN，您需要覆寫應用程式服務的主機名稱的原始要求中的主機名稱。
+App Service 是多租使用者服務，因此它會在要求中使用主機標頭，將要求路由傳送至正確的端點。 應用程式服務的預設功能變數名稱（*. azurewebsites.net （例如 contoso.azurewebsites.net））與應用程式閘道的功能變數名稱（例如 contoso.com）不同。 
 
-为了在应用程序网关中实现此目的，我们在 HTTP 设置中使用了“从后端地址中选取主机名”开关；为了正常运行探测，我们在探测配置中使用了“从后端 HTTP 设置中选取主机名”。
+來自用戶端的原始要求具有應用程式閘道的功能變數名稱 contoso.com，做為主機名稱。 您需要設定應用程式閘道，以便在將要求路由至 app service 後端時，將原始要求中的主機名稱變更為應用程式服務的主機名稱。 使用參數從應用程式閘道的 HTTP 設定中的**後端位址挑選主機名稱**。 在健康情況探查設定中使用參數**從後端 HTTP 設定挑選主機名稱**。
 
-![appservice-1](./media/troubleshoot-app-service-redirection-app-service-url/appservice-1.png)
 
-因此，當 App Service 會重新導向，它會使用"example.azurewebsites.net"Location 標頭中的主機名稱而非原始的主機名稱除非另外設定。 可以查看下面的示例请求和响应标头。
+
+![應用程式閘道變更主機名稱](./media/troubleshoot-app-service-redirection-app-service-url/appservice-1.png)
+
+當 app service 進行重新導向時，除非另有設定，否則會使用 location 標頭中的覆寫主機名稱 contoso.azurewebsites.net，而不是原始主機名稱 contoso.com。 請檢查下列範例要求和回應標頭。
 ```
 ## Request headers to Application Gateway:
 
@@ -66,44 +69,51 @@ Host: www.contoso.com
 
 Status Code: 301 Moved Permanently
 
-Location: http://example.azurewebsites.net/path/
+Location: http://contoso.azurewebsites.net/path/
 
 Server: Microsoft-IIS/10.0
 
-Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619700e4010;Path=/;HttpOnly;Domain=example.azurewebsites.net
+Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619700e4010;Path=/;HttpOnly;Domain=contoso.azurewebsites.net
 
 X-Powered-By: ASP.NET
 ```
-在上面的示例中可以发现，响应标头包含重定向状态代码 301，location 标头包含应用服务的主机名而不是原始主机名“www.contoso.com”。
+在上一個範例中，請注意回應標頭的狀態碼為301以進行重新導向。 Location 標頭具有 app service 的主機名稱，而不是原始主機名稱 `www.contoso.com` 。
 
-## <a name="solution"></a>解決方法
+## <a name="solution-rewrite-the-location-header"></a>解決方案：重寫 location 標頭
 
-不在应用程序端使用重定向可以解决此问题，但是，如果无法做到这一点，则我们也必须将应用程序网关收到的同一主机标头传递给应用服务，而不要执行主机替代。
+將 location 標頭中的主機名稱設定為應用程式閘道的功能變數名稱。 若要這麼做，請建立具有條件的[重寫規則](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)，以評估回應中的位置標頭是否包含 azurewebsites.net。 它也必須執行動作來重寫 location 標頭，使其具有應用程式閘道的主機名稱。 如需詳細資訊，請參閱[如何重寫 location 標頭](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#modify-a-redirection-url)的指示。
 
-这样做后，应用服务会在指向应用程序网关而不是指向自身的同一原始主机标头中执行重定向（如果有）。
+> [!NOTE]
+> HTTP 標頭重寫支援僅適用于應用程式閘道的[Standard_v2 和 WAF_V2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) 。 如果您使用 v1 SKU，建議您[從 v1 遷移至 v2](https://docs.microsoft.com/azure/application-gateway/migrate-v1-v2)。 您想要使用 v2 SKU 提供的重寫和其他[先進功能](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#feature-comparison-between-v1-sku-and-v2-sku)。
 
-若要实现此目的，必须拥有一个自定义域并遵循下面所述的过程。
+## <a name="alternate-solution-use-a-custom-domain-name"></a>替代解決方案：使用自訂功能變數名稱
 
-- 将该域注册到应用服务的自定义域列表。 为此，必须在自定义域中创建一个指向应用服务 FQDN 的 CNAME。 有关详细信息，请参阅[将现有的自定义 DNS 名称映射到 Azure 应用服务](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain)。
+如果您使用 v1 SKU，就無法重寫 location 標頭。 這項功能僅適用于 v2 SKU。 若要解決重新導向問題，請將應用程式閘道接收的相同主機名稱傳遞至 app service，而不是執行主機覆寫。
 
-![appservice-2](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
+App service 現在會在相同的原始主機標頭上執行重新導向（如果有的話），以指向應用程式閘道，而不是其本身。
 
-- 这样做后，应用服务已准备好接受主机名“www.contoso.com”。 现在，请更改 DNS 中的 CNAME 条目，使其重新指向应用程序网关的 FQDN。 例如，"appgw.eastus.cloudapp.azure.com。 」
+您必須擁有自訂網域，並遵循此程式：
 
-- 确保执行 DNS 查询时，域“www.contoso.com”解析为应用程序网关的 FQDN。
+- 向應用程式服務的自訂網域清單註冊網域。 您的自訂網域中必須有指向 app service 之 FQDN 的 CNAME。 如需詳細資訊，請參閱將[現有的自訂 DNS 名稱對應至 Azure App Service](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain)。
 
-- 设置自定义探测以禁用“从后端 HTTP 设置中选取主机名”。 为此，可以在门户上取消选中探测设置中的相应复选框，或者在 PowerShell 中，不要在 Set-AzApplicationGatewayProbeConfig 命令中使用 -PickHostNameFromBackendHttpSettings 开关。 在 [探查的主機名稱] 欄位中，輸入您 App Service 的 FQDN"example.azurewebsites.net 」 從應用程式閘道傳送的探查要求將會執行此主機標頭中。
+    ![App service 自訂網域清單](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
+
+- 您的 app service 已準備好接受主機名稱 `www.contoso.com` 。 變更 DNS 中的 CNAME 專案，將它指向應用程式閘道的 FQDN，例如 `appgw.eastus.cloudapp.azure.com` 。
+
+- 當您執行 DNS 查詢時，請確定您的網域會 `www.contoso.com` 解析為應用程式閘道的 FQDN。
+
+- 將您的自訂探查設定為停**用從後端 HTTP 設定中挑選主機名稱**。 在 [Azure 入口網站中，清除 [探查設定] 中的核取方塊。 在 PowerShell 中，請勿在**AzApplicationGatewayProbeConfig**命令中使用 **-PickHostNameFromBackendHttpSettings**參數。 在探查的 [主機名稱] 欄位中，輸入您的 app service 的 FQDN，example.azurewebsites.net。 從應用程式閘道傳送的探查要求會在主機標頭中攜帶此 FQDN。
 
   > [!NOTE]
-  > 执行下一步时，请确保自定义探测未关联到后端 HTTP 设置，因为此时 HTTP 设置中仍然启用了“从后端地址中选取主机名”开关。
+  > 在下一個步驟中，請確定您的自訂探查未與後端 HTTP 設定相關聯。 此時，您的 HTTP 設定仍然會啟用**從後端位址切換的挑選主機名稱**。
 
-- 设置应用程序网关的 HTTP 设置以禁用“从后端地址中选取主机名”。 为此，可以在门户上取消选中相应的复选框，或者在 PowerShell 中，不要在 Set-AzApplicationGatewayBackendHttpSettings 命令中使用 -PickHostNameFromBackendAddress 开关。
+- 設定應用程式閘道的 HTTP 設定，以停**用從後端位址挑選主機名稱**。 在 [Azure 入口網站中，清除核取方塊。 在 PowerShell 中，請勿在**new-azapplicationgatewaybackendHTTPsettings 設定設定**命令中使用 **-PickHostNameFromBackendAddress**參數。
 
-- 将自定义探测重新关联到后端 HTTP 设置，并验证后端的运行状况是否正常。
+- 將自訂探查關聯回後端 HTTP 設定，並確認後端狀況良好。
 
-- 这样做后，应用程序网关应会将相同的主机名“www.contoso.com”转发到应用服务，并且同一个主机名上会发生重定向。 可以查看下面的示例请求和响应标头。
+- 應用程式閘道現在應該將相同的主機名稱轉送 `www.contoso.com` 到 app service。 重新導向會在相同的主機名稱上執行。 請檢查下列範例要求和回應標頭。
 
-若要针对现有设置使用 PowerShell 来实施上述步骤，请按下面的示例 PowerShell 脚本操作。 请注意，我们没有在探测和 HTTP 设置配置中使用 -PickHostname 开关。
+若要針對現有的安裝程式使用 PowerShell 來執行先前的步驟，請使用下列範例 PowerShell 腳本。 請注意，我們尚未在探查和 HTTP 設定中使用 **-PickHostname**參數。
 
 ```azurepowershell-interactive
 $gw=Get-AzApplicationGateway -Name AppGw1 -ResourceGroupName AppGwRG
@@ -135,4 +145,4 @@ Set-AzApplicationGateway -ApplicationGateway $gw
   ```
   ## <a name="next-steps"></a>後續步驟
 
-如果上述步驟無法解決問題，請開啟 [支援票證](https://azure.microsoft.com/support/options/)。
+如果上述步驟無法解決問題，請開啟[支援票證](https://azure.microsoft.com/support/options/)。

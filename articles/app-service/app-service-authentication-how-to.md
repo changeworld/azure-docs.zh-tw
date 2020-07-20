@@ -1,25 +1,15 @@
 ---
-title: 進階使用驗證和授權 - Azure App Service | Microsoft Docs
-description: 示範如何自訂 App Service 中的驗證與授權，以及取得使用者宣告和不同的權杖。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.devlang: multiple
+title: 驗證/AuthZ 的先進使用量
+description: 瞭解如何在不同案例的 App Service 中自訂驗證和授權功能，以及取得使用者宣告和不同的權杖。
 ms.topic: article
-ms.date: 11/08/2018
-ms.author: cephalin
+ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 97764db40807214e756f119ca95fd640164f0cf2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5b217bb1052a16ded205ac216878945fb960d32d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60851417"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205585"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>在 Azure App Service 中進階使用驗證和授權
 
@@ -27,25 +17,26 @@ ms.locfileid: "60851417"
 
 若要快速開始，請參閱下列其中一個教學課程︰
 
-* [教學課程：在 Azure App Service 中對使用者進行端對端驗證和授權 (Windows)](app-service-web-tutorial-auth-aad.md)
+* [教學課程：在 Azure App Service 中端對端驗證和授權使用者 (Windows)](app-service-web-tutorial-auth-aad.md)
 * [教學課程：在適用於 Linux 的 Azure App Service 中端對端驗證和授權使用者](containers/tutorial-auth-aad.md)
-* [如何設定您的 App 以使用 Azure Active Directory 登入](configure-authentication-provider-aad.md)
-* [如何設定 App 以使用 Facebook 登入](configure-authentication-provider-facebook.md)
+* [如何設定 App 使用 Azure Active Directory 登入](configure-authentication-provider-aad.md)
+* [如何設定 App 使用 Facebook 登入](configure-authentication-provider-facebook.md)
 * [如何設定 App 以使用 Google 登入](configure-authentication-provider-google.md)
-* [如何設定 App 以使用 Microsoft 帳戶登入](configure-authentication-provider-microsoft.md)
+* [如何設定 App 使用 Microsoft 帳戶登入](configure-authentication-provider-microsoft.md)
 * [如何設定 App 以使用 Twitter 登入](configure-authentication-provider-twitter.md)
+* [如何設定應用程式以使用 OpenID Connect 提供者登入 (預覽) ](configure-authentication-provider-openid-connect.md)
 
 ## <a name="use-multiple-sign-in-providers"></a>使用多個登入提供者
 
 入口網站設定不會提供周全的方式，向您的使用者顯示多個登入提供者 (例如 Facebook 和 Twitter)。 不過，要將功能新增至您的應用程式並不困難。 步驟概述如下：
 
-首先，在 Azure 入口網站的 [驗證/授權] 頁面中，設定您需要啟用的每一個識別提供者。
+首先，在 Azure 入口網站的 [驗證/授權]**** 頁面中，設定您需要啟用的每一個識別提供者。
 
-在 [當要求未經驗證時所要採取的動作] 中，選取 [允許匿名要求 (無動作)]。
+在 [當要求未經驗證時所要採取的動作]**** 中，選取 [允許匿名要求 (無動作)]****。
 
-在登入頁面或導覽列、或是您應用程式的任何其他位置中，將登入連結新增至您啟用的每個提供者 (`/.auth/login/<provider>`)。 例如︰
+在登入頁面或導覽列、或是您應用程式的任何其他位置中，將登入連結新增至您啟用的每個提供者 (`/.auth/login/<provider>`)。 例如：
 
-```HTML
+```html
 <a href="/.auth/login/aad">Log in with Azure AD</a>
 <a href="/.auth/login/microsoftaccount">Log in with Microsoft Account</a>
 <a href="/.auth/login/facebook">Log in with Facebook</a>
@@ -57,7 +48,7 @@ ms.locfileid: "60851417"
 
 若要將登入後的使用者重新導向至自訂 URL，請使用 `post_login_redirect_url` 查詢字串參數 (請勿與您身分識別提供者組態中的重新導向 URI 混淆)。 例如，若要在使用者登入之後，將他們導向 `/Home/Index`，請使用下列 HTML 程式碼：
 
-```HTML
+```html
 <a href="/.auth/login/<provider>?post_login_redirect_url=/Home/Index">Log in</a>
 ```
 
@@ -65,7 +56,7 @@ ms.locfileid: "60851417"
 
 在用戶端導向的登入中，應用程式會以手動方式將使用者登入提供者，然後將驗證權杖提交給 App Service 進行驗證 (請參閱[驗證流程](overview-authentication-authorization.md#authentication-flow))。 此驗證本身並不會實際為您授與所需應用程式資源的存取權，但成功的驗證會給予您可用來存取應用程式資源的工作階段權杖。 
 
-若要驗證提供者權杖，App Service 應用程式必須先以所需的提供者進行設定。 在執行階段，在您從提供者擷取驗證權杖之後，請將權杖公佈到 `/.auth/login/<provider>` 進行驗證。 例如︰ 
+若要驗證提供者權杖，App Service 應用程式必須先以所需的提供者進行設定。 在執行階段，在您從提供者擷取驗證權杖之後，請將權杖公佈到 `/.auth/login/<provider>` 進行驗證。 例如： 
 
 ```
 POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
@@ -96,7 +87,7 @@ Content-Type: application/json
 }
 ```
 
-在取得此工作階段權杖之後，您可以藉由將 `X-ZUMO-AUTH` 標頭新增至 HTTP 要求，來存取受保護的應用程式資源。 例如︰ 
+在取得此工作階段權杖之後，您可以藉由將 `X-ZUMO-AUTH` 標頭新增至 HTTP 要求，來存取受保護的應用程式資源。 例如： 
 
 ```
 GET https://<appname>.azurewebsites.net/api/products/1
@@ -113,17 +104,17 @@ X-ZUMO-AUTH: <authenticationToken_value>
 
 以下是網頁中的簡單登出連結：
 
-```HTML
+```html
 <a href="/.auth/logout">Sign out</a>
 ```
 
-成功登出預設會將用戶端重新導向到 URL `/.auth/logout/done`。 您可以新增 `post_logout_redirect_uri` 查詢參數來變更登出後重新導向頁面。 例如︰
+成功登出預設會將用戶端重新導向到 URL `/.auth/logout/done`。 您可以新增 `post_logout_redirect_uri` 查詢參數來變更登出後重新導向頁面。 例如：
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=/index.html
 ```
 
-建議您將值 `post_logout_redirect_uri` [編碼](https://wikipedia.org/wiki/Percent-encoding)。
+建議您將值 `post_logout_redirect_uri`[編碼](https://wikipedia.org/wiki/Percent-encoding)。
 
 使用完整的 URL，URL 必須裝載於相同的網域，或設定為應用程式允許的外部重新導向 URL。 在下列範例中，將重新導向至不在相同的網域中裝載的 `https://myexternalurl.com`：
 
@@ -131,7 +122,7 @@ GET /.auth/logout?post_logout_redirect_uri=/index.html
 GET /.auth/logout?post_logout_redirect_uri=https%3A%2F%2Fmyexternalurl.com
 ```
 
-您必須在 [Azure Cloud Shell](../cloud-shell/quickstart.md) 中輸入下列命令︰
+在[Azure Cloud Shell](../cloud-shell/quickstart.md)中執行下列命令：
 
 ```azurecli-interactive
 az webapp auth update --name <app_name> --resource-group <group_name> --allowed-external-redirect-urls "https://myexternalurl.com"
@@ -154,7 +145,7 @@ App Service 會使用特殊標頭，將使用者宣告傳遞至您的應用程�
 * X-MS-CLIENT-PRINCIPAL-NAME
 * X-MS-CLIENT-PRINCIPAL-ID
 
-使用任何语言或框架编写的代码均可从这些标头获取所需信息。 針對 ASP.NET 4.6 應用程式， **ClaimsPrincipal** 會自動設定適當的值。
+以任何語言或架構撰寫的程式碼可以從這些標頭中取得所需的資訊。 針對 ASP.NET 4.6 應用程式， **ClaimsPrincipal** 會自動設定適當的值。 不過，ASP.NET Core 不會提供與 App Service 使用者宣告整合的驗證中介軟體。 如需因應措施，請參閱[MaximeRouiller. AppService. EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)。
 
 您的應用程式也可以藉由呼叫 `/.auth/me` 來取得關於已驗證使用者的其他詳細資料。 Mobile Apps 伺服器 SDK 提供 Helper 方法來處理此資料。 如需詳細資訊，請參閱[如何使用 Azure Mobile Apps Node.js SDK ](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity)和[使用適用於 Azure Mobile Apps 的 .NET 後端伺服器 SDK](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info)。
 
@@ -184,23 +175,23 @@ App Service 會使用特殊標頭，將使用者宣告傳遞至您的應用程�
 - **Facebook**：不提供重新整理權杖。 長時間執行的權杖會在 60 天內到期 (請參閱 [Facebook 到期和存取權杖的擴充功能](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension))。
 - **Twitter**：存取權杖不會到期 (請參閱 [Twitter OAuth 常見問題集](https://developer.twitter.com/en/docs/basics/authentication/FAQ))。
 - **Microsoft 帳戶**：當您[設定 Microsoft 帳戶驗證設定](configure-authentication-provider-microsoft.md)時，請選取 `wl.offline_access` 範圍。
-- **Azure Active Directory**：在 [https://resources.azure.com](https://resources.azure.com) 中，請執行下列步驟：
-    1. 在頁面的頂端，選取 [讀取/寫入]。
-    2. 在左側瀏覽器中，巡覽至 [訂用帳戶] > **_\<subscription\_name_** > **resourceGroups** > _**\<resource\_group\_name>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<app\_name>**_ > **config** > **authsettings**。 
-    3. 按一下 [編輯]。
-    4. 修改下列屬性。 將 _\<app\_id>_ 取代為所要存取服務的 Azure Active Directory 應用程式識別碼。
+- **Azure Active Directory**：在 [https://resources.azure.com](https://resources.azure.com) 中，執行下列步驟：
+    1. 在頁面的頂端，選取 [讀取/寫入]****。
+    2. 在左側瀏覽器中，流覽**至 [** 訂用帳戶] > * *_ \<subscription\_name_** > **resourceGroups** > *_* * * \<resource\_group\_name> _>**提供者**  >  **Microsoft**  >  **網站**> * *_ \<app\_name> _ * * > **config**  >  **authsettings**。 
+    3. 按一下 **[編輯]** 。
+    4. 修改下列屬性。 將取代 _\<app\_id>_ 為您想要存取之服務的 Azure Active Directory 應用程式識別碼。
 
         ```json
         "additionalLoginParams": ["response_type=code id_token", "resource=<app_id>"]
         ```
 
-    5. 按一下 [放置]。 
+    5. 按一下 [放置]****。 
 
 設定好提供者之後，您可以在權杖存放區中[尋找重新整理權杖和存取權杖的到期時間](#retrieve-tokens-in-app-code)。 
 
-若要隨時重新整理您的存取權杖，只需要以任何語言呼叫 `/.auth/refresh`。 下列程式碼片段會使用 jQuery 來重新整理 JavaScript 用戶端的存取權杖。
+若要隨時重新整理您的存取權杖，只要 `/.auth/refresh` 以任何語言呼叫即可。 下列程式碼片段會使用 jQuery 來重新整理 JavaScript 用戶端的存取權杖。
 
-```JavaScript
+```javascript
 function refreshTokens() {
   let refreshUrl = "/.auth/refresh";
   $.ajax(refreshUrl) .done(function() {
@@ -231,17 +222,254 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>限制登入帳戶的網域
 
-Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 例如，Microsoft 帳戶允許 _outlook.com_、_live.com_ 和 _hotmail.com_ 帳戶。 Azure Active Directory 對於登入帳戶可允許任何數目的自訂網域。 這種行為可能不適合內部應用程式，因為您不會想讓具有 outlook.com 帳戶的任何使用者存取內部應用程式。 若要限制登入帳戶的網域名稱，請遵循下列步驟。
+Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 例如，Microsoft 帳戶允許 _outlook.com_、_live.com_ 和 _hotmail.com_ 帳戶。 Azure AD 允許登入帳戶有任意數目的自訂網域。 不過，您可能會想要將使用者直接帶到您自己的品牌 Azure AD 登入頁面 (例如 `contoso.com`) 。 若要建議登入帳戶的功能變數名稱，請遵循下列步驟。
 
-在 [https://resources.azure.com](https://resources.azure.com) 中，巡覽至 [訂用帳戶] > **_\<subscription\_name_** > **resourceGroups** > _**\<resource\_group\_name>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<app\_name>**_ > **config** > **authsettings**。 
+在中，流覽至 [訂用帳戶] [https://resources.azure.com](https://resources.azure.com) > * *_ \<subscription\_name_** > **resourceGroups** > *_* * * **subscriptions** \<resource\_group\_name> _>**提供者**  >  **Microsoft**  >  **網站**> * *_ \<app\_name> _ * * > **config**  >  **authsettings**。 
 
-按一下 [編輯]、修改下列屬性，然後按一下 [放置]。 請務必將 _\<domain\_name>_ 取代為您需要的網域。
+按一下 [編輯]****、修改下列屬性，然後按一下 [放置]****。 請務必將取代為 _\<domain\_name>_ 您想要的網域。
 
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
 ```
+
+此設定會將 `domain_hint` 查詢字串參數附加至登入重新導向 URL。 
+
+> [!IMPORTANT]
+> 用戶端可以 `domain_hint` 在收到重新導向 URL 之後移除參數，然後再以不同的網域登入。 因此，雖然此函式很方便，但它並不是安全性功能。
+>
+
+## <a name="authorize-or-deny-users"></a>授權或拒絕使用者
+
+雖然 App Service 會負責處理最簡單的授權案例 (也就是拒絕未經驗證的要求) ，您的應用程式可能需要更精細的授權行為，例如限制只有特定使用者群組的存取權。 在某些情況下，您需要撰寫自訂應用程式代碼，以允許或拒絕存取已登入的使用者。 在其他情況下，App Service 或您的身分識別提供者可能可以協助，而不需要變更程式碼。
+
+- [伺服器層級](#server-level-windows-apps-only)
+- [識別提供者層級](#identity-provider-level)
+- [應用層級](#application-level)
+
+### <a name="server-level-windows-apps-only"></a>伺服器層級 (僅限 Windows 應用程式) 
+
+針對任何 Windows 應用程式，您可以藉由編輯*Web.config*檔案來定義 IIS web 伺服器的授權行為。 Linux 應用程式不會使用 IIS，而且無法透過*Web.config*來設定。
+
+1. 巡覽到 `https://<app-name>.scm.azurewebsites.net/DebugConsole`
+
+1. 在 App Service 檔案的瀏覽器中，流覽至 [ *site/wwwroot*]。 如果*Web.config*不存在，請選取 [新增檔案] 加以建立 **+**  >  ** **。 
+
+1. 選取*Web.config*的鉛筆來編輯它。 新增下列設定程式碼，然後按一下 [**儲存**]。 如果*Web.config*已經存在，只需要 `<authorization>` 在其中新增專案。 在元素中新增您想要允許的帳戶 `<allow>` 。
+
+    ```xml
+    <?xml version="1.0" encoding="utf-8"?>
+    <configuration>
+       <system.web>
+          <authorization>
+            <allow users="user1@contoso.com,user2@contoso.com"/>
+            <deny users="*"/>
+          </authorization>
+       </system.web>
+    </configuration>
+    ```
+
+### <a name="identity-provider-level"></a>識別提供者層級
+
+識別提供者可能會提供特定的「金鑰授權」。 例如：
+
+- 針對[Azure App Service](configure-authentication-provider-aad.md)，您可以直接在 Azure AD 中[管理企業層級的存取](../active-directory/manage-apps/what-is-access-management.md)。 如需指示，請參閱[如何移除使用者對應用程式的存取權](../active-directory/manage-apps/methods-for-removing-user-access.md)。
+- 對於[google](configure-authentication-provider-google.md)，屬於[組織](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations)的 google API 專案可以設定為只允許您組織中的使用者存取 (請參閱[Google 的**設定 OAuth 2.0**支援頁面](https://support.google.com/cloud/answer/6158849?hl=en)) 。
+
+### <a name="application-level"></a>應用程式層級
+
+如果其中一個層級未提供您所需的授權，或如果您的平臺或身分識別提供者不受支援，則您必須撰寫自訂程式碼，以根據[使用者宣告](#access-user-claims)來授權使用者。
+
+## <a name="configure-using-a-file-preview"></a><a name="config-file"> </a>使用檔案 (預覽進行設定) 
+
+您可以選擇性地透過部署所提供的檔案來設定您的驗證設定。 App Service 驗證/授權的某些預覽功能可能需要此項。
+
+> [!IMPORTANT]
+> 請記住，您的應用程式承載（因此此檔案）在環境中可能會隨著[位置而移動。](./deploy-staging-slots.md) 您可能想要將不同的應用程式註冊釘選到每個位置，而在這些情況下，您應該繼續使用標準的設定方法，而不是使用設定檔。
+
+### <a name="enabling-file-based-configuration"></a>啟用以檔案為基礎的設定
+
+> [!CAUTION]
+> 在預覽期間，啟用以檔案為基礎的設定將會停用透過某些用戶端（例如 Azure 入口網站、Azure CLI 和 Azure PowerShell）來管理應用程式的 App Service 驗證/授權功能。
+
+1. 在專案的根目錄建立新的 JSON 檔案， (部署至 web/函式應用程式) 中的 D:\home\site\wwwroot。 根據以檔案為基礎的設定[參考](#configuration-file-reference)，填入所需的設定。 如果修改現有的 Azure Resource Manager 設定，請務必將集合中所捕獲的屬性轉譯 `authsettings` 成您的設定檔。
+
+2. 修改現有的設定，此設定會在下的[Azure Resource Manager](../azure-resource-manager/management/overview.md) api 中加以捕捉 `Microsoft.Web/sites/<siteName>/config/authsettings` 。 若要修改此程式，您可以使用[Azure Resource Manager 範本](../azure-resource-manager/templates/overview.md)或[Azure 資源總管](https://resources.azure.com/)之類的工具。 在 authsettings 集合中，您必須 (設定三個屬性，而且可能會移除其他) ：
+
+    1.  設定 `enabled` 為 "true"
+    2.  設定 `isAuthFromFile` 為 "true"
+    3.  將設定 `authFilePath` 為 (的檔案名，例如 "auth.json" ) 
+
+進行此設定更新之後，檔案的內容將用來定義該網站 App Service 驗證/授權的行為。 如果您想要回到 Azure Resource Manager 設定，可以將設 `isAuthFromFile` 回 "false" 來執行這項操作。
+
+### <a name="configuration-file-reference"></a>設定檔案參考
+
+將從您的設定檔中參照的任何秘密，都必須儲存為[應用程式設定](./configure-common.md#configure-app-settings)。 您可以將設定命名為任何您想要的名稱。 只需確定來自設定檔案的參考會使用相同的金鑰。
+
+下列耗盡檔案中可能的設定選項：
+
+```json
+{
+    "platform": {
+        "enabled": <true|false>
+    },
+    "globalValidation": {
+        "requireAuthentication": <true|false>,
+        "unauthenticatedClientAction": "RedirectToLoginPage|AllowAnonymous|Return401|Return403",
+        "redirectToProvider": "<default provider alias>",
+        "excludedPaths": [
+            "/path1",
+            "/path2"
+        ]
+    },
+    "identityProviders": {
+        "azureActiveDirectory": {
+            "enabled": <true|false>,
+            "registration": {
+                "openIdIssuer": "<issuer url>",
+                "clientId": "<app id>",
+                "clientSecretSettingName": "APP_SETTING_CONTAINING_AAD_SECRET",
+            },
+            "login": {
+                "loginParameters": [
+                    "paramName1=value1",
+                    "paramName2=value2"
+                ]
+            },
+            "validation": {
+                "allowedAudiences": [
+                    "audience1",
+                    "audience2"
+                ]
+            }
+        },
+        "facebook": {
+            "enabled": <true|false>,
+            "registration": {
+                "appId": "<app id>",
+                "appSecretSettingName": "APP_SETTING_CONTAINING_FACEBOOK_SECRET"
+            },
+            "graphApiVersion": "v3.3",
+            "login": {
+                "scopes": [
+                    "profile",
+                    "email"
+                ]
+            },
+        },
+        "gitHub": {
+            "enabled": <true|false>,
+            "registration": {
+                "clientId": "<client id>",
+                "clientSecretSettingName": "APP_SETTING_CONTAINING_GITHUB_SECRET"
+            },
+            "login": {
+                "scopes": [
+                    "profile",
+                    "email"
+                ]
+            }
+        },
+        "google": {
+            "enabled": true,
+            "registration": {
+                "clientId": "<client id>",
+                "clientSecretSettingName": "APP_SETTING_CONTAINING_GOOGLE_SECRET"
+            },
+            "login": {
+                "scopes": [
+                    "profile",
+                    "email"
+                ]
+            },
+            "validation": {
+                "allowedAudiences": [
+                    "audience1",
+                    "audience2"
+                ]
+            }
+        },
+        "twitter": {
+            "enabled": <true|false>,
+            "registration": {
+                "consumerKey": "<consumer key>",
+                "consumerSecretSettingName": "APP_SETTING_CONTAINING TWITTER_CONSUMER_SECRET"
+            }
+        },
+        "openIdConnectProviders": {
+            "provider name": {
+                "enabled": <true|false>,
+                "registration": {
+                    "clientId": "<client id>",
+                    "clientCredential": {
+                        "secretSettingName": "<name of app setting containing client secret>"
+                    },
+                    "openIdConnectConfiguration": {
+                        "authorizationEndpoint": "<url specifying authorization endpoint>",
+                        "tokenEndpoint": "<url specifying token endpoint>",
+                        "issuer": "<url specifying issuer>",
+                        "certificationUri": "<url specifying jwks endpoint>",
+                        "wellKnownOpenIdConfiguration": "<url specifying .well-known/open-id-configuration endpoint - if this property is set, the other properties of this object are ignored, and authorizationEndpoint, tokenEndpoint, issuer, and certificationUri are set to the corresponding values listed at this endpoint>"
+                    }
+                },
+                "login": {
+                    "nameClaimType": "<name of claim containing name>",
+                    "loginScopes": [
+                        "profile",
+                        "email"
+                    ],
+                    "loginParameterNames": [
+                        "paramName1=value1",
+                        "paramName2=value2"
+                    ],
+                }
+            },
+            //...
+        },
+        "login": {
+            "routes": {
+                "logoutEndpoint": "<logout endpoint>"
+            },
+            "tokenStore": {
+                "enabled": <true|false>,
+                "tokenRefreshExtensionHours": "<double>",
+                "fileSystem": {
+                    "directory": "<directory to store the tokens in if using a file system token store (default)>"
+                },
+                "azureBlobStorage": {
+                    "sasUrlSettingName": "<app setting name containing the sas url for the Azure Blob Storage if opting to use that for a token store>"
+                }
+            },
+            "preserveUrlFragmentsForLogins": <true|false>,
+            "allowedExternalRedirectUrls": [
+                "https://uri1.azurewebsites.net/",
+                "https://uri2.azurewebsites.net/"
+            ],
+            "cookieExpiration": {
+                "convention": "FixedTime|IdentityProviderDerived",
+                "timeToExpiration": "<timespan>"
+            },
+            "nonce": {
+                "validateNonce": <true|false>,
+                "nonceExpirationInterval": "<timespan>"
+            }
+        },
+        "httpSettings": {
+            "requireHttps": <true|false>,
+            "routes": {
+                "apiPrefix": "<api prefix>"
+            },
+            "forwardProxy": {
+                "convention": "NoProxy|Standard|Custom",
+                "customHostHeaderName": "<host header value>",
+                "customProtoHeaderName": "<proto header value>"
+            }
+        }
+    }
+}
+```
+
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [教學課程：端對端驗證和授權使用者 (Windows)](app-service-web-tutorial-auth-aad.md)
-> [教學課程：端對端驗證和授權使用者 (Linux)](containers/tutorial-auth-aad.md)
+> [教學課程： (Windows) 的端對端驗證和授權使用者](app-service-web-tutorial-auth-aad.md) 
+> [教學課程： (Linux) 的端對端驗證和授權使用者](containers/tutorial-auth-aad.md)

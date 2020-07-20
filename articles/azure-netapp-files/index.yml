@@ -1,35 +1,70 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure NetApp Files 文件
+summary: 了解如何使用 Azure NetApp Files 來建立和管理 NetApp 帳戶、容量集區和磁碟區，並設定匯出原則、裝載虛擬機器磁碟區，以及管理快照集。
 metadata:
   title: Azure NetApp Files 文件
   description: 了解如何使用 Azure NetApp Files 服務來設定、存取和管理磁碟區。
-  author: b-juche
-  ms.author: b-juche
   ms.service: azure-netapp-files
   ms.topic: landing-page
-  ms.date: 04/10/2019
-abstract:
-  description: 了解如何使用 Azure NetApp Files 來建立和管理 NetApp 帳戶、容量集區和磁碟區，並設定匯出原則、裝載虛擬機器磁碟區，以及管理快照集。 <p>您必須加入公開預覽計畫方可使用 Azure NetApp Files。 同時也必須能夠存取 Microsoft.NetApp Azure 資源提供者。 若要要求加入「公開預覽」計畫，請參閱<a href="azure-netapp-files-register">註冊 Azure NetApp Files</a>。</p>
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何透過以下方式設定 Azure NetApp Files 並建立磁碟區：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/azure-netapp-files/media/index/get-started.svg'
-            text: Azure 入口網站
-            href: /azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/netapp/">REST API</a></p>'
-          - title: Azure Resource Manager
-            html: '<p><a href="https://docs.microsoft.com/azure/templates/microsoft.netapp/allversions">Resource Manager 範本</a></p>'
+  author: b-juche
+  ms.author: b-juche
+  ms.date: 03/11/2020
+  ms.openlocfilehash: bcca681fcae02df3e3521b48f710acd36127c882
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "79369047"
+landingContent:
+- title: 關於 Azure NetApp Files
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure NetApp Files？
+      url: azure-netapp-files-introduction.md
+    - text: 了解儲存體階層
+      url: azure-netapp-files-understand-storage-hierarchy.md
+  - linkListType: concept
+    links:
+    - text: 服務等級
+      url: azure-netapp-files-service-levels.md
+    - text: 效能考量
+      url: azure-netapp-files-performance-considerations.md
+    - text: 網路規劃指導方針
+      url: azure-netapp-files-network-topologies.md
+  - linkListType: video
+    links:
+    - text: Azure NetApp Files 影片
+      url: azure-netapp-files-videos.md
+- title: 開始使用
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 提交等候清單要求
+      url: azure-netapp-files-register.md#waitlist
+  - linkListType: quickstart
+    links:
+    - text: 設定 Azure NetApp Files 並建立 NFS 磁碟區
+      url: azure-netapp-files-quickstart-set-up-account-create-volumes.md
+- title: 建立
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 建立 NetApp 帳戶
+      url: azure-netapp-files-create-netapp-account.md
+    - text: 設定容量集區
+      url: azure-netapp-files-set-up-capacity-pool.md
+    - text: 將子網路委派至 Azure NetApp Files
+      url: azure-netapp-files-delegate-subnet.md
+    - text: 建立適用於 Azure NetApp Files 的 SMB 磁碟區
+      url: azure-netapp-files-create-volumes-smb.md
+    - text: 建立適用於 Azure NetApp Files 的 NFS 磁碟區
+      url: azure-netapp-files-create-volumes.md
+- title: 開發
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: REST API
+      url: azure-netapp-files-develop-with-rest-api.md
+    - text: Azure NetApp Files SDK 和 CLI 工具
+      url: azure-netapp-files-sdk-cli.md

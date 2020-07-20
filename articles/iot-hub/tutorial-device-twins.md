@@ -1,24 +1,22 @@
 ---
 title: 從 Azure IoT 中樞同步處理裝置狀態 | Microsoft Docs
-description: 使用裝置對應項同步處理您的裝置與 IoT 中樞之間的狀態
+description: 了解如何使用裝置對應項設定您的雲端裝置，並從裝置接收狀態和合規性資料。
 services: iot-hub
-documentationcenter: ''
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/18/2019
-ms.custom: mvc
-ms.openlocfilehash: b0e6e75f962383055d4f28356c3db57aac4a088b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 06/21/2019
+ms.custom:
+- mvc
+- mqtt
+ms.openlocfilehash: a7e68999bf516bffa08fb97eb8c88f2f8abb428d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088072"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81767817"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -39,11 +37,11 @@ ms.locfileid: "58088072"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>必要條件
 
-您在此快速入門中執行的兩個範例應用程式是使用 Node.js 所撰寫的。 您的開發電腦上需要 Node.js 4.x.x 版或更高版本。
+您在此快速入門中執行的兩個範例應用程式是使用 Node.js 所撰寫的。 您的開發電腦上需要 Node.js 10.x.x 版或更新版本。
 
 您可以從 [nodejs.org](https://nodejs.org) 下載適用於多種平台的 Node.js。
 
@@ -54,6 +52,8 @@ node --version
 ```
 
 從 https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip 下載範例 Node.js 專案並將 ZIP 封存檔解壓縮。
+
+請確定您的防火牆已開啟連接埠 8883。 本教學課程中的裝置範例會使用 MQTT 通訊協定，其會透過連接埠 8883 進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="set-up-azure-resources"></a>設定 Azure 資源
 
@@ -66,7 +66,7 @@ hubname=tutorial-iot-hub
 location=centralus
 
 # Install the IoT extension if it's not already installed:
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Create a resource group:
 az group create --name tutorial-iot-hub-rg --location $location
@@ -75,7 +75,7 @@ az group create --name tutorial-iot-hub-rg --location $location
 az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
 
 # Make a note of the service connection string, you need it later:
-az iot hub show-connection-string --name $hubname -o table
+az iot hub show-connection-string --name $hubname --policy-name service -o table
 
 ```
 

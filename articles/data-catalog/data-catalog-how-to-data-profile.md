@@ -1,27 +1,27 @@
 ---
 title: 如何使用 Azure 資料目錄中的資料來分析資料來源
 description: 專門說明如何在 Azure 資料目錄中註冊資料來源時包含資料表和資料行層級的資料設定檔以及如何使用資料設定檔來了解資料來源的操作說明文章。
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 94a8274b-5c9c-4962-a4b1-2fed38a3d919
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 64185a951b25b4e04ea5fc65aeede9b0e617d0c5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 08/01/2019
+ms.openlocfilehash: 698da509be2f375925459bbdd4a35d21c6ff4407
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61001684"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84171220"
 ---
-# <a name="data-profile-data-sources"></a>對資料來源進行資料分析
-## <a name="introduction"></a>簡介
-**Microsoft Azure 資料目錄** 是完全受控的雲端服務，可作為企業資料來源的註冊系統和探索系統。 換句話說，[Azure 資料目錄]  的重點在於協助人們探索、了解，以及使用資料來源，並可協助組織從現有的資料獲得更多價值。 當資料來源向 **Azure 資料目錄**註冊之後，該服務會複製其中繼資料並建立索引，但不僅止於此。
+# <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>如何在 Azure 資料目錄中分析資料源的資料
 
-**Azure 資料目錄**的**資料分析**功能會檢查目錄中所支援資料來源的資料，並收集關於該資料的統計資料和資訊。 想要包含資料資產的設定檔很容易。 當您註冊資料資產時，請選擇資料來源註冊工具中的 [包含資料設定檔]  。
+## <a name="introduction"></a>簡介
+
+**Microsoft Azure 資料目錄** 是完全受控的雲端服務，可作為企業資料來源的註冊系統和探索系統。 換句話說， **Azure 資料目錄**的功能就是協助人們探索、瞭解和使用資料來源，並協助組織從現有的資料獲得更多價值。 當資料來源向 **Azure 資料目錄**註冊之後，該服務會複製其中繼資料並建立索引，但不僅止於此。
+
+**Azure 資料目錄**的**資料分析**功能會檢查目錄中所支援資料來源的資料，並收集關於該資料的統計資料和資訊。 想要包含資料資產的設定檔很容易。 當您註冊資料資產時，請選擇資料來源註冊工具中的 [包含資料設定檔] **** 。
 
 ## <a name="what-is-data-profiling"></a>什麼是資料分析
+
 資料分析會檢查所註冊資料來源中的資料，並收集關於該資料的統計資料和資訊。 在探索資料來源期間，這些統計資料可以協助您判斷資料是否適合用來解決他們的商務問題。
 
 <!-- In [How to discover data sources](data-catalog-how-to-discover.md), you learn about **Azure Data Catalog's** extensive search capabilities including searching for data assets that have a profile. See [How to include a data profile when registering a data source](#howto). -->
@@ -43,46 +43,51 @@ ms.locfileid: "61001684"
 > [!NOTE]
 > 您也可以對資產新增說明文件來描述如何將資料整合到應用程式。 請參閱 [如何記載資料來源](data-catalog-how-to-documentation.md)。
 >
->
 
-<a name="howto"/>
+<a name="howto"></a>
 
 ## <a name="how-to-include-a-data-profile-when-registering-a-data-source"></a>如何在註冊資料來源時包含資料設定檔
-想要包含資料來源的設定檔很容易。 當您註冊資料來源時，在資料來源註冊工具的 [要註冊的物件] 面板中選擇 [包含資料設定檔]。
 
-![](media/data-catalog-data-profile/data-catalog-register-profile.png)
+想要包含資料來源的設定檔很容易。 當您註冊資料來源時，在資料來源註冊工具的 [要註冊的物件]**** 面板中選擇 [包含資料設定檔]****。
+
+![包含資料設定檔核取方塊](media/data-catalog-data-profile/data-catalog-register-profile.png)
 
 若要深入了解如何註冊資料來源，請參閱[如何註冊資料來源](data-catalog-how-to-register.md)和[開始使用 Azure 資料目錄](data-catalog-get-started.md)。
 
 ## <a name="filtering-on-data-assets-that-include-data-profiles"></a>篩選包含資料設定檔的資料資產
+
 若要探索包含資料設定檔的資料資產，您可以包含 `has:tableDataProfiles` 或 `has:columnsDataProfiles` 做為搜尋字詞之一。
 
 > [!NOTE]
-> 在資料來源註冊工具中選取 [包含資料設定檔]，即會同時包含資料表和資料行層級的設定檔資訊。 不過，資料目錄 API 讓只含一組設定檔資訊的資料資產能夠加以註冊。
->
+> 在資料來源註冊工具中選取 [包含資料設定檔]****，即會同時包含資料表和資料行層級的設定檔資訊。 不過，資料目錄 API 讓只含一組設定檔資訊的資料資產能夠加以註冊。
 >
 
 ## <a name="viewing-data-profile-information"></a>檢視資料設定檔資訊
-一旦您找到含有設定檔的合適資料來源，您可以檢視資料設定檔的詳細資料。 若要檢視資料設定檔，請在資料目錄入口網站視窗中選取資料資產並選擇 [資料設定檔]  。
 
-![](media/data-catalog-data-profile/data-catalog-view.png)
+一旦您找到含有設定檔的合適資料來源，您可以檢視資料設定檔的詳細資料。 若要檢視資料設定檔，請在資料目錄入口網站視窗中選取資料資產並選擇 [資料設定檔] **** 。
 
-[Azure 資料目錄]  中的資料設定檔會顯示資料表和資料行設定檔資訊，包括︰
+![資料設定檔索引標籤](media/data-catalog-data-profile/data-catalog-view.png)
+
+[Azure 資料目錄] **** 中的資料設定檔會顯示資料表和資料行設定檔資訊，包括︰
 
 ### <a name="object-data-profile"></a>物件資料設定檔
+
 * 資料列數目
 * 資料表大小
 * 物件的上次更新時間
 
 ### <a name="column-data-profile"></a>資料行資料設定檔
+
 * 資料行資料類型
 * 相異值數目
 * 具有 NULL 值的資料列數目
 * 資料行的最小值、最大值、平均值和標準差值
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
+
 資料分析可提供關於註冊資料資產的統計資料和資訊，以協助您判斷資料是否適合用來解決商務問題。 加上註解和記載資料來源後，資料設定檔可以讓使用者更深入了解資料。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>另請參閱
+
 * [如何註冊資料來源](data-catalog-how-to-register.md)
 * [開始使用 Azure 資料目錄](data-catalog-get-started.md)

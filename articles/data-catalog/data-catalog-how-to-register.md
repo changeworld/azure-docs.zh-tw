@@ -1,19 +1,16 @@
 ---
 title: 在 Azure 資料目錄中註冊資料來源
 description: 本文主要說明如何在 Azure 資料目錄中註冊資料來源，包括註冊期間擷取的中繼資料欄位。
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: bab89906-186f-4d35-9ffd-61b1d903905d
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 57b9a040b875c584b126e2062e4938b37875a31b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 08/01/2019
+ms.openlocfilehash: 0c5fdac7df41fec3a6206dbd78af74b7f1b58c7f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61001288"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "68736330"
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>在 Azure 資料目錄中註冊資料來源
 ## <a name="introduction"></a>簡介
@@ -76,7 +73,7 @@ Azure 資料目錄是完全受控的雲端服務，可作為企業資料來源�
 
 重新註冊已註冊的資料來源會執行合併 “upsert” 作業：將會更新現有的物件，同時建立新的物件。 使用者透過資料目錄入口網站所提供的任何中繼資料都將保留。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 因為在資料目錄註冊資料來源會將結構化和描述性中繼資料從資料來源複製到目錄服務，所以可讓您更容易地探索及了解資料來源。 在您註冊資料來源之後，即可使用資料目錄入口網站來標註、管理及探索資料來源。
 
 ## <a name="next-steps"></a>後續步驟

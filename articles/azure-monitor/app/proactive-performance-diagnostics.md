@@ -1,30 +1,20 @@
 ---
 title: 智慧型偵測 - 效能異常 | Microsoft Docs
 description: Application Insights 會執行您應用程式遙測的智慧型分析，並且警告您有潛在的問題。 這項功能不需要進行任何設定。
-services: application-insights
-documentationcenter: windows
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 6acd41b9-fbf0-45b8-b83b-117e19062dd2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.author: mbullwin
-ms.openlocfilehash: b1a3b04427839736359c88f8ad6a8db5eedf8488
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 22c1eeb00372b9b3c67d6a87f2300225a071438e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61294027"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84016843"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智慧型偵測 - 效能異常
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 會自動分析 Web 應用程式的效能，並且可以警告您有關潛在的問題。 您會讀取到此訊息，可能是因為您收到一個我們的智慧型偵測通知。
 
-除了設定您 Application Insights 的應用程式 (在 [ASP.NET](../../azure-monitor/app/asp-net.md) 上、[Java](../../azure-monitor/app/java-get-started.md) 或 [Node.js](../../azure-monitor/app/nodejs.md)，以及在[網頁程式碼](../../azure-monitor/app/javascript.md)中) 以外，這項功能不需要特殊設定。 當您的應用程式產生足夠的遙測時，就會是在作用中。
+除了針對[支援的語言](../../azure-monitor/app/platforms.md)設定 Application Insights 的應用程式以外，這項功能不需要進行任何特殊設定。 當您的應用程式產生足夠的遙測時，就會是在作用中。
 
 ## <a name="when-would-i-get-a-smart-detection-notification"></a>何時會取得智慧型偵測通知？
 
@@ -58,7 +48,7 @@ Application Insights 偵測到您的應用程式以下列其中一種方式降�
 
 ## <a name="configure-email-notifications"></a>設定電子郵件通知
 
-依預設會啟用智慧型偵測通知，並將這些通知傳送給具有 [Application Insights 資源的擁有者、參與者和讀取者存取權](../../azure-monitor/app/resources-roles-access-control.md)的人員。 若要變更這種情況，請按一下電子郵件通知中的 [設定]，或開啟 Application Insights 中的 [智慧型偵測] 設定。 
+預設會啟用智慧偵測通知，並傳送給具有 [監視讀者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) \(部分機器翻譯\) 和[監視參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) \(部分機器翻譯\) 權限可存取 Application Insights 資源所在訂用帳戶的人員。 若要變更這種情況，請按一下電子郵件通知中的 [設定]，或開啟 Application Insights 中的 [智慧型偵測] 設定。 
   
   ![智慧型偵測設定](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   
@@ -69,7 +59,7 @@ Application Insights 偵測到您的應用程式以下列其中一種方式降�
 ## <a name="faq"></a>常見問題集
 
 * *Microsoft 人員會看到我的資料嗎？*
-  * 沒有。 服務完全是自動的。 只有您會收到通知。 您的資料是 [不公開的](../../azure-monitor/app/data-retention-privacy.md)。
+  * 否。 服務完全是自動的。 只有您會收到通知。 您的資料是 [不公開的](../../azure-monitor/app/data-retention-privacy.md)。
 * *你們會分析 Application Insights 收集的所有資料嗎？*
   * 目前尚未。 我們目前會分析要求回應時間、相依性回應時間和頁面載入時間。 我們後續的未來展望中將有其他計量的分析。
 
@@ -79,13 +69,13 @@ Application Insights 偵測到您的應用程式以下列其中一種方式降�
 * 我可以建立自己的異常偵測規則或自訂現有的規則嗎？
 
   * 還不行，但是您可以︰
-    * [設定警示](../../azure-monitor/app/alerts.md)，使其在計量超出臨界值時通知您。
-    * [將遙測匯出](../../azure-monitor/app/export-telemetry.md)至[資料庫](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)或[至 PowerBI](../../azure-monitor/app/export-power-bi.md )，以自行分析它。
+    * [設定警示](/azure/azure-monitor/platform/alerts-log)，使其在計量超出臨界值時通知您。
+    * [匯出遙測](../../azure-monitor/app/export-telemetry.md)至[資料庫](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)或[至 Power BI](../../azure-monitor/app/export-power-bi.md )，您就能自行分析遙測。
 * *執行分析的頻率為何？*
 
   * 我們每天都會根據前一天的遙測執行分析 (UTC 時區中全天)。
-* *那麼，這可以取代[計量警示](../../azure-monitor/app/alerts.md)嗎？*
-  * 沒有。  我們不保證能偵測到您可能認為異常的每項行為。
+* *那麼，這可以取代[計量警示](/azure/azure-monitor/platform/alerts-log)嗎？*
+  * 否。  我們不保證能偵測到您可能認為異常的每項行為。
 
 
 * 如果我完全不回應通知，是否會收到提醒？
@@ -134,11 +124,11 @@ Web 上有改善您的伺服器回應和頁面載入時間的完整建議，因�
   * 分析工具追蹤可協助您檢視作業花費時間之處 (如果在偵測期間收集到這項作業的分析工具追蹤範例，則可使用連結)。 
   * 您可以在計量瀏覽器中的效能報告將這項作業的時間範圍/篩選條件進行交叉分析。
   * 搜尋此呼叫可檢視特定的呼叫屬性。
-  * 報告失敗 - 如果計數 > 1，表示這項作業中的失敗可能造成效能降低。
+  * 報告失敗 - 如果計數 > 1，這表示此作業中的失敗可能導致效能降低。
 
 ## <a name="dependency-duration-degradation"></a>相依性持續時間降低
 
-現代化應用程式採用越來越多微服務設計的方法，在許多情況下，會造成外部服務的重度可靠性。 例如，如果您的應用程式需仰賴某些資料平台，或即使您建立自己的 Bot 服務，可能還是需要一些認知服務提供者，才能讓您的 Bot 以更人性化的方式進行互動，且 Bot 也需要一些可提取回答的資料存放服務。  
+越來越多新式應用程式採用微服務設計方法，這在許多情況下會導致外部服務的高度可靠性。 例如，如果您的應用程式需仰賴某些資料平台，或即使您建立自己的 Bot 服務，可能還是需要一些認知服務提供者，才能讓您的 Bot 以更人性化的方式進行互動，且 Bot 也需要一些可提取回答的資料存放服務。  
 
 範例相依性降低通知︰
 
@@ -189,5 +179,5 @@ Application Insights 會尋找可能只會影響某部分使用者，或只在�
 
 智慧型偵測是完全自動的。 但是，或許您會想要再設定一些警示？
 
-* [手動設定的度量警示](../../azure-monitor/app/alerts.md)
+* [手動設定的度量警示](/azure/azure-monitor/platform/alerts-log)
 * [可用性 Web 測試](../../azure-monitor/app/monitor-web-app-availability.md)

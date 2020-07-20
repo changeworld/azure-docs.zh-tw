@@ -1,32 +1,32 @@
 ---
-title: 教學課程 - 使用 Azure CDN 自訂網域透過 HTTPS 存取儲存體 Blob | Microsoft Docs
-description: ''
+title: 使用 Azure CDN 自訂網域透過 HTTPS 存取儲存體 Blob
+description: 了解如何為自訂 Blob 儲存體端點新增 Azure CDN 自訂網域，並在該網域上啟用 HTTPS。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/15/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 7aaf4be23c806dda621430c4d1b0c142f41feb1f
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 5b6fe2b2704f101a7775b7eb700375105b0a9eca
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49090377"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81259879"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>教學課程：使用 Azure CDN 自訂網域透過 HTTPS 存取儲存體 Blob
 
 在您整合 Azure 儲存體帳戶與 Azure 內容傳遞網路 (CDN) 之後，即可新增自訂網域，並在該網域上啟用自訂 Blob 儲存體端點的 HTTPS。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須先整合 Azure 儲存體帳戶與 Azure CDN，才能完成本教學課程中的步驟。 如需詳細資訊，請參閱[快速入門：整合 Azure 儲存體帳戶與 Azure CDN](cdn-create-a-storage-account-with-cdn.md)。
 
@@ -44,11 +44,15 @@ Azure CDN 會忽略任何新增至 SAS 權杖的限制。 例如，所有 SAS �
 如果您為相同的 Blob 端點建立多個 SAS URL，則請考慮使用啟用查詢字串快取。 這麼做確保將每個 URL 都視為唯一實體。 如需詳細資訊，請參閱[使用查詢字串控制 Azure CDN 快取行為](cdn-query-string.md)。
 
 ## <a name="http-to-https-redirection"></a>HTTP 到 HTTPS 重新導向
-您可以選擇使用 [Azure CDN 規則引擎](cdn-rules-engine.md)建立 [URL 重新導向規則](cdn-rules-engine-reference-features.md#url-redirect)，以將 HTTP 流量重新導向至 HTTPS。 此選項需要**來自 Verizon 的 Azure CDN 進階**設定檔。 
+您可以選擇使用[標準規則引擎](cdn-standard-rules-engine.md)或 [Verizon 進階規則引擎](cdn-verizon-premium-rules-engine.md)建立 URL 重新導向規則，以將 HTTP 流量重新導向至 HTTPS。 標準規則引擎僅適用於來自 Microsoft 的 Azure CDN 設定檔，而 Verizon 進階規則引擎僅適用於來自 Verizon 的 Azure CDN 進階設定檔。
 
-![URL 重新導向規則](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
+![Microsoft 重新導向規則](./media/cdn-storage-custom-domain-https/cdn-standard-redirect-rule.png)
 
-在此規則中，*Cdn-endpoint-name* 指的是針對您可從下拉式清單中選取為 CDN 端點設定的名稱。 *origin-path* 值指的是您靜態內容所在原始儲存體帳戶的路徑。 如果您將所有靜態內容裝載在單一容器中，則請將 origin-path 取代為該容器的名稱。
+在上述規則中，保留 [主機名稱]、[路徑]、[查詢字串] 和 [片段]，會致使在重新導向時使用傳入的值。 
+
+![Verizon 重新導向規則](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
+
+在上述規則中，*Cdn-endpoint-name* 指的是針對您可從下拉式清單中選取為 CDN 端點設定的名稱。 *origin-path* 值指的是您靜態內容所在原始儲存體帳戶的路徑。 如果您將所有靜態內容裝載在單一容器中，則請將 origin-path  取代為該容器的名稱。
 
 ## <a name="pricing-and-billing"></a>價格和計費
 當您透過 Azure CDN 存取 Blob 時，需支付 POP 伺服器與原點 (Blob 儲存體) 之間流量的 [Blob 儲存體價格](https://azure.microsoft.com/pricing/details/storage/blobs/)，以及從 POP 伺服器存取資料的 [Azure CDN 定價](https://azure.microsoft.com/pricing/details/cdn/)。

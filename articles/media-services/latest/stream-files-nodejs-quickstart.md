@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒體服務串流視訊檔案 - Node.js | Microsoft Docs
-description: 按照本快速入門的步驟建立新的 Azure 媒體服務帳戶、對檔案進行編碼，然後將它串流到 Azure 媒體播放器。
+description: 按照本教學課程的步驟建立新的 Azure 媒體服務帳戶、對檔案進行編碼，然後將它串流到 Azure 媒體播放器。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,29 +9,30 @@ editor: ''
 keywords: Azure 媒體服務, 串流
 ms.service: media-services
 ms.workload: media
-ms.topic: quickstart
+ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/26/2019
+ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 22b7f2380b509daa4cb9931d6fc57c1297628e3d
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: fa9fbf3bac55ca0b26c3644b7f6818fa96088612
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522743"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "69639396"
 ---
-# <a name="quickstart-stream-video-files---nodejs"></a>快速入門：串流影片檔案 - Node.js
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>教學課程：編碼以 URL 為基礎的遠端檔案及串流處理影片 - Node.js
 
-此快速入門說明使用 Azure 媒體服務在各種不同的瀏覽器和裝置上編碼和開始串流視訊是多麼容易。 您可以使用 HTTP(S) URL、SAS URL 或 Azure Blob 儲存體中的檔案路徑來指定輸入內容。
-此主題中的範例會將您透過 HTTPS URL 提供的內容編碼。 請注意，目前 AMS v3 不支援透過 HTTPS URL 的區塊傳送編碼。
+此教學課程說明使用 Azure 媒體服務在各種不同的瀏覽器和裝置上編碼和開始串流視訊是多麼容易。 您可以使用 HTTP(S) URL、SAS URL 或 Azure Blob 儲存體中的檔案路徑來指定輸入內容。
 
-完成快速入門時，您將能夠串流視訊。  
+本文中的範例會將您透過 HTTPS URL 提供的內容編碼。 請注意，目前 AMS v3 不支援透過 HTTPS URL 的區塊傳送編碼。
+
+完成教學課程時，您將能夠串流視訊。  
 
 ![播放影片](./media/stream-files-nodejs-quickstart/final-video.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 安裝 [Node.js](https://nodejs.org/en/download/)
 - [建立媒體服務帳戶](create-account-cli-how-to.md)。<br/>請務必記住您用於資源群組名稱和「媒體服務」帳戶名稱的值。
@@ -81,16 +82,16 @@ ms.locfileid: "58522743"
 > 如果播放程式裝載在 HTTPS 網站上，請務必將 URL 更新為 "https"。
 
 1. 開啟瀏覽器並巡覽至 [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)。
-2. 在 [URL:] 方塊中，貼上您在執行應用程式時取得的其中一個串流 URL 值。 
+2. 在 [URL:]  方塊中，貼上您在執行應用程式時取得的其中一個串流 URL 值。 
  
      您可以貼上 HLS、Dash 或 Smooth 格式的 URL，Azure 媒體播放器將會切換至適當的串流通訊協定，以便在您的裝置上自動播放。
-3. 按一下 [更新播放程式]。
+3. 按一下 [更新播放程式]  。
 
 Azure 媒體播放器可以用於測試，但不應用於生產環境。 
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果您不再需要資源群組中的任何資源 (包含在此快速入門中建立的媒體服務和儲存體帳戶)，請將資源群組刪除。
+如果您不再需要資源群組中的任何資源 (包含在此教學課程中建立的媒體服務和儲存體帳戶)，請將資源群組刪除。
 
 執行下列 CLI 命令：
 

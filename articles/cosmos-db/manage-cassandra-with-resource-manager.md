@@ -1,59 +1,56 @@
 ---
-title: 適用於 Azure Cosmos DB Cassandra API 的 azure Resource Manager 範本
-description: 使用 Azure Resource Manager 範本來建立和設定 Azure Cosmos DB Cassandra API。
+title: 適用於 Azure Cosmos DB Cassandra API 的 Resource Manager 範本
+description: 使用 Azure Resource Manager 範本建立和設定 Azure Cosmos DB Cassandra API。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 05/06/2019
+ms.topic: how-to
+ms.date: 05/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: 9878939a461f3ba35d2b6c270de2a965f66204cc
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: MT
+ms.openlocfilehash: 8f7eda0615482509aeb3b38ce5b878af10fd9a41
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65077541"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028209"
 ---
-# <a name="create-azure-cosmos-db-cassandra-api-resources-from-a-resource-manager-template"></a>從 Resource Manager 範本建立 Azure Cosmos DB Cassandra API 資源
+# <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本管理 Azure Cosmos DB Cassandra API 資源
 
-了解如何使用 Azure Resource Manager 範本的 Cassandra api 建立 Azure Cosmos 帳戶。 下列範例會建立 Azure Cosmos DB Cassandra API 帳戶[Azure 快速入門範本](https://aka.ms/cassandra-arm-qs)。 此範本會建立 Cassandra API 的 Azure Cosmos 帳戶，具有共用 400 RU/秒的輸送量，keyspace 層級的兩個資料表。 
+在本文中，您會了解如何利用 Azure Resource Manager 範本來部署和管理 Azure Cosmos DB 帳戶、keyspace 和資料表。
 
-以下是範本的複本：
+本文僅提供 Cassandra API 帳戶的範例，若要尋找其他 API 類型帳戶的範例，請參閱：搭配使用 Azure Resource Manager 範本與適用於 [SQL](manage-sql-with-resource-manager.md)、[Gremlin](manage-gremlin-with-resource-manager.md)、[MongoDB](manage-mongodb-with-resource-manager.md)、[資料表](manage-table-with-resource-manager.md)的 Azure Cosmos DB API 文章。
 
-[!code-json[create-cosmos-Cassandra](~/quickstart-templates/101-cosmosdb-cassandra/azuredeploy.json)]
+> [!IMPORTANT]
+>
+> * 帳戶名稱限制為 44 個字元，全部小寫。
+> * 若要變更輸送量值，請使用已更新的 RU/秒重新部署範本。
+> * 您在新增或移除 Azure Cosmos 帳戶的位置時，無法同時修改其他屬性。 這些作業必須個別執行。
 
-## <a name="deploy-with-azure-cli"></a>使用 Azure CLI 進行部署
+若要建立下列任何 Azure Cosmos DB 資源，請將下列範例範本複製到新的 JSON 檔案中。 當您使用不同的名稱和值來部署相同資源的多個執行個體時，可以選擇建立參數 JSON 檔案以供使用。 部署 Azure Resource Manager 範本的方式有很多種，包括 [Azure 入口網站](../azure-resource-manager/templates/deploy-portal.md)、[Azure CLI](../azure-resource-manager/templates/deploy-cli.md)、[Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) 和 [GitHub](../azure-resource-manager/templates/deploy-to-azure-button.md)。
 
-若要部署使用 Azure CLI Resource Manager 範本**複製**指令碼，然後選取**試試**開啟 Azure Cloud shell 中。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”：
+<a id="create-autoscale"></a>
 
-```azurecli-interactive
+## <a name="azure-cosmos-account-for-cassandra-with-autoscale-provisioned-throughput"></a>適用於 Cassandra 的 Azure Cosmos 帳戶，具有自動擴縮佈建的輸送量
 
-read -p 'Enter the Resource Group name: ' resourceGroupName
-read -p 'Enter the location (i.e. westus2): ' location
-read -p 'Enter the account name: ' accountName
-read -p 'Enter the primary region (i.e. westus2): ' primaryRegion
-read -p 'Enter the secondary region (i.e. eastus2): ' secondaryRegion
-read -p 'Enter the keyset name: ' keysetName
-read -p 'Enter the first table name: ' table1Name
-read -p 'Enter the second table name: ' table2Name
+此範本會在兩個區域中建立 Azure Cosmos 帳戶 (具有一致性和容錯移轉選項)，並已針對自動擴縮輸送量設定 keyspace 和資料表。 此範本也適用於從 Azure 快速入門範本資源庫執行的單鍵式部署。
 
-az group create --name $resourceGroupName --location $location
-az group deployment create --resource-group $resourceGroupName \
-   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-cassandra/azuredeploy.json \
-   --parameters accountName=$accountName primaryRegion=$primaryRegion secondaryRegion=$secondaryRegion keysetName=$keysetName \
-   table1Name=$table1Name table2Name=$table2Name
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署至 Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-cassandra-autoscale%2Fazuredeploy.json)
 
-az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
-```
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-cassandra-autoscale/azuredeploy.json":::
 
-`az cosmosdb show`已佈建之後，命令會顯示新建立的 Azure Cosmos 帳戶。 如果您選擇使用在本機安裝的 Azure CLI 的版本，而不是使用 CloudShell，請參閱[Azure 命令列介面 (CLI)](/cli/azure/)文章。
+<a id="create-manual"></a>
 
-在上述範例中，您已參考儲存在 GitHub 中的範本。 您可以也將範本下載至本機電腦或建立新的範本並指定本機路徑`--template-file`參數。
+## <a name="azure-cosmos-account-for-cassandra-with-standard-provisioned-throughput"></a>適用於 Cassandra 的 Azure Cosmos 帳戶，具有標準佈建的輸送量
+
+此範本會在兩個區域中建立 Azure Cosmos 帳戶 (具有一致性和容錯移轉選項)，並已針對標準輸送量設定 keyspace 和資料表。 此範本也適用於從 Azure 快速入門範本資源庫執行的單鍵式部署。
+
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署至 Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-cassandra%2Fazuredeploy.json)
+
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-cassandra/azuredeploy.json":::
 
 ## <a name="next-steps"></a>後續步驟
 
 以下是一些其他資源：
 
-- [Azure Resource Manager 文件](/azure/azure-resource-manager/)
-- [Azure Cosmos DB 資源提供者結構描述](/azure/templates/microsoft.documentdb/allversions)
-- [Azure Cosmos DB 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [針對常見的 Azure Resource Manager 部署錯誤進行疑難排解](../azure-resource-manager/resource-manager-common-deployment-errors.md)
+* [Azure Resource Manager 文件](/azure/azure-resource-manager/)
+* [Azure Cosmos DB 資源提供者結構描述](/azure/templates/microsoft.documentdb/allversions)
+* [Azure Cosmos DB 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+* [對常見的 Azure Resource Manager 部署錯誤進行疑難排解](../azure-resource-manager/templates/common-deployment-errors.md)

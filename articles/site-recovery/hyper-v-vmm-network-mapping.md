@@ -1,19 +1,17 @@
 ---
-title: 關於使用 Site Recovery 對 Hyper-V VM (含VMM) 災害復原至 Azure 所需的網路對應 | Microsoft Docs
+title: 關於 Hyper-v （含 VMM）與 Site Recovery 的網路對應
 description: 說明如何使用 Azure Site Recovery 對 (VMM 雲端所管理的) Hyper-V VM 的災害復原設定網路對應。
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 12/27/2018
+ms.topic: conceptual
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: cefde79cf8c544a6900b1efa5dbcefbc43638d40
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60679324"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74082565"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>準備「Hyper-V VM 災害復原至 Azure」的網路對應
 
@@ -93,7 +91,7 @@ SilverCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwor
 ---|---|---|---
 VMNetwork1-Chicago | SilverCloud1 | SilverCloud2 | 可用
  | GoldCloud1 | GoldCloud2 | 可用
-VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | 不可用
+VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | 無法使用
  | GoldCloud1 | GoldCloud2 | 可用
 
 
@@ -112,7 +110,7 @@ VM2 (VM1 的複本) | VMNetwork1-Chicago
 
 讓我們使用這些設定，檢閱幾個可能的案例中發生的情況。
 
-**方案** | **結果**
+**案例** | **結果**
 ---|---
 在容錯移轉之後，VM-2 的網路屬性沒有變更。 | VM 1 仍然連線至來源網路。
 在容錯移轉並中斷連線之後，VM-2 的網路屬性有所變更。 | VM-1 已中斷連線。

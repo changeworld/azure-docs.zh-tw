@@ -1,55 +1,101 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Active Directory B2B 文件
+### YamlMime:Landing
+title: 外部身分識別文件
+summary: 外部身分識別是一組可讓組織保護和管理任何外部使用者 (包括客戶和合作夥伴) 的功能。 以 B2B 共同作業為基礎，外部身分識別可提供與組織外部使用者互動和連線的其他功能。
 metadata:
-  document_id: null
-  title: Azure Active Directory B2B 文件 - Azure Active Directory | Microsoft Docs
-  description: 若要了解如何使用 B2B 來賓使用者存取共用並與外部合作夥伴共同作業，使用我們的教學課程、 快速入門和操作說明。
-  services: active-directory
-  ms.subservice: authentication
-  author: msmimart
-  manager: daveba
+  title: 外部身分識別文件
+  description: 外部身分識別是一組可讓組織保護和管理任何外部使用者 (包括客戶和合作夥伴) 的功能。 以 B2B 共同作業為基礎，外部身分識別可提供與組織外部使用者互動和連線的其他功能。
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: B2B
+  ms.workload: identity
   ms.topic: landing-page
-  ms.date: 09/10/2018
+  ms.date: 05/19/2020
+  author: msmimart
   ms.author: mimart
-abstract:
-  description: 了解如何使用 Azure AD 企業對企業 (B2B) 共同作業，以與來賓使用者和來自任何組織的外部夥伴安全地共用公司的應用程式及服務，同時持續控制貴公司的資料。  以下是幾個主要功能：<ul><li>透過簡單的邀請和兌換程序，來賓使用者可以開始在您想要其存取的資源上進行共同作業。</li><li>您的來賓使用者和外部夥伴可透過 Azure AD、社交電子郵件帳戶或任何識別提供者來管理自己的身分識別。</li><li>您可以使用 Azure AD 功能 (如多重要素驗證) 來保護公司資源。</li><li>您可以使用 API 自訂體驗，例如透過自助式註冊入口網站。</li></ul>下列資源可協助您快速開始使用。
-  aside:
-    image:
-      alt: 名為 Azure AD B2B 的影片說明縮圖
-      height: 110
-      src: ./media/index/video.png
-      width: 246
-    title: Azure AD B2B 的說明
-    href: 'https://www.youtube.com/watch?v=AhwrweCBdsc'
-    width: 246
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何邀請來賓使用者，並開始使用 B2B 共同作業。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              alt: null
-              src: ./media/index/i_security-management.png
-            text: 在 Azure 入口網站中新增來賓使用者
-            href: b2b-quickstart-add-guest-users-portal.md
-          - image:
-              alt: null
-              src: ./media/index/i_security-management.png
-            text: 使用 PowerShell 新增來賓使用者
-            href: b2b-quickstart-invite-powershell.md
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 深入了解如何設定 B2B 共同作業和保護公司資源。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/b2b/tutorial-bulk-invite">使用 PowerShell 大量邀請 B2B 來賓使用者</a>
-          - html: <a href="/azure/active-directory/b2b/b2b-tutorial-require-mfa">為 B2B 來賓使用者強制執行多重要素驗證</a>
+  manager: celested
+  ms.openlocfilehash: 694b5fee19a1c0dca752e02259e3cc398ae6e55e
+  ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83641865"
+landingContent:
+- title: 關於外部身分識別
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 比較外部身分識別解決方案
+      url: compare-with-b2c.md
+    - text: 什麼是 B2B 來賓使用者存取權？
+      url: what-is-b2b.md
+- title: 自助式註冊 (預覽)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是自助式註冊？
+      url: self-service-sign-up-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 新增自助式註冊使用者流程
+      url: self-service-sign-up-user-flow.md
+    - text: 定義使用者流程的自訂屬性
+      url: user-flow-add-custom-attributes.md
+- title: 邀請 B2B 來賓使用者
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: B2B 來賓如何回應邀請
+      url: redemption-experience.md
+  - linkListType: quickstart
+    links:
+    - text: 將來賓使用者新增至您的目錄
+      url: b2b-quickstart-add-guest-users-portal.md
+    - text: 使用 PowerShell 新增來賓使用者
+      url: b2b-quickstart-invite-powershell.md
+  - linkListType: how-to-guide
+    links:
+    - text: 管理員如何邀請來賓
+      url: add-users-administrator.md
+    - text: 使用者如何邀請來賓
+      url: add-users-information-worker.md
+- title: 自訂 B2B 共同作業
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 啟用 B2B 共同作業
+      url: delegate-invitations.md
+  - linkListType: deploy
+    links:
+    - text: 設定直接同盟 (預覽)
+      url: direct-federation.md
+    - text: 設定 Google 同盟
+      url: google-federation.md
+    - text: 設定單次密碼驗證 (預覽)
+      url: one-time-passcode.md
+  - linkListType: tutorial
+    links:
+    - text: 強制執行 Multi-Factor Authentication
+      url: b2b-tutorial-require-mfa.md
+  - linkListType: reference
+    links:
+    - text: B2B 共同作業程式碼與 PowerShell 範例
+      url: code-samples.md
+- title: 管理來賓使用者
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 了解 B2B 來賓使用者
+      url: user-properties.md
+    - text: 動態群組和 B2B 使用者
+      url: use-dynamic-groups.md
+  - linkListType: how-to-guide
+    links:
+    - text: B2B 來賓使用者的審核和報告
+      url: auditing-and-reporting.md
+    - text: 將權限授與 B2B 來賓
+      url: add-guest-to-role.md
+    - text: 允許或封鎖組織
+      url: allow-deny-list.md
+  - linkListType: deploy
+    links:
+    - text: 為 B2B 共同作業設定 SaaS 應用程式
+      url: configure-saas-apps.md

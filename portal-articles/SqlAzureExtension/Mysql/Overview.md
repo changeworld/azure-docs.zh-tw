@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: sewatson
 ms.openlocfilehash: 2ff389f52da0db4e394e8f6a6c37955a5f0c3861
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60475747"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "64691367"
 ---
 # <a name="azure-database-for-mysql-documentation"></a>適用於 MySQL 的 Azure 資料庫文件
 

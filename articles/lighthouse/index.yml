@@ -1,0 +1,119 @@
+### YamlMime:Landing
+title: Azure Lighthouse 文件
+summary: Azure Lighthouse 可讓服務提供者以較高的自動化、較大的規模和加強的治理性，管理所有客戶的 Azure 資源。
+metadata:
+  title: Azure Lighthouse 文件
+  description: Azure Lighthouse 可讓服務提供者以較高的自動化、較大的規模和加強的治理性，管理所有客戶的 Azure 資源。
+  ms.service: lighthouse
+  ms.topic: landing-page
+  ms.collection: collection
+  author: JnHs
+  ms.author: jenhayes
+  ms.date: 04/14/2020
+  ms.openlocfilehash: 8599ddc8a4216b97be6d5bf183eea68654ff65a4
+  ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 07/08/2020
+  ms.locfileid: "86111536"
+landingContent:
+- title: 關於 Azure Lighthouse
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure Lighthouse ？
+      url: ./overview.md
+  - linkListType: concept
+    links:
+    - text: Azure 委派的資源管理
+      url: ./concepts/azure-delegated-resource-management.md
+    - text: 跨租用戶管理體驗
+      url: ./concepts/cross-tenant-management-experience.md
+- title: 開始使用
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 讓客戶在 Azure Lighthouse 上線
+      url: ./how-to/onboard-customer.md
+  - linkListType: concept
+    links:
+    - text: 建議的安全性作法
+      url: ./concepts/recommended-security-practices.md
+    - text: 雲端解決方案提供者方案考量
+      url: ./concepts/cloud-solution-provider.md
+    - text: 企業案例
+      url: ./concepts/enterprise.md
+    - text: 租用戶、角色和使用者
+      url: ./concepts/tenants-users-roles.md
+- title: Marketplace 供應項目
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 發佈受控服務供應項目
+      url: ./how-to/publish-managed-services-offers.md
+  - linkListType: concept
+    links:
+    - text: Azure Marketplace 中的受控服務供應項目
+      url: ./concepts/managed-services-offers.md
+- title: 範例及範本
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Azure Lighthouse 範例存放庫 (GitHub)
+      url: https://github.com/Azure/Azure-Lighthouse-samples/
+    - text: Azure Lighthouse 索引範例
+      url: ./samples/index.md
+- title: Azure 入口網站體驗
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 檢視和管理客戶
+      url: ./how-to/view-manage-customers.md
+    - text: 檢視和管理服務提供者
+      url: ./how-to/view-manage-service-providers.md
+- title: 大規模使用 Azure 服務
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 管理 Azure Sentinel 工作區
+      url: ./how-to/manage-sentinel-workspaces.md
+    - text: 使用 Azure 監視器記錄
+      url: ./how-to/monitor-at-scale.md
+    - text: 監視委派變更
+      url: ./how-to/monitor-at-scale.md
+    - text: 部署 Azure 原則
+      url: ./how-to/policy-at-scale.md
+    - text: 部署可補救的原則
+      url: ./how-to/deploy-policy-remediation.md
+- title: 參考 - SDK
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.managedservices/
+    - text: Azure CLI
+      url: /cli/azure/managedservices
+    - text: REST
+      url: /rest/api/managedservices/
+    - text: .NET
+      url: /dotnet/api/Microsoft.Azure.Management.ManagedServices
+    - text: Python
+      url: /python/api/azure-mgmt-managedservices
+- title: 參考 - 下載
+  linkLists:
+  - linkListType: download
+    links:
+    - text: OpenAPI - 2019-06-01
+      url: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2019-06-01
+    - text: SDK for .NET - NuGet
+      url: https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/
+    - text: SDK for Python - PyPi
+      url: https://pypi.org/project/azure-mgmt-managedservices/
+- title: 積極參與
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 適用於 Azure Lighthouse 的 Microsoft 問答集
+      url: /answers/topics/azure-lighthouse.html
+    - text: 要求產品功能
+      url: https://feedback.azure.com/forums/922753

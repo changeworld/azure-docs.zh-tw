@@ -1,19 +1,15 @@
 ---
-title: 包含檔案
-description: 包含檔案
-services: logic-apps
-author: MandiOhlinger
 ms.service: logic-apps
 ms.topic: include
+author: ecfan
+ms.author: estfan
 ms.date: 03/02/2018
-ms.author: mandia
-ms.custom: include file
-ms.openlocfilehash: 11280e1678f52ede928cb2a85ea83add222e15fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1aabc1b33722c571c6519b6620fb62211a44c2e8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61462520"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74789752"
 ---
 1. 在 [Azure 入口網站](https://portal.azure.com) 中，建立空白的邏輯應用程式。 
 
@@ -26,7 +22,7 @@ ms.locfileid: "61462520"
    > [!NOTE]
    > 所有邏輯應用程式皆必須以觸發程序啟動。 只有已使用觸發程序啟動邏輯工作流程時，您才選取動作。 
 
-4. 如果您先前未建立連線，請選擇 [登入]，如此一來您可以在出現提示時，提供您的 GitHub 認證。  
+4. 如果您先前未建立連線，請選擇 [登入]****，如此一來您可以在出現提示時，提供您的 GitHub 認證。  
 
    ![利用您的 GitHub 認證登入](./media/connectors-create-api-github/github-connector-sign-in-credentials.png)
 

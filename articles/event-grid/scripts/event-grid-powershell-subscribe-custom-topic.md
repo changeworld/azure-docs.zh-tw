@@ -1,23 +1,15 @@
 ---
 title: Azure PowerShell 指令碼範例 - 訂閱自訂主題 | Microsoft Docs
-description: Azure PowerShell 指令碼範例 - 訂閱自訂主題
-services: event-grid
-documentationcenter: na
-author: tfitzmac
-manager: timlt
-ms.service: event-grid
+description: 本文提供範例 Azure PowerShell 指令碼，示範如何訂閱自訂主題的事件方格事件。
 ms.devlang: powershell
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/10/2018
-ms.author: tomfitz
-ms.openlocfilehash: f16a02cd110397b1ef6bb3aa00ea12c44e4b9563
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 07/08/2020
+ms.openlocfilehash: 89917554da3d5b338ae17332ea8847d6313ca534
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58176509"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171171"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-powershell"></a>使用 PowerShell 訂閱自訂主題的事件
 
@@ -43,7 +35,7 @@ ms.locfileid: "58176509"
 
 此指令碼會使用下列命令來建立事件訂用帳戶。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | 建立事件格線訂用帳戶。 |
 

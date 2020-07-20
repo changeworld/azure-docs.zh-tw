@@ -1,20 +1,18 @@
 ---
-title: 模型化 Azure 儲存體資料表設計中的關聯性 | Microsoft Docs
+title: Azure 資料表儲存體設計中的模型關聯性 |Microsoft Docs
 description: 了解設計表格儲存體解決方案時的模型化程序。
 services: storage
-author: WenJason
+author: MarkMcGeeAtAquent
 ms.service: storage
 ms.topic: article
-origin.date: 04/23/2018
-ms.date: 02/25/2019
-ms.author: v-jay
+ms.date: 04/23/2018
+ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 5d83e61282d2f21a3016997e324d0f58eff15e78
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 25082c107fbc0feeb533aa2b4fc56cff960e778d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60502479"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75457556"
 ---
 # <a name="modeling-relationships"></a>將關聯性模型化
 本文討論的模型化程序有助於您設計 Azure 表格儲存體解決方案。
@@ -94,14 +92,14 @@ ms.locfileid: "60502479"
 </tr>
 </table>
 
-如何在这些选项中进行选择，以及哪些优点和缺点最重要，取决于特定应用程序方案。 例如，您多久修改一次部門實體；您所有的員工查詢是否都需要其他部門資訊；您的磁碟分割或儲存體帳戶有多接近延展性限制？  
+您選擇這些選項的方式及其優缺點是最重要的，這取決於您的應用程式案例。 例如，您多久修改一次部門實體；您所有的員工查詢是否都需要其他部門資訊；您的磁碟分割或儲存體帳戶有多接近延展性限制？  
 
 ## <a name="one-to-one-relationships"></a>一對一關聯性
 網域模型的實體之間可能會包含一對一關聯性。 如果您需要在資料表服務中實作一對一關聯性，您在需要同時擷取兩個相關的實體時，也必須選擇如何連結兩者。 此連結可以是隱含的 (根據索引鍵值中的慣例) 或明確的 (藉由以 **PartitionKey** 和 **RowKey** 值的形式，將每個實體中的連結儲存至其相關的實體)。 如需是否應將相關實體儲存於相同資料分割中的討論，請參閱 [一對多關聯性](#one-to-many-relationships)一節。  
 
 也有可能會導致您在表格服務中實作一對一關聯性的實作考量：  
 
-* 處理大型實體 (如需詳細資訊，請參閱 [大型實體模式](table-storage-design-patterns.md#large-entities-pattern))。  
+* 處理大型實體（如需詳細資訊，請參閱[大型實體模式](table-storage-design-patterns.md#large-entities-pattern)）。  
 * 實作存取控制 (如需詳細資訊，請參閱使用共用存取簽章控制存取)。  
 
 ## <a name="join-in-the-client"></a>用戶端中的聯結

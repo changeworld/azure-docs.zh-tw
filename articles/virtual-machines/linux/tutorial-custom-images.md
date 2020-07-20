@@ -1,146 +1,200 @@
 ---
-title: 教學課程 - 使用 Azure CLI 建立自訂的 VM 映像 | Microsoft Docs
+title: 教學課程 - 使用 Azure CLI 建立自訂的 VM 映像
 description: 在本教學課程中，您會了解如何使用 Azure CLI 在 Azure 中建立自訂虛擬機器映像
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
+ms.subservice: imaging
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/13/2017
+ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1c2be140e4d7156a1e23e1064436dda959c9cd14
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.reviewer: akjosh
+ms.openlocfilehash: 0ea5c11254d8dba050fe63a4cd915240c8270dd1
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749996"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324567"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>教學課程：使用 Azure CLI 建立 Azure VM 的自訂映像
 
 自訂映像類似 Marketplace 映像，但您要自行建立它們。 自訂映像可用於啟動程序設定，例如，預先載入應用程式、應用程式設定和其他 OS 設定。 在本教學課程中，您將建立自己的 Azure 虛擬機器自訂映像。 您會了解如何：
 
 > [!div class="checklist"]
-> * 取消佈建及一般化 VM
-> * 建立自訂映像
-> * 從自訂映像建立 VM
-> * 列出訂用帳戶中的所有映像
-> * 删除映像
+> * 建立共用映像庫
+> * 建立映像定義
+> * 建立映像版本
+> * 從映像建立 VM 
+> * 共用映像庫
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.0.30 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
+本教學課程會使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 內的 CLI，這會不斷更新至最新版本。 若要開啟 Cloud Shell，請選取任何程式碼區塊頂端的 [試試看]。
+
+如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.4.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
+
+## <a name="overview"></a>概觀
+
+[共用映像資源庫](shared-image-galleries.md)可簡化跨組織共用自訂映像。 自訂映像類似 Marketplace 映像，但您要自行建立它們。 自訂映像可用於啟動程序設定，例如，預先載入應用程式、應用程式設定和其他 OS 設定。 
+
+共用映像庫可讓您與其他人共用您的自訂 VM 映像。 選擇您要共用的映像、您要開放使用的區域，以及您要共用的對象。 
+
+共用映像庫具有多個資源類型：
+
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
 ## <a name="before-you-begin"></a>開始之前
 
 下列步驟將詳細說明如何將現有 VM 轉換成可重複使用的自訂映像，以便讓您用來建立新的 VM 執行個體。
 
-若要完成本教學課程中的範例，您目前必須具有虛擬機器。 如有需要，這個[指令碼範例](../scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md)可以為您建立一部虛擬機器。 逐步完成教學課程之後，請視需要取代資源群組和 VM 名稱。
+若要完成本教學課程中的範例，您目前必須具有虛擬機器。 如有需要，您可以查看 [CLI 快速入門](quick-create-cli.md)來建立要用於本教學課程的 VM。 逐步完成教學課程之後，請視需要取代資源名稱。
 
-## <a name="create-a-custom-image"></a>建立自訂映像
+## <a name="launch-azure-cloud-shell"></a>啟動 Azure Cloud Shell
 
-若要建立虛擬機器的映像，您需要藉由取消佈建、解除配置，然後將來源 VM 標示為一般化，來準備 VM。 一旦已備妥 VM，便可以建立映像。
+Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 
 
-### <a name="deprovision-the-vm"></a>取消佈建 VM 
+若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看] 即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製] 即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
 
-取消佈建會藉由移除電腦特定的資訊來將 VM 一般化。 這個一般化讓您能夠從單一映像部署多部 VM。 解除佈建期間，將主機名稱重設為 localhost.localdomain。 SSH 主機金鑰、名稱伺服器設定、根密碼及快取的 DHCP 租用也會一併刪除。
+## <a name="create-an-image-gallery"></a>建立映像資源庫 
 
-若要取消佈建 VM，請使用 Azure VM 代理程式 (waagent)。 Azure VM 代理程式會安裝於 VM 上，並管理佈建以及與 Azure 網狀架構控制器進行互動。 如需詳細資訊，請參閱 [Azure Linux 代理程式使用者指南](../extensions/agent-linux.md)。
+映像資源庫是用於啟用映像共用的主要資源。 
 
-使用 SSH 連接到您的 VM，並執行命令以取消佈建 VM。 利用 `+user` 引數，同時刪除最後佈建的使用者帳戶及所有相關聯的資料。 以 VM 的公用 IP 位址取代範例 IP 位址。
+資源庫名稱允許的字元為大寫或小寫字母、數字、點和句點。 資源庫名稱不能包含連字號。   資源庫名稱在您的訂用帳戶內必須是唯一的。 
 
-透過 SSH 連接到 VM。
-```bash
-ssh azureuser@52.174.34.95
-```
-取消佈建 VM。
+使用 [az sig create](/cli/azure/sig#az-sig-create) 建立映像資源庫。 下列範例會在「美國東部」建立名為 myGalleryRG 的資源群組，以及名為 myGallery 的資源庫。
 
-```bash
-sudo waagent -deprovision+user -force
-```
-關閉 SSH 工作階段。
-
-```bash
-exit
+```azurecli-interactive
+az group create --name myGalleryRG --location eastus
+az sig create --resource-group myGalleryRG --gallery-name myGallery
 ```
 
-### <a name="deallocate-and-mark-the-vm-as-generalized"></a>解除配置並將 VM 標示為一般化
+## <a name="get-information-about-the-vm"></a>取得 VM 的相關資訊
 
-若要建立映像，必須解除配置 VM。 使用 [az vm deallocate](/cli//azure/vm) 解除配置 VM。 
-   
+您可以使用 [az vm list](/cli/azure/vm#az-vm-list)查看可用的 VM 清單。 
+
+```azurecli-interactive
+az vm list --output table
+```
+
+當您知道 VM 名稱及其所在的資源群組後，請使用 [az vm get-instance-view](/cli/azure/vm#az-vm-get-instance-view)來取得 VM 的識別碼。 
+
+```azurecli-interactive
+az vm get-instance-view -g MyResourceGroup -n MyVm --query id
+```
+
+複製 VM 的識別碼，以供稍後使用。
+
+## <a name="create-an-image-definition"></a>建立映像定義
+
+映像定義會建立映像的邏輯群組。 並且可用來管理在其中建立的映像版本相關資訊。 
+
+映像定義名稱可以由大寫或小寫字母、數字、點、虛線和句點組成。 
+
+若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions)。
+
+使用 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create)，在資源庫中建立映像定義。 
+
+在此範例中，映像定義會命名為 myImageDefinition，而且適用於[特製化](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images)的 Linux OS 映像。 
+
 ```azurecli-interactive 
-az vm deallocate --resource-group myResourceGroup --name myVM
+az sig image-definition create \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --publisher myPublisher \
+   --offer myOffer \
+   --sku mySKU \
+   --os-type Linux \
+   --os-state specialized
 ```
 
-最後，使用 [az vm generalize](/cli//azure/vm) 將 VM 的狀態設為一般化，如此一來，Azure 平台就會知道 VM 已一般化。 您只能從一般化的 VM 建立映像。
-   
+從輸出複製映像定義的識別碼，以供稍後使用。
+
+## <a name="create-the-image-version"></a>建立映像版本
+
+使用 [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create)，從 VM 建立映像版本。  
+
+映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
+
+在此範例中，我們的映像版本是 1.0.0，而我們將使用區域備援儲存體，在「美國中西部」區域中建立 2 個複本、在「美國中南部」區域中建立 1 個複本，以及在「美國東部 2」區域中建立 1 個複本。 複寫區域必須包含來源 VM 所在的區域。
+
+將此範例中 `--managed-image` 的值取代為上一個步驟中的 VM 識別碼。
+
 ```azurecli-interactive 
-az vm generalize --resource-group myResourceGroup --name myVM
+az sig image-version create \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --gallery-image-version 1.0.0 \
+   --target-regions "westcentralus" "southcentralus=1" "eastus=1=standard_zrs" \
+   --replica-count 2 \
+   --managed-image "/subscriptions/<Subscription ID>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"
 ```
 
-### <a name="create-the-image"></a>建立映像
+> [!NOTE]
+> 您必須等候映像版本完全完成建立和複寫後，才能使用相同的受控映像來建立另一個映像版本。
+>
+> 建立映像版本時，您也可以藉由新增 `--storage-account-type  premium_lrs`，將映像儲存在「進階」儲存體，或新增 `--storage-account-type  standard_zrs`，將映像儲存在[區域備援儲存體](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)。
+>
 
-現在，您可以使用 [az image create](/cli//azure/image) 來建立 VM 的映像。 下列範例會從名為 myVM 的 VM 建立名為 myImage 的映像。
-   
-```azurecli-interactive 
-az image create \
-    --resource-group myResourceGroup \
-    --name myImage \
-    --source myVM
-```
  
-## <a name="create-vms-from-the-image"></a>從映像建立 VM
+## <a name="create-the-vm"></a>建立 VM
 
-現在您已有映像，您可以使用 [az vm create](/cli/azure/vm) 從映像建立一個或多個新的 VM。 下列範例會從名為 myImage 的映像建立名為 myVMfromImage 的 VM。
+使用 [az vm create](/cli/azure/vm#az-vm-create) 建立 VM，並使用 --specialized 參數來指出映像是特製化映像。 
 
-```azurecli-interactive 
-az vm create \
-    --resource-group myResourceGroup \
-    --name myVMfromImage \
-    --image myImage \
-    --admin-username azureuser \
-    --generate-ssh-keys
+使用 `--image` 的映像定義識別碼，從可用的最新映像版本建立 VM。 您也可以藉由提供 `--image` 的映像版本識別碼，從特定版本建立 VM。 
+
+在此範例中，我們會從最新版本的 myImageDefinition 映像建立 VM。
+
+```azurecli
+az group create --name myResourceGroup --location eastus
+az vm create --resource-group myResourceGroup \
+    --name myVM \
+    --image "/subscriptions/<Subscription ID>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition" \
+    --specialized
 ```
 
-## <a name="image-management"></a>映像管理 
+## <a name="share-the-gallery"></a>共用資源庫
 
-以下範例是一些常見的映像管理作業，以及如何使用 Azure CLI 完成這些作業。
+您可以使用角色型存取控制 (RBAC) 來跨訂用帳戶共用映像。 您可以在資源庫、映像定義或映像版本層級上共用映像。 具有映像版本 (甚至可跨訂用帳戶) 讀取權限的使用者，都能夠使用映像版本來部署 VM。
 
-以資料表格式依名稱列出所有映像。
+我們建議您在資源庫層級上與其他使用者共用。 若要取得資源庫的物件識別碼，請使用 [az sig show](/cli/azure/sig#az-sig-show)。
 
-```azurecli-interactive 
-az image list \
-    --resource-group myResourceGroup
+```azurecli-interactive
+az sig show \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --query id
 ```
 
-删除映像。 此範例會刪除 myResourceGroup 中名為 myOldImage 的映像。
+使用物件識別碼作為範圍，以及使用電子郵件地址和 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 對使用者授與共用映像庫的存取權。 將 `<email-address>` 和 `<gallery iD>` 取代為您的個人資訊。
 
-```azurecli-interactive 
-az image delete \
-    --name myOldImage \
-    --resource-group myResourceGroup
+```azurecli-interactive
+az role assignment create \
+   --role "Reader" \
+   --assignee <email address> \
+   --scope <gallery ID>
 ```
+
+如需使用 RBAC 共用資源的詳細資訊，請參閱[使用 RBAC 和 Azure CLI 管理存取](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)。
+
+## <a name="azure-image-builder"></a>Azure Image Builder
+
+Azure 也提供以 Packer 為基礎的服務：[Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)。 只要在範本中描述您的自訂，其就會處理映像建立作業。 
 
 ## <a name="next-steps"></a>後續步驟
 
 您在本教學課程中建立了自訂 VM 映像。 您已了解如何︰
 
 > [!div class="checklist"]
-> * 取消佈建及一般化 VM
-> * 建立自訂映像
-> * 從自訂映像建立 VM
-> * 列出訂用帳戶中的所有映像
-> * 删除映像
+> * 建立共用映像庫
+> * 建立映像定義
+> * 建立映像版本
+> * 從映像建立 VM 
+> * 共用映像庫
 
 請前進到下一個教學課程，了解高可用性的虛擬機器。
 
 > [!div class="nextstepaction"]
-> [建立高可用性 VM](tutorial-availability-sets.md)。
+> [建立高可用性 VM](tutorial-availability-sets.md)
 

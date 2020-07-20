@@ -1,137 +1,140 @@
 ---
-title: 操作員最佳做法 - Azure Kubernetes Service (AKS) 中的高可用性和災害復原
-description: 了解叢集操作員最佳做法，讓應用程式獲得最大執行時間以提供高可用性，並針對 Azure Kubernetes Service (AKS) 中的災害復原狀況做好準備
+title: AKS 商務持續性和嚴重損壞修復的最佳做法
+description: 瞭解叢集操作員的最佳作法，為您的應用程式達到最大執行時間，在 Azure Kubernetes Service (AKS) 中提供高可用性和準備嚴重損壞修復。
 services: container-service
 author: lastcoolnameleft
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
-ms.author: lastcoolnameleft
-ms.openlocfilehash: 5cac42505cd015cb018664b765e88f40667b1759
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.author: thfalgou
+ms.custom: fasttrack-edit
+ms.openlocfilehash: e4e2a1fc08851e4e625bfc59419fc274ebbce1c8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64920470"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251191"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>因應 Azure Kubernetes Service (AKS) 中商務持續性和災害復原的最佳做法
 
-當您在管理 Azure Kubernetes Service (AKS) 中的叢集時，應用程式的執行時間會變得很重要。 AKS 透過使用可用性設定組中的多個節點來提供高可用性。 但這些節點無法讓您避免區域失敗。 若要獲得最大的執行時間，請實作某些商務持續性和災害復原功能。
+當您在管理 Azure Kubernetes Service (AKS) 中的叢集時，應用程式的執行時間會變得很重要。 根據預設，AKS 會在[虛擬機器擴展集](../virtual-machine-scale-sets/overview.md)內使用多個節點來提供高可用性， (VMSS) 。 但是，這些多個節點不會保護您的系統免于區域失敗。 為了充分發揮您的執行時間，請事先規劃以維持商務持續性，並準備嚴重損壞修復。
 
-本最佳做法文章所著重的考量重點，在於協助您規劃 AKS 中的商務持續性和災害復原。 您會了解如何：
+本文著重于如何規劃 AKS 中的商務持續性和嚴重損壞修復。 您會了解如何：
 
 > [!div class="checklist"]
-> * 規劃多個區域中的 AKS 叢集
-> * 使用 Azure 流量管理員跨多個叢集路由傳送流量
-> * 針對容器映像登錄使用異地複寫
-> * 規劃跨多個叢集的應用程式狀態
-> * 跨多個區域複寫儲存體
+> * 規劃多個區域中的 AKS 叢集。
+> * 使用 Azure 流量管理員，將流量路由傳送到多個叢集。
+> * 針對您的容器映射登錄使用異地複寫。
+> * 規劃跨多個叢集的應用程式狀態。
+> * 跨多個區域複寫儲存體。
 
-## <a name="plan-for-multi-region-deployment"></a>規劃多重區域部署
+## <a name="plan-for-multiregion-deployment"></a>規劃多區域部署
 
-**最佳做法指引** - 當您部署多個 AKS 叢集時，請選擇 AKS 的可用區域，並使用配對區域。
+**最佳做法**：當您部署多個 AKS 叢集時，請選擇可使用 AKS 的區域，並使用配對的區域。
 
-AKS 叢集會部署到單一區域。 若要避免區域失敗，請將應用程式部署到跨不同區域的多個 AKS 叢集中。 當您規劃要在哪些區域部署 AKS 叢集時，會適用下列考量：
+AKS 叢集會部署到單一區域。 若要保護您的系統免于區域失敗，請將您的應用程式部署到跨不同區域的多個 AKS 叢集。 當您規劃部署 AKS 叢集的位置時，請考慮：
 
-* [AKS 區域可用性](https://docs.microsoft.com/azure/aks/quotas-skus-regions#region-availability)
-  * 請選擇靠近使用者的區域。 AKS 會持續延伸到新的區域。
-* [Azure 配對區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
-  * 請針對您的地理區域選擇兩個彼此配對的區域。 這些區域會協同進行平台更新，並優先處理需要進行的復原工作。
-* 服務可用性層級 (熱門/熱門、熱門/有點熱門、熱門/冷門)
-  * 是否要同時執行這兩個區域，讓其中一個區域「準備好」開始處理流量，或是讓其中一個區域需要時間才能準備好處理流量。
+* [**AKS 區域可用性**](./quotas-skus-regions.md#region-availability)：選擇靠近您使用者的區域。 AKS 會持續擴展到新的區域。
+* [**Azure 配對區域**](../best-practices-availability-paired-regions.md)：針對您的地理區域，請選擇兩個配對的區域。 配對的區域會協調平臺更新，並在需要時優先復原復原工作。
+* **服務可用性**：決定配對的區域是否應為經常性存取、經常性存取/暖性或熱/冷。 是否要同時執行這兩個區域，其中一個區域*準備好*要開始服務流量？ 或者，您想要讓一個區域有時間準備好提供流量嗎？
 
-AKS 區域可用性和配對區域要放在一起考慮。 請將 AKS 叢集部署到設計用來一起管理區域災害復原的配對區域。 例如，AKS 有在「美國東部」和「美國西部」提供。 這兩個區域也有配對。 在建立 AKS BC/DR 策略時，就會建議使用這兩個區域。
+AKS 區域可用性和配對區域是共同考慮。 請將 AKS 叢集部署到設計用來一起管理區域災害復原的配對區域。 例如，AKS 有在「美國東部」和「美國西部」提供。 這些區域是配對的。 當您要建立 AKS BC/DR 策略時，請選擇這兩個區域。
 
-在部署應用程式時，您還必須將另一個步驟新增至 CI/CD 管線，以便部署到這些 AKS 叢集。 如果您未更新部署管線，則應用程式部署只能部署到其中一個區域和 AKS 叢集。 導向至次要區域的客戶流量不會收到最新的程式碼更新。
+當您部署應用程式時，請將另一個步驟新增至您的 CI/CD 管線，以部署到這些多個 AKS 叢集。 如果您未更新部署管線，應用程式可能只會部署到您的其中一個區域和 AKS 叢集。 導向至次要地區的客戶流量不會收到最新的程式碼更新。
 
 ## <a name="use-azure-traffic-manager-to-route-traffic"></a>使用 Azure 流量管理員來路由傳送流量
 
-**最佳做法指引** - Azure 流量管理員可以將客戶導向與其最接近的 AKS 叢集和應用程式執行個體。 若要獲得最佳的效能和備援能力，請先透過流量管理員導引所有應用程式流量再進入 AKS 叢集。
+**最佳做法**： Azure 流量管理員可以將客戶導向至最接近的 AKS 叢集和應用程式實例。 為了獲得最佳效能和冗余，請將所有應用程式流量導向至 AKS 叢集之前，先透過流量管理員。
 
-使用位於不同區域的多個 AKS 叢集時，您必須控制您要如何將流量導向在每個叢集中執行的應用程式。 [Azure 流量管理員](https://docs.microsoft.com/azure/traffic-manager/)是 DNS 型的流量負載平衡器，可以將網路流量分散到各個區域。 您可以根據叢集回應時間或根據地理位置來路由傳送使用者。
+如果您在不同的區域中有多個 AKS 叢集，請使用流量管理員來控制流量如何流向在每個叢集中執行的應用程式。 [Azure 流量管理員](../traffic-manager/index.yml)是 DNS 型的流量負載平衡器，可以將網路流量分散到各個區域。 使用 [流量管理員] 根據叢集回應時間或根據地理位置來路由傳送使用者。
 
-![AKS 與 Azure 流量管理員](media/operator-best-practices-bc-dr/aks-azure-traffic-manager.png)
+![具有流量管理員的 AKS](media/operator-best-practices-bc-dr/aks-azure-traffic-manager.png)
 
-使用單一 AKS 叢集時，客戶通常會連線至指定應用程式的「服務 IP」或 DNS 名稱。 在多個叢集的部署中，客戶應該連線至流量管理員 DNS 名稱，而這個名稱又指向每個 AKS 叢集上的服務。 這些服務會使用流量管理員端點來進行定義。 每個端點都是「服務的負載平衡器 IP」。 此組態可讓您將網路流量從某個區域中的流量管理員端點，導向不同區域中的端點。
+具有單一 AKS 叢集的客戶通常會連接到指定應用程式的服務 IP 或 DNS 名稱。 在 multicluster 部署中，客戶應連線到指向每個 AKS 叢集上之服務的流量管理員 DNS 名稱。 使用流量管理員端點來定義這些服務。 每個端點都是*服務負載平衡器 IP*。 使用此設定可將某個區域中流量管理員端點的網路流量導向不同區域中的端點。
 
-![地理路由與 Azure 流量管理員](media/operator-best-practices-bc-dr/traffic-manager-geographic-routing.png)
+![透過流量管理員的地理路由](media/operator-best-practices-bc-dr/traffic-manager-geographic-routing.png)
 
-流量管理員可用來執行 DNS 查閱，並為使用者傳回最適當的端點。 可以使用巢狀設定檔，並為主要位置指定優先權。 例如，使用者主要會連線至與其最接近的地理區域。 如果該區域發生問題，流量管理員便會將其改為導向至次要區域。 這種方法可確保客戶一律會連線至應用程式執行個體，即使與其最接近的地理區域無法使用也是如此。
+流量管理員會執行 DNS 查閱，並傳回使用者最適當的端點。 嵌套的設定檔可以設定主要位置的優先順序。 例如，使用者通常會連接到最接近的地理區域。 如果該區域發生問題，流量管理員會改為將使用者導向次要區域。 這種方法可確保客戶可以連接到應用程式實例，即使其最近的地理區域無法使用也是如此。
 
-如需如何設定這些端點和路由的步驟，請參閱[使用流量管理員來設定地理流量路由方法](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-geographic-routing-method)。
+如需有關如何設定端點和路由的詳細資訊，請參閱[使用流量管理員設定地理流量路由方法](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)。
 
-### <a name="layer-7-application-routing-with-azure-front-door"></a>第 7 層應用程式路由與 Azure Front Door
+### <a name="layer-7-application-routing-with-azure-front-door-service"></a>第7層應用程式路由與 Azure Front 服務
 
-Azure 流量管理員使用 DNS (第 3 層) 來形塑流量。 [Azure 的大門](https://docs.microsoft.com/azure/frontdoor/front-door-overview)提供 HTTP/HTTPS （第 7 層） 的路由選項。 Front Door 的其他功能包括 SSL 終止、自訂網域、Web 應用程式防火牆、URL 重寫和工作階段親和性。
+流量管理員使用 DNS (第3層) 來塑造流量。 [Azure Front 開門服務](../frontdoor/front-door-overview.md)提供 HTTP/HTTPS (第7層) 路由選項。 Azure 前門服務的其他功能包括 TLS 終止、自訂網域、web 應用程式防火牆、URL 重寫和會話親和性。 請檢閱應用程式流量的需求，以了解哪一種解決方案最合適。
 
-請檢閱應用程式流量的需求，以了解哪一種解決方案最合適。
+### <a name="interconnect-regions-with-global-virtual-network-peering"></a>具有全域虛擬網路對等互連的相互連接區域
+
+如果叢集需要彼此溝通，可以透過[虛擬網路對等互連](../virtual-network/virtual-network-peering-overview.md)來連接兩個虛擬網路。 這項技術可將虛擬網路彼此互連，跨 Microsoft 骨幹網路提供高頻寬，甚至是在不同的地理區域。
+
+將 AKS 叢集執行所在的虛擬網路對等互連的必要條件是，在您的 AKS 叢集中使用標準 Load Balancer，讓虛擬網路對等互連能夠連線到 Kubernetes 服務。
 
 ## <a name="enable-geo-replication-for-container-images"></a>為容器映像啟用異地複寫
 
-**最佳做法指引** - 將容器映像儲存在 Azure Container Registry，並將登錄異地複寫至每個 AKS 區域。
+**最佳做法**：將您的容器映射儲存在 Azure Container Registry，並將登錄異地複寫至每個 AKS 區域。
 
-若要在 AKS 中部署及執行應用程式，您必須有辦法儲存和提取容器映像。 Azure Container Registry (ACR) 可與 AKS 整合，以便安全地儲存容器映像或 Helm 圖表。 ACR 可支援讓多重主機異地複寫自動將映像複寫到世界各地的 Azure 區域。 若要改善效能和可用性，請使用 ACR 異地複寫，在您具有 AKS 叢集的每個區域中建立登錄。 然後，每個 AKS 叢集便可從相同區域的本機 ACR 登錄提取容器映像：
+若要在 AKS 中部署及執行應用程式，您必須有辦法儲存和提取容器映像。 Container Registry 與 AKS 整合，因此可以安全地儲存您的容器映射或 Helm 圖表。 Container Registry 支援多宿主異地複寫，以自動將您的影像複寫至世界各地的 Azure 區域。 
 
-![容器映像的 Azure Container Registry 異地複寫](media/operator-best-practices-bc-dr/acr-geo-replication.png)
+若要改善效能和可用性，請使用 Container Registry 異地複寫，在您擁有 AKS 叢集的每個區域中建立登錄。 然後，每個 AKS 叢集會從相同區域中的本機容器登錄提取容器映射：
 
-使用 ACR 異地複寫的好處如下：
+![容器映射的容器登錄異地複寫](media/operator-best-practices-bc-dr/acr-geo-replication.png)
 
-* **可以更快地從相同區域提取映像。** 您可從相同 Azure 區域內的高速、低延遲網路連線提取映像。
-* **可以更可靠地從相同區域提取映像。** 如果某個區域無法使用，AKS 叢集可從仍可使用的不同 ACR 登錄提取映像。
-* **可以用更低成本的方式從相同區域提取映像。** 資料中心之間沒有任何網路輸出費用。
+當您使用 Container Registry 異地複寫從相同區域提取映射時，其結果如下：
 
-異地複寫是「進階」SKU ACR 登錄的一項功能。 如需如何設定複寫的步驟，請參閱 [Azure Container Registry 異地複寫](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication)
+* **更快**：從相同 Azure 區域內的高速、低延遲網路連線提取映射。
+* **更可靠**：如果某個區域無法使用，您的 AKS 叢集就會從可用的容器登錄中提取映射。
+* **成本較低**：資料中心之間沒有網路輸出費用。
+
+異地複寫是*Premium* SKU 容器登錄的功能。 如需有關如何設定異地複寫的詳細資訊，請參閱[Container Registry 異地](../container-registry/container-registry-geo-replication.md)複寫。
 
 ## <a name="remove-service-state-from-inside-containers"></a>從容器內移除服務狀態
 
-**最佳做法指引** - 盡可能不要將服務狀態儲存在容器內。 請改用支援多重區域複寫的 Azure PaaS 服務。
+**最佳做法**：可能的話，請勿將服務狀態儲存在容器內。 相反地，請使用 Azure 平臺即服務， (支援多區域複寫的 PaaS) 。
 
-服務狀態係指服務正常運作所需的記憶體或磁碟資料。 狀態包括服務會讀取及寫入的資料結構和成員變數。 根據服務的架構方式而定，狀態可能還包括儲存在磁碟上的檔案或其他資源。 例如，資料庫要用於儲存資料和交易記錄的檔案。
+*服務狀態*是指服務正常運作所需的記憶體中或磁片上的資料。 狀態包括服務會讀取及寫入的資料結構和成員變數。 根據服務的架構方式而定，狀態也可能包含檔案或儲存在磁片上的其他資源。 例如，狀態可能包括資料庫用來儲存資料和交易記錄檔的檔案。
 
-狀態可進行外部化，也可並存在運作該狀態的程式碼中。 狀態外部化的做法通常是使用資料庫，或是透過網路在不同電腦上或在相同電腦上的流程以外執行的其他資料存放區。
+狀態可以是外部化或與操作該狀態的程式碼共存。 通常，您會使用在網路上的不同電腦上執行的資料庫或其他資料存放區來外部化狀態，或在同一部電腦上執行不在進程中的其他資料存放區。
 
-在容器和微服務內執行的程序不保留狀態時，容器和微服務會有最好的復原性。 因為您的應用程式幾乎一律包含某些狀態，所以請使用平台即服務解決方案，例如適用於 MySQL/Postgres 或 Azure SQL 的 Azure 資料庫。
+容器和微服務在其中執行的進程不會保留狀態時，是最具彈性的。 因為應用程式幾乎一律包含某個狀態，所以請使用 PaaS 解決方案，例如適用於 MySQL 的 Azure 資料庫、適用於 PostgreSQL 的 Azure 資料庫或 Azure SQL Database。
 
-若要了解如何建置可攜性更好的應用程式，請參閱下列指導方針：
+若要建立可移植的應用程式，請參閱下列指導方針：
 
-* [十二要素應用程式方法](https://12factor.net/)。
-* [在多個 Azure 區域中執行 Web 應用程式](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region)
+* [12因素應用程式方法](https://12factor.net/)
+* [在多個 Azure 區域中執行 Web 應用程式](/azure/architecture/reference-architectures/app-service-web-app/multi-region)
 
 ## <a name="create-a-storage-migration-plan"></a>建立儲存體移轉計劃
 
-**最佳做法指引** - 如果您使用 Azure 儲存體，請針對將儲存體從主要區域遷移至備份區域的方法進行準備和測試。
+**最佳做法**：如果您使用 Azure 儲存體，請準備並測試如何將儲存體從主要區域遷移至備份區域。
 
-您的應用程式可以為其資料使用 Azure 儲存體。 當應用程式分散到多個位於不同區域的 AKS 叢集時，您必須讓儲存體保持同步。 用來複寫儲存體的兩個常見方式包括下列方法：
+您的應用程式可能會使用 Azure 儲存體的資料。 因為您的應用程式會分散到不同區域中的多個 AKS 叢集，所以您必須將儲存體保持同步。 以下是複寫儲存體的兩個常見方式：
 
-* 以應用程式為基礎的非同步複寫
 * 以基礎結構為基礎的非同步複寫
+* 以應用程式為基礎的非同步複寫
 
 ### <a name="infrastructure-based-asynchronous-replication"></a>以基礎結構為基礎的非同步複寫
 
-即使在 Pod 刪除之後，您的應用程式仍可能需要永續性儲存體。 在 Kubernetes 中，您可以使用永續性磁碟區來保存資料儲存體。 這些永續性磁碟區會掛接到節點 VM，再對 Pod 公開。 永續性磁碟區會跟隨 Pod，即使 Pod 移到相同叢集內的不同節點也是如此。
+即使在 pod 刪除之後，您的應用程式也可能需要持續性儲存體。 在 Kubernetes 中，您可以使用持續性磁片區來保存資料儲存。 持續性磁片區會掛接至節點 VM，然後公開至 pod。 即使 pod 已移至相同叢集內的不同節點，持續性磁片區仍會遵循 pod。
 
-根據解決方案所使用的儲存體，複寫策略可能會不同。 常見的儲存體解決方案 (例如 [Gluster](https://docs.gluster.org/en/latest/Administrator%20Guide/Geo%20Replication/)、[CEPH](http://docs.ceph.com/docs/master/cephfs/disaster-recovery/)、[Rook](https://rook.io/docs/rook/master/disaster-recovery.html) 和 [Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps)) 都有自己的指引。
+您所使用的複寫策略取決於您的儲存體解決方案。 [Gluster](https://docs.gluster.org/en/latest/Administrator%20Guide/Geo%20Replication/)、 [Ceph](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/)、[城堡](https://rook.io/docs/rook/v1.2/ceph-disaster-recovery.html)和[Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps)等常見的儲存體解決方案提供自己的嚴重損壞修復和複寫指引。
 
-主要方法是準備共同的儲存點供應用程式寫入其資料。 然後，此資料會複寫到各個區域，再於本機存取。
+一般的策略是提供一般的儲存點，讓應用程式可以在其中寫入其資料。 然後，此資料會複寫到各個區域，再於本機存取。
 
 ![以基礎結構為基礎的非同步複寫](media/operator-best-practices-bc-dr/aks-infra-based-async-repl.png)
 
-如果您使用 Azure 受控磁碟，可用的複寫和 DR 解決方案包含使用下列其中一個方法：
+如果您使用 Azure 受控磁碟，您可以選擇複寫和 DR 解決方案，如下所示：
 
-* [Azure 上的 Ark](https://github.com/heptio/ark/blob/master/docs/azure-config.md)
+* [Azure 上的 Velero](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
 * [Azure Site Recovery](https://azure.microsoft.com/blog/asr-managed-disks-between-azure-regions/)
 
 ### <a name="application-based-asynchronous-replication"></a>以應用程式為基礎的非同步複寫
 
-以應用程式為基礎的非同步複寫目前沒有 Kubernetes 原生實作。 由於容器和 Kubernetes 有鬆散結合的本質，所有傳統的應用程式或語言方法應該都會有作用。 主要方法是讓應用程式本身複寫儲存要求，此要求接著會再寫入至每個叢集的基礎資料儲存體。
+Kubernetes 目前不提供以應用程式為基礎之非同步複寫的原生執行。 由於容器和 Kubernetes 是鬆散結合的，因此任何傳統的應用程式或語言方法都應該可行。 一般而言，應用程式本身會複寫儲存體要求，然後再寫入每個叢集的基礎資料儲存體。
 
 ![以應用程式為基礎的非同步複寫](media/operator-best-practices-bc-dr/aks-app-based-async-repl.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-本文著重在 AKS 叢集中的商務持續性和災害復原考量。 如需 AKS 中叢集作業的相關詳細資訊，請參閱下列最佳作法：
+本文著重于 AKS 叢集的商務持續性和嚴重損壞修復考慮。 如需 AKS 中叢集作業的詳細資訊，請參閱下列有關最佳做法的文章：
 
-* [多租用戶和叢集隔離][aks-best-practices-cluster-isolation]
+* [多組織使用者和叢集隔離][aks-best-practices-cluster-isolation]
 * [基本的 Kubernetes 排程器功能][aks-best-practices-scheduler]
 
 <!-- INTERNAL LINKS -->

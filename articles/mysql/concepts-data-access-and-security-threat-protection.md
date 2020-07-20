@@ -1,29 +1,29 @@
 ---
-title: 進階威脅防護 - 適用於 MySQL 的 Azure 資料庫 | Microsoft Docs
-description: 「進階威脅防護」會偵測出暗示對資料庫有潛在安全性威脅的異常資料庫活動。
-author: bolzmj
-ms.author: mbolz
+title: 先進的威脅防護-適用於 MySQL 的 Azure 資料庫
+description: 瞭解「先進的威脅防護」的概念，它會偵測異常資料庫活動，指出資料庫有潛在的安全性威脅。
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: 10fa2a409437c8cc48bcd1a674cc3832f086dcf2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 3/18/2020
+ms.openlocfilehash: 01ac6ccbc2789d2052bab07e2da51630b6dbf581
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60526005"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79537154"
 ---
 # <a name="azure-database-for-mysql-advanced-threat-protection"></a>適用於 MySQL 的 Azure 資料庫進階威脅防護
 
 適用於 MySQL 的 Azure 資料庫進階威脅防護偵測到了異常活動，這表示有不尋常及可能有害的活動試圖存取或惡意探索資料庫。
 
 > [!NOTE]
-> 進階的威脅防護處於公開預覽狀態。
+> 先進的威脅防護處於公開預覽狀態。
 
-「進階威脅防護」是進階資料安全性供應項目的一部分，該供應項目是進階安全性功能的整合套件。 可存取及管理透過進階的威脅防護[Azure 入口網站](https://portal.azure.com)或使用[REST API](/rest/api/mysql/serversecurityalertpolicies)。 此功能是適用於一般用途和記憶體最佳化的伺服器。
+「進階威脅防護」是進階資料安全性供應項目的一部分，該供應項目是進階安全性功能的整合套件。 您可以透過[Azure 入口網站](https://portal.azure.com)或使用[REST API](/rest/api/mysql/serversecurityalertpolicies)來存取和管理「先進的威脅防護」。 這項功能適用于一般用途和記憶體優化的伺服器。
 
 > [!NOTE]
-> 進階威脅防護功能**不**適用於下列 Azure 政府和主權雲端區域：US Gov 德克薩斯州、US Gov 亞利桑那州、US Gov 愛荷華州、US DoD 東部、US DoD 中部、德國中部、德國北部、中國東部、中國東部 2。 如需一般產品可用性，請瀏覽[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。
+> 下列 Azure Government 和主權雲端區域**無法**使用進階威脅防護功能：US Gov 德克薩斯州、US Gov 亞利桑那州、US Gov 愛荷華州、US Gov 維吉尼亞州、US DoD 東部、US DoD 中部、德國中部、德國北部、中國東部、中國東部 2。 如需一般產品可用性，請瀏覽[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。
 
 
 ## <a name="what-is-advanced-threat-protection"></a>什麼是進階威脅防護？
@@ -34,11 +34,11 @@ ms.locfileid: "60526005"
 
 ## <a name="advanced-threat-protection-alerts"></a>進階威脅防護警示 
 「適用於 MySQL 的 Azure 資料庫」的「進階威脅防護」會偵測出暗示有不尋常及可能有害之資料庫存取或惡意探索意圖的異常活動，並可觸發下列警示：
-- **從不尋常的位置存取**：當有人從不尋常的地理位置登入「適用於 MySQL 的 Azure 資料庫」伺服器，而使得對「適用於 MySQL 的 Azure 資料庫」伺服器的存取模式發生變更時，就會觸發此警示。 在某些情況下，警示會偵測到合法的動作 (新的應用程式或開發人員維護)。 在其他情況下，警示則是偵測惡意動作 (離職員工、外部攻擊者)。
-- **從不尋常的 Azure 資料中心存取**：當有人從適用於 MySQL 的 Azure 資料庫伺服器上近期發現的不尋常 Azure 資料中心登入該伺服器，而使得對該伺服器的存取模式發生變更時，就會觸發此警示。 在某些情況下，警示會偵測出合法的動作 (您在 Azure、Power BI、「適用於 MySQL 的 Azure 資料庫查詢編輯器」中的新應用程式)。 在其他情況下，警示則是偵測來自 Azure 資源/服務的惡意動作 (離職員工、外部攻擊者)。
-- **從不熟悉的主體存取**：當有人使用不尋常的主體 (適用於 MySQL 的 Azure 資料庫使用者) 來登入適用於 MySQL 的 Azure 資料庫伺服器，而使得對該伺服器的存取模式發生變更時，就會觸發此警示。 在某些情況下，警示會偵測到合法的動作 (新的應用程式、開發人員維護)。 在其他情況下，警示則是偵測惡意動作 (離職員工、外部攻擊者)。
+- **來自不尋常位置的存取**：當有人從不尋常的地理位置登入「適用於 MySQL 的 Azure 資料庫」伺服器，而使得對「適用於 MySQL 的 Azure 資料庫」伺服器的存取模式發生變更時，就會觸發此警示。 在某些情況下，警示會偵測到合法的動作 (新的應用程式或開發人員維護)。 在其他情況下，警示則是偵測惡意動作 (離職員工、外部攻擊者)。
+- **來自不尋常 Azure 資料中心的存取**：當有人從「適用於 MySQL 的 Azure 資料庫」伺服器上近期發現的不尋常 Azure 資料中心登入該伺服器，而使得對該伺服器的存取模式發生變更時，就會觸發此警示。 在某些情況下，警示會偵測出合法的動作 (您在 Azure、Power BI、「適用於 MySQL 的 Azure 資料庫查詢編輯器」中的新應用程式)。 在其他情況下，警示則是偵測來自 Azure 資源/服務的惡意動作 (離職員工、外部攻擊者)。
+- **來自陌生主體的存取**：當有人使用不尋常的主體 (「適用於 MySQL 的 Azure 資料庫」使用者) 來登入「適用於 MySQL 的 Azure 資料庫」伺服器，而使得對該伺服器的存取模式發生變更時，就會觸發此警示。 在某些情況下，警示會偵測到合法的動作 (新的應用程式、開發人員維護)。 在其他情況下，警示則是偵測惡意動作 (離職員工、外部攻擊者)。
 - **從可能有害的應用程式存取**：使用可能有害的應用程式用存取資料庫時，會觸發此警示。 在某些情況下，警示會偵測到執行中的滲透測試。 在其他情況下，警示則是偵測使用常見攻擊工具的攻擊。
-- **暴力密碼破解適用於 MySQL 的 Azure 資料庫認證**：有使用不同認證的異常大量登入失敗時，會觸發此警示。 在某些情況下，警示會偵測到執行中的滲透測試。 在其他情況下，警示則是偵測暴力攻擊。
+- **暴力破解適用於 MySQL 的 Azure 資料庫認證**：當有使用不同認證的異常大量失敗登入時，就會觸發此警示。 在某些情況下，警示會偵測到執行中的滲透測試。 在其他情況下，警示則是偵測暴力攻擊。
 
 ## <a name="next-steps"></a>後續步驟
 

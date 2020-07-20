@@ -1,72 +1,60 @@
 ---
-title: 建立自訂的喚醒字 - 語音服務
+title: 建立自訂關鍵字-語音服務
 titleSuffix: Azure Cognitive Services
-description: 您的裝置隨時聆聽等候喚醒字 (或片語)。 當使用者說出喚醒字時，裝置便會將所有後續的音訊傳送到雲端，直到使用者停止說話。 自訂您的喚醒字是區隔裝置並強化品牌的有效方法。
+description: 您的裝置一律會接聽關鍵字（或片語）。 當使用者說出關鍵字時，裝置會將所有後續的音訊傳送到雲端，直到使用者停止說話為止。 自訂您的關鍵字是區分您的裝置並強化商標的有效方式。
 services: cognitive-services
-author: erhopf
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 2280af4bf37fdb3cd12482da855f979a9180f0ec
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.date: 12/11/2019
+ms.author: trbye
+ms.openlocfilehash: 8e67d624c77eb838f7646731bbdedd8f97f81b96
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020520"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81400067"
 ---
-# <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>使用語音服務來建立自訂的喚醒字
+# <a name="create-a-custom-keyword-using-speech-studio"></a>使用語音 Studio 建立自訂關鍵字
 
-您的裝置隨時聆聽等候喚醒字 (或片語)。 例如，「嗨 Cortana」是 Cortana 助理的喚醒字。 當使用者說出喚醒字時，裝置便會將所有後續的音訊傳送到雲端，直到使用者停止說話。 自訂您的喚醒字是區隔裝置並強化品牌的有效方法。
+您的裝置一律會接聽關鍵字（或片語）。 例如，「嘿 Cortana」是 Cortana assistant 的關鍵字。 當使用者說出關鍵字時，裝置會將所有後續的音訊傳送到雲端，直到使用者停止說話為止。 自訂您的關鍵字是區分您的裝置並強化商標的有效方式。
 
-在本文中，您將了解如何為裝置建立自訂的喚醒字。
+在本文中，您將瞭解如何為您的裝置建立自訂關鍵字。
 
-## <a name="choose-an-effective-wake-word"></a>選擇有效的喚醒字
+## <a name="create-your-keyword"></a>建立關鍵字
 
-在選擇喚醒字時，請考慮以下指導方針：
+在您可以使用自訂關鍵字之前，您必須使用[語音 Studio](https://aka.ms/sdsdk-speechportal)上的[自訂關鍵字](https://aka.ms/sdsdk-wakewordportal)頁來建立關鍵字。 在您提供關鍵字之後，它會產生一個檔案，您可以將它部署到您的裝置。
 
-* 您的喚醒字應是英文單字或片語。 說出喚醒字所需的時間不應超過兩秒。
+1. 移至[語音 Studio](https://aka.ms/sdsdk-speechportal)並登**入**，或者，如果您還沒有語音訂用帳戶，請選擇 [[**建立訂用**](https://go.microsoft.com/fwlink/?linkid=2086754)帳戶]。
 
-* 由 4 到 7 個音節所構成的單字，是效果最佳的喚醒字。 例如 "Hey, Computer" 是不錯的喚醒字。 只有 "Hey" 則不好。
+1. 在 [[自訂關鍵字](https://aka.ms/sdsdk-wakewordportal)] 頁面上，建立**新的專案**。 
 
-* 喚醒字應遵循一般英文發音規則。
+1. 輸入**名稱**、選擇性**描述**，然後選取語言。 您將需要每個語言一個專案，而且支援目前僅限於 en-us 語言。
 
-* 遵循一般英文發音規則的獨特或甚至虛構的單字可減少誤判的情況。 例如，"computerama" 會是好的喚醒字。
+    ![描述關鍵字專案](media/custom-keyword/custom-kws-portal-new-project.png)
 
-* 請勿選擇一般單字。 例如，"eat" 和 "go" 是一般對話中常說的單字。 它們可能會不小心觸發您的裝置。
+1. 從清單中選取您的專案。 
 
-* 避免使用可能有其他發音的喚醒字。 使用者將必須知道讓裝置回應的「正確」發音。 例如，"509" 可能會讀為 "five zero nine"、"five oh nine" 或 "five hundred and nine"。 "R.E.I." 可能會讀為 "r-e-i" 或 "ray"。 "Live" 可能會讀為"/līv/" 或 "/liv/"。
+    ![選取您的關鍵字專案](media/custom-keyword/custom-kws-portal-project-list.png)
 
-* 請勿使用特殊字元、符號或數字。 例如，"Go#" 和 "20 + cats" 不是好的喚醒字。 不過，"go sharp" 或 "twenty plus cats" 是可用的喚醒字。 您仍然可以使用品牌中的符號，並使用行銷管道和文件來強調適當的發音。
+1. 若要啟動新的關鍵字模型，請按一下 [**定型模型**]。
 
-> [!NOTE]
-> 如果您使用註冊商標單字作為喚醒字，請務必確認您擁有該商標，或者已從該商標擁有者取得使用該字組的權限。 Microsoft 無須對您選擇喚醒字而產生的任何法律問題負擔任何責任。
+1. 輸入關鍵字模型的 [**名稱**] 和選擇性 [**描述**]，然後鍵入您選擇的**關鍵字**，然後按 **[下一步]**。 我們有一些[指導方針](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword)可協助您選擇有效的關鍵字。
 
-## <a name="create-your-wake-word"></a>建立您的喚醒字
+    ![輸入您的關鍵字](media/custom-keyword/custom-kws-portal-new-model.png)
 
-您可以使用自訂的網路喚醒 word 與您的裝置之前，您必須建立網路喚醒 word 與 Microsoft 自訂喚醒 Word 產生服務。 之後您提供網路喚醒 word，服務會產生，您將部署到您的開發套件，以啟用網路喚醒 word，您的裝置上的檔案。
+1. 入口網站現在會為您的關鍵字建立候選的發音。 按一下 [播放] 按鈕，並移除任何不正確之發音旁的檢查，以接聽每個候選。 一旦核取了良好的發音，請按一下 [**定型**] 開始產生關鍵字。 
 
-1. 移至[自訂語音服務入口網站](https://aka.ms/sdsdk-speechportal)並**登入**或如果您沒有選擇語音訂用帳戶[**建立訂用帳戶**](https://go.microsoft.com/fwlink/?linkid=2086754)
+    ![檢查關鍵字](media/custom-keyword/custom-kws-portal-choose-prons.png)
 
-    ![自訂語音服務入口網站](media/speech-devices-sdk/wake-word-4.png)
+1. 最多可能需要30分鐘的時間來產生模型。 當模型完成時，關鍵字清單會從**處理**變更為**成功**。 然後您就可以下載檔案。
 
-1. 在[自訂喚醒 Word](https://aka.ms/sdsdk-wakewordportal)頁面上您的選擇，然後按一下 網路喚醒 word 中的型別**新增喚醒字詞**。 我們有一些[指導方針](#choose-an-effective-wake-word)若要協助選擇有效的關鍵字。 目前僅支援 EN-US 語言。
+    ![檢查關鍵字](media/custom-keyword/custom-kws-portal-download-model.png)
 
-    ![輸入您的喚醒字](media/speech-devices-sdk/wake-word-5.png)
-
-1. 將建立三個其他的發音的線上醒機 word。 您可以選擇要使用的所有發音。 然後選取**送出**產生喚醒 word。 如果您想要變更網路喚醒 word 請移除現有第一，發音該行暫留時，會出現 [刪除] 圖示。
-
-    ![檢閱您的網路喚醒 word](media/speech-devices-sdk/wake-word-6.png)
-
-1. 可能需要一分鐘的時間產生模型。 系統會提示您下載檔案。
-
-    ![下載您的網路喚醒 word](media/speech-devices-sdk/wake-word-7.png)
-
-1. 將 .zip 檔案儲存到您的電腦。 您將需要此檔案來部署您的自訂網路喚醒 word 到開發套件。
+1. 將 .zip 檔案儲存到您的電腦。 您將需要此檔案，才能將自訂關鍵字部署至您的裝置。
 
 ## <a name="next-steps"></a>後續步驟
 
-測試具有您自訂的網路喚醒單字[語音裝置 SDK 快速入門](https://aka.ms/sdsdk-quickstart)。
+使用[語音裝置 SDK 快速入門](https://aka.ms/sdsdk-quickstart)測試您的自訂關鍵字。

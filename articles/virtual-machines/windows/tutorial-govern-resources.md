@@ -1,33 +1,25 @@
 ---
-title: 教學課程 - 使用 Azure PowerShell 管理 Azure 虛擬機器 | Microsoft Docs
+title: 教學課程 - 使用 PowerShell 管理虛擬機器
 description: 在本教學課程中，您會了解如何使用 Azure PowerShell 來套用 RBAC、原則、鎖定和標籤以管理 Azure 虛擬機器
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: tfitzmac
-manager: jeconnoc
-editor: tysonn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 9be421e85d41586c18bee15cd748539e3910021b
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: fce613da352e55bae64db2912af23a07f4bf954f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540647"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200685"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>教學課程：了解如何使用 Azure PowerShell 來管理 Windows 虛擬機器
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
 ## <a name="launch-azure-cloud-shell"></a>啟動 Azure Cloud Shell
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 
 
@@ -141,7 +133,7 @@ New-AzVm -ResourceGroupName "myResourceGroup" `
 
 ## <a name="lock-resources"></a>鎖定資源
 
-[資源鎖定](../../azure-resource-manager/resource-group-lock-resources.md)可避免組織中的使用者不小心刪除或修改重要資源。 不同於角色型存取控制，資源鎖定會對所有使用者和角色套用限制。 您可以將鎖定層級設定為 *CanNotDelete* 或 *ReadOnly*。
+[資源鎖定](../../azure-resource-manager/management/lock-resources.md)可避免組織中的使用者不小心刪除或修改重要資源。 不同於角色型存取控制，資源鎖定會對所有使用者和角色套用限制。 您可以將鎖定層級設定為 *CanNotDelete* 或 *ReadOnly*。
 
 若要鎖定虛擬機器和網路安全性群組，請使用 [New-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock) 命令：
 
@@ -171,7 +163,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="tag-resources"></a>標記資源
 
-您可將[標籤](../../azure-resource-manager/resource-group-using-tags.md)套用至 Azure 資源，以便以邏輯方式依照類別組織這些資源。 每個標記都是由一個名稱和一個值所組成。 例如，您可以將「環境」名稱和「生產」值套用至生產環境中的所有資源。
+您可將[標籤](../../azure-resource-manager/management/tag-resources.md)套用至 Azure 資源，以便以邏輯方式依照類別組織這些資源。 每個標記都是由一個名稱和一個值所組成。 例如，您可以將「環境」名稱和「生產」值套用至生產環境中的所有資源。
 
 [!INCLUDE [Resource Manager governance tags Powershell](../../../includes/resource-manager-governance-tags-powershell.md)]
 
@@ -226,6 +218,10 @@ Remove-AzResourceLock -LockName LockNSG `
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
+## <a name="manage-costs"></a>管理成本
+
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
+
 ## <a name="next-steps"></a>後續步驟
 
 您在本教學課程中建立了自訂 VM 映像。 您已了解如何︰
@@ -236,8 +232,8 @@ Remove-AzResourceGroup -Name myResourceGroup
 > * 使用鎖定保護重要資源
 > * 標記資源以進行計費和管理
 
-請前進到下一個教學課程，以了解如何使虛擬機器具備高可用性。
+請繼續進行下一個教學課程，以了解如何在 Linux 虛擬機器上識別變更及管理套件更新。
 
 > [!div class="nextstepaction"]
-> [監視虛擬機器](tutorial-monitoring.md)
+> [管理虛擬機器](tutorial-config-management.md)
 

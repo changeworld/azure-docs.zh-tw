@@ -1,27 +1,27 @@
 ---
-title: 將虛擬網路連結至 ExpressRoute 線路：PowerShell：Azure | Microsoft Docs
+title: ExpressRoute：將 VNet 連結到線路： Azure PowerShell
 description: 本文提供以下內容的概觀：如何使用 Resource Manager 部署模型和 PowerShell 將虛擬網路 (VNet) 連結到 ExpressRoute 線路。
 services: expressroute
-author: ganesr
+author: charwen
 ms.service: expressroute
-ms.topic: article
-ms.date: 10/30/2018
-ms.author: ganesr
+ms.topic: how-to
+ms.date: 05/20/2018
+ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: b0ae3d5b2c60badfb9b59820b1e0b85383e524ca
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c8fd3bc4a2efd90857d0696491102790b069d5e1
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60366331"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984144"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>將虛擬網路連線到 ExpressRoute 電路
 > [!div class="op_single_selector"]
-> * [Azure 门户](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure 入口網站](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
-> * [影片 - Azure 入口網站](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
-> * [PowerShell (傳統)](expressroute-howto-linkvnet-classic.md)
+> * [影片-Azure 入口網站](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
+> * [PowerShell （傳統）](expressroute-howto-linkvnet-classic.md)
 >
 
 本文會協助您使用 Resource Manager 部署模型和 PowerShell，將虛擬網路 (VNet) 連結到 Azure ExpressRoute 線路。 虛擬網路可以位於相同的訂用帳戶中，或屬於另一個訂用帳戶。 本文也會示範如何更新虛擬網路連結。
@@ -39,13 +39,13 @@ ms.locfileid: "60366331"
 
 * 您必須擁有作用中的 ExpressRoute 線路。 
   * 遵循指示來 [建立 ExpressRoute 線路](expressroute-howto-circuit-arm.md) ，並由您的連線提供者來啟用該線路。 
-  * 确保为线路配置 Azure 专用对等互连。 請參閱 [設定路由](expressroute-howto-routing-arm.md) 一文，以取得路由指示。 
+  * 確定您已針對循環設定了 Azure 私用對等。 請參閱 [設定路由](expressroute-howto-routing-arm.md) 一文，以取得路由指示。 
   * 請確定已設定 Azure 私用對等，且已開啟您的網路與 Microsoft 之間的 BGP 對等，讓您可以啟用端對端連線。
   * 請確定您有已建立且完整佈建的虛擬網路和虛擬網路閘道。 請依照指示[為 ExpressRoute 建立虛擬網路閘道](expressroute-howto-add-gateway-resource-manager.md)。 ExpressRoute 的虛擬網路閘道會使用 GatewayType 'ExpressRoute'，而不是 VPN。
 
 ### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
@@ -59,9 +59,9 @@ $connection = New-AzVirtualNetworkGatewayConnection -Name "ERConnection" -Resour
 ```
 
 ## <a name="connect-a-virtual-network-in-a-different-subscription-to-a-circuit"></a>將不同訂用帳戶中的虛擬網路連接到線路
-用户可以在多个订阅之间共享 ExpressRoute 线路。 下圖顯示簡單的圖解，示範多個訂用帳戶共用 ExpressRoute 線路的方式。
+您可以讓多個訂用帳戶共用 ExpressRoute 線路。 下圖顯示簡單的圖解，示範多個訂用帳戶共用 ExpressRoute 線路的方式。
 
-大型云中的每个较小云用于表示属于组织中不同部门的订阅。 組織內的每個部門都可以使用自己的訂用帳戶來部署它們的服務，但可共用單一 ExpressRoute 線路，以連接回內部部署網路。 單一部門 (在此範例中為IT) 可擁有 ExpressRoute 線路。 組織內的其他訂用帳戶可以使用 ExpressRoute 電路。
+大型雲端內的每個較小型雲端，會用來代表屬於組織內不同部門的訂用帳戶。 組織內的每個部門都可以使用自己的訂用帳戶來部署它們的服務，但可共用單一 ExpressRoute 線路，以連接回內部部署網路。 單一部門 (在此範例中：IT) 可以擁有 ExpressRoute 循環。 組織內的其他訂用帳戶可以使用 ExpressRoute 電路。
 
 > [!NOTE]
 > 訂用帳戶擁有者需支付 ExpressRoute 循環的連線和頻寬費用。 所有虛擬網路都會共用相同的頻寬。
@@ -71,11 +71,11 @@ $connection = New-AzVirtualNetworkGatewayConnection -Name "ERConnection" -Resour
 ![跨訂用帳戶的連線能力](./media/expressroute-howto-linkvnet-classic/cross-subscription.png)
 
 
-### <a name="administration---circuit-owners-and-circuit-users"></a>管理 - 线路所有者和线路用户
+### <a name="administration---circuit-owners-and-circuit-users"></a>系統管理 - 線路擁有者和線路使用者
 
-「線路擁有者」是 ExpressRoute 線路資源的已授權「進階使用者」。 线路所有者可以创建可供“线路用户”兑换的授权。 線路使用者是虛擬網路閘道的擁有者，與 ExpressRoute 線路位於不同的訂用帳戶內。 電路使用者可以兌換授權 (每個虛擬網路一個授權)。
+「線路擁有者」是 ExpressRoute 線路資源的已授權「進階使用者」。 電路擁有者能夠建立可由「電路使用者」兌換的授權。 線路使用者是虛擬網路閘道的擁有者，與 ExpressRoute 線路位於不同的訂用帳戶內。 電路使用者可以兌換授權 (每個虛擬網路一個授權)。
 
-電路擁有者能夠隨時修改及撤銷授權。 撤消授权会导致从已撤消访问权限的订阅中删除所有链路连接。
+電路擁有者能夠隨時修改及撤銷授權。 如果撤銷授權，則在存取權遭撤銷的訂用帳戶中，所有連結連線均會被刪除。
 
 ### <a name="circuit-owner-operations"></a>循環擁有者作業
 
@@ -97,16 +97,18 @@ $auth1 = Get-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -N
 
 對此動作的回應將包含授權金鑰和狀態：
 
-    Name                   : MyAuthorization1
-    Id                     : /subscriptions/&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&/resourceGroups/ERCrossSubTestRG/providers/Microsoft.Network/expressRouteCircuits/CrossSubTest/authorizations/MyAuthorization1
-    Etag                   : &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& 
-    AuthorizationKey       : ####################################
-    AuthorizationUseStatus : Available
-    ProvisioningState      : Succeeded
+```azurepowershell
+Name                   : MyAuthorization1
+Id                     : /subscriptions/&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&/resourceGroups/ERCrossSubTestRG/providers/Microsoft.Network/expressRouteCircuits/CrossSubTest/authorizations/MyAuthorization1
+Etag                   : &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& 
+AuthorizationKey       : ####################################
+AuthorizationUseStatus : Available
+ProvisioningState      : Succeeded
+```
 
 
 
-**查看授权**
+**檢閱授權**
 
 線路擁有者可以藉由執行下列 Cmdlet，來檢閱特定線路上發出的所有授權：
 
@@ -137,7 +139,7 @@ Remove-AzExpressRouteCircuitAuthorization -Name "MyAuthorization2" -ExpressRoute
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit
 ```    
 
-### <a name="circuit-user-operations"></a>线路用户操作
+### <a name="circuit-user-operations"></a>循環使用者作業
 
 電路使用者需要具備對等識別碼以及電路擁有者所提供的授權金鑰。 授權金鑰是 GUID。
 
@@ -147,7 +149,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit
 Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 ```
 
-**兑换连接授权**
+**兌換連線授權**
 
 線路使用者可以執行下列 Cmdlet 來兌換連結授權：
 
@@ -176,5 +178,24 @@ Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connecti
 
 *RoutingWeight* 的範圍是從 0 到 32000。 預設值為 0。
 
+## <a name="configure-expressroute-fastpath"></a>設定 ExpressRoute FastPath 
+如果您的虛擬網路閘道是 Ultra 效能或 ErGw3AZ，您可以啟用[ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) 。 FastPath 可改善資料路徑效能，例如每秒封包數，以及內部部署網路與虛擬網路之間的每秒連線數。 
+
+**在新連接上設定 FastPath**
+
+```azurepowershell-interactive 
+$circuit = Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG" 
+$gw = Get-AzVirtualNetworkGateway -Name "MyGateway" -ResourceGroupName "MyRG" 
+$connection = New-AzVirtualNetworkGatewayConnection -Name "MyConnection" -ResourceGroupName "MyRG" -ExpressRouteGatewayBypass -VirtualNetworkGateway1 $gw -PeerId $circuit.Id -ConnectionType ExpressRoute -Location "MyLocation" 
+``` 
+
+**更新現有的連接以啟用 FastPath**
+
+```azurepowershell-interactive 
+$connection = Get-AzVirtualNetworkGatewayConnection -Name "MyConnection" -ResourceGroupName "MyRG" 
+$connection.ExpressRouteGatewayBypass = $True
+Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection
+``` 
+
 ## <a name="next-steps"></a>後續步驟
-有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md)。
+如需有關 ExpressRoute 的詳細資訊，請參閱 [ExpressRoute 常見問題集](expressroute-faqs.md)。

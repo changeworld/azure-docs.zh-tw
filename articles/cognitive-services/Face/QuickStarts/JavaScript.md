@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: d1aa3e3a23acf82af8435cbb075fac38353500e5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e94dc53fa5c0a6f44417324c9a7d7c1496d18f17
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538726"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986621"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>快速入門：使用 REST API 和 JavaScript 偵測影像中的人臉
 
@@ -23,12 +23,15 @@ ms.locfileid: "57538726"
 
 ## <a name="prerequisites"></a>必要條件
 
-- 臉部 API 訂用帳戶金鑰。 您可以從[試用認知服務](https://azure.microsoft.com/try/cognitive-services/?api=face-api)取得免費的試用訂用帳戶金鑰。 或是，依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱臉部 API 服務並取得金鑰。
-- 程式碼編輯器，例如 [Visual Studio Code](https://code.visualstudio.com/download)
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="建立 Face 資源"  target="_blank">建立 Face 資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]****。
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至 Face API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
+* 程式碼編輯器，例如 [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="initialize-the-html-file"></a>初始化 HTML 檔案
 
-建立新的 HTML 檔案 (detectFaces.html)，並新增下列程式碼。
+建立新的 HTML 檔案 (detectFaces.html)**，並新增下列程式碼。
 
 ```html
 <!DOCTYPE html>
@@ -41,7 +44,7 @@ ms.locfileid: "57538726"
 </html>
 ```
 
-然後，在文件的 `body` 元素內新增下列程式碼。 這會設定基本的使用者介面，內有 URL 欄位、[分析臉部] 按鈕、[回應] 窗格和 [影像顯示] 窗格。
+然後，在文件的 `body` 元素內新增下列程式碼。 此程式碼會設定基本的使用者介面，內有 URL 欄位、[分析臉部]**** 按鈕、[回應] 窗格和 [影像顯示] 窗格。
 
 ```html
 <h1>Detect Faces:</h1>
@@ -65,7 +68,7 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 
 ## <a name="write-the-javascript-script"></a>撰寫 JavaScript 指令碼
 
-在文件中的 `h1` 元素正上方新增下列程式碼。 這會設定 JavaScript 程式碼來呼叫人臉識別 API。
+在文件中的 `h1` 元素正上方新增下列程式碼。 此程式碼會設定 JavaScript 程式碼來呼叫臉部 API。
 
 ```html
 <script type="text/javascript">
@@ -73,16 +76,8 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
         // Replace <Subscription Key> with your valid subscription key.
         var subscriptionKey = "<Subscription Key>";
     
-        // NOTE: You must use the same region in your REST call as you used to
-        // obtain your subscription keys. For example, if you obtained your
-        // subscription keys from westus, replace "westcentralus" in the URL
-        // below with "westus".
-        //
-        // Free trial subscription keys are generated in the "westus" region.
-        // If you use a free trial subscription key, you shouldn't need to change 
-        // this region.
         var uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+            "https://<My Endpoint String>.com/face/v1.0/detect";
     
         // Request parameters.
         var params = {
@@ -132,15 +127,17 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 </script>
 ```
 
-您將需要以訂用帳戶金鑰更新 `subscriptionKey` 欄位的值，而且可能需要變更 `uriBase` 字串，使其包含正確的區域識別碼 (請參閱[臉部 API 文件](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)以取得所有區域端點的清單)。 `returnFaceAttributes` 欄位可指定所要擷取的臉部屬性；您可以根據您的用途來變更此字串。
+您將需要以訂用帳戶金鑰值更新 `subscriptionKey` 欄位，且您必須變更 `uriBase` 字串，使它包含正確的端點字串。 `returnFaceAttributes` 欄位可指定所要擷取的臉部屬性；您可以根據您的用途來變更此字串。
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="run-the-script"></a>執行指令碼
 
-在瀏覽器中開啟 detectFaces.html。 當您按一下 [分析臉部] 按鈕時，應用程式應該會顯示來自指定 URL 的影像，並印出臉部資料的 JSON 字串。
+在瀏覽器中開啟 detectFaces.html**。 當您按一下 [分析臉部]**** 按鈕時，應用程式應該會顯示來自指定 URL 的影像，並印出臉部資料的 JSON 字串。
 
 ![GettingStartCSharpScreenshot](../Images/face-detect-javascript.png)
 
-以下是成功 JSON 回應的範例。
+以下文字是成功 JSON 回應的範例。
 
 ```json
 [
@@ -236,7 +233,7 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已撰寫 JavaScript 指令碼來呼叫 Azure 臉部 API，進而偵測影像中的臉部並傳回其屬性。 接下來，請瀏覽臉部 API 參考文件，以取得更多資訊。
+在本快速入門中，您已撰寫 JavaScript 指令碼來呼叫 Azure 臉部辨識服務，進而偵測影像中的臉部並傳回其屬性。 接下來，請瀏覽臉部 API 參考文件，以取得更多資訊。
 
 > [!div class="nextstepaction"]
 > [臉部 API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

@@ -1,24 +1,22 @@
 ---
-title: 將您的工作裝置加入組織的網路 - Azure Active Directory | Microsoft Docs
+title: 將您的工作裝置加入組織的網路 - AD
 description: 了解如何將您的工作裝置加入組織的網路。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 08/03/2018
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: jairoc
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfd38e775ba418fbe31cafa8df5f37b45c3b0643
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 6c93f34068cd296cb2d3a59f208fa644cdbf2260
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60474356"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745726"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>將您的工作裝置加入組織的網路
 將您工作用的 Windows 10 裝置加入組織的網路，如此就能存取可能受限的資源。
@@ -26,7 +24,7 @@ ms.locfileid: "60474356"
 ## <a name="what-happens-when-you-join-your-device"></a>當您加入裝置時會發生什麼事
 當您將 Windows 10 裝置加入組織的網路時，將會發生下列動作：
 
-- Windows 會註冊您的裝置到貴組織的網路，讓您存取您使用您的個人帳戶的資源。 註冊裝置之後，Windows 接著會將您的裝置加入網路，讓您能夠使用貴組織的使用者名稱和密碼來登入並存取受限的資源。
+- Windows 會向貴組織的網路註冊您的裝置，讓您可以使用個人帳戶存取您的資源。 註冊裝置之後，Windows 接著會將您的裝置加入網路，讓您能夠使用貴組織的使用者名稱和密碼來登入並存取受限的資源。
 
 - (選擇性) 根據組織的選擇，可能會要求您透過 [Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) 或[安全性資訊](user-help-security-info-overview.md)設定雙步驟驗證。
 
@@ -62,7 +60,7 @@ ms.locfileid: "60474356"
 
     ![[設定] 畫面上的帳戶](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. 選取 **存取工作或學校**，並確定您會看到指出，類似於文字**連線到 *\<your_organization >* Azure AD**。
+2. 選取 [存取公司或學校資源]，然後確定您看到類似**已連線到 *\<your_organization>* Azure AD** 的文字。
 
     ![具有已連線之 contoso 帳戶的 [存取公司或學校資源] 畫面](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
@@ -107,7 +105,7 @@ ms.locfileid: "60474356"
 
     ![[設定] 畫面上的帳戶](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. 選取 **存取工作或學校**，並確定您會看到指出，類似於文字**連線到 *\<your_organization >* Azure AD**。
+2. 選取 [存取公司或學校資源]，然後確定您看到類似**已連線到 *\<your_organization>* Azure AD** 的文字。
 
     ![具有已連線之 contoso 帳戶的 [存取公司或學校資源] 畫面](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 
@@ -116,3 +114,4 @@ ms.locfileid: "60474356"
 
 - 如果您的組織想要您註冊個人裝置 (例如您的手機)，請參閱[在組織的網路上註冊個人裝置](user-help-register-device-on-network.md)。
 
+- 如果貴組織是使用 Microsoft Intune 進行管理，而且您有關於註冊、登入或任何其他 Intune 相關方面的問題，請參閱 [Intune 使用者說明內容](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done)。

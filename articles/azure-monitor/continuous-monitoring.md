@@ -1,23 +1,16 @@
 ---
 title: 使用 Azure 監視器持續監視 | Microsoft Docs
 description: 描述使用 Azure 監視器在整個工作流程中啟用持續監視的特定步驟。
-author: bwren
-manager: carmonm
-editor: ''
-services: azure-monitor
-documentationcenter: azure-monitor
-ms.service: azure-monitor
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: ''
 ms.topic: conceptual
-ms.date: 10/12/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 1b86bc015b187fe75e79ba04df60a6bc5257a9b8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 10/12/2018
+ms.openlocfilehash: 6df27dde997bd34e86b1bb340817648bfe68f2c4
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60497415"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797608"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>使用 Azure 監視器持續監視
 
@@ -34,7 +27,7 @@ ms.locfileid: "60497415"
 - [Azure DevOps Projects](../devops-project/overview.md) 為您提供了現有程式碼和 Git 存放庫的簡化體驗，或者從其中一個範例應用程式中進行選擇，以在 Azure 中建立持續整合 (CI) 和持續傳遞 (CD) 管線。
 - [DevOps 發行管線中的持續監視](../azure-monitor/app/continuous-monitoring.md)允許您根據監視資料對部署進行閘道設定或復原。
 - [狀態監視器](../azure-monitor/app/monitor-performance-live-website-now.md)允許您使用 Azure Application Insights 在 Windows 上檢測即時 .NET 應用程式，而不需修改或重新部署您的程式碼。
-- 如果您有權存取應用程式的程式碼，則透過為[.NET](../azure-monitor/learn/quick-monitor-portal.md)、[Java](../azure-monitor/learn/java-quick-start.md)、[Node.js](../azure-monitor/learn/nodejs-quick-start.md) 或[任何其他程式設計語言](../azure-monitor/app/platforms.md)安裝 Azure Monitor Application Insights SDK，啟用 [Application Insights](../azure-monitor/app/app-insights-overview.md) 的完全監視。 這允許您指定與您的應用程式和業務相關的自訂事件、計量或頁面檢視。
+- 如果您有權存取應用程式的程式碼，則透過為[.NET](../azure-monitor/learn/quick-monitor-portal.md)、[Java](../azure-monitor/app/java-get-started.md)、[Node.js](../azure-monitor/learn/nodejs-quick-start.md) 或[任何其他程式設計語言](../azure-monitor/app/platforms.md)安裝 Azure Monitor Application Insights SDK，啟用 [Application Insights](../azure-monitor/app/app-insights-overview.md) 的完全監視。 這允許您指定與您的應用程式和業務相關的自訂事件、計量或頁面檢視。
 
 
 
@@ -72,7 +65,7 @@ Azure 上的一般應用程式包含多個資源，例如 VM 和應用程式服�
 
 - 根據記錄和計量[在 Azure 監視器中建立警示](../azure-monitor/platform/alerts-overview.md)，以識別可預測的失敗狀態。 您的目標應該是讓所有的警示可採取動作，這表示它們代表實際的重大情況，並設法減少誤判。 使用[動態閾值](platform/alerts-dynamic-thresholds.md)即可自動計算計量資料的基準，而不是定義您自己的靜態閾值。 
 - 定義警示的動作，以使用最有效的方式通知您的系統管理員。 [通知的可用動作](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal)包括 SMS、電子郵件、推播通知，或語音通話。
-- 使用更進階的動作透過 [webhook](platform/activity-log-alerts-webhook.md) [連接到您的 ITSM 工具](platform/itsmc-overview.md)或其他警示管理系統。
+- 使用更進階的動作透過 [webhook](platform/activity-log-alerts-webhook.md)[連接到您的 ITSM 工具](platform/itsmc-overview.md)或其他警示管理系統。
 - 修復警示中所識別的情況，以及可以使用 webhook 從警示啟動的 [Azure 自動化 runbook](../automation/automation-webhooks.md) 或 [Logic Apps](/connectors/custom-connectors/create-webhook-trigger)。 
 - 根據所收集的計量，使用[自動調整](../azure-monitor/learn/tutorial-autoscale-performance-schedule.md)來動態增加和減少計算資源。
 
@@ -80,7 +73,7 @@ Azure 上的一般應用程式包含多個資源，例如 VM 和應用程式服�
 確保您的開發和作業可以存取相同的遙測資料和工具，使它們能夠檢視整個環境中的模式，並將平均偵測時間 (MTTD) 和平均還原時間 (MTTR)　降到最低。
 
 - 根據組織中不同角色的常用計量和記錄準備[自訂儀表板](../azure-monitor/learn/tutorial-app-dashboards.md)。 儀表板可以結合來自所有 Azure 資源的資料。
-- 準備[活頁簿](../azure-monitor/app/usage-workbooks.md)以確保開發與作業之間的知識共享。 這些可以準備為包含計量圖表和記錄查詢的動態報告，或者甚至作為開發人員準備的疑難排解指引，協助客戶支援或作業處理基本問題。
+- 準備[活頁簿](../azure-monitor/platform/workbooks-overview.md)以確保開發與作業之間的知識共享。 這些可以準備為包含計量圖表和記錄查詢的動態報告，或者甚至作為開發人員準備的疑難排解指引，協助客戶支援或作業處理基本問題。
 
 ## <a name="continuously-optimize"></a>持續最佳化
  監視是熱門「建置-測量-學習」理念的基本層面之一，其建議持續追蹤您的 KPI 和使用者行為計量，然後透過計劃反覆項目來努力最佳化 KPI。 Azure 監視器可協助您收集與業務相關的計量和記錄，並根據需要在下一個部署中新增新的資料點。

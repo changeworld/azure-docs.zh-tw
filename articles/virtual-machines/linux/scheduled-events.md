@@ -1,26 +1,19 @@
 ---
-title: Azure 中 Linux VM 的已排定事件 | Microsoft Docs
+title: Azure 中適用於 Linux VM 的 Scheduled Events
 description: 針對您的 Linux 虛擬機器，使用 Azure 中繼資料服務來排定事件。
-services: virtual-machines-windows, virtual-machines-linux, cloud-services
-documentationcenter: ''
-author: ericrad
-manager: jeconnoc
-editor: ''
-tags: ''
-ms.assetid: ''
-ms.service: virtual-machines-windows
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+author: EricRadzikowskiMSFT
+ms.service: virtual-machines-linux
+ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 02/22/2018
+ms.date: 06/01/2020
 ms.author: ericrad
-ms.openlocfilehash: 0831f08eaa3e8e6f6a0d3f68bc50cd927167b7ba
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.reviewer: mimckitt
+ms.openlocfilehash: ba06350a564990899a593714a1f49d1e00ea544a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65507916"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262101"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure 中繼資料服務：Linux VM 的已排定事件
 
@@ -46,40 +39,48 @@ ms.locfileid: "65507916"
 
 排程的事件會提供下列使用案例中的事件：
 
-- [平台起始的維護](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates)（例如，VM 重新開機、 即時移轉或記憶體保留更新主機）
-- 降級的硬體
+- [平台起始的維護](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates) (例如，主機的 VM 重新開機、即時移轉或記憶體保留更新)
+- 虛擬機器正在預期即將失敗的[效能下降主機硬體](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)上執行
 - 使用者起始的維護 (例如，使用者重新啟動或重新部署 VM)
-- [低優先順序 VM 收回](https://azure.microsoft.com/blog/low-priority-scale-sets)在擴展集
+- [現成 VM](spot-vms.md) 和[現成擴展集](../../virtual-machine-scale-sets/use-spot.md)執行個體收回。
 
 ## <a name="the-basics"></a>基本概念  
 
   如果您是使用可由 VM 內存取的 REST 端點來執行 VM，中繼資料服務會公開這類相關資訊。 這項資訊是透過無法路由傳送的 IP 取得，因此不會在 VM 之外公開。
 
-### <a name="scope"></a>`Scope`
+### <a name="scope"></a>影響範圍
 排程的事件會傳送到：
 
 - 獨立虛擬機器。
 - 雲端服務中的所有 VM。
 - 可用性設定組中的所有 VM。
+- 可用性區域中的所有 Vm。 
 - 擴展集放置群組中的所有 VM。 
+
+> [!NOTE]
+> 針對可用性區域中的 Vm，已排程的事件會移至區域中的單一 Vm。
+> 例如，如果您在可用性設定組中有100個 Vm，而且其中一個更新為，則排定的事件會移至 [所有 100]，而如果區域中有100個單一 Vm，則事件只會移至受影響的 VM。
 
 因此，請檢查事件中的 `Resources` 欄位以找出哪些 VM 受到影響。
 
 ### <a name="endpoint-discovery"></a>端點探索
-針對已啟用 VNET 的 VM，可以從靜態非可路由 IP `169.254.169.254` 取得「中繼資料服務」。 最新版「已排定的事件」的完整端點為： 
+針對已啟用 VNET 的 VM，可以從靜態非可路由 IP `169.254.169.254` 取得「中繼資料服務」。 最新版已排定事件的完整端點為： 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01`
 
 如果 VM 不是建立在「虛擬網路」內 (雲端服務和傳統 VM 的預設案例)，就需要額外的邏輯，才能探索要使用的 IP 位址。 請參閱此範例以了解如何[探索主機端點](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm) \(英文\)。
 
 ### <a name="version-and-region-availability"></a>版本和區域可用性
-已排定事件服務已進行版本設定。 版本是必要項目；目前版本為 `2017-11-01`。
+已排定事件服務已進行版本設定。 版本是必要項目；目前版本為 `2019-01-01`。
 
 | 版本 | 版本類型 | 區域 | 版本資訊 | 
 | - | - | - | - | 
-| 2017-11-01 | 正式運作 | 全部 | <li> 已新增的支援低優先順序 VM 收回 EventType 'Preempt'<br> | 
+| 2019-08-01 | 正式運作 | 全部 | <li> 已新增 EventSource 的支援 |
+| 2019-04-01 | 正式運作 | 全部 | <li> 已新增事件描述的支援 |
+| 2019-01-01 | 正式運作 | 全部 | <li> 已新增支援虛擬機器擴展集 EventType 'Terminate' |
+| 2017-11-01 | 正式運作 | 全部 | <li> 已新增支援現成 VM 收回 EventType 'Preempt'<br> | 
 | 2017-08-01 | 正式運作 | 全部 | <li> 已從 IaaS VM 的資源名稱中移除預留底線<br><li>強制所有要求的中繼資料標頭需求 | 
-| 2017-03-01 | 預覽 | 全部 | <li>初始版本
+| 2017-03-01 | 預覽 | 全部 | <li>初始版本 |
 
 
 > [!NOTE] 
@@ -88,7 +89,7 @@ ms.locfileid: "65507916"
 ### <a name="enabling-and-disabling-scheduled-events"></a>啟用和停用已排定事件
 系統會在您第一次提出事件要求時，為您的服務啟用「已排定事件」。 您可能會在第一次呼叫中遇到長達兩分鐘的延遲回應。
 
-如果您的服務在 24 小時內都未提出要求，系統就會為您的服務停用「已排定的事件」。
+如果長達 24 小時未提出要求，您的服務就會停用已排定事件。
 
 ### <a name="user-initiated-maintenance"></a>使用者起始的維護
 使用者透過 Azure 入口網站、API、CLI 或 PowerShell 起始的 VM 維護，將會產生「已排定事件」。 這可讓您測試應用程式中的維護準備邏輯，讓應用程式可以為使用者起始的維護預作準備。
@@ -97,7 +98,7 @@ ms.locfileid: "65507916"
 
 ## <a name="use-the-api"></a>使用 API
 
-### <a name="headers"></a>標頭
+### <a name="headers"></a>headers
 查詢中繼資料服務時，您必須提供 `Metadata:true` 標頭以免不小心重新導向要求。 所有排程的事件都需要 `Metadata:true` 標頭。 要求中未包含標頭會導致中繼資料服務「不正確的要求」回應。
 
 ### <a name="query-for-events"></a>查詢事件
@@ -105,7 +106,7 @@ ms.locfileid: "65507916"
 
 #### <a name="bash"></a>Bash
 ```
-curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
 ```
 
 回應包含排定的事件陣列。 空白陣列表示目前沒有任何排定的事件。
@@ -116,25 +117,29 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
     "Events": [
         {
             "EventId": {eventID},
-            "EventType": "Reboot" | "Redeploy" | "Freeze" | "Preempt",
+            "EventType": "Reboot" | "Redeploy" | "Freeze" | "Preempt" | "Terminate",
             "ResourceType": "VirtualMachine",
             "Resources": [{resourceName}],
             "EventStatus": "Scheduled" | "Started",
-            "NotBefore": {timeInUTC},              
+            "NotBefore": {timeInUTC},       
+            "Description": {eventDescription},
+            "EventSource" : "Platform" | "User",
         }
     ]
 }
 ```
 
 ### <a name="event-properties"></a>事件屬性
-|屬性  |  說明 |
+|屬性  |  描述 |
 | - | - |
 | EventId | 此事件的全域唯一識別碼。 <br><br> 範例： <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | 此事件造成的影響。 <br><br> 值: <br><ul><li> `Freeze`:虛擬機器已排定會暫停幾秒鐘的時間。 CPU 和網路連線可能會暫止，但不會影響記憶體或開啟的檔案。<li>`Reboot`:虛擬機器已排定要重新開機 (非持續性記憶體都會遺失)。 <li>`Redeploy`:虛擬機器已排定要移至另一個節點 (暫時磁碟都會遺失)。 <li>`Preempt`:正在刪除低優先順序虛擬機器 （暫時磁碟會遺失）。|
-| ResourceType | 受此事件影響的資源類型。 <br><br> 值: <ul><li>`VirtualMachine`|
+| EventType | 此事件造成的影響。 <br><br> 值： <br><ul><li> `Freeze`:虛擬機器已排定暫停幾秒鐘。 CPU 和網路連線可能會暫止，但不會影響記憶體或已開啟的檔案。<li>`Reboot`:虛擬機器已排定要重新開機 (非持續性記憶體都會遺失)。 <li>`Redeploy`:虛擬機器已排定要移至另一個節點 (暫時磁碟都會遺失)。 <li>`Preempt`:正在刪除現成虛擬機器 (暫時磁碟會遺失)。 <li> `Terminate`:虛擬機器已排定要刪除。 |
+| ResourceType | 受此事件影響的資源類型。 <br><br> 值： <ul><li>`VirtualMachine`|
 | 資源| 受此事件影響的資源清單。 其中最多只能包含來自一個[更新網域](manage-availability.md)的機器，但不能包含更新網域中的所有機器。 <br><br> 範例： <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
-| EventStatus | 此事件的狀態。 <br><br> 值: <ul><li>`Scheduled`:此事件已排定在 `NotBefore` 屬性所指定的時間之後啟動。<li>`Started`:已啟動事件。</ul> 未曾提供 `Completed` 或類似的狀態。 當事件完成時，不會再傳回事件。
+| EventStatus | 此事件的狀態。 <br><br> 值： <ul><li>`Scheduled`:此事件已排定在 `NotBefore` 屬性所指定的時間之後啟動。<li>`Started`:已啟動事件。</ul> 未曾提供 `Completed` 或類似的狀態。 當事件完成時，不會再傳回事件。
 | NotBefore| 自此之後可啟動此事件的時間。 <br><br> 範例： <br><ul><li> Mon, 19 Sep 2016 18:29:47 GMT  |
+| Description | 此事件的描述。 <br><br> 範例： <br><ul><li> 主機伺服器正在進行維護。 |
+| EventSource | 事件的起始端。 <br><br> 範例： <br><ul><li> `Platform`：此事件是由平臺起始。 <li>`User`：此事件是由使用者起始。 |
 
 ### <a name="event-scheduling"></a>事件排程
 系統會根據事件類型，為每個事件在未來安排最少的時間量。 事件的 `NotBefore` 屬性會反映這個時間。 
@@ -142,9 +147,13 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 |EventType  | 最短時間通知 |
 | - | - |
 | 凍結| 15 分鐘 |
-| 重新開機 | 15 分鐘 |
+| 重新啟動 | 15 分鐘 |
 | 重新部署 | 10 分鐘 |
-| 優先於 | 30 秒 |
+| Preempt | 30 秒 |
+| Terminate | [可由使用者設定](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications)：5 至 15 分鐘 |
+
+> [!NOTE] 
+> 在某些情況下，Azure 能夠預測主機因為硬體效能下降而失敗，並嘗試排定移轉來減輕服務中斷的影響。 受影響的虛擬機器會收到含有 `NotBefore` (通常是未來幾天) 的已排定事件。 實際時間依預測的失敗風險評量而有所不同。 Azure 會盡可能提前 7 天通知，但實際時間不一定，如果預期硬體很可能即將失敗，則時間可能更短。 若要將您服務的風險降至最低，以防萬一硬體在系統起始移轉之前失敗，我們建議您盡快重新部署虛擬機器。
 
 ### <a name="start-an-event"></a>啟動事件 
 
@@ -163,7 +172,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 
 #### <a name="bash-sample"></a>Bash 範例
 ```
-curl -H Metadata:true -X POST -d '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01
+curl -H Metadata:true -X POST -d '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01
 ```
 
 > [!NOTE] 
@@ -177,20 +186,20 @@ curl -H Metadata:true -X POST -d '{"StartRequests": [{"EventId": "f020ba2e-3bc0-
 #!/usr/bin/python
 
 import json
-import urllib2
 import socket
-import sys
+import urllib2
 
-metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01"
-headers = "{Metadata:true}"
+metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01"
 this_host = socket.gethostname()
 
+
 def get_scheduled_events():
-   req = urllib2.Request(metadata_url)
-   req.add_header('Metadata', 'true')
-   resp = urllib2.urlopen(req)
-   data = json.loads(resp.read())
-   return data
+    req = urllib2.Request(metadata_url)
+    req.add_header('Metadata', 'true')
+    resp = urllib2.urlopen(req)
+    data = json.loads(resp.read())
+    return data
+
 
 def handle_scheduled_events(data):
     for evt in data['Events']:
@@ -199,19 +208,25 @@ def handle_scheduled_events(data):
         resources = evt['Resources']
         eventtype = evt['EventType']
         resourcetype = evt['ResourceType']
-        notbefore = evt['NotBefore'].replace(" ","_")
+        notbefore = evt['NotBefore'].replace(" ", "_")
+    description = evt['Description']
+    eventSource = evt['EventSource']
         if this_host in resources:
-            print "+ Scheduled Event. This host " + this_host + " is scheduled for " + eventtype + " not before " + notbefore
+            print("+ Scheduled Event. This host " + this_host +
+                " is scheduled for " + eventtype + 
+        " by " + eventSource + 
+        " with description " + description +
+        " not before " + notbefore)
             # Add logic for handling events here
 
 
 def main():
-   data = get_scheduled_events()
-   handle_scheduled_events(data)
+    data = get_scheduled_events()
+    handle_scheduled_events(data)
+
 
 if __name__ == '__main__':
-  main()
-  sys.exit(0)
+    main()
 ```
 
 ## <a name="next-steps"></a>後續步驟 

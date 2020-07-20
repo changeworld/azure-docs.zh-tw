@@ -1,23 +1,22 @@
 ---
-title: Azure Database for PostgreSQL-單一伺服器中的伺服器概念
-description: 本文章提供考量和指導方針設定和管理 Azure Database for PostgreSQL-單一伺服器。
+title: 伺服器-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
+description: 本文提供設定和管理適用於 PostgreSQL 的 Azure 資料庫單一伺服器的考慮和指導方針。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: bc135e58d0fbabc809f3718915e9f4e35b8ed875
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: MT
+ms.openlocfilehash: d86170a53b4bfbe712bbca12db4d6063214aba21
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067166"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74768158"
 ---
-# <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL-單一伺服器
-這篇文章提供熟悉 Azure Database for PostgreSQL-單一伺服器的考量和指導方針。
+# <a name="azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
+本文提供使用適用於 PostgreSQL 的 Azure 資料庫單一伺服器的考慮和指導方針。
 
 ## <a name="what-is-an-azure-database-for-postgresql-server"></a>什麼是適用於 PostgreSQL 的 Azure 資料庫伺服器？
-Azure Database for PostgreSQL-單一伺服器部署選項中的伺服器是多個資料庫的中央管理點。 這與您可能已在內部部署領域中熟悉的 PostgreSQL 伺服器建構相同。 具體來說，PostgreSQL 服務會受到管理、提供效能保證、公開伺服器層級的存取和功能。
+[適用於 PostgreSQL 的 Azure 資料庫-單一伺服器] 部署選項中的伺服器是多個資料庫的中央管理點。 這與您可能已在內部部署領域中熟悉的 PostgreSQL 伺服器建構相同。 具體來說，PostgreSQL 服務會受到管理、提供效能保證、公開伺服器層級的存取和功能。
 
 適用於 PostgreSQL 的 Azure 資料庫伺服器：
 
@@ -28,7 +27,7 @@ Azure Database for PostgreSQL-單一伺服器部署選項中的伺服器是多�
 - 在一個區域中共置資源。
 - 提供用來存取伺服器和資料庫的連線端點 
 - 提供適用於其資料庫的管理原則範圍︰登入、防火牆、使用者、角色、設定等等。
-- 可在多個版本中使用。 如需詳細資訊，請參閱[支援的 PostgreSQL 資料庫版本](concepts-supported-versions.md)。
+- 可在多個版本中使用。 如需詳細資訊，請參閱[支援的于 postgresql 資料庫版本](concepts-supported-versions.md)。
 - 可由使用者加以擴充。 如需詳細資訊，請參閱 [PostgreSQL 擴充功能](concepts-extensions.md)。
 
 在適用於 PostgreSQL 的 Azure 資料庫內，您可以建立一個或多個資料庫。 您可以選擇在每個伺服器建立單一資料庫以利用所有資源，或建立多個資料庫來共用資源。 定價結構是依據伺服器，以定價層、虛擬核心及儲存體 (GB) 的設定為基礎來形成的。 如需詳細資訊，請參閱[定價層](./concepts-pricing-tiers.md)。
@@ -38,13 +37,13 @@ Azure Database for PostgreSQL-單一伺服器部署選項中的伺服器是多�
 
 |||
 |:--|:--|
-| **驗證和授權** | 適用於 PostgreSQL 的 Azure 資料庫伺服器支援原生的 PostgreSQL 驗證。 您可以利用伺服器的系統管理員登入來連接和驗證伺服器。 |
+| **驗證與授權** | 適用於 PostgreSQL 的 Azure 資料庫伺服器支援原生的 PostgreSQL 驗證。 您可以利用伺服器的系統管理員登入來連接和驗證伺服器。 |
 | **通訊協定** | 此服務支援 PostgreSQL 所使用的訊息架構通訊協定。 |
 | **TCP/IP** | TCP/IP 和 Unix 網域通訊端上支援此通訊協定。 |
 | **防火牆** | 為了協助保護您的資料，防火牆規則會防止對您伺服器及其資料庫的所有存取，直到您指定哪些電腦擁有權限為止。 請參閱 [適用於 PostgreSQL 的 Azure 資料庫伺服器防火牆規則](concepts-firewall-rules.md)。 |
 
 ## <a name="managing-your-server"></a>管理伺服器
-您可以使用 [Azure 入口網站](https://portal.azure.com)或 [Azure CLI](/cli/azure/postgres)，來管理適用於 PostgreSQL 的 Azure 資料庫伺服器。
+您可以使用[Azure 入口網站](https://portal.azure.com)或[Azure CLI](/cli/azure/postgres)來管理適用於 PostgreSQL 的 Azure 資料庫伺服器。
 
 建立伺服器時，您可以設定管理使用者的認證。 管理使用者是伺服器上最高權限的使用者。 這屬於角色 azure_pg_admin。 此角色沒有完整的超級使用者權限。 
 
@@ -63,7 +62,7 @@ PostgreSQL 伺服器參數會判斷伺服器的設定。 在適用於 PostgreSQL
 
 
 ## <a name="next-steps"></a>後續步驟
-- 如需服務的概觀，請參閱 [適用於 PostgreSQL 的 Azure 資料庫概觀](overview.md)。
-- 如需有關以您 **服務層級**為依據之特定資源配額與限制的資訊，請參閱 [服務層級](concepts-pricing-tiers.md)。
+- 如需服務的總覽，請參閱 [適用於 PostgreSQL 的 Azure 資料庫總覽](overview.md)。
+- 如需根據您的**服務層級**之特定資源配額和限制的詳細資訊，請參閱 [服務層級](concepts-pricing-tiers.md)。
 - 如需有關連線到服務的資訊，請參閱 [適用於 PostgreSQL 的 Azure 資料庫的連線庫](concepts-connection-libraries.md)。
 - 透過 [Azure 入口網站](howto-configure-server-parameters-using-portal.md)或 [Azure CLI](howto-configure-server-parameters-using-cli.md) 檢視和編輯伺服器參數。

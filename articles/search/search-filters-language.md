@@ -1,25 +1,23 @@
 ---
-title: 搜尋索引中多語言內容的語言篩選條件 - Azure 搜尋服務
-description: 支援多語言搜尋的篩選準則，將查詢執行範圍限定為語言特定欄位。
+title: 依搜尋索引中的語言篩選
+titleSuffix: Azure Cognitive Search
+description: 篩選準則，以支援多重語言搜尋，將查詢執行範圍設定為語言特定欄位。
+manager: nitinme
 author: HeidiSteen
-manager: cgronlun
-services: search
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 10/23/2017
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 695fdfba1573ff97b05f8e8b50a05bef9dbf48de
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 04/22/2020
+ms.openlocfilehash: b0ebbbb64e173e1501f08f8385b14c365759a804
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61289601"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82116276"
 ---
-# <a name="how-to-filter-by-language-in-azure-search"></a>如何在 Azure 搜尋服務中依語言進行篩選 
+# <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>如何使用 Azure 認知搜尋中的語言進行篩選 
 
-在多國語言的搜尋應用程式中，有一個關鍵需求是能夠以使用者自己的語言搜尋和擷取結果。 在 Azure 搜尋服務中，符合多國語言應用程式之語言需求的一種方式是，建立一系列專門用來以特定語言儲存字串的欄位，然後在查詢期間限制只對那些欄位進行全文檢索搜尋。
+在多國語言的搜尋應用程式中，有一個關鍵需求是能夠以使用者自己的語言搜尋和擷取結果。 在 Azure 認知搜尋中，符合多語系應用程式語言需求的方法之一，就是建立一系列專門用來儲存特定語言字串的欄位，然後在查詢時將全文檢索搜尋限制在這些欄位。
 
 要求上的查詢參數可用來設定搜尋作業的範圍，接著如果欄位未提供與您想要傳遞之搜尋體驗相容的內容，則可調整所有這類欄位的結果。
 
@@ -28,13 +26,13 @@ ms.locfileid: "61289601"
 | **searchFields** | 限制只對具名欄位清單進行全文檢索搜尋。 |
 | **$select** | 調整回應，只包含您指定的欄位。 預設會傳回所有可擷取的欄位。 **$Select** 參數可讓您選擇要傳回哪些欄位。 |
 
-這個技術的成功與否，取決於欄位內容的完整性。 Azure 搜尋服務不會翻譯字串或執行語言偵測。 必須由您來確定欄位包含預期的字串。
+這個技術的成功與否，取決於欄位內容的完整性。 Azure 認知搜尋不會轉譯字串或執行語言偵測。 必須由您來確定欄位包含預期的字串。
 
 ## <a name="define-fields-for-content-in-different-languages"></a>定義適用於不同語言內容的欄位
 
-在 Azure 搜尋服務中，查詢是以單一索引為目標。 想要在單一搜尋體驗中提供特定語言之字串的開發人員，通常會定義專用欄位來儲存值：一個適用於英文字串的欄位、一個適用於法文，依此類推。 
+在 Azure 認知搜尋中，查詢會以單一索引為目標。 想要在單一搜尋體驗中提供特定語言之字串的開發人員，通常會定義專用欄位來儲存值：一個適用於英文字串的欄位、一個適用於法文，依此類推。 
 
-在我們的範例中 (包括如下所示的[不動產範例](search-get-started-portal.md))，您可能會看到類似下列螢幕擷取畫面的欄位定義。 請注意此範例如何在這個索引中顯示欄位的語言分析器指派。 在與制訂來處理目標語言之語言規則的分析器配對時，包含字串的欄位在全文檢索搜尋中的執行效能較佳。
+下列範例來自于房地產[範例](search-get-started-portal.md)，其中有數個字串欄位包含不同語言的內容。 請注意此索引中欄位的語言分析器指派。 在與制訂來處理目標語言之語言規則的分析器配對時，包含字串的欄位在全文檢索搜尋中的執行效能較佳。
 
   ![](./media/search-filters-language/lang-fields.png)
 
@@ -60,12 +58,12 @@ parameters =
     };
 ```
 > [!Note]
-> 雖然查詢中沒有 $filter 引數，但這個使用案例與篩選概念具有強烈的關聯性，因此，我們將它作為篩選案例。
+> 雖然查詢上沒有 $filter 引數，但此使用案例與篩選概念有強烈的關聯，因此會以篩選案例的形式呈現。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
-+ [Azure 搜尋服務中的篩選條件](search-filters.md)
++ [Azure 認知搜尋中的篩選](search-filters.md)
 + [語言分析器](https://docs.microsoft.com/rest/api/searchservice/language-support)
-+ [全文檢索搜尋如何在 Azure 搜尋服務中運作](search-lucene-query-architecture.md)
-+ [搜尋文件 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
++ [全文檢索搜尋如何在 Azure 認知搜尋中運作](search-lucene-query-architecture.md)
++ [搜尋檔 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 

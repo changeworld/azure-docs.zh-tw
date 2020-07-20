@@ -1,180 +1,168 @@
 ---
-title: 什麼是 Azure AD 權限管理？ （預覽）-Azure Active Directory
-description: 取得 Azure Active Directory 權限管理，以及如何使用它來管理內部與外部使用者的存取權群組、 應用程式和 SharePoint Online 網站的總覽。
+title: 什麼是權利管理？ - Azure AD
+description: 概略了解 Azure Active Directory 權利管理，以及如何用權利管理來管理內部和外部使用者對群組、應用程式和 SharePoint Online 網站的存取。
 services: active-directory
 documentationCenter: ''
-author: rolyon
-manager: mtillman
+author: barclayn
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.subservice: compliance
-ms.date: 04/27/2019
-ms.author: rolyon
-ms.reviewer: mwahl
+ms.date: 06/18/2020
+ms.author: barclayn
+ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3abe2f7deef2a1dbe82f4702fd3477303891ab2e
-ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
-ms.translationtype: MT
+ms.openlocfilehash: 2f05fa9f9f31011f04aee0d2bedbcd4c4dad5d39
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64873584"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85338192"
 ---
-# <a name="what-is-azure-ad-entitlement-management-preview"></a>什麼是 Azure AD 權限管理？ (預覽)
+# <a name="what-is-azure-ad-entitlement-management"></a>什麼是 Azure AD 權利管理？
 
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) 權利管理目前處於公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+Azure Active Directory (Azure AD) 權利管理是一種[身分識別控管](identity-governance-overview.md)功能，可讓組織透過將存取要求工作流程、存取權指派、檢閱和到期自動化，來大規模管理身分識別和存取生命週期。
 
-在組織中的員工需要存取各種群組、 應用程式，以及站台來執行其工作。 管理此存取權，是一項挑戰。 在大部分情況下，沒有任何組織的清單，使用者需要專案的所有資源。 專案經理有充分的了解所需的資源，多久以及相關的每個人將最後一個專案。 不過，專案經理通常沒有核准，或授與給其他人的存取權的權限。 當您嘗試使用外部的個人或公司時，此案例中變得很複雜。
+組織中的員工需要存取各種群組、應用程式和網站以便執行其工作。 管理這類存取並不容易，因為需求會變化；例如，有新增的應用程式，或使用者需要額外的存取權限。  當您與外部組織共同作業時，情況會變得更複雜；您可能不知道其他組織中有誰需要存取您所在組織的資源，對方也不知道您所在組織使用了哪些應用程式、群組或網站。
 
-Azure Active Directory (Azure AD) 權利管理可協助您管理的內部使用者以及在組織外部的使用者群組、 應用程式和 SharePoint Online 網站的存取權。
+Azure AD 權利管理可協助您更有效率地管理內部使用者對群組、應用程式和 SharePoint Online 網站的存取，此外，也能對組織外需要存取這些資源的使用者做到這一點。
 
 ## <a name="why-use-entitlement-management"></a>為何要使用權利管理？
 
-企業組織經常面臨的挑戰，例如管理資源的存取權時：
+企業組織通常會在管理員工對資源的存取時面臨挑戰，例如：
 
-- 使用者可能不知道他們應該有何種存取權
-- 使用者可能難以找出適當的人員或適當的資源
-- 一旦使用者找到並收到資源的存取權，他們可能要抓緊頭上再高於所需的商務目的存取
+- 使用者可能不知道他們應該擁有哪些存取權，即使他們知道，也可能難以找到適當人員來核准其存取權
+- 一旦使用者找到並獲得資源的存取權，其可能會不斷存取，而超過正常業務行為所需的時間
 
-需要從另一個目錄，例如來自供應鏈的組織或其他商務夥伴的外部使用者的存取權的使用者更難處理這些問題。 例如︰
+對於需要從另一個組織存取的使用者 (例如來自供應鏈組織或其他商務夥伴的外部使用者) 而言，這些問題相當複雜。 例如：
 
-- 組織可能不知道所有其他目錄中的特定個人能夠邀請他們
-- 即使組織能夠邀請這些使用者，組織可能不記得要以一致的方式管理所有使用者的存取權
+- 沒有人會認識其他組織的目錄中能夠向自己發出邀請的所有特定人員
+- 即使他們可以邀請這些使用者，該組織中也不會有任何人會記得以一致的方式管理所有使用者的存取權
 
-Azure AD 權限管理可以協助解決這些挑戰。
+Azure AD 權利管理有助於解決這些挑戰。  若要深入了解客戶一直以來使用 Azure AD 權利管理的情形，您可以閱讀 [Avanade 案例研究](https://customers.microsoft.com/story/avanade-professional-services-azure-canada)和 [Centrica 案例研究](https://customers.microsoft.com/story/757467-centrica-energy-azure)。  下面這段影片會概述權利管理及其價值：
 
-## <a name="what-can-i-do-with-entitlement-management"></a>我可以使用權利管理來做什麼？
+>[!VIDEO https://www.youtube.com/embed/_Lss6bFrnQ8]
 
-以下是一些權限管理的功能：
+## <a name="what-can-i-do-with-entitlement-management"></a>權利管理有何功用？
 
-- 建立封裝的使用者可以要求的相關資源
-- 定義規則來要求資源存取的到期時
-- 管理內部與外部使用者的存取權的生命週期
-- 資源的委派管理
-- 指定核准者核准要求
-- 建立報表，以追蹤歷程記錄
+以下是權利管理的一些功能：
 
-如需身分識別控管和權限管理的概觀，觀看下列影片 Ignite 2018 大會中：
+- 向非管理員委派建立存取套件的能力。 這些存取套件包含使用者可以要求的資源，受到委派的存取套件管理員可以定義原則，其中包含哪些使用者可以提出要求、誰必須核准其存取權，以及存取權何時到期的規則。
+- 選取其使用者可以要求存取權的已連線組織。  當還未在您目錄中的使用者要求存取權並獲得核准時，系統會自動邀請他們進入您的目錄並為其指派存取權。  其存取權到期時，如果未獲得任何其他存取套件指派，其在您目錄中的 B2B 帳戶就會自動遭到移除。
 
->[!VIDEO https://www.youtube.com/embed/aY7A0Br8u5M]
+您可以從我們的[建立您的第一個存取套件教學課程](entitlement-management-access-package-first.md)來入門。 您也可以閱讀[常見案例](entitlement-management-scenarios.md)或觀看影片，包括
 
-## <a name="what-resources-can-i-manage"></a>可以管理哪些資源？
+- [如何在您的組織中部署 Azure AD 權利管理](https://www.youtube.com/watch?v=zaaKvaaYwI4)
+- [如何監視及擴縮您對 Azure AD 權利管理的使用](https://www.youtube.com/watch?v=omtNJ7ySjS0)
+- [如何在權利管理中委派](https://www.youtube.com/watch?v=Fmp1eBxzrqw)
 
-以下是您可以管理存取權與權限管理的資源類型：
+## <a name="what-are-access-packages-and-what-resources-can-i-manage-with-them"></a>什麼是存取套件，我可以用存取套件來管理哪些資源？
 
-- Azure AD 安全性群組
-- Office 365 群組
-- Azure AD 企業應用程式
-- SaaS 應用程式
-- 自訂整合的應用程式
-- SharePoint Online 網站集合
-- SharePoint Online 網站
+權利管理在 Azure AD 中引進了*存取套件*的概念。 使用者在處理專案或執行其工作時需要各種存取權，而存取套件集結了具有這些存取權的所有資源。 存取套件可用來控管內部員工以及組織外部使用者的存取權。
 
-## <a name="prerequisites"></a>必要條件
+ 以下是您可以使用權利管理來管理使用者存取權的資源類型：
 
-若要使用 Azure AD 權限管理 （預覽），您必須具有其中一個下列授權：
+- Azure AD 安全性群組的成員資格
+- Microsoft 365 群組和小組的成員資格
+- 對象為 Azure AD 企業應用程式的指派，包括 SaaS 應用程式和支援同盟/單一登入和/或佈建的自訂整合應用程式
+- SharePoint Online 網站的成員資格
 
-- Azure AD Premium P2
-- Enterprise Mobility + Security (EMS) E5 授權
+您也可以控制依賴 Azure AD 安全性群組或 Microsoft 365 群組之其他資源的存取權。  例如：
 
-如需詳細資訊，請參閱 <<c0> [ 註冊 Azure Active Directory Premium edition](../fundamentals/active-directory-get-started-premium.md)或是[Enterprise Mobility + Security E5 試用版](https://aka.ms/emse5trial)。
+- 您可以使用存取套件中的 Azure AD 安全性群組，以及為該群組設定以群組為[基礎的授權](../users-groups-roles/licensing-groups-assign.md)，為使用者提供 Microsoft 365 授權
+- 您可以使用存取套件中的 Azure AD 安全性群組，以及為該群組建立 [Azure 角色指派](../../role-based-access-control/role-assignments-portal.md)，而為使用者提供用來管理 Azure 資源的存取權
 
-特製化的雲端，例如 Azure Government、 Azure 德國和 Azure 中國 21Vianet 目前不適用於此預覽版本中。
+## <a name="how-do-i-control-who-gets-access"></a>如何控制誰能夠獲得存取權？
 
-## <a name="what-are-access-packages-and-policies"></a>存取封裝和原則是什麼？
+透過存取套件，系統管理員或受委派的存取套件管理員可列出資源 (群組、應用程式和網站)，以及使用者要使用這些資源所需的角色。
 
-權利管理介紹的概念*存取套件*。 存取封裝是使用者需要處理專案，或執行其作業的所有資源的組合。 資源包括群組、 應用程式或站台的存取權。 存取封裝用來管理您的內部員工，以及在組織外部的使用者的存取。 存取封裝定義中稱為容器*目錄*。
+存取套件也包含一或多個*原則*。 原則會針對指派來定義用來存取套件的規則或護欄。 每個原則都可以用來確保只有適當的使用者能夠要求存取權、有核准者可處理其要求，以及其對這些資源的存取權有時間限制，如果未更新就會到期。
 
-存取封裝也包含一或多個*原則*。 原則定義的規則或 guardrails 存取套件。 啟用原則會強制執行適當的使用者會被授與存取適當的資源，並正確數量的時間。
+![存取套件和原則](./media/entitlement-management-overview/elm-overview-access-package.png)
 
-![存取封裝和原則](./media/entitlement-management-overview/elm-overview-access-package.png)
+在每個原則內，系統管理員或存取套件管理員會定義
 
-存取封裝和其原則，會定義存取套件管理員：
+- 有資格要求存取權的既存使用者 (通常是員工或已受邀的來賓) 或外部使用者所屬夥伴組織
+- 核准程序和可以核准或拒絕存取的使用者
+- 使用者的存取權指派在獲得核准後，於指派到期前可持續的時間
 
-- 資源
-- 角色的使用者需要的資源
-- 內部使用者以及外部使用者有資格以要求存取權
-- 核准程序和使用者可以核准或拒絕存取
-- 使用者的存取權的持續時間
+下圖顯示權利管理中不同元素的範例。 其會顯示一個目錄，其中包含兩個範例存取套件。
 
-下圖顯示的不同元素的範例，在權限管理。 它會顯示兩個範例中存取套件。
-
-- **存取封裝 1**包含做為資源的單一群組。 可讓一組目錄中的使用者來要求權限的原則來定義存取。
-- **存取封裝 2**包含群組、 應用程式，以及 SharePoint Online 網站做為資源。 存取會使用兩個不同的原則定義。 第一個原則可讓一組目錄中的使用者來要求權限。 第二個原則可讓外部目錄中的使用者來要求權限。
+- **存取套件 1** 包含單一群組來作為資源。 會透過可讓目錄中的一組使用者要求存取權的原則來定義存取。
+- **存取套件 2** 包含群組、應用程式和 SharePoint Online 網站來作為資源。 會透過兩個不同的原則來定義存取。 第一個原則可讓目錄中的一組使用者要求存取權。 第二個原則可讓外部目錄中的使用者要求存取權。
 
 ![權利管理概觀](./media/entitlement-management-overview/elm-overview.png)
 
-## <a name="external-users"></a>外部使用者
+## <a name="when-should-i-use-access-packages"></a>何時該使用存取套件？
 
-使用時[Azure AD 企業對企業 (B2B)](../b2b/what-is-b2b.md)邀請體驗，您必須已經知道您想要帶入您的資源目錄，並使用的外部來賓使用者的電子郵件地址。 此絕佳正努力的較小或短期專案和您已經知道所有參與者，但這是很難管理，如果您有許多您想要使用的使用者時，或經過一段時間變更的參與者的運作方式。  比方說，您可以使用另一個組織並有一個連絡窗口與該組織中，但經過一段時間來自該組織的其他使用者也需要存取的功能。
+存取套件不會取代其他存取指派機制。  其最適合用於下列情況：
 
-使用權利管理時，您可以定義原則，可讓您指定，也可以要求存取封裝使用 Azure AD 中，組織的使用者。 您可以指定是否需要核准 」 和 「 存取的到期日。 如果需要核准，您也可以指定為核准者從您先前受邀-因為它們都可能會知道哪些從其組織的外部使用者需要存取的外部組織的一或多個使用者。 一旦您已設定存取套件，您可以傳送存取套件連結至您在外部組織的聯絡人。 該連絡人可以與其他人共用之外部的組織中的使用者，他們可以使用此連結來要求存取套件。  從該組織已邀請到目錄的使用者也可以使用該連結。
+- 員工需要有限時間的存取權來執行特定工作。  例如，您可以使用群組型授權和動態群組，以確保所有員工都擁有 Exchange Online 信箱，然後在員工需要額外存取權的情況下使用存取套件，例如為了從另一個部門讀取部門資源。
+- 存取權必須由員工的經理或其他指定人員來核准。
+- 部門想要針對其資源管理自己的存取原則，但不要 IT 介入。  
+- 兩個以上的組織共同合作進行一項專案，因此，一個組織中的多個使用者必須透過 Azure AD B2B 來進入以便存取另一個組織的資源。
 
-要求獲准後，權利管理將會佈建必要的存取權，可能包括邀請使用者，如果它們尚不在您的目錄中的使用者。 Azure AD 會自動為它們建立 B2B 帳戶。  請注意，系統管理員可能會有先前限制的組織允許共同作業，藉由設定[B2B 允許或拒絕清單](../b2b/allow-deny-list.md)來允許或封鎖邀請其他組織。  如果使用者不允許所允許或封鎖清單中，則不會受邀。
+## <a name="how-do-i-delegate-access"></a>如何委派存取權？
 
-因為您不想要永久的外部使用者的存取權，您會指定在原則中，例如 180 天的到期日。 在 180 天後，若不更新其存取權，權利管理將會移除該存取套件相關聯的所有存取。  如果已透過權利管理受邀的使用者不有任何其他存取封裝指派，然後時，他們會失去其過去的指派，其 B2B 帳戶將 30 天內，封鎖登入並接著移除。  這可防止暴增的不必要的帳戶。  
+ 存取套件會定義在名為*目錄*的容器中。  您可以將單一目錄用於所有存取套件，也可以指定個人來建立和擁有自己的目錄。 系統管理員可以將資源新增至任何目錄，但是非系統管理員只能將其擁有的資源新增至目錄。 目錄擁有者可以將其他使用者新增為目錄的共同擁有者，也可以新增為存取套件管理員。  [Azure AD 權利管理中的委派和角色](entitlement-management-delegate.md)一文會進一步說明這些案例。
 
-## <a name="terminology"></a>術語
+## <a name="summary-of-terminology"></a>術語摘要
 
-若要進一步了解權限管理和其文件，您應該檢閱下列詞彙。
+若要進一步了解權利管理及其文件，請回頭參考下列詞彙清單。
 
-| 詞彙或概念 | 描述 |
+| 詞彙 | 描述 |
 | --- | --- |
-| 權利管理 | 指派、 撤銷，並管理存取套件的服務。 |
-| 存取封裝 | 權限和使用者可以要求的資源原則的集合。 存取封裝一定會包含在目錄中。 |
-| 存取要求 | 要求存取存取套件。 要求通常會透過工作流程。 |
-| 原則 | 一組規則來定義存取生命週期，例如使用者如何取得存取、 誰可以認可，以及使用者可以存取的時間長度。 原則的範例包括員工存取，以及外部存取。 |
-| catalog | 相關的資源和存取封裝的容器。 |
-| 一般類別目錄 | 始終是可用的內建目錄。 若要將資源新增至一般類別目錄中，需要特定權限。 |
-| resource | 資產或使用者可以授與權限的服務 （例如群組、 應用程式或站台）。 |
-| 資源類型 | 資源類型，其中包括群組、 應用程式和 SharePoint Online 網站。 |
-| 資源角色 | 與資源相關聯的權限集合。 |
-| 資源目錄 | 有一或多個共用的資源目錄。 |
-| 指派的使用者 | 存取封裝的使用者或群組的指派。 |
-| enable | 讓使用者要求存取封裝程序。 |
+| 存取套件 | 小組或專案所需且受原則控管的資源組合。 存取套件一律包含在目錄中。 在使用者需要要求存取權的情況下，您必須建立新的存取套件。  |
+| 存取要求 | 想要在存取套件中存取資源的要求。 要求一般會經歷核准工作流程。  若獲得核准，提出要求的使用者便會收到存取套件指派。 |
+| 指派 | 將存取套件指派給使用者可確保使用者擁有該存取套件的所有資源角色。  存取套件指派一般會有有限的到期時間。 |
+| catalog | 相關資源和存取套件的容器。  目錄可用於委派，讓非系統管理員可以建立自己的存取套件。 目錄擁有者可以將自己擁有的資源新增至目錄。 |
+| 目錄建立者 | 已獲授權而可建立新目錄的使用者集合。  當獲授權而成為目錄建立者的非系統管理員使用者建立新的目錄時，其會自動成為該目錄的擁有者。 |
+| 已連線的組織 | 與您有關聯性的外部 Azure AD 目錄或網域。 已連線組織中的使用者可以在原則中指定為允許要求存取權。 |
+| 原則 | 定義存取生命週期的一組規則，例如使用者如何取得存取權、誰可以核准，以及使用者可以透過指派存取多久。 原則會連結至存取套件。 例如，存取套件可能有兩個原則 - 一個供員工要求存取權，第二個則供外部使用者要求存取權。 |
+| resource | 資產，例如 Office 群組、安全性群組、應用程式或 SharePoint Online 網站，其角色的權限可授與給使用者。 |
+| 資源目錄 | 具有一或多個可共用資源的目錄。 |
+| 資源角色 | 與資源相關聯並由資源定義的權限集合。 群組有兩個角色 - 成員和擁有者。 SharePoint 網站一般會有 3 個角色，但可能會有其他自訂角色。 應用程式可以有自訂角色。 |
 
-## <a name="roles-and-permissions"></a>角色和權限
 
-權利管理具有不同的角色，根據工作功能。
+## <a name="license-requirements"></a>授權需求
 
-| 角色 | 描述 |
-| --- | --- |
-| [用户管理员](../users-groups-roles/directory-assign-admin-roles.md#user-administrator) | 管理權限管理的所有的層面。<br/>建立使用者和群組。 |
-| 類別目錄的建立者 | 建立及管理目錄。 通常是 IT 系統管理員或資源擁有者。 會自動建立目錄的人會成為類別目錄的第一個類別目錄的擁有者。 |
-| 目錄擁有者 | 編輯及管理現有的目錄。 通常是 IT 系統管理員或資源擁有者。 |
-| 存取封裝管理員 | 編輯和管理目錄內的所有現有存取套件。 |
-| 核准者 | 核准要求，以存取套件。 |
-| 要求者 | 要求存取套件。 |
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-下表列出每個角色的權限。
+特製化雲端 (例如 Azure 德國和 Azure China 21Vianet) 目前無法供您使用。
 
-| Task | 使用者管理員 | 類別目錄的建立者 | 目錄擁有者 | 存取封裝管理員 | 核准者 |
-| --- | :---: | :---: | :---: | :---: | :---: |
-| [在一般的目錄中建立新的存取封裝](entitlement-management-access-package-create.md) | :heavy_check_mark: |  :heavy_check_mark: |  |  |  |
-| [在目錄中建立新的存取封裝](entitlement-management-access-package-create.md) | :heavy_check_mark: |   | :heavy_check_mark: |  |  |
-| [新增/移除從存取套件的資源角色](entitlement-management-access-package-edit.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [指定誰可以要求存取套件](entitlement-management-access-package-edit.md#add-a-new-policy) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [直接將使用者指派給存取套件](entitlement-management-access-package-edit.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [檢視指派給存取套件的人員](entitlement-management-access-package-edit.md#view-who-has-an-assignment) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [檢視存取套件的要求](entitlement-management-access-package-edit.md#view-requests) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [檢視要求的傳遞錯誤](entitlement-management-access-package-edit.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [取消暫止的要求](entitlement-management-access-package-edit.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [隱藏存取套件](entitlement-management-access-package-edit.md#change-the-hidden-setting) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [刪除存取封裝](entitlement-management-access-package-edit.md#delete) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [核准存取要求](entitlement-management-request-approve.md) |  |  |  |  | :heavy_check_mark: |
-| [建立目錄](entitlement-management-catalog-create.md) | :heavy_check_mark: | :heavy_check_mark: |  |  |  |
-| [新增/移除從一般的目錄資源](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  |  |  |  |
-| [新增/移除從目錄資源](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
-| [新增目錄擁有者或存取套件管理員](entitlement-management-catalog-create.md#add-catalog-owners-or-access-package-managers) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
-| [編輯/刪除目錄](entitlement-management-catalog-create.md#edit-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |  |
+### <a name="how-many-licenses-must-you-have"></a>您必須擁有多少授權？
+
+請確定您的目錄所擁有的 Azure AD Premium P2 授權，至少要和您擁有的下列項目數目一樣多：
+
+- **可以**要求存取套件的成員使用者。
+- 要求存取套件的成員和來賓使用者。
+- 核准存取套件要求的成員和來賓使用者。
+- 直接指派給存取套件的成員和來賓使用者。
+
+下列工作**不**需要 Azure AD Premium P2 授權：
+
+- 使用者若具有全域管理員角色，並設定初始目錄、存取套件和原則，以及將系統管理工作委派給其他使用者，就不需要任何授權。
+- 使用者若已獲得委派的系統管理工作 (例如目錄建立者、目錄擁有者和存取套件管理員)，就不需要任何授權。
+- 來賓若**可以**要求存取套件，但**未**要求存取套件，就不需要任何授權。
+
+針對您為成員使用者 (員工) 購買的每個付費 Azure AD Premium P2 授權，您可以使用 Azure AD B2B 來邀請最多 5 位來賓使用者。 這些來賓使用者也可以使用 Azure AD Premium P2 功能。 如需詳細資訊，請參閱 [Azure AD B2B 共同作業授權指引](../b2b/licensing-guidance.md)。
+
+如需授權的詳細資訊，請參閱[使用 Azure Active Directory 入口網站指派或移除授權](../fundamentals/license-users-groups.md)。
+
+### <a name="example-license-scenarios"></a>範例授權案例
+
+以下是一些範例授權案例，可協助您判斷您必須擁有的授權數目。
+
+| 狀況 | 計算 | 授權數目 |
+| --- | --- | --- |
+| Woodgrove Bank 的全域管理員建立初始目錄，並將系統管理工作委派給另外 6 位使用者。 其中一個原則指定**所有員工** (2,000 名員工) 都可以要求一組特定的存取套件。 150 名員工要求存取套件。 | 2,000 名員工**可以**要求存取套件 | 2,000 |
+| Woodgrove Bank 的全域管理員建立初始目錄，並將系統管理工作委派給另外 6 位使用者。 其中一個原則指定**所有員工** (2,000 名員工) 都可以要求一組特定的存取套件。 另一個原則指定來自**合作夥伴 Contoso 使用者** (來賓) 的某些使用者可以要求相同的存取套件，但需要獲得核准。 Contoso 有 30,000 名使用者。 150 名員工要求存取套件，來自 Contoso 的 10,500 名使用者要求存取權。 | 2,000 名員工 + 500 名來自 Contoso 的來賓使用者，超過 1:5 的比率 (10,500 - (2,000 * 5)) | 2,500 |
 
 ## <a name="next-steps"></a>後續步驟
 
-- [教學課程：建立您第一次存取封裝](entitlement-management-access-package-first.md)
+- [教學課程：建立您的第一個存取套件](entitlement-management-access-package-first.md)
 - [常見案例](entitlement-management-scenarios.md)

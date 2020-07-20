@@ -3,25 +3,25 @@ title: Azure AD 應用程式 Proxy 的安全性考量 | Microsoft Docs
 description: 涵蓋使用 Azure AD 應用程式 Proxy 的安全性考量
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/08/2017
-ms.author: celested
+ms.date: 03/13/2020
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7bb9fc806779565581fa7667749402f5608edd80
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 13b020f633adc2e2286cc14b01c6d248fc2c1e3e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60292739"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84759881"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 遠端存取應用程式的安全性考量
 
@@ -47,9 +47,9 @@ Azure AD 應用程式 Proxy 依賴 Azure AD Security Token Service (STS) 來進�
 
 在建立您的網路連線之前，先套用更豐富的原則控制。
 
-使用[條件式存取](../conditional-access/overview.md)，就可以定義允許哪些流量存取後端應用程式上的限制。 您可以位置、驗證強度和使用者風險狀況作為基礎，來建立限制登入的原則。
+[條件式存取](../conditional-access/concept-conditional-access-cloud-apps.md)可讓您定義限制，以規定如何允許使用者存取您的應用程式。 您可以位置、驗證強度和使用者風險狀況作為基礎，來建立限制登入的原則。
 
-您也可以使用條件式存取來設定 Multi-Factor Authentication 原則，為您的使用者驗證新增另一層的安全性。 此外，您的應用程式也可透過 Azure AD 條件式存取路由至 Microsoft Cloud App Security，以透過[存取權](https://docs.microsoft.com/cloud-app-security/access-policy-aad)和[工作階段](https://docs.microsoft.com/cloud-app-security/session-policy-aad)原則提供即時的監視與控制能力
+您也可以使用條件式存取來設定 Multi-Factor Authentication 原則，讓使用者驗證多一層安全性。 此外，您的應用程式也可以透過 Azure AD 條件式存取來路由至 Microsoft Cloud App Security，以透過[存取](https://docs.microsoft.com/cloud-app-security/access-policy-aad)和[工作階段](https://docs.microsoft.com/cloud-app-security/session-policy-aad)原則提供即時監視和控制
 
 ### <a name="traffic-termination"></a>流量終止
 
@@ -69,7 +69,7 @@ Azure AD 應用程式 Proxy 是反向 Proxy，因此所有至後端應用程式�
 
 取得最新的安全性保護。
 
-因為應用程式 Proxy 是 Azure Active Directory 的一部分，所以可以利用 [Azure AD Identity Protection](../active-directory-identityprotection.md)，其中包含來自 Microsoft Security Response Center 和 Digital Crimes Unit 的資料。 我們共同主動識別遭入侵的帳戶，並提供來自高風險登入的防護。我們考慮許多因素，以判斷哪些登入嘗試會有高風險。 這些因素包括標記受感染的裝置、匿名網路，以及非典型或假位置。
+因為應用程式 Proxy 是 Azure Active Directory 的一部分，所以可以利用 [Azure AD Identity Protection](../active-directory-identityprotection.md)，其中包含來自 Microsoft Security Response Center 和 Digital Crimes Unit 的資料。 我們共同主動識別遭入侵的帳戶，並提供來自高風險登入的防護。我們將許多因素納入考量，以判斷哪些登入嘗試具有高度風險。 這些因素包括標記受感染的裝置、匿名網路，以及非典型或假位置。
 
 這些報告和事件中有許多已可透過 API 與安全性資訊和事件管理 (SIEM) 系統整合。
 
@@ -81,15 +81,11 @@ Azure AD 應用程式 Proxy 是反向 Proxy，因此所有至後端應用程式�
 
 為了改善 Azure AD 應用程式 Proxy 所發佈應用程式的安全性，我們會封鎖 Web 編目程式傀儡程式，使其無法對您的應用程式編製索引和進行保存。 每次 Web 編目程式傀儡程式嘗試擷取已發佈應用程式的傀儡程式設定時，應用程式 Proxy 會以含有 `User-agent: * Disallow: /` 的 robots.txt 檔案回覆。
 
-### <a name="ddos-prevention"></a>DDOS 預防
+#### <a name="azure-ddos-protection-service"></a>Azure DDoS 保護服務
 
-透過應用程式 Proxy 發佈應用程式會受到保護，能抵禦分散式阻斷服務 (DDOS) 攻擊。
+透過應用程式 Proxy 發佈的應用程式會受到保護，以免遭受分散式阻斷服務 (DDoS) 攻擊。 **Azure DDoS 保護**是 Azure 平台提供的服務，可保護 Azure 資源免於遭受拒絕服務的攻擊。 系統會自動啟用**基本**服務層級，以提供永遠開啟的流量監視，以及即時緩和常見的網路層級攻擊。 還有**標準**層級可用，提供特別針對 Azure 虛擬網路資源而調整的額外風險降低功能。 如需詳細資訊，請參閱 [Azure DDoS 保護標準概觀](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)。
 
-應用程式 Proxy 服務會監視嘗試連接應用程式和網路的流量。 如果要求從遠端存取應用程式的裝置數目升高，Microsoft 會調節網路的存取。 
-
-Microsoft 會監看個別應用程式和整個訂用帳戶的傳輸模式。 如果某個應用程式收到高於一般的要求，存取該應用程式的要求會在一段不久時間內遭到拒絕。 如果收到的要求超過整個訂用帳戶的一般要求數目，則要求會遭拒而無法存取您的任何應用程式。 這個預防措施可防止應用程式伺服器因遠端存取要求而超出負載，讓內部部署使用者能持續存取他們的應用程式。 
-
-## <a name="under-the-hood"></a>幕後
+## <a name="under-the-hood"></a>背後原理
 
 Azure AD 應用程式 Proxy 是由兩個部分組成︰
 
@@ -103,7 +99,7 @@ Azure AD 應用程式 Proxy 是由兩個部分組成︰
 * 使用者會存取發佈的應用程式。
 
 >[!NOTE]
->所有通訊會透過 SSL 發生，且一律源自於至應用程式 Proxy 服務的連接器。 此服務只會輸出。
+>所有通訊都透過 SSL 進行，而且一律從連接器向應用程式 Proxy 服務發起通訊。 此服務只會輸出。
 
 連接器會使用用戶端憑證來驗證幾乎所有呼叫的應用程式 Proxy 服務。 此程序的唯一例外是可供建立用戶端憑證的初始設定步驟。
 
@@ -144,7 +140,7 @@ Azure AD 應用程式 Proxy 是由兩個部分組成︰
 
 如果您將應用程式設定為以 Azure AD 預先驗證時，使用者會重新導向至 Azure AD STS 驗證，並採取下列步驟：
 
-1. 應用程式 Proxy 會檢查特定應用程式的所有條件式存取原則需求。 這個步驟可確保已對應用程式指派使用者。 如果需要雙步驟驗證，驗證順序會提示使用者進行第二驗證方法。
+1. 應用程式 Proxy 檢查特定應用程式的任何條件式存取原則需求。 這個步驟可確保已對應用程式指派使用者。 如果需要雙步驟驗證，驗證順序會提示使用者進行第二驗證方法。
 
 2. 通過所有檢查後，Azure AD STS 會針對應用程式發出已簽署權杖，並將使用者重新導向回到應用程式 Proxy 服務。
 

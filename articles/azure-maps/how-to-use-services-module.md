@@ -1,6 +1,6 @@
 ---
-title: 使用服務模組-Azure 地圖服務 |Microsoft Docs
-description: 了解如何使用 Azure Maps 服務模組。
+title: 使用 Azure 地圖服務 Services 模組 |Microsoft Azure 對應
+description: 在本文中，您將瞭解如何使用 Azure 地圖服務 services 模組來利用 Microsoft Azure 地圖 REST 服務。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -8,40 +8,39 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: f3650d4db06a763308939e9fb1a98fddb0eaa04a
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 6e9d1f35d021c3381f9c2887dfb1c150bb720871
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725922"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80804651"
 ---
-# <a name="use-the-azure-maps-services-module"></a>使用 Azure Maps 服務模組
+# <a name="use-the-azure-maps-services-module"></a>使用 Azure 地圖服務 services 模組
 
-Azure 地圖服務 Web SDK 會提供*services 模組*。 此模組為方便您使用 Azure 地圖服務 REST 服務在 web 或 Node.js 應用程式使用 JavaScript 或 TypeScript 的協助程式庫。
+Azure 地圖服務 Web SDK 提供*服務模組*。 此模組是協助程式程式庫，可讓您使用 JavaScript 或 TypeScript，輕鬆地在 web 或 Node.js 應用程式中使用 Azure 地圖服務 REST 服務。
 
-## <a name="use-the-services-module-in-a-webpage"></a>在網頁上使用的服務模組
+## <a name="use-the-services-module-in-a-webpage"></a>使用網頁中的服務模組
 
 1. 建立新的 HTML 檔案。
-1. 載入 Azure Maps 服務模組。 您可以載入下列其中一種方式：
-    - 使用 Azure Maps 服務模組的全域託管的 Azure 內容傳遞網路版本。 加入指令碼參考`<head>`檔案項目：
+1. 載入 Azure 地圖服務 services 模組。 您可以透過下列兩種方式的其中一種來載入它：
+    - 使用 Azure 地圖服務服務模組的全球託管 Azure 內容傳遞網路版本。 將腳本參考新增至檔案的 `<head>` 元素：
 
         ```html
-        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
+        <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
         ```
 
-    - 或者，由使用在本機載入 Azure 對應 Web SDK 原始程式碼[azure 地圖服務 rest](https://www.npmjs.com/package/azure-maps-rest) npm 套件，並再將它設為裝載您的應用程式。 此套件也包含 TypeScript 定義。 使用下列命令：
+    - 或者，使用[Azure 對應-rest](https://www.npmjs.com/package/azure-maps-rest) npm 套件，在本機載入 AZURE 地圖服務 Web SDK 原始程式碼的服務模組，然後將它裝載在您的應用程式中。 此套件也包含 TypeScript 定義。 使用此命令：
     
         > **npm install azure-maps-rest**
     
-        然後，指令碼將參考加入至`<head>`檔案項目：
+        然後，將腳本參考新增至檔案的 `<head>` 元素：
 
          ```html
-        <script src="node_modules/azure-maps-rest/dist/js/atlas-service.min.js"></script>
+        <script src="node_modules/azure-maps-rest/dist/atlas-service.min.js"></script>
          ```
 
-1. 建立驗證管線。 您可以初始化服務 URL 的用戶端端點之前，您必須建立管線。 使用您自己的 Azure 地圖服務帳戶金鑰或 Azure Active Directory (Azure AD) 認證來驗證 Azure 地圖服務搜尋服務用戶端。 在此範例中，將會建立搜尋服務 URL 的用戶端。 
+1. 建立驗證管線。 您必須先建立管線，才能初始化服務 URL 用戶端端點。 使用您自己的 Azure 地圖服務帳戶金鑰或 Azure Active Directory （Azure AD）認證來驗證 Azure 地圖服務搜尋服務用戶端。 在此範例中，將會建立搜尋服務 URL 用戶端。 
 
-    如果您使用的訂用帳戶金鑰進行驗證：
+    如果您使用訂用帳戶金鑰進行驗證：
 
     ```javascript
     // Get an Azure Maps key at https://azure.com/maps.
@@ -73,115 +72,138 @@ Azure 地圖服務 Web SDK 會提供*services 模組*。 此模組為方便您�
     // This time-out must be cleared when the TokenCredential object is no longer needed.
     // If the time-out is not cleared, the memory used by the TokenCredential will never be reclaimed.
     var renewToken = async () => {
-    try {
-      console.log("Renewing token");
-      var token = await getAadToken();
-      tokenCredential.token = token;
-      tokenRenewalTimer = setTimeout(renewToken, getExpiration(token));
-    } catch (error) {
-      console.log("Caught error when renewing token");
-      clearTimeout(tokenRenewalTimer);
-      throw error;
-    }
+      try {
+        console.log("Renewing token");
+        var token = await getAadToken();
+        tokenCredential.token = token;
+        tokenRenewalTimer = setTimeout(renewToken, getExpiration(token));
+      } catch (error) {
+        console.log("Caught error when renewing token");
+        clearTimeout(tokenRenewalTimer);
+        throw error;
+      }
     }
     tokenRenewalTimer = setTimeout(renewToken, getExpiration(aadToken));
 
     // Use tokenCredential to create a pipeline.
     var pipeline = atlas.service.MapsURL.newPipeline(tokenCredential, {
-    retryOptions: { maxTries: 4 } // Retry options
+      retryOptions: { maxTries: 4 } // Retry options
     });
 
     // Create an instance of the SearchURL client.
     var searchURL = new atlas.service.SearchURL(pipeline);
 
     function getAadToken() {
-        // Use the signed-in auth context to get a token.
-        return new Promise((resolve, reject) => {
-            // The resource should always be https://atlas.microsoft.com/.
-            const resource = "https://atlas.microsoft.com/";
-            authContext.acquireToken(resource, (error, token) => {
-                if (error) {
-                    reject(error);
-                } else {
-                    resolve(token);
-                }
-            });
-        })
+      // Use the signed-in auth context to get a token.
+      return new Promise((resolve, reject) => {
+        // The resource should always be https://atlas.microsoft.com/.
+        const resource = "https://atlas.microsoft.com/";
+        authContext.acquireToken(resource, (error, token) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(token);
+          }
+        });
+      })
     }
 
     function getExpiration(jwtToken) {
-        // Decode the JSON Web Token (JWT) to get the expiration time stamp.
-        const json = atob(jwtToken.split(".")[1]);
-        const decode = JSON.parse(json);
+      // Decode the JSON Web Token (JWT) to get the expiration time stamp.
+      const json = atob(jwtToken.split(".")[1]);
+      const decode = JSON.parse(json);
 
-        // Return the milliseconds remaining until the token must be renewed.
-        // Reduce the time until renewal by 5 minutes to avoid using an expired token.
-        // The exp property is the time stamp of the expiration, in seconds.
-        const renewSkew = 300000;
-        return (1000 * decode.exp) - Date.now() - renewSkew;
+      // Return the milliseconds remaining until the token must be renewed.
+      // Reduce the time until renewal by 5 minutes to avoid using an expired token.
+      // The exp property is the time stamp of the expiration, in seconds.
+      const renewSkew = 300000;
+      return (1000 * decode.exp) - Date.now() - renewSkew;
     }
     ```
 
-    如需詳細資訊，請參閱 <<c0> [ 使用 Azure 地圖服務進行驗證](azure-maps-authentication.md)。
+    如需詳細資訊，請參閱[使用 Azure 地圖服務進行驗證](azure-maps-authentication.md)。
 
-1. 下列程式碼會使用地理編碼地址來新建的 Azure 搜尋服務 URL 用戶端："1 Microsoft Way，Redmond，WA 」。 此程式碼使用`searchAddress`函式，並顯示結果頁面的主體中的資料表。
+1. 下列程式碼會使用新建立的 Azure 地圖服務搜尋服務 URL 用戶端來地理編碼位址： "1 Microsoft 的方式，Redmond，WA"。 程式碼會使用函式 `searchAddress` ，並將結果顯示為頁面主體中的資料表。
 
     ```javascript
     // Search for "1 microsoft way, redmond, wa".
-    searchURL.searchAddress(atlas.service.Aborter.timeout(10000), '1 microsoft way, redmond, wa').then(response => {
-      var html = [];
+    searchURL.searchAddress(atlas.service.Aborter.timeout(10000), '1 microsoft way, redmond, wa')
+      .then(response => {
+        var html = [];
 
-      // Display the total results.
-      html.push('Total results: ', response.summary.numResults, '<br/><br/>');
+        // Display the total results.
+        html.push('Total results: ', response.summary.numResults, '<br/><br/>');
 
-      // Create a table of the results.
-      html.push('<table><tr><td></td><td>Result</td><td>Latitude</td><td>Longitude</td></tr>');
+        // Create a table of the results.
+        html.push('<table><tr><td></td><td>Result</td><td>Latitude</td><td>Longitude</td></tr>');
 
-      for(var i=0;i<response.results.length;i++){
-        html.push('<tr><td>', (i+1), '.</td><td>', 
-          response.results[i].address.freeformAddress, 
-          '</td><td>', 
-          response.results[i].position.lat,
-          '</td><td>', 
-          response.results[i].position.lon,
-          '</td></tr>');
-      }
+        for(var i=0;i<response.results.length;i++){
+          html.push('<tr><td>', (i+1), '.</td><td>', 
+            response.results[i].address.freeformAddress, 
+            '</td><td>', 
+            response.results[i].position.lat,
+            '</td><td>', 
+            response.results[i].position.lon,
+            '</td></tr>');
+        }
 
-      html.push('</table>');
+        html.push('</table>');
 
-      // Add the resulting HTML to the body of the page.
-      document.body.innerHTML = html.join('');
+        // Add the resulting HTML to the body of the page.
+        document.body.innerHTML = html.join('');
     });
     ```
 
-    以下是完整的執行程式碼範例：
+    以下是完整的執行中程式碼範例：
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="使用服務模組" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參閱畫筆<a href='https://codepen.io/azuremaps/pen/zbXGMR/'>使用的服務模組</a>透過 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 上<a href='https://codepen.io'>CodePen</a>。
+<iframe height="500" style="width: 100%;" scrolling="no" title="使用服務模組" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+CodePen 上的 Azure 地圖服務（），請參閱<a href='https://codepen.io/azuremaps/pen/zbXGMR/'>使用服務模組</a>的畫筆 <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'> </a>。
 </iframe>
+
+<br/>
+
+## <a name="azure-government-cloud-support"></a>Azure Government 雲端支援
+
+Azure 地圖服務 Web SDK 支援 Azure Government 雲端。 所有用來存取 Azure 地圖服務 Web SDK 的 JavaScript 和 CSS Url 都會維持不變，不過必須完成下列工作，才能連接到 Azure 地圖服務平臺的 Azure Government 雲端版本。
+
+使用互動式地圖控制項時，請在建立類別的實例之前，加入下列程式程式碼 `Map` 。 
+
+```javascript
+atlas.setDomain('atlas.azure.us');
+```
+
+驗證對應和服務時，請務必使用來自 Azure Government 雲端平臺的 Azure 地圖服務驗證詳細資料。
+
+使用服務模組時，必須在建立 API URL 端點的實例時設定服務的網域。 例如，下列程式碼會建立類別的實例 `SearchURL` ，並將該網域指向 Azure Government 雲端。
+
+```javascript
+var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
+```
+
+如果直接存取 Azure 地圖服務 REST 服務，請將 URL 網域變更為 `atlas.azure.us` 。 例如，如果使用搜尋 API 服務，請將 URL 網域從變更 `https://atlas.microsoft.com/search/` 為 `https://atlas.azure.us/search/` 。
 
 ## <a name="next-steps"></a>後續步驟
 
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [MapsURL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.mapsurl?view=azure-iot-typescript-latest)
+> [MapsURL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.mapsurl?view=azure-maps-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [SearchURL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest)
+> [SearchURL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-maps-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [RouteURL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest)
+> [RouteURL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-maps-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [SubscriptionKeyCredential](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.subscriptionkeycredential?view=azure-iot-typescript-latest)
+> [SubscriptionKeyCredential](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.subscriptionkeycredential?view=azure-maps-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [TokenCredential](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.tokencredential?view=azure-iot-typescript-latest)
+> [TokenCredential](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.tokencredential?view=azure-maps-typescript-latest)
 
-如需程式碼範例使用 「 服務 」 模組，請參閱下列文章：
+如需使用服務模組的更多程式碼範例，請參閱下列文章：
 
 > [!div class="nextstepaction"]
 > [在地圖上顯示搜尋結果](./map-search-location.md)

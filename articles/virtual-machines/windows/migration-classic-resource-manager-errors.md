@@ -1,27 +1,24 @@
 ---
-title: 從傳統到 Azure Resource Manager 移轉的常見錯誤 |Microsoft Docs
+title: 從傳統到 Azure Resource Manager 移轉的常見錯誤
 description: 本文收錄將 IaaS 資源從 Azure 服務管理移轉至 Azure Resource Manager 堆疊的常見錯誤和緩和措施。
-services: virtual-machines-windows
-documentationcenter: ''
-author: singhkays
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 5bc03a1b-eb1c-438c-83d9-f0e9d61f1b6a
+author: tanmaygore
+manager: vashan
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
-ms.date: 03/30/2017
-ms.author: kasing
-ms.openlocfilehash: c038127f153251a6f010a96394acf46c7708392a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: HT
+ms.topic: troubleshooting
+ms.date: 02/06/2020
+ms.author: tagore
+ms.openlocfilehash: 852a0866a2fcbf5bc87fa4738b1b37e96c05c6ca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30912962"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81866126"
 ---
+# <a name="common-errors-during-classic-to-azure-resource-manager-migration"></a>從傳統到 Azure Resource Manager 移轉的常見錯誤
+
+> [!IMPORTANT]
+> 目前，大約有90% 的 IaaS Vm 正在使用[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)。 從2020年2月28日起，傳統 Vm 已淘汰，並將于2023年3月1日完全淘汰。 [深入瞭解]( https://aka.ms/classicvmretirement)此淘汰及其對[您的影響](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me)。
+
 [!INCLUDE [virtual-machines-common-migration-errors](../../../includes/virtual-machines-common-classic-resource-manager-migration-common-errors.md)]
 
 ## <a name="next-steps"></a>後續步驟

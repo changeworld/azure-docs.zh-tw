@@ -1,27 +1,26 @@
 ---
-title: 登入針對密碼單一登入設定之 Azure AD 資源庫應用程式的問題 | Microsoft Docs
-description: 討論問題範圍，為疑難排解登入針對密碼單一登入所設定 Azure AD 資源庫應用程式相關問題提供指引
+title: 存取面板中以密碼為基礎的單一登入（SSO） |Microsoft Docs
+description: 討論問題區域，提供針對登入設定為密碼單一登入之 Azure AD 圖庫應用程式的相關問題進行疑難排解的指引。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11411a780333268e19d53ea2bd472fe36bc0eb62
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: bd4a645038dfb49e7c79995b90b159bdc07bea4f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60437876"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763766"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>登入針對密碼單一登入設定之 Azure AD 資源庫應用程式的問題
 
@@ -52,13 +51,13 @@ ms.locfileid: "60437876"
 
 1.  在其中一種支援的瀏覽器中開啟[存取面板](https://myapps.microsoft.com)，然後在您的 Azure AD 中以**使用者**身分登入。
 
-2.  按一下存取面板中的 [密碼-SSO 應用程式]。
+2.  按一下存取面板中的 [密碼-SSO 應用程式]****。
 
-3.  在要求安裝軟體的提示中，選取 [立即安裝]。
+3.  在要求安裝軟體的提示中，選取 [立即安裝]****。
 
 4.  系統會根據您的瀏覽器將您導向至下載連結。 將延伸模組**新增**到瀏覽器中。
 
-5.  如果您的瀏覽器要求，請選取 [啟用] 或 [允許] 該延伸模組。
+5.  如果您的瀏覽器要求，請選取 [啟用]**** 或 [允許]**** 該延伸模組。
 
 6.  安裝之後，**重新啟動**瀏覽器工作階段。
 
@@ -100,7 +99,7 @@ ms.locfileid: "60437876"
 
 若要從 Azure AD 資源庫新增應用程式，請依照下列步驟執行：
 
-1.  開啟 [Azure 入口網站](https://portal.azure.com)，然後以**全域管理員**或**共同管理員**身分登入
+1.  開啟[Azure 入口網站](https://portal.azure.com)，並以**全域管理員**或**共同**管理員身分登入
 
 2.  按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
@@ -108,11 +107,11 @@ ms.locfileid: "60437876"
 
 4.  在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
 
-5.  按一下 [企業應用程式] 窗格右上角的 [新增] 按鈕。
+5.  按一下 [企業應用程式]**** 窗格右上角的 [新增]**** 按鈕。
 
-6.  按一下 [不在資源庫內的應用程式]。
+6.  按一下 [不在資源庫內的應用程式]****。
 
-7.  在 [名稱] 文字方塊中輸入應用程式的名稱。 選取 [新增]。
+7.  在 [名稱]**** 文字方塊中輸入應用程式的名稱。 選取 [**新增]。**
 
 稍候片刻，您便能看見應用程式的設定窗格。
 
@@ -120,7 +119,7 @@ ms.locfileid: "60437876"
 
 若要設定應用程式使用單一登入，請依照下列步驟執行：
 
-1. 開啟 [Azure 入口網站](https://portal.azure.com/)，然後以**全域管理員**或**共同管理員**身分登入。
+1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。**
 
 2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
 
@@ -134,17 +133,17 @@ ms.locfileid: "60437876"
 
 6. 選取您要設定單一登入的應用程式
 
-7. 應用程式載入後，按一下應用程式的左側導覽功能表中的 [單一登入]。
+7. 應用程式載入後，按一下應用程式的左側導覽功能表中的 [單一登入]****。
 
-8. 選取 [以密碼為基礎的登入] 模式。
+8. 選取 [以密碼為基礎的登入]**** 模式。
 
 9. 輸入**登入 URL**。 這是使用者輸入使用者名稱和密碼來登入的 URL。 確保在 URL 看得到登入欄位。
 
-10. 將使用者指派至應用程式。
+10. 將使用者指派給應用程式。
 
-11. 此外，您也可以選取使用者資料列，按一下 [更新認證]，然後代表使用者輸入使用者名稱和密碼，以代表使用者提供認證。 否則，系統會提示使用者在啟動時自行輸入認證。
+11. 此外，您也可以選取使用者資料列，按一下 [更新認證]****，然後代表使用者輸入使用者名稱和密碼，以代表使用者提供認證。 否則，系統會提示使用者在啟動時自行輸入認證。
 
-### <a name="assign-users-to-the-application"></a>將使用者指派至應用程式
+### <a name="assign-users-to-the-application"></a>將使用者指派給應用程式
 
 若要直接將一或多個使用者指派至應用程式，請依照下列步驟執行︰
 
@@ -164,7 +163,7 @@ ms.locfileid: "60437876"
 
 7. 應用程式載入之後，按一下應用程式左側導覽功能表中的 [使用者和群組]。
 
-8. 按一下 [使用者和群組] 清單頂端的 [新增] 按鈕，以開啟 [新增指派] 窗格。
+8. 按一下 [使用者和群組]**** 清單頂端的 [新增]**** 按鈕，以開啟 [新增指派]**** 窗格。
 
 9. 按一下 [新增指派] 窗格中的 [使用者和群組] 選取器。
 

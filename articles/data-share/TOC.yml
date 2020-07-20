@@ -1,0 +1,73 @@
+- name: Azure Data Share 文件
+  href: index.yml
+- name: 概觀
+  items:
+    - name: 什麼是 Azure Data Share？
+      href: overview.md
+    - name: 支援的資料存放區
+      href: supported-data-stores.md
+- name: 教學課程
+  expanded: true
+  items:
+    - name: 共用資料
+      href: share-your-data.md
+    - name: 接受和接收資料
+      href: subscribe-to-data-share.md
+- name: 概念
+  items:
+    - name: Azure Data Share 詞彙
+      href: terminology.md
+    - name: 角色和需求
+      href: concepts-roles-permissions.md
+- name: 範例
+  items:
+    - name: 程式碼範例
+      href: 'https://docs.microsoft.com/samples/browse/?service=data-share/'
+    - name: Azure PowerShell
+      href: samples-powershell.md
+- name: 操作指南
+  items:
+    - name: 監視
+      href: how-to-monitor.md
+    - name: 設定資料集對應
+      href: how-to-configure-mapping.md
+    - name: 疑難排解
+      href: data-share-troubleshoot.md
+    - name: 新增資料集
+      href: how-to-add-datasets.md
+    - name: 新增收件者
+      href: how-to-add-recipients.md
+    - name: 刪除邀請
+      href: how-to-delete-invitation.md
+    - name: 撤銷共用訂用帳戶
+      href: how-to-revoke-share-subscription.md
+    - name: 安全性
+      href: security.md
+    - name: 災害復原
+      href: disaster-recovery.md
+- name: 參考
+  items:
+    - name: .NET
+      href: /dotnet/api/overview/azure/datashare
+    - name: Azure PowerShell
+      href: 'https://docs.microsoft.com/powershell/module/az.datashare/?view=azps-2.6.0'
+    - name: REST API
+      href: /rest/api/datashare
+    - name: Azure CLI
+      href: azure-cli-references-for-data-share.md
+- name: 資源
+  items:
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-data-share.html'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-data-share'
+    - name: 部落格
+      href: 'https://techcommunity.microsoft.com/t5/Azure-Data-Share/bg-p/AzureDataShareBlog'
+    - name: Microsoft 技術社群
+      href: 'https://techcommunity.microsoft.com/'
+    - name: 產品意見反應
+      href: 'https://feedback.azure.com/forums/922759-azure-data-share-public-preview'
+    - name: 定價
+      href: 'https://azure.microsoft.com/pricing/details/data-share/'
+    - name: 服務更新
+      href: 'https://azure.microsoft.com/updates/?product=data-share'

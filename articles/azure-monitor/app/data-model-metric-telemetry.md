@@ -1,23 +1,14 @@
 ---
-title: Azure Application Insights 遙測資料模型 - 計量遙測 | Microsoft Docs
+title: 度量遙測資料模型-Azure 應用程式深入解析
 description: 計量遙測的 Application Insights 資料模型
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 0973c86d055ff4ebbe7e5a3c4a2ca4e3dcabc6a0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 3e4a1fc3de58b8e65ab9c7a288bdf3eb37e7bae0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60900455"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77671965"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>計量遙測：Application Insights 資料模型
 
@@ -29,7 +20,7 @@ Application Insights 支援數個已知的計量名稱。 這些計量會置入 
 
 代表系統和程序計數器的計量︰
 
-| **.NET 名稱**             | **平台無從驗證的名稱** | **REST API 名稱** | **說明**
+| **.NET 名稱**             | **平台無從驗證的名稱** | **REST API 名稱** | **描述**
 | ------------------------- | -------------------------- | ----------------- | ---------------- 
 | `\Processor(_Total)\% Processor Time` | 進行中... | [processorCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessorCpuPercentage) | 電腦 CPU 總數
 | `\Memory\Available Bytes`                 | 進行中... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | 顯示在電腦上執行的程序可用的實體記憶體數量 (以位元組為單位)。 其計算方式為加總填零、可用和待命記憶體清單上的空間數量。 可用記憶體可供立即使用；填零記憶體由填滿零的記憶體分頁所組成，以免後續程序看見前一個程序所用的資料；待命記憶體是已從程序的工作集 (其實體記憶體) 移除並傳送到磁碟，但仍可供使用回收的記憶體。 請參閱[記憶體物件](https://msdn.microsoft.com/library/ms804008.aspx)
@@ -41,23 +32,23 @@ Application Insights 支援數個已知的計量名稱。 這些計量會置入 
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | 進行中... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | 平均要求執行時間
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | 進行中... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | 佇列中等候處理的要求數目
 
-## <a name="name"></a>名稱
+## <a name="name"></a>Name
 
 您想要在 Application Insights 入口網站和 UI 中看到的計量名稱。 
 
-## <a name="value"></a>Value
+## <a name="value"></a>值
 
 度量的單一值。 個別彙總度量的總和。
 
-## <a name="count"></a>計數
+## <a name="count"></a>Count
 
 彙總計量的計量權數。 不應該為度量設定。
 
-## <a name="min"></a>Min
+## <a name="min"></a>最小值
 
 彙總計量的最小值。 不應該為度量設定。
 
-## <a name="max"></a>max
+## <a name="max"></a>最大值
 
 彙總計量的最大值。 不應該為度量設定。
 

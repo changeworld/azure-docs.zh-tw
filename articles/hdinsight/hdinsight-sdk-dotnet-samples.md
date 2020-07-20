@@ -2,16 +2,17 @@
 title: Azure HDInsight：.NET 範例
 description: 使用適用於 .NET 的 HDInsight SDK 在 GitHub 上尋找 C# .NET 範例以執行一般工作。
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
-ms.date: 04/15/2019
-ms.author: hrasheed
-ms.openlocfilehash: 3e2cb0768701196515ace3f6ef0d475f8e3b0f79
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.date: 12/06/2019
+ms.openlocfilehash: 097323b4566daeda737428121bee4d64e9f7248b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64688114"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74951559"
 ---
 # <a name="azure-hdinsight-net-samples"></a>Azure HDInsight：.NET 範例
 
@@ -26,13 +27,13 @@ ms.locfileid: "64688114"
 * 叢集建立工作範例的連結。
 * 其他管理工作參考內容的連結。
 
-您可以[啟用 Visual Studio 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)：您的 Visual Studio 訂用帳戶每月會提供您額度，您可以用在 Azure 付費服務。
-
-## <a name="prerequisites"></a>必要條件
+您可以 [啟用 Visual Studio 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)：您的 Visual Studio 訂用帳戶每個月都會提供額度，供您用在 Azure 付費服務。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- [適用於.NET 的 Azure HDInsight SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight#sdk-installation)
+## <a name="prerequisite"></a>必要條件
+
+[適用於.NET 的 Azure HDInsight SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight#sdk-installation)
 
 ## <a name="cluster-management---creation"></a>叢集管理 - 建立
 

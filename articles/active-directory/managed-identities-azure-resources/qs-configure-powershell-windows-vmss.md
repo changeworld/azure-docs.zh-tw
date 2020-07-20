@@ -1,6 +1,6 @@
 ---
-title: 如何使用 PowerShell 在虛擬機器擴展集上設定 Azure 資源的受控識別
-description: 使用 PowerShell 在虛擬機器擴展集上設定系統和使用者指派受控識別的逐步指示。
+title: 使用 PowerShell 在虛擬機器擴展集上設定受控識別-Azure AD
+description: 逐步指示，說明如何使用 PowerShell 在虛擬機器擴展集上設定系統和使用者指派的受控識別。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -9,18 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/27/2017
+ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4917720af2396b68ccd36cc0410c9acbbba2d9b2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 23d549d3b59eabbeab6b8a892cb6800f0088ece2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60304561"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609057"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>使用 PowerShell 在虛擬機器擴展集上設定 Azure 資源的受控識別
 
@@ -36,7 +35,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 ## <a name="prerequisites"></a>必要條件
 
-- 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者受控指派身分識別之間的差異](overview.md#how-does-it-work)**。
+- 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者受控指派身分識別之間的差異](overview.md#managed-identity-types)**。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
 - 若要執行本文中的管理作業，您的帳戶需要下列 Azure 角色型存取控制指派：
 
@@ -56,13 +55,12 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 若要建立已啟用系統指派受控識別的虛擬機器擴展集：
 
-1. 請參閱*範例 1*中[新增 AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) cmdlet 參考文件，以建立虛擬機器擴展集的系統指派的受控身分識別。  將參數 `-IdentityType SystemAssigned` 新增至 `New-AzVmssConfig` Cmdlet：
+1. 請參閱[new-azvmssconfig](/powershell/module/az.compute/new-azvmssconfig) Cmdlet 參考文章中的*範例 1* ，以使用系統指派的受控識別來建立虛擬機器擴展集。  將參數 `-IdentityType SystemAssigned` 新增至 `New-AzVmssConfig` Cmdlet：
 
     ```powershell
     $VMSS = New-AzVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic" -NetworkInterfaceConfiguration $NetCfg -IdentityType SystemAssigned`
     ```
-> [!NOTE]
-> Azure 資源的虛擬機器擴展集延伸模組，但很快就會被取代您可能會選擇性地佈建受管理的身分識別。 我們建議使用 Azure 執行個體中繼資料識別端點進行驗證。 如需詳細資訊，請參閱 <<c0> [ 停止使用 VM 擴充功能，並開始使用 Azure IMDS 端點進行驗證](howto-migrate-vm-extension.md)。
+
 
 
 ## <a name="enable-system-assigned-managed-identity-on-an-existing-azure-virtual-machine-scale-set"></a>在現有 Azure 虛擬機器擴展集上啟用系統指派的受控識別
@@ -75,14 +73,13 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    Connect-AzAccount
    ```
 
-2. 首先，使用 [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) Cmdlet 來擷取虛擬機器擴展集屬性。 然後在 [Update-AzVmss](/powershell/module/az.compute/update-azvmss) Cmdlet 上使用 `-IdentityType` 參數來啟用系統指派的受控識別：
+2. 首先，使用 Cmdlet 來取出虛擬機器擴展集屬性 [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) 。 然後在 [Update-AzVmss](/powershell/module/az.compute/update-azvmss) Cmdlet 上使用 `-IdentityType` 參數來啟用系統指派的受控識別：
 
    ```powershell
    Update-AzVmss -ResourceGroupName myResourceGroup -Name -myVmss -IdentityType "SystemAssigned"
    ```
 
-> [!NOTE]
-> Azure 資源的虛擬機器擴展集延伸模組，但很快就會被取代您可能會選擇性地佈建受管理的身分識別。 我們建議使用 Azure 執行個體中繼資料識別端點進行驗證。 如需詳細資訊，請參閱 <<c0> [ 從 VM 延伸模組移轉至 Azure IMDS 端點進行驗證](howto-migrate-vm-extension.md)。
+
 
 ### <a name="disable-the-system-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>從 Azure 虛擬機器擴展集停用系統指派的受控識別
 
@@ -90,7 +87,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 1. 使用 `Connect-AzAccount` 登入 Azure。 使用與包含虛擬機器的 Azure 訂用帳戶相關聯的帳戶。 此外，也請確定您的帳戶屬於在虛擬機器擴展集上具有寫入權限的角色，例如「虛擬機器參與者」：
 
-2. 运行以下 cmdlet：
+2. 執行下列 Cmdlet：
 
    ```powershell
    Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType "UserAssigned"

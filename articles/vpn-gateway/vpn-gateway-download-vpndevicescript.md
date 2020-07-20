@@ -1,19 +1,19 @@
 ---
-title: 下載可供進行 S2S VPN 連線的 VPN 裝置設定指令碼：Azure Resource Manager | Microsoft Docs
+title: 下載可供進行 S2S VPN 連線的 VPN 裝置設定指令碼
 description: 本文將逐步引導您使用 Azure Resource Manager 來下載 VPN 裝置設定指令碼，以便利用 Azure VPN 閘道進行 S2S VPN 連線。
+titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: yushwang
 manager: rossort
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: yushwang
-ms.openlocfilehash: f7ee53c10c6597dbf98f8f85fc31fe789137471e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: e17d17484ea9caf735fd717b1e58b85e798df87b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57996314"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84983201"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>下載可供進行 S2S VPN 連線的 VPN 裝置設定指令碼
 
@@ -25,7 +25,7 @@ ms.locfileid: "57996314"
 
 [!INCLUDE [scripts](../../includes/vpn-gateway-device-configuration-scripts.md)]
 
-## <a name="about"></a>關於 VPN 裝置設定指令碼
+## <a name="about-vpn-device-configuration-scripts"></a><a name="about"></a>關於 VPN 裝置設定指令碼
 
 跨單位 VPN 連線是由 Azure VPN 閘道、內部部署 VPN 裝置以及讓兩者相連的 IPsec S2S VPN 通道所組成。 典型的工作流程包含下列步驟：
 
@@ -77,7 +77,7 @@ ms.locfileid: "57996314"
 
 ## <a name="download-the-configuration-script-using-azure-powershell"></a>使用 Azure PowerShell 下載設定指令碼
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 您也可以使用 Azure PowerShell 下載設定指令碼，如下列範例所示：
 

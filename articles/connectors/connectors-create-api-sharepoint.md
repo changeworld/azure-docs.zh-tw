@@ -1,22 +1,17 @@
 ---
-title: 從 Azure Logic Apps 連線到 SharePoint | Microsoft Docs
+title: 從 Azure Logic Apps 連線至 SharePoint
 description: 藉由使用 Azure Logic Apps，將在 SharePoint Online 或 SharePoint Server 內部部署中監視及管理資源的工作和工作流程自動化
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: e0ec3149-507a-409d-8e7b-d5fbded006ce
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: e636b2bb08477e6c56c6ae41f08983fc5bfa2a9b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+tags: connectors
+ms.openlocfilehash: 06dfca4fc59ba6ff32714d7a92b0d4a65e262de5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60450738"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826004"
 ---
 # <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>使用 Azure Logic Apps 來監視及管理 SharePoint 資源
 
@@ -37,9 +32,9 @@ ms.locfileid: "60450738"
 您可以使用觸發程序，從 SharePoint 收到回應，並且讓輸出可供其他動作使用。 您可以在邏輯應用程式中使用動作，在 SharePoint 中執行工作。 您也可以讓其他動作使用 SharePoint 動作的輸出。 例如，如果您定期從 SharePoint 擷取檔案，可以使用 Slack 連接器將訊息傳送給您的小組。
 如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先<a href="https://azure.microsoft.com/free/" target="_blank">註冊免費的 Azure 帳戶</a>。 
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
 
 * 您的 SharePoint 網站位址和使用者認證
 
@@ -70,9 +65,9 @@ ms.locfileid: "60450738"
    在動作清單底下，選取您想要的動作。
 
    若要在步驟之間新增動作，將指標移至步驟之間的箭號。 
-   選擇顯示的加號 (**+**)，然後選取 [新增動作]。
+   選擇顯示的加號 ( **+** )，然後選取 [新增動作]。
 
-1. 當系統提示您登入時，請提供必要的連線資訊。 如果您使用 SharePoint Server，請確定您選取**透過內部部署資料閘道連線**。 完成之後，請選擇 [建立]。
+1. 當系統提示您登入時，請提供必要的連線資訊。 如果您使用 SharePoint Server，請確定選取 [透過內部部署資料閘道來連線]。 完成之後，請選擇 [建立]。
 
 1. 為您選取的觸發程序或動作提供必要的詳細資料，並且繼續建置邏輯應用程式的工作流程。
 
@@ -82,7 +77,7 @@ ms.locfileid: "60450738"
 
 ## <a name="get-support"></a>取得支援
 
-* 如有問題，請瀏覽 [Azure Logic Apps 論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有任何問題，請瀏覽 [Azure Logic Apps 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 * 若要提交或票選功能構想，請造訪 [Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>後續步驟

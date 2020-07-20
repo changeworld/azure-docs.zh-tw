@@ -9,11 +9,11 @@ ms.date: 06/08/2018
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: e683d17422321b780a1c01b3011292f2e2c631cb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60724611"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67174026"
 ---
 若要刪除磁碟區容器，您必須
  - 刪除磁碟區容器中的磁碟區。 如果磁碟區容器有相關聯的磁碟區，請先將那些磁碟區離線。 請遵循 [使磁碟區離線](../articles/storsimple/storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)中的步驟進行。 磁碟機離線後，才可以刪除它們。 
@@ -22,15 +22,15 @@ ms.locfileid: "60724611"
 當磁碟區容器有沒有相關聯的磁碟區、備份原則及雲端快照集時，您就可以將它刪除。 執行下列程序可將磁碟區容器刪除。
 
 #### <a name="to-delete-a-volume-container"></a>刪除磁碟區容器
-1. 移至 StorSimple 裝置管理員服務，然後按一下 [裝置]。 選取並按一下裝置，然後移至 [設定] > [管理] > [磁碟區容器]。
+1. 移至 StorSimple 裝置管理員服務，然後按一下 [裝置]****。 選取並按一下裝置，然後移至 [設定] > [管理] > [磁碟區容器]****。
 
     ![磁碟區容器刀鋒視窗](./media/storsimple-8000-create-volume-container/createvolumecontainer2.png)
 
-2. 從表格式的磁碟區容器清單中，選取您想要刪除的磁碟區容器，以滑鼠右鍵按一下 [...]，然後選取 [刪除]。
+2. 從表格式的磁碟區容器清單中，選取您想要刪除的磁碟區容器，以滑鼠右鍵按一下 [...]****，然後選取 [刪除]****。
 
     ![將磁碟區容器刪除](./media/storsimple-8000-delete-volume-container/deletevolumecontainer1.png)
 
-3. 如果磁碟區容器有沒有相關聯的磁碟區、備份原則及雲端快照集，您就可以將它刪除。 當系統提示您進行確認時，請檢閱並選取指出刪除磁碟區容器影響的核取方塊。 按一下 [刪除] 即可將磁碟區容器刪除。
+3. 如果磁碟區容器有沒有相關聯的磁碟區、備份原則及雲端快照集，您就可以將它刪除。 當系統提示您進行確認時，請檢閱並選取指出刪除磁碟區容器影響的核取方塊。 按一下 [刪除]**** 即可將磁碟區容器刪除。
 
     ![確認刪除](./media/storsimple-8000-delete-volume-container/deletevolumecontainer2.png)
 

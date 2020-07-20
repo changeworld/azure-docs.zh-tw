@@ -1,10 +1,10 @@
 ---
-title: 教學課程 - 在 Azure 的 Linux 虛擬機器上部署 LAMP | Microsoft Docs
+title: 教學課程 - 在 Azure 的 Linux 虛擬機器上部署 LAMP
 description: 在本教學課程中，您會了解如何在 Azure 中的 Linux 虛擬機器上安裝 LAMP 堆疊。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 6c12603a-e391-4d3e-acce-442dd7ebb2fe
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: c69c7055e420ffa64e547f5c3fe53d997cf90168
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 2a636ae5609d9cb5c81782af5a419a27d7880106
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753702"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80154367"
 ---
 # <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>教學課程：在 Azure 中的 Linux 虛擬機器上安裝 LAMP 網頁伺服器
 
@@ -35,7 +35,7 @@ ms.locfileid: "55753702"
 
 此安裝程式適用於快速測試或概念證明。 如需 LAMP 堆疊的詳細資訊 (包括適用於生產環境的建議)，請參閱 [Ubuntu 文件](https://help.ubuntu.com/community/ApacheMySQLPHP)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+本教學課程會使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 內的 CLI，這會不斷更新至最新版本。 若要開啟 Cloud Shell，請選取任何程式碼區塊頂端的 [試試看]  。
 
 如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.0.30 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
@@ -122,10 +122,10 @@ sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 > * 驗證安裝和設定
 > * 在 LAMP 伺服器上安裝 WordPress
 
-前進到下一個教學課程，以了解如何使用 SSL 憑證保護 Web 伺服器。
+前進到下一個教學課程，以了解如何使用 TLS/SSL 憑證保護 Web 伺服器。
 
 > [!div class="nextstepaction"]
-> [使用 SSL 保護網路伺服器](tutorial-secure-web-server.md)
+> [使用 TLS 保護 Web 伺服器](tutorial-secure-web-server.md)
 
 [2]: ./media/tutorial-lamp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lamp-stack/apachesuccesspage.png

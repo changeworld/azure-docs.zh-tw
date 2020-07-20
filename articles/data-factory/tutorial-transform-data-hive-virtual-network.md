@@ -1,24 +1,26 @@
 ---
-title: 在 Azure 虛擬網路中使用 Hive 轉換資料 | Microsoft Docs
+title: 在 Azure 虛擬網路中使用 Hive 來轉換資料
 description: 本教學課程提供逐步指示，說明如何使用 Azure Data Factory 中的 Hive 活動來轉換資料。
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.topic: tutorial
-ms.date: 01/22/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: 667835605cfaf4fced10b07f05028bcfa11f64da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+manager: anandsub
+ms.topic: tutorial
+ms.custom: seo-dt-2019
+ms.date: 01/22/2018
+ms.openlocfilehash: bf696b79215843e392fcf510e35cc410ff9902a2
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60336058"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81409212"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>在 Azure 虛擬網路中使用 Azure Data Factory 中的 Hive 活動轉換資料
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 在本教學課程中，您會使用 Azure PowerShell 建立 Data Factory 管道，以在 Azure 虛擬網路 (VNet) 中的 HDInsight 叢集上，使用 Hive 活動來轉換資料。 您會在本教學課程中執行下列步驟：
 
 > [!div class="checklist"]
@@ -32,7 +34,7 @@ ms.locfileid: "60336058"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -174,10 +176,7 @@ ms.locfileid: "60336058"
     "properties": {
       "type": "AzureStorage",
       "typeProperties": {
-        "connectionString": {
-          "value": "DefaultEndpointsProtocol=https;AccountName=<storageAccountName>;AccountKey=<storageAccountKey>",
-          "type": "SecureString"
-        }
+        "connectionString": "DefaultEndpointsProtocol=https;AccountName=<storageAccountName>;AccountKey=<storageAccountKey>"
       },
       "connectVia": {
         "referenceName": "MySelfhostedIR",
@@ -187,7 +186,7 @@ ms.locfileid: "60336058"
 }
 ```
 
-以您的 Azure 儲存體帳戶名稱和金鑰取代 **&lt;accountname&gt; 和 &lt;accountkey&gt;**。
+以您的 Azure 儲存體帳戶名稱和金鑰取代 **&lt;accountname&gt; 和 &lt;accountkey&gt;** 。
 
 ### <a name="hdinsight-linked-service"></a>HDInsight 連結服務
 
@@ -280,8 +279,8 @@ ms.locfileid: "60336058"
 
 請注意下列幾點：
 
-- **scriptPath** 指向您用於 MyStorageLinkedService 的 Azure 儲存體帳戶上的 Hive 指令碼路徑。 路徑區分大小寫。
-- **Output** 是 Hive 指令碼中使用的引數。 請使用 `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` 格式，以指向您的 Azure 儲存體上現有的資料夾。 路徑區分大小寫。 
+- **scriptPath** 指向您用於 MyStorageLinkedService 的 Azure 儲存體帳戶上的 Hive 指令碼路徑。 路徑會區分大小寫。
+- **Output** 是 Hive 指令碼中使用的引數。 請使用 `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` 格式，以指向您的 Azure 儲存體上現有的資料夾。 路徑會區分大小寫。 
 
 切換至您建立 JSON 檔案的資料夾，然後執行下列命令來部署管道： 
 
@@ -292,7 +291,7 @@ Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName
 
 ## <a name="start-the-pipeline"></a>啟動管道 
 
-1. 啟動管線執行。 它也會擷取管道執行識別碼，方便後續監視。
+1. 啟動管線執行。 它也會擷取管線執行識別碼，方便後續監視。
 
     ```powershell
     $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName

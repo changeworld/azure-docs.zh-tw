@@ -1,15 +1,15 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 187906a912c999142d764de6ad5da3daccf63ba7
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
-ms.translationtype: HT
+ms.date: 11/03/2016
+ms.openlocfilehash: e42292f7848eba0b4545b713f7bbc491f35fe4a9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133380"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789356"
 ---
 1. 在搜尋方塊中，輸入「outlook.com 」作為篩選條件。 在此範例中，選取此觸發程序：**新的電子郵件送達時**
 
@@ -19,7 +19,7 @@ ms.locfileid: "50133380"
 
    ![登入 Outlook.com 帳戶](./media/connectors-create-api-outlook/sign-in-outlook.png)  
 
-3. 選取 Outlook.com 帳戶認證。
+1. 選取 Outlook.com 帳戶認證。
 
    ![選取登入帳戶](./media/connectors-create-api-outlook/outlook-sign-in.png)  
 

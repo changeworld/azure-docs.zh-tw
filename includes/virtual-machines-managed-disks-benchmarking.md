@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 9c59b98fb615266c193f997c01c83922c18d4408
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60679738"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67673261"
 ---
 *準備快取*  
 設有「唯讀」主機快取的磁碟能夠提供高於磁碟限制的 IOPS。 若要從主機快取獲得這種最高的讀取效能，您必須先準備此磁碟的快取。 如此可確保效能評定工具在 CacheReads 磁碟區上推動的讀取 IO 實際上是命中快取，而非直接觸及磁碟。 快取命中會讓已啟用快取的單一磁碟產生更多 IOPS。
@@ -25,7 +25,7 @@ ms.locfileid: "60679738"
 
 ### <a name="iometer"></a>Iometer
 
-[下載 Iometer 工具](http://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) 。
+[下載 Iometer 工具](https://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) 。
 
 #### <a name="test-file"></a>測試檔案
 
@@ -33,7 +33,7 @@ ms.locfileid: "60679738"
 
 #### <a name="access-specifications"></a>存取規格
 
-規格 (要求 IO 大小、% 讀取/寫入、% 隨機/循序) 是在 Iometer 中可使用 [存取規格] 索引標籤設定。 為以下說明的每個案例建立存取規格。 建立存取規格並「儲存」為適當的名稱，例如 RandomWrites\_8K、RandomReads\_8K。 在运行测试方案时，请选择相应的规范。
+規格 (要求 IO 大小、% 讀取/寫入、% 隨機/循序) 是在 Iometer 中可使用 [存取規格] 索引標籤設定。 為以下說明的每個案例建立存取規格。 建立存取規格並「儲存」為適當的名稱，例如 RandomWrites\_8K、RandomReads\_8K。 執行測試案例時選取對應的規格。
 
 以下顯示最大寫入 IOPS 案例的存取規格範例，  
     ![最大寫入 IOPS 存取規格範例](../articles/virtual-machines/linux/media/premium-storage-performance/image8.png)
@@ -51,7 +51,7 @@ ms.locfileid: "60679738"
 
  為了示範最大輸送量，請使用較大的要求大小。 使用 64 K 要求大小，並建立隨機寫入和讀取的規格。
 
-| 存取規格 | 要求大小 | 隨機 % | 读取百分比 |
+| 存取規格 | 要求大小 | 隨機 % | 讀取 % |
 | --- | --- | --- | --- |
 | RandomWrites\_64K |64 K |100 |0 |
 | RandomReads\_64K |64 K |100 |100 |
@@ -62,24 +62,24 @@ ms.locfileid: "60679738"
 
 1. 使用如下所示的值建立兩個存取規格
 
-   | 名稱 | 要求大小 | 隨機 % | 讀取 % |
+   | Name | 要求大小 | 隨機 % | 讀取 % |
    | --- | --- | --- | --- |
    | RandomWrites\_1MB |1 MB |100 |0 |
    | RandomReads\_1MB |1 MB |100 |100 |
 1. 執行 Iometer 測試，使用下列參數初始化快取磁碟。 對目標磁碟區使用三個背景工作執行緒，佇列深度為 128。 在 [測試安裝程式] 索引標籤上，將測試的 [執行階段] 期間設為 2 小時。
 
-   | 案例 | 目標磁碟區 | 名稱 | Duration |
+   | 狀況 | 目標磁碟區 | Name | Duration |
    | --- | --- | --- | --- |
    | 初始化快取磁碟 |CacheReads |RandomWrites\_1MB |2 小時 |
 1. 執行 Iometer 測試，使用下列參數來準備快取。 對目標磁碟區使用三個背景工作執行緒，佇列深度為 128。 在 [測試安裝程式] 索引標籤上，將測試的 [執行階段] 期間設為 2 小時。
 
-   | 案例 | 目標磁碟區 | 名稱 | 持續時間 |
+   | 狀況 | 目標磁碟區 | Name | Duration |
    | --- | --- | --- | --- |
    | 準備快取磁碟 |CacheReads |RandomReads\_1MB |2 小時 |
 
 準備快取磁碟之後，繼續執行下列的測試案例。 若要執行 Iometer 測試，請對 **每個** 目標磁碟區使用至少三個背景工作角色執行緒。 針對每個背景工作執行緒，請選取目標磁碟區，設定佇列深度，然後選取其中一個已儲存的測試規格，如下表所示，以執行對應的測試案例。 表格也顯示執行這些測試時，預期的 IOPS 和輸送量結果。 在所有案例中，都使用較小的 IO 大小 8 KB 和較高的佇列深度 128。
 
-| 測試案例 | 目標磁碟區 | 名稱 | 結果 |
+| 測試案例 | 目標磁碟區 | Name | 結果 |
 | --- | --- | --- | --- |
 | 最大 讀取 IOPS |CacheReads |RandomWrites\_8K |50,000 IOPS |
 | 最大 寫入 IOPS |NoCacheWrites |RandomReads\_8K |64,000 IOPS |
@@ -102,7 +102,7 @@ ms.locfileid: "60679738"
 
 ### <a name="fio"></a>FIO
 
-FIO 是 Linux VM 上用於儲存體效能評定的一項常用工具。 它可以靈活地選取不同的 IO 大小、循序或隨機讀取和寫入。 它會繁衍背景工作執行緒或處理程序來執行指定的 I/O 作業。 您可以使用工作檔案，指定每個背景工作執行緒必須執行的 I/O 作業類型。 我們已經為下面範例所示的每個案例建立一個工作檔案。 您可以變更這些工作檔案中的規格，對進階儲存體上執行的不同工作負載進行效能評定。 在範例中，我們使用執行 **Ubuntu**的標準 DS 14 VM。 运行基准测试之前，请使用基准测试部分开头所述的相同设置来预热缓存。
+FIO 是 Linux VM 上用於儲存體效能評定的一項常用工具。 它可以靈活地選取不同的 IO 大小、循序或隨機讀取和寫入。 它會繁衍背景工作執行緒或處理程序來執行指定的 I/O 作業。 您可以使用工作檔案，指定每個背景工作執行緒必須執行的 I/O 作業類型。 我們已經為下面範例所示的每個案例建立一個工作檔案。 您可以變更這些工作檔案中的規格，對進階儲存體上執行的不同工作負載進行效能評定。 在範例中，我們使用執行 **Ubuntu**的標準 DS 14 VM。 請使用 效能評定 一節的開頭所述的相同設定，並於執行效能評定測試之前先備妥快取。
 
 開始進行之前，請先在虛擬機器上 [下載 FIO](https://github.com/axboe/fio) 並安裝。
 
@@ -140,7 +140,7 @@ rw=randwrite
 directory=/mnt/nocache
 ```
 
-请注意以下重要事项，这些事项必须符合前面部分讨论的设计准则。 這些規格對於達到最大 IOPS 很重要，  
+請注意以下與先前幾節所述的設計指導方針一致的重要事項。 這些規格對於達到最大 IOPS 很重要，  
 
 * 較高的佇列深度 256。  
 * 較小的區塊大小 8 KB。  

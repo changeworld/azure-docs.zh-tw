@@ -1,0 +1,88 @@
+### YamlMime:Landing
+title: Azure IoT 解決方案加速器文件
+summary: Azure IoT 解決方案加速器是完整且可立即部署的 IoT 解決方案，可讓您實作例如遠端監視的常見 IoT 案例。
+metadata:
+  title: Azure IoT 解決方案加速器文件
+  description: IoT 解決方案加速器是完整且可立即部署的 IoT 解決方案，可讓您實作常見的 IoT 案例。 這些案例包括遠端監視、連線處理站、預測性維護及裝置模擬。 當您部署解決方案加速器時，該部署中會包含所有必要的雲端式服務以及任何必要的應用程式程式碼。
+  services: iot-accelerators
+  ms.service: iot-accelerators
+  ms.topic: landing-page
+  author: dominicbetts
+  ms.author: dobett
+  manager: philmea
+  ms.date: 09/16/2019
+  ms.openlocfilehash: cdad55cb8972e54f613319e890f052c26d94f0ef
+  ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 06/11/2020
+  ms.locfileid: "84687033"
+landingContent:
+- title: 關於 IoT 解決方案加速器
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure IoT 解決方案加速器是什麼？
+      url: about-iot-accelerators.md
+    - text: AzureIoTSolutions.com 網站
+      url: iot-accelerators-permissions.md
+- title: 開始使用遠端監視
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 遠端監視解決方案加速器概觀
+      url: iot-accelerators-remote-monitoring-sample-walkthrough.md
+  - linkListType: quickstart
+    links:
+    - text: 試用雲端式遠端監視解決方案
+      url: quickstart-remote-monitoring-deploy.md
+  - linkListType: tutorial
+    links:
+    - text: 監視您的裝置
+      url: iot-accelerators-remote-monitoring-monitor.md
+    - text: 偵測裝置的問題
+      url: iot-accelerators-remote-monitoring-automate.md
+- title: 開始使用工業 IoT
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 產業 IoT 概觀
+      url: overview-iot-industrial.md
+    - text: OPC 對應項概觀
+      url: overview-opc-twin.md
+    - text: OPC 保存庫概觀
+      url: overview-opc-vault.md
+    - text: OPC 發行者概觀
+      url: overview-opc-publisher.md
+    - text: 什麼是企業 IoT？
+      url: iot-accelerators-connected-factory-features.md
+  - linkListType: quickstart
+    links:
+    - text: 試用雲端式連線的處理站解決方案
+      url: quickstart-connected-factory-deploy.md
+- title: 開始使用裝置模擬
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 裝置模擬解決方案加速器概觀
+      url: iot-accelerators-device-simulation-overview.md
+  - linkListType: quickstart
+    links:
+    - text: 試用裝置模擬解決方案
+      url: quickstart-device-simulation-deploy.md
+  - linkListType: tutorial
+    links:
+    - text: 建立和執行 IoT 裝置模擬
+      url: iot-accelerators-device-simulation-create-simulation.md
+    - text: 建立自訂模擬裝置
+      url: iot-accelerators-device-simulation-create-custom-device.md
+- title: 開始使用預測性維護
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 預測性維護解決方案加速器概觀
+      url: iot-accelerators-predictive-walkthrough.md
+  - linkListType: quickstart
+    links:
+    - text: 試用預測性維護解決方案
+      url: quickstart-predictive-maintenance-deploy.md

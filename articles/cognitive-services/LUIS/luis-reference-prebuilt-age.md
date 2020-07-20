@@ -1,6 +1,6 @@
 ---
-title: 年齡預先建置的實體
-titleSuffix: Azure
+title: 年齡預先建立的實體-LUIS
+titleSuffix: Azure Cognitive Services
 description: 本文包含 Language Understanding (LUIS) 中預先建置的 age 實體資訊。
 services: cognitive-services
 author: diberry
@@ -8,38 +8,70 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 02/28/2019
+ms.topic: reference
+ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: c901a384d7629a187a2a4fbd4295a1a68615abdb
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 1607b80276a9c35bf0ac2f0a00bd2226e2c07f97
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342593"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "78270801"
 ---
 # <a name="age-prebuilt-entity-for-a-luis-app"></a>LUIS 應用程式的年齡預先建置實體
-預先建置的 age 實體會以年數、月數、週數及天數的方式擷取年齡值。 因為此實體已經定型，所以您不需要將包含年齡的範例語句加入應用程式意圖。 [多種文化特色](luis-reference-prebuilt-entities.md)都支援 age 實體。 
+預先建置的 age 實體會以年數、月數、週數及天數的方式擷取年齡值。 因為此實體已經定型，所以您不需要將包含年齡的範例語句加入應用程式意圖。 [多種文化特色](luis-reference-prebuilt-entities.md)都支援 age 實體。
 
 ## <a name="types-of-age"></a>年齡類型
-年齡可從 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L3) GitHub 存放庫管理
+年齡是從辨識器[文字](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L3)的 GitHub 存放庫進行管理
 
 ## <a name="resolution-for-prebuilt-age-entity"></a>解析預先建置的 age 實體
+
+
+
+#### <a name="v3-response"></a>[V3 回應](#tab/V3)
+
+下列 JSON 是將`verbose`參數設定為： `false`
+
+```json
+"entities": {
+    "age": [
+        {
+            "number": 90,
+            "unit": "Day"
+        }
+    ]
+}
+```
+#### <a name="v3-verbose-response"></a>[V3 詳細回應](#tab/V3-verbose)
+下列 JSON 是將`verbose`參數設定為： `true`
+
+```json
+"entities": {
+    "age": [
+        {
+            "number": 90,
+            "unit": "Day"
+        }
+    ],
+    "$instance": {
+        "age": [
+            {
+                "type": "builtin.age",
+                "text": "90 day old",
+                "startIndex": 2,
+                "length": 10,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor"
+            }
+        ]
+    }
+}
+```
+#### <a name="v2-response"></a>[V2 回應](#tab/V2)
+
 下列範例顯示解析的 **builtin.age** 實體。
 
 ```json
-{
-  "query": "A 90 day old utilities bill is quite late.",
-  "topScoringIntent": {
-    "intent": "None",
-    "score": 0.8236133
-  },
-  "intents": [
-    {
-      "intent": "None",
-      "score": 0.8236133
-    }
-  ],
   "entities": [
     {
       "entity": "90 day old",
@@ -51,10 +83,11 @@ ms.locfileid: "57342593"
         "value": "90"
       }
     }
-  ]
-}
 ```
+* * *
 
 ## <a name="next-steps"></a>後續步驟
 
-了解 [currency](luis-reference-prebuilt-currency.md)、[datetimeV2](luis-reference-prebuilt-datetimev2.md) 及 [dimension](luis-reference-prebuilt-dimension.md) 實體相關資訊。 
+深入了解 [V3 預測端點](luis-migration-api-v3.md)。
+
+了解 [currency](luis-reference-prebuilt-currency.md)、[datetimeV2](luis-reference-prebuilt-datetimev2.md) 及 [dimension](luis-reference-prebuilt-dimension.md) 實體相關資訊。

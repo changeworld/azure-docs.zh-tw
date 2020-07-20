@@ -1,26 +1,26 @@
 ---
-title: Office 365 外部共用與 B2B 共同作業-Azure Active Directory |Microsoft Docs
+title: Office 365 外部共用和 B2B 共同作業-Azure AD
 description: 討論如何使用 O365 和 Azure Active Directory B2B 共同作業來與外部夥伴共用資源。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/24/2017
+ms.date: 06/24/2020
 ms.author: mimart
 author: msmimart
-manager: daveba
-ms.reviewer: sasubram
+manager: celestedg
+ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 388d42cd41d34a8aebed41dafc48e42006a78457
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fcb407735cff5a0c43d3a584ff37a0eabc178381
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60355188"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367439"
 ---
-# <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Office 365 外部共用與 Azure Active Directory B2B 共同作業
+# <a name="office-365-external-sharing-and-azure-active-directory-azure-ad-b2b-collaboration"></a>Office 365 外部共用和 Azure Active Directory （Azure AD） B2B 共同作業
 
-Office 365 (OneDrive、SharePoint Online、整合群組等) 中的外部共用與 Azure Active Directory (Azure AD) B2B 共同作業在技術上而言是相同的。 所有外部共用 (OneDrive/SharePoint Online 除外)，包括 Office 365 群組中的來賓都已使用 Azure AD B2B 共同作業邀請 API 來進行共用。
+在 Azure AD B2B 共同作業和 Office 365 外部共用（OneDrive、SharePoint Online、整合群組等）中，外部使用者會使用 Azure AD B2B 進行驗證。
 
 ## <a name="how-does-azure-ad-b2b-differ-from-external-sharing-in-sharepoint-online"></a>Azure AD B2B 與 SharePoint Online 中的外部共用有何不同？
 
@@ -32,9 +32,9 @@ OneDrive/SharePoint Online 有個別的邀請管理員。 OneDrive/SharePoint On
 
 - 您可以從 OneDrive/SharePoint Online 共用對話方塊挑選 Azure AD B2B 共同作業邀請的使用者。 在 OneDrive/SharePoint 邀請的使用者兌換其邀請之後，也會出現在 Azure AD 中。
 
-- 授權需求不同。 對於每個付費的 Azure AD 授權，您最多可讓 5 位來賓使用者存取您的付費 Azure AD 功能。 若要深入了解授權，請參閱 [Azure AD B2B 授權](https://docs.microsoft.com/azure/active-directory/b2b/licensing-guidance)以及[＜SharePoint Online 外部共用概觀＞中的「什麼是外部使用者？」](https://docs.microsoft.com/sharepoint/external-sharing-overview#what-is-an-external-user)。
+- 授權需求不同。 對於每個付費的 Azure AD 授權，您最多可讓 5 位來賓使用者存取您的付費 Azure AD 功能。 若要深入了解授權，請參閱 [Azure AD B2B 授權](https://docs.microsoft.com/azure/active-directory/b2b/licensing-guidance)以及[＜SharePoint Online 外部共用概觀＞中的「什麼是外部使用者？」](https://docs.microsoft.com/sharepoint/external-sharing-overview#what-happens-when-users-share)。
 
-若要使用 Azure AD B2B 共同作業來管理 OneDrive/SharePoint Online 中的外部共用，請將 OneDrive/SharePoint Online 外部共用設定設為 [只允許與您組織目錄中現有的外部使用者共用]。 使用者可以移至外部共用網站，並從系統管理員新增的外部共同作業者之間選擇。 系統管理員可以透過 B2B 共同作業邀請 API 來新增外部共同作業者。
+若要使用 Azure AD B2B 共同作業來管理 OneDrive/SharePoint Online 中的外部共用，請將 OneDrive/SharePoint Online 外部共用設定設為 [只允許與您組織目錄中現有的外部使用者共用]****。 使用者可以移至外部共用網站，並從系統管理員新增的外部共同作業者之間選擇。 系統管理員可以透過 B2B 共同作業邀請 API 來新增外部共同作業者。
 
 
 ![OneDrive/SharePoint Online 外部共用設定](media/o365-external-user/odsp-sharing-setting.png)
@@ -49,4 +49,4 @@ OneDrive/SharePoint Online 有個別的邀請管理員。 OneDrive/SharePoint On
 * [將 B2B 共同作業使用者新增至角色](add-guest-to-role.md)
 * [委派 B2B 共同作業邀請](delegate-invitations.md)
 * [動態群組與 B2B 共同作業](use-dynamic-groups.md)
-* [針對 Azure Active Directory B2B 共同作業問題進行疑難排解](troubleshoot.md)
+* [針對 B2B 共同作業 Azure Active Directory 進行疑難排解](troubleshoot.md)

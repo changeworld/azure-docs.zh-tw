@@ -1,17 +1,17 @@
 ---
-title: 連接 Azure Kubernetes Service (AKS) 與適用於 MySQL 的 Azure 資料庫
+title: 連接到 Azure Kubernetes Service-適用於 MySQL 的 Azure 資料庫
 description: 了解如何連接 Azure Kubernetes Service 與適用於 MySQL 的 Azure 資料庫
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/28/2018
-ms.openlocfilehash: d9f2e26a2bc89329ca9038c666c0d960289e2670
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 3/18/2020
+ms.openlocfilehash: 9e020d34b6cfb8117ccff1114cc938c966126b77
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60790516"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79537273"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>連接 Azure Kubernetes Service 與適用於 MySQL 的 Azure 資料庫
 
@@ -29,8 +29,8 @@ Azure Kubernetes Service (AKS) 提供的受控 Kubernetes 叢集可讓您用於 
 3. 複製**基礎結構資源群組**的名稱。
 4. 使用入口網站搜尋列，以找出並開啟基礎結構資源群組。
 5. 選取該資源群組中的 VM。
-6. 移至 VM 的 [網路] 索引標籤。
-7. 確認 [加速網路] 是否為「啟用」。
+6. 移至 VM 的 [網路]**** 索引標籤。
+7. 確認 [加速網路]**** 是否為「啟用」。
 
 或者，透過 Azure CLI 使用下列兩個命令：
 ```azurecli

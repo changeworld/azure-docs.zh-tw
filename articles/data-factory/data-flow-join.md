@@ -1,77 +1,147 @@
 ---
-title: Azure Data Factory 對應資料流程聯結轉換
-description: Azure Data Factory 對應資料流程聯結轉換
+title: 對應資料流程中的聯結轉換
+description: 使用 Azure Data Factory 對應資料流程中的聯結轉換，結合來自兩個資料來源的資料
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/07/2019
-ms.openlocfilehash: 18f713198ef9aa45cb72a6718c0f7b086c019258
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom: seo-lt-2019
+ms.date: 05/15/2020
+ms.openlocfilehash: f95f35fe0d17afdeec864674d3360fc3b172cad1
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61348530"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683393"
 ---
-# <a name="mapping-data-flow-join-transformation"></a>對應資料流程聯結轉換
+# <a name="join-transformation-in-mapping-data-flow"></a>對應資料流程中的聯結轉換
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-在資料流程中使用聯結來結合來自兩個資料表中的資料。 按一下將成為左側關聯的轉換，並且從工具箱加入「聯結」轉換。 在聯結轉換內，您將從資料流程選取另一個資料流程成為右側關聯。
-
-![聯結轉換](media/data-flow/join.png "聯結")
+使用聯結轉換，在對應資料流程中結合來自兩個來源或資料流中的資料。 輸出資料流會包含這兩個來源中根據聯結條件進行比對的所有資料行。 
 
 ## <a name="join-types"></a>聯結類型
 
-「 聯結 」 轉換需要選取 聯結類型。
+對應資料流程目前支援五種不同的聯結類型。
 
 ### <a name="inner-join"></a>內部聯結
 
-內部聯結將會傳遞符合兩個資料表的資料行條件的資料列。
+內部聯結只會輸出在兩個資料表中具有相符值的資料列。
 
 ### <a name="left-outer"></a>左方外部
 
-左側資料流所有不符合聯結條件的資料列為可通過，而除了內部聯結所傳回的資料列之外，另一個資料表的輸出資料行是設為 NULL。
+左方外部聯結會傳回左方資料流中的所有資料列，以及右方資料流中的相符記錄。 如果左方資料流中的資料列沒有相符項，則右方資料流中的輸出資料行會設定為 NULL。 輸出將會是內部聯結所傳回的資料列，加上來自左方資料流的不相符資料列。
+
+> [!NOTE]
+> 資料流程所使用的 Spark 引擎偶爾由於聯結條件中可能的笛卡兒乘積而失敗。 如果發生這種情況，您可以切換到自訂交叉聯結，並手動輸入您的聯結條件。 這可能會導致您的資料流效能變慢，因為執行引擎可能需要計算關聯性兩側的所有資料列，然後篩選資料列。
 
 ### <a name="right-outer"></a>右方外部
 
-右側資料流所有不符合聯結條件的資料列可通過，而除了內部聯結所傳回的所有資料列之外，對應於另一個資料表的輸出資料行是設為 NULL。
+右方外部聯結會傳回右方資料流中的所有資料列，以及左方資料流中的相符記錄。 如果右方資料流中的資料列沒有相符項，則左方資料流中的輸出資料行會設定為 NULL。 輸出將會是內部聯結所傳回的資料列，加上來自右方資料流的不相符資料列。
 
 ### <a name="full-outer"></a>完整外部
 
-完整外部產生的所有資料行，並在另一個資料表中的兩端具有 NULL 值的資料行的資料列不存在。
+完整外部聯結會輸出兩側的所有資料行和資料列，對於不相符的資料行則為 NULL 值。
 
-### <a name="cross-join"></a>交叉聯結
+### <a name="custom-cross-join"></a>自訂交叉聯結
 
-使用運算式中指定的兩個資料流的交叉乘積。 您可以使用此工具來建立自訂的聯結條件。
+交叉聯結會根據條件輸出兩個資料流的交叉乘積。 如果您要使用不相等的條件，請指定自訂運算式做為交叉聯結條件。 輸出資料流將會是符合聯結條件的所有資料列。
 
-## <a name="specify-join-conditions"></a>指定聯結條件
+您可以將這種聯結類型用於不相等聯結和 ```OR``` 條件。
 
-左方聯結條件來自與聯結的左側連接的資料串流。 右側聯結是與底部的聯結相連接的第二個資料串流，這是另一個資料流的直接連接器或另一個資料流的參考。
+如果您想要明確產生完整笛卡兒乘積，請在聯結之前於兩個獨立資料流的每一個中使用衍生的資料行轉換，以建立要比對的綜合索引鍵。 例如，在稱為 ```SyntheticKey``` 的每個資料流中，於衍生的資料行中建立新的資料行，並將它設定為等於 ```1```。 然後，使用 ```a.SyntheticKey == b.SyntheticKey``` 做為自訂聯結運算式。
 
-您必須至少輸入 1 (1..n) 個聯結條件。 這些可能是直接參考、從下拉式選單中選取或運算式的欄位。
+> [!NOTE]
+> 請務必包含至少一個資料行，此資料行來自自訂交叉聯結中左方和右方關聯性的每一側。 執行具有靜態值的交叉聯結，而不是來自每一側的資料行，會導致整個資料集進行完整掃描，因而導致資料流的執行效能不佳。
 
-## <a name="join-performance-optimizations"></a>聯結效能最佳化
+## <a name="configuration"></a>組態
 
-不同於 SSIS 之類的工具中的合併聯結，ADF 資料流程不是必要的合併聯結作業。 因此，聯結索引鍵不需要先排序。 聯結作業會依據 Spark 的最佳聯結作業，使用 Databricks 在 Spark 中進行：廣播 / 對應端聯結：
+1. 在 [右方資料流] 下拉式清單中，選擇您要與其聯結的資料流。
+1. 選取您的 [聯結類型]
+1. 為您的聯結條件選擇您想要比對的索引鍵資料行。 根據預設，資料流程會在每個資料流中的資料行之間尋找等式。 若要透過計算值進行比較，請將滑鼠停留在資料行下拉式清單上，然後選取 [計算資料行]。
+
+![聯結轉換](media/data-flow/join.png "Join")
+
+### <a name="non-equi-joins"></a>不相等聯結
+
+若要在聯結條件中使用條件運算子，例如不相等 (!=) 或大於 (>)，請變更兩個資料行之間的運算子下拉式清單。 不相等聯結需要至少廣播兩個資料流的其中一個，方法為使用 [最佳化] 索引標籤中的 [固定]廣播。
+
+![不相等聯結](media/data-flow/non-equi-join.png "不相等聯結")
+
+## <a name="optimizing-join-performance"></a>最佳化聯結效能
+
+不同於 SSIS 之類工具中的合併聯結，聯結轉換不是必要的合併聯結作業。 聯結索引鍵不需要排序。 聯結作業是根據 Spark 中的最佳化聯結作業 (廣播或對應端聯結) 進行。
 
 ![聯結轉換最佳化](media/data-flow/joinoptimize.png "聯結最佳化")
 
-如果您的資料集可以放入 Databricks 背景工作角色記憶體中，我們可以最佳化您的聯結效能。 您也可以對於聯結作業指定資料分割，以建立更適合每個背景工作記憶體的資料集。
+在聯結、查閱和存在轉換中，如果其中一個或兩個資料流納入背景工作角色節點記憶體中，您可以藉由啟用**廣播**來最佳化效能。 根據預設，Spark 引擎會自動決定是否要廣播一邊。 若要手動選擇廣播哪一邊，請選取 [固定]。
+
+除非您的聯結遇到逾時錯誤，否則不建議透過 [關閉] 選項停用廣播。
 
 ## <a name="self-join"></a>自我聯結
 
-您可以使用選取轉換來設定現有資料流的別名，以達到 ADF 資料流程中的自我聯結條件。 首先，從資料流建立「新分支」，然後新增「選取」來設定整個原始資料串流的別名。
+若要自我聯結資料流與本身，請使用選取轉換，為現有的資料流加上別名。 按一下轉換旁邊的加號圖示，然後選取 [新增分支]，以建立新的分支。 新增選取轉換，為原始資料流加上別名。 新增聯結轉換，然後選擇原始資料流做為**左方資料流**，然後選擇選取轉換做為**右方資料流**。
 
 ![自我聯結](media/data-flow/selfjoin.png "自我聯結")
 
-在上圖中，選取轉換位於最上層。 這是在設定原始資料流的別名為「OrigSourceBatting」。 在下方反白顯示的聯結轉換中，您可以看到，我們使用這個選取別名資料流做為右邊的聯結，以便我們參考內部聯結左右兩邊的同個索引鍵。
+## <a name="testing-join-conditions"></a>測試聯結條件
 
-## <a name="composite-and-custom-keys"></a>複合和自訂索引鍵
+在偵錯模式中使用資料預覽來測試聯結轉換時，請使用小型的已知資料集。 從大型資料集中取樣資料列時，您無法預測將讀取哪些資料列和索引鍵進行測試。 結果是不具確定性的，這表示您的聯結條件可能不會傳回任何相符項。
 
-您可以 「 聯結 」 轉換內快速建置自訂和複合索引鍵。 加入額外的聯結資料行旁邊的加號 （+） 每個關聯性的資料列的資料列。 或計算新的金鑰值，在 運算式產生器上即時聯結值。
+## <a name="data-flow-script"></a>資料流程指令碼
+
+### <a name="syntax"></a>語法
+
+```
+<leftStream>, <rightStream>
+    join(
+        <conditionalExpression>,
+        joinType: { 'inner'> | 'outer' | 'left_outer' | 'right_outer' | 'cross' }
+        broadcast: { 'auto' | 'left' | 'right' | 'both' | 'off' }
+    ) ~> <joinTransformationName>
+```
+
+### <a name="inner-join-example"></a>內部聯結範例
+
+下列範例是名為 `JoinMatchedData` 的聯結轉換，其會採用左方資料流 `TripData` 和右方資料流 `TripFare`。  聯結條件是運算式 `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}`，如果每個資料流中的 `hack_license`、`medallion`、`vendor_id`和 `pickup_datetime` 資料行相符，就會傳回 True。 `joinType` 為 `'inner'`。 我們只會在左方資料流中啟用廣播，因此 `broadcast` 具有值 `'left'`。
+
+在 Data Factory UX 中，這項轉換看起來如下圖所示：
+
+![聯結範例](media/data-flow/join-script1.png "聯結範例")
+
+此轉換的資料流程指令碼位於下列程式碼片段中：
+
+```
+TripData, TripFare
+    join(
+        hack_license == { hack_license}
+        && TripData@medallion == TripFare@medallion
+        && vendor_id == { vendor_id}
+        && pickup_datetime == { pickup_datetime},
+        joinType:'inner',
+        broadcast: 'left'
+    )~> JoinMatchedData
+```
+
+### <a name="custom-cross-join-example"></a>自訂交叉聯結範例
+
+下列範例是名為 `JoiningColumns` 的聯結轉換，其會採用左方資料流 `LeftStream` 和右方資料流 `RightStream`。 這項轉換會採用兩個資料流，並將資料行 `leftstreamcolumn` 大於資料行 `rightstreamcolumn` 的所有資料列聯結在一起。 `joinType` 為 `cross`。 未啟用廣播，`broadcast` 具有值 `'none'`。
+
+在 Data Factory UX 中，這項轉換看起來如下圖所示：
+
+![聯結範例](media/data-flow/join-script2.png "聯結範例")
+
+此轉換的資料流程指令碼位於下列程式碼片段中：
+
+```
+LeftStream, RightStream
+    join(
+        leftstreamcolumn > rightstreamcolumn,
+        joinType:'cross',
+        broadcast: 'none'
+    )~> JoiningColumns
+```
 
 ## <a name="next-steps"></a>後續步驟
 
-加入資料之後, 您可以接著[建立新的資料行](data-flow-derived-column.md)並[接收資料至目的地資料存放區](data-flow-sink.md)。
+在聯結資料之後，請建立[衍生的資料行](data-flow-derived-column.md)，以及[接收](data-flow-sink.md) 您的資料並將其存入目的地資料存放區。

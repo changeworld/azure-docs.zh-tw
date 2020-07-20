@@ -1,41 +1,37 @@
 ---
-title: 在 Data Factory 中使用 Resource Manager 範本 | Microsoft Docs
+title: 在 Data Factory 中使用 Resource Manager 範本
 description: 了解如何建立及使用 Azure Resource Manager 範本來建立 Data Factory 實體。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
-ms.assetid: 37724021-f55f-4e85-9206-6d4a48bda3d8
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: ca8b3930b9d9f708d83dc760be3ee89737b074dc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: e94445a6cb16eacb496daedbec21379928a4dafd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60583361"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84194450"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>使用範本來建立 Azure Data Factory 實體
 > [!NOTE]
-> 本文適用於 Data Factory 的第 1 版。 
+> 本文適用於 Data Factory 第 1 版。 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 基於資料整合需求使用 Azure Data Factory 時，您可能會發現自己跨不同環境重複使用相同的模式，或在相同的解決方案內反覆地實作相同的工作。 範本可協助您輕鬆地實作和管理這些案例。 Azure Data Factory 中的範本最適用於涉及重複使用和重複時。
 
-假設某個組織在全球各地有 10 個製造工廠。 每個工廠中的記錄都會儲存在不同的內部部署 SQL Server 資料庫中。 該公司想要建置臨機操作分析雲端中的單一資料倉儲。 它也想要具有相同的邏輯，但開發、測試和生產環境的組態不同。
+假設某個組織在全球各地有 10 個製造工廠。 來自每個工廠的記錄會儲存在不同的 SQL Server 資料庫中。 該公司想要在雲端中建立單一資料倉儲，以供臨機操作分析之用。 它也想要具有相同的邏輯，但開發、測試和生產環境的組態不同。
 
 在此情況下，必須在相同的環境內重複執行工作，但每個製造工廠的 10 個資料處理站各有不同的值。 實際上，具有**重複**情況。 範本化允許任意使用這個泛形流程 (即在每個資料處理站中具有相同活動的管線)，但會針對每個製造工廠使用不同的參數檔案。
 
 此外，組織想要跨不同環境部署這 10 個資料處理站多次時，範本可以針對開發、測試和生產環境使用不同的參數檔案，來使用這個**重複使用性**。
 
 ## <a name="templating-with-azure-resource-manager"></a>使用 Azure Resource Manager 範本化
-[Azure Resource Manager 範本](../../azure-resource-manager/resource-group-overview.md#template-deployment)是達成 Azure Data Factory 中範本化的不錯方式。 Resource Manager 範本透過 JSON 檔案來定義 Azure 解決方案的基礎結構和組態。 因為 Azure Resource Manager 範本是與所有/大部分 Azure 服務搭配運作，所以可以廣泛用來輕鬆地管理 Azure 資產的所有資源。 若要深入了解 Resource Manager 範本的一般資訊，請參閱[撰寫 Azure Resource Manager 範本](../../azure-resource-manager/resource-group-authoring-templates.md) 。
+[Azure Resource Manager 範本](../../azure-resource-manager/templates/overview.md)是達成 Azure Data Factory 中範本化的不錯方式。 Resource Manager 範本透過 JSON 檔案來定義 Azure 解決方案的基礎結構和組態。 因為 Azure Resource Manager 範本是與所有/大部分 Azure 服務搭配運作，所以可以廣泛用來輕鬆地管理 Azure 資產的所有資源。 若要深入了解 Resource Manager 範本的一般資訊，請參閱[撰寫 Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md) 。
 
 ## <a name="tutorials"></a>教學課程
 如需使用 Resource Manager 範本建立 Data Factory 實體的逐步指示，請參閱下列教學課程︰
@@ -44,14 +40,14 @@ ms.locfileid: "60583361"
 * [教學課程：使用 Azure Resource Manager 範本建立管線以處理資料](data-factory-build-your-first-pipeline.md)
 
 ## <a name="data-factory-templates-on-github"></a>GitHub 上的 Data Factory 範本
-請參考 GitHub 上的下列 Azure 快速入門範本：
+請參閱 GitHub 上的下列 Azure 快速入門範本：
 
 * [建立 Data Factory 以將資料從 Azure Blob 儲存體複製到 Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy)
 * [在 Azure HDInsight 叢集上使用 Hive 活動建立 Data Factory](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation)
 * [建立 Data Factory 以將資料從 Salesforce 複製到 Azure Blob](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy)
 * [建立 Data factory 以鏈結活動︰將資料從 FTP 伺服器複製到 Azure Blob、叫用隨選 HDInsight 叢集上的 hive 指令碼來轉換資料，並將結果複製到 Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-data-factory-ftp-hive-blob)
 
-在 [Azure 快速啟動](https://azure.microsoft.com/documentation/templates/)上自由共用 Azure Data Factory 範本。 開發可透過這個存放庫共用的範本時，請參閱[參與指南](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE)。
+您可以在[Azure 快速入門](https://azure.microsoft.com/documentation/templates/)中免費分享您的 Azure Data Factory 範本。 開發可透過這個存放庫共用的範本時，請參閱[參與指南](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE)。
 
 下列各節提供在 Resource Manager 範本中定義 Data Factory 資源的詳細資料。
 
@@ -236,7 +232,7 @@ dataFactoryName 在 “variables” 中定義為：
 * 設定會因環境 (範例︰開發、測試和生產) 而不同
 * 機密資料 (例如密碼)
 
-如果您在使用範本部署 Azure Data Factory 實體時需要從 [Azure 金鑰保存庫](../../key-vault/key-vault-overview.md)提取密碼，請指定 **金鑰保存庫**和**密碼名稱**，如下列範例所示︰
+如果您在使用範本部署 Azure Data Factory 實體時需要從 [Azure 金鑰保存庫](../../key-vault/general/overview.md)提取密碼，請指定 **金鑰保存庫**和**密碼名稱**，如下列範例所示︰
 
 ```JSON
 "parameters": {

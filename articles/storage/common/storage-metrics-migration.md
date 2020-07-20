@@ -1,24 +1,23 @@
 ---
 title: Azure 儲存體計量移轉 | Microsoft Docs
 description: 了解如何將舊計量移轉至由 Azure 監視器管理的新計量。
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 58ac15c1aba715c9a5b67e723401b531e76608b2
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.custom: monitoring
+ms.openlocfilehash: 10768ca4c6fbe4afc322fa9a7045c7cc4fe6f175
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153604"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681315"
 ---
 # <a name="azure-storage-metrics-migration"></a>Azure 儲存體計量移轉
 
-為了讓 Azure 有一致的監視器體驗，Azure 儲存體會將計量整合到 Azure 監視器平台。 未來，舊計量的服務將會根據 Azure 原則結束，但會提前通知。 如果您依賴舊的儲存體計量，則必須在服務結束日期之前移轉，以保留您的計量資訊。
+為了讓 Azure 有一致的監視器體驗，Azure 儲存體會將計量整合到 Azure 監視器平台。 根據 Azure 原則，舊版計量未來將終止服務，但會提前通知。 如果您依賴舊的儲存體計量，則必須在服務結束日期之前移轉，以保留您的計量資訊。
 
 本文說明如何從舊計量移轉到新計量。
 
@@ -113,7 +112,7 @@ Azure 儲存體會收集舊計量值、加以彙總並儲存在相同儲存體�
 
 ### <a name="is-new-metric-data-stored-in-the-same-storage-account-by-default"></a>新的計量資料是否預設儲存在相同的儲存體帳戶中？
 
-沒有。 若要將計量資料封存至儲存體帳戶，請使用 [Azure 監視器診斷設定 API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)。
+否。 若要將計量資料封存至儲存體帳戶，請使用 [Azure 監視器診斷設定 API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)。
 
 ## <a name="next-steps"></a>後續步驟
 

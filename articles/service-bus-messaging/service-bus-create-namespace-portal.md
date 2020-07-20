@@ -1,25 +1,14 @@
 ---
-title: 如何在 Azure 入口網站中建立服務匯流排命名空間 | Microsoft Docs
-description: 使用 Azure 入口網站建立服務匯流排命名空間。
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: fbb10e62-b133-4851-9d27-40bd844db3ba
-ms.service: service-bus-messaging
-ms.devlang: tbd
+title: 如何在 Azure 入口網站中建立服務匯流排命名空間
+description: 本文提供在 Azure 入口網站中建立 Azure 服務匯流排命名空間的指示。
 ms.topic: conceptual
-ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 02/12/2019
-ms.author: aschhab
-ms.openlocfilehash: a893cdf49792a8df624786804ec0ca4d8f043ec4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/23/2020
+ms.openlocfilehash: 3c665dad06ca7cf7bba39b5e1a0f748b420ad770
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60714484"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337747"
 ---
 # <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>使用 Azure 入口網站建立服務匯流排命名空間
 

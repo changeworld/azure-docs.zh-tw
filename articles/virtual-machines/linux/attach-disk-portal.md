@@ -1,43 +1,32 @@
 ---
-title: 將資料磁碟連結到 Linux VM | Microsoft Docs
+title: 將資料磁碟連結至 Linux VM
 description: 使用入口網站將新的或現有的資料磁碟附加至 Linux VM。
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 5e1c6212-976c-4962-a297-177942f90907
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: d5dd916f7e4434640db6dae6f8c5a73d1ff2d3e0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: c0129ba35841a457e73ef1061d156d3246cb65f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60187903"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84660222"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>使用入口網站將資料磁碟附加至 Linux VM 
 本文示範如何透過 Azure 入口網站將新的及現有的磁碟連結到 Linux 虛擬機器。 您也可以[在 Azure 入口網站中將資料磁碟連結到 Windows VM](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
 
 將磁碟附加至 VM 之前，請檢閱下列提示︰
 
-* 虚拟机的大小决定了可以附加多少个磁盘。 如需詳細資訊，請參閱 [虛擬機器的大小](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+* 虛擬機器的大小會控制您可以連接的資料磁碟數目。 如需詳細資訊，請參閱 [虛擬機器的大小](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 * 附加至虛擬機器的磁碟實際上是 Azure 中儲存的 .vhd 檔案。 如需詳細資料，請參閱我們的[受控磁碟簡介](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 * 連接磁碟之後，您必須[連線到 Linux VM 才能掛接新的磁碟](#connect-to-the-linux-vm-to-mount-the-new-disk)。
 
 
 ## <a name="find-the-virtual-machine"></a>尋找虛擬機器
-1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 在左側功能表上，按一下 [虛擬機器]。
-3. 然後從清單中選取虛擬機器。
-4. 在 [虛擬機器] 頁面的 [基本資訊] 中，按一下 [磁碟]。
+1. 移至 [Azure 入口網站](https://portal.azure.com/)尋找 VM。 搜尋並選取 [虛擬機器]。
+2. 從清單中選擇 VM。
+3. 在 [虛擬機器] 頁面側邊欄的 [設定]底下，選擇 [磁碟]。
    
     ![開啟磁碟設定](./media/attach-disk-portal/find-disk-settings.png)
 
@@ -57,7 +46,7 @@ ms.locfileid: "60187903"
 
    ![儲存新的 Azure 受控磁碟](./media/attach-disk-portal/confirm-create-new-md.png)
 
-5. 在 Azure 创建磁盘并将磁盘附加到虚拟机之后，新磁盘出现在“数据磁盘” 下的虚拟机磁盘设置中。 當受控磁碟是最上層資源時，磁碟會出現在資源群組的根目錄︰
+5. 在 Azure 建立磁碟並將其連接至虛擬機器之後，該新磁碟就會列在虛擬機器之磁碟設定中的 [資料磁碟] 底下。 當受控磁碟是最上層資源時，磁碟會出現在資源群組的根目錄︰
 
    ![資源群組中的 Azure 受控磁碟](./media/attach-disk-portal/view-md-resource-group.png)
 
@@ -74,7 +63,7 @@ ms.locfileid: "60187903"
 4. Azure 將磁碟連接至虛擬機器之後，該磁碟會列在虛擬機器磁碟設定中的 [資料磁碟] 下面。
 
 ## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>連接到 Linux VM 以掛接新磁碟
-若要分割、格式化和掛接新磁碟以供 Linux VM 使用，請使用 SSH 登入您的 VM。 如需詳細資訊，請參閱[如何在 Azure 上搭配使用 SSH 與 Linux](mac-create-ssh-keys.md)。 下列範例會以 azureuser 這個使用者名稱，利用 mypublicdns.westus.cloudapp.azure.com 的公用 DNS 項目來連線至 VM： 
+若要分割、格式化和掛接新磁碟以供 Linux VM 使用，請使用 SSH 登入您的 VM。 如需詳細資訊，請參閱[如何在 Azure 上搭配使用 SSH 與 Linux](mac-create-ssh-keys.md)。 下列範例會以 azureuser 這個使用者名稱，利用 mypublicdns.westus.cloudapp.azure.com 的公用 DNS 項目來連線至 VM ： 
 
 ```bash
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
@@ -100,6 +89,9 @@ dmesg | grep SCSI
 
 ### <a name="partition-a-new-disk"></a>分割新的磁碟
 如果您使用現有的磁碟，請略過此步驟直接裝載磁碟。 如果您要安裝新磁碟，您需要分割磁碟。
+
+> [!NOTE]
+> 建議您使用可供您的散發版本使用的最新版本 fdisk 或 parted。
 
 使用 `fdisk` 分割磁碟。 如果磁碟大小為 2 Tebi 位元組 (TiB) 或以上，則您必須使用 GPT 磁碟分割，您可以使用 `parted` 來執行 GPT 磁碟分割。 如果磁碟大小低於 2 TiB，您就能使用 MBR 或 GPT 磁碟分割。 將它設為磁碟分割 1 上的主要磁碟，並接受其他預設值。 下列範例會在 /dev/sdc 上啟動 `fdisk` 程序：
 
@@ -151,7 +143,7 @@ Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
 
-現在，使用 `mkfs` 命令將檔案系統寫入至磁碟分割。 指定檔案系統類型和裝置名稱。 下列範例會在前述步驟所建立的 /dev/sdc1 磁碟分割上，建立 ext4 檔案系統：
+現在，使用 `mkfs` 命令將檔案系統寫入至磁碟分割。 指定檔案系統類型和裝置名稱。 下列範例會在前述步驟所建立的 /dev/sdc1 磁碟分割上，建立 ext4 檔案系統 ：
 
 ```bash
 sudo mkfs -t ext4 /dev/sdc1
@@ -181,6 +173,16 @@ Writing inode tables: done
 Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
+
+#### <a name="alternate-method-using-parted"></a>使用 parted 做為替代方法
+fdisk 公用程式需要互動式輸入，因此不適合用在自動化指令碼中。 不過，可以編寫 [parted](https://www.gnu.org/software/parted/) 公用程式指令碼，使其在自動化案例中有更好的表現。 parted 公用程式可以用來分割和格式化資料磁碟。 在下面的逐步解說中，我們使用新的資料磁片 /dev/sdc，並使用 [XFS](https://xfs.wiki.kernel.org/) 檔案系統將它格式化。
+```bash
+sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
+sudo mkfs.xfs /dev/sdc1
+partprobe /dev/sdc1
+```
+如上所示，我們使用 [partprobe](https://linux.die.net/man/8/partprobe) 公用程式，以確保核心能夠立即感知新的磁碟分割和檔案系統。 如果無法使用 partprobe，可能會導致 blkid 或 lslbk 命令不會立即傳回新檔案系統的 UUID。
+
 ### <a name="mount-the-disk"></a>裝載磁碟
 使用 `mkdir` 建立用來掛接檔案系統的目錄。 下列範例會在 /datadrive 建立目錄：
 
@@ -222,9 +224,9 @@ sudo vi /etc/fstab
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
-
+完成時，請儲存 /etc/fstab 檔案，然後將系統重新開機。
 > [!NOTE]
-> 稍後移除資料磁碟而不編輯 fstab，可能會造成 VM 無法開機。 大多數的發行版本會提供 nofail 和 (或) nobootwait fstab 選項。 即使磁碟在開機時無法掛接，這些選項也能讓系統開機。 有关这些参数的详细信息，请查阅分发文档。
+> 稍後移除資料磁碟而不編輯 fstab，可能會造成 VM 無法開機。 大多數的發行版本會提供 nofail 和 (或) nobootwait fstab 選項。 即使磁碟在開機時無法掛接，這些選項也能讓系統開機。 請查閱散發套件的文件，以取得這些參數的相關資訊。
 > 
 > *Nofail* 選項可確保即使檔案系統已損毀或磁碟在開機時並不存在，仍然會啟動 VM。 若不使用此選項，您可能會遇到[因為 FSTAB 錯誤所以無法 SSH 到 Linux VM](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/) 中所述的行為
 

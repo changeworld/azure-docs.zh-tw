@@ -1,25 +1,16 @@
 ---
-title: 動作項目型 Azure Service Fabric 動作項目中的事件 | Microsoft Docs
-description: Service Fabric Reliable Actor 事件簡介。
-services: service-fabric
-documentationcenter: .net
+title: 以動作專案為基礎的 Azure Service Fabric 執行者中的事件
+description: 瞭解 Service Fabric Reliable Actors 的事件，這是在動作專案與用戶端之間進行通訊的有效方式。
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: aa01b0f7-8f88-403a-bfe1-5aba00312c24
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: 9075fc8391e8afa21e3963c1eff6a630c586d647
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b17befcd86cd56eb5eb385ddc5196cbfce73003c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60726395"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260421"
 ---
 # <a name="actor-events"></a>動作項目事件
 動作項目事件會將最佳效果通知從動作項目傳送到用戶端。 動作項目事件是為了動作項目與用戶端之間的通訊而設計，不應用於動作項目與動作項目之間的通訊。
@@ -109,9 +100,9 @@ event.gameScoreUpdated(Id.getUUIDId(), score);
 
 
 ## <a name="next-steps"></a>後續步驟
-* [動作項目重新進入](service-fabric-reliable-actors-reentrancy.md)
-* [执行组件诊断和性能监视](service-fabric-reliable-actors-diagnostics.md)
-* [動作項目 API 參考文件](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C# 範例程式碼 (英文)](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [動作專案重新進入](service-fabric-reliable-actors-reentrancy.md)
+* [動作項目診斷與效能監視](service-fabric-reliable-actors-diagnostics.md)
+* [動作項目 API 參考文件](/previous-versions/azure/dn971626(v=azure.100))
+* [C # 範例程式碼](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [C# .NET Core 範例程式碼](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)
-* [Java 範例程式碼 (英文)](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [JAVA 範例程式碼](https://github.com/Azure-Samples/service-fabric-java-getting-started)

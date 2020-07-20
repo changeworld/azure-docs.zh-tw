@@ -3,23 +3,19 @@ title: Azure 網路監看員中的封包擷取簡介 | Microsoft Docs
 description: 本頁提供網路監看員封包擷取功能的概觀
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 3a81afaa-ecd9-4004-b68e-69ab56913356
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 4cfbfc4bed5438ed901fca86d8c2939d3860c68e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.author: damendo
+ms.openlocfilehash: 1f17463125cead64bd58a2d07e53eee4d3cfcd70
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64684165"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76840803"
 ---
 # <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Azure 網路監看員中的變數封包擷取簡介
 
@@ -34,15 +30,15 @@ ms.locfileid: "64684165"
 
 **擷取設定**
 
-|屬性|描述|
+|屬性|說明|
 |---|---|
 |**每個封包的最大位元組 (位元組)** | 來自每個封包所擷取的位元組，如果保留空白，會擷取所有位元組。 來自每個封包所擷取的位元組，如果保留空白，會擷取所有位元組。 如果您僅需要 IPv4 標頭 – 請在這裡指定 34 |
 |**每個工作階段的最大位元組 (位元組)** | 所擷取其中的位元組總數，一旦達到值時工作階段隨即結束。|
 |**時間限制 (秒)** | 在封包擷取工作階段上設定時間限制。 預設值為 18000 秒或 5 小時。|
 
-**篩選 (選用)**
+**篩選（選擇性）**
 
-|屬性|描述|
+|屬性|說明|
 |---|---|
 |**通訊協定** | 用來篩選封包擷取的通訊協定。 可用的值為 TCP、UDP 和 All。|
 |**本機 IP 位址** | 這個值會將封包擷取篩選為其中本機 IP 位址符合此篩選值的封包。|

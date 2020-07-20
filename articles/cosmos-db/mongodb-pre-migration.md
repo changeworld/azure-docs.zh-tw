@@ -1,91 +1,94 @@
 ---
-title: 移轉前步驟對於資料移轉從 MongoDB 適用於 MongoDB 的 Azure Cosmos DB 的 API
-description: 此文件會提供從 MongoDB 資料移轉的必要條件概觀，Cosmos db。
-author: roaror
+title: 將資料移轉至「適用於 MongoDB 的 Azure Cosmos DB API」的預先移轉步驟
+description: 此文件概述從 MongoDB 到 Cosmos DB 的資料移轉必要條件。
+author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
-ms.date: 04/17/2019
-ms.author: roaror
-ms.openlocfilehash: 476a143555323bbb5058541000a5b1a26d23b71a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 06/04/2020
+ms.author: lbosq
+ms.openlocfilehash: ffa30b0fa42abc69c19b5e6c32f4224f3ad1c95a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61330843"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263053"
 ---
-# <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>移轉前步驟對於資料移轉從 MongoDB 適用於 MongoDB 的 Azure Cosmos DB 的 API
+# <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>將資料從 MongoDB 移轉到「適用於 MongoDB 的 Azure Cosmos DB API」的預先移轉步驟
 
-將資料從 MongoDB 移轉之前 (在內部部署或雲端 (IaaS)) 至 Azure Cosmos DB 的 mongodb 的 API，您應該：
+將資料從 MongoDB (內部部署或在雲端中) 移轉到「適用於 MongoDB 的 Azure Cosmos DB API」之前，您應該：
 
-1. [建立 Azure Cosmos DB 帳戶](#create-account)
-2. [預估您的工作負載所需的輸送量](#estimate-throughput)
-3. [挑選最佳的資料分割索引鍵，為您的資料](#partitioning)
-4. [了解您可以設定您的資料編製索引原則](#indexing)
+1. [閱讀使用適用於 MongoDB 的 Azure Cosmos DB API 的重要考量事項](#considerations)
+2. [選擇選項以移轉您的資料](#options)
+3. [估計您的工作負載所需的輸送量](#estimate-throughput)
+4. [為您的資料選擇最佳的分割區索引鍵](#partitioning)
+5. [了解您可以在資料上設定的編製索引原則](#indexing)
 
-如果您已完成的移轉上述必要條件，請參閱[移轉 MongoDB 資料到 Azure Cosmos DB 的 MongoDB API](../dms/tutorial-mongodb-cosmos-db.md)實際資料的移轉說明。 如果沒有，本文件提供指示來處理這些必要條件。 
+如果您已完成上述的移轉必要條件，可以[使用 Azure Database Migration Service 將 MongoDB 資料移轉至適用於 MongoDB 的 Azure Cosmos DB API](../dms/tutorial-mongodb-cosmos-db.md)。 此外，如果您尚未建立帳戶，您可以瀏覽任何一個顯示建立帳戶步驟的[快速入門](create-mongodb-dotnet.md)。
 
-## <a id="create-account"></a> 建立 Azure Cosmos DB 帳戶 
+## <a name="considerations-when-using-azure-cosmos-dbs-api-for-mongodb"></a><a id="considerations"></a>使用適用於 MongoDB 的 Azure Cosmos DB API 的考量事項
 
-開始之前移轉，您需要[建立 Azure Cosmos 帳戶使用 Azure Cosmos DB 的 API for MongoDB](create-mongodb-dotnet.md)。 
+以下是關於「適用於 MongoDB 的 Azure Cosmos DB API」的特色：
 
-建立帳戶之後，您可以選擇設定[全域散發](distribute-data-globally.md)您的資料。 您也可以啟用多區域寫入 （或多重主機組態），可讓您區這兩個寫入和讀取區域的每一個。
+- **容量模型**：Azure Cosmos DB 的資料庫容量是以輸送量為基礎的模型做為根據。 此模型是以[每秒要求單位](request-units.md)為基礎，此單位表示每秒鐘可對一個集合所執行的資料庫作業數目。 此容量可以在[資料庫或集合層級](set-throughput.md)進行配置，而且可以在配置模型上佈建容量，或使用[自動調整佈建輸送量](provision-throughput-autoscale.md)。
 
-![Account-Creation](./media/mongodb-pre-migration/account-creation.png)
+- **要求單位**：每個資料庫作業在 Azure Cosmos DB 中都有相關聯的要求單位 (RU) 成本。 執行時，會從給定秒數的可用要求單位層級減去此要求單位。 如果要求所需的 RU 超過目前配置的 RU/秒，有兩個選項可解決此問題 - 增加 RU 數量，或等到下一秒開始後再重試作業。
 
-## <a id="estimate-throughput"></a> 預估您的工作負載的輸送量需求
+- **彈性容量**：給定集合或資料庫的容量可隨時變更。 這讓資料庫可彈性地適應工作負載的輸送量需求。
 
-使用開始移轉之前[資料庫移轉服務 (DMS)](../dms/dms-overview.md)，您應該估計您 Azure Cosmos 資料庫和集合的佈建的輸送量的量。
+- **自動分區化**：Azure Cosmos DB 提供一個只需要分區 (或分割區索引鍵) 的自動資料分割系統。 [自動資料分割機制](partition-data.md)會在所有 Azure Cosmos DB API 之間共用，可透過水平發佈，順暢地進行資料和輸送量調整。
 
-可在佈建輸送量：
+## <a name="migration-options-for-azure-cosmos-dbs-api-for-mongodb"></a><a id="options"></a>「適用於 MongoDB 的 Azure Cosmos DB API」的移轉選項
 
-- 集合
+[「適用於 MongoDB 的 Azure Cosmos DB API」所適用的 Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db.md) 藉由提供完全受控託管平台、移轉監視選項和自動節流處理，提供簡化資料移轉的機制。 完整的選項清單如下所示：
 
-- 資料庫
+|**移轉類型**|**方案**|**考量**|
+|---------|---------|---------|
+|離線|[資料移轉工具](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull; 易於設定，並支援多個來源 <br/>&bull; 不適用於大型資料集。|
+|離線|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull; 易於設定，並支援多個來源 <br/>&bull; 使用 Azure Cosmos DB 大量執行工具程式庫 <br/>&bull; 適合大型資料集 <br/>&bull; 缺少檢查點表示在移轉過程中出現的任何問題，皆需要重新啟動整個移轉流程<br/>&bull; 缺少無效信件佇列表示，只要有幾個錯誤的檔案就可能會停止整個移轉流程 <br/>&bull; 需要自訂程式碼，以增加特定資料來源的讀取輸送量|
+|離線|[現有的 Mongo 工具 (mongodump、mongorestore、Studio3T)](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull; 易於設定和整合 <br/>&bull; 需要自訂處理節流|
+|線上|[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; 完全受控的移轉服務。<br/>&bull; 為遷移工作提供託管和監視解決方案。 <br/>&bull; 適用於大型資料集，並負責複寫即時變更 <br/>&bull; 僅適用於其他 MongoDB 來源|
 
-> [!NOTE]
-> 您也可以讓上述組合、 在資料庫中的一些集合可能會有專用的佈建輸送量和其他人可能共用的輸送量。 如需詳細資訊，請參閱[資料庫和容器上的設定輸送量](set-throughput.md)頁面。
->
 
-您應該先決定您是否想要佈建資料庫或集合層級的輸送量或兩者的組合的動作。 一般情況下，建議您設定專用的輸送量層級的集合。 佈建的輸送量，在資料庫層級可讓您共用的佈建的輸送量的資料庫中的集合。 共用的輸送量，不過，不保證特定的輸送量，在每個個別的集合，而且沒有任何特定的集合上得到可預測的效能。
+## <a name="estimate-the-throughput-need-for-your-workloads"></a><a id="estimate-throughput"></a> 估計您的工作負載所需的輸送量
 
-如果您不確定多少輸送量只能專用於每個個別的集合，您可以選擇資料庫層級的輸送量。 您可以將佈建的輸送量設定為邏輯的對等的計算容量，MongoDB VM 或實體伺服器，Azure Cosmos 資料庫，但是更符合成本效益的彈性調整能力。 如需詳細資訊，請參閱 < [Azure Cosmos 容器和資料庫上的佈建輸送量](set-throughput.md)。
+在 Azure Cosmos DB 中，會事先佈建輸送量，並以每秒的要求單位 (RU) 進行測量。 不同於 VM 或內部部署伺服器，RU 可以輕鬆地隨時擴大或縮小。 您可以立即變更佈建的 RU 數目。 如需詳細資訊，請參閱 [Azure Cosmos DB 中的要求單位](request-units.md)。
 
-如果您佈建資料庫層級的輸送量，就必須建立該資料庫中建立的所有集合資料分割/分區索引鍵。 如需有關資料分割的詳細資訊，請參閱 <<c0> [ 的資料分割與水平調整 Azure Cosmos DB 中](partition-data.md)。 如果您未指定資料分割/分區化索引鍵在移轉期間，Azure 資料庫移轉服務會自動填入的分區索引鍵欄位，具有 *_id*每份文件時，會自動產生的屬性。
+您可以使用 [Azure Cosmos DB 容量計算機](https://cosmos.azure.com/capacitycalculator/)，根據資料庫帳戶設定、資料量、文件大小和所需的每秒讀寫次數，來確定要求單位的數量。
 
-### <a name="optimal-number-of-request-units-rus-to-provision"></a>要佈建要求單位 (Ru) 的最佳數目
+以下是影響所需 RU 數量的重要因素：
+- **文件大小**：當項目/文件大小增加時，取用來讀取或寫入該項目/文件的 RU 數目也會增加。
 
-在 Azure Cosmos DB 中，已預先佈建輸送量，並以每秒要求單位 (RU)。 如果您有 VM 或內部部署執行 MongoDB 的工作負載，將 RU 的視為簡單的抽象的實體資源，例如大小的 VM 或內部部署上的伺服器和資源他們擁有，例如記憶體、 CPU、 IOPs。 
+- **文件屬性計數**：建立或更新文件所耗用的 RU 數目，與數量、複雜性及其屬性長度有關。 您可以藉由[限制已編製索引的屬性數目](mongodb-indexing.md)，來減少寫入作業的要求單位取用量。
 
-不同於 Vm 或內部部署伺服器，Ru 皆可輕鬆地相應增加和減少在任何時間。 您可以變更的已佈建的 Ru 數秒內，並向您收費只會針對給定的一小時期間內您佈建的 Ru 數目上限。 如需詳細資訊，請參閱 [Azure Cosmos DB 中的要求單位](request-units.md)。
+- **查詢模式**：查詢的複雜性會影響查詢用的要求單位數目。 
 
-以下是會影響需要的 Ru 數目的關鍵因素：
-- **項目 （亦即，文件） 大小**:當項目/文件大小增加時的 Ru 數會使用讀取或寫入項目/文件也會增加。
-- **項目屬性計數**：假設[預設索引編製](index-overview.md)在所有的屬性的 Ru 數耗用來寫入項目會隨著項目屬性計數增加而增加。 您可以減少寫入作業的要求單位耗用量[限制數目的索引屬性](index-policy.md)。
-- **並行作業**:要求所耗用的單位也取決於哪些不同的 CRUD 作業 （例如寫入、 讀取、 更新、 刪除） 的頻率和執行更複雜的查詢。 您可以使用[mongostat](https://docs.mongodb.com/manual/reference/program/mongostat/)輸出目前的 MongoDB 資料的並行需求。
-- **查詢模式**：查詢的複雜性會影響查詢所耗用多少要求單位。
-
-如果您將使用的 JSON 檔案的匯出[mongoexport](https://docs.mongodb.com/manual/reference/program/mongoexport/)了解多少寫入、 讀取、 更新和刪除每秒所發生，您可以使用[Azure Cosmos DB 容量規劃工具](https://www.documentdb.com/capacityplanner)來估計初始佈建的 Ru 數目。 容量規劃工具不會不納入考量的更複雜的查詢成本。 因此，如果您有複雜的查詢資料時，將會耗用額外的 Ru。 計算機也會假設所有欄位編製都索引，且會使用工作階段一致性。 若要了解之查詢的成本是將您的資料 （或範例資料） 移轉至 Azure Cosmos DB 的最佳方式[連線到 Cosmos DB 的端點](connect-mongodb-account.md)並執行範例查詢從 MongoDB 殼層使用`getLastRequestStastistics`命令，以取得要求費用，會將輸出的取用的 Ru 數目：
+了解查詢成本的最佳方式是，使用 Azure Cosmos DB 中的樣本資料，並使用 `getLastRequestStastistics` 命令，[從 MongoDB Shell 執行樣本查詢](connect-mongodb-account.md)，以取得要求費用，這將會輸出取用的 RU 數量：
 
 `db.runCommand({getLastRequestStatistics: 1})`
 
-此命令會輸出類似下列的 JSON 文件：
+此命令將輸出 JSON 文件，如下所示：
 
 ```{  "_t": "GetRequestStatisticsResponse",  "ok": 1,  "CommandName": "find",  "RequestCharge": 10.1,  "RequestDurationInMilliSeconds": 7.2}```
 
-您了解查詢所取用的 Ru 數目，以及該查詢的並行需求之後，您可以調整佈建的 Ru 數目。 最佳化 Ru 不是一次性事件-您應該持續最佳化，或相應增加 Ru 佈建，取決於您不是需要大量的流量，而不是工作負載過重或匯入資料。
+您也可以使用[診斷設定](cosmosdb-monitor-resource-logs.md)，以了解針對 Azure Cosmos DB 執行查詢的頻率和模式。 診斷記錄的結果可傳送至儲存體帳戶、EventHub 執行個體或 [Azure Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)。  
 
-## <a id="partitioning"></a>選擇您的資料分割索引鍵
-資料分割是移轉至像是 Azure Cosmos DB 全域散發的資料庫之前需要考量的重點。 Azure Cosmos DB 使用資料分割中的資料庫，以符合您的應用程式的延展性和效能需求調整個別的容器。 在分割中，在容器中的項目分成稱為 「 邏輯磁碟分割的不同子集。 如需詳細資訊和建議選擇正確的資料分割索引鍵，為您的資料，請參閱[選擇 資料分割索引鍵區段](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey)。 
+## <a name="choose-your-partition-key"></a><a id="partitioning"></a>選擇分割區索引鍵
+資料分割 (也稱為「分區化」) 是移轉資料前的考量要點。 Azure Cosmos DB 使用完全受控的資料分割，增加資料庫中的容量，以滿足儲存和輸送量的需求。 此功能不需要裝載或設定路由伺服器。   
 
-## <a id="indexing"></a>您的資料編製索引
-根據預設，Azure Cosmos DB 編製索引時擷取您所有的資料欄位。 您可以修改[編製索引原則](index-policy.md)在任何時間的 Azure Cosmos DB 中。 事實上，通常建議以關閉編製索引的資料，在移轉時，並再重新開啟它的資料時在 Cosmos DB 中。 如需編製索引的詳細資訊，您可以深入了解在[Azure Cosmos DB 中編製索引](index-overview.md)一節。 
+同樣地，資料分割容量會自動新增容量，並視情況重新平衡資料。 如需為您的資料選擇正確分割區的詳細資料和建議，請參閱[選擇分割區索引鍵一文](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey)。 
 
-[Azure 資料庫移轉服務](../dms/tutorial-mongodb-cosmos-db.md)自動移轉具有唯一索引的 MongoDB 集合。 不過，在移轉之前，必須建立唯一的索引。 Azure Cosmos DB 不支援建立唯一的索引，當您的集合中已經有資料。 如需詳細資訊，請參閱 [Azure Cosmos DB 中的唯一索引鍵](unique-keys.md)。
+## <a name="index-your-data"></a><a id="indexing"></a>為資料編製索引
+
+Azure Cosmos DB 適用于 MongoDB 的 API 伺服器版本3.6 只會自動為欄位編制索引 `_id` 。 此欄位無法卸載。 它會自動強制執行 `_id` 每個分區索引鍵的欄位唯一性。 若要為其他欄位編制索引，請套用 MongoDB 索引管理命令。 此預設索引編制原則與 Azure Cosmos DB SQL API 不同，預設會為所有欄位編制索引。
+
+Azure Cosmos DB 所提供的編制索引功能包括新增複合索引、唯一索引和存留時間（TTL）索引。 索引管理介面對應至 `createIndex()` 命令。 若要深入瞭解，請參閱[在 Azure Cosmos DB 的 MONGODB API 中編制索引](mongodb-indexing.md)一文。
+
+[Azure Database Migration Service](../dms/tutorial-mongodb-cosmos-db.md) 會自動移轉具有唯一索引的 MongoDB 集合。 不過，必須先建立唯一索引，然後再進行移轉。 當您的集合中已經有資料時，Azure Cosmos DB 不支援建立唯一索引。 如需詳細資訊，請參閱 [Azure Cosmos DB 中的唯一索引鍵](unique-keys.md)。
 
 ## <a name="next-steps"></a>後續步驟
-* [將 MongoDB 資料移轉到使用資料庫移轉服務的 Cosmos DB。](../dms/tutorial-mongodb-cosmos-db.md) 
-* [Azure Cosmos 容器和資料庫上的佈建輸送量](set-throughput.md)
+* [使用 Database Migration Service 將您的 MongoDB 資料移轉至 Cosmos DB。](../dms/tutorial-mongodb-cosmos-db.md) 
+* [在 Azure Cosmos 容器和資料庫上佈建輸送量](set-throughput.md)
 * [Azure Cosmos DB 中的資料分割](partition-data.md)
 * [Azure Cosmos DB 中的全域散發](distribute-data-globally.md)
 * [Azure Cosmos DB 中的編製索引](index-overview.md)

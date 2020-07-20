@@ -1,61 +1,97 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure 自動化使用者文件
+### YamlMime:Landing
+title: Azure 自動化文件
 metadata:
-  document_id: null
-  title: Azure 自動化文件 - 教學課程和 API 參考
-  description: 了解如何使用 Azure 自動化
+  title: Azure 自動化文件
+  description: 了解如何在跨混合式環境中，使用自動化來設定並自動化作業工作。
   services: automation
-  author: georgewallace
+  author: mgoedtel
   manager: carmonm
   ms.service: automation
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 12/13/2017
-  ms.author: gwallace
-abstract:
-  description: 了解如何在跨混合式環境中，使用自動化來設定並自動化作業工作。 教學課程、API 參考和其他文件會示範如何自動執行程序、執行更新管理、遞送希望的狀態組態、追蹤變更及收集清查資料。
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何使用自動化來自動化及設定您的 Azure 和混合式環境：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/automation/media/index/automation.svg
-            text: 建立自動化帳戶
-            href: /azure/automation/automation-quickstart-create-account
-          - image:
-              src: /azure/automation/media/index/runbook.svg
-            text: 建立 Runbook
-            href: /azure/automation/automation-quickstart-create-runbook
-          - image:
-              src: /azure/automation/media/index/dscconfig.svg
-            text: 建立 DSC 組態
-            href: /azure/automation/automation-quickstart-dsc-configuration
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何整合、部署及管理您的 Azure 和混合式環境。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/automation/automation-watchers-tutorial">設定監看員工作</a>
-          - html: <a href="/azure/automation/automation-tutorial-update-management">在虛擬機器上管理更新</a>
-          - html: <a href="/azure/automation/automation-onboard-solutions">大規模上架</a>
-          - html: <a href="/azure/automation/automation-tutorial-installed-software">識別虛擬機器中安裝的軟體</a>
-          - html: <a href="/azure/automation/automation-tutorial-troubleshoot-changes">虛擬機器上的疑難排解變更</a>
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令列
-            html: <p><a href="/powershell/module/azurerm.automation">PowerShell</a></p>
-          - title: Languages
-            html: <p><a href="/dotnet/api/microsoft.azure.management.automation">.NET</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/automation">自動化 REST API</a></p>
+  ms.date: 09/06/2019
+  ms.author: magoedte
+  ms.openlocfilehash: d154705e17a51453648a8e1d3dd14bcdc6881917
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "77208663"
+landingContent:
+- title: 開始使用 Azure 自動化
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是自動化？
+      url: automation-intro.md
+  - linkListType: get-started
+    links:
+    - text: 建立自動化帳戶
+      url: automation-quickstart-create-account.md
+  - linkListType: quickstart
+    links:
+    - text: 建立 Runbook
+      url: automation-quickstart-create-runbook.md
+  - linkListType: deploy
+    links:
+    - text: 於下班時間開始/停止 VM
+      url: automation-solution-vm-management.md
+- title: 管理 VM 更新
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 更新管理概觀
+      url: automation-update-management.md
+  - linkListType: get-started
+    links:
+    - text: 管理多個虛擬機器的更新
+      url: manage-update-multi.md
+  - linkListType: deploy
+    links:
+    - text: 更新、清查和追蹤 Azure VM 上的變更
+      url: automation-onboard-solutions.md
+- title: 使用 Desired State Configuration 設定 VM
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: State Configuration 概觀
+      url: automation-dsc-overview.md
+  - linkListType: concept
+    links:
+    - text: PowerShell DSC
+      url: /powershell/scripting/dsc/overview/overview
+  - linkListType: quickstart
+    links:
+    - text: 從群組原則建立 DSC 組態
+      url: /powershell/scripting/dsc/quickstarts/gpo-quickstart
+  - linkListType: tutorial
+    links:
+    - text: 使用狀態設定來設定伺服器並管理漂移
+      url: tutorial-configure-servers-desired-state.md
+- title: 使用混合式環境
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 混合式 Runbook 背景工作概觀
+      url: automation-hybrid-runbook-worker.md
+  - linkListType: deploy
+    links:
+    - text: 部署 Windows 混合式 Runbook 背景工作
+      url: automation-windows-hrw-install.md
+    - text: 部署 Linux 混合式 Runbook 背景工作
+      url: automation-linux-hrw-install.md
+    - text: 在混合式 Runbook 背景工作上啟動 Runbook
+      url: automation-hrw-run-runbooks.md
+- title: 跨服務自動化
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 使用 SendGrid 籨 Runbook 傳送電子郵件
+      url: automation-send-email.md
+  - linkListType: get-started
+    links:
+    - text: 從 Azure 警示中啟動 Runbook
+      url: automation-create-alert-triggered-runbook.md
+  - linkListType: deploy
+    links:
+    - text: 在自動化 PowerShell Runbook 中部署 Resource Manager 範本
+      url: automation-deploy-template-runbook.md

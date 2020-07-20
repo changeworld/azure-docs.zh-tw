@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 720288aff462b0590bb9da509096a9305b9b6cc7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61409945"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67174014"
 ---
 #### <a name="to-install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>透過 Windows PowerShell for StorSimple 安裝維護模式更新
-1. 如果您尚未這樣做，請存取裝置序列主控台並選取選項 1 [使用完整存取權登入] 。 
+1. 如果您尚未這樣做，請存取裝置序列主控台並選取選項 1 [使用完整存取權登入] ****。 
 2. 輸入密碼。 預設密碼為 **Password1**。
 3. 在命令提示字元中，輸入：
    

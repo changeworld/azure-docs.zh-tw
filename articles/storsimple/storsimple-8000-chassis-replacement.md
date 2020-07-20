@@ -9,20 +9,19 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
-ms.openlocfilehash: 7dfc39f4d08c8a49d1564a0a5bd7e3ef4156e3fe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: de0f6299f35f9d76fdade976bf70456426e5ec51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61312440"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513429"
 ---
 # <a name="replace-the-chassis-on-your-storsimple-device"></a>更換 StorSimple 裝置上的底座
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 本教學課程說明如何取下並更換 StorSimple 8000 系列裝置中的底座。 StorSimple 8100 模型是單一機箱裝置 (一個底座)，而 8600 是雙重機箱裝置 (兩個底座)。 若為 8600 型號，裝置中可能有兩個會發生故障的底座：主要機箱的底座或 EBOD 機箱的底座。
 
 在任一情況下，Microsoft 隨附的更換底座是空的。 將不會包含電源和冷卻模組 (PCM)、控制器模組、固態硬碟 (SSD)、硬碟機 (HDD) 或 EBOD 模組。
@@ -41,7 +40,7 @@ ms.locfileid: "61312440"
 4. 取下每個磁碟機，並記下從哪些插槽中取下它們。 如需詳細資訊，請參閱 [取下磁碟機](storsimple-8000-disk-drive-replacement.md#remove-the-disk-drive)。
 5. 在 EBOD 機箱 (如果這是故障的底座) 上，取下 EBOD 控制器模組。 如需詳細資訊，請參閱 [取下 EBOD 控制器](storsimple-8000-ebod-controller-replacement.md#remove-an-ebod-controller)。
    
-    在主要機箱 (如果這是故障的底座) 上，取下控制器，並記下從哪些插槽中取下它們。 如需詳細資訊，請參閱 [取下控制器](storsimple-8000-controller-replacement.md#remove-a-controller)。
+    在主要機箱 (如果這是故障的底座) 上，取下控制器，並記下從哪些插槽中取下它們。 如需詳細資訊，請參閱[移除控制器](storsimple-8000-controller-replacement.md#remove-a-controller)。
 
 ## <a name="install-the-chassis"></a>安裝底座
 請執行下列步驟來安裝 StorSimple 裝置上的底座。

@@ -1,21 +1,21 @@
 ---
-title: 使用「適用於 MariaDB 的 Azure 資料庫」的商務持續性概觀
-description: 使用「適用於 MariaDB 的 Azure 資料庫」的商務持續性概觀。
+title: 商務持續性-適用於 MariaDB 的 Azure 資料庫
+description: 瞭解使用適用於 MariaDB 的 Azure 資料庫服務時， (時間點還原、資料中心中斷、異地還原) 的商務持續性。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 4c64f920bf56195ad53ac8acbf3f9199090f0a8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 7/7/2020
+ms.openlocfilehash: 183ece0d82431a8a961902d75d2fc24b013bc97b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61043001"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252261"
 ---
-# <a name="overview-of-business-continuity-with-azure-database-for-mariadb"></a>使用「適用於 MariaDB 的 Azure 資料庫」的商務持續性概觀
+# <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>瞭解適用於 MariaDB 的 Azure 資料庫中的商務持續性
 
-此概觀說明適用於 MariaDB 的 Azure 資料庫針對商務持續性與災害復原所提供的功能。 了解有哪些選項可讓您從可能導致資料遺失或造成資料庫和應用程式無法使用的干擾性事件中復原。 了解當使用者或應用程式錯誤影響資料完整性、Azure 區域中斷，或您的應用程式需要維護時該如何處理。
+本文說明適用於 MariaDB 的 Azure 資料庫針對商務持續性和嚴重損壞修復所提供的功能。 了解有哪些選項可讓您從可能導致資料遺失或造成資料庫和應用程式無法使用的干擾性事件中復原。 了解當使用者或應用程式錯誤影響資料完整性、Azure 區域中斷，或您的應用程式需要維護時該如何處理。
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>可用來提供商務持續性的功能
 
@@ -33,7 +33,7 @@ ms.locfileid: "61043001"
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>在使用者或應用程式錯誤之後復原伺服器
 
-您可以使用服務的備份，在各種干擾性事件發生之後復原伺服器。 使用者可能會不小心刪除某些資料、不小心卸除重要的資料表，或甚至是卸除整個資料庫。 應用程式可能會因為應用程式缺陷或其他原因，而不慎以不正確的資料覆寫正確的資料。
+您可以使用服務的備份，從各種干擾性事件復原伺服器。 使用者可能會不小心刪除某些資料、不小心卸除重要的資料表，或甚至是卸除整個資料庫。 應用程式可能會因為應用程式缺陷或其他原因，而不慎以不正確的資料覆寫正確的資料。
 
 您可以執行時間點還原，為伺服器建立已知良好時間點的複本。 此時間點必須在您為伺服器設定的備份保留期間內。 資料還原至新的伺服器之後，您可以將原始伺服器取代為還原的新伺服器，或從還原的伺服器將所需的資料複製到原始伺服器。
 
@@ -48,11 +48,16 @@ ms.locfileid: "61043001"
 > [!IMPORTANT]
 > 只有使用異地備援備份儲存體來佈建伺服器時，才可進行異地還原。
 
+## <a name="cross-region-read-replicas"></a>跨區域讀取複本
+
+您可以使用跨區域讀取複本來增強您的商務持續性和嚴重損壞修復規劃。 讀取複本會使用適用于 mariadb 的二進位記錄複寫技術以非同步方式更新。 深入瞭解讀取複本、可用區域，以及如何從[讀取複本概念一文](concepts-read-replicas.md)進行故障切換。 
+
+## <a name="faq"></a>常見問題集
+### <a name="where-does-azure-database-for-mariadb-store-customer-data"></a>適用於 MariaDB 的 Azure 資料庫儲存客戶資料的位置？
+根據預設，適用於 MariaDB 的 Azure 資料庫不會在其部署所在的區域中移動或儲存客戶資料。 不過，客戶可以選擇性地選擇啟用[異地多餘備份](concepts-backup.md#backup-redundancy-options)或建立[跨區域讀取複本](concepts-read-replicas.md#cross-region-replication)，以便將資料儲存在另一個區域中。
+
 ## <a name="next-steps"></a>後續步驟
 
-- 若要深入了解自動備份，請參閱[適用於 MariaDB 的 Azure 資料庫中的備份](concepts-backup.md)。
-- 若要使用 Azure 入口網站還原至某個時間點，請參閱 [使用 Azure 入口網站將資料庫還原至時間點](howto-restore-server-portal.md)。
-
-<!--
-- To restore to a point in time using Azure CLI, see [restore database to a point in time using CLI](howto-restore-server-cli.md). 
--->
+- 深入瞭解[適用於 MariaDB 的 Azure 資料庫中的自動備份](concepts-backup.md)。
+- 了解如何使用 [Azure 入口網站](howto-restore-server-portal.md)或 [Azure CLI](howto-restore-server-cli.md) 來進行還原。
+- 深入瞭解[適用於 MariaDB 的 Azure 資料庫中的讀取複本](concepts-read-replicas.md)。

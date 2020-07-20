@@ -1,18 +1,18 @@
 ---
-title: 檢查 Azure 上 Kubernetes 部署中的最佳做法實作
+title: 檢查部署的最佳做法
+titleSuffix: Azure Kubernetes Service
 description: 了解如何使用 kube-advisor 檢查 Azure Kubernetes Service 上部署中的最佳做法實作
 services: container-service
 author: seanmck
-ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 03c5eb2e32a0a8ec51844511276d9efba5651068
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 2b0078f1aff3ef81ee270f67de0fffddec3abab9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073765"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255246"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>檢查叢集中的 Kubernetes 最佳做法
 
@@ -22,19 +22,19 @@ ms.locfileid: "65073765"
 
 [kube-advisor 工具][kube-advisor-github]是專門設計為在叢集中執行的單一容器。 它會向 Kubernetes API 伺服器查詢部署的相關資訊，並傳回一套建議改善事項。
 
-Kube advisor 工具可報告資源的要求和限制遺漏 PodSpecs for Windows 應用程式，以及 Linux 應用程式，但 kube advisor 工具本身必須經過排程上的 Linux pod。 您可以排程在特定的作業系統使用的節點集區上執行的 pod[節點選取器][ k8s-node-selector] pod 的組態中。
+kube-advisor 工具可以報告適用於 Windows 應用程式和 Linux 應用程式的 PodSpecs 中的資源要求和限制遺漏，但是 kube-advisor 工具本身必須在 Linux Pod 上排程。 您可以使用 Pod 設定中的[節點選取器][k8s-node-selector]，排程 Pod 在具有特定作業系統的節點集區上執行。
 
 > [!NOTE]
 > Microsoft 致力支援 kube advisor 工具。 問題和建議應在 GitHub 上建檔。
 
 ## <a name="running-kube-advisor"></a>執行 kube-advisor
 
-若要在設定為[角色型存取控制 (RBAC)](azure-ad-integration.md) 的叢集上執行此工具，請使用下列命令。 第一個命令會建立 Kubernetes 服務帳戶。 第二個命令會使用該服務帳戶在 Pod 中執行此工具，並設定為 Pod 結束之後便會刪除。 
+若要在設定為[角色型存取控制 (RBAC)](./azure-ad-integration-cli.md) 的叢集上執行此工具，請使用下列命令。 第一個命令會建立 Kubernetes 服務帳戶。 第二個命令會使用該服務帳戶在 Pod 中執行此工具，並設定為 Pod 結束之後便會刪除。 
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
 
-kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never --overrides="{ \"apiVersion\": \"v1\", \"spec\": { \"serviceAccountName\": \"kube-advisor\" } }"
+kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never --overrides="{ \"apiVersion\": \"v1\", \"spec\": { \"serviceAccountName\": \"kube-advisor\" } }" --namespace default
 ```
 
 若您不是使用 RBAC，可以執行如下所示的命令：

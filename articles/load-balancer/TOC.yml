@@ -2,28 +2,33 @@
   href: index.yml
 - name: 概觀
   items:
-    - name: 何謂負載平衡器？
+    - name: 什麼是 Azure Load Balancer？
       href: load-balancer-overview.md
+    - name: 新功能
+      href: whats-new.md
+    - name: 常見問題集
+      href: load-balancer-faqs.md
 - name: 快速入門
   items:
-    - name: 建立基本 Load Balancer - 入口網站
-      href: quickstart-create-basic-load-balancer-portal.md
-    - name: 建立基本 Load Balancer - Azure CLI
-      href: quickstart-create-basic-load-balancer-cli.md
-    - name: 建立基本 Load Balancer - Azure PowerShell
-      href: quickstart-create-basic-load-balancer-powershell.md
-    - name: 建立標準 Load Balancer - 入口網站
+    - name: 建立 Load Balancer - 入口網站
       href: quickstart-load-balancer-standard-public-portal.md
-    - name: 建立標準 Load Balancer - Azure CLI
+    - name: 建立 Load Balancer - Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
-    - name: 建立標準 Load Balancer - Azure PowerShell
+    - name: 建立 Load Balancer - Azure PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
+    - name: 建立 Load Balancer - ARM 範本
+      href: quickstart-load-balancer-standard-public-template.md
+    - name: 建立內部 Load Balancer - 入口網站
+      href: tutorial-load-balancer-standard-internal-portal.md
+    - name: 建立內部 Load Balancer - Azure CLI
+      href: load-balancer-get-started-ilb-arm-cli.md
+    - name: 建立內部 Load Balancer - Azure PowerShell
+      href: load-balancer-get-started-ilb-arm-ps.md
+    - name: 建立內部 Load Balancer - ARM 範本
+      href: load-balancer-get-started-ilb-arm-template.md
+  expanded: true
 - name: 教學課程
   items:
-    - name: VM 的負載平衡網際網路流量
-      href: tutorial-load-balancer-standard-manage-portal.md
-    - name: VM 的負載平衡內部流量
-      href: tutorial-load-balancer-basic-internal-portal.md
     - name: 跨越多個可用性區域為虛擬機器進行負載平衡
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: 在特定可用性區域內為虛擬機器進行負載平衡
@@ -38,111 +43,101 @@
       href: powershell-samples.md
 - name: 概念
   items:
-    - name: 什麼是標準 Load Balancer？
-      href: load-balancer-standard-overview.md
-    - name: 健康狀態探查
-      href: load-balancer-custom-probe-overview.md
+    - name: 元件
+      href: components.md
+    - name: 概念
+      href: concepts.md
+    - name: SKU
+      href: skus.md
+    - name: 健康狀況監視
+      items:
+        - name: 健康狀態探查
+          href: load-balancer-custom-probe-overview.md
+        - name: 標準 Load Balancer計量和診斷
+          href: load-balancer-standard-diagnostics.md
+        - name: 適用於基本 Load Balancer 的 Azure 監視器記錄
+          href: load-balancer-monitor-log.md
+        - name: 使用 REST 取得 Load Balancer 計量
+          href: load-balancer-query-metrics-rest-api.md
     - name: 高可用性連接埠
       href: load-balancer-ha-ports-overview.md
-    - name: IPv6 支援
-      href: load-balancer-ipv6-overview.md
     - name: 多個前端
       href: load-balancer-multivip-overview.md
     - name: 輸出連線
       href: load-balancer-outbound-connections.md
-    - name: 輸出規則
-      href: load-balancer-outbound-rules-overview.md
     - name: 逾時時的 TCP 重設
       href: load-balancer-tcp-reset.md
     - name: 標準 Load Balancer 和可用性區域
       href: load-balancer-standard-availability-zones.md
-    - name: 標準 Load Balancer計量和診斷
-      href: load-balancer-standard-diagnostics.md
-- name: 作法
+    - name: 內建安全性控制
+      href: load-balancer-security-controls.md
+    - name: 後端集區管理
+      href: backend-pool-management.md
+- name: 如何
   items:
-    - name: 建立區域備援公用標準 Load Balancer
-      href: load-balancer-get-started-internet-az-portal.md
+    - name: 虛擬機器擴展集
       items:
-        - name: 建立區域備援公用標準 Load Balancer (PowerShell)
-          href: load-balancer-get-started-internet-az-powershell.md
-        - name: 建立區域備援公用標準 Load Balancer (CLI)
-          href: load-balancer-get-started-internet-az-cli.md
-    - name: 建立區域公用標準 Load Balancer
-      href: load-balancer-get-started-internet-availability-zones-zonal-portal.md
+        - name: 與現有的 Azure Load Balancer 搭配使用 - 入口網站
+          href: configure-vm-scale-set-portal.md
+        - name: 與現有的 Azure Load Balancer 搭配使用 - PowerShell
+          href: configure-vm-scale-set-powershell.md
+        - name: 與現有的 Azure Load Balancer 搭配使用 - CLI
+          href: configure-vm-scale-set-cli.md
+    - name: 從 Basic 升級到 Standard Load Balancer
       items:
-        - name: 建立區域公用標準 Load Balancer (PowerShell)
-          href: load-balancer-get-started-internet-availability-zones-zonal-powershell.md
-        - name: 建立區域備援公用標準 Load Balancer (CLI)
-          href: load-balancer-get-started-internet-availability-zones-zonal-cli.md
-    - name: 跨越多個可用性區域為虛擬機器進行負載平衡 (CLI)
-      href: load-balancer-standard-public-zone-redundant-cli.md
-    - name: 在區域內為虛擬機器進行負載平衡 (CLI)
-      href: load-balancer-standard-public-zonal-cli.md
+        - name: 將基本公用 Load Balancer 進行升級
+          href: upgrade-basic-standard.md
+        - name: 升級內部 Load Balancer - 不需要輸出連線
+          href: upgrade-basicInternal-standard.md
+        - name: 升級內部 Load Balancer - 需要輸出連線
+          href: upgrade-InternalBasic-To-PublicStandard.md
     - name: 設定輸出規則
-      href: configure-load-balancer-outbound-cli.md
-    - name: 使用 REST API 建立 Azure Load Balancer
-      href: create-load-balancer-rest-api.md
-    - name: 建立基本 Load Balancer (範本)
-      href: load-balancer-get-started-internet-arm-template.md
+      items:
+        - name: 入口網站
+          href: configure-load-balancer-outbound-portal.md
+        - name: Azure CLI
+          href: configure-load-balancer-outbound-cli.md
+        - name: Azure PowerShell
+          href: configure-load-balancer-outbound-powershell.md
     - name: 以 IPv6 建立公用 Load Balancer
-      href: load-balancer-ipv6-internet-ps.md
       items:
-        - name: 以 IPv6 建立公用 Load Balancer (CLI)
-          href: load-balancer-ipv6-internet-cli.md
-        - name: 以 IPv6 建立公用 Load Balancer (範本)
-          href: load-balancer-ipv6-internet-template.md
-    - name: 設定內部 Load Balancer
-      items:
-        - name: 設定內部 Load Balancer (PowerShell)
-          href: load-balancer-get-started-ilb-arm-ps.md
-        - name: 設定內部 Load Balancer (CLI)
-          href: load-balancer-get-started-ilb-arm-cli.md
-        - name: 設定內部 Load Balancer (範本)
-          href: load-balancer-get-started-ilb-arm-template.md
+        - name: Azure CLI
+          href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli'
+        - name: Azure PowerShell
+          href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell'
+        - name: Azure Resource Manager 範本
+          href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
+          displayName: ARM
     - name: 設定負載平衡器的 TCP 閒置逾時
       href: load-balancer-tcp-idle-timeout.md
     - name: 設定 Load Balancer 的分配模式
       href: load-balancer-distribution-mode.md
-    - name: 合併負載平衡服務
-      href: ../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fload-balancer%2ftoc.json
     - name: 使用多個 IP 組態
-      href: load-balancer-multiple-ip.md
       items:
-        - name: 使用多個 IP 組態 (CLI)
+        - name: 入口網站
+          href: load-balancer-multiple-ip.md
+        - name: Azure CLI
           href: load-balancer-multiple-ip-cli.md
-        - name: 使用多個 IP 組態 (PowerShell)
+        - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
-    - name: Azure Load Balancer 的 Azure 監視器記錄
-      href: load-balancer-monitor-log.md
-    - name: 使用 REST 取得 Load Balancer 計量
-      href: load-balancer-query-metrics-rest-api.md
-    - name: 設定內部負載平衡器的高可用性連接埠
-      href: load-balancer-configure-ha-ports.md
-    - name: 疑難排解
+    - name: 跨區域移動
       items:
-        - name: 針對 Azure Load Balancer 進行疑難排解
-          href: load-balancer-troubleshoot.md
-    - name: 傳統部署模型文章
-      items:
-        - name: 輸出連線 (傳統)
-          href: load-balancer-outbound-connections-classic.md
-    - name: 為雲端服務設定多個 IP 位址
-      href: load-balancer-multivip.md
-      items:
-        - name: 設定雲端服務的內部 Load Balancer
-          href: load-balancer-get-started-ilb-classic-cloud.md
-          items:
-            - name: 設定雲端服務的內部 Load Balancer (PowerShell)
-              href: load-balancer-get-started-ilb-classic-ps.md
-            - name: 設定雲端服務的內部 Load Balancer (CLI)
-              href: load-balancer-get-started-ilb-classic-cli.md
-        - name: 設定公用 Load Balancer (傳統 PowerShell)
-          href: load-balancer-get-started-internet-classic-ps.md
-          items:
-            - name: 設定公用 Load Balancer (傳統雲端)
-              href: load-balancer-get-started-internet-classic-cloud.md
-            - name: 設定公用 Load Balancer (傳統 CLI)
-              href: load-balancer-get-started-internet-classic-cli.md
+        - name: 公用 Load Balancer - 入口網站
+          href: move-across-regions-external-load-balancer-portal.md
+        - name: 公用 Load Balancer - PowerShell
+          href: move-across-regions-external-load-balancer-powershell.md
+        - name: 公用 Load Balancer - 入口網站
+          href: move-across-regions-internal-load-balancer-portal.md
+        - name: 內部負載平衡器 - PowerShell
+          href: move-across-regions-internal-load-balancer-powershell.md
+- name: 疑難排解
+  items:
+    - name: 針對 Azure Load Balancer 進行疑難排解
+      href: load-balancer-troubleshoot.md
+    - name: 針對一般部署錯誤進行疑難排解
+      href: load-balancer-common-deployment-errors.md
+    - name: 解決常見的輸出連線問題
+      href: troubleshoot-outbound-connection.md
 - name: 參考
   items:
     - name: 程式碼範例
@@ -156,38 +151,27 @@
     - name: Java
       href: /java/api/com.microsoft.azure.management.network
     - name: Node.js
-      href: 'http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/LoadBalancers.html'
+      href: /javascript/api/@azure/arm-network/loadbalancers
     - name: Ruby
-      href: 'http://www.rubydoc.info/gems/azure_mgmt_network/Azure/ARM/Network/LoadBalancers'
+      href: 'https://www.rubydoc.info/gems/azure_mgmt_network/Azure/Network/Mgmt/V2020_03_01/LoadBalancers'
     - name: Python
-      href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations'
+      href: /python/api/azure-mgmt-network/azure.mgmt.network.v2019_02_01.operations.loadbalancersoperations
     - name: REST
       href: 'https://msdn.microsoft.com/library/azure/mt163651.aspx'
-- name: 相關參考
-  items:
-    - name: 應用程式閘道
-      href: /azure/application-gateway/
-    - name: ExpressRoute
-      href: /azure/expressroute/
-    - name: 虛擬網路
-      href: /azure/virtual-network/
-    - name: VPN 閘道
-      href: /azure/vpn-gateway/
-    - name: 虛擬機器
-      href: /azure/virtual-machines/
-    - name: 流量管理員
-      href: /azure/traffic-manager/
-    - name: DNS
-      href: /azure/dns/
+    - name: Resource Manager 範本
+      href: 'https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers'
+      displayName: ARM
 - name: 資源
   items:
     - name: 透過 Microsoft Learn 增進您的技巧
-      href: /learn/browse/?products=azure-virtual-machines
+      href: /learn/browse/?products=azure-load-balancer
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
-    - name: 價格
+    - name: Azure Load Balancer 意見反應
+      href: 'https://feedback.azure.com/forums/217313-networking/category/77467-load-balancing'
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/load-balancer/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: 服務更新
+    - name: 產品更新
       href: 'https://azure.microsoft.com/updates/?product=load-balancer'

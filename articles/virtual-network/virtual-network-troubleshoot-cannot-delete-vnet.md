@@ -4,7 +4,7 @@ description: 了解如何對您無法刪除 Azure 中之虛擬網路的問題進
 services: virtual-network
 documentationcenter: na
 author: chadmath
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-network
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 4bd143b37e4403d039108b4349b27604b6503e0e
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 8942e9180e87552ec64e0e848751f492778c9993
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123020"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131660"
 ---
-# <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>故障排除：无法在 Azure 中删除虚拟网络
+# <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>疑難排解：無法在 Azure 中刪除虛擬網路
 
-當您嘗試刪除 Microsoft Azure 中的虛擬網路時，可能會收到錯誤。 本文提供可協助您解決此問題的疑難排解步驟。 
+當您嘗試刪除 Microsoft Azure 中的虛擬網路時，可能會收到錯誤。 本文提供可協助您解決此問題的疑難排解步驟。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -56,7 +56,7 @@ ms.locfileid: "62123020"
 
 移至虛擬網路的 [概觀] 頁面。 檢查應用程式閘道的 [連線的裝置]。
 
-![检查已连接的设备](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
+![檢查連線的裝置](media/virtual-network-troubleshoot-cannot-delete-vnet/app-gateway.png)
 
 如果有應用程式閘道，您必須先移除它，才能刪除虛擬網路。
 
@@ -66,7 +66,7 @@ ms.locfileid: "62123020"
 
 ![檢查連線的裝置](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
 
-若要停用服務，請參閱[使用 Azure 入口網站停用 Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-disable-aadds.md)。
+若要停用服務，請參閱[使用 Azure 入口網站停用 Azure Active Directory Domain Services](../active-directory-domain-services/delete-aadds.md)。
 
 ### <a name="check-whether-the-virtual-network-is-connected-to-other-resource"></a>檢查虛擬網路是否已連線到其他資源
 
@@ -88,9 +88,11 @@ ms.locfileid: "62123020"
 
 如果虛擬網路卡在移轉狀態，就無法刪除。 執行下列命令以中止移轉，然後刪除虛擬網路。
 
-    Move-AzureVirtualNetwork -VirtualNetworkName "Name" -Abort
+```azurepowershell
+Move-AzureVirtualNetwork -VirtualNetworkName "Name" -Abort
+```
 
 ## <a name="next-steps"></a>後續步驟
 
 - [Azure 虛擬網路](virtual-networks-overview.md)
-- [Azure 虚拟网络常见问题解答 (FAQ)](virtual-networks-faq.md)
+- [Azure 虛擬網路的常見問題 (FAQ)](virtual-networks-faq.md)

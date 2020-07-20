@@ -4,30 +4,27 @@ description: 了解如何針對 Microsoft Azure 中靜態 IP 所造成的 RDP �
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/08/2018
 ms.author: genli
-ms.openlocfilehash: 81a3064290e0aa720a4fe6b0fa0d8eb13cfe6903
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 49f3f44c7de8c700d0093c5eb6f166a1dffb34a4
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60318913"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087243"
 ---
 #  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>因為靜態 IP 而無法將遠端桌面連線到 Azure 虛擬機器
 
 本文說明在 VM 中設定靜態 IP 之後，您無法將遠端桌面連線至 Azure Windows 虛擬機器 (VM) 的問題。
 
-> [!NOTE]
-> Azure 建立和處理資源的部署模型有二種：[Resource Manager 和傳統](../../azure-resource-manager/resource-manager-deployment-model.md)。 本文說明如何使用 Resource Manager 部署模型，我們建議將它用於新部署，而非用於傳統部署模型。
 
-## <a name="symptoms"></a>徵兆
+## <a name="symptoms"></a>徵狀
 
 當您對 Azure 中的 VM 進行 RDP 連線時，您會收到下列錯誤訊息：
 
@@ -47,7 +44,7 @@ ms.locfileid: "60318913"
 
 VM 具有在 Windows 中的網路介面上定義的靜態 IP 位址。 此 IP 位址不同於 Azure 入口網站中所定義的位址。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 在遵循下列步驟之前，請擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。
 
@@ -59,18 +56,27 @@ VM 具有在 Windows 中的網路介面上定義的靜態 IP 位址。 此 IP �
 )。 如果未在 VM 上啟用序列主控台，請參閱[重設網路介面](reset-network-interface.md)。
 2. 請檢查是否已在網路介面上停用 DHCP：
 
-        netsh interface ip show config
+    ```console
+    netsh interface ip show config
+    ```
+
 3. 如果已停用 DHCP，請您網路介面的組態還原為使用 DHCP：
 
-        netsh interface ip set address name="<NIC Name>" source=dhc
+    ```console
+    netsh interface ip set address name="<NIC Name>" source=dhc
+    ```
 
     比方說，如果交互作用介面名稱為「乙太網路 2」，請執行下列命令：
 
-        netsh interface ip set address name="Ethernet 2" source=dhc
+    ```console
+    netsh interface ip set address name="Ethernet 2" source=dhc
+    ```
 
 4. 再次查詢 IP 組態，確定現在已正確設定網路介面。 新的 IP 位址應符合 Azure 所提供的 IP 位址。
 
-        netsh interface ip show config
+    ```console
+    netsh interface ip show config
+    ```
 
     此時您不需要重新啟動 VM。 您可回頭連線 VM。
 

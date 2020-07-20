@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: c315961a-fa33-45cf-82b9-4551e70d32dd
 ms.service: dns
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
-ms.openlocfilehash: c2ef842fd62ef060f06536d66387c3facd0627b5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 9f5b535a341956e5675ba96ba9570bd3f2ff3443
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60640373"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710944"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>在您自己的 DNS 伺服器中使用動態 DNS 來註冊主機名稱
 
@@ -35,7 +34,7 @@ Azure 會為虛擬機器 (VM) 及角色執行個體[提供名稱解析](virtual-
 ## <a name="linux-clients"></a>Linux 用戶端
 Linux 用戶端通常不會在啟動時向 DNS 伺服器自行登錄，其假設 DHCP 伺服器會這麼做。 Azure 的 DHCP 伺服器並不具認證，無法在您的 DNS 伺服器登錄記錄。 您可以使用稱為 `nsupdate` 的工具，該工具隨附於繫結套件，以傳送 DDNS 更新。 因為 DDNS 通訊協定已標準化，即使您未在 DNS 伺服器上使用繫結，也可使用 `nsupdate`。
 
-您可以使用 DHCP 用戶端所提供的勾點，在 DNS 伺服器中建立及維護主機名稱實體。 在 DHCP 週期中，用戶端在 */etc/dhcp/dhclient-exit-hooks.d/* 中執行指令碼。 您可以使用勾點來註冊使用 `nsupdate` 的新 IP 位址。 例如︰
+您可以使用 DHCP 用戶端所提供的勾點，在 DNS 伺服器中建立及維護主機名稱實體。 在 DHCP 週期中，用戶端在 */etc/dhcp/dhclient-exit-hooks.d/* 中執行指令碼。 您可以使用勾點來註冊使用 `nsupdate` 的新 IP 位址。 例如：
 
 ```bash
 #!/bin/sh
@@ -61,7 +60,7 @@ then
 fi
 ```
 
-您也可以使用 `nsupdate` 命令來執行安全 DDNS 更新。 例如，當您使用繫結 DNS 伺服器時，會 [產生](http://linux.yyz.us/nsupdate/)公開-私密金鑰組。 DNS 伺服器已使用金鑰的公開部分進行[設定](http://linux.yyz.us/dns/ddns-server.html)，因此其可驗證要求的簽章。 若要將金鑰組提供給 `nsupdate`，請使用 `-k` 選項簽署 DDNS 更新要求。
+您也可以使用 `nsupdate` 命令來執行安全 DDNS 更新。 例如，當您使用繫結 DNS 伺服器時，會產生公開-私密金鑰組 (`http://linux.yyz.us/nsupdate/`)。 DNS 伺服器會使用金鑰的公開部分進行設定 (`http://linux.yyz.us/dns/ddns-server.html`)，因此其可驗證要求上的簽章。 若要將金鑰組提供給 `nsupdate`，請使用 `-k` 選項簽署 DDNS 更新要求。
 
 當您使用 Windows DNS 伺服器時，可以使用 Kerberos 驗證搭配 `nsupdate` 的 `-g` 參數 (`nsupdate` 的 Windows 版本未提供)。 若要使用 Kerberos，請使用 `kinit` 載入認證。 例如，您可以從 [keytab 檔案](https://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)載入認證，然後 `nsupdate -g` 會從快取中取得認證。
 

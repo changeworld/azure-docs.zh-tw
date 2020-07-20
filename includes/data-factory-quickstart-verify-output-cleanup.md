@@ -4,26 +4,26 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 309ef92b33d5bbdf8e8aed6b162ed9428a669c87
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: b838e411e2795405c439a4107daab7aa8f033059
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58505775"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "76021311"
 ---
 ## <a name="verify-the-output"></a>驗證輸出
 管道會自動在 adftutorial Blob 容器中建立輸出資料夾。 然後，它會將 emp.txt 檔案從輸入資料夾複製到輸出資料夾。 
 
-1. 在 Azure 入口網站的 [adftutorial] 容器頁面上，按一下 [重新整理] 可查看輸出資料夾。 
+1. 在 Azure 入口網站的 [adftutorial]  容器頁面上，按一下 [重新整理]  可查看輸出資料夾。 
     
-    ![重新整理](media/data-factory-quickstart-verify-output-cleanup/output-refresh.png)
-2. 在資料夾清單中按一下 [輸出]。 
+    ![Refresh](media/data-factory-quickstart-verify-output-cleanup/output-refresh.png)
+2. 在資料夾清單中按一下 [輸出]  。 
 2. 確認 **emp.txt** 已複製到輸出資料夾。 
 
-    ![重新整理](media/data-factory-quickstart-verify-output-cleanup/output-file.png)
+    ![Refresh](media/data-factory-quickstart-verify-output-cleanup/output-file.png)
 
 ## <a name="clean-up-resources"></a>清除資源
-您有兩種方式可以清除您在本快速入門中建立的資源。 您可以刪除 [Azure 資源群組](../articles/azure-resource-manager/resource-group-overview.md)，其中包括資源群組中的所有資源。 如果您想要讓其他資源保持不變，請僅刪除您在本教學課程中建立的資料處理站。
+您有兩種方式可以清除您在本快速入門中建立的資源。 您可以刪除 [Azure 資源群組](../articles/azure-resource-manager/management/overview.md)，其中包括資源群組中的所有資源。 如果您想要讓其他資源保持不變，請僅刪除您在本教學課程中建立的資料處理站。
 
 刪除資源群組會刪除所有資源，包含其中的 Data Factory。 執行下列命令來刪除整個資源群組： 
 ```powershell

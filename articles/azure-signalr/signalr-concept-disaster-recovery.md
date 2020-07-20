@@ -6,20 +6,19 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: eb70e65db4a086afc60e91cadf55a8844b102591
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: cf0f345b0fbf9fea2512f72c1996c9a1597cc0cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61402077"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73747639"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>復原和災害復原
 
 復原和災害復原是線上系統的常見需求。 Azure SignalR Service 服務已保證有 99.9% 的可用性，但仍是一項區域性服務。
-您的服務執行個體一律會執行一個區域中並不會容錯移轉到另一個區域全區域服務中斷時。
+當整個區域發生中斷時，您的服務實例一律會在一個區域中執行，且不會故障切換至另一個區域。
 
 相反地，我們服務 SDK 提供的功能可支援多個 SignalR 服務執行個體，而且會在其中一些執行個體無法使用時，自動切換至其他執行個體。
-利用此功能，您將能夠在災害發生時進行復原，但您必須自行設定正確的系統拓撲。 您將在本文中了解如何這麼做。
+使用此功能時，您將能夠在發生嚴重損壞時復原，但您必須自行設定適當的系統拓撲。 您將在本文中了解如何這麼做。
 
 ## <a name="high-available-architecture-for-signalr-service"></a>SignalR 服務的高可用性架構
 
@@ -28,8 +27,8 @@ ms.locfileid: "61402077"
 主要執行個體會接收線上流量，而次要執行個體雖然有完整功能，但是是主要執行個體的備份。
 在我們的 SDK 實作中，交涉 (negotiate) 只會傳回主要端點，因此在正常情況下，用戶端只能連線至主要端點。
 但當主要執行個體無法運作時，交涉會傳回次要端點，因此，用戶端仍然可以進行連線。
-主要執行個體和應用程式伺服器會透過連線正常的伺服器連接，但次要執行個體和應用程式伺服器連接到特殊的一種稱為弱式連接的連接。
-弱式連線的主要差異在於，它不會接受用戶端連接路由，因為次要執行個體位於另一個區域。 路由到另一個區域的用戶端不是 （會增加延遲） 的最佳選擇。
+主要實例和應用程式伺服器會透過一般伺服器連線來連接，但是次要實例和應用程式伺服器會透過稱為弱式連線的特殊連線類型來連接。
+弱式連接的主要差異在於它不接受用戶端連接路由，因為次要實例位於另一個區域。 將用戶端路由到另一個區域並不是最佳選擇（會增加延遲）。
 
 連線至多個應用程式伺服器時，一個服務執行個體可以有不同的角色。
 針對區域案例，其中一個標準設定是有兩組 (含) 以上的 SignalR 服務執行個體和應用程式伺服器。
@@ -51,11 +50,11 @@ ms.locfileid: "61402077"
 
 ### <a name="through-config"></a>透過 config
 
-您也應該知道如何設定環境變數/應用程式 settings/web.cofig，透過名為設定項目透過 SignalR 服務的連接字串`Azure:SignalR:ConnectionString`。
+您應該已經知道如何透過環境變數/應用程式設定/cofig，在名為的 config 專案中設定 SignalR 服務連接字串 `Azure:SignalR:ConnectionString` 。
 如果您有多個端點，您可以使用下列格式在多個 config 項目中設定每個連接字串：
 
 ```
-Azure:SignalR:Connection:<name>:<role>
+Azure:SignalR:ConnectionString:<name>:<role>
 ```
 
 此處的 `<name>` 表示端點名稱，而 `<role>` 是其角色 (主要或次要)。
@@ -63,9 +62,9 @@ Azure:SignalR:Connection:<name>:<role>
 
 ### <a name="through-code"></a>透過程式碼
 
-如果您想要將連接字串儲存在別處，您也可以在程式碼中讀取該連接字串，並在呼叫 `AddAzureSignalR()` (使用 ASP.NET Core) 或 `MapAzureSignalR()` (使用 ASP.NET) 時，將這些連接字串當作參數使用。
+如果您想要將連接字串儲存在其他位置，您也可以在程式碼中讀取它們，並在呼叫 `AddAzureSignalR()` （ASP.NET Core）或 `MapAzureSignalR()` （在 ASP.NET 中）時，將它們當做參數使用。
 
-以下為範例程式碼：
+此為範例程式碼：
 
 ASP.NET Core：
 
@@ -87,6 +86,11 @@ app.MapAzureSignalR(GetType().FullName, hub,  options => options.Endpoints = new
         new ServiceEndpoint("<connection_string2>", EndpointType.Secondary, "region2"),
     };
 ```
+
+您可以設定多個主要或次要實例。 如果有多個主要和/或次要實例，則 negotiate 會以下列順序傳回端點：
+
+1. 如果至少有一個主要實例上線，會傳回隨機的主要線上實例。
+2. 如果所有主要實例都已關閉，則會傳回隨機的次要線上實例。
 
 ## <a name="failover-sequence-and-best-practice"></a>容錯移轉順序和最佳做法
 
@@ -121,7 +125,7 @@ SignalR 服務可支援這兩種模式，主要差異在於您如何實作應用
 如果應用程式伺服器為主動/被動，SignalR 服務也會是主動/被動 (因為主要應用程式伺服器只會傳回其主要的 SignalR 服務執行個體)。
 如果應用程式伺服器為主動/主動，SignalR 服務也會是主動/主動 (因為所有應用程式伺服器會傳回自己的主要 SignalR 執行個體，因此所有執行個體都可以接收流量)。
 
-請注意無論您選擇使用哪一個模式，您必須連接到應用程式伺服器設為主要的每個 SignalR 服務執行個體。
+請注意，無論您選擇使用哪一種模式，都必須將每個 SignalR 服務實例連線到應用程式伺服器做為主要複本。
 
 也因為 SignalR 連線的本質 (很長的連線)，用戶端會在發生災害和容錯移轉時遇到連線中斷。
 您必須在用戶端處理這類情況，讓終端客戶了解此情況。 例如，在連線關閉後重新連線。
@@ -130,4 +134,4 @@ SignalR 服務可支援這兩種模式，主要差異在於您如何實作應用
 
 在本文中，您已經了解如何設定您的應用程式以恢復 SignalR 服務的功能。 若要深入了解 SignalR 服務中的伺服器/用戶端連線及連線路由，您可以閱讀[這篇文章](signalr-concept-internals.md)，以了解 SignalR 服務的內部運作。
 
-調整案例，例如分區化中，同時使用多個執行個體來處理大量的連線，請閱讀[如何調整多個執行個體](signalr-howto-scale-multi-instances.md)嗎？
+如需使用多個實例來處理大量連接的調整案例（例如分區化），請參閱[如何調整多個實例](signalr-howto-scale-multi-instances.md)。

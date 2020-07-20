@@ -1,27 +1,20 @@
 ---
-title: Azure CLI 指令碼範例 - 從 Docker 中樞建立 ASP.NET Core 應用程式 | Microsoft Docs
-description: Azure CLI 指令碼範例 - 在來自 Docker Hub 的 App Service 中建立 ASP.NET Core 應用程式
-services: appservice
-documentationcenter: appservice
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI：從 Docker 建立 ASP.NET Core 應用程式
+description: 了解如何使用 Azure CLI 將 App Service 應用程式的部署和管理自動化。 此範例說明如何從 Docker Hub 建立 ASP.NET Core 應用程式。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 3a2d1983-ff7b-476a-ac44-49ec2aabb31a
-ms.service: app-service
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 136d0d6976b046244ee9e6a24e68d5304a5c352b
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 8eb95644db5b1cb00ef6e245db6197cf2a2f301b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53650853"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044761"
 ---
 # <a name="create-an-aspnet-core-app-in-a-docker-container-from-docker-hub-using-azure-cli"></a>使用 Azure CLI 在來自 Docker Hub 的 Docker 容器中建立 ASP.NET Core 應用程式
 
@@ -43,7 +36,7 @@ ms.locfileid: "53650853"
 
 此指令碼會使用下列命令來建立資源群組、App Service 應用程式及所有相關資源。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | 建立用來存放所有資源的資源群組。 |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 建立 App Service 方案。 |

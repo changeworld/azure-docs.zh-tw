@@ -1,21 +1,21 @@
 ---
-title: 如何建立並找出在 Unity 中使用 Azure 空間的錨點的錨點 |Microsoft Docs
-description: 深入的說明，如何建立並找出的錨定在 Unity 中使用 Azure 空間的錨點。
+title: 在 Unity 中建立及尋找錨點
+description: 深入說明如何在 Unity 中使用 Azure Spatial Anchors 建立和尋找錨點。
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
-ms.author: ramonarguelles
+ms.author: rgarcia
 ms.date: 02/24/2019
-ms.topic: how-to
+ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: d1c5f906fef495f7ef1dde5df38a84629a6d6c61
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 72d25582d15e745b0bdefcde5f68af94eab49293
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60333624"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712202"
 ---
-# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-unity"></a>如何建立並找出在 Unity 中使用 Azure 空間的錨點的錨點
+# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-unity"></a>如何在 Unity 中使用 Azure Spatial Anchors 建立和尋找錨點
 
 > [!div  class="op_single_selector"]
 > * [Unity](create-locate-anchors-unity.md)
@@ -25,16 +25,16 @@ ms.locfileid: "60333624"
 > * [C++/NDK](create-locate-anchors-cpp-ndk.md)
 > * [C++/WinRT](create-locate-anchors-cpp-winrt.md)
 
-Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 其支援數種不同的開發環境。 在本文中，我們將探討如何使用 Azure 空間的錨點 SDK，在 Unity 中，以：
+Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 其支援數種不同的開發環境。 在本文中，我們將深入探討如何在 Unity 中使用 Azure Spatial Anchors SDK，以：
 
-- 正確地設定和管理 Azure 空間的錨點的工作階段。
-- 建立並設定本機的錨點屬性。
-- 上傳至雲端。
+- 正確設定和管理 Azure Spatial Anchors 工作階段。
+- 在本機錨點建立及設定屬性。
+- 將屬性上傳至雲端。
 - 找出並刪除雲端空間錨點。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-若要完成本指南，請確定您具有：
+若要完成本指南，請確定您具有下列項目︰
 
 - 已完整閱讀 [Azure Spatial Anchors 概觀](../overview.md)。
 - 已完成其中一個 [5 分鐘快速入門](../index.yml)。
@@ -43,7 +43,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 
-深入了解[CloudSpatialAnchorSession](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession)類別。
+深入了解 [CloudSpatialAnchorSession](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession) 類別。
 
 ```csharp
     CloudSpatialAnchorSession cloudSession;
@@ -53,7 +53,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
 
-深入了解[SessionConfiguration](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.sessionconfiguration)類別。
+深入了解 [SessionConfiguration](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.sessionconfiguration) 類別。
 
 ```csharp
     this.cloudSession.Configuration.AccountKey = @"MyAccountKey";
@@ -67,7 +67,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
 
-深入了解[TokenRequiredDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.tokenrequireddelegate)委派。
+深入了解 [TokenRequiredDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.tokenrequireddelegate) 委派。
 
 ```csharp
     this.cloudSession.TokenRequired += (object sender, TokenRequiredEventArgs args) =>
@@ -117,15 +117,11 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-non-ios.md)]
 
-深入了解[啟動](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.start)方法。
+深入了解 [Start](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.start) 方法。
 
 ```csharp
-#if UNITY_IOS
-    this.arkitSession = UnityARSessionNativeInterface.GetARSessionNativeInterface();
-    this.cloudSession.Session = this.arkitSession.GetNativeSessionPtr();
-#elif UNITY_ANDROID
-    this.nativeSession = GoogleARCoreInternal.ARCoreAndroidLifecycleManager.Instance.NativeSession;
-    this.cloudSession.Session = this.nativeSession.SessionHandle;
+#if UNITY_ANDROID || UNITY_IOS
+    this.cloudSession.Session = aRSession.subsystem.nativePtr.GetPlatformPointer();
 #elif UNITY_WSA || WINDOWS_UWP
     // No need to set a native session pointer for HoloLens.
 #else
@@ -137,31 +133,29 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
-深入了解[ProcessFrame](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.processframe)方法。
+深入了解 [ProcessFrame](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.processframe) 方法。
 
 ```csharp
-#if UNITY_ANDROID
-    long latestFrameTimeStamp = this.nativeSession.FrameApi.GetTimestamp();
-    bool newFrameToProcess = latestFrameTimeStamp > this.lastFrameProcessedTimeStamp;
-    if (newFrameToProcess)
+#if UNITY_ANDROID || UNITY_IOS
+    XRCameraFrame xRCameraFrame;
+    if (aRCameraManager.subsystem.TryGetLatestFrame(cameraParams, out xRCameraFrame))
     {
-        this.cloudSession.ProcessFrame(this.nativeSession.FrameHandle);
-        this.lastFrameProcessedTimeStamp = latestFrameTimeStamp;
-    }
-#endif
-#if UNITY_IOS
-    UnityARSessionNativeInterface.ARFrameUpdatedEvent += UnityARSessionNativeInterface_ARFrameUpdatedEvent;
+        long latestFrameTimeStamp = xRCameraFrame.timestampNs;
 
-    void UnityARSessionNativeInterface_ARFrameUpdatedEvent(UnityARCamera camera)
-    {
-        this.cloudSession.ProcessFrame(this.arkitSession.GetNativeFramePtr());
+        bool newFrameToProcess = latestFrameTimeStamp > lastFrameProcessedTimeStamp;
+
+        if (newFrameToProcess)
+        {
+            session.ProcessFrame(xRCameraFrame.nativePtr.GetPlatformPointer());
+            lastFrameProcessedTimeStamp = latestFrameTimeStamp;
+        }
     }
 #endif
 ```
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
 
-深入了解[SessionUpdatedDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.sessionupdateddelegate)委派。
+深入了解 [SessionUpdatedDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.sessionupdateddelegate) 委派。
 
 ```csharp
     this.cloudSession.SessionUpdated += (object sender, SessionUpdatedEventArgs args)
@@ -175,32 +169,18 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
 
-深入了解[CloudSpatialAnchor](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor)類別。
+深入了解 [CloudSpatialAnchor](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor) 類別。
 
 ```csharp
     // Create a local anchor, perhaps by hit-testing and spawning an object within the scene
     Vector3 hitPosition = new Vector3();
-#if UNITY_IOS
-    var screenPosition = Camera.main.ScreenToViewportPoint(new Vector3(0.5f, 0.5f));
-    ARPoint point = new ARPoint
+#if UNITY_ANDROID || UNITY_IOS
+    Vector2 screenCenter = new Vector2(0.5f, 0.5f);
+    List<ARRaycastHit> aRRaycastHits = new List<ARRaycastHit>();
+    if(arRaycastManager.Raycast(screenCenter, aRRaycastHits) && aRRaycastHits.Count > 0)
     {
-        x = screenPosition.x,
-        y = screenPosition.y
-    };
-    var hitResults = UnityARSessionNativeInterface.GetARSessionNativeInterface().HitTest(point, ARHitTestResultType.ARHitTestResultTypeEstimatedHorizontalPlane | ARHitTestResultType.ARHitTestResultTypeExistingPlaneUsingExtent);
-    if (hitResults.Count > 0)
-    {
-        // The hitTest method sorts the resulting list by distance from the camera, increasing
-        // The first hit result will usually be the most relevant when responding to user input
-        ARHitTestResult hitResult = hitResults[0];
-        hitPosition = UnityARMatrixOps.GetPosition(hitResult.worldTransform);
-    }
-#elif UNITY_ANDROID
-    TrackableHit hit;
-    TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon | TrackableHitFlags.FeaturePointWithSurfaceNormal;
-    if (Frame.Raycast(0.5f, 0.5f, raycastFilter, out hit))
-    {
-        hitPosition = hit.Pose.position;
+        ARRaycastHit hit = aRRaycastHits[0];
+        hitPosition = hit.pose.position;
     }
 #elif WINDOWS_UWP || UNITY_WSA
     RaycastHit hit;
@@ -212,7 +192,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
     Quaternion rotation = Quaternion.AngleAxis(0, Vector3.up);
     this.localAnchor = GameObject.Instantiate(/* some prefab */, hitPosition, rotation);
-    this.localAnchor.AddARAnchor();
+    this.localAnchor.CreateNativeAnchor();
 
     // If the user is placing some application content in their environment,
     // you might show content at this anchor for a while, then save when
@@ -225,7 +205,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
-深入了解[GetSessionStatusAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.getsessionstatusasync)方法。
+深入了解 [GetSessionStatusAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.getsessionstatusasync) 方法。
 
 ```csharp
     SessionStatus value = await this.cloudSession.GetSessionStatusAsync();
@@ -235,7 +215,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
-深入了解[AppProperties](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor.appproperties)屬性。
+深入了解 [AppProperties](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor.appproperties) 屬性。
 
 ```csharp
     CloudSpatialAnchor cloudAnchor = new CloudSpatialAnchor() { LocalAnchor = localAnchor };
@@ -246,7 +226,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
-深入了解[UpdateAnchorPropertiesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.updateanchorpropertiesasync)方法。
+深入了解 [UpdateAnchorPropertiesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.updateanchorpropertiesasync) 方法。
 
 ```csharp
     CloudSpatialAnchor anchor = /* locate your anchor */;
@@ -256,7 +236,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
 
-深入了解[GetAnchorPropertiesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.getanchorpropertiesasync)方法。
+深入了解 [GetAnchorPropertiesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.getanchorpropertiesasync) 方法。
 
 ```csharp
     var anchor = await cloudSession.GetAnchorPropertiesAsync(@"anchorId");
@@ -269,7 +249,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
-深入了解[到期](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor.expiration)屬性。
+深入了解 [Expiration](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchor.expiration) 屬性。
 
 ```csharp
     cloudAnchor.Expiration = DateTimeOffset.Now.AddDays(7);
@@ -277,7 +257,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
-深入了解[CreateWatcher](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.createwatcher)方法。
+深入了解 [CreateWatcher](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.createwatcher) 方法。
 
 ```csharp
     AnchorLocateCriteria criteria = new AnchorLocateCriteria();
@@ -287,7 +267,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
 
-深入了解[AnchorLocatedDelegate](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.anchorlocateddelegate)委派。
+深入了解 [AnchorLocated](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.anchorlocateddelegate) 委派。
 
 ```csharp
     this.cloudSession.AnchorLocated += (object sender, AnchorLocatedEventArgs args) =>
@@ -316,7 +296,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
-深入了解[DeleteAnchorAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.deleteanchorasync)方法。
+深入了解 [DeleteAnchorAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.deleteanchorasync) 方法。
 
 ```csharp
     await this.cloudSession..DeleteAnchorAsync(cloudAnchor);
@@ -325,7 +305,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
-深入了解[停止](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.stop)方法。
+深入了解 [Stop](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.stop) 方法。
 
 ```csharp
     this.cloudSession.Stop();
@@ -333,7 +313,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-深入了解[重設](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.reset)方法。
+深入了解 [Reset](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.reset) 方法。
 
 ```csharp
     this.cloudSession.Reset();
@@ -341,7 +321,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Cleanup](../../../includes/spatial-anchors-create-locate-anchors-cleanup-unity.md)]
 
-深入了解[處置](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.dispose)方法。
+深入了解 [Dispose](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.dispose) 方法。
 
 ```csharp
     this.cloudSession.Dispose();

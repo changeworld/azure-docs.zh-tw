@@ -3,23 +3,23 @@ title: Azure 診斷記錄 | Microsoft Docs
 description: 客戶可以啟用 Azure CDN 的記錄分析功能。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 06/06/2018
-ms.author: magattus
-ms.openlocfilehash: a5fab3e2bf9908fa35cf5f5485df3116b7718d8c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: allensu
+ms.openlocfilehash: 2c432b28250dca382f69a992de73d633b5ea45b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57881124"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84883978"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 診斷記錄
 
@@ -35,13 +35,13 @@ Azure 診斷記錄可讓您將 CDN 端點的基本使用情況計量匯出到各
 
 - 匯出資料至 Blob 儲存體、匯出至 CSV，以及在 Excel 中產生圖表。
 - 匯出資料至事件中樞，並將資料與其他 Azure 服務相互關聯。
-- 將資料匯出至 Azure 監視器記錄檔，並在您自己的 Log Analytics 工作區中檢視資料
+- 將資料匯出至您自己的 Log Analytics 工作區中 Azure 監視器記錄及查看資料
 
 下圖說明典型的 CDN 核心分析資料檢視。
 
 ![入口網站 - 診斷記錄](./media/cdn-diagnostics-log/01_OMS-workspace.png)
 
-圖 1 - CDN 核心分析檢視
+圖 1 - CDN 核心分析檢視**
 
 如需診斷記錄的詳細資訊，請參閱[診斷記錄](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)。
 
@@ -59,9 +59,9 @@ Azure 診斷記錄可讓您將 CDN 端點的基本使用情況計量匯出到各
 
     ![入口網站 - 診斷記錄](./media/cdn-diagnostics-log/02_Browse-to-Diagnostics-logs.png)
 
-3. 在 [監視] 區段中，選取 [診斷記錄]。
+3. 在 [監視] 區段中，選取 [診斷記錄]****。
 
-   [診斷記錄] 頁面隨即出現。
+   [診斷記錄]**** 頁面隨即出現。
 
     ![入口網站 - 診斷記錄](./media/cdn-diagnostics-log/03_Diagnostics-logs-options.png)
 
@@ -69,73 +69,73 @@ Azure 診斷記錄可讓您將 CDN 端點的基本使用情況計量匯出到各
 
 若要使用儲存體帳戶來儲存記錄，請遵循下列步驟：
     
-1. 針對 [名稱]，輸入診斷記錄設定的名稱。
+1. 針對 [名稱]****，輸入診斷記錄設定的名稱。
  
-2. 選取 [封存至儲存體帳戶]，然後選取 [CoreAnalytics]。 
+2. 選取 [封存至儲存體帳戶]****，然後選取 [CoreAnalytics]****。 
 
-2. 針對 [保留期 (天數)]，選擇保留天數。 保留天數為 0 會無限期地儲存記錄。 
+2. 針對 [保留期 (天數)]****，選擇保留天數。 保留天數為 0 會無限期地儲存記錄。 
 
     ![入口網站 - 診斷記錄](./media/cdn-diagnostics-log/04_Diagnostics-logs-storage.png) 
 
-3. 選取 [儲存體帳戶]。
+3. 選取 [**儲存體帳戶**]。
 
-    [選取儲存體帳戶] 頁面隨即出現。
+    [選取儲存體帳戶]**** 頁面隨即出現。
 
-4. 從下拉式清單中選取儲存體帳戶，然後選取 [確定]。
+4. 從下拉式清單中選取儲存體帳戶，然後選取 [確定]****。
 
     ![入口網站 - 診斷記錄](./media/cdn-diagnostics-log/cdn-select-storage-account.png)
 
-5. 當您完成診斷記錄設定之後，選取 [儲存]。
+5. 當您完成診斷記錄設定之後，選取 [儲存]****。
 
-### <a name="logging-with-azure-monitor"></a>使用 Azure 監視器的記錄
+### <a name="logging-with-azure-monitor"></a>使用 Azure 監視器進行記錄
 
 若要使用 Azure 監視器來儲存記錄，請遵循下列步驟：
 
-1. 從 [診斷記錄] 頁面中，選取 [傳送至 Log Analytics]。 
+1. 從 [診斷記錄]**** 頁面中，選取 [傳送至 Log Analytics]****。 
 
     ![入口網站 - 診斷記錄](./media/cdn-diagnostics-log/05_Ready-to-Configure.png)    
 
-2. 選取 **設定**設定 Azure 監視器的記錄。 
+2. 選取 [**設定**] 以設定 Azure 監視器記錄。 
 
-   隨即會顯示 [Log Analytics 工作區] 頁面。
+   隨即會顯示 [Log Analytics 工作區]**** 頁面。
 
     >[!NOTE] 
     >OMS 工作區現在稱為 Log Analytics 工作區。
 
     ![入口網站 - 診斷記錄](./media/cdn-diagnostics-log/06_Choose-workspace.png)
 
-3. 選取 [建立新工作區]。
+3. 選取 [建立新工作區]****。
 
-    隨即會顯示 [Log Analytics 工作區] 頁面。
+    隨即會顯示 [Log Analytics 工作區]**** 頁面。
 
     >[!NOTE] 
     >OMS 工作區現在稱為 Log Analytics 工作區。
 
     ![入口網站 - 診斷記錄](./media/cdn-diagnostics-log/07_Create-new.png)
 
-4. 針對 [Log Analytics 工作區]，輸入 Log Analytics 工作區名稱。 Log Analytics 工作區名稱必須是唯一的，且只能包含字母、數字和連字號；不允許使用空格和底線。 
+4. 針對 [Log Analytics 工作區]****，輸入 Log Analytics 工作區名稱。 Log Analytics 工作區名稱必須是唯一的，且只能包含字母、數字和連字號；不允許使用空格和底線。 
 
-5. 針對 [訂用帳戶]，從下拉式清單中選取現有的訂用帳戶。 
+5. 針對 [訂用帳戶]****，從下拉式清單中選取現有的訂用帳戶。 
 
 6. 針對 [資源群組]，建立新的資源群組，或選取現有的資源群組。
 
-7. 針對 [位置]，從清單中選取位置。
+7. 針對 [位置]****，從清單中選取位置。
 
-8. 如果您想要將記錄設定儲存至儀表板，請選取 [釘選到儀表板]。 
+8. 如果您想要將記錄設定儲存至儀表板，請選取 [釘選到儀表板]****。 
 
-9. 選取 [確定] 來完成設定。
+9. 選取 [確定]**** 來完成設定。
 
-10. 建立工作區之後，您就會返回 [診斷記錄] 頁面。 確認新的 Log Analytics 工作區名稱。
+10. 建立工作區之後，您就會返回 [診斷記錄]**** 頁面。 確認新的 Log Analytics 工作區名稱。
 
     ![入口網站 - 診斷記錄](./media/cdn-diagnostics-log/09_Return-to-logging.png)
 
-11. 選取 [CoreAnalytics]，然後選取 [儲存]。
+11. 選取 [CoreAnalytics]****，然後選取 [儲存]****。
 
-12. 若要檢視新的 Log Analytics 工作區，請從您的 CDN 端點頁面選取 [核心分析]。
+12. 若要檢視新的 Log Analytics 工作區，請從您的 CDN 端點頁面選取 [核心分析]****。
 
     ![入口網站 - 診斷記錄](./media/cdn-diagnostics-log/cdn-core-analytics-page.png) 
 
-    您的 Log Analytics 工作區現在已經可以記錄資料。 若要取用該資料，您必須使用[Azure 監視器記錄解決方案](#consuming-diagnostics-logs-from-a-log-analytics-workspace)、 涵蓋在本文稍後。
+    您的 Log Analytics 工作區現在已經可以記錄資料。 若要取用該資料，您必須使用[Azure 監視器記錄解決方案](#consuming-diagnostics-logs-from-a-log-analytics-workspace)，本文稍後會加以討論。
 
 如需有關記錄資料延遲的詳細資訊，請參閱[記錄資料延遲](#log-data-delays)。
 
@@ -172,9 +172,9 @@ Azure 診斷記錄可讓您將 CDN 端點的基本使用情況計量匯出到各
 ### <a name="using-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 儲存體總管
 首先您需要一個可存取儲存體帳戶中內容的工具，才能夠存取 Azure 儲存體帳戶的核心分析資料。 雖然市場中有數種工具可使用，但我們建議使用 Microsoft Azure 儲存體總管。 若要下載此工具，請參閱 [Azure 儲存體總管](https://storageexplorer.com/)。 下載並安裝軟體後，請將其設定為使用同一個已設定為 CDN 診斷記錄目的地的 Azure 儲存體帳戶。
 
-1.  開啟 [Microsoft Azure 儲存體總管]
+1.  開啟**Microsoft Azure 儲存體總管**
 2.  找到儲存體帳戶
-3.  展開此儲存體帳戶下方的 [Blob 容器] 節點。
+3.  展開此儲存體帳戶下方的 [Blob 容器]**** 節點。
 4.  選取名為 *insights-logs-coreanalytics* 的容器。
 5.  結果會顯示在右側窗格，開頭的第一層會顯示 *resourceId=*。 繼續選取每個層級，直到您找到 *PT1H.json* 檔案為止。 如需路徑的說明，請參閱 [Blob 路徑格式](cdn-azure-diagnostic-logs.md#blob-path-format)。
 6.  每個 Blob *PT1H.json* 檔案均代表特定 CDN 端點或其自訂網域一小時的分析記錄。
@@ -189,14 +189,14 @@ Azure 診斷記錄可讓您將 CDN 端點的基本使用情況計量匯出到各
 
 **欄位說明：**
 
-|值|描述|
+|值|說明|
 |-------|---------|
 |訂用帳戶識別碼    |使用 GUID 格式的 Azure 訂用帳戶識別碼。|
 |資源群組名稱 |CDN 資源所屬資源群組的名稱。|
 |設定檔名稱 |CDN 設定檔名稱|
 |端點名稱 |CDN 端點名稱|
-|Year|  四位數的年份表示法，例如 2017|
-|月| 兩位數的月份表示法。 01 = 一月...12 =十二月|
+|年|  四位數的年份表示法，例如 2017|
+|Month| 兩位數的月份表示法。 01 = 一月 .。。12 = 十二月|
 |天|   兩位數的當月日期表示法|
 |PT1H.json| 儲存分析資料的實際 JSON 檔案|
 
@@ -206,16 +206,16 @@ Azure 診斷記錄可讓您將 CDN 端點的基本使用情況計量匯出到各
 
 以下為使用此工具的方式：
 
-1.  請造訪 GitHub 連結： [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
+1.  請造訪 GitHub 連結：[https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
 2.  下載程式碼。
 3.  依照指示編譯與設定。
 4.  執行工具。
 5.  產生的 CSV 檔案會以簡單的平面階層顯示分析資料。
 
 ## <a name="consuming-diagnostics-logs-from-a-log-analytics-workspace"></a>從 Log Analytics 工作區取用診斷記錄
-Azure 監視器是一項 Azure 服務，監視您的雲端和內部部署環境，以維護其可用性和效能。 它會收集您的雲端和內部部署環境中的資源所產生的資料，以及從其他監視工具提供橫跨多個來源的分析。 
+Azure 監視器是一種 Azure 服務，可監視您的雲端和內部部署環境，以維護其可用性和效能。 它會收集您的雲端和內部部署環境中的資源所產生的資料，以及從其他監視工具提供橫跨多個來源的分析。 
 
-若要使用 Azure 監視器，您必須[啟用記錄](#enable-logging-with-azure-storage)到 Azure Log Analytics 工作區中，已討論過稍早在本文中。
+若要使用 Azure 監視器，您必須[啟用記錄](#enable-logging-with-azure-storage)至 Azure Log Analytics 工作區，如本文稍早所述。
 
 ### <a name="using-the-log-analytics-workspace"></a>使用 Log Analytics 工作區
 
@@ -227,20 +227,20 @@ Azure 監視器是一項 Azure 服務，監視您的雲端和內部部署環境�
 
 您可以使用管理解決方案，以各種方式顯示資料。 您可以從 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions) 取得管理解決方案。
 
-您也可以選取從 Azure marketplace 安裝監視解決方案**立即取得**底部的每個解決方案的連結。
+您可以選取每個解決方案底部的 [**立即取得**] 連結，以從 Azure marketplace 安裝監視解決方案。
 
-### <a name="add-an-azure-monitor-cdn-monitoring-solution"></a>新增 Azure 監視 CDN 監視解決方案
+### <a name="add-an-azure-monitor-cdn-monitoring-solution"></a>新增 Azure 監視器 CDN 監視解決方案
 
-請遵循下列步驟來新增 Azure 監視器，監視解決方案：
+請遵循下列步驟來新增 Azure 監視器監視解決方案：
 
 1.   使用 Azure 訂用帳戶登入 Azure 入口網站，然後前往您的儀表板。
     ![Azure 儀表板](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
 
-2. 在 [Marketplace] 底下的 [新增] 頁面中，選取 [監視 + 管理]。
+2. 在 [Marketplace]**** 底下的 [新增]**** 頁面中，選取 [監視 + 管理]****。
 
     ![Marketplace](./media/cdn-diagnostics-log/14_Marketplace.png)
 
-3. 在 [監視 + 管理] 頁面中，選取 [檢視全部]。
+3. 在 [監視 + 管理]**** 頁面中，選取 [檢視全部]****。
 
     ![檢視全部](./media/cdn-diagnostics-log/15_See-all.png)
 
@@ -248,11 +248,11 @@ Azure 監視器是一項 Azure 服務，監視您的雲端和內部部署環境�
 
     ![檢視全部](./media/cdn-diagnostics-log/16_Search-for.png)
 
-5. 選取 [Azure CDN 核心分析]。 
+5. 選取 [Azure CDN 核心分析]****。 
 
     ![檢視全部](./media/cdn-diagnostics-log/17_Core-analytics.png)
 
-6. 選取 [建立] 之後，系統會詢問您要建立新的 Log Analytics 工作區，還是使用現有工作區。 
+6. 選取 [建立]**** 之後，系統會詢問您要建立新的 Log Analytics 工作區，還是使用現有工作區。 
 
     ![檢視全部](./media/cdn-diagnostics-log/18_Adding-solution.png)
 
@@ -264,7 +264,7 @@ Azure 監視器是一項 Azure 服務，監視您的雲端和內部部署環境�
 
     ![檢視全部](./media/cdn-diagnostics-log/20_Automation.png)
 
-9. 在建立好自動化帳戶後，您即可新增您的解決方案。 選取 [建立] 按鈕。
+9. 在建立好自動化帳戶後，您即可新增您的解決方案。 選取 [建立]**** 按鈕。
 
     ![檢視全部](./media/cdn-diagnostics-log/21_Ready.png)
 
@@ -274,7 +274,7 @@ Azure 監視器是一項 Azure 服務，監視您的雲端和內部部署環境�
 
     選取您所建立的 Log Analytics 工作區，以前往您的工作區。 
 
-11. 選取 [OMS 入口網站] 圖格，以查看您的新解決方案。
+11. 選取 [OMS 入口網站]**** 圖格，以查看您的新解決方案。
 
     ![檢視全部](./media/cdn-diagnostics-log/23_workspace.png)
 
@@ -298,13 +298,13 @@ Azure 監視器是一項 Azure 服務，監視您的雲端和內部部署環境�
 
 ### <a name="customizing-views"></a>自訂檢視
 
-您可以使用**檢視設計工具**來自訂資料的檢視。 若要開始設計，請前往您的 Log Analytics 工作區，然後選取 [檢視設計工具] 圖格。
+您可以使用**檢視設計工具**來自訂資料的檢視。 若要開始設計，請前往您的 Log Analytics 工作區，然後選取 [檢視設計工具]**** 圖格。
 
-![[檢視設計工具]](./media/cdn-diagnostics-log/27_Designer.png)
+![檢視設計工具](./media/cdn-diagnostics-log/27_Designer.png)
 
 拖放各種圖表類型，然後填入您要分析的資料細節。
 
-![[檢視設計工具]](./media/cdn-diagnostics-log/28_Designer.png)
+![檢視設計工具](./media/cdn-diagnostics-log/28_Designer.png)
 
     
 ## <a name="log-data-delays"></a>記錄資料延遲
@@ -325,32 +325,32 @@ Microsoft 目前僅提供核心分析記錄，其中包含的計量會顯示 HTT
 
 |計量                     | 描述 | Microsoft | Verizon | Akamai |
 |---------------------------|-------------|-----------|---------|--------|
-| RequestCountTotal         | 這段期間要求命中總數。 | 是 | 是 |是 |
-| RequestCountHttpStatus2xx | 產生 2xx HTTP 代碼 (例如 200、202) 的所有要求計數。 | 是 | 是 |是 |
-| RequestCountHttpStatus3xx | 產生 3xx HTTP 代碼 (例如 300、302) 的所有要求計數。 | 是 | 是 |是 |
-| RequestCountHttpStatus4xx | 產生 4xx HTTP 代碼 (例如 400、404) 的所有要求計數。 | 是 | 是 |是 |
-| RequestCountHttpStatus5xx | 產生 5xx HTTP 代碼 (例如 500、504) 的所有要求計數。 | 是 | 是 |是 |
-| RequestCountHttpStatusOthers | 所有其他 HTTP 代碼 (2xx-5xx 以外) 的計數。 | 是 | 是 |是 |
+| RequestCountTotal         | 這段期間要求命中總數。 | Yes | Yes |Yes |
+| RequestCountHttpStatus2xx | 產生 2xx HTTP 代碼 (例如 200、202) 的所有要求計數。 | Yes | Yes |Yes |
+| RequestCountHttpStatus3xx | 產生 3xx HTTP 代碼 (例如 300、302) 的所有要求計數。 | Yes | Yes |Yes |
+| RequestCountHttpStatus4xx | 產生 4xx HTTP 代碼 (例如 400、404) 的所有要求計數。 | Yes | Yes |Yes |
+| RequestCountHttpStatus5xx | 產生 5xx HTTP 代碼 (例如 500、504) 的所有要求計數。 | Yes | Yes |Yes |
+| RequestCountHttpStatusOthers | 所有其他 HTTP 代碼 (2xx-5xx 以外) 的計數。 | Yes | Yes |Yes |
 | RequestCountHttpStatus200 | 產生 200 HTTP 代碼回應的所有要求計數。 | 是 | 否  |是 |
 | RequestCountHttpStatus206 | 產生 206 HTTP 代碼回應的所有要求計數。 | 是 | 否  |是 |
 | RequestCountHttpStatus302 | 產生 302 HTTP 代碼回應的所有要求計數。 | 是 | 否  |是 |
 | RequestCountHttpStatus304 | 產生 304 HTTP 代碼回應的所有要求計數。 | 是 | 否  |是 |
 | RequestCountHttpStatus404 | 產生 404 HTTP 代碼回應的所有要求計數。 | 是 | 否  |是 |
-| RequestCountCacheHit | 產生快取命中之所有要求的計數。 資產是從 POP 直接提供給用戶端。 | 是 | 是 | 否  |
-| RequestCountCacheMiss | 產生快取遺漏之所有要求的計數。 快取遺漏表示在最靠近用戶端的 POP 上找不到資產，因此會從來源擷取。 | 是 | 是 | 否 |
-| RequestCountCacheNoCache | 因為邊緣上的使用者組態之故，而無法予以快取的所有資產要求計數。 | 是 | 是 | 否 |
-| RequestCountCacheUncacheable | 無法由資產的 Cache-Control 與 Expires 標頭快取的所有資產要求計數，這表示不應在 POP 上或由 HTTP 用戶端快取要求。 | 是 | 是 | 否 |
+| RequestCountCacheHit | 產生快取命中之所有要求的計數。 資產是從 POP 直接提供給用戶端。 | Yes | 是 | 否  |
+| RequestCountCacheMiss | 產生快取遺漏之所有要求的計數。 快取遺漏表示在最靠近用戶端的 POP 上找不到資產，因此會從來源擷取。 | Yes | 是 | 否 |
+| RequestCountCacheNoCache | 因為邊緣上的使用者組態之故，而無法予以快取的所有資產要求計數。 | Yes | 是 | 否 |
+| RequestCountCacheUncacheable | 無法由資產的 Cache-Control 與 Expires 標頭快取的所有資產要求計數，這表示不應在 POP 上或由 HTTP 用戶端快取要求。 | Yes | 是 | 否 |
 | RequestCountCacheOthers | 非上述快取狀態的所有要求計數。 | 否 | 是 | 否  |
-| EgressTotal | 輸出資料傳輸 (單位 GB) | 是 |是 |是 |
-| EgressHttpStatus2xx | 狀態代碼為 2xx HTTP 之回應的輸出資料傳輸* (單位為 GB)。 | 是 | 是 | 否  |
-| EgressHttpStatus3xx | 狀態代碼為 3xx HTTP 之回應的輸出資料傳輸 (單位為 GB)。 | 是 | 是 | 否  |
-| EgressHttpStatus4xx | 狀態代碼為 4xx HTTP 之回應的輸出資料傳輸 (單位為 GB)。 | 是 | 是 | 否  |
-| EgressHttpStatus5xx | 狀態代碼為 5xx HTTP 之回應的輸出資料傳輸 (單位為 GB)。 | 是 | 是 | 否 |
-| EgressHttpStatusOthers | 狀態代碼為其他 HTTP 之回應的輸出資料傳輸 (單位為 GB)。 | 是 | 是 | 否  |
-| EgressCacheHit | 直接從 CDN POP/邊緣上 CDN 快取所傳遞回應的輸出資料傳輸。 | 是 | 是 | 否 |
-| EgressCacheMiss。 | 在最靠近的 POP 伺服器上找不到和從原始伺服器擷取之回應的輸出資料傳輸。 | 是 | 是 | 否 |
-| EgressCacheNoCache | 因為邊緣上使用者組態之故而無法予以快取的資產輸出資料傳輸。 | 是 | 是 | 否 |
-| EgressCacheUncacheable | 無法由資產的 Cache-Control 和/或 Expires 標頭快取的資產輸出資料傳輸。 表示應該不會在 POP 上加以快取或由 HTTP 用戶端進行快取。 | 是 | 是 | 否 |
+| EgressTotal | 輸出資料傳輸 (單位 GB) | Yes |Yes |Yes |
+| EgressHttpStatus2xx | 狀態代碼為 2xx HTTP 之回應的輸出資料傳輸* (單位為 GB)。 | Yes | 是 | 否  |
+| EgressHttpStatus3xx | 狀態代碼為 3xx HTTP 之回應的輸出資料傳輸 (單位為 GB)。 | Yes | 是 | 否  |
+| EgressHttpStatus4xx | 狀態代碼為 4xx HTTP 之回應的輸出資料傳輸 (單位為 GB)。 | Yes | 是 | 否  |
+| EgressHttpStatus5xx | 狀態代碼為 5xx HTTP 之回應的輸出資料傳輸 (單位為 GB)。 | Yes | 是 | 否 |
+| EgressHttpStatusOthers | 狀態代碼為其他 HTTP 之回應的輸出資料傳輸 (單位為 GB)。 | Yes | 是 | 否  |
+| EgressCacheHit | 直接從 CDN POP/邊緣上 CDN 快取所傳遞回應的輸出資料傳輸。 | Yes | 是 | 否 |
+| EgressCacheMiss。 | 在最靠近的 POP 伺服器上找不到和從原始伺服器擷取之回應的輸出資料傳輸。 | Yes | 是 | 否 |
+| EgressCacheNoCache | 因為邊緣上使用者組態之故而無法予以快取的資產輸出資料傳輸。 | Yes | 是 | 否 |
+| EgressCacheUncacheable | 無法由資產的 Cache-Control 和/或 Expires 標頭快取的資產輸出資料傳輸。 表示應該不會在 POP 上加以快取或由 HTTP 用戶端進行快取。 | Yes | 是 | 否 |
 | EgressCacheOthers | 其他快取案例的輸出資料傳輸。 | 否 | 是 | 否 |
 
 *輸出資料傳輸是指從 CDN POP 伺服器傳遞到用戶端的流量。
@@ -403,7 +403,7 @@ Microsoft 目前僅提供核心分析記錄，其中包含的計量會顯示 HTT
 }
 ```
 
-其中 time 代表報告某段時間統計資料時該時間範圍的開始時間。 當 CDN 提供者不支援計量時，而非雙精確度值或整數值，則將會有 null 值。 此 null 值表示沒有計量，且與 0 值不同。 各網域會在端點上有一組這類計量設定。
+其中 time** 代表報告某段時間統計資料時該時間範圍的開始時間。 當 CDN 提供者不支援計量時，而非雙精確度值或整數值，則將會有 null 值。 此 null 值表示沒有計量，且與 0 值不同。 各網域會在端點上有一組這類計量設定。
 
 範例屬性︰
 

@@ -1,26 +1,24 @@
 ---
-title: Azure PowerShell 指令碼範例 - 從快照集建立受控磁碟 | Microsoft Docs
+title: 從快照集建立受控磁碟 - PowerShell 範例
 description: Azure PowerShell 指令碼範例 - 從快照集建立受控磁碟
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
 manager: kavithag
-editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 055a24aac01b58178e8a4e24986786eeffff3430
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 89ab1a388aa6497e559a1746ee8165ccd8cae1ef
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57249491"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81459877"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-powershell"></a>使用 PowerShell 從快照集建立受控磁碟
 
@@ -28,9 +26,7 @@ ms.locfileid: "57249491"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
-
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+ 
 
 ## <a name="sample-script"></a>範例指令碼
 
@@ -40,7 +36,7 @@ ms.locfileid: "57249491"
 
 此指令碼使用下列命令從快照集建立受控磁碟。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [Get-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/Get-AzSnapshot) | 取得快照集屬性。  |
 | [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | 建立用於磁碟建立的磁碟組態。 其中包含父代快照集的資源識別碼、與父代快照集位置相同的位置和儲存體類型。  |

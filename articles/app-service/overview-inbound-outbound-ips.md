@@ -1,25 +1,14 @@
 ---
-title: 輸入/輸出 IP 位址 - Azure App Service | Microsoft Docs
-description: 說明 App Service 是如何使用輸入和輸出 IP 位址的，以及如何為應用程式尋找這些位址的相關資訊。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: 輸入/輸出 IP 位址
+description: 瞭解輸入和輸出 IP 位址在 Azure App Service 中的使用方式、變更時間，以及如何尋找您的應用程式位址。
 ms.topic: article
-ms.date: 04/20/2018
-ms.author: cephalin
+ms.date: 06/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 96f580532d9ea45dd767e32c2451243e83af66ea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 8bcd80fde95e467513590f3ed09b1dadd2646aee
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60835289"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81537622"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure App Service 中的輸入和輸出 IP 位址
 
@@ -32,12 +21,20 @@ ms.locfileid: "60835289"
 不論相應放大的執行個體數目為何，每個應用程式都只有一個輸入 IP 位址。 輸入 IP 位址可能會在您執行下列動作之一時變更：
 
 - 刪除應用程式，並在不同資源群組中重建。
-- 刪除資源群組和區域組合中的最後一個應用程式，並予以重建。
-- 刪除現有 SSL 繫結，例如在憑證更新期間 (請參閱[更新憑證](app-service-web-tutorial-custom-ssl.md#renew-certificates))。
+- 刪除資源群組和__ 區域組合中的最後一個應用程式，並予以重建。
+- 刪除現有的 TLS 系結，例如在憑證更新期間（請參閱[更新憑證](configure-ssl-certificate.md#renew-certificate)）。
 
-## <a name="get-static-inbound-ip"></a>取得靜態的輸入 IP
+## <a name="find-the-inbound-ip"></a>尋找輸入 IP
 
-有時候您可能會想讓應用程式使用專用的靜態 IP 位址。 若要取得靜態的輸入 IP 位址，您需要設定[以 IP 為基礎的 SSL 繫結](app-service-web-tutorial-custom-ssl.md#bind-your-ssl-certificate)。 如果您實際上不需要 SSL 功能來保護您的應用程式，您甚至可以上傳自我簽署憑證供此繫結使用。 在以 IP 為基礎的 SSL 繫結中，憑證會繫結至 IP 位址本身，因此 App Service 會佈建靜態 IP 位址來實現這一點。 
+只要在本機終端機中執行下列命令：
+
+```bash
+nslookup <app-name>.azurewebsites.net
+```
+
+## <a name="get-a-static-inbound-ip"></a>取得靜態的輸入 IP
+
+有時候您可能會想讓應用程式使用專用的靜態 IP 位址。 若要取得靜態的輸入 IP 位址，您必須[保護自訂網域](configure-ssl-bindings.md#secure-a-custom-domain)。 如果您實際上不需要 TLS 功能來保護您的應用程式，您甚至可以上傳此系結的自我簽署憑證。 在以 IP 為基礎的 TLS 系結中，憑證會系結至 IP 位址本身，因此 App Service 會布建靜態 IP 位址來進行這項操作。 
 
 ## <a name="when-outbound-ips-change"></a>當輸出 IP 變更時
 
@@ -45,11 +42,11 @@ ms.locfileid: "60835289"
 
 當您在較低層級 (**基本**、**標準**和**進階**) 和**進階 V2** 層級之間調整應用程式時，應用程式的該組輸出 IP 位址會變更。
 
-无论是哪个定价层，你都可以通过查找 `possibleOutboundIPAddresses` 属性或者在 Azure 门户的“属性”边栏选项卡中的“其他出站 IP 地址”字段中查找你的应用可以使用的所有可能的出站 IP 地址。 請參閱[尋找輸出 IP](#find-outbound-ips)。
+您可以在 Azure 入口網站的 [內容] 分頁中，尋找 `possibleOutboundIpAddresses` 屬性或 [**其他輸出 ip 位址**] 欄位，以尋找您的應用程式可以使用的所有可能輸出 ip 位址**Properties**集合（不論定價層為何）。 請參閱[尋找輸出 IP](#find-outbound-ips)。
 
 ## <a name="find-outbound-ips"></a>尋找輸出 IP
 
-若要在 Azure 入口網站中尋找應用程式目前所使用的輸出 IP 位址，請按一下應用程式左側導覽中的 [屬性]。 它们列出在“出站 IP 地址”字段中。
+若要在 Azure 入口網站中尋找應用程式目前所使用的輸出 IP 位址，請按一下應用程式左側導覽中的 [屬性]****。 它們會列在 [**輸出 IP 位址**] 欄位中。
 
 您可以在 [Cloud Shell](../cloud-shell/quickstart.md) 中執行下列命令來找到同樣的資訊。
 
@@ -61,7 +58,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query outboundI
 (Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).OutboundIpAddresses
 ```
 
-若要查找你的应用可能使用的所有出站 IP 地址（无论是哪个定价层），请在你的应用的左侧导航栏中单击“属性”。 它们列出在“其他出站 IP 地址”字段中。
+若要尋找應用程式的_所有_可能輸出 IP 位址，不論定價層為何，請按一下應用程式左側導覽中的 [**屬性**]。 它們會列在 [**其他輸出 IP 位址**] 欄位中。
 
 您可以在 [Cloud Shell](../cloud-shell/quickstart.md) 中執行下列命令來找到同樣的資訊。
 

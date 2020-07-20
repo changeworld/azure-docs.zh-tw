@@ -1,78 +1,115 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Hub
 title: Azure Resource Manager 文件
+summary: Azure Resource Manager 是 Azure 的部署和管理服務。 使用基礎結構即程式碼，可靠地部署和管理您的 Azure 解決方案。
+brand: azure
 metadata:
-  title: Azure Resource Manager 文件 - 教學課程、範例、參考和資源
-  description: 了解如何使用 Resource Manager，以群組方式部署和管理解決方案資源，並建立可供一致和重複資源部署的範本。
-  services: azure-resource-manager
+  title: Azure Resource Manager 文件
+  description: Azure Resource Manager 是 Azure 的部署和管理服務。
   ms.service: azure-resource-manager
-  keywords: 'Resource Manager, azure, 開發, 教學課程, 範例, 參考, 文件'
-  author: mumian
-  manager: dougeby
-  ms.author: jgao
-  ms.topic: landing-page
-  ms.date: 12/10/2018
-abstract:
-  description: 了解如何使用 Resource Manager，以群組方式部署、監視和管理解決方案資源。 教學課程、API 參考和其他文件會示範如何設定資源群組，並建立可供一致和重複資源部署的範本。
-sections:
-  - title: 快速入門
-    items:
-      - type: paragraph
-        text: 使用各種工具建立 Azure Resource Manager 範本以便部署 Azure 資源。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: 使用 Azure 入口網站產生範本
-            href: 'https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
-            text: 使用 Visual Studio Code 建立範本
-            href: 'https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
-            text: 使用 Visual Studio 建立範本
-            href: 'https://docs.microsoft.com/azure/azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy'
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何建立 Azure Resource Manager 範本以部署 Azure 資源。
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts">利用 Resource Manager 範本參考</a>。'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-multiple-instances">為 Azure 資源建立多個執行個體</a>。'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-templates-with-dependent-resources">設定資源部署順序</a>。'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-use-conditions">使用條件</a>。'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-use-key-vault">整合 Azure Key Vault</a>。'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-linked-templates">建立連結的範本</a>。'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions">部署虛擬機器延伸模組</a>。'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-deploy-sql-extensions-bacpac">部署 SQL 延伸模組</a>。'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-secure-artifacts">保障範本成品安全性</a>。'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/deployment-manager-tutorial">使用安全部署做法</a>。'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot">疑難排解範本部署</a>。'
-  - title: 範例
-    items:
-      - type: paragraph
-        text: 一般部署工作的範例組態範本。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://azure.microsoft.com/resources/templates/">Azure 快速入門範本</a>'
-          - html: '<a href="https://resources.azure.com/">Azure 資源總管 (預覽)</a>'
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 範本
-            html: <p><a href="/azure/templates/">範本參考</a></p><p><a href="/azure/resource-group-template-functions">範本函式</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-functions">UI 定義函式</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-elements">UI 定義元素</a></p>
-          - title: 命令列
-            html: <p><a href="/cli/azure/resource">Azure CLI</a></p><p><a href="/powershell/module/az.resources">Azure PowerShell</a></p>
-          - title: 語言
-            html: <p><a href="/dotnet/api/microsoft.azure.management.resourcemanager">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.resources">Java</a></p><p><a href="/python/api/overview/azure/resources?view=azure-python">Python</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/resources/">REST API</a></p>
+  ms.topic: hub-page
+  ms.collection: collection
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 03/04/2020
+  ms.openlocfilehash: 6a0c4ecff3f381dc12ba3ce6f385782754857bfe
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "78297720"
+highlightedContent:
+  items:
+  - title: 什麼是 Resource Manager？
+    itemType: overview
+    url: management/overview.md
+  - title: 什麼是 ARM 範本？
+    itemType: overview
+    url: templates/overview.md
+  - title: 建立您的第一個範本
+    itemType: tutorial
+    url: templates/template-tutorial-create-first-template.md
+conceptualContent:
+  items:
+  - title: 部署 ARM 範本
+    links:
+    - url: templates/overview.md
+      itemType: overview
+      text: 概觀
+    - url: templates/template-tutorial-create-first-template.md
+      itemType: tutorial
+      text: 初學者教學課程系列
+    - url: templates/template-syntax.md
+      itemType: reference
+      text: 範本語法
+    - url: templates/template-functions.md
+      itemType: reference
+      text: 範本函式
+    - url: /azure/templates/
+      itemType: reference
+      text: 範本參考
+    - url: templates/deploy-powershell.md
+      itemType: how-to-guide
+      text: 部署
+    - url: templates/template-best-practices.md
+      itemType: concept
+      text: 最佳作法
+    footerLink:
+      url: templates/index.yml
+      text: 查看更多
+  - title: 管理資源
+    links:
+    - url: management/overview.md
+      itemType: overview
+      text: 概觀
+    - url: management/tag-resources.md
+      itemType: how-to-guide
+      text: 標記資源
+    - url: management/move-resource-group-and-subscription.md
+      itemType: concept
+      text: 移動資源
+    - url: management/lock-resources.md
+      itemType: how-to-guide
+      text: 鎖定資源
+    - url: management/resource-providers-and-types.md
+      itemType: concept
+      text: 資源提供者和類型
+    - url: management/azure-subscription-service-limits.md
+      itemType: concept
+      text: 訂用帳戶與服務限制
+    footerLink:
+      url: management/index.yml
+      text: 查看更多
+  - title: 受控應用程式
+    links:
+    - url: managed-applications/overview.md
+      itemType: overview
+      text: 概觀
+    - url: managed-applications/publish-service-catalog-app.md
+      itemType: tutorial
+      text: 將應用程式發佈至服務目錄
+    - url: managed-applications/create-uidefinition-overview.md
+      itemType: how-to-guide
+      text: 定義用來建立應用程式的入口網站窗格
+    - url: managed-applications/publish-marketplace-app.md
+      itemType: tutorial
+      text: 將應用程式新增至 Marketplace
+    footerLink:
+      url: managed-applications/index.yml
+      text: 查看更多
+  - title: Azure 自訂提供者
+    links:
+    - url: custom-providers/overview.md
+      itemType: overview
+      text: 概觀
+    - url: custom-providers/create-custom-provider.md
+      itemType: quickstart
+      text: 建立自訂提供者
+    - url: custom-providers/tutorial-get-started-with-custom-providers.md
+      itemType: tutorial
+      text: 建立自訂動作和資源
+    - url: custom-providers/custom-providers-action-endpoint-how-to.md
+      itemType: how-to-guide
+      text: 將自訂動作新增至 Azure REST API
+    footerLink:
+      url: custom-providers/index.yml
+      text: 查看更多

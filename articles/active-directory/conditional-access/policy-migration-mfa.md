@@ -1,32 +1,27 @@
 ---
-title: 在 Azure 入口網站中移轉要求多重要素驗證的傳統原則
+title: 遷移條件式存取原則 - Azure Active Directory
 description: 本文示範在 Azure 入口網站中移轉要求多重要素驗證的傳統原則。
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: tutorial
-ms.date: 06/13/2018
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6661cee8ba6176bd706d31a10a8f20549e29e4d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: d1dc7b7227dbaee488726a75fe7120bd26614dbf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795044"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83993723"
 ---
-# <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>在 Azure 入口網站中移轉要求多重要素驗證的傳統原則
+# <a name="migrate-a-classic-policy-in-the-azure-portal"></a>在 Azure 入口網站中遷移傳統原則
 
-本教學課程示範如何移轉要求雲端應用程式進行**多重要素驗證**的傳統原則。 雖然這不是必要條件，但我們建議您先閱讀[在 Azure 入口網站中移轉傳統原則](policy-migration.md)，再開始移轉傳統原則。
+本文示範如何移轉要求雲端應用程式進行**多重要素驗證**的傳統原則。 雖然這不是必要條件，但我們建議您先閱讀[在 Azure 入口網站中移轉傳統原則](policy-migration.md)，再開始移轉傳統原則。
 
-## <a name="overview"></a>概觀
-
-本文中的案例示範如何移轉要求雲端應用程式進行**多重要素驗證**的傳統原則。
-
-![Azure Active Directory](./media/policy-migration/33.png)
+![針對 Salesforce 應用程式需要 MFA 的傳統原則詳細資料](./media/policy-migration/33.png)
 
 移轉程序包含下列步驟：
 
@@ -36,94 +31,44 @@ ms.locfileid: "59795044"
 
 ## <a name="open-a-classic-policy"></a>開啟傳統原則
 
-1. 在 [Azure 入口網站](https://portal.azure.com)的左側導覽列上，按一下 [Azure Active Directory]。
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，流覽至 [ **Azure Active Directory**  >  **安全性**] [  >  **條件式存取**]。
+1. 選取 [**傳統原則**]。
 
-   ![Azure Active Directory](./media/policy-migration-mfa/01.png)
+   ![傳統原則視圖](./media/policy-migration-mfa/12.png)
 
-1. 在 [Azure Active Directory] 頁面的 [管理] 區段中，按一下 [條件式存取]。
-
-   ![條件式存取](./media/policy-migration-mfa/02.png)
-
-1. 在 [管理] 區段中，按一下 [傳統原則 (預覽)]。
-
-   ![傳統原則](./media/policy-migration-mfa/12.png)
-
-1. 在傳統原則清單中，按一下要求雲端應用程式進行**多重要素驗證**的原則。
-
-   ![傳統原則](./media/policy-migration-mfa/13.png)
+1. 在傳統原則清單中，選取您想要遷移的原則。 記錄設定，讓您可以使用新的條件式存取原則來重新建立。
 
 ## <a name="create-a-new-conditional-access-policy"></a>建立新的條件式存取原則
 
-1. 在 [Azure 入口網站](https://portal.azure.com)的左側導覽列上，按一下 [Azure Active Directory]。
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，流覽至 [ **Azure Active Directory**  >  **安全性**] [  >  **條件式存取**]。
+1. 若要建立新的條件式存取原則，請選取 [**新增原則**]。
+1. 在 [新增]**** 頁面的 [名稱]**** 文字方塊中，鍵入您的原則名稱。
+1. 在 [指派]**** 區段中，按一下 [使用者和群組]****。
+   1. 如已選取傳統原則中的所有使用者，請按一下 [所有使用者]****。 
+   1. 如已選取傳統原則中的群組，請按一下 [選取使用者和群組]****，然後選取所需的使用者和群組。
+   1. 如已排除群組，請按一下 [排除]**** 索引標籤，然後選取所需的使用者和群組。 
+   1. 選取 [完成] 
+1. 在 [**指派**] 區段中，按一下 [**雲端應用程式] 或 [動作**]。
+1. 在 [**雲端應用程式] 或 [動作**] 頁面上，執行下列步驟：
+   1. 按一下 [選取應用程式]****。
+   1. 按一下 [選取]。
+   1. 在 [選取]**** 頁面上，選取您的雲端應用程式，然後按一下 [選取]****。
+   1. 在 [**雲端應用程式**] 頁面上，按一下 [**完成**]。
+1. 如已選取 [需要多重要素驗證]****：
+   1. 在 [存取控制]**** 區段中，按一下 [授與]****。
+   1. 在 [授與]**** 頁面上，按一下 [授與存取權]****，然後按一下 [需要多重要素驗證]****。
+   1. 按一下 [選取]。
+1. 按一下 [**開啟**] 以啟用您的原則，然後選取 [**儲存**]。
 
-   ![Azure Active Directory](./media/policy-migration/01.png)
-
-1. 在 [Azure Active Directory] 頁面的 [管理] 區段中，按一下 [條件式存取]。
-
-   ![條件式存取](./media/policy-migration/02.png)
-
-1. 若要在 [條件式存取] 頁面上開啟 [新增] 頁面，請在頂端的工具列中按一下 [新增]。
-
-   ![條件式存取](./media/policy-migration/03.png)
-
-1. 在 [新增] 頁面的 [名稱] 文字方塊中，鍵入您的原則名稱。
-
-   ![條件式存取](./media/policy-migration/29.png)
-
-1. 在 [指派] 區段中，按一下 [使用者和群組]。
-
-   ![條件式存取](./media/policy-migration/05.png)
-
-   1. 如已選取傳統原則中的所有使用者，請按一下 [所有使用者]。 
-
-   ![條件式存取](./media/policy-migration/35.png)
-
-   1. 如已選取傳統原則中的群組，請按一下 [選取使用者和群組]，然後選取所需的使用者和群組。
-
-   ![條件式存取](./media/policy-migration/36.png)
-
-   1. 如已排除群組，請按一下 [排除] 索引標籤，然後選取所需的使用者和群組。 
-
-   ![條件式存取](./media/policy-migration/37.png)
-
-1. 在 [新增] 頁面上，若要開啟 [雲端應用程式] 頁面，請在 [指派] 區段中，按一下 [雲端應用程式]。
-
-1. 在 [雲端應用程式] 頁面上，執行下列步驟︰
-
-   ![條件式存取](./media/policy-migration/08.png)
-
-   1. 按一下 [選取應用程式]。
-
-   1. 按一下 [選取] 。
-
-   1. 在 [選取] 頁面上，選取您的雲端應用程式，然後按一下 [選取]。
-
-   1. 在 [雲端應用程式] 頁面上，按一下 [完成]。
-
-1. 如已選取 [需要多重要素驗證]：
-
-   ![條件式存取](./media/policy-migration/26.png)
-
-   1. 在 [存取控制] 區段中，按一下 [授與]。
-
-   ![條件式存取](./media/policy-migration/27.png)
-
-   1. 在 [授與] 頁面上，按一下 [授與存取權]，然後按一下 [需要多重要素驗證]。
-
-   1. 按一下 [選取] 。
-
-1. 按一下 [開啟] 以啟用您的原則。
-
-   ![條件式存取](./media/policy-migration/30.png)
+   ![條件式存取原則建立](./media/policy-migration-mfa/conditional-access-policy-migration.png)
 
 ## <a name="disable-the-classic-policy"></a>停用傳統原則
 
-若要停用傳統原則，請在 [詳細資料] 檢視中按一下 [停用]。
+若要停用傳統原則，請在 [詳細資料]**** 檢視中按一下 [停用]****。
 
-![傳統原則](./media/policy-migration-mfa/14.png)
+![停用傳統原則](./media/policy-migration-mfa/14.png)
 
 ## <a name="next-steps"></a>後續步驟
 
 - 如需傳統原則移轉的詳細資訊，請參閱[在 Azure 入口網站中移轉傳統原則](policy-migration.md)。
-- 如果您想要知道如何設定條件式存取原則，請參閱[利用 Azure Active Directory 條件式存取來取得特定應用程式的 MFA](app-based-mfa.md)。
-- 如果您已準備好設定您環境的條件式存取原則，請參閱 [Azure Active Directory 中條件式存取的最佳做法](best-practices.md)。
+- [使用僅限報告模式來進行條件式存取，以判斷新原則決策的影響。](concept-conditional-access-report-only.md)

@@ -1,5 +1,5 @@
 ---
-title: 適用於合作夥伴的 Microsoft Azure StorSimple 和雲端解決方案提供者方案的常見問題集 | Microsoft Docs
+title: 合作夥伴的常見問題： StorSimple for Cloud 解決方案提供者方案
 description: 針對適用於合作夥伴的 StorSimple 和 CSP 的一些常見問題，尋找解答。
 services: storsimple
 documentationcenter: NA
@@ -14,17 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 4750ba55c08ebac244e7515cae4e998155a79599
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: eaf22773e581f0b7557a64917e183573039d1cef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60628864"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77116158"
 ---
-# <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>適用於雲端解決方案提供者的 StorSimple 方案：常見問題集
+# <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>適用於雲端解決方案提供者的 StorSimple 方案︰常見問題集
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 以下是 StorSimple 合作夥伴在 Azure 入口網站中部署或管理 StorSimple Virtual Array 時，可能遇到的問題和解答。
 
 問題和解答分成下列幾個類別：
@@ -75,7 +74,7 @@ StorSimple 是依使用量計算的服務。 透過 CSP 途徑採購 StorSimple 
 是。 使用 StorSimple Virtual Array for CSP 時，合作夥伴存取 Azure 入口網站的最佳方式就是透過[合作夥伴中心](https://partnercenter.microsoft.com/)，他們可以在其中管理客戶和訂用帳戶。 若要管理 StorSimple 訂用帳戶，合作夥伴或客戶 (取決於授與的權限) 應該登入 Azure 入口網站。 
 
 ### <a name="is-microsoft-shipping-a-new-portal-for-storsimple-for-csp"></a>Microsoft 有替 StorSimple for CSP 提供新的入口網站嗎？ 
-沒有。 您可以透過 Azure 入口網站，管理 CSP 中的 StorSimple Virtual Array。
+否。 您可以透過 Azure 入口網站，管理 CSP 中的 StorSimple Virtual Array。
 
 ### <a name="i-have-provisioned-a-standalone-storsimple-subscription-for-my-customer-do-i-have-to-use-the-azure-portal-to-administer-my-device"></a>我已經為客戶佈建獨立 StorSimple 訂用帳戶。 我必須使用 Azure 入口網站來管理我的裝置嗎？ 
 是。 
@@ -89,7 +88,7 @@ StorSimple 是依使用量計算的服務。 透過 CSP 途徑採購 StorSimple 
 您可以瀏覽 StorSimple in CSP 論壇，以獲得一些常見問題的答案。 您必須先加入 [Azure Advisor Yammer 群組](https://www.yammer.com/azureadvisors)。 接著搜尋並加入群組 - **StorSimple 合作夥伴顧問**。
 
 ### <a name="how-does-the-support-work-for-storsimple-for-csp"></a>StorSimple for CSP 的支援如何運作？ 
-StorSimple in CSP 的支援模型與 CSP 中其他 Azure 服務的支援模型相同。 如需詳細資訊，請移至 [CSP 的客戶支援](https://msdn.microsoft.com/partner-center/customer-support)。 
+StorSimple in CSP 的支援模型與 CSP 中其他 Azure 服務的支援模型相同。 如需詳細資訊，請移至 [CSP 的客戶支援](/partner-center/csp-overview)。
 
 如需 StorSimple for CSP 的詳細資訊，請移至：
 

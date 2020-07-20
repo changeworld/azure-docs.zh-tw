@@ -1,41 +1,29 @@
 ---
-title: 建立用來準備作業的工作並對計算節點完成作業 - Azure Batch | Microsoft Docs
+title: 在計算節點上建立工作來準備和完成作業
 description: 使用作業層級準備工作以減少傳輸到 Azure Batch 計算節點的資料，並在作業完成時解除工作以清理節點。
-services: batch
-documentationcenter: .net
-author: dlepow
-manager: jeconnoc
-editor: ''
-ms.assetid: 63d9d4f1-8521-4bbb-b95a-c4cad73692d3
-ms.service: batch
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
-origin.date: 02/27/2017
-ms.date: 06/29/2018
-ms.author: v-junlch
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 517ac0f612b9e5fc5909a7f0fe2ce088c9b367d9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 02/17/2020
+ms.custom: seodec18
+ms.openlocfilehash: 4bd7c87028dc01fdccecdb7beac765e74fb3435c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60776184"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964357"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>在 Batch 計算節點上執行作業準備和作業解除工作
 
- Azure Batch 作业在执行其任务之前，通常需要经过某种形式的设置，并且需要在其任务完成时进行作业后维护。 您可能需要將常見的工作輸入資料下載到計算節點，或在作業完成後，將工作輸出資料上傳至 Azure 儲存體。 您可以使用**作業準備**和**作業解除**工作來執行這些操作。
+ Azure Batch 作業在執行其工作之前，通常需要經過某種形式的設定，並需要在其工作完成時進行後置作業維護。 您可能需要將常見的工作輸入資料下載到計算節點，或在作業完成後，將工作輸出資料上傳至 Azure 儲存體。 您可以使用**作業準備**和**作業解除**工作來執行這些操作。
 
 ## <a name="what-are-job-preparation-and-release-tasks"></a>什麼是作業準備和作業解除工作？
-在作業的工作執行之前，會在排定執行至少一個工作的所有計算節點上執行作業準備工作。 作業一旦完成，作業解除工作會在集區中的每個節點上執行，集區至少會執行一項工作。 与普通的 Batch 任务一样，可以指定在运行作业准备或释放任务时要调用的命令行。
+在作業的工作執行之前，會在排定執行至少一個工作的所有計算節點上執行作業準備工作。 作業一旦完成，作業解除工作會在集區中的每個節點上執行，集區至少會執行一項工作。 如同一般的 Batch 工作，您可以指定要在作業準備或作業解除工作執行時叫用的命令列。
 
-作業準備和作業解除工作會提供熟悉的 Batch 工作功能，例如檔案下載 ([資源檔][net_job_prep_resourcefiles])、提升權限的執行、自訂環境變數、最大執行持續時間、重試計數和檔案保留時間。
+作業準備和作業解除工作提供熟悉的 Batch 工作功能，例如檔案下載 ([資源檔][net_job_prep_resourcefiles])、提升權限的執行、自訂環境變數、最大執行持續時間、重試計數和檔案保留時間。
 
-在接下來幾節中，您將了解如何使用在 [Batch .NET][api_net] 程式庫中找到的 [JobPreparationTask][net_job_prep] 和 [JobReleaseTask][net_job_release] 類別。
+在下列各節中，您將了解如何使用 [Batch .NET][api_net] 程式庫中的 [JobPreparationTask][net_job_prep] 和 [JobReleaseTask][net_job_release] 類別。
 
 > [!TIP]
-> 作业准备和释放任务在“共享池”环境中特别有用。在这些环境中，计算节点池在任务运行之间保留，并由许多作业使用。
+> 作業準備和作業解除工作在「共用集區」環境中特別有用；在這種環境中，計算節點的集區會在作業執行之間保存，並由許多作業使用。
 > 
 > 
 
@@ -52,35 +40,40 @@ Batch 作業通常需要一組常用的資料做為作業工作的輸入。 例�
 
 **記錄保留**
 
-可能想要保留任务生成的日志文件的副本，或失败应用程序可能生成的崩溃转储文件。 在這類情況下使用**作業解除工作**，將此資料壓縮並上傳至 [Azure 儲存體][azure_storage]帳戶。
+您可能想要保留一份工作產生的記錄檔，或失敗應用程式所產生的損毀傾印檔案。 在這種情況下，請使用**作業解除工作**，將此資料壓縮並上傳至 [Azure 儲存體][azure_storage]帳戶。
 
 > [!TIP]
-> 保存日志及其他作业和任务输出数据的另一种方法是使用 [Azure Batch 文件约定](batch-task-output.md)库。
-> 
-> 
+> 另一個可保存記錄以及其他作業和工作輸出資料的方法是使用 [Azure Batch 檔案慣例](batch-task-output.md) 庫。
+>
+>
 
 ## <a name="job-preparation-task"></a>作業準備工作
-執行作業的工作之前，Batch 會在排定執行工作的每個計算節點上執行作業準備工作。 依預設，Batch 服務會等作業準備工作完成，才執行節點上排定的工作。 不過，您可以設定服務不要等待。 如果節點重新啟動，作業準備工作會再次執行，但您也可以停用此行為。
 
-作業準備工作只會在排定執行工作的節點上執行。 這可避免未指派工作的節點執行不必要的準備工作。 這種情況會發生在當作業的工作數目小於集區中的節點數目時。 此外，也適用於已啟用 [並行工作執行](batch-parallel-node-tasks.md) 時，而如果作業計數小於可能的並行工作總數，則會讓一些節點閒置。 不在空闲节点上运行作业准备任务可以节省数据传输费用。
+
+執行作業的工作之前，在每個已排定執行工作的計算節點上，Batch 會執行作業準備工作。 根據預設，Batch 會等待作業準備工作完成後，才執行已排定在節點上執行的工作。 不過，您可以設定服務不要等待。 如果節點重新開機，作業準備工作會再次執行。 您也可以停用此行為。 如果您的作業已設定作業準備工作和作業管理員工作，則作業準備工作會在作業管理員工作之前執行，對其他所有工作也是一樣。 一律先執行作業準備工作。
+
+作業準備工作只會在排定執行工作的節點上執行。 這可避免未指派工作的節點執行不必要的準備工作。 這種情況會發生在當作業的工作數目小於集區中的節點數目時。 此外，也適用於已啟用 [並行工作執行](batch-parallel-node-tasks.md) 時，而如果作業計數小於可能的並行工作總數，則會讓一些節點閒置。 藉由不在閒置的節點上執行作業準備工作，您在資料傳輸費用上可以花費更少金錢。
 
 > [!NOTE]
-> [JobPreparationTask][net_job_prep_cloudjob] 與 [CloudPool.StartTask][pool_starttask] 的不同之處在於，JobPreparationTask 在每個作業開始時執行，而 StartTask 只在計算節點第一次加入集區或重新啟動時執行。
-> 
-> 
+> [JobPreparationTask][net_job_prep_cloudjob] 不同於 [CloudPool.StartTask][pool_starttask]，JobPreparationTask 會在每個作業開始時執行，而 StartTask 只在計算節點第一次加入集區或重新開機時才執行。
+>
 
-## <a name="job-release-task"></a>作業解除工作
+
+>## <a name="job-release-task"></a>作業解除工作
+
 作業一旦標示為完成，作業解除工作會在集區中的每個節點上執行，集區至少會執行一項工作。 透過發出終止要求將工作標示為完成。 然後 Batch 服務會將作業狀態設定為「正在終止」，終止與作業相關聯的任何作用中或執行中工作，並執行作業解除工作。 作業接著會進入「已完成」狀態。
 
 > [!NOTE]
 > 工作刪除也會執行工作解除任務。 不過，如果先前已終止作業，當後來刪除該作業時，解除工作不會執行第二次。
+
+作業解除工作最多可執行 15 分鐘，之後就會由 Batch 服務終止。 如需詳細資訊，請參閱 [REST API 參考文件](/rest/api/batchservice/job/add#jobreleasetask)。
 > 
 > 
 
 ## <a name="job-prep-and-release-tasks-with-batch-net"></a>使用 Batch .NET 進行作業準備和作業解除工作
-若要使用作業準備工作，請將 [JobPreparationTask][net_job_prep] 物件指派給作業的 [CloudJob.JobPreparationTask][net_job_prep_cloudjob] 屬性。 同樣地，初始化 [JobReleaseTask][net_job_release] 並將它指派給作業的 [CloudJob.JobReleaseTask][net_job_prep_cloudjob] 屬性即可設定作業的解除任務。
+若要使用作業準備工作，請將 [JobPreparationTask][net_job_prep] 物件指派給作業的 [CloudJob.JobPreparationTask][net_job_prep_cloudjob] 屬性。 同樣地，請初始化 [JobReleaseTask][net_job_release]，並指派給作業的 [CloudJob.JobReleaseTask][net_job_prep_cloudjob] 屬性，以設定作業的解除工作。
 
-在此程式碼片段中，`myBatchClient` 是 [BatchClient][net_batch_client] 的執行個體，而 `myPool` 是 Batch 帳戶內的現有集區。
+在此程式碼片段中，`myBatchClient` 是 [BatchClient][net_batch_client] 的執行個體，`myPool` 是 Batch 帳戶內的現有集區。
 
 ```csharp
 // Create the CloudJob for CloudPool "myPool"
@@ -116,10 +109,10 @@ await myJob.CommitAsync();
 await myBatchClient.JobOperations.TerminateJobAsync("JobPrepReleaseSampleJob");
 ```
 
-## <a name="code-sample-on-github"></a>GitHub 上的代码示例
-若要了解作業準備和作業解除工作的運作，請查看 GitHub 上的 [JobPrepRelease][job_prep_release_sample] 範例專案。 此主控台應用程式會做這些事：
+## <a name="code-sample-on-github"></a>GitHub 上的程式碼範例
+若要了解作業準備和作業解除工作的運作方式，請查看 GitHub 上的 [JobPrepRelease][job_prep_release_sample] 範例專案。 此主控台應用程式會做這些事：
 
-1. 创建包含两个节点的池。
+1. 建立包含兩個節點的集區。
 2. 建立具有作業準備、解除和標準工作的作業。
 3. 執行作業準備工作，將節點識別碼第一次寫入節點的「共用」目錄的文字檔中。
 4. 在每個節點上執行工作，將其工作識別碼寫入同一文字檔案中。
@@ -178,8 +171,8 @@ Sample complete, hit ENTER to exit...
 > 
 > 
 
-### <a name="inspect-job-preparation-and-release-tasks-in-the-azure-portal"></a>在 Azure 门户中检查作业准备和释放任务
-當您執行範例應用程式時，您可以使用 [Azure 入口網站][portal]檢視作業和其工作的屬性，或甚至下載作業的工作修改過的共用文字檔案。
+### <a name="inspect-job-preparation-and-release-tasks-in-the-azure-portal"></a>在 Azure 入口網站中檢查作業準備和作業解除工作
+當您執行應用程式範例時，您可以使用 [Azure 入口網站][portal]來檢視作業及其工作的屬性，甚至下載作業的工作修改過的共用文字檔。
 
 下面的螢幕擷取畫面顯示在執行範例應用程式之後，Azure 入口網站中所出現的 **準備工作刀鋒視窗** 。 在工作完成之後 (但在刪除作業與集區之前) 瀏覽至 JobPrepReleaseSampleJob 屬性，然後按一下 [準備工作] 或 [解除工作] 以檢視其屬性。
 
@@ -190,41 +183,39 @@ Sample complete, hit ENTER to exit...
 除了作業準備工作外，您還可以使用 Batch 的 [應用程式封裝](batch-application-packages.md) 功能來為計算節點做好工作執行準備。 這項功能特別適合用於部署不需要執行安裝程式的應用程式、包含許多 (100 個以上) 檔案的應用程式，或需要嚴格版本控制的應用程式。
 
 ### <a name="installing-applications-and-staging-data"></a>安裝應用程式和預備資料
-以下 MSDN 论坛文章提供了有关准备节点以运行任务的各种方法的概述：
+這篇 MSDN 論壇文章概述幾個方法來讓您的節點做好執行工作的準備︰
 
-[在 Batch 計算節點上安裝應用程式和預備資料][forum_post]
+[在 Batch 計算節點上安裝應用程式和暫存資料][forum_post]
 
 其作者是其中一位 Azure Batch 小組成員，內容在討論數種可供您部署應用程式和資料到計算節點的技巧。
 
-[api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
-[api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
-[api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
-[azure_storage]: https://www.azure.cn/home/features/storage/
-[portal]: https://portal.azure.cn
+[api_net]: /dotnet/api/microsoft.azure.batch
+[api_net_listjobs]: /dotnet/api/microsoft.azure.batch.joboperations
+[api_rest]: /rest/api/batchservice/
+[azure_storage]: https://azure.microsoft.com/services/storage/
+[portal]: https://portal.azure.com
 [job_prep_release_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/JobPrepRelease
 [forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
-[net_batch_client]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
+[net_batch_client]: /dotnet/api/microsoft.azure.batch.batchclient
 [net_cloudjob]:https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.aspx
-[net_job_prep]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobpreparationtask.aspx
-[net_job_prep_cloudjob]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.jobpreparationtask.aspx
-[net_job_prep_resourcefiles]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobpreparationtask.resourcefiles.aspx
-[net_job_delete]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.deletejobasync.aspx
-[net_job_terminate]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.terminatejobasync.aspx
-[net_job_release]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobreleasetask.aspx
-[net_job_release_cloudjob]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.jobreleasetask.aspx
-[pool_starttask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.starttask.aspx
+[net_job_prep]: /dotnet/api/microsoft.azure.batch.jobpreparationtask
+[net_job_prep_cloudjob]: /dotnet/api/microsoft.azure.batch.cloudjob
+[net_job_prep_resourcefiles]: /dotnet/api/microsoft.azure.batch.jobpreparationtask
+[net_job_delete]: /previous-versions/azure/mt281411(v=azure.100)
+[net_job_terminate]: /previous-versions/azure/mt188985(v=azure.100)
+[net_job_release]: /dotnet/api/microsoft.azure.batch.jobreleasetask
+[net_job_release_cloudjob]: /dotnet/api/microsoft.azure.batch.cloudjob
+[pool_starttask]: /dotnet/api/microsoft.azure.batch.cloudpool
 
-[net_list_certs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.certificateoperations.listcertificates.aspx
-[net_list_compute_nodes]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.listcomputenodes.aspx
-[net_list_job_schedules]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobscheduleoperations.listjobschedules.aspx
-[net_list_jobprep_status]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobpreparationandreleasetaskstatus.aspx
-[net_list_jobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
-[net_list_nodefiles]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listnodefiles.aspx
-[net_list_pools]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.listpools.aspx
-[net_list_schedule_jobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobscheduleoperations.listjobs.aspx
-[net_list_task_files]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.listnodefiles.aspx
-[net_list_tasks]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listtasks.aspx
+[net_list_certs]: /dotnet/api/microsoft.azure.batch.certificateoperations
+[net_list_compute_nodes]: /dotnet/api/microsoft.azure.batch.pooloperations
+[net_list_job_schedules]: /dotnet/api/microsoft.azure.batch.jobscheduleoperations
+[net_list_jobprep_status]: /dotnet/api/microsoft.azure.batch.joboperations
+[net_list_jobs]: /dotnet/api/microsoft.azure.batch.joboperations
+[net_list_nodefiles]: /dotnet/api/microsoft.azure.batch.joboperations
+[net_list_pools]: /dotnet/api/microsoft.azure.batch.pooloperations
+[net_list_schedule_jobs]: /dotnet/api/microsoft.azure.batch.jobscheduleoperations
+[net_list_task_files]: /dotnet/api/microsoft.azure.batch.cloudtask
+[net_list_tasks]: /dotnet/api/microsoft.azure.batch.joboperations
 
 [1]: ./media/batch-job-prep-release/portal-jobprep-01.png
-
-<!-- Update_Description: wording update -->

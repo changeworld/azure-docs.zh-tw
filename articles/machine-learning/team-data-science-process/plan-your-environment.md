@@ -3,20 +3,19 @@ title: 識別案例和規劃分析程序 - Team Data Science Process | Azure 機
 description: 藉由考量一系列關鍵問題來識別案例和規劃進階分析資料處理。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d8eed4f2425cdbfec7d3addad11ddaba57e5370e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 2679bc8a9ddf9f748cd0e9d51e1534d120484d0c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704494"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84267933"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>如何識別案例和規劃進階分析資料處理
 
@@ -30,8 +29,6 @@ ms.locfileid: "64704494"
 * 資料特性
 * 資料集品質
 * 慣用的工具和語言
-
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="logistic-questions-data-locations-and-movement"></a>邏輯問題：資料位置和移動
 
@@ -58,7 +55,7 @@ ms.locfileid: "64704494"
 
 * Azure Blob 儲存體
 * SQL Azure 資料庫
-* 在 Azure VM 上的 SQL Server
+* Azure VM 上的 SQL Server
 * HDInsight (Azure 上的 Hadoop) 或 Hive 資料表
 * Azure Machine Learning
 * 可裝載的 Azure 虛擬硬碟
@@ -68,7 +65,7 @@ ms.locfileid: "64704494"
 如需用來將資料內嵌或載入至各種不同儲存體和處理環境的程序和資源，請參閱：
 
 * [將資料載入至儲存體環境以便進行分析](ingest-data.md)
-* [從各種資料來源將定型資料匯入 Azure Machine Learning Studio](../studio/import-data.md)
+* [從各種資料來源將定型資料匯入 Azure Machine Learning Studio （傳統）](../studio/import-data.md)
 
 ### <a name="does-the-data-need-to-be-moved-on-a-regular-schedule-or-modified-during-migration"></a>資料是否需要定期移動或在移轉期間修改？
 
@@ -77,11 +74,11 @@ ms.locfileid: "64704494"
 * 同時涉及內部部署和雲端資源的混合式案例
 * 在移轉的過程中由商務邏輯交易、修改或變更資料的案例
 
-如需進一步資訊，請參閱[使用 Azure Data Factory 從內部部署 SQL Server 移動資料至 SQL Azure](move-sql-azure-adf.md)。
+如需詳細資訊，請參閱[使用 Azure Data Factory 將資料從 SQL Server 資料庫移至 SQL Azure](move-sql-azure-adf.md)。
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>有多少資料要移至 Azure？
 
-極大型的資料集可能會超過某些環境的儲存體容量。 如需相關範例，請參閱下一節關於 Machine Learning studio 大小限制的討論。 在這種情況下，您在分析期間可以使用資料樣本。 如需如何在各種 Azure 環境中縮減取樣資料集的詳細資訊，請參閱 [在 Team Data Science Process 中進行資料取樣](sample-data.md)。
+大型資料集可能會超過某些環境的儲存體容量。 如需範例，請參閱下一節中的 Machine Learning Studio （傳統）大小限制的討論。 在這種情況下，您在分析期間可以使用資料樣本。 如需如何在各種 Azure 環境中縮減取樣資料集的詳細資訊，請參閱 [在 Team Data Science Process 中進行資料取樣](sample-data.md)。
 
 ## <a name="data-characteristics-questions-type-format-and-size"></a>資料特性問題：類型、格式和大小
 
@@ -104,14 +101,14 @@ ms.locfileid: "64704494"
 
 ### <a name="how-large-is-your-data"></a>您的資料大小為何？
 
-* 小型：少於 2 GB
-* 中型：大於 2 GB 且少於 10 GB
+* 小型：小於 2 GB
+* 中型：大於 2 GB 且小於 10 GB
 * 大型：大於 10 GB
 
-以 Azure Machine Learning Studio 環境為例子：
+採用 Azure Machine Learning Studio （傳統）環境，例如：
 
 * 如需 Azure Machine Learning Studio 支援的資料格式和 類型的清單，請參閱 [支援的資料格式和資料類型](../studio/import-data.md#supported-data-formats-and-data-types) 一節。
-* 如需分析程序中使用的其他 Azure 服務限制的相關資訊，請參閱 [Azure 訂用帳戶和服務限制、配額與限制](../../azure-subscription-service-limits.md)。
+* 如需分析程序中使用的其他 Azure 服務限制的相關資訊，請參閱 [Azure 訂用帳戶和服務限制、配額與限制](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
 ## <a name="data-quality-questions-exploration-and-pre-processing"></a>資料品質問題：探索和前置處理
 
@@ -147,12 +144,12 @@ ms.locfileid: "64704494"
 
 ### <a name="what-tools-should-you-use-for-data-analysis"></a>您應該使用哪些工具進行資料分析？
 
-* [Microsoft Azure Powershell](/powershell/azure/overview) - 在指令碼語言中用來管理 Azure 資源的指令碼語言
+* [Microsoft Azure PowerShell](/powershell/azure/overview) -在指令碼語言中用來管理 Azure 資源的指令碼語言
 * [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
 * [Revolution Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)
-* [Python Tools for Visual Studio](https://aka.ms/ptvsdocs)
-* [Anaconda](https://www.continuum.io/why-anaconda)
+* [適用於 Visual Studio 的 Python 工具](https://aka.ms/ptvsdocs)
+* [Anaconda](https://www.anaconda.com/)
 * [Jupyter 筆記本](https://jupyter.org/)
 * [Microsoft Power BI](https://powerbi.microsoft.com)
 

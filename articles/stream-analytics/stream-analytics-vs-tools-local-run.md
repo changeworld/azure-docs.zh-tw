@@ -1,24 +1,22 @@
 ---
-title: 使用 Visual Studio 在本機測試 Azure 串流分析查詢
+title: 在本機測試 Azure 串流分析查詢 Visual Studio
 description: 本文說明如何使用適用於 Visual Studio 的 Azure 串流分析工具在本機測試查詢。
-services: stream-analytics
 author: su-jie
 ms.author: sujie
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2018
-ms.openlocfilehash: 1b86085a76f5ff87147db9dbd0a584784f5e4a2e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: aa1d8ff0743399d96436f33426ebc4c4ab4a29f6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60308337"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045632"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>使用 Visual Studio 在本機測試串流分析查詢
 
-您可以使用適用於 Visual Studio 的 Azure 串流分析工具在本機以範例資料測試您的串流分析工作。
+您可以使用適用于 Visual Studio 的 Azure 串流分析工具，透過範例資料或[即時資料](stream-analytics-live-data-local-testing.md)，在本機測試您的串流分析作業。 
 
 使用此[快速入門](stream-analytics-quick-create-vs.md)了解如何使用 Visual Studio 建立串流分析工作。
 
@@ -30,11 +28,11 @@ ms.locfileid: "60308337"
  
 ### <a name="add-local-input"></a>新增本機輸入
 
-若要對本機靜態資料驗證您的查詢，請以滑鼠右鍵按一下輸入並選取 [新增本機輸入]。
+若要對本機靜態資料驗證您的查詢，請以滑鼠右鍵按一下輸入並選取 [新增本機輸入]****。
    
 ![新增本機輸入](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-01.png)
    
-在快顯視窗中，從本機路徑選取範例資料並 [儲存]。
+在快顯視窗中，從本機路徑選取範例資料並 [儲存]****。
    
 ![新增本機輸入](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-02.png)
    
@@ -42,7 +40,7 @@ ms.locfileid: "60308337"
    
 ![本機輸入資料夾檔案清單](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-03.png)
    
-在查詢編輯器中選取 [在本機執行]。 或者，您可以按 F5。
+在查詢編輯器中選取 [在本機執行]****。 或者，您可以按 F5。
    
 ![在本機執行](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-local-run-01.png)
    
@@ -60,21 +58,22 @@ ms.locfileid: "60308337"
    
 
 ### <a name="sample-input"></a>範例輸入
-您也可以從您的輸入來源將範例輸入資料收集到本機檔案。 以滑鼠右鍵按一下輸入設定檔，然後選取 [範例資料]。 
+您也可以從您的輸入來源將範例輸入資料收集到本機檔案。 以滑鼠右鍵按一下輸入設定檔，然後選取 [範例資料]****。 
 
-![範例資料](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-01.png)
+![取樣資料](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-01.png)
 
-您只能對來自事件中樞或 IoT 中樞的資料流取樣。 不支援其他輸入來源。 在快顯對話方塊中，填入用來儲存範例資料的本機路徑並選取 [範例]。
+您只能對來自事件中樞或 IoT 中樞的資料流取樣。 不支援其他輸入來源。 在快顯對話方塊中，填入用來儲存範例資料的本機路徑並選取 [範例]****。
 
 ![範例資料設定](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-02.png)
  
-您可以在 [輸出] 視窗中查看進度。 
+您可以在 [**輸出**] 視窗中查看進度。 
 
 ![範例資料輸出](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-03.png)
 
 ## <a name="next-steps"></a>後續步驟
 
+* [快速入門：使用 Visual Studio 建立串流分析工作](stream-analytics-quick-create-vs.md)
 * [使用 Visual Studio 檢視 Azure 串流分析工作](stream-analytics-vs-tools.md)
-* [快速入门：使用 Visual Studio 创建流分析作业](stream-analytics-quick-create-vs.md)
-* [教學課程：部署 Azure Stream Analytics 作業與使用 Azure DevOps 的 CI/CD](stream-analytics-tools-visual-studio-cicd-vsts.md)
+* [使用適用於 Visual Studio 的 Azure 串流分析工具 (預覽) 在本機測試即時資料](stream-analytics-live-data-local-testing.md)
+* [教學課程：使用 Azure DevOps 部署 CI/CD 的 Azure 串流分析作業](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [使用串流分析工具持續進行整合及開發](stream-analytics-tools-for-visual-studio-cicd.md)

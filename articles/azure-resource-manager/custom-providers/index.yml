@@ -1,0 +1,65 @@
+### YamlMime:Landing
+title: Azure 自訂提供者文件
+summary: 定義可擴充 Azure 體驗的自訂 API
+metadata:
+  title: Azure 自訂提供者文件
+  description: Azure 自訂提供者是 Azure 擴充性平台，可讓您定義自訂 API
+  ms.service: azure-custom-providers
+  ms.topic: landing-page
+  ms.collection: na
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 01/02/2020
+  ms.openlocfilehash: 4a778d56aa3d7440715cdd792827b9c4a2837e65
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "75648339"
+landingContent:
+- title: 關於 Azure 自訂提供者
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure 自訂提供者？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 自訂提供者關聯的 Azure 原則
+      url: concepts-built-in-policy.md
+    - text: 資源上線概觀
+      url: concepts-resource-onboarding.md
+- title: 建立自訂提供者
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 建立自訂資源提供者
+      url: create-custom-provider.md
+  - linkListType: tutorial
+    links:
+    - text: 開始使用自訂提供者
+      url: tutorial-get-started-with-custom-providers.md
+    - text: 設定 Azure Functions
+      url: tutorial-custom-providers-function-setup.md
+    - text: 建立 RESTful 端點
+      url: tutorial-custom-providers-function-authoring.md
+    - text: 建立及使用自訂提供者
+      url: tutorial-custom-providers-create.md
+    - text: 擴充資源
+      url: tutorial-resource-onboarding.md
+  - linkListType: how-to-guide
+    links:
+    - text: 將自訂動作新增至 Azure
+      url: custom-providers-action-endpoint-how-to.md
+    - text: 將自訂資源新增至 Azure
+      url: custom-providers-resources-endpoint-how-to.md
+- title: 範例
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 自訂資源 Proxy 參考
+      url: proxy-resource-endpoint-reference.md
+    - text: 自訂資源快取參考
+      url: proxy-cache-resource-endpoint-reference.md
+    - text: 自訂提供者 RESTful 端點參考
+      url: reference-custom-providers-csharp-endpoint.md

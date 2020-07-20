@@ -1,37 +1,37 @@
 ---
 title: 開始使用 Azure Automation State Configuration
-description: Azure Automation State Configuration (DSC) 中最常見工作的說明和範例
+description: 本文說明如何執行 Azure Automation State Configuration 中的最常見工作。
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 60cd2d21167739e824489e30ebd187a5fc0cc12d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0e98078fe2799d1c524190c8ced36588f35498b4
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61074384"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186430"
 ---
-# <a name="getting-started-with-azure-automation-state-configuration"></a>開始使用 Azure Automation State Configuration
+# <a name="get-started-with-azure-automation-state-configuration"></a>開始使用 Azure Automation State Configuration
 
-本文說明如何使用 Azure Automation State Configuration 來執行最常見的工作，例如建立、匯入和編譯組態、將要管理的機器上架，以及檢視報告。 如需 Azure Automation State Configuration 的概觀，請參閱 [Azure Automation State Configuration 概觀](automation-dsc-overview.md)。 如需 Desired State Configuration (DSC) 文件，請參閱 [Windows PowerShell Desired State Configuration 概觀](/powershell/dsc/overview)。
+本文提供逐步執行指南，指引您使用 Azure Automation State Configuration 來執行最常見的工作，例如建立、匯入和編譯組態、將要管理的機器上架，以及檢視報告。 如需 State Configuration 概觀，請參閱 [State Configuration 概觀](automation-dsc-overview.md)。 如需 Desired State Configuration (DSC) 文件，請參閱 [Windows PowerShell Desired State Configuration 概觀](/powershell/scripting/dsc/overview/overview)。
 
-本文提供使用 Azure Desired State Configuration 的逐步指南。 如果您不想遵循本主題中所述的步驟，但想要已經設定好的範例環境，可以使用下列 Resource Manager 範本：[Azure 自動化受控節點範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration)。 此範本會設定完整的 Azure Automation State Configuration 環境，包括由 Azure Automation State Configuration 管理的 Azure VM。
+如果您不想遵循本主題中所述的步驟，但想要已經設定好的範例環境，可以使用 [Azure 自動化受控節點範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration)。 此範本會設定完整的 State Configuration (DSC) 環境，包括由 State Configuration (DSC) 管理的 Azure VM。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本文中的範例，需要有下列項目：
 
-- Azure 自動化帳戶。 如需建立 Azure 自動化執行身分帳戶的指示，請參閱 [Azure 執行身分帳戶](automation-sec-configure-azure-runas-account.md)。
-- Azure Resource Manager VM （非傳統） 執行[支援的作業系統](automation-dsc-overview.md#operating-system-requirements)。 如需建立 VM 的指示，請參閱 [在 Azure 入口網站中建立第一個 Windows 虛擬機器](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+- Azure 自動化帳戶。 如需建立 Azure 自動化執行身分帳戶的指示，請參閱 [Azure 執行身分帳戶](./manage-runas-account.md)。
+- 執行[所支援作業系統](automation-dsc-overview.md#operating-system-requirements)的 Azure Resource Manager VM (不是傳統)。 如需建立 VM 的指示，請參閱 [在 Azure 入口網站中建立第一個 Windows 虛擬機器](../virtual-machines/windows/quick-create-portal.md)
 
-## <a name="creating-a-dsc-configuration"></a>建立 DSC 組態
+## <a name="create-a-dsc-configuration"></a>建立 DSC 組態
 
-您會建立一個簡單的 [DSC 設定](/powershell/dsc/configurations)，以根據您指派節點的方式，確定是否有 **Web 伺服器** Windows 功能 (IIS) 存在。
+您會建立一個簡單的 [DSC 設定](/powershell/scripting/dsc/configurations/configurations)，以根據您指派節點的方式，確定是否有 **Web 伺服器** Windows 功能 (IIS) 存在。
 
 1. 開始 [VSCode](https://code.visualstudio.com/docs) (或任何文字編輯器)。
 1. 輸入下列文字：
@@ -59,123 +59,122 @@ ms.locfileid: "61074384"
         }
     }
     ```
-1. 將檔案儲存為 `TestConfig.ps1`。
+1. 將檔案儲存為 **TestConfig.ps1**。
 
-此設定會在每個節點區塊中呼叫一個資源 ( [WindowsFeature 資源](/powershell/dsc/windowsfeatureresource))，這可確保 **Web 伺服器** 功能是否存在。
+此組態會在每個節點區塊中呼叫一個資源，即 [WindowsFeature 資源](/powershell/scripting/dsc/reference/resources/windows/windowsfeatureresource)。 此資源可確保 **Web 伺服器**功能是否存在。
 
-## <a name="importing-a-configuration-into-azure-automation"></a>將組態匯入 Azure 自動化
+## <a name="import-a-configuration-into-azure-automation"></a>將組態匯入至 Azure 自動化
 
 接下來，您會將設定匯入自動化帳戶。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 依序按一下左側的 [所有資源] 和您的自動化帳戶名稱。
-1. 在 [自動化帳戶] 頁面上，選取 [組態管理] 之下的 [State Configuration (DSC)]。
-1. 在 [State Configuration (DSC)] 頁面上，按一下 [組態] 索引標籤，然後按一下 [+ 新增]。
-1. 在 [匯入設定] 頁面上，瀏覽至您電腦上的 `TestConfig.ps1` 檔案。
+1. 在 [自動化帳戶] 頁面上，選取 [組態管理] 下方的 [State Configuration (DSC)]。
+1. 在 [State Configuration (DSC)] 頁面上，按一下 [組態] 索引標籤，然後按一下 [新增]。
+1. 在 [匯入組態] 窗格上，瀏覽至您電腦上的 `TestConfig.ps1` 檔案。
 
    ![[匯入組態] 刀鋒視窗的螢幕擷取畫面](./media/automation-dsc-getting-started/AddConfig.png)
 
 1. 按一下 [確定]。
 
-## <a name="viewing-a-configuration-in-azure-automation"></a>在 Azure 自動化中檢視組態
+## <a name="view-a-configuration-in-azure-automation"></a>在 Azure 自動化中檢視組態
 
 在匯入組態之後，您可以在 Azure 入口網站中檢視它。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 依序按一下左側的 [所有資源] 和您的自動化帳戶名稱。
-1. 在 [自動化帳戶] 頁面上，選取 [組態管理] 下方的 [State configuration (DSC)]。
-1. 在 [State Configuration (DSC)] 頁面上，按一下 [組態] 索引標籤，然後按一下 [TestConfig] (這是您在上一個程序中匯入的組態名稱)。
-1. 在 [TestConfig 設定] 頁面上，按一下 [檢視設定來源]。
+1. 在 [自動化帳戶] 頁面上，選取 [組態管理] 下方的 [State Configuration (DSC)]。
+1. 在 [State Configuration (DSC)] 頁面上，按一下 [組態] 索引標籤，然後按一下 [TestConfig]。 這是您在上一個程序中匯入的組態名稱。
+1. 在 [TestConfig 組態] 窗格上，按一下 [檢視組態來源]。
 
    ![TestConfig 組態刀鋒視窗的螢幕擷取畫面](./media/automation-dsc-getting-started/ViewConfigSource.png)
 
-   [TestConfig 組態來源]  頁面隨即開啟，顯示此組態的 PowerShell 程式碼。
+   [TestConfig 組態來源] 窗格隨即開啟，顯示此組態的 PowerShell 程式碼。
 
-## <a name="compiling-a-configuration-in-azure-automation"></a>在 Azure 自動化中編譯組態
+## <a name="compile-a-configuration-in-azure-automation"></a>在 Azure 自動化中編譯組態
 
-定義預期狀態的 DSC 組態必須先編譯成一或多個節點組態 (MOF 文件)，並放在自動化 DSC 提取伺服器上，才可以將該預期狀態套用至節點。 如需在 Azure Automation State Configuration 中編譯組態的詳細說明，請參閱[在 Azure Automation State Configuration 中編譯組態](automation-dsc-compile.md)。
-如需編譯設定的詳細資訊，請參閱 [DSC 設定](/powershell/dsc/configurations)。
+定義預期狀態的 DSC 組態必須先編譯成一或多個節點組態 (MOF 文件)，並放在自動化 DSC 提取伺服器上，才可以將該預期狀態套用至節點。 如需在 State Configuration (DSC) 中編譯組態的詳細說明，請參閱[在 Azure Automation State Configuration 中編譯組態](automation-dsc-compile.md)。
+如需編譯設定的詳細資訊，請參閱 [DSC 設定](/powershell/scripting/dsc/configurations/configurations)。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 依序按一下左側的 [所有資源] 和您的自動化帳戶名稱。
 1. 在 [自動化帳戶] 頁面上，按一下 [組態管理] 之下的 [State Configuration (DSC)]。
-1. 在 [State Configuration (DSC)] 頁面上，按一下 [組態] 索引標籤，然後按一下 [TestConfig] (先前匯入的組態名稱)。
-1. 在 [TestConfig 設定] 頁面上，按一下 [編譯]，然後按一下 [是]。 這會啟動編譯作業。
+1. 在 [State Configuration (DSC)] 頁面上，按一下 [組態] 索引標籤，然後按一下 [TestConfig]。 這是先前匯入的組態名稱。
+1. 在 [TestConfig 組態] 窗格上，按一下 [編譯]，然後按一下 [是]。 這會啟動編譯作業。
 
    ![醒目提示 [編譯] 按鈕之 TestConfig 設定頁面的螢幕擷取畫面](./media/automation-dsc-getting-started/CompileConfig.png)
 
 > [!NOTE]
-> 當您在 Azure 自動化中編譯組態時，它會自動將任何已建立的節點組態 MOF 部署至提取伺服器。
+> 當您在 Azure 自動化中編譯組態時，它會自動將任何已建立的節點組態 MOF 檔案部署至提取伺服器。
 
-## <a name="viewing-a-compilation-job"></a>檢視編譯作業
+## <a name="view-a-compilation-job"></a>檢視編譯作業
 
-啟動編譯之後，您可以在 [組態] 頁面的 [編譯作業] 圖格中檢視它。 [編譯作業] 圖格會顯示目前執行中、已完成及失敗的工作。 當您開啟編譯作業頁面時，它會顯示該工作的相關資訊，包括發生的任何錯誤或警告、組態中使用的參數以及編譯記錄。
+啟動編譯之後，您可以在 [組態] 頁面的 [編譯作業] 圖格上檢視它。 [編譯作業] 圖格會顯示目前執行中、已完成及失敗的工作。 當您開啟編譯作業窗格時，它會顯示該工作的相關資訊，包括發生的任何錯誤或警告、組態中使用的參數以及編譯記錄。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 依序按一下左側的 [所有資源] 和您的自動化帳戶名稱。
 1. 在 [自動化帳戶] 頁面上，按一下 [組態管理] 之下的 [State Configuration (DSC)]。
-1. 在 [State Configuration (DSC)] 頁面上，按一下 [組態] 索引標籤，然後按一下 [TestConfig] (先前匯入的組態名稱)。
-1. 在 [編譯工作] 下方，選取您想要檢視的編譯工作。 [編譯作業] 頁面隨即開啟，並標示編譯作業的開始日期。
+1. 在 [State Configuration (DSC)] 頁面上，按一下 [組態] 索引標籤，然後按一下 [TestConfig]。 這是先前匯入的組態名稱。
+1. 在 [編譯工作] 下方，選取要檢視的編譯作業。 [編譯作業] 窗格隨即開啟，並標示編譯作業的開始日期。
 
    ![[編譯工作] 頁面的螢幕擷取畫面](./media/automation-dsc-getting-started/CompilationJob.png)
 
-1. 按一下 [編譯工作] 頁面中的任何磚，以查看工作的進一步詳細資料。
+1. 按一下 [編譯工作] 窗格中的任何圖格，以查看作業的進一步詳細資料。
 
-## <a name="viewing-node-configurations"></a>檢視節點組態
+## <a name="view-node-configurations"></a>檢視節點組態
 
-成功完成編譯作業會建立一或多個新的節點組態。 節點組態是已部署到提取伺服器且準備由一或多個節點提取並套用的 MOF 文件。 您可以在 [State Configuration (DSC)] 頁面中檢視您自動化帳戶的節點組態。 節點組態的名稱格式為 ConfigurationName.NodeName。
+成功完成編譯作業會建立一或多個新的節點組態。 節點組態是已部署到提取伺服器且準備由一或多個節點提取並套用的 MOF 文件。 您可以在 [State Configuration (DSC)] 頁面上檢視您自動化帳戶中的節點組態。 節點組態的名稱格式為 `ConfigurationName.NodeName`。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 依序按一下左側的 [所有資源] 和您的自動化帳戶名稱。
-1. 在 [自動化帳戶] 刀鋒視窗上，按一下 [組態管理] 之下的 [State Configuration (DSC)]。
+1. 在 [自動化帳戶] 頁面上，按一下 [組態管理] 之下的 [State Configuration (DSC)]。
 1. 在 [State Configuration (DSC)] 頁面上，按一下 [已編譯組態] 索引標籤。
 
    ![[已編譯組態] 索引標籤的螢幕擷取畫面](./media/automation-dsc-getting-started/NodeConfigs.png)
 
-## <a name="onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration"></a>將 Azure VM 上架交由 Azure Automation State Configuration 管理
+## <a name="enable-an-azure-resource-manager-vm-for-management-with-state-configuration"></a>啟用 Azure Resource Manager VM 搭配 State Configuration 進行管理
 
-您可以使用 Azure Automation State Configuration 來管理 Azure VM (傳統和 Resource Manager)、內部部署 VM、Linux 機器、AWS VM 和內部部署實體機器。 在本文中，您將了解如何只將 Azure Resource Manager VM 上線。 如需將其他類型的機器上架的詳細資訊，請參閱[將機器上架交由 Azure Automation State Configuration 管理](automation-dsc-onboarding.md)。
-
-### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-state-configuration"></a>將 Azure Resource Manager VM 上架交由 Azure Automation State Configuration 管理
+您可以使用 State Configuration 來管理 Azure VM (傳統和 Resource Manager)、內部部署 VM、Linux 機器、AWS VM 和內部部署實體機器。 在本文中，您將了解如何只啟用 Azure Resource Manager VM。 如需啟用其他機器類型的詳細資訊，請參閱[啟用機器交由 Azure Automation State Configuration 管理](automation-dsc-onboarding.md)。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 依序按一下左側的 [所有資源] 和您的自動化帳戶名稱。
-1. 在 [自動化帳戶] 刀鋒視窗上，按一下 [組態管理] 之下的 [State Configuration (DSC)]。
-1. 在 [State Configuration (DSC)] 頁面上，按一下 [節點] 索引標籤上的 [+ 新增]。
+1. 在 [自動化帳戶] 頁面上，按一下 [組態管理] 之下的 [State Configuration (DSC)]。
+1. 在 [State Configuration (DSC)] 頁面上，選取 [節點] 索引標籤，然後按一下 [+ 新增]。
 
    ![醒目提示 [加入 Azure VM] 按鈕之 [DSC 節點] 頁面的螢幕擷取畫面](./media/automation-dsc-getting-started/OnboardVM.png)
 
-1. 在 [虛擬機器] 頁面上，選取您的 VM。
-1. 在 [虛擬機器] 詳細資料頁面上，按一下 [+ 連線]。
+1. 在 [虛擬機器] 窗格上，選取您的 VM。
+1. 在 [虛擬機器詳細資料] 窗格上，按一下 [+ 連線]。
 
    > [!IMPORTANT]
-   > 這必須是執行的 Azure Resource Manager VM[支援的作業系統](automation-dsc-overview.md#operating-system-requirements)。
+   > VM 必須是執行[所支援作業系統](automation-dsc-overview.md#operating-system-requirements)的 Azure Resource Manager VM。
 
-2. 在 [註冊] 頁面的 [節點組態名稱] 方塊中，選取您要套用至 VM 的節點組態名稱。 在此時提供名稱是選擇性的。 您可以在節點上架後，變更指派的節點組態。
-   勾選 [必要時重新啟動節點]，然後按一下 [確定]。
+2. 在 [註冊] 頁面的 [節點組態名稱] 欄位中，選取要套用至 VM 的節點組態名稱。 在此時提供名稱是選擇性的。 您可以在啟用節點後，變更指派的節點組態。
+
+3. 勾選 [必要時重新啟動節點]，然後按一下 [確定]。
 
    ![[註冊] 刀鋒視窗的螢幕擷取畫面](./media/automation-dsc-getting-started/RegisterVM.png)
 
-   您指定的節點設定會依 [設定模式頻率] 所指定的間隔套用到 VM，而 VM 會依 [重新整理頻率] 所指定的間隔檢查節點設定的更新。 如需有關如何使用這些值的詳細資訊，請參閱 [設定本機設定管理員](https://msdn.microsoft.com/PowerShell/DSC/metaConfig)。
+   您指定的節點組態會依指定的間隔套用至 VM，而此間隔是由提供給**組態模式頻率**的值所指定。 VM 會依**重新整理頻率** 值所指定的間隔，檢查節點組態是否有更新。 如需有關如何使用這些值的詳細資訊，請參閱 [設定本機設定管理員](/powershell/scripting/dsc/managing-nodes/metaConfig)。
 
-Azure 會啟動 VM 上線的程序。 完成時，VM 會顯示在自動化帳戶中 [State Configuration (DSC)] 頁面的 [節點] 索引標籤中。
+Azure 會啟動 VM 的啟用程序。 完成時，VM 會顯示在自動化帳戶中 [State Configuration (DSC)] 頁面的 [節點] 索引標籤中。
 
-## <a name="viewing-the-list-of-managed-nodes"></a>檢視受控節點的清單
+## <a name="view-the-list-of-managed-nodes"></a>檢視受控節點的清單
 
-您可以在 [State Configuration (DSC)] 頁面的 [節點] 索引標籤中，檢視自動化帳戶中已上架以供管理的所有機器清單。
+您可以在 [State Configuration (DSC)] 頁面的 [節點] 索引標籤中，檢視自動化帳戶中已啟用以供管理的所有機器清單。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 依序按一下左側的 [所有資源] 和您的自動化帳戶名稱。
-1. 在 [自動化帳戶] 刀鋒視窗上，按一下 [組態管理] 之下的 [State Configuration (DSC)]。
+1. 在 [自動化帳戶] 頁面上，按一下 [組態管理] 之下的 [State Configuration (DSC)]。
 1. 在 [State Configuration (DSC)] 頁面上，按一下 [節點] 索引標籤。
 
-## <a name="viewing-reports-for-managed-nodes"></a>檢視受控節點的報告
+## <a name="view-reports-for-managed-nodes"></a>檢視受控節點的報告
 
-每次 Azure Automation State Configuration 在受控節點上執行一致性檢查時，此節點會將狀態報告傳回到提取伺服器。 您可以在該節點的頁面上檢視這些報告。
+每次 State Configuration 在受控節點上執行一致性檢查時，此節點會將狀態報告傳回到提取伺服器。 您可以在該節點的頁面上檢視這些報告。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 依序按一下左側的 [所有資源] 和您的自動化帳戶名稱。
-1. 在 [自動化帳戶] 刀鋒視窗上，按一下 [組態管理] 之下的 [State Configuration (DSC)]。
+1. 在 [自動化帳戶] 頁面上，按一下 [組態管理] 之下的 [State Configuration (DSC)]。
 1. 在 [State Configuration (DSC)] 頁面上，按一下 [節點] 索引標籤。在這裡，您可以看到組態狀態的概觀和每個節點的詳細資料。
 
    ![[節點] 頁面的螢幕擷取畫面](./media/automation-dsc-getting-started/NodesTab.png)
@@ -186,26 +185,29 @@ Azure 會啟動 VM 上線的程序。 完成時，VM 會顯示在自動化帳戶
 
 在個別報告的刀鋒視窗上，您可以看到相對應一致性檢查的下列狀態資訊︰
 
-- 報告狀態 — 節點是否「相容」、設定「失敗」，或節點「不相容」(當節點處於 **ApplyandMonitor** 模式且機器不在預期狀態時)。
+- 報告狀態。 可能的值包括：
+    * 符合規範 - 節點符合檢查規範。
+   * 失敗 - 組態檢查失敗。
+   * 不符合規範 - 節點處於 `ApplyandMonitor` 模式，而且機器不是處於所需狀態。
 - 一致性檢查的開始時間。
 - 一致性檢查的總執行時間。
 - 一致性檢查的類型。
 - 任何錯誤，包括錯誤碼和錯誤訊息。
-- 設定中使用的任何 DSC 資源，以及每個資源的狀態 (不論節點是否處於該資源的預期狀態) — 您可以按一下每個資源，以取得該資源的詳細資訊。
+- 設定中使用的任何 DSC 資源，以及每個資源的狀態 (不論節點是否處於該資源的預期狀態)。 您可以按一下每個資源，以取得該資源的詳細資訊。
 - 節點的名稱、IP 位址和組態模式。
 
 您也可以按一下 [檢視原始報告]  ，查看節點傳送至伺服器的實際資料。
-如需有關使用該資料的詳細資訊，請參閱 [使用 DSC 報告伺服器](/powershell/dsc/reportserver)。
+如需有關使用該資料的詳細資訊，請參閱 [使用 DSC 報告伺服器](/powershell/scripting/dsc/pull-server/reportserver)。
 
-在節點上架後，可能需要一些時間才可取得第一份報告。 在節點上架後，您可能必須等待多達 30 分鐘的時間才可取得第一份報告。
+在啟用節點後，可能需要一些時間才可取得第一份報告。 在啟用節點後，您可能必須等待多達 30 分鐘的時間才可取得第一份報告。
 
-## <a name="reassigning-a-node-to-a-different-node-configuration"></a>將節點重新指派至不同的節點組態
+## <a name="reassign-a-node-to-a-different-node-configuration"></a>將節點重新指派給不同的節點組態
 
 您可以指派節點以使用不同於您最初指派的節點組態。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 依序按一下左側的 [所有資源] 和您的自動化帳戶名稱。
-1. 在 [自動化帳戶] 刀鋒視窗上，按一下 [組態管理] 之下的 [State Configuration (DSC)]。
+1. 在 [自動化帳戶] 頁面上，按一下 [組態管理] 之下的 [State Configuration (DSC)]。
 1. 在 [State Configuration (DSC)] 頁面上，按一下 [節點] 索引標籤。
 1. 在 [節點] 索引標籤上，按一下您要重新指派的節點名稱。
 1. 在該節點的頁面上，按一下 [指派節點組態]。
@@ -216,23 +218,23 @@ Azure 會啟動 VM 上線的程序。 完成時，VM 會顯示在自動化帳戶
 
     ![[指派節點組態] 頁面的螢幕擷取畫面](./media/automation-dsc-getting-started/AssignNodeConfig.png)
 
-## <a name="unregistering-a-node"></a>取消註冊節點
+## <a name="unregister-a-node"></a>取消註冊節點
 
-如果您不想再由 Azure 自動化 DSC 管理節點，您可以將該節點取消註冊。
+如果您不想再由 State Configuration 管理節點，您可以取消註冊該節點。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 依序按一下左側的 [所有資源] 和您的自動化帳戶名稱。
-1. 在 [自動化帳戶] 刀鋒視窗上，按一下 [組態管理] 之下的 [State Configuration (DSC)]。
+1. 在 [自動化帳戶] 頁面上，按一下 [組態管理] 之下的 [State Configuration (DSC)]。
 1. 在 [State Configuration (DSC)] 頁面上，按一下 [節點] 索引標籤。
 1. 在 [節點] 索引標籤上，按一下您要取消註冊的節點名稱。
-1. 在該節點的頁面上，按一下 [取消註冊]。
+1. 在該節點的窗格上，按一下 [取消註冊]。
 
     ![醒目提示 [取消註冊] 按鈕的 [節點] 詳細資料頁面螢幕擷取畫面](./media/automation-dsc-getting-started/UnregisterNode.png)
 
-## <a name="related-articles"></a>相關文章
+## <a name="next-steps"></a>後續步驟
 
-- [Azure Automation State Configuration 概觀](automation-dsc-overview.md)
-- [將機器上架交由 Azure Automation State Configuration 管理](automation-dsc-onboarding.md)
-- [Windows PowerShell 預期狀態設定概觀](/powershell/dsc/overview)
-- [Azure Automation State Configuration Cmdlet](/powershell/module/azurerm.automation/#automation)
-- [Azure Automation State Configuration 定價](https://azure.microsoft.com/pricing/details/automation/)
+- 如需概觀，請參閱 [Azure Automation State Configuration 概觀](automation-dsc-overview.md)。
+- 若要在您的環境中啟用 VＭ 的功能，請參閱[啟用 Azure Automation State Configuration](automation-dsc-onboarding.md)。
+- 若要了解 PowerShell DSC，請參閱 [Windows PowerShell Desired State Configuration 概觀](/powershell/scripting/dsc/overview/overview)。
+- 如需定價資訊，請參閱 [Azure Automation State Configuration 定價](https://azure.microsoft.com/pricing/details/automation/)。
+- 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)。

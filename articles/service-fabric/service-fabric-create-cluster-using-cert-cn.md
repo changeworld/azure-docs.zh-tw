@@ -1,25 +1,14 @@
 ---
-title: 使用憑證通用名稱建立 Azure Service Fabric 叢集 | Microsoft Docs
+title: 使用憑證通用名稱建立叢集
 description: 了解如何使用憑證通用名稱，並依據範本建立 Service Fabric 叢集。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 04/24/2018
-ms.author: aljo
-ms.openlocfilehash: bf28ddf7facbc742a107f67f3d7e81eca5a5c950
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/06/2019
+ms.openlocfilehash: c852b40d35f936753d3c16420159676da239b6c6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60394263"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246430"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>部署使用憑證通用名稱 (而非指紋) 的 Service Fabric 叢集
 由於憑證的指紋皆不相同，導致叢集憑證變換或管理變成艱難的任務。 然而，不同的憑證卻能擁有相同的通用名稱或主體。  使用憑證通用名稱的叢集能大幅簡化憑證管理工作的難度。 本文章描述如何部署 Service Fabric 叢集才能使用憑證通用名稱，而非憑證指紋。
@@ -28,7 +17,7 @@ ms.locfileid: "60394263"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-a-certificate"></a>取得憑證
-首先，請向[憑證授權單位 (CA)](https://wikipedia.org/wiki/Certificate_authority) 索取憑證。  憑證的一般名稱應該用於您擁有的自訂網域，並且向網域註冊機構購買。 例如，"azureservicefabricbestpractices.com"；並非 Microsoft 員工的人員法佈建 MS 網域的憑證，因此您無法使用您的 LB 或流量管理員本身的 DNS 名稱作為您的憑證一般名稱，而且，如果您的自訂網域可以在 Azure 中解析，您必須佈建 [Azure DNS 區域](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)。 如果您想要入口網站反映叢集的自訂網域別名，您也需要宣告您擁有的自訂網域成為叢集的 “managementEndpoint”。
+首先，請向[憑證授權單位 (CA)](https://wikipedia.org/wiki/Certificate_authority) 索取憑證。  憑證的一般名稱應該用於您擁有的自訂網域，並且向網域註冊機構購買。 例如，"azureservicefabricbestpractices.com"；並非 Microsoft 員工的人員法佈建 MS 網域的憑證，因此您無法使用您的 LB 或流量管理員本身的 DNS 名稱作為您的憑證一般名稱，而且，如果您的自訂網域可以在 Azure 中解析，您必須佈建 [Azure DNS 區域](../dns/dns-delegate-domain-azure-dns.md)。 如果您想要入口網站反映叢集的自訂網域別名，您也需要宣告您擁有的自訂網域成為叢集的 “managementEndpoint”。
 
 基於測試目的，您可以向免費或開放的憑證授權單位索取 CA 簽署憑證。
 
@@ -62,7 +51,7 @@ $resourceId = $newKeyVault.ResourceId
 
 # Add the certificate to the key vault.
 $PasswordSec = ConvertTo-SecureString -String $Password -AsPlainText -Force
-$KVSecret = Import-AzureKeyVaultCertificate -VaultName $vaultName -Name $certName  -FilePath $certFilename -Password $PasswordSec
+$KVSecret = Import-AzKeyVaultCertificate -VaultName $vaultName -Name $certName  -FilePath $certFilename -Password $PasswordSec
 
 $CertificateThumbprint = $KVSecret.Thumbprint
 $CertificateURL = $KVSecret.SecretId
@@ -84,12 +73,18 @@ Write-Host "Common Name              :"  $CommName
 "certificateCommonName": {
     "value": "myclustername.southcentralus.cloudapp.azure.com"
 },
+"certificateIssuerThumbprint": {
+    "value": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+},
 ```
 
 接著，將 *certificateCommonName*、*sourceVaultValue* 及 *certificateUrlValue* 參數值設定為前述指令碼傳回的值：
 ```json
 "certificateCommonName": {
     "value": "myclustername.southcentralus.cloudapp.azure.com"
+},
+"certificateIssuerThumbprint": {
+    "value": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 },
 "sourceVaultValue": {
   "value": "/subscriptions/<subscription>/resourceGroups/testvaultgroup/providers/Microsoft.KeyVault/vaults/testvault"
@@ -110,6 +105,12 @@ Write-Host "Common Name              :"  $CommName
         "description": "Certificate Commonname"
       }
     },
+    "certificateIssuerThumbprint": {
+      "type": "string",
+      "metadata": {
+        "description": "Certificate Authority Issuer Thumpbrint for Commonname cert"
+      }
+    },
     ```
 
     另外，請考慮移除 *certificateThumbprint*，因為我們不再需要它了。
@@ -119,7 +120,7 @@ Write-Host "Common Name              :"  $CommName
     "sfrpApiVersion": "2018-02-01",
     ```
 
-3. 在 **Microsoft.Compute/virtualMachineScaleSets** 資源中，更新虛擬機器擴充功能以在憑證設定中使用通用名稱，而非使用指紋。  在 **virtualMachineProfile**->**extensionProfile**->**extensions**->**properties**->**settings**->**certificate**，新增 
+3. 在 **Microsoft.Compute/virtualMachineScaleSets** 資源中，更新虛擬機器擴充功能以在憑證設定中使用通用名稱，而非使用指紋。  在**virtualMachineProfile** -> **extensionProfile** -> **extensions** -> **properties** -> **settings** -> **certificate**，add 
     ```json
        "commonNames": [
         "[parameters('certificateCommonName')]"
@@ -211,12 +212,9 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -TemplateParameterFi
 ```
 
 ## <a name="next-steps"></a>後續步驟
-* 了解[叢集安全性](service-fabric-cluster-security.md)。
+* 深入瞭解叢集[安全性](service-fabric-cluster-security.md)。
 * 了解如何[變換叢集憑證](service-fabric-cluster-rollover-cert-cn.md)
 * [更新及管理叢集憑證](service-fabric-cluster-security-update-certs-azure.md)
 * 藉由[將叢集從憑證指紋變更為一般名稱](service-fabric-cluster-change-cert-thumbprint-to-cn.md)來簡化憑證管理
-
-[image1]: .\media\service-fabric-cluster-change-cert-thumbprint-to-cn\PortalViewTemplates.png
-ic-cluster-change-cert-thumbprint-to-cn.md))
 
 [image1]: .\media\service-fabric-cluster-change-cert-thumbprint-to-cn\PortalViewTemplates.png

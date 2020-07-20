@@ -1,8 +1,8 @@
-- name: Analysis Services 文件
-  href: index.md
+- name: Azure Analysis Services 文件
+  href: index.yml
 - name: 概觀
   items:
-    - name: 什麼是 Analysis Services？
+    - name: 什麼是 Azure Analysis Services？
       href: analysis-services-overview.md
 - name: 快速入門
   items:
@@ -10,6 +10,9 @@
       href: analysis-services-create-server.md
     - name: 建立伺服器 - PowerShell
       href: analysis-services-create-powershell.md
+    - name: 建立伺服器 - ARM 範本
+      displayName: Resource Manager
+      href: analysis-services-create-template.md
     - name: 設定伺服器防火牆 - 入口網站
       href: analysis-services-qs-firewall.md
 - name: 教學課程
@@ -27,18 +30,22 @@
     - name: 使用服務主體進行自動化
       href: analysis-services-service-principal.md
     - name: 用戶端程式庫
-      href: analysis-services-data-providers.md
+      href: 'https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current'
     - name: 相容性層級
-      href: analysis-services-compat-level.md
+      href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services?view=azure-analysis-services-current'
     - name: 連線至內部部署資料來源
       href: analysis-services-gateway.md
     - name: 連線至伺服器
       href: analysis-services-connect.md
     - name: 高可用性
       href: analysis-services-bcdr.md
+    - name: 長時間執行的作業
+      href: analysis-services-long-operations.md
     - name: 支援的資料來源
       href: analysis-services-datasource.md
-- name: 作法
+    - name: 網路連線常見問題集
+      href: analysis-services-network-faq.md
+- name: 操作方式
   items:
     - name: 伺服器
       items:
@@ -64,9 +71,13 @@
           href: ../active-directory/develop/howto-authenticate-service-principal-powershell.md
         - name: 將服務主體新增至伺服器管理員角色
           href: analysis-services-addservprinc-admins.md
+        - name: 在區域間移動
+          href: move-between-regions.md
     - name: 模型
       items:
-        - name: 從 Visual Studio (SSDT) 部署
+        - name: 表格式模型
+          href: 'https://docs.microsoft.com/analysis-services/tabular-models/tabular-models-ssas'
+        - name: 從 Visual Studio 部署
           href: analysis-services-deploy.md
         - name: 使用 REST API 重新整理
           href: analysis-services-async-refresh.md
@@ -97,13 +108,13 @@
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.analysisservices/servers
     - name: DAX
-      href: 'https://msdn.microsoft.com/library/gg413422.aspx'
+      href: 'https://docs.microsoft.com/dax/data-analysis-expressions-dax-reference'
     - name: Power Query M
-      href: 'https://msdn.microsoft.com/library/mt211003.aspx'
+      href: 'https://docs.microsoft.com/powerquery-m/power-query-m-reference'
     - name: 表格式模型指令碼語言 (TMSL)
       href: 'https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference'
     - name: 表格式物件模型 (TOM)
-      href: 'https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo'
+      href: 'https://docs.microsoft.com/bi-reference/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo'
     - name: 資源和物件限制
       href: analysis-services-capacity-limits.md
 - name: 資源
@@ -111,20 +122,18 @@
     - name: 範例
       href: analysis-services-samples.md
     - name: Analysis Services 小組部落格
-      href: 'https://blogs.msdn.microsoft.com/analysisservices/'
-    - name: Azure Analysis Services 論壇
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices'
-    - name: Azure 藍圖
-      href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
+      href: 'https://powerbi.microsoft.com/blog/category/analysis-services/'
+    - name: Azure 更新
+      href: 'https://azure.microsoft.com/updates/?query=Analysis%20Services'
     - name: Azure 狀態
       href: 'https://azure.microsoft.com/status/'
     - name: 意見反應
       href: 'https://feedback.azure.com/forums/556165-azure-analysis-services'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/analysis-services/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-analysis-services'
     - name: 影片
       href: 'https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest'

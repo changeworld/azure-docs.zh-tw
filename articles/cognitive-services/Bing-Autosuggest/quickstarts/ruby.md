@@ -1,25 +1,25 @@
 ---
 title: 快速入門：使用 Bing 自動建議 REST API 與 Ruby 建議搜尋查詢
-titlesuffix: Azure Cognitive Services
-description: 取得資訊和程式碼範例，以協助您快速開始使用 Bing 自動建議 API。
+titleSuffix: Azure Cognitive Services
+description: 了解如何快速開始使用 Bing 自動建議 API，即時建議搜尋字詞。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 02/20/2019
+ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: c7ba0fd34c789735cd92c25a728aec346dc88fcc
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: e9b990f7e79fe0d70a213db5739153fe1e558f3c
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57009730"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930194"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>快速入門：使用 Bing 自動建議 REST API 與 Ruby 建議搜尋查詢
 
-使用本快速入門，呼叫 Bing 自動建議 API，並取得 JSON 回應。 這個簡單的 Ruby 應用程式會將部分搜尋查詢傳送至 API，並傳回搜尋建議。 雖然此應用程式是以 Ruby 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
+本快速入門說明如何呼叫 Bing 自動建議 API，並讀取 JSON 回應。 這個簡單的 Ruby 應用程式會將部分搜尋查詢傳送至 API，並傳回搜尋建議。 雖然此應用程式是以 Ruby 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
 
 
 ## <a name="prerequisites"></a>必要條件
@@ -38,7 +38,7 @@ ms.locfileid: "57009730"
     require 'json'
     ```
 
-2. 針對您的 API 主機與路徑、[市場代碼](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes)、部份搜尋查詢，建立變數。
+2. 為您的 API 主機與路徑、[市場代碼](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)和部分搜尋查詢建立變數。 請使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
 
     ```ruby
     subscriptionKey = 'enter your key here'
@@ -48,7 +48,7 @@ ms.locfileid: "57009730"
     query = 'sail'
     ```
 
-3. 透過對 `?mkt=` 參數附加市場代碼，並對 `&q=` 參數附加查詢，來建立參數字串。 然後結合 API 主機、路徑和參數字串，以建構您的要求 URI。
+3. 透過對 `mkt=` 參數附加市場代碼，並對 `q=` 參數附加查詢，來建立參數字串。 然後結合 API 主機、路徑和參數字串，以建構您的要求 URI。
 
     ```ruby
     params = '?mkt=' + mkt + '&q=' + query
@@ -154,4 +154,4 @@ ms.locfileid: "57009730"
 ## <a name="see-also"></a>另請參閱
 
 - [什麼是 Bing 自動建議？](../get-suggested-search-terms.md)
-- [Bing 自動建議 API v7 參考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)
+- [Bing 自動建議 API v7 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

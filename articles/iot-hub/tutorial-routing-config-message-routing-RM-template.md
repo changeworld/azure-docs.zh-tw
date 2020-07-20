@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Resource Manager 範本設定 Azure IoT 中樞的訊息路由 | Microsoft Docs
+title: 使用 Azure Resource Manager 範本設定 Azure IoT 中樞的訊息路由
 description: 使用 Azure Resource Manager 範本設定 Azure IoT 中樞的訊息路由
 author: robinsh
 manager: philmeagit st
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: d7b8c0685cf92341241575d3e67c09a759f5c190
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 8f245653a8b84944e1e8a3f48a49992f0065be58
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59543736"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74084397"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>教學課程：使用 Azure Resource Manager 範本設定 IoT 中樞的訊息路由
 
@@ -38,13 +38,13 @@ ms.locfileid: "59543736"
 
 有數個資源名稱必須是全域唯一的，例如 IoT 中樞名稱和儲存體帳戶名稱。 為了簡化資源的命名方式，那些資源的名稱會設定為附加以目前的日期/時間產生的隨機英數字元值。 
 
-如果您查看範本，您就會看到針對這些資源所設定的變數，會在何處採用傳入的參數並對該參數串連 randomValue。 
+如果您查看範本，您就會看到針對這些資源所設定的變數，會在何處採用傳入的參數並對該參數串連 randomValue  。 
 
 下列區段說明所使用的參數。
 
 ### <a name="parameters"></a>參數
 
-這些參數大多具有預設值。 以 **_in** 結尾的參數會串連 randomValue 以便成為全域唯一的值。 
+這些參數大多具有預設值。 以 **_in** 結尾的參數會串連 randomValue  以便成為全域唯一的值。 
 
 **randomValue**：這個值會從部署範本當下的日期/時間來產生。 此欄位不在參數檔案內，因為其會在範本當中產生。
 
@@ -356,11 +356,11 @@ ms.locfileid: "59543736"
 
 若要將範本部署至 Azure，請將範本和參數檔案上傳至 Azure Cloud Shell，然後執行指令碼來部署範本。 開啟 Azure Cloud Shell 並登入。 此範例會使用 PowerShell。
 
-若要上傳檔案，請選取功能表列中的 [上傳/下載檔案] 圖示，然後選擇 [上傳]。
+若要上傳檔案，請選取功能表列中的 [上傳/下載檔案]  圖示，然後選擇 [上傳]。
 
 ![Cloud Shell 功能表列，已醒目提示 [上傳/下載檔案]](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_files.png)
 
-使用彈現的檔案總管，尋找您本機磁碟上的檔案並加以選取，然後選擇 [開啟]。
+使用彈現的檔案總管，尋找您本機磁碟上的檔案並加以選取，然後選擇 [開啟]  。
 
 檔案上傳之後，會有結果對話方塊顯示如下圖所示的內容。
 
@@ -370,7 +370,7 @@ ms.locfileid: "59543736"
 
 執行指令碼來執行部署。 此指令碼的最後一行會擷取已設定要傳回的變數，也就是服務匯流排佇列的連接字串。
 
-此指令碼中會設定下列變數。
+指令碼會設定並使用下列變數：
 
 **$RGName** 是要作為範本部署目的地的資源群組名稱。 會先建立此欄位再部署範本。
 

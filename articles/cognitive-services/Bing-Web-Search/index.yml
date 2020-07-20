@@ -1,107 +1,368 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Bing Web 搜尋 API 文件
+### YamlMime:Hub
+title: Bing 搜尋 API 文件
+summary: Bing 搜尋 API 可讓您建置網路連線的應用程式和服務來尋找網頁、影像、新聞、位置等等，完全沒有廣告。
+brand: azure
 metadata:
-  document_id: 6111ada8-aec2-11e7-abc4-cec278b6b50a
-  title: Bing Web 搜尋 API 文件 - 教學課程、快速入門與 API 參考 | Microsoft Docs
-  description: 了解如何使用 Bing Web 搜尋 API 搜尋網路上的網頁、影像、影片、新聞和其他資訊。
+  title: Bing 搜尋 API 文件
+  titleSuffix: Azure Cognitive Services
+  description: Bing 搜尋 API 可讓您建置網路連線的應用程式和服務來尋找網頁、影像、新聞、位置等等，完全沒有廣告。
   services: cognitive-services
-  author: nitinme
-  manager: cgronlun
   ms.service: cognitive-services
   ms.subservice: bing-web-search
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 9/24/2018
-  ms.author: nitinme
-abstract:
-  description: Bing Web 搜尋 API 可讓您將 Bing 的搜尋功能整合到應用程式中。 藉由透過 API 傳送搜尋查詢，您可以取得相關的網頁、影像、影片、新聞和其他資訊。
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/bing-web-search/overview
-            html: <p>了解 Bing Web 搜尋 API</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: 什麼是 Bing Web 搜尋？
-          - href: /azure/cognitive-services/bing-web-search/search-responses
-            html: <p>了解 Bing Web 搜尋 API 的回應主體</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Web 搜尋回應
-          - href: /azure/cognitive-services/bing-web-search/autosuggest-bing-search-terms
-            html: <p>了解自動建議功能如何針對您的搜尋查詢執行</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Bing 查詢的自動建議
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 使用以下方式搜尋網站：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/logo_csharp.svg
-            href: web-search-sdk-quickstart
-            text: 'C&#35;'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_gopher.svg'
-            href: quickstarts/go
-            text: Go
-          - image:
-              src: media/index/logo_java.svg
-            href: web-sdk-java-quickstart
-            text: Java
-          - image:
-              src: media/index/logo_nodejs.svg
-            href: web-search-sdk-node-quickstart
-            text: Node.js
-          - image:
-              src: media/index/logo_php.svg
-            href: quickstarts/php
-            text: PHP
-          - image:
-              src: media/index/logo_python.svg
-            href: web-sdk-python-quickstart
-            text: Python
-          - image:
-              src: media/index/logo_ruby.svg
-            href: quickstarts/ruby
-            text: Ruby
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何使用 Bing Web 搜尋 API 開發應用程式：
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="tutorial-bing-web-search-single-page-app">單頁 Web 應用程式</a>
-  - title: 範例
-    items:
-      - type: paragraph
-        text: 尋找 Bing Web 搜尋 API 範例：
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://github.com/Azure-Samples/cognitive-services-REST-api-samples">REST 範例</a>'
-          - html: <a href="sdk-samples.md">SDK 範例</a>
+  ms.topic: hub-page
+  ms.collection: collection
+  author: aahill
+  ms.author: aahi
+  ms.date: 11/06/2019
+  ms.openlocfilehash: b7f33420582340125e0c2abff80cce9a67fdcb7f
+  ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 04/08/2020
+  ms.locfileid: "80886529"
+highlightedContent:
+  items:
+  - title: 比較 Bing 搜尋 API
+    itemType: overview
+    url: bing-api-comparison.md
+  - title: 逐頁檢視搜尋結果
+    itemType: how-to-guide
+    url: paging-search-results.md
+  - title: 使用和顯示需求
+    itemType: reference
+    url: use-display-requirements.md
+  - title: API 定價詳細資料
+    itemType: reference
+    url: https://azure.microsoft.com/pricing/details/cognitive-services/search-api/
+conceptualContent:
+  title: 開始使用
+  summary: 選擇下列其中一個可用的 API，開始從網頁取得搜尋結果。
+  items:
+  - title: Bing Web 搜尋
+    links:
+    - url: ./quickstarts/client-libraries.md?pivots=programming-language-csharp
+      itemType: quickstart
+      text: 使用 C#
+    - url: ./quickstarts/client-libraries.md?pivots=programming-language-java
+      itemType: quickstart
+      text: 使用 Java
+    - url: ./quickstarts/client-libraries.md?pivots=programming-language-javascript
+      itemType: quickstart
+      text: 使用 JavaScript
+    - url: ./quickstarts/client-libraries.md?pivots=programming-language-python
+      itemType: quickstart
+      text: 使用 Python
+    - url: tutorial-bing-web-search-single-page-app.md
+      itemType: tutorial
+      text: 建立單頁 Web 應用程式
+    footerLink:
+      url: overview.md
+      text: 查看更多
+  - title: Bing 自訂搜尋 API
+    links:
+    - text: 建立自訂搜尋執行個體
+      itemType: quickstart
+      url: ../bing-custom-search/quick-start.md
+    - text: 使用 C#
+      itemType: quickstart
+      url: ../bing-custom-search/quickstarts/client-libraries.md?pivots=programming-language-csharp
+    - text: 使用 Java
+      itemType: quickstart
+      url: ../bing-custom-search/quickstarts/client-libraries.md?pivots=programming-language-java
+    - text: 使用 Python
+      itemType: quickstart
+      url: ../bing-custom-search/quickstarts/client-libraries.md?pivots=programming-language-python
+    - text: 建立單頁 Web 應用程式
+      itemType: tutorial
+      url: ../bing-custom-search/tutorials/custom-search-web-page.md
+    footerLink:
+      url: ../bing-custom-search/overview.md
+      text: 查看更多
+  - title: Bing 影像搜尋
+    links:
+    - text: 使用 C#
+      itemType: quickstart
+      url: ../bing-image-search/quickstarts/client-libraries.md?pivots=programming-language-csharp
+    - text: 使用 Java
+      itemType: quickstart
+      url: ../bing-image-search/quickstarts/client-libraries.md?pivots=programming-language-java
+    - text: 使用 JavaScript
+      itemType: quickstart
+      url: ../bing-image-search/quickstarts/client-libraries.md?pivots=programming-language-javascript
+    - text: 使用 Python
+      itemType: quickstart
+      url: ../bing-image-search/quickstarts/client-libraries.md?pivots=programming-language-python
+    - text: 建立單頁 Web 應用程式
+      itemType: tutorial
+      url: ../bing-image-search/tutorial-bing-image-search-single-page-app.md
+    footerLink:
+      url: ../bing-image-search/overview.md
+      text: 查看更多
+  - title: Bing 實體搜尋 API
+    links:
+    - text: 使用 C#
+      itemType: quickstart
+      url: ../bing-entities-search/quickstarts/client-libraries.md?pivots=programming-language-csharp
+    - text: 使用 Java
+      itemType: quickstart
+      url: ../bing-entities-search/quickstarts/client-libraries.md?pivots=programming-language-java
+    - text: 使用 JavaScript
+      itemType: quickstart
+      url: ../bing-entities-search/quickstarts/client-libraries.md?pivots=programming-language-javascript
+    - text: 使用 Python
+      itemType: quickstart
+      url: ../bing-entities-search/quickstarts/client-libraries.md?pivots=programming-language-python
+    - text: 建立單頁 Web 應用程式
+      itemType: tutorial
+      url: ../bing-entities-search/tutorial-bing-entities-search-single-page-app.md
+    footerLink:
+      url: ../bing-entities-search/overview.md
+      text: 查看更多
+  - title: Bing 新聞搜尋 API
+    links:
+    - text: 使用 C#
+      itemType: quickstart
+      url: ../bing-news-search/quickstarts/client-libraries.md?pivots=programming-language-csharp
+    - text: 使用 Java
+      itemType: quickstart
+      url: ../bing-news-search/quickstarts/client-libraries.md?pivots=programming-language-java
+    - text: 使用 JavaScript
+      itemType: quickstart
+      url: ../bing-news-search/quickstarts/client-libraries.md?pivots=programming-language-javascript
+    - text: 使用 Python
+      itemType: quickstart
+      url: ../bing-news-search/quickstarts/client-libraries.md?pivots=programming-language-python
+    - text: 建立單頁 Web 應用程式
+      itemType: tutorial
+      url: ../bing-news-search/tutorial-bing-news-search-single-page-app.md
+    footerLink:
+      url: ../bing-news-search/search-the-web.md
+      text: 查看更多
+  - title: Bing 影片搜尋 API
+    links:
+    - text: 使用 C#
+      itemType: quickstart
+      url: ../bing-video-search/quickstarts/client-libraries.md?pivots=programming-language-csharp
+    - text: 使用 Java
+      itemType: quickstart
+      url: ../bing-video-search/quickstarts/client-libraries.md?pivots=programming-language-java
+    - text: 使用 JavaScript
+      itemType: quickstart
+      url: ../bing-video-search/quickstarts/client-libraries.md?pivots=programming-language-javascript
+    - text: 使用 Python
+      itemType: quickstart
+      url: ../bing-video-search/quickstarts/client-libraries.md?pivots=programming-language-python
+    - text: 建立單頁 Web 應用程式
+      itemType: tutorial
+      url: ../Bing-Video-Search/tutorial-bing-video-search-single-page-app.md
+    footerLink:
+      url: ../Bing-Video-Search/overview.md
+      text: 查看更多
+  - title: Bing 圖像式搜尋 API
+    links:
+    - text: 使用 C#
+      itemType: quickstart
+      url: ../bing-visual-search/quickstarts/client-libraries.md?pivots=programming-language-csharp
+    - text: 使用 Java
+      itemType: quickstart
+      url: ../bing-visual-search/quickstarts/client-libraries.md?pivots=programming-language-java
+    - text: 使用 JavaScript
+      itemType: quickstart
+      url: ../bing-visual-search/quickstarts/client-libraries.md?pivots=programming-language-javascript
+    - text: 使用 Python
+      itemType: quickstart
+      url: ../bing-visual-search/quickstarts/client-libraries.md?pivots=programming-language-python
+    - text: 裁剪並搜尋影像的某個區域
+      itemType: tutorial
+      url: ../bing-visual-search/tutorial-visual-search-crop-area-results.md
+    footerLink:
+      url: ../bing-visual-search/overview.md
+      text: 查看更多
+  - title: Bing 自動建議 API
+    links:
+    - text: 使用 C#
+      itemType: quickstart
+      url: ../bing-autosuggest/quickstarts/client-libraries.md?pivots=programming-language-csharp
+    - text: 使用 Go
+      itemType: quickstart
+      url: ../Bing-Autosuggest/quickstarts/client-libraries.md?pivots=programming-language-go
+    - text: 使用 Java
+      itemType: quickstart
+      url: ../Bing-Autosuggest/quickstarts/java.md
+    - text: 使用 Node.js
+      itemType: quickstart
+      url: ../Bing-Autosuggest/quickstarts/nodejs.md
+    - text: 使用 Python
+      itemType: quickstart
+      url: ../Bing-Autosuggest/quickstarts/python.md
+    - text: 建立單頁 Web 應用程式
+      itemType: quickstart
+      url: ../Bing-Autosuggest/tutorials/autosuggest.md
+    footerLink:
+      url: ../Bing-Autosuggest/get-suggested-search-terms.md
+      text: 查看更多
+  - title: Bing 拼字檢查 API
+    links:
+    - text: 使用 C#
+      itemType: quickstart
+      url: ../bing-spell-check/sdk-quickstart-spell-check.md
+    - text: 使用 Java
+      itemType: quickstart
+      url: ../bing-spell-check/quickstarts/java.md
+    - text: 使用 Node.js
+      itemType: quickstart
+      url: ../bing-spell-check/quickstarts/nodejs.md
+    - text: 使用 Python
+      itemType: quickstart
+      url: ../bing-spell-check/quickstarts/python.md
+    - text: 建立單頁 Web 應用程式
+      itemType: tutorial
+      url: ../bing-spell-check/tutorials/spellcheck.md
+    footerLink:
+      url: ../bing-spell-check/overview.md
+      text: 查看更多
+  - title: 本地商家搜尋 API
+    links:
+    - text: 使用 C#
+      itemType: quickstart
+      url: ../bing-local-business-search/quickstarts/local-quickstart.md
+    - text: 使用 Java
+      itemType: quickstart
+      url: ../bing-local-business-search/quickstarts/local-search-java-quickstart.md
+    - text: 使用 Node.js
+      itemType: quickstart
+      url: ../bing-local-business-search/quickstarts/local-search-node-quickstart.md
+    - text: 使用 Python
+      itemType: quickstart
+      url: ../bing-local-business-search/quickstarts/local-search-python-quickstart.md
+    footerLink:
+      url: ../bing-local-business-search/overview.md
+      text: 查看更多
+additionalContent:
+  sections:
   - title: 參考
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference">Bing Web 搜尋 API v7</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference/">Bing Web 搜尋 API v5</a></p>'
-          - title: SDK
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-websearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/websearch?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/websearch">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/websearch?view=azure-java-stable">Java</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'
+    - title: REST API v7
+      links:
+      - text: Bing Web 搜尋
+        url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference
+      - text: Bing 自訂搜尋
+        url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference
+      - text: Bing 影像搜尋
+        url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference
+      - text: Bing 實體搜尋
+        url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference
+      - text: Bing 新聞搜尋
+        url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference
+      - text: Bing 影片搜尋
+        url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference
+      - text: Bing 圖像式搜尋
+        url: https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images
+      - text: Bing 自動建議
+        url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference
+      - text: Bing 拼字檢查
+        url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference
+      - text: Bing 當地企業搜尋
+        url: ../bing-local-business-search/local-search-reference.md
+    - title: .NET SDK
+      links:
+      - text: Bing Web 搜尋
+        url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-dotnet
+      - text: Bing 自訂搜尋
+        url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet
+      - text: Bing 實體搜尋
+        url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingentitysearchapi?view=azure-dotnet
+      - text: Bing 影像搜尋
+        url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingimagesearch?view=azure-dotnet
+      - text: Bing 新聞搜尋
+        url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingnewssearch?view=azure-dotnet
+      - text: Bing 影片搜尋
+        url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingvideosearch?view=azure-dotnet
+      - text: Bing 圖像式搜尋
+        url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-dotnet
+      - text: Bing 拼字檢查
+        url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet
+      - text: Bing 自動建議
+        url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet
+    - title: Java SDK
+      links:
+      - text: Bing Web 搜尋
+        url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-java-stable
+      - text: Bing 自訂搜尋
+        url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable
+      - text: Bing 實體搜尋
+        url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingentitysearchapi?view=azure-java-stable
+      - text: Bing 影像搜尋
+        url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingimagesearch?view=azure-java-stable
+      - text: Bing 新聞搜尋
+        url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingnewssearch?view=azure-java-stable
+      - text: Bing 影片搜尋
+        url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingvideosearch?view=azure-java-stable
+      - text: Bing 圖像式搜尋
+        url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-java-stable
+      - text: Bing 拼字檢查
+        url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-java-stable
+      - text: Bing 自動建議
+        url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-java-stable
+    - title: Python SDK
+      links:
+      - text: Bing Web 搜尋
+        url: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/websearch?view=azure-python
+      - text: Bing 自訂搜尋
+        url: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python
+      - text: Bing 實體搜尋
+        url: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/entitysearch?view=azure-python
+      - text: Bing 影像搜尋
+        url: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/imagesearch?view=azure-python
+      - text: Bing 新聞搜尋
+        url: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/newssearch?view=azure-python
+      - text: Bing 影片搜尋
+        url: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/videosearch?view=azure-python
+      - text: Bing 圖像式搜尋
+        url: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/visualsearch?view=azure-python
+      - text: Bing 拼字檢查
+        url: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/spellcheck?view=azure-python
+    - title: Node.js SDK
+      links:
+      - text: Bing Web 搜尋
+        url: https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-websearch/?view=azure-node-latest
+      - text: Bing 自訂搜尋
+        url: https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-customsearch/?view=azure-node-latest
+      - text: Bing 實體搜尋
+        url: https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-entitysearch/?view=azure-node-latest
+      - text: Bing 影像搜尋
+        url: https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-imagesearch/?view=azure-node-latest
+      - text: Bing 新聞搜尋
+        url: https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-newssearch/?view=azure-node-latest
+      - text: Bing 影片搜尋
+        url: https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-videosearch/?view=azure-node-latest
+      - text: Bing 圖像式搜尋
+        url: https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-visualsearch/?view=azure-node-latest
+      - text: Bing 拼字檢查
+        url: https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-spellcheck/?view=azure-node-latest
+      - text: Bing 自動建議
+        url: https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-autosuggest/?view=azure-node-latest
+    - title: Go SDK
+      links:
+      - text: Bing Web 搜尋
+        url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/websearch
+      - text: Bing 自訂搜尋
+        url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customsearch
+      - text: Bing 實體搜尋
+        url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/entitysearch
+      - text: Bing 影像搜尋
+        url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/imagesearch
+      - text: Bing 新聞搜尋
+        url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/newssearch
+      - text: Bing 影片搜尋
+        url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/videosearch
+      - text: Bing 拼字檢查
+        url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/spellcheck
+      - text: Bing 自動建議
+        url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest
+    - title: 其他
+      links:
+      - text: Azure Powershell
+        url: https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services
+      - text: Azure CLI
+        url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list

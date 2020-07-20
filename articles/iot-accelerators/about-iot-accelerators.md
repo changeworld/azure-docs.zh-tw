@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 042c3c2925e9d537847f16f02d841d793456fb03
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1a27d748e16f892a748cf18569c13ca3f9ead1dd
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58172813"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "71309506"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Azure IoT 解決方案加速器是什麼？
 
@@ -42,7 +42,7 @@ IoT 解決方案加速器是完整且可立即部署的 IoT 解決方案，可�
 
 ### <a name="connected-factory"></a>連線的處理站
 
-使用[連線的工廠解決方案加速器](iot-accelerators-connected-factory-sample-walkthrough.md)可使用 [OPC 統一架構](https://opcfoundation.org/about/opc-technologies/opc-ua/)介面收集工業資產所傳來的遙測資料以及控制這些資產。 工業資產可能包含工廠生產線內的組裝台和測試台。
+使用[連線的工廠解決方案加速器](iot-accelerators-connected-factory-features.md)可使用 [OPC 統一架構](https://opcfoundation.org/about/opc-technologies/opc-ua/)介面收集工業資產所傳來的遙測資料以及控制這些資產。 工業資產可能包含工廠生產線內的組裝台和測試台。
 
 您可以使用連線工廠儀表板來監視及管理您的工業裝置：
 
@@ -85,7 +85,7 @@ IoT 解決方案加速器是完整且可立即部署的 IoT 解決方案，可�
 | 連線的處理站      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
 | 裝置模擬      | 微服務 | [.NET](https://github.com/Azure/device-simulation-dotnet)          |
 
-若要深入了解微服務架構，請參閱 [Azure IoT 參考架構簡介](iot-accelerators-architecture-overview.md)。
+若要深入了解微服務架構，請參閱 [Azure IoT 參考架構簡介](https://docs.microsoft.com/azure/architecture/reference-architectures/iot/)。
 
 ## <a name="deployment-options"></a>部署選項
 

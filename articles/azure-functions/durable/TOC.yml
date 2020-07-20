@@ -1,4 +1,5 @@
 - name: Durable Functions 文件
+  href: index.yml
 - name: 概觀
   items:
     - name: 了解 Azure Functions
@@ -7,17 +8,24 @@
       href: durable-functions-overview.md
     - name: 無伺服器比較
       href: ../functions-compare-logic-apps-ms-flow-webjobs.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+    - name: Durable Functions 版本
+      href: durable-functions-versions.md
 - name: 快速入門
   expanded: true
   items:
-    - name: '建立 Durable Functions - C#'
+    - name: 建立 Durable Functions - C#
       href: durable-functions-create-first-csharp.md
       displayName: 'get started, chaining'
     - name: 建立 Durable Functions - JavaScript
       displayName: 'get started, chaining'
       href: quickstart-js-vscode.md
+    - name: 建立 Durable Functions - Python
+      displayName: 'get started, chaining'
+      href: quickstart-python-vscode.md
 - name: 教學課程
   items:
+    - name: 函式鏈結
+      href: durable-functions-sequence.md
     - name: 扇入/扇出
       href: durable-functions-cloud-backup.md
     - name: 監視器
@@ -29,55 +37,71 @@
 - name: 範例
   items:
     - name: 程式碼範例
-      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=functions&sort=0&term=durable+'
+      href: /samples/browse/?products=azure-functions&term=durable
     - name: Azure CLI
       href: ../functions-cli-samples.md
 - name: 概念
   items:
-    - name: 模式和概念
-      href: durable-functions-concepts.md
-    - name: 函式類型和功能
+    - name: 函式類型
       href: durable-functions-types-features-overview.md
-    - name: 繫結
-      href: durable-functions-bindings.md
+    - name: 協調流程
+      href: durable-functions-orchestrations.md
+    - name: 協調器程式碼條件約束
+      href: durable-functions-code-constraints.md
+    - name: 子協調流程
+      href: durable-functions-sub-orchestrations.md
+    - name: 自訂協調流程狀態
+      href: durable-functions-custom-orchestration-status.md
     - name: 計時器
       href: durable-functions-timers.md
     - name: 外部事件
       href: durable-functions-external-events.md
-    - name: 子協調流程
-      href: durable-functions-sub-orchestrations.md
+    - name: 錯誤處理
+      href: durable-functions-error-handling.md
+    - name: Eternal 協調流程
+      href: durable-functions-eternal-orchestrations.md
+    - name: Singleton 協調流程
+      href: durable-functions-singletons.md
+    - name: HTTP 功能
+      href: durable-functions-http-features.md
+    - name: 具狀態實體
+      href: durable-functions-entities.md
     - name: 工作中樞
       href: durable-functions-task-hubs.md
-    - name: Reliable 執行
-      href: durable-functions-checkpointing-and-replay.md
+    - name: 執行個體管理
+      href: durable-functions-instance-management.md
     - name: 版本控制
       href: durable-functions-versioning.md
-- name: 使用說明指南
+    - name: 效能和延展性
+      href: durable-functions-perf-and-scale.md
+    - name: 高可用性
+      href: durable-functions-disaster-recovery-geo-distribution.md
+- name: 參考
   items:
-    - name: 規劃和設計
-      items:
-        - name: 函式鏈結
-          href: durable-functions-sequence.md
-        - name: Eternal 協調流程
-          href: durable-functions-eternal-orchestrations.md
-        - name: Singleton 協調流程
-          href: durable-functions-singletons.md
-        - name: 效能和延展性
-          href: durable-functions-perf-and-scale.md
-        - name: 高可用性
-          href: durable-functions-disaster-recovery-geo-distribution.md
+    - name: Host.json 設定
+      href: durable-functions-bindings.md#host-json
+    - name: 繫結
+      href: durable-functions-bindings.md
+    - name: HTTP API
+      href: durable-functions-http-api.md
+    - name: .NET API
+      href: /dotnet/api/microsoft.azure.webjobs.extensions.durabletask?view=azure-dotnet
+    - name: Node.js API
+      href: /javascript/api/durable-functions/?view=azure-node-latest
+- name: 操作指南
+  items:
     - name: 開發
       items:
         - name: 在 Azure 入口網站中建立
           href: durable-functions-create-portal.md
-        - name: 管理連線
+        - name: 管理連接
           href: ../manage-connections.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-        - name: 錯誤處理
-          href: durable-functions-error-handling.md
         - name: 單元測試
           href: durable-functions-unit-testing.md
         - name: 建立為 WebJobs
           href: durable-functions-webjobs-sdk.md
+        - name: .NET 中的耐久實體
+          href: durable-functions-dotnet-entities.md
     - name: 部署
       items:
         - name: 連續部署
@@ -86,31 +110,23 @@
           href: ../deployment-zip-push.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
         - name: 從套件執行
           href: ../run-functions-from-deployment-package.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-    - name: 管理
-      items:
-        - name: 執行個體管理
-          href: durable-functions-instance-management.md
+        - name: 零停機部署
+          href: durable-functions-zero-downtime-deployment.md
     - name: 監視
-      items:
-        - name: 監視函式
-          href: ../functions-monitoring.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-        - name: 自訂協調流程狀態
-          href: durable-functions-custom-orchestration-status.md
-    - name: 疑難排解
       items:
         - name: 診斷
           href: durable-functions-diagnostics.md
-- name: 參考
-  items:
-    - name: HTTP API
-      href: durable-functions-http-api.md
+        - name: 監視
+          href: ../functions-monitoring.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+        - name: 定價
+          href: durable-functions-billing.md
 - name: 資源
   items:
     - name: 透過 Microsoft Learn 增進您的技巧
       href: /learn/browse/?products=azure-functions
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/functions/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
@@ -118,9 +134,9 @@
       href: 'https://azure.microsoft.com/regions/services/'
     - name: 影片
       href: 'https://www.youtube.com/c/AzureFunctions'
-    - name: MSDN 論壇
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions'
-    - name: 堆疊溢位
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-functions.html'
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-functions'
     - name: Twitter
       href: 'https://twitter.com/hashtag/DurableFunctions?src=hash'

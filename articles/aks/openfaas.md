@@ -1,24 +1,21 @@
 ---
 title: 使用 OpenFaaS 搭配 Azure Kubernetes Service (AKS)
-description: 部署及使用 OpenFaaS 搭配 Azure Kubernetes Service (AKS)
-services: container-service
+description: 瞭解如何在 Azure Kubernetes Service （AKS）叢集上部署及使用 OpenFaaS，以建立具有容器的無伺服器功能。
 author: justindavies
-manager: jeconnoc
-ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: 5ed6e0b21b00ede3f78a102fd004e5706ae3cea5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 95039573c607f516755f08f1ebad8b968416ec8b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60464853"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80631462"
 ---
 # <a name="using-openfaas-on-aks"></a>在 AKS 上使用 OpenFaaS
 
-[OpenFaaS][open-faas] 是一个框架，适用于通过容器构建无服务器函数。 由於是開放原始碼專案，它在社群內被廣泛採用。 本文件詳述在 Azure Kubernetes Service (AKS) 叢集上安裝和使用 OpenFaas 的做法。
+[OpenFaaS][open-faas]是一種架構，可讓您透過使用容器來建立無伺服器函式。 由於是開放原始碼專案，它在社群內被廣泛採用。 本文件詳述在 Azure Kubernetes Service (AKS) 叢集上安裝和使用 OpenFaas 的做法。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -29,11 +26,13 @@ ms.locfileid: "60464853"
 * 在您的開發系統上安裝 Azure CLI。
 * 在您的系統上安裝 Git 命令列工具。
 
-## <a name="add-the-openfaas-helm-chart-repo"></a>添加 OpenFaaS helm 图表存储库
+## <a name="add-the-openfaas-helm-chart-repo"></a>新增 OpenFaaS helm 圖表存放庫
 
-OpenFaaS 保留有自己的 helm 图表，可以通过所有最新的更改来更新内容。
+移至 [https://shell.azure.com](https://shell.azure.com)，以在瀏覽器中開啟 Azure Cloud Shell。
 
-```azurecli-interactive
+OpenFaaS 會維護它自己的 helm 圖，以隨時掌握最新的變更。
+
+```console
 helm repo add openfaas https://openfaas.github.io/faas-netes/
 helm repo update
 ```
@@ -42,15 +41,15 @@ helm repo update
 
 好的做法是 OpenFaaS 和 OpenFaaS 函式應該儲存在自己的 Kubernetes 命名空間中。
 
-为 OpenFaaS 系统和函数创建一个命名空间：
+建立 OpenFaaS 系統和函式的命名空間：
 
-```azurecli-interactive
+```console
 kubectl apply -f https://raw.githubusercontent.com/openfaas/faas-netes/master/namespaces.yml
 ```
 
-OpenFaaS UI 入口網站和 REST API 產生的密碼：
+產生 OpenFaaS UI 入口網站和 REST API 的密碼：
 
-```azurecli-interactive
+```console
 # generate a random password
 PASSWORD=$(head -c 12 /dev/urandom | shasum| cut -d' ' -f1)
 
@@ -59,13 +58,13 @@ kubectl -n openfaas create secret generic basic-auth \
 --from-literal=basic-auth-password="$PASSWORD"
 ```
 
-可以通过 `echo $PASSWORD` 获取机密的值。
+您可以使用取得密碼的值 `echo $PASSWORD` 。
 
-我们在此处创建的密码将由 helm 图表用来在 OpenFaaS 网关上启用基本的身份验证，该网关通过云 LoadBalancer 公开给 Internet。
+Helm 圖表會使用我們在此處建立的密碼來啟用 OpenFaaS 閘道上的基本驗證，這是透過雲端 LoadBalancer 向網際網路公開。
 
 複製的存放庫中包含適用於 OpenFaaS 的 Helm 圖表。 使用此圖表來將 OpenFaaS 部署至 AKS 叢集。
 
-```azurecli-interactive
+```console
 helm upgrade openfaas --install openfaas/openfaas \
     --namespace openfaas  \
     --set basic_auth=true \
@@ -75,7 +74,7 @@ helm upgrade openfaas --install openfaas/openfaas \
 
 輸出：
 
-```
+```output
 NAME:   openfaas
 LAST DEPLOYED: Wed Feb 28 08:26:11 2018
 NAMESPACE: openfaas
@@ -103,13 +102,13 @@ kubectl get service -l component=gateway --namespace openfaas
 
 輸出。
 
-```console
+```output
 NAME               TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)          AGE
 gateway            ClusterIP      10.0.156.194   <none>         8080/TCP         7m
 gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP   7m
 ```
 
-若要測試 OpenFaaS 系統，瀏覽至外部 IP 位址的 8080 連接埠，在此範例中是 `http://52.186.64.52:8080`。 系统会提示你登录。 若要获取密码，请输入 `echo $PASSWORD`。
+若要測試 OpenFaaS 系統，瀏覽至外部 IP 位址的 8080 連接埠，在此範例中是 `http://52.186.64.52:8080`。 系統會提示您登入。 若要提取您的密碼，請輸入 `echo $PASSWORD` 。
 
 ![OpenFaaS 使用者介面](media/container-service-serverless/openfaas.png)
 
@@ -119,11 +118,11 @@ gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP  
 brew install faas-cli
 ```
 
-将 `$OPENFAAS_URL` 设置为上面发现的公共 IP。
+設定 `$OPENFAAS_URL` 為上方找到的公用 IP。
 
-使用 Azure CLI 登录：
+使用 Azure CLI 登入：
 
-```azurecli-interactive
+```console
 export OPENFAAS_URL=http://52.186.64.52:8080
 echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 ```
@@ -132,19 +131,19 @@ echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 
 現在，OpenFaaS 已可正常運作，請使用 OpenFaas 入口網站建立函式。
 
-按一下 [部署新函式]，並搜尋 **Figlet**。 選取 Figlet 函式，然後按一下 [部署]。
+按一下 [部署新函式]****，並搜尋 **Figlet**。 選取 Figlet 函式，然後按一下 [部署]****。
 
 ![Figlet](media/container-service-serverless/figlet.png)
 
 使用 curl 叫用此函式。 將下列範例中的 IP 位址取代為您的 OpenFaas 閘道。
 
-```azurecli-interactive
+```console
 curl -X POST http://52.186.64.52:8080/function/figlet -d "Hello Azure"
 ```
 
 輸出：
 
-```console
+```output
  _   _      _ _            _
 | | | | ___| | | ___      / \    _____   _ _ __ ___
 | |_| |/ _ \ | |/ _ \    / _ \  |_  / | | | '__/ _ \
@@ -199,32 +198,32 @@ COSMOS=$(az cosmosdb list-connection-strings \
 
 視需要安裝 MongoDB 工具。 下列範例會使用 brew 安裝這些工具，如需其他選項請參閱 [MongoDB 文件][install-mongo]。
 
-```azurecli-interactive
+```console
 brew install mongodb
 ```
 
 將資料載入資料庫。
 
-```azurecli-interactive
+```console
 mongoimport --uri=$COSMOS -c plans < plans.json
 ```
 
 輸出：
 
-```console
+```output
 2018-02-19T14:42:14.313+0000    connected to: localhost
 2018-02-19T14:42:14.918+0000    imported 1 document
 ```
 
 執行下列命令建立函式。 將 `-g` 引數的值更新成您的 OpenFaaS 閘道位址。
 
-```azurecli-interctive
+```console
 faas-cli deploy -g http://52.186.64.52:8080 --image=shanepeckham/openfaascosmos --name=cosmos-query --env=NODE_ENV=$COSMOS
 ```
 
 部署完成之後，您應該會看到您剛為函式建立的 OpenFaaS 端點。
 
-```console
+```output
 Deployed. 202 Accepted.
 URL: http://52.186.64.52:8080/function/cosmos-query
 ```
@@ -247,7 +246,7 @@ curl -s http://52.186.64.52:8080/function/cosmos-query
 
 ## <a name="next-steps"></a>後續步驟
 
-可以在 OpenFaaS 研讨会中通过一系列动手实验室继续学习。这些实验室涵盖的主题包括：如何创建自己的 GitHub 机器人、如何使用机密、如何查看指标，以及如何进行自动缩放。
+您可以透過一組實際操作實驗室繼續學習 OpenFaaS 研討會，其中涵蓋的主題包括如何建立您自己的 GitHub bot、取用秘密、查看計量和自動調整。
 
 <!-- LINKS - external -->
 [install-mongo]: https://docs.mongodb.com/manual/installation/

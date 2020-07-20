@@ -1,69 +1,74 @@
 ---
-title: 如何使用自訂的 NuGet 摘要在 Azure 開發人員的空格
-titleSuffix: Azure Dev Spaces
+title: 使用自訂 NuGet 摘要
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: johnsta
-ms.author: johnsta
-ms.date: 05/11/2018
+author: zr-msft
+ms.author: zarhoads
+ms.date: 07/17/2019
 ms.topic: conceptual
 description: 在 Azure Dev Spaces 中使用自訂 NuGet 摘要以存取及使用 NuGet 套件。
-keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, 容器
-manager: ghogen
-ms.openlocfilehash: 1a000e378a9b8ecfb09d778fd6444e3f24b3df7b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+keywords: Docker、Kubernetes、Azure、AKS、Azure Container Service、容器
+manager: gwallace
+ms.openlocfilehash: 77c7b733b12d9b352f9a806cadc0f900b9283ef3
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60686444"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229272"
 ---
-#  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>在 Azure Dev Spaces 中使用自訂 NuGet 摘要
+# <a name="use-a-custom-nuget-feed-with-azure-dev-spaces"></a>搭配 Azure Dev Spaces 使用自訂 NuGet 摘要
 
-NuGet 摘要會提供在專案中包含套件來源的便利方式。 Azure Dev Spaces 必須能夠存取此摘要，才能在 Docker 容器中正確地安裝相依性。
+NuGet 摘要會提供在專案中包含套件來源的便利方式。 Azure Dev Spaces 需要存取此摘要，才能正確地將相依性安裝在 Docker 容器中。
 
 ## <a name="set-up-a-nuget-feed"></a>設定 NuGet 摘要
 
-若要設定 NuGet 摘要：
-1. 在 `PackageReference` 節點底下的 `*.csproj` 檔案中新增[套件參考](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files)。
+在節點下的檔案中，為您的相依性新增[套件參考](/nuget/consume-packages/package-references-in-project-files) `*.csproj` `PackageReference` 。 例如：
 
-   ```xml
-   <ItemGroup>
-       <!-- ... -->
-       <PackageReference Include="Contoso.Utility.UsefulStuff" Version="3.6.0" />
-       <!-- ... -->
-   </ItemGroup>
-   ```
+```xml
+<ItemGroup>
+    <!-- ... -->
+    <PackageReference Include="Contoso.Utility.UsefulStuff" Version="3.6.0" />
+    <!-- ... -->
+</ItemGroup>
+```
 
-2. 在專案資料夾中建立 [NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-file) 檔案。
-     * 使用 `packageSources` 區段以參考 NuGet 摘要位置。 重要：NuGet 摘要必須可以公開存取。
-     * 使用 `packageSourceCredentials` 區段來設定使用者名稱和密碼認證。 
+在專案資料夾中建立[NuGet.Config](/nuget/reference/nuget-config-file)檔案，並 `packageSources` 為 NuGet 摘要設定和 `packageSourceCredentials` 區段。 `packageSources`區段包含您的摘要 url，必須可從您的 AKS 叢集存取。 `packageSourceCredentials`是用來存取摘要的認證。 例如：
 
-   ```xml
-   <packageSources>
-       <add key="Contoso" value="https://contoso.com/packages/" />
-   </packageSources>
+```xml
+<packageSources>
+    <add key="Contoso" value="https://contoso.com/packages/" />
+</packageSources>
 
-   <packageSourceCredentials>
-       <Contoso>
-           <add key="Username" value="user@contoso.com" />
-           <add key="ClearTextPassword" value="33f!!lloppa" />
-       </Contoso>
-   </packageSourceCredentials>
-   ```
+<packageSourceCredentials>
+    <Contoso>
+        <add key="Username" value="user@contoso.com" />
+        <add key="ClearTextPassword" value="33f!!lloppa" />
+    </Contoso>
+</packageSourceCredentials>
+```
 
-3. 如果您使用原始程式碼控制：
-    - 請在您的 `.gitignore` 檔案中參考 `NuGet.Config`，您就不會不小心將認證認可到來源存放庫。
-    - 開啟專案中的 `azds.yaml` 檔案，並尋找 `build` 區段，然後插入下列程式碼片段，以確保 `NuGet.Config` 檔案會同步至 Azure，以便在容器映像建置程序期間使用。 (根據預設，Azure Dev Spaces 不會同步處理符合 `.gitignore` 和 `.dockerignore` 規則的檔案。)
+更新您的 Dockerfile，將檔案複製 `NuGet.Config` 到映射。 例如：
 
-        ```yaml
-        build:
-        useGitIgnore: true
-        ignore:
-        - “!NuGet.Config”
-        ```
+```console
+COPY ["<project folder>/NuGet.Config", "./NuGet.Config"]
+```
 
+> [!TIP]
+> 在 Windows 上， `NuGet.Config` 、 `Nuget.Config` 和 `nuget.config` 都是以有效的檔案名的形式運作。 在 Linux 上，只有 `NuGet.Config` 這個檔案有效的檔案名。 因為 Azure Dev Spaces 使用 Docker 和 Linux，所以這個檔案必須命名為 `NuGet.Config` 。 您可以手動或藉由執行來修正此命名 `dotnet restore --configfile nuget.config` 。
+
+
+如果您使用 Git，則不應該在版本控制中擁有 NuGet 摘要的認證。 將新增 `NuGet.Config` 至 `.gitignore` 專案的，讓檔案 `NuGet.Config` 不會加入至版本控制。 Azure Dev Spaces 在容器映射建立程式期間需要此檔案，但根據預設，它會遵守在同步處理期間和中定義的規則 `.gitignore` `.dockerignore` 。 若要變更預設值，並允許 Azure Dev Spaces 同步處理檔案 `NuGet.Config` ，請更新檔案 `azds.yaml` ：
+
+```yaml
+build:
+useGitIgnore: true
+ignore:
+- "!NuGet.Config"
+```
+
+如果您不是使用 Git，可以略過此步驟。
+
+下次您執行 `azds up` 或點擊 `F5` Visual Studio Code 或 Visual Studio 時，Azure Dev Spaces 會同步處理檔案， `NuGet.Config` 以用來安裝封裝相依性。
 
 ## <a name="next-steps"></a>後續步驟
 
-完成上述步驟之後，下一次您執行 `azds up` (或者在 VSCode 或 Visual Studio 中點擊 `F5`) 時，Azure Dev Spaces 會將 `NuGet.Config` 檔案同步到 Azure，然後 `dotnet restore` 會利用該檔案以在容器中安裝套件相依性。
-
+深入瞭解[NuGet 及其運作方式](/nuget/what-is-nuget)。

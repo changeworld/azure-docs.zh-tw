@@ -1,85 +1,103 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Event Grid 文件
+### YamlMime:Landing
+title: Azure 事件方格文件
+summary: 了解如何使用 Azure 事件方格，以近即時的方式回應跨 Azure 和非 Azure 服務的相關事件。
 metadata:
-  title: Azure Event Grid 文件 - 教學課程和 API 參考
-  description: 使用 Azure Event Grid，以近即時的方式回應跨 Azure 和非 Azure 服務的相關事件。
+  title: Azure 事件方格文件
+  description: 了解如何使用 Azure 事件方格，以近即時的方式回應跨 Azure 和非 Azure 服務的相關事件。
   services: event-grid
-  author: czeumault
-  manager: carolz
   ms.service: event-grid
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: 
   ms.topic: landing-page
-  ms.date: 08/10/2017
-  ms.author: carolz
-abstract:
-  description: Azure Event Grid 是完全受控的智慧型事件路由服務，可讓統一事件耗用量使用發佈-訂閱模型。 使用 Azure Event Grid，以近即時的方式回應跨 Azure 和非 Azure 服務的相關事件。 了解如何透過我們的快速入門、教學課程和範例使用Azure Event Grid。
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何建立和訂閱自訂事件。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/event-grid/media/index/cli.svg
-            text: Azure CLI
-            href: /azure/event-grid/custom-event-quickstart
-          - image:
-              src: /azure/event-grid/media/index/logo_powershell.svg
-            text: Azure PowerShell
-            href: /azure/event-grid/custom-event-quickstart-powershell
-          - image:
-              src: /azure/event-grid/media/index/portal.svg
-            text: Azure 入口網站
-            href: /azure/event-grid/custom-event-quickstart-portal
-      - type: paragraph
-        text: 了解如何路由 Blob 儲存體事件。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/event-grid/media/index/cli.svg
-            text: Azure CLI
-            href: /azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fevent-grid%2ftoc.json
-          - image:
-              src: /azure/event-grid/media/index/logo_powershell.svg
-            text: Azure PowerShell
-            href: /azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fevent-grid%2ftoc.json
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何開發應用程式，以回應事件。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app">監視 VM 與邏輯應用程式的變更</a>
-          - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">調整上傳映像的大小</a>
-          - html: <a href="/azure/event-grid/ensure-tags-exists-on-new-virtual-machines">整合 Azure 自動化與 vent Grid</a>
-  - title: 透過 Microsoft Learn 增進您的技巧
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: 在 Azure 中選擇傳訊模型以鬆散連線您的服務
-            href: /learn/modules/choose-a-messaging-model-in-azure-to-connect-your-services/
-            image:
-              src: /learn/achievements/choose-a-messaging-model-in-azure-to-connect-your-services.svg
-              href: /learn/modules/choose-a-messaging-model-in-azure-to-connect-your-services/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-event-grid">更多互動式學習...</a>
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令列
-            html: <p><a href="/cli/azure/eventgrid">Azure CLI</a></p><p><a href="/powershell/module/az.eventgrid">PowerShell</a></p>
-          - title: REST API
-            html: <p><a href="/rest/api/eventgrid">REST</a></p>
-          - title: 結構描述
-            html: <p><a href="/azure/event-grid/subscription-creation-schema ">訂用帳戶結構描述</a></p><p><a href="/azure/event-grid/event-schema">事件結構描述</a></p>
+  ms.collection: collection
+  author: spelluru
+  ms.author: spelluru
+  ms.date: 09/06/2019
+  ms.openlocfilehash: 095d94b09ad7cfd6e47e7322401db0bbf6ff8a03
+  ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 04/15/2020
+  ms.locfileid: "81393210"
+landingContent:
+- title: 關於 Event Grid
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是事件中樞？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Event Grid 概念
+      url: concepts.md
+    - text: 事件來源
+      url: overview.md#event-sources
+    - text: 事件處理常式
+      url: event-handlers.md
+    - text: 事件篩選器
+      url: event-filtering.md
+- title: 案例
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 將 Blob 儲存體事件路由至 Web 端點
+      url: blob-event-quickstart-portal.md
+    - text: Azure Functions 作為事件處理常式
+      url: custom-event-to-function.md
+    - text: 佇列儲存體作為事件處理常式
+      url: custom-event-to-queue-storage.md
+    - text: 事件中樞作為事件處理常式
+      url: custom-event-to-eventhub.md
+    - text: 將自訂事件路由至 Web 端點
+      url: custom-event-quickstart-portal.md
+    - text: 從私人容器登錄中傳送事件
+      url: ../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
+  - linkListType: tutorial
+    links:
+    - text: 當虛擬機器變更時傳送電子郵件
+      url: monitor-virtual-machine-changes-event-grid-logic-app.md
+    - text: 調整上傳映像的大小
+      url: resize-images-on-storage-blob-upload-event.md
+    - text: 觸發自動化 Runbook
+      url: ensure-tags-exists-on-new-virtual-machines.md
+    - text: 新增 IoT 中樞裝置時傳送電子郵件
+      url: publish-iot-hub-events-to-logic-apps.md
+    - text: 回應服務匯流排事件
+      url: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - text: 來自事件中樞的串流資料
+      url: event-grid-event-hubs-integration.md
+    - text: 路由媒體服務事件
+      url: ..//media-services/latest/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - text: 路由至混合式連線
+      url: custom-event-to-hybrid-connection.md
+- title: 進階概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 安全性和驗證
+      url: security-authentication.md
+    - text: 傳遞和重試
+      url: delivery-and-retry.md
+    - text: 事件網域
+      url: event-domains.md
+    - text: 地區災害復原
+      url: geo-disaster-recovery.md
+  - linkListType: architecture
+    links:
+    - text: 佇列和事件的參考架構
+      url: https://docs.microsoft.com/azure/architecture/reference-architectures/enterprise-integration/queues-events
+- title: 自訂
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 將自訂事件路由至 Web 端點
+      url: custom-event-quickstart-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: 建立自訂主題
+      url: scripts/event-grid-cli-create-custom-topic.md
+    - text: 訂閱自訂主題
+      url: scripts/event-grid-cli-subscribe-custom-topic.md
+    - text: 張貼到自訂主題
+      url: post-to-custom-topic.md
+    - text: 將自訂欄位對應到事件格線結構描述
+      url: input-mappings.md

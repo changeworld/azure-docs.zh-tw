@@ -1,36 +1,33 @@
 ---
-title: Azure Event Grid 的 Container Registry 事件結構描述
-description: 描述 Azure Event grid 的容器登錄事件提供的屬性
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
-ms.topic: reference
-ms.date: 03/12/2019
-ms.author: spelluru
-ms.openlocfilehash: c5998ff428c4b6f4c1f7a4087c6ccb27d93773eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+title: 做為事件方格來源 Azure Container Registry
+description: 說明使用 Azure 事件方格為容器登錄事件提供的屬性
+ms.topic: conceptual
+ms.date: 07/07/2020
+ms.openlocfilehash: d216fe88ee6aaad33fbbe3b93b8c4f8a6e952a71
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60345459"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113712"
 ---
-# <a name="azure-event-grid-event-schema-for-container-registry"></a>Container Registry 的 Azure Event Grid 事件結構描述
+# <a name="azure-container-registry-as-an-event-grid-source"></a>做為事件方格來源 Azure Container Registry
 
-本文提供 Container Registry 事件的屬性與結構描述。 如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
+本文提供 Container Registry 事件的屬性與結構描述。如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
 
-## <a name="available-event-types"></a>可用的事件類型
+## <a name="event-grid-event-schema"></a>Event Grid 事件結構描述
 
-Azure Container Registry 會發出下列事件類型：
+### <a name="available-event-types"></a>可用的事件類型
+
+Azure Container Registry 會發出下列事件種類：
 
 | 事件類型 | 描述 |
 | ---------- | ----------- |
 | Microsoft.ContainerRegistry.ImagePushed | 會在推送映像時引發。 |
 | Microsoft.ContainerRegistry.ImageDeleted | 會在刪除映像時引發。 |
-| Microsoft.ContainerRegistry.ChartPushed | 當推送 Helm 圖表時，就會引發。 |
-| Microsoft.ContainerRegistry.ChartDeleted | 刪除 Helm 圖表時，就會引發。 |
+| ContainerRegistry. ChartPushed | 推播 Helm 圖時引發。 |
+| ContainerRegistry. ChartDeleted | 在 Helm 圖刪除時引發。 |
 
-## <a name="example-event"></a>事件範例
+### <a name="example-event"></a>事件範例
 
 下列範例顯示映像推送事件的結構描述： 
 
@@ -95,7 +92,7 @@ Azure Container Registry 會發出下列事件類型：
 }]
 ```
 
-推送事件圖表的結構描述的映像已推送事件的結構描述類似，但它不包含要求物件：
+圖表推送事件的架構類似于映射推送事件的架構，但不包含 request 物件：
 
 ```json
 [{
@@ -123,7 +120,7 @@ Azure Container Registry 會發出下列事件類型：
 }]
 ```
 
-刪除圖表事件的結構描述類似於映像的已刪除事件的結構描述，但它不包含要求物件：
+圖表已刪除事件的架構類似于已映射刪除事件的架構，但不包含 request 物件：
 
 ```json
 [{
@@ -151,53 +148,59 @@ Azure Container Registry 會發出下列事件類型：
 }]
 ```
 
-## <a name="event-properties"></a>事件屬性
+### <a name="event-properties"></a>事件屬性
 
 事件具有下列的最高層級資料：
 
 | 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
-| 主題 | string | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
-| 主旨 | string | 發行者定義事件主體的路徑。 |
-| eventType | string | 此事件來源已註冊的事件類型之一。 |
-| eventTime | string | 事件產生的時間，以提供者之 UTC 時間為準。 |
-| id | string | 事件的唯一識別碼。 |
-| data | 物件 | blob 儲存體帳戶。 |
-| dataVersion | string | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
-| metadataVersion | string | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
+| 主題 | 字串 | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
+| subject | 字串 | 發行者定義事件主體的路徑。 |
+| eventType | 字串 | 此事件來源已註冊的事件類型之一。 |
+| eventTime | 字串 | 事件產生的時間，以提供者之 UTC 時間為準。 |
+| id | 字串 | 事件的唯一識別碼。 |
+| data | 物件 (object) | blob 儲存體帳戶。 |
+| dataVersion | 字串 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
+| metadataVersion | 字串 | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | Description |
 | -------- | ---- | ----------- |
-| id | string | 事件識別碼。 |
-| timestamp | string | 事件發生的時間。 |
-| action | string | 包含所提供事件的動作。 |
-| 目標 | 物件 | 事件的目標。 |
-| 要求 | 物件 | 產生事件的要求。 |
+| id | 字串 | 事件識別碼。 |
+| timestamp | 字串 | 事件發生的時間。 |
+| 動作 | 字串 | 包含所提供事件的動作。 |
+| 目標 | 物件 (object) | 事件的目標。 |
+| 要求 | 物件 (object) | 產生事件的要求。 |
 
 target 物件具有下列屬性：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | Description |
 | -------- | ---- | ----------- |
-| mediaType | string | 參考物件的 MIME 類型。 |
-| size | integer | 內容的位元組數目。 與長度欄位相同。 |
-| digest | string | 如 Registry V2 HTTP API 規格所定義的內容摘要。 |
-| length | integer | 內容的位元組數目。 [與大小相同] 欄位。 |
-| repository | string | 存放庫名稱。 |
-| tag | string | 標籤名稱。 |
-| name | string | 图表名称。 |
-| version | string | 图表版本。 |
+| mediaType | 字串 | 參考物件的 MIME 類型。 |
+| 大小 | integer | 內容的位元組數目。 與長度欄位相同。 |
+| digest | 字串 | 如 Registry V2 HTTP API 規格所定義的內容摘要。 |
+| 長度 | integer | 內容的位元組數目。 [與大小相同] 欄位。 |
+| repository | 字串 | 存放庫名稱。 |
+| 標籤 | 字串 | 標籤名稱。 |
+| NAME | 字串 | 圖表名稱。 |
+| version | 字串 | 圖表版本。 |
 
 request 物件具有下列屬性：
 
 | 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
-| id | string | 起始事件之要求的識別碼。 |
-| addr | string | 用戶端連線 (用於起始事件) 的 IP 或主機名稱，也可能是連接埠。 在標準 http 要求中，此值是 RemoteAddr。 |
-| host | string | 登錄執行個體的外部可存取主機名稱，如內送要求上的 http 主機標頭所指定。 |
-| method | string | 產生事件的要求方法。 |
-| userAgent | string | 要求的使用者代理程式標頭。 |
+| id | 字串 | 起始事件之要求的識別碼。 |
+| addr | 字串 | 用戶端連線 (用於起始事件) 的 IP 或主機名稱，也可能是連接埠。 在標準 http 要求中，此值是 RemoteAddr。 |
+| 主機 | 字串 | 登錄執行個體的外部可存取主機名稱，如內送要求上的 http 主機標頭所指定。 |
+| method | 字串 | 產生事件的要求方法。 |
+| userAgent | 字串 | 要求的使用者代理程式標頭。 |
+
+## <a name="tutorials-and-how-tos"></a>教學課程和操作說明
+|Title |描述  |
+|---------|---------|
+| [快速入門：傳送容器登錄事件](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 示範如何使用 Azure CLI 傳送 Container Registry 事件。 |
+
 
 ## <a name="next-steps"></a>後續步驟
 

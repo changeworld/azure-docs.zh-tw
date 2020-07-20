@@ -1,23 +1,22 @@
 ---
-title: Azure 反向 DNS 概觀 | Microsoft Docs
-description: 了解反向 DNS 如何運作以及如何在 Azure 中使用
+title: Azure 中反向 DNS 的總覽-Azure DNS
+description: 在此學習路徑中，您可以開始學習反向 DNS 的運作方式，以及如何在 Azure 中使用它
 services: dns
 documentationcenter: na
-author: vhorne
-manager: jeconnoc
+author: rohinkoul
+manager: KumuD
 ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: victorh
-ms.openlocfilehash: 9d3a62ec1c9ede1f25f2b53f800642a792b3aa28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: rohink
+ms.openlocfilehash: bf3da62e989f0e029efdc8e9c70f5f45e0ddd765
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60192977"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76932304"
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>Azure 反向 DNS 和支援概觀
 
@@ -33,7 +32,7 @@ ms.locfileid: "60192977"
 
 反向 DNS 記錄託管於特殊的 DNS 區域，稱為 'ARPA' 區域。  這些區域會與一般階層託管網域 (例如 'contoso.com') 同時形成個別的 DNS 階層。
 
-例如，DNS 記錄 'www.contoso.com' 是使用 DNS 'A' 記錄名稱 'www' 在區域 'contoso.com' 中實作的。  此 A 記錄會指向對應的 IP 位址，在此情況下為 64.4.6.100。  反向對應會在區域 '6.4.64.in-addr.arpa' 中使用名為 '100' 的 'PTR' 記錄分別實作 (請注意，IP 位址會在 ARPA 區域中反轉)。此 PTR 記錄 (如果它已正確設定) 會指向名稱 'www.contoso.com'。
+例如，DNS 記錄 'www.contoso.com' 是使用 DNS 'A' 記錄名稱 'www' 在區域 'contoso.com' 中實作的。  此 A 記錄會指向對應的 IP 位址，在此情況下為 64.4.6.100。  反向對應是使用 ' 6.4.64.in-arpa ' 區域中名為 ' 100 ' 的 ' PTR ' 記錄來分開執行（請注意，在 ARPA 區域中，IP 位址會反轉）。 此 PTR 記錄（如果已正確設定）會指向名稱 ' www.contoso.com '。
 
 當組織獲指派 IP 位址區塊時，也會取得管理對應的 ARPA 區域的權限。 對應至 Azure 所使用 IP 位址區塊的 ARPA 區域會由 Microsoft 託管並管理。 您的 ISP 可能會為您裝載您自己 IP 位址的 ARPA 區域，或可能讓您在所選的 DNS 服務 (例如，Azure DNS) 中裝載 ARPA 區域。
 

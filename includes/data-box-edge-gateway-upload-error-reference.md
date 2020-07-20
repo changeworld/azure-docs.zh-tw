@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 03/18/2019
 ms.author: alkohli
 ms.openlocfilehash: 05673885336dbfb9a70843bd0ccc4e700091ad7e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60756151"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67174648"
 ---
-|     錯誤碼     |      錯誤說明     |
+|     錯誤碼     |      錯誤描述     |
 |--------------------|--------------------------|
 |    100             | 容器或共用名稱必須介於 3 到 63 個字元之間。|
 |    101             | 容器或共用名稱只能包含字母、數字或連字號。|

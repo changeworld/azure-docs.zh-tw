@@ -8,11 +8,11 @@ ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
 ms.openlocfilehash: bef803de6cf8d6fdba05950a502d7d70f0da9581
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262744"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "67174348"
 ---
 ## <a name="clone-the-sample-application"></a>複製範例應用程式
 

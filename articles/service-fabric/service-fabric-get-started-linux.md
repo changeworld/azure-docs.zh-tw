@@ -1,25 +1,14 @@
 ---
-title: 在 Linux 上設定開發環境 | Microsoft Docs
+title: 在 Linux 上設定開發環境
 description: 在 Linux 上安裝執行階段和 SDK，並建立本機開發叢集。 完成此設定之後，您就可以開始建置應用程式。
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: a063461d9da66d57a7bdc3311ae80dec7f2c98f1
-ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
+ms.openlocfilehash: 8610feb68e16646c73c132c0577fd3ff198d74b8
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65470236"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186889"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上準備您的開發環境
 > [!div class="op_single_selector"]
@@ -31,7 +20,7 @@ ms.locfileid: "65470236"
 
 若要在 Linux 開發機器上部署和執行 [Azure Service Fabric 應用程式](service-fabric-application-model.md) ，請安裝執行階段和通用 SDK。 您也可以安裝 Java 和 .NET Core 開發的選擇性 SDK。 
 
-本文中的步驟假設您要在 Linux 上進行原生安裝，或使用 Service Fabric OneBox 容器映像 `microsoft/service-fabric-onebox`。
+本文中的步驟假設您要在 Linux 上進行原生安裝，或使用 Service Fabric OneBox 容器映像 `mcr.microsoft.com/service-fabric/onebox:latest`。
 
 不支援在適用於 Linux 的 Windows 子系統上安裝 Service Fabric 執行階段。 您可以使用支援的 Azure Service Fabric 命令列介面 (CLI)，管理裝載於雲端或內部部署中其他地方的 Service Fabric 實體。 如需如何安裝 CLI 的資訊，請參閱[設定 Service Fabric CLI](./service-fabric-cli.md)。
 
@@ -40,7 +29,7 @@ ms.locfileid: "65470236"
 
 以下為支援開發的作業系統版本。
 
-* Ubuntu 16.04 (`Xenial Xerus`)
+* Ubuntu 16.04 (`Xenial Xerus`) 、18.04 (`Bionic Beaver`) 
 
     請確定已安裝 `apt-transport-https` 安裝套件。
          
@@ -71,47 +60,40 @@ sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-
 ### <a name="ubuntu"></a>Ubuntu
 
 1. 開啟終端機。
-2. 將 Service Fabric 存放庫新增至來源清單。
+
+2. 將存放庫新增 `dotnet` 至您的散發套件對應的 [來源] 清單。
 
     ```bash
-    sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/servicefabric/ xenial main" > /etc/apt/sources.list.d/servicefabric.list'
-    ```
-
-3. 將 `dotnet` 存放庫新增至來源清單。
-
-    ```bash
-    wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
+    wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
     sudo dpkg -i packages-microsoft-prod.deb
     ```
 
-4. 將新的 Gnu Privacy Guard (GnuPG 或 GPG) 金鑰新增至 APT keyring。
+3. 將新的 MS Open 技術 Gnu 隱私權防護 (GnuPG 或 GPG) 金鑰新增至您的 APT keyring。
 
     ```bash
-    sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
-    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
+    sudo curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
     ```
 
-5. 將官方的 Docker GPG 金鑰新增至 APT keyring。
+4. 將官方的 Docker GPG 金鑰新增至 APT keyring。
 
     ```bash
-    sudo apt-get install curl
     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     ```
 
-6. 設定 Docker 存放庫。
+5. 設定 Docker 存放庫。
 
     ```bash
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-7. 將 Azul JDK 金鑰新增至 APT Keyring，並設定其存放庫。
+6. 將 Azul JDK 金鑰新增至 APT Keyring，並設定其存放庫。
 
     ```bash
-    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x219BD9C9
-    sudo apt-add-repository 'deb http://repos.azulsystems.com/ubuntu stable main'
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
+    sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
     ```
 
-8. 根據新增的存放庫重新整理套件清單。
+7. 根據新增的存放庫重新整理套件清單。
 
     ```bash
     sudo apt-get update
@@ -179,8 +161,8 @@ SDK 安裝程式隨附的 Service Fabric 執行階段包含下表中的套件。
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-Ubuntu | 2.0.0 | AzulJDK 1.8 | 內含於 npm | 最新 |
-RHEL | - | OpenJDK 1.8 | 內含於 npm | 最新 |
+**Ubuntu** \(英文\) | 2.0.0 | AzulJDK 1.8 | 內含於 npm | 最新 |
+**RHEL** | - | OpenJDK 1.8 | 內含於 npm | 最新 |
 
 ## <a name="set-up-a-local-cluster"></a>設定本機叢集
 在安裝完成之後，請啟動本機叢集。
@@ -191,7 +173,7 @@ RHEL | - | OpenJDK 1.8 | 內含於 npm | 最新 |
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-2. 開啟瀏覽器，前往 [Service Fabric Explorer](http://localhost:19080/Explorer) (`http://localhost:19080/Explorer`)。 叢集啟動時，您會看見 Service Fabric Explorer 儀表板。 叢集可能需要數分鐘的時間才能完成設定。 如果您的瀏覽器無法開啟 URL，或 Service Fabric Explorer 未顯示系統已就緒，請稍候幾分鐘，然後再試一次。
+2. 開啟網頁瀏覽器，並移至**Service Fabric Explorer** (`http://localhost:19080/Explorer`) 。 叢集啟動時，您會看見 Service Fabric Explorer 儀表板。 叢集可能需要數分鐘的時間才能完成設定。 如果您的瀏覽器無法開啟 URL，或 Service Fabric Explorer 未顯示系統已就緒，請稍候幾分鐘，然後再試一次。
 
     ![Linux 上的 Service Fabric Explorer][sfx-linux]
 
@@ -216,7 +198,7 @@ Service Fabric 提供的 Scaffolding 工具可協助您從終端機使用 Yeoman
 1. 在電腦上安裝 Node.js 和 npm。
 
     ```bash
-    sudo apt-add-repository "deb https://deb.nodesource.com/node_8.x $(lsb_release -s -c) main"
+    sudo add-apt-repository "deb https://deb.nodesource.com/node_8.x $(lsb_release -s -c) main"
     sudo apt-get update
     sudo apt-get install nodejs
     ```
@@ -273,21 +255,21 @@ Service Fabric 提供的 Scaffolding 工具可協助您從終端機使用 Yeoman
 > 
 > 在 Ubuntu 上，建議您直接從 Eclipse 網站安裝，而不要使用套件安裝程式 (`apt` 或 `apt-get`)。 這麼做可確保您會取得最新版的 Eclipse。 您可以安裝適用於 Java 開發人員或 Java EE 開發人員的 Eclipse IDE。
 
-1. 在 Eclipse 中，確定您已安裝 Eclipse Neon 或更新版本以及 Buildship 2.2.1 版或更新版本。 請選取 [說明] >  [關於 Eclipse] >  [安裝詳細資料]，檢查已安裝的元件版本。 您可以使用 [Eclipse Buildship：適用於 Gradle 的 Eclipse 外掛程式][buildship-update]的指示來更新 Buildship。
+1. 在 Eclipse 中，確定您已安裝 Eclipse Neon 或更新版本以及 Buildship 2.2.1 版或更新版本。 **選取 [** 說明] [  >  **關於 Eclipse**] [  >  **安裝詳細資料**]，檢查已安裝的元件版本。 您可以使用 [Eclipse Buildship：適用於 Gradle 的 Eclipse 外掛程式][buildship-update]的指示來更新 Buildship。
 
-2. 若要安裝 Service Fabric 外掛程式，請選取 [說明]  >  [安裝新軟體]。
+2. 若要安裝 Service Fabric 外掛程式，**請選取 [** 說明] [  >  **安裝新軟體**]。
 
-3. 在 [使用] 方塊中，輸入 **https://dl.microsoft.com/eclipse**。
+3. **在 [使用**] 方塊中，輸入**HTTPs： \/ /dl.microsoft.com/eclipse**。
 
-4. 選取 [新增] 。
+4. 選取 [新增]。
 
     ![可用的軟體頁面][sf-eclipse-plugin]
 
-5. 選取 [ServiceFabric] 外掛程式，然後按 [下一步]。
+5. 選取 [ServiceFabric]**** 外掛程式，然後按 [下一步]****。
 
 6. 執行安裝步驟。 然後接受使用者授權合約。
 
-如果您已安裝 Service Fabric Eclipse 外掛程式，請確定您擁有的是最新版本。 請選取 [說明] > [關於Eclipse] > [安裝詳細資料] 來檢查。 然後，在已安裝的外掛程式清單中搜尋 Service Fabric。如果有可用的較新版本，請選取 [更新]。
+如果您已安裝 Service Fabric Eclipse 外掛程式，請確定您擁有的是最新版本。 **選取 [** 說明] [  >  **關於 Eclipse**] [  >  **安裝詳細資料**] 以進行檢查。 然後在已安裝的外掛程式清單中搜尋 Service Fabric。如果有較新的版本可用，請選取 [**更新**]。
 
 如需詳細資訊，請參閱[適用於 Eclipse Java 應用程式開發的 Service Fabric 外掛程式](service-fabric-get-started-eclipse.md)。
 

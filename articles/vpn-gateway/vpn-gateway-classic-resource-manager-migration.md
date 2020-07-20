@@ -9,20 +9,19 @@ editor: amsriva
 ms.assetid: caa8eb19-825a-4031-8b49-18fbf3ebc04e
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/02/2017
+ms.date: 02/06/2020
 ms.author: amsriva
-ms.openlocfilehash: b65b47389611bcc0e5acb3c7ebff672f72a87581
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: b9154b124f89a8b672c58d5e7bce28c0833e8a8c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60761563"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84988033"
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>從傳統 VPN 閘道到 Resource Manager 移轉
-VPN 閘道現在可以用來從傳統移轉至 Resource Manager 部署模型。 您可以進一步了解 Azure Resource Manager [功能和優點](../azure-resource-manager/resource-group-overview.md)。 在本文中，我們會詳細說明如何從傳統部署移轉至較新的 Resource Manager 為基礎模型。 
+VPN 閘道現在可以用來從傳統移轉至 Resource Manager 部署模型。 您可以進一步了解 Azure Resource Manager [功能和優點](../azure-resource-manager/management/overview.md)。 在本文中，我們會詳細說明如何從傳統部署移轉至較新的 Resource Manager 為基礎模型。 
 
 VPN 閘道會在從傳統至 Resource Manager 的移轉過程中做為 VNet 移轉。 此移轉是一次一個 VNet。 沒有其他工具或移轉的必要條件需求。 移轉步驟與現有的 VNet 移轉相同，且會記載在 [IaaS 資源移轉網頁](../virtual-machines/windows/migration-classic-resource-manager-ps.md)。 在移轉期間沒有任何資料路徑停機時間，因此現有的工作負載在移轉期間會繼續運作而不會中斷內部部署連線。 與 VPN 閘道相關聯的公用 IP 位址在移轉程序期間不會變更。 這表示一旦移轉完成後，您將不需要重新設定內部部署路由器。  
 
@@ -38,7 +37,7 @@ Resource Manager 中的模型不同於傳統模型，是由虛擬網路閘道、
 * 多站台連線能力
 * 強制通道已啟用 VNets
 
-不支持的方案包括：  
+不支援的案例包括 -  
 
 * 目前不支援 VNet 隨附 ExpressRoute 閘道與 VPN 閘道。
 * 傳輸 VM 擴充功能連線到內部部署伺服器的案例。 傳輸 VPN 連線能力限制如下所述。

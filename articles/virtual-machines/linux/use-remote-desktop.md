@@ -1,32 +1,30 @@
 ---
-title: 在 Azure 中使用遠端桌面連接至 Linux VM | Microsoft Docs
+title: 在 Azure 中使用遠端桌面連線到 Linux VM
 description: 了解如何安裝和設定遠端桌面 (xrdp)，以使用圖形化工具在 Azure 中連接至 Linux VM
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 56aa06ade50f6c0eb1467b1295cbebb907023398
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
-ms.translationtype: MT
+ms.openlocfilehash: 2e97442d4104f52c1a76ba8cd1d81c99508bb242
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65209364"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81605194"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>在 Azure 中安裝和設定遠端桌面，以連接至 Linux VM
-在 Azure 中的 Linux 虛擬機器 (VM) 通常是使用安全殼層 (SSH) 連接從命令列管理。 如果是 Linux 的新手，或者是快速疑難排解的案例，使用遠端桌面可能會比較容易。 本文將詳細說明如何使用 Resource Manager 部署模型為您的 Linux VM 安裝和設定桌面環境 ([xfce](https://www.xfce.org)) 和遠端桌面 ([xrdp](https://www.xrdp.org))。
+在 Azure 中的 Linux 虛擬機器 (VM) 通常是使用安全殼層 (SSH) 連接從命令列管理。 如果是 Linux 的新手，或者是快速疑難排解的案例，使用遠端桌面可能會比較容易。 本文將詳細說明如何使用 Resource Manager 部署模型為您的 Linux VM 安裝和設定桌面環境 ([xfce](https://www.xfce.org)) 和遠端桌面 ([xrdp](http://xrdp.org))。
 
 
 ## <a name="prerequisites"></a>必要條件
-本文需要在 Azure 中有現有的 Ubuntu 16.04 LTS VM。 如果您需要建立 VM，請使用下列其中一個方法︰
+本文需要在 Azure 中有現有的 Ubuntu 18.04 LTS VM。 如果您需要建立 VM，請使用下列其中一個方法︰
 
 - [Azure CLI](quick-create-cli.md)
 - [Azure 入口網站](quick-create-portal.md)
@@ -35,7 +33,7 @@ ms.locfileid: "65209364"
 ## <a name="install-a-desktop-environment-on-your-linux-vm"></a>在 Linux VM 上安裝桌面環境
 在 Azure 中大多數 Linux VM 預設沒有安裝桌面環境。 Linux VM 通常是使用 SSH 連接來管理，而不是使用桌面環境來管理。 在 Linux 中您有各種不同的桌面環境可以選擇。 根據您選擇的桌面環境，可能會使用 1 到 2 GB 的磁碟空間，並且需要 5 到 10 分鐘，才能安裝及設定所有必要的套件。
 
-下列範例會在 Ubuntu 16.04 LTS VM 上安裝輕量型 [xfce4](https://www.xfce.org/) 桌面環境。 其他散發的命令稍微不同 (例如，使用 `yum` 以在 Red Hat Enterprise Linux 上安裝及設定適當的 `selinux` 規則，或使用 `zypper` 在 SUSE 上安裝)。
+下列範例會在 Ubuntu 18.04 LTS VM 上安裝輕量型 [xfce4](https://www.xfce.org/) 桌面環境。 其他散發的命令稍微不同 (例如，使用 `yum` 以在 Red Hat Enterprise Linux 上安裝及設定適當的 `selinux` 規則，或使用 `zypper` 在 SUSE 上安裝)。
 
 首先，SSH 連接至您的 VM。 下列範例會連線至名為 myvm.westus.cloudapp.azure.com 且具有使用者名稱 azureuser 的 VM。 使用您自己的值：
 
@@ -49,14 +47,14 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 
 ```bash
 sudo apt-get update
-sudo apt-get install xfce4
+sudo apt-get -y install xfce4
 ```
 
 ## <a name="install-and-configure-a-remote-desktop-server"></a>安裝及設定遠端桌面伺服器
 現在您已安裝桌面環境，設定遠端桌面服務來接聽連入連線。 [xrdp](http://xrdp.org) 是開放原始碼遠端桌面通訊協定 (RDP) 伺服器，適用於大部分的 Linux 散發套件，而且很適合處理 xfce。 在您的 Ubuntu VM 上安裝 xrdp，如下所示：
 
 ```bash
-sudo apt-get install xrdp
+sudo apt-get -y install xrdp
 sudo systemctl enable xrdp
 ```
 
@@ -107,7 +105,7 @@ az vm open-port --resource-group myResourceGroup --name myVM --port 3389
 
 
 ## <a name="troubleshoot"></a>疑難排解
-如果无法使用远程桌面客户端连接到 Linux VM，请在 Linux VM上使用 `netstat` 验证 VM 是否正在侦听 RDP 连接，如下所示：
+如果無法使用遠端桌面用戶端連線至 Linux VM，請在 Linux VM 上使用 `netstat`，以檢查您的 VM 是否正在接聽 RDP 連線，如下所示︰
 
 ```bash
 sudo netstat -plnt | grep rdp

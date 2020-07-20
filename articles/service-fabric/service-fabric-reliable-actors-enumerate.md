@@ -1,25 +1,16 @@
 ---
-title: 列舉 Azure Service Fabric 上的動作項目 | Microsoft Docs
-description: 瞭解如何列舉 Reliable Actors 和它們的中繼資料。
-services: service-fabric
-documentationcenter: .net
+title: 列舉 Azure Service Fabric 上的執行者
+description: 瞭解如何使用範例，在 Azure Service Fabric 應用程式中列舉 Reliable Actors 及其中繼資料。
 author: vturecek
-manager: chackdan
-editor: amanbha
-ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 04e2c32b18e6897d6443fea68587aba9ae294be5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8e462cc5fa82b8692304f58ef6cf0ea0e2db8725
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60729132"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245971"
 ---
 # <a name="enumerate-service-fabric-reliable-actors"></a>列舉 Service Fabric Reliable Actors
 Reliable Actors 服務允許用戶端列舉服務所裝載之動作項目的相關中繼資料。 因為動作項目服務是已資料分割的具狀態服務，所以會針對每個分割區執行列舉。 由於每個分割區可能包含許多動作項目，因此，列舉會以一組分頁式結果形式傳回。 頁面會以迴圈方式讀取，直到讀取所有頁面為止。 下列範例示範如何在動作項目服務的其中一個分割區中，建立所有作用中動作項目的清單︰
@@ -69,9 +60,9 @@ while (continuationToken != null);
 
 ## <a name="next-steps"></a>後續步驟
 * [動作項目狀態管理](service-fabric-reliable-actors-state-management.md)
-* [動作項目生命週期與記憶體回收](service-fabric-reliable-actors-lifecycle.md)
-* [動作項目 API 參考文件](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [.NET 範例程式碼 (英文)](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [執行者生命週期和垃圾收集](service-fabric-reliable-actors-lifecycle.md)
+* [動作項目 API 參考文件](/previous-versions/azure/dn971626(v=azure.100))
+* [.NET 範例程式碼](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java 範例程式碼 (英文)](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->

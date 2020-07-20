@@ -1,73 +1,63 @@
 ---
-title: 如何使用適用於 VM 的 Azure 監視器 (預覽) 來停用監視 | Microsoft Docs
-description: 本文說明如何使用「適用於 VM 的 Azure 監視器」來中斷對虛擬機器的監視。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/05/2018
-ms.author: magoedte
-ms.openlocfilehash: c6a8322998b391b9021292a3a7213ded56b67feb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+title: 停用適用於 VM 的 Azure 監視器中的監視
+description: 本文說明如何在適用於 VM 的 Azure 監視器中停止監視您的虛擬機器。
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
+ms.author: bwren
+ms.date: 03/12/2020
+ms.openlocfilehash: 80473aa494b8fbcea5e43870b7717cd3472dd7d1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61386439"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79480516"
 ---
-# <a name="how-to-disable-monitoring-of-your-virtual-machines-with-azure-monitor-for-vms-preview"></a>如何使用適用於 VM 的 Azure 監視器 (預覽) 來停用對虛擬機器的監視
+# <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms"></a>在適用於 VM 的 Azure 監視器中停用 Vm 的監視
 
-如果您在對虛擬機器啟用監視之後，決定不要再使用「適用於 VM 的 Azure 監視器」來監視它們，您可以停用監視。 本文說明如何針對單一或多個 VM 完成此操作。  
+啟用虛擬機器（Vm）的監視之後，您可以稍後選擇停用適用於 VM 的 Azure 監視器中的監視功能。 本文說明如何停用一或多個 Vm 的監視。  
 
-目前，「適用於 VM 的 Azure 監視器」不支援選擇性地停用 VM。 如果您的 Log Analytics 工作區已設定為支援此解決方案和其他解決方案，以及收集其他監視資料，請務必先了解下述影響和方法，再繼續進行。
+目前，適用於 VM 的 Azure 監視器不支援選擇性停用 VM 監視。 您的 Log Analytics 工作區可能支援適用於 VM 的 Azure 監視器和其他解決方案。 它也可能會收集其他監視資料。 如果您的 Log Analytics 工作區提供這些服務，您必須先瞭解停用監視的效果和方法，再開始進行。
 
 「適用於 VM 的 Azure 監視器」倚賴下列元件來提供其體驗：
 
-* Log Analytics 工作區，此工作區會儲存收集自 VM 及其他來源的監視資料。
-* 工作區中設定的效能計數器集合，此集合會更新連線至工作區之所有 VM 上的監視設定。
-* 工作區中設定的兩個監視解決方案 - **InfrastructureInsights** 和 **ServiceMap**，這兩個解決方案會更新連線至工作區之所有 VM 上的監視設定。
-* 兩個 Azure 虛擬機器延伸模組，**MicrosoftMonitoringAgent** 和 **DependencyAgent**，皆會收集資料並將資料傳送給工作區。
+* Log Analytics 工作區，它會儲存來自 Vm 和其他來源的監視資料。
+* 在工作區中設定的效能計數器集合。 集合會更新連線至工作區之所有 Vm 上的監視設定。
+* `VMInsights`，這是在工作區中設定的監視解決方案。 此解決方案會更新連線至工作區之所有 Vm 上的監視設定。
+* `MicrosoftMonitoringAgent`和 `DependencyAgent` ，也就是 AZURE VM 擴充功能。 這些延伸模組會收集資料，並將其傳送至工作區。
 
-準備使用「適用於 VM 的 Azure 監視器」來停用對虛擬機器的監視時，請考量下列做法：
+當您準備停用 Vm 的監視功能時，請記住下列考慮：
 
-* 如果您要評估的是單一 VM 且已接受預先選取的預設 Log Analytics 工作區，則您可以從 VM 解除安裝相依性代理程式，然後將 Log Analytics 代理程式與此工作區中段連線，來停用監視。 如果您打算將 VM 用於其他用途，並決定稍後將它重新連線到不同的工作區，便適合採用此方法。
-* 如果您要使用 Log Analytics 工作區來支援其他監視解決方案和從其他來源收集資料，則可以從工作區中移除「適用於 VM 的 Azure 監視器」解決方案元件，而不會對工作區造成中斷或影響。  
-
->[!NOTE]
-> 從工作區中移除解決方案元件之後，您可能會繼續看到來自 Azure VM 的健全狀態；特別是效能和對應資料，當您在入口網站中瀏覽至上述任一檢視時，就會看到該資料。 資料最終會在一段時間後停止出現在 [效能] 和 [對應] 檢視中；不過，[健康情況] 檢視會繼續顯示 VM 的健康情況狀態。 所選 Azure VM 會有 [立即試用] 選項可供使用，以允許您在未來重新啟用監視。  
-
-## <a name="complete-removal-of-azure-monitor-for-vms"></a>完成適用於 VM 的 Azure 監視器的移除
-
-下列步驟說明如果您仍然需要 Log Analytics 工作區，要如何完整移除「適用於 VM 的 Azure 監視器」。 您即將從工作區中移除 **InfrastructureInsights** 和 **ServiceMap** 解決方案。  
+* 如果您使用單一 VM 進行評估，並使用預先選取的預設 Log Analytics 工作區，您可以從 VM 卸載 Dependency agent，並從這個工作區中斷連接 Log Analytics 代理程式，以停用監視。 如果您想要將 VM 用於其他用途，並決定稍後將其重新連接至不同的工作區，則適合使用此方法。
+* 如果您選取的預先存在 Log Analytics 工作區支援其他來源的其他監視解決方案和資料收集，您可以從工作區移除解決方案元件，而不會中斷或影響您的工作區。  
 
 >[!NOTE]
->如果您在啟用「適用於 VM 的 Azure 監視器」之前使用「服務對應」監視解決方案，且仍然倚賴該解決方案，請勿依照下方步驟 6 所述移除該解決方案。  
+> 從您的工作區移除解決方案元件之後，您可能會繼續查看 Azure Vm 的效能和地圖資料。 資料最終會停止出現在 [**效能**] 和 [**對應**] 視圖中。 [**啟用**] 選項將可從選取的 Azure VM 取得，讓您可以在未來重新啟用監視。  
+
+## <a name="remove-azure-monitor-for-vms-completely"></a>完全移除適用於 VM 的 Azure 監視器
+
+如果您仍然需要 Log Analytics 工作區，請遵循下列步驟來完全移除適用於 VM 的 Azure 監視器。 您將 `VMInsights` 從工作區中移除解決方案。  
+
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+2. 在 Azure 入口網站中，選取 [所有服務]。 在資源清單中輸入 **Log Analytics**。 當您開始輸入時，清單會根據您的輸入來篩選建議。 選取 [Log Analytics]。
+3. 在您的 Log Analytics 工作區清單中，選取當您啟用適用於 VM 的 Azure 監視器時所選擇的工作區。
+4. 在左側選取 [**方案**]。  
+5. 在解決方案清單中，選取 [ **VMInsights （工作區名稱）**]。 在解決方案的 [**總覽**] 頁面上，選取 [**刪除**]。 當系統提示您確認時，請選取 **[是]**。
+
+## <a name="disable-monitoring-and-keep-the-workspace"></a>停用監視並保留工作區  
+
+如果您的 Log Analytics 工作區仍需要支援來自其他來源的監視，請遵循下列步驟，在您用來評估適用於 VM 的 Azure 監視器的 VM 上停用監視。 針對 Azure Vm，您將直接從 VM 移除相依性代理程式 VM 延伸模組和適用于 Windows 或 Linux 的 Log Analytics 代理程式 VM 延伸模組。 
+
+>[!NOTE]
+>若下列情況，請勿移除 Log Analytics 代理程式： 
 >
+> * Azure 自動化管理 VM 以協調進程或管理設定或更新。 
+> * Azure 資訊安全中心會管理 VM 以進行安全性和威脅偵測。 
+>
+> 如果您移除 Log Analytics 代理程式，您將會防止這些服務和解決方案主動管理您的 VM。 
 
-1. 在 [https://portal.azure.com](https://portal.azure.com) 登入 Azure 入口網站。
-2. 在 Azure 入口網站中，按一下 [所有服務]。 在資源清單中，輸入 Log Analytics。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [Log Analytics]。
-3. 在 Log Analytics 工作區清單中，選取將「適用於 VM 的 Azure 監視器」上線時所選擇的工作區。
-4. 從左側窗格中，選取 [解決方案]。  
-5. 在解決方案清單中，選取 [InfrastructureInsights (工作區名稱)]，然後在解決方案的 [概觀] 頁面上，按一下 [刪除]。  在系統提示您確認時，按一下 [Yes] (是)。  
-6. 從解決方案清單中，選取 [ServiceMap (工作區名稱)]，然後在解決方案的 [概觀] 頁面上，按一下 [刪除]。  在系統提示您確認時，按一下 [Yes] (是)。  
-
-如果在將「適用於 VM 的 Azure 監視器」上線之前，您沒有針對工作區中的 Windows 或 Linux 型 VM [收集已啟用的效能計數器](vminsights-onboard.md?toc=/azure/azure-monitor/toc.json#performance-counters-enabled)，則必須依照[這裡](../../azure-monitor/platform/data-sources-performance-counters.md?toc=/azure/azure-monitor/toc.json#configuring-performance-counters)所述的步驟，為 Windows 和 Linux 停用這些規則。
-
-## <a name="disable-monitoring-for-an-azure-vm-and-retain-workspace"></a>停用 Azure VM 的監視並保留工作區  
-
-下列步驟說明如何針對已啟用來評估「適用於 VM 的 Azure 監視器」的虛擬機器停用監視，但仍然需要 Log Analytics 工作區，才能支援從其他來源進行的監視。 如果這是 Azure VM，您將直接從 VM 移除 Windows/Linux 的相依性代理程式 VM 延伸模組和 Log Analytics 代理程式 VM 延伸模組。 
-
->[!NOTE]
->如果是由「Azure 自動化」管理虛擬機器以協調程序、管理設定或管理更新，或是由「Azure 資訊安全中心」管理來進行安全性管理和威脅偵測，則不應該移除 Log Analytics 代理程式。 否則，將會導致這些服務和解決方案無法主動管理您的 VM。 
-
-1. 在 [https://portal.azure.com](https://portal.azure.com) 登入 Azure 入口網站。 
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 2. 在 Azure 入口網站中，選取 [虛擬機器]。 
 3. 從清單中選取 VM。 
-4. 從左窗格中，選取 [延伸模組]，然後在 [延伸模組] 頁面上，選取 [DependencyAgent]。
-5. 在延伸模組屬性頁面上，按一下 [解除安裝]。
-6. 在 [延伸模組] 頁面上，選取 [MicrosoftMonitoringAgent]，然後在延伸模組屬性頁面上，按一下 [解除安裝]。  
+4. 在左側選取 [**擴充**功能]。 在 [**延伸**模組] 頁面上，選取 [ **DependencyAgent**]。
+5. 在 [擴充功能屬性] 頁面上，選取 [**卸載**]。
+6. 在 [**延伸**模組] 頁面上，選取 [ **MicrosoftMonitoringAgent**]。 在 [擴充功能屬性] 頁面上，選取 [**卸載**]。  

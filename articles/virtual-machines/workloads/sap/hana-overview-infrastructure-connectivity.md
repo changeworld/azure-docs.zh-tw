@@ -3,23 +3,21 @@ title: Azure 上的 SAP HANA (大型執行個體) 的基礎結構和連線 | Mic
 description: 設定必要的連線基礎結構以使用「Azure 上的 SAP HANA」(大型執行個體)。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: jeconnoc
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/10/2018
-ms.author: rclaus
+ms.date: 07/12/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d8bbe2fc218004116177c4c9d95777d9ec57503
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: cea89087742f1987f693b8bfb627bd71038a0c14
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60477292"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77616929"
 ---
 # <a name="sap-hana-large-instances-deployment"></a>SAP HANA (大型執行個體) 部署 
 
@@ -37,6 +35,7 @@ Microsoft 必須有下列資訊，才能部署 HANA 大型執行客體單位：
 - 針對每個 Azure 部署區域：
     - 將 Azure 虛擬網路連線到 HANA 大型執行個體的 ER-P2P 連線 /29 IP 位址範圍。
     - 用於 HANA 大型執行個體伺服器 IP 集區的 /24 CIDR 區塊。
+    - 選擇性使用[ExpressRoute Global](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)觸達以啟用從內部部署到 Hana 大型實例單位的直接路由，或在不同 Azure 區域中的 Hana 大型實例單位之間進行路由傳送時，您必須保留另一個/29 個 IP 位址範圍。 此特定範圍不能與您之前定義的任何其他 IP 位址範圍重迭。
 - 每個連線到 HANA 大型執行個體之 Azure 虛擬網路的虛擬網路位址空間屬性中所使用的 IP 位址範圍值。
 - 每個 HANA 大型執行個體系統的資料：
   - 所需的主機名稱 - 最好是完整的網域名稱。
@@ -50,7 +49,7 @@ Microsoft 必須有下列資訊，才能部署 HANA 大型執行客體單位：
 
 在 Microsoft 部署好 HANA 大型執行個體之後，請依下列順序連線到這些執行個體：
 
-1. [將 Azure VM 連接到 HANA 大型執行個體](hana-connect-azure-vm-large-instances.md)
-2. [將 VNet 連接到 HANA 大型執行個體 ExpressRoute](hana-connect-vnet-express-route.md)
+1. [將 Azure Vm 連接到 HANA 大型實例](hana-connect-azure-vm-large-instances.md)
+2. [將 VNet 連接到 HANA 大型實例 ExpressRoute](hana-connect-vnet-express-route.md)
 3. [其他網路需求 (選擇性)](hana-additional-network-requirements.md)
 

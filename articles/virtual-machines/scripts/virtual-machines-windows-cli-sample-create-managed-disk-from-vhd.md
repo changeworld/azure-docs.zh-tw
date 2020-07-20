@@ -1,11 +1,10 @@
 ---
-title: Azure CLI 指令碼範例 - 從相同訂用帳戶的儲存體帳戶的 VHD 檔案建立受控磁碟 | Microsoft Docs
+title: 從相同訂用帳戶的儲存體帳戶的 VHD 檔案建立受控磁碟 - CLI 範例
 description: Azure CLI 指令碼範例 - 從相同訂用帳戶的儲存體帳戶的 VHD 檔案建立受控磁碟
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
 manager: kavithag
-editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -16,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 3f68c4ccbcaad682303c9d67c95f8bf8a2d3041b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: b0ce935e03a6202ac444987cbecf853ee6717d3b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57249515"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81459513"
 ---
 # <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-the-same-subscription-with-cli"></a>使用 CLI 從相同訂用帳戶的儲存體帳戶的 VHD 檔案建立受控磁碟
 
-此指令碼會從相同訂用帳戶的儲存體帳戶的 VHD 檔案建立受控磁碟。 請使用此指令碼將特殊化 (未一般化/執行 sysprep) 的 VHD 匯入受控的作業系統磁碟，以建立虛擬機器。 或者，用它將資料 VHD 匯入到受控資料磁碟。
+此指令碼會從相同訂用帳戶的儲存體帳戶的 VHD 檔案建立受控磁碟。 使用此指令碼可將專用 (非一般化/已執行過 Sysprep) 的 VHD 匯入至受控 OS 磁碟，以建立虛擬機器。 或者，用它將資料 VHD 匯入到受控資料磁碟。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -39,7 +38,7 @@ ms.locfileid: "57249515"
 
 此指令碼使用下列命令從 VHD 建立受控磁碟。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [az disk create](https://docs.microsoft.com/cli/azure/disk) | 在相同的訂用帳戶中使用儲存體帳戶的 VHD URI 受控磁碟 |
 

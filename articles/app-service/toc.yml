@@ -33,7 +33,7 @@
       items:
         - name: .NET Core with SQL DB
           href: app-service-web-tutorial-dotnetcore-sqldb.md
-        - name: .NET with SQL DB
+        - name: 具有 SQL DB 的 .NET Framework
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: PHP with MySQL
           href: app-service-web-tutorial-php-mysql.md
@@ -47,12 +47,14 @@
       href: app-service-web-tutorial-rest-api.md
     - name: 對應自訂網域
       href: app-service-web-tutorial-custom-domain.md
-    - name: 繫結 SSL 憑證
-      href: app-service-web-tutorial-custom-ssl.md
+    - name: 使用 SSL 保護網域
+      href: configure-ssl-bindings.md
     - name: 新增 CDN
       href: ../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fcdn%2ftoc.json
     - name: 驗證使用者
       href: app-service-web-tutorial-auth-aad.md
+    - name: 傳送電子郵件/推文
+      href: tutorial-send-email.md
 - name: 範例
   items:
     - name: Azure CLI
@@ -61,23 +63,41 @@
       href: samples-powershell.md
     - name: Resource Manager 範本
       href: samples-resource-manager-templates.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
-    - name: App Service 的運作方式
-      href: app-service-how-works-readme.md
     - name: App Service 方案
       href: overview-hosting-plans.md
     - name: 作業系統功能
       href: operating-system-functionality.md
+    - name: 部署最佳做法
+      href: deploy-best-practices.md
     - name: 安全性
-      href: overview-security.md
       items:
+        - name: 建議
+          href: security-recommendations.md
         - name: 驗證和授權
           href: overview-authentication-authorization.md
         - name: 作業系統和執行階段修補
           href: overview-patch-os-runtime.md
+        - name: 內建安全性控制
+          href: app-service-security-controls.md
+        - name: 安全性概觀
+          href: overview-security.md
+    - name: 網路功能
+      items:
+        - name: 概觀
+          href: networking-features.md
+        - name: 具有服務端點的應用程式閘道
+          href: networking/app-gateway-with-service-endpoints.md
+        - name: 私人端點
+          href: networking/private-endpoint.md
     - name: 輸入和輸出 IP
       href: overview-inbound-outbound-ips.md
+    - name: 虛擬網路整合
+      href: web-sites-integrate-with-vnet.md
     - name: 混合式連線
       href: app-service-hybrid-connections.md
     - name: 流量管理員整合
@@ -90,18 +110,28 @@
   items:
     - name: 設定應用程式
       items:
-        - name: 使用應用程式設定
-          href: web-sites-configure.md
+        - name: 一般設定
+          href: configure-common.md
+        - name: 設定 ASP.NET
+          href: configure-language-dotnet-framework.md
+        - name: 設定 ASP.NET Core
+          href: configure-language-dotnetcore.md
+        - name: 設定 Node.js
+          href: configure-language-nodejs.md
         - name: 設定 PHP
-          href: web-sites-php-configure.md
-        - name: Java 開發人員指南
+          href: configure-language-php.md
+        - name: 設定 Java
           href: configure-language-java.md
         - name: 連線到內部部署資源
           href: web-sites-integrate-with-vnet.md
+        - name: 設定 Azure 儲存體 (容器)
+          href: configure-connect-to-azure-storage.md
     - name: 部署至 Azure
       items:
         - name: 部署應用程式
           items:
+            - name: 從套件執行
+              href: deploy-run-package.md
             - name: 部署 ZIP 或 WAR 檔案
               href: deploy-zip.md
             - name: 透過 FTP 進行部署
@@ -112,6 +142,8 @@
               href: deploy-continuous-deployment.md
             - name: 從本機 Git 進行部署
               href: deploy-local-git.md
+            - name: 使用 GitHub 動作部署
+              href: deploy-github-actions.md
             - name: 透過範本進行部署
               href: deploy-complex-application-predictably.md
         - name: 設定部署認證
@@ -125,13 +157,13 @@
         - name: 購買網域
           href: manage-custom-dns-buy-domain.md
         - name: 使用流量管理員對應網域
-          href: web-sites-traffic-manager-custom-domain-name.md
+          href: configure-domain-traffic-manager.md
         - name: 移轉作用中的網域
           href: manage-custom-dns-migrate-domain.md
     - name: 安全的應用程式
       items:
-        - name: 購買 SSL 憑證
-          href: web-sites-purchase-ssl-web-site.md
+        - name: 新增 SSL 憑證
+          href: configure-ssl-certificate.md
         - name: 驗證使用者
           items:
             - name: 使用 Azure AD 進行驗證
@@ -144,25 +176,29 @@
               href: configure-authentication-provider-microsoft.md
             - name: 使用 Twitter 進行驗證
               href: configure-authentication-provider-twitter.md
+            - name: 使用 OpenID Connect 提供者進行驗證 (預覽)
+              href: configure-authentication-provider-openid-connect.md
         - name: 進階驗證
           href: app-service-authentication-how-to.md
-        - name: 限制 IP
+        - name: 限制存取
           href: app-service-ip-restrictions.md
         - name: 建立受控識別
           href: overview-managed-identity.md
         - name: 從 Key Vault 參考祕密
           href: app-service-key-vault-references.md
-        - name: 在應用程式程式碼中使用 SSL 憑證
-          href: app-service-web-ssl-cert-load.md
+        - name: 在程式碼中使用 SSL 憑證
+          href: configure-ssl-certificate-in-code.md
         - name: 設定 TLS 相互驗證
           href: app-service-web-configure-tls-mutual-auth.md
+        - name: 加密網站資料
+          href: configure-encrypt-at-rest-using-cmk.md
     - name: 調整應用程式
       items:
-        - name: 相應增加伺服器容量
-          href: web-sites-scale.md
+        - name: 擴大伺服器容量
+          href: manage-scale-up.md
         - name: 設定 PremiumV2 層
           href: app-service-configure-premium-tier.md
-        - name: 相應放大至多個執行個體
+        - name: 擴增至多個執行個體
           href: ../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json
         - name: 高密度託管
           href: manage-scale-per-app.md
@@ -172,6 +208,8 @@
           href: web-sites-monitor.md
         - name: 啟用記錄
           href: troubleshoot-diagnostic-logs.md
+        - name: 取得資源事件
+          href: get-resource-events.md
     - name: 管理應用程式
       items:
         - name: 管理主機方案
@@ -184,8 +222,16 @@
           href: app-service-web-restore-snapshots.md
         - name: 複製應用程式
           href: app-service-web-app-cloning.md
-        - name: 移動資源
-          href: '../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
+        - name: 還原已刪除的 App Service
+          href: app-service-undelete.md
+        - name: 從停機區域還原
+          href: manage-disaster-recovery.md
+    - name: 移動應用程式
+      items:
+        - name: 在區域間移動
+          href: manage-move-across-regions.md
+        - name: 移動訂用帳戶
+          href: ../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#checklist-before-moving-resources
     - name: 執行背景工作
       items:
         - name: 建立 WebJobs
@@ -201,23 +247,27 @@
     - name: Azure CLI
       href: /cli/azure/appservice
     - name: Azure PowerShell
-      href: /powershell
+      href: /powershell/module/az.websites/#app_service
     - name: REST API
       href: /rest/api/appservice/
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.web/allversions
 - name: 資源
   items:
+    - name: App Service 部落格
+      href: 'https://aka.ms/appserviceblog'
     - name: 透過 Microsoft Learn 增進您的技巧
       href: /learn/browse/
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/app-service/'
     - name: 配額資訊
-      href: '../azure-subscription-service-limits.md#app-service-limits'
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=app-service'
+    - name: 移轉小幫手指南
+      href: 'https://github.com/Azure/App-Service-Migration-Assistant/tree/master/MigrationDocs'
     - name: 最佳作法
       href: app-service-best-practices.md
     - name: 範例
@@ -232,6 +282,8 @@
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: 疑難排解
       items:
+        - name: 對間歇性輸出連線錯誤進行疑難排解
+          href: troubleshoot-intermittent-outbound-connection-errors.md
         - name: 使用 Visual Studio 進行疑難排解
           href: troubleshoot-dotnet-visual-studio.md
         - name: 針對 Node.js 應用程式進行疑難排解

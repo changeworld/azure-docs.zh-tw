@@ -1,31 +1,24 @@
 ---
-title: Azure DNS 疑難排解指南 | Microsoft Docs
-description: 如何對使用 Azure DNS 的常見問題進行疑難排解
+title: 疑難排解指南 - Azure DNS
+description: 在此學習路徑中，開始對 Azure DNS 的常見問題進行疑難排解
 services: dns
-documentationcenter: na
-author: genlin
-manager: cshepard
-editor: ''
-ms.assetid: 95b01dc3-ee69-4575-a259-4227131e4f9c
+author: rohinkoul
 ms.service: dns
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/20/2017
-ms.author: genli
-ms.openlocfilehash: 535e7604915555f32a7636b739c49f72cb0220c8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: troubleshooting
+ms.date: 09/20/2019
+ms.author: rohink
+ms.openlocfilehash: a63a0c1e0044f5dcd6babb4941e1f4409404cdd2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60823890"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711182"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS 疑難排解指南
 
-此頁面提供 Azure DNS 常見問題的疑難排解資訊。
+本文提供 Azure DNS 常見問題的疑難排解資訊。
 
-如果這些步驟未能解決問題，您也可以在 [MSDN 上的社群支援論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)搜尋或張貼您的問題。 或者，開啟 Azure 支援要求。
+如果這些步驟未能解決問題，您也可以在[社群支援的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-virtual-network.html)搜尋或張貼您的問題。 或者，您可以開啟 Azure 支援要求。
 
 
 ## <a name="i-cant-create-a-dns-zone"></a>我無法建立 DNS 區域
@@ -35,14 +28,13 @@ ms.locfileid: "60823890"
 1.  檢閱 Azure DNS 稽核記錄以判斷失敗原因。
 2.  每個 DNS 區域名稱都必須是其資源群組中唯一的。 也就是說，兩個名稱相同的 DNS 區域無法共用一個資源群組。 請嘗試使用不同的區域名稱，或不同的資源群組。
 3.  您會看到「您已達到或超過訂用帳戶 {subscription id} 中的區域數目上限。」的錯誤訊息。 請使用其他 Azure 訂用帳戶、刪除相同的區域或聯絡 Azure 支援中心以提高您的訂用帳戶限制。
-4.  您會看到「區域 '{zone name}' 無法使用。」的錯誤訊息。 此錯誤表示 Azure DNS 無法為此 DNS 區域配置名稱伺服器。 請嘗試使用不同的區域名稱。 或者，如果您是網域名稱擁有者，請連絡 Azure 支援中心，他們可以為您配置名稱伺服器。
+4.  您會看到「區域 '{zone name}' 無法使用。」的錯誤訊息。 此錯誤表示 Azure DNS 無法為此 DNS 區域配置名稱伺服器。 請嘗試使用不同的區域名稱。 或者，如果您是網域名稱擁有者，請連絡 Azure 支援中心，以便為您配置名稱伺服器。
 
 
-### <a name="recommended-documents"></a>**建議的文件**
+### <a name="recommended-articles"></a>建議的文章
 
-[DNS 區域和記錄](dns-zones-records.md)
-<br>
-[建立 DNS 區域](dns-getstarted-create-dnszone-portal.md)
+* [DNS 區域和記錄](dns-zones-records.md)
+* [建立 DNS 區域](dns-getstarted-create-dnszone-portal.md)
 
 ## <a name="i-cant-create-a-dns-record"></a>我無法建立 DNS 記錄
 
@@ -50,16 +42,15 @@ ms.locfileid: "60823890"
 
 1.  檢閱 Azure DNS 稽核記錄以判斷失敗原因。
 2.  記錄集是否已經存在？  Azure DNS 是使用記錄*集*管理記錄，記錄集是名稱與類型相同之記錄的集合。 如果已經有名稱與類型相同的記錄存在，此時若要新增其他此類型記錄，您應該編輯現有的記錄集。
-3.  您是否正嘗試在 DNS 區域頂點 (區域的 [根]) 建立記錄？ 如果是，DNS 慣例是使用 ‘@’ 字元做為記錄名稱。 也請注意，DNS 標準不允許在區域頂點使用 CNAME 記錄。
+3.  您是否正嘗試在 DNS 區域頂點 (區域的 [根]) 建立記錄？ 如果是，DNS 慣例是使用 ‘@’ 字元做為記錄名稱。 另請注意，DNS 標準不允許在區域頂點使用 CNAME 記錄。
 4.  您有 CNAME 衝突嗎？  DNS 標準不允許 CNAME 記錄的名稱和任何其他類型記錄的名稱相同。 如果您有現有的 CNAME，建立不同類型但名稱相同的記錄將會失敗。  同樣地，如果名稱和不同類型的現有記錄相同，建立 CNAME 將會失敗。 請透過移除其他記錄或選擇不同的記錄名稱來排除衝突。
 5.  您已達到 DNS 區域中允許的記錄集數目限制嗎？ Azure 入口網站中，區域的 [內容] 底下會顯示目前的記錄集數目和記錄集數目上限。 如果您已經達到此限制，請刪除部分記錄集或連絡 Azure 支援中心以提高您在此區域的記錄集上限，然後再試一次。 
 
 
-### <a name="recommended-documents"></a>**建議的文件**
+### <a name="recommended-articles"></a>建議的文章
 
-[DNS 區域和記錄](dns-zones-records.md)
-<br>
-[建立 DNS 區域](dns-getstarted-create-dnszone-portal.md)
+* [DNS 區域和記錄](dns-zones-records.md)
+* [建立 DNS 區域](dns-getstarted-create-dnszone-portal.md)
 
 
 
@@ -76,9 +67,9 @@ DNS 名稱解析是多步驟程序，可能會因為許多原因而失敗。 下
 4.  完成上述步驟之後，現在應該可以正確解析您的 DNS 記錄。 若要確認，您可以再使用一次 [digwebinterface](https://digwebinterface.com)，這一次使用預設名稱伺服器設定。
 
 
-### <a name="recommended-documents"></a>**建議的文件**
+### <a name="recommended-articles"></a>建議的文章
 
-[將網域委派給 Azure DNS](dns-domain-delegation.md)
+* [將網域委派給 Azure DNS](dns-domain-delegation.md)
 
 
 
@@ -91,13 +82,11 @@ Azure DNS 是以記錄集的方式管理 DNS 記錄—記錄集是名稱與類�
 - \_sip.\_tcp (在區域頂點建立記錄集)
 - \_sip.\_tcp.sipservice (建立名為 'sipservice' 的記錄集)
 
-### <a name="recommended-documents"></a>**建議的文件**
+### <a name="recommended-articles"></a>建議的文章
 
-[DNS 區域和記錄](dns-zones-records.md)
-<br>
-[使用 Azure 入口網站建立 DNS 記錄集和記錄](dns-getstarted-create-recordset-portal.md)
-<br>
-[SRV 記錄類型 (Wikipedia)](https://en.wikipedia.org/wiki/SRV_record) \(英文\)
+* [DNS 區域和記錄](dns-zones-records.md)
+* [使用 Azure 入口網站建立 DNS 記錄集和記錄](dns-getstarted-create-recordset-portal.md)
+* [SRV 記錄類型 (Wikipedia)](https://en.wikipedia.org/wiki/SRV_record) \(英文\)
 
 
 ## <a name="next-steps"></a>後續步驟

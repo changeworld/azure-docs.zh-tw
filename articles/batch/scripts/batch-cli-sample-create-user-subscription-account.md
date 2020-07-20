@@ -1,25 +1,14 @@
 ---
-title: Azure CLI 指令碼範例 - 建立 Batch 帳戶 - 使用者訂用帳戶 | Microsoft Docs
-description: Azure CLI 指令碼範例 - 在使用者訂用帳戶模式中建立 Batch 帳戶
-services: batch
-documentationcenter: ''
-author: laurenhughes
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.devlang: azurecli
+title: Azure CLI 指令碼範例 - 建立 Batch 帳戶 - 使用者訂用帳戶
+description: 此指令碼會在使用者訂用帳戶模式中建立 Azure Batch 帳戶。 此帳戶會將計算節點配置到您的訂用帳戶。
 ms.topic: sample
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 01/29/2018
-ms.author: lahugh
-ms.openlocfilehash: 3358c1aab5dc39e30690b242039940830f2e9ffc
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e589361da8442107f06a0933a1f1ac79a88945ff
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470547"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964062"
 ---
 # <a name="cli-example-create-a-batch-account-in-user-subscription-mode"></a>CLI 範例：在使用者訂用帳戶模式中建立 Batch 帳戶
 
@@ -45,12 +34,12 @@ az group delete --name myResourceGroup
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [az role assignment create](/cli/azure/role) | 為使用者、群組或服務主體建立新的角色指派。 |
 | [az group create](/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
-| [az keyvault create](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-create) | 建立金鑰保存庫。 |
-| [az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-set-policy) | 更新指定的 Key Vault 的安全性原則。 |
+| [az keyvault create](/cli/azure/keyvault#az-keyvault-create) | 建立金鑰保存庫。 |
+| [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) | 更新指定的 Key Vault 的安全性原則。 |
 | [az batch account create](/cli/azure/batch/account#az-batch-account-create) | 建立 Batch 帳戶。  |
 | [az batch account login](/cli/azure/batch/account#az-batch-account-login) | 對指定的 Batch 帳戶驗證以進行進一步的 CLI 互動。  |
 | [az group delete](/cli/azure/group#az-group-delete) | 刪除資源群組，包括所有的巢狀資源。 |

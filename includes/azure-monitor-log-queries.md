@@ -5,10 +5,10 @@ ms.service: azure-monitor
 ms.topic: include
 ms.date: 01/19/2019
 ms.openlocfilehash: a108cb5b7e9ec32c83c6ed6d3c4f0be03142393f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60919755"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67174543"
 ---
-使用 建立查詢及分析記錄資料，在 Azure 監視器中的，依序按一下 log analytics**記錄檔**中**Azure 監視器**在 Azure 入口網站中的功能表。 
+在 Azure 入口網站的 [Azure 監視器]**** 功能表中按一下 [記錄]****，以使用記錄分析在 Azure 監視器中建立查詢及分析記錄資料。 

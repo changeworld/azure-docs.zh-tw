@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: e2adccaf1371cf322b5a50b0e1f6ef64dde14b66
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60628654"
 ---
 # <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>什麼是適用於雲端解決方案提供者的 StorSimple 方案？
@@ -32,7 +32,7 @@ Microsoft Azure StorSimple 是企業儲存體的獨特作法，具備真正的�
 
 如需 StorSimple for CSP 的詳細資訊，請瀏覽 [Azure CSP 概觀](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)頁面。
 
-如需有關計費的詳細資訊，價格、 獎勵和取得支援的 CSP，請移至[StorSimple in CSP︰常見問題集](storsimple-partner-csp-faq.md)。 
+如需 CSP 的計費、價格、獎勵和取得支援的詳細資訊，請移至 [StorSimple in CSP︰常見問題集](storsimple-partner-csp-faq.md)。 
 
 ## <a name="deploy-and-manage-storsimple-for-csp"></a>部署和管理 StorSimple for CSP
 
@@ -42,5 +42,5 @@ StorSimple for CSP 是依使用量計算的服務，在目前可取得 StorSimpl
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如果您有更多的問題，關於 StorSimple in CSP 時，請移至[StorSimple for CSP:常見問題集](storsimple-partner-csp-faq.md)。
+- 關於 StorSimple in CSP，如果您還有其他問題，請移至 [StorSimple for CSP︰常見問題集](storsimple-partner-csp-faq.md)。
 - 如果您已準備好部署 StorSimple，請移至[部署 StorSimple for CSP](storsimple-partner-csp-deploy.md)。

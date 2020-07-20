@@ -1,19 +1,19 @@
 ---
 title: 什麼是 OPC 保存庫 - Azure | Microsoft Docs
-description: OPC 保存庫概觀
+description: 此文章提供 OPC 保存庫的概觀。 它可以在雲端中設定、註冊和管理 OPC UA 應用程式的憑證生命週期。
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: overview
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 99dfcaeb1ef5b52e6827f1b3ac65d6201557a8fb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 66a322d4f60d9553a68207136ae609c1f9b50dbc
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59783512"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "73826208"
 ---
 # <a name="what-is-opc-vault"></a>什麼是 OPC 保存庫？
 
@@ -30,3 +30,10 @@ OPC 保存庫是一項微服務，可以設定、註冊和管理雲端中的 OPC
 下圖顯示完整的 OPC 保存庫架構。
 
 ![OPC 保存庫架構](media/overview-opc-vault-architecture/opc-vault.png)
+
+## <a name="next-steps"></a>後續步驟
+
+現在您已了解 OPC 保存庫及其使用方式，以下是建議執行的下一個步驟：
+
+> [!div class="nextstepaction"]
+> [OPC 保存庫架構](overview-opc-vault-architecture.md)

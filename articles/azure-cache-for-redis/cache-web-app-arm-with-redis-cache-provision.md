@@ -2,24 +2,17 @@
 title: 佈建 Web 應用程式與 Azure Redis 快取
 description: 使用 Azure Resource Manager 範本來部署 Web 應用程式與「Azure Redis 快取」。
 services: app-service
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 6e99c71f-ef8e-4570-a307-e4c059e60c35
 ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/06/2017
 ms.author: yegu
-ms.openlocfilehash: 23b8e4e7e88f5b993f9b0f9981bbae6b884e2818
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ec8d4f5611425734974d07ae6ee7008b10b9b406
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880002"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833769"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>使用範本來建立 Web 應用程式加 Azure Redis 快取
 
@@ -27,7 +20,7 @@ ms.locfileid: "57880002"
 
 在本主題中，您將了解如何建立 Azure Resource Manager 範本，以部署 Azure Web 應用程式與「Azure Redis 快取」。 您將學習如何定義要部署哪些資源，以及如何定義執行部署時所指定的參數。 您可以直接在自己的部署中使用此範本，或自訂此範本以符合您的需求。
 
-如需關於建立範本的詳細資訊，請參閱 [編寫 Azure 資源管理員範本](../azure-resource-manager/resource-group-authoring-templates.md)。 若要深入了解快取資源類型的 JSON 語法和屬性，請參閱 [Microsoft.Cache 資源類型](/azure/templates/microsoft.cache/allversions)。
+如需關於建立範本的詳細資訊，請參閱 [編寫 Azure 資源管理員範本](../azure-resource-manager/templates/template-syntax.md)。 若要深入了解快取資源類型的 JSON 語法和屬性，請參閱 [Microsoft.Cache 資源類型](/azure/templates/microsoft.cache/allversions)。
 
 如需完整的範本，請參閱 [Web 應用程式與 Azure Redis 快取範本](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json) \(英文\)。
 
@@ -46,14 +39,16 @@ ms.locfileid: "57880002"
 
 [!INCLUDE [cache-deploy-parameters](../../includes/cache-deploy-parameters.md)]
 
-## <a name="variables-for-names"></a>名称变量
-這個範本會使用變數來建構資源的名稱。 它會使用 [uniqueString](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring) 函式，根據資源群組識別碼來建構值。
+## <a name="variables-for-names"></a>名稱的變數
+這個範本會使用變數來建構資源的名稱。 它會使用 [uniqueString](../azure-resource-manager/templates/template-functions-string.md#uniquestring) 函式，根據資源群組識別碼來建構值。
 
-    "variables": {
-      "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
-      "webSiteName": "[concat('webSite', uniqueString(resourceGroup().id))]",
-      "cacheName": "[concat('cache', uniqueString(resourceGroup().id))]"
-    },
+```json
+"variables": {
+  "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
+  "webSiteName": "[concat('webSite', uniqueString(resourceGroup().id))]",
+  "cacheName": "[concat('cache', uniqueString(resourceGroup().id))]"
+},
+```
 
 
 ## <a name="resources-to-deploy"></a>要部署的資源
@@ -64,68 +59,78 @@ ms.locfileid: "57880002"
 
 範本會在資源群組的相同位置建立快取。
 
-    {
-      "name": "[variables('cacheName')]",
-      "type": "Microsoft.Cache/Redis",
-      "location": "[resourceGroup().location]",
-      "apiVersion": "2015-08-01",
-      "dependsOn": [ ],
-      "tags": {
-        "displayName": "cache"
-      },
-      "properties": {
-        "sku": {
-          "name": "[parameters('cacheSKUName')]",
-          "family": "[parameters('cacheSKUFamily')]",
-          "capacity": "[parameters('cacheSKUCapacity')]"
-        }
-      }
+```json
+{
+  "name": "[variables('cacheName')]",
+  "type": "Microsoft.Cache/Redis",
+  "location": "[resourceGroup().location]",
+  "apiVersion": "2015-08-01",
+  "dependsOn": [ ],
+  "tags": {
+    "displayName": "cache"
+  },
+  "properties": {
+    "sku": {
+      "name": "[parameters('cacheSKUName')]",
+      "family": "[parameters('cacheSKUFamily')]",
+      "capacity": "[parameters('cacheSKUCapacity')]"
     }
+  }
+}
+```
 
 
 ### <a name="web-app"></a>Web 應用程式
 使用 **webSiteName** 變數中所指定的名稱來建立 Web 應用程式。
 
-請注意，Web 應用程式上會設定可讓它與「Azure Redis 快取」搭配運作的應用程式設定屬性。 這些設定會以動態方式建立的應用程式根據在部署期間提供的值。
+請注意，Web 應用程式上會設定可讓它與「Azure Redis 快取」搭配運作的應用程式設定屬性。 這些應用程式設定是根據部署期間提供的值來動態建立的。
 
+```json
+{
+  "apiVersion": "2015-08-01",
+  "name": "[variables('webSiteName')]",
+  "type": "Microsoft.Web/sites",
+  "location": "[resourceGroup().location]",
+  "dependsOn": [
+    "[concat('Microsoft.Web/serverFarms/', variables('hostingPlanName'))]",
+    "[concat('Microsoft.Cache/Redis/', variables('cacheName'))]"
+  ],
+  "tags": {
+    "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]": "empty",
+    "displayName": "Website"
+  },
+  "properties": {
+    "name": "[variables('webSiteName')]",
+    "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
+  },
+  "resources": [
     {
       "apiVersion": "2015-08-01",
-      "name": "[variables('webSiteName')]",
-      "type": "Microsoft.Web/sites",
-      "location": "[resourceGroup().location]",
+      "type": "config",
+      "name": "appsettings",
       "dependsOn": [
-        "[concat('Microsoft.Web/serverFarms/', variables('hostingPlanName'))]",
+        "[concat('Microsoft.Web/Sites/', variables('webSiteName'))]",
         "[concat('Microsoft.Cache/Redis/', variables('cacheName'))]"
       ],
-      "tags": {
-        "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]": "empty",
-        "displayName": "Website"
-      },
       "properties": {
-        "name": "[variables('webSiteName')]",
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
-      },
-      "resources": [
-        {
-          "apiVersion": "2015-08-01",
-          "type": "config",
-          "name": "appsettings",
-          "dependsOn": [
-            "[concat('Microsoft.Web/Sites/', variables('webSiteName'))]",
-            "[concat('Microsoft.Cache/Redis/', variables('cacheName'))]"
-          ],
-          "properties": {
-            "CacheConnection": "[concat(variables('cacheName'),'.redis.cache.windows.net,abortConnect=false,ssl=true,password=', listKeys(resourceId('Microsoft.Cache/Redis', variables('cacheName')), '2015-08-01').primaryKey)]"
-          }
-        }
-      ]
+       "CacheConnection": "[concat(variables('cacheName'),'.redis.cache.windows.net,abortConnect=false,ssl=true,password=', listKeys(resourceId('Microsoft.Cache/Redis', variables('cacheName')), '2015-08-01').primaryKey)]"
+      }
     }
+  ]
+}
+```
 
 ## <a name="commands-to-run-deployment"></a>執行部署的命令
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
-    New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-with-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup
+
+```azurepowershell
+New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-with-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup
+```
 
 ### <a name="azure-cli"></a>Azure CLI
-    azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-with-redis-cache/azuredeploy.json -g ExampleDeployGroup
+
+```azurecli
+azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-with-redis-cache/azuredeploy.json -g ExampleDeployGroup
+```

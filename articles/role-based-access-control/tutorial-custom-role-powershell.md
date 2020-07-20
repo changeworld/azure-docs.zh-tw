@@ -1,6 +1,6 @@
 ---
-title: 教學課程 - 使用 Azure PowerShell 建立適用於 Azure 資源的自訂角色 | Microsoft Docs
-description: 使用 Azure PowerShell 開始為 Azure 資源建立自訂角色。
+title: 教學課程：使用 Azure PowerShell 建立 Azure 自訂角色 - Azure RBAC
+description: 在本教學課程中，您將使用 Azure PowerShell 和 Azure 角色型存取控制 (Azure RBAC) 來開始建立 Azure 自訂角色。
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 269bd74aca85ddbc2bafda30542c48f8ab391b32
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 8aedc59fc34278bf84983d78bf0e9a31fe38ee93
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587357"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735584"
 ---
-# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>教學課程：使用 Azure PowerShell 為 Azure 資源建立自訂角色
+# <a name="tutorial-create-an-azure-custom-role-using-azure-powershell"></a>教學課程：使用 Azure PowerShell 建立 Azure 自訂角色
 
-如果[適用於 Azure 資源的內建角色](built-in-roles.md)無法滿足您組織的特定需求，您可以建立自己的自訂角色。 在此教學課程中，您會使用 Azure PowerShell 建立名為讀者支援票證的自訂角色。 自訂角色可讓使用者檢視訂用帳戶的平面管理中的一切，也可開啟支援票證。
+如果 [Azure 內建的角色](built-in-roles.md)無法滿足您組織的特定需求，您可以建立自己的自訂角色。 在此教學課程中，您會使用 Azure PowerShell 建立名為讀者支援票證的自訂角色。 自訂角色可讓使用者檢視訂用帳戶的平面管理中的一切，也可開啟支援票證。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 建立自訂角色
@@ -32,13 +32,13 @@ ms.locfileid: "56587357"
 > * 更新自訂角色
 > * 刪除自訂角色
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-若要完成本教學課程，您需要：
+若要完成本教學課程，您將會需要：
 
 - 建立自訂角色的權限，例如[擁有者](built-in-roles.md#owner)或[使用者存取管理員](built-in-roles.md#user-access-administrator)
 - [Azure Cloud Shell](../cloud-shell/overview.md) 或 [Azure PowerShell](/powershell/azure/install-az-ps)
@@ -73,7 +73,7 @@ ms.locfileid: "56587357"
 
 1. 在編輯器中開啟 **ReaderSupportRole.json** 檔案。
 
-    下圖顯示了 JSON 輸出。 如需不同屬性的相關資訊，請參閱[自訂角色](custom-roles.md)。
+    下圖顯示了 JSON 輸出。 如需不同屬性的相關資訊，請參閱 [Azure 自訂角色](custom-roles.md)。
 
     ```json
     {
@@ -103,7 +103,7 @@ ms.locfileid: "56587357"
 
 1. 在 `AssignableScopes` 中，新增格式如下的訂用帳戶識別碼：`"/subscriptions/00000000-0000-0000-0000-000000000000"`
 
-    您必須新增明確的訂用帳戶識別碼，否則不允許您將角色匯入您的訂用帳戶。
+    您必須新增明確的訂用帳戶識別碼，否則無法將角色匯入您的訂用帳戶。
 
 1. 刪除 `Id` 屬性行並將 `IsCustom` 屬性變更為 `true`。
 
@@ -277,4 +277,4 @@ ms.locfileid: "56587357"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [使用 Azure PowerShell 建立適用於 Azure 資源的自訂角色](custom-roles-powershell.md)
+> [使用 Azure PowerShell 建立或更新 Azure 自訂角色](custom-roles-powershell.md)

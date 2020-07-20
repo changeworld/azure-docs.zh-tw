@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fe2e78501024983544b399762fb936d86e5c9d5
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011002"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "60547331"
 ---
 # <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Bing 自動建議 API 支援的語言和區域
 
 以下列出 Bing 自動建議 API 支援的語言。
 
-| 語言    | 語言代碼 |
+| Language    | 語言代碼 |
 |:----------- |:-------------:|
 | 阿拉伯文      | `ar`          |
 | 中文 (中國)     | `zh-CN`          |
@@ -30,7 +30,7 @@ ms.locfileid: "57011002"
 | 丹麥文      | `da`          |
 | 荷蘭文 (比利時)       | `nl-BE`          |
 | 荷蘭文 (荷蘭)      | `nl-NL`          |
-| 英文 (澳洲)    | `en-AU`          |
+| 英文 (澳大利亞)    | `en-AU`          |
 | 英文 (加拿大)     | `en-CA`          |
 | 英文 (印度)    | `en-IN`          |
 | 英文 (印尼)     | `en-ID`          |

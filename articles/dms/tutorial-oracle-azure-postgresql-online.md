@@ -1,5 +1,6 @@
 ---
-title: 教學課程：使用 Azure 資料庫移轉服務在線上將 Oracle 移轉至適用於 PostgreSQL 的 Azure 資料庫 | Microsoft Docs
+title: 教學課程：將 Oracle online 遷移至適用於 PostgreSQL 的 Azure 資料庫
+titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 資料庫移轉服務，在線上將內部部署的或虛擬機器上的 Oracle 移轉至適用於 PostgreSQL 的 Azure 資料庫。
 services: dms
 author: HJToland3
@@ -8,22 +9,22 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 05/06/2019
-ms.openlocfilehash: 6f94fa8b5c0d972d9cdbe86c480a712f7e44c29f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: HT
+ms.date: 01/24/2020
+ms.openlocfilehash: 956523e2b51795a4bc97c653dab8b408b06061f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65157206"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78255571"
 ---
-# <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>教學課程：使用 DMS 在線上將 Oracle 遷移至適用於 PostgreSQL 的 Azure 資料庫 (預覽)
+# <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>教學課程：使用 DMS 將 Oracle 遷移至適用於 PostgreSQL 的 Azure 資料庫 online （預覽）
 
 您可以使用 Azure 資料庫移轉服務，在最短的停機時間內將資料庫從裝載在內部部署或位於虛擬機器上的 Oracle 資料庫遷移至[適用於 PostgreSQL 的 Azure 資料庫](https://docs.microsoft.com/azure/postgresql/)。 換句話說，應用程式可在最短的停機時間內完成移轉。 在此教學課程中，您會在 Azure 資料庫移轉服務中使用線上移轉活動，將 **HR** 資料庫範例從內部部署的 Oracle 11g 或從 Oracle 11g 的虛擬機器執行個體，遷移至適用於 PostgreSQL 的 Azure 資料庫。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 > [!div class="checklist"]
+>
 > * 使用 ora2pg 工具評估移轉工作。
 > * 使用 ora2pg 工具遷移結構描述範例。
 > * 建立 Azure 資料庫移轉服務的執行個體。
@@ -41,30 +42,31 @@ ms.locfileid: "65157206"
 
 本文說明如何在線上從 Oracle 遷移至適用於 PostgreSQL 的 Azure 資料庫。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要：
 
 * 下載並安裝 [Oracle 11g Release 2 (Standard Edition、Standard Edition One 或 Enterprise Edition)](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html)。
 * 從[這裡](https://docs.oracle.com/database/121/COMSC/installation.htm#COMSC00002)下載 **HR** 資料庫範例。
-* 在 [Windows](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows.pdf) 或 [Linux](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Linux.pdf) 上，下載並安裝 ora2pg。
+* [在 Windows 或 Linux 上下載並安裝 ora2pg](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)。
 * [在適用於 PostgreSQL 的 Azure 資料庫中建立執行個體](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)。
 * 連線至執行個體，並使用此[文件](https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal)中的指令建立資料庫。
-* 使用 Azure Resource Manager 部署模型建立 Azure 資料庫移轉服務的 Azure 虛擬網路 (VNet)，以使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) 為您的內部部署來源伺服器提供站對站連線能力。 如需如何建立 VNet 的詳細資訊，請參閱[虛擬網路文件](https://docs.microsoft.com/azure/virtual-network/)，特別是快速入門文章，裡面會提供逐步操作詳細資料。
+* 使用 Azure Resource Manager 部署模型建立 Azure 資料庫移轉服務的 Microsoft Azure 虛擬網路，以使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)為您的內部部署來源伺服器提供站對站連線能力。 如需有關建立虛擬網路的詳細資訊，請參閱[虛擬網路檔](https://docs.microsoft.com/azure/virtual-network/)，特別是快速入門文章，其中包含逐步解說的詳細資料。
 
   > [!NOTE]
-  > 在 VNet 設定期間，如果您搭配與 Microsoft 對等互連的網路使用 ExpressRoute，請將下列服務[端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)新增至將佈建服務的子網路：
+  > 在虛擬網路設定期間，如果您搭配與 Microsoft 對等互連的網路使用 ExpressRoute，請將下列服務[端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)新增至將布建服務的子網：
+  >
   > * 目標資料庫端點 (例如，SQL 端點、Cosmos DB 端點等)
   > * 儲存體端點
   > * 服務匯流排端點
   >
   > 此為必要設定，因為 Azure 資料庫移轉服務沒有網際網路連線。
 
-* 確定您的 VNet 網路安全性群組 (NSG) 規則不會對 Azure 資料庫移轉服務封鎖下列輸入通訊埠：443、53、9354、445、12000。 如需 Azure VNet NSG 流量篩選的詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)。
+* 請確定您的虛擬網路網路安全性群組（NSG）規則不會對 Azure 資料庫移轉服務封鎖下列輸入通訊埠：443、53、9354、445、12000。 如需虛擬網路 NSG 流量篩選的詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)一文。
 * 設定[用於 Database Engine 存取的 Windows 防火牆](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 開啟您的 Windows 防火牆以允許 Azure 資料庫移轉服務存取來源 Oracle 伺服器 (依預設會使用 TCP 連接埠 1521)。
 * 使用來源資料庫前面的防火牆應用裝置時，您可能必須新增防火牆規則，才能讓 Azure 資料庫移轉服務存取來源資料庫，以進行移轉。
-* 為適用於 PostgreSQL 的 Azure 資料庫建立伺服器層級的[防火牆規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允許 Azure 資料庫移轉服務存取目標資料庫。 提供用於 Azure 資料庫移轉服務之 VNet 的子網路範圍。
+* 為適用於 PostgreSQL 的 Azure 資料庫建立伺服器層級的[防火牆規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允許 Azure 資料庫移轉服務存取目標資料庫。 提供用於 Azure 資料庫移轉服務之虛擬網路的子網範圍。
 * 啟用來源 Oracle 資料庫的存取權。
 
   > [!NOTE]
@@ -165,34 +167,13 @@ ms.locfileid: "65157206"
 
     您應該會收到回應 `'YES'`。
 
-> [!IMPORTANT]
-> 針對此案例的公開預覽版本，Azure 資料庫移轉服務可支援 Oracle 10g 或 11g 版本。 執行 Oracle 12c 或更新版本的客戶請注意，想要讓 ODBC 驅動程式能夠連線至 Oracle，驗證通訊協定至少必須是 8。 若為 12c 或更新版本的 Oracle 來源，則必須將驗證通訊協定設定如下：
->
-> * 更新 SQLNET.ORA：
->
->    ```
->    SQLNET.ALLOWED_LOGON_VERSION_CLIENT = 8
->    SQLNET.ALLOWED_LOGON_VERSION_SERVER = 8
->    ```
->
-> * 重新啟動電腦，以使新的設定生效。
-> * 變更現有使用者的密碼：
->
->    ```
->    ALTER USER system IDENTIFIED BY {pswd}
->    ```
->
->   如需詳細資訊，請參閱[這裡](http://www.dba-oracle.com/t_allowed_login_version_server.htm)的頁面。
->
-> 最後請記住，變更驗證通訊協定可能會影響用戶端的驗證。
-
 ## <a name="assess-the-effort-for-an-oracle-to-azure-database-for-postgresql-migration"></a>評估將 Oracle 遷移至適用於 PostgreSQL 的 Azure 資料庫所需進行的工作
 
 建議您使用 ora2pg 來評估從 Oracle 遷移至適用於 PostgreSQL 的 Azure 資料庫時所需進行的工作。 請使用 `ora2pg -t SHOW_REPORT` 指示詞來建立報告，於其中列出所有的 Oracle 物件、估計的移轉成本 (以開發人員工作天數計算)，以及某些可能要在轉換過程中特別注意的資料庫物件。
 
 大多數客戶會花大量時間檢閱評估報告，並考慮自動和手動進行轉換所需的工作。
 
-若要設定及執行 ora2pg 以建立評估報告，請參閱[從 Oracle 遷移至適用於 PostgreSQL 的 Azure 資料庫逐步指南](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)的**移轉前：評估**一節。 [這裡](http://ora2pg.darold.net/report.html)有 ora2pg 評估報告範例可供參考。
+若要設定及執行 ora2pg 以建立評估報告，請參閱[從 Oracle 遷移至適用於 PostgreSQL 的 Azure 資料庫逐步指南](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)的**移轉前：評估**一節。 [這裡](https://ora2pg.darold.net/report.html)有 ora2pg 評估報告範例可供參考。
 
 ## <a name="export-the-oracle-schema"></a>匯出 Oracle 結構描述
 
@@ -204,7 +185,7 @@ ms.locfileid: "65157206"
 psql -f [FILENAME] -h [AzurePostgreConnection] -p 5432 -U [AzurePostgreUser] -d database 
 ```
 
-例如︰
+例如：
 
 ```
 psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database
@@ -214,75 +195,68 @@ psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.dat
 
 ## <a name="set-up-the-schema-in-azure-database-for-postgresql"></a>在適用於 PostgreSQL 的 Azure 資料庫中設定結構描述
 
-根據預設，Oracle 會將 schema.table.column 保持在全都大寫的狀態，PostgreSQL 則會將 schema.table.column 保持在小寫狀態。 若要讓 Azure 資料庫移轉服務開始將資料從 Oracle 移至適用於 PostgreSQL 的 Azure 資料庫，schema.table.column 的大小寫格式必須和 Oracle 來源相同。
+在 Azure 資料庫移轉服務中啟動移轉管線之前，您可以選擇使用 ora2pg 來轉換 Oracle 資料表結構描述、預存程式、套件和其他資料庫物件，使其與 Postgres 相容。 請參閱下列連結，以了解如何使用 ora2pg：
 
-例如，如果 Oracle 來源的結構描述為 “HR”.”EMPLOYEES”.”EMPLOYEE_ID”，則 PostgreSQL 的結構描述必須使用相同格式。
+* [在 Windows 上安裝 ora2pg](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)
+* [從 Oracle 移轉至 Azure PostgreSQL 的逐步指南](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)
 
-若要確保 schema.table.column 的大小寫格式在 Oracle 和適用於 PostgreSQL 的 Azure 資料庫中是相同的，建議您使用下列步驟。
+Azure 資料庫移轉服務也可以建立 PostgreSQL 資料表結構描述。 此服務會存取已連線 Oracle 來源中的資料表結構描述，並在適用於 PostgreSQL 的 Azure 資料庫中建立相容的資料表結構描述。 請務必在 Azure 資料庫移轉服務完成建立結構描述並移動資料之後，在適用於 PostgreSQL 的 Azure 資料庫中驗證並檢查結構描述格式。
+
+> [!IMPORTANT]
+> Azure 資料庫移轉服務只會建立資料表結構描述；不會建立其他資料庫物件，例如預存程序、套件、索引等等。
+
+也請務必在目標資料庫中放入外部索引鍵，以便能夠執行完整載入。 如需可用來放入外部索引鍵的指令碼，請參閱[此處](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)文章的**遷移結構描述範例**一節。 使用 Azure 資料庫移轉服務來執行完整載入和同步處理。
+
+### <a name="when-the-postgresql-table-schema-already-exists"></a>當 PostgreSQL 資料表結構描述已存在時
+
+如果您在開始使用 Azure 資料庫移轉服務進行資料移動之前，使用 ora2pg 之類的工具建立 PostgreSQL 結構描述，請將來源資料表對應至 Azure 資料庫移轉服務中的目標資料表。
+
+1. 當您對適用於 PostgreSQL 的 Azure 資料庫移轉專案建立新的 Oracle 時，系統會在 [選取結構描述] 步驟中提示您選取目標資料庫和目標結構描述。 填入目標資料庫和目標結構描述。
+
+   ![顯示入口網站訂用帳戶](media/tutorial-oracle-azure-postgresql-online/dms-map-to-target-databases.png)
+
+2. [移轉設定]**** 畫面會顯示 Oracle 來源中資料表的清單。 Azure 資料庫移轉服務會嘗試根據資料表名稱，來比對來源中的資料表和目標資料表。 如果有多個相符的目標資料表存在不同的大小寫，您可以選取要對應的目標資料表。
+
+    ![顯示入口網站訂用帳戶](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
 
 > [!NOTE]
-> 您可以使用不同的方法來衍生大寫結構描述。 我們正努力改善此步驟並讓其自動執行。
+> 如果您需要將來源資料表名稱對應至具有不同名稱的資料表，請使用電子郵件 [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com) ，我們可以提供腳本來自動化程式。
 
-1. 使用 ora2pg 匯出小寫的結構描述。 在資料表建立 sql 指令碼中，請以手動方式建立大寫的 "SCHEMA" 結構描述。
-2. 將其餘 Oracle 物件 (例如，觸發程序、序列、程序、類型和函式) 匯入到適用於 PostgreSQL 的 Azure 資料庫。
-3. 若要讓 TABLE 和 COLUMN 變成大寫，請執行下列指令碼：
+### <a name="when-the-postgresql-table-schema-doesnt-exist"></a>當 PostgreSQL 資料表結構描述不存在時
 
-   ```
-   -- INPUT: schema name
-   set schema.var = “HR”;
+如果目標 PostgreSQL 資料庫未包含任何資料表結構描述資訊，Azure 資料庫移轉服務便會轉換來源結構描述，並在目標資料庫中加以重新建立。 請記住，Azure 資料庫移轉服務只會建立資料表結構描述；不會建立其他資料庫物件，例如預存程序、套件和索引。
+若要讓 Azure 資料庫移轉服務為您建立結構描述，請確定目標環境包含沒有現有資料表的結構描述。 如果 Azure 資料庫移轉服務探索到任何資料表，便會假設該結構描述是由外部工具 (例如 ora2pg) 所建立的。
 
-   -- Generate statements to rename tables and columns
-   SELECT 1, 'SET search_path = "' ||current_setting('schema.var')||'";'
-   UNION ALL 
-   SELECT 2, 'alter table "'||c.relname||'" rename '||a.attname||' to "'||upper(a.attname)||'";'
-   FROM pg_class c
-   JOIN pg_attribute a ON a.attrelid = c.oid
-   JOIN pg_type t ON a.atttypid = t.oid
-   LEFT JOIN pg_catalog.pg_constraint r ON c.oid = r.conrelid
-    AND r.conname = a.attname
-   WHERE c.relnamespace = (select oid from pg_namespace where nspname=current_setting('schema.var')) AND a.attnum > 0 AND c.relkind ='r'
-   UNION ALL
-   SELECT 3, 'alter table '||c.relname||' rename to "'||upper(c.relname)||'";'
-   FROM pg_catalog.pg_class c
-    LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
-   WHERE c.relkind ='r' AND n.nspname=current_setting('schema.var')
-   ORDER BY 1;
-   ```
+> [!IMPORTANT]
+> Azure 資料庫移轉服務要求所有資料表都必須以相同方式建立，使用的方法可以是 Azure 資料庫移轉服務或 ora2pg 之類的工具，但不能同時使用兩者。
 
-* 在目標資料庫中放入外部索引鍵，以便能夠執行完整載入。 如需可用來放入外部索引鍵的指令碼，請參閱[此處](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)文章的**遷移結構描述範例**一節。
-* 使用 Azure 資料庫移轉服務來執行完整載入和同步處理。
-* 當作為目標的適用於 PostgreSQL 的 Azure 資料庫執行個體中的資料與來源一致時，請在 Azure 資料庫移轉服務中執行資料庫完全移轉。
-* 若要讓 SCHEMA、TABLE 和 COLUMN 變成小寫 (如果適用於 PostgreSQL 的 Azure 資料庫的結構描述應該使用小寫才能進行應用程式查詢)，請執行下列指令碼：
+開始進行之前：
 
-  ```
-  -- INPUT: schema name
-  set schema.var = hr;
-  
-  -- Generate statements to rename tables and columns
-  SELECT 1, 'SET search_path = "' ||current_setting('schema.var')||'";'
-  UNION ALL
-  SELECT 2, 'alter table "'||c.relname||'" rename "'||a.attname||'" to '||lower(a.attname)||';'
-  FROM pg_class c
-  JOIN pg_attribute a ON a.attrelid = c.oid
-  JOIN pg_type t ON a.atttypid = t.oid
-  LEFT JOIN pg_catalog.pg_constraint r ON c.oid = r.conrelid
-     AND r.conname = a.attname
-  WHERE c.relnamespace = (select oid from pg_namespace where nspname=current_setting('schema.var')) AND a.attnum > 0 AND c.relkind ='r'
-  UNION ALL
-  SELECT 3, 'alter table "'||c.relname||'" rename to '||lower(c.relname)||';'
-  FROM pg_catalog.pg_class c
-     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
-  WHERE c.relkind ='r' AND n.nspname=current_setting('schema.var')
-  ORDER BY 1;
-  ```
+1. 根據應用程式需求在目標資料庫中建立結構描述。 根據預設，PostgreSQL 資料表結構描述和資料行的名稱會採用小寫。 另一方面，Oracle 資料表結構描述和資料行則預設會採用全部大寫。
+2. 在 [選取結構描述] 步驟中，指定目標資料庫和目標結構描述。
+3. 根據您在適用於 PostgreSQL 的 Azure 資料庫中建立的結構描述，Azure 資料庫移轉服務會使用下列轉換規則：
+
+    如果 Oracle 來源中的結構描述名稱與適用於 PostgreSQL 的 Azure 資料庫中的結構描述名稱相符，則 Azure 資料庫移轉服務會「使用與目標相同的大小寫來建立資料表結構描述」**。
+
+    例如：
+
+    | 來源 Oracle 結構描述 | 目標 PostgreSQL Database.Schema | DMS 建立的 schema.table.column |
+    | ------------- | ------------- | ------------- |
+    | HR | targetHR.public | public.countries.country_id |
+    | HR | targetHR.trgthr | trgthr.countries.country_id |
+    | HR | targetHR.TARGETHR | "TARGETHR"."COUNTRIES"."COUNTRY_ID" |
+    | HR | targetHR.HR | "HR"."COUNTRIES"."COUNTRY_ID" |
+    | HR | targetHR.Hr | *無法對應混合大小寫 |
+
+    * 若要在目標于 postgresql 中建立混合大小寫架構和資料表名稱，請聯絡 [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com) 。 我們可以提供指令碼供您在目標 PostgreSQL 資料庫中設定混合大小寫的資料表結構描述。
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>註冊 Microsoft.DataMigration 資源提供者
 
-1. 登入 Azure 入口網站，選取 [所有服務]，然後選取 [訂用帳戶]。
+1. 登入 Azure 入口網站，選取 [所有服務]****，然後選取 [訂用帳戶]****。
 
    ![顯示入口網站訂用帳戶](media/tutorial-oracle-azure-postgresql-online/portal-select-subscriptions.png)
 
-2. 選取您要在其中建立 Azure 資料庫移轉服務執行個體的訂用帳戶，然後選取 [資源提供者]。
+2. 選取您要在其中建立 Azure 資料庫移轉服務執行個體的訂用帳戶，然後選取 [資源提供者]****。
 
     ![顯示資源提供者](media/tutorial-oracle-azure-postgresql-online/portal-select-resource-provider.png)
 
@@ -292,62 +266,62 @@ psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.dat
 
 ## <a name="create-a-dms-instance"></a>建立 DMS 執行個體
 
-1. 在 Azure 入口網站中，選取 [+ 建立資源]，搜尋「Azure 資料庫移轉服務」，然後從下拉式清單選取 [Azure 資料庫移轉服務]。
+1. 在 Azure 入口網站中，選取 [+ 建立資源]****，搜尋「Azure 資料庫移轉服務」，然後從下拉式清單選取 [Azure 資料庫移轉服務]****。
 
     ![Azure Marketplace](media/tutorial-oracle-azure-postgresql-online/portal-marketplace.png)
 
-2. 在 [Azure 資料庫移轉服務] 畫面上，選取 [建立]。
+2. 在 [Azure 資料庫移轉服務]**** 畫面上，選取 [建立]****。
 
     ![建立 Azure 資料庫移轉服務執行個體](media/tutorial-oracle-azure-postgresql-online/dms-create2.png)
   
-3. 在 [建立移轉服務] 畫面上，指定服務的名稱、訂用帳戶，以及新的或現有的資源群組。
+3. 在 [建立移轉服務]**** 畫面上，指定服務的名稱、訂用帳戶，以及新的或現有的資源群組。
 
-4. 選取現有 VNet 或建立新的 VNet。
+4. 選取現有的虛擬網路，或建立一個新的。
 
-    VNet 會為 Azure 資料庫移轉服務提供來源 Oracle 和目標適用於 PostgreSQL 的 Azure 資料庫執行個體的存取權。
+    虛擬網路會為 Azure 資料庫移轉服務提供來源 Oracle 和目標適用於 PostgreSQL 的 Azure 資料庫實例的存取權。
 
-    如需有關如何在 Azure 入口網站中建立 VNet 的詳細資訊，請參閱[使用 Azure 入口網站建立虛擬網路](https://aka.ms/DMSVnet)一文。
+    如需有關如何在 Azure 入口網站中建立虛擬網路的詳細資訊，請參閱[使用 Azure 入口網站建立虛擬網路](https://aka.ms/DMSVnet)一文。
 
 5. 選取定價層。
 
-    如需成本和定價層的詳細資訊，請參閱[定價分頁](https://aka.ms/dms-pricing)。
+    如需成本和定價層的詳細資訊，請參閱[定價頁面](https://aka.ms/dms-pricing)。
 
     ![設定 Azure 資料庫移轉服務執行個體設定](media/tutorial-oracle-azure-postgresql-online/dms-settings5.png)
 
-6. 選取 [建立] 以建立服務。
+6. 選取 [建立]**** 以建立服務。
 
 ## <a name="create-a-migration-project"></a>建立移轉專案
 
 建立服務之後，請在 Azure 入口網站中找出該服務，然後建立新的移轉專案。
 
-1. 在 Azure 入口網站中，選取 [所有服務]，搜尋 Azure 資料庫移轉服務，然後選取 [Azure 資料庫移轉服務]。
+1. 在 Azure 入口網站中，選取 [所有服務]****，搜尋 Azure 資料庫移轉服務，然後選取 [Azure 資料庫移轉服務]****。
 
     ![找出 Azure 資料庫移轉服務的所有執行個體](media/tutorial-oracle-azure-postgresql-online/dms-search.png)
 
-2. 在 [Azure 資料庫移轉服務] 畫面上，搜尋您建立的 Azure 資料庫移轉服務執行個體名稱，然後選取該執行個體。
+2. 在 [Azure 資料庫移轉服務]**** 畫面上，搜尋您建立的 Azure 資料庫移轉服務執行個體名稱，然後選取該執行個體。
 
     ![找出您的 Azure 資料庫移轉服務執行個體](media/tutorial-oracle-azure-postgresql-online/dms-instance-search.png)
 
-3. 選取 [+ 新增移轉專案]。
-4. 在 [新增移轉專案] 畫面上指定專案名稱，並在 [來源伺服器類型] 文字方塊中中選取 [Oracle]，然後在 [目標伺服器類型] 文字方塊中選取 [適用於 PostgreSQL 的 Azure 資料庫]。
-5. 在 [選擇活動類型] 區段中，選取 [線上資料移轉]。
+3. 選取 [+ 新增移轉專案]****。
+4. 在 [新增移轉專案]**** 畫面上指定專案名稱，並在 [來源伺服器類型]**** 文字方塊中中選取 [Oracle]****，然後在 [目標伺服器類型]**** 文字方塊中選取 [適用於 PostgreSQL 的 Azure 資料庫]****。
+5. 在 [**選擇活動類型**] 區段中，選取 [**線上資料移轉**]。
 
    ![建立資料庫移轉服務專案](media/tutorial-oracle-azure-postgresql-online/dms-create-project5.png)
 
    > [!NOTE]
-   > 或者，您可以選擇 [僅建立專案] 以立即建立移轉專案，並於後續再執行移轉。
+   > 或者，您可以選擇 [僅建立專案]**** 以立即建立移轉專案，並於後續再執行移轉。
 
-6. 選取 [儲存]，並記下要成功使用 Azure 資料庫移轉服務來執行線上移轉的需求，然後選取 [建立及執行活動]。
+6. 選取 [儲存]****，並記下要成功使用 Azure 資料庫移轉服務來執行線上移轉的需求，然後選取 [建立及執行活動]****。
 
 ## <a name="specify-source-details"></a>指定來源詳細資料
 
-* 在 [新增來源詳細資料] 畫面上，指定來源 Oracle 執行個體的連線詳細資料。
+* 在 [新增來源詳細資料]**** 畫面上，指定來源 Oracle 執行個體的連線詳細資料。
 
   ![新增來源詳細資料畫面](media/tutorial-oracle-azure-postgresql-online/dms-add-source-details.png)
 
 ## <a name="upload-oracle-oci-driver"></a>上傳 Oracle OCI 驅動程式
 
-1. 選取 [儲存]，然後在 [安裝 OCI 驅動程式] 畫面上登入 Oracle 帳戶，並從[這裡](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst)下載驅動程式 **instantclient-basiclite-windows.x64-12.2.0.1.0.zip** (37,128,586 Byte(s)) (SHA1 總和檢查碼：865082268)。
+1. 選取 [儲存]****，然後在 [安裝 OCI 驅動程式]**** 畫面上登入 Oracle 帳戶，並從[這裡](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst)下載驅動程式 **instantclient-basiclite-windows.x64-12.2.0.1.0.zip** (37,128,586 Byte(s)) (SHA1 總和檢查碼：865082268)。
 2. 將驅動程式下載到共用資料夾。
 
    請確定該資料夾有與指定了最低唯讀存取權的使用者名稱共用。 Azure 資料庫移轉服務會藉由模擬您所指定的使用者名稱來存取並讀取共用，以將 OCI 驅動程式上傳至 Azure。
@@ -358,33 +332,33 @@ psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.dat
 
 ## <a name="specify-target-details"></a>指定目標詳細資料
 
-1. 選取 [儲存]，然後在 [目標詳細資料] 畫面上指定目標「適用於 PostgreSQL 的 Azure 資料庫」伺服器的連線詳細資料；此伺服器是 **HR** 結構描述部署所在的預先佈建「適用於 PostgreSQL 的 Azure 資料庫」執行個體。
+1. 選取 [儲存]****，然後在 [目標詳細資料]**** 畫面上指定目標「適用於 PostgreSQL 的 Azure 資料庫」伺服器的連線詳細資料；此伺服器是 **HR** 結構描述部署所在的預先佈建「適用於 PostgreSQL 的 Azure 資料庫」執行個體。
 
     ![目標詳細資料畫面](media/tutorial-oracle-azure-postgresql-online/dms-add-target-details1.png)
 
-2. 選取 [儲存]，然後在 [對應到目標資料庫] 畫面上，對應要進行移轉的來源和目標資料庫。
+2. 選取 [儲存]****，然後在 [對應到目標資料庫]**** 畫面上，對應要進行移轉的來源和目標資料庫。
 
     如果目標資料庫包含與來源資料庫相同的資料庫名稱，Azure 資料庫移轉服務依預設會選取目標資料庫。
 
     ![對應到目標資料庫](media/tutorial-oracle-azure-postgresql-online/dms-map-target-details.png)
 
-3. 選取 [儲存]，在 [移轉摘要] 畫面的 [活動名稱] 文字方塊中，指定移轉活動的名稱，然後檢閱摘要，以確定來源和目標詳細資料都與您先前的指定相符。
+3. 選取 [儲存]****，在 [移轉摘要]**** 畫面的 [活動名稱]**** 文字方塊中，指定移轉活動的名稱，然後檢閱摘要，以確定來源和目標詳細資料都與您先前的指定相符。
 
     ![移轉摘要](media/tutorial-oracle-azure-postgresql-online/dms-migration-summary.png)
 
 ## <a name="run-the-migration"></a>執行移轉
 
-* 選取 [執行移轉]。
+* 選取 [執行移轉]****。
 
-  [移轉活動] 視窗隨即出現，且活動的 [狀態] 為 [正在初始化]。
+  [移轉活動] 視窗隨即出現，且活動的 [狀態]**** 為 [正在初始化]****。
 
 ## <a name="monitor-the-migration"></a>監視移轉
 
-1. 在移轉活動畫面上，選取 [重新整理] 以更新顯示，直到移轉的 [狀態] 顯示為 [執行中] 為止。
+1. 在移轉活動畫面上，選取 [重新整理]**** 以更新顯示，直到移轉的 [狀態]**** 顯示為 [執行中]**** 為止。
 
      ![活動狀態 - 執行中](media/tutorial-oracle-azure-postgresql-online/dms-activity-running.png)
 
-2. 在 [資料庫名稱] 下方選取特定資料庫，以取得 [載入完整資料] 和 [累加式資料同步] 作業的移轉狀態。
+2. 在 [**資料庫名稱**] 底下，選取特定資料庫，以取得**完整資料載入**和**增量資料同步**作業的遷移狀態。
 
     完整資料載入會顯示初始載入移轉狀態，而累加式資料同步會顯示異動資料擷取 (CDC) 狀態。
 
@@ -394,16 +368,16 @@ psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.dat
 
 ## <a name="perform-migration-cutover"></a>執行完全移轉
 
-初始完整載入完成後，資料庫會標示為 [已可執行完全移轉]。
+初始完整載入完成後，資料庫會標示為 [已可執行完全移轉]****。
 
-1. 當您準備好要完成資料庫移轉後，請選取 [開始完全移轉]。
+1. 當您準備好要完成資料庫移轉後，請選取 [開始完全移轉]****。
 
-2. 確實停止所有傳入來源資料庫的交易；等到 [暫止的變更] 計數器顯示為 **0** 為止。
+2. 確實停止所有傳入來源資料庫的交易；等到 [暫止的變更]**** 計數器顯示為 **0** 為止。
 
    ![開始完全移轉](media/tutorial-oracle-azure-postgresql-online/dms-start-cutover.png)
 
-3. 選取 [確認]，然後選取 [套用]。
-4. 當資料庫移轉狀態顯示為 [已完成] 時，請將應用程式連線至新的目標「適用於 PostgreSQL 的 Azure 資料庫」執行個體。
+3. 選取 [確認]****，然後選取 [套用]****。
+4. 當資料庫移轉狀態顯示為 [已完成]**** 時，請將應用程式連線至新的目標「適用於 PostgreSQL 的 Azure 資料庫」執行個體。
 
  > [!NOTE]
  > 因為 PostgreSQL 預設會使用小寫的 schema.table.column，所以您可以使用本文稍早的**在適用於 PostgreSQL 的 Azure 資料庫中設定結構描述**區段中所提供的指令碼，將格式從大寫還原為小寫。
@@ -412,4 +386,4 @@ psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.dat
 
 * 如需在線上移轉至「適用於 PostgreSQL 的 Azure 資料庫」時的已知問題與限制，請參閱[適用於 PostgreSQL 的 Azure 資料庫線上移轉的已知問題與因應措施](known-issues-azure-postgresql-online.md)一文。
 * 如需 Azure 資料庫移轉服務的相關資訊，請參閱[什麼是 Azure 資料庫移轉服務？](https://docs.microsoft.com/azure/dms/dms-overview)一文。
-* 如需「適用於 PostgreSQL 的 Azure 資料庫」的相關資訊，請參閱[什麼是適用於 PostgreSQL 的 Azure 資料庫？](https://docs.microsoft.com/azure/postgresql/overview)一文。
+* 如需適用於 PostgreSQL 的 Azure 資料庫的相關資訊，請參閱[什麼是 Azure Database for PostgreSQL？](https://docs.microsoft.com/azure/postgresql/overview)一文。

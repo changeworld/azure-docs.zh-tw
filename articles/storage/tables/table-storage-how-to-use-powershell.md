@@ -1,19 +1,18 @@
 ---
 title: 使用 PowerShell 執行 Azure 資料表儲存體作業 | Microsoft Docs
-description: 使用 PowerShell 執行 Azure 表格儲存體作業。
-services: cosmos-db
+description: 瞭解如何使用 PowerShell 執行一般工作，例如建立、查詢和刪除 Azure 資料表儲存體帳戶中的資料。
 author: roygara
-ms.service: cosmos-db
+ms.service: storage
 ms.topic: article
 ms.date: 04/05/2019
 ms.author: rogarana
-ms.subservice: cosmosdb-table
-ms.openlocfilehash: b1cae7dc553ce324349e66f1bcb8a281d7c7c7e0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.subservice: tables
+ms.openlocfilehash: 746044aa835df52e61c234c8b5ca61164fffbbc5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62101275"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80545958"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 執行 Azure 資料表儲存體作業 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
@@ -32,16 +31,16 @@ Azure 資料表儲存體是 NoSQL 資料存放區，您可以用來儲存和查�
 
 本做法文章示範如何在新的資源群組中建立新的 Azure 儲存體帳戶，以便在完成時輕鬆地將它移除。 如果您想要使用現有的儲存體帳戶，則可以改為那麼做。
 
-下列範例會要求 Az PowerShell 模組`Az.Storage (1.1.0 or greater)`和`Az.Resources (1.2.0 or greater)`。 在 PowerShell 視窗中，執行 `Get-Module -ListAvailable Az*` 以尋找版本。 如果未顯示任何項目，或者您必須升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。
+這些範例需要 Az PowerShell 模組 `Az.Storage (1.1.0 or greater)` 和 `Az.Resources (1.2.0 or greater)` 。 在 PowerShell 視窗中，執行 `Get-Module -ListAvailable Az*` 以尋找版本。 如果未顯示任何項目，或者您必須升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。
 
 > [!IMPORTANT]
-> 使用 PowerShell 中的 Azure 功能需要您安裝 `Az` 模組。 最新版`AzTable`與較舊的 AzureRM 模組不相容。
-> 請遵循[最新安裝的指示安裝 Az 模組](/powershell/azure/install-az-ps)如有需要。
+> 使用 PowerShell 中的 Azure 功能需要您安裝 `Az` 模組。 目前的版本與 `AzTable` 舊版的 AzureRM 模組不相容。
+> 如有需要，請遵循安裝[Az 模組的最新安裝指示](/powershell/azure/install-az-ps)。
 
-安裝或更新 Azure PowerShell 之後，您必須安裝模組**AzTable**，其中包含用於管理實體的命令。 若要安裝此模組，請以系統管理員身分執行 PowerShell，並使用 **Install-Module** 命令。
+安裝或更新 Azure PowerShell 之後，您必須安裝模組**AzTable**，其中包含用來管理實體的命令。 若要安裝此模組，請以系統管理員身分執行 PowerShell，並使用 **Install-Module** 命令。
 
 > [!IMPORTANT]
-> 模組名稱相容性考量我們仍然會發佈此舊名稱的相同模組`AzureRmStorageTables`PowerShell 資源庫中。 本文件將會參考新名稱。
+> 針對模組名稱相容性原因，我們仍會在 PowerShell 資源庫的舊名稱下發布這個相同的模組 `AzureRmStorageTables` 。 本檔只會參考新名稱。
 
 ```powershell
 Install-Module AzTable
@@ -77,7 +76,7 @@ New-AzResourceGroup -ResourceGroupName $resourceGroup -Location $location
 
 ## <a name="create-storage-account"></a>建立儲存體帳戶
 
-使用 [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) 來建立具有本地備援儲存體 (LRS) 的標準一般用途儲存體帳戶。 請務必指定唯一的儲存體帳戶名稱。 接下來，取得代表儲存體帳戶的內容。 在儲存體帳戶時，您可以參考內容而非重複提供認證。
+使用 [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) 來建立具有本地備援儲存體 (LRS) 的標準一般用途儲存體帳戶。 請務必指定唯一的儲存體帳戶名稱。 接下來，取得代表儲存體帳戶的內容。 在儲存體帳戶上作用時，您可以參考內容，而不是重複提供您的認證。
 
 ```powershell
 $storageAccountName = "pshtablestorage"
@@ -92,7 +91,7 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-new-table"></a>建立新的資料表
 
-若要建立資料表，請使用[新增 AzStorageTable](/powershell/module/az.storage/New-AzStorageTable) cmdlet。 在此範例中，資料表名為 `pshtesttable`。
+若要建立資料表，請使用[AzStorageTable](/powershell/module/az.storage/New-AzStorageTable) Cmdlet。 在此範例中，資料表名為 `pshtesttable`。
 
 ```powershell
 $tableName = "pshtesttable"
@@ -101,7 +100,7 @@ New-AzStorageTable –Name $tableName –Context $ctx
 
 ## <a name="retrieve-a-list-of-tables-in-the-storage-account"></a>擷取儲存體帳戶中的資料表清單
 
-擷取一份資料表中使用您建立儲存體帳戶[Get AzStorageTable](/powershell/module/azure.storage/Get-AzureStorageTable)。
+使用[AzStorageTable](/powershell/module/azure.storage/Get-AzureStorageTable)來取出儲存體帳戶中的資料表清單。
 
 ```powershell
 Get-AzStorageTable –Context $ctx | select Name
@@ -109,18 +108,18 @@ Get-AzStorageTable –Context $ctx | select Name
 
 ## <a name="retrieve-a-reference-to-a-specific-table"></a>擷取特定資料表的參考
 
-若要在資料表上執行作業，您需要針對那個特定資料表的參考。 取得參考，使用[Get AzStorageTable](/powershell/module/azure.storage/Get-AzureStorageTable)。
+若要在資料表上執行作業，您需要針對那個特定資料表的參考。 使用[Get AzStorageTable](/powershell/module/azure.storage/Get-AzureStorageTable)取得參考。
 
 ```powershell
 $storageTable = Get-AzStorageTable –Name $tableName –Context $ctx
 ```
 
-## <a name="reference-cloudtable-property-of-a-specific-table"></a>參考特定資料表的 CloudTable 屬性
+## <a name="reference-cloudtable-property-of-a-specific-table"></a>特定資料表的參考 CloudTable 屬性
 
 > [!IMPORTANT]
-> 使用時，會強制使用 CloudTable **AzTable** PowerShell 模組。 呼叫**Get AzTableTable**命令，以取得此物件的參考。 如果不存在，此命令也會建立資料表。
+> 使用**AzTable** PowerShell 模組時，使用 CloudTable 是強制的。 呼叫**AzStorageTable**命令以取得此物件的參考。 此命令也會建立資料表（如果尚未存在的話）。
 
-若要對資料表使用執行作業**AzTable**，您需要的特定資料表的 CloudTable 屬性的參考。
+若要使用**AzTable**在資料表上執行作業，您需要特定資料表的 CloudTable 屬性參考。
 
 ```powershell
 $cloudTable = (Get-AzStorageTable –Name $tableName –Context $ctx).CloudTable
@@ -130,7 +129,7 @@ $cloudTable = (Get-AzStorageTable –Name $tableName –Context $ctx).CloudTable
 
 ## <a name="delete-a-table"></a>刪除資料表
 
-若要刪除資料表，請使用[移除 AzStorageTable](/powershell/module/az.storage/Remove-AzStorageTable)。 此 Cmdlet 可移除資料表，包括其中的所有資料。
+若要刪除資料表，請使用[AzStorageTable](/powershell/module/az.storage/Remove-AzStorageTable)。 此 Cmdlet 可移除資料表，包括其中的所有資料。
 
 ```powershell
 Remove-AzStorageTable –Name $tableName –Context $ctx
@@ -163,6 +162,6 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 * [儲存體 PowerShell Cmdlet](/powershell/module/az.storage#storage)
 
-* [使用 PowerShell-AzureRmStorageTable AzTable PS 模組 v2.0 從 Azure 資料表](https://paulomarquesc.github.io/working-with-azure-storage-tables-from-powershell)
+* [從 PowerShell 使用 Azure 資料表-AzureRmStorageTable/AzTable PS 模組 v2。0](https://paulomarquesc.github.io/working-with-azure-storage-tables-from-powershell)
 
 * [Microsoft Azure 儲存體總管](../../vs-azure-tools-storage-manage-with-storage-explorer.md) 是一個免費的獨立應用程式，可讓您在 Windows、MacOS 和 Linux 上以視覺化方式處理 Azure 儲存體資料。

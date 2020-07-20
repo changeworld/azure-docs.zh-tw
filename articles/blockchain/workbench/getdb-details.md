@@ -1,27 +1,21 @@
 ---
 title: 取得 Azure Blockchain Workbench 資料庫詳細資料
-description: 了解如何取得 Azure Blockchain Workbench 資料庫與資料庫伺服器資訊。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/09/2019
-ms.topic: article
-ms.service: azure-blockchain
+description: 瞭解如何取得 Azure Blockchain Workbench 預覽資料庫和資料庫伺服器資訊。
+ms.date: 09/05/2019
+ms.topic: how-to
 ms.reviewer: mmercuri
-manager: femila
-ms.openlocfilehash: 42d119acd8880458eadc1760a7cb9713f91e3f6f
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 898360d8e22803e17ff4da7d3b63f5595cad47ba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65509969"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254645"
 ---
 # <a name="get-information-about-your-azure-blockchain-workbench-database"></a>取得 Azure Blockchain Workbench 資料庫的相關資訊
 
-本文示範如何取得 Azure Blockchain Workbench 資料庫的詳細資料。
+本文說明如何取得 Azure Blockchain Workbench Preview 資料庫的詳細資訊。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 使用 Blockchain Workbench SQL DB 中的資料庫檢視可提供應用程式、工作流程與智慧合約執行的相關資訊。 開發人員可以在使用如 Microsoft Excel、Power BI、Visual Studio 及 SQL Server Management Studio 等工具時運用此資訊。
 
@@ -34,10 +28,10 @@ ms.locfileid: "65509969"
 
 若要連線至資料庫：
 
-1. 使用具有 Azure Blockchain Workbench 資源**擁有者**權限的帳戶登入 Azure 入口網站。
-2. 在左側導覽窗格中，選取 [資源群組]。
+1. 使用具有 Azure Blockchain Workbench**資源擁有者許可權的**帳戶登入 Azure 入口網站。
+2. 在左側導覽窗格中，選取 [資源群組]****。
 3. 為 Blockchain Workbench 部署選擇資源群組的名稱。
-4. 選取 [類型] 排序資源清單，然後選擇您的 **SQL 伺服器**。 下一個螢幕擷取畫面中的排序清單顯示兩個 SQL 資料庫，一個是 "master" 資料庫，另一個是使用 "lhgn" 作為**資源前置詞**的資料庫。
+4. 選取 [類型]**** 排序資源清單，然後選擇您的 **SQL 伺服器**。 下一個螢幕擷取畫面中的已排序清單會顯示兩個資料庫 "master"，另一個則使用 "lhgn" 做為**資源前置**詞。
 
    ![排序後的 Blockchain Workbench 資源清單](./media/getdb-details/sorted-workbench-resource-list.png)
 

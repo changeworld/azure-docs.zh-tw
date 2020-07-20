@@ -4,14 +4,14 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: 42c961b81a254adef5e42c3c8916c9c081f548c8
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
-ms.translationtype: HT
+ms.openlocfilehash: 69dc0e1c14bc88cdbf0aa48700f95058ba759cc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42809674"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "67174485"
 ---
-1. 在 [方案] 檢視 (或 Visual Studio 中的 [方案總管]) 中，以滑鼠右鍵按一下 [元件] 資料夾，按一下 [取得更多元件]，搜尋 **Google 雲端通訊用戶端**並將其加入至專案。
+1. 在 [方案] 檢視 (或 Visual Studio 中的 [方案總管]****) 中，以滑鼠右鍵按一下 [元件]**** 資料夾，按一下 [取得更多元件]****，搜尋 **Google 雲端通訊用戶端**並將其加入至專案。
 2. 開啟 ToDoActivity.cs 專案檔案，然後將下列 using 陳述式加入至類別：
 
     ```csharp

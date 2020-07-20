@@ -1,24 +1,16 @@
 ---
 title: Azure Application Insights 漏斗圖
 description: 了解如何使用漏斗圖來探索客戶與您的應用程式互動的方式。
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/17/2017
-ms.pm_owner: daviste;NumberByColors
-ms.reviewer: mbullwin
+author: NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 2cb7e15b701b53e74618c21bf219a355d495f985
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 07/17/2017
+ms.reviewer: mbullwin
+ms.openlocfilehash: 09c1899004bd93d0f2365c3bbc000c37459e8d89
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60372907"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797822"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>使用 Application Insights 漏斗圖來探索客戶如何使用您的應用程式
 
@@ -53,7 +45,7 @@ ms.locfileid: "60372907"
   * [使用量概觀](usage-overview.md)
   * [使用者、工作階段和事件](usage-segmentation.md)
   * [保留](usage-retention.md)
-  * [活頁簿](../../azure-monitor/app/usage-workbooks.md)
+  * [活頁簿](../../azure-monitor/platform/workbooks-overview.md)
   * [新增使用者內容](usage-send-user-context.md)
   * [匯出至 Power BI](../../azure-monitor/app/export-power-bi.md )
 

@@ -1,6 +1,6 @@
 ---
-title: 快速入門：使用 Bing 影片搜尋 REST API 和 C# 來搜尋影片
-titlesuffix: Azure Cognitive Services
+title: 快速入門：使用 REST API 和 C# 來搜尋影片 - Bing 影片搜尋
+titleSuffix: Azure Cognitive Services
 description: 使用本快速入門，以使用 C# 將要求傳送至 Bing 影片搜尋 REST API。
 services: cognitive-services
 author: aahill
@@ -8,31 +8,31 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 29d0dc032bd14161674c58d6e502ad77c3bf75e5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d9d69d4550a5cd4a162795261b7ab3d8b59b7297
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108775"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848935"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>快速入門：使用 Bing 影片搜尋 REST API 和 C# 來搜尋影片
 
-使用本快速入門來進行您對 Bing 影片搜尋 API 的第一次呼叫，並從 JSON 回應檢視搜尋結果。 這個簡單的 C# 應用程式會將 HTTP 影片搜尋查詢傳送給 API，並顯示回應。 雖然此應用程式是以 C# 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
+使用本快速入門，第一次呼叫 Bing 影片搜尋 API。 這個簡單的 C# 應用程式會將 HTTP 影片搜尋查詢傳送給 API，並顯示 JSON 回應。 雖然此應用程式是以 C# 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
 
 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingVideoSearchv7.cs) 上有此範例的原始程式碼，其中還有其他錯誤處理、功能和程式碼註釋。
 
-## <a name="prerequisites"></a>必要條件
-* 任何一版的 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
+## <a name="prerequisites"></a>Prerequisites
+* [Visual Studio 2017 或更新版本](https://www.visualstudio.com/downloads/)的任何版本。
 * [Json.NET](https://www.newtonsoft.com/json) 架構 (以 NuGet 套件形式提供)。
-* 如果您使用 Linux/MacOS，則可以使用 [Mono](https://www.mono-project.com/)來執行此應用程式。
+* 如果您使用 Linux/MacOS，則可以使用 [Mono](https://www.mono-project.com/) 來執行此應用程式。
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>建立專案並將其初始化
 
-1. 在 Visual Studio 中建立新的主控台解決方案。 然後將下列命名空間新增至主要程式碼檔案。
+1. 在 Visual Studio 中建立新的主控台解決方案。 接著，將下列命名空間新增至主要程式碼檔案：
 
     ```csharp
     using System;
@@ -42,7 +42,7 @@ ms.locfileid: "58108775"
     using System.Collections.Generic;
     ```
 
-2. 針對您的訂用帳戶金鑰、端點和搜尋字詞新增變數。
+2. 針對您的訂用帳戶金鑰、端點和搜尋字詞新增變數。 對於 `uriBase` 值，您可以使用下列程式碼中的全域端點，或使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
 
     ```csharp
     const string accessKey = "enter your key here";
@@ -50,26 +50,27 @@ ms.locfileid: "58108775"
     const string searchTerm = "kittens";
     ```
 
-### <a name="create-a-struct-to-format-the-bing-video-search-api-response"></a>建立結構來製作 Bing 影片搜尋 API 回應的格式
+## <a name="create-a-struct-to-format-the-bing-video-search-api-response"></a>建立結構來製作 Bing 影片搜尋 API 回應的格式
 
-1. 定義 `SearchResult` 結構以包含影像搜尋結果及 JSON 標頭資訊。
+定義 `SearchResult` 結構以包含影像搜尋結果及 JSON 標頭資訊。
 
-    ```csharp
-    struct SearchResult
-        {
-            public String jsonResult;
-            public Dictionary<String, String> relevantHeaders;
-        }
-    ```
+```csharp
+struct SearchResult
+    {
+        public String jsonResult;
+        public Dictionary<String, String> relevantHeaders;
+    }
+```
 
 ## <a name="create-and-handle-a-video-search-request"></a>建立及處理影片搜尋要求
 
-建立一個名為 `BingVideoSearch` 的方法來執行對 API 的呼叫，並將傳回類型設定為稍早建立的 `SearchResult` 結構。 在方法中，執行下列步驟：
+1. 建立一個名為 `BingVideoSearch` 的方法來執行對 API 的呼叫，並將傳回類型設定為之前建立的 `SearchResult` 結構。 
 
-1. 建構搜尋要求的 URI。 請注意，搜尋字詞 toSearch 必須先格式化，才能附加到字串。
+   在接下來的步驟中，將程式碼新增至此方法。
 
-    ```csharp
-    
+1. 建構搜尋要求的 URI。 將搜尋詞彙 `toSearch` 格式化，然後再附加至字串。
+
+    ```csharp    
     static SearchResult BingVideoSearch(string toSearch){
     
         var uriQuery = uriBase + "?q=" + Uri.EscapeDataString(toSearch);
@@ -105,7 +106,7 @@ ms.locfileid: "58108775"
     return searchResult;
     ```
 
-2. 接著，您可以列印回應。
+2. 列印回應。
 
     ```csharp
     Console.WriteLine(result.jsonResult);

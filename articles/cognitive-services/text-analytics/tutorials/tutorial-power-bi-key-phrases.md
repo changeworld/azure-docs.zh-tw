@@ -1,21 +1,21 @@
 ---
 title: 教學課程：將 Power BI 與文字分析認知服務整合
 titleSuffix: Azure Cognitive Services
-description: 了解如何使用文字分析，以從儲存在 Power BI 的文字中擷取關鍵片語。
+description: 了解如何使用文字分析 API，從儲存在 Power BI 的文字中擷取關鍵片語。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 24767f73e3e1409f81262ad57f3fd5152a4ec319
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 4bf2f12ef79f8551291316b5446121f2735d9347
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003459"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206583"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>教學課程：將 Power BI 與文字分析認知服務整合
 
@@ -34,9 +34,9 @@ Microsoft Power BI Desktop 是免費的應用程式，可讓您將您的資料�
 <a name="Prerequisites"></a>
 
 - Microsoft Power BI Desktop。 [免費下載](https://powerbi.microsoft.com/get-started/)。
-- Microsoft Azure 帳戶。 [開始免費試用](https://azure.microsoft.com/free/)或[登入](https://portal.azure.com/)。
+- Microsoft Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)或[登入](https://portal.azure.com/)。
 - 具有文字分析 API 的認知服務 API 帳戶。 如果您沒有帳戶，可以[註冊](../../cognitive-services-apis-create-account.md)並使用免費層提供的 5,000 筆交易/月 (請參閱[定價詳細資料](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)以完成此教學課程)。
-- 您在註冊過程中為您產生的[文字分析存取金鑰](../how-tos/text-analytics-how-to-access-key.md)。
+- 您在註冊過程中為您產生的[文字分析存取金鑰](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)。
 - 客戶評論。 您可以使用[我們的範例資料](https://aka.ms/cogsvc/ta)，或是自己的資料。 此教學課程假設您使用我們的範例資料。
 
 ## <a name="load-customer-data"></a>載入客戶資料
@@ -91,7 +91,7 @@ Microsoft Power BI Desktop 是免費的應用程式，可讓您將您的資料�
 
 文字分析服務的[關鍵片語 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) 可針對每個 HTTP 要求處理多達一千個文字文件。 Power BI 偏好一次處理一個記錄，所以在此教學課程中，您對 API 的呼叫每次只會包含單一文件。 關鍵片語 API 要求所處理的每個文件都必須具有下列欄位。
 
-| | |
+| 欄位 | 描述 |
 | - | - |
 | `id`  | 這個文件在要求中的唯一識別碼。 回應中也會包含此欄位。 如此一來，如果您處理多份文件，就可以輕鬆地將擷取到的關鍵片語關聯至其來源文件。 在此教學課程中，因為您針對每個要求只會處理一個文件，您可以針對每個要求將 `id` 的值以硬式編碼設為相同的值。|
 | `text`  | 要處理的文字。 此欄位的值來自您在[前一節](#PreparingData)中建立的 `Merged` 資料行，其中包含了結合的主旨行與評論文字。 關鍵片語 API 要求這項資料的長度不得超過約 5,120 個字元。|
@@ -103,7 +103,7 @@ Microsoft Power BI Desktop 是免費的應用程式，可讓您將您的資料�
 現在，您已經準備好建立自訂函式，以整合 Power BI 與文字分析。 函式會收到要處理為參數的文字。 它會將資料轉換為所需的 JSON 格式 (以及反向轉換)，並對關鍵片語 API 提出 HTTP 要求。 接著，函式會剖析來自 API 的回應並傳回字串，其中包含所擷取關鍵片語的逗點分隔值清單。
 
 > [!NOTE]
-> Power BI Desktop 自訂函式會以 [Power Query M 公式語言](https://msdn.microsoft.com/library/mt211003.aspx) (簡稱 "M") 來撰寫。 M 是以 [F#](https://docs.microsoft.com/dotnet/fsharp/) 為基礎的功能性程式設計語言。 不過，不是程式設計師也能完成本教學課程；下面有所需的程式碼。
+> Power BI Desktop 自訂函式會以 [Power Query M 公式語言](https://docs.microsoft.com/powerquery-m/power-query-m-reference) (簡稱 "M") 來撰寫。 M 是以 [F#](https://docs.microsoft.com/dotnet/fsharp/) 為基礎的功能性程式設計語言。 不過，不是程式設計師也能完成本教學課程；下面有所需的程式碼。
 
 在 Power BI Desktop 中，確定您仍在 [查詢編輯器] 視窗中。 如果不是，請選取 [常用] 功能區，按一下 [外部資料] 群組中的 [編輯查詢]。
 
@@ -114,13 +114,14 @@ Microsoft Power BI Desktop 是免費的應用程式，可讓您將您的資料�
 現在，按一下 [常用] 功能區 [查詢] 群組中的 [進階編輯器]，以開啟 [進階編輯器] 視窗。 刪除該視窗中已有的程式碼，然後貼上下列程式碼。 
 
 > [!NOTE]
-> 下列範例假設文字分析 API 端點是以 `https://westus.api.cognitive.microsoft.com` 開頭。 文字分析允許您在 13 個不同區域中建立訂用帳戶。 如果您已在不同區域註冊服務，請務必使用所選區域的端點。 您可以透過登入 [Azure 入口網站](https://azure.microsoft.com/features/azure-portal/)，選取您的文字分析訂用帳戶，然後選取 [概觀] 頁面來找到此端點。
+> 將以下的範例端點 (包含 `<your-custom-subdomain>`) 取代為針對文字分析資源所產生的端點。 您可以透過登入 [Azure 入口網站](https://azure.microsoft.com/features/azure-portal/)，選取您的文字分析訂用帳戶，然後選取 `Quick start` 來找到此端點。
+
 
 ```fsharp
 // Returns key phrases from the text in a comma-separated list
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics" & "/v2.1/keyPhrases",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -144,7 +145,7 @@ in  keyphrases
 
 [叫用自訂函數] 對話方塊隨即出現。 在 [新資料行名稱] 中，輸入 `keyphrases`。 在 [函數查詢] 中，選取您建立的自訂函式 `KeyPhrases`。
 
-對話方塊中會出現新的欄位 **text (optional)**。 此欄位是我們要使用哪一個資料行，針對關鍵片語 API 的 `text` 參數提供值。 (請記住，您已經以硬式編碼方式編寫 `language` 與 `id` 參數的值)。從下拉式功能表選取`Merged` (我們[稍早](#PreparingData)透過合併主旨與訊息欄位所建立的資料行)。
+對話方塊中會出現新的欄位 **text (optional)** 。 此欄位是我們要使用哪一個資料行，針對關鍵片語 API 的 `text` 參數提供值。 (請記住，您已經以硬式編碼方式編寫 `language` 與 `id` 參數的值)。從下拉式功能表選取`Merged` (我們[稍早](#PreparingData)透過合併主旨與訊息欄位所建立的資料行)。
 
 ![[叫用自訂函式]](../media/tutorials/power-bi/invoke-custom-function.png)
 
@@ -164,7 +165,8 @@ in  keyphrases
 > [!NOTE]
 > 選取 `Anonymous` 是因為文字分析服務會透過您使用的存取金鑰驗證您的身分，因此 Power BI 不需要為 HTTP 要求本身提供認證。
 
-![[將驗證設定為匿名]](../media/tutorials/power-bi/access-web-content.png)
+> [!div class="mx-imgBorder"]
+> ![[將驗證設定為匿名]](../media/tutorials/power-bi/access-web-content.png)
 
 如果選擇匿名存取之後仍看到 [編輯認證] 橫幅，您可能忘了將文字分析存取金鑰貼入 `KeyPhrases` [自訂函式](#CreateCustomFunction)的程式碼中。
 
@@ -188,7 +190,7 @@ Power BI Desktop 需要一點時間來提出必要的 HTTP 要求。 在資料�
 > [!NOTE]
 > 為何要使用所擷取的關鍵片語來產生文字雲，而不是使用每個評論的完整文字？ 關鍵片語可為我們提供客戶評論中的「重要」文字，而不只是「最常見的」文字。 此外，在產生的文字雲中，文字大小也不會因為相對少數的評論中頻繁使用某個文字而受到影響。
 
-如果您尚未安裝文字雲自訂視覺效果，請加以安裝。 在工作區右邊的 [視覺效果] 窗格中，按一下三個點 (**...**)，然後選擇 [從存放區匯入]。 然後搜尋「雲」，並按一下文字雲視覺效果旁的 [新增] 按鈕。 Power BI 會安裝文字雲視覺效果，並讓您知道它已成功安裝。
+如果您尚未安裝文字雲自訂視覺效果，請加以安裝。 在工作區右邊的 [視覺效果] 窗格中，按一下三個點 ( **...** )，然後選擇 [從存放區匯入]。 然後搜尋「雲」，並按一下文字雲視覺效果旁的 [新增] 按鈕。 Power BI 會安裝文字雲視覺效果，並讓您知道它已成功安裝。
 
 ![[新增自訂視覺效果]](../media/tutorials/power-bi/add-custom-visuals.png)<br><br>
 
@@ -223,7 +225,7 @@ Power BI Desktop 需要一點時間來提出必要的 HTTP 要求。 在資料�
 // Returns the sentiment score of the text, from 0.0 (least favorable) to 1.0 (most favorable)
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/sentiment",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -240,7 +242,7 @@ in  sentiment
 // Returns the two-letter language code (for example, 'en' for English) of the text
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/languages",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -254,7 +256,7 @@ in  language
 // Returns the name (for example, 'English') of the language in which the text is written
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/languages",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -274,7 +276,7 @@ in  language
 // Returns key phrases from the text as a list object
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/keyPhrases",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -294,7 +296,7 @@ in  keyphrases
 > [文字分析 API 參考](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6)
 
 > [!div class="nextstepaction"]
-> [Power Query M 參考](https://msdn.microsoft.com/library/mt211003.aspx)
+> [Power Query M 參考](https://docs.microsoft.com/powerquery-m/power-query-m-reference)
 
 > [!div class="nextstepaction"]
 > [Power BI 文件](https://powerbi.microsoft.com/documentation/powerbi-landing-page/)

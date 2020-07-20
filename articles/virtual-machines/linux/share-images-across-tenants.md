@@ -1,30 +1,33 @@
 ---
-title: 在 Azure 中的租用戶之間共用資源庫映像 |Microsoft Docs
-description: 了解如何使用共用映像資源庫的 Azure 租用戶之間共用的 VM 映像。
-services: virtual-machines-linux
-author: cynthn
-manager: jeconnoc
-ms.service: virtual-machines-linux
+title: 在 Azure 中跨租使用者共用資源庫映射
+description: 瞭解如何使用共用映射資源庫跨 Azure 租使用者共用 VM 映射。
+author: axayjo
+ms.service: virtual-machines
+ms.subservice: imaging
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
-ms.date: 04/05/2019
-ms.author: cynthn
-ms.openlocfilehash: 1578ba840c6dca93feb68754863439811d7ef099
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.topic: how-to
+ms.date: 05/04/2019
+ms.author: akjosh
+ms.reviewer: cynthn
+ms.openlocfilehash: 6560bf452f04ae5d88168b8d3fad300feb90b16f
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65158726"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220519"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>在 Azure 租用戶之間共用資源庫的 VM 映像
+# <a name="share-gallery-vm-images-across-azure-tenants"></a>跨 Azure 租使用者共用資源庫 VM 映射
+
+共用映射資源庫可讓您使用 RBAC 共用影像。 您可以使用 RBAC，在租使用者中共用映射，甚至是租使用者外部的個人。 如需這個簡單共用選項的詳細資訊，請參閱[共用資源庫](/azure/virtual-machines/linux/shared-images-portal#share-the-gallery)。
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
+> [!IMPORTANT]
+> 您無法使用入口網站，從另一個 azure 租使用者中的映射部署 VM。 若要從租使用者之間共用的映射建立 VM，您必須使用 Azure CLI 或[Powershell](../windows/share-images-across-tenants.md)。
 
 ## <a name="create-a-vm-using-azure-cli"></a>使用 Azure CLI 建立 VM
 
-登入租用戶使用 appID、 應用程式金鑰和租用戶 1 的識別碼 1 的服務主體。 您可以使用`az account show --query "tenantId"`取得租用戶識別碼，如有需要。
+使用 appID、應用程式金鑰和租使用者1的識別碼，登入租使用者1的服務主體。 如有需要，您可以使用 `az account show --query "tenantId"` 來取得租使用者識別碼。
 
 ```azurecli-interactive
 az account clear
@@ -32,14 +35,14 @@ az login --service-principal -u '<app ID>' -p '<Secret>' --tenant '<tenant 1 ID>
 az account get-access-token 
 ```
  
-登入租用戶使用 appID、 應用程式金鑰和租用戶 2 的識別碼 2 的服務主體：
+使用 appID、應用程式金鑰和租使用者2的識別碼，登入租使用者2的服務主體：
 
 ```azurecli-interactive
 az login --service-principal -u '<app ID>' -p '<Secret>' --tenant '<tenant 2 ID>'
 az account get-access-token
 ```
 
-建立 VM。 使用您自己取代範例中的資訊。
+建立 VM。 以您自己的方式取代範例中的資訊。
 
 ```azurecli-interactive
 az vm create \

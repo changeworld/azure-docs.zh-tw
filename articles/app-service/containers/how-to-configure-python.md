@@ -1,26 +1,16 @@
 ---
-title: 設定 Python 應用程式 - Azure App Service
-description: 本教學課程說明可針對 Linux 上的 Azure App Service 編寫和設定 Python 應用程式的選項。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: 設定 Linux Python 應用程式
+description: 了解如何為您的應用程式設定預先建置的 Python 容器。 本文說明最常見的設定工作。
 ms.topic: quickstart
 ms.date: 03/28/2019
-ms.author: astay;cephalin;kraigb
-ms.custom: seodec18
-ms.openlocfilehash: 7bbbe9629404733a76064d270480a0e162e2612b
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.reviewer: astay; kraigb
+ms.custom: mvc, seodec18, tracking-python
+ms.openlocfilehash: 94398c90f820b0e08ea8d4f0a492d96ba8039631
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919871"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905610"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>設定適用於 Azure App Service 的 Linux Python 應用程式
 
@@ -58,9 +48,31 @@ az webapp list-runtimes --linux | grep PYTHON
 az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "PYTHON|3.7"
 ```
 
+## <a name="customize-build-automation"></a>自訂組建自動化
+
+如果您使用 Git 或 zip 套件並開啟組建自動化來部署應用程式，App Service 組建自動化將會依下列順序逐步執行：
+
+1. 執行自訂指令碼 (如果 `PRE_BUILD_SCRIPT_PATH` 已指定)。
+1. 執行 `pip install -r requirements.txt`。
+1. 如果在存放庫的根目錄位於 *manage.py* 中，請執行 *manage.py collectstatic*。 但若 `DISABLE_COLLECTSTATIC` 設定為 `true`，則可略過此步驟。
+1. 執行自訂指令碼 (如果 `POST_BUILD_SCRIPT_PATH` 已指定)。
+
+`PRE_BUILD_COMMAND`、`POST_BUILD_COMMAND` 和 `DISABLE_COLLECTSTATIC` 是預設為空值的環境變數。 若要執行建置前命令，請定義 `PRE_BUILD_COMMAND`。 若要執行建置後命令，請定義 `POST_BUILD_COMMAND`。 若要停用在建置 Django 應用程式時執行 collectstatic 的功能，請設定 `DISABLE_COLLECTSTATIC=true`。
+
+下列範例會將兩個變數指定給一系列的命令 (以逗號分隔)。
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+若要了解其他可自訂組建自動化的環境變數，請參閱 [Oryx 設定](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)。
+
+若要深入了解 App Service 如何在 Linux 中執行和建置 Python 應用程式，請參閱 [Oryx 文件：如何偵測和建置 Python 應用程式](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/python.md)。
+
 ## <a name="container-characteristics"></a>容器的特性
 
-部署至 Linux 上 App Service 的 Python 應用程式，會在 GitHub 存放庫 ([Python 3.6](https://github.com/Azure-App-Service/python/tree/master/3.6.6) 或 [Python 3.7](https://github.com/Azure-App-Service/python/tree/master/3.7.0)) 中所定義的 Docker 容器內執行。
+Python 應用程式部署至 Linux 上的 App Service 後，則會在 [App Service Python GitHub 存放庫](https://github.com/Azure-App-Service/python)中所定義的 Docker 容器內執行。 您可以在屬於特定版本的目錄內找到映像設定。
 
 此容器具有下列特性︰
 
@@ -119,7 +131,7 @@ gunicorn --bind=0.0.0.0 --timeout 600 app:app
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
 ```
 
-例如，如果您擁有的 Flask 應用程式，而其主要模組是 *hello.py*，且該檔案中的 Flask 應用程式物件名為 `myapp`，則 *\<custom-command>* 如下所示：
+例如，如果您擁有的是 Flask 應用程式，而其主要模組是 *hello.py*，且該檔案中的 Flask 應用程式物件名為 `myapp`，則 *\<custom-command>* 如下所示：
 
 ```bash
 gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -133,7 +145,7 @@ gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 
 您也可以對 *\<custom-command>* 新增任何額外的 Gunicorn 引數，例如 `--workers=4`。 如需詳細資訊，請參閱[執行 Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org)。
 
-若要使用非 Gunicorn 伺服器，例如 [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html)，您可以使用以下內容取代 *\<custom-command>*：
+若要使用非 Gunicorn 伺服器，例如 [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html)，您可以使用以下內容取代 *\<custom-command>* ：
 
 ```bash
 python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
@@ -144,7 +156,7 @@ python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
 
 ## <a name="access-environment-variables"></a>存取環境變數
 
-在 App Service 中，您可以於應用程式的程式碼外部[設定應用程式設定](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings)。 然後，您可以使用標準的 [os.environ](https://docs.python.org/3/library/os.html#os.environ) 模式來存取這些設定。 例如，若要存取稱為 `WEBSITE_SITE_NAME` 的應用程式設定，請使用下列程式碼：
+在 App Service 中，您可以於應用程式的程式碼外部[設定應用程式設定](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。 然後，您可以使用標準的 [os.environ](https://docs.python.org/3/library/os.html#os.environ) 模式來存取這些設定。 例如，若要存取稱為 `WEBSITE_SITE_NAME` 的應用程式設定，請使用下列程式碼：
 
 ```python
 os.environ['WEBSITE_SITE_NAME']
@@ -163,7 +175,7 @@ if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto
 
 ## <a name="access-diagnostic-logs"></a>存取診斷記錄
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="open-ssh-session-in-browser"></a>在瀏覽器中開啟 SSH 工作階段
 

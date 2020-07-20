@@ -3,23 +3,25 @@ title: 快速入門：Cassandra API 與 .NET - Azure Cosmos DB
 description: 本快速入門示範如何使用 Azure Cosmos DB Cassandra API，以使用 Azure 入口網站和 .NET 建立設定檔應用程式
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-author: SnehaGunda
-ms.author: sngun
+author: TheovanKraay
+ms.author: thvankra
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 2e43b2d6f5a127f7f0f81c2dfc2fd3737c9ee787
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 05/18/2020
+ms.openlocfilehash: 88ec29ef1a0c0766a6c50af218e66f5fec3b9087
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880257"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118418"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>快速入門：使用 .NET SDK 和 Azure Cosmos DB 建置 Cassandra 應用程式
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
-> * [Java](create-cassandra-java.md)
+> * [.NET Core](create-cassandra-dotnet-core.md)
+> * [Java v3](create-cassandra-java.md)
+> * [Java v4](create-cassandra-java-v4.md)
 > * [Node.js](create-cassandra-nodejs.md)
 > * [Python](create-cassandra-python.md)
 >  
@@ -33,7 +35,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]或者，您可以[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，無須 Azure 訂用帳戶，也無須任何費用和約定付款。
 
 此外，您需要： 
-* 如果尚未安裝 Visual Studio 2017，您可以下載並使用「免費的」[Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 務必在 Visual Studio 設定期間啟用 **Azure 開發**。
+* 如果尚未安裝 Visual Studio 2019，您可以下載並使用**免費**的 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 務必在 Visual Studio 設定期間啟用 **Azure 開發**。
 * 安裝 [Git](https://www.git-scm.com/) 來複製範例。
 
 <a id="create-account"></a>
@@ -118,35 +120,35 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取 [連接字串]。
 
-    使用 ![[複製] 按鈕](./media/create-cassandra-dotnet/copy.png) 位於螢幕右側的按鈕來複製 [使用者名稱] 值。
+1. 使用 ![[複製] 按鈕](./media/create-cassandra-dotnet/copy.png) 位於螢幕右側的按鈕來複製 [使用者名稱] 值。
 
-    ![在 Azure 入口網站 [連接字串] 頁面中檢視及複製存取金鑰](./media/create-cassandra-dotnet/keys.png)
+   :::image type="content" source="./media/create-cassandra-dotnet/keys.png" alt-text="在 Azure 入口網站 [連接字串] 頁面中檢視及複製存取金鑰":::
 
-2. 在 Visual Studio 2017 中，開啟 Program.cs 檔案。 
+1. 在 Visual Studio 中，開啟 Program.cs 檔案。 
 
-3. 從入口網站將 [使用者名稱] 值貼到 `<FILLME>` 的行 13。
+1. 從入口網站將 [使用者名稱] 值貼到 `<FILLME>` 的行 13。
 
     Program.cs 的行 13 現應如下所示 
 
     `private const string UserName = "cosmos-db-quickstart";`
 
-3. 返回入口網站，並複製 [密碼] 值。 從入口網站將 [密碼] 值貼到 `<FILLME>` 的行 14。
+1. 返回入口網站，並複製 [密碼] 值。 從入口網站將 [密碼] 值貼到 `<FILLME>` 的行 14。
 
     Program.cs 的行 14 現應如下所示 
 
     `private const string Password = "2Ggkr662ifxz2Mg...==";`
 
-4. 返回入口網站，並複製 [連絡點] 值。 從入口網站將 [連絡點] 值貼到 `<FILLME>` 的行 15。
+1. 返回入口網站，並複製 [連絡點] 值。 從入口網站將 [連絡點] 值貼到 `<FILLME>` 的行 15。
 
     Program.cs 的行 15 現應如下所示 
 
     `private const string CassandraContactPoint = "cosmos-db-quickstarts.cassandra.cosmosdb.azure.com"; //  DnsName`
 
-5. 儲存 Program.cs 檔案。
+1. 儲存 Program.cs 檔案。
     
 ## <a name="run-the-net-app"></a>執行 .NET 應用程式
 
-1. 在 Visual Studio 中，選取 [工具]  >  [NuGet 套件管理員]  >  [套件管理員主控台]。
+1. 在 Visual Studio 中，選取 [工具] >  [NuGet 套件管理員] >  [套件管理員主控台]。
 
 2. 在命令提示字元中，使用下列命令來安裝 .NET 驅動程式的 NuGet 套件。 
 
@@ -155,13 +157,13 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
     ```
 3. 按 CTRL + F5 來執行應用程式。 您的應用程式會顯示在主控台視窗中。 
 
-    ![檢視並確認輸出](./media/create-cassandra-dotnet/output.png)
+    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="檢視並確認輸出":::
 
     按 CTRL + C 來停止執行程式，並關閉主控台視窗。 
     
 4. 在 Azure 入口網站中，開啟 [資料總管] 以查詢、修改及使用這個新資料。
 
-    ![在資料總管中檢視資料](./media/create-cassandra-dotnet/data-explorer.png)
+    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="在資料總管中檢視資料":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 入口網站中檢閱 SLA
 

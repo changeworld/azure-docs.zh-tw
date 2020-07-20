@@ -1,29 +1,27 @@
 ---
-title: 操作員最佳做法 - Azure Kubernetes Services (AKS) 中的網路連線
+title: 網路資源的最佳作法
+titleSuffix: Azure Kubernetes Service
 description: 了解叢集操作員在 Azure Kubernetes Service (AKS) 中使用虛擬網路資源和進行連線時的最佳做法
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.author: iainfou
-ms.openlocfilehash: b26af87de8a09f987d69f0441a817638e626b4af
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 560a832821f5e5ff2fbbc2d66252945951d69511
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192225"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82208052"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中的網路連線和安全性最佳做法
 
 當您在 Azure Kubernetes Service (AKS) 中建立及管理叢集時，您會為節點和應用程式提供網路連線。 這些網路資源包括 IP 位址範圍、負載平衡器和輸入控制器。 若要維持高品質的應用程式服務，您需要規劃並設定這些資源。
 
-此最佳做法文章著重於叢集操作員的網路連線能力和安全性。 在本文中，您將了解：
+此最佳做法文章著重於叢集操作員的網路連線能力和安全性。 在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 比較 AKS 中的 Kubenet 和 Azure CNI 網路模式
 > * 規劃所需的 IP 位址和連線能力
-> * 使用負載平衡器、輸入控制器或 Web 應用程式防火牆 (WAF) 來分配流量
+> * 使用負載平衡器、輸入控制器或 web 應用程式防火牆（WAF）來散發流量
 > * 安全地連線到叢集節點
 
 ## <a name="choose-the-appropriate-network-model"></a>選擇適當的網路模型
@@ -45,9 +43,9 @@ ms.locfileid: "65192225"
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
-如需有關 AKS 服務主體委派的詳細資訊，請參閱[委派其他 Azure 資源的存取權][sp-delegation]。
+如需有關 AKS 服務主體委派的詳細資訊，請參閱[委派其他 Azure 資源的存取權][sp-delegation]。 您也可以使用系統指派的受控識別來取得權限，取代服務主體。 如需詳細資訊，請參閱[使用受控識別](use-managed-identity.md)。
 
-當每個節點和 Pod 收到自己的 IP 位址時，請規劃 AKS 子網路的位址範圍。 子網路必須夠大，才能為您部署的每個節點、Pod 和網路資源提供 IP 位址。 每個 AKS 叢集必須放在自己的子網路中。 若要在 Azure 中允許對內部部署或對等互連網路進行連線，請不要使用與現有網路資源重疊的 IP 位址範圍。 Kubenet 和 Azure CNI 網路功能都有預設每個節點可執行的 Pod 數目限制。 若要處理相應增加事件或叢集升級，您也需要其他可在所指派子網路中使用的 IP 位址。
+當每個節點和 Pod 收到自己的 IP 位址時，請規劃 AKS 子網路的位址範圍。 子網路必須夠大，才能為您部署的每個節點、Pod 和網路資源提供 IP 位址。 每個 AKS 叢集必須放在自己的子網路中。 若要在 Azure 中允許對內部部署或對等互連網路進行連線，請不要使用與現有網路資源重疊的 IP 位址範圍。 Kubenet 和 Azure CNI 網路功能都有預設每個節點可執行的 Pod 數目限制。 若要處理相應放大事件或叢集升級，您也需要可在指派的子網中使用的其他 IP 位址。 如果您使用 Windows Server 容器，此額外的位址空間特別重要，因為這些節點集區需要升級才能套用最新的安全性修補程式。 如需 Windows Server 節點的詳細資訊，請參閱[升級 AKS 中的節點集][nodepool-upgrade]區。
 
 若要計算所需的 IP 位址，請參閱[在 AKS 中設定 Azure CNI 網路功能][advanced-networking]。
 
@@ -70,10 +68,10 @@ Azure 負載平衡器可以將客戶流量分散到 AKS 叢集中的應用程式
 
  輸入有兩個元件：
 
- * 輸入「資源」，以及
- * 輸入「控制器」
+ * 輸入「資源」**，以及
+ * 輸入「控制器」**
 
-輸入資源是 `kind: Ingress` 的 YAML資訊清單，用來定義主機、憑證及規則，以將流量路由至在您 AKS 叢集中執行的服務。 下列 YAML 資訊清單範例會將 myapp.com 的流量分散到以下兩個服務的其中一個：blogservice 或 storeservice。 系統會根據客戶存取的 URL，將他們導向其中一個服務。
+輸入資源是 `kind: Ingress` 的 YAML資訊清單，用來定義主機、憑證及規則，以將流量路由至在您 AKS 叢集中執行的服務。 下列 YAML 資訊清單範例會將 myapp.com** 的流量分散到以下兩個服務的其中一個：blogservice** 或 storeservice**。 系統會根據客戶存取的 URL，將他們導向其中一個服務。
 
 ```yaml
 kind: Ingress
@@ -101,6 +99,8 @@ spec:
 
 輸入控制器是在 AKS 節點上執行的精靈，可監控傳入要求。 接著，流量會根據輸入資源中所定義的規則來分配。 最常見的輸入控制器是以 [NGINX] 為基礎。 AKS 不會限制您使用特定控制器，因此您可以使用 [Contour][contour]、[HAProxy][haproxy] 或 [Traefik][traefik] 等其他控制器。
 
+必須在 Linux 節點上排程輸入控制器。 Windows Server 節點不應執行輸入控制器。 在您的 YAML 資訊清單或 Helm 圖表部署中使用節點選取器，以指出資源應該在以 Linux 為基礎的節點上執行。 如需詳細資訊，請參閱[使用節點選取器來控制 AKS 中的 pod 排程位置][concepts-node-selectors]。
+
 有許多適用輸入的案例，包括下列的使用說明指南：
 
 * [建立具有外部網路連線的基本輸入控制器][aks-ingress-basic]
@@ -110,13 +110,13 @@ spec:
 
 ## <a name="secure-traffic-with-a-web-application-firewall-waf"></a>使用 Web 應用程式防火牆 (WAF) 來保護流量
 
-**最佳做法指引** - 若要掃描傳入的流量以查看是否有潛在攻擊，請使用 Web 應用程式防火牆 (WAF)，例如，[適用於 Azure 的 Barracuda WAF][barracuda-waf] 或 Azure 應用程式閘道。 這些更進階的網路資源也可以路由流量，並非僅限 HTTP 和 HTTPS 連線或是基本 SSL 終止。
+**最佳做法指引** - 若要掃描傳入的流量以查看是否有潛在攻擊，請使用 Web 應用程式防火牆 (WAF)，例如，[適用於 Azure 的 Barracuda WAF][barracuda-waf] 或 Azure 應用程式閘道。 這些更先進的網路資源也可以將流量路由傳送到 HTTP 和 HTTPS 連線或基本 TLS 終止以外。
 
 將流量分散到服務和應用程式的輸入控制器通常是您 AKS 叢集中的 Kubernetes 資源。 控制器會以精靈形式執行於 AKS 節點上，並取用一些節點的資源，例如 CPU、記憶體和網路頻寬。 在較大型的環境中，您通常會想要卸載一些此流量路由或 TLS 終止至 AKS 叢集外部的網路資源。 並且想掃描傳入的流量以查看是否有潛在攻擊。
 
 ![Azure 應用程式閘道等 Web 應用程式防火牆 (WAF) 可以保護並分散您 AKS 叢集的流量](media/operator-best-practices-network/web-application-firewall-app-gateway.png)
 
-Web 應用程式防火牆 (WAF) 會藉由篩選傳入流量來提供額外一層安全性。 Open Web Application Security Project (OWASP) 會提供一組規則來監看是否有跨網站指令碼或 Cookie 篡改等攻擊。 [Azure 应用程序网关][app-gateway]（目前在 AKS 中预览）是一种 WAF，可在流量到达 AKS 群集和应用程序之前与 AKS 群集集成以提供这些安全功能。 其他第三方解決方案也會執行這些功能，因此您可以在指定產品中繼續使用現有的投資或專業技術。
+Web 應用程式防火牆 (WAF) 會藉由篩選傳入流量來提供額外一層安全性。 Open Web Application Security Project (OWASP) 會提供一組規則來監看是否有跨網站指令碼或 Cookie 篡改等攻擊。 [Azure 應用程式閘道][app-gateway]（目前在 AKS 中處於預覽狀態）是 WAF，可以與 AKS 叢集整合以提供這些安全性功能，然後才會到達您的 AKS 叢集和應用程式。 其他第三方解決方案也會執行這些功能，因此您可以在指定產品中繼續使用現有的投資或專業技術。
 
 負載平衡器或輸入資源會繼續在您的 AKS 叢集執行，以進一步精簡流量分配。 您可以使用資源定義，將應用程式閘道當作輸入控制器來集中管理。 若要開始使用，[請建立應用程式閘道輸入控制器][app-gateway-ingress]。
 
@@ -124,9 +124,9 @@ Web 應用程式防火牆 (WAF) 會藉由篩選傳入流量來提供額外一層
 
 **最佳作法指引** - 使用網路原則允許或拒絕 Pod 的流量。 根據預設，叢集中的 Pod 之間允許所有流量。 為了提升安全性，請定義限制 Pod 通訊的規則。
 
-網路原則是一種 Kubernetes 功能，可讓您控制 Pod 之間的流量。 您可以根據指派的標籤、命名空間或流量連接埠等設定，選擇允許或拒絕流量。 使用網路原則提供了一種雲端原生方法來控制流量的流程。 由於在 AKS 叢集中動態建立 Pod，因此可以自動套用所需的網路原則。 請勿使用 Azure 網路安全性群組來控制 pod-to-pod 流量，請使用網路原則。
+網路原則是一種 Kubernetes 功能，可讓您控制 Pod 之間的流量。 您可以根據指派的標籤、命名空間或流量連接埠等設定，選擇允許或拒絕流量。 使用網路原則提供了一種雲端原生方法來控制流量的流程。 由於 Pod 是在 AKS 叢集內以動態方式建立的，因此可以自動套用所需的網路原則。 請勿使用 Azure 網路安全性群組來控制 pod-to-pod 流量，請使用網路原則。
 
-若要使用網路原則，必須在建立 AKS 叢集時啟用該功能。 您無法在現有的 AKS 叢集上啟用網路原則。 事先規劃以確保在叢集上啟用網路原則，並可以視需要使用它們。
+若要使用網路原則，必須在建立 AKS 叢集時啟用該功能。 您無法在現有的 AKS 叢集上啟用網路原則。 事先規劃以確保在叢集上啟用網路原則，並可以視需要使用它們。 網路原則只應用於 AKS 中的 Linux 型節點和 Pod。
 
 使用 YAML 資訊清單將網路原則建立為 Kubernetes 資源。 原則會套用至已定義的 Pod，然後輸入或輸出規則可定義流量的流動方式。 下列範例將網路原則套用至已套用 *app: backend* 標籤的 Pod。 然後，輸入規則僅允許來自具有 *app: frontend* 標籤的 Pod 的流量：
 
@@ -186,3 +186,5 @@ AKS 中的大部分作業都可使用 Azure 管理工具或透過 Kubernetes API
 [use-network-policies]: use-network-policies.md
 [advanced-networking]: configure-azure-cni.md
 [aks-configure-kubenet-networking]: configure-kubenet.md
+[concepts-node-selectors]: concepts-clusters-workloads.md#node-selectors
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

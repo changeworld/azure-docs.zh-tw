@@ -4,21 +4,19 @@ description: 了解如何在 Azure 中使用 Azure PowerShell 將 OS 磁碟連�
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: jeconnoc
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: d28710bf249bd940ae9d685560e9f7140234e3a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 66cda98f272e7353b620059a731972714db585ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60318709"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75374127"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>使用 Azure PowerShell 將 OS 磁碟連結至復原 VM，以針對 Windows VM 進行疑難排解
 如果 Azure 中的 Windows 虛擬機器 (VM) 發生開機或磁碟錯誤，您可能需要對磁碟本身執行疑難排解步驟。 常見的例子是應用程式更新無效，導致 VM 無法成功開機。 本文詳細說明如何使用 Azure PowerShell 將磁碟連接至另一部 Windows VM，以修正任何錯誤，然後重新建立原始 VM。 
@@ -26,7 +24,7 @@ ms.locfileid: "60318709"
 > [!Important]
 > 本文中的指令碼只適用於使用[受控磁碟](../windows/managed-disks-overview.md)的 VM。 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="recovery-process-overview"></a>復原程序概觀
 我們現在可以使用 Azure PowerShell 來變更 VM 的 OS 磁碟。 我們不再需要刪除及重新建立虛擬機器。
@@ -41,7 +39,7 @@ ms.locfileid: "60318709"
 6. 從復原 VM 取消掛接磁碟並中斷其連結。
 7. 變更受影響 VM 的 OS 磁碟。
 
-您可以使用 VM 復原指令碼，將步驟 1、2、3、4、6 和 7 自動化。 如需詳細的文件和指示，請參閱 [Resource Manager VM 的 VM 復原指令碼](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager) (英文)。
+您可以使用 VM 修復命令，將步驟1、2、3、4、6和7自動化。 如需詳細檔和指示，請參閱[使用 Azure 虛擬機器修復命令修復 WINDOWS VM](repair-windows-vm-using-azure-virtual-machine-repair-commands.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 確定您已安裝[最新的 Azure PowerShell](/powershell/azure/overview) 並登入您的訂用帳戶。
 
@@ -126,8 +124,8 @@ $diskName = 'newOSDisk'
 #Provide the size of the disks in GB. It should be greater than the VHD file size.
 $diskSize = '128'
 
-#Provide the storage type for Managed Disk. PremiumLRS or StandardLRS.
-$storageType = 'StandardLRS'
+#Provide the storage type for Managed Disk. Premium_LRS or Standard_LRS.
+$storageType = 'Standard_LRS'
 
 #Provide the Azure region (e.g. westus) where Managed Disks will be located.
 #This location should be same as the snapshot location
@@ -259,4 +257,4 @@ Update-AzVM -ResourceGroup "myResourceGroup" -VM $myVM
 ## <a name="next-steps"></a>後續步驟
 如果連接至 VM 時發生問題，請參閱[針對 Azure VM 的 RDP 連接進行疑難排解](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 如果存取 VM 上執行的應用程式時發生問題，請參閱[針對 Windows VM 上的應用程式連線問題進行疑難排解](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-如需使用 Resource Manager 的詳細資訊，請參閱 [Azure Resource Manager 概觀](../../azure-resource-manager/resource-group-overview.md)。
+如需使用 Resource Manager 的詳細資訊，請參閱 [Azure Resource Manager 概觀](../../azure-resource-manager/management/overview.md)。

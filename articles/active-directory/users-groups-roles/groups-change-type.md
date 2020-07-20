@@ -1,26 +1,24 @@
 ---
-title: 將靜態群組成員資格類型變更為動態 - Azure Active Directory | Microsoft Docs
+title: 將靜態群組成員資格變更為動態 Azure AD |Microsoft Docs
 description: 如何建立成員資格規則，以自動填入群組和規則參考。
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
-ms.date: 03/18/2019
+ms.topic: how-to
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd753ca4994975302a0bc6fede61964f80196d7c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 05bcf589e685d0a35a58bb1e8069a6ce3699b61c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60472039"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84728379"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>在 Azure Active Directory 中將靜態群組成員資格變更為動態
 
@@ -33,24 +31,24 @@ ms.locfileid: "60472039"
 
 ## <a name="change-the-membership-type-for-a-group"></a>變更群組的成員資格類型
 
-1. 登入[Azure AD 系統管理中心](https://aad.portal.azure.com)是全域管理員或使用者系統管理員在您的租用戶中的帳戶。
-2. 選取 [群組]。
-3. 從 [所有群組] 清單中，開啟您想要變更的群組。
+1. 使用您 Azure AD 組織中全域管理員或使用者系統管理員的帳戶登入[Azure AD 系統管理中心](https://aad.portal.azure.com)。
+2. 選取 [**群組**]。
+3. 從 [所有群組]**** 清單中，開啟您想要變更的群組。
 4. 選取 [屬性] 。
-5. 在群組的 [屬性] 頁面上，依據您所需的成員資格類型，選取 [已指派] (靜態)、[動態使用者] 或 [動態裝置] 作為 [成員資格類型]。 針對動態成員資格，您可以使用規則建立器來選取簡單規則的選項，或自行撰寫成員資格規則。 
+5. 在群組的 [屬性]**** 頁面上，依據您所需的成員資格類型，選取 [已指派] (靜態)、[動態使用者] 或 [動態裝置] 作為 [成員資格類型]****。 針對動態成員資格，您可以使用規則建立器來選取簡單規則的選項，或自行撰寫成員資格規則。 
 
 下列步驟是針對某個使用者群組將群組從靜態變更為動態成員資格的範例。
 
-1. 在所選群組的 [屬性] 上，選取 [動態使用者] 作為 [成員資格類型]，然後在說明群組成員資格變更的對話方塊上，選取 [是] 以繼續。 
+1. 在所選群組的 [屬性]**** 上，選取 [動態使用者]**** 作為 [成員資格類型]****，然後在說明群組成員資格變更的對話方塊上，選取 [是] 以繼續。 
   
    ![選取動態使用者作為成員資格類型](./media/groups-change-type/select-group-to-convert.png)
   
-2. 選取 [新增動態查詢]，然後提供規則。
+2. 選取 [新增動態查詢]****，然後提供規則。
   
-   ![輸入規則的動態群組](./media/groups-change-type/enter-rule.png)
+   ![輸入動態群組的規則](./media/groups-change-type/enter-rule.png)
   
-3. 建立規則之後，在頁面底部選取 [新增查詢]。
-4. 在群組的 [屬性] 頁面上，選取 [儲存] 以儲存變更。 群組的 [成員資格類型] 會立即在群組清單中更新。
+3. 建立規則之後，在頁面底部選取 [新增查詢]****。
+4. 在群組的 [屬性]**** 頁面上，選取 [儲存]**** 以儲存變更。 群組的 [成員資格類型]**** 會立即在群組清單中更新。
 
 > [!TIP]
 > 如果您輸入的成員資格規則不正確，群組轉換可能會失敗。 入口網站右上角將會顯示通知，當中包含系統為什麼無法接受該規則的解釋。 請仔細閱讀，以了解您可以如何調整規則來讓規則變成有效。 如需規則語法的範例以及成員資格規則支援的完整屬性、運算子和值清單，請參閱 [Azure Active Directory 中群組的動態成員資格規則](groups-dynamic-membership.md)。

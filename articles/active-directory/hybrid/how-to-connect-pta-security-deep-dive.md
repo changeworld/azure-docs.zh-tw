@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 04/15/2019
+ms.topic: how-to
+ms.date: 05/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f5e2443a285e065426e3dba0312ef6420097ef1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ce5f47fe662092219180064f7ea49f5573b27818
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60348018"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358237"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory 傳遞驗證安全性深入探討
 
@@ -42,19 +42,19 @@ ms.locfileid: "60348018"
 - 只有標準連接埠 (80 和 443) 會用於驗證代理程式至 Azure AD 的輸出通訊。 您不需要在防火牆上開放輸入連接埠。 
   - 連接埠 443 會用於所有經過驗證的輸出通訊。
   - 連接埠 80 僅用於下載憑證撤銷清單 (CRL)，以確保此功能所使用的任何憑證都沒有被撤銷。
-  - 如需網路需求的完整清單，請參閱 [Azure Active Directory 傳遞驗證：快速入門](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)。
+  - 如需網路需求的完整清單，請參閱[Azure Active Directory 傳遞驗證：快速入門](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)。
 - 使用者在登入期間所提供的密碼在雲端會經過加密，內部部署驗證代理程式才會接受密碼，對 Active Directory 進行驗證。
 - Azure AD 和內部部署驗證代理程式之間的 HTTPS 通道可使用相互驗證受到保護。
-- 與 [Azure AD 條件式存取原則](../active-directory-conditional-access-azure-portal.md) (包括 Multi-Factor Authentication (MFA)) 緊密配合、[封鎖舊版驗證](../conditional-access/conditions.md)，並[篩除暴力密碼破解攻擊](../authentication/howto-password-smart-lockout.md)，藉此保護您的使用者帳戶。
+- 與 [Azure AD 條件式存取原則](../active-directory-conditional-access-azure-portal.md) (包括 Multi-Factor Authentication (MFA)) 緊密配合、[封鎖舊版驗證](../conditional-access/concept-conditional-access-conditions.md)，並[篩除暴力密碼破解攻擊](../authentication/howto-password-smart-lockout.md)，藉此保護您的使用者帳戶。
 
 ## <a name="components-involved"></a>涉及的元件
 
-如需 Azure AD 作業、服務與資料安全性的一般詳細資訊，請參閱[信任中心](https://azure.microsoft.com/support/trust-center/)。 將傳遞驗證用於使用者登入時，需要下列元件：
-- **Azure AD STS**：無狀態的 Security Token Service (STS)，用以處理登入要求，並在需要時，將安全性權杖核發給使用者的瀏覽器、用戶端或服務。
+如需 Azure AD 操作、服務和資料安全性的一般詳細資訊，請參閱[信任中心](https://azure.microsoft.com/support/trust-center/)。 將傳遞驗證用於使用者登入時，需要下列元件：
+- **AZURE AD STS**：無狀態 SECURITY TOKEN SERVICE （STS），可處理登入要求，並在必要時將安全性權杖發行給使用者的瀏覽器、用戶端或服務。
 - **Azure 服務匯流排**：可為企業傳訊及轉送通訊提供雲端通訊的能力，讓您可以連接內部部署解決方案與雲端。
 - **Azure AD Connect 驗證代理程式**：接聽並回應密碼驗證要求的內部部署元件。
-- **Azure SQL Database**：持有租用戶之驗證代理程式的相關資訊，包括其中繼資料和加密金鑰。
-- **Active Directory**：內部部署 Active Directory，其中儲存您的使用者帳戶及其密碼。
+- **Azure SQL Database**：保存租用戶之驗證代理程式的相關資訊，包括其中繼資料和加密金鑰。
+- **Active Directory**：您的內部部署 Active Directory，其中儲存您的使用者帳戶及其密碼。
 
 ## <a name="installation-and-registration-of-the-authentication-agents"></a>驗證代理程式的安裝和註冊
 
@@ -72,9 +72,12 @@ ms.locfileid: "60348018"
 
 ### <a name="authentication-agent-installation"></a>驗證代理程式安裝
 
-只有全域管理員可以在內部部署伺服器上安裝驗證代理程式 (使用 Azure AD Connect 或獨立安裝)。 安裝會將這兩個新項目新增至 **[控制台]** > **[程式]** > **[程式和功能]** 清單：
+只有全域管理員可以在內部部署伺服器上安裝驗證代理程式 (使用 Azure AD Connect 或獨立安裝)。 安裝會在 [控制台] 的**Control Panel**  >  **[程式**  >  **和功能**] 清單中新增兩個新專案：
 - 驗證代理程式應用程式本身。 此應用程式會以 [NetworkService](https://msdn.microsoft.com/library/windows/desktop/ms684272.aspx) 權限執行。
 - 用來自動更新驗證代理程式的更新程式應用程式。 此應用程式會以 [LocalSystem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) 權限執行。
+
+>[!IMPORTANT]
+>從安全性的觀點來看，系統管理員應該將執行 PTA 代理程式的伺服器視為網域控制站。  PTA 代理程式伺服器應該與[保護網域控制站免于遭受攻擊](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)時所述的同一行一起強化
 
 ### <a name="authentication-agent-registration"></a>驗證代理程式註冊
 
@@ -99,11 +102,11 @@ ms.locfileid: "60348018"
     - Azure AD 中的根 CA 會用來簽署憑證。 
 
       > [!NOTE]
-      > 此 CA「不在」Windows 受信任的根憑證授權單位存放區中。
+      > 此 CA「不在」__ Windows 受信任的根憑證授權單位存放區中。
     - 此 CA 僅供傳遞驗證功能使用。 此 CA 只會在驗證代理程式註冊期間用來簽署 CSR。
     -  沒有任何其他 Azure AD 服務會使用此 CA。
     - 此憑證的主體 (辨別名稱或 DN) 設定為您的租用戶識別碼。 此 DN 是可唯一識別租用戶的 GUID。 此 DN 可將憑證的範圍限制為只能用於您的租用戶。
-6. Azure AD 會將驗證代理程式的公開金鑰儲存在只有 Azure AD 可存取的 Azure SQL 資料庫中。
+6. Azure AD 會將驗證代理程式的公開金鑰儲存在 Azure SQL Database 的資料庫中，只有 Azure AD 具有的存取權。
 7. 在步驟 5 中核發的憑證會儲存在內部部署伺服器上的 Windows 憑證存放區 (具體而言是在 [CERT_SYSTEM_STORE_LOCAL_MACHINE](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_LOCAL_MACHINE) 位置) 中。 驗證代理程式和更新程式應用程式都會加以使用。
 
 ### <a name="authentication-agent-initialization"></a>驗證代理程式初始化
@@ -132,11 +135,11 @@ ms.locfileid: "60348018"
 
 1. 使用者嘗試存取應用程式，例如 [Outlook Web App](https://outlook.office365.com/owa)。
 2. 如果使用者還未登入，應用程式將瀏覽器重新導向至 Azure AD 登入頁面。
-3. Azure AD STS 服務會透過 [使用者登入] 頁面回應。
-4. 使用者將其使用者名稱輸入 [使用者登入] 頁面中，然後選取 [下一步] 按鈕。
-5. 使用者將其密碼輸入 [使用者登入] 頁面中，然後選取 [登入] 按鈕。
+3. Azure AD STS 服務會以**使用者登入**頁面回應。
+4. 使用者將其使用者名稱輸入 [使用者登入]**** 頁面中，然後選取 [下一步]**** 按鈕。
+5. 使用者將其密碼輸入 [使用者登入]**** 頁面中，然後選取 [登入]**** 按鈕。
 6. 使用者名稱與密碼會在 HTTPS POST 要求中提交至 Azure AD STS。
-7. Azure AD STS 會針對您的租用戶上註冊的所有驗證代理程式，擷取 Azure SQL 資料庫中的公開金鑰，並使用這些金鑰為其密碼加密。
+7. Azure AD STS 會從 Azure SQL Database 的租使用者上註冊的所有驗證代理程式中抓取公開金鑰，並使用這些金鑰來加密密碼。
     - Azure AD STS 會針對您的租用戶上註冊的 "N" 個驗證代理程式，產生 "N" 個加密密碼值。
 8. Azure AD STS 會將密碼驗證要求 (其中包含使用者名稱和加密的密碼值) 放到您的租用戶專用的服務匯流排佇列上。
 9. 初始化的驗證代理程式會持續連線至服務匯流排佇列，因此其中一個可用的驗證代理程式會擷取密碼驗證要求。
@@ -147,7 +150,8 @@ ms.locfileid: "60348018"
 12. 驗證代理程式會從 Active Directory 接收結果，例如成功、使用者名稱或密碼不正確、密碼過期等。
 
    > [!NOTE]
-   > 如果驗證代理程式失敗的登入程序期間，會卸除整個登入要求。 沒有任何手動關閉的登入要求一個驗證代理程式從另一個驗證代理程式在內部。 這些代理程式只會與通訊與雲端，而不是與彼此。
+   > 如果驗證代理程式在登入過程中失敗，則會捨棄整個登入要求。 從一個驗證代理程式到另一個內部部署驗證代理程式，都不會有任何登入要求的退出。 這些代理程式只會與雲端通訊，而不會與彼此通訊。
+   
 13. 驗證代理程式會透過連接埠 443 上，輸出相互驗證的 HTTPS 通道，將結果轉送回 Azure AD STS。 相互驗證會使用先前在註冊期間發給驗證代理程式的憑證。
 14. Azure AD STS 會驗證此結果是否與您租用戶上的特定登入要求相互關聯。
 15. Azure AD STS 會依照設定的方式，繼續進行登入程序。 例如，如果密碼驗證成功，使用者可能要經過 Multi-Factor Authentication，或重新導向回應用程式。
@@ -174,7 +178,7 @@ ms.locfileid: "60348018"
 6. 如果現有的憑證已過期，Azure AD 會從租用戶的已註冊驗證代理程式清單中，刪除該驗證代理程式。 然後，全域管理員必須手動安裝並註冊新的驗證代理程式。
     - 使用 Azure AD 根 CA 來簽署憑證。
     - 將憑證的主體 (辨別名稱或 DN) 設定為您的租用戶識別碼，亦即可唯一識別租用戶的 GUID。 DN 會將憑證的範圍限定於您的租用戶。
-6. Azure AD 會將驗證代理程式的新公開金鑰儲存在只有 Azure AD 可存取的 Azure SQL 資料庫中。 而與驗證代理程式相關聯的舊公開金鑰則會失效。
+6. Azure AD 會將驗證代理程式的新公開金鑰儲存在只能存取的 Azure SQL Database 資料庫中。 而與驗證代理程式相關聯的舊公開金鑰則會失效。
 7. 然後，在步驟 5 中核發的新憑證會儲存在伺服器上的 Windows 憑證存放區 (具體而言是在 [CERT_SYSTEM_STORE_CURRENT_USER](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_CURRENT_USER) 位置) 中。
     - 由於信任更新程序會以非互動方式執行 (不需要有全域管理員的存在)，驗證代理程式不再具有存取權以更新 CERT_SYSTEM_STORE_LOCAL_MACHINE 位置中的現有憑證。 
     
@@ -184,9 +188,9 @@ ms.locfileid: "60348018"
 
 ## <a name="auto-update-of-the-authentication-agents"></a>驗證代理程式的自動更新
 
-Updater 應用程式 （與 bug 修正或效能增強功能） 的新版本發行時，會自動更新驗證代理程式。 Updater 應用程式不會處理租用戶的任何密碼驗證要求。
+更新程式應用程式會在發行新版本（具有 bug 修正或效能增強功能）時，自動更新驗證代理程式。 更新程式應用程式不會處理租使用者的任何密碼驗證要求。
 
-Azure AD 會將新版的軟體當作已簽署的 **Windows Installer 套件 (MSI)** 進行裝載。 MSI 是使用以 SHA256 作為摘要演算法的 [Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) 簽署的。 
+Azure AD 將新版本的軟體裝載為已簽署的**Windows Installer 套件（MSI）**。 MSI 是使用以 SHA256 作為摘要演算法的 [Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) 簽署的。 
 
 ![自動更新](./media/how-to-connect-pta-security-deep-dive/pta5.png)
 
@@ -206,7 +210,7 @@ Azure AD 會將新版的軟體當作已簽署的 **Windows Installer 套件 (MSI
     - 重新啟動驗證代理程式服務
 
 >[!NOTE]
->如果您在租用戶上註冊了多個驗證代理程式，則 Azure AD 不會更新其憑證或者不會同時更新這些憑證。 相反地，Azure AD 會因此一次一個，以確保登入要求的高可用性。
+>如果您在租用戶上註冊了多個驗證代理程式，則 Azure AD 不會更新其憑證或者不會同時更新這些憑證。 相反地，Azure AD 一次執行此動作，以確保登入要求的高可用性。
 >
 
 
@@ -216,6 +220,6 @@ Azure AD 會將新版的軟體當作已簽署的 **Windows Installer 套件 (MSI
 - [從 AD FS 遷移到傳遞驗證](https://aka.ms/adfstoptadpdownload) \(英文\) - 從 AD FS (或其他同盟技術) 遷移到傳遞驗證的詳細指南。
 - [智慧鎖定](../authentication/howto-password-smart-lockout.md)：在租用戶中設定智慧鎖定功能以保護使用者帳戶。
 - [運作方式](how-to-connect-pta-how-it-works.md)：了解 Azure AD 傳遞驗證運作方式的基本概念。
-- [常見問題集](how-to-connect-pta-faq.md)：取得常見問題的解答。
+- [常見問題集](how-to-connect-pta-faq.md)：常見問題集的答案。
 - [疑難排解](tshoot-connect-pass-through-authentication.md)：了解如何解決傳遞驗證功能的常見問題。
 - [Azure AD 無縫 SSO](how-to-connect-sso.md)：深入了解此互補功能。

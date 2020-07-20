@@ -1,26 +1,17 @@
 ---
-title: 教學課程 - 將應用程式部署到 Azure Service Fabric Mesh | Microsoft Docs
+title: 教學課程 - 將應用程式部署到 Azure Service Fabric Mesh
 description: 在本教學課程中，您會了解如何使用範本將應用程式部署到 Service Fabric Mesh。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 825f667029aeb1d75bfdaf52b1084ff5133b5774
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: f7cb3f75dcaaeb6e0304784941dfcfc81ae6d68f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527331"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248385"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>教學課程：使用範本將應用程式部署到 Service Fabric Mesh
 
@@ -43,7 +34,7 @@ ms.locfileid: "59527331"
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始進行本教學課程之前：
 
@@ -180,7 +171,7 @@ Result
 ## <a name="retrieve-credentials-for-the-registry"></a>擷取登錄的認證
 
 > [!IMPORTANT]
-> 建議不要在生產案例中啟用 ACR 執行個體上的管理使用者。 此處做法是為了方便起見。 對於生產案例，請在生產案例中使用[服務主體](https://docs.microsoft.com/azure/container-registry/container-registry-auth-service-principal)，以進行使用者與系統驗證。
+> 建議不要在生產案例中啟用 ACR 執行個體上的管理使用者。 此處做法是為了方便起見。 對於生產案例，請在生產案例中使用[服務主體](../container-registry/container-registry-auth-service-principal.md)，以進行使用者與系統驗證。
 
 若要使用範本從已建立的登錄中部署容器執行個體，必須在部署期間提供登錄認證。 首先，使用下列命令，啟用您登錄上的管理使用者：
 
@@ -200,7 +191,7 @@ az acr credential show --name myContainerRegistry --query "passwords[0].value"
 
 ## <a name="download-and-explore-the-template-and-parameters-files"></a>下載並瀏覽範本及參數檔案
 
-Service Fabric Mesh 應用程式是一種 Azure 資源，您可以使用 Azure Resource Manager (RM) 範本部署和管理。 如果您不熟悉部署和管理 Azure 解決方案的相關概念，請參閱 [Azure Resource Manager 概觀](/azure/azure-resource-manager/resource-group-overview)與[了解 RM 範本的結構和語法](/azure/azure-resource-manager/resource-group-authoring-templates)。
+Service Fabric Mesh 應用程式是一種 Azure 資源，您可以使用 Azure Resource Manager (RM) 範本部署和管理。 如果您不熟悉部署和管理 Azure 解決方案的相關概念，請參閱 [Azure Resource Manager 概觀](../azure-resource-manager/management/overview.md)與[了解 RM 範本的結構和語法](../azure-resource-manager/templates/template-syntax.md)。
 
 本教學課程使用待辦事項清單範例作為範例。  不會建立新的範本和參數檔案，而是下載 [mesh_rp.windows.json 部署範本](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json)與 [mesh_rp.windows.parameter.json 參數](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json)檔案。
 
@@ -264,7 +255,7 @@ Service Fabric Mesh 應用程式是一種 Azure 資源，您可以使用 Azure R
                   "endpoints": [
                     {
                       "name": "ServiceAListener",
-                      "port": 20001
+                      "port": 80
                     }
                   ],
                   "resources": {
@@ -351,8 +342,8 @@ Service Fabric Mesh 應用程式是一種 Azure 資源，您可以使用 Azure R
 |registryPassword|您之前在[擷取登錄的認證](#retrieve-credentials-for-the-registry)所取得的密碼。 此參數在範本中是安全字串，而且將不會顯示在部屬狀態或 `az mesh service show` 命令中。|
 |registryUserName|您之前在[擷取登錄的認證](#retrieve-credentials-for-the-registry)中取得的使用者名稱。|
 |registryServer|您之前在[擷取登錄的認證](#retrieve-credentials-for-the-registry)中取得的登錄伺服器名稱。|
-|frontEndImage|前端服務的容器映像。  例如： `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709`。|
-|serviceImage|後端服務的容器映像。  例如： `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709`。|
+|frontEndImage|前端服務的容器映像。  例如： `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709` 。|
+|serviceImage|後端服務的容器映像。  例如： `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709` 。|
 
 若要部署應用程式，請執行下列動作：
 

@@ -1,64 +1,62 @@
 ---
-title: Azure 監視器中的計量 |Microsoft Docs
-description: 介绍 Azure Monitor 中的指标：能够为近实时方案提供支持的轻型监视数据。
+title: Azure 監視器中的計量 | Microsoft Docs
+description: 描述 Azure 監視器中的計量，這是輕量監視資料，能夠支援近乎即時的案例。
 documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: tysonn
-ms.service: monitoring
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 319def9072dbf38eff44ca4459428f1ef99a2b54
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 839347ce0a04cc1ca1bf16c68e0ccc36fcf0f7fc
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867970"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200793"
 ---
 # <a name="metrics-in-azure-monitor"></a>Azure 監視器中的計量
 
 > [!NOTE]
-> Azure Monitor 数据平台基于两种基本数据类型：指标和日志。 本文介绍指标。 請參閱[登入 Azure 監視器](data-platform-logs.md)如記錄檔和詳細說明[Azure 監視器的資料平台](data-platform.md)兩個比較。
+> Azure 監視器資料平台的基礎是兩種基本的資料類型：計量和記錄。 本文描述的是計量。 如需記錄的詳細描述，請參閱 [Azure 監視器中的記錄](data-platform-logs.md)，如需兩者的比較，則請參閱 [Azure 監視器資料平台](data-platform.md)。
 
-Azure Monitor 中的指标是能够为近实时方案提供支持的轻型数据，因此，它们特别适合用于警报和快速检测问题。 本文将介绍指标的构建方式、可对指标执行哪些操作，以及如何识别需要在指标中存储数据的不同数据源。
+Azure 監視器中的計量非常輕量，能夠支援近乎即時的案例，因此特別適合用來警示和快速偵測問題。 本文會說明計量的結構化方式、其功用，以及如何識別將資料儲存在計量中的不同資料來源。
 
 ## <a name="what-are-metrics"></a>何謂度量？
-計量為數值，描述系統在特定時間的某個方面。 指标是按固定间隔收集的，可用于警报，因为它们可以频繁采样，而警报则可以使用相对简单的逻辑快速触发。
+計量為數值，描述系統在特定時間的某個方面。 計量會定期收集且適合用於警示，因為計量可頻繁地進行取樣，而且可使用相對較簡單的邏輯快速引發警示。
 
-## <a name="what-can-you-do-with-azure-monitor-metrics"></a>可对 Azure Monitor 指标执行哪些操作？
-下表列出了 Azure Monitor 中的指标数据的不同使用方式。
+## <a name="what-can-you-do-with-azure-monitor-metrics"></a>Azure 監視器計量有何功用？
+下表列出您可在 Azure 監視器中使用計量資料的各種方式。
 
-|  |  |
+|  | 描述 |
 |:---|:---|
-| 分析 | 使用[指标资源管理器](metrics-charts.md)可以在图表中分析收集的指标，并比较来自不同资源的指标。 |
-| 視覺化 | 将指标资源管理器中的图表固定到 [Azure 仪表板](../learn/tutorial-app-dashboards.md)。<br>创建一个[工作簿](../app/usage-workbooks.md)用于在交互式报表中合并多个数据集。将查询结果导出到 [Grafana](grafana-plugin.md)，以利用其仪表板功能以及合并其他数据源。 |
-| 警示 | 配置指标[警报规则](alerts-metric.md)，以便在指标值超过阈值时发送通知或执行[自动化操作](action-groups.md)。 |
-| 自動化 |  根据超过阈值的指标值，使用[自动缩放](autoscale-overview.md)来增加或减少资源。 |
-| 匯出 | [将指标路由到日志](diagnostic-logs-stream-log-store.md)，以连同 Azure Monitor 日志中的数据一起分析 Azure Monitor 指标中的数据，并将指标值存储 93 天以上。<br>将指标流式传输到[事件中心](stream-monitoring-data-event-hubs.md)，以将其路由到外部系统。 |
-| 擷取 | 使用 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 从命令行访问指标值<br>使用 [REST API](rest-api-walkthrough.md) 从自定义应用程序访问指标值。<br>使用 [CLI](/cli/azure/monitor/metrics) 从命令行访问指标值。 |
-| 封存 | [封存](..//learn/tutorial-archive-data.md)資源的效能或健全狀況歷程記錄，以用於相容性、稽核或離線報告。 |
+| **分析** | 使用[計量瀏覽器](metrics-charts.md)在圖表上分析所收集的計量，並比較來自不同資源的計量。 |
+| **視覺化** | 將圖表從計量瀏覽器釘選到 [Azure 儀表板](../learn/tutorial-app-dashboards.md)。<br>建立[活頁簿](../platform/workbooks-overview.md)，以在互動式報告中與多組資料結合。將查詢的結果匯出至 [Grafana](grafana-plugin.md) 以利用其儀表板功能，並與其他資料來源結合。 |
+| **警示** | 設定[計量警示規則](alerts-metric.md)，在計量值超出閾值時，傳送通知或採取[自動化動作](action-groups.md)。 |
+| **自動化** |  使用[自動調整規模](autoscale-overview.md)，根據超出閾值的計量值來增加或減少資源。 |
+| **匯出** | [將計量路由傳送到記錄](resource-logs-collect-storage.md)，來分析 Azure 監視器計量中的資料與 Azure 監視器記錄中的資料，以及儲存計量值超過 93 天。<br>將計量串流至[事件中樞](stream-monitoring-data-event-hubs.md)以將計量路由傳送至外部系統。 |
+| **擷取** | 使用 [PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 從命令列存取計量值<br>使用 [REST API](rest-api-walkthrough.md) 從自訂應用程式存取計量值。<br>使用 [CLI](/cli/azure/monitor/metrics) 從命令列存取計量值。 |
+| **封存** | [封存](..//learn/tutorial-archive-data.md)資源的效能或健全狀況歷程記錄，以用於相容性、稽核或離線報告。 |
 
-## <a name="how-is-data-in-azure-monitor-metrics-structured"></a>Azure Monitor 指标中的数据是如何构建的？
-Azure Monitor 指标收集的数据存储在时序数据库中，该数据库经过优化，可用于分析带时间戳的数据。 每组指标值是包含以下属性的时序：
+## <a name="how-is-data-in-azure-monitor-metrics-structured"></a>資料如何在 Azure 監視器計量中結構化？
+Azure 監視器計量所收集的資料會儲存在時間序列資料庫中，其已進行最佳化而能分析有時間戳記的資料。 每組計量值都是具有下列屬性的時間序列：
 
-* 值的收集时间
-* 与关联的资源
-* 类似于指标类别的命名空间
-* 指标名称
+* 收集到值的時間
+* 與值相關聯的資源
+* 作用類似計量類別的命名空間
+* 計量名稱
 * 值本身
-* 如[多维指标](#multi-dimensional-metrics)中所述，某指标可能包含多个维度。 自訂計量最多可以有 10 個維度。
+* 某些計量可能具有多個維度，如[多維度計量](#multi-dimensional-metrics)所述。 自訂計量最多可以有 10 個維度。
 
 ## <a name="multi-dimensional-metrics"></a>多維度計量
-指标数据的一大难题在于，它通常包含有限的信息，以致无法提供所收集值的上下文。 Azure Monitor 通过多维指标解决了这一难题。 計量的維度是成對的名稱和數值，其中含有額外的資料來說明計量值。 例如，指标“可用磁盘空间”可能包含名为“驱动器”并具有值“C:”和“D:”的维度，通过此维度可以查看所有驱动器的可用磁盘空间，或者可以分别查看每个驱动器的可用磁盘空间。
+計量資料的其中一項挑戰是，其可用來為所收集到的值提供內容的資訊往往很有限。 Azure 監視器利用多維度計量來解決這項挑戰。 計量的維度是成對的名稱和數值，其中含有額外的資料來說明計量值。 例如，「可用磁碟空間」計量可以有名為「磁碟機」且值為 _C:_ 、_D:_ 的維度，讓您能夠檢視所有磁碟機或每個磁碟機的可用磁碟空間。
 
 下列範例說明適用於名為「網路輸送量」之假設性計量的兩個資料集。 第一個資料集沒有維度。 第二個資料集會顯示具有兩個維度 (_IP 位址_與_方向_) 的值：
 
 ### <a name="network-throughput"></a>網路輸送量
 
-| Timestamp     | 計量值 |
+| 時間戳記     | 計量值 |
 | ------------- |:-------------|
 | 8/9/2017 8:14 | 1,331.8 Kbps |
 | 8/9/2017 8:15 | 1,141.4 Kbps |
@@ -68,7 +66,7 @@ Azure Monitor 指标收集的数据存储在时序数据库中，该数据库经
 
 ### <a name="network-throughput--two-dimensions-ip-and-direction"></a>網路輸送量 + 兩個維度 (「IP」與「方向」)
 
-| Timestamp     | 維度「IP」   | 維度「方向」 | 計量值|
+| 時間戳記     | 維度「IP」   | 維度「方向」 | 計量值|
 | ------------- |:-----------------|:------------------- |:-----------|
 | 8/9/2017 8:14 | IP="192.168.5.2" | 方向="傳送"    | 646.5 Kbps |
 | 8/9/2017 8:14 | IP="192.168.5.2" | 方向="接收" | 420.1 Kbps |
@@ -81,32 +79,43 @@ Azure Monitor 指标收集的数据存储在时序数据库中，该数据库经
 
 此計量可以回答像是「每個 IP 位址的網路輸送量為何」與「資料的傳送與接收比為何」這種問題。 相較於無維度計量，多維度計量具有分析與診斷值。
 
-## <a name="interacting-with-azure-monitor-metrics"></a>与 Azure Monitor 指标交互
-使用[指标资源管理器](metrics-charts.md)可以交互方式分析指标数据库中的数据，并在图表中绘制多个指标在不同时间段的值。 可将图表固定到仪表板，以结合其他可视化效果一起查看这些图表。 您也可以使用 [Azure 監視 REST API](rest-api-walkthrough.md) 來擷取計量。
+## <a name="interacting-with-azure-monitor-metrics"></a>與 Azure 監視器計量互動
+使用[計量瀏覽器](metrics-charts.md)，以互動方式分析計量資料庫中的資料，並隨著時間繪製多個計量值的圖表。 您可以將圖表釘選到儀表板，以使用其他視覺效果來檢視圖表。 您也可以使用 [Azure 監視 REST API](rest-api-walkthrough.md) 來擷取計量。
 
 ![計量瀏覽器](media/data-platform/metrics-explorer.png)
 
-## <a name="sources-of-azure-monitor-metrics"></a>Azure Monitor 指标的源
-Azure 監視器所收集的計量有三個基本來源。 在 Azure Monitor 指标数据库中收集这些指标后，不管指标的源是什么，都可以统一评估这些指标。
+## <a name="sources-of-azure-monitor-metrics"></a>Azure 監視器計量的來源
+Azure 監視器所收集的計量有三個基本來源。 在 Azure 監視器計量資料庫中收集這些計量之後，不論其來源為何，您都可以將其放在一起進行評估。
 
-**平台計量**是由 Azure 資源所建立，讓您能夠掌握其健康情況和效能。 每個類型的資源都會建立[一組不同的計量](metrics-supported.md)，而不需進行任何必要的設定。 除非指标定义中另有指定，否则，将以一分钟频率从 Azure 资源收集平台指标。 
+**平台計量**是由 Azure 資源所建立，讓您能夠掌握其健康情況和效能。 每個類型的資源都會建立[一組不同的計量](metrics-supported.md)，而不需進行任何必要的設定。 除非計量定義中另有指定，否則會以一分鐘的頻率從 Azure 資源收集平台計量。 
 
-**来宾 OS 指标**是从虚拟机的来宾操作系统收集的。 对于 Windows 虚拟机和 Linux 虚拟机，可以分别使用 [Windows 诊断扩展 (WAD)](../platform/diagnostics-extension-overview.md) 和 [InfluxData Telegraf 代理](https://www.influxdata.com/time-series-platform/telegraf/)启用来宾 OS 指标。
+系統會從虛擬機器的客體作業系統收集**客體 OS 計量**。 請為具有 [Windows 診斷擴充功能 (WAD)](../platform/diagnostics-extension-overview.md) 的 Windows 虛擬機器和具有 [InfluxData Telegraf 代理程式](https://www.influxdata.com/time-series-platform/telegraf/)的 Linux 虛擬機器，啟用客體 OS 計量。
 
 **應用程式計量**是由 Application Insights 為您受監視的應用程式所建立，可協助您偵測效能問題，以及追蹤應用程式的使用趨勢。 這包括像是「伺服器回應時間」和「瀏覽器例外狀況」之類的值。
 
-**自定义指标**是在自动提供的标准指标之外定义的指标。 可以在受 Application Insights 监视的[应用程序中定义自定义指标](../app/api-custom-events-metrics.md)，或者使用[自定义指标 API](metrics-store-custom-rest-api.md) 为 Azure 服务创建自定义指标。
+**自訂計量**是除了自動可供使用的標準計量之外您所定義的計量。 您可以[在應用程式中定義自訂計量](../app/api-custom-events-metrics.md) (由 Application Insights 加以監視)，或使用[自訂計量 API](metrics-store-custom-rest-api.md) 為 Azure 服務建立自訂計量。
 
-## <a name="retention-of-metrics"></a>保留的計量
-如需在 Azure 中的大部分資源，計量會儲存 93 天。 有一些例外狀況：
-  * **傳統的客體 OS 度量**。 傳統的客體 OS 度量會保留 14 天。 來延長保留時間，我們建議使用新的客體 OS 計量所收集與[Windows 診斷擴充功能 (WAD)](../platform/diagnostics-extension-overview.md)和與 Linux 虛擬機器[InfluxData Telegraf 代理程式](https://www.influxdata.com/time-series-platform/telegraf/)。
-  * **Application Insights 記錄檔型計量**。 幕後[記錄檔型計量](../app/pre-aggregated-metrics-log-metrics.md)轉譯成記錄的查詢。 其保留比對基礎的記錄檔中事件的保留期。 如需 Application Insights 資源，記錄會儲存 90 天。 
+## <a name="retention-of-metrics"></a>計量的保留期
+針對 Azure 中的大部分資源，計量會儲存 93 天。 但有一些例外狀況：
+
+**客體 OS 計量**
+-   **傳統的客體 OS 計量**。 這些是由 [Windows 診斷擴充功能 (WAD)](../platform/diagnostics-extension-overview.md) 或 [Linux 診斷擴充功能 (LAD)](../../virtual-machines/extensions/diagnostics-linux.md) 所收集並路由傳送至 Azure 儲存體帳戶的效能計數器。 這些計量的保留期為 14 天。
+-   **傳送至 Azure 監視器計量的客體 OS 計量**。 這些是由 [Windows 診斷擴充功能 (WAD)](diagnostics-extension-overview.md) 所收集並傳送至 [Azure 監視器資料接收器](diagnostics-extension-overview.md#data-destinations)的效能計數器，而在 Linux 機器上，則是透過 [InfluxData Telegraf 代理程式](https://www.influxdata.com/time-series-platform/telegraf/)。 這些計量的保留期為 93 天。
+-   **Log Analytics 代理程式所收集的客體 OS 計量**。 這些是 Log Analytics 代理程式所收集並傳送至 Log Analytics 工作區的效能計數器。 這些計量的保留期為 31 天，最多可延長為 2 年。
+
+**Application Insights 記錄型的計量**。 
+- 在幕後，[記錄型計量](../app/pre-aggregated-metrics-log-metrics.md)會轉譯為記錄查詢。 其保留期會符合基礎記錄中的事件保留期。 若為 Application Insights 資源，記錄會儲存 90 天。
+
 
 > [!NOTE]
-> 可[将 Azure Monitor 资源的平台指标发送到 Log Analytics 工作区](diagnostic-logs-stream-log-store.md)以分析长期趋势。
+> 您可以[將 Azure 監視器資源的平台計量傳送至 Log Analytics 工作區](resource-logs-collect-storage.md)以進行長期趨勢分析。
+
+
+
+
 
 ## <a name="next-steps"></a>後續步驟
 
-- 详细了解 [Azure Monitor 数据平台](data-platform.md)。
-- 了解 [Azure Monitor 中的日志数据](data-platform-logs.md)。
+- 深入了解 [Azure 監視器資料平台](data-platform.md)。
+- 了解 [Azure 監視器中的記錄資料](data-platform-logs.md)。
 - 深入了解可用於 Azure 中不同資源的[監視資料](data-sources.md)。

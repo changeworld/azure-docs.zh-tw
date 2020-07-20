@@ -1,18 +1,18 @@
 ---
-title: 開發人員最佳做法 - Azure Kubernetes Services (AKS) 中的資源管理
+title: 資源管理最佳做法
+titleSuffix: Azure Kubernetes Service
 description: 了解應用程式開發人員在 Azure Kubernetes Services (AKS) 中管理資源的最佳做法
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: aebade14f3a8a1095925d17325ce99b78031dc32
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 538db1f2a757dd5216839ac9ac37ad0c06c5e9ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073958"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84976060"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>應用程式開發人員在 Azure Kubernetes Services (AKS) 中管理資源的最佳做法
 
@@ -31,16 +31,24 @@ ms.locfileid: "65073958"
 
 在 AKS 叢集內管理計算資源的主要方式，是使用 Pod 要求和限制。 這些要求和限制可讓 Kubernetes 排程器得知應為 Pod 指派哪些計算資源。
 
-* **Pod 要求**會定義 Pod 所需的定量 CPU 和記憶體。 這些要求應為 Pod 要提供可接受的效能等級所需的計算資源數量。
-    * 當 Kubernetes 排程器嘗試將 Pod 放置在節點上時，即會使用 Pod 要求來判斷哪個節點有足夠的資源。
-    * 監視應用程式的效能並調整這些要求，以確定您所定義的資源數量足以維持可接受的效能等級。
-* **Pod 限制**是 Pod 可以使用的 CPU 和記憶體數量上限。 這些限制有助於防止一或兩個失控的 Pod 耗用過多節點的 CPU 和記憶體。 一旦發生此情況，節點和在其上執行的其他 Pod 將出現效能下降的狀況。
+* **POD cpu/記憶體要求**會定義 pod 定期需要的一組 cpu 和記憶體數量。
+    * 當 Kubernetes 排程器嘗試將 pod 放在節點上時，pod 要求會用來判斷哪一個節點有足夠的資源可供排程。
+    * 未設定 pod 要求時，會將其預設為已定義的限制。
+    * 請務必監視應用程式的效能，以調整這些要求。 如果提出不足的要求，您的應用程式可能會因為過度排程節點而收到效能降低的情況。 如果要求非常重要，您的應用程式可能會增加排程的難度。
+* **POD cpu/記憶體限制**是 pod 可以使用的 cpu 和記憶體數量上限。 這些限制可協助定義因資源不足而造成節點不穩定的情況時，應終止哪些 pod。 若未設定適當的限制，將會終止，直到資源壓力提升為止。
+    * Pod 限制可協助定義 pod 何時失去資源耗用量的控制權。 超過限制時，會將 pod 的優先順序設定為 [終止] 以維持節點健全狀況，並將對共用節點之 pod 的影響降至最低。
+    * 未設定 pod 限制會預設為指定節點上最高的可用值。
     * 您設定的 Pod 限制不應高於節點所能支援的數量。 每個 AKS 節點都會保留一定數量的 CPU 和記憶體供核心 Kubernetes 元件使用。 您的應用程式可能會耗用太多節點上的資源，而使其他 Pod 無法成功執行。
-    * 再次重申，請在一天或一週中的不同時段監視應用程式的效能。 請判斷尖峰需求發生於何時，並據以針對符合應用程式需求所需的資源設定 Pod 限制。
+    * 同樣地，在一天或一周的不同時間監視應用程式的效能非常重要。 判斷尖峰需求的時間，並將 pod 限制對應到符合應用程式最大需求所需的資源。
 
-在您的 Pod 規格中，定義這些要求和限制是最佳做法。 若未納入這些值，Kubernetes 排程器將無從得知需要哪些資源。 排程器可能會將 Pod 排程在沒有足夠的資源可提供所需應用程式效能的節點上。 叢集管理員可在命名空間上設定*資源配額*，以要求您設定資源要求和限制。 如需詳細資訊，請參閱 [AKS 叢集的資源配額][resource-quotas]。
+在您的 pod 規格中，根據上述資訊定義這些要求和限制是**最佳做法，而且非常重要**。 如果您未包含這些值，Kubernetes 排程器就無法將應用程式所需的資源納入考慮，以協助排定決策。
 
-當您定義 CPU 要求或限制時，其值會以 CPU 單位來測量。 *1.0* CPU 等同於節點上的一個基礎虛擬 CPU 核心。 GPU 也會使用相同的測量方式。 您也可以定義極小的要求或限制，通常以 millicpu 為單位。 例如，*100m* 是 *0.1* 個基礎虛擬 CPU 核心。
+如果排程器將 pod 放在資源不足的節點上，應用程式效能將會降低。 強烈建議叢集系統管理員在需要設定資源要求和限制的命名空間上設定*資源配額*。 如需詳細資訊，請參閱 [AKS 叢集的資源配額][resource-quotas]。
+
+當您定義 CPU 要求或限制時，其值會以 CPU 單位來測量。 
+* *1.0* CPU 等同於節點上的一個基礎虛擬 CPU 核心。 
+* GPU 也會使用相同的測量方式。
+* 您可以定義以 millicore 測量的分數。 例如， *100m*是基礎 vCPU 核心的*0.1* 。
 
 在下列單一 NGINX Pod 的基本範例中，Pod 會要求 *100m* 的 CPU 時間和 *128Mi* 的記憶體。 Pod 的資源限制設為 *250m* 的 CPU 和 *256Mi* 的記憶體：
 
@@ -68,11 +76,11 @@ spec:
 
 **最佳做法指引** - 開發小組應使用 Dev Spaces 對 AKS 叢集進行部署和偵錯。 這個開發模型可確保在應用程式部署至生產環境之前，均實作了角色型存取控制、網路或儲存體需求。
 
-透過 Azure Dev Spaces，您將可直接對 AKS 叢集開發、偵錯和測試應用程式。 小組內的開發人員可互相合作，而在整個應用程式生命週期中進行建置及測試。 您可以繼續使用現有的工具，例如 Visual Studio 或 Visual Studio Code。 為 Dev Spaces 安裝的延伸模組會提供在 AKS 叢集中執行和偵錯應用程式的選項：
-
-![使用 Dev Spaces 在 AKS 叢集中進行應用程式的偵錯](media/developer-best-practices-resource-management/dev-spaces-debug.png)
+透過 Azure Dev Spaces，您將可直接對 AKS 叢集開發、偵錯和測試應用程式。 小組內的開發人員可互相合作，而在整個應用程式生命週期中進行建置及測試。 您可以繼續使用現有的工具，例如 Visual Studio 或 Visual Studio Code。 系統會針對 Dev Spaces 安裝延伸模組，以提供在 AKS 叢集中執行和偵錯工具的選項。
 
 這種使用 Dev Spaces 的整合式開發和測試程序可降低對於本機測試環境的需求，例如 [minikube][minikube]。 因為您可以對 AKS 叢集進行開發和測試。 如上一節所提到的，使用命名空間可透過邏輯方式隔離叢集，而讓此叢集可受到保護和隔離。 當您的應用程式準備好要部署到生產環境時，您將可放心部署，因為您的開發全都是在實際的 AKS 叢集中完成的。
+
+Azure Dev Spaces 適用于在 Linux pod 和節點上執行的應用程式。
 
 ## <a name="use-the-visual-studio-code-extension-for-kubernetes"></a>使用適用於 Kubernetes 的 Visual Studio Code 延伸模組
 
@@ -84,9 +92,11 @@ spec:
 
 ## <a name="regularly-check-for-application-issues-with-kube-advisor"></a>使用 kube-advisor 定期檢查應用程式的問題
 
-**最佳做法指导** - 定期运行最新版本的 `kube-advisor` 开放源代码工具，以检测群集中的问题。 如果您在現有的 AKS 叢集上套用資源配額，請先執行 `kube-advisor` 以尋找未定義資源要求和限制的 Pod。
+**最佳做法指引**-定期執行最新版本的 `kube-advisor` 開放原始碼工具，以偵測您叢集中的問題。 如果您在現有的 AKS 叢集上套用資源配額，請先執行 `kube-advisor` 以尋找未定義資源要求和限制的 Pod。
 
-[kube-advisor][kube-advisor] 工具是一个关联的 AKS 开放源代码项目，它将扫描 Kubernetes 群集，并报告它找到的问题。 一個實用的檢查，就是找出沒有備妥資源要求和限制的 Pod。
+[Kube advisor][kube-advisor]工具是一個相關聯的 AKS 開放原始碼專案，可掃描 Kubernetes 叢集並報告發現的問題。 一個實用的檢查，就是找出沒有備妥資源要求和限制的 Pod。
+
+kube-advisor 工具可以報告適用於 Windows 應用程式和 Linux 應用程式的 PodSpecs 中的資源要求和限制遺漏，但是 kube-advisor 工具本身必須在 Linux Pod 上排程。 您可以使用 Pod 設定中的[節點選取器][k8s-node-selector]，排程 Pod 在具有特定作業系統的節點集區上執行。
 
 在裝載許多開發小組和應用程式的 AKS 叢集中，若沒有這些資源要求和限制集，就可能難以追蹤 Pod。 最佳做法是在 AKS 叢集上定期執行 `kube-advisor`。
 
@@ -96,7 +106,7 @@ spec:
 
 若要實作這些最佳做法，請參閱下列文章：
 
-* [使用 Dev Spaces 進行開發][dev-spaces]
+* [使用 Dev Spaces 部署][dev-spaces]
 * [使用 kube-advisor 定期檢查問題][aks-kubeadvisor]
 
 <!-- EXTERNAL LINKS -->
@@ -107,6 +117,7 @@ spec:
 
 <!-- INTERNAL LINKS -->
 [aks-kubeadvisor]: kube-advisor-tool.md
-[dev-spaces]: ../dev-spaces/get-started-netcore.md
+[dev-spaces]: ../dev-spaces/how-dev-spaces-works-local-process-kubernetes.md
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas
+[k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

@@ -1,29 +1,29 @@
 ---
-title: 筆墨辨識器 API 的語言和地區的支援
+title: 筆跡辨識器 API 的語言和區域支援
 titleSuffix: Azure Cognitive Services
-description: 筆墨辨識器 API 所支援的自然語言的清單。
+description: 筆跡辨識器 API 所支援的自然語言清單。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: text-analytics
+ms.subservice: ink-recognizer
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: 98962182da86fceb0b6fcc8540422f93bc0058f5
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 7e5c1c74a3659be855b3f846c16672d0d73b9de4
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026786"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309691"
 ---
-# <a name="language-and-region-support-for-the-ink-recognizer-api"></a>筆墨辨識器 API 的語言和地區的支援
+# <a name="language-and-region-support-for-the-ink-recognizer-api"></a>筆跡辨識器 API 的語言和區域支援
 
-本文說明適用於手寫辨識器 API 所支援的語言。 寫入下列語言版本的數位筆跡內容可以解譯並處理的 API。
+本文說明筆跡辨識器 API 支援哪些語言。 以下列語言撰寫的數位筆跡內容可以由 API 來解讀及處理。
 
 ## <a name="supported-languages"></a>支援的語言
 
-| 語言                                   | 語言代碼   |
+| Language                                   | 語言代碼   |
 |:-------------------------------------------|:---------------:|
 | 南非荷蘭文                                  |    `af-ZA`      |
 | 阿爾巴尼亞文                                   |     `sq-AL`     |
@@ -37,7 +37,7 @@ ms.locfileid: "65026786"
 | 丹麥文                                     |     `da-DK`     |
 | 荷蘭文 (比利時)                            |     `nl-BE`     |
 | 荷蘭文 (荷蘭)                        |     `nl-NL`     |
-| 英文 (澳洲)                        |     `en-AU`     |
+| 英文 (澳大利亞)                        |     `en-AU`     |
 | 英文 (加拿大)                           |     `en-CA`     |
 | 英文 (英國)                   |     `en-GB`     |
 | 英文 (印度)                            |     `en-IN`     |
@@ -45,10 +45,10 @@ ms.locfileid: "65026786"
 | 芬蘭文                                    |     `fi-FI`     |
 | 法文 (法國)                            |     `fr-FR`     |
 | 加利西亞文                                   |     `gl-ES`     |
-| 德文 （瑞士）                      |     `de-CH`     |
+| 德文（瑞士）                      |     `de-CH`     |
 | 德文 (德國)                           |     `de-DE`     |
 | 希臘文                                      |     `el-GR`     |
-| 北印度文                                      |     `hi-IN`     |
+| Hindi                                      |     `hi-IN`     |
 | 印尼文                                 |     `id-ID`     |
 | 愛爾蘭文                                      |     `ga-IE`     |
 | 義大利文 (義大利)                            |     `it-IT`     |
@@ -57,7 +57,7 @@ ms.locfileid: "65026786"
 | 史瓦希里文 (肯亞)                          |     `sw-KE`     |
 | 韓文                                     |     `ko-KR`     |
 | 盧森堡文                              |     `lb-LU`     |
-| 馬來文 (汶萊)                  |     `ms-BN`     |
+| 馬來文 (汶萊達魯薩蘭)                  |     `ms-BN`     |
 | 馬來文 (馬來西亞)                           |     `ms-MY`     |
 | 毛利文                                      |     `mi-NZ`     |
 | 挪威文 (巴克摩)                         |     `nb-NO`     |
@@ -70,11 +70,11 @@ ms.locfileid: "65026786"
 | 俄文                                    |     `ru-RU`     |
 | 蘇格蘭蓋爾文                            |     `gd-GB`     |
 | 北索托文                           |    `nso-ZA`     |
-| 塞爾維亞文 (斯拉夫、波士尼亞及赫塞哥維納) |  `sr-Cyrl-BA`   |
-| 塞爾維亞文 (斯拉夫，蒙特內哥羅)             |  `sr-Cyrl-ME`   |
+| 塞爾維亞文 (斯拉夫、波士尼亞與赫塞哥維納) |  `sr-Cyrl-BA`   |
+| 塞爾維亞文（斯拉夫，黑山）             |  `sr-Cyrl-ME`   |
 | 塞爾維亞文 (斯拉夫，塞爾維亞)                 |  `sr-Cyrl-RS`   |
-| 塞爾維亞文 （拉丁，波士尼亞及赫塞哥維納）    |  `sr-Latn-BA`   |
-| 塞爾維亞文 (拉丁，蒙特內哥羅)                |  `sr-Latn-ME`   |
+| 塞爾維亞文（拉丁，波士尼亞和黑塞哥維那）    |  `sr-Latn-BA`   |
+| 塞爾維亞文（拉丁，黑山）                |  `sr-Latn-ME`   |
 | 塞爾維亞文 (拉丁，塞爾維亞)                    |  `sr-Latn-RS`   |
 | 塞茲瓦納文 (南非)                    |     `tn-ZA`     |
 | 斯洛伐克文                                     |     `sk-SK`     |
@@ -86,10 +86,10 @@ ms.locfileid: "65026786"
 | 土耳其文                                    |     `tr-TR`     |
 | 威爾斯文                                      |     `cy-GB`     |
 | 沃洛夫文                                      |     `wo-SN`     |
-| 廓薩文                                      |     `xh-ZA`     |
-| 袓魯文                                       |     `zu-ZA`     |
+| 科薩文                                      |     `xh-ZA`     |
+| 祖魯文                                       |     `zu-ZA`     |
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
-* [什麼是手寫辨識器 API？](overview.md)
-* [傳送數位筆墨筆劃，筆墨辨識器 api](concepts/send-ink-data.md)
+* [什麼是筆跡辨識器 API？](overview.md)
+* [將數位筆跡筆劃傳送至筆跡辨識器 API](concepts/send-ink-data.md)

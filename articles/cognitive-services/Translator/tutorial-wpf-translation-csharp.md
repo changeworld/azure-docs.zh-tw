@@ -1,25 +1,25 @@
 ---
-title: 教學課程：使用 WPF 建立翻譯應用程式 (C#) - 翻譯工具文字 API
+title: 教學課程：使用 WPF 建立翻譯應用程式 (C#) - 翻譯工具
 titleSuffix: Azure Cognitive Services
-description: 在本教學課程中，您將建立以單一訂用帳戶金鑰使用認知服務 API 進行文字翻譯、語言偵測和拼字檢查的 Windows Presentation Foundation (WPF) 應用程式。 本練習將說明如何使用翻譯工具文字 API 和 Bing 拼字檢查 API 中的功能。
+description: 在本教學課程中，您將建立以單一訂用帳戶金鑰來執行文字翻譯、語言偵測和拼字檢查的 WPF 應用程式。
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 02/13/2019
-ms.author: erhopf
-ms.openlocfilehash: f7f8e86f17b0fdb715afc96dba80db0746440cef
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 05/26/2020
+ms.author: swmachan
+ms.openlocfilehash: f80d22adc432a81fcc88391e71ed7540399fa559
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078120"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995729"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>教學課程：使用 WPF 建立翻譯應用程式
 
-在本教學課程中，您將建置以單一訂用帳戶金鑰使用 Azure 認知服務進行文字翻譯、語言偵測和拼字檢查的 [Windows Presentation Foundation (WPF)](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2017) 應用程式。 具體來說，您的應用程式將呼叫翻譯工具文字和 [Bing 拼字檢查](https://azure.microsoft.com/services/cognitive-services/spell-check/)的 API。
+在本教學課程中，您將建置以單一訂用帳戶金鑰使用 Azure 認知服務進行文字翻譯、語言偵測和拼字檢查的 [Windows Presentation Foundation (WPF)](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2019) 應用程式。 具體來說，您的應用程式將呼叫翻譯工具和 [Bing 拼字檢查](https://azure.microsoft.com/services/cognitive-services/spell-check/)的 API。
 
 什麼是 WPF？ 這是可建立桌面用戶端應用程式的 UI 架構。 WPF 開發平台支援廣泛的應用程式開發功能，包括應用程式模型、資源、控制項、圖形、版面配置、資料繫結、文件和安全性。 它是 .NET Framework 的子集，因此，如果您先前曾使用 ASP.NET 或 Windows Forms 在 .NET Framework 中建置應用程式，即應熟悉其程式設計體驗。 WPF 使用可延伸應用程式標記語言 (XAML) 提供應用程式開發的宣告式模型，我們將在接下來的章節中加以討論。
 
@@ -29,7 +29,7 @@ ms.locfileid: "58078120"
 > * 在 Visual Studio 中建立 WPF 專案
 > * 將組件和 NuGet 套件新增至您的專案
 > * 使用 XAML 建立應用程式的 UI
-> * 使用翻譯工具文字 API 取得語言、翻譯文字，以及偵測來源語言
+> * 使用翻譯工具取得語言、翻譯文字，以及偵測來源語言
 > * 使用 Bing 拼字檢查 API 來驗證輸入，並改善翻譯的精確度
 > * 執行您的 WPF 應用程式
 
@@ -37,20 +37,20 @@ ms.locfileid: "58078120"
 
 此清單包含本教學課程中使用的認知服務。 請依照下列連結瀏覽每項功能的 API 參考。
 
-| 服務 | 功能 | 說明 |
+| 服務 | 功能 | 描述 |
 |---------|---------|-------------|
-| 翻譯文字 | [取得語言](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | 擷取文字翻譯完整的支援語言清單。 |
-| 翻譯文字 | [翻譯](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | 將文字翻譯為 60 多種語言。 |
-| 翻譯文字 | [偵測](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | 偵測輸入文字的語言。 包含偵測的信賴分數。 |
+| 轉譯程式 | [取得語言](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | 擷取文字翻譯完整的支援語言清單。 |
+| 轉譯程式 | [翻譯](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | 將文字翻譯為 60 多種語言。 |
+| 轉譯程式 | [偵測](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | 偵測輸入文字的語言。 包含偵測的信賴分數。 |
 | Bing 拼字檢查 | [拼字檢查](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | 更正拼字錯誤以改善翻譯的正確性。 |
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 繼續操作之前，您將需要下列項目：
 
-* Azure 認知服務訂用帳戶。 [取得認知服務金鑰](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#multi-service-subscription)。
+* Azure 認知服務訂用帳戶。 [取得認知服務金鑰](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#create-a-new-azure-cognitive-services-resource)。
 * 一部 Windows 電腦
-* [Visual Studio 2017](https://www.visualstudio.com/downloads/) - Community 或 Enterprise 版
+* [Visual Studio 2019](https://www.visualstudio.com/downloads/) - Community 或 Enterprise 版
 
 > [!NOTE]
 > 建議您在美國西部區域建立本教學課程所需的訂用帳戶。 否則，您在執行此練習時將必須變更程式碼中的端點和區域。  
@@ -59,11 +59,13 @@ ms.locfileid: "58078120"
 
 我們的首要工作是在 Visual Studio 中設定專案。
 
-1. 開啟 Visual Studio。 然後，選取 [檔案] > [新增] > [專案]。
-2. 在左面板中找出 **Visual C#**，並加以選取。 然後，選取中央面板中的 [WPF 應用程式 (.NET Framework)]。
-   ![在 Visual Studio 中建立 WPF 應用程式](media/create-wpf-project-visual-studio.png)
-3. 為您的專案命名，並將 Framework 版本設為 **.NET Framework 4.5.2 或更新版本**，然後按一下 [確定]。
-4. 您的專案已建立。 您會發現有兩個開啟的索引標籤：`MainWindow.xaml` 和 `MainWindow.xaml.cs`。 在本教學課程中，我們都將在這兩個檔案中新增程式碼。 第一個檔案用於應用程式的使用者介面；第二個檔案則用來呼叫翻譯工具文字和 Bing 拼字檢查。
+1. 開啟 Visual Studio。 選取 [建立新專案]。
+1. 在 [建立新專案] 中，找出並選取 [WPF 應用程式 (.NET Framework)]。 您可以從 [語言] 選取 C# 來縮小選項的範圍。
+1. 選取 [下一步]，然後將您的專案命名為 `MSTranslatorDemo`。
+1. 將 framework 版本設定為 **.NET Framework 4.7.2** 或更新版本，然後選取 [建立]。
+   ![在 Visual Studio 中輸入名稱和 framework 版本](media/name-wpf-project-visual-studio.png)
+
+您的專案已建立。 您會發現有兩個開啟的索引標籤：`MainWindow.xaml` 和 `MainWindow.xaml.cs`。 在本教學課程中，我們都將在這兩個檔案中新增程式碼。 我們會針對應用程式的使用者介面修改 `MainWindow.xaml`。 我們會針對我們對翻譯工具和 Bing 拼寫檢查的呼叫修改 `MainWindow.xaml.cs`。
    ![檢查您的環境](media/blank-wpf-project.png)
 
 在下一節中，我們會將組件和 NuGet 套件新增至專案以增添功能，例如 JSON 剖析。
@@ -76,27 +78,31 @@ ms.locfileid: "58078120"
 
 我們將在專案中新增組件，用以序列化和還原序列化物件，以及管理 HTTP 要求和回應。
 
-1. 在 Visual Studio 的方案總管中 (右面板) 找出您的專案。 以滑鼠右鍵按一下您的專案，然後選取 [新增] > [參考...]，以開啟 [參考管理員]。
-   ![新增組件參考](media/add-assemblies-sample.png)
-2. [組件] 索引標籤會列出所有可供參考的 .NET Framework 組件。 使用畫面右上角的搜尋列來搜尋這些參考，並將其新增至您的專案：
-   * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization?view=netframework-4.7.2)
-   * [System.Web](https://docs.microsoft.com/dotnet/api/system.web?view=netframework-4.7.2)
-   * [System.Web.Extensions](https://docs.microsoft.com/dotnet/api/system.web?view=netframework-4.7.2)
-3. 將這些參考新增至專案後，您可以按一下 [確定] 以關閉 [參考管理員]。
+1. 在 Visual Studio 的方案總管中找出您的專案。 以滑鼠右鍵按一下您的專案，然後選取 [新增] > [參考]，以開啟 [參考管理員]。
+1. [組件] 索引標籤會列出所有可供參考的 .NET Framework 組件。 使用右上方的搜尋列來搜尋參考。
+   ![新增組件參考](media/add-assemblies-2019.png)
+1. 為您的專案選取下列參考：
+   * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
+   * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
+   * System.Web.Extensions
+   * [System.Windows](https://docs.microsoft.com/dotnet/api/system.windows)
+1. 將這些參考新增至專案後，您可以按一下 [確定] 以關閉 [參考管理員]。
 
 > [!NOTE]
-> 如果您想要深入了解組件參考，請參閱[操作說明：使用參考管理員新增或移除參考](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2017)。
+> 如果您想要深入了解組件參考，請參閱[操作說明：使用參考管理員新增或移除參考](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019)。
 
 ### <a name="install-newtonsoftjson"></a>安裝 Newtonsoft.Json
 
 我們的應用程式會使用 NewtonSoft.Json 將 JSON 物件還原序列化。 請依照下列指示來安裝套件。
 
-1. 在 Visual Studio 的方案總管中找出您的專案，並以滑鼠右鍵按一下該專案。 選取 [管理 NuGet 套件...]。
-2. 找出 [瀏覽] 索引標籤並加以選取。
-3. 在搜尋列中輸入 [NewtonSoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/)。
-   ![找出 NewtonSoft.Json 並加以安裝](media/add-nuget-packages.png)
-4. 選取套件並按一下 [安裝]。
-5. 安裝完成後，請關閉索引標籤。
+1. 在 Visual Studio 的方案總管中找出您的專案，並以滑鼠右鍵按一下該專案。 選取 [管理 NuGet 套件]。
+1. 找出 [瀏覽] 索引標籤並加以選取。
+1. 在搜尋列中輸入 [NewtonSoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/)。
+
+    ![找出 NewtonSoft.Json 並加以安裝](media/nuget-package-manager.png)
+
+1. 選取套件並按一下 [安裝]。
+1. 安裝完成後，請關閉索引標籤。
 
 ## <a name="create-a-wpf-form-using-xaml"></a>使用 XAML 建立 WPF 表單
 
@@ -108,10 +114,10 @@ ms.locfileid: "58078120"
 
 使用者介面包含下列元件：
 
-| Name | 類型 | 說明 |
+| 名稱 | 類型 | 描述 |
 |------|------|-------------|
-| `FromLanguageComboBox` | 下拉式方塊 | 顯示 Microsoft Translator 支援的文字翻譯語言清單。 使用者會選取其來源翻譯語言。 |
-| `ToLanguageComboBox` | 下拉式方塊 | 顯示與 `FromComboBox` 相同的語言清單，但會用來選取使用者的目標翻譯語言。 |
+| `FromLanguageComboBox` | ComboBox | 顯示 Microsoft Translator 支援的文字翻譯語言清單。 使用者會選取其來源翻譯語言。 |
+| `ToLanguageComboBox` | ComboBox | 顯示與 `FromComboBox` 相同的語言清單，但會用來選取使用者的目標翻譯語言。 |
 | `TextToTranslate` | TextBox | 可讓使用者輸入要翻譯的文字。 |
 | `TranslateButton` | 按鈕 | 使用此按鈕可翻譯文字。 |
 | `TranslatedTextLabel` | 標籤 | 顯示翻譯。 |
@@ -123,14 +129,14 @@ ms.locfileid: "58078120"
 我們要在專案中新增程式碼。
 
 1. 在 Visual Studio 中，選取 `MainWindow.xaml` 的索引標籤。
-2. 將此程式碼複製到您的專案中，並加以儲存。
+1. 將此程式碼複製到您的專案，然後選取 [檔案] > [儲存 mainwindow.xaml]，以儲存您的變更。
    ```xaml
-   <Window x:Class="MSTranslatorTextDemo.MainWindow"
+   <Window x:Class="MSTranslatorDemo.MainWindow"
            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-           xmlns:local="clr-namespace:MSTranslatorTextDemo"
+           xmlns:local="clr-namespace:MSTranslatorDemo"
            mc:Ignorable="d"
            Title="Microsoft Translator" Height="400" Width="700" BorderThickness="0">
        <Grid>
@@ -158,7 +164,7 @@ ms.locfileid: "58078120"
        </Grid>
    </Window>
    ```
-3. 此時，您應該會在 Visual Studio 中看到應用程式使用者介面的預覽。 看起來應該會類似於下圖。
+此時，您應該會在 Visual Studio 中看到應用程式使用者介面的預覽。 看起來應該會類似於下圖。
 
 就這樣，您的表單已準備就緒。 現在，我們要撰寫一些程式碼來使用文字翻譯和 Bing 拼字檢查。
 
@@ -167,18 +173,18 @@ ms.locfileid: "58078120"
 
 ## <a name="create-your-app"></a>建立您的應用程式
 
-`MainWindow.xaml.cs` 包含可控制應用程式的程式碼。 在接下來的幾節中，我們將新增程式碼以填入下拉式功能表中，並呼叫翻譯工具文字和 Bing 拼字檢查所公開的幾個 API。
+`MainWindow.xaml.cs` 包含可控制應用程式的程式碼。 在接下來的幾節中，我們將新增程式碼以填入下拉式功能表中，並呼叫翻譯工具和 Bing 拼字檢查所公開的幾個 API。
 
-* 當程式啟動時，`MainWindow` 會具現化，然後呼叫翻譯工具文字 API 的 `Languages` 方法來擷取並填入我們的語言選取下拉式清單。 此作業只會在每個工作階段開始時執行一次。
+* 當程式啟動時，`MainWindow` 會具現化，然後呼叫翻譯工具的 `Languages` 方法以擷取並填入我們的語言選取下拉式清單。 此作業只會在每個工作階段開始時執行一次。
 * 按一下 [翻譯] 按鈕後，即會擷取使用者選取的語言和文字，然後對輸入進行拼字檢查，並且為使用者顯示翻譯和偵測到的語言。
-  * 系統會呼叫翻譯工具文字 API 的 `Translate` 方法，以翻譯 `TextToTranslate` 中的文字。 此呼叫也包含使用下拉式功能表選取的 `to` 和 `from` 語言。
-  * 系統會呼叫翻譯工具文字 API 的 `Detect` 方法，以判定 `TextToTranslate` 的文字語言。
+  * 系統會呼叫翻譯工具的 `Translate` 方法，以翻譯 `TextToTranslate` 中的文字。 此呼叫也包含使用下拉式功能表選取的 `to` 和 `from` 語言。
+  * 系統會呼叫翻譯工具的 `Detect` 方法，以判定 `TextToTranslate` 的文字語言。
   * 系統會使用 Bing 拼字檢查來驗證 `TextToTranslate` 並調整拼字錯誤。
 
-我們的整個專案會封裝在 `MainWindow : Window` 類別中。 我們將先新增程式碼以設定訂用帳戶金鑰、宣告翻譯工具文字和 Bing 拼字檢查的端點，並初始化應用程式。
+我們的整個專案會封裝在 `MainWindow : Window` 類別中。 我們將先新增程式碼以設定訂用帳戶金鑰、宣告翻譯工具和 Bing 拼字檢查的端點，並初始化應用程式。
 
 1. 在 Visual Studio 中，選取 `MainWindow.xaml.cs` 的索引標籤。
-2. 將預先填入的 `using` 陳述式取代為以下內容。  
+1. 將預先填入的 `using` 陳述式取代為以下內容。  
    ```csharp
    using System;
    using System.Windows;
@@ -190,14 +196,14 @@ ms.locfileid: "58078120"
    using System.Text;
    using Newtonsoft.Json;
    ```
-3. 找出 `MainWindow : Window` 類別，並將其取代下列程式碼：
+1. 找出 `MainWindow : Window` 類別，並將其取代下列程式碼：
    ```csharp
    {
        // This sample uses the Cognitive Services subscription key for all services. To learn more about
        // authentication options, see: https://docs.microsoft.com/azure/cognitive-services/authentication.
        const string COGNITIVE_SERVICES_KEY = "YOUR_COG_SERVICES_KEY";
-       // Endpoints for Translator Text and Bing Spell Check
-       public static readonly string TEXT_TRANSLATION_API_ENDPOINT = "https://api.cognitive.microsofttranslator.com/{0}?api- version=3.0";
+       // Endpoints for Translator and Bing Spell Check
+       public static readonly string TEXT_TRANSLATION_API_ENDPOINT = "https://api.cognitive.microsofttranslator.com/{0}?api-version=3.0";
        const string BING_SPELL_CHECK_API_ENDPOINT = "https://westus.api.cognitive.microsoft.com/bing/v7.0/spellcheck/";
        // An array of language codes
        private string[] languageCodes;
@@ -211,7 +217,7 @@ ms.locfileid: "58078120"
        {
            Exception e = (Exception)args.ExceptionObject;
            MessageBox.Show("Caught " + e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-           System.Windows.app.Current.Shutdown();
+           System.Windows.Application.Current.Shutdown();
        }
        // MainWindow constructor
        public MainWindow()
@@ -224,7 +230,7 @@ ms.locfileid: "58078120"
                MessageBox.Show("One or more invalid API subscription keys.\n\n" +
                    "Put your keys in the *_API_SUBSCRIPTION_KEY variables in MainWindow.xaml.cs.",
                    "Invalid Subscription Key(s)", MessageBoxButton.OK, MessageBoxImage.Error);
-               System.Windows.app.Current.Shutdown();
+               System.Windows.Application.Current.Shutdown();
            }
            else
            {
@@ -240,16 +246,16 @@ ms.locfileid: "58078120"
    // In the following sections, we'll add code below this.
    }
    ```
-   1. 新增您的認知服務訂用帳戶，並加以儲存。
+1. 新增您的認知服務訂用帳戶，並加以儲存。
 
 在此程式碼區塊中，我們宣告了兩個成員變數，其中包含可用翻譯語言的相關資訊：
 
-| 變數 | 類型 | 說明 |
+| 變數 | 類型 | 描述 |
 |----------|------|-------------|
 |`languageCodes` | 字串的陣列 |快取語言代碼。 Translator 服務使用短代碼 (例如 `en` 代表英文) 來識別語言。 |
 |`languageCodesAndTitles` | 已排序的字典 | 將使用者介面中的「易記」名稱往回對應至 API 中所使用的短代碼。 依字母順序排序，而不考慮大小寫。 |
 
-然後，我們在 `MainWindow` 建構函式中新增了 `HandleExceptions` 進行錯誤處理。 這可確保在例外狀況未獲得處理時會發出警示。 然後會執行檢查，以確認所提供的訂用帳戶金鑰長度為 32 個字元。 如果金鑰的長度小於/大於 32 個字元，則會擲回錯誤。
+然後，我們在 `MainWindow` 建構函式中新增了 `HandleExceptions` 進行錯誤處理。 此錯誤處理可確保在例外狀況未獲得處理時會發出警示。 然後會執行檢查，以確認所提供的訂用帳戶金鑰長度為 32 個字元。 如果金鑰的長度小於/大於 32 個字元，則會擲回錯誤。
 
 如果金鑰至少長度正確，`InitializeComponent()` 呼叫就會藉由尋找、載入主應用程式視窗的 XAML 描述並將其具現化，讓使用者介面開始運作。
 
@@ -257,7 +263,7 @@ ms.locfileid: "58078120"
 
 ## <a name="get-supported-languages"></a>取得支援的語言
 
-翻譯工具文字 API 目前支援 60 餘種語言。 由於未來將會新增其他語言支援，因此建議您呼叫翻譯工具文字所公開的語言資源，而不要在您的應用程式中建立硬式編碼的語言清單。
+翻譯工具目前支援 60 餘種語言。 未來將會新增其他語言支援，因此建議您呼叫翻譯工具所公開的語言資源，而不要在您的應用程式中建立硬式編碼的語言清單。
 
 在本節中，我們將建立對語言資源的 `GET` 要求，以指定我們想要翻譯的可用語言清單。
 
@@ -322,7 +328,7 @@ JSON 回應經剖析後會轉換為字典。 然後，語言代碼會新增至 `
 
 ## <a name="populate-language-drop-down-menus"></a>填入語言下拉式功能表
 
-使用者介面都是以 XAML 定義的，因此除了呼叫 `InitializeComponent()` 以外，不需費太多功夫即可完成設定。 您需要做的，就是將易記語言名稱新增至 [翻譯來源] 和 [翻譯目標] 下拉式功能表；此作業可用 `PopulateLanguageMenus()` 方法完成。
+使用者介面都是以 XAML 定義的，因此除了呼叫 `InitializeComponent()` 以外，不需費太多功夫即可完成設定。 您需要做的，就是將易記語言名稱新增至 [翻譯來源] 和 [翻譯目標] 下拉式功能表。 `PopulateLanguageMenus()` 方法會新增名稱。
 
 1. 在 Visual Studio 中，開啟 `MainWindow.xaml.cs` 的索引標籤。
 2. 將下列程式碼新增至專案的 `GetLanguagesForTranslate()` 方法下方：
@@ -356,7 +362,7 @@ JSON 回應經剖析後會轉換為字典。 然後，語言代碼會新增至 `
 
 ## <a name="detect-language-of-source-text"></a>偵測來源文字的語言
 
-現在，我們要建立相關方法，以使用翻譯工具文字 API 偵測來源文字 (在文字區域中輸入的文字) 的語言。 此要求傳回的值將用於我們後續的翻譯要求中。
+現在，我們將建立相關方法，以使用翻譯工具偵測來源文字 (在文字區域中輸入的文字) 的語言。 此要求傳回的值將用於我們後續的翻譯要求中。
 
 1. 在 Visual Studio 中，開啟 `MainWindow.xaml.cs` 的索引標籤。
 2. 將下列程式碼新增至專案的 `PopulateLanguageMenus()` 方法下方：
@@ -366,11 +372,11 @@ JSON 回應經剖析後會轉換為字典。 然後，語言代碼會新增至 `
    {
        string detectUri = string.Format(TEXT_TRANSLATION_API_ENDPOINT ,"detect");
 
-       // Create request to Detect languages with Translator Text
+       // Create request to Detect languages with Translator
        HttpWebRequest detectLanguageWebRequest = (HttpWebRequest)WebRequest.Create(detectUri);
        detectLanguageWebRequest.Headers.Add("Ocp-Apim-Subscription-Key", COGNITIVE_SERVICES_KEY);
        detectLanguageWebRequest.Headers.Add("Ocp-Apim-Subscription-Region", "westus");
-       detectLanguageWebRequest.ContentType = "app/json; charset=utf-8";
+       detectLanguageWebRequest.ContentType = "application/json; charset=utf-8";
        detectLanguageWebRequest.Method = "POST";
 
        // Send request
@@ -412,7 +418,7 @@ JSON 回應經剖析後會轉換為字典。 然後，語言代碼會新增至 `
 
 ## <a name="spell-check-the-source-text"></a>對來源文字進行拼字檢查
 
-現在，我們將建立使用 Bing 拼字檢查 API 對來源文字進行拼字檢查的方法。 這可確保翻譯工具文字 API 能夠產生正確的翻譯。 對來源文字所做的任何校正，都會在我們按下 [翻譯] 按鈕時隨著翻譯要求一起傳遞。
+現在，我們將建立使用 Bing 拼字檢查 API 對來源文字進行拼字檢查的方法。 拼字檢查可確保翻譯工具能夠產生正確的翻譯。 對來源文字所做的任何校正，都會在我們按下 [翻譯] 按鈕時隨著翻譯要求一起傳遞。
 
 1. 在 Visual Studio 中，開啟 `MainWindow.xaml.cs` 的索引標籤。
 2. 將下列程式碼新增至專案的 `DetectLanguage()` 方法下方：
@@ -427,7 +433,7 @@ private string CorrectSpelling(string text)
     HttpWebRequest spellCheckWebRequest = (HttpWebRequest)WebRequest.Create(uri);
     spellCheckWebRequest.Headers.Add("Ocp-Apim-Subscription-Key", COGNITIVE_SERVICES_KEY);
     spellCheckWebRequest.Method = "POST";
-    spellCheckWebRequest.ContentType = "app/x-www-form-urlencoded"; // doesn't work without this
+    spellCheckWebRequest.ContentType = "application/x-www-form-urlencoded"; // doesn't work without this
 
     // Create and send the request
     string body = "text=" + System.Web.HttpUtility.UrlEncode(text);
@@ -479,7 +485,7 @@ private string CorrectSpelling(string text)
 最後，我們必須建立在使用者介面中的 [翻譯] 按鈕經點選時所叫用的方法。
 
 1. 在 Visual Studio 中，開啟 `MainWindow.xaml.cs` 的索引標籤。
-2. 將下列程式碼新增至專案的 `CorrectSpelling()` 方法下方，並加以儲存：  
+1. 將下列程式碼新增至專案的 `CorrectSpelling()` 方法下方，並加以儲存：  
    ```csharp
    // ***** PERFORM TRANSLATION ON BUTTON CLICK
    private async void TranslateButton_Click(object sender, EventArgs e)
@@ -536,7 +542,7 @@ private string CorrectSpelling(string text)
        {
            request.Method = HttpMethod.Post;
            request.RequestUri = new Uri(uri);
-           request.Content = new StringContent(requestBody, Encoding.UTF8, "app/json");
+           request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
            request.Headers.Add("Ocp-Apim-Subscription-Key", COGNITIVE_SERVICES_KEY);
            request.Headers.Add("Ocp-Apim-Subscription-Region", "westus");
            request.Headers.Add("X-ClientTraceId", Guid.NewGuid().ToString());
@@ -553,7 +559,7 @@ private string CorrectSpelling(string text)
    }
    ```
 
-第一個步驟是取得「來源」和「目標」語言，以及使用者在表單中輸入的文字。 如果來源語言設為 [偵測]，則會呼叫 `DetectLanguage()` 以判斷來源文字的語言。 該文字有可能屬於翻譯工具 API 不支援的語言。 在此情況下會顯示訊息來通知使用者，並返回而不翻譯文字。
+第一個步驟是取得「來源」和「目標」語言，以及使用者在表單中輸入的文字。 如果來源語言設為 [偵測]，則會呼叫 `DetectLanguage()` 以判斷來源文字的語言。 該文字有可能屬於翻譯工具不支援的語言。 在此情況下會顯示訊息來通知使用者，並返回而不翻譯文字。
 
 如果來源語言是英文 (不論是指定的，還是偵測到的)，請使用 `CorrectSpelling()` 來檢查文字拼字，並套用任何校正。 校正後的文字會重新新增至文字區域中，讓使用者知道已進行校正。
 
@@ -574,4 +580,4 @@ private string CorrectSpelling(string text)
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [Microsoft Translator Text API 參考](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
+> [Microsoft Translator 參考](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)

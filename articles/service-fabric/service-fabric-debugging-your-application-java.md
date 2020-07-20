@@ -1,25 +1,16 @@
 ---
-title: 在 Eclipse 中針對 Azure Service Fabric 應用程式進行偵錯 | Microsoft Docs
+title: 在 Eclipse 中對應用程式進行 Debug
 description: 透過 Eclipse 在本機開發叢集上進行服務開發和偵錯，來改善您服務的可靠性和效能。
-services: service-fabric
-documentationcenter: .net
 author: suhuruli
-manager: chackdan
-editor: ''
-ms.assetid: cb888532-bcdb-4e47-95e4-bfbb1f644da4
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 2f00636da2b29e7815569a683fdf51c6a4e3b0e0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6f2361bf76bd4f9d297fbe541b950840f13966cc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60393583"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246396"
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>使用 Eclipse 針對 Java Service Fabric 應用程式進行偵錯
 > [!div class="op_single_selector"]
@@ -27,7 +18,7 @@ ms.locfileid: "60393583"
 > * [Eclipse/Java](service-fabric-debugging-your-application-java.md)
 > 
 
-1. 按 [设置 Service Fabric 开发环境](service-fabric-get-started-linux.md)中的步骤创建本地开发群集。
+1. 遵循 [設定 Service Fabric 開發環境](service-fabric-get-started-linux.md)中的步驟來啟動本機開發叢集。
 
 2. 更新您想要偵錯之服務的 entryPoint.sh，使其以遠端偵錯參數開始 Java 處理程序。 您可以在以下位置找到此檔案：`ApplicationName\ServiceNamePkg\Code\entrypoint.sh`。 此範例已設定連接埠 8001 來進行偵錯。
 
@@ -38,7 +29,7 @@ ms.locfileid: "60393583"
 
 4. 部署應用程式。
 
-5. 在 Eclipse IDE 中，選取 [Run] \(執行) -> [Debug Configurations] \(偵錯組態) -> [Remote Java Application and input connection properties] \(遠端 Java 應用程式和輸入連線屬性)，然後依照下列方式設定屬性：
+5. 在 Eclipse IDE 中，選取 [Run] \(執行) -> [Debug Configurations] \(偵錯組態) -> [Remote Java Application and input connection properties] \(遠端 Java 應用程式和輸入連線屬性)****，然後依照下列方式設定屬性：
 
    ```
    Host: ipaddress
@@ -50,5 +41,5 @@ ms.locfileid: "60393583"
 
 ### <a name="next-steps"></a>後續步驟
 
-* [使用 Linux Azure 診斷來收集記錄](service-fabric-diagnostics-how-to-setup-lad.md)。
-* [在本機監視及診斷服務](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)。
+* [使用 Linux Azure 診斷來收集記錄](./service-fabric-diagnostics-event-aggregation-lad.md)。
+* 在[本機監視及診斷服務](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)。

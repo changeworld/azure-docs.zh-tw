@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒體分析修訂臉部 | Microsoft Docs
-description: 本主題示範如何使用 Azure 媒體分析修訂臉部。
+description: Azure 媒體修訂器是一種 Azure 媒體分析媒體處理器，可在雲端中提供可調整的臉部修訂。 本文示範如何使用 Azure 媒體分析修訂臉部。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: juliako;
-ms.openlocfilehash: 1fe003ae13bc5f195932f4f140e17c4dc2791959
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: juliako
+ms.openlocfilehash: 8e150ec037bab0010c5505c880c4cac456118b35
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61247323"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058005"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>使用 Azure 媒體分析修訂臉部 
-## <a name="overview"></a>概觀
-**Azure 媒體修訂器** 是 [Azure 媒體分析](media-services-analytics-overview.md) 媒體處理器 (MP)，可在雲端提供可調整的臉部修訂。 臉部修訂可讓您修改視訊，以模糊所選人物的臉部。 在公共安全和新聞媒體案例中，您可能會想要使用臉部修訂服務。 若要手動修訂包含多個臉部的幾分鐘影片，可能要花上數小時的時間，若使用此服務，則只需要幾個簡單的步驟就能完成臉部修訂程序。 如需詳細資訊，請參閱[此](https://azure.microsoft.com/blog/azure-media-redactor/)部落格。
+## <a name="overview"></a>總覽
+**Azure 媒體修訂器** 是 [Azure 媒體分析](media-services-analytics-overview.md) 媒體處理器 (MP)，可在雲端提供可調整的臉部修訂。 臉部修訂可讓您修改視訊，以模糊所選人物的臉部。 在公共安全和新聞媒體案例中，您可能會想要使用臉部修訂服務。 若要手動修訂包含多個臉部的幾分鐘影片，可能要花上數小時的時間，若使用此服務，則只需要幾個簡單的步驟就能完成臉部修訂程序。 如需詳細資訊，請參閱[此](https://azure.microsoft.com/blog/azure-media-redactor/)blog。
 
 本文章提供有關 **Azure 媒體 Redactor** 的詳細資料，並示範如何搭配適用於 .NET 的媒體服務 SDK 來使用它。
 
@@ -34,22 +34,22 @@ ms.locfileid: "61247323"
 ### <a name="combined-mode"></a>結合模式
 這會自動產生修訂的 mp4，而不需要手動輸入。
 
-| 階段 | 檔案名稱 | 注意 |
+| 階段 | 檔案名稱 | 備註 |
 | --- | --- | --- |
 | 輸入資產 |foo.bar |WMV、MOV 或 MP4 格式的視訊 |
 | 輸入組態 |作業組態預設值 |{'version':'1.0', 'options': {'mode':'combined'}} |
-| 輸出資產 |foo_redacted.mp4 |进行了模糊处理的视频 |
+| 輸出資產 |foo_redacted.mp4 |已套用模糊處理的視訊 |
 
 #### <a name="input-example"></a>輸入範例︰
-[观看此视频](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fed99001d-72ee-4f91-9fc0-cd530d0adbbc%2FDancing.mp4)
+[請觀看這個影片](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fed99001d-72ee-4f91-9fc0-cd530d0adbbc%2FDancing.mp4)
 
-#### <a name="output-example"></a>输出示例：
+#### <a name="output-example"></a>輸出範例：
 [請觀看這個影片](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc6608001-e5da-429b-9ec8-d69d8f3bfc79%2Fdance_redacted.mp4)
 
 ### <a name="analyze-mode"></a>分析模式
 兩段式工作流程的 **分析** 階段會接受視訊輸入，並產生臉部位置的 JSON 檔案和每個偵測到之臉部的 jpg 影像。
 
-| 階段 | 檔案名稱 | 注意 |
+| 階段 | 檔案名稱 | 備註 |
 | --- | --- | --- |
 | 輸入資產 |foo.bar |WMV、MPV 或 MP4 格式的視訊 |
 | 輸入組態 |作業組態預設值 |{'version':'1.0', 'options': {'mode':'analyze'}} |
@@ -114,13 +114,13 @@ ms.locfileid: "61247323"
 
 分析階段的輸出不包含原始視訊。 視訊必須上傳到修訂模式工作的輸入資產並選取做為主要檔案。
 
-| 階段 | 檔案名稱 | 注意 |
+| 階段 | 檔案名稱 | 備註 |
 | --- | --- | --- |
 | 輸入資產 |foo.bar |WMV、MPV 或 MP4 格式的視訊。 和步驟 1 相同的視訊。 |
-| 輸入資產 |foo_annotations.json |第一阶段中的批注元数据文件，包含可选的修改。 |
-| 输入资产 |foo_IDList.txt (選擇性) |要修訂之臉部 ID 的選擇性換行分隔清單。 如果保持空白，則會模糊所有臉部。 |
-| 输入配置 |作業組態預設值 |{'version':'1.0', 'options': {'mode':'redact'}} |
-| 输出资产 |foo_redacted.mp4 |已根據註解套用模糊處理的視訊 |
+| 輸入資產 |foo_annotations.json |來自第一個階段的註解中繼資料檔案，並帶有選擇性的修改。 |
+| 輸入資產 |foo_IDList.txt (選擇性) |要修訂之臉部 ID 的選擇性換行分隔清單。 如果保持空白，則會模糊所有臉部。 |
+| 輸入組態 |作業組態預設值 |{'version':'1.0', 'options': {'mode':'redact'}} |
+| 輸出資產 |foo_redacted.mp4 |已根據註解套用模糊處理的視訊 |
 
 #### <a name="example-output"></a>範例輸出
 這是選取了一個識別碼的 IDList 輸出。
@@ -129,13 +129,15 @@ ms.locfileid: "61247323"
 
 Example foo_IDList.txt
  
-     1
-     2
-     3
+```output
+1
+2
+3
+```
 
 ## <a name="blur-types"></a>模糊類型
 
-在 [結合] 或 [修訂] 模式中，您可以透過 JSON 輸入設定從 5 種不同的模糊模式中進行選擇：[低]、[中]、[高]、[Box] 和 [黑色]。 預設會使用 [中]。
+在 [結合]**** 或 [修訂]**** 模式中，您可以透過 JSON 輸入設定從 5 種不同的模糊模式中進行選擇：[低]****、[中]****、[高]****、[方塊]**** 和 [黑色]****。 預設會使用 [中]****。
 
 您可以在下面找到模糊類型的範例。
 
@@ -191,7 +193,7 @@ Example foo_IDList.txt
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>建立和設定 Visual Studio 專案
 
-設定您的開發環境並在 app.config 檔案中填入連線資訊，如[使用 .NET 進行 Media Services 開發](media-services-dotnet-how-to-use.md)所述。 
+設定您的開發環境，並在 app.config 檔案中填入連接資訊，如[使用 .net 進行媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
 
 #### <a name="example"></a>範例
 
@@ -371,7 +373,7 @@ namespace FaceRedaction
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>相關連結
-[Azure 媒体服务分析概述](media-services-analytics-overview.md)
+[Azure 媒體服務分析概觀](media-services-analytics-overview.md)
 
 [Azure 媒體分析示範](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

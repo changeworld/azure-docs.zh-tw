@@ -1,28 +1,18 @@
 ---
-title: 管理 Azure Service Fabric 狀態 | Microsoft Docs
-description: 瞭解如何存取、儲存、移除 Service Fabric Reliable Actors 狀態。
-services: service-fabric
-documentationcenter: .net
+title: 管理 Azure Service Fabric 狀態
+description: 瞭解如何存取、儲存和移除 Azure Service Fabric 可靠執行者的狀態，以及設計應用程式時的考慮。
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 37cf466a-5293-44c0-a4e0-037e5d292214
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 7c10d00916ef65767c98616c7337bfa444c339a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 788c337a37ec66c5aa1521c5cd9f2816ed7a8bf9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60725392"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75645628"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>存取、儲存、移除 Reliable Actors 狀態
-[Reliable Actors](service-fabric-reliable-actors-introduction.md) 是可封裝邏輯和狀態並穩定維持狀態的單一執行緒物件。 每個動作項目執行個體都有自己的[狀態管理員](service-fabric-reliable-actors-state-management.md)︰以可靠方式儲存索引鍵/值組的字典式資料結構。 狀態管理員是包住狀態供應器的包裝函式。 可以用來儲存資料，無論所用的是何種[持續性設定](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication)。
+[Reliable Actors](service-fabric-reliable-actors-introduction.md) 是可封裝邏輯和狀態並穩定維持狀態的單一執行緒物件。 每個動作專案實例都有自己的[狀態管理員](service-fabric-reliable-actors-state-management.md)：可靠地儲存索引鍵/值組的字典式資料結構。 狀態管理員是包住狀態供應器的包裝函式。 可以用來儲存資料，無論所用的是何種[持續性設定](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication)。
 
 狀態管理員索引鍵必須是字串。 值是泛型值，而且可以是任何類型，包括自訂類型。 儲存在狀態管理員中的值必須是可進行資料合約序列化的，因為根據動作項目的狀態持續性設定，它們可能會在複寫期間透過網路傳輸至其他節點，而且可能會寫入磁碟。
 

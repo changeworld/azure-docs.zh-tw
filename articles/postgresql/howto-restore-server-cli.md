@@ -1,27 +1,26 @@
 ---
-title: 如何在適用於 PostgreSQL 的 Azure 資料庫中備份與還原伺服器
-description: 了解如何使用 Azure CLI，在適用於 PostgreSQL 的 Azure 資料庫中備份和還原伺服器。
+title: 備份與還原-Azure CLI-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
+description: 瞭解如何使用 Azure CLI 在適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中設定備份設定和還原伺服器。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
-ms.topic: conceptual
-ms.date: 04/01/2018
-ms.openlocfilehash: 3415910426d365ea2dc17e7515871c1bf4841fd3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 10/25/2019
+ms.openlocfilehash: 7df870d76fa62d341821cfc2d7d30b4a7694ad82
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60419916"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119764"
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>如何使用 Azure CLI 在適用於 PostgreSQL 的 Azure 資料庫中備份和還原伺服器
+# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>如何使用 Azure CLI 在適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中備份和還原伺服器
 
-## <a name="backup-happens-automatically"></a>備份會自動進行
 為了能使用還原功能，適用於 PostgreSQL 的 Azure 資料庫伺服器會定期備份。 透過此功能，您可以將伺服器和其所有資料庫還原至更早的時間點 (在新的伺服器上)。
 
 ## <a name="prerequisites"></a>必要條件
 若要完成本操作說明指南，您需要：
-- [「適用於 PostgreSQL 的 Azure 資料庫」伺服器和資料庫](quickstart-create-server-database-azure-cli.md)
+- [適用於 PostgreSQL 的 Azure 資料庫的伺服器和資料庫](quickstart-create-server-database-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -72,7 +71,7 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 | 設定 | 建議的值 | 描述  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  來源伺服器所在的資源群組。  |
-| name | mydemoserver-restored | 還原命令所建立之新伺服器的名稱。 |
+| NAME | mydemoserver-restored | 還原命令所建立之新伺服器的名稱。 |
 | restore-point-in-time | 2018-03-13T13:59:00Z | 選取要還原的時間點。 這個日期和時間必須在來源伺服器的備份保留期限內。 請使用 ISO8601 日期和時間格式。 例如，您可以使用自己的當地時區，例如 `2018-03-13T05:59:00-08:00`。 您也可以使用 UTC Zulu 格式，例如 `2018-03-13T13:59:00Z`。 |
 | source-server | mydemoserver | 要進行還原的來源伺服器之名稱或識別碼。 |
 
@@ -80,9 +79,9 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 
 已還原伺服器的位置與定價層值與原始伺服器相同。 
 
-完成還原程序後，找出新的伺服器，確認資料如預期般還原。
+完成還原程序後，找出新的伺服器，確認資料如預期般還原。 新伺服器具有相同的伺服器管理員登入名稱和密碼，在起始還原時對現有的伺服器而言是有效的。 您可以從新伺服器的 [概觀]**** 頁面變更密碼。
 
-在還原期間建立的新伺服器不會有原始伺服器中的防火牆規則。 新伺服器的防火牆規則必須另外設定。
+在還原期間建立的新伺服器不會有原始伺服器中的防火牆規則或 VNet 服務端點。 您必須為新伺服器分別設定這些規則。
 
 ## <a name="geo-restore"></a>異地還原
 如果您已將伺服器設定為使用異地備援備份，則可以從現有伺服器的備份建立新的伺服器。 您可以在任何可使用「適用於 PostgreSQL 的 Azure 資料庫」的區域中建立這個新伺服器。  
@@ -112,19 +111,18 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 | 設定 | 建議的值 | 描述  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | 新伺服器將所屬的資源群組名稱。|
-|name | mydemoserver-georestored | 新伺服器的名稱。 |
+|NAME | mydemoserver-georestored | 新伺服器的名稱。 |
 |source-server | mydemoserver | 所使用之異地備援備份所屬的現有伺服器名稱。 |
 |location | eastus | 新伺服器的位置。 |
 |sku-name| GP_Gen4_8 | 此參數會設定新伺服器的定價層、計算世代及 vCore 數目。 GP_Gen4_8 所對應的是一般用途、具有 8 個 vCore 的第 4 代伺服器。|
 
+透過異地還原建立新伺服器時，它會繼承與來源伺服器相同的儲存體大小和定價層。 在建立期間無法變更這些值。 在建立新伺服器之後，您可以調高儲存體大小。
 
->[!Important]
->透過異地還原建立新伺服器時，它會繼承與來源伺服器相同的儲存體大小和定價層。 在建立期間無法變更這些值。 在建立新伺服器之後，您可以調高儲存體大小。
+完成還原程序後，找出新的伺服器，確認資料如預期般還原。 新伺服器具有相同的伺服器管理員登入名稱和密碼，在起始還原時對現有的伺服器而言是有效的。 您可以從新伺服器的 [概觀]**** 頁面變更密碼。
 
-完成還原程序後，找出新的伺服器，確認資料如預期般還原。
-
-在還原期間建立的新伺服器不會有原始伺服器中的防火牆規則。 新伺服器的防火牆規則必須另外設定。
+在還原期間建立的新伺服器不會有原始伺服器中的防火牆規則或 VNet 服務端點。 您必須為新伺服器分別設定這些規則。
 
 ## <a name="next-steps"></a>後續步驟
-- 深入了解服務的[備份](concepts-backup.md)。
-- 深入了解[商務持續性](concepts-business-continuity.md)選項。
+- 深入瞭解服務的[備份](concepts-backup.md)
+- 瞭解[複本](concepts-read-replicas.md)
+- 深入瞭解[商務持續性](concepts-business-continuity.md)選項

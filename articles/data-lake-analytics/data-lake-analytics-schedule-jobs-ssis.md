@@ -1,21 +1,21 @@
 ---
 title: 使用 SSIS 對 Azure Data Lake Analytics U-SQL 作業進行排程
-description: 了解如何使用 SQL Server Integration Services 來對 U-SQL 作業進行排程。
+description: 瞭解如何使用 SQL Server Integration Services，透過內嵌腳本或從 U-SQL 查詢檔案來排程 U-SQL 作業。
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 6894486118f69e682353142be04821e1d28440e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cafb657bbb981edddf9d6bbcfc8d390a519804b5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60814571"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121294"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>使用 SQL Server Integration Services (SSIS) 對 U-SQL 作業進行排程
 
@@ -40,7 +40,7 @@ Azure Data Lake Analytics 工作能讓使用者將 U-SQL 作業提交至 Azure D
 
 ## <a name="scenario-1-use-inline-script-call-tvfs-and-stored-procs"></a>案例 1：使用內嵌指令碼呼叫 TVF 和預存程序
 
-在 Azure Data Lake Analytics 工作編輯器中，將 [SourceType] 設定為 [DirectInput]，並將 U-SQL 陳述式置於 [USQLStatement] 中。
+在 Azure Data Lake Analytics 工作編輯器中，將 [SourceType]**** 設定為 [DirectInput]****，並將 U-SQL 陳述式置於 [USQLStatement]**** 中。
 
 若要使維護和程式碼管理更為輕鬆，請只使用簡短的 U-SQL 指令碼作為內嵌指令碼，例如，您可以呼叫 U-SQL 資料庫中現有的資料表值函式和預存程序。 
 
@@ -62,10 +62,10 @@ Azure Data Lake Analytics 工作能讓使用者將 U-SQL 作業提交至 Azure D
 
 ### <a name="configure-azure-data-lake-store-file-system-task"></a>設定 Azure Data Lake Store 檔案系統工作
 
-1. 將 [Operation] 設定為 [CopyFromADLS]。
-2. 設定 [AzureDataLakeConnection]，深入了解 [Azure Data Lake Store 連線管理員](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager?view=sql-server-2017)。
-3. 設定 [AzureDataLakeDirectory]。 指向儲存 U-SQL 指令碼的資料夾。 使用對應至 Azure Data Lake Store 帳戶根資料夾的相對路徑。
-4. 將 [Destination] 設定為會對已下載的 U-SQL 指令碼進行快取的資料夾。 此資料夾路徑將會在 Foreach 迴圈容器中用來進行 U-SQL 作業提交。 
+1. 將 [Operation]**** 設定為 [CopyFromADLS]****。
+2. 設定 [AzureDataLakeConnection]****，深入了解 [Azure Data Lake Store 連線管理員](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager?view=sql-server-2017)。
+3. 設定 [AzureDataLakeDirectory]****。 指向儲存 U-SQL 指令碼的資料夾。 使用對應至 Azure Data Lake Store 帳戶根資料夾的相對路徑。
+4. 將 [Destination]**** 設定為會對已下載的 U-SQL 指令碼進行快取的資料夾。 此資料夾路徑將會在 Foreach 迴圈容器中用來進行 U-SQL 作業提交。 
 
 ![設定 Azure Data Lake Store 檔案系統工作](./media/data-lake-analytics-schedule-jobs-ssis/configure-azure-data-lake-store-file-system-task.png)
 
@@ -73,44 +73,44 @@ Azure Data Lake Analytics 工作能讓使用者將 U-SQL 作業提交至 Azure D
 
 ### <a name="configure-foreach-loop-container"></a>設定 Foreach 迴圈容器
 
-1. 在 [集合] 頁面中，將 [列舉程式] 設定為 [Foreach 檔案列舉程式]。
+1. 在 [集合]**** 頁面中，將 [列舉程式]**** 設定為 [Foreach 檔案列舉程式]****。
 
-2. 將 [列舉程式設定] 群組底下的 [資料夾] 設定為包含已下載 U-SQL 指令碼的暫時資料夾。
+2. 將 [列舉程式設定]**** 群組底下的 [資料夾]**** 設定為包含已下載 U-SQL 指令碼的暫時資料夾。
 
-3. 將 [列舉程式設定] 底下的 [資料夾] 設定為 `*.usql`，使迴圈容器能擷取結尾為 `.usql` 的檔案。
+3. 將 [列舉程式設定]**** 底下的 [資料夾]**** 設定為 `*.usql`，使迴圈容器能擷取結尾為 `.usql` 的檔案。
 
     ![設定 Foreach 迴圈容器](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
 
-4. 在 [變數對應] 頁面中，新增使用者定義的變數以取得每個 U-SQL 檔案的檔案名稱。 將 [索引] 設定為 0 以取得檔案名稱。 在此範例中，會定義稱為 `User::FileName` 的變數。 此變數將會被用來在 Azure Data Lake Analytics 工作中以動態方式取得 U-SQL 指令碼檔案連線，並設定 U-SQL 作業名稱。
+4. 在 [變數對應]**** 頁面中，新增使用者定義的變數以取得每個 U-SQL 檔案的檔案名稱。 將 [索引]**** 設定為 0 以取得檔案名稱。 在此範例中，會定義稱為 `User::FileName` 的變數。 此變數將會被用來在 Azure Data Lake Analytics 工作中以動態方式取得 U-SQL 指令碼檔案連線，並設定 U-SQL 作業名稱。
 
     ![設定 Foreach 迴圈容器以取得檔案名稱](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-variable-mapping.png)
 
 ### <a name="configure-azure-data-lake-analytics-task"></a>設定 Azure Data Lake Analytics 工作 
 
-1. 將 [SourceType] 設定為 [FileConnection]。
+1. 將 [SourceType]**** 設定為 [FileConnection]****。
 
-2. 將 [FileConnection] 設定為指向從 Foreach 迴圈容器所傳回檔案物件的檔案連線。
+2. 將 [FileConnection]**** 設定為指向從 Foreach 迴圈容器所傳回檔案物件的檔案連線。
     
     若要建立此檔案連線：
 
-   1. 選擇**\<新增連接...>** [fileconnection] 設定中。
-   2. 將 [使用類型] 設定為 [現有檔案]，並將 [檔案] 設定為任何現有檔案的檔案路徑。
+   1. 選擇 [ **\<New Connection...>** [fileconnection] 設定]。
+   2. 將 [使用類型]**** 設定為 [現有檔案]****，並將 [檔案]**** 設定為任何現有檔案的檔案路徑。
 
        ![設定 Foreach 迴圈容器](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
-   3. 在 [連線管理員] 檢視中，以滑鼠右鍵按一下剛剛建立的檔案連線，然後選擇 [屬性]。
+   3. 在 [連線管理員]**** 檢視中，以滑鼠右鍵按一下剛剛建立的檔案連線，然後選擇 [屬性]****。
 
-   4. 在 [屬性] 視窗中，展開 [運算式]，然後將 [ConnectionString] 設定為在 Foreach 迴圈容器中定義的變數，例如 `@[User::FileName]`。
+   4. 在 [屬性]**** 視窗中，展開 [運算式]****，然後將 [ConnectionString]**** 設定為在 Foreach 迴圈容器中定義的變數，例如 `@[User::FileName]`。
 
        ![設定 Foreach 迴圈容器](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
 
-3. 將 [AzureDataLakeAnalyticsConnection] 設定為您想要提交作業的 Azure Data Lake Analytics 帳戶。 深入了解 [Azure Data Lake Analytics 連線管理員](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017)。
+3. 將 [AzureDataLakeAnalyticsConnection]**** 設定為您想要提交作業的 Azure Data Lake Analytics 帳戶。 深入了解 [Azure Data Lake Analytics 連線管理員](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017)。
 
 4. 設定其他作業組態。 [深入了解](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017)。
 
 5. 使用**運算式**來以動態方式設定 U-SQL 作業：
 
-    1. 在 [運算式] 頁面中，針對 [JobName] 新增新的運算式機碼值組。
+    1. 在 [運算式]**** 頁面中，針對 [JobName]**** 新增新的運算式機碼值組。
     2. 將 [JobName] 的值設定為在 Foreach 迴圈容器中定義的變數，例如 `@[User::FileName]`。
     
         ![針對 U-SQL 作業名稱設定 SSIS 運算式](./media/data-lake-analytics-schedule-jobs-ssis/configure-expression-for-u-sql-job-name.png)
@@ -119,7 +119,7 @@ Azure Data Lake Analytics 工作能讓使用者將 U-SQL 作業提交至 Azure D
 
 您可以透過使用 Azure Feature Pack 中的 **Azure Blob 下載工作**，來在 Azure Blob 儲存體中使用 U-SQL 檔案。 此方法可讓您使用雲端上的指令碼。
 
-其步驟類似於[案例 2：在 Azure Data Lake Store 中使用 U-SQL 檔案](#scenario-2-use-u-sql-files-in-azure-data-lake-store)。 將 Azure Data Lake Store 檔案系統工作變更為 Azure Blob 下載工作。 [深入了解 Azure Blob 下載工作](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017)。
+這些步驟類似于[案例2：在 Azure Data Lake 存放區中使用 U-SQL](#scenario-2-use-u-sql-files-in-azure-data-lake-store)檔案。 將 Azure Data Lake Store 檔案系統工作變更為 Azure Blob 下載工作。 [深入了解 Azure Blob 下載工作](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017)。
 
 控制流程如下所示。
 
@@ -129,17 +129,17 @@ Azure Data Lake Analytics 工作能讓使用者將 U-SQL 作業提交至 Azure D
 
 除了使用儲存在雲端上的 U-SQL 檔案之外，您也可以使用本機電腦上的檔案，或是和 SSIS 套件一起部署的檔案。
 
-1. 以滑鼠右鍵按一下 SSIS 專案中的 [連線管理員]，然後選擇 [新增連線管理員]。
+1. 以滑鼠右鍵按一下 SSIS 專案中的 [連線管理員]****，然後選擇 [新增連線管理員]****。
 
-2. 選取 [檔案] 類型，然後按一下 [新增]。
+2. 選取 [檔案]**** 類型，然後按一下 [新增]****。
 
-3. 將 [使用類型] 設定為 [現有檔案]，並將 [檔案] 設定為本機電腦上的檔案。
+3. 將 [使用類型]**** 設定為 [現有檔案]****，並將 [檔案]**** 設定為本機電腦上的檔案。
 
     ![將檔案連線新增至本機檔案](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
-4. 新增 [Azure Data Lake Analytics] 工作，然後：
-    1. 將 [SourceType] 設定為 [FileConnection]。
-    2. 將 [FileConnection] 設定為剛剛建立的檔案連線。
+4. 新增**Azure Data Lake Analytics**工作和：
+    1. 將 [SourceType]**** 設定為 [FileConnection]****。
+    2. 將 [FileConnection]**** 設定為剛剛建立的檔案連線。
 
 5. 完成其他 Azure Data Lake Analytics 工作的設定。
 
@@ -147,19 +147,19 @@ Azure Data Lake Analytics 工作能讓使用者將 U-SQL 作業提交至 Azure D
 
 在某些情況下，您可能需要以動態方式產生 U-SQL 陳述式。 您可以搭配 **SSIS 運算式**及其他 SSIS 工作 (例如指令碼工作) 使用 **SSIS 變數**，來協助動態產生 U-SQL 陳述式。
 
-1. 透過 [SSIS] > [變數] 最上層功能表，開啟 [變數] 工具視窗。
+1. 透過 [SSIS] > [變數]**** 最上層功能表，開啟 [變數] 工具視窗。
 
-2. 新增 SSIS 變數並直接設定其值，或使用 [運算式] 來產生值。
+2. 新增 SSIS 變數並直接設定其值，或使用 [運算式]**** 來產生值。
 
-3. 新增 [Azure Data Lake Analytics] 工作，然後：
-    1. 將 [SourceType] 設定為 [Variable]。
-    2. 將 [SourceVariable] 設定為剛剛建立的 SSIS 變數。
+3. 新增 [Azure Data Lake Analytics]**** 工作，然後：
+    1. 將 [SourceType]**** 設定為 [Variable]****。
+    2. 將 [SourceVariable]**** 設定為剛剛建立的 SSIS 變數。
 
 4. 完成其他 Azure Data Lake Analytics 工作的設定。
 
 ## <a name="scenario-6-pass-parameters-to-u-sql-script"></a>案例 6：將參數傳遞至 U-SQL 指令碼
 
-在某些情況下，您可能需要以動態方式設定 U-SQL 指令碼中的 U-SQL 變數值。 Azure Data Lake Analytics 工作中的 [參數對應] 功能可在此案例上提供協助。 一共有兩個常見的使用者案例：
+在某些情況下，您可能需要以動態方式設定 U-SQL 指令碼中的 U-SQL 變數值。 Azure Data Lake Analytics 工作中的 [參數對應]**** 功能可在此案例上提供協助。 一共有兩個常見的使用者案例：
 
 - 根據目前的日期和時間，以動態方式設定輸入和輸出檔案路徑變數。
 - 設定預存程序的參數。
@@ -169,6 +169,5 @@ Azure Data Lake Analytics 工作能讓使用者將 U-SQL 作業提交至 Azure D
 ## <a name="next-steps"></a>後續步驟
 
 - [在 Azure 中執行 SSIS 套件](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
-- [適用於 Integration Services (SSIS) 的 Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud)
+- [Azure Feature Pack for Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud)
 - [使用 Azure Data Factory 對 U-SQL 作業進行排程](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)
-

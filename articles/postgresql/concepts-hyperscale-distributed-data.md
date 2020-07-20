@@ -1,60 +1,61 @@
 ---
-title: Azure Database for PostgreSQL-超大規模 (Citus) （預覽） 中的散發的資料
-description: 資料表和散發的伺服器群組中的分區。
+title: 分散式資料–超大規模資料庫（Citus）-適用於 PostgreSQL 的 Azure 資料庫
+description: 瞭解適用於 PostgreSQL 的 Azure 資料庫中的分散式資料表、參考資料表、本機資料表和分區。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 9020ee690d93a1b477471fac4a482a909fca5935
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 7757fdb4953640597a805c3d74a9e1ef08ef2c07
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65077331"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114494"
 ---
-# <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>Azure Database for PostgreSQL-超大規模 (Citus) （預覽） 中的散發的資料
+# <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>適用於 PostgreSQL 的 Azure 資料庫中的分散式資料–超大規模資料庫（Citus）
 
-本文章概述三個資料表中的型別超大規模 (Citus)。
-它會顯示如何分散式的資料表會儲存為分區和分區會放在節點的方式。
+本文概述適用於 PostgreSQL 的 Azure 資料庫–超大規模資料庫（Citus）中的三個數據表類型。
+它會顯示如何將分散式資料表儲存為分區，以及將分區放在節點上的方式。
 
 ## <a name="table-types"></a>資料表類型
 
-有三種類型的超大規模的伺服器群組中的資料表，每個用於不同用途。
+超大規模資料庫（Citus）伺服器群組中有三種類型的資料表，分別用於不同用途。
 
-### <a name="type-1-distributed-tables"></a>類型 1： 分散式的資料表
+### <a name="type-1-distributed-tables"></a>類型1：分散式資料表
 
-第一種類型，以及大部分常見的是*分散式*資料表。 它們似乎是一般資料表 SQL 陳述式，但有 水平*分割*背景工作節點之間。 這表示是資料表的資料列會儲存在稱為 「 片段資料表的不同節點上*分區*。
+第一種類型（最常見）是分散式資料表。 它們看起來就像是 SQL 語句的一般資料表，但是它們會在背景工作節點之間水準分割。 這表示資料表的資料列會儲存在不同的節點上，稱為分區的片段表中。
 
-超大規模執行不只是 SQL，但在整個叢集中，因此變更配置資源分散式資料表的結構描述的 DDL 陳述式動作會串聯到背景工作角色之間更新所有資料表的分區。
+超大規模資料庫（Citus）不僅會在整個叢集中執行 SQL，而是 DDL 語句。
+變更分散式資料表的架構，以在背景工作角色之間更新所有資料表的分區。
 
 #### <a name="distribution-column"></a>散發資料行
 
-超大規模使用演算法的分區化資料列指派給分區。 指派已確定的方式根據呼叫的資料表資料行值*散發資料行。* 叢集系統管理員必須指定這個資料行，當散發資料表。
-選擇正確是很重要的效能和功能。
+超大規模資料庫（Citus）使用演算法分區化將資料列指派給分區。 指派是根據稱為散發資料行之資料表資料行的值來做出決定性的。 散發資料表時，叢集系統管理員必須指定這個資料行。
+做出正確的選擇對於效能和功能非常重要。
 
-### <a name="type-2-reference-tables"></a>類型 2： 參考資料表
+### <a name="type-2-reference-tables"></a>類型2：參考資料表
 
-參考資料表是一種集中到單一分區的整個內容配置資源分散式資料表。 分區會複寫每個背景工作角色，在中，因此任何背景工作角色上的查詢可以存取的參考資訊在本機，而不會要求資料列，從另一個節點的網路負擔。 參考資料表有任何散發資料行，因為不需要區分每個資料列的個別分區。
+參考資料表是一種分散式資料表，其完整內容會集中在單一分區中。 分區會在每個背景工作上複寫。 任何工作者的查詢都可以在本機存取參考資訊，而不需要從另一個節點要求資料列的網路額外負荷。 參考資料表沒有散發資料行，因為不需要區分每個資料列的個別分區。
 
-參考資料表通常很小，而且用來儲存的任何背景工作節點上執行查詢的相關資料。 例如，列舉值，例如訂單狀態 」 或 「 產品類別目錄。
+參考資料表通常很小，用來儲存與任何背景工作節點上執行之查詢相關的資料。 範例是列舉的值，例如訂單狀態或產品類別。
 
-### <a name="type-3-local-tables"></a>類型 3： 本機資料表
+### <a name="type-3-local-tables"></a>類型3：本機資料表
 
-當您使用超大規模時，您連接至協調器節點會是一般的 PostgreSQL 資料庫。 您可以協調器上建立一般的資料表，並選擇不分區它們。
+當您使用超大規模資料庫（Citus）時，您連接的協調器節點是一般的于 postgresql 資料庫。 您可以在協調器上建立一般資料表，並選擇不分區它們。
 
-適合做為本機資料表是小型系統管理的資料表，且不會參與聯結查詢。 例如，使用者資料表的應用程式登入和驗證。
+對於本機資料表而言，理想的候選就是不參與聯結查詢的小型系統管理資料表。 例如，應用程式登入和驗證的使用者資料表。
 
 ## <a name="shards"></a>分區
 
-上一節所述的方式分散式的資料表會儲存為背景工作節點上的分區。 這一節取得更深入的技術詳細資料。
+上一節說明如何在背景工作節點上將分散式資料表儲存為分區。 本節討論更多的技術詳細資料。
 
-`pg_dist_shard`協調器上的中繼資料資料表包含系統中的每個分區的每個配置資源分散式資料表的資料列。 資料列符合分區識別碼範圍的整數雜湊空格 （shardminvalue、 shardmaxvalue）：
+`pg_dist_shard`協調器上的中繼資料表會針對系統中每個分散式資料表的每個分區，各包含一個資料列。 資料列符合雜湊空間（shardminvalue，shardmaxvalue）中具有整數範圍的分區識別碼。
 
 ```sql
 SELECT * from pg_dist_shard;
- logicalrelid  | shardid | shardstorage | shardminvalue | shardmaxvalue 
+ logicalrelid  | shardid | shardstorage | shardminvalue | shardmaxvalue
 ---------------+---------+--------------+---------------+---------------
  github_events |  102026 | t            | 268435456     | 402653183
  github_events |  102027 | t            | 402653184     | 536870911
@@ -63,13 +64,13 @@ SELECT * from pg_dist_shard;
  (4 rows)
 ```
 
-如果協調器節點會想要判斷哪一個分區所保存的資料列`github_events`，它會雜湊散發資料行的資料列中的值，並檢查哪一個分區\'的範圍包含雜湊的值。 （以便雜湊函式的影像是它們不相鄰的聯集已定義的範圍）。
+如果協調器節點想要判斷哪些分區包含的資料 `github_events` 列，它會雜湊資料列中散發資料行的值。 然後，節點會檢查哪個分區 \' s 範圍包含雜湊值。 系統會定義範圍，讓雜湊函式的影像為其脫離聯集。
 
-### <a name="shard-placements"></a>分區位置
+### <a name="shard-placements"></a>分區放置
 
-假設該分區 102027 是有問題的資料列相關聯。 會讀取或寫入呼叫資料表中資料列`github_events_102027`中其中一個背景工作角色。 哪一個背景工作？ 完全取決於中繼資料資料表和背景工作角色的分區對應也稱為分區*放置*。
+假設分區102027與有問題的資料列相關聯。 資料列會讀取或寫入其中一個背景工作角色中名為的資料表 `github_events_102027` 。 哪個背景工作角色？ 這完全取決於中繼資料資料表。 分區與背景工作角色的對應稱為分區位置。
 
-協調器節點重寫查詢，為片段以參考特定資料表，如同`github_events_102027`，並在適當的背景工作角色上執行這些片段。 找不到保存分區識別碼 102027 節點在幕後執行的查詢範例如下。
+協調器節點會將查詢重寫為參考特定資料表（例如）的片段， `github_events_102027` 並在適當的背景工作上執行這些片段。 以下是在幕後執行查詢的範例，以找出持有分區識別碼102027的節點。
 
 ```sql
 SELECT
@@ -83,11 +84,14 @@ JOIN pg_dist_node node
 WHERE shardid = 102027;
 ```
 
-    ┌─────────┬───────────┬──────────┐
-    │ shardid │ nodename  │ nodeport │
-    ├─────────┼───────────┼──────────┤
-    │  102027 │ localhost │     5433 │
-    └─────────┴───────────┴──────────┘
+```output
+┌─────────┬───────────┬──────────┐
+│ shardid │ nodename  │ nodeport │
+├─────────┼───────────┼──────────┤
+│  102027 │ localhost │     5433 │
+└─────────┴───────────┴──────────┘
+```
 
 ## <a name="next-steps"></a>後續步驟
-- 了解如何[選擇散發資料行](concepts-hyperscale-choose-distribution-column.md)分散式資料表
+
+- 瞭解如何為分散式資料表[選擇散發資料行](concepts-hyperscale-choose-distribution-column.md)。

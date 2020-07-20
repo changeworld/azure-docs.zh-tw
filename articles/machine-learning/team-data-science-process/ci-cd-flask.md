@@ -1,70 +1,67 @@
 ---
-title: 建立 Azure 持續整合管線 - Team Data Science Process
-description: 適用於人工智慧 (AI) 應用程式的 DevOps：使用 Docker 和 Kubernetes 在 Azure 上建立持續整合管線
+title: 使用 Azure Pipelines 建立 CI/CD 管線-小組資料科學流程
+description: 使用 Docker 和 Kubernetes 建立人工智慧（AI）應用程式的持續整合與持續傳遞管線。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 05/22/2018
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
-ms.openlocfilehash: d99149f8112c19a07208523a1ee26ba1c36e5362
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: 42433ec419ac9e02077cd0359e18b5114206f27d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62103533"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76721824"
 ---
-# <a name="creating-continuous-integration-pipeline-on-azure-using-docker-kubernetes-and-python-flask-application"></a>使用 Docker、Kubernetes 及 Python Flask 應用程式在 Azure 上建立持續整合管線
-就 AI 應用程式而言，有兩個經常性的工作資料流：資料科學家建置機器學習模型，而應用程式開發人員則建置應用程式並將其公開給使用者取用。 在本文中，我們將示範如何實作 AI 應用程式的持續整合 (CI)/持續部署 (CD) 管線。 AI 應用程式是內嵌了預先定型機器學習 (ML) 模型的應用程式碼組合。 針對本文，我們會從私用的 Azure Blob 儲存體帳戶 (也可以是 AWS S3 帳戶) 中擷取一個預先定型的模型。 我們將針對本文使用一個簡單的 Python Flask Web 應用程式。
+# <a name="create-cicd-pipelines-for-ai-apps-using-azure-pipelines-docker-and-kubernetes"></a>使用 Azure Pipelines、Docker 和 Kubernetes 建立適用于 AI 應用程式的 CI/CD 管線
+
+人工智慧（AI）應用程式是以預先定型機器學習（ML）模型內嵌的應用程式程式碼。 AI 應用程式一律會有兩個工作流：資料科學家會建立 ML 模型，而應用程式開發人員會建立應用程式，並將它公開給使用者使用。 本文說明如何針對將 ML 模型內嵌至應用程式原始程式碼的 AI 應用程式，執行持續整合和持續傳遞（CI/CD）管線。 範例程式碼和教學課程會使用 Python Flask web 應用程式，並從私人 Azure blob 儲存體帳戶提取預先定型模型。 您也可以使用 AWS S3 儲存體帳戶。
 
 > [!NOTE]
-> 這是數種執行 CI/CD 的方式其中之一。 下面所提到的工具及其他先決條件皆有替代方案。 隨著我們對額外內容的開發，我們將會發佈這些替代方案。
->
->
+> 下列程式是執行 CI/CD 的幾種方式之一。 此工具和必要條件都有替代方案。
 
-## <a name="github-repository-with-document-and-code"></a>含有文件和程式碼的 GitHub 存放庫
-您可以從 [GitHub](https://github.com/Azure/DevOps-For-AI-Apps)下載原始程式碼。 此外，也有提供[詳細的教學課程](https://github.com/Azure/DevOps-For-AI-Apps/blob/master/Tutorial.md)。
+## <a name="source-code-tutorial-and-prerequisites"></a>原始程式碼、教學課程和必要條件
 
-## <a name="pre-requisites"></a>先決條件
-以下是依循下述 CI/CD 管線的先決條件：
-* [Azure DevOps 組織](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-* [執行 Kubernetes 的 Azure Container Service (AKS) 叢集](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
-* [Azure Container Registry (ACR) 帳戶](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal)
-* [安裝 Kubectl 以針對 Kubernetes 叢集執行命令](https://kubernetes.io/docs/tasks/tools/install-kubectl/)。 我們將需要此工具，才能從 ACS 叢集擷取設定。 
-* 在您的 GitHub 帳戶建立該存放庫的分叉。
+您可以從 GitHub 下載[原始程式碼](https://github.com/Azure/DevOps-For-AI-Apps)和[詳細的教學](https://github.com/Azure/DevOps-For-AI-Apps/blob/master/Tutorial.md)課程。 遵循教學課程步驟，為您自己的應用程式執行 CI/CD 管線。
 
-## <a name="description-of-the-cicd-pipeline"></a>CI/CD 管線的描述
-管線會針對每個新的認可開始執行、執行測試套件，如果測試通過，便採用最新的組建、將它封裝在 Docker 容器中。 接著，會使用 Azure Container Service (ACS) 來部署該容器，並將映像安全地儲存在 Azure Container Registry (ACR) 中。 ACS 執行 Kubernetes 來管理容器叢集，但您可以選擇 Docker Swarm 或 Mesos。
+若要使用已下載的原始程式碼和教學課程，您需要下列必要條件： 
 
-應用程式會從 Azure 儲存體帳戶中安全地提取最新的模型，然後將其封裝成應用程式的一部分。 所部署應用程式的應用程式程式碼和 ML 模型會封裝成單一容器。 這可讓應用程式開發人員與資料科學家分開，以確保其生產環境應用程式一律搭配最新的 ML 模型來執行最新的程式碼。
+- [原始程式碼存放庫](https://github.com/Azure/DevOps-For-AI-Apps)會分支到您的 GitHub 帳戶
+- [Azure DevOps 組織](/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
+- [Azure CLI](/cli/azure/install-azure-cli)
+- [Kubernetes （AKS）](/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)叢集的 Azure Container Service
+- 從 AKS 叢集執行命令和提取設定的[Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) 
+- [Azure Container Registry （ACR）帳戶](/azure/container-registry/container-registry-get-started-portal)
 
-管線架構如下所示。 
+## <a name="cicd-pipeline-summary"></a>CI/CD 管線摘要
 
-![架構](./media/ci-cd-flask/Architecture.PNG?raw=true)
+每個新的 Git 認可都會啟動組建管線。 組建會從 blob 儲存體帳戶安全地提取最新的 ML 模型，並使用單一容器中的應用程式程式碼來封裝它。 這種分離應用程式開發和資料科學工作，可確保生產應用程式一律以最新的 ML 模型執行最新的程式碼。 如果應用程式通過測試，管線會將組建映射安全地儲存在 ACR 的 Docker 容器中。 然後，發行管線會使用 AKS 來部署容器。 
 
-## <a name="steps-of-the-cicd-pipeline"></a>CI/CD 管線的步驟
-1. 開發人員在其選擇的 IDE 上處理應用程式程式碼。
-2. 他們將程式碼認可至其選擇的原始檔控制 (Azure DevOps 可對各種原始檔控制提供良好的支援)
-3. 資料科學家則是個別進行其模型開發。
-4. 在對模型滿意之後，他們便將模型發佈到存放庫，在此案例中，我們使用 Blob 儲存體帳戶。 
-5. 系統會根據 GitHub 中的認可開始在 Azure DevOps 中執行建置。
-6. Azure DevOps 組建管線會從 Blob 容器中提取最新的模型，然後建立容器。
-7. Azure DevOps 會將映像推送至 Azure Container Registry 中的私人映像存放庫
-8. 發行管線會根據已設定的排程 (每晚) 開始執行。
-9. 系統會從 ACR 中提取最新的映像，並部署至 ACS 上的整個 Kubernetes 叢集。
-10. 使用者對應用程式發出的要求會經過 DNS 伺服器。
-11. DNS 伺服器會將該要求傳遞給負載平衡器，然後將回應傳回給使用者。
+## <a name="cicd-pipeline-steps"></a>CI/CD 管線步驟
 
-## <a name="next-steps"></a>後續步驟
-* 請參考[教學課程](https://github.com/Azure/DevOps-For-AI-Apps/blob/master/Tutorial.md)來依照詳細資料進行操作，並實作您自己的應用程式 CI/CD 管線。
+下列圖表和步驟說明 CI/CD 管線架構：
 
-## <a name="references"></a>參考
-* [Team Data Science Process (TDSP)](https://aka.ms/tdsp)
-* [Azure Machine Learning (AML)](https://docs.microsoft.com/azure/machine-learning/service/)
-* [Azure DevOps](https://www.visualstudio.com/vso/)
-* [Azure Kubernetes Services (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+![CI/CD 管線架構](./media/ci-cd-flask/architecture.png)
+
+1. 開發人員在其選擇的 IDE 中處理應用程式程式碼。
+2. 開發人員會將程式碼認可至 Azure Repos、GitHub 或其他 Git 原始檔控制提供者。 
+3. 資料科學家會分別開發其 ML 模型。
+4. 資料科學家會將完成的模型發行至模型存放庫，在此案例中為 blob 儲存體帳戶。 
+5. Azure Pipelines 根據 Git 認可來啟動組建。
+6. 組建管線會從 blob 儲存體提取最新的 ML 模型，並建立容器。
+7. 管線會將組建映射推送至 ACR 中的私用映射存放庫。
+8. 發行管線會根據成功的組建來啟動。
+9. 管線會從 ACR 提取最新的映射，並將其部署到 AKS 上的 Kubernetes 叢集。
+10. 應用程式的使用者要求會經過 DNS 伺服器。
+11. DNS 伺服器會將要求傳遞給負載平衡器，並將回應傳回給使用者。
+
+## <a name="see-also"></a>另請參閱
+
+- [Team Data Science Process (TDSP)](/azure/machine-learning/team-data-science-process/)
+- [Azure Machine Learning (AML)](/azure/machine-learning/)
+- [Azure DevOps](https://azure.microsoft.com/services/devops/)
+- [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes)

@@ -1,6 +1,6 @@
 ---
 title: 使用 .NET 建立 ContentKeys
-description: 了解如何建立提供資產安全存取的內容金鑰。
+description: 本文示範如何建立內容金鑰，以提供資產的安全存取。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ab26be3b9ac5d209cfe8117bdf9e87e0c7e74188
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: aebd6dee9314d6e5641988767c024790b6b721f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61465570"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712355"
 ---
 # <a name="create-contentkeys-with-net"></a>使用 .NET 建立 ContentKeys 
 > [!div class="op_single_selector"]
@@ -30,7 +29,7 @@ ms.locfileid: "61465570"
 
 媒體服務可讓您建立資產及傳遞已加密的資產。 **ContentKey** 提供**資產**的安全存取。 
 
-當您建立新的資產 (例如，[上傳檔案](media-services-dotnet-upload-files.md)之前) 時，您可以指定下列加密選項：**StorageEncrypted**、**CommonEncryptionProtected** 或 **EnvelopeEncryptionProtected**。 
+當您建立新的資產時 (例如，[將檔案上傳](media-services-dotnet-upload-files.md)之前)，您可以指定下列加密選項：**StorageEncrypted**、**CommonEncryptionProtected** 或 **EnvelopeEncryptionProtected**。 
 
 當您將資產傳遞至您的用戶端時，您可以使用下列兩個加密的其中一個[設定動態加密的資產](media-services-dotnet-configure-asset-delivery-policy.md)：**DynamicEnvelopeEncryption** 或 **DynamicCommonEncryption**。
 
@@ -70,7 +69,7 @@ ms.locfileid: "61465570"
     }
 ```
 
-## <a id="envelope_contentkey"></a>建立信封類型 ContentKey
+## <a name="create-envelope-type-contentkey"></a><a id="envelope_contentkey"></a>建立信封類型 ContentKey
 下列程式碼片段會建立信封加密類型的內容金鑰。 然後建立金鑰與所指定資產的關聯。
 
 ```csharp
@@ -108,7 +107,7 @@ call
 ```
 
 
-## <a id="common_contentkey"></a>建立一般類型 ContentKey
+## <a name="create-common-type-contentkey"></a><a id="common_contentkey"></a>建立一般類型 ContentKey
 下列程式碼片段會建立一般加密類型的內容金鑰。 然後建立金鑰與所指定資產的關聯。
 
 ```csharp

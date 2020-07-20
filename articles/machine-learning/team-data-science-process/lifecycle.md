@@ -1,28 +1,27 @@
 ---
 title: Team Data Science Process 生命週期
-description: 執行資料科學專案所需的步驟
+description: Team Data Science Process (TDSP) 會提供建議的生命週期供您建構資料科學專案。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 40d1af6e6258b5026853532f7963a76d4fc389db
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: a043a1655950f3ed7688e59352f8a912146e12c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60837876"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76720447"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命週期
 
-Team Data Science Process (TDSP) 會提供建議的生命週期供您建構資料科學專案。 生命週期會概述專案在執行時通常會遵循之從開始到完成的步驟。 如果您使用另一個資料科學生命週期，例如資料採礦的跨業界標準流程 (Cross Industry Standard Process for Data Mining) [(CRISP-DM)](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining)、資料庫中的知識探索 (Knowledge Discovery in Databases) [(KDD)](https://wikipedia.org/wiki/Data_mining#Process)，或您組織自己的自訂程序，您仍然可以使用以工作為基礎的 TDSP。 
+Team Data Science Process (TDSP) 會提供建議的生命週期供您建構資料科學專案。 生命週期會概述成功專案遵循的完整步驟。 如果您使用另一個資料科學生命週期，例如資料採礦的跨業界標準流程 (Cross Industry Standard Process for Data Mining) [(CRISP-DM)](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining)、資料庫中的知識探索 (Knowledge Discovery in Databases) [(KDD)](https://wikipedia.org/wiki/Data_mining#Process)，或您組織自己的自訂程序，您仍然可以使用以工作為基礎的 TDSP。 
 
-此生命週期是針對要在智慧型應用程式中隨附的資料科學專案所設計。 這些應用程式會部署機器學習服務或人工智慧模型來做預測性分析。 探勘資料科學專案和臨機操作分析專案也可以從使用此程序而獲益。 但是對於這些專案，可能不需要此處所描述的一些步驟。 
+此生命週期是針對要在智慧型應用程式中隨附的資料科學專案所設計。 這些應用程式會部署機器學習服務或人工智慧模型來做預測性分析。 探索性資料科學專案和拼湊分析專案也可以因使用此程式而受益。 但是對於這些專案，可能不需要此處所描述的一些步驟。 
 
 ## <a name="five-lifecycle-stages"></a>五個生命週期階段
 
@@ -30,7 +29,7 @@ TDSP 生命週期是由反覆執行的五個主要階段所組成。 這些階�
 
    1. [了解商務](lifecycle-business-understanding.md)
    2. [資料取得與認知](lifecycle-data.md)
-   3. [模型化](lifecycle-modeling.md)
+   3. [模型](lifecycle-modeling.md)
    4. [部署](lifecycle-deployment.md)
    5. [客戶接受度](lifecycle-acceptance.md)
 
@@ -43,9 +42,9 @@ TDSP 生命週期會建立為一系列反覆執行步驟的模型，可針對需
 
 對於每個階段，我們會提供下列資訊：
 
-   * **目標**：特定的目標。
-   * **作法**：特定工作的概述和如何完成的指引。
-   * **成品**：交付項目和產生它們的支援。
+   * **目標**︰特定的目標。
+   * **作法**：概述特定工作和如何完成的指引。
+   * **成品**：交付項目和生產的支援。
 
 ## <a name="next-steps"></a>後續步驟
 

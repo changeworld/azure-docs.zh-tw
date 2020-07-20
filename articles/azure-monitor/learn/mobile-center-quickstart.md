@@ -1,22 +1,19 @@
 ---
-title: Azure Application Insights 快速入門 | Microsoft Docs
-description: 提供指示說明如何快速設定行動應用程式，以透過 Application Insights 和 App Center 來監視
-services: application-insights
-keywords: ''
+title: 使用 Azure 監視器 Application Insights 監視行動應用程式
+description: 提供指示說明如何快速設定行動應用程式，以透過 Azure 監視器 Application Insights 和 App Center 進行監視
+ms.subservice: application-insights
+ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 07/11/2018
-ms.service: application-insights
+ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.topic: quickstart
-manager: carmonm
-ms.openlocfilehash: 6f0a59d2b0954c9847219ad1ac8b2fa805767084
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: c31083c5e0591d5a49f878ba24a7fd2f0ef6c84d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54080494"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731946"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>開始使用 App Center 和 Application Insights 分析您的行動應用程式
 
@@ -31,9 +28,12 @@ ms.locfileid: "54080494"
  
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
+## <a name="sign-up-with-app-center"></a>使用 App Center 註冊
+若要開始，請建立帳戶並[使用 App Center 註冊](https://appcenter.ms/signup?utm_source=ApplicationInsights&utm_medium=Azure&utm_campaign=docs) \(英文\)。
+
 ## <a name="onboard-to-app-center"></a>登入 App Center
 
-您必須先將應用程式上架至 [App Center](https://docs.microsoft.com/mobile-center/) \(英文\)，才能將 Application Insights 與行動應用程式搭配使用。 Application Insights 不會直接從您的行動應用程式接收遙測資料。 相反地，您的應用程式會將自訂事件遙測資料傳送到 App Center。 之後，當 App Center 接收到這些自訂事件，會持續將這些自訂事件的複本匯出到 Application Insights。
+您必須先將應用程式上架至 [App Center](https://docs.microsoft.com/mobile-center/) \(英文\)，才能將 Application Insights 與行動應用程式搭配使用。 Application Insights 不會直接從您的行動應用程式接收遙測資料。 相反地，您的應用程式會將自訂事件遙測資料傳送到 App Center。 之後，當 App Center 接收到這些自訂事件，會持續將這些自訂事件的複本匯出到 Application Insights。 (這不適用於 [Application Insights JS SDK](https://github.com/Microsoft/ApplicationInsights-JS)，或將遙測直接傳送至 Application Insights 的 [React Native 外掛程式](https://github.com/Microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-react-native))。
 
 若要將應用程式上架，請針對應用程式支援的每個平台，遵循 App Center 快速入門來操作。 針對每個平台建立個別的 App Center 執行個體：
 
@@ -68,28 +68,28 @@ Analytics.trackEvent("Video clicked")
 一旦您的應用程式開始傳送自訂事件，且 App Center 已經收到這些事件，您就需要在 Azure 入口網站中建立 App Center 類型的 Application Insights 資源：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 選取 [建立資源] > [管理工具] > [Application Insights]。
+2. 選取 [建立資源] > [開發人員工具] > [Application Insights]。
 
-    ![新增 Application Insights 資源](./media/mobile-center-quickstart/add-b.png)
+    > [!NOTE]
+    > 如果這是您第一次建立 Application Insights 資源，您可以瀏覽[建立 Application Insights 資源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)文件以進一步了解。
 
     隨後將會出現設定方塊。 根據下表來填寫輸入欄位。
 
-    | 設定        |  值           | 說明  |
+    | 設定        |  值           | 描述  |
    | ------------- |:-------------|:-----|
    | **名稱**      | 某些全域唯一的值，例如 "myApp-iOS" | 此名稱可識別您要監視的應用程式 |
-   | **應用程式類型** | App Center 應用程式 | 您要監視的應用程式類型 |
-   | **資源群組**     | 新的資源群組或功能表中現有的資源群組 | 要在其中建立新 Application Insights 資源的資源群組 |
+     | **資源群組**     | 新的資源群組或功能表中現有的資源群組 | 要在其中建立新 Application Insights 資源的資源群組 |
    | **位置** | 功能表中的位置 | 選擇您附近或接近應用程式裝載位置的地點 |
 
-3. 按一下頁面底部的 [新增] 。
+3. 按一下 [建立]。
 
 如果您的應用程式支援多個平台 (iOS、Android 等等)，建議針對每個平台建立個別的 Application Insights 資源。
 
 ## <a name="export-to-application-insights"></a>匯出到 Application Insights
 
-在 [概觀] 頁面頂端 [必要] 區段的新 Application Insights 資源中，複製該資源的檢測金鑰。
+位於 [概觀] 頁面上您的新 Application Insights 資源中。 從資源複製檢測金鑰。
 
-在應用程式的 App Center 執行個體中：
+在應用程式的 [App Center](https://appcenter.ms/) 執行個體中：
 
 1. 在 [設定] 頁面上，按一下 [匯出]。
 2. 選擇 [新匯出]，挑選 [Application Insights]，然後按一下 [自訂]。
@@ -106,13 +106,11 @@ Analytics.trackEvent("Video clicked")
 
 Application Insights 可以查詢、分割、篩選及分析應用程式的自訂事件遙測資料，遠勝於 App Center 提供的分析工具。
 
-1. **查詢您的自訂事件遙測資料。** 從 Application Insights [概觀] 頁面，選擇 [分析]。 
+1. **查詢您的自訂事件遙測資料。** 從 Application Insights [概觀] 頁面，選擇 [記錄 (分析)]。
 
-   ![Application Insights 中的 [分析] 按鈕](./media/mobile-center-quickstart/analytics.png)
-
-   接著便會開啟與 Application Insights 資源相關的 Application Insights 分析入口網站。 分析入口網站可讓您使用 Log Analytics 查詢語言直接查詢資料，因此您可以任意地詢問有關應用程式和其使用者的複雜問題。
+   此時會開啟與您的 Application Insights 資源相關聯的 Application Insights 記錄 (分析) 入口網站。 記錄 (分析) 入口網站可讓您使用 Log Analytics 查詢語言直接查詢資料，因此您可以任意詢問有關應用程式和其使用者的複雜問題。
    
-   在分析入口網站中開啟新索引標籤，然後貼上下列查詢。 它會傳回過去 24 小時內有多少個不同的使用者從您的應用程式傳送每個自訂事件，並根據這些不同的計數來排序。
+   在記錄 (分析) 入口網站中開啟新的索引標籤，然後貼上下列查詢。 它會傳回過去 24 小時內有多少個不同的使用者從您的應用程式傳送每個自訂事件，並根據這些不同的計數來排序。
 
    ```AIQL
    customEvents
@@ -121,7 +119,7 @@ Application Insights 可以查詢、分割、篩選及分析應用程式的自�
    | order by dcount_user_Id desc 
    ```
 
-   ![分析入口網站](./media/mobile-center-quickstart/analytics-portal.png)
+   ![記錄 (分析) 入口網站](./media/mobile-center-quickstart/analytics-portal-001.png)
 
    1. 在文字編輯器中的查詢上任一處按一下，以選取該查詢。
    2. 按一下 [執行] 來執行查詢。 
@@ -131,17 +129,17 @@ Application Insights 可以查詢、分割、篩選及分析應用程式的自�
 
 2. **分割及篩選您的自訂事件遙測資料。** 從 Application Insights [概觀] 頁面，選擇目錄中的 [使用者]。
 
-   ![使用者工具圖示](./media/mobile-center-quickstart/users-icon.png)
+   ![使用者工具圖示](./media/mobile-center-quickstart/users-icon-001.png)
 
    [使用者] 工具可以針對您使用 App Center SDK 追蹤做為事件的項目，顯示有多少應用程式使用者按過特定按鈕、瀏覽特定畫面，或執行過任何其他動作。 如果您在尋找分割及篩選 App Center 事件的方法，[使用者] 工具是絕佳的選擇。
 
-   ![使用者工具](./media/mobile-center-quickstart/users.png) 
+   ![使用者工具](./media/mobile-center-quickstart/users-001.png) 
 
    例如，選擇 [分割依據] 下拉式功能表中的 [國家或地區]，以根據地理位置來分割使用量。
 
 3. **分析應用程式中的轉換、保留和瀏覽模式。** 從 Application Insights [概觀] 頁面，選擇目錄中的 [使用者流程]。
 
-   ![使用者流程工具](./media/mobile-center-quickstart/user-flows.png)
+   ![使用者流程工具](./media/mobile-center-quickstart/user-flows-001.png)
 
    [使用者流程] 工具可將使用者在起始事件之後傳送的事件視覺化。 此工具有助於了解使用者瀏覽應用程式的大致情況。 它也能顯示許多使用者離開應用程式的位置，或不斷重複執行相同動作的位置。
 

@@ -1,0 +1,100 @@
+### YamlMime:Landing
+title: Azure Cache for Redis 文件
+summary: 了解如何使用安全的資料快取和訊息代理程式 Azure Cache for Redis，為應用程式提供高輸送量且低延遲的資料存取。 教學課程、API 參考和其他文件會示範如何從 Azure 上的任何應用程式使用 Azure Cache for Redis。
+metadata:
+  title: Azure Cache for Redis 文件
+  description: 了解如何使用安全的資料快取和訊息代理程式 Azure Cache for Redis，讓應用程式快速存取資料。 教學課程、API 參考等等。
+  ms.service: cache
+  ms.topic: landing-page
+  author: yegu-ms
+  ms.author: yegu
+  ms.date: 12/16/2019
+  ms.openlocfilehash: fad78db361927a14f393066fb088354552d880a9
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "75470027"
+landingContent:
+- title: 關於 Azure Cache for Redis
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure Redis 快取？
+      url: cache-overview.md
+    - text: 了解 Azure Cache for Redis 進階層
+      url: cache-premium-tier-intro.md
+  - linkListType: video
+    links:
+    - text: 系統管理選項
+      url: https://azure.microsoft.com/resources/videos/azure-redis-cache-administration-options/
+    - text: 安全性快取
+      url: https://azure.microsoft.com/resources/videos/azure-redis-security-cacheing/
+    - text: 最佳作法
+      url: https://azure.microsoft.com/resources/videos/azure-redis-cache-best-practices/
+    - text: 改善效能
+      url: https://azure.microsoft.com/resources/videos/increase-performance-through-redis-cluster-in-azure-redis-cache/
+  - linkListType: whats-new
+    links:
+    - text: 常見問題集
+      url: cache-faq.md
+    - text: Azure Cache for Redis 的最佳做法
+      url: cache-best-practices.md
+    - text: 適用於 Azure Cache for Redis 的 ASP.NET 工作階段狀態提供者
+      url: cache-aspnet-session-state-provider.md
+- title: 快速入門：Azure Cache for Redis
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 撰寫 .NET Framework 應用程式的程式碼
+      url: cache-dotnet-how-to-use-azure-redis-cache.md
+    - text: 撰寫 .NET Core 應用程式的程式碼
+      url: cache-dotnet-core-quickstart.md
+    - text: 撰寫 ASP.NET Web 應用程式的程式碼
+      url: cache-web-app-howto.md
+    - text: 撰寫 Java 應用程式的程式碼
+      url: cache-java-get-started.md
+    - text: 撰寫 Node.js 應用程式的程式碼
+      url: cache-nodejs-get-started.md
+    - text: 撰寫 Python 應用程式的程式碼
+      url: cache-python-get-started.md
+  - linkListType: tutorial
+    links:
+    - text: 在 ASP.NET 上建立另行快取排行榜
+      url: cache-web-app-cache-aside-leaderboard.md
+  - linkListType: get-started
+    links:
+    - text: 範例
+      url: cache-redis-samples.md
+- title: SDK 和命令列
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.redis
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.redis.rediscache
+    - text: REST API
+      url: /rest/api/redis/
+    - text: Redis 用戶端
+      url: https://redis.io/clients
+    - text: Redis 命令
+      url: https://redis.io/commands
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.rediscache
+    - text: Azure CLI
+      url: /cli/azure/redis
+- title: 疑難排解
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 針對用戶端問題進行疑難排解
+      url: cache-troubleshoot-client.md
+    - text: 針對伺服器端問題進行疑難排解
+      url: cache-troubleshoot-server.md
+    - text: 逾時疑難排解
+      url: cache-troubleshoot-timeouts.md
+    - text: 針對資料遺失問題進行疑難排解
+      url: cache-troubleshoot-data-loss.md

@@ -1,25 +1,24 @@
 ---
-title: 為 Azure AD 資源庫應用程式設定密碼單一登入時遇到的問題 | Microsoft Docs
+title: 設定 Azure AD 資源庫應用程式的密碼 SSO 時發生問題
 description: 了解使用者在為應用程式設定密碼單一登入 (這類應用程式已經列於 Azure AD 應用程式庫中) 時所面臨的常見問題
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6c313cc654461ea22c126fede317ed230408b82
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 89fda2657a68fc8a3fd293c0c6001a71f5970548
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291597"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763511"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>為 Azure AD 資源庫應用程式設定密碼單一登入時遇到的問題
 
@@ -31,7 +30,7 @@ ms.locfileid: "60291597"
 
 雖然 Microsoft 有技術可在整合中斷時進行自動偵測，但無法立即找出這些問題，或者問題需要一些時間來修正。 萬一其中一項整合無法正常運作，請開啟支援案例，如此便能儘速修正問題。
 
-**如果您與此應用程式的廠商有所聯繫，** 請將我們的連絡方式傳送給他們，讓 Microsoft 能夠與他們合作，將其應用程式與 Azure Active Directory 進行原生整合。 您可以將廠商引導到[在 Azure Active Directory 應用程式庫中列出您的應用程式](../develop/howto-app-gallery-listing.md)，讓他們可以立即開始。
+**如果您與此應用程式的廠商有所聯繫，** 請將我們的連絡方式傳送給他們，讓 Microsoft 能夠與他們合作，將其應用程式與 Azure Active Directory 進行原生整合。 您可以將廠商引導到[在 Azure Active Directory 應用程式庫中列出您的應用程式](../azuread-dev/howto-app-gallery-listing.md)，讓他們可以立即開始。
 
 ## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>認證會填入並提交，但頁面指出認證不正確
 
@@ -39,15 +38,15 @@ ms.locfileid: "60291597"
 
 - 讓使用者先嘗試使用為他們儲存的認證，**直接登入應用程式網站**。
 
-  * 如果可登入，接著讓使用者在[應用程式存取面板](https://myapps.microsoft.com/)的 [應用程式] 區段中，按一下 [應用程式磚] 上的 [更新認證] 按鈕，將他們更新至最新已知的有效使用者名稱和密碼。
+  * 如果可登入，接著讓使用者在[應用程式存取面板](https://myapps.microsoft.com/)的 [應用程式]**** 區段中，按一下 [應用程式磚]**** 上的 [更新認證]**** 按鈕，將他們更新至最新已知的有效使用者名稱和密碼。
 
-  * 如果您或其他系統管理員已為此使用者指派認證，請尋找使用者或群組的應用程式指派，方法是瀏覽至應用程式的 [使用者和群組] 索引標籤、選取指派，然後按一下 [更新認證] 按鈕。
+  * 如果您或其他系統管理員已為此使用者指派認證，請尋找使用者或群組的應用程式指派，方法是瀏覽至應用程式的 [使用者和群組]**** 索引標籤、選取指派，然後按一下 [更新認證]**** 按鈕。
 
 - 如果使用者已指派他們自己的認證，讓使用者**檢查以確定他們的密碼在應用程式中尚未過期**，如果過期，請直接登入應用程式，以**更新他們過期的密碼**。
 
-  * 在應用程式中更新密碼之後，要求使用者在[應用程式存取面板](https://myapps.microsoft.com/)的 [應用程式] 區段中，按一下 [應用程式磚] 上的 [更新認證] 按鈕，以將他們更新至最新已知的有效使用者名稱和密碼。
+  * 在應用程式中更新密碼之後，要求使用者在[應用程式存取面板](https://myapps.microsoft.com/)的 [應用程式]**** 區段中，按一下 [應用程式磚]**** 上的 [更新認證]**** 按鈕，以將他們更新至最新已知的有效使用者名稱和密碼。
 
-  * 如果您或其他系統管理員已為此使用者指派認證，請尋找使用者或群組的應用程式指派，方法是瀏覽至應用程式的 [使用者和群組] 索引標籤、選取指派，然後按一下 [更新認證] 按鈕。
+  * 如果您或其他系統管理員已為此使用者指派認證，請尋找使用者或群組的應用程式指派，方法是瀏覽至應用程式的 [使用者和群組]**** 索引標籤、選取指派，然後按一下 [更新認證]**** 按鈕。
 
 - 讓使用者依照[如何安裝存取面板的瀏覽器延伸模組](#how-to-install-the-access-panel-browser-extension)一節中的下列步驟，來更新存取面板的瀏覽器延伸模組。
 
@@ -59,7 +58,7 @@ ms.locfileid: "60291597"
 
 雖然 Microsoft 有技術可在應用程式整合中斷時進行自動偵測，但無法立即找出這些問題，或者問題可能需要一些時間來修正。 若整合未正常運作，您可以開啟支援案例，以便儘快修正。 
 
-此外，**如果您與此應用程式的廠商聯繫**，**請將我們的連絡方式傳送給他們**，讓我們能夠與他們合作，將其應用程式與 Azure Active Directory 進行原生整合。 您可以將廠商引導到[在 Azure Active Directory 應用程式庫中列出您的應用程式](../develop/howto-app-gallery-listing.md)，讓他們可以立即開始。
+此外，**如果您與此應用程式的廠商聯繫，** **請將我們的連絡方式傳送給他們**，讓我們能夠與他們合作，將其應用程式與 Azure Active Directory 進行原生整合。 您可以將廠商引導到[在 Azure Active Directory 應用程式庫中列出您的應用程式](../azuread-dev/howto-app-gallery-listing.md)，讓他們可以立即開始。
 
 ## <a name="the-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer"></a>延伸模組可在 Chrome 和 Firefox 中運作，但無法在 Internet Explorer 中運作
 
@@ -73,7 +72,7 @@ ms.locfileid: "60291597"
 
   * 不幸的是，這種情況會根據瀏覽器版本、電腦速度或瀏覽過的網站而有所不同。 在此情況下，我們建議您連絡支援人員，讓我們能夠修正這個特定應用程式的整合。
 
-此外，**如果您與此應用程式的廠商聯繫**，**請將我們的連絡方式傳送給他們**，讓我們能夠與他們合作，將其應用程式與 Azure Active Directory 進行原生整合。 您可以將廠商引導到[在 Azure Active Directory 應用程式庫中列出您的應用程式](../develop/howto-app-gallery-listing.md)，讓他們可以立即開始。
+此外，**如果您與此應用程式的廠商聯繫，** **請將我們的連絡方式傳送給他們**，讓我們能夠與他們合作，將其應用程式與 Azure Active Directory 進行原生整合。 您可以將廠商引導到[在 Azure Active Directory 應用程式庫中列出您的應用程式](../azuread-dev/howto-app-gallery-listing.md)，讓他們可以立即開始。
 
 ## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>檢查應用程式的登入頁面最近是否已變更或需要額外的欄位
 
@@ -81,7 +80,7 @@ ms.locfileid: "60291597"
 
 雖然 Microsoft 有技術可在應用程式整合中斷時進行自動偵測，但無法立即找出這些問題，或者問題可能需要一些時間來修正。 若整合未正常運作，您可以開啟支援案例，以便儘快修正。 
 
-此外，**如果您與此應用程式的廠商聯繫**，**請將我們的連絡方式傳送給他們**，讓我們能夠與他們合作，將其應用程式與 Azure Active Directory 進行原生整合。 您可以將廠商引導到[在 Azure Active Directory 應用程式庫中列出您的應用程式](../develop/howto-app-gallery-listing.md)，讓他們可以立即開始。
+此外，**如果您與此應用程式的廠商聯繫，** **請將我們的連絡方式傳送給他們**，讓我們能夠與他們合作，將其應用程式與 Azure Active Directory 進行原生整合。 您可以將廠商引導到[在 Azure Active Directory 應用程式庫中列出您的應用程式](../azuread-dev/howto-app-gallery-listing.md)，讓他們可以立即開始。
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>如何安裝存取面板的瀏覽器延伸模組
 
@@ -89,13 +88,13 @@ ms.locfileid: "60291597"
 
 1.  在其中一種支援的瀏覽器中開啟[存取面板](https://myapps.microsoft.com)，然後在您的 Azure AD 中以**使用者**身分登入。
 
-2.  按一下存取面板中的 [密碼-SSO 應用程式]。
+2.  按一下存取面板中的 [密碼-SSO 應用程式]****。
 
-3.  在要求安裝軟體的提示中，選取 [立即安裝]。
+3.  在要求安裝軟體的提示中，選取 [立即安裝]****。
 
 4.  系統會根據您的瀏覽器將您導向下載連結。 將延伸模組**新增**到瀏覽器中。
 
-5.  如果您的瀏覽器要求，請選取 [啟用] 或 [允許] 該延伸模組。
+5.  如果您的瀏覽器要求，請選取 [啟用]**** 或 [允許]**** 該延伸模組。
 
 6.  安裝之後，**重新啟動**瀏覽器工作階段。
 

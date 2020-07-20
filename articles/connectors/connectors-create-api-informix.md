@@ -1,277 +1,149 @@
 ---
-title: 連線到 IBM Informix 資料庫 - Azure Logic Apps | Microsoft Docs
-description: 使用 IBM Informix REST API 和 Azure Logic Apps 管理資源
-author: gplarsen
-manager: jeconnoc
-ms.author: plarsen
-ms.date: 09/26/2016
-ms.topic: article
-ms.service: logic-apps
+title: 連接到 IBM Informix 資料庫
+description: 使用 Azure Logic Apps，將管理儲存在 IBM Informix 中之資源的工作和工作流程自動化
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+author: gplarsen
+ms.author: plarsen
+ms.reviewer: klam, logicappspm
+ms.topic: article
+ms.date: 01/07/2020
 tags: connectors
-ms.openlocfilehash: 6004c02f190bbfcf374b3b5d2a5c478f0e52c961
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: dccb715c974037b4e3080f3e51576feae34c03df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60690812"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76757963"
 ---
-# <a name="get-started-with-the-informix-connector"></a>開始使用 Informix 連接器
-Microsoft Connector for Informix 可將 Logic Apps 連接至 IBM Informix 資料庫中儲存的資源。 Informix 連接器包含透過 TCP/IP 網路與遠端 Informix 伺服器電腦通訊的 Microsoft 用戶端。 其中包括雲端資料庫 (例如在 Azure 虛擬化中執行的 IBM Informix for Windows)，以及使用內部部署資料閘道的內部部署資料庫。 請參閱支援的 IBM Informix 平台和版本 [清單](connectors-create-api-informix.md#supported-informix-platforms-and-versions) (本主題結尾處)。
+# <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 管理 IBM Informix 資料庫資源
 
-連接器支援下列資料庫作業：
-
-* 列出資料庫資料表
-* 使用 SELECT 讀取一個資料列
-* 使用 SELECT 讀取所有資料列
-* 使用 INSERT 加入一個資料列
-* 使用 UPDATE 變更一個資料列
-* 使用 DELETE 移除一個資料列
-
-本主題說明如何在邏輯應用程式中使用連接器來處理資料庫作業。
-
-若要深入了解 Logic Apps，請參閱 [建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
-
-## <a name="available-actions"></a>可用動作
-連接器支援下列邏輯應用程式動作：
-
-* Getables
-* GetRow
-* GetRows
-* InsertRow
-* UpdateRow
-* DeleteRow
-
-## <a name="list-tables"></a>列出資料表
-針對由透過 Microsoft Azure 入口網站執行之許多步驟所組成的任何作業，建立邏輯應用程式。
-
-在邏輯應用程式中，您可以新增動作以列出 Informix 資料庫中的資料表。 此動作會指示連接器來處理 Informix 結構描述陳述式中，如`CALL SYSIBM.SQLTABLES`。
-
-### <a name="create-a-logic-app"></a>建立邏輯應用程式
-1. 在 **Azure 開始面板**中，依序選取 **+** (加號)、[Web + 行動] 和 [邏輯應用程式]。
-2. 輸入 [名稱]，如 `InformixgetTables`、**訂用帳戶**、**資源群組**、**位置**和 **App Service 方案**。 選取 [釘選到儀表板]，然後選取 [建立]。
-
-### <a name="add-a-trigger-and-action"></a>新增觸發程序和動作
-1. 在 [Logic Apps 設計工具] 中，在 [範本] 清單中選取 [空白 LogicApp]。
-2. 在**觸發程序**清單中，選取 [週期性]。 
-3. 在 [週期性] 觸發程序中，選取 [編輯]，選取 [頻率] 下拉式清單以選取 [天]，然後選取 [間隔] 以輸入 **7**。  
-4. 選取 [+ 新增步驟] 方塊，然後再選取 [新增動作]。
-5. 在**動作**清單中，於 [搜尋更多動作] 編輯方塊中輸入 **informix**，然後選取 [Informix - 取得資料表 (預覽)]。
-   
-   ![](./media/connectors-create-api-informix/InformixconnectorActions.png)  
-6. 在 [Informix - 取得資料表] 組態窗格中，選取**核取方塊**以啟用 [透過內部部署資料閘道連接]。 請注意從雲端至內部部署的設定變更。
-   
-   * 以地址或別名冒號連接埠號碼的格式，輸入 [伺服器] 的值。 例如，輸入 `ibmserver01:9089`。
-   * 輸入 [資料庫] 的值。 例如，輸入 `nwind`。
-   * 選取 [驗證] 的值。 例如，選取 [基本] 。
-   * 輸入 [使用者名稱] 的值。 例如，輸入 `informix`。
-   * 輸入 [密碼] 的值。 例如，輸入 `Password1`。
-   * 選取 [閘道] 的值。 例如，選取 [datagateway01] 。
-7. 選取 [建立]，然後選取 [儲存]。 
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorOnPremisesDataGatewayConnection.png)
-8. 在 [InformixgetTables] 刀鋒視窗中，於 [摘要] 之下的 [所有執行] 清單中，選取第一個列出的項目 (最近一次執行)。
-9. 在 [邏輯應用程式執行] 刀鋒視窗中，選取 [執行詳細資料]。 選取 [動作] 清單中的 [Get_tables]。 請查看 [狀態] 的值，應該是 [成功]。 選取 [輸入連結]  以檢視輸入。 選取 [輸出連結] 並檢視輸出，其中應包含資料表清單。
-   
-   ![](./media/connectors-create-api-informix/InformixconnectorGetTablesLogicAppRunOutputs.png)
-
-## <a name="create-the-connections"></a>建立連線
-此連接器支援使用下列連接屬性來連接內部部署和雲端中的資料庫。 
-
-| 屬性 | 描述 |
-| --- | --- |
-| 伺服器 |必要。 接受代表 TCP/IP 位址或別名的字串值，其採用 IPv4 或 IPv6 格式，後面接著 (以冒號分隔) TCP/IP 連接埠編號。 |
-| 資料庫 |必要。 接受代表 DRDA 關聯式資料庫名稱 (RDBNAM) 的字串值。 Informix 會接受 128 位元組的字串 (資料庫稱為 IBM Informix 資料庫的名稱 (dbname))。 |
-| 驗證 |選用。 接受清單項目值 (基本或 Windows (kerberos))。 |
-| username |必要。 接受字串值。 |
-| password |必要。 接受字串值。 |
-| gateway |必要。 接受清單項目值，該值代表對儲存群組內的 Logic Apps 定義的內部部署資料閘道。 |
-
-## <a name="create-the-on-premises-gateway-connection"></a>建立內部部署閘道連線
-此連接器可以使用內部部署資料閘道存取內部部署 Informix 資料庫。 如需詳細資訊，請參閱閘道主題。 
-
-1. 在 [閘道] 組態窗格中，選取**核取方塊**以啟用 [透過閘道連接]。 請查看從雲端至內部部署的設定變更。
-2. 以地址或別名冒號連接埠號碼的格式，輸入 [伺服器] 的值。 例如，輸入 `ibmserver01:9089`。
-3. 輸入 [資料庫] 的值。 例如，輸入 `nwind`。
-4. 選取 [驗證] 的值。 例如，選取 [基本] 。
-5. 輸入 [使用者名稱] 的值。 例如，輸入 `informix`。
-6. 輸入 [密碼] 的值。 例如，輸入 `Password1`。
-7. 選取 [閘道] 的值。 例如，選取 [datagateway01] 。
-8. 選取 [建立]  繼續作業。 
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorOnPremisesDataGatewayConnection.png)
-
-## <a name="create-the-cloud-connection"></a>建立雲端連線
-此連接器可以存取雲端 Informix 資料庫。 
-
-1. 在 [閘道] 組態窗格中，讓**核取方塊**停用 (取消選取) [透過閘道連接]。 
-2. 輸入 [連線名稱] 的值。 例如，輸入 `hisdemo2`。
-3. 以地址或別名冒號連接埠號碼的格式，輸入 [Informix 伺服器名稱] 的值。 例如，輸入 `hisdemo2.cloudapp.net:9089`。
-4. 輸入 [Informix 資料庫名稱] 的值。 例如，輸入 `nwind`。
-5. 輸入 [使用者名稱] 的值。 例如，輸入 `informix`。
-6. 輸入 [密碼] 的值。 例如，輸入 `Password1`。
-7. 選取 [建立]  繼續作業。 
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorCloudConnection.png)
-
-## <a name="fetch-all-rows-using-select"></a>使用 SELECT 擷取所有資料列
-您可以建立邏輯應用程式動作，擷取 Informix 資料表中的所有資料列。 此動作會指示連接器來處理 Informix SELECT 陳述式，如 `SELECT * FROM AREA`。
-
-### <a name="create-a-logic-app"></a>建立邏輯應用程式
-1. 在 **Azure 開始面板**中，依序選取 **+** (加號)、[Web + 行動] 和 [邏輯應用程式]。
-2. 輸入**名稱** (例如"**InformixgetRows**")、[訂用帳戶]、[資源群組]、[位置] 和 [App Service 方案]。 選取 [釘選到儀表板]，然後選取 [建立]。
-
-### <a name="add-a-trigger-and-action"></a>新增觸發程序和動作
-1. 在 [Logic Apps 設計工具] 中，在 [範本] 清單中選取 [空白 LogicApp]。
-2. 在**觸發程序**清單中，選取 [週期性]。 
-3. 在 [週期性] 觸發程序中，選取 [編輯]，選取 [頻率] 下拉式清單以選取 [天]，然後選取 [間隔] 以輸入 **7**。 
-4. 選取 [+ 新增步驟] 方塊，然後再選取 [新增動作]。
-5. 在**動作**清單中，於 [搜尋更多動作] 編輯方塊中輸入 **informix**，然後選取 [Informix - 取得資料列 (預覽)]。
-6. 在 [取得資料列 (預覽)] 動作中，選取 [變更連線]。
-7. 在 [連線] 組態窗格中，選取 [新建]。 
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorNewConnection.png)
-8. 在 [閘道] 組態窗格中，讓**核取方塊**停用 (取消選取) [透過閘道連接]。
-   
-   * 輸入 [連線名稱] 的值。 例如，輸入 `HISDEMO2`。
-   * 以地址或別名冒號連接埠號碼的格式，輸入 [Informix 伺服器名稱] 的值。 例如，輸入 `HISDEMO2.cloudapp.net:9089`。
-   * 輸入 [Informix 資料庫名稱] 的值。 例如，輸入 `NWIND`。
-   * 輸入 [使用者名稱] 的值。 例如，輸入 `informix`。
-   * 輸入 [密碼] 的值。 例如，輸入 `Password1`。
-9. 選取 [建立]  繼續作業。
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorCloudConnection.png)
-10. 在 [資料表名稱] 清單中，選取**向下箭號**，然後選取 [AREA]。
-11. (選擇性) 選取 [顯示進階選項]  來指定查詢選項。
-12. 選取 [ **儲存**]。 
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorGetRowsTableName.png)
-13. 在 [InformixgetRows] 刀鋒視窗中，於 [摘要] 之下的 [所有執行] 清單中，選取第一個列出的項目 (最近一次執行)。
-14. 在 [邏輯應用程式執行] 刀鋒視窗中，選取 [執行詳細資料]。 選取 [動作] 清單中的 [Get_rows]。 請查看 [狀態] 的值，應該是 [成功]。 選取 [輸入連結]  以檢視輸入。 選取 [輸出連結] 並檢視輸出，其中應包含資料列清單。
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorGetRowsOutputs.png)
-
-## <a name="add-one-row-using-insert"></a>使用 INSERT 加入一個資料列
-您可以建立邏輯應用程式動作，在 Informix 資料表中加入一個資料列。 此動作會指示連接器來處理 Informix INSERT 陳述式，例如`INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`。
-
-### <a name="create-a-logic-app"></a>建立邏輯應用程式
-1. 在 **Azure 開始面板**中，依序選取 **+** (加號)、[Web + 行動] 和 [邏輯應用程式]。
-2. 輸入 [名稱]，如 `InformixinsertRow`、**訂用帳戶**、**資源群組**、**位置**和 **App Service 方案**。 選取 [釘選到儀表板]，然後選取 [建立]。
-
-### <a name="add-a-trigger-and-action"></a>新增觸發程序和動作
-1. 在 [Logic Apps 設計工具] 中，在 [範本] 清單中選取 [空白 LogicApp]。
-2. 在**觸發程序**清單中，選取 [週期性]。 
-3. 在 [週期性] 觸發程序中，選取 [編輯]，選取 [頻率] 下拉式清單以選取 [天]，然後選取 [間隔] 以輸入 **7**。 
-4. 選取 [+ 新增步驟] 方塊，然後再選取 [新增動作]。
-5. 在**動作**清單中，於 [搜尋更多動作] 編輯方塊中輸入 **informix**，然後選取 [Informix - 插入資料列 (預覽)]。
-6. 在 [取得資料列 (預覽)] 動作中，選取 [變更連線]。 
-7. 在 [連線]  組態窗格中，選取以選取連線。 例如，選取 [hisdemo2] 。
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. 在 [資料表名稱] 清單中，選取**向下箭號**，然後選取 [AREA]。
-9. 輸入所有必要資料行 (請見紅色星號) 的值。 例如，針對 [AREAID] 輸入 `99999`、輸入 `Area 99999`，以及針對 [REGIONID] 輸入 `102`。 
-10. 選取 [ **儲存**]。
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorInsertRowValues.png)
-11. 在 [InformixinsertRow] 刀鋒視窗中，於 [摘要] 之下的 [所有執行] 清單中，選取第一個列出的項目 (最近一次執行)。
-12. 在 [邏輯應用程式執行] 刀鋒視窗中，選取 [執行詳細資料]。 選取 [動作] 清單中的 [Get_rows]。 請查看 [狀態] 的值，應該是 [成功]。 選取 [輸入連結]  以檢視輸入。 選取 [輸出連結] 並檢視輸出，其中應包含新資料列。
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorInsertRowOutputs.png)
-
-## <a name="fetch-one-row-using-select"></a>使用 SELECT 擷取一個資料列
-您可以建立邏輯應用程式動作，擷取 Informix 資料表中的資料列。 此動作會指示連接器來處理 Informix SELECT WHERE 陳述式，例如`SELECT FROM AREA WHERE AREAID = '99999'`。
-
-### <a name="create-a-logic-app"></a>建立邏輯應用程式
-1. 在 **Azure 開始面板**中，依序選取 **+** (加號)、[Web + 行動] 和 [邏輯應用程式]。
-2. 輸入 [名稱]，如 `InformixgetRow`、**訂用帳戶**、**資源群組**、**位置**和 **App Service 方案**。 選取 [釘選到儀表板]，然後選取 [建立]。
-
-### <a name="add-a-trigger-and-action"></a>新增觸發程序和動作
-1. 在 [Logic Apps 設計工具] 中，在 [範本] 清單中選取 [空白 LogicApp]。
-2. 在**觸發程序**清單中，選取 [週期性]。 
-3. 在 [週期性] 觸發程序中，選取 [編輯]，選取 [頻率] 下拉式清單以選取 [天]，然後選取 [間隔] 以輸入 **7**。 
-4. 選取 [+ 新增步驟] 方塊，然後再選取 [新增動作]。
-5. 在**動作**清單中，於 [搜尋更多動作] 編輯方塊中輸入 **informix**，然後選取 [Informix - 取得資料列 (預覽)]。
-6. 在 [取得資料列 (預覽)] 動作中，選取 [變更連線]。 
-7. 在 [連線]  組態窗格中，選取以選取現有連線。 例如，選取 [hisdemo2] 。
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. 在 [資料表名稱] 清單中，選取**向下箭號**，然後選取 [AREA]。
-9. 輸入所有必要資料行 (請見紅色星號) 的值。 例如，針對 [AREAID] 輸入 `99999`。 
-10. (選擇性) 選取 [顯示進階選項]  來指定查詢選項。
-11. 選取 [ **儲存**]。 
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorGetRowValues.png)
-12. 在 [InformixgetRow] 刀鋒視窗中，於 [摘要] 之下的 [所有執行] 清單中，選取第一個列出的項目 (最近一次執行)。
-13. 在 [邏輯應用程式執行] 刀鋒視窗中，選取 [執行詳細資料]。 選取 [動作] 清單中的 [Get_rows]。 請查看 [狀態] 的值，應該是 [成功]。 選取 [輸入連結]  以檢視輸入。 選取 [輸出連結] 並檢視輸出，其中應包含資料列。
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorGetRowOutputs.png)
-
-## <a name="change-one-row-using-update"></a>使用 UPDATE 變更資料列
-您可以建立邏輯應用程式動作，以變更 Informix 資料表中的資料列。 此動作會指示連接器來處理 Informix UPDATE 陳述式，例如`UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`。
-
-### <a name="create-a-logic-app"></a>建立邏輯應用程式
-1. 在 **Azure 開始面板**中，依序選取 **+** (加號)、[Web + 行動] 和 [邏輯應用程式]。
-2. 輸入 [名稱]，如 `InformixupdateRow`、**訂用帳戶**、**資源群組**、**位置**和 **App Service 方案**。 選取 [釘選到儀表板]，然後選取 [建立]。
-
-### <a name="add-a-trigger-and-action"></a>新增觸發程序和動作
-1. 在 [Logic Apps 設計工具] 中，在 [範本] 清單中選取 [空白 LogicApp]。
-2. 在**觸發程序**清單中，選取 [週期性]。 
-3. 在 [週期性] 觸發程序中，選取 [編輯]，選取 [頻率] 下拉式清單以選取 [天]，然後選取 [間隔] 以輸入 **7**。 
-4. 選取 [+ 新增步驟] 方塊，然後再選取 [新增動作]。
-5. 在**動作**清單中，於 [搜尋更多動作] 編輯方塊中輸入 **informix**，然後選取 [Informix - 更新資料列 (預覽)]。
-6. 在 [取得資料列 (預覽)] 動作中，選取 [變更連線]。 
-7. 在 [連線]  組態窗格中，選取以選取現有連線。 例如，選取 [hisdemo2] 。
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. 在 [資料表名稱] 清單中，選取**向下箭號**，然後選取 [AREA]。
-9. 輸入所有必要資料行 (請見紅色星號) 的值。 例如，針對 [AREAID] 輸入 `99999`、輸入 `Updated 99999`，以及針對 [REGIONID] 輸入 `102`。 
-10. 選取 [ **儲存**]。 
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorUpdateRowValues.png)
-11. 在 [InformixupdateRow] 刀鋒視窗中，於 [摘要] 之下的 [所有執行] 清單中，選取第一個列出的項目 (最近一次執行)。
-12. 在 [邏輯應用程式執行] 刀鋒視窗中，選取 [執行詳細資料]。 選取 [動作] 清單中的 [Get_rows]。 請查看 [狀態] 的值，應該是 [成功]。 選取 [輸入連結]  以檢視輸入。 選取 [輸出連結] 並檢視輸出，其中應包含新資料列。
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorUpdateRowOutputs.png)
-
-## <a name="remove-one-row-using-delete"></a>使用 DELETE 移除一個資料列
-您可以建立邏輯應用程式動作，移除 Informix 資料表中的資料列。 此動作會指示連接器來處理 Informix DELETE 陳述式，例如`DELETE FROM AREA WHERE AREAID = '99999'`。
-
-### <a name="create-a-logic-app"></a>建立邏輯應用程式
-1. 在 **Azure 開始面板**中，依序選取 **+** (加號)、[Web + 行動] 和 [邏輯應用程式]。
-2. 輸入 [名稱]，如 `InformixdeleteRow`、**訂用帳戶**、**資源群組**、**位置**和 **App Service 方案**。 選取 [釘選到儀表板]，然後選取 [建立]。
-
-### <a name="add-a-trigger-and-action"></a>新增觸發程序和動作
-1. 在 [Logic Apps 設計工具] 中，在 [範本] 清單中選取 [空白 LogicApp]。
-2. 在**觸發程序**清單中，選取 [週期性]。 
-3. 在 [週期性] 觸發程序中，選取 [編輯]，選取 [頻率] 下拉式清單以選取 [天]，然後選取 [間隔] 以輸入 **7**。 
-4. 選取 [+ 新增步驟] 方塊，然後再選取 [新增動作]。
-5. 在**動作**清單中，於 [搜尋更多動作] 編輯方塊中輸入 **informix**，然後選取 [Informix - 刪除資料列 (預覽)]。
-6. 在 [取得資料列 (預覽)] 動作中，選取 [變更連線]。 
-7. 在 [連線]  組態窗格中選取現有連線。 例如，選取 [hisdemo2] 。
-   
-    ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
-8. 在 [資料表名稱] 清單中，選取**向下箭號**，然後選取 [AREA]。
-9. 輸入所有必要資料行 (請見紅色星號) 的值。 例如，針對 [AREAID] 輸入 `99999`。 
-10. 選取 [ **儲存**]。 
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorDeleteRowValues.png)
-11. 在 [InformixdeleteRow] 刀鋒視窗中，於 [摘要] 之下的 [所有執行] 清單中，選取第一個列出的項目 (最近一次執行)。
-12. 在 [邏輯應用程式執行] 刀鋒視窗中，選取 [執行詳細資料]。 選取 [動作] 清單中的 [Get_rows]。 請查看 [狀態] 的值，應該是 [成功]。 選取 [輸入連結]  以檢視輸入。 選取 [輸出連結] 並檢視輸出，其中應包含刪除的資料列。
-    
-    ![](./media/connectors-create-api-informix/InformixconnectorDeleteRowOutputs.png)
-
-## <a name="supported-informix-platforms-and-versions"></a>支援的 Informix 平台和版本
-此連接器在設定為支援分散式關聯資料庫架構 (DRDA) 用戶端連線時可支援下列 IBM Informix 版本。
+使用[Azure Logic Apps](../logic-apps/logic-apps-overview.md)和[Informix 連接器](/connectors/informix/)，您可以建立自動化的工作和工作流程，以管理 IBM Informix 資料庫中的資源。 此連接器包含一個 Microsoft 用戶端，可透過 TCP/IP 網路與遠端 Informix 伺服器電腦通訊，包括雲端式資料庫（例如適用于在 Azure 虛擬化中執行的 IBM Informix for Windows），以及當您使用內部[部署資料閘道](../logic-apps/logic-apps-gateway-connection.md)時的內部部署資料庫。 若已設定為支援分散式關係資料庫架構（DRDA）用戶端連線，您可以連接到這些 Informix 平臺和版本：
 
 * IBM Informix 12.1
 * IBM Informix 11.7
 
+本主題說明如何在邏輯應用程式中使用連接器來處理資料庫作業。
+
+## <a name="prerequisites"></a>必要條件
+
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
+
+* 針對內部部署資料庫，請在本機電腦上[下載並安裝內部部署資料閘道](../logic-apps/logic-apps-gateway-install.md)，然後[在 Azure 入口網站中建立 Azure 資料閘道資源](../logic-apps/logic-apps-gateway-connection.md)。
+
+* 您需要存取 Informix 資料庫的邏輯應用程式。 此連接器只會提供動作，因此您的邏輯應用程式必須已啟動觸發程式，例如，[週期觸發](../connectors/connectors-native-recurrence.md)程式。 
+
+## <a name="add-an-informix-action"></a>新增 Informix 動作
+
+1. 在 [Azure 入口網站](https://portal.azure.com)中，如果邏輯應用程式尚未開啟，請在邏輯應用程式設計工具中開啟邏輯應用程式。
+
+1. 在您要新增 Informix 動作的步驟中，選取 [**新增步驟**]。
+
+   若要在現有步驟之間新增動作，請將滑鼠放在連接箭頭上。 選擇所顯示的加號 ( **+** )，然後選取 [新增動作]。
+
+1. 在搜尋方塊中，輸入 `informix` 作為篩選條件。 從 [動作] 清單中，選取您想要的動作，例如：
+
+   ![選取要執行的 Informix 動作](./media/connectors-create-api-informix/select-informix-connector-action.png)
+
+   連接器會提供這些動作，以執行對應的資料庫作業：
+
+   * 取得資料表-使用語句列出資料庫資料表 `CALL`
+   * 取得資料列-使用語句讀取所有資料列 `SELECT *`
+   * 使用語句取得資料列讀取資料列 `SELECT WHERE`
+   * 使用語句加入資料列 `INSERT`
+   * 使用語句來編輯資料列 `UPDATE`
+   * 使用語句來刪除資料列 `DELETE`
+
+1. 如果系統提示您提供 Informix 資料庫的連線詳細資料，請遵循建立連線的[步驟](#create-connection)，然後繼續下一個步驟。
+
+1. 提供所選動作的資訊：
+
+   | 動作 | Description | 屬性和描述 |
+   |--------|-------------|-----------------------------|
+   | **取得資料表** | 藉由執行 Informix CALL 語句來列出資料庫資料表。 | None |
+   | **取得多個資料列** | 藉由執行 Informix 語句，提取指定之資料表中的所有資料列 `SELECT *` 。 | **資料表名稱**：您想要的 Informix 資料表名稱 <p><p>若要將其他屬性新增至此動作，請從 [**加入新的參數**] 清單中選取它們。 如需詳細資訊，請參閱[連接器的參考主題](/connectors/informix/)。 |
+   | **取得單一資料列** | 藉由執行 Informix 語句，從指定的資料表提取一個資料列 `SELECT WHERE` 。 | - **資料表名稱**：您想要的 Informix 資料表名稱 <br>- 資料**列識別碼**：資料列的唯一識別碼，例如`9999` |
+   | **插入資料列** | 藉由執行 Informix 語句，將資料列加入至指定的 Informix 資料表 `INSERT` 。 | - **資料表名稱**：您想要的 Informix 資料表名稱 <br>- **item**：包含要加入之值的資料列 |
+   | **更新資料列** | 藉由執行 Informix 語句來變更指定的 Informix 資料表中的資料列 `UPDATE` 。 | - **資料表名稱**：您想要的 Informix 資料表名稱 <br>- 資料**列識別碼**：要更新之資料列的唯一識別碼，例如`9999` <br>- **Row**：具有更新值的資料列，例如`102` |
+   | **刪除資料列** | 藉由執行 Informix 語句，從指定的 Informix 資料表中移除資料列 `DELETE` 。 | - **資料表名稱**：您想要的 Informix 資料表名稱 <br>- 資料**列識別碼**：要刪除之資料列的唯一識別碼，例如`9999` |
+   ||||
+
+1. 儲存您的邏輯應用程式。 現在，請[測試您的邏輯應用程式](#test-logic-app)，或繼續建立邏輯應用程式。
+
+<a name="create-connection"></a>
+
+## <a name="connect-to-informix"></a>連接到 Informix
+
+1. 如果您的邏輯應用程式連接到內部部署資料庫，請選取 [透過內部**部署資料網**關聯機]。
+
+1. 提供此連接資訊，然後選取 [**建立**]。
+
+   | 屬性 | JSON 屬性 | 必要 | 範例值 | 描述 |
+   |----------|---------------|----------|---------------|-------------|
+   | 連接名稱 | `name` | Yes | `informix-demo-connection` | 要用於連線至 Informix 資料庫的名稱 |
+   | 伺服器 | `server` | Yes | 形成`informixdemo.cloudapp.net:9089` <br>-內部部署：`informixdemo:9089` | 採用 IPv4 或 IPv6 格式的 TCP/IP 位址或別名，後面接著冒號和 TCP/IP 埠號碼 |
+   | 資料庫 | `database` | Yes | `nwind` | DRDA 關係資料庫名稱（RDBNAM）或 Informix 資料庫名稱（dbname）。 Informix 接受128位元組的字串。 |
+   | 驗證 | `authentication` | 僅內部部署 | **基本**或**Windows** （kerberos） | 您的 Informix 資料庫所需的驗證類型。 只有當您選取 [透過內部**部署資料閘道**進行連線] 時，才會出現此屬性。 |
+   | 使用者名稱 | `username` | No | <*資料庫-使用者名稱*> | 資料庫的使用者名稱 |
+   | 密碼 | `password` | No | <*資料庫-密碼*> | 資料庫的密碼 |
+   | 閘道 | `gateway` | 僅內部部署 | -<*Azure-訂*用帳戶> <br>-<*Azure-內部部署-資料閘道-資源*> | 您在 Azure 入口網站中建立之內部部署資料閘道的 Azure 訂用帳戶和 Azure 資源名稱。 只有當您選取 [透過內部**部署資料閘道連線]** 時，才會顯示**閘道**屬性和子屬性。 |
+   ||||||
+
+   例如：
+
+   * **雲端資料庫**
+
+     ![雲端資料庫連接資訊](./media/connectors-create-api-informix/informix-cloud-connection.png)
+
+   * **內部部署資料庫**
+
+     ![內部部署資料庫連接資訊](./media/connectors-create-api-informix/informix-on-premises-connection.png)
+
+1. 儲存您的邏輯應用程式。
+
+<a name="test-logic-app"></a>
+
+## <a name="test-your-logic-app"></a>測試應用程式邏輯
+
+1. 在邏輯應用程式設計工具工具列上，選取 [**執行**]。 執行邏輯應用程式之後，您可以從該執行中查看輸出。
+
+1. 從邏輯應用程式的功能表中，選取 **[總覽**]。 在 [總覽] 窗格的 [**摘要**] [執行歷程  >  **記錄**] 底下，選取最新的執行。
+
+1. 在 [**邏輯應用程式執行**] 底下，選取 [**執行詳細資料**]。
+
+1. 從 [動作] 清單中，選取包含您想要查看之輸出的動作，例如**Get_tables**。
+
+   如果動作成功，其 [**狀態**] 屬性會標示為 [**成功**]。
+
+1. 若要查看輸入，請在 [**輸入連結**] 底下，選取 [URL] 連結。 若要查看輸出，請在 [**輸出連結**連結] 底下，選取 [URL] 連結。 以下是一些範例輸出：
+
+   * **Get_tables**會顯示資料表清單：
+
+     ![來自「取得資料表」動作的輸出](./media/connectors-create-api-informix/InformixconnectorGetTablesLogicAppRunOutputs.png)
+
+   * **Get_rows**顯示資料列清單：
+
+     ![[取得資料列] 動作的輸出](./media/connectors-create-api-informix/InformixconnectorGetRowsOutputs.png)
+
+   * **Get_row**顯示指定的資料列：
+
+     ![從「取得資料列」動作輸出](./media/connectors-create-api-informix/InformixconnectorGetRowOutputs.png)
+
+   * **Insert_row**會顯示新的資料列：
+
+     ![[插入資料列] 動作的輸出](./media/connectors-create-api-informix/InformixconnectorInsertRowOutputs.png)
+
+   * **Update_row**會顯示更新的資料列：
+
+     ![[更新資料列] 動作的輸出](./media/connectors-create-api-informix/InformixconnectorUpdateRowOutputs.png)
+
+   * **Delete_row**會顯示已刪除的資料列：
+
+     ![[刪除資料列] 動作的輸出](./media/connectors-create-api-informix/InformixconnectorDeleteRowOutputs.png)
+
 ## <a name="connector-specific-details"></a>連接器特定的詳細資料
 
-檢視 Swagger 中定義的任何觸發程序和動作，另請參閱[連接器詳細資料](/connectors/informix/)的所有限制。 
+如需有關觸發程式、動作和限制的技術詳細資訊（由連接器的 Swagger 描述所描述），請參閱[連接器的參考頁面](/connectors/informix/)。
 
 ## <a name="next-steps"></a>後續步驟
-[建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 請到我們的 [API 清單](apis-list.md)探索 Logic Apps 中其他可用的連接器。
 
+* 了解其他 [Logic Apps 連接器](apis-list.md)

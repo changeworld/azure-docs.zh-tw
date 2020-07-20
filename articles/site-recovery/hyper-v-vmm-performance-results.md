@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 將 VMM 雲端中的 Hyper-V VM 複寫至次要網站的測試結果 | Microsoft Docs
+title: 使用 Azure Site Recovery 測試將 Hyper-v VM 複寫至具有 VMM 的次要網站
 description: 本文提供使用 Azure Site Recovery 將 VMM 雲端中的 Hyper-V VM 複寫至次要網站之效能測試的相關資訊。
 author: sujayt
 manager: rochakm
@@ -7,12 +7,11 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 7e2f5c344a0fb632956ab5d5b951ee69cff528ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 3edd182e335bc679d95d7be64f45b617a9f54c1a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60363468"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73663180"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>將 Hyper-V 複寫至次要網站的測試結果
 
@@ -96,7 +95,7 @@ Hyper-V 複本會使用復原伺服器上的少量記憶體來最佳化儲存作
 
 ## <a name="test-environment-details"></a>測試環境詳細資料
 
-### <a name="primary-site"></a>主要站台
+### <a name="primary-site"></a>主要網站
 
 * 主要網站所具備的叢集內含五部執行 470 個虛擬機器的 Hyper-V 伺服器。
 * VM 執行不同的工作負載，而且全都有啟用 Site Recovery 保護。
@@ -106,9 +105,9 @@ Hyper-V 複本會使用復原伺服器上的少量記憶體來最佳化儲存作
 
 ![主要硬體需求](./media/hyper-v-vmm-performance-results/IC744922.png)
 
-| 伺服器 | RAM | 型号 | 处理器 | 處理器數目 | NIC | 软件 |
+| 伺服器 | RAM | 型號 | 處理器 | 處理器數目 | NIC | 軟體 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 群集中的 Hyper-V 服务器： <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128ESTLAB-HOST25 具備 256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2.20GHz |4 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
+| 叢集中的 Hyper-V 伺服器： <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128<br />ESTLAB-HOST25 有 256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2.20GHz |4 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
 | VMM 伺服器 |2 | | |2 |1 Gbps |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
 
 ### <a name="secondary-site"></a>次要網站
@@ -118,7 +117,7 @@ Hyper-V 複本會使用復原伺服器上的少量記憶體來最佳化儲存作
 
 ![主要硬體規格](./media/hyper-v-vmm-performance-results/IC744923.png)
 
-| 伺服器 | RAM | 型号 | 处理器 | 處理器數目 | NIC | 软件 |
+| 伺服器 | RAM | 型號 | 處理器 | 處理器數目 | NIC | 軟體 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 叢集中的 Hyper-V 伺服器： <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell ™ PowerEdge ™ R720 |Intel(R) Xeon(R) CPU E5-2630 0 \@ 2.30GHz |2 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
 | ESTLAB-HOST17 |128 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2.20GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
@@ -133,11 +132,11 @@ Hyper-V 複本會使用復原伺服器上的少量記憶體來最佳化儲存作
 
 | 工作負載 | I/O 大小 (KB) | 存取百分比 | 讀取百分比 | 未完成的 I/O | I/O 模式 |
 | --- | --- | --- | --- | --- | --- |
-| 檔案伺服器 |48163264 |60%20%5%5%10% |80%80%80%80%80% |88888 |全部 100% 隨機 |
-| SQL Server (磁碟區 1) SQL Server (磁碟區 2) |864 |100%100% |70%0% |88 |100% 隨機 100% 循序 |
+| 檔案伺服器 |4<br />8<br />16<br />32<br />64 |60%<br />20%<br />5%<br />5%<br />10% |80%<br />80%<br />80%<br />80%<br />80% |8<br />8<br />8<br />8<br />8 |全部 100% 隨機 |
+| SQL Server (磁碟區 1)<br />SQL Server （第2卷） |8<br />64 |100%<br />100% |70%<br />0% |8<br />8 |100% 隨機<br />100% 循序 |
 | Exchange |32 |100% |67% |8 |100% 隨機 |
-| 工作站/VDI |464 |66%34% |70%95% |11 |兩者都 100% 隨機 |
-| Web 檔案伺服器 |4864 |33%34%33% |95%95%95% |888 |全部 75% 隨機 |
+| 工作站/VDI |4<br />64 |66%<br />34% |70%<br />95% |1<br />1 |兩者都 100% 隨機 |
+| Web 檔案伺服器 |4<br />8<br />64 |33%<br />34%<br />33% |95%<br />95%<br />95% |8<br />8<br />8 |全部 75% 隨機 |
 
 ### <a name="vm-configuration"></a>VM 設定
 
@@ -145,13 +144,13 @@ Hyper-V 複本會使用復原伺服器上的少量記憶體來最佳化儲存作
 * 所有 VM 都有 VHDX 磁碟。
 * VM 執行資料表中摘要說明的工作負載。 全部都使用 VMM 範本建立。
 
-| 工作負載 | VM 數 | 最小 RAM (GB) | RAM 上限 (GB) | 每個 VM 的邏輯磁碟大小 (GB) | IOPS 上限 |
+| 工作負載 | VM 數 | RAM 下限 (GB) | RAM 上限 (GB) | 每個 VM 的邏輯磁碟大小 (GB) | IOPS 上限 |
 | --- | --- | --- | --- | --- | --- |
 | SQL Server |51 |1 |4 |167 |10 |
 | Exchange Server |71 |1 |4 |552 |10 |
 | 檔案伺服器 |50 |1 |2 |552 |22 |
 | VDI |149 |.5 |1 |80 |6 |
-| Web 伺服器 |149 |.5 |1 |80 |6 |
+| 網頁伺服器 |149 |.5 |1 |80 |6 |
 | 總計 |470 | | |96.83 TB |4108 |
 
 ### <a name="site-recovery-settings"></a>Site Recovery 設定
@@ -166,19 +165,19 @@ Hyper-V 複本會使用復原伺服器上的少量記憶體來最佳化儲存作
 | PrimaryCloudRpo30sArp1 |47 |30 秒 |1 |
 | PrimaryCloudRpo5m |235 |5 分鐘 |None |
 
-### <a name="performance-metrics"></a>性能指标
+### <a name="performance-metrics"></a>效能度量
 
 資料表摘要說明在部署中測量的效能度量和計數器。
 
 | 計量 | 計數器 |
 | --- | --- |
-| CPU |\Processor(_Total)\% 处理器时间 |
+| CPU |\Processor(_Total)\% Processor Time |
 | 可用的記憶體 |\記憶體\可用的 MB |
-| IOPS |\PhysicalDisk(_Total)\Disk Transfers/sec |
-| 每秒的 VM 讀取 (IOPS) 作業數 |\Hyper-V Virtual Storage Device(\<VHD>)\Read Operations/Sec |
-| 每秒的 VM 寫入 (IOPS) 作業數 |\Hyper-V Virtual Storage Device(\<VHD>)\Write Operations/S |
-| VM 讀取輸送量 |\Hyper-V Virtual Storage Device(\<VHD>)\Read Bytes/sec |
-| VM 寫入輸送量 |\Hyper-V Virtual Storage Device(\<VHD>)\Write Bytes/sec |
+| IOPS |\PhysicalDisk(_Total)\每秒的磁碟傳輸數 |
+| 每秒的 VM 讀取 (IOPS) 作業數 |\Hyper-V 虛擬存放裝置 (\<VHD>) \每秒的讀取作業數 |
+| 每秒的 VM 寫入 (IOPS) 作業數 |\Hyper-V 虛擬存放裝置 (\<VHD>)\每秒的寫入作業數 |
+| VM 讀取輸送量 |\Hyper-V 虛擬存放裝置 (\<VHD>)\每秒的讀取位元組數 |
+| VM 寫入輸送量 |\Hyper-V 虛擬存放裝置 (\<VHD>)\每秒的寫入位元組數 |
 
 ## <a name="next-steps"></a>後續步驟
 

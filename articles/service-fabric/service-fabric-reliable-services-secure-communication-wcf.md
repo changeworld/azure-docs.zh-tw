@@ -1,25 +1,16 @@
 ---
-title: 保護 Azure Service Fabric 中的 WCF 服務通訊安全 | Microsoft Docs
+title: 保護 WCF 型服務通訊
 description: 針對在 Azure Service Fabric 叢集中執行的可靠服務，了解如何保護其 WCF 通訊。
-services: service-fabric
-documentationcenter: .net
 author: suchiagicha
-manager: chackdan
-editor: vturecek
-ms.assetid: fc129c1a-fbe4-4339-83ae-0e69a41654e0
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 04/20/2017
-ms.author: suchiagicha
-ms.openlocfilehash: 26d34f0473dec5e0767041df400b84887a0d1778
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: pepogors
+ms.openlocfilehash: 8633a5018e6faeaca842a3ecffb4c4921358e191
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60725579"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257352"
 ---
 # <a name="secure-wcf-based-communications-for-a-service"></a>保護服務的 WCF 通訊
 安全性是通訊最為重視的其中一個部分。 Reliable Services 應用程式架構會提供可用來改善安全性的一些預先建置通訊堆疊和工具。 本文探討如何改善使用服務遠端作業時的安全性。
@@ -129,4 +120,4 @@ ms.locfileid: "60725579"
         client => client.Channel.Add(2, 3)).Result;
     ```
 
-接著請參閱[在 Reliable Services 中搭配 OWIN 使用 Web API](service-fabric-reliable-services-communication-webapi.md)。
+接著請參閱[在 Reliable Services 中搭配 OWIN 使用 Web API](./service-fabric-reliable-services-communication-aspnetcore.md)。

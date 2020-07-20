@@ -1,32 +1,32 @@
 ---
-title: 使用 Azure 原則來限制 VM 延伸模組安裝 | Microsoft Docs
+title: 使用 Azure 原則來限制 VM 延伸模組安裝
 description: 使用 Azure 原則來限制延伸模組部署。
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
-ms.author: roiyz;cynthn
-ms.openlocfilehash: dfaeff5e8f90e72645293d15c454f78f17b08fb0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: akjosh
+ms.reviewer: cynthn
+ms.openlocfilehash: 96cd16c08421a4e365391c0db0b257f71a06551f
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387327"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919801"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>使用 Azure 原則來限制 Windows VM 上的延伸模組安裝
 
-如果您想要防止在 Windows VM 上使用或安裝特定的延伸模組，就可以使用 PowerShell 來建立 Azure 原則，以限制某個資源群組內 VM 的延伸模組。 
+如果您想要防止在 Windows Vm 上使用或安裝特定擴充功能，您可以使用 PowerShell 來建立 Azure 原則定義，以限制資源群組內的 Vm 擴充功能。 
 
 本教學課程會使用 Cloud Shell 內的 Azure PowerShell，這會不斷更新至最新版本。 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="create-a-rules-file"></a>建立規則檔
 
@@ -88,7 +88,6 @@ nano $home/clouddrive/parameters.json
         "type": "Array",
         "metadata": {
             "description": "The list of extensions that will be denied.",
-            "strongType": "type",
             "displayName": "Denied extension"
         }
     }
@@ -97,7 +96,7 @@ nano $home/clouddrive/parameters.json
 
 完成時，按 **Ctrl + O**，然後按 **Enter** 以儲存檔案。 按 **Ctrl + X** 以關閉檔案並結束。
 
-## <a name="create-the-policy"></a>建立原則
+## <a name="create-the-policy"></a>建立政策
 
 原則定義是一個用來儲存您所要使用之設定的物件。 原則定義會使用規則檔和參數檔來定義原則。 請使用 [New-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicydefinition) Cmdlet 來建立原則定義。
 
@@ -141,7 +140,7 @@ $assignment
 
 ## <a name="test-the-policy"></a>測試原則
 
-若要測試原則，請嘗試使用「VM 存取」延伸模組。 以下範例應該會失敗並出現「Set-AzVMAccessExtension：原則不允許資源 'myVMAccess'」訊息。
+若要測試原則，請嘗試使用「VM 存取」延伸模組。 下列情況應該會失敗，並出現「原則不允許資源 ' Set-azvmaccessextension： Resource ' Myvmaccess」訊息 '」訊息。
 
 ```azurepowershell-interactive
 Set-AzVMAccessExtension `

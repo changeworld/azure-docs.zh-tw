@@ -1,63 +1,52 @@
 ---
-title: 適用於 Linux 的 azure 監視虛擬機器擴充功能 |Microsoft Docs
+title: 適用於 Linux 的 Log Analytics 虛擬機器擴充功能
 description: 使用虛擬機器擴充功能在 Linux 虛擬機器上部署 Log Analytics 代理程式。
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: c7bbf210-7d71-4a37-ba47-9c74567a9ea6
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/12/2019
-ms.author: roiyz
-ms.openlocfilehash: 538eb492829c8ad171d1d27b51405725f53f352a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 02/18/2020
+ms.author: akjosh
+ms.openlocfilehash: 905a42c5a9bc297e2c27408a58a5b3019755fdef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60743574"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736648"
 ---
-# <a name="azure-monitor-virtual-machine-extension-for-linux"></a>適用於 Linux 的 azure 監視虛擬機器擴充功能
+# <a name="log-analytics-virtual-machine-extension-for-linux"></a>適用於 Linux 的 Log Analytics 虛擬機器擴充功能
 
 ## <a name="overview"></a>概觀
 
-Azure 監視器記錄檔會提供跨雲端和內部部署資產的監視、 警示和警示補救功能。 Microsoft 已發佈和支援適用於 Linux 的 Log Analytics 代理程式虛擬機器擴充功能。 擴充功能會在 Azure 虛擬機器上安裝 Log Analytics 代理程式，並且在現有的 Log Analytics 工作區中註冊虛擬機器。 本文件詳述支援的平台、 組態和適用於 Linux 的 Azure 監視虛擬機器擴充功能的部署選項。
+對於雲端和內部部署資產，Azure 監視器記錄提供監視、警示和警示補救功能。 Microsoft 已發佈並支援適用於 Linux 的 Log Analytics 虛擬機器擴充功能。 擴充功能會在 Azure 虛擬機器上安裝 Log Analytics 代理程式，並且在現有的 Log Analytics 工作區中註冊虛擬機器。 本文件詳述適用於 Linux 的 Log Analytics 虛擬機器擴充功能所支援的平台、組態和部署選項。
 
 >[!NOTE]
 >Microsoft Operations Management Suite (OMS) 正在轉換為 Azure 監視器，而適用於 Windows 或 Linux 的 OMS 代理程式屬於此轉換的一部份，之後會將其稱為適用於 Windows 的 Log Analytics 代理程式和適用於 Linux 的 Log Analytics 代理程式。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="operating-system"></a>作業系統
 
-可以針對這類 Linux 散發套件執行 Log Analytics 代理程式擴充功能。
-
-| 配送映像 | Version |
-|---|---|
-| CentOS Linux | 6 (x86/x64) 和 7 (x64) |
-| Amazon Linux | 2017.09 (x64) | 
-| Oracle Linux | 6 和 7 (x86/x64) |
-| Red Hat Enterprise Linux Server | 6 (x86/x64) 和 7 (x64) |
-| Debian GNU/Linux | 8 和 9 (x86/x64) |
-| Ubuntu | 14.04 LTS (x86/x64)、16.04 LTS (x86/x64) 和 18.04 LTS (x64) |
-| SUSE Linux Enterprise Server | 12 (x64) |
-
->[!NOTE]
->任何平台皆不支援低於 1.x 版的 OpenSSL，且 1.10 版只受到 x86_64 平台 (64 位元) 的支援。  
->
+關於支援的 Linux 發行版本，如需詳細資訊，請參閱 [Log Analytics 代理程式概觀](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) 一文。
 
 ### <a name="agent-and-vm-extension-version"></a>代理程式和 VM 擴充功能版本
-下表提供 Azure 監視 VM 擴充功能和每個版本的 Log Analytics 代理程式套件組合的版本的對應。 隨附 Log Analytics 代理程式套件組合版本的版本資訊連結。 版本資訊包含錯誤修正和適用於指定代理程式版本的新功能詳細資料。  
+下表針對每個版本提供 Log Analytics VM 擴充功能和 Log Analytics 代理程式套件組合的版本對應。 隨附 Log Analytics 代理程式套件組合版本的版本資訊連結。 版本資訊包含錯誤修正和適用於指定代理程式版本的新功能詳細資料。  
 
-| Azure 監視 Linux VM 擴充功能版本 | Log Analytics 代理程式套件組合版本 | 
+| Log Analytics Linux VM 擴充功能版本 | Log Analytics 代理程式套件組合版本 | 
 |--------------------------------|--------------------------|
+| 1.13.13 | [1.13.7-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.13.7-0) |
+| 1.12.25 | [1.12.15-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
+| 1.11.15 | [1.11.0-9](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-9) |
+| 1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
 | 1.9.1 | [1.9.0-0](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.9.0-0) |
 | 1.8.11 | [1.8.1-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.8.1.256)| 
 | 1.8.0 | [1.8.0-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/1.8.0-256)| 
@@ -98,7 +87,7 @@ Azure 資訊安全中心會自動佈建 Log Analytics 代理程式，並且將�
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.7",
+    "typeHandlerVersion": "1.13",
     "autoUpgradeMinorVersion": true,
     "settings": {
       "workspaceId": "myWorkspaceId"
@@ -112,7 +101,6 @@ Azure 資訊安全中心會自動佈建 Log Analytics 代理程式，並且將�
 
 >[!NOTE]
 >上述結構描述假設會將它放置於範本的根層級。 如果您將它放置於範本中的虛擬機器資源內部，那麼也應該變更 `type` 和 `name` 屬性，如[後續內容](#template-deployment)所述。
->
 
 ### <a name="property-values"></a>屬性值
 
@@ -126,11 +114,11 @@ Azure 資訊安全中心會自動佈建 Log Analytics 代理程式，並且將�
 | workspaceKey (例如) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
 
-## <a name="template-deployment"></a>模板部署
+## <a name="template-deployment"></a>範本部署
 
-也可以使用 Azure Resource Manager 範本部署 Azure VM 擴充功能。 部署需要 post 部署設定，例如上架到 Azure 監視器記錄檔的一或多個虛擬機器時，很適合使用範本。 在 [Azure 快速啟動資源庫](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm)上可找到包含 Log Analytics 代理程式 VM 擴充功能的範例 Resource Manager 範本。 
+也可以使用 Azure Resource Manager 範本部署 Azure VM 擴充功能。 如果部署一或多部虛擬機器之後需要設定 (例如上架至 Azure 監視器記錄)，就很適合使用範本。 [Azure 快速入門資源庫](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm)中有一個範例 Resource Manager 範本包含 Log Analytics 代理程式 VM 擴充功能。 
 
-虛擬機器擴充功能的 JSON 設定可以巢狀方式置於虛擬機器資源內部，或放在 Resource Manager JSON 範本的根目錄或最上層。 JSON 設定的放置會影響資源名稱和類型的值。 如需詳細資訊，請參閱[設定子資源的名稱和類型](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources)。 
+虛擬機器擴充功能的 JSON 設定可以巢狀方式置於虛擬機器資源內部，或放在 Resource Manager JSON 範本的根目錄或最上層。 JSON 設定的放置會影響資源名稱和類型的值。 如需詳細資訊，請參閱[設定子資源的名稱和類型](../../azure-resource-manager/templates/child-resource-name-type.md)。 
 
 下列範例假設 VM 擴充功能以巢狀方式置於虛擬機器資源內部。 在巢狀處理擴充資源時，JSON 會放在虛擬機器的 `"resources": []` 物件中。
 
@@ -184,7 +172,7 @@ Azure 資訊安全中心會自動佈建 Log Analytics 代理程式，並且將�
 
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
 
-Azure CLI 可以用來將 Log Analytics 代理程式 VM 擴充功能部署到現有的虛擬機器。 將 workspaceId 和 workspaceKey 取代為您的 Log Analytics 工作區的值。 
+Azure CLI 可以用來將 Log Analytics 代理程式 VM 擴充功能部署到現有的虛擬機器。 請將下方的 *myWorkspaceKey* 值換成您的工作區金鑰，將 *myWorkspaceId* 值換成您的工作區識別碼。 在 Azure 入口網站中的 [進階設定] 下，您可以在 Log Analytics 工作區中找到這些值。 
 
 ```azurecli
 az vm extension set \
@@ -192,8 +180,8 @@ az vm extension set \
   --vm-name myVM \
   --name OmsAgentForLinux \
   --publisher Microsoft.EnterpriseCloud.Monitoring \
-  --version 1.7 --protected-settings '{"workspaceKey": "omskey"}' \
-  --settings '{"workspaceId": "omsid"}'
+  --version 1.10.1 --protected-settings '{"workspaceKey":"myWorkspaceKey"}' \
+  --settings '{"workspaceId":"myWorkspaceId"}'
 ```
 
 ## <a name="troubleshoot-and-support"></a>疑難排解與支援
@@ -223,7 +211,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 | 19 | OMI 套件安裝失敗 | 
 | 20 | SCX 套件安裝失敗 |
 | 51 | VM 的作業系統上不支援此擴充功能 | |
-| 55 | 無法連線到 Azure 監視器服務或所需的套件已鎖定遺失或 dpkg 套件管理員| 請確認系統是否有網際網路存取權，或已提供有效的 HTTP Proxy。 此外，請檢查工作區識別碼的正確性，並確認已安裝 curl 和 tar 公用程式。 |
+| 55 | 無法連線至 Azure 監視器服務、遺漏必要套件或 dpkg 套件管理員遭到鎖定| 請確認系統是否有網際網路存取權，或已提供有效的 HTTP Proxy。 此外，請檢查工作區識別碼的正確性，並確認已安裝 curl 和 tar 公用程式。 |
 
 如需其他疑難排解資訊，請參閱 [Log Analytics-Agent-for-Linux 疑難排解指南](../../azure-monitor/platform/vmext-troubleshoot.md)。
 

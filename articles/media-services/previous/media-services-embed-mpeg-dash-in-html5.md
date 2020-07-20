@@ -14,17 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f521fd11a2053cf8cf1ea0f9f91667fe475f0eee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 6c1df14ba5a9f233f42750d4e6dea68a7d6ddc0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61464193"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77564851"
 ---
 # <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>透過 DASH.js 將 MPEG-DASH 彈性資料流視訊嵌入到 HTML5 應用程式  
 
-## <a name="overview"></a>概觀
-MPEG-DASH 符合 ISO 的視訊內容彈性資料流標準，能為想要傳遞高品質彈性視訊資料流輸出的開發人員帶來相當大的幫助。 透過 MPEG-DASH，視訊資料流在網路擁塞時會自動調整為較低畫質的內容。 這會減少檢視者在播放程式下載接下來數秒的播放內容 (亦即緩衝) 時，看到視訊「暫停」的可能性。 當網路不再擁塞，視訊播放程式會改為高品質的資料流。 這種調整所需頻寬的能力也會讓視訊的開始時間變快。 這表示會在快速下載但低品質區段中播放頭幾秒的內容，一旦已緩衝足夠的內容，就會升級為高品質內容。
+## <a name="overview"></a>總覽
+MPEG-DASH 符合 ISO 的視訊內容彈性資料流標準，能為想要傳遞高品質彈性視訊資料流輸出的開發人員帶來相當大的幫助。 透過 MPEG-DASH，視訊資料流在網路擁塞時會自動調整為較低畫質的內容。 這可降低檢視器在播放程式下載後接下來幾秒（也就是減少緩衝的可能性）時看到「暫停」影片的可能性。 當網路不再擁塞，視訊播放程式會改為高品質的資料流。 這種調整所需頻寬的能力也會讓視訊的開始時間變快。 這表示會在快速下載但低品質區段中播放頭幾秒的內容，一旦已緩衝足夠的內容，就會升級為高品質內容。
 
 Dash.js 是以 JavaScript 撰寫的開放原始碼 MPEG-DASH 視訊播放程式。 其目標是要在需要播放視訊的應用程式中，提供一個健全、跨平台、並可自由重複使用的播放程式。 它可在任何支援 W3C Media Source Extensions (MSE) 的瀏覽器 (亦即今日的 Chrome、Microsoft Edge 與 IE11 ) 中播放 MPEG-DASH (其他瀏覽器已表示其支援 MSE 的用途)。 如需 DASH.js 的詳細資訊，請參閱 GitHub dash.js 存放庫。
 
@@ -55,7 +54,7 @@ Dash.js 是以 JavaScript 撰寫的開放原始碼 MPEG-DASH 視訊播放程式�
 ```
 
 ## <a name="adding-the-dashjs-player"></a>新增 DASH.js 播放程式
-要将 dash.js 引用实现添加到应用程序，需要从最新版本的 dash.js 项目中找到 dash.all.js 文件。 這應該儲存在您應用程式的 JavaScript 資料夾中。 此檔案可讓您很方便地將所有必要的 dash.js 程式碼提取到一個檔案中。 如果您瀏覽過 dash.js 存放庫，就會發現各個檔案、測試程式碼等等，但如果您只是要使用 dash.js，那麼 dash.all.js 就是您所需的檔案。
+若要將 dash.js 參考實作為新增至應用程式，您需要從最新版本的 dash.js 專案抓取 dash.all.js 檔案。 這應該儲存在您應用程式的 JavaScript 資料夾中。 此檔案可讓您很方便地將所有必要的 dash.js 程式碼提取到一個檔案中。 如果您瀏覽過 dash.js 存放庫，就會發現各個檔案、測試程式碼等等，但如果您只是要使用 dash.js，那麼 dash.all.js 就是您所需的檔案。
 
 若要在應用程式中新增 dash.js 播放程式，請將指令碼標記新增到 basicPlayer.html 的標頭區段：
 
@@ -92,7 +91,7 @@ Dash.js 是以 JavaScript 撰寫的開放原始碼 MPEG-DASH 視訊播放程式�
     <body onload="setupVideo()">
 ```
 
-最后，使用 CSS 设置 video 元素的大小。 這在可調資料流環境中特別重要，因為當隨著多變的網路狀況調適播放時，正在播放的視訊大小可能會改變。 在此簡單的示範中，只會強制視訊元素變成可用瀏覽器視窗的 80%，做法是在頁面的標頭區段中新增下列 CSS：
+最後，使用 CSS 設定視訊元素的大小。 這在可調資料流環境中特別重要，因為當隨著多變的網路狀況調適播放時，正在播放的視訊大小可能會改變。 在此簡單的示範中，只會強制視訊元素變成可用瀏覽器視窗的 80%，做法是在頁面的標頭區段中新增下列 CSS：
 
 ```html
     <style>
@@ -112,8 +111,7 @@ Dash.js 是以 JavaScript 撰寫的開放原始碼 MPEG-DASH 視訊播放程式�
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>另请参阅
-[开发视频播放器应用程序](media-services-develop-video-players.md)
+## <a name="see-also"></a>另請參閱
 
 [GitHub dash.js 存放庫](https://github.com/Dash-Industry-Forum/dash.js) 
 

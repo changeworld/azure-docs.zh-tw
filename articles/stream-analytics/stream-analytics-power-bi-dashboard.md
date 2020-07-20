@@ -1,22 +1,21 @@
 ---
 title: Azure 串流分析的 Power BI 儀表板整合
 description: 本文說明如何使用即時 Power BI 儀表板，以視覺化方式檢視 Azure 串流分析作業中的資料。
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
-ms.date: 12/07/2018
-ms.custom: seodec18
-ms.openlocfilehash: 487c142400dc2bfa6f44e17963535051af017196
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 03/05/2019
+ms.openlocfilehash: 1b508a6b4fa8a541381ea8b74046adb2f79034d3
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60817823"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044136"
 ---
-# <a name="tutorial-stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>教學課程：串流分析及 Power BI：適用於串流資料的即時分析儀表板
+# <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>串流分析及 Power BI：適用於串流資料的即時分析儀表板
+
 Azure 串流分析可讓您使用其中一個頂尖的商業智慧工具：[Microsoft Power BI](https://powerbi.com/)。 在本文中，您將了解如何使用 Power BI 作為 Azure 串流分析作業的輸出，以建立商業智慧工具。 您也將了解如何建立和使用即時儀表板。
 
 本文是延續串流分析[即時詐騙偵測](stream-analytics-real-time-fraud-detection.md)教學課程。 本文以該教學課程所建立的工作流程為基礎，並新增 Power BI 輸出，讓您視覺化串流分析作業所偵測到的詐騙電話。 
@@ -24,12 +23,12 @@ Azure 串流分析可讓您使用其中一個頂尖的商業智慧工具：[Micr
 您可以觀看此情節的[影片](https://www.youtube.com/watch?v=SGUpT-a99MA)。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請確定您具有下列項目：
 
 * 一個 Azure 帳戶。
-* Power BI 的帳戶。 您可以使用公司帳戶或學校帳戶。
+* Power BI Pro 的帳戶。 您可以使用公司帳戶或學校帳戶。
 * [即時詐騙偵測](stream-analytics-real-time-fraud-detection.md)教學課程的完整版本。 本教學課程包含可產生虛構電話中繼資料的應用程式。 在本教學課程中，您將會建立事件中樞，並將串流通話資料傳送到事件中樞。 您將會撰寫查詢來偵測詐騙電話 (相同號碼在同一時間從不同位置的來電)。 
 
 
@@ -38,41 +37,31 @@ Azure 串流分析可讓您使用其中一個頂尖的商業智慧工具：[Micr
 
 1. 在 Azure 入口網站中，開啟您稍早建立的串流分析作業。 如果您使用建議的名稱，則作業的名稱為 `sa_frauddetection_job_demo`。
 
-2. 選取作業儀表板中央的 [輸出] 方塊，然後選取 [+新增]。
+2. 在左側功能表上，選取 [作業拓撲] 底下的 [輸出]。 然後，選取 [+ 新增]，接著從下拉式功能表中選擇 [Power BI]。
 
-3. 在 [輸出別名] 中，輸入 `CallStream-PowerBI`。 您可以使用不同的名稱。 如果這樣做，請記下來，因為稍後需要用到此名稱。 
+3. 選取 [+ 新增] > [Power BI]。 然後，在表單中填入下列詳細資料，然後選取 [授權]：
 
-4. 在 [接收] 下，選取 [Power BI]。
+   |**設定**  |**建議的值**  |
+   |---------|---------|
+   |輸出別名  |  CallStream-PowerBI  |
+   |資料集名稱  |   sa-dataset  |
+   |資料表名稱 |  fraudulent-calls  |
 
-   ![建立 Power BI 的輸出](./media/stream-analytics-power-bi-dashboard/create-power-bi-ouptut.png)
+   ![設定串流分析輸出](media/stream-analytics-power-bi-dashboard/configure-stream-analytics-output.png)
 
-5. 按一下 [授權]。
+   > [!WARNING]
+   > 如果 Power BI 的資料集和資料表名稱與您在串流分析作業中所指定的名稱相同，則會覆寫現有的資料集和資料表。
+   > 我們不建議您在 Power BI 帳戶中明確建立此資料集和資料表。 當您啟動串流分析作業，而該作業開始將輸出提取至 Power BI 時，系統會自動建立資料集和資料表。 如果作業查詢沒有傳回任何結果，則不會建立資料集和資料表。
+   >
 
-    隨即會開啟視窗，讓您提供公司或學校帳戶的 Azure 認證。 
-
-    ![輸入用來存取 Power BI 的認證](./media/stream-analytics-power-bi-dashboard/power-bi-authorization-credentials.png)
-
-6. 輸入認證。 請注意，當您輸入認證時，也會賦予權限讓串流分析作業存取您的 Power BI 區域。
-
-7. 當您返回 [新輸出] 刀鋒視窗時，請輸入下列資訊：
-
-   * **群組工作區**：在 Power BI 租用戶中，選取您要建立資料集的工作區。
-   * **資料集名稱**：輸入 `sa-dataset` 。 您可以使用不同的名稱。 如果這樣做，請記下來供稍後使用。
-   * **資料表名稱**：輸入 `fraudulent-calls` 。 目前，串流分析作業的 Power BI 輸出在資料集內只能有一個資料表。
-
-     ![Power BI 工作區資料集和資料表](./media/stream-analytics-power-bi-dashboard/create-pbi-ouptut-with-dataset-table.png)
-
-     > [!WARNING]
-     > 如果 Power BI 的資料集和資料表名稱與您在串流分析作業中所指定的名稱相同，則會覆寫現有的資料集和資料表。
-     > 我們不建議您在 Power BI 帳戶中明確建立此資料集和資料表。 當您啟動串流分析作業，而該作業開始將輸出提取至 Power BI 時，系統會自動建立資料集和資料表。 如果作業查詢沒有傳回任何結果，則不會建立資料集和資料表。
-     >
+4. 當您選取 [授權] 時，快顯視窗隨即開啟，而系統會要求您提供認證來驗證您的 Power BI 帳戶。 一旦授權成功，請 [儲存] 設定。
 
 8. 按一下頁面底部的 [新增] 。
 
 系統會使用下列設定來建立資料集：
 
-* **defaultRetentionPolicy:BasicFIFO**：資料為 FIFO，具有最多 200,000 個資料列。
-* **defaultMode: pushStreaming**：資料集同時支援串流磚和傳統報表型視覺效果 (又稱為發送)。
+* **defaultRetentionPolicy:BasicFIFO** - 資料為 FIFO，具有最多 200,000 個資料列。
+* **defaultMode: pushStreaming**：資料集同時支援串流磚和傳統報表型視覺效果 (也稱為推送)。
 
 您目前無法建立具有其他旗標的資料集。
 
@@ -90,54 +79,52 @@ Azure 串流分析可讓您使用其中一個頂尖的商業智慧工具：[Micr
     >[!NOTE]
     >如果您在詐騙偵測教學課程中不是將輸入命名為 `CallStream`，請在查詢的 **FROM** 和 **JOIN** 子句中，用您的名稱取代 `CallStream`。
 
-        ```SQL
-        /* Our criteria for fraud:
-        Calls made from the same caller to two phone switches in different locations (for example, Australia and Europe) within five seconds */
+   ```SQL
+   /* Our criteria for fraud:
+   Calls made from the same caller to two phone switches in different locations (for example, Australia and Europe) within five seconds */
 
-        SELECT System.Timestamp AS WindowEnd, COUNT(*) AS FraudulentCalls
-        INTO "CallStream-PowerBI"
-        FROM "CallStream" CS1 TIMESTAMP BY CallRecTime
-        JOIN "CallStream" CS2 TIMESTAMP BY CallRecTime
+   SELECT System.Timestamp AS WindowEnd, COUNT(*) AS FraudulentCalls
+   INTO "CallStream-PowerBI"
+   FROM "CallStream" CS1 TIMESTAMP BY CallRecTime
+   JOIN "CallStream" CS2 TIMESTAMP BY CallRecTime
 
-        /* Where the caller is the same, as indicated by IMSI (International Mobile Subscriber Identity) */
-        ON CS1.CallingIMSI = CS2.CallingIMSI
+   /* Where the caller is the same, as indicated by IMSI (International Mobile Subscriber Identity) */
+   ON CS1.CallingIMSI = CS2.CallingIMSI
 
-        /* ...and date between CS1 and CS2 is between one and five seconds */
-        AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5
+   /* ...and date between CS1 and CS2 is between one and five seconds */
+   AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5
 
-        /* Where the switch location is different */
-        WHERE CS1.SwitchNum != CS2.SwitchNum
-        GROUP BY TumblingWindow(Duration(second, 1))
-        ```
+   /* Where the switch location is different */
+   WHERE CS1.SwitchNum != CS2.SwitchNum
+   GROUP BY TumblingWindow(Duration(second, 1))
+   ```
 
 4. 按一下 [檔案] 。
 
 
 ## <a name="test-the-query"></a>測試查詢
+
 此為選擇性區段，但建議執行。 
 
 1. 如果目前沒有執行 TelcoStreaming 應用程式，請依照下列步驟啟動它：
 
-    * 開啟命令視窗。
+    * 開啟命令提示字元。
     * 移至 telcogenerator.exe 和修改的 telcodatagen.exe.config 檔案所在的資料夾。
     * 執行以下命令：
 
        `telcodatagen.exe 1000 .2 2`
 
-2. 在 [查詢] 刀鋒視窗中，按一下 `CallStream` 輸入旁邊的點，然後選取 [來自輸入的範例資料]。
+2. 在串流分析作業的 [查詢] 窗格上，按一下 `CallStream` 輸入旁邊的點，然後選取 [來自輸入的範例資料]。
 
 3. 指定您想要取得三分鐘的資料，然後按一下 [確定]。 等待資料已取樣的通知。
 
-4. 按一下 [測試]，並確定開始產生結果。
+4. 按一下 [測試] 並檢閱結果。
 
-
-## <a name="run-the-job"></a>執行工作
+## <a name="run-the-job"></a>執行作業
 
 1. 請確定 TelcoStreaming 應用程式正在執行。
 
-2. 關閉 [查詢] 刀鋒視窗。
-
-3. 在作業刀鋒視窗中，按一下 [啟動]。
+2. 瀏覽至串流分析作業 的 [概觀] 頁面，並選取 [啟動]。
 
     ![啟動串流分析工作](./media/stream-analytics-power-bi-dashboard/stream-analytics-sa-job-start-output.png)
 
@@ -170,7 +157,7 @@ Azure 串流分析可讓您使用其中一個頂尖的商業智慧工具：[Micr
 
     ![新磚的視覺效果詳細資料](./media/stream-analytics-power-bi-dashboard/add-fraudulent-calls-tile.png)
 
-7. 单击“下一步”。
+7. 按 [下一步] 。
 
 8. 填寫磚詳細資料，例如標題和副標題。
 
@@ -214,7 +201,7 @@ Azure 串流分析可讓您使用其中一個頂尖的商業智慧工具：[Micr
 
 ![以秒為單位計算要提供給視窗之值的方程式](./media/stream-analytics-power-bi-dashboard/compute-window-seconds-equation.png)  
 
-例如︰
+例如：
 
 * 您有 1 千個以一秒間隔傳送資料的裝置。
 * 您使用的 Power BI Pro SKU 支援每小時 100 萬個資料列。
@@ -248,11 +235,11 @@ Azure 串流分析可讓您使用其中一個頂尖的商業智慧工具：[Micr
 Power BI 在重新整理過授權後，授權區域就會出現綠色警示，表示問題已獲得解決。
 
 ## <a name="get-help"></a>取得說明
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+如需進一步的協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>後續步驟
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
 * [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure 串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

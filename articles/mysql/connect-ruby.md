@@ -1,5 +1,5 @@
 ---
-title: 使用 Ruby 連線到適用於 MySQL 的 Azure 資料庫
+title: 使用 Ruby 連線 - 適用於 MySQL 的 Azure 資料庫
 description: 本快速入門提供數個 Ruby 程式碼範例，供您用來從 Azure Database for MySQL 連線及查詢資料。
 author: ajlam
 ms.author: andrela
@@ -7,26 +7,29 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: 5dbb2226e33928d9d79358a84192b57c44841de4
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.date: 5/26/2020
+ms.openlocfilehash: b069a9ba0e2c56ff027e351789177f8bfe0b2ff4
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351621"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83869975"
 ---
 # <a name="azure-database-for-mysql-use-ruby-to-connect-and-query-data"></a>適用於 MySQL 的 Azure 資料庫：使用 Ruby 連線並查詢資料
 本快速入門示範如何從 Windows、Ubuntu Linux 和 Mac 平台使用 [Ruby](https://www.ruby-lang.org) 應用程式和 [mysql2](https://rubygems.org/gems/mysql2) Gem，連線到 Azure Database for MySQL。 它會顯示如何使用 SQL 陳述式來查詢、插入、更新和刪除資料庫中的資料。 本主題假設您已熟悉使用 Ruby 進行開發，但不熟悉適用於 MySQL 的 Azure 資料庫。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本快速入門使用在以下任一指南中建立的資源作為起點︰
 - [使用 Azure 入口網站建立適用於 MySQL 的 Azure 資料庫伺服器](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [使用 Azure CLI 建立適用於 MySQL 的 Azure 資料庫伺服器](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
+> [!IMPORTANT] 
+> 確保您用於連線的 IP 位址已使用 [Azure 入口網站](./howto-manage-firewall-using-portal.md)或 [Azure CLI](./howto-manage-firewall-using-cli.md) 新增伺服器的防火牆規則
+
 ## <a name="install-ruby"></a>安裝 Ruby
 在自己的電腦上安裝 Ruby、Gem 和 MySQL2 程式庫。 
 
-### <a name="windows"></a> Windows
+### <a name="windows"></a>Windows
 1. 下載並安裝 2.3 版的 [Ruby](https://rubyinstaller.org/downloads/)。
 2. 從 [開始] 功能表啟動新的命令提示 (cmd)。
 3. 將目錄變更為 2.3 版的 Ruby 目錄。 `cd c:\Ruby23-x64\bin`

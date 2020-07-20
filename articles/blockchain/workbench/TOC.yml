@@ -18,7 +18,7 @@
       href: architecture.md
     - name: 整合模式
       href: integration-patterns.md
-- name: 使用說明指南
+- name: 操作指南
   expanded: true
   items:
     - name: 部署 Workbench
@@ -55,19 +55,21 @@
       href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
 - name: 資源
   items:
-    - name: 部落格
-      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
     - name: 程式碼範例
       href: 'https://github.com/Azure-Samples/blockchain'
-    - name: 社群
+    - name: 部落格
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html'
+    - name: 社群支援
       href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
-    - name: 論壇
-      href: 'https://aka.ms/workbenchforum'
+    - name: 堆疊溢位支援
+      href: 'https://stackoverflow.com/questions/tagged/azure-blockchain-workbench'
     - name: 產品意見反應
       href: 'https://aka.ms/blockchainuservoice'
 - name: 解決方案範本
   items:
     - name: Ethereum 權威證明聯盟
       href: ../templates/ethereum-poa-deployment.md
-    - name: Hyperledger Fabric 聯盟
-      href: ../templates/hyperledger-fabric-consortium-blockchain.md
+    - name: Hyperledger Fabric 聯盟 Azure Kubernetes Service
+      href: ../templates/hyperledger-fabric-consortium-azure-kubernetes-service.md

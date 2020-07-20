@@ -3,23 +3,21 @@ title: 建立 Azure 網路監看員執行個體 | Microsoft Docs
 description: 了解如何在 Azure 區域中啟用網路監看員。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: b1314119-0b87-4f4d-b44c-2c4d0547fb76
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: c97f6dff17896b8a58c17aed9063e0b2b5733503
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: 6b7453a0100233896e3d01769897ed224a0b2618
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681566"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737541"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>建立 Azure 網路監看員執行個體
 
@@ -51,13 +49,13 @@ az provider register -n Microsoft.Network
 
 ## <a name="create-a-network-watcher-in-the-portal"></a>在入口網站中建立網路監看員
 
-瀏覽至 [所有服務]  >  [網路]  >  [網路監看員]。 您可以選取要啟用網路監看員的所有訂用帳戶。 此動作會在每個可用區域建立網路監看員。
+流覽至 [**所有服務**] [網路] [  >  **Networking**  >  **網路監看員**]。 您可以選取要啟用網路監看員的所有訂用帳戶。 此動作會在每個可用區域建立網路監看員。
 
 ![建立網路監看員](./media/network-watcher-create/figure1.png)
 
-當您使用入口網站啟用網路監看員時，網路監看員執行個體的名稱將會自動設定為 NetworkWatcher_region_name，其中 region_name 對應至啟用該執行個體的 Azure 區域。 例如，在美國中西部區域啟用的網路監看員，名稱會是 NetworkWatcher_westcentralus。
+當您使用入口網站啟用網路監看員時，網路監看員執行個體的名稱將會自動設定為 NetworkWatcher_region_name**，其中 region_name** 對應至啟用該執行個體的 Azure 區域。 例如，在美國中西部區域啟用的網路監看員，名稱會是 NetworkWatcher_westcentralus**。
 
-網路監看員執行個體會自動在名為 NetworkWatcherRG 的資源群組中建立。 如果該資源群組尚未存在，系統就會加以建立。
+網路監看員執行個體會自動在名為 NetworkWatcherRG** 的資源群組中建立。 如果該資源群組尚未存在，系統就會加以建立。
 
 如果您要自訂網路監看員執行個體的名稱，以及放置該執行個體的資源群組名稱，可以使用後續章節中所述的 Powershell、Azure CLI、REST API 或 ARMClient 方法。 在每個選項中，都必須先有資源群組，才能在其中建立網路監看員。  
 
@@ -103,6 +101,26 @@ $requestBody = @"
 armclient put "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}?api-version=${api-version}" $requestBody
 ```
 
+## <a name="delete-a-network-watcher-in-the-portal"></a>在入口網站中刪除網路監看員
+
+流覽至 [**所有服務**] [網路] [  >  **Networking**  >  **網路監看員**]。
+
+如果您還沒有的話，請選取 [總覽] 索引標籤。 使用下拉式清單來選取您想要在其中停用網路監看員的訂用帳戶。
+按一下箭號，以展開所選訂用帳戶的區域清單。 針對任何指定的，請使用右邊的3個點來存取內容功能表。
+按一下 [停用網路監看員] 以開始停用。 系統會要求您確認此步驟。 按一下 [是] 繼續。
+在入口網站上，您必須針對每個訂用帳戶中的每個區域個別執行此動作。
+
+
+## <a name="delete-a-network-watcher-with-powershell"></a>使用 PowerShell 刪除網路監看員
+
+若要刪除網路監看員的實例，請執行下列範例：
+
+```powershell
+New-AzResourceGroup -Name NetworkWatcherRG -Location westcentralus
+New-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG -Location westcentralus
+Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG
+```
+
 ## <a name="next-steps"></a>後續步驟
 
 您已擁有網路監看員執行個體，接下來您可以了解可用的功能︰
@@ -111,8 +129,6 @@ armclient put "https://management.azure.com/subscriptions/${subscriptionId}/reso
 * [封包擷取](network-watcher-packet-capture-overview.md)
 * [IP 流量驗證](network-watcher-ip-flow-verify-overview.md)
 * [下一個躍點](network-watcher-next-hop-overview.md)
-* [安全性群組檢視](network-watcher-security-group-view-overview.md)
+* [安全性群組視圖](network-watcher-security-group-view-overview.md)
 * [NSG 流量記錄](network-watcher-nsg-flow-logging-overview.md)
 * [虛擬網路閘道疑難排解](network-watcher-troubleshoot-overview.md)
-
-一旦有網路監看員執行個體後，您可以啟用虛擬機器內的封包擷取。 若要了解做法，請參閱[建立警示觸發的封包擷取](network-watcher-alert-triggered-packet-capture.md)

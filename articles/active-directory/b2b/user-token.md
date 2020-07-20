@@ -1,5 +1,5 @@
 ---
-title: 了解 B2B 共同作業-Azure Active Directory 中的使用者權杖 |Microsoft Docs
+title: 瞭解 B2B 共同作業中的使用者權杖-Azure AD
 description: Azure Active Directory B2B 共同作業的使用者權杖參考資料
 services: active-directory
 ms.service: active-directory
@@ -8,19 +8,18 @@ ms.topic: conceptual
 ms.date: 02/28/2018
 ms.author: mimart
 author: msmimart
-manager: daveba
-ms.reviewer: sasubram
+manager: celestedg
+ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7acc305d7a1be935199371360d6e05aa14f1616
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 08dbb81b91def2fd464ecc85c2d2eaf45ed189d5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60411990"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74271783"
 ---
 # <a name="understand-user-tokens-in-azure-ad-b2b-collaboration"></a>了解 Azure AD B2B 共同作業中的使用者權杖
 
-如果您想要了解 B2B 共同作業使用者的權杖看起來像什麼樣子，以下是資源租用戶 (適用於 tenantid:04dcc6ab-388a-4559-b527-fbec656300ea) 中 Azure Active Directory (Azure AD) 來賓與 Microsoft 帳戶來賓的持有人權杖詳細資料和權杖內容。 若要查看「JSON Web 權杖」(JWT) 內容，請使用 [https://jwt.io/](https://jwt.io/) 或 [https://jwt.ms/](https://jwt.ms/)。
+如果您想要了解 B2B 共同作業使用者的權杖看起來像什麼樣子，以下是資源租用戶 (適用於 tenantid:04dcc6ab-388a-4559-b527-fbec656300ea) 中 Azure Active Directory (Azure AD) 來賓與 Microsoft 帳戶來賓的持有人權杖詳細資料和權杖內容。 若要查看 JSON Web 權杖（JWT）內容，請使用 [https://jwt.io/](https://jwt.io/) 或 [https://jwt.ms/](https://jwt.ms/) 。
 
 ## <a name="azure-ad-guest-token"></a>Azure AD 來賓權杖
 ```

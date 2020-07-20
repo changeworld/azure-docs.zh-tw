@@ -1,28 +1,22 @@
 ---
-title: PowerShell 範例 - 使用 Azure PowerShell 進行多個網站的負載平衡 | Microsoft Docs
+title: 平衡多個網站的負載 - Azure PowerShell - Azure Load Balancer
 description: 此 Azure PowerShell 指令碼範例示範如何將多個網站負載平衡至相同的虛擬機器
-services: load-balancer
 documentationcenter: load-balancer
-author: KumudD
-manager: jeconnoc
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: asudbring
 ms.service: load-balancer
 ms.devlang: powershell
 ms.topic: sample
-ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
-ms.openlocfilehash: 6bedba2c68c05ee7ed6518996e54d007f3e83dc1
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.author: allensu
+ms.openlocfilehash: b7beb5186bd039d7098883915663e8a3286fb99d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591630"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "76274607"
 ---
-# <a name="azure-powershell-script-example-load-balance-multiple-websites"></a>Azure PowerShell 指令碼範例：進行多個網站的負載平衡
+# <a name="azure-powershell-script-example-load-balance-multiple-websites"></a>Azure PowerShell 指令碼範例：平衡多個網站的負載
 
 此 Azure PowerShell 指令碼範例使用可用性設定組成員的兩個虛擬機器 (VM) 建立虛擬網路。 負載平衡器會將兩個不同 IP 位址的流量傳送至這兩個 VM。 執行指令碼之後，您可以將 Web 伺服器軟體部署至 VM 並主控多個網站 (各有自己的 IP 位址)。
 
@@ -48,7 +42,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 此指令碼使用下列命令建立資源群組、虛擬網路、負載平衡器和所有相關資源。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 建立用來存放所有資源的資源群組。 |
 | [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) | 建立 Azure 可用性設定組以提供高可用性。 |

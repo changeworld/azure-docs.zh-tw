@@ -3,24 +3,24 @@ title: 在 SQL Server 虛擬機器中瀏覽資料 - Team Data Science Process
 description: 如何使用 SQL 或類似 Python 的程式設計語言，在 Azure 上瀏覽儲存在 SQL Server VM 中的資料。
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: be75490e4e86956337ce38133df6095790b3a374
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 33b55afb7796b197f7130ec9288abb01cc115651
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60303638"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085645"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>在 Azure 上瀏覽 SQL Server 虛擬機器中的資料
 
-本文涵蓋如何瀏覽儲存在 Azure 上 SQL Server VM 中的資料。 使用 SQL整理資料或使用 Python 這類程式設計語言，即可完成此動作。
+本文涵蓋如何瀏覽儲存在 Azure 上 SQL Server VM 中的資料。 使用 SQL 或 Python 來檢查資料。
 
 此工作是 [Team Data Science Process](overview.md) 中的一個步驟。
 
@@ -29,19 +29,19 @@ ms.locfileid: "60303638"
 > 
 > 
 
-## <a name="sql-dataexploration"></a>使用 SQL 指令碼瀏覽 SQL 資料
+## <a name="explore-sql-data-with-sql-scripts"></a><a name="sql-dataexploration"></a>使用 SQL 指令碼瀏覽 SQL 資料
 以下是數個 SQL 指令碼範例，可用來探索儲存於 SQL Server 中的資料。
 
 1. 取得每天的觀察計數
    
     `SELECT CONVERT(date, <date_columnname>) as date, count(*) as c from <tablename> group by CONVERT(date, <date_columnname>)` 
-2. 取得類別資料行中的層級
+2. 取得類別資料行中的層級 
    
     `select  distinct <column_name> from <databasename>`
 3. 取得兩個類別資料行組合中的層級數目 
    
     `select <column_a>, <column_b>,count(*) from <tablename> group by <column_a>, <column_b>`
-4. 取得數值資料行的分佈 
+4. 取得數值資料行的分佈
    
     `select <column_name>, count(*) from <tablename> group by <column_name>`
 
@@ -50,19 +50,23 @@ ms.locfileid: "60303638"
 > 
 > 
 
-## <a name="python"></a>使用 Python 瀏覽 SQL 資料
-當資料位於 SQL Server 時，使用 Python 來瀏覽資料與產生特徵，類似於使用 Python 來處理 Azure Blob 中的資料，如 [在資料科學環境中處理 Azure Blob 資料](data-blob.md)中所述。 資料必須從資料庫載入 Pandas 資料框架，然後就能進一步處理。 我們將在本節中說明連接到資料庫以及將資料載入資料框架的程序。
+## <a name="explore-sql-data-with-python"></a><a name="python"></a>使用 Python 瀏覽 SQL 資料
+當資料位於 SQL Server 時，使用 Python 來流覽資料並產生功能，類似于使用 Python 來處理 Azure blob 中的資料，如在[資料科學環境中處理 Azure blob 資料](data-blob.md)中所述。 將資料從資料庫載入 pandas 資料框架，然後可以進一步處理。 我們將在本節中說明連接到資料庫以及將資料載入資料框架的程序。
 
 下列連接字串格式可用來使用 pyodbc (使用您的特定值來取代 servername、dbname、username 和 password)，從 Python 連接到 SQL Server 資料庫：
 
-    #Set up the SQL Azure connection
-    import pyodbc    
-    conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+```python
+#Set up the SQL Azure connection
+import pyodbc    
+conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+```
 
-Python 中的 [Pandas 程式庫](https://pandas.pydata.org/) 提供一組豐富的資料結構和資料分析工具，可用來對 Python 程式設計進行資料操作。 下列程式碼會將從 SQL Server 資料庫傳回的結果讀取至 Pandas 資料框架：
+Python 中的[Pandas 程式庫](https://pandas.pydata.org/)提供一組豐富的資料結構和資料分析工具，可用於 python 程式設計的資料操作。 下列程式碼會將從 SQL Server 資料庫傳回的結果讀取至 Pandas 資料框架：
 
-    # Query database and load the returned results in pandas data frame
-    data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
+```python
+# Query database and load the returned results in pandas data frame
+data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
+```
 
 現在您可以利用 [在資料科學環境中處理 Azure Blob 資料](data-blob.md)主題中說明的方式來使用 Pandas 資料框架。
 

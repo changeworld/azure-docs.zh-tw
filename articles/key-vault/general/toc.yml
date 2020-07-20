@@ -1,0 +1,173 @@
+- name: 一般
+  href: index.yml
+- name: 概觀
+  expanded: true
+  items:
+    - name: 關於 Azure Key Vault
+      href: overview.md
+    - name: 關於金鑰、祕密與憑證
+      href: about-keys-secrets-certificates.md
+- name: 教學課程
+  items:
+    - name: Azure 虛擬機器
+      items:
+        - name: 在 .NET 中搭配使用 Azure Key Vault 與 Windows 虛擬機器
+          href: tutorial-net-windows-virtual-machine.md
+        - name: 在 Python 中搭配使用 Azure Key Vault 與 Windows 虛擬機器
+          href: tutorial-python-windows-virtual-machine.md
+    - name: Azure Kubernetes Service
+      items:
+        - name: 整合 Azure Key Vault 與 Kubernetes
+          href: key-vault-integrate-kubernetes.md
+    - name: Azure Databricks
+      items:
+        - name: 使用 Azure Databricks 和 Azure Key Vault 存取 Azure Blob 儲存體
+          href: integrate-databricks-blob-storage.md
+    - name: 使用受控識別和 .NET 將 Key Vault 連線至 Web 應用程式
+      href: tutorial-net-create-vault-azure-web-app.md
+- name: 範例
+  items:
+    - name: Key Vault 程式碼範例
+      href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ../policy-samples.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
+- name: 概念
+  items:
+    - name: 基本概念
+      href: basic-concepts.md
+    - name: 安全性
+      items:
+        - name: Azure Key Vault 安全性
+          href: overview-security.md
+        - name: 使用 Key Vault 的最佳做法 - Azure Key Vault
+          href: best-practices.md
+        - name: Azure Key Vault 安全性環境
+          href: overview-security-worlds.md
+        - name: 網路安全性
+          href: network-security.md
+        - name: 針對金鑰保存庫的存取進行保護 - Azure Key Vault
+          href: secure-your-key-vault.md
+        - name: 適用於 Key Vault 的 Azure 安全性基準
+          href: security-baseline.md
+        - name: Azure Key Vault 的安全性建議
+          href: security-recommendations.md
+    - name: 通知 (預覽)
+      items:
+        - name: 使用 Azure 事件方格進行監視 (預覽)
+          href: event-grid-overview.md
+    - name: 虛刪除
+      items:
+        - name: Azure Key Vault 虛刪除
+          href: overview-soft-delete.md
+    - name: 驗證、要求和回應
+      href: authentication-requests-and-responses.md
+    - name: Azure Key Vault 節流指導方針
+      href: overview-throttling.md
+    - name: Azure 金鑰保存庫的可用性與備援
+      href: disaster-recovery-guidance.md
+    - name: Azure Key Vault 的虛擬網路服務端點 - Azure Key Vault
+      href: overview-vnet-service-endpoints.md
+- name: 操作指南
+  items:
+    - name: Authenticate
+      items:
+        - name: 驗證 Key Vault
+          href: authentication.md
+        - name: 使用 App Service 受控識別
+          href: managed-identity.md
+        - name: 使用存取控制原則
+          href: group-permissions-for-apps.md
+    - name: 開發
+      items:
+        - name: Azure 金鑰保存庫開發人員指南
+          href: developers-guide.md
+        - name: 儲存 Web 應用程式祕密
+          href: vs-secure-secret-appsettings.md
+        - name: 搭配 .NET 的服務對服務驗證
+          href: service-to-service-authentication.md
+        - name: 使用 Key Vault 連線服務
+          href: vs-key-vault-add-connected-service.md
+    - name: 監視及管理
+      items:
+        - name: 設定 Azure Key Vault 的監視和警示
+          href: alert.md
+        - name: 整合 Azure Key Vault 與 Azure 原則
+          href: azure-policy.md
+        - name: Azure Key Vault 記錄
+          href: logging.md
+        - name: 透過 Azure 事件方格和 Logic Apps 接收通知
+          href: event-grid-logicapps.md
+        - name: 透過 Azure 事件方格和 Azure 自動化接收通知
+          href: event-grid-tutorial.md
+        - name: 備份個別 Key Vault 物件
+          href: backup.md
+    - name: 安全
+      items:
+        - name: 與 Azure Private Link 服務整合
+          href: private-link-service.md
+        - name: 在防火牆後面存取金鑰保存庫 - Azure Key Vault
+          href: access-behind-firewall.md
+    - name: 虛刪除
+      items:
+        - name: 搭配 CLI 使用虛刪除
+          href: soft-delete-cli.md
+        - name: 搭配 PowerShell 使用虛刪除
+          href: soft-delete-powershell.md
+    - name: 移動金鑰保存庫
+      items:
+        - name: 將金鑰保存庫移至另一個資源群組
+          href: keyvault-moveresourcegroup.md
+        - name: 將金鑰保存庫移至另一個訂用帳戶
+          href: keyvault-move-subscription.md
+        - name: 將金鑰保存庫移至另一個區域
+          href: keyvault-moveregion.md
+    - name: 疑難排解
+      items:
+        - name: 在訂用帳戶移動之後變更金鑰保存庫租用戶識別碼
+          href: subscription-move-fix.md
+- name: 參考
+  items:
+    - name: REST API 錯誤碼 - Azure Key Vault
+      href: rest-error-codes.md
+    - name: 通用參數和標頭
+      href: common-parameters-and-headers.md
+    - name: Key Vault 版本
+      href: versions.md
+    - name: Azure PowerShell
+      href: /powershell/module/az.keyvault/?view=azps-1.2.0#key_vault
+    - name: Azure CLI
+      href: /cli/azure/keyvault
+    - name: .NET
+      href: /dotnet/api/overview/azure/keyvault/management?view=azure-dotnet
+    - name: Java
+      href: /java/api/overview/azure/keyvault?view=azure-java-stable
+    - name: Node.js
+      href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
+    - name: Python
+      href: /python/api/overview/azure/keyvault/management?view=azure-python
+    - name: REST
+      href: /rest/api/keyvault
+    - name: Resource Manager 範本
+      href: /azure/templates/microsoft.keyvault/allversions
+      displayName: ARM
+- name: 資源
+  items:
+    - name: 透過 Microsoft Learn 增進您的技巧
+      href: /learn/browse/?products=azure-key-vault
+    - name: 定價
+      href: 'https://azure.microsoft.com/pricing/details/key-vault/'
+    - name: 區域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault'
+    - name: 服務等級協定 (SLA)
+      href: 'https://azure.microsoft.com/support/legal/sla/key-vault/'
+    - name: 服務限制
+      href: ../general/service-limits.md
+    - name: 服務狀態
+      href: 'https://azure.microsoft.com/status/'
+    - name: 服務更新
+      href: 'https://azure.microsoft.com/updates/?product=key-vault'
+    - name: 部落格
+      href: 'https://blogs.technet.com/b/kv/'
+    - name: 產品意見反應
+      href: 'https://feedback.azure.com/forums/906355-azure-key-vault'

@@ -3,32 +3,29 @@ title: 在 Azure VM 中建立 Oracle 資料庫 | Microsoft Docs
 description: 在您的 Azure 環境中快速啟動並執行 Oracle Database 12c 資料庫。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: romitgirdhar
-manager: jeconnoc
+author: rgardler
+manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogirdh
-ms.openlocfilehash: 490ac613adac968cc323c2d8351b59aece181b68
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.author: rogardle
+ms.openlocfilehash: 6705d4d1edebe88a577c71b3e48cd837fa7882c6
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734380"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86222984"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>在 Azure VM 中建立 Oracle 資料庫
 
 本指南詳述如何使用 Azure CLI 從 [Oracle Marketplace 資源庫映像](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview)部署 Azure 虛擬機器，以便建立 Oracle 12c 資料庫。 部署伺服器之後，您會透過 SSH 連接，以設定 Oracle 資料庫。 
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
-
-[!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.4 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
@@ -38,9 +35,10 @@ ms.locfileid: "55734380"
 
 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
+
 ## <a name="create-virtual-machine"></a>建立虛擬機器
 
 若要建立虛擬機器，請使用 [az vm create](/cli/azure/vm) 命令。 
@@ -59,7 +57,7 @@ az vm create \
 
 在您建立 VM 後，Azure CLI 會顯示類似下列範例的資訊。 請記下 `publicIpAddress` 的值。 您必須使用此位址來存取 VM。
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/{snip}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -76,7 +74,7 @@ az vm create \
 
 若要對 VM 建立 SSH 工作階段，請使用下列命令。 以 VM 的 `publicIpAddress` 值取代 IP 位址。
 
-```bash 
+```bash
 ssh azureuser@<publicIpAddress>
 ```
 
@@ -87,13 +85,13 @@ Marketplace 映像上已安裝 Oracle 軟體。 建立範例資料庫，如下�
 1.  切換至 oracle 超級使用者，然後將接聽程式初始化以啟用記錄功能：
 
     ```bash
-    $ sudo su - oracle
+    $ sudo -su oracle
     $ lsnrctl start
     ```
 
     輸出大致如下：
 
-    ```bash
+    ```output
     Copyright (c) 1991, 2014, Oracle.  All rights reserved.
 
     Starting /u01/app/oracle/product/12.1.0/dbhome_1/bin/tnslsnr: please wait...
@@ -151,6 +149,7 @@ Marketplace 映像上已安裝 Oracle 軟體。 建立範例資料庫，如下�
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
+
 您也可以將 ORACLE_HOME 和 ORACLE_SID 變數新增至 .bashrc 檔案。 這會儲存環境變數以供未來登入。請確認已使用您選擇的編輯器，將下列陳述式新增至 `~/.bashrc` 檔案。
 
 ```bash
@@ -184,7 +183,7 @@ export ORACLE_SID=cdb1
 
     輸出大致如下：
 
-    ```bash
+    ```output
       CON_ID NAME                           OPEN_MODE 
       ----------- ------------------------- ---------- 
       2           PDB$SEED                  READ ONLY 
@@ -205,6 +204,7 @@ export ORACLE_SID=cdb1
 當您重新啟動 VM 時，Oracle 資料庫預設不會自動啟動。 若要將 Oracle 資料庫設定為自動啟動，請先以 root 的身分登入。 接著，建立並更新一些系統檔案。
 
 1. 以 root 的身分登入
+
     ```bash
     sudo su -
     ```
@@ -217,7 +217,7 @@ export ORACLE_SID=cdb1
 
 3.  建立名為 `/etc/init.d/dbora` 的檔案，並貼上下列內容︰
 
-    ```
+    ```bash
     #!/bin/sh
     # chkconfig: 345 99 10
     # Description: Oracle auto start-stop script.
@@ -307,7 +307,7 @@ export ORACLE_SID=cdb1
 
 4.  從您的瀏覽器連接 EM Express。 確定您的瀏覽器與 EM Express 相容 (需要安裝 Flash)： 
 
-    ```
+    ```https
     https://<VM ip address or hostname>:5502/em
     ```
 
@@ -319,7 +319,7 @@ export ORACLE_SID=cdb1
 
 完成在 Azure 上探索第一個 Oracle 資料庫而且不再需要 VM 之後，就可以使用 [az group delete](/cli/azure/group) 命令移除資源群組、VM 和所有相關資源。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 

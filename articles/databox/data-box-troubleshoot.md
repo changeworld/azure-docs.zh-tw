@@ -1,226 +1,261 @@
 ---
-title: 針對您的 Azure 資料箱上的問題進行疑難排解 |Microsoft Docs
-description: 描述如何將資料上傳至 Azure 時看到 Azure 資料箱的問題進行疑難排解。
+title: 針對 Azure 資料箱的問題進行疑難排解，Azure Data Box Heavy
+description: 說明如何針對在將資料複製到這些裝置時，Azure 資料箱和 Azure Data Box Heavy 中看到的問題進行疑難排解。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: article
-ms.date: 04/26/2019
+ms.topic: troubleshooting
+ms.date: 07/08/2020
 ms.author: alkohli
-ms.openlocfilehash: 329ea6ac52e972c42e0e2aab247a7ad8e04c76e7
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: a632e753426def52bb260d7bf01875ec24e2ea9e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64927353"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200135"
 ---
-# <a name="troubleshoot-issues-related-to-azure-data-box"></a>針對 Azure 資料箱的相關問題進行疑難排解
+# <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>針對與 Azure 資料箱和 Azure Data Box Heavy 相關的問題進行疑難排解
 
-本文詳細說明使用 Azure Data Box 時，可能會看到有關如何針對問題進行疑難排解資訊。
+本文詳細說明如何針對匯入訂單使用 Azure 資料箱或 Azure Data Box Heavy 時可能會看到的問題進行疑難排解。 此文章包含將資料複製到資料箱時，或從資料箱上傳資料以取得匯入順序時所看到的可能錯誤清單。
 
-## <a name="errors-during-data-copy"></a>資料複製期間發生的錯誤
+本文中的資訊不適用於針對資料箱所建立的匯出訂單。
 
-下列各節摘要說明資料在複製期間發現的所有錯誤。
+## <a name="error-classes"></a>錯誤類別
 
-### <a name="errorcontainerorsharenamelength"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH 
+資料箱和 Data Box Heavy 中的錯誤摘要如下：
 
-**錯誤說明：** 容器或共用名稱必須介於 3 到 63 個字元之間。
+| 錯誤類別 *        | 描述        | 建議的動作    |
+|----------------------------------------------|---------|--------------------------------------|
+| 容器或共用名稱 | 容器或共用名稱不會遵循 Azure 命名規則。  |下載錯誤清單。 <br> 重新命名容器或共用。 [深入了解](#container-or-share-name-errors)。  |
+| 容器或共用大小限制 | 容器或共用中的資料總計超過 Azure 限制。   |下載錯誤清單。 <br> 減少容器或共用中的整體資料。 [深入了解](#container-or-share-size-limit-errors)。|
+| 物件或檔案大小限制 | 容器或共用中的物件超過 Azure 限制。|下載錯誤清單。 <br> 減少容器或共用中的檔案大小。 [深入了解](#object-or-file-size-limit-errors)。 |    
+| 資料或檔案類型 | 不支援資料格式或檔案類型。 |下載錯誤清單。 <br> 針對分頁 blob 或受控磁片，請確定資料已對齊 512-位元組，並複製到預先建立的資料夾。 [深入了解](#data-or-file-type-errors)。 |
+| 非重大 blob 或檔案錯誤  | Blob 或檔案名並未遵循 Azure 命名規則，或檔案類型不受支援。 | 這些 blob 或檔案可能無法複製，或名稱可能已變更。 [瞭解如何修正這些錯誤](#non-critical-blob-or-file-errors)。 |
 
-**建議的解決方式：** 您要複製資料的資料方塊 (SMB/NFS) 共用下的資料夾會變成您的儲存體帳戶中的 Azure 容器。 
+\*前四個錯誤類別是嚴重錯誤，必須先修正，才能繼續準備寄送。
 
-- 在 **連線 和 複製**頁面資料箱本機 web UI、 下載及檢閱錯誤檔來找出資料夾名稱的問題。
-- 變更資料 方塊中共用，並確定下的資料夾名稱：
 
-    - 名稱必須介於 3 到 63 個字元之間。
-    - 名稱只能包含字母、 數字和連字號。
-    - 名稱不能啟動，或連字號結尾。
-    - 名稱不能有連續的連字號。
-    - 有效名稱的範例： `my-folder-1`， `my-really-extra-long-folder-111`</li><li>
-    - 不是有效的名稱的範例： `my-folder_1`， `my`， `--myfolder`， `myfolder--`， `myfolder!`
+## <a name="container-or-share-name-errors"></a>容器或共用名稱錯誤
 
-    如需詳細資訊，請參閱 Azure 命名慣例[容器名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)並[共用名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)。
+這些是與容器和共用名稱相關的錯誤。
 
-### <a name="errorcontainerorsharenamelength"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH     
+### <a name="error_container_or_share_name_length"></a>ERROR_CONTAINER_OR_SHARE_NAME_LENGTH     
 
-**錯誤說明：** 容器或共用名稱必須介於 3 到 63 個字元之間。 
+**錯誤描述：** 容器或共用名稱必須介於3到63個字元之間。 
 
-**建議的解決方式：** 您要複製資料的資料方塊 (SMB/NFS) 共用下的資料夾會變成您的儲存體帳戶中的 Azure 容器。 
+**建議的解決方式：** 資料箱或 Data Box Heavy 共用下的資料夾，您已複製資料的 (SMB/NFS) 會成為儲存體帳戶中的 Azure 容器。 
 
-- 在 **連線 和 複製**頁面資料箱本機 web UI、 下載及檢閱錯誤檔來找出資料夾名稱的問題。
-- 變更資料 方塊中共用，並確定下的資料夾名稱：
+- 在裝置本機 web UI 的 [連線**並複製]** 頁面上，下載並檢查錯誤檔案，以找出有問題的資料夾名稱。
+- 變更資料箱或 Data Box Heavy 共用底下的資料夾名稱，以確保：
 
-    - 名稱必須介於 3 到 63 個字元之間。
-    - 名稱只能包含字母、 數字和連字號。
-    - 名稱不能啟動，或連字號結尾。
-    - 名稱不能有連續的連字號。
-    - 有效名稱的範例： `my-folder-1`， `my-really-extra-long-folder-111`
-    - 不是有效的名稱的範例： `my-folder_1`， `my`， `--myfolder`， `myfolder--`， `myfolder!`
+    - 名稱的長度必須介於3到63個字元之間。
+    - 名稱只能包含字母、數位和連字號。
+    - 名稱不能以連字號開頭或結尾。
+    - 名稱不能包含連續的連字號。
+    - 有效名稱的範例： `my-folder-1` 、`my-really-extra-long-folder-111`
+    - 無效名稱的範例： `my-folder_1` 、 `my` 、 `--myfolder` 、 `myfolder--` 、`myfolder!`
 
-    如需詳細資訊，請參閱 Azure 命名慣例[容器名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)並[共用名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)。
+    如需詳細資訊，請參閱[容器名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)和[共用名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)的 Azure 命名慣例。
 
 
-### <a name="errorcontainerorsharenamealphanumericdash"></a>ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH
+### <a name="error_container_or_share_name_alpha_numeric_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH
 
-**錯誤說明：** 容器或共用名稱只能包含字母、數字或連字號。
+**錯誤描述：** 容器或共用名稱必須只包含字母、數位或連字號。
 
-**建議的解決方式：** 您要複製資料的資料方塊 (SMB/NFS) 共用下的資料夾會變成您的儲存體帳戶中的 Azure 容器。 
+**建議的解決方式：** 資料箱或 Data Box Heavy 共用下的資料夾，您已複製資料的 (SMB/NFS) 會成為儲存體帳戶中的 Azure 容器。 
 
-- 在 **連線 和 複製**頁面資料箱本機 web UI、 下載及檢閱錯誤檔來找出資料夾名稱的問題。
-- 變更資料 方塊中共用，並確定下的資料夾名稱：
+- 在裝置本機 web UI 的 [連線**並複製]** 頁面上，下載並檢查錯誤檔案，以找出有問題的資料夾名稱。
+- 變更資料箱或 Data Box Heavy 共用底下的資料夾名稱，以確保：
 
-    - 名稱必須介於 3 到 63 個字元之間。
-    - 名稱只能包含字母、 數字和連字號。
-    - 名稱不能啟動，或連字號結尾。
-    - 名稱不能有連續的連字號。
-    - 有效名稱的範例： `my-folder-1`， `my-really-extra-long-folder-111`
-    - 不是有效的名稱的範例： `my-folder_1`， `my`， `--myfolder`， `myfolder--`， `myfolder!`
+    - 名稱的長度必須介於3到63個字元之間。
+    - 名稱只能包含字母、數位和連字號。
+    - 名稱不能以連字號開頭或結尾。
+    - 名稱不能包含連續的連字號。
+    - 有效名稱的範例： `my-folder-1` 、`my-really-extra-long-folder-111`
+    - 無效名稱的範例： `my-folder_1` 、 `my` 、 `--myfolder` 、 `myfolder--` 、`myfolder!`
 
-    如需詳細資訊，請參閱 Azure 命名慣例[容器名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)並[共用名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)。
+    如需詳細資訊，請參閱[容器名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)和[共用名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)的 Azure 命名慣例。
 
-### <a name="errorcontainerorsharenameimproperdash"></a>ERROR_CONTAINER_OR_SHARE_NAME_IMPROPER_DASH
+### <a name="error_container_or_share_name_improper_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_IMPROPER_DASH
 
-**錯誤說明：** 無法啟動的容器名稱和共用名稱，或以連字號結尾，而且不能有連續的連字號。
+**錯誤描述：** 容器名稱和共用名稱不能以連字號開頭或結尾，而且不能有連續的連字號。
 
-**建議的解決方式：** 您要複製資料的資料方塊 (SMB/NFS) 共用下的資料夾會變成您的儲存體帳戶中的 Azure 容器。 
+**建議的解決方式：** 資料箱或 Data Box Heavy 共用下的資料夾，您已複製資料的 (SMB/NFS) 會成為儲存體帳戶中的 Azure 容器。 
 
-- 在 **連線 和 複製**頁面資料箱本機 web UI、 下載及檢閱錯誤檔來找出資料夾名稱的問題。
-- 變更資料 方塊中共用，並確定下的資料夾名稱：
+- 在裝置本機 web UI 的 [連線**並複製]** 頁面上，下載並檢查錯誤檔案，以找出有問題的資料夾名稱。
+- 變更資料箱或 Data Box Heavy 共用底下的資料夾名稱，以確保：
 
-    - 名稱必須介於 3 到 63 個字元之間。
-    - 名稱只能包含字母、 數字和連字號。
-    - 名稱不能啟動，或連字號結尾。
-    - 名稱不能有連續的連字號。
-    - 有效名稱的範例： `my-folder-1`， `my-really-extra-long-folder-111`
-    - 不是有效的名稱的範例： `my-folder_1`， `my`， `--myfolder`， `myfolder--`， `myfolder!`
+    - 名稱的長度必須介於3到63個字元之間。
+    - 名稱只能包含字母、數位和連字號。
+    - 名稱不能以連字號開頭或結尾。
+    - 名稱不能包含連續的連字號。
+    - 有效名稱的範例： `my-folder-1` 、`my-really-extra-long-folder-111`
+    - 無效名稱的範例： `my-folder_1` 、 `my` 、 `--myfolder` 、 `myfolder--` 、`myfolder!`
 
-    如需詳細資訊，請參閱 Azure 命名慣例[容器名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)並[共用名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)。
+    如需詳細資訊，請參閱[容器名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)和[共用名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)的 Azure 命名慣例。
+    
+### <a name="error_file_or_directory_name_illegal"></a>ERROR_FILE_OR_DIRECTORY_NAME_ILLEGAL
 
-### <a name="errorcontainerorsharenamedisallowedfortype"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE
+**錯誤描述**：目錄或容器名稱包含不合法的字元。
 
-**錯誤說明：** 受控的磁碟共用指定的不正確的容器名稱。
+**建議的解決方案**：您所複製的目錄或容器名稱包含不支援的字元。
 
-**建議的解決方式：** 受控磁碟，每個在共用內，會對應到您的儲存體帳戶中的容器建立下列資料夾：進階 SSD、 標準的 HDD 和 SSD 標準。 這些資料夾會對應至受控磁碟的效能層級。
+- 在本機 web UI 的 [連線並複製] 頁面上，下載並檢查錯誤檔案，以找出有問題的資料夾名稱。 
+- 重新命名目錄或容器，以確保它們符合 Azure 命名慣例。
 
-- 請確定您將您的分頁 blob 資料 (Vhd) 複製到其中一個現有的資料夾。 只有這些現有的容器中的資料上傳至 Azure。
-- 在進階 SSD、 標準的 HDD 和 SSD 標準相同層級建立的任何其他資料夾未對應到有效的效能層級，並無法使用。
-- 移除檔案或資料夾的效能層級之外建立。
+如需詳細資訊，請參閱 [目錄](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)   和[容器](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)的 Azure 命名慣例。
 
-如需詳細資訊，請參閱 <<c0> [ 至受控磁碟複製](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box)。
+## <a name="container-or-share-size-limit-errors"></a>容器或共用大小限制錯誤
 
-### <a name="errorcontainerorsharecapacityexceeded"></a>ERROR_CONTAINER_OR_SHARE_CAPACITY_EXCEEDED
+這些是與資料超過容器或共用中允許的資料大小相關的錯誤。
 
-**錯誤說明：** Azure 檔案共用限制的共用 5TB 的資料。 一些共用已超過此限制。
+### <a name="error_container_or_share_capacity_exceeded"></a>ERROR_CONTAINER_OR_SHARE_CAPACITY_EXCEEDED
 
-**建議的解決方式：** 在上**連線] 和 [複製**頁面的資料箱本機 web UI，請下載並檢閱檔案時發生錯誤。
+**錯誤描述：** Azure 檔案共用會將共用限制為 5 TB 的資料。 部分共用已超過此限制。
 
-識別發生此問題，從錯誤記錄檔，並確定該資料夾中的檔案會低於 5 TB 的資料夾。
+**建議的解決方式：** 在本機 web UI 的 [連線**並複製]** 頁面上，下載並檢查錯誤檔案。
 
-### <a name="errorbloborfilenamecharactercontrol"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_CONTROL
+識別錯誤記錄檔中有此問題的資料夾，並確認該資料夾中的檔案低於 5 TB。
 
-**錯誤說明：** Blob 或檔案名稱包含不支援的控制字元。
 
-**建議的解決方式：** Blob 或您複製的檔案包含具有不支援的字元的名稱。
+## <a name="object-or-file-size-limit-errors"></a>物件或檔案大小限制錯誤
 
-在上**連線] 和 [複製**頁面上的本機 web UI 中，請下載並檢閱檔案時發生錯誤。
-移除或重新命名檔案，移除不支援的字元。
+這些是與資料超出 Azure 中所允許的物件或檔案大小上限相關的錯誤。 
 
-如需詳細資訊，請參閱 Azure 命名慣例[blob 名稱](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)並[檔案名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)。
+### <a name="error_blob_or_file_size_limit"></a>ERROR_BLOB_OR_FILE_SIZE_LIMIT
 
-### <a name="errorbloborfilenamecharacterillegal"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL
+**錯誤描述：** 檔案大小超過上傳的檔案大小上限。
 
-**錯誤說明：** Blob 或檔案名稱包含不合法的字元。
+**建議的解決方式：** Blob 或檔案大小超過上傳所允許的上限。
 
-**建議的解決方式：** Blob 或您複製的檔案包含具有不支援的字元的名稱。
+- 在本機 web UI 的 [連線**並複製]** 頁面上，下載並檢查錯誤檔案。
+- 請確定 blob 和檔案大小未超過 Azure 物件大小限制。
 
-在上**連線] 和 [複製**頁面上的本機 web UI 中，請下載並檢閱檔案時發生錯誤。
-移除或重新命名檔案，移除不支援的字元。
+## <a name="data-or-file-type-errors"></a>資料或檔案類型錯誤
 
-如需詳細資訊，請參閱 Azure 命名慣例[blob 名稱](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)並[檔案名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)。
+這些是在容器或共用中找到不支援的檔案類型或資料類型的相關錯誤。 
 
+### <a name="error_blob_or_file_size_alignment"></a>ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT
 
-### <a name="errorbloborfilenameending"></a>ERROR_BLOB_OR_FILE_NAME_ENDING
+**錯誤描述：** Blob 或檔案的對齊方式不正確。
 
-**錯誤說明：** 不正確的字元結束的 blob 或檔案的名稱。
+**建議的解決方式：** 資料箱或 Data Box Heavy 上的分頁 blob 共用僅支援512位元組的對齊 (例如 VHD/VHDX) 的檔案。 任何複製到分頁 blob 共用的資料，都會以分頁 blob 的形式上傳至 Azure。
 
-**建議的解決方式：** Blob 或您複製的檔案包含具有不支援的字元的名稱。
+從分頁 blob 共用移除任何非 VHD/VHDX 資料。 您可以針對一般資料使用區塊 blob 或 Azure 檔案共用。
 
-在上**連線] 和 [複製**頁面上的本機 web UI 中，請下載並檢閱檔案時發生錯誤。
-移除或重新命名檔案，移除不支援的字元。
+如需詳細資訊，請參閱[分頁 blob 的總覽](../storage/blobs/storage-blob-pageblob-overview.md)。
 
-如需詳細資訊，請參閱 Azure 命名慣例[blob 名稱](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)並[檔案名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)。
+### <a name="error_blob_or_file_type_unsupported"></a>ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED
 
-
-### <a name="errorbloborfilenamesegmentcount"></a>ERROR_BLOB_OR_FILE_NAME_SEGMENT_COUNT
-
-**錯誤說明：** Blob 或檔案名稱包含太多的路徑區段。
-
-**建議的解決方式：** Blob 或您複製的檔案超過路徑區段的數目上限。 路徑區段是連續分隔符號字元，例如，正斜線 /。
-
-- 在上**連線] 和 [複製**頁面上的本機 web UI 中，請下載並檢閱檔案時發生錯誤。
-- 請確定[blob 名稱](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)並[檔案名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)符合 Azure 命名慣例。
-
-### <a name="errorbloborfilenameaggregatelength"></a>ERROR_BLOB_OR_FILE_NAME_AGGREGATE_LENGTH
-
-**錯誤說明：** Blob 或檔案名稱太長。
-
-**建議的解決方式：** Blob 或檔案名稱超過最大長度。
-
-- 在上**連線] 和 [複製**頁面上的本機 web UI 中，請下載並檢閱檔案時發生錯誤。
-- Blob 名稱不得超過 1024 個字元。
-- 移除或重新命名的 blob 或檔案，使名稱不能超過 1024年個字元。
-
-如需詳細資訊，請參閱 blob 名稱和檔案名稱的 Azure 命名慣例。
-
-### <a name="errorbloborfilenamecomponentlength"></a>ERROR_BLOB_OR_FILE_NAME_COMPONENT_LENGTH
-
-**錯誤說明：** Blob 或檔案名稱的其中一個區段太長。
-
-**建議的解決方式：** 其中一個路徑區段中的 blob 或檔案名稱超過最大字元數。 路徑區段是連續分隔符號字元，例如，正斜線 /。
-
-- 在上**連線] 和 [複製**頁面上的本機 web UI 中，請下載並檢閱檔案時發生錯誤。
-- 請確定[blob 名稱](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)並[檔案名稱](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)符合 Azure 命名慣例。
-
-### <a name="errorbloborfilesizelimit"></a>ERROR_BLOB_OR_FILE_SIZE_LIMIT
-
-**錯誤說明：** 檔案大小超出上傳的檔案大小上限。
-
-**建議的解決方式：** Blob 或檔案大小超過上傳所允許的最大限制。
-
-- 在上**連線] 和 [複製**頁面上的本機 web UI 中，請下載並檢閱檔案時發生錯誤。
-- 請確定 blob 和檔案大小不會超過 Azure 的物件大小限制。
-
-### <a name="errorbloborfilesizealignment"></a>ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT
-
-**錯誤說明：** Blob 或檔案未正確地對齊。
-
-**建議的解決方式：** 頁面 blob 上共用資料 方塊中唯一支援的檔案是 512 位元組對齊 （例如 VHD/VHDX）。 複製到分頁 blob 的共用的任何資料上傳至 Azure 做為分頁 blob。
-
-從頁面 blob 共用中移除任何非 VHD/VHDX 的資料。 您可以使用共用的區塊 blob 或 Azure 的一般資料的檔案。
-
-如需詳細資訊，請參閱 <<c0> [ 概觀的分頁 blob](../storage/blobs/storage-blob-pageblob-overview.md)。
-
-### <a name="errorbloborfiletypeunsupported"></a>ERROR_BLOB_OR_FILE_TYPE_UNSUPPORTED
-
-**錯誤說明：** 受控的磁碟的共用中有不支援的檔案類型。 允許唯一的固定的 Vhd。
+**錯誤描述：** 受控磁片共用中有不支援的檔案類型。 只允許固定的 Vhd。
 
 **建議的解決方式：**
 
-- 請確定您只能上傳固定的 Vhd 建立受控的磁碟。
-- VHDX 檔案或**動態**並**差異**Vhd 不支援。
+- 請確定您只上傳固定的 Vhd 來建立受控磁片。
+- 不支援 VHDX 檔案或**動態**和**差異**vhd。
 
-### <a name="errordirectorydisallowedfortype"></a>ERROR_DIRECTORY_DISALLOWED_FOR_TYPE
+### <a name="error_directory_disallowed_for_type"></a>ERROR_DIRECTORY_DISALLOWED_FOR_TYPE
 
-**錯誤說明：** 目錄不允許任何預先存在的資料夾中的受控磁碟。 唯一的固定的 Vhd 可以在這些資料夾中。
+**錯誤描述：** 在受控磁片的任何預先存在的資料夾中，都不允許使用目錄。 這些資料夾中只允許固定的 Vhd。
 
-**建議的解決方式：** 受控磁碟，每個在共用內，下列三個資料夾會建立對應到您的儲存體帳戶中的容器：進階 SSD、 標準的 HDD 和 SSD 標準。 這些資料夾會對應至受控磁碟的效能層級。
+**建議的解決方式：** 針對每個共用中的受控磁片，會建立下列三個資料夾，對應至儲存體帳戶中的容器：進階 SSD、標準 HDD 和標準 SSD。 這些資料夾對應至受控磁片的效能層級。
 
-- 請確定您將您的分頁 blob 資料 (Vhd) 複製到其中一個現有的資料夾。
-- 這些現有的資料夾中不允許的資料夾或目錄。 移除任何您已建立的預先存在的資料夾內的資料夾。
+- 請確定您將分頁 blob 資料 (Vhd) 複製到其中一個現有的資料夾中。
+- 在這些現有資料夾中不允許有資料夾或目錄。 移除您在預先存在的資料夾內建立的任何資料夾。
 
-如需詳細資訊，請參閱 <<c0> [ 至受控磁碟複製](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box)。
+如需詳細資訊，請參閱[複製到受控磁片](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box)。
+
+### <a name="reparse_point_error"></a>REPARSE_POINT_ERROR
+
+**錯誤描述：** 在 Linux 中不允許符號連結。 
+
+**建議的解決方式：** 符號連結通常是連結、管道和其他這類檔案。 請移除連結，或解析連結並複製資料。
+
+
+## <a name="non-critical-blob-or-file-errors"></a>非重大 blob 或檔案錯誤
+
+下一節將摘要說明資料複製期間所見到的 blob、檔案或容器的名稱相關所有非嚴重錯誤。 如果這些錯誤存在，則會修改名稱以符合 Azure 命名慣例。 資料上傳的對應訂單狀態將會**完成，但出現警告**。  
+
+### <a name="error_blob_or_file_name_character_control"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_CONTROL
+
+**錯誤描述：** Blob 或檔案名包含不支援的控制字元。
+
+**建議的解決方式：** 您複製的 blob 或檔案包含具有不支援字元的名稱。
+
+在本機 web UI 的 [連線**並複製]** 頁面上，下載並檢查錯誤檔案。
+移除或重新命名檔案，以移除不支援的字元。
+
+如需詳細資訊，請參閱[blob 名稱](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)和[檔案名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)的 Azure 命名慣例。
+
+### <a name="error_blob_or_file_name_character_illegal"></a>ERROR_BLOB_OR_FILE_NAME_CHARACTER_ILLEGAL
+
+**錯誤描述：** Blob 或檔案名包含不合法的字元。
+
+**建議的解決方式：** 您複製的 blob 或檔案包含具有不支援字元的名稱。
+
+在本機 web UI 的 [連線**並複製]** 頁面上，下載並檢查錯誤檔案。
+移除或重新命名檔案，以移除不支援的字元。
+
+如需詳細資訊，請參閱[blob 名稱](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)和[檔案名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)的 Azure 命名慣例。
+
+
+### <a name="error_blob_or_file_name_ending"></a>ERROR_BLOB_OR_FILE_NAME_ENDING
+
+**錯誤描述：** Blob 或檔案名以不正確的字元結尾。
+
+**建議的解決方式：** 您複製的 blob 或檔案包含具有不支援字元的名稱。
+
+在本機 web UI 的 [連線**並複製]** 頁面上，下載並檢查錯誤檔案。
+移除或重新命名檔案，以移除不支援的字元。
+
+如需詳細資訊，請參閱[blob 名稱](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)和[檔案名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)的 Azure 命名慣例。
+
+
+### <a name="error_blob_or_file_name_segment_count"></a>ERROR_BLOB_OR_FILE_NAME_SEGMENT_COUNT
+
+**錯誤描述：** Blob 或檔案名包含太多路徑區段。
+
+**建議的解決方式：** 您複製的 blob 或檔案超過路徑區段的最大數目。 路徑區段是連續分隔符號之間的字串，例如正斜線/。
+
+- 在本機 web UI 的 [連線**並複製]** 頁面上，下載並檢查錯誤檔案。
+- 請確定[blob 名稱](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)和[檔案名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)符合 Azure 命名慣例。
+
+### <a name="error_blob_or_file_name_aggregate_length"></a>ERROR_BLOB_OR_FILE_NAME_AGGREGATE_LENGTH
+
+**錯誤描述：** Blob 或檔案名太長。
+
+**建議的解決方式：** Blob 或檔案名超過長度上限。
+
+- 在本機 web UI 的 [連線**並複製]** 頁面上，下載並檢查錯誤檔案。
+- Blob 名稱不能超過1024個字元。
+- 移除或重新命名 blob 或檔案，讓名稱不超過1024個字元。
+
+如需詳細資訊，請參閱 blob 名稱和檔案名的 Azure 命名慣例。
+
+### <a name="error_blob_or_file_name_component_length"></a>ERROR_BLOB_OR_FILE_NAME_COMPONENT_LENGTH
+
+**錯誤描述：** Blob 或檔案名中的其中一個區段太長。
+
+**建議的解決方式：** Blob 或檔案名中的其中一個路徑區段超過最大字元數。 路徑區段是連續分隔符號之間的字串，例如正斜線/。
+
+- 在本機 web UI 的 [連線**並複製]** 頁面上，下載並檢查錯誤檔案。
+- 請確定[blob 名稱](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata#blob-names)和[檔案名](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)符合 Azure 命名慣例。
+
+
+### <a name="error_container_or_share_name_disallowed_for_type"></a>ERROR_CONTAINER_OR_SHARE_NAME_DISALLOWED_FOR_TYPE
+
+**錯誤描述：** 針對受控磁片共用指定了不正確的容器名稱。
+
+**建議的解決方式：** 針對每個共用中的受控磁片，會建立下列資料夾，對應至儲存體帳戶中的容器：進階 SSD、標準 HDD 和標準 SSD。 這些資料夾對應至受控磁片的效能層級。
+
+- 請確定您將分頁 blob 資料 (Vhd) 複製到其中一個現有的資料夾中。 只有來自這些現有容器的資料才會上傳至 Azure。
+- 在與進階 SSD、標準 HDD 和標準 SSD 相同層級建立的任何其他資料夾，都不會對應到有效的效能層級，因此無法使用。
+- 移除在效能層級外部建立的檔案或資料夾。
+
+如需詳細資訊，請參閱[複製到受控磁片](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box)。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入了解[資料方塊中的 Blob 儲存體系統需求](data-box-system-requirements-rest.md)。
+- 深入瞭解[資料箱 Blob 儲存體系統需求](data-box-system-requirements-rest.md)。

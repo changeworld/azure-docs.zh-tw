@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric - 使用 Windows Azure 診斷延伸模組進行效能監視 | Microsoft Docs
+title: 使用 Windows Azure 診斷進行效能監視
 description: 使用 Windows Azure 診斷收集 Azure Service Fabric 叢集的效能計數器。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 20fa8945f01a3431d2fd78d545c43d6215c83f56
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c2114f5392da788bb440589e69e704a148731e02
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791502"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258625"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>使用 Windows Azure 診斷延伸模組進行效能監視
 
@@ -192,18 +183,15 @@ ms.locfileid: "59791502"
 ....
 ```
 
- >[!NOTE]
- >雖然您可以使用 `*` 指定類似命名的效能計數器群組，但透過接收來傳送任何計數器 (至 Application Insights) 則需要單獨宣告。 
-
 1. 新增需要收集的適用效能計數器之後，需要升級叢集資源，以便讓這些變更反映在正在執行的叢集中。 儲存修改的 `template.json`，並開啟 PowerShell。 您可以使用 `New-AzResourceGroupDeployment` 升級叢集。 呼叫需要資源群組的名稱、更新的範本檔案，以及參數檔案，並提示資源管理員對您更新的資源進行適當的變更。 一旦登入您的帳戶並進入正確的訂用帳戶，請使用下列命令以執行升級：
 
     ```sh
     New-AzResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
-1. 升級推出完畢後 (大約需要 15-45 分鐘，視其是否為第一次部署，以及您資源群組的大小而定)，WAD 應該會收集效能計數器，並將其傳送至與您叢集相關的儲存體帳戶中，名為 WADPerformanceCountersTable 的表格。 藉由[將 AI 接收新增至 Resource Manager 範本](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)，查看 Application Insights 中的效能計數器。
+1. 升級推出完畢後 (大約需要 15-45 分鐘，視其是否為第一次部署，以及您資源群組的大小而定)，WAD 應該會收集效能計數器，並將其傳送至與您叢集相關的儲存體帳戶中，名為 WADPerformanceCountersTable 的表格。 藉由[將 AI 接收新增至 Resource Manager 範本](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)，在 Application Insights 中查看效能計數器。
 
 ## <a name="next-steps"></a>後續步驟
 * 為您的叢集收集更多效能計數器。 請參閱[效能度量](service-fabric-diagnostics-event-generation-perf.md)，以取得您應該收集的計數器清單。
-* [透過 Windows VM 與 Azure Resource Manager 範本使用監視和診斷](../virtual-machines/windows/extensions-diagnostics-template.md)，對 `WadCfg` 做進一步的修改，包括設定診斷資料要傳送到的其他儲存體帳戶。
-* 請瀏覽[WadCfg 產生器](https://azure.github.io/azure-diagnostics-tools/config-builder/)建置全新的範本，並確定您的語法是否正確。 (https://azure.github.io/azure-diagnostics-tools/config-builder/)建置全新的範本，並確定您的語法是否正確。
+* [透過 Windows VM 與 Azure Resource Manager 範本使用監視和診斷](../virtual-machines/extensions/diagnostics-template.md)，對 `WadCfg` 做進一步的修改，包括設定診斷資料要傳送到的其他儲存體帳戶。
+* 請造訪[diagnostics.wadcfg builder](https://azure.github.io/azure-diagnostics-tools/config-builder/)從頭開始建立範本，並確定您的語法正確。 (https://azure.github.io/azure-diagnostics-tools/config-builder/) 從頭開始建立範本，並確定您的語法正確。

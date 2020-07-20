@@ -2,8 +2,8 @@
 title: 實體安全性 - Azure 專用 HSM | Microsoft Docs
 description: Azure 專用 HSM 裝置在資料中心內的實體安全性相關資訊
 services: dedicated-hsm
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
@@ -11,13 +11,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: barclayn
-ms.openlocfilehash: 6fe0557aa90ec3345d4ca0c3d9292cab3435bb2f
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.author: mbaldwin
+ms.openlocfilehash: ede1af4625d06af4e280eda86d09ae1db3dfdfd1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62118042"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "70881021"
 ---
 # <a name="azure-dedicated-hsm-physical-security"></a>Azure 專用 HSM 實體安全性
 
@@ -59,4 +58,4 @@ HSM 會佈建至客戶建立的虛擬網路。 這是客戶的私人 IUP 位址�
 * [網路功能](networking.md)
 * [支援能力](supportability.md)
 * [監視](monitoring.md)
-* [部署架構](deployment-architecture.md) (英文)
+* [部署架構](deployment-architecture.md)

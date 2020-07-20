@@ -1,22 +1,20 @@
 ---
 title: 從 Spark 對 Azure Cosmos DB Cassandra API 資料表進行彙總作業
 description: 本文涵蓋從 Spark 對 Azure Cosmos DB Cassandra API 資料表進行的基本彙總作業
-author: rockboyfor
-ms.author: v-yeche
+author: kanshiG
+ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
-origin.date: 09/24/2018
-ms.date: 04/15/2019
-ms.openlocfilehash: 4fbb86f4fbda9b8e521f7465bb8bb3d18602ca13
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: how-to
+ms.date: 09/24/2018
+ms.openlocfilehash: a3851eb9e7439d7a40994240240cd221d616cb3b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60894181"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260503"
 ---
-<!--Verify sucessfully-->
 # <a name="aggregate-operations-on-azure-cosmos-db-cassandra-api-tables-from-spark"></a>從 Spark 對 Azure Cosmos DB Cassandra API 資料表進行彙總作業 
 
 本文說明從 Spark 對 Azure Cosmos DB Cassandra API 資料表進行的基本彙總作業。 
@@ -36,7 +34,7 @@ import com.datastax.spark.connector.cql.CassandraConnector
 import com.microsoft.azure.cosmosdb.cassandra
 
 //Connection-related
-spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.cn")
+spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.com")
 spark.conf.set("spark.cassandra.connection.port","10350")
 spark.conf.set("spark.cassandra.connection.ssl.enabled","true")
 spark.conf.set("spark.cassandra.auth.username","YOUR_ACCOUNT_NAME")
@@ -71,6 +69,7 @@ booksDF.write
 
 ## <a name="count-operation"></a>計數運算
 
+
 ### <a name="rdd-api"></a>RDD API
 
 ```scala
@@ -98,32 +97,32 @@ res48: Long = 5
 
 * DISK_ONLY：會將 RDD 分割區只儲存在磁碟。
 
-* MEMORY_ONLY_2, MEMORY_AND_DISK_2…：與上述層級相同，但會在兩個叢集節點上複寫每個分割區。
+* MEMORY_ONLY_2、MEMORY_AND_DISK_2…：與上述層級相同，但會在兩個叢集節點上複寫每個分割區。
 
 * OFF_HEAP (實驗性)：與 MEMORY_ONLY_SER 類似，但會將資料儲存在堆集外記憶體中，而需要事先啟用堆集外記憶體。 
 
-    ```scala
-    //Workaround
-    import org.apache.spark.storage.StorageLevel
+```scala
+//Workaround
+import org.apache.spark.storage.StorageLevel
 
-    //Read from source
-    val readBooksDF = spark
-      .read
-      .cassandraFormat("books", "books_ks", "")
-      .load()
+//Read from source
+val readBooksDF = spark
+  .read
+  .cassandraFormat("books", "books_ks", "")
+  .load()
 
-    //Explain plan
-    readBooksDF.explain
+//Explain plan
+readBooksDF.explain
 
-    //Materialize the dataframe
-    readBooksDF.persist(StorageLevel.MEMORY_ONLY)
+//Materialize the dataframe
+readBooksDF.persist(StorageLevel.MEMORY_ONLY)
 
-    //Subsequent execution against this DF hits the cache 
-    readBooksDF.count
+//Subsequent execution against this DF hits the cache 
+readBooksDF.count
 
-    //Persist as temporary view
-    readBooksDF.createOrReplaceTempView("books_vw")
-    ```
+//Persist as temporary view
+readBooksDF.createOrReplaceTempView("books_vw")
+```
 
 ### <a name="sql"></a>SQL
 
@@ -370,6 +369,3 @@ select book_name,book_price from books_vw order by book_price desc limit 3;
 若要執行資料表複製作業，請參閱：
 
 * [資料表複製作業](cassandra-spark-table-copy-ops.md)
-
-<!--Verify sucessfully-->
-<!--Update_Description: wording update -->

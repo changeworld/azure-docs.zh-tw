@@ -13,16 +13,18 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
-ms.author: v-sharos@microsoft.com
-ms.openlocfilehash: 63906e65acb8e8aa836e6e59714bddca24ea21eb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: timlt
+ms.openlocfilehash: 2a6650cac975c575415a329361da00d4fbfcaa9d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60630165"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "68965125"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 系列：混合式雲端存放解決方案
-## <a name="overview"></a>概觀
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
+
+## <a name="overview"></a>總覽
 歡迎使用 Microsoft Azure StorSimple，StorSimple 是一個整合式儲存體解決方案，可管理內部部署裝置與 Microsoft Azure 雲端儲存體之間的儲存體工作。 StorSimple 是一個有效率、符合成本效益且易於管理的存放區域網路 (SAN) 解決方案，可減少許多與企業儲存體和資料保護相關聯的問題和支出。 它使用專屬的 StorSimple 8000 系列裝置、與雲端服務整合以及提供一組管理工具，提供所有企業儲存體 (包括雲端儲存體) 的整體檢視。 (發佈於 Microsoft Azure 網站上的 StorSimple 部署資訊僅適用於 StorSimple 8000 系列裝置。 如果您使用 StorSimple 5000/7000 系列裝置，請至 [StorSimple 說明](http://onlinehelp.storsimple.com/))。
 
 StorSimple 使用 [儲存體分層](#automatic-storage-tiering) 管理各種儲存媒體中儲存的資料。 目前的工作集是以內部部署的方式儲存在固態硬碟 (SSD) 中，較不常使用的資料會儲存於硬碟機 (HDD)，而封存資料則會推送到雲端。 此外，StorSimple 使用重複資料刪除和壓縮來減少資料使用的儲存體數量。 如需詳細資訊，請至 [重複資料刪除和壓縮](#deduplication-and-compression)。 如需 StorSimple 8000 系列文件中使用的其他主要詞彙和概念定義，請至這篇文章的結尾的 [StorSimple 詞彙](#storsimple-terminology) 。
@@ -92,7 +94,7 @@ StorSimple 裝置包括 SSD 和硬碟 HDD，並支援叢集和自動容錯移轉
 * 您可以在雲端中建立無限量的雲端設備，視需要將其開啟和關閉。
 * 可協助您模擬災害復原、開發和測試案例中的內部部署環境，並可協助從備份進行項目層級的擷取。
 
-StorSimple 雲端設備可在兩種機型中使用：8010 裝置 (先前稱為 1100 機型) 和 8020 裝置。 8010 裝置的最大容量為 30 TB。 利用 Azure 進階儲存體帳戶的 8020 裝置的最大容量為 64 TB。 (在本機層中，Azure 進階儲存體會將資料儲存在 SSD 上，而標準儲存體會將資料儲存在 HDD 上。)請注意，您必須具有 Azure 進階儲存體帳戶才能使用進階儲存體。
+StorSimple 雲端設備可在兩種機型中使用：8010 裝置 (先前稱為 1100 機型) 和 8020 裝置。 8010 裝置的最大容量為 30 TB。 利用 Azure 進階儲存體帳戶的 8020 裝置的最大容量為 64 TB。 （在本機層中，Azure premium 儲存體會將資料儲存在 Ssd，而標準儲存體會將資料儲存在 Hdd 上）。請注意，您必須擁有 Azure premium 儲存體帳戶，才能使用 premium 儲存體。
 
 如需 StorSimple 雲端設備的詳細資訊，請移至[部署和管理 Azure 中的 StorSimple 雲端設備](storsimple-8000-cloud-appliance-u2.md)。
 
@@ -153,7 +155,7 @@ Microsoft Azure StorSimple 包括 StorSimple Adapter for SharePoint，其為可�
 除了專用的 StorSimple 裝置、虛擬裝置和其他元件以外，Microsoft Azure StorSimple 還會使用下列軟體技術來提供資料的快速存取，並減少儲存體使用：
 
 * [自動儲存體分層](#automatic-storage-tiering) 
-* [精簡佈建](#thin-provisioning) 
+* [精簡布建](#thin-provisioning) 
 * [重複資料刪除和壓縮](#deduplication-and-compression) 
 
 ### <a name="automatic-storage-tiering"></a>自動儲存體分層
@@ -205,19 +207,19 @@ Microsoft Azure StorSimple 會使用重複資料刪除和資料壓縮，來進�
 ## <a name="storsimple-workload-summary"></a>StorSimple 工作負載摘要
 下表顯示所支援 StorSimple 工作負載的摘要。
 
-| 案例 | 工作負載 | 支援 | 限制 | Version |
+| 狀況 | 工作負載 | 支援 | 限制 | 版本 |
 | --- | --- | --- | --- | --- |
-| 共同作業 |檔案共用 |是 | |所有版本 |
-| 共同作業 |分散式檔案共用 |是 | |所有版本 |
+| 共同作業 |檔案共用 |Yes | |所有版本 |
+| 共同作業 |分散式檔案共用 |Yes | |所有版本 |
 | 共同作業 |SharePoint |是* |只有使用固定在本機的磁碟區時才支援 |Update 2 和更新版本 |
-| 封存 |簡易檔案封存 |是 | |所有版本 |
+| 封存 |簡易檔案封存 |Yes | |所有版本 |
 | 虛擬化 |虛擬機器 |是* |只有使用固定在本機的磁碟區時才支援 |Update 2 和更新版本 |
 | 資料庫 |SQL |是* |只有使用固定在本機的磁碟區時才支援 |Update 2 和更新版本 |
 | 視訊監視 |視訊監視 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 2 和更新版本 |
-| Backup  |主要目標備份 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 3 和更新版本 |
-| Backup  |次要目標備份 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 3 和更新版本 |
+| 備份 |主要目標備份 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 3 和更新版本 |
+| 備份 |次要目標備份 |是* |當 StorSimple 僅供此工作負載專用時才支援 |Update 3 和更新版本 |
 
-是&#42; - 應套用解決方案指導方針和限制。
+是&#42; - 應套用解決方案指導方針和限制。**
 
 StorSimple 8000 系列裝置不支援下列工作負載。 如果部署於 StorSimple，這些工作負載將導致產生不支援的組態。
 
@@ -232,15 +234,15 @@ StorSimple 8000 系列裝置不支援下列工作負載。 如果部署於 StorS
 
 以下是 StorSimple 支援的基礎結構元件清單。
 
-| 案例 | 工作負載 | 支援 | 限制 | Version |
+| 狀況 | 工作負載 | 支援 | 限制 | 版本 |
 | --- | --- | --- | --- | --- |
-| 一般 |ExpressRoute |是 | |所有版本 |
+| 一般 |ExpressRoute |Yes | |所有版本 |
 | 一般 |DataCore FC |是* |使用 DataCore SANsymphony 時支援 |所有版本 |
 | 一般 |DFSR |是* |只有使用固定在本機的磁碟區時才支援 |所有版本 |
 | 一般 |編製索引 |是* |階層式磁碟區，僅支援中繼資料索引 (無資料)。<br>針對固定在本機的磁碟區，支援完整索引。 |所有版本 |
 | 一般 |防毒 |是* |針對階層式磁碟區，只支援在開啟和關閉時進行掃描。<br> 針對固定在本機的磁碟區，支援完整掃描。 |所有版本 |
 
-是&#42; - 應套用解決方案指導方針和限制。
+是&#42; - 應套用解決方案指導方針和限制。**
 
 以下是與 StorSimple 搭配使用來建立解決方案的其他軟體清單。
 
@@ -255,7 +257,7 @@ StorSimple 8000 系列裝置不支援下列工作負載。 如果部署於 StorS
 在部署 Microsoft Azure StorSimple 解決方案，我們建議您檢閱下列詞彙和定義。
 
 ### <a name="key-terms-and-definitions"></a>重要詞彙和定義
-| 術語 (首字母縮寫或縮寫) | 描述 |
+| 術語 (首字母縮寫或縮寫) | Description |
 | --- | --- |
 | 存取控制記錄 (ACR) |與 Microsoft Azure StorSimple 裝置上的磁碟區相關聯的記錄，決定哪些主機可連接到其中。 此決定根據連接到 StorSimple 裝置之主機 (包含在 ACR 中) 的 iSCSI 合格名稱 (IQN)。 |
 | AES 256 |256 位元進階加密標準 (AES) 演算法，用於加密移入和移出雲端的資料。 |

@@ -1,6 +1,6 @@
 ---
-title: 溫度預先建置的實體
-titleSuffix: Azure
+title: 溫度預先建立的實體-LUIS
+titleSuffix: Azure Cognitive Services
 description: 本文包含 Language Understanding (LUIS) 中預先建置的 temperature 實體資訊。
 services: cognitive-services
 author: diberry
@@ -8,53 +8,93 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 03/04/2019
+ms.topic: reference
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 6a6600a0294eaef9f3b8ee6e7f6f021eb5c1e60b
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 7e2b48c6353f56ab2269a8718146cb765797adba
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341795"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "78270374"
 ---
 # <a name="temperature-prebuilt-entity-for-a-luis-app"></a>LUIS 應用程式的溫度預先建置實體
-Temperature 實體會擷取各種溫度類型。 因為此實體已經定型，所以您不需要將包含溫度的範例語句加入應用程式。 [多種文化特色](luis-reference-prebuilt-entities.md)都支援 temperature 實體。 
+Temperature 實體會擷取各種溫度類型。 因為此實體已經定型，所以您不需要將包含溫度的範例語句加入應用程式。 [多種文化特色](luis-reference-prebuilt-entities.md)都支援 temperature 實體。
 
 ## <a name="types-of-temperature"></a>溫度類型
-溫度可從 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L819) GitHub 存放庫管理
+從辨識器[文字](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L819)GitHub 存放庫管理溫度
 
 ## <a name="resolution-for-prebuilt-temperature-entity"></a>解析預先建置的 temperature 實體
+
+系統會針對查詢傳回下列實體物件：
+
+`set the temperature to 30 degrees`
+
+
+#### <a name="v3-response"></a>[V3 回應](#tab/V3)
+
+下列 JSON 是將`verbose`參數設定為： `false`
+
+```json
+"entities": {
+    "temperature": [
+        {
+            "number": 30,
+            "units": "Degree"
+        }
+    ]
+}
+```
+#### <a name="v3-verbose-response"></a>[V3 詳細回應](#tab/V3-verbose)
+下列 JSON 是將`verbose`參數設定為： `true`
+
+```json
+"entities": {
+    "temperature": [
+        {
+            "number": 30,
+            "units": "Degree"
+        }
+    ],
+    "$instance": {
+        "temperature": [
+            {
+                "type": "builtin.temperature",
+                "text": "30 degrees",
+                "startIndex": 23,
+                "length": 10,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+#### <a name="v2-response"></a>[V2 回應](#tab/V2)
+
 下列範例顯示解析的 **builtin.temperature** 實體。
 
 ```json
-{
-  "query": "set the temperature to 30 degrees",
-  "topScoringIntent": {
-    "intent": "None",
-    "score": 0.85310787
-  },
-  "intents": [
+"entities": [
     {
-      "intent": "None",
-      "score": 0.85310787
-    }
-  ],
-  "entities": [
-    {
-      "entity": "30 degrees",
-      "type": "builtin.temperature",
-      "startIndex": 23,
-      "endIndex": 32,
-      "resolution": {
+        "entity": "30 degrees",
+        "type": "builtin.temperature",
+        "startIndex": 23,
+        "endIndex": 32,
+        "resolution": {
         "unit": "Degree",
         "value": "30"
-      }
+        }
     }
-  ]
-}
+]
 ```
+* * *
 
 ## <a name="next-steps"></a>後續步驟
 
-了解 [percentage](luis-reference-prebuilt-percentage.md)、[number](luis-reference-prebuilt-number.md) 及 [age](luis-reference-prebuilt-age.md) 實體相關資訊。 
+深入了解 [V3 預測端點](luis-migration-api-v3.md)。
+
+了解 [percentage](luis-reference-prebuilt-percentage.md)、[number](luis-reference-prebuilt-number.md) 及 [age](luis-reference-prebuilt-age.md) 實體相關資訊。

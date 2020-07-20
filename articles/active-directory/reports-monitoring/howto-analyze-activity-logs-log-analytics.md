@@ -1,6 +1,6 @@
 ---
-title: 分析使用 Azure 監視器記錄檔的 Azure Active Directory 活動記錄 |Microsoft Docs
-description: 了解如何分析使用 Azure 監視器記錄檔的 Azure Active Directory 活動記錄
+title: 使用 Azure 監視器記錄來分析活動記錄 | Microsoft Docs
+description: 了解如何使用 Azure 監視器記錄來分析 Azure Active Directory 活動記錄
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -9,22 +9,21 @@ editor: ''
 ms.assetid: 4535ae65-8591-41ba-9a7d-b7f00c574426
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: priyamo
-ms.reviewer: markvi
+ms.author: markvi
+ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1651bb2898a2bd1e3e0c3fbbce77dc4106d76e7a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 08d56a13d0a2e373a725320e132df739d806f2e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60438163"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608223"
 ---
-# <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>分析 Azure AD 活動記錄與 Azure 監視器記錄檔
+# <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>使用 Azure 監視器記錄來分析 Azure AD 活動記錄
 
 在您[整合 Azure AD 活動記錄與 Azure 監視器記錄](howto-integrate-activity-logs-with-log-analytics.md)之後，可以使用 Azure 監視器記錄的強大功能來深入了解環境。 您也可以安裝[適用於 Azure AD 活動記錄的 Log Analytics 檢視](howto-install-use-log-analytics-views.md)，以存取您環境中稽核和登入事件的預建報表。
 
@@ -32,13 +31,19 @@ ms.locfileid: "60438163"
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 若要繼續，您需要：
 
 * Azure 訂用帳戶中的 Log Analytics 工作區。 了解如何[建立 Log Analytics 工作區](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)。
 * 首先，請完成[將 Azure AD 活動記錄路由至 Log Analytics 工作區](howto-integrate-activity-logs-with-log-analytics.md)的步驟。
-
+*  [存取](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions)記錄分析工作區
+* Azure Active Directory 中的下列角色 (如果是透過 Azure Active Directory 入口網站存取 Log Analytics)
+    - 安全性系統管理員
+    - 安全性讀取者
+    - 報告讀者
+    - 全域管理員
+    
 ## <a name="navigate-to-the-log-analytics-workspace"></a>瀏覽至 Log Analytics 工作區
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
@@ -54,7 +59,7 @@ ms.locfileid: "60438163"
 
 1. 從上一節中的預設查詢檢視，選取 [結構描述] 並展開工作區。 
 
-2. 展開 [記錄管理] 區段，然後再展開 [AuditLogs] 或 [SignInLogs] 以檢視記錄結構描述。
+2. 展開 [記錄管理] 區段，然後再展開 [AuditLogs] 或 [SigninLogs] 以檢視記錄結構描述。
     ![稽核記錄](./media/howto-analyze-activity-logs-log-analytics/auditlogschema.png) ![登入記錄](./media/howto-analyze-activity-logs-log-analytics/signinlogschema.png)
 
 ## <a name="query-the-azure-ad-activity-logs"></a>查詢 Azure AD 活動記錄
@@ -109,4 +114,4 @@ AuditLogs
 
 * [開始使用 Azure 監視器記錄中的查詢](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)
 * [在 Azure 入口網站中建立和管理警示群組](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)
-* [安裝與使用適用於 Azure Active Directory 的 Log Analytics 檢視](howto-install-use-log-analytics-views.md)
+* [安裝與使用適用於 Azure Active Directory 的記錄分析檢視](howto-install-use-log-analytics-views.md)

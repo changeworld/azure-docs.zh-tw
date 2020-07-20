@@ -1,89 +1,133 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Active Directory B2C 文件
+summary: Azure Active Directory B2C (Azure AD B2C) 是一項身分識別管理服務，可讓您自訂和控制客戶在使用您的 iOS、Android、.NET、單頁 (SPA) 和其他應用程式時如何註冊、登入及管理其設定檔。 了解如何透過快速入門、教學課程和範例使用 Azure AD B2C。
 metadata:
   title: Azure Active Directory B2C 文件
-  meta.description: 'Learn how to use Azure Active Directory B2C to customize and control how customers sign up, sign in, and manage their profiles when using your applications.'
+  description: 了解如何使用 Azure Active Directory B2C 自訂和控制客戶在使用您的應用程式時如何註冊、登入及管理其設定檔。
   services: active-directory-b2c
-  author: davidmu1
-  manager: daveba
   ms.service: active-directory
   ms.subservice: B2C
   ms.topic: landing-page
-  ms.date: 03/29/2018
-  ms.author: davidmu
-abstract:
-  description: Azure Active Directory (Azure AD) B2C 是一項身分識別管理服務，可讓您自訂和控制客戶在使用您的應用程式時如何註冊、登入及管理其設定檔。 其中包括針對 iOS、Android 和 .NET 等平台開發的應用程式。 Azure AD B2C 可讓您執行這些動作，同時保護客戶的身分識別。 了解如何透過快速入門、教學課程和範例使用 Azure AD B2C。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ./media/index/active-directory-b2c-video.PNG
-      width: 250
-    title: '透過 Azure AD B2C 進行客戶身分識別管理 (20:56)'
-    href: 'https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/active-directory-b2c/active-directory-b2c-overview
-            html: <p>深入了解 Azure AD B2C 與各項功能及能力。</p>
-            image:
-              src: ./media/index/i_get-started.svg
-            title: 關於 Azure AD B2C
-          - href: /azure/active-directory-b2c/solution-articles
-            html: <p>透過 Azure AD B2C 調查解決方案與 訓練機會。</p>
-            image:
-              src: ./media/index/i_advanced.svg
-            title: 解決方案與訓練
-          - href: /azure/active-directory-b2c/trustframeworkpolicy
-            html: <p>在 Azure AD B2C 中使用自訂原則建立進階註冊及登入案例。</p>
-            image:
-              src: ./media/index/i_investigate.svg
-            title: 身分識別體驗架構
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何為使用您應用程式的客戶設定身分識別管理：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_NET.svg'
-            text: .NET
-            href: 'https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-web-app'
-          - image:
-              src: 'https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_windows.svg'
-            text: 桌上型
-            href: 'https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-desktop-app'
-          - image:
-              src: 'https://docs.microsoft.com/azure/active-directory-b2c/media/index/logo_nodejs.svg'
-            text: 單一頁面
-            href: 'https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-quickstarts-spa'
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何管理 ASP.NET、桌面或單一頁面 Node.js 應用程式中的註冊、登入和客戶設定檔。
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: ASP.NET
-            html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">建立租用戶</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-app">驗證使用者</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-api">授與 API 存取權限</a></p>
-          - title: 桌上型
-            html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">建立租用戶</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app">驗證使用者</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app-webapi">授與 API 存取權限</a></p>
-          - title: 單一頁面
-            html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">建立租用戶</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa">驗證使用者</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa-webapi">授與 API 存取權限</a></p>
-  - title: 範例
-    items:
-      - type: paragraph
-        text: 尋找示範如何管理應用程式中客戶身分識別的範例。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/active-directory-b2c/code-samples">行動裝置、桌面、Web 和單一頁面應用程式</a>
+  ms.collection: collection
+  author: msmimart
+  ms.author: mimart
+  ms.date: 01/28/2020
+  ms.openlocfilehash: fe0fc7f20a81d9b887a61ca382dafcb69fc420d2
+  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "78187707"
+landingContent:
+- title: 了解基本概念
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure AD B2C？
+      url: overview.md
+    - text: 技術和功能概觀
+      url: technical-overview.md
+  - linkListType: get-started
+    links:
+    - text: 建立 Azure AD B2C 租用戶
+      url: tutorial-create-tenant.md
+    - text: 註冊應用程式
+      url: tutorial-register-applications.md
+    - text: 設定使用者流程
+      url: tutorial-create-user-flows.md
+  - linkListType: video
+    links:
+    - text: 什麼是 Azure AD B2C？ (9:35)
+      url: https://www.youtube.com/watch?v=GmBKlXED9Ug
+- title: 將身分識別新增到 ASP.NET 應用程式中
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 設定登入
+      url: quickstart-web-app-dotnet.md
+  - linkListType: tutorial
+    links:
+    - text: 驗證使用者 .NET Web 應用程式
+      url: tutorial-web-app-dotnet.md
+    - text: 將 API 存取權授與 .NET Web 應用程式
+      url: tutorial-web-api-dotnet.md
+    - text: 啟用企業和社交登入
+      url: tutorial-add-identity-providers.md
+  - linkListType: download
+    links:
+    - text: 適用於 Web 應用程式和 API 的程式碼範例
+      url: code-samples.md#web-apps-and-apis
+- title: 將身分識別新增至單頁應用程式
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 設定登入
+      url: quickstart-single-page-app.md
+  - linkListType: tutorial
+    links:
+    - text: 驗證單頁應用程式中的使用者
+      url: tutorial-single-page-app.md
+    - text: 將 API 存取權授與單頁應用程式
+      url: tutorial-single-page-app-webapi.md
+    - text: 啟用企業和社交登入
+      url: tutorial-add-identity-providers.md
+  - linkListType: download
+    links:
+    - text: 適用於單頁應用程式的程式碼範例
+      url: code-samples.md#single-page-apps
+- title: 將身分識別新增至桌面應用程式
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 設定登入
+      url: quickstart-native-app-desktop.md
+  - linkListType: tutorial
+    links:
+    - text: 驗證原生用戶端中的使用者
+      url: tutorial-desktop-app.md
+    - text: 將 API 存取權授與原生用戶端
+      url: tutorial-desktop-app-webapi.md
+    - text: 啟用企業和社交登入
+      url: tutorial-add-identity-providers.md
+  - linkListType: download
+    links:
+    - text: 適用於行動和桌面應用程式的程式碼範例
+      url: code-samples.md
+- title: 設定一般身分識別案例
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 使用者流程簡介
+      url: user-flow-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 註冊和登入使用者
+      url: tutorial-create-user-flows.md
+    - text: 自訂使用者介面
+      url: customize-ui-overview.md
+    - text: 啟用以 Facebook 登入功能
+      url: identity-provider-facebook.md
+  - linkListType: video
+    links:
+    - text: 如何設定基本原則 (9:41)
+      url: https://www.youtube.com/watch?v=nWJ3m82536A
+- title: 建置進階身分識別案例
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 自訂原則簡介
+      url: custom-policy-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 註冊和登入使用者
+      url: custom-policy-get-started.md
+    - text: 自訂使用者介面
+      url: custom-policy-ui-customization.md
+    - text: 啟用可供 Azure AD 多租用戶使用的登入功能
+      url: identity-provider-azure-ad-multi-tenant-custom.md
+    - text: 透過 REST API 新增您自己的商務邏輯
+      url: custom-policy-rest-api-claims-validation.md
+  - linkListType: video
+    links:
+    - text: Azure AD B2C 的進階使用案例 (4:54)
+      url: https://www.youtube.com/watch?v=-ZmPBuMZY-Y

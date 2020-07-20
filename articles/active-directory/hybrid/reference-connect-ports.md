@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 08/02/2017
+ms.date: 03/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48d2ef0de9ae59e63cd9957200c46c788e2d785f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: da318840426d1c0b94eab06b89ff3152df9d26fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387296"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80331097"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>混合式身分識別所需的連接埠和通訊協定
-下列文件是關於實作混合式身分識別解決方案之連接埠和通訊協定的技術參考。 使用下图并参考相应的表格。
+下列文件是關於實作混合式身分識別解決方案之連接埠和通訊協定的技術參考。 請使用下圖並參閱對應的資料表。
 
 ![何謂 Azure AD Connect](./media/reference-connect-ports/required3.png)
 
@@ -35,29 +35,31 @@ ms.locfileid: "60387296"
 | --- | --- | --- |
 | DNS |53 (TCP/UDP) |在目的地樹系的 DNS 查閱。 |
 | Kerberos |88 (TCP/UDP) |AD 樹系的 Kerberos 驗證。 |
-| MS-RPC |135 (TCP/UDP) |繫結至 AD 樹系時，用於 Azure AD Connect 精靈的初始設定期間，也可以用於密碼同步處理期間。 |
-| LDAP |389 (TCP/UDP) |用于从 AD 导入数据。 資料會使用「Kerberos 簽章及密封」加密。 |
-| SMB | 445 (TCP/UDP) |由無縫 SSO 用於在 AD 樹系中建立電腦帳戶。 |
-| LDAP/SSL |636 (TCP/UDP) |用於從 AD 匯入資料。 資料的傳輸經過簽署和加密。 只有使用 SSL 時才會使用。 |
-| RPC |49152-65535（随机高 RPC 端口）(TCP/UDP) |繫結至 AD 樹系時，用於 Azure AD Connect 的初始設定期間，以及用於密碼同步處理期間。 有关详细信息，请参阅 [KB929851](https://support.microsoft.com/kb/929851)、[KB832017](https://support.microsoft.com/kb/832017) 和 [KB224196](https://support.microsoft.com/kb/224196)。 |
+| MS-RPC |135（TCP） |繫結至 AD 樹系時，用於 Azure AD Connect 精靈的初始設定期間，也可以用於密碼同步處理期間。 |
+| LDAP |389 (TCP/UDP) |用於從 AD 匯入資料。 資料會使用「Kerberos 簽章及密封」加密。 |
+| SMB | 445（TCP） |由無縫 SSO 用於在 AD 樹系中建立電腦帳戶。 |
+| LDAP/SSL |636 (TCP/UDP) |用於從 AD 匯入資料。 資料的傳輸經過簽署和加密。 只有在使用 TLS 時才會使用。 |
+| RPC |49152-65535 （隨機高 RPC 埠）（TCP） |繫結至 AD 樹系時，用於 Azure AD Connect 的初始設定期間，以及用於密碼同步處理期間。 如需詳細資訊，請參閱 [KB929851](https://support.microsoft.com/kb/929851)、[KB832017](https://support.microsoft.com/kb/832017) 和 [KB224196](https://support.microsoft.com/kb/224196)。 |
+|WinRM  | 5985（TCP） |僅適用于使用 gMSA by Azure AD Connect Wizard 安裝 AD FS 時|
+|AD DS Web 服務 | 9389（TCP） |僅適用于使用 gMSA by Azure AD Connect Wizard 安裝 AD FS 時 |
 
 ## <a name="table-2---azure-ad-connect-and-azure-ad"></a>表 2 - Azure AD Connect 和 Azure AD
 此表說明 Azure AD Connect 伺服器與 Azure AD 之間通訊所需的連接埠和通訊協定。
 
-| 协议 | 連接埠 | 描述 |
+| 通訊協定 | 連接埠 | 描述 |
 | --- | --- | --- |
-| HTTP |80 (TCP/UDP) |用於下載 CRL (憑證撤銷清單) 以驗證 SSL 憑證。 |
-| HTTPS |443(TCP/UDP) |用来与 Azure AD 同步。 |
+| HTTP |80（TCP） |用來下載 Crl （憑證撤銷清單）以驗證 TLS/SSL 憑證。 |
+| HTTPS |443（TCP） |用來與 Azure AD 同步處理。 |
 
-有关需要在防火墙中打开的 URL 和 IP 地址列表，请参阅 [Office 365 URLs and IP address ranges](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)（Office 365 URL 和 IP 地址范围）。
+如需您必須在防火牆中開啟的 Url 和 IP 位址清單，請參閱[Office 365 url 和 ip 位址範圍](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)和[疑難排解 Azure AD Connect 連線能力](tshoot-connect-connectivity.md#troubleshoot-connectivity-issues-in-the-installation-wizard)。
 
 ## <a name="table-3---azure-ad-connect-and-ad-fs-federation-serverswap"></a>表 3 - Azure AD Connect 和 AD FS 同盟伺服器/WAP
 此表說明 Azure AD Connect 伺服器與 AD FS 同盟/WAP 伺服器之間通訊所需的連接埠和通訊協定。  
 
 | 通訊協定 | 連接埠 | 描述 |
 | --- | --- | --- |
-| HTTP |80 (TCP/UDP) |用於下載 CRL (憑證撤銷清單) 以驗證 SSL 憑證。 |
-| HTTPS |443(TCP/UDP) |用來與 Azure AD 同步處理。 |
+| HTTP |80（TCP） |用來下載 Crl （憑證撤銷清單）以驗證 TLS/SSL 憑證。 |
+| HTTPS |443（TCP） |用來與 Azure AD 同步處理。 |
 | WinRM |5985 |WinRM 接聽程式 |
 
 ## <a name="table-4---wap-and-federation-servers"></a>表 4 - WAP 和同盟伺服器
@@ -65,14 +67,14 @@ ms.locfileid: "60387296"
 
 | 通訊協定 | 連接埠 | 描述 |
 | --- | --- | --- |
-| HTTPS |443(TCP/UDP) |用於進行驗證。 |
+| HTTPS |443（TCP） |用於進行驗證。 |
 
 ## <a name="table-5---wap-and-users"></a>表 5 - WAP 和使用者
 此表說明使用者與 WAP 伺服器之間通訊所需的連接埠和通訊協定。
 
 | 通訊協定 | 連接埠 | 描述 |
 | --- | --- | --- |
-| HTTPS |443(TCP/UDP) |用於裝置驗證。 |
+| HTTPS |443（TCP） |用於裝置驗證。 |
 | TCP |49443 (TCP) |用於憑證驗證。 |
 
 ## <a name="table-6a--6b---pass-through-authentication-with-single-sign-on-sso-and-password-hash-sync-with-single-sign-on-sso"></a>表 6a 和 6b - 傳遞驗證搭配單一登入 (SSO) 與密碼雜湊同步處理搭配單一登入 (SSO)
@@ -90,11 +92,11 @@ ms.locfileid: "60387296"
 
 |通訊協定|連接埠號碼|描述
 | --- | --- | ---
-|HTTPS|443| 启用 SSO 注册（只有 SSO 注册过程才需要）。
+|HTTPS|443| 啟用 SSO 註冊 (只有在 SSO 註冊程序才需要)。
 
 此外，Azure AD Connect 也必須能夠對 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)直接建立 IP 連線。 同樣地，這只在 SSO 註冊程序中才需要。
 
-## <a name="table-7a--7b---azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>表 7a 和 7b - 适用于 (AD FS/Sync) 和 Azure AD 的 Azure AD Connect Health 代理
+## <a name="table-7a--7b---azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>表 7a 和 7b - 適用於 (AD FS/Sync) 和 Azure AD 的 Azure AD Connect Health 代理程式
 下表說明在 Azure AD Connect Health 代理程式與 Azure AD 之間通訊所需的端點、連接埠和通訊協定
 
 ### <a name="table-7a---ports-and-protocols-for-azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>表 7a - 適用於 (AD FS/Sync) 和 Azure AD 的 Azure AD Connect Health 代理程式的連接埠和通訊協定
@@ -102,8 +104,10 @@ ms.locfileid: "60387296"
 
 | 通訊協定 | 連接埠 | 描述 |
 | --- | --- | --- |
-| HTTPS |443 (TCP/UDP) |輸出 |
-| Azure 服務匯流排 |5671 (TCP/UDP) |輸出 |
+| HTTPS |443（TCP） |輸出 |
+| Azure 服務匯流排 |5671（TCP） |輸出 |
+
+最新版本的代理程式不再需要 Azure 服務匯流排埠5671。 最新的 Azure AD Connect Health 代理程式版本只需要端口443。
 
 ### <a name="7b---endpoints-for-azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>7b - 適用於 (AD FS/Sync) 和 Azure AD 之 Azure AD Connect Health 代理程式的端點
 如需端點的清單，請參閱 [Azure AD Connect Health 代理程式的＜需求＞一節](how-to-connect-health-agent-install.md#requirements)。

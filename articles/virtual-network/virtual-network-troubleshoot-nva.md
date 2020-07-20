@@ -4,7 +4,7 @@ description: 了解如何對 Azure 中的網路虛擬設備問題進行疑難排
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-network
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: b7ac96d3588923727a71cf6152ba36481ef44545
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 353ab1f15a6df8700a9abda22233dc052aa10095
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526651"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130700"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Azure 中的網路虛擬設備問題
 
@@ -42,7 +42,7 @@ ms.locfileid: "59526651"
 - 虛擬網路子網路上從 NVA 導向流量的 UDR
 - NVA 內的路由資料表和規則 (例如，從 NIC2 到 NIC1)
 - 追蹤 NVA NIC 以確認是否接收和傳送網路流量
-- 使用標準 SKU 和公用 Ip 時，必須是建立 NSG 和規則明確允許流量，路由傳送至 NVA。
+- 使用標準 SKU 和公用 Ip 時，必須建立 NSG 和明確的規則，以允許將流量路由傳送至 NVA。
 
 ## <a name="basic-troubleshooting-steps"></a>基本疑難排解步驟
 
@@ -74,21 +74,28 @@ ms.locfileid: "59526651"
 3. 檢查 **EnableIPForwarding** 屬性。
 4. 如果未啟用 IP 轉送，請執行下列命令加以啟用：
 
-   $nic2 = Get AzNetworkInterface-ResourceGroupName <ResourceGroupName> -名稱<NicName>$nic2。EnableIPForwarding = 1 組 AzNetworkInterface NetworkInterface $nic2 執行: $nic2 #and 檢查預期的輸出：EnableIPForwarding:True NetworkSecurityGroup: null
+   ```powershell
+   $nic2 = Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>
+   $nic2.EnableIPForwarding = 1
+   Set-AzNetworkInterface -NetworkInterface $nic2
+   Execute: $nic2 #and check for an expected output:
+   EnableIPForwarding   : True
+   NetworkSecurityGroup : null
+   ```
 
-**使用標準 SKU Pubilc IP 時，檢查 NSG**使用標準 SKU 和公用 Ip 時，必須有建立 NSG 和明確的規則來允許流量的 NVA。
+**使用標準 SKU 公用 IP 時，檢查是否有 NSG**使用標準 SKU 和公用 Ip 時，必須建立 NSG，並提供明確的規則來允許 NVA 的流量。
 
-**檢查流量是否可路由至 NVA**
+**檢查流量是否可路由傳送至 NVA**
 
-1. 在 [Azure 入口網站](https://portal.azure.com)上開啟 [網路監看員]，然後選取 [下一個躍點]。
+1. 在 [Azure 入口網站](https://portal.azure.com)上開啟 [網路監看員]****，然後選取 [下一個躍點]****。
 2. 指定設定為要將流量重新導向 NVA 的 VM，以及用來檢視下一個躍點的目的地 IP 位址。 
 3. 如果 NVA 未列為**下一個躍點**，請檢查和更新 Azure 路由表。
 
 **檢查流量是否可到達 NVA**
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中開啟 [網路監看員]，然後選取 [IP 流量驗證]。 
+1. 在 [Azure 入口網站](https://portal.azure.com)中開啟 [網路監看員]****，然後選取 [IP 流量驗證]****。 
 2. 指定 VM 和 NVA 的 IP 位址，然後檢查是否有任何網路安全性群組 (NSG) 會封鎖流量。
-3. 如果有 NSG 規則會封鎖流量，請在**有效的安全性**規則中找出 NSG，然後將其更新為允許流量通過。 接著，再次執行 [IP 流量驗證]，並使用 [連線疑難排解] 測試從 VM 到您內部或外部 IP 位址的 TCP 通訊。
+3. 如果有 NSG 規則會封鎖流量，請在**有效的安全性**規則中找出 NSG，然後將其更新為允許流量通過。 接著，再次執行 [IP 流量驗證]****，並使用 [連線疑難排解]**** 測試從 VM 到您內部或外部 IP 位址的 TCP 通訊。
 
 **檢查 NVA 和 VM 是否接聽預期的流量**
 
@@ -96,18 +103,22 @@ ms.locfileid: "59526651"
 
     若為 Windows：
 
-        netstat -an
+    ```console
+   netstat -an
+    ```
 
     若為 Linux：
 
-        netstat -an | grep -i listen
+    ```console
+   netstat -an | grep -i listen
+    ```
 2. 如果您未看見結果中列出的 NVA 軟體所使用的 TCP 連接埠，則必須在 NVA 和 VM 上設定應用程式，以接聽並回應到達這些連接埠的流量。 [視需要連絡 NVA 廠商以尋求協助](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
 
 ## <a name="check-nva-performance"></a>檢查 NVA 效能
 
 ### <a name="validate-vm-cpu"></a>驗證 VM CPU
 
-如果 CPU 使用率接近 100%，您可能會影響網路封包捨棄的問題。 您的 VM 會在 Azure 入口網站中報告特定時間範圍內的平均 CPU。 如果 CPU 用量暴增，請調查是客體 VM 上的哪一個處理序造成高 CPU 用量，且如果可能的話，請使其降低。 您可能需要將 VM 的大小調整為較大的 SKU，或針對虛擬機器擴展集增加執行個體計數，或設定為自動調整 CPU 使用量。 發生前述任一問題時，請視需要[連絡 NVA 廠商以取得協助](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
+如果 CPU 使用率接近 100%，則可能會發生影響到網路封包捨棄的問題。 您的 VM 會在 Azure 入口網站中報告特定時間範圍內的平均 CPU。 如果 CPU 用量暴增，請調查是客體 VM 上的哪一個處理序造成高 CPU 用量，且如果可能的話，請使其降低。 您可能需要將 VM 的大小調整為較大的 SKU，或針對虛擬機器擴展集增加執行個體計數，或設定為自動調整 CPU 使用量。 如有任何問題，請[洽詢 NVA 廠商以取得](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)所需的協助。
 
 ### <a name="validate-vm-network-statistics"></a>驗證 VM 網路統計資料
 
@@ -120,13 +131,13 @@ ms.locfileid: "59526651"
 
 1. 若要擷取同時網路追蹤，請執行下列命令：
 
-   **針對 Windows**
+   **適用于 Windows**
 
-   netsh 追蹤開始擷取 = yes tracefile 案例 = netconnection
+   netsh trace start capture = yes tracefile = c：\ server_IP .etl 案例 = test-netconnection
 
-   **適用於 Linux**
+   **針對 Linux**
 
-   sudo tcpdump -s0 -i eth0 -X -w vmtrace.cap
+   sudo tcpdump-s0-i eth0-X-w vmtrace.cap. cap
 
 2. 使用從來源 VM 到目的地 VM 的 **PsPing** 或 **Nmap** (例如：`PsPing 10.0.0.4:80` 或 `Nmap -p 80 10.0.0.4`)。
 3. 使用[網路監視器](https://www.microsoft.com/download/details.aspx?id=4865)或 tcpdump，開啟從目的地 VM 的網路追蹤。 對您執行 **PsPing** 或 **Nmap** 的來源 VM 套用 IP 的顯示篩選器，例如 `IPv4.address==10.0.0.4 (Windows netmon)` 或 `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux)。

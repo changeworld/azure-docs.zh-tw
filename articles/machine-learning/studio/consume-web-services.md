@@ -1,109 +1,108 @@
 ---
 title: 取用 Web 服務
-titleSuffix: Azure Machine Learning Studio
-description: 從 Azure Machine Learning Studio 部署機器學習服務之後，就可以使用 RESTFul Web 服務作為即時要求-回應服務或批次執行服務。
+titleSuffix: ML Studio (classic) - Azure
+description: 從 Azure Machine Learning Studio （傳統）部署機器學習服務之後，就可以使用 RESTFul Web 服務作為即時要求-回應服務或批次執行服務。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
-ms.custom: seodec18
-ms.date: 06/02/2017
-ms.openlocfilehash: a537227a7003391122e10f7f39233040cef49db3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.topic: how-to
+author: likebupt
+ms.author: keli19
+ms.custom: seodec18, tracking-python
+ms.date: 05/29/2020
+ms.openlocfilehash: 8d78d26298790e033f006fd3f37567caf97f97ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60751292"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84696621"
 ---
-# <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>如何使用 Azure Machine Learning Studio Web 服務
+# <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>如何使用 Azure Machine Learning Studio （傳統） web 服務
 
-將 Azure Machine Learning Studio 預測模型部署為 Web 服務後，就可以使用 REST API 傳送資料並取得預測。 您可以即時或以批次模式傳送資料。
+將 Azure Machine Learning Studio （傳統）預測模型部署為 Web 服務之後，您就可以使用 REST API 傳送資料並取得預測。 您可以即時或以批次模式傳送資料。
 
-有關如何使用 Machine Learning Studio 建立和部署 Machine Learning Web 服務的詳細資訊，請參閱此處：
+您可以在這裡找到有關如何使用 Machine Learning Studio （傳統）建立和部署 Machine Learning Web 服務的詳細資訊：
 
-* 如需如何在 Machine Learning Studio 中建立實驗的教學課程，請參閱 [建立您的第一個實驗](create-experiment.md)。
-* 如需如何部署 Web 服務的詳細資訊，請參閱[部署 Machine Learning Web 服務](publish-a-machine-learning-web-service.md)。
+* 如需如何在 Machine Learning Studio （傳統）中建立實驗的教學課程，請參閱[建立您的第一個實驗](create-experiment.md)。
+* 如需如何部署 Web 服務的詳細資訊，請參閱[部署 Machine Learning Web 服務](deploy-a-machine-learning-web-service.md)。
 * 如需 Machine Learning 的一般詳細資訊，請參閱 [Machine Learning 文件中心](https://azure.microsoft.com/documentation/services/machine-learning/)。
 
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 使用 Azure Machine Learning Web 服務，外部應用程式會即時與機器學習服務工作流程計分模型通訊。 機器學習 Web 服務呼叫會將預測結果傳回外部應用程式。 若要進行機器學習 Web 服務呼叫，您可以傳遞部署預測時所建立的 API 金鑰。 機器學習服務 Web 服務以 REST 為基礎，這是一種常見的 Web 程式設計專案架構。
 
-Azure Machine Learning Studio 有兩種類型的服務：
+Azure Machine Learning Studio （傳統）有兩種類型的服務：
 
-* 要求-回應服務 (RRS) – 這是一種低延遲、調整性高的服務，針對從 Machine Learning Studio 建立和部署的無狀態模型提供介面。
+* 要求-回應服務（RR）–這是一種低延遲、高擴充性的服務，可為從 Machine Learning Studio （傳統）建立和部署的無狀態模型提供介面。
 * 批次執行服務 (BES) – 這是一種非同步的服務，為一批資料記錄進行計分。
 
-如需 Machine Learning Web 服務的詳細資訊，請參閱[部署 Machine Learning Web 服務](publish-a-machine-learning-web-service.md)。
+如需 Machine Learning Web 服務的詳細資訊，請參閱[部署 Machine Learning web 服務](deploy-a-machine-learning-web-service.md)。
 
-## <a name="get-an-azure-machine-learning-studio-authorization-key"></a>取得 Azure Machine Learning Studio 授權金鑰
+## <a name="get-an-authorization-key"></a>取得授權金鑰
 當您部署實驗時，會為 Web 服務產生 API 金鑰。 您可以從數個位置擷取金鑰。
 
 ### <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>透過 Microsoft Azure Machine Learning Web 服務入口網站
-登入 [Microsoft Azure Machine Learning Web 服務](https://services.azureml.net)入口網站。
+登入[Microsoft Azure Machine Learning Web 服務](https://services.azureml.net)入口網站。
 
 若要擷取新 Machine Learning Web 服務的 API 金鑰︰
 
-1. 在 Azure Machine Learning Web Services 入口網站中，按一下頂端功能表上的 [Web 服務]。
+1. 在 Azure Machine Learning Web Services 入口網站中，按一下頂端功能表上的 [Web 服務]****。
 2. 按一下您要擷取金鑰的 Web 服務。
-3. 在頂端功能表上，按一下 [取用] 。
-4. 複製並儲存 [主要金鑰] 。
+3. 在頂端功能表上，按一下 [取用] ****。
+4. 複製並儲存 [主要金鑰] ****。
 
 若要擷取傳統 Machine Learning Web 服務的 API 金鑰︰
 
-1. 在 Azure Machine Learning Web Services 入口網站中，按一下頂端功能表上的 [傳統 Web 服務]。
+1. 在 Azure Machine Learning Web Services 入口網站中，按一下頂端功能表上的 [傳統 Web 服務]****。
 2. 按一下您所使用的 Web 服務。
 3. 按一下您要取得金鑰的端點。
-4. 在頂端功能表上，按一下 [取用] 。
-5. 複製並儲存 [主要金鑰] 。
+4. 在頂端功能表上，按一下 [取用] ****。
+5. 複製並儲存 [主要金鑰] ****。
 
 ### <a name="classic-web-service"></a>傳統 Web 服務
- 您也可以從 Machine Learning Studio 擷取傳統 Web 服務的金鑰。
+ 您也可以從 Machine Learning Studio （傳統）取得傳統 Web 服務的金鑰。
 
-#### <a name="machine-learning-studio"></a>Machine Learning Studio
-1. 在 Machine Learning Studio 中，按一下左側的 [Web 服務]  。
-2. 按一下某個 Web 服務。 [API 金鑰] 位於 [儀表板] 索引標籤上。
+#### <a name="machine-learning-studio-classic"></a>Machine Learning Studio (傳統)
+1. 在 [Machine Learning Studio （傳統）] 中，按一下左側的 [ **WEB 服務**]。
+2. 按一下某個 Web 服務。 [API 金鑰]**** 位於 [儀表板]**** 索引標籤上。
 
-## <a id="connect"></a>連線到機器學習 Web 服務
+## <a name="connect-to-a-machine-learning-web-service"></a><a id="connect"></a>連接到 Machine Learning Web 服務
 您可以使用任何支援 HTTP 要求和回應的程式設計語言，連線到機器學習 Web 服務。 您可以從機器學習 Web 服務說明頁面檢視 C#、Python 和 R 的範例。
 
-**機器學習服務 API 說明**當您部署 Web 服務時，會建立機器學習服務 API 說明。 請參閱[教學課程 3：部署信用風險模型](tutorial-part3-credit-risk-deploy.md)。
+**MACHINE LEARNING API**說明當您部署 Web 服務時，會建立 Machine Learning API 說明。 請參閱[教學課程3：部署信用風險模型](tutorial-part3-credit-risk-deploy.md)。
 機器學習服務 API 說明包含有關預測 Web 服務的詳細資訊。
 
 1. 按一下您所使用的 Web 服務。
 2. 按一下您想要檢視 API 說明頁面的端點。
-3. 在頂端功能表上，按一下 [取用] 。
-4. 按一下 [要求-回應] 或 [批次執行] 端點底下的 [API 說明頁面]。
+3. 在頂端功能表上，按一下 [取用] ****。
+4. 按一下 [要求-回應] 或 [批次執行] 端點底下的 [API 說明頁面]****。
 
 **檢視新 Web 服務的機器學習 API 說明**
 
-在 [Azure Machine Learning Web 服務入口網站](https://services.azureml.net/)中：
+在[Azure Machine Learning Web 服務入口網站](https://services.azureml.net/)中：
 
-1. 按一下頂端功能表上的 [Web 服務]  。
+1. 按一下頂端功能表上的 [Web 服務] **** 。
 2. 按一下您要擷取金鑰的 Web 服務。
 
-按一下 [使用 Web 服務] 取得要求-回應服務和批次執行服務的 URI，以及以 C#、R 和 Python 撰寫的範例程式碼。
+按一下 [使用 Web 服務]**** 取得要求-回應服務和批次執行服務的 URI，以及以 C#、R 和 Python 撰寫的範例程式碼。
 
-按一下 [Swagger API] 從提供的 URI，取得所呼叫 API 的 Swagger 相關文件。
+按一下 [Swagger API]**** 從提供的 URI，取得所呼叫 API 的 Swagger 相關文件。
 
 ### <a name="c-sample"></a>C# 範例
-若要連線到機器學習 Web 服務，請使用 **HttpClient** 傳遞 ScoreData。 ScoreData 包含 FeatureVector，這是代表 ScoreData 的數值特徵 N 維向量。 您要使用 API 金鑰向機器學習服務驗證。
+若要連接到 Machine Learning Web 服務，請使用**HttpClient**傳遞 ScoreData。 ScoreData 包含 FeatureVector，這是代表 ScoreData 的數值特徵 N 維向量。 您要使用 API 金鑰向機器學習服務驗證。
 
-若要連線到機器學習 Web 服務，必須安裝 **Microsoft.AspNet.WebApi.Client** NuGet 封裝。
+若要連接到 Machine Learning Web 服務，必須安裝**WebApi 的用戶端**NuGet 套件。
 
-**在 Visual Studio 中安裝 Microsoft.AspNet.WebApi.Client NuGet**
+**在 Visual Studio 中安裝 WebApi 用戶端 NuGet**
 
-1. 發佈「從 UCI：Adult 2 類別資料集下載資料集」Web 服務。
-2. 按一下 [工具] > [NuGet 套件管理員] > [套件管理員主控台]。
+1. 發佈 Download dataset from UCI: Adult 2 class dataset 的 Web 服務。
+2. 按一下 [**工具**] [  >  **NuGet 套件管理員**] [  >  **套件管理員主控台**]。
 3. 選擇 [ **Install-package Microsoft.AspNet.WebApi.Client**]。
 
 **執行程式碼範例**
 
-1. 發佈「範例 1：從 UCI：Adult 2 類別資料集下載資料集」實驗，此為 Machine Learning 範例集合中的一部分。
-2. 使用來自 Web 服務的金鑰指派 apiKey。 請參閱前述的**取得 Azure Machine Learning Studio 授權金鑰**。
+1. 發佈機器學習服務範例集合中的 "Sample 1: Download dataset from UCI: Adult 2 class dataset" 實驗。
+2. 使用來自 Web 服務的金鑰指派 apiKey。 請參閱上述**的取得授權金鑰**。
 3. 使用要求 URI 指派 serviceUri。
 
 **以下是完整的要求內容。**
@@ -198,13 +197,13 @@ namespace CallRequestResponseService
 
 **執行程式碼範例**
 
-1. 部署「範例 1：從 UCI：Adult 2 類別資料集下載資料集」實驗，此為 Machine Learning 範例集合中的一部分。
-2. 使用來自 Web 服務的金鑰指派 apiKey。 請參閱本文接近開始處的＜取得 Azure Machine Learning Studio 授權金鑰＞小節。
+1. 部署機器學習服務範例集合中的 "Sample 1: Download dataset from UCI: Adult 2 class dataset" 實驗。
+2. 使用來自 Web 服務的金鑰指派 apiKey。 請參閱本文開頭附近的**取得授權金鑰**一節。
 3. 使用要求 URI 指派 serviceUri。
 
 **以下是完整的要求內容。**
 ```python
-import urllib2 # urllib.request for Python 3.X
+import urllib2 # urllib.request and urllib.error for Python 3.X
 import json
 
 data = {
@@ -228,7 +227,7 @@ url = '<your-api-uri>'
 api_key = '<your-api-key>'
 headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
 
-# "urllib.request.Request(uri, body, headers)" for Python 3.X
+# "urllib.request.Request(url, body, headers)" for Python 3.X
 req = urllib2.Request(url, body, headers)
 
 try:
@@ -252,54 +251,46 @@ except urllib2.HTTPError, error:
 
 **以下是完整的要求內容。**
 ```r
-library("RCurl")
+library("curl")
+library("httr")
 library("rjson")
 
-# Accept SSL certificates issued by public Certificate Authorities
-options(RCurlOptions = list(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl")))
+requestFailed = function(response) {
+    return (response$status_code >= 400)
+}
 
-h = basicTextGatherer()
-hdr = basicHeaderGatherer()
+printHttpResult = function(response, result) {
+    if (requestFailed(response)) {
+        print(paste("The request failed with status code:", response$status_code, sep=" "))
+    
+        # Print the headers - they include the request ID and the timestamp, which are useful for debugging the failure
+        print(response$headers)
+    }
+    
+    print("Result:") 
+    print(fromJSON(result))  
+}
 
 req = list(
-    Inputs = list(
+        Inputs = list( 
             "input1" = list(
-                list(
-                        'column1' = "value1",
-                        'column2' = "value2",
-                        'column3' = "value3"
-                    )
-            )
-        ),
+                "ColumnNames" = list("Col1", "Col2", "Col3"),
+                "Values" = list( list( "0", "value", "0" ),  list( "0", "value", "0" )  )
+            )                ),
         GlobalParameters = setNames(fromJSON('{}'), character(0))
 )
 
 body = enc2utf8(toJSON(req))
-api_key = "<your-api-key>" # Replace this with the API key for the web service
+api_key = "abc123" # Replace this with the API key for the web service
 authz_hdr = paste('Bearer', api_key, sep=' ')
 
-h$reset()
-curlPerform(url = "<your-api-uri>",
-httpheader=c('Content-Type' = "application/json", 'Authorization' = authz_hdr),
-postfields=body,
-writefunction = h$update,
-headerfunction = hdr$update,
-verbose = TRUE
-)
+response = POST(url= "<your-api-uri>",
+        add_headers("Content-Type" = "application/json", "Authorization" = authz_hdr),
+        body = body)
 
-headers = hdr$value()
-httpStatus = headers["status"]
-if (httpStatus >= 400)
-{
-print(paste("The request failed with status code:", httpStatus, sep=" "))
+result = content(response, type="text", encoding="UTF-8")
 
-# Print the headers - they include the request ID and the timestamp, which are useful for debugging the failure
-print(headers)
-}
-
-print("Result:")
-result = h$value()
-print(fromJSON(result))
+printHttpResult(response, result)
 ```
 
 ### <a name="javascript-sample"></a>JavaScript 範例

@@ -1,32 +1,27 @@
 ---
-title: 應用程式同意如何運作 | Microsoft Docs
+title: 應用程式同意如何運作
 description: 深入了解 Azure AD 同意架構的運作方式，以了解如何在開發搭配 Azure AD 執行的應用程式時使用它
 services: active-directory
-documentationcenter: ''
-author: CelesteDG
-manager: mtillman
-ms.assetid: ''
+author: rwike77
+manager: CelesteDG
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: celested
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 517ae30eab178a508fb2ee23ef99b02a8254088f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: ryanwi
+ms.openlocfilehash: 86b592ecf5485654ab6860addbfde48cee4df077
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60299799"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80885543"
 ---
 # <a name="how-application-consent-works"></a>應用程式同意如何運作
 
 此文章旨在協助您深入了解 Azure AD 同意架構的運作方式，以便您可以更有效地開發應用程式。
 
-## <a name="recommended-documents"></a>建议的文档
+## <a name="recommended-documents"></a>建議的文件
 
 - 取得有關[同意如何讓資源擁有者控管應用程式對資源的存取權](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#consent)的基本知識。
 - 取得有關 [Azure AD 同意架構如何實作同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)的逐步概觀。

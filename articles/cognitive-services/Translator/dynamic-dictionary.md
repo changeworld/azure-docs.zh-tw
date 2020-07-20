@@ -1,36 +1,41 @@
 ---
-title: 動態字典 - 翻譯工具文字 API
-titlesuffix: Azure Cognitive Services
-description: 如何使用翻譯工具文字 API 的動態字典功能。
+title: 動態字典-翻譯工具
+titleSuffix: Azure Cognitive Services
+description: 本文說明如何使用 Azure 認知服務 Translator 的動態字典功能。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.author: v-jansko
-ms.openlocfilehash: 0b4362d78ef105c249aafb4c6b203f69754a56c8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 05/26/2020
+ms.author: swmachan
+ms.openlocfilehash: de45867e717f001ab54e16c4b21f04494affd326
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916592"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996976"
 ---
-# <a name="how-to-use-the-dynamic-dictionary-feature-of-the-translator-text-api"></a>如何使用翻譯工具文字 API 的動態字典功能
+# <a name="how-to-use-a-dynamic-dictionary"></a>如何使用動態字典
 
-如果已經知道想要套用至單字或片語的翻譯，則可以在要求內以標記來提供。 動態字典僅適用於專有名稱和產品名稱這類複合名詞。
+如果已經知道想要套用至單字或片語的翻譯，則可以在要求內以標記來提供。 動態字典僅適用于適當名稱和產品名稱這類複合名詞。
 
 **語法：**
 
-<mstrans:dictionary translation=”translation of phrase”>phrase</mstrans:dictionary>
+<s： dictionary 轉譯 = "轉譯片語" >片語</mstrans： dictionary>
+
+**需求：**
+
+* `From`和 `To` 語言必須包含英文和其他支援的語言。 
+* 您必須 `From` 在 API 轉譯要求中包含參數，而不是使用自動偵測功能。 
 
 **範例：en-de:**
 
-來源輸入：The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.
+來源輸入：`The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.`
 
-目標輸出：Das Wort "wordomatic" ist ein Wörterbucheintrag.
+目標輸出：`Das Wort "wordomatic" ist ein Wörterbucheintrag.`
 
 不論有無 HTML 模式，此功能都以相同的方式運作。
 
-應該謹慎使用此功能。 自訂翻譯的適當且最適合方式是使用 Custom Translator。 Custom Translator 會完全利用內容和統計機率。 如果您已有或能夠建立定型資料，以便在上下文中顯示您的單字或片語，則會得到更好的結果。 您可以在 [https://aka.ms/CustomTranslator](https://aka.ms/CustomTranslator) \(英文\) 找到更多 Custom Translator 的詳細資訊。
+請謹慎使用此功能。 自訂翻譯的更好方法是使用自訂翻譯。 Custom Translator 會完全利用內容和統計機率。 如果您已有或能夠建立定型資料，以便在上下文中顯示您的單字或片語，則會得到更好的結果。 您可以在找到有關自訂翻譯的詳細資訊 [https://aka.ms/CustomTranslator](https://aka.ms/CustomTranslator) 。

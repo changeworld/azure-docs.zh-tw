@@ -1,59 +1,65 @@
 ---
-title: .NET 應用程式的 azure Application Insights 快照集偵錯工具升級 |Microsoft Docs
-description: 如何升級 Azure App Service，或透過 Nuget 套件的最新版本的快照集偵錯工具
-services: application-insights
-author: MarioHewardt
-manager: carmonm
-ms.service: application-insights
+title: 升級 Azure 應用程式深入解析快照偵錯工具
+description: 如何將 .NET 應用程式的快照偵錯工具升級至 Azure App 服務上的最新版本，或透過 Nuget 套件
 ms.topic: conceptual
+author: pharring
+ms.author: pharring
 ms.date: 03/28/2019
-ms.author: Mario.Hewardt
 ms.reviewer: mbullwin
-ms.openlocfilehash: 54b79897ee378cda52106fe704e25c50a4325f38
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 6991db6055ca8556adff67f194bac0f4aa04cb06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60784149"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77671387"
 ---
-# <a name="upgrading-the-snapshot-debugger"></a>升級快照集偵錯工具
+# <a name="upgrading-the-snapshot-debugger"></a>升級快照偵錯工具
 
-若要為您的資料提供最佳的可能安全性，Microsoft 是移動離開 TLS 1.0 和 TLS 1.1 能夠很容易受到攻擊者。 如果您使用較舊版本的網站延伸模組，它將需要升級才能繼續作業。 本文件概述升級為最新版本的快照集偵錯工具所需的步驟。 如果您已啟用快照集偵錯工具使用的網站延伸模組，或如果您使用 SDK/Nuget 新增至您的應用程式，則需要有取決於兩個主要的升級路徑。 下面會討論這兩個升級的路徑。 
+為了為您的資料提供最佳的安全性，Microsoft 將從 TLS 1.0 和 TLS 1.1 中移出，這會被視為容易受到判斷攻擊者的攻擊。 如果您使用的是較舊版本的網站延伸模組，則需要升級才能繼續運作。 本檔概述將快照偵錯工具升級至最新版本所需的步驟。 根據您是使用網站擴充功能來啟用快照偵錯工具，還是使用已新增至應用程式的 SDK/Nuget，會有兩個主要的升級路徑。 以下將討論這兩種升級路徑。 
 
 ## <a name="upgrading-the-site-extension"></a>升級網站延伸模組
 
-如果您啟用快照集偵錯工具使用網站擴充功能，您可以輕鬆地升級使用下列程序：
+> [!IMPORTANT]
+> 舊版的 Application Insights 使用私人網站延伸模組，稱為_Application Insights 延伸模組，用於 Azure App Service_。 若要啟用目前的 Application Insights 體驗，請將應用程式設定設為淺達預先安裝的網站延伸模組。
+> 若要避免衝突，這可能會導致您的網站停止運作，請務必先刪除私人網站延伸模組。 請參閱下面的步驟4。
+
+如果您使用網站延伸模組來啟用快照偵錯工具，您可以使用下列程式來升級：
 
 1. 登入 Azure 入口網站。
-2. 瀏覽至您的 Application Insights 快照偵錯工具啟用的資源。 例如，Web 應用程式中，瀏覽至 App Service 資源：
+2. 流覽至已啟用 Application Insights 和快照偵錯工具的資源。 例如，針對 Web 應用程式，流覽至 App Service 資源：
 
-   ![個別的 App Service 資源的螢幕擷取畫面，名為 「 DiagService01](./media/snapshot-debugger-upgrade/app-service-resource.png)
+   ![名為 DiagService01 之個別 App Service 資源的螢幕擷取畫面](./media/snapshot-debugger-upgrade/app-service-resource.png)
 
-3. 一旦您巡覽至您的資源，在 [概觀] 刀鋒視窗中按一下 Application Insights:
+3. 導覽至您的資源之後，請按一下 [擴充功能] 分頁，然後等候延伸模組清單填入：
 
-   ![三個按鈕的螢幕擷取畫面。 使用名稱 Application Insights 的 [中央] 按鈕已選取](./media/snapshot-debugger-upgrade/application-insights-button.png)
+   ![App Service 延伸模組的螢幕擷取畫面，其中顯示已安裝 Azure App Service 的 Application Insights 延伸模組](./media/snapshot-debugger-upgrade/application-insights-site-extension-to-be-deleted.png)
 
-4. 新的刀鋒視窗會開啟與目前的設定。 除非您想要利用這個機會來變更您的設定，您可以保留現狀。 **套用**預設不啟用 [] 刀鋒視窗底部的按鈕，您必須切換設定，以啟動按鈕的其中一個。 您不需要變更任何實際的設定，而不是您可以在 變更設定，並回立即變更它。 我們建議您切換設定，然後選取 Profiler**套用**。
+4. 如果已安裝任何_Azure App Service 的 Application Insights 延伸_模組版本，請選取它，然後按一下 [刪除]。 確認 [**是]** 以刪除延伸模組，並等候刪除完成，再移至下一個步驟。
 
-   ![「 以紅色反白顯示的 [套用] 按鈕的螢幕擷取畫面的 Application Insights 應用程式服務設定頁面](./media/snapshot-debugger-upgrade/view-application-insights-data.png)
+   ![App Service 擴充功能的螢幕擷取畫面，其中顯示已醒目提示 [刪除] 按鈕的 Azure App Service Application Insights 延伸模組](./media/snapshot-debugger-upgrade/application-insights-site-extension-delete.png)
 
-5. 一旦您按一下**套用**，系統會要求您確認變更。
+5. 移至資源的 [總覽] 分頁，然後按一下 [Application Insights：
+
+   ![三個按鈕的螢幕擷取畫面。 已選取 [名稱為 Application Insights 的置中按鈕](./media/snapshot-debugger-upgrade/application-insights-button.png)
+
+6. 如果這是您第一次看到此 App Service 的 [Application Insights] 分頁，系統會提示您開啟 Application Insights。 選取 [**開啟 Application Insights**]。
+ 
+   ![已反白顯示 [開啟 Application Insights] 按鈕的 [Application Insights] 分頁的第一次體驗的螢幕擷取畫面](./media/snapshot-debugger-upgrade/turn-on-application-insights.png)
+
+7. 目前的 Application Insights 設定隨即顯示。 除非您想要變更設定的機會，否則您可以將其保持原狀。 分頁底部的 [套用] 按鈕不會**預設為啟用**，因此您必須切換其中一個設定來啟動按鈕。 您不需要變更任何實際的設定，而可以變更設定，然後立即將其變更回來。 建議您切換 Profiler 設定，**然後選取 [** 套用]。
+
+   ![Application Insights App Service 設定頁面的螢幕擷取畫面，並以紅色反白顯示 [套用] 按鈕](./media/snapshot-debugger-upgrade/view-application-insights-data.png)
+
+8. **按一下 [** 套用] 之後，系統會要求您確認變更。
 
     > [!NOTE]
-    > 站台將會重新啟動升級程序的一部分。
+    > 此網站將會在升級過程中重新開機。
 
-   ![螢幕擷取畫面的 App Service 的適用於監視的提示字元。 文字方塊會顯示訊息：」 我們會立即將變更套用至您的應用程式設定並安裝我們的工具連結至 web 應用程式的 Application Insights 資源。 這會重新啟動站台。 您要繼續嗎？](./media/snapshot-debugger-upgrade/apply-monitoring-settings.png)
+   ![App Service 的套用監視提示的螢幕擷取畫面。 文字方塊會顯示訊息：「我們現在會將變更套用至您的應用程式設定，並安裝我們的工具，以將您的 Application Insights 資源連結到 web 應用程式。 這會重新開機網站。 您要繼續嗎？」](./media/snapshot-debugger-upgrade/apply-monitoring-settings.png)
 
-6. 按一下 **是**以套用變更。 在程序期間會顯示正在套用變更出現通知：
+9. 按一下 **[是]** 套用變更，並等候進程完成。
 
-   ![套用變更-正在更新延伸模組的訊息，會出現在右上角的螢幕擷取畫面](./media/snapshot-debugger-upgrade/updating-extensions.png)
+網站現已升級，並可供使用。
 
-一旦完成之後， **"的變更會套用 「** 會出現通知。
+## <a name="upgrading-snapshot-debugger-using-sdknuget"></a>使用 SDK/Nuget 升級快照偵錯工具
 
-   ![套用的訊息，指出變更螢幕擷取畫面](./media/snapshot-debugger-upgrade/changes-are-applied.png)
-
-網站現在已升級，並且可供使用。
-
-## <a name="upgrading-snapshot-debugger-using-sdknuget"></a>升級使用 SDK/Nuget 的快照集偵錯工具
-
-如果應用程式使用新版`Microsoft.ApplicationInsights.SnapshotCollector`下方 1.3.1 版，它必須升級至[新版](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)繼續運作。
+如果應用程式使用下列版本的 `Microsoft.ApplicationInsights.SnapshotCollector` 1.3.1，則必須將它升級至[較新](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)的版本，才能繼續運作。

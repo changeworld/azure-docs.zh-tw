@@ -1,55 +1,120 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure IoT Edge
+### YamlMime:Landing
+title: Azure IoT Edge 文件
+summary: Azure IoT Edge 可擴充 IoT 中樞。 在本機分析裝置資料，而不是在雲端將較少的資料傳送至雲端、快速回應事件，以及離線操作。
 metadata:
-  title: Azure IoT Edge - 教學課程、API 參考
-  description: 使用 Azure IoT Edge，將各項 Azure 服務和自訂商務邏輯部署到 Edge 上的裝置。
-  author: kgremban
-  manager: philmea
-  ms.service: iot-edge
+  title: Azure IoT Edge 文件
+  description: Azure IoT Edge 可擴充 IoT 中樞。 在本機分析裝置資料，而不是在雲端將較少的資料傳送至雲端、快速回應事件，以及離線操作。
   services: iot-edge
+  ms.service: iot-edge
   ms.topic: landing-page
-  ms.date: 03/13/2019
+  author: kgremban
   ms.author: kgremban
-abstract:
-  description: Azure IoT Edge 是一個物聯網 (IoT) 服務，建置在 IoT 中樞之外。 這項服務提供客戶在裝置上分析資料的服務，也稱為 「在 Edge 上分析」，而不是在雲端進行分析。 將部份工作負載移至 Edge，您的裝置就能以較少的時間將訊息傳送至雲端，並更快速地變更狀態。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ./media/index/iot-edge-thumbnail.png
-      width: 250
-    title: '使用 Azure IoT Edge 來解鎖智慧型 Edge (6:59)'
-    href: 'https://channel9.msdn.com/Shows/Internet-of-Things-Show/Creating-the-intelligent-edge-with-Azure-IoT-Edge'
-    width: 250
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 建立 Azure 虛擬機器、將其設定為以 IoT Edge 裝置的形式執行，並對其部署程式碼：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_Windows.svg'
-            text: Windows
-            href: /azure/iot-edge/quickstart
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_linux-color.svg'
-            text: Linux
-            href: /azure/iot-edge/quickstart-linux
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何安裝和設定 IoT Edge、部署模組，以及在 Edge 利用類似串流分析和自訂視覺的 Azure 服務。
-      - type: list
-        style: ordered
-        items:
-          - html: 設定您的開發電腦，並了解適用於 <a href="/azure/iot-edge/tutorial-develop-for-linux">Linux 裝置</a>或 <a href="/azure/iot-edge/tutorial-develop-for-windows">Windows 裝置</a>的 IoT Edge 模組。
-          - html: '以 <a href="/azure/iot-edge/tutorial-c-module">C</a>、<a href="/azure/iot-edge/tutorial-csharp-module">C#</a>、<a href="/azure/iot-edge/tutorial-python-module">Python</a>、<a href="/azure/iot-edge/tutorial-node-module">Node.js</a> 或 <a href="/azure/iot-edge/tutorial-java-module">Java</a> 開發適用於 Linux 裝置的自訂程式碼模組。'
-          - html: '以 <a href="/azure/iot-edge/tutorial-c-module-windows">C</a> 或 <a href="/azure/iot-edge/tutorial-csharp-module-windows">C#</a> 開發適用於 Windows 裝置的自訂程式碼模組。'
-          - html: <a href="/azure/iot-edge/tutorial-deploy-function">使用 Azure Functions 篩選訊息</a>
-          - html: <a href="/azure/iot-edge/tutorial-deploy-stream-analytics">使用 Azure 串流分析作為模組來尋找平均值</a>
-          - html: <a href="/azure/iot-edge/tutorial-deploy-machine-learning">使用 Azure Machine Learning 作為模組來為資料評分</a>
-          - html: <a href="/azure/iot-edge/tutorial-deploy-custom-vision">使用自訂視覺服務將影像歸類為一個模組</a>
-          - html: <a href="/azure/iot-edge/tutorial-store-data-sql-server">使用 SQL Server 在邊緣儲存資料</a>
+  manager: philmea
+  ms.date: 08/05/2019
+  ms.openlocfilehash: 7c190dd3421d0eef9ce0aac3487644be9e758e4c
+  ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 04/24/2020
+  ms.locfileid: "82130808"
+landingContent:
+- title: 針對 Linux 裝置開發
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 將您的第一個 IoT Edge 模組部署至 Linux 裝置
+      url: quickstart-linux.md
+  - linkListType: tutorial
+    links:
+    - text: 開發適用於 Linux 裝置的 IoT Edge 模組
+      url: tutorial-develop-for-linux.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Visual Studio Code 來開發並偵錯模組
+      url: how-to-vs-code-develop-module.md
+- title: 針對 Windows 裝置開發
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 將您的第一個 IoT Edge 模組部署至 Windows 裝置
+      url: quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: 開發適用於 Windows 裝置的 IoT Edge 模組
+      url: tutorial-develop-for-windows.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Visual Studio 2017 來開發並偵錯模組
+      url: how-to-visual-studio-develop-module.md
+- title: 佈建 IoT Edge 裝置
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 在 Linux 上安裝 IoT Edge
+      url: how-to-install-iot-edge-linux.md
+    - text: 在 Windows 上安裝 IoT Edge
+      url: how-to-install-iot-edge-windows.md
+    - text: 自動佈建 Linux 裝置
+      url: how-to-auto-provision-simulated-device-linux.md
+    - text: 自動佈建 Windows 裝置
+      url: how-to-auto-provision-simulated-device-windows.md
+- title: 與開放原始碼社群交流
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: IoT Edge 存放庫
+      url: https://github.com/Azure/iotedge
+    - text: IoT Edge GitHub 問題
+      url: https://github.com/Azure/iotedge/issues
+    - text: 最新版本與變更記錄
+      url: https://github.com/Azure/azure-iotedge/releases
+- title: 使用 IoT Edge 裝置作為閘道
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 如何使用 IoT Edge 裝置作為閘道
+      url: iot-edge-as-gateway.md
+  - linkListType: how-to-guide
+    links:
+    - text: 設定透明閘道
+      url: how-to-create-transparent-gateway.md
+    - text: 在 Azure IoT 中樞中驗證下游裝置
+      url: how-to-authenticate-downstream-device.md
+    - text: 將下游裝置與閘道連線
+      url: how-to-connect-downstream-device.md
+- title: 準備進行實際案例
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 了解自動部署
+      url: module-deployment-monitoring.md
+    - text: 平台支援
+      url: support.md
+    - text: 生產部署檢查清單
+      url: production-checklist.md
+    - text: 了解 IoT Edge 憑證使用方式
+      url: iot-edge-certs.md
+    - text: 適用於 IoT Edge 的安全性標準
+      url: security.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Azure CLI 大規模部署與監視
+      url: how-to-deploy-cli-at-scale.md
+    - text: 利用 Azure Pipelines 建立 CI/CD 管線
+      url: how-to-ci-cd.md
+  - linkListType: deploy
+    links:
+    - text: 適用於 IoT 中樞的 REST API
+      url: https://docs.microsoft.com/rest/api/iothub/
+- title: 將 AI 部署到邊緣
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 將 Azure Machine Learning 部署為 IoT Edge 模組
+      url: tutorial-deploy-machine-learning.md
+    - text: 使用自訂視覺服務在邊緣執行影像分類
+      url: tutorial-deploy-custom-vision.md
+  - linkListType: deploy
+    links:
+    - text: 在 Azure Marketplace 中尋找 Azure 認知服務模組
+      url: https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?subcategories=iot-edge-modules&search=azure%20cognitive%20services

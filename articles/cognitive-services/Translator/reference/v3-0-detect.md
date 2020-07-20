@@ -1,23 +1,23 @@
 ---
-title: 翻譯工具文字 API 偵測方法
-titlesuffix: Azure Cognitive Services
-description: 使用翻譯工具文字 API 偵測方法。
+title: Translator 檢測方法
+titleSuffix: Azure Cognitive Services
+description: 使用 Azure 認知服務 Translator 偵測方法來識別一段文字的語言。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: v-jansko
-ms.openlocfilehash: fa618c5c623a631e7a88f8235a0b7b16fcb2bc88
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.author: swmachan
+ms.openlocfilehash: adfd91a3f82a83f6bb5e076247f1539029d5a04e
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578652"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592282"
 ---
-# <a name="translator-text-api-30-detect"></a>翻譯工具文字 API 3.0：Detect
+# <a name="translator-30-detect"></a>Translator 3.0：偵測
 
 識別一段文字的語言。
 
@@ -38,36 +38,36 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   <th>描述</th>
   <tr>
     <td>api-version</td>
-    <td>必要參數。<br/>用戶端要求的 API 版本。 值必須是 `3.0`。</td>
+    <td>必要參數**。<br/>用戶端要求的 API 版本。 值必須為 `3.0`。</td>
   </tr>
 </table> 
 
 要求標頭包括：
 
 <table width="100%">
-  <th width="20%">headers</th>
+  <th width="20%">標題</th>
   <th>描述</th>
   <tr>
     <td>驗證標頭</td>
-    <td>必要的要求標頭。<br/>請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。</td>
+    <td>必要的要求標頭<em></em>。<br/>請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。</td>
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>必要的要求標頭。<br/>指定承載的內容類型。 可能的值為：`application/json`。</td>
+    <td>必要的要求標頭**。<br/>指定承載的內容類型。 可能的值為：`application/json`。</td>
   </tr>
   <tr>
     <td>Content-Length</td>
-    <td>必要的要求標頭。<br/>要求本文的長度。</td>
+    <td>必要的要求標頭**。<br/>要求本文的長度。</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>可选。<br/>用於識別唯一要求的 GUID，由用戶端產生。 請注意，若您使用名為 `ClientTraceId` 的查詢參數在查詢字串中包含追蹤識別碼，您就可以省略此標頭。</td>
+    <td>*選擇項*。<br/>用於識別唯一要求的 GUID，由用戶端產生。 請注意，若您使用名為 `ClientTraceId` 的查詢參數在查詢字串中包含追蹤識別碼，您就可以省略此標頭。</td>
   </tr>
 </table> 
 
-## <a name="request-body"></a>Request body
+## <a name="request-body"></a>要求本文
 
-要求的本文是 JSON 陣列。 每個陣列項目都是字串屬性名為 `Text` 的 JSON 物件。 語言偵測會套用到 `Text` 屬性的值。 範例回應本文應如下所示：
+要求的本文是 JSON 陣列。 每個陣列項目都是具有字串屬性 `Text` 的 JSON 物件。 語言偵測會套用到 `Text` 屬性的值。 範例回應本文應如下所示：
 
 ```json
 [
@@ -81,19 +81,19 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 * 陣列項目的文字值不能超過 10,000 個字元，包括空格。
 * 要求中包含的完整文字不能超過 50,000 個字元，包括空格。
 
-## <a name="response-body"></a>Response body
+## <a name="response-body"></a>回應本文
 
 成功的回應是輸入陣列的每個字串各有一個結果的 JSON 陣列。 結果物件包含下列屬性：
 
-  * `language`:代碼，代表偵測到的語言。
+  * `language`：代碼，代表偵測到的語言。
 
-  * `score`:浮點值，表示結果的信賴度。 分數介於 0 與 1 之間，分數低表示信賴度偏低。
+  * `score`：浮點值，表示結果的信賴度。 分數介於 0 與 1 之間，分數低表示信賴度偏低。
 
-  * `isTranslationSupported`:布林值，若偵測到的語言是文字翻譯支援的語言之一，則為 true。
+  * `isTranslationSupported`：布林值，若偵測到的語言是文字翻譯支援的語言之一，則為 true。
 
-  * `isTransliterationSupported`:布林值，若偵測到的語言是轉換支援的語言之一，則為 true。
+  * `isTransliterationSupported`：布林值，若偵測到的語言是轉換支援的語言之一，則為 true。
   
-  * `alternatives`:陣列，包含其他可能語言。 陣列的每個項目是具有上方所列相同屬性的另一個物件：`language`、`score`、`isTranslationSupported` 和 `isTransliterationSupported`。
+  * `alternatives`：陣列，包含其他可能語言。 陣列的每個項目是具有上方所列相同屬性的另一個物件：`language`、`score`、`isTranslationSupported` 和 `isTransliterationSupported`。
 
 範例 JSON 回應如下：
 
@@ -125,7 +125,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 ## <a name="response-headers"></a>回應標頭
 
 <table width="100%">
-  <th width="20%">headers</th>
+  <th width="20%">標題</th>
   <th>描述</th>
   <tr>
     <td>X-RequestId</td>
@@ -146,7 +146,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   </tr>
   <tr>
     <td>400</td>
-    <td>缺少其中一個查詢參數，或查詢參數無效。 請先修正要求參數再重試。</td>
+    <td>其中一個查詢參數遺失或無效。 請先修正要求參數再重試。</td>
   </tr>
   <tr>
     <td>401</td>
@@ -158,7 +158,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   </tr>
   <tr>
     <td>429</td>
-    <td>呼叫者傳送過多要求。</td>
+    <td>伺服器已拒絕要求，因為用戶端已超過要求限制。</td>
   </tr>
   <tr>
     <td>500</td>
@@ -170,16 +170,12 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   </tr>
 </table> 
 
-如果發生錯誤，要求也會傳回 JSON 錯誤回應。 錯誤碼是 6 位數的數字，其中結合了 3 位數的 HTTP 狀態碼，後面接著將錯誤進一步分類的 3 位數數字。 [v3 翻譯工具文字 API 參考頁面](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上可找到常見的錯誤碼。 
+如果發生錯誤，要求也會傳回 JSON 錯誤回應。 錯誤碼是 6 位數的數字，其中結合了 3 位數的 HTTP 狀態碼，後面接著將錯誤進一步分類的 3 位數數字。 您可以在[V3 Translator 參考頁面](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)上找到一般錯誤碼。 
 
 ## <a name="examples"></a>範例
 
 以下範例顯示如何擷取支援文字轉換的語言。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
-```
+```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/detect?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'What language is this text written in?'}]"
 ```
-
----

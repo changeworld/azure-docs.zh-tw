@@ -1,19 +1,18 @@
 ---
-title: 快速入門 - 將 Docker 容器部署至 Azure 容器執行個體 - CLI
+title: 快速入門 - 將 Docker 容器部署至容器執行個體 - Azure CLI
 description: 在本快速入門中，您可以使用 Azure CLI 快速地部署在隔離式 Azure 容器執行個體中執行的容器化的 Web 應用程式
-services: container-instances
-author: dlepow
-ms.service: container-instances
 ms.topic: quickstart
 ms.date: 03/21/2019
-ms.author: danlep
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 8e504a081f8685107871aed920077dd75a70dfa7
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.custom:
+- seo-python-october2019
+- seodec18
+- mvc
+ms.openlocfilehash: e5cad7d9141963e5062423545f7e5b94f0575152
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368505"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "78252193"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>快速入門：使用 Azure CLI 部署容器執行個體
 
@@ -23,7 +22,7 @@ ms.locfileid: "58368505"
 
 ![在瀏覽器中檢視部署至 Azure Container Instances 的應用程式][aci-app-browser]
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [[免費帳戶]][azure-account]。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶][azure-account]。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -33,7 +32,7 @@ ms.locfileid: "58368505"
 
 Azure 容器執行個體和所有 Azure 資源相同，都必須部署到資源群組中。 資源群組可讓您組織和管理相關的 Azure 資源。
 
-首先，使用下列 [az group create][az-group-create] 命令，在 *eastus* 位置中建立名為 *myResourceGroup* 的資源群組：
+首先，使用下列 [az group create][az-group-create] 命令，在 *eastus* 位置中建立一個名為 *myResourceGroup* 的資源群組：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -51,7 +50,7 @@ az group create --name myResourceGroup --location eastus
 az container create --resource-group myResourceGroup --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld --dns-name-label aci-demo --ports 80
 ```
 
-您應該會在幾秒內獲得 Azure CLI 的回應，指出部署已。 請使用 [az container show][az-container-show] 命令查看其狀態：
+您應該會在幾秒內獲得 Azure CLI 的回應，指出部署已。 請使用 [az container show][az-container-show] 命令來檢查其狀態：
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
@@ -59,16 +58,15 @@ az container show --resource-group myResourceGroup --name mycontainer --query "{
 
 當您執行命令時，就會顯示容器的完整網域名稱 (FQDN) 及其佈建狀態。
 
-```console
-$ az container show --resource-group myResourceGroup --name mycontainer --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
+```output
 FQDN                               ProvisioningState
 ---------------------------------  -------------------
 aci-demo.eastus.azurecontainer.io  Succeeded
 ```
 
-如果容器的 `ProvisioningState` 為 [成功]，請在瀏覽器中瀏覽至其 FQDN。 如果您看到如下的網頁，恭喜您！ 您已將 Docker 容器中執行的應用程式成功部署至 Azure。
+如果容器的 `ProvisioningState` 為 [成功]  ，請在瀏覽器中移至其 FQDN。 如果您看到如下的網頁，恭喜您！ 您已將 Docker 容器中執行的應用程式成功部署至 Azure。
 
-![顯示在 Azure 容器執行個體中執行之應用程式的瀏覽器螢幕擷取畫面][aci-app-browser]
+![在瀏覽器中檢視部署至 Azure Container Instances 的應用程式][aci-app-browser]
 
 如果一開始應用程式並未顯示，您可能需要等候幾秒鐘讓 DNS 傳播完成，然後再次嘗試重新整理瀏覽器。
 
@@ -84,8 +82,7 @@ az container logs --resource-group myResourceGroup --name mycontainer
 
 輸出會顯示容器的記錄，且應該會顯示您在瀏覽器中檢視應用程式時產生的 HTTP GET 要求。
 
-```console
-$ az container logs --resource-group myResourceGroup --name mycontainer
+```output
 listening on port 80
 ::ffff:10.240.255.55 - - [21/Mar/2019:17:43:53 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
 ::ffff:10.240.255.55 - - [21/Mar/2019:17:44:36 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
@@ -102,10 +99,9 @@ listening on port 80
 az container attach --resource-group myResourceGroup --name mycontainer
 ```
 
-在附加之後，重新整理瀏覽器幾次以產生一些額外的輸出。 作業完成後，請使用 `Control+C` 將主控台中斷連結。 您應該會看到如下所示的輸出：
+在附加之後，重新整理瀏覽器幾次以產生一些額外的輸出。 作業完成後，請使用 `Control+C` 將主控台中斷連結。 您應該會看到類似以下的輸出：
 
-```console
-$ az container attach --resource-group myResourceGroup --name mycontainer
+```output
 Container 'mycontainer' is in state 'Running'...
 (count: 1) (last timestamp: 2019-03-21 17:27:20+00:00) pulling image "mcr.microsoft.com/azuredocs/aci-helloworld"
 (count: 1) (last timestamp: 2019-03-21 17:27:24+00:00) Successfully pulled image "mcr.microsoft.com/azuredocs/aci-helloworld"
@@ -154,7 +150,7 @@ az group delete --name myResourceGroup
 若要試用在 Azure 上的協調流程系統中執行容器的選項，請參閱 [Azure Kubernetes Service (AKS)][container-service] 快速入門。
 
 <!-- IMAGES -->
-[aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png
+[aci-app-browser]: ./media/container-instances-quickstart/view-an-application-running-in-an-azure-container-instance.png
 
 <!-- LINKS - External -->
 [app-github-repo]: https://github.com/Azure-Samples/aci-helloworld.git

@@ -1,57 +1,55 @@
 ---
-title: Barracuda 資料連接至 Azure 的 Sentinel 預覽 |Microsoft Docs
-description: 了解如何將 Barracuda 資料連接至 Azure 的 Sentinel。
+title: 將 Barracuda 資料連線到 Azure Sentinel |Microsoft Docs
+description: 瞭解如何使用 Barracuda Web 應用程式防火牆（WAF）連接器，將 Barracuda 記錄與 Azure Sentinel 連線。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: 3b33b4aa-7286-4d79-b461-8e1812edc2e1
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
-ms.author: rkarlin
-ms.openlocfilehash: 6b0285903537dafb004b5aca033b50560247c605
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 12/30/2019
+ms.author: yelevin
+ms.openlocfilehash: f28243be6b4f998e8bdea0ce02da3ceedde23e02
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204450"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559121"
 ---
 # <a name="connect-your-barracuda-appliance"></a>連接您的 Barracuda 應用裝置 
 
-> [!IMPORTANT]
-> Azure Sentinel 目前為公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-Barracuda Web 應用程式防火牆 (WAF) 連接器可讓您輕鬆地連接您的 Barracuda 記錄您 Azure Sentinel，來檢視儀表板、 建立自訂警示，以及改善調查。 這可讓您更多深入您的組織網路，並改善您的安全性作業功能。 Azure 的 Sentinel 利用之間的原生整合**Barracuda**和 Microsoft Azure OMS 提供無縫整合。 
+
+Barracuda Web 應用程式防火牆（WAF）連接器可讓您輕鬆地將 Barracuda 記錄與 Azure Sentinel 連線、查看儀表板、建立自訂警示，以及改善調查。 這可讓您深入瞭解組織的網路，並改善您的安全性作業功能。 Azure Sentinel 利用**Barracuda**和 Log Analytics 代理程式之間的原生整合來提供完美的整合。 
 
 
 > [!NOTE]
-> 資料會儲存在您在執行 Azure Sentinel 的工作區的地理位置。
+> 資料將會儲存在您執行 Azure Sentinel 之工作區的地理位置中。
 
 ## <a name="configure-and-connect-barracuda-waf"></a>設定及連接 Barracuda WAF
-Barracuda Web 應用程式防火牆整合和記錄檔將直接匯出至 Azure Sentinel 透過 Azure OMS 的伺服器。
-1. 移至[Barracuda WAF 設定流程](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/)，並遵循指示來設定連線，使用下列參數：
-    - **工作區識別碼**： 從 Azure Sentinel Barracuda 連接器頁面複製您的工作區識別碼的值。
-    - **主索引鍵**： 從 Azure Sentinel Barracuda 連接器頁面複製您的主索引鍵的值。
-2. 在 Azure Sentinel 入口網站中，移至您部署 Azure Sentinel 的工作區，然後選取省略符號 （...），結尾的資料列，然後選取**進階設定**。 
-1. 選取 **資料**，然後**Syslog**。
-1. 請確定您在 Barracuda 中設定的功能存在，並設定的嚴重性，然後按一下**儲存**。
-6. 若要使用 Log Analytics 中的 Barracuda 事件相關的結構描述，搜尋**CommonSecurityLog**。
+Barracuda Web 應用程式防火牆可以透過 Log Analytics 代理程式，將記錄直接整合到 Azure Sentinel，並將其匯出。
+1. 移至[BARRACUDA WAF 設定流程](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/)，並遵循指示以使用下列參數來設定連線：
+    - **工作區識別碼**：從 [Azure Sentinel Barracuda 連接器] 頁面複製工作區識別碼的值。
+    - **主要金鑰**：從 Azure Sentinel Barracuda 連接器] 頁面複製主要金鑰的值。
+1. 若要在 Log Analytics 中針對 Barracuda 事件使用相關的架構，請搜尋**CommonSecurityLog**和**barracuda_CL**。
 
 
 ## <a name="validate-connectivity"></a>驗證連線能力
 
-可能需要多達 20 分鐘，直到您的記錄檔開始出現在 Log Analytics 中。 
+可能需要20分鐘的時間，您的記錄才會開始出現在 Log Analytics 中。 
 
 
 
 ## <a name="next-steps"></a>後續步驟
-在本文件中，您已了解如何連接至 Azure 的 Sentinel 的 Barracuda 應用裝置。 若要深入了解 Azure Sentinel，請參閱下列文章：
-- 了解如何[了解您的資料，與潛在的威脅](quickstart-get-visibility.md)。
-- 開始[偵測威脅與 Azure Sentinel](tutorial-detect-threats.md)。
+在本檔中，您已瞭解如何將 Barracuda 設備連線到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
+- 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
+- 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。
+- [使用活頁簿](tutorial-monitor-your-data.md)監視資料。
+
 

@@ -1,26 +1,20 @@
 ---
-title: 降低推測執行在 Azure 中造成的風險指引 |Microsoft 文件
+title: 在 Azure 中緩和推測執行的指引
 description: 減少推測性執行旁路攻擊漏洞在 Azure 中造成的風險指引。
-services: virtual-machines-linux
-documentationcenter: ''
+services: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 keywords: spectre, meltdown, specter
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: na
+ms.subservice: security
 ms.topic: article
-ms.date: 08/14/2018
+ms.date: 11/12/2019
 ms.author: cynthn
-ms.openlocfilehash: ce7f0bcbfdb3e23ff77431b95ac109e322b132cc
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
-ms.translationtype: HT
+ms.openlocfilehash: 17b7470ea2d4c0051d76ca899b174fd5fb5a1e63
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42144214"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78944653"
 ---
 # <a name="guidance-for-mitigating-speculative-execution-side-channel-vulnerabilities-in-azure"></a>減少推測性執行旁路攻擊漏洞在 Azure 中造成的風險指引
 

@@ -3,22 +3,19 @@ title: Azure 網路監看員連線疑難排解簡介 | Microsoft Docs
 description: 本頁提供網路監看員連線疑難排解功能的概觀
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
-ms.author: kumud
-ms.openlocfilehash: 9510905f67ee943b4b1dfa5a14c2753efac39da7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.author: damendo
+ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64705810"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708938"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Azure 網路監看員中連線疑難排解的簡介
 
@@ -27,11 +24,11 @@ ms.locfileid: "64705810"
 > [!IMPORTANT]
 > 若要進行連線移難排解，您從中進行移難排解的虛擬機器需要安裝 `AzureNetworkWatcherExtension` 虛擬機器擴充功能。 若要在 Windows VM 上安裝擴充功能，請瀏覽[適用於 Windows 的 Azure 網路監看員代理程式虛擬機器擴充功能](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)，若要在 Linux VM 上安裝，則請瀏覽[適用於 Linux 的 Azure 網路監看員代理程式虛擬機器擴充功能](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。 目的地端點上不需要擴充功能。
 
-## <a name="response"></a>Response
+## <a name="response"></a>回應
 
 下表顯示當連線疑難排解完成執行時所傳回的屬性。
 
-|屬性  |描述  |
+|屬性  |說明  |
 |---------|---------|
 |ConnectionStatus     | 連線檢查的狀態。 可能的結果是 **Reachable** 和 **Unreachable**。        |
 |AvgLatencyInMs     | 連線檢查期間的平均延遲，以毫秒為單位。 (只有在檢查狀態為可連線時顯示)        |
@@ -74,10 +71,10 @@ ms.locfileid: "64705810"
 
 連線疑難排解傳回連線的相關錯誤類型。 下表提供一份目前傳回錯誤類型的清單。
 
-|類型  |描述  |
+|類型  |Description  |
 |---------|---------|
 |CPU     | 高 CPU 使用率。       |
-|記憶體     | 高記憶體使用率。       |
+|Memory     | 高記憶體使用率。       |
 |GuestFirewall     | 由於虛擬機器防火牆設定，因此封鎖流量。        |
 |DNSResolution     | 目的地位址的 DNS 解析失敗。        |
 |NetworkSecurityRule    | NSG 規則封鎖流量 (傳回規則)        |

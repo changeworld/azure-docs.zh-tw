@@ -1,39 +1,32 @@
 ---
-title: 自動化的指令碼可建立與 Azure 中的 IT 服務管理連接器連線之 Service Manager Web 應用程式 | Microsoft Docs
+title: 建立服務管理連接器的 web 應用程式
 description: 使用自動化的指令碼建立 Service Manager Web 應用程式，來與 Azure 中的 IT 服務管理連接器連線，並將 ITSM 工作項目集中監視及管理。
-services: log-analytics
-documentationcenter: ''
-author: jyothirmaisuri
-manager: riyazp
-editor: ''
-ms.assetid: 879e819f-d880-41c8-9775-a30907e42059
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 01/23/2018
+author: nolavime
 ms.author: v-jysur
-ms.openlocfilehash: 64769ebb1bd9a5fb0f051cc6eca4e59cd41fccc9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 01/23/2018
+ms.openlocfilehash: bb21bcefa0f9fb6f691ebfb578177c64543c1403
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60395011"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549645"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>使用自動化的指令碼建立 Service Manager Web 應用程式
 
-使用下列指令碼來建立您 Service Manager 執行個體的 Web 應用程式。 這裡可以找到 Service Manager 連線的詳細資訊：[Service Manager Web 應用程式](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+使用下列指令碼來建立您 Service Manager 執行個體的 Web 應用程式。 可在這裡找到 Service Manager 連線的相關詳細資訊：[Service Manager Web 應用程式](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
 提供下列必要的詳細資料來執行指令碼︰
 
 - Azure 訂用帳戶詳細資料
 - 資源群組名稱
-- 位置
+- Location
 - Service Manager 伺服器詳細資料 (伺服器名稱、網域、使用者名稱和密碼)
 - Web 應用程式的網站名稱前置詞
 - 服務匯流排命名空間。
 
-指令碼會使用您指定的名稱 (與其他可使它成為唯一的字串) 來建立 Web 應用程式。 它會產生 **Web 應用程式 URL**、**用戶端識別碼**和**用戶端祕密**。
+指令碼會使用您指定的名稱 (與其他可使它成為唯一的字串) 來建立 Web 應用程式。 它會產生**Web 應用程式 URL**、**用戶端識別碼**和**用戶端秘密**。
 
 儲存這些值，當您使用 IT 服務管理連接器建立連線時會用到這些值。
 
@@ -121,7 +114,7 @@ Write-Host "Requirement check complete!!"
 
 $errorActionPreference = "Stop"
 
-$templateUri = "https://raw.githubusercontent.com/SystemCenterServiceManager/SMOMSConnector/master/azuredeploy.json"
+$templateUri = "https://raw.githubusercontent.com/Azure/SMOMSConnector/master/azuredeploy.json"
 
 if(!$siteNamePrefix)
 {
@@ -152,8 +145,8 @@ do
     $rand = Get-Random -Maximum 32000
 
     $siteName = $siteNamePrefix + $rand
-
-    $resource = Find-AzResource -ResourceNameContains $siteName -ResourceType Microsoft.Web/sites
+    
+    $resource = Get-AzResource -Name $siteName -ResourceType Microsoft.Web/sites
 
 }while($resource)
 
@@ -192,9 +185,9 @@ Write-Output "Web App Deployed successfully!!"
 
 Add-Type -AssemblyName System.Web
 
-$clientSecret = [System.Web.Security.Membership]::GeneratePassword(30,2).ToString()
+$secret = [System.Web.Security.Membership]::GeneratePassword(30,2).ToString()
+$clientSecret = $secret | ConvertTo-SecureString -AsPlainText -Force
 
-$clientSecret = $clientSecret | ConvertTo-SecureString -AsPlainText -Force
 
 try
 {
@@ -234,11 +227,13 @@ try
     ForEach ($item in $appSettingList) {
         $appSettings[$item.Name] = $item.Value
     }
+
     $appSettings['ida:Tenant'] = $tenant
     $appSettings['ida:Audience'] = $azureSite
     $appSettings['ida:ServerName'] = $serverName
     $appSettings['ida:Domain'] = $domain
     $appSettings['ida:Username'] = $userName
+    $appSettings['ida:WhitelistedClientId'] = $clientId
 
     $connStrings = @{}
     $kvp = @{"Type"="Custom"; "Value"=$password}
@@ -284,7 +279,7 @@ if(!$resourceProvider -or $resourceProvider[0].RegistrationState -ne "Registered
     }   
 }
 
-$resource = Find-AzResource -ResourceNameContains $serviceName -ResourceType Microsoft.Relay/namespaces
+$resource = Get-AzResource -Name $serviceName -ResourceType Microsoft.Relay/namespaces
 
 if(!$resource)
 {
@@ -314,13 +309,13 @@ Write-Host "App Details"
 Write-Host "============"
 Write-Host "App Name:"  $siteName
 Write-Host "Client Id:"  $clientId
-Write-Host "Client Secret:"  $clientSecret
+Write-Host "Client Secret:"  $secret
 Write-Host "URI:"  $azureSite
 if(!$err)
 {
     Write-Host "ServiceBus Namespace:"  $serviceName  
 }
-
 ```
+
 ## <a name="next-steps"></a>後續步驟
-[設定混合式連線](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection)。
+[設定混合式連接](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection)。

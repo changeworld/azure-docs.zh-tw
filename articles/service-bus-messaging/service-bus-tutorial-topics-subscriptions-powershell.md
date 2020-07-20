@@ -1,20 +1,16 @@
 ---
 title: 教學課程 - 透過 Azure PowerShell 使用發佈/訂閱通道和主題篩選來更新零售庫存商品 | Microsoft Docs
 description: 在本教學課程中，您將了解如何從主題和訂用帳戶傳送及接收訊息，以及如何使用 Azure PowerShell 新增和使用篩選規則
-services: service-bus-messaging
 author: spelluru
-manager: timlt
 ms.author: spelluru
-ms.date: 09/22/2018
+ms.date: 06/23/2020
 ms.topic: tutorial
-ms.service: service-bus-messaging
-ms.custom: mvc
-ms.openlocfilehash: 845fc32d527158258304a92c6855017c9d8c0492
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b1c6390d66d01bbe91500fc3878ad138eea208cc
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59049552"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341610"
 ---
 # <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>教學課程：使用 PowerShell 和主題/訂用帳戶來更新庫存
 
@@ -22,7 +18,7 @@ Microsoft Azure 服務匯流排是一項多租用戶雲端傳訊服務，可在�
 
 本教學課程說明如何使用 PowerShell 建立傳訊命名空間和該命名空間內的佇列，以對服務匯流排佇列傳送和接收訊息，以及如何取得該命名空間上的授權認證。 程序接著會說明如何使用 [.NET Standard 程式庫](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)從這個佇列傳送和接收訊息。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 > [!div class="checklist"]
 > * 使用 Azure PowerShell 建立服務匯流排主題，並建立該主題的一或多個訂用帳戶
 > * 使用 PowerShell 新增主題篩選
@@ -39,7 +35,7 @@ Microsoft Azure 服務匯流排是一項多租用戶雲端傳訊服務，可在�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，請確定您已安裝︰
 
@@ -269,6 +265,9 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
     await queueClient.CompleteAsync(message.SystemProperties.LockToken);
 }
 ```
+
+> [!NOTE]
+> 您可以使用[服務匯流排總管](https://github.com/paolosalvatori/ServiceBusExplorer/)來管理服務匯流排資源。 服務匯流排總管可讓使用者連線到服務匯流排命名空間，並以簡便的方式管理傳訊實體。 此工具提供進階的功能 (例如匯入/匯出功能) 或測試主題、佇列、訂用帳戶、轉送服務、通知中樞和事件中樞的能力。 
 
 ## <a name="next-steps"></a>後續步驟
 

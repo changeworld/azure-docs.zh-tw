@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Site Recovery 部署 VMware Vm 和實體伺服器的災害復原期間設定向外延展處理序伺服器 |Microsoft Docs'
-description: 本文說明如何在 VMware Vm 和實體伺服器災害復原期間設定向外延展處理序伺服器。
+title: 使用 Azure Site Recovery 在 VMware Vm 和實體伺服器的嚴重損壞修復期間，設定相應放大進程伺服器 |Microsoft Docs '
+description: 本文說明如何在 VMware Vm 和實體伺服器的嚴重損壞修復期間，設定相應放大進程伺服器。
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
@@ -8,23 +8,22 @@ ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
 ms.openlocfilehash: 1b6084b4e93f3dc17f633f1b8496f9c26e7f576f
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925482"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711947"
 ---
-# <a name="scale-with-additional-process-servers"></a>調整的額外處理序伺服器
+# <a name="scale-with-additional-process-servers"></a>使用額外的進程伺服器進行調整
 
-依預設，使用 [Site Recovery](site-recovery-overview.md) 複製 VMware VM 或實體伺服器至 Azure 時，處理序伺服器會安裝在設定伺服器電腦上，並且用於協調 Site Recovery 與內部部署基礎結構之間的資料轉送。 若要增加容量和相應放大您的複寫部署，您可以加入其他獨立處理序伺服器。 本文說明如何設定向外延展處理序伺服器。
+依預設，使用 [Site Recovery](site-recovery-overview.md) 複製 VMware VM 或實體伺服器至 Azure 時，處理序伺服器會安裝在設定伺服器電腦上，並且用於協調 Site Recovery 與內部部署基礎結構之間的資料轉送。 若要增加容量和相應放大您的複寫部署，您可以加入其他獨立處理序伺服器。 本文說明如何設定相應放大進程伺服器。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 ### <a name="capacity-planning"></a>容量規劃
 
 請確定您已執行 VMware 複寫的[容量規劃](site-recovery-plan-capacity-vmware.md)。 這有助於您識別如何及何時應該部署額外的處理序伺服器。
 
-從 9.24 版本中，選取新的複寫的處理序伺服器的期間會加入指引。 狀況良好、 警告和重大根據特定準則，將會標示處理序伺服器。 若要了解不同的案例，可能會影響處理序伺服器的狀態，請檢閱[處理伺服器警示](vmware-physical-azure-monitor-process-server.md#process-server-alerts)。
+從9.24 版開始，在選取進程伺服器以進行新的複寫時，會新增指導方針。 進程伺服器會根據特定準則，標示為狀況良好、警告和重大。 若要瞭解可能會影響進程伺服器狀態的不同案例，請參閱[處理伺服器警示](vmware-physical-azure-monitor-process-server.md#process-server-alerts)。
 
 > [!NOTE]
 > 不支援使用複製的處理序伺服器元件。 請遵循本文中的步驟進行每個 PS 相應放大作業。
@@ -51,10 +50,10 @@ ms.locfileid: "64925482"
 
 依照下列指示下載處理序伺服器的安裝檔案：
 
-1. 登入 Azure 入口網站中，並瀏覽至您的復原服務保存庫。
-2. 開啟 **Site Recovery 基礎結構** >  **VMWare 和實體機器** > **設定伺服器** (位於 [適用於 VMware 和實體機器] 底下)。
-3. 選取設定伺服器以切入伺服器的詳細資料。 接著按一下 **[+ 處理序伺服器]**。
-4. 在 **[新增處理序伺服器]** >  **[選擇您要部署處理序伺服器的位置]**，選擇 **[於內部部署部署相應放大處理序伺服器]**。
+1. 登入 Azure 入口網站，然後流覽至您的復原服務保存庫。
+2. 開啟**Site Recovery 基礎結構**  >  **vmware 和實體機器**設定  >  **伺服器**（適用于 vmware & 實體機器）。
+3. 選取設定伺服器以切入伺服器的詳細資料。 接著按一下** [+ 處理序伺服器]**。
+4. 在 [**新增進程伺服器**] 中  >   ，**選擇您要部署進程伺服器的位置**，然後選取 [**在內部部署部署相應放大進程伺服器**]。
 
    ![新增伺服器頁面](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
 1. 按一下 **[下載 Microsoft Azure Site Recovery 整合安裝]**。 這會下載最新版本的安裝檔案。
@@ -81,7 +80,7 @@ UnifiedSetup.exe [/ServerMode <CS/PS>] [/InstallDrive <DriveLetter>] [/MySQLCred
 
 [!INCLUDE [site-recovery-unified-setup-parameters](../../includes/site-recovery-unified-installer-command-parameters.md)]
 
-例如︰
+例如：
 
 ```
 MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted

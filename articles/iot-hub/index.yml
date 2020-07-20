@@ -1,91 +1,122 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: IoT 中樞文件
+### YamlMime:Landing
+title: Azure IoT 中樞文件
 metadata:
-  title: Azure IoT 中樞文件 - 教學課程和 API 參考 | Microsoft Docs
-  description: 了解如何使用 IoT 中樞來連接、監視及控制數百萬個物聯網資產。 教學課程、API 參考、影片和其他文件。
-  author: dominicbetts
-  manager: timlt
-  ms.service: iot-hub
+  title: Azure IoT 中樞文件
+  description: 了解如何使用 Azure IoT 中樞來連接、監視及控制數百萬個物聯網資產。
   services: iot-hub
+  ms.service: iot-hub
   ms.topic: landing-page
-  ms.date: 04/26/2018
-  ms.author: dobett
-abstract:
-  description: 了解如何使用 IoT 中樞來連接、監視及控制數百萬個物聯網資產。 教學課程、API 參考、影片和其他文件可協助您在 IoT 裝置與解決方案後端之間部署可靠的雙向通訊。
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_nodejs.svg'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_NET.svg'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_java.svg'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_python.svg'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_android.svg'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_c.svg'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_ios.svg'
-        rows:
-          - title: 傳送遙測
-            values:
-              - href: /azure/iot-hub/quickstart-send-telemetry-node
-              - href: /azure/iot-hub/quickstart-send-telemetry-dotnet
-              - href: /azure/iot-hub/quickstart-send-telemetry-java
-              - href: /azure/iot-hub/quickstart-send-telemetry-python
-              - href: /azure/iot-hub/quickstart-send-telemetry-android
-              - href: /azure/iot-hub/quickstart-send-telemetry-c
-              - href: /azure/iot-hub/quickstart-send-telemetry-ios
-          - title: 控制裝置
-            values:
-              - href: /azure/iot-hub/quickstart-control-device-node
-              - href: /azure/iot-hub/quickstart-control-device-dotnet
-              - href: /azure/iot-hub/quickstart-control-device-java
-              - href: /azure/iot-hub/quickstart-control-device-python
-              - href: /azure/iot-hub/quickstart-control-device-android
-          - title: 使用裝置串流進行通訊 (預覽)
-            values:
-              - href: /azure/iot-hub/quickstart-device-streams-echo-nodejs
-              - href: /azure/iot-hub/quickstart-device-streams-echo-csharp
-              - href: null
-              - href: null
-              - href: null
-              - href: /azure/iot-hub/quickstart-device-streams-echo-c
-              - href: null
-          - title: 使用裝置串流進行 SSH/RDP (預覽)
-            values:
-              - href: /azure/iot-hub/quickstart-device-streams-proxy-nodejs
-              - href: /azure/iot-hub/quickstart-device-streams-proxy-csharp
-              - href: null
-              - href: null
-              - href: null
-              - href: /azure/iot-hub/quickstart-device-streams-proxy-c
-              - href: null
-  - title: 逐步教學課程
-    items:
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/iot-hub/tutorial-routing">在 IoT 中樞設定自動化訊息路由</a>
-          - html: <a href="/azure/iot-hub/tutorial-device-twins">從後端服務設定您的裝置</a>
-          - html: <a href="/azure/iot-hub/tutorial-firmware-update">實作裝置韌體更新程序</a>
-          - html: <a href="/azure/iot-hub/tutorial-connectivity">使用模擬裝置來測試與您 IoT 中樞的連線能力</a>
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令列
-            html: <p><a href="/cli/azure/iot">Azure CLI</a></p>
-          - title: Languages
-            html: '<p><a href="/dotnet/api/microsoft.azure.devices">.NET (服務)</a></p><p><a href="/dotnet/api/microsoft.azure.devices.client">.NET (裝置)</a></p><p><a href="https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/">C (裝置 SDK)</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.service">Java (服務)</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.device">Java (裝置)</a></p><p><a href="/javascript/api/azure-iothub/?view=azure-iot-typescript-latest">Node.js (服務)</a></p><p><a href="/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest">Node.js (裝置)</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/iothub/device">REST (裝置)</a></p><p><a href="/rest/api/iothub/service">REST (服務)</a></p><p><a href="/rest/api/iothub/iothubresource">REST (IoT 中樞資源)</a></p><p><a href="/rest/api/iothub/certificates">REST (憑證)</a></p>
+  author: robinsh
+  ms.author: robinsh
+  manager: eliotgra
+  ms.date: 03/23/2020
+  ms.custom: amqp
+  ms.openlocfilehash: c2faec6885987a57147cef2f0e9ec50bcf003793
+  ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 07/11/2020
+  ms.locfileid: "86259360"
+landingContent:
+- title: 開始使用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 Azure 入口網站建立中樞
+      url: iot-hub-create-through-portal.md
+    - text: 使用 CLI 將遙測資料從裝置傳送到中樞
+      url: quickstart-send-telemetry-cli.md
+    - text: 控制連線到中樞的裝置
+      url: quickstart-control-device-node.md
+  - linkListType: get-started
+    links:
+    - text: 裝置管理
+      url: iot-hub-node-node-device-management-get-started.md
+    - text: 設定裝置
+      url: iot-hub-configuration-best-practices.md
+- title: 同步處理裝置狀態
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Node.js 來處理裝置對應項
+      url: iot-hub-node-node-twin-getstarted.md
+    - text: 了解 IoT 計量
+      url: iot-hub-metrics.md
+    - text: 診斷記錄
+      url: iot-hub-monitor-resource-health.md
+    - text: 使用 IoT 監視、診斷連線中斷並進行疑難排解
+      url: iot-hub-troubleshoot-connectivity.md
+- title: 調整您的解決方案規模
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 選擇正確的階層
+      url: iot-hub-scaling.md
+    - text: 了解配額和節流
+      url: iot-hub-devguide-quotas-throttling.md
+- title: 選取您的通訊協定
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 支援的通訊協定
+      url: iot-hub-devguide-protocols.md
+    - text: TLS 支援
+      url: iot-hub-tls-support.md
+    - text: MQTT 支援
+      url: iot-hub-mqtt-support.md
+    - text: IP 定址
+      url: iot-hub-understand-ip-address.md
+    - text: AMQP
+      url: iot-hub-amqp-support.md
+    - text: 通訊協定閘道
+      url: iot-hub-protocol-gateway.md
+- title: 將裝置資料路由至另一個服務
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 了解 Azure IoT 中樞訊息路由
+      url: iot-hub-devguide-messages-d2c.md
+  - linkListType: tutorial
+    links:
+    - text: 透過 Azure CLI 做準備
+      url: tutorial-routing-config-message-routing-cli.md
+    - text: 透過 Azure Resource Manager 範本做準備
+      url: tutorial-routing-config-message-routing-rm-template.md
+    - text: 執行和檢視路由結果
+      url: tutorial-routing-view-message-routing-results.md
+- title: 使用 IoT 中樞工具
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用適用於 VS Code 的 IoT 工具
+      url: iot-hub-create-use-iot-toolkit.md
+    - text: IoT 總管
+      url: ../iot-pnp/howto-install-iot-explorer.md
+- title: 使用 IoT 安全性憑證
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 控制 IoT 中樞的存取權
+      url: iot-hub-devguide-security.md
+    - text: 使用 X.509 CA 憑證進行裝置驗證
+      url: iot-hub-x509ca-overview.md
+    - text: X.509 安全性與 IoT 中樞
+      url: iot-hub-security-x509-get-started.md
+    - text: X.509 CA 憑證的安全性概念
+      url: iot-hub-x509ca-concept.md
+- title: 針對 IoT 中樞使用 Azure CLI
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: IoT 的 CLI 參考
+      url: /cli/azure/azure-cli-reference-for-IoT
+  - linkListType: concept
+    links:
+    - text: 建立 IoT 中樞
+      url: iot-hub-create-using-cli.md
+    - text: 管理 IoT 裝置
+      url: iot-hub-device-management-iot-extension-azure-cli-2-0.md
+    - text: 設定訊息路由
+      url: tutorial-routing-config-message-routing-cli.md
+    - text: 傳送遙測和監視
+      url: quickstart-send-telemetry-cli.md

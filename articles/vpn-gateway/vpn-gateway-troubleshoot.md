@@ -1,27 +1,18 @@
 ---
-title: 針對 VPN 閘道設定和連線進行疑難排解 | Microsoft Docs
+title: Azure VPN 閘道：針對設定和連線進行疑難排解
 description: 本文可協助您連結至針對 VPN 閘道設定和連線進行疑難排解及驗證輸送量的文章。
 services: vpn-gateway
-documentationcenter: na
-author: WenJason
-manager: digimobile
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
+author: cherylmc
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-origin.date: 01/31/2018
-ms.date: 04/01/2018
-ms.author: v-jay
-ms.openlocfilehash: 263c1010ec6cf5f6140c4dc9323dd9bd149b2368
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.topic: troubleshooting
+ms.date: 01/31/2018
+ms.author: cherylmc
+ms.openlocfilehash: 0718a1b211fe6365af30a330fe6a3742cff2ff63
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60456387"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84984423"
 ---
 # <a name="troubleshoot-vpn-gateway"></a>針對 VPN 閘道進行疑難排解
 
@@ -33,9 +24,9 @@ VPN 閘道連線可能會因為各種原因而失敗。 本文包含可協助您
 
 * [VPN 和防火牆裝置設定](vpn-gateway-third-party-settings.md)<br>本文提供數種可搭配 VPN 閘道使用之協力廠商 VPN 或防火牆裝置的建議解決方案。 協力廠商 VPN 或防火牆裝置的技術支援是由裝置廠商提供。
 
-* [點對站連線](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)<br>本文列出您可能遇到的常見點對站連線問題。 文中也會探討這些問題的可能原因和解決方案。
+* [點對站連接](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)<br>本文列出您可能遇到的常見點對站連線問題。 文中也會探討這些問題的可能原因和解決方案。
 
-* [站對站連線](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)<br>當您在內部部署網路與 Azure 虛擬網路之間設定站對站 VPN 連線之後，該 VPN 連線突然停止運作且無法重新連線。 本文提供可協助您解決此問題的疑難排解步驟。
+* [站對站連接](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)<br>當您在內部部署網路與 Azure 虛擬網路之間設定站對站 VPN 連線之後，該 VPN 連線突然停止運作且無法重新連線。 本文提供可協助您解決此問題的疑難排解步驟。
 
 ## <a name="next-steps"></a>後續步驟
 

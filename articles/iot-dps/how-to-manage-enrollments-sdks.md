@@ -1,27 +1,25 @@
 ---
-title: 使用 Azure 裝置佈建服務 SDK 管理裝置註冊 | Microsoft Docs
-description: 如何在 IoT 中樞裝置佈建服務中使用服務 SDK 管理裝置註冊
-author: yzhong94
-ms.author: yizhon
+title: 使用 Azure DPS Sdk 管理裝置註冊
+description: 如何使用服務 Sdk 管理 IoT 中樞裝置佈建服務（DPS）中的裝置註冊
+author: robinsh
+ms.author: robinsh
 ms.date: 04/04/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: arjmands
-ms.openlocfilehash: c73a40e46d86632732454ae16ea4f83e3ffa0281
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 5cb0e25ec70956e66f7b867f0d0b9473160fc3ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60627264"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74975069"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>如何使用 Azure 裝置佈建服務 SDK 管理裝置註冊
-「裝置註冊」會建立單一裝置或裝置群組的記錄，這些裝置可能會在某個時間點向裝置佈建服務進行註冊。 註冊記錄包含屬於該註冊一部分之裝置一開始所需的設定，包括所需的 IoT 中樞。 本文會示範如何針對您的佈建服務使用 Azure IoT 佈建服務 SDK，以程式設計方式管理裝置註冊。  這些 SDK 可從 GitHub 上取得，其位在與 Azure IoT SDK 相同的存放庫中。
+「裝置註冊」** 會建立單一裝置或裝置群組的記錄，這些裝置可能會在某個時間點向裝置佈建服務進行註冊。 註冊記錄包含屬於該註冊一部分之裝置一開始所需的設定，包括所需的 IoT 中樞。 本文會示範如何針對您的佈建服務使用 Azure IoT 佈建服務 SDK，以程式設計方式管理裝置註冊。  這些 SDK 可從 GitHub 上取得，其位在與 Azure IoT SDK 相同的存放庫中。
 
 ## <a name="prerequisites"></a>必要條件
 * 從裝置佈建服務執行個體取得連接字串。
 * 取得所使用之[證明機制](concepts-security.md#attestation-mechanism)的裝置安全性構件：
-    * [**信賴平台模組 (TPM)**](/azure/iot-dps/concepts-security#trusted-platform-module)：
+    * [**信賴平臺模組（TPM）**](/azure/iot-dps/concepts-security#trusted-platform-module)：
         * 個別註冊：來自實體裝置或 TPM 模擬器的註冊識別碼和 TPM 簽署金鑰。
         * 註冊群組不適用 TPM 證明。
     * [**X.509**](/azure/iot-dps/concepts-security)：
@@ -35,7 +33,7 @@ ms.locfileid: "60627264"
 ## <a name="create-a-device-enrollment"></a>建立裝置註冊
 有兩種方式可供您向佈建服務註冊裝置：
 
-* **註冊群組**是裝置群組項目，這些裝置會共用由[根憑證](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate)或[中繼憑證](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)所簽署之 X.509 憑證的通用證明機制。 對於一大批共用所需初始設定的裝置，或是全都設定為相同租用戶的裝置，我們建議使用申請群組。 請注意，您只能將使用 X.509 證明機制的裝置註冊為「註冊群組」。 
+* **註冊群組**是裝置群組項目，這些裝置會共用由[根憑證](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate)或[中繼憑證](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)所簽署之 X.509 憑證的通用證明機制。 對於一大批共用所需初始設定的裝置，或是全都設定為相同租用戶的裝置，我們建議使用申請群組。 請注意，您只能將使用 X.509 證明機制的裝置註冊為「註冊群組」**。 
 
     您可以依照此工作流程使用 SDK 建立註冊群組：
 

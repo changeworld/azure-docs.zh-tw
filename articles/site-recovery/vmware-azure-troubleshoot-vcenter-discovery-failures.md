@@ -1,82 +1,84 @@
 ---
-title: 對使用 Azure Site Recovery 從 VMWare VM 災害復原至 Azure 期間所進行的內部部署環境容錯回復進行疑難排解 | Microsoft Docs
-description: 本文說明對使用 Azure Site Recovery 從 VMWare VM 災害復原至 Azure 期間所發生的容錯回復和重新保護問題進行疑難排解的方式。
-author: vDonGlover
-manager: JarrettRenshaw
+title: 針對 Azure Site Recovery 中的 VMware vCenter discovery 失敗進行疑難排解
+description: 本文說明如何針對 Azure Site Recovery 中的 VMware vCenter 探索失敗進行疑難排解。
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.author: v-doglov
-ms.openlocfilehash: c598c5e238458c010500579c5371622b85e71de0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 10/29/2019
+ms.author: mayg
+ms.openlocfilehash: d333972ea5f74d1676e5e4b4e1417c6bf5d87b79
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60565186"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135348"
 ---
-# <a name="troubleshoot-vcenter-discovery-failures"></a>對 vCenter 探索進行疑難排解失敗
+# <a name="troubleshoot-vcenter-server-discovery-failures"></a>針對 vCenter Server 探索失敗進行疑難排解
 
-這篇文章可協助您疑難排解因為 VMware vCenter 探索失敗而發生的問題。
+本文可協助您針對 VMware vCenter 探索失敗所發生的問題進行疑難排解。
 
-## <a name="non-numeric-values-in-the-maxsnapshots-property"></a>MaxSnapShots 屬性中的非數字值
+## <a name="non-numeric-values-in-the-maxsnapshots-property"></a>MaxSnapShots 屬性中的非數位值
 
-之前的版本 9.20，vCenter 中斷連線時它會擷取屬性的非數字值`snapshot.maxSnapShots`VM 上的屬性。
+在9.20 之前的版本中，vCenter 會在針對 VM 上的屬性屬性抓取非數值時中斷連線 `snapshot.maxSnapShots` 。
 
-錯誤 ID 95126 識別此問題。
+此問題是由錯誤識別碼95126所識別。
 
-    ERROR :: Hit an exception while fetching the required informationfrom vCenter/vSphere.Exception details:
-    System.FormatException: Input string was not in a correct format.
-       at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-       at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-       at VMware.VSphere.Management.InfraContracts.VirtualMachineInfo.get_MaxSnapshots()
-    
-若要解決此問題：
-
-- 識別 VM，並將值設定為數值 （編輯 VM 在 vCenter 中的設定）。
-
-或
-
-- 9.20 或更新版本的版本升級設定伺服器。
-
-## <a name="proxy-configuration-issues-for-vcenter-connectivity"></a>VCenter 連線的 proxy 設定問題
-
-vCenter 探索會接受系統使用者所設定的系統預設 proxy 設定。 DRA 服務會接受使用統一的安裝程式或 OVA 範本的組態伺服器安裝期間由使用者提供的 proxy 設定。 
-
-一般情況下，使用與公用網路; 通訊的 proxy例如與 Azure 通訊。 如果 proxy 設定，vCenter 會在本機環境中，將無法與 DRA 通訊。
-
-此問題發生時，就會發生下列情況：
-
-- VCenter server \<vCenter > 找不到因為發生錯誤：遠端伺服器傳回錯誤：伺服器無法使用 (503)
-- VCenter server \<vCenter > 找不到因為發生錯誤：遠端伺服器傳回錯誤：無法連線到遠端伺服器。
-- 無法連線至 vCenter/ESXi 伺服器。
+```output
+ERROR :: Hit an exception while fetching the required informationfrom vCenter/vSphere.Exception details:
+System.FormatException: Input string was not in a correct format.
+    at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+    at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+    at VMware.VSphere.Management.InfraContracts.VirtualMachineInfo.get_MaxSnapshots()
+```
 
 若要解決此問題：
 
-下載[PsExec 工具](https://aka.ms/PsExec)。 
+- 識別 VM，並將值設定為數值（vCenter 中的 VM 編輯設定）。
 
-您可以使用 PsExec 工具來存取系統的使用者內容，並判斷是否已設定的 proxy 位址。 然後，您就可以略過清單中，使用下列程序來加入 vCenter。
+Or
 
-探索 proxy 設定：
+- 將您的設定伺服器升級至9.20 版或更新版本。
 
-1. 在使用 PsExec 工具的系統使用者內容中的開啟 IE。
+## <a name="proxy-configuration-issues-for-vcenter-connectivity"></a>VCenter 連線的 Proxy 設定問題
+
+vCenter 探索會接受系統使用者所設定的系統預設 proxy 設定。 DRA 服務會在使用整合安裝安裝程式或 OVA 範本安裝設定伺服器期間，接受使用者所提供的 proxy 設定。 
+
+一般來說，proxy 是用來與公用網路通訊;例如與 Azure 通訊。 如果已設定 proxy，而且 vCenter 是在本機環境中，則無法與 DRA 通訊。
+
+遇到此問題時，會發生下列情況：
+
+- \<vCenter>因為發生錯誤，所以無法連線到 vCenter server：遠端伺服器傳回錯誤：（503）伺服器無法使用
+- \<vCenter>因為發生錯誤，所以無法連線到 vCenter server：遠端伺服器傳回錯誤：無法連接到遠端伺服器。
+- 無法連線到 vCenter/ESXi 伺服器。
+
+若要解決此問題：
+
+下載 [PsExec 工具](https://aka.ms/PsExec)。 
+
+使用 PsExec 工具來存取系統使用者內容，並判斷是否已設定 proxy 位址。 接著，您可以使用下列程式，將 vCenter 新增至略過清單。
+
+針對探索 proxy 設定：
+
+1. 使用 PsExec 工具在系統使用者內容中開啟 IE。
     
     psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
 
-2. 修改中 Internet Explorer 略過的 vCenter IP 位址的 proxy 設定。
-3. 重新啟動 tmanssvc 服務。
+2. 修改 Internet Explorer 中的 proxy 設定，以略過 vCenter IP 位址。
+3. 重新開機 tmanssvc 服務。
 
-DRA 的 proxy 設定：
+針對 DRA proxy 設定：
 
-1. 開啟命令提示字元，並開啟 [Microsoft Azure Site Recovery Provider] 資料夾。
+1. 開啟命令提示字元，然後開啟 [Microsoft Azure Site Recovery 提供者] 資料夾。
  
     **cd C:\Program Files\Microsoft Azure Site Recovery 提供者**
 
 3. 從命令提示字元中，執行下列命令。
    
-   **DRCONFIGURATOR。EXE /AddBypassUrls /configure [IP 位址 /FQDN 的 vCenter Server 所提供的時間新增 vCenter]**
+   **DRCONFIGURATOR.EXE/configure/AddBypassUrls [新增 vCenter 時提供的 vCenter Server 的 IP 位址/FQDN]**
 
-4. 重新啟動的 DRA 提供者服務。
+4. 重新開機 DRA 提供者服務。
 
 ## <a name="next-steps"></a>後續步驟
 
-[管理組態伺服器 VMware VM 災害復原](https://docs.microsoft.com/azure/site-recovery/vmware-azure-manage-configuration-server#refresh-configuration-server) 
+[管理 VMware VM 災害復原的設定伺服器](./vmware-azure-manage-configuration-server.md#refresh-configuration-server) 

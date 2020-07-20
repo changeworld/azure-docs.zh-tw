@@ -1,26 +1,27 @@
 ---
-title: Azure Data Factory 中的驗證活動 |Microsoft Docs
-description: 驗證活動不會繼續執行管線，直到它會驗證連接的資料集，與特定使用者指定的準則。
+title: Azure Data Factory 中的驗證活動
+description: 驗證活動不會繼續執行管線，直到它以使用者指定的特定準則驗證附加的資料集為止。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.author: shlo
-ms.openlocfilehash: 46447bdbea93d1f99c5682cf878c2035e6f49b78
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 764b41d1823e8edce134c5099e066486f4f08acc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60764317"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81417924"
 ---
 # <a name="validation-activity-in-azure-data-factory"></a>Azure Data Factory 中的驗證活動
-您也可以在管線中使用的驗證，確保管線只會繼續執行，一旦驗證附加有資料集參考，其符合指定的準則，或已達到逾時。
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+您可以在管線中使用驗證，確保管線只會在驗證附加的資料集參考存在、符合指定的準則，或已達到 timeout 時，才繼續執行。
 
 
 ## <a name="syntax"></a>語法
@@ -59,22 +60,22 @@ ms.locfileid: "60764317"
 
 ## <a name="type-properties"></a>類型屬性
 
-屬性 | 描述 | 允許的值 | 必要項
+屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-name | '驗證' 活動的名稱。 | 字串 | 是 |
-type | 必須設定為**驗證**。 | 字串 | 是 |
-資料集 | 活動會阻止執行直到驗證這個資料集參考存在，而且符合指定的準則，或已達到逾時。 提供的資料集應支援 「 MinimumSize"或"ChildItems"屬性。 | 資料集參考 | 是 |
-timeout | 指定活動執行的逾時。 如果未不指定任何值，預設值為 7 天 (「 7.00:00:00")。 格式是 d.hh:mm:ss | 字串 | 否 |
-進入睡眠狀態 | 以秒為單位驗證嘗試之間的延遲。 如果未不指定任何值，預設值為 10 秒。 | 整數  | 否 |
-childItems | 檢查資料夾是否有子項目。 您可以設定以 true:驗證資料夾存在，且其項目。 封鎖，直到至少一個項目在資料夾或達到逾時值為止。-false:驗證資料夾存在，而且是空白。 值已到達封鎖，直到資料夾是空的或直到逾時。 如果未不指定任何值，活動將會封鎖直到資料夾存在，或達到逾時為止。 | Boolean | 否 |
-minimumSize | 以位元組為單位的檔案大小下限。 如果未不指定任何值，預設值為 0 個位元組 | 整數  | 否 |
+NAME | 「驗證」活動的名稱 | String | 是 |
+type | 必須設定為 [**驗證**]。 | String | 是 |
+資料集 | 活動會封鎖執行，直到其驗證此資料集參考存在，而且符合指定的準則，或已達到 timeout 為止。 提供的資料集應該支援 "MinimumSize" 或 "ChildItems" 屬性。 | 資料集參考 | 是 |
+timeout | 指定活動執行的逾時。 如果未指定任何值，預設值為7天（"7.00：00： 00"）。 格式為 d. hh： mm： ss | String | 否 |
+sleep | 驗證嘗試之間的延遲（以秒為單位）。 如果未指定任何值，預設值為10秒。 | 整數 | 否 |
+childItems | 檢查資料夾是否有子專案。 可以設定為-true：驗證資料夾是否存在，以及它是否有專案。 封鎖，直到至少有一個專案出現在資料夾中，或到達 timeout 值為止。-false：驗證資料夾是否存在，以及它是否為空白。 封鎖，直到資料夾是空的或到達 timeout 值為止。 如果未指定任何值，活動將會封鎖，直到資料夾存在或達到 timeout 為止。 | Boolean | 否 |
+minimumSize | 檔案大小下限（以位元組為單位）。 如果未指定任何值，預設值為0個位元組 | 整數 | 否 |
 
 
 ## <a name="next-steps"></a>後續步驟
 請參閱 Data Factory 支援的其他控制流程活動：
 
-- [If Condition 活動](control-flow-if-condition-activity.md)
-- [執行管道活動](control-flow-execute-pipeline-activity.md)
+- [If 條件活動](control-flow-if-condition-activity.md)
+- [執行管線活動](control-flow-execute-pipeline-activity.md)
 - [For Each 活動](control-flow-for-each-activity.md)
 - [取得中繼資料活動](control-flow-get-metadata-activity.md)
 - [查閱活動](control-flow-lookup-activity.md)

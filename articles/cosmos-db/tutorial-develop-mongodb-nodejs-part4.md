@@ -1,6 +1,5 @@
 ---
-title: 使用適用於 MongoDB 的 Azure Cosmos DB API 建立 Angular 應用程式 - 建立 Cosmos 帳戶
-titleSuffix: Azure Cosmos DB
+title: 使用適用於 MongoDB 的 Azure Cosmos DB API 建立 Angular 應用程式 (第 1 部分)
 description: 本教學課程系列的第 4 部分，有關使用您用於 MongoDB 的完全相同 API，以 Azure Cosmos DB 上的 Angular 和 Node 建立 MongoDB 應用程式
 author: johnpapa
 ms.service: cosmos-db
@@ -11,12 +10,12 @@ ms.date: 12/06/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 8320204f75e583dae0449f83e7c38f6638371c2a
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: ec6165ba8ab33beba0b50d6b589b3d31269d7b1e
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035109"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114430"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>使用適用於 MongoDB 的 Azure Cosmos DB API 建立 Angular 應用程式 - 建立 Cosmos 帳戶
 
@@ -65,11 +64,11 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 1. 按一下左列上的 Azure Cosmos DB 標誌， ![Azure 入口網站中的 Azure Cosmos DB 圖示](./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-icon.png) 即可顯示您擁有的所有 Azure Cosmos DB。
 1. 按一下您剛建立的 Azure Cosmos DB 帳戶，請選取 [概觀] 索引標籤並向下捲動以檢視資料庫所在的地圖。 
 
-    ![Azure 入口網站中的新 Azure Cosmos DB 帳戶](./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-angular-portal.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-angular-portal.png" alt-text="Azure 入口網站中的新 Azure Cosmos DB 帳戶":::
 
 4. 向下捲動左側導覽列並按一下 [全域複寫資料] 索引標籤，這會顯示您可在其中查看可複寫至之不同區域的地圖。 例如，您可以按一下澳洲東南部或澳洲東部，並將您的資料複寫至澳洲。 您可以在[如何使用 Azure Cosmos DB 全域散發資料](distribute-data-globally.md)中深入了解全域複寫。 現在，我們只要保留一個執行個體，而當我們想要複寫時，我們就會知道怎麼做。
 
-    ![Azure 入口網站中的新 Azure Cosmos DB 帳戶](./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-replicate-portal.png)
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-replicate-portal.png" alt-text="Azure 入口網站中的新 Azure Cosmos DB 帳戶":::
 
 ## <a name="next-steps"></a>後續步驟
 

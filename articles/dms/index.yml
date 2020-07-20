@@ -1,74 +1,143 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure 資料庫移轉服務文件
+summary: Azure 資料庫移轉服務能夠從多個資料庫來源無縫移轉到 Azure 資料平台，將停機時間降到最低。 服務會使用 Data Migration Assistant 來產生評估報表，提供建議以引導您在移轉之前完成所需的變更。 當您準備好要開始移轉程序時，Azure 資料庫移轉服務會執行所有必要步驟。
 metadata:
-  document_id: 83ceabb5-fb4f-a709-3fd2-37d024409f31
-  title: Azure 資料庫移轉服務文件 - 教學課程 | Microsoft Docs
-  meta.description: Learn how to enable seamless migrations from multiple database sources to Azure Data platforms with minimal downtime by using Azure Database Migration Service.
-  services: functions
+  description: 了解如何使用 Azure 資料庫移轉服務，從多個資料庫來源無縫移轉到 Azure 資料平台，將停機時間降到最低。
   author: HJToland3
   ms.author: jtoland
-  manager: craigg
-  ms.reviewer: craigg
+  ms.date: 12/19/2019
   ms.service: dms
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 03/12/2019
-abstract:
-  description: Azure 資料庫移轉服務能夠從多個資料庫來源無縫移轉到 Azure 資料平台，將停機時間降到最低。 服務會使用 Data Migration Assistant 來產生評估報表，提供建議以引導您在移轉之前完成所需的變更。 當您準備好要開始移轉程序時，Azure 資料庫移轉服務會執行所有必要步驟。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/video-thumb-intro2dms.png
-      width: 250
-    title: 'Azure DMS 簡介 (1:30)'
-    href: 'https://www.microsoft.com/en-us/videoplayer/embed/RE2IqVu'
-    width: 250
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何使用資料庫移轉服務，將內部部署 SQL Server 遷移到 Azure SQL Database：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure 入口網站
-            href: /azure/dms/quickstart-create-data-migration-service-portal
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何使用資料庫移轉服務遷移資料庫：
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/dms/tutorial-sql-server-to-azure-sql">使用 DMS 在離線狀態下將 SQL Server 遷移至 Azure SQL Database</a>
-          - html: <a href="/azure/dms/tutorial-sql-server-azure-sql-online">使用 DMS 在線上將 SQL Server 遷移至 Azure SQL Database</a>
-          - html: <a href="/azure/dms/tutorial-sql-server-to-managed-instance">使用 DMS 將 SQL Server 離線遷移至 Azure SQL Database 受控執行個體</a>
-          - html: <a href="/azure/dms/tutorial-sql-server-managed-instance-online">使用 DMS 在線上將 SQL Server 遷移至 Azure SQL Database 受控執行個體</a>
-          - html: <a href="/azure/dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online">使用 DMS 在線上狀態下將 RDS SQL Server 遷移至 Azure SQL Database 或 Azure SQL Database 受控執行個體</a>
-          - html: <a href="/azure/dms/tutorial-mysql-azure-mysql-online">使用 DMS 在線上將 MySQL 遷移至適用於 MySQL 的 Azure 資料庫</a>
-          - html: <a href="/azure/dms/tutorial-postgresql-azure-postgresql-online">在線上使用 DMS 將 PostgreSQL 遷移至適用於 PostgreSQL 的 Azure 資料庫</a>
-          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db">使用 DMS 在離線狀態下將 MongoDB 移轉至 Azure Cosmos DB Mongo API</a>
-          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db-online">使用 DMS 在線上狀態下將 MongoDB 移轉至 Azure Cosmos DB Mongo API</a>
-  - title: 範例
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/dms/howto-sql-server-to-azure-sql-powershell">使用 Azure PowerShell 將 SQL Server 內部部署遷移至 Azure SQL DB</a>
-          - html: <a href="/azure/dms/howto-sql-server-to-azure-sql-mi-powershell">使用 Azure PowerShell 將 SQL Server 內部部署遷移至 Azure SQL DB 受控執行個體</a>
-  - title: 參考
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/dms/resource-scenario-status">Azure 資料庫移轉服務支援的移轉案例狀態</a>
-          - html: <a href="/azure/dms/pre-reqs">使用 Azure 資料庫移轉服務的必要條件概觀</a>
-          - html: <a href="/azure/dms/faq">使用 Azure 資料庫移轉服務的相關常見問題集</a>
-          - html: <a href="/azure/dms/known-issues-azure-sql-online">線上移轉到 Azure SQL DB 的已知問題/移轉限制</a>
-          - html: <a href="/azure/dms/dms-tools-matrix">適用於資料移轉案例的服務和工具</a>
+  ms.openlocfilehash: 9a37c850426cab0d940ab546084c1c64811ccb64
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "78164554"
+landingContent:
+- title: 關於 Azure 資料庫移轉服務
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 何謂 Azure 資料庫移轉服務？
+      url: dms-overview.md
+  - linkListType: get-started
+    links:
+    - text: 資料庫移轉案例狀態
+      url: resource-scenario-status.md
+    - text: 必要條件概觀
+      url: pre-reqs.md
+  - linkListType: quickstart
+    links:
+    - text: 建立服務 - 入口網站
+      url: quickstart-create-data-migration-service-portal.md
+    - text: 在混合模式中建立服務 - 入口網站
+      url: quickstart-create-data-migration-service-hybrid-portal.md
+  - linkListType: reference
+    links:
+    - text: 已知問題 - 使用混合模式
+      url: known-issues-dms-hybrid-mode.md
+  - linkListType: video
+    links:
+    - text: Azure 資料移轉服務簡介
+      url: https://www.microsoft.com/videoplayer/embed/RE2IqVu
+    - text: 使用資料庫移轉指南
+      url: https://azure.microsoft.com/resources/videos/how-to-use-the-azure-database-migration-guide/
+    - text: 移轉程序和建議的工具/服務
+      url: https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/
+    - text: 處理必要條件並建立 Azure 資料移轉服務執行個體
+      url: https://azure.microsoft.com/resources/videos/how-to-address-prerequisites-and-create-a-dms-instance/
+  - linkListType: whats-new
+    links:
+    - text: 請查看我們的部落格
+      url: https://techcommunity.microsoft.com/t5/Microsoft-Data-Migration/bg-p/MicrosoftDataMigration
+- title: 將 SQL Server 移轉至 Azure SQL Database
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 遷移至 SQL DB 單一資料庫 - 線上
+      url: tutorial-sql-server-azure-sql-online.md
+    - text: 遷移至 SQL DB 單一資料庫 - 離線
+      url: tutorial-sql-server-to-azure-sql.md
+    - text: 遷移至 SQL DB 受控執行個體 - 線上
+      url: tutorial-sql-server-managed-instance-online.md
+    - text: 遷移至 SQL DB 受控執行個體 - 離線
+      url: tutorial-sql-server-to-managed-instance.md
+    - text: 將 RDS SQL Server 遷移到 SQL DB 單一資料庫/受控執行個體 - 線上
+      url: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
+  - linkListType: reference
+    links:
+    - text: 已知問題 - 線上移轉至 SQL DB 單一資料庫
+      url: known-issues-azure-sql-online.md
+    - text: 已知問題 - 線上移轉至 SQL DB 受控執行個體
+      url: known-issues-azure-sql-db-managed-instance-online.md
+    - text: 適用於 SQL DB 受控執行個體移轉的網路拓撲
+      url: resource-network-topologies.md
+    - text: 從 SQL Server 線上移轉至 SQL DB 受控執行個體的自訂角色
+      url: resource-custom-roles-sql-db-managed-instance.md
+  - linkListType: video
+    links:
+    - text: 將 SQL Server 2008 遷移至 SQL DB 受控執行個體
+      url: https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/
+- title: 將開放原始碼資料庫遷移到 Azure
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 透過入口網站線上遷移至適用於 PostgreSQL 的 Azure DB
+      url: tutorial-postgresql-azure-postgresql-online-portal.md
+    - text: 透過 CLI 線上遷移至適用於 PostgreSQL 的 Azure DB
+      url: tutorial-postgresql-azure-postgresql-online.md
+    - text: 將 RDS PostgreSQL 遷移至適用於 PostgreSQL 的 Azure DB
+      url: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
+    - text: 遷移至適用於 MySQL 的 Azure DB - 線上
+      url: tutorial-mysql-azure-mysql-online.md
+    - text: 將 RDS MySQL 遷移至適用於 MySQL 的 Azure DB - 線上
+      url: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
+    - text: 遷移到 Azure Cosmos DB Mongo API - 線上
+      url: tutorial-mongodb-cosmos-db-online.md
+    - text: 遷移到 Azure Cosmos DB Mongo API - 離線
+      url: tutorial-mongodb-cosmos-db.md
+  - linkListType: reference
+    links:
+    - text: 已知問題 - 線上移轉至適用於 PostgreSQL 的 Azure DB
+      url: known-issues-azure-postgresql-online.md
+    - text: 已知問題 - 線上移轉至適用於 MySQL 的 Azure DB
+      url: known-issues-azure-mysql-online.md
+    - text: 已知問題 - 從 MongoDB 移轉到 Azure Cosmos DB
+      url: known-issues-mongo-cosmos-db.md
+  - linkListType: video
+    links:
+    - text: 將 PostgreSQL 遷移到適用於 PostgreSQL 的 Azure DB - 單一伺服器
+      url: https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/
+    - text: 遷移到 Azure Cosmos DB Mongo API
+      url: https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/
+- title: 工具和指引
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 依資料移轉案例區分的服務和工具
+      url: dms-tools-matrix.md
+    - text: 資料庫移轉指南
+      url: https://datamigration.microsoft.com/
+    - text: Data Migration Assistant
+      url: https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017
+    - text: SQL Server 移轉小幫手
+      url: https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017
+    - text: 資料庫測試助理
+      url: https://docs.microsoft.com/sql/dea/database-experimentation-assistant-overview?view=sql-server-2017
+    - text: 資料存取移轉工具組
+      url: https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit
+- title: 將 Oracle 遷移到 Azure
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 遷移到適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器 - 線上
+      url: tutorial-oracle-azure-postgresql-online.md
+  - linkListType: reference
+    links:
+    - text: 已知問題 - 線上移轉到適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
+      url: known-issues-oracle-azure-postgresql-online.md
+  - linkListType: video
+    links:
+    - text: 遷移到 SQL Database 單一資料庫
+      url: https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/

@@ -15,6 +15,9 @@
       href: quick-run-dotnet.md
     - name: 執行 Batch 作業 - Python
       href: quick-run-python.md
+    - name: 建立 Batch 帳戶 - ARM 範本
+      href: quick-create-template.md
+      displayName: Resource Manager
 - name: 教學課程
   items:
     - name: 檔案平行處理 - .NET
@@ -27,6 +30,10 @@
       href: tutorial-rendering-batchexplorer-blender.md
     - name: 平行 R 模擬
       href: tutorial-r-doazureparallel.md
+    - name: OCR with Batch 和 Functions
+      href: tutorial-batch-functions.md
+    - name: Python 指令碼搭配 Data Factory
+      href: tutorial-run-python-batch-azure-data-factory.md
 - name: 範例
   items:
     - name: 程式碼範例
@@ -37,12 +44,37 @@
           href: 'https://github.com/Azure/azure-batch-samples'
     - name: Azure CLI
       href: cli-samples.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
-    - name: 開發人員功能
-      href: batch-api-basics.md
+    - name: 安全性
+      items:
+        - name: 安全性基準
+          href: security-baseline.md
+    - name: Batch 服務工作流程和資源
+      displayName: developer features
+      href: batch-service-workflow-features.md
+      items:
+        - name: Batch 帳戶
+          displayName: storage account
+          href: accounts.md
+        - name: 節點和集區
+          displayName: 'compute node, application package, scaling, schedule, os'
+          href: nodes-and-pools.md
+        - name: 工作 (Job) 和工作 (Task)
+          displayName: Batch job
+          href: jobs-and-tasks.md
+        - name: 檔案和目錄
+          displayName: Batch file
+          href: files-and-directories.md
     - name: API 和各項工具
       href: batch-apis-tools.md
+    - name: 錯誤處理和偵測
+      href: error-handling.md
+    - name: 最佳作法
+      href: best-practices.md
     - name: 配額和限制
       href: batch-quota-limit.md
     - name: 支援的 VM 大小
@@ -51,22 +83,42 @@
       href: high-availability-disaster-recovery.md
     - name: 工作執行階段環境變數
       href: batch-compute-node-environment-variables.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 管理 Batch 帳戶
       items:
+        - name: 管理您的帳戶
+          href: batch-manage-account-basics.md
         - name: 透過入口網站管理 Batch 帳戶
           href: batch-account-create-portal.md
         - name: 使用 Batch Management .NET 管理 Batch 帳戶
           href: batch-management-dotnet.md
+        - name: 成本分析和預算
+          href: budget.md
+        - name: 使用私人端點搭配 Batch 帳戶
+          href: private-connectivity.md
+        - name: 設定客戶管理的金鑰
+          href: batch-customer-managed-key.md
     - name: 使用 Azure AD 進行驗證
       items:
         - name: 包含 Batch 服務的 Azure AD
           href: batch-aad-auth.md
         - name: 包含 Batch 管理的 Azure AD
           href: batch-aad-auth-management.md
-    - name: 建立應用程式套件
+        - name: 使用 Batch 安全地存取 Key Vault
+          href: credential-access-key-vault.md
+        - name: 搭配 Batch 使用憑證
+          href: batch-certificates.md
+    - name: 使用應用程式封裝
       href: batch-application-packages.md
+    - name: 將檔案和應用程式複製到集區節點
+      items:
+        - name: 將應用程式和資料複製到集區節點
+          href: batch-applications-to-pool-nodes.md
+        - name: 使用應用程式封裝
+          href: batch-application-packages.md
+        - name: 建立資源檔案
+          href: resource-files.md
     - name: 建立和管理集區
       items:
         - name: 自動調整計算節點的規模
@@ -75,10 +127,18 @@
           href: batch-pool-vm-sizes.md
         - name: 設定計算節點的存取
           href: pool-endpoint-configuration.md
-        - name: 以自訂映像建立集區
+        - name: 使用共用映像庫建立集區
+          href: batch-sig-images.md
+        - name: 建立具有受控映像資源的集區
           href: batch-custom-images.md
         - name: 在虛擬網路中建立集區
           href: batch-virtual-network.md
+        - name: 使用公用 IP 位址建立集區
+          href: create-pool-public-ip.md
+        - name: 建立不具公用 IP 位址的集區
+          href: batch-pool-no-public-ip-address.md
+        - name: 掛載虛擬檔案系統
+          href: virtual-file-mount.md
         - name: 裝載 Azure 檔案共用
           href: pool-file-shares.md
         - name: 使用 RDMA 或 GPU 執行個體
@@ -103,8 +163,10 @@
           href: batch-user-accounts.md
         - name: 提交大量工作
           href: large-number-tasks.md
-    - name: 建立資源檔案
-      href: resource-files.md
+        - name: 排定作業以提高效率
+          href: batch-job-schedule.md
+        - name: 檢查作業和工作錯誤
+          href: batch-job-task-error-checking.md
     - name: 持續作業及工作輸出
       href: batch-task-output.md
       items:
@@ -134,32 +196,32 @@
               href: batch-cli-templates.md
     - name: 使用 Batch Node.js SDK
       href: batch-nodejs-get-started.md
-- name: 執行工作負載
-  items:
-    - name: MPI 作業
-      href: batch-mpi.md
-    - name: 容器工作負載
-      href: batch-docker-container-workloads.md
-    - name: 轉譯
+    - name: 執行工作負載
       items:
-        - name: 使用 Azure 進行轉譯
-          href: batch-rendering-service.md
-        - name: 轉譯虛擬機器映像
-          href: batch-rendering-applications.md
-        - name: Batch 轉譯功能
-          href: batch-rendering-functionality.md
-        - name: 使用 Batch 轉譯
-          href: batch-rendering-using.md
-        - name: 使用轉譯管理員
-          href: batch-rendering-render-managers.md
-        - name: 轉譯應用程式參考
-          href: batch-rendering-application-reference.md
-        - name: 儲存體和資料移動
-          href: batch-rendering-storage-data-movement.md
-        - name: 轉譯架構
-          href: batch-rendering-architectures.md
-    - name: 透過 Batch 和 Data Factory 處理的資料
-      href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
+        - name: MPI 作業
+          href: batch-mpi.md
+        - name: 容器工作負載
+          href: batch-docker-container-workloads.md
+        - name: 轉譯
+          items:
+            - name: 使用 Azure 進行轉譯
+              href: batch-rendering-service.md
+            - name: 轉譯虛擬機器映像
+              href: batch-rendering-applications.md
+            - name: Batch 轉譯功能
+              href: batch-rendering-functionality.md
+            - name: 使用 Batch 轉譯
+              href: batch-rendering-using.md
+            - name: 使用轉譯管理員
+              href: batch-rendering-render-managers.md
+            - name: 轉譯應用程式參考
+              href: batch-rendering-application-reference.md
+            - name: 儲存體和資料移動
+              href: batch-rendering-storage-data-movement.md
+            - name: 轉譯架構
+              href: batch-rendering-architectures.md
+        - name: 透過 Batch 和 Data Factory 處理的資料
+          href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
 - name: 參考
   items:
     - name: Azure CLI
@@ -203,17 +265,21 @@
           href: batch-task-fail-event.md
 - name: 資源
   items:
-    - name: Azure 藍圖
-      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Azure 更新
+      href: 'https://azure.microsoft.com/updates/'
     - name: Batch 社群
       href: 'https://github.com/Azure/Batch'
+    - name: Batch 意見反應
+      href: 'https://feedback.azure.com/forums/269742-batch'
+    - name: 批次的 Microsoft 問與答頁面
+      href: /answers/topics/azure-batch.html
     - name: Batch Shipyard
       href: 'https://github.com/Azure/batch-shipyard'
     - name: 部落格
-      href: 'https://blogs.technet.microsoft.com/windowshpc/'
+      href: /archive/blogs/windowshpc/
     - name: Azure 上的 HPC
-      href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
-    - name: 價格
+      href: /azure/architecture/topics/high-performance-computing/
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/batch/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
@@ -221,7 +287,7 @@
       href: /azure/templates/microsoft.batch/batchaccounts
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=batch&updatetype=&platform='
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-batch'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=batch'

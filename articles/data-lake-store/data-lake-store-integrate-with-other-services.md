@@ -1,23 +1,16 @@
 ---
-title: 將 Azure Data Lake Storage Gen1 與其他 Azure 服務整合 | Microsoft Docs
-description: 了解 Azure Data Lake Storage Gen1 如何與其他 Azure 服務整合
-documentationcenter: ''
-services: data-lake-store
+title: 將 Data Lake Storage Gen1 與其他 Azure 服務整合
+description: 瞭解您可以如何將 Azure Data Lake Storage Gen1 與其他 Azure 服務整合。
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 48a5d1f4-3850-4c22-bbc4-6d1d394fba8a
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: e28863f9980d6403bef1f88de01b7a9b5271b444
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: f56d3a364e38d13931f8e07d749d3a5958dcee67
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60197080"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322521"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>將 Azure Data Lake Storage Gen1 與其他 Azure 服務整合
 Azure Data Lake Storage Gen1 可以與其他 Azure 服務一起使用，以啟用更廣泛的案例。 下列文章列出 Data Lake Storage Gen1 可以整合的服務。
@@ -45,7 +38,7 @@ Azure Data Lake Storage Gen1 可以與其他 Azure 服務一起使用，以啟�
 Azure Data Lake Storage Gen1 提供命令列工具 AdlCopy，可讓您將資料從 Azure Blob 儲存體複製到 Data Lake Storage Gen1 帳戶。 如需詳細資訊，請參閱[將資料從 Azure 儲存體 Blob 複製到 Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)。
 
 ## <a name="copy-data-between-azure-sql-database-and-data-lake-storage-gen1"></a>在 Azure SQL Database 與 Data Lake Storage Gen1 之間複製資料
-您可以使用 Apache Sqoop 在 Azure SQL Database 與 Data Lake Storage Gen1 之間匯入及匯出資料。 如需詳細資訊，請參閱[使用 Sqoop 在 Data Lake Storage Gen1 與 Azure SQL 資料庫之間複製資料](data-lake-store-data-transfer-sql-sqoop.md)。
+您可以使用 Apache Sqoop 在 Azure SQL Database 與 Data Lake Storage Gen1 之間匯入及匯出資料。 如需詳細資訊，請參閱[使用 Sqoop 在 Data Lake Storage Gen1 和 Azure SQL Database 之間複製資料](data-lake-store-data-transfer-sql-sqoop.md)。
 
 ## <a name="use-data-lake-storage-gen1-with-stream-analytics"></a>搭配串流分析使用 Data Lake Storage Gen1
 您可以使用 Data Lake Storage Gen1 做為其中一個使用 Azure 串流分析儲存串流資料的輸出。 如需詳細資訊，請參閱[使用 Azure 串流分析將來自 Azure 儲存體 Blob 的資料串流處理至 Data Lake Storage Gen1](data-lake-store-stream-analytics.md)。
@@ -60,12 +53,12 @@ Azure Data Lake Storage Gen1 提供命令列工具 AdlCopy，可讓您將資料�
 您可以使用 SSIS 中的 Data Lake Storage Gen1 連線管理員，以使用 Data Lake Storage Gen1 連線 SSIS 套件。 如需詳細資訊，請參閱[搭配 SSIS 使用 Data Lake Storage Gen1](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager)。
 
 ## <a name="use-data-lake-storage-gen1-with-sql-data-warehouse"></a>搭配 SQL 資料倉儲使用 Data Lake Storage Gen1
-您可以使用 PolyBase 將 Data Lake Storage Gen1 的資料載入到 SQL 資料倉儲。 如需詳細資訊，請參閱[搭配 SQL 資料倉儲使用 Data Lake Storage Gen1](../sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md)。
+您可以使用 PolyBase 將 Data Lake Storage Gen1 的資料載入到 SQL 資料倉儲。 如需詳細資訊，請參閱[搭配 SQL 資料倉儲使用 Data Lake Storage Gen1](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md)。
 
 ## <a name="use-data-lake-storage-gen1-with-azure-event-hubs"></a>搭配 Azure 事件中樞使用 Data Lake Storage Gen1
 您可以使用 Azure Data Lake Storage Gen1 來封存及擷取 Azure 事件中樞所收到的資料。 如需詳細資訊，請參閱[搭配 Azure 事件中樞使用 Data Lake Storage Gen1](data-lake-store-archive-eventhub-capture.md)。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 * [Azure Data Lake Storage Gen1 概觀](data-lake-store-overview.md)
 * [使用入口網站開始使用 Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 * [使用 PowerShell 開始使用 Data Lake Storage Gen1](data-lake-store-get-started-powershell.md)  

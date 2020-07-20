@@ -1,103 +1,156 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Content Moderator 文件
+summary: Azure Content Moderator API 是一項認知服務，可檢查文字、影像和視訊內容是否含有可能具冒犯意味、有風險或不當的資料。 找到這類資料時，服務會對內容套用適當的標籤 (旗標)。 加上旗標的內容隨後可由您的應用程式處理，以遵循法規或維護使用者應有的環境。
 metadata:
   title: Content Moderator 文件 - 快速入門、教學課程和 API 參考 - Azure 認知服務 | Microsoft Docs
-  description: 了解如何使用 Content Moderator 檢查文字、影像和視訊內容是否含有可能具冒犯意味、有風險或不當的資料。
+  description: Azure Content Moderator API 是一項認知服務，可檢查文字、影像和視訊內容是否含有可能具冒犯意味、有風險或不當的資料。 找到這類資料時，服務會對內容套用適當的標籤 (旗標)。 加上旗標的內容隨後可由您的應用程式處理，以遵循法規或維護使用者應有的環境。
   services: cognitive-services
-  author: nitinme
-  manager: cgronlun
   ms.service: cognitive-services
   ms.subservice: content-moderator
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 12/20/2018
-  ms.author: nitinme
-abstract:
-  description: Azure Content Moderator API 是一項認知服務，可檢查文字、影像和視訊內容是否含有可能具冒犯意味、有風險或不當的資料。 找到這類資料時，服務會對內容套用適當的標籤 (旗標)。 加上旗標的內容隨後可由您的應用程式處理，以遵循法規或維護使用者應有的環境。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ../media/index/content-moderator-landing-page-video.png
-      width: 250
-    title: '使用 Content Moderator 進行影片仲裁 (15:42)'
-    href: 'https://channel9.msdn.com/Shows/AI-Show/Video-Moderation-with-Content-Moderator?term=content%20moderator&lang-en=true'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/content-moderator/overview
-            html: <p>了解 Content Moderator API。</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: 什麼是內容仲裁？
-          - href: /azure/cognitive-services/content-moderator/text-moderation-api
-            html: <p>了解文字仲裁。</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Text Moderation API
-          - href: /azure/cognitive-services/content-moderator/image-moderation-api
-            html: <p>了解影像仲裁。</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Image Moderation API
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何選取箭號連結，開始使用 Content Moderator <img src="images/index/link.jpg" height="15" width="15"></img>上也提供本文中使用的原始碼。
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: images/index/i_portal.svg
-          - image:
-              src: images/index/logo_csharp.svg
-          - image:
-              src: images/index/logo_python.svg
-        rows:
-          - title: 分析文字內容
-            values:
-              - href: quick-start
-              - href: text-moderation-quickstart-dotnet
-              - href: text-moderation-quickstart-python
-          - title: 分析映像內容
-            values:
-              - href: null
-              - href: image-moderation-quickstart-dotnet
-              - href: null
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何使用 Content Moderator 開發應用程式：
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="ecommerce-retail-catalog-moderation.md">仲裁電子商務產品影像</a>
-  - title: 範例
-    items:
-      - type: paragraph
-        text: 尋找 Content Moderator API 的範例：
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=content+moderator&sort=Relevance">程式碼範例</a>'
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: API
-            html: '<p><a href="https://docs.microsoft.com/azure/cognitive-services/content-moderator/api-reference">REST API</a></p>'
-          - title: SDK
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-contentmoderator/?view=azure-node-latest">Node.js</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator">Go</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'
+  author: PatrickFarley
+  ms.author: pafarley
+  ms.date: 10/24/2019
+  ms.openlocfilehash: 92648f5b1720cd8274817d289dae1f4631e8b7e7
+  ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 04/28/2020
+  ms.locfileid: "82195947"
+landingContent:
+- title: 有關內容仲裁
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是內容仲裁？
+      url: overview.md
+  - linkListType: video
+    links:
+    - text: 使用 Content Moderator 進行影片仲裁
+      url: https://channel9.msdn.com/Shows/AI-Show/Video-Moderation-with-Content-Moderator?term=content%20moderator&lang-en=true
+- title: 分析映像內容
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 影像仲裁
+      url: image-moderation-api.md
+  - linkListType: quickstart
+    links:
+    - text: 使用 .NET SDK
+      url: client-libraries.md?pivots=programming-language-csharp
+    - text: 使用 Python SDK
+      url: client-libraries.md?pivots=programming-language-python
+    - text: 使用 Java SDK
+      url: client-libraries.md?pivots=programming-language-java
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 API 主控台
+      url: try-image-api.md
+  - linkListType: tutorial
+    links:
+    - text: 仲裁電子商務產品影像
+      url: ecommerce-retail-catalog-moderation.md
+- title: 使用自訂影像清單
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 .NET SDK
+      url: image-lists-quickstart-dotnet.md
+    - text: 使用 Python SDK
+      url: python-sdk-quickstart.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 API 主控台
+      url: try-image-list-api.md
+- title: 分析文字內容
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 文字仲裁
+      url: text-moderation-api.md
+  - linkListType: quickstart
+    links:
+    - text: 使用 .NET SDK
+      url: dotnet-sdk-quickstart.md
+    - text: 使用 Python SDK
+      url: python-sdk-quickstart.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 API 主控台
+      url: try-text-api.md
+- title: 使用自訂字詞清單
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 .NET SDK
+      url: term-lists-quickstart-dotnet.md
+    - text: 使用 Python SDK
+      url: python-sdk-quickstart.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 API 主控台
+      url: try-terms-list-api.md
+- title: 分析影片內容
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 .NET SDK
+      url: video-moderation-api.md
+  - linkListType: tutorial
+    links:
+    - text: 影片及文字記錄仲裁
+      url: video-transcript-moderation-review-tutorial-dotnet.md
+  - linkListType: video
+    links:
+    - text: 使用 Content Moderator 進行影片仲裁
+      url: https://channel9.msdn.com/Shows/AI-Show/Video-Moderation-with-Content-Moderator?term=content%20moderator&lang-en=true
+- title: 使用檢閱、工作流程和作業
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 檢閱工具
+      url: Review-Tool-User-Guide/human-in-the-loop.md
+    - text: 檢閱、工作流程和作業
+      url: review-api.md
+  - linkListType: quickstart
+    links:
+    - text: 使用 Python SDK 建立檢閱
+      url: python-sdk-quickstart.md
+  - linkListType: how-to-guide
+    links:
+    - text: 定義和使用檢閱 (檢閱工具)
+      url: Review-Tool-User-Guide/review-moderated-images.md
+    - text: 定義和使用工作流程 (檢閱工具)
+      url: Review-Tool-User-Guide/workflows.md
+    - text: 定義和使用作業 (API 主控台)
+      url: try-review-api-job.md
+- title: 參考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 內容仲裁 API
+      url: https://docs.microsoft.com/azure/cognitive-services/content-moderator/api-reference
+    - text: .NET SDK
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet
+    - text: Python SDK
+      url: https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/?view=azure-python
+    - text: Java SDK
+      url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable
+    - text: Node.js SDK
+      url: https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-contentmoderator
+    - text: Go SDK
+      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure 命令列介面 (CLI)
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
+- title: 說明與意見反應
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: UserVoice
+      url: https://cognitive.uservoice.com/forums/559960-content-moderator
+    - text: 知識庫
+      url: https://cognitive.uservoice.com/knowledgebase/topics/132073-content-moderator
+    - text: Stack Overflow
+      url: https://stackoverflow.com/questions/tagged/microsoft-cognitive

@@ -1,26 +1,25 @@
 ---
-title: Azure PowerShell 指令碼範例 - 建立 Service Fabric 叢集 | Microsoft Docs
-description: Azure PowerShell 指令碼範例 - 建立 Service Fabric 叢集。
+title: 在 PowerShell 中建立 Service Fabric 叢集
+description: Azure PowerShell 指令碼範例 - 建立以 X.509 憑證保護的 Service Fabric 叢集。
 services: service-fabric
 documentationcenter: ''
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 tags: azure-service-management
 ms.assetid: 0f9c8bc5-3789-4eb3-8deb-ae6e2200795a
 ms.service: service-fabric
 ms.workload: multiple
-ms.devlang: na
 ms.topic: sample
 ms.date: 01/19/2018
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: ae43ab6cb8236d2e438eb107491126756325bb5d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f8e1a0ca86f9346cf07c87a738d48cb56f6d7d57
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666608"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75614769"
 ---
 # <a name="create-a-service-fabric-cluster"></a>建立 Service Fabric 叢集
 
@@ -47,7 +46,7 @@ Remove-AzResourceGroup -Name $groupname -Force
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [New-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) | 建立新的 Service Fabric 叢集。 |
 

@@ -1,33 +1,31 @@
 ---
-title: 使用 Hive 活動轉換資料 - Azure | Microsoft Docs
+title: 使用 Hive 活動轉換資料-Azure
 description: 了解如何使用 Azure 資料處理站中的 Hive 活動，以在隨選/您自己的 HDInsight 叢集上執行 Hive 查詢。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.assetid: 80083218-743e-4da8-bdd2-60d1c77b1227
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 4b622a5925aebd140fed2ac74eaf7cc186803b90
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: d153f8c316cbb76e063f07f7f823c8d9c4a21f87
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60236146"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74703361"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>使用 Azure Data Factory 中的 Hive 活動轉換資料 
-> [!div class="op_single_selector" title1="Transformation Activities"]
+> [!div class="op_single_selector" title1="轉換活動"]
 > * [Hive 活動](data-factory-hive-activity.md) 
 > * [Pig 活動](data-factory-pig-activity.md)
 > * [MapReduce 活動](data-factory-map-reduce.md)
 > * [Hadoop 串流活動](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活動](data-factory-spark.md)
-> * [Machine Learning Batch 執行活動](data-factory-azure-ml-batch-execution-activity.md)
+> * [Machine Learning 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
 > * [Machine Learning 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
 > * [預存程序活動](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL 活動](data-factory-usql-activity.md)
@@ -39,7 +37,7 @@ ms.locfileid: "60236146"
 Data Factory [管線](data-factory-create-pipelines.md)中的 HDInsight Hive 活動會在[您自己](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或[隨選的](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux 架構 HDInsight 叢集上執行 Hive 查詢。 本文是根據 [資料轉換活動](data-factory-data-transformation-activities.md) 一文，它呈現資料轉換和支援的轉換活動的一般概觀。
 
 > [!NOTE] 
-> 如果您是 Azure Data Factory 的新手，請在閱讀本文之前先閱讀 [Azure Data Factory 簡介](data-factory-introduction.md)，以及研習[建置第一個資料管線](data-factory-build-your-first-pipeline.md)。 
+> 如果您是 Azure Data Factory 的新手，請在閱讀本文章之前閱讀 [Azure Data Factory 簡介](data-factory-introduction.md)，以及研習教學課程：[建置您的第一個資料管線](data-factory-build-your-first-pipeline.md)。 
 
 ## <a name="syntax"></a>語法
 
@@ -73,16 +71,16 @@ Data Factory [管線](data-factory-create-pipelines.md)中的 HDInsight Hive 活
 }
 ```
 ## <a name="syntax-details"></a>語法詳細資料
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
-| name |活動的名稱 |是 |
-| 說明 |說明活動用途的文字 |否 |
-| type |HDinsightHive |是 |
-| 輸入 |Hive 活動所耗用的輸入 |否 |
+| NAME |活動的名稱 |是 |
+| description |說明活動用途的文字 |No |
+| type |HDinsightHive |Yes |
+| 輸入 |Hive 活動所耗用的輸入 |No |
 | 輸出 |Hive 活動所耗用的輸出 |是 |
-| 預設容器 |參考 HDInsight 叢集註冊為 Data Factory 中的連結服務 |是 |
-| script |指定 Hive 指令碼內嵌 |否 |
-| 指令碼路徑 |在 Azure Blob 儲存體中儲存 Hive 指令碼，並提供檔案的路徑。 使用 'script' 或 'scriptPath' 屬性。 兩者無法同時使用。 檔案名稱有區分大小寫。 |否 |
+| linkedServiceName |參考 HDInsight 叢集註冊為 Data Factory 中的連結服務 |Yes |
+| 指令碼 |指定 Hive 指令碼內嵌 |No |
+| scriptPath |在 Azure Blob 儲存體中儲存 Hive 指令碼，並提供檔案的路徑。 使用 'script' 或 'scriptPath' 屬性。 兩者無法同時使用。 檔案名稱有區分大小寫。 |否 |
 | 定義 |在使用 'hiveconf' 的 Hive 指令碼內指定參數做為參考的金鑰/值組 |否 |
 
 ## <a name="example"></a>範例
@@ -242,10 +240,10 @@ FROM HiveSampleIn Group by ProfileID
         SUM(Duration)
     FROM HiveSampleIn Group by ProfileID
     ```
-  ## <a name="see-also"></a>另请参阅
+  ## <a name="see-also"></a>另請參閱
 * [Pig 活動](data-factory-pig-activity.md)
 * [MapReduce 活動](data-factory-map-reduce.md)
 * [Hadoop 串流活動](data-factory-hadoop-streaming-activity.md)
 * [叫用 Spark 程式](data-factory-spark.md)
-* [叫用 R 指令碼](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [叫用 R 指令碼](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

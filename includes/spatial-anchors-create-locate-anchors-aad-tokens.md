@@ -1,11 +1,11 @@
 ---
 ms.openlocfilehash: c06b94d179f9f5a17a652cf32bd560cc9b5f8e4f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60232699"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "67173675"
 ---
 ### <a name="azure-active-directory-authentication"></a>Azure Active Directory 驗證
 
-Azure 空間的錨點也可讓使用者 Azure AD (Active Directory) 權杖進行驗證的應用程式。 例如，您可以使用 Azure AD 權杖來整合 Azure 空間的起點。 如果企業維護使用者在 Azure AD 中，您可以提供 Azure 空間的錨點 SDK 中的 Azure AD 使用者權杖。 如此一來，可讓您直接與屬於相同的 Azure AD 租用戶帳戶的 Azure 空間的錨點服務進行驗證。
+Azure Spatial Anchors 也可讓應用程式使用使用者 Azure AD (Active Directory) 權杖進行驗證。 例如，您可以使用 Azure AD 權杖與 Azure Spatial Anchors 整合。 如果企業在 Azure AD 中維護使用者，您可以在 Azure Spatial Anchors SDK 中提供使用者 Azure AD 權杖。 這麼做可讓您直接向 Azure Spatial Anchors 服務驗證屬於相同 Azure AD 租用戶的帳戶。

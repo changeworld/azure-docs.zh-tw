@@ -4,13 +4,13 @@ ms.author: crdun
 ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
-ms.openlocfilehash: 82d22580bdf2aacd9d3fcba9e59f2443a2ef3d1b
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
-ms.translationtype: HT
+ms.openlocfilehash: bfb93cfe0a48c7776615d0032ac6634fd86b21cb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42809717"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "67174491"
 ---
-1. [將 Firebase 新增至 Android 專案](https://firebase.google.com/docs/android/setup)
+1. [將火庫添加到您的 Android 專案](https://firebase.google.com/docs/android/setup)
 
-2. 在 Android Studio 中選擇 [檔案]  > [專案結構]。 依序選取 [通知]、[Firebase 雲端通訊]，然後按一下 [確定]。
+2. 在 Android 工作室中，選擇**檔** > **專案結構**。 依序選取 [通知]****、[Firebase 雲端通訊]****，然後按一下 [確定]****。

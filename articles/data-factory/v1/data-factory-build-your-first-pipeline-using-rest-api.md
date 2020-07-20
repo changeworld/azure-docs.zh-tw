@@ -1,29 +1,26 @@
 ---
-title: 建置您的第一個 Data Factory (REST) | Microsoft Docs
+title: 建置第一個資料處理站 (REST)
 description: 在本教學課程中，您會使用 Data Factory REST API 建立範例 Azure Data Factory 管線。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 7e0a2465-2d85-4143-a4bb-42e03c273097
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/01/2017
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 5dcf31adc5e8bdf810d484f07ebeb6f23acbf452
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 9d8b05a2268a122289c529050c75fd27dd73245b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487799"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "75438956"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>教學課程：使用 Data Factory REST API 建置您的第一個 Azure Data Factory
 > [!div class="op_single_selector"]
 > * [概觀和必要條件](data-factory-build-your-first-pipeline.md)
-> * [Azure 入口網站](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Resource Manager 範本](data-factory-build-your-first-pipeline-using-arm.md)
@@ -33,7 +30,7 @@ ms.locfileid: "58487799"
 
 
 > [!NOTE]
-> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[快速入門：使用 Azure Data Factory 建立資料處理站](../quickstart-create-data-factory-rest-api.md)。
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[快速入門：使用 Azure Data Factory 來建立資料處理站](../quickstart-create-data-factory-rest-api.md)。
 
 在本文中，您會使用 Data Factory REST API 來建立第一個 Azure Data Factory。 若要使用其他工具/SDK 進行本教學課程，請選取下拉式清單的其中一個選項。
 
@@ -45,7 +42,7 @@ ms.locfileid: "58487799"
 > 一個管線中可以有多個活動。 您可以將一個活動的輸出資料集設為另一個活動的輸入資料集，藉此鏈結兩個活動 (讓一個活動接著另一個活動執行)。 如需詳細資訊，請參閱 [Data Factory 排程和執行](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -87,7 +84,7 @@ ms.locfileid: "58487799"
 
 ### <a name="azurestoragelinkedservicejson"></a>azurestoragelinkedservice.json
 > [!IMPORTANT]
-> 以 Azure 儲存體帳戶的名稱和金鑰取代 **accountname** 和 **accountkey**。 若要了解如何取得您的儲存體存取金鑰，請參閱[管理儲存體帳戶](../../storage/common/storage-account-manage.md#access-keys)中說明如何檢視、複製和重新產生儲存體存取金鑰的資訊。
+> 以 Azure 儲存體帳戶的名稱和金鑰取代 **accountname** 和 **accountkey**。 若要了解如何取得儲存體存取金鑰，請參閱[管理儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。
 >
 >
 
@@ -123,10 +120,10 @@ ms.locfileid: "58487799"
 
 下表提供程式碼片段中所使用之 JSON 屬性的描述：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
-| ClusterSize |HDInsight 叢集的大小。 |
-| TimeToLive |指定 HDInsight 叢集在被刪除之前的閒置時間。 |
+| clusterSize |HDInsight 叢集的大小。 |
+| timeToLive |指定 HDInsight 叢集在被刪除之前的閒置時間。 |
 | linkedServiceName |指定用來儲存 HDInsight 產生之記錄的儲存體帳戶 |
 
 請注意下列幾點：
@@ -169,10 +166,10 @@ JSON 會定義名為 **AzureBlobInput**的資料集，以表示管線中活動�
 
 下表提供程式碼片段中所使用之 JSON 屬性的描述：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--- |:--- |
 | type |類型屬性設為 AzureBlob，因為資料位於 Azure Blob 儲存體。 |
-| 預設容器 |表示您稍早建立的 StorageLinkedService。 |
+| linkedServiceName |表示您稍早建立的 StorageLinkedService。 |
 | fileName |這是選用屬性。 如果您省略此屬性，會挑選位於 folderPath 的所有檔案。 在這種情況下，只會處理 input.log。 |
 | type |記錄檔為文字格式，因此我們會使用 TextFormat。 |
 | columnDelimiter |記錄檔案中的資料行會以逗號字元 (,) 分隔 |
@@ -302,7 +299,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
     確認您在此指定的名稱 (ADFCopyTutorialDF) 符合在 **datafactory.json**指定的名稱。
 
     ```powershell
-    $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@datafactory.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/FirstDataFactoryREST?api-version=2015-10-01};
+    $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@datafactory.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/FirstDataFactoryREST?api-version=2015-10-01};
     ```
 2. 使用 **Invoke-Command**執行命令。
 
@@ -317,13 +314,13 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 請注意下列幾點：
 
-* Azure Data Factory 的名稱在全域必須是唯一的。 如果您在結果中看到錯誤：「Data factory 名稱 “FirstDataFactoryREST” 無法使用」，請執行下列步驟︰
+* Azure Data Factory 的名稱在全域必須是唯一的。 如果您在結果中看到錯誤︰「Data factory 名稱 “FirstDataFactoryREST” 無法使用」  ，請執行下列步驟︰
   1. 在 **datafactory.json** 檔案中變更名稱 (例如，yournameFirstDataFactoryREST)。 請參閱 [Data Factory - 命名規則](data-factory-naming-rules.md) 主題，以了解 Data Factory 成品的命名規則。
   2. 在指派 **$cmd** 變數值的第一個命令中，以新的名稱取代 FirstDataFactoryREST 並執行命令。
   3. 執行下面兩個命令來叫用 REST API，以建立 Data Factory 和列印作業的結果。
 * 若要建立 Data Factory 執行個體，您必須是 Azure 訂用帳戶的參與者/系統管理員
 * Data Factory 的名稱未來可能會註冊為 DNS 名稱，因此會變成公開可見的名稱。
-* 如果您收到錯誤：「此訂用帳戶未註冊為使用命名空間 Microsoft.DataFactory」，請執行下列其中一項，然後嘗試再次發佈︰
+* 如果您收到錯誤：「此訂用帳戶未註冊為使用命名空間 Microsoft.DataFactory」  ，請執行下列其中一項，然後嘗試再次發佈︰
 
   * 在 Azure PowerShell 中，執行下列命令以註冊 Data Factory 提供者：
 
@@ -422,7 +419,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
     ```
 
 ## <a name="create-pipeline"></a>建立管線
-在此步驟中，您會建立第一個具有 **HDInsightHive** 活動的管線。 每個月都可取得輸入配量 (頻率：月，間隔：1)，每個月都會產生輸出配量，而活動的排程器屬性也設為每月。 輸出資料集設定及活動排程器必須相符。 目前，輸出資料集會影響排程，因此即使活動並未產生任何輸出，您都必須建立輸出資料集。 如果活動沒有任何輸入，您可以略過建立輸入資料集。
+在此步驟中，您會建立第一個具有 **HDInsightHive** 活動的管線。 您每個月都可取得輸入配量資訊 (頻率：每月，間隔：1)，輸出配量則是每用產生，而活動的排程器屬性也設為每月。 輸出資料集設定及活動排程器必須相符。 目前，輸出資料集會影響排程，因此即使活動並未產生任何輸出，您都必須建立輸出資料集。 如果活動沒有任何輸入，您可以略過建立輸入資料集。
 
 確認您在 Azure Blob 儲存體的 **adfgetstarted/inputdata** 資料夾中看到了 **input.log** 檔案，並執行下列命令以部署管線。 由於 **start** 和 **end** 時間設定在過去，且 **isPaused** 設為 false，管線 (管線中的活動) 會在部署之後立即執行。
 
@@ -465,7 +462,7 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 >
 >
 
-執行 Invoke-Command 和下一個命令，直到您看到配量處於 [就緒] 狀態或 [失敗] 狀態。 當配量處於 [就緒] 狀態時，檢查您 Blob 儲存體中 **adfgetstarted** 容器內 **partitioneddata** 資料夾的輸出資料。  建立隨選 HDInsight 叢集通常需要一些時間。
+執行 Invoke-Command 和下一個命令，直到您看到配量處於 [就緒]  狀態或 [失敗]  狀態。 當配量處於 [就緒] 狀態時，檢查您 Blob 儲存體中 **adfgetstarted** 容器內 **partitioneddata** 資料夾的輸出資料。  建立隨選 HDInsight 叢集通常需要一些時間。
 
 ![輸出資料](./media/data-factory-build-your-first-pipeline-using-rest-api/three-ouptut-files.png)
 
@@ -474,9 +471,9 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 >
 >
 
-您也可以使用 Azure 入口網站來監視配量及排解任何疑難問題。 如需詳細，請參閱 [使用 Azure 入口網站監視管線](data-factory-build-your-first-pipeline-using-editor.md#monitor-a-pipeline) 。
+您也可以使用 Azure 入口網站來監視配量及排解任何疑難問題。 如需詳細，請參閱 [使用 Azure 入口網站監視管線](data-factory-monitor-manage-pipelines.md) 。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 在本教學課程中，您會在 HDInsight hadoop 叢集上執行 Hive 指令碼，以建立 Azure Data Factory 來處理資料。 您會在使用 Azure 入口網站中使用 Data Factory 編輯器來執行下列步驟︰
 
 1. 建立 Azure **Data Factory**。
@@ -487,10 +484,10 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 4. 建立具有 **HDInsight Hive** 活動的**管線**。
 
 ## <a name="next-steps"></a>後續步驟
-在本文中，您已經建立可在隨選 Azure HDInsight 叢集上執行 Hive 指令碼，含有轉換活動 (HDInsight 活動) 的管線。 若要了解如何使用「複製活動」從 Azure Blob 將資料複製到 Azure SQL，請參閱[教學課程：從 Azure Blob 將資料複製到 Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+在本文中，您已經建立可在隨選 Azure HDInsight 叢集上執行 Hive 指令碼，含有轉換活動 (HDInsight 活動) 的管線。 若要了解如何使用「複製活動」從 Azure Blob 將資料複製到 Azure SQL，請參閱 [教學課程：從 Azure Blob 將資料複製到 Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 ## <a name="see-also"></a>另請參閱
-| 話題 | 說明 |
+| 主題 | 描述 |
 |:--- |:--- |
 | [Data Factory REST API 參考](/rest/api/datafactory/) |請參閱 Data Factory Cmdlet 中的完整文件 |
 | [管線](data-factory-create-pipelines.md) |本文協助您了解 Azure Data Factory 中的管線和活動，以及如何使用這些來為您的案例或業務建構端對端的資料導向工作流程。 |

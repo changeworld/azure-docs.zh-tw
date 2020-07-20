@@ -1,38 +1,40 @@
 ---
 title: 影像仲裁 - Content Moderator
-titlesuffix: Azure Cognitive Services
-description: 使用內容仲裁的電腦輔助影像仲裁以及人工審核工具來審核成人和猥褻內容的影像。
+titleSuffix: Azure Cognitive Services
+description: 使用內容仲裁的電腦輔助影像仲裁和人對迴圈審核工具來審核成人和猥褻內容的影像。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 9f1df23d1f0f24787bb9267064ffd647eda2cb74
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.date: 04/14/2020
+ms.author: pafarley
+ms.openlocfilehash: fe76e32bfd9b1734f3c84a400f897b7af7e3168b
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756038"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800990"
 ---
 # <a name="learn-image-moderation-concepts"></a>了解影像仲裁概念
 
-使用內容仲裁的電腦輔助影像仲裁以及[人工審核工具](Review-Tool-User-Guide/human-in-the-loop.md)來審核成人和猥褻內容的影像。 掃描影像的文字內容並擷取該文字，然後偵測臉部。 您可以根據自訂清單比對影像，並採取進一步的動作。
+使用內容仲裁的電腦輔助影像仲裁和[審核工具](Review-Tool-User-Guide/human-in-the-loop.md)來審核成人和猥褻內容的影像。 掃描影像的文字內容並擷取該文字，然後偵測臉部。 您可以根據自訂清單比對影像，並採取進一步的動作。
 
 ## <a name="evaluating-for-adult-and-racy-content"></a>評估成人和猥褻內容
 
 **評估**作業會傳回介於 0 與 1 之間的信賴分數。 它也會傳回等於 true 或 false 的布林值資料。 這些值會預測影像是否包含潛在的成人和猥褻內容。 當您以影像 (檔案或 URL) 呼叫 API 時，傳回的回應包含下列資訊：
 
-    "ImageModeration": {
-      .............
-      "adultClassificationScore": 0.019196987152099609,
-      "isImageAdultClassified": false,
-      "racyClassificationScore": 0.032390203326940536,
-      "isImageRacyClassified": false,
-      ............
-      ],
+```json
+"ImageModeration": {
+    .............
+    "adultClassificationScore": 0.019196987152099609,
+    "isImageAdultClassified": false,
+    "racyClassificationScore": 0.032390203326940536,
+    "isImageRacyClassified": false,
+    ............
+    ],
+```
 
 > [!NOTE]
 > 
@@ -51,22 +53,23 @@ ms.locfileid: "58756038"
 
 摘錄範例：
 
-    "TextDetection": {
-      "status": {
+```json
+"TextDetection": {
+    "status": {
         "code": 3000.0,
         "description": "OK",
         "exception": null
-      },
-      .........
-      "language": "eng",
-      "text": "IF WE DID \r\nALL \r\nTHE THINGS \r\nWE ARE \r\nCAPABLE \r\nOF DOING, \r\nWE WOULD \r\nLITERALLY \r\nASTOUND \r\nOURSELVE \r\n",
-      "candidates": []
     },
-
+    .........
+    "language": "eng",
+    "text": "IF WE DID \r\nALL \r\nTHE THINGS \r\nWE ARE \r\nCAPABLE \r\nOF DOING, \r\nWE WOULD \r\nLITERALLY \r\nASTOUND \r\nOURSELVE \r\n",
+    "candidates": []
+},
+```
 
 ## <a name="detecting-faces"></a>偵測臉部
 
-有助於偵測影像中的個人資料，例如臉部偵測的臉部。 您可以偵測每個影像中的潛在臉部和潛在臉部數量。
+偵測臉部有助於偵測個人資料，例如影像中的臉部。 您可以偵測每個影像中的潛在臉部和潛在臉部數量。
 
 回應包含下列資訊：
 
@@ -75,29 +78,30 @@ ms.locfileid: "58756038"
 
 摘錄範例：
 
-
-    "FaceDetection": {
-       ......
-      "result": true,
-      "count": 2,
-      "advancedInfo": [
-      .....
-      ],
-      "faces": [
+```json
+"FaceDetection": {
+    ......
+    "result": true,
+    "count": 2,
+    "advancedInfo": [
+        .....
+    ],
+    "faces": [
         {
-          "bottom": 598,
-          "left": 44,
-          "right": 268,
-          "top": 374
+            "bottom": 598,
+            "left": 44,
+            "right": 268,
+            "top": 374
         },
         {
-          "bottom": 620,
-          "left": 308,
-          "right": 532,
-          "top": 396
+            "bottom": 620,
+            "left": 308,
+            "right": 532,
+            "top": 396
         }
-      ]
-    }
+    ]
+}
+```
 
 ## <a name="creating-and-managing-custom-lists"></a>建立和管理自訂清單
 
@@ -124,7 +128,8 @@ ms.locfileid: "58756038"
 
 摘錄範例：
 
-    {
+```json
+{
     ..............,
     "IsMatch": true,
     "Matches": [
@@ -137,14 +142,15 @@ ms.locfileid: "58756038"
         }
     ],
     ....
-    }
+}
+```
 
-## <a name="human-review-tool"></a>人工檢閱工具
+## <a name="review-tool"></a>檢閱工具
 
-如需詳細資訊，請使用內容仲裁的[檢閱工具](Review-Tool-User-Guide/human-in-the-loop.md)及其 API，以便為人工仲裁在檢閱中呈現仲裁結果和內容。 其會檢閱電腦指派的標籤，並確認其最終決策。
+如需更差別細微的案例，請使用內容仲裁[審查工具](Review-Tool-User-Guide/human-in-the-loop.md)和其 API，為您的人力仲裁者呈現審核結果和內容。 其會檢閱電腦指派的標籤，並確認其最終決策。
 
 ![給人工仲裁的影像檢閱](images/moderation-reviews-quickstart-dotnet.PNG)
 
 ## <a name="next-steps"></a>後續步驟
 
-試用[影像仲裁 API 主控台](try-image-api.md)，並使用 REST API 程式碼範例。 此外，如果您已熟悉 Visual Studio 和 C#，請一併參閱[影像仲裁 .NET 快速入門](image-moderation-quickstart-dotnet.md)。
+試用[影像仲裁 API 主控台](try-image-api.md)，並使用 REST API 程式碼範例。 另請參閱[審查、工作流程和作業](./review-api.md)，以瞭解如何設定人工審核。

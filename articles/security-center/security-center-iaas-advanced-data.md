@@ -1,168 +1,137 @@
 ---
-title: 進階 IaaS Azure 資訊安全中心資料安全性 |Microsoft Docs
-description: " 了解如何在 Azure 資訊安全中心中的 iaas 啟用進階的資料安全性。 "
+title: Azure 資訊安全中心的 SQL 機器先進資料安全性（預覽）
+description: 瞭解如何在 Azure 資訊安全中心中啟用 SQL 電腦的先進資料安全性
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: monhaber
+author: memildin
+manager: rkarlin
 ms.assetid: ba46c460-6ba7-48b2-a6a7-ec802dd4eec2
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2019
-ms.author: monhaber
-ms.openlocfilehash: e601bbaa0d15078fc2b19b5b7c536e3a1f6d20ad
-ms.sourcegitcommit: 4891f404c1816ebd247467a12d7789b9a38cee7e
+ms.date: 06/28/2020
+ms.author: memildin
+ms.openlocfilehash: f159d2cdc48b144d0c75c62cd8a7ba6667424243
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65442743"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043864"
 ---
-# <a name="advanced-data-security-for-sql-servers-on-iaas"></a>IaaS 上的 SQL server 的進階的資料安全性
-IaaS 上的 SQL server 的進階的資料安全性是 SQL 的進階安全性功能的整合的套件。 目前包含呈現及緩解潛在的資料庫弱點和偵測可能表示您的資料庫威脅的異常活動的功能。
+# <a name="advanced-data-security-for-sql-machines-preview"></a>SQL 電腦的 Advanced data security （預覽）
 
-此供應項目 IaaS SQL server 的安全性根據所使用的相同基本技術[Azure SQL Database 進階資料安全性封裝](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)。
+Azure 資訊安全中心的 SQL 機器先進資料安全性，可保護裝載于 Azure、其他雲端環境，甚至是內部部署機器上的 SQL Server。 這會為您的 Azure 原生 SQL 伺服器擴充保護，以完整支援混合式環境。
 
+這項預覽功能包含可識別和減輕潛在資料庫弱點，以及偵測可能表示對資料庫有威脅之異常活動的功能： 
 
-## <a name="overview"></a>概觀
+* **弱點評估**-掃描服務，可探索、追蹤及協助您修復潛在的資料庫弱點。 評量掃描提供 SQL 電腦安全性性狀態的總覽，以及任何安全性結果的詳細資料。
 
-進階的資料安全性 (ADS) 提供一組的進階 SQL 安全性功能，其中包含弱點評量和進階威脅防護。
+* [先進的威脅防護](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)-此偵測服務會持續監視您的 sql server 是否有威脅，例如 sql 插入式攻擊、暴力密碼破解攻擊和許可權濫用。 這項服務會在 Azure 資訊安全中心中提供動作導向的安全性警示，其中包含可疑活動的詳細資料、如何緩和威脅的指引，以及使用 Azure Sentinel 繼續進行調查的選項。
 
-* [弱點評估](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)是容易設定的服務，可探索、追蹤及協助您修復潛在的資料庫弱點。 它提供您的安全性狀態的可視性，並包括解決安全性問題和增強資料庫攻防的步驟。
-* [進階威脅防護](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)偵測到異常活動時會不尋常且有危害的意圖存取或攻擊您的 SQL server。 持續監視您的資料庫的可疑活動，並提供動作導向的安全性警示的異常資料庫存取模式。 這些警示會提供可疑活動詳細資料，以及建議的動作，若要調查並減輕威脅。
-
-## <a name="get-started-with-ads-for-iaas"></a>開始使用 ADS iaas
-
-下列步驟可協助您開始使用 ADS iaas。
-
-### <a name="set-up-ads-for-iaas"></a>為 IaaS 廣告設定
-
-**開始之前**:您需要 Log Analytics 工作區來儲存要分析的安全性記錄檔。 如果您沒有的話，則您可以輕易地中所述建立一個[在 Azure 入口網站中建立 Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)。
-
-1. 將 VM 連接主控 SQL server，Log Analytics 工作區。 如需相關指示，請參閱 <<c0> [ 連線的 Windows 電腦連線到 Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)。
-
-1. 從 Azure Marketplace 中，移至[SQL 進階的資料安全性解決方案](https://ms.portal.azure.com/#create/Microsoft.SQLAdvancedDataSecurity)。
-（您可以尋找使用 marketplace 的 [搜尋] 選項，請參閱下圖）。**SQL 進階的資料安全性**頁面隨即開啟。
-
-    ![IaaS 的進階的資料安全性](./media/security-center-advanced-iaas-data/sql-advanced-data-security.png)
-
-1. 按一下頁面底部的 [新增] 。 會顯示 工作場所。
-
-    ![建立進階的資料安全性](./media/security-center-advanced-iaas-data/sql-advanced-data-create.png)
-
-1. 選取要使用，然後按一下工作區**建立**。
-
-   ![選取工作區](./media/security-center-advanced-iaas-data/sql-workspace.png)
-
-1. 重新啟動[VM 的 SQL server](https://docs.microsoft.com/sql/database-engine/configure-windows/start-stop-pause-resume-restart-sql-server-services?view=sql-server-2017)。
+>[!TIP]
+> SQL 電腦的 advanced data security 是 Azure 資訊安全中心的[advanced data security 套件](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)的延伸模組，適用于 Azure SQL Database、Azure SYNAPSE 和 SQL 受控執行個體。
 
 
-## <a name="explore-and-investigate-security-alerts"></a>瀏覽和調查安全性警示
+## <a name="set-up-advanced-data-security-for-sql-machines"></a>設定 SQL 電腦的 advanced data security 
 
-您可以檢視和管理目前的安全性警示。
+為 SQL 電腦設定 Azure 資訊安全中心的先進資料安全性包含兩個步驟：
 
-1. 按一下 **資訊安全中心** > **安全性警示**，然後按一下 警示。
+* 在您的 SQL server 主機上布建 Log Analytics 代理程式。 這會提供與 Azure 的連線。
 
-    ![找不到警示](./media/security-center-advanced-iaas-data/find-alert.png)
+* 在資訊安全中心的 [定價和設定] 頁面中，啟用選用的配套。
 
-1. 從**遭受攻擊的資源** 欄中，按一下遭到攻擊的資源。
+以下說明這兩種情況。
 
-1. 若要檢視警示詳細資料和調查目前的威脅，並解決未來的威脅的動作，向下捲動**的一般資訊**頁面上，然後在**補救步驟**區段中，按一下**調查步驟**連結。
+### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>步驟 1： 在您的 SQL server 主機上布建 Log Analytics 代理程式：
 
-    ![補救步驟](./media/security-center-advanced-iaas-data/remediation-steps.png)
+- **在 AZURE vm 上 SQL Server** -如果您的 SQL 機器裝載于 azure vm 上，您可以自動布建[Log Analytics 代理程式](security-center-enable-data-collection.md#workspace-configuration)。 或者，您可以遵循手動[程式來新增 AZURE VM](quick-onboard-azure-stack.md#add-the-virtual-machine-extension-to-your-existing-azure-stack-virtual-machines)。
 
-1. 若要檢視與觸發此警示相關聯的記錄檔，請前往**Log analytics 工作區**並執行下列步驟：
+- **Azure arc 上的 SQL Server** -如果您的 SQL Server 裝載于[azure arc](https://docs.microsoft.com/azure/azure-arc/)機器上，您可以使用資訊安全中心建議的「log analytics 代理程式」安裝在您的 Windows 型 Azure arc 機器（預覽）上，以部署 log analytics 代理程式。 或者，您也可以依照[Azure Arc 檔](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal)中的手動程式進行操作。
 
-     > [!NOTE]
-     > 如果**Log analytics 工作區**不會出現在左側功能表中，按一下**所有服務**，並搜尋**Log analytics 工作區**。
+- **SQL Server 內部內部部署**-如果您的 SQL Server 裝載于不含 Azure Arc 的內部部署 Windows 機器上，您有兩個選項可將其連接至 azure：
+    
+    - **部署 Azure Arc** -您可以將任何 Windows 機器連接到資訊安全中心。 不過，Azure Arc 在您*所有*的 azure 環境中提供更深入的整合。 如果您設定了 Azure Arc，您會在入口網站中看到 [ **SQL Server – Azure arc** ] 頁面，而您的安全性警示會出現在該頁面的專用 [**安全性**] 索引標籤上。 因此，第一個和建議的選項是[在主機上設定 Azure arc](https://docs.microsoft.com/azure/azure-arc/servers/onboard-portal#install-and-validate-the-agent-on-windows) ，並遵循上述**azure arc 上 SQL Server**的指示。
+        
+    - **不使用 Azure Arc 連接 windows 電腦**-如果您選擇連接在 windows 電腦上執行的 SQL Server，而不使用 azure arc，請依照[將 Windows 機器連線到 Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)中的指示進行。
 
-    1. 請務必要顯示的資料行**定價層**並**WorkspaceID**資料行。 (**Log analytics 工作區** > **編輯資料行**，新增**定價層**並**WorkspaceID**。)
 
-     ![編輯資料行](./media/security-center-advanced-iaas-data/edit-columns.png)
+### <a name="step-2-enable-the-optional-bundle-in-security-centers-pricing-and-settings-page"></a>步驟 2： 在資訊安全中心的 [定價和設定] 頁面中啟用選用套件組合：
 
-    1. 按一下工作區具有警示的記錄檔。
+1. 從資訊安全中心的提要欄位中，開啟 [**定價 & 設定**] 頁面。
 
-    1. 底下**一般**功能表上，按一下 **記錄檔**
+    - 如果您使用**Azure 資訊安全中心的預設工作區**（名為 "defaultworkspace-[您的訂用帳戶 id]-[region]"），請選取相關的**訂**用帳戶。
 
-    1. 旁按一下眼睛**SQLAdvancedThreatProtection**資料表。 列出記錄檔。
+    - 如果您使用**非預設工作區**，請選取相關的**工作區**（如有必要，請在篩選準則中輸入工作區的名稱）：
 
-     ![檢視記錄檔](./media/security-center-advanced-iaas-data/view-logs.png)
+        ![title](./media/security-center-advanced-iaas-data/pricing-and-settings-workspaces.png)
 
-## <a name="set-up-email-notification-for-atp-alerts"></a>設定 ATP 警示的電子郵件通知 
 
-您可以設定要產生 ASC 警示時收到電子郵件通知收件者清單。 電子郵件會包含 Azure 資訊安全中心警示，以及所有相關的詳細資料的直接連結。 
+1. 將 [**電腦上的 SQL server （預覽）** ] 的選項切換為 [已啟用]。 
 
-1. 移至**資訊安全中心** > **安全性原則**以及相關訂用帳戶按一下 資料列內**編輯設定 >**。
+    [![具有選用配套的資訊安全中心定價頁面](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png)](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-large.png#lightbox)
 
-    ![訂用帳戶設定](./media/security-center-advanced-iaas-data/subscription-settings.png)
+    所有連線到所選工作區的 SQL server，將會在電腦上啟用 SQL server 的 Advanced Data Security。 在第一次重新開機 SQL Server 之後，保護將會完全有效。 
 
-1. 從**設定**功能表上，按一下**電子郵件通知**。 
-1. 在 **電子郵件地址**文字中，輸入要接收通知電子郵件地址。 您可以輸入多個電子郵件地址，使用逗號 （，） 分隔電子郵件地址。  比方說admin1@mycompany.com，admin2@mycompany.com，admin3@mycompany.com
+    >[!TIP] 
+    > 若要建立新的工作區，請遵循[建立 Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)中的指示。
 
-      ![電子郵件設定](./media/security-center-advanced-iaas-data/email-settings.png)
 
-1. 在 **電子郵件通知**設定，設定下列選項：
-  
-    * **傳送電子郵件通知，針對高嚴重性警示**:而不是傳送所有警示的電子郵件，請傳送只針對高嚴重性警示。
-    * **也傳送電子郵件通知給訂用帳戶擁有者**:也將通知傳送給訂用帳戶擁有者。
+1. （選擇性）設定安全性警示的電子郵件通知。 
+    您可以設定要在產生資訊安全中心警示時接收電子郵件通知的收件者清單。 此電子郵件包含 Azure 資訊安全中心中警示的直接連結，以及所有相關的詳細資料。 如需詳細資訊，請參閱[設定安全性警示的電子郵件通知](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)。
 
-1. 在頂端**電子郵件通知**畫面上，按一下**儲存**。
 
-  > [!NOTE]
-  > 務必按一下 **儲存**之前關閉視窗，或新**電子郵件通知**將不會儲存設定。
 
-## <a name="explore-vulnerability-assessment-reports"></a>探索的弱點可能會評估報告
+## <a name="explore-vulnerability-assessment-reports"></a>探索弱點評定報告
 
-弱點評定儀表板會提供評估結果的概觀，您所有的資料庫。 您可以檢視資料庫的分佈根據 SQL Server 版本，以及與資料庫和失敗的檢查，根據風險分佈進行分佈的整體摘要傳遞失敗的摘要。
+弱點評估服務會每週掃描您的資料庫一次。 掃描會在一周中啟用服務的同一天執行。
 
-您可以檢視您的弱點可能會評估結果和報表直接從 Log Analytics。
+[弱點評定] 儀表板可讓您大致瞭解所有資料庫的評量結果，以及狀況良好和狀況不良資料庫的摘要，以及根據風險散發而失敗檢查的整體摘要。
 
-1. 瀏覽至您的 Log Analytics 工作區與廣告解決方案。
-1. 瀏覽至**解決方案**，然後選取**SQL 弱點評量**解決方案。
-1. 在 **摘要**窗格中，按一下**檢視摘要**，然後選取您**SQL 弱點評定報告**。
+您可以直接從資訊安全中心查看弱點評估結果。
 
-    ![SQL 評定報告](./media/security-center-advanced-iaas-data/ads-sql-server-1.png)
+1. 從資訊安全中心的提要欄位中，開啟 [**建議**] 頁面，然後選取**您的 SQL server 上應補救的建議弱點（預覽）**。 如需詳細資訊，請參閱[資訊安全中心建議](security-center-recommendations.md)。 
 
-    載入報表儀表板。 請確定時間範圍設定為至少是**過去 7 天**因為您的資料庫上固定每 7 天一次的排程上執行弱點評定掃描。
 
-    ![將過去 7 天](./media/security-center-advanced-iaas-data/ads-sql-server-2.png)
+    [![* * 電腦上 SQL server 上的弱點應予以補救（預覽） * * 建議](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png)](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png#lightbox)
 
-1. 若要向下鑽研，如需詳細資訊，請按一下任何儀表板項目。 例如：
+    這項建議的詳細觀點隨即出現。
 
-   1. 按一下中的弱點可能會檢查**失敗檢查摘要**區段，以檢視 Log Analytics 含有結果的資料表進行這項檢查，跨所有資料庫。 結果項目會先列出。
+    [![您應補救機器上 SQL server 上的 * * 弱點的詳細觀點（預覽） * * 建議](media/security-center-advanced-iaas-data/all-servers-view.png)](media/security-center-advanced-iaas-data/all-servers-view.png#lightbox)
 
-   1. 然後，逐一點選以檢視每個弱點，包括的弱點可能會描述和影響、 狀態、 相關聯的風險，以及實際的結果，在此資料庫的詳細資料。 您也可以查看實際的查詢執行來執行此檢查和補救的資訊來解決這項弱點。
+1. 如需更多詳細資料，請向下切入：
 
-    ![選取工作區](./media/security-center-advanced-iaas-data/ads-sql-server-3.png)
+    * 如需掃描的資源（資料庫）和已測試的安全性檢查清單的總覽，請選取您感關注的伺服器。
 
-    ![選取工作區](./media/security-center-advanced-iaas-data/ads-sql-server-4.png)
+    * 如需依特定 SQL 資料庫分組的弱點總覽，請選取您感關注的資料庫。
 
-1. 您可以執行任何 Log Analytics 查詢，對您的弱點評定結果資料，來交叉分析的資料，根據您的需求。
+    在每個視圖中，安全性檢查都會依**嚴重性**排序。 按一下特定的安全性檢查以查看詳細資料窗格，其中包含**描述**、如何**修復**它，以及其他相關資訊，例如**影響**或**基準測試**。
 
-## <a name="advanced-threat-protection-for-sql-servers-on-iaas-alerts"></a>進階威脅防護，SQL server IaaS 警示
-不尋常且有危害意圖存取或惡意探索 SQL Server 會產生警示。 這些事件會觸發下列警示：
+## <a name="advanced-threat-protection-for-sql-servers-on-machines-alerts"></a>針對電腦上的 SQL server 進行先進的威脅防護警示
+警示是由不尋常且可能有害的嘗試存取或惡意探索 SQL 電腦所產生。 這些事件可以觸發 [[警示參考] 頁面的 [SQL Database 的警示] 和 [SQL 資料倉儲] 區段](alerts-reference.md#alerts-sql-db-and-warehouse)中所顯示的警示。
 
-### <a name="anomalous-access-pattern-alerts"></a>異常存取模式的警示
 
-* **從不尋常的位置的存取權：** 有人從不尋常的地理位置登入 SQL Server，而使 SQL Server 的存取模式有所變更時，會觸發此警示。 可能的原因：
-     * 攻擊者或先前的惡意採用存取您的 SQL Server。
-     * 合法使用者存取您的 SQL Server 從新的位置。
-* **從可能有害的應用程式存取**： 可能有害的應用程式用來存取資料庫時，會觸發他的警示。 可能的原因：
-     * 攻擊者嘗試入侵您的 SQL 使用常見攻擊工具。
-     * 合法的滲透，用來測試作用中。
-* **從不熟悉的主體存取**：有人使用不尋常的主體 (SQL 使用者) 登入 SQL Server，而使 SQL Server 的存取模式有所變更時，會觸發此警示。 可能的原因：
-     * 攻擊者或先前的惡意採用存取您的 SQL Server。 
-     * 合法使用者存取您的 SQL Server，從與新的主體。
-* **暴力 SQL 認證**：有使用不同認證的異常大量登入失敗時，會觸發此警示。 可能的原因：
-     * 嘗試入侵您的 SQL 使用暴力密碼破解攻擊者。
-     * 合法的滲透，用來測試作用中。
 
-### <a name="potential-sql-injection-attacks-coming"></a>潛在 SQL 插入式攻擊 （即將推出）
+## <a name="explore-and-investigate-security-alerts"></a>探索和調查安全性警示
 
-* **SQL 插入式攻擊的弱點**：應用程式在資料庫中產生錯誤的 SQL 陳述式時，會觸發此警示。 此警示表示 SQL 插入式攻擊的可能弱點。 可能的原因：
-     * 應用程式的程式碼中有缺失，而建構了錯誤的 SQL 陳述式
-     * 應用程式的程式碼或預存程序在建構錯誤的 SQL 陳述式時未處理使用者輸入，這可能會遭到 SQL 插入式攻擊的侵害
-* **潛在的 SQL 插入式攻擊**：若有主動攻擊是藉由 SQL 插入中已識別到的已知應用程式弱點來發動時，就會觸發此警示。 這表示有攻擊者嘗試使用有弱點的應用程式程式碼或預存程序插入惡意 SQL 陳述式。
+安全性警示可在資訊安全中心的 [警示] 頁面、資源的 [安全性] 索引標籤，或透過警示電子郵件中的直接連結取得。
+
+1. 若要查看警示，請從資訊安全中心的提要欄位中選取 [**安全性警示**]，然後選取警示。
+
+1. 警示的設計是獨立的，其中每一項都有詳細的補救步驟和調查資訊。 您可以使用其他 Azure 資訊安全中心和 Azure Sentinel 功能進一步調查，以提供更廣泛的觀點：
+
+    * 啟用 SQL Server 的審核功能以進一步調查。 如果您是 Azure Sentinel 使用者，您可以將 SQL 審核記錄從 Windows 安全性記錄檔事件上傳到 Sentinel，並享有豐富的調查體驗。 [深入瞭解 SQL Server 的審核](https://docs.microsoft.com/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?view=sql-server-ver15)。
+    * 若要改善您的安全性狀態，請針對每個警示中所指出的主機電腦，使用資訊安全中心的建議。 這會降低未來攻擊的風險。 
+
+    [深入瞭解如何管理和回應警示](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)。
+
+
+## <a name="next-steps"></a>後續步驟
+
+如需相關內容，請參閱下列文章：
+
+- [SQL Database 和 SQL 資料倉儲的安全性警示](alerts-reference.md#alerts-sql-db-and-warehouse)
+- [設定安全性警示的電子郵件通知](security-center-provide-security-contact-details.md)
+- [深入瞭解 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/)
+- [Azure 資訊安全中心的先進資料安全性封裝](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)

@@ -1,25 +1,17 @@
 ---
-title: Azure PowerShell 指令碼範例 - 建立 Log Analytics 工作區 | Microsoft Docs
+title: 建立 Log Analytics 工作區 - Azure PowerShell
 description: Azure PowerShell 指令碼範例 - 建立 Log Analytics 工作區
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-tags: ''
-ms.assetid: ''
-ms.service: log-analytics
+ms.subservice: logs
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
+author: bwren
+ms.author: bwren
 ms.date: 09/07/2017
-ms.author: magoedte
-ms.openlocfilehash: 4dc98fc3912f9d9c659ecfcaa3df253d30bfcc78
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 62b02de5d1c08f6047052d71e3be420cceb1c5c0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306964"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80054637"
 ---
 # <a name="create-a-log-analytics-workspace-with-powershell"></a>使用 PowerShell 建立 Log Analytics 工作區
 
@@ -39,7 +31,7 @@ ms.locfileid: "57306964"
 
 這個指令碼會使用下列命令，在您的訂用帳戶中建立新的 Log Analytics 工作區。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [Get-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace) | 取得現有工作區的相關資訊。 |
 | [New-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace) | 在指定的資源群組和位置建立工作區。 |

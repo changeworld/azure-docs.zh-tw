@@ -1,0 +1,241 @@
+### YamlMime:Hub
+title: Azure 安全性文件
+summary: Azure 將資訊安全納入了各個層面。 Azure 提供獨特的資訊安全優勢，這些優勢衍生自全域安全性智慧、複雜的客戶型控制項以及安全強化基礎結構。 這項功能強大的組合能協助您保護應用程式和資料、支援您的合規性用途，並為各種規模的組織提供符合成本效益的安全性。
+brand: azure
+metadata:
+  title: Azure 安全性文件
+  description: Azure 將資訊安全納入了各個層面。 Azure 提供獨特的資訊安全優勢，這些優勢衍生自全域安全性智慧、複雜的客戶型控制項以及安全強化基礎結構。 這項功能強大的組合能協助您保護應用程式和資料、支援您的合規性用途，並為各種規模的組織提供符合成本效益的安全性。
+  services: security
+  ms.service: security
+  ms.subservice: na
+  ms.topic: hub-page
+  ms.collection: na
+  author: TerryLanfear
+  ms.author: terrylan
+  manager: rkarlin
+  ms.date: 08/29/2019
+  ms.openlocfilehash: b3c5fb0dd15c1211132e627b507aa20a043f09ba
+  ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 04/10/2020
+  ms.locfileid: "81115372"
+highlightedContent:
+  items:
+  - title: Azure 安全性簡介
+    itemType: overview
+    url: ./fundamentals/overview.md
+  - title: 安全性的最佳做法與模式
+    itemType: concept
+    url: ./fundamentals/best-practices-and-patterns.md
+  - title: 什麼是 Azure 資訊安全中心？
+    itemType: overview
+    url: ../security-center/security-center-intro.md
+conceptualContent:
+  items:
+  - title: 基礎
+    links:
+    - url: ./fundamentals/technical-capabilities.md
+      itemType: overview
+      text: Azure 安全性技術功能
+    - url: https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91
+      itemType: concept
+      text: 雲端運算的共同責任
+    - url: ./fundamentals/security-controls.md
+      itemType: concept
+      text: Azure 服務的安全性控制
+    footerLink:
+      url: ./fundamentals/index.yml
+      text: 查看更多
+  - title: 開發人員
+    links:
+    - url: ./develop/secure-dev-overview.md
+      itemType: overview
+      text: 安全開發的最佳做法
+    - url: ./develop/secure-web-app.md
+      itemType: tutorial
+      text: 開發安全的 Web 應用程式
+    - url: ./develop/threat-modeling-tool.md
+      itemType: concept
+      text: Microsoft 威脅模型化工具
+    footerLink:
+      url: ./develop/index.yml
+      text: 查看更多
+  - title: 基準測試和建議
+    links:
+    - url: ./benchmarks/introduction.md
+      itemType: download
+      text: Azure 雲端安全性基準測試
+    - url: ../security-center/security-center-using-recommendations.md
+      itemType: overview
+      text: Azure 資訊安全中心建議
+    footerLink:
+      url: ./benchmarks/index.yml
+      text: 查看更多
+  - title: 秘密和金鑰
+    links:
+    - url: ../key-vault/key-vault-overview.md
+      itemType: overview
+      text: 何謂 Azure Key Vault？
+    - url: ../key-vault/quick-create-cli.md
+      itemType: quickstart
+      text: 設定和擷取祕密
+    - url: ../dedicated-hsm/overview.md
+      itemType: overview
+      text: 什麼是 Azure 專用硬體安全模組 (HSM)？
+    footerLink:
+      url: /azure/key-vault/
+      text: 查看更多
+  - title: 資料保護
+    links:
+    - url: ./fundamentals/encryption-atrest.md
+      itemType: concept
+      text: 資料靜態加密
+    - url: ./fundamentals/data-encryption-best-practices.md
+      itemType: concept
+      text: 資料安全性與加密的最佳做法
+    - url: ../storage/blobs/security-recommendations.md
+      itemType: concept
+      text: 儲存體安全性
+    footerLink:
+      url: ./fundamentals/encryption-overview.md
+      text: 查看更多
+  - title: 身分識別管理
+    links:
+    - url: ./fundamentals/choose-ad-authn.md
+      itemType: concept
+      text: 選擇正確的驗證方法
+    - url: ./fundamentals/steps-secure-identity.md
+      itemType: concept
+      text: 保護身分識別基礎結構
+    - url: ./fundamentals/identity-management-best-practices.md
+      itemType: concept
+      text: 安全性最佳做法
+    footerLink:
+      url: ./fundamentals/identity-management-overview.md
+      text: 查看更多
+  - title: 安全性監控
+    links:
+    - url: ../security-center/security-center-get-started.md
+      itemType: quickstart
+      text: 將訂用帳戶上線到資訊安全中心
+    - url: ../security-center/security-center-just-in-time.md
+      itemType: how-to-guide
+      text: Just-in-Time 虛擬機器存取
+    - url: ../security-center/tutorial-security-policy.md
+      itemType: how-to-guide
+      text: 使用安全性原則
+    footerLink:
+      url: /azure/security-center/
+      text: 查看更多
+  - title: IoT 安全性監控
+    links:
+    - url: ../asc-for-iot/overview.md
+      itemType: overview
+      text: 適用於 IoT 的 Azure 資訊安全中心的簡介
+    - url: ../asc-for-iot/architecture.md
+      itemType: how-to-guide
+      text: 適用於 IoT 的 Azure 資訊安全中心架構
+    - url: ../asc-for-iot/getting-started.md
+      itemType: how-to-guide
+      text: 開始使用適用於 IoT 的 Azure 資訊安全中心
+    footerLink:
+      url: /azure/asc-for-iot/
+      text: 查看更多
+  - title: 安全性分析
+    links:
+    - url: ../sentinel/overview.md
+      itemType: overview
+      text: 什麼是 Azure Sentinel 預覽版？
+    - url: ../sentinel/quickstart-onboard.md
+      itemType: quickstart
+      text: Azure Sentinel 預覽版上線
+    - url: ../sentinel/quickstart-get-visibility.md
+      itemType: quickstart
+      text: 開始使用 Azure Sentinel 預覽版
+    footerLink:
+      url: /azure/sentinel/
+      text: 查看更多
+  - title: 威脅保護
+    links:
+    - url: ../security-center/security-center-alerts-overview.md
+      itemType: concept
+      text: Azure 資訊安全中心的安全性警示
+    - url: ../storage/common/storage-advanced-threat-protection.md
+      itemType: concept
+      text: Azure 儲存體的進階威脅防護
+    - url: ../sql-database/sql-database-threat-detection-overview.md
+      itemType: concept
+      text: Azure SQL 資料庫的進階威脅防護
+    footerLink:
+      url: ./fundamentals/threat-detection.md
+      text: 查看更多
+  - title: 記錄與稽核
+    links:
+    - url: ./fundamentals/log-audit.md
+      itemType: concept
+      text: Azure 記錄與稽核
+    - url: ./fundamentals/management-monitoring-overview.md
+      itemType: overview
+      text: 管理和監視概觀
+    footerLink:
+      url: https://docs.microsoft.com/search/?search=security+audit+log&scope=azure&category=Documentation
+      text: 搜尋更多資料
+  - title: 網路安全性
+    links:
+    - url: ./fundamentals/network-overview.md
+      itemType: overview
+      text: 安全性概觀
+    - url: ./fundamentals/network-best-practices.md
+      itemType: concept
+      text: 安全性最佳做法
+    - url: ./fundamentals/ddos-best-practices.md
+      itemType: concept
+      text: DDoS保護
+  - title: 基礎結構安全性
+    links:
+    - url: ./fundamentals/physical-security.md
+      itemType: concept
+      text: Azure 設備、廠房以及實體安全性
+    - url: ./fundamentals/infrastructure-network.md
+      itemType: concept
+      text: 網路架構
+    - url: ./fundamentals/protection-customer-data.md
+      itemType: concept
+      text: 客戶資料保護
+    footerLink:
+      url: ./fundamentals/infrastructure.md
+      text: 查看更多
+  - title: 虛擬機器安全性
+    links:
+    - url: ./fundamentals/virtual-machines-overview.md
+      itemType: overview
+      text: 安全性概觀
+    - url: ./fundamentals/iaas.md
+      itemType: concept
+      text: IaaS 工作負載的最佳做法
+    - url: ./fundamentals/azure-marketplace-images.md
+      itemType: concept
+      text: 安全性設定建議
+  - title: 資料庫安全性
+    links:
+    - url: ./fundamentals/encryption-overview.md#encryption-of-data-at-rest-with-azure-sql-database
+      itemType: overview
+      text: 資料安全性
+    - url: ./fundamentals/paas-applications-using-sql.md
+      itemType: concept
+      text: 適用於 PaaS 資料庫的最佳做法
+    - url: ./fundamentals/database-security-checklist.md
+      itemType: concept
+      text: 安全性檢查清單
+  - title: 治理和合規性
+    links:
+    - url: ../governance/policy/overview.md
+      itemType: overview
+      text: Azure 原則服務
+    - url: ../governance/blueprints/overview.md
+      itemType: overview
+      text: Azure 藍圖服務
+    footerLink:
+      url: /azure/governance/
+      text: 查看更多

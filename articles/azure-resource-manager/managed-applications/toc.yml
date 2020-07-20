@@ -1,0 +1,143 @@
+- name: Azure 受控應用程式文件
+  href: index.yml
+- name: 概觀
+  items:
+    - name: Azure 受控應用程式
+      href: overview.md
+- name: 快速入門
+  expanded: true
+  items:
+    - name: 發佈應用程式定義
+      href: publish-service-catalog-app.md
+    - name: 部署服務目錄應用程式
+      href: deploy-service-catalog-quickstart.md
+- name: 教學課程
+  items:
+    - name: 發佈市集應用程式
+      href: publish-marketplace-app.md
+    - name: 使用自訂提供者建立受控應用程式
+      href: tutorial-create-managed-app-with-custom-provider.md
+- name: 範例
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
+    - name: 受控應用程式解決方案
+      href: sample-projects.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
+- name: 概念
+  items:
+    - name: 檢視定義成品
+      href: concepts-view-definition.md
+    - name: 適用於關聯的 Azure 原則
+      href: concepts-built-in-policy.md
+    - name: 角色定義成品
+      href: concepts-custom-role-definition.md
+- name: 操作指南
+  items:
+    - name: 發行者
+      items:
+        - name: 建立入口網站介面
+          href: create-uidefinition-overview.md
+        - name: 測試入口網站介面
+          href: test-createuidefinition.md
+        - name: 要求 Just-In-Time 存取
+          href: request-just-in-time-access.md
+        - name: 使用現有虛擬網路
+          href: existing-vnet-integration.md
+        - name: 更新受控資源
+          href: update-managed-resources.md
+        - name: 使用入口網站發佈應用程式定義
+          href: publish-portal.md
+        - name: 使用 Key Vault 中的祕密
+          href: key-vault-access.md
+        - name: 使用受控識別進行部署
+          href: publish-managed-identity.md
+        - name: 使用通知進行部署
+          href: publish-notifications.md
+    - name: 取用者
+      items:
+        - name: 監視受控應用程式
+          href: monitor-managed-application-portal.md
+        - name: 核准 Just-In-Time 存取
+          href: approve-just-in-time-access.md
+- name: 參考
+  items:
+    - name: 應用程式成品
+      items:
+        - name: 使用者介面元素
+          href: reference-createuidefinition-artifact.md
+        - name: 部署範本
+          href: reference-main-template-artifact.md
+        - name: 檢視定義
+          href: reference-view-definition-artifact.md
+    - name: Azure CLI
+      href: /cli/azure/managedapp
+    - name: PowerShell
+      href: /powershell/module/az.resources
+    - name: REST
+      href: /rest/api/resources/
+    - name: 使用者介面功能
+      href: create-uidefinition-functions.md
+    - name: 使用者介面元素
+      href: create-uidefinition-elements.md
+      items:
+        - name: 通用
+          items:
+            - name: DropDown
+              href: microsoft-common-dropdown.md
+            - name: FileUpload
+              href: microsoft-common-fileupload.md
+            - name: InfoBox
+              href: microsoft-common-infobox.md
+            - name: OptionsGroup
+              href: microsoft-common-optionsgroup.md
+            - name: PasswordBox
+              href: microsoft-common-passwordbox.md
+            - name: 區段
+              href: microsoft-common-section.md
+            - name: TagsByResource
+              href: microsoft-common-tagsbyresource.md
+            - name: TextBlock
+              href: microsoft-common-textblock.md
+            - name: TextBox
+              href: microsoft-common-textbox.md
+        - name: 計算
+          items:
+            - name: CredentialsCombo
+              href: microsoft-compute-credentialscombo.md
+            - name: SizeSelector
+              href: microsoft-compute-sizeselector.md
+            - name: UserNameTextBox
+              href: microsoft-compute-usernametextbox.md
+        - name: 受控識別
+          items:
+            - name: IdentitySelector
+              href: microsoft-managedidentity-identityselector.md
+        - name: 網路
+          items:
+            - name: PublicIPAddressCombo
+              href: microsoft-network-publicipaddresscombo.md
+            - name: VirtualNetworkCombo
+              href: microsoft-network-virtualnetworkcombo.md
+        - name: 儲存體
+          items:
+            - name: MultiStorageAccountCombo
+              href: microsoft-storage-multistorageaccountcombo.md
+            - name: StorageAccountSelector
+              href: microsoft-storage-storageaccountselector.md
+- name: 資源
+  items:
+    - name: Azure 藍圖
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 定價
+      href: 'https://azure.microsoft.com/pricing/details/managed-applications/'
+    - name: 定價計算機
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Resource Manager 範本最佳做法
+      href: 'https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-managedapps'

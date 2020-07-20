@@ -1,28 +1,24 @@
 ---
-title: Azure Data Factory 簡介 | Microsoft Docs
+title: Azure Data Factory 簡介
 description: 了解 Azure Data Factory，這是一項雲端資料整合服務，用來協調及自動移動和轉換資料。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: overview
-ms.date: 01/11/2018
-ms.author: shlo
-ms.openlocfilehash: 66ea269e2f29bfd39cdb81086391e0277474219d
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.date: 09/30/2019
+ms.openlocfilehash: 937b836582cfcbf11564aa28b11cd8647afa835c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961343"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84191116"
 ---
-# <a name="introduction-to-azure-data-factory"></a>Azure Data Factory 簡介 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [第 1 版](v1/data-factory-introduction.md)
-> * [目前的版本](introduction.md)
+# <a name="what-is-azure-data-factory"></a>Azure 資料處理站是什麼？
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 在巨量資料的世界中，未經處理、未經組織的資料通常是儲存在關聯式、非關聯式及其他儲存體系統中。 不過，未經處理資料本身並沒有適當的內容或意義，因此無法為分析人員、資料科學人員或業務決策者提供有意義的深入解析。 
 
@@ -34,16 +30,15 @@ ms.locfileid: "56961343"
 
 為了擷取深入解析，它希望使用雲端中的 Spark 叢集 (Azure HDInsight) 來處理聯結的資料，然後將轉換後的資料發佈到雲端資料倉儲 (例如 Azure SQL 資料倉儲)，來輕鬆地以該資料建立報告。 他們想要自動執行此工作流程，並且每日按照排程監視和管理此工作流程。 他們也想要在檔案進入 Blob 存放區容器時執行該工作流程。
 
-Azure Data Factory 就是解決這類資料案例的平台。 這是一項*雲端式資料整合服務，可讓您在雲端建立資料驅動工作流程，以便協調及自動進行資料移動和資料轉換*。 使用 Azure Data Factory，可以建立並排程資料驅動的工作流程 (稱為管線)，它可以從不同的資料存放區擷取資料。 使用計算服務 (例如，Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics 和 Azure Machine Learning) 可以處理或轉換資料。 
+Azure Data Factory 就是解決這類資料案例的平台。 這是一項*雲端式 ETL 和資料整合服務，可讓您在建立資料驅動工作流程，以便協調資料移動和大規模轉換資料*。 使用 Azure Data Factory，可以建立並排程資料驅動的工作流程 (稱為管線)，它可以從不同的資料存放區擷取資料。 您可以建立複雜的 ETL 程序，透過資料流程或使用計算服務 (例如 Azure HDInsight Hadoop、Azure Databricks 和 Azure SQL Database) 以視覺化方式轉換資料。 
 
-此外，您可以將輸出資料發佈至資料存放區，例如 Azure SQL 資料倉儲，讓商業智慧 (BI) 應用程式取用。 最後，透過 Azure Data Factory，即可將未經處理資料組織到有意義的資料存放區和資料湖中，以供做出更好的業務決策。
+此外，您可以將已轉換的資料發佈至資料存放區，例如 Azure SQL 資料倉儲，讓商業智慧 (BI) 應用程式取用。 最後，透過 Azure Data Factory，即可將未經處理資料組織到有意義的資料存放區和資料湖中，以供做出更好的業務決策。
 
-![Data Factory 的最上層檢視](media/introduction/big-picture.png)
+![Data Factory 的最上層檢視](media/data-flow/overview.png)
 
 ## <a name="how-does-it-work"></a>運作方式
-Azure Data Factory 中的管線 (資料導向工作流程) 通常會執行下列四個步驟︰
 
-![資料導向工作流程的四個步驟](media/introduction/four-steps-of-a-workflow.png)
+Data Factory 包含一系列的互連系統，可為資料工程師提供完整的端對端平台。
 
 ### <a name="connect-and-collect"></a>連線及收集
 
@@ -53,13 +48,15 @@ Azure Data Factory 中的管線 (資料導向工作流程) 通常會執行下列
 
 沒有 Data Factory，企業必須建置自訂的資料移動元件或撰寫自訂服務，以整合這些資料來源和處理。 整合和維護這類系統相當耗費成本而且困難。 此外，這些系統經常會缺少企業等級監視、警示與完全受控服務可以提供的控制項。
 
-有了 Data Factory，您就可以使用資料管線中的[複製活動](copy-activity-overview.md)，將內部部署和雲端來源資料存放區內的資料都移到雲端中的集中資料存放區，以供進一步分析。 例如，您可以收集 Azure Data Lake Store 中的資料，之後使用 Azure Data Lake Analytics 計算服務來轉換資料。 您也可以收集 Azure Blob 儲存體中的資料，之後使用 Azure HDInsight Hadoop 叢集來轉換資料。
+有了 Data Factory，您就可以使用資料管線中的[複製活動](copy-activity-overview.md)，將內部部署和雲端來源資料存放區內的資料都移到雲端中的集中資料存放區，以供進一步分析。 例如，您可以收集 Azure Data Lake Storage 中的資料，之後使用 Azure Data Lake Analytics 計算服務來轉換資料。 您也可以收集 Azure Blob 儲存體中的資料，之後使用 Azure HDInsight Hadoop 叢集來轉換資料。
 
 ### <a name="transform-and-enrich"></a>轉換及擴充
-在資料存在於雲端的集中式資料存放區之後，請使用計算服務 (例如 HDInsight Hadoop、Spark、Data Lake Analytics 和 Machine Learning) 來處理或轉換所收集的資料。 您想要在可維護且可控制的排程中可靠地產生轉換的資料，以將信任的資料饋送至生產環境。
+在資料存在於雲端的集中式資料存放區之後，請使用 ADF 對應資料流程來處理或轉換所收集的資料。 資料流程可讓資料工程師建立和維護在 Spark 上執行的資料轉換圖表，而不需了解 Spark 叢集或 Spark 程式設計。
 
-### <a name="publish"></a>發佈
-在未經處理資料已精簡成符合業務需求的可取用形式之後，將該資料載入到 Azure 資料倉儲、Azure SQL Database、Azure CosmosDB，或業務使用者可從其商業智慧工具指向的任何分析引擎。
+如果您想要手動編寫轉換的程式碼，ADF 支援外部活動，可供在 HDInsight Hadoop、Spark、Data Lake Analytics 和 Machine Learning 等計算服務上執行轉換。
+
+### <a name="cicd-and-publish"></a>CI/CD 和發佈
+Data Factory 使用 Azure DevOps 和 GitHub，為資料管線的 CI/CD 提供完整的支援。 這可讓您在發佈成品之前，以累加方式開發和傳遞您的 ETL 程序。 在未經處理資料已精簡成符合業務需求的可取用形式之後，將該資料載入到 Azure 資料倉儲、Azure SQL Database、Azure CosmosDB，或業務使用者可從其商業智慧工具指向的任何分析引擎。
 
 ### <a name="monitor"></a>監視
 在您順利建置並部署資料整合管線之後 (從精簡資料提供業務價值)，請監視所排定活動和管線的成功和失敗率。 Azure Data Factory 提供內建支援，可讓您透過 Azure 監視器、API、PowerShell、Azure 監視器記錄及 Azure 入口網站上的健康情況面板監視管線。
@@ -72,6 +69,9 @@ Azure 訂用帳戶可能會有一或多個 Azure Data Factory 執行個體 (或�
 
 這麼做的好處是，您可以將這些活動作為一個集合來進行管線，而不是個別管理每個活動。 管線中的活動可以鏈結在一起以循序方式運作，或是以平行方式獨立運作。
 
+### <a name="mapping-data-flows"></a>對應資料流程
+建立和管理資料轉換邏輯的圖表，您可以用來轉換任何大小的資料。 您可以建置資料轉換常式的可重複使用程式庫，並從 ADF 管線以相應放大的方式執行這些程序。 Data Factory 會在 Spark 叢集上執行您的邏輯，根據您的需要進行向上和向下微調。 您不需要管理或維護叢集。
+
 ### <a name="activity"></a>活動
 活動代表管線中的處理步驟。 例如，您可以使用複製活動將資料從某個資料存放區複製到另一個資料存放區。 同樣地，您可以使用在 Azure HDInsight 叢集上執行 Hive 查詢的 Hive 活動，來轉換或分析您的資料。 Data Factory 支援三種類型的活動︰資料移動活動、資料轉換活動，以及控制活動。
 
@@ -83,7 +83,7 @@ Azure 訂用帳戶可能會有一或多個 Azure Data Factory 執行個體 (或�
 
 Data Factory 中的連結服務，有兩個用途：
 
-- 用來代表**資料存放區**，其中包含 (但不限於) 內部部署 SQL Server 資料庫、Oracle 資料庫、檔案共用或 Azure Blob 儲存體帳戶。 如需所支援資料存放區的清單，請參閱[複製活動](copy-activity-overview.md)一文。
+- 用來代表**資料存放區**，其中包含 (但不限於) SQL Server資料庫、Oracle 資料庫、檔案共用或Azure Blob 儲存體帳戶。 如需所支援資料存放區的清單，請參閱[複製活動](copy-activity-overview.md)一文。
 
 - 用來代表可裝載活動執行的 **計算資源** 。 例如，HDInsightHive 活動會在 HDInsight Hadoop 叢集上執行。 如需轉換活動和所支援計算環境的清單，請參閱[轉換資料](transform-data.md)一文。
 
@@ -103,33 +103,16 @@ Data Factory 中的連結服務，有兩個用途：
 ### <a name="control-flow"></a>控制流程
 控制流程是管線活動的協調流程，其中包括將活動循序鏈結、分支、在管線層級定義參數，以及在依需求或從觸發程序叫用管線時傳遞引數。 此外，也包括自訂狀態傳遞和迴圈容器，亦即 For-each 列舉程式。
 
+### <a name="variables"></a>變數
+變數可以在管線內用來儲存暫存值，也可以與參數搭配使用，在管線、資料流程和其他活動之間傳遞值。
 
-如需 Data Factory 概念的詳細資訊，請參閱下列文章：
+## <a name="next-steps"></a>後續步驟
+以下是可探索的重要後續步驟文件：
 
 - [資料集和連結服務](concepts-datasets-linked-services.md)
 - [管線和活動](concepts-pipelines-activities.md)
 - [整合執行階段](concepts-integration-runtime.md)
-
-## <a name="supported-regions"></a>支援區域
-
-如需目前可使用 Data Factory 的 Azure 區域清單，請在下列頁面上選取您感興趣的區域，然後展開 [分析] 以找出 [Data Factory]：[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 不過，Data Factory 可以存取其他 Azure 區域的資料存放區和計算資料，以在資料存放區之間移動資料或使用計算服務處理資料。
-
-Azure Data Factory 本身不會儲存任何資料。 它可讓您建立資料導向工作流程，藉由使用其他區域或內部部署環境中的計算服務，協調所支援資料存放區之間的資料移動和資料處理。 它也可讓您使用程式設計方式和 UI 機制來監視和管理工作流程。
-
-雖然只有特定區域有提供 Data Factory，但為 Data Factory 中的資料移動提供技術支援的服務卻是全球數個區域中都有提供。 如果資料存放區位於防火牆後面，就會改由內部部署環境中所安裝的自我裝載 Integration Runtime 負責移動資料。
-
-如需範例，讓我們假設您的計算環境 (例如 Azure HDInsight 叢集和 Azure 機器學習服務) 即將用盡西歐區域的資源。 您可以在美國東部或美國東部 2 建立和利用 Azure Data Factory 執行個體，並用它來排程您在西歐計算環境的作業。 只要幾毫秒的時間，Data Factory 就能觸發計算環境上的作業，但執行計算環境上作業所需的時間則不會改變。
-
-## <a name="accessibility"></a>協助工具
-
-可存取 Azure 入口網站中的 Data Factory 使用者體驗。
-
-## <a name="compare-with-version-1"></a>與第 1 版比較
-如需 Data Factory 服務第 1 版與目前版本的差異清單，請參閱[與第 1 版比較](compare-versions.md)。 
-
-## <a name="next-steps"></a>後續步驟
-使用下列其中一個工具/SDK，開始建立 Data Factory 管線： 
-
+- [對應資料流程](concepts-data-flow-overview.md)
 - [Azure 入口網站中的 Data Factory 使用者介面](quickstart-create-data-factory-portal.md)
 - [Azure 入口網站中的複製資料工具](quickstart-create-data-factory-copy-data-tool.md)
 - [PowerShell](quickstart-create-data-factory-powershell.md)

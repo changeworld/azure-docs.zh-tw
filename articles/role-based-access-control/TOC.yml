@@ -1,9 +1,9 @@
-- name: RBAC for Azure 資源文件
+- name: Azure RBAC 文件
   href: index.yml
   items: null
 - name: 概觀
   items:
-    - name: 什麼是 RBAC？
+    - name: 什麼是 Azure RBAC？
       href: overview.md
     - name: 了解不同的角色
       href: rbac-and-directory-admin-roles.md
@@ -11,6 +11,9 @@
   items:
     - name: 檢視使用者存取權
       href: check-access.md
+    - name: ARM 範本
+      displayName: Resource Manager
+      href: quickstart-role-assignments-template.md
 - name: 教學課程
   items:
     - name: 授與使用者存取權 - 入口網站
@@ -23,54 +26,83 @@
       href: tutorial-custom-role-powershell.md
     - name: 建立自訂角色 - CLI
       href: tutorial-custom-role-cli.md
+- name: 範例
+  items:
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
-    - name: 了解角色定義
-      href: role-definitions.md
-    - name: 適用於 Azure 資源的 PIM
-      href: pim-azure-resource.md
+    - name: 最佳作法
+      href: best-practices.md
     - name: Azure 管理的條件式存取
       href: conditional-access-azure-management.md
-- name: 使用說明指南
+- name: 操作指南
   items:
-    - name: 管理存取權
+    - name: 列出角色定義
+      items:
+        - name: 概觀
+          href: role-definitions.md
+        - name: 列出角色定義
+          href: role-definitions-list.md
+    - name: 列出角色指派
+      items:
+        - name: 入口網站
+          href: role-assignments-list-portal.md
+        - name: PowerShell
+          href: role-assignments-list-powershell.md
+        - name: CLI
+          href: role-assignments-list-cli.md
+        - name: REST API
+          href: role-assignments-list-rest.md
+    - name: 新增或移除角色指派
       items:
         - name: 入口網站
           href: role-assignments-portal.md
+        - name: 入口網站 - 來賓使用者
+          href: role-assignments-external-users.md
         - name: PowerShell
           href: role-assignments-powershell.md
         - name: Azure CLI
           href: role-assignments-cli.md
         - name: REST API
           href: role-assignments-rest.md
-        - name: 範本
+        - name: ARM 範本
+          displayName: Resource Manager
           href: role-assignments-template.md
-    - name: 拒絕存取
+    - name: 列出拒絕指派
       items:
-        - name: 拒絕指派
+        - name: 概觀
           href: deny-assignments.md
         - name: 入口網站
           href: deny-assignments-portal.md
+        - name: PowerShell
+          href: deny-assignments-powershell.md
         - name: REST API
           href: deny-assignments-rest.md
-    - name: 自訂角色
+    - name: 建立或更新自訂角色
       items:
         - name: 概觀
           href: custom-roles.md
+        - name: 入口網站
+          href: custom-roles-portal.md
         - name: PowerShell
           href: custom-roles-powershell.md
         - name: Azure CLI
           href: custom-roles-cli.md
         - name: REST API
           href: custom-roles-rest.md
+        - name: ARM 範本
+          displayName: Resource Manager
+          href: custom-roles-template.md
     - name: 檢視活動記錄
       href: change-history-report.md
-    - name: 提高存取權限以管理所有訂用帳戶
+    - name: 提高存取權
       href: elevate-access-global-admin.md
-    - name: 管理外部使用者的存取
-      href: role-assignments-external-users.md
     - name: 傳統系統管理員
       href: classic-administrators.md
+    - name: 將訂用帳戶轉移至不同的目錄 (預覽)
+      href: transfer-subscription.md
     - name: 疑難排解
       href: troubleshooting.md
 - name: 參考
@@ -79,15 +111,16 @@
       href: built-in-roles.md
     - name: 資源提供者作業
       href: resource-provider-operations.md
-    - name: RBAC 限制
-      href: '../azure-subscription-service-limits.md#role-based-access-control-limits'
+    - name: Azure RBAC 限制
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits
     - name: Azure PowerShell
       href: /powershell/module/az.resources
     - name: Azure CLI
       href: /cli/azure/role?view=azure-cli-latest
     - name: REST API
       href: /rest/api/authorization/
-    - name: Resource Manager 範本
+    - name: ARM 範本
+      displayName: Resource Manager
       items:
         - name: 角色指派
           href: /azure/templates/microsoft.authorization/roleassignments

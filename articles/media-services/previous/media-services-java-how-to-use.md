@@ -14,17 +14,17 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: fedec6ea764394d36f5b4d7c883f7cb9f9520a29
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: 3adbb9471cc501861b65efd0321b3b4f72b07aea
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869029"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057852"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>開始在 Azure 媒體服務上使用 Java 用戶端 SDK  
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 至 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 本教學課程會逐步引導您使用 Java 用戶端 SDK，來實作搭配 Azure 媒體服務的基本視訊內容傳遞服務。
 
@@ -32,8 +32,8 @@ ms.locfileid: "64869029"
 
 需要有下列項目，才能完成本教學課程：
 
-* 一個 Azure 帳戶。 如需詳細資訊，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-* 一个媒体服务帐户。 若要建立媒體服務帳戶，請參閱[如何建立媒體服務帳戶](media-services-portal-create-account.md)。
+* 一個 Azure 帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* 媒體服務帳戶。 若要建立媒體服務帳戶，請參閱[如何建立媒體服務帳戶](media-services-portal-create-account.md)。
 * 目前的 [Azure 媒體服務 Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest)
 
 ## <a name="how-to-import-the-azure-media-services-java-client-sdk-package"></a>作法：匯入 Azure 媒體服務 Java 用戶端 SDK 套件
@@ -42,7 +42,7 @@ ms.locfileid: "64869029"
 
 例如，如果您的建置工具是 `gradle`，請將下列相依項目新增至您的 `build.gradle` 檔案：
 
-    compile group: 'com.microsoft.azure', name: 'azure-media', version: '0.9.8'
+`compile group: 'com.microsoft.azure', name: 'azure-media', version: '0.9.8'`
 
 >[!IMPORTANT]
 >從 `0.9.8` 版的 `azure-media` 套件開始，SDK 新增了 Azure Active Directory (AAD) 驗證的支援，並移除了 Azure 存取控制服務 (ACS) 驗證的支援。 建議您儘速移轉至 Azure AD 驗證模型。 如需有關移轉的詳細資訊，請閱讀[使用 Azure AD 驗證存取 Azure 媒體服務 API](media-services-use-aad-auth-to-access-ams-api.md)一文。
@@ -50,20 +50,20 @@ ms.locfileid: "64869029"
 >[!NOTE]
 >您可以在我們的 [GitHub 存放庫](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media)中找到 Azure 媒體服務 Java SDK 的原始程式碼。 請確定切換至 0.9 分支，而不是主要分支。 
 
-## <a name="how-to-use-azure-media-services-with-java"></a>作法：使用 Azure 媒體服務搭配 Java
+## <a name="how-to-use-azure-media-services-with-java"></a>作法：搭配使用 Azure 媒體服務和 Java
 
 >[!NOTE]
->建立媒體服務帳戶時，**預設**串流端點會新增至 [已停止] 狀態的帳戶。 若要開始串流內容並利用動態封裝和動態加密功能，您想要串流內容的串流端點必須處於 [執行中] 狀態。
+>建立媒體服務帳戶時，**預設**串流端點會新增至您的帳戶處於 [**已停止**] 狀態。 若要開始串流內容並利用動態封裝和動態加密功能，您想要串流內容的串流端點必須處於 [執行中] 狀態。
 
 下列程式碼將示範如何建立資產、上傳媒體檔案到資產、使用工作 (Task) 執行作業 (Job) 來轉換此資產，以及建立定位器以便串流您的影片。
 
 使用此程式碼前，請先設定媒體服務帳戶。 如需設定帳戶的相關資訊，請參閱[如何建立媒體服務帳戶](media-services-portal-create-account.md)。
 
 透過使用 Azure AD 服務主體驗證，程式碼會連線到 Azure 媒體服務 API。 建立 Azure AD 應用程式，並在程式碼中指定下列變數的值：
-* `tenant`:Azure AD 應用程式所在的 Azure AD 租用戶網域
-* `clientId`:Azure AD 應用程式的用戶端識別碼
-* `clientKey`:Azure AD 應用程式的用戶端金鑰
-* `restApiEndpoint`:Azure 媒體服務帳戶的 REST API 端點
+* `tenant`：Azure AD 應用程式所在的 Azure AD 租用戶網域
+* `clientId`：Azure AD 應用程式的用戶端識別碼
+* `clientKey`：Azure AD 應用程式的用戶端金鑰
+* `restApiEndpoint`：Azure 媒體服務帳戶的 REST API 端點
 
 您可以建立 Azure AD 應用程式，並從 Azure 入口網站取得上述設定值。 如需詳細資訊，請參閱[利用 Azure 入口網站開始使用 Azure AD 驗證](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad)的**服務主體驗證**區段。
 

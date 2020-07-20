@@ -4,13 +4,22 @@
   items:
     - name: 何謂 Azure 建議程式？
       href: advisor-overview.md
+- name: 快速入門
+  items:
+    - name: 設定新建議的警示
+      items:
+        - name: Azure 入口網站
+          href: advisor-alerts-portal.md
+        - name: ARM 範本
+          displayName: Resource Manager
+          href: advisor-alerts-arm.md
 - name: 教學課程
   items:
     - name: 開始使用 Advisor
       href: advisor-get-started.md
-- name: 使用說明指南
+- name: 操作指南
   items:
-    - name: 提高 Azure 應用程式的可用性
+    - name: 提升 Azure 應用程式的可靠性
       href: advisor-high-availability-recommendations.md
     - name: 讓資源更安全
       href: advisor-security-recommendations.md
@@ -18,21 +27,29 @@
       href: advisor-performance-recommendations.md
     - name: 降低服務成本
       href: advisor-cost-recommendations.md
+    - name: 實現卓越的營運績效
+      href: advisor-operational-excellence-recommendations.md
     - name: 設定建議
       href: view-recommendations.md
     - name: 權限和封鎖動作
       href: permissions.md
+    - name: 設定建議警示
+      href: advisor-alerts-portal.md
+    - name: 建議的大量補救
+      href: advisor-quick-fix.md
+    - name: Azure Resource Graph 中的 Advisor 資料
+      href: advisor-azure-resource-graph.md
 - name: 參考
   items:
     - name: 資訊安全中心
       href: 'https://azure.microsoft.com/services/security-center/'
-    - name: SQL DB Advisor
+    - name: SQL Database 建議程式
       href: 'https://azure.microsoft.com/documentation/articles/sql-database-advisor/'
     - name: App Service 方案
       href: 'https://docs.microsoft.com/azure/app-service/app-service-best-practices'
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/advisor/'
-    - name: CLI
+    - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/advisor?view=azure-cli-latest'
     - name: PowerShell
       href: 'https://docs.microsoft.com/powershell/module/az.advisor/?view=azps-1.2.0'
@@ -40,7 +57,7 @@
   items:
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/advisor'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
@@ -50,7 +67,7 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=advisor'
     - name: 影片
       href: 'https://azure.microsoft.com/resources/videos/index/?services=advisor'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=azure+advisor'
     - name: 程式碼範例
       href: 'https://azure.microsoft.com/resources/samples/?service=advisor'

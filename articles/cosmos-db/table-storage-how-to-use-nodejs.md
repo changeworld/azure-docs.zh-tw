@@ -1,26 +1,26 @@
 ---
-title: 如何從 Node.js 使用 Azure 表格儲存體或 Azure Cosmos DB 資料表 API
+title: 從 Node.js 使用 Azure 表格儲存體或 Azure Cosmos DB 資料表 API
 description: 使用 Azure 資料表儲存體或 Azure Cosmos DB 資料表 API 將結構化資料儲存在雲端。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: nodejs
 ms.topic: sample
 ms.date: 04/05/2018
-author: wmengmsft
-ms.author: wmeng
-ms.openlocfilehash: 977b59c3344eaf2c4877f51afea176455d22ecc9
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+author: sakash279
+ms.author: akshanka
+ms.openlocfilehash: 1f0541cd3ae7cf2c78d3cd2bf6844fed930e7968
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546682"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833142"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>如何從 Node.js 使用 Azure 表格儲存體或 Azure Cosmos DB 資料表 API
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
 ## <a name="overview"></a>概觀
-此文章示範如何在 Node.js 應用程式中使用「Azure 儲存體資料表」服務或 Azure Cosmos DB 來執行一般案例。
+本文示範如何在 Node.js 應用程式中使用「Azure 儲存體資料表」服務或 Azure Cosmos DB 來執行一般案例。
 
 ## <a name="create-an-azure-service-account"></a>建立 Azure 服務帳戶
 
@@ -37,23 +37,26 @@ ms.locfileid: "59546682"
 ## <a name="configure-your-application-to-access-azure-storage-or-the-azure-cosmos-db-table-api"></a>設定您的應用程式以存取 Azure 儲存體或 Azure Cosmos DB 資料表 API
 若要使用 Azure 儲存體或 Azure Cosmos DB，您需要 Azure Storage SDK for Node.js，這包含一組能與「儲存體 REST」服務進行通訊的便利程式庫。
 
-### <a name="use-node-package-manager-npm-to-install-the-package"></a>使用 Node Package Manager (NPM) 來安裝套件
+### <a name="use-node-package-manager-npm-to-install-the-package"></a>使用 Node Package Manager (NPM) 安裝封裝
 1. 使用命令列介面，例如 **PowerShell** (Windows)、**終端機** (Mac) 或 **Bash** (Unix)，瀏覽至儲存所建立應用程式的資料夾。
 2. 在命令視窗中輸入 **npm install azure-storage** 。 此命令的輸出類似下列範例。
 
-       azure-storage@0.5.0 node_modules\azure-storage
-       +-- extend@1.2.1
-       +-- xmlbuilder@0.4.3
-       +-- mime@1.2.11
-       +-- node-uuid@1.4.3
-       +-- validator@3.22.2
-       +-- underscore@1.4.4
-       +-- readable-stream@1.0.33 (string_decoder@0.10.31, isarray@0.0.1, inherits@2.0.1, core-util-is@1.0.1)
-       +-- xml2js@0.2.7 (sax@0.5.2)
-       +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
-3. 您可以手動執行 **ls** 命令，確認已建立 **node_modules** 資料夾。 該資料夾中有 **azure-storage** 套件，其中包含存取儲存體所需的程式庫。
+   ```bash
+    azure-storage@0.5.0 node_modules\azure-storage
+    +-- extend@1.2.1
+    +-- xmlbuilder@0.4.3
+    +-- mime@1.2.11
+    +-- node-uuid@1.4.3
+    +-- validator@3.22.2
+    +-- underscore@1.4.4
+    +-- readable-stream@1.0.33 (string_decoder@0.10.31, isarray@0.0.1, inherits@2.0.1, core-util-is@1.0.1)
+    +-- xml2js@0.2.7 (sax@0.5.2)
+    +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
+   ```
 
-### <a name="import-the-package"></a>匯入套件
+3. 您可以手動執行 **ls** 命令，確認已建立 **node_modules** 資料夾。 該資料夾中有 **azure-storage** 封裝，當中包含存取儲存體所需的程式庫。
+
+### <a name="import-the-package"></a>匯入封裝
 將下列程式碼加在應用程式中的 **server.js** 檔案之上：
 
 ```javascript
@@ -68,14 +71,14 @@ var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 ```
 
 ## <a name="add-an-azure-cosmos-db-connection"></a>新增 Azure Cosmos DB 連線
-若要新增 Azure Cosmos DB 連線，請建立 **TableService** 物件，然後指定您的帳戶名稱、主要索引鍵及端點。 您可以在 Azure 入口網站中，從您 Cosmos DB 的 [設定] > [連接字串] 中複製這些值。 例如︰
+若要新增 Azure Cosmos DB 連線，請建立 **TableService** 物件，然後指定您的帳戶名稱、主要索引鍵及端點。 您可以在 Azure 入口網站中，從您 Cosmos DB 的 [設定]   > [連接字串]  中複製這些值。 例如：
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
-```  
+```
 
 ## <a name="create-a-table"></a>建立資料表
-下列程式碼會建立 **TableService** 物件，並使用該物件建立新資料表。 
+下列程式碼會建立 **TableService** 物件，並使用該物件建立新資料表。
 
 ```javascript
 var tableSvc = azure.createTableService();
@@ -115,7 +118,7 @@ var retryOperations = new azure.ExponentialRetryPolicyFilter();
 var tableSvc = azure.createTableService().withFilter(retryOperations);
 ```
 
-## <a name="add-an-entity-to-a-table"></a>將實體加入至資料表
+## <a name="add-an-entity-to-a-table"></a>將實體新增至資料表
 若要新增實體，請先建立一個定義實體屬性的物件。 所有實體必須包含 **PartitionKey** 和 **RowKey**，這些是實體的唯一識別碼。
 
 * **PartitionKey** - 可決定儲存實體的分割區。
@@ -135,9 +138,7 @@ var task = {
 ```
 
 > [!NOTE]
-> 每筆記錄還有 [時間戳記] 欄位，插入或更新實體時，Azure 會設定此欄位。
->
->
+> 每筆記錄還有 [時間戳記]  欄位，插入或更新實體時，Azure 會設定此欄位。
 
 您也可以使用 **entityGenerator** 來建立實體。 下列範例使用 **entityGenerator**建立相同的工作實體。
 
@@ -173,8 +174,6 @@ tableSvc.insertEntity('mytable',task, function (error, result, response) {
 > 根據預設，**insertEntity** 不會將已插入的實體包含在 `response` 資訊中傳回。 若您打算對此實體執行其他作業，或想要快取資訊，則將此實體包含在 `result` 中傳回會相當有用。 您可以啟用 **echoContent** 來達成目的，如下所示：
 >
 > `tableSvc.insertEntity('mytable', task, {echoContent: true}, function (error, result, response) {...}`
->
->
 
 ## <a name="update-an-entity"></a>更新實體
 有多種方法可以用來更新現有的實體：
@@ -198,7 +197,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 > 依預設，更新實體並不會檢查正在更新的資料先前是否被另一個程序修改過。 若要支援並行更新：
 >
 > 1. 取得正在更新之物件的 ETag。 系統會針對實體相關的作業將 ETag 包含在 `response` 中傳回，且可透過 `response['.metadata'].etag` 擷取 ETag。
-> 2. 對實體執行更新操作時，請將先前擷取的 ETag 資訊新增至新的實體。 例如︰
+> 2. 對實體執行更新操作時，請將先前擷取的 ETag 資訊新增至新的實體。 例如：
 >
 >       entity2['.metadata'].etag = currentEtag;
 > 3. 執行更新操作。 如果在您擷取 ETag 值之後，實體已發生修改 (例如另一個應用程式執行個體)，系統就會傳回 `error`，指出不符合要求中指定的更新條件。
@@ -295,7 +294,7 @@ tableSvc.queryEntities('mytable',query, null, function(error, result, response) 
 如果作業成功，`result.entries` 就會包含符合查詢的實體陣列。 如果查詢無法傳回所有實體，`result.continuationToken` 便不是 *Null*，而可作為 **queryEntities** 的第三個參數來擷取更多結果。 在初始查詢中，第三個參數請使用 *null* 。
 
 ### <a name="query-a-subset-of-entity-properties"></a>查詢實體屬性的子集
-一個資料表查詢可以只擷取實體的少數欄位。
+一項資料表查詢可以只擷取實體的少數欄位。
 這可以減少頻寬並提高查詢效能 (尤其是對大型實體而言)。 請使用 **select** 子句，並傳遞要傳回的欄位名稱。 例如，下列查詢只會傳回 **description** 和 **dueDate** 欄位。
 
 ```javascript
@@ -365,7 +364,7 @@ dc.table.queryEntities(tableName,
 
 如果您檢查 `continuationToken` 物件，您會找到像是 `nextPartitionKey`、`nextRowKey` 和 `targetLocation` 的屬性，這些屬性可以用來逐一查看所有結果。
 
-您還可以使用 `top` 和 `continuationToken` 來設定頁面大小。 
+您還可以使用 `top` 和 `continuationToken` 來設定頁面大小。
 
 ## <a name="work-with-shared-access-signatures"></a>使用共用存取簽章
 共用存取簽章 (SAS) 可安全地提供對資料表的細微存取權，而不必提供您的儲存體帳戶名稱或金鑰。 SAS 通常用來提供對資料的有限存取，例如允許行動應用程式查詢記錄。
@@ -394,7 +393,7 @@ var host = tableSvc.host;
 
 請注意，您必須一併提供主機資訊，因為當 SAS 持有者嘗試存取資料表時，會需要此資訊。
 
-用戶端應用程式接著以 **TableServiceWithSAS** 來使用 SAS，對資料表執行操作。 下列範例會連線到資料表並執行查詢。 請參閱[使用共用存取簽章](../storage/common/storage-dotnet-shared-access-signature-part-1.md#examples-of-sas-uris)一文，了解 tableSAS 的格式。 
+用戶端應用程式接著以 **TableServiceWithSAS** 來使用 SAS，對資料表執行操作。 下列範例會連線到資料表並執行查詢。 如需關於資料表 SAS 的格式詳細資訊，請參閱[使用共用存取簽章 (SAS) 對 Azure 儲存體資源授與有限存取權](../storage/common/storage-sas-overview.md)一文。
 
 ```javascript
 // Note in the following command, host is in the format: `https://<your_storage_account_name>.table.core.windows.net` and the tableSAS is in the format: `sv=2018-03-28&si=saspolicy&tn=mytable&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D`;
@@ -459,6 +458,6 @@ tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 
 * [Microsoft Azure 儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md) 是一個免費的獨立應用程式，可讓您在 Windows、MacOS 和 Linux 上以視覺化方式處理 Azure 儲存體資料。
 * GitHub 上的 [Azure Storage SDK for Node](https://github.com/Azure/azure-storage-node) \(英文\) 存放庫。
-* [適用於 Node.js 開發人員的 Azure](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest)
+* [適用於 Node.js 開發人員的 Azure](https://docs.microsoft.com/azure/developer/javascript/)
 * [在 Azure 中建立 Node.js Web 應用程式](../app-service/app-service-web-get-started-nodejs.md)
 * [建置 Node.js 應用程式並部署到 Azure 雲端服務](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (使用 Windows PowerShell)

@@ -4,6 +4,8 @@
       href: networking-overview.md
     - name: 架構
       items:
+        - name: 適用於網路工程師的 Azure
+          href: azure-for-network-engineers.md
         - name: 虛擬資料中心
           href: /azure/architecture/vdc/networking-virtual-datacenter
         - name: 非對稱式路由與多個網路路徑
@@ -13,7 +15,7 @@
         - name: 中樞輪輻拓撲
           href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke'
         - name: 網路安全性的最佳做法
-          href: ../security/azure-security-network-security-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json
+          href: ../security/fundamentals/network-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: 高可用性的網路虛擬設備
           href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha'
         - name: 合併負載平衡方法
@@ -22,6 +24,8 @@
           href: disaster-recovery-dns-traffic-manager.md
     - name: 規劃和設計
       items:
+        - name: 遠端工作的支援
+          href: working-remotely-support.md
         - name: 虛擬網路
           href: ../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: 跨單位連線 - VPN
@@ -40,6 +44,13 @@
               href: connectivty-interoperability-data-plane.md?toc=%2fazure%2fnetworking%2ftoc.json
     - name: 概念
       items:
+        - name: Microsoft 全域網路
+          href: microsoft-global-network.md
+          items:
+            - name: Azure 網路延遲
+              href: azure-network-latency.md
+            - name: Azure 中的網際網路路由喜好設定
+              href: ../virtual-network/routing-preference-overview.md
         - name: 虛擬網路
           href: ../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: 網路負載平衡
@@ -54,11 +65,11 @@
           href: ../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: 連線內部部署 - 專用
           href: ../expressroute/expressroute-introduction.md?toc=%2fazure%2fnetworking%2ftoc.json
-- name: 開始使用
+- name: 快速入門
   items:
     - name: 建立您的第一個虛擬網路
       href: ../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
-- name: 作法
+- name: 如何
   items:
     - name: 網際網路連線
       items:
@@ -88,6 +99,10 @@
           href: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: 建立專用私人連線 (ExpressRoute)
           href: ../expressroute/expressroute-howto-circuit-portal-resource-manager.md?toc=%2fazure%2fnetworking%2ftoc.json
+    - name: 公用雲端連線能力
+      items:
+        - name: 將 Azure 連線到公用雲端
+          href: ../expressroute/expressroute-connect-azure-to-public-cloud.md?toc=%2fazure%2fnetworking%2ftoc.json
     - name: 管理性
       items:
         - name: 網路監視概觀
@@ -124,19 +139,21 @@
   items:
     - name: 作者範本
       href: /azure/azure-resource-manager/resource-group-authoring-templates?toc=%2fazure%2fnetworking%2ftoc.json
+    - name: 提供者
+      href: networking-partners-msp.md
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: 社群範本
       href: 'https://azure.microsoft.com/resources/templates/'
     - name: 網路部落格
       href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-network'
     - name: 影片
       href: 'https://azure.microsoft.com/resources/videos/index/?services=virtual-network'

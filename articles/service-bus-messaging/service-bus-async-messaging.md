@@ -1,27 +1,15 @@
 ---
 title: 服務匯流排非同步傳訊 |Microsoft Docs
-description: 「Azure 服務匯流排」非同步傳訊說明。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: f1435549-e1f2-40cb-a280-64ea07b39fc7
-ms.service: service-bus-messaging
-ms.devlang: na
+description: 瞭解 Azure 服務匯流排如何透過具有佇列、主題和訂用帳戶的儲存和轉寄機制來支援 asynchronism。
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: 50778ae742c1ec66857a6c2fa6250dc3d67e5601
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: b628dd72efe0280e688b602f873a3f01d15ef587
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60531106"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337791"
 ---
-# <a name="asynchronous-messaging-patterns-and-high-availability"></a>异步消息传送模式和高可用性
+# <a name="asynchronous-messaging-patterns-and-high-availability"></a>非同步傳訊模式和高可用性
 
 有各種不同的方式可以實作非同步傳訊。 「Azure 服務匯流排」利用佇列、主題及訂用帳戶來支援透過儲存和轉送機制進行的非同步處理。 在正常 (同步) 作業中，您可將訊息傳送至佇列和主題，並接收來自佇列和訂用帳戶的訊息。 您撰寫的應用程式依存於這些實體永遠可用。 當實體健康狀態變更時，因為有許多不同的情況，您必須有辦法提供能滿足大多數需求的容量減少實體。
 
@@ -45,13 +33,13 @@ ms.locfileid: "60531106"
 * Azure 資料中心內的服務匯流排失敗。 這就是「災難性失敗」，系統有數分鐘或數小時的時間無法連線。
 
 > [!NOTE]
-> 「儲存體」一詞可表示 Azure 儲存體和 SQL Azure。
+> **儲存體**這個詞可以代表 Azure 儲存體和 SQL Azure。
 > 
 > 
 
 對於這些問題，服務匯流排有數種緩和措施。 下列各節會討論每個問題及其各自的緩和措施。
 
-### <a name="throttling"></a>限制
+### <a name="throttling"></a>節流
 使用服務匯流排，節流可達到協同合作的訊息速率管理。 每個個別的服務匯流排節點都容納許多實體。 每個實體都是從 CPU、記憶體、儲存體和其他面向提出系統需求。 當上述任何面向偵測到超出所定義臨界值的使用量時，服務匯流排可以拒絕指定的要求。 呼叫端會收到 [ServerBusyException][ServerBusyException] 並在 10 秒後重試。
 
 在緩和措施中，程式碼必須讀取錯誤並停止任何訊息重試至少 10 秒。 因為此錯誤會發生於客戶應用程式的各個部分，因此預計每個部分都能獨立執行重試邏輯。 此程式碼可藉由在佇列或主題上啟用資料分割，以降低進行節流的機率。

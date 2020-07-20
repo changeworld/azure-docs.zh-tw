@@ -1,35 +1,34 @@
 ---
-title: Microsoft Azure 雲端服務之應用程式和服務可用性問題的常見問題集 | Microsoft Docs
+title: 應用程式和服務可用性問題常見問題
+titleSuffix: Azure Cloud Services
 description: 本文列出 Microsoft Azure 雲端服務之應用程式和服務可用性的相關常見問題集。
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: fb4b5dde63d8c7c75419d3202d9848cd6fde8b8a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: c294d4583ba2690e1f4952441ffb43bff1459059
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60337539"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75386913"
 ---
-# <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>應用程式和服務可用性問題的 Azure 雲端服務：常見問題集 (FAQ)
+# <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 雲端服務之應用程式和服務可用性問題：常見問題集 (FAQ)
 
 本文包含 [Microsoft Azure 雲端服務](https://azure.microsoft.com/services/cloud-services)之應用程式和服務可用性問題的相關常見問題集。 您也可以參閱 [雲端服務 VM 大小頁面](cloud-services-sizes-specs.md) 以取得大小資訊。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="my-role-got-recycled-was-there-any-update-rolled-out-for-my-cloud-service"></a>我的角色被回收了。 我的雲端服務是否推出任何更新？
-Microsoft 大約一個月會發行一次適用於 Windows Azure PaaS VM 的新客體 OS 版本。 客體作業系統只是這過程中的一項更新。 發行可能會受到許多其他因素所影響。 此外，Azure 是在成千上萬個電腦上執行。 因此，不可能預測您的角色重新啟動的確切日期和時間。 我們會在客體 OS 更新 RSS 摘要中隨時提供最新資訊，但您應將該報告的時間視為大約的值。 我們知道這對客戶造成困擾，所以正計劃對重新啟動設限或精確訂定時間。
+Microsoft 大約一個月會發行一次適用於 Windows Azure PaaS VM 的新客體 OS 版本。客體作業系統只是這過程中的一項更新。 發行可能會受到許多其他因素所影響。 此外，Azure 是在成千上萬個電腦上執行。 因此，不可能預測您的角色重新啟動的確切日期和時間。 我們會在客體 OS 更新 RSS 摘要中隨時提供最新資訊，但您應將該報告的時間視為大約的值。 我們知道這對客戶造成困擾，所以正計劃對重新啟動設限或精確訂定時間。
 
 如需最新客體 OS 更新的完整詳細資訊，請參閱 [Azure 客體 OS 版本與 SDK 相容性矩陣](cloud-services-guestos-update-matrix.md)。
 

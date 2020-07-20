@@ -1,22 +1,17 @@
 ---
-title: 從 Azure Logic Apps 連線到 SendGrid | Microsoft Docs
+title: 從 Azure Logic Apps 連線至 SendGrid
 description: 使用 Azure Logic Apps 將傳送電子郵件和管理 SendGrid 中郵寄清單的工作和工作流程自動化
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: bc4f1fc2-824c-4ed7-8de8-e82baff3b746
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 7eecd3908883b195b52755d03e70872afe9180bb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+tags: connectors
+ms.openlocfilehash: b86a38278ae345fac376958d18912a878a53872b
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62105729"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834793"
 ---
 # <a name="send-emails-and-manage-mailing-lists-in-sendgrid-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 傳送電子郵件和管理 SendGrid 中的郵寄清單
 
@@ -31,9 +26,9 @@ ms.locfileid: "62105729"
 此連接器只提供動作，因此若要啟動邏輯應用程式，請選取個別觸發程序，例如「週期」觸發程序。 例如，如果您要定期地在清單中新增收件者，則可藉由使用 Office 365 Outlook 連接器或 Outlook.com 連接器，來傳送關於收件者和清單的電子郵件。
 如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先<a href="https://azure.microsoft.com/free/" target="_blank">註冊免費的 Azure 帳戶</a>。 
+* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
 
 * [SendGrid 帳戶](https://www.sendgrid.com/)和 [SendGrid API 金鑰](https://sendgrid.com/docs/ui/account-and-settings/api-keys/)
 
@@ -56,7 +51,7 @@ ms.locfileid: "62105729"
      -或-
 
    * 請在想要新增動作的步驟之間，將指標移至步驟之間的箭號。 
-   選擇顯示的加號 (**+**)，然後選取 [新增動作]。
+   選擇顯示的加號 ( **+** )，然後選取 [新增動作]。
 
 1. 在搜尋方塊中，輸入「sendgrid」作為篩選條件。 在動作清單底下，選取您想要的動作。
 
@@ -72,7 +67,7 @@ ms.locfileid: "62105729"
 
 ## <a name="get-support"></a>取得支援
 
-* 如有問題，請瀏覽 [Azure Logic Apps 論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有任何問題，請造訪 [Microsoft 的 Azure Logic Apps 問與答頁面](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 * 若要提交或票選功能構想，請造訪 [Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>後續步驟

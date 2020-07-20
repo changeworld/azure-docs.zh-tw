@@ -1,26 +1,26 @@
 ---
-title: 為 Azure AD 租用戶中特定應用程式的權杖，自訂發出的宣告 (公開預覽)
+title: 自訂 Azure AD 租用戶應用程式宣告 (PowerShell)
+titleSuffix: Microsoft identity platform
 description: 此頁面說明 Azure Active Directory 宣告對應。
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.service: active-directory
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/28/2019
-ms.author: celested
+ms.topic: how-to
+ms.date: 10/22/2019
+ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2076aec1585ff8b60ee2b593621b75abfaeaa1ac
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d240ed426bb270ac4cf09f3806bd36a6a52d3633
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60300473"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86275388"
 ---
-# <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>作法：為租用戶中特定應用程式的權杖，自訂發出的宣告 (預覽)
+# <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：為租用戶中特定應用程式的權杖，自訂發出的宣告 (預覽)
 
 > [!NOTE]
 > 這項功能會取代目前透過入口網站提供的[宣告自訂](active-directory-saml-claims-customization.md)。 在同一應用程式中，如果自訂宣告的方法不止本文詳述的 Graph/PowerShell 方法，還包括入口網站，則對應用程式發出的權杖將會忽略入口網站中的設定。 透過本文詳述的方法所進行的設定將不會反映在入口網站中。
@@ -50,7 +50,7 @@ ms.locfileid: "60300473"
 | 基本宣告集 | 包含會根據預設向權杖發出的宣告 (除了核心宣告集以外)。 您可以使用宣告對應原則，省略或修改基本宣告。 |
 | 受限制的宣告集 | 無法使用原則修改。 您無法變更資料來源，而且在產生這些宣告時不會套用任何轉換。 |
 
-### <a name="table-1-json-web-token-jwt-restricted-claim-set"></a>表 1：JSON Web 權杖 (JWT) 的受限制宣告集
+### <a name="table-1-json-web-token-jwt-restricted-claim-set"></a>表格 1：JSON Web 權杖 (JWT) 的受限制宣告集
 
 | 宣告類型 (名稱) |
 | ----- |
@@ -81,13 +81,13 @@ ms.locfileid: "60300473"
 | azpacr |
 | c_hash |
 | ca_enf |
-| cc |
+| 副本 |
 | cert_token_use |
 | client_id |
 | cloud_graph_host_name |
 | cloud_instance_name |
 | cnf |
-| code |
+| 代碼 |
 | controls |
 | credential_keys |
 | csr |
@@ -97,8 +97,8 @@ ms.locfileid: "60300473"
 | domain_dns_name |
 | domain_netbios_name |
 | e_exp |
-| 电子邮件 |
-| endpoint |
+| 電子郵件 |
+| 端點 |
 | enfpolids |
 | exp |
 | expires_on |
@@ -142,7 +142,7 @@ ms.locfileid: "60300473"
 | onprem_sam_account_name |
 | onprem_sid |
 | openid2_id |
-| password |
+| 密碼 |
 | platf |
 | polids |
 | pop_jwk |
@@ -157,12 +157,12 @@ ms.locfileid: "60300473"
 | refreshtoken |
 | request_nonce |
 | resource |
-| role |
+| 角色 (role) |
 | 角色 |
 | scope |
 | scp |
 | sid |
-| signature |
+| 簽章 |
 | signin_state |
 | src1 |
 | src2 |
@@ -286,55 +286,56 @@ ms.locfileid: "60300473"
 
 | 來源 | ID | 描述 |
 |-----|-----|-----|
-| 使用者 | surname | 姓氏 |
-| 使用者 | givenname | 名字 |
-| 使用者 | displayname | 显示名称 |
-| 使用者 | objectid | ObjectID |
-| 使用者 | mail | 電子郵件地址 |
-| 使用者 | userprincipalname | 使用者主體名稱 |
-| 使用者 | department|department|
-| 使用者 | onpremisessamaccountname | 在內部部署 SAM 帳戶名稱 |
-| 使用者 | netbiosname| NetBios 名稱 |
-| 使用者 | dnsdomainname | DNS 網域名稱 |
-| 使用者 | onpremisesecurityidentifier | 在內部部署安全性識別碼 |
-| 使用者 | companyname| 組織名稱 |
-| 使用者 | streetaddress | 街道地址 |
-| 使用者 | postalcode | 郵遞區號 |
-| 使用者 | preferredlanguange | 慣用語言 |
-| 使用者 | onpremisesuserprincipalname | 在內部部署 UPN |
-| 使用者 | mailNickname | 郵件暱稱 |
-| 使用者 | extensionattribute1 | 擴充屬性 1 |
-| 使用者 | extensionattribute2 | 擴充屬性 2 |
-| 使用者 | extensionattribute3 | 擴充屬性 3 |
-| 使用者 | extensionattribute4 | 擴充屬性 4 |
-| 使用者 | extensionattribute5 | 擴充屬性 5 |
-| 使用者 | extensionattribute6 | 擴充屬性 6 |
+| User | surname | 姓氏 |
+| User | givenname | 名字 |
+| User | displayname | 顯示名稱 |
+| User | objectid | ObjectID |
+| User | mail | 電子郵件地址 |
+| User | userprincipalname | 使用者主體名稱 |
+| User | department|department|
+| User | onpremisessamaccountname | 內部部署 SAM 帳戶名稱 |
+| User | netbiosname| NetBios 名稱 |
+| User | dnsdomainname | DNS 網域名稱 |
+| User | onpremisesecurityidentifier | 內部部署安全性識別碼 |
+| User | companyname| 組織名稱 |
+| User | streetaddress | 街道地址 |
+| User | postalcode | 郵遞區號 |
+| User | preferredlanguange | 慣用語言 |
+| User | onpremisesuserprincipalname | 內部部署 UPN |
+| User | mailNickname | 郵件暱稱 |
+| User | extensionattribute1 | 擴充屬性 1 |
+| User | extensionattribute2 | 擴充屬性 2 |
+| User | extensionattribute3 | 擴充屬性 3 |
+| User | extensionattribute4 | 擴充屬性 4 |
+| User | extensionattribute5 | 擴充屬性 5 |
+| User | extensionattribute6 | 擴充屬性 6 |
 | User | extensionattribute7 | 擴充屬性 7 |
-| 使用者 | extensionattribute8 | 擴充屬性 8 |
-| 使用者 | extensionattribute9 | 擴充屬性 9 |
-| 使用者 | extensionattribute10 | 擴充屬性 10 |
-| 使用者 | extensionattribute11 | 擴充屬性 11 |
-| 使用者 | extensionattribute12 | 擴充屬性 12 |
-| 使用者 | extensionattribute13 | 擴充屬性 13 |
-| 使用者 | extensionattribute14 | 擴充屬性 14 |
-| 使用者 | extensionattribute15 | 擴充屬性 15 |
-| 使用者 | othermail | 其他郵件 |
-| 使用者 | country | 国家/地区 |
-| 使用者 | city | City |
-| 使用者 | state | State |
-| 使用者 | jobtitle | 職稱 |
-| 使用者 | employeeid | 員工識別碼 |
-| 使用者 | facsimiletelephonenumber | 傳真電話號碼 |
+| User | extensionattribute8 | 擴充屬性 8 |
+| User | extensionattribute9 | 擴充屬性 9 |
+| User | extensionattribute10 | 擴充屬性 10 |
+| User | extensionattribute11 | 擴充屬性 11 |
+| User | extensionattribute12 | 擴充屬性 12 |
+| User | extensionattribute13 | 擴充屬性 13 |
+| User | extensionattribute14 | 擴充屬性 14 |
+| User | extensionattribute15 | 擴充屬性 15 |
+| User | othermail | 其他郵件 |
+| User | country | 國家/區域 |
+| User | city | City |
+| User | state | State |
+| User | jobtitle | 職稱 |
+| User | employeeid | 員工識別碼 |
+| User | facsimiletelephonenumber | 傳真電話號碼 |
+| 使用者 | assignedroles | 指派給使用者的應用程式角色清單|
 | application, resource, audience | displayname | 顯示名稱 |
 | application, resource, audience | objected | ObjectID |
-| application、resource、audience | 标记 | 服務主體標籤 |
-| 公司 | tenantcountry | 租用戶的國家/地區 |
+| application, resource, audience | tags | 服務主體標籤 |
+| 公司 | tenantcountry | 租用戶的國家/區域 |
 
 **TransformationID：** 只有在來源元素設定為「轉換」時，才必須提供 TransformationID 元素。
 
 - 此元素必須符合 **ClaimsTransformation** 屬性 (會定義如何產生此宣告的資料) 中轉換項目的識別碼元素。
 
-**宣告類型：****JwtClaimType** 和 **SamlClaimType** 元素會定義此宣告結構描述項目是參考哪個宣告。
+**宣告類型：** **JwtClaimType** 和 **SamlClaimType** 元素會定義此宣告結構描述項目是參考哪個宣告。
 
 - JwtClaimType 必須包含要在 JWT 中發出的宣告名稱。
 - SamlClaimType 必須包含要在 SAML 權杖中發出的宣告 URI。
@@ -360,8 +361,8 @@ ms.locfileid: "60300473"
 
 |TransformationMethod|預期的輸入|預期的輸出|描述|
 |-----|-----|-----|-----|
-|联接|string1、string2、分隔符號|outputClaim|可在輸入字串之間使用分隔符號來聯結這些字串。 例如：string1:"foo@bar.com" , string2:"sandbox" , separator:"." 會導致 outputClaim:"foo@bar.com.sandbox"|
-|ExtractMailPrefix|mail|outputClaim|擷取電子郵件地址的本機部分。 例如：mail:"foo@bar.com" 會導致 outputClaim:"foo"。 如果沒有 \@ 符號，原始輸入字串會以現狀傳回。|
+|Join|string1、string2、分隔符號|outputClaim|可在輸入字串之間使用分隔符號來聯結這些字串。 例如：string1:"foo@bar.com" , string2:"sandbox" , separator:"." 會導致 outputClaim:"foo@bar.com.sandbox"|
+|ExtractMailPrefix|電子郵件或 UPN|UPN|ExtensionAttributes 1-15 或其他為使用者儲存 UPN 或電子郵件地址值的任何其他架構延伸模組，例如 johndoe@contoso.com 。 擷取電子郵件地址的本機部分。 例如：mail:"foo@bar.com" 會導致 outputClaim:"foo"。 如果沒有 \@ 符號，原始輸入字串會以現狀傳回。|
 
 **InputClaims：** 使用 InputClaims 元素可從宣告結構描述項目將資料傳遞至轉換。 它有兩個屬性：**ClaimTypeReferenceId** 和 **TransformationClaimType**。
 
@@ -389,14 +390,14 @@ ms.locfileid: "60300473"
 | 使用者 | mail|電子郵件地址|
 | 使用者 | userprincipalname|使用者主體名稱|
 | 使用者 | onpremisessamaccountname|內部部署的 Sam 帳戶名稱|
-| 使用者 | employeeid|員工識別碼|
+| User | employeeid|員工識別碼|
 | 使用者 | extensionattribute1 | 擴充屬性 1 |
 | 使用者 | extensionattribute2 | 擴充屬性 2 |
 | 使用者 | extensionattribute3 | 擴充屬性 3 |
 | 使用者 | extensionattribute4 | 擴充屬性 4 |
 | 使用者 | extensionattribute5 | 擴充屬性 5 |
 | 使用者 | extensionattribute6 | 擴充屬性 6 |
-| User | extensionattribute7 | 擴充屬性 7 |
+| 使用者 | extensionattribute7 | 擴充屬性 7 |
 | 使用者 | extensionattribute8 | 擴充屬性 8 |
 | 使用者 | extensionattribute9 | 擴充屬性 9 |
 | 使用者 | extensionattribute10 | 擴充屬性 10 |
@@ -404,7 +405,7 @@ ms.locfileid: "60300473"
 | 使用者 | extensionattribute12 | 擴充屬性 12 |
 | 使用者 | extensionattribute13 | 擴充屬性 13 |
 | 使用者 | extensionattribute14 | 擴充屬性 14 |
-| 使用者 | extensionattribute15 | 擴充屬性 15 |
+| User | extensionattribute15 | 擴充屬性 15 |
 
 #### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>表 6：允許 SAML NameID 使用的轉換方法
 
@@ -415,7 +416,13 @@ ms.locfileid: "60300473"
 
 ### <a name="custom-signing-key"></a>自訂簽署金鑰
 
-您必須對服務主體物件指派自訂簽署金鑰，宣告對應原則才會生效。 如此可確認權杖是由宣告對應原則的建立者所修改，並且可遏止惡意執行者建立的宣告對應原則，保護應用程式不受威脅。  已啟用對應必須檢查其權杖簽署金鑰，藉由附加的特殊 URI 宣告的應用程式`appid={client_id}`至其[OpenID Connect 中繼資料要求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)。  
+您必須對服務主體物件指派自訂簽署金鑰，宣告對應原則才會生效。 如此可確認權杖是由宣告對應原則的建立者所修改，並且可遏止惡意執行者建立的宣告對應原則，保護應用程式不受威脅。 若要新增自訂簽署金鑰，您可以使用 Azure PowerShell Cmdlet `new-azureadapplicationkeycredential`，為您的應用程式物件建立對稱金鑰認證。 如需此 Azure PowerShell Cmdlet 的詳細資訊，請參閱 [New-AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)。
+
+已啟用宣告對應的應用程式必須將 `appid={client_id}` 附加至其 [OpenID Connect 中繼資料要求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)，以驗證其權杖簽署金鑰。 以下是您應該使用的 OpenID Connect 中繼資料文件格式︰ 
+
+```
+https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
+```
 
 ### <a name="cross-tenant-scenarios"></a>跨租用戶案例
 
@@ -429,14 +436,14 @@ ms.locfileid: "60300473"
 
 在 Azure AD 中，當您可以為特定的服務主體自訂權杖中所發出的宣告時，許多案例便可能實現。 在本節中，我們將逐步解說一些常見案例，以協助您掌握如何使用宣告對應原則類型。
 
-#### <a name="prerequisites"></a>必要條件
+#### <a name="prerequisites"></a>Prerequisites
 
 在下列範例中，您會為服務主體建立、更新、連結和刪除原則。 如果您是 Azure AD 的新手，建議您[先了解如何取得 Azure AD 租用戶](quickstart-create-new-tenant.md)，然後再參考範例繼續操作。
 
 若要開始使用，請執行下列步驟：
 
 1. 下載最新的 [Azure AD PowerShell 模組公開預覽版本](https://www.powershellgallery.com/packages/AzureADPreview)。
-1. 執行 Connect 命令以登入您的 Azure AD 管理帳戶。 每次启动新会话都需要运行此命令。
+1. 執行 Connect 命令以登入您的 Azure AD 管理帳戶。 您每次啟動新的工作階段時執行此命令。
 
    ``` powershell
    Connect-AzureAD -Confirm
@@ -447,7 +454,7 @@ ms.locfileid: "60300473"
    Get-AzureADPolicy
    ```
 
-#### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>範例：建立及指派原則，以省略基本宣告從權杖發行給服務主體
+#### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>範例：建立並指派原則，以在核發給服務主體的權杖中省略基本宣告
 
 在此範例中，您將會建立原則，以從核發給連結之服務主體的權杖中移除基本宣告集。
 
@@ -462,8 +469,8 @@ ms.locfileid: "60300473"
       ``` powershell
       Get-AzureADPolicy
       ```
-1. 将策略分配到服务主体。 您也需要取得服務主體的 ObjectId。
-   1. 若要查看您組織的所有服務主體，您可以查詢 Microsoft Graph。 或者，在 Azure AD Graph 總管，登入您的 Azure AD 帳戶。
+1. 將原則指派給服務主體。 您也需要取得服務主體的 ObjectId。
+   1. 若要查看您組織的所有服務主體，您可以[查詢 Microsoft Graph API](/graph/traverse-the-graph)。 或者，在 [Microsoft Graph 總管](https://developer.microsoft.com/graph/graph-explorer)中，登入您的 Azure AD 帳戶。
    2. 當您有服務主體的 ObjectId 時，執行下列命令︰  
      
       ``` powershell
@@ -472,13 +479,13 @@ ms.locfileid: "60300473"
 
 #### <a name="example-create-and-assign-a-policy-to-include-the-employeeid-and-tenantcountry-as-claims-in-tokens-issued-to-a-service-principal"></a>範例：建立並指派原則，在核發給服務主體的權杖中加入 EmployeeID 和 TenantCountry 作為宣告
 
-在此範例中，您將會建立原則，以在核發給連結之服務主體的權杖中新增 EmployeeID 和 TenantCountry。 在 SAML 權杖和 JWT 中，系統會以名稱宣告類型來發出 EmployeeID。 在 SAML 權杖和 JWT 中，系統會以國家/地區宣告類型來發出 TenantCountry。 在此範例中，我們會繼續在權杖中納入基本宣告集。
+在此範例中，您將會建立原則，以在核發給連結之服務主體的權杖中新增 EmployeeID 和 TenantCountry。 在 SAML 權杖和 JWT 中，系統會以名稱宣告類型來發出 EmployeeID。 在 SAML 權杖和 JWT 中，系統會以國家/區域宣告類型來發出 TenantCountry。 在此範例中，我們會繼續在權杖中納入基本宣告集。
 
 1. 建立宣告對應原則。 這個連結至特定服務主體的原則會在權杖中新增 EmployeeID 和 TenantCountry 宣告。
    1. 若要建立原則，請執行下列命令：  
      
       ``` powershell
-      New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
+      New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/employeeid","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
       ```
     
    2. 若要查看您的新原則並取得原則的 ObjectId，請執行下列命令：
@@ -486,8 +493,8 @@ ms.locfileid: "60300473"
       ``` powershell  
       Get-AzureADPolicy
       ```
-1. 将策略分配到服务主体。 您也需要取得服務主體的 ObjectId。 
-   1. 若要查看您組織的所有服務主體，您可以查詢 Microsoft Graph。 或者，在 Azure AD Graph 總管，登入您的 Azure AD 帳戶。
+1. 將原則指派給服務主體。 您也需要取得服務主體的 ObjectId。 
+   1. 若要查看您組織的所有服務主體，您可以[查詢 Microsoft Graph API](/graph/traverse-the-graph)。 或者，在 [Microsoft Graph 總管](https://developer.microsoft.com/graph/graph-explorer)中，登入您的 Azure AD 帳戶。
    2. 當您有服務主體的 ObjectId 時，執行下列命令︰  
      
       ``` powershell
@@ -510,14 +517,14 @@ ms.locfileid: "60300473"
       ``` powershell
       Get-AzureADPolicy
       ```
-1. 将策略分配到服务主体。 您也需要取得服務主體的 ObjectId。 
-   1. 若要查看您組織的所有服務主體，您可以查詢 Microsoft Graph。 或者，在 Azure AD Graph 總管，登入您的 Azure AD 帳戶。
+1. 將原則指派給服務主體。 您也需要取得服務主體的 ObjectId。 
+   1. 若要查看您組織的所有服務主體，您可以[查詢 Microsoft Graph API](/graph/traverse-the-graph)。 或者，在 [Microsoft Graph 總管](https://developer.microsoft.com/graph/graph-explorer)中，登入您的 Azure AD 帳戶。
    2. 當您有服務主體的 ObjectId 時，執行下列命令︰ 
      
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
-若要了解如何自訂在 SAML 權杖中，透過 Azure 入口網站發出的宣告，請參閱[How to:自訂的企業應用程式在 SAML 權杖中發出的宣告](active-directory-saml-claims-customization.md)
+若要了解如何透過 Azure 入口網站自訂 SAML 權杖中發出的宣告，請參閱[如何：針對 Azure AD 中的企業應用程式，自訂 SAML 權杖中發出的宣告](active-directory-saml-claims-customization.md)

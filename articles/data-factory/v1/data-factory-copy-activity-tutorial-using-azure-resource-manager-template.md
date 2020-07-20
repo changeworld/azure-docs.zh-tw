@@ -1,6 +1,6 @@
 ---
-title: 教學課程：使用 Resource Manager 範本建立管線 | Microsoft Docs
-description: 在本教學課程中，您會使用 Azure Resource Manager 範本建立 Azure Data Factory 管線。 此管線會將資料從 Azure Blob 儲存體複製到 Azure SQL 資料庫。
+title: '教學課程：使用 Resource Manager 範本建立管線 '
+description: 在本教學課程中，您會使用 Azure Resource Manager 範本建立 Azure Data Factory 管線。 此管線會將資料從 Azure Blob 儲存體複製到 Azure SQL Database。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,23 +9,21 @@ editor: ''
 ms.assetid: 1274e11a-e004-4df5-af07-850b2de7c15e
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 95a29a458fc9333515ef29aaaed9a47e93cf3a8d
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 549c85f92434504b931f0325959beb17ae92afba
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483755"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254883"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>教學課程：使用 Azure Resource Manager 範本建立 Data Factory 管線來複製資料 
 > [!div class="op_single_selector"]
 > * [概觀和必要條件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [複製精靈](data-factory-copy-data-wizard-tutorial.md)
-> * [Azure 入口網站](data-factory-copy-activity-tutorial-using-azure-portal.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 > * [Azure Resource Manager 範本](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -51,18 +49,18 @@ ms.locfileid: "58483755"
 
 * 請檢閱[教學課程概觀和必要條件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)並完成**必要**步驟。
 * 按照 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview) 一文中的指示，在您的電腦上安裝最新版的 Azure PowerShell。 在本教學課程中，您可以使用 PowerShell 來部署 Data Factory 實體。 
-* (選擇性) 若要了解 Azure Resource Manager 範本，請參閱 [撰寫 Azure Resource Manager 範本](../../azure-resource-manager/resource-group-authoring-templates.md) 。
+* (選擇性) 若要了解 Azure Resource Manager 範本，請參閱 [撰寫 Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md) 。
 
 ## <a name="in-this-tutorial"></a>本教學課程內容
 在本教學課程中，您可以利用下列 Data Factory 實體建立資料處理站︰
 
-| 實體 | 說明 |
+| 單位 | 描述 |
 | --- | --- |
-| Azure 儲存體連結服務 |將您的 Azure 儲存體帳戶連結至 Data Factory。 Azure 儲存體是來源資料存放區，而 Azure SQL 資料庫是教學課程中複製活動的接收資料存放區。 它會指定包含複製活動之輸入資料的儲存體帳戶。 |
-| Azure SQL Database 的連結服務 |將您的 Azure SQL 資料庫連結至 Data Factory。 它會指定包含複製活動之輸出資料的 Azure SQL 資料庫。 |
+| Azure 儲存體連結服務 |將您的 Azure 儲存體帳戶連結至 Data Factory。 Azure 儲存體是來源資料存放區，而 Azure SQL Database 是教學課程中複製活動的接收資料存放區。 它會指定包含複製活動之輸入資料的儲存體帳戶。 |
+| Azure SQL Database 的連結服務 |將 Azure SQL Database 中的資料庫連結至資料處理站。 其會指定保有複製活動輸出資料的資料庫。 |
 | Azure Blob 輸入資料集 |是指 Azure 儲存體連結服務。 連結的服務是指 Azure 儲存體帳戶，而 Azure Blob 資料集則會指定保留輸入資料儲存體中的容器、資料夾和檔案名稱。 |
-| Azure SQL 輸出資料集 |是指 Azure SQL 連結服務。 Azure SQL 連結服務是指 Azure SQL Server，而 Azure SQL 資料集會指定包含輸出資料的資料表名稱。 |
-| Data Pipeline |管線有一個類型 Copy 的活動，會採用 Azure blob 資料集做為輸入和 Azure SQL 資料集做為輸出。 Copy 活動會將資料從 Azure Blob 複製到 Azure SQL 資料庫。 |
+| Azure SQL 輸出資料集 |是指 Azure SQL 連結服務。 Azure SQL 連結服務是指邏輯 SQL 伺服器，而 Azure SQL 資料集會指定包含輸出資料的資料表名稱。 |
+| Data Pipeline |管線有一個類型 Copy 的活動，會採用 Azure blob 資料集做為輸入和 Azure SQL 資料集做為輸出。 複製活動會將資料從 Azure Blob 複製到 Azure SQL Database 中的資料表。 |
 
 資料處理站可以有一或多個管線。 其中的管線可以有一或多個活動。 兩種活動類型︰[資料移動活動](data-factory-data-movement-activities.md)和[資料轉換活動](data-factory-data-transformation-activities.md)。 在本教學課程中，您可以使用一個活動建立管線 (複製活動)。
 
@@ -108,9 +106,9 @@ ms.locfileid: "58483755"
       "storageAccountKey": { "type": "securestring", "metadata": { "description": "Key for the Azure storage account." } },
       "sourceBlobContainer": { "type": "string", "metadata": { "description": "Name of the blob container in the Azure Storage account." } },
       "sourceBlobName": { "type": "string", "metadata": { "description": "Name of the blob in the container that has the data to be copied to Azure SQL Database table" } },
-      "sqlServerName": { "type": "string", "metadata": { "description": "Name of the Azure SQL Server that will hold the output/copied data." } },
-      "databaseName": { "type": "string", "metadata": { "description": "Name of the Azure SQL Database in the Azure SQL server." } },
-      "sqlServerUserName": { "type": "string", "metadata": { "description": "Name of the user that has access to the Azure SQL server." } },
+      "sqlServerName": { "type": "string", "metadata": { "description": "Name of the logical SQL server that will hold the output/copied data." } },
+      "databaseName": { "type": "string", "metadata": { "description": "Name of the Azure SQL Database in the logical SQL server." } },
+      "sqlServerUserName": { "type": "string", "metadata": { "description": "Name of the user that has access to the logical SQL server." } },
       "sqlServerPassword": { "type": "securestring", "metadata": { "description": "Password for the user." } },
       "targetSQLTable": { "type": "string", "metadata": { "description": "Table in the Azure SQL Database that will hold the copied data." } 
       } 
@@ -290,7 +288,7 @@ ms.locfileid: "58483755"
 > [!IMPORTANT]
 > 針對此參數檔案中的 storageAccountName 和 storageAccountKey 參數指定您 Azure 儲存體帳戶的名稱和金鑰。  
 > 
-> 針對 sqlServerName、databaseName、sqlServerUserName 和 sqlServerPassword 參數指定 Azure SQL 伺服器、資料庫、使用者和密碼。  
+> 為 sqlServerName、databaseName、sqlServerUserName 和 sqlServerPassword 參數指定邏輯 SQL 伺服、資料庫、使用者與密碼。  
 
 ```json
 {
@@ -303,9 +301,9 @@ ms.locfileid: "58483755"
         },
         "sourceBlobContainer": { "value": "adftutorial" },
         "sourceBlobName": { "value": "emp.txt" },
-        "sqlServerName": { "value": "<Name of the Azure SQL server>" },
-        "databaseName": { "value": "<Name of the Azure SQL database>" },
-        "sqlServerUserName": { "value": "<Name of the user who has access to the Azure SQL database>" },
+        "sqlServerName": { "value": "<Name of the logical SQL server>" },
+        "databaseName": { "value": "<Name of the database>" },
+        "sqlServerUserName": { "value": "<Name of the user who has access to the database>" },
         "sqlServerPassword": { "value": "<password for the user>" },
         "targetSQLTable": { "value": "emp" }
     }
@@ -352,8 +350,8 @@ ms.locfileid: "58483755"
 4. 按一下您的 Azure Data Factory。 您會看到 Data Factory 的首頁。
    
     ![Data Factory 首頁](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factory-home-page.png)  
-6. 請遵循[監視資料集和管線](data-factory-copy-activity-tutorial-using-azure-portal.md#monitor-pipeline)中的指示，監視您在本教學課程中建立的管線和資料集。 Visual Studio 目前不支援監視 Data Factory 管線。
-7. 當配量處於 [就緒] 狀態時，請確認資料已複製到 Azure SQL 資料庫中的 **emp** 資料表。
+6. 請遵循[監視資料集和管線](data-factory-monitor-manage-pipelines.md)中的指示，監視您在本教學課程中建立的管線和資料集。 Visual Studio 目前不支援監視 Data Factory 管線。
+7. 當配量處於 [就緒] 狀態時，請確認資料已複製到 Azure SQL Database 中的 **emp** 資料表。
 
 
 如需有關如何使用 Azure 入口網站刀鋒視窗來監視您在本教學課程中建立的管線和資料集的詳細資訊，請參閱 [監視資料集和管線](data-factory-monitor-manage-pipelines.md)。
@@ -415,7 +413,7 @@ AzureStorageLinkedService 會將 Azure 儲存體帳戶連結至資料處理站�
 connectionString 會使用 storageAccountName 和 storageAccountKey 參數。 使用組態檔傳遞這些參數的值。 定義也會使用在範本中定義的變數︰azureStorageLinkedService 和 dataFactoryName。 
 
 #### <a name="azure-sql-database-linked-service"></a>Azure SQL Database 的連結服務
-AzureSqlLinkedService 會將 Azure SQL 資料庫連結至資料處理站。 從 Blob 儲存體複製的資料會儲存在此資料庫中。 您在此資料庫中建立了 emp 資料表，作為[必要條件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)的一部分。 在此區段中指定 Azure SQL 伺服器名稱、資料庫名稱、使用者名稱和使用者密碼。 如需用來定義 Azure SQL 連結服務之 JSON 屬性的詳細資料，請參閱 [Azure SQL 連結服務](data-factory-azure-sql-connector.md#linked-service-properties)。  
+AzureSqlLinkedService 會將 Azure SQL Database 中的資料庫連結至資料處理站。 從 Blob 儲存體複製的資料會儲存在此資料庫中。 您在此資料庫中建立了 emp 資料表，作為[必要條件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)的一部分。 在此區段中指定邏輯 SQL 伺服器名稱、資料庫名稱、使用者名稱與使用者密碼。 如需用來定義 Azure SQL 連結服務之 JSON 屬性的詳細資料，請參閱 [Azure SQL 連結服務](data-factory-azure-sql-connector.md#linked-service-properties)。  
 
 ```json
 {
@@ -480,7 +478,7 @@ Azure 儲存體連結服務會指定 Data Factory 服務在執行階段用來連
 ```
 
 #### <a name="azure-sql-dataset"></a>Azure SQL 資料集
-指定存放來自 Azure Blob 儲存體之複製資料的 Azure SQL 資料庫中的資料表名稱。 請參閱 [Azure SQL 資料集屬性](data-factory-azure-sql-connector.md#dataset-properties)，以取得用來定義 Azure SQL 資料集之 JSON 屬性的詳細資訊。 
+指定存放來自 Azure Blob 儲存體之複製資料的 Azure SQL Database 中的資料表名稱。 請參閱 [Azure SQL 資料集屬性](data-factory-azure-sql-connector.md#dataset-properties)，以取得用來定義 Azure SQL 資料集之 JSON 屬性的詳細資訊。 
 
 ```json
 {
@@ -574,7 +572,7 @@ Azure 儲存體連結服務會指定 Data Factory 服務在執行階段用來連
 ```
 
 ## <a name="reuse-the-template"></a>重複使用範本
-在教學課程中，您可以建立定義 Data Factory 實體的範本和傳遞參數值的範本。 管線會將資料從 Azure 儲存體帳戶複製到透過參數指定的 Azure SQL 資料庫。 若要使用相同的範本將 Data Factory 實體部署至不同的環境，您可以針對每個環境建立參數檔案，並在部署到該環境時使用它。     
+在教學課程中，您可以建立定義 Data Factory 實體的範本和傳遞參數值的範本。 管線會將資料從 Azure 儲存體帳戶複製到透過參數指定的 Azure SQL Database。 若要使用相同的範本將 Data Factory 實體部署至不同的環境，您可以針對每個環境建立參數檔案，並在部署到該環境時使用它。     
 
 範例：  
 
@@ -593,7 +591,7 @@ New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutori
 您也可以重複使用範本來執行重複的工作。 例如，您需要使用一個或多個管線建立許多資料處理站，這些管線會實作相同的邏輯，但每個資料處理站會使用不同的儲存體和 SQL Database 帳戶。 在此案例中，您會在具有不同參數檔案的相同環境中 (開發、測試或生產) 使用相同的範本來建立資料處理站。   
 
 ## <a name="next-steps"></a>後續步驟
-在本教學課程中，您可使用 Azure Blob 儲存體作為來源資料存放區以及使用 Azure SQL 資料庫作為複製作業的目的地資料存放區。 下表提供複製活動所支援作為來源或目的地的資料存放區清單： 
+在本教學課程中，您可使用 Azure Blob 儲存體作為來源資料存放區以及使用 Azure SQL Database 作為複製作業的目的地資料存放區。 下表提供複製活動所支援作為來源或目的地的資料存放區清單： 
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 

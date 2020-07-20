@@ -1,6 +1,6 @@
 ---
-title: 連線到 Azure 媒體服務 v3 API-Python
-description: 了解如何連接到媒體服務 v3 API 與 Python。
+title: 連接到 Azure 媒體服務 v3 API-Python
+description: 本文示範如何使用 Python 連接到媒體服務 v3 API。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,45 +13,48 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: juliako
-ms.openlocfilehash: 971e36b600a2c6be516e39ce84ca5780a2f23bbd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 3e6e421d346925f751595ce2fb2d0891e31dc108
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60733091"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559630"
 ---
-# <a name="connect-to-media-services-v3-api---python"></a>連線到媒體服務 v3 API-Python
+# <a name="connect-to-media-services-v3-api---python"></a>連接到媒體服務 v3 API-Python
 
-這篇文章說明如何連接到 Azure 媒體服務 v3 Python SDK 中使用服務主體的登入方法。
+本文說明如何使用服務主體登入方法來連線到 Azure 媒體服務 v3 Python SDK。
 
 ## <a name="prerequisites"></a>必要條件
 
-- 下載從 Python [python.org](https://www.python.org/downloads/)
-- 請務必設定`PATH`環境變數
-- [建立媒體服務帳戶](create-account-cli-how-to.md)。 請務必記住的資源群組名稱和媒體服務帳戶名稱。
-- 請依照下列中的步驟[存取 Api](access-api-cli-how-to.md)主題。 記錄的訂用帳戶識別碼、 應用程式識別碼 （用戶端識別碼）、 驗證金鑰 （密碼） 和租用戶識別碼，您需要在稍後的步驟。
+- 從[python.org](https://www.python.org/downloads/)下載 Python
+- 請務必設定 `PATH` 環境變數
+- [建立媒體服務帳戶](create-account-cli-how-to.md)。 請務必記住資源組名和媒體服務帳戶名稱。
+- 依照[存取 api](access-api-cli-how-to.md)主題中的步驟進行。 記錄訂用帳戶識別碼、應用程式識別碼（用戶端識別碼）、驗證金鑰（密碼），以及您在稍後步驟中需要的租使用者識別碼。
+
+> [!IMPORTANT]
+> 檢查[命名慣例](media-services-apis-overview.md#naming-conventions)。
 
 ## <a name="install-the-modules"></a>安裝模組
 
-若要搭配使用 Python 的 Azure 媒體服務，您需要安裝這些模組。
+若要使用 Python 來處理 Azure 媒體服務，您需要安裝這些模組。
 
-* `azure-mgmt-resource`模組，其中包含適用於 Active Directory 的 Azure 模組。
-* `azure-mgmt-media`模組，其中包含媒體服務實體。
+* `azure-mgmt-resource`模組，包括適用于 Active Directory 的 Azure 模組。
+* `azure-mgmt-media`模組，其中包含媒體服務的實體。
 
-開啟命令列工具，並使用下列命令來安裝的模組。
+開啟命令列工具，並使用下列命令來安裝模組。
 
 ```
 pip3 install azure-mgmt-resource
 pip3 install azure-mgmt-media==1.1.1
 ```
 
-## <a name="connect-to-the-python-client"></a>連線至 Python 用戶端
+## <a name="connect-to-the-python-client"></a>連接至 Python 用戶端
 
-1. 建立具有檔案`.py`延伸模組
-1. 您最愛的編輯器中開啟檔案
-1. 加入檔案之後的程式碼。 程式碼會匯入所需的模組，並建立您要連線到媒體服務的 Active Directory 認證物件。
+1. 建立副檔名為的檔案 `.py`
+1. 在您慣用的編輯器中開啟檔案
+1. 將後面的程式碼新增至檔案。 程式碼會匯入必要的模組，並建立您連接至媒體服務所需的 Active Directory 認證物件。
 
-      所得的值設定變數的值[存取 Api](access-api-cli-how-to.md)
+      將變數的值設定為您從[存取 api](access-api-cli-how-to.md)取得的值
 
       ```
       import adal

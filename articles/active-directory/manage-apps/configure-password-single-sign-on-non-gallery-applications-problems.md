@@ -1,263 +1,254 @@
 ---
-title: 為不在資源庫內的應用程式設定密碼單一登入時遇到的問題 | Microsoft Docs
-description: 了解使用者在為不在資源庫內的自訂應用程式設定密碼單一登入 (這類應用程式不會列於 Azure AD 應用程式庫中) 時所面臨的常見問題
+title: 設定非資源庫應用程式的密碼 SSO 時發生問題
+description: 當您針對不在 Azure AD 應用程式庫中的自訂應用程式設定密碼單一登入（SSO）時，所發生的常見問題。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8787008b396c2dd8ce1c006a40fee1e32e8100d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 9620a6ad584f20a0956e6a29c89609d79832f4d2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60442059"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763443"
 ---
-# <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>為不在資源庫內的應用程式設定密碼單一登入時遇到的問題
+# <a name="problems-configuring-password-single-sign-on-for-a-non-gallery-application"></a>為不在資源庫中的應用程式設定密碼單一登入時所發生的問題
 
-本文可協助您了解使用者在搭配不在資源庫內的應用程式設定**密碼單一登入**時所面臨的常見問題。
+本文說明當您為非資源庫應用程式設定*密碼單一登入*（SSO）時，可能會發生的常見問題。
 
-## <a name="how-to-capture-sign-in-fields-for-an-application"></a>如何擷取應用程式的登入欄位
+## <a name="capture-sign-in-fields-for-an-app"></a>捕獲應用程式的登入欄位
 
-只有具備 HTML 功能的登入頁面支援登入欄位擷取，而**非標準的登入頁面並不支援**，例如，使用快閃記憶體或其他不具備 HTML 功能技術的頁面。
+只有具備 HTML 功能的登入頁面才支援登入欄位捕捉。 不支援非標準的登入頁面，像是使用 Adobe Flash 或其他非 HTML 功能的技術。
 
-有兩種方式可讓您用來擷取自訂應用程式的登入欄位：
+有兩種方式可為您的自訂應用程式捕捉登入欄位：
 
--   自動登入欄位擷取
+- **自動登入欄位捕捉**適用于大部分具備 HTML 功能的登入頁面，如果他們對使用者名稱和密碼欄位*使用知名的 DIV id* 。 頁面上的 HTML 是剪輯來尋找符合特定準則的 DIV 識別碼。 該中繼資料會被儲存，以便稍後可以在應用程式中重新執行。
 
--   手動登入欄位擷取
+- 如果應用程式廠商*未標示登入輸入欄位*，則會使用**手動登入欄位捕捉**。 如果廠商*呈現多個無法自動偵測的欄位，* 也會使用手動捕獲。 Azure Active Directory （Azure AD）可以在登入頁面上儲存多個欄位的資料，如果您告訴它欄位在頁面上的位置。
 
-**自動登入欄位擷取**適用於大部分具備 HTML 功能的登入頁面，但前提是這些頁面會**針對使用者名稱和密碼輸入欄位使用已知的 DIV 識別碼**。 其運作方式是藉由消除頁面上的 HTML 來尋找符合特定準則的 DIV 識別碼，然後儲存此應用程式的中繼資料，以便能在稍後重新執行密碼給它。
+一般而言，如果自動登入欄位捕捉無效，請嘗試手動選項。
 
-**手動登入欄位擷取**的適用情況是，應用程式**廠商並未標示**用來登入的輸入欄位。 手動登入欄位擷取也可適用於下列情況：當**廠商呈現多個無法自動偵測的欄位**時。 Azure AD 能在登入頁面上盡可能儲存最多欄位的資料，只要您告知我們那些欄位在頁面上的位置即可。
+### <a name="automatically-capture-sign-in-fields-for-an-app"></a>自動捕獲應用程式的登入欄位
 
-一般而言，**如果自動登入欄位擷取無法運作，請嘗試手動選項。**
+若要使用自動登入欄位 capture 來設定密碼型 SSO，請遵循下列步驟：
 
-### <a name="how-to-automatically-capture-sign-in-fields-for-an-application"></a>如何自動擷取應用程式的登入欄位
+1. 開啟 [Azure 入口網站](https://portal.azure.com/)。 以全域管理員或共同管理員身分登入。
 
-若要為使用**自動登入欄位擷取**的應用程式設定**密碼單一登入**，請依照下列步驟執行：
+2. 在左側導覽窗格中，選取 [**所有服務**] 以開啟 [Azure AD] 延伸模組。
 
-1. 開啟 [Azure 入口網站](https://portal.azure.com/)，然後以**全域管理員**或**共同管理員**身分登入。
+3. 在篩選搜尋方塊中輸入**Azure Active Directory** ，然後選取 [ **Azure Active Directory**]。
 
-2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
+4. 在 Azure AD 流覽窗格中選取 [**企業應用程式**]。
 
-3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
+5. 選取 [**所有應用程式**] 以查看您應用程式的清單。
 
-4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
+   > [!NOTE]
+   > 如果您沒有看到想要的應用程式，請使用 [**所有應用程式**] 清單頂端的 [**篩選**] 控制項。 將 [**顯示**] 選項設定為 [所有應用程式]。
 
-5. 按一下 [所有應用程式]，以檢視所有應用程式的清單。
+6. 選取您想要為 SSO 設定的應用程式。
 
-   * 若在這裡沒看到您要顯示的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
+7. 應用程式載入之後，請在左側導覽窗格中選取 [**單一登入**]。
 
-6. 選取您要設定單一登入的應用程式。
+8. 選取 [**密碼型登入**模式]。
 
-7. 應用程式載入後，按一下應用程式的左側導覽功能表中的 [單一登入]。
+9. 輸入 [登入**url**]，這是使用者輸入其使用者名稱和密碼以進行登入的頁面 url。 *請確定在您提供的 URL 頁面上可以看到登入欄位*。
 
-8. 選取 [以密碼為基礎的登入] 模式。
+10. 選取 [儲存]。
 
-9. 輸入 [登入 URL]，使用者將在該處輸入其使用者名稱和密碼進行登入。 **請確定在您提供的 URL 看得到登入欄位**。
+    系統會自動剪輯 [使用者名稱] 和 [密碼] 輸入方塊的頁面。 您現在可以使用 Azure AD，使用存取面板瀏覽器擴充功能將密碼安全地傳輸到該應用程式。
 
-10. 按一下 [儲存]  按鈕。
+### <a name="manually-capture-sign-in-fields-for-an-app"></a>手動捕獲應用程式的登入欄位
 
-11. 這麼做之後，該 URL 會自動擷取使用者名稱和密碼輸入方塊，並可讓您使用 Azure AD 並利用存取面板瀏覽器擴充功能將密碼安全地傳輸到該應用程式。
+若要手動捕獲登入欄位，您必須安裝存取面板的瀏覽器延伸模組。 此外，您的瀏覽器不能在*inPrivate*、 *incognito*或*私*用模式下執行。
 
-## <a name="how-to-manually-capture-sign-in-fields-for-an-application"></a>如何手動擷取應用程式的登入欄位
+若要安裝延伸模組，請參閱本文的[安裝存取面板瀏覽器延伸](#install-the-access-panel-browser-extension)模組一節。
 
-若要手動擷取登入欄位，您必須先安裝存取面板的瀏覽器延伸模組，而且**不能在 InPrivate、incognito 或私人模式中執行**。 若要安裝瀏覽器延伸模組，請依照[如何安裝存取面板的瀏覽器延伸模組](#i-cannot-manually-detect-sign-in-fields-for-my-application)一節中的步驟執行。
+若要使用手動登入欄位 capture 為應用程式設定密碼型 SSO，請遵循下列步驟：
 
-若要為使用**手動登入欄位擷取**的應用程式設定**密碼單一登入**，請依照下列步驟執行：
+1. 開啟 [Azure 入口網站](https://portal.azure.com/)。 以全域管理員或共同管理員身分登入。
 
-1. 開啟 [Azure 入口網站](https://portal.azure.com/)，然後以**全域管理員**或**共同管理員**身分登入。
+2. 在左側導覽窗格中，選取 [**所有服務**] 以開啟 [Azure AD] 延伸模組。
 
-2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
+3. 在篩選搜尋方塊中輸入**Azure Active Directory** ，然後選取 [ **Azure Active Directory**]。
 
-3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
+4. 在 Azure AD 流覽窗格中選取 [**企業應用程式**]。
 
-4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
+5. 選取 [**所有應用程式**] 以查看您應用程式的清單。
 
-5. 按一下 [所有應用程式]，以檢視所有應用程式的清單。
+   > [!NOTE] 
+   > 如果您沒有看到想要的應用程式，請使用 [**所有應用程式**] 清單頂端的 [**篩選**] 控制項。 將 [**顯示**] 選項設定為 [所有應用程式]。
 
-   * 若在這裡沒看到您要顯示的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
+6. 選取您想要為 SSO 設定的應用程式。
 
-6. 選取您要設定單一登入的應用程式。
+7. 應用程式載入之後，請在左側導覽窗格中選取 [**單一登入**]。
 
-7. 應用程式載入後，按一下應用程式的左側導覽功能表中的 [單一登入]。
+8. 選取 [**密碼型登入**模式]。
 
-8. 選取 [以密碼為基礎的登入] 模式。
+9. 輸入 [登入**URL**]，這是使用者輸入其使用者名稱和密碼以進行登入的頁面。 *請確定在您提供的 URL 頁面上可以看到登入欄位*。
 
-9. 輸入 [登入 URL]，使用者將在該處輸入其使用者名稱和密碼進行登入。 **請確定在您提供的 URL 看得到登入欄位**。
+10. 選取 [**設定* &lt; &gt; Appname*密碼單一登入設定**]。
 
-10. 按一下 [儲存]  按鈕。
+11. 選取 [手動偵測登**入欄位**]。
 
-11. 這麼做之後，該 URL 會自動擷取使用者名稱和密碼輸入方塊，並可讓您使用 Azure AD 並利用存取面板瀏覽器擴充功能將密碼安全地傳輸到該應用程式。 萬一失敗，您可以藉由繼續執行步驟 12 來**變更登入模式以使用手動登入欄位擷取**。
+14. 選取 [確定]。
 
-12. 按一下 [設定 &lt;appname&gt; 密碼單一登入設定]。
+15. 選取 [儲存]。
 
-13. 選取 [手動偵測登入欄位] 設定選項。
+16. 依照指示使用存取面板。
 
-14. 按一下 [確定] 。
+## <a name="troubleshoot-problems"></a>問題疑難排解
 
-15. 按一下 [檔案] 。
+### <a name="i-get-a-we-couldnt-find-any-sign-in-fields-at-that-url-error"></a>我收到「在該 URL 找不到任何登入欄位」錯誤
 
-16. 依照畫面指示來使用存取面板。
+當登入欄位的自動偵測失敗時，您會收到此錯誤訊息。 若要解決此問題，請嘗試手動登入欄位偵測。 請參閱本文的[手動捕獲應用程式的登入欄位](#manually-capture-sign-in-fields-for-an-app)一節。
 
-## <a name="i-see-a-we-couldnt-find-any-sign-in-fields-at-that-url-error"></a>我看到「在該 URL 找不到任何登入欄位」的錯誤
+### <a name="i-get-an-unable-to-save-single-sign-on-configuration-error"></a>我收到「無法儲存單一登入設定」錯誤
 
-當自動偵測登入欄位失敗時，您就會看到此錯誤。 若要解決此問題，請依照[如何手動擷取應用程式的登入欄位](#how-to-manually-capture-sign-in-fields-for-an-application)一節中的步驟，嘗試執行手動登入欄位偵測。
+很少，更新 SSO 設定會失敗。 若要解決此問題，請嘗試再次儲存設定。
 
-## <a name="i-see-an-unable-to-save-single-sign-on-configuration-error"></a>我看到「無法儲存單一登入設定」錯誤
+如果您持續收到錯誤，請開啟支援案例。 請在「[觀看入口網站通知詳細資料](#view-portal-notification-details)」中包含相關資訊，並將[通知詳細資料傳送給支援工程師，以取得](#send-notification-details-to-a-support-engineer-to-get-help)本文的說明章節。
 
-在某些罕見的情況下，更新單一登入設定可能會失敗。 若要解決此錯誤，請再次嘗試儲存單一登入設定。
+### <a name="i-cant-manually-detect-sign-in-fields-for-my-app"></a>我無法手動偵測應用程式的登入欄位
 
-如果持續不斷失敗，請開啟一個支援案例，並提供[如何查看入口網站通知的詳細資料](#i-cannot-manually-detect-sign-in-fields-for-my-application)和[如何將通知詳細資料傳送給支援工程師以取得協助](#how-to-get-help-by-sending-notification-details-to-a-support-engineer)小節中所收集的資訊。
+當手動偵測無法運作時，您可能會發現下列行為：
 
-## <a name="i-cannot-manually-detect-sign-in-fields-for-my-application"></a>我無法手動偵測應用程式的登入欄位
+- 手動捕捉程式似乎正常執行，但已捕捉的欄位不正確。
 
-當手動偵測無法運作時，您可能看到某些行為，包括：
+- 當 capture 進程執行時，正確的欄位不會反白顯示。
 
--   手動擷取程序看似正常運作，但擷取的欄位不正確
+- 捕捉程式會如預期般帶您前往應用程式的登入頁面，但不會發生任何事。
 
--   在執行擷取程序時並未反白顯示適當的欄位
+- 手動捕獲似乎正常執行，但當使用者從存取面板流覽至應用程式時，不會發生 SSO。
 
--   擷取程序如預期般將我帶到應用程式的登入頁面，但什麼事也沒發生
+如果您遇到上述任何問題，請執行下列動作：
 
--   手動擷取看似正常運作，但是，當我的使用者從存取面板瀏覽至應用程式，SSO 不會發生。
+- 請確定您已*安裝並啟用*存取面板瀏覽器延伸模組的最新版本。 請參閱本文的[安裝存取面板瀏覽器延伸](#install-the-access-panel-browser-extension)模組一節。
 
-如果您遇到這其中任一個問題，請檢查下列內容：
+- 在 capture 程式期間，請確定您的瀏覽器不是處於*incognito*、 *inPrivate*或*私*用模式。 這些模式不支援存取面板延伸模組。
 
--   確定您已依照[如何安裝存取面板的瀏覽器延伸模組](#how-to-install-the-access-panel-browser-extension)一節中的步驟，**安裝**並**啟用**最新版本的存取面板瀏覽器延伸模組。
+- 請確定您的使用者不會在*incognito*、 *inPrivate*或*私用模式*中，嘗試從存取面板登入應用程式。
 
--   確定您未在瀏覽器處於 **incognito、InPrivate 或私人模式**時嘗試擷取程序。 這些模式不支援存取面板延伸模組。
+- 再次嘗試手動抓取程式。 請確定紅色標記不在正確的欄位上。
 
--   確定您的使用者未在 **incognito、InPrivate 或私人模式**中，嘗試從存取面板登入應用程式。 這些模式不支援存取面板延伸模組。
+- 如果手動捕捉程式似乎停止回應，或登入頁面沒有回應，請再次嘗試手動捕捉程式。 但這次在完成此程式之後，請按 F12 鍵以開啟瀏覽器的開發人員主控台。 選取 [**主控台**] 索引標籤。輸入**window. location = "您在設定* &lt; 應用程式 &gt; 時所指定的登入 URL*"**，然後按 enter。 這會強制執行頁面重新導向，以結束捕捉進程並儲存已捕捉的欄位。
 
--   再次嘗試手動擷取程序，確保正確的欄位上都有紅色標記。
+### <a name="contact-support"></a>請連絡支援部門
 
--   如果手動擷取程序似乎停止回應，或者登入頁面不會執行任何動作 （上述的案例 3，） 手動擷取程序再試一次。 但這次已完成此程序，請按 **F12** 按鈕，以開啟瀏覽器的開發人員主控台。 此時，開啟 [主控台]並輸入 **window.location="&lt;輸入您在設定應用程式時所指定的登入 url&gt;"**，然後按 **Enter**。 這樣會強制執行頁面重新導向，以結束擷取程序並儲存已擷取的欄位。
+如果您仍有問題，請使用 Microsoft 支援服務開啟案例。 描述您所嘗試的內容。 請在「[觀看入口網站通知詳細資料](#view-portal-notification-details)」中包含詳細資料，並將[通知詳細資料傳送給支援工程師，以取得](#send-notification-details-to-a-support-engineer-to-get-help)本文的說明章節（如果適用）。
 
-如果這其中沒有任何一種方式適合您，客戶支援很樂意提供協助。 請開啟一個支援案例，並提供您所嘗試動作的詳細資料，以及[如何查看入口網站通知的詳細資料](#i-cannot-manually-detect-sign-in-fields-for-my-application)和[如何將通知詳細資料傳送給支援工程師以取得協助](#how-to-get-help-by-sending-notification-details-to-a-support-engineer)小節 (如果適用) 中所收集的資訊。
+## <a name="install-the-access-panel-browser-extension"></a>安裝存取面板的瀏覽器擴充功能
 
-## <a name="how-to-install-the-access-panel-browser-extension"></a>如何安裝存取面板的瀏覽器延伸模組
+請遵循下列步驟：
 
-若要安裝存取面板的瀏覽器延伸模組，請遵循下列步驟：
+1. 在支援的瀏覽器中開啟[存取面板](https://myapps.microsoft.com)。 以*使用者*身分登入 Azure AD。
 
-1.  在其中一種支援的瀏覽器中開啟[存取面板](https://myapps.microsoft.com)，然後在您的 Azure AD 中以**使用者**身分登入。
+2. 在存取面板中選取 [**密碼-SSO 應用程式**]。
 
-2.  按一下存取面板中的 [密碼-SSO 應用程式]。
+3. 當系統提示您安裝軟體時，請選取 [**立即安裝**]。
 
-3.  在要求安裝軟體的提示中，選取 [立即安裝]。
+4. 系統會將您導向瀏覽器的下載頁面。 選擇 [**新增**] 延伸模組。
 
-4.  系統會根據您的瀏覽器將您導向至下載連結。 將延伸模組**新增**到瀏覽器中。
+5. 如果出現提示，請選取 [**啟用**] 或 [**允許**]。
 
-5.  如果您的瀏覽器要求，請選取 [啟用] 或 [允許] 該延伸模組。
+6. 安裝之後，請重新開機您的瀏覽器。
 
-6.  安裝之後，**重新啟動**瀏覽器工作階段。
+7. 登入存取面板。 查看您是否可以開啟已啟用密碼 SSO 的應用程式。
 
-7.  登入存取面板，並查看您是否可以**啟動**密碼-SSO 應用程式。
-
-您可能也會從下列直接連結中下載適用於 Chrome 和 Firefox 的延伸模組：
+您也可以透過下列連結直接下載適用于 Chrome 和 Firefox 的瀏覽器延伸模組：
 
 -   [Chrome 存取面板延伸模組](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
 -   [Firefox 存取面板延伸模組](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-## <a name="how-to-see-the-details-of-a-portal-notification"></a>如何查看入口網站通知的詳細資料
+## <a name="view-portal-notification-details"></a>觀看入口網站通知詳細資料
 
-您可以依照下列步驟來查看任何入口網站通知的詳細資料：
+若要查看任何入口網站通知的詳細資料，請遵循下列步驟：
 
-1. 按一下 Azure 入口網站右上方的 [通知] 圖示 (鐘)。
+1. 選取 Azure 入口網站右上角的 [**通知**] 圖示（鐘）。
 
-2. 選取處於**錯誤**狀態的任何通知 (旁邊有紅色 (!))。
+2. 選取顯示*錯誤*狀態的任何通知。 （它們有紅色的 "！"）。
 
-   >!NOTE] 您無法按一下處於**成功**或**進行中**狀態的通知。
-   >
-   >
+   > [!NOTE]
+   > 您無法選取處於 [*成功*] 或 [*進行中*] 狀態的通知。
 
-3. [通知詳細資料] 窗格隨即開啟。
+3. [通知詳細資料]**** 窗格隨即開啟。 閱讀資訊以瞭解問題。
 
-4. 請自行利用這些資訊來了解更多問題的詳細資料。
+5. 如果您仍然需要協助，請與支援工程師或產品小組分享資訊。 選取 [**複製錯誤**] 方塊右邊的**複製**圖示，將通知詳細資料複製到共用。
 
-5. 如果您仍然需要協助，您也可以將這些資訊分享給支援工程師或產品群組，以取得協助來解決您的問題。
+## <a name="send-notification-details-to-a-support-engineer-to-get-help"></a>將通知詳細資料傳送給支援工程師以取得協助
 
-6. 按一下 [複製錯誤] 文字方塊右邊的**複製****圖示**，以複製所有通知詳細資料來分享給支援工程師或產品群組工程師。
+請務必共用本節中所列的*所有*詳細資料，並提供支援，讓他們能夠快速地協助您。 若要記錄它，您可以採取螢幕擷取畫面或選取 [**複製錯誤**]。
 
-## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>如何將通知詳細資料傳送給支援工程師以取得協助
+下列資訊說明每個通知專案的意義，並提供範例。
 
-如果您需要協助，一定要與支援工程師分享**下列所有詳細資料**，好讓他們儘快幫助您。 您可以**擷取螢幕畫面**，或按一下 [複製錯誤] 文字方塊右邊的**複製錯誤圖示**。
+### <a name="essential-notification-items"></a>基本通知專案
 
-## <a name="notification-details-explained"></a>說明通知詳細資料
+- **標題**：通知的描述性標題。
 
-以下詳細說明每個通知項目的意義，並提供個別的範例。
+   範例：*應用程式 proxy 設定*
 
-### <a name="essential-notification-items"></a>必要通知項目
+- **描述**：作業所發生的結果。
 
--   **標題** - 通知的描述性標題
+   範例：*輸入的內部 URL 已由另一個應用程式使用中。*
 
-    -   範例 - **應用程式 Proxy 設定**
+- **通知識別碼**：通知的唯一識別碼。
 
--   **描述** - 作業所產生之結果的描述
+    範例： *clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068*
 
-    -   範例 - **輸入的內部 URL 正由另一個應用程式使用中**
+- **用戶端要求識別碼**：您的瀏覽器所建立的特定要求識別碼。
 
--   **通知識別碼** – 通知的唯一識別碼
+    範例： *302fd775-3329-4670-a9f3-bea37004f0bc*
 
-    -   範例 - **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
+- **時間戳記 UTC**：發生通知的時間戳記（utc 格式）。
 
--   **用戶端要求識別碼** – 瀏覽器所產生的特定要求識別碼
+    範例： *2017-03-23T19：50： 43.7583681 z*
 
-    -   範例 - **302fd775-3329-4670-a9f3-bea37004f0bc**
+- **內部交易識別碼**：用來在系統中查閱錯誤的內部識別碼。
 
--   **時間戳記 UTC** - 發生通知期間的時間戳記 (UTC)
+    範例： **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
-    -   範例 - **2017-03-23T19:50:43.7583681Z**
+- **UPN**：執行作業的使用者。
 
--   **內部交易識別碼** – 可用來在系統中查閱錯誤的內部識別碼
+    範例： *tperkins \@ f128.info*
 
-    -   範例 - **71a2f329-ca29-402f-aa72-bc00a7aca603**
+- **租使用者識別碼**：執行作業的使用者所屬之租使用者的唯一識別碼。
 
--   **UPN** - 執行作業的使用者
+    範例： *7918d4b5-0442-4a97-be2d-36f9f9962ece*
 
-    -   範例 – **tperkins\@f128.info**
+- **使用者物件識別碼**：執行作業之使用者的唯一識別碼。
 
--   **租用戶識別碼** – 作業執行使用者所屬之租用戶的唯一識別碼
+    範例： *17f84be4-51f8-483a-b533-383791227a99*
 
-    -   範例 - **7918d4b5-0442-4a97-be2d-36f9f9962ece**
+### <a name="detailed-notification-items"></a>詳細通知專案
 
--   **使用者物件識別碼** – 執行作業之使用者的唯一識別碼
+- **顯示名稱**：（可以是空白）錯誤的更詳細顯示名稱。
 
-    -   範例 - **17f84be4-51f8-483a-b533-383791227a99**
+    範例：*應用程式 proxy 設定*
 
-### <a name="detailed-notification-items"></a>詳細通知項目
+- **狀態**：通知的特定狀態。
 
--   **顯示名稱** – **(可以是空白)** 錯誤的詳細顯示名稱
+    範例：*失敗*
 
-    -   範例 - **應用程式 Proxy 設定**
+- **物件識別碼**：（可以是空的）執行作業所針對的物件識別碼。
 
--   **狀態** – 通知的特定狀態
+   範例： *8e08161d-f2fd-40ad-a34a-a9632d6bb599*
 
-    -   範例 – **失敗**
+- **詳細資料**：作業結果所發生的詳細描述。
 
--   **物件識別碼** – **(可以是空白)** 據以執行作業的物件識別碼
+    範例：*內部 url ' <https://bing.com/> ' 無效，因為它已在使用中。*
 
-    -   範例 - **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
+- **複製錯誤**：可讓您選取 [**複製錯誤**] 文字方塊右邊的**複製圖示**，以複製通知詳細資料以協助支援。
 
--   **詳細資料** - 作業所產生之結果的詳細描述
-
-    -   範例 – **內部 url '<https://bing.com/>' 無效，因為已在使用中**
-
--   **複製錯誤** - 按一下 [複製錯誤] 文字方塊右邊的**複製圖示**，以複製所有通知詳細資料來分享給支援工程師或產品群組工程師
-
-    -   範例 - ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
+    實例```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
 ## <a name="next-steps"></a>後續步驟
 [使用應用程式 Proxy 提供單一登入應用程式](application-proxy-configure-single-sign-on-with-kcd.md)
-

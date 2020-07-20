@@ -1,24 +1,22 @@
 ---
-title: 使用 Azure 串流分析事件處理的即時事件處理
+title: 使用 Azure 串流分析進行即時事件處理
 description: 本文說明使用「Azure 串流分析」來達成即時事件處理和分析的參考架構。
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/24/2017
-ms.openlocfilehash: 7f9748a4e4f1c86362781aa80d8958237c97106a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 23c7112639a64097d95df29bde16636702837f9e
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60816959"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832974"
 ---
 # <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>參考架構：使用 Microsoft Azure 串流分析的即時事件處理
 使用 Microsoft Azure 串流分析的即時事件處理之參考架構主要用來提供一般的藍圖，供使用 Microsoft Azure 部署即時的平台即服務 (PaaS) 串流處理解決方案。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 傳統上，分析解決方案為基於例如 ETL (擷取、轉換、載入) 和資料倉儲等功能運作，其中資料在分析前就已儲存。 不斷變化的要求，包含更快速到達的資料，將此現有的模型推到了極限。 在移動串流到儲存體之前分析資料的能力是一種解決方式，雖然這並非新的功能，但此方式並未廣泛受到所有產業縱向市場採用。 
 
 Microsoft Azure 提供分析技術的全面目錄，可以支援一系列不同的解決方案案例和要求。 當供應項目相當多元時，選取要為端對端解決方案部署哪一個 Azure 服務可說是項挑戰。 本文件主要用來描述支援事件串流解決方案之各種 Azure 服務的功能和交互操作。 這也說明客戶可從此類方式中獲益的某些案例。
@@ -42,15 +40,15 @@ Microsoft Azure 提供分析技術的全面目錄，可以支援一系列不同�
 
 **修訂版本：** 1.0
 
-**下載：**[使用 Microsoft Azure 串流分析的即時事件處理](https://download.microsoft.com/download/6/2/3/623924DE-B083-4561-9624-C1AB62B5F82B/real-time-event-processing-with-microsoft-azure-stream-analytics.pdf)
+**下載：** [使用 Microsoft Azure 串流分析的即時事件處理](https://download.microsoft.com/download/6/2/3/623924DE-B083-4561-9624-C1AB62B5F82B/real-time-event-processing-with-microsoft-azure-stream-analytics.pdf)
 
 ## <a name="get-help"></a>取得說明
-如需進一步的協助，請參閱 [Azure 串流分析論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
+如需進一步的協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html) \(英文\)
 
 ## <a name="next-steps"></a>後續步驟
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
 * [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

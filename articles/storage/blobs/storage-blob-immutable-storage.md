@@ -1,398 +1,176 @@
 ---
-title: Azure 儲存體 Blob 的固定儲存體 | Microsoft Docs
+title: 不可變的 blob 儲存體-Azure 儲存體
 description: Azure 儲存體為 Blob 物件儲存體提供 WORM (一次寫入，多次讀取) 支援，可讓使用者在指定的間隔內以不可清除、不可修改的狀態儲存資料。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 05/06/2019
+ms.topic: conceptual
+ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 60cf37e5f6375d08e73241f6e357ac39ea665e9b
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 69c921ba67159d28a913173cee5e90fb04dcbf0a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192542"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85561048"
 ---
-# <a name="store-business-critical-data-in-azure-blob-storage"></a>在 Azure Blob 儲存體中儲存業務關鍵資料
+# <a name="store-business-critical-blob-data-with-immutable-storage"></a>使用不可變儲存體儲存業務關鍵 Blob 資料
 
-不可變的儲存體，Azure Blob 儲存體可讓使用者將業務關鍵的資料物件儲存在蠕蟲 （一次寫入、 讀取許多） 狀態。 此狀態讓資料在使用者指定的間隔內不可清除，也不可修改。 Blob 物件建立和讀取，但不是修改或刪除，在保留間隔期間。 一般目的 v2 及所有 Azure 區域中的 Blob 儲存體帳戶會啟用不可變的儲存體。
+Azure Blob 儲存體的固定儲存體可讓使用者以 WORM (一次寫入，多次讀取) 狀態儲存業務關鍵資料。 此狀態讓資料在使用者指定的間隔內不可清除，也不可修改。 在保留間隔的持續時間內可以建立和讀取 Blob，但無法加以修改或刪除。 固定儲存體適用于所有 Azure 區域中的一般用途 v1、一般用途 v2、BlobStorage 和 BlockBlobStorage 帳戶。
 
-## <a name="overview"></a>概觀
+如需如何使用 Azure 入口網站、PowerShell 或 Azure CLI 來設定和清除合法保存或建立以時間為基礎的保留原則的詳細資訊，請參閱[設定和管理 Blob 儲存體的不可變性原則](storage-blob-immutability-policies-manage.md)。
 
-不可變的儲存體可協助醫療保健組織、 金融機構，以及相關的產業-特別是訊息代理程式經銷商組織安全地儲存資料。 它也可以運用在任何案例中保護重要資料，避免修改或刪除。 
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+
+## <a name="about-immutable-blob-storage"></a>關於不可變的 Blob 儲存體
+
+固定儲存體可協助醫療保健組織、金融機構和相關產業（ &mdash; 特別是經紀機關組織） &mdash; 安全地儲存資料。 在任何情況下，也可以利用固定儲存體來保護重要資料，以防止修改或刪除。
 
 典型應用包括：
 
-- **法規遵循**：Azure Blob 儲存體的固定儲存體可協助組織處理 SEC 17a-4(f)、CFTC 1.31(d)、FINRA 和其他法規。 Cohasset 產生關聯的技術白皮書詳細說明這些法規的要求會透過可下載的儲存體位址如何變[Microsoft 服務信任入口網站](https://aka.ms/AzureWormStorage)。 [Azure 信任中心](https://www.microsoft.com/trustcenter/compliance/compliance-overview)包含我們的合規性認證的詳細的資訊。
+- **法規遵循**：Azure Blob 儲存體的固定儲存體可協助組織處理 SEC 17a-4(f)、CFTC 1.31(d)、FINRA 和其他法規。 技術白皮書 Cohasset 將詳細說明如何透過[Microsoft 服務信任入口網站](https://aka.ms/AzureWormStorage)，下載不可變的儲存體如何解決這些法規需求。 [Azure 信任中心](https://www.microsoft.com/trustcenter/compliance/compliance-overview)包含有關我們的合規性認證的詳細資訊。
 
-- **安全文件保留**：不可變的儲存體，Azure Blob 儲存體可確保無法修改或刪除任何使用者，包括以帳戶系統管理權限的使用者資料。
+- **安全檔保留**： Azure Blob 儲存體的固定儲存體可確保任何使用者都無法修改或刪除資料，包括具有帳戶系統管理許可權的使用者。
 
-- **合法保存**：不可變的儲存體，Azure Blob 儲存體可讓使用者儲存訴訟或商務用在防狀態所需的持續時間，直到移除保留至關重要的機密資訊。 這項功能不只限於合法使用案例，但可以也視為事件為基礎的保留或企業鎖定，需要保護資料是根據事件觸發程序或公司原則的情況。
+- **合法保存**： Azure Blob 儲存體的固定儲存體可讓使用者在所需的持續期間內，儲存對訴訟或業務使用很重要的機密資訊，直到移除保存為止。 這項功能不只限於合法使用案例，也可以視為以事件為基礎的保存或企業鎖定，需要根據事件觸發程式或公司原則來保護資料的需求。
 
-不可變的儲存體支援下列各項：
+不可變的儲存體支援下列功能：
 
-- **[支援以時間為基礎的保留原則](#time-based-retention)**:使用者可以設定原則來將資料儲存在指定間隔內。 當時間為基礎的保留原則已設定時，blob 可以建立和讀取，但不是修改或刪除。 保留期限到期之後，即可刪除 blob，但不是會覆寫。
+- 以**[時間為基礎的保留原則支援](#time-based-retention-policies)**：使用者可以設定原則，以在指定的間隔內儲存資料。 設定以時間為基礎的保留原則時，可以建立和讀取 blob，但不能修改或刪除。 保留期限到期後，可以刪除 blob，但不會覆寫。
 
-- **[法務保存措施原則支援](#legal-holds)**:如果不知道在保留間隔，使用者可以設定法務保存措施來 immutably 儲存資料，直到已清除的適用法務保存措施。  當法務保存措施原則設定時，blob 可以建立和讀取，但不是修改或刪除。 每個適用法務保存措施是相關聯的使用者定義英數字元標記 （例如案例識別碼、 事件名稱等），做為識別項字串。 
+- **[合法保存原則支援](#legal-holds)**：如果不知道保留間隔，使用者可以設定合法保存來儲存不可變的資料，直到清除合法保存為止。  設定合法保存原則時，可以建立和讀取 blob，但不能修改或刪除。 每個合法保存都會與使用者定義的英數位元標記相關聯（例如案例識別碼、事件名稱等），做為識別碼字串。 
 
-- **所有 Blob 層都支援**：WORM 原則與 Azure Blob 儲存層無關，而且會套用至所有層：經常性存取層、非經常性存取層和封存存取層。 使用者可以將資料轉換到其工作負載的成本最佳化層中，同時維護資料不變性。
+- **所有 Blob 層都支援：** WORM 原則與 Azure Blob 儲存層無關，而且會套用至所有層：經常性存取層、非經常性存取層和封存存取層。 使用者可以將資料轉換到其工作負載的成本最佳化層中，同時維護資料不變性。
 
-- **容器層級設定**：使用者可以在容器層級設定以時間為基礎的保留原則和合法保存標記。 使用簡單的容器層級設定，使用者可以建立和鎖定時間為基礎的保留原則、 擴充保留間隔、 設定和清除法務保存措施，和更多功能。 這些原則會套用到現有和新容器中的所有 Blob。
+- **容器層級組態**：使用者可以在容器層級設定以時間為基礎的保留原則和合法保存標記。 使用簡單的容器層級設定，使用者可以建立及鎖定以時間為基礎的保留原則、延長保留間隔、設定和清除法務保存等等。 這些原則會套用到現有和新容器中的所有 Blob。
 
-- **稽核記錄支援**：每個容器包含原則稽核記錄檔。 它會顯示最多七個時間為基礎保留鎖定的時間為基礎的保留原則的命令，並包含使用者識別碼、 命令類型、 時間戳記，以及保留間隔。 針對合法保存，此記錄包含使用者識別碼、命令類型、時間戳記及合法保存標記。 此記錄檔會保留原則，根據秒 17a-4(f) 法規的指導方針的存留期。 [Azure 活動記錄檔](../../azure-monitor/platform/activity-logs-overview.md)示範的更完整的記錄檔的所有控制平面活動，同時讓[Azure 診斷記錄](../../azure-monitor/platform/diagnostic-logs-overview.md)會保留，並顯示資料平面作業。 基於法規需求或其他目的，使用者有責任持續不斷地儲存那些記錄。
+- **審核記錄支援**：每個容器都包含一個原則 Audit 記錄檔。 它會針對鎖定的以時間為基礎的保留原則，最多顯示7個以時間為基礎的保留命令，並包含使用者識別碼、命令類型、時間戳記及保留間隔。 針對合法保存，此記錄包含使用者識別碼、命令類型、時間戳記及合法保存標記。 此記錄會保留在原則的存留期間，符合 SEC 17a-4 （f）法規指導方針。 [ [Azure 活動記錄](../../azure-monitor/platform/platform-logs-overview.md)檔] 會顯示所有控制平面活動的更完整記錄;啟用[Azure 資源記錄](../../azure-monitor/platform/platform-logs-overview.md)時，會保留並顯示資料平面作業。 基於法規需求或其他目的，使用者有責任持續不斷地儲存那些記錄。
 
 ## <a name="how-it-works"></a>運作方式
 
-Azure Blob 儲存體的固定儲存體支援兩種 WORM 或固定原則：以時間為基礎的保留和合法保存。 當時間為基礎的保留原則或法務保存措施套用在容器上時，所有現有的 blob 將移至不可變的蠕蟲狀態在 30 秒內。 所有新的 blob 上傳至該容器也會移動至不可變的狀態。 當所有 blob 已都移至不可變的狀態，確認不可變的原則之後，而且全部覆寫或刪除現有和新的物件不可變的容器中的作業不允許。
+Azure Blob 儲存體的固定儲存體支援兩種 WORM 或固定原則：以時間為基礎的保留和合法保存。 在容器上套用以時間為基礎的保留原則或合法保存時，所有現有的 blob 都會在30秒內移至不可變的 WORM 狀態。 所有上傳至該受原則保護容器的新 blob 也會移至不可變的狀態。 當所有 blob 都處於不可變的狀態之後，就會確認不可變的原則，而且不允許不可變容器中的任何覆寫或刪除作業。
 
-容器和帳戶刪除也不允許有不可變的原則所保護的任何 blob。 如果有至少一個 Blob 具有鎖定的時間型保留原則或法務保存措施，則「刪除容器」作業會失敗。 如果有至少一個 WORM 容器具有合法保存或有一個 Blob 具有有效保留間隔，則儲存體帳戶刪除作業會失敗。 
+如果容器中有任何 blob 受到合法保存或鎖定的以時間為基礎的原則保護，也不允許刪除容器和儲存體帳戶。 合法保存原則會防止 blob、容器和儲存體帳戶刪除。 已解除鎖定和鎖定時間型原則都會在指定的時間，防止 blob 刪除。 只有在容器內至少有一個 blob 時，已解除鎖定和鎖定的時間型原則才會保護容器的刪除。 只有*鎖定*以時間為基礎之原則的容器，才能防止儲存體帳戶遭到刪除;已解除鎖定以時間為基礎之原則的容器不會提供儲存體帳戶刪除保護或合規性。
 
-### <a name="time-based-retention"></a>以時間為基礎的保留期
+如需有關如何設定和鎖定以時間為基礎之保留原則的詳細資訊，請參閱[設定和管理 Blob 儲存體的不可變性原則](storage-blob-immutability-policies-manage.md)。
+
+## <a name="time-based-retention-policies"></a>以時間為基礎的保留原則
 
 > [!IMPORTANT]
-> 對於即將處於固定 (防寫和防刪保護) 狀態的 Blob 而言，以時間為基礎的保留原則必須「鎖定」，才能符合 SEC 17a-4(f) 和其他法規。 建議您在合理的時間 (通常為 24 小時) 內鎖定原則。 我們不建議對短期功能試用以外的其他任何用途，使用「未鎖定」狀態。
+> 必須*鎖定*以時間為基礎的保留原則，blob 才會符合 SEC 17a-4 （f）和其他法規合規性的不變（寫入和刪除保護）狀態。 我們建議您在合理的時間內鎖定原則，通常不到24小時。 套用的以時間為基礎的保留原則初始狀態已*解除鎖定*，可讓您測試功能並對原則進行變更，然後再加以鎖定。 雖然 [已*解除鎖定*] 狀態提供非永久性保護，但不建議針對短期功能試用以外的任何目的使用 [*解除鎖定*] 狀態。 
 
-若在容器上套用以時間為基礎的保留原則，在「有效」保留期限內，容器中的所有 Blob 都會保持固定狀態。 現有的 blob 的有效的保留期限會等於 blob 修改時間和使用者指定的保留間隔之間的差異。
+若在容器上套用以時間為基礎的保留原則，在「有效」** 保留期限內，容器中的所有 Blob 都會保持固定狀態。 Blob 的有效保留期限等於 blob 的**建立時間**與使用者指定的保留間隔之間的差異。 因為使用者可以延長保留間隔，所以固定儲存體會使用使用者所指定保留間隔的最新值，計算有效的保留期限。
 
-若為新的 Blob，有效保留期限等於使用者指定的保留間隔。 因為使用者可以延長保留間隔，所以固定儲存體會使用使用者所指定保留間隔的最新值，計算有效的保留期限。
+例如，假設使用者建立以時間為基礎的保留原則，其保留間隔為五年。 該容器中的現有 blob （ _testblob1)_）是一年前建立的;因此， _testblob1)_ 的有效保留期限為四年。 將新的 blob （ _testblob2_）上傳至容器時， _testblob2_的有效保留期限是從其建立時間起的五年。
 
-> [!TIP]
-> **範例：** 使用者建立以時間為基礎的保留原則，其保留間隔為五年。
->
-> 在該容器中，現有的 blob _testblob1_，建立前一年。 有效的保留期限_testblob1_是四年的時間。
->
-> 新的 blob _testblob2_，現在已上傳至容器。 這個新 Blob 的有效保留期限為 5 年。
+建議僅針對功能測試使用已解除鎖定的以時間為基礎的保留原則，而且必須鎖定原則，才能符合 SEC 17a-4 （f）和其他法規合規性。 鎖定以時間為基礎的保留原則之後，就無法移除原則，且允許的有效保留期限上限為五個。
 
-### <a name="legal-holds"></a>合法保存
+下列限制適用于保留原則：
 
-當您設定合法保存時，所有現有和新的 Blob 都會保持固狀態，直到清除合法保存為止。 如需有關如何設定和清除合法保存的詳細資訊，請參閱[使用者入門](#getting-started)。
+- 針對儲存體帳戶，具有鎖定之以時間為基礎的不可變原則的容器數目上限為10000。
+- 保留間隔的最小值為1天。 最大值為146000天（400年）。
+- 針對容器，針對鎖定的以時間為基礎的不可變原則，擴充保留間隔的編輯次數上限為5。
+- 針對容器，已鎖定的原則會保留最多七個以時間為基礎的保留原則 audit 記錄。
+
+### <a name="allow-protected-append-blobs-writes"></a>允許受保護的附加 blob 寫入
+
+附加 blob 是由資料區塊所組成，並已針對審核和記錄案例所需的資料附加作業優化。 根據設計，附加 blob 只允許將新區塊新增至 blob 結尾。 不論是否有任何不受的改變，都不允許在附加 blob 中修改或刪除現有區塊。 若要深入瞭解附加 blob，請參閱[關於附加 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)。
+
+只有以時間為基礎的保留原則有一個 `allowProtectedAppendWrites` 設定，可讓您將新的區塊寫入至附加 blob，同時維持不安全的保護和合規性。 啟用時，您可以直接在受原則保護的容器中建立附加 blob，並繼續使用*AppendBlock* API，將新的資料區塊新增至現有附加 blob 的結尾。 只能新增新的區塊，而且無法修改或刪除任何現有的區塊。 時間保留不存在的保護仍然適用，防止刪除附加 blob，直到經過有效的保留期限為止。 啟用這項設定並不會影響區塊 blob 或分頁 blob 的永久性行為。
+
+由於此設定是以時間為基礎的保留原則的一部分，因此附加 blob 在*有效*保留期間的持續時間內仍會保持不變狀態。 由於新的資料可以附加在初始建立附加 blob 之外，因此決定保留週期的方式會有些許差異。 [有效保留] 是 [附加 blob 的**上次修改時間**] 和 [使用者指定的保留間隔] 之間的差異。 同樣地，當保留間隔擴充時，固定儲存體會使用使用者指定的保留間隔的最新值來計算有效的保留期限。
+
+例如，假設使用者建立以時間為基礎的保留原則， `allowProtectedAppendWrites` 並啟用並保留間隔為90天。 現在會在容器中建立附加 blob _logblob1_，而新的記錄會繼續在接下來的10天內新增至附加 blob;因此， _logblob1_的有效保留期限是從今天起算的100天（最後一個附加的時間 + 90 天）。
+
+解除鎖定以時間為基礎的保留原則可讓您隨時 `allowProtectedAppendWrites` 啟用和停用設定。 一旦鎖定以時間為基礎的保留原則，就 `allowProtectedAppendWrites` 無法變更設定。
+
+合法保存原則無法啟用 `allowProtectedAppendWrites` ，而且任何合法保存都會使失效 ' allowProtectedAppendWrites ' 屬性。 如果將合法保存套用至已啟用的以時間為基礎的保留原則 `allowProtectedAppendWrites` ，則*AppendBlock* API 將會失敗，直到合法保存都已解除為止。
+
+## <a name="legal-holds"></a>合法保存
+
+合法保存是暫時保留，可用於法律調查用途或一般保護原則。 每個合法保存原則都必須與一或多個標記相關聯。 標記是用來做為命名識別碼（例如案例 ID 或事件），以分類及描述保存的用途。
 
 一個容器可以同時具有合法保存和以時間為基礎的保留原則。 該容器中的所有 Blob 都會保持固定狀態，直到所有合法保存都遭到清除為止 (即使其有效保留期限已過期)。 相反地，Blob 會保持固定狀態，直到有效保留週期到期為止 (即使已清除所有合法保存)。
 
-下表顯示會針對不同固定案例停用的 Blob 作業類型。 如需詳細資訊，請參閱 [Azure Blob 服務 API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)文件。
+下列限制適用于合法保存：
 
-|案例  |Blob 狀態  |不允許 Blob 作業  |
-|---------|---------|---------|
-|Blob 上的有效保留間隔尚未過期及/或已設定合法保存     |固定：防刪與防寫保護         | 放置 Blob<sup>1</sup>，將區塊放<sup>1</sup>、 放置區塊清單<sup>1</sup>、 刪除容器中，刪除 Blob，設定 Blob 中繼資料，請將頁面中，設定 Blob 屬性 」、 「 快照集 Blob、 「 累加複製 Blob附加區塊         |
-|Blob 上的有效保留間隔已過期     |僅限防寫保護 (允許刪除作業)         |放置 Blob<sup>1</sup>、放置區塊<sup>1</sup>、放置區塊清單<sup>1</sup>、設定 Blob 中繼資料、放置分頁、設定 Blob 屬性、快照集 Blob、累加複製 Blob、附加區塊         |
-|所有合法保存都已清除，且容器上未設定任何以時間為基礎的保留原則     |可變動         |None         |
-|未建立任何 WORM 原則 (以時間為基礎的保留或合法保存)     |可變動         |None         |
-
-<sup>1</sup>應用程式可讓這些作業來一次建立新的 blob。 所有後續覆寫現有的 blob 路徑中的不可變的容器上的作業不允許。
-
-## <a name="supported-values"></a>支援的值
-
-### <a name="time-based-retention"></a>以時間為基礎的保留期
-- 儲存體帳戶、 容器與鎖定時間為基礎的不可變原則的最大數目為 1,000。
-- 最小保留間隔為 1 天。 最大值為 146,000 天 （400 年）。
-- 針對容器中，編輯擴充鎖定時間為基礎的不可變原則保留間隔的最大數目為 5。
-- 針對容器中，最多 7 以時間為基礎的保留原則稽核記錄檔會保留原則的持續時間。
-
-### <a name="legal-hold"></a>法務保存措施
-- 若為儲存體帳戶，具有合法保存設定的容器數目上限為 1,000。
+- 針對儲存體帳戶，具有合法保存設定的容器數目上限為10000。
 - 若為容器，合法保存標記數目上限為 10。
-- 適用法務保存措施標記的最小長度是 3 個的英數字元。 最大長度為 23 的英數字元。
-- 容器，合法的 10 個最多會保留原則稽核記錄檔會保留原則的持續時間。
+- 合法保存標記的最小長度為三個英數位元。 最大長度為23個英數位元。
+- 針對容器，原則期間會保留最多10個合法保存原則的 audit 記錄。
 
-## <a name="pricing"></a>價格
+## <a name="scenarios"></a>案例
+下表顯示針對不同的不可變案例停用的 Blob 儲存體作業類型。 如需詳細資訊，請參閱[Azure Blob 服務 REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)檔。
 
-使用這項功能不需額外付費。 固定資料的定價方式與一般可變動的資料相同。 如需 Azure Blob 儲存體定價的詳細資料，請參閱 [Azure 儲存體定價頁面](https://azure.microsoft.com/pricing/details/storage/blobs/)。
+|狀況  |Blob 狀態  |已拒絕 Blob 作業  |容器和帳戶保護
+|---------|---------|---------|---------|
+|Blob 上的有效保留間隔尚未過期及/或已設定合法保存     |固定：防刪與防寫保護         | 放置 Blob<sup>1</sup>、放置區塊<sup>1</sup>、放置區塊清單<sup>1</sup>、刪除容器、刪除 blob、設定 Blob 中繼資料、放置分頁、設定 Blob 屬性、快照集 Blob、累加複製 Blob、附加區塊<sup>2</sup>         |容器刪除被拒;拒絕刪除儲存體帳戶         |
+|Blob 上的有效保留間隔已過期，且未設定合法保存    |僅限防寫保護 (允許刪除作業)         |放置 Blob<sup>1</sup>、放置區塊<sup>1</sup>、放置區塊清單<sup>1</sup>、設定 blob 中繼資料、放置分頁、設定 Blob 屬性、快照集 Blob、增量複製 Blob、附加區塊<sup>2</sup>         |如果受保護容器中至少有1個 blob，則會拒絕容器刪除;只有*鎖定*的以時間為基礎的原則，才會拒絕刪除儲存體帳戶         |
+|未套用任何 WORM 原則（沒有以時間為基礎的保留，而且沒有合法的保存標記）     |可變動         |None         |None         |
 
-## <a name="getting-started"></a>開始使用
-不可變的儲存體是只適用於一般用途 v2 和 Blob 儲存體帳戶。 這些帳戶必須透過管理[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。 如需有關升級現有的一般用途 v1 儲存體帳戶，請參閱[儲存體帳戶升級](../common/storage-account-upgrade.md)。
+<sup>1</sup> blob 服務允許這些作業一次建立新的 blob。 不允許不可變容器中現有 blob 路徑上的所有後續覆寫作業。
 
-最新版本[Azure 入口網站](https://portal.azure.com)， [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，並[Azure PowerShell](https://github.com/Azure/azure-powershell/releases)支援 Azure Blob 儲存體的不可變的儲存體。 [用戶端程式庫支援](#client-libraries)也會提供。
+<sup>2</sup>只有啟用屬性的以時間為基礎的保留原則才允許附加區塊 `allowProtectedAppendWrites` 。 如需詳細資訊，請參閱[允許受保護的附加 Blob 寫入](#allow-protected-append-blobs-writes)一節。
 
-### <a name="azure-portal"></a>Azure 入口網站
+## <a name="pricing"></a>定價
 
-1. 建立新的容器或選取現有容器，以儲存必須保持固定狀態的 Blob。
- 容器必須位於 GPv2 或 Blob 儲存體帳戶中。
-2. 在容器設定中選取 [存取原則]。 然後選取 [固定 blob 儲存體] 之下的 [+ 新增原則]。
-
-    ![入口網站中的容器設定](media/storage-blob-immutable-storage/portal-image-1.png)
-
-3. 若要啟用以時間為基礎的保留，請從下拉式功能表中選取 [以時間為基礎的保留]。
-
-    ![在 [原則類型] 下選取的 [以時間為基礎的保留]](media/storage-blob-immutable-storage/portal-image-2.png)
-
-4. 輸入保留間隔天數 （1 至 146000 天的可接受的值）。
-
-    ![[更新保留期限] 方塊](media/storage-blob-immutable-storage/portal-image-5-retention-interval.png)
-
-    此原則的初始狀態是解除鎖定可讓您測試功能和變更原則之前鎖定它。 鎖定原則是不可或缺的秒 17a-4 等法規的合規性的。
-
-5. 鎖定原則。 以滑鼠右鍵按一下省略符號 (**...**)，並會出現下列功能表的 其他動作：
-
-    ![功能表上的 [鎖定原則]](media/storage-blob-immutable-storage/portal-image-4-lock-policy.png)
-
-6. 選取 **鎖定原則**並確認鎖定。 原則現在已被鎖定，且無法刪除，系統會允許在保留間隔的延伸模組。 不允許覆寫及刪除 blob。 
-
-    ![確認 [鎖定原則] 功能表上](media/storage-blob-immutable-storage/portal-image-5-lock-policy.png)
-
-7. 若要啟用合法保存，請選取 [+ 新增原則]。 從下拉式功能表中選取 [合法保存]。
-
-    ![在功能表上 [原則類型] 之下的 [合法保存]](media/storage-blob-immutable-storage/portal-image-legal-hold-selection-7.png)
-
-8. 建立具有一或多個標記的合法保存。
-
-    ![原則類型之下的 [標記名稱] 方塊](media/storage-blob-immutable-storage/portal-image-set-legal-hold-tags.png)
-
-9. 若要清除適用法務保存措施，只要移除套用的適用法務保存措施識別碼標記。
-
-### <a name="azure-cli"></a>Azure CLI
-
-此功能包含在下列命令群組中：`az storage container immutability-policy` 和 `az storage container legal-hold`。 在其上執行 `-h` 來查看命令。
-
-### <a name="powershell"></a>PowerShell
-
-Az.Storage 模組支援不可變的儲存體。  若要啟用此功能，請依照下列步驟執行：
-
-1. 確定您已安裝最新版的 PowerShellGet：`Install-Module PowerShellGet –Repository PSGallery –Force`。
-2. 移除任何先前安裝的 Azure PowerShell。
-3. 安裝 Azure PowerShell：`Install-Module Az –Repository PSGallery –AllowClobber`。
-
-本文後面的 [PowerShell 範例程式碼](#sample-powershell-code)一節會說明功能使用情況。
-
-## <a name="client-libraries"></a>用戶端程式庫
-
-下列用戶端程式庫支援適用於 Azure Blob 儲存體的固定儲存體：
-
-- [.NET 用戶端程式庫版本 7.2.0-preview 和更新版本](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/7.2.0-preview)
-- [Node.js 用戶端程式庫 4.0.0 版和更新版本](https://www.npmjs.com/package/azure-arm-storage)
-- [Python 用戶端程式庫 2.0.0 候選版 2 和更新版本](https://pypi.org/project/azure-mgmt-storage/2.0.0rc2/)
-- [Java 用戶端程式庫](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/storage/resource-manager/Microsoft.Storage/preview/2018-03-01-preview)
+使用這項功能不需額外付費。 固定資料的定價方式與可變數據相同。 如需 Azure Blob 儲存體的定價詳細資料，請參閱[Azure 儲存體定價頁面](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
 ## <a name="faq"></a>常見問題集
 
-**您可以提供蠕蟲合規性文的件嗎？**
+**您可以提供 WORM 合規性的檔嗎？**
 
-是。 文件合規性，Microsoft 保留領先業界的獨立評定公司專門記錄管理與資訊監管，Cohasset 產生關聯，來評估 Azure 不可變的 Blob 儲存體和其遵守特定的需求金融服務產業中。 Cohasset 驗證 Azure 不變的 Blob 儲存體，用來保留時間為基礎的 Blob，蠕蟲處於時符合 CFTC 規則 1.31(c)-(d)、 FINRA 規則 4511，和 SEC Rule 17a-4 相關的儲存體需求。 Microsoft 會針對這組規則，因為它們代表記錄保留金融機構的全域最精準的指引。 Cohasset 報表位於[Microsoft 服務信任中心](https://aka.ms/AzureWormStorage)。
+是。 為了記載合規性，Microsoft 保留了領先的獨立評估公司，專門從事記錄管理和資訊治理，Cohasset 關聯，以評估不可變的 Blob 儲存體，並遵循金融服務產業的特定需求。 Cohasset 已驗證不變的 Blob 儲存體（當用來以 WORM 狀態保留以時間為基礎的 Blob）時，會符合 CFTC 規則1.31 （c）-（d）、FINRA 規則4511和 SEC 規則17a-4 的相關儲存需求。 Microsoft 以這組規則為目標，因為它們代表針對金融機構的記錄保留範圍內最具規範性的指導方針。 Cohasset 報告可在[Microsoft 服務信任中心](https://aka.ms/AzureWormStorage)取得。 若要向 Microsoft 要求關於 WORM 不符合規範的證明，請洽詢 Azure 支援。
 
-**此功能只適用於區塊 Blob，或者也適用於分頁和附加 Blob？**
+**此功能是否只適用于區塊 blob 和附加 blob，或分頁 blob？**
 
-固定儲存體可以與任何 Blob 類型一起使用，但我們建議您大部分將其用於區塊 Blob。 不同於區塊 Blob，分頁 Blob 和附加 Blob 必須在 WORM 容器外部建立，然後再複製到其中。 之後您這些將 blob 複製到 「 蠕蟲 」 容器沒有進一步*附加*附加 blob 或分頁 blob 的變更允許。
+不可變的儲存體可以搭配任何 blob 類型使用，因為它是在容器層級設定的，但我們建議您針對主要儲存區塊 blob 和附加 blob 的容器使用 WORM。 容器中的現有 blob 會受到新設定的 WORM 原則保護。 但所有的新分頁 blob 都必須在 WORM 容器外部建立，然後再複製到中。 複製到 WORM 容器後，不允許進一步變更分頁 blob。 不建議您在儲存任何使用中虛擬機器之 Vhd （分頁 blob）的容器上設定 WORM 原則，因為它會鎖定 VM 磁片。 我們建議您在鎖定任何以時間為基礎的原則之前，徹底檢查檔並測試您的案例。
 
-**我需要建立新的儲存體帳戶，才能使用此功能嗎？**
+**我是否需要建立新的儲存體帳戶才能使用這項功能？**
 
-否，您可以使用不可變的儲存體與任何現有或新建立的一般用途 v2 或 Blob 儲存體帳戶。 這項功能適用於使用 GPv2 和 Blob 儲存體帳戶中的區塊 blob 的使用方式。 一般用途 v1 儲存體帳戶不支援，但可以輕鬆地升級至一般用途 v2。 如需有關升級現有的一般用途 v1 儲存體帳戶，請參閱[儲存體帳戶升級](../common/storage-account-upgrade.md)。
+否，您可以搭配任何現有或新建立的一般用途 v1、一般用途 v2、BlobStorage 或 BlockBlobStorage 帳戶來使用不可變的儲存體。 支援一般用途 v1 儲存體帳戶，但我們建議您升級至一般用途 v2，讓您可以利用更多的功能。 如需升級現有一般用途 v1 儲存體帳戶的相關資訊，請參閱[升級儲存體帳戶](../common/storage-account-upgrade.md)。
 
-**可以套用的適用法務保存措施和以時間為基礎的保留原則嗎？**
+**我可以同時套用合法保存和以時間為基礎的保留原則嗎？**
 
-是，容器可以在同一時間有適用法務保存措施和以時間為基礎的保留原則。 該容器中的所有 Blob 都會保持固定狀態，直到所有合法保存都遭到清除為止 (即使其有效保留期限已過期)。 相反地，Blob 會保持固定狀態，直到有效保留週期到期為止 (即使已清除所有合法保存)。
+是，容器可以同時具有合法保存和以時間為基礎的保留原則;不過，在清除合法保存之前，不會套用 ' allowProtectedAppendWrites ' 設定。 該容器中的所有 Blob 都會保持固定狀態，直到所有合法保存都遭到清除為止 (即使其有效保留期限已過期)。 相反地，Blob 會保持固定狀態，直到有效保留週期到期為止 (即使已清除所有合法保存)。 
 
-**只有在法律訴訟時才適用法務保存措施原則，或是否有其他使用案例？**
+**合法的持有原則是否僅適用于法律訴訟，或是否有其他使用案例？**
 
-否，合法的保存是只用於非時間為基礎的保留原則的一般術語。 它不需要只用於訴訟相關記錄。 法務保存措施原則可用於停用 覆寫及刪除保護重要的企業蠕蟲資料的保留期限是未知的位置。 您可以為企業原則使用它來保護您任務關鍵性蠕蟲工作負載，或使用它作為暫存原則之前的自訂事件觸發程序需要使用以時間為基礎的保留原則。 
+否，合法保存只是用於非以時間為基礎之保留原則的一般詞彙。 它不需要僅用於訴訟相關的訴訟。 合法保存原則適用于停用覆寫和刪除，以保護重要的企業蠕蟲資料，其中保留期限不明。 在自訂事件觸發程式需要使用以時間為基礎的保留原則之前，您可以使用它做為企業原則來保護您的任務關鍵性 WORM 工作負載，或使用它做為預備原則。 
 
-**如果我嘗試刪除的容器具有以時間為基礎的「鎖定」保留原則或合法保存，則會發生什麼事？**
+**我可以移除_鎖定_的以時間為基礎的保留原則或合法保存嗎？**
 
-如果有至少一個 Blob 具有鎖定的時間型保留原則或法務保存措施，則「刪除容器」作業會失敗。 只有在沒有任何 Blob 具有有效的保留間隔，而且沒有法務保存措施時，「刪除容器」作業才會成功。 您必須先刪除 Blob，才可以刪除容器。
+只能從容器中移除解除鎖定的以時間為基礎的保留原則。 一旦鎖定以時間為基礎的保留原則，就無法將它移除;僅允許有效的保留週期延伸。 您可以刪除合法的標記。 刪除所有合法標記時，將會移除合法的保存。
 
-**如果我嘗試刪除的儲存體帳戶具有 WORM 帳戶，且該帳戶具有以時間為基礎的「鎖定」保留原則或合法保存，則會發生什麼事？**
+**如果我嘗試刪除具有以時間為基礎的保留原則或合法保存的容器，會發生什麼事？**
 
-如果有至少一個 WORM 容器具有合法保存或有一個 Blob 具有有效保留間隔，則儲存體帳戶刪除作業會失敗。 您必須先刪除所有 WORM 容器，才能刪除儲存體帳戶。 如需有關容器刪除的資訊，請參閱前面的問題。
+如果容器內至少有一個 blob 具有鎖定或解除鎖定的以時間為基礎的保留原則，或容器具有合法保存，則刪除容器作業將會失敗。 只有當容器中沒有任何 blob 存在，而且沒有合法的保存時，刪除容器作業才會成功。 
 
-**當 Blob 處於固定狀態時，我可以跨越不同 Blob 層 (經常性存取層、非經常性存取層、冷門存取層) 移動資料嗎？**
+**如果我嘗試刪除具有以時間為基礎的保留原則或合法保存之容器的儲存體帳戶，會發生什麼事？**
 
-是，您可以使用設定 Blob 層命令，在 blob 層之間移動資料，同時符合規範的狀態不變的資料。 Blob 經常性存取層、非經常性存取層和封存存取層都支援固定儲存體。
+如果至少有一個容器具有合法保存集或**鎖定**的以時間為基礎的原則，則儲存體帳戶刪除作業將會失敗。 具有已解除鎖定之以時間為基礎之原則的容器無法防止刪除儲存體帳戶。 您必須先移除所有合法保存並刪除所有**鎖定**的容器，才能刪除儲存體帳戶。 如需有關容器刪除的資訊，請參閱前面的問題。 您也可以對具有[Azure Resource Manager 鎖定](../../azure-resource-manager/management/lock-resources.md)的儲存體帳戶套用進一步的刪除保護。
+
+**當 blob 處於不可變狀態時，可以將資料移到不同的 blob 層（經常性存取、非經常性存取、封存）嗎？**
+
+是，您可以使用 [設定 Blob 層] 命令跨 Blob 層移動資料，同時將資料保持在符合規範的固定狀態。 Blob 經常性存取層、非經常性存取層和封存存取層都支援固定儲存體。
 
 **如果我付款失敗，而保留間隔尚未過期，則會發生什麼事？**
 
-如果未付款，則會依照您與 Microsoft 簽訂的合約條款與條件規定，套用一般資料保留原則。
+如果未付款，則會依照您與 Microsoft 簽訂的合約條款與條件規定，套用一般資料保留原則。 如需一般資訊，請參閱[Microsoft 的資料管理](https://www.microsoft.com/en-us/trust-center/privacy/data-management)。 
 
 **您是否提供試用此功能的試用版或寬限期？**
 
-是。 第一次建立以時間為基礎的保留原則時，它是在*解除鎖定*狀態。 在此狀態中，您可以對保留間隔進行任何所需的變更，例如增加或減少保留間隔，甚至刪除原則。 鎖定原則之後，會保持鎖定狀態，直到保留間隔到期為止。 此鎖定的原則可防止刪除和修改的保留間隔。 我們強烈建議僅將「未鎖定」狀態使用於試用目的，並且在 24 小時期間內鎖定原則。 這些做法可協助您符合 SEC 17a-4(f) 和其他法規。
+是。 第一次建立以時間為基礎的保留原則時，它會處於「未*鎖定*」狀態。 在此狀態中，您可以對保留間隔進行任何所需的變更，例如增加或減少保留間隔，甚至刪除原則。 鎖定原則之後，會保持鎖定狀態，直到保留間隔到期為止。 這個鎖定的原則會防止刪除和修改保留間隔。 我們強烈建議僅將「未鎖定」** 狀態使用於試用目的，並且在 24 小時期間內鎖定原則。 這些做法可協助您符合 SEC 17a-4(f) 和其他法規。
 
-**我可以使用虛刪除與不可變的 blob 原則嗎？**
+**我可以搭配不可變的 blob 原則使用虛刪除嗎？**
 
-是。 [Azure Blob 儲存體的虛刪除](storage-blob-soft-delete.md)適用於儲存體帳戶，不論適用法務保存措施或以時間為基礎的保留原則內的所有容器。 我們建議先套用任何不可變的蠕蟲原則，並確認啟用虛刪除額外的保護。 
+是，如果您的合規性需求允許啟用虛刪除。 [Azure Blob 儲存體](storage-blob-soft-delete.md)的虛刪除會套用至儲存體帳戶內的所有容器，而不論是合法保存或以時間為基礎的保留原則。 建議您先啟用虛刪除以提供額外的保護，再套用和確認任何不可變的 WORM 原則。
 
-**此功能可使用的？**
+## <a name="next-steps"></a>後續步驟
 
-Azure 公用、Azure 中國和 Azure Government 區域提供不可變的儲存體。 如果您的區域不提供不可變的儲存體，請連絡支援與電子郵件azurestoragefeedback@microsoft.com。
-
-## <a name="sample-powershell-code"></a>PowerShell 範例程式碼
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-以下 PowerShell 範例指令碼僅供參考。 此指令碼會建立新的儲存體帳戶和容器。 然後，示範如何設定及清除合法保存、建立及鎖定以時間為基礎的保留原則 (也稱為固定原則)，以及延長保留間隔。
-
-設定及測試 Azure 儲存體帳戶：
-
-```powershell
-$ResourceGroup = "<Enter your resource group>”
-$StorageAccount = "<Enter your storage account name>"
-$container = "<Enter your container name>"
-$container2 = "<Enter another container name>”
-$location = "<Enter the storage account location>"
-
-# Log in to the Azure Resource Manager account
-Login-AzAccount
-Register-AzResourceProvider -ProviderNamespace "Microsoft.Storage"
-
-# Create your Azure resource group
-New-AzResourceGroup -Name $ResourceGroup -Location $location
-
-# Create your Azure storage account
-New-AzStorageAccount -ResourceGroupName $ResourceGroup -StorageAccountName `
-    $StorageAccount -SkuName Standard_LRS -Location $location -Kind StorageV2
-
-# Create a new container
-New-AzStorageContainer -ResourceGroupName $ResourceGroup `
-    -StorageAccountName $StorageAccount -Name $container
-
-# Create Container 2 with a storage account object
-$accountObject = Get-AzStorageAccount -ResourceGroupName $ResourceGroup `
-    -StorageAccountName $StorageAccount
-New-AzStorageContainer -StorageAccount $accountObject -Name $container2
-
-# Get a container
-Get-AzStorageContainer -ResourceGroupName $ResourceGroup `
-    -StorageAccountName $StorageAccount -Name $container
-
-# Get a container with an account object
-$containerObject = Get-AzStorageContainer -StorageAccount $accountObject -Name $container
-
-# List containers
-Get-AzStorageContainer -ResourceGroupName $ResourceGroup `
-    -StorageAccountName $StorageAccount
-
-# Remove a container (add -Force to dismiss the prompt)
-Remove-AzStorageContainer -ResourceGroupName $ResourceGroup `
-    -StorageAccountName $StorageAccount -Name $container2
-
-# Remove a container with an account object
-Remove-AzStorageContainer -StorageAccount $accountObject -Name $container2
-
-# Remove a container with a container object
-$containerObject2 = Get-AzStorageContainer -StorageAccount $accountObject -Name $container2
-Remove-AzStorageContainer -InputObject $containerObject2
-```
-
-設定及清除法務保存措施：
-
-```powershell
-# Set a legal hold
-Add-AzRmStorageContainerLegalHold -ResourceGroupName $ResourceGroup `
-    -StorageAccountName $StorageAccount -Name $container -Tag <tag1>,<tag2>,...
-
-# with an account object
-Add-AzRmStorageContainerLegalHold -StorageAccount $accountObject -Name $container -Tag <tag3>
-
-# with a container object
-Add-AzRmStorageContainerLegalHold -Container $containerObject -Tag <tag4>,<tag5>,...
-
-# Clear a legal hold
-Remove-AzRmStorageContainerLegalHold -ResourceGroupName $ResourceGroup `
-    -StorageAccountName $StorageAccount -Name $container -Tag <tag2>
-
-# with an account object
-Remove-AzRmStorageContainerLegalHold -StorageAccount $accountObject -Name $container -Tag <tag3>,<tag5>
-
-# with a container object
-Remove-AzRmStorageContainerLegalHold -Container $containerObject -Tag <tag4>
-```
-
-建立或更新不變性原則：
-```powershell
-# with an account name or container name
-Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroup `
-    -StorageAccountName $StorageAccount -ContainerName $container -ImmutabilityPeriod 10
-
-# with an account object
-Set-AzRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject `
-    -ContainerName $container -ImmutabilityPeriod 1 -Etag $policy.Etag
-
-# with a container object
-$policy = Set-AzRmStorageContainerImmutabilityPolicy -Container `
-    $containerObject -ImmutabilityPeriod 7
-
-# with an immutability policy object
-Set-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy -ImmutabilityPeriod 5
-```
-
-擷取不變性原則：
-```powershell
-# Get an immutability policy
-Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroup `
-    -StorageAccountName $StorageAccount -ContainerName $container
-
-# with an account object
-Get-AzRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject `
-    -ContainerName $container
-
-# with a container object
-Get-AzRmStorageContainerImmutabilityPolicy -Container $containerObject
-```
-
-鎖定不變性原則 (加入 -Force 即可關閉提示)：
-```powershell
-# with an immutability policy object
-$policy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName `
-    $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container
-$policy = Lock-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy -force
-
-# with an account name or container name
-$policy = Lock-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName `
-    $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container `
-    -Etag $policy.Etag
-
-# with an account object
-$policy = Lock-AzRmStorageContainerImmutabilityPolicy -StorageAccount `
-    $accountObject -ContainerName $container -Etag $policy.Etag
-
-# with a container object
-$policy = Lock-AzRmStorageContainerImmutabilityPolicy -Container `
-    $containerObject -Etag $policy.Etag -force
-```
-
-擴充不變性原則：
-```powershell
-
-# with an immutability policy object
-$policy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName `
-    $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container
-
-$policy = Set-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy `
-    $policy -ImmutabilityPeriod 11 -ExtendPolicy
-
-# with an account name or container name
-$policy = Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName `
-    $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container `
-    -ImmutabilityPeriod 11 -Etag $policy.Etag -ExtendPolicy
-
-# with an account object
-$policy = Set-AzRmStorageContainerImmutabilityPolicy -StorageAccount `
-    $accountObject -ContainerName $container -ImmutabilityPeriod 12 -Etag `
-    $policy.Etag -ExtendPolicy
-
-# with a container object
-$policy = Set-AzRmStorageContainerImmutabilityPolicy -Container `
-    $containerObject -ImmutabilityPeriod 13 -Etag $policy.Etag -ExtendPolicy
-```
-
-移除不變性原則 (加入 -Force 即可關閉提示)：
-```powershell
-# with an immutability policy object
-$policy = Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName `
-    $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container
-Remove-AzStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
-
-# with an account name or container name
-Remove-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName `
-    $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container `
-    -Etag $policy.Etag
-
-# with an account object
-Remove-AzRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject `
-    -ContainerName $container -Etag $policy.Etag
-
-# with a container object
-Remove-AzRmStorageContainerImmutabilityPolicy -Container $containerObject `
-    -Etag $policy.Etag
-
-```
+- [設定和管理 Blob 儲存體的不變性原則](storage-blob-immutability-policies-manage.md)
+- [使用生命週期管理將規則設定為自動分層和刪除 blob 資料](storage-lifecycle-management-concepts.md)
+- [Azure 儲存體 Blob 的虛刪除](../blobs/storage-blob-soft-delete.md)
+- [使用 Azure Resource Manager 鎖定來保護訂用帳戶、資源群組和資源](../../azure-resource-manager/management/lock-resources.md)。

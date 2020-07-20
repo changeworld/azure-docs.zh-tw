@@ -1,11 +1,10 @@
 ---
-title: Azure CLI 指令碼範例 - 掛接作業系統磁碟 | Microsoft Docs
+title: Azure CLI 指令碼範例 - 掛接作業系統磁碟
 description: Azure CLI 指令碼範例 - 掛接作業系統磁碟
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -16,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6f2d4c9a7871e0917b33407605abe1389eb4420e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: f15beeee2c5843506f0bf89b4c6d66d77826e152
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753600"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81459883"
 ---
 # <a name="troubleshoot-a-vms-operating-system-disk"></a>針對 VM 作業系統磁碟進行疑難排解
 
@@ -39,7 +38,7 @@ ms.locfileid: "55753600"
 
 此指令碼使用下列命令來建立資源群組、虛擬機器和所有相關資源。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [az vm show](https://docs.microsoft.com/cli/azure/vm) | 傳回虛擬機器清單。 此案例使用查詢選項來傳回虛擬機器的作業系統磁碟。 接著將此值新增至 'uri' 變數名稱。 |
 | [az vm delete](https://docs.microsoft.com/cli/azure/vm) | 刪除虛擬機器。 |

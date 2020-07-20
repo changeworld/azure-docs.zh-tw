@@ -1,22 +1,22 @@
 ---
-title: 教學課程：建立單頁 Web 應用程式 - Bing 新聞搜尋 API
-titlesuffix: Azure Cognitive Services
+title: 教學課程：使用 Bing 新聞搜尋 API 建立單頁 Web 應用程式
+titleSuffix: Azure Cognitive Services
 description: 使用此教學課程來建置可將搜尋查詢傳送給「Bing 新聞 API」並在網頁內顯示結果的單頁 Web 應用程式。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 01/10/2019
-ms.author: v-gedod
+ms.date: 06/23/2020
+ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 29539ba39e724208093910f8fb6fa2d3bc309bda
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9721a00ef1f0df056b3300ababfee0d0d29bbddc
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55885033"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801269"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>教學課程：建立單頁 Web 應用程式
 
@@ -40,6 +40,14 @@ Bing 新聞搜尋 API 可讓您搜尋網頁，並取得與搜尋查詢相關的�
 
 本教學課程頁完全獨立，不會使用任何外部架構、樣式表或影像檔。 它使用唯一且廣泛支援的 JavaScript 語言功能，適用於所有主要網頁瀏覽器的目前版本。
 
+
+## <a name="prerequisites"></a>必要條件
+
+若要依照本教學課程，您需要 Bing 搜尋 API 的訂用帳戶金鑰。 如果您沒有金鑰，則必須加以建立：
+
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="建立 Bing 搜尋資源"  target="_blank">建立 Bing 搜尋資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
+
 ## <a name="app-components"></a>應用程式元件
 如同任何單頁 Web 應用程式，本教學課程應用程式包含三個部分：
 
@@ -48,12 +56,12 @@ Bing 新聞搜尋 API 可讓您搜尋網頁，並取得與搜尋查詢相關的�
 > * CSS - 定義頁面的外觀
 > * JavaScript - 定義頁面的行為
 
-大部分的 HTML 和 CSS 是常見項目，因此本教學課程不會加以討論。 HTML 包含搜尋表單，使用者會在其中輸入查詢並選擇搜尋選項。 該表單會使用 `<form>` 標籤的 `onsubmit` 屬性，連接至實際執行搜尋的 JavaScript：
+大部分的 HTML 和 CSS 是常見項目，因此本教學課程不會加以討論。 HTML 包含搜尋表單，使用者可在其中輸入查詢並選擇搜尋選項。 該表單會使用 `<form>` 標籤的 `onsubmit` 屬性，連接至實際執行搜尋的 JavaScript：
 
 ```html
 <form name="bing" onsubmit="return newBingNewsSearch(this)">
 ```
-`onsubmit` 處理常式會傳回 `false`，這可防止將表單提交給伺服器。 JavaScript 程式碼會從表單收集所需的資訊，並執行搜尋。
+`onsubmit` 處理常式會傳回 `false`，這可防止表單提交至伺服器。 JavaScript 程式碼會從表單收集所需的資訊，並執行搜尋。
 
 HTML 也包含顯示搜尋結果的區域 (HTML `<div>` 標籤)。
 
@@ -61,7 +69,7 @@ HTML 也包含顯示搜尋結果的區域 (HTML `<div>` 標籤)。
 
 為了避免必須在程式碼中包含 Bing 搜尋 API 訂用帳戶金鑰，我們使用瀏覽器的永續性儲存體來儲存金鑰。 儲存此金鑰之前，我們會提示輸入使用者的金鑰。 若 API 稍後拒絕金鑰，我們會讓儲存的金鑰失效，以便再次提示使用者。
 
-我們會定義 `storeValue` 和 `retrieveValue` 函式，以使用 `localStorage` 物件 (並非所有瀏覽器都支援它) 或 Cookie。 `getSubscriptionKey()` 函式使用這些函式來儲存及擷取使用者的金鑰。
+我們會定義 `storeValue` 和 `retrieveValue` 函式，以使用 `localStorage` 物件 (並非所有瀏覽器都支援它) 或 Cookie。 `getSubscriptionKey()` 函式使用這些函式來儲存及擷取使用者的金鑰。 您可以使用下方的全域端點，也可以使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
 
 ``` javascript
 // Cookie names for data we store
@@ -101,7 +109,7 @@ HTML `<form>` 標籤 `onsubmit` 會呼叫 `bingWebSearch` 函式來傳回搜尋�
 
 HTML 表單包含具有下列名稱的項目：
 
-|元素|說明|
+|元素|描述|
 |-|-|
 | `where` | 可供選取市場 (位置和語言) 以用於搜尋的下拉式功能表。 |
 | `query` | 要輸入搜尋字詞的文字欄位。 |
@@ -269,7 +277,7 @@ function handleBingResponse() {
 > [!IMPORTANT]
 > 成功的 HTTP 要求「不」一定表示搜尋本身成功。 若搜尋作業中發生錯誤，Bing 新聞搜尋 API 會傳回非 200 HTTP 狀態碼，並在 JSON 回應中包含錯誤資訊。 此外，若要求速率受到限制，API 會傳回空白回應。
 
-上述兩個函式中大部分的程式碼都是專門用來處理錯誤的。 下列階段可能會發生錯誤：
+上述兩個函式中的大部分程式碼都是專用於錯誤處理。 下列階段可能會發生錯誤：
 
 |階段|可能的錯誤|處理者|
 |-|-|-|
@@ -313,9 +321,9 @@ function renderResults(items) {
     return html.join("\n\n");
 }
 ```
-Bing 新聞搜尋 API 最多傳回四種不同的相關結果，每個都出現在它自己的最上層物件中。 如下：
+Bing 新聞搜尋 API 最多傳回四種不同的相關結果，每個都出現在它自己的最上層物件中。 其中包括：
 
-|關聯|說明|
+|關聯|描述|
 |-|-|
 |`pivotSuggestions`|將原始搜尋中的樞紐字組取代為不同樞紐字組的查詢。 比方說，若您搜尋「紅色花卉」，樞紐字組可能是「紅色」，而樞紐建議可能是「黃色花卉」。|
 |`queryExpansions`|藉由新增多個字詞以縮小原始搜尋範圍的查詢。 比方說，若您搜尋 "Microsoft Surface"，可能是查詢擴充可能是 "Microsoft Surface Pro"。|
@@ -338,7 +346,7 @@ searchItemRenderers = {
 ```
 轉譯器函式可接受下列參數：
 
-|參數|說明|
+|參數|描述|
 |-|-|
 |`item`| JavaScript 物件，其中包含項目的屬性，例如其 URL 及其描述。|
 |`index`| 集合內結果項目的索引。|
@@ -346,7 +354,7 @@ searchItemRenderers = {
 
 `index` 和 `count` 參數可用來編號結果、為集合開頭或結尾產生特殊 HTML、在特定數量的項目之後插入分行符號等。 若轉譯器不需要此功能，則不需要接受這兩個參數。
 
-`news` 轉譯器會顯示在下列 Javascript 摘錄中：
+`news` 轉譯器會顯示在下列 JavaScript 摘錄中：
 ```javascript
     // render news story
     news: function (item) {
@@ -381,7 +389,7 @@ searchItemRenderers = {
 > * 建置 HTML `<a>` 標籤，以連結至影像和內含影像的頁面。
 > * 建置描述，以顯示影像及執行所在網站的相關資訊。
 
-縮圖大小用於這兩個 `<img>` 標籤，以及縮圖 URL 中的 `h` 和 `w` 欄位。 [Bing 縮圖服務](resize-and-crop-thumbnails.md)接著會提供完全符合該大小的縮圖。
+縮圖大小用於這兩個 `<img>` 標籤，以及縮圖 URL 中的 `h` 和 `w` 欄位。 [Bing 縮圖服務](../bing-web-search/resize-and-crop-thumbnails.md)接著會提供完全符合該大小的縮圖。
 
 ## <a name="persisting-client-id"></a>保存用戶端識別碼
 來自 Bing 搜尋 API 的回應可能會在後續要求中包含應該傳回 API 的 `X-MSEdge-ClientID` 標頭。 若使用多個 Bing 搜尋 API，請盡可能對所有 API 使用相同的用戶端識別碼。
@@ -390,26 +398,29 @@ searchItemRenderers = {
 
 首先，它可讓 Bing 搜尋引擎將過去內容套用至搜尋結果，以尋找更符合使用者的結果。 例如，若使用者之前搜尋與航行相關的字詞，稍後搜尋「節」可能會優先傳回航行中所使用節數的相關資訊。
 
-其次，Bing 可能會隨機選取使用者來體驗新功能，再廣泛提供這些功能。 在每個要求中提供相同的用戶端識別碼，可確保看到功能的使用者一律會看到該功能。 若沒有用戶端識別碼，使用者可能會在其搜尋結果中看到功能出現並消失，似乎很隨機。
+其次，Bing 可能會隨機選取使用者來體驗新功能，再廣泛提供這些功能。 在每個要求中提供相同的用戶端識別碼，可確保看到功能的使用者一律會看到該功能。 若沒有用戶端識別碼，使用者可能會在其搜尋結果中隨機看到功能出現並消失。
 
 瀏覽器安全性原則 (CORS) 可防止將 `X-MSEdge-ClientID` 標頭提供給 JavaScript 使用。 當搜尋回應的來源與要求回應的頁面不同時，就會發生這項限制。 在生產環境中，您應該裝載伺服器端指令碼，在與網頁相同的網域上執行 API 呼叫，以處理此原則。 由於指令碼的來源與網頁相同，因此 `X-MSEdge-ClientID` 標頭會接著提供給 JavaScript 使用。
 
 > [!NOTE]
 > 在生產 Web 應用程式中，您應該執行要求伺服器端。 否則，您的 Bing 搜尋 API 金鑰必須包含在網頁中，以提供給檢視來源的任何人。 您會根據 API 訂用帳戶金鑰的所有使用量付費，即使是未經授權的合作對象所提出的要求，因此請務必不要公開您的金鑰。
 
-若要進行開發，您可以透過 CORS Proxy 提出 Bing Web 搜尋 API 要求。 來自這類 Proxy 的回應包含 `Access-Control-Expose-Headers` 標頭，可將回應標頭列入白名單並提供給 JavaScript 使用。
+若要進行開發，您可以透過 CORS Proxy 提出 Bing Web 搜尋 API 要求。 來自這類 Proxy 的回應包含 `Access-Control-Expose-Headers` 標頭，可讓回應標頭列入允許清單並提供給 JavaScript 使用。
 
 您可以輕鬆安裝 CORS Proxy，讓我們的教學課程應用程式存取用戶端識別碼標頭。 首先，請[安裝 Node.js](https://nodejs.org/en/download/) (若尚未安裝)。 然後在命令視窗中發出下列命令：
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-接下來，將 HTML 檔案中的 Bing Web 搜尋端點變更為：
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+接下來，將 HTML 檔案中的 Bing Web 搜尋端點變更為：\
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 最後，使用下列命令啟動 CORS Proxy：
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 當您使用教學課程應用程式時，請保持開啟命令視窗；關閉視窗會停止 Proxy。 在可展開的 [HTTP 標頭] 區段搜尋結果下，您現在可以看到 `X-MSEdge-ClientID` 標頭 (及其他標頭)，並確認每個要求的此標頭都相同。
 

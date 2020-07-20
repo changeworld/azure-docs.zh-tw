@@ -1,34 +1,25 @@
 ---
-title: 保護與 Azure Service Fabric 中的 C# 進行服務遠端通訊時的安全 | Microsoft Docs
+title: 使用 C 保護服務遠端處理通訊#
 description: 了解如何針對在 Azure Service Fabric 叢集中執行的 C# 可靠服務，保護以服務遠端為基礎的通訊。
-services: service-fabric
-documentationcenter: .net
 author: suchiagicha
-manager: chackdan
-editor: vturecek
-ms.assetid: fc129c1a-fbe4-4339-83ae-0e69a41654e0
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 04/20/2017
-ms.author: suchiagicha
-ms.openlocfilehash: f247142f26490e1899256917b64fbec7308fb281
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.author: pepogors
+ms.openlocfilehash: ba68df53f1f21b9ff360772fe1a60c93c8df74d3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62107665"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252210"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>保護 C# 服務中的服務遠端通訊
 > [!div class="op_single_selector"]
-> * [Windows 上的 C# ](service-fabric-reliable-services-secure-communication.md)
+> * [Windows 上的 c #](service-fabric-reliable-services-secure-communication.md)
 > * [在 Linux 上使用 Java](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
 
-安全是通信最为重视的要素之一。 Reliable Services 應用程式架構會提供可用來改善安全性的一些預先建置通訊堆疊和工具。 本文探討如何改善在 C# 服務中使用服務遠端時的安全性。 它建置於現有[範例](service-fabric-reliable-services-communication-remoting.md)上，其會說明如何針對以 C# 撰寫的可靠服務設定遠端。 
+安全性是通訊最為重視的其中一個部分。 Reliable Services 應用程式架構會提供可用來改善安全性的一些預先建置通訊堆疊和工具。 本文探討如何改善在 C# 服務中使用服務遠端時的安全性。 它建置於現有[範例](service-fabric-reliable-services-communication-remoting.md)上，其會說明如何針對以 C# 撰寫的可靠服務設定遠端。 
 
 若要在搭配 C# 服務使用服務遠端時協助保護服務安全，請遵循下列步驟：
 
@@ -180,7 +171,7 @@ ms.locfileid: "62107665"
 
     ```
 
-    如果用戶端程式碼正在當作服務一部分執行，則可以從 settings.xml 檔案中載入 `FabricTransportRemotingSettings` 。 建立與服務程式碼類似的 HelloWorldClientTransportSettings 區段，如前所示。 对客户端代码进行以下更改。
+    如果用戶端程式碼正在當作服務一部分執行，則可以從 settings.xml 檔案中載入 `FabricTransportRemotingSettings` 。 建立與服務程式碼類似的 HelloWorldClientTransportSettings 區段，如前所示。 對用戶端程式碼進行下列變更：
 
     ```csharp
     ServiceProxyFactory serviceProxyFactory = new ServiceProxyFactory(
@@ -209,4 +200,4 @@ ms.locfileid: "62107665"
     ```
 
 
-接著請參閱[在 Reliable Services 中搭配 OWIN 使用 Web API](service-fabric-reliable-services-communication-webapi.md)。
+接著請參閱[在 Reliable Services 中搭配 OWIN 使用 Web API](./service-fabric-reliable-services-communication-aspnetcore.md)。

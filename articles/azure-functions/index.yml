@@ -1,123 +1,164 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Functions 文件
+summary: Azure Functions 是無伺服器計算服務，可讓您執行由事件觸發的程式碼，無需明確佈建或管理基礎結構。
 metadata:
-  document_id: 83ceabb5-fb4f-a709-3fd2-37d024409f31
-  title: Azure Functions 文件 - 教學課程 | Microsoft Docs
-  meta.description: Learn how to develop and deploy functions in the language of your choice to run tasks in the background or on a schedule without special infrastructure.
-  services: functions
-  author: czeumault
-  manager: carolz
-  ms.service: functions
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  title: Azure Functions 文件
+  description: Azure Functions 是無伺服器計算服務，可讓您執行由事件觸發的程式碼，無需明確佈建或管理基礎結構。
+  ms.service: azure-functions
   ms.topic: landing-page
-  ms.date: 08/09/2018
-  ms.author: carolz
-abstract:
-  description: 'Azure Functions 是<a href="https://azure.microsoft.com/solutions/serverless/">無伺服器</a>計算服務，可讓您依需求執行程式碼，無需明確佈建或管理基礎結構。 使用 Azure Functions 執行指令碼或一段程式碼來回應各種事件。 了解如何透過我們的快速入門、教學課程和範例使用Azure Functions。'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/index/video-thumb-get-started.png
-      width: 250
-    title: '開始使用 Azure Functions。 (2:39)'
-    href: 'https://azure.microsoft.com/resources/videos/get-started-with-azure-functions/'
-    width: 250
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何透過以下方式，建立以建立事件為基礎來執行的函式：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_http.svg'
-            text: HTTP
-            href: /azure/azure-functions/functions-create-first-azure-function
-          - image:
-              src: media/index/stopwatch.svg
-            text: 計時器
-            href: /azure/azure-functions/functions-create-scheduled-function
-          - image:
-              src: media/index/cosmosdb.svg
-            text: Azure Cosmos DB
-            href: /azure/azure-functions/functions-create-cosmos-db-triggered-function
-          - image:
-              src: media/index/blob.svg
-            text: Blob
-            href: /azure/azure-functions/functions-create-storage-blob-triggered-function
-          - image:
-              src: media/index/storage.svg
-            text: 佇列
-            href: /azure/azure-functions/functions-create-storage-queue-triggered-function
-      - type: paragraph
-        text: 了解如何在本機開發及偵錯：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
-            text: Visual Studio
-            href: /azure/azure-functions/functions-create-your-first-function-visual-studio
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
-            text: Visual Studio Code
-            href: /azure/azure-functions/functions-create-first-function-vs-code
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何建置和管理 Azure Functions：
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/azure-functions/functions-twitter-email">建立與 Azure Logic Apps 整合的函式</a>
-          - html: <a href="/azure/azure-functions/functions-create-serverless-api">使用 Azure Functions 建立無伺服器 API</a>
-          - html: <a href="/azure/azure-functions/functions-openapi-definition">為函式建立 OpenAPI 定義</a>
-          - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">使用 Event Grid 自動調整已上傳映像的大小</a>
-          - html: '<a href="https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database">建立無伺服器 Web 應用程式以儲存圖片與中繼資料</a>'
-  - title: 範例
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/azure-functions/functions-cli-samples">Azure CLI</a>
-          - html: <a href="/sandbox/functions-recipes/">Azure Functions 配方</a>
-  - title: 透過 Microsoft Learn 增進您的技巧
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: 使用 Azure Functions 建立無伺服器邏輯
-            href: /learn/modules/create-serverless-logic-with-azure-functions/
-            image:
-              src: /learn/achievements/create-serverless-logic-with-azure-functions.svg
-              href: /learn/modules/create-serverless-logic-with-azure-functions/
-          - title: 透過觸發程序執行 Azure Function
-            href: /learn/modules/execute-azure-function-with-triggers/
-            image:
-              src: /learn/achievements/execute-azure-function-with-triggers.svg
-              href: /learn/modules/execute-azure-function-with-triggers/
-          - title: 使用輸入和輸出繫結將 Azure Functions 與資料鏈結在一起
-            href: /learn/modules/chain-azure-functions-data-using-bindings/
-            image:
-              src: /learn/achievements/chain-azure-functions-data-using-bindings.svg
-              href: /learn/modules/chain-azure-functions-data-using-bindings/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-functions">更多互動式學習...</a>
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令列
-            html: <p><a href="/cli/azure">Azure CLI</a></p>
-          - title: REST
-            html: <p><a href="/azure/azure-functions/functions-api-definition">OpenAPI</a></p>
-          - title: 繫結
-            html: <p><a href="/azure/azure-functions/functions-bindings-storage-blob">Blob 儲存體</a></p><p><a href="/azure/azure-functions/functions-bindings-documentdb">Azure Cosmos DB</a></p><p><a href="/azure/azure-functions/functions-bindings-event-hubs">事件中樞</a></p><p><a href="/azure/azure-functions/functions-bindings-http-webhook">HTTP 和 Webhook</a></p><p><a href="/azure/azure-functions/functions-bindings-mobile-apps">行動應用程式</a></p><p><a href="/azure/azure-functions/functions-bindings-notification-hubs">通知中樞</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-queue">佇列儲存體</a></p><p><a href="/azure/azure-functions/functions-bindings-sendgrid">SendGrid</a></p><p><a href="/azure/azure-functions/functions-bindings-service-bus">服務匯流排</a></p><p><a href="/azure/azure-functions/functions-bindings-signalr-service">SignalR 服務</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-table">資料表儲存體</a></p><p><a href="/azure/azure-functions/functions-bindings-timer">計時器</a></p><p><a href="/azure/azure-functions/functions-bindings-twilio">Twilio 輸出繫結</a></p>
+  author: ggailey777
+  ms.author: azfundocs
+  ms.date: 09/17/2019
+  ms.openlocfilehash: a08908b699d50a7e1e740f162a0b3f53fa96e434
+  ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 04/08/2020
+  ms.locfileid: "80886563"
+landingContent:
+- title: 了解 Azure Functions
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure Functions？
+      url: functions-overview.md
+    - text: 比較無伺服器選項
+      url: functions-compare-logic-apps-ms-flow-webjobs.md
+  - linkListType: concept
+    links:
+    - text: 主機選項
+      url: functions-scale.md
+  - linkListType: learn
+    links:
+    - text: 選擇無伺服器計算選項
+      url: /learn/modules/choose-azure-service-to-integrate-and-automate-business-processes/index
+  - linkListType: video
+    links:
+    - text: 我應該在哪裡裝載程式碼？
+      url: https://azure.microsoft.com/resources/videos/build-2019-where-should-i-host-my-code-choosing-between-kubernetes-containers-and-serverless/
+- title: 開始使用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 建立第一個函式 (C#)
+      url: functions-create-your-first-function-visual-studio.md
+    - text: 建立第一個函式 (Java)
+      url: functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java
+    - text: 建立第一個函式 (JavaScript)
+      url: functions-create-first-function-vs-code.md?pivots=programming-language-javascript
+    - text: 建立第一個函式 (PowerShell)
+      url: functions-create-first-function-vs-code.md?pivots=programming-language-powershell
+    - text: 建立第一個函式 (Python)
+      url: functions-create-first-function-vs-code.md?pivots=programming-language-python
+  - linkListType: learn
+    links:
+    - text: 建立無伺服器邏輯
+      url: /learn/modules/create-serverless-logic-with-azure-functions/
+  - linkListType: video
+    links:
+    - text: 觀看如何開始使用
+      url: https://azure.microsoft.com/resources/videos/get-started-with-azure-functions/
+- title: 開發函式
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 開發人員指南
+      url: functions-reference.md
+    - text: 支援的語言
+      url: supported-languages.md
+  - linkListType: how-to-guide
+    links:
+    - text: 本機開發
+      url: functions-develop-local.md
+    - text: 測試函式
+      url: functions-test-a-function.md
+    - text: 錯誤處理
+      url: functions-bindings-error-pages.md
+  - linkListType: learn
+    links:
+    - text: 使用 Visual Studio 開發函式
+      url: /learn/modules/develop-test-deploy-azure-functions-with-visual-studio/index
+    - text: 從命令列開發函式
+      url: /learn/modules/develop-test-deploy-azure-functions-with-core-tools/index
+  - linkListType: video
+    links:
+    - text: 使用 Visual Studio Code 開發
+      url: https://azure.microsoft.com/resources/videos/build-nodejs-apis-using-serverless/
+- title: 連線到伺服器
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 事件驅動觸發程序
+      url: functions-triggers-bindings.md
+    - text: 網路功能選項
+      url: functions-networking-options.md
+  - linkListType: tutorial
+    links:
+    - text: 與 Logic Apps 整合
+      url: functions-twitter-email.md
+    - text: 取用事件方格事件
+      url: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
+  - linkListType: learn
+    links:
+    - text: 使用繫結將函式鏈結
+      url: /learn/modules/chain-azure-functions-data-using-bindings/index
+    - text: 連線至 GitHub Webhook
+      url: /learn/modules/monitor-github-events-with-a-function-triggered-by-a-webhook/index
+- title: 部署函式
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: 部署選項
+      url: functions-deployment-technologies.md
+    - text: 部署位置
+      url: functions-deployment-slots.md
+    - text: 自動資源部署
+      url: functions-infrastructure-as-code.md
+  - linkListType: how-to-guide
+    links:
+    - text: 設定連續部署
+      url: functions-continuous-deployment.md
+    - text: 使用 Azure Pipelines 建置和部署
+      url: functions-how-to-azure-devops.md
+    - text: 使用 Jenkins 外掛程式進行部署
+      url: /azure/jenkins/jenkins-azure-functions-deploy
+- title: 效能與監視
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 監視函式
+      url: functions-monitoring.md
+    - text: 效能最佳化
+      url: functions-best-practices.md
+    - text: 網路考量
+      url: functions-networking-options.md
+  - linkListType: how-to-guide
+    links:
+    - text: 疑難排解
+      url: functions-recover-storage-account.md
+- title: 長時間執行的函式
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 進階主控方案
+      url: functions-premium-plan.md
+    - text: 長期函式
+      url: durable/durable-functions-overview.md
+  - linkListType: learn
+    links:
+    - text: 建立長時間執行的無伺服器工作流程
+      url: /learn/modules/create-long-running-serverless-workflow-with-durable-functions/index
+- title: 範例
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Azure Functions 範例
+      url: /samples/browse/?products=azure-functions
+    - text: Azure Serverless Community Library
+      url: https://www.serverlesslibrary.net/
+    - text: Azure 資源管理員範本
+      url: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Web&term=functions
+  - linkListType: how-to-guide
+    links:
+    - text: Azure CLI 範例
+      url: functions-cli-samples.md

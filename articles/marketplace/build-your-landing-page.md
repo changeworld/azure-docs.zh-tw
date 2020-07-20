@@ -1,19 +1,18 @@
 ---
 title: 在 Azure Marketplace 中建置登陸頁面 | Azure
 description: 了解如何為應用程式與服務發行者，在 Azure Marketplace 和 Microsoft AppSource 中建立登陸頁面。
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: jm-aditi-ms
-manager: pabutler
 ms.service: marketplace
-ms.topic: article
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 06/04/2018
-ms.author: ellacroi
-ms.openlocfilehash: 1b3f987ff54a4b5eeeb1034d1e99302d0d6d43d6
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: b7f80910e19348dfa3540f141424205a7531f5e7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935590"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102815"
 ---
 # <a name="build-your-landing-page"></a>建置登陸頁面
 
@@ -24,7 +23,7 @@ ms.locfileid: "64935590"
 *   立即取得解決方案
 
 您可以跨多個行銷策略參考登陸頁面。 您可以使用下列行銷策略： 
-*   活動
+*   事件
 *   網路廣播
 *   社交媒體
 *   白皮書
@@ -46,7 +45,7 @@ ms.locfileid: "64935590"
 | **將呼籲置於標題或明確劃分的區段** | 在文字段落中內嵌您在 Marketplace 中的清單連結。 |
 | **研究出最佳關鍵字並將頁面最佳化以供搜尋** | 假設您產品名稱產生的搜尋順位較高。 |
 | **善用廣告活動的關鍵字** | 在各個 Web 屬性間如果使用許多不同的關鍵字，將會降低廣告投資的成效。 |
-| **將相關產品名稱與關鍵字放在「上半部的明顯位置」** | 讓使用者必須捲動才能看到您所展示的產品或解決方案。 |
+| **將相關的產品名稱和關鍵字放在折迭之上** | 讓使用者必須捲動才能看到您所展示的產品或解決方案。 |
 | **依據 Microsoft 商標指導方針使用品牌圖像來驗證您的解決方案，例如「Azure 認證」** | 使用未經核准的 Microsoft 品牌圖像。 |
 
 ## <a name="next-steps"></a>後續步驟

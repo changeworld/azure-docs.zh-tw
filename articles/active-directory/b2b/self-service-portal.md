@@ -1,34 +1,34 @@
 ---
-title: B2B 共同作業的自助式註冊入口網站 - Azure Active Directory | Microsoft Docs
+title: B2B 共同作業的自助式註冊入口網站 - Azure AD
 description: Azure Active Directory B2B 共同作業讓企業合作夥伴選擇性地存取您的公司應用程式，以支援公司間的關係
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: sample
-ms.date: 05/08/2018
+ms.topic: conceptual
+ms.date: 02/12/2020
 ms.author: mimart
 author: msmimart
-manager: daveba
-ms.reviewer: sasubram
+manager: celestedg
+ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c3ad424e8cab444b2405715eaa468411166ebd9
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: ff18d3d9cae6e887abbd9fb1845de62386062b2b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674271"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386702"
 ---
-# <a name="self-service-portal-for-azure-ad-b2b-collaboration-sign-up"></a>Azure AD B2B 共同作業註冊的自助入口網站
+# <a name="self-service-for-azure-ad-b2b-collaboration-sign-up"></a>Azure AD B2B 共同作業註冊的自助服務
 
-客戶可以使用透過 [Azure 入口網站](https://portal.azure.com)公開的內建功能進行許多工作，而終端使用者，則可使用透過[應用程式存取面板](https://myapps.microsoft.com)公開的內建功能。 不過，您可能需要自訂適用於 B2B 使用者的上線工作流程，以符合貴組織的需求。 您可以利用[邀請 API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) 來執行該作業。
+客戶可以使用透過 [Azure 入口網站](https://portal.azure.com)公開的內建功能進行許多工作，而終端使用者，則可使用透過[應用程式存取面板](https://myapps.microsoft.com)公開的內建功能。 不過，您可能需要自訂適用於 B2B 使用者的上線工作流程，以符合貴組織的需求。
 
-提出邀請的組織可能事先不知道需要存取其資源的外部共同作業者分別有誰。 您必須讓合作夥伴公司的使用者能夠自行註冊，並以提出邀請的組織所能控制的一組原則來加以規範。 此案例可透過 API 實現。 [GitHub 上有個範例專案](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web)可供您參考。
+## <a name="azure-ad-entitlement-management-for-b2b-guest-user-sign-up"></a>適用於 B2B 來賓使用者註冊的 Azure AD 權利管理
 
-此 GitHub 專案會說明組織如何使用 API，為您信任的合作夥伴提供原則型自助式註冊功能，而且這些功能會有規則可以判斷合作夥伴能存取的應用程式。 合作夥伴使用者可以在需要時取得資源的存取權。 他們可以安全地存取資源，而不需要提出邀請的組織手動讓使用者上線。 您可以輕鬆地將專案部署到您選擇的 Azure 訂用帳戶中。
+提出邀請的組織可能事先不知道需要存取其資源的外部共同作業者分別有誰。 您需要一個方法，讓合作夥伴公司的使用者透過您所控制的原則來自行註冊。 如果您想要讓其他組織的使用者要求存取權，並在核准時以來賓帳戶進行佈建並指派給群組、應用程式和 SharePoint Online 網站，您可以使用 [Azure AD 權利管理](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)來設定原則，以[管理外部使用者的存取權](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users)。
 
-## <a name="as-is-code"></a>現狀程式碼
+## <a name="azure-active-directory-b2b-invitation-api"></a>Azure Active Directory B2B 邀請 API
 
-此程式碼只當作範例供您參考，目的是要示範如何使用 Azure Active Directory B2B 邀請 API。 您應該讓開發小組或合作夥伴自訂此程式碼，並在檢閱過後再部署到生產案例中。
+組織可以使用 [Microsoft Graph 邀請管理員 API](https://docs.microsoft.com/graph/api/resources/invitation?view=graph-rest-1.0)，為 B2B 來賓使用者建立自己的上線體驗。 如果您想要提供自助式的 B2B 來賓使用者註冊，建議您使用 [Azure AD 權利管理](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)。 但是，如果您想要建立自己的體驗，則可以使用[建立邀請 API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-1.0&tabs=http)，自動將自訂的邀請電子郵件直接傳送給 B2B 使用者等收件者。 或者，您的應用程式可以使用建立回應中所傳回的 inviteRedeemUrl，製作您自己的邀請 (透過您選擇的通訊機制) 給受邀使用者。
 
 ## <a name="next-steps"></a>後續步驟
 

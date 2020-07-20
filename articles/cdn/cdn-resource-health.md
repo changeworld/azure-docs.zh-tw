@@ -7,19 +7,19 @@ author: zhangmanling
 manager: zhangmanling
 editor: ''
 ms.assetid: bf23bd89-35b2-4aca-ac7f-68ee02953f31
-ms.service: cdn
+ms.service: azure-cdn
 ms.devlang: multiple
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: ad4bf7ae97a08f89b9d82e1d4e025a5bd5d47fc1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 65b3d5a29028214a52e6b26430472394c91c6f27
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60324670"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887067"
 ---
 # <a name="monitor-the-health-of-azure-cdn-resources"></a>監視 Azure CDN 資源的健康狀態
   
@@ -34,16 +34,16 @@ Azure CDN 資源健康狀態是 [Azure 資源健康狀態](../resource-health/re
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽到您的 CDN 設定檔。
 
-2. 按一下 [設定]  按鈕。
+2. 按一下 [設定] **** 按鈕。
 
     ![設定按鈕](./media/cdn-resource-health/cdn-profile-settings.png)
 
-3. 在 [支援與疑難排解] 下方，按一下 [資源健康狀態]。
+3. 在 [支援與疑難排解]** 下方，按一下 [資源健康狀態]****。
 
     ![CDN 資源健康狀態](./media/cdn-resource-health/cdn-resource-health3.png)
 
 >[!TIP] 
->您也可以尋找 [說明 + 支援] 刀鋒視窗的 [資源健康狀態] 圖格中所列出的 CDN 資源。  您可以在入口網站的右上角，按一下圓框 **？** 快速取得 [說明 + 支援] 。
+>您也可以尋找 [說明 + 支援]** 刀鋒視窗的 [資源健康狀態]** 圖格中所列出的 CDN 資源。  您可以在入口網站的右上角，按一下圓框 **？** 快速取得 [說明 + 支援]** 。
 >
 > ![說明 + 支援](./media/cdn-resource-health/cdn-help-support.png)
 

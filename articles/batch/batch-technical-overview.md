@@ -1,26 +1,14 @@
 ---
-title: Azure Batch 在雲端中執行大規模平行作業 | Microsoft Docs
-description: '了解如何將 Azure Batch 服務用於大規模的平行工作負載和 HPC 工作負載 '
-services: batch
-documentationcenter: ''
-author: mscurrell
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.workload: big-compute
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: overview
+title: Azure Batch 在雲端中執行大規模平行作業
+description: 了解如何將 Azure Batch 服務用於大規模的平行工作負載和 HPC 工作負載
+ms.topic: conceptual
 ms.date: 01/19/2018
-ms.author: mscurrell
-ms.custom: mvc
-ms.openlocfilehash: e3fcc8be68282f6ce491ff49f0dc5059d79fa98f
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
-ms.translationtype: HT
+ms.openlocfilehash: 03c958f44f707e7c5b6ac5c4414bdb5fd4963635
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730955"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142794"
 ---
 # <a name="what-is-azure-batch"></a>什麼是 Azure Batch？
 
@@ -30,7 +18,7 @@ ms.locfileid: "57730955"
 
 使用 Batch 不會額外收費。 您只須針對取用的基礎資源付費，例如虛擬機器、儲存體和網路。
 
-如需 Batch 與 Azure 中其他 HPC 解決方案選項的比較，請參閱 [Azure 上的高效能運算 (HPC)](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) \(英文\)。
+如需 Batch 與 Azure 中其他 HPC 解決方案選項的比較，請參閱 [Azure 上的高效能運算 (HPC)](/azure/architecture/topics/high-performance-computing/) \(英文\)。
 
 ## <a name="run-parallel-workloads"></a>執行平行工作負載
 Batch 很適合處理本質平行 (也稱為「超簡單平行」) 的工作負載。 本質平行的工作負載是指應用程式可獨立執行，且每個執行個體各自完成一部分的工作。 應用程式可能會在執行時存取一些通用資料，但不會與應用程式的其他執行個體進行通訊。 因此，本質平行的工作負載可大規模執行，而這是由可用來同時執行應用程式的計算資源數量所決定。
@@ -46,7 +34,7 @@ Batch 很適合處理本質平行 (也稱為「超簡單平行」) 的工作負�
 * 資料擷取、處理和 ETL 作業
 * 軟體測試執行
 
-您也可以使用 Batch 來[執行緊密結合的工作負載](batch-mpi.md)；這些工作負載需要您執行的應用程式彼此通訊，而非獨立執行。 緊密結合的應用程式通常會使用訊息傳遞介面 (MPI) API。 您可以搭配 [Microsoft MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx) 或 Intel MPI 來使用 Batch，以執行緊密結合的工作負載。 透過特定的 [HPC](../virtual-machines/linux/sizes-hpc.md) 和 [GPU 最佳化](../virtual-machines/linux/sizes-gpu.md)虛擬機器大小來改善應用程式效能。
+您也可以使用 Batch 來[執行緊密結合的工作負載](batch-mpi.md)；這些工作負載需要您執行的應用程式彼此通訊，而非獨立執行。 緊密結合的應用程式通常會使用訊息傳遞介面 (MPI) API。 您可以搭配 [Microsoft MPI](/message-passing-interface/microsoft-mpi) 或 Intel MPI 來使用 Batch，以執行緊密結合的工作負載。 透過特定的 [HPC](../virtual-machines/sizes-hpc.md) 和 [GPU 最佳化](../virtual-machines/sizes-gpu.md)虛擬機器大小來改善應用程式效能。
 
 一些緊密結合的工作負載範例：
 * 有限元素分析
@@ -59,7 +47,7 @@ Batch 很適合處理本質平行 (也稱為「超簡單平行」) 的工作負�
 
 較高層級的工作負載專屬功能也適用 Azure Batch：
 * Batch 支援使用轉譯工具的大規模[轉譯工作負載](batch-rendering-service.md)，轉譯工具包括 Autodesk Maya、3ds Max、Arnold 和 V-Ray。 
-* R 使用者可以安裝 [doAzureParallel R 套件](https://github.com/Azure/doAzureParallel)，輕鬆地在 Batch 集區上相應放大 R 演算法的執行。
+* R 使用者可以安裝 [doAzureParallel R 套件](https://github.com/Azure/doAzureParallel)，輕鬆地在 Batch 集區上擴增 R 演算法的執行。
 
 您也可以在 [Azure Data Factory](../data-factory/transform-data-using-dotnet-custom-activity.md) 等工具所管理的大型 Azure 工作流程中，使用 Batch 作業來轉換資料。
 
@@ -72,7 +60,7 @@ Batch 的一個常見案例涉及在一組計算節點上相應放大本質平�
 ![Batch 方案逐步解說](./media/batch-technical-overview/tech_overview_03.png)
 
 
-|步驟  |說明  |
+|步驟  |描述  |
 |---------|---------|
 |1.將**輸入檔案**和處理這些檔案的**應用程式**上傳到您的 Azure 儲存體帳戶。     |輸入檔案可以是應用程式會處理的任何資料，例如財務模型化資料或要轉碼的視訊檔案。 應用程式檔案可以包含處理資料的指令碼或應用程式，例如媒體轉碼器。|
 |2.在您的 Batch 帳戶中建立計算節點的 Batch **集區**、要在集區上執行工作負載的**作業**，以及作業中的**工作**。     | 集區節點就是執行工作的虛擬機器。 指定節點數目和節點大小等屬性、Windows 或 Linux 虛擬機器映像，以及將節點加入集區時要安裝的應用程式。 若要管理集區的成本與大小，可使用[低優先順序虛擬機器](batch-low-pri-vms.md)或隨著工作負載的變化[自動縮放](batch-automatic-scaling.md)節點數目。 <br/><br/>當您將工作加入至作業時，Batch 服務會自動排程工作在集區中的計算節點上執行。 每一項工作會使用您上傳的應用程式來處理輸入檔。 |
@@ -86,7 +74,7 @@ Batch 的一個常見案例涉及在一組計算節點上相應放大本質平�
 
 請記住，這只是使用 Batch 的一種方式，此案例只說明其部分功能。 例如，您可以在每個計算節點上[平行執行多項工作](batch-parallel-node-tasks.md)。 或者，使用[作業的準備與完成工作](batch-job-prep-release.md)為您的作業準備節點，並在之後加以清除。 
 
-請參閱[適用於開發人員的 Batch 功能概觀](batch-api-basics.md)，以取得有關集區、節點、作業和工作的詳細資訊，以及在建置 Batch 應用程式時可使用的許多 API 功能。 另請參閱最新的 [Batch 服務更新](https://azure.microsoft.com/updates/?product=batch)。
+如需集區、節點、作業和工作等功能的概觀，請參閱 [Batch 服務工作流程和主要資源](batch-service-workflow-features.md)。 另請參閱最新的 [Batch 服務更新](https://azure.microsoft.com/updates/?product=batch)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -95,4 +83,3 @@ Batch 的一個常見案例涉及在一組計算節點上相應放大本質平�
 * [使用 Azure 入口網站執行您的第一個 Batch 作業](quick-create-portal.md)
 * [使用 .NET API 執行您的第一個 Batch 作業](quick-run-dotnet.md)
 * [使用 Python API 執行您的第一個 Batch 作業](quick-run-python.md)
-

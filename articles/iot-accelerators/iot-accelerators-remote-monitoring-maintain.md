@@ -1,5 +1,5 @@
 ---
-title: 在遠端監視解決方案中使用警示並修正裝置問題的教學課程 - Azure | Microsoft Docs
+title: 在遠端監視解決方案中使用警示 - Azure | Microsoft Docs
 description: 本教學課程示範如何使用警示來找出和修正以下裝置問題：連線到遠端監視解決方案加速器的裝置。
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 1cd1eb9a0bd4b8457ea82303a747acb2553ab707
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 853fa2b80e04dd8d9225d023db8030fed044ed7f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451709"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "73890929"
 ---
 # <a name="tutorial-troubleshoot-and-fix-device-issues"></a>教學課程：對裝置問題進行疑難排解並加以修正
 
@@ -28,17 +28,17 @@ Contoso 會在現場測試新的**原型**裝置。 身為 Contoso 操作員，�
 > * 調查來自裝置的警示
 > * 解決裝置問題
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
 ## <a name="investigate-an-alert"></a>調查警示
 
-在 [儀表板] 頁面上，您會注意到有非預期的溫度警示來自與**原型**裝置相關聯的規則：
+在 [儀表板]  頁面上，您會注意到有非預期的溫度警示來自與**原型**裝置相關聯的規則：
 
 [![儀表板上顯示的警示](./media/iot-accelerators-remote-monitoring-maintain/dashboardalarm-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/dashboardalarm-expanded.png#lightbox)
 
-如需進一步調查問題，請選擇警示旁的 [探索警示] 選項：
+如需進一步調查問題，請選擇警示旁的 [探索警示]  選項：
 
 [![從儀表板探索警示](./media/iot-accelerators-remote-monitoring-maintain/dashboardexplorealarm-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/dashboardexplorealarm-expanded.png#lightbox)
 
@@ -50,11 +50,11 @@ Contoso 會在現場測試新的**原型**裝置。 身為 Contoso 操作員，�
 
 [![警示詳細資料](./media/iot-accelerators-remote-monitoring-maintain/maintenancealarmdetail-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancealarmdetail-expanded.png#lightbox)
 
-若要認可警示，選取所有 [警示發生項目]，然後選擇 [認可]。 這個動作可讓其他操作員得知您已看到警示且正在進行處理：
+若要認可警示，選取所有 [警示發生項目]  ，然後選擇 [認可]  。 這個動作可讓其他操作員得知您已看到警示且正在進行處理：
 
 [![認可警示](./media/iot-accelerators-remote-monitoring-maintain/maintenanceacknowledge-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenanceacknowledge-expanded.png#lightbox)
 
-當您認可警示之後，發生項目的狀態就會變更為 [已認可]。
+當您認可警示之後，發生項目的狀態就會變更為 [已認可]  。
 
 在出現警示的裝置清單中，您可以看到負責引發溫度警示的**原型**裝置：
 
@@ -64,19 +64,19 @@ Contoso 會在現場測試新的**原型**裝置。 身為 Contoso 操作員，�
 
 若要使用**原型**裝置解決問題，您必須在裝置上呼叫 **DecreaseTemperature** 方法。
 
-若要對裝置採取行動，請在出現警示的裝置清單中選取該裝置，然後選擇 [作業]。 **原型**裝置型號支援六種方法：
+若要對裝置採取行動，請在出現警示的裝置清單中選取該裝置，然後選擇 [作業]  。 **原型**裝置型號支援六種方法：
 
 [![檢視裝置支援的方法](./media/iot-accelerators-remote-monitoring-maintain/maintenancemethods-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancemethods-expanded.png#lightbox)
 
-選擇 **DecreaseTemperature**，並將作業名稱設定為 **DecreaseTemperature**。 然後，按一下 [套用]：
+選擇 **DecreaseTemperature**，並將作業名稱設定為 **DecreaseTemperature**。 然後，按一下 [套用]  ：
 
 [![建立作業以降低溫度](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-expanded.png#lightbox)
 
-若要追蹤作業狀態，請按一下 [檢視作業狀態]。 使用 [作業] 檢視可追蹤解決方案中的所有作業和呼叫方法：
+若要追蹤作業狀態，請按一下 [檢視作業狀態]  。 使用 [作業]  檢視可追蹤解決方案中的所有作業和呼叫方法：
 
 [![監視作業以降低溫度](./media/iot-accelerators-remote-monitoring-maintain/maintenancerunningjob-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancerunningjob-expanded.png#lightbox)
 
-您可以在 [儀表板] 頁面上檢視遙測資料，確認裝置的溫度是否下降：
+您可以在 [儀表板]  頁面上檢視遙測資料，確認裝置的溫度是否下降：
 
 [![檢視溫度下降](./media/iot-accelerators-remote-monitoring-maintain/jobresult-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/jobresult-expanded.png#lightbox)
 

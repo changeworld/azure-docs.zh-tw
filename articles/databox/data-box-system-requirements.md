@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 7d52af9e3948f40936795efab5b6671c3f71007a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 496069ebf64340bc55f03df8dc15304b4888bec0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60746925"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200317"
 ---
 # <a name="azure-data-box-system-requirements"></a>Azure 資料箱的系統需求
 
@@ -31,68 +31,41 @@ ms.locfileid: "60746925"
 
 ### <a name="supported-operating-systems-for-clients"></a>支援用戶端的作業系統
 
-以下是所支援的作業系統清單，這些系統可讓連線至資料箱的用戶端進行資料複製作業。
+[!INCLUDE [data-box-supported-os-clients](../../includes/data-box-supported-os-clients.md)]
 
-| **作業系統** | **版本** | 
-| --- | --- | 
-| Windows Server |2008 R2 SP1 <br> 2012 <br> 2012 R2 <br> 2016 | 
-|  Windows |7, 8, 10 | 
-| Linux    |         |
 
-### <a name="supported-file-systems-for-linux-clients"></a>Linux 用戶端的支援檔案系統
+### <a name="supported-filesystems-for-linux-clients"></a>Linux 用戶端支援的檔案系統
 
-| **通訊協定** | **版本** | 
-| --- | --- | 
-| SMB |2.X 和更新版本 |
-| NFS | 4.1 版 (含) 之前的所有版本|
+[!INCLUDE [data-box-supported-file-systems-clients](../../includes/data-box-supported-file-systems-clients.md)]
+
+
+> [!IMPORTANT] 
+> 針對匯出訂單，不支援透過 REST 連接至資料箱共用。 
 
 ### <a name="supported-storage-accounts"></a>支援的儲存體帳戶
 
-以下是資料箱裝置所支援的儲存體帳戶和儲存體類型清單。 如需所有不同儲存體帳戶類型和其全部功能的完整清單，請參閱[儲存體帳戶的類型](/azure/storage/common/storage-account-overview#types-of-storage-accounts)。
-
-| **儲存體帳戶/支援的儲存體類型** | **區塊 Blob** |**分頁 Blob*** |**Azure 檔案** |**注意事項**|
-| --- | --- | -- | -- | -- |
-| 傳統標準 | Y | Y | Y |
-| 一般用途 v1 標準  | Y | Y | Y | 經常性存取和非經常性存取均受支援。|
-| 一般用途 v1 進階  |  | Y| | |
-| 一般用途 v2 標準  | Y | Y | Y | 經常性存取和非經常性存取均受支援。|
-| 一般用途 v2 進階  |  |Y | | |
-| Blob 儲存體標準 |Y | | |經常性存取和非經常性存取均受支援。 |
-
-\* *- 上傳至分頁 Blob 的資料必須是 512 位元組規格，例如 vhd。*
-
->[!NOTE]
-> 不支援 Azure Data Lake Storage Gen 2 帳戶。
+[!INCLUDE [data-box-supported-storage-accounts](../../includes/data-box-supported-storage-accounts.md)]
 
 
 ### <a name="supported-storage-types"></a>支援的儲存體類型
 
-以下是資料箱裝置所支援的儲存體類型清單。
-
-| **檔案格式** | **注意事項** |
-| --- | --- |
-| Azure 區塊 Blob | |
-| Azure 分頁 Blob  | 資料應該是 512 位元組。|
-| Azure 檔案 | |
-
+[!INCLUDE [data-box-supported-storage-types](../../includes/data-box-supported-storage-types.md)]
 
 ### <a name="supported-web-browsers"></a>支援的網頁瀏覽器
 
-以下是本機 Web UI 的支援網頁瀏覽器清單。
-
-| **[瀏覽器]** | **版本** | **其他需求/注意事項** |
-| --- | --- | --- |
-| Google Chrome |最新版本 |通過 Chrome 測試|
-| Microsoft Edge |最新版本 | |
-| FireFox | 最新版本 | 通過 FireFox 測試|
-| Internet Explorer |最新版本 |如果您無法登入，請檢查是否已啟用 cookie 和 Javascript。 若要啟用 UI 存取，請將裝置 IP 新增至 [隱私權動作]，讓裝置可以存取 cookie。 |
-
+[!INCLUDE [data-box-supported-web-browsers](../../includes/data-box-supported-web-browsers.md)]
 
 ## <a name="networking-requirements"></a>網路需求
 
 您的資料中心必須有高速網路。 強烈建議您具有至少一個 10 GbE 的連線。 如果無法使用 10 GbE 連線，也可以使用 1 GbE 資料連結來複製資料，但是複製速度會受到影響。
 
-## <a name="next-step"></a>後續步驟
+### <a name="port-requirements"></a>連接埠需求
+
+下表列出需要在防火牆中開啟以允許 SMB 或 NFS 流量的埠。 在這個資料表中，in** 或 inbound** 指的是輸入用戶端要求存取裝置的方向。 [ *Out* ] 或 [*輸出*] 是指您的資料箱裝置在外部將資料傳送到部署之外的方向：例如，輸出到網際網路。
+
+[!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
+
+
+## <a name="next-steps"></a>接下來的步驟
 
 * [部署 Azure 資料箱](data-box-deploy-ordered.md)
-

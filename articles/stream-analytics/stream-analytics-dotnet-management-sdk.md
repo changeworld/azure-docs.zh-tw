@@ -1,37 +1,36 @@
 ---
 title: 適用於 Azure 串流分析的管理 .NET SDK
 description: Azure 串流分析管理 .NET SDK 入門。 了解如何設定及執行分析作業。 建立專案、輸入、輸出及轉換。
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4fa4a9a8d01d499dc431c8b182401226aa72bf1f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ae352ead9e3ba6980c82ea48dca3db872b8d1e6d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61479995"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043439"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>管理 .NET SDK：透過適用於 .NET 的 Azure 串流分析 API 來設定及執行分析作業
 了解如何使用管理 .NET SDK，透過適用於 .NET 的串流分析 API 來設定及執行分析作業。 設定專案，建立輸入與輸出來源、轉換，以及開始和停止工作。 對於您的分析工作，您可以從 Blob 儲存體或從事件中樞串流資料。
 
 請參閱 [適用於 .NET 的串流分析 API 之管理參考文件](https://msdn.microsoft.com/library/azure/dn889315.aspx)。
 
-Azure 資料流分析是完全受控的服務，可用來對雲端中的串流資料進行低延遲、高可用性、可延展的複雜事件處理。 客户可以使用流分析来设置流式处理作业，分析数据流和进行近实时分析。  
+Azure 資料流分析是完全受控的服務，可用來對雲端中的串流資料進行低延遲、高可用性、可延展的複雜事件處理。 串流分析可讓客戶設定串流工作以分析資料流，並可讓客戶以接近即時的方式進行分析。  
 
 > [!NOTE]
 > 我們已將本文中的範例程式碼更新為 Azure 串流分析管理 .NET SDK v2.x 版本。 如需查看使用舊版 (1.x) SDK 的範例程式碼，請參閱[使用適用於串流分析的管理 .NET SDK v1.x](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1)。
 
-## <a name="prerequisites"></a>必要條件
-開始閱讀本文之前，您必須符合下列必要條件：
+## <a name="prerequisites"></a>Prerequisites
+開始閱讀本文之前，您必須遵循下列必要條件：
 
-* 安裝 Visual Studio 2017 或 2015。
+* 安裝 Visual Studio 2019 或 2015。
 * 下載並安裝 [Azure .NET SDK](https://azure.microsoft.com/downloads/)。
-* 在您的訂用帳戶中建立「Azure 資源群組」。 下列是 PowerShell 指令碼範例。 如需 Azure PowerShell 資訊，請參閱 [安裝並設定 Azure PowerShell](/powershell/azure/overview)。  
+* 在您的訂用帳戶中建立「Azure 資源群組」。 下列範例是 Azure PowerShell 指令碼範例。 如需 Azure PowerShell 資訊，請參閱 [安裝並設定 Azure PowerShell](/powershell/azure/overview)。  
 
    ```powershell
    # Log in to your Azure account
@@ -50,7 +49,7 @@ Azure 資料流分析是完全受控的服務，可用來對雲端中的串流�
 * 設定要讓工作連線的輸入來源和輸出目標。
 
 ## <a name="set-up-a-project"></a>設定專案
-您必須先設定自己的專案，才能透過適用於 .NET 的串流分析 API 來建立分析工作。
+您必須先設定自己的專案，才能透過適用於 .NET 的串流分析 API 建立分析作業。
 
 1. 建立 Visual Studio C# .NET 主控台應用程式。
 2. 在 Package Manager Console 中，執行下列命令以安裝 NuGet 封裝。 第一個是 Azure 串流分析管理 .NET SDK。 第二個用於 Azure 用戶端驗證。
@@ -110,7 +109,7 @@ Azure 資料流分析是完全受控的服務，可用來對雲端中的串流�
     }
    ```
 
-## <a name="create-a-stream-analytics-management-client"></a>创建流分析管理客户端
+## <a name="create-a-stream-analytics-management-client"></a>建立資料流分析管理用戶端
 **StreamAnalyticsManagementClient** 物件可讓您管理工作和工作元件，例如輸入、輸出和轉換。
 
 在 **Main** 方法的開頭加入下列程式碼：
@@ -168,7 +167,7 @@ Azure 資料流分析是完全受控的服務，可用來對雲端中的串流�
    ```
 
 ## <a name="create-a-stream-analytics-input-source"></a>建立資料流分析輸入來源
-下列程式碼會使用 Blob 輸入來源類型和 CSV 序列化，來建立資料流分析輸入來源。 若要建立事件中心輸入來源，請使用 **EventHubStreamInputDataSource**，而不是 **BlobStreamInputDataSource**。 同样，可以自定义输入源的序列化类型。
+下列程式碼會使用 Blob 輸入來源類型和 CSV 序列化，來建立資料流分析輸入來源。 若要建立事件中心輸入來源，請使用 **EventHubStreamInputDataSource**，而不是 **BlobStreamInputDataSource**。 同樣地，您可以自訂輸入來源的序列化類型。
 
    ```csharp
    // Create an input
@@ -211,9 +210,9 @@ Azure 資料流分析是完全受控的服務，可用來對雲端中的串流�
    ```
 
 ## <a name="create-a-stream-analytics-output-target"></a>建立資料流分析輸出目標
-建立輸出目標與建立資料流分析輸入來源非常類似。 和輸入來源一樣，輸出目標會繫結至特定工作。 若要在不同的工作中使用相同的輸出目標，您必須重新呼叫此方法，並指定不同的工作名稱。
+建立輸出目標與建立串流分析的輸入來源非常類似。 和輸入來源一樣，輸出目標會繫結至特定工作。 若要在不同的工作中使用相同的輸出目標，您必須重新呼叫此方法，並指定不同的工作名稱。
 
-下列程式碼會建立輸出目標 (Azure SQL 資料庫)。 您可以自訂輸出目標的資料類型和/或序列化類型。
+下列程式碼會建立輸出目標（Azure SQL Database）。 您可以自訂輸出目標的資料類型和/或序列化類型。
 
    ```csharp
    // Create an output
@@ -286,16 +285,16 @@ Azure 資料流分析是完全受控的服務，可用來對雲端中的串流�
    ```
 
 ## <a name="get-support"></a>取得支援
-如需進一步的協助，請參閱我們的 [Azure Stream Analytics 論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+如需進一步的協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>後續步驟
-您已經學到使用 .NET SDK 建立及執行分析作業的基本知識。 若要深入了解，請參閱下列文章：
+您已經學到使用 .NET SDK 建立及執行分析作業的基本知識。 如需詳細資訊，請參閱下列文章：
 
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
 * [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
 * [Azure 串流分析管理 .NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx)。
-* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 <!--Image references-->

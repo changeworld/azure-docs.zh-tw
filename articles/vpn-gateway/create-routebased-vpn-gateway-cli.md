@@ -1,24 +1,23 @@
 ---
-title: 创建基于路由的 Azure VPN 网关：CLI | Microsoft Docs
+title: 建立以路由為基礎的 Azure VPN 閘道： CLI
 description: 快速了解如何使用 CLI 來建立 VPN 閘道
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/04/2018
 ms.author: cherylmc
-ms.openlocfilehash: f5f62a6bfa1baa205e0496dd901f1f1eef660079
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 0cb03f827c8174932f235ec8ea327225da76ef4f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60391101"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987700"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>使用 CLI 來建立路由型 VPN 閘道
 
 本文將協助您使用 Azure CLI 來快速建立路由型 Azure VPN 閘道。 建立與內部部署網路的 VPN 連線時，會使用 VPN 閘道。 您也可以使用 VPN 閘道來連線至 VNet。
 
-本文中的步驟將會建立 VNet、子網路、閘道子網路，以及路由型 VPN 閘道 (虛擬網路閘道)。 虛擬網路閘道的建立作業可能需要花費 45 分鐘以上的時間。 完成閘道建立之後，您接著就可建立連線。 這些步驟需要 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+本文中的步驟將會建立 VNet、子網路、閘道子網路，以及路由型 VPN 閘道 (虛擬網路閘道)。 虛擬網路閘道的建立作業可能需要花費 45 分鐘以上的時間。 完成閘道建立之後，您接著就可建立連線。 這些步驟需要 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -29,15 +28,15 @@ ms.locfileid: "60391101"
 使用 [az group create](/cli/azure/group) 命令來建立資源群組。 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 
 
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name TestRG1 --location eastus
 ```
 
-## <a name="vnet"></a>建立虛擬網路
+## <a name="create-a-virtual-network"></a><a name="vnet"></a>建立虛擬網路
 
 使用 [az network vnet create](/cli/azure/network/vnet) 命令來建立虛擬網路。 下列範例會在 **EastUS** 位置中建立名為 **VNet1** 的虛擬網路：
 
-```azurecli-interactive 
+```azurecli-interactive
 az network vnet create \
   -n VNet1 \
   -g TestRG1 \
@@ -47,11 +46,11 @@ az network vnet create \
   --subnet-prefix 10.1.0.0/24
 ```
 
-## <a name="gwsubnet"></a>新增閘道子網路
+## <a name="add-a-gateway-subnet"></a><a name="gwsubnet"></a>新增閘道子網路
 
 閘道子網路包含虛擬網路閘道服務所使用的保留 IP 位址。 請使用下列範例來新增閘道子網路：
 
-```azurepowershell-interactive
+```azurecli-interactive
 az network vnet subnet create \
   --vnet-name VNet1 \
   -n GatewaySubnet \
@@ -59,7 +58,7 @@ az network vnet subnet create \
   --address-prefix 10.1.255.0/27 
 ```
 
-## <a name="PublicIP"></a>要求公用 IP 位址
+## <a name="request-a-public-ip-address"></a><a name="PublicIP"></a>要求公用 IP 位址
 
 VPN 閘道必須具有動態配置的公用 IP 位址。 公用 IP 位址將會配置給您為虛擬網路建立的 VPN 閘道。 請使用下列範例來要求公用 IP 位址：
 
@@ -70,7 +69,7 @@ az network public-ip create \
   --allocation-method Dynamic 
 ```
 
-## <a name="CreateGateway"></a>建立 VPN 閘道
+## <a name="create-the-vpn-gateway"></a><a name="CreateGateway"></a>建立 VPN 閘道
 
 使用 [az network vnet-gateway create](/cli/azure/group) 命令建立 VPN 閘道。
 
@@ -91,7 +90,7 @@ az network vnet-gateway create \
 
 VPN 閘道建立作業可能需要花費 45 分鐘以上的時間。
 
-## <a name="viewgw"></a>檢視 VPN 閘道
+## <a name="view-the-vpn-gateway"></a><a name="viewgw"></a>檢視 VPN 閘道
 
 ```azurecli-interactive
 az network vnet-gateway show \
@@ -101,7 +100,7 @@ az network vnet-gateway show \
 
 回應看起來與以下類似：
 
-```
+```output
 {
   "activeActive": false,
   "bgpSettings": null,
@@ -159,7 +158,7 @@ az network public-ip show \
 
 範例回應：
 
-```
+```output
 {
   "dnsSettings": null,
   "etag": "W/\"a12d4d03-b27a-46cc-b222-8d9364b8166a\"",
@@ -170,6 +169,7 @@ az network public-ip show \
     "etag": null,
     "id": "/subscriptions/<subscription ID>/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW/ipConfigurations/vnetGatewayConfig0",
 ```
+
 ## <a name="clean-up-resources"></a>清除資源
 
 當您不再需要所建立的資源時，請使用 [az group delete](/cli/azure/group) 來刪除資源群組。 這會刪除資源群組及其包含的所有資源。

@@ -1,19 +1,15 @@
 ---
-title: 教學課程：在雲端中建置容器映像 - Azure Container Registry 工作
+title: 教學課程 - 快速容器映像建置
 description: 在本教學課程中，您將了解如何使用 Azure Container Registry 工作 (ACR 工作) 在 Azure 中建置 Docker 容器映像，然後將其部署至 Azure 容器執行個體。
-services: container-registry
-author: dlepow
-ms.service: container-registry
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: ed5df09d492bbf6123e76f73717a1738a23a066c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7178d7171d4c9c0183eb744f19776f6b2fac09ef
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893702"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259493"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>教學課程：使用 Azure Container Registry 工作在雲端中建置和部署容器映像
 
@@ -34,7 +30,7 @@ ms.locfileid: "58893702"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您想要在本機使用 Azure CLI，您必須安裝 Azure CLI **2.0.46** 版或更新版本，並使用 [az login][az-login] 登入。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級 CLI，請參閱[安裝 Azure CLI][azure-cli]。
+如果您想要在本機使用 Azure CLI，必須安裝 Azure CLI **2.0.46** 版或更新版本，並使用 [az login][az-login] 登入。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級 CLI，請參閱[安裝 Azure CLI][azure-cli]。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -54,15 +50,15 @@ ms.locfileid: "58893702"
 
 在您派生存放庫後，請複製您的分支，並進入包含本機複本的目錄。
 
-使用 `git` 複製存放庫，並將 **\<your-github-username\>** 取代為您的 GitHub 使用者名稱：
+使用 `git` 複製存放庫，並以您的 GitHub 使用者名稱取代 **\<your-github-username\>** ：
 
-```azurecli-interactive
+```console
 git clone https://github.com/<your-github-username>/acr-build-helloworld-node
 ```
 
 進入包含原始程式碼的目錄：
 
-```azurecli-interactive
+```console
 cd acr-build-helloworld-node
 ```
 
@@ -74,9 +70,11 @@ cd acr-build-helloworld-node
 
 現在，您已將原始程式碼提取至電腦，接著請依照下列步驟建立容器登錄，並使用 ACR 工作來建置容器映像。
 
-為了方便執行範例命令，在這一系列的教學課程中，將會使用殼層環境變數。 請執行下列命令以設定 `ACR_NAME` 變數。 請將 **\<registry-name\>** 取代為新容器登錄的唯一名稱。 登錄名稱在 Azure 內必須是唯一的，且包含 5-50 個英數字元。 您在本教學課程中建立的其他資源將以此名稱為基礎，因此，您只需要修改第一個變數，即此變數。
+為了方便執行範例命令，在這一系列的教學課程中，將會使用殼層環境變數。 請執行下列命令以設定 `ACR_NAME` 變數。 請將 **\<registry-name\>** 取代為新容器登錄的唯一名稱。 登錄名稱在 Azure 內必須是唯一的，只能包含小寫字母和 5-50 個英數字元。 您在本教學課程中建立的其他資源將以此名稱為基礎，因此，您只需要修改第一個變數，即此變數。
 
-```azurecli-interactive
+[![內嵌啟動](https://shell.azure.com/images/launchcloudshell.png "啟動 Azure Cloud Shell")](https://shell.azure.com)
+
+```console
 ACR_NAME=<registry-name>
 ```
 
@@ -97,8 +95,7 @@ az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
 
 [az acr build][az-acr-build] 命令的輸出如下。 您可以檢視上傳至 Azure 的原始程式碼 (「內容」)，以及 ACR 工作在雲端中執行之 `docker build` 作業的詳細資料。 由於 ACR 工作會使用 `docker build` 建置您的映像，因此您無須對 Dockerfile 進行任何變更，即可立即開始使用 ACR 工作。
 
-```console
-$ az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
+```output
 Packing source code into tar file to upload...
 Sending build context (4.813 KiB) to ACR...
 Queued a build with build ID: da1
@@ -179,7 +176,7 @@ ACR 工作依預設會自動將已建置的映像順利推送至登錄，讓您�
 
 #### <a name="create-a-key-vault"></a>建立金鑰保存庫
 
-如果您在 [Azure Key Vault](/azure/key-vault/) 中還沒有保存庫，使用 Azure CLI 以下列命令建立一個。
+如果您在 [Azure Key Vault](../key-vault/index.yml) 中還沒有保存庫，使用 Azure CLI 以下列命令建立一個。
 
 ```azurecli-interactive
 AKV_NAME=$ACR_NAME-vault
@@ -220,8 +217,8 @@ az keyvault secret set \
 
 您已建立 Azure Key Vault，並在其中儲存兩個祕密：
 
-* `$ACR_NAME-pull-usr`：服務主體識別碼，用來作為容器登錄**使用者名稱**。
-* `$ACR_NAME-pull-pwd`：服務主體密碼，用來作為容器登錄**密碼**。
+* `$ACR_NAME-pull-usr`:服務主體識別碼，用來作為容器登錄**使用者名稱**。
+* `$ACR_NAME-pull-pwd`:服務主體密碼，用來作為容器登錄**密碼**。
 
 現在，當您或應用程式和服務從登錄提取映像時，您可以依名稱參考這些祕密。
 
@@ -246,17 +243,7 @@ az container create \
 
 `--dns-name-label` 值在 Azure 內必須是唯一的，因此，上述命令會將您容器登錄的名稱附加至容器的 DNS 名稱標籤。 命令的輸出會顯示容器的完整網域名稱 (FQDN)，例如：
 
-```console
-$ az container create \
->     --resource-group $RES_GROUP \
->     --name acr-tasks \
->     --image $ACR_NAME.azurecr.io/helloacrtasks:v1 \
->     --registry-login-server $ACR_NAME.azurecr.io \
->     --registry-username $(az keyvault secret show --vault-name $AKV_NAME --name $ACR_NAME-pull-usr --query value -o tsv) \
->     --registry-password $(az keyvault secret show --vault-name $AKV_NAME --name $ACR_NAME-pull-pwd --query value -o tsv) \
->     --dns-name-label acr-tasks-$ACR_NAME \
->     --query "{FQDN:ipAddress.fqdn}" \
->     --output table
+```output
 FQDN
 ----------------------------------------------
 acr-tasks-myregistry.eastus.azurecontainer.io
@@ -274,8 +261,7 @@ az container attach --resource-group $RES_GROUP --name acr-tasks
 
 `az container attach` 輸出會先顯示容器在提取映像和啟動時的狀態，然後將本機主控台的 STDOUT 和 STDERR 繫結至容器的 STDOUT 和 STDERR。
 
-```console
-$ az container attach --resource-group $RES_GROUP --name acr-tasks
+```output
 Container 'acr-tasks' is in state 'Running'...
 (count: 1) (last timestamp: 2018-08-22 18:39:10+00:00) pulling image "myregistry.azurecr.io/helloacrtasks:v1"
 (count: 1) (last timestamp: 2018-08-22 18:39:15+00:00) Successfully pulled image "myregistry.azurecr.io/helloacrtasks:v1"

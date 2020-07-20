@@ -1,34 +1,32 @@
 ---
-title: 使用複製活動來移動資料 | Microsoft Docs
+title: 使用複製活動來移動資料
 description: 了解 Data Factory 管線中的資料移動︰雲端存放區之間和內部部署與雲端之間的資料移轉。 使用「複製活動」。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 67543a20-b7d5-4d19-8b5e-af4c1fd7bc75
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c188c23f87715b6ba5b90f6015b59f2a347ec0cf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: a48a6de406f14c5339a4e6d92cd09a12357b73f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60486910"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195974"
 ---
 # <a name="move-data-by-using-copy-activity"></a>使用複製活動來移動資料
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [第 1 版](data-factory-data-movement-activities.md)
 > * [第 2 版 (目前的版本)](../copy-activity-overview.md)
 
 > [!NOTE]
 > 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的複製活動](../copy-activity-overview.md)。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 在 Azure Data Factory 中，您可以使用「複製活動」在內部部署與雲端資料存放區之間複製資料。 複製資料之後，可以將它進一步轉換及進行分析。 您也可以使用「複製活動」來發佈商業智慧 (BI) 及應用程式使用情況的轉換和分析結果。
 
 ![複製活動的角色](media/data-factory-data-movement-activities/copy-activity.png)
@@ -78,16 +76,16 @@ Data Factory 中的複製活動會將資料從來源資料存放區複製到接�
 ### <a name="supported-file-formats"></a>支援的檔案格式
 您可以使用「複製活動」在兩個以檔案為基礎的資料存放區之間**依原樣複製檔案**，您可以在輸入和輸出資料集定義中略過[格式區段](data-factory-create-datasets.md)。 系統會有效率地複製資料，而不會進行任何序列化/還原序列化。
 
-複製活動也會以指定格式讀取和寫入檔案︰**文字、JSON、Avro、ORC 和 Parquet**，並支援 **GZip、Deflate、BZip2 和 ZipDeflate** 壓縮轉碼器。 如需詳細資訊，請參閱[支援的檔案和壓縮格式](data-factory-supported-file-and-compression-formats.md)。
+「複製活動」也會以指定的格式讀取和寫入檔案：**文字、JSON、Avro、ORC 和 Parquet**，並支援 **GZip、Deflate、BZip2 和 ZipDeflate** 壓縮轉碼器。 如需詳細資訊，請參閱[支援的檔案和壓縮格式](data-factory-supported-file-and-compression-formats.md)。
 
 例如，您可以執行下列複製活動：
 
-* 複製內部部署 SQL Server 中的資料，然後以 ORC 格式寫入 Azure Data Lake Store。
+* 複製 SQL Server 資料庫中的資料，並以 ORC 格式寫入 Azure Data Lake 存放區。
 * 從內部部署檔案系統複製文字 (CSV) 格式的檔案，然後以 Avro 格式寫入 Azure Blob 中。
 * 從內部部署檔案系統複製壓縮檔，然後解壓縮到 Azure Data Lake Store。
 * 從 Azure Blob 複製 GZip 壓縮文字 (CSV) 格式的資料，然後寫入 Azure SQL Database 中。
 
-## <a name="global"></a>全域可用的資料移動
+## <a name="globally-available-data-movement"></a><a name="global"></a>全域可用的資料移動
 Azure Data Factory 只在美國西部、美國東部和北歐區域提供使用。 不過，支援複製活動的服務可在下列區域和地理位置全域提供使用。 全域可用的拓撲可確保進行有效率的資料移動，通常可避免發生跨區域躍點的情況。 如需了解某區域中是否有 Data Factory 和「資料移動」可供使用，請參閱 [依區域提供的服務](https://azure.microsoft.com/regions/#services) 。
 
 ### <a name="copy-data-between-cloud-data-stores"></a>在雲端資料存放區之間複製資料
@@ -103,7 +101,7 @@ Azure Data Factory 只在美國西部、美國東部和北歐區域提供使用�
 | &nbsp; | 美國中西部 | 美國中西部 |
 | &nbsp; | 美國西部 | 美國西部 |
 | &nbsp; | 美國西部 2 | 美國西部 2 |
-| 加拿大 | 加拿大東部 | 加拿大中部 |
+| Canada | 加拿大東部 | 加拿大中部 |
 | &nbsp; | 加拿大中部 | 加拿大中部 |
 | 巴西 | 巴西南部 | 巴西南部 |
 | 歐洲 | 北歐 | 北歐 |
@@ -112,7 +110,7 @@ Azure Data Factory 只在美國西部、美國東部和北歐區域提供使用�
 | &nbsp; | 英國南部 | 英國南部 |
 | 亞太地區 | 東南亞 | 東南亞 |
 | &nbsp; | 東亞 | 東南亞 |
-| 澳大利亞 | 澳洲東部 | 澳洲東部 |
+| 澳大利亞 | 澳大利亞東部 | 澳大利亞東部 |
 | &nbsp; | 澳大利亞東南部 | 澳大利亞東南部 |
 | 印度 | 印度中部 | 印度中部 |
 | &nbsp; | 印度西部 | 印度中部 |
@@ -135,10 +133,10 @@ Azure Data Factory 只在美國西部、美國東部和北歐區域提供使用�
 您可以使用幾個方式來建立具有「複製活動」的管線︰
 
 ### <a name="by-using-the-copy-wizard"></a>透過使用複製精靈
-「Data Factory 複製精靈」可協助您建立具有「複製活動」的管線。 此管線可讓您在「不需要」為連結服務、資料集及管線「撰寫 JSON」  定義的情況下，將資料從支援的來源複製到目的地。 如需有關此精靈的詳細資料，請參閱 [Data Factory 複製精靈](data-factory-copy-wizard.md) 。  
+「Data Factory 複製精靈」可協助您建立具有「複製活動」的管線。 此管線可讓您在「不需要」為連結服務、資料集及管線「撰寫 JSON」 ** 定義的情況下，將資料從支援的來源複製到目的地。 如需有關此精靈的詳細資料，請參閱 [Data Factory 複製精靈](data-factory-copy-wizard.md) 。  
 
 ### <a name="by-using-json-scripts"></a>透過使用 JSON 指令碼
-您可以使用 Azure 入口網站中的「Data Factory 編輯器」、Visual Studio 或 Azure PowerShell 來建立管線的 JSON 定義 (透過使用「複製活動」)。 然後，您可以部署它以在 Data Factory 中建立管線。 請參閱[教學課程：在 Azure Data Factory 管線中使用複製活動](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)，以取得含有逐步指示的教學課程。    
+您可以使用 Visual Studio 中的 Data Factory 編輯器，或 Azure PowerShell 來建立管線的 JSON 定義（藉由使用複製活動）。 然後，您可以部署它以在 Data Factory 中建立管線。 如需含有逐步指示的教學課程，請參閱 [教學課程：在 Azure Data Factory 管線中使用複製活動](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 。    
 
 JSON 屬性 (例如名稱、描述、輸入和輸出資料表，以及原則) 適用於所有類型的活動。 活動的 `typeProperties` 區段中可用的屬性會因每個活動類型的不同而有所不同。
 
@@ -187,7 +185,7 @@ JSON 屬性 (例如名稱、描述、輸入和輸出資料表，以及原則) �
   }
 }
 ```
-輸出資料集中定義的排程會決定活動的執行時間 (例如「每日」，即頻率為「日」，間隔為 **1**)。 活動會將資料從輸入資料集 (**source**) 複製到輸出資料集 (**sink**)。
+輸出資料集中定義的排程會決定活動的執行時間 (例如「每日」****，即頻率為「日」****，間隔為 **1**)。 活動會將資料從輸入資料集 (**source**) 複製到輸出資料集 (**sink**)。
 
 您可以為「複製活動」指定多個輸入資料集。 系統會先使用它們來確認相依性，然後才執行活動。 不過，只有來自第一個資料集的資料會被複製到目的地資料集。 如需詳細資訊，請參閱 [排程和執行](data-factory-scheduling-and-execution.md)。  
 

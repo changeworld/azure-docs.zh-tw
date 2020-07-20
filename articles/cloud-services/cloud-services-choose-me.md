@@ -2,23 +2,16 @@
 title: 什麼是 Azure 雲端服務 | Microsoft Docs
 description: 了解什麼是 Azure 雲端服務。
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-ms.assetid: ed7ad348-6018-41bb-a27d-523accd90305
+author: tgore03
 ms.service: multiple
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: jeconnoc
-ms.openlocfilehash: ce88dcaedf32f293fc121cda2a088388c99badee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: tagore
+ms.openlocfilehash: c531e02656c9f6342670024b2220386e789a2d98
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60337508"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75386845"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Azure 雲端服務概觀
 Azure 雲端服務是[平台即服務](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 的一個範例。 這項技術如同 [Azure App Service](../app-service/overview.md)，是專為支援可調整、穩定可靠且操作成本低的應用程式而設計。 如同 App Service 是裝載於虛擬機器 (VM) 上，Azure 雲端服務也是如此。 不過，您可更充分地掌控 VM。 您可以使用 Azure 雲端服務在 VM 上安裝您自己的軟體，並從遠端加以存取。
@@ -54,6 +47,9 @@ Azure 雲端服務的 PaaS 性質也有其他意涵。 其中一個最重要的�
 * [在 Node.js 中建立雲端服務應用程式](cloud-services-nodejs-develop-deploy-app.md) 
 * [在 PHP 中建立雲端服務應用程式](../cloud-services-php-create-web-role.md) 
 * [在 Python 中建立雲端服務應用程式](cloud-services-python-ptvs.md)
+
+
+
 
 
 

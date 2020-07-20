@@ -10,17 +10,17 @@ ms.custom: mvc
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: c1f321f452b65016c11cb66d08ebab108509cc62
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61448389"
 ---
 # <a name="deploy-a-custom-device-simulation-docker-image"></a>建立自訂的裝置模擬 Docker 映像
 
 您可以修改裝置模擬解決方案，來新增自訂功能。 例如，[使用 Protocol Buffers 將遙測資料序列化](iot-accelerators-device-simulation-protobuf.md)一文會示範如何將自訂裝置新增至使用 Protocol Buffers (Protobuf) 的解決方案以傳送遙測資料。 在本機測試您的變更之後，下一個步驟則是將變更部署到您在 Azure 中的裝置模擬執行個體。 若要完成這項工作，您需要建立並部署包含您所修改服務的 Docker 映像。
 
-本操作指南中的步驟會示範如何：
+本操作指南中的步驟說明如何：
 
 1. 準備開發環境
 1. 產生新的 Docker 映像

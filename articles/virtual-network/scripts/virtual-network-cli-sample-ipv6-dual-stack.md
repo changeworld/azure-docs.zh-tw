@@ -1,7 +1,7 @@
 ---
-title: Azure CLI 指令碼範例-設定 IPv6 虛擬網路端點 （預覽）
+title: Azure CLI 腳本範例-設定 IPv6 前端
 titlesuffix: Azure Virtual Network
-description: 啟用使用 Azure CLI 在 Azure 虛擬網路的 IPv6 端點
+description: 使用 Azure 虛擬網路中的 Azure CLI 啟用 IPv6 端點
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,35 +12,39 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
-ms.openlocfilehash: a1c8f151a4c6459064d92ff2efb44fa8b74f8fc1
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.openlocfilehash: 1ef8742bc4f8de2d08d9bb4fc98b3df6f9420737
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63761455"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80235033"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>設定虛擬網路指令碼範例 （預覽） 中的 IPv6 端點
+# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>在虛擬網路中設定 IPv6 端點腳本範例（預覽）
 
-本文說明如何部署雙重堆疊 （IPv4 + IPv6） 中的應用程式包含具有雙重堆疊子網路，使用雙 （IPv4 + IPv6） 前端組態，具有有雙重 IP 組態的 Nic 的 Vm 負載平衡器的雙重堆疊虛擬網路的 Azure雙重的網路安全性群組規則和 「 雙重的公用 Ip。
+本文說明如何在 Azure 中部署雙重堆疊（IPv4 + IPv6）應用程式，其中包含具有雙重堆疊子網的雙協定堆疊虛擬網路、具有雙重（IPv4 + IPv6）前端設定的負載平衡器、具有雙重 IP 設定的 Vm、雙重網路安全性群組規則，以及雙重公用 Ip。
 
 您可以從 Azure [Cloud Shell](https://shell.azure.com/bash) 或從本機的 Azure CLI 安裝來執行指令碼。 如果是在本機使用 CLI，需要執行 2.0.28 版或更新版本，方可使用該指令碼。 若要尋找已安裝的版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 如果您在本機執行 CLI，則也需要執行 `az login` 以建立與 Azure 的連線。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>必要條件
-若要使用 IPv6 的 Azure 虛擬網路功能，您必須設定您訂用帳戶一次，如下所示：
+若要使用 IPv6 for Azure 虛擬網路功能，您必須只設定訂用帳戶一次，如下所示：
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
+az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
-需要 30 分鐘才能完成功能註冊。 您可以執行下列 Azure CLI 命令來檢查您的註冊狀態：
 
-```azurelci
+需要 30 分鐘才能完成功能註冊。 您可以執行下列 Azure CLI 命令來檢查註冊狀態：
+
+```azurecli
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
+az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
+
 註冊完成之後，請執行下列命令：
 
-```azurelci
+```azurecli
 az provider register --namespace Microsoft.Network
 ```
 
@@ -259,6 +263,7 @@ az vm create \
 --image MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest
 
 ```
+
 ## <a name="clean-up-deployment"></a>清除部署
 
 執行下列命令來移除資源群組、VM 和所有相關資源：
@@ -271,7 +276,7 @@ az group delete --name <resourcegroupname> --yes
 
 此指令碼使用下列命令來建立資源群組、虛擬機器、可用性設定組、負載平衡器和所有相關資源。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) | 建立 Azure 虛擬網路和子網路。 |
@@ -281,7 +286,7 @@ az group delete --name <resourcegroupname> --yes
 | [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#az-network-lb-rule-create) | 建立負載平衡器規則。 在此範例中，會為連接埠 80 建立規則。 HTTP 流量到達負載平衡器時，它會路由傳送至 LB 集內其中一部 VM 的連接埠 80。 |
 | [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule#az-network-lb-inbound-nat-rule-create) | 建立負載平衡器網路位址轉譯 (NAT) 規則。  NAT 規則會將負載平衡器的連接埠對應至 VM 上的連接埠。 在此範例中，會為傳送到負載平衡器集合中每部 VM 的 SSH 流量建立 NAT 規則。  |
 | [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#az-network-nsg-create) | 建立網路安全性群組 (NSG)，做為網際網路和虛擬機器之間的安全性界限。 |
-| [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule#az-network-nsg-rule-create) | 创建 NSG 规则以允许入站流量。 在此範例中，會開放連接埠 22 供 SSH 流量使用。 |
+| [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule#az-network-nsg-rule-create) | 建立允許輸入流量的 NSG 規則。 在此範例中，會開放連接埠 22 供 SSH 流量使用。 |
 | [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#az-network-nic-create) | 建立虛擬網路卡，並將它連接至虛擬網路、子網路及 NSG。 |
 | [az vm availability-set create](https://docs.microsoft.com/cli/azure/network/lb/rule#az-network-lb-rule-create) | 建立可用性設定組。 可用性設定組可將虛擬機器分散到各個實體資源，讓整個集合不致受到萬一發生的失敗所影響，藉此來確保應用程式運作時間。 |
 | [az vm create](/cli/azure/vm#az-vm-create) | 建立虛擬機器，並將它連線到網路卡、虛擬網路、子網路及 NSG。 此命令也會指定要使用的虛擬機器映像和管理認證。  |

@@ -3,24 +3,20 @@ title: Azure PowerShell 指令碼範例 - 讓兩個虛擬網路對等互連 | Mi
 description: Azure PowerShell 指令碼範例 - 讓兩個虛擬網路對等互連
 services: virtual-network
 documentationcenter: virtual-network
-author: georgewallace
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: KumudD
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: powershell
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
-ms.author: gwallace
-ms.openlocfilehash: 6faf875893092496ee312e93d542d24c30abd1e1
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
-ms.translationtype: MT
+ms.author: kumud
+ms.openlocfilehash: 53af283813500fc93d3e5fb9d4b00a9c3034af2d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56648841"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73890196"
 ---
 # <a name="peer-two-virtual-networks"></a>讓兩個虛擬網路對等互連
 
@@ -38,7 +34,7 @@ ms.locfileid: "56648841"
 
 ## <a name="clean-up-deployment"></a>清除部署 
 
-运行以下命令来删除资源组、VM 和所有相关资源。
+執行下列命令來移除資源群組、VM 和所有相關資源。
 
 ```powershell
 Remove-AzResourceGroup -Name myResourceGroup
@@ -48,7 +44,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 此指令碼使用下列命令來建立資源群組、虛擬機器和所有相關資源。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 建立用來存放所有資源的資源群組。 | 
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)| 建立 Azure 虛擬網路和子網路。 |

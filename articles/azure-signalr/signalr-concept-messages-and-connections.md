@@ -6,12 +6,11 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: e82ce8f5c97aed7e2cb832d8e808ff84691f7c9e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 5f6428231a3639738e8fb52e7dc3f2f2a3d2a26e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61401197"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75392819"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Azure SignalR Service 中的訊息和連線
 
@@ -20,7 +19,7 @@ Azure SignalR Service 的計費模型是以連線數目和訊息數目為基礎�
 
 ## <a name="message-formats"></a>訊息格式 
 
-Azure SignalR Service 所支援的格式與 ASP.NET Core SignalR 相同：[JSON](https://www.json.org/) 和 [MessagePack](/aspnet/core/signalr/messagepackhubprotocol)。
+Azure SignalR Service 支援與 ASP.NET Core SignalR： [JSON](https://www.json.org/)和[MessagePack](/aspnet/core/signalr/messagepackhubprotocol)相同的格式。
 
 ## <a name="message-size"></a>訊息大小
 
@@ -38,21 +37,21 @@ Azure SignalR Service 沒有訊息大小限制。
 
 例如，假設您有三個用戶端和一個應用程式伺服器。 一個用戶端傳送了一則 4 KB 的訊息，讓伺服器廣播到所有用戶端。 訊息計數為 8：有一則訊息從服務傳送至應用程式伺服器，三則訊息從服務傳送至用戶端。 每則訊息分別計為兩則 2 KB 的訊息。
 
-在累計超過 100 之前，Azure 入口網站中顯示的訊息計數會保持為 0。
-
 ## <a name="how-connections-are-counted"></a>如何計算連線
 
-連線分成伺服器連線和用戶端連線。 根據預設，每個應用程式伺服器的每個中樞有五個 Azure SignalR Service 的連線，而每個用戶端則有一個 Azure SignalR Service 的用戶端連線。
+有 Azure SignalR Service 的伺服器連接和用戶端連線。 根據預設，每個應用程式伺服器一開始會有五個中樞的初始連線，而且每個用戶端都有一個用戶端連接。
 
 Azure 入口網站中顯示的連線計數包括伺服器連線和用戶端連線。
 
-例如，假設您有兩個應用程式伺服器，並且在程式碼中定義了五個中樞。 伺服器連線計數會是 50：2 個應用程式伺服器 * 5 個中樞 * 每個中樞 5 個連線。
+例如，假設您有兩個應用程式伺服器，並且在程式碼中定義了五個中樞。 伺服器連接計數將是50：2個應用程式伺服器 * 5 個中樞 * 5 個連線。
 
-ASP.NET SignalR 會以不同的方式計算伺服器連線。 除了您定義的中樞以外，它還包含一個預設中樞。 根據預設，每個應用程式伺服器另需 5 個伺服器連線。 預設中樞的連線計數會與其他中樞保持一致。
+ASP.NET SignalR 會以不同的方式計算伺服器連線。 除了您定義的中樞以外，它還包含一個預設中樞。 根據預設，每個應用程式伺服器需要5個以上的初始伺服器連接。 預設中樞的初始連線計數會與其他中樞保持一致。
+
+在應用程式伺服器的存留期內，服務和應用程式伺服器會保留同步線上狀態，並調整伺服器連接，以獲得更佳的效能和服務穩定性。 因此，您可能會看到伺服器連接編號變更的時間。
 
 ## <a name="how-inboundoutbound-traffic-is-counted"></a>如何計算輸入/輸出流量
 
-輸入流量與輸出流量之間的差別是從 Azure SignalR Service 的觀點來看。 流量會以位元組為單位計算。 如同訊息計數，流量也有取樣率。 Azure 入口網站中的輸入/輸出圖表會在每個中樞達到 100 KB 時更新一次。
+輸入流量與輸出流量之間的差別是從 Azure SignalR Service 的觀點來看。 流量會以位元組為單位計算。
 
 ## <a name="related-resources"></a>相關資源
 

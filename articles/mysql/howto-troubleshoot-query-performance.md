@@ -1,17 +1,16 @@
 ---
-title: 如何對適用於 MySQL 的 Azure 資料庫中的查詢效能進行疑難排解
-description: 本文說明如何使用 EXPLAIN 對適用於 MySQL 的 Azure 資料庫中的查詢效能進行疑難排解。
+title: 對查詢效能進行疑難排解 - 適用於 MySQL 的 Azure 資料庫
+description: 了解如何使用 EXPLAIN 對適用於 MySQL 的 Azure 資料庫中的查詢效能進行疑難排解。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 819e2393619766d46385cdd6fe550fff1e1a7631
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.topic: troubleshooting
+ms.date: 3/18/2020
+ms.openlocfilehash: ec926bf6065e11e1b6ca2e3f6df22c4b5ee2c2c7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60720207"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836119"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>如何使用 EXPLAIN 剖析適用於 MySQL 的 Azure 資料庫中的查詢效能
 **EXPLAIN** 是可最佳化查詢的便利工具。 EXPLAIN 陳述式可用來取得關於 SQL 陳述式如何執行的資訊。 下列輸出顯示 EXPLAIN 陳述式的執行範例。
@@ -163,8 +162,8 @@ possible_keys: NULL
  
 ## <a name="conclusion"></a>結論
  
-使用 EXPLAIN 和不同類型的索引可大幅提升效能。 單憑您已有資料表的索引，不一定表示 MySQL 就可以將它用於您的查詢。 請務必使用 EXPLAIN 驗證您的假設，並使用索引將查詢最佳化。
+使用 EXPLAIN 和不同類型的索引可大幅提升效能。 擁有資料表的索引，不一定表示 MySQL 就可以將其用於您的查詢。 請務必使用 EXPLAIN 驗證您的假設，並使用索引將查詢最佳化。
 
 
 ## <a name="next-steps"></a>後續步驟
-- 若想知道是否有人可解答您最關切的問題，或是要張貼新問題/解答，請造訪 [MSDN 論壇](https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL)或[堆疊溢位](https://stackoverflow.com/questions/tagged/azure-database-mysql)。
+- 若想知道是否有人可解答您最關切的問題，或是要張貼新問題/解答，請造訪 [Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-database-mysql.html)或 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)。

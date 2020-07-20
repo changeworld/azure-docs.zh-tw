@@ -1,37 +1,25 @@
 ---
-title: Microsoft 身分識別平台 ASP.NET Core Web 應用程式快速入門 | Azure
-description: 深入了解如何使用 OpenID Connect，在 ASP.NET Core Web 應用程式上實作 Microsoft 登入
+title: 將使用 Microsoft 的登入新增至 ASP.NET Core Web 應用程式 - Microsoft 身分識別平台 | Azure
+description: 深入了解如何使用 OpenID Connect 在 ASP.NET Core Web 應用程式上實作 Microsoft 登入
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e51437a99217316ead50d4075be52f089225e618
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
+ms.openlocfilehash: 2924a950e7b52a41939d1c06305bad2d1b243476
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65190860"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554135"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 ASP.NET Core Web 應用程式
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
-
-在本快速入門中，您將了解 ASP.NET Core Web 應用程式如何從任何 Azure Active Directory (Azure AD) 執行個體登入個人帳戶 (hotmail.com、outlook.com 等) 與公司和學校帳戶。
-
-![示範本快速入門所產生之範例應用程式的運作方式](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro.svg)
-
+在本快速入門中，您將利用程式碼範例了解 ASP.NET Core Web 應用程式如何從任何 Azure Active Directory (Azure AD) 執行個體登入個人帳戶 (hotmail.com、outlook.com 等) 與公司和學校帳戶。 (如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。)
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>註冊並下載快速入門應用程式
 > 有兩個選項可用來啟動快速入門應用程式：
@@ -46,7 +34,7 @@ ms.locfileid: "65190860"
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>選項 2：註冊並手動設定您的應用程式和程式碼範例
 >
-> #### <a name="step-1-register-your-application"></a>步驟 1：註冊您的應用程式
+> #### <a name="step-1-register-your-application"></a>步驟 1:註冊您的應用程式
 > 若要註冊您的應用程式，並手動將應用程式註冊資訊新增到您的解決方案，請執行下列步驟：
 >
 > 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
@@ -60,10 +48,10 @@ ms.locfileid: "65190860"
 >    - 在 [重新導向 URL] 中新增 `https://localhost:44321/signin-oidc`，然後選取 [儲存]。
 >    - 在 [進階設定] 區段中，將 [登出 URL]設定為 `https://localhost:44321/signout-oidc`。
 >    - 在 [隱含授與] 底下，核取 [識別碼權杖]。
->    - 選取 [ **儲存**]。
+>    - 選取 [儲存]。
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步驟 1：在 Azure 入口網站中設定您的應用程式
+> #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步驟 1:在 Azure 入口網站中設定您的應用程式
 > 若要讓本快速入門的程式碼範例運作，您必須將回覆 URL 新增為 `https://localhost:44321/` 和 `https://localhost:44321/signin-oidc`，並將登出 URL 新增為 `https://localhost:44321/signout-oidc`，然後要求由授權端點簽發識別碼權杖。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [為我進行這項變更]()
@@ -71,20 +59,34 @@ ms.locfileid: "65190860"
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![已設定](media/quickstart-v2-aspnet-webapp/green-check.png) 您的應用程式已設定了這些屬性。
 
-#### <a name="step-2-download-your-aspnet-core-project"></a>步驟 2：下載您的 ASP.NET Core 專案
+#### <a name="step-2-download-your-aspnet-core-project"></a>步驟 2:下載您的 ASP.NET Core 專案
 
-- [下載 Visual Studio 2019 解決方案](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
+> [!div renderon="docs"]
+> [下載 Visual Studio 2019 解決方案](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>步驟 3：設定您的 Visual Studio 專案
+> [!div class="sxs-lookup" renderon="portal"]
+> 使用 Visual Studio 2019 執行專案。
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [下載程式碼範例](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
-1. 將 ZIP 檔案解壓縮至根資料夾內的本機資料夾 - 例如 **C:\Azure-Samples**
-1. 如果您使用 Visual Studio 2019，請在 Visual Studio 中開啟解決方案 (選用)。
-1. 編輯 **appsettings.json** 檔案。 找出 `ClientId`，並將 `ClientId` 的值更新為已註冊應用程式的 [應用程式 (用戶端) 識別碼] 值。 
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步驟 3：您的應用程式已設定並準備好執行
+> 我們已使用您的應用程式屬性值來設定您的專案，且專案已可供執行。
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > `Enter_the_Supported_Account_Info_Here`
+> [!div renderon="docs"]
+> #### <a name="step-3-run-your-visual-studio-project"></a>步驟 3：執行 Visual Studio 專案
+> 1. 將 ZIP 檔案解壓縮至根資料夾內的本機資料夾 - 例如 **C:\Azure-Samples**
+> 1. 在 Visual Studio 中開啟解決方案
+> 1. 編輯 **appsettings.json** 檔案。 找出 `ClientId`，並將 `ClientId` 的值更新為已註冊應用程式的 [應用程式 (用戶端) 識別碼] 值。
+>
+>    ```json
+>    "ClientId": "Enter_the_Application_Id_here"
+>    "TenantId": "Enter_the_Tenant_Info_Here"
+>    ```
 
-    ```json
-    "ClientId": "Enter_the_Application_Id_here"
-    "TenantId": "Enter_the_Tenant_Info_Here"
-    ```
+
 
 > [!div renderon="docs"]
 > 其中：
@@ -100,6 +102,9 @@ ms.locfileid: "65190860"
 ## <a name="more-information"></a>詳細資訊
 
 本節會概述登入使用者所需的程式碼。 本概觀有助於了解程式碼的運作方式、主要引數，以及如何將登入新增至現有的 ASP.NET Core 應用程式。
+
+### <a name="how-the-sample-works"></a>此範例的運作方式
+![示範本快速入門所產生之範例應用程式的運作方式](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro.svg)
 
 ### <a name="startup-class"></a>啟始類別
 
@@ -136,11 +141,11 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-`AddAuthentication` 方法會將服務設定為可新增 Cookie 型驗證 (用於瀏覽器案例)，以及可對 OpenID Connect 設定挑戰。 
+`AddAuthentication` 方法會將服務設定為可新增 Cookie 型驗證 (用於瀏覽器案例)，以及可對 OpenID Connect 設定挑戰。
 
 包含 `.AddAzureAd` 的程式碼行會將 Microsoft 身分識別驗證新增至您的應用程式。 然後設定為使用 Microsoft 身分識別平台端點登入。
 
-> |Where  |  |
+> |Where | 描述 |
 > |---------|---------|
 > | ClientId  | 應用程式 (用戶端) 識別碼 (在 Azure 入口網站中註冊的應用程式)。 |
 > | 授權單位 | 供使用者用於驗證的 STS 端點。 通常，這會是公用雲端的 <https://login.microsoftonline.com/{tenant}/v2.0>，其中 {tenant} 為您的租用戶名稱或租用戶識別碼，或是使用 common，以參考一般端點 (用於多租用戶應用程式) |
@@ -148,8 +153,21 @@ public void ConfigureServices(IServiceCollection services)
 
 
 > [!NOTE]
-> 設定 `ValidateIssuer = false` 可簡化本快速入門。 在實際的應用程式中，您需要驗證簽發者。
+> 設定 `ValidateIssuer = false` 可簡化此快速入門。 在實際的應用程式中，您需要驗證簽發者。
 > 請參閱範例以了解如何執行該動作。
+>
+> 另請注意 `Configure` 方法，其中包含兩個重要方法：`app.UseCookiePolicy()` 和 `app.UseAuthentication()`
+
+```csharp
+// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    // more core
+    app.UseCookiePolicy();
+    app.UseAuthentication();
+    // more core
+}
+```
 
 ### <a name="protect-a-controller-or-a-controllers-method"></a>保護控制器或控制器的方法
 

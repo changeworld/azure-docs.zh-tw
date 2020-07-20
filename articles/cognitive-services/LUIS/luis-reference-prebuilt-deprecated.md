@@ -1,6 +1,6 @@
 ---
-title: 已遭取代的預先建置實體
-titleSuffix: Azure
+title: 已淘汰的預建實體-LUIS
+titleSuffix: Azure Cognitive Services
 description: 本文包含 Language Understanding (LUIS) 中已取代的預先建置實體資訊。
 services: cognitive-services
 author: diberry
@@ -8,20 +8,20 @@ ms.custom: seodec18
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 02/28/2019
+ms.topic: reference
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 653fbd65e5ccfbc65781f2332b35d10237f718d5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 46da828b7553fdf9cdded817febd3bb95cd4cbb9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795095"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "78270667"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>在 LUIS 應用程式中已遭取代的預先建置實體
 下列預先建立的實體均已被取代，也無法新增至新的 LUIS 應用程式。
 
-* **Datetime**：雖然 datetime 實體仍可在使用該實體的現有應用程式中繼續運作，但使用 **datetime** 的現有 LUIS 應用程式都應該遷移至 **datetimeV2**。
+* **Datetime**：雖然 datetime 實體仍可在使用該實體的現有應用程式中繼續運作，但使用 **datetime** 的現有 LUIS 應用程式都應該移轉至 **datetimeV2**。
 * **Geography**：使用 **geography** 的現有 LUIS 應用程式會支援到 2018 年 12 月。
 * **Encyclopedia**：使用 **encyclopedia** 的現有 LUIS 應用程式會支援到 2018 年 12 月。
 
@@ -30,7 +30,7 @@ ms.locfileid: "59795095"
 
 #### <a name="3-geography-subtypes"></a>3 種 Geography 子類型
 
-預先建置的實體   |   範例語句   |   JSON
+預建實體   |   範例語句   |   JSON
 ------|------|------|
 `builtin.geography.city`   |  `seattle`    |`{ "type": "builtin.geography.city", "entity": "seattle" }`|
 `builtin.geography.city`   |  `paris`    |`{ "type": "builtin.geography.city", "entity": "paris" }`|
@@ -43,7 +43,7 @@ ms.locfileid: "59795095"
 **Encyclopedia** 僅適用於 `en-US` 地區設定。
 
 #### <a name="encyclopedia-subtypes"></a>Encyclopedia 子類型
-百科全書內建的實體，包含下列資料表中 100 個以上的子類型：除此之外，百科全書實體通常對應至多個類型。 例如，查詢 Ronald Reagan 會產生： 
+Encyclopedia 內建實體包含下表中的 100 多個子類型：此外，encyclopedia 實體常會對應到多個類型。 例如，查詢 Ronald Reagan 會產生：
 
 ```json
 {
@@ -65,7 +65,7 @@ ms.locfileid: "59795095"
  ```
 
 
-預先建置的實體   |   預先建置的實體 (子類型)   |   範例語句
+預建實體   |   預先建置的實體 (子類型)   |   範例語句
 ------|------|------|
 `builtin.encyclopedia.people.person`| `builtin.encyclopedia.people.person`| `bryan adams` |
 `builtin.encyclopedia.people.person`| `builtin.encyclopedia.film.producer`| `walt disney` |
@@ -163,5 +163,5 @@ ms.locfileid: "59795095"
 
 ## <a name="next-steps"></a>後續步驟
 
-了解 [dimension](luis-reference-prebuilt-dimension.md)、[email](luis-reference-prebuilt-email.md) 實體與 [number](luis-reference-prebuilt-number.md) 的相關資訊。 
+了解 [dimension](luis-reference-prebuilt-dimension.md)、[email](luis-reference-prebuilt-email.md) 實體與 [number](luis-reference-prebuilt-number.md) 的相關資訊。
 

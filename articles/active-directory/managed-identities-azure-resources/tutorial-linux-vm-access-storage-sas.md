@@ -1,5 +1,5 @@
 ---
-title: 使用 Linux 系統指派的受控識別，以利用 SAS 認證來存取 Azure 儲存體
+title: 教學課程：使用 SAS 認證存取 Azure 儲存體 - Linux - Azure AD
 description: 本教學課程說明如何使用 Linux VM 系統指派的受控識別，以利用 SAS 認證 (而非儲存體帳戶來存取金鑰) 來存取 Azure 儲存體。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06fa483a34efa3a9486e04d894a3139d17b157b4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6a173fe36c20e9f13f1b1c1f27efc36821c8264a
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273952"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266299"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>教學課程：使用 Linux VM 系統指派的受控識別，以透過 SAS 認證存取 Azure 儲存體
 
@@ -53,7 +53,7 @@ ms.locfileid: "59273952"
 3. 輸入儲存體帳戶的 [名稱]，您稍後將會使用它。  
 4. [部署模型] 和 [帳戶類型] 應該分別設定為「資源管理員」和「一般用途」。 
 5. 確定 [訂用帳戶] 和 [資源群組] 符合您在上一個步驟中建立 VM 時指定的值。
-6. 按一下頁面底部的 [新增] 。
+6. 按一下 [建立]。
 
     ![建立新的儲存體帳戶](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 

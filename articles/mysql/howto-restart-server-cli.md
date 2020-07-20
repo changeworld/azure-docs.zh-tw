@@ -1,19 +1,19 @@
 ---
-title: 重新啟動適用於 MySQL 伺服器使用 Azure CLI 的 Azure 資料庫
-description: 本文說明如何重新啟動 Azure Database for MySQL 伺服器使用 Azure CLI。
+title: 重新開機伺服器-Azure CLI-適用於 MySQL 的 Azure 資料庫
+description: 本文說明如何使用 Azure CLI 來重新開機適用於 MySQL 的 Azure 資料庫伺服器。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
-ms.date: 3/28/2019
-ms.openlocfilehash: d00aa35437f93c010ce48f3036b4a684910702c0
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.topic: how-to
+ms.date: 3/18/2020
+ms.openlocfilehash: ab2ef4315ea035d051065e1e148577fd73dfae26
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58623149"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107949"
 ---
-# <a name="restart-azure-database-for-mysql-server-using-the-azure-cli"></a>重新啟動適用於 MySQL 伺服器使用 Azure CLI 的 Azure 資料庫
+# <a name="restart-azure-database-for-mysql-server-using-the-azure-cli"></a>使用 Azure CLI 重新開機適用於 MySQL 的 Azure 資料庫伺服器
 本主題說明如何重新啟動適用於 MySQL 的 Azure 資料庫伺服器。 您可能會為了進行維護而需要重新啟動伺服器，進而在伺服器執行作業時導致短暫中斷。
 
 如果服務忙碌中，系統會阻止伺服器重新啟動。 例如，該服務可能正在處理先前要求的作業，例如調整虛擬核心。
@@ -22,7 +22,7 @@ ms.locfileid: "58623149"
 
 ## <a name="prerequisites"></a>必要條件
 若要完成本操作說明指南，您需要：
-- [Azure Database for MySQL 伺服器](quickstart-create-server-up-azure-cli.md)
+- [適用於 MySQL 的 Azure 資料庫伺服器](quickstart-create-server-up-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "58623149"
 
 ## <a name="restart-the-server"></a>重新啟動伺服器
 
-重新啟動伺服器，使用下列命令：
+使用下列命令重新開機伺服器：
 
 ```azurecli-interactive
 az mysql server restart --name mydemoserver --resource-group myresourcegroup
@@ -40,4 +40,4 @@ az mysql server restart --name mydemoserver --resource-group myresourcegroup
 
 ## <a name="next-steps"></a>後續步驟
 
-深入了解[如何設定 Azure 資料庫中的參數，適用於 MySQL](howto-configure-server-parameters-using-cli.md)
+瞭解[如何在適用於 MySQL 的 Azure 資料庫中設定參數](howto-configure-server-parameters-using-cli.md)

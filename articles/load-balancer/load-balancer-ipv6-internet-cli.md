@@ -1,28 +1,30 @@
 ---
 title: 建立採用 IPv6 的公用負載平衡器 - Azure CLI
-titlesuffix: Azure Load Balancer
-description: 了解如何使用 Azure CLI 建立採用 IPv6 的公用負載平衡器。
+titleSuffix: Azure Load Balancer
+description: 透過此學習路徑，開始使用 Azure CLI 來建立具有 IPv6 的公用負載平衡器。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 keywords: ipv6, azure load balancer, 雙重堆疊, 公用 ip, 原生 ipv6, 行動, iot
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
-ms.author: kumud
-ms.openlocfilehash: 1caa8e7554024c3b2e3d86436d3d494d7995169a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 03bedba280fca4c051685eabdfa47eaaf00f05d3
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60516685"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963320"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>使用 Azure CLI 建立採用 IPv6 的公用負載平衡器
 
+>[!NOTE] 
+>本文說明可讓基本負載平衡器同時提供 IPv4 和 IPv6 連線能力的入門 IPv6 功能。 [Ipv6 For Azure vnet](../virtual-network/ipv6-overview.md)現已提供完整的 ipv6 連線能力，其整合了 ipv6 連線與您的虛擬網路，並包含 Ipv6 網路安全性群組規則、ipv6 使用者定義的路由、ipv6 基本和標準負載平衡等主要功能。  適用于 azure Vnet 的 IPv6 是 Azure 中的 IPv6 應用程式建議標準。 請參閱[適用于 AZURE VNET Powershell 部署的 IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) 
 
 Azure 負載平衡器是第 4 層 (TCP、UDP) 負載平衡器。 負載平衡器可藉由在負載平衡器集合中，將連入流量分散於雲端服務或虛擬機器中狀況良好的服務執行個體之間，來提供高可用性。 負載平衡器也會在多個連接埠或多個 IP 位址 (或兩者) 上顯示這些服務。
 
@@ -46,11 +48,11 @@ Azure 負載平衡器是第 4 層 (TCP、UDP) 負載平衡器。 負載平衡器
 
 若要部署負載平衡器，請建立並設定下列物件：
 
-* **前端 IP 設定**：包含連入網路流量的公用 IP 位址。
+* **前端 IP 組態**：包含傳入網路流量的公用 IP 位址。
 * **後端位址集區**：包含虛擬機器的網路介面 (NIC)，可從負載平衡器接收網路流量。
-* **負載平衡規則**：包含將負載平衡器上的公用連接埠對應至後端位址集區中連接埠的規則。
+* **負載平衡規則**：包含將負載平衡器上的公用連接埠對應至後端位址集區中的連接埠的規則。
 * **輸入 NAT 規則**：包含網路位址轉譯 (NAT) 規則，可將負載平衡器上的公用連接埠對應至後端位址集區中特定虛擬機器的連接埠。
-* **探查**：包含用來檢查後端位址集區中虛擬機器執行個體可用性的健康狀態探查。
+* **探查**：包含用來檢查後端位址集區中虛擬機器執行個體可用性的健全狀況探查。
 
 ## <a name="set-up-azure-cli"></a>設定 Azure CLI
 
@@ -195,45 +197,47 @@ Azure 負載平衡器是第 4 層 (TCP、UDP) 負載平衡器。 負載平衡器
     az network lb show --resource-group $rgName --name $lbName
     ```
 
-    預期的輸出：
+    預期輸出：
 
-        info:    Executing command network lb show
-        info:    Looking up the load balancer "myIPv4IPv6Lb"
-        data:    Id                              : /subscriptions/########-####-####-####-############/resourceGroups/pscontosorg1southctrlus09152016/providers/Microsoft.Network/loadBalancers/myIPv4IPv6Lb
-        data:    Name                            : myIPv4IPv6Lb
-        data:    Type                            : Microsoft.Network/loadBalancers
-        data:    Location                        : southcentralus
-        data:    Provisioning state              : Succeeded
-        data:
-        data:    Frontend IP configurations:
-        data:    Name             Provisioning state  Private IP allocation  Private IP   Subnet  Public IP
-        data:    ---------------  ------------------  ---------------------  -----------  ------  ---------
-        data:    FrontendVipIPv4  Succeeded           Dynamic                                     myIPv4Vip
-        data:    FrontendVipIPv6  Succeeded           Dynamic                                     myIPv6Vip
-        data:
-        data:    Probes:
-        data:    Name                 Provisioning state  Protocol  Port  Path  Interval  Count
-        data:    -------------------  ------------------  --------  ----  ----  --------  -----
-        data:    ProbeForIPv4AndIPv6  Succeeded           Tcp       80          15        2
-        data:
-        data:    Backend Address Pools:
-        data:    Name             Provisioning state
-        data:    ---------------  ------------------
-        data:    BackendPoolIPv4  Succeeded
-        data:    BackendPoolIPv6  Succeeded
-        data:
-        data:    Load Balancing Rules:
-        data:    Name                  Provisioning state  Load distribution  Protocol  Frontend port  Backend port  Enable floating IP  Idle timeout in minutes
-        data:    --------------------  ------------------  -----------------  --------  -------------  ------------  ------------------  -----------------------
-        data:    LBRuleForIPv4-Port80  Succeeded           Default            Tcp       80             80            false               4
-        data:    LBRuleForIPv6-Port80  Succeeded           Default            Tcp       80             8080          false               4
-        data:
-        data:    Inbound NAT Rules:
-        data:    Name                 Provisioning state  Protocol  Frontend port  Backend port  Enable floating IP  Idle timeout in minutes
-        data:    -------------------  ------------------  --------  -------------  ------------  ------------------  -----------------------
-        data:    NatRule-For-Rdp-VM1  Succeeded           Tcp       3389           3389          false               4
-        data:    NatRule-For-Rdp-VM2  Succeeded           Tcp       3391           3389          false               4
-        info:    network lb show
+    ```output
+    info:    Executing command network lb show
+    info:    Looking up the load balancer "myIPv4IPv6Lb"
+    data:    Id                              : /subscriptions/########-####-####-####-############/resourceGroups/pscontosorg1southctrlus09152016/providers/Microsoft.Network/loadBalancers/myIPv4IPv6Lb
+    data:    Name                            : myIPv4IPv6Lb
+    data:    Type                            : Microsoft.Network/loadBalancers
+    data:    Location                        : southcentralus
+    data:    Provisioning state              : Succeeded
+    data:
+    data:    Frontend IP configurations:
+    data:    Name             Provisioning state  Private IP allocation  Private IP   Subnet  Public IP
+    data:    ---------------  ------------------  ---------------------  -----------  ------  ---------
+    data:    FrontendVipIPv4  Succeeded           Dynamic                                     myIPv4Vip
+    data:    FrontendVipIPv6  Succeeded           Dynamic                                     myIPv6Vip
+    data:
+    data:    Probes:
+    data:    Name                 Provisioning state  Protocol  Port  Path  Interval  Count
+    data:    -------------------  ------------------  --------  ----  ----  --------  -----
+    data:    ProbeForIPv4AndIPv6  Succeeded           Tcp       80          15        2
+    data:
+    data:    Backend Address Pools:
+    data:    Name             Provisioning state
+    data:    ---------------  ------------------
+    data:    BackendPoolIPv4  Succeeded
+    data:    BackendPoolIPv6  Succeeded
+    data:
+    data:    Load Balancing Rules:
+    data:    Name                  Provisioning state  Load distribution  Protocol  Frontend port  Backend port  Enable floating IP  Idle timeout in minutes
+    data:    --------------------  ------------------  -----------------  --------  -------------  ------------  ------------------  -----------------------
+    data:    LBRuleForIPv4-Port80  Succeeded           Default            Tcp       80             80            false               4
+    data:    LBRuleForIPv6-Port80  Succeeded           Default            Tcp       80             8080          false               4
+    data:
+    data:    Inbound NAT Rules:
+    data:    Name                 Provisioning state  Protocol  Frontend port  Backend port  Enable floating IP  Idle timeout in minutes
+    data:    -------------------  ------------------  --------  -------------  ------------  ------------------  -----------------------
+    data:    NatRule-For-Rdp-VM1  Succeeded           Tcp       3389           3389          false               4
+    data:    NatRule-For-Rdp-VM2  Succeeded           Tcp       3391           3389          false               4
+    info:    network lb show
+    ```
 
 ## <a name="create-nics"></a>建立 NIC
 
@@ -280,7 +284,7 @@ Azure 負載平衡器是第 4 層 (TCP、UDP) 負載平衡器。 負載平衡器
     ```
 
     > [!WARNING]
-    > 此範例使用純文字的 VM 使用者名稱和密碼。 當您以純文字使用這些認證時，請務必謹慎。 如需在 PowerShell 中更安全處理認證的做法，請參閱 [`Get-Credential`](https://technet.microsoft.com/library/hh849815.aspx) Cmdlet。
+    > 此範例使用純文字的 VM 使用者名稱和密碼。 當您以純文字使用這些認證時，請務必謹慎。 如需在 PowerShell 中更安全處理認證的方法，請參閱 [`Get-Credential`](https://technet.microsoft.com/library/hh849815.aspx) Cmdlet。
 
 2. 建立可用性設定組：
 
@@ -296,8 +300,4 @@ Azure 負載平衡器是第 4 層 (TCP、UDP) 負載平衡器。 負載平衡器
     az vm create --resource-group $rgname --name $vm2Name --image $imageurn --admin-username $vmUserName --admin-password $mySecurePassword --nics $nic2Id --location $location --availability-set $availabilitySetName --size "Standard_A1" 
     ```
 
-## <a name="next-steps"></a>後續步驟
 
-[開始設定內部負載平衡器](load-balancer-get-started-ilb-arm-cli.md)  
-[配置负载均衡器分发模式](load-balancer-distribution-mode.md)  
-[設定負載平衡器的閒置 TCP 逾時設定](load-balancer-tcp-idle-timeout.md)

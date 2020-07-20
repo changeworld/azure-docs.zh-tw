@@ -1,64 +1,64 @@
 ---
-title: 從現有的映像版本，使用 Azure 映像產生器 （預覽） 建立新的映像版本
-description: 從現有的映像版本，使用 Azure 映像產生器中建立新的映像版本。
+title: 使用 Azure 映射產生器從現有的映射版本建立新的映射版本（預覽）
+description: 使用 Azure 映射產生器從現有的映射版本建立新的 VM 映射版本。
 author: cynthn
 ms.author: cynthn
-ms.date: 05/02/2019
-ms.topic: article
+ms.date: 05/05/2020
+ms.topic: how-to
 ms.service: virtual-machines-windows
-manager: jeconnoc
-ms.openlocfilehash: f1bce4c2e5c7ae9dc7ec5917fbc5ac115eecdffa
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.openlocfilehash: ee3e2a224789c899dcfabdbee56b949ea86f0a08
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65160091"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82872268"
 ---
-# <a name="preview-create-a-new-image-version-from-an-existing-image-version-using-azure-image-builder"></a>預覽：從現有的映像版本，使用 Azure 映像產生器中建立新的映像版本
+# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>預覽：使用 Azure 映射產生器從現有的映射版本建立新的 VM 映射版本
 
-這篇文章說明如何需要現有的映像版本[共用映像庫](shared-image-galleries.md)、 更新，並將其發行為新的映像版本至資源庫。
+本文說明如何在[共用映射資源庫](shared-image-galleries.md)中建立現有的映射版本、更新它，並將其發佈為新的映射版本至資源庫。
 
-我們將使用範例.json 範本來設定映像。 .Json 檔案，我們會使用已正式推出： [helloImageTemplateforSIGfromWinSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json)。 
+我們將會使用樣本 .json 範本來設定映像。 我們使用的 json 檔案位於： [helloImageTemplateforSIGfromWinSIG.js開啟](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json)。 
 
 > [!IMPORTANT]
-> Azure 映像產生器目前處於公開預覽狀態。
+> Azure Image Builder 目前處於公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="register-the-features"></a>註冊功能
-若要使用 Azure 映像產生器，在預覽期間，您需要註冊新的功能。
+## <a name="register-the-features"></a>註冊各項功能
+若要在預覽期間使用 Azure Image Builder，您必須註冊新功能。
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
 ```
 
-檢查功能註冊狀態。
+檢查功能註冊的狀態。
 
 ```azurecli-interactive
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
 ```
 
-請檢查您的註冊。
+檢查註冊。
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
-az provider show -n Microsoft.Storage | grep registrationState
+az provider show -n Microsoft.KeyVault | grep registrationState
 az provider show -n Microsoft.Compute | grep registrationState
+az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-如果他們未執行說已註冊，執行下列命令：
+如果沒有顯示已註冊，請執行下列動作：
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
-az provider register -n Microsoft.Storage
 az provider register -n Microsoft.Compute
+az provider register -n Microsoft.KeyVault
+az provider register -n Microsoft.Storage
 ```
 
 
-## <a name="set-variables-and-permissions"></a>設定變數和權限
+## <a name="set-variables-and-permissions"></a>設定變數和授權
 
-如果您使用[建立映像，並散發給 共用映像庫](image-builder-gallery.md)若要建立共用映像庫，您已建立我們需要的變數。 如果沒有，請設定要用於此範例中的一些變數。
+如果您使用 [[建立映射併發布至共用映射資源庫](image-builder-gallery.md)] 來建立共用映射資源庫，表示您已經建立了所需的變數。 如果沒有，請設定要用於此範例的一些變數。
 
-預覽版本中，映像產生器只支援作為來源的受控映像相同的資源群組中建立自訂映像。 更新資源群組名稱，在此範例中是相同的資源群組，為您的來源受控映像。
+如果是預覽狀態，映像建立器僅針對在與來源受控映像相同的資源群組中建立自訂映像提供支援。 將此範例中的資源群組名稱更新為與來源受控映像相同。
 
 ```azurecli-interactive
 # Resource group name - we are using ibsigRG in this example
@@ -78,13 +78,13 @@ username="user name for the VM"
 vmpassword="password for the VM"
 ```
 
-建立變數，針對您的訂用帳戶識別碼。 您可以取得此使用`az account show | grep id`。
+為訂用帳戶識別碼建立變數。 您可以使用 `az account show | grep id` 取得此項目。
 
 ```azurecli-interactive
 subscriptionID=<Subscription ID>
 ```
 
-取得您想要更新的映像版本。
+取得您想要更新的映射版本。
 
 ```azurecli-interactive
 sigDefImgVersionId=$(az sig image-version list \
@@ -94,20 +94,19 @@ sigDefImgVersionId=$(az sig image-version list \
    --subscription $subscriptionID --query [].'id' -o json | grep 0. | tr -d '"' | tr -d '[:space:]')
 ```
 
-
-如果您已經有您自己的共用映像庫，，且未遵循上述的範例，您必須指派權限來存取資源群組中，因此它可以存取資源庫映像產生器。
-
+## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>建立使用者指派的身分識別，並在資源群組上設定權限
+如同您在前一個範例中設定使用者身分識別，您只需要取得其資源識別碼，然後再將其附加至範本。
 
 ```azurecli-interactive
-az role assignment create \
-    --assignee cf32a0cc-373c-47c9-9156-0db11f6a6dfc \
-    --role Contributor \
-    --scope /subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup
+#get identity used previously
+imgBuilderId=$(az identity list -g $sigResourceGroup --query "[?contains(name, 'aibBuiUserId')].id" -o tsv)
 ```
+
+如果您已經有自己的共用映射資源庫，且未遵循先前的範例，您將需要指派映射產生器的許可權來存取資源群組，以便它可以存取圖庫。 請參閱[建立映射和散發至共用映射庫](image-builder-gallery.md)範例中的步驟。
 
 
 ## <a name="modify-helloimage-example"></a>修改 helloImage 範例
-您可以檢閱我們要使用開啟的.json 檔案的範例： [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json)連同[映像產生器範本參照](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
+您可以在這裡開啟 json 檔案，以查看我們即將使用的範例： [helloImageTemplateforSIGfromSIG.js開啟](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json)，以及影像產生器[範本參考](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
 
 
 下載 json 範例，並使用您的變數加以設定。 
@@ -122,11 +121,12 @@ sed -i -e "s%<sigDefImgVersionId>%$sigDefImgVersionId%g" helloImageTemplateforSI
 sed -i -e "s/<region1>/$location/g" helloImageTemplateforSIGfromWinSIG.json
 sed -i -e "s/<region2>/$additionalregion/g" helloImageTemplateforSIGfromWinSIG.json
 sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateforSIGfromWinSIG.json
+sed -i -e "s%<imgBuilderId>%$imgBuilderId%g" helloImageTemplateforSIGfromWinSIG.json
 ```
 
 ## <a name="create-the-image"></a>建立映像
 
-映像的組態提交至 VM 的映像產生器服務。
+將映射設定提交至 VM 映射產生器服務。
 
 ```azurecli-interactive
 az resource create \
@@ -137,7 +137,7 @@ az resource create \
     -n imageTemplateforSIGfromWinSIG01
 ```
 
-啟動映像組建。
+啟動映像建置。
 
 ```azurecli-interactive
 az resource invoke-action \
@@ -147,7 +147,7 @@ az resource invoke-action \
      --action Run 
 ```
 
-等候直到建置映像後，再繼續進行下一個步驟的複寫。
+等到映射已經建立並進行複寫，再繼續進行下一個步驟。
 
 
 ## <a name="create-the-vm"></a>建立 VM
@@ -163,17 +163,17 @@ az vm create \
 ```
 
 ## <a name="verify-the-customization"></a>確認自訂
-建立遠端桌面連線使用的使用者名稱和密碼建立 VM 時所設定的 vm。 在 vm 中，開啟命令提示字元並輸入：
+使用您在建立 VM 時所設定的使用者名稱與密碼，建立與該 VM 的遠端桌面連線。 在 VM 中，開啟命令提示字元並輸入：
 
 ```console
 dir c:\
 ```
 
-現在，您應該會看到兩個目錄：
-- `buildActions` 中的第一個映像版本建立。
-- `buildActions2` 建立做為註冊更新第一個映像版本來建立第二個映像版本的一部分。
+您現在應該會看到兩個目錄：
+- `buildActions`在第一個映射版本中建立的。
+- `buildActions2`這是在更新第一個映射版本以建立第二個映射版本時所建立的。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解這篇文章中所使用的.json 檔案的元件，請參閱[映像產生器範本參考](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+若要深入瞭解本文中所使用之 json 檔案的元件，請參閱影像產生器[範本參考](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。

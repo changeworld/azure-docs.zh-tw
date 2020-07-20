@@ -4,12 +4,12 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
-ms.openlocfilehash: 6e4168dbfd2963558166ee841e3d9075e82bc6ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bae7d03f6e4551f2d30db038bf8236a0dad0bf35
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60850920"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206138"
 ---
 > [!div class="op_single_selector"]
 > * [Azure Active Directory](../articles/app-service/configure-authentication-provider-aad.md)
@@ -17,6 +17,7 @@ ms.locfileid: "60850920"
 > * [Google](../articles/app-service/configure-authentication-provider-google.md)
 > * [Microsoft 帳戶](../articles/app-service/configure-authentication-provider-microsoft.md)
 > * [Twitter](../articles/app-service/configure-authentication-provider-twitter.md)
+> * [ (預覽的 OpenID Connect 提供者) ](../articles/app-service/configure-authentication-provider-openid-connect.md)
 > 
 > 
 

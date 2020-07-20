@@ -1,0 +1,4 @@
+- name: 在 Autodesk Maya 中設定以實體為基礎的轉譯材質
+  href: maya-material-setup.md
+- name: 在 Autodesk 3DSMax 中設定以實體為基礎的轉譯材質
+  href: 3dsmax-material-setup.md

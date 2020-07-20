@@ -1,31 +1,27 @@
 ---
-title: 如何搭配 Node.js 使用 Azure 服務匯流排主題和訂用帳戶 | Microsoft Docs
-description: 了解如何從 Node.js 應用程式，在 Azure 中使用服務匯流排主題和訂用帳戶。
-services: service-bus-messaging
-documentationcenter: nodejs
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: b9f5db85-7b6c-4cc7-bd2c-bd3087c99875
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
+title: 使用 Azure 服務匯流排主題搭配 Azure/service-bus Node.js 套件
+description: 了解如何在 Azure 中從 Node.js 應用程式透過 azure/service-bus 套件使用服務匯流排主題和訂用帳戶。
+author: spelluru
 ms.devlang: nodejs
-ms.topic: article
-ms.date: 04/15/2019
-ms.author: aschhab
-ms.openlocfilehash: d3f71382a3f2b15ec0f9764b9913a95c0d32b21d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.topic: quickstart
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.openlocfilehash: d4b382a0cf857f9cfe1065815e9b07b8260023a8
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60591817"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339786"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>如何透過 Node.js 使用服務匯流排主題和訂用帳戶
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>快速入門：如何透過 Node.js 和 azure-sb 套件使用服務匯流排主題和訂用帳戶
+在本教學課程中，您將了解如何建立 Node.js 應用程式，以使用 [azure-sb](https://www.npmjs.com/package/azure-sb) 套件將訊息傳送至服務匯流排主題，以及接收來自服務匯流排訂用帳戶的訊息。 範例均以 JavaScript 撰寫，並使用在內部使用 `azure-sb` 套件的 Node.js [Azure 模組](https://www.npmjs.com/package/azure)。
 
-[!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
+> [!IMPORTANT]
+> [azure-sb](https://www.npmjs.com/package/azure-sb) 套件會使用[服務匯流排 REST 執行階段 API](/rest/api/servicebus/service-bus-runtime-rest)。 您可以使用新的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 套件 (採用更快速的 [AMQP 1.0 通訊協定](service-bus-amqp-overview.md))，以獲得更快速的體驗。 
+> 
+> 若要深入了解新的套件，請參閱[如何透過 Node.js 和 @azure/service-bus 套件使用服務匯流排主題和訂用帳戶](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package)，否則，請繼續閱讀以了解如何使用 [Azure](https://www.npmjs.com/package/azure) 套件。
 
-本指南說明如何從 Node.js 應用程式使用服務匯流排主題和訂閱。 涵蓋的案例包括：
+此處涵蓋的案例包括：
 
 - 建立主題和訂用帳戶 
 - 建立訂用帳戶篩選 
@@ -36,14 +32,14 @@ ms.locfileid: "60591817"
 如需主題和訂用帳戶的詳細資訊，請參閱[後續步驟](#next-steps)一節。
 
 ## <a name="prerequisites"></a>必要條件
-1. Azure 訂用帳戶。 若要完成此教學課程，您需要 Azure 帳戶。 您可以啟用您[Visual Studio 或 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或是註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-2. 遵循的步驟[快速入門：使用 Azure 入口網站建立服務匯流排主題和訂用帳戶的主題](service-bus-quickstart-topics-subscriptions-portal.md)來建立服務匯流排**命名空間**並取得**連接字串**。
+- Azure 訂用帳戶。 若要完成此教學課程，您需要 Azure 帳戶。 您可以啟用自己的 [Visual Studio 或 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+- 依照下列快速入門中的步驟操作：[快速入門：使用 Azure 入口網站建立服務匯流排主題和主題的訂用帳戶](service-bus-quickstart-topics-subscriptions-portal.md)，以建立服務匯流排**命名空間**及取得**連接字串**。
 
     > [!NOTE]
-    > 您將建立**主題**並**訂用帳戶**使用主題**Node.js**在本快速入門。 
+    > 您將會在本快速入門中使用 **Node.js**，建立**主題**和主題的**訂用帳戶**。 
 
 ## <a name="create-a-nodejs-application"></a>建立 Node.js 應用程式
-建立空白的 Node.js 應用程式。 如需有關建立 Node.js 應用程式的指示，請參閱[建立 Node.js 應用程式並將其部署到 Azure 網站]、[Node.js 雲端服務][Node.js Cloud Service] (使用 Windows PowerShell) 或使用 WebMatrix 的網站。
+建立空白的 Node.js 應用程式。 如需建立 Node.js 應用程式的相關指示，請參閱[建立 Node.js 應用程式並將其部署到 Azure 網站]、[Node.js 雲端服務][Node.js Cloud Service] (使用 Windows PowerShell) 或使用 WebMatrix 的網站。
 
 ## <a name="configure-your-application-to-use-service-bus"></a>設定應用程式以使用服務匯流排
 若要使用服務匯流排，請下載 Node.js Azure 封裝。 此封裝含有一組能與服務匯流排 REST 服務通訊的便利程式庫。
@@ -76,7 +72,7 @@ var azure = require('azure');
 ```
 
 ### <a name="set-up-a-service-bus-connection"></a>設定服務匯流排連接
-Azure 模組會讀取環境變數 `AZURE_SERVICEBUS_CONNECTION_STRING`，以取得您從先前步驟＜取得認證＞所取得的連接字串。 如未設定此環境變數，必須在呼叫 `createServiceBusService` 時指定帳戶資訊。
+Azure 模組會讀取環境變數 `AZURE_SERVICEBUS_CONNECTION_STRING`，以獲得您在[必要條件](#prerequisites)中取得的連接字串。 如果您需要再次取得連接字串的指示，請參閱[取得連接字串](service-bus-quickstart-topics-subscriptions-portal.md#get-the-connection-string)。 如未設定此環境變數，必須在呼叫 `createServiceBusService` 時指定帳戶資訊。
 
 如需在 Azure 雲端服務的環境變數設定範例，請參閱[設定環境變數](../container-instances/container-instances-environment-variables.md#azure-cli-example)。
 
@@ -118,7 +114,7 @@ serviceBusService.createTopicIfNotExists('MyTopic', topicOptions, function(error
 ```
 
 ### <a name="filters"></a>篩選器
-您可以將選用的篩選作業套用至使用 **ServiceBusService** 執行的作業。 筛选操作可包括日志记录、自动重试等。篩選器是使用簽章實作方法的物件：
+您可以將選用的篩選作業套用至使用 **ServiceBusService** 執行的作業。 篩選作業可包括記錄、自動重試等等。篩選器是使用簽章實作方法的物件：
 
 ```javascript
 function handle (requestOptions, next)
@@ -143,9 +139,9 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 **ServiceBusService** 物件也能用來建立主題訂閱。 訂用帳戶是具名的，它們能擁有選用的篩選器，以限制傳遞至訂閱的虛擬佇列訊息集合。
 
 > [!NOTE]
-> 訂用帳戶是持續性的，會持續到本身或相關的主題遭到刪除為止。 如果應用程式含有建立訂用帳戶的邏輯，它應該會先使用 `getSubscription` 方法檢查訂用帳戶是否存在。
+> 根據預設，訂用帳戶是持續性的，會持續到本身或其相關聯的主題遭到刪除為止。 如果應用程式含有建立訂用帳戶的邏輯，它應該會先使用 `getSubscription` 方法檢查訂用帳戶是否存在。
 >
->
+> 您可以藉由設定 [AutoDeleteOnIdle 屬性](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle)，將訂用帳戶自動刪除。
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>使用預設 (MatchAll) 篩選器建立訂用帳戶
 **MatchAll** 篩選器是訂用帳戶建立時使用的預設篩選器。 使用 **MatchAll** 篩選器時，所有發佈至主題的訊息都會被置於訂用帳戶的虛擬佇列中。 下列範例將建立名為 AllMessages 的訂用帳戶，並使用預設的 **MatchAll** 篩選器。
@@ -161,7 +157,7 @@ serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
 ### <a name="create-subscriptions-with-filters"></a>使用篩選器建立訂用帳戶
 您也可以建立篩選器，讓您界定傳送至主題的哪些訊息應出現在特定主題訂用帳戶中。
 
-訂用帳戶所支援的最具彈性篩選器類型是實作 SQL92 子集的 **SqlFilter**。 SQL 篩選器會對發佈至主題之訊息的屬性運作。 如需有關可與 SQL 篩選器搭配使用的運算式詳細資料，請檢閱 [SqlFilter.SqlExpression][SqlFilter.SqlExpression] 語法。
+訂用帳戶所支援的最具彈性篩選器類型是實作 SQL92 子集的 **SqlFilter**。 SQL 篩選器會對發佈至主題之訊息的屬性運作。 如需可與 SQL 篩選器搭配使用的運算式詳細資料，請檢閱 [SqlFilter.SqlExpression][SqlFilter.SqlExpression] 語法。
 
 您可以使用 **ServiceBusService** 物件的 `createRule` 方法將篩選器新增至訂用帳戶。 此方法可讓您將篩選器新增至現有的訂用帳戶中。
 
@@ -309,7 +305,7 @@ serviceBusService.receiveSubscriptionMessage('MyTopic', 'HighMessages', { isPeek
 如果應用程式在處理訊息之後，尚未呼叫 `deleteMessage` 方法時當機，則會在應用程式重新啟動時將訊息重新傳遞給該應用程式。 這種行為通常稱為*至少處理一次*。 也就是說，每則訊息至少會處理一次；但在特定狀況下，可能會重新傳遞相同訊息。 如果案例無法容許重複處理，則您應在應用程式中加入邏輯，以處理重複的訊息傳遞。 您可使用訊息的 **MessageId** 屬性，該屬性在各個傳遞嘗試中會保持不變。
 
 ## <a name="delete-topics-and-subscriptions"></a>刪除主題和訂用帳戶
-主題和訂用帳戶是持續性的，您必須透過 [Azure 入口網站][Azure portal]或以程式設計方式明確地刪除它們。
+主題和訂用帳戶在未設定 [autoDeleteOnIdle 屬性](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle)的情況下是持續性的，且必須透過 [Azure 入口網站][Azure portal]或以程式設計方式明確地刪除。
 下列範例示範如何刪除名為 `MyTopic` 的主題：
 
 ```javascript
@@ -330,18 +326,21 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 });
 ```
 
+> [!NOTE]
+> 您可以使用[服務匯流排總管](https://github.com/paolosalvatori/ServiceBusExplorer/)來管理服務匯流排資源。 服務匯流排總管可讓使用者連線到服務匯流排命名空間，並以簡便的方式管理傳訊實體。 此工具提供進階的功能 (例如匯入/匯出功能) 或測試主題、佇列、訂用帳戶、轉送服務、通知中樞和事件中樞的能力。 
+
 ## <a name="next-steps"></a>後續步驟
 了解基本的服務匯流排主題之後，請參考下列連結以取得更多資訊。
 
 * 請參閱[佇列、主題和訂用帳戶][Queues, topics, and subscriptions]。
 * [SqlFilter][SqlFilter] 的 API 參考資料。
-* 瀏覽 GitHub 上的 [Azure SDK for Node][Azure SDK for Node] 儲存機制。
+* 請造訪 GitHub 上的 [Azure SDK for Node][Azure SDK for Node] 儲存機制 (英文)。
 
 [Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node
 [Azure portal]: https://portal.azure.com
 [SqlFilter.SqlExpression]: service-bus-messaging-sql-filter.md
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter
+[SqlFilter]: /javascript/api/@azure/arm-servicebus/sqlfilter?view=azure-node-latest
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [建立 Node.js 應用程式並將其部署到 Azure 網站]: ../app-service/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md

@@ -3,23 +3,23 @@ title: 了解 Azure CDN 計費 | Microsoft Docs
 description: 本常見問題集描述 Azure CDN 的計費方式。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
-ms.author: magattus
-ms.openlocfilehash: af8e57f39b5b83b1d1be09c29d8b6eb5d49c7b6c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/13/2019
+ms.author: allensu
+ms.openlocfilehash: f3240151937a8ad758e4afe765341261069fd60e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60782054"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254560"
 ---
 # <a name="understanding-azure-cdn-billing"></a>了解 Azure CDN 計費
 
@@ -48,26 +48,29 @@ Azure CDN 計費區域的判定，取決於將內容傳遞給終端使用者的�
 例如，假設位在墨西哥的使用者發出要求，然而因對等互連或流量等情況，該要求由位在美國 POP 的伺服器提供服務，則計費區域將會是美國。
 
 ## <a name="what-is-a-billable-azure-cdn-transaction"></a>什麼是可計費的 Azure CDN 交易？
-所有在 CDN 終止的 HTTP(S) 要求都算是可計費事件，包括所有回應類型：成功、失敗或其他。 然而，不同的回應可能會產生不同的流量。 例如，「304 未修改」和其他只含標頭的回應只會產生少量流量，因為它們是小型的標頭回應。同樣地，錯誤回應 (如「404 找不到」) 雖然可計費，不過因為回應承載很小，只會產生少量費用。
+所有在 CDN 終止的 HTTP(S) 要求都算是可計費事件，包括所有回應類型：成功、失敗或其他。 然而，不同的回應可能會產生不同的流量。 例如，「304 未修改」** 和其他只含標頭的回應只會產生少量流量，因為它們是小型的標頭回應。同樣地，錯誤回應 (如「404 找不到」**) 雖然可計費，不過因為回應承載很小，只會產生少量費用。
 
 ## <a name="what-other-azure-costs-are-associated-with-azure-cdn-use"></a>使用 Azure CDN 會產生其他哪些相關聯的 Azure 成本？
 使用 Azure CDN 時，用來當做物件來源的服務也會產生一些使用量費用。 這些成本通常只佔整體 CDN 使用量成本的一小部分。
 
 如果您將 Azure Blob 儲存體當做內容來源，還會因快取填滿而產生以下儲存空間費用：
 
-- 實際使用的 GB：您的來源物件之實際儲存空間。
+- 實際使用 GB 數：來源物件的實際儲存空間。
 
-- 傳輸 (以 GB 為單位)：傳輸以填入 CDN 快取的資料量。
+- 交易數：視填滿快取需要。
 
-- 交易：如填入快取所需。
+- 傳輸量 (GB)：填滿 CDN 快取的資料傳輸量。
+
+> [!NOTE]
+> 從2019年10月開始，如果您使用來自 Microsoft 的 Azure CDN，則從 Azure 裝載的原始來源到 CDN Pop 的資料傳輸成本是免費的。 來自 Verizon 的 azure CDN 和來自 Akamai 的 Azure CDN 受限於以下所述的費率。
 
 如需 Azure 儲存體計費的詳細資訊，請參閱[了解 Azure 儲存體計費 - 頻寬、交易和容量](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/)。
 
 如果您使用*託管服務傳遞*，可能會產生以下費用：
 
-- Azure 計算時間：當作來源的計算執行個體。
+- Azure 計算時間：當做來源的計算執行個體。
 
-- Azure 計算傳輸：傳輸自計算執行個體以填入 Azure CDN 快取的資料。
+- Azure 計算傳輸：為了填滿 Azure CDN 快取，從計算執行個體傳輸的資料。
 
 如果您的用戶端使用位元組範圍要求 (不考慮來源服務)，請考慮以下事項：
 
@@ -80,9 +83,40 @@ Azure CDN 計費區域的判定，取決於將內容傳遞給終端使用者的�
 
 - 可快取內容的型態：對於高 TTL (存留時間)/到期值，而且經常存取的內容，因為它在快取中的熱門程度高，所以大多數的負載都由 CDN 負責處理。 良好的快取命中率通常是指超過 90% 的命中率，代表不論是因為快取遺漏或物件重新整理，只有不到 10% 的用戶端要求必須傳回來源。
 
-- 載入物件需要幾個節點：每當節點從來源載入物件，就會引發計費交易。 因此，比較通用的內容 (從比較多節點存取)，產生的可計費交易也會比較多。
+- 需要載入物件的節點數目：每當節點從來源載入物件時，都會產生可計費交易。 因此，比較通用的內容 (從比較多節點存取)，產生的可計費交易也會比較多。
 
-- TTL 影響：物件的 TTL 越高，表示需要從來源擷取它的頻率越低。 這也代表用戶端 (如瀏覽器) 將物件留在快取中的時間較長，因此能減少 CDN 的交易數。
+- TTL 影響：物件的 TTL 越高，表示從來源擷取的頻率越低。 這也代表用戶端 (如瀏覽器) 將物件留在快取中的時間較長，因此能減少 CDN 的交易數。
+
+## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>哪些原始服務符合 Microsoft Azure CDN 的免費資料傳輸資格？ 
+如果您使用下列其中一項 Azure 服務作為 CDN 原點，則不會向您收取從來源到 CDN Pop 的資料傳輸費用。 
+
+- Azure 儲存體
+- Azure 媒體服務
+- Azure 虛擬機器
+- 虛擬網路
+- Load Balancer
+- 應用程式閘道
+- Azure DNS
+- ExpressRoute
+- VPN 閘道
+- 流量管理員
+- 網路監看員
+- Azure 防火牆
+- Azure Front Door Service
+- Azure Bastion
+- Azure App Service
+- Azure Functions
+- Azure Data Factory
+- Azure API 管理
+- Azure Batch 
+- Azure 資料總管
+- HDInsight
+- Azure Cosmos DB
+- Azure Data Lake Store
+- Azure Machine Learning 
+- Azure SQL Database
+- Azure SQL 受控執行個體
+- Azure Cache for Redis
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>管理成本最有效的方法是什麼？
 盡可能為內容設定最長的 TTL。 

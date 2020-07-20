@@ -1,68 +1,53 @@
 ---
-title: 使用 Azure Cache for Redis 建立 ASP.NET Web 應用程式 | Microsoft Docs
+title: 使用 Azure Cache for Redis 建立 ASP.NET Web 應用程式
 description: 在本快速入門中，您將了解如何使用 Azure Cache for Redis 來建立 ASP.NET Web 應用程式
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 454e23d7-a99b-4e6e-8dd7-156451d2da7c
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/26/2018
+ms.date: 06/18/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 0c267b2fbe639d08396d8773e077483b41b9747e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c9dfc7c9b396ec6ecd27891298ba0b0f1fc3e186
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58886364"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117823"
 ---
-# <a name="quickstart-create-an-aspnet-web-app"></a>快速入門：建立 ASP.NET Web 應用程式 
+# <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>快速入門：搭配使用 Azure Cache for Redis 與 ASP.NET Web 應用程式 
 
-## <a name="introduction"></a>簡介
+在本快速入門中，您會使用 Visual Studio 2019 建立 ASP.NET Web 應用程式，並連線至 Azure Cache for Redis 以儲存資料和從快取擷取資料。 接著，您會將應用程式部署到 Azure App Service。
 
-本快速入門說明如何使用 Visual Studio 2017 在 Azure App Service 中建立和部署 ASP.NET Web 應用程式。 範例應用程式會連線到 Azure Cache for Redis 來儲存資料，以及從快取擷取資料。 完成本快速入門後，您將會有執行中的 Web 應用程式裝載於 Azure 中，可對 Azure Cache for Redis 進行讀取和寫入。
+## <a name="prerequisites"></a>Prerequisites
 
-![簡單的測試已完成 Azure](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-## <a name="prerequisites"></a>必要條件
-
-若要完成本快速入門，您必須將 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 安裝到下列環境：
-* ASP.NET 和 Web 開發
-* Azure 開發
+- Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/)，包含 **ASP.NET 與 Web 開發**和 **Azure 開發**工作負載。
 
 ## <a name="create-the-visual-studio-project"></a>建立 Visual Studio 專案
 
-1. 開啟 Visual Studio，然後選取 [檔案] >[新增] > [專案]。
+1. 開啟 Visual Studio，然後選取 [檔案]   >[新增]   > [專案]  。
 
-2. 在 [新增專案] 對話方塊中，執行下列步驟：
+2. 在 [新增專案]  對話方塊中，執行下列步驟：
 
     ![建立專案](./media/cache-web-app-howto/cache-create-project.png)
 
-    a. 在 [範本] 清單中，展開 [Visual C#] 節點。
+    a. 在 [範本]  清單中，展開 [Visual C#]  節點。
 
-    b. 選取 [雲端]。
+    b. 選取 [雲端]  。
 
-    c. 選取 [ASP.NET Web 應用程式] 。
+    c. 選取 [ASP.NET Web 應用程式]  。
 
-    d. 確認已選取 [.NET Framework 4.5.2] 或更新版本。
+    d. 確認已選取 [.NET Framework 4.5.2]  或更新版本。
 
-    e. 在 [名稱] 方塊中，指定專案的名稱。 在此範例中，我們使用 **ContosoTeamStats**。
+    e. 在 [名稱]  方塊中，指定專案的名稱。 在此範例中，我們使用 **ContosoTeamStats**。
 
-    f. 選取 [確定] 。
+    f. 選取 [確定]  。
    
 3. 選取 [MVC]  做為專案類型。
 
-4. 確定 [驗證] 設定已指定為 [不需要驗證]。 視您的 Visual Studio 版本而定，預設的 [驗證] 設定可能會是其他值。 若要加以變更，請選取 [變更驗證]，然後選取 [不需要驗證]。
+4. 確定 [驗證]  設定已指定為 [不需要驗證]  。 視您的 Visual Studio 版本而定，預設的 [驗證]  設定可能會是其他值。 若要加以變更，請選取 [變更驗證]  ，然後選取 [不需要驗證]  。
 
-5. 選取 [確定] 以建立專案。
+5. 選取 [確定]  可建立專案。
 
 ## <a name="create-a-cache"></a>建立快取
 
@@ -74,13 +59,13 @@ ms.locfileid: "58886364"
 
 #### <a name="to-edit-the-cachesecretsconfig-file"></a>編輯 *CacheSecrets.config* 檔案
 
-1. 在您的電腦上建立名為 *CacheSecrets.config* 的檔案。將該檔案放在範例應用程式的原始程式碼不會加以簽入的位置。 在本快速入門中，CacheSecrets.config 檔案位於 C:\AppSecrets\CacheSecrets.config。
+1. 在您的電腦上建立名為 *CacheSecrets.config* 的檔案。將該檔案放在範例應用程式的原始程式碼不會加以簽入的位置。 在本快速入門中，CacheSecrets.config  檔案位於 C:\AppSecrets\CacheSecrets.config  。
 
 1. 編輯 *CacheSecrets.config* 檔案。 然後，新增下列內容：
 
     ```xml
     <appSettings>
-        <add key="CacheConnection" value="<cache-name>.redis.cache.windows.net,abortConnect=false,ssl=true,password=<access-key>"/>
+        <add key="CacheConnection" value="<cache-name>.redis.cache.windows.net,abortConnect=false,ssl=true,allowAdmin=true,password=<access-key>"/>
     </appSettings>
     ```
 
@@ -106,10 +91,10 @@ ms.locfileid: "58886364"
 
 當您在本機執行應用程式時，*CacheSecrets.config* 中的資訊會用來連線到您的 Azure Cache for Redis 執行個體。 稍後您會將此應用程式部署至 Azure。 屆時，您將會在 Azure 中設定應用程式設定，以供應用程式用來擷取快取連線資訊，而不是這個檔案。 
 
-由於 CacheSecrets.config 檔案不會隨著應用程式部署至 Azure，因此您只會在本機測試應用程式時使用它。 請以最安全的方式保存這項資訊，以防止他人惡意存取快取資料。
+由於 CacheSecrets.config  檔案不會隨著應用程式部署至 Azure，因此您只會在本機測試應用程式時使用它。 請以最安全的方式保存這項資訊，以防止他人惡意存取快取資料。
 
 #### <a name="to-update-the-webconfig-file"></a>更新 *web.config* 檔案
-1. 在 [方案總管] 中，按兩下 Web.config 檔案來加以開啟。
+1. 在 [方案總管]  中，按兩下 Web.config  檔案來加以開啟。
 
     ![Web.config](./media/cache-web-app-howto/cache-web-config.png)
 
@@ -118,11 +103,11 @@ ms.locfileid: "58886364"
 * 取代前： `<appSettings>`
 * 取代後：`<appSettings file="C:\AppSecrets\CacheSecrets.config">`
 
-ASP.NET 執行階段會將外部檔案的內容與 `<appSettings>` 元素的標記合併。 如果找不到指定的檔案，則執行階段會略過檔案屬性。 您的密碼 (您的快取的連接字串) 不會包含在應用程式的原始程式碼中。 將 Web 應用程式部署至 Azure 時，不會部署 CacheSecrets.config 檔案。
+ASP.NET 執行階段會將外部檔案的內容與 `<appSettings>` 元素的標記合併。 如果找不到指定的檔案，則執行階段會略過檔案屬性。 您的密碼 (您的快取的連接字串) 不會包含在應用程式的原始程式碼中。 將 Web 應用程式部署至 Azure 時，不會部署 CacheSecrets.config  檔案。
 
 ### <a name="to-configure-the-application-to-use-stackexchangeredis"></a>設定應用程式以使用 StackExchange.Redis
 
-1. 若要將應用程式設定為使用適用於 Visual Studio 的 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) NuGet 套件，請選取 [工具] > [NuGet 套件管理員] > [套件管理員主控台]。
+1. 若要將應用程式設定為使用適用於 Visual Studio 的 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) NuGet 套件，請選取 [工具] > [NuGet 套件管理員] > [套件管理員主控台]  。
 
 2. 從 `Package Manager Console` 視窗執行下列命令：
 
@@ -134,7 +119,7 @@ ASP.NET 執行階段會將外部檔案的內容與 `<appSettings>` 元素的標�
 
 ### <a name="to-update-the-homecontroller-and-layout"></a>更新 HomeController 和版面配置
 
-1. 在 [方案總管] 中展開 [控制器] 資料夾，然後開啟 *HomeController.cs* 檔案。
+1. 在 [方案總管]  中展開 [控制器]  資料夾，然後開啟 *HomeController.cs* 檔案。
 
 2. 在檔案頂端新增下列兩個 `using` 陳述式，以支援快取用戶端和應用程式設定。
 
@@ -146,19 +131,22 @@ ASP.NET 執行階段會將外部檔案的內容與 `<appSettings>` 元素的標�
 3. 將下列方法新增至 `HomeController` 類別，以支援會對新快取執行一些命令的新 `RedisCache` 動作。
 
     ```csharp
-        public ActionResult RedisCache()
+    public ActionResult RedisCache()
+    {
+        ViewBag.Message = "A simple example with Azure Cache for Redis on ASP.NET.";
+
+        var lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
         {
-            ViewBag.Message = "A simple example with Azure Cache for Redis on ASP.NET.";
+            string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
+            return ConnectionMultiplexer.Connect(cacheConnection);
+        });
 
-            var lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-            {
-                string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
-                return ConnectionMultiplexer.Connect(cacheConnection);
-            });
-
-            // Connection refers to a property that returns a ConnectionMultiplexer
-            // as shown in the previous example.
-            IDatabase cache = lazyConnection.Value.GetDatabase();
+        // Connection refers to a property that returns a ConnectionMultiplexer
+        // as shown in the previous example.
+            
+        using (ConnectionMultiplexer redis = lazyConnection.Value)
+        {
+            IDatabase cache = redis.GetDatabase();
 
             // Perform cache operations using the cache object...
 
@@ -179,15 +167,40 @@ ASP.NET 執行階段會將外部檔案的內容與 `<appSettings>` 元素的標�
 
             // Get the client list, useful to see if connection list is growing...
             ViewBag.command5 = "CLIENT LIST";
-            ViewBag.command5Result = cache.Execute("CLIENT", "LIST").ToString().Replace(" id=", "\rid=");
+            StringBuilder sb = new StringBuilder();
 
-            lazyConnection.Value.Dispose();
+            var endpoint = (System.Net.DnsEndPoint)Connection.GetEndPoints()[0];
+            var server = Connection.GetServer(endpoint.Host, endpoint.Port);
+            var clients = server.ClientList();
 
-            return View();
+            sb.AppendLine("Cache response :");
+            foreach (var client in clients)
+            {
+                sb.AppendLine(client.Raw);
+            }
+
+            ViewBag.command5Result = sb.ToString();
+
+        return View();
+    }
+                
+    private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+    {
+        string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
+        return ConnectionMultiplexer.Connect(cacheConnection);
+    });
+
+    public static ConnectionMultiplexer Connection
+    {
+        get
+        {
+            return lazyConnection.Value;
         }
+    }
+
     ```
 
-4. 在 [方案總管] 中，展開 [檢視] > [共用] 資料夾。 然後開啟 *_Layout.cshtml* 檔案。
+4. 在 [方案總管]  中，展開 [檢視]   > [共用]  資料夾。 然後開啟 *_Layout.cshtml* 檔案。
 
     將：
     
@@ -195,7 +208,7 @@ ASP.NET 執行階段會將外部檔案的內容與 `<appSettings>` 元素的標�
     @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
     ```
 
-    取代為
+    成為：
 
     ```csharp
     @Html.ActionLink("Azure Cache for Redis Test", "RedisCache", "Home", new { area = "" }, new { @class = "navbar-brand" })
@@ -203,11 +216,11 @@ ASP.NET 執行階段會將外部檔案的內容與 `<appSettings>` 元素的標�
 
 ### <a name="to-add-a-new-rediscache-view"></a>新增 RedisCache 檢視
 
-1. 在 [方案總管] 中，展開 [檢視] 資料夾，然後在 [主資料夾] 資料夾上按一下滑鼠右鍵。 選擇 [新增] > [檢視...]。
+1. 在 [方案總管]  中，展開 [檢視]  資料夾，然後在 [主資料夾]  資料夾上按一下滑鼠右鍵。 選擇 [新增]   > [檢視...]  。
 
-2. 在 [新增檢視] 對話方塊中，輸入 **RedisCache** 作為檢視名稱。 然後選取 [新增]。
+2. 在 [新增檢視]  對話方塊中，輸入 **RedisCache** 作為檢視名稱。 然後選取 [新增]  。
 
-3. 以下列程式碼取代 RedisCache.cshtml 檔案中的程式碼：
+3. 以下列程式碼取代 RedisCache.cshtml  檔案中的程式碼：
 
     ```csharp
     @{
@@ -250,9 +263,9 @@ ASP.NET 執行階段會將外部檔案的內容與 `<appSettings>` 元素的標�
 根據預設，專案已設定為在 [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview) 本機中裝載應用程式以進行測試和偵錯。
 
 ### <a name="to-run-the-app-locally"></a>在本機執行應用程式
-1. 在 Visual Studio 中，選取 [偵錯] > [開始偵錯] 以在本機建置和啟動要測試和偵錯的應用程式。
+1. 在 Visual Studio 中，選取 [偵錯]   > [開始偵錯]  以在本機建置和啟動要測試和偵錯的應用程式。
 
-2. 在瀏覽器中，選取導覽列上的 [Azure Cache for Redis 測試]。
+2. 在瀏覽器中，選取導覽列上的 [Azure Cache for Redis 測試]  。
 
 3. 在下列範例中，`Message` 金鑰先前具有快取值，此值是在入口網站中使用 Azure Cache for Redis 主控台設定的。 應用程式更新了該快取值。 應用程式也已執行 `PING` 和 `CLIENT LIST` 命令。
 
@@ -264,28 +277,28 @@ ASP.NET 執行階段會將外部檔案的內容與 `<appSettings>` 元素的標�
 
 ### <a name="to-publish-the-app-to-azure"></a>將應用程式發佈至 Azure
 
-1. 在 Visual Studio 的 [方案總管] 中，以滑鼠右鍵按一下專案節點。 然後選取 [發佈]。
+1. 在 Visual Studio 的 [方案總管] 中，以滑鼠右鍵按一下專案節點。 然後選取 [發佈]  。
 
     ![發佈](./media/cache-web-app-howto/cache-publish-app.png)
 
-2. 選取 [Microsoft Azure App Service]、選取 [新建]，然後選取 [發佈]。
+2. 選取 [Microsoft Azure App Service]  、選取 [新建]  ，然後選取 [發佈]  。
 
     ![發佈至 App Service](./media/cache-web-app-howto/cache-publish-to-app-service.png)
 
-3. 在 [建立 App Service] 對話方塊中，進行下列變更：
+3. 在 [建立 App Service]  對話方塊中，進行下列變更：
 
-    | 設定 | 建議值 | 說明 |
+    | 設定 | 建議值 | 描述 |
     | ------- | :---------------: | ----------- |
     | **應用程式名稱** | 使用預設值。 | 應用程式名稱會是應用程式部署至 Azure 時的主機名稱。 如有必要，該名稱中會新增時間戳記尾碼，以成為唯一名稱。 |
     | **訂用帳戶** | 選擇 Azure 訂用帳戶。 | 系統會就任何相關的裝載費用，對此訂用帳戶收費。 如果您有多個 Azure 訂用帳戶，請確認您已選取所需的訂用帳戶。|
     | **資源群組** | 使用您用來建立快取的相同資源群組 (例如 *TestResourceGroup*)。 | 資源群組可協助您以群組管理所有資源。 其後當您想要刪除應用程式時，請直接刪除該群組即可。 |
-    | **App Service 計劃** | 選取 [新增]，然後建立名為 TestingPlan 的新 App Service 方案。 <br />使用您在建立快取時所使用的相同**位置**。 <br />選擇**免費**大小。 | App Service 方案會針對要搭配執行的 Web 應用程式定義一組計算資源。 |
+    | **App Service 計劃** | 選取 [新增]  ，然後建立名為 TestingPlan  的新 App Service 方案。 <br />使用您在建立快取時所使用的相同**位置**。 <br />選擇**免費**大小。 | App Service 方案會針對要搭配執行的 Web 應用程式定義一組計算資源。 |
 
     ![App Service 對話方塊](./media/cache-web-app-howto/cache-create-app-service-dialog.png)
 
-4. 在您設定 App Service 裝載設定後，請選取 [建立]。
+4. 在您設定 App Service 裝載設定後，請選取 [建立]  。
 
-5. 在 Visual Studio 中監視 [輸出] 視窗，以查看發佈狀態。 應用程式發佈之後，系統會記錄應用程式的 URL：
+5. 在 Visual Studio 中監視 [輸出]  視窗，以查看發佈狀態。 應用程式發佈之後，系統會記錄應用程式的 URL：
 
     ![發佈輸出](./media/cache-web-app-howto/cache-publishing-output.png)
 
@@ -299,7 +312,7 @@ ASP.NET 執行階段會將外部檔案的內容與 `<appSettings>` 元素的標�
 
     ![尋找應用程式](./media/cache-web-app-howto/cache-find-app-service.png)
 
-2. 新增名為 **CacheConnection** 的應用程式設定，以供應用程式用來連線至快取。 在 CacheSecrets.config 檔案中使用針對 `CacheConnection` 所設定的相同值。 該值包含快取的主機名稱和存取金鑰。
+2. 新增名為 **CacheConnection** 的應用程式設定，以供應用程式用來連線至快取。 在 CacheSecrets.config  檔案中使用針對 `CacheConnection` 所設定的相同值。 該值包含快取的主機名稱和存取金鑰。
 
     ![新增應用程式設定](./media/cache-web-app-howto/cache-add-app-setting.png)
 
@@ -307,7 +320,7 @@ ASP.NET 執行階段會將外部檔案的內容與 `<appSettings>` 元素的標�
 
 在您的瀏覽器中，移至應用程式的 URL。 該 URL 會顯示在 Visual Studio [輸出] 視窗中的發佈作業結果內。 此外，在 Azure 入口網站中，該 URL 也會提供於您建立的應用程式所屬的 [概觀] 頁面上。
 
-選取導覽列上的 [Azure Cache for Redis 測試] 以測試快取存取。
+選取導覽列上的 [Azure Cache for Redis 測試]  以測試快取存取。
 
 ![簡單的測試已完成 Azure](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
 
@@ -322,13 +335,13 @@ ASP.NET 執行階段會將外部檔案的內容與 `<appSettings>` 元素的標�
 
 ### <a name="to-delete-a-resource-group"></a>刪除資源群組
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)，然後選取 [資源群組]。
+1. 登入 [Azure 入口網站](https://portal.azure.com)，然後選取 [資源群組]  。
 
-2. 在 [依名稱篩選...] 方塊中，並輸入您的資源群組名稱。 本文的指示是使用名為 TestResources 的資源群組。 在資源群組的結果清單中，選取 **...**，然後選取 [刪除資源群組]。
+2. 在 [依名稱篩選...]  方塊中，並輸入您的資源群組名稱。 本文的指示是使用名為 TestResources  的資源群組。 在資源群組的結果清單中，選取 **...** ，然後選取 [刪除資源群組]  。
 
     ![刪除](./media/cache-web-app-howto/cache-delete-resource-group.png)
 
-系統將會要求您確認是否刪除資源群組。 輸入您的資源群組名稱以進行確認，然後選取 [刪除]。
+系統將會要求您確認是否刪除資源群組。 輸入您的資源群組名稱以進行確認，然後選取 [刪除]  。
 
 不久後，系統便會刪除該資源群組及其所有的資源。
 

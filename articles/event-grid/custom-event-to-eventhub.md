@@ -1,20 +1,14 @@
 ---
-title: 將自訂事件傳送至事件中樞 - 事件方格、Azure CLI
-description: 使用 Azure 事件格線和 Azure CLI 來發佈主題，以及訂閱該事件。 事件中樞可用於端點。
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 10/09/2018
+title: 快速入門：將自訂事件傳送至事件中樞 - 事件方格、Azure CLI
+description: 快速入門：使用 Azure 事件格線和 Azure CLI 來發佈主題，以及訂閱該事件。 事件中樞可用於端點。
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: fd087c2afe50870289b008906b28605fdd558311
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 77268dde90959298c76813fb146e972ecfa3685d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475181"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104090"
 ---
 # <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>快速入門：使用 Azure CLI 和事件方格將自訂事件路由至 Azure 事件中樞
 
@@ -28,7 +22,7 @@ Event Grid 為 Azure 資源，必須放入 Azure 資源群組中。 資源群組
 
 使用 [az group create](/cli/azure/group#az-group-create) 命令來建立資源群組。 
 
-下列範例會在 westus2 位置建立名為 gridResourceGroup 的資源群組。
+下列範例會在 westus2  位置建立名為 gridResourceGroup  的資源群組。
 
 ```azurecli-interactive
 az group create --name gridResourceGroup --location westus2
@@ -59,7 +53,7 @@ az eventhubs eventhub create --name $hubname --namespace-name $namespace --resou
 
 ## <a name="subscribe-to-a-custom-topic"></a>訂閱自訂主題
 
-您可訂閱事件方格主題，告知 Event Grid 您想要追蹤的事件。下列範例可訂閱您所建立的自訂主題，以及傳遞端點的事件中樞資源識別碼。 端點的格式如下：
+您可訂閱事件方格主題，告知事件方格您想要追蹤的事件。下列範例可訂閱您所建立的自訂主題，以及傳遞端點的事件中樞資源識別碼。 端點的格式如下：
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.EventHub/namespaces/<namespace-name>/eventhubs/<hub-name>`
 

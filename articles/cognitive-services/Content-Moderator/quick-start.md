@@ -1,21 +1,21 @@
 ---
 title: 快速入門：在 Web 上試用 Content Moderator - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 在此快速入門中，您將使用線上「Content Moderator 審核工具」，無須撰寫任何程式碼，即可測試 Content Moderator 的基本功能。
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: conceptual
-ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: d1c65b590fd68f68fdaeb110c0fd00e0c5a6649a
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
-ms.translationtype: MT
+ms.topic: quickstart
+ms.date: 06/29/2020
+ms.author: pafarley
+ms.openlocfilehash: 550cec535343d48ad74dd35e6886af78bdd15701
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756475"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563293"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>快速入門：在 Web 上試用 Content Moderator
 
@@ -32,9 +32,23 @@ ms.locfileid: "58756475"
 
 ## <a name="create-a-review-team"></a>建立檢閱小組
 
-接著，建立審核小組。 在工作案例中，這會是將手動審核服務仲裁決策的一群人。 目前，您只須建立小組名稱。 如果您想要邀請同事加入小組，只要在這裡輸入他們的電子郵件地址即可。
+接著，建立審核小組。 在工作案例中，這會是將手動審核服務仲裁決策的一群人。 若要建立小組，您必須選取 [區域]，並提供 [小組名稱] 和 [小組識別碼]。 如果您想要邀請同事加入小組，只要在這裡輸入他們的電子郵件地址即可。
 
-![邀請小組成員](images/QuickStart-2-small.png)
+> [!NOTE]
+> [小組名稱] 是檢閱小組的易記名稱。 這是顯示在 Azure 入口網站中的名稱。 [小組識別碼] 是用來以程式設計方式識別檢閱小組的項目。
+
+> [!div class="mx-imgBorder"]
+> ![邀請小組成員](images/create-team.png)
+
+如果您選擇使用客戶管理的金鑰 (CMK) 來加密資料，則系統會針對 E0 定價層中的內容仲裁資源提示您輸入 [資源識別碼]。 您提供的資源必須是新的。 
+
+> [!div class="mx-imgBorder"]
+> ![使用 CMK 邀請小組成員](images/create-team-cmk.png)
+
+如果您嘗試重複使用內容仲裁資源，您會看到下列警告： 
+
+> [!div class="mx-imgBorder"]
+> ![CMK 失敗](images/create-team-cmk-fail.png)
 
 ## <a name="upload-sample-content"></a>上傳範例內容
 
@@ -68,6 +82,6 @@ ms.locfileid: "58756475"
 ## <a name="next-steps"></a>後續步驟
 
 了解如何在您的應用程式中使用「仲裁 API」本身。
-- 實作影像仲裁。 使用 [API 主控台](try-image-api.md)或 [C# 快速入門](image-moderation-quickstart-dotnet.md)來掃描影像，並使用標記、信賴分數及其他擷取資訊來偵測潛在的成人和不雅內容。
-- 實作文字仲裁。 使用  [API 主控台](try-text-api.md)，或使用[C#快速入門](text-moderation-quickstart-dotnet.md)掃描潛在的不雅內容，機器輔助不想要的文字分類 （預覽） 和個人資料的文字內容。
+- 實作影像仲裁。 使用 [API 主控台](try-image-api.md)或依照 [.NET SDK 快速入門](dotnet-sdk-quickstart.md)的指示掃描影像，並使用標籤、信賴分數和其他擷取資訊來偵測潛在的成人和猥褻內容。
+- 實作文字仲裁。 使用 [API 主控台](try-text-api.md)或使用 [.NET SDK 快速入門](dotnet-sdk-quickstart.md)來掃描文字內容，以找出潛在的粗話、機器輔助的不必要文字分類 (預覽)，以及個人資料。
 - 實作影片仲裁。 請遵循[適用於 C# 的影片仲裁操作指南](video-moderation-api.md)以掃描影片並偵測潛在成人和不雅內容。 

@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: b0a8deb5f656fafde358dbcf2e1a2724f1a84113
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ff439083ca9c648ceec95b89b041bb5b60785c91
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61225431"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "77603000"
 ---
 # <a name="linux-virtual-machines-documentation"></a>Linux 虛擬機器文件
 
@@ -42,7 +42,7 @@ Azure Linux 虛擬機器依您的選擇使用 Red Hat、Ubuntu 或 Linux 發行�
 - [備份 VM](/azure/virtual-machines/linux/tutorial-backup-vms)
 - [監視 VM](/azure/virtual-machines/linux/tutorial-monitoring)
 - [管理 VM 安全性](/azure/virtual-machines/linux/tutorial-azure-security)
-- [以 Jenkins、Docker 和 GitHub 建立 CI/CD 基礎結構](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd)
+- [以 Jenkins、Docker 和 GitHub 建立 CI/CD 基礎結構](/azure/jenkins/tutorial-jenkins-github-docker-cicd)
 
 ## <a name="free-pluralsight-video-training"></a>免費 Pluralsight 影片訓練
 

@@ -1,7 +1,503 @@
-- name: Azure Machine Learning 服務
-  href: service/index.yml
-- name: Azure Machine Learning Studio
-  href: studio/index.yml
-- name: 比較 Microsoft 的 ML 產品
-  href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
-  maintainContext: true
+- name: Azure Machine Learning 文件
+  href: index.yml
+- name: 概觀
+  expanded: true
+  items:
+    - name: 什麼是 Azure Machine Learning？
+      displayName: 'AML, services, overview, introduction'
+      href: overview-what-is-azure-ml.md
+    - name: Azure Machine Learning 與 Studio (傳統)
+      displayName: 'AML, Studio, designer'
+      href: compare-azure-ml-to-studio-classic.md
+    - name: 架構和條款
+      displayName: 'architecture, concepts, definitions, glossary'
+      href: concept-azure-machine-learning-architecture.md
+- name: 教學課程
+  expanded: true
+  items:
+    - name: Studio
+      items:
+        - name: 設計工具 (拖放)
+          items:
+            - name: 1. 定型迴歸模型
+              displayName: studio
+              href: tutorial-designer-automobile-price-train-score.md
+            - name: 2. 部署該模型
+              displayName: studio
+              href: tutorial-designer-automobile-price-deploy.md
+        - name: 自動化 ML (UI)
+          items:
+            - name: 建立自動化機器學習實驗
+              displayName: 'automl, automated, auto ml, portal, ui'
+              href: tutorial-first-experiment-automated-ml.md
+            - name: 預測需求 (自行車共用資料)
+              displayName: 'automl, automated, auto ml, portal, ui'
+              href: tutorial-automated-ml-forecast.md
+        - name: 標籤影像資料
+          displayName: 'tag, tagging, images'
+          href: tutorial-labeling.md
+    - name: Python SDK
+      items:
+        - name: 建立第一個 ML 實驗
+          items:
+            - name: 1. 設定工作區和開發環境
+              href: tutorial-1st-experiment-sdk-setup.md
+            - name: 2. 定型您的第一個模型
+              href: tutorial-1st-experiment-sdk-train.md
+        - name: 影像分類 (MNIST 資料)
+          items:
+            - name: 1. 將模型定型
+              displayName: build modeling
+              href: tutorial-train-models-with-aml.md
+            - name: 2. 部署模型
+              href: tutorial-deploy-models-with-aml.md
+        - name: 使用自動化 ML 進行迴歸處理 (紐約計程車資料)
+          items:
+            - name: ML 模型自動定型
+              displayName: 'automl, automated, auto ml,'
+              href: tutorial-auto-train-models.md
+        - name: 使用管線的批次評分模型
+          displayName: pipelines
+          href: tutorial-pipeline-batch-scoring-classification.md
+        - name: 針對生產環境準備您的程式碼
+          displayName: 'mlops, mlopspython, production'
+          href: tutorial-convert-ml-experiment-to-production.md
+    - name: R SDK
+      items:
+        - name: 建立第一個 ML 實驗 (R)
+          href: tutorial-1st-r-experiment.md
+    - name: 機器學習 CLI
+      items:
+        - name: 使用 CLI 定型和部署
+          href: tutorial-train-deploy-model-cli.md
+        - name: 使用 ARM 範本建立工作區
+          displayName: Resource Manager
+          href: tutorial-resource-manager-workspace.md
+    - name: Visual Studio Code
+      items:
+        - name: 設定 Azure Machine Learning 擴充功能
+          href: tutorial-setup-vscode-extension.md
+        - name: 定型和部署 TensorFlow 影像分類模型
+          href: tutorial-train-deploy-image-classification-model-vscode.md
+- name: 範例
+  items:
+    - name: Jupyter Notebook
+      displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
+      href: samples-notebooks.md
+    - name: 設計工具範例與資料集
+      displayName: 'example, examples, studio, pipelines, data sets, modules'
+      href: samples-designer.md
+    - name: 端對端 MLOps 範例
+      href: 'https://github.com/microsoft/MLOps'
+    - name: 開放資料集 (公開)
+      href: /azure/open-datasets/samples?context=azure/machine-learning/context/ml-context
+- name: 概念
+  items:
+    - name: 企業版與基本版本
+      href: concept-editions.md
+    - name: 規劃和管理成本
+      href: concept-plan-manage-cost.md
+    - name: 設計工具 (拖放 ML)
+      items:
+        - name: 設計工具概觀
+          displayName: studio
+          href: concept-designer.md
+        - name: 演算法功能提要
+          href: /azure/machine-learning/algorithm-cheat-sheet
+        - name: 如何選取演算法
+          href: /azure/machine-learning/how-to-select-algorithms
+    - name: 自動化 ML
+      items:
+        - name: 自動化 ML 概觀
+          displayName: 'automl, auto ml'
+          href: concept-automated-ml.md
+        - name: 過度學習和不平衡的資料
+          displayName: 'automl, auto ml, risks'
+          href: concept-manage-ml-pitfalls.md
+    - name: 工作區
+      href: concept-workspace.md
+    - name: 環境
+      href: concept-environments.md
+    - name: 計算執行個體
+      displayName: 'resource, dsvm, Data Science Virtual Machine'
+      href: concept-compute-instance.md
+    - name: 計算目標
+      displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
+      href: concept-compute-target.md
+    - name: 資料
+      items:
+        - name: 資料存取
+          href: concept-data.md
+        - name: 資料擷取
+          href: concept-data-ingestion.md
+        - name: 資料處理
+          href: concept-optimize-data-processing.md
+    - name: 模型訓練
+      displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
+      href: concept-train-machine-learning-model.md
+    - name: 分散式定型
+      displayName: 'parallellization, deep learning, deep neural network, dnn'
+      href: concept-distributed-training.md
+    - name: 深入學習
+      displayName: 'deep learning vs machine learning, deep learning, vs, versus'
+      href: concept-deep-learning-vs-machine-learning.md
+    - name: 模型管理 (MLOps)
+      displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
+      href: concept-model-management-and-deployment.md
+    - name: 模型可攜性 (ONNX)
+      href: concept-onnx.md
+    - name: ML 管線
+      href: concept-ml-pipelines.md
+    - name: 企業整備與安全性
+      items:
+        - name: 企業安全性和指導方針
+          items:
+            - name: 企業安全性概觀
+              displayName: authorization authentication encryption aad azure active directory
+              href: concept-enterprise-security.md
+            - name: 管理使用者和角色
+              href: how-to-assign-roles.md
+            - name: 使用虛擬網路
+              displayName: 'vnet, blob'
+              href: how-to-enable-virtual-network.md
+            - name: 使用 Private Link
+              displayName: private endpoint
+              href: how-to-configure-private-link.md
+            - name: 使用 TLS 保護 Web 服務
+              displayName: ssl
+              href: how-to-secure-web-service.md
+            - name: 在 AKS 部署中使用 Azure AD 身分識別
+              href: how-to-use-azure-ad-identity.md
+            - name: 重新產生儲存體存取金鑰
+              href: how-to-change-storage-access-key.md
+            - name: 使用 Azure 防火牆
+              href: how-to-access-azureml-behind-firewall.md
+            - name: 安全編碼
+              href: concept-secure-code-best-practice.md
+              displayName: security threat
+        - name: 設定驗證
+          displayName: 'authentication, auth, oauth'
+          href: how-to-setup-authentication.md
+        - name: 監視 Azure Machine Learning
+          href: monitor-azure-machine-learning.md
+    - name: 負責任的 ML
+      items:
+        - name: 負責任的 ML 概觀
+          displayName: 'responsible,ml'
+          href: concept-responsible-ml.md
+        - name: 模型可解釋性
+          displayName: explainability
+          href: how-to-machine-learning-interpretability.md
+        - name: Machine Learning 中的公平性
+          displayName: fairness
+          href: concept-fairness-ml.md
+        - name: 差分隱私
+          displayName: 'differential,privacy'
+          href: concept-differential-privacy.md
+- name: 操作指南
+  items:
+    - name: 建立和管理工作區
+      items:
+        - name: 使用 Azure 入口網站
+          href: how-to-manage-workspace.md
+        - name: 使用 Azure CLI
+          href: how-to-manage-workspace-cli.md
+        - name: 使用 REST
+          href: how-to-manage-rest.md
+        - name: 使用 Resource Manager 範本
+          displayName: arm
+          href: how-to-create-workspace-template.md
+    - name: 設定您的環境
+      items:
+        - name: 設定開發環境
+          displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
+          href: how-to-configure-environment.md
+        - name: 執行 Jupyter Notebook
+          href: how-to-run-jupyter-notebooks.md
+        - name: 設定軟體環境
+          displayName: 'pip, Conda, anaconda'
+          href: how-to-use-environments.md
+        - name: 啟用記錄
+          displayName: 'troubleshoot, log, files, tracing'
+          href: how-to-enable-logging.md
+        - name: 設定輸入和輸出目錄
+          displayName: 'large data, write, experiment files, size limit'
+          href: how-to-save-write-experiment-files.md
+        - name: 互動式偵錯
+          displayName: 'Visual Studio Code, VSCode, debug, bugs, remote, compute, instance'
+          href: how-to-set-up-vs-code-remote.md
+        - name: Git 整合
+          displayName: github gitlab
+          href: concept-train-model-git-integration.md
+    - name: 使用資料
+      items:
+        - name: 標籤資料
+          items:
+            - name: 取得標示的資料
+              displayName: 'data, dataset, labeling'
+              href: how-to-create-labeling-projects.md
+            - name: 標籤映像
+              displayName: 'data, dataset, labeling'
+              href: how-to-label-images.md
+            - name: 建立具有標籤的資料集
+              displayName: 'data, labels, torchvision'
+              href: how-to-use-labeled-dataset.md
+        - name: 取得資料
+          items:
+            - name: 使用 Azure Data Factory 進行資料擷取
+              displayName: 'data, ingestion, adf'
+              href: how-to-data-ingest-adf.md
+            - name: 適用於資料擷取的 DevOps
+              displayName: 'data, ingestion, devops'
+              href: how-to-cicd-data-ingestion.md
+            - name: 在設計工具中匯入資料
+              displayName: 'designer, data, import, dataset, datastore'
+              href: how-to-designer-import-data.md
+        - name: 存取資料
+          items:
+            - name: 連線到 Azure 儲存體
+              displayName: 'blob, get, fileshare, access, mount, download, data lake'
+              href: how-to-access-data.md
+            - name: 從資料存放區取得資料
+              displayName: 'data, data set, register, access data'
+              href: how-to-create-register-datasets.md
+        - name: 管理並取用資料
+          items:
+            - name: 使用資料集定型
+              displayName: 'data, dataset, mount'
+              href: how-to-train-with-datasets.md
+            - name: 偵測資料集上的漂移
+              displayName: 'data, dataset'
+              href: how-to-monitor-datasets.md
+            - name: 版本和追蹤資料集
+              displayName: 'data, data set'
+              href: how-to-version-track-datasets.md
+            - name: 保留資料隱私權
+              displayName: 'data,privacy,differential privacy'
+              href: how-to-differential-privacy.md
+    - name: 將模型定型
+      items:
+        - name: 設定訓練環境
+          displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          href: how-to-set-up-training-targets.md
+        - name: 為 ML 使用估算器
+          items:
+            - name: 在訓練中建立估算器
+              href: how-to-train-ml-models.md
+            - name: 微調超參數
+              displayName: parameter
+              href: how-to-tune-hyperparameters.md
+        - name: Scikit-learn
+          href: how-to-train-scikit-learn.md
+        - name: TensorFlow
+          href: how-to-train-tensorflow.md
+        - name: Keras
+          href: how-to-train-keras.md
+        - name: PyTorch
+          href: how-to-train-pytorch.md
+        - name: 追蹤和監視訓練
+          items:
+            - name: 啟動、監視或取消執行
+              displayName: 'cancel, fail, status, child run'
+              href: how-to-manage-runs.md
+            - name: 記錄訓練執行的計量
+              href: how-to-track-experiments.md
+            - name: 使用 MLflow 追蹤實驗
+              displayName: 'log, monitor, metrics, Databricks'
+              href: how-to-use-mlflow.md
+            - name: 使用 TensorBoard 執行視覺化
+              displayName: 'log, monitor, metrics'
+              href: how-to-monitor-tensorboard.md
+        - name: 解譯和說明模型
+          displayName: interpretability
+          items:
+            - name: 解譯 ML 模型
+              displayName: 'SDK, interpret, explain, explanability, interpretability'
+              href: how-to-machine-learning-interpretability-aml.md
+            - name: 說明自動化 ML 模型
+              displayName: 'SDK, interpret, interpret, explain, explanability, interpretability, automated ML, automl, auto ml'
+              href: how-to-machine-learning-interpretability-automl.md
+        - name: 評估和緩和模型的公平性
+          href: how-to-machine-learning-fairness-aml.md
+        - name: 訓練時使用 Key Vault
+          displayName: secrets keyvault
+          href: how-to-use-secrets-in-runs.md
+        - name: 增強式學習
+          href: how-to-use-reinforcement-learning.md
+    - name: 自動化機器學習
+      displayName: 'automl, auto ml'
+      items:
+        - name: 使用自動化 ML (Python)
+          displayName: SDK automl
+          href: how-to-configure-auto-train.md
+        - name: 使用自動化 ML (介面)
+          href: how-to-use-automated-ml-for-ml-models.md
+        - name: 使用遠端計算目標
+          displayName: automl automated auto ml
+          href: how-to-auto-train-remote.md
+        - name: 自動定型預測模型
+          displayName: time series
+          href: how-to-auto-train-forecast.md
+        - name: 資料分割及交叉驗證 (Python)
+          displayName: 'automl, feature engineering, feature importance'
+          href: how-to-configure-cross-validation-data-splits.md
+        - name: 自動化 ML 中的特徵化 (Python)
+          displayName: 'automl, feature engineering, feature importance'
+          href: how-to-configure-auto-features.md
+        - name: 在 ML 管線中使用自動化 ML (Python)
+          displayName: machine learning automl
+          href: how-to-use-automlstep-in-pipelines.md
+        - name: 瞭解圖表和計量
+          href: how-to-understand-automated-ml.md
+    - name: 部署和提供模型
+      items:
+        - name: 部署的位置和方式
+          displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
+          href: how-to-deploy-and-where.md
+        - name: 部署案例
+          items:
+            - name: Azure ML 計算執行個體
+              href: how-to-deploy-local-container-notebook-vm.md
+            - name: Azure Kubernetes Service
+              displayName: 'aks, aad, authentication, azure active directory'
+              href: how-to-deploy-azure-kubernetes-service.md
+            - name: Azure Container Instances
+              displayName: aci
+              href: how-to-deploy-azure-container-instance.md
+            - name: GPU 推斷
+              href: how-to-deploy-inferencing-gpus.md
+            - name: Azure App Service
+              displayName: web app
+              href: how-to-deploy-app-service.md
+            - name: Azure Functions
+              displayName: functions app
+              href: how-to-deploy-functions.md
+            - name: Azue 認知搜尋
+              href: how-to-deploy-model-cognitive-search.md
+            - name: Azure IoT Edge 裝置
+              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/context/ml-context
+            - name: FPGA 推斷
+              href: how-to-deploy-fpga-web-service.md
+            - name: 自訂 Docker 映像
+              href: how-to-deploy-custom-docker-image.md
+            - name: 非 Azure ML 模型
+              displayName: publish existing model
+              href: how-to-deploy-existing-model.md
+        - name: 疑難排解與偵錯
+          href: how-to-troubleshoot-deployment.md
+        - name: 呼叫服務端點
+          displayName: create client consume request response synchronous
+          href: how-to-consume-web-service.md
+        - name: 監視模型
+          items:
+            - name: 收集和評估模型資料
+              displayName: track production
+              href: how-to-enable-data-collection.md
+            - name: 偵測資料漂移
+              href: how-to-monitor-data-drift.md
+            - name: 使用 Application Insights 進行監視
+              href: how-to-enable-app-insights.md
+        - name: 部署加密的推斷服務
+          displayName: 'homomorhic,encryption,deployment'
+          href: how-to-homomorphic-encryption-seal.md
+    - name: 建置及使用 ML 管線
+      displayName: pipelines
+      items:
+        - name: 建立 ML 管線 (Python)
+          href: how-to-create-your-first-pipeline.md
+        - name: 將資料匯入 ML 管線步驟並在其中來回移動 (Python)
+          href: how-to-move-data-in-out-of-pipelines.md
+        - name: 排程管線 (Python)
+          href: how-to-schedule-pipelines.md
+        - name: 觸發管線
+          href: how-to-trigger-published-pipeline.md
+        - name: 管線偵錯與疑難排解
+          displayName: designer
+          href: how-to-debug-pipelines.md
+        - name: 對 Application Insights 中的管線進行偵錯
+          href: how-to-debug-pipelines-application-insights.md
+        - name: 設計工具轉換資料
+          displayName: pipeline
+          href: how-to-designer-transform-data.md
+        - name: 設計工具使用已發佈的管線重新定型
+          displayName: 'retrain, designer, published pipeline'
+          href: how-to-retrain-designer.md
+        - name: 設計工具批次預測
+          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
+          href: how-to-run-batch-predictions-designer.md
+        - name: 設計工具執行 Python 程式碼
+          displayName: 'feature extraction, feature engineering'
+          href: how-to-designer-python.md
+        - name: 使用平行執行步驟
+          displayName: score scoring batch consume pipeline parallelrunstep inference
+          href: how-to-use-parallel-run-step.md
+        - name: 針對平行執行步驟進行偵錯和疑難排解
+          displayName: debug_batch consume pipeline parallelrunstep inference
+          href: how-to-debug-parallel-run-step.md
+        - name: 反覆運算和進化機器學習管線
+          displayName: modularizing testing
+          href: concept-pipeline-practices-tips.md
+    - name: 適用於 CI/CD 的 Azure Pipelines
+      displayName: 'continuous, integration, delivery'
+      href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context
+    - name: 管理資源配額
+      displayName: limits
+      href: how-to-manage-quotas.md
+    - name: 管理資源 VS Code
+      displayName: 'vscode,resources'
+      href: how-to-manage-resources-vscode.md
+    - name: 匯出及刪除資料
+      displayName: GDPR
+      href: how-to-export-delete-data.md
+    - name: 建立事件驅動的工作流程
+      displayName: event grid
+      href: how-to-use-event-grid.md
+- name: 參考
+  items:
+    - name: Python SDK
+      displayName: 'api, core, package, python, class'
+      href: 'https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py'
+    - name: R SDK
+      displayName: 'api, core, package, R, class'
+      href: 'https://azure.github.io/azureml-sdk-for-r/reference/index.html'
+    - name: CLI
+      displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
+      href: reference-azure-machine-learning-cli.md
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/azureml/'
+    - name: 設計工具模組參考
+      displayName: 'module, reference, algorithm, studio'
+      href: algorithm-module-reference/module-reference.md
+    - name: 監視資料參考
+      href: monitor-resource-reference.md
+    - name: 學習管線 YAML 參考
+      href: reference-pipeline-yaml.md
+- name: 資源
+  items:
+    - name: 版本資訊
+      displayName: 'what''s, new, issues, bugs'
+      href: azure-machine-learning-release-notes.md
+    - name: Azure 藍圖
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 定價
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
+    - name: 區域可用性
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: 已知問題
+      displayName: 'bugs, errors, troubleshoot'
+      href: resource-known-issues.md
+    - name: 使用者論壇
+      href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning.html'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
+    - name: 比較 ML 產品
+      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/context/ml-context
+    - name: Workbench 有什麼改變
+      displayName: 'desktop, ui, Workbench, upgrade, update, transfer'
+      href: overview-what-happened-to-workbench.md
+    - name: 設計工具協助工具功能
+      displayName: 'accessibility, designer, visual interface, screen reader, keyboard shortcuts'
+      href: designer-accessibility.md
+    - name: 策展的環境
+      displayName: 'environments, curated environments'
+      href: resource-curated-environments.md

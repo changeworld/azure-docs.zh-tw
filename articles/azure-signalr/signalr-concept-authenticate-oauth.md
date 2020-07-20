@@ -1,17 +1,17 @@
 ---
-title: 用於驗證 Azure SignalR 服務用戶端的快速入門
-description: 在本指南中，您了解如何驗證 Azure SignalR 服務的用戶端
+title: Azure SignalR 服務用戶端驗證指引
+description: 了解如何實作自己的驗證，並使用下列 E2E 範例整合驗證與 Azure SignalR 服務。
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 7660e1405598676599cab30467d22ac979438deb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cb99a0690e1d07f058572b188ae0b76995f48504
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003693"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961790"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR 服務驗證
 
@@ -25,13 +25,13 @@ ms.locfileid: "58003693"
 
 若要深入了解透過 GitHub 所提供的 OAuth 驗證 API，請參閱[驗證的基本概念](https://developer.github.com/v3/guides/basics-of-authentication/)。
 
-您可以使用任何程式碼編輯器來完成本快速入門中的步驟。 不過，於 Windows、macOS 和 Linux 平台上所提供的 [Visual Studio Code](https://code.visualstudio.com/) \(英文\) 是項不錯的選擇。
+您可以使用任何程式碼編輯器來完成本快速入門中的步驟。 不過，於 Windows、macOS 和 Linux 平台上所提供的 [Visual Studio Code](https://code.visualstudio.com/) 是項不錯的選擇。
 
 本教學課程的程式碼可於 [AzureSignalR-samples GitHub 存放庫](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/GitHubChat)下載。
 
 ![OAuth 已在 Azure 中完成裝載](media/signalr-concept-authenticate-oauth/signalr-oauth-complete-azure.png)
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 使用您的 GitHub 帳戶註冊新的 OAuth 應用程式
@@ -67,8 +67,10 @@ ms.locfileid: "58003693"
 
 4. 新的 OAuth 應用程式註冊完成之後，請使用下列命令在祕密管理員中新增「用戶端識別碼」和「用戶端密碼」。 將 Your_GitHub_Client_Id 和 Your_GitHub_Client_Secret 取代為您的 OAuth 應用程式所具有的值。
 
-        dotnet user-secrets set GitHubClientId Your_GitHub_Client_Id
-        dotnet user-secrets set GitHubClientSecret Your_GitHub_Client_Secret
+    ```dotnetcli
+    dotnet user-secrets set GitHubClientId Your_GitHub_Client_Id
+    dotnet user-secrets set GitHubClientSecret Your_GitHub_Client_Secret
+    ```
 
 ## <a name="implement-the-oauth-flow"></a>實作 OAuth 流程
 
@@ -76,9 +78,11 @@ ms.locfileid: "58003693"
 
 1. 新增最新 Microsoft.AspNetCore.Authentication.Cookies 和 AspNet.Security.OAuth.GitHub 套件的參考，並還原所有套件。
 
-        dotnet add package Microsoft.AspNetCore.Authentication.Cookies -v 2.1.0-rc1-30656
-        dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
-        dotnet restore
+    ```dotnetcli
+    dotnet add package Microsoft.AspNetCore.Authentication.Cookies -v 2.1.0-rc1-30656
+    dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
+    dotnet restore
+    ```
 
 1. 開啟 Startup.cs，然後對下列命名空間新增 `using` 陳述式︰
 
@@ -345,19 +349,25 @@ ms.locfileid: "58003693"
 
 2. 使用 .NET Core CLI 建置應用程式，在命令殼層中執行下列命令：
 
-        dotnet build
+    ```dotnetcli
+    dotnet build
+    ```
 
 3. 建置成功完成後，請執行下列命令以於本機執行 Web 應用程式：
 
-        dotnet run
+    ```dotnetcli
+    dotnet run
+    ```
 
     根據預設，應用程式會裝載在本機的連接埠 5000 上：
 
-        E:\Testing\chattest>dotnet run
-        Hosting environment: Production
-        Content root path: E:\Testing\chattest
-        Now listening on: http://localhost:5000
-        Application started. Press Ctrl+C to shut down.
+    ```output
+    E:\Testing\chattest>dotnet run
+    Hosting environment: Production
+    Content root path: E:\Testing\chattest
+    Now listening on: http://localhost:5000
+                    Application started. Press Ctrl+C to shut down.
+    ```
 
 4. 啟動瀏覽器視窗並瀏覽至 `http://localhost:5000`。 按一下頂端的**這裡**連結以使用 GitHub 登入。
 
@@ -377,7 +387,7 @@ ms.locfileid: "58003693"
 
 ## <a name="deploy-the-app-to-azure"></a>將應用程式部署至 Azure
 
-在本節中，您將使用 Azure 命令列介面 (CLI) 從 Azure Cloud Shell 來建立新的 web 應用程式中[Azure App Service](https://docs.microsoft.com/azure/app-service/)裝載 ASP.NET 應用程式在 Azure 中的。 您會將 Web 應用程式設定為使用本機 Git 部署。 您也會使用您的 SignalR 連接字串、GitHub OAuth 應用程式祕密和部署使用者來設定 Web 應用程式。
+在本區段中，您將從 Azure Cloud Shell 使用 Azure 命令列介面 (CLI)，在 [Azure App Service](https://docs.microsoft.com/azure/app-service/) 中建立新的 Web 應用程式，以在 Azure 中裝載 ASP.NET 應用程式。 您會將 Web 應用程式設定為使用本機 Git 部署。 您也會使用您的 SignalR 連接字串、GitHub OAuth 應用程式祕密和部署使用者來設定 Web 應用程式。
 
 本節中的步驟會使用適用於 Azure CLI 的 signalr 擴充功能。 執行下列命令以安裝適用於 Azure CLI 的 signalr 擴充功能：
 
@@ -416,7 +426,7 @@ az webapp create --name $WebAppName --resource-group $ResourceGroupName \
 | -------------------- | --------------- |
 | resourceGroupName | 這是先前的教學課程中所建議的資源群組名稱。 您最好將所有教學課程的資源群組在一起。 使用您在先前的教學課程中所使用的相同資源群組。 |
 | WebAppPlan | 輸入全新且唯一的 App Service 方案名稱。 |
-| WebAppName | 這會是新 Web 應用程式的名稱，並且是 URL 的一部分。 使用唯一名稱。 例如，signalrtestwebapp22665120。   |
+| WebAppName | 這會是新 Web 應用程式的名稱，並且是 URL 的一部分。 請使用唯一的名稱。 例如，signalrtestwebapp22665120。   |
 
 ### <a name="add-app-settings-to-the-web-app"></a>在 Web 應用程式中新增應用程式設定
 
@@ -539,14 +549,14 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 您需要執行的最後一件事是將 GitHub OAuth 應用程式的**首頁 URL** 和**授權回呼 URL** 更新為指向新裝載的應用程式。
 
-1. 在瀏覽器中開啟 [https://github.com](https://github.com)，然後瀏覽至您帳戶的 [設定] > [開發人員設定] > [Oauth應用程式]。
+1. 在瀏覽器中開啟 [https://github.com](https://github.com)，然後瀏覽至您帳戶的 [設定] >  [開發人員設定] >  [Oauth應用程式]。
 
 2. 按一下您的驗證應用程式，然後更新**首頁 URL** 和**授權回呼 URL**，如下所示：
 
     | 設定 | 範例 |
     | ------- | ------- |
-    | 首頁 URL | https://signalrtestwebapp22665120.azurewebsites.net/home |
-    | 授權回呼 URL | https://signalrtestwebapp22665120.azurewebsites.net/signin-github |
+    | 首頁 URL | `https://signalrtestwebapp22665120.azurewebsites.net/home` |
+    | 授權回呼 URL | `https://signalrtestwebapp22665120.azurewebsites.net/signin-github` |
 
 3. 瀏覽至您的 Web 應用程式 URL，並測試應用程式。
 
@@ -563,7 +573,7 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 登入 [Azure 入口網站](https://portal.azure.com)，然後按一下 [資源群組]。
 
-在 [依名稱篩選...] 文字方塊中，輸入您的資源群組名稱。 本文的指示是使用名為 SignalRTestResources 的資源群組。 在結果清單中的目標資源群組上方，按一下 **...**，然後按一下 [刪除資源群組]。
+在 [依名稱篩選...] 文字方塊中，輸入您的資源群組名稱。 本文的指示是使用名為 SignalRTestResources 的資源群組。 在結果清單中的目標資源群組上方，按一下 **...** ，然後按一下 [刪除資源群組]。
 
 ![刪除](./media/signalr-concept-authenticate-oauth/signalr-delete-resource-group.png)
 

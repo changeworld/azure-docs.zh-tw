@@ -1,22 +1,18 @@
 ---
-title: 如何在 Azure 虛擬機器中啟用巢狀虛擬化 | Microsoft Docs
+title: 如何在 Azure 虛擬機器中啟用巢狀虛擬化
 description: 如何在 Azure 虛擬機器中啟用巢狀虛擬化
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
 ms.author: cynthn
 ms.date: 10/09/2017
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: virtual-machines-windows
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: acb44a34eae84d8a5718ebcc0003d3cf50b9d43a
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: f448174842ffd3b7ba14104c30319933c680127d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510048"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232316"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>如何在 Azure VM 中啟用巢狀虛擬化
 
@@ -26,7 +22,7 @@ ms.locfileid: "65510048"
 
 ## <a name="create-a-nesting-capable-azure-vm"></a>建立可使用巢狀結構的 Azure VM
 
-建立新的 Windows Server 2016 Azure VM。  为了快速参考，所有 v3 虚拟机都支持嵌套虚拟化。 如需支援巢狀結構的虛擬機器完整清單，請參閱 [Azure 計算單位](acu.md)一文。
+建立新的 Windows Server 2016 Azure VM。 如需支援巢狀結構的虛擬機器完整清單，請參閱 [Azure 計算單位](acu.md)一文。
 
 請務必選擇大小足以支援客體虛擬機器需求的 VM。 在此範例中，我們使用的是 D3_v3 大小的 Azure VM。 
 
@@ -40,19 +36,19 @@ ms.locfileid: "65510048"
 
 建立與虛擬機器的遠端桌面連線。
 
-1. 按一下虛擬機器屬性上的 [連線] 按鈕。 隨即建立並下載遠端桌面通訊協定檔案 (.rdp 檔案)。
+1. 按一下虛擬機器屬性上的 [連線]**** 按鈕。 隨即建立並下載遠端桌面通訊協定檔案 (.rdp 檔案)。
 
-2. 若要連線至您的 VM，請開啟下載的 RDP 檔案。 出現提示時，按一下 [連線]。 在 Mac 上，您需要 RDP 用戶端，例如來自 Mac App Store 的[遠端桌面用戶端](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)。
+2. 若要連線至您的 VM，請開啟下載的 RDP 檔案。 出現提示時，按一下 [連線]****。 在 Mac 上，您需要 RDP 用戶端，例如來自 Mac App Store 的[遠端桌面用戶端](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)。
 
-3. 輸入在建立虛擬機器時指定的使用者名稱和密碼，然後按一下 [確定]。
+3. 輸入在建立虛擬機器時指定的使用者名稱和密碼，然後按一下 [確定]****。
 
-4. 您可能會在登入過程中收到憑證警告。 按一下 [是] 或 [繼續] 以繼續進行連線。
+4. 您可能會在登入過程中收到憑證警告。 按一下 **[是]** 或 [**繼續**] 繼續進行連接。
 
 ## <a name="enable-the-hyper-v-feature-on-the-azure-vm"></a>在 Azure VM 上啟用 Hyper-V 功能
 您可以手動設定這些設定，或者使用我們提供的 PowerShell 指令碼，將設定自動化。
 
 ### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>選項 1：使用 PowerShell 指令碼設定巢狀虛擬化
-要在 Windows Server 2016 主機上啟用巢狀虛擬化的 PowerShell 指令碼可在 [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) \(英文\) 上取得。 此指令碼會檢查必要條件，然後在 Azure VM 上設定巢狀虛擬化。 若要完成設定，必須重新啟動 Azure VM。 此指令碼或許能夠在其他環境下運作，但並不能保證。 查看 Azure 部落格文章中有關在 Azure 上執行之巢狀虛擬化的即時影片示範！ https://aka.ms/AzureNVblog 。
+要在 Windows Server 2016 主機上啟用巢狀虛擬化的 PowerShell 指令碼可在 [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) \(英文\) 上取得。 此指令碼會檢查必要條件，然後在 Azure VM 上設定巢狀虛擬化。 若要完成設定，必須重新啟動 Azure VM。 此指令碼或許能夠在其他環境下運作，但並不能保證。 查看 Azure 部落格文章中有關在 Azure 上執行之巢狀虛擬化的即時影片示範！ https://aka.ms/AzureNVblog.
 
 ### <a name="option-2-configure-nested-virtualization-manually"></a>選項 2：手動設定巢狀虛擬化
 
@@ -98,9 +94,9 @@ ms.locfileid: "65510048"
 4. 建立 NAT 閘道的 IP 位址。
     
 若要設定閘道，您會需要一些您網路的相關資訊：    
-  * IPAddress - NAT 閘道 IP 會指定 IPv4 或 IPv6 位址，當作虛擬網路子網路的預設閘道位址使用。 一般形式是 a.b.c.1 (例如，"192.168.0.1")。 雖然最後一個位置不一定要是 .1，但通常是如此 (根據首碼長度)。 通常您應該使用 RFC 1918 私人網路位址空間。 
+  * IPAddress - NAT 閘道 IP 會指定 IPv4 或 IPv6 位址，當作虛擬網路子網路的預設閘道位址使用。 一般形式是 a.b.c.1 (例如，"192.168.0.1")。 雖然最後的位置不一定是 .1，但通常是根據前置長度)  (。 通常您應該使用 RFC 1918 私人網路位址空間。 
   * PrefixLength - 子網路首碼長度會定義本機子網路大小 (子網路遮罩)。 子網路首碼長度將是一個介於 0 到 32 之間的整數值。 0 會對應整個網際網路，32 則只允許一個對應的 IP。 常見的值範圍從 24 到 12，視必須附加至 NAT 的 IP 數量而定。 常見的 PrefixLength 是 24，表示子網路遮罩為 255.255.255.0。
-  * InterfaceIndex - **ifIndex** 是上一個步驟中建立之虛擬交換器的介面索引。 
+  * InterfaceIndex：**ifIndex** 是上一個步驟中建立之虛擬交換器的介面索引。 
 
     ```powershell
     New-NetIPAddress -IPAddress 192.168.0.1 -PrefixLength 24 -InterfaceIndex 13
@@ -120,6 +116,10 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 
 ## <a name="create-the-guest-virtual-machine"></a>建立客體虛擬機器
 
+>[!IMPORTANT] 
+>
+>在嵌套 Vm 上不支援 Azure 來賓代理程式，而且可能會導致主機和嵌套 Vm 發生問題。 請勿在嵌套 Vm 上安裝 Azure 代理程式，也不要使用映射來建立已安裝 Azure 來賓代理程式的已執行的嵌套 Vm。
+
 1. 開啟 Hyper-V 管理員，然後建立新的虛擬機器。 將虛擬機器設定為使用您建立的新內部網路。
     
     ![NetworkConfig](./media/virtual-machines-nested-virtualization/configure-networking.png)
@@ -137,29 +137,29 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 ###  <a name="option-1-configure-dhcp-to-dynamically-assign-an-ip-address-to-the-guest-virtual-machine"></a>選項 1：設定 DHCP，將 IP 位址以動態方式指派給客體虛擬機器
 請按照下列步驟，在主機虛擬機器上設定 DHCP，以便進行動態位址指派。
 
-#### <a name="install-dchp-server-on-the-azure-vm"></a>在 Azure VM 上安裝 DHCP 伺服器
+#### <a name="install-dhcp-server-on-the-azure-vm"></a>在 Azure VM 上安裝 DHCP 伺服器
 
-1. 開啟 [伺服器管理員]。 在 [儀表板] 上，按一下 [新增角色及功能]。 [新增角色及功能精靈] 隨即出現。
+1. 開啟 [伺服器管理員]。 在 [儀表板] 上，按一下 [新增角色及功能]****。 [新增角色及功能精靈] 隨即顯示。
   
-2. 在精靈中，按一下 [下一步]，直到到達 [伺服器角色] 頁面為止。
+2. 在精靈中，按一下 [下一步]****，直到到達 [伺服器角色] 頁面為止。
   
-3. 按一下以選取 [DHCP 伺服器] 核取方塊、按一下 [新增功能]，然後按一下 [下一步]，直到完成精靈為止。
+3. 按一下以選取 [DHCP 伺服器]**** 核取方塊、按一下 [新增功能]****，然後按一下 [下一步]****，直到完成精靈為止。
   
-4. 按一下 [Install] 。
+4. 按一下 [安裝]。
 
 #### <a name="configure-a-new-dhcp-scope"></a>設定新的 DHCP 範圍
 
 1. 開啟 DHCP 管理員。
   
-2. 在瀏覽窗格中，展開伺服器名稱，以滑鼠右鍵按一下 [IPv4]，然後按一下 [新增範圍]。 當 [新增範圍精靈] 出現時，按 [下一步]。
+2. 在瀏覽窗格中，展開伺服器名稱，以滑鼠右鍵按一下 [IPv4]****，然後按一下 [新增範圍]****。 當 [新增範圍精靈] 出現時，按 [下一步]****。
   
-3. 輸入範圍的 [名稱] 和 [說明]，然後按 [下一步]。
+3. 輸入範圍的 [名稱] 和 [說明]，然後按 [下一步]****。
   
-4. 定義 DHCP 伺服器的 IP 範圍 (例如，192.168.0.100 至 192.168.0.200)。
+4. 定義 DHCP 伺服器的 IP 範圍 (例如，192.168.0.100 至 192.168.0.200) 。
   
-5. 按 [下一步]，直到到達 [預設閘道] 頁面為止。 輸入您稍早建立的 IP 位址 (例如 192.168.0.1) 作為預設閘道，然後按一下 [新增]。
+5. 按 [下一步]****，直到到達 [預設閘道] 頁面為止。 輸入您稍早建立的 IP 位址 (例如 192.168.0.1) 作為預設閘道，然後按一下 [新增]****。
   
-6. 按 [下一步]，直到精靈完成為止，並保留所有預設值，然後按一下 [完成]。
+6. 按 [下一步]****，直到精靈完成為止，並保留所有預設值，然後按一下 [完成]****。
     
 ### <a name="option-2-manually-set-a-static-ip-address-on-the-guest-virtual-machine"></a>選項 2：在客體虛擬機器上手動設定靜態 IP 位址
 如果您未設定 DHCP 以動態方式指派 IP 位址給客體虛擬機器，請按照這些步驟來設定靜態 IP 位址。
@@ -168,7 +168,7 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 
 2. 以滑鼠右鍵按一下客體虛擬機器，然後按一下 [連線]。
 
-3. 登入客體虛擬機器。
+3. 登入來賓虛擬機器。
 
 4. 在客體虛擬機器上，開啟 [網路和共用中心]。
 
@@ -181,6 +181,4 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 在客體虛擬機器中，開啟瀏覽器，然後瀏覽至網頁。
     ![GuestVM](./media/virtual-machines-nested-virtualization/guest-virtual-machine.png)
 
-## <a name="set-up-intranet-connectivity-for-the-guest-virtual-machine"></a>設定客體虛擬機器的內部網路連線
-
-如需如何啟用客體 VM 與 Azure VM 之間透明連線的指示，請參閱[此文件](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization-azure-virtual-network)。
+如需如何啟用客體 VM 與 Azure VM 之間透明連線的指示，請參閱[此文件](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)。

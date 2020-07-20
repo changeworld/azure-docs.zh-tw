@@ -8,7 +8,11 @@
 - name: 快速入門
   expanded: true
   items:
-    - name: 偵測資料中的異常情況
+    - name: 用戶端程式庫
+      items:
+        - name: Anomaly Detector 用戶端程式庫
+          href: ./quickstarts/client-libraries.md
+    - name: REST API
       items:
         - name: '使用 C#'
           href: quickstarts/detect-data-anomalies-csharp.md
@@ -16,7 +20,13 @@
           href: quickstarts/detect-data-anomalies-java.md
         - name: 使用 Python
           href: quickstarts/detect-data-anomalies-python.md
-- name: 使用說明指南
+- name: 教學課程
+  items:
+    - name: 使用 Power BI 將異常情況以批次方式加以視覺化
+      href: tutorials/batch-anomaly-detection-powerbi.md
+    - name: 使用 Azure Databricks 對串流資料進行異常情況偵測
+      href: tutorials/anomaly-detection-streaming-databricks.md
+- name: 操作指南
   items:
     - name: 識別資料中的異常情況
       href: how-to/identify-anomalies.md
@@ -28,6 +38,8 @@
         - name: 設定容器
           href: anomaly-detector-container-configuration.md
           displayName: 'docker, container, apikey, billing, log, mount, run, pull, port'
+        - name: 使用容器執行個體
+          href: how-to/deploy-anomaly-detection-on-container-instances.md
 - name: 概念
   items:
     - name: 異常偵測 API 最佳做法
@@ -46,13 +58,41 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2090370'
         - name: Node.js
           href: 'https://go.microsoft.com/fwlink/?linkid=2090788'
+    - name: 技術部落格
+      items:
+        - name: 介紹 Azure Anomaly Detector API
+          href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Introducing-Azure-Anomaly-Detector-API/ba-p/490162'
+        - name: SR-CNN 演算法概觀
+          href: 'https://techcommunity.microsoft.com/t5/AI-Customer-Engineering-Team/Overview-of-SR-CNN-algorithm-in-Azure-Anomaly-Detector/ba-p/982798'
+    - name: 示範
+      items:
+        - name: 互動式示範
+          href: 'https://aka.ms/adDemo'
+        - name: 在 Jupyter Notebook 上
+          href: 'https://aka.ms/adNotebook'
+    - name: KDD 2019 中的 SR-CNN 文件
+      href: 'https://arxiv.org/abs/1906.03821'
 - name: 資源
   items:
-    - name: 價格
-      href: 'https://aka.ms/anomaly-detector-pricing'
+    - name: 支援
+      items:
+        - name: 取得支援
+          href: 'https://aka.ms/adsupport'
+        - name: Stack Overflow
+          href: 'https://aka.ms/adso'
+        - name: MSDN
+          href: 'https://aka.ms/admsdn'
+        - name: User Voice
+          href: 'https://aka.ms/aduservoice'
+    - name: 定價
+      href: 'https://aka.ms/adpricing'
     - name: 區域可用性
-      href: 'https://aka.ms/anomaly-detector-region'
+      href: 'https://aka.ms/adregion'
+    - name: 使用者產生的內容
+      href: user-generated-content.md
+    - name: 加入 Microsoft Teams 中 Anomaly Detector Advisor 群組
+      href: 'https://aka.ms/adadvisorsjoin'
     - name: 參考解決方案架構
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
-    - name: 堆疊溢位
-      href: 'https://stackoverflow.com/questions/tagged/azure-anomaly-detection'
+    - name: 法規遵循
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

@@ -1,18 +1,16 @@
 ---
-title: 在 Azure Kubernetes Service (AKS) 中建立基本輸入控制器
+title: 建立輸入控制器
+titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes Service (AKS) 叢集中安裝及設定基本 NGINX 輸入控制器。
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: article
-ms.date: 03/27/2019
-ms.author: iainfou
-ms.openlocfilehash: fd9695698f90a1efebb71a2b24a196dd8c911081
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 04/27/2020
+ms.openlocfilehash: 6bb136b216b3d86a5aa3a7e7e609cb16b7d95db4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65073894"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251785"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中建立輸入控制器
 
@@ -29,23 +27,35 @@ ms.locfileid: "65073894"
 
 ## <a name="before-you-begin"></a>開始之前
 
-本文使用 Helm 來安裝 NGINX 輸入控制器、cert-manager 及範例 Web 應用程式。 您需要在 AKS 叢集內將 Helm 初始化，並使用適用於 Tiller 的服務帳戶。 如需設定及使用 Helm 的詳細資訊，請參閱[在 Azure Kubernetes Service (AKS) 中使用 Helm 安裝應用程式][use-helm]。
+本文使用[Helm 3][helm]來安裝 NGINX 輸入控制器。
 
-本文也會要求您執行 Azure CLI 版本 2.0.61 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
+本文也會要求您執行 Azure CLI 版本2.0.64 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
 
 ## <a name="create-an-ingress-controller"></a>建立輸入控制器
 
-若要建立輸入控制器，請使用 `Helm` 以安裝 *nginx-ingress*。 為了新增備援，您必須使用 `--set controller.replicaCount` 參數部署兩個 NGINX 輸入控制器複本。 為充分享有執行輸入控制器複本的好處，請確定 AKS 叢集中有多個節點。
+若要建立輸入控制器，請使用 Helm 來安裝*nginx*輸入。 為了新增備援，您必須使用 `--set controller.replicaCount` 參數部署兩個 NGINX 輸入控制器複本。 為充分享有執行輸入控制器複本的好處，請確定 AKS 叢集中有多個節點。
+
+輸入控制器也需要在 Linux 節點上排程。 Windows Server 節點不應執行輸入控制器。 您可以使用 `--set nodeSelector` 參數來指定節點選取器，以告知 Kubernetes 排程器在 Linux 式節點上執行 NGINX 輸入控制器。
 
 > [!TIP]
-> 下列範例會建立名為輸入資源的 Kubernetes 命名空間*輸入 basic*。 視需要請指定您自己的環境的命名空間。 如果您的 AKS 叢集不啟用 RBAC，請新增`--set rbac.create=false`Helm 命令。
+> 下列範例會建立名為「輸入 *-基本*」的輸入資源的 Kubernetes 命名空間。 視需要指定您自己環境的命名空間。
+
+> [!TIP]
+> 如果您想要為叢集中的容器要求啟用[用戶端來源 IP 保留][client-source-ip]，請將新增 `--set controller.service.externalTrafficPolicy=Local` 至 Helm install 命令。 用戶端來源 IP 會儲存在要求標頭的 [ *X-轉送-*] 下。 當使用已啟用用戶端來源 IP 保留的輸入控制器時，SSL 傳遞將無法運作。
 
 ```console
 # Create a namespace for your ingress resources
 kubectl create namespace ingress-basic
 
+# Add the official stable repository
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+
 # Use Helm to deploy an NGINX ingress controller
-helm install stable/nginx-ingress --namespace ingress-basic --set controller.replicaCount=2
+helm install nginx-ingress stable/nginx-ingress \
+    --namespace ingress-basic \
+    --set controller.replicaCount=2 \
+    --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
+    --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
 為 NGINX 輸入控制器建立 Kubernetes 負載平衡器服務時，系統會指派動態公用 IP 位址，如下列範例輸出所示：
@@ -53,43 +63,105 @@ helm install stable/nginx-ingress --namespace ingress-basic --set controller.rep
 ```
 $ kubectl get service -l app=nginx-ingress --namespace ingress-basic
 
-NAME                                                 TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)                      AGE
-aspiring-labradoodle-nginx-ingress-controller        LoadBalancer   10.0.61.144    40.117.74.8   80:30386/TCP,443:32276/TCP   6m2s
-aspiring-labradoodle-nginx-ingress-default-backend   ClusterIP      10.0.192.145   <none>        80/TCP                       6m2s
+NAME                             TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)                      AGE
+nginx-ingress-controller         LoadBalancer   10.0.61.144    EXTERNAL_IP   80:30386/TCP,443:32276/TCP   6m2s
+nginx-ingress-default-backend    ClusterIP      10.0.192.145   <none>        80/TCP                       6m2s
 ```
 
 尚未建立任何輸入規則，因此，如果您瀏覽至內部 IP 位址，將會顯示 NGINX 輸入控制器的預設 404 頁面。 輸入規則會於下列步驟中進行設定。
 
 ## <a name="run-demo-applications"></a>執行示範應用程式
 
-為了檢視運作中的輸入控制器，我們將在 AKS 叢集中執行兩個示範應用程式。 在此範例中，會使用 Helm 來部署簡單 'Hello world' 應用程式的兩個執行個體。
+若要查看作用中的輸入控制器，請在您的 AKS 叢集中執行兩個示範應用程式。 在此範例中，您會使用 `kubectl apply` 來部署簡單*Hello world*應用程式的兩個實例。
 
-在您可以安裝範例 Helm 圖表之前，先將 Azure 範例存放庫新增至您的 Helm 環境，如下所示：
+建立*aks-helloworld-one yaml*檔案，並複製下列範例 yaml：
 
-```console
-helm repo add azure-samples https://azure-samples.github.io/helm-charts/
+```yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-helloworld-one  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aks-helloworld-one
+  template:
+    metadata:
+      labels:
+        app: aks-helloworld-one
+    spec:
+      containers:
+      - name: aks-helloworld-one
+        image: neilpeterson/aks-helloworld:v1
+        ports:
+        - containerPort: 80
+        env:
+        - name: TITLE
+          value: "Welcome to Azure Kubernetes Service (AKS)"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aks-helloworld-one  
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: aks-helloworld-one
 ```
 
-使用下列命令，從 Helm 圖表建立第一個示範應用程式：
+建立*aks-helloworld-兩個 yaml*檔案，並複製下列範例 yaml：
 
-```console
-helm install azure-samples/aks-helloworld --namespace ingress-basic
+```yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-helloworld-two  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aks-helloworld-two
+  template:
+    metadata:
+      labels:
+        app: aks-helloworld-two
+    spec:
+      containers:
+      - name: aks-helloworld-two
+        image: neilpeterson/aks-helloworld:v1
+        ports:
+        - containerPort: 80
+        env:
+        - name: TITLE
+          value: "AKS Ingress Demo"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aks-helloworld-two  
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: aks-helloworld-two
 ```
 
-現在，請安裝示範應用程式的第二個執行個體。 對第二個執行個體指定新的標題，以便在視覺上區分這兩個應用程式。 您也要指定唯一的服務名稱：
+使用執行兩個示範應用程式 `kubectl apply` ：
 
 ```console
-helm install azure-samples/aks-helloworld \
-    --namespace ingress-basic \
-    --set title="AKS Ingress Demo" \
-    --set serviceName="ingress-demo"
+kubectl apply -f aks-helloworld-one.yaml --namespace ingress-basic
+kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 ```
 
 ## <a name="create-an-ingress-route"></a>建立輸入路由
 
 這兩個應用程式現在都已在您的 Kubernetes 叢集上執行。 若要將流量路由至每個應用程式，請建立 Kubernetes 輸入資源。 輸入資源會設定將流量路由至這兩個應用程式之一的規則。
 
-在下列範例中，傳至位址 `http://40.117.74.8/` 的流量會路由傳送至名為 `aks-helloworld` 的服務。 傳至位址 `http://40.117.74.8/hello-world-two` 的流量會路由至 `ingress-demo` 服務。
+在下列範例中， *EXTERNAL_IP*的流量會路由傳送至名為的服務 `aks-helloworld-one` 。 *EXTERNAL_IP/hello-world-two*的流量會路由傳送至 `aks-helloworld-two` 服務。 *EXTERNAL_IP/靜態*的流量會路由傳送至名 `aks-helloworld-one` 為的靜態資產服務。
 
 建立名為 `hello-world-ingress.yaml` 的檔案，並複製到下列範例 YAML 中。
 
@@ -97,24 +169,41 @@ helm install azure-samples/aks-helloworld \
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: hello-world-ingress
-  namespace: ingress-basic
+  name: hello-world-ingress  
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:
   - http:
       paths:
-      - path: /
-        backend:
-          serviceName: aks-helloworld
+      - backend:
+          serviceName: aks-helloworld-one
           servicePort: 80
-      - path: /hello-world-two
-        backend:
-          serviceName: ingress-demo
+        path: /(.*)
+      - backend:
+          serviceName: aks-helloworld-two
           servicePort: 80
+        path: /hello-world-two(/|$)(.*)
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hello-world-ingress-static
+  namespace: ingress-basic
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: /static/$2
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          serviceName: aks-helloworld-one
+          servicePort: 80
+        path: /static(/|$)(.*)
 ```
 
 使用 `kubectl apply -f hello-world-ingress.yaml` 命令建立輸入資源。
@@ -123,15 +212,16 @@ spec:
 $ kubectl apply -f hello-world-ingress.yaml
 
 ingress.extensions/hello-world-ingress created
+ingress.extensions/hello-world-ingress-static created
 ```
 
 ## <a name="test-the-ingress-controller"></a>測試輸入控制器
 
-若要測試輸入控制器的路由，請瀏覽至這兩個應用程式。 開啟網頁瀏覽器並前往您 NGINX 輸入控制器的 IP 位址，例如 *http://40.117.74.8*。 第一個示範應用程式會顯示在網頁瀏覽器中，如下列範例所示：
+若要測試輸入控制器的路由，請瀏覽至這兩個應用程式。 將網頁瀏覽器開啟至 NGINX 輸入控制器的 IP 位址，例如*EXTERNAL_IP*。 第一個示範應用程式會顯示在網頁瀏覽器中，如下列範例所示：
 
 ![執行於輸入控制器後方的第一個應用程式](media/ingress-basic/app-one.png)
 
-現在，將 */hello-world-two* 路徑新增至 IP 位址，例如 *http://40.117.74.8/hello-world-two*。 此時會顯示具有自訂標題的第二個示範應用程式：
+現在，將 */hello-world-two*路徑新增至 IP 位址，例如*EXTERNAL_IP/hello-world-two*。 此時會顯示具有自訂標題的第二個示範應用程式：
 
 ![執行於輸入控制器後方的第二個應用程式](media/ingress-basic/app-two.png)
 
@@ -141,45 +231,36 @@ ingress.extensions/hello-world-ingress created
 
 ### <a name="delete-the-sample-namespace-and-all-resources"></a>刪除範例命名空間和所有資源
 
-若要刪除整個範例命名空間，請使用`kubectl delete`命令並指定您的命名空間名稱。 會刪除命名空間中的所有資源。
+若要刪除整個範例命名空間，請使用 `kubectl delete` 命令並指定您的命名空間名稱。 命名空間中的所有資源都會被刪除。
 
 ```console
 kubectl delete namespace ingress-basic
 ```
 
-然後，移除 AKS hello world 應用程式的 Helm 存放庫：
+### <a name="delete-resources-individually"></a>個別刪除資源
+
+或者，更細微的方法是刪除所建立的個別資源。 使用命令來列出 Helm 版本 `helm list` 。 尋找名為nginx-ingress** 和 aks-helloworld** 的圖表，如下列範例輸出所示：
+
+```
+$ helm list --namespace ingress-basic
+
+NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
+nginx-ingress           ingress-basic   1               2020-01-06 19:55:46.358275 -0600 CST    deployed        nginx-ingress-1.27.1    0.26.1  
+```
+
+使用命令卸載發行 `helm uninstall` 。 下列範例會卸載 NGINX 輸入部署。
+
+```
+$ helm uninstall nginx-ingress --namespace ingress-basic
+
+release "nginx-ingress" uninstalled
+```
+
+接下來，移除兩個範例應用程式：
 
 ```console
-helm repo remove azure-samples
-```
-
-### <a name="delete-resources-individually"></a>個別地刪除資源
-
-或者，更細微的方法是刪除建立的個別資源。 Helm 的發行的清單`helm list`命令。 尋找名為nginx-ingress 和 aks-helloworld 的圖表，如下列範例輸出所示：
-
-```
-$ helm list
-
-NAME                    REVISION    UPDATED                     STATUS      CHART                   APP VERSION NAMESPACE
-aspiring-labradoodle    1           Wed Mar 27 19:55:37 2019    DEPLOYED    nginx-ingress-1.3.1     0.22.0      ingress-basic
-esteemed-koala          1           Wed Mar 27 19:59:18 2019    DEPLOYED    aks-helloworld-0.1.0                ingress-basic
-wonderful-puma          1           Wed Mar 27 19:59:07 2019    DEPLOYED    aks-helloworld-0.1.0                ingress-basic
-```
-
-使用 `helm delete` 命令刪除版本。 下列範例會刪除 NGINX 輸入部署和兩個範例 AKS hello world 應用程式。
-
-```
-$ helm delete aspiring-labradoodle esteemed-koala wonderful-puma
-
-release "aspiring-labradoodle" deleted
-release "esteemed-koala" deleted
-release "wonderful-puma" deleted
-```
-
-接下來，移除 AKS hello world 應用程式的 Helm 存放庫：
-
-```console
-helm repo remove azure-samples
+kubectl delete -f aks-helloworld-one.yaml --namespace ingress-basic
+kubectl delete -f aks-helloworld-two.yaml --namespace ingress-basic
 ```
 
 移除將流量導向範例應用程式的輸入路由：
@@ -188,7 +269,7 @@ helm repo remove azure-samples
 kubectl delete -f hello-world-ingress.yaml
 ```
 
-最後，您可以將自己刪除命名空間。 使用`kubectl delete`命令並指定您的命名空間名稱：
+最後，您可以刪除本身的命名空間。 使用 `kubectl delete` 命令，並指定您的命名空間名稱：
 
 ```console
 kubectl delete namespace ingress-basic
@@ -209,7 +290,8 @@ kubectl delete namespace ingress-basic
 - 建立輸入控制器，其使用 Let's Encrypt 自動產生[具有動態公用 IP][aks-ingress-tls] 或[具有靜態公用 IP 位址][aks-ingress-static-tls]的 TLS 憑證
 
 <!-- LINKS - external -->
-[helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm
+[helm]: https://helm.sh/
+[helm-cli]: ./kubernetes-helm.md
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx
 
 <!-- LINKS - internal -->
@@ -220,3 +302,4 @@ kubectl delete namespace ingress-basic
 [aks-ingress-static-tls]: ingress-static-ip.md
 [aks-http-app-routing]: http-application-routing.md
 [aks-ingress-own-tls]: ingress-own-tls.md
+[client-source-ip]: concepts-network.md#ingress-controllers

@@ -1,48 +1,55 @@
 ---
 title: 在 Azure Cosmos 容器和資料庫上佈建輸送量
 description: 了解如何設定 Azure Cosmos 容器和資料庫的佈建輸送量。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/31/2019
-ms.author: rimman
-ms.openlocfilehash: ed3a171e60c078975de7003cdf599f0bac62c402
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 05/19/2020
+ms.openlocfilehash: 050da712df6dad872fc03bd6ca79bbdf2a3e1753
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61330289"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563201"
 ---
-# <a name="provision-throughput-on-containers-and-databases"></a>在容器和資料庫中佈建輸送量
+# <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>簡介 Azure Cosmos DB 中的佈建輸送量
+
+Azure Cosmos DB 可讓您在資料庫和容器上設定佈建輸送量。 佈建輸送量有兩種類型：標準 (手動) 或自動調整。 本文概述佈建輸送量如何運作。 
 
 Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無從驗證結構描述的容器所組成的。 Azure Cosmos 容器是適用於輸送量和儲存體的延展性單位。 容器會跨 Azure 區域內的一組機器進行水平分割，並散發到與您 Azure Cosmos 帳戶相關聯的所有 Azure 區域。
 
-使用 Azure Cosmos DB 时，可以在两个粒度级别预配吞吐量：
+使用 Azure Cosmos DB，您可以佈建兩個資料粒度的輸送量：
  
 - Azure Cosmos 容器
 - Azure Cosmos 資料庫
 
 ## <a name="set-throughput-on-a-container"></a>在容器上設定輸送量  
 
-在 Azure Cosmos 容器上预配的吞吐量专门保留给该容器使用。 該容器隨時都可接收佈建輸送量。 容器上的佈建輸送量在財務方面會由 SLA 所支援。 若要了解如何在容器上配置吞吐量，请参阅[在 Azure Cosmos 容器上预配吞吐量](how-to-provision-container-throughput.md)。
+在 Azure Cosmos 容器上佈建的輸送量是專為該容器保留的。 該容器隨時都可接收佈建輸送量。 容器上的佈建輸送量在財務方面會由 SLA 所支援。 若要了解如何在容器上設定標準 (手動) 輸送量，請參閱[在 Azure Cosmos 容器上佈建輸送量](how-to-provision-container-throughput.md)。 若要了解如何在容器上設定自動調整輸送量，請參閱[佈建自動調整輸送量](how-to-provision-autoscale-throughput.md)。
 
-在容器上设置预配吞吐量是最频繁使用的选项。 可以通过使用[请求单位 (RU)](request-units.md) 预配任意数量的吞吐量来弹性缩放容器的吞吐量。 
+在容器上設定佈建的輸送量是最常使用的選項。 您可以透過使用[要求單位 (RU)](request-units.md) 佈建任何數量的輸送量，來彈性擴充容器的輸送量。 
 
-Azure Cosmos 容器上佈建的輸送量會統一散發到容器的所有邏輯分割區。 无法选择性地指定逻辑分区的吞吐量。 因為實體分割區會裝載容器的一或多個邏輯分割區；因此，實體分割區專屬於該容器並支援該容器上佈建的輸送量。 
+針對容器佈建的輸送量會平均分散於其實體分割區之間，並假設有一個良好的分割區索引鍵，可在實體分割區之間平均分散邏輯分割區，則輸送量也會平均分散於容器的所有邏輯分割區之間。 您無法選擇性地指定邏輯分割區的輸送量。 因為實體分割區會裝載容器的一或多個邏輯分割區；因此，實體分割區專屬於該容器並支援該容器上佈建的輸送量。 
 
-如果逻辑分区上运行的工作负荷消耗的吞吐量超过了分配给该逻辑分区的吞吐量，操作将受到速率限制。 出现速率限制时，可以增大整个容器的预配吞吐量，或重试操作。 如需有關分割的詳細資訊，請參閱[邏輯分割區](partition-data.md)。
+如果邏輯分割區上執行的工作負載所耗用的輸送量超過配置給基礎實體分割區的輸送量，您的作業可能會受到速率限制。 當一個邏輯分割區具有比其他分割區索引鍵值更多的要求時，就會發生「_熱分割_」。
+
+發生速率限制時，您可以提高整個容器的佈建輸送量或重試此作業。 您也應該確定您選擇的分割區索引鍵，會平均分散儲存體和要求數量。 如需資料分割的詳細資訊，請參閱[Azure Cosmos DB 中的資料分割和水準調整](partition-data.md)。
 
 當您想要保證容器的效能時，我們建議您在容器資料粒度上設定輸送量。
 
 下圖示範實體分割區如何裝載容器的一或多個邏輯分割區：
 
-![實體分割區](./media/set-throughput/resource-partition.png)
+:::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="實體分割區" border="false":::
 
 ## <a name="set-throughput-on-a-database"></a>在資料庫上設定輸送量
 
-當您在 Azure Cosmos 資料庫上佈建輸送量時，輸送量會在資料庫中的所有容器上共用。 一种例外是在数据库中的特定容器上指定了预配的吞吐量。 在容器之间共享数据库级预配吞吐量相当于在计算机群集上托管数据库。 因為資料庫共用內的所有容器都會共用機器上可用的資源，因此，您自然不會取得任何特定容器上的可預測效能。 若要了解如何在数据库上配置预配吞吐量，请参阅[在 Azure Cosmos 数据库上配置预配吞吐量](how-to-provision-database-throughput.md)。
+> [!NOTE]
+> 在啟用[客戶管理的金鑰](how-to-setup-cmk.md)的帳戶中，目前無法在 Azure Cosmos 資料庫上布建輸送量。
 
-在 Azure Cosmos 数据库上设置吞吐量可保证随时能够获得该数据库的预配吞吐量。 因為資料庫共用內的所有容器都會共用佈建輸送量，因此，Azure Cosmos DB 不會針對該資料庫中的特定容器提供任何可預測的輸送量保證。 特定容器可接收的輸送量部分取決於：
+當您在 Azure Cosmos 資料庫上佈建輸送量時，輸送量會在資料庫中的所有容器 (稱為標準資料庫容器) 上共用。 例外狀況是您在資料庫中特定的容器上指定了佈建輸送量。 在其容器之間共用資料庫層級佈建輸送量，相當於在機器叢集上裝載資料庫。 因為資料庫共用內的所有容器都會共用機器上可用的資源，因此，您自然不會取得任何特定容器上的可預測效能。 若要了解如何在資料庫上設定佈建輸送量，請參閱[在 Azure Cosmos 資料庫上設定佈建輸送量](how-to-provision-database-throughput.md)。 若要了解如何在資料上設定自動調整輸送量，請參閱[佈建自動調整輸送量](how-to-provision-autoscale-throughput.md)。
+
+在 Azure Cosmos 資料庫上設定輸送量，保證您隨時都能接收到該資料庫的佈建輸送量。 因為資料庫共用內的所有容器都會共用佈建輸送量，因此，Azure Cosmos DB 不會針對該資料庫中的特定容器提供任何可預測的輸送量保證。 特定容器可接收的輸送量部分取決於：
 
 * 容器數目。
 * 對於各種容器所選擇的分割區索引鍵。
@@ -56,56 +63,70 @@ Azure Cosmos 容器上佈建的輸送量會統一散發到容器的所有邏輯�
 
 * 當您將從 VM 叢集或從內部部署實體伺服器裝載的 NoSQL 資料庫 (例如 MongoDB 或 Cassandra) 移轉到 Azure Cosmos DB 時，在一組容器之間共用資料庫的佈建輸送量就很實用。 將 Azure Cosmos 資料庫上設定的佈建輸送量想像為 MongoDB 或 Cassandra 叢集計算容量之佈建輸送量的邏輯對等項目 (但更符合成本效益且更具彈性)。  
 
-必须使用[分区键](partition-data.md)创建在具有预配吞吐量的数据库内创建的所有容器。 在任何指定的時間點，配置給資料庫內容器的輸送量都會散發到該容器的所有邏輯分割區。 如果有容器共享在数据库上配置的预配吞吐量，则无法选择性地将吞吐量应用到特定的容器或逻辑分区。 
+以所佈建輸送量在資料庫內建立的所有容器，在建立時都必須具有[分割區索引鍵](partition-data.md)。 在任何指定的時間點，配置給資料庫內容器的輸送量都會散發到該容器的所有邏輯分割區。 當您有容器共用資料庫上設定的佈建輸送量時，就無法選擇性地將輸送量套用到特定容器或邏輯分割區。 
 
-如果邏輯分割區上的工作負載所取用的輸送量超過配置給特定邏輯分割區的輸送量時，您的作業將會受到速率限制。 出现速率限制时，可以增大整个数据库的吞吐量，或重试操作。 如需有關分割的詳細資訊，請參閱[邏輯分割區](partition-data.md)。
+如果邏輯分割區上的工作負載所取用的輸送量超過配置給特定邏輯分割區的輸送量時，您的作業將會受到速率限制。 發生速率限制時，您可以提高整個資料庫的輸送量或重試此作業。 如需有關分割的詳細資訊，請參閱[邏輯分割區](partition-data.md)。
 
-可在单个物理分区中托管多个属于不同容器的逻辑分区，这些容器共享预配给数据库的吞吐量。 尽管容器的单个逻辑分区始终划归到物理分区，但可以在“R”物理分区中映射和托管“C”容器中共享数据库预配吞吐量的“L”逻辑分区。 
+共用輸送量資料庫中的容器會共用配置給該資料庫的輸送量 (RU/秒)。 在資料庫中，您最多可以有四個最小輸送量為 400 RU/秒的容器。 使用標準 (手動) 佈建輸送量時，前四個容器之後的每個新容器最少都需要額外的 100 RU/秒。 例如，如果您有包含八個容器的共用輸送量資料庫，資料庫中的最低值 (RU/秒) 將是 800 RU/秒。 透過自動調整布建的輸送量，您可以在資料庫中擁有最多25個容器，並自動調整最大值 4000 RU/秒（在 400-4000 RU/秒之間延展）。
 
-下圖顯示實體分割區如何裝載一或多個屬於資料庫內不同容器的邏輯分割區：
+> [!NOTE]
+> 我們在 2020 年 2 月引進了一項變更，可讓您在共用的輸送量資料庫中最多擁有 25 個容器，讓輸送量更能在容器之間共用。 在前 25 個容器之後，您就可以新增更多容器至資料庫，唯一前提是其是[使用專用輸送量佈建的](#set-throughput-on-a-database-and-a-container)，這與資料庫的共用輸送量不同。<br>
+如果您的 Azure Cosmos DB 帳戶已經包含具有 >= 25 個容器的共用輸送量資料庫，則該帳戶與相同 Azure 訂用帳戶中的其他所有帳戶都無法豁免於這項變更。 如果您有任何意見反應或問題，請[連絡產品支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。 
 
-![實體分割區](./media/set-throughput/resource-partition2.png)
+如果您的工作負載涉及刪除和重新建立資料庫中的所有集合，建議您先捨棄空的資料庫並重新建立新的資料庫，然後再建立集合。 下圖顯示實體分割區如何裝載一或多個屬於資料庫內不同容器的邏輯分割區：
+
+:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="實體分割區" border="false":::
 
 ## <a name="set-throughput-on-a-database-and-a-container"></a>在資料庫和容器上設定輸送量
 
-您可以結合這兩個模型， 就能同時在資料庫和容器上佈建輸送量。 下列範例說明如何在 Azure Cosmos 資料庫和容器上佈建輸送量：
+您可以結合這兩個模型， 就能同時在資料庫和容器上佈建輸送量。 下列範例說明如何在 Azure Cosmos 資料庫和容器上佈建標準(手動) 佈建輸送量：
 
-* 可以创建预配吞吐量为“K”RU 的名为“Z”的 Azure Cosmos 数据库。 
-* 接下来，在该数据库中创建名为 A、B、C、D、E 的五个容器。
-* 可在名为 B 的容器上显式配置“P”RU 的预配吞吐量。
-* “K”RU 吞吐量在 A、C、D、E 这四个容器之间共享。提供给 A、C、D 或 E 的确切吞吐量各不相同。 而且沒有適用於每個個別容器輸送量的 SLA。
-* 保证名为 B 的容器始终可以获得“P”RU 吞吐量。 並受到 SLA 支援。
+* 您可以使用 *"K"* 個 RU 的標準 (手動) 佈建輸送量來建立名為 *Z* 的 Azure Cosmos 資料庫。 
+* 接下來，在資料庫中建立五個容器，名稱分別為 *A*、*B*、*C*、*D* 和 *E*。 建立容器 B 時，請務必啟用 [為此容器佈建專用輸送量] 選項，並在此容器上明確設定 *"P"* 個 RU 的佈建輸送量。 請注意，只有在建立資料庫和容器時，才能設定共用和專用輸送量。 
 
-## <a name="update-throughput-on-a-database-or-a-container"></a>在数据库或容器上更新吞吐量
+   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="設定容器層級的輸送量":::
 
-创建 Azure Cosmos 容器或数据库后，可以更新预配的吞吐量。 对于可以在数据库或容器上配置的最大预配吞吐量，没有任何限制。 最小预配吞吐量取决于以下因素： 
+* *"K"* RU 輸送量會在四個容器 *A*、*C*、*D* 和 *E*之間共用。*A*、*C*、*D* 或 *E* 可用的確切輸送量數量會有所不同。 沒有適用於每個個別容器輸送量的 SLA。
+* 容器 *B* 保證能夠隨時取得 *"P"* 個 RU 的輸送量， 並受到 SLA 支援。
 
-* 曾经存储在容器中的最大数据大小
-* 曾经在容器上预配的最大吞吐量
-* 曾经在数据库中创建的具有共享吞吐量的 Azure Cosmos 容器的最大数目。 
+> [!NOTE]
+> 具有佈建輸送量的容器無法轉換為共用資料庫容器。 反之，共用資料庫容器也無法轉換為具有專用輸送量。
 
-可以通过 SDK 以编程方式检索容器或数据库的最小吞吐量，也可以在 Azure 门户中查看值。 使用 .NET SDK 时，可以通过 [DocumentClient.ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) 方法缩放预配的吞吐量值。 使用 Java SDK 时，可以通过 [RequestOptions.setOfferThroughput](sql-api-java-samples.md#offer-examples) 方法缩放预配的吞吐量值。 
+## <a name="update-throughput-on-a-database-or-a-container"></a>更新資料庫和容器上的輸送量
 
-使用 .NET SDK 时，可以通过 [DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) 方法检索容器或数据库的最小吞吐量。 
+在建立 Azure Cosmos 容器或資料庫之後，您可以更新佈建輸送量。 您可以在資料庫或容器上設定的最大佈建輸送量沒有任何限制。 
 
-可以随时缩放容器或数据库的预配吞吐量。 
+若要估計資料庫或容器的[最低布建輸送量](concepts-limits.md#storage-and-throughput)，請尋找最大值：
+
+* 400 RU/秒 
+* 目前的儲存體（GB） * 10 RU/秒
+* 在資料庫或容器上布建的最高 RU/秒/100
+* 容器計數 * 100 RU/秒（僅限共用輸送量資料庫）
+
+實際的最小 RU/秒可能會根據您的帳戶設定而有所不同。 您可以使用[Azure 監視器計量](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db)來查看已布建輸送量（RU/秒）和資源上儲存體的歷程記錄。
+
+您可以使用 SDK，以程式設計方式擷取容器或資料庫的最小輸送量，或檢視 Azure 入口網站中的值。 使用 .NET SDK 時，[DocumentClient.ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) 方法可讓您調整佈建輸送量的值。 使用 Java SDK 時，[RequestOptions.setOfferThroughput](sql-api-java-sdk-samples.md) 方法可讓您調整佈建輸送量的值。 
+
+使用 .NET SDK 時，[DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) 方法可讓您擷取容器或資料庫的最小輸送量。 
+
+您可以隨時調整容器或資料庫的佈建輸送量。 執行調整作業以增加輸送量時，可能需要較長的時間，因為系統工作會佈建所需的資源。 您可以在 Azure 入口網站中，或使用 SDK 以程式設計方式檢查調整作業的狀態。 使用 .NET SDK 時，您可以使用 `DocumentClient.ReadOfferAsync` 方法來取得調整作業的狀態。
 
 ## <a name="comparison-of-models"></a>模型的比較
+下表顯示在資料庫上與在容器上佈建標準 (手動) 輸送量之間的比較。 
 
-|**參數**  |**資料庫上佈建的輸送量**  |**容器上佈建的輸送量**|
-|---------|---------|---------|
-|RU 數目下限 |400 (在前四個容器之後，每個額外的容器至少需要每秒 100 RU)。 |400|
-|每個容器的 RU 數目下限|100|400|
-|取用 1 GB 儲存體所需的 RU 數目下限|40|40|
-|RU 數目上限|在資料庫上無限制。|在容器上無限制。|
-|指派給或適用於特定容器的 RU|不提供保證。 指派給指定容器的 RU 視屬性而定。 屬性可以選擇是共用輸送量之容器的資料分割索引鍵、工作負載散發，以及容器的數目。 |設定於容器上的所有 RU 都是專為該容器保留的。|
-|容器的儲存體上限|無限制。|無限制。|
-|容器中每個邏輯分割區的輸送量上限|10K RU|10K RU|
-|容器中每個邏輯分割區的儲存體上限 (資料 + 索引)|10 GB|10 GB|
+|**參數**  |**資料庫上的標準 (手動) 輸送量**  |**容器上的標準 (手動) 輸送量**|**資料庫上的自動調整輸送量** | **容器上的自動調整輸送量**|
+|---------|---------|---------|---------|---------|
+|進入點 (最小 RU/秒) |400 RU/秒。 在前四個容器之後，每個額外的容器至少需要 100 RU/秒</li> |400| 在 400 - 4000 RU/秒之間自動調整。 最多可有 25 個容器，每個容器沒有最小 RU/秒</li> | 在 400 - 4000 RU/秒之間自動調整。|
+|每個容器的最小 RU/秒|100|400|--|在 400 - 4000 RU/秒之間自動調整|
+|RU 數目上限|在資料庫上無限制。|在容器上無限制。|在資料庫上無限制。|在容器上無限制。
+|指派給或適用於特定容器的 RU|不提供保證。 指派給指定容器的 RU 視屬性而定。 屬性可以選擇是共用輸送量之容器的資料分割索引鍵、工作負載散發，以及容器的數目。 |設定於容器上的所有 RU 都是專為該容器保留的。|不提供保證。 指派給指定容器的 RU 視屬性而定。 屬性可以選擇是共用輸送量之容器的資料分割索引鍵、工作負載散發，以及容器的數目。 |設定於容器上的所有 RU 都是專為該容器保留的。|
+|容器的儲存體上限|無限制。|無限制|無限制|無限制|
+|容器中每個邏輯分割區的輸送量上限|10K RU/秒|10K RU/秒|10K RU/秒|10K RU/秒|
+|容器中每個邏輯分割區的儲存體上限 (資料 + 索引)|20 GB|20 GB|20 GB|20 GB|
 
 ## <a name="next-steps"></a>後續步驟
 
 * 深入了解[邏輯分割區](partition-data.md)。
-* 了解如何[在 Azure Cosmos 容器上佈建輸送量](how-to-provision-container-throughput.md)。
-* 了解如何[在 Azure Cosmos 資料庫上佈建輸送量](how-to-provision-database-throughput.md)。
-
+* 了解如何[在 Azure Cosmos 容器上佈建標準 (手動) 輸送量](how-to-provision-container-throughput.md)。
+* 了解如何[在 Azure Cosmos 資料庫上佈建標準 (手動) 輸送量](how-to-provision-database-throughput.md)。
+* 了解如何[在 Azure Cosmos 資料庫或容器上佈建自動調整輸送量](how-to-provision-autoscale-throughput.md)。

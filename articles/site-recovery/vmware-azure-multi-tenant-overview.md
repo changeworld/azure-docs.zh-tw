@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 將 VMware VM 災害復原至 Azure (CSP) 的多租用戶支援概觀 | Microsoft Docs
+title: 使用 Azure Site Recovery 的 VMware VM 多租使用者嚴重損壞修復
 description: 概述 Azure Site Recovery 在多租用戶環境 (CSP) 程式中，如何支援將 VMware VM 災害復原至 Azure。
 author: mayurigupta13
 manager: rochakm
@@ -7,16 +7,15 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: d227b8d038dd686bde9b031ca2c58adc7dd6d76b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 840049265d3b6e4d2fddd794646bfd5691aab9a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60718067"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74083998"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>概述多租用戶如何支援使用 CSP 將 VMware 災害復原至 Azure
 
-[Azure Site Recovery](site-recovery-overview.md) 支援租用戶訂用帳戶的多租用戶環境。 對於透過 Microsoft Cloud 解決方案提供者 (CSP) 方案建立及管理的租用戶訂用帳戶，它也支援多租用戶。
+[Azure Site Recovery](site-recovery-overview.md)支援租使用者訂用帳戶的多租使用者環境。 對於透過 Microsoft Cloud 解決方案提供者 (CSP) 方案建立及管理的租用戶訂用帳戶，它也支援多租用戶。
 
 本文提供實作及管理多租用戶 VMware 到 Azure 複寫的概觀。
 
@@ -28,7 +27,7 @@ ms.locfileid: "60718067"
 
 * **專用主機服務提供者**：合作夥伴擁有實體基礎結構，但使用專用資源 (如多個 vCenters、實體資料存放區等) 在個別的基礎結構上裝載每個租用戶的虛擬機器。 合作夥伴可提供災害復原管理做為受控服務，租用戶也可以擁有災害復原做為自助服務方案。
 
-* **受控服務提供者 (MSP)**：客戶擁有裝載虛擬機器的實體基礎結構，而合作夥伴則提供災害復原支援及管理。
+* **受控服務提供者 (MSP)** – 客戶擁有裝載虛擬機器的實體基礎結構，而合作夥伴則提供災害復原支援及管理。
 
 ## <a name="shared-hosting-services-provider-hsp"></a>共用主機服務提供者 (HSP)
 
@@ -72,14 +71,14 @@ ms.locfileid: "60718067"
 
 ### <a name="create-a-vcenter-account"></a>建立 vCenter 帳戶
 
-1. 藉由複製預先定義的「唯讀」角色來建立新的角色，並以易記名稱 (例如此範例中顯示的 Azure_Site_Recovery) 命名。
+1. 藉由複製預先定義的*唯讀*角色來建立新的角色，然後為它提供一個方便的名稱（例如 Azure_Site_Recovery，如本範例所示）。
 2. 將下列權限指派給這個角色：
 
    * **資料存放區**：配置空間、瀏覽資料存放區、底層檔案作業、移除檔案、更新虛擬機器檔案
    * **網路**：網路指派
    * **資源**：指派虛擬機器至資源集區、移轉已關閉電源的虛擬機器、移轉已開啟電源的虛擬機器
-   * **工作**：建立工作、更新工作
-   * **VM - 組態**：全部
+   * 工作 **：建立**工作、更新工作
+   * **VM - 組態**：所有
    * **VM - 互動** > 回答問題、裝置連線、設定 CD 媒體、設定磁碟片媒體、電源關閉、電源開啟、VMware 工具安裝
    * **VM - 清查** > 從現有建立、建立新的、註冊、取消註冊
    * **VM - 佈建** > 允許虛擬機器下載、允許虛擬機器檔案上傳
@@ -92,25 +91,25 @@ ms.locfileid: "60718067"
 >| Object | 角色 | 備註 |
 >| --- | --- | --- |
 >| vCenter | 唯讀 | 只用以允許 vCenter 存取以管理其他物件。 如果帳戶不會提供給租用戶，或用於任何 vCenter 上的管理作業，則可以移除此權限。 |
->| 数据中心 | Azure_Site_Recovery |  |
+>| 資料中心 | Azure_Site_Recovery |  |
 >| 主機和主機叢集 | Azure_Site_Recovery | 再次確認存取權在物件層級，以限制只有可存取的主機在容錯移轉前和容錯回復後有租用戶虛擬機器。 |
->| 数据存储和数据存储群集 | Azure_Site_Recovery | 与前相同。 |
+>| 資料存放區和資料存放區叢集 | Azure_Site_Recovery | 同上。 |
 >| 網路 | Azure_Site_Recovery |  |
->| 管理服务器 | Azure_Site_Recovery | 包含 CS 以外所有元件 (CS、PS 及 MT) 的存取權。 |
->| 租用戶 VM | Azure_Site_Recovery | 确保特定租户的任何新租户 VM 也会获得此访问权限，否则无法通过 Azure 门户发现这些 VM。 |
+>| 管理伺服器 | Azure_Site_Recovery | 包含 CS 以外所有元件 (CS、PS 及 MT) 的存取權。 |
+>| 租用戶 VM | Azure_Site_Recovery | 確保特定租用戶的任何新租用戶虛擬機器也會有此存取權，否則將無法透過 Azure 入口網站探索它們。 |
 
-現在已經完成 vCenter 帳戶存取權。 此步骤可满足完成故障回复操作的最低权限要求。 也可以搭配現有的原則使用這些存取權限。 只要將現有的權限集修改成包含上面步驟 2 詳述的角色權限即可。
+現在已經完成 vCenter 帳戶存取權。 這個步驟可以滿足完成容錯回復作業的最小權限需求。 也可以搭配現有的原則使用這些存取權限。 只要將現有的權限集修改成包含上面步驟 2 詳述的角色權限即可。
 
 ### <a name="failover-only"></a>僅限容錯移轉
 若要限制災害復原作業僅限容錯移轉 (亦即，不含容錯回復功能)，請使用先前的程序，但有下列例外狀況：
 
-- 不要將 Azure_Site_Recovery 角色指派給 vCenter 存取帳戶，而是僅將「唯讀」角色指派給帳戶。 這個權限集合會允許虛擬機器複寫和容錯移轉，而不允許容錯回復。
+- 不要將 Azure_Site_Recovery** 角色指派給 vCenter 存取帳戶，而是僅將「唯讀」** 角色指派給帳戶。 這個權限集合會允許虛擬機器複寫和容錯移轉，而不允許容錯回復。
 - 以上程序的其餘部分都保持原狀。 為了確保租用戶隔離及限制虛擬機器探索，所有權限仍僅指派到物件層級而未傳播到子物件。
 
 ### <a name="deploy-resources-to-the-tenant-subscription"></a>將資源部署到租用戶訂用帳戶
 
 1. 在 Azure 入口網站上，建立「資源群組」，然後對於每個一般程序部署「復原服務」保存庫。
-2. 下载保管库注册密钥。
+2. 下載保存庫註冊金鑰。
 3. 使用保存庫註冊金鑰為租用戶註冊 CS。
 4. 針對兩個存取帳戶輸入認證：用來存取 vCenter 伺服器的帳戶，以及用來存取 VM 的帳戶。
 
@@ -120,14 +119,14 @@ ms.locfileid: "60718067"
 
 1. 在 Azure 入口網站您稍早建立的保存庫中，使用您建立的 vCenter 帳戶，向組態伺服器註冊 vCenter 伺服器。
 2. 針對每個一般程序的 Site Recovery 完成「準備基礎結構」程序。
-3. 現在可以開始複寫 VM。 確認 [複寫] > [選取虛擬機器] 僅顯示租用戶的 VM。
+3. 現在可以開始複寫 VM。 確認只有租使用者的 vm 會**顯示在 [** 複寫] [  >  **選取虛擬機器**] 中。
 
 ## <a name="dedicated-hosting-solution"></a>專用主機解決方案
 
 如下圖所示，專用主機方案的架構差異是每個租用戶的基礎結構完全針對該租用戶設定。
 
 ![architecture-shared-hsp](./media/vmware-azure-multi-tenant-overview/dedicated-hosting-scenario.png)  
-**包含多个 vCenter 的专用托管方案**
+**含多個 vCenters 的專用主機案例**
 
 ## <a name="managed-service-solution"></a>受控服務解決方案
 

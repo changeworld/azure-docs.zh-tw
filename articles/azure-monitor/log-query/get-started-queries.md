@@ -1,36 +1,26 @@
 ---
 title: 開始使用 Azure 監視器中的記錄查詢 | Microsoft Docs
 description: 本文提供教學課程來說明如何在 Azure 監視器中開始撰寫記錄查詢。
-services: log-analytics
-documentationcenter: ''
+ms.subservice: logs
+ms.topic: tutorial
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: conceptual
-ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: a8da60850dae600129e0bc60fb574bfa4d3972db
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.date: 10/24/2019
+ms.openlocfilehash: dcb3afd14a7355a08291cd8553d5050d96919aec
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415904"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801422"
 ---
-# <a name="get-started-with-azure-monitor-log-queries"></a>開始使用 Azure 監視器記錄查詢
-
+# <a name="get-started-with-log-queries-in-azure-monitor"></a>開始使用 Azure 監視器中的查詢
 
 > [!NOTE]
-> 您應該先完成[開始使用 Azure 監視器 Log Analytics](get-started-portal.md)之前完成本教學課程。
+> 如果您要從至少一台虛擬機器收集資料，就可以在自己的環境中進行這項練習。 若非如此，請使用我們的[示範環境](https://portal.loganalytics.io/demo)，內有許多範例資料。  如果您已經知道如何在 KQL 中查詢，但只需要根據資源類型快速建立有用的查詢，請參閱[儲存的範例查詢窗格](saved-queries.md)。
 
-[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+在本教學課程中，您會了解如何在 Azure 監視器中撰寫記錄查詢。 它會告訴您如何：
 
-在本教學課程，您將了解如何撰寫 Azure 監視器記錄的查詢。 它會告訴您如何：
-
-- 了解查詢的結構
+- 了解查詢結構
 - 排序查詢結果
 - 篩選查詢結果
 - 指定時間範圍
@@ -38,14 +28,22 @@ ms.locfileid: "65415904"
 - 定義和使用自訂欄位
 - 彙總和群組結果
 
+如需如何在 Azure 入口網站中使用 Log Analytics 的教學課程，請參閱[開始使用 Azure 監視器 Log Analytics](get-started-portal.md)。<br>
+如需 Azure 監視器之中記錄查詢的詳細資訊，請參閱 [Azure 監視器中的記錄查詢總覽](log-query-overview.md)。
+
+請按照以下本教學課程的影片版本進行：
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE42pGX]
 
 ## <a name="writing-a-new-query"></a>撰寫新的查詢
+
 查詢可以透過資料表名稱或 *search* 命令來開始。 請從資料表名稱開始，原因是它會定義清楚的查詢範圍，並改善查詢效能和結果的相關性。
 
 > [!NOTE]
 > Azure 監視器所使用的 Kusto 查詢語言會區分大小寫。 語言關鍵字通常會以小寫來撰寫。 當查詢中使用到資料表或資料行的名稱時，請務必使用正確的大小寫，如結構描述窗格所示。
 
 ### <a name="table-based-queries"></a>以資料表為基礎的查詢
+
 Azure 監視器會將記錄資料組織到資料表中，每個資料表都包含多個資料行。 所有資料表和資料行都會顯示在 Analytics 入口網站中 Log Analytics 中的 [結構描述] 窗格。 請找出您感興趣的資料表，然後看看其中的資料：
 
 ```Kusto
@@ -62,6 +60,7 @@ SecurityEvent
 即使未新增 `| take 10`，我們實際上仍可執行查詢，查詢仍會有效，但它可能會傳回高達 10,000 個結果。
 
 ### <a name="search-queries"></a>搜尋查詢
+
 搜尋查詢的結構較鬆散，通常更適合用於尋找其資料行中包含特定值的記錄：
 
 ```Kusto
@@ -71,8 +70,8 @@ search in (SecurityEvent) "Cryptographic"
 
 此查詢會搜尋「SecurityEvent」資料表，看看其中是否有記錄包含「Cryptographic」片語。 系統會傳回並顯示這些記錄的其中 10 筆。 如果我們省略了 `in (SecurityEvent)` 部分，只執行 `search "Cryptographic"`，則搜尋會找遍「所有」資料表，因此需要較長時間，且較沒效率。
 
-> [!NOTE]
-> 預設的設定為「過去 24 小時」的時間範圍。 若要使用不同範圍，請使用時間選擇器 (位於 [執行] 按鈕旁)，或在查詢中新增明確的時間範圍篩選條件。
+> [!WARNING]
+> 搜尋查詢的速度通常會比資料表式的查詢慢，因為所需處理的資料更多。 
 
 ## <a name="sort-and-top"></a>Sort 和 top
 雖然 **take** 適合用來取得一些記錄，但所選取和顯示的結果並沒有依特定順序來排列。 若要取得已排序的檢視，您可以依所慣用的資料行來**排序**：
@@ -108,7 +107,7 @@ SecurityEvent
 
 在撰寫篩選條件時，您可以使用下列運算式：
 
-| 運算式 | 說明 | 範例 |
+| 運算是 | 描述 | 範例 |
 |:---|:---|:---|
 | == | 檢查是否相等<br>(區分大小寫) | `Level == 8` |
 | =~ | 檢查是否相等<br>(不區分大小寫) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
@@ -136,12 +135,14 @@ SecurityEvent
 ## <a name="specify-a-time-range"></a>指定時間範圍
 
 ### <a name="time-picker"></a>時間選擇器
+
 時間選擇器位於 [執行] 按鈕旁邊，會指出我們只查詢過去 24 小時內的記錄。 這是適用於所有查詢的預設時間範圍。 若只要取得過去 1 小時的記錄，請選取 [過去 1 小時]，然後再次執行查詢。
 
 ![時間選擇器](media/get-started-queries/timepicker.png)
 
 
 ### <a name="time-filter-in-query"></a>查詢中的時間篩選
+
 您也可以對查詢新增時間篩選，藉以定義您自己的時間範圍。 時間篩選最好直接放在資料表名稱之後： 
 
 ```Kusto
@@ -154,6 +155,7 @@ SecurityEvent
 
 
 ## <a name="project-and-extend-select-and-compute-columns"></a>Project 和 Extend：選取和計算資料行
+
 使用 **project** 可選取要包含在結果中的特定資料行：
 
 ```Kusto
@@ -179,12 +181,12 @@ SecurityEvent
 | project Computer, TimeGenerated, EventDetails=Activity, EventCode=substring(Activity, 0, 4)
 ```
 
-**extend** 會在結果集內保留所有原始資料行，並定義其他資料行。 下列查詢會使用 **extend** 來新增 localtime 資料行，其中包含當地語系化的 TimeGenerated 值。
+**extend** 會在結果集內保留所有原始資料行，並定義其他資料行。 下列查詢會使用 [extend] 來新增 [EventCode] 資料行。 請注意，此資料行可能不會顯示在資料表的結尾，因此需要展開記錄的詳細資料才能查看。
 
 ```Kusto
 SecurityEvent
 | top 10 by TimeGenerated
-| extend localtime = TimeGenerated -8h
+| extend EventCode=substring(Activity, 0, 4)
 ```
 
 ## <a name="summarize-aggregate-groups-of-rows"></a>Summarize：彙總資料列群組
@@ -224,7 +226,7 @@ Perf
 ### <a name="summarize-by-a-time-column"></a>依時間資料行彙總
 群組結果也可以根據時間資料行或其他連續值來進行。 不過，只彙總 `by TimeGenerated` 會針對時間範圍內的每一毫秒建立群組，原因是這些是唯一值。 
 
-若要根據連續值建立群組，最好是使用 **bin** 將範圍分成可管理的單位。 下列查詢會分析 Perf 記錄，這些記錄會測量特定電腦上的可用記憶體 (可用的 MB 數)。 它會計算每 1 小時期間內的平均值在過去 7 天：
+若要根據連續值建立群組，最好是使用 **bin** 將範圍分成可管理的單位。 下列查詢會分析 Perf 記錄，這些記錄會測量特定電腦上的可用記憶體 (可用的 MB 數)。 這會計算過去 7 天內每 1 小時期間的平均值：
 
 ```Kusto
 Perf 
@@ -242,4 +244,7 @@ Perf
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解如何[撰寫搜尋查詢](search-queries.md)
+- 深入了解如何依照[在 Azure 監視器記錄查詢中使用字串](string-operations.md)的指示，在記錄查詢中使用字串資料。
+- 深入了解如何依照 [Azure 監視器記錄查詢中的進階彙總](advanced-aggregations.md)的指示，在記錄查詢中彙總資料。
+- 了解如何依照 [Azure 監視器記錄查詢中的聯結](joins.md) 的指示，從多個資料表聯結資料。
+- 在 [KQL 語言參考](/azure/kusto/query/)中取得整個 Kusto 查詢語言的相關文件。

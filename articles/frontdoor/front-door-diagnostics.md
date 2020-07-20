@@ -1,6 +1,6 @@
 ---
-title: 監視計量與 Azure 前端服務中的記錄檔 |Microsoft Docs
-description: 這篇文章描述 Azure 前端服務支援的存取記錄與不同的計量
+title: 監視 Azure Front 中的計量和記錄 |Microsoft Docs
+description: 本文說明 Azure 前端支援的不同計量和存取記錄
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,86 +11,101 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 16770ea0a320b3d9f081cc21a102ab050a6467f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f57c0353989cfcf924042d202bd80a57b476507b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736769"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85322308"
 ---
-# <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>監視計量與 Azure 前端服務中的記錄
+# <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>監視 Azure Front 中的計量和記錄
 
-使用 Azure 前端服務，您可以透過下列方式監視資源：
+藉由使用 Azure Front，您可以透過下列方式來監視資源：
 
-- **計量**。 應用程式閘道目前有七個計量，可用來檢視效能計數器。
-- **記錄檔**。 活動和診斷記錄可讓效能、 存取和儲存，或從監視等用途的資源取用的其他資料。
+- **計量**。 Azure Front 大門目前有七個計量可供您查看效能計數器。
+- **記錄**。 活動和診斷記錄可讓您儲存或取用資源的效能、存取和其他資料，以供監視之用。
 
-### <a name="metrics"></a>度量
+### <a name="metrics"></a>計量
 
-計量是可讓您在入口網站中檢視效能計數器的特定 Azure 資源的功能。 以下是可用的 「 大門 」 計量：
+計量是某些 Azure 資源的功能，可讓您在入口網站中查看效能計數器。 下列為可用的 Front 的計量：
 
 | 計量 | 計量顯示名稱 | 單位 | 維度 | 描述 |
 | --- | --- | --- | --- | --- |
-| RequestCount | 要求計數 | 計數 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | 由 Front Door 提供服務的用戶端要求數。  |
+| RequestCount | 要求計數 | Count | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | 由 Front Door 提供服務的用戶端要求數。  |
 | RequestSize | 要求大小 | 位元組 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | 從用戶端傳送到 Front Door 之要求的位元組數。 |
 | ResponseSize | 回應大小 | 位元組 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | 從 Front Door 傳送到用戶端之回應的位元組數。 |
-| TotalLatency | 延遲總計 | 毫秒 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | 從用戶端要求接收的大門，直到用戶端認可最後一個回應位元組從大門，計算時間。 |
-| BackendRequestCount | 後端要求計數 | 計數 | HttpStatus</br>HttpStatusGroup</br>後端 | 從 Front Door 傳送至後端的要求數。 |
+| TotalLatency | 延遲總計 | 毫秒 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | 從 Front 門收到的用戶端要求計算的時間，直到用戶端認可來自 Front 的最後一個回應位元組為止。 |
+| BackendRequestCount | 後端要求計數 | Count | HttpStatus</br>HttpStatusGroup</br>後端 | 從 Front Door 傳送至後端的要求數。 |
 | BackendRequestLatency | 後端要求延遲 | 毫秒 | 後端 | 從 Front Door 傳送要求到後端一直到 Front Door 從後端接收最後回應位元組所經歷的時間。 |
 | BackendHealthPercentage | 後端健康情況百分比 | 百分比 | 後端</br>BackendPool | 從 Front Door 到後端的健康情況探查成功百分比。 |
-| WebApplicationFirewallRequestCount | Web 應用程式防火牆要求計數 | 計數 | PolicyName</br>RuleName</br> 動作 | Front Door 應用程式層安全性處理的用戶端要求數。 |
+| WebApplicationFirewallRequestCount | Web 應用程式防火牆要求計數 | Count | PolicyName</br>RuleName</br>動作 | Front Door 應用程式層安全性處理的用戶端要求數。 |
 
-## <a name="activity-log"></a>活動記錄
+## <a name="activity-logs"></a><a name="activity-log"></a>活動記錄
 
-活動記錄可在前端服務上進行作業的相關資訊。 它們也可以決定內容、 對象，以及何時任何寫入作業 （put、 post 或 delete） 前端服務上。
+活動記錄會提供有關 Front 的作業資訊。 它們也會決定要在 Front 上執行的任何寫入作業（put、post 或 delete）的內容、物件和時機。
 
 >[!NOTE]
->活動記錄不包含讀取 (get) 作業。 它們也不包含您使用 Azure 入口網站或原始管理 API 執行的作業。
+>活動記錄不包含讀取（get）作業。 它們也不包含您使用 Azure 入口網站或原始管理 API 執行的作業。
 
-在您的前端服務或 Azure 資源在 Azure 監視器中的所有記錄檔的存取活動記錄。 檢視活動記錄：
+在 Azure 監視器中，存取您的 Front 或 Azure 資源的所有記錄中的活動記錄。 檢視活動記錄：
 
-1. 選取您的前端執行個體。
-2. 選取 **活動記錄**。
+1. 選取您的 Front 門板實例。
+2. 選取 [**活動記錄**]。
 
     ![活動記錄檔](./media/front-door-diagnostics/activity-log.png)
 
-3. 選擇要篩選的範圍，然後按**套用**。
+3. 選擇篩選範圍，然後選取 [套用 **]。**
 
-## <a name="diagnostic-logging"></a>診斷記錄
-診斷記錄會提供作業和對稽核和疑難排解很重要的錯誤相關的豐富資訊。 診斷記錄與活動記錄不同。
+## <a name="diagnostic-logs"></a><a name="diagnostic-logging"></a>診斷記錄
+診斷記錄提供有關進行審核和疑難排解的重要作業和錯誤的豐富資訊。 診斷記錄與活動記錄不同。
 
-活動記錄可深入了解對 Azure 資源的作業。 診斷記錄檔提供深入了解您的資源執行的作業。 如需詳細資訊，請參閱 < [Azure 監視器診斷記錄](../azure-monitor/platform/diagnostic-logs-overview.md)。
+活動記錄可讓您深入瞭解在 Azure 資源上完成的作業。 診斷記錄可讓您深入瞭解您的資源所執行的作業。 如需詳細資訊，請參閱[Azure 監視器診斷記錄](../azure-monitor/platform/platform-logs-overview.md)。
 
 ![診斷記錄](./media/front-door-diagnostics/diagnostic-log.png)
 
-若要為您的前端服務設定診斷記錄檔：
+若要設定您的前門的診斷記錄：
 
-1. 選取您的 Azure 前端服務。
+1. 選取您的 Azure Front 門。
 
-2. 選擇**診斷設定**。
+2. 選擇 [**診斷設定**]。
 
-3. 選取 [開啟診斷]。 封存診斷記錄連同計量的儲存體帳戶、 串流至事件中樞，或將它們傳送至 Azure 監視器記錄檔。
+3. 選取 [開啟診斷]。 將診斷記錄連同計量封存至儲存體帳戶、將其串流至事件中樞，或將它們傳送至 Azure 監視器記錄。
 
-前端服務目前會提供診斷記錄檔 （每小時批次處理）。 診斷記錄會提供每個項目都有下列結構描述中的個別 API 要求：
+Front 門目前提供診斷記錄（每小時批次）。 診斷記錄會提供個別的 API 要求，其中每個專案都具有下列架構：
 
-| 屬性  | 描述 |
+| 屬性  | 說明 |
 | ------------- | ------------- |
-| ClientIp | 發出要求之用戶端的 IP 位址。 |
-| ClientPort | 提出要求的用戶端 IP 連接埠。 |
+| BackendHostname | 如果將要求轉送到後端，此欄位代表後端的主機名稱。 如果要求已重新導向或轉送到區域快取（針對路由規則啟用快取），此欄位將會是空白。 |
+| CacheStatus | 針對快取案例，此欄位會在 POP 上定義快取點擊/遺漏 |
+| ClientIp | 發出要求之用戶端的 IP 位址。 如果要求中有 X 轉送的標頭，則會從相同的中挑選用戶端 IP。 |
+| ClientPort | 提出要求之用戶端的 IP 埠。 |
 | HttpMethod | 要求使用的 HTTP 方法。 |
-| HttpStatusCode | 從 proxy 傳回 HTTP 狀態碼。 |
-| HttpStatusDetails | 在要求上的最終狀態。 此字串值的意義，參閱狀態參考資料表。 |
-| HttpVersion | 要求或連接的類型。 |
-| RequestBytes | 以位元組為單位，包括要求標頭和要求主體的 HTTP 要求訊息的大小。 |
+| HttpStatusCode | 從 Proxy 傳回的 HTTP 狀態碼。 |
+| HttpStatusDetails | 對要求產生的狀態。 此字串值的意義可以在狀態參考資料表中找到。 |
+| HttpVersion | 要求或連線的類型。 |
+| POP | 要求進入之邊緣的簡短名稱。 |
+| RequestBytes | HTTP 要求訊息的大小 (以位元組為單位)，包括要求標頭和要求本文。 |
 | RequestUri | 接收之要求的 URI。 |
-| ResponseBytes | 後端伺服器做為回應所傳送的位元組。  |
-| RoutingRuleName | 要求已符合的路由規則的名稱。 |
-| SecurityProtocol | 使用要求則為 null，如果沒有加密的 TLS/SSL 通訊協定版本。 |
-| TimeTaken | 所花費的動作，以毫秒為單位的時間長度。 |
-| UserAgent | 用戶端使用的瀏覽器類型 |
-| TrackingReference | 識別由前端，要求的唯一參考字串也做為 X-Azure-Ref 標頭傳送，用戶端。 所需的特定要求存取記錄檔中搜尋詳細資料。 |
+| ResponseBytes | 後端伺服器以回應形式傳回的位元組。  |
+| RoutingRuleName | 要求所符合之路由規則的名稱。 |
+| RulesEngineMatchNames | 要求符合的規則名稱。 |
+| SecurityProtocol | 要求所使用的 TLS/SSL 通訊協定版本，如果沒有加密則為 null。 |
+| SentToOriginShield | 布林值欄位，表示第一個環境中是否有快取遺漏，而且要求已傳送至區域快取。 如果路由規則是重新導向，或未啟用快取，請忽略此欄位。 |
+| TimeTaken | 動作所花費的時間長度 (毫秒)。 |
+| TrackingReference | 這項唯一的參考字串可識別 Front Door 所提供的要求，也會以 X-Azure Ref 標頭的形式傳送給用戶端， 這是在特定要求的存取記錄中搜尋詳細資料時的必要項目。 |
+| UserAgent | 用戶端使用的瀏覽器類型。 |
+
+**注意：** 針對各種路由設定和流量行為，某些欄位（例如 backendHostname、cacheStatus、sentToOriginShield 和 POP 欄位）可能會以不同的值回應。 下表說明不同的值，這些欄位將適用于各種案例：
+
+| 案例 | 記錄專案計數 | POP | BackendHostname | SentToOriginShield | CacheStatus |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| 未啟用快取的路由規則 | 1 | 邊緣 POP 程式碼 | 轉送要求的後端 | False | CONFIG_NOCACHE |
+| 已啟用快取的路由規則。 邊緣 POP 上的快取點擊 | 1 | 邊緣 POP 程式碼 | 空白 | False | 找到 |
+| 已啟用快取的路由規則。 邊緣 POP 上的快取遺漏，但在父快取 POP 快取命中 | 2 | 1. 邊緣 POP 代碼</br>2. 父快取 POP 程式碼 | 1. 父快取 POP 主機名稱</br>2. 空白 | 1. True</br>2. False | 1. 遺漏</br>2. PARTIAL_HIT |
+| 已啟用快取的路由規則。 邊緣和父快取 POP 的快取遺漏 | 2 | 1. 邊緣 POP 代碼</br>2. 父快取 POP 程式碼 | 1. 父快取 POP 主機名稱</br>2. 可協助填入快取的後端 | 1. True</br>2. False | 1. 遺漏</br>2. 遺漏 |
+
 
 ## <a name="next-steps"></a>後續步驟
 
-- [建立前端的設定檔](quickstart-create-front-door.md)
-- [前端的運作方式](front-door-routing-architecture.md)
+- [建立 Front Door 設定檔](quickstart-create-front-door.md)
+- [Front 門板的運作方式](front-door-routing-architecture.md)

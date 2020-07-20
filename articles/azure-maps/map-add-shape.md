@@ -1,119 +1,82 @@
 ---
-title: 使用 Azure 地圖服務新增圖形 | Microsoft Docs
-description: 如何在 JavaScript 地圖上新增圖形
-author: jingjing-z
-ms.author: jinzh
-ms.date: 10/30/2018
+title: 將多邊形圖層新增至地圖 | Microsoft Azure 地圖服務
+description: 在本文中，您將了解如何在 Microsoft Azure 地圖服務 Web SDK 的地圖上呈現多邊形和多多邊形。
+author: Philmea
+ms.author: philmea
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: f61c7a939902ee5d02b2e9ba896c7555968f9d0d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: ecbb5d636b6a6e2fa89d34380e87b6979110f6e3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60769510"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648520"
 ---
-# <a name="add-a-shape-to-a-map"></a>在地圖中新增圖形
+# <a name="add-a-polygon-layer-to-the-map"></a>將多邊形圖層新增至地圖
 
-本文說明如何呈現在地圖使用線條和多邊形圖層上的幾何。 Azure 地圖服務 Web SDK 也支援建立的圓形的幾何，如同[GeoJSON 擴充的結構描述](extend-geojson.md#circle)。 所有的功能幾何也可以輕鬆地更新如果包裝在一起[圖形](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)類別。
+本文說明如何使用多邊形圖層，在地圖上呈現 `Polygon` 和 `MultiPolygon` 特徵幾何的區域。 Azure 地圖服務 Web SDK 也支援建立圓形幾何，如[擴充的 GeoJSON 結構描述](extend-geojson.md#circle)所定義。 在地圖上呈現時，這些圓形會轉換為多邊形。 以 [atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) 類別包裝時，所有特徵幾何都可輕易更新。
 
-<a id="addALine"></a>
+## <a name="use-a-polygon-layer"></a>使用多邊形圖層 
 
-## <a name="add-lines-to-the-map"></a>將行加入至對應
+當多邊形圖層連線至資料來源並載入至地圖時，將會呈現具有 `Polygon` 和 `MultiPolygon` 特徵的區域。 若要建立多邊形，請將其新增至資料來源，並使用 [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) 類別和多邊形圖層加以呈現。
 
-`LineString` 和`MultiLineString`功能用來代表路徑與在地圖上的外框。
+```javascript
+//Create a data source and add it to the map.
+var dataSource = new atlas.source.DataSource();
+map.sources.add(dataSource);
 
-### <a name="add-a-line"></a>新增線條
+//Create a rectangular polygon.
+dataSource.add(new atlas.data.Feature(
+    new atlas.data.Polygon([[
+        [-73.98235, 40.76799],
+        [-73.95785, 40.80044],
+        [-73.94928, 40.7968],
+        [-73.97317, 40.76437],
+        [-73.98235, 40.76799]
+    ]])
+));
 
-<iframe height='500' scrolling='no' title='在地圖中新增線條' src='//codepen.io/azuremaps/embed/qomaKv/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看畫筆 <a href='https://codepen.io/azuremaps/pen/qomaKv/'>在地圖中新增線條</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
-</iframe>
+//Create and add a polygon layer to render the polygon to the map, below the label layer.
+map.layers.add(new atlas.layer.PolygonLayer(dataSource, null,{
+    fillColor: 'red',
+    fillOpacity: 0.7
+}), 'labels');
+```
 
-上述程式碼中的第一個程式碼區塊會建構地圖物件。 如需相關指示，您可以查看[建立對應](./map-create.md)。
-
-在第二個程式碼區塊中，則會使用 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 類別來建立資料來源物件。 [LineString](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.linestring?view=azure-iot-typescript-latest) 物件會建立並新增至資料來源。
-
-[LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) 會轉譯 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中已包裝的線條物件。 最後一個程式碼區塊會建立線條圖層，並將其新增至地圖。 請在 [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest) 查看線條圖層的屬性。 建立並加入至地圖中的資料來源及線條圖層[事件處理常式](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)以確保對應完全載入後，會顯示線條。
-
-### <a name="add-symbols-along-a-line"></a>將沿著一條線的符號
-
-此範例示範如何在地圖上新增沿著一條線的箭號圖示。 當使用符號的圖層，設定 「 列 」 的 「 放置 」 選項時，這將會呈現沿著線符號並旋轉圖示 (0 度 = right)。
-
-<br/>
-
-<iframe height="500" style="width: 100%;" scrolling="no" title="顯示沿著線的箭號" src="//codepen.io/azuremaps/embed/drBJwX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參閱畫筆<a href='https://codepen.io/azuremaps/pen/drBJwX/'>沿著線條顯示箭號</a>透過 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 上<a href='https://codepen.io'>CodePen</a>。
-</iframe>
-
-### <a name="line-stroke-gradient"></a> 加入一條線的筆劃漸層
-
-除了能夠將單一筆劃色彩套用至的行中，您也可以使用漸層的色彩顯示從一個直線線段轉換到下一步，以填入一條線。 例如，列漸層可用來跨物件相連線條代表不同時間和距離或不同的溫度的變更。 若要將這項功能套用至一條線中，資料來源必須`lineMetrics`選項設為 true，，然後再色彩漸層停駐的運算式可以傳遞至`strokeColor`線條的選項。 筆劃的漸層停駐運算式必須參考`['line-progress']`公開 （expose） 至運算式的導出的列計量的資料運算式。
+以下是上述程式碼的完整和執行範例。
 
 <br/>
-
-<iframe height="500" style="width: 100%;" scrolling="no" title="使用筆劃漸層的線條" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參閱畫筆<a href='https://codepen.io/azuremaps/pen/wZwWJZ/'>筆劃漸層的線條</a>透過 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 上<a href='https://codepen.io'>CodePen</a>。
-</iframe>
-
-### <a name="customize-a-line-layer"></a>自訂線條圖層
-
-線條圖層有數個樣式選項。 以下是可讓您試用這些選項的工具。
-
-<br/>
-
-<iframe height='700' scrolling='no' title='線條圖層選項' src='//codepen.io/azuremaps/embed/GwLrgb/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看 Pen <a href='https://codepen.io/azuremaps/pen/GwLrgb/'>線條圖層選項</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
-</iframe>
-
-<a id="addAPolygon"></a>
-
-## <a name="add-a-polygon-to-the-map"></a>將多邊形加入至對應
-
-`Polygon` 和`MultiPolygon`功能通常用來代表地圖上的區域。 
-
-### <a name="use-a-polygon-layer"></a>使用多邊形圖層 
-
-多邊形圖層會呈現多邊形的區域。 
 
 <iframe height='500' scrolling='no' title='在地圖中新增多邊形 ' src='//codepen.io/azuremaps/embed/yKbOvZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看畫筆 <a href='https://codepen.io/azuremaps/pen/yKbOvZ/'>在地圖中新增多邊形</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
-在上述程式碼中，程式碼的第一個區塊會建構地圖物件。 如需相關指示，您可以查看[建立對應](./map-create.md)。
+## <a name="use-a-polygon-and-line-layer-together"></a>同時使用多邊形和線條圖層
 
-在第二個程式碼區塊中，則會使用 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 類別來建立資料來源物件。 [多邊形](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest)會從座標陣列來建立，並且會新增至資料來源。 
+線條圖層可用來呈現多邊形的外框。 下列程式碼範例會呈現如同上述範例的多邊形，但現在會新增線條圖層。 此條線圖層是連線至資料來源的第二個圖層。  
 
-[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) 會在地圖上轉譯 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包裝的資料。 最後一個程式碼區塊會建立多邊形圖層，並將其新增至地圖。 請在 [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest) 查看多邊形圖層的屬性。 建立並加入至地圖中的資料來源及多邊形圖層[事件處理常式](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)以確保對應完全載入後，會顯示多邊形。
-
-### <a name="use-a-polygon-and-line-layer-together"></a>同時使用多邊形和線條圖層
-
-線條圖層可以用來呈現多邊形的外框中。 
+<br/>
 
 <iframe height='500' scrolling='no' title='用來新增多邊形的多邊形和線條圖層' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱 <a href='https://codepen.io'>CodePen</a> 上由 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 建立的 Pen <a href='https://codepen.io/azuremaps/pen/aRyEPy/'>用來新增多邊形的多邊形和線條圖層</a>。
 </iframe>
 
-在上述程式碼中，程式碼的第一個區塊會建構地圖物件。 如需相關指示，您可以查看[建立對應](./map-create.md)。
+## <a name="fill-a-polygon-with-a-pattern"></a>使用圖樣填滿多邊形
 
-在第二個程式碼區塊中，則會使用 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 類別來建立資料來源物件。 [多邊形](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest)會從座標陣列來建立，並且會新增至資料來源。 
-
-[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) 會在地圖上轉譯 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包裝的資料。 請在 [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest) 查看多邊形圖層的屬性。 [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest)是線條的陣列。 請在 [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest) 查看線條圖層的屬性。 第三個程式碼區塊會建立多邊形和線條圖層。
-
-最後一個程式碼區塊會將多邊形和線條圖層新增至地圖中。 建立並加入至地圖中的資料來源和階層[事件處理常式](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)以確保對應完全載入後，會顯示多邊形。
-
-> [!TIP]
-> 線條圖層預設會呈現多邊形，以及資料來源中的線條的座標。 若要限制圖層，使它只會呈現 LineString 功能組`filter`的圖層屬性`['==', ['geometry-type'], 'LineString']`或`['any', ['==', ['geometry-type'], 'LineString'], ['==', ['geometry-type'], 'MultiLineString']]`如果您想要包含也 MultiLineString 功能。
-
-### <a name="fill-a-polygon-with-a-pattern"></a>多邊形填入模式
-
-除了以色彩填滿的多邊形也可以使用映像模式。 地圖影像 sprite 資源載入映像模式，並接著參考此映像`fillPattern`的多邊形圖層的屬性。
+除了以色彩填滿多邊形以外，您還可以使用影像圖樣來填滿多邊形。 請將影像圖樣載入地圖影像原件資源，然後使用多邊形圖層的 `fillPattern` 屬性來參考此影像。
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="多邊形的填滿模式" src="//codepen.io/azuremaps/embed/JzQpYX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參閱畫筆<a href='https://codepen.io/azuremaps/pen/JzQpYX/'>多邊形填滿圖樣</a>透過 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 上<a href='https://codepen.io'>CodePen</a>。
+<iframe height="500" style="width: 100%;" scrolling="no" title="多邊形填滿圖樣" src="//codepen.io/azuremaps/embed/JzQpYX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+查看畫筆 <a href='https://codepen.io/azuremaps/pen/JzQpYX/'>多邊形填滿圖樣</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
-### <a name="customize-a-polygon-layer"></a>自訂多邊形圖層
+
+> [!TIP]
+> Azure 地圖服務 Web SDK 提供數個可自訂的影像範本，供您作為填滿圖樣。 如需詳細資訊，請參閱[如何使用影像範本](how-to-use-image-templates-web-sdk.md)文件。
+
+## <a name="customize-a-polygon-layer"></a>自訂多邊形圖層
 
 多邊形圖層只有少數樣式選項。 以下是可讓您試用這些選項的工具。
 
@@ -124,9 +87,9 @@ ms.locfileid: "60769510"
 
 <a id="addACircle"></a>
 
-## <a name="add-a-circle-to-the-map"></a>將圓形加入至對應
+## <a name="add-a-circle-to-the-map"></a>將圓形新增至地圖
 
-Azure 地圖服務會使用提供的定義，如所述的圓形 GeoJSON 結構描述的擴充的版本[此處](extend-geojson.md#circle)。 圓形可以呈現在地圖上，藉由建立`Point`的功能，具有`subType`屬性值是`"Circle"`和`radius`具有數字，代表以公尺為單位的半徑屬性。 例如︰
+Azure 地圖服務會使用可提供圓形定義的擴充版 GeoJSON 結構描述，如[這裡](extend-geojson.md#circle)所說明。 藉由建立 `Point` 特徵，即可在地圖上呈現圓形。 此 `Point` 具有值為 `"Circle"` 的 `subType` 屬性，且具有 `radius` 屬性，會以數字表示半徑 (以公尺為單位)。 
 
 ```javascript
 {
@@ -142,40 +105,63 @@ Azure 地圖服務會使用提供的定義，如所述的圓形 GeoJSON 結構�
 }  
 ```
 
-Azure 地圖服務 Web SDK 轉換這些`Pooint`功能到`Polygon`功能在幕後，而且可以使用多邊形和線條圖層，如下所示在地圖上轉譯。
+Azure 地圖服務 Web SDK 會將這些 `Point` 特徵轉換為 `Polygon` 特徵。 然後，這些特徵會使用多邊形和線條圖層呈現在地圖上，如下列程式碼範例所示。
+
+<br/>
 
 <iframe height='500' scrolling='no' title='在地圖中新增圓形' src='//codepen.io/azuremaps/embed/PRmzJX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看畫筆 <a href='https://codepen.io/azuremaps/pen/PRmzJX/'>在地圖中新增圓形</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
-上述程式碼中的第一個程式碼區塊會建構地圖物件。 如需相關指示，您可以查看[建立對應](./map-create.md)。
+## <a name="make-a-geometry-easy-to-update"></a>讓幾何易於更新
 
-在第二個程式碼區塊中，則會使用 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 類別來建立資料來源物件。 圓形[功能](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)的[點](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest)且`subType`屬性設為`"Circle"`和`radius`以公尺為單位的屬性值。 當點功能`subType`的`"Circle"`會新增至資料來源時，它轉換成循環的多邊形內的對應。
+`Shape` 類別會包裝[幾何](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest)或[特徵](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)，使這些特徵更容易更新和維護。 若要具現化圖形變數，請將幾何或一組屬性傳至圖形建構函式。
 
-[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) 會在地圖上轉譯 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包裝的資料。 最後一個程式碼區塊會建立多邊形圖層，並將其新增至地圖。 請在 [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest) 查看多邊形圖層的屬性。 建立並加入至地圖中的資料來源及多邊形圖層[事件處理常式](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)以確保對應完全載入後，會顯示圓形。
+```javascript
+//Creating a shape by passing in a geometry and a object containing properties.
+var shape1 = new atlas.Shape(new atlas.data.Point[0,0], { myProperty: 1 });
 
-## <a name="make-a-geometry-easy-to-update"></a>輕鬆更新幾何
+//Creating a shape using a feature.
+var shape2 = new atlas.Shape(new atlas.data.Feature(new atlas.data.Point[0,0], { myProperty: 1 });
+```
 
-A`Shape`類別會包裝[幾何](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest)或是[功能](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)，並使其更容易更新和維護它們。
-`new Shape(data: Feature<data.Geometry, any>)` 會建構圖形物件，並使用指定的功能來初始化圖形物件。
+下列程式碼範例說明如何使用圖形類別來包裝圓形 GeoJSON 物件。 當圖形中的半徑值變更時，圓形會自動呈現在地圖上。
 
 <br/>
 
 <iframe height='500' scrolling='no' title='更新圖形屬性' src='//codepen.io/azuremaps/embed/ZqMeQY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看 Pen<a href='https://codepen.io/azuremaps/pen/ZqMeQY/'>更新圖形屬性</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
-上述第一個程式碼區塊會建構地圖物件。 如需相關指示，您可以查看[建立對應](./map-create.md)。
-
-點是 [Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) 類別的[功能](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)。 程式碼的第二個區塊會初始化 HTML 滑桿元素的半徑值，然後在 [Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) 類別物件中建構和包裝點物件。
-
-第三個程式碼區塊會建立函式，以取用 HTML 範圍滑桿元素中的值，並使用 shape 類別的 [addProperty](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) 方法變更半徑值。
-
-在第四個程式碼區塊中，則會使用 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 類別來建立資料來源物件。 然後，點就會新增至資料來源。
-
-[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) 會在地圖上轉譯 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包裝的資料。 第三個程式碼區塊會建立多邊形圖層。 請在 [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest) 查看多邊形圖層的屬性。 建立和加入至地圖中的資料來源 」、 「 click 事件處理常式和 「 多邊形圖層[事件處理常式](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)以確保對應完全載入後，會顯示的點。
-
 ## <a name="next-steps"></a>後續步驟
+
+深入了解本文使用的類別和方法：
+
+> [!div class="nextstepaction"]
+> [Polygon](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest)
+
+> [!div class="nextstepaction"]
+> [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest)
+
+> [!div class="nextstepaction"]
+> [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest)
 
 如需更多可新增至地圖的程式碼範例，請參閱下列文章：
 
 > [!div class="nextstepaction"]
+> [建立資料來源](create-data-source-web-sdk.md)
+
+> [!div class="nextstepaction"]
+> [新增快顯](map-add-popup.md)
+
+> [!div class="nextstepaction"]
 > [使用資料驅動樣式運算式](data-driven-style-expressions-web-sdk.md)
+
+> [!div class="nextstepaction"]
+> [如何使用影像範本](how-to-use-image-templates-web-sdk.md)
+
+> [!div class="nextstepaction"]
+> [新增線條圖層](map-add-line-layer.md)
+
+其他資源：
+
+> [!div class="nextstepaction"]
+> [Azure 地圖服務 GeoJSON 規格延伸模組](extend-geojson.md#circle)

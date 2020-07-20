@@ -1,32 +1,28 @@
 ---
-title: Web 服務中的匯入/匯出資料 - Azure Machine Learning Studio | Microsoft Docs
+title: 匯入/匯出 Web 服務中的資料
+titleSuffix: ML Studio (classic) - Azure
 description: 了解如何使用「匯入資料」及「匯出資料」模組來傳送和接收 Web 服務的資料。
 services: machine-learning
-documentationcenter: ''
-author: xiaoharper
-ms.custom: seodec18
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 editor: cgronlun
 ms.assetid: 3a7ac351-ebd3-43a1-8c5d-18223903d08e
 ms.service: machine-learning
 ms.subservice: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: 28d16bce6dbb5063c085e8c4393777ee9d152768
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b844a18a5acbd7a631bfe3b650dfa155d0e064ba
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60345108"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076652"
 ---
-# <a name="deploy-azure-machine-learning-studio-web-services-that-use-data-import-and-data-export-modules"></a>部署使用資料匯入和資料匯出模組的 Azure Machine Learning Studio Web 服務
+# <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>部署使用資料匯入和資料匯出模組的 Azure Machine Learning Studio (傳統版) Web 服務
 
 當您建立預測性實驗時，通常會新增 Web 服務輸入和輸出。 當您部署實驗時，取用者可以透過輸入和輸出傳送和接收 Web 服務的資料。 對於某些應用程式，取用者的資料可能可以從資料摘要獲得，或者資料已經位於外部資料來源 (例如 Azure Blob 儲存體)。 在這些情況下，應用程式就不需要使用 Web 服務的輸入和輸出讀取和寫入資料。 而是可以改用「批次執行服務 (BES)」使用「匯入資料」模組從資料來源讀取資料，然後使用「匯出資料」模組將評分結果寫入不同的資料位置。
 
-「匯入資料」和「匯出資料」模組可以讀取和寫入各種資料位置，例如，透過 HTTP 的 Web URL、Hive 查詢、Azure SQL 資料庫、Azure 表格儲存體、Azure Blob 儲存體、資料摘要提供或內部部署的 SQL 資料庫。
+「匯入資料」和「匯出資料」模組可以讀取和寫入各種資料位置，例如透過 HTTP 的 Web URL、Hive 查詢、Azure SQL Database 中的資料庫、Azure 表格儲存體、Azure Blob 儲存體、資料摘要提供或 SQL Server 資料庫。
 
 本主題使用「範例5：定型、測試、評估二元分類：成人資料集」範例，並假設已將該資料集載入到名為 censusdata 的 Azure SQL 資料表。
 
@@ -45,8 +41,8 @@ ms.locfileid: "60345108"
 6. 在 [資料庫伺服器名稱]、[資料庫名稱]、[使用者名稱] 和 [密碼] 欄位中，輸入資料庫的適當資訊。
 7. 在資料庫查詢欄位中，輸入下列查詢。
 
+    ```tsql
      select [age],
-
         [workclass],
         [fnlwgt],
         [education],
@@ -62,6 +58,7 @@ ms.locfileid: "60345108"
         [native-country],
         [income]
      from dbo.censusdata;
+    ```
 8. 在實驗畫布底端，按一下 [執行] 。
 
 ## <a name="create-the-predictive-experiment"></a>建立預測性實驗
@@ -78,7 +75,7 @@ ms.locfileid: "60345108"
 9. 在 [資料表名稱] 欄位中，輸入 dbo.ScoredLabels。 如果資料表不存在，則在執行實驗或呼叫 Web 服務時會建立資料表。
 10. 在 [資料表資料行的逗號分隔清單]  欄位中，輸入 ScoredLabels。
 
-當您撰寫的應用程式呼叫最後一個 Web 服務時，您可能要在執行階段指定不同的輸入查詢或目的地資料表。 若要設定這些輸入和輸出，請使用 Web 服務參數功能設來定「匯入資料」模組的「資料來源」屬性以及「匯出資料」模式資料目的地屬性。  如需有關 Web 服務參數的詳細資訊，請參閱 Cortana Intelligence and Machine Learning Blog (Cortana 智慧與機器學習部落格) 上的 [Azure Machine Learning Studio Web 服務參數](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/) (英文)。
+當您撰寫的應用程式呼叫最後一個 Web 服務時，您可能要在執行階段指定不同的輸入查詢或目的地資料表。 若要設定這些輸入和輸出，請使用 Web 服務參數功能設來定「匯入資料」模組的「資料來源」屬性以及「匯出資料」模式資料目的地屬性。  如需有關 Web 服務參數的詳細資訊，請參閱 Cortana Intelligence 與 Machine Learning 部落格上的 [Azure Machine Learning Studio Web 服務參數項目](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/) (英文)。
 
 設定匯入查詢和目的地資料表的 Web 服務參數︰
 
@@ -109,13 +106,15 @@ ms.locfileid: "60345108"
 8. 使用先前儲存的 API 金鑰更新 *apiKey* 變數的值。
 9. 找出要求宣告並更新傳入「匯入資料」和「匯出資料」模組的 Web 服務參數值。 在此情況下，您會使用原始的查詢，但定義新的資料表名稱。
 
-        var request = new BatchExecutionRequest()
-        {
-            GlobalParameters = new Dictionary<string, string>() {
-                { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
-                { "Table", "dbo.ScoredTable2" },
-            }
-        };
+    ```csharp
+    var request = new BatchExecutionRequest()
+    {
+        GlobalParameters = new Dictionary<string, string>() {
+            { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
+            { "Table", "dbo.ScoredTable2" },
+        }
+    };
+    ```
 10. 執行應用程式。
 
 執行完成時，新的資料表會加入包含評分結果的資料庫。
@@ -137,15 +136,17 @@ ms.locfileid: "60345108"
 8. 使用位於 [基本取用資訊] 區段中的 [主索引鍵] 更新 *apiKey* 變數的值。
 9. 找出 *scoreRequest* 宣告並更新傳入「匯入資料」和「匯出資料」模組的 Web 服務參數值。 在此情況下，您會使用原始的查詢，但定義新的資料表名稱。
 
-        var scoreRequest = new
+    ```csharp
+    var scoreRequest = new
+    {
+        Inputs = new Dictionary<string, StringTable>()
         {
-            Inputs = new Dictionary<string, StringTable>()
-            {
-            },
-            GlobalParameters = new Dictionary<string, string>() {
-                { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
-                { "Table", "dbo.ScoredTable3" },
-            }
-        };
+        },
+        GlobalParameters = new Dictionary<string, string>() {
+            { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
+            { "Table", "dbo.ScoredTable3" },
+        }
+    };
+    ```
 10. 執行應用程式。
 

@@ -1,33 +1,25 @@
 ---
-title: Azure 虛擬機器 PowerShell 範例 | Microsoft Docs
+title: Azure 虛擬機器 PowerShell 範例
 description: Azure 虛擬機器 PowerShell 範例
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: sample
 ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 576fe268bec12c16c7c2e2076dfa066c908693d5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 712ff713a4aa7c014b14323cea7c0d6be1c9f53c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60583684"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202231"
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Azure 虛擬機器 PowerShell 範例
 
 下表提供可建立及管理 Windows 虛擬機器 (VM) 之 PowerShell 指令碼範例的連結。
 
-| | |
+| 指令碼 | 描述 |
 |---|---|
 |**建立虛擬機器**||
 | [快速建立虛擬機器](./../scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 在最少提示的情況下，建立資源群組、虛擬機器及所有相關資源。|
@@ -49,5 +41,6 @@ ms.locfileid: "60583684"
 |**保護虛擬機器**||
 | [加密 VM 及其資料磁碟](./../scripts/virtual-machines-windows-powershell-sample-encrypt-vm.md?toc=%2fpowershell%2fazure%2ftoc.json) | 建立 Azure Key Vault、加密金鑰及服務主體，然後加密 VM。 |
 |**監視虛擬機器**||
-| [使用 Azure 監視器中監視 VM](./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 建立虛擬機器、安裝 Azure Log Analytics 代理程式，並在 Log Analytics 工作區中註冊 VM。  |
+| [透過 Azure 監視器來監視 VM](./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 建立虛擬機器、安裝 Azure Log Analytics 代理程式，並在 Log Analytics 工作區中註冊 VM。  |
+| [使用 PowerShell 收集訂用帳戶中所有 VM 的詳細資料](../scripts/virtual-machines-powershell-sample-collect-vm-details.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | 建立 CSV，其中會包含所提供訂用帳戶中所有 VM 的 VM 名稱、資源群組名稱、區域、虛擬網路、子網路、私人 IP 位址、OS 類型，以及公用 IP 位址。
 | | |

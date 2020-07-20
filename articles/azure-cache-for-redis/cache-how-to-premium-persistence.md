@@ -1,25 +1,17 @@
 ---
-title: 如何設定進階 Azure Cache for Redis 的資料持續性
+title: 設定資料持續性-Premium Azure Cache for Redis
 description: 了解如何設定和管理進階層 Azure Cache for Redis 執行個體的資料持續性
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: b01cf279-60a0-4711-8c5f-af22d9540d38
-ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
-ms.date: 08/24/2017
 ms.author: yegu
-ms.openlocfilehash: de0b2e3ef7b0268540ef4896ade132a297ee88ff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.service: cache
+ms.topic: conceptual
+ms.date: 08/24/2017
+ms.openlocfilehash: 84a5b4784a36fb22ae50a7a1ec4fcb7e5ef5b7c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60543317"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80245271"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>如何設定進階 Azure Cache for Redis 的資料持續性
 Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快取大小和功能，包括叢集功能、持續性及虛擬網路支援等「進階」層功能。 本文說明如何在進階 Azure Cache for Redis 執行個體中設定持續性。
@@ -34,11 +26,17 @@ Azure Cache for Redis 使用下列模型提供 Redis 持續性：
 * **RDB 持續性** - 設定 RDB (Redis 資料庫) 持續性後，Azure Cache for Redis 會依據可設定的備份頻率，在磁碟中保存一份 Redis 二進位格式的 Azure Cache for Redis 快照集。 如果發生同時停用主要和複本快取的災難性事件，即可使用最新的快照重新建構快取。 深入了解 RDB 持續性的[優點](https://redis.io/topics/persistence#rdb-advantages)和[缺點](https://redis.io/topics/persistence#rdb-disadvantages)。
 * **AOF 持續性** - 設定 AOF (僅附加檔案) 持續性後，Azure Cache for Redis 會將每個寫入作業儲存至記錄，而此記錄則會每秒至少一次儲存至 Azure 儲存體帳戶。 如果發生同時停用主要和複本快取的災難性事件，即可使用儲存的寫入作業重新建構快取。 深入了解 AOF 持續性的[優點](https://redis.io/topics/persistence#aof-advantages)和[缺點](https://redis.io/topics/persistence#aof-disadvantages)。
 
-您可以在建立快取期間從 [新的 Azure Cache for Redis] 刀鋒視窗設定持續性，也可以在現有進階快取的 [資源] 功能表中設定。
+持續性會將 Redis 的資料寫入您擁有及管理的 Azure 儲存體帳戶中。 您可以在快取建立期間，以及在現有高階快取的 [**資源] 功能表**上，從新的 [ **Azure Cache for Redis** ] 分頁進行設定。
+
+> [!NOTE]
+> 
+> Azure 儲存體會在保存資料時自動加密。 您可以使用自己的金鑰進行加密。 如需詳細資訊，請參閱[客戶管理的金鑰與 Azure Key Vault](/azure/storage/common/storage-service-encryption)。
+> 
+> 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-選取進階定價層後，按一下 [Redis 永續性] 。
+選取進階定價層後，按一下 [Redis 永續性] ****。
 
 ![Redis 永續性][redis-cache-persistence]
 
@@ -46,40 +44,40 @@ Azure Cache for Redis 使用下列模型提供 Redis 持續性：
 
 ## <a name="enable-redis-persistence"></a>啟用 Redis 持續性
 
-您可以在 [Redis 資料持續性] 刀鋒視窗中選擇 [RDB] 或 [AOF] 持續性，來啟用 Redis 持續性。 若為新的快取，則在快取建立程序期間存取此刀鋒視窗，如上節所述。 若為現有快取，則從快取的 [資源] 功能表存取 [Redis 資料永續性] 刀鋒視窗。
+選擇 [ **RDB** ] 或 [ **AOF** ] [持續性]，即可在**資料持續**性分頁上啟用 Redis 持續性。 若為新的快取，則在快取建立程序期間存取此刀鋒視窗，如上節所述。 針對現有的快取，會從快取的 [**資源] 功能表**存取 [**資料持續**性] 分頁。
 
 ![Redis 設定][redis-cache-settings]
 
 
 ## <a name="configure-rdb-persistence"></a>設定 RDB 持續性
 
-若要啟用 RDB 持續性，請按一下 [RDB]。 若要停用先前所啟用進階快取的 RDB 持續性，請按一下 [已停用]。
+若要啟用 RDB 持續性，請按一下 [RDB]****。 若要停用先前所啟用進階快取的 RDB 持續性，請按一下 [已停用]****。
 
 ![Redis RDB 持續性][redis-cache-rdb-persistence]
 
-若要設定備份間隔，請選取下拉式清單中的 [ **備份頻率** ]。 選項包括 [15 分鐘]、[30 分鐘]、[60 分鐘]、[6 小時]、[12 小時] 及 [24 小時]。 在先前的備份作業成功完成後，此間隔便會開始倒數計時，時間過後就會起始新的備份。
+若要設定備份間隔，請選取下拉式清單中的 [ **備份頻率** ]。 選項包括 [15 分鐘]****、[30 分鐘]****、[60 分鐘]****、[6 小時]****、[12 小時]**** 及 [24 小時]****。 在先前的備份作業成功完成後，此間隔便會開始倒數計時，時間過後就會起始新的備份。
 
-按一下 [儲存體帳戶] 選取要使用的儲存體帳戶，然後從 [儲存體金鑰] 下拉式清單中選擇 [主要金鑰] 或 [次要金鑰]。 您必須選擇與快取相同區域的儲存體帳戶，建議選取 [進階儲存體]  帳戶，因為進儲存體的輸送量較高。 
+按一下 [儲存體帳戶]**** 選取要使用的儲存體帳戶，然後從 [儲存體金鑰]**** 下拉式清單中選擇 [主要金鑰]**** 或 [次要金鑰]****。 您必須選擇與快取相同區域的儲存體帳戶，建議選取 [進階儲存體] **** 帳戶，因為進儲存體的輸送量較高。 
 
 > [!IMPORTANT]
-> 如果重新產生了永續性帳戶的儲存體金鑰，您必須從 [儲存體金鑰] 下拉式清單中重新設定所需的金鑰。
+> 如果重新產生了永續性帳戶的儲存體金鑰，您必須從 [儲存體金鑰]**** 下拉式清單中重新設定所需的金鑰。
 > 
 > 
 
-按一下 [確定]  以儲存持續性組態。
+按一下 [確定] **** 以儲存持續性組態。
 
 備份頻率間隔過後，會啟動下一個備份 (或新快取的第一個備份)。
 
 ## <a name="configure-aof-persistence"></a>設定 AOF 持續性
 
-若要啟用 AOF 持續性，請按一下 [AOF]。 若要停用先前所啟用進階快取的 AOF 持續性，請按一下 [已停用]。
+若要啟用 AOF 持續性，請按一下 [AOF]****。 若要停用先前所啟用進階快取的 AOF 持續性，請按一下 [已停用]****。
 
 ![Redis AOF 持續性][redis-cache-aof-persistence]
 
-若要設定 AOF 持續性，請指定 [第一個儲存體帳戶]。 此儲存體帳戶必須與快取位於相同區域，建議選取 [進階儲存體] 帳戶，因為進階儲存體的輸送量較高。 您可以選擇性地設定額外的儲存體帳戶，並指定為 [第二個儲存體帳戶]。 如果設定第二個儲存體帳戶，複本快取的寫入內容會寫入至此第二個儲存體帳戶。 針對所設定的每個儲存體帳戶，請選擇要從 [儲存體金鑰] 下拉式清單中使用 [主要金鑰] 或 [次要金鑰]。 
+若要設定 AOF 持續性，請指定 [第一個儲存體帳戶]****。 此儲存體帳戶必須與快取位於相同區域，建議選取 [進階儲存體]**** 帳戶，因為進階儲存體的輸送量較高。 您可以選擇性地設定額外的儲存體帳戶，並指定為 [第二個儲存體帳戶]****。 如果設定第二個儲存體帳戶，複本快取的寫入內容會寫入至此第二個儲存體帳戶。 針對所設定的每個儲存體帳戶，請選擇要從 [儲存體金鑰]**** 下拉式清單中使用 [主要金鑰]**** 或 [次要金鑰]****。 
 
 > [!IMPORTANT]
-> 如果重新產生了永續性帳戶的儲存體金鑰，您必須從 [儲存體金鑰] 下拉式清單中重新設定所需的金鑰。
+> 如果重新產生了永續性帳戶的儲存體金鑰，您必須從 [儲存體金鑰]**** 下拉式清單中重新設定所需的金鑰。
 > 
 > 
 
@@ -133,7 +131,7 @@ AOF 持續性將每筆寫入內容儲存至記錄，因此會對輸送量造成�
 * 如果已調整為較小的大小，而且較小的大小中沒有足夠的空間可保存來自最近備份的所有資料，將會在還原程序中收回金鑰，通常是使用 [allkeys-lru](https://redis.io/topics/lru-cache) 收回原則。
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>在建立快取之後，可以變更 RDB 備份頻率嗎？
-可以，您可以在 [Redis 資料持續性] 刀鋒視窗上變更 RDB 持續性的備份頻率。 如需相關指示，請參閱「設定 Redis 永續性」。
+是，您可以在 [**資料持續**性] 分頁上變更 RDB 持續性的備份頻率。 如需相關指示，請參閱「設定 Redis 永續性」。
 
 ### <a name="why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups"></a>為什麼我的 RDB 備份頻率是 60 分鐘，備份的間隔卻超過 60 分鐘？
 在前一個備份程序順利完成後，RDB 持續性備份頻率間隔才會開始計算。 如果備份頻率是 60 分鐘，而備份程序要 15 分鐘才能順利完成，則下一次備份要在先前的備份開始的 75 分鐘後才會開始。

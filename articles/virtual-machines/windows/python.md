@@ -1,26 +1,18 @@
 ---
-title: 在 Azure 中使用 Python 建立並管理 Windows VM | Microsoft Docs
+title: 使用 Python 在 Azure 中建立及管理 Windows VM
 description: 了解如何在 Azure 中使用 Python 建立並管理 Windows VM。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
+ms.workload: infrastructure
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: 748bc08e003d398e96ef55493e4f3b0bf6b7da28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: b5f8b0e8f22a476ad379b55275d79c2874966852
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61034751"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84551970"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>在 Azure 中使用 Python 建立並管理 Windows VM
 
@@ -29,7 +21,7 @@ ms.locfileid: "61034751"
 > [!div class="checklist"]
 > * 建立 Visual Studio 專案
 > * 安裝套件
-> * 创建凭据
+> * 建立認證
 > * 建立資源
 > * 執行管理工作
 > * 刪除資源
@@ -39,7 +31,7 @@ ms.locfileid: "61034751"
 
 ## <a name="create-a-visual-studio-project"></a>建立 Visual Studio 專案
 
-1. 如果您尚未安裝 [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio)，請進行安裝。 在 [工作負載] 頁面上選取 [Python 開發]，然後按一下 [安裝]。 在摘要中，您可以看到會自動為您選擇 **Python 3 64 位元 (3.6.0)**。 如果您已安裝 Visual Studio，您可以使用 Visual Studio Launcher 新增 Python 工作負載。
+1. 如果您尚未安裝 [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio)，請進行安裝。 在 [工作負載] 頁面上選取 [Python 開發]，然後按一下 [安裝]。 在摘要中，您可以看到會自動為您選擇 **Python 3 64 位元 (3.6.0)** 。 如果您已安裝 Visual Studio，您可以使用 Visual Studio Launcher 新增 Python 工作負載。
 2. 安裝並啟動 Visual Studio 後，按一下 [檔案] > [新增] > [專案]。
 3. 按一下 [範本] > [Python] > [Python 應用程式]，輸入 myPythonProject 作為專案的名稱，選取專案的位置，然後按一下 [確定]。
 
@@ -53,7 +45,7 @@ ms.locfileid: "61034751"
 
 ## <a name="create-credentials"></a>建立認證
 
-在開始此步驟之前，請確定您具有 [Active Directory 服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)。 此外，应记下应用程序 ID、身份验证密钥和租户 ID，以便在后面的步骤中使用。
+在開始此步驟之前，請確定您具有 [Active Directory 服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)。 您也應該記錄應用程式識別碼、驗證金鑰以及租用戶識別碼，您在稍後的步驟會需要這些項目。
 
 1. 開啟所建立的 myPythonProject.py 檔案，然後新增此程式碼，讓您的應用程式可執行：
 
@@ -111,22 +103,22 @@ ms.locfileid: "61034751"
 
 ```python
 resource_group_client = ResourceManagementClient(
-    credentials, 
+    credentials,
     SUBSCRIPTION_ID
 )
 network_client = NetworkManagementClient(
-    credentials, 
+    credentials,
     SUBSCRIPTION_ID
 )
 compute_client = ComputeManagementClient(
-    credentials, 
+    credentials,
     SUBSCRIPTION_ID
 )
 ```
 
 ### <a name="create-the-vm-and-supporting-resources"></a>建立 VM 和支援的資源
 
-必须在[资源组](../../azure-resource-manager/resource-group-overview.md)中包含所有资源。
+所有資源都必須包含在[資源群組](../../azure-resource-manager/management/overview.md)中。
 
 1. 若要建立資源群組，請在 .py 檔案的變數之後新增此函式：
 
@@ -172,7 +164,7 @@ compute_client = ComputeManagementClient(
     input('Availability set created. Press enter to continue...')
     ```
 
-与虚拟机通信需要[公共 IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)。
+必須要有[公用 IP 位址](../../virtual-network/public-ip-addresses.md)才能與虛擬機器進行通訊。
 
 1. 若要建立虛擬機器的公用 IP 位址，請在 .py 檔案的變數之後新增此函式：
 
@@ -298,7 +290,7 @@ compute_client = ComputeManagementClient(
     input('Press enter to continue...')
     ```
 
-创建所有支持资源后，即可创建虚拟机。
+既然您已經建立所有支援的資源，您可以建立虛擬機器。
 
 1. 若要建立虛擬機器，請在 .py 檔案的變數之後新增此函式：
    
@@ -362,9 +354,9 @@ compute_client = ComputeManagementClient(
     input('Press enter to continue...')
     ```
 
-## <a name="perform-management-tasks"></a>执行管理任务
+## <a name="perform-management-tasks"></a>執行管理工作
 
-在虛擬機器的生命週期內，您可以執行一些管理工作，例如啟動、停止或刪除虛擬機器。 此外，建议创建代码来自动执行重复或复杂的任务。
+在虛擬機器的生命週期內，您可以執行一些管理工作，例如啟動、停止或刪除虛擬機器。 此外，您可以建立程式碼來自動執行重複或複雜的工作。
 
 ### <a name="get-information-about-the-vm"></a>取得 VM 的相關資訊
 
@@ -431,7 +423,7 @@ compute_client = ComputeManagementClient(
 
 ### <a name="stop-the-vm"></a>停止 VM
 
-可停止虚拟机并保留其所有设置，但需继续付费；还可停止虚拟机并解除分配。 當解除配置虛擬機器時，與其相關聯的所有資源也都會解除配置且其計費會結束。
+您可以停止虛擬機器並保留其所有的設定，但仍繼續計費，或您可以停止虛擬機器並將其解除配置。 當解除配置虛擬機器時，與其相關聯的所有資源也都會解除配置且其計費會結束。
 
 1. 若要停止虛擬機器而不解除配置，請在 .py 檔案的變數之後新增此函式：
 
@@ -453,7 +445,7 @@ compute_client = ComputeManagementClient(
     input('Press enter to continue...')
     ```
 
-### <a name="start-the-vm"></a>启动 VM
+### <a name="start-the-vm"></a>啟動 VM
 
 1. 若要啟動虛擬機器，請在 .py 檔案的變數之後新增此函式：
 
@@ -545,7 +537,7 @@ compute_client = ComputeManagementClient(
 
 ## <a name="delete-resources"></a>刪除資源
 
-您將為 Azure 中所使用的資源支付費用，因此，將不再需要的資源刪除永遠是最好的做法。 如果要删除虚拟机和所有支持资源，只需删除资源组。
+您將為 Azure 中所使用的資源支付費用，因此，將不再需要的資源刪除永遠是最好的做法。 如果您想要刪除虛擬機器及所有支援的資源，您只需要刪除資源群組。
 
 1. 若要刪除資源群組及所有資源，請在 .py 檔案的變數之後新增此函式：
    
@@ -554,7 +546,7 @@ compute_client = ComputeManagementClient(
         resource_group_client.resource_groups.delete(GROUP_NAME)
     ```
 
-2. 若要调用之前添加的函数，请在 .py 文件末尾处的 if 语句下添加此代码：
+2. 若要呼叫您先前新增的函式，請在 .py 檔案結尾的 **if** 陳述式下新增此程式碼：
    
     ```python
     delete_resources(resource_group_client)
@@ -566,7 +558,7 @@ compute_client = ComputeManagementClient(
 
 1. 若要執行主控台應用程式，請在 Visual Studio 中按一下 [啟動]。
 
-2. 所有资源的状态都返回后，请按 Enter。 在狀態資訊中，您應該會看到「成功」佈建狀態。 建立虛擬機器之後，您可以將所建立的所有資源刪除。 在您按下 **Enter** 鍵以開始刪除資源之前，可以先花幾分鐘的時間來確認 Azure 入口網站中的建立情況。 如果您讓 Azure 入口網站維持開啟，可能必須重新整理刀鋒視窗以便查看新的資源。  
+2. 傳回每個資源的狀態之後，按下 **Enter** 鍵。 在狀態資訊中，您應該會看到「成功」佈建狀態。 建立虛擬機器之後，您可以將所建立的所有資源刪除。 在您按下 **Enter** 鍵以開始刪除資源之前，可以先花幾分鐘的時間來確認 Azure 入口網站中的建立情況。 如果您讓 Azure 入口網站維持開啟，可能必須重新整理刀鋒視窗以便查看新的資源。  
 
     此主控台應用程式從開始到完成的完整執行應該需要五分鐘左右。 應用程式已完成之後、所有資源和資源群組刪除之前，可能需要幾分鐘的時間。
 

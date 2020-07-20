@@ -1,28 +1,30 @@
 ---
-title: IIS 驗證與 Azure MFA Server-Azure Active Directory
+title: IIS 驗證和 Azure MFA 伺服器 | Azure Active Directory
 description: 部署 IIS 驗證與 Azure Multi-Factor Authentication Server。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6404356edca606d78656011b9dec654e9f29edd3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 2377ca4b929200ecd0a3a7de01dd3a58be6b7863
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60415019"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83845435"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>針對 IIS Web 應用程式設定 Azure Multi-Factor Authentication Server
 
 使用 Azure Multi-Factor Authentication (MFA) Server 的 [IIS 驗證] 區段來啟用及設定 IIS 驗證，以便與 Microsoft IIS Web 應用程式整合。 Azure MFA Server 會安裝一個外掛程式，可以篩選對 IIS Web 伺服器提出的要求，以新增 Azure Multi-Factor Authentication。 IIS 外掛程式支援表單架構驗證和整合式 Windows HTTP 驗證。 信任的 IP 也可以設定為將內部 IP 位址免除雙因素驗證。
 
-![MFA Server 中的 IIS 驗證](./media/howto-mfaserver-iis/iis.png)
+> [!IMPORTANT]
+> 自 2019 年 7 月 1 日起，Microsoft 不再為新的部署提供 MFA 伺服器。 希望要求使用者使用多重要素驗證的新客戶，應該使用雲端式 Azure Multi-Factor Authentication。 在 7 月 1 日前啟用 MFA 伺服器的現有客戶，將能夠下載最新版本及未來的更新，並照常產生啟動認證。 當您使用雲端式 Azure Multi-Factor Authentication 時，除了 Azure Multi-Factor Authentication (MFA) Server 提供的 IIS 外掛程式外，別無選擇。 請改用 Web 應用程式 Proxy (WAP) 搭配 Active Directory 同盟服務 (AD FS) 或 Azure Active Directory 的應用程式 Proxy。
+
+![MFA 伺服器中的 IIS 驗證](./media/howto-mfaserver-iis/iis.png)
 
 ## <a name="using-form-based-iis-authentication-with-azure-multi-factor-authentication-server"></a>搭配 Azure Multi-Factor Authentication Server 使用表單架構 IIS 驗證
 
@@ -31,7 +33,7 @@ ms.locfileid: "60415019"
 1. 在 Azure Multi-Factor Authentication Server 中，按一下左功能表中的 [IIS 驗證] 圖示。
 2. 按一下 [表單架構] 索引標籤。
 3. 按一下 [新增] 。
-4. 若要自動偵測使用者名稱、 密碼和網域變數，請輸入登入 URL (例如`https://localhost/contoso/auth/login.aspx`) 在自動設定表單架構網站 對話方塊中，然後按一下**確定**。
+4. 若要自動偵測使用者名稱、密碼和網域變數，請在 [自動設定表單架構網站] 對話方塊中，輸入登入 URL (例如 `https://localhost/contoso/auth/login.aspx`)，然後按一下 [確定]。
 5. 如果所有使用者都已經或將要匯入到伺服器中，且必須接受多重要素驗證，請選取 [需要進行 Multi-Factor Authentication 使用者比對] 方塊。 如果有大量使用者尚未匯入伺服器及/或將免除多重要素驗證，請勿核取此方塊。
 6. 如果無法自動偵測頁面變數，請按一下 [自動設定表單架構網站] 對話方塊中的 [手動指定]。
 7. 在 [新增表單架構網站] 對話方塊中，於 [提交 URL] 欄位中輸入登入頁面的 URL，然後輸入 [應用程式名稱] \(選擇性)。 應用程式名稱會出現在 Azure Multi-Factor Authentication 報表中，而且可能顯示在簡訊或行動應用程式驗證訊息內。
@@ -55,7 +57,7 @@ ms.locfileid: "60415019"
 1. 在 Azure Multi-Factor Authentication Server 中，按一下左功能表中的 [IIS 驗證] 圖示。
 2. 按一下 [HTTP] 索引標籤。
 3. 按一下 [新增] 。
-4. 在 [新增基底 URL] 對話方塊中，輸入執行 HTTP 驗證網站的 URL (例如<http://localhost/owa>)，並提供應用程式名稱 （選擇性）。 應用程式名稱會出現在 Azure Multi-Factor Authentication 報表中，而且可能顯示在簡訊或行動應用程式驗證訊息內。
+4. 在 [新增基底 URL] 對話方塊中，輸入執行 HTTP 驗證的網站 URL (例如 <http://localhost/owa>)，然後輸入應用程式名稱 (選擇性)。 應用程式名稱會出現在 Azure Multi-Factor Authentication 報表中，而且可能顯示在簡訊或行動應用程式驗證訊息內。
 5. 調整 [閒置逾時] 和 [最長工作階段時間] \(如果預設值不足夠)。
 6. 如果所有使用者都已經或將要匯入到伺服器中，且必須接受多重要素驗證，請選取 [需要進行 Multi-Factor Authentication 使用者比對] 方塊。 如果有大量使用者尚未匯入伺服器及/或將免除多重要素驗證，請勿核取此方塊。
 7. 視需要選取 [Cookie 快取] 方塊。
@@ -76,4 +78,4 @@ ms.locfileid: "60415019"
 1. 在 [IIS 驗證] 區段中，按一下 [信任的 IP] 索引標籤。
 2. 按一下 [新增] 。
 3. 在 [新增可信任 IP] 對話方塊出現時，選取 [單一 IP]、[IP 範圍] 或 [子網路] 選項按鈕。
-4. 輸入應列入允許清單中的 IP 位址、IP 位址範圍或子網路。 如果要輸入子網路，請選取適當的「網路遮罩」，然後按一下 [確定]。 現已加入白名單。
+4. 輸入應該允許的 IP 位址、IP 位址範圍或子網路。 如果要輸入子網路，請選取適當的「網路遮罩」，然後按一下 [確定]。

@@ -1,62 +1,91 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Sentinel 預覽文件
+### YamlMime:Landing
+title: Azure Sentinel 文件
+summary: 本文提供使用案例以開始使用 Azure Sentinel。 使用為現今世界重新打造的 SIEM，在威脅造成危害前先予以發現並阻止。 Azure Sentinel 能讓您縱觀企業的情況。
 metadata:
-  title: Azure Sentinel 預覽文件 - 教學課程、快速入門 |Microsoft Docs
-  meta.description: Azure Sentinel is a cloud-native SIEM that provides intelligent security analytics for your entire enterprise at cloud scale.
+  title: Azure Sentinel 文件
+  description: 本文提供使用案例和各種使用情況以開始使用 Azure Sentinel。 使用為現今世界重新打造的 SIEM，在威脅造成危害前先予以發現並阻止。 Azure Sentinel Azure Sentinel 能讓您縱觀企業的情況。# 必要，搜尋結果中顯示的文章描述。 < 160 個字元。
   services: sentinel
-  author: cmcclister
-  manager: carolz
   ms.service: sentinel
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: azure-sentinel
   ms.topic: landing-page
-  ms.date: 02/28/19
-  ms.author: cmcclister
-abstract:
-  description: Azure Sentinel 預覽是雲端原生 SIEM，其可為您的整個企業提供雲端規模的智慧型安全性分析。 取得無限的雲端速度和規模，以協助專注於真正重要的事情。 從您的雲端或內部部署資產、Office 365、Azure 資源和其他雲端輕鬆收集資料。 透過 Microsoft 安全性分析專家提供的內建機器學習有效地偵測威脅。 使用內建協調流程和自動化劇本自動執行威脅回應。
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何將資料上線至 Azure Sentinel，並掌握您的資料和潛在威脅。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/deploy.svg
-            text: 使 Azure Sentinel 上線
-            href: /azure/sentinel/quickstart-onboard
-          - image:
-              src: media/index/get-started.svg
-            text: 開始使用 Azure Sentinel
-            href: /azure/sentinel/quickstart-get-visibility
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何定義安全性原則，保護您的資源免受惡意活動攻擊，並回應安全性警示和事件。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/sentinel/tutorial-detect-threats">使用 Azure Sentinel 偵測威脅</a>
-          - html: <a href="/azure/sentinel/tutorial-respond-threats-playbook">設定自動化的威脅回應</a>
-  - title: 透過 Microsoft Learn 增進您的技巧
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure 中的安全性簡介
-            href: 'https://docs.microsoft.com/learn/azure'
-            image:
-              src: media/index/tutorial.svg
-              href: 'https://docs.microsoft.com/learn/azure'
-      - type: paragraph
-        text: <a href="/learn/browse/?term=security">更多互動式學習...</a>
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - html: '<a href="https://azure.microsoft.com/updates/?product=sentinel">服務更新</a>'
+  ms.collection: collection
+  author: yelevin
+  ms.author: yelevin
+  ms.date: 06/25/2020
+  ms.openlocfilehash: d4e86295020ab68c6769ac34d6259bd78cf9934e
+  ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 06/25/2020
+  ms.locfileid: "85374554"
+landingContent:
+- title: 關於 Azure Sentinel
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure Sentinel？
+      url: overview.md
+- title: 開始使用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使 Azure Sentinel 上線
+      url: quickstart-onboard.md
+    - text: 了解警示
+      url: quickstart-get-visibility.md
+  - linkListType: how-to-guide
+    links:
+    - text: 將資料連線到 Azure Sentinel
+      url: connect-data-sources.md
+- title: 連線其他資料來源
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 連線 Azure Active Directory
+      url: connect-azure-active-directory.md
+    - text: 連線 Azure 資訊保護
+      url: connect-azure-information-protection.md
+    - text: 連線 AWS
+      url: connect-aws.md
+    - text: 連線 Palo Alto 網路
+      url: connect-paloalto.md
+    - text: 連線威脅情報
+      url: connect-threat-intelligence.md
+- title: 使用多個租用戶
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 如何在 Azure Sentinel 中啟用多租使用者支援
+      url: multiple-tenants-service-providers.md
+- title: 了解您的所處環境
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 監視您的資料
+      url: tutorial-monitor-your-data.md
+    - text: 調查事件
+      url: tutorial-investigate-cases.md
+- title: 偵測威脅
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 使用內建分析偵測威脅
+      url: tutorial-detect-threats-built-in.md
+    - text: 建立自訂偵測規則
+      url: tutorial-detect-threats-custom.md
+- title: 自動威脅防護
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 自動回應威脅
+      url: tutorial-respond-threats-playbook.md
+    - text: 使用 Jupyter Notebooks 尋找安全性威脅
+      url: notebooks.md
+- title: 主動了解威脅偵測
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 連線威脅情報
+      url: connect-threat-intelligence.md
+    - text: 尋找威脅
+      url: hunting.md

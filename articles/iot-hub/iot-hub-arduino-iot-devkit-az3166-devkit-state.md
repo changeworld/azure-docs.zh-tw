@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: e955d21132dda6caa137ad3b5de9d00ccf7ed1b4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: deb1ea8c7b41ad48bddebfbed1b15c667ee0071a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61369800"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73483951"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
@@ -40,36 +40,36 @@ ms.locfileid: "61369800"
 
 ## <a name="provision-azure-services"></a>佈建 Azure 服務
 
-1. 按一下 Visual Studio Code 中的 [工作] 下拉式功能表，然後選取 [執行工作...]  - [cloud-provision]。
+1. 按一下 Visual Studio Code 中的 [工作]**** 下拉式功能表，然後選取 [執行工作...]**** - [cloud-provision]****。
 
-2. 您的進度會顯示在 [歡迎使用] 面板的 [終端機] 索引標籤之下。
+2. 您的進度會顯示在 [歡迎使用]**** 面板的 [終端機]**** 索引標籤之下。
 
-3. 當系統提示「您要選擇哪個訂用帳戶」訊息時，請選取一個訂用帳戶。
+3. 當系統提示「您要選擇哪個訂用帳戶」** 訊息時，請選取一個訂用帳戶。
 
 4. 選取或選擇資源群組。 
  
    > [!NOTE]
    > 如果您已經有免費的 IoT 中樞，您可以略過此步驟。
 
-5. 當系統提示「您要選擇哪個 IoT 中樞」訊息時，請選取或建立一個 IoT 中樞。
+5. 當系統提示「您要選擇哪個 IoT 中樞」** 訊息時，請選取或建立一個 IoT 中樞。
 
-6. 隨即顯示類似 function app: function app name: xxx 的項目。 請記下函式應用程式名稱，後續步驟將會使用該名稱。
+6. 隨即顯示類似 function app: function app name: xxx** 的項目。 請記下函式應用程式名稱，後續步驟將會使用該名稱。
 
-7. 等候 Azure Resource Manager 範本部署完成，也就是指出當訊息*Resource Manager 範本部署：完成*隨即出現。
+7. 等候 Azure Resource Manager 範本部署完成，也就是「Resource Manager 範本部署：完成」** 訊息顯示時。
 
 ## <a name="deploy-function-app"></a>部署函式應用程式
 
-1. 按一下 Visual Studio Code 中的 [工作] 下拉式功能表，然後選取 [執行工作...]  - [cloud-deploy]。
+1. 按一下 Visual Studio Code 中的 [工作]**** 下拉式功能表，然後選取 [執行工作...]**** - [cloud-deploy]****。
 
-2. 等候函式應用程式程式碼上傳程序完成;訊息*函式應用程式部署：完成*隨即出現。
+2. 等候函式應用程式程式碼上傳程序完成；「函式應用程式部署：完成」** 訊息隨即顯示。
 
 ## <a name="configure-iot-hub-device-connection-string-in-devkit"></a>在 DevKit 中設定 IoT 中樞裝置連接字串
 
 1. 將 MXChip IoT DevKit 連接到您的電腦。
 
-2. 按一下 Visual Studio Code 中的 [工作] 下拉式功能表，然後選取 [執行工作...]  - [config-device-connection]。
+2. 按一下 Visual Studio Code 中的 [工作]**** 下拉式功能表，然後選取 [執行工作...]**** - [config-device-connection]****。
 
-3. 在 MXChip IoT DevKit，按住按鈕 **A**、按 [重設] 按鈕，然後放開按鈕 **A**，讓 DekKit 進入設定模式。
+3. 在 MXChip IoT DevKit，按住按鈕 **A**、按 [重設]**** 按鈕，然後放開按鈕 **A**，讓 DekKit 進入設定模式。
 
 4. 等候連接字串設定程序完成。
 
@@ -77,9 +77,9 @@ ms.locfileid: "61369800"
 
 將 MXChip IoT DevKit 連接到您的電腦後：
 
-1. 按一下 Visual Studio Code 中的 [工作] 下拉式功能表，然後選取 [執行組建工作...]Arduino 草圖會經過編譯並上傳至 DevKit。
+1. 按一下 Visual Studio Code**中的 [** 工作] 下拉式功能表，然後選取 [**執行組建工作 ...** ]。Arduino 草圖會經過編譯並上傳至 DevKit。
 
-2. 當草圖上傳成功後，「建立和上傳草圖：成功」訊息隨即顯示。
+2. 當草圖上傳成功後，「建立和上傳草圖：成功」** 訊息隨即顯示。
 
 ## <a name="monitor-devkit-state-in-browser"></a>在瀏覽器中監視 DevKit 狀態
 
@@ -89,7 +89,7 @@ ms.locfileid: "61369800"
 
 3. 輸入您稍早記下的函式應用程式名稱。
 
-4. 按一下 [連線] 按鈕。
+4. 按一下 [連線 **]** 按鈕
 
 5. 在幾秒內，頁面就會重新整理並顯示 DevKit 的 WiFi 連線狀態和每個內建感應器的狀態。
 
@@ -106,7 +106,7 @@ ms.locfileid: "61369800"
 ![範例測試程序](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
 
 > [!NOTE]
-> 您可以在 Azure 入口網站中查看裝置對應項的未經處理資料：IoT 中樞 -\> IoT 裝置\> *\<您的裝置\>* -\> 裝置對應項。
+> 您可以在 Azure 入口網站中查看裝置對應項的原始資料： [IoT 中樞]-[ \> IoT 裝置]-[裝置對應項] \> *\<your device\>*  - \> 。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -117,4 +117,4 @@ ms.locfileid: "61369800"
 以下是建議的後續步驟：
 
 * [Azure IoT 遠端監視解決方案加速器概觀](https://docs.microsoft.com/azure/iot-suite/)
-* [將 MXChip IoT DevKit 裝置連線到您的 Azure IoT Central 應用程式](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+* [將 MXChip IoT DevKit 裝置連線到您的 Azure IoT Central 應用程式](/azure/iot-central/core/howto-connect-devkit)

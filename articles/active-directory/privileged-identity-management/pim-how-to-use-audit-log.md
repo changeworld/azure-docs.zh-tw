@@ -1,68 +1,143 @@
 ---
-title: 在 PIM-Azure Active Directory 中檢視稽核記錄的 Azure AD 角色 |Microsoft Docs
-description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中檢視 Azure AD 角色的稽核歷程記錄。
+title: 查看 Azure AD PIM 中 Azure AD 角色的審核記錄報告 |Microsoft Docs
+description: 瞭解如何在 Azure AD Privileged Identity Management （PIM）中，查看 Azure AD 角色的審核記錄歷程記錄。
 services: active-directory
 documentationcenter: ''
-author: rolyon
-manager: mtillman
+author: curtand
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/14/2017
-ms.author: rolyon
+ms.date: 01/07/2019
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c080173af8ddd31b077bb820ea19d82eb2b29300
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b0a5a20498ccd0a133c6e02d366af690acf2665e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60440779"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84742261"
 ---
-# <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>檢視稽核記錄的 Azure AD PIM 中的角色
-若要查看所有特殊權限的角色在指定的期間內的所有使用者指派與啟用，您可以使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 稽核歷程記錄。 如果您想要查看租用戶活動 (包括系統管理員、使用者和同步處理活動) 的完整稽核歷程記錄，您可以使用 [Azure Active Directory 存取和使用情況報告](../reports-monitoring/overview-reports.md)
+# <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>查看 Privileged Identity Management 中 Azure AD 角色的審核歷程記錄
 
-## <a name="navigate-to-audit-history"></a>瀏覽至稽核記錄
-從 [Azure 入口網站](https://portal.azure.com)儀表板選取 [Azure AD Privileged Identity Management] 應用程式。 從該處，按一下 PIM 儀表板中的 [管理特殊權限角色] > [稽核記錄] 來存取稽核記錄。
+您可以使用 [Privileged Identity Management （PIM）] 審核歷程記錄，查看過去30天內所有特殊許可權角色的所有角色指派和啟用。 如果您想要在您的 Azure Active Directory （Azure AD）組織中查看活動的完整審核歷程記錄（包括系統管理員、使用者和同步處理活動），您可以使用[Azure Active Directory 安全性和活動報告](../reports-monitoring/overview-reports.md)。
 
-![稽核歷程記錄](media/azure-ad-pim-approval-workflow/image021.png)
+## <a name="determine-your-version-of-pim"></a>判斷您的 PIM 版本
 
-> [!NOTE]
-> 您可以依 [動作] 排序資料，並尋找「已核准啟用」
+從2019年11月開始，Privileged Identity Management 的 Azure AD 角色部分更新為符合 Azure 資源角色體驗的新版本。 這會建立額外的功能，以及[現有 API 的變更](azure-ad-roles-features.md#api-changes)。 推出新版本時，您在本文中遵循的程式取決於您目前擁有的 Privileged Identity Management 版本。 請依照本節中的步驟來判斷您擁有的 Privileged Identity Management 版本。 知道您的 Privileged Identity Management 版本之後，您可以選取本文中符合該版本的程式。
 
+1. 以[特殊權限角色管理員](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色的使用者身分登入[Azure 入口網站](https://portal.azure.com/)。
+1. 開啟**Azure AD Privileged Identity Management**。 如果您在 [總覽] 頁面頂端有橫幅，請遵循本文的 [**新版本**] 索引標籤中的指示。 否則，請依照 [**先前版本**] 索引標籤中的指示進行。
 
-## <a name="audit-history-graph"></a>稽核記錄圖表
-您可以使用稽核記錄，在折線圖中檢視啟用總數、每天最大啟用數目，以及每天平均啟用數目。  如果稽核記錄中有一個以上的角色，您也可以依角色篩選資料。
+    [![Azure AD 角色新版本](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "選取您版本的索引標籤")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
 
-使用 [時間]、[動作] 和 [角色] 按鈕來排序記錄。
+# <a name="new-version"></a>[新版本](#tab/new)
 
-## <a name="audit-history-list"></a>稽核記錄清單
-稽核記錄清單中的欄如下：
+請遵循下列步驟來查看 Azure AD 角色的審核歷程記錄。
 
-* **要求者** - 要求啟用或變更角色的使用者。  如果值為「Azure System (Azure 系統)」，請檢查 Azure 稽核記錄以取得詳細資訊。
-* **使用者** - 啟用角色或被指派給角色的使用者。
-* **角色** - 使用者所指派或啟用的角色。
-* **動作** - 要求者所採取的動作。 這可包括指派、解除指派、啟用或停用。
-* **時間** - 動作發生的時間。
-* **推理** - 如果在啟用過程中於 [原因] 欄位輸入任何文字，則它將會顯示於此處。
-* **到期** - 只與角色啟用相關。
+## <a name="view-resource-audit-history"></a>檢視資源稽核記錄
+
+資源審核可讓您查看與您的 Azure AD 角色相關聯的所有活動。
+
+1. 開啟**Azure AD Privileged Identity Management**。
+
+1. 選取 [ **Azure AD 角色**]。
+
+1. 選取 [資源] [ **audit**]。
+
+1. 使用預先定義的日期或自訂範圍篩選記錄。
+
+    ![具有篩選的資源審核清單](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+
+## <a name="view-my-audit"></a>檢視我的稽核
+
+我的稽核可讓您檢視您的個人角色活動。
+
+1. 開啟**Azure AD Privileged Identity Management**。
+
+1. 選取 [ **Azure AD 角色**]。
+
+1. 選取您想要查看其 audit 歷程記錄的資源。
+
+1. 選取 [**我的審核**]。
+
+1. 使用預先定義的日期或自訂範圍篩選記錄。
+
+    ![目前使用者的審核清單](media/azure-pim-resource-rbac/my-audit-time.png)
+
+# <a name="previous-version"></a>[先前的版本](#tab/previous)
+
+## <a name="view-audit-history"></a>檢視稽核記錄
+
+請遵循下列步驟來查看 Azure AD 角色的審核歷程記錄。
+
+1. 以屬於[特殊權限角色管理員](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色一員的使用者身分登入 [Azure 入口網站](https://portal.azure.com/)。
+
+1. 開啟**Azure AD Privileged Identity Management**。
+
+1. 選取 [ **Azure AD 角色**]。
+
+1. 選取 [**目錄角色**] [audit 歷程記錄]。
+
+    根據您的 audit 歷程記錄，會顯示直條圖，以及啟用總數、每天最大啟用數，以及每天的平均啟用。
+
+    [![Azure AD 角色新版本](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "查看目錄角色審查歷程記錄")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
+
+    在頁面底部，會顯示一個資料表，其中包含可用的審核歷程記錄中每個動作的相關資訊。 這些資料行具有下列意義：
+
+    | 資料行 | 描述 |
+    | --- | --- |
+    | Time | 當動作發生時。 |
+    | 要求者 | 要求啟用或變更角色的使用者。 如果值是**Azure 系統**，請查看 azure audit 歷程記錄以取得詳細資訊。 |
+    | 動作 | 要求者所採取的動作。 動作可以包含指派、解除指派、啟用、停用或 AddedOutsidePIM。 |
+    | 成員 | 啟用或指派給角色的使用者。 |
+    | 角色 | 使用者指派或啟用的角色。 |
+    | 理由 | 啟用期間輸入 [原因] 欄位中的文字。 |
+    | 到期 | 當已啟用的角色過期時。 僅適用于合格的角色指派。 |
+
+1. 若要排序 audit 歷程記錄，請按一下 [**時間**]、[**動作**] 和 [**角色**] 按鈕。
 
 ## <a name="filter-audit-history"></a>篩選稽核記錄
-您可以按一下 [篩選]  按鈕，來篩選稽核記錄中顯示的資訊。  隨即會出現 [更新圖表參數]  刀鋒視窗。
 
-設定篩選之後，請按一下 [更新]  來篩選記錄中的資料。  如果資料並未立即出現，請重新整理頁面。
+1. 在 [audit 歷程記錄] 頁面頂端，按一下 [**篩選**] 按鈕。
 
-### <a name="change-the-date-range"></a>變更日期範圍
-使用 [今天]、[過去一週]、[過去一個月] 或 [自訂] 按鈕來變更稽核記錄的時間範圍。
+    [**更新圖表參數**] 窗格隨即出現。
 
-當您選擇 [自訂] 按鈕時，將會看見可指定記錄日期範圍的 [開始] 日期欄位和 [結束] 日期欄位。  您可以使用 MM/DD/YYYY 格式輸入日期，或者按一下 [月曆]  圖示並從月曆中選擇日期。
+1. 在 [**時間範圍**] 中，選取時間範圍。
 
-### <a name="change-the-roles-included-in-the-history"></a>變更記錄中包含的角色
-選取或取消選取每個角色旁邊的 [角色]  核取方塊，即可將其納入記錄或排除在記錄之外。
+1. 在 [**角色**] 中，選取核取方塊以指出您想要查看的角色。
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+    ![更新圖表參數窗格](media/pim-how-to-use-audit-log/update-chart-parameters.png)
+
+1. 選取 [**完成**] 以查看篩選的 audit 歷程記錄。
+
+## <a name="get-reason-approver-and-ticket-number-for-approval-events"></a>取得核准事件的原因、核准者和票證號碼
+
+1. 使用具有特殊許可權的角色管理員角色許可權登入[Azure 入口網站](https://aad.portal.azure.com)，然後開啟 Azure AD。
+1. 選取 [稽核記錄]。
+1. 使用**服務**篩選器，只顯示特殊許可權身分識別管理服務的 audit 事件。 在 [**審核記錄**] 頁面上，您可以：
+
+    - 請在 [**狀態原因**] 資料行中查看 audit 事件的原因。
+    - 如需「將成員新增至角色要求核准」事件，請參閱**起始者（執行者）** 欄中的核准者。
+
+    [![Azure AD 角色新版本](media/pim-how-to-use-audit-log/filter-audit-logs.png "篩選 PIM 服務的 audit 記錄")](media/pim-how-to-use-audit-log/filter-audit-logs.png)
+
+1. 選取 [審核記錄] 事件，以在**詳細資料**窗格的 [**活動**] 索引標籤上查看票證號碼。
+  
+    [![Azure AD 角色新版本](media/pim-how-to-use-audit-log/audit-event-ticket-number.png "檢查 audit 事件的票證號碼")](media/pim-how-to-use-audit-log/audit-event-ticket-number.png)
+
+1. 您可以在 audit 事件的 [**詳細資料**] 窗格的 [**目標**] 索引標籤上，查看要求者（啟用角色的人員）。 Azure AD 角色有兩種目標型別：
+
+    - 角色（**類型**= 角色）
+    - 要求者（**類型**= 使用者）
+
+一般來說，在核准事件上方的 audit 記錄事件，是「將成員新增至角色已完成」的事件，其中**起始的（執行者）** 是要求者。 在大部分情況下，您不需要從審核的觀點來尋找核准要求中的要求者。
+
+---
+
 ## <a name="next-steps"></a>後續步驟
 
-- [在 PIM 中檢視 Azure 資源角色的活動和稽核記錄](azure-pim-resource-rbac.md)
+- [在 Privileged Identity Management 中查看 Azure 資源角色的活動和審核歷程記錄](azure-pim-resource-rbac.md)

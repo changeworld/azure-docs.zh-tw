@@ -1,27 +1,18 @@
 ---
-title: 將資料磁碟與 Windows VM 中斷連結 - Azure | Microsoft Docs
+title: 將資料磁碟與 Windows VM 中斷連結 - Azure
 description: 使用 Resource Manger 部署模型，將資料磁碟與 Azure 中的虛擬機器中斷連結。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-service-management
-ms.assetid: 13180343-ac49-4a3a-85d8-0ead95e2028c
 ms.service: virtual-machines-windows
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
-ms.date: 07/17/2018
-ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: bd91607260d47d37bc3ce94ec63f700082416b6d
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.workload: infrastructure-services
+ms.topic: how-to
+ms.date: 01/08/2020
+ms.author: cynthn
+ms.openlocfilehash: 3fce527c1a9feb3dbf9add36577cfa5ba8349882
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329894"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84659323"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>如何從 Windows 虛擬機器卸離資料磁碟
 
@@ -32,7 +23,7 @@ ms.locfileid: "56329894"
 
 如果您想要再次使用磁碟上現有的資料，您可以將磁碟重新連接至相同或其他虛擬機器。
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+ 
 
 ## <a name="detach-a-data-disk-using-powershell"></a>使用 PowerShell 來中斷資料磁碟連結
 
@@ -41,22 +32,29 @@ ms.locfileid: "56329894"
 在此範例中，我們會從 **myResourceGroup** 資源群組中的 **myVM** 移除名為 **myDisk** 的磁碟。 首先使用 [Remove-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdatadisk) Cmdlet 來移除磁碟。 接著，您會使用 [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) Cmdlet 來更新虛擬機器的狀態，以完成移除資料磁碟的程序。
 
 ```azurepowershell-interactive
-$VirtualMachine = Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
-Remove-AzVMDataDisk -VM $VirtualMachine -Name "myDisk"
-Update-AzVM -ResourceGroupName "myResourceGroup" -VM $VirtualMachine
+$VirtualMachine = Get-AzVM `
+   -ResourceGroupName "myResourceGroup" `
+   -Name "myVM"
+Remove-AzVMDataDisk `
+   -VM $VirtualMachine `
+   -Name "myDisk"
+Update-AzVM `
+   -ResourceGroupName "myResourceGroup" `
+   -VM $VirtualMachine
 ```
 
 磁碟仍留在儲存體中，但不再連結至虛擬機器。
 
 ## <a name="detach-a-data-disk-using-the-portal"></a>使用入口網站來中斷資料磁碟連結
 
+您可「熱」移除資料磁碟，但請先確定沒有任何項目正在使用該磁碟，再與 VM 中斷連結。
+
 1. 在左窗格中，選取 [虛擬機器]。
-2. 選取含有您想要中斷連結之資料磁碟的虛擬機器，然後按一下 [停止] 以將該 VM 解除配置。
-3. 在 [虛擬機器] 窗格中，選取 [磁碟]。
-4. 在 [磁碟] 窗格頂端，選取 [編輯]。
-5. 在 [磁碟] 窗格中，在您想要中斷連結的資料磁碟最右側，按一下 [中斷連結按鈕影像]![](./media/detach-disk/detach.png) 中斷連結按鈕。
-5. 移除磁碟之後，按一下窗格頂端的 [儲存]。
-6. 在 [虛擬機器] 窗格中，按一下 [概觀]，然後按一下窗格頂端的 [啟動] 按鈕以重新啟動 VM。
+1. 選取虛擬機器，其具有想要與其中斷連結的資料磁碟。
+1. 在 [設定] 下，選取 [磁碟]。
+1. 在 [磁碟] 窗格頂端，選取 [編輯]。
+1. 在 [磁碟] 窗格中，於想要與其中斷連結的資料磁碟最右側，選取 [中斷連結]。
+1. 選取頁面頂端的 [儲存] 來儲存變更。
 
 磁碟仍留在儲存體中，但不再連結至虛擬機器。
 

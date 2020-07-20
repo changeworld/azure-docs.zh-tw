@@ -1,20 +1,19 @@
 ---
-title: 在 Azure 地圖服務中新增 HTML 標記 | Microsoft Docs
-description: 如何在 Javascript 地圖中新增 HTML 標記
-author: jingjing-z
-ms.author: jinzh
-ms.date: 05/07/2018
+title: 在地圖中新增 HTML 標記 | Microsoft Azure 地圖服務
+description: 在本文中，您會了解如何使用 Microsoft Azure 地圖服務 Web SDK，以將 HTML 標記新增至地圖。
+author: Philmea
+ms.author: philmea
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 1c812a77429e13ea39b2f4946043c13e10aaf097
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 30d9cf9848a8d99505bf9f9c97bef5aaa31065ee
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60769663"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119285"
 ---
 # <a name="add-html-markers-to-the-map"></a>在地圖中新增 HTML 標記
 
@@ -24,20 +23,40 @@ ms.locfileid: "60769663"
 > HTML 標記不會連線至資料來源。 相反地，位置資訊會直接新增至標記中，標記則會新增至地圖的 `markers` 屬性，即 [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager?view=azure-iot-typescript-latest)。
 
 > [!IMPORTANT]
-> Azure 地圖服務 Web 控制項中的大多數圖層會使用 WebGL 來進行轉譯，HTML 標記則與之不同，會使用傳統的 DOM 元素來進行轉譯。 因此，新增了頁面的 HTML 標記越多，其中的 DOM 元素就會越多。 在新增幾百個 HTML 標記之後，效能就會下降。 因此，對於規模較大的資料集，請考慮將資料叢集化，或使用「符號」或「泡泡」圖層。
+> Azure 地圖服務 Web 控制項中的大多數圖層會使用 WebGL 來進行轉譯，HTML 標記則與之不同，會使用傳統的 DOM 元素來進行轉譯。 因此，新增至頁面的 HTML 標記越多，其中的 DOM 項目就會越多。 在新增幾百個 HTML 標記之後，效能就會下降。 因此，對於規模較大的資料集，請考慮將資料叢集化，或使用「符號」或「泡泡」圖層。
 
 ## <a name="add-an-html-marker"></a>新增 HTML 標記
 
-HtmlMarker 類別有預設樣式。 若要自訂標記，請設定標記的色彩和文字選項。 HtmlMarker 類別的預設樣式是 SVG 範本，具有色彩和文字預留位置。 若要快速自訂，請在 HtmlMarker 選項中設定色彩和文字屬性。 
+[HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) 類別具有預設樣式。 若要自訂標記，請設定標記的色彩和文字選項。 HTML 標記類別的預設樣式是 SVG 範本，其具有 `{color}` 和 `{text}` 預留位置。 若要快速自訂，請在 HTML 標記選項中設定 color 和 text 屬性。 
+
+下列程式碼會建立 HTML 標籤，並將 color 屬性設為 "DodgerBlue"，並將 text 屬性設定為 "10"。 快顯視窗會附加至標記，並使用 `click` 事件來切換快顯視窗的可見度。
+
+```javascript
+//Create an HTML marker and add it to the map.
+var marker = new atlas.HtmlMarker({
+    color: 'DodgerBlue',
+    text: '10',
+    position: [0, 0],
+    popup: new atlas.Popup({
+        content: '<div style="padding:10px">Hello World</div>',
+        pixelOffset: [0, -30]
+    })
+});
+
+map.markers.add(marker);
+
+//Add a click event to toggle the popup.
+map.events.add('click',marker, () => {
+    marker.togglePopup();
+});
+```
+
+以下是上述功能的完整執行程式碼範例。
 
 <br/>
 
 <iframe height='500' scrolling='no' title='在地圖中新增 HTML 標記' src='//codepen.io/azuremaps/embed/MVoeVw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看畫筆 <a href='https://codepen.io/azuremaps/pen/MVoeVw/'>在地圖中新增 HTML 標記</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
-
-在上述程式碼中，程式碼的第一個區塊會建構對應物件。 如需相關指示，您可以查看[建立對應](./map-create.md)。
-
-第二個程式碼區塊會使用 [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 類別的 [markers](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#markers) 屬性，將 [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) 新增至地圖。 HtmlMarker 會在[事件接聽程式](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)函式內新增至地圖，以確保其會在地圖完全載入後顯示。
 
 ## <a name="create-svg-templated-html-marker"></a>建立 SVG 樣板化 HTML 標記
 
@@ -47,6 +66,9 @@ HTML 標記的預設 `htmlContent` 是內含預留位置 `{color}` 和 `{text}` 
 
 <iframe height='500' scrolling='no' title='HTML 標記與自訂 SVG 範本' src='//codepen.io/azuremaps/embed/LXqMWx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>查看畫筆 <a href='https://codepen.io/azuremaps/pen/LXqMWx/'>HTML 標記與自訂 SVG 範本</a>，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
+
+> [!TIP]
+> Azure 地圖服務 Web SDK 提供數個 SVG 影像範本，其可與 HTML 標籤搭配使用。 如需詳細資訊，請參閱[如何使用影像範本](how-to-use-image-templates-web-sdk.md)文件。
 
 ## <a name="add-a-css-styled-html-marker"></a>新增 CSS 樣式的 HTML 標記
 
@@ -89,6 +111,9 @@ HTML 標記的好處之一是您可以使用 CSS 來實現許多完美的自訂�
 > [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager?view=azure-iot-typescript-latest)
 
 如需更多可新增至地圖的程式碼範例，請參閱下列文章：
+
+> [!div class="nextstepaction"]
+> [如何使用影像範本](how-to-use-image-templates-web-sdk.md)
 
 > [!div class="nextstepaction"]
 > [新增符號圖層](./map-add-pin.md)

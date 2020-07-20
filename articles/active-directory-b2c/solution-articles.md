@@ -2,27 +2,26 @@
 title: Azure Active Directory B2C 的解決方案和訓練 | Microsoft Docs
 description: 本文可讓您連結至解決方案和訓練資訊，協助您了解並使用適用於端對端企業解決方案的 Azure Active Directory B2C。
 services: active-directory-b2c
-author: davidmu1
+author: msmimart
 manager: celestedg
-ms.author: davidmu
+ms.author: mimart
 ms.date: 11/05/2018
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 7b409cc80d2443b01d3025dd84348af18118d640
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 9e00c872bb2794cdd8eb2560392ce058ae41b257
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691955"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78186721"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的解決方案和訓練
 
-Azure Active Directory (Azure AD) B2C 可讓組織實作商務解決方案，協助他們與客戶連結。 下列解決方案指南和訓練是可下載的文件，將引導您了解這些解決方案。
+Azure Active Directory B2C （Azure AD B2C）可讓組織執行商務解決方案，協助他們與客戶聯繫。 下列解決方案指南和訓練是可下載的文件，將引導您了解這些解決方案。
 
-| 標題 | 描述 |
+| Title | 描述 |
 | ----- | ----------- |
-| [透過 Azure AD B2C 進行客戶身分識別管理](https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C) | 在此服務的概觀中，Azure AD B2C 小組的 Parakh Jain ([@jainparakh](https://twitter.com/jainparakh)) 會概述服務運作方式，也會顯示如何才能快速地將 B2C 連線到 ASP.NET Core 應用程式。 |
+| [透過 Azure AD B2C 進行客戶身分識別管理](https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C) | 在此服務總覽中，來自 Azure AD B2C 小組的 Parakh Jain （ [@jainparakh](https://twitter.com/jainparakh) ）可讓我們瞭解服務的運作方式，同時也會示範如何將 B2C 快速連接到 ASP.NET Core 應用程式。 |
 | [使用 Azure AD B2C 的優點](https://aka.ms/b2coverview) | 了解 Azure AD B2C 的優點和常見案例，以及應用程式如何才能運用此 CIAM 服務。 |
 | [取得 Azure AD B2C 的專業知識：適用於開發人員的課程](https://aka.ms/learnAADB2C) | 此端對端課程會全程引導開發人員以 Azure AD B2C 作為驗證機制來開發應用程式。 十個具備實驗室的深度模組，涵蓋的內容從設定 Azure 訂用帳戶，以至建立自訂原則，而自訂原則可定義客戶所參與的旅程。 |
 | [讓合作夥伴、供應商和客戶能夠透過 Azure Active Directory 存取應用程式](https://aka.ms/aadexternalidentities) | 不論組織的大小、產業或合規性和安全性情勢，每個組織的成功都仰賴其與其他組織共同作業以及與客戶連結的能力。<br><br>本指南結合 Azure AD、Azure AD B2C 和 Azure AD B2B 共同作業，詳細說明建置應用程式或 Web 體驗的商業價值和技巧，以提供針對您的員工、商務夥伴、供應商及客戶內容量身訂做的整合式驗證體驗。 |

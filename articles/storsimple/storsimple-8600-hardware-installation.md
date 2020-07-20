@@ -1,28 +1,23 @@
 ---
-title: 安裝 Microsoft Azure StorSimple 8600 裝置 | Microsoft Docs
+title: 安裝 Microsoft Azure StorSimple 8600 裝置
 description: 描述如何打開包裝、掛接機架和佈線 StorSimple 8600 裝置，再部署和設定軟體。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 3d82ba5f-3e34-40dc-9c33-50f952bc6be8
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: be3f68a00647840801e7c205d7abb34b718bd61c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60630834"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79254751"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>打開包裝、掛接機架和佈線 StorSimple 8600 裝置
-## <a name="overview"></a>概觀
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
+
+## <a name="overview"></a>總覽
 您的 Microsoft Azure StorSimple 8600 是雙重機箱裝置，包含主要及 EBOD 機箱。 本教學課程說明如何在您設定 StorSimple 軟體之前，打開包裝、利用機架掛接和配接 StorSimple 8600 裝置硬體纜線。
 
 ## <a name="unpack-your-storsimple-8600-device"></a>打開您的 StorSimple 8600 裝置包裝
@@ -67,7 +62,7 @@ ms.locfileid: "60630834"
    * 2 個機架掛接套件 (4 個側軌掛接硬體，主要機箱與 EBOD 機箱各 2 個)，每個箱子中各 1 個
    * 開始使用文件
      
-     如果您未收到任何上述項目， [請連絡 Microsoft 支援](storsimple-8000-contact-microsoft-support.md)。  
+     如果您未收到任何上述項目，請[連絡 Microsoft 支援](storsimple-8000-contact-microsoft-support.md)。  
 
 下一步是利用機架掛接裝置。
 
@@ -104,7 +99,7 @@ ms.locfileid: "60630834"
 提供一組掛接滑軌以用於 19 英吋機櫃。 滑軌已經過測試可以處理最大機箱重量。 這些滑軌也可以進行多個機箱的安裝，而不會損失機櫃內的空間。 先安裝 EBOD 機箱。
 
 #### <a name="to-install-the-ebod-enclosure-on-the-rails"></a>在滑軌上安裝 EBOD 機箱
-1. 只有在內部滑軌未安裝在您的裝置上時才執行此步驟。 通常，內部滑軌會在工廠安裝。 如果滑軌沒有安裝的話，則在機箱底座側邊安裝左邊和右邊滑軌。 它們是在每一邊使用六個公制螺絲來連接。 為了協助辨識方向，滑軌標示為 [LH – Front] \(左邊 – 前) 和 [RH – Front] \(右邊 – 前)，接至機箱後端的尾端有錐型結尾。
+1. 只有在內部滑軌未安裝在您的裝置上時才執行此步驟。 通常，內部滑軌會在工廠安裝。 如果滑軌沒有安裝的話，則在機箱底座側邊安裝左邊和右邊滑軌。 它們是在每一邊使用六個公制螺絲來連接。 為了協助辨識方向，滑軌標示為 [LH – Front]**** \(左邊 – 前) 和 [RH – Front]**** \(右邊 – 前)，接至機箱後端的尾端有錐型結尾。
    
     ![將滑軌連接至機箱底座](./media/storsimple-8600-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
    
@@ -114,7 +109,7 @@ ms.locfileid: "60630834"
    | --- | --- |
    |  1 |M 3x4 圓頭螺釘 |
    |  2 |底座滑軌 |
-2. 將左邊滑軌和右邊滑軌組件連接至機櫃垂直面。 托架會標示 [LH] \(左邊)，[RH] \(右邊) 和 [This side up] \(此面向上)，引導您正確的方向。
+2. 將左邊滑軌和右邊滑軌組件連接至機櫃垂直面。 托架會標示 [LH]**** \(左邊)，[RH]**** \(右邊) 和 [This side up]**** \(此面向上)，引導您正確的方向。
 3. 找出滑軌組件前後方的滑軌插梢。 延伸滑軌以適合機架柱，並且將插梢插入前後端機架柱垂直面的孔洞。 請確定滑軌組件是水平的。
 4. 使用兩個提供的公制螺絲將滑軌組件鎖固至機架垂直面。 在前端和後端各使用一個螺絲。
 5. 對其他滑軌組件重複這些步驟。
@@ -123,7 +118,7 @@ ms.locfileid: "60630834"
    
     **將滑軌組件連接至機架**
    
-   | 標籤 | 描述 |
+   | 標籤 | 說明 |
    | --- | --- |
    |   1 |固定螺絲 |
    |   2 |方孔前端機架柱螺絲 |
@@ -149,7 +144,7 @@ ms.locfileid: "60630834"
    
     **安裝輪緣蓋**
    
-   | 標籤 | 描述 |
+   | 標籤 | 說明 |
    | --- | --- |
    |   1 |機箱鎖固螺絲 |
 
@@ -215,7 +210,7 @@ ms.locfileid: "60630834"
 
 | 標籤 | 描述 |
 | --- | --- |
-| 具有使用  |具有網際網路存取的 LAN |
+| A |具有網際網路存取的 LAN |
 | B |控制器 0 |
 | C |PCM 0 |
 | D |控制器 1 |
@@ -256,11 +251,11 @@ ms.locfileid: "60630834"
    * 8 資料位元
    * 1 停止位元
    * 無同位檢查
-   * 流量控制設為  **無**
+   * 流量控制設為 [ **無**
 6. 藉由在主控台上按下 Enter 鍵，驗證連線是否正在運作。 序列主控台功能表應該會出現。
 
 > [!NOTE]
-> **熄燈管理：** 當裝置已安裝在遠端資料中心或具有有限的存取權的電腦室時，請確定這兩個控制器的序列連接一律會連接至序列主控台開關或類似的設備。 如此可以在網路中斷或非預期失敗時允許頻外遠端控制和支援作業。
+> **熄燈管理** ：當裝置安裝在遠端資料中心或在具有限制存取的電腦室時，請確定兩個控制器的序列連接一律會連線至序列主控台交換器或類似的設備。 如此可以在網路中斷或非預期失敗時允許頻外遠端控制和支援作業。
 > 
 > 
 

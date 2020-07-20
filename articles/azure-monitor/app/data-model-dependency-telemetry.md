@@ -1,33 +1,24 @@
 ---
-title: Azure Application Insights 遙測資料模型 - 相依性遙測 | Microsoft Docs
+title: Azure 監視器 Application Insights 相依性資料模型
 description: 相依性遙測的 Application Insights 資料模型
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 3e3d6b8fdc9ac8dd28f73fecd6231e97a5645407
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: ba0d848904d1ba885dc53e2941953d8dfb4864cf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60901020"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77671914"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>相依性遙測：Application Insights 資料模型
 
 相依性遙測 (在 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中) 代表受監視元件與遠端元件 (例如 SQL 或 HTTP 端點) 的互動。
 
-## <a name="name"></a>名稱
+## <a name="name"></a>Name
 
 使用此相依性呼叫所起始之命令的名稱。 基數值低。 範例為預存程序名稱和 URL 路徑範本。
 
-## <a name="id"></a>ID
+## <a name="id"></a>識別碼
 
 相依性呼叫執行個體的識別碼。 用來與此相依性呼叫的對應要求遙測項目相互關聯。 如需詳細資訊，請參閱[相互關聯](../../azure-monitor/app/correlation.md)頁面。
 

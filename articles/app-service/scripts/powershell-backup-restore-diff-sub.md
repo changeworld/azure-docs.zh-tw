@@ -1,26 +1,19 @@
 ---
-title: Azure PowerShell 指令碼範例 - 將應用程式備份還原至另一個訂用帳戶 | Microsoft Docs
-description: Azure PowerShell 指令碼範例 - 從另一個訂用帳戶中的備份還原 Web 應用程式
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jpconnoc
-editor: ''
+title: PowerShell：將備份還原至另一個訂用帳戶
+description: 了解如何使用 Azure PowerShell 將 App Service 的部署和管理自動化。 此範例說明如何在另一個訂用帳戶中還原備份。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: a2a27d94-d378-4c17-a6a9-ae1e69dc4a72
-ms.service: app-service-web
-ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 11/21/2018
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: e8879b67b79523cc35fb28a707a6c77f3efb75c0
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 4a22148d4151fd3c80c7be439b5dd281200e5456
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56584974"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044583"
 ---
 # <a name="restore-a-web-app-from-a-backup-in-another-subscription-using-powershell"></a>使用 PowerShell 從另一個訂用帳戶中的備份還原 Web 應用程式
 
@@ -46,7 +39,7 @@ Remove-AzResourceGroup -Name $resourceGroupName -Force
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [Add-AzAccount](/powershell/module/az.accounts/connect-azaccount) | 新增已驗證的帳戶以用於 Azure Resource Manager Cmdlet 要求。  |
 | [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | 取得 Web 應用程式的備份清單。 |

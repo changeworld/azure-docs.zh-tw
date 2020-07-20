@@ -1,24 +1,16 @@
 ---
-title: Azure Application Insights 中的使用者、工作階段和事件分析 | Microsoft Docs
+title: Azure Application Insights 中的使用者、工作階段和事件分析
 description: 您 Web 應用程式的使用者人口統計分析。
-services: application-insights
-documentationcenter: ''
-author: NumberByColors
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 7d378c2f72035c3584e1f5cd3c1f0fb9a5d5c2ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 10ea3c68695e7e4fb4950fbcc4a190e9f1d83f49
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60372275"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797708"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Application Insights 中的使用者、工作階段和事件分析
 
@@ -69,5 +61,5 @@ ms.locfileid: "60372275"
     - [漏斗圖](usage-funnels.md)
     - [保留](usage-retention.md)
     - [使用者流程](usage-flows.md)
-    - [活頁簿](../../azure-monitor/app/usage-workbooks.md)
+    - [活頁簿](../../azure-monitor/platform/workbooks-overview.md)
     - [新增使用者內容](usage-send-user-context.md)

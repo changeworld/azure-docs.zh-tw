@@ -1,23 +1,14 @@
 ---
 title: 使用 Azure Application Insights 中的串流分析匯出 | Microsoft Docs
 description: 串流分析可以持續轉換、篩選和路由傳送您從 Application Insights 匯出的資料。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 31594221-17bd-4e5e-9534-950f3b022209
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/04/2018
-ms.author: mbullwin
-ms.openlocfilehash: 58eaec32fee149c845dc77a83763f2fcd8133a06
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 01/08/2019
+ms.openlocfilehash: 71b19f0b49dec8f7176a53eeb656519c65f9c1d0
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60901190"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224514"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>使用串流分析來處理從 Application Insights 匯出的資料
 [Azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)是處理[從 Application Insights 匯出](export-telemetry.md)之資料的理想工具。 串流分析可以從各種來源提取資料。 它可以轉換和篩選資料，然後將它路由傳送至各種接收。
@@ -64,12 +55,12 @@ ms.locfileid: "60901190"
 
     ![選擇事件類型](./media/export-stream-analytics/080.png)
 
-1. 可讓一些資料累積。 請休息一下，讓其他人使用您的應用程式一段時間。 遙測資料會送過來，而您會在[計量瀏覽器](../../azure-monitor/app/metrics-explorer.md)中看到統計圖表，並在[診斷搜尋](../../azure-monitor/app/diagnostic-search.md)中看到個別事件。 
+1. 可讓一些資料累積。 請休息一下，讓其他人使用您的應用程式一段時間。 遙測資料會送過來，而您會在[計量瀏覽器](../../azure-monitor/platform/metrics-charts.md)中看到統計圖表，並在[診斷搜尋](../../azure-monitor/app/diagnostic-search.md)中看到個別事件。 
    
     此外，資料會匯出至您的儲存體。 
 2. 檢查匯出的資料。 在 Visual Studio 中，依序選擇 [檢視] 和 [Cloud Explorer]，然後依序開啟 [Azure] 和 [儲存體]。 (如果您沒有此功能表選項，您需要安裝 Azure SDK：開啟 [新增專案] 對話方塊，然後開啟 [Visual C#] / [Cloud] / [取得 Microsoft Azure SDK for .NET]。)
    
-    ![](./media/export-stream-analytics/04-data.png)
+    ![螢幕擷取畫面：顯示如何設定您想要查看的事件種類。](./media/export-stream-analytics/04-data.png)
    
     記下衍生自應用程式名稱和檢測金鑰之路徑名稱的共同部分。 
 
@@ -78,21 +69,21 @@ ms.locfileid: "60901190"
 ## <a name="create-an-azure-stream-analytics-instance"></a>建立 Azure 串流分析執行個體
 在 [Azure 入口網站](https://portal.azure.com/)中，選取 Azure 串流分析服務，然後建立新的串流分析工作：
 
-![](./media/export-stream-analytics/SA001.png)
+![螢幕擷取畫面：顯示在 Azure 入口網站中建立串流分析作業的主頁面。](./media/export-stream-analytics/SA001.png)
 
-![](./media/export-stream-analytics/SA002.png)
+![顯示建立新的串流分析作業時所需詳細資料的螢幕擷取畫面。](./media/export-stream-analytics/SA002.png)
 
 建立新的工作之後，選取 [前往資源]。
 
-![](./media/export-stream-analytics/SA003.png)
+![螢幕擷取畫面：顯示新的串流分析作業部署成功時所收到的訊息。](./media/export-stream-analytics/SA003.png)
 
 ### <a name="add-a-new-input"></a>加入新的輸入
 
-![](./media/export-stream-analytics/SA004.png)
+![顯示如何將輸入新增至串流分析作業的螢幕擷取畫面。](./media/export-stream-analytics/SA004.png)
 
 將此設定為從您的連續匯出 Blob 接收輸入：
 
-![](./media/export-stream-analytics/SA0005.png)
+![螢幕擷取畫面：顯示如何設定串流分析作業，以接受連續匯出 blob 的輸入。](./media/export-stream-analytics/SA0005.png)
 
 現在您需要儲存體帳戶的主要存取金鑰 (您已在稍早記下此金鑰)。 請將此金鑰設為儲存體帳戶金鑰。
 
@@ -102,7 +93,7 @@ ms.locfileid: "60901190"
 
 路徑前置詞模式會指定串流分析在存放區中尋找輸入檔案的位置。 您需要將它設定為與連續匯出儲存資料的方式相對應。 請設定如下：
 
-    webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
+`webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}`
 
 在此範例中：
 
@@ -118,7 +109,7 @@ ms.locfileid: "60901190"
 ## <a name="add-new-output"></a>新增輸出
 現在請依序選取您的工作 > [輸出] > [新增]。
 
-![](./media/export-stream-analytics/SA006.png)
+![顯示選取您的串流分析作業以新增新輸出的螢幕擷取畫面。](./media/export-stream-analytics/SA006.png)
 
 
 ![選取新的通道，依序按一下 [輸出]、[新增]、[Power BI]](./media/export-stream-analytics/SA010.png)
@@ -134,62 +125,59 @@ ms.locfileid: "60901190"
 貼上此查詢：
 
 ```SQL
-
-    SELECT
-      flat.ArrayValue.name,
-      count(*)
-    INTO
-      [pbi-output]
-    FROM
-      [export-input] A
-    OUTER APPLY GetElements(A.[event]) as flat
-    GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
+SELECT
+  flat.ArrayValue.name,
+  count(*)
+INTO
+  [pbi-output]
+FROM
+  [export-input] A
+OUTER APPLY GetElements(A.[event]) as flat
+GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
 ```
 
 * export-input 是我們提供給串流輸入的別名
 * pbi-output 是我們所定義的輸出別名
-* 我們會使用 [OUTER APPLY GetElements](https://msdn.microsoft.com/library/azure/dn706229.aspx) \(英文\)，因為事件名稱是在巢狀 JSON 陣列中。 然後 Select 會取用事件名稱，以及時間週期內具有該名稱之執行個體數目的計數。 [Group By](https://msdn.microsoft.com/library/azure/dn835023.aspx) 子句會依照一分鐘的時間間隔來將元素分組。
+* 我們會使用 [OUTER APPLY GetElements](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) \(英文\)，因為事件名稱是在巢狀 JSON 陣列中。 然後 Select 會取用事件名稱，以及時間週期內具有該名稱之執行個體數目的計數。 [Group By](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) 子句會依照一分鐘的時間間隔來將元素分組。
 
 ### <a name="query-to-display-metric-values"></a>顯示度量值的查詢
+
 ```SQL
-
-    SELECT
-      A.context.data.eventtime,
-      avg(CASE WHEN flat.arrayvalue.myMetric.value IS NULL THEN 0 ELSE  flat.arrayvalue.myMetric.value END) as myValue
-    INTO
-      [pbi-output]
-    FROM
-      [export-input] A
-    OUTER APPLY GetElements(A.context.custom.metrics) as flat
-    GROUP BY TumblingWindow(minute, 1), A.context.data.eventtime
-
-``` 
+SELECT
+  A.context.data.eventtime,
+  avg(CASE WHEN flat.arrayvalue.myMetric.value IS NULL THEN 0 ELSE  flat.arrayvalue.myMetric.value END) as myValue
+INTO
+  [pbi-output]
+FROM
+  [export-input] A
+OUTER APPLY GetElements(A.context.custom.metrics) as flat
+GROUP BY TumblingWindow(minute, 1), A.context.data.eventtime
+```
 
 * 此查詢會切入度量遙測，來取得事件時間和度量值。 度量值位於陣列中，因此我們使用 OUTER APPLY GetElements 模式來擷取資料列。 在此情況下，"myMetric" 是度量的名稱。 
 
 ### <a name="query-to-include-values-of-dimension-properties"></a>包含維度屬性值的查詢
+
 ```SQL
-
-    WITH flat AS (
-    SELECT
-      MySource.context.data.eventTime as eventTime,
-      InstanceId = MyDimension.ArrayValue.InstanceId.value,
-      BusinessUnitId = MyDimension.ArrayValue.BusinessUnitId.value
-    FROM MySource
-    OUTER APPLY GetArrayElements(MySource.context.custom.dimensions) MyDimension
-    )
-    SELECT
-     eventTime,
-     InstanceId,
-     BusinessUnitId
-    INTO AIOutput
-    FROM flat
-
+WITH flat AS (
+SELECT
+  MySource.context.data.eventTime as eventTime,
+  InstanceId = MyDimension.ArrayValue.InstanceId.value,
+  BusinessUnitId = MyDimension.ArrayValue.BusinessUnitId.value
+FROM MySource
+OUTER APPLY GetArrayElements(MySource.context.custom.dimensions) MyDimension
+)
+SELECT
+  eventTime,
+  InstanceId,
+  BusinessUnitId
+INTO AIOutput
+FROM flat
 ```
 
 * 此查詢包括維度屬性值，而不需根據陣列索引中固定索引的特定維度。
 
-## <a name="run-the-job"></a>執行工作
+## <a name="run-the-job"></a>執行作業
 您可以選取一個啟動工作的過去日期。 
 
 ![選取工作並按一下 [查詢]。 貼上下面的範例。](./media/export-stream-analytics/SA008.png)

@@ -1,61 +1,86 @@
 ---
-title: 在 Azure 自动化中管理模块
-description: 本文介绍如何在 Azure 自动化中管理模块。
+title: 在 Azure 自動化中管理模組
+description: 此文章說明如何使用 PowerShell 模組，在 Runbook 中啟用 Cmdlet，以及在 DSC 設定中啟用 DSC 資源。
 services: automation
 ms.service: automation
-ms.subservice: shared-resources
-author: georgewallace
-ms.author: gwallace
-ms.date: 03/13/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fa7f5d3fb38eb1dbca51dec9b73dca3c998436aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2bf3dda6e3d99b5ed67298343f5238d304df7e2b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60500306"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187365"
 ---
-# <a name="manage-modules-in-azure-automation"></a>在 Azure 自动化中管理模块
+# <a name="manage-modules-in-azure-automation"></a>在 Azure 自動化中管理模組
 
-Azure 自动化提供相应的功能用于将 PowerShell 模块导入到基于 PowerShell 的 Runbook 所用的自动化帐户。 您已建立，從 PowerShell 資源庫的自訂模組或 AzureRM 和 Az 模組適用於 Azure，可以使用這些模組。
+Azure 自動化會使用數個 PowerShell 模組，在 Runbook 中啟用 Cmdlet，以及在 DSC 設定中啟用 DSC 資源。 支援的模組包括：
 
-## <a name="import-modules"></a>匯入模組
+* [Azure PowerShell Az.Automation](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)。
+* [Azure PowerShell AzureRM.Automation](/powershell/module/azurerm.automation/?view=azurermps-6.13.0)。
+* 其他 PowerShell 模組。
+* 內部 `Orchestrator.AssetManagement.Cmdlets` 模組。
+* Python 2 模組。
+* 您建立的自訂模組。
 
-可通过多种方法将模块导入到自动化帐户。 以下部分介绍了不同的模块导入方法。
+當您建立自動化帳戶時，Azure 自動化預設會匯入一些模組。 請參閱[預設模組](#default-modules)。
+
+當自動化執行 Runbook 和 DSC 編譯作業時，其會將模組載入至沙箱，Runbook 可在其中執行，而且 DSC 設定可在其中編譯。 自動化也會將所有 DSC 資源自動放置於 DSC 提取伺服器的模組中。 當機器套用 DSC 設定時，即可提取資源。
+
+>[!NOTE]
+>請確認只會匯入您的 Runbook 和 DSC 設定所需的模組。 不建議您匯入根 Az 模組。 該模組包含許多您可能不需要的其他模組，而其可能會導致效能問題。 請改為匯入個別模組，例如 Az.Compute。
+
+## <a name="default-modules"></a>預設模組
+
+下表列出當您建立自動化帳戶時，Azure 自動化預設會匯入的模組。 自動化可以匯入這些模組的較新版本。 不過，即使您刪除了較新版本，也無法從您的自動化帳戶移除原始版本。 請注意，這些預設模組會包含數個 AzureRM 模組。 
+
+自動化不會將根 Az 模組自動匯入至任何新的或現有的自動化帳戶。 如需使用這些模組的詳細資訊，請參閱[移轉至 Az 模組](#migrate-to-az-modules)。
 
 > [!NOTE]
-> 在 Azure 自动化中使用的模块中文件的最大路径长度为 140 个字符。 如果任何路径的长度超过 140 个字符，则无法使用 `Import-Module` 将其导入到 PowerShell 会话。
+> 不建議您在用來部署[停機期間啟動/停止 VM](../automation-solution-vm-management.md) 功能的自動化帳戶中更改模組和 Runbook。
 
-### <a name="powershell"></a>PowerShell
+|模組名稱|版本|
+|---|---|
+| AuditPolicyDsc | 1.1.0.0 |
+| Azure | 1.0.3 |
+| Azure.Storage | 1.0.3 |
+| AzureRM.Automation | 1.0.3 |
+| AzureRM.Compute | 1.2.1 |
+| AzureRM.Profile | 1.0.3 |
+| AzureRM.Resources | 1.0.3 |
+| AzureRM.Sql | 1.0.3 |
+| AzureRM.Storage | 1.0.3 |
+| ComputerManagementDsc | 5.0.0.0 |
+| GPRegistryPolicyParser | 0.2 |
+| Microsoft.PowerShell.Core | 0 |
+| Microsoft.PowerShell.Diagnostics |  |
+| Microsoft.PowerShell.Management |  |
+| Microsoft.PowerShell.Security |  |
+| Microsoft.PowerShell.Utility |  |
+| Microsoft.WSMan.Management |  |
+| Orchestrator.AssetManagement.Cmdlets | 1 |
+| PSDscResources | 2.9.0.0 |
+| SecurityPolicyDsc | 2.1.0.0 |
+| StateConfigCompositeResources | 1 |
+| xDSCDomainjoin | 1.1 |
+| xPowerShellExecutionPolicy | 1.1.0.0 |
+| xRemoteDesktopAdmin | 1.1.0.0 |
 
-可以使用 [New-AzureRmAutomationModule](/powershell/module/azurerm.automation/new-azurermautomationmodule) 将模块导入到自动化帐户。 该 cmdlet 采用某个模块 zip 包的 URL。
+## <a name="az-modules"></a>Az 模組
 
-```azurepowershell-interactive
-New-AzureRmAutomationModule -Name <ModuleName> -ContentLinkUri <ModuleUri> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
-```
+針對 Az.Automation，大部分的 Cmdlet 都會與用於 AzureRM 模組的 Cmdlet 具有相同名稱，不同之處在於 `AzureRM` 前置詞已變更為 `Az`。 如需未遵循此命名慣例的 Az 模組清單，請參閱[例外狀況清單](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters)。
 
-### <a name="azure-portal"></a>Azure 入口網站
+## <a name="internal-cmdlets"></a>內部 Cmdlet
 
-在 Azure 门户中导航到你的自动化帐户，然后选择“共享资源”下的“模块”。 单击“+ 添加模块”。 选择包含你的模块的 **.zip** 文件，然后单击“确定”开始执行导入过程。
+Azure 自動化支援適用於 Windows 之 Log Analytics 代理程式的內部 `Orchestrator.AssetManagement.Cmdlets` 模組 (預設會安裝)。 下表定義內部 Cmdlet。 這些 Cmdlet 的設計目的是代替 Azure PowerShell Cmdlet，用來與共用資源互動。 其可以從加密的變數、認證及加密的連線中擷取祕密。
 
-### <a name="powershell-gallery"></a>PowerShell 資源庫
+>[!NOTE]
+>只有當您在 Azure 沙箱環境或 Windows 混合式 Runbook 背景工作角色上執行 Runbook 時，才可以使用內部 Cmdlet。 
 
-從 PowerShell 資源庫的模組可以從匯入[PowerShell 資源庫](https://www.powershellgallery.com)直接或從您的自動化帳戶。
-
-若要匯入模組，從 PowerShell 資源庫，移至 https://www.powershellgallery.com並搜尋您想要匯入的模組。 按一下 **部署至 Azure 自動化**上**Azure 自動化**索引標籤下**安裝選項**。 這個動作會開啟 Azure 入口網站中。 在 **匯入**頁面上，選取您的自動化帳戶，然後按一下**確定**。
-
-![PowerShell 資源庫匯入模組](../media/modules/powershell-gallery.png)
-
-您也可以從 「 PowerShell 資源庫的模組匯入直接從您的自動化帳戶。 在您的自動化帳戶中選取**模組**下方**共用資源**。 在 模組 頁面中，按一下 **瀏覽資源庫**。 這會開啟**瀏覽資源庫**頁面。 您可以使用此頁面來搜尋模組 「 PowerShell 資源庫。 選取您想要匯入，並按一下的模組**匯入**。 在 **匯入**頁面上，按一下**確定**開始匯入程序。
-
-![PowerShell 資源庫匯入從 Azure 入口網站](../media/modules/gallery-azure-portal.png)
-
-## <a name="internal-cmdlets"></a>内部 cmdlet
-
-下面是导入到每个自动化帐户的内部 `Orchestrator.AssetManagement.Cmdlets` 模块中的 cmdlet 列表。 可在 Runbook 和 DSC 配置中访问这些 cmdlet，使用它们可与自动化帐户中的资产进行交互。 此外，使用内部 cmdlet 还可以从加密的“变量”值、“凭据”和加密的“连接”字段中检索机密。 Azure PowerShell cmdlet 无法检索这些机密。 无需隐式连接到 Azure 即可使用这些 cmdlet。 如果需要使用某个连接（例如运行方式帐户）在 Azure 中进行身份验证，则这些内部 cmdlet 就非常有利。
-
-|Name|描述|
+|名稱|描述|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |
@@ -65,42 +90,90 @@ New-AzureRmAutomationModule -Name <ModuleName> -ContentLinkUri <ModuleUri> -Reso
 |Start-AutomationRunbook|`Start-AutomationRunbook [-Name] <string> [-Parameters <IDictionary>] [-RunOn <string>] [-JobId <guid>] [<CommonParameters>]`|
 |Wait-AutomationJob|`Wait-AutomationJob -Id <guid[]> [-TimeoutInMinutes <int>] [-DelayInSeconds <int>] [-OutputJobsTransitionedToRunning] [<CommonParameters>]`|
 
-## <a name="add-a-connection-type-to-your-module"></a>将连接类型添加到模块
+請注意，內部 Cmdlet 的命名方式與 Az 和 AzureRM Cmdlet 不同。 內部 Cmdlet 名稱不會在名詞中包含 `Azure` 或 `Az` 之類的字組，但會使用 `Automation` 字組。 我們建議在 Azure 沙箱或 Windows 混合式 Runbook 背景工作角色中執行 Runbook 期間，使用 Az 或 AzureRM Cmdlet。 其所需的參數較少，且會於已在執行的作業內容中執行。
 
-可以通过将一个可选文件添加到模块来提供自定义的[连接类型](../automation-connections.md)，以便在自动化帐户中使用。 此文件是一个元数据文件，用于指定要在自动化帐户中配合模块 cmdlet 使用的 Azure 自动化连接类型。 若要实现此目的，首先必须知道如何创作 PowerShell 模块。 有关模块创作的详细信息，请参阅[如何编写 PowerShell 脚本模块](/powershell/developer/module/how-to-write-a-powershell-script-module)。
+使用 Az 或 AzureRM Cmdlet 來操作 Runbook 內容以外的自動化資源。 
 
-![在 Azure 门户中使用自定义连接](../media/modules/connection-create-new.png)
+## <a name="python-modules"></a>Python 模組
 
-若要添加 Azure 自动化连接类型，模块必须包含用于指定连接类型属性的名为 `<ModuleName>-Automation.json` 的文件。 這是 json 檔案，放置在壓縮 .zip 檔案的模組資料夾內。 此文件包含连接到模块所代表的系统或服务所需的连接的字段。 這個組態最終會在 Azure 自動化中建立連線類型。 可以使用此文件为模块的连接类型设置字段名称、类型，以及这些字段是否应加密或可选。 以下示例是一个采用 JSON 文件格式的模板，用于定义用户名和密码属性：
+您可以在 Azure 自動化中建立 Python 2 Runbook。 如需 Python 模組資訊，請參閱[管理 Azure 自動化中的 Python 2 套件](../python-packages.md)。
 
-```json
-{
-   "ConnectionFields": [
-   {
-      "IsEncrypted":  false,
-      "IsOptional":  true,
-      "Name":  "Username",
-      "TypeName":  "System.String"
-   },
-   {
-      "IsEncrypted":  true,
-      "IsOptional":  false,
-      "Name":  "Password",
-      "TypeName":  "System.String"
-   }
-   ],
-   "ConnectionTypeName":  "MyModuleConnection",
-   "IntegrationModuleName":  "MyModule"
-}
+## <a name="custom-modules"></a>自訂模組
+
+Azure 自動化支援您建立來搭配 Runbook 和 DSC 設定使用的自訂 PowerShell 模組。 其中一種自訂模組類型是整合模組，可選擇性地包含中繼資料的檔案來定義模組 Cmdlet 的自訂功能。 [新增連線類型](../automation-connections.md#add-a-connection-type)中提供整合模組的使用範例。
+
+Azure 自動化可以匯入自訂模組，以使其 Cmdlet 可供使用。 就像其他模組一樣，其會在幕後儲存模組，並在 Azure 沙箱中加以使用。
+
+## <a name="migrate-to-az-modules"></a>移轉至 Az 模組
+
+此節說明如何在自動化中移轉至 Az 模組。 如需詳細資訊，請參閱[將 Azure PowerShell 從 AzureRM 移轉至 Az](/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.7.0)。 
+
+我們不建議在相同的自動化帳戶中執行 AzureRM 模組和 Az 模組。 當您確定要從 AzureRM 移轉至 Az 時，最好完全認可至完整移轉。 自動化通常會重複使用自動化帳戶內的沙箱，以節省啟動時間。 如果您未進行完整模組移轉，您可能會啟動僅使用 AzureRM 模組的作業，然後啟動另一個只使用 Az 模組的作業。 沙箱很快就會損毀，而您會收到錯誤，指出模組不相容。 這種情況會導致任何特定 Runbook 或設定隨機發生損毀。 
+
+>[!NOTE]
+>當您建立新的自動化帳戶時，即使是在移轉至 Az 模組之後，自動化預設還是會安裝 AzureRM 模組。 您仍然可以使用 AzureRM Cmdlet 來更新教學課程 Runbook。 不過，您不應該執行這些 Runbook。
+
+### <a name="test-your-runbooks-and-dsc-configurations-prior-to-module-migration"></a>模組移轉之前，先測試您的 Runbook 和 DSC 設定
+
+移轉至 Az 模組之前，請務必謹慎地在個別自動化帳戶中測試所有 Runbook 和 DSC 設定。 
+
+### <a name="stop-and-unschedule-all-runbooks-that-use-azurerm-modules"></a>停止並取消排程使用 AzureRM 模組的所有 Runbook
+
+為了確保您不會執行任何使用 AzureRM 模組的現有 Runbook 或 DSC 設定，您必須停止並取消排程所有受影響的 Runbook 和設定。 首先，確定您會分別檢閱每個 Runbook 或 DSC 設定及其排程，以確保您可以在未來視需要重新排程項目。 
+
+當您準備好移除排程時，您可以使用 Azure 入口網站或 [Remove-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/remove-azurermautomationschedule?view=azurermps-6.13.0) \(英文\) Cmdlet。 請參閱[移除排程](schedules.md#remove-a-schedule)。
+
+### <a name="remove-azurerm-modules"></a>移除 AzureRM 模組
+
+您可以先移除 AzureRM 模組，然後再匯入 Az 模組。 不過，如果這樣做，您可能會中斷原始程式碼控制同步處理，並導致任何仍排定的指令碼失敗。 如果您決定移除模組，請參閱[解除安裝 AzureRM](/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.8.0#uninstall-azurerm)。
+
+### <a name="import-az-modules"></a>匯入 Az 模組
+
+在您的自動化帳戶中匯入 Az 模組，不會在 Runbook 使用的 PowerShell 工作階段中自動匯入該模組。 模組會在下列情況下匯入到 PowerShell 工作階段：
+
+* 當 Runbook 從模組中叫用 Cmdlet 時。
+* 當 Runbook 使用 [Import-Module](/powershell/module/microsoft.powershell.core/import-module?view=powershell-7) \(英文\) Cmdlet 明確匯入模組時。
+* 當 Runbook 匯入另一個相依模組時。
+
+您可以在 Azure 入口網站中匯入 Az 模組。 請記住，只匯入所需的 Az 模組，而不是整個 Az.Automation 模組。 由於 [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) \(英文\) 是其他 Az 模組的相依性，因此，務必在任何其他模組之前匯入此模組。
+
+1. 從您的自動化帳戶中，選取 [共用資源] 底下的 [模組]。 
+2. 選取 [瀏覽資源庫]。  
+3. 在搜尋列中，輸入模組名稱 (例如 `Az.Accounts`)。 
+4. 在 PowerShell 模組頁面上，選取 [匯入]，以將模組匯入至您的自動化帳戶。
+
+    ![將模組匯入至您自動化帳戶的螢幕擷取畫面](../media/modules/import-module.png)
+
+您也可以透過 [PowerShell 資源庫](https://www.powershellgallery.com) \(英文\)，藉由搜尋要匯入的模組來進行此匯入。 當您找到模組時，請加以選取，然後選擇 [Azure 自動化] 索引標籤。選取 [部署至 Azure 自動化]。
+
+![直接從 PowerShell 資源庫匯入模組的螢幕擷取畫面](../media/modules/import-gallery.png)
+
+### <a name="test-your-runbooks"></a>測試您的 Runbook
+
+將 Az 模組匯入至自動化帳戶之後，您就可以開始編輯 Runbook 和 DSC 設定，以使用新的模組。 測試 Runbook 的修改以使用新 Cmdlet 的方式之一，是在 Runbook 開頭使用 `Enable-AzureRmAlias -Scope Process` 命令。 藉由將此命令新增至您的 Runbook，不需變更指令碼就可加以執行。 
+
+## <a name="author-modules"></a>撰寫模組
+
+當您撰寫自訂 PowerShell 模組以在 Azure 自動化中使用時，建議您遵循此節中的考慮事項。 若要準備要匯入的模組，您至少必須建立一個 psd1、psm1 或 PowerShell 模組 **.dll** 檔案，且名稱與模組資料夾相同。 然後壓縮模組資料夾，讓 Azure 自動化能夠以單一檔案形式匯入。 **.zip** 套件的名稱應該與內含的模組資料夾相同。 
+
+若要深入了解如何撰寫 PowerShell 模組，請參閱[如何撰寫 PowerShell 指令碼模組](/powershell/scripting/developer/module/how-to-write-a-powershell-script-module?view=powershell-7) \(部分機器翻譯\)。
+
+### <a name="version-folder"></a>版本資料夾
+
+請勿在模組的 **.zip** 套件中包含版本資料夾。 此問題較不在意 Runbook，但會導致狀態設定 (DSC) 服務發生問題。 將模組散發至由狀態設定所管理的節點時，Azure 自動化會自動建立版本資料夾。 如果版本資料夾存在，您最終將有兩個執行個體。 以下是 DSC 模組的範例資料夾結構：
+
+```powershell
+myModule
+  - DSCResources
+    - myResourceFolder
+      myResourceModule.psm1
+      myResourceSchema.mof
+  myModuleManifest.psd1
 ```
 
-## <a name="module-best-practices"></a>模块最佳做法
+### <a name="help-information"></a>說明資訊
 
-PowerShell 模組都可以匯入到 Azure 自動化，以使其 Cmdlet 可供在 Runbook 內使用，以及使其 DSC 資源可供在 DSC 組態內使用。 Azure 自動化會在幕後儲存這些模組，並在執行 Runbook 作業和 DSC 編譯作業時將其載入 Azure 自動化沙箱，以在其中執行 Runbook 和編譯 DSC 組態。 模組中的任何 DSC 資源也會自動放置於 Automation DSC 提取伺服器。 它們可以在機器套用 DSC 組態時由機器提取。
-
-创作一个要在 Azure 自动化中使用的 PowerShell 模块时，我们建议考虑以下事项：
-
-* 在模組中加入每個 Cmdlet 的概要、描述和說明 URI。 在 PowerShell 中，您可以為 Cmdlet 定義特定說明資訊，以讓使用者透過 **Get-Help** Cmdlet 獲得其使用說明。 以下示例演示如何定义要在 .psm1 模块文件中使用的摘要和帮助 URI：
+在您的模組中包含每個 Cmdlet 的概要、描述和說明 URI。 在 PowerShell 中，您可以使用 `Get-Help` Cmdlet 來定義 Cmdlet 的說明資訊。 下列範例示範如何在 **.psm1** 模組檔案中定義概要和說明 URI。
 
   ```powershell
   <#
@@ -140,13 +213,17 @@ PowerShell 模組都可以匯入到 Azure 自動化，以使其 Cmdlet 可供在
   }
   ```
 
-  提供此資訊會顯示在 PowerShell 主控台使用 **Get-Help** Cmdlet 的說明。 Azure 门户中也会显示此说明。
+  提供此資訊，即可透過 PowerShell 主控台中的 `Get-Help` Cmdlet 來顯示說明文字。 此文字也會顯示於 Azure 入口網站中。
 
-  ![整合模組說明](../media/modules/module-activity-description.png)
+  ![整合模組說明的螢幕擷取畫面](../media/modules/module-activity-description.png)
 
-* 如果模块连接到外部服务，则它应该包含一个[连接类型](#add-a-connection-type-to-your-module)。 模組中的每個 Cmdlet 應該要能夠採用連線物件 (該連線類型的執行個體) 來做為參數。 這樣可讓使用者在每次呼叫 Cmdlet 時，將連線資產的參數對應至 Cmdlet 的相對應參數。 根据上面的 Runbook 示例，该模块使用名为 ContosoConnection 的示例 Contoso 连接资产来访问 Contoso 资源，并从外部服务返回数据。
+### <a name="connection-type"></a>連線類型
 
-  在以下示例中，字段将映射到 `PSCredential` 对象的 UserName 和 Password 属性，然后传递给 cmdlet。
+如果模組連線至外部服務，請使用[自訂整合模組](#custom-modules)來定義連線類型。 模組中的每個 Cmdlet 都應該接受該連線類型的執行個體 (連線物件) 作為參數。 使用者會在每次呼叫 Cmdlet 時，將連線資產的參數對應至 Cmdlet 的對應參數。 
+
+![在 Azure 入口網站中使用自訂連線](../media/modules/connection-create-new.png)
+
+下列 Runbook 範例會使用名為 `ContosoConnection` 的 Contoso 連線資產來存取 Contoso 資源，並從外部服務傳回資料。 在此範例中，欄位會對應至 `PSCredential` 物件的 `UserName` 和 `Password` 屬性，然後傳遞給 Cmdlet。
 
   ```powershell
   $contosoConnection = Get-AutomationConnection -Name 'ContosoConnection'
@@ -156,7 +233,7 @@ PowerShell 模組都可以匯入到 Azure 自動化，以使其 Cmdlet 可供在
   }
   ```
 
-  实现此行为的更轻松且更好的方法是直接将连接对象传递给 cmdlet：
+更容易且更好處理此行為的方式是直接將連線物件傳遞給 Cmdlet：
 
   ```powershell
   $contosoConnection = Get-AutomationConnection -Name 'ContosoConnection'
@@ -165,11 +242,13 @@ PowerShell 模組都可以匯入到 Azure 自動化，以使其 Cmdlet 可供在
   }
   ```
 
-  您可以透過讓 Cmdlet 接受直接將連線物件當做參數，而非只是參數的連線欄位，來讓 Cmdlet 具有像是上述範例的行為。 通常您會想讓每個 Cmdlet 都設定參數，讓未使用 Azure 自動化的使用者可以直接呼叫 Cmdlet，而不必建構雜湊表來作為連線物件。 参数集 `UserAccount` 用于传递连接字段属性。 `ConnectionObject` 用于一直传递连接。
+您可以透過讓 Cmdlet 能夠直接接受連線物件作為參數，而不是只接受連線欄位作為參數，來讓 Cmdlet 具有類似行為。 通常您會想要針對每個 Cmdlet 設定參數，讓未使用自動化的使用者可以呼叫 Cmdlet，而不需建構雜湊表作為連線物件。 `UserAccount` 參數集可用來傳遞連線欄位屬性。 `ConnectionObject` 則可讓您直接傳遞連線。
 
-* 在模块中定义所有 cmdlet 的输出类型。 為 Cmdlet 定義輸出類型，可讓設計階段 IntelliSense 協助您判斷 Cmdlet 的輸出屬性，以供在撰寫期間使用。 在圖形化撰寫自動化 Runbook 期間，它會特別有幫助，因為設計階段的知識是讓模組的使用者獲得容易使用體驗的關鍵。
+### <a name="output-type"></a>輸出類型
 
-  可以通过添加 `[OutputType([<MyOutputType>])]`（其中，MyOutputType 是有效类型）来实现此目的。 若要详细了解 OutputType，请参阅[关于函数 OutputTypeAttribute](/powershell/module/microsoft.powershell.core/about/about_functions_outputtypeattribute)。 以下代码示例演示如何将 `OutputType` 添加到 cmdlet：
+為模組中的所有 Cmdlet 定義輸出類型。 為 Cmdlet 定義輸出類型，可讓設計階段的 IntelliSense 在撰寫期間協助判斷 Cmdlet 的輸出屬性。 在撰寫圖形化 Runbook 期間，此練習特別有幫助，因為設計階段的知識是讓模組使用者獲得容易使用體驗的關鍵。
+
+新增 `[OutputType([<MyOutputType>])]`，其中 `MyOutputType` 是有效的類型。 若要深入了解 `OutputType`，請參閱[關於函式 OutputTypeAttribute](/powershell/module/microsoft.powershell.core/about/about_functions_outputtypeattribute)。 下列程式碼是將 `OutputType` 新增至 Cmdlet 的範例：
 
   ```powershell
   function Get-ContosoUser {
@@ -182,13 +261,15 @@ PowerShell 模組都可以匯入到 Azure 自動化，以使其 Cmdlet 可供在
   }
   ```
 
-  ![圖形化 Runbook 輸出類型](../media/modules/runbook-graphical-module-output-type.png)
+  ![圖形化 Runbook 輸出類型的螢幕擷取畫面](../media/modules/runbook-graphical-module-output-type.png)
 
-  此行為類似於 Cmdlet 在 PowerShell ISE 中的輸出的「自動提示」功能，但不需要加以執行。
+  此行為類似於 Cmdlet 在 PowerShell ISE 整合服務環境中輸出的「自動提示」功能，但不需加以執行。
 
-  ![POSH IntelliSense](../media/modules/automation-posh-ise-intellisense.png)
+  ![POSH IntelliSense 的螢幕擷取畫面](../media/modules/automation-posh-ise-intellisense.png)
 
-* 讓模組中的所有 Cmdlet 變成無狀態。 多个 Runbook 作业可在同一个 AppDomain 和同一个进程与沙盒中同时运行。 如果在这两些级别共享了任何状态，则作业可能会相互影响。 此行为可能导致间歇性的且难以诊断的问题。  以下是不該做之事情的範例：
+### <a name="cmdlet-state"></a>Cmdlet 狀態
+
+讓模組中的所有 Cmdlet 變成無狀態。 多個 Runbook 作業可以同時在同一個 `AppDomain` 以及相同的程序和沙箱中執行。 如果那些層級上有任何共用的狀態，則作業可能會互相影響。 這種行為可能導致間歇性且難以診斷的問題。 以下是不需進行的作業範例：
 
   ```powershell
   $globalNum = 0
@@ -206,10 +287,90 @@ PowerShell 模組都可以匯入到 Azure 自動化，以使其 Cmdlet 可供在
   }
   ```
 
-* 该模块应完全包含在能够进行 xcopy 操作的包中。 需要执行 Runbook 时，Azure 自动化模块将分发到自动化沙盒中。 模組需要與它們執行所在的主機獨立運作。 您應該能夠進行壓縮並且移動模組套件，在將它匯入至另一部主機的 PowerShell 環境時讓它正常運作。 為了讓它運作，模組不應該相依於模組資料夾外部的任何檔案。 此資料夾是在模組匯入至 Azure 自動化時，進行壓縮的資料夾。 此模組也不應該相依於主機上的任何唯一登錄設定，例如安裝產品時所設定的這些設定。 该模块中所有文件的路径长度应小于 140 个字符。 长度超过 140 个字符的任何路径将导致导入 Runbook 时出现问题。 若未遵循此最佳做法，模組在 Azure 自動化中將無法使用。  
+### <a name="module-dependency"></a>模組相依性
 
-* 如果在您的模組中參考 [Azure Powershell Az 模組](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)，請確定您未同時參考 `AzureRM`。 `Az` 模組無法與 `AzureRM` 模組搭配使用。 `Az` 在 Runbook 中受到支援，但是預設未匯入。 若要深入了解 `Az` 模組和要考量的事項，請參閱 [Azure 自動化中的 Az 模組支援](../az-modules.md)。
+確定模組會完全包含於可使用 xcopy 複製的套件中。 自動化模組會在 Runbook 執行時，散發到自動化沙箱。 模組必須在其執行所在的主機以外單獨運作。 
+
+您應該能夠壓縮並移動模組套件，在將其匯入至另一部主機的 PowerShell 環境時，讓其能夠正常運作。 若要這樣做，請確定模組不會相依於在將模組匯入自動化時所壓縮之模組資料夾以外的任何檔案。 
+
+您的模組不應相依於主機上任何唯一的登錄設定。 範例是安裝產品時所進行的設定。 
+
+### <a name="module-file-paths"></a>模組檔案路徑
+
+確定模組中所有檔案的路徑均少於 140 個字元。 大小超過 140 個字元的路徑會導致匯入 Runbook 時發生問題。 自動化無法使用 `Import-Module`，將路徑大小超過 140 個字元的檔案匯入至 PowerShell 工作階段。
+
+## <a name="import-modules"></a>匯入模組
+
+此節定義數種方式，可讓您將模組匯入至您的自動化帳戶。 
+
+### <a name="import-modules-in-the-azure-portal"></a>在 Azure 入口網站中匯入模組
+
+在 Azure 入口網站中匯入模組：
+
+1. 移至自動化帳戶。
+2. 在 [共用資源] 底下，選取 [模組]。
+3. 選取 [新增模組]。 
+4. 選取包含您模組的 **.zip** 檔案。
+5. 選取 [確定] 以開始匯入程序。
+
+### <a name="import-modules-by-using-powershell"></a>使用 PowerShell 匯入模組
+
+您可以使用 [New-AzAutomationModule](/powershell/module/az.automation/new-azautomationmodule?view=azps-3.7.0) \(英文\) Cmdlet，將模組匯入至您的自動化帳戶。 此 Cmdlet 會取得模組 .zip 套件的 URL。
+
+```azurepowershell-interactive
+New-AzAutomationModule -Name <ModuleName> -ContentLinkUri <ModuleUri> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
+```
+
+您也可以使用相同的 Cmdlet，直接從 PowerShell 資源庫匯入模組。 請務必從 [PowerShell 資源庫](https://www.powershellgallery.com) \(英文\) 擷取 `ModuleName` 和 `ModuleVersion`。
+
+```azurepowershell-interactive
+$moduleName = <ModuleName>
+$moduleVersion = <ModuleVersion>
+New-AzAutomationModule -AutomationAccountName <AutomationAccountName> -ResourceGroupName <ResourceGroupName> -Name $moduleName -ContentLinkUri "https://www.powershellgallery.com/api/v2/package/$moduleName/$moduleVersion"
+```
+
+### <a name="import-modules-from-the-powershell-gallery"></a>從 PowerShell 資源庫匯入模組
+
+您可以直接從資源庫或您的自動化帳戶匯入 [PowerShell 資源庫](https://www.powershellgallery.com) \(英文\) 模組。
+
+直接從 PowerShell 資源庫匯入模組：
+
+1. 移至 https://www.powershellgallery.com ，然後搜尋要匯入的模組。
+2. 在 [安裝選項] 下方的 [Azure 自動化] 索引標籤中，選取 [部署至 Azure 自動化]。 此動作會開啟 Azure 入口網站。 
+3. 在 [匯入] 頁面上，選取您的自動化帳戶，然後選取 [確定]。
+
+![PowerShell 資源庫匯入模組的螢幕擷取畫面](../media/modules/powershell-gallery.png)
+
+直接從您的自動化帳戶匯入 PowerShell 資源庫模組：
+
+1. 在 [共用資源] 底下，選取 [模組]。 
+2. 選取 [瀏覽資源庫]，然後在資源庫中搜尋模組。 
+3. 選取要匯入的模組，然後選取 [匯入]。 
+4. 選取 [確定] 以開始匯入程序。
+
+![從 Azure 入口網站匯入 PowerShell 資源庫模組的螢幕擷取畫面](../media/modules/gallery-azure-portal.png)
+
+## <a name="delete-modules"></a>刪除模組
+
+如果您遇到有關模組的問題，或需要復原為舊版模組，您可以從自動化帳戶中將其刪除。 當您建立自動化帳戶時，就無法刪除已匯入的[預設模組](#default-modules)原始版本。 如果要刪除的模組是其中一個[預設模組](#default-modules)的較新版本，則會復原為隨您的自動化帳戶一起安裝的版本。 否則，會移除您從自動化帳戶中刪除的任何模組。
+
+### <a name="delete-modules-in-the-azure-portal"></a>在 Azure 入口網站中刪除模組
+
+在 Azure 入口網站中移除模組：
+
+1. 移至自動化帳戶。 在 [共用資源] 底下，選取 [模組]。 
+2. 選取您想要移除的模組。 
+3. 在 [模組] 頁面上，選取 [刪除]。 如果此模組是其中一個[預設模組](#default-modules)，則其會復原為建立自動化帳戶時就已存在的版本。
+
+### <a name="delete-modules-by-using-powershell"></a>使用 PowerShell 刪除模組
+
+若要透過 PowerShell 移除模組，請執行下列命令：
+
+```azurepowershell-interactive
+Remove-AzAutomationModule -Name <moduleName> -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName>
+```
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要深入了解如何建立 PowerShell 模組，請參閱 [撰寫 Windows PowerShell 模組](https://msdn.microsoft.com/library/dd878310%28v=vs.85%29.aspx)
+* 如需使用 Azure PowerShell 模組的詳細資訊，請參閱[開始使用 Azure PowerShell](/powershell/azure/get-started-azureps?view=azps-3.7.0)。
+* 若要深入瞭解如何建立 PowerShell 模組，請參閱[撰寫 Windows powershell 模組](/powershell/scripting/developer/module/writing-a-windows-powershell-module?view=powershell-7)。

@@ -1,26 +1,16 @@
 ---
-title: Azure 限制的 vCPU 大小 - Linux | Microsoft Docs
+title: 限制的 vCPU 大小
 description: 列出具有受限 vCPU 計數的 VM 大小。
-services: virtual-machines-linux
-documentationcenter: ''
-author: jonbeck7
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.devlang: na
+author: mimckitt
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 03/09/2018
-ms.author: jonbeck
-ms.openlocfilehash: ba772ddfa0d3c29e2d4631d1c4a23555cba36556
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: mimckitt
+ms.openlocfilehash: 70e6d043b3ad033e1a43c566e5d1da49a1447c6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60729831"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81273557"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>具有受限 vCPU 的 VM 大小
 

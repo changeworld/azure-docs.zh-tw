@@ -1,41 +1,41 @@
 ---
-title: 資料變更
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 資料改變-LUIS
 description: 了解如何在於 Language Understanding (LUIS) 中進行預測之前變更資料
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/23/2019
-ms.author: diberry
-ms.openlocfilehash: c43d3738b23037432ecdfe3aa872950f6a7b863e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.date: 05/06/2020
+ms.openlocfilehash: 3a88739caa9b35679f10b0cb63a804e9464c871c
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860587"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872242"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>預測之前或預測期間變更語句資料
-LUIS 提供可在預測之前或預測期間操作語句的方法。 這些包括修正拼字，以及修正重新建置 datetimeV2 的時區問題。 
+LUIS 提供可在預測之前或預測期間操作語句的方法。 其中包括[修正拼寫](luis-tutorial-bing-spellcheck.md)，以及修正預先建立之[datetimeV2](luis-reference-prebuilt-datetimev2.md)的時區問題。
 
 ## <a name="correct-spelling-errors-in-utterance"></a>校正語句中的拼字錯誤
-LUIS 使用 [Bing 拼字檢查 API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) 來校正語句中的拼字錯誤。 LUIS 需要與該服務相關的金鑰。 請建立金鑰，然後在[端點](https://aka.ms/luis-endpoint-apis)新增該金鑰作為查詢字串參數。 
 
-您也可以在 [Test] \(測試\) 面板中[輸入金鑰](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel)來更正拼字錯誤。 金鑰會以工作階段變數的形式保留在 [Test] \(測試\) 面板的瀏覽器中。 請在您想要校正拼字的每個瀏覽器工作階段中，將金鑰新增至 [Test] \(測試\) 面板。 
 
-在測試面板及端點的金鑰使用會計入[金鑰使用量](https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/)配額中。 LUIS 實作「Bing 拼字檢查」的文字長度限制。 
+### <a name="v3-runtime"></a>V3 執行時間
+
+在您將語句傳送至 LUIS 之前，預先處理文字以進行拼寫更正。 使用範例語句搭配正確的拼寫，以確保您得到正確的預測。
+
+使用[Bing 拼寫檢查](../bing-spell-check/overview.md)來更正文字，然後再將它傳送至 LUIS。
+
+### <a name="prior-to-v3-runtime"></a>在 V3 執行時間之前
+
+LUIS 使用 [Bing 拼字檢查 API V7](../Bing-Spell-Check/overview.md) 來校正語句中的拼字錯誤。 LUIS 需要與該服務相關的金鑰。 請建立金鑰，然後在[端點](https://go.microsoft.com/fwlink/?linkid=2092356)新增該金鑰作為查詢字串參數。
 
 端點必須有兩個參數，才能讓拼字校正運作：
 
-|參數|值|
+|Param|值|
 |--|--|
-|`spellCheck`|布林值|
+|`spellCheck`|boolean|
 |`bing-spell-check-subscription-key`|[Bing 拼字檢查 API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) 端點金鑰|
 
 當 [Bing 拼字檢查 API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) 偵測到錯誤時，系統會將原始語句和校正後語句及預測一起從端點傳回。
+
+#### <a name="v2-prediction-endpoint-response"></a>[V2 預測端點回應](#tab/V2)
 
 ```JSON
 {
@@ -48,35 +48,56 @@ LUIS 使用 [Bing 拼字檢查 API V7](https://azure.microsoft.com/services/cogn
   "entities": []
 }
 ```
- 
-### <a name="whitelist-words"></a>將字組列入允許清單
-LUIS 中使用的 Bing 拼字檢查 API 不支援要在拼字檢查變動期間忽略的字組允許清單。 如果您需要將字組或縮寫列入允許清單，請在將語句傳送至 LUIS 進行意圖預測之前，利用允許清單處理用戶端應用程式中的語句。
+
+#### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
+
+```JSON
+{
+    "query": "Book a flite to London?",
+    "prediction": {
+        "normalizedQuery": "book a flight to london?",
+        "topIntent": "BookFlight",
+        "intents": {
+            "BookFlight": {
+                "score": 0.780123
+            }
+        },
+        "entities": {},
+    }
+}
+```
+
+* * *
+
+### <a name="list-of-allowed-words"></a>允許的單字清單
+LUIS 中使用的 Bing 拼寫檢查 API 不支援在拼寫檢查改變期間忽略的字詞清單。 如果您需要允許單字或縮略字清單，請先處理用戶端應用程式中的語句，再將語句傳送至 LUIS 進行意圖預測。
 
 ## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>變更預先建置 datetimeV2 實體的時區
-當 LUIS 應用程式使用預先建置的 datetimeV2 實體時，可以在預測回應中傳回日期時間值。 要求的時區會用來判斷要傳回的正確日期時間。 如果要求來自 Bot 或另一個集中式應用程式，請在其抵達 LUIS 之前，先更正 LUIS 使用的時區。 
+當 LUIS 應用程式使用預先建立的[datetimeV2](luis-reference-prebuilt-datetimev2.md)實體時，可以在預測回應中傳回 datetime 值。 要求的時區會用來判斷要傳回的正確日期時間。 如果要求來自 Bot 或另一個集中式應用程式，請在其抵達 LUIS 之前，先更正 LUIS 使用的時區。
 
-### <a name="endpoint-querystring-parameter"></a>端點查詢字串參數
-更正時區的方式是使用 `timezoneOffset` 參數將使用者時區新增至[端點](https://aka.ms/luis-endpoint-apis)。 `timezoneOffset` 的值應該是用以變更時間的正數或負數 (以分鐘為單位)。  
+### <a name="v3-prediction-api-to-alter-timezone"></a>變更時區的 V3 預測 API
 
-|參數|值|
-|--|--|
-|`timezoneOffset`|正數或負數 (以分鐘為單位)|
+在 V3 中， `datetimeReference`會決定時區時差。 深入瞭解[V3 預測](luis-migration-api-v3.md#v3-post-body)。
 
-### <a name="daylight-savings-example"></a>日光節約範例
-如果您需要讓傳回的預先建置 datetimeV2 針對日光節約時間進行調整，則應該針對[端點](https://aka.ms/luis-endpoint-apis)查詢，使用 `timezoneOffset` 查詢字串參數搭配以分鐘為單位的 +/- 值。
+### <a name="v2-prediction-api-to-alter-timezone"></a>變更時區的 V2 預測 API
+使用以 API 版本為基礎的`timezoneOffset`參數，將使用者的時區新增至端點，即可更正時區。 參數的值應該是正數或負數（以分鐘為單位），以改變時間。
 
-增加 60 分鐘： 
+#### <a name="v2-prediction-daylight-savings-example"></a>V2 預測日光節約範例
+如果您需要針對日光節約時間來調整傳回的預先建立 datetimeV2，您應該在[端點](https://go.microsoft.com/fwlink/?linkid=2092356)查詢的幾分鐘內，使用 querystring 參數搭配 +/-值。
 
-https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}
+增加 60 分鐘：
 
-減去 60 分鐘： 
+`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?timezoneOffset=60&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
 
-https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=-60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}
+減去 60 分鐘：
 
-## <a name="c-code-determines-correct-value-of-timezoneoffset"></a>C# 程式碼可判斷 timezoneOffset 的正確值
-下列 C# 程式碼使用 [TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo?view=netframework-4.7.1) 類別的 [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid?view=netframework-4.7.1#examples) 方法，根據系統時間判斷正確的 `timezoneOffset`：
+`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?timezoneOffset=-60&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
 
-```CSharp
+#### <a name="v2-prediction-c-code-determines-correct-value-of-parameter"></a>V2 預測 c # 程式碼判斷參數的正確值
+
+下列 c # 程式碼會使用[TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo)類別的[timezoneinfo.findsystemtimezonebyid](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples)方法，根據系統時間判斷正確的位移值：
+
+```csharp
 // Get CST zone id
 TimeZoneInfo targetZone = TimeZoneInfo.FindSystemTimeZoneById("Central Standard Time");
 
@@ -86,8 +107,8 @@ DateTime utcDatetime = DateTime.UtcNow;
 // Get Central Standard Time value of Now
 DateTime cstDatetime = TimeZoneInfo.ConvertTimeFromUtc(utcDatetime, targetZone);
 
-// Find timezoneOffset
-int timezoneOffset = (int)((cstDatetime - utcDatetime).TotalMinutes);
+// Find timezoneOffset/datetimeReference
+int offset = (int)((cstDatetime - utcDatetime).TotalMinutes);
 ```
 
 ## <a name="next-steps"></a>後續步驟

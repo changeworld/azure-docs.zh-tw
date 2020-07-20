@@ -2,28 +2,41 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-origin.date: 09/04/2018
-ms.date: 12/26/2018
-ms.author: v-junlch
-ms.openlocfilehash: c1784111cd2fc2c93b67510f310b9e513cf2b86e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/04/2018
+ms.author: glenga
+ms.openlocfilehash: 629de079f7cc7d95d10f8ff951a47b8b8fc62dad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61438139"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77474107"
 ---
-Azure Functions [觸發程序和繫結](../articles/azure-functions/functions-triggers-bindings.md)會與各種 Azure 服務通訊。 在與這些服務整合時，您可能會引發錯誤，而這些錯誤是源自基礎 Azure 服務的 API。 當您嘗試使用 REST 或用戶端程式庫，透過您的函式程式碼與其他服務通訊時，也可能會發生錯誤。 若要避免遺失資料並確保函式有正常行為，請務必要處理來自上述任一來源的錯誤。
+Azure Functions 中引發的錯誤可能來自下列任何來源：
+
+- 使用內建的 Azure Functions[觸發程式和](..\articles\azure-functions\functions-triggers-bindings.md)系結
+- 基礎 Azure 服務的 Api 呼叫
+- REST 端點的呼叫
+- 呼叫用戶端程式庫、封裝或協力廠商 Api
+
+遵循穩固的錯誤處理做法，是為了避免遺失資料或遺漏訊息。 建議的錯誤處理作法包括下列動作：
+
+- [啟用 Application Insights](../articles/azure-functions/functions-monitoring.md)
+- [使用結構化錯誤處理](#use-structured-error-handling)
+- [等冪性的設計](../articles/azure-functions/functions-idempotent.md)
+- [執行重試原則](../articles/azure-functions/functions-reliable-event-processing.md)（適當時）
+
+### <a name="use-structured-error-handling"></a>使用結構化錯誤處理
+
+捕捉和發行錯誤對於監視應用程式的健全狀況非常重要。 任何函式程式碼最上層的層級都應該包含 try/catch 區塊。 在 catch 區塊中，您可以捕捉和發行錯誤。
+
+### <a name="retry-support"></a>重試支援
 
 下列觸發程序有內建的重試支援：
 
-- [Azure Blob 儲存體](../articles/azure-functions/functions-bindings-storage-blob.md)
-- [Azure 佇列儲存體](../articles/azure-functions/functions-bindings-storage-queue.md)
-- [Azure 服務匯流排 (佇列/主題)](../articles/azure-functions/functions-bindings-service-bus.md)
+* [Azure Blob 儲存體](../articles/azure-functions/functions-bindings-storage-blob.md)
+* [Azure 佇列儲存體](../articles/azure-functions/functions-bindings-storage-queue.md)
+* [Azure 服務匯流排 (佇列/主題)](../articles/azure-functions/functions-bindings-service-bus.md)
 
-根據預設，這些觸發程序最多會重試五次。 在第五次重試之後，這些觸發程序就會在特殊的[有害佇列](../articles/azure-functions/functions-bindings-storage-queue.md#trigger---poison-messages)中寫入一則訊息。
+根據預設，這些觸發程式會重試最多五次的要求。 在第五次重試之後，Azure 佇列儲存體和 Azure 服務匯流排觸發程式都會將訊息寫入[有害佇列](..\articles\azure-functions\functions-bindings-storage-queue-trigger.md#poison-messages)。
 
-其他 Functions 觸發程序並未內建可在函式執行期間發生錯誤時進行重試的機制。 為了避免在萬一函式發生錯誤時遺失觸發程序資訊，建議您在函式程式碼中使用 try-catch 區塊，以擷取任何錯誤。 當錯誤發生時，請將觸發程序傳遞至函式的資訊寫入至特殊的「有害」訊息佇列。 這個方法和 [Blob 儲存體觸發程序](../articles/azure-functions/functions-bindings-storage-blob.md#trigger---poison-blobs)所使用的方法相同。
-
-如此一來，您就可以擷取可能會因錯誤而遺失的觸發程序事件，並於稍後使用其他函式來重試這些事件，以使用所儲存的資訊處理有害佇列中的訊息。  
-
-<!-- ms.date: 12/26/2018 -->
+您必須手動為任何其他觸發程式或系結類型執行重試原則。 手動執行可能包括將錯誤資訊寫入[有害訊息佇列](..\articles\azure-functions\functions-bindings-storage-blob-trigger.md#poison-blobs)。 藉由寫入有害佇列，您有機會在稍後重試作業。 這個方法和 Blob 儲存體觸發程序所使用的方法相同。

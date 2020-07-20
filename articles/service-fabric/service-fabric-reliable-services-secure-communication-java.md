@@ -1,33 +1,24 @@
 ---
-title: 保護與 Azure Service Fabric 中的 Java 進行服務遠端通訊時的安全 | Microsoft Docs
+title: 使用 JAVA 保護服務遠端處理通訊
 description: 了解如何針對在 Azure Service Fabric 叢集中執行的 Java 可靠服務，保護以服務遠端為基礎的通訊。
-services: service-fabric
-documentationcenter: java
 author: PavanKunapareddyMSFT
-manager: chackdan
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: b465ab602a14285f8cf40b24ce1dfa9c763fecb8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: adefeadf939d398268624343d82c18cbf5ec87cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60773344"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75609633"
 ---
 # <a name="secure-service-remoting-communications-in-a-java-service"></a>保護 Java 服務中的服務遠端通訊
 > [!div class="op_single_selector"]
-> * [Windows 上的 C# ](service-fabric-reliable-services-secure-communication.md)
+> * [Windows 上的 c #](service-fabric-reliable-services-secure-communication.md)
 > * [在 Linux 上使用 Java](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
 
-安全是通信最为重视的要素之一。 Reliable Services 應用程式架構會提供可用來改善安全性的一些預先建置通訊堆疊和工具。 本文探討如何改善在 Java 服務中使用服務遠端時的安全性。 它建置於現有[範例](service-fabric-reliable-services-communication-remoting-java.md)上，其會說明如何針對以 Java 撰寫的可靠服務設定遠端。 
+安全性是通訊最為重視的其中一個部分。 Reliable Services 應用程式架構會提供可用來改善安全性的一些預先建置通訊堆疊和工具。 本文探討如何改善在 Java 服務中使用服務遠端時的安全性。 它建置於現有[範例](service-fabric-reliable-services-communication-remoting-java.md)上，其會說明如何針對以 Java 撰寫的可靠服務設定遠端。 
 
 若要在搭配 Java 服務使用服務遠端時協助保護服務安全，請遵循下列步驟：
 
@@ -109,7 +100,7 @@ ms.locfileid: "60773344"
        ```
 3. 如果在安全服務上使用遠端堆疊來呼叫方法，而不是使用 `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` 類別來建立服務 Proxy，請使用 `microsoft.serviceFabric.services.remoting.client.FabricServiceProxyFactory`。
 
-    如果客户端代码正在作为服务的一部分运行，则可以从 settings.xml 文件中加载 `FabricTransportSettings`。 建立與服務程式碼類似的 TransportSettings 區段，如前所示。 對用戶端程式碼進行下列變更：
+    如果用戶端程式碼正在當作服務一部分執行，則可以從 settings.xml 檔案中載入 `FabricTransportSettings` 。 建立與服務程式碼類似的 TransportSettings 區段，如前所示。 對用戶端程式碼進行下列變更：
 
     ```java
 

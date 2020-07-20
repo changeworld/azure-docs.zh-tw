@@ -1,17 +1,17 @@
 ---
 title: 什麼是 Azure DNS？
 description: 在 Microsoft Azure 上裝載 Azure DNS 服務的概觀。 在 Microsoft Azure 上裝載您的網域。
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
-ms.author: victorh
-ms.openlocfilehash: cea19ad2ba03d3e71df32912a1d7ee9e6171689a
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.author: rohink
+ms.openlocfilehash: 1543c0daae7d637730a5f8f9da2305423ba7f84e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339446"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "76932411"
 ---
 # <a name="what-is-azure-dns"></a>什麼是 Azure DNS？
 
@@ -51,7 +51,7 @@ DNS 會依據 Azure 所裝載的 DNS 區域數量，以及所接收的 DNS 查�
 
 ## <a name="customizable-virtual-networks-with-private-domains"></a>使用私人網域的可自訂虛擬網路
 
-Azure DNS 也支援私人 DNS 區域 (目前處於公開預覽狀態)。 此功能可讓您在私人虛擬網路中使用自己的自訂網域名稱，而不是 Azure 目前提供的可用名稱。
+Azure DNS 也支援私人 DNS 網域。 此功能可讓您在私人虛擬網路中使用自己的自訂網域名稱，而不是 Azure 目前提供的可用名稱。
 
 如需詳細資訊，請參閱[將 Azure DNS 用於私人網域](private-dns-overview.md)。
 

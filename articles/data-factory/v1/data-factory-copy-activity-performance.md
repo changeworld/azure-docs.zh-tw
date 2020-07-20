@@ -1,39 +1,37 @@
 ---
-title: 複製活動的效能及微調指南 | Microsoft Docs
+title: 複製活動的效能及微調指南
 description: 了解當您使用複製活動時，Azure Data Factory 中的資料移動效能會受到哪些主要因素的影響。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: 4b9a6a4f-8cf5-4e0a-a06f-8133a2b7bc58
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ec8c58e4ced0d8df958e242b9c1671aeed8c2ee6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 12deb51cb2c0efc1bef77a3ff2c8d5150ba13cde
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60488155"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84196114"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>複製活動的效能及微調指南
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [第 1 版](data-factory-copy-activity-performance.md)
 > * [第 2 版 (目前的版本)](../copy-activity-performance.md)
 
 > [!NOTE]
-> 本文適用於第 1 版的 Data Factory。 如果您使用目前版本的 Data Factory 服務，請參閱 [Data Factory 的複製活動效能及微調指南](../copy-activity-performance.md)。
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱 [Data Factory 的複製活動效能及微調指南](../copy-activity-performance.md)。
 
 Azure Data Factory 複製活動會提供安全、可靠、高效能的頂級資料載入解決方案。 它可讓您複製每天在各式各樣雲端和內部部署資料存放區上數十 TB 的資料。 超快的資料載入效能是可確保您能夠專注於核心「巨量資料」問題的關鍵︰建置進階的分析解決方案，並從該所有資料獲得深入解析。
 
 Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複製活動」則提供一個容易設定的高度最佳化資料載入體驗。 只要使用單一的複製活動，您便可以達成下列目的︰
 
-* 以 **1.2 GBps** 的速度將資料載入 **Azure SQL 資料倉儲**。 如需使用案例的逐步解說，請參閱[使用 Azure Data Factory 在 15 分鐘內將 1 TB 載入至 Azure SQL 資料倉儲](data-factory-load-sql-data-warehouse.md)。
+* 將資料載入至**1.2 GBps**的**Azure SQL 資料倉儲**。 如需使用案例的逐步解說，請參閱[使用 Azure Data Factory 在 15 分鐘內將 1 TB 載入至 Azure SQL 資料倉儲](data-factory-load-sql-data-warehouse.md)。
 * 以 **1.0 GBps** 的速度將資料載入 **Azure Blob 儲存體**
 * 以 **1.0 GBps** 的速度將資料載入 **Azure Data Lake Store**
 
@@ -67,7 +65,7 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
         <td>32 核心 2.20 GHz Intel Xeon E5-2660 v2</td>
     </tr>
     <tr>
-        <td>記憶體</td>
+        <td>Memory</td>
         <td>128 GB</td>
     </tr>
     <tr>
@@ -105,7 +103,7 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
 | 在以檔案為基礎的存放區之間複製資料 | 依據檔案的數量和大小，介於 4 到 16 之間。 |
 | 所有其他複製案例 | 4 |
 
-若要覆寫此預設值，請如下所示指定 **cloudDataMovementUnits** 屬性的值。 **cloudDataMovementUnits** 屬性的「允許值」是 2、4、8、16 和 32。 根據您的資料模式，複製作業會在執行階段使用的 **實際雲端 DMU 數目** 等於或小於所設定的值。 如需在為特定複製來源和接收設定更多單位時可能獲得之效能增益水準的相關資訊，請參閱 [效能參考](#performance-reference)。
+若要覆寫此預設值，請如下所示指定 **cloudDataMovementUnits** 屬性的值。 **cloudDataMovementUnits** 屬性的「允許值」**** 是 2、4、8、16 和 32。 根據您的資料模式，複製作業會在執行階段使用的 **實際雲端 DMU 數目** 等於或小於所設定的值。 如需在為特定複製來源和接收設定更多單位時可能獲得之效能增益水準的相關資訊，請參閱 [效能參考](#performance-reference)。
 
 ```json
 "activities":[
@@ -129,7 +127,7 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
 ```
 
 > [!NOTE]
-> 如果您需要更多雲端 DMU 以提高輸送量，請連絡 [Azure 支援](https://azure.microsoft.com/support/)。 目前只有當您是將多個檔案從 Blob 儲存體/Data Lake Store/Amazon S3/雲端 FTP/雲端 SFTP 複製到 Blob 儲存體/Data Lake Store/Azure SQL Database 時，設定 8 及 8 以上的值才有作用。
+> 如果您需要更多雲端 DMU 以提高輸送量，請連絡 [Azure 支援](https://azure.microsoft.com/support/)。 目前只有當您是將多個檔案從 Blob 儲存體/Data Lake Store/Amazon S3/雲端 FTP/雲端 SFTP 複製到 Blob 儲存體/Data Lake Store/Azure SQL Database**** 時，設定 8 及 8 以上的值才有作用。
 >
 
 ### <a name="parallelcopies"></a>parallelCopies
@@ -140,7 +138,7 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
 | 來源和接收 | 由服務決定的預設平行複製計數 |
 | --- | --- |
 | 在檔案型存放區 (Blob 儲存體、Data Lake Store、Amazon S3、內部部署檔案系統、內部部署 HDFS) 之間複製資料 |介於 1 到 32。 取決於檔案大小和用來在兩個雲端資料存放區之間複製資料的雲端資料移動單位數 (DMU)，或用於混合式複製的實體閘道器電腦組態 (複製資料至內部部署資料存放區或從內部部署資料存放區複製資料)。 |
-| 將資料從 **任何來源資料存放區複製到 Azure 表格儲存體** |4 |
+| 將資料從**任何來源資料存放區複製到 Azure 表格儲存體** |4 |
 | 所有其他來源和接收組 |1 |
 
 通常，預設行為應可提供最佳輸送量。 不過，若要控制裝載資料存放區之電腦上的負載或是調整複製效能，您可以選擇覆寫預設值並指定 **parallelCopies** 屬性的值。 該值必須介於 1 (含) 到 32 (含)。 在執行階段，為獲得最佳效能，複製活動會使用小於或等於設定值的值。
@@ -206,12 +204,12 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
 ### <a name="configuration"></a>組態
 在複製活動中設定 **enableStaging** 設定，指定您是否想要讓資料在載入至目的地資料存放區之前，暫存在 Blob 儲存體中。 當您將 **enableStaging** 設定為 TRUE 時，請指定下一份資料表所列出的其他屬性。 如果還未指定，您也需要建立 Azure 儲存體或儲存體共用存取簽章連結服務以供暫存使用。
 
-| 屬性 | 說明 | 預設值 | 必要 |
+| 屬性 | 描述 | 預設值 | 必要 |
 | --- | --- | --- | --- |
-| **enableStaging** |指定您是否要透過過渡暫存存放區複製資料。 |False |否 |
-| **linkedServiceName** |指定 [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 或 [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) 連結服務的名稱，以代表您用來做為過渡暫存存放區的儲存體執行個體。 <br/><br/>  您無法使用具有共用存取簽章的儲存體來透過 PolyBase 將資料載入至 SQL 資料倉儲。 您可以將它用於其他所有案例。 |N/A |是，當 **enableStaging** 設為 TRUE |
-| **路徑** |指定要包含分段資料的 Blob 儲存體路徑。 如果未提供路徑，服務會建立容器來儲存暫存資料。 <br/><br/> 只有在使用具有共用存取簽章的儲存體時，或需要讓暫存資料位於特定位置時，才指定路徑。 |N/A |否 |
-| **enableCompression** |指定將資料複製到目的地之前，是否應該壓縮資料。 此設定可減少傳輸的資料量。 |False |否 |
+| **enableStaging** |指定您是否要透過過渡暫存存放區複製資料。 |False |No |
+| **linkedServiceName** |指定 [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 或 [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) 連結服務的名稱，以代表您用來做為過渡暫存存放區的儲存體執行個體。 <br/><br/> 您無法使用具有共用存取簽章的儲存體來透過 PolyBase 將資料載入至 SQL 資料倉儲。 您可以將它用於其他所有案例。 |N/A |是，當 **enableStaging** 設為 TRUE |
+| **path** |指定要包含分段資料的 Blob 儲存體路徑。 如果未提供路徑，服務會建立容器來儲存暫存資料。 <br/><br/> 只有在使用具有共用存取簽章的儲存體時，或需要讓暫存資料位於特定位置時，才指定路徑。 |N/A |否 |
+| **enableCompression** |指定將資料複製到目的地之前，是否應該壓縮資料。 此設定可減少傳輸的資料量。 |False |No |
 
 以下是具有上表所述屬性的「複製活動」的範例定義︰
 
@@ -251,7 +249,7 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
 
 1. **建立基準**。 在開發階段，對具有代表性的資料範例使用複製活動來測試您的管線。 您可以使用 Data Factory 的 [切割模型](data-factory-scheduling-and-execution.md) 來限制您所使用的資料量。
 
-   藉由使用 **監視及管理應用程式**來收集執行時間和效能特性。 在 Data Factory 首頁上選擇 [監視及管理]。 在樹狀檢視中選擇 [輸出資料集] 。 在 [活動時段]  清單中選擇 [複製活動執行]。  會列出複製活動的持續時間和所複製資料的大小。 輸送量會列在 [活動時段總管] 中。 若要深入了解該應用程式，請參閱 [使用監視及管理應用程式來監視及管理 Azure Data Factory 管線](data-factory-monitor-manage-app.md)。
+   藉由使用 **監視及管理應用程式**來收集執行時間和效能特性。 在 Data Factory 首頁上選擇 [監視及管理]****。 在樹狀檢視中選擇 [輸出資料集] ****。 在 [活動時段] **** 清單中選擇 [複製活動執行]。 **** 會列出複製活動的持續時間和所複製資料的大小。 輸送量會列在 [活動時段總管] **** 中。 若要深入了解該應用程式，請參閱 [使用監視及管理應用程式來監視及管理 Azure Data Factory 管線](data-factory-monitor-manage-app.md)。
 
    ![活動執行詳細資料](./media/data-factory-copy-activity-performance/mmapp-activity-run-details.png)
 
@@ -288,16 +286,16 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
 ### <a name="file-based-data-stores"></a>以檔案為基礎的資料存放區
 *(包括 Blob 儲存體、Data Lake Store、Amazon S3、內部部署檔案系統及內部部署 HDFS)*
 
-* **平均檔案大小和檔案計數**：複製活動會逐檔案傳送資料。 在要移動的資料量相同的前提下，如果資料包含許多個小型檔案而非少數幾個大型檔案，其整體輸送量會較低，因為每個檔案都需要啟動程序階段。 因此，可能的話，請將小型檔案合併為較大的檔案，以提高輸送量。
+* **平均檔案大小和檔案計數**：複製活動會一次傳送一個檔案的資料。 在要移動的資料量相同的前提下，如果資料包含許多個小型檔案而非少數幾個大型檔案，其整體輸送量會較低，因為每個檔案都需要啟動程序階段。 因此，可能的話，請將小型檔案合併為較大的檔案，以提高輸送量。
 * **檔案格式和壓縮**：如需可改善效能的其他方法，請參閱[序列化和還原序列化的考量](#considerations-for-serialization-and-deserialization)和[壓縮的考量](#considerations-for-compression)小節。
 * 對於必須使用**資料管理閘道**的**內部部署檔案系統**案例，請參閱[資料管理閘道的考量](#considerations-for-data-management-gateway)一節。
 
 ### <a name="relational-data-stores"></a>關聯式資料存放區
 *(包括 SQL Database、SQL 資料倉儲、Amazon Redshift、SQL Server 資料庫，以及 Oracle、MySQL、DB2、Teradata、Sybase 和 PostgreSQL 資料庫等)*
 
-* **資料模式**：資料表結構描述對複製輸送量會有影響。 若要複製相同的資料量，較大的資料列大小會有優於較小資料列大小的效能。 這是因為資料庫可以更有效率地擷取包含較少資料列的較少資料批次。
+* **資料模式**︰資料表結構描述對複製輸送量會有影響。 若要複製相同的資料量，較大的資料列大小會有優於較小資料列大小的效能。 這是因為資料庫可以更有效率地擷取包含較少資料列的較少資料批次。
 * **查詢或預存程序**：最佳化您在複製活動來源中指定的查詢或預存程序邏輯，以更有效率地擷取資料。
-* 對於必須使用 [資料管理閘道] 的**內部部署關聯式資料庫** (例如 SQL Server 和 Oracle)，請參閱「資料管理閘道的考量」一節。
+* 對於必須使用**資料管理閘道**的**內部部署關聯式資料庫** (例如 SQL Server 和 Oracle)，請參閱資料管理閘道的考量一節。
 
 ## <a name="considerations-for-the-sink"></a>接收的考量
 ### <a name="general"></a>一般
@@ -311,7 +309,7 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
 *(包括 Blob 儲存體、Data Lake Store、Amazon S3、內部部署檔案系統及內部部署 HDFS)*
 
 * **複製行為**：如果您從其他以檔案為基礎的資料存放區複製資料，複製活動會透過 **copyBehavior** 屬性提供三個選項。 它會保留階層、扁平化階層或合併檔案。 保留或扁平化階層幾乎不會造成效能負荷，但合併檔案則會導致效能負荷增加。
-* **檔案格式和壓縮**：請參閱[序列化和還原序列化的考量](#considerations-for-serialization-and-deserialization)和[壓縮的考量](#considerations-for-compression)小節，以了解可改善效能的其他方法。
+* **檔案格式和壓縮**：如需可改善效能的其他方法，請參閱[序列化和還原序列化的考量](#considerations-for-serialization-and-deserialization)和[壓縮的考量](#considerations-for-compression)小節。
 * **Blob 儲存體**：Blob 儲存體目前只支援以區塊 Blob 來最佳化資料傳送和輸送量。
 * 對於必須使用**資料管理閘道**的**內部部署檔案系統**案例，請參閱[資料管理閘道的考量](#considerations-for-data-management-gateway)一節。
 
@@ -328,7 +326,7 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
 * 對於必須使用**資料管理閘道**的**內部部署關聯式資料庫** (如 SQL Server 和 Oracle)，請參閱[資料管理閘道的考量](#considerations-for-data-management-gateway)一節。
 
 ### <a name="nosql-stores"></a>NoSQL 存放區
-(包括表格儲存體和 Azure Cosmos DB)
+(包括表格儲存體和 Azure Cosmos DB)**
 
 * 針對 **表格儲存體**：
   * **資料分割**：將資料寫入至交錯的資料分割會大幅降低效能。 請依資料分割索引鍵來排序來源資料，使資料能有效率地依序插入資料分割中，或者，調整邏輯以將資料寫入單一資料分割中。
@@ -346,12 +344,12 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
   * 如果輸入和輸出資料集皆有不同的檔案格式或不同的組態 (例如分隔符號)，則資料移動服務會將來源資料還原序列化，以進行串流、轉換然後再序列化為您所指出的輸出格式。 此作業會導致遠高於其他案例的效能負荷。
 * 對 (從) 不是以檔案為基礎的資料存放區複製檔案時 (例如，從以檔案為基礎的存放區複製到關聯式存放區)，必須執行序列化或還原序列化步驟。 此步驟會導致很高的效能負荷。
 
-**檔案格式**：您選擇的檔案格式可能會影響複製效能。 例如，Avro 是一種壓縮二進位格式，可將中繼資料和資料儲存在一起。 它廣泛支援在 Hadoop 生態系統中進行處理和查詢。 不過，Avro 的序列化和還原序列化代價較高，因為它會導致低於文字格式的複製輸送量。 在選擇整個處理流程中所使用的檔案格式時，應有整體考量。 首先要考量資料的儲存形式是來源資料存放區或是要從外部系統擷取，再考量最理想的儲存、分析處理和查詢格式，以及資料應以何種格式匯出到資料超市中，以供報告和視覺化工具使用。 有些時候，在考量整體分析程序時，讀取和寫入效能次佳的檔案格式，可能會是較好的選擇。
+**檔案格式**︰您選擇的檔案格式可能會影響複製效能。 例如，Avro 是一種壓縮二進位格式，可將中繼資料和資料儲存在一起。 它廣泛支援在 Hadoop 生態系統中進行處理和查詢。 不過，Avro 的序列化和還原序列化代價較高，因為它會導致低於文字格式的複製輸送量。 在選擇整個處理流程中所使用的檔案格式時，應有整體考量。 首先要考量資料的儲存形式是來源資料存放區或是要從外部系統擷取，再考量最理想的儲存、分析處理和查詢格式，以及資料應以何種格式匯出到資料超市中，以供報告和視覺化工具使用。 有些時候，在考量整體分析程序時，讀取和寫入效能次佳的檔案格式，可能會是較好的選擇。
 
 ## <a name="considerations-for-compression"></a>壓縮的考量
 如果您的輸入或輸出資料集是檔案，您可以將複製活動設定為在資料寫入至目的地時執行壓縮或解壓縮。 當您選擇壓縮時，您必須在輸入/輸出 (I/O) 與 CPU 之間進行取捨。 壓縮資料須耗用額外的計算資源。 但另一方面卻可降低網路 I/O 和儲存體用量。 根據您的資料，您可能會看到整體複製輸送量有所提升。
 
-**轉碼器**：複製活動支援 gzip、bzip2 和 Deflate 壓縮類型。 這三種類型都可供 Azure HDInsight 進行處理。 每種壓縮轉碼器各有優點。 例如，bzip2 的複製輸送量最低，但您卻可以在使用 bzip2 時獲得最佳的 Hive 查詢效能，因為可將其劃分來進行處理。 Gzip 是最均衡的選項，也最常被使用。 請選擇最適合您的端對端案例使用的轉碼器。
+**轉碼器**︰複製活動支援 gzip、bzip2 和 Deflate 壓縮類型。 這三種類型都可供 Azure HDInsight 進行處理。 每種壓縮轉碼器各有優點。 例如，bzip2 的複製輸送量最低，但您卻可以在使用 bzip2 時獲得最佳的 Hive 查詢效能，因為可將其劃分來進行處理。 Gzip 是最均衡的選項，也最常被使用。 請選擇最適合您的端對端案例使用的轉碼器。
 
 **層級**：對於每個壓縮轉碼器，您可以從兩個選項中做選擇：最快速的壓縮和最佳化的壓縮。 最快速的壓縮選項能以最快速度壓縮資料，但產生的檔案不一定經過最理想的壓縮。 最佳化的壓縮選項會花費較長的壓縮時間，並產生最少量的資料。 您可以測試這兩個選項，以查看何者在您的案例中可提供更好的整體效能。
 
@@ -367,40 +365,40 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
 
 請密切留意資料集數目，以及要求 Data Factory 同時連線至相同資料存放區的複製活動。 許多並行複製作業可能會導致資料存放區出現瓶頸，並導致效能降低，複製作業內部重試，在某些情況下甚至導致執行失敗。
 
-## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>範例案例：從內部部署 SQL Server 複製到 Blob 儲存體
-**案例**：建置從內部部署 SQL Server 將資料以 CSV 格式複製到 Blob 儲存體的管線。 為了加快複製作業速度，CSV 檔案應該壓縮為 bzip2 格式。
+## <a name="sample-scenario-copy-from-a-sql-server-database-to-blob-storage"></a>範例案例：從 SQL Server 資料庫複製到 Blob 儲存體
+**案例**：建立管線以將資料從 SQL Server 資料庫複製到 CSV 格式的 Blob 儲存體。 為了加快複製作業速度，CSV 檔案應該壓縮為 bzip2 格式。
 
 **測試和分析**：複製活動的輸送量小於 2 MBps，遠低於效能基準。
 
-**效能分析和微調**：為了排解效能問題，我們將查看資料的處理及移動方式。
+**效能分析和微調**：為了排解效能問題，讓我們看看資料的處理及移動方式。
 
-1. **讀取資料**：閘道會開啟對 SQL Server 的連線，並傳送查詢。 SQL Server 透過內部網路將資料流傳送至閘道器，以進行回應。
-2. **序列化和壓縮資料**︰閘道會將資料流序列化為 CSV 格式，並將資料壓縮為 bzip2 資料流。
-3. **寫入資料**：閘道會透過網際網路將 bzip2 資料流上傳至 Blob 儲存體。
+1. **讀取資料**：閘道器開啟對 SQL Server 的連接，並傳送查詢。 SQL Server 透過內部網路將資料流傳送至閘道器，以進行回應。
+2. **序列化和壓縮資料**︰閘道器將資料流序列化為 CSV 格式，並將資料壓縮為 bzip2 資料流。
+3. **寫入資料**：閘道器透過網際網路將 bzip2 資料流上傳至 Blob 儲存體。
 
-如您所見，資料將會以串流序列的方式處理和移動：SQL Server > LAN > 閘道 > WAN > Blob 儲存體。 **整體效能受限於管線的最小輸送量**。
+如您所見，資料將會以串流序列的方式處理和移動：SQL Server -> LAN -> 閘道器 -> WAN -> Blob 儲存體。 **整體效能受限於管線的最小輸送量**。
 
-![資料流](./media/data-factory-copy-activity-performance/case-study-pic-1.png)
+![資料流程](./media/data-factory-copy-activity-performance/case-study-pic-1.png)
 
 下列一或多個因素可能會造成效能瓶頸：
 
 * **來源**：SQL Server 本身的輸送量偏低，因為負載過重。
 * **資料管理閘道**：
   * **LAN**：閘道的位置遠離 SQL Server 電腦，且頻寬連線較低。
-  * **閘道**：閘道已達到其負載限制，而無法執行下列作業：
+  * **閘道器**：閘道器已達到其負載限制，而無法執行下列作業：
     * **序列化**：將資料流序列化為 CSV 格式時，輸送量偏低。
     * **壓縮**：您選擇了緩慢的壓縮轉碼器 (例如 bzip2，其採用 Core i7，速度為 2.8 MBps)。
   * **WAN**：公司網路與 Azure 服務之間的頻寬偏低 (例如，T1 = 1,544 kbps、T2 = 6,312 kbps)。
-* **接收**：Blob 儲存體的輸送量偏低。 (但不太可能發生，因為其 SLA 保證至少有 60 MBps)。
+* **接收**：Blob 儲存體的輸送量低  (但不太可能發生，因為其 SLA 保證至少有 60 MBps)。
 
 在此情況下，bzip2 資料壓縮可能會拖慢整個管線。 改用 gzip 壓縮轉碼器可能會緩解此瓶頸。
 
-## <a name="sample-scenarios-use-parallel-copy"></a>範例案例：使用平行複製
+## <a name="sample-scenarios-use-parallel-copy"></a>範例案例︰使用平行複本
 **案例 I：** 從內部部署檔案系統複製 1,000 個 1 MB 的檔案至 Blob 儲存體。
 
-**分析和效能微調**︰例如，如果您已在四核心電腦上安裝閘道，Data Factory 會使用 16 個平行複製，以並行方式從檔案系統中將檔案移至 Blob 儲存體。 此平行執行應該會導致高輸送量。 您也可以明確指定平行複製計數。 在複製許多小型檔案時，平行複製可藉由更有效率地使用資源，而對輸送量大有幫助。
+**分析和效能微調**︰例如，如果您已在四核心電腦上安裝閘道器，Data Factory 會使用 16 個平行複製，以並行方式從檔案系統中將檔案移至 Blob 儲存體。 此平行執行應該會導致高輸送量。 您也可以明確指定平行複製計數。 在複製許多小型檔案時，平行複製可藉由更有效率地使用資源，而對輸送量大有幫助。
 
-![案例 1](./media/data-factory-copy-activity-performance/scenario-1.png)
+![實例 1](./media/data-factory-copy-activity-performance/scenario-1.png)
 
 **案例 II**：從 Blob 儲存體複製 20 個 Blob (每個 Blob 有 500 MB) 到 Data Lake Store 分析，然後微調效能。
 
@@ -408,7 +406,7 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
 
 ![案例 2](./media/data-factory-copy-activity-performance/scenario-2.png)
 
-**案例 III**：個別檔案大小大於數十 MB 且總數量很大。
+**案例 III**︰個別檔案大小大於數十 MB 且總數量很大。
 
 **分析和效能微調**︰增加 **parallelCopies** 並不會提升複製效能，因為單一雲端 DMU 的資源有所限制。 相反地，您應該指定更多個雲端 DMU，以取得更多用來執行資料移動的資源。 請不要指定 **parallelCopies** 屬性的值。 Data Factory 會為您處理平行處理原則。 在此案例中，如果您將 **cloudDataMovementUnits** 設定為 4，會讓輸送量變成大約 4 倍。
 
@@ -417,9 +415,10 @@ Azure 提供一組企業級資料儲存與資料倉儲解決方案，而「複�
 ## <a name="reference"></a>參考
 以下是幾個支援的資料存放區所適用的效能監視及調整參考：
 
-* Azure 儲存體 (包括 Blob 儲存體和資料表儲存體)：[Azure 儲存體的擴充性目標](../../storage/common/storage-scalability-targets.md)和 [Azure 儲存體效能和擴充性檢查清單](../../storage/common/storage-performance-checklist.md)
-* Azure SQL Database：您可以 [監視效能](../../sql-database/sql-database-single-database-monitor.md)，並檢查資料庫交易單位 (DTU) 百分比
-* Azure SQL 資料倉儲：其能力會以資料倉儲單位 (DWU) 來測量；請參閱 [管理 Azure SQL 資料倉儲中的計算能力 (概觀)](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
-* Azure Cosmos DB：[Azure Cosmos DB 中的效能層級](../../cosmos-db/performance-levels.md)
-* 內部部署 SQL Server：[效能的監視與微調](https://msdn.microsoft.com/library/ms189081.aspx)
-* 內部部署檔案伺服器：[檔案伺服器的效能微調](https://msdn.microsoft.com/library/dn567661.aspx)
+* Azure Blob 儲存體： blob[儲存體的擴充性和效能目標](../../storage/blobs/scalability-targets.md)，以及[Blob 儲存體的效能和擴充性檢查清單](../../storage/blobs/storage-performance-checklist.md)。
+* Azure 資料表儲存體：資料表儲存體[的擴充性和效能目標](../../storage/tables/scalability-targets.md)，以及[資料表儲存體的效能和擴充性檢查清單](../../storage/tables/storage-performance-checklist.md)。
+* Azure SQL Database：您可以 [監視效能](../../sql-database/sql-database-single-database-monitor.md) ，並檢查資料庫交易單位 (DTU) 百分比
+* Azure SQL 資料倉儲：其能力會以資料倉儲單位 (DWU) 來測量；請參閱 [管理 Azure SQL 資料倉儲中的計算能力 (概觀)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
+* Azure Cosmos DB：[Azure Cosmos DB 中的效能等級](../../cosmos-db/performance-levels.md)
+* 內部部署 SQL Server： [效能的監視與微調](https://msdn.microsoft.com/library/ms189081.aspx)
+* 內部部署檔案伺服器： [檔案伺服器的效能微調](https://msdn.microsoft.com/library/dn567661.aspx)

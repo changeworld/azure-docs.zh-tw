@@ -1,29 +1,28 @@
 ---
-title: 支援使用 Azure Site Recovery 搭配 Azure 備份 |Microsoft Docs
-description: 概述如何 Azure Site Recovery 和 Azure 備份可以搭配使用。
-services: site-recovery
+title: 支援搭配 Azure 備份使用 Azure Site Recovery
+description: 提供如何搭配使用 Azure Site Recovery 和 Azure 備份的總覽。
 author: sideeksh
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/18/2019
+ms.topic: conceptual
+ms.date: 10/15/2019
 ms.author: sideeksh
-ms.openlocfilehash: e902f70225ec0eb0caa98f7e19a16c87220cb6f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c334eee34eb878135d3d81ab15d03618c6604846
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61035746"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135185"
 ---
-# <a name="support-for-using-site-recovery-with-azure-backup"></a>使用 Site Recovery 搭配 Azure 備份支援
+# <a name="support-for-using-site-recovery-with-azure-backup"></a>支援搭配 Azure 備份使用 Site Recovery
 
-本文摘要說明使用的支援[Site Recovery 服務](site-recovery-overview.md)連同[Azure 備份服務](https://docs.microsoft.com/azure/backup/backup-overview)。
+本文摘要說明搭配[Azure 備份服務](../backup/backup-overview.md)使用[Site Recovery 服務](site-recovery-overview.md)的支援。
 
-**Action** | **Site Recovery 支援** | **詳細資料**
+**動作** | **Site Recovery 支援** | **詳細資料**
 --- | --- | ---
-**將服務部署在一起** | 支援 | 服務互通性，可以一起設定。
-**檔案備份/還原** | 支援 | 當備份和複寫啟用 VM 的備份，在還原來源端的 Vm 或一組 Vm 上的檔案會沒有問題。 複寫會如往常般繼續並沒有變更的複寫健康情況。
-**磁碟備份/還原** | 沒有目前的支援 | 如果您要還原備份的磁碟，您需要停用並重新啟用 VM 的複寫一次。
-**VM 備份/還原** | 沒有目前的支援 | 如果您備份或還原的 VM 或 Vm 群組，您需要停用並重新啟用 VM 的複寫。  
+**一起部署服務** | 支援 | 服務是互通的，而且可以同時設定。
+**檔案備份/還原** | 支援 | 當 VM 的備份和複寫已啟用，且已執行備份時，在來源端 Vm 或 Vm 群組上還原檔案並不會有任何問題。 複寫會如往常般繼續，且複寫健全狀況不會有任何變更。
+**磁片還原** | 目前不支援 | 如果您還原已備份的磁片，您需要再次停用並重新啟用 VM 的複寫。
+**VM 還原** | 目前不支援 | 如果您還原 VM 或 vm 群組，您必須停用並重新啟用 VM 的複寫。  
 
 

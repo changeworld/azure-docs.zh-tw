@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：對傳遞驗證進行疑難排解 | Microsoft Docs
+title: Azure AD Connect：針對傳遞驗證進行疑難排解 | Microsoft Docs
 description: 本文會說明如何針對 Azure Active Directory (Azure AD) 傳遞驗證進行疑難排解。
 services: active-directory
 keywords: 針對 Azure AD Connect 傳遞驗證進行疑難排解, 安裝 Active Directory, Azure AD, SSO, 單一登入的必要元件
@@ -11,30 +11,29 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 4/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 36844c3c2fcfdbf016b3e2d148345e9ce31ea2b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60456121"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356146"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>針對 Azure Active Directory 傳遞驗證進行疑難排解
 
 這篇文章可協助您尋找有關 Azure AD 傳遞驗證常見問題的疑難排解資訊。
 
 >[!IMPORTANT]
->如果傳遞驗證發生使用者登入的問題，請不要在沒有可切換的僅限雲端全域管理員帳戶的情況下，停用此功能或解除安裝傳遞驗證代理程式。 了解如何[新增僅限雲端管理員帳戶 (英文)](../active-directory-users-create-azure-portal.md)。 這是確保您不會被租用戶封鎖的關鍵步驟。
+>如果傳遞驗證發生使用者登入的問題，請不要在沒有可切換的僅限雲端全域管理員帳戶的情況下，停用此功能或解除安裝傳遞驗證代理程式。 瞭解如何[新增僅限雲端的全域系統管理員帳戶](../active-directory-users-create-azure-portal.md)。 這是確保您不會被租用戶封鎖的關鍵步驟。
 
 ## <a name="general-issues"></a>一般問題
 
 ### <a name="check-status-of-the-feature-and-authentication-agents"></a>檢查此功能和驗證代理程式的狀態
 
-確定您租用戶上的傳遞驗證功能仍為 [已啟用]，而驗證代理程式的狀態會顯示 [作用中]，而不是 [非作用中]。 您可以前往 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)上的 [Azure AD Connect] 刀鋒視窗來檢查狀態。
+確定您租用戶上的傳遞驗證功能仍為 [已啟用]****，而驗證代理程式的狀態會顯示 [作用中]****，而不是 [非作用中]****。 您可以前往 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)上的 [Azure AD Connect]**** 刀鋒視窗來檢查狀態。
 
 ![Azure Active Directory 管理中心 - Azure AD Connect 刀鋒視窗](./media/tshoot-connect-pass-through-authentication/pta7.png)
 
@@ -44,13 +43,40 @@ ms.locfileid: "60456121"
 
 如果使用者無法登入使用傳遞驗證，他們可能會在 Azure AD 登入畫面中看到下列其中之一的使用者錯誤： 
 
-|Error|描述|解決方案
+|錯誤|說明|解決方案
 | --- | --- | ---
 |AADSTS80001|無法連線至 Active Directory|確定代理程式伺服器和必須驗證其密碼的使用者都是相同 AD 樹系的成員，而且都能連線到 Active Directory。  
 |AADSTS8002|連線至 Active Directory 時發生逾時|請檢查以確定 Active Directory 可用，並且會回應來自代理程式的要求。
-|AADSTS80004|傳遞給代理程式的使用者名稱無效|确保用户尝试使用正确的用户名登录。
+|AADSTS80004|傳遞給代理程式的使用者名稱無效|請確定使用者嘗試用來登入的使用者名稱正確無誤。
 |AADSTS80005|驗證發生無法預期的 WebException|暫時性錯誤。 重試要求。 如果持續發生失敗，請連絡 Microsoft 支援服務。
 |AADSTS80007|和 Active Directory 通訊時發生錯誤|請檢查代理程式記錄以了解詳細資訊，並確認 Active Directory 如預期般運作。
+
+### <a name="users-get-invalid-usernamepassword-error"></a>使用者收到不正確使用者名稱/密碼錯誤 
+
+當使用者的內部部署 UserPrincipalName （UPN）不同于使用者的雲端 UPN 時，就可能發生這種情況。
+
+若要確認這是問題，請先測試傳遞驗證代理程式是否正常運作：
+
+
+1. 建立測試帳戶。  
+2. 在代理程式電腦上匯入 PowerShell 模組：
+ 
+ ```powershell
+ Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication  Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
+ ```
+3. 執行 Invoke PowerShell 命令： 
+
+ ```powershell
+ Invoke-PassthroughAuthOnPremLogonTroubleshooter 
+ ``` 
+4. 當系統提示您輸入認證時，請輸入用來登入的相同使用者名稱和密碼（ https://login.microsoftonline.com) 。
+
+如果您收到相同的使用者名稱/密碼錯誤，這表示傳遞驗證代理程式正常運作，而問題可能是內部部署 UPN 無法路由傳送。 若要深入瞭解，請參閱設定[替代登入識別碼]( https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More)。
+
+
+
+
+
 
 ### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Azure Active Directory 管理中心上的登入失敗原因 (需要 Premium 授權)
 
@@ -58,7 +84,7 @@ ms.locfileid: "60456121"
 
 ![Azure Active Directory 管理中心 - 登入報告](./media/tshoot-connect-pass-through-authentication/pta4.png)
 
-巡覽至位在 [Azure Active Directory 管理中心](https://aad.portal.azure.com/)的 **Azure Active Directory** -> [登入]，按一下特定使用者的登入活動。 尋找 [登入錯誤碼] 欄位。 使用下表，將該欄位的值對應至失敗的原因和解決方式：
+流覽至 Azure Active Directory 系統管理中心的**Azure Active Directory**登  ->  **入**，然後按一下特定使用者的登入活動。 [Azure Active Directory admin center](https://aad.portal.azure.com/) 尋找 [登入錯誤碼]**** 欄位。 使用下表，將該欄位的值對應至失敗的原因和解決方式：
 
 |登入錯誤碼|登入失敗原因|解決方案
 | --- | --- | ---
@@ -67,13 +93,13 @@ ms.locfileid: "60456121"
 | 80002 | 驗證代理程式的密碼驗證要求已逾時。 | 檢查是否可以從驗證代理程式連線到您的 Active Directory。
 | 80003 | 驗證代理程式收到無效的回應。 | 如果有多位使用者發生一樣的問題，請檢查您的 Active Directory 設定。
 | 80004 | 登入要求中使用的使用者主體名稱 (UPN) 不正確。 | 要求使用者以正確的使用者名稱登入。
-| 80005 | 驗證代理程式：發生錯誤。 | 暫時性錯誤。 請稍後再試。
+| 80005 | 驗證代理程式：發生錯誤。 | 暫時性錯誤。 請稍後再試一次。
 | 80007 | 驗證代理程式無法連線至 Active Directory。 | 檢查是否可以從驗證代理程式連線到您的 Active Directory。
 | 80010 | 驗證代理程式無法連線將密碼解密。 | 如果問題一再出現，請安裝並註冊新的驗證代理程式。 然後解除安裝目前的代理程式。 
 | 80011 | 驗證代理程式無法擷取解密金鑰。 | 如果問題一再出現，請安裝並註冊新的驗證代理程式。 然後解除安裝目前的代理程式。
 
 >[!IMPORTANT]
->藉由呼叫驗證使用者名稱及密碼，向 Active Directory 傳遞驗證代理程式進行驗證的 Azure AD 使用者[Win32 LogonUser API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)。 如此一來，如果您已設定的 [登入到] 設定來限制工作站登入存取的 Active Directory 中，您必須新增伺服器裝載傳遞驗證代理程式，以及 [登入到] 的伺服器清單。 無法執行這項操作，將會封鎖從登入 Azure AD 使用者。
+>傳遞驗證代理程式會藉由呼叫[Win32 LOGONUSER API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)，針對 Active Directory 驗證其使用者名稱和密碼，藉以驗證 Azure AD 使用者。 因此，如果您已在 Active Directory 中設定 [登入] 設定以限制工作站登入存取，您就必須將裝載「傳遞驗證代理程式」的伺服器新增到「登入」伺服器的清單中。 如果無法這麼做，將會封鎖您的使用者登入 Azure AD。
 
 ## <a name="authentication-agent-installation-issues"></a>驗證代理程式安裝問題
 
@@ -91,9 +117,9 @@ ms.locfileid: "60456121"
 
 請確定您在所有 Azure AD Connect 或獨立驗證代理程式安裝和註冊作業中，使用僅限雲端的全域管理員帳戶。 啟用 MFA 的全域管理員帳戶有一個已知的問題，請暫時關閉 MFA (只是為了完成作業) 作為因應措施。
 
-### <a name="an-unexpected-error-occurred"></a>发生了意外的错误
+### <a name="an-unexpected-error-occurred"></a>發生意外的錯誤
 
-从服务器[收集代理日志](#collecting-pass-through-authentication-agent-logs)，然后联系 Microsoft 支持部门反映问题。
+從伺服器[收集代理程式記錄](#collecting-pass-through-authentication-agent-logs)，並連絡 Microsoft 支援服務解決您的問題。
 
 ## <a name="authentication-agent-uninstallation-issues"></a>驗證代理程式解除安裝問題
 
@@ -111,13 +137,13 @@ ms.locfileid: "60456121"
 
 ### <a name="enabling-the-feature-failed-due-to-blocked-ports"></a>因為連接埠遭到封鎖，所以啟用功能失敗。
 
-确保安装 Azure AD Connect 的服务器能够与我们的服务 URL 和[此处](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)列出的端口通信。
+確認已安裝 Azure AD Connect 的伺服器能與我們的服務 URL 和連接埠通訊，如[這裡](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)所列。
 
 ### <a name="enabling-the-feature-failed-due-to-token-or-account-authorization-errors"></a>因為權杖或帳戶授權錯誤，所以啟用功能失敗。
 
-启用该功能时，确保使用仅限云的全局管理员帐户。 啟用 Multi-Factor Authentication (MFA) 的全域管理員帳戶有一個已知的問題，請暫時關閉 MFA (只是為了完成作業) 作為因應措施。
+請確定您使用僅限雲端的全域管理員帳戶來啟用此功能。 啟用 Multi-Factor Authentication (MFA) 的全域管理員帳戶有一個已知的問題，請暫時關閉 MFA (只是為了完成作業) 作為因應措施。
 
-## <a name="collecting-pass-through-authentication-agent-logs"></a>收集直通身份验证代理日志
+## <a name="collecting-pass-through-authentication-agent-logs"></a>收集傳遞驗證代理程式記錄
 
 根據發生的問題類型，您需要在不同的位置尋找傳遞驗證代理程式記錄。
 
@@ -141,7 +167,7 @@ ms.locfileid: "60456121"
         DateTime=xxxx-xx-xxTxx:xx:xx.xxxxxxZ
 ```
 
-您可以開啟命令提示字元並執行下列命令，以取得錯誤 (上述範例為 '1328') 的描述性詳細資料 (注意：請將 '1328' 取代為您在記錄中看到的實際錯誤號碼)：
+您可以開啟命令提示字元並執行下列命令 (注意：請以您在記錄中看到的實際錯誤編號取代 '1328')，以取得錯誤 (前例中為 '1328') 的描述性詳細資料：
 
 `Net helpmsg 1328`
 
@@ -149,7 +175,7 @@ ms.locfileid: "60456121"
 
 ### <a name="domain-controller-logs"></a>網域控制站記錄
 
-如果已启用审核日志记录，可以在域控制器的安全日志中找到更多信息。 查詢傳遞驗證代理程式所傳送之登入要求的簡單方式如下︰
+如果已經啟用稽核記錄，您可以在網域控制站的安全性記錄中找到其他資訊。 查詢傳遞驗證代理程式所傳送之登入要求的簡單方式如下︰
 
 ```
     <QueryList>

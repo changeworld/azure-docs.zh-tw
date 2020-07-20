@@ -1,97 +1,152 @@
 ---
-title: 辨識列印/手寫文字，電腦視覺
+title: " (OCR) 的光學字元辨識-電腦視覺"
 titleSuffix: Azure Cognitive Services
-description: 使用電腦視覺 API 辨識影像中印刷和手寫文字的相關概念。
+description: 與光學字元辨識相關的概念 (OCR) 從影像和檔，以及使用電腦視覺 API 的列印和手寫文字。
 services: cognitive-services
-author: PatrickFarley
-manager: nitinme
+author: msbbonsu
+manager: netahw
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/17/2019
-ms.author: pafarley
+ms.date: 06/23/2020
+ms.author: t-bebon
 ms.custom: seodec18
-ms.openlocfilehash: f7fd13b0b6df0b07543216e3c612520e528c1176
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 6bc118145bec30085c2d9fbf726c40a20b312430
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998226"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207062"
 ---
-# <a name="recognize-printed-and-handwritten-text"></a>辨識印刷和手寫文字
+# <a name="optical-character-recognition-ocr"></a>光學字元辨識 (OCR)
 
-计算机视觉提供多个服务用于检测和提取图像中显示的打印文本或手写文本。 這是適用於各種不同的案例，例如所記錄的筆記、 醫療記錄、 安全性和銀行業務。 以下三个部分详细介绍了针对不同用例优化的三个不同文本识别 API。
+Microsoft 的電腦視覺 API 包含光學字元辨識 (OCR) 功能，可從影像和 PDF 檔中解壓縮列印或手寫文字。 OCR Api 會將類比檔中的文字從 (影像、掃描的檔) 和數位化的檔中解壓縮。 您可以從真實影像中取出文字，例如授權盤子的相片或具有序號的容器，以及檔-發票、帳單、財務報告、文章等等。 新的讀取 OCR API 可作為雲端或內部部署 (容器) 的受控服務之一部分。 此外，它也支援虛擬網路和私人端點，以符合您的企業級合規性和隱私權需求。
 
-## <a name="read-api"></a>读取 API
+## <a name="read-api"></a>讀取 API 
 
-读取 API 使用我们最新的识别模型检测图像中的文本内容，并将已识别的文本转换为机器可读的字符流。 该 API 已针对包含大量文本的图像（例如，数码扫描的文档）以及包含大量视觉噪点的图像进行优化。 该 API 以异步方式执行，因为处理较大文档时，可能需要花费好几分钟才能返回结果。
+電腦視覺的[讀取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)是 Microsoft 的最新 OCR 技術，可將印刷文字 (七種語言) 、手寫文字僅 (英文) 、數位和貨幣符號，從影像和多頁 PDF 檔中取得。 它已優化，可從具有混合語言的內部文字大量影像和多頁 PDF 檔中解壓縮文字。 它支援在相同的影像或檔中偵測列印和手寫文字 (英文) 。 請參閱[OCR 支援語言](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr)的完整清單頁面。
 
-“读取”操作会在其输出中保留已识别字的原始行分组。 每一行附带边框坐标，行中的每个字也有其自身的坐标。 如果某个字的识别置信度较低，该结果中也会反映该信息。 有关详细信息，请参阅[阅读 API 参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)。
+### <a name="how-ocr-works"></a>OCR 的運作方式
 
-> [!NOTE]
-> 此功能目前以预览版提供，仅适用于英语文本。
+[讀取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)支援高達2000頁的大量文字檔，因此會以非同步方式執行。 第一個步驟是呼叫讀取作業。 讀取作業會採用影像或 PDF 檔做為輸入，並傳回作業識別碼。 
 
-### <a name="image-requirements"></a>影像需求
+第二個步驟是呼叫[取得結果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)作業。 這項作業會採用讀取作業所建立的作業識別碼。 然後，它會從您的影像或檔以 JSON 格式傳回已解壓縮的文字內容。 JSON 回應會維護已辨識單字的原始行分組。 其中包含已解壓縮的文字行及其周框方塊座標。 每一行都包含所有已解壓縮的文字及其座標和信賴分數。
 
-读取 API 可以处理符合以下要求的图像：
+如有必要，請參閱以水準影像軸的角度傳迴旋轉位移，以更正已辨識頁面的旋轉，如下圖所示。
 
-- 图像必须以 JPEG、PNG、BMP、PDF 或 TIFF 格式显示。
-- 图像的尺寸必须介于 50 x 50 和 4200 x 4200 像素之间。 PDF 页面必须为 17 x 17 英寸或更小。
-- 图像的文件大小必须小于 20 MB。
+![OCR 如何使用已解壓縮的文字將影像和檔轉換成結構化輸出](./Images/how-ocr-works.svg)
 
-### <a name="limitations"></a>限制
+### <a name="sample-ocr-output"></a>OCR 輸出範例
 
-如果使用的是免费层订阅，读取 API 只会处理 PDF 或 TIFF 文档的前两个页面。 使用付费订阅时，它最多可以处理 200 个页面。 另请注意，该 API 最多检测每个页面中的 300 行。
+成功的回應會以 JSON 格式傳回，如下列範例所示：
 
-## <a name="ocr-optical-character-recognition-api"></a>OCR（光学字符识别）API
+```json
+{
+  "status": "succeeded",
+  "createdDateTime": "2020-05-28T05:13:21Z",
+  "lastUpdatedDateTime": "2020-05-28T05:13:22Z",
+  "analyzeResult": {
+    "version": "3.0.0",
+    "readResults": [
+      {
+        "page": 1,
+        "language": "en",
+        "angle": 0.8551,
+        "width": 2661,
+        "height": 1901,
+        "unit": "pixel",
+        "lines": [
+          {
+            "boundingBox": [
+              67,
+              646,
+              2582,
+              713,
+              2580,
+              876,
+              67,
+              821
+            ],
+            "text": "The quick brown fox jumps",
+            "words": [
+              {
+                "boundingBox": [
+                  143,
+                  650,
+                  435,
+                  661,
+                  436,
+                  823,
+                  144,
+                  824
+                ],
+                "text": "The",
+                "confidence": 0.958
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
 
-计算机视觉的光学字符识别 (OCR) API 类似于读取 API，但它以同步方式执行，且未针对大型文档进行优化。 它會使用更多的語言; 較早的辨識模型，但運作方式請參閱[語言支援](language-support.md#text-recognition)如需完整的支援的語言清單。
+請遵循[解壓縮印刷和手寫文字](./QuickStarts/CSharp-hand-text.md)快速入門，使用 c # 和 REST API 來執行 OCR。
 
-若有必要，OCR 會以角度為單位傳回以水平影像座標軸為依據的旋轉位移，來修正已辨識文字的旋轉。 OCR 还提供每个字的帧坐标，如下图所示。
+### <a name="input-requirements"></a>輸入需求
 
-![旋轉的映像和它所讀取與分隔的文字](./Images/vision-overview-ocr.png)
+讀取 API 會接受下列輸入：
+* 支援的檔案格式： JPEG、PNG、BMP、PDF 和 TIFF
+* 若是 PDF 和 TIFF，則會處理最多2000個頁面。 對於免費層訂閱者，只會處理前兩個頁面。
+* 檔案大小必須小於 50 MB，以及至少 50 x 50 圖元和最多 10000 x 10000 圖元的維度。
+* PDF 尺寸最多必須是 17 x 17 英寸，對應于合法或 A3 紙張大小和較小。
 
-有关详细信息，请参阅 [OCR 参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)。
+### <a name="text-from-images"></a>影像中的文字
 
-### <a name="image-requirements"></a>影像需求
+下列讀取 API 輸出顯示影像中的已解壓縮文字行和單字，以及不同角度、色彩和字型的文字
 
-OCR API 可以处理符合以下要求的图像：
+![要旋轉的影像及其要讀取和描繪的文字](./Images/text-from-images-example.png)
 
-* 图像必须以 JPEG、PNG、GIF 或 BMP 格式显示。
-* 输入图像的大小必须介于 50 x 50 和 4200 x 4200 像素之间。
-* 影像中的文字能以 90 度的任何倍數進行旋轉，並可輔以不超過 40 度的小角度旋轉。
+### <a name="text-from-documents"></a>檔中的文字
 
-### <a name="limitations"></a>限制
+除了影像，讀取 API 也會採用 PDF 檔做為輸入。
 
-在主要由文字構成的相片上，部分辨識的文字可能會造成誤判。 在某些照片上，尤其是在不包含任何文本的照片上，精度因图像的类型而异。
+![要旋轉的影像及其要讀取和描繪的文字](./Images/text-from-documents-example.png)
 
-## <a name="recognize-text-api"></a>识别文本 API
 
-> [!NOTE]
-> 随着读取 API 的推出，识别文本 API 已弃用。 读取 API 具有类似的功能，经更新后可以处理 PDF、TIFF 和多页文件。
+### <a name="handwritten-text-in-english"></a>英文的手寫文字
 
-识别文本 API 类似于 OCR，但它以异步方式执行，并使用更新的识别模型。 有关详细信息，请参阅[识别文本 API 参考文档](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)。
+目前，讀取作業支援英文以獨佔方式解壓縮手寫文字。
 
-### <a name="image-requirements"></a>影像需求
+![要旋轉的影像及其要讀取和描繪的文字](./Images/handwritten-example.png)
 
-识别文本 API 可以处理符合以下要求的图像：
+### <a name="printed-text-in-supported-languages"></a>支援的語言中的印刷文字
 
-- 图像必须以 JPEG、PNG 或 BMP 格式显示。
-- 图像的尺寸必须介于 50 x 50 和 4200 x 4200 像素之间。
-- 图像的文件大小必须小于 4 MB。
+讀取 API 支援以英文、西班牙文、德文、法文、義大利文、葡萄牙文和荷蘭文語言來解壓縮印刷文字。 如果您的案例需要支援更多語言，請參閱本檔中的 OCR API 總覽。 請參閱所有[OCR 支援語言](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr)的清單
 
-## <a name="improve-results"></a>改善结果
+![要旋轉的影像及其要讀取和描繪的文字](./Images/supported-languages-example.png)
 
-文本识别操作的准确度取决于图像的质量。 以下因素可能导致读取结果不准确：
+### <a name="mixed-languages-support"></a>混合語言支援
 
-* 影像模糊。
-* 手寫或草寫的文字。
-* 藝術字型樣式。
-* 文字太小。
-* 複雜的背景、陰影、文字反光或透視失真。
-* 文本过长，或单词的开头缺少大写字母。
-* 文字加上了下標、上標或刪除線。
+讀取 API 支援在其中使用多種語言的影像和檔，通常稱為混合語言檔。 其方式是將檔中的每個文字行分類成偵測到的語言，再將文字內容解壓縮。
+
+![要旋轉的影像及其要讀取和描繪的文字](./Images/mixed-language-example.png)
+
+### <a name="data-privacy-and-security"></a>資料隱私權和安全性
+
+就像所有認知服務一樣，使用「讀取」服務的開發人員應該要瞭解 Microsoft 對於客戶資料的原則。 若要深入瞭解，請參閱[Microsoft 信任中心](https://www.microsoft.com/en-us/trust-center/product-overview)上的認知服務頁面。
+
+### <a name="deploy-on-premises"></a>部署內部部署
+
+[讀取] 也可作為 Docker 容器 (預覽) ，讓您在自己的環境中部署新的 OCR 功能。 容器非常適合用於特定的安全性和資料控管需求。 請參閱[如何安裝和執行讀取容器。](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers)
+
+
+## <a name="ocr-api"></a>OCR API
+
+[OCR API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)會使用較舊的辨識模型、僅支援影像，並以同步方式執行，並立即傳回偵測到的文字。 請參閱[OCR 支援的語言](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr)，而不是讀取 API。
 
 ## <a name="next-steps"></a>後續步驟
 
-按照[提取印刷体文本 (OCR)](./quickstarts/csharp-print-text.md) 快速入门，在简单的 C# 应用中实现文本识别。
+- 瞭解[讀取 3.0 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)。
+- 遵循[解壓縮文字](./QuickStarts/CSharp-hand-text.md)快速入門，使用 c #、JAVA、JavaScript 或 Python 搭配 REST API 來執行 OCR。

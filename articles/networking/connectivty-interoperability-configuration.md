@@ -1,5 +1,5 @@
 ---
-title: Azure 後端連線功能的互通性：組態詳細資料 | Microsoft Docs
+title: Azure 後端連線功能的互通性：組態詳細資料 |Microsoft Docs
 description: 本文說明您可用來分析互通性 (ExpressRoute、站對站 VPN 和在 Azure 中對等互連的虛擬網路之間) 之測試設定的組態詳細資料。
 documentationcenter: na
 services: networking
@@ -10,24 +10,24 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 2ceb4aeac55bd555a41c29bd41b00c771490e5f9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7be326e0f01ed6a00244c0f5b9ed6a960b2b6e0b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60425674"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171851"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Azure 后端连接功能中的互操作性：測試組態詳細資料
+# <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Azure 後端連線功能的互通性：測試組態詳細資料
 
 本文將介紹[測試設定][Setup]的組態詳細資料。 測試設定可協助您分析 Azure 網路服務如何在控制平面層級和資料平面層級進行相互操作。
 
 ## <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>使用 VNet 對等互連的輪輻 VNet 連線
 
-下圖顯示了輪輻虛擬網路 (VNet) 的 Azure 虛擬網路對等互連詳細資料。 若要了解如何設定兩個 Vnet 之間的對等互連，請參閱[管理 VNet 對等互連][VNet-Config]。 如要讓輪輻 VNet 使用連線至中樞 VNet 的閘道，請選取 [使用遠端閘道]。
+下圖顯示了輪輻虛擬網路 (VNet) 的 Azure 虛擬網路對等互連詳細資料。 若要了解如何設定兩個 Vnet 之間的對等互連，請參閱[管理 VNet 對等互連][VNet-Config]。 如要讓輪輻 VNet 使用連線至中樞 VNet 的閘道，請選取 [使用遠端閘道]****。
 
 [![1]][1]
 
-下圖顯示中樞 VNet 的 VNet 對等互連詳細資料。 如要讓輪輻 VNet 使用中樞 VNet 閘道，請選取 [使用遠端閘道]。
+下圖顯示中樞 VNet 的 VNet 對等互連詳細資料。 如果您想要讓中樞 VNet 允許輪輻 VNet 使用中樞的閘道，請選取 [**允許閘道傳輸**]。
 
 [![2]][2]
 
@@ -36,7 +36,7 @@ ms.locfileid: "60425674"
 透過使用 Azure VPN 閘道中的 VPN 閘道，設定中樞和分支 VNet 間的站對站 VPN 連線。 根據預設，VPN 閘道和 Azure ExpressRoute 閘道使用私用的自發系統編號 (ASN) 值 **65515**。 您可以變更 VPN 閘道的 ASN 值。 在測試設定中，分支 VNet VPN 閘道的 ASN 值變更為 **65516**，以支援中樞和分支 VNet 之間的 eBGP 路由。
 
 
-[![3]][3]
+[![第]][3]
 
 
 ## <a name="on-premises-location-1-connectivity-by-using-expressroute-and-a-site-to-site-vpn"></a>使用 ExpressRoute 和站對站 VPN 的內部部署位置 1 連線
@@ -49,104 +49,108 @@ ms.locfileid: "60425674"
 
 下圖顯示 ExpressRoute1 線路和中樞 VNet 之間的連線設定：
 
-[![5]][5]
+[![第]][5]
 
-下列清單顯示 ExpressRoute 私人對等互連連線的主要 CE 路由器設定。 (Cisco ASR1000 路由器在測試設定中作為 CE 路由器使用。)當平行設定站對站 VPN 和 ExpressRoute 線路，以將內部部署網路連線至 Azure 時，Azure 將預設優先選擇 ExpressRoute 線路。 若要避免不對稱的路由，內部部署網路也應優先考慮 ExpressRoute 連線而非站對站 VPN 連線。 下列組態會使用 BGP **local-preference** 屬性建立優先順序：
+下列清單顯示 ExpressRoute 私人對等互連連線的主要 CE 路由器設定。  (Cisco ASR1000 路由器在測試設定中是用來做為 CE 路由器。 ) 當站對站 VPN 和 ExpressRoute 線路以平行方式設定，以將內部部署網路連線到 Azure 時，Azure 預設會優先使用 ExpressRoute 線路。 若要避免不對稱的路由，內部部署網路也應優先考慮 ExpressRoute 連線而非站對站 VPN 連線。 下列組態會使用 BGP **local-preference** 屬性建立優先順序：
 
-    interface TenGigabitEthernet0/0/0.300
-     description Customer 30 private peering to Azure
-     encapsulation dot1Q 30 second-dot1q 300
-     ip vrf forwarding 30
-     ip address 192.168.30.17 255.255.255.252
-    !
-    interface TenGigabitEthernet1/0/0.30
-     description Customer 30 to south bound LAN switch
-     encapsulation dot1Q 30
-     ip vrf forwarding 30
-     ip address 192.168.30.0 255.255.255.254
-     ip ospf network point-to-point
-    !
-    router ospf 30 vrf 30
-     router-id 10.2.30.253
-     redistribute bgp 65021 subnets route-map BGP2OSPF
-     network 192.168.30.0 0.0.0.1 area 0.0.0.0
-    default-information originate always
-     default-metric 10
-    !
-    router bgp 65021
-     !
-     address-family ipv4 vrf 30
-      network 10.2.30.0 mask 255.255.255.128
-      neighbor 192.168.30.18 remote-as 12076
-      neighbor 192.168.30.18 activate
-      neighbor 192.168.30.18 next-hop-self
-      neighbor 192.168.30.18 soft-reconfiguration inbound
-      neighbor 192.168.30.18 route-map prefer-ER-over-VPN in
-      neighbor 192.168.30.18 prefix-list Cust30_to_Private out
-     exit-address-family
-    !
-    route-map prefer-ER-over-VPN permit 10
-     set local-preference 200
-    !
-    ip prefix-list Cust30_to_Private seq 10 permit 10.2.30.0/25
-    !
+```config
+interface TenGigabitEthernet0/0/0.300
+ description Customer 30 private peering to Azure
+ encapsulation dot1Q 30 second-dot1q 300
+ ip vrf forwarding 30
+ ip address 192.168.30.17 255.255.255.252
+!
+interface TenGigabitEthernet1/0/0.30
+ description Customer 30 to south bound LAN switch
+ encapsulation dot1Q 30
+ ip vrf forwarding 30
+ ip address 192.168.30.0 255.255.255.254
+ ip ospf network point-to-point
+!
+router ospf 30 vrf 30
+ router-id 10.2.30.253
+ redistribute bgp 65021 subnets route-map BGP2OSPF
+ network 192.168.30.0 0.0.0.1 area 0.0.0.0
+default-information originate always
+ default-metric 10
+!
+router bgp 65021
+ !
+ address-family ipv4 vrf 30
+  network 10.2.30.0 mask 255.255.255.128
+  neighbor 192.168.30.18 remote-as 12076
+  neighbor 192.168.30.18 activate
+  neighbor 192.168.30.18 next-hop-self
+  neighbor 192.168.30.18 soft-reconfiguration inbound
+  neighbor 192.168.30.18 route-map prefer-ER-over-VPN in
+  neighbor 192.168.30.18 prefix-list Cust30_to_Private out
+ exit-address-family
+!
+route-map prefer-ER-over-VPN permit 10
+ set local-preference 200
+!
+ip prefix-list Cust30_to_Private seq 10 permit 10.2.30.0/25
+!
+```
 
 ### <a name="site-to-site-vpn-configuration-details"></a>站對站 VPN 組態詳細資料
 
 下列清單顯示站對站 VPN 連線的主要 CE 路由器組態：
 
-    crypto ikev2 proposal Cust30-azure-proposal
-     encryption aes-cbc-256 aes-cbc-128 3des
-     integrity sha1
-     group 2
-    !
-    crypto ikev2 policy Cust30-azure-policy
-     match address local 66.198.12.106
-     proposal Cust30-azure-proposal
-    !
-    crypto ikev2 keyring Cust30-azure-keyring
-     peer azure
-      address 52.168.162.84
-      pre-shared-key local IamSecure123
-      pre-shared-key remote IamSecure123
-    !
-    crypto ikev2 profile Cust30-azure-profile
-     match identity remote address 52.168.162.84 255.255.255.255
-     identity local address 66.198.12.106
-     authentication local pre-share
-     authentication remote pre-share
-     keyring local Cust30-azure-keyring
-    !
-    crypto ipsec transform-set Cust30-azure-ipsec-proposal-set esp-aes 256 esp-sha-hmac
-     mode tunnel
-    !
-    crypto ipsec profile Cust30-azure-ipsec-profile
-     set transform-set Cust30-azure-ipsec-proposal-set
-     set ikev2-profile Cust30-azure-profile
-    !
-    interface Loopback30
-     ip address 66.198.12.106 255.255.255.255
-    !
-    interface Tunnel30
-     ip vrf forwarding 30
-     ip address 10.2.30.125 255.255.255.255
-     tunnel source Loopback30
-     tunnel mode ipsec ipv4
-     tunnel destination 52.168.162.84
-     tunnel protection ipsec profile Cust30-azure-ipsec-profile
-    !
-    router bgp 65021
-     !
-     address-family ipv4 vrf 30
-      network 10.2.30.0 mask 255.255.255.128
-      neighbor 10.10.30.254 remote-as 65515
-      neighbor 10.10.30.254 ebgp-multihop 5
-      neighbor 10.10.30.254 update-source Tunnel30
-      neighbor 10.10.30.254 activate
-      neighbor 10.10.30.254 soft-reconfiguration inbound
-     exit-address-family
-    !
-    ip route vrf 30 10.10.30.254 255.255.255.255 Tunnel30
+```config
+crypto ikev2 proposal Cust30-azure-proposal
+ encryption aes-cbc-256 aes-cbc-128 3des
+ integrity sha1
+ group 2
+!
+crypto ikev2 policy Cust30-azure-policy
+ match address local 66.198.12.106
+ proposal Cust30-azure-proposal
+!
+crypto ikev2 keyring Cust30-azure-keyring
+ peer azure
+  address 52.168.162.84
+  pre-shared-key local IamSecure123
+  pre-shared-key remote IamSecure123
+!
+crypto ikev2 profile Cust30-azure-profile
+ match identity remote address 52.168.162.84 255.255.255.255
+ identity local address 66.198.12.106
+ authentication local pre-share
+ authentication remote pre-share
+ keyring local Cust30-azure-keyring
+!
+crypto ipsec transform-set Cust30-azure-ipsec-proposal-set esp-aes 256 esp-sha-hmac
+ mode tunnel
+!
+crypto ipsec profile Cust30-azure-ipsec-profile
+ set transform-set Cust30-azure-ipsec-proposal-set
+ set ikev2-profile Cust30-azure-profile
+!
+interface Loopback30
+ ip address 66.198.12.106 255.255.255.255
+!
+interface Tunnel30
+ ip vrf forwarding 30
+ ip address 10.2.30.125 255.255.255.255
+ tunnel source Loopback30
+ tunnel mode ipsec ipv4
+ tunnel destination 52.168.162.84
+ tunnel protection ipsec profile Cust30-azure-ipsec-profile
+!
+router bgp 65021
+ !
+ address-family ipv4 vrf 30
+  network 10.2.30.0 mask 255.255.255.128
+  neighbor 10.10.30.254 remote-as 65515
+  neighbor 10.10.30.254 ebgp-multihop 5
+  neighbor 10.10.30.254 update-source Tunnel30
+  neighbor 10.10.30.254 activate
+  neighbor 10.10.30.254 soft-reconfiguration inbound
+ exit-address-family
+!
+ip route vrf 30 10.10.30.254 255.255.255.255 Tunnel30
+```
 
 ## <a name="on-premises-location-2-connectivity-by-using-expressroute"></a>使用 ExpressRoute 的內部部署位置 2 連線
 
@@ -156,7 +160,7 @@ ms.locfileid: "60425674"
 
 下圖顯示第二個 ExpressRoute 線路和中樞 VNet 之間的連線設定：
 
-[![7]][7]
+[![utf-7]][7]
 
 ExpressRoute 1 會在不同的 Azure 區域將中樞 Vnet 和內部部署位置 1 連線至遠端 Vnet：
 
@@ -190,7 +194,7 @@ ExpressRoute 作為備援線路組可確保高可用性。 您可以在不同的
 
 如需詳細資訊，請參閱[什麼是 VPN 閘道？][VPN]和[部署高可用性 NVA][Deploy-NVA]。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 了解測試設定的[控制平面分析][Control-Analysis]以及拓撲中不同 VNet 或 VLAN 的檢視。
 

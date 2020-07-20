@@ -2,26 +2,17 @@
 title: 包含檔案
 description: 包含檔案
 services: backup
-author: rayne-wiselman
+author: dcurwin
 ms.service: backup
 ms.topic: include
 ms.date: 12/07/2018
-ms.author: raynew
+ms.author: dacurwin
 ms.custom: include file
-ms.openlocfilehash: 9e9c09c1825f5c8383a708e8bd343146396f878e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2fd03c70cffa4efcb30518ebe6c54ca899869e16
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553449"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75752094"
 ---
-下列限制適用於 Azure 備份。
-
-| **限制** | **預設值** |
-| --- | --- |
-| 伺服器或機器可在保存庫註冊。 | Windows Server/Windows 用戶端/System Center Data Protection Manager:第 50 號的 IP 通訊協定。 <br/><br/> IaaS VM：1,000.  |
-| 保存庫儲存體中的資料來源的大小。 |54,400 GB 最大值。 此限制不適用於 IaaS VM 備份。 |
-| Azure 訂用帳戶中的備份保存庫。 |每個區域 500 個保存庫。 |
-| 排程每日備份。 |Windows Server/用戶端：一天安排三。<br/> System Center DPM：兩個一天。 <br/> IaaS VM：一天一次。  |
-| 連接到 Azure VM 備份的資料磁碟。 | 16 |
-| 連接到 Azure VM 備份的個別資料磁碟。| 4,095 GB|
+如需 Azure 備份支援設定和限制的摘要，請參閱[Azure 備份支援矩陣](https://docs.microsoft.com/azure/backup/backup-support-matrix)。

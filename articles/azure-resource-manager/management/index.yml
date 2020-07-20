@@ -1,0 +1,87 @@
+### YamlMime:Landing
+title: 管理資源文件
+summary: 了解如何管理和取用資源。
+metadata:
+  title: Azure Resource Manager 文件
+  description: 了解如何開發 Azure Resource Manager 範本，並使用它們來部署 Azure 資源
+  ms.service: azure-resource-manager
+  ms.subservice: management
+  ms.topic: landing-page
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 01/02/2020
+  ms.openlocfilehash: 36692e3479b8aed7b5d8e10e24526bac5cded198
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "76152539"
+landingContent:
+- title: 關於 Azure Resource Manager
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Resource Manager？
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Resource Manager 與傳統部署
+      url: deployment-models.md
+- title: 關於 Azure 服務
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 訂用帳戶與服務限制
+      url: azure-subscription-service-limits.md
+    - text: 資源名稱規則
+      url: resource-name-rules.md
+    - text: 資源提供者和類型
+      url: resource-providers-and-types.md
+    - text: 每個 Azure 服務的資源提供者
+      url: azure-services-resource-providers.md
+- title: 管理資源
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 跨資源群組和訂用帳戶移動
+      url: move-resource-group-and-subscription.md
+    - text: 跨區域移動
+      url: move-region.md
+    - text: 標記資源
+      url: tag-resources.md
+    - text: 鎖定資源
+      url: lock-resources.md
+    - text: 刪除資源群組
+      url: delete-resource-group.md
+  - linkListType: reference
+    links:
+    - text: 移動支援
+      url: move-support-resources.md
+    - text: 標記支援
+      url: tag-support.md
+    - text: 資源執行個體限制
+      url: resources-without-resource-group-limit.md
+- title: SDK 及工具
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.resources
+    - text: Azure CLI
+      url: /cli/azure/resource
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.resourcemanager
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.resources
+    - text: Python
+      url: /python/api/overview/azure/resources?view=azure-python
+- title: 追蹤作業
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 檢視活動記錄
+      url: view-activity-logs.md
+    - text: 要求限制和節流
+      url: request-limits-and-throttling.md
+    - text: 非同步作業
+      url: async-operations.md

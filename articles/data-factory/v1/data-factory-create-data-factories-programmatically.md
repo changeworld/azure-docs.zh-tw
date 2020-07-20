@@ -1,30 +1,28 @@
 ---
-title: 使用 Azure .NET SDK 建立資料管線 |Microsoft Docs
+title: 使用 Azure .NET SDK 建立資料管線
 description: 了解如何使用 Data Factory .NET SDK，以程式設計方式建立、監視和管理 Azure Data Factory。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: b0a357be-3040-4789-831e-0d0a32a0bda5
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: ea0094624727ca1395a1276e7968ac1c74b750e7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7e8a70955b36f11727019fe430f62e84d4f0c93c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60487277"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85248294"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>使用 Azure Data Factory .NET SDK 來建立、監視及管理 Azure Data Factory
 > [!NOTE]
-> 本文適用於 Data Factory 的第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[複製活動教學課程](../quickstart-create-data-factory-dot-net.md)。 
+> 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[複製活動教學課程](../quickstart-create-data-factory-dot-net.md)。 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 您可以使用 Data Factory .NET SDK，以程式設計方式建立、監視及管理 Azure Data Factory 本文包含指導您建立範例 .NET 主控台應用程式的逐步解說，此應用程式將會建立並監視 Data Factory。 
 
 > [!NOTE]
@@ -101,7 +99,7 @@ ms.locfileid: "60487277"
 您應會從這些步驟取得下列四個值︰
 
 * 租用戶識別碼
-* 订阅 ID
+* 訂用帳戶識別碼
 * 應用程式識別碼
 * 密碼 (在第一個命令中指定)
 
@@ -139,7 +137,7 @@ ms.locfileid: "60487277"
         </appSettings>
     </configuration>
     ```
-5. 在 App.Config 檔案中，以您自己的值更新**&lt;應用程式識別碼&gt;**、**&lt;密碼&gt;**、**&lt;訂用帳戶識別碼&gt;****&lt;租用戶識別碼&gt;** 的值。
+5. 在 App.Config 檔案中，使用您自己的值來更新** &lt; 應用程式 &gt; 識別碼**、 ** &lt; 密碼 &gt; **、訂用帳戶** &lt; 識別碼 &gt; **和租使用者** &lt; 識別碼 &gt; **的值。
 6. 將下列 **using** 陳述式新增至專案的 **Program.cs**檔案。
 
     ```csharp
@@ -447,7 +445,7 @@ ms.locfileid: "60487277"
     }
     ```
 
-15. 在 [方案總管] 中，展開專案：**DataFactoryAPITestApp**，以滑鼠右鍵按一下 [參考]，然後按一下 [新增參考]。 選取 `System.Configuration` 組件的核取方塊，然後按一下 [確定]。
+15. 在 [方案總管中，展開專案： **DataFactoryAPITestApp**，以滑鼠右鍵按一下 [**參考**]，然後按一下 [**加入參考**]。 選取 `System.Configuration` 組件的核取方塊，然後按一下 [確定]****。
 15. 建置主控台應用程式。 按一下功能表上的 [建置]，再按一下 [建置方案]。
 16. 確認您 Azure Blob 儲存體之 adftutorial 容器中至少有一個檔案。 如果沒有，請在「記事本」中以下列內容建立 Emp.txt 檔案，然後將它上傳至 adftutorial 容器。
 
@@ -460,7 +458,7 @@ ms.locfileid: "60487277"
     * 連結服務：**AzureStorageLinkedService**
     * 資料集：**DatasetBlobSource** 和 **DatasetBlobDestination**。
     * 管線：**PipelineBlobSample**
-19. 確認輸出檔案已建立於 **adftutorial** 容器的 **apifactoryoutput** 資料夾中。
+19. 確認輸出檔案已建立于**adftutorial**容器的**apifactoryoutput**資料夾中。
 
 ## <a name="get-a-list-of-failed-data-slices"></a>取得失敗資料配量的清單 
 
@@ -502,6 +500,6 @@ while (response != null);
 ```
 
 ## <a name="next-steps"></a>後續步驟
-請參閱下列範例以建立管線，該管線使用 .NET SDK (從 Azure Blob 儲存體將資料複製到 Azure SQL 資料庫)： 
+請參閱下列範例，以使用 .NET SDK 建立管線，將資料從 Azure blob 儲存體複製到 Azure SQL Database： 
 
 - [建立管線以將資料從 Blob 儲存體複製到 SQL Database](data-factory-copy-activity-tutorial-using-dotnet-api.md)

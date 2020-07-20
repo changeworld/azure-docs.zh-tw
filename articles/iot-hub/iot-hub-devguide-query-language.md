@@ -1,22 +1,21 @@
 ---
 title: 了解 Azure IoT 中樞查詢語言 | Microsoft Docs
 description: 開發人員指南 - 說明類似 SQL 的 IoT 中樞查詢語言，用於從 IoT 中樞擷取裝置/模組對應項和作業的相關資訊。
-author: rezasherafat
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
-ms.author: rezas
-ms.openlocfilehash: e5387f1e44a55b0a30f8620b49d237ac1e1ec2b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: robinsh
+ms.openlocfilehash: bcc53322ac6942b52853be561bc3441e23fbf53b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61442081"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80632937"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>裝置與模組對應項、作業和訊息路由的 IoT 中樞查詢語言
 
-IoT 中樞提供功能強大、類似 SQL 的語言，以擷取有關[裝置對應項](iot-hub-devguide-device-twins.md)、[作業](iot-hub-devguide-jobs.md)和[訊息路由](iot-hub-devguide-messages-d2c.md)的資訊。 本文提供︰
+IoT 中樞提供功能強大的類似 SQL 的語言，以取得[裝置 twins](iot-hub-devguide-device-twins.md)、[模組 twins](iot-hub-devguide-module-twins.md)、[作業](iot-hub-devguide-jobs.md)和[訊息路由](iot-hub-devguide-messages-d2c.md)的相關資訊。 本文提供︰
 
 * IoT 中樞查詢語言主要功能的簡介，以及
 * 語言的詳細說明。 如需訊息路由查詢語言的詳細資訊，請參閱[訊息路由中的查詢](../iot-hub/iot-hub-devguide-routing-query-syntax.md)。
@@ -25,7 +24,7 @@ IoT 中樞提供功能強大、類似 SQL 的語言，以擷取有關[裝置對�
 
 ## <a name="device-and-module-twin-queries"></a>裝置與模組對應項查詢
 
-[裝置對應項](iot-hub-devguide-device-twins.md)與模組對應項可以包含標籤和屬性形式的任意 JSON 物件。 IoT 中樞可讓您以包含所有對應項資訊的單一 JSON 文件形式查詢裝置對應項與模組對應項。
+[裝置 twins](iot-hub-devguide-device-twins.md)和[模組 twins](iot-hub-devguide-module-twins.md)可以包含標籤和屬性形式的任意 JSON 物件。 IoT 中樞可讓您以包含所有對應項資訊的單一 JSON 文件形式查詢裝置對應項與模組對應項。
 
 例如，假設 IoT 中樞裝置對應項有下列結構 (模組對應項很類似，只是具有額外的 moduleId)：
 
@@ -159,7 +158,7 @@ SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 
 ### <a name="module-twin-queries"></a>模組對應項查詢
 
-查詢模組對應項和查詢裝置對應項很類似，但使用不同的集合/命名空間，也就是不用您可以查詢 device.modules 的 “from devices”：
+在模組 twins 上查詢類似于查詢裝置 twins，但使用不同的集合/命名空間;您可以從裝置查詢，而不是從**裝置** **。模組**：
 
 ```sql
 SELECT * FROM devices.modules
@@ -233,7 +232,7 @@ query 物件會根據查詢所需的還原序列化選項，公開多個 **Next*
 ### <a name="limitations"></a>限制
 
 > [!IMPORTANT]
-> 根據裝置對應項中的最新值，查詢結果可能會有數分鐘的延遲。 如果要依據識別碼來查詢個別裝置對應項，請使用擷取裝置對應項 API。 此 API 一律會包含最新的值，並且具有較高的節流限制。
+> 根據裝置對應項中的最新值，查詢結果可能會有數分鐘的延遲。 如果依識別碼查詢個別裝置 twins，請使用[取得](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin)對應項 REST API。 此 API 一律會傳回最新的值，並具有較高的節流限制。 您可以直接發出 REST API，或在其中一個[Azure IoT 中樞服務 sdk](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)中使用對等的功能。
 
 目前僅支援在基本類型 (沒有物件) 之間進行比較，例如 `... WHERE properties.desired.config = properties.reported.config` 只會在這些屬性具有基本值時才受到支援。
 
@@ -315,7 +314,7 @@ SELECT * FROM devices.jobs
 
 ## <a name="basics-of-an-iot-hub-query"></a>IoT 中樞查詢的基本概念
 
-每個「IoT 中樞」查詢都包含 SELECT 和 FROM 子句，以及選擇性的 WHERE 和 GROUP BY 子句。 每個查詢都會在 JSON 文件的集合上執行，例如裝置對應項。 FROM 子句會指出要在其上反覆運算的文件集合 (**devices** 或 **devices.jobs**)。 然後，會套用 WHERE 子句中的篩選。 使用彙總時，此步驟的結果會依照 GROUP BY 子句中所指定的方式進行分組。 針對每個群組，會依照 SELECT 子句中所指定的方式產生一個資料列。
+每個「IoT 中樞」查詢都包含 SELECT 和 FROM 子句，以及選擇性的 WHERE 和 GROUP BY 子句。 每個查詢都會在 JSON 文件的集合上執行，例如裝置對應項。 FROM 子句會指出要反覆運算的檔集合（**裝置**、裝置、**模組**或**devices.jobs**）。 然後，會套用 WHERE 子句中的篩選。 使用彙總時，此步驟的結果會依照 GROUP BY 子句中所指定的方式進行分組。 針對每個群組，會依照 SELECT 子句中所指定的方式產生一個資料列。
 
 ```sql
 SELECT <select_list>
@@ -326,11 +325,11 @@ SELECT <select_list>
 
 ## <a name="from-clause"></a>FROM 子句
 
-**FROM <from_specification>** 只能採用兩個值：**FROM devices** 可查詢裝置對應項，或 **FROM devices.jobs** 可查詢每部裝置的作業詳細資料。
-
+**From <from_specification>** 子句只能假設有三個值：**從裝置**到查詢裝置 twins、**從裝置**到查詢模組 twins，或**從 devices.jobs**到查詢作業的每一裝置詳細資料。
 
 ## <a name="where-clause"></a>WHERE 子句
-**WHERE <filter_condition>** 子句是可选的。 它會指定一或多個條件，而且 FROM 集合中的 JSON 文件必須滿足這些條件，才能納入為結果的一部分。 任何 JSON 文件都必須將指定的條件評估為 "true"，才能併入結果。
+
+**WHERE <filter_condition>** 子句是選擇性的。 它會指定一或多個條件，而且 FROM 集合中的 JSON 文件必須滿足這些條件，才能納入為結果的一部分。 任何 JSON 文件都必須將指定的條件評估為 "true"，才能併入結果。
 
 [運算式和條件](iot-hub-devguide-query-language.md#expressions-and-conditions)一節中會說明允許的條件。
 
@@ -366,6 +365,7 @@ SELECT [TOP <max number>] <projection list>
 目前，只有在裝置對應項的彙總查詢中，才支援與 **SELECT*** 不同的選取範圍子句。
 
 ## <a name="group-by-clause"></a>GROUP BY 子句
+
 **GROUP BY <group_specification>** 子句是一個選擇性步驟，會在 WHERE 子句中指定的篩選之後、SELECT 中指定的投影之前執行。 它會根據屬性值來分組文件。 這些群組可用來產生 SELECT 子句中所指定的彙總值。
 
 使用 GROUP BY 的查詢範例如下︰
@@ -393,15 +393,15 @@ GROUP BY <group_by_element>
 > [!IMPORTANT]
 > `group` 一詞目前被視為查詢中的特殊關鍵字。 萬一您使用 `group` 作為屬性名稱，請考慮使用雙括號括住，以避免發生錯誤，例如 `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'`。
 >
->
 
 ## <a name="expressions-and-conditions"></a>運算式和條件
-概括而言，運算式：
+
+概括而言，運算式**：
 
 * 會評估為 JSON 類型 (例如布林值、數字、字串、陣列或物件) 的執行個體。
 * 定義方式是使用內建運算子和函式處理來自裝置 JSON 文件和常數的資料。
 
-「條件」是評估為布林值的運算式。 任何與布林值 **true** 不同的常數都會被視為 **false**。 此規則包括 **null****undefined**、任何物件或陣列執行個體、任何字串，以及布林值 **false**。
+「條件」** 是評估為布林值的運算式。 任何與布林值 **true** 不同的常數都會被視為 **false**。 此規則包括 **null****undefined**、任何物件或陣列執行個體、任何字串，以及布林值 **false**。
 
 運算式的語法如下︰
 
@@ -439,46 +439,48 @@ GROUP BY <group_by_element>
 | binary_operator | [運算子](#operators)一節中所列的任何二元運算子。 |
 | function_name| [函式](#functions)一節中所列的任何函式。 |
 | decimal_literal |以小數點標記法表示的浮點數。 |
-| hexadecimal_literal |以字串 '0x' 後面接著十六進位數字的字串所表示的數字。 |
+| hexadecimal_literal |以字串 ' 0x ' 表示後面接著十六進位數位字串的數位。 |
 | string_literal |字串常值是由零個或多個 Unicode 字元序列或逸出序列所表示的 Unicode 字串。 字串常值會以單引號或雙引號括起來。 允許的逸出︰`\'`、`\"`、`\\`、`\uXXXX` (適用於由 4 個十六進位數字所定義的 Unicode 字元)。 |
 
-### <a name="operators"></a>運算子
+### <a name="operators"></a>操作員
+
 支援下列運算子：
 
-| 系列 | 運算子 |
+| 系列 | 操作員 |
 | --- | --- |
 | 算術 |+, -, *, /, % |
 | 邏輯 |AND、OR、NOT |
 | 比較 |=、!=、<、>、<=、>=、<> |
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>函式
+
 查詢對應項和作業時唯一支援的函式為：
 
-| 函式 | 描述 |
+| 函式 | 說明 |
 | -------- | ----------- |
 | IS_DEFINED(property) | 傳回布林值，表示屬性是否已經指派值 (包含 `null`)。 |
 
 在路由條件中，支援下列比對函式：
 
-| 函数 | 描述 |
+| 函式 | 說明 |
 | -------- | ----------- |
 | ABS(x) | 傳回指定之數值運算式的絕對 (正) 值。 |
 | EXP(x) | 傳回指定之數值運算式 (e^x) 的指數值。 |
 | POWER(x,y) | 將指定之運算式的值傳回給指定的乘冪 (x^y)。|
-| SQUARE(x) | 傳回指定之數值的平方。 |
+| SQUARE(x)    | 傳回指定之數值的平方。 |
 | CEILING(x) | 傳回大於或等於指定之數值運算式的最小整數值。 |
-| FLOOR(x) | 返回小于或等于指定数值表达式的最大整数。 |
+| FLOOR(x) | 傳回小於或等於指定數值運算式的最大整數。 |
 | SIGN(x) | 傳回指定之數值運算式的正數 (+1)、零 (0) 或負數 (-1) 符號。|
 | SQRT(x) | 傳回指定之數值的平方根。 |
 
 在路由條件中，支援下列類型檢查和轉換函式：
 
-| 函式 | 描述 |
+| 函式 | 說明 |
 | -------- | ----------- |
 | AS_NUMBER | 將輸入字串轉換為數字。 如果輸入是一個數字則為 `noop`；如果字串不是數字則為 `Undefined`。|
 | IS_ARRAY | 傳回布林值，表示指定之運算式的類型為陣列。 |
 | IS_BOOL | 傳回布林值，表示指定之運算式的類型為布林值。 |
-| IS_DEFINED | 傳回布林值，表示屬性是否已經指派值。 |
+| IS_DEFINED | 傳回布林值，表示屬性是否已經指派值。 只有當值是基本型別時，才支援這種情況。 基本類型包括字串、布林值、數值或 `null` 。 不支援 DateTime、物件類型和陣列。 |
 | IS_NULL | 傳回布林值，表示指定之運算式的類型為 null。 |
 | IS_NUMBER | 傳回布林值，表示指定之運算式的類型為數字。 |
 | IS_OBJECT | 傳回布林值，表示指定之運算式的類型為 JSON 物件。 |
@@ -487,14 +489,14 @@ GROUP BY <group_by_element>
 
 在路由條件中，支援下列字串函式：
 
-| 函式 | 描述 |
+| 函式 | 說明 |
 | -------- | ----------- |
 | CONCAT(x, y, …) | 傳回字串，該字串是串連兩個或多個字串值的結果。 |
 | LENGTH(x) | 傳回指定字串運算式的字元數目。|
 | LOWER(x) | 傳回將大寫字元資料轉換成小寫之後的字串運算式。 |
 | UPPER(x) | 傳回將小寫字元資料轉換成大寫之後的字串運算式。 |
 | SUBSTRING(string, start [, length]) | 傳回字串運算式的部分，從指定字元以零為起始的位置開始，直到指定的長度，或直到字串的結尾。 |
-| INDEX_OF(string, fragment) | 返回第一个指定的字符串表达式中第一次出现第二个字符串表达式的起始位置，如果未找到字符串，则返回 -1。|
+| INDEX_OF(string, fragment) | 傳回第一個指定的字串運算式中，第二個字串運算式第一次出現的開始位置，或者如果找不到字串，則為 -1。|
 | STARTS_WITH(x, y) | 傳回布林值，表示第一個字串運算式是否以第二個字串運算式開頭。 |
 | ENDS_WITH(x, y) | 傳回布林值，表示第一個字串運算式是否以第二個字串運算式結尾。 |
 | CONTAINS(x,y) | 傳回布林值，表示第一個字串運算式是否包含第二個字串運算式。 |

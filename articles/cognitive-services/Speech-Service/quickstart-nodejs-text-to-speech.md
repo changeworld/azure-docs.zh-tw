@@ -7,29 +7,28 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: conceptual
-ms.date: 01/11/2019
+ms.topic: quickstart
+ms.date: 04/13/2020
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: a7713576565ca2632d7d91857040ece4d02c411b
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.openlocfilehash: 8cf9641a1b7a5d1aada13522d612458d5032f883
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520831"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258679"
 ---
 # <a name="quickstart-convert-text-to-speech-using-nodejs"></a>快速入門：使用 Node.js 將文字轉換為語音
 
 在本快速入門中，您將了解如何使用 Node.js 和文字轉語音 REST API 將文字轉換為語音。 本指南中的要求本文已結構化為[語音合成標記語言 (SSML)](speech-synthesis-markup.md)，這可讓您選擇回應的語音和語言。
 
-本快速入門需要[Azure 認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)與語音服務資源。 如果您還沒有帳戶，可以使用[免費試用](get-started.md)來取得訂用帳戶金鑰。
+本快速入門需要 [Azure 認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)和語音服務資源。 如果您還沒有帳戶，可以使用[免費試用](get-started.md)來取得訂用帳戶金鑰。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本快速入門需要：
 
-* [Node 8.12.x 或更新版本](https://nodejs.org/en/)
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download)，或您最愛的文字編輯器
+* <a href="https://nodejs.org/en/" target="_blank">Node 8.12.x 或更新版本<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio  <span class="docon docon-navigate-external x-hidden-focus"></span></a>、<a href="https://code.visualstudio.com/download" target="_blank"> Visual Studio Code <span class="docon docon-navigate-external x-hidden-focus"></span></a>，或您最愛的文字編輯器
 * 適用於語音服務的 Azure 訂用帳戶金鑰。 [免費取得一個金鑰!](get-started.md)
 
 ## <a name="create-a-project-and-require-dependencies"></a>建立專案並要求相依性
@@ -53,9 +52,9 @@ const xmlbuilder = require('xmlbuilder');
 
 ## <a name="get-an-access-token"></a>取得存取權杖
 
-文字轉語音 REST API 需要存取權杖來進行驗證。 若要取得存取權杖，則必須進行交換。 此函式會交換語音服務的訂用帳戶金鑰的存取權杖使用`issueToken`端點。
+文字轉語音 REST API 需要存取權杖來進行驗證。 若要取得存取權杖，則必須進行交換。 此函式會使用 `issueToken` 端點，以您的語音服務訂用帳戶金鑰交換存取權杖。
 
-這個範例假設您的語音服務訂用帳戶是在美國西部區域中。 如果您使用不同的區域，請更新 `uri` 的值。 如需完整清單，請參閱[區域](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)。
+此範例假設您的語音服務訂用帳戶位於美國西部區域。 如果您使用不同的區域，請更新 `uri` 的值。 如需完整清單，請參閱[區域](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)。
 
 請將下列程式碼複製到您的專案中：
 
@@ -80,7 +79,7 @@ function getAccessToken(subscriptionKey) {
 
 ## <a name="make-a-request-and-save-the-response"></a>提出要求並儲存回應
 
-在此，您即將建置對文字轉語音 API 的要求，並儲存語音回應。 此範例假設您會使用美國西部端點。 如果您的資源註冊至不同區域，請務必更新 `uri`。 如需詳細資訊，請參閱 <<c0> [ 語音服務區域](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)。
+在此，您即將建置對文字轉語音 API 的要求，並儲存語音回應。 此範例假設您會使用美國西部端點。 如果您的資源註冊至不同區域，請務必更新 `uri`。 如需詳細資訊，請參閱[語音服務區域](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)。
 
 接下來，您必須為要求新增必要的標頭。 請務必將 `User-Agent` 更新為您的資源名稱 (位於 Azure 入口網站)，並將 `X-Microsoft-OutputFormat` 設定為您偏好的音訊輸出。 如需輸出格式的完整清單，請參閱[音訊輸出](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)。
 
@@ -136,9 +135,9 @@ function textToSpeech(accessToken, text) {
 
 ## <a name="put-it-all-together"></a>組合在一起
 
-就快要完成了。 最後一個步驟是建立非同步函式。 此函式會讀取您的訂用帳戶金鑰從環境變數，提示文字，取得權杖，請等候完成，然後將轉換的文字轉換語音，並將聲音儲存為.wav 的要求。
+就快要完成了。 最後一個步驟是建立非同步函式。 此函式會讀取環境變數中的訂用帳戶金鑰、提示輸入文字、取得權杖、等待要求完成，然後將文字轉換為語音並將音訊儲存為 .wav。
 
-如果您不熟悉的環境變數，或想要測試與您的訂用帳戶金鑰硬式編碼為字串，取代`process.env.SPEECH_SERVICE_KEY`使用您的訂用帳戶金鑰，做為字串。
+如果您不熟悉環境變數，或想要使用硬式編碼為字串的訂用帳戶金鑰進行測試，請以您的訂用帳戶金鑰作為字串取代 `process.env.SPEECH_SERVICE_KEY`。
 
 ```javascript
 // Use async and await to get the token before attempting
@@ -185,7 +184,7 @@ node tts.js
 > [!div class="nextstepaction"]
 > [探索 GitHub 上的 Node.js 範例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/NodeJS) \(英文\)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [文字轉換語音 API 參考](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
 * [建立自訂語音調](how-to-customize-voice-font.md)

@@ -1,61 +1,65 @@
 ---
-title: 管理 Azure Database for PostgreSQL-從 Azure 入口網站的單一伺服器讀取的複本
-description: 了解如何管理讀取的複本 Azure Database for PostgreSQL-從 Azure 入口網站的單一伺服器。
+title: 管理讀取複本-Azure 入口網站-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
+description: 瞭解如何從 Azure 入口網站管理適用於 PostgreSQL 的 Azure 資料庫-單一伺服器的讀取複本。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 87371f91d9ea1f556d0f78beebd73b8a28977b71
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.topic: how-to
+ms.date: 07/10/2020
+ms.openlocfilehash: 8ca4d3d2d52e79dbcaaa15eba5794a4d2d28366a
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65510364"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274538"
 ---
-# <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>建立和管理適用於 PostgreSQL 的 Azure 入口網站的單一伺服器的 Azure 資料庫中讀取的複本
+# <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>從 Azure 入口網站建立和管理適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中的讀取複本
 
 在本文中，您將了解如何透過 Azure 入口網站，在「適用於 PostgreSQL 的 Azure 資料庫」中建立與管理讀取複本。 若要深入了解讀取複本，請參閱[概觀](concepts-read-replicas.md)。
-
-> [!IMPORTANT]
-> 在與您的主要伺服器相同的區域，或您選擇的任何其他 Azure 區域中，您可以建立一個讀取的複本。 跨區域複寫目前為公開預覽狀態。
 
 
 ## <a name="prerequisites"></a>必要條件
 使用[適用於 PostgreSQL 的 Azure 資料庫伺服器](quickstart-create-server-database-portal.md)作為主要伺服器。
 
+## <a name="azure-replication-support"></a>Azure 複寫支援
+
+[讀取複本](concepts-read-replicas.md)和[邏輯解碼](concepts-logical.md)兩者都相依于 Postgres 寫 (WAL) 以取得資訊。 這兩個功能需要來自 Postgres 的不同記錄層級。 邏輯解碼需要比讀取複本更高的記錄層級。
+
+若要設定正確的記錄層級，請使用 Azure 複寫支援參數。 Azure 複寫支援有三個設定選項：
+
+* **Off** -將最少的資訊放在 WAL 中。 大部分適用於 PostgreSQL 的 Azure 資料庫伺服器上都無法使用此設定。  
+* **複本**-比**關閉**更詳細的資訊。 這是[讀取複本](concepts-read-replicas.md)正常執行所需的最基本記錄層級。 這是大多數伺服器上的預設設定。
+* **邏輯**比**複本**更詳細。 這是要使用之邏輯解碼的最低記錄層級。 讀取複本也適用于此設定。
+
+此參數變更之後，必須重新開機伺服器。 就內部而言，此參數會設定 Postgres 參數 `wal_level` 、 `max_replication_slots` 和 `max_wal_senders` 。
+
 ## <a name="prepare-the-master-server"></a>準備主要伺服器
-若要在一般用途和記憶體最佳化層中準備主要伺服器，這些是必要步驟。 主要伺服器已準備好進行複寫，藉由設定 azure.replication_support 參數。 變更複寫參數時，重新啟動伺服器時需要，變更才會生效。 在 Azure 入口網站中，這兩個步驟由單一按鈕，封裝**啟用複寫支援**。
 
-1. 在 Azure 入口網站中，選取要作為主要伺服器的現有「適用於 PostgreSQL 的 Azure 資料庫」伺服器。
+1. 在 [Azure 入口網站中，選取要做為主要的現有適用於 PostgreSQL 的 Azure 資料庫伺服器。
 
-2. 伺服器資訊看板上底下**設定**，選取**複寫**。
+2. 從伺服器的功能表中 **，選取 [** 複寫]。 如果 Azure 複寫支援設定為至少**複本**，您可以建立讀取複本。 
 
-3. 選取 **啟用複寫支援**。 
+3. 如果 Azure 複寫支援未設定為至少**複本**，請加以設定。 選取 [儲存]。
 
-   ![啟用複寫支援](./media/howto-read-replicas-portal/enable-replication-support.png)
+   ![適用於 PostgreSQL 的 Azure 資料庫複寫-設定複本並儲存](./media/howto-read-replicas-portal/set-replica-save.png)
 
-4. 確認您想要啟用複寫支援。 這項作業會重新啟動主要伺服器。 
+4. 選取 **[是]**，重新開機伺服器以套用變更。
 
-   ![確認 啟用複寫支援](./media/howto-read-replicas-portal/confirm-enable-replication.png)
+   ![適用於 PostgreSQL 的 Azure 資料庫-複寫-確認重新開機](./media/howto-read-replicas-portal/confirm-restart.png)
+
+5. 作業完成後，您會收到兩個 Azure 入口網站通知。 有一個補救伺服器參數的通知。 接下來會出現另一個伺服器重新開機的通知。
+
+   ![成功通知](./media/howto-read-replicas-portal/success-notifications.png)
+
+6. 重新整理 [Azure 入口網站] 頁面，以更新 [複寫] 工具列。 您現在可以建立此伺服器的讀取複本。
    
-5. 作業完成後，您會收到兩個的 Azure 入口網站通知。 沒有一個通知來更新伺服器參數。 還有另一個通知之後立即重新啟動伺服器。
-
-   ![成功的通知-可讓](./media/howto-read-replicas-portal/success-notifications-enable.png)
-
-6. 重新整理 Azure 入口網站頁面，並更新 [複寫] 工具列。 您現在可以建立此伺服器的唯讀的複本。
-
-   ![已更新的工具列](./media/howto-read-replicas-portal/updated-toolbar.png)
-   
-啟用複寫支援為每一部主要伺服器一次作業。 A**停用複寫支援**按鈕可讓您方便參考。 除非您確定您將永遠不會建立這個主要伺服器上的複本，我們不建議停用複寫支援。 您的主要伺服器有現有的複本時，您無法停用複寫支援。
-
 
 ## <a name="create-a-read-replica"></a>建立讀取複本
 若要建立讀取複本，請遵循下列步驟：
 
-1. 選取要作為主要伺服器的現有「適用於 PostgreSQL 的 Azure 資料庫」。 
+1. 選取要作為主伺服器使用的現有適用於 PostgreSQL 的 Azure 資料庫伺服器。 
 
-2. 伺服器資訊看板上底下**設定**，選取**複寫**。
+2. 在 [伺服器] 提要欄位的 [**設定**] 底下 **，選取 [** 複寫]。
 
 3. 選取 [新增複本]。
 
@@ -65,21 +69,24 @@ ms.locfileid: "65510364"
 
     ![複本的名稱](./media/howto-read-replicas-portal/name-replica.png)
 
-5. 選取複本的位置。 您可以在任何 Azure 區域中建立複本。 預設位置是主要伺服器的相同。
+5. 選取複本的 [位置]。 預設位置與主要伺服器的位置相同。
 
     ![選取位置](./media/howto-read-replicas-portal/location-replica.png)
 
-6. 選取 [確定] 來確認建立複本。
+   > [!NOTE]
+   > 若要深入瞭解您可以在哪些區域中建立複本，請造訪[參閱複本概念文章](concepts-read-replicas.md)。 
 
-系統會使用與主要伺服器相同的伺服器設定來建立複本。 建立複本之後，以下設定可以個別地從主要伺服器進行變更：計算世代、虛擬核心、儲存體及備份保留期間。 定價層也可以個別變更，但不能變更為基本層，或從基本層變更為別的層。
+6. 選取 [確定]**** 來確認建立複本。
 
-> [!IMPORTANT]
-> 在將主要伺服器設定更新為新值之前，應將複本的設定更新為相等或更大的值。 此動作可確保複本可以跟上主要伺服器上所做的變更。
-
-建立讀取複本之後，可從 [複寫] 視窗檢視該複本：
+建立讀取複本之後，可從 [複寫]**** 視窗檢視該複本：
 
 ![在 [複寫] 視窗中檢視新複本](./media/howto-read-replicas-portal/list-replica.png)
  
+
+> [!IMPORTANT]
+> 請參閱[讀取複本總覽的考慮一節](concepts-read-replicas.md#considerations)。
+>
+> 將主伺服器設定更新為新值之前，請將複本設定更新為相等或更大的值。 此動作可協助複本跟上對主伺服器所做的任何變更。
 
 ## <a name="stop-replication"></a>停止複寫
 您可以停止主要伺服器與讀取複本之間的複寫。
@@ -91,7 +98,7 @@ ms.locfileid: "65510364"
 
 1. 在 Azure 入口網站中，選取適用於 PostgreSQL 的 Azure 資料庫的主要伺服器。
 
-2. 在伺服器功能表的 [設定] 下方，選取 [複寫]。
+2. 在伺服器功能表的 [設定]**** 下方，選取 [複寫]****。
 
 3. 選取要停止複寫的複本伺服器。
 
@@ -101,7 +108,7 @@ ms.locfileid: "65510364"
 
    ![選取 [停止複寫]](./media/howto-read-replicas-portal/select-stop-replication.png)
  
-5. 選取 [確定] 以停止複寫。
+5. 選取 [確定]**** 以停止複寫。
 
    ![確認停止複寫](./media/howto-read-replicas-portal/confirm-stop-replication.png)
  
@@ -116,11 +123,11 @@ ms.locfileid: "65510364"
 
 1. 在 Azure 入口網站中，選取適用於 PostgreSQL 的 Azure 資料庫的主要伺服器。
 
-2. 開啟該伺服器的**概觀**頁面。 選取 [刪除] 。
+2. 開啟該伺服器的**概觀**頁面。 選取 [刪除]。
 
    ![在伺服器的 [概觀] 頁面中，選取要刪除主要伺服器](./media/howto-read-replicas-portal/delete-server.png)
  
-3. 輸入要刪除的主要伺服器名稱。 選取 [刪除] 以確認刪除主要伺服器。
+3. 輸入要刪除的主要伺服器名稱。 選取 [刪除]**** 以確認刪除主要伺服器。
 
    ![確認刪除主要伺服器](./media/howto-read-replicas-portal/confirm-delete.png)
  
@@ -128,25 +135,25 @@ ms.locfileid: "65510364"
 ## <a name="delete-a-replica"></a>刪除複本伺服器
 刪除讀取複本的方式類似於刪除主要伺服器。
 
-- 在 Azure 入口網站中，開啟讀取複本的 [概觀] 頁面。 選取 [刪除] 。
+- 在 Azure 入口網站中，開啟讀取複本的 [概觀]**** 頁面。 選取 [刪除]。
 
    ![在複本的概觀頁面上，選取要刪除複本](./media/howto-read-replicas-portal/delete-replica.png)
  
-您也可以透過下列步驟，從 [複寫] 視窗中刪除讀取複本：
+您也可以透過下列步驟，從 [複寫]**** 視窗中刪除讀取複本：
 
 1. 在 Azure 入口網站中，選取適用於 PostgreSQL 的 Azure 資料庫的主要伺服器。
 
-2. 在伺服器功能表的 [設定] 下方，選取 [複寫]。
+2. 在伺服器功能表的 [設定]**** 下方，選取 [複寫]****。
 
 3. 選取要刪除的讀取複本。
 
    ![選取要刪除的複本](./media/howto-read-replicas-portal/select-replica.png)
  
-4. 選取 [刪除複本]。
+4. 選取 [**刪除複本**]。
 
    ![選取 [刪除複本]](./media/howto-read-replicas-portal/select-delete-replica.png)
  
-5. 輸入要刪除的複本名稱。 選取 [刪除] 以確認刪除複本。
+5. 輸入要刪除的複本名稱。 選取 [刪除]**** 以確認刪除複本。
 
    ![確認刪除複本](./media/howto-read-replicas-portal/confirm-delete-replica.png)
  
@@ -155,15 +162,15 @@ ms.locfileid: "65510364"
 有兩個計量可用來監視讀取複本。
 
 ### <a name="max-lag-across-replicas-metric"></a>「複本之間的最大延隔時間」計量
-[複本之間的最大延隔時間] 計量會顯示主要伺服器和最大延隔複本之間的延隔 (位元組)。 
+[複本之間的最大延隔時間]**** 計量會顯示主要伺服器和最大延隔複本之間的延隔 (位元組)。 
 
 1.  在 Azure 入口網站中，選取「適用於 PostgreSQL 的 Azure 資料庫」的主要伺服器。
 
-2.  選取 [計量]。 在 [計量] 視窗中，選取 [複本之間的最大延隔時間]。
+2.  選取 [**計量**]。 在 [計量]**** 視窗中，選取 [複本之間的最大延隔時間]****。
 
     ![監視複本之間的最大延隔時間](./media/howto-read-replicas-portal/select-max-lag.png)
  
-3.  選取 [最大值] 作為 [彙總]。
+3.  選取 [最大值]**** 作為 [彙總]****。
 
 
 ### <a name="replica-lag-metric"></a>「複本延隔時間」計量
@@ -171,11 +178,12 @@ ms.locfileid: "65510364"
 
 1. 在 Azure 入口網站中，選取「適用於 PostgreSQL 的 Azure 資料庫」讀取複本。
 
-2. 選取 [計量]。 在 [計量] 視窗中，選取 [複本延隔時間]。
+2. 選取 [**計量**]。 在 [計量]**** 視窗中，選取 [複本延隔時間]****。
 
    ![監視複本延隔時間](./media/howto-read-replicas-portal/select-replica-lag.png)
  
-3. 選取 [最大值] 作為 [彙總]。 
+3. 選取 [最大值]**** 作為 [彙總]****。 
  
 ## <a name="next-steps"></a>後續步驟
-深入了解[適用於 PostgreSQL 的 Azure 資料庫中的讀取複本](concepts-read-replicas.md)。
+* 深入了解[適用於 PostgreSQL 的 Azure 資料庫中的讀取複本](concepts-read-replicas.md)。
+* 瞭解如何[在 Azure CLI 和 REST API 中建立及管理讀取複本](howto-read-replicas-cli.md)。

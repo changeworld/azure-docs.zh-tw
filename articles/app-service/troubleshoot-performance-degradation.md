@@ -1,28 +1,17 @@
 ---
-title: 疑難排解效能降低 - Azure App Service | Microsoft Docs
-description: 本文可協助您針對 Azure App Service 中應用程式效能變慢的問題進行疑難排解。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: 針對效能降低進行疑難排解
+description: 了解如何針對 Azure App Service 中的緩辦應用程式效能問題進行疑難排解，包括監視應用程式行為、收集資料和減輕問題。
 tags: top-support-issue
 keywords: Web 應用程式效能、變慢的應用程式、應用程式變慢
 ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2d17991854f13f889c4e8c3a8c6f18e933655546
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: 2ef4862b629f5d192049c2cb9236a3da2b411960
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128444"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170761"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>針對 Azure App Service 中應用程式效能變慢的問題進行疑難排解
 本文可協助您針對 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) 中應用程式效能變慢的問題進行疑難排解。
@@ -49,7 +38,7 @@ ms.locfileid: "62128444"
 
 [App Service](overview.md) 在每個步驟均提供您各種選項。
 
-<a name="observe" />
+<a name="observe"></a>
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1.觀察和監視應用程式行為
 #### <a name="track-service-health"></a>追蹤服務健全狀況
@@ -61,9 +50,9 @@ ms.locfileid: "62128444"
 某些您可能想用以監視應用程式的計量為
 
 * 平均記憶體工作集
-* 平均响应时间
+* 平均回應時間
 * CPU 時間
-* 内存工作集
+* 記憶體工作集
 * Requests
 
 ![監視應用程式效能](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
@@ -78,7 +67,7 @@ ms.locfileid: "62128444"
 
 端點監視能讓您設定從不同地理位置執行，且用來測試 Web URL 之回應時間和運作時間的 Web 測試。 這項測試會針對 Web URL 執行 HTTP GET 作業，以從每個位置判斷回應時間和執行時間。 各個已設定的位置會每隔五分鐘執行一次測試。
 
-運作時間是透過 HTTP 回應碼來加以監視，而回應時間的測量單位是毫秒。 如果 HTTP 回應碼大於或等於 400，或是當回應時間超過 30 秒時，監視測試即告失敗。 如果从所有指定的位置监视测试均成功，则终结点被视为可用。
+運作時間是透過 HTTP 回應碼來加以監視，而回應時間的測量單位是毫秒。 如果 HTTP 回應碼大於或等於 400，或是當回應時間超過 30 秒時，監視測試即告失敗。 如果所有指定位置上的端點監視測試全都成功，表示該端點可用。
 
 若要設定，請參閱[監視 Azure App Service 中的應用程式](web-sites-monitor.md)。
 
@@ -94,7 +83,7 @@ ms.locfileid: "62128444"
 
 [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 也是可使用的效能監視網站擴充功能。 若要使用 Application Insights，您可以使用 SDK 重建您的程式碼。 您也可以安裝擴充功能來存取供其他資料。 SDK 可讓您撰寫程式碼來監視應用程式的詳細使用狀況和效能。 如需詳細資訊，請參閱[監視 Web 應用程式中的效能](../azure-monitor/app/web-monitor-performance.md)。
 
-<a name="collect" />
+<a name="collect"></a>
 
 ### <a name="2-collect-data"></a>2.收集資料
 App Service 會針對來自 Web 伺服器和 Web 應用程式的記錄資訊提供診斷功能。 此資訊可區分為網頁伺服器診斷與應用程式診斷。
@@ -134,7 +123,7 @@ App Service 提供智慧型和互動式的體驗，可協助您對應用程式�
 若要存取 App Service 診斷，請在 [Azure 入口網站](https://portal.azure.com)中瀏覽至您的 App Service 應用程式或 App Service Environment。 在左方導覽列中，按一下 [診斷並解決問題]。
 
 #### <a name="use-the-kudu-debug-console"></a>使用 Kudu 偵錯主控台
-App Service 隨附可用於偵錯、探索、上傳檔案的偵錯主控台，以及可以取得您環境相關資訊的 JSON 端點。 此主控台稱為應用程式的 *Kudu 主控台*或 *SCM 儀表板*。
+App Service 隨附可用於偵錯、探索、上傳檔案的偵錯主控台，以及可取得您環境相關資訊的 JSON 端點。 此主控台稱為應用程式的 *Kudu 主控台*或 *SCM 儀表板*。
 
 您可以前往連結 **https://&lt;Your app name>.scm.azurewebsites.net/** 存取此儀表板。
 
@@ -149,20 +138,20 @@ Kudu 的另一項實用功能是，如果應用程式擲回第一次例外狀況
 
 如需有關 Kudu 可用功能的詳細資訊，請參閱 [您應該知道的 Azure DevOps 工具](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/)。
 
-<a name="mitigate" />
+<a name="mitigate"></a>
 
 ### <a name="3-mitigate-the-issue"></a>3.減輕問題
 #### <a name="scale-the-app"></a>調整應用程式
 在 Azure App Service 中，為提高效能和輸送量，您可以調整所執行之應用程式的大小。 相應增加應用程式規模牽涉到兩個相關動作：將 App Service 方案變更為較高的定價層，以及在改為較高的定價層後進行某些設定。
 
-如需有關調整的詳細資訊，請參閱[在 Azure App Service 中調整應用程式規模](web-sites-scale.md)。
+如需有關調整的詳細資訊，請參閱[在 Azure App Service 中調整應用程式規模](manage-scale-up.md)。
 
 此外，您可以選擇在多個執行個體上執行應用程式。 相應放大不僅提供您更強大的處理能力，同時也提供您一定程度的容錯量。 若流程在某個執行個體上中斷，其他執行個體會繼續處理要求。
 
 您可以將調整設定為手動或自動。
 
 #### <a name="use-autoheal"></a>使用 AutoHeal
-AutoHeal 會根據您選擇的設定 (例如組態變更、要求、以記憶體為基礎的限制或執行要求所需的時間)，回收應用程式的背景工作角色處理序。 在大部分情況下，回收處理序是從問題中復原的最快方式。 雖然您永遠可以從 Azure 入口網站中直接重新啟動應用程式，AutoHeal 會自動為您完成。 您只需要在應用程式的根目錄 web.config 中加入某些觸發程序。 這些設定的運作方式相同，即使您的應用程式並不是.NET 應用程式。
+AutoHeal 會根據您選擇的設定 (例如組態變更、要求、以記憶體為基礎的限制或執行要求所需的時間)，回收應用程式的背景工作角色處理序。 在大部分情況下，回收處理序是從問題中復原的最快方式。 雖然您永遠可以從 Azure 入口網站中直接重新啟動應用程式，AutoHeal 會自動為您完成。 您只需要在應用程式的根目錄 web.config 中加入某些觸發程序。 即使應用程式並非 .NET 應用程式，這些設定的運作方式仍然相同。
 
 如需詳細資訊，請參閱 [自動修復 Azure 網站](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/)。
 

@@ -8,12 +8,12 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: be918ecef3a9fb346d9aa441bef9b4c3991009d6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bc013469610d5535c89870947fe094da93660012
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60530868"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "73488432"
 ---
 # <a name="app-service-documentation"></a>App Service 文件
 Azure App Service 可讓您以選定的程式設計語言來建置並裝載 Web 應用程式，無需管理基礎結構或是語言或 Web Framework 執行階段。 它提供自動調整功能與高度可用性，支援 Windows 與 Linux，而且可讓您從 GitHub、Azure DevOps Services 或任何 Git 存放庫進行自動部署。 了解如何透過我們的快速入門、教學課程和範例使用 Azure App Service。
@@ -42,7 +42,7 @@ Azure App Service 可讓您以選定的程式設計語言來建置並裝載 Web 
   - [Java with MySQL](/app-service/app-service-web-tutorial-java-mysql)
   - [Python with PostgreSQL](/app-service/containers/tutorial-python-postgresql-app)
 - [將現有的自訂網域對應至您的應用程式](/azure/app-service/app-service-web-tutorial-custom-domain)
-- [將現有的 SSL 憑證與您的應用程式繫結](/azure/app-service/app-service-web-tutorial-custom-SSL)
+- [將 SSL 憑證與您的應用程式繫結](/azure/app-service/configure-ssl-bindings)
 
 ## <a name="free-pluralsight-video-training"></a>免費 Pluralsight 影片訓練
 

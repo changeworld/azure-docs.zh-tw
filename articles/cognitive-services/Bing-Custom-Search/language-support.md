@@ -3,36 +3,36 @@ title: 語言支援 - Bing 自訂搜尋 API
 titleSuffix: Azure Cognitive Services
 description: Bing 自訂搜尋 API 支援的語言和區域清單。
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
-ms.author: v-gedod
-ms.openlocfilehash: 1f53dc60a74f0b558525897bef97bf2500442b54
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.author: aahi
+ms.openlocfilehash: 004bd973651d5903db4254a8883be2c8a83d9b38
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867840"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310575"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Bing 自訂搜尋 API 支援的語言和區域
 
 Bing 自訂搜尋 API 支援三十多個國家/地區，許多國家/地區具有一個以上的語言。
 
-雖然是選用項目，但要求應指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#mkt) 查詢參數，此參數可識別您希望結果來自哪個市場。 如需選用查詢參數的清單，請參閱[查詢參數](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters)
+雖然是選用項目，但要求應指定 [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) 查詢參數，此參數可識別您希望結果來自哪個市場。 如需選用查詢參數的清單，請參閱[查詢參數](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)
 
-您可以使用 `cc` 查詢參數指定國家/地區。 如果您指定國家/地區，您也必須使用 `Accept-Language` 標頭指定一或多個語言代碼。 支援的語言視國家/地區而異；[市場] 表格中提供針對每個國家/地區支援的語言。
+您可以使用 `cc` 查詢參數指定國家/地區。 如果您指定國家/地區，您也必須使用 `Accept-Language` 標頭指定一或多個語言代碼。 支援的語言因國家/地區而異;它們會提供給**市場**資料表中的每個國家/地區。
 
-`Accept-Language` 標頭和 `setLang` 查詢參數彼此互斥 — 請勿同時指定。 如需詳細資料，請參閱 [Accept-Language](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#acceptlanguage)。
+`Accept-Language` 標頭和 `setLang` 查詢參數彼此互斥 — 請勿同時指定。 如需詳細資料，請參閱 [Accept-Language](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage)。
 
 ## <a name="countriesregions"></a>國家/地區
 
-|國家/區域|代碼|
+|國家/地區|程式碼|
 |-------|----|
 |阿根廷|AR|
-|澳大利亞|AU|
+|澳洲|AU|
 |奧地利|AT|
 |比利時|BE|
 |巴西|BR|
@@ -66,50 +66,50 @@ Bing 自訂搜尋 API 支援三十多個國家/地區，許多國家/地區具�
 |台灣|TW|
 |土耳其|TR|
 |英國|GB|
-|美國|US|
+|美國|美國|
 
 
 ## <a name="markets"></a>市場
 
-|國家/區域|語言|市場代碼|
+|國家/地區|語言|市場代碼|
 |-------|--------|-----------|
 |阿根廷|西班牙文|es-AR|
-|澳大利亞|English|en-AU|
+|澳洲|英文|en-AU|
 |奧地利|德文|de-AT|
 |比利時|荷蘭文|nl-BE|
 |比利時|法文|fr-BE|
 |巴西|葡萄牙文|pt-BR|
-|加拿大|English|en-CA|
+|加拿大|英文|en-CA|
 |加拿大|法文|fr-CA|
 |智利|西班牙文|es-CL|
 |丹麥|丹麥文|da-DK|
 |芬蘭|芬蘭文|fi-FI|
 |法國|法文|fr-FR|
 |德國|德文|de-DE|
-|中國香港特別行政區|繁體中文|zh-HK|
-|印度|English|en-IN|
-|印尼|English|en-ID|
+|香港特別行政區|繁體中文|zh-HK|
+|印度|英文|en-IN|
+|印尼|英文|en-ID|
 |義大利|義大利文|it-IT|
 |日本|日文|ja-JP|
 |南韓|韓文|ko-KR|
-|馬來西亞|English|en-MY|
+|馬來西亞|英文|en-MY|
 |墨西哥|西班牙文|es-MX|
 |荷蘭|荷蘭文|nl-NL|
-|紐西蘭|English|en-NZ|
+|紐西蘭|英文|en-NZ|
 |挪威|挪威文|no-NO|
 |中國|中文|zh-CN|
 |波蘭|波蘭文|pl-PL|
 |葡萄牙|葡萄牙文|pt-PT|
-|菲律賓|English|en-PH|
+|菲律賓|英文|en-PH|
 |俄羅斯|俄文|ru-RU|
 |沙烏地阿拉伯|阿拉伯文|ar-SA|
-|南非|English|en-ZA|
+|南非|英文|en-ZA|
 |西班牙|西班牙文|es-ES|
 |瑞典|瑞典文|sv-SE|
 |瑞士|法文|fr-CH|
 |瑞士|德文|de-CH|
 |台灣|繁體中文|zh-TW|
 |土耳其|土耳其文|tr-TR|
-|英國|English|en-GB|
-|美國|English|en-US|
+|英國|英文|en-GB|
+|美國|英文|zh-TW|
 |美國|西班牙文|es-US|

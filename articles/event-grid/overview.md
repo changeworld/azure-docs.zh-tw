@@ -1,20 +1,14 @@
 ---
-title: 發佈和訂閱應用程式事件 - Azure 事件方格
+title: 什麼是 Azure 事件方格？
 description: 使用 Azure 事件方格，將事件資料從來源傳送至處理常式。 建置事件型應用程式，並與 Azure 服務整合。
-services: event-grid
-author: banisadr
-manager: timlt
-ms.service: event-grid
 ms.topic: overview
-ms.date: 04/04/2019
-ms.author: babanisa
-ms.custom: seodec18
-ms.openlocfilehash: 8ceb3d2d97c63bd19333336314beb6c7444288e9
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.date: 07/07/2020
+ms.openlocfilehash: 95deeddbd7ae3f5ee07bef0c4ac73559d208c352
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578402"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116126"
 ---
 # <a name="what-is-azure-event-grid"></a>什麼是 Azure 事件方格？
 
@@ -22,7 +16,7 @@ Azure Event Grid 可讓您以事件型架構輕鬆地建立應用程式。 首�
 
 您可以使用篩選器將特定事件路由傳送到不同的端點、多點傳送至多個端點，並確定您的事件會可靠地進行傳遞。
 
-目前，Azure 事件格線在所有公用區域中均適用。 它尚不適用於 Azure 德國、Azure China 21Vianet 或 Azure Government 雲端中。
+Azure 事件方格的部署方式是以原生方式分散到每個區域中中的多個容錯網域，以及分散到可用性區域 (在支援可用性區域的區域中)，藉此來最大化可用性。 如需事件方格支援的區域清單，請參閱[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all)。
 
 本文提供 Azure Event Grid 的概觀。 若要開始使用 Event Grid，請參閱[使用 Azure Event Grid 建立和路由傳送自訂事件](custom-event-quickstart.md)。 
 
@@ -32,31 +26,35 @@ Azure Event Grid 可讓您以事件型架構輕鬆地建立應用程式。 首�
 
 ## <a name="event-sources"></a>事件來源
 
-如需各個來源的功能以及相關文件的完整資料，請參閱[事件來源](event-sources.md)。 目前支援將事件傳送到事件格線的 Azure 服務如下：
+目前支援將事件傳送到事件格線的 Azure 服務如下：
 
-* [Azure 訂用帳戶 (管理作業)](event-sources.md#azure-subscriptions)
-* [容器登錄](event-sources.md#container-registry)
-* [自訂主題](event-sources.md#custom-topics)
-* [事件中樞](event-sources.md#event-hubs)
-* [IoT 中心](event-sources.md#iot-hub)
-* [媒體服務](event-sources.md#media-services)
-* [資源群組 (管理作業)](event-sources.md#resource-groups)
-* [服務匯流排](event-sources.md#service-bus)
-* [儲存體 Blob](event-sources.md#storage)
-* [Azure 地圖服務](event-sources.md#maps)
+- [Azure 應用程式組態](event-schema-app-configuration.md)
+- [Azure Blob 儲存體](event-schema-blob-storage.md)
+- [Azure Container Registry](event-schema-container-registry.md)
+- [Azure 事件中樞](event-schema-event-hubs.md)
+- [Azure IoT 中心](event-schema-iot-hub.md)
+- [Azure 金鑰保存庫](event-schema-key-vault.md)
+- [Azure Machine Learning](event-schema-machine-learning.md)
+- [Azure 地圖服務](event-schema-azure-maps.md)
+- [Azure 媒體服務](event-schema-media-services.md)
+- [Azure 資源群組](event-schema-resource-groups.md)
+- [Azure 服務匯流排](event-schema-service-bus.md)
+- [Azure SignalR](event-schema-azure-signalr.md)
+- [Azure 訂用帳戶](event-schema-subscriptions.md)
 
 ## <a name="event-handlers"></a>事件處理常式
 
 如需各個處理常式的功能以及相關文件的完整資料，請參閱[處理常式來源](event-handlers.md)。 目前支援處理來自事件格線之事件的 Azure 服務如下： 
 
-* [Azure 自動化](event-handlers.md#azure-automation)
-* [Azure Functions](event-handlers.md#azure-functions)
-* [事件中樞](event-handlers.md#event-hubs)
-* [混合式連線](event-handlers.md#hybrid-connections)
-* [Logic Apps](event-handlers.md#logic-apps)
-* [Microsoft Flow](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
-* [佇列儲存體](event-handlers.md#queue-storage)
-* [WebHook](event-handlers.md#webhooks)
+* [Azure 自動化](handler-webhooks.md#azure-automation)
+* [Azure Functions](handler-functions.md)
+* [事件中樞](handler-event-hubs.md)
+* [轉送混合式連線](handler-relay-hybrid-connections.md)
+* [Logic Apps](handler-webhooks.md#logic-apps)
+* [Power Automate (先前稱為 Microsoft Flow)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
+* [服務匯流排](handler-service-bus.md)
+* [佇列儲存體](handler-storage-queues.md)
+* [WebHook](handler-webhooks.md)
 
 ## <a name="concepts"></a>概念
 
@@ -81,7 +79,7 @@ Azure Event Grid 中有五個概念可讓您開始進行：
 * **依事件支付** - 只需就您使用的 Event Grid 數量來付費。
 * **高輸送量** - 在每秒支援數百萬個事件的 Event Grid 上建置大量的工作負載。
 * **內建事件** - 利用資源定義的內建事件來快速地啟動並執行。
-* **自訂事件** - 使用「事件方格」路由、篩選並在應用程式中可靠地傳遞自訂事件。
+* **自訂事件** - 使用事件方格來路由傳送、篩選並在應用程式中可靠地傳遞自訂事件。
 
 如需事件格線、事件中樞和服務匯流排的比較，請參閱[選擇傳遞訊息的 Azure 服務](compare-messaging-services.md)。
 
@@ -99,7 +97,7 @@ Event Grid 可連線資料來源與事件處理常式。 例如，使用事件�
 
 ![作業自動化](./media/overview/Ops_automation.png)
 
-Event Grid 可讓您加快自動化速度並簡化原則強制執行。 例如，使用事件方格在建立虛擬機器或 SQL Database 時通知 Azure 自動化。 使用事件自動檢查服務組態是否符合規範、將中繼資料放入作業工具、標記虛擬機器，或將工作項目歸檔。
+Event Grid 可讓您加快自動化速度並簡化原則強制執行。 例如，使用事件方格在建立虛擬機器或 Azure SQL 中的資料庫時通知 Azure 自動化。 使用事件自動檢查服務組態是否符合規範、將中繼資料放入作業工具、標記虛擬機器，或將工作項目歸檔。
 
 ### <a name="application-integration"></a>應用程式整合
 

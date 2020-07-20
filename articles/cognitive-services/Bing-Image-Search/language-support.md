@@ -7,21 +7,21 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 57a96648e480c89d1112f069676edb1abcc7cfc3
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: ca3821b6088e45730334d1b0971e270b1d86dfce
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64869857"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "68881911"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>Bing 影像搜尋 API 支援的語言和區域
 
 Bing 影像搜尋 API 支援三十多個國家/地區，許多國家/地區具有一個以上的語言。 使用查詢指定國家/地區，主要是為了根據該國家/地區的興趣，縮小搜尋結果範圍。 此外，結果可能包含 Bing 的連結，而且這些連結可能會根據指定的國家/地區或語言，將 Bing 的使用者體驗當地語系化。
 
-若要指定國家/地區和語言，請將 `mkt` (market) 查詢參數設定為下面「市場」表格中的代碼。 市場可指定國家/地區和語言。 如果使用者較希望以不同語言查看顯示文字，請將 `setLang` 查詢參數設為合適的語言代碼。
+若要指定國家/地區和語言，請將 `mkt` (market) 查詢參數設定為下面「市場」**** 表格中的代碼。 市場可指定國家/地區和語言。 如果使用者較希望以不同語言查看顯示文字，請將 `setLang` 查詢參數設為合適的語言代碼。
 
 或者，您可以使用 `cc` 查詢參數指定國家/地區。 如果您指定國家/地區，您也必須使用 `Accept-Language` HTTP 標頭指定一或多個語言代碼。 支援的語言視國家/地區而異；「市場」表格中提供針對每個國家/地區支援的語言。
 
@@ -34,14 +34,14 @@ Bing 影像搜尋 API 支援三十多個國家/地區，許多國家/地區具�
 
 ## <a name="countriesregions"></a>國家/地區
 
-|國家/區域|代碼|
+|國家/地區|程式碼|
 |-------|----|
 |阿根廷|AR|
 |澳大利亞|AU|
 |奧地利|AT|
 |比利時|BE|
 |巴西|BR|
-|加拿大|CA|
+|Canada|CA|
 |智利|CL|
 |丹麥|DK|
 |芬蘭|FI|
@@ -49,7 +49,7 @@ Bing 影像搜尋 API 支援三十多個國家/地區，許多國家/地區具�
 |德國|DE|
 |香港特別行政區|HK|
 |印度|IN|
-|印尼|ID|
+|印尼|識別碼|
 |義大利|IT|
 |日本|JP|
 |南韓|KR|
@@ -70,53 +70,53 @@ Bing 影像搜尋 API 支援三十多個國家/地區，許多國家/地區具�
 |瑞士|CH|
 |台灣|TW|
 |土耳其|TR|
-|英國|GB|
+|United Kingdom|GB|
 |美國|US|
 
 
 ## <a name="markets"></a>市場
 
-|國家/區域|語言|市場代碼|
+|國家/地區|Language|市場代碼|
 |-------|--------|-----------|
 |阿根廷|西班牙文|es-AR|
-|澳大利亞|English|en-AU|
+|澳大利亞|英文|en-AU|
 |奧地利|德文|de-AT|
 |比利時|荷蘭文|nl-BE|
 |比利時|法文|fr-BE|
 |巴西|葡萄牙文|pt-BR|
-|加拿大|English|en-CA|
-|加拿大|法文|fr-CA|
+|Canada|英文|en-CA|
+|Canada|法文|fr-CA|
 |智利|西班牙文|es-CL|
 |丹麥|丹麥文|da-DK|
 |芬蘭|芬蘭文|fi-FI|
 |法國|法文|fr-FR|
 |德國|德文|de-DE|
 |香港特別行政區|繁體中文|zh-HK|
-|印度|English|en-IN|
-|印尼|English|en-ID|
+|印度|英文|en-IN|
+|印尼|英文|en-ID|
 |義大利|義大利文|it-IT|
 |日本|日文|ja-JP|
 |南韓|韓文|ko-KR|
-|馬來西亞|English|en-MY|
+|馬來西亞|英文|en-MY|
 |墨西哥|西班牙文|es-MX|
 |荷蘭|荷蘭文|nl-NL|
-|紐西蘭|English|en-NZ|
+|紐西蘭|英文|en-NZ|
 |中國|中文|zh-CN|
 |波蘭|波蘭文|pl-PL|
 |葡萄牙|葡萄牙文|pt-PT|
-|菲律賓|English|en-PH|
+|菲律賓|英文|en-PH|
 |俄羅斯|俄文|ru-RU|
 |沙烏地阿拉伯|阿拉伯文|ar-SA|
-|南非|English|en-ZA|
+|南非|英文|en-ZA|
 |西班牙|西班牙文|es-ES|
 |瑞典|瑞典文|sv-SE|
 |瑞士|法文|fr-CH|
 |瑞士|德文|de-CH|
 |台灣|繁體中文|zh-TW|
 |土耳其|土耳其文|tr-TR|
-|英國|English|en-GB|
-|美國|English|en-US|
+|United Kingdom|英文|en-GB|
+|美國|英文|zh-TW|
 |美國|西班牙文|es-US|
 
 ## <a name="next-steps"></a>後續步驟
-如需更多 Bing 新聞搜尋端點的相關資訊，請參閱[新聞影像搜尋 API v7 參考](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)。
+如需更多 Bing 新聞搜尋端點的相關資訊，請參閱[新聞影像搜尋 API v7 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)。

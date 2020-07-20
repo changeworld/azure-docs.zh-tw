@@ -5,29 +5,28 @@ author: ash2017
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/29/2018
+ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 69c890cfc3db04fe625ed7ad008f545c01844834
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 92fc5bb88ff5efd8fe1a8cd61be833b3984b673a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61441509"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73605608"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>使用 Azure Data Lake Analytics 查詢 Avro 資料
 
-本文討論如何查詢 Avro 資料，以有效率地將訊息從 Azure IoT 中樞路由至 Azure 服務。 [訊息路由](iot-hub-devguide-messages-d2c.md)可讓您使用豐富的查詢，根據訊息屬性、訊息本文、裝置對應項標記與裝置對應項屬性來篩選資料。 若要深入了解訊息路由中的查詢功能，請參閱有關訊息路由查詢語法的文章。 
-<!--[Message Routing Query Syntax](iot-hub-devguide-routing-query-syntax.md). I don't have this article yet. -->
+本文討論如何查詢 Avro 資料，以有效率地將訊息從 Azure IoT 中樞路由至 Azure 服務。 [訊息路由](iot-hub-devguide-messages-d2c.md)可讓您使用豐富的查詢，根據訊息屬性、訊息本文、裝置對應項標記與裝置對應項屬性來篩選資料。 若要深入瞭解訊息路由中的查詢功能，請參閱關於[訊息路由查詢語法](iot-hub-devguide-routing-query-syntax.md)的文章。
 
-過往的挑戰是，當 Azure IoT 中樞將訊息路由至 Azure Blob 儲存體時，IoT 中樞會以 Avro 格式寫入內容，而其中同時包含訊息本文屬性和訊息屬性。 IoT 中樞僅支援以 Avro 資料格式將資料寫入至 Blob 儲存體，而此格式不會用於任何其他端點。 如需詳細資訊，請參閱有關使用 Azure 儲存體容器的文章。 雖然 Avro 格式很適合用來保存資料和訊息，但難以用來查詢資料。 相較之下，JSON 或 CSV 格式則非常適合用來查詢資料。
+挑戰是當 Azure IoT 中樞將訊息路由至 Azure Blob 儲存體時，根據預設，IoT 中樞會以 Avro 格式寫入內容，其中同時具有訊息內文屬性和訊息屬性。 Avro 格式不會用於任何其他端點。 雖然 Avro 格式很適合用來保存資料和訊息，但難以用來查詢資料。 相較之下，JSON 或 CSV 格式則非常適合用來查詢資料。 IoT 中樞現在支援以 JSON 和 AVRO 將資料寫入至 Blob 儲存體。
 
-<!-- https://review.docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c?branch=pr-en-us-51566#azure-blob-storage  NEW LINK FOR 'WHEN USING STORAGE CONTAINERS' -->
+如需詳細資訊，請參閱[使用 Azure 儲存體做為路由端點](iot-hub-devguide-messages-d2c.md#azure-storage)。
 
-若要因應非關聯式巨量資料的需求和格式並克服這項挑戰，您可以使用多種巨量資料模式來轉換和調整資料。 Azure Data Lake Analytics 即為其中一種模式，屬於「依查詢量付費」模式，這是此文章的焦點。 雖然您可以在 Hadoop 或其他解決方案中輕鬆地執行查詢，但對於這種「依查詢量付費」的方法，使用 Data Lake Analytics 通常會適合得多。 
+若要因應非關聯式巨量資料的需求和格式並克服這項挑戰，您可以使用多種巨量資料模式來轉換和調整資料。 Azure Data Lake Analytics 即為其中一種模式，屬於「依查詢量付費」模式，這是此文章的焦點。 雖然您可以在 Hadoop 或其他解決方案中輕鬆地執行查詢，但對於這種「依查詢量付費」的方法，使用 Data Lake Analytics 通常會適合得多。
 
 U-SQL 中的 Avro 有一個「擷取程式」。 如需詳細資訊，請參閱 [U-SQL Avro 範例](https://github.com/Azure/usql/tree/master/Examples/AvroExamples)。
 
 ## <a name="query-and-export-avro-data-to-a-csv-file"></a>查詢 Avro 資料並將其匯出至 CSV 檔案
+
 在本節中，您會查詢 Avro 資料，並將其匯出至 Azure Blob 儲存體中的 CSV 檔案，但您也可以輕鬆地將資料放置在其他存放庫或資料存放區。
 
 1. 設定 Azure IoT 中樞，使其使用訊息本文中的屬性選取訊息，將資料路由至 Azure Blob 儲存體端點。
@@ -49,21 +48,21 @@ U-SQL 中的 Avro 有一個「擷取程式」。 如需詳細資訊，請參閱 
 4. 在 Data Lake Analytics 中，將 Azure Blob 儲存體設定為另一個存放區，即 Azure IoT 中樞將資料路由到的相同 Blob 儲存體。
 
    ![[資料來源] 窗格](./media/iot-hub-query-avro-data/query-avro-data-4.png)
- 
+
 5. 如 [U-SQL Avro 範例](https://github.com/Azure/usql/tree/master/Examples/AvroExamples)所討論，您需要四個 DLL 檔案。 請將這些檔案上傳至 Data Lake Store 執行個體中的位置。
 
    ![四個已上傳的 DLL 檔案](./media/iot-hub-query-avro-data/query-avro-data-5.png)
 
 6. 在 Visual Studio 中，建立 U-SQL 專案。
- 
+
    !建立 U-SQL 專案](./media/iot-hub-query-avro-data/query-avro-data-6.png)
 
 7. 將下列指令碼的內容貼到新建立的檔案中。 修改醒目提示的三個部分：Data Lake Analytics 帳戶、相關 DLL 檔案路徑，和儲存體帳戶的正確路徑。
-    
+
    ![要修改的三個部分](./media/iot-hub-query-avro-data/query-avro-data-7a.png)
 
    簡易輸出至 CSV 檔案的實際 U-SQL 指令碼：
-    
+
     ```sql
         DROP ASSEMBLY IF EXISTS [Avro];
         CREATE ASSEMBLY [Avro] FROM @"/Assemblies/Avro/Avro.dll";
@@ -127,21 +126,21 @@ U-SQL 中的 Avro 有一個「擷取程式」。 如需詳細資訊，請參閱 
         FROM @rs;
 
         OUTPUT @cnt TO @output_file USING Outputters.Text(); 
-    ```    
+    ```
 
     Data Lake Analytics 花了五分鐘的時間執行下列指令碼，此指令碼限制在 10 個分析單位，並已處理 177 個檔案。 下圖所示的 CSV 檔案輸出中會顯示結果：
-    
+
     ![輸出至 CSV 檔案的結果](./media/iot-hub-query-avro-data/query-avro-data-7b.png)
 
     ![輸出轉換為 CSV 檔案](./media/iot-hub-query-avro-data/query-avro-data-7c.png)
 
     若要剖析 JSON，請接著執行步驟 8。
-    
+
 8. 大部分的 IoT 訊息皆為 JSON 檔案格式。 藉由新增以下幾行，即可將訊息剖析至 JSON 檔案，以供新增 WHERE 子句，並只輸出所需的資料。
 
     ```sql
-       @jsonify = 
-         SELECT Microsoft.Analytics.Samples.Formats.Json.JsonFunctions.JsonTuple(Encoding.UTF8.GetString(Body)) 
+       @jsonify =
+         SELECT Microsoft.Analytics.Samples.Formats.Json.JsonFunctions.JsonTuple(Encoding.UTF8.GetString(Body))
            AS message FROM @rs;
     
         /*
@@ -163,8 +162,8 @@ U-SQL 中的 Avro 有一個「擷取程式」。 如需詳細資訊，請參閱 
         OUTPUT @cnt TO @output_file USING Outputters.Text();
     ```
 
-    輸出會為 `SELECT` 命令中的每個項目顯示一個資料行。 
-    
+    輸出會為 `SELECT` 命令中的每個項目顯示一個資料行。
+
     ![為每個項目顯示一個資料行的輸出](./media/iot-hub-query-avro-data/query-avro-data-8.png)
 
 ## <a name="next-steps"></a>後續步驟

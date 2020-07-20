@@ -1,26 +1,25 @@
 ---
-title: 在 Azure 中的 Linux VM 上執行自訂指令碼 | Microsoft Docs
+title: 在 Azure 中的 Linux Vm 上執行自訂腳本
 description: 使用自訂指令碼擴充功能 v1，將 Linux VM 設定工作自動化
 services: virtual-machines-linux
 documentationcenter: ''
 author: danielsollondon
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: fe3803b7dc75ab13831a5e42d4b1a96f5aa894e5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1ca20f2c8cda84c241391f67ac542faa4a1f5ecd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60800297"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82594707"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>搭配 Linux 虛擬機器使用 Azure 自訂指令碼擴充功能第 1 版
 
@@ -59,7 +58,7 @@ Linux 自訂指令碼擴充功能有兩個：
 
 ### <a name="internet-connectivity"></a>網際網路連線
 
-如果您需要在外部下載指令碼 (例如 GitHub 或 Azure 儲存體)，則必須開放額外的防火牆/網路安全性群組連接埠。 例如，如果您的指令碼位於 Azure 儲存體，則可以允許使用[儲存體](../../virtual-network/security-overview.md#service-tags)適用的 Azure NSG 服務標記進行存取。
+如果您需要在外部下載指令碼 (例如 GitHub 或 Azure 儲存體)，則必須開放額外的防火牆/網路安全性群組連接埠。 例如，如果您的腳本位於 Azure 儲存體中，您可以使用 Azure NSG 服務標記來允許存取[儲存體](../../virtual-network/security-overview.md#service-tags)。
 
 如果您的指令碼是在本機伺服器上，則仍然可能需要開放額外的防火牆/網路安全性群組連接埠。
 
@@ -70,11 +69,11 @@ Linux 自訂指令碼擴充功能有兩個：
 * 請確定在指令碼執行時，不需要使用者輸入。
 * 指令碼可執行的時間為 90 分鐘。若超過這個時間，將會導致擴充功能佈建失敗。
 * 請不要在指令碼內放置重新開機指令，這會造成正在安裝的其他擴充功能發生問題。也不要放置後續重新開機指令，因為擴充功能在重新啟動後不會繼續執行。 
-* 如果您的指令碼將會造成重新開機，則請安裝應用程式，然後執行指令碼等等。您應該使用 Cron 作業，或使用 DSC、Chef 或 Puppet 擴充功能之類的工具，以排程重新開機。
+* 如果您的腳本將會造成重新開機，則請安裝應用程式並執行腳本等。您應該使用 Cron 作業，或使用 DSC、Chef、Puppet 擴充功能之類的工具來排程重新開機。
 * 擴充功能只會執行指令碼一次。如果您想要在每次開機時執行指令碼，則可以使用 [cloud-init image](../linux/using-cloud-init.md)，並使用 [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) 模組。 或者，您可以使用指令碼來建立 Systemd 服務單位。
 * 如果您想要排程指令碼的執行時間，則應該使用擴充功能來建立 Cron 作業。
 * 當指令碼正在執行時，只能從 Azure 入口網站或 CLI 看到「正在轉換」擴充功能狀態。 如果您需要執行中指令碼更頻繁的狀態更新，便必須建立自己的解決方案。
-* 自訂指令碼擴充功能未原生支援 Proxy 伺服器，但是您可以在指令碼中使用支援 Proxy 伺服器的檔案傳輸工具，例如 *Curl*。
+* 自訂腳本擴充功能原本就不支援 proxy 伺服器，不過您可以使用檔案傳輸工具，在您的腳本中支援 proxy 伺服器，例如*捲曲*。
 * 請留意指令碼或命令所依賴的非預設目錄位置是否具備處理此情形的邏輯。
 
 ## <a name="extension-schema"></a>擴充功能結構描述
@@ -117,19 +116,19 @@ Linux 自訂指令碼擴充功能有兩個：
 }
 ```
 
-### <a name="property-values"></a>属性值
+### <a name="property-values"></a>屬性值
 
 | 名稱 | 值 / 範例 | 資料類型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.OSTCExtensions | string |
-| type | CustomScriptForLinux | string |
+| publisher | Microsoft.OSTCExtensions | 字串 |
+| type | CustomScriptForLinux | 字串 |
 | typeHandlerVersion | 1.5 | int |
-| fileUris (例如) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
-| commandToExecute (例如) | python MyPythonScript.py \<my-param1\> | string |
+| fileUris (例如) | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
+| commandToExecute (例如) | python MyPythonScript.py\<my-param1\> | 字串 |
 | enableInternalDNSCheck | true | boolean |
-| storageAccountName (例如) | examplestorageacct | string |
-| storageAccountKey (例如) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| storageAccountName (例如) | examplestorageacct | 字串 |
+| storageAccountKey (例如) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | 字串 |
 
 ### <a name="property-value-details"></a>屬性值詳細資料
 
@@ -149,7 +148,7 @@ Linux 自訂指令碼擴充功能有兩個：
 
 ## <a name="template-deployment"></a>範本部署
 
-可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 上一節詳述的 JSON 結構描述可以用於 Azure Resource Manager 範本，以在 Azure Resource Manager 範本部署期間執行自訂指令碼擴充功能。
+也可以使用 Azure Resource Manager 範本部署 Azure VM 擴充功能。 上一節詳述的 JSON 結構描述可以用於 Azure Resource Manager 範本，以在 Azure Resource Manager 範本部署期間執行自訂指令碼擴充功能。
 
 ```json
 {
@@ -275,7 +274,7 @@ az vm extension set
 
 您應該尋找如下所示的擴充功能執行：
 
-```text
+```output
 2018/04/26 15:29:44.835067 INFO [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Target handler state: enabled
 2018/04/26 15:29:44.867625 INFO [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] [Enable] current handler state is: notinstalled
 2018/04/26 15:29:44.959605 INFO Event: name=Microsoft.OSTCExtensions.CustomScriptForLinux, op=Download, message=Download succeeded, duration=59
@@ -296,7 +295,7 @@ az vm extension set
 
 1. 命令開始執行時啟用。
 1. 下載與從 Azure 下載 CustomScript 擴充功能套件有關，與在 fileUris 中指定的指令碼檔案無關。
-1. 您也可以看到它寫出哪個記錄檔 `/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
+1. 您也可以查看其寫出的記錄檔`/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
 
 下一步是要檢查記錄檔，以下是格式：
 
@@ -304,9 +303,9 @@ az vm extension set
 /var/log/azure/<extension-name>/<version>/extension.log file.
 ```
 
-应该查找如下所示的个别执行：
+您應該尋找個別執行，它看起來會像這樣：
 
-```text
+```output
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Enable,transitioning,0,Launching the script...
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] sequence number is 0
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] setting file path is/var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2/config/0.settings
@@ -348,7 +347,7 @@ az vm extension list -g myResourceGroup --vm-name myVM
 
 輸出看起來會像下列文字：
 
-```azurecli
+```output
 Name                  ProvisioningState    Publisher                   Version  AutoUpgradeMinorVersion
 --------------------  -------------------  ------------------------  ---------  -------------------------
 CustomScriptForLinux  Succeeded            Microsoft.OSTCExtensions        1.5  True

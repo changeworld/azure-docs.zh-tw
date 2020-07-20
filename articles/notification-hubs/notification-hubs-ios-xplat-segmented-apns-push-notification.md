@@ -1,31 +1,31 @@
 ---
-title: 使用 Azure 通知中樞將通知推送至特定 iOS 裝置| Microsoft Docs
+title: 使用 Azure 通知中樞將推播通知傳送至特定的 iOS 裝置 |Microsoft Docs
 description: 在本教學課程中，您將了解如何使用 Azure 通知中樞將推播通知傳送至特定的 iOS 裝置。
 services: notification-hubs
 documentationcenter: ios
-author: jwargo
-manager: patniko
-editor: spelluru
-ms.assetid: 6ead4169-deff-4947-858c-8c6cf03cc3b2
+author: sethmanheim
+manager: femila
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: dd625dba0e125ccf993af524a0ab0c0cc66555fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 11/07/2019
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 11/07/2019
+ms.openlocfilehash: 643ef90f4d1fca3dd97a248dae304f98ff1c3ec0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60873127"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254373"
 ---
-# <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將通知推播至特定 iOS 裝置
+# <a name="tutorial-send-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將推播通知傳送至特定 iOS 裝置
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本教學課程說明如何使用 Azure 通知中樞將即時新聞通知廣播至 iOS 應用程式。 完成時，您將能夠註冊自己所感興趣的即時新聞類別，並僅接收那些類別的推播通知。 此情況為適用於許多應用程式的常見模式，其中必須將通知傳送給先前宣告對該通知感興趣的使用者群組，例如 RSS 閱讀程式、供樂迷使用的應用程式等等。
 
@@ -41,7 +41,7 @@ ms.locfileid: "60873127"
 
 ## <a name="prerequisites"></a>必要條件
 
-本主題以您在以下教學課程中建立的應用程式為基礎：[教學課程：使用 Azure 通知中樞將通知推播至 iOS 應用程式][get-started]。 開始本教學課程之前，您必須已完成[教學課程：使用 Azure 通知中樞將通知推播至 iOS 應用程式][get-started]。
+這個主題會以您在[教學課程：使用 Azure 通知中樞將通知推播至 iOS 應用程式][get-started]中所建立的應用程式為基礎。 在開始進行本教學課程之前，您必須先完成[教學課程：使用 Azure 通知中樞將通知推播至 iOS 應用程式][get-started]。
 
 ## <a name="add-category-selection-to-the-app"></a>在應用程式中新增類別選項
 
@@ -51,7 +51,7 @@ ms.locfileid: "60873127"
 
    * 具有「即時新聞」文字的標籤，
    * 具有「世界」、「政治」、「商業」、「技術」、「科學」、「體育」等類別文字的標籤，
-   * 六個參數 (一個類別一個)，預設會將每個參數 [狀態] 設為 [關閉]。
+   * 六個參數 (一個類別一個)，預設會將每個參數 [狀態]**** 設為 [關閉]****。
    * 一個標示為「訂閱」的按鈕
 
      您的腳本應如下所示：
@@ -59,6 +59,7 @@ ms.locfileid: "60873127"
      ![Xcode 介面產生器][3]
 
 2. 在輔助編輯器中，建立所有參數的出口，並將其命名為 "WorldSwitch"、"PoliticsSwitch"、"BusinessSwitch"、"TechnologySwitch"、"ScienceSwitch"、"SportsSwitch"
+
 3. 為按鈕建立名為 `subscribe` 的動作；您的 `ViewController.h` 應包含下列程式碼：
 
     ```objc
@@ -153,10 +154,10 @@ ms.locfileid: "60873127"
     > [!NOTE]
     > 因為隨用戶端應用程式散佈的憑證通常不安全，您應只將接聽存取權的金鑰隨用戶端應用程式散佈。 您的應用程式可透過接聽存取權來註冊通知，但無法修改現有的註冊或無法傳送通知。 在安全的後端服務中，會使用完整存取金鑰來傳送通知和變更現有的註冊。
 
-9. 在 `AppDelegate.m` 的 `didRegisterForRemoteNotificationsWithDeviceToken` 方法中，使用下列程式碼來取代方法中的程式碼，以將裝置權杖傳遞給 `notifications` 類別。 `notifications` 類別會為通知執行與類別之間的註冊。 如果使用者變更類別選取項目，則可以呼叫 `subscribeWithCategories` 方法以回應 [subscribe] \(訂閱\) 按鈕來更新它們。
+9. 在 `AppDelegate.m` 的 `didRegisterForRemoteNotificationsWithDeviceToken` 方法中，使用下列程式碼來取代方法中的程式碼，以將裝置權杖傳遞給 `notifications` 類別。 `notifications` 類別會為通知執行與類別之間的註冊。 如果使用者變更類別選取項目，則可以呼叫 `subscribeWithCategories` 方法以回應 [subscribe]**** \(訂閱\) 按鈕來更新它們。
 
     > [!NOTE]
-    > 由於 Apple 推播通知服務 (APNS) 所指派的裝置權杖可能隨時會變更，因此您應經常註冊通知以避免通知失敗。 此範例會在應用程式每次啟動時註冊通知。 若是經常執行 (一天多次) 的應用程式，如果距離上次註冊的時間不到一天，則您可能可以略過註冊以保留頻寬。
+    > 因為 Apple Push Notification Service （APNS）所指派的裝置權杖可以隨時變更，您應經常註冊通知以避免通知失敗。 此範例會在應用程式每次啟動時註冊通知。 若是經常執行 (一天多次) 的應用程式，如果距離上次註冊的時間不到一天，則您可能可以略過註冊以保留頻寬。
 
     ```objc
     self.notifications.deviceToken = deviceToken;
@@ -177,7 +178,7 @@ ms.locfileid: "60873127"
 10. 完成[開始使用通知中樞][get-started]教學課程時，下列方法應該已出現在 `AppDelegate.m` 中。 否則，請予以新增。
 
     ```objc
-    -(void)MessageBox:(NSString *)title message:(NSString *)messageText
+    - (void)MessageBox:(NSString *)title message:(NSString *)messageText
     {
 
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:messageText delegate:self
@@ -185,7 +186,7 @@ ms.locfileid: "60873127"
         [alert show];
     }
 
-    * (void)application:(UIApplication *)application didReceiveRemoteNotification:
+    - (void)application:(UIApplication *)application didReceiveRemoteNotification:
        (NSDictionary *)userInfo {
        NSLog(@"%@", userInfo);
        [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
@@ -212,7 +213,9 @@ ms.locfileid: "60873127"
 
     [notifications storeCategoriesAndSubscribeWithCategories:categories completion: ^(NSError* error) {
         if (!error) {
-            [(AppDelegate*)[[UIApplication sharedApplication]delegate] MessageBox:@"Notification" message:@"Subscribed!"];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:"Notification" message:"Subscribed" delegate:self
+            cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
         } else {
             NSLog(@"Error subscribing: %@", error);
         }
@@ -242,7 +245,7 @@ ms.locfileid: "60873127"
 
 ## <a name="optional-send-tagged-notifications"></a>(選擇性) 傳送加註標記的通知
 
-如果您無法存取 Visual Studio，可以跳到下一節，並從應用程式本身傳送通知。 您也可以使用通知中樞的 [偵錯] 索引標籤，從 [Azure 门户] 傳送正確的範本通知。
+如果您無法存取 Visual Studio，可以跳到下一節，並從應用程式本身傳送通知。 您也可以使用通知中樞的 [偵錯] 索引標籤，從 [Azure 入口網站] 傳送正確的範本通知。
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
@@ -334,13 +337,13 @@ ms.locfileid: "60873127"
 
 ## <a name="run-the-app-and-generate-notifications"></a>執行應用程式並產生通知
 
-1. 按“运行”按钮生成项目并启动应用程序。 選取要訂閱的一些即時新聞選項，然後按 [訂閱]  按鈕。 您應該會看到一個對話方塊，表示已訂閱通知。
+1. 按 [執行] 按鈕，以建置專案並啟動應用程式。 選取要訂閱的一些即時新聞選項，然後按 [訂閱] **** 按鈕。 您應該會看到一個對話方塊，表示已訂閱通知。
 
     ![iOS 上的範例通知][1]
 
-    當您選擇 [訂閱] 時，應用程式會將選取的類別轉換成標籤，並在通知中心內為選取的標籤要求新裝置註冊。
+    當您選擇 [訂閱] **** 時，應用程式會將選取的類別轉換成標籤，並在通知中心內為選取的標籤要求新裝置註冊。
 
-2. 輸入要以即時新聞形式傳送的訊息，然後按下 [傳送通知]  按鈕。 或者，執行.NET 主控台應用程式來產生通知。
+2. 輸入要以即時新聞形式傳送的訊息，然後按下 [傳送通知] **** 按鈕。 或者，執行.NET 主控台應用程式來產生通知。
 
     ![在 iOS 中變更通知喜好設定][2]
 
@@ -365,5 +368,5 @@ ms.locfileid: "60873127"
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-ios-notify-users.md
 [Notification Hubs Guidance]: https://msdn.microsoft.com/library/dn530749.aspx
 [Notification Hubs How-To for iOS]: https://msdn.microsoft.com/library/jj927168.aspx
-[get-started]: notification-hubs-ios-apple-push-notification-apns-get-started.md
-[Azure 门户]: https://portal.azure.com
+[get-started]: ios-sdk-get-started.md
+[Azure 入口網站]: https://portal.azure.com

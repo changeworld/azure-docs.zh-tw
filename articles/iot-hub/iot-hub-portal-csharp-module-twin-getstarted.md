@@ -1,5 +1,5 @@
 ---
-title: 開始使用 Azure IoT 中樞模組身分識別和模組對應項 (入口網站和 .NET) | Microsoft Docs
+title: Azure IoT 中樞模組識別 & 模組對應項（入口網站和 .NET）
 description: 了解如何使用入口網站和 .NET，建立模組身分識別及更新模組對應項。
 author: robinsh
 manager: philmea
@@ -8,163 +8,185 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 04/26/2018
-ms.openlocfilehash: 75b86ea028a500b6b358c468a1d10a830db01b6a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 08/20/2019
+ms.custom: amqp
+ms.openlocfilehash: a3258de2ed7269ab50e6feca3c421d55de5a9d91
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60354865"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81759775"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>透過入口網站和 .NET 裝置開始使用 IoT 中樞模組身分識別和模組對應項
 
+[!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
+
 > [!NOTE]
-> [模組身分識別與模組對應項](iot-hub-devguide-module-twins.md)類似於 Azure IoT 中樞裝置身分識別與裝置對應項，但提供更精細的細微性。 雖然 Azure IoT 中樞裝置身分識別與裝置對應項可讓後端應用程式設定裝置並提供裝置狀況的可見性，但模組身分識別和模組對應項可提供裝置個別元件的上述功能。 在具備多個元件的可用裝置 (例如以作業系統為基礎的裝置或韌體裝置) 上，它允許每個元件有獨立的組態和狀況。
+> [模組身分識別與模組對應項](iot-hub-devguide-module-twins.md)類似於 Azure IoT 中樞裝置身分識別與裝置對應項，但提供更精細的細微性。 雖然 Azure IoT 中樞裝置身分識別和裝置對應項可讓後端應用程式設定裝置，並提供裝置狀況的可見度，但模組身分識別和模組對應項會為裝置的個別元件提供這些功能。 在具有多個元件的可用裝置（例如以作業系統為基礎的裝置或固件裝置）上，模組身分識別和模組 twins 允許每個元件的隔離設定和條件。
 >
 
 在本教學課程中，您將了解：
 
-1. 如何在入口網站中建立模組身分識別。
+* 如何在入口網站中建立模組身分識別。
 
-2. 如何使用.NET 裝置 SDK 更新模組對應項，從您的裝置。
+* 如何使用 .NET 裝置 SDK，從您的裝置更新模組對應項。
 
 > [!NOTE]
-> 如需可用來建置兩個應用程式，以在裝置上與解決方案後端執行的 Azure IoT SDK 詳細資訊，請參閱 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
+> 如需您可以用來建立兩個應用程式以在裝置和您的解決方案後端執行的 Azure IoT Sdk 的相關資訊，請參閱[Azure Iot sdk](iot-hub-devguide-sdks.md)。
 >
 
-若要完成此教學課程，您需要下列項目：
+## <a name="prerequisites"></a>必要條件
 
-* Visual Studio 2015 或 Visual Studio 2017。
-* 使用中的 Azure 帳戶。 (如果您沒有帳戶，只需要幾分鐘的時間就可以建立[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。)
+* Visual Studio。
 
-## <a name="create-an-iot-hub"></a>建立 IoT 中樞
+* 使用中的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立 [免費帳戶](https://azure.microsoft.com/pricing/free-trial/) 。
+
+## <a name="create-a-hub"></a>建立中樞
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>擷取 IoT 中樞的連接字串
-
-[!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
-
-## <a name="register-a-new-device-in-the-iot-hub"></a>在 IoT 中樞註冊新的裝置
+## <a name="register-a-new-device-in-the-hub"></a>在中樞註冊新裝置
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="create-a-module-identity-in-the-portal"></a>在入口網站中建立模組身分識別
 
-在一個裝置身分識別內，您可以建立最多 20 個模組身分識別。 按一下上方的 [新增模組身分識別] 按鈕，建立名稱為 **myFirstModule** 的第一個模組身分識別。
+在一個裝置身分識別內，您可以建立最多 20 個模組身分識別。 若要新增身分識別，請遵循下列步驟：
 
-  ![裝置詳細資料](./media/iot-hub-portal-csharp-module-twin-getstarted/create-module-id.png)
+1. 針對您在上一節中建立的裝置，選擇 [**新增模組身分識別**] 來建立您的第一個模組身分識別。
 
-儲存並按一下剛建立的模組身分識別。 您可以看到模組身分識別詳細資料。 儲存連接字串 - 主索引鍵。 在下一節中，它會使用於在裝置上設定您的模組。
+1. 輸入名稱*myFirstModule*。 儲存您的模組身分識別。
 
-  ![裝置詳細資料](./media/iot-hub-portal-csharp-module-twin-getstarted/module-details.png)
+    ![新增模組身分識別](./media/iot-hub-portal-csharp-module-twin-getstarted/add-module-identity.png)
+
+    您的新模組身分識別會出現在畫面底部。 選取它以查看模組身分識別詳細資料。
+
+    ![請參閱模組身分識別詳細資料](./media/iot-hub-portal-csharp-module-twin-getstarted/module-identity-details.png)
+
+儲存 [**連接字串-主要金鑰]**。 您會在下一節中使用它來設定裝置上的模組。
 
 ## <a name="update-the-module-twin-using-net-device-sdk"></a>使用 .NET 裝置 SDK 更新模組對應項
 
 您已成功在 IoT 中樞中建立模組識別身分。 讓我們嘗試從您的模擬裝置與雲端通訊。 一旦建立模組身分識別，模組對應項會隱含地建立於 IoT 中樞中。 在這一節中，您會在模擬裝置上建立 .NET 主控台應用程式，以便更新模組對應項報告的屬性。
 
-## <a name="create-a-visual-studio-project"></a>建立 Visual Studio 專案
+### <a name="create-a-visual-studio-project"></a>建立 Visual Studio 專案
 
-在 Visual Studio 中，使用 [主控台應用程式 (.NET Framework)] 專案範本，將 Visual C# Windows 傳統桌面專案新增至現有的解決方案。 確定 .NET Framework 為 4.6.1 或更新版本。 將專案命名為 **UpdateModuleTwinReportedProperties**。
+若要建立可更新模組對應項報告屬性的應用程式，請遵循下列步驟：
 
-  ![建立 Visual Studio 專案](./media/iot-hub-csharp-csharp-module-twin-getstarted/update-twins-csharp1.png)
+1. 在 Visual Studio 中，選取 [**建立新專案**]，然後選擇 [**主控台應用程式（.NET Framework）**]，然後選取 **[下一步]**。
 
-## <a name="install-the-latest-azure-iot-hub-net-device-sdk"></a>安裝最新的 Azure IoT Hub .NET 裝置 SDK
+1. 在 [**設定您的新專案**] 中，輸入*UpdateModuleTwinReportedProperties*做為**專案名稱**。 選取 [建立]  繼續作業。
 
-模組身分識別與模組對應項都處於公開預覽階段。 您僅供以 IoT 中樞裝置的發行前版本 Sdk。 在 Visual Studio 中，開啟[工具] > [Nuget 套件管理員] > [管理解決方案的 Nuget 套件]。 搜尋 Microsoft.Azure.Devices.Client。 請確定已核取 [包含發行前版本] 核取方塊。 選取最新版本並安裝。 您現在可以存取所有的模組功能。
+    ![設定您是 visual studio 專案](./media/iot-hub-portal-csharp-module-twin-getstarted/configure-twins-project.png)
 
-  ![安裝 Azure IoT Hub .NET 服務 SDK V1.16.0-preview-005](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png)
+### <a name="install-the-latest-azure-iot-hub-net-device-sdk"></a>安裝最新的 Azure IoT Hub .NET 裝置 SDK
 
-## <a name="get-your-module-connection-string"></a>取得模組連接字串
+模組身分識別與模組對應項都處於公開預覽階段。 僅適用于 IoT 中樞發行前版本裝置 Sdk。 若要安裝它，請遵循下列步驟：
 
-登入[Azure 入口網站](https://portal.azure.com/)。 瀏覽至您的 IoT 中樞並按一下 IoT 裝置。 尋找 myFirstDevice 並加以開啟，您會看到已成功建立 myFirstModule。 複製模組連接字串。 在下一個步驟中需要用到它。
+1. 在 Visual Studio 中，開啟 [**工具**] [  >  **nuget 套件管理員**] [  >  **管理方案的 nuget 套件**]。
 
-  ![Azure 入口網站模組詳細資料](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.png)
+1. 選取 **[流覽]**，然後選取 [**包含發行**前版本]。 搜尋 [ *Microsoft. Azure. 用戶端*]。 選取最新版本並安裝。
 
-## <a name="create-updatemoduletwinreportedproperties-console-app"></a>建立 UpdateModuleTwinReportedProperties 主控台應用程式
+    ![安裝 Azure IoT 中樞 .NET 服務 SDK 預覽](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png)
 
-在 **Program.cs** 檔案開頭處新增下列 `using` 陳述式：
+    您現在可以存取所有的模組功能。
 
-```csharp
-using Microsoft.Azure.Devices.Client;
-using Microsoft.Azure.Devices.Shared;
-```
+### <a name="get-your-module-connection-string"></a>取得模組連接字串
 
-將下列欄位新增到 **Program** 類別。 使用模組連接字串取代預留位置值。
+您需要主控台應用程式的模組連接字串。 請遵循下列步驟：
 
-```csharp
-private const string ModuleConnectionString = "<Your module connection string>";
-private static ModuleClient Client = null;
-```
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-將下列方法 **OnDesiredPropertyChanged** 新增至 **Program** 類別：
+1. 流覽至您的 IoT 中樞，然後選取 [ **Iot 裝置**]。 開啟**myFirstDevice** ，您會看到**myFirstModule**已成功建立。
 
-```csharp
-private static async Task OnDesiredPropertyChanged(TwinCollection desiredProperties, object userContext)
-    {
-        Console.WriteLine("desired property change:");
-        Console.WriteLine(JsonConvert.SerializeObject(desiredProperties));
-        Console.WriteLine("Sending current time as reported property");
-        TwinCollection reportedProperties = new TwinCollection
-        {
-            ["DateTimeLastDesiredPropertyChangeReceived"] = DateTime.Now
-        };
+1. 選取 [**模組**身分識別] 底下的 [ **myFirstModule** ]。 在 [**模組身分識別詳細資料**] 中，複製 [**連接字串（主要金鑰）**]。
 
-        await Client.UpdateReportedPropertiesAsync(reportedProperties).ConfigureAwait(false);
-    }
-```
+    ![Azure 入口網站模組詳細資料](./media/iot-hub-portal-csharp-module-twin-getstarted/module-identity-details.png)
 
-最後，將下列幾行新增至 **Main** 方法：
+### <a name="create-updatemoduletwinreportedproperties-console-app"></a>建立 UpdateModuleTwinReportedProperties 主控台應用程式
 
-```csharp
-static void Main(string[] args)
-{
-    Microsoft.Azure.Devices.Client.TransportType transport = Microsoft.Azure.Devices.Client.TransportType.Amqp;
+若要建立您的應用程式，請遵循下列步驟：
 
-    try
-    {
-        Client = ModuleClient.CreateFromConnectionString(ModuleConnectionString, transport);
-        Client.SetConnectionStatusChangesHandler(ConnectionStatusChangeHandler);
-        Client.SetDesiredPropertyUpdateCallbackAsync(OnDesiredPropertyChanged, null).Wait();
+1. 在 **Program.cs** 檔案開頭處新增下列 `using` 陳述式：
 
-        Console.WriteLine("Retrieving twin");
-        var twinTask = Client.GetTwinAsync();
-        twinTask.Wait();
-        var twin = twinTask.Result;
-        Console.WriteLine(JsonConvert.SerializeObject(twin));
+  ```csharp
+  using Microsoft.Azure.Devices.Client;
+  using Microsoft.Azure.Devices.Shared;
+  using Newtonsoft.Json;
+  ```
 
-        Console.WriteLine("Sending app start time as reported property");
-        TwinCollection reportedProperties = new TwinCollection();
-        reportedProperties["DateTimeLastAppLaunch"] = DateTime.Now;
+2. 將下列欄位新增到 **Program** 類別。 使用模組連接字串取代預留位置值。
 
-        Client.UpdateReportedPropertiesAsync(reportedProperties);
-    }
-    catch (AggregateException ex)
-    {
-        Console.WriteLine("Error in sample: {0}", ex);
-    }
+  ```csharp
+  private const string ModuleConnectionString = "<Your module connection string>";
+  private static ModuleClient Client = null;
+  ```
 
-    Console.WriteLine("Waiting for Events.  Press enter to exit...");
-    Console.ReadKey();
-    Client.CloseAsync().Wait();
-}
+3. 將下列方法 **OnDesiredPropertyChanged** 新增至 **Program** 類別：
 
-private static void ConnectionStatusChangeHandler(ConnectionStatus status, ConnectionStatusChangeReason reason)
-{
-    Console.WriteLine($"Status {status} changed: {reason}");
-}
-```
+  ```csharp
+  private static async Task OnDesiredPropertyChanged(TwinCollection desiredProperties, object userContext)
+      {
+          Console.WriteLine("desired property change:");
+          Console.WriteLine(JsonConvert.SerializeObject(desiredProperties));
+          Console.WriteLine("Sending current time as reported property");
+          TwinCollection reportedProperties = new TwinCollection
+          {
+              ["DateTimeLastDesiredPropertyChangeReceived"] = DateTime.Now
+          };
+  
+          await Client.UpdateReportedPropertiesAsync(reportedProperties).ConfigureAwait(false);
+      }
+  ```
+
+4. 最後，將**Main**方法取代為下列程式碼：
+
+  ```csharp
+  static void Main(string[] args)
+  {
+      Microsoft.Azure.Devices.Client.TransportType transport = Microsoft.Azure.Devices.Client.TransportType.Amqp;
+  
+      try
+      {
+          Client = ModuleClient.CreateFromConnectionString(ModuleConnectionString, transport);
+          Client.SetConnectionStatusChangesHandler(ConnectionStatusChangeHandler);
+          Client.SetDesiredPropertyUpdateCallbackAsync(OnDesiredPropertyChanged, null).Wait();
+  
+          Console.WriteLine("Retrieving twin");
+          var twinTask = Client.GetTwinAsync();
+          twinTask.Wait();
+          var twin = twinTask.Result;
+          Console.WriteLine(JsonConvert.SerializeObject(twin));
+  
+          Console.WriteLine("Sending app start time as reported property");
+          TwinCollection reportedProperties = new TwinCollection();
+          reportedProperties["DateTimeLastAppLaunch"] = DateTime.Now;
+  
+          Client.UpdateReportedPropertiesAsync(reportedProperties);
+      }
+      catch (AggregateException ex)
+      {
+          Console.WriteLine("Error in sample: {0}", ex);
+      }
+  
+      Console.WriteLine("Waiting for Events.  Press enter to exit...");
+      Console.ReadKey();
+      Client.CloseAsync().Wait();
+  }
+  
+  private static void ConnectionStatusChangeHandler(ConnectionStatus status, ConnectionStatusChangeReason reason)
+  {
+      Console.WriteLine($"Status {status} changed: {reason}");
+  }
+  ```
+  
+  您可以使用**F5**來建立及執行此應用程式。
 
 此程式碼範例顯示如何擷取模組對應項，並使用 AMQP 通訊協定更新報告的屬性。 在公開預覽中，我們只支援 AMQP 進行模組對應項作業。
-
-## <a name="run-the-apps"></a>執行應用程式
-
-您現在可以開始執行應用程式。 在 Visual Studio 的 [方案總管] 中以滑鼠右鍵按一下您的方案，然後按一下 [設定啟始專案]。 選取 [多個啟始專案]，然後選取 [啟動] 作為主控台應用程式的動作。 然後按 F5 來啟動執行這兩個應用程式。
 
 ## <a name="next-steps"></a>後續步驟
 
 若要繼續開始使用 IoT 中樞並瀏覽其他 IoT 案例，請參閱︰
 
-* [開始使用 IoT 中樞模組身分識別和模組對應項使用.NET 的備份和.NET 裝置](iot-hub-csharp-csharp-module-twin-getstarted.md)
+* [透過 .NET 備份和 .NET 裝置開始使用 IoT 中樞模組身分識別和模組對應項](iot-hub-csharp-csharp-module-twin-getstarted.md)
 
 * [開始使用 IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

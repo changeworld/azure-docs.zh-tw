@@ -1,13 +1,18 @@
 ---
-ms.openlocfilehash: f23d5246401f23694755e63a51c52da5dbf5ac1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+author: tanmaygore
+ms.author: tagore
+ms.service: cloud-services
+ms.topic: include
+ms.date: 11/25/2018
+ms.openlocfilehash: 5deba9d8968f71ef1b21517e74e6af4c39aa9271
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60337286"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76279319"
 ---
 > [!WARNING]
-> 當您在現有角色上啟用診斷功能時，您已設定的任何擴充功能都會在部署套件時停用。 其中包含：
+> 當您在現有角色上啟用診斷功能時，您已設定的任何擴充功能都會在部署套件時停用。 這些包括：
 >
 > * Microsoft Monitoring Agent 診斷
 > * Microsoft Azure 安全性監控

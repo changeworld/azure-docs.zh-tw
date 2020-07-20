@@ -2,22 +2,19 @@
 title: Azure 上的 Kubernetes 教學課程 - 調整應用程式
 description: 在本 Azure Kubernetes Service (AKS) 教學課程中，您將了解如何在 Kubernetes 中調整節點和 Pod，以及實作水平 Pod 自動調整。
 services: container-service
-author: zr-msft
-ms.service: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
-ms.author: zarhoads
+ms.date: 01/14/2019
 ms.custom: mvc
-ms.openlocfilehash: 74cd73cd7f9d5be9da552fb22ef2a2750ddc8321
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ab9217229a64605273537fc65cf3a29dcecd20c3
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61029851"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361586"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>教學課程：調整 Azure Kubernetes Service (AKS) 中的應用程式
 
-如果您已依照教學課程操作，就會在 AKS 中有一個正常運作的 Kubernetes 叢集，並已部署範例 Azure 投票應用程式。 在本教學課程中 (七個章節的第五部分)，您會將應用程式中的 Pod 相應放大，然後嘗試進行 Pod 自動調整。 您也會了解如何調整 Azure VM 節點的數目，以變更叢集裝載工作負載的容量。 您會了解如何：
+如果您已依照教學課程操作，就會在 AKS 中有一個正常運作的 Kubernetes 叢集，並已部署範例 Azure 投票應用程式。 在本教學課程中 (七個章節的第五部分)，您會將應用程式中的 Pod 擴增，然後嘗試進行 Pod 自動調整。 您也會了解如何調整 Azure VM 節點的數目，以變更叢集裝載工作負載的容量。 您會了解如何：
 
 > [!div class="checklist"]
 > * 調整 Kubernetes 節點
@@ -57,7 +54,7 @@ kubectl scale --replicas=5 deployment/azure-vote-front
 再次執行 [kubectl get pods][kubectl-get]，以確認 AKS 是否建立其他 Pod。 大約一分鐘後，其他 Pod 就會成為叢集中的可用項目：
 
 ```console
-$ kubectl get pods
+kubectl get pods
 
                                     READY     STATUS    RESTARTS   AGE
 azure-vote-back-2606967446-nmpcf    1/1       Running   0          15m
@@ -73,17 +70,18 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 Kubernetes 支援[水平 Pod 自動調整][kubernetes-hpa]，可根據 CPU 使用率或其他選取的計量來調整部署中的 Pod 數目。 [計量伺服器][metrics-server]可用來將資源使用率提供給 Kubernetes，並且會自動部署在 AKS 叢集 1.10 版和更新版本中。 若要查看您的 AKS 叢集版本，請使用 [az aks show][az-aks-show] 命令，如下列範例所示：
 
 ```azurecli
-az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion
+az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion --output table
 ```
 
-如果您的 AKS 叢集低於 *1.10* 版，請安裝計量伺服器，否則請略過此步驟。 若要安裝，請複製 `metrics-server` GitHub 存放庫並安裝範例資源定義。 若要檢視這些 YAML 定義的內容，請參閱[Kuberenetes 1.8+ 的計量伺服器][metrics-server-github]。
+> [!NOTE]
+> 如果您的 AKS 叢集低於 1.10  ，則不會自動安裝計量伺服器。 計量伺服器安裝資訊清單可作為計量伺服器版本上的 `components.yaml` 資產，這表示您可以透過 URL 進行安裝。 若要深入了解這些 YAML 定義，請參閱讀我檔案的＜[部署][metrics-server-github]＞一節。
+> 
+> 安裝範例：
+> ```console
+> kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
+> ```
 
-```console
-git clone https://github.com/kubernetes-incubator/metrics-server.git
-kubectl create -f metrics-server/deploy/1.8+/
-```
-
-若要使用自動調整程式，必須為您的 Pod 定義 CPU 要求和限制。 在 `azure-vote-front` 部署中，前端容器已經要求 0.25 個 CPU，限制為 0.5 個 CPU。 這些資源要求和限制定義如下列範例程式碼片段所示：
+若要使用自動調整程式，必須為您 Pod 中所有容器和 Pod 定義 CPU 要求和限制。 在 `azure-vote-front` 部署中，前端容器已經要求 0.25 個 CPU，限制為 0.5 個 CPU。 這些資源要求和限制定義如下列範例程式碼片段所示：
 
 ```yaml
 resources:
@@ -93,16 +91,54 @@ resources:
      cpu: 500m
 ```
 
-下列範例會使用 [kubectl autoscale][kubectl-autoscale] 命令自動調整 *azure-vote-front* 部署中的 Pod 數目。 如果 CPU 使用率超過 50%，自動調整程式就會增加 Pod，最多可達 10 個執行個體。 然後，為此部署定義最少 3 個執行個體：
+下列範例會使用 [kubectl autoscale][kubectl-autoscale] 命令自動調整 *azure-vote-front* 部署中的 Pod 數目。 如果所有 Pod 的平均 CPU 使用率超過其所要求使用量的 50%，則自動調整程式會增加 Pod，最多可達 10  個執行個體。 然後，為此部署定義最少 3  個執行個體：
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
 ```
 
+或者，您可以建立資訊清單檔，以定義自動調整程式行為和資源限制。 以下是資訊清單檔 (名稱為 `azure-vote-hpa.yaml`) 的範例。
+
+```yaml
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: azure-vote-back-hpa
+spec:
+  maxReplicas: 10 # define max replica count
+  minReplicas: 3  # define min replica count
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: azure-vote-back
+  targetCPUUtilizationPercentage: 50 # target CPU utilization
+
+---
+
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: azure-vote-front-hpa
+spec:
+  maxReplicas: 10 # define max replica count
+  minReplicas: 3  # define min replica count
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: azure-vote-front
+  targetCPUUtilizationPercentage: 50 # target CPU utilization
+```
+
+使用 `kubectl apply` 來套用 `azure-vote-hpa.yaml` 資訊清單檔中定義的自動調整程式。
+
+```
+kubectl apply -f azure-vote-hpa.yaml
+```
+
 若要查看自動調整程式的狀態，請使用 `kubectl get hpa` 命令，如下所示：
 
 ```
-$ kubectl get hpa
+kubectl get hpa
 
 NAME               REFERENCE                     TARGETS    MINPODS   MAXPODS   REPLICAS   AGE
 azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        3          2m
@@ -112,9 +148,9 @@ azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        
 
 ## <a name="manually-scale-aks-nodes"></a>手動調整 AKS 節點
 
-如果您在上一個教學課程中使用命令建立了 Kubernetes 叢集，它會有一個節點。 如果您打算在叢集上增加或減少容器工作負載，可以手動調整節點的數目。
+如果您在上一個教學課程中使用命令建立了 Kubernetes 叢集，它會有兩個節點。 如果您打算在叢集上增加或減少容器工作負載，可以手動調整節點的數目。
 
-下列範例會在名為 myAKSCluster 的 Kubernetes 叢集中，將節點的數目增加到三個。 此命令需要幾分鐘的時間來完成。
+下列範例會在名為 myAKSCluster  的 Kubernetes 叢集中，將節點的數目增加到三個。 此命令需要幾分鐘的時間來完成。
 
 ```azurecli
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
@@ -157,8 +193,8 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-scale]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#scale
 [kubernetes-hpa]: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
-[metrics-server-github]: https://github.com/kubernetes-incubator/metrics-server/tree/master/deploy/1.8%2B
-[metrics-server]: https://v1-12.docs.kubernetes.io/docs/tasks/debug-application-cluster/core-metrics-pipeline/
+[metrics-server-github]: https://github.com/kubernetes-sigs/metrics-server/blob/master/README.md#deployment
+[metrics-server]: https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/#metrics-server
 
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md

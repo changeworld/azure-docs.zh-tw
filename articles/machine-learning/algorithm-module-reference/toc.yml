@@ -1,0 +1,190 @@
+- name: 設計工具演算法與模組
+  href: module-reference.md
+- name: 資料輸入和輸出
+  items:
+    - name: 匯入資料
+      href: import-data.md
+    - name: 手動輸入資料
+      href: enter-data-manually.md
+    - name: 匯出資料
+      href: export-data.md
+- name: 資料轉換
+  items:
+    - name: 新增資料行
+      href: add-columns.md
+    - name: 新增資料列
+      href: add-rows.md
+    - name: 套用數學運算
+      href: apply-math-operation.md
+    - name: 套用 SQL 轉換
+      href: apply-sql-transformation.md
+    - name: 清除遺漏的資料
+      href: clean-missing-data.md
+    - name: 剪輯值
+      href: clip-values.md
+    - name: 轉換為 CSV
+      href: convert-to-csv.md
+    - name: 轉換為資料集
+      href: convert-to-dataset.md
+    - name: 轉換為指標值
+      href: convert-to-indicator-values.md
+    - name: 清除遺漏的資料
+      href: clean-missing-data.md
+    - name: 編輯中繼資料
+      href: edit-metadata.md
+    - name: 將資料分組成 Bin
+      href: group-data-into-bins.md
+    - name: 聯結資料
+      href: join-data.md
+    - name: 將資料標準化
+      href: normalize-data.md
+    - name: 資料分割和取樣
+      href: partition-and-sample.md
+    - name: 移除重複的資料列
+      href: remove-duplicate-rows.md
+    - name: SMOTE
+      href: smote.md
+    - name: 選取資料行轉換
+      href: select-columns-transform.md
+    - name: 選取資料集中的資料行
+      href: select-columns-in-dataset.md
+    - name: 分割資料
+      href: split-data.md
+- name: 特徵選取
+  items:
+    - name: 以篩選為基礎的特徵選取
+      href: filter-based-feature-selection.md
+    - name: 排列功能重要性
+      href: permutation-feature-importance.md
+- name: 統計函式
+  items:
+    - name: 資料總結
+      href: summarize-data.md
+- name: 機器學習演算法
+  items:
+    - name: 迴歸
+      items:
+        - name: 促進式決策樹迴歸
+          href: boosted-decision-tree-regression.md
+        - name: 決策樹系迴歸
+          href: decision-forest-regression.md
+        - name: 線性迴歸
+          href: linear-regression.md
+        - name: 類神經網路迴歸
+          href: neural-network-regression.md
+    - name: 叢集
+      items:
+        - name: K-Means 叢集
+          href: k-means-clustering.md
+    - name: 分類
+      items:
+        - name: 多元促進式決策樹
+          href: multiclass-boosted-decision-tree.md
+        - name: 多元決策樹系
+          href: multiclass-decision-forest.md
+        - name: 多元羅吉斯迴歸
+          href: multiclass-logistic-regression.md
+        - name: 多元神經網路
+          href: multiclass-neural-network.md
+        - name: 「一對多」多元分類
+          href: one-vs-all-multiclass.md
+        - name: 二元平均感知器
+          href: two-class-averaged-perceptron.md
+        - name: 二元促進式決策樹
+          href: two-class-boosted-decision-tree.md
+        - name: 二元決策樹系
+          href: two-class-decision-forest.md
+        - name: 二元羅吉斯迴歸
+          href: two-class-logistic-regression.md
+        - name: 二元神經網路
+          href: two-class-neural-network.md
+        - name: 二元支援向量機器
+          href: two-class-support-vector-machine.md
+- name: 模型訓練
+  items:
+    - name: 定型叢集模型
+      href: train-clustering-model.md
+    - name: 定型模型
+      href: train-model.md
+    - name: 將 PyTorch 模型定型
+      href: train-pytorch-model.md
+    - name: 調整模型超參數
+      href: tune-model-hyperparameters.md
+- name: 模型評分與評估
+  items:
+    - name: 套用轉換
+      href: apply-transformation.md
+    - name: 將資料指派給叢集
+      href: assign-data-to-clusters.md
+    - name: 交叉驗證模型
+      href: cross-validate-model.md
+    - name: 評估模型
+      href: evaluate-model.md
+    - name: 映像計分模型
+      href: score-image-model.md
+    - name: 計分模型
+      href: score-model.md
+- name: Python 語言
+  items:
+    - name: 建立 Python 模型
+      href: create-python-model.md
+    - name: 執行 Python 指令碼
+      href: execute-python-script.md
+- name: R 語言
+  items:
+    - name: 執行 R 指令碼
+      href: execute-r-script.md
+- name: 文字分析
+  items:
+    - name: 將 Word 轉換為向量
+      href: convert-word-to-vector.md
+    - name: 從文字擷取 N-Gram 特徵
+      href: extract-n-gram-features-from-text.md
+    - name: 特性雜湊
+      href: feature-hashing.md
+    - name: 前置處理文字
+      href: preprocess-text.md
+    - name: 隱含狄利克雷分佈
+      href: latent-dirichlet-allocation.md
+    - name: 計分 Vowpal Wabbit 模型
+      href: score-vowpal-wabbit-model.md
+    - name: 定型 Vowpal Wabbit 模型
+      href: train-vowpal-wabbit-model.md
+- name: 電腦視覺
+  items:
+    - name: 套用映像轉換
+      href: apply-image-transformation.md
+    - name: 轉換至映像目錄
+      href: convert-to-image-directory.md
+    - name: 初始化映像轉換
+      href: init-image-transformation.md
+    - name: 分割映像目錄
+      href: split-image-directory.md
+    - name: DenseNet
+      href: densenet.md
+    - name: ResNet
+      href: resnet.md
+- name: 建議
+  items:
+    - name: 評估推薦
+      href: evaluate-recommender.md
+    - name: 評分 SVD 推薦
+      href: score-svd-recommender.md
+    - name: 廣泛評分和深度推薦
+      href: score-wide-and-deep-recommender.md
+    - name: 訓練 SVD 推薦
+      href: train-svd-recommender.md
+    - name: 廣泛訓練和深度推薦
+      href: train-wide-and-deep-recommender.md
+- name: 異常偵測
+  items:
+    - name: PCA 型異常偵測
+      href: pca-based-anomaly-detection.md
+    - name: 定型異常偵測模型
+      href: train-anomaly-detection-model.md
+- name: Web 服務
+  items:
+    - name: Web 服務輸入/輸出
+      href: web-service-input-output.md
+- name: 模組錯誤與疑難排解
+  href: designer-error-codes.md

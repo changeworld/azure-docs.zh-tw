@@ -1,33 +1,33 @@
 ---
 title: 如何設定應用程式 Proxy 應用程式 | Microsoft Docs
-description: 了解如何使用幾個簡單步驟來建立及設定應用程式 Proxy 應用程式
+description: 瞭解如何使用幾個簡單的步驟來建立和設定應用程式 Proxy 應用程式
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/18/2018
-ms.author: celested
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f22f064043467bf52c23cab547a7e6c8ba2205
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c63137c6943d9adc0ea7c19f7551d1f31587f42a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60443165"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764990"
 ---
 # <a name="how-to-configure-an-application-proxy-application"></a>如何設定應用程式 Proxy 應用程式
 
-本文協助您了解如何在 Azure AD 內設定應用程式 Proxy 應用程式，以向雲端公開您的內部部署應用程式。
+本文可協助您瞭解如何在 Azure AD 內設定應用程式 Proxy 應用程式，以將您的內部部署應用程式公開至雲端。
 
-## <a name="recommended-documents"></a>建議的文件 
+## <a name="recommended-documents"></a>建議的文件
 
 若要深入了解應用程式 Proxy 應用程式透過管理入口網站的初始設定與建立，請遵循[使用 Azure AD 應用程式 Proxy 發佈應用程式](application-proxy-add-on-premises-application.md)。
 
@@ -39,19 +39,15 @@ ms.locfileid: "60443165"
 
 如果您依照[使用 Azure AD 應用程式 Proxy 發佈應用程式](application-proxy-add-on-premises-application.md)文件中的步驟，並在建立應用程式時發生錯誤，請查看錯誤詳細資料，以取得修正應用程式的資訊及建議。 大部分的錯誤訊息都包含建議的修正。 若要避免常見的錯誤，請確認：
 
--   您是具有建立應用程式 Proxy 應用程式權限的系統管理員
+- 您是具有建立應用程式 Proxy 應用程式權限的系統管理員
+- 內部 URL 是唯一的
+- 外部 URL 是唯一的
+- URL 開頭為 http 或 https，且結尾為 “/”
+- URL 應該是網域名稱，而非 IP 位址
 
--   內部 URL 是唯一的
+當您建立應用程式時，錯誤訊息應該會顯示在右上角。 您也可以選取通知圖示來查看錯誤訊息。
 
--   外部 URL 是唯一的
-
--   URL 開頭為 http 或 https，且結尾為 “/”
-
--   URL 應該是網域名稱，而非 IP 位址
-
-當您建立應用程式時，錯誤訊息應該會在右上角顯示。 您也可以選取通知圖示來查看錯誤訊息。
-
-   ![通知提示](./media/application-proxy-config-how-to/error-message.png)
+![顯示在 Azure 入口網站中尋找通知提示的位置](./media/application-proxy-config-how-to/error-message.png)
 
 ## <a name="configure-connectorsconnector-groups"></a>設定連接器/連接器群組
 
@@ -61,19 +57,16 @@ ms.locfileid: "60443165"
 
 ## <a name="upload-certificates-for-custom-domains"></a>上傳自訂網域的憑證
 
-自訂網域可讓您指定外部 URL 的網域。 若要使用自訂網域，您需要上傳該網域的憑證。 如需使用自訂網域和憑證的詳細資訊，請參閱[使用 Azure AD 應用程式 Proxy 中的自訂網域](application-proxy-configure-custom-domain.md)。 
+自訂網域可讓您指定外部 URL 的網域。 若要使用自訂網域，您需要上傳該網域的憑證。 如需使用自訂網域和憑證的詳細資訊，請參閱[使用 Azure AD 應用程式 Proxy 中的自訂網域](application-proxy-configure-custom-domain.md)。
 
 如果您在上傳憑證時遇到問題，請尋找入口網站中的錯誤訊息以取得憑證問題的其他資訊。 常見的憑證問題包括：
 
--   過期的憑證
-
--   憑證為自我簽署
-
--   憑證沒有私密金鑰
+- 過期的憑證
+- 憑證為自我簽署
+- 憑證沒有私密金鑰
 
 當您嘗試上傳憑證時，錯誤訊息會顯示在右上角。 您也可以選取通知圖示來查看錯誤訊息。
 
-   ![通知提示](./media/application-proxy-config-how-to/error-message2.png)
-
 ## <a name="next-steps"></a>後續步驟
+
 [使用 Azure AD 應用程式 Proxy 發佈應用程式](application-proxy-add-on-premises-application.md)

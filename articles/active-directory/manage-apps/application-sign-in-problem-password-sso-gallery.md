@@ -1,201 +1,196 @@
 ---
-title: 登入針對密碼單一登入設定之 Azure AD 資源庫應用程式的問題 | Microsoft Docs
-description: 如何為針對密碼單一登入設定的 Azure AD 資源庫應用程式問題疑難排解
+title: 登入為 SSO 設定的 Azure AD 資源庫應用程式時發生問題 |Microsoft Docs
+description: 如何針對已設定密碼單一登入的 Azure AD 資源庫應用程式問題進行疑難排解。
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 195d4f6e30b2e12b12419c4aea3948c6268c9dbe
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6eebde3a7c6163b7faf92be193fe442cd5b74d2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60292158"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84759108"
 ---
-# <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>登入針對密碼單一登入設定之 Azure AD 資源庫應用程式的問題
+# <a name="sign-in-problems-with-an-azure-ad-gallery-app-configured-for-sso"></a>針對 SSO 設定的 Azure AD 資源庫應用程式的登入問題
 
-存取面板是網頁型入口網站，可讓在 Azure Active Directory (Azure AD) 中具有公司或學校帳戶的使用者，檢視和啟動 Azure AD 系統管理員已授權他們存取的雲端式應用程式。 具有 Azure AD 版本的使用者也可以透過存取面板使用自助群組和應用程式管理功能。 存取面板與 Azure 入口網站分開，使用者不需要具備 Azure 訂用帳戶也能使用。
+存取面板是以網頁為基礎的入口網站。 它可讓擁有 Azure Active Directory （Azure AD）工作或學校帳戶的使用者存取他們具有許可權的雲端式應用程式。 具有 Azure AD 版本的使用者也可以透過存取面板使用自助群組和應用程式管理功能。
 
-若要在存取面板中使用密碼單一登入 (SSO)，必須在使用者的瀏覽器中安裝存取面板延伸模組。 當使用者選取已設定密碼 SSO 的應用程式時，就會自動下載此存取面板延伸模組。
+存取面板與 Azure 入口網站不同。 使用者不需要 Azure 訂用帳戶，即可使用存取面板。
 
-## <a name="meeting-browser-requirements-for-the-access-panel"></a>符合存取面板的瀏覽器需求
+若要在存取面板中使用密碼型單一登入（SSO），存取面板延伸模組必須安裝在您的瀏覽器中。 當您選取針對密碼型 SSO 設定的應用程式時，會自動下載延伸模組。
 
-存取面板需要支援 JavaScript 且已啟用 CSS 的瀏覽器。 若要在存取面板中使用密碼單一登入 (SSO)，必須在使用者的瀏覽器中安裝存取面板延伸模組。 當使用者選取已設定密碼 SSO 的應用程式時，就會自動下載此存取面板延伸模組。
+## <a name="browser-requirements-for-access-panel"></a>存取面板的瀏覽器需求
 
-若是密碼 SSO，則使用者的瀏覽器可以是：
+存取面板需要支援 JavaScript 且已啟用 CSS 的瀏覽器。
 
--   Internet Explorer 8、9、10、11 - 在 Windows 7 或更新版本上
+下列瀏覽器支援以密碼為基礎的 SSO：
 
--   Chrome - 在 Windows 7 或更新版本，和在 MacOS X 或更新版本上
+- Windows 7 或更新版本上的 Internet Explorer 8、9、10和11
 
--   Firefox 26.0 或更新版本 - 在 Windows XP SP2 或更新版本，和在 Mac OS X 10.6 或更新版本上
+- Windows 7 或更新版本或 MacOS X 或更新版本上的 Chrome
+
+- Windows XP SP2 或更新版本或 Mac OS X 10.6 或更新版本上的 Firefox 26.0 或更新版本
 
 >[!NOTE]
->當瀏覽器延伸開始支援 Microsoft Edge 時，Windows 10 中的 Microsoft Edge 就能使用密碼型 SSO 延伸模組。
->
->
+>當瀏覽器延伸模組的支援已新增至 Microsoft Edge 時，Windows 10 中的 Microsoft Edge 就能使用密碼型 SSO 延伸模組。
 
-## <a name="how-to-install-the-access-panel-browser-extension"></a>如何安裝存取面板的瀏覽器延伸模組
+## <a name="install-the-access-panel-browser-extension"></a>安裝存取面板的瀏覽器擴充功能
 
-若要安裝存取面板的瀏覽器擴充功能，請遵循下列步驟：
+請遵循下列步驟：
 
-1.  在其中一種支援的瀏覽器中開啟[存取面板](https://myapps.microsoft.com)，然後在您的 Azure AD 中以**使用者**身分登入。
+1. 在支援的瀏覽器中開啟[存取面板](https://myapps.microsoft.com)，然後在 Azure AD 中以使用者的身分登入。
 
-2.  按一下存取面板中的 [密碼-SSO 應用程式]。
+2. 在存取面板中選取已啟用密碼 SSO 的應用程式。
 
-3.  在要求安裝軟體的提示中，選取 [立即安裝]。
+3. 當系統提示您時，請選取 [**立即安裝**]。
 
-4.  系統會根據您的瀏覽器將您導向至下載連結。 將延伸模組**新增**到瀏覽器中。
+4. 系統會根據您的瀏覽器將您導向至下載連結。 選取 [**新增**] 以安裝瀏覽器延伸模組。
 
-5.  如果您的瀏覽器要求，請選取 [啟用] 或 [允許] 該延伸模組。
+5. 如果出現提示，請選取 [**啟用**] 或 [**允許**]。
 
-6.  安裝之後，**重新啟動**瀏覽器工作階段。
+6. 安裝之後，請重新開機您的瀏覽器。
 
-7.  登入存取面板，並查看您是否可以**啟動**密碼-SSO 應用程式
+7.  登入以存取面板，並查看您是否可以啟動已啟用密碼 SSO 的應用程式。
 
-您可能也會從下列直接連結中下載適用於 Chrome 和 Firefox 的延伸模組：
+您也可以透過下列連結直接下載適用于 Chrome 和 Firefox 的延伸模組：
 
 -   [Chrome 存取面板延伸模組](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
 -   [Firefox 存取面板延伸模組](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-## <a name="setting-up-a-group-policy-for-internet-explorer"></a>設定適用於 Internet Explorer 的群組原則
+## <a name="set-up-a-group-policy-for-internet-explorer"></a>設定適用於 Internet Explorer 的群組原則
 
-您可以設定一個群組原則，以允許您在使用者電腦上遠端安裝適用於 Internet Explorer 的存取面板延伸模組。
+您可以設定群組原則，讓您從遠端在使用者的電腦上安裝 Internet Explorer 的存取面板延伸模組。
 
-必要條件包括：
+必要條件如下：
 
--   您已設定了 [Active Directory 網域服務](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)，並且已將使用者的電腦加入網域。
+-   必須設定[Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx) ，且您的使用者電腦必須加入您的網域。
 
--   您必須擁有「編輯設定」權限，才能編輯群組原則物件 (GPO)。 根據預設，下列安全性群組的成員擁有此權限：網域系統管理員、企業系統管理員及群組原則建立者擁有者。 [深入了解](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)。
+-   您擁有編輯群組原則物件（GPO）的「編輯設定」許可權。 根據預設，下列安全性群組的成員擁有此權限：網域系統管理員、企業系統管理員及群組原則建立者擁有者。 [深入了解](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)。
 
-如需如何設定群組原則並將它部署到使用者的逐步指示，請遵循[如何使用群組原則部署 Internet Explorer 的存取面板延伸模組](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-group-policy)教學課程。
+若要設定群組原則並將它部署至使用者，請參閱[如何使用群組原則部署 Internet Explorer 的存取面板延伸](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-group-policy)模組。
 
-## <a name="troubleshoot-the-access-panel-in-internet-explorer"></a>進行 Internet Explorer 中存取面板的疑難排解
+## <a name="troubleshoot-access-panel-in-internet-explorer"></a>疑難排解 Internet Explorer 中的存取面板
 
-如需存取診斷工具和設定 IE 延伸模組的逐步指示，請遵循[疑難排解 Internet Explorer 的存取面板延伸模組](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting)指南。
+若要存取診斷工具和設定擴充功能的指示，請參閱[針對 Internet Explorer 的存取面板延伸模組進行疑難排解](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting)。
 
-## <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>如何為 Azure AD 資源庫應用程式設定密碼單一登入
+## <a name="configure-password-sso-for-an-azure-ad-gallery-app"></a>設定 Azure AD 資源庫應用程式的密碼 SSO
 
-若要設定 Azure AD 資源庫中的應用程式，您必須：
+若要從 Azure AD 資源庫設定應用程式，您需要執行下列動作：
 
 -   從 Azure AD 資源庫新增應用程式
+-   [設定應用程式的密碼單一登入](#configure-the-app-for-password-sso)
+-   [將使用者指派給應用程式](#assign-users-to-the-app)
 
--   [設定應用程式使用密碼單一登入](#configure-the-application-for-password-single-sign-on)
+### <a name="add-the-app-from-the-azure-ad-gallery"></a>從 Azure AD 資源庫新增應用程式
 
--   [將使用者指派至應用程式](#assign-users-to-the-application)
+請遵循下列步驟：
 
-### <a name="add-an-application-from-the-azure-ad-gallery"></a>從 Azure AD 資源庫新增應用程式
+1. 開啟[Azure 入口網站](https://portal.azure.com)，並以全域管理員或共同管理員身分登入。
 
-若要從 Azure AD 資源庫新增應用程式，請遵循下列步驟：
+2. 選取左側導覽窗格頂端的 [**所有服務**]，以開啟 [Azure AD] 延伸模組。
 
-1.  開啟 [Azure 入口網站](https://portal.azure.com)，然後以**全域管理員**或**共同管理員**身分登入。
+3. 在篩選搜尋方塊中輸入**Azure Active Directory** ，然後選取 [ **Azure Active Directory**]。
 
-2.  按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
+4. 從 Azure AD 流覽窗格中選取 [**企業應用程式**]。
 
-3.  在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
+5. 選取 [**企業應用程式**] 窗格右上角的 [**新增**]。
 
-4.  在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
+6. 在 [**從資源庫新增**] 區段的 [**輸入名稱**] 方塊中，輸入應用程式的名稱。
 
-5.  按一下 [企業應用程式] 窗格右上角的 [新增] 按鈕。
+7. 選取您想要為 SSO 設定的應用程式。
 
-6.  在 [從資源庫新增] 區段的 [輸入名稱] 文字方塊中，輸入應用程式名稱。
+8. *選擇性：* 新增應用程式之前，您可以在 [**名稱**] 方塊中變更其名稱。
 
-7.  選取您要設為單一登入的應用程式。
+9. 按一下 [新增]****，以新增應用程式。
 
-8.  新增應用程式之前，您可以從 [名稱] 文字方塊變更其名稱。
+   短暫延遲之後，您就可以看到應用程式的 [設定] 窗格。
 
-9.  按一下 [新增] 按鈕新增應用程式。
+### <a name="configure-the-app-for-password-sso"></a>設定應用程式的密碼 SSO
 
-稍候片刻，您便能看見應用程式的設定窗格。
+請遵循下列步驟：
 
-### <a name="configure-the-application-for-password-single-sign-on"></a>設定應用程式使用密碼單一登入
+1. 開啟[Azure 入口網站](https://portal.azure.com/)，並以全域管理員或共同管理員身分登入。
 
-若要設定應用程式使用單一登入，請遵循下列步驟：
+2. 選取左側導覽窗格頂端的 [**所有服務**]，以開啟 [Azure AD] 延伸模組。
 
-1. 開啟 [Azure 入口網站](https://portal.azure.com/)，然後以**全域管理員**或**共同管理員**身分登入。
+3. 在篩選搜尋方塊中輸入**Azure Active Directory** ，然後選取 [ **Azure Active Directory**]。
 
-2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
+4. 在 Azure AD 流覽窗格中選取 [**企業應用程式**]。
 
-3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
+5. 選取 [**所有應用程式**] 以查看您應用程式的清單。
 
-4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
+   > [!NOTE]
+   > 如果您沒有看到想要的應用程式，請使用 [**所有應用程式] 清單**頂端的 [**篩選**] 控制項。 將 [**顯示**] 選項設定為 [所有應用程式]。
 
-5. 按一下 [所有應用程式]，以檢視所有應用程式的清單。
+6. 選取您想要為 SSO 設定的應用程式。
 
-   * 若在這裡沒看到您要顯示的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
+7. 應用程式載入之後，請在應用程式左側的窗格中選取 [**單一登入**]。
 
-6. 選取您要設定單一登入的應用程式
+8. 選取 [**密碼型登入**模式]。
 
-7. 應用程式載入後，按一下應用程式的左側導覽功能表中的 [單一登入]。
+9. 將使用者指派給應用程式。
 
-8. 選取 [以密碼為基礎的登入] 模式。
+10. 您也可以為使用者提供認證。 （否則，系統會提示使用者在應用程式啟動時輸入認證）。若要這麼做，請選取使用者的資料列。 然後選取 [**更新認證**]，並輸入其使用者名稱和密碼。
 
-9. 將使用者指派至應用程式。
+### <a name="assign-users-to-the-app"></a>將使用者指派給應用程式
 
-10. 此外，您也可以選取使用者資料列，按一下 [更新認證]，然後代表使用者輸入使用者名稱和密碼，以代表使用者提供認證。 否則，系統會提示使用者在啟動時自行輸入認證。
+若要直接將使用者指派給應用程式，請遵循下列步驟：
 
-### <a name="assign-users-to-the-application"></a>將使用者指派給應用程式
+1. 開啟[Azure 入口網站](https://portal.azure.com/)，並以全域管理員身分登入。
 
-若要直接將一或多個使用者指派給應用程式，請遵循下列步驟︰
+2. 選取左側導覽困難的 [**所有服務**]，以開啟 [Azure AD] 延伸模組。
 
-1. 開啟 [Azure 入口網站](https://portal.azure.com/)，以**全域管理員**身分登入。
+3. 在篩選搜尋方塊中輸入**Azure Active Directory** ，然後選取 [ **Azure Active Directory**]。
 
-2. 按一下左側主導覽功能表底部的 [所有服務]，以開啟 [Azure Active Directory 延伸模組]。
+4. 在 Azure AD 流覽窗格中選取 [**企業應用程式**]。
 
-3. 在篩選搜尋方塊中輸入 **“Azure Active Directory**”，然後選取 [Azure Active Directory] 項目。
+5. 選取 [**所有應用程式**] 以查看您的應用程式清單。
 
-4. 在 Azure Active Directory 左側導覽功能表中，按一下 [企業應用程式]。
+   > [!NOTE]
+   > 如果您沒有看到想要的應用程式，請使用 [**所有應用程式] 清單**頂端的 [**篩選**] 控制項。 將 [**顯示**] 選項設定為 [所有應用程式]。
 
-5. 按一下 [所有應用程式]，以檢視所有應用程式的清單。
+6. 從清單中，選取您想要指派給使用者的應用程式。
 
-   * 若在這裡沒看到您要顯示的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
+7. 應用程式載入之後，從左側的應用程式流覽窗格中選取 [**使用者和群組**]。
 
-6. 從清單中選取您想要指派使用者的應用程式。
+8. 選取 [**使用者和群組**] 清單頂端的 [**新增**]，以開啟 [**新增指派**] 窗格。
 
-7. 應用程式載入之後，按一下應用程式左側導覽功能表中的 [使用者和群組]。
+9. 選取 [**新增指派**] 窗格中的 [**使用者和群組**]。
 
-8. 按一下 [使用者和群組] 清單頂端的 [新增] 按鈕，以開啟 [新增指派] 窗格。
+10. 在 [**依名稱或電子郵件地址搜尋**] 方塊中，輸入您要指派之使用者的完整名稱或電子郵件地址。
 
-9. 按一下 [新增指派] 窗格中的 [使用者和群組] 選取器。
+11. 將滑鼠停留在清單中的使用者上方。 選取使用者設定檔相片或標誌旁的核取方塊，將該使用者新增至 [已**選取**] 清單。
 
-10. 在 [依姓名或電子郵件地址搜尋] 搜尋方塊中，輸入您有興趣指派之使用者的**全名**或**電子郵件地址**。
+12. *選擇性：* 若要新增其他使用者，請在 [**依名稱或電子郵件地址搜尋**] 方塊中輸入另一個名稱或電子郵件地址，然後選取核取方塊，將該使用者新增至 [已**選取**] 清單。
 
-11. 將滑鼠停留在清單中的**使用者**上方，以顯示**核取方塊**。 按一下使用者設定檔照片或標誌旁邊的核取方塊，將使用者新增至 [已選取] 清單。
+13. 當您完成選取使用者時，按一下 [**選取**] 將其新增至指派給應用程式的使用者和群組清單。
 
-12. **選擇性：** 如果您想要**新增多位使用者**，請在 [依姓名或電子郵件地址搜尋] 搜尋方塊中，輸入另一個**全名**或**電子郵件地址**，然後按一下核取方塊，將此使用者新增至 [已選取] 清單。
+14. *選擇性：* 按一下 [**新增指派**] 窗格中的 [**選取角色**]，選取要指派給您所選取使用者的角色。
 
-13. 當您完成選取使用者時，按一下 [選取] 按鈕，將他們新增到要指派至應用程式的使用者和群組清單。
+15. 選取 [**指派**]，將應用程式指派給選取的使用者。
 
-14. **選擇性︰** 按一下 [新增指派] 窗格中的 [選取角色] 選取器，以選取要指派給您已選取之使用者的角色。
+    短暫延遲之後，使用者將能夠從存取面板存取這些應用程式。
 
-15. 按一下 [指派] 按鈕，將應用程式指派給選取的使用者。
-
-稍待片刻，您已選取的使用者便能在存取面板中啟動這些應用程式。
-
-## <a name="if-these-troubleshoot-steps-dont-resolve-the-issue"></a>如果這些疑難排解步驟無法解決問題 
-使用下列資訊 (若有的話) 開啟支援票證︰
+## <a name="request-support"></a>要求支援 
+如果您在設定 SSO 並指派使用者時收到錯誤訊息，請開啟支援票證。 盡可能包含下列資訊：
 
 -   相互關聯錯誤 ID
-
 -   UPN (使用者電子郵件地址)
-
 -   TenantID
-
 -   瀏覽器類型
-
--   錯誤發生期間的時區和時間/時間範圍
-
+-   發生錯誤時的時區和時間/時間範圍
 -   Fiddler 追蹤
 
 ## <a name="next-steps"></a>後續步驟

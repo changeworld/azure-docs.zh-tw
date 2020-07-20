@@ -1,19 +1,19 @@
 ---
 title: 了解 Azure IoT 中樞訊息格式 | Microsoft Docs
-description: 開發人員指南-說明的格式和預期的 IoT 中樞訊息的內容。
+description: 開發人員指南 - 說明 IoT 中樞訊息的格式和預期內容。
 author: ash2017
 manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/13/2018
+ms.date: 08/08/2019
 ms.author: asrastog
-ms.openlocfilehash: 49a28c120ae71224195edcdb3809335aeea1fa3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3b32468c9795f603ac38854415bca9d653d7c101
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61364035"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84674972"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>建立及讀取 IoT 中樞訊息
 
@@ -21,7 +21,7 @@ ms.locfileid: "61364035"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-IoT 中樞使用串流訊息模式實作裝置到雲端傳訊。 IoT 中樞的裝置到雲端訊息與[事件中樞](/azure/event-hubs/)*事件*較為相似 (而不像[服務匯流排](/azure/service-bus-messaging/)*訊息*) 因為會有大量的事件傳遞給該服務，並可由多個讀取器讀取。
+IoT 中樞使用串流訊息模式實作裝置到雲端傳訊。 IoT 中樞的裝置到雲端訊息與[事件中樞](/azure/event-hubs/)事件較為相似 (而不像[服務匯流排](/azure/service-bus-messaging/)訊息) 因為會有大量的事件傳遞給該服務，並可由多個讀取器讀取。
 
 IoT 中樞訊息包含：
 
@@ -43,28 +43,55 @@ IoT 中樞的裝置對雲端傳訊具有下列特性：
 
 * 如[控制 IoT 中樞的存取權](iot-hub-devguide-security.md)所述，IoT 中樞會啟用每一裝置的驗證和存取控制。
 
+* 您可以使用進入應用程式屬性的資訊來為訊息加上戳記。 如需詳細資訊，請參閱[訊息擴充](iot-hub-message-enrichments-overview.md)。
+
 了解如何使用不同通訊協定傳送的訊息編碼和解碼，請參閱 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 
-下表列出 IoT 中樞訊息中的系統屬性集合。
+## <a name="system-properties-of-d2c-iot-hub-messages"></a>**D2C** IoT 中樞訊息的系統屬性
 
-| 屬性 | 描述 | 是否可設定使用者？ |
+| 屬性 | 描述  |使用者可設定？|路由查詢的 </br>關鍵字|
+| --- | --- | --- | --- |
+| message-id |使用者可設定的訊息識別碼，用於「要求-回覆」模式。 格式：區分大小寫的字串，最長為 128 個字元，可使用 ASCII 7 位元英數字元和 `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`。  | 是 | messageId |
+| iothub-enqueuedtime |IoT 中樞收到[裝置到雲端](iot-hub-devguide-d2c-guidance.md)訊息的日期和時間。 | 否 | enqueuedTime |
+| user-id |用來指定訊息來源的識別碼。 當 IoT 中樞產生訊息時，它會設定為 `{iot hub name}`。 | 是 | userId |
+| iothub-connection-device-id |由 IoT 中樞在裝置到雲端訊息上設定的識別碼。 它包含傳送訊息之裝置的 **deviceId** 。 | 否 | connectionDeviceId |
+| iothub-connection-module-id |由 IoT 中樞在裝置到雲端訊息上設定的識別碼。 包含傳送訊息之裝置的 **moduleId** 。 | 否 | connectionModuleId |
+| iothub-connection-auth-generation-id |由 IoT 中樞在裝置到雲端訊息上設定的識別碼。 包含傳送訊息之裝置的 **connectionDeviceGenerationId** (依據[裝置身分識別屬性](iot-hub-devguide-identity-registry.md#device-identity-properties))。 | 否 |connectionDeviceGenerationId |
+| iothub-connection-auth-method |由 IoT 中樞在裝置到雲端訊息上設定的驗證方法。 這個屬性包含用來驗證傳送訊息之裝置的驗證方法的相關資訊。| 否 | connectionAuthMethod |
+
+## <a name="system-properties-of-c2d-iot-hub-messages"></a>**C2D** IoT 中樞訊息的系統屬性
+
+| 屬性 | 描述  |使用者可設定？|
 | --- | --- | --- |
-| message-id |使用者可設定的訊息識別碼，用於「要求-回覆」模式。 格式：區分大小寫的字串，最長為 128 個字元，可使用 ASCII 7 位元英數字元和 `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`。 | 是 |
-| sequence-number |IoT 中樞指派給每則雲端到裝置訊息的數字 (對每個裝置佇列而言都是唯一的)。 | [否] 表示 C2D 訊息；[是] 表示其他。 |
-| to |[雲端到裝置](iot-hub-devguide-c2d-guidance.md) 訊息中指定的目的地。 | [否] 表示 C2D 訊息；[是] 表示其他。 |
-| absolute-expiry-time |訊息到期的日期和時間。 | 是 |
-| iothub-enqueuedtime |IoT 中樞收到[雲端到裝置](iot-hub-devguide-c2d-guidance.md)訊息的日期和時間。 | [否] 表示 C2D 訊息；[是] 表示其他。 |
-| correlation-id |回應訊息中的字串屬性，通常包含採用「要求-回覆」模式之要求的 MessageId。 | 是 |
-| user-id |用來指定訊息來源的識別碼。 當 IoT 中樞產生訊息時，它會設定為 `{iot hub name}`。 | 否 |
-| iothub-ack |意見反應訊息產生器。 這個屬性是在雲端到裝置訊息中使用，可要求 IoT 中樞因為裝置取用訊息而產生意見反應訊息。 可能的值︰**none** (預設值)︰不會產生任何意見反應訊息；**positive**︰如果訊息已完成，則會收到意見反應訊息；**negative**︰如果訊息未由裝置完成就到期 (或已達到最大傳遞計數) 則會收到意見反應訊息；或者 **full**︰positive 和 negative。 <!-- robinsh For more information, see [Message feedback][lnk-feedback].--> | 是 |
-| iothub-connection-device-id |由 IoT 中樞在裝置到雲端訊息上設定的識別碼。 它包含傳送訊息之裝置的 **deviceId** 。 | [否] 表示 D2C 訊息；[是] 表示其他。 |
-| iothub-connection-auth-generation-id |由 IoT 中樞在裝置到雲端訊息上設定的識別碼。 它包含傳送訊息之裝置的 **generationId** (依據 [裝置身分識別屬性](iot-hub-devguide-identity-registry.md#device-identity-properties))。 | [否] 表示 D2C 訊息；[是] 表示其他。 |
-| iothub-connection-auth-method |由 IoT 中樞在裝置到雲端訊息上設定的驗證方法。 這個屬性包含用來驗證傳送訊息之裝置的驗證方法的相關資訊。 <!-- ROBINSH For more information, see [Device to cloud anti-spoofing][lnk-antispoofing].--> | [否] 表示 D2C 訊息；[是] 表示其他。 |
-| iothub-creation-time-utc | 在裝置上建立訊息的日期和時間。 裝置必須明確設定此值。 | 是 |
+| message-id |使用者可設定的訊息識別碼，用於「要求-回覆」模式。 格式：區分大小寫的字串，最長為 128 個字元，可使用 ASCII 7 位元英數字元和 `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`。  |是|
+| sequence-number |IoT 中樞指派給每則雲端到裝置訊息的數字 (對每個裝置佇列而言都是唯一的)。 |否|
+| to |[雲端到裝置](iot-hub-devguide-c2d-guidance.md) 訊息中指定的目的地。 |否|
+| absolute-expiry-time |訊息到期的日期和時間。 |否|   |
+| correlation-id |回應訊息中的字串屬性，通常包含採用「要求-回覆」模式之要求的 MessageId。 |是|
+| user-id |用來指定訊息來源的識別碼。 當 IoT 中樞產生訊息時，它會設定為 `{iot hub name}`。 |是|
+| iothub-ack |意見反應訊息產生器。 這個屬性是在雲端到裝置訊息中使用，可要求 IoT 中樞因為裝置取用訊息而產生意見反應訊息。 可能的值︰**none** (預設值)︰不會產生任何意見反應訊息；**positive**︰如果訊息已完成，則會收到意見反應訊息；**negative**︰如果訊息未由裝置完成就到期 (或已達到最大傳遞計數) 則會收到意見反應訊息；或者 **full**︰positive 和 negative。 |是|
+
+### <a name="system-property-names"></a>系統屬性名稱
+
+系統屬性名稱會根據路由傳送訊息的目標端點而有所不同。 如需這些名稱的詳細資訊，請參閱下表。
+
+|系統屬性名稱|事件中樞|Azure 儲存體|服務匯流排|Event Grid|
+|--------------------|----------|-------------|-----------|----------|
+|訊息 ID|message-id|messageId|MessageId|message-id|
+|User id|user-id|userId|UserId|user-id|
+|Connection device id|iothub-connection-device-id| connectionDeviceId|iothub-connection-device-id|iothub-connection-device-id|
+|Connection module id|iothub-connection-module-id|connectionModuleId|iothub-connection-module-id|iothub-connection-module-id|
+|Connection auth generation id|iothub-connection-auth-generation-id|connectionDeviceGenerationId| iothub-connection-auth-generation-id|iothub-connection-auth-generation-id|
+|Connection auth method|iothub-connection-auth-method|connectionAuthMethod|iothub-connection-auth-method|iothub-connection-auth-method|
+|ContentType|Content-Type|ContentType|ContentType|iothub-content-type|
+|contentEncoding|content-encoding|contentEncoding|ContentEncoding|iothub-content-encoding|
+|iothub-enqueuedtime|iothub-enqueuedtime|enqueuedTime| N/A |iothub-enqueuedtime|
+|iothub-interface-name|iothub-interface-name|interfaceName|Iothub-interface-name|iothub-interface-name|
+|CorrelationId|correlation-id|correlationId|CorrelationId|correlation-id|
 
 ## <a name="message-size"></a>訊息大小
 
-IoT 中樞會以不限通訊協定的方式 (只考慮實際的承載) 測量郵件大小。 大小 (以位元組為單位) 的計算方式為下列項目的總和︰
+IoT 中樞會以不限通訊協定的方式 (只考慮實際的承載) 測量郵件大小。 大小 (以位元組為單位) 的計算方式為下列值的總和︰
 
 * 內文大小 (以位元組為單位)。
 * 訊息系統屬性所有值的大小 (以位元組為單位)。

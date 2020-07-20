@@ -1,25 +1,17 @@
 ---
-title: 使用 Azure 自動化 Runbook 管理 StorSimple 裝置 | Microsoft Docs
+title: 使用 Azure 自動化 Runbook 來管理 StorSimple 裝置
 description: 了解如何使用 Azure 自動化 Runbook 將 StorSimple 作業自動化
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: how-to
 ms.date: 10/23/2017
 ms.author: alkohli
-ms.openlocfilehash: 30d70bb7e1f868060e3b287a0cdfb117c585b9ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 737533cd75ebec8d5d6c614f496e0c9b552217aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60310101"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514157"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>使用 Azure 自動化 Runbook 管理 StorSimple 裝置
 
@@ -179,34 +171,34 @@ ms.locfileid: "60310101"
 
 ### <a name="import-publish-and-run-automation-runbook"></a>匯入、發佈和執行自動化 Runbook
 
-1. 在 Azure 入口網站中建立 Azure 執行身分自動化帳戶。 若要這樣做，請移至 [Azure Marketplace] > [所有項目]，然後搜尋**自動化**。 選取 [自動化帳戶]。
+1. 在 Azure 入口網站中建立 Azure 執行身分自動化帳戶。 若要這樣做，請移至 [Azure Marketplace] > [所有項目]****，然後搜尋**自動化**。 選取 [**自動化帳戶**]。
 
     ![search-automation](./media/storsimple-8000-automation-azurerm-runbook/automation1.png)
 
-2. 在 [新增自動化帳戶] 刀鋒視窗中：
+2. 在 [新增自動化帳戶]**** 刀鋒視窗中：
 
    1. 提供自動化帳戶的**名稱**。
    2. 選取連結至您 StorSimple 裝置管理員服務的**訂用帳戶**。
    3. 建立新的資源群組，或從現有的資源群組中選取。
-   4. 選取 [位置] (如果可能，請選取服務執行所在位置)。
-   5. 保持選取預設值 [建立執行身分帳戶] 選項。
-   6. 或者勾選 [釘選到儀表板]。 按一下頁面底部的 [新增] 。
+   4. 選取 [位置]**** \(如果可能，請選取服務執行所在位置)。
+   5. 保持選取預設值 [建立執行身分帳戶]**** 選項。
+   6. 或者勾選 [釘選到儀表板]****。 按一下 [建立]。
 
        ![create-automation-account](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
 
       成功建立自動化帳戶之後會通知您。 如需如何建立自動化帳戶的詳細資訊，請移至[建立 [執行身分] 帳戶](https://docs.microsoft.com/azure/automation/automation-create-runas-account)。
 
-3. 為確保建立的自動化帳戶可以存取 StorSimple 裝置管理員服務，您需要指派適當的權限給自動化帳戶。 請移至 StorSimple 裝置管理員服務中的 [存取控制]。 按一下 [+ 新增] 並提供您的 Azure 自動化帳戶名稱。 **儲存**設定。
+3. 為確保建立的自動化帳戶可以存取 StorSimple 裝置管理員服務，您需要指派適當的權限給自動化帳戶。 請移至 StorSimple 裝置管理員服務中的 [存取控制]****。 按一下 [+ 新增]**** 並提供您的 Azure 自動化帳戶名稱。 **儲存**設定。
 
     ![add-permissions-automation-account](./media/storsimple-8000-automation-azurerm-runbook/goto-add-roles.png)
 
-4. 在新建立的帳戶中，移至 [共用資源] > [模組] 並按一下 [+ 新增模組]。
+4. 在新建立的帳戶中，移至 [共用資源] > [模組]**** 並按一下 [+ 新增模組]****。
 
-5. 在 [新增模組] 刀鋒視窗中，瀏覽至 ZIP 壓縮模組的位置，然後選取並開啟模組。 按一下 [確定]。
+5. 在 [新增模組]**** 刀鋒視窗中，瀏覽至 ZIP 壓縮模組的位置，然後選取並開啟模組。 按一下 [確定]。
 
     ![add-module](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 
-6. 移至 [程序自動化] > [Runbook] 並按一下 [+ 新增 Runbook]。 在 [新增 Runbook] 刀鋒視窗中，按一下 [匯入現有 Runbook]。 指向 **Runbook 檔案** 的 Windows PowerShell 指令碼檔案。 會自動選取 Runbook 類型。 提供 Runbook 的名稱和選擇性描述。 按一下頁面底部的 [新增] 。
+6. 移至 [程序自動化] > [Runbook]**，然後按一下 [+ 新增 Runbook]**。 在 [新增 Runbook]**** 刀鋒視窗中，按一下 [匯入現有 Runbook]****。 指向 **Runbook 檔案** 的 Windows PowerShell 指令碼檔案。 會自動選取 Runbook 類型。 提供 Runbook 的名稱和選擇性描述。 按一下 [建立]。
 
     ![add-module](./media/storsimple-8000-automation-azurerm-runbook/import-runbook.png)
 
@@ -214,11 +206,11 @@ ms.locfileid: "60310101"
 
     ![click-new-runbook](./media/storsimple-8000-automation-azurerm-runbook/verify-runbook-created.png)
 
-8. 編輯 Runbook 並按一下 [測試] 窗格。 提供參數，例如 StorSimple 裝置管理員服務的名稱、StorSimple 裝置的名稱和訂用帳戶。 **開始**測試。 執行完成後即會產生報告。 如需詳細資訊，請移至[如何測試 Runbook](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook)。
+8. 編輯 Runbook 並按一下 [測試]**** 窗格。 提供參數，例如 StorSimple 裝置管理員服務的名稱、StorSimple 裝置的名稱和訂用帳戶。 **開始**測試。 執行完成後即會產生報告。 如需詳細資訊，請移至[如何測試 runbook](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook)。
 
     ![test-runbook](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
 
-9. 在 [測試] 窗格中檢查 Runbook 的輸出。 如果滿意測試結果，請關閉窗格。 按一下 [發佈] 並在提示要求確認時予以確認，並發佈 Runbook。
+9. 在 [測試] 窗格中檢查 Runbook 的輸出。 如果滿意測試結果，請關閉窗格。 按一下 [發佈]**** 並在提示要求確認時予以確認，並發佈 Runbook。
 
     ![publish-runbook](./media/storsimple-8000-automation-azurerm-runbook/publish-runbook.png)
 

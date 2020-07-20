@@ -1,6 +1,6 @@
 ---
 title: 教學課程：在 .NET 中仲裁影片及文字記錄 - Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: 本教學課程可協助您了解如何使用機器輔助仲裁和建立人機互動 (human-in-the-loop) 審核，來建置完整的影片和文字記錄仲裁解決方案。
 services: cognitive-services
 author: PatrickFarley
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 03/11/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: fc49081c765834a0ed0e5199923606ced7daa081
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 2171bbaea065ce1ab3a8d90f32e6ea6dc1f1e821
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522072"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404232"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>教學課程：影片及文字記錄仲裁
 
-在本教學課程中，您將了解如何使用機器輔助仲裁和建立人機互動 (human-in-the-loop) 審核，來建置完整的影片和文字記錄仲裁解決方案。
+在本教學課程中，您將了解如何使用機器輔助仲裁和人力檢閱整合，來建置完整的影片和文字記錄仲裁解決方案。
 
 本教學課程說明如何：
 
@@ -32,27 +32,27 @@ ms.locfileid: "58522072"
 > - 使用文字審核服務來審核文字記錄
 > - 將審核過的文字記錄新增至影片檢閱
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 註冊 [Content Moderator 審核工具](https://contentmoderator.cognitive.microsoft.com/)網站，並建立自訂標記。 如果您需要此步驟的說明，請參閱[使用標記](Review-Tool-User-Guide/tags.md)。
 
     ![影片審核自訂標記的螢幕擷取畫面](images/video-tutorial-custom-tags.png)
-- 若要執行範例應用程式，您需要 Azure 帳戶、Azure 媒體服務資源、Azure Content Moderator 資源和 Azure Active Directory 認證。 如需有關如何取得這些項目的指示，請參閱[影片審核 API](video-moderation-api.md) 指南。
+- 若要執行範例應用程式，您需要 Azure 帳戶、Azure 媒體服務資源、Azure Content Moderator 資源和 Azure Active Directory 認證。 如需有關如何取得這些資源的指示，請參閱[影片審核 API](video-moderation-api.md) 指南。
 - 從 GitHub 下載[影片檢閱主控台應用程式](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp)。
 
 ## <a name="enter-credentials"></a>輸入認證
 
 編輯 `App.config` 檔案，並新增 Active Directory 租用戶名稱、服務端點和以 `#####` 表示的訂用帳戶金鑰。 您需要下列資訊：
 
-    |Key|說明|
-    |-|-|
-    |`AzureMediaServiceRestApiEndpoint`|Azure 媒體服務 (AMS) API 的端點|
-    |`ClientSecret`|Azure 媒體服務的訂用帳戶金鑰|
-    |`ClientId`|Azure 媒體服務的用戶端識別碼|
-    |`AzureAdTenantName`|代表您組織的 Active Directory 租用戶名稱|
-    |`ContentModeratorReviewApiSubscriptionKey`|Content Moderator 檢閱 API 的訂用帳戶金鑰|
-    |`ContentModeratorApiEndpoint`|Content Moderator API 的端點|
-    |`ContentModeratorTeamId`|Content Moderator 小組 API|
+|Key|描述|
+|-|-|
+|`AzureMediaServiceRestApiEndpoint`|Azure 媒體服務 (AMS) API 的端點|
+|`ClientSecret`|Azure 媒體服務的訂用帳戶金鑰|
+|`ClientId`|Azure 媒體服務的用戶端識別碼|
+|`AzureAdTenantName`|代表您組織的 Active Directory 租用戶名稱|
+|`ContentModeratorReviewApiSubscriptionKey`|Content Moderator 檢閱 API 的訂用帳戶金鑰|
+|`ContentModeratorApiEndpoint`|Content Moderator API 的端點|
+|`ContentModeratorTeamId`|Content Moderator 小組 API|
 
 ## <a name="examine-the-main-code"></a>檢查主要程式碼
 
@@ -60,7 +60,7 @@ ms.locfileid: "58522072"
 
 ### <a name="methods-of-program-class"></a>Program 類別的方法
 
-|方法|說明|
+|方法|描述|
 |-|-|
 |`Main`|剖析命令列、收集使用者輸入及開始處理。|
 |`ProcessVideo`|壓縮、上傳、審核及建立影片檢閱。|
@@ -82,13 +82,13 @@ ms.locfileid: "58522072"
 如果沒有命令列引數，`Main()` 會呼叫 `GetUserInputs()`。 此方法會提示使用者輸入單一影片檔的路徑，並指定是否應產生文字記錄。
 
 > [!NOTE]
-> 主控台應用程式會使用 [Azure 媒體索引器 API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) 從已上傳視訊的音軌中產生文字記錄。結果會以 WebVTT 格式提供。 如需有關此格式的詳細資訊，請參閱 [Web 影片文字播放軌格式](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)。
+> 主控台應用程式會使用 [Azure 媒體索引器 API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) 從已上傳視訊的音軌中產生文字記錄。結果會以 WebVTT 格式提供。 如需有關此格式的詳細資訊，請參閱 [Web 影片文字播放軌格式](https://developer.mozilla.org/docs/Web/API/WebVTT_API)。
 
 ### <a name="initialize-and-processvideo-methods"></a>Initialize 和 ProcessVideo 方法
 
 不論程式的選項來自命令列或互動式使用者輸入，`Main()` 接下來會呼叫 `Initialize()` 來建立下列執行個體：
 
-|類別|說明|
+|類別|描述|
 |-|-|
 |`AMSComponent`|提交影片檔案以進行審核前，先壓縮影片檔案。|
 |`AMSconfigurations`|應用程式組態資料的介面，位於 `App.config`。|
@@ -223,9 +223,9 @@ ms.locfileid: "58522072"
 如果設定 `GenerateVTT` 旗標，則也會產生影片中的音訊文字記錄。
 
 > [!NOTE]
-> 主控台應用程式會使用 [Azure 媒體索引器 API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) 從已上傳視訊的音軌中產生文字記錄。結果會以 WebVTT 格式提供。 如需有關此格式的詳細資訊，請參閱 [Web 影片文字播放軌格式](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API)。
+> 主控台應用程式會使用 [Azure 媒體索引器 API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) 從已上傳視訊的音軌中產生文字記錄。結果會以 WebVTT 格式提供。 如需有關此格式的詳細資訊，請參閱 [Web 影片文字播放軌格式](https://developer.mozilla.org/docs/Web/API/WebVTT_API)。
 
-## <a name="create-a-the-human-in-the-loop-review"></a>建立人機互動檢閱
+## <a name="create-a-human-review"></a>建立人工審核
 
 審核程序會傳回影片中的主要畫面清單，以及其音軌的文字記錄。 下一個步驟是在 Content Moderator 審核工具中建立審核項目，以進行人工審核。 返回 `Program.cs` 中的 `ProcessVideo()` 方法，您會看到對 `CreateVideoReviewInContentModerator()` 方法的呼叫。 此方法位於 `VideoReviewAPI.cs` 中的 `videoReviewApi` 類別，如下所示。
 
@@ -318,7 +318,7 @@ ms.locfileid: "58522072"
 
 `TextScreen()` 是內容充實的方法，所以讓我們來分解它。
 
-1. 首先，此方法會一行一行地讀取文字記錄檔案。 它會忽略空白行和其中有信賴分數的 `NOTE` 行。 它會從檔案中的「提示」擷取時間戳記和文字項目。 「提示」表示來自音軌的文字，並且包含開始和結束時間。 提示會以包含 `-->` 字串的時間戳記行開頭。 其後方會跟著一行或多行文字。
+1. 首先，此方法會一行一行地讀取文字記錄檔案。 它會忽略空白行和其中有信賴分數的 `NOTE` 行。 它會從檔案中的「提示」  擷取時間戳記和文字項目。 「提示」表示來自音軌的文字，並且包含開始和結束時間。 提示會以包含 `-->` 字串的時間戳記行開頭。 其後方會跟著一行或多行文字。
 
 1. `CaptionScreentextResult` 的執行個體 (定義於`TranscriptProfanity.cs`) 會用來保存從每個提示剖析的資訊。  當偵測到新的時間戳記行時，或達到最大文字長度 1024 個字元時，新的 `CaptionScreentextResult` 會新增至 `csrList`。 
 

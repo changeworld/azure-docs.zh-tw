@@ -1,20 +1,16 @@
 ---
-title: 建立自訂原則定義
-description: 針對 Azure 原則製作自訂原則定義以強制執行自訂的商務規則。
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 02/12/2019
+title: 教學課程：建立自訂原則定義
+description: 在本教學課程中，針對 Azure 原則製作自訂原則定義，以在您的 Azure 資源上強制執行自訂商務規則。
+ms.date: 06/16/2020
 ms.topic: tutorial
-ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: bf3582036a28603c3b6ef33a2af28cb61926d91f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5eee969257f5cf640ce82fbda9877974207c87af
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59267747"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044612"
 ---
-# <a name="create-a-custom-policy-definition"></a>建立自訂原則定義
+# <a name="tutorial-create-a-custom-policy-definition"></a>教學課程：建立自訂原則定義
 
 自訂原則定義可讓客戶定義自己的 Azure 使用規則。 這些規則通常會強制執行：
 
@@ -35,7 +31,9 @@ ms.locfileid: "59267747"
 > - 決定要使用的效果
 > - 撰寫原則定義
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/) 。
+## <a name="prerequisites"></a>必要條件
+
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="identify-requirements"></a>識別需求
 
@@ -46,32 +44,36 @@ ms.locfileid: "59267747"
 
 您的需求應該清楚地識別「要」和「不要」的資源狀態。
 
-我們雖已定義資源的預期狀態，但尚未定義不符合規範的資源所需的狀態。 原則支援許多[效果](../concepts/effects.md)。 在本教學課程中，我們會將商務需求定義為防止建立不符合商務規則規範的資源。 為了達到此目標，我們會使用[拒絕](../concepts/effects.md#deny)效果。 我們也想要可以暫停特定指派原則的選項。 因此，我們會使用[停用](../concepts/effects.md#disabled)效果，然後讓該效果成為原則定義中的[參數](../concepts/definition-structure.md#parameters)。
+我們雖已定義資源的預期狀態，但尚未定義不符合規範的資源所需的狀態。 Azure 原則支援許多[效果](../concepts/effects.md)。 在本教學課程中，我們會將商務需求定義為防止建立不符合商務規則規範的資源。 為了達到此目標，我們會使用[拒絕](../concepts/effects.md#deny)效果。 我們也想要可以暫停特定指派原則的選項。 因此，我們會使用[停用](../concepts/effects.md#disabled)效果，然後讓該效果成為原則定義中的[參數](../concepts/definition-structure.md#parameters)。
 
 ## <a name="determine-resource-properties"></a>決定資源屬性
 
-根據商務需求，原則所要稽核的 Azure 資源是儲存體帳戶。
-不過，我們不知道要在原則定義中使用的屬性。 原則會針對資源的 JSON 表示法進行評估，因此我們必須了解該資源上可用的屬性。
+根據商務需求，Azure 原則所要稽核的 Azure 資源是儲存體帳戶。 不過，我們不知道要在原則定義中使用的屬性。 Azure 原則會針對資源的 JSON 表示法進行評估，因此我們必須了解該資源上可用的屬性。
 
 用來決定 Azure 資源屬性的方式很多。 在本教學課程中，我們會就每一種方式進行探討：
 
-- Resource Manager 範本
+- 適用於 VS Code 的Azure 原則擴充功能
+- Azure Resource Manager 範本 (ARM 範本)
   - 匯出現有資源
   - 建立體驗
   - 快速入門範本 (GitHub)
   - 範本參考文件
 - Azure 資源總管
 
-### <a name="resource-manager-templates"></a>Resource Manager 範本
+### <a name="view-resources-in-vs-code-extension"></a>檢視 VS Code 擴充功能中的資源
 
-對於包含您所要管理屬性的 [Resource Manager 範本](../../../azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md)，其查看方式有好幾種。
+[VS Code 擴充功能](../how-to/extension-for-vscode.md#search-for-and-view-resources)可以用來瀏覽環境中的資源，以及檢視每個資源上的 Resource Manager 屬性。
+
+### <a name="arm-templates"></a>ARM 範本
+
+對於包含您所要管理屬性的 [Resource Manager 範本](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md)，其查看方式有好幾種。
 
 #### <a name="existing-resource-in-the-portal"></a>入口網站中的現有資源
 
 若要尋找屬性，最簡單的方式是查看相同類型的現有資源。 已使用所要強制執行的設定進行設定的資源，也會提供可用來比較的值。
-在 Azure 入口網站中，查看該特定資源的 [自動化指令碼] 頁面 (在 [設定] 底下)。
+在 Azure 入口網站中，查看該項資源的 [匯出範本] 頁面 (在 [設定] 下方)。
 
-![現有資源上的 [匯出範本] 頁面](../media/create-custom-policy-definition/automation-script.png)
+:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="現有資源上的 [匯出範本] 頁面" border="false":::
 
 對儲存體帳戶執行此操作，就會顯示類似此範例的範本：
 
@@ -121,8 +123,7 @@ ms.locfileid: "59267747"
 
 #### <a name="create-a-resource-in-the-portal"></a>在入口網站建立資源
 
-另一種透過入口網站的方式是資源建立體驗。 在透過入口網站建立儲存體帳戶時，[進階] 索引標籤下有 [需要安全性傳輸] 選項。
-此屬性具有 [停用] 和 [啟用] 選項。 資訊圖示會有額外的文字，可確認此選項或許就是我們想要的屬性。 不過，入口網站不會在此畫面上告訴我們屬性名稱。
+另一種透過入口網站的方式是資源建立體驗。 在透過入口網站建立儲存體帳戶時，[進階] 索引標籤下有 [需要安全性傳輸] 選項。 此屬性具有 [停用] 和 [啟用] 選項。 資訊圖示會有額外的文字，可確認此選項或許就是我們想要的屬性。 不過，入口網站不會在此畫面上告訴我們屬性名稱。
 
 在 [檢閱 + 建立] 索引標籤上，頁面底部會有用來**下載自動化的範本**的連結。 選取連結就會開啟範本，以建立我們所設定的資源。 在此案例中，我們會看到兩項關鍵資訊：
 
@@ -143,12 +144,11 @@ ms.locfileid: "59267747"
 
 #### <a name="quickstart-templates-on-github"></a>GitHub 上的快速入門範本
 
-GitHub 上的 [Azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates)有數百個針對不同資源所建置的 Resource Manager 範本。 這些範本非常適合用來找出您要尋找的資源屬性。 某些屬性看起來可能像是您要尋找的屬性，但其所控制的項目不同。
+GitHub 上的 [Azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates)有數百個針對不同資源所建置的 ARM 範本。 這些範本非常適合用來找出您要尋找的資源屬性。 某些屬性看起來可能像是您要尋找的屬性，但其所控制的項目不同。
 
 #### <a name="resource-reference-docs"></a>資源參考文件
 
-若要驗證 **supportsHttpsTrafficOnly** 是否為正確屬性，請在該儲存體提供者上查看[儲存體帳戶資源](/azure/templates/microsoft.storage/2018-07-01/storageaccounts)的 Resource Manager 範本參考。
-屬性物件有一份有效參數清單。 選取 [StorageAccountPropertiesCreateParameters-object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) 連結即可顯示所能接受屬性的資料表。 **supportsHttpsTrafficOnly** 存在，且其描述符合我們為了符合商務需求而所要尋找的內容。
+若要驗證 **supportsHttpsTrafficOnly** 是否為正確屬性，請在該儲存體提供者上查看[儲存體帳戶資源](/azure/templates/microsoft.storage/2018-07-01/storageaccounts)的 ARM 範本參考。 屬性物件有一份有效參數清單。 選取 [StorageAccountPropertiesCreateParameters-object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) 連結即可顯示所能接受屬性的資料表。 **supportsHttpsTrafficOnly** 存在，且其描述符合我們為了符合商務需求而所要尋找的內容。
 
 ### <a name="azure-resource-explorer"></a>Azure 資源總管
 
@@ -162,9 +162,17 @@ GitHub 上的 [Azure 快速入門範本](https://github.com/Azure/azure-quicksta
 
 有幾種方式可決定 Azure 資源的別名。 在本教學課程中，我們會就每一種方式進行探討：
 
+- 適用於 VS Code 的Azure 原則擴充功能
 - Azure CLI
 - Azure PowerShell
 - Azure Resource Graph
+
+### <a name="get-aliases-in-vs-code-extension"></a>取得 VS Code 擴充功能中的別名
+
+VS Code 擴充功能的 Azure 原則擴充功能，可讓您輕鬆地瀏覽資源及[探索別名](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties)。
+
+> [!NOTE]
+> VS Code 擴充功能只會公開 Resource Manager 模式屬性，而不會顯示任何[資源提供者模式](../concepts/definition-structure.md#mode)屬性。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -181,8 +189,7 @@ az provider show --namespace Microsoft.Storage --expand "resourceTypes/aliases" 
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-在 Azure PowerShell 中，`Get-AzPolicyAlias` Cmdlet 可用來搜尋資源別名。
-我們會根據稍早取得的 Azure 資源相關詳細資料，來篩選 **Microsoft.Storage** 命名空間。
+在 Azure PowerShell 中，`Get-AzPolicyAlias` Cmdlet 可用來搜尋資源別名。 我們會根據稍早取得的 Azure 資源相關詳細資料，來篩選 **Microsoft.Storage** 命名空間。
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -195,21 +202,40 @@ az provider show --namespace Microsoft.Storage --expand "resourceTypes/aliases" 
 
 ### <a name="azure-resource-graph"></a>Azure Resource Graph
 
-[Azure Resource Graph](../../resource-graph/overview.md) 是新的預覽版服務。 其可實現另一種用來尋找 Azure 資源屬性的方法。 以下是用來查看 Resource Graph 所搭配單一儲存體帳戶的 查詢範例：
+[Azure Resource Graph](../../resource-graph/overview.md) 服務可提供另一個方法來尋找 Azure 資源的屬性。 以下是用來查看 Resource Graph 所搭配單一儲存體帳戶的 查詢範例：
 
-```Query
-where type=~'microsoft.storage/storageaccounts' | limit 1
+```kusto
+Resources
+| where type=~'microsoft.storage/storageaccounts'
+| limit 1
 ```
 
 ```azurecli-interactive
-az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1"
+az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1"
+Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-其結果看起來與我們在 Resource Manager 範本中以及透過 Azure 資源總管所看到的結果類似。 不過，Azure Resource Graph 的結果還會包含[別名](../concepts/definition-structure.md#aliases)詳細資料。 以下是來自儲存體帳戶的別名輸出範例：
+其結果看起來與我們在 ARM 範本中以及透過 Azure 資源總管所看到的結果類似。 不過，Azure Resource Graph 的結果也可能因_投射_了_別名_陣列而包含[別名](../concepts/definition-structure.md#aliases)詳細資料：
+
+```kusto
+Resources
+| where type=~'microsoft.storage/storageaccounts'
+| limit 1
+| project aliases
+```
+
+```azurecli-interactive
+az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+```
+
+```azurepowershell-interactive
+Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
+```
+
+以下是來自儲存體帳戶的別名輸出範例：
 
 ```json
 "aliases": {
@@ -291,13 +317,13 @@ Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1
 }
 ```
 
-Azure Resource Graph (預覽) 可透過 [Cloud Shell](https://shell.azure.com) 來使用，因此可讓您輕鬆快速地探索資源的屬性。
+Azure Resource Graph 可透過 [Cloud Shell](https://shell.azure.com) 來使用，因此可讓您輕鬆快速地探索資源的屬性。
 
 ## <a name="determine-the-effect-to-use"></a>決定要使用的效果
 
 決定要如何處理不符合規範的資源，與決定要先評估什麼資源有著幾乎一樣的重要性。 針對不符合規範的資源，其每個可能的回應稱為[效果](../concepts/effects.md)。 效果會控制不符合規範的資源是否要加以記錄、封鎖、是否有附加的資料，或是否有與其相關聯的部署，而可讓資源恢復符合規範的狀態。
 
-在我們的範例中，因為我們不想要在 Azure 環境中建立不符合規範的資源，所以拒絕是我們想要的效果。 第一個優異的原則效果選擇是稽核，其可先決定原則的影響範圍，再將原則設定為拒絕。 若要讓變更每一指派的效果變得更容易，有一種方法是將效果參數化。 請參閱下面的[參數](#parameters)，來了解其操作方式。
+在我們範例中，因為不想在 Azure 環境中建立不符合規範的資源，所以拒絕是我們想要的效果。 第一個優異的原則效果選擇是稽核，其可先決定原則的影響範圍，再將原則設定為拒絕。 若要讓變更每一指派的效果變得更容易，有一種方法是將效果參數化。 請參閱下面的[參數](#parameters)，來了解其操作方式。
 
 ## <a name="compose-the-definition"></a>撰寫定義
 
@@ -429,7 +455,17 @@ Azure Resource Graph (預覽) 可透過 [Cloud Shell](https://shell.azure.com) �
 
 完成的定義可用來建立新的原則。 入口網站和每個 SDK (Azure CLI、Azure PowerShell 和 REST API) 會以不同的方式接受定義，因此請檢閱其各自的命令，以驗證正確的使用方式。 然後使用參數化的效果將其指派至適當的資源，以管理儲存體帳戶的安全性。
 
-## <a name="review"></a>審核
+## <a name="clean-up-resources"></a>清除資源
+
+如果您已完成使用本教學課程中的資源，請使用下列步驟來刪除前面建立的任何指派或定義：
+
+1. 選取 Azure 原則頁面左側 [製作] 下的 [定義] (如果您嘗試刪除指派，則選取 [指派])。
+
+1. 搜尋您要移除的新計畫或原則定義 (或指派)。
+
+1. 以滑鼠右鍵按一下資料列，或選取定義 (或指派) 結尾的省略符號，然後選取 [刪除定義] (或 [刪除指派])。
+
+## <a name="review"></a>檢閱
 
 在本教學課程中，您已成功完成下列工作：
 

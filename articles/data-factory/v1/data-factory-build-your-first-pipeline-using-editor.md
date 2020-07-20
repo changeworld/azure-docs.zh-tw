@@ -1,30 +1,26 @@
 ---
-title: 建置您的第一個 Data Factory (Azure 入口網站) | Microsoft Docs
+title: 建置第一個資料處理站 (Azure 入口網站)
 description: 在本教學課程中，您會使用 Azure 入口網站中的 Data Factory 編輯器，建立 Azure Data Factory 管線範例。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: ''
-editor: ''
-ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 11e92b4c6b8799cde489369a202f8f7c8c05ca6c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 4b291dcc95e0beecb1fd9fbf038055d8a77c7b79
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535989"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254968"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站建置您的第一個資料處理站
 > [!div class="op_single_selector"]
 > * [概觀和必要條件](data-factory-build-your-first-pipeline.md)
-> * [Azure 入口網站](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Azure Resource Manager 範本](data-factory-build-your-first-pipeline-using-arm.md)
@@ -33,6 +29,9 @@ ms.locfileid: "57535989"
 
 > [!NOTE]
 > 本文適用於第 1 版 Azure Data Factory (正式運作版)。 如果您使用目前版本的 Data Factory 服務，請參閱[快速入門：使用 Data Factory 建立資料處理站](../quickstart-create-data-factory-dot-net.md)。
+
+> [!WARNING]
+> Azure 入口網站中用於撰寫及部署 ADF v1 管線的 JSON 編輯器將於 2019 年 7 月 31 日關閉。 2019 年 7 月 31 日之後，您可以繼續使用 [ADF v1 Powershell Cmdlet](https://docs.microsoft.com/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2)、[ADF v1 .Net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet)、[ADF v1 REST API](https://docs.microsoft.com/rest/api/datafactory/) 來撰寫及部署您的 ADF v1 管線。
 
 在本文中，您會了解如何使用 [Azure 入口網站](https://portal.azure.com/) 來建立您的第一個資料處理站。 若要使用其他工具/SDK 進行本教學課程，請選取下拉式清單的其中一個選項。 
 
@@ -77,7 +76,7 @@ ms.locfileid: "57535989"
 
 1. 選取 [釘選到儀表板] 核取方塊。
 
-1. 選取 [建立] 。
+1. 選取 [建立]。
 
    > [!IMPORTANT]
    > 若要建立 Data Factory 執行個體，您必須是訂用帳戶/資源群組層級的 [Data Factory 參與者](../../role-based-access-control/built-in-roles.md#data-factory-contributor)角色成員。
@@ -111,7 +110,7 @@ ms.locfileid: "57535989"
 
    ![儲存體連結服務](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
-1. 將**帳戶名稱**取代成您儲存體帳戶的名稱。 將**帳戶金鑰**取代成儲存體帳戶的存取金鑰。 若要了解如何取得您的儲存體存取金鑰，請參閱[管理儲存體帳戶](../../storage/common/storage-account-manage.md#access-keys)，以了解如何檢視、複製及重新產生儲存體存取金鑰。
+1. 將**帳戶名稱**取代成您儲存體帳戶的名稱。 將**帳戶金鑰**取代成儲存體帳戶的存取金鑰。 若要了解如何取得儲存體存取金鑰，請參閱[管理儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。
 
 1. 選取命令列上的 [部署] 以部署連結服務。
 
@@ -148,11 +147,11 @@ ms.locfileid: "57535989"
 
     下表提供程式碼片段中所使用之 JSON 屬性的描述。
 
-   | 屬性 | 說明 |
+   | 屬性 | 描述 |
    |:--- |:--- |
    | clusterSize |指定 HDInsight 叢集的大小。 |
    | timeToLive | 指定刪除 HDInsight 叢集前的閒置時間。 |
-   | 預設容器 | 指定用來儲存 HDInsight 產生之記錄的儲存體帳戶。 |
+   | linkedServiceName | 指定用來儲存 HDInsight 產生之記錄的儲存體帳戶。 |
 
     請注意下列幾點：
 
@@ -209,16 +208,16 @@ ms.locfileid: "57535989"
     ```
     下表提供程式碼片段中所使用之 JSON 屬性的描述。
 
-   | 屬性 | 說明 |
-   |:--- |:--- |
-   | type |類型屬性會設為 **AzureBlob**，因為資料位於 Blob 儲存體。 |
-   | 預設容器 |表示您先前建立的 AzureStorageLinkedService。 |
-   | folderPath | 指定包含輸入 Blob 的 Blob 容器和資料夾。 | 
-   | fileName |這是選用屬性。 如果您省略此屬性，會挑選位於 folderPath 的所有檔案。 在本教學課程中，只會處理 input.log 檔案。 |
-   | type |記錄檔為文字格式，因此我們會使用 **TextFormat**。 |
-   | columnDelimiter |記錄檔案中的資料行會以逗號字元 (`,`) 分隔。 |
-   | frequency/interval |頻率設為「**每月**」且間隔為 **1**，表示每個月都會可取得輸入配量。 |
-   | external | 如果輸入資料不是由此管線產生，此屬性會設為 **true**。 在本教學課程中，input.log 檔案不是由此管線產生，因此我們會將屬性設為 **true**。 |
+   | 屬性 | 所在巢狀結構 | 描述 |
+   |:--- |:--- |:--- |
+   | type | properties |類型屬性會設為 **AzureBlob**，因為資料位於 Blob 儲存體。 |
+   | linkedServiceName | format |表示您先前建立的 AzureStorageLinkedService。 |
+   | folderPath | typeProperties | 指定包含輸入 Blob 的 Blob 容器和資料夾。 | 
+   | fileName | typeProperties |這是選用屬性。 如果您省略此屬性，會挑選位於 folderPath 的所有檔案。 在本教學課程中，只會處理 input.log 檔案。 |
+   | type | format |記錄檔為文字格式，因此我們會使用 **TextFormat**。 |
+   | columnDelimiter | format |記錄檔案中的資料行會以逗號字元 (`,`) 分隔。 |
+   | frequency/interval | availability |頻率設為「**每月**」且間隔為 **1**，表示每個月都會可取得輸入配量。 |
+   | external | properties | 如果輸入資料不是由此管線產生，此屬性會設為 **true**。 在本教學課程中，input.log 檔案不是由此管線產生，因此我們會將屬性設為 **true**。 |
 
     如需這些 JSON 屬性的詳細資訊，請參閱 [Azure Blob 連接器](data-factory-azure-blob-connector.md#dataset-properties)。
 
@@ -414,7 +413,7 @@ ms.locfileid: "57535989"
 
     ![監視及管理圖格](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-tile.png)
 
-1. 在「監視及管理」應用程式中，變更 [開始時間] 和 [結束時間] 以符合您管線的開始和結束時間。 選取 [套用] 。
+1. 在「監視及管理」應用程式中，變更 [開始時間] 和 [結束時間] 以符合您管線的開始和結束時間。 選取 [套用]。
 
     ![監視及管理應用程式](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-app.png)
 
@@ -422,7 +421,7 @@ ms.locfileid: "57535989"
 
     ![活動時段清單](./media/data-factory-build-your-first-pipeline-using-editor/activity-window-details.png)
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 在本教學課程中，您已在 HDInsight Hadoop 叢集上執行 Hive 指令碼，建立了資料處理站來處理資料。 您已使用 Azure 入口網站中使用 Data Factory 編輯器來執行下列步驟︰  
 
 * 建立資料處理站。
@@ -433,10 +432,10 @@ ms.locfileid: "57535989"
 * 建立具有 HDInsight Hive 活動的管線。
 
 ## <a name="next-steps"></a>後續步驟
-在本文中，您已經建立可在隨選 HDInsight 叢集上執行 Hive 指令碼，且含有轉換活動 (HDInsight 活動) 的管線。 若要查看如何使用複製活動將資料從 Blob 儲存體複製到 SQL 資料庫，請參閱[教學課程：將資料從 Blob 儲存體複製到 SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+在本文中，您已經建立可在隨選 HDInsight 叢集上執行 Hive 指令碼，且含有轉換活動 (HDInsight 活動) 的管線。 若要查看如何使用複製活動將資料從 Blob 儲存體複製到 Azure SQL Database，請參閱[教學課程：將資料從 Blob 儲存體複製到 SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 ## <a name="see-also"></a>另請參閱
-| 話題 | 說明 |
+| 主題 | 描述 |
 |:--- |:--- |
 | [管線](data-factory-create-pipelines.md) |本文協助您了解 Data Factory 中的管線和活動，以及如何使用這些來為您的案例或業務建構端對端的資料導向工作流程。 |
 | [資料集](data-factory-create-datasets.md) |本文協助您了解 Data Factory 中的資料集。 |

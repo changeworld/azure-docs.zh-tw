@@ -1,29 +1,22 @@
 ---
-title: StorSimple 區域可用性 | Microsoft Docs
+title: StorSimple 區域可用性
 description: 說明提供各種 StorSimple 裝置型號的 Azure 區域。
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: e290feb278a1cddf1cfecfcb66458d8290ec122a
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
-ms.translationtype: MT
+ms.openlocfilehash: a2f04d6faa7770eef7768437ae0e624b76713f98
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64943600"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76275119"
 ---
 # <a name="available-regions-for-your-storsimple"></a>您的 StorSimple 的可用區域
 
-## <a name="overview"></a>概觀
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
+
+## <a name="overview"></a>總覽
 
 Azure 資料中心在全球多個地區運行，以滿足客戶對資料位置相關之效能、需求和喜好設定的要求。 Azure 地理位置是包含至少一個 Azure 區域的已定義世界區域。 Azure 區域是包含一或多個資料中心之地理位置內的區域。
 
@@ -32,7 +25,7 @@ Azure 資料中心在全球多個地區運行，以滿足客戶對資料位置�
 針對 StorSimple 解決方案，區域選擇特別取決於下列因素：
 
 - 可使用 StorSimple 裝置管理員服務的區域。
-- 國家/地區的 StorSimple 實體、 雲端或虛擬裝置可使用的。
+- 可使用 StorSimple 實體、雲端或虛擬裝置的國家/地區。
 - 儲存 StorSimple 資料之儲存體帳戶為了取得最佳效能所在之區域。
 
 本教學課程說明 StorSimple 裝置管理員服務、內部部署實體和雲端裝置的區域可用性。 本文所含資訊僅適用於 StorSimple 8000 和 1200 系列裝置。
@@ -61,18 +54,18 @@ StorSimple 資料實際儲存在 Azure 儲存體帳戶中，且這些帳戶在�
 
 ## <a name="availability-of-storsimple-device"></a>StorSimple 裝置的可用性
 
-視模型而定，StorSimple 裝置可以在不同的地理位置或國家/地區。
+視模型而定，StorSimple 裝置可以在不同的地理位置或國家/地區使用。
 
 ### <a name="storsimple-physical-device-models-81008600"></a>StorSimple 實體裝置 (型號 8100/8600)
 
-使用 StorSimple 8100 或 8600 實體裝置，裝置可在下列國家/地區。
+如果使用 StorSimple 8100 或8600實體裝置，裝置會在下列國家/地區提供。
 
-| #  | 國家/區域        | #  | 國家/區域     | #  | 國家/區域      | #  | 國家/區域             |
+| #  | 國家/地區        | #  | 國家/地區     | #  | 國家/地區      | #  | 國家/地區             |
 |----|-----------------------|----|--------------------|----|---------------------|----|----------------------------|
-| 1  | 澳大利亞             | 16 | 香港特別行政區      | 31 | 紐西蘭         | 46 | 南非               |
+| 1  | 澳洲             | 16 | 香港特別行政區      | 31 | 紐西蘭         | 46 | 南非               |
 | 2  | 奧地利               | 17 | 匈牙利            | 32 | 奈及利亞             | 47 | 南韓                |
 | 3  | 巴林               | 18 | 冰島            | 33 | 挪威              | 48 | 西班牙                      |
-| 4  | 比利時               | 19 | 印度              | 34 | 祕魯                | 49 | 斯里蘭卡                  |
+| 4  | 比利時               | 19 | 印度              | 34 | 秘魯                | 49 | 斯里蘭卡                  |
 | 5  | 巴西                | 20 | 印尼          | 35 | 菲律賓         | 50 | 瑞典                     |
 | 6  | 加拿大                | 21 | 愛爾蘭            | 36 | 波蘭              | 51 | 瑞士                |
 | 7  | 智利                 | 22 | 以色列             | 37 | 葡萄牙            | 52 | 台灣                     |
@@ -85,18 +78,18 @@ StorSimple 資料實際儲存在 Azure 儲存體帳戶中，且這些帳戶在�
 | 14 | 德國               | 29 | 墨西哥             | 44 | 斯洛伐克            | 59 | 越南                    |
 | 15 | 希臘                | 30 | 荷蘭        | 45 | 斯洛維尼亞            | 60 | 克羅埃西亞                    |
 
-新增更多國家/地區時，就會變更這份清單。 如需最新的地理位置清單，請移至[產品條款](https://www.microsoft.com/en-us/licensing/product-licensing/products)中的＜儲存體陣列條款附錄＞。
+此清單會隨著更多國家/地區新增而變更。 如需最新的地理位置清單，請移至[產品條款](https://www.microsoft.com/en-us/licensing/product-licensing/products)中的＜儲存體陣列條款附錄＞。
 
 Microsoft 可以在前述清單中的地理位置寄送實體硬體，並提供 StorSimple 的硬體備用零件更換。
 
 > [!IMPORTANT]
-> 請勿將 StorSimple 實體裝置放在不支援 StorSimple 的區域。 Microsoft 無法出貨國家/地區以任何更換零件不支援 StorSimple。
+> 請勿將 StorSimple 實體裝置放在不支援 StorSimple 的區域。 Microsoft 將無法在不支援 StorSimple 的國家/地區寄送任何更換元件。
 
 ### <a name="storsimple-cloud-appliance-models-80108020"></a>StorSimple 雲端設備 (型號 8010/8020)
 
 如果使用的是 StorSimple 雲端設備 8010 或 8020，則該裝置在支援基礎 VM 的所有區域都受到支援並可使用。 8010 使用 _Standard_A3_ VM，所有 Azure 區域都支援該 VM。
 
-8020 使用進階儲存體和 _Standard_DS3_ VM 建立雲端設備。 在支援進階儲存體和 _Standard_DS3_ Azure VM 的 Azure 區域中，8020 受到支援。 使用[這份清單](https://azure.microsoft.com/regions/services/)，查看您的區域是否提供「虛擬機器 > DS 系列」和「儲存體 > 磁碟儲存體」。
+8020 使用進階儲存體和 _Standard_DS3_ VM 建立雲端設備。 在支援進階儲存體和 _Standard_DS3_ Azure VM 的 Azure 區域中，8020 受到支援。 使用[這份清單](https://azure.microsoft.com/regions/services/)，查看您的區域是否提供「虛擬機器 > DS 系列」**** 和「儲存體 > 磁碟儲存體」****。
 
 ### <a name="storsimple-virtual-array-model-1200"></a>StorSimple Virtual Array (型號 1200)
 

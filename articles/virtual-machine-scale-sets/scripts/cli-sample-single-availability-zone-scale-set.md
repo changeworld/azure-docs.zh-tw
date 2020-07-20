@@ -1,27 +1,20 @@
 ---
-title: Azure CLI 範例 - 單一區域擴展集 | Microsoft Docs
-description: Azure CLI 範例
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.devlang: azurecli
+title: Azure CLI 範例 - 單一區域擴展集
+description: 此指令碼會建立在單一可用性區域中執行 Ubuntu 的 Azure 虛擬機器擴展集。
+author: mimckitt
+ms.author: mimckitt
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: virtual-machine-scale-sets
+ms.subservice: availability
 ms.date: 03/27/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 12e8ebea994b39b7c4324b52068b574749002117
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 8883bd099b684b5086554feded88e133764e614f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982228"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83701614"
 ---
 # <a name="create-a-single-zone-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 建立單一區域虛擬機器擴展集
 此指令碼會建立在單一可用性區域中執行 Ubuntu 的虛擬機器擴展集。 執行指令碼之後，您可以透過 RDP 存取虛擬機器。
@@ -43,7 +36,7 @@ az group delete --name myResourceGroup
 ## <a name="script-explanation"></a>指令碼說明
 此指令碼使用下列命令來建立資源群組、虛擬機器擴展集和所有相關資源。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [az group create](/cli/azure/ad/group) | 建立用來存放所有資源的資源群組。 |
 | [az vmss create](/cli/azure/vmss) | 建立虛擬機器擴展集，並將它連線到虛擬網路、子網路及網路安全性群組。 若要將流量散發到多個虛擬機器執行個體，也會建立負載平衡器。 此命令也會指定要使用的 VM 映像和管理認證。  |
@@ -51,5 +44,3 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>後續步驟
 如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](https://docs.microsoft.com/cli/azure/overview)。
-
-您可以在 [Azure 虛擬機器擴展集文件](../cli-samples.md)中找到其他虛擬機器擴展集的 Azure CLI 指令碼範例。

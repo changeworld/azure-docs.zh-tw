@@ -4,22 +4,21 @@ description: 了解如何使用 PerfInsights 針對 Windows VM 效能問題進�
 services: virtual-machines-windows'
 documentationcenter: ''
 author: anandhms
-manager: cshepard
+manager: dcscontentpm
 editor: na
 tags: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: cb414abcbbf2db7b7cd6a3d724e50010beeef647
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 896e69bad9cd75b57ef2bf93048c332ef4d974c0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60318298"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207702"
 ---
 # <a name="how-to-use-perfinsights"></a>如何使用 PerfInsights
 
@@ -35,7 +34,7 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
 
 此案例會收集磁碟設定和其他重要資訊，包括：
 
--   事件記錄
+-   事件記錄檔
 
 -   所有傳入和傳出連線的網路狀態
 
@@ -77,18 +76,18 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
 | IOPS         | 資料要求/秒             |
 |              | 讀取要求/秒             |
 |              | 寫入要求/秒            |
-| Latency      | 平均秒/資料要求         |
+| 延遲      | 平均秒/資料要求         |
 |              | 平均秒/讀取                 |
 |              | 平均秒/寫入                |
-| IO 大小      | Avg.位元組/資料要求       |
-|              | Avg.位元組/讀取               |
-|              | Avg.位元組/寫入              |
-| Throughput   | 資料位元組/秒                |
+| IO 大小      | 平均位元組/資料要求       |
+|              | 平均位元組/讀取               |
+|              | 平均位元組/寫入              |
+| 輸送量   | 資料位元組/秒                |
 |              | 讀取位元組/秒                |
 |              | 寫入位元組/秒               |
-| 佇列長度 | Avg.讀取佇列長度        |
-|              | Avg.寫入佇列長度       |
-|              | Avg.資料佇列長度        |
+| 佇列長度 | 平均讀取佇列長度        |
+|              | 平均寫入佇列長度       |
+|              | 平均資料佇列長度        |
 
 ### <a name="advanced-performance-analysis"></a>進階效能分析
 
@@ -102,9 +101,8 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
 
 收集的資訊包括 Windows VM、磁碟或儲存集區設定、效能計數器、記錄和各種追蹤。 這取決於您所使用的效能案例。 下表提供詳細資料：
 
-|收集的資料                              |  |  | 效能測試案例 |  |  | |
-|----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                               | 快速效能分析 | 效能評定 | 效能分析 | Azure 檔案分析 | 進階效能分析 |
+| 收集的資料 | 快速效能分析 | 效能評定 | 效能分析 | Azure 檔案分析 | 進階效能分析 |
+|----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|
 | 來自事件記錄的資訊       | 是                        | 是                                | 是                      | 是                  | 是                  |
 | 系統資訊                | 是                        | 是                                | 是                      | 是                  | 是                  |
 | 磁碟區對應                        | 是                        | 是                                | 是                      | 是                  | 是                  |
@@ -132,10 +130,10 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
 
 在背景中執行規則引擎來收集資料並診斷進行中的效能問題。 目前支援下列規則：
 
-- HighCpuUsage 規則：偵測到高 CPU 使用量時段，並顯示在這些時段的最上層的 CPU 使用量取用者。
-- HighDiskUsage 規則：偵測實體磁碟上，較高的磁碟使用量時段，並顯示在這些時段的最上層的磁碟使用量取用者。
-- HighResolutionDiskMetric 規則：顯示個每個實體磁碟每 50 毫秒的 IOPS、 輸送量和 I/O 延遲計量。 它有助於快速找出磁碟節流時段。
-- HighMemoryUsage 規則：偵測到高記憶體使用量時段，並顯示在這些時段最多的記憶體使用量取用者。
+- HighCpuUsage 規則：偵測高 CPU 使用量時段，並顯示在這些時段內前幾名的 CPU 使用量取用者。
+- HighDiskUsage 規則：偵測實體磁碟的高磁碟使用量時段，並顯示在這些時段內前幾名的磁碟使用量取用者。
+- HighResolutionDiskMetric 規則：顯示每個實體磁碟每 50 毫秒的 IOPS、輸送量和 I/O 延遲計量。 它有助於快速找出磁碟節流時段。
+- HighMemoryUsage 規則：偵測高記憶體使用量時段，並顯示在這些時段內前幾名的記憶體使用量取用者。
 
 > [!NOTE] 
 > 目前支援包含 .NET Framework 4.5 或更新版本的 Windows 版本。
@@ -167,7 +165,7 @@ Diskspd I/O 工作負載測試 (OS 磁碟 [寫入] 和集區磁碟 [讀取/寫�
 
 -  此工具必須在發生效能問題的 VM 上執行。 
 
--  以下為支援的作業系統：Windows Server 2008 R2、 Windows Server 2012、 Windows Server 2012 R2 和 Windows Server 2016;Windows 8.1 和 Windows 10。
+-  支援下列作業系統：Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 和 Windows Server 2016；Windows 8.1 和 Windows 10。
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>當您在生產 VM 上執行工具時可能發生的問題
 
@@ -192,9 +190,9 @@ Diskspd I/O 工作負載測試 (OS 磁碟 [寫入] 和集區磁碟 [讀取/寫�
 
 1. 下載 [PerfInsights.zip](https://aka.ms/perfinsightsdownload)。
 
-2. 解除封鎖 PerfInsights.zip 檔案。 若要這樣做，請以滑鼠右鍵按一下 PerfInsights.zip 檔案，然後選取 [屬性]。 在 [一般] 索引標籤上，選取 [解除封鎖]，然後選取 [確定]。 如此可確保工具執行時不會出現任何額外的安全性提示。  
+2. 解除封鎖 PerfInsights.zip 檔案。 若要這樣做，請以滑鼠右鍵按一下 PerfInsights.zip 檔案，然後選取 [屬性]****。 在 [一般]**** 索引標籤上，選取 [解除封鎖]****，然後選取 [確定]****。 如此可確保工具執行時不會出現任何額外的安全性提示。  
 
-    ![PerfInsights 屬性的螢幕擷取畫面 (已醒目提示 [解除封鎖])](media/how-to-use-perfInsights/unlock-file.png)
+    ![PerfInsights 屬性的螢幕擷取畫面 (已醒目提示 [解除封鎖])](media/how-to-use-perfInsights/pi-unlock-file.png)
 
 3.  將 PerfInsights.zip 檔案解壓縮至暫存磁碟機 (根據預設，這通常為 D 磁碟機)。 
 
@@ -204,7 +202,7 @@ Diskspd I/O 工作負載測試 (OS 磁碟 [寫入] 和集區磁碟 [讀取/寫�
     cd <the path of PerfInsights folder>
     PerfInsights
     ```
-    ![PerfInsights 命令列輸出的螢幕擷取畫面](media/how-to-use-perfInsights/PerfInsightsCommandline.png)
+    ![PerfInsights 命令列輸出的螢幕擷取畫面](media/how-to-use-perfInsights/pi-commandline.png)
     
     執行 PerfInsights 案例的基本語法如下：
     
@@ -251,10 +249,10 @@ Diskspd I/O 工作負載測試 (OS 磁碟 [寫入] 和集區磁碟 [讀取/寫�
 
 在 **PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.zip** 檔案內，您可以找到詳細說明 PerfInsights 結果的 HTML 報告。 若要檢閱報告，請展開 **PerformanceDiagnostics\_yyyy-MM-dd\_hh-mm-ss-fff.zip** 檔案，然後開啟 **PerfInsights Report.html** 檔案。
 
-選取 [Findings] \(結果) 索引標籤。
+選取 [Findings] \(結果)**** 索引標籤。
 
-![PerfInsights 報告的螢幕擷取畫面](media/how-to-use-perfInsights/findingtab.png)
-![PerfInsights 報告的螢幕擷取畫面](media/how-to-use-perfInsights/findings.PNG)
+![PerfInsights 報告的螢幕擷取畫面](media/how-to-use-perfInsights/pi-finding-tab.png)
+![PerfInsights 報告的螢幕擷取畫面](media/how-to-use-perfInsights/pi-findings.png)
 
 > [!NOTE] 
 > 分類為「高」的結果是可能會造成效能問題的已知問題。 分類為「中」的結果表示不一定會造成效能問題的非最佳化設定。 分類為「低」的結果是僅用來參考的資訊說明。
@@ -265,34 +263,34 @@ Diskspd I/O 工作負載測試 (OS 磁碟 [寫入] 和集區磁碟 [讀取/寫�
 
 **結果**區段會顯示有關儲存體的各種結果與建議。
 
-[DiskMap] 和 [VolumeMap] 區段說明邏輯磁碟區和實體磁碟如何彼此相關。
+[DiskMap]**** 和 [VolumeMap]**** 區段說明邏輯磁碟區和實體磁碟如何彼此相關。
 
-在實體磁碟檢視方塊 (磁碟對應) 中，資料表會顯示在磁碟上執行的所有邏輯磁碟區。 在下列範例中，**PhysicalDrive2** 執行在多個分割區建立的 2 個邏輯磁碟區 (J 和 H)：
+在實體磁碟檢視方塊 (磁碟對應) 中，資料表會顯示在磁碟上執行的所有邏輯磁碟區。 在下列範例中， **PhysicalDrive2**會在 (J 和 H) 的多個磁碟分割上，執行兩個建立的邏輯磁片區：
 
-![磁碟索引標籤的螢幕擷取畫面](media/how-to-use-perfInsights/disktab.png)
+![磁碟索引標籤的螢幕擷取畫面](media/how-to-use-perfInsights/pi-disk-tab.png)
 
-在磁碟區檢視方塊中 (磁碟區對應)，資料表會顯示每個邏輯磁碟區下的所有實體磁碟。 請注意，對於 RAID/動態磁碟，您可能會在多個實體磁碟上執行邏輯磁碟區。 在下列範例中，*C:\\mount* 是在實體磁碟 2 和 3 上設定為 SpannedDisk 的掛接點：
+在磁碟區檢視方塊中 (磁碟區對應)，資料表會顯示每個邏輯磁碟區下的所有實體磁碟。 請注意，對於 RAID/動態磁碟，您可能會在多個實體磁碟上執行邏輯磁碟區。 在下列範例中，*C:\\mount* 是在實體磁碟 2 和 3 上設定為 SpannedDisk** 的掛接點：
 
-![磁碟區索引標籤的螢幕擷取畫面](media/how-to-use-perfInsights/volumetab.png)
+![磁碟區索引標籤的螢幕擷取畫面](media/how-to-use-perfInsights/pi-volume-tab.png)
 
 ### <a name="sql-tab"></a>[SQL] 索引標籤
 
 如果目標 VM 裝載任何 SQL Server 執行個體，您將在報表中看到名為 **SQL** 的其他索引標籤：
 
-![SQL 索引標籤的螢幕擷取畫面](media/how-to-use-perfInsights/sqltab.png)
+![SQL 索引標籤的螢幕擷取畫面](media/how-to-use-perfInsights/pi-sql-tab.png)
 
-本區段包含 [結果] 索引標籤，以及裝載在虛擬機器上的每個 SQL Server 執行個體的其他索引標籤。
+本區段包含 [結果]**** 索引標籤，以及裝載在虛擬機器上的每個 SQL Server 執行個體的其他索引標籤。
 
-[結果] 索引標籤包含所有發現的 SQL 效能相關問題清單及建議事項。
+[**結果**] 索引標籤包含所有發現的 SQL 相關效能問題清單，以及建議。
 
 下列範例中會顯示 **PhysicalDrive0** (執行 C 磁碟機)。 這是因為 **modeldev** 和 **modellog** 檔案都位於 C 磁碟機上，且為不同的類型 (例如它們分別為資料檔和交易記錄)。
 
-![記錄資訊的螢幕擷取畫面](media/how-to-use-perfInsights/loginfo.png)
+![記錄資訊的螢幕擷取畫面](media/how-to-use-perfInsights/pi-log-info.png)
 
 SQL Server 的特定執行個體索引標籤包含一般區段，其中顯示所選執行個體的基本資訊。 這些索引標籤也包含進階資訊的其他區段，包括設定、組態和使用者選項。
 
 ### <a name="diagnostic-tab"></a>[診斷] 索引標籤
-[診斷] 索引標籤包含 PerfInsights 執行期間電腦上的最上層 CPU、磁碟和記憶體取用相關資訊。 您也可以找到以下相關資訊：可能缺少系統的重大修補程式、工作清單和重要系統事件。 
+[診斷]**** 索引標籤包含 PerfInsights 執行期間電腦上的最上層 CPU、磁碟和記憶體取用相關資訊。 您也可以找到以下相關資訊：可能缺少系統的重大修補程式、工作清單和重要系統事件。 
 
 ## <a name="references-to-the-external-tools-used"></a>所用外部工具的參考
 
@@ -310,7 +308,7 @@ Xperf 是命令列工具，會從 Windows 效能工具組擷取追蹤。 如需�
 
 下列螢幕擷取畫面會顯示類似您可能收到的一則訊息：
 
-![來自 Microsoft 支援服務之範例訊息的螢幕擷取畫面](media/how-to-use-perfInsights/supportemail.png)
+![來自 Microsoft 支援服務之範例訊息的螢幕擷取畫面](media/how-to-use-perfInsights/pi-support-email.png)
 
 請依照訊息中的指示來存取檔案傳輸工作區。 為增加安全性，您必須在第一次使用時變更密碼。
 

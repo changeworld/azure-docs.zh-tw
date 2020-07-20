@@ -1,11 +1,10 @@
 ---
-title: Azure CLI 指令碼範例 - 將 Linux VM 加密 | Microsoft Docs
+title: Azure CLI 指令碼範例 - 將 Linux VM 加密
 description: Azure CLI 指令碼範例 - 將 Linux VM 加密
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
-editor: tysonn
+manager: gwallace
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -16,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8f3e032d6723faf149faad039e3c3faff3e6d83a
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 585096f7b45a1d5396e7d59f9d54de90486a103a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731490"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81459911"
 ---
 # <a name="encrypt-a-linux-virtual-machine-in-azure"></a>如何在 Azure 中將 Linux 虛擬機器加密
 
@@ -47,7 +46,7 @@ az group delete --name myResourceGroup
 
 此指令碼會使用下列命令來建立資源群組、Azure Key Vault、服務主體、虛擬機器和所有相關資源。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | 建立用來存放所有資源的資源群組。 |
 | [az keyvault create](https://docs.microsoft.com/cli/azure/keyvault) | 建立 Azure Key Vault 來儲存安全資料，例如加密金鑰。 |

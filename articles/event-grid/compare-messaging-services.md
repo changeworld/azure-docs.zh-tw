@@ -1,20 +1,14 @@
 ---
-title: Azure 訊息比較 - 事件方格、事件中樞、服務匯流排
+title: 比較 Azure 傳訊服務
 description: 描述三個 Azure 訊息服務 - Azure 事件方格、事件中樞和服務匯流排。 建議針對不同案例挑選服務。
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: overview
-ms.date: 01/30/2019
-ms.author: spelluru
-ms.custom: seodec18
-ms.openlocfilehash: d2daa23a22fae6ba420a146599c0c0ba659a94f2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 07/07/2020
+ms.openlocfilehash: 9c539accbc41f56e4421b9e793c25496987363aa
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540800"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101370"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>選擇 Azure 訊息服務 - 事件方格、事件中樞和服務匯流排
 
@@ -30,7 +24,7 @@ Azure 提供三種服務，協助在整個解決方案中傳遞事件訊息。 �
 
 傳遞事件的服務和傳遞訊息的服務之間有一個重要的區別。
 
-### <a name="event"></a>Event
+### <a name="event"></a>事件
 
 事件是狀況或狀態變更的輕量級通知。 事件發行者不會預期事件的處理方式。 事件取用者會決定要如何處理通知。 事件可以是離散單位或系列的一部分。
 
@@ -90,15 +84,15 @@ Azure 事件中樞是巨量資料管線。 它有助於擷取、保留和重送�
 
 ## <a name="use-the-services-together"></a>一起使用服務
 
-在某些情況下，您可以同時使用這些服務以滿足不同角色。 例如，電子商務網站可以使用服務匯流排來處理訂單，使用事件中樞來擷取站台遙測，使用 Event Grid 以回應事件 (例如運送項目)。
+在某些情況下，您可以同時使用這些服務以滿足不同角色。 例如，電子商務網站可以使用服務匯流排來處理訂單，使用事件中樞來擷取站台遙測，使用事件方格來回應事件 (例如運送項目)。
 
 在其他情況，也可將各種服務連結在一起以形成事件和資料管線。 可以使用 Event Grid 來回應其他服務中的事件。 如需使用 Event Grid 與事件中樞將資料移轉至資料倉儲的範例，請參閱[將巨量資料串流至資料倉儲](event-grid-event-hubs-integration.md)。 下圖顯示串流資料的工作流程。
 
 ![串流資料概觀](./media/compare-messaging-services/overview.png)
 
 ## <a name="next-steps"></a>後續步驟
-請參閱下列文章： 
-
+查看下列文章： 
+- [Azure 中的非同步訊息選項](/azure/architecture/guide/technology-choices/messaging)
 - [事件、資料點和訊息 - 為您的資料選擇正確的 Azure 傳訊服務](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/)。
 - [儲存體佇列和服務匯流排佇列 - 異同比較](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 - 若要開始使用 Event Grid，請參閱[使用 Azure Event Grid 建立和路由傳送自訂事件](custom-event-quickstart.md)。

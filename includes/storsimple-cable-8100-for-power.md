@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: db2104020e9478b1fedf68e1c9467f75e16044e2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60482680"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67174016"
 ---
 #### <a name="to-cable-for-power"></a>連接電源線
 1. 請確定每個電源和冷卻模組 (PCM) 上的電源開關都在 OFF 的位置。

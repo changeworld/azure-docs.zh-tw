@@ -1,37 +1,46 @@
 ---
-title: 使用 Azure Data Factory 將資料複製到 Azure 資料總管或從該處複製資料
+title: 從 Azure 資料總管複製資料
 description: 了解如何使用 Azure Data Factory 管線中的複製活動，將資料複製到 Azure 資料總管或從該處複製資料。
 services: data-factory
-documentationcenter: ''
+ms.author: orspodek
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/16/2019
-ms.author: orspodek
-ms.openlocfilehash: f501257903f3b7c621512f06d1c8c7109e22db1e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.custom: seo-lt-2019
+ms.date: 02/18/2020
+ms.openlocfilehash: ba8c35fc1802f7ef3ac54c693c8106bbc40cc185
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60394501"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82560156"
 ---
-# <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>使用 Azure Data Factory 將資料複製到 Azure 資料總管或從該處複製資料
+# <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure 資料總管之間複製資料
 
-本文概述如何使用 Azure Data Factory 中的複製活動，將資料複製到 [Azure 資料總管](../data-explorer/data-explorer-overview.md)或從該處複製資料。 本文是根據[複製活動概觀](copy-activity-overview.md)一文，該文提供複製活動的一般概觀。
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+本文說明如何使用 Azure Data Factory 中的「複製活動」，從[Azure 資料總管](/azure/data-explorer/data-explorer-overview)複製資料 它是以[複製活動總覽](copy-activity-overview.md)一文為基礎，提供複製活動的一般總覽。
+
+>[!TIP]
+>如需 Azure Data Factory 和 Azure 資料總管整合的一般資訊，請深入瞭解[整合 Azure 資料總管與 Azure Data Factory](/azure/data-explorer/data-factory-integration)。
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-您可以將資料從任何支援的來源資料存放區複製到 Azure 資料總管。 您也可以將資料從 Azure 資料總管複製到任何支援的接收資料存放區。 如需複製活動所支援作為來源或接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md)表格。
+此 Azure 資料總管連接器支援下列活動：
+
+- 含[支援來源/接收器矩陣](copy-activity-overview.md)的[複製活動](copy-activity-overview.md)
+- [查閱活動](control-flow-lookup-activity.md)
+
+您可以將資料從任何支援的來源資料存放區複製到 Azure 資料總管。 您也可以將資料從 Azure 資料總管複製到任何支援的接收資料存放區。 如需複製活動支援作為來源或接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
 
 >[!NOTE]
->自版 3.14，支援使用從 Azure 資料總管，或將使用自我裝載整合執行階段的內部部署資料存放區複製資料。
+>3.14 和更新版本支援使用自我裝載整合執行時間，透過內部部署資料存放區將資料複製到 Azure 資料總管或從該處複製資料。
 
-Azure 資料總管連接器可讓您執行下列作業：
+使用 Azure 資料總管連接器，您可以執行下列動作：
 
 * 使用 Azure Active Directory (Azure AD) 應用程式權杖驗證搭配**服務主體**來複製資料。
 * 作為來源時，請使用 KQL (Kusto) 查詢擷取資料。
@@ -40,7 +49,7 @@ Azure 資料總管連接器可讓您執行下列作業：
 ## <a name="getting-started"></a>開始使用
 
 >[!TIP]
->使用 Azure Data Explorer 連接器的逐步解說，請參閱 <<c0> [ 使用 Azure Data Factory 的 Azure 資料總管的來回複製資料](../data-explorer/data-factory-load-data.md)。
+>如需 Azure 資料總管連接器的逐步解說，請參閱[使用 Azure Data Factory 從資料庫將資料複製到 azure 資料總管](/azure/data-explorer/data-factory-load-data)，並[從資料庫大量複製到 azure 資料總管](/azure/data-explorer/data-factory-template)。
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -48,32 +57,32 @@ Azure 資料總管連接器可讓您執行下列作業：
 
 ## <a name="linked-service-properties"></a>連結服務屬性
 
-Azure 資料總管連接器會使用服務主體驗證。 請遵循下列步驟來取得服務主體，並授與權限：
+Azure 資料總管連接器會使用服務主體驗證。 請遵循下列步驟來取得服務主體，並授與許可權：
 
-1. 遵循[使用 Azure AD 租用戶註冊應用程式](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant)，以在 Azure Active Directory (Azure AD) 中註冊應用程式實體。 請記下以下的值，您可以使用這些值來定義連結服務：
+1. 遵循[向 Azure AD 租使用者註冊您的應用程式](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant)中的步驟，在 Azure Active Directory 中註冊應用程式實體。 請記下以下的值，您可以使用這些值來定義連結服務：
 
     - 應用程式識別碼
     - 應用程式金鑰
     - 租用戶識別碼
 
-2. 服務主體適當權限授與 Azure 在資料總管中。 請參閱[管理 Azure 資料總管資料庫權限](../data-explorer/manage-database-permissions.md)上角色和權限，以及逐步解說中的管理權限的詳細資訊。 一般情況下，您需要
+2. 在 Azure 資料總管中，將正確的許可權授與服務主體。 如需有關角色和許可權以及管理許可權的詳細資訊，請參閱[管理 Azure 資料總管資料庫許可權](/azure/data-explorer/manage-database-permissions)。 一般來說，您必須：
 
-    - **做為來源**，請至少授與**資料庫檢視器**到您的資料庫角色。
-    - **作為接收器**，請至少授與**資料庫擷取器**到您的資料庫角色。
+    - **作為來源**，請至少授與資料庫**檢視器**角色給您的資料庫
+    - **作為接收器**，請至少將**資料庫擷取器**角色授與您的資料庫
 
 >[!NOTE]
->當使用 ADF UI 來撰寫，列出連結的服務上的資料庫，或列出資料集上的資料表作業可能需要較高特殊權限的權限授與服務主體。 或者，您可以選擇手動輸入資料庫名稱和資料表名稱。 只要具有讀取/寫入資料的適當權限授與服務主體，請將複製活動執行運作。
+>當您使用 Data Factory UI 來撰寫時，您的登入使用者帳戶會用來列出 Azure 資料總管叢集、資料庫和資料表。 如果您沒有這些作業的許可權，請以手動方式輸入名稱。
 
-Azure 資料總管連結服務支援以下屬性：
+以下是針對 Azure 資料總管已連結服務支援的屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | **type** 屬性必須設定為 **AzureDataExplorer** | 是 |
-| endpoint | Azure 資料總管叢集的端點 URL，格式為 `https://<clusterName>.<regionName>.kusto.windows.net`。 | 是 |
-| database | 資料庫名稱。 | 是 |
-| tenant | 指定您的應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 這是什麼您通常稱為 「**授權識別碼**」 中[Kusto 連接字串](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)。 將滑鼠游標暫留在 Azure 入口網站右上角，即可擷取它。 | 是 |
-| servicePrincipalId | 指定應用程式的用戶端識別碼。 這是什麼您通常稱為 「**AAD 應用程式用戶端識別碼**」 中[Kusto 連接字串](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)。 | 是 |
-| servicePrincipalKey | 指定應用程式的金鑰。 這是什麼您通常稱為 「**AAD 應用程式金鑰**」 中[Kusto 連接字串](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)。 將此欄位標記為 **SecureString**，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
+| type | **Type**屬性必須設定為**AzureDataExplorer**。 | 是 |
+| 端點 | Azure 資料總管叢集的端點 URL，格式為 `https://<clusterName>.<regionName>.kusto.windows.net`。 | 是 |
+| [資料庫] | 資料庫名稱。 | 是 |
+| tenant | 指定您的應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 這在[Kusto 連接字串](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)中稱為「授權識別碼」。 將滑鼠指標暫留在 Azure 入口網站的右上角，即可取出。 | 是 |
+| servicePrincipalId | 指定應用程式的用戶端識別碼。 這在[Kusto 連接字串](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)中稱為「AAD 應用程式用戶端識別碼」。 | 是 |
+| servicePrincipalKey | 指定應用程式的金鑰。 這在[Kusto 連接字串](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)中稱為「AAD 應用程式金鑰」。 將此欄位標記為**SecureString** ，將它安全地儲存在 Data Factory 中，或[參考儲存在 Azure Key Vault 中的安全資料](store-credentials-in-key-vault.md)。 | 是 |
 
 **連結服務屬性範例：**
 
@@ -98,30 +107,31 @@ Azure 資料總管連結服務支援以下屬性：
 
 ## <a name="dataset-properties"></a>資料集屬性
 
-如需可用來定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 Azure 資料總管資料集所支援的屬性清單。
+如需可用來定義資料集的區段和屬性完整清單，請參閱[Azure Data Factory 中的資料集](concepts-datasets-linked-services.md)。 本節列出 Azure 資料總管資料集所支援的屬性。
 
 若要將資料複製到 Azure 資料總管，請將資料集的 type 屬性設定為 **AzureDataExplorerTable**。
 
 以下是支援的屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | **type** 屬性必須設定為 **AzureDataExplorerTable** | 是 |
-| table | 連結服務所參考的資料表名稱。 | Yes (接收)：No (來源) |
+| type | **Type**屬性必須設定為**AzureDataExplorerTable**。 | 是 |
+| 資料表 | 連結服務所參考的資料表名稱。 | Yes (接收)：No (來源) |
 
-**資料集屬性範例**
+**資料集屬性範例：**
 
 ```json
 {
    "name": "AzureDataExplorerDataset",
     "properties": {
         "type": "AzureDataExplorerTable",
+        "typeProperties": {
+            "table": "<table name>"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Azure Data Explorer linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "table": "<table name>"
         }
     }
 }
@@ -129,22 +139,23 @@ Azure 資料總管連結服務支援以下屬性：
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 
-如需可用來定義活動的區段和屬性完整清單，請參閱[管線](concepts-pipelines-activities.md)一文。 本節提供 Azure 資料總管來源和接收所支援的屬性清單。
+如需可用來定義活動的區段和屬性完整清單，請參閱[Azure Data Factory 中的管線和活動](concepts-pipelines-activities.md)。 本節提供 Azure 資料總管來源和接收器所支援的屬性清單。
 
 ### <a name="azure-data-explorer-as-source"></a>作為來源的 Azure 資料總管
 
 若要從 Azure 資料總管複製資料，請將複製活動來源中的 **type** 屬性設定為 **AzureDataExplorerSource**。 複製活動的 **source** 區段支援下列屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動來源的 **type** 屬性必須設定為：**AzureDataExplorerSource** | 是 |
-| query | [KQL 格式](/azure/kusto/query/)中指定的唯讀要求。 使用自訂的 KQL 查詢作為參考。 | 是 |
-| queryTimeout | 查詢要求逾時之前的等待時間。預設值是 10 分鐘 (00:10:00)；允許的最大值為 1 小時 (01:00:00)。 | 否 |
+| type | 複製活動來源的**類型**屬性必須設定為： **AzureDataExplorerSource** | 是 |
+| 查詢 | [KQL 格式](/azure/kusto/query/)中指定的唯讀要求。 使用自訂的 KQL 查詢作為參考。 | 是 |
+| queryTimeout | 查詢要求超時之前的等候時間。預設值為10分鐘（00:10:00）;允許的最大值為1小時（01:00:00）。 | 否 |
+| noTruncation | 指出是否截斷傳回的結果集。 根據預設，在500000記錄或 64 mb 之後，會截斷結果。 強烈建議進行截斷，以確保活動的正確行為。 |否 |
 
 >[!NOTE]
->預設的 azure 資料總管來源有 500,000 記錄或 64 MB 的大小限制。 若要擷取而不會截斷的所有記錄，您可以指定`set notruncation;`查詢的開頭。 請參閱[查詢限制](https://docs.microsoft.com/azure/kusto/concepts/querylimits)上更多詳細資料。
+>根據預設，Azure 資料總管來源的大小限制為500000筆記錄或 64 MB。 若要在不截斷的情況下取出所有記錄，您可以在 `set notruncation;` 查詢的開頭指定。 如需詳細資訊，請參閱[查詢限制](https://docs.microsoft.com/azure/kusto/concepts/querylimits)。
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -181,12 +192,13 @@ Azure 資料總管連結服務支援以下屬性：
 
 若要將資料複製到 Azure 資料總管，請將複製活動接收中的 type 屬性設定為 **AzureDataExplorerSink**。 複製活動的 **sink** 區段支援下列屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動接收的 **type** 屬性必須設定為：**AzureDataExplorerSink** | 是 |
-| ingestionMappingName | 預先建立的名稱**[對應](/azure/kusto/management/mappings#csv-mapping)** Kusto 資料表上。 若要將 Azure 資料總管-適用於從來源資料行**[所有支援來源存放區/格式](copy-activity-overview.md#supported-data-stores-and-formats)** 包括 CSV/JSON/Avro 格式等，您可以使用 「 複製活動[資料行對應](copy-activity-schema-and-type-mapping.md)（由名稱隱含或明確設定） 和 （或) Azure 資料總管對應。 | 否 |
+| type | 複製活動接收器的**類型**屬性必須設定為： **AzureDataExplorerSink**。 | 是 |
+| ingestionMappingName | Kusto 資料表上預先建立的[對應](/azure/kusto/management/mappings#csv-mapping)名稱。 若要將資料行從來源對應到 Azure 資料總管（適用于[所有支援的來源存放區和格式](copy-activity-overview.md#supported-data-stores-and-formats)，包括 CSV/JSON/Avro 格式），您可以使用複製活動資料[行對應](copy-activity-schema-and-type-mapping.md)（以名稱隱含或明確設定）和/或 Azure 資料總管對應。 | 否 |
+| additionalProperties | 屬性包，可以用來指定 Azure 資料總管接收尚未設定的任何內嵌屬性。 具體來說，它可以用來指定內嵌標記。 若要深入瞭解，請[流覽 Azure 資料探索資料](https://docs.microsoft.com/azure/data-explorer/ingestion-properties)內嵌檔。 | 否 |
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -199,7 +211,8 @@ Azure 資料總管連結服務支援以下屬性：
             },
             "sink": {
                 "type": "AzureDataExplorerSink",
-                "ingestionMappingName": "<optional Azure Data Explorer mapping name>"
+                "ingestionMappingName": "<optional Azure Data Explorer mapping name>",
+                "additionalProperties": {<additional settings for data ingestion>}
             }
         },
         "inputs": [
@@ -218,8 +231,12 @@ Azure 資料總管連結服務支援以下屬性：
 ]
 ```
 
+## <a name="lookup-activity-properties"></a>查閱活動屬性
+
+如需屬性的詳細資訊，請參閱[查閱活動](control-flow-lookup-activity.md)。
+
 ## <a name="next-steps"></a>後續步驟
 
-* 如需 Azure Data Factory 中的複製活動所支援作為來源和接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。
+* 如需 Azure Data Factory 中的複製活動支援作為來源和接收的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。
 
-* 深入了解[從 Azure Data Factory 複製資料到 Azure 資料總管](/azure/data-explorer/data-factory-load-data)。
+* 深入瞭解如何[將資料從 Azure Data Factory 複製到 Azure 資料總管](/azure/data-explorer/data-factory-load-data)。

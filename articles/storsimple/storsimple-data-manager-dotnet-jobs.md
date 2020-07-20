@@ -1,29 +1,20 @@
 ---
-title: 使用 .NET SDK 執行 Microsoft Azure StorSimple Data Manager 作業 | Microsoft Docs
+title: 將 .NET SDK 用於 Microsoft Azure StorSimple 資料管理員作業
 description: 了解如何使用 .NET SDK 啟動 StorSimple Data Manager 作業
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 80f01a926b94deebab59f8ef91bfc36a4600b5f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 316eddc98de78974bb2583f91ced635b148686c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60632296"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514889"
 ---
-# <a name="use-the-net-sdk-to-initiate-data-transformation"></a>使用.NET SDK 起始資料轉換
+# <a name="use-the-net-sdk-to-initiate-data-transformation"></a>使用 .NET SDK 起始資料轉換
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本文說明如何使用 StorSimple Data Manager 服務中的資料轉換功能來轉換 StorSimple 裝置資料。 轉換後的資料由雲端中的其他 Azure 服務取用。
 
@@ -44,7 +35,7 @@ ms.locfileid: "60632296"
     - Azure Powershell。 [下載 Azure Powershell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
 *   資源群組內 StorSimple 資料管理員中正確設定的作業定義。
 *   所有必要的 dll。 從 [GitHub 儲存機制](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls)下載這些 dll。
-*   GitHub 存放庫中的 [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1) 指令碼。
+*   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1)來自 GitHub 存放庫的腳本。
 
 ## <a name="step-by-step-procedure"></a>逐步程序
 
@@ -63,31 +54,31 @@ ms.locfileid: "60632296"
     * 用戶端識別碼
     * 租用戶識別碼
     * Active Directory 金鑰 (與上面輸入的金鑰相同)
-    * 订阅 ID
+    * 訂用帳戶識別碼
 
         ![設定參數指令碼輸出](media/storsimple-data-manager-dotnet-jobs/get-config-parameters.png)
 
 3. 使用 Visual Studio 2012、2013 或 2015 建立 C# .NET 主控台應用程式。
 
-    1. 啟動 **Visual Studio 2012/2013/2015**。
-    1. 選取 [檔案] > [新增] > [專案]。
+    1. 啟動**Visual Studio 2012/2013/2015**。
+    1. 選取 [檔案] > [新增] > [專案]****。
 
         ![建立專案 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-7.png)        
-    2. 選取 [已安裝] > [範本] > [Visual C#] > [主控台應用程式]。
-    3. 輸入 **DataTransformationApp** 做為 [名稱]。
-    4. 選取 **C:\DataTransformation** 做為 [位置]。
+    2. 選取 [已安裝] > [範本] > [Visual C#] > [主控台應用程式]****。
+    3. 輸入 **DataTransformationApp** 做為 [名稱]****。
+    4. 選取 **C:\DataTransformation** 做為 [位置]****。
     6. 按一下 [確定]  以建立專案。
 
         ![建立專案 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-1.png)
 
-4. 現在，在您建立的專案中，將 [dlls](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) 資料夾中出現的所有 dll 新增為 [參考]。 若要新增 dll 檔，請執行下列作業：
+4. 現在，在您建立的專案中，將 [dlls](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) 資料夾中出現的所有 dll 新增為 [參考]****。 若要新增 dll 檔，請執行下列作業：
 
-   1. 在 Visual Studio 中，移至 [檢視] > [方案總管]。
-   2. 按一下資料轉換應用程式專案左邊的箭號。 按一下 [參考]，然後按一下滑鼠右鍵以 [新增參考]。
+   1. 在 Visual Studio 中，移至 [檢視] > [方案總管]****。
+   2. 按一下資料轉換應用程式專案左邊的箭號。 按一下 [參考]****，然後按一下滑鼠右鍵以 [新增參考]****。
     
        ![新增 dll 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-4.png)
 
-   3. 瀏覽至套件資料夾的位置，選取所有 dll，按一下 [新增]，然後按一下 [確定]。
+   3. 瀏覽至套件資料夾的位置，選取所有 dll，按一下 [新增]****，然後按一下 [確定]****。
 
        ![新增 dll 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-6.png)
 
@@ -202,4 +193,4 @@ ms.locfileid: "60632296"
 
 ## <a name="next-steps"></a>後續步驟
 
-[使用 StorSimple Data Manager UI 來轉換資料](storsimple-data-manager-ui.md)。
+[使用 StorSimple 資料管理員的 UI 來轉換您的資料](storsimple-data-manager-ui.md)。

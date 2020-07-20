@@ -1,25 +1,20 @@
 ---
 title: Azure Event Grid 事件結構描述
-description: 描述 Azure Event Grid 中事件提供的屬性
-services: event-grid
-author: banisadr
-manager: timlt
-ms.service: event-grid
+description: 描述所有事件都有的屬性和架構。事件包含一組五個必要字串屬性和一個必要資料物件。
 ms.topic: reference
-ms.date: 01/20/2019
-ms.author: babanisa
-ms.openlocfilehash: b67d656ed6ab537a01696ec9c0c98f84b880f03b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 07/07/2020
+ms.openlocfilehash: 7ddc7c78c5a9e5ba2a57b21c45fb9fab65056ee9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60561557"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105875"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid 事件結構描述
 
-本文說明出現在所有事件中的屬性和結構描述。 事件包含一組五個必要字串屬性和一個必要資料物件。 這些屬性通用於任何發行者的所有事件。 資料物件含有各發行者特有的屬性。 系統主題下的屬性專屬於資源提供者，像是 Microsoft Azure 儲存體或 Azure 事件中樞。
+本文說明出現在所有事件中的屬性和結構描述。事件包含一組五個必要字串屬性和一個必要資料物件。 這些屬性通用於任何發行者的所有事件。 資料物件含有各發行者特有的屬性。 系統主題下的屬性專屬於資源提供者，像是 Microsoft Azure 儲存體或 Azure 事件中樞。
 
-事件來源會將事件以陣列型態傳送至 Azure 事件方格，陣列中可包含數個事件物件。 張貼事件到事件方格主題時，陣列總大小最大為 1 MB。 陣列中的每個事件會限制為 64 KB。 如果事件或陣列超過大小限制，您會收到 **413 承載太大**回應。
+事件來源會將事件以陣列型態傳送至 Azure 事件方格，陣列中可包含數個事件物件。 張貼事件到事件方格主題時，陣列總大小最大為 1 MB。 陣列中的每個事件限制為 1 MB。 如果事件或陣列超過大小限制，您會收到 **413 承載太大**回應。 不過，作業會以 64 KB 的增量計費。 因此，超過 64 KB 的事件會產生作業費用，就好像是多個事件一樣。 例如，130 KB 的事件會產生作業，就像是 3 個不同的事件一樣。
 
 事件方格會將事件傳送給包含單一事件之陣列中的訂閱者。 此行為未來可能會變更。
 
@@ -80,27 +75,29 @@ ms.locfileid: "60561557"
 
 所有事件皆包含下列相同的最高層級資料：
 
-| 屬性 | 類型 | 描述 |
-| -------- | ---- | ----------- |
-| 主題 | string | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
-| 主旨 | string | 發行者定義事件主體的路徑。 |
-| eventType | string | 此事件來源已註冊的事件類型之一。 |
-| eventTime | string | 事件產生的時間，以提供者之 UTC 時間為準。 |
-| id | string | 事件的唯一識別碼。 |
-| data | 物件 | 資源提供者特有的事件資料。 |
-| dataVersion | string | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
-| metadataVersion | string | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
+| 屬性 | 類型 | 必要 | 描述 |
+| -------- | ---- | -------- | ----------- |
+| 主題 | 字串 | 否，但如果包含的話，必須完全符合事件方格主題 Azure Resource Manager 識別碼。 如果未包含，事件方格會戳記至事件。 | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
+| subject | 字串 | 是 | 發行者定義事件主體的路徑。 |
+| eventType | 字串 | 是 | 此事件來源已註冊的事件類型之一。 |
+| eventTime | 字串 | 是 | 事件產生的時間，以提供者之 UTC 時間為準。 |
+| id | 字串 | 是 | 事件的唯一識別碼。 |
+| data | 物件 (object) | No | 資源提供者特有的事件資料。 |
+| dataVersion | 字串 | 否，但會以空值加以戳記。 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
+| metadataVersion | 字串 | 不需要，但如果包含的話，必須完全符合事件方格架構 `metadataVersion` （目前僅限 `1` ）。 如果未包含，事件方格會戳記至事件。 | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
 
 若要了解資料物件中的屬性，請參閱事件來源：
 
-* [Azure 訂用帳戶 (管理作業)](event-schema-subscriptions.md)
+* [Azure 訂用帳戶（管理作業）](event-schema-subscriptions.md)
 * [容器登錄](event-schema-container-registry.md)
 * [Blob 儲存體](event-schema-blob-storage.md)
 * [事件中樞](event-schema-event-hubs.md)
 * [IoT 中心](event-schema-iot-hub.md)
 * [媒體服務](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json)
-* [資源群組 (管理作業)](event-schema-resource-groups.md)
-* [服务总线](event-schema-service-bus.md)
+* [資源群組（管理作業）](event-schema-resource-groups.md)
+* [服務匯流排](event-schema-service-bus.md)
+* [Azure SignalR](event-schema-azure-signalr.md)
+* [Azure Machine Learning](event-schema-machine-learning.md)
 
 針對自訂主題，事件發行者會決定資料物件。 最高層級的資料應包含與標準資源定義事件相同的欄位。
 

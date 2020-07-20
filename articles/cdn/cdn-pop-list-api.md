@@ -1,32 +1,45 @@
 ---
-title: 擷取 Azure CDN 目前的 Verizon POP 清單 | Microsoft Docs
-description: 了解如何使用 REST API 擷取目前的 Verizon POP 清單。
+title: 取得 Azure CDN 的目前 POP IP 清單 |Microsoft Docs
+description: 瞭解如何取出目前的 POP 清單。
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2018
-ms.author: kumud
+ms.date: 08/22/2019
+ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 2b34f6bcbf37a48fb49a2a64d727fc9330b0d735
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 7b98bb446fc400007e4061d09db8084960702943
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60627247"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84668282"
 ---
-# <a name="retrieve-the-current-verizon-pop-list-for-azure-cdn"></a>擷取 Azure CDN 目前的 Verizon POP 清單
+# <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>取得 Azure CDN 的目前 POP IP 清單
+
+## <a name="retrieve-the-current-verizon-pop-ip-list-for-azure-cdn"></a>取得 Azure CDN 的目前 Verizon POP IP 清單
 
 您可以使用 REST API 來為 Verizon 的存在點 (PoP) 伺服器擷取一組 IP。 這些 POP 伺服器會將要求發給與 Verizon 設定檔 (**來自 Verizon 的 Azure CDN 標準**或**來自 Verizon 的 Azure CDN 進階**) 上的 Azure 內容傳遞網路 (CDN) 端點相關聯的原始伺服器。 請注意，這組 IP 與用戶端在將要求發給 POP 時所會看到的 IP 不同。 
 
 如需用於擷取 POP 清單的 REST API 作業語法，請參閱[邊緣節點 - 清單](https://docs.microsoft.com/rest/api/cdn/edgenodes/list)。
+
+## <a name="retrieve-the-current-microsoft-pop-ip-list-for-azure-cdn"></a>取得 Azure CDN 的目前 Microsoft POP IP 清單
+
+若要鎖定您的應用程式，只接受來自 Microsoft 的 Azure CDN 的流量，您必須為後端設定 IP Acl。 您也可以針對由 Microsoft Azure CDN 傳送的標頭 ' X-轉送-主機 '，限制已接受的值集合。 這些步驟的詳細說明如下：
+
+設定後端的 IP 執行 acl，以接受來自 Microsoft 的後端 IP 位址空間和 Azure 基礎結構服務的來自 Azure CDN 的流量。 
+
+* 來自 Microsoft 的 IPv4 後端 IP 空間的 Azure CDN： 147.243.0.0/16
+* 來自 Microsoft IPv6 後端 IP 空間的 Azure CDN：2a01：111：2050：：/44
+
+若要搭配 Microsoft 的 Azure CDN 使用服務標籤，請使用 Azure Front 門板標記。 您可以在[這裡](https://www.microsoft.com/download/details.aspx?id=56519)找到 Microsoft 服務的 IP 範圍和服務標記
+
 
 ## <a name="typical-use-case"></a>典型的使用案例
 

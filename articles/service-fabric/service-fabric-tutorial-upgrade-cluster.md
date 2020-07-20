@@ -1,26 +1,15 @@
 ---
-title: 在 Azure 中升級 Service Fabric 執行階段 | Microsoft Docs
+title: 在 Azure 中升級 Service Fabric 執行階段
 description: 在本教學課程中，您會了解如何使用 PowerShell 來升級 Azure 裝載的 Service Fabric 叢集執行階段。
-services: service-fabric
-documentationcenter: .net
-author: aljo-microsoft
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 11/28/2017
-ms.author: aljo
+ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 7e48684024d370d64f44b55cb4df0efb8f16cd3b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 23b3aabf8e991e512ef9a5c07d725c3084ea7f83
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046235"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244730"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>教學課程：在 Azure 中升級 Service Fabric 叢集的執行階段
 
@@ -31,7 +20,7 @@ ms.locfileid: "59046235"
 
 若您的叢集所執行的已是最新版 Service Fabric 執行階段，則不需要進行此步驟。 不過，本文可以用來在 Azure Service Fabric 叢集上安裝任何支援的執行階段。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 讀取叢集版本
@@ -48,14 +37,14 @@ ms.locfileid: "59046235"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始進行本教學課程之前：
 
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* 安裝 [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
+* 安裝 [Azure PowerShell](/powershell/azure/install-az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
 * 在 Azure 上建立安全的 [Windows 叢集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
-* 設定 Windows 開發環境。 安裝 [Visual Studio 2017](https://www.visualstudio.com) 和 **Azure 開發**、**ASP.NET 和 Web 開發**以及 **.NET Core 跨平台開發**工作負載。  然後設定 [.NET 開發環境](service-fabric-get-started.md)。
+* 設定 Windows 開發環境。 安裝 [Visual Studio 2019](https://www.visualstudio.com) 和 **Azure 開發**、**ASP.NET 和 Web 開發**以及 **.NET Core 跨平台開發**工作負載。  然後設定 [.NET 開發環境](service-fabric-get-started.md)。
 
 ### <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -76,7 +65,7 @@ Get-AzServiceFabricCluster -ResourceGroupName SFCLUSTERTUTORIALGROUP -Name aztes
     | Select-Object ClusterCodeVersion
 ```
 
-或者，您也可以使用下列方法，直接取得訂用帳戶中所有叢集的清單：
+或者，您也可以使用下列範例，直接取得訂用帳戶中所有叢集的清單：
 
 ```powershell
 Get-AzServiceFabricCluster | Select-Object Name, ClusterCodeVersion
@@ -106,7 +95,7 @@ Set-AzServiceFabricUpgradeType -ResourceGroupName SFCLUSTERTUTORIALGROUP `
 
 可以使用 PowerShell 或 Azure Service Fabric CLI (sfctl) 來監視升級狀態。
 
-首先請以本教學課程第一個部分中所建立的 SSL 憑證連線到叢集。 請使用 `Connect-ServiceFabricCluster` Cmdlet 或 `sfctl cluster upgrade-status`。
+首先請以本教學課程第一個部分中所建立的 TLS/SSL 憑證連線到叢集。 請使用 `Connect-ServiceFabricCluster` Cmdlet 或 `sfctl cluster upgrade-status`。
 
 ```powershell
 $endpoint = "<mycluster>.southcentralus.cloudapp.azure.com:19000"
@@ -119,7 +108,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint $endpoint `
                              -StoreLocation CurrentUser -StoreName My
 ```
 
-```azurecli
+```console
 sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.azure.com:19080 \
 --pem ./aztestcluster201709151446.pem --no-verify
 ```
@@ -161,7 +150,7 @@ MaxPercentUpgradeDomainDeltaUnhealthyNodes : 0
 ApplicationHealthPolicyMap                 : {}
 ```
 
-```azurecli
+```console
 sfctl cluster upgrade-status
 
 {
@@ -207,8 +196,7 @@ sfctl cluster upgrade-status
 > * 升級叢集執行階段
 > * 對升級進行監視
 
-[!div class="checklist"]
-> * 取得叢集執行階段版本
-> * 升級叢集執行階段
-> * 對升級進行監視
+前進到下一個教學課程：
 
+> [!div class="nextstepaction"]
+> [刪除叢集](service-fabric-tutorial-delete-cluster.md)

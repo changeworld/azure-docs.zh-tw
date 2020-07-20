@@ -1,20 +1,14 @@
 ---
-title: 將即時事件中的資料異常視覺化 - Azure 事件中樞 | Microsoft Docs
-description: 教學課程 - 在傳送至 Microsoft Azure 事件中樞的即時事件中視覺化資料異常
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: timlt
-ms.author: shvija
+title: Azure 事件中樞 - 即時事件中的資料異常視覺化
+description: 教學課程：在傳送至 Microsoft Azure 事件中樞的即時事件中視覺化資料異常
 ms.topic: tutorial
-ms.service: event-hubs
-ms.custom: seodec18
-ms.date: 02/26/2019
-ms.openlocfilehash: 4ade1b05b1ec5c81774b5340cfdceb97e41218f3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 06/23/2020
+ms.openlocfilehash: 595c0e06750171c844249a77ecef16c84dc8ada5
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123040"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315618"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>教學課程：將傳送給 Azure 事件中樞之即時事件中的資料異常視覺化
 
@@ -22,7 +16,7 @@ ms.locfileid: "58123040"
 
 在本教學課程中，您將模擬此範例。 您將執行應用程式來建立信用卡交易，並將其傳送到事件中樞。 然後，您會使用 Azure 串流分析來讀取即時資料流，串流分析會分隔有效交易和無效交易，並使用 Power BI 以視覺方式識別標記為無效的交易。
 
-在本教學課程中，您了解如何：
+在本教學課程中，您會了解如何：
 > [!div class="checklist"]
 > * 建立事件中樞命名空間
 > * 建立事件中樞
@@ -32,7 +26,7 @@ ms.locfileid: "58123040"
 
 若要完成此教學課程，您需要 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶][]。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -45,16 +39,16 @@ ms.locfileid: "58123040"
 
 針對此教學課程，您必須建立事件中樞命名空間和事件中樞。 您可以使用 Azure CLI 或 Azure PowerShell 來建立這些資源。 請將所有資源建立在相同的資源群組和位置。 如此一來，您就可以在結束時，透過刪除資源群組的單一步驟來移除所有項目。
 
-下列各節會說明如何執行這些必要步驟。 請依照 CLI 或 PowerShell 指示來執行下列步驟：
+下列各節會說明如何執行這些必要步驟。 請依照 CLI 或  PowerShell 指示來執行下列步驟：
 
-1. 建立[資源群組](../azure-resource-manager/resource-group-overview.md)。 
+1. 建立[資源群組](../azure-resource-manager/management/overview.md)。 
 
 2. 建立事件中樞命名空間。 
 
 3. 建立事件中樞。
 
 > [!NOTE]
-> 每個指令碼中都會設定稍後在本教學課程中需要的變數。 其中包括資源群組名稱 ($resourceGroup)、事件中樞命名空間 (**$eventHubNamespace**)，以及事件中樞名稱 (**$eventHubName**)。 稍後在本文中提到這些變數時，會在其開頭加上貨幣符號 ($)，因此您可以知道這些變數已設定於指令碼中。
+> 每個指令碼中都會設定稍後在本教學課程中需要的變數。 其中包括資源群組名稱 ($resourceGroup)、事件中樞命名空間 ( **$eventHubNamespace**)，以及事件中樞名稱 ( **$eventHubName**)。 稍後在本文中提到這些變數時，會在其開頭加上貨幣符號 ($)，因此您可以知道這些變數已設定於指令碼中。
 
 <!-- some day they will approve the tab control; 
   When that happens, put CLI and PSH in tabs. -->
@@ -156,14 +150,14 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 ## <a name="run-app-to-produce-test-event-data"></a>執行應用程式以產生測試用的事件資料
 
-[GitHub 上的事件中樞範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet)包括為您產生測試資料的[異常偵測器應用程式](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/AnomalyDetector)。 其藉由將信用卡交易寫入事件中樞來模擬信用卡的使用，包括偶爾在多個地點對相同信用卡寫入數個交易，使其標記為異常。 若要執行此應用程式，請遵循下列步驟： 
+[GitHub 上的事件中樞範例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet)包含為您產生測試資料的異常偵測器應用程式。 其藉由將信用卡交易寫入事件中樞來模擬信用卡的使用，包括偶爾在多個地點對相同信用卡寫入數個交易，使其標記為異常。 若要執行此應用程式，請遵循下列步驟： 
 
 1. 從 GitHub 下載 [Azure 事件中樞範例](https://github.com/Azure/azure-event-hubs/archive/master.zip)，並將它解壓縮到本機。
+2. 瀏覽至 **\azure-event-hubs-master\samples\DotNet\\** 資料夾。 
+3. 切換至 **Azure.Messaging.EventHubs\AnomalyDetector\\** 資料夾，並按兩下 **AnomalyDetector.sln**，以在 Visual Studio 中開啟解決方案。 
 
-2. 移至 \azure-event-hubs-master\samples\DotNet\AnomalyDetector\ and double-click on AnomalyDetector.sln 資料夾，以在 Visual Studio 中開啟解決方案。 
-
+    若要使用採用舊版 Microsoft.Azure.EventHubs 套件的舊版範例，請從 **Microsoft.Azure.EventHubs\AnomalyDetector** 資料夾中開啟解決方案。 
 3. 開啟 Program.cs，並以執行指令碼時儲存的連接字串取代**事件中樞連接字串**。 
-
 4. 以您的事件中樞名稱取代**事件中樞名稱**。 按 F5 鍵執行應用程式。 它會開始將事件傳送至事件中樞，並持續到傳送 1000 個事件為止。 有幾個執行個體中必須執行該應用程式，以便您擷取資料。 若有需要，這些情況將在下列指示中指出。
 
 ## <a name="set-up-azure-stream-analytics"></a>設定 Azure 串流分析
@@ -172,44 +166,44 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 ### <a name="create-the-stream-analytics-job"></a>建立串流分析作業
 
-1. 在 Azure 入口網站中，按一下 [建立資源]。 在搜尋方塊中輸入**串流分析**，然後按 [Enter]。 選取 [串流分析作業]。 按一下串流分析作業窗格上的 [建立]。 
+1. 在 Azure 入口網站中，按一下 [建立資源]  。 在搜尋方塊中輸入**串流分析**，然後按 [Enter]  。 選取 [串流分析作業]  。 按一下串流分析作業窗格上的 [建立]  。 
 
 2. 輸入作業的以下資訊：
 
    **作業名稱**：使用 **contosoEHjob**。 此欄位是作業的名稱，必須具有全域唯一性。
 
-   訂用帳戶：選取您的訂用帳戶。
+   訂用帳戶  ：選取您的訂用帳戶。
 
    **資源群組**：使用事件中樞所用的相同資源群組 (**ContosoResourcesEH**)。
 
-   **位置**：使用安裝指令碼中所用的相同位置 (**West US**)。
+   **位置**：使用安裝指令碼中所用的相同位置 (**美國西部**)。
 
    ![顯示如何建立新 Azure 串流分析作業的螢幕擷取畫面。](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
-    對於其餘欄位，請採用預設值。 按一下頁面底部的 [新增] 。 
+    對於其餘欄位，請採用預設值。 按一下頁面底部的 [新增]  。 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>將輸入新增至串流分析作業
 
-如果您不在入口網站的 [串流分析作業] 窗格中，您可以按一下入口網站中的 [資源群組] 來回到串流分析作業，然後選取您的資源群組 (**ContosoResourcesEH**)。 此動作會顯示群組中的所有資源，接著您就可以選取您的串流分析作業。 
+如果您不在入口網站的 [串流分析作業]  窗格中，您可以按一下入口網站中的 [資源群組]  來回到串流分析作業，然後選取您的資源群組 (**ContosoResourcesEH**)。 此動作會顯示群組中的所有資源，接著您就可以選取您的串流分析作業。 
 
 串流分析作業的輸入是來自事件中樞的信用卡交易。
 
 > [!NOTE]
 > 在前面章節中，啟動指令碼內已設定以貨幣符號 ($) 開頭的變數值。 您必須在此使用相同值來指定這些欄位，也就是事件中樞命名空間和事件中樞名稱。
 
-1. 在 [作業拓撲] 之下，按一下 [輸入]。
+1. 在 [作業拓撲]  之下，按一下 [輸入]  。
 
-2. 在 [輸入] 窗格中，按一下 [新增資料流輸入] 並選取事件中樞。 在顯示的畫面上，填寫下列欄位：
+2. 在 [輸入]  窗格中，按一下 [新增資料流輸入]  並選取事件中樞。 在顯示的畫面上，填寫下列欄位：
 
    **輸入別名**：使用 **contosoinputs**。 此欄位是輸入資料流的名稱，會在定義資料的查詢時使用。
 
-   訂用帳戶：選取您的訂用帳戶。
+   訂用帳戶  ：選取您的訂用帳戶。
 
    **事件中樞命名空間**：選取您的「事件中樞」命名空間 ($**eventHubNamespace**)。 
 
-   **事件中樞名稱**：按一下 [使用現有項目]，然後選取您的事件中樞 ($**eventHubName**)。
+   **事件中樞名稱**：按一下 [使用現有項目]  ，然後選取您的事件中樞 ($**eventHubName**)。
 
-   **事件中樞原則名稱**：選取 [RootManageSharedAccessKey]。
+   **事件中樞原則名稱**：選取 [RootManageSharedAccessKey]  。
 
    **事件中樞取用者群組**：若要使用預設取用者群組，請將此欄位保留空白。
 
@@ -217,13 +211,13 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
    ![顯示如何將輸入資料流新增至串流分析作業的螢幕擷取畫面。](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-inputs.png)
 
-5. 按一下 [檔案] 。
+5. 按一下 [檔案]  。
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>將輸出新增至串流分析作業
 
-1. 在 [作業拓撲] 之下，按一下 [輸出]。 此欄位是輸出資料流的名稱，會在定義資料的查詢時使用。
+1. 在 [作業拓撲]  之下，按一下 [輸出]  。 此欄位是輸出資料流的名稱，會在定義資料的查詢時使用。
 
-2. 在 [輸出] 窗格中，按一下 [新增]，然後選取 [Power BI]。 在顯示的畫面上，完成下列欄位：
+2. 在 [輸出]  窗格中，按一下 [新增]  ，然後選取 [Power BI]  。 在顯示的畫面上，完成下列欄位：
 
    **輸出別名**：使用 **contosooutputs**。 此欄位是輸出的唯一別名。 
 
@@ -235,17 +229,17 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
    ![顯示如何為串流分析作業設定輸出的螢幕擷取畫面。](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-outputs.png)
 
-3. 按一下 [授權]，然後登入您的 Power BI 帳戶。
+3. 按一下 [授權]  ，然後登入您的 Power BI 帳戶。
 
 4. 對於其餘欄位，請採用預設值。
 
-5. 按一下 [檔案] 。
+5. 按一下 [檔案]  。
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>設定串流分析作業的查詢
 
 此查詢會用來擷取最後會傳送至 Power BI 視覺效果的資料。 它會使用先前設定作業時定義的 **contosoinputs** 和 **contosooutputs**。 此查詢會擷取視為詐騙的信用卡交易，也就是同樣每五秒的時間間隔內，相同信用卡號碼在不同地點中有多筆交易。
 
-1. 在 [作業拓撲] 之下，按一下 [查詢]。
+1. 在 [作業拓撲]  之下，按一下 [查詢]  。
 
 2. 將查詢取代為下列其中一個： 
 
@@ -268,23 +262,23 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-4. 按一下 [檔案] 。
+4. 按一下 [檔案]  。
 
 ### <a name="test-the-query-for-the-stream-analytics-job"></a>測試串流分析作業的查詢 
 
 1. 在設定及執行測試時，執行異常偵測器應用程式來將資料傳送至事件中樞。 
 
-2. 在 [查詢] 窗格中，按一下 **contosoinputs** 輸入旁邊的點，然後選取 [來自輸入的範例資料]。
+2. 在 [查詢] 窗格中，按一下 **contosoinputs** 輸入旁邊的點，然後選取 [來自輸入的範例資料]  。
 
-3. 指定您想要取得三分鐘的資料，然後按一下 [確定]。 等待資料已取樣的通知。
+3. 指定您想要取得三分鐘的資料，然後按一下 [確定]  。 等待資料已取樣的通知。
 
-4. 按一下 [測試]，並確定開始產生結果。 結果會顯示在查詢下窗格右下方的 [結果] 區段。
+4. 按一下 [測試]  ，並確定開始產生結果。 結果會顯示在查詢下窗格右下方的 [結果]  區段。
 
 5. 關閉 [查詢] 窗格。
 
 ### <a name="run-the-stream-analytics-job"></a>執行串流分析作業
 
-在串流分析作業中，依序按一下 [啟動]、[立即] 及 [啟動]。 成功啟動作業後，作業狀態會從 [已停止] 變更為 [執行中]。
+在串流分析作業中，依序按一下 [啟動]  、[立即]  及 [啟動]  。 成功啟動作業後，作業狀態會從 [已停止]  變更為 [執行中]  。
 
 ## <a name="set-up-the-power-bi-visualizations"></a>設定 Power BI 視覺效果
 
@@ -292,35 +286,35 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 2. 登入您的 [Power BI](https://powerbi.microsoft.com/) 帳戶。
 
-3. 移至 [我的工作區]。
+3. 移至 [我的工作區]  。
 
-4. 按一下 [資料集]。
+4. 按一下 [資料集]  。
 
    您應該會看到在建立串流分析作業輸出時所指定的資料集 (**contosoehdataset**)。 第一次執行可能需要 5-10 分鐘才會出現資料集。
 
-5. 按一下 [儀表板]，然後按一下 [建立]，並選取 [儀表板]。
+5. 按一下 [儀表板]  ，然後按一下 [建立]  ，並選取 [儀表板]  。
 
    ![儀表板與建立按鈕的螢幕擷取畫面。](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-dashboard.png)
 
-6. 指定儀表板名稱，然後按一下 [建立]。 使用 [信用卡異常]。
+6. 指定儀表板名稱，然後按一下 [建立]  。 使用 [信用卡異常]  。
 
    ![指定儀表板名稱的螢幕擷取畫面。](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-name.png)
 
-7. 在 [儀表板] 頁面上，按一下 [新增磚]，在 [即時資料] 區段中選取 [自訂串流資料]，然後按 [下一步]。
+7. 在 [儀表板] 頁面上，按一下 [新增磚]  ，在 [即時資料]  區段中選取 [自訂串流資料]  ，然後按 [下一步]  。
 
    ![指定磚來源的螢幕擷取畫面。](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-real-time-data.png)
 
-8. 選取您的資料集 (**contosoehdataset**)，然後按 [下一步]。
+8. 選取您的資料集 (**contosoehdataset**)，然後按 [下一步]  。
 
    ![指定資料集的螢幕擷取畫面。](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-select-dataset.png)
 
-9. 選取 [卡片] 作為視覺效果類型。 在 [欄位] 下按一下 [新增值]，然後選取 [fraudulentuses]。
+9. 選取 [卡片]  作為視覺效果類型。 在 [欄位]  下按一下 [新增值]  ，然後選取 [fraudulentuses]  。
 
    ![指定視覺效果類型和欄位的螢幕擷取畫面。](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-tile.png)
 
-   按 [下一步] 。
+   按 [下一步]  。
 
-10. 將標題設為 [詐騙用量]，並將副標題設為 [過去幾分鐘內的總和]。 按一下 [套用]。 它會將磚儲存到您的儀表板中。
+10. 將標題設為 [詐騙用量]  ，並將副標題設為 [過去幾分鐘內的總和]  。 按一下 [套用]  。 它會將磚儲存到您的儀表板中。
 
     ![指定儀表板磚標題和副標題的螢幕擷取畫面。](./media/event-hubs-tutorial-visualize-anomalies/power-bi-tile-details.png)
 
@@ -328,22 +322,22 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
     > 當您執行範例應用程式並將資料串流至事件中樞時，此圖格上的數字會迅速 (每秒) 變更。 這是因為串流分析查詢會**每秒**實際更新此值。 將查詢更新為 3 分鐘輪轉視窗，以查看在過去幾分鐘內的總和。 
 11. 新增另一個視覺效果。 再次重複前幾個步驟：
 
-    * 按一下 [新增磚]。
-    * 選取 [自訂串流資料]。 
-    * 按 [下一步] 。
-    * 選取您的資料集，然後按 [下一步]。 
+    * 按一下 [新增磚]  。
+    * 選取 [自訂串流資料]  。 
+    * 按 [下一步]  。
+    * 選取您的資料集，然後按 [下一步]  。 
 
-12. 在 [視覺效果類型] 下選取 [折線圖]。
+12. 在 [視覺效果類型]  下選取 [折線圖]  。
 
-13. 在 [軸] 下方按一下 [新增值]，然後選取 [windowend]。 
+13. 在 [軸]  下方按一下 [新增值]  ，然後選取 [windowend]  。 
 
-14. 在 [值] 下方按一下 [新增值]，然後選取 [fraudulentuses]。
+14. 在 [值]  下方按一下 [新增值]  ，然後選取 [fraudulentuses]  。
 
-15. 在 [要顯示的時間範圍] 下，選取過去 5 分鐘。 按 [下一步] 。
+15. 在 [要顯示的時間範圍]  下，選取過去 5 分鐘。 按 [下一步]  。
 
-16. 指定 [顯示一段時間內的詐騙用量] 作為標題，並將磚的副標題保留空白，然後按一下 [套用]。 您會回到儀表板。
+16. 指定 [顯示一段時間內的詐騙用量]  作為標題，並將磚的副標題保留空白，然後按一下 [套用]  。 您會回到儀表板。
 
-17. 再次執行異常偵測器應用程式，以將一些資料傳送至事件中樞。 分析資料時，您會看到 [詐騙用量] 磚發生變化，而折線圖上會顯示資料。 
+17. 再次執行異常偵測器應用程式，以將一些資料傳送至事件中樞。 分析資料時，您會看到 [詐騙用量]  磚發生變化，而折線圖上會顯示資料。 
 
     ![顯示 Power BI 結果的螢幕擷取畫面](./media/event-hubs-tutorial-visualize-anomalies/power-bi-results.png)
 
@@ -353,7 +347,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 ### <a name="clean-up-resources-in-the-power-bi-visualization"></a>清除 Power BI 視覺效果中的資源
 
-登入您的 Power BI 帳戶。 移至 [我的工作區]。 在您的儀表板名稱列上，按一下 [垃圾桶] 圖示。 接著，移至 [資料集]，然後按一下垃圾桶圖示來刪除資料集 (**contosoehdataset**)。
+登入您的 Power BI 帳戶。 移至 [我的工作區]  。 在您的儀表板名稱列上，按一下 [垃圾桶] 圖示。 接著，移至 [資料集]  ，然後按一下垃圾桶圖示來刪除資料集 (**contosoehdataset**)。
 
 ### <a name="clean-up-resources-using-azure-cli"></a>使用 Azure CLI 清除資源
 
@@ -384,6 +378,6 @@ Remove-AzResourceGroup -Name $resourceGroup
 請前往下一篇文章，以深入了解 Azure 事件中樞。
 
 > [!div class="nextstepaction"]
-> [開始在 .NET Standard 中傳送訊息至 Azure 事件中樞](event-hubs-dotnet-standard-getstarted-send.md)
+> [開始在 .NET Standard 中傳送訊息至 Azure 事件中樞](get-started-dotnet-standard-send-v2.md)
 
 [建立免費帳戶]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

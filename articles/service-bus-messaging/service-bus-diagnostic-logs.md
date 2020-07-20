@@ -1,80 +1,41 @@
 ---
-title: Azure 服务总线诊断日志 | Microsoft 文档
-description: 了解如何為 Azure 中的「服務匯流排」設定診斷記錄。
-keywords: ''
-documentationcenter: .net
-services: service-bus-messaging
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
+title: Azure 服務匯流排診斷記錄 |Microsoft Docs
+description: 本文概述可用於 Azure 服務匯流排的所有操作和診斷記錄。
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: 7d4cb8e55c5d1561c09cf85122550a66e3671f17
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/23/2020
+ms.openlocfilehash: eeaa7e92488fd59994fc07ea0081b0f00c8768df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60714102"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337537"
 ---
-# <a name="service-bus-diagnostic-logs"></a>服務匯流排診斷記錄
+# <a name="enable-diagnostics-logs-for-service-bus"></a>啟用服務匯流排的診斷記錄
 
-您可以檢視「Azure 服務匯流排」的兩種記錄：
-* **[活動記錄檔](../azure-monitor/platform/activity-logs-overview.md)**。 這些記錄包含在工作上執行之操作的相關資訊。 系統一律會啟用這些記錄。
-* **[診斷記錄](../azure-monitor/platform/diagnostic-logs-overview.md)**。 您可以設定診斷記錄，以取得在工作內所發生之所有事件的更詳細資訊。 診斷記錄涵蓋從建立工作到刪除工作期間的活動，包括工作執行時發生的更新與活動。
+當您開始使用 Azure 服務匯流排命名空間時，您可能會想要監視命名空間的建立、刪除或存取的方式和時間。 本文提供所有可用的操作和診斷記錄的總覽。
 
-## <a name="turn-on-diagnostic-logs"></a>開啟診斷記錄
-
-診斷記錄預設為停用。 若要啟用診斷記錄，請執行下列步驟：
-
-1.  在 [Azure 入口網站](https://portal.azure.com)的 [監視 + 管理] 下，按一下 [診斷記錄]。
-
-    ![瀏覽到診斷記錄的刀鋒視窗](./media/service-bus-diagnostic-logs/image1.png)
-
-2. 按一下您想要監視的資源。  
-
-3.  按一下 [開啟診斷]。
-
-    ![開啟診斷記錄](./media/service-bus-diagnostic-logs/image2.png)
-
-4.  針對 [狀態]，按一下 [開啟]。
-
-    ![變更診斷記錄狀態](./media/service-bus-diagnostic-logs/image3.png)
-
-5.  设置所需的存档目标；例如存储帐户、事件中心或 Azure Monitor 日志。
-
-6.  儲存新的診斷設定。
-
-新的設定大約會在 10 分鐘內生效。 之後，記錄就會顯示在 [診斷記錄] 刀鋒視窗上已設定的封存目標中。
-
-如需設定診斷的詳細資訊，請參閱 [Azure 診斷記錄概觀](../azure-monitor/platform/diagnostic-logs-overview.md)。
-
-## <a name="diagnostic-logs-schema"></a>診斷記錄結構描述
-
-所有記錄都會以「JavaScript 物件標記法」(JSON) 格式儲存。 每個項目都具有字串欄位，這些欄位會使用下列小節所述的格式。
+Azure 服務匯流排目前支援「活動」和「作業記錄」，其會捕捉在 Azure 服務匯流排命名空間上執行的*管理作業*。 具體而言，這些記錄會擷取作業類型，包括建立佇列、使用的資源，以及作業狀態。
 
 ## <a name="operational-logs-schema"></a>作業記錄結構描述
 
-**OperationalLogs** 類別中的記錄會擷取「服務匯流排」作業期間發生的事項。 具體而言，這些記錄會擷取作業類型，包括建立佇列、使用的資源，以及作業狀態。
+所有記錄都會以 JavaScript 物件標記法（JSON）格式儲存在下列兩個位置中：
+
+- **AzureActivity**：顯示作業的記錄，以及針對 Azure 入口網站中的命名空間或透過 Azure Resource Manager 範本部署進行的動作。
+- **AzureDiagnostics**：使用 API 或透過語言 SDK 上的管理用戶端，顯示針對您的命名空間進行的作業和動作的記錄。
 
 作業記錄 JSON 字串包括下表所列的元素：
 
-名稱 | 描述
-------- | -------
-ActivityId | 用於追蹤的內部識別碼
-EventName | 操作名称           
-ResourceId | Azure Resource Manager 資源識別碼
-SubscriptionId | 订阅 ID
-EventTimeString | 作業時間
-EventProperties | 作業屬性
-狀態 | 作業狀態
-呼叫者 | 作業呼叫者 (Azure 入口網站或管理用戶端)
-category | OperationalLogs
+| Name | 描述 |
+| ------- | ------- |
+| ActivityId | 內部識別碼，用來識別指定的活動 |
+| EventName | 作業名稱 |
+| ResourceId | Azure Resource Manager 資源識別碼 |
+| SubscriptionId | 訂用帳戶識別碼 |
+| EventTimeString | 作業時間 |
+| EventProperties | 作業屬性 |
+| 狀態 | 作業狀態 |
+| 呼叫者 | 作業的呼叫者（Azure 入口網站或管理用戶端） |
+| 類別 | OperationalLogs |
 
 以下是作業記錄 JSON 字串的範例：
 
@@ -92,9 +53,59 @@ category | OperationalLogs
 }
 ```
 
+## <a name="events-and-operations-captured-in-operational-logs"></a>在操作記錄中所捕獲的事件和作業
+
+作業記錄會捕捉在 Azure 服務匯流排命名空間上執行的所有管理作業。 資料作業不會被捕捉，因為 Azure 服務匯流排上執行的資料作業量很高。
+
+> [!NOTE]
+> 為了協助您更有效地追蹤資料作業，我們建議使用用戶端追蹤。
+
+下列管理作業會在操作記錄中加以捕捉： 
+
+| 影響範圍 | 操作|
+|-------| -------- |
+| 命名空間 | <ul> <li> 建立命名空間</li> <li> 更新命名空間 </li> <li> 刪除命名空間 </li> <li> 更新命名空間 Win2k3 sharedaccess 原則 </li> </ul> | 
+| 佇列 | <ul> <li> 建立佇列</li> <li> 更新佇列</li> <li> 刪除佇列 </li> <li> AutoDelete 刪除佇列 </li> </ul> | 
+| 主題 | <ul> <li> 建立主題 </li> <li> 更新主題 </li> <li> 刪除主題 </li> <li> AutoDelete 刪除主題 </li> </ul> |
+| 訂用帳戶 | <ul> <li> 建立訂閱 </li> <li> 更新訂閱 </li> <li> 刪除訂閱 </li> <li> AutoDelete 刪除訂用帳戶 </li> </ul> |
+
+> [!NOTE]
+> 目前，在操作記錄中不會追蹤*讀取*作業。
+
+## <a name="enable-operational-logs"></a>啟用操作記錄
+
+預設會停用操作記錄。 若要啟用診斷記錄，請執行下列動作：
+
+1. 在[Azure 入口網站](https://portal.azure.com)中，移至您的 Azure 服務匯流排命名空間，然後在 [**監視**] 底下，選取 [**診斷設定**]。
+
+   ![[診斷設定] 連結](./media/service-bus-diagnostic-logs/image1.png)
+
+1. 在 [**診斷設定**] 窗格中，選取 [**新增診斷設定**]。  
+
+   ![[新增診斷設定] 連結](./media/service-bus-diagnostic-logs/image2.png)
+
+1. 執行下列動作來設定診斷設定：
+
+   a. 在 [**名稱**] 方塊中，輸入診斷設定的名稱。  
+
+   b. 為診斷記錄選取下列三個目的地的其中一個：  
+   - 如果您選取 [封存**至儲存體帳戶**]，則需要設定將儲存診斷記錄的儲存體帳戶。  
+   - 如果您選取 [**串流至事件中樞**]，則需要設定您想要將診斷記錄串流至其中的事件中樞。
+   - 如果您選取 [**傳送至 Log analytics**]，則必須指定要將診斷傳送至哪個 Log analytics 實例。  
+
+   c. 選取 [ **OperationalLogs** ] 核取方塊。
+
+    ![[診斷設定] 窗格](./media/service-bus-diagnostic-logs/image3.png)
+
+1. 選取 [儲存]。
+
+新的設定會在大約10分鐘內生效。 記錄會顯示在 [**診斷記錄**] 窗格中設定的封存目標中。
+
+如需有關設定診斷設定的詳細資訊，請參閱[Azure 診斷記錄的總覽](../azure-monitor/platform/diagnostic-logs-overview.md)。
+
 ## <a name="next-steps"></a>後續步驟
 
-請參閱下列連結以深入了解服務匯流排：
+若要深入瞭解服務匯流排，請參閱：
 
 * [服務匯流排簡介](service-bus-messaging-overview.md)
 * [開始使用服務匯流排](service-bus-dotnet-get-started-with-queues.md)

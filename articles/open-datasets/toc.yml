@@ -9,7 +9,13 @@
 - name: 教學課程
   items:
     - name: 使用自動化機器學習進行迴歸
-      href: tutorial-opendatasets-automl.md
+      href: /azure/machine-learning/tutorial-auto-train-models?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
+    - name: 擴充影像分類模型
+      href: /azure/machine-learning/tutorial-train-models-with-aml?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
+- name: 操作指南
+  items:
+    - name: Azure Machine Learning 中的資料集
+      href: ../machine-learning/how-to-create-register-datasets.md?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
 - name: 範例
   displayName: 'example, examples, Jupyter, azure notebooks, python, notebook, GitHub'
   href: samples.md
@@ -17,7 +23,7 @@
   items:
     - name: Python SDK
       displayName: api open datasets reference sdk
-      href: 'https://aka.ms/open-datasets-api'
+      href: /python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py
     - name: Jupyter Notebook
       displayName: python notebooks
       href: 'https://github.com/Azure/OpenDatasetsNotebooks'
@@ -29,11 +35,11 @@
       href: 'https://msropendata.com/'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/open-datasets/'
     - name: 區域可用性
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: 使用者論壇
-      href: 'https://aka.ms/open-datasets-forum'
-    - name: 堆疊溢位
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=open-datasets&regions=non-regional'
+    - name: Microsoft 問答集
+      href: 'https://docs.microsoft.com/answers/topics/azure-open-datasets.html'
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-open-datasets'

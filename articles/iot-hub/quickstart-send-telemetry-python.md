@@ -8,52 +8,45 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 02/28/2019
-ms.openlocfilehash: fc303a0ab53c80c91bb29c36a1a7e0f04c4a89e6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.custom:
+- mvc
+- mqtt
+- tracking-python
+ms.date: 06/16/2020
+ms.openlocfilehash: f49f2156a6d0e1b5563145c00007746ef4a1bf51
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006884"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84904904"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>快速入門：將遙測從裝置傳送至 IoT 中樞，並使用後端應用程式讀取遙測 (Python)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷取到雲端進行儲存或處理。 在此快速入門中，您透過 IoT 中樞，將遙測從模擬裝置應用程式傳送到後端應用程式以進行處理。
-
-本快速入門會使用預先撰寫的 Python 應用程式傳送遙測，以及使用 CLI 公用程式從中樞讀取遙測。 在執行下列兩個應用程式之前，您需要建立一個 IoT 中樞，並向中樞註冊一個裝置。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+在此快速入門中，您透過 Azure IoT 中樞，將遙測從模擬裝置應用程式傳送到後端應用程式以進行處理。 IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷取到雲端進行儲存或處理。 本快速入門會使用兩個預先撰寫的 Python 應用程式：一個用來傳送遙測，而另一個用來從中樞讀取遙測。 在執行下列兩個應用程式之前，您需要建立一個 IoT 中樞，並向中樞註冊一個裝置。
 
 ## <a name="prerequisites"></a>必要條件
 
-您在此快速入門中執行的應用程式範例是使用 Python 所撰寫的。 目前，適用於 Python 的 Microsoft Azure IoT SDK 只對每個平台支援特定版本的 Python。 若要深入了解，請參閱 [Python SDK 讀我檔案](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues)。
+* 具有有效訂用帳戶的 Azure 帳戶。 [建立免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-本快速入門假設您使用 Windows 開發電腦。 對於 Windows 系統，僅支援 [Python 3.6.x](https://www.python.org/downloads/release/python-368/)。 您選擇的 Python 安裝程式應該要以您正在使用的系統架構為基礎。 如果您的系統 CPU 架構是 32 位元，則下載 x86 安裝程式；若是 64 位元架構，則下載 x86-64 安裝程式。 此外，請確定[適用於 Visual Studio 2017 的 Microsoft Visual C++ 可轉散發套件](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)已針對您的架構 (x86 或 x64) 安裝。
+* [Python 3.7+](https://www.python.org/downloads/)。 如需其他支援的 Python 版本，請參閱 [Azure IoT 裝置功能](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features)。
 
-您可以從 [Python.org](https://www.python.org/downloads/) 下載適用於其他平台的 Python。
+* [範例 Python 專案](https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip)。
 
-您可以使用下列命令之一，以確認開發電腦上目前的 Python 版本：
+* 在您的防火牆中開啟的連接埠 8883。 本快速入門中的裝置範例會使用 MQTT 通訊協定，其會透過連接埠 8883 進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
-```python
-python --version
-```
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-```python
-python3 --version
-```
+### <a name="add-azure-iot-extension"></a>新增 Azure IoT 擴充功能
 
-執行下列命令，將適用於 Azure CLI 的 Microsoft Azure IoT 擴充功能新增至您的 Cloud Shell 執行個體。 IoT 擴充功能可將 IoT 中樞、IoT Edge 和 IoT 裝置佈建服務的特定命令新增至 Azure CLI。
+執行下列命令，將適用於 Azure CLI 的 Microsoft Azure IoT 擴充功能新增至您的 Cloud Shell 執行個體。 IoT 擴充功能可將 IoT 中樞、IoT Edge 和 IoT 裝置佈建服務 (DPS) 的特定命令新增至 Azure CLI。
 
 ```azurecli-interactive
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 ```
 
-從 https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip 下載範例 Python 專案並將 ZIP 封存檔解壓縮。
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
@@ -67,25 +60,39 @@ az extension add --name azure-cli-iot-ext
 
     **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
-    **MyPythonDevice**：這是為已註冊裝置指定的名稱。 使用所示的 MyPythonDevice。 如果您為裝置選擇不同的名稱，則也必須在本文中使用該名稱，並先在範例應用程式中更新該裝置名稱，再執行應用程式。
+    **MyPythonDevice**：這是您要註冊之裝置的名稱。 建議您使用 **MyPythonDevice**，如下所示。 如果您為裝置選擇不同的名稱，則也必須在本文中使用該名稱，並先在範例應用程式中更新該裝置名稱，再執行應用程式。
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyPythonDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyPythonDevice
     ```
 
-1. 在 Azure Cloud Shell 中執行下列命令，以針對您剛註冊的裝置取得_裝置連接字串_：
+1. 在 Azure Cloud Shell 中執行下列命令，以針對您剛註冊的裝置取得「裝置連接字串」：
 
     **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyPythonDevice --output table
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
     ```
 
     記下裝置連接字串，它看起來如下：
 
-   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
+   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyPythonDevice;SharedAccessKey={YourSharedAccessKey}`
 
-    您稍後會在快速入門中使用此值。
+    您稍後將會在快速入門中使用此值。
+
+1. 您還需要 IoT 中樞的「事件中樞相容端點」、「事件中樞相容路徑」和「服務主要金鑰」，以便讓後端應用程式連線到 IoT 中樞並擷取訊息。 下列命令會針對您的 IoT 中樞擷取這些值：
+
+   **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
+
+    ```azurecli-interactive
+    az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}
+
+    az iot hub show --query properties.eventHubEndpoints.events.path --name {YourIoTHubName}
+
+    az iot hub policy show --name service --query primaryKey --hub-name {YourIoTHubName}
+    ```
+
+    請記下這三個值，您稍後將會在快速入門中使用。
 
 ## <a name="send-simulated-telemetry"></a>傳送模擬的遙測
 
@@ -95,12 +102,12 @@ az extension add --name azure-cli-iot-ext
 
 1. 在您選擇的文字編輯器中開啟 **SimulatedDevice.py** 檔案。
 
-    使用先前所記錄的裝置連接字串來取代 `CONNECTION_STRING` 變數的值。 然後將變更儲存到 **SimulatedDevice.py** 檔案。
+    使用您稍早所記錄的裝置連接字串來取代 `CONNECTION_STRING` 變數的值。 然後將變更儲存到 **SimulatedDevice.py** 檔案。
 
 1. 在本機終端機視窗中，執行下列命令以安裝模擬裝置應用程式所需的程式庫：
 
     ```cmd/sh
-    pip install azure-iothub-device-client
+    pip install azure-iot-device
     ```
 
 1. 在本機終端機視窗中，執行下列命令以執行模擬裝置應用程式：
@@ -111,21 +118,40 @@ az extension add --name azure-cli-iot-ext
 
     下列螢幕擷取畫面顯示模擬裝置應用程式將遙測傳送到 IoT 中樞時的輸出：
 
-    ![執行模擬的裝置](media/quickstart-send-telemetry-python/SimulatedDevice.png)
+    ![執行模擬的裝置](media/quickstart-send-telemetry-python/simulated-device.png)
 
 ## <a name="read-the-telemetry-from-your-hub"></a>從您的中樞讀取遙測
 
-IoT 中樞 CLI 擴充功能可以連線到 IoT 中樞上的服務端**事件**端點。 擴充功能會接收模擬裝置所傳送的「裝置到雲端」訊息。 IoT 中樞後端應用程式通常在雲端中執行，以接收和處理「裝置到雲端」訊息。
+後端應用程式會連線到 IoT 中樞上的服務端**事件**端點。 應用程式會接收模擬裝置所傳送的「裝置到雲端」訊息。 IoT 中樞後端應用程式通常在雲端中執行，以接收和處理「裝置到雲端」訊息。
 
-在 Azure Cloud Shell 中執行下列命令，以您的 IoT 中樞名稱取代 `YourIoTHubName`：
+> [!NOTE]
+> 下列步驟會使用同步範例 **read_device_to_cloud_messages_sync.py**。 您可以對非同步範例 **read_device_to_cloud_messages_async.py** 執行相同的步驟。
 
-```azurecli-interactive
-az iot hub monitor-events --hub-name YourIoTHubName --device-id MyPythonDevice 
-```
+1. 在另一個本機終端機視窗中，瀏覽至範例 Python 專案的根資料夾。 然後瀏覽至 **iot-hub\Quickstarts\read-d2c-messages** 資料夾。
 
-下列螢幕擷取畫面顯示由模擬裝置傳送遙測至中樞時，擴充功能接收遙測的輸出：
+2. 在您選擇的文字編輯器中開啟 **read_device_to_cloud_messages_sync.py** 檔案。 更新下列變數，並將您的變更儲存至檔案。
 
-![執行後端應用程式](media/quickstart-send-telemetry-python/ReadDeviceToCloud.png)
+    | 變數 | 值 |
+    | -------- | ----------- |
+    | `EVENTHUB_COMPATIBLE_ENDPOINT` | 使用您稍早所記錄的事件中樞相容端點來取代變數的值。 |
+    | `EVENTHUB_COMPATIBLE_PATH`     | 使用您稍早所記錄的事件中樞相容路徑來取代變數的值。 |
+    | `IOTHUB_SAS_KEY`                | 使用您稍早所記錄的服務主要金鑰來取代變數的值。 |
+
+3. 在本機終端機視窗中，執行下列命令以安裝後端應用程式所需的程式庫：
+
+    ```cmd/sh
+    pip install azure-eventhub
+    ```
+
+4. 在本機終端機視窗中，執行下列命令以建置並執行後端應用程式：
+
+    ```cmd/sh
+    python read_device_to_cloud_messages_sync.py
+    ```
+
+    下列螢幕擷取畫面顯示由模擬裝置傳送遙測至中樞時，後端應用程式接收遙測的輸出：
+
+    ![執行後端應用程式](media/quickstart-send-telemetry-python/read-device-to-cloud.png)
 
 ## <a name="clean-up-resources"></a>清除資源
 

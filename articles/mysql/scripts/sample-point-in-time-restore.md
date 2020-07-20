@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 指令碼 - 還原適用於 MySQL 的 Azure 資料庫伺服器
+title: CLI 指令碼 - 還原伺服器 - 適用於 MySQL 的 Azure 資料庫
 description: 此範例 Azure CLI 指令碼示範如何將「適用於 MySQL 的 Azure 資料庫」伺服器及其資料庫還原至先前的時間點。
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 02/28/2018
-ms.openlocfilehash: 7bc4b1533da272bed9b7b7b8a0abe9b509e02386
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 12/02/2019
+ms.openlocfilehash: 5a84a44a4ea941bf3b77f0762fc764ec069919c7
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545105"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74771323"
 ---
 # <a name="restore-an-azure-database-for-mysql-server-using-azure-cli"></a>使用 Azure CLI 還原「適用於 MySQL 的 Azure 資料庫」伺服器
 此範例 CLI 指令碼會將單一「適用於 MySQL 的 Azure 資料庫」伺服器還原至先前的時間點。
@@ -33,7 +33,7 @@ ms.locfileid: "53545105"
 ## <a name="script-explanation"></a>指令碼說明
 此指令碼會使用下表中簡述的命令：
 
-| **命令** | **注意事項** |
+| **命令** | **注意** |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
 | [az mysql server create](/cli/azure/mysql/server#az-mysql-server-create) | 建立主控資料庫的 MySQL 伺服器。 |
@@ -41,5 +41,5 @@ ms.locfileid: "53545105"
 | [az group delete](/cli/azure/group#az-group-delete) | 刪除資源群組，包括所有的巢狀資源。 |
 
 ## <a name="next-steps"></a>後續步驟
-- 閱讀更多有關 Azure CLI 的資訊：[Azure CLI 文件](/cli/azure)。
-- 嘗試額外的指令碼：[Azure Database for MySQL 的 Azuer CLI 範例](../sample-scripts-azure-cli.md)
+- 了解 Azure CLI 的詳細資訊：[Azure CLI 文件](/cli/azure)。
+- 嘗試其他指令碼：[「適用於 MySQL 的 Azure 資料庫」的 Azure CLI 範例](../sample-scripts-azure-cli.md)

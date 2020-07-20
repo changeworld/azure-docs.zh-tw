@@ -1,19 +1,16 @@
 ---
 title: Azure 資料目錄的常見問題集
 description: 與 Azure 資料目錄相關的常見問題集，包括資料來源探索、註解和管理功能。
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 5c7e209a-458c-4bb4-96bb-7ed178f9528a
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 7c5241b9df23bb0334a39f2c684fd1bdff40b4c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 08/01/2019
+ms.openlocfilehash: 7dbb1b4a8b85350b8bf8a6df0c9035a19055444c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61004036"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79409014"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure 資料目錄的常見問題集
 這篇文章提供與 Azure 資料目錄服務相關的常見問題集解答。
@@ -27,10 +24,10 @@ ms.locfileid: "61004036"
 ## <a name="what-are-its-target-audiences"></a>其目標對象為何？
 資料目錄的設計目標為技術性和非技術性使用者，包括：
 
-* 資料開發人員、 BI 和分析專業人員：負責產生資料和分析內容供他人使用的人員。
-* 資料負責人：了解的資料、 其意義，以及它要使用的方式的人員。
-* 資料取用者：人員需要能夠輕鬆地探索、 了解，並連接到使用自選的工具完成工作所需的資料。
-* 中央 IT:人需要提供數百種資料來源供商務使用者使用，而且需要持續監督資料的使用方式和由誰。
+* 資料開發人員、BI 和分析專業人員：這些人負責產生資料和分析內容供他人使用。
+* 資料負責人：這些人了解資料、其意義和用法。
+* 資料取用者：這些人需要能夠透過他們所選擇的工具，輕鬆地探索、了解並連線至工作所需的資料。
+* 中央 IT：這些人需要提供數百個資料來源供商務使用者探索，也需要持續監督資料的使用情況和由誰使用。
 
 ## <a name="what-is-its-availability-by-region"></a>其依區域的可用性為何？
 目前只有下列資料中心提供資料目錄服務：
@@ -39,7 +36,7 @@ ms.locfileid: "61004036"
 * 美國東部
 * 西歐
 * 北歐
-* 澳洲東部
+* 澳大利亞東部
 * 東南亞
 
 ## <a name="what-are-its-limits-on-the-number-of-data-assets"></a>其資料資產的數目限制有哪些？
@@ -55,12 +52,21 @@ ms.locfileid: "61004036"
 ## <a name="how-do-i-request-support-for-another-data-source"></a>如何要求另一個資料來源的支援？
 若要提交功能要求與其他意見，請前往 [Azure 意見論壇 - 資料目錄](https://feedback.azure.com/forums/906052-data-catalog/category/320788-data-sources)。
 
+## <a name="why-do-i-get-an-error-catalog-already-exists-when-i-try-to-create-a-new-catalog"></a>當我嘗試建立新的類別目錄時，為什麼會收到錯誤*目錄*？
+
+當您購買具有 Power BI Pro 授權的 Office 365 E5 時，Microsoft 會自動在訂用帳戶的區域中建立預設目錄。 此目錄使用免費的 SKU。 Office 365/Power BI 使用者授權是在 Office 365 管理頁面中進行管理。 
+
+不過，這種類型的資料目錄並沒有**系統管理員選項**，而且在**Azure 入口網站**中看不到。 您無法刪除這種類型的資料目錄。 同樣地，您不能重新命名資料目錄，也無法將它移至另一個區域。 
+
+指派 Power BI Pro 授權的使用者帳戶，會在使用 Power BI Pro 授權註冊 Office 365 E5 時，自動擁有資料目錄的存取權。 這種類型的使用者在沒有系統管理許可權的情況下，具有資料目錄資產的完整存取權。 這種類型的使用者*不*是 Azure 資料目錄中**目錄使用者**角色的一部分。
+
+
 ## <a name="how-do-i-get-started-with-data-catalog"></a>如何開始使用資料目錄？
 開始使用的最佳方式是前往[開始使用資料目錄](data-catalog-get-started.md)。 本文是服務中各項功能的端對端概觀。
 
 ## <a name="how-do-i-register-my-data"></a>如何註冊我的資料？
 在資料目錄中註冊您的資料：
-1. 在 Azure 資料目錄入口網站的 [發佈] 區域中，啟動 Azure 資料目錄註冊工具。 
+1. 在 Azure 資料目錄入口網站的 [發佈]**** 區域中，啟動 Azure 資料目錄註冊工具。 
 2. 在資料目錄的資料來源註冊工具中，使用用以存取資料目錄入口網站的相同認證登入。
 3. 選取您要註冊的資料來源和特定資產。
 
@@ -80,7 +86,7 @@ ms.locfileid: "61004036"
 >
 
 > [!NOTE]
-> 若資料來源 (例如 SQL Server Analysis Services) 具有第一級的 **Description** 屬性，資料目錄的資料來源註冊工具就會擷取該屬性值。 若 SQL Server 關聯式資料庫缺少第一級的 **Description** 屬性，資料目錄的資料來源註冊工具則會從物件和資料行的 **ms_description** 擴充屬性擷取值。 如需詳細資訊，請參閱[使用資料庫物件的擴充屬性](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)。
+> 若資料來源 (例如 SQL Server Analysis Services) 具有第一級的 **Description** 屬性，資料目錄的資料來源註冊工具就會擷取該屬性值。 若為*內部部署*SQL Server 缺少第一類**Description**屬性的關係資料庫，資料目錄資料來源註冊工具會從物件和資料行的**ms_description**擴充屬性中，解壓縮值。 SQL Azure 不支援這個屬性。 如需詳細資訊，請參閱[使用資料庫物件的擴充屬性](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)。
 >
 >
 
@@ -90,10 +96,10 @@ ms.locfileid: "61004036"
 ## <a name="how-do-i-annotate-and-enrich-the-metadata-for-my-registered-data-assets"></a>如何標註和充實已註冊資料資產的中繼資料？
 若要為已註冊的資產提供中繼資料，最簡單的方法是在資料目錄入口網站中選取資產，然後在所選物件的屬性窗格或結構描述窗格中，輸入中繼資料值。
 
-在註冊過程中，您也可以提供一些中繼資料，例如專家和標記。 在資料目錄發佈服務中提供的值，將會套用到當時註冊的所有資產。 若要在入口網站中檢視最近註冊的物件以另外標註，請在資料目錄資料來源註冊工具的最後一個畫面中選取 [檢視入口網站] 按鈕。
+在註冊過程中，您也可以提供一些中繼資料，例如專家和標記。 在資料目錄發佈服務中提供的值，將會套用到當時註冊的所有資產。 若要在入口網站中檢視最近註冊的物件以另外標註，請在資料目錄資料來源註冊工具的最後一個畫面中選取 [檢視入口網站]**** 按鈕。
 
 ## <a name="how-do-i-delete-my-registered-data-objects"></a>如何刪除我已註冊的資料物件？
-您可以從資料目錄中刪除物件，只要在入口網站中選取物件，然後按一下 [刪除] 按鈕即可。 移除物件會從資料目錄中移除其中繼資料，但不會影響基礎資料來源。
+您可以從資料目錄中刪除物件，只要在入口網站中選取物件，然後按一下 [刪除]**** 按鈕即可。 移除物件會從資料目錄中移除其中繼資料，但不會影響基礎資料來源。
 
 ## <a name="what-is-an-expert"></a>什麼是專家？
 專家是指對資料物件具有獨特見解的人。 一個物件可能有多個專家。 專家不見得是物件的「擁有者」，而只是知道應該如何運用資料的人。
@@ -103,9 +109,6 @@ ms.locfileid: "61004036"
 
 ## <a name="does-the-catalog-work-with-another-data-source-that-im-interested-in"></a>目錄是否可與我感興趣的其他資料來源搭配運作？
 我們正積極將更多資料來源新增至資料目錄。 如果您希望我們支援某個特定的資料來源，請前往 [Azure 資料目錄意見反應論壇](https://feedback.azure.com/forums/906052-data-catalog)提出建議 (如果已有人建議，請表達支持)。
-
-## <a name="how-is-azure-data-catalog-related-to-the-data-catalog-in-power-bi-for-office-365"></a>Azure 資料目錄與 Power BI for Office 365 中的資料目錄有何關係？
-您可將 Azure 資料目錄視為 Power BI 中進化版的「資料目錄」。 從 2017 年春季開始，Azure 資料目錄用來在 Excel 2016 和 Power Query for Excel 中共用和探索查詢。 Excel 中的資料目錄功能適用於具有 Power BI Pro 授權的使用者。
 
 ## <a name="what-permissions-do-i-need-to-register-assets-with-data-catalog"></a>向資料目錄註冊資產需要什麼權限？
 若要執行資料目錄註冊工具，您在資料來源上需要有可讓您從來源讀取中繼資料的權限。 若要一併包含預覽，您必須有可讓您從註冊的物件讀取資料的權限。
@@ -121,7 +124,7 @@ ms.locfileid: "61004036"
 針對資料來源註冊工具未擷取此中繼資料的資料來源，如果您想要包含資料行/結構描述中繼資料、預覽或資料設定檔，可以使用資料目錄 API 來新增此中繼資料。 如需詳細資訊，請參閱 [Azure 資料目錄 REST API](https://docs.microsoft.com/rest/api/datacatalog/)。
 
 ## <a name="how-do-i-restrict-the-visibility-of-registered-data-assets-so-that-only-certain-people-can-discover-them"></a>如何限制已註冊之資料資產的可見性，以限制只有特定人員才能探索它們？
-在資料目錄中選取資料資產，然後按一下 [取得擁有權] 按鈕。 資料目錄中的資料資產擁有者可以變更可見性設定，可能變更為允許所有使用者探索擁有的資產，或限定只有特定使用者才能看見。 如需詳細資訊，請參閱[在 Azure 資料目錄中管理資料資產](data-catalog-how-to-manage.md)。
+在資料目錄中選取資料資產，然後按一下 [取得擁有權]**** 按鈕。 資料目錄中的資料資產擁有者可以變更可見性設定，可能變更為允許所有使用者探索擁有的資產，或限定只有特定使用者才能看見。 如需詳細資訊，請參閱[在 Azure 資料目錄中管理資料資產](data-catalog-how-to-manage.md)。
 
 ## <a name="how-do-i-update-the-registration-for-a-data-asset-so-that-changes-in-the-data-source-are-reflected-in-the-catalog"></a>如何更新資料資產的註冊，讓資料來源中的變更反映在目錄中？
 若要更新已在目錄中註冊之資料資產的中繼資料，只要重新註冊包含這些資產的資料來源即可。 資料來源中的任何變更 (例如在資料表或檢視中新增或移除資料行) 都會在目錄中更新，但會保留使用者提供的任何註解。

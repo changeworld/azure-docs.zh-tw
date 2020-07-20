@@ -1,31 +1,25 @@
 ---
 title: 使用 Application Insights Profiler 來分析 ASP.NET Core Azure Linux Web 應用程式 | Microsoft Docs
 description: 關於如何使用 Application Insights Profiler 的概念敍述及逐步教學課程。
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.reviewer: mbullwin
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/23/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 35789cc1e516fb24d5e985e12b44fe3cd01b795d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 02/23/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: b91abe282c25b161db72616d7123d7a2bf5dbc9f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306457"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111060"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>使用 Application Insights Profiler 來分析 ASP.NET Core Azure Linux Web 應用程式
 
-此功能目前為預覽狀態。
+這項功能目前為預覽狀態。
 
 了解在使用 [Application Insights ](../../azure-monitor/app/app-insights-overview.md) 時，即時 Web 應用程式的每個方法各使用了多少時間。 Application Insights Profiler 現在可在 Azure App Service 上供裝載於 Linux 中的 ASP.NET Core Web 應用程式使用。 本指南提供逐步指示，說明如何針對 ASP.NET Core Linux Web 應用程式收集分析工具追蹤。
 
-完成此逐步解說之後，您的應用程式可以收集分析工具追蹤，例如圖中所示的追蹤。 在此範例中，分析工具追蹤會指出特定的 Web 要求變慢是因為將時間花在等候上。 程式碼中使應用程式變慢的「最忙碌路徑」之前會加上火焰圖示。 **HomeController** 區段中的 **About** 方法使 Web 應用程式速度變慢，因為此方法呼叫 **Thread.Sleep** 函式。
+完成此逐步解說之後，您的應用程式可以收集分析工具追蹤，例如圖中所示的追蹤。 在此範例中，分析工具追蹤會指出特定的 Web 要求變慢是因為將時間花在等候上。 程式碼中使應用程式變慢的「最忙碌路徑」** 之前會加上火焰圖示。 **HomeController** 區段中的 **About** 方法使 Web 應用程式速度變慢，因為此方法呼叫 **Thread.Sleep** 函式。
 
 ![分析工具追蹤](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
@@ -41,19 +35,19 @@ ms.locfileid: "60306457"
 
 1. 建立 ASP.NET Core MVC Web 應用程式：
 
-    ```
-    dotnet new mvc -n LinuxProfilerTest
-    ```
+   ```console
+   dotnet new mvc -n LinuxProfilerTest
+   ```
 
 1. 將工作目錄變更為專案的根資料夾。
 
 1. 新增 NuGet 套件來收集分析工具追蹤：
 
-    ```shell
-    dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
-    ```
+   ```console
+   dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
+   ```
 
-1. 啟用在 Program.cs 中的 Application Insights:
+1. 啟用 Program.cs 中的 Application Insights：
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -61,8 +55,8 @@ ms.locfileid: "60306457"
             .UseApplicationInsights() // Add this line of code to Enable Application Insights
             .UseStartup<Startup>();
     ```
-    
-1. 啟用 Profiler 在 Startup.cs 中：
+
+1. 在 Startup.cs 中啟用 Profiler：
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -75,24 +69,24 @@ ms.locfileid: "60306457"
 1. 在 **HomeController.cs** 區段中加入一行程式碼，以隨機延遲幾秒鐘的時間：
 
     ```csharp
-        using System.Threading;
-        ...
+    using System.Threading;
+    ...
 
-        public IActionResult About()
-            {
-                Random r = new Random();
-                int delay = r.Next(5000, 10000);
-                Thread.Sleep(delay);
-                return View();
-            }
+    public IActionResult About()
+        {
+            Random r = new Random();
+            int delay = r.Next(5000, 10000);
+            Thread.Sleep(delay);
+            return View();
+        }
     ```
 
 1. 儲存並認可您對本機存放庫的變更：
 
-    ```
-        git init
-        git add .
-        git commit -m "first commit"
+    ```console
+    git init
+    git add .
+    git commit -m "first commit"
     ```
 
 ## <a name="create-the-linux-web-app-to-host-your-project"></a>建立 Linux Web 應用程式來裝載專案
@@ -118,7 +112,7 @@ ms.locfileid: "60306457"
 
 1. 在命令提示字元視窗中，瀏覽至專案的根資料夾。 新增 Git 遠端存放庫以指向 App Service 上的存放庫：
 
-    ```
+    ```console
     git remote add azure https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
     ```
 
@@ -127,13 +121,13 @@ ms.locfileid: "60306457"
 
 2. 將變更推送至 Azure 來部署專案：
 
-    ```
+    ```console
     git push azure master
     ```
 
-您應該會看到類似於以下範例的輸出：
+    您應該會看到類似下列範例的結果：
 
-    ```
+    ```output
     Counting objects: 9, done.
     Delta compression using up to 8 threads.
     Compressing objects: 100% (8/8), done.
@@ -150,8 +144,7 @@ ms.locfileid: "60306457"
     remote: .
     remote:   Installing Newtonsoft.Json 10.0.3.
     remote:   Installing Microsoft.ApplicationInsights.Profiler.Core 1.1.0-LKG
-    …
-
+    ...
     ```
 
 ## <a name="add-application-insights-to-monitor-your-web-apps"></a>新增 Application Insights 以監視您的 Web 應用程式
@@ -160,24 +153,18 @@ ms.locfileid: "60306457"
 
 2. 複製 Application Insights 資源的 **iKey** 值，並在您的 Web 應用程式中進行下列設定：
 
-    ```
-    APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]
-    ```
+    `APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]`
 
     應用程式的設定變更時，網站會自動重新啟動。 一旦套用新的設定後，分析工具會立即執行 2 分鐘。 之後，分析工具會每小時執行兩分鐘。
 
-3. 產生一些流向網站的流量。 您可以重新整理網站的 [關於] 網頁幾次以產生流量。
+3. 產生一些流向網站的流量。 您可以重新整理網站的 [關於]**** 網頁幾次以產生流量。
 
 4. 等待 2-5 分鐘，讓事件彙總至 Application Insights。
 
-5. 在 Azure 入口網站中瀏覽至 Application Insights [效能] 窗格。 您可以檢視在窗格右下角的分析工具追蹤。
+5. 在 Azure 入口網站中瀏覽至 Application Insights [效能]**** 窗格。 您可以檢視在窗格右下角的分析工具追蹤。
 
     ![檢視分析工具追蹤](./media/profiler-aspnetcore-linux/view-traces.png)
 
-## <a name="known-issues"></a>已知問題
-
-### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>現在按鈕不適用於 Linux Profiler 的設定檔
-App Insights profiler 的 Linux 版本還不支援隨選分析現在使用設定檔 按鈕。
 
 
 ## <a name="next-steps"></a>後續步驟

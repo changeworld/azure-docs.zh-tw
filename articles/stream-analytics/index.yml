@@ -1,73 +1,219 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: 串流分析文件
+### YamlMime:Landing
+title: Azure 串流分析文件
+summary: Azure 串流分析是一種完全受控的即時分析服務，其設計旨在協助您分析和處理快速移動的資料串流，這些資料串流可用來獲得見解、建置報告或觸發警示和動作。 了解如何透過我們的快速入門、教學課程和範例使用 Azure 串流分析。
 metadata:
-  title: Azure 串流分析文件 - 教學課程和 API 參考
-  meta.description: 'Learn how to run IoT analytics in the cloud with fully-managed event processing. Analyze data in real time from applications, sensors, devices, and more.'
-  services: stream-analytics
-  author: mamccrea
-  ms.author: mamccrea
+  title: Azure 串流分析文件
+  description: Azure 串流分析是一種完全受控的即時分析服務，其設計旨在協助您分析和處理快速移動的資料串流，這些資料串流可用來獲得見解、建置報告或觸發警示和動作。 了解如何透過我們的快速入門、教學課程和範例使用 Azure 串流分析。
+  services: service
   ms.service: stream-analytics
   ms.topic: landing-page
-  ms.date: 05/08/2019
-abstract:
-  description: 串流分析是一個完全受控、無伺服器的事件處理引擎，可讓您即時分析來自應用程式和 IoT 裝置的資料流。 了解如何透過我們的快速入門、教學課程和範例使用 Azure 串流分析。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ./media/index/streaming-analytics-thumbnail.png
-      width: 250
-    title: '使用 Azure 串流分析進行即時分析和機器學習。 (1:15:05)'
-    href: 'https://myignite.techcommunity.microsoft.com/sessions/65358?source=sessions#ignite-html-anchor'
-    width: 250
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何部署第一個 Azure 串流分析作業：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/stream-analytics.svg
-            text: Azure 入口網站
-            href: 'https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
-            text: PowerShell
-            href: 'https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-powershell'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
-            text: Visual Studio
-            href: 'https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-vs'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
-            text: Visual Studio Code
-            href: 'https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code'
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何部署、管理及監視 Azure 串流分析作業：
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="stream-analytics-manage-job">建立串流分析作業來分析通話資料，並且在 Power BI 儀表板中將結果視覺化</a>
-          - html: <a href="stream-analytics-with-azure-functions">從 Azure 串流分析作業執行 Azure Functions</a>
-          - html: <a href="stream-analytics-javascript-user-defined-functions">在 Azure 串流分析作業中執行 JavaScript 使用者定義函式</a>
-          - html: <a href="stream-analytics-tools-visual-studio-cicd-vsts">使用 Azure Pipelines 部署具有 CI/CD 的 Azure 串流分析作業</a>
-          - html: '<a href="stream-analytics-edge-csharp-udf">針對 Azure 串流分析 Edge 作業撰寫 C# 使用者定義的函式 (預覽)</a>'
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 預覽
-            html: '<p><a href="stream-analytics-previews#public-previews">公開預覽版</a></p><p><a href="stream-analytics-previews#private-previews">個人預覽版</a></p>'
-          - title: 命令列
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.streamanalytics/#stream_analytics">Azure PowerShell</a></p>'
-          - title: 語言
-            html: '<p><a href="/dotnet/api/microsoft.azure.management.streamanalytics?view=azuremgmtstreamanalytics-1.8.3">.NET</a></p><p><a href="https://msdn.microsoft.com/azure/stream-analytics/reference/stream-analytics-query-language-reference">Stream Analytics 查詢語言</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/streamanalytics">REST API 參考</a></p>
+  author: mamccrea
+  ms.author: mamccrea
+  ms.date: 09/16/2019
+  ms.openlocfilehash: 2ef6663ce3ebf21227635fff763d45391281c955
+  ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 07/08/2020
+  ms.locfileid: "86119645"
+landingContent:
+- title: 關於 Azure 串流分析
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 透過 Azure 入口網站建立作業
+      url: stream-analytics-quick-create-portal.md
+  - linkListType: overview
+    links:
+    - text: Azure 串流分析是什麼？
+      url: stream-analytics-introduction.md
+    - text: Azure 串流分析解決方案模式
+      url: stream-analytics-solution-patterns.md
+  - linkListType: whats-new
+    links:
+    - text: 串流分析相容性層級
+      url: stream-analytics-compatibility-level.md
+    - text: 串流分析預覽功能
+      url: stream-analytics-previews.md
+  - linkListType: concept
+    links:
+    - text: 選擇串流分析技術
+      url: streaming-technologies.md
+    - text: 選擇適用於您作業的開發工具
+      url: feature-comparison.md
+- title: 連線到資料來源
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 了解輸入類型
+      url: stream-analytics-add-inputs.md
+  - linkListType: concept
+    links:
+    - text: 串流輸入資料
+      url: stream-analytics-define-inputs.md
+    - text: 加入參考資料以查詢
+      url: stream-analytics-use-reference-data.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用來自 SQL Database 的參考資料
+      url: sql-reference-data.md
+    - text: 針對輸入連線進行疑難排解
+      url: stream-analytics-troubleshoot-input.md
+    - text: 處理適用於事件中樞事件的 Apache Kafka
+      url: ../event-hubs/event-hubs-kafka-stream-analytics.md
+    - text: 從 Azure 事件中樞中處理資料
+      url: ../event-hubs/process-data-azure-stream-analytics.md
+- title: 將資料傳送到輸出接收端
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 了解輸出類型
+      url: stream-analytics-define-outputs.md
+  - linkListType: concept
+    links:
+    - text: 輸出至 Cosmos DB
+      url: stream-analytics-documentdb-output.md
+    - text: 輸出到 Azure SQL Database
+      url: stream-analytics-sql-output-perf.md
+    - text: 自訂 Blob 輸出資料分割
+      url: stream-analytics-custom-path-patterns-blob-storage-output.md
+    - text: 輸出錯誤處理原則
+      url: stream-analytics-output-error-policy.md
+  - linkListType: how-to-guide
+    links:
+    - text: 輸出連線問題疑難排解
+      url: stream-analytics-troubleshoot-output.md
+- title: 作業的監視和疑難排解
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 監視簡介
+      url: stream-analytics-monitoring.md
+    - text: 使用 Azure PowerShell 監視作業
+      url: stream-analytics-monitor-and-manage-jobs-use-powershell.md
+    - text: 使用 Azure .NET SDK 建立作業監視
+      url: stream-analytics-monitor-jobs.md
+    - text: 從 Visual Studio 監視和管理作業
+      url: stream-analytics-monitor-jobs-use-vs.md
+    - text: 使用資源記錄進行疑難排解
+      url: stream-analytics-job-diagnostic-logs.md
+    - text: 使用作業圖表偵錯
+      url: stream-analytics-job-diagram-with-metrics.md
+    - text: 資料錯誤疑難排解
+      url: data-errors.md
+- title: 檢閱時態性概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 常見查詢模式
+      url: stream-analytics-stream-analytics-query-patterns.md
+    - text: 了解串流分析中的時間處理
+      url: stream-analytics-time-handling.md
+    - text: 內部檢查點和重新執行
+      url: stream-analytics-concepts-checkpoint-replay.md
+- title: 使用串流分析查詢轉換資料
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 時間範圍函式簡介
+      url: stream-analytics-window-functions.md
+    - text: 地理空間函式簡介
+      url: stream-analytics-geospatial-functions.md
+    - text: 剖析 JSON 和 Avro 資料
+      url: stream-analytics-parsing-json.md
+  - linkListType: how-to-guide
+    links:
+    - text: 查詢邏輯疑難排解
+      url: stream-analytics-troubleshoot-query.md
+    - text: 寫入 JavaScript 使用者定義彙總
+      url: stream-analytics-javascript-user-defined-aggregates.md
+    - text: 開發適用於 IoT Edge 作業的 .NET 使用者定義函式
+      url: stream-analytics-edge-csharp-udf-methods.md
+  - linkListType: tutorial
+    links:
+    - text: 執行 JavaScript 使用者定義函式
+      url: stream-analytics-javascript-user-defined-functions.md
+    - text: 在串流分析 Edge 作業上執行 C# 使用者定義函式
+      url: stream-analytics-edge-csharp-udf.md
+- title: 使用機器學習分析
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用機器學習偵測異常
+      url: stream-analytics-machine-learning-anomaly-detection.md
+    - text: 使用 Azure Machine Learning Studio 中執行情感分析 (傳統)
+      url: stream-analytics-machine-learning-integration-tutorial.md
+    - text: 使用 Machine Learning Studio 函式調整作業
+      url: stream-analytics-scale-with-machine-learning-functions.md
+- title: 使用開發人員工具建立和管理作業
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Visual Studio Code 探索作業
+      url: visual-studio-code-explore-jobs.md
+    - text: 使用 Visual Studio Code 中的範例資料測試查詢
+      url: visual-studio-code-local-run.md
+    - text: 安裝適用於 Visual Studio 的 工具
+      url: stream-analytics-tools-for-visual-studio-install.md
+    - text: 使用 Visual Studio 中的範例資料測試查詢
+      url: stream-analytics-vs-tools-local-run.md
+    - text: 使用 Visual Studio 中的即時資料測試查詢
+      url: stream-analytics-live-data-local-testing.md
+    - text: 檢視 Visual Studio 中的作業
+      url: stream-analytics-tools-for-visual-studio-edge-jobs.md
+    - text: 在 Visual Studio 中開發 IoT Edge 作業
+      url: stream-analytics-tools-for-visual-studio-edge-jobs.md
+  - linkListType: video
+    links:
+    - text: 建立者，使用 Visual Studio Code 管理和測試
+      url: https://www.youtube.com/watch?v=N9ak_9ZaHms
+- title: 試用串流分析教學課程和解決方案
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 建立和管理作業
+      url: stream-analytics-manage-job.md
+    - text: 觸發 Azure 函式
+      url: stream-analytics-with-azure-functions.md
+  - linkListType: how-to-guide
+    links:
+    - text: 透過地理柵欄和地理空間彙總建置解決方案
+      url: geospatial-scenarios.md
+    - text: 在 IoT Edge 上執行作業
+      url: stream-analytics-edge.md
+    - text: 建置情感分析解決方案
+      url: stream-analytics-twitter-sentiment-analysis-trends.md
+    - text: 即時詐欺偵測
+      url: stream-analytics-real-time-fraud-detection.md
+    - text: 建置 IoT 解決方案
+      url: stream-analytics-build-an-iot-solution-using-stream-analytics.md
+    - text: 高頻率交易模擬
+      url: stream-analytics-high-frequency-trading.md
+    - text: 根據可調整的規則閾值發出警示
+      url: stream-analytics-threshold-based-rules.md
+- title: 部署串流分析作業
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 使用 Azure Pipelines 透過 CI/CD 部署作業
+      url: stream-analytics-tools-visual-studio-cicd-vsts.md
+  - linkListType: how-to-guide
+    links:
+    - text: 透過 Visual Studio Code 設定 CI/CD 管線
+      url: setup-cicd-vs-code.md
+    - text: 透過 Visual Studio 設定 CI/CD 管線
+      url: stream-analytics-tools-for-visual-studio-cicd.md
+    - text: 使用 REST API 設定適用於 IoT Edge 作業的 CI/CD
+      url: stream-analytics-cicd-api.md
+- title: 調整串流分析作業
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 隨著串流單位縮放
+      url: stream-analytics-streaming-unit-consumption.md
+    - text: 隨著平行化查詢縮放
+      url: stream-analytics-parallelization.md
+    - text: 調整工作來增加輸送量
+      url: stream-analytics-scale-jobs.md
+    - text: 藉由重新分割來最佳化處理程序
+      url: repartition.md

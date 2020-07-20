@@ -1,31 +1,21 @@
 ---
-title: Azure PowerShell 指令碼範例 - 訂閱 Azure 訂用帳戶 | Microsoft Docs
-description: Azure PowerShell 指令碼範例 - 訂閱 Azure 訂用帳戶
-services: event-grid
-documentationcenter: na
-author: tfitzmac
-manager: timlt
-ms.service: event-grid
+title: Azure PowerShell - 訂閱 Azure 訂用帳戶
+description: 本文提供範例 Azure PowerShell 指令碼，示範如何訂閱 Azure 訂用帳戶的事件方格事件。
 ms.devlang: powershell
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/10/2018
-ms.author: tomfitz
-ms.openlocfilehash: 3d3d7a864bf6941dfb0bf7496b291639e7e5ea6d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 07/08/2020
+ms.openlocfilehash: 7540c8eb181e064c5df5372a4bc9b27ebe16bf56
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58180546"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171239"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-powershell"></a>使用 PowerShell 訂閱 Azure 訂用帳戶的事件
 
 此指令碼可針對 Azure 訂用帳戶的事件建立 Event Grid 訂用帳戶。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
-
-預覽範例指令碼需要事件方格模組。 若要安裝，請執行 `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
 
 ## <a name="sample-script---stable"></a>範例指令碼 - Stable
 
@@ -35,6 +25,8 @@ ms.locfileid: "58180546"
 
 ## <a name="sample-script---preview-module"></a>範例指令碼 - 預覽版模組
 
+此預覽範例指令碼需要事件方格模組。 若要安裝，請執行 `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
+
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
 [!code-powershell[main](../../../powershell_scripts/event-grid/subscribe-to-azure-subscription-preview/subscribe-to-azure-subscription-preview.ps1 "Subscribe to Azure subscription")]
@@ -43,7 +35,7 @@ ms.locfileid: "58180546"
 
 此指令碼會使用下列命令來建立事件訂用帳戶。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | 建立事件格線訂用帳戶。 |
 

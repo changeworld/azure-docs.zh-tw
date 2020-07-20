@@ -1,41 +1,54 @@
 ---
 title: 使用 PowerShell 將 Azure Application Insights 自動化 | Microsoft Docs
-description: 在 PowerShell 中使用 Azure Resource Manager 範本自動建立資源、警示及可用性測試。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 9f73b87f-be63-4847-88c8-368543acad8b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+description: 在 PowerShell 中使用 Azure Resource Manager 範本自動建立及管理資源、警示及可用性測試。
 ms.topic: conceptual
-ms.date: 04/02/2017
-ms.author: mbullwin
-ms.openlocfilehash: 1c360d60a429f137c4b74ad4afe8ae9bba895b7d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.date: 05/02/2020
+ms.openlocfilehash: c4e7c4fe14d829338e98a4b7e73726b1e605707c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883406"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485412"
 ---
-#  <a name="create-application-insights-resources-using-powershell"></a>使用 PowerShell 建立 Application Insights 資源
+#  <a name="manage-application-insights-resources-using-powershell"></a>使用 PowerShell 管理 Application Insights 資源
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本文說明如何使用 Azure 資源管理，自動將 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 資源的建立和更新自動化。 例如，您可能建置程序中這麼做。 除了基本的 Application Insights 資源外，您可以建立[可用性 Web 測試](../../azure-monitor/app/monitor-web-app-availability.md)、設定[警示](../../azure-monitor/app/alerts.md)、設定[價格配置](pricing.md)和建立其他 Azure 資源。
+本文說明如何使用 Azure 資源管理，自動將 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 資源的建立和更新自動化。 例如，您可能建置程序中這麼做。 除了基本的 Application Insights 資源外，您可以建立[可用性 Web 測試](../../azure-monitor/app/monitor-web-app-availability.md)、設定[警示](../../azure-monitor/platform/alerts-log.md)、設定[價格配置](pricing.md)和建立其他 Azure 資源。
 
-建立這些資源的關鍵是 [Azure 資源管理員](../../azure-resource-manager/manage-resources-powershell.md)適用的 JSON 範本。 簡單地說，此程序是：下載現有資源的 JSON 定義；參數化某些值 (例如名稱)；然後每當您想建立新的資源時再執行範本。 您可以一起封裝幾項資源一次全部建立，例如一個包含可用性測試、警示和連續匯出儲存體的應用程式監視器。 部分參數化有一些微妙之處，我們會在這裡說明。
+建立這些資源的關鍵是 [Azure 資源管理員](../../azure-resource-manager/management/manage-resources-powershell.md)適用的 JSON 範本。 基本的程序是：下載現有資源的 JSON 定義；參數化某些值 (例如名稱)；然後每當想要建立新的資源時再執行範本。 您可以一起封裝幾項資源一次全部建立，例如一個包含可用性測試、警示和連續匯出儲存體的應用程式監視器。 部分參數化有一些微妙之處，我們會在這裡說明。
 
 ## <a name="one-time-setup"></a>單次設定
 若您未曾將 PowerShell 與 Azure 訂用帳戶搭配使用：
 
 在您要執行指令碼的電腦上安裝 Azure Powershell 模組：
 
-1. 安裝 [Microsoft Web Platform Installer (v5 或更新版本)](https://www.microsoft.com/web/downloads/platform.aspx)。
-2. 請使用它來安裝 Microsoft Azure Powershell。
+1. 安裝 [Microsoft Web Platform Installer (v5 或更高版本)](https://www.microsoft.com/web/downloads/platform.aspx)。
+2. 使用該程式安裝 Microsoft Azure PowerShell。
 
-## <a name="create-an-azure-resource-manager-template"></a>建立 Azure Resource Manager 範本
+除了使用 Resource Manager 範本以外，還有一組豐富的 [Application Insights PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 可供以程式設計方式輕鬆設定 Application Insights 資源。 Cmdlet 提供的功能包括：
+
+* 建立及刪除 Application Insights 資源
+* 取得 Application Insights 資源及其屬性的清單
+* 建立及管理連續匯出
+* 建立及管理應用程式金鑰
+* 設定每日上限
+* 設定定價方案
+
+## <a name="create-application-insights-resources-using-a-powershell-cmdlet"></a>使用 PowerShell Cmdlet 建立 Application Insights 資源
+
+以下說明如何使用 [New-AzApplicationInsights](https://docs.microsoft.com/powershell/module/az.applicationinsights/New-AzApplicationInsights) Cmdlet 在 Azure 美國東部資料中心建立新的 Application Insights 資源：
+
+```PS
+New-AzApplicationInsights -ResourceGroupName <resource group> -Name <resource name> -location eastus
+```
+
+
+## <a name="create-application-insights-resources-using-a-resource-manager-template"></a>使用 Resource Manager 範本建立 Application Insights 資源
+
+以下說明如何使用 Resource Manager 範本建立新的 Application Insights 資源。
+
+### <a name="create-the-azure-resource-manager-template"></a>建立 Azure Resource Manager 範本
+
 建立新的 .json 檔案 - 在此範例中稱為 `template1.json` 。 將此內容複製到其中：
 
 ```JSON
@@ -46,7 +59,7 @@ ms.locfileid: "58883406"
             "appName": {
                 "type": "string",
                 "metadata": {
-                    "description": "Enter the application name."
+                    "description": "Enter the name of your Application Insights resource."
                 }
             },
             "appType": {
@@ -58,20 +71,39 @@ ms.locfileid: "58883406"
                     "other"
                 ],
                 "metadata": {
-                    "description": "Enter the application type."
+                    "description": "Enter the type of the monitored application."
                 }
             },
             "appLocation": {
                 "type": "string",
-                "defaultValue": "East US",
+                "defaultValue": "eastus",
+                "metadata": {
+                    "description": "Enter the location of your Application Insights resource."
+                }
+            },
+            "retentionInDays": {
+                "type": "int",
+                "defaultValue": 90,
                 "allowedValues": [
-                    "South Central US",
-                    "West Europe",
-                    "East US",
-                    "North Europe"
+                    30,
+                    60,
+                    90,
+                    120,
+                    180,
+                    270,
+                    365,
+                    550,
+                    730
                 ],
                 "metadata": {
-                    "description": "Enter the application location."
+                    "description": "Data retention in days"
+                }
+            },
+            "ImmediatePurgeDataOn30Days": {
+                "type": "bool",
+                "defaultValue": false,
+                "metadata": {
+                    "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
                 }
             },
             "priceCode": {
@@ -82,7 +114,7 @@ ms.locfileid: "58883406"
                     2
                 ],
                 "metadata": {
-                    "description": "1 = Basic, 2 = Enterprise"
+                    "description": "Pricing plan: 1 = Per GB (or legacy Basic plan), 2 = Per Node (legacy Enterprise plan)"
                 }
             },
             "dailyQuota": {
@@ -95,7 +127,7 @@ ms.locfileid: "58883406"
             },
             "dailyQuotaResetTime": {
                 "type": "int",
-                "defaultValue": 24,
+                "defaultValue": 0,
                 "metadata": {
                     "description": "Enter daily quota reset hour in UTC (0 to 23). Values outside the range will get a random reset hour."
                 }
@@ -127,7 +159,8 @@ ms.locfileid: "58883406"
                 "location": "[parameters('appLocation')]",
                 "tags": {},
                 "properties": {
-                    "ApplicationId": "[parameters('appName')]"
+                    "ApplicationId": "[parameters('appName')]",
+                    "retentionInDays": "[parameters('retentionInDays')]"
                 },
                 "dependsOn": []
             },
@@ -152,16 +185,13 @@ ms.locfileid: "58883406"
     }
 ```
 
+### <a name="use-the-resource-manager-template-to-create-a-new-application-insights-resource"></a>使用 Resource Manager 範本建立新的 Application Insights 資源
 
-
-## <a name="create-application-insights-resources"></a>建立 Application Insights 資源
-1. 在 PowerShell 中，登入 Azure：
-   
-    `Connect-AzAccount`
-2. 執行如下命令：
+1. 在 PowerShell 中，使用 `$Connect-AzAccount` 登入至 Azure
+2. 使用 `Set-AzContext "<subscription ID>"` 將內容設定至訂用帳戶
+2. 執行新部署來建立新的 Application Insights 資源：
    
     ```PS
-   
         New-AzResourceGroupDeployment -ResourceGroupName Fabrikam `
                -TemplateFile .\template1.json `
                -appName myNewApp
@@ -174,219 +204,211 @@ ms.locfileid: "58883406"
 
 您可以新增其他參數 - 可在範本的參數區段中找到其描述。
 
-## <a name="to-get-the-instrumentation-key"></a>取得檢測金鑰
+## <a name="get-the-instrumentation-key"></a>取得檢測金鑰
+
 建立應用程式資源之後，您會想要檢測金鑰： 
 
+1. `$Connect-AzAccount`
+2. `Set-AzContext "<subscription ID>"`
+3. `$resource = Get-AzResource -Name "<resource name>" -ResourceType "Microsoft.Insights/components"`
+4. `$details = Get-AzResource -ResourceId $resource.ResourceId`
+5. `$details.Properties.InstrumentationKey`
+
+若要查看 Application Insights 資源其他許多屬性的清單，請使用：
+
 ```PS
-    $resource = Find-AzResource -ResourceNameEquals "<YOUR APP NAME>" -ResourceType "Microsoft.Insights/components"
-    $details = Get-AzResource -ResourceId $resource.ResourceId
-    $ikey = $details.Properties.InstrumentationKey
+Get-AzApplicationInsights -ResourceGroupName Fabrikam -Name FabrikamProd | Format-List
 ```
 
+您可透過下列 Cmdlet 取得其他屬性：
+* `Set-AzApplicationInsightsDailyCap`
+* `Set-AzApplicationInsightsPricingPlan`
+* `Get-AzApplicationInsightsApiKey`
+* `Get-AzApplicationInsightsContinuousExport`
+
+如需這些 Cmdlet 的參數，請參閱[詳細文件](https://docs.microsoft.com/powershell/module/az.applicationinsights)。  
+
+## <a name="set-the-data-retention"></a>設定資料保留
+
+以下三種方法可透過程式設計方式來設定 Application Insights 資源的資料保留。
+
+### <a name="setting-data-retention-using-a-powershell-commands"></a>使用 PowerShell 命令來設定資料保留
+
+以下是可用來設定 Application Insights 資源資料保留的一組簡單 PowerShell 命令：
+
+```PS
+$Resource = Get-AzResource -ResourceType Microsoft.Insights/components -ResourceGroupName MyResourceGroupName -ResourceName MyResourceName
+$Resource.Properties.RetentionInDays = 365
+$Resource | Set-AzResource -Force
+```
+
+### <a name="setting-data-retention-using-rest"></a>使用 REST 設定資料保留
+
+若要取得 Application Insights 資源目前的資料保留，您可使用 OSS 工具 [ARMClient](https://github.com/projectkudu/ARMClient)。  (請透過 [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) 和 [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/) 的文章來深入了解 ARMclient。)以下是使用 `ARMClient` 以取得目前保留的範例：
+
+```PS
+armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName?api-version=2018-05-01-preview
+```
+
+若要設定保留，該命令是類似的 PUT：
+
+```PS
+armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName?api-version=2018-05-01-preview "{location: 'eastus', properties: {'retentionInDays': 365}}"
+```
+
+若要使用上述範本將資料保留設為 365 天，請執行：
+
+```PS
+New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
+       -TemplateFile .\template1.json `
+       -retentionInDays 365 `
+       -appName myApp
+```
+
+### <a name="setting-data-retention-using-a-powershell-script"></a>使用 PowerShell 指令碼來設定資料保留
+
+下列指令碼也可用來變更保留。 複製此指令碼以另存新檔為 `Set-ApplicationInsightsRetention.ps1`。
+
+```PS
+Param(
+    [Parameter(Mandatory = $True)]
+    [string]$SubscriptionId,
+
+    [Parameter(Mandatory = $True)]
+    [string]$ResourceGroupName,
+
+    [Parameter(Mandatory = $True)]
+    [string]$Name,
+
+    [Parameter(Mandatory = $True)]
+    [string]$RetentionInDays
+)
+$ErrorActionPreference = 'Stop'
+if (-not (Get-Module Az.Accounts)) {
+    Import-Module Az.Accounts
+}
+$azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
+if (-not $azProfile.Accounts.Count) {
+    Write-Error "Ensure you have logged in before calling this function."    
+}
+$currentAzureContext = Get-AzContext
+$profileClient = New-Object Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient($azProfile)
+$token = $profileClient.AcquireAccessToken($currentAzureContext.Tenant.TenantId)
+$UserToken = $token.AccessToken
+$RequestUri = "https://management.azure.com/subscriptions/$($SubscriptionId)/resourceGroups/$($ResourceGroupName)/providers/Microsoft.Insights/components/$($Name)?api-version=2015-05-01"
+$Headers = @{
+    "Authorization"         = "Bearer $UserToken"
+    "x-ms-client-tenant-id" = $currentAzureContext.Tenant.TenantId
+}
+## Get Component object via ARM
+$GetResponse = Invoke-RestMethod -Method "GET" -Uri $RequestUri -Headers $Headers 
+
+## Update RetentionInDays property
+if($($GetResponse.properties | Get-Member "RetentionInDays"))
+{
+    $GetResponse.properties.RetentionInDays = $RetentionInDays
+}
+else
+{
+    $GetResponse.properties | Add-Member -Type NoteProperty -Name "RetentionInDays" -Value $RetentionInDays
+}
+## Upsert Component object via ARM
+$PutResponse = Invoke-RestMethod -Method "PUT" -Uri "$($RequestUri)" -Headers $Headers -Body $($GetResponse | ConvertTo-Json) -ContentType "application/json"
+$PutResponse
+```
+
+然後，此指令碼可用為：
+
+```PS
+Set-ApplicationInsightsRetention `
+        [-SubscriptionId] <String> `
+        [-ResourceGroupName] <String> `
+        [-Name] <String> `
+        [-RetentionInDays <Int>]
+```
+
+## <a name="set-the-daily-cap"></a>設定每日上限
+
+若要取得每日上限屬性，請使用 [Set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) Cmdlet： 
+
+```PS
+Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> | Format-List
+```
+
+若要設定每日上限屬性，請使用相同的 Cmdlet。 例如，若要將上限設為每天 300 GB，
+
+```PS
+Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> -DailyCapGB 300
+```
+
+您也可以使用 [ARMClient](https://github.com/projectkudu/ARMClient) 以取得及設定每日上限參數。  若要取得目前的值，請使用：
+
+```PS
+armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+```
+
+## <a name="set-the-daily-cap-reset-time"></a>設定每日上限重設時間
+
+若要設定每日上限重設時間，您可使用 [ARMClient](https://github.com/projectkudu/ARMClient)。 以下是使用 `ARMClient` 以將重設時間設為新小時 (在本範例中為 12:00 UTC) 的範例：
+
+```PS
+armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview "{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'ResetTime':12}}"
+```
 
 <a id="price"></a>
-## <a name="set-the-price-plan"></a>設定價格方案
+## <a name="set-the-pricing-plan"></a>設定定價方案 
 
-您可以設定[價格方案](pricing.md)。
-
-若要使用企業價格計劃建立應用程式資源，請使用上述的範本︰
+若要取得目前的定價方案，請使用 [Set-AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) Cmdlet：
 
 ```PS
-        New-AzResourceGroupDeployment -ResourceGroupName Fabrikam `
-               -TemplateFile .\template1.json `
-               -priceCode 2 `
-               -appName myNewApp
+Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> | Format-List
 ```
+
+若要設定定價方案，請使用相同的 Cmdlet 並指定 `-PricingPlan`：  
+
+```PS
+Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> -PricingPlan Basic
+```
+
+您也可以使用上述 Resource Manager 範本，在現有的 Application Insights 資源上設定定價方案，從計費資源省略 "microsoft.insights/components" 資源和 `dependsOn` 節點。 例如，若要將其設為每 GB 方案 (先前稱為基本方案)，請執行：
+
+```PS
+        New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
+               -TemplateFile .\template1.json `
+               -priceCode 1 `
+               -appName myApp
+```
+
+`priceCode` 定義為：
 
 |priceCode|計劃|
 |---|---|
-|1|基本|
-|2|Enterprise|
+|1|每 GB (先前名為基本方案)|
+|2|每節點 (先前名為企業方案)|
 
-* 如果您只想要使用預設基本價格方案，您可以從範本中省略 CurrentBillingFeatures 資源。
-* 如果您想在建立元件資源之後變更價格方案，可以使用省略 "microsoft.insights/components" 資源的範本。 此外，也從計費資源省略 `dependsOn` 節點。 
+最後，您可使用 [ARMClient](https://github.com/projectkudu/ARMClient) 來取得及設定定價方案與每日上限參數。  若要取得目前的值，請使用：
 
-若要驗證更新的定價方案，請在瀏覽器中查看 [使用量和估計成本頁面] 刀鋒視窗。 「重新整理瀏覽器檢視」以確保您看到的是最新的狀態。
+```PS
+armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+```
 
+而且，您可使用下列項目來設定這些參數：
 
+```PS
+armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+"{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'Cap':200,'ResetTime':12,'StopSendNotificationWhenHitCap':true,'WarningThreshold':90,'StopSendNotificationWhenHitThreshold':true}}"
+```
+
+這會將每日上限設為每天 200 GB、將每日上限重設時間設定為 12:00 UTC、在達到上限並符合警告層級時傳送電子郵件，並將警告閾值設定上限的 90%。  
 
 ## <a name="add-a-metric-alert"></a>新增度量警示
 
-若要與您的應用程式資源同時設定度量警示，請將類似的程式碼合併至範本檔案︰
-
-```JSON
-{
-    parameters: { ... // existing parameters ...
-            "responseTime": {
-              "type": "int",
-              "defaultValue": 3,
-              "minValue": 1,
-              "metadata": {
-                "description": "Enter response time threshold in seconds."
-              }
-    },
-    variables: { ... // existing variables ...
-      // Alert names must be unique within resource group.
-      "responseAlertName": "[concat('ResponseTime-', toLower(parameters('appName')))]"
-    }, 
-    resources: { ... // existing resources ...
-     {
-      //
-      // Metric alert on response time
-      //
-      "name": "[variables('responseAlertName')]",
-      "type": "Microsoft.Insights/alertrules",
-      "apiVersion": "2014-04-01",
-      "location": "[parameters('appLocation')]",
-      // Ensure this resource is created after the app resource:
-      "dependsOn": [
-        "[resourceId('Microsoft.Insights/components', parameters('appName'))]"
-      ],
-      "tags": {
-        "[concat('hidden-link:', resourceId('Microsoft.Insights/components', parameters('appName')))]": "Resource"
-      },
-      "properties": {
-        "name": "[variables('responseAlertName')]",
-        "description": "response time alert",
-        "isEnabled": true,
-        "condition": {
-          "$type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.ThresholdRuleCondition, Microsoft.WindowsAzure.Management.Mon.Client",
-          "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
-          "dataSource": {
-            "$type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleMetricDataSource, Microsoft.WindowsAzure.Management.Mon.Client",
-            "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-            "resourceUri": "[resourceId('microsoft.insights/components', parameters('appName'))]",
-            "metricName": "request.duration"
-          },
-          "threshold": "[parameters('responseTime')]", //seconds
-          "windowSize": "PT15M" // Take action if changed state for 15 minutes
-        },
-        "actions": [
-          {
-            "$type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleEmailAction, Microsoft.WindowsAzure.Management.Mon.Client",
-            "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
-            "sendToServiceOwners": true,
-            "customEmails": []
-          }
-        ]
-      }
-    }
-}
-```
-
-當您叫用範本時，您可以選擇性地新增此參數︰
-
-    `-responseTime 2`
-
-您當然可以參數化其他欄位。 
-
-若要尋找其他警示規則的類型名稱和組態詳細資料，請以手動方式建立規則，然後在 [Azure Resource Manager](https://resources.azure.com/) 檢查。 
+若要自動建立計量警示，請參閱[計量警示範本文章](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-simple-static-threshold-metric-alert)
 
 
 ## <a name="add-an-availability-test"></a>新增可用性測試
 
-這個範例是 ping 測試 (以測試單一網頁)。  
-
-可用性測試中**有兩個部分**︰測試本身，以及通知您失敗的警示。
-
-將下列程式碼合併至建立應用程式的範本檔案。
-
-```JSON
-{
-    parameters: { ... // existing parameters here ...
-      "pingURL": { "type": "string" },
-      "pingText": { "type": "string" , defaultValue: ""}
-    },
-    variables: { ... // existing variables here ...
-      "pingTestName":"[concat('PingTest-', toLower(parameters('appName')))]",
-      "pingAlertRuleName": "[concat('PingAlert-', toLower(parameters('appName')), '-', subscription().subscriptionId)]"
-    },
-    resources: { ... // existing resources here ...
-    { //
-      // Availability test: part 1 configures the test
-      //
-      "name": "[variables('pingTestName')]",
-      "type": "Microsoft.Insights/webtests",
-      "apiVersion": "2014-04-01",
-      "location": "[parameters('appLocation')]",
-      // Ensure this is created after the app resource:
-      "dependsOn": [
-        "[resourceId('Microsoft.Insights/components', parameters('appName'))]"
-      ],
-      "tags": {
-        "[concat('hidden-link:', resourceId('Microsoft.Insights/components', parameters('appName')))]": "Resource"
-      },
-      "properties": {
-        "Name": "[variables('pingTestName')]",
-        "Description": "Basic ping test",
-        "Enabled": true,
-        "Frequency": 900, // 15 minutes
-        "Timeout": 120, // 2 minutes
-        "Kind": "ping", // single URL test
-        "RetryEnabled": true,
-        "Locations": [
-          {
-            "Id": "us-va-ash-azr"
-          },
-          {
-            "Id": "emea-nl-ams-azr"
-          },
-          {
-            "Id": "apac-jp-kaw-edge"
-          }
-        ],
-        "Configuration": {
-          "WebTest": "[concat('<WebTest   Name=\"', variables('pingTestName'), '\"   Enabled=\"True\"         CssProjectStructure=\"\"    CssIteration=\"\"  Timeout=\"120\"  WorkItemIds=\"\"         xmlns=\"http://microsoft.com/schemas/VisualStudio/TeamTest/2010\"         Description=\"\"  CredentialUserName=\"\"  CredentialPassword=\"\"         PreAuthenticate=\"True\"  Proxy=\"default\"  StopOnError=\"False\"         RecordedResultFile=\"\"  ResultsLocale=\"\">  <Items>  <Request Method=\"GET\"    Version=\"1.1\"  Url=\"', parameters('Url'),   '\" ThinkTime=\"0\"  Timeout=\"300\" ParseDependentRequests=\"True\"         FollowRedirects=\"True\" RecordResult=\"True\" Cache=\"False\"         ResponseTimeGoal=\"0\"  Encoding=\"utf-8\"  ExpectedHttpStatusCode=\"200\"         ExpectedResponseUrl=\"\" ReportingName=\"\" IgnoreHttpStatusCode=\"False\" />        </Items>  <ValidationRules> <ValidationRule  Classname=\"Microsoft.VisualStudio.TestTools.WebTesting.Rules.ValidationRuleFindText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a\" DisplayName=\"Find Text\"         Description=\"Verifies the existence of the specified text in the response.\"         Level=\"High\"  ExecutionOrder=\"BeforeDependents\">  <RuleParameters>        <RuleParameter Name=\"FindText\" Value=\"',   parameters('pingText'), '\" />  <RuleParameter Name=\"IgnoreCase\" Value=\"False\" />  <RuleParameter Name=\"UseRegularExpression\" Value=\"False\" />  <RuleParameter Name=\"PassIfTextFound\" Value=\"True\" />  </RuleParameters> </ValidationRule>  </ValidationRules>  </WebTest>')]"
-        },
-        "SyntheticMonitorId": "[variables('pingTestName')]"
-      }
-    },
-
-    {
-      //
-      // Availability test: part 2, the alert rule
-      //
-      "name": "[variables('pingAlertRuleName')]",
-      "type": "Microsoft.Insights/alertrules",
-      "apiVersion": "2014-04-01",
-      "location": "[parameters('appLocation')]", 
-      "dependsOn": [
-        "[resourceId('Microsoft.Insights/webtests', variables('pingTestName'))]"
-      ],
-      "tags": {
-        "[concat('hidden-link:', resourceId('Microsoft.Insights/components', parameters('appName')))]": "Resource",
-        "[concat('hidden-link:', resourceId('Microsoft.Insights/webtests', variables('pingTestName')))]": "Resource"
-      },
-      "properties": {
-        "name": "[variables('pingAlertRuleName')]",
-        "description": "alert for web test",
-        "isEnabled": true,
-        "condition": {
-          "$type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.LocationThresholdRuleCondition, Microsoft.WindowsAzure.Management.Mon.Client",
-          "odata.type": "Microsoft.Azure.Management.Insights.Models.LocationThresholdRuleCondition",
-          "dataSource": {
-            "$type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleMetricDataSource, Microsoft.WindowsAzure.Management.Mon.Client",
-            "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-            "resourceUri": "[resourceId('microsoft.insights/webtests', variables('pingTestName'))]",
-            "metricName": "GSMT_AvRaW"
-          },
-          "windowSize": "PT15M", // Take action if changed state for 15 minutes
-          "failedLocationCount": 2
-        },
-        "actions": [
-          {
-            "$type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleEmailAction, Microsoft.WindowsAzure.Management.Mon.Client",
-            "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
-            "sendToServiceOwners": true,
-            "customEmails": []
-          }
-        ]
-      }
-    }
-}
-```
-
-若要探索其他測試位置的程式碼，或自動建立更複雜的 web 測試，請手動建立範例，然後從 [Azure Resource Manager](https://resources.azure.com/) 參數化程式碼。
+若要將可用性測試自動化，請參閱[計量警示範本文章](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-an-availability-test-along-with-a-metric-alert)。
 
 ## <a name="add-more-resources"></a>新增其他資源
 
@@ -404,7 +426,7 @@ ms.locfileid: "58883406"
    * `InstrumentationKey`
    * `CreationDate`
    * `TenantId`
-4. 開啟 webtests 和 alertrules 區段，將個別項目的 JSON 複製到您的範本。 (請勿從 webtests 或 alertrules 節點複製：移到其下的項目。)
+4. 開啟 `webtests` 和 `alertrules` 區段，並將個別項目的 JSON 複製到範本。 (請勿從 `webtests` 或 `alertrules` 節點複製：移到其下的項目。)
    
     每個 Web 測試都有一個關聯的警示規則，您必須同時複製這兩者。
    
@@ -414,13 +436,13 @@ ms.locfileid: "58883406"
     `"apiVersion": "2015-05-01",`
 
 ### <a name="parameterize-the-template"></a>參數化範本
-現在您必須以參數取代特定的名稱。 若要[參數化範本](../../azure-resource-manager/resource-group-authoring-templates.md)，您要使用[一組協助程式函式](../../azure-resource-manager/resource-group-template-functions.md)撰寫表示式。 
+現在您必須以參數取代特定的名稱。 若要[參數化範本](../../azure-resource-manager/templates/template-syntax.md)，您要使用[一組協助程式函式](../../azure-resource-manager/templates/template-functions.md)撰寫表示式。 
 
 您無法將參數化字串的一部分，因此請使用 `concat()` 建置字串。
 
 以下是您會想要進行的替換的範例。 每個替換各出現數次。 您的範本中可能需要其他替換。 這些範例使用我們在範本頂端定義的參數和變數。
 
-| find | 取代為 |
+| 尋找 | 取代為 |
 | --- | --- |
 | `"hidden-link:/subscriptions/.../../components/MyAppName"` |`"[concat('hidden-link:',`<br/>`resourceId('microsoft.insights/components',` <br/> `parameters('appName')))]"` |
 | `"/subscriptions/.../../alertrules/myAlertName-myAppName-subsId",` |`"[resourceId('Microsoft.Insights/alertrules', variables('alertRuleName'))]",` |
@@ -429,7 +451,7 @@ ms.locfileid: "58883406"
 | `"myTestName-myAppName-subsId"` |`"[variables('alertRuleName')]"` |
 | `"myAppName"` |`"[parameters('appName')]"` |
 | `"myappname"` (小寫) |`"[toLower(parameters('appName'))]"` |
-| `"<WebTest Name=\"myWebTest\" ...`<br/>`Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`<br/>刪除 Guid 和識別碼。 |
+| `"<WebTest Name=\"myWebTest\" ...`<br/>`Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`|
 
 ### <a name="set-dependencies-between-the-resources"></a>設定資源間的相依性
 Azure 應以嚴格的順序設定資源。 為確保一項設定完成後再開始下一項設定，請加入相依性命令行：
@@ -446,10 +468,8 @@ Azure 應以嚴格的順序設定資源。 為確保一項設定完成後再開�
 ## <a name="next-steps"></a>後續步驟
 其他自動化文件：
 
-* [建立 Application Insights 資源](powershell-script-create-resource.md) - 快速方法 (不使用範本)
+* [建立 Application Insights 資源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) - 快速方法 (不使用範本)
 * [設定警示](powershell-alerts.md)
 * [建立 Web 測試](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [將 Azure 診斷傳送至 Application Insights](powershell-azure-diagnostics.md)
-* [從 GitHub 部署至 Azure (英文)](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
 * [建立版本附註](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
-

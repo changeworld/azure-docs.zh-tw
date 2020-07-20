@@ -3,91 +3,185 @@
 - name: 概觀
   items:
     - name: 關於 Azure Migrate
-      href: migrate-overview.md
+      href: migrate-services-overview.md
+    - name: 新功能
+      href: whats-new.md
+    - name: 常見問題
+      items:
+        - name: 一般
+          href: resources-faq.md
+        - name: Azure Migrate 設備
+          href: common-questions-appliance.md
+        - name: 伺服器評量工具/相依性分析
+          href: common-questions-discovery-assessment.md
+        - name: 伺服器移轉工具
+          href: common-questions-server-migration.md
 - name: 教學課程
   items:
-    - name: 探索和評定 VMware VM
-      href: tutorial-assessment-vmware.md
+    - name: 評估和遷移 VMware VM
+      items:
+        - name: 準備VMware 以進行評估及移轉
+          href: tutorial-prepare-vmware.md
+        - name: 存取 VMware VM 以進行移轉
+          href: tutorial-assess-vmware.md
+        - name: 遷移 VMware VM
+          items:
+            - name: 有關 VMware VM 適用的移轉選項
+              href: server-migrate-overview.md
+            - name: 使用無代理程式移轉來遷移 VMware VM
+              href: tutorial-migrate-vmware.md
+            - name: 使用代理程式移轉來遷移 VMware VM
+              href: tutorial-migrate-vmware-agent.md
+    - name: 評估和遷移 Hyper-V VM
+      items:
+        - name: 準備 Hyper-V以進行評量及移轉
+          href: tutorial-prepare-hyper-v.md
+        - name: 存取 Hyper-V VMs以進行移轉
+          href: tutorial-assess-hyper-v.md
+        - name: 遷移 Hyper-V VM
+          href: tutorial-migrate-hyper-v.md
+    - name: 評估及遷移實體伺服器
+      items:
+        - name: 準備用於評估和遷移的實體伺服器
+          href: tutorial-prepare-physical.md
+        - name: 評估實體伺服器
+          href: tutorial-assess-physical.md
+        - name: 遷移實體伺服器
+          href: tutorial-migrate-physical-virtual-machines.md
+    - name: 評估和遷移 AWS VM
+      items:
+        - name: 探索、評定 Amazon Web Services (AWS) VM，並將其移轉至 Azure
+          href: tutorial-migrate-aws-virtual-machines.md
+    - name: 評估匯入的伺服器以進行移轉
+      items:
+        - name: 評估匯入的伺服器以進行移轉
+          href: tutorial-assess-import.md
 - name: 概念
   items:
-    - name: 關於收集器
-      href: concepts-collector.md
-    - name: 收集器版本升級
-      href: concepts-collector-upgrade.md
-    - name: 評量計算
+    - name: 使用 Azure Migrate 建立移轉計劃
+      href: concepts-migration-planning.md
+    - name: 支援矩陣
+      items:
+        - name: 一般支援
+          href: migrate-support-matrix.md
+        - name: VMware 評量支援
+          href: migrate-support-matrix-vmware.md
+        - name: VMware 遷移支援
+          href: migrate-support-matrix-vmware-migration.md
+        - name: Hyper-V 評量支援
+          href: migrate-support-matrix-hyper-v.md
+        - name: Hyper-V 遷移支援
+          href: migrate-support-matrix-hyper-v-migration.md
+        - name: 實體伺服器評量支援
+          href: migrate-support-matrix-physical.md
+        - name: 實體伺服器遷移支援
+          href: migrate-support-matrix-physical-migration.md
+        - name: Azure Migrate 設備需求
+          href: migrate-appliance.md
+        - name: 複寫設備需求
+          href: migrate-replication-appliance.md
+    - name: Azure Migrate 設備架構
+      href: migrate-appliance-architecture.md
+    - name: Hyper-V 移轉架構
+      href: hyper-v-migration-architecture.md
+    - name: VMware 代理程式型移轉架構
+      href: agent-based-migration-architecture.md
+    - name: Azure VM 評量概觀
       href: concepts-assessment-calculation.md
-    - name: 關於相依性視覺效果
+    - name: AVS 評量概觀
+      href: concepts-azure-vmware-solution-assessment-calculation.md
+    - name: 評量的最佳做法
+      href: best-practices-assessment.md
+    - name: 相依性分析概觀
       href: concepts-dependency-visualization.md
-- name: 使用說明指南
+- name: 操作指南
   items:
-    - name: 移轉最佳做法
+    - name: 建立和管理 Azure Migrate 專案
+      href: create-manage-projects.md
+    - name: 新增工具供第一次使用
+      href: how-to-add-tool-first-time.md
+    - name: 準備使用 ISV 工具/Movere
+      href: prepare-isv-movere.md
+    - name: 新增評量工具
+      href: how-to-assess.md
+    - name: 部署 Azure Migrate 設備
       items:
-        - name: 移轉後的安全性及管理最佳做法
-          href: migrate-best-practices-security-management.md
-        - name: 移轉後的網路功能最佳做法
-          href: migrate-best-practices-networking.md
-        - name: 移轉後的成本及大小最佳做法
-          href: migrate-best-practices-costs.md
-    - name: Contoso 移轉系列
-      items:
-        - name: 1. Contoso 移轉概觀
-          href: contoso-migration-overview.md
-        - name: 2. Contoso - 部署 Azure 基礎結構
-          href: contoso-migration-infrastructure.md
-        - name: 3. Contoso - 存取內部部署資源以移轉至 Azure
-          href: contoso-migration-assessment.md
-        - name: 4. Contoso - 在 Azure VM 和 Azure SQL Database 受控執行個體上重新裝載應用程式
-          href: contoso-migration-rehost-vm-sql-managed-instance.md
-        - name: 5. Contoso - 在 Azure VN 上重新裝載應用程式
-          href: contoso-migration-rehost-vm.md
-        - name: 6. Contoso - 在 Azure VM 和 Azure SQL Server AlwaysOn 可用性群組上重新裝載應用程式
-          href: contoso-migration-rehost-vm-sql-ag.md
-        - name: 7. Contoso - 在 Azure VM 上重新裝載 Linux 應用程式
-          href: contoso-migration-rehost-linux-vm.md
-        - name: 8. Contoso - 在 Azure MySQL 上重新裝載 Linux 應用程式
-          href: contoso-migration-rehost-linux-vm-mysql.md
-        - name: 9. Contoso 重構 Azure Web Apps 和 Azure SQL Database 上的應用程式
-          href: contoso-migration-refactor-web-app-sql.md
-        - name: 10. Contoso 重構 Azure Web Apps 和 Azure MySQL 上的 Linux 應用程式
-          href: contoso-migration-refactor-linux-app-service-mysql.md
-        - name: 11. Contoso - 將 TFS 遷移至 Azure DevOps Services
-          href: contoso-migration-tfs-vsts.md
-        - name: 12. Contoso - 在 Azure 容器 和 Azure SQL Database 上重新架構應用程式
-          href: contoso-migration-rearchitect-container-sql.md
-        - name: 13. Contoso - 在 Azure 重建應用程式
-          href: contoso-migration-rebuild.md
-        - name: 14. Contoso - 縮放移轉
-          href: contoso-migration-scale.md
-    - name: 探索及評定大型環境
-      href: how-to-scale-assessment.md
-    - name: 群組機器
+        - name: 使用範本部署設備 (VMware)
+          href: how-to-set-up-appliance-vmware.md
+        - name: 使用範本部署設備 (Hyper-V)
+          href: how-to-set-up-appliance-hyper-v.md
+        - name: 使用指令碼部署設備 (VMware/Hyper-V)
+          href: deploy-appliance-script.md
+        - name: 部署適用於實體伺服器的設備
+          href: how-to-set-up-appliance-physical.md
+        - name: 在 Azure Government 中部署設備
+          href: deploy-appliance-script-government.md
+    - name: 限制 VMware VM 的探索範圍
+      href: set-discovery-scope.md
+    - name: 探索應用程式/角色/功能
+      href: how-to-discover-applications.md
+    - name: 分組機器以進行評量
       href: how-to-create-a-group.md
-    - name: 使用機器相依性的群組機器
+    - name: 分析機器相依性 (代理程式型)
       href: how-to-create-group-machine-dependencies.md
-    - name: 使用群組相依性調整群組
-      href: how-to-create-group-dependencies.md
+    - name: 分析機器相依性 (無代理程式)
+      href: how-to-create-group-machine-dependencies-agentless.md
+    - name: 建立 Azure VM 評量
+      href: how-to-create-assessment.md
+    - name: 建立 AVS 評量
+      href: how-to-create-azure-vmware-solution-assessment.md
+    - name: 評估 SQL Server 資料庫
+      href: /sql/dma/dma-assess-sql-data-estate-to-sqldb
     - name: 自訂評量
       href: how-to-modify-assessment.md
-    - name: 評量之後移轉機器
-      href: how-to-get-migration-tool.md
-    - name: 自動移轉大量的 VM
-      href: how-to-migrate-at-scale.md
+    - name: 新增移轉工具
+      href: how-to-migrate.md
+    - name: 將 VMware VM 遷移至使用 SSE 和 CMK 加密的 Azure VM
+      href: how-to-migrate-vmware-vms-with-cmk-disks.md
+    - name: 準備 Windows 2003 伺服器以進行移轉
+      href: prepare-windows-server-2003-migration.md
+    - name: 準備機器以進行移轉
+      href: prepare-for-migration.md
+    - name: 刪除 Azure Migrate 專案
+      href: how-to-delete-project.md
+    - name: 使用先前版本
+      href: migrate-v1.md
+    - name: 大規模評量及移轉
+      items:
+        - name: 評估大量的 VMware VM
+          href: scale-vmware-assessment.md
+        - name: 評估大量的 Hyper-V VM
+          href: scale-hyper-v-assessment.md
+        - name: 評估大量的實體伺服器
+          href: scale-physical-assessment.md
+        - name: 自動移轉大量的 VM
+          href: how-to-migrate-at-scale.md
+        - name: 移轉範例 (Contoso 系列)
+          href: contoso-migration-overview.md
+- name: 疑難排解
+  items:
     - name: 為 Azure Migrate 疑難排解
-      href: troubleshooting-general.md
+      href: troubleshoot-general.md
+    - name: Azure Migrate 專案疑難排解
+      href: troubleshoot-project.md
+    - name: Azure Migrate 設備/探索疑難排解
+      href: troubleshoot-appliance-discovery.md
+    - name: 評量/相依性視覺效果疑難排解
+      href: troubleshoot-assessment.md
 - name: 資源
   items:
-    - name: 常見問題集
-      href: resources-faq.md
+    - name: 雲端採用架構中的移轉
+      href: /azure/cloud-adoption-framework/migrate/
     - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/migrate/'
+      href: /rest/api/migrate/
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.migrate/allversions
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/azure-migrate/'
     - name: UserVoice
       href: 'https://aka.ms/AzureMigrateUservoice'
-    - name: 論壇
-      href: 'https://aka.ms/AzureMigrateForum'
+    - name: Microsoft 問與答頁面
+      href: /answers/topics/azure-migrate.html
     - name: 部落格
       href: 'https://azure.microsoft.com/blog/tag/azure-migrate/'
     - name: Azure Migrate

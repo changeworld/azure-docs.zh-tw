@@ -1,19 +1,19 @@
 ---
-title: 使用 .NET 和 Azure Cosmos DB 的 MongoDB API 建置 Xamarin.Forms 應用程式
+title: 使用 .NET 和適用於 MongoDB 的 Azure Cosmos DB API 建置 Xamarin 應用程式
 description: 提供 Xamarin 程式碼範例，以供您用來連線及查詢 Azure Cosmos DB 的 MongoDB API
 author: codemillmatt
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/20/2018
+ms.date: 03/16/2020
 ms.author: masoucou
-ms.openlocfilehash: c7a80ae704d13934a5d51bc5538bc28693b49e5b
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: db28455c47541b49b38ddbbc4d5e83ae20e2279d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588087"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659169"
 ---
 # <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>快速入門：使用 .NET SDK 和 Azure Cosmos DB 的 MongoDB API 建置 Xamarin.Forms 應用程式
 
@@ -23,7 +23,7 @@ ms.locfileid: "56588087"
 > * [Node.js](create-mongodb-nodejs.md)
 > * [Python](create-mongodb-flask.md)
 > * [Xamarin](create-mongodb-xamarin.md)
-> * [Golang](create-mongodb-golang.md)
+> * [Golang](create-mongodb-go.md)
 >  
 
 Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以快速建立及查詢文件、索引鍵/值及圖形資料庫，所有這些都受惠於位於 Azure Cosmos DB 核心的全域散發和水平調整功能。
@@ -34,7 +34,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 若要執行範例，您將需要 [Visual Studio](https://www.visualstudio.com/downloads/) 或 [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)，以及有效的 Azure CosmosDB 帳戶。
 
-如果您還沒有 Visual Studio，請下載 [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)，其在安裝時會一併安裝**使用 .NET 進行行動裝置開發**的工作負載。
+如果您還沒有 Visual Studio，請下載 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)，其在安裝時會一併安裝**使用 .NET 進行行動裝置開發**的工作負載。
 
 如果您想要在 Mac 上作業，請下載 [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) 並執行安裝程式。
 
@@ -52,10 +52,18 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 首先，從 GitHub 下載應用程式範例。 它會使用 MongoDB 的文件儲存體模型實作 ToDo 應用程式。
 
-1. 開啟命令提示字元，建立名為 git-samples 的新資料夾，然後關閉命令提示字元。
+
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+1. 在 Windows 上開啟命令提示字元或在 Mac 上開啟終端機，建立名為 git-samples 的新資料夾，然後關閉視窗。
+
+    ```batch
+    md "C:\git-samples"
+    ```
 
     ```bash
-    md "C:\git-samples"
+    mkdir '$home\git-samples\
     ```
 
 2. 開啟 git 終端機視窗 (例如 git bash)，並使用 `cd` 命令變更至要安裝範例應用程式的新資料夾。
@@ -86,6 +94,8 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
     settings.SslSettings =
         new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+
+    settings.RetryWrites = false;
 
     MongoClient mongoClient = new MongoClient(settings);
     ```
@@ -154,24 +164,29 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 現在，返回 Azure 入口網站以取得連接字串資訊，並將它複製到應用程式中。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)中，於您 Azure Cosmos DB 帳戶的左側瀏覽區中，按一下 [連接字串]，然後按一下 [讀寫金鑰]。 在後續步驟中，您將使用畫面右方的複製按鈕來複製主要連接字串。
+1. 在 [Azure 入口網站](https://portal.azure.com/)中，於您 Azure Cosmos DB 帳戶的左側瀏覽區中，按一下 [連接字串]  ，然後按一下 [讀寫金鑰]  。 在後續步驟中，您將使用畫面右方的複製按鈕來複製主要連接字串。
 
-2. 在 **TaskList.Core** 專案的 [Helpers]\(協助程式\) 目錄中，開啟 **APIKeys.cs** 檔案。
+2. 在 **TaskList.Core** 專案的 [Helpers]\(協助程式\)  目錄中，開啟 **APIKeys.cs** 檔案。
 
-3. 從入口網站 (使用 [複製] 按鈕) 複製您的**主要連接字串**，並使它成為 **APIKeys.cs** 檔案中 [ConnectionString] 欄位的值。
+3. 從入口網站 (使用 [複製] 按鈕) 複製您的**主要連接字串**，並使它成為 **APIKeys.cs** 檔案中 [ConnectionString]  欄位的值。
+
+4. 從連接字串中移除 `&replicaSet=globaldb`。 如果您未從查詢字串中移除該值，則會收到執行階段錯誤。
+
+> [!IMPORTANT]
+> 您必須從連接字串的查詢字串中移除 `&replicaSet=globaldb` 索引鍵/值組，才能避免發生執行階段錯誤。
 
 您現已更新應用程式，使其具有與 Azure Cosmos DB 通訊所需的所有資訊。
 
 ## <a name="run-the-app"></a>執行應用程式
 
-### <a name="visual-studio-2017"></a>Visual Studio 2017
+### <a name="visual-studio-2019"></a>Visual Studio 2019
 
-1. 在 Visual Studio 中，於 [方案總管] 中的每個專案上按一下滑鼠右鍵，然後按一下 [管理 NuGet 套件]。
-2. 按一下 [還原所有 Nuget 套件]。
-3. 以滑鼠右鍵按一下 [TaskList.Android]，然後選取 [設定為啟始專案]。
+1. 在 Visual Studio 中，於 [方案總管]  中的每個專案上按一下滑鼠右鍵，然後按一下 [管理 NuGet 套件]  。
+2. 按一下 [還原所有 Nuget 套件]  。
+3. 以滑鼠右鍵按一下 [TaskList.Android]  ，然後選取 [設定為啟始專案]  。
 4. 按 F5 開始對應用程式進行偵錯。
 5. 如果您想要在 iOS 上執行，請先將您的機器連線到 Mac (這裡有如何執行此操作的[指示](https://docs.microsoft.com/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio))。
-6. 以滑鼠右鍵按一下 [TaskList.iOS] 專案，然後選取 [設定為啟始專案]。
+6. 以滑鼠右鍵按一下 [TaskList.iOS]  專案，然後選取 [設定為啟始專案]  。
 7. 按 F5 開始對應用程式進行偵錯。
 
 ### <a name="visual-studio-for-mac"></a>Visual Studio for Mac

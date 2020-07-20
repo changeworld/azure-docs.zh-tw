@@ -14,12 +14,12 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 382e342f2144bcc6eeedafd74790bb442b8f9308
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5d4ac5435281f521c71556123f77d737ee6916e9
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784853"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "73161774"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>在 Azure 上建立 Pivotal Cloud Foundry 叢集
 
@@ -64,7 +64,7 @@ ssh-keygen -t rsa -b 2048
 
     > [!NOTE]
     >
-    > 選擇您自己的應用程式首頁和識別碼 URI，例如 http://www.contoso.com。
+    > 選擇您自己的應用程式首頁和識別碼 URI，例如 http\://www\.contoso.com。
 
 4. 使用新的應用程式識別碼建立服務主體。
 
@@ -72,11 +72,11 @@ ssh-keygen -t rsa -b 2048
 
 5. 將您服務主體的權限角色設為 [參與者]。
 
-    `az role assignment create --assignee “{enter-your-homepage}” --role “Contributor”`
+    `az role assignment create --assignee "{enter-your-homepage}" --role "Contributor"`
 
     或者，您也可以使用
 
-    `az role assignment create --assignee {service-principal-name} --role “Contributor”`
+    `az role assignment create --assignee {service-principal-name} --role "Contributor"`
 
     ![服務主體角色指派](media/deploy/svc-princ.png )
 
@@ -98,8 +98,8 @@ ssh-keygen -t rsa -b 2048
 ## <a name="get-the-pivotal-network-token"></a>取得 Pivotal Network 權杖
 
 1. 註冊或登入您的 [Pivotal Network](https://network.pivotal.io) 帳戶。
-2. 選取頁面右上角的設定檔名稱。 選取 [編輯設定檔]。
-3. 捲動至頁面底部，然後複製 [舊版 API 權杖] 值。 此值是您稍後會用到的 [Pivotal Network 權杖] 值。
+2. 選取頁面右上角的設定檔名稱。 選取 [編輯設定檔]  。
+3. 捲動至頁面底部，然後複製 [舊版 API 權杖]  值。 此值是您稍後會用到的 [Pivotal Network 權杖]  值。
 
 ## <a name="provision-your-cloud-foundry-cluster-on-azure"></a>在 Azure 上佈建 Cloud Foundry 叢集
 
@@ -112,8 +112,8 @@ ssh-keygen -t rsa -b 2048
 
     ![Azure 部署狀態](media/deploy/deployment.png )
 
-2. 選取左側導覽中的 [部署] 連結，以取得您的 PCF Ops Manager 認證。 在下一頁選取 [部署名稱]。
-3. 在左側導覽中選取 [輸出] 連結，以顯示 PCF Ops Manager 的 URL、使用者名稱和密碼。 "OPSMAN-FQDN" 值是 URL。
+2. 選取左側導覽中的 [部署]  連結，以取得您的 PCF Ops Manager 認證。 在下一頁選取 [部署名稱]  。
+3. 在左側導覽中選取 [輸出]  連結，以顯示 PCF Ops Manager 的 URL、使用者名稱和密碼。 "OPSMAN-FQDN" 值是 URL。
  
     ![Cloud Foundry 部署輸出](media/deploy/deploy-outputs.png )
  
@@ -123,7 +123,7 @@ ssh-keygen -t rsa -b 2048
          
     > [!NOTE]
     >
-    > 如果 Internet Explorer 瀏覽器由於「網站不安全」警告訊息而發生失敗，請選取 [詳細資訊] 並前往網頁。 若為 Firefox，選取 [進階] 並且新增憑證以繼續。
+    > 如果 Internet Explorer 瀏覽器由於「網站不安全」警告訊息而發生失敗，請選取 [詳細資訊]  並前往網頁。 若為 Firefox，選取 [進階]  並且新增憑證以繼續。
 
 5. 您的 PCF Ops Manager 會顯示已部署的 Azure 執行個體。 您現在可以在此部署和管理應用程式。
                

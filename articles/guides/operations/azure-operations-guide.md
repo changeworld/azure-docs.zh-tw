@@ -1,26 +1,19 @@
 ---
 title: Azure IT 操作員快速入門指南 | Microsoft Docs
 description: Azure IT 操作員快速入門指南
-services: ''
-documentationcenter: ''
-author: themichaelbender-ms
-manager: timlt
-editor: tysonn
+author: RicksterCDN
+ms.author: rclaus
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: azure
-ms.devlang: ''
 ms.topic: overview
-ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.author: mibender
-ms.openlocfilehash: 1222395fd8efb7cf189ae6678f6c39f5a6c63157
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e7ebcf39c203f9956b23ef22754b38f32e9d9352
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051165"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85323023"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT 操作員快速入門
 
@@ -73,7 +66,7 @@ Azure 提供數個 PaaS 計算供應項目，包括 Azure App Service 與 Azure 
 
 #### <a name="saas-software-as-a-service"></a>SaaS：軟體即服務
 
-SaaS 是集中裝載和管理的軟體。 它通常以多租用戶架構為基礎 — 單一應用程式版本用於所有客戶。 它可以相應放大為多個執行個體，以確保所有位置的最佳效能。 SaaS 軟體通常透過每月或每年訂用帳戶授權。 SaaS 軟體通常透過每月或每年訂用帳戶授權。 SaaS 軟體廠商會負責軟體堆疊的所有元件，因此，您只需要管理所提供的服務。
+SaaS 是集中裝載和管理的軟體。 它通常以多租用戶架構為基礎 — 單一應用程式版本用於所有客戶。 它可以相應放大為多個執行個體，以確保所有位置的最佳效能。 SaaS 軟體通常透過每月或每年訂用帳戶授權。 SaaS 軟體廠商會負責軟體堆疊的所有元件，因此，您只需要管理所提供的服務。
 
 Microsoft Office 365 是良好的 SaaS 供應項目範例。 訂閱者需每月或每年支付訂閱費用，他們可取得 Microsoft Exchange、Microsoft OneDrive 和 Microsoft Office 套件即服務的其餘部分。 訂閱者一律可取得最新版本，而系統會為您管理 Exchange 伺服器。 相較於每年安裝及升級 Office，這種作法比較經濟實惠。
 
@@ -101,7 +94,7 @@ Azure 在其雲端運算平台中提供許多服務。 這些服務包括下列�
 
 - Azure 儲存體 (由 Azure Blob、佇列、表格和檔案服務所組成)
 
-- 連接字串
+- Azure SQL Database
 
 - Azure Cosmos DB
 
@@ -119,7 +112,7 @@ Azure 在其雲端運算平台中提供許多服務。 這些服務包括下列�
 
 - 用於處理巨量資料的 Azure HDInsight
 
-- Azure 排程器
+- 用於整合和協調流程工作流程的 Azure Logic Apps
 
 - Azure 媒體服務
 
@@ -145,7 +138,7 @@ Azure 在其雲端運算平台中提供許多服務。 這些服務包括下列�
 
 Azure 是在全球各地許多地區正式推出的全域雲端平台。 當您在 Azure 中佈建服務、應用程式或 VM 時，系統會要求您選取區域。 選取的區域代表您應用程式執行所在的特定資料中心。 如需詳細資訊，請參閱 [Azure 區域](https://azure.microsoft.com/regions/)。
 
-使用 Azure 的其中一個優點是您可以將應用程式部署至全球各地的各種資料中心。 您選擇的區域可能會影響應用程式的效能。 最好選擇較接近大多數客戶的區域，以減少網路要求延遲。 您也可以選取區域，以符合在某些國家/地區散發應用程式的法律需求。
+使用 Azure 的其中一個優點是您可以將應用程式部署至全球各地的各種資料中心。 您選擇的區域可能會影響應用程式的效能。 最好選擇較接近大多數客戶的區域，以減少網路要求延遲。 您也可以選取區域來滿足在特定國家/地區散發應用程式的法律需求。
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
@@ -185,7 +178,7 @@ Azure 是以支援 Azure 入口網站 UI 的一組 REST API 所建置。 也支�
 
 ## <a name="azure-subscriptions"></a>Azure 訂用帳戶
 
-訂用帳戶是連結至 Azure 帳戶之 Azure 服務的邏輯分組。 單一 Azure 帳戶可以包含多個訂用帳戶。 Azure 服務是根據訂用帳戶計費。 Azure 訂用帳戶有可完全掌控訂用帳戶的「帳戶管理員」，以及可控制訂用帳戶中所有服務的「服務管理員」。 如需有關傳統訂用帳戶管理員的資訊，請參閱[新增或變更 Azure 訂用帳戶管理員](../../billing/billing-add-change-azure-subscription-administrator.md)。 除了系統管理員之外，也可以使用[角色型存取控制 (RBAC)](../../role-based-access-control/overview.md) 對個別帳戶授與 Azure 資源的細部控制權。
+訂用帳戶是連結至 Azure 帳戶之 Azure 服務的邏輯分組。 單一 Azure 帳戶可以包含多個訂用帳戶。 Azure 服務是根據訂用帳戶計費。 Azure 訂用帳戶有可完全掌控訂用帳戶的「帳戶管理員」，以及可控制訂用帳戶中所有服務的「服務管理員」。 如需有關傳統訂用帳戶管理員的資訊，請參閱[新增或變更 Azure 訂用帳戶管理員](../../cost-management-billing/manage/add-change-subscription-administrator.md)。 除了系統管理員之外，也可以使用[角色型存取控制 (RBAC)](../../role-based-access-control/overview.md) 對個別帳戶授與 Azure 資源的細部控制權。
 
 ### <a name="select-and-enable-an-azure-subscription"></a>選取並啟用 Azure 訂用帳戶
 
@@ -213,7 +206,7 @@ RBAC 包含數個可供您用來指派權限的內建角色。 若要將使用�
 
 使用 Azure 的重要元件是檢視帳單資訊的能力。 Azure 入口網站可供深入了解 Azure 帳單資訊。
 
-如需詳細資訊，請參閱[如何下載您的 Azure 帳單發票和每日使用量資料](../../billing/billing-download-azure-invoice-daily-usage-date.md)。
+如需詳細資訊，請參閱[如何下載您的 Azure 帳單發票和每日使用量資料](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)。
 
 ### <a name="get-billing-information-from-billing-apis"></a>從計費 API 取得計費資訊
 
@@ -223,7 +216,7 @@ RBAC 包含數個可供您用來指派權限的內建角色。 若要將使用�
 
 - 您可以使用 Azure Rate Card API 來列出所有可用的資源，以及每項資源的中繼資料和價格資訊。
 
-如需詳細資訊，請參閱[深入瞭解 Microsoft Azure 資源耗用量](../../billing/billing-usage-rate-card-overview.md)。
+如需詳細資訊，請參閱[深入瞭解 Microsoft Azure 資源耗用量](../../cost-management-billing/manage/usage-rate-card-overview.md)。
 
 ### <a name="forecast-cost-with-the-pricing-calculator"></a>使用價格計算機預測成本
 
@@ -233,11 +226,11 @@ Azure 中每項服務的價格不同。 許多 Azure 服務都提供基本、標
 
 Azure Resource Manager 是 Azure 資源的部署、管理及組織機制。 使用 Resource Manager，您可以將許多個別資源一起放在資源群組中。
 
-Resource Manager 還包含部署功能，可讓您自訂相關資源的部署和組態。 例如，使用 Resource Manager，即可部署將多個虛擬機器、一個負載平衡器和 SQL Database 當成一個單位處理的應用程式。 您可以使用 Resource Manager 範本來開發這些部署。
+Resource Manager 還包含部署功能，可讓您自訂相關資源的部署和組態。 例如，使用 Resource Manager，即可部署將多個虛擬機器、一個負載平衡器和 Azure SQL Database 中的資料庫當成一個單位處理的應用程式。 您可以使用 Resource Manager 範本來開發這些部署。
 
 Resource Manager 會提供數個優點：
 
-- 您可以以群組形式部署、管理及監視方案的所有資源，而不是個別處理這些資源。
+- 您可以以群組形式部署、管理及監視解决方案的所有資源，而不是個別處理這些資源。
 
 - 您可以在整個方案週期重複部署方案，並確信您的資源會部署在一致的狀態中。
 
@@ -335,19 +328,19 @@ Azure 虛擬機器是 Azure 的其中一個中央 IaaS 服務。 Azure 虛擬機
 
 使用 Azure 入口網站部署虛擬機器時，只需要有作用中的 Azure 訂用帳戶和網頁瀏覽器存取權。 您可以選取許多具有各種組態的不同作業系統映像。 在部署期間會設定所有的儲存體和網路需求。 如需詳細資訊，請參閱適用於 [Windows](../../virtual-machines/windows/quick-create-portal.md) 和 [Linux](../../virtual-machines/linux/quick-create-portal.md) 的「在 Azure 入口網站中建立虛擬機器」。
 
-除了從 Azure 入口網站部署虛擬機器，您也可以從入口網站部署 Azure Resource Manager 範本。 這會部署和設定如範本中定義的所有資源。 如需詳細資訊，請參閱[使用 Resource Manager 範本與 Azure 入口網站來部署資源](../../azure-resource-manager/resource-group-template-deploy-portal.md)。
+除了從 Azure 入口網站部署虛擬機器，您也可以從入口網站部署 Azure Resource Manager 範本。 這會部署和設定如範本中定義的所有資源。 如需詳細資訊，請參閱[使用 Resource Manager 範本與 Azure 入口網站來部署資源](../../azure-resource-manager/templates/deploy-portal.md)。
 
 #### <a name="powershell"></a>PowerShell
 
 使用 PowerShell 來部署 Azure 虛擬機器，可讓所有相關的虛擬機器資源 (包括儲存體和網路) 達到完全部署自動化。 如需詳細資訊，請參閱[使用 Resource Manager 和 PowerShell 建立 Windows VM](../../virtual-machines/windows/quick-create-powershell.md)。
 
-除了個別部署 Azure 計算資源，您可以使用 Azure PowerShell 模組來部署 Azure Resource Manager 範本。 如需詳細資訊，請參閱[使用 Resource Manager 範本與 Azure PowerShell 來部署資源](../../azure-resource-manager/resource-group-template-deploy.md)。
+除了個別部署 Azure 計算資源，您可以使用 Azure PowerShell 模組來部署 Azure Resource Manager 範本。 如需詳細資訊，請參閱[使用 Resource Manager 範本與 Azure PowerShell 來部署資源](../../azure-resource-manager/templates/deploy-powershell.md)。
 
 #### <a name="command-line-interface-cli"></a>命令列介面 (CLI)
 
 如同 PowerShell 模組，Azure 命令列介面提供部署自動化功能，並可使用於 Windows、OS X 或 Linux 系統。 當您使用 Azure CLI **vm quick-create** 命令時，會在部署所有相關的虛擬機器資源 (包括儲存體和網路) 和虛擬機器本身。 如需詳細資訊，請參閱 [使用 CLI 在 Azure 中建立 Linux VM](../../virtual-machines/linux/quick-create-cli.md)。
 
-同樣地，您可以使用 Azure CLI 來部署 Azure Resource Manager 範本。 如需詳細資訊，請參閱[使用 Resource Manager 範本與 Azure CLI 來部署資源](../../azure-resource-manager/resource-group-template-deploy-cli.md)。
+同樣地，您可以使用 Azure CLI 來部署 Azure Resource Manager 範本。 如需詳細資訊，請參閱[使用 Resource Manager 範本與 Azure CLI 來部署資源](../../azure-resource-manager/templates/deploy-cli.md)。
 
 ### <a name="access-and-security-for-virtual-machines"></a>虛擬機器的存取權與安全性
 
@@ -415,15 +408,15 @@ Azure 佇列儲存體可提供應用程式元件之間的雲端傳訊。 設計�
 
 #### <a name="portal"></a>入口網站
 
-使用 Azure 入口網站部署儲存體帳戶時，只需要有作用中的 Azure 訂用帳戶和網頁瀏覽器存取權。 您可以將新的儲存體帳戶部署到新的或現有的資源群組。 建立儲存體帳戶後，您可以使用入口網站來建立 blob 容器或檔案共用。 您可以用程式設計方式建立資料表和佇列儲存體實體。 如需詳細資訊，請參閱[建立儲存體帳戶](../../storage/common/storage-quickstart-create-account.md)。
+使用 Azure 入口網站部署儲存體帳戶時，只需要有作用中的 Azure 訂用帳戶和網頁瀏覽器存取權。 您可以將新的儲存體帳戶部署到新的或現有的資源群組。 建立儲存體帳戶後，您可以使用入口網站來建立 blob 容器或檔案共用。 您可以用程式設計方式建立資料表和佇列儲存體實體。 如需詳細資訊，請參閱[建立儲存體帳戶](../../storage/common/storage-account-create.md)。
 
-除了從 Azure 入口網站部署儲存體帳戶，您也可以從入口網站部署 Azure Resource Manager 範本。 這會部署和設定如範本中定義的所有資源，包括任何儲存體帳戶。 如需詳細資訊，請參閱[使用 Resource Manager 範本與 Azure 入口網站來部署資源](../../azure-resource-manager/resource-group-template-deploy-portal.md)。
+除了從 Azure 入口網站部署儲存體帳戶，您也可以從入口網站部署 Azure Resource Manager 範本。 這會部署和設定如範本中定義的所有資源，包括任何儲存體帳戶。 如需詳細資訊，請參閱[使用 Resource Manager 範本與 Azure 入口網站來部署資源](../../azure-resource-manager/templates/deploy-portal.md)。
 
 #### <a name="powershell"></a>PowerShell
 
 使用 PowerShell 部署 Azure 儲存體帳戶，可讓儲存體帳戶達到完全部署自動化。 如需詳細資訊，請參閱[使用 Azure PowerShell 搭配 Azure 儲存體](../../storage/common/storage-powershell-guide-full.md)。
 
-除了個別部署 Azure 資源，您可以使用 Azure PowerShell 模組來部署 Azure Resource Manager 範本。 如需詳細資訊，請參閱[使用 Resource Manager 範本與 Azure PowerShell 來部署資源](../../azure-resource-manager/resource-group-template-deploy.md)。
+除了個別部署 Azure 資源，您可以使用 Azure PowerShell 模組來部署 Azure Resource Manager 範本。 如需詳細資訊，請參閱[使用 Resource Manager 範本與 Azure PowerShell 來部署資源](../../azure-resource-manager/templates/deploy-powershell.md)。
 
 #### <a name="command-line-interface-cli"></a>命令列介面 (CLI)
 
@@ -468,7 +461,6 @@ Azure 儲存體帳戶可以透過許多不同的儲存體總管存取，例如 V
 ### <a name="hybrid-virtual-networks"></a>混合式虛擬網路
 
 您可以使用 ExpressRoute 或站對站 VPN 連線，將內部部署網路連線到 Azure 虛擬網路。 在這個設定中，Azure 虛擬網路本質上是您的內部部署網路中具備雲端功能的延伸模組。
-![使用 VPN 的混合式虛擬網路](https://docs.microsoft.com/azure/architecture/reference-architectures/_images/blueprints/hybrid-network-vpn.png)
 
 由於 Azure 虛擬網路會連線到您的內部部署網路，所以跨單位虛擬網路必須使用您組織所用位址空間的唯一部分。 與為不同的公司位置指派特定 IP 子網路相同，Azure 會隨著您擴充網路而成為另一個位置。
 有數個選項可供部署虛擬網路。
@@ -482,7 +474,7 @@ Azure 儲存體帳戶可以透過許多不同的儲存體總管存取，例如 V
 - Azure Resource Manager 範本
 
 > **使用時機**：每當您在 Azure 中使用 VM 時，您就會使用虛擬網路。 這可允許將 VM 分割成公開面向和類似私人子網路的內部部署資料中心。
-> 
+>
 > **開始使用**：使用 Azure 入口網站部署 Azure 虛擬網路時，只需要有作用中的 Azure 訂用帳戶和網頁瀏覽器存取權。 您可以將新的虛擬網路部署到新的或現有的資源群組。 當您要從入口網站建立新的虛擬機器時，您可以選取現有的虛擬網路或建立一個新的。 開始使用並[使用 Azure 入口網站建立虛擬網路](../../virtual-network/quick-create-portal.md)。
 
 ### <a name="access-and-security-for-virtual-networks"></a>虛擬網路的存取權與安全性

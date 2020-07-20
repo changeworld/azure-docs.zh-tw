@@ -1,25 +1,23 @@
 ---
-title: Azure 網路監看員中的資源疑難排解簡介 | Microsoft Docs
+title: 資源疑難排解簡介
+titleSuffix: Azure Network Watcher
 description: 本頁提供網路監看員資源疑難排解功能的概觀
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: c1145cd6-d1cf-4770-b1cc-eaf0464cc315
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: kumud
-ms.openlocfilehash: 65ce9e7d298131486ae4e5f3584c7975ca81e1ab
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: damendo
+ms.openlocfilehash: 675038189fdc9c9626fee409a90e17341cf9b6cd
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64684252"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207367"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure 網路監看員中的資源疑難排解簡介
 
@@ -47,9 +45,9 @@ ms.locfileid: "64684252"
 
 下表顯示可用的不同錯誤類型 (上述清單中 results 底下的 id) 以及該錯誤是否會建立記錄。
 
-### <a name="gateway"></a>閘道器
+### <a name="gateway"></a>閘道
 
-| 錯誤類型 | 原因 | 記錄檔|
+| 錯誤類型 | 原因 | 記錄|
 |---|---|---|
 | NoFault | 未偵測到任何錯誤時 |是|
 | GatewayNotFound | 找不到閘道或閘道尚未佈建 |否|
@@ -64,7 +62,7 @@ ms.locfileid: "64684252"
 
 ### <a name="connection"></a>連線
 
-| 錯誤類型 | 原因 | 記錄檔|
+| 錯誤類型 | 原因 | 記錄|
 |---|---|---|
 | NoFault | 未偵測到任何錯誤時 |是|
 | GatewayNotFound | 找不到閘道或閘道尚未佈建 |否|
@@ -75,7 +73,7 @@ ms.locfileid: "64684252"
 | ConnectionIsMarkedDisconnected | 連線標記為「已中斷連線」 |否|
 | ConnectionNotConfiguredOnGateway | 基礎服務未設定連線。 | 是 |
 | ConnectionMarkedStandby | 基礎服務標記為「待命」。| 是|
-| Authentication | 預先共用的金鑰不相符 | 是|
+| 驗證 | 預先共用的金鑰不相符 | 是|
 | PeerReachability | 無法連線到對等閘道。 | 是|
 | IkePolicyMismatch | 對等閘道的 IKE 原則不受 Azure 支援。 | 是|
 | WfpParse Error | 剖析 WFP 記錄時發生錯誤。 |是|
@@ -84,7 +82,7 @@ ms.locfileid: "64684252"
 
 下表列出網路監看員疑難排解所支援的閘道和連線：
 
-|  |  |
+| 閘道或連接 | 支援  |
 |---------|---------|
 |**閘道類型**   |         |
 |VPN      | 支援        |
@@ -107,7 +105,7 @@ ms.locfileid: "64684252"
 > [!NOTE]
 > 在某些情況下，只有部分的記錄會寫入至儲存體。
 
-如需從 Azure 儲存體帳戶下載檔案的指示，請參閱[以 .NET 開始使用 Azure Blob 儲存體](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 另一項可用工具為儲存體總管。 如需有關「儲存體總管」的詳細資訊，請參閱下列連結：[儲存體總管](https://storageexplorer.com/)
+如需從 Azure 儲存體帳戶下載檔案的指示，請參閱[以 .NET 開始使用 Azure Blob 儲存體](../storage/blobs/storage-dotnet-how-to-use-blobs.md)。 另一項可用工具為儲存體總管。 如需儲存體總管的詳細資訊，請參閱下列連結：[儲存體總管](https://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 

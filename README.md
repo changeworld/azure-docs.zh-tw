@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: d4e9e26f2c6764cc179826266891d861514e23f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 01d6fa30fc781ffe2a9f387f7c9eb4c27eaacc77
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60344084"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67338229"
 ---
 # <a name="microsoft-azure-documentation"></a>Microsoft Azure 文件
 
@@ -34,10 +34,9 @@ ms.locfileid: "60344084"
 
 ## <a name="license"></a>授權
 
-請參閱 [LICENSE](.github/LICENSE)、[LICENSE-CODE](.github/LICENSE-CODE)和 [ThirdPartyNotices](.github/ThirdPartyNotices.md) 以取得所有授權資訊。
+請參閱 [LICENSE](LICENSE)、[LICENSE-CODE](LICENSE-CODE)和 [ThirdPartyNotices](ThirdPartyNotices.md) 以取得所有授權資訊。
 
 ## <a name="code-of-conduct"></a>管理辦法
 
 此專案採用 [Microsoft 開放原始碼管理辦法](https://opensource.microsoft.com/codeofconduct/)。
 如需詳細資訊，請參閱[管理辦法常見問題集](https://opensource.microsoft.com/codeofconduct/faq/)，如有任何其他問題或意見請連絡 [opencode@microsoft.com](mailto:opencode@microsoft.com)。
-

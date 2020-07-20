@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Site Recovery 服務整合 Azure ExpressRoute 與 Azure VM 的災害復原 | Microsoft Docs
+title: 整合 Azure ExpressRoute Azure VM 嚴重損壞修復與 Azure Site Recovery
 description: 說明如何使用 Azure Site Recovery 和 Azure ExpressRoute 設定 Azure VM 的災害復原
 services: site-recovery
 author: mayurigupta13
@@ -8,14 +8,13 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 90388d570d027aea3c897f7306a1714fd7e847b3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: bf12a5b7850a56d945e1082be6c522c31738669c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60772358"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73954090"
 ---
-# <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>整合 Azure ExpressRoute 與 Azure VM 的災害復原
+# <a name="integrate-expressroute-with-disaster-recovery-for-azure-vms"></a>整合 ExpressRoute 與 Azure Vm 的嚴重損壞修復
 
 
 本文說明當您將 Azure VM 的災害復原設定為次要 Azure 區域時，如何整合 Azure ExpressRoute 與 [Azure Site Recovery](site-recovery-overview.md)。
@@ -36,9 +35,9 @@ ExpressRoute 可讓您透過連線提供者所提供的私人連線，將內部�
 
 開始之前，請確定您了解下列概念︰
 
-- ExpressRoute [線路](../expressroute/expressroute-circuit-peerings.md)
-- ExpressRoute [路由網域](../expressroute/expressroute-circuit-peerings.md#routingdomains)
-- ExpressRoute [位置](../expressroute/expressroute-locations.md)。
+- ExpressRoute[線路](../expressroute/expressroute-circuit-peerings.md)
+- ExpressRoute[路由網域](../expressroute/expressroute-circuit-peerings.md#routingdomains)
+- ExpressRoute[位置](../expressroute/expressroute-locations.md)。
 - Azure VM [複寫架構](azure-to-azure-architecture.md)
 - 如何為 Azure VM [設定複寫](azure-to-azure-tutorial-enable-replication.md)。
 - 如何執行 Azure VM 的[容錯移轉](azure-to-azure-tutorial-failover-failback.md)。
@@ -93,7 +92,7 @@ ExpressRoute 可讓您透過連線提供者所提供的私人連線，將內部�
 - **中樞 vNet**。 有一個中樞 vNet **來源中樞 vNet**：10.10.10.0/24。
   - 此中樞 vNet 作為閘道管理員。
   - 所有跨子網路的通訊都會通過此中樞。
-    - **中心 vNet 子网**。 此中樞 vNet 有兩個子網路：
+    - **中樞 vNet 子網**。 此中樞 vNet 有兩個子網路：
     - **NVA 子網路**：10.10.10.0/25。 此子網路包含 NVA (10.10.10.10)。
     - **閘道子網路**：10.10.10.128/25。 此子網路包含已連線到 ExpressRoute 連線的 ExpressRoute 閘道，會透過私人對等互連路由網域路由至內部部署網站。
 - 內部部署資料中心有經由香港 Partner Edge 的 ExpressRoute 線路連線。
@@ -104,23 +103,23 @@ ExpressRoute 可讓您透過連線提供者所提供的私人連線，將內部�
 
 #### <a name="spoke-to-hub"></a>輪輻至中樞
 
-**Direction** | **設定** | **State**
+[方向] | **設定** | **State**
 --- | --- | ---
-輪輻至中樞 | 允許虛擬網路位址 | Enabled
-輪輻至中樞 | 允許轉送的流量 | Enabled
-輪輻至中樞 | 允許閘道傳輸 | 已停用
-輪輻至中樞 | 使用移除閘道 | Enabled
+輪輻至中樞 | 允許虛擬網路位址 | 已啟用
+輪輻至中樞 | 允許轉送的流量 | 已啟用
+輪輻至中樞 | 允許閘道傳輸 | 停用
+輪輻至中樞 | 使用移除閘道 | 已啟用
 
  ![輪輻到中樞對等互連設定](./media/azure-vm-disaster-recovery-with-expressroute/spoke-to-hub-peering-configuration.png)
 
 #### <a name="hub-to-spoke"></a>中樞至輪輻
 
-**Direction** | **設定** | **State**
+[方向] | **設定** | **State**
 --- | --- | ---
-中樞至輪輻 | 允許虛擬網路位址 | Enabled
-中樞至輪輻 | 允許轉送的流量 | Enabled
-中樞至輪輻 | 允許閘道傳輸 | Enabled
-中樞至輪輻 | 使用移除閘道 | 已停用
+中樞至輪輻 | 允許虛擬網路位址 | 已啟用
+中樞至輪輻 | 允許轉送的流量 | 已啟用
+中樞至輪輻 | 允許閘道傳輸 | 已啟用
+中樞至輪輻 | 使用移除閘道 | 停用
 
  ![中樞到輪輻對等互連設定](./media/azure-vm-disaster-recovery-with-expressroute/hub-to-spoke-peering-configuration.png)
 
@@ -166,7 +165,7 @@ ExpressRoute 可讓您透過連線提供者所提供的私人連線，將內部�
 
 此設定中只有一個 Expressroute 線路。 雖然線路有備援連線可供停止運作時使用，但若您的對等互連區域停止運作，單一路由線路將無法提供恢復能力。 請注意：
 
-- 您可以將 Azure VM 複寫至[相同地理位置](azure-to-azure-support-matrix.md#region-support)中的任何 Azure 區域。 如果目標 Azure 區域與來源位於不同的位置中，且您使用單一 ExpressRoute 線路，則必須啟用 ExpressRoute Premium。 了解 [ExpressRoute 位置](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region)和 [ExpressRoute 價格](https://azure.microsoft.com/pricing/details/expressroute/)。
+- 您可以將 Azure VM 複寫至[相同地理位置](azure-to-azure-support-matrix.md#region-support)中的任何 Azure 區域。 如果目標 Azure 區域與來源位於不同的位置中，且您使用單一 ExpressRoute 線路，則必須啟用 ExpressRoute Premium。 了解 [ExpressRoute 位置](../expressroute/expressroute-locations.md)和 [ExpressRoute 價格](https://azure.microsoft.com/pricing/details/expressroute/)。
 - 如果在目標區域上使用相同的 IP 位址空間，則您無法同時將來源和目標 vNet 連線至線路。 在此情節中：    
     -  中斷來源端的連線，然後建立目標端連線。 您可以將此連線變更編寫為指令碼，作為 Site Recovery 復原計畫的一部分。 請注意：
         - 發生區域性失敗時，如果無法存取主要區域，則中斷連線作業可能會失敗。 這可能會影響建立目標區域連線的進度。

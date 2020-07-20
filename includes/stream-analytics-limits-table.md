@@ -1,19 +1,20 @@
 ---
-ms.openlocfilehash: 23263db780c62ab80f317ee64f14e854763cd728
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e90a374917239ae1a20d25795757811a12cee80c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553364"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84200510"
 ---
 ---
 | 限制識別碼 | 限制 | 註解 |
 | --- | --- | --- |
-| 每個區域的串流處理單位的最大數目 |200 |若要要求增加串流單位超出 200 訂用帳戶，請連絡[Microsoft 支援服務](https://support.microsoft.com/en-us)。 |
-| 每個工作的輸入數目上限 |60 |沒有固定限制 60 個輸入每個 Azure Stream Analytics 作業。 |
-| 每個工作的輸出數目上限 |60 |沒有固定限制 60 個輸出每個 Stream Analytics 作業。 |
-| 每個工作的函式數目上限 |60 |沒有固定限制 60 個函式每一個 Stream Analytics 作業。 |
-| 每個工作的串流單位的最大數目 |120 |沒有固定限制的 120 的串流處理單位，每一個 Stream Analytics 作業。 |
-| 每個地區的工作數目上限 |1,500 |每個訂用帳戶可以有最多 1,500 位的作業，每個地理區域。 |
-| 參考資料 Blob MB | 300 | 參考資料 blob 不得大於 300 MB。 |
+| 每個區域的每個訂用帳戶串流單位數目上限 |500 |若要要求增加訂用帳戶的串流單位超出 500 個，請連絡 [Microsoft 支援服務](https://support.microsoft.com/en-us)。 |
+| 每個工作的輸入數目上限 |60 |每個 Azure 串流分析作業的固定限制為 60 個輸入。 |
+| 每個工作的輸出數目上限 |60 |每個串流分析作業的固定限制為 60 個輸出。 |
+| 每個工作的函式數目上限 |60 |每個串流分析作業的固定限制為 60 個函式。 |
+| 每個作業的串流單位數量上限 |192 |每個串流分析作業的固定限制為 192 個串流單位。 |
+| 每個地區的工作數目上限 |1,500 |每個訂用帳戶在每個地理區域最多可以有 1,500 個工作。 |
+| 參考資料 Blob MB | 300 | 每個參考資料 Blob 不得大於 300 MB。 |
+| 查詢中的字元數目上限 | 512000 | Azure 串流分析作業查詢的固定限制為 512k 個字元。|
 

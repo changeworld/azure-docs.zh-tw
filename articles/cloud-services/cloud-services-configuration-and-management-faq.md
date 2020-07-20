@@ -1,26 +1,25 @@
 ---
-title: Microsoft Azure 雲端服務之設定和管理問題的常見問題集 | Microsoft Docs
+title: 設定和管理問題常見問題
+titleSuffix: Azure Cloud Services
 description: 本文列出 Microsoft Azure 雲端服務之設定和管理的相關常見問題集。
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 85296b4549d7c9499b8d0b815ddf1cd2e85e2b1b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: c418ed87bd74471ce8c2e8186bd6244eaf6f21de
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60337420"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921588"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 雲端服務之設定和管理問題：常見問題集 (FAQ)
 
@@ -28,32 +27,32 @@ ms.locfileid: "60337420"
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-**Certificates**
+**憑證**
 
-- [為什麼我雲端服務 SSL 憑證的信任鏈結是不完整的？](#why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete)
+- [為什麼我的雲端服務 TLS/SSL 憑證的憑證鏈未完成？](#why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete)
 - [「Windows Azure Tools 擴充功能的加密憑證」用途為何？](#what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions)
 - [如何能夠產生憑證簽署要求 (CSR)，而不 "RDP" 到執行個體中？](#how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance)
-- [我的雲端服務管理憑證即將到期。要如何續訂？](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
-- [如何將主要 SSL 憑證 (.pfx) 和中繼憑證 (.p7b) 的安裝自動化？](#how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b)
+- [我的雲端服務管理憑證即將到期。如何續訂？](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
+- [如何自動安裝主要 TLS/SSL 憑證（.pfx）和中繼憑證（. p7b）？](#how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b)
 - [「適用於 MachineKey 的 Microsoft Azure 服務管理」憑證的用途為何？](#what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate)
 
 **監視和記錄**
 
-- [即將在 Azure 入口網站推出的雲端服務功能有哪些可協助管理和監視應用程式？](#what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications)
+- [Azure 入口網站中即將推出的雲端服務功能有哪些可協助管理和監視應用程式？](#what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications)
 - [為什麼 IIS 會停止寫入記錄目錄？](#why-does-iis-stop-writing-to-the-log-directory)
-- [如何啟用雲端服務的 WAD 記錄？](#how-do-i-enable-wad-logging-for-cloud-services)
+- [如何為雲端服務啟用 WAD 記錄？](#how-do-i-enable-wad-logging-for-cloud-services)
 
 **網路組態**
 
-- [如何設定 Azure 負載平衡器的閒置逾時？](#how-do-i-set-the-idle-timeout-for-azure-load-balancer)
-- [如何將靜態 IP 位址關聯到我的雲端服務？](#how-do-i-associate-a-static-ip-address-to-my-cloud-service)
+- [如何設定 Azure Load Balancer 的閒置逾時？](#how-do-i-set-the-idle-timeout-for-azure-load-balancer)
+- [如何? 將靜態 IP 位址關聯到我的雲端服務嗎？](#how-do-i-associate-a-static-ip-address-to-my-cloud-service)
 - [Azure 的基本 IPS/IDS 和 DDOS 提供的特性和功能是什麼？](#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
-- [如何啟用雲端服務虛擬機器上的 HTTP/2？](#how-to-enable-http2-on-cloud-services-vm)
+- [如何啟用雲端服務 VM 上的 HTTP/2？](#how-to-enable-http2-on-cloud-services-vm)
 
 **權限**
 
 - [Microsoft 內部工程師是否可在沒有權限的情況下，從遠端桌面到雲端服務執行個體？](#can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission)
-- [我無法使用 RDP 檔案從遠端桌面登入雲端服務虛擬機器。我收到下列錯誤：發生驗證錯誤 (代碼：0x80004005)](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
+- [我無法使用 RDP 檔案將桌面遠端連線至雲端服務 VM。我收到下列錯誤：發生驗證錯誤（代碼：0x80004005）](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
 
 **調整大小**
 
@@ -64,18 +63,18 @@ ms.locfileid: "60337420"
 
 - [如何將 "nosniff" 新增至我的網站？](#how-do-i-add-nosniff-to-my-website)
 - [如何自訂 Web 角色的 IIS？](#how-do-i-customize-iis-for-a-web-role)
-- [我的雲端服務配額限制是多少？](#what-is-the-quota-limit-for-my-cloud-service)
-- [為什麼我雲端服務虛擬機器上的磁碟機顯示幾乎沒有可用的磁碟空間？](#why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space)
+- [我的雲端服務配額限制為何？](#what-is-the-quota-limit-for-my-cloud-service)
+- [為什麼我的雲端服務 VM 上的磁片磁碟機顯示非常少的可用磁碟空間？](#why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space)
 - [如何以自動化方式新增雲端服務的反惡意程式碼擴充功能？](#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
 - [如何啟用雲端服務的伺服器名稱指示 (SNI)？](#how-to-enable-server-name-indication-sni-for-cloud-services)
 - [如何將標籤新增至我的 Azure 雲端服務？](#how-can-i-add-tags-to-my-azure-cloud-service)
-- [Azure 入口網站不會顯示雲端服務的 SDK 版本。如何取得版本？](#the-azure-portal-doesnt-display-the-sdk-version-of-my-cloud-service-how-can-i-get-that)
-- [我想要關閉雲端服務幾個月。如何降低雲端服務的計費成本，而不遺失 IP 位址？](#i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address)
+- [Azure 入口網站不會顯示雲端服務的 SDK 版本。我該如何取得？](#the-azure-portal-doesnt-display-the-sdk-version-of-my-cloud-service-how-can-i-get-that)
+- [我想要關閉雲端服務幾個月。如何降低雲端服務的計費成本，而不會遺失 IP 位址？](#i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address)
 
 
 ## <a name="certificates"></a>憑證
 
-### <a name="why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete"></a>為什麼我雲端服務 SSL 憑證的信任鏈結是不完整的？
+### <a name="why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete"></a>為什麼我的雲端服務 TLS/SSL 憑證的憑證鏈未完成？
     
 我們建議客戶安裝完整的憑證鏈結而不是分葉憑證 (分葉憑證、中繼憑證、和根憑證)。 當您安裝分葉憑證時，會依賴 Windows 透過查核 CTL 來建置憑證鏈結。 如果當 Windows 嘗試驗證憑證時，在 Azure 或 Windows Update 中發生間歇性網路或 DNS 問題，就可能會將憑證視為無效。 藉由安裝完整的憑證鏈結，就可以避免這個問題。 [如何安裝鏈結的 SSL 憑證](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/)中的部落格會示範如何執行這項操作。
 
@@ -91,25 +90,27 @@ ms.locfileid: "60337420"
 
 [使用 Windows Azure 網站 (WAWS) 取得要使用的憑證](https://azure.microsoft.com/blog/obtaining-a-certificate-for-use-with-windows-azure-web-sites-waws/)
 
-CSR 只是文字檔。 不必從最終會使用憑證的電腦建立它。 雖然是針對 App Service 寫入這份文件，但 CSR 建立為泛型，且也適用於雲端服務。
+CSR 只是文字檔。 不必從最終會使用憑證的電腦建立它。雖然是針對 App Service 寫入這份文件，但 CSR 建立為泛型，且也適用於雲端服務。
 
 ### <a name="my-cloud-service-management-certificate-is-expiring-how-to-renew-it"></a>我的雲端服務管理憑證即將到期。 要如何續訂？
 
 您可以使用下列 PowerShell 命令來更新管理憑證：
 
-    Add-AzureAccount
-    Select-AzureSubscription -Current -SubscriptionName <your subscription name>
-    Get-AzurePublishSettingsFile
+```powershell
+Add-AzureAccount
+Select-AzureSubscription -Current -SubscriptionName <your subscription name>
+Get-AzurePublishSettingsFile
+```
 
-**Get-AzurePublishSettingsFile** 會在 Azure 入口網站的 [訂用帳戶] > [管理憑證] 中建立新的管理憑證。 新憑證的名稱如下 "YourSubscriptionNam]-[CurrentDate]-credentials"。
+**Get-AzurePublishSettingsFile** 會在 Azure 入口網站的 [訂用帳戶]**** > [管理憑證]**** 中建立新的管理憑證。 新憑證的名稱如下 "YourSubscriptionNam]-[CurrentDate]-credentials"。
 
-### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>如何將主要 SSL 憑證 (.pfx) 和中繼憑證 (.p7b) 的安裝自動化？
+### <a name="how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b"></a>如何自動安裝主要 TLS/SSL 憑證（.pfx）和中繼憑證（. p7b）？
 
 您可以使用啟動指令碼 (batch/cmd/PowerShell) 將這項工作自動化，並在服務定義檔中註冊該啟動指令碼。 將啟動指令碼和憑證 (.p7b 檔案) 新增至與啟動指令碼相同目錄的專案資料夾中。
 
 ### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>「適用於 MachineKey 的 Microsoft Azure 服務管理」憑證的用途為何？
 
-此憑證用來加密 Azure Web 角色上的電腦金鑰。 若要進一步了解，請參閱[本次](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731)。
+此憑證用來加密 Azure Web 角色上的電腦金鑰。 若要深入瞭解，請參閱[此諮詢](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731)。
 
 如需詳細資訊，請參閱下列文章：
 - [如何設定和執行雲端服務的啟動工作](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
@@ -131,19 +132,19 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 監視執行個體層級計量的功能。 [如何監視雲端服務](cloud-services-how-to-monitor.md)中還有更多其他監視功能。
 
 ### <a name="why-does-iis-stop-writing-to-the-log-directory"></a>為什麼 IIS 會停止寫入記錄目錄？
-您已耗盡寫入記錄目錄的本機儲存體配額。 若要修正此問題，您可以執行下列三個項目的其中一項：
+您已耗盡寫入記錄目錄的本機儲存體配額。若要修正此問題，您可以執行下列三個項目的其中一項：
 * 啟用 IIS 的診斷，並定期將診斷移至 blob 儲存體中。
 * 從記錄目錄中手動移除記錄檔。
 * 增加本機資源的配額限制。
 
 如需詳細資訊，請參閱下列文件：
-* [在 Azure 儲存體中儲存和檢視診斷資料](cloud-services-dotnet-diagnostics-storage.md)
+* [在 Azure 儲存體中儲存和檢視診斷資料](/azure/storage/common/storage-introduction)
 * [IIS 記錄會停止在雲端服務中寫入](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>如何為雲端服務啟用 WAD 記錄？
 您可以透過下列選項來啟用 Windows Azure 診斷 (WAD) 記錄：
 1. [從 Visual Studio 啟用](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
-2. [啟用透過.NET 程式碼](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
+2. [透過 .NET 程式碼啟用](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
 3. [透過 PowerShell 啟用](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
 
 若要取得雲端服務的目前 WAD 設定，您可以使用 [Get-AzureServiceDiagnosticsExtensions](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell#get-current-diagnostics-extension-configuration) ps cmd 或您可以從入口網站的 [雲端服務] --> [延伸模組] 刀鋒視窗中檢視它。
@@ -170,15 +171,15 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
     </Endpoints>
   </WorkerRole>
 ```
-如需詳細資訊，請參閱[新增：Azure Load Balancer 的可設定閒置逾時](https://azure.microsoft.com/blog/new-configurable-idle-timeout-for-azure-load-balancer/) (英文)。
+如需詳細資訊，請參閱[新增：Azure Load Balancer 的可設定閒置逾時](https://azure.microsoft.com/blog/new-configurable-idle-timeout-for-azure-load-balancer/)。
 
 ### <a name="how-do-i-associate-a-static-ip-address-to-my-cloud-service"></a>如何將靜態 IP 位址關聯到我的雲端服務？
 若要設定靜態 IP 位址，您必須建立保留的 IP。 這個保留的 IP 可以關聯到新的雲端服務或現有的部署。 請參閱以下文件了解詳細資料：
-* [如何建立保留的 IP 位址](../virtual-network/virtual-networks-reserved-public-ip.md#manage-reserved-vips)
-* [保留現有雲端服務的 IP 位址](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-* [建立保留的 IP 至新雲端服務的關聯](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-new-cloud-service)
-* [建立保留的 IP 至執行中部署的關聯](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-running-deployment)
-* [使用服務組態檔建立保留的 IP 至雲端服務的關聯](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+* [如何建立保留的 IP 位址](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#manage-reserved-vips)
+* [保留現有雲端服務的 IP 位址](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#reserve-the-ip-address-of-an-existing-cloud-service)
+* [將保留的 IP 與新的雲端服務產生關聯](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-new-cloud-service)
+* [建立保留的 IP 至執行中部署的關聯](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-running-deployment)
+* [使用服務設定檔將保留的 IP 與雲端服務產生關聯](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
 ### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Azure 的基本 IPS/IDS 和 DDOS 提供的特性和功能是什麼？
 Azure 在資料中心實體伺服器中擁有 IP/ID 可以防範潛威脅。 此外，客戶可以部署第三方安全性解決方案，例如 Web 應用程式防火牆、網路防火牆、反惡意程式碼軟體、入侵偵測、預防系統 (IDS/IPS) 等等。 如需詳細資訊，請參閱[保護您的資料和資產，以及符合全域安全性標準](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)。
@@ -194,9 +195,9 @@ Windows 10 和 Windows Server 2016 隨附用戶端和伺服器端上的 HTTP/2 �
 3. 建立名為 **DuoEnabled** 的新 DWORD 值。
 4. 將值設為 1。
 5. 重新啟動您的伺服器。
-6. 移至**預設網站**，並在 [繫結] 下方 使用剛才建立的自我簽署憑證來建立新的 TLS 繫結。 
+6. 移至**預設網站**，並在 [繫結]**** 下方 使用剛才建立的自我簽署憑證來建立新的 TLS 繫結。 
 
-如需詳細資訊，請參閱
+如需詳細資訊，請參閱：
 
 - [IIS 上的 HTTP/2](https://blogs.iis.net/davidso/http2)
 - [影片：Windows 10 中的 HTTP/2：瀏覽器、應用程式和 Web 伺服器](https://channel9.msdn.com/Events/Build/2015/3-88)
@@ -208,7 +209,7 @@ Windows 10 和 Windows Server 2016 隨附用戶端和伺服器端上的 HTTP/2 �
 這項作業完成之後，您可以使用下列方法之一來確認是否已啟用 HTTP/2：
 
 - 啟用 IIS 記錄中的通訊協定版本，並查看 IIS 記錄。 它會在記錄中顯示 HTTP/2。 
-- 在 Internet Explorer/Microsoft Edge 中啟用 F12 開發人員工具，並切換至 [網路] 索引標籤以確認通訊協定。 
+- 在 Internet Explorer 或 Microsoft Edge 中啟用 F12 開發人員工具，並切換至 [網路] 索引標籤以確認通訊協定。 
 
 如需詳細資訊，請參閱 [IIS 上的 HTTP/2](https://blogs.iis.net/davidso/http2)。
 
@@ -228,12 +229,12 @@ Microsoft 會遵循嚴格的程序，不允許內部工程師在沒有擁有者�
 
 如果您使用的 RDP 檔案來自已加入 Azure Active Directory 的機器，即可能會發生這個錯誤。 若要解決此問題，請依照下列步驟執行︰
 
-1. 以滑鼠右鍵按一下您下載的 RDP 檔案，然後選取 [編輯]。
+1. 以滑鼠右鍵按一下您下載的 RDP 檔案，然後選取 [編輯]****。
 2. 新增 "&#92;" 作為使用者名稱的前置詞。 例如，使用 **.\username** 而不是 **username**。
 
 ## <a name="scaling"></a>調整大小
 
-### <a name="i-cannot-scale-beyond-x-instances"></a>无法扩展到 X 个实例以上
+### <a name="i-cannot-scale-beyond-x-instances"></a>我不能調整超過 X 個執行個體
 您的 Azure 訂用帳戶對於您可以使用的核心數目有限制。 如果您已使用所有可用的核心，調整將無法運作。 例如，如果您有 100 個核心的限制，這表示您的雲端服務可以有 100 個 A1 大小的虛擬機器執行個體，或 50 個 A2 大小的虛擬機器執行個體。
 
 ### <a name="how-can-i-configure-auto-scale-based-on-memory-metrics"></a>如何根據記憶體計量設定自動縮放？
@@ -267,7 +268,7 @@ Microsoft 會遵循嚴格的程序，不允許內部工程師在沒有擁有者�
 </configuration>
 ```
 
-您也可以在 IIS 中將此加入為設定。 使用[常见启动任务](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe)一文中的以下命令。
+您也可以在 IIS 中將此加入為設定。 請參考[常見的啟動工作](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe)一文來使用下列命令。
 
 ```cmd
 %windir%\system32\inetsrv\appcmd set config /section:httpProtocol /+customHeaders.[name='X-Content-Type-Options',value='nosniff']
@@ -277,12 +278,12 @@ Microsoft 會遵循嚴格的程序，不允許內部工程師在沒有擁有者�
 請從[常見的啟動工作](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe)一文使用 IIS 啟動指令碼。
 
 ### <a name="what-is-the-quota-limit-for-my-cloud-service"></a>我的雲端服務配額限制是多少？
-請參閱[特定服務的限制](../azure-subscription-service-limits.md#subscription-limits)。
+請參閱[特定服務的限制](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)。
 
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>為什麼我雲端服務虛擬機器上的磁碟機顯示幾乎沒有可用的磁碟空間？
 這是預期的行為，並不會對您的應用程式造成任何問題。 在 Azure PaaS 虛擬機器中會開啟 %approot% 磁碟機的日誌記錄，基本上會消耗兩倍檔案通常所佔用的空間量。 不過，要留意幾件事，基本上這就會變得沒有問題。
 
-%approot% 磁碟機大小會以 <.cspkg 的大小 + 最大的日誌大小 + 可用空間的邊界> 來計算，或 1.5 GB，兩者取其較大。 您 VM 的大小對這個計算方式並無任何影響。 (VM 大小只會影響暫存 C: 磁碟機的大小。) 
+% Approot% 磁片磁碟機大小的計算方式為 \<size of .cspkg + max journal size + a margin of free space> ，或 1.5 GB，以較大者為准。 您 VM 的大小對這個計算方式並無任何影響。 (VM 大小只會影響暫存 C: 磁碟機的大小。) 
 
 它不支援寫入 %approot% 磁碟機。 如果您要寫入 Azure VM 中，必須在暫存 LocalStorage 資源中進行 (或其他選項，例如 Blob 儲存體、Azure 檔案等)。 因此在 %approot% 資料夾上的可用空間數量沒有任何意義。 如果您不確定應用程式是否要寫入 %approot% 磁碟機中，一律可以讓您的服務執行幾天，然後比較「之前」和「之後」的大小。 
 
@@ -297,7 +298,7 @@ Azure 不會將任何內容寫入 %approot% 磁碟機。 一旦從 .cspkg 建立
 - [建立 PowerShell 啟動工作](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
 - [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
 
-如需反惡意程式碼部署情節及如何從入口網站加以啟用的詳細資訊，請參閱[反惡意程式碼部署情節](../security/azure-security-antimalware.md#antimalware-deployment-scenarios)。
+如需反惡意程式碼部署情節及如何從入口網站加以啟用的詳細資訊，請參閱[反惡意程式碼部署情節](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)。
 
 ### <a name="how-to-enable-server-name-indication-sni-for-cloud-services"></a>如何啟用雲端服務的伺服器名稱指示 (SNI)？
 
@@ -305,31 +306,34 @@ Azure 不會將任何內容寫入 %approot% 磁碟機。 一旦從 .cspkg 建立
 
 **方法 1：使用 PowerShell**
 
-您可以在雲端服務角色執行個體的啟動工作中使用 PowerShell Cmdlet **New-WebBinding** 來設定 SNI 繫結，如下所示：
-    
-    New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags 
-    
+在雲端服務角色實例的啟動工作中，可以使用 PowerShell Cmdlet **new-webbinding**來設定 SNI 系結，如下所示：
+
+```powershell
+New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags
+```
+
 如[這裡](https://technet.microsoft.com/library/ee790567.aspx)所述，$sslFlags 可能是如下所示其中一個值：
 
-|Value|意義|
+|值|意義|
 ------|------
 |0|沒有 SNI|
-|1|已啟用 SNI |
-|2 |使用中央憑證存放區的非 SNI 繫結|
-|3|使用中央憑證存放區的 SNI 繫結 |
+|1|已啟用 SNI|
+|2|使用中央憑證存放區的非 SNI 繫結|
+|3|使用中央憑證存放區的 SNI 繫結|
  
 **方法 2：使用程式碼**
 
 也可以透過角色啟動中的程式碼來設定 SNI 繫結，如這個[部落格文章](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/)所述：
 
-    
-    //<code snip> 
-                    var serverManager = new ServerManager(); 
-                    var site = serverManager.Sites[0]; 
-                    var binding = site.Bindings.Add(“:443:www.test1.com”, newCert.GetCertHash(), “My”); 
-                    binding.SetAttributeValue(“sslFlags”, 1); //enables the SNI 
-                    serverManager.CommitChanges(); 
-    //</code snip> 
+```csharp
+//<code snip> 
+                var serverManager = new ServerManager(); 
+                var site = serverManager.Sites[0]; 
+                var binding = site.Bindings.Add(":443:www.test1.com", newCert.GetCertHash(), "My"); 
+                binding.SetAttributeValue("sslFlags", 1); //enables the SNI 
+                serverManager.CommitChanges(); 
+    //</code snip>
+```
     
 使用上述的任何方法，必須先使用啟動工作或透過程式碼在角色執行個體上安裝特定主機名稱的個別憑證 (*.pfx)，SNI 繫結才會有效。
 
@@ -341,7 +345,9 @@ Azure 不會將任何內容寫入 %approot% 磁碟機。 一旦從 .cspkg 建立
 
 我們正設法將這項功能放到 Azure 入口網站上。 同時，您可以使用下列 PowerShell 命令取得 SDK 版本：
 
-    Get-AzureService -ServiceName "<Cloud Service name>" | Get-AzureDeployment | Where-Object -Property SdkVersion -NE -Value "" | select ServiceName,SdkVersion,OSVersion,Slot
+```powershell
+Get-AzureService -ServiceName "<Cloud Service name>" | Get-AzureDeployment | Where-Object -Property SdkVersion -NE -Value "" | select ServiceName,SdkVersion,OSVersion,Slot
+```
 
 ### <a name="i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address"></a>我想要關閉雲端服務幾個月。 如何降低雲端服務的計費成本，而不遺失 IP 位址？
 

@@ -1,11 +1,11 @@
 ---
-title: 使用 Azure 通知中樞將通知推送至特定 Android 應用程式使用者 | Microsoft Docs
+title: 使用 Azure 通知中樞將通知傳送至特定 Android 應用程式
 description: 了解如何使用 Azure 通知中樞將推播通知傳送至特定的使用者。
 documentationcenter: android
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: ae0e17a8-9d2b-496e-afd2-baa151370c25
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,15 +14,20 @@ ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: fc248292e2323d44a353473be87c2b0f1be8ea12
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 709926671e1ad4d8beefaf0f1cff4c56b1948ca3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55091662"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127374"
 ---
-# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將通知推送至特定 Android 應用程式使用者
+# <a name="tutorial-send-push-notification-to-specific-android-users-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>教學課程：使用 Azure 通知中樞和 Google 雲端通訊 (已淘汰) 將推播通知傳送給特定 Android 使用者
+
+> [!WARNING]
+> Google 已於 2018 年 4 月 10 日淘汰 Google 雲端通訊 (GCM)。 GCM 伺服器和用戶端 API 會由其他項目取代，並且很快就會在 2019 年 5 月 29 日進行移除。 如需詳細資訊，請參閱 [GCM 和 FCM 常見問題集](https://developers.google.com/cloud-messaging/faq)。
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
@@ -35,9 +40,9 @@ ms.locfileid: "55091662"
 > * 建立 Android 應用程式。
 > * 測試應用程式
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-在開始進行本教學課程之前，請先完成[教學課程：使用 Azure 通知中樞和 Google 雲端通訊將通知推送至 Android 裝置](notification-hubs-android-push-notification-google-gcm-get-started.md)。
+完成[教學課程：使用 Azure 通知中樞和 Google 雲端通訊將通知推送至 Android 裝置](notification-hubs-android-push-notification-google-gcm-get-started.md)。
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
@@ -141,7 +146,7 @@ ms.locfileid: "55091662"
     ```xml
     <string name="usernameHint">Username</string>
     <string name="passwordHint">Password</string>
-    <string name="loginButton">1. Log in</string>
+    <string name="loginButton">1. Sign in</string>
     <string name="send_button">2. Send Notification</string>
     <string name="notification_message_hint">Notification message</string>
     <string name="notification_message_tag_hint">Recipient username</string>
@@ -257,8 +262,8 @@ ms.locfileid: "55091662"
     }
     ```
 
-    為註冊推播通知，此元件會實作連絡應用程式後端所需的 REST 呼叫。 它也會在本機儲存通知中心所建立的 *registrationIds* ，如 [從您的應用程式後端註冊](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)中的詳細說明。 當您按一下 [登入] 按鈕時，系統便會使用儲存在本機儲存體中的授權權杖。
-4. 在您的類別中，針對 `NotificationHub` 移除或註解排除您的私用欄位，並對 `RegisterClient` 類別新增一個欄位，以及對 ASP.NET 後端端點新增一個字串。 請務必將 `<Enter Your Backend Endpoint>` 取代為您先前取得的實際後端端點。 例如： `http://mybackend.azurewebsites.net`。
+    為註冊推播通知，此元件會實作連絡應用程式後端所需的 REST 呼叫。 它也會在本機儲存通知中心所建立的 *registrationIds* ，如 [從您的應用程式後端註冊](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)中的詳細說明。 當您按一下 [登入]  按鈕時，系統便會使用儲存在本機儲存體中的授權權杖。
+4. 在您的類別中，針對 `NotificationHub` 移除或註解排除您的私用欄位，並對 `RegisterClient` 類別新增一個欄位，以及對 ASP.NET 後端端點新增一個字串。 請務必將 `<Enter Your Backend Endpoint>` 取代為您先前取得的實際後端端點。 例如： `http://mybackend.azurewebsites.net` 。
 
     ```java
     //private NotificationHub hub;
@@ -319,7 +324,7 @@ ms.locfileid: "55091662"
     Button sendPush = (Button) findViewById(R.id.sendbutton);
     sendPush.setEnabled(false);
     ```
-9. 然後，新增下列方法來處理 [ **登入** ] 按鈕 click 事件及傳送推播通知。
+9. 然後，新增下列方法來處理 [登入]  按鈕 click 事件及傳送推播通知。
 
     ```java
     public void login(View view) throws UnsupportedEncodingException {
@@ -401,7 +406,7 @@ ms.locfileid: "55091662"
     }
     ```
 
-    [登入] 按鈕的 `login` 處理常式會使用輸入使用者名稱和密碼 (這代表驗證結構描述使用的任何權杖) 產生基本驗證權杖，然後使用 `RegisterClient` 呼叫後端進行註冊。
+    [登入]  按鈕的 `login` 處理常式會使用輸入使用者名稱和密碼 (這代表驗證結構描述使用的任何權杖) 產生基本驗證權杖，然後使用 `RegisterClient` 呼叫後端進行註冊。
 
     `sendPush` 方法會呼叫後端，以根據使用者標記觸發使用者的安全通知。 `sendPush` 鎖定目標的平台通知服務取決於傳入的 `pns` 字串。
 
@@ -467,7 +472,7 @@ ms.locfileid: "55091662"
 
 1. 在使用 Android Studio 的裝置或模擬器上執行應用程式。
 2. 在 Android 應用程式中，輸入使用者名稱和密碼。 兩者必須是相同的字串值，而且不得包含空格或特殊字元。
-3. 在 Android 應用程式中，按一下 [ **登入**]。 等待快顯訊息出現，指出 [ **已登入並註冊**]。 這會啟用 [傳送通知] 按鈕。
+3. 在 Android 應用程式中，按一下 [登入]  。 等待快顯訊息出現，指出 [ **已登入並註冊**]。 這會啟用 [傳送通知]  按鈕。
 
     ![][A2]
 4. 按一下切換按鈕，啟用您已執行應用程式並註冊使用者的所有平台。

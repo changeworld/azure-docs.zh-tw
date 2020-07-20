@@ -1,35 +1,24 @@
 ---
-title: Linux 上的 App Service SSH 支援 - Azure | Microsoft Docs
-description: 了解如何使用 SSH 搭配 Linux 上的 Azure App Service。
+title: 適用于 Linux 容器的 SSH 存取
+description: 您可以在 Azure App Service 中開啟 Linux 容器的 SSH 會話。 自訂的 Linux 容器支援自訂映射的某些修改。
 keywords: azure app service, web 應用程式, linux, oss
-services: app-service
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+author: msangapu-msft
 ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 2d84a4dd0b69ce9ca7fc594dffce3238c620c426
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: dab13f222b441c7415a8d09d0d91ab3af5aaf836
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60852629"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84695822"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Linux 上的 Azure App Service 支援 SSH
 
-[安全殼層 (SSH)](https://wikipedia.org/wiki/Secure_Shell) 通常用於從命令列終端機，遠端執行系統管理命令。 Linux 上的 App Service 會利用每個用於新 Web 應用程式的「執行階段堆疊」的內建 Docker 映像，來提供應用程式容器內的 SSH 支援。 
+[安全殼層 (SSH)](https://wikipedia.org/wiki/Secure_Shell) 通常用於從命令列終端機，遠端執行系統管理命令。 Linux 上的 App Service 會在應用程式容器中提供 SSH 支援。 
 
-![執行階段堆疊](./media/app-service-linux-ssh-support/app-service-linux-runtime-stack.png)
-
-對於自訂 Docker 映像，藉由在自訂映像中設定 SSH 伺服器。
+![Linux App Service SSH](./media/app-service-linux-ssh-support/app-service-linux-ssh.png)
 
 您也可以使用 SSH 和 SFTP，直接從本機開發電腦連線到容器。
 
@@ -39,7 +28,7 @@ ms.locfileid: "60852629"
 
 ## <a name="use-ssh-support-with-custom-docker-images"></a>使用 SSH 支援搭配自訂 Docker 映像
 
-請參閱[設定 SSH 自訂容器中](configure-custom-container.md#enable-ssh)。
+請參閱[在自訂容器中設定 SSH](configure-custom-container.md#enable-ssh)。
 
 ## <a name="open-ssh-session-from-remote-shell"></a>從遠端殼層開啟 SSH 工作階段
 
@@ -51,10 +40,10 @@ ms.locfileid: "60852629"
 
 若要開始，您必須安裝 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 若要查看未安裝 Azure CLI 時的運作方式，請開啟 [Azure Cloud Shell](../../cloud-shell/overview.md)。 
 
-使用 [az webapp remote-connection create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) 命令，開啟您應用程式的遠端連線。 指定_\<訂用帳戶識別碼 >_， _\<群組名稱 >_ 並\_< 應用程式名稱 > _，您的應用程式。
+使用 [az webapp remote-connection create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) 命令，開啟您應用程式的遠端連線。 _\<subscription-id>_ _\<group-name>_ \_ \<app-name> 針對您的應用程式指定和 _。
 
 ```azurecli-interactive
-az webapp remote-connection create --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &
+az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &
 ```
 
 > [!TIP]
@@ -62,7 +51,7 @@ az webapp remote-connection create --subscription <subscription-id> --resource-g
 
 命令輸出會為您提供開啟 SSH 工作階段所需的資訊。
 
-```
+```output
 Port 21382 is open
 SSH is available { username: root, password: Docker! }
 Start your favorite client and connect to port 21382
@@ -70,20 +59,20 @@ Start your favorite client and connect to port 21382
 
 使用本機連接埠，以您所選的用戶端開啟包含您的容器的 SSH 工作階段。 下列範例會使用預設 [ssh](https://ss64.com/bash/ssh.html) 命令：
 
-```azurecli-interactive
+```bash
 ssh root@127.0.0.1 -p <port>
 ```
 
 在出現提示時，輸入 `yes` 繼續連線。 系統會接著提示您輸入密碼。 使用稍早所示的 `Docker!`。
 
-```
+```output
 Warning: Permanently added '[127.0.0.1]:21382' (ECDSA) to the list of known hosts.
 root@127.0.0.1's password:
 ```
 
 驗證後，您應會看到工作階段歡迎畫面。
 
-```
+```output
   _____
   /  _  \ __________ _________   ____
  /  /_\  \___   /  |  \_  __ \_/ __ \
@@ -99,7 +88,7 @@ A P P   S E R V I C E   O N   L I N U X
 
 嘗試執行 [top](https://ss64.com/bash/top.html) 命令。 您應能夠在程序清單中看到您應用程式的程序。 在下列範例輸出中，它是具有 `PID 263` 的程序。
 
-```
+```output
 Mem: 1578756K used, 127032K free, 8744K shrd, 201592K buff, 341348K cached
 CPU:   3% usr   3% sys   0% nic  92% idle   0% io   0% irq   0% sirq
 Load average: 0.07 0.04 0.08 4/765 45738
@@ -123,7 +112,7 @@ Load average: 0.07 0.04 0.08 4/765 45738
 
 ## <a name="next-steps"></a>後續步驟
 
-您可以在 [Azure 論壇](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)張貼問題和疑難。
+您可以在 [Azure 論壇](https://docs.microsoft.com/answers/topics/azure-webapps.html)張貼問題和疑難。
 
 如需「用於容器的 Web App」的詳細資訊，請參閱：
 
@@ -131,4 +120,4 @@ Load average: 0.07 0.04 0.08 4/765 45738
 * [如何針對用於容器的 Web 應用程式使用自訂 Docker 映像](quickstart-docker-go.md)
 * [在 Linux 上的 Azure App Service 中使用 .NET Core](quickstart-dotnetcore.md)
 * [在 Linux 上的 Azure App Service 中使用 Ruby](quickstart-ruby.md)
-* [Azure App Service Web App for Containers 常見問題集](app-service-linux-faq.md)
+* [Azure App Service 用於容器的 Web App 常見問題](app-service-linux-faq.md)

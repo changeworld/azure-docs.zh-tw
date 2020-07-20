@@ -5,31 +5,33 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 08/29/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fa01a6bf522061e54e9622cb9201f81c699a8ec
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 28d02160163da4081ad8adbe233b27fee970a0df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60412432"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74868842"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Azure Active Directory B2B 共同作業授權指引
 
-使用 Azure Active Directory (Azure AD) 企業對企業 (B2B) 共同作業時，您可以邀請「外部使用者」(或「來賓使用者」) 來使用您的付費 Azure AD 服務。 針對您指派給使用者的每個付費 Azure AD 授權，在「外部使用者額度」下，您最多可以邀請 5 位使用者。
+使用 Azure Active Directory (Azure AD) 企業對企業 (B2B) 共同作業時，您可以邀請「外部使用者」(或「來賓使用者」) 來使用您的付費 Azure AD 服務。 有些功能是免費的，但對於任何付費的 Azure AD 功能，您可以針對您租使用者中員工或非來賓使用者所擁有的每個 Azure AD edition 授權，邀請最多五個來賓使用者。
 
-系統會根據 1:5 的比例來自動計算和回報 B2B 來賓使用者授權。 目前無法直接將 B2B 來賓使用者授權指派給來賓使用者。
+> [!NOTE]
+> 如需 Azure AD 定價和 B2B 共同作業功能的詳細資訊，請參閱[Azure Active Directory 定價](https://azure.microsoft.com/pricing/details/active-directory/)。
+
+系統會根據 1:5 的比例來自動計算和回報 B2B 來賓使用者授權。 
 
 此外，來賓使用者無須符合任何額外的授權需求，即可使用免費的 Azure AD 功能。 即使您沒有任何付費的 Azure AD 授權，來賓使用者也可以存取免費的 Azure AD 功能。 
 
 ## <a name="examples-calculating-guest-user-licenses"></a>範例：計算來賓使用者授權
-在您判斷出有多少來賓使用者需要存取您的付費 Azure AD 服務之後，請確定您有足夠的 Azure AD 付費授權可涵蓋所需 1:5 比例的來賓使用者。 這裡有一些範例：
+在您判斷出有多少來賓使用者需要存取您的付費 Azure AD 服務之後，請確定您有足夠的 Azure AD 付費授權可涵蓋所需 1:5 比例的來賓使用者。 以下是一些範例：
 
-- 您想要邀請 100 位來賓使用者使用您的 Azure AD 應用程式或服務，並想要對所有來賓使用者指派存取管理和佈建。 此外，您也想要針對這些來賓使用者中的 50 位，要求使用 MFA 和條件式存取。 若要涵蓋這個組合，您將需要 10 個 Azure AD Basic 授權及 10 個 Azure AD Premium P1 授權。 如果您打算對來賓使用者使用「身分識別保護」功能，則需要同樣 1:5 比例的 Azure AD Premium P2 授權，才能這些使用者。
+- 您想要邀請100來賓使用者加入 Azure AD 的應用程式或服務，並提供存取管理和布建。 針對這些來賓使用者的50，您也想要要求 MFA 和條件式存取，因此若要使用這些功能，您將需要10個 Azure AD Premium P1 授權。 如果您打算對來賓使用者使用「身分識別保護」功能，則需要同樣 1:5 比例的 Azure AD Premium P2 授權，才能這些使用者。
 - 您想要邀請 60 位全都必須使用 MFA 的來賓使用者，因此您必須至少有 12 個 Azure AD Premium P1 授權。 您有 10 個具備 Azure AD Premium P1 授權的員工，在 1:5 授權比例下，這將最多可允許 50 位來賓使用者。 您將需要購買 2 個額外的 Premium P1 授權，才能涵蓋 10 位額外的來賓使用者。
 
 ## <a name="next-steps"></a>後續步驟

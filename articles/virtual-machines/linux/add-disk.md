@@ -1,27 +1,18 @@
 ---
-title: 使用 Azure CLI 在 Linux VM 中新增資料磁碟 | Microsoft Docs
+title: 使用 Azure CLI 將資料磁片新增至 Linux VM
 description: 了解如何使用 Azure CLI 在 Linux VM 中新增永續性資料磁碟
-services: virtual-machines-linux
-documentationcenter: ''
 author: roygara
 manager: twooley
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.topic: article
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
+ms.topic: how-to
 ms.date: 06/13/2018
 ms.author: rogarana
-ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 3f33fb09a4b6c19bae3c02ecc47dae193a3a6cb0
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
-ms.translationtype: MT
+ms.openlocfilehash: eb18207c15007820bf93254886ab38a43bc5b48f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925226"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84658329"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>在 Linux VM 中新增磁碟
 本文說明如何將持續性磁碟連結到您的 VM，以便您保留資料 - 即使您的 VM 會由於維護或調整大小而重新佈建。
@@ -35,24 +26,24 @@ ms.locfileid: "64925226"
 az vm disk attach \
    -g myResourceGroup \
    --vm-name myVM \
-   --disk myDataDisk \
+   --name myDataDisk \
    --new \
    --size-gb 50
 ```
 
 ## <a name="attach-an-existing-disk"></a>連接現有磁碟
 
-若要連結現有磁碟，請找出磁碟識別碼，並將識別碼傳遞到 [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest) 命令。 下列範例會查詢 myResourceGroup 中名為 myDataDisk 的磁碟，然後將其連結至名為 myVM 的 VM：
+若要連結現有磁碟，請找出磁碟識別碼，並將識別碼傳遞到 [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest) 命令。 下列範例會查詢 myResourceGroup** 中名為 myDataDisk** 的磁碟，然後將其連結至名為 myVM** 的 VM：
 
 ```azurecli
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
 
-az vm disk attach -g myResourceGroup --vm-name myVM --disk $diskId
+az vm disk attach -g myResourceGroup --vm-name myVM --name $diskId
 ```
 
 ## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>連接到 Linux VM 以掛接新磁碟
 
-若要分割、格式化和掛接新磁碟以供 Linux VM 使用，請使用 SSH 登入您的 VM。 如需詳細資訊，請參閱[如何在 Azure 上搭配使用 SSH 與 Linux](mac-create-ssh-keys.md)。 下列範例會以 azureuser 這個使用者名稱，利用 mypublicdns.westus.cloudapp.azure.com 的公用 DNS 項目來連線至 VM：
+若要分割、格式化和掛接新磁碟以供 Linux VM 使用，請使用 SSH 登入您的 VM。 如需詳細資訊，請參閱[如何在 Azure 上搭配使用 SSH 與 Linux](mac-create-ssh-keys.md)。 下列範例會以 azureuser 這個使用者名稱，利用 mypublicdns.westus.cloudapp.azure.com 的公用 DNS 項目來連線至 VM ：
 
 ```bash
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
@@ -73,6 +64,9 @@ dmesg | grep SCSI
 [    8.079653] sd 3:0:1:0: [sdb] Attached SCSI disk
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
+
+> [!NOTE]
+> 建議您使用可供您的散發版本使用的最新版本 fdisk 或 parted。
 
 在這裡，sdc 是我們想要的磁碟。 使用 `parted` 分割磁碟，如果磁碟大小為 2 TiB 或更大，您就必須使用 GPT 資料分割，如果它小於 2TiB，您則可以使用 MBR 或 GPT 資料分割。 如果您使用 MBR 磁碟分割，可以使用 `fdisk`。 將它設為磁碟分割 1 上的主要磁碟，並接受其他預設值。 下列範例會在 /dev/sdc 上啟動 `fdisk` 程序：
 
@@ -128,7 +122,7 @@ Syncing disks.
 partprobe 
 ```
 
-現在，使用 `mkfs` 命令將檔案系統寫入至磁碟分割。 指定檔案系統類型和裝置名稱。 下列範例會在前述步驟所建立的 /dev/sdc1 磁碟分割上，建立 ext4 檔案系統：
+現在，使用 `mkfs` 命令將檔案系統寫入至磁碟分割。 指定檔案系統類型和裝置名稱。 下列範例會在前述步驟所建立的 /dev/sdc1 磁碟分割上，建立 ext4 檔案系統 ：
 
 ```bash
 sudo mkfs -t ext4 /dev/sdc1
@@ -201,11 +195,11 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail 
 ```
 
 > [!NOTE]
-> 稍後移除資料磁碟而不編輯 fstab，可能會造成 VM 無法開機。 大多數的發行版本會提供 nofail 和 (或) nobootwait fstab 選項。 即使磁碟在開機時無法掛接，這些選項也能讓系統開機。 有关这些参数的详细信息，请查阅分发文档。
+> 稍後移除資料磁碟而不編輯 fstab，可能會造成 VM 無法開機。 大多數的發行版本會提供 nofail 和 (或) nobootwait fstab 選項。 即使磁碟在開機時無法掛接，這些選項也能讓系統開機。 請查閱散發套件的文件，以取得這些參數的相關資訊。
 >
 > *Nofail* 選項可確保即使檔案系統已損毀或磁碟在開機時並不存在，仍然會啟動 VM。 若不使用此選項，您可能會遇到[因為 FSTAB 錯誤所以無法 SSH 到 Linux VM](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/) 中所述的行為
 >
-> Azure VM 的序列主控台可以用於主控台存取您的 VM，如果修改 fstab 導致開機失敗。 更多詳細資料位於[序列主控台的文件](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)。
+> 如果修改 fstab 導致開機失敗，則 Azure VM 序列主控台可以用於對您的 VM 的主控台存取。 如需更多詳細資料，請[參閱序列主控台檔](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)。
 
 ### <a name="trimunmap-support-for-linux-in-azure"></a>Azure 中 Linux 的 TRIM/UNMAP 支援
 有些 Linux 核心會支援 TRIM/UNMAP 作業以捨棄磁碟上未使用的區塊。 此功能主要是在標準儲存體中相當實用，可用來通知 Azure 已刪除的頁面已不再有效而可予以捨棄，而且如果您建立大型檔案，然後再將它們刪除，也可以節省成本。

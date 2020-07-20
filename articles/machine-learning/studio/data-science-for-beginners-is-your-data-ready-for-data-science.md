@@ -1,21 +1,20 @@
 ---
 title: 資料評估
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) - Azure
 description: 您資料備妥可進行資料科學前，必須符合的四個準則。 這段影片提供具體範例，可協助進行基本的資料評估。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: sdgilley
-ms.author: sgilleye
+ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: d38a5066304a11ff2cd53a0168e51a0d74fda555
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 8eb9c5a182c17815d4efcf171cc99b1e9f5bc89e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60751426"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82930160"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>已備妥資料來進行資料科學嗎？
 ## <a name="video-2-data-science-for-beginners-series"></a>影片 2：適用於初學者的資料科學系列
@@ -29,16 +28,16 @@ ms.locfileid: "60751426"
 >
 
 ## <a name="other-videos-in-this-series"></a>系列中的其他影片
- 是一個資料科學的快速簡介，包含五個簡短影片。
+** 是一個資料科學的快速簡介，包含五個簡短影片。
 
 * 影片 1：[資料科學可以回答的 5 個問題](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 分 14 秒)*
-* 影片 2：已備妥資料來進行資料科學嗎？
-* 影片 3：[問一個您可以使用資料回答的問題](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 分 17 秒)*
+* 影片 2：您的資料已經可以進行資料科學了嗎？
+* 影片 3：[詢問您可以使用資料回答的問題](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 分 17 秒)*
 * 影片 4：[利用簡單模型預測答案](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 分 42 秒)*
 * 影片 5：[複製其他人的工作進行資料科學](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 分 18 秒)*
 
 ## <a name="transcript-is-your-data-ready-for-data-science"></a>文字記錄：已備妥資料來進行資料科學嗎？
-歡迎觀賞「已備妥資料來進行資料科學嗎？」 這是「適用於初學者的資料科學」系列的第二個影片。  
+歡迎觀賞「已備妥資料來進行資料科學嗎？」 這是「適用於初學者的資料科學」** 系列的第二個影片。  
 
 您必須先提供一些可運用的高品質原始資料，資料科學才能提供您想要的答案。 就像製作比薩，您一開始使用的原料越好，最終產品就越好。 
 
@@ -100,8 +99,8 @@ ms.locfileid: "60751426"
 
 利用相關、連結、精確與足夠的資料，您擁有需要的所有要素，來進行一些高品質資料科學。
 
-請務必查看 Microsoft Azure Machine Learning Studio 中《適用於初學者的資料科學》的其他四個影片。
+請務必從 Microsoft Azure Machine Learning Studio （傳統）查看*適用于初學者的資料科學*中的其他四個影片。
 
 ## <a name="next-steps"></a>後續步驟
-* [嘗試使用 Machine Learning Studio 進行您的第一個資料科學實驗](create-experiment.md)
-* [在 Microsoft Azure 上取得 Machine Learning 簡介](/azure/machine-learning/preview/overview-what-is-azure-ml)
+* [嘗試使用 Machine Learning Studio 的第一個資料科學實驗（傳統）](create-experiment.md)
+* [在 Microsoft Azure 上取得 Machine Learning 簡介](/azure/machine-learning/overview-what-is-azure-ml)

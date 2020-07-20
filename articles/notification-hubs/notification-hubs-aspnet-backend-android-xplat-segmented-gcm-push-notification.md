@@ -1,11 +1,11 @@
 ---
-title: 使用 Azure 通知中樞和 Google 雲端通訊將通知推送至特定 Android 裝置 | Microsoft Docs
+title: 使用 Azure 通知中樞和 Google 雲端通訊將通知傳送至特定 Android 裝置 | Microsoft Docs
 description: 了解如何使用 Azure 通知中樞和 Google 雲端通訊將通知推送至特定 Android 裝置。
 services: notification-hubs
 documentationcenter: android
-author: jwargo
-manager: patniko
-editor: spelluru'
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 3c23cb80-9d35-4dde-b26d-a7bfd4cb8f81
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,15 +14,20 @@ ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 1c777f705d9b2d3df713642349fe4dbd413e48e1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 57a11eac47baace0ad9fa7dcae82dca6eeee0988
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57872857"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80127295"
 ---
-# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging"></a>教學課程：使用 Azure 通知中樞和 Google 雲端通訊將通知推送至特定 Android 裝置
+# <a name="tutorial-send-push-notifications-to-specific-android-devices-using-google-cloud-messaging-deprecated"></a>教學課程：使用 Google 雲端通訊 (已淘汰) 將推播通知傳送至特定 Android 裝置
+
+> [!WARNING]
+> Google 已於 2018 年 4 月 10 日淘汰 Google 雲端通訊 (GCM)。 GCM 伺服器和用戶端 API 會由其他項目取代，並且很快就會在 2019 年 5 月 29 日進行移除。 如需詳細資訊，請參閱 [GCM 和 FCM 常見問題集](https://developers.google.com/cloud-messaging/faq)。
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -40,7 +45,7 @@ ms.locfileid: "57872857"
 > * 傳送加註標記的通知。
 > * 測試應用程式
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程以您在以下教學課程中建立的 Android 應用程式為基礎：[教學課程：使用 Azure 通知中樞和 Google 雲端通訊將通知推送至 Android 裝置][get-started]。 開始進行本教學課程之前，請完成[教學課程：使用 Azure 通知中樞和 Google 雲端通訊將通知推送至 Android 裝置][get-started]。
 
@@ -311,7 +316,7 @@ ms.locfileid: "57872857"
 ## <a name="test-the-app"></a>測試應用程式
 
 1. 使用 Android Studio，在您的 Android 裝置或模擬器上執行應用程式。 應用程式 UI 提供一組切換，可讓您選擇要訂閱的類別。
-2. 啟用一或多個類別切換，然後按一下 [訂閱] 。 應用程式會將選取的類別轉換成標籤，並在通知中心內為選取的標籤要求新裝置註冊。 隨即會傳回已註冊的類別，且會顯示在快顯通知中。
+2. 啟用一或多個類別切換，然後按一下 [訂閱]  。 應用程式會將選取的類別轉換成標籤，並在通知中心內為選取的標籤要求新裝置註冊。 隨即會傳回已註冊的類別，且會顯示在快顯通知中。
 
     ![訂閱類別](./media/notification-hubs-aspnet-backend-android-breaking-news/subscribe-for-categories.png)
 3. 執行 .NET 主控台應用程式，這會傳送每個類別的通知。 選取的類別通知會以快顯通知方式出現。

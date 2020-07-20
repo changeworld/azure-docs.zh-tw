@@ -1,24 +1,23 @@
 ---
 title: 新增/移除 Azure 檔案同步伺服器端點 | Microsoft Docs
 description: 了解規劃 Azure 檔案服務部署時的考量事項。
-services: storage
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 31bb71f016dd7f9dd37c766ece25caf8f300754b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 70cdf01cb327d1be6b2ac4b9cae414f87e27964f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64686958"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509467"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>新增/移除 Azure 檔案同步伺服器端點
 Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服務」中，而不需要犧牲內部部署檔案伺服器的靈活度、效能及相容性。 它會將您的 Windows Server 轉換成 Azure 檔案共用的快速快取來達到這個目的。 您可以使用 Windows Server 上可用的任何通訊協定來存取本機資料 (包括 SMB、NFS 和 FTPS)，並且可以在世界各地擁有任何所需數量的快取。
 
-伺服器端點代表已註冊的伺服器上的特定位置，例如伺服器磁碟區上的資料夾或磁碟區的根目錄。 相同磁碟區中可以有多個伺服器端點，但前提是其命名空間未重疊 (例如 F:\sync1 和 F:\sync2)。 您可以為每個伺服器端點個別設定雲端階層原則。 如果您將內含一組現有檔案的伺服器位置當作伺服器端點新增至同步群組，那些檔案會與同步群組中其他端點上已存在的任何其他檔案合併。
+*伺服器端點*代表*已註冊伺服器*上的特定位置，例如伺服器磁片區上的資料夾或磁片區的根目錄。 相同磁碟區中可以有多個伺服器端點，但前提是其命名空間未重疊 (例如 F:\sync1 和 F:\sync2)。 您可以為每個伺服器端點個別設定雲端階層原則。 如果您將內含一組現有檔案的伺服器位置當作伺服器端點新增至同步群組，那些檔案會與同步群組中其他端點上已存在的任何其他檔案合併。
 
 如需如何從頭到尾部署 Azure 檔案同步的資訊，請參閱[如何部署 Azure 檔案同步](storage-sync-files-deployment-guide.md)。
 
@@ -34,14 +33,14 @@ Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服�
 
 ![在 [同步群組] 窗格中新增新的伺服器端點](media/storage-sync-files-server-endpoint/add-server-endpoint-1.png)
 
-[新增伺服器端點] 底下需要下列資訊：
+[新增伺服器端點]**** 底下需要下列資訊：
 
 - **已註冊的伺服器**：要在其上建立伺服器端點的伺服器或叢集名稱。
 - **路徑**：Windows Server 上要隨著同步群組同步的路徑。
-- **雲端階層處理**：啟用或停用雲端階層處理的開關。 啟用時，雲端階層會將檔案分層到 Azure 檔案共用。 這會將內部部署的檔案共用轉換成快取，而不是一份完整的資料集，協助您管理伺服器上的空間效率。
+- **雲端階層處理**：啟用或停用雲端階層處理的開關。 啟用時，雲端階層會將檔案分層** 到 Azure 檔案共用。 這會將內部部署的檔案共用轉換成快取，而不是一份完整的資料集，協助您管理伺服器上的空間效率。
 - **磁碟區可用空間**：伺服器端點所在磁碟區要保留的可用空間量。 例如，如果在具有單一伺服器端點的磁碟區上，將磁碟區可用空間設定為 50%，則大約有一半的資料量會分層至 Azure 檔案服務。 無論雲端階層處理是否啟用，您的 Azure 檔案共用在同步群組中一律會有完整的資料複本。
 
-選取 [建立] 以新增伺服器端點。 同步群組命名空間中的檔案現在會保持同步。 
+選取 [建立]**** 以新增伺服器端點。 同步群組命名空間中的檔案現在會保持同步。 
 
 ## <a name="remove-a-server-endpoint"></a>移除伺服器端點
 如果您想要停止對指定的伺服器端點使用 Azure 檔案同步，便可以移除該伺服器端點。 
@@ -51,10 +50,15 @@ Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服�
 
 若要確保在移除伺服器端點之前會回收所有階層式檔案，請停用伺服器端點上的雲端階層，然後執行下列 PowerShell Cmdlet 來回收的伺服器端點命名空間內的所有階層式檔案：
 
-```powershell
+```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
+Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
 ```
+指定 `-Order CloudTieringPolicy` 將會先重新叫用最近修改過的檔案。
+其他選擇性但要考慮的實用參數包括：
+* `-ThreadCount`決定可平行重新叫用的檔案數目。
+* `-PerFileRetryCount`決定嘗試重新叫用目前已封鎖之檔案的頻率。
+* `-PerFileRetryDelaySeconds`決定重試重新叫用嘗試之間的時間（以秒為單位），且應一律與先前的參數搭配使用。
 
 > [!Note]  
 > 如果裝載伺服器的本機磁碟區沒有足以重新叫用所有已分層資料的可用空間，`Invoke-StorageSyncFileRecall` Cmdlet 將會失敗。  

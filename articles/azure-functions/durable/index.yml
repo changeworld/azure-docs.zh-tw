@@ -1,0 +1,112 @@
+### YamlMime:Landing
+title: Azure Durable Functions 文件
+summary: Durable Functions 是 Azure Functions 的擴充功能，可讓您在無伺服器計算環境中撰寫具狀態函式。
+metadata:
+  title: Azure Durable Functions 文件
+  description: Durable Functions 是 Azure Functions 的擴充功能，可讓您在無伺服器計算環境中撰寫具狀態函式。
+  ms.service: azure-functions
+  ms.topic: landing-page
+  author: ggailey777
+  ms.author: azfundocs
+  ms.date: 10/04/2019
+  ms.openlocfilehash: 1feb34dd87f61dc04365afeeca0eec7b8b511480
+  ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 06/22/2020
+  ms.locfileid: "85193238"
+landingContent:
+- title: 關於 Durable Functions
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Durable Functions 是什麼？
+      url: durable-functions-overview.md
+    - text: 比較無伺服器選項
+      url: ../functions-compare-logic-apps-ms-flow-webjobs.md
+  - linkListType: concept
+    links:
+    - text: 耐久函式類型
+      url: durable-functions-types-features-overview.md
+  - linkListType: video
+    links:
+    - text: 中斷無伺服器障礙
+      url: https://azure.microsoft.com/resources/videos/break-through-the-serverless-barriers-with-durable-functions/
+- title: 開始使用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 建立耐久函式 (C#)
+      url: durable-functions-create-first-csharp.md
+    - text: 建立第一個函式 (JavaScript)
+      url: quickstart-js-vscode.md
+    - text: 建立第一個函式 (Python)
+      url: quickstart-python-vscode.md
+  - linkListType: learn
+    links:
+    - text: 建立長時間執行的無伺服器工作流程
+      url: /learn/modules/create-long-running-serverless-workflow-with-durable-functions/
+  - linkListType: video
+    links:
+    - text: 觀看如何開始使用
+      url: https://azure.microsoft.com/resources/videos/azure-friday-durable-functions-in-azure-functions/
+- title: 重要概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 協調流程
+      url: durable-functions-orchestrations.md
+    - text: 具狀態實體
+      url: durable-functions-entities.md
+    - text: HTTP 功能
+      url: durable-functions-http-features.md
+    - text: 工作中樞
+      url: durable-functions-task-hubs.md
+    - text: 版本控制
+      url: durable-functions-versioning.md
+  - linkListType: video
+    links:
+    - text: 無伺服器實體、協調流程和具狀態函式
+      url: https://channel9.msdn.com/Events/dotnetConf/NET-Conf-2019/B206
+- title: 應用程式模式
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 函式鏈結
+      url: durable-functions-sequence.md
+    - text: 非同步的 HTTP API
+      url: durable-functions-create-first-csharp.md
+    - text: 展開傳送/收合傳送
+      url: durable-functions-cloud-backup.md
+    - text: 監視器
+      url: durable-functions-monitor.md
+    - text: 與使用者互動
+      url: durable-functions-phone-verification.md
+    - text: 匯總工具
+      url: durable-functions-entities.md
+- title: 效能與監視
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 診斷
+      url: durable-functions-diagnostics.md
+  - linkListType: concept
+    links:
+    - text: 監視函式
+      url: ../functions-monitoring.md
+    - text: 網路考量
+      url: ../functions-networking-options.md
+- title: 範例
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Durable Functions 範例
+      url: /samples/browse/?products=azure-functions&term=durable
+    - text: Azure Serverless Community Library
+      url: https://www.serverlesslibrary.net/
+    - text: Azure 資源管理員範本
+      url: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Web&term=functions
+  - linkListType: how-to-guide
+    links:
+    - text: Azure CLI 範例
+      url: ../functions-cli-samples.md

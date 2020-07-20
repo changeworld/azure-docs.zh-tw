@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概觀
   items:
-    - name: 使用者、群組、授權和角色
+    - name: Azure AD 使用者、群組、授權和角色
       href: directory-overview-user-model.md
 - name: 快速入門
   items:
@@ -10,13 +10,15 @@
       href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: 將授權指派給使用者
       href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 授與無限制應用程式註冊的權限
+      href: roles-quickstart-app-registration-limits.md
     - name: 設定群組到期日
       href: groups-quickstart-expiration.md
     - name: 設定群組命名原則
       href: groups-quickstart-naming-policy.md
 - name: 教學課程
   items:
-    - name: 建立以動態方式填入的群組
+    - name: 建立動態群組
       href: groups-dynamic-tutorial.md
 - name: 概念
   expanded: true
@@ -29,21 +31,37 @@
       href: /azure/role-based-access-control/rbac-and-directory-admin-roles?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: 群組型授權基本概念
       href: /azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-- name: 使用說明指南
+    - name: 使用群組管理存取
+      href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+- name: 操作指南
   expanded: true
   items:
     - name: 管理使用者
       items:
-        - name: 在 Azure AD 中新增使用者
+        - name: 建立使用者
           href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: 大量建立使用者
+          href: users-bulk-add.md
         - name: 管理使用者設定檔
           href: /azure/active-directory/fundamentals/active-directory-users-profile-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: 我的員工委派
+          href: my-staff-configure.md
+        - name: 下載使用者資訊
+          href: users-bulk-download.md
         - name: 共用使用者帳戶
           href: users-sharing-accounts.md
         - name: 將使用者指派為管理員角色
           href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: 大量刪除使用者
+          href: users-bulk-delete.md
         - name: 還原已刪除的使用者
           href: /azure/active-directory/fundamentals/active-directory-users-restore?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: 大量還原使用者
+          href: users-bulk-restore.md
+        - name: 撤銷使用者的存取權
+          href: users-revoke-access.md
+        - name: 關閉非受控目錄中的帳戶
+          href: users-close-account.md
         - name: 新增 B2B 使用者
           href: /azure/active-directory/b2b/what-is-b2b?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: 將角色指派給 B2B 使用者
@@ -52,7 +70,7 @@
           href: /azure/active-directory/b2b/use-dynamic-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: 管理您的目錄
       items:
-        - name: 管理目錄
+        - name: Azure AD 組織
           href: /azure/active-directory/fundamentals/active-directory-administer?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: 管理網域名稱
           href: domains-manage.md
@@ -70,76 +88,117 @@
       items:
         - name: 使用群組管理存取
           href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: 在 Azure 入口網站中管理群組
+        - name: 建立群組 (Azure 入口網站)
           href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: 管理 PowerShell for Graph (v2) 群組
           href: groups-settings-v2-cmdlets.md
-        - name: 管理 PowerShell MSOnline 群組
+        - name: 使用 PowerShell MSOnline 管理群組
           href: groups-settings-cmdlets.md
-        - name: 管理群組成員
+        - name: 搜尋群組和成員清單
+          href: groups-members-owners-search.md
+        - name: 新增或移除群組成員
           href: /azure/active-directory/fundamentals/active-directory-groups-members-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: 動態群組
+          items:
+            - name: 建立動態群組
+              href: groups-create-rule.md
+            - name: 動態群組規則語法
+              href: groups-dynamic-membership.md
+            - name: 驗證成員資格規則
+              href: groups-dynamic-rule-validation.md
+            - name: 變更群組成員資格類型
+              href: groups-change-type.md
+        - name: 大量新增成員
+          href: groups-bulk-import-members.md
+        - name: 大量移除成員
+          href: groups-bulk-remove-members.md
+        - name: 大量下載成員清單
+          href: groups-bulk-download-members.md
+        - name: 大量下載群組清單
+          href: groups-bulk-download.md
+        - name: 還原已刪除的群組
+          href: groups-restore-deleted.md
+        - name: 管理群組設定
+          href: /azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: 管理群組擁有者
           href: /azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: 管理群組中的群組
           href: /azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: 新增 SaaS 應用程式的群組存取權
           href: groups-saasapps.md
-        - name: 群組命名參考
+        - name: 設定群組命名原則
           href: groups-naming-policy.md
-        - name: 群組到期參考
+        - name: 設定群組到期原則
           href: groups-lifecycle.md
-        - name: 還原已到期或已刪除的群組
-          href: groups-restore-deleted.md
-        - name: 管理群組設定
-          href: /azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: 設定群組自助式服務
           href: groups-self-service-management.md
-        - name: 動態群組
-          items:
-            - name: 建立動態群組
-              href: groups-create-rule.md
-            - name: 動態群組規則
-              href: groups-dynamic-membership.md
-            - name: 變更群組成員資格類型
-              href: groups-change-type.md
+        - name: 指派敏感度標籤
+          href: groups-assign-sensitivity-labels.md
     - name: 指派授權
       items:
+        - name: 將授權指派給使用者
+          href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: 將授權指派給群組
           href: licensing-groups-assign.md
         - name: 解決群組授權問題
           href: licensing-groups-resolve-problems.md
         - name: 變更群組授權的使用者
           href: licensing-groups-migrate-users.md
-        - name: 變更使用者的授權
+        - name: 變更使用者或群組的授權
           href: licensing-groups-change-licenses.md
         - name: 其他案例
           href: licensing-group-advanced.md
-        - name: 搭配 PowerShell 的群組授權
+        - name: 搭配 PowerShell 和 Graph 的群組授權
           href: licensing-ps-examples.md
         - name: 授權的服務方案識別碼
           href: licensing-service-plan-reference.md
     - name: Azure AD 管理員角色
+      expanded: true
       items:
         - name: 角色和權限
           href: directory-assign-admin-roles.md
         - name: 檢視和指派角色
           href: directory-manage-roles-portal.md
-        - name: 透過 PowerShell 指派角色
-          href: roles-assign-powershell.md
-        - name: 委派應用程式系統管理角色
-          href: roles-delegate-app-roles.md
+        - name: 自訂角色
+          items:
+            - name: 自訂角色
+              href: roles-custom-overview.md
+            - name: 建立自訂角色
+              href: roles-create-custom.md
+            - name: 檢視自訂角色指派
+              href: roles-view-assignments.md
+            - name: 在 Azure AD 管理中心指派角色
+              href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+            - name: 在 PowerShell 中指派自訂角色
+              href: roles-assign-powershell.md
+            - name: 自訂角色權限
+              href: roles-custom-available-permissions.md
+            - name: 委派應用程式管理權限
+              href: roles-delegate-app-roles.md
         - name: 依工作區分的最低特殊權限角色
           href: roles-delegate-by-task.md
         - name: Microsoft 365 角色
           href: roles-m365-workload-docs.md
-        - name: 管理員角色安全性
+        - name: 角色安全性
           items:
             - name: 角色安全性規劃
               href: directory-admin-roles-secure.md
             - name: 建立緊急帳戶
               href: directory-emergency-access.md
         - name: 管理單位
-          href: directory-administrative-units.md
+          items:
+            - name: 系統管理單位概觀
+              href: directory-administrative-units.md
+            - name: 新增及管理 AU
+              href: roles-admin-units-manage.md
+            - name: 在 AU 中新增及管理使用者
+              href: roles-admin-units-add-manage-users.md
+            - name: 在 AU 中新增及管理群組
+              href: roles-admin-units-add-manage-groups.md
+            - name: 使用 AU 範圍指派角色
+              href: roles-admin-units-assign-roles.md
+            - name: 常見問題集和疑難排解
+              href: roles-admin-units-faq-troubleshoot.md
     - name: 管理登入
       items:
         - name: 自訂公司商標

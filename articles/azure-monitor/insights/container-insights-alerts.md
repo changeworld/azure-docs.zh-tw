@@ -1,43 +1,35 @@
 ---
-title: 建立效能警示 for containers 中使用 Azure 監視器 |Microsoft Docs
-description: 本文說明如何使用適用於容器的 Azure 監視器來建立自訂記錄檔查詢的記憶體和 CPU 使用率為基礎的警示。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
+title: 建立容器 Azure 監視器的效能警示 |Microsoft Docs
+description: 本文說明如何根據 Azure 監視器容器的記憶體和 CPU 使用率，建立以記錄查詢為基礎的自訂警示。
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/17/2019
-ms.author: magoedte
-ms.openlocfilehash: bbd7c733c7c089328d2fbe016426fe9de3a6b5ce
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 01/07/2020
+ms.openlocfilehash: 5d73f4399d10683597fb2a2e8a3a2ab4ba0d1165
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60494621"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75730920"
 ---
-# <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>如何設定 Azure 監視器中適用於容器的效能問題的警示
-適用於容器的 azure 監視會監視部署至 Azure 容器執行個體，或受管理 Kubernetes 叢集，裝載在 Azure Kubernetes Service (AKS) 的容器工作負載的效能。
+# <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>如何在容器的 Azure 監視器中設定效能問題的警示
 
-這篇文章說明如何啟用警示，在下列情況下：
+適用于容器的 Azure 監視器會監視部署至 Azure 容器實例或裝載于 Azure Kubernetes Service （AKS）之受管理 Kubernetes 叢集的容器工作負載效能。
 
-* 當叢集節點上的 CPU 或記憶體使用率超過定義的臨界值
-* 當控制器內的任何容器上的 CPU 或記憶體使用率超過定義的閾值，相較於對應的資源設定的限制
-* *NotReady*狀態 節點計數
-*  *失敗*，*暫止*，*未知*，*執行*，或*Succeeded* pod 階段計數
+本文說明如何在下列情況下啟用警示：
 
-若要高 CPU 或記憶體使用量，在叢集節點上的警示，使用提供給建立度量警示或計量測量警示的查詢。 計量警示具有較低的延遲，比記錄警示。 但是，記錄警示提供進階的查詢和更新版本的複雜度。 記錄查詢使用比較目前的日期時間的警示*現在*運算子，並移回一小時。 （適用於容器的 azure 監視器會儲存所有日期格式為 Coordinated Universal Time (UTC)）。
+- 當叢集節點上的 CPU 或記憶體使用量超過閾值時
+- 當控制器內任何容器的 CPU 或記憶體使用量超過閾值（相較于對應資源上所設定的限制）時
+- *NotReady*狀態節點計數
+- *失敗*、*暫*止、*不明*、*執行中或**成功*的 pod-階段計數
+- 當叢集節點上的可用磁碟空間超過閾值時 
 
-如果您不熟悉 Azure 監視器會發出警示，請參閱[在 Microsoft Azure 中的警示概觀](../platform/alerts-overview.md)開始之前。 若要深入了解使用記錄檔查詢的警示，請參閱[Azure 監視器中的記錄警示](../platform/alerts-unified-log.md)。 如需有關計量警示的詳細資訊，請參閱[在 Azure 監視器計量警示](../platform/alerts-metric-overview.md)。
+若要警示叢集節點上的高 CPU 或記憶體使用率，或可用磁碟空間不足，請使用所提供的查詢來建立計量警示或度量的度量警示。 計量警示的延遲低於記錄警示。 但是記錄警示提供先進的查詢和更複雜的。 「記錄警示」查詢會使用*now*運算子並返回一小時，比較日期時間與目前的狀況。 （Azure 監視器容器會以國際標準時間（UTC）格式儲存所有日期）。
 
-## <a name="resource-utilization-log-search-queries"></a>資源使用率記錄檔搜尋查詢
-在本節中的查詢支援每個警示的狀況。 它們會用於步驟 7[建立警示](#create-an-alert-rule)一節。
+如果您不熟悉 Azure 監視器警示，請先參閱[Microsoft Azure 中的警示總覽](../platform/alerts-overview.md)，再開始進行。 若要深入瞭解使用記錄查詢的警示，請參閱[Azure 監視器中的記錄警示](../platform/alerts-unified-log.md)。 如需計量警示的詳細資訊，請參閱[Azure 監視器中的計量警示](../platform/alerts-metric-overview.md)。
 
-下列查詢會計算平均 CPU 使用率的平均值成員節點的 CPU 使用率每隔一分鐘。  
+## <a name="resource-utilization-log-search-queries"></a>資源使用率記錄搜尋查詢
+
+本節中的查詢支援每個警示案例。 它們是在本文的[建立警示](#create-an-alert-rule)一節的步驟7中使用。
+
+下列查詢會以每分鐘成員節點的 CPU 使用率平均值，計算平均 CPU 使用率。  
 
 ```kusto
 let endDateTime = now();
@@ -72,7 +64,7 @@ KubeNodeInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
 ```
 
-下列查詢會計算成員節點的記憶體使用率每隔一分鐘的平均值的平均記憶體的使用率。
+下列查詢會計算每分鐘成員節點記憶體使用率的平均記憶體使用率。
 
 ```kusto
 let endDateTime = now();
@@ -107,9 +99,9 @@ KubeNodeInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
 ```
 >[!IMPORTANT]
->下列查詢會使用預留位置值\<您的叢集名稱 > 和\<您的控制器名稱 > 來代表您的叢集和控制站。 它們與您環境特有的值時取代您設定警示。
+>下列查詢會使用預留位置值 \<your-cluster-name> 和 \<your-controller-name> 來代表您的叢集和控制器。 當您設定警示時，請以您環境特定的值取代它們。
 
-下列查詢會計算的平均 CPU 使用率在控制器中的所有容器的 CPU 使用率在控制器中的每個容器執行個體的每分鐘的平均值。 度量單位為容器設定限制的百分比。
+下列查詢會計算控制器中所有容器的平均 CPU 使用率，做為控制器中每個容器實例的平均 CPU 使用率（每分鐘）。 量測是為容器設定的限制百分比。
 
 ```kusto
 let endDateTime = now();
@@ -149,7 +141,7 @@ KubePodInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize) , ContainerName
 ```
 
-下列查詢會計算在控制器中的所有容器的平均記憶體使用量的記憶體使用率在控制器中的每個容器執行個體的每分鐘的平均值。 度量單位為容器設定限制的百分比。
+下列查詢會計算控制器中所有容器的平均記憶體使用率，做為控制器中每一分鐘的每個容器實例的平均記憶體使用率。 量測是為容器設定的限制百分比。
 
 ```kusto
 let endDateTime = now();
@@ -189,7 +181,7 @@ KubePodInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize) , ContainerName
 ```
 
-下列查詢會傳回所有的節點和狀態的計數*就緒*並*NotReady*。
+下列查詢會傳回狀態為 [*就緒*] 和 [ *NotReady*] 的所有節點和計數。
 
 ```kusto
 let endDateTime = now();
@@ -216,7 +208,7 @@ KubeNodeInventory
             NotReadyCount = todouble(NotReadyCount) / ClusterSnapshotCount
 | order by ClusterName asc, Computer asc, TimeGenerated desc
 ```
-下列查詢會傳回 pod 階段計數為基礎的所有階段：*失敗*，*暫止*，*未知*，*執行*，或*成功*。  
+下列查詢會根據所有階段傳回 pod 階段計數： [*失敗*]、[*擱置*] *、[**未知*]、[執行中] 或 [*成功*]。  
 
 ```kusto
 let endDateTime = now();
@@ -253,37 +245,66 @@ let endDateTime = now();
 ```
 
 >[!NOTE]
->這類特定 pod 階段中，發出警示*暫止*， *Failed*，或*未知*，修改查詢的最後一行。 例如，若警示要*由於*使用： <br/>`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`
+>若要針對特定 pod 階段（例如 [*擱置*]、[*失敗*] 或 [*未知*]）發出警示，請修改查詢的最後一行。 例如，若要在*failedcount 個*時發出警示，請使用： <br/>`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`
+
+下列查詢傳回的叢集節點磁片超過90% 的可用空間。 若要取得叢集識別碼，請先執行下列查詢，並從屬性複製值 `ClusterId` ：
+
+```kusto
+InsightsMetrics
+| extend Tags = todynamic(Tags)            
+| project ClusterId = Tags['container.azm.ms/clusterId']   
+| distinct tostring(ClusterId)   
+``` 
+
+```kusto
+let clusterId = '<cluster-id>';
+let endDateTime = now();
+let startDateTime = ago(1h);
+let trendBinSize = 1m;
+InsightsMetrics
+| where TimeGenerated < endDateTime
+| where TimeGenerated >= startDateTime
+| where Origin == 'container.azm.ms/telegraf'            
+| where Namespace == 'container.azm.ms/disk'            
+| extend Tags = todynamic(Tags)            
+| project TimeGenerated, ClusterId = Tags['container.azm.ms/clusterId'], Computer = tostring(Tags.hostName), Device = tostring(Tags.device), Path = tostring(Tags.path), DiskMetricName = Name, DiskMetricValue = Val   
+| where ClusterId =~ clusterId       
+| where DiskMetricName == 'used_percent'
+| summarize AggregatedValue = max(DiskMetricValue) by bin(TimeGenerated, trendBinSize)
+| where AggregatedValue >= 90
+```
 
 ## <a name="create-an-alert-rule"></a>建立警示規則
-請遵循下列步驟來建立在 Azure 監視器中的記錄警示，使用其中一種稍早所提供的記錄檔搜尋規則。  
+
+請遵循下列步驟，使用稍早提供的其中一個記錄搜尋規則，在 Azure 監視器中建立記錄警示。 若要使用 ARM 範本建立，請參閱[使用 Azure 資源範本建立記錄警示的範例](../platform/alerts-log.md#sample-log-alert-creation-using-azure-resource-template)。
 
 >[!NOTE]
->下列程序來建立警示規則的容器資源使用量會要求您切換到新的記錄檔，系統會通知 API 中所述[切換 API 喜好設定的記錄警示](../platform/alerts-log-api-switch.md)。
+>下列為容器資源使用量建立警示規則的程式，需要您切換到新的記錄警示 API，如[記錄警示的切換 API 喜好](../platform/alerts-log-api-switch.md)設定中所述。
 >
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選取 **監視器**在左手邊的窗格。 底下**Insights**，選取**容器**。
-3. 在 **監視叢集**索引標籤上，從清單中選取叢集。
-4. 在左側窗格中**監視**，選取**記錄**以開啟 [Azure 監視器的記錄] 頁面。 您可以使用此頁面來撰寫及執行 Azure Log Analytics 查詢。
-5. 在 **記錄檔**頁面上，選取 **+ 新增警示規則**。
-6. 在 **條件**區段中，選取**每當自訂記錄檔搜尋\<未定義邏輯 >** 預先定義的自訂記錄檔條件。 **自訂記錄檔搜尋**因為我們要直接從 Azure 監視器的 [記錄] 頁面來建立警示規則，會自動選取訊號類型。  
-7. 貼上其中一個[查詢](#resource-utilization-log-search-queries)稍早提供**搜尋查詢**欄位。
-8. 請設定警示，如下所示：
+2. 在 Azure 入口網站中，搜尋並選取 **Log Analytics 工作區**。
+3. 在您的 Log Analytics 工作區清單中，選取支援容器 Azure 監視器的工作區。 
+4. 在左側窗格中，選取 [**記錄**] 以開啟 [Azure 監視器記錄] 頁面。 您可以使用此頁面來撰寫及執行 Azure Log Analytics 查詢。
+5. 在 [**記錄**] 頁面上，將先前提供的其中一個[查詢](#resource-utilization-log-search-queries)貼入 [**搜尋查詢**] 欄位，然後選取 [**執行**] 來驗證結果。 如果您未執行此步驟，則無法選取 [ **+ 新增警示**] 選項。
+6. 選取 [ **+ 新增警示**] 來建立記錄警示。
+7. 在 [**條件**] 區段中，選取 [**每當自訂記錄 \<logic undefined> 搜尋為**預先定義的自訂記錄條件]。 系統會自動選取**自訂記錄搜尋**信號類型，因為我們會直接從 [Azure 監視器記錄] 頁面建立警示規則。  
+8. 將稍早提供的其中一個[查詢](#resource-utilization-log-search-queries)貼入 [**搜尋查詢**] 欄位中。
+9. 設定警示，如下所示：
 
-    1. 從 [依據] 下拉式清單中，選取 [計量測量]。 計量測量我們指定的臨界值以上的值的查詢中建立每個物件的警示。
-    1. 針對**條件**，選取**大於**，然後輸入**75**為初始的基準**臨界值**。 或輸入不同的值符合您的準則。
-    1. 在 **觸發程序警示依據**區段中，選取**連續違規**。 從下拉式清單中，選取**Greater than**，然後輸入**2**。
-    1. 若要在設定容器 CPU 或記憶體使用率的警示**彙總依據**，選取**ContainerName**。 
-    1. 在**為基礎的已評估**區段中，將**期間**值**60 分鐘**。 此規則會每隔 5 分鐘執行一次，並傳回前一個小時，從目前的時間內所建立的記錄。 將時間期間設為範圍的帳戶可能會發生的資料延遲。 它也可確保查詢會傳回資料，以避免 (false negative) 中永遠不會引發警示。
+    1. 從 [依據] 下拉式清單中，選取 [計量測量]。 計量測量會針對查詢中的每個物件建立警示，其值高於指定的閾值。
+    1. 針對 [**條件**]，選取 [**大於**]，然後輸入**75**做為 CPU 和記憶體使用量警示的初始基準**閾值**。 針對 [磁碟空間不足] 警示，輸入**90**。 或者輸入不同的值，以符合您的準則。
+    1. 在 [**觸發警示依據**] 區段中，選取 [**連續違規**]。 從下拉式清單選取 [**大於**]，然後輸入**2**。
+    1. 若要設定容器 CPU 或記憶體使用率的警示，請在 [**匯總開啟**] 底下選取 [**容器**]。 若要設定叢集節點的低磁片警示，請選取 [ **ClusterId**]。
+    1. 在 [**評估依據**] 區段中，將 [**期間**] 值設為**60 分鐘**。 此規則會每隔5分鐘執行一次，並傳回從目前時間開始的過去一小時內所建立的記錄。 將時間週期設定為寬視窗帳戶，以取得潛在的資料延遲。 它也可確保查詢會傳回資料，以避免不會引發警示的錯誤否定。
 
-9. 選取 **完成**完成警示規則。
-10. 輸入中的名稱**警示規則名稱**欄位。 指定**描述**，提供有關警示的詳細資料。 然後從所提供的選項中選取適當的嚴重性層級。
-11. 若要立即啟用警示規則，接受預設值**在建立時啟用規則**。
-12. 選取現有**動作群組**或建立新的群組。 這個步驟可確保每次時，便會觸發警示之後，會採取相同的動作。 設定根據您的 it 人員或 DevOps 作業團隊負責管理事件。
-13. 選取 **建立警示規則**完成警示規則。 此警示規則會立即開始執行。
+10. 選取 [**完成**] 以完成警示規則。
+11. 在 [**警示規則名稱**] 欄位中輸入名稱。 指定提供警示詳細資料的**描述**。 然後從提供的選項中選取適當的嚴重性層級。
+12. 若要立即啟用警示規則，請接受 [**在建立時啟用規則**] 的預設值。
+13. 選取現有的**動作群組**或建立新的群組。 此步驟可確保每次觸發警示時，都會採取相同的動作。 根據 IT 或 DevOps 作業小組管理事件的方式進行設定。
+14. 選取 [**建立警示規則**] 以完成警示規則。 此警示規則會立即開始執行。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 檢視[記錄查詢範例](container-insights-log-search.md#search-logs-to-analyze-data)以查看預先定義的查詢和範例，以評估或自訂警示、 視覺化，或分析您的叢集。
-- 若要深入了解 Azure 監視器，以及如何監視您的 AKS 叢集的其他層面，請參閱[檢視 Azure Kubernetes 服務健全狀況](container-insights-analyze.md)。
+- 查看[記錄查詢範例](container-insights-log-search.md#search-logs-to-analyze-data)，以查看預先定義的查詢和範例，以評估或自訂警示、視覺化或分析您的叢集。
+- 若要深入瞭解 Azure 監視器以及如何監視 Kubernetes 叢集的其他層面，請參閱[View Kubernetes cluster performance](container-insights-analyze.md)和[view Kubernetes cluster health](container-insights-health.md)。

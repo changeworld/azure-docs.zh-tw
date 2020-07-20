@@ -1,53 +1,50 @@
 ---
-title: 將資料指派至叢集：模組參考
-titleSuffix: Azure Machine Learning service
-description: 了解如何使用 Azure Machine Learning 服務中的叢集模組來指派資料評分群集模型。
+title: 將資料指派給叢集：模組參考
+titleSuffix: Azure Machine Learning
+description: 瞭解如何使用 Azure Machine Learning 中的 [將資料指派給叢集] 模組來評分群集模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/06/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 1c2d2a02ecfb617551dd9174b87f363d57b151a8
-ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
-ms.translationtype: MT
+author: likebupt
+ms.author: keli19
+ms.date: 11/19/2019
+ms.openlocfilehash: 207172f10277589af2b22ae2f41b07234a0925b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65467206"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79477709"
 ---
 # <a name="module-assign-data-to-clusters"></a>模組：將資料指派給群集
 
-這篇文章說明如何使用*將資料指派給叢集*模組在 Azure Machine Learning 的視覺化介面。 此模組會產生透過使用已定型的群集模型的預測*k-means 群集*演算法。
+本文說明如何在 Azure Machine Learning 設計工具（預覽）中使用 [*將資料指派給*叢集] 模組。 此模組會透過以*K 表示*叢集演算法定型的群集模型來產生預測。
 
-指派資料叢集模組會傳回包含每個新的資料點的可能指派的資料集。 
+[將資料指派給叢集] 模組會傳回資料集，其中包含每個新資料點的可能指派。 
 
-
-## <a name="how-to-use-assign-data-to-clusters"></a>如何使用指派給叢集的資料
+## <a name="how-to-use-assign-data-to-clusters"></a>如何使用將資料指派給群集
   
-1. 在 Azure Machine Learning 的視覺化介面，找出先前定型的群集模型。 您可以建立並定型群集模型使用其中一種下列方法：  
+1. 在 Azure Machine Learning 設計工具中，找出先前定型的群集模型。 您可以使用下列其中一種方法來建立和定型群集模型：  
   
-    - 使用設定 k-means 群集演算法[K-means 群集](k-means-clustering.md)模組和定型模型所使用的資料集和定型群集模型 」 模組 （本文）。  
+    - 使用[k 意指](k-means-clustering.md)叢集模組來設定 K 表示叢集演算法，並使用資料集和訓練叢集模型模組（本文）來定型模型。  
   
-    - 您也可以加入現有的定型群集模型從**儲存模型**群組工作區中。
+    - 您也可以從工作區中的 [**已儲存的模型**] 群組加入現有的定型群集模型。
 
-2. 將定型的模型連接的左側輸入連接埠**將資料指派給叢集**。  
+2. 將定型的模型附加至**將資料指派給群集**的左側輸入埠。  
 
-3. 將新的資料集附加做為輸入。 
+3. 附加新的資料集做為輸入。 
 
-   在此資料集標籤是選擇性的。 一般而言，叢集是一種非監督式的學習方法。 您不應該事先知道類別。 不過，輸入資料行必須是在定型群集模型中或發生錯誤時所使用的資料行相同。
+   在此資料集中，標籤是選擇性的。 一般而言，叢集是不受監督學習方法。 您不應該事先知道這些類別。 不過，輸入資料行必須與用來定型群集模型的資料行相同，否則會發生錯誤。
 
     > [!TIP]
-    > 若要減少寫入從叢集預測介面的資料行數目，請使用[選取資料集中的資料行](select-columns-in-dataset.md)，然後選取資料行的子集。 
+    > 若要減少從叢集預測寫入設計工具的資料行數目，請使用[[選取資料集中的資料行](select-columns-in-dataset.md)]，然後選取資料行的子集。 
     
-4. 離開**檢查是否有附加或取消核取，只在結果**核取方塊，選取如果您想要包含完整的輸入資料集，包括顯示結果 （群集指派） 的資料行的結果。
+4. 如果您想要讓結果包含完整輸入資料集，包括顯示結果（叢集指派）的資料行，請保留 [**檢查附加] 或 [取消核取僅結果**] 核取方塊。
   
-    如果您清除此核取方塊，只會傳回結果。 當您建立預測 web 服務的一部分時，此選項可能會很有用。
+    如果您清除此核取方塊，則只會傳回結果。 當您建立預測做為 web 服務的一部分時，這個選項可能會很有用。
   
-5.  執行實驗。  
+5.  提交管線。  
   
 ### <a name="results"></a>結果
 
-+  若要檢視資料集內的值，以滑鼠右鍵按一下模組中，選取**產生的資料集**，然後選取**視覺化**。
++  若要查看資料集中的值，請以滑鼠右鍵按一下模組，然後選取 [**視覺化**]。 或者，選取模組並切換至右窗格中的 [**輸出**] 索引標籤，按一下**埠輸出**中的長條圖圖示，將結果視覺化。
 

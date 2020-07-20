@@ -1,30 +1,31 @@
 ---
-title: 快速入門：辨識與筆跡的辨識器 REST API 的數位筆跡和C#
-description: 您可以使用手寫辨識器 API 來啟動 體認到數位筆墨筆劃。
+title: 快速入門：使用筆跡辨識器 REST API 與 C# 來辨識數位筆跡
+titleSuffix: Azure Cognitive Services
+description: 本快速入門說明如何使用筆跡辨識器 API 開始辨識數位筆跡筆觸。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
-ms.topic: article
-ms.date: 05/02/2019
+ms.topic: quickstart
+ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: 800cf66e15c25540eac4809a27317598b72b8124
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: f61566c3d5efa7f973141253353fde7e4893bc6e
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65406747"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986069"
 ---
-# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>快速入門：辨識與筆跡的辨識器 REST API 的數位筆跡和C#
+# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>快速入門：使用筆跡辨識器 REST API 與 C# 來辨識數位筆跡
 
-您可以使用本快速入門來開始傳送數位筆墨筆劃，筆墨辨識器 api。 這個C#應用程式傳送 API 要求，其中包含 JSON 格式的筆墨筆劃資料，並取得回應。
+使用本快速入門，開始將數位筆跡筆觸傳送到筆跡辨識器 API。 此 C# 應用程式會傳送包含 JSON 格式筆跡筆觸資料的 API 要求，並取得回應。
 
 雖然此應用程式是以 C# 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
 
-通常，您會從數位筆跡應用程式呼叫 API。 本快速入門會傳送下列的手寫範例的筆墨筆劃資料，從 JSON 檔案。
+通常您會從數位筆跡應用程式呼叫 API。 本快速入門會從 JSON 檔案針對下列手寫範例傳送筆跡筆觸資料。
 
-![映像的手寫文字](../media/handwriting-sample.jpg)
+![手寫文字的影像](../media/handwriting-sample.jpg)
 
 此快速入門的原始程式碼可以在 [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502) 上找到。
 
@@ -32,133 +33,64 @@ ms.locfileid: "65406747"
 
 - 任何一版的 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)。
 - [Newtonsoft.Json](https://www.newtonsoft.com/json)
-    - 若要在 Visual studio 中的 NuGet 套件形式安裝 Newtonsoft.Json:
-        1. 以滑鼠右鍵按一下**Solution Manager**
+    - 若要在 Visual Studio 中安裝 Newtonsoft.Json 作為 NuGet 套件：
+        1. 以滑鼠右鍵按一下 [Solution Manager]
         2. 按一下 [管理 NuGet 套件...]
-        3. 搜尋`Newtonsoft.Json`並安裝套件
-- 如果您使用 Linux/MacOS，可以使用執行此應用程式[Mono](https://www.mono-project.com/)。
+        3. 然後搜尋 `Newtonsoft.Json` 並安裝該套件。
+- 如果您使用 Linux/MacOS，則可以使用 [Mono](https://www.mono-project.com/) 來執行此應用程式。
 
-- 在本快速入門範例筆墨筆劃資料可於[GitHub](https://go.microsoft.com/fwlink/?linkid=2089502)。
+- 此快速入門的範例筆跡筆觸資料可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Vision/InkRecognition/quickstart/example-ink-strokes.json) 上找到。
 
-[!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
+### <a name="create-an-ink-recognizer-resource"></a>建立筆跡辨識器資源
 
+[!INCLUDE [creating-an-ink-recognizer-resource](../includes/setup-instructions.md)]
 
 ## <a name="create-a-new-application"></a>建立新的應用程式
 
-1. 在 Visual Studio 中建立新的主控台方案，並新增下列套件。 
+1. 在 Visual Studio 中，建立新的主控台解決方案並新增下列套件。 
+    
+    [!code-csharp[import statements](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=imports)]
 
-    ```csharp
-    using System;
-    using System.IO;
-    using System.Net;
-    using System.Net.Http;
-    using System.Net.Http.Headers;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
-    ```
+2. 為您的訂用帳戶金鑰與端點和範例 JSON 檔案建立變數。 端點稍後將與 `inkRecognitionUrl` 結合以存取 API。 
 
-2. 建立您的訂用帳戶金鑰和您的端點的變數。 以下是您可以使用手寫辨識的 URI。 它將會附加至您的服務端點，稍後若要建立的 API 要求 URl。
-
-    ```csharp
-    // Replace the subscriptionKey string with your valid subscription key.
-    const string subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
-
-    // Replace the dataPath string with a path to the JSON formatted ink stroke data.
-    const string dataPath = @"PATH-TO-INK-STROKE-DATA"; 
-
-    // URI information for ink recognition:
-    const string endpoint = "https://api.cognitive.microsoft.com";
-    const string inkRecognitionUrl = "/inkrecognizer/v1.0-preview/recognize";
-    ```
+    [!code-csharp[endpoint file and key variables](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=vars)]
 
 ## <a name="create-a-function-to-send-requests"></a>建立傳送要求的函式
 
-1. 建立新的非同步函式，呼叫`Request`採用上面所建立的變數。
+1. 建立名為 `Request` 的新非同步函式，取用上面建立的變數。
 
-2. 設定用戶端的安全性通訊協定和標頭資訊使用`HttpClient`物件。 請務必新增您的訂用帳戶金鑰，以`Ocp-Apim-Subscription-Key`標頭。 然後建立`StringContent`要求物件。
+2. 使用 `HttpClient` 物件設定用戶端的安全性通訊協定和標頭資訊。 請務必將您的訂用帳戶金鑰新增至 `Ocp-Apim-Subscription-Key` 標頭。 然後建立要求的 `StringContent` 物件。
  
-3. 傳送要求和`PutAsync()`。 如果要求成功，傳回回應。  
+3. 以 `PutAsync()` 傳送要求。 如果要求成功，則傳回回應。  
     
-    ```csharp
-    static async Task<string> Request(string apiAddress, string endpoint, string subscriptionKey, string requestData){
-        
-        using (HttpClient client = new HttpClient { BaseAddress = new Uri(apiAddress) }){
-            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
+    [!code-csharp[request example method](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=request)]
 
-            var content = new StringContent(requestData, Encoding.UTF8, "application/json");
-            var res = await client.PutAsync(endpoint, content);
-            if (res.IsSuccessStatusCode){
-                return await res.Content.ReadAsStringAsync();
-            }
-            else{
-                return $"ErrorCode: {res.StatusCode}";
-            }
-        }
-    }
-    ```
+## <a name="send-an-ink-recognition-request"></a>傳送筆跡辨識要求
 
-## <a name="send-an-ink-recognition-request"></a>筆墨辨識要求傳送
+1. 建立名為 `recognizeInk()` 的新函式。 使用您的端點、訂用帳戶金鑰、API 的 URL，以及數位筆跡筆觸資料呼叫 `Request()` 函式，進而建構要求並加以傳送。
 
-1. 建立新的函式呼叫`recognizeInk()`。 建構要求，並將它傳送呼叫`Request()`函式與您的端點，訂用帳戶金鑰，API，以及數位筆跡筆劃資料的 URL。
-
-2. 還原序列化 JSON 物件，並寫入主控台。 
+2. 將 JSON 物件還原序列化，並將它寫入到主控台。 
     
-    ```csharp
-    static void recognizeInk(string requestData){
+    [!code-csharp[request to recognize ink data](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=recognize)]
 
-        //construct the request
-        var result = Request(
-            endpoint,
-            inkRecognitionUrl,
-            subscriptionKey,
-            requestData).Result;
+## <a name="load-your-digital-ink-data"></a>載入您的數位筆跡資料
 
-        dynamic jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(result);
-        System.Console.WriteLine(jsonObj);
-    }
-    ```
+建立名為 `LoadJson()` 的函式以載入筆跡資料 JSON 檔案。 使用 `StreamReader` 和 `JsonTextReader` 來建立 `JObject` 並將它傳回。
 
-## <a name="load-your-digital-ink-data"></a>載入您的數位筆墨資料
-
-建立函式呼叫`LoadJson()`載入筆墨資料的 JSON 檔案。 使用`StreamReader`並`JsonTextReader`建立`JObject`並將它傳回。
-    
-```csharp
-public static JObject LoadJson(string fileLocation){
-
-    var jsonObj = new JObject();
-
-    using (StreamReader file = File.OpenText(fileLocation))
-    using (JsonTextReader reader = new JsonTextReader(file)){
-        jsonObj = (JObject)JToken.ReadFrom(reader);
-    }
-    return jsonObj;
-}
-```
+[!code-csharp[load the JSON file](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=loadJson)]
 
 ## <a name="send-the-api-request"></a>傳送 API 要求
 
-1. 在您的應用程式的 main 方法，載入將 JSON 資料使用上面建立的函式。 
+1. 在您應用程式的主要方法中，使用上面建立的函式來載入 JSON 資料。 
 
-2. 呼叫`recognizeInk()`上面所建立的函式。 使用`System.Console.ReadKey()`來執行應用程式後，將主控台視窗保持開啟。
+2. 呼叫上面所建立的 `recognizeInk()`函式。 使用 `System.Console.ReadKey()`，讓主控台視窗在執行應用程式後保持開啟。
     
-    ```csharp
-    static void Main(string[] args){
+    [!code-csharp[file main method](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=main)]
 
-        var requestData = LoadJson(dataPath);
-        string requestString = requestData.ToString(Newtonsoft.Json.Formatting.None);
-        recognizeInk(requestString);
-        System.Console.WriteLine("\nPress any key to exit ");
-        System.Console.ReadKey();
-        }
-    ```
 
-## <a name="run-the-application-and-view-the-response"></a>執行應用程式，以及檢視回應
+## <a name="run-the-application-and-view-the-response"></a>執行應用程式並檢視回應
 
-執行應用程式。 成功的回應是以 JSON 格式傳回。 您也可以在找到 JSON 回應[GitHub](https://go.microsoft.com/fwlink/?linkid=2089502)。
+執行應用程式。 成功的回應會以 JSON 格式傳回。 您也可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Vision/InkRecognition/quickstart/example-response.json) 上找到 JSON 回應。
 
 
 ## <a name="next-steps"></a>後續步驟

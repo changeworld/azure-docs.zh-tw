@@ -1,44 +1,41 @@
 ---
-title: 使用 Windows 虛擬機器的 Resource Manager 範本將客體作業系統計量傳送至 Azure 監視器計量存放區
-description: 使用 Windows 虛擬機器的 Resource Manager 範本將客體作業系統計量傳送至 Azure 監視器計量存放區
+title: 使用範本在 Azure 監視器中收集 Windows VM 計量
+description: 使用 Windows 虛擬機器的 Resource Manager 範本，將客體 OS 計量傳送至 Azure 監視器計量資料庫存放區
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: ancav
+ms.date: 05/04/2020
+ms.author: bwren
 ms.subservice: metrics
-ms.openlocfilehash: 5647802ff383ce046d108f25384df81bcbd08cd3
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.openlocfilehash: 14079f42fd857495396a0c44fd3bdeaf4371ea5f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484892"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650555"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>使用 Windows 虛擬機器的 Resource Manager 範本將客體作業系統計量傳送至 Azure 監視器計量存放區
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>使用 Windows 虛擬機器的 Azure Resource Manager 範本，將客體 OS 計量傳送至 Azure 監視器計量存放區
+如同其他[平台計量](../insights/monitor-azure-resource.md#monitoring-data)，系統不會自動收集 Azure 虛擬機器客體 OS 的效能資料。 安裝 Azure 監視器[診斷延伸模組](diagnostics-extension-overview.md)，將客體 OS 計量收集到計量資料庫中，以便搭配 Azure 監視器計量的所有功能使用，包括近乎即時的警示、圖表、路由，以及從 REST API 存取。 此文章描述使用 Resource Manager 範本，將 Windows 虛擬機器的客體作業系統效能計量傳送至計量資料庫的程序。 
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+> [!NOTE]
+> 如需有關使用 Azure 入口網站設定診斷延伸模組來收集客體 OS 計量的詳細資訊，請參閱[安裝和設定 Windows Azure 診斷延伸模組 (WAD)](diagnostics-extension-windows-install.md)。
 
-您可以使用 Azure 監視器[診斷擴充功能](diagnostics-extension-overview.md)，從當作虛擬機器、雲端服務或 Service Fabric 叢集一部分執行的客體作業系統 (客體 OS) 收集計量與記錄。 擴充功能可以將遙測資料傳送到[許多不同位置](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)。
 
-此文章說明將 Windows 虛擬機器的客體 OS 效能計量傳送至 Azure 監視器資料存放區的程序。 從診斷 1.11 版開始，您可以直接將計量寫入到已收集標準平台計量的 Azure 監視器計量存放區。
+如果您剛開始使用 Resource Manager 範本，請了解[範本部署](../../azure-resource-manager/management/overview.md)與其結構和語法。
 
-將它們儲存在此位置可讓您存取與平台計量相同的動作。 動作包括近乎即時的警示、圖表、路由，以及從 REST API 存取和更多功能。 在過去，診斷擴充功能會寫入到 Azure 儲存體，而不是 Azure 監視器資料存放區。
-
-如果您剛開始使用 Resource Manager 範本，請了解[範本部署](../../azure-resource-manager/resource-group-overview.md)與其結構和語法。
-
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 您必須先向 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) 註冊您的訂用帳戶。
 
 - 您需要安裝 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
+
+- 您的 VM 資源必須位於[支援自訂計量的區域](metrics-custom-overview.md#supported-regions)中。 
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>設定 Azure 監視器作為資料接收器
 Azure 診斷擴充功能會使用稱為「資料接收器」的功能，將計量與記錄路由傳送至不同的位置。 下列步驟示範如何使用新的「Azure 監視器 」資料接收器，使用 Resource Manager 範本與 PowerShell 來部署 VM。
 
 ## <a name="author-resource-manager-template"></a>製作 Resource Manager 範本
-針對此範例，您可以使用公開提供的範例範本。 起始範本位於 https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows。
+針對此範例，您可以使用公開提供的範例範本。 起始範本位於 https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows 。
 
 - **Azuredeploy.json** 是預先設定的 Resource Manager 範本，可用於部署虛擬機器。
 
@@ -76,8 +73,8 @@ Azure 診斷擴充功能會使用稱為「資料接收器」的功能，將計�
 // Add this code directly below.
     {
         "type": "Microsoft.Compute/virtualMachines/extensions",
-        "name": "WADExtensionSetup",
-        "apiVersion": "2015-05-01-preview",
+        "name": "[concat(variables('vmName'), '/', 'WADExtensionSetup')]",
+        "apiVersion": "2017-12-01",
         "location": "[resourceGroup().location]",
         "dependsOn": [
             "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]" ],
@@ -145,9 +142,9 @@ Azure 診斷擴充功能會使用稱為「資料接收器」的功能，將計�
 //Start of section to add
 "resources": [
 {
-            "type": "extensions",
-            "name": "Microsoft.Insights.VMDiagnosticsSettings",
-            "apiVersion": "2015-05-01-preview",
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(variables('vmName'), '/', 'Microsoft.Insights.VMDiagnosticsSettings')]",
+            "apiVersion": "2017-12-01",
             "location": "[resourceGroup().location]",
             "dependsOn": [
             "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"

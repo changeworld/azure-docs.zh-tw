@@ -1,15 +1,15 @@
 ---
-author: davidmu1
+author: msmimart
 ms.service: active-directory-b2c
 ms.topic: include
 ms.date: 03/19/2019
-ms.author: davidmu
-ms.openlocfilehash: 9c0f94af62e8d4688a676415b32a6a7ebf82d453
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.author: mimart
+ms.openlocfilehash: 65bc4a0d17f630702aaf33435a918f6f1c38364e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407968"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "78183156"
 ---
 > [!NOTE]
-> 在 Azure Active Directory B2C[自訂原則](../articles/active-directory-b2c/active-directory-b2c-get-started-custom.md)主要設計來處理複雜的案例。 大部分的情況下，我們建議您使用內建[使用者流程](../articles/active-directory-b2c/active-directory-b2c-reference-policies.md)。
+> 在 Azure Active Directory B2C 中，[自訂原則](../articles/active-directory-b2c/custom-policy-get-started.md)的主要用途為處理複雜的案例。 在大部分情況下，我們建議使用內建的[使用者流程](../articles/active-directory-b2c/user-flow-overview.md)。

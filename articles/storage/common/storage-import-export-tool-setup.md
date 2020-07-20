@@ -1,19 +1,19 @@
 ---
 title: 設定 Azure 匯入/匯出工具 | Microsoft Docs
 description: 了解如何設定 Azure 匯入/匯出服務的磁碟機準備及修復工具。
-author: muralikk
+author: twooley
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/29/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: d2ce6c409ae9cbf99589d11dfc850e2324d1b0c9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c7d2cac9402477090ae412dcf21265bec4609278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60320460"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514188"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>設定 Azure 匯入/匯出工具
 
@@ -21,14 +21,14 @@ Microsoft Azure 匯入/匯出工具是磁碟機準備及修復工具，可搭配
 
 * 在建立匯入工作之前，您可以使用此工具，將資料複製到要寄送至 Azure 資料中心的硬碟。
 * 匯入工作完成後，您可以使用此工具來修復損毀、遺漏或與其他 Blob 衝突的任何 Blob。
-* 通过某个已完成的导出作业收到驱动器后，可以使用此工具修复这些驱动器上已损坏或丢失的任何文件。
+* 當您收到已完成的匯出工作中的磁碟機後，您可以使用此工具來修復磁碟機上損毀或遺漏的任何檔案。
 
 ## <a name="prerequisites"></a>必要條件
 
 如果您正針對匯入作業**準備磁碟機**，就必須符合下列必要條件：
 
 * 您必須擁有有效的 Azure 訂用帳戶。
-* 该订阅必须包含一个存储帐户，其中有足够的可用空间可存储所要导入的文件。
+* 您的訂用帳戶必須包含可用空間足夠儲存您要匯入之檔案的儲存體帳戶。
 * 您至少需要一個儲存體帳戶存取金鑰。
 * 您需要安裝 Windows 7、Windows Server 2008 R2 或更新版本 Windows 作業系統的電腦 (「複製電腦」)。
 * 複製電腦上必須安裝 .NET Framework 4。
@@ -49,7 +49,7 @@ Microsoft Azure 匯入/匯出工具是磁碟機準備及修復工具，可搭配
 
 ## <a name="installing-the-azure-importexport-tool"></a>安裝 Azure 匯入/匯出工具
 
-首先，[下載 Azure 匯入/匯出工具](https://www.microsoft.com/download/details.aspx?id=55280)並解壓縮至您電腦上的目錄，例如 `c:\WAImportExport`。
+首先，[下載 Azure 匯入/匯出工具](https://www.microsoft.com/download/details.aspx?id=55280)，並將它解壓縮至您電腦上的目錄，例如 `c:\WAImportExport` 。
 
 Azure 匯入/匯出工具包含下列檔案：
 
@@ -68,7 +68,7 @@ Azure 匯入/匯出工具包含下列檔案：
 * WAImportExportRepair.dll
 * WAImportExportRepair.pdb
 
-接下来，以**管理员模式**打开命令提示窗口，并将目录切换到包含解压缩文件的目录。
+接下來，在**系統管理員模式**中開啟 [命令提示字元] 視窗，並變更為包含解壓縮檔案的目錄。
 
 若要輸出命令的說明，請執行此工具(`WAImportExport.exe`) 而不包含參數：
 
@@ -203,9 +203,9 @@ Examples:
 
 ## <a name="next-steps"></a>後續步驟
 
-* [針對匯入作業準備硬碟](../storage-import-export-tool-preparing-hard-drives-import.md)
+* [準備匯入工作的硬碟](../storage-import-export-tool-preparing-hard-drives-import.md)
 * [預覽匯出作業的磁碟機使用量](../storage-import-export-tool-previewing-drive-usage-export-v1.md)
-* [使用复制日志文件查看作业状态](../storage-import-export-tool-reviewing-job-status-v1.md)
+* [使用複製記錄檔來檢查作業狀態](../storage-import-export-tool-reviewing-job-status-v1.md)
 * [修復匯入作業](../storage-import-export-tool-repairing-an-import-job-v1.md)
 * [修復匯出作業](../storage-import-export-tool-repairing-an-export-job-v1.md)
 * [針對 Azure 匯入/匯出工具進行疑難排解](storage-import-export-tool-troubleshooting-v1.md)

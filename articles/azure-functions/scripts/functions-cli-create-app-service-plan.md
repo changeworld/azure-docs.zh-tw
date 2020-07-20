@@ -1,23 +1,16 @@
 ---
-title: Azure CLI 指令碼範例 - 在 App Service 方案中建立函式應用程式 | Microsoft Docs
+title: 在 App Service 方案中建立函式應用程式 - Azure CLI
 description: Azure CLI 指令碼範例 - 在 App Service 方案中建立函式應用程式
-services: functions
-documentationcenter: functions
-author: ggailey777
-manager: jeconnoc
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
-ms.service: azure-functions
-ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/03/2018
-ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 85fe8e567cd00decbefe79c77c11f777820080ee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 77e026e12d14745c308e1d02fade13f318d9e532
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325675"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74532850"
 ---
 # <a name="create-a-function-app-in-an-app-service-plan"></a>在 App Service 方案中建立函式應用程式
 
@@ -41,15 +34,15 @@ ms.locfileid: "60325675"
 
 下表中的每個命令都會連結至命令特定的文件。 此指令碼會使用下列命令：
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
-| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | 建立 Azure 儲存體帳戶。 |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az-appservice-plan-create) | 建立 App Service 方案。 |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | 在 App Service 方案中建立函式應用程式。 |
+| [az group create](/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
+| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | 建立 Azure 儲存體帳戶。 |
+| [az functionapp plan create](/cli/azure/functionapp/plan#az-functionapp-plan-create) | 建立進階方案。 |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | 在 App Service 方案中建立函式應用程式。 |
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](https://docs.microsoft.com/cli/azure)。
+如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
 您可以在 [Azure Functions 文件](../functions-cli-samples.md)中找到其他 Azure Functions CLI 指令碼範例。

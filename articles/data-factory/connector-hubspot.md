@@ -1,25 +1,25 @@
 ---
-title: 使用 Azure Data Factory 從 HubSpot 複製資料 (預覽) | Microsoft Docs
+title: 使用 Azure Data Factory 從 HubSpot 複製資料 (預覽)
 description: 了解如何使用 Azure Data Factory 管線中的複製活動，將資料從 HubSpot 複製到支援的接收資料存放區。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 86c38818ee1632bf2d2f3fb1e1240954f3267887
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 2d60a1b03da6fdf4af6b0d0378456c08d927f451
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123698"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81415214"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>使用 Azure Data Factory 從 HubSpot 複製資料 (預覽)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何使用 Azure Data Factory 中的「複製活動」，從 HubSpot 複製資料。 本文是根據[複製活動概觀](copy-activity-overview.md)一文，該文提供複製活動的一般概觀。
 
@@ -27,6 +27,12 @@ ms.locfileid: "62123698"
 > 此連接器目前為預覽版。 您可以親身體驗並提供意見反應。 如果您需要依賴解決方案中的預覽連接器，請連絡 [Azure 支援](https://azure.microsoft.com/support/)。
 
 ## <a name="supported-capabilities"></a>支援的功能
+
+下列活動支援此 HubSpot 連接器：
+
+- 含[支援來源/接收器矩陣](copy-activity-overview.md)的[複製活動](copy-activity-overview.md)
+- [查閱活動](control-flow-lookup-activity.md)
+
 
 您可以將資料從 HubSpot 複製到任何支援的接收資料存放區。 如需複製活動所支援作為來源/接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
 
@@ -42,22 +48,22 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 以下是針對 HubSpot 已連結服務支援的屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 類型屬性必須設定為：**Hubspot** | 是 |
-| clientId | 與您 Hubspot 應用程式相關聯的用戶端識別碼。  | 是 |
-| clientSecret | 與您 Hubspot 應用程式相關聯的用戶端祕密。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
-| accessToken | 一開始驗證您 OAuth 整合時所取得的存取權杖。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
+| type | Type 屬性必須設定為：**Hubspot** | 是 |
+| clientId | 與您的 HubSpot 應用程式相關聯的用戶端識別碼。 從[這裡](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot)瞭解如何在 HubSpot 中建立應用程式。 | 是 |
+| clientSecret | 與您的 HubSpot 應用程式相關聯的用戶端密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
+| accessToken | 一開始驗證您 OAuth 整合時所取得的存取權杖。 從[這裡](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens)瞭解如何使用您的用戶端識別碼和密碼取得存取權杖。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
 | refreshToken | 一開始驗證您 OAuth 整合時所取得的重新整理權杖。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
 | useEncryptedEndpoints | 指定是否使用 HTTPS 來加密資料來源端點。 預設值為 true。  | 否 |
-| useHostVerification | 指定在透過 SSL 連線時，是否要求伺服器憑證中的主機名稱符合伺服器的主機名稱。 預設值為 true。  | 否 |
-| usePeerVerification | 指定在透過 SSL 連線時，是否要確認伺服器的身分識別。 預設值為 true。  | 否 |
+| useHostVerification | 指定在透過 TLS 連線時，是否要求伺服器憑證中的主機名稱符合伺服器的主機名稱。 預設值為 true。  | 否 |
+| usePeerVerification | 指定在透過 TLS 連接時，是否要確認伺服器的身分識別。 預設值為 true。  | 否 |
 
-**範例：**
+**範例︰**
 
 ```json
 {
-    "name": "HubspotLinkedService",
+    "name": "HubSpotLinkedService",
     "properties": {
         "type": "Hubspot",
         "typeProperties": {
@@ -85,23 +91,24 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 若要從 HubSpot 複製資料，請將資料集的 type 屬性設定為 **HubspotObject**。 以下是支援的屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的類型屬性必須設定為：**HubspotObject** | 是 |
+| type | 資料集的類型屬性必須設定為： **HubspotObject** | 是 |
 | tableName | 資料表的名稱。 | 否 (如果已指定活動來源中的「查詢」) |
 
 **範例**
 
 ```json
 {
-    "name": "HubspotDataset",
+    "name": "HubSpotDataset",
     "properties": {
         "type": "HubspotObject",
+        "typeProperties": {},
+        "schema": [],        
         "linkedServiceName": {
-            "referenceName": "<Hubspot linked service name>",
+            "referenceName": "<HubSpot linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -114,12 +121,12 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 若要從 HubSpot 複製資料，請將複製活動中的來源類型設定為 **HubspotSource**。 複製活動的 **source** 區段支援下列屬性：
 
-| 屬性 | 描述 | 必要項 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動來源的類型屬性必須設定為：**HubspotSource** | 是 |
-| query | 使用自訂 SQL 查詢來讀取資料。 例如： `"SELECT * FROM Companies where Company_Id = xxx"` 。 | 否 (如果已指定資料集中的 "tableName") |
+| type | 複製活動來源的 type 屬性必須設定為：**HubspotSource** | 是 |
+| 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如： `"SELECT * FROM Companies where Company_Id = xxx"` 。 | 否 (如果已指定資料集中的 "tableName") |
 
-**範例：**
+**範例︰**
 
 ```json
 "activities":[
@@ -128,7 +135,7 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
         "type": "Copy",
         "inputs": [
             {
-                "referenceName": "<Hubspot input dataset name>",
+                "referenceName": "<HubSpot input dataset name>",
                 "type": "DatasetReference"
             }
         ],
@@ -150,6 +157,11 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>查閱活動屬性
+
+若要了解關於屬性的詳細資料，請參閱[查閱活動](control-flow-lookup-activity.md)。
+
 
 ## <a name="next-steps"></a>後續步驟
 如需 Azure Data Factory 中的複製活動所支援作為來源和接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。

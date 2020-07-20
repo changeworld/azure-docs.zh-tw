@@ -1,28 +1,28 @@
 ---
-title: Collaborative Translation Framework (CTF) 報告 - 翻譯工具文字 API
-titlesuffix: Azure Cognitive Services
+title: 共同作業翻譯架構（CTF）報告-翻譯工具
+titleSuffix: Azure Cognitive Services
 description: 如何使用 Collaborative Translation Framework (CTF) 報告。
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
-ms.author: v-jansko
-ms.openlocfilehash: 178747ffddbadb06751ce0db7d16701c3cea7416
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.author: swmachan
+ms.openlocfilehash: 1bf6fefbe7d2ea3fccc393f4445fceec44ed4117
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64712826"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584666"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>如何使用 Collaborative Translation Framework (CTF) 報告
 
 > [!NOTE]
-> 此方法已被取代。 Translator Text API V3.0 中不提供此功能。
+> 此方法已被取代。 在 Translator 的 v3.0 中不提供此功能。
 > 
-> 先前在 Translator Text API V2.0 中提供的 Collaborative Translations Framework (CTF) 自 2018 年 2 月 1 日起已被取代。 AddTranslation 和 AddTranslationArray 函式可讓使用者透過 Collaborative Translation Framework 啟用校正功能。 在 2018 年 1 月 31 日之後，這兩個函式便不接受新的句子提交，而使用者則會收到錯誤訊息。 這些函式已淘汰，而且不會被取代。
+> 共同作業翻譯架構（CTF），先前適用于 v2.0 的翻譯工具已于2018年2月1日淘汰。 AddTranslation 和 AddTranslationArray 函式可讓使用者透過 Collaborative Translation Framework 啟用校正功能。 在 2018 年 1 月 31 日之後，這兩個函式便不接受新的句子提交，而使用者則會收到錯誤訊息。 這些函式已淘汰，將不會被取代。
 
 「Collaborative Translation Framework (CTF) 報告 API」會傳回統計資料和 CTF 存放區中的實際內容。 此 API 與 GetTranslations() 方法不同，因為它：
 * 只會從您的帳戶 (appId 或 Azure Marketplace 帳戶) 傳回翻譯後的內容及其總計數。
@@ -30,11 +30,10 @@ ms.locfileid: "64712826"
 * 不會傳回自動翻譯 (機器翻譯)。
 
 ## <a name="endpoint"></a>端點
-「CTF 報告 API」的端點是 https://api.microsofttranslator.com/v2/beta/ctfreporting.svc
-
+CTF 報告 API 的端點是 https://api.microsofttranslator.com/v2/beta/ctfreporting.svc 。
 
 ## <a name="methods"></a>方法
-| 名稱 |    描述|
+| 名稱 | 說明|
 |:---|:---|
 | GetUserTranslationCounts 方法 | 取得使用者所建立的翻譯計數。 |
 | GetUserTranslations 方法 | 擷取使用者所建立的翻譯。 |
@@ -76,7 +75,7 @@ ms.locfileid: "64712826"
 |:---|:---|
 | appId | **必要** 如果使用 Authorization 標頭，請將 appid 欄位保留空白，否則請指定一個包含 "Bearer" + " " + 存取權杖的字串。|
 | uriPrefix | **選擇性** 一個包含翻譯 URI 前置詞的字串。|
-| from | **選擇性** 一個代表翻譯文字之語言代碼的字串。 |
+| 從 | **選擇性** 一個代表翻譯文字之語言代碼的字串。 |
 | to | **選擇性** 一個代表文字之目標翻譯語言代碼的字串。|
 | minRating| **選擇性** 一個代表翻譯後文字之品質評分下限的整數值。 有效值介於 -10 到 10 之間。 預設值為 1。|
 | maxRating| **選擇性** 一個代表翻譯後文字之品質評分上限的整數值。 有效值介於 -10 到 10 之間。 預設值為 1。|
@@ -85,7 +84,7 @@ ms.locfileid: "64712826"
 | minDateUtc| **選擇性** 您想要開始擷取翻譯的日期。 此日期必須是 UTC 格式。 |
 | maxDateUtc| **選擇性** 您想要停止擷取翻譯的日期。 此日期必須是 UTC 格式。 |
 | skip| **選擇性** 您想要在頁面上略過的結果數目。 例如，如果您想要略過前 20 列結果並從第 21 個結果記錄開始檢視，請為此參數指定 20。 此參數的預設值為 0。|
-| take |  您想要擷取的結果數目。 每個要求的數目上限為 100。 預設值為 100。|
+| take | **** 您想要擷取的結果數目。 每個要求的數目上限為 100。 預設值為 100。|
 
 > [!NOTE]
 > skip 和 take 要求參數可讓您將大量結果記錄分頁。
@@ -96,9 +95,9 @@ ms.locfileid: "64712826"
 
 | 欄位 | 描述 |
 |:---|:---|
-| 計數| 所擷取的結果數目|
+| Count| 所擷取的結果數目|
 | 從 | 來源語言|
-| Rating| 提交者在 AddTranslation() 方法呼叫中套用的評分|
+| 評等| 提交者在 AddTranslation() 方法呼叫中套用的評分|
 | 至| 目標語言|
 | Uri| AddTranslation() 方法呼叫中套用的 URI|
 | 使用者| 使用者名稱|
@@ -108,15 +107,15 @@ ms.locfileid: "64712826"
 | 例外狀況 | 訊息 | 條件 |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | '**maxDateUtc**' 參數必須大於或等於 '**minDateUtc**'。| **maxDateUtc** 參數的值小於 **minDateUtc** 參數的值。|
-| TranslateApiException | IP 超出配額。| <ul><li>已達到每分鐘的要求數目限制。</li><li>要求大小維持限制在 10000 個字元。</li><li>每小時和每日配額會限制 Microsoft Translator API 將接受的字元數目。</li></ul>|
+| TranslateApiException | IP 超出配額。| <ul><li>已達到每分鐘的要求數目限制。</li><li>要求大小維持限制在 10000 個字元。</li><li>每小時和每日配額限制 Translator 將接受的字元數。</li></ul>|
 | TranslateApiException | AppId 超出配額。| 應用程式識別碼超出每小時或每日配額。|
 
 > [!NOTE]
 > 配額將會調整以確保服務之所有使用者之間的公平性。
 
 **檢視 GitHub 上的程式碼範例**
-* [C#](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslationcounts-example-csharp.md)
-* [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslationcounts-example-php.md)
+* [C#](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
+* [PHP](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP)
 
 ## <a name="getusertranslations-method"></a>GetUserTranslations 方法
 
@@ -147,16 +146,16 @@ ms.locfileid: "64712826"
 |:---|:---|
 | appId | **必要** 如果使用 Authorization 標頭，請將 appid 欄位保留空白，否則請指定一個包含 "Bearer" + " " + 存取權杖的字串。|
 | uriPrefix| **選擇性** 一個包含翻譯 URI 前置詞的字串。|
-| from| **選擇性** 一個代表翻譯文字之語言代碼的字串。|
+| 從| **選擇性** 一個代表翻譯文字之語言代碼的字串。|
 | to| **選擇性** 一個代表文字之目標翻譯語言代碼的字串。|
 | minRating| **選擇性** 一個代表翻譯後文字之品質評分下限的整數值。 有效值介於 -10 到 10 之間。 預設值為 1。|
 | maxRating| **選擇性** 一個代表翻譯後文字之品質評分上限的整數值。 有效值介於 -10 到 10 之間。 預設值為 1。|
-| user| **選擇性。一個可根據提交項目建立者來篩選結果的字串**|
+| user| **選擇性.用來根據提交的建立者來篩選結果的字串**|
 | category| **選擇性** 一個包含翻譯之分類或領域的字串。 此參數僅支援預設選項 general。|
 | minDateUtc| **選擇性** 您想要開始擷取翻譯的日期。 此日期必須是 UTC 格式。|
 | maxDateUtc| **選擇性** 您想要停止擷取翻譯的日期。 此日期必須是 UTC 格式。|
 | skip| **選擇性** 您想要在頁面上略過的結果數目。 例如，如果您想要略過前 20 列結果並從第 21 個結果記錄開始檢視，請為此參數指定 20。 此參數的預設值為 0。|
-| take|  您想要擷取的結果數目。 每個要求的數目上限為 100。 預設值為 50。|
+| take| **** 您想要擷取的結果數目。 每個要求的數目上限為 100。 預設值為 50。|
 
 > [!NOTE]
 > skip 和 take 要求參數可讓您將大量結果記錄分頁。
@@ -170,7 +169,7 @@ ms.locfileid: "64712826"
 | CreatedDateUtc| 使用 AddTranslation() 之項目的建立日期|
 | 從| 來源語言|
 | OriginalText| 提交要求時所使用的來源語言文字|
-|Rating |提交者在 AddTranslation() 方法呼叫中套用的評分|
+|評等 |提交者在 AddTranslation() 方法呼叫中套用的評分|
 |至|    目標語言|
 |TranslatedText|    AddTranslation() 方法呼叫中所提交的翻譯|
 |Uri|   AddTranslation() 方法呼叫中套用的 URI|
@@ -181,12 +180,12 @@ ms.locfileid: "64712826"
 | 例外狀況 | 訊息 | 條件 |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | '**maxDateUtc**' 參數必須大於或等於 '**minDateUtc**'。| **maxDateUtc** 參數的值小於 **minDateUtc** 參數的值。|
-| TranslateApiException | IP 超出配額。| <ul><li>已達到每分鐘的要求數目限制。</li><li>要求大小維持限制在 10000 個字元。</li><li>每小時和每日配額會限制 Microsoft Translator API 將接受的字元數目。</li></ul>|
+| TranslateApiException | IP 超出配額。| <ul><li>已達到每分鐘的要求數目限制。</li><li>要求大小維持限制在 10000 個字元。</li><li>每小時和每日配額限制 Translator 將接受的字元數。</li></ul>|
 | TranslateApiException | AppId 超出配額。| 應用程式識別碼超出每小時或每日配額。|
 
 > [!NOTE]
 > 配額將會調整以確保服務之所有使用者之間的公平性。
 
 **檢視 GitHub 上的程式碼範例**
-* [C#](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-csharp.md)
-* [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-php.md)
+* [C#](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
+* [PHP](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP)

@@ -1,296 +1,352 @@
 ---
-title: 教學課程：編製 JSON Blob 中半結構化資料的索引 - Azure 搜尋服務
-description: 了解如何使用 Azure 搜尋服務 REST API 和 Postman，編製半結構化 Azure JSON Blob 的索引並進行搜尋。
+title: 教學課程：為 JSON Blob 中的半結構化資料編製索引
+titleSuffix: Azure Cognitive Search
+description: 了解如何使用 Azure 認知搜尋 REST API 和 Postman，為半結構化 Azure JSON Blob 編製索引及加以搜尋。
+manager: nitinme
 author: HeidiSteen
-manager: cgronlun
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 05/02/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 4b996effbc03bd1f7c446965b0aa5fb6fa2d0175
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 06/23/2020
+ms.openlocfilehash: 0e6759837519feccf6069e805e3fe0f72562fb7b
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024380"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85559024"
 ---
-# <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>REST 教學課程：在 Azure 搜尋服務中編製半結構化資料 (JSON Blob) 的索引
+# <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>教學課程：使用 REST 為 Azure 儲存體中的 JSON Blob 編製索引
 
-Azure 搜尋服務可以在 Azure Blob 儲存體中，使用[索引子](search-indexer-overview.md)來為 JSON 文件和陣列編製索引，以了解如何讀取半結構化資料。 半結構化資料會包含在資料內分隔內容的標籤或標記。 這些資料會將不同的內容區分為必須完整編製索引的未結構化資料，以及遵循資料模型 (例如關聯式資料庫結構描述) 且可依據欄位逐一編製索引的正式結構化資料。
+Azure 認知搜尋可以在 Azure Blob 儲存體中，使用[索引子](search-indexer-overview.md)為 JSON 文件和陣列編製索引，以了解如何讀取半結構化資料。 半結構化資料會包含在資料內分隔內容的標籤或標記。 這些資料會將不同的內容區分為必須完整編製索引的未結構化資料，以及遵循資料模型 (例如關聯式資料庫結構描述) 且可依據欄位逐一編製索引的正式結構化資料。
 
-在此教學課程中，使用 [Azure 搜尋服務 REST API](https://docs.microsoft.com/rest/api/searchservice/) 和 REST 用戶端來執行下列工作：
+本教學課程將使用 Postman 和[搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/) 執行下列工作：
 
 > [!div class="checklist"]
-> * 設定 Azure Blob 容器的 Azure 搜尋服務資料來源
-> * 建立 Azure 搜尋服務索引以包含可搜尋的內容
+> * 設定 Azure Blob 容器的 Azure 認知搜尋資料來源
+> * 建立 Azure 認知搜尋索引以包含可搜尋的內容
 > * 設定並執行索引子以讀取容器，並從 Azure Blob 儲存體擷取可搜尋的內容
 > * 搜尋剛剛建立的索引
 
-## <a name="prerequisites"></a>先決條件
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-此快速入門會使用下列服務、工具和資料。 
+## <a name="prerequisites"></a>Prerequisites
 
-[建立 Azure 搜尋服務](search-create-service-portal.md)，或在您目前的訂用帳戶下方[尋找現有服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 您可以使用此教學課程的免費服務。 
++ [Azure 儲存體](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Postman 桌面應用程式](https://www.getpostman.com/)
++ [建立](search-create-service-portal.md)或[尋找現有的搜尋服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
-[建立 Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)，以儲存範例資料。
+> [!Note]
+> 您可以使用免費服務來進行本教學課程。 免費的搜尋服務會有限制，您只能使用三個索引、三個索引子和三個資料來源。 本教學課程會各建立一個。 開始之前，請確定您的服務有空間可接受新的資源。
 
-[Postman 傳統型應用程式](https://www.getpostman.com/)可將要求傳送至 Azure 搜尋服務。
+## <a name="download-files"></a>下載檔案
 
-[Clinical-trials-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) 包含此教學課程中使用的資料。 下載此檔案並將其解壓縮到它自己的資料夾中。 資料源自 [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results)，已針對此教學課程轉換為 JSON。
+[Clinical-trials-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) 包含本教學課程中使用的資料。 下載此檔案並將其解壓縮到它自己的資料夾中。 資料源自 [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results)，已針對本教學課程轉換為 JSON。
 
-## <a name="get-a-key-and-url"></a>取得金鑰和 URL
+## <a name="1---create-services"></a>1 - 建立服務
 
-REST 呼叫需要服務 URL 和每個要求的存取金鑰。 搜尋服務是同時建立，因此如果您將 Azure 搜尋服務新增至您的訂用帳戶，請遵循下列步驟來取得必要的資訊：
+本教學課程將使用 Azure 認知搜尋進行索引編製和查詢，並以 Azure Blob 儲存體提供資料。 
 
-1. [登入 Azure 入口網站](https://portal.azure.com/)，並在搜尋服務的 [概觀] 頁面上取得 URL。 範例端點看起來會像是 `https://mydemo.search.windows.net`。
+為具備鄰近性和管理方面的優勢，如果可能，請將這兩項服務建立在相同的區域和資源群組中。 實際上，您的 Azure 儲存體帳戶可以位在任何區域中。
 
-1. 在 [設定]  >  [金鑰] 中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
+### <a name="start-with-azure-storage"></a>開始使用 Azure 儲存體
 
-![取得 HTTP 端點和存取金鑰](media/search-fiddler/get-url-key.png "取得 HTTP 端點和存取金鑰")
+1. [登入 Azure 入口網站](https://portal.azure.com/)，然後按一下 [+ 建立資源]  。
 
-所有要求均都需要在傳送至您服務上的每個要求上使用 API 金鑰。 擁有有效的金鑰就能為每個要求在傳送要求之應用程式與處理要求之服務間建立信任。
+1. 搜尋「儲存體帳戶」  ，然後選取 Microsoft 的儲存體帳戶供應項目。
 
-## <a name="prepare-sample-data"></a>準備範例資料
+   ![建立儲存體帳戶](media/cognitive-search-tutorial-blob/storage-account.png "建立儲存體帳戶")
 
-1. [登入 Azure 入口網站](https://portal.azure.com)瀏覽至您的 Azure 儲存體帳戶、按一下 [Blob]，然後按一下 [+ 容器]。
+1. 在 [基本] 索引標籤中，需要下列項目。 接受所有其他項目的預設值。
+
+   + **資源群組**。 選取現有群組或建立一個新的群組，但必須對所有服務使用相同的群組，以便您一起管理這些服務。
+
+   + **儲存體帳戶名稱**。 如果您認為您可能會有多個相同類型的資源，請透過名稱在類型和區域上做出區別，例如 blobstoragewestus  。 
+
+   + **位置**。 可能的話，請選擇用於 Azure 認知搜尋和認知服務的相同位置。 單一位置可避免產生頻寬費用。
+
+   + **帳戶種類**。 選擇預設值 [StorageV2 (一般用途 v2)]  。
+
+1. 按一下 [檢閱 + 建立]  以建立服務。
+
+1. 建立後，按一下 [移至資源]  以開啟 [概觀] 頁面。
+
+1. 按一下 [Blob]  服務。
 
 1. [建立 Blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)以容納範例資料。 您可以將公用存取層級設定為任何有效值。
 
-1. 建立容器之後，請加以開啟，然後選取命令列的 [上傳]。
+1. 建立容器之後，請加以開啟，然後選取命令列的 [上傳]  。
 
-   ![命令列上的 上傳](media/search-semi-structured-data/upload-command-bar.png "命令列上的 上傳")
+   ![使用命令列上傳](media/search-semi-structured-data/upload-command-bar.png "使用命令列上傳")
 
-1. 瀏覽至包含範例檔案的資料夾。 全部選取，然後按一下 [上傳]。
+1. 瀏覽至包含範例檔案的資料夾。 全部選取，然後按一下 [上傳]  。
 
    ![上傳檔案](media/search-semi-structured-data/clinicalupload.png "上傳檔案")
 
 上傳完成之後，檔案應該會出現在資料容器內部它們本身的子資料夾中。
 
-## <a name="set-up-postman"></a>設定 Postman
+### <a name="azure-cognitive-search"></a>Azue 認知搜尋
 
-啟動 Postman 及設定 HTTP 要求。 如果您不熟悉此工具，請參閱[使用 Postman 探索 Azure 搜尋服務 REST API](search-fiddler.md)。
+下一個資源是 Azure 認知搜尋，您可以[在入口網站中建立](search-create-service-portal.md)該資源。 您可以使用免費層來完成此逐步解說。 
 
-此教學課程中每個呼叫的要求方法都是 **POST**。 標頭金鑰為 "Content-type" 和 "api-key"。 標頭金鑰的值分別為 "application/json" 和您的「管理金鑰」(管理金鑰是您搜尋主索引鍵的預留位置)。 主體是您放置呼叫實際內容的地方。 根據使用的用戶端而定，您用以建構查詢的方式可能會有一些變化，但那些都是基本的。
+如同 Azure Blob 儲存體，請花點時間來收集存取金鑰。 此外，當您開始結構化要求時，您必須提供用來驗證每個要求的端點和管理員 API 金鑰。
 
-  ![半結構化搜尋](media/search-semi-structured-data/postmanoverview.png)
+### <a name="get-a-key-and-url"></a>取得金鑰和 URL
 
-我們使用 Postman 來對您的搜尋服務進行三個 API 呼叫，以建立資料來源、索引及索引子。 資料來源包括指向您儲存體帳戶和您 JSON 資料的指標。 您的搜尋服務會在載入資料時進行連線。
+REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務時需要這兩項資料，因此如果您將 Azure 認知搜尋新增至您的訂用帳戶，請依照下列步驟來取得必要的資訊：
 
-查詢字串必須指定 api-version，且每個呼叫都應傳回 **201 Created**。 用於使用 JSON 陣列的公開推出 api-version 為 `2019-05-06`。
+1. [登入 Azure 入口網站](https://portal.azure.com/)，並在搜尋服務的 [概觀]  頁面上取得 URL。 範例端點看起來會像是 `https://mydemo.search.windows.net`。
 
-從您的 REST 用戶端執行下列三個 API 呼叫。
+1. 在 [設定]   >  [金鑰]  中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
 
-## <a name="create-a-data-source"></a>建立資料來源
+![取得 HTTP 端點和存取金鑰](media/search-get-started-postman/get-url-key.png "取得 HTTP 端點和存取金鑰")
 
-[建立資料來源 API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) 會建立一個 Azure 搜尋服務物件，以指定要編製索引的資料。
+所有要求均都需要在傳送至您服務上的每個要求上使用 API 金鑰。 擁有有效的金鑰就能為每個要求在傳送要求之應用程式與處理要求之服務間建立信任。
 
-此呼叫的端點為 `https://[service name].search.windows.net/datasources?api-version=2019-05-06`。 使用您的搜尋服務名稱來取代 `[service name]`。 
+## <a name="2---set-up-postman"></a>2 - 設定 Postman
 
-對於此呼叫，要求本文必須包含您的儲存體帳戶名稱、儲存體帳戶金鑰和 Blob 容器名稱。 儲存體帳戶金鑰可以在 Azure入口網站中，於儲存體帳戶的**存取金鑰**內部找到。 下面的影像顯示該位置：
+啟動 Postman 及設定 HTTP 要求。 如果您不熟悉此工具，請參閱[使用 Postman 探索 Azure 認知搜尋 REST API](search-get-started-postman.md)。
 
-  ![半結構化搜尋](media/search-semi-structured-data/storagekeys.png)
+本教學課程中用於各個呼叫的要求方法為 **POST** 和 **GET**。 您將對搜尋服務進行三個 API 呼叫，以建立資料來源、索引及索引子。 資料來源包括指向您儲存體帳戶和您 JSON 資料的指標。 您的搜尋服務會在載入資料時進行連線。
 
-執行呼叫之前，請務必取代呼叫主體中的 `[storage account name]`、`[storage account key]` 和 `[blob container name]`。
+在標頭中，將 "Content-type" 設定為 `application/json`，並將 `api-key` 設定為您 Azure 認知搜尋服務的管理員 API 金鑰。 設定標頭之後，您就可以在此練習中的每個要求上加以使用。
 
-```json
-{
-    "name" : "clinical-trials-json",
-    "type" : "azureblob",
-    "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=[storage account name];AccountKey=[storage account key];" },
-    "container" : { "name" : "[blob container name]"}
-}
-```
+  ![Postman 要求 URL 和標頭](media/search-get-started-postman/postman-url.png "Postman 要求 URL 和標頭")
 
-回應看起來應如下所示：
+URI 必須指定 api-version，且每個呼叫都應傳回 **201 已建立**。 用於使用 JSON 陣列的公開推出 api-version 為 `2020-06-30`。
 
-```json
-{
-    "@odata.context": "https://exampleurl.search.windows.net/$metadata#datasources/$entity",
-    "@odata.etag": "\"0x8D505FBC3856C9E\"",
-    "name": "clinical-trials-json",
-    "description": null,
-    "type": "azureblob",
-    "subtype": null,
-    "credentials": {
-        "connectionString": "DefaultEndpointsProtocol=https;AccountName=[mystorageaccounthere];AccountKey=[[myaccountkeyhere]]];"
-    },
-    "container": {
-        "name": "[mycontainernamehere]",
-        "query": null
-    },
-    "dataChangeDetectionPolicy": null,
-    "dataDeletionDetectionPolicy": null
-}
-```
+## <a name="3---create-a-data-source"></a>3 - 建立資料來源
 
-## <a name="create-an-index"></a>建立索引
+[建立資料來源 API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) 會建立一個 Azure 認知搜尋物件，以指定要編製索引的資料。
+
+1. 將此呼叫的端點設定為 `https://[service name].search.windows.net/datasources?api-version=2020-06-30`。 使用您的搜尋服務名稱來取代 `[service name]`。 
+
+1. 將下列 JSON 複製到要求本文中。
+
+    ```json
+    {
+        "name" : "clinical-trials-json-ds",
+        "type" : "azureblob",
+        "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=[storage account name];AccountKey=[storage account key];" },
+        "container" : { "name" : "[blob container name]"}
+    }
+    ```
+
+1. 將連接字串取代為您帳戶的有效字串。
+
+1. 將 "[Blob 容器名稱]" 取代為您為範例資料建立的容器。 
+
+1. 傳送要求。 回應看起來應如下所示：
+
+    ```json
+    {
+        "@odata.context": "https://exampleurl.search.windows.net/$metadata#datasources/$entity",
+        "@odata.etag": "\"0x8D505FBC3856C9E\"",
+        "name": "clinical-trials-json-ds",
+        "description": null,
+        "type": "azureblob",
+        "subtype": null,
+        "credentials": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=[mystorageaccounthere];AccountKey=[[myaccountkeyhere]]];"
+        },
+        "container": {
+            "name": "[mycontainernamehere]",
+            "query": null
+        },
+        "dataChangeDetectionPolicy": null,
+        "dataDeletionDetectionPolicy": null
+    }
+    ```
+
+## <a name="4---create-an-index"></a>4 - 建立索引
     
-第二次呼叫為[建立索引 API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)，進而建立可儲存所有可搜尋資料的 Azure 搜尋服務索引。 索引會指定所有參數及其屬性。
+第二個呼叫為[建立索引 API](https://docs.microsoft.com/rest/api/searchservice/create-index)，進而建立可儲存所有可搜尋資料的 Azure 認知搜尋索引。 索引會指定所有參數及其屬性。
 
-此呼叫的 URL 是 `https://[service name].search.windows.net/indexes?api-version=2019-05-06`。 使用您的搜尋服務名稱來取代 `[service name]`。
+1. 將此呼叫的端點設定為 `https://[service name].search.windows.net/indexes?api-version=2020-06-30`。 使用您的搜尋服務名稱來取代 `[service name]`。
 
-首先，取代 URL。 接著複製下列程式碼並貼至您的主體，然後執行查詢。
+1. 將下列 JSON 複製到要求本文中。
 
-```json
-{
-  "name": "clinical-trials-json-index",  
-  "fields": [
-  {"name": "FileName", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": false, "filterable": false, "sortable": true},
-  {"name": "Description", "type": "Edm.String", "searchable": true, "retrievable": false, "facetable": false, "filterable": false, "sortable": false},
-  {"name": "MinimumAge", "type": "Edm.Int32", "searchable": false, "retrievable": true, "facetable": true, "filterable": true, "sortable": true},
-  {"name": "Title", "type": "Edm.String", "searchable": true, "retrievable": true, "facetable": false, "filterable": true, "sortable": true},
-  {"name": "URL", "type": "Edm.String", "searchable": false, "retrievable": false, "facetable": false, "filterable": false, "sortable": false},
-  {"name": "MyURL", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": false, "filterable": false, "sortable": false},
-  {"name": "Gender", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": true, "filterable": true, "sortable": false},
-  {"name": "MaximumAge", "type": "Edm.Int32", "searchable": false, "retrievable": true, "facetable": true, "filterable": true, "sortable": true},
-  {"name": "Summary", "type": "Edm.String", "searchable": true, "retrievable": true, "facetable": false, "filterable": false, "sortable": false},
-  {"name": "NCTID", "type": "Edm.String", "key": true, "searchable": true, "retrievable": true, "facetable": false, "filterable": true, "sortable": true},
-  {"name": "Phase", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": true, "filterable": true, "sortable": false},
-  {"name": "Date", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": false, "filterable": false, "sortable": true},
-  {"name": "OverallStatus", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": true, "filterable": true, "sortable": false},
-  {"name": "OrgStudyId", "type": "Edm.String", "searchable": true, "retrievable": true, "facetable": false, "filterable": true, "sortable": false},
-  {"name": "HealthyVolunteers", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": true, "filterable": true, "sortable": false},
-  {"name": "Keywords", "type": "Collection(Edm.String)", "searchable": true, "retrievable": true, "facetable": true, "filterable": false, "sortable": false},
-  {"name": "metadata_storage_last_modified", "type":"Edm.DateTimeOffset", "searchable": false, "retrievable": true, "filterable": true, "sortable": false},
-  {"name": "metadata_storage_size", "type":"Edm.String", "searchable": false, "retrievable": true, "filterable": true, "sortable": false},
-  {"name": "metadata_content_type", "type":"Edm.String", "searchable": true, "retrievable": true, "filterable": true, "sortable": false}
-  ],
-  "suggesters": [
-  {
-    "name": "sg",
-    "searchMode": "analyzingInfixMatching",
-    "sourceFields": ["Title"]
-  }
-  ]
-}
-```
+    ```json
+    {
+      "name": "clinical-trials-json-index",  
+      "fields": [
+      {"name": "FileName", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": false, "filterable": false, "sortable": true},
+      {"name": "Description", "type": "Edm.String", "searchable": true, "retrievable": false, "facetable": false, "filterable": false, "sortable": false},
+      {"name": "MinimumAge", "type": "Edm.Int32", "searchable": false, "retrievable": true, "facetable": true, "filterable": true, "sortable": true},
+      {"name": "Title", "type": "Edm.String", "searchable": true, "retrievable": true, "facetable": false, "filterable": true, "sortable": true},
+      {"name": "URL", "type": "Edm.String", "searchable": false, "retrievable": false, "facetable": false, "filterable": false, "sortable": false},
+      {"name": "MyURL", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": false, "filterable": false, "sortable": false},
+      {"name": "Gender", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": true, "filterable": true, "sortable": false},
+      {"name": "MaximumAge", "type": "Edm.Int32", "searchable": false, "retrievable": true, "facetable": true, "filterable": true, "sortable": true},
+      {"name": "Summary", "type": "Edm.String", "searchable": true, "retrievable": true, "facetable": false, "filterable": false, "sortable": false},
+      {"name": "NCTID", "type": "Edm.String", "key": true, "searchable": true, "retrievable": true, "facetable": false, "filterable": true, "sortable": true},
+      {"name": "Phase", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": true, "filterable": true, "sortable": false},
+      {"name": "Date", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": false, "filterable": false, "sortable": true},
+      {"name": "OverallStatus", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": true, "filterable": true, "sortable": false},
+      {"name": "OrgStudyId", "type": "Edm.String", "searchable": true, "retrievable": true, "facetable": false, "filterable": true, "sortable": false},
+      {"name": "HealthyVolunteers", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": true, "filterable": true, "sortable": false},
+      {"name": "Keywords", "type": "Collection(Edm.String)", "searchable": true, "retrievable": true, "facetable": true, "filterable": false, "sortable": false},
+      {"name": "metadata_storage_last_modified", "type":"Edm.DateTimeOffset", "searchable": false, "retrievable": true, "filterable": true, "sortable": false},
+      {"name": "metadata_storage_size", "type":"Edm.String", "searchable": false, "retrievable": true, "filterable": true, "sortable": false},
+      {"name": "metadata_content_type", "type":"Edm.String", "searchable": true, "retrievable": true, "filterable": true, "sortable": false}
+      ]
+    }
+   ```
 
-回應看起來應如下所示：
+1. 傳送要求。 回應看起來應如下所示：
 
-```json
-{
-    "@odata.context": "https://exampleurl.search.windows.net/$metadata#indexes/$entity",
-    "@odata.etag": "\"0x8D505FC00EDD5FA\"",
-    "name": "clinical-trials-json-index",
-    "fields": [
-        {
-            "name": "FileName",
-            "type": "Edm.String",
-            "searchable": false,
-            "filterable": false,
-            "retrievable": true,
-            "sortable": true,
-            "facetable": false,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "synonymMaps": []
+    ```json
+    {
+        "@odata.context": "https://exampleurl.search.windows.net/$metadata#indexes/$entity",
+        "@odata.etag": "\"0x8D505FC00EDD5FA\"",
+        "name": "clinical-trials-json-index",
+        "fields": [
+            {
+                "name": "FileName",
+                "type": "Edm.String",
+                "searchable": false,
+                "filterable": false,
+                "retrievable": true,
+                "sortable": true,
+                "facetable": false,
+                "key": false,
+                "indexAnalyzer": null,
+                "searchAnalyzer": null,
+                "analyzer": null,
+                "synonymMaps": []
+            },
+            {
+                "name": "Description",
+                "type": "Edm.String",
+                "searchable": true,
+                "filterable": false,
+                "retrievable": false,
+                "sortable": false,
+                "facetable": false,
+                "key": false,
+                "indexAnalyzer": null,
+                "searchAnalyzer": null,
+                "analyzer": null,
+                "synonymMaps": []
+            },
+            ...
+          }
+    ```
+
+## <a name="5---create-and-run-an-indexer"></a>5 - 建立及執行索引子
+
+索引子會連線至資料來源、將資料匯入至目標搜尋索引，並選擇性地提供排程將資料重新整理自動化。 REST API 為[建立索引子](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
+
+1. 將此呼叫的 URI 設定為 `https://[service name].search.windows.net/indexers?api-version=2020-06-30`。 使用您的搜尋服務名稱來取代 `[service name]`。
+
+1. 將下列 JSON 複製到要求本文中。
+
+    ```json
+    {
+      "name" : "clinical-trials-json-indexer",
+      "dataSourceName" : "clinical-trials-json-ds",
+      "targetIndexName" : "clinical-trials-json-index",
+      "parameters" : { "configuration" : { "parsingMode" : "jsonArray" } }
+    }
+    ```
+
+1. 傳送要求。 立即處理要求。 當回應傳回時，您將具備可進行全文檢索搜尋的索引。 回應看起來應如下所示：
+
+    ```json
+    {
+        "@odata.context": "https://exampleurl.search.windows.net/$metadata#indexers/$entity",
+        "@odata.etag": "\"0x8D505FDE143D164\"",
+        "name": "clinical-trials-json-indexer",
+        "description": null,
+        "dataSourceName": "clinical-trials-json-ds",
+        "targetIndexName": "clinical-trials-json-index",
+        "schedule": null,
+        "parameters": {
+            "batchSize": null,
+            "maxFailedItems": null,
+            "maxFailedItemsPerBatch": null,
+            "base64EncodeKeys": null,
+            "configuration": {
+                "parsingMode": "jsonArray"
+            }
         },
-        {
-            "name": "Description",
-            "type": "Edm.String",
-            "searchable": true,
-            "filterable": false,
-            "retrievable": false,
-            "sortable": false,
-            "facetable": false,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "synonymMaps": []
-        },
-        ...
-          "scoringProfiles": [],
-    "defaultScoringProfile": null,
-    "corsOptions": null,
-    "suggesters": [],
-    "analyzers": [],
-    "tokenizers": [],
-    "tokenFilters": [],
-    "charFilters": []
-}
+        "fieldMappings": [],
+        "enrichers": [],
+        "disabled": null
+    }
+    ```
+
+## <a name="6---search-your-json-files"></a>6 - 搜尋您的 JSON 檔案
+
+第一個文件載入後，您就可以開始查詢。
+
+1. 將動詞變更為 **GET**。
+
+1. 將此呼叫的 URI 設定為 `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&api-version=2020-06-30&$count=true`。 使用您的搜尋服務名稱來取代 `[service name]`。
+
+1. 傳送要求。 這是未指定的全文檢索搜尋查詢，會傳回所有在索引中標記為可擷取的欄位，以及文件計數。 回應看起來應如下所示：
+
+    ```json
+    {
+        "@odata.context": "https://exampleurl.search.windows.net/indexes('clinical-trials-json-index')/$metadata#docs(*)",
+        "@odata.count": 100,
+        "value": [
+            {
+                "@search.score": 1.0,
+                "FileName": "NCT00000102.txt",
+                "MinimumAge": 14,
+                "Title": "Congenital Adrenal Hyperplasia: Calcium Channels as Therapeutic Targets",
+                "MyURL": "https://azure.storagedemos.com/clinical-trials/NCT00000102.txt",
+                "Gender": "Both",
+                "MaximumAge": 35,
+                "Summary": "This study will test the ability of extended release nifedipine (Procardia XL), a blood pressure medication, to permit a decrease in the dose of glucocorticoid medication children take to treat congenital adrenal hyperplasia (CAH).",
+                "NCTID": "NCT00000102",
+                "Phase": "Phase 1/Phase 2",
+                "Date": "ClinicalTrials.gov processed this data on October 25, 2016",
+                "OverallStatus": "Completed",
+                "OrgStudyId": "NCRR-M01RR01070-0506",
+                "HealthyVolunteers": "No",
+                "Keywords": [],
+                "metadata_storage_last_modified": "2019-04-09T18:16:24Z",
+                "metadata_storage_size": "33060",
+                "metadata_content_type": null
+            },
+            . . . 
+    ```
+
+1. 新增 `$select` 查詢參數，以將結果限定為較少的欄位：`https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2020-06-30&$count=true`。  此查詢有 100 份相符的文件，但根據預設，Azure 認知搜尋只會傳回結果中的 50 份。
+
+   ![參數化查詢](media/search-semi-structured-data/lastquery.png "參數化查詢")
+
+1. 有一個更複雜的查詢範例會包含 `$filter=MinimumAge ge 30 and MaximumAge lt 75`，這只會傳回參數 MinimumAge 大於或等於 30 且 MaximumAge 小於 75 的結果。 請將 `$select` 運算式取代為 `$filter` 運算式。
+
+   ![半結構化搜尋](media/search-semi-structured-data/metadatashort.png)
+
+您也可以使用邏輯運算子 (and、or、not) 和比較運算子 (eq、ne、gt、lt、ge、le)。 字串比較是區分大小寫的。 如需詳細資訊和範例，請參閱[建立簡易查詢](search-query-simple-examples.md)。
+
+> [!NOTE]
+> `$filter` 參數只能與在索引建立期間標記為可篩選的中繼資料一起使用。
+
+## <a name="reset-and-rerun"></a>重設並重新執行
+
+在開發的早期實驗階段中若要設計反覆項目，最實用的方法是從 Azure 認知搜尋中刪除物件，並讓您的程式碼加以重建。 資源名稱是唯一的。 刪除物件可讓您使用相同的名稱加以重新建立。
+
+您可以使用入口網站來刪除索引、索引子和資料來源。 或者，使用 **DELETE** 並提供每個物件的 URL。 下列命令會刪除索引子。
+
+```http
+DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/clinical-trials-json-indexer?api-version=2020-06-30
 ```
 
-## <a name="create-and-run-an-indexer"></a>建立及執行索引子
-
-索引子會與資料來源連線、將資料匯入至目標搜尋索引，並選擇性地提供排程來將資料重新整理自動化。 REST API 為[建立索引子](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
-
-此呼叫的 URL 是 `https://[service name].search.windows.net/indexers?api-version=2019-05-06`。 使用您的搜尋服務名稱來取代 `[service name]`。
-
-首先，取代 URL。 接著，複製下列程式碼並貼至您的本文，然後傳送要求。 立即處理要求。 當回應傳回時，您將具備可進行全文檢索搜尋的索引。
-
-```json
-{
-  "name" : "clinical-trials-json-indexer",
-  "dataSourceName" : "clinical-trials-json",
-  "targetIndexName" : "clinical-trials-json-index",
-  "parameters" : { "configuration" : { "parsingMode" : "jsonArray" } }
-}
-```
-
-回應看起來應如下所示：
-
-```json
-{
-    "@odata.context": "https://exampleurl.search.windows.net/$metadata#indexers/$entity",
-    "@odata.etag": "\"0x8D505FDE143D164\"",
-    "name": "clinical-trials-json-indexer",
-    "description": null,
-    "dataSourceName": "clinical-trials-json",
-    "targetIndexName": "clinical-trials-json-index",
-    "schedule": null,
-    "parameters": {
-        "batchSize": null,
-        "maxFailedItems": null,
-        "maxFailedItemsPerBatch": null,
-        "base64EncodeKeys": null,
-        "configuration": {
-            "parsingMode": "jsonArray"
-        }
-    },
-    "fieldMappings": [],
-    "enrichers": [],
-    "disabled": null
-}
-```
-
-## <a name="search-your-json-files"></a>搜尋您的 JSON 檔案
-
-第一個文件載入後，您就可以開始查詢。 針對此工作，在入口網站中使用[**搜尋總管**](search-explorer.md)。
-
-在 Azure 入口網站中，開啟搜尋服務 [概觀] 頁面，尋找您在 [索引] 清單中建立的索引。
-
-請務必選擇您剛才建立的索引。 
-
-  ![非結構化搜尋](media/search-semi-structured-data/indexespane.png)
-
-### <a name="user-defined-metadata-search"></a>使用者定義的中繼資料搜尋
-
-如前所述，您可以使用數種方式來查詢資料：全文檢索搜尋、系統內容或使用者定義的中繼資料。 如果已在建立目標索引期間將系統內容和使用者定義的中繼資料標記為 **retrievable**，就只能使用 `$select` 參數來搜尋它們。 索引中的參數一旦建立之後，就無法改變。 不過，可以新增其他參數。
-
-有一個基本查詢範例是 `$select=Gender,metadata_storage_size`，它會將傳回限制為這兩個參數。
-
-  ![半結構化搜尋](media/search-semi-structured-data/lastquery.png)
-
-有一個更複雜的查詢範例是 `$filter=MinimumAge ge 30 and MaximumAge lt 75`，它只會傳回參數 MinimumAge 大於或等於 30 且 MaximumAge 小於 75 的結果。
-
-  ![半結構化搜尋](media/search-semi-structured-data/metadatashort.png)
-
-如果您想要自行實驗並嘗試其他更多查詢，請隨意嘗試。 了解您可以使用邏輯運算子 (and、or、not) 和比較運算子 (eq、ne、gt、lt、ge、le)。 字串比較是區分大小寫的。
-
-`$filter` 參數只能與在索引建立期間標記為可篩選的中繼資料一起使用。
+成功刪除時會傳回狀態碼 204。
 
 ## <a name="clean-up-resources"></a>清除資源
 
-在完成教學課程後，最快速的清除方式是刪除包含 Azure 搜尋服務的資源群組。 您現在可以刪除資源群組，以永久刪除當中所包含的所有項目。 在入口網站中，資源群組名稱位在 Azure 搜尋服務的 [概觀] 頁面上。
+如果您使用自己的訂用帳戶，當專案結束時，建議您移除不再需要的資源。 讓資源繼續執行可能會產生費用。 您可以個別刪除資源，或刪除資源群組以刪除整組資源。
+
+您可以使用左導覽窗格中的 [所有資源] 或 [資源群組] 連結，在入口網站中尋找和管理資源。
 
 ## <a name="next-steps"></a>後續步驟
 
-有數種方法和多個選項可用於編製 JSON Blob 的索引。 下一個步驟中，檢閱及測試各種不同的選項，以查看最適合您的案例。
+現在您已熟悉 Azure Blob 索引編製的基本概念，接下來我們將進一步了解 Azure 儲存體中 JSON Blob 的索引子設定。
 
 > [!div class="nextstepaction"]
-> [如何使用 Azure 搜尋服務 Blob 索引子編製 JSON Blob 的索引](search-howto-index-json-blobs.md)
+> [設定 JSON Blob 索引編製](search-howto-index-json-blobs.md)

@@ -2,21 +2,25 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-origin.date: 11/27/2018
-ms.date: 12/26/2018
-ms.author: v-junlch
-ms.openlocfilehash: db7cf0ee5fa7d89e6072249396b3f969c380dfb6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 11/27/2018
+ms.author: glenga
+ms.openlocfilehash: 85fbd7a65fe19e785488714411d671c8ee29ab40
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60730528"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77562052"
 ---
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-完成快速入門文章：
+# <a name="c"></a>[C#](#tab/csharp)
 
-- [使用 C# 建立第一個長期函式](../articles/azure-functions/durable/durable-functions-create-first-csharp.md)
-- [使用 JavaScript 建立第一個長期函式](../articles/azure-functions/durable/quickstart-js-vscode.md)
+* [完成快速入門文章](../articles/azure-functions/durable/durable-functions-create-first-csharp.md)
+* [從 GitHub 複製或下載範例專案](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/precompiled)
 
-<!-- ms.date: 12/26/2018 -->
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+* [完成快速入門文章](../articles/azure-functions/durable/quickstart-js-vscode.md)
+* [從 GitHub 複製或下載範例專案](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/javascript)
+
+---

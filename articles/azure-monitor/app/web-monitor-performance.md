@@ -1,24 +1,14 @@
 ---
 title: 使用 Application Insights 來監視應用程式的健康情況和流量
 description: 開始使用 Application Insights。 分析內部部署或 Microsoft Azure 應用程式的使用情況、可用性和效能。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 40650472-e860-4c1b-a589-9956245df307
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: d7b8037f50fc4877fe233925f3e922648169f73b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 873fc41585c387246d83008a8f97d6c4d9a32c3b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60372998"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80985060"
 ---
 # <a name="monitor-performance-in-web-applications"></a>監視 Web 應用程式的效能
 
@@ -29,16 +19,15 @@ Application Insights 可以監視 Java 和 ASP.NET Web 應用程式與服務、W
 
 用戶端方面，Application Insights 可從網頁及各種裝置 (包括 iOS、Android 和 Windows 市集應用程式) 上取得遙測。
 
-## <a name="setup"></a>設定效能監視
+## <a name="set-up-performance-monitoring"></a><a name="setup"></a>設定效能監視
 如果您尚未將 Application Insights 新增至專案中 (亦即專案沒有 ApplicationInsights.config)，請選擇以下任一種方法來開始使用：
 
 * [ASP.NET Web 應用程式](../../azure-monitor/app/asp-net.md)
   * [加入例外狀況監視](../../azure-monitor/app/asp-net-exceptions.md)
   * [加入相依性監視](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Java EE Web 應用程式](../../azure-monitor/app/java-get-started.md)
-  * [加入相依性監視](../../azure-monitor/app/java-agent.md)
+* [Java EE Web 應用程式](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
 
-## <a name="view"></a>探索效能度量
+## <a name="exploring-performance-metrics"></a><a name="view"></a>探索效能度量
 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至您為應用程式設定的 Application Insights 資源。 概觀刀鋒視窗會顯示基本的效能資料：
 
 按一下任一圖表可查看詳細資料，也能查看較長期的結果。 例如，按一下 [要求] 磚，然後選取時間範圍：
@@ -52,7 +41,7 @@ Application Insights 可以監視 Java 和 ASP.NET Web 應用程式與服務、W
 > [!NOTE]
 > **取消核取所有度量** 可查看所有可供選擇的項目。 度量分為多個群組；當您選取群組的任何成員時，只有該群組的其他成員會出現。
 
-## <a name="metrics"></a>這具有哪些意義？ 效能磚和報告
+## <a name="what-does-it-all-mean-performance-tiles-and-reports"></a><a name="metrics"></a>這具有哪些意義？ 效能磚和報告
 您可以取用多種效能計量。 我們從預設顯示在應用程式分頁中的度量開始討論。
 
 ### <a name="requests"></a>Requests
@@ -103,16 +92,16 @@ HTTP 要求包括分頁、資料及映像的所有 GET 或 POST 要求。
 
 請小心注意系統要求您輸入臨界值時所使用的單位。
 
-<bpt id="p1">*</bpt>I don't see the Add Alert button.<ept id="p1">*</ept> 我沒有看到 [新增警示] 按鈕 - 您只擁有此群組帳戶的唯讀權限嗎？ 請洽詢帳戶管理員。
+*我看不到 [新增警示] 按鈕。* 我沒有看到 [新增警示] 按鈕 - 您只擁有此群組帳戶的唯讀權限嗎？ 請洽詢帳戶管理員。
 
-## <a name="diagnosis"></a>診斷問題
+## <a name="diagnosing-issues"></a><a name="diagnosis"></a>診斷問題
 以下是幾個尋找及診斷效能問題的訣竅：
 
 * 設定 [Web 測試][availability]，以在網站故障、回應異常或過於緩慢時收到警示。 
 * 比較要求計數與其他度量，了解失敗或回應過慢的情況是否與負載有關。
 * 在程式碼中[插入及搜尋追蹤陳述式][diagnostic]有助於找出問題所在。
 * 使用[即時計量資料流][livestream]監視作業中的 Web 應用程式。
-* 擷取您的.NET 應用程式的狀態[快照集偵錯工具][snapshot]。
+* 使用[快照偵錯工具][snapshot]來捕獲 .net 應用程式的狀態。
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>使用效能調查體驗尋找及修正效能瓶頸
 
@@ -139,7 +128,7 @@ HTTP 要求包括分頁、資料及映像的所有 GET 或 POST 要求。
 ![取得客戶/詳細資料，7 天範圍的時段中三個持續時間高峰](./media/web-monitor-performance/Performance30DayOveralllnsights.png)
 
 
-## <a name="next"></a>接續步驟
+## <a name="next-steps"></a><a name="next"></a>後續步驟
 [Web 測試][availability] - 定期從全世界傳送 Web 要求給應用程式。
 
 [擷取及搜尋診斷追蹤][diagnostic] - 插入追蹤呼叫並詳查結果，以便找出問題所在。

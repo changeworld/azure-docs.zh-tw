@@ -1,4 +1,4 @@
-- name: Azure Sentinel 預覽文件
+- name: Azure Sentinel 文件
   href: index.yml
 - name: 概觀
   href: overview.md
@@ -11,63 +11,129 @@
       href: quickstart-get-visibility.md
 - name: 教學課程
   items:
-    - name: 偵測可疑威脅
-      href: tutorial-detect-threats.md
-    - name: 調查案例
+    - name: 使用內建分析偵測威脅
+      href: tutorial-detect-threats-built-in.md
+    - name: 建立自訂規則以偵測威脅
+      href: tutorial-detect-threats-custom.md
+    - name: 監視您的資料
+      href: tutorial-monitor-your-data.md
+    - name: 調查事件
       href: tutorial-investigate-cases.md
     - name: 回應威脅
       href: tutorial-respond-threats-playbook.md
-- name: 使用說明指南
+- name: 概念
+  items:
+    - name: 使用角色指派權限
+      href: roles.md
+    - name: 進階多階段攻擊偵測
+      href: fusion.md
+    - name: 跨工作區和租用戶擴充 Azure Sentinel
+      href: extend-sentinel-across-workspaces-tenants.md
+- name: 操作指南
   items:
     - name: 連線資料來源
       href: connect-data-sources.md
       items:
-        - name: 連線 Microsoft 服務
+        - name: 連線服務對服務
           items:
-            - name: 連線 Azure AD
+            - name: AWS CloudTrail
+              href: connect-aws.md
+            - name: Azure Active Directory
               href: connect-azure-active-directory.md
-            - name: 連線 Office 365
+            - name: Microsoft 365
               href: connect-office-365.md
-            - name: 連線 Microsoft Cloud App Security
+            - name: Cloud App Security
               href: connect-cloud-app-security.md
-            - name: 連線 Azure 活動記錄
+            - name: Azure 活動記錄檔
               href: connect-azure-activity.md
-            - name: 連線 Azure AD Identity Protection
+            - name: Azure AD Identity Protection
               href: connect-azure-ad-identity-protection.md
-            - name: 連線 Azure 資訊保護
+            - name: Azure 資訊保護
               href: connect-azure-information-protection.md
-            - name: 連線 Azure ATP
+            - name: Microsoft Defender ATP
+              href: connect-microsoft-defender-advanced-threat-protection.md
+            - name: Azure ATP
               href: connect-azure-atp.md
-            - name: 連線 Azure 資訊安全中心
+            - name: Azure 資訊安全中心
               href: connect-azure-security-center.md
-            - name: 連線 Microsoft Web 應用程式防火牆
+            - name: IoT 的 Azure 資訊安全中心
+              href: connect-asc-iot.md
+            - name: 網域名稱伺服器
+              href: connect-dns.md
+            - name: Microsoft Web 應用程式防火牆
               href: connect-microsoft-waf.md
-            - name: 連線 Windows 防火牆
+            - name: Windows 防火牆
               href: connect-windows-firewall.md
-            - name: 連線 Windows 安全性事件
+            - name: Windows 安全性事件
               href: connect-windows-security-events.md
         - name: 連線外部解決方案
           items:
-            - name: 連線一般 CEF
-              href: connect-common-event-format.md
-            - name: 連線 Barracuda
+            - name: Alcide kAudit
+              href: connect-alcide-kaudit.md
+            - name: Barracuda WAF
               href: connect-barracuda.md
-            - name: 連線檢查點
-              href: connect-checkpoint.md
-            - name: 連線 Palo Alto 網路
-              href: connect-paloalto.md
-            - name: 連線 Fortinet
-              href: connect-fortinet.md
-            - name: 連線 F5
-              href: connect-f5.md
-            - name: 連線 Syslog
-              href: connect-syslog.md
-            - name: 連線 Symantec ICDX
+            - name: Barracuda CloudGen Firewall
+              href: connect-barracuda-cloudgen-firewall.md
+            - name: Citrix Analytics (Security)
+              href: connect-citrix-analytics.md
+            - name: F5 BIG-IP
+              href: connect-f5-big-ip.md
+            - name: Forcepoint DLP
+              href: connect-forcepoint-dlp.md
+            - name: 周邊 81 個記錄
+              href: connect-perimeter-81-logs.md
+            - name: Squadra Technologies secRMM
+              href: connect-squadra-secrmm.md
+            - name: Symantec ICDX
               href: connect-symantec.md
-            - name: 連線 Cisco
-              href: connect-cisco.md
+            - name: syslog
+              href: connect-syslog.md
+            - name: Zimperium Mobile Threat Defense
+              href: connect-zimperium-mtd.md
+            - name: CEF 型解決方案
+              href: connect-common-event-format.md
+              items:
+                - name: 步驟 1 部署記錄轉寄站
+                  href: connect-cef-agent.md
+                - name: 步驟 2 設定您的安全性解決方案
+                  href: connect-cef-solution-config.md
+                  items:
+                    - name: AI Vectra Detect
+                      href: connect-ai-vectra-detect.md
+                    - name: Check Point
+                      href: connect-checkpoint.md
+                    - name: Cisco ASA
+                      href: connect-cisco.md
+                    - name: ExtraHop Reveal(x)
+                      href: connect-extrahop.md
+                    - name: F5 ASM
+                      href: connect-f5.md
+                    - name: 'Forcepoint CASB, NGFW'
+                      href: connect-forcepoint-casb-ngfw.md
+                    - name: Fortinet
+                      href: connect-fortinet.md
+                    - name: One Identity Safeguard
+                      href: connect-one-identity.md
+                    - name: Palo Alto Networks
+                      href: connect-paloalto.md
+                    - name: Trend Micro Deep Security
+                      href: connect-trend-micro.md
+                    - name: Zscaler
+                      href: connect-zscaler.md
+                - name: 步驟 3 驗證連線能力
+                  href: connect-cef-verify.md
         - name: 連線威脅情報
           href: connect-threat-intelligence.md
+        - name: 連線 Azure Stack VM
+          href: connect-azure-stack.md
+    - name: 使用多個租用戶 (MSSP)
+      href: multiple-tenants-service-providers.md
+    - name: 使用多個工作區中的事件
+      href: multiple-workspace-view.md
+    - name: 設定客戶管理的金鑰 (CMK)
+      href: customer-managed-keys.md
+    - name: 從警示建立事件
+      href: create-incidents-from-alerts.md
     - name: 搜捕
       href: hunting.md
       items:
@@ -75,15 +141,19 @@
           href: notebooks.md
         - name: 書籤來搜捕
           href: bookmarks.md
-    - name: 啟用融合
-      href: connect-fusion.md
+        - name: 使用 Livestream 搜捕
+          href: livestream.md
+    - name: 移除 Azure Sentinel
+      href: offboard.md
 - name: 資源
   items:
     - name: 有用的資源
       href: resources.md
     - name: Azure 藍圖
-      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+      href: 'https://azure.microsoft.com/updates/?updateType=security&category=security&query=sentinel'
     - name: Azure 安全性、隱私權和相容性部落格
       href: 'https://blogs.msdn.com/b/azuresecurity/'
     - name: 區域可用性
-      href: 'https://azure.microsoft.com/regions/services/'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-sentinel'
+    - name: 定價
+      href: 'https://azure.microsoft.com/pricing/details/azure-sentinel/'

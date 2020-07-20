@@ -1,23 +1,14 @@
 ---
 title: 使用 Application Insights 監視 SharePoint 網站
 description: 開始使用新的檢測金鑰監視新的應用程式
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 2bfe5910-d673-4cf6-a5c1-4c115eae1be0
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: mbullwin
-ms.openlocfilehash: 027d5485b29deb434953470023d8a290cc0af58a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b9b31a715b19d6c06cbddb91c0bd9279088c4447
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60784554"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221046"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>使用 Application Insights 監視 SharePoint 網站
 Azure Application Insights 會監視應用程式的可用性、效能和使用情況。 您將在這裡深入了解如何針對 SharePoint 網站進行設定。
@@ -40,17 +31,15 @@ and before any other scripts. Your first data will appear
 automatically in just a few seconds.
 -->
 <script type="text/javascript">
-var appInsights=window.appInsights||function(a){
-  function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
-  }({
-      instrumentationKey:"<your instrumentation key>"
-  });
-  
-window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
+var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(n){var o={config:n,initialize:!0},t=document,e=window,i="script";setTimeout(function(){var e=t.createElement(i);e.src=n.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",t.getElementsByTagName(i)[0].parentNode.appendChild(e)});try{o.cookie=t.cookie}catch(e){}function a(n){o[n]=function(){var e=arguments;o.queue.push(function(){o[n].apply(o,e)})}}o.queue=[],o.version=2;for(var s=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];s.length;)a("track"+s.pop());var r="Track",c=r+"Page";a("start"+c),a("stop"+c);var u=r+"Event";if(a("start"+u),a("stop"+u),a("addTelemetryInitializer"),a("setAuthenticatedUserContext"),a("clearAuthenticatedUserContext"),a("flush"),o.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4},!(!0===n.disableExceptionTracking||n.extensionConfig&&n.extensionConfig.ApplicationInsightsAnalytics&&!0===n.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){a("_"+(s="onerror"));var p=e[s];e[s]=function(e,n,t,i,a){var r=p&&p(e,n,t,i,a);return!0!==r&&o["_"+s]({message:e,url:n,lineNumber:t,columnNumber:i,error:a}),r},n.autoExceptionInstrumented=!0}return o}(
+{
+  instrumentationKey:"INSTRUMENTATION_KEY"
+}
+);(window[aiName]=aisdk).queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
 </script>
 ```
 
-在您想要追蹤之每一個頁面的 &lt;/head&gt; 標記前插入指令碼。如果您的網站有主版頁面，您可以那裡放入指令碼。 例如，在 ASP.NET MVC 專案中，可放在 View\Shared\_Layout.cshtml 中
+將腳本插入 &lt; &gt; 您要追蹤之每個頁面的/head 標記之前。如果您的網站有主版頁面，您可以將腳本放在該處。 例如，在 ASP.NET MVC 專案中，可放在 View\Shared\_Layout.cshtml 中
 
 指令碼包含檢測金鑰，會將遙測導向您的 Application Insights 資源。
 
@@ -60,18 +49,18 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 
 簽出主要頁面，並且使用 SharePoint Designer 或任何其他編輯器來編輯。
 
-![](./media/sharepoint/03-master.png)
+![螢幕擷取畫面：顯示如何使用 Sharepoint 設計工具或其他編輯器編輯主版頁面。](./media/sharepoint/03-master.png)
 
-在 </head> 標記之前加入程式碼。 
+將程式碼新增至 </head> 的相片或視訊。 
 
-![](./media/sharepoint/04-code.png)
+![螢幕擷取畫面：顯示要將程式碼新增至網站頁面的位置。](./media/sharepoint/04-code.png)
 
 #### <a name="or-on-individual-pages"></a>或在個別的頁面上
 若要監視一組有限的頁面，將指令碼個別加入至每個頁面。 
 
 插入網頁組件並在其中嵌入程式碼片段。
 
-![](./media/sharepoint/05-page.png)
+![螢幕擷取畫面：顯示新增腳本以監視有限的一組頁面。](./media/sharepoint/05-page.png)
 
 ## <a name="view-data-about-your-app"></a>檢視應用程式相關的資料
 重新部署您的應用程式。
@@ -80,7 +69,7 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 
 前幾個事件將出現在搜尋中。 
 
-![](./media/sharepoint/09-search.png)
+![螢幕擷取畫面：顯示您可以在應用程式中查看的新資料。](./media/sharepoint/09-search.png)
 
 如果您預期有更多資料，請在幾秒之後按一下 [重新整理]。
 
@@ -89,7 +78,7 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 
 1. 從 Application Insights 中的 [Essentials] 下拉式清單複製您應用程式的檢測金鑰。 
 
-    ![](./media/sharepoint/02-props.png)
+    ![螢幕擷取畫面：顯示如何從 Application Insights 中的 [基本功能] 下拉式清單複製應用程式的檢測。](./media/sharepoint/02-props.png)
 
 1. 使用檢測金鑰替換下列程式碼片段中的 'XXXX'。 
 2. 在您的 SharePoint 應用程式中內嵌指令碼，而非您從入口網站取得的程式碼片段。

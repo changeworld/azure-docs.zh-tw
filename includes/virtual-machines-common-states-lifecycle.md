@@ -9,13 +9,13 @@ ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
 ms.openlocfilehash: 57f557a812ec5e4eea75b76ca1394ca360a85d30
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60419963"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67173918"
 ---
-Azure 虛擬機器 (VM) 會經歷不同狀態，這些狀態可以分成「佈建」和「電源」狀態。 本文的目的是要說明這些狀態，並具體指出何時會向客戶收取執行個體使用量費用。 
+Azure 虛擬機器 (VM) 會經歷不同狀態，這些狀態可以分成「佈建」** 和「電源」** 狀態。 本文的目的是要說明這些狀態，並具體指出何時會向客戶收取執行個體使用量費用。 
 
 ## <a name="power-states"></a>電源狀態
 
@@ -71,7 +71,7 @@ State
  ]</code><br>
 </td>
 <td>
-<p><b>會計費</b></p>
+<p><b>支付</b></p>
 </td>
 </tr>
 <tr>
@@ -89,7 +89,7 @@ State
  ]</code><br>
 </td>
 <td>
-<p><b>會計費</b></p>
+<p><b>支付</b></p>
 </td>
 </tr>
 <tr>
@@ -196,7 +196,7 @@ State
 </tr>
 <tr>
 <td width="162">
-<p><b>更新中</b></p>
+<p><b>更新</b></p>
 </td>
 <td width="366">
 <code>"statuses": [<br>
@@ -244,7 +244,7 @@ State
  "displayStatus": "OS Provisioning Complete"<br>
  }<br>
 ]</code><br>
-<p><b>注意</b>：如果發生 OS 失敗或 OS 未及時安裝，則 OS 佈建會過渡為**失敗**狀態。 客戶必須就基礎結構上已部署的 VM 支付費用。</p>
+<p><b>附註</b>：如果發生 OS 失敗或 OS 未及時安裝，則 OS 佈建會過渡為**失敗**狀態。 客戶必須就基礎結構上已部署的 VM 支付費用。</p>
 </td>
 </tr>
 </table>

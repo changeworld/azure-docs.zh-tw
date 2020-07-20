@@ -1,27 +1,26 @@
 ---
-title: 疑難排解 「 您無法從這裡前往該處 」 的錯誤-Azure Active Directory |Microsoft Docs
-description: 針對您收到「您無法從這裡完成」錯誤訊息的可能原因進行疑難排解。
+title: 修正「您無法從這裡完成」錯誤 - Azure AD
+description: 尋找為何會收到「您無法從這裡完成」錯誤訊息的可能修正。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 10/10/2018
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a317680a39d4594aacdf84ccdf963bb84bfbf07b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: b76e84f6ae2449347604ab823fde5b74d5c68f07
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60473771"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83741003"
 ---
-# <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>「您無法從這裡完成」錯誤訊息的可能原因
+# <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>「您無法從這裡完成」錯誤訊息的可能修正
+
 存取貴組織的內部 Web 應用程式或服務時收到錯誤訊息，指出：**您無法從這裡完成**。 此訊息表示貴組織已讓原則就位，防止您的裝置存取貴組織的資源。 雖然最終您可能還是需要連絡技術服務人員來修正此問題，但是以下是您可以先嘗試的一些動作。
 
 ## <a name="make-sure-youre-using-a-supported-browser"></a>請確定您使用的是受支援的瀏覽器
@@ -29,7 +28,7 @@ ms.locfileid: "60473771"
 
 ![與瀏覽器支援相關的錯誤訊息](media/user-help-device-remediation/browser-version.png)
 
-若要修正此問題，您必須根據您的作業系統，安裝並執行支援的瀏覽器。 如果您使用 Windows 10，支援的瀏覽器包括 Microsoft Edge、Internet Explorer 和 Google Chrome。 如果您使用不同的作業系統，可以檢查[支援的瀏覽器](../conditional-access/technical-reference.md#supported-browsers)的完整清單。
+若要修正此問題，您必須根據您的作業系統，安裝並執行支援的瀏覽器。 如果您使用 Windows 10，支援的瀏覽器包括 Microsoft Edge、Internet Explorer 和 Google Chrome。 如果您使用不同的作業系統，可以檢查[支援的瀏覽器](../conditional-access/concept-conditional-access-conditions.md#supported-browsers)的完整清單。
 
 ## <a name="make-sure-youre-using-a-supported-operating-system"></a>請確定您使用支援的作業系統
 請確定您執行支援版本的作業系統，包括：
@@ -50,7 +49,7 @@ ms.locfileid: "60473771"
 ![與您是否在網路上相關的錯誤訊息](media/user-help-device-remediation/network-version.png)
 
 ### <a name="to-check-whether-your-device-is-joined-to-your-network"></a>若要檢查您的裝置是否已加入您的網路
-1. 使用您的公司或學校帳戶，登入 Windows。 例如： alain@contoso.com。
+1. 使用您的公司或學校帳戶，登入 Windows。 例如： alain@contoso.com 。
 
 2. 透過虛擬私人網路 (VPN) 或 DirectAccess 連線到貴組織的網路。
 

@@ -13,17 +13,17 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 15d2f16b2c4133e40c7f77390e83504397c47980
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.openlocfilehash: a1da207a295b40f8d455635d687083bf69e90fdf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64868148"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67068898"
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>將現有的 blob 複製到媒體服務資產
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 至 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
 
 本文章說明如何使用 [Azure 媒體服務 .NET SDK 延伸模組](https://github.com/Azure/azure-sdk-for-media-services-extensions/)將 Blob 從儲存體帳戶複製到新的 Azure 媒體服務 (AMS) 資產。
 
@@ -47,7 +47,7 @@ ms.locfileid: "64868148"
 兩個媒體服務帳戶。 請參閱文章[如何建立媒體服務帳戶](media-services-portal-create-account.md)。
 
 ### <a name="download-sample"></a>下載範例
-用户可以执行本文中的步骤，也可以单击 [此处](https://azure.microsoft.com/documentation/samples/media-services-dotnet-copy-blob-into-asset/)下载包含本文所述代码的示例。
+您可以遵循本文中的步驟，或者您可以從[這裡](https://azure.microsoft.com/documentation/samples/media-services-dotnet-copy-blob-into-asset/)下載包含本文所述的程式碼範例。
 
 ### <a name="set-up-your-project"></a>設定專案
 
@@ -311,7 +311,7 @@ namespace CopyExistingBlobsIntoAsset
             // set the .ism file to be the primary file. 
             // If we, for example, copied an .mp4, then the mp4 would be the primary file. 
             var ismAssetFile = asset.AssetFiles.ToList().
-                Where(f => f.Name.EndsWith(".ism", StringComparison.OrdinalIgnoreCase)).ToArray().FirstOrDefault();
+                Where(f => f.Name.EndsWith(".ism", StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
 
             // The following code assigns the first .ism file as the primary file in the asset.
             // An asset should have one .ism file.  
@@ -377,7 +377,7 @@ namespace CopyExistingBlobsIntoAsset
 
 ## <a name="next-steps"></a>後續步驟
 
-您現在可以將上傳的資產編碼。 有关详细信息，请参阅[对资产进行编码](media-services-portal-encode.md)。
+您現在可以將上傳的資產編碼。 如需詳細資訊，請參閱 [為資產編碼](media-services-portal-encode.md)。
 
 您也可以使用 Azure Functions，以根據在所設定容器到達的檔案來觸發編碼作業。 如需詳細資訊，請參閱[此範例](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ )。
 

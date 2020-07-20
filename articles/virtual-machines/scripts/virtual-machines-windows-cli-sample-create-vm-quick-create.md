@@ -1,11 +1,10 @@
 ---
-title: Azure CLI 指令碼範例 - 快速建立 Windows Server 2016 VM | Microsoft Docs
+title: Azure CLI 指令碼範例 - 快速建立 Windows Server 2016 VM
 description: Azure CLI 指令碼範例 - 快速建立 Windows Server 2016 VM
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
-author: rickstercdn
-manager: jeconnoc
-editor: tysonn
+author: cynthn
+manager: gwallace
 tags: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -14,14 +13,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/23/2017
-ms.author: rickstercdn
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2f63bbc444367afdad32615d0f6132e8986a6160
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 46f630dc1b700659d047a31b5aa5905ef99d9cd0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670344"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "81459452"
 ---
 # <a name="quick-create-a-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 快速建立虛擬機器
 
@@ -47,7 +46,7 @@ az group delete --name myResourceGroup --yes
 
 此指令碼使用下列命令來建立資源群組、虛擬機器和所有相關資源。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | 建立用來存放所有資源的資源群組。 |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | 建立虛擬機器，並將它連線到網路卡、虛擬網路、子網路及網路安全性群組。 此命令也會指定要使用的虛擬機器映像和管理認證。  |

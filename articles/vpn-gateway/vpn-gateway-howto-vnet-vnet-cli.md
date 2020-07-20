@@ -1,26 +1,18 @@
 ---
-title: 使用 VNet 對 VNet 連線將虛擬網路連線至另一個 VNet︰Azure CLI | Microsoft Docs
+title: 使用 VNet 對 VNet 連線將 VNet 連線至 VNet： Azure CLI
 description: 使用 VNet 對 VNet 連線和 Azure CLI，將虛擬網路連在一起。
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+ms.topic: how-to
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: e18f37b31b7f0a49717e174d8a20d56388ad4808
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: e93bae91827b2807ef577d7659924a5d37454fa4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60411785"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987117"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>使用 Azure CLI 設定 VNet 對 VNet 的 VPN 閘道連線
 
@@ -29,16 +21,16 @@ ms.locfileid: "60411785"
 本文中的步驟適用於 Resource Manager 部署模型並使用 Azure CLI。 您也可從下列清單中選取不同的選項，以使用不同的部署工具或部署模型來建立此組態：
 
 > [!div class="op_single_selector"]
-> * [Azure 门户](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure 入口網站](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure 入口網站 (傳統)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
-> * [连接不同的部署模型 - Azure 门户](vpn-gateway-connect-different-deployment-models-portal.md)
+> * [連線不同的部署模型 - Azure 入口網站](vpn-gateway-connect-different-deployment-models-portal.md)
 > * [連線不同的部署模型 - PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 >
 >
 
-## <a name="about"></a>關於連線 VNet
+## <a name="about-connecting-vnets"></a><a name="about"></a>關於連線 VNet
 
 VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連線方式。
 
@@ -54,7 +46,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
 
 建議您使用 VNet 對等互連來進行 VNet 連線。 VNet 對等互連不會使用 VPN 閘道，且具有不同的條件約束。 此外，[VNet 對等互連價格](https://azure.microsoft.com/pricing/details/virtual-network)與 [VNet 對 VNet VPN 閘道價格](https://azure.microsoft.com/pricing/details/vpn-gateway)的計算方式不同。 如需詳細資訊，請參閱 [VNet 對等互連](../virtual-network/virtual-network-peering-overview.md)。
 
-## <a name="why"></a>為何要建立 VNet 對 VNet 連線？
+## <a name="why-create-a-vnet-to-vnet-connection"></a><a name="why"></a>為何要建立 VNet 對 VNet 連線？
 
 基於下列原因，建議您使用 VNet 對 VNet 連線來進行虛擬網路連線：
 
@@ -68,67 +60,67 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
 
 您可以將 VNet 對 VNet 通訊與多站台組態結合。 這可讓您建立結合了跨單位連線與內部虛擬網路連線的網路拓撲。
 
-## <a name="steps"></a>我應該使用哪些 VNet 對 VNet 步驟？
+## <a name="which-vnet-to-vnet-steps-should-i-use"></a><a name="steps"></a>我應該使用哪些 VNet 對 VNet 步驟？
 
 在本文中，您會看到兩組不同的 VNet 對 VNet 連線步驟。 一組步驟適用於[位於相同訂用帳戶中的 VNet](#samesub)，一組步驟適用於[位於不同訂用帳戶中的 VNet](#difsub)。 
 
 在此練習中，您可以合併組態，或只選擇您需要使用的一個組態。 所有組態都會使用 VNet 對 VNet 連線類型。 網路流量會在彼此直接連線的 VNet 之間流動。 在此練習中，來自 TestVNet4 的流量不會路由傳送至 TestVNet5。
 
-* [位於相同訂用帳戶中的 VNet：](#samesub)此組態的步驟是使用 TestVNet1 和 TestVNet4。
+* [位於相同訂用帳戶中的 vnet：](#samesub)此設定的步驟會使用 TestVNet1 和 TestVNet4。
 
   ![v2v 圖表](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
 
-* [位於不同訂用帳戶中的 VNet：](#difsub)此組態的步驟使用 TestVNet1 和 TestVNet5。
+* [位於不同訂用帳戶中的 vnet：](#difsub)此設定的步驟會使用 TestVNet1 和 TestVNet5。
 
   ![v2v 圖表](./media/vpn-gateway-howto-vnet-vnet-cli/v2vdiffsub.png)
 
 
-## <a name="samesub"></a>與相同訂用帳戶中的 VNet 連線
+## <a name="connect-vnets-that-are-in-the-same-subscription"></a><a name="samesub"></a>與相同訂用帳戶中的 VNet 連線
 
 ### <a name="before-you-begin"></a>開始之前
 
 開始之前，請先安裝 CLI 命令的最新版本 (2.0 版或更新版本)。 如需關於安裝 CLI 命令的資訊，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
-### <a name="Plan"></a>規劃 IP 位址範圍
+### <a name="plan-your-ip-address-ranges"></a><a name="Plan"></a>規劃 IP 位址範圍
 
 在下列步驟中，您會建立兩個虛擬網路，以及它們各自的閘道子網路和組態。 接著建立這兩個 VNet 之間的 VPN 連線。 請務必規劃您的網路組態的 IP 位址範圍。 請記住，您必須先確定您的 VNet 範圍或區域網路範圍沒有以任何方式重疊。 在這些範例中，我們不會包含 DNS 伺服器。 如果您想要了解虛擬網路的名稱解析，請參閱[名稱解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
 
-示例中使用了以下值：
+我們會在範例中使用下列值：
 
-**TestVNet1 的值︰**
+**TestVNet1 的值：**
 
-* VNet 名稱：TestVNet1
-* 资源组：TestRG1
+* VNet 名稱︰TestVNet1
+* 資源群組︰TestRG1
 * 位置：美國東部
 * TestVNet1：10.11.0.0/16 和 10.12.0.0/16
 * FrontEnd：10.11.0.0/24
 * BackEnd：10.12.0.0/24
 * GatewaySubnet：10.12.255.0/27
 * GatewayName：VNet1GW
-* 公用 IP：VNet1GWIP
+* 公用 IP: VNet1GWIP
 * VPNType：RouteBased
 * Connection(1to4)：VNet1toVNet4
-* Connection(1to5)：VNet1toVNet5 (適用於不同訂用帳戶中的 VNet)
+* Connection(1to5)：VNet1toVNet5 (適用於不同訂用帳戶中的 Vnet)
 
-**TestVNet4 的值︰**
+**TestVNet4 的值：**
 
-* VNet 名稱：TestVNet4
+* VNet 名稱︰TestVNet4
 * TestVNet2：10.41.0.0/16 和 10.42.0.0/16
 * FrontEnd：10.41.0.0/24
 * BackEnd：10.42.0.0/24
 * GatewaySubnet：10.42.255.0/27
-* 资源组：TestRG4
+* 資源群組：TestRG4
 * 位置：美國西部
 * GatewayName：VNet4GW
 * 公用 IP：VNet4GWIP
 * VPNType：RouteBased
-* 连接：VNet4toVNet1
+* 連線︰VNet4toVNet1
 
-### <a name="Connect"></a>步驟 1 - 連線至您的訂用帳戶
+### <a name="step-1---connect-to-your-subscription"></a><a name="Connect"></a>步驟 1 - 連線至您的訂用帳戶
 
 [!INCLUDE [CLI login](../../includes/vpn-gateway-cli-login-numbers-include.md)]
 
-### <a name="TestVNet1"></a>步驟 2 - 建立及設定 TestVNet1
+### <a name="step-2---create-and-configure-testvnet1"></a><a name="TestVNet1"></a>步驟 2 - 建立及設定 TestVNet1
 
 1. 建立資源群組。
 
@@ -150,23 +142,23 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
    ```azurecli
    az network vnet subnet create --vnet-name TestVNet1 -n BackEnd -g TestRG1 --address-prefix 10.12.0.0/24 
    ```
-5. 建立閘道子網路。 請注意，閘道子網路會命名為 'GatewaySubnet'。 此名稱是必要的。 在此範例中，閘道子網路使用 /27。 雖然您可以建立小至 /29 的閘道子網路，我們建議您選取至少 /28 或 /27，建立包含更多位址的較大子網路。 这样便可以留出足够的地址，满足将来可能需要使用的其他配置。
+5. 建立閘道子網路。 請注意，閘道子網路會命名為 'GatewaySubnet'。 此名稱是必要的。 在此範例中，閘道子網路使用 /27。 雖然您可以建立小至 /29 的閘道子網路，我們建議您選取至少 /28 或 /27，建立包含更多位址的較大子網路。 這將允許足夠的位址，以容納您未來可能需要的其他組態。
 
    ```azurecli 
    az network vnet subnet create --vnet-name TestVNet1 -n GatewaySubnet -g TestRG1 --address-prefix 10.12.255.0/27
    ```
-6. 要求一個公用 IP 位址，以配置給您將建立給 VNet 使用的閘道。 請注意，AllocationMethod 是動態的。 您無法指定想要使用的 IP 位址。 它会动态分配到网关。
+6. 要求一個公用 IP 位址，以配置給您將建立給 VNet 使用的閘道。 請注意，AllocationMethod 是動態的。 您無法指定想要使用的 IP 位址。 該 IP 位址會以動態方式配置給您的閘道。
 
    ```azurecli
    az network public-ip create -n VNet1GWIP -g TestRG1 --allocation-method Dynamic
    ```
-7. 建立 TestVNet1 的虛擬網路閘道。 VNet 對 VNet 組態需要 RouteBased VpnType。 如果使用“--no-wait”参数运行该命令，则不会显示任何反馈或输出。 '--no-wait' 參數允許在背景中建立閘道。 它並不表示 VPN 閘道立即完成建立。 視您使用的閘道 SKU 而定，建立閘道通常可能需要 45 分鐘或更久的時間。
+7. 建立 TestVNet1 的虛擬網路閘道。 VNet 對 VNet 組態需要 RouteBased VpnType。 如果您使用 '--no-wait' 參數執行此命令，您不會看到任何意見反應或輸出。 '--no-wait' 參數允許在背景中建立閘道。 它並不表示 VPN 閘道立即完成建立。 視您使用的閘道 SKU 而定，建立閘道通常可能需要 45 分鐘或更久的時間。
 
    ```azurecli
    az network vnet-gateway create -n VNet1GW -l eastus --public-ip-address VNet1GWIP -g TestRG1 --vnet TestVNet1 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
    ```
 
-### <a name="TestVNet4"></a>步驟 3 - 建立及設定 TestVNet4
+### <a name="step-3---create-and-configure-testvnet4"></a><a name="TestVNet4"></a>步驟 3 - 建立及設定 TestVNet4
 
 1. 建立資源群組。
 
@@ -201,11 +193,11 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
    az network vnet-gateway create -n VNet4GW -l westus --public-ip-address VNet4GWIP -g TestRG4 --vnet TestVNet4 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
    ```
 
-### <a name="createconnect"></a>步驟 4 - 建立連線
+### <a name="step-4---create-the-connections"></a><a name="createconnect"></a>步驟 4 - 建立連線
 
 您現在有兩個具有 VPN 閘道的 VNet。 下一個步驟是建立虛擬網路閘道之間的 VPN 閘道連線。 如果您使用上述範例，則 VNet 閘道位於不同的資源群組。 當閘道位於不同的資源群組時，您必須在建立連線時，識別並指定每個閘道的資源識別碼。 如果 VNet 位於相同的資源群組，您可以使用[第二組指示](#samerg)，因為您不需要指定資源識別碼。
 
-### <a name="diffrg"></a>連線位於不同資源群組的 VNet
+### <a name="to-connect-vnets-that-reside-in-different-resource-groups"></a><a name="diffrg"></a>連線位於不同資源群組的 VNet
 
 1. 從下列命令的輸出取得 VNet1GW 的資源識別碼︰
 
@@ -244,7 +236,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
    az network vnet-gateway show -n VNet4GW -g TestRG4
    ```
 
-3. 创建 TestVNet1 到 TestVNet4 的连接。 在此步驟中，您會從 TestVNet1 建立連線至 TestVNet4。 範例會一個共用金鑰。 您可以使用自己的值，作為共用金鑰。 但請務必確認該共用金鑰必須適用於這兩個連線。 建立連線可能需要一段時間才能完成。
+3. 建立 TestVNet1 至 TestVNet4 的連線。 在此步驟中，您會從 TestVNet1 建立連線至 TestVNet4。 範例會一個共用金鑰。 您可以使用自己的值，作為共用金鑰。 但請務必確認該共用金鑰必須適用於這兩個連線。 建立連線可能需要一段時間才能完成。
 
    ```azurecli
    az network vpn-connection create -n VNet1ToVNet4 -g TestRG1 --vnet-gateway1 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW -l eastus --shared-key "aabbcc" --vnet-gateway2 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG4/providers/Microsoft.Network/virtualNetworkGateways/VNet4GW 
@@ -256,7 +248,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
    ```
 5. 確認您的連線。 請參閱[驗證您的連線](#verify)。
 
-### <a name="samerg"></a>與位於相同資源群組的 VNet 連線
+### <a name="to-connect-vnets-that-reside-in-the-same-resource-group"></a><a name="samerg"></a>與位於相同資源群組的 VNet 連線
 
 1. 建立 TestVNet1 至 TestVNet4 的連線。 在此步驟中，您會從 TestVNet1 建立連線至 TestVNet4。 請注意，在範例中的資源群組相同。 您也會看到範例使用一個共用金鑰。 您可以將自己的值使用於共用金鑰，不過，共用金鑰必須符合這兩個連線。 建立連線可能需要一段時間才能完成。
 
@@ -270,22 +262,22 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
    ```
 3. 確認您的連線。 請參閱[驗證您的連線](#verify)。
 
-## <a name="difsub"></a>與位於不同訂用帳戶的 VNet 連線
+## <a name="connect-vnets-that-are-in-different-subscriptions"></a><a name="difsub"></a>與位於不同訂用帳戶的 VNet 連線
 
 在此案例中，您會連接 TestVNet1 和 TestVNet5。 VNet 位於不同的訂用帳戶。 訂用帳戶不需與相同的 Active Directory 租用戶相關聯。 此設定的步驟會加入其他的 VNet 對 VNet 連線，以便將 TestVNet1 連接到 TestVNet5。
 
-### <a name="TestVNet1diff"></a>步驟 5 - 建立及設定 TestVNet1
+### <a name="step-5---create-and-configure-testvnet1"></a><a name="TestVNet1diff"></a>步驟 5 - 建立及設定 TestVNet1
 
-這些指示延續自前幾節中的步驟。 您必須完成[步驟 1](#Connect) 和[步驟 2](#TestVNet1)，以建立並設定 TestVNet1 和 TestVNet1 的 VPN 閘道。 在此設定中，您不需要建立前一節的 TestVNet4 ，雖然您若建立它，它就不與這些步驟發生衝突。 完成步驟 1 和步驟 2 後，繼續進行下面的步驟 6。
+這些指示延續自前幾節中的步驟。 您必須完成[步驟 1](#Connect)和[步驟 2](#TestVNet1) ，才能建立及設定 TestVNet1 和 TestVNet1 的 VPN 閘道。 在此設定中，您不需要建立前一節的 TestVNet4 ，雖然您若建立它，它就不與這些步驟發生衝突。 完成步驟 1 和步驟 2 後，繼續進行下面的步驟 6。
 
-### <a name="verifyranges"></a>步驟 6 - 驗證 IP 位址範圍
+### <a name="step-6---verify-the-ip-address-ranges"></a><a name="verifyranges"></a>步驟 6 - 驗證 IP 位址範圍
 
-建立其他連線時，請務必確認新虛擬網路的 IP 位址空間不會與任何其他 VNet 範圍或區域網路閘道範圍重疊。 对于本练习，可以对 TestVNet5 使用以下值：
+建立其他連線時，請務必確認新虛擬網路的 IP 位址空間不會與任何其他 VNet 範圍或區域網路閘道範圍重疊。 在這個練習中，您可以對 TestVNet5 使用下列的值：
 
 **TestVNet5 的值︰**
 
-* VNet 名稱：TestVNet5
-* 资源组：TestRG5
+* VNet 名稱︰TestVNet5
+* 資源群組：TestRG5
 * 位置：日本東部
 * TestVNet5：10.51.0.0/16 和 10.52.0.0/16
 * FrontEnd：10.51.0.0/24
@@ -294,12 +286,12 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
 * GatewayName：VNet5GW
 * 公用 IP：VNet5GWIP
 * VPNType：RouteBased
-* 连接：VNet5toVNet1
+* 連線︰VNet5toVNet1
 * ConnectionType：VNet2VNet
 
-### <a name="TestVNet5"></a>步驟 7 - 建立及設定 TestVNet5
+### <a name="step-7---create-and-configure-testvnet5"></a><a name="TestVNet5"></a>步驟 7 - 建立及設定 TestVNet5
 
-在新訂用帳戶 (訂用帳戶 5) 的內容中，必須完成這個步驟。 此部分可能會由不同組織中擁有訂用帳戶的系統管理員執行。 若要使用訂用帳戶之間切換`az account list --all`若要列出您帳戶使用的訂用帳戶，然後使用`az account set --subscription <subscriptionID>`切換至您想要使用的訂用帳戶。
+在新訂用帳戶 (訂用帳戶 5) 的內容中，必須完成這個步驟。 此部分可能會由不同組織中擁有訂用帳戶的系統管理員執行。 若要在訂閱之間切換 `az account list --all` ，請使用來列出您的帳戶可用的訂閱，然後使用 `az account set --subscription <subscriptionID>` 切換至您想要使用的訂用帳戶。
 
 1. 確定您已連線到訂用帳戶 5，然後建立資源群組。
 
@@ -312,7 +304,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
    az network vnet create -n TestVNet5 -g TestRG5 --address-prefix 10.51.0.0/16 -l japaneast --subnet-name FrontEnd --subnet-prefix 10.51.0.0/24
    ```
 
-3. 添加子网。
+3. 新增子網路。
 
    ```azurecli
    az network vnet update -n TestVNet5 --address-prefixes 10.51.0.0/16 10.52.0.0/16 -g TestRG5
@@ -336,9 +328,9 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
    az network vnet-gateway create -n VNet5GW -l japaneast --public-ip-address VNet5GWIP -g TestRG5 --vnet TestVNet5 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
    ```
 
-### <a name="connections5"></a>步驟 8 - 建立連線
+### <a name="step-8---create-the-connections"></a><a name="connections5"></a>步驟 8 - 建立連線
 
-此步驟會分成標示為 **[訂用帳戶 1]** 和 **[訂用帳戶 5]** 的兩個 CLI 工作階段，因為閘道位於不同的訂用帳戶。 若要使用訂用帳戶之間切換`az account list --all`若要列出您帳戶使用的訂用帳戶，然後使用`az account set --subscription <subscriptionID>`切換至您想要使用的訂用帳戶。
+此步驟會分成標示為 **[訂用帳戶 1]** 和 **[訂用帳戶 5]** 的兩個 CLI 工作階段，因為閘道位於不同的訂用帳戶。 若要在訂閱之間切換 `az account list --all` ，請使用來列出您的帳戶可用的訂閱，然後使用 `az account set --subscription <subscriptionID>` 切換至您想要使用的訂用帳戶。
 
 1. **[訂用帳戶 1]** 登入並連線到訂用帳戶 1。 執行下列命令，從輸出中取得閘道的名稱和識別碼︰
 
@@ -346,15 +338,15 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
    az network vnet-gateway show -n VNet1GW -g TestRG1
    ```
 
-   复制 "id:" 的输出。 透過電子郵件或其他方法，將 VNet 閘道 (VNet1GW) 的識別碼和名稱傳送給訂用帳戶 5 的系統管理員。
+   複製 "id:" 的輸出。 透過電子郵件或其他方法，將 VNet 閘道 (VNet1GW) 的識別碼和名稱傳送給訂用帳戶 5 的系統管理員。
 
-   示例输出：
+   範例輸出︰
 
    ```
    "id": "/subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW"
    ```
 
-2. **[訂用帳戶 5]** 登入並連線到訂用帳戶 5。 运行以下命令，从输出中获取网关的名称和 ID：
+2. **[訂用帳戶 5]** 登入並連線到訂用帳戶 5。 執行下列命令，從輸出中取得閘道的名稱和識別碼︰
 
    ```azurecli
    az network vnet-gateway show -n VNet5GW -g TestRG5
@@ -362,7 +354,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
 
    複製 "id:" 的輸出。 透過電子郵件或其他方法，將 VNet 閘道 (VNet5GW) 的識別碼和名稱傳送給訂用帳戶 1 的系統管理員。
 
-3. **[訂用帳戶 1]** 在此步驟中，您會從 TestVNet1 建立連線至 TestVNet5。 您可以將自己的值使用於共用金鑰，不過，共用金鑰必須符合這兩個連線。 建立連線可能需要一段時間才能完成。 確定您已連接到訂用帳戶 1。
+3. **[訂用帳戶 1]** 在此步驟中，您會從 TestVNet1 建立連線至 TestVNet5。 您可以將自己的值使用於共用金鑰，不過，共用金鑰必須符合這兩個連線。 建立連線可能需要一段時間才能完成。確定您已連接到訂用帳戶 1。
 
    ```azurecli
    az network vpn-connection create -n VNet1ToVNet5 -g TestRG1 --vnet-gateway1 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW -l eastus --shared-key "eeffgg" --vnet-gateway2 /subscriptions/e7e33b39-fe28-4822-b65c-a4db8bbff7cb/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW
@@ -374,12 +366,12 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
    az network vpn-connection create -n VNet5ToVNet1 -g TestRG5 --vnet-gateway1 /subscriptions/e7e33b39-fe28-4822-b65c-a4db8bbff7cb/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW -l japaneast --shared-key "eeffgg" --vnet-gateway2 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW
    ```
 
-## <a name="verify"></a>驗證連線
+## <a name="verify-the-connections"></a><a name="verify"></a>驗證連線
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
 [!INCLUDE [verify connections](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
 
-## <a name="faq"></a>VNet 對 VNet 常見問題集
+## <a name="vnet-to-vnet-faq"></a><a name="faq"></a>VNet 對 VNet 常見問題集
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
 ## <a name="next-steps"></a>後續步驟

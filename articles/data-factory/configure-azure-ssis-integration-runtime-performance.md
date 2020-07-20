@@ -1,5 +1,5 @@
 ---
-title: 設定 Azure-SSIS Integration Runtime 效能 | Microsoft Docs
+title: 設定 Azure SSIS Integration Runtime 的效能
 description: 了解如何設定 Azure-SSIS Integration Runtime 的屬性，以獲得高效能
 services: data-factory
 ms.date: 01/10/2018
@@ -9,15 +9,18 @@ ms.workload: data-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
-manager: craigg
-ms.openlocfilehash: 42c69653a002446552da998320a43730dfdaadf5
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+manager: anandsub
+ms.openlocfilehash: 6a3b463196142691a59f625429953d1e82502f3d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65232514"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255529"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>設定 Azure-SSIS Integration Runtime 以獲得高效能
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 
 本文說明如何設定 Azure-SSIS Integration Runtime (IR) 以獲得高效能。 Azure-SSIS IR 可讓您在 Azure 中部署及執行 SQL Server Integration Services (SSIS) 套件。 如需 Azure-SSIS IR 的詳細資訊，請參閱[整合執行階段](concepts-integration-runtime.md#azure-ssis-integration-runtime)一文。 如需在 Azure 上部署及執行 SSIS 套件的相關資訊，請參閱[將 SQL Server Integration Services 工作負載隨即轉移至雲端](/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview)。
 
@@ -48,25 +51,25 @@ $AzureSSISNodeNumber = 2
 # Azure-SSIS IR edition/license info: Standard or Enterprise
 $AzureSSISEdition = "Standard" # Standard by default, while Enterprise lets you use advanced/premium features on your Azure-SSIS IR
 # Azure-SSIS IR hybrid usage info: LicenseIncluded or BasePrice
-$AzureSSISLicenseType = "LicenseIncluded" # LicenseIncluded by default, while BasePrice lets you bring your own on-premises SQL Server license with Software Assurance to earn cost savings from Azure Hybrid Benefit (AHB) option
+$AzureSSISLicenseType = "LicenseIncluded" # LicenseIncluded by default, while BasePrice lets you bring your existing SQL Server license with Software Assurance to earn cost savings from Azure Hybrid Benefit (AHB) option
 # For a Standard_D1_v2 node, up to 4 parallel executions per node are supported, but for other nodes, up to max(2 x number of cores, 8) are currently supported
 $AzureSSISMaxParallelExecutionsPerNode = 8
 # Custom setup info
 $SetupScriptContainerSasUri = "" # OPTIONAL to provide SAS URI of blob container where your custom setup script and its associated files are stored
 # Virtual network info: Classic or Azure Resource Manager
-$VnetId = "[your virtual network resource ID or leave it empty]" # REQUIRED if you use Azure SQL Database with virtual network service endpoints/Managed Instance/on-premises data, Azure Resource Manager virtual network is recommended, Classic virtual network will be deprecated soon
-$SubnetName = "[your subnet name or leave it empty]" # WARNING: Please use the same subnet as the one used with your Azure SQL Database with virtual network service endpoints or a different subnet than the one used for your Managed Instance
+$VnetId = "[your virtual network resource ID or leave it empty]" # REQUIRED if you use Azure SQL Database with virtual network service endpoints/SQL Managed Instance/on-premises data, Azure Resource Manager virtual network is recommended, Classic virtual network will be deprecated soon
+$SubnetName = "[your subnet name or leave it empty]" # WARNING: Please use the same subnet as the one used with your Azure SQL Database with virtual network service endpoints or a different subnet than the one used for your SQL Managed Instance
 
 ### SSISDB info
-$SSISDBServerEndpoint = "[your Azure SQL Database server name or Managed Instance name.DNS prefix].database.windows.net" # WARNING: Please ensure that there is no existing SSISDB, so we can prepare and manage one on your behalf
+$SSISDBServerEndpoint = "[your server name or managed instance name.DNS prefix].database.windows.net" # WARNING: Please ensure that there is no existing SSISDB, so we can prepare and manage one on your behalf
 # Authentication info: SQL or Azure Active Directory (AAD)
 $SSISDBServerAdminUserName = "[your server admin username for SQL authentication or leave it empty for AAD authentication]"
 $SSISDBServerAdminPassword = "[your server admin password for SQL authentication or leave it empty for AAD authentication]"
-$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database or leave it empty for Managed Instance]"
+$SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database or leave it empty for SQL Managed Instance]"
 ```
 
 ## <a name="azuressislocation"></a>AzureSSISLocation
-**AzureSSISLocation** 是整合執行階段背景工作節點的位置。 背景工作節點會維護 Azure SQL 資料庫上 SSIS 目錄資料庫 (SSISDB) 的持續連線。 將 **AzureSSISLocation** 設定為與裝載 SSISDB 之 SQL Database 伺服器相同的位置，這可讓整合執行階段盡可能有效率地運作。
+**AzureSSISLocation** 是整合執行階段背景工作節點的位置。 背景工作節點會在 Azure SQL Database 中維持與 SSIS 目錄資料庫（SSISDB）的持續連接。 將**AzureSSISLocation**設定為裝載 SSISDB 的[邏輯 SQL server](../azure-sql/database/logical-servers.md)所在的相同位置，讓整合執行時間能夠盡可能有效率地運作。
 
 ## <a name="azuressisnodesize"></a>AzureSSISNodeSize
 Data Factory (包括 Azure-SSIS IR) 支援下列選項：
@@ -76,30 +79,30 @@ Data Factory (包括 Azure-SSIS IR) 支援下列選項：
 -   Standard\_D2\_v2
 -   Standard\_D3\_v2
 -   Standard\_D4\_v2
--   標準\_D2\_v3
--   標準\_D4\_v3
--   標準\_D8\_v3
--   標準\_D16\_v3
--   標準\_D32\_v3
--   標準\_D64\_v3
--   標準\_E2\_v3
--   標準\_E4\_v3
--   標準\_E8\_v3
--   標準\_E16\_v3
--   標準\_E32\_v3
--   標準\_E64\_v3
+-   標準 \_ D2 \_ v3
+-   標準 \_ D4 \_ v3
+-   標準 \_ D8 \_ v3
+-   標準 \_ D16 \_ v3 系列
+-   標準 \_ D32 \_ v3 系列
+-   標準 \_ D64 \_ v3 系列
+-   標準 \_ E2 \_ v3
+-   標準 \_ E4 \_ v3
+-   標準 \_ E8 \_ v3 系列
+-   標準 \_ E16 \_ v3 系列
+-   標準 \_ E32 \_ v3 系列
+-   標準 \_ E64 \_ v3 系列
 
 在由 SSIS 工程團隊進行的非官方內部測試中，D 系列似乎比 A 系列更適合 SSIS 套件執行。
 
--   D 系列效能/價格比高於 A 系列和 v3 系列的效能/價格比高於 dv2 系列。
--   D 系列的輸送量高於 A 系列相同的價格，且 v3 系列的輸送量高於 dv2 系列相同的價格。
--   Azure SSIS IR 的 v2 系列節點不適用於自訂的安裝程式，因此請改為使用 v3 系列節點。 如果您已使用 v2 系列節點，請切換到儘速使用 v3 系列節點。
--   E 系列是記憶體最佳化的 VM 大小，提供更高的記憶體與 CPU 比例比其他機器。如果您的套件需要大量記憶體，您可以考慮選擇 E 系列 VM。
+-   D 系列的效能/價格比率高於 A 數列，而 v3 系列的效能/價格比率高於 v2 系列。
+-   D 系列的輸送量高於相同價格的一系列，而 v3 系列的輸送量高於相同價格的 v2 系列。
+-   Azure SSIS IR 的 v2 系列節點不適合用于自訂設定，因此請改用 v3 系列節點。 如果您已經使用 v2 系列節點，請儘快切換為使用 v3 系列節點。
+-   E 系列是記憶體優化的 VM 大小，可提供比其他機器更高的記憶體對 CPU 比例。如果您的套件需要大量的記憶體，您可以考慮選擇 [E series VM]。
 
 ### <a name="configure-for-execution-speed"></a>針對執行速度進行設定
 如果您不需要執行許多套件，且希望套件可以快速執行，請使用下列圖表中的資訊，以選擇適合您案例的虛擬機器類型。
 
-此資料表示單一背景工作節點上的單一套件執行。 套件從 Azure Blob 儲存體載入具有名字和姓氏資料行的 3 百萬筆記錄、 產生全名資料行，而且有超過 20 個字元，Azure Blob 儲存體的完整名稱的記錄寫入。
+此資料表示單一背景工作節點上的單一套件執行。 封裝會從 Azure Blob 儲存體載入具有名字和姓氏資料行的3000000記錄、產生完整名稱資料行，並將完整名稱長度超過20個字元的記錄寫入 Azure Blob 儲存體。
 
 ![SSIS Integration Runtime 套件執行速度](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png)
 
@@ -115,29 +118,29 @@ Data Factory (包括 Azure-SSIS IR) 支援下列選項：
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-當您已經使用功能強大的背景工作節點來執行套件時，增加 **AzureSSISMaxParallelExecutionsPerNode** 可能會增加整合執行階段的整體輸送量。 針對 Standard_D1_v2 節點，可支援每個節點有 1-4 個平行執行。 所有其他節點類型，則支援每個節點 1 max(2 x number of cores, 8) 平行執行。 如果您想**AzureSSISMaxParallelExecutionsPerNode**超過我們支援最大值的情況下，您可以開啟支援票證，我們即可增加您需要使用 Azure Powershell 來更新的最大值為您和之後**AzureSSISMaxParallelExecutionsPerNode**。
+當您已經使用功能強大的背景工作節點來執行套件時，增加 **AzureSSISMaxParallelExecutionsPerNode** 可能會增加整合執行階段的整體輸送量。 針對 Standard_D1_v2 節點，可支援每個節點有 1-4 個平行執行。 針對所有其他類型的節點，支援每個節點最大值（2 x 核心數，8）個平行執行。 如果您想要**AzureSSISMaxParallelExecutionsPerNode**超過我們支援的最大值，您可以開啟支援票證，我們可以為您增加最大值，之後您必須使用 Azure Powershell 來更新**AzureSSISMaxParallelExecutionsPerNode**。
 您可以根據套件的成本和背景工作角色節點的下列設定，評估適當的值。 如需詳細資訊，請參閱[一般用途的虛擬機器大小](../virtual-machines/windows/sizes-general.md)。
 
 | 大小             | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大暫存儲存體輸送量：IOPS / 讀取 MBps / 寫入 MBps | 最大資料磁碟/輸送量：IOPS | 最大 NIC/預期的網路效能 (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
-| Standard\_D1\_v2 | 1    | 3.5         | 50                     | 3000/46/23                                             | 2 / 2x500                         | 2 / 750                                        |
+| Standard\_D1\_v2 | 1    | 3.5         | 50                     | 3000 / 46 / 23                                             | 2 / 2x500                         | 2 / 750                                        |
 | Standard\_D2\_v2 | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 4 / 4x500                         | 2 / 1500                                       |
-| Standard\_D3\_v2 | 4    | 14          | 200                    | 12000/187/93                                           | 8 / 8x500                         | 4 / 3000                                       |
-| Standard\_D4\_v2 | 8    | 28          | 400                    | 24000/375/187                                          | 16 / 16x500                       | 8 / 6000                                       |
+| Standard\_D3\_v2 | 4    | 14          | 200                    | 12000 / 187 / 93                                           | 8 / 8x500                         | 4 / 3000                                       |
+| Standard\_D4\_v2 | 8    | 28          | 400                    | 24000 / 375 / 187                                          | 16 / 16x500                       | 8 / 6000                                       |
 | Standard\_A4\_v2 | 4    | 8           | 40                     | 4000 / 80 / 40                                             | 8 / 8x500                         | 4 / 1000                                       |
 | Standard\_A8\_v2 | 8    | 16          | 80                     | 8000 / 160 / 80                                            | 16 / 16x500                       | 8 / 2000                                       |
-| 標準\_D2\_v3 | 2    | 8           | 50                     | 3000/46/23                                             | 4 / 6 x 500                         | 2 / 1000                                       |
-| 標準\_D4\_v3 | 4    | 16          | 100                    | 6000 / 93 / 46                                             | 8 / 12x500                        | 2 / 2000                                       |
-| 標準\_D8\_v3 | 8    | 32          | 200                    | 12000/187/93                                           | 16 / 24x500                       | 4 / 4000                                       |
-| 標準\_D16\_v3| 16   | 64          | 400                    | 24000/375/187                                          | 32 / 48 x 500                        | 8 / 8000                                       |
-| 標準\_D32\_v3| 32   | 128         | 800                    | 48000 / 750 / 375                                          | 32 / 96x500                       | 8 / 16000                                      |
-| 標準\_D64\_v3| 64   | 256         | 1600                   | 96000 / 1000 / 500                                         | 32 / 192x500                      | 8 / 30000                                      |
-| 標準\_E2\_v3 | 2    | 16          | 50                     | 3000/46/23                                             | 4 / 6 x 500                         | 2 / 1000                                       |
-| 標準\_E4\_v3 | 4    | 32          | 100                    | 6000 / 93 / 46                                             | 8 / 12x500                        | 2 / 2000                                       |
-| 標準\_E8\_v3 | 8    | 64          | 200                    | 12000/187/93                                           | 16 / 24x500                       | 4 / 4000                                       |
-| 標準\_E16\_v3| 16   | 128         | 400                    | 24000/375/187                                          | 32 / 48x500                       | 8 / 8000                                       |
-| 標準\_E32\_v3| 32   | 256         | 800                    | 48000 / 750 / 375                                          | 32 / 96x500                       | 8 / 16000                                      |
-| 標準\_E64\_v3| 64   | 432         | 1600                   | 96000 / 1000 / 500                                         | 32 / 192x500                      | 8 / 30000                                      |
+| 標準 \_ D2 \_ v3 | 2    | 8           | 50                     | 3000 / 46 / 23                                             | 4/6x500                         | 2 / 1000                                       |
+| 標準 \_ D4 \_ v3 | 4    | 16          | 100                    | 6000 / 93 / 46                                             | 8/12x500                        | 2 / 2000                                       |
+| 標準 \_ D8 \_ v3 | 8    | 32          | 200                    | 12000 / 187 / 93                                           | 16/24x500                       | 4 / 4000                                       |
+| 標準 \_ D16 \_ v3 系列| 16   | 64          | 400                    | 24000 / 375 / 187                                          | 32/48x500                        | 8 / 8000                                       |
+| 標準 \_ D32 \_ v3 系列| 32   | 128         | 800                    | 48000 / 750 / 375                                          | 32/96x500                       | 8 / 16000                                      |
+| 標準 \_ D64 \_ v3 系列| 64   | 256         | 1600                   | 96000/1000/500                                         | 32/192x500                      | 8 / 30000                                      |
+| 標準 \_ E2 \_ v3 | 2    | 16          | 50                     | 3000 / 46 / 23                                             | 4/6x500                         | 2 / 1000                                       |
+| 標準 \_ E4 \_ v3 | 4    | 32          | 100                    | 6000 / 93 / 46                                             | 8/12x500                        | 2 / 2000                                       |
+| 標準 \_ E8 \_ v3 系列 | 8    | 64          | 200                    | 12000 / 187 / 93                                           | 16/24x500                       | 4 / 4000                                       |
+| 標準 \_ E16 \_ v3 系列| 16   | 128         | 400                    | 24000 / 375 / 187                                          | 32/48x500                       | 8 / 8000                                       |
+| 標準 \_ E32 \_ v3 系列| 32   | 256         | 800                    | 48000 / 750 / 375                                          | 32/96x500                       | 8 / 16000                                      |
+| 標準 \_ E64 \_ v3 系列| 64   | 432         | 1600                   | 96000/1000/500                                         | 32/192x500                      | 8 / 30000                                      |
 
 以下是為 **AzureSSISMaxParallelExecutionsPerNode** 屬性設定正確值的指導方針： 
 
@@ -147,13 +150,13 @@ Data Factory (包括 Azure-SSIS IR) 支援下列選項：
 
 ## <a name="ssisdbpricingtier"></a>SSISDBPricingTier
 
-**SSISDBPricingTier** 是 Azure SQL Database 上 SSIS 目錄資料庫 (SSISDB) 的定價層。 此設定會影響 IR 執行個體中的背景工作數目上限、將套件執行排入佇列的速度，以及載入執行記錄的速度。
+**SSISDBPricingTier**是 Azure SQL Database 中的 SSIS 目錄資料庫（SSISDB）的定價層。 此設定會影響 IR 執行個體中的背景工作數目上限、將套件執行排入佇列的速度，以及載入執行記錄的速度。
 
 -   如果您不在意將套件執行排入佇列的速度和載入執行記錄的速度，則可以選擇最低資料庫定價層。 使用基本定價的 Azure SQL Database 支援一個整合執行階段執行個體中 8 個背景工作。
 
 -   如果背景工作計數超過 8 個或核心計數超過 50 個，則請選擇比「基本」更強大的資料庫。 否則，資料庫會變成整合執行階段執行個體的瓶頸，而且會嚴重影響整體效能。
 
--   如果記錄層級設定為詳細資訊，請選擇 s3 等更強大的資料庫。 根據我們非官方內部測試，s3 定價層可支援 2 個節點、 128 的平行計數與詳細資訊記錄層次的 SSIS 套件執行。
+-   如果記錄層級設定為 [詳細資訊]，請選擇更強大的資料庫（例如 s3）。 根據我們的非官方內部測試，s3 定價層可以支援具有2個節點的 SSIS 封裝執行，128個平行計數和詳細資訊記錄層級。
 
 您也可以根據 Azure 入口網站上提供的[資料庫交易單位](../sql-database/sql-database-what-is-a-dtu.md) (DTU) 使用量資訊，調整資料庫定價層。
 

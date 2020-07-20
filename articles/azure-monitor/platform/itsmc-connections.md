@@ -1,23 +1,16 @@
 ---
-title: Azure Log Analytics 中 IT 服務管理連接器支援的連線 | Microsoft Docs
+title: Azure 監視器中的 IT 服務管理連接器
 description: 本文提供如何將 ITSM 產品/服務與 Azure 監視器中的 IT Service Management Connector (ITSMC) 連線，以集中監視及管理 ITSM 工作項目的相關資訊。
-documentationcenter: ''
-author: jyothirmaisuri
-manager: riyazp
-editor: ''
-ms.assetid: 8231b7ce-d67f-4237-afbf-465e2e397105
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 05/24/2018
+author: nolavime
 ms.author: v-jysur
-ms.openlocfilehash: 0ff73e342a668fef6d405783c130cf216f8003b4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 05/12/2020
+ms.openlocfilehash: c09d8d9fd2ef22aeaf791ae44d877a87033318cc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60395482"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655905"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>將 ITSM 產品/服務與 IT Service Management Connector 連線
 本文提供如何設定 ITSM 產品/服務與 Log Analytics 中 IT Service Management Connector (ITSMC) 之間的連線，以集中管理工作項目的相關資訊。 如需 ITSMC 的詳細資訊，請參閱[概觀](../../azure-monitor/platform/itsmc-overview.md)。
@@ -37,7 +30,7 @@ ms.locfileid: "60395482"
 
 下列各節提供有關如何將 System Center Service Manager 產品連線到 Azure 中的 ITSMC 之詳細資料。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 請確保已符合下列必要條件︰
 
@@ -67,13 +60,13 @@ ms.locfileid: "60395482"
 
 | **欄位** | **說明** |
 | --- | --- |
-| 連線名稱   | 輸入您想要與 ITSMC 連線之 System Center Service Manager 執行個體的名稱。  稍後當您設定這個執行個體的工作項目/檢視詳細的記錄分析時，會使用這個名稱。 |
+| **連接名稱**   | 輸入您想要與 ITSMC 連線之 System Center Service Manager 執行個體的名稱。  稍後當您設定這個執行個體的工作項目/檢視詳細的記錄分析時，會使用這個名稱。 |
 | **夥伴類型**   | 選取 **System Center Service Manager**。 |
 | **伺服器 URL**   | 輸入 Service Manager Web 應用程式的 URL。 Service Manager Web 應用程式的相關詳細資訊在[這裡](#create-and-deploy-service-manager-web-app-service)。
 | **用戶端識別碼**   | 將您所產生 (使用自動指令碼) 用來驗證 Web 應用程式的用戶端識別碼輸入。 自動化指令碼的相關詳細資訊在[這裡](../../azure-monitor/platform/itsmc-service-manager-script.md)。|
 | **用戶端祕密**   | 輸入針對此識別碼產生的用戶端祕密。   |
-| **資料同步範圍**   | 選取您想要透過 ITSMC 同步的 Service Manager 工作項目。  系統會將這些工作項目匯入 Log Analytics。 **選項︰** 事件、變更要求。|
-| **同步資料** | 輸入您想要起算資料的過去天數。 **上限**：120 天。 |
+| **同步資料**   | 選取您想要透過 ITSMC 同步的 Service Manager 工作項目。  系統會將這些工作項目匯入 Log Analytics。 **選項︰** 事件、變更要求。|
+| **資料同步範圍** | 輸入您想要起算資料的過去天數。 **上限**：120 天。 |
 | **在 ITSM 解決方案中建立新的設定項目** | 如果您想要在 ITSM 產品中建立設定項目，請選取此選項。 選取時，Log Analytics 會在支援的 ITSM 系統中建立受影響的 CI 作為設定項目 (如果 CI 不存在)。 **預設**︰停用。 |
 
 ![Service Manager 連線](media/itsmc-connections/service-manager-connection.png)
@@ -103,7 +96,7 @@ ms.locfileid: "60395482"
 
 - Azure 訂用帳戶詳細資料
 - 資源群組名稱
-- 位置
+- Location
 - Service Manager 伺服器詳細資料 (伺服器名稱、網域、使用者名稱和密碼)
 - Web 應用程式的網站名稱前置詞
 - 服務匯流排命名空間。
@@ -142,7 +135,7 @@ ms.locfileid: "60395482"
    - **端點連接埠**：輸入 5724
    - **服務匯流排命名空間**：使用現有的或建立一個新的服務匯流排命名空間。
    - **位置**：選取位置。
-   - **名稱**：如果您要建立服務匯流排，請為它指定名稱。
+   - **Name**：如果您要建立服務匯流排，請為它指定名稱。
 
      ![混合式連線值](media/itsmc-connections/itsmc-new-hybrid-connection-values.png)
 6. 按一下 [確定] 將 [建立混合式連線] 刀鋒視窗關閉，然後開始建立混合式連線。
@@ -182,21 +175,35 @@ ms.locfileid: "60395482"
 
 下列各節提供有關如何將 ServiceNow 產品連線到 Azure 中的 ITSMC 之詳細資料。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 請確保已符合下列必要條件︰
 - 已安裝 ITSMC。 詳細資訊：[新增 IT 服務管理連接器解決方案](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution)。
-- ServiceNow 支援的版本：倫敦、 Kingston、 Jakarta、 Istanbul、 Helsinki、 Geneva。
+- ServiceNow 支援的版本：New York、Madrid、London、Kingston、Jakarta、Istanbul、Helsinki、Geneva。
+> [!NOTE]
+> ITSMC 僅支援 Service Now 提供的官方 SaaS 供應項目。 目前不支援 Service Now 的私人部署。 
 
 **ServiceNow 管理員必須在 ServiceNow 執行個體中執行下列動作**：
 - 產生 ServiceNow 產品的用戶端識別碼和用戶端密碼。 如需如何產生用戶端識別碼和祕密的相關資訊，請視需要參閱下列資訊：
 
-    - [針對倫敦設定 OAuth](https://docs.servicenow.com/bundle/london-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
+    - [針對 New York 設定 OAuth](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
+    - [針對 Madrid 設定 OAuth](https://docs.servicenow.com/bundle/madrid-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
+    - [針對 London 設定 OAuth](https://docs.servicenow.com/bundle/london-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [針對 Kingston 設定 OAuth](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [針對 Jakarta 設定 OAuth](https://docs.servicenow.com/bundle/jakarta-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [針對 Istanbul 設定 OAuth](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [針對 Helsinki 設定 OAuth](https://docs.servicenow.com/bundle/helsinki-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [針對 Geneva 設定 OAuth](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
-
+> [!NOTE]
+> 在定義「設定 OAuth」時，我們建議：
+>
+> 1) **將重新整理權杖有效期更新為 90 天 (7776000秒)：** 在第 2 階段中[設定 OAuth](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_SettingUpOAuth.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696739125&sdata=Q7mF6Ej8MCupKaEJpabTM56EDZ1T8vFVyihhoM594aA%3D&reserved=0) 時：[建立讓用戶端存取執行個體的端點](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_CreateEndpointforExternalClients.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696749123&sdata=hoAJHJAFgUeszYCX1Q%2FXr4N%2FAKiFcm5WV7mwR2UqeWA%3D&reserved=0) 在定義端點之後，於 ServiceNow 刀鋒視窗中搜尋系統 OAuth，而非選取 [應用程式登錄]。 挑選已定義的 OAuth 名稱，並將 [重新整理權杖有效期] 的欄位更新為 7776000 (90 天的秒數)。
+> 結束時，按一下 [更新]。
+> 2) **我們建議您建立內部程序，以確保連線保持運作：** 根據重新整理權杖有效期重新整理權杖。 請務必在重新整理權杖預期的到期時間之前執行下列作業 (我們建議在重新整理權杖有效期到期的前幾天這樣做)：
+>
+> 1. [完成 ITSM 連接器組態的手動同步程序](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
+> 2. 撤銷舊的重新整理權杖，因為基於安全考慮，不建議保留舊的金鑰。 在 ServiceNow 刀鋒視窗中搜尋系統 OAuth，而非選取 [管理權杖]。 根據 OAuth 名稱和到期日，從清單中挑選舊的權杖。
+> ![SNOW 系統 OAuth 定義](media/itsmc-connections/snow-system-oauth.png)
+> 3. 按一下 [撤銷存取權]，而非按一下 [撤銷]。
 
 - 安裝適用於 Microsoft Log Analytics 整合的使用者應用程式 (ServiceNow 應用程式)。 [深入了解](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 )。
 - 為安裝的使用者應用程式建立整合使用者角色。 關於如何建立整合使用者角色的資訊在[這裡](#create-integration-user-role-in-servicenow-app)。
@@ -220,11 +227,11 @@ ms.locfileid: "60395482"
 
 | **欄位** | **說明** |
 | --- | --- |
-| 連線名稱   | 輸入您想要與 ITSMC 連線之 ServiceNow 執行個體的名稱。  稍後當您在 Log Analytics 中設定這個 ITSM 的工作項目/檢視詳細的記錄分析時，會使用這個名稱。 |
+| **連接名稱**   | 輸入您想要與 ITSMC 連線之 ServiceNow 執行個體的名稱。  稍後當您在 Log Analytics 中設定這個 ITSM 的工作項目/檢視詳細的記錄分析時，會使用這個名稱。 |
 | **夥伴類型**   | 選取 **ServiceNow**。 |
 | **使用者名稱**   | 輸入您在 ServiceNow 應用程式中建立的整合使用者名稱，以支援 ITSMC 的連線。 詳細資訊：[建立 ServiceNow 應用程式使用者角色](#create-integration-user-role-in-servicenow-app)。|
 | **密碼**   | 將與此使用者名稱與相關聯的密碼輸入。 **注意**：使用者名稱和密碼僅用來產生驗證權杖，並不會儲存在 ITSMC 服務內。  |
-| **伺服器 URL**   | 輸入您想要連線到 ITSMC 之 ServiceNow 執行個體的 URL。 |
+| **伺服器 URL**   | 輸入您想要連線到 ITSMC 之 ServiceNow 執行個體的 URL。 此 URL 應指向支援的 SaaS 版本，其尾碼為 ".servicenow.com"。|
 | **用戶端識別碼**   | 將您想要用於先前產生之 OAuth2 驗證的用戶端識別碼輸入。  如需產生用戶端識別碼和祕密的資訊： [OAuth 設定](https://wiki.servicenow.com/index.php?title=OAuth_Setup)。 |
 | **用戶端祕密**   | 輸入針對此識別碼產生的用戶端祕密。   |
 | **資料同步範圍**   | 選取您想要透過 ITSMC 同步處理到 Azure Log Analytics 的 ServiceNow 工作項目。  系統會將這些值匯入記錄分析。   **選項︰** 事件和變更要求。|
@@ -286,7 +293,7 @@ ms.locfileid: "60395482"
 下列各節提供有關如何將 Provance 產品連線到 Azure 中的 ITSMC 之詳細資料。
 
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 請確保已符合下列必要條件︰
 
@@ -315,10 +322,10 @@ ms.locfileid: "60395482"
 
 | **欄位** | **說明** |
 | --- | --- |
-| 連線名稱   | 輸入您想要與 ITSMC 連線之 Provance 執行個體的名稱。  稍後當您在這個 ITSM 中設定工作項目 / 檢視詳細的記錄分析時，會使用這個名稱。 |
+| **連接名稱**   | 輸入您想要與 ITSMC 連線之 Provance 執行個體的名稱。  稍後當您在這個 ITSM 中設定工作項目 / 檢視詳細的記錄分析時，會使用這個名稱。 |
 | **夥伴類型**   | 選取 [Provance]。 |
 | **使用者名稱**   | 輸入可以連線到 ITSMC 的使用者名稱。    |
-| **密碼**   | 將與此使用者名稱與相關聯的密碼輸入。 **附註：** 使用者名稱和密碼僅用來產生驗證權杖，並不會儲存在 ITSMC 服務內。|
+| **密碼**   | 將與此使用者名稱與相關聯的密碼輸入。 **注意：** 使用者名稱和密碼僅用來產生驗證權杖，並不會儲存在 ITSMC 服務內。|
 | **伺服器 URL**   | 輸入您想要連線到 ITSMC 之 Provance 執行個體的 URL。 |
 | **用戶端識別碼**   | 將您在 Provance 執行個體中產生的用戶端識別碼輸入以驗證此連線。  如需用戶端識別碼的詳細資訊，請參閱[如何設定 Active Directory 驗證](../../app-service/configure-authentication-provider-aad.md)。 |
 | **資料同步範圍**   | 選取您想要透過 ITSMC 同步處理到 Azure Log Analytics 的 Provance 工作項目。  系統會將這些工作項目匯入記錄分析。   **選項︰** 事件、變更要求。|
@@ -339,7 +346,7 @@ ms.locfileid: "60395482"
 
 下列各節提供有關如何將 Cherwell 產品連線到 Azure 中的 ITSMC 之詳細資料。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 請確保已符合下列必要條件︰
 
@@ -366,10 +373,10 @@ ms.locfileid: "60395482"
 
 | **欄位** | **說明** |
 | --- | --- |
-| 連線名稱   | 輸入您想要與 ITSMC 連線之 Cherwell 執行個體的名稱。  稍後當您在這個 ITSM 中設定工作項目 / 檢視詳細的記錄分析時，會使用這個名稱。 |
+| **連接名稱**   | 輸入您想要與 ITSMC 連線之 Cherwell 執行個體的名稱。  稍後當您在這個 ITSM 中設定工作項目 / 檢視詳細的記錄分析時，會使用這個名稱。 |
 | **夥伴類型**   | 選取 [Cherwell]。 |
 | **使用者名稱**   | 輸入可以連線到 ITSMC 的 Cherwell 使用者名稱。 |
-| **密碼**   | 將與此使用者名稱與相關聯的密碼輸入。 **附註：** 使用者名稱和密碼僅用來產生驗證權杖，並不會儲存在 ITSMC 服務內。|
+| **密碼**   | 將與此使用者名稱與相關聯的密碼輸入。 **注意：** 使用者名稱和密碼僅用來產生驗證權杖，並不會儲存在 ITSMC 服務內。|
 | **伺服器 URL**   | 輸入您想要連線到 ITSMC 之 Cherwell 執行個體的 URL。 |
 | **用戶端識別碼**   | 將您在 Cherwell 執行個體中產生的用戶端識別碼輸入以驗證此連線。   |
 | **資料同步範圍**   | 選取您想要透過 ITSMC 同步的 Cherwell 工作項目。  系統會將這些工作項目匯入記錄分析。   **選項︰** 事件、變更要求。 |

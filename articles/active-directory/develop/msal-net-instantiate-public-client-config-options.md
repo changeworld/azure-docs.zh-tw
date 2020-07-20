@@ -1,42 +1,38 @@
 ---
-title: 具現化公用用戶端使用的應用程式的選項 (Microsoft Authentication Library for.NET) |Azure
-description: 了解如何使用 Microsoft Authentication Library for.NET (MSAL.NET) 的設定選項，公開用戶端應用程式具現化。
+title: 具現化公用用戶端應用程式（MSAL.NET） |Azure
+titleSuffix: Microsoft identity platform
+description: 瞭解如何使用適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET），以設定選項具現化公用用戶端應用程式。
 services: active-directory
-documentationcenter: dev-center-name
-author: rwike77
-manager: celested
-editor: ''
+author: mmacy
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/30/2019
-ms.author: ryanwi
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a483cd6e22ce3c9fafb9b2b4d839e22c248f020
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 171b4ddf9a6f3cb5868f2300ea892ad785cbaf22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65158696"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85477425"
 ---
-# <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>使用的組態選項使用 MSAL.NET，公用用戶端應用程式具現化
+# <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>使用 MSAL.NET 以設定選項具現化公用用戶端應用程式
 
-本文說明如何具現化[公開用戶端應用程式](msal-client-applications.md)使用 Microsoft Authentication Library for.NET (MSAL.NET)。  應用程式具現化的設定檔中定義的組態選項。
+本文說明如何使用適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）來具現化[公用用戶端應用程式](msal-client-applications.md)。  應用程式會使用設定檔中定義的設定選項來具現化。
 
-然後再初始化應用程式，您必須先[註冊](quickstart-register-app.md)它，讓您的應用程式可以與 Microsoft 身分識別平台整合。 註冊之後，您可能需要下列資訊 （這可以在 Azure 入口網站中找到）：
+在初始化應用程式之前，您必須先[註冊](quickstart-register-app.md)它，您的應用程式才能與 Microsoft 身分識別平臺整合。 註冊之後，您可能需要下列資訊（可在 Azure 入口網站中找到）：
 
-- 用戶端識別碼 （代表 GUID 的字串）
-- （具名執行個體） 的身分識別提供者 URL 和您的應用程式的登入對象。 這兩個參數統稱為授權單位。
-- 如果您正在撰寫企業營運應用程式僅供您的組織 （也命名單一租用戶的應用程式） 租用戶識別碼。
-- 針對 web 應用程式，以及有時公用用戶端應用程式 （尤其當您的應用程式需要使用訊息代理程式），您必須也會將 redirectUri 身分識別提供者，請連絡後利用安全性權杖的應用程式。
+- 用戶端識別碼（代表 GUID 的字串）
+- 應用程式的身分識別提供者 URL （名為實例）和登入物件。 這兩個參數統稱為授權單位。
+- 租使用者識別碼，如果您要撰寫僅供組織使用的企業營運應用程式（也稱為單一租使用者應用程式）。
+- 對於 web 應用程式，有時也適用于公用用戶端應用程式（特別是當您的應用程式需要使用訊息代理程式時），您也會設定 redirectUri，其中身分識別提供者會使用安全性權杖來與您的應用程式連線。
 
 
-.NET Core 主控台應用程式可能會有下列*appsettings.json*組態檔：
+.NET Core 主控台應用程式可能會在設定檔上具有下列*appsettings.js* ：
 
 ```json
 {
@@ -52,7 +48,7 @@ ms.locfileid: "65158696"
 }
 ```
 
-下列程式碼會讀取這個檔案，使用.NET 組態架構：
+下列程式碼會使用 .NET 設定架構來讀取此檔案：
 
 ```csharp
 public class SampleConfiguration
@@ -94,7 +90,7 @@ public class SampleConfiguration
 }
 ```
 
-下列程式碼會建立您的應用程式中，然後再從設定檔使用的組態：
+下列程式碼會使用設定檔中的設定來建立您的應用程式：
 
 ```csharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");

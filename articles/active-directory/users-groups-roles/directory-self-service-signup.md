@@ -1,32 +1,31 @@
 ---
-title: 經過電子郵件驗證之使用者帳戶的自助式註冊 - Azure Active Directory | Microsoft Docs
-description: 在 Azure Active Directory (Azure AD) 租用戶中使用自助式註冊
+title: 以電子郵件驗證的使用者進行自助式註冊 - Azure AD | Microsoft Docs
+description: 在 Azure Active Directory (Azure AD) 組織中使用自助式註冊
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: overview
 ms.workload: identity
-ms.date: 03/18/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7aee10780512e284faccadface0dc928ef8270e
-ms.sourcegitcommit: 1d257ad14ab837dd13145a6908bc0ed7af7f50a2
-ms.translationtype: MT
+ms.openlocfilehash: b23d3d287238d2813f7381941dc279851bc3afdd
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65501904"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84728821"
 ---
-# <a name="what-is-self-service-signup-for-azure-active-directory"></a>什麼是 Azure Active Directory 的自助式註冊？
+# <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>什麼是 Azure Active Directory 的自助式註冊？
 
-此文章介绍了如何使用自助服务注册填充 Azure Active Directory (Azure AD) 中的组织。 如果您想要接管網域名稱，從非受控 Azure AD 的組織，請參閱[接管非受控目錄，以系統管理員身分](domains-admin-takeover.md)。
+本文說明如何使用自助式註冊在 Azure Active Directory (Azure AD) 中填入組織。 如果您想要從非受控 Azure AD 組織接管網域名稱，請參閱[以系統管理員身分接管非受控目錄](domains-admin-takeover.md)。
 
-## <a name="why-use-self-service-signup"></a>為何使用自助式註冊？
+## <a name="why-use-self-service-sign-up"></a>為何使用自助式註冊？
 * 讓客戶更快取得他們想要的服務
 * 建立服務的電子郵件型供應項目
 * 建立以電子郵件為基礎的註冊流程，讓使用者使用其易記的工作電子郵件別名來快速建立身分識別
@@ -47,12 +46,12 @@ ms.locfileid: "65501904"
 管理員可以使用下列 Azure AD Cmdlet Set-MsolCompanySettings 參數來設定這些功能：
 
 * **AllowEmailVerifiedUsers** 控制使用者是否可以建立或加入目錄。 如果您將該參數設定為 $false，則經過電子郵件驗證的使用者都無法加入目錄。
-* **AllowAdHocSubscriptions** 可控制使用者是否能夠執行自助式註冊。 如果您將該參數為 $false，則沒有任何使用者可以執行自助式註冊。
+* **AllowAdHocSubscriptions** 控制使用者執行自助式註冊的能力。 如果您將該參數為 $false，則沒有任何使用者可以執行自助式註冊。
   
 AllowEmailVerifiedUsers 和 AllowAdHocSubscriptions 是用於整個目錄的設定，可以套用至受控或非受控的目錄。 以下是範例，其中：
 
 * 您要管理具有已驗證網域 (例如 contoso.com) 的目錄
-* 您可以使用不同的目錄中的 B2B 共同作業邀請使用者還不存在 (userdoesnotexist@contoso.com) 在 contoso.com 的主目錄
+* 您可以使用不同目錄中的 B2B 共同作業來邀請 contoso.com 主目錄中尚未存在的使用者 (userdoesnotexist@contoso.com)
 * 主目錄已開啟 AllowEmailVerifiedUsers
 
 如果上述條件都成立，則會在主目錄中建立成員使用者，並在邀請目錄中建立 B2B 來賓使用者。
@@ -63,7 +62,7 @@ Flow 和 PowerApps 試用註冊不受 **AllowAdHocSubscriptions** 設定所控�
 * [組織中 Flow 的問與答](https://docs.microsoft.com/flow/organization-q-and-a)
 
 ### <a name="how-do-the-controls-work-together"></a>這些控制項如何一起運作？
-這兩個參數可合併使用，以定義更精確的自助式註冊控制。 例如，下列命令可讓使用者執行自助式註冊，但僅限於在 Azure AD 中已經有帳戶的使用者 (換句話說，需要先建立電子郵件驗證帳戶的使用者則無法執行自助式註冊)：
+這兩個參數可合併使用，以定義更精確的自助式註冊控制項。 例如，下列命令可讓使用者執行自助式註冊，但僅限於在 Azure AD 中已有帳戶的使用者 (換句話說，需要建立電子郵件驗證帳戶的使用者無法先執行自助式註冊)：
 
 ```powershell
     Set-MsolCompanySettings -AllowEmailVerifiedUsers $false -AllowAdHocSubscriptions $true
@@ -71,7 +70,7 @@ Flow 和 PowerApps 試用註冊不受 **AllowAdHocSubscriptions** 設定所控�
 
 下列流程圖說明這些參數的各種不同組合，以及針對目錄和自助式註冊造成的情況。
 
-![自助服务注册控件的流程图](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
+![自助式註冊控制項的流程圖](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
 
 如需如何使用這些參數的詳細資訊和相關範，請參閱 [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)。
 
@@ -82,3 +81,4 @@ Flow 和 PowerApps 試用註冊不受 **AllowAdHocSubscriptions** 設定所控�
 * [Azure PowerShell](/powershell/azure/overview)
 * [Azure Cmdlet 參考](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
+* [關閉非受控目錄中的公司或學校帳戶](users-close-account.md)

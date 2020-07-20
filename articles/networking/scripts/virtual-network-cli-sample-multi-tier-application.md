@@ -1,26 +1,23 @@
 ---
-title: Azure CLI 指令碼範例 - 為多層式應用程式建立網路 | Microsoft Docs
+title: Azure CLI 腳本範例-為多層式應用程式建立網路
 description: Azure CLI 指令碼範例 - 為多層式應用程式建立虛擬網路。
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: KumudD
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
-ms.author: jdial
-ms.openlocfilehash: 685896cdbd74788f138b8b9dc09efbcd68a5b565
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: kumud
+ms.openlocfilehash: 97e26eaed72bc15ebc46a893d269b05484d8a064
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60624440"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80521547"
 ---
 # <a name="create-a-network-for-multi-tier-applications"></a>為多層式應用程式建立網路
 
@@ -38,7 +35,7 @@ ms.locfileid: "60624440"
 
 ## <a name="clean-up-deployment"></a>清除部署 
 
-运行以下命令来删除资源组、VM 和所有相关资源。
+執行下列命令來移除資源群組、VM 和所有相關資源。
 
 ```azurecli
 az group delete --name MyResourceGroup --yes
@@ -48,7 +45,7 @@ az group delete --name MyResourceGroup --yes
 
 此指令碼會使用下列命令來建立資源群組、虛擬網路及網路安全性群組。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [az group create](/cli/azure/group) | 建立用來存放所有資源的資源群組。 |
 | [az network vnet create](/cli/azure/network/vnet) | 建立 Azure 虛擬網路和前端子網路。 |
@@ -64,4 +61,4 @@ az group delete --name MyResourceGroup --yes
 
 如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
-您可以在 [Azure 網路概觀文件](../cli-samples.md)中找到其他網路 CLI 指令碼範例
+您可以在[Azure 網路功能總覽檔](../cli-samples.md)中找到其他的網路 CLI 腳本範例

@@ -1,0 +1,60 @@
+### YamlMime:Landing
+title: Azure Arc
+summary: Azure Arc 可將 Azure Resource Manager 功能延伸到 Linux 和 Windows 伺服器，以及跨越內部部署、多雲端和邊緣的任何基礎結構上的 Kubernetes 叢集。 透過 Azure Arc，客戶也可以在任何地方執行 Azure 資料服務，進而實現雲端創新的優勢，包括永遠最新的資料功能、在幾秒 (而非幾小時) 內部署，以及任何基礎結構上的動態延展性。
+metadata:
+  title: 適用於伺服器的 Azure Arc
+  description: 了解如何在 Azure 中管理內部部署機器
+  author: mgoedtel
+  ms.service: azure-arc
+  ms.topic: landing-page
+  ms.date: 06/26/2020
+  ms.author: magoedte
+  ms.openlocfilehash: 8493a5d90656206c5498fafbc2b0a2743cd973a7
+  ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 06/27/2020
+  ms.locfileid: "85482338"
+landingContent:
+- title: Azure Arc 概觀
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 深入了解 Azure Arc
+      url: https://aka.ms/Azure-Arc-Info
+- title: 使用適用於伺服器的 Azure Arc 將機器連線至 Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是適用於伺服器的 Azure Arc？
+      url: ./servers/overview.md
+  - linkListType: quickstart
+    links:
+    - text: 從 Azure 入口網站將機器連線到 Azure Arc
+      url: ./servers/onboard-portal.md
+    - text: 使用服務主體大規模地連線機器
+      url: ./servers/onboard-service-principal.md
+    - text: 使用 PowerShell DSC 將機器連線至 Azure
+      url: ./servers/onboard-dsc.md
+- title: 使用 Azure Arc 將 Kubernetes 叢集連線到 Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是已啟用 Azure Arc 的 Kubernetes？
+      url: ./kubernetes/overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 連線叢集
+      url: ./kubernetes/connect-cluster.md
+    - text: 在連線的叢集中使用 GitOps
+      url: ./kubernetes/use-gitops-connected-cluster.md
+    - text: 搭配使用 GitOps 與 Helm
+      url: ./kubernetes/use-gitops-with-helm.md
+    - text: 使用適用於容器的 Azure 監視器
+      url: ../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md
+    - text: 使用 Azure 原則
+      url: ./kubernetes/use-azure-policy.md
+    - text: 部署 Azure IoT 邊線工作負載
+      url: ./kubernetes/deploy-azure-iot-edge-workloads.md
+    - text: 上線服務主體
+      url: ./kubernetes/create-onboarding-service-principal.md

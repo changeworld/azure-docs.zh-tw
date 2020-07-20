@@ -7,6 +7,8 @@
 - name: 快速入門
   expanded: true
   items:
+    - name: 連線監視器 (預覽)
+      href: connection-monitor-preview.md
     - name: 診斷虛擬機器流量篩選問題 - 入口網站
       href: diagnose-vm-network-traffic-filtering-problem.md
     - name: 診斷虛擬機器流量篩選問題 - PowerShell
@@ -41,7 +43,11 @@
       href: network-watcher-security-group-view-overview.md
     - name: 角色型存取控制權限
       href: required-rbac-permissions.md
-- name: 使用說明指南
+    - name: 安全性
+      items:
+        - name: 安全性基準
+          href: security-baseline.md
+- name: 操作指南
   items:
     - name: 設定網路監看員
       href: network-watcher-create.md
@@ -101,6 +107,10 @@
               href: network-watcher-nsg-flow-logging-cli.md
             - name: REST
               href: network-watcher-nsg-flow-logging-rest.md
+            - name: Azure Resource Manager
+              href: network-watcher-nsg-flow-logging-azure-resource-manager.md
+        - name: 刪除 NSG 流量記錄儲存體 Blob
+          href: network-watcher-delete-nsg-flow-log-blobs.md
         - name: 分析 NSG 流量記錄
           items:
             - name: 讀取 NSG 流量記錄
@@ -112,6 +122,8 @@
                   href: traffic-analytics-faq.md
                 - name: 結構描述和資料彙總
                   href: traffic-analytics-schema.md
+                - name: 結構描述更新 (2019 年 8 月)
+                  href: traffic-analytics-schema-update.md
             - name: 使用 Power BI
               href: network-watcher-visualize-nsg-flow-logs-power-bi.md
             - name: 使用彈性堆疊
@@ -155,7 +167,7 @@
     - name: Azure CLI
       href: /cli/azure/network/watcher
     - name: Azure PowerShell
-      href: '/powershell/module/az.network/#network_watcher'
+      href: /powershell/module/az.network/#network_watcher
     - name: Java
       href: /java/api/com.microsoft.azure.management.network
     - name: Ruby
@@ -165,20 +177,22 @@
     - name: .NET
       href: /dotnet/api/overview/azure/virtual-network
     - name: Node.js
-      href: /javascript/api/azure-arm-network
+      href: /javascript/api/@azure/arm-network
     - name: REST
       href: /rest/api/network-watcher/
 - name: 資源
   items:
+    - name: 網路監看員常見問題集
+      href: frequently-asked-questions.md
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: MSDN 論壇
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=WAVirtualMachinesVirtualNetwork'
-    - name: 價格
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/network-watcher/'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=network-watcher'
     - name: SLA
       href: 'https://azure.microsoft.com/support/legal/sla/'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'http://stackoverflow.com/questions/tagged/network-watcher'

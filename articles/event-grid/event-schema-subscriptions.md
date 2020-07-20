@@ -1,22 +1,18 @@
 ---
-title: Azure 事件格線訂用帳戶的事件結構描述
+title: 作為事件方格來源的 Azure 訂用帳戶
 description: 描述 Azure 事件格線針對訂用帳戶事件所提供的屬性
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: reference
-ms.date: 01/12/2019
-ms.author: spelluru
-ms.openlocfilehash: 4994063dfc3bce88489f70969c06bf36b591f907
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 07/07/2020
+ms.openlocfilehash: 72b1a73bf418b417cd29f88063781e7b45979998
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60561671"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105892"
 ---
-# <a name="azure-event-grid-event-schema-for-subscriptions"></a>針對訂用帳戶的 Azure 事件格線事件結構描述
+# <a name="azure-subscription-as-an-event-grid-source"></a>作為事件方格來源的 Azure 訂用帳戶
 
-本文提供針對 Azure 訂用帳戶事件的屬性和結構描述。 如需事件結構描述的簡介，請參閱 [Azure 事件格線事件結構描述](event-schema.md)。
+本文提供針對 Azure 訂用帳戶事件的屬性和結構描述。如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
 
 Azure 訂用帳戶和資源群組會發出相同的事件類型。 事件類型與資源變更或動作有關。 主要的差異在於資源群組所發出的事件是針對資源群組內的資源，而 Azure 訂用帳戶發出的事件是針對整個訂用帳戶上的資源。
 
@@ -28,9 +24,10 @@ Azure 訂用帳戶和資源群組會發出相同的事件類型。 事件類型�
 
 事件主旨是資源的資源識別碼，而該資源為作業目標。 若要篩選資源的事件，請在建立事件訂用帳戶時提供該資源識別碼。 若要依資源類型進行篩選，請使用以下格式的值：`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
-如需範例指令碼和教學課程的清單，請參閱 [Azure 訂用帳戶事件來源](event-sources.md#azure-subscriptions)。
 
-## <a name="available-event-types"></a>可用的事件類型
+## <a name="event-grid-event-schema"></a>Event Grid 事件結構描述
+
+### <a name="available-event-types"></a>可用的事件類型
 
 Azure 訂用帳戶會從 Azure Resource Manager 發出管理事件，像是建立 VM 或刪除儲存體帳戶。
 
@@ -46,7 +43,7 @@ Azure 訂用帳戶會從 Azure Resource Manager 發出管理事件，像是建�
 | Microsoft.Resources.ResourceWriteFailure | 建立或更新作業失敗時引發。 |
 | Microsoft.Resources.ResourceWriteSuccess | 建立或更新作業成功時引發。 |
 
-## <a name="example-event"></a>事件範例
+### <a name="example-event"></a>事件範例
 
 下列範例顯示 **ResourceWriteSuccess** 事件的結構描述。 具有不同 `eventType` 值的 **ResourceWriteFailure** 和 **ResourceWriteCancel** 事件使用相同的結構描述。
 
@@ -230,37 +227,45 @@ Azure 訂用帳戶會從 Azure Resource Manager 發出管理事件，像是建�
 }]
 ```
 
-## <a name="event-properties"></a>事件屬性
+### <a name="event-properties"></a>事件屬性
 
 事件具有下列的最高層級資料：
 
 | 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
-| 主題 | string | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
-| 主旨 | string | 發行者定義事件主體的路徑。 |
-| eventType | string | 此事件來源已註冊的事件類型之一。 |
-| eventTime | string | 事件產生的時間，以提供者之 UTC 時間為準。 |
-| id | string | 事件的唯一識別碼。 |
-| data | 物件 | 訂用帳戶事件資料。 |
-| dataVersion | string | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
-| metadataVersion | string | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
+| 主題 | 字串 | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
+| subject | 字串 | 發行者定義事件主體的路徑。 |
+| eventType | 字串 | 此事件來源已註冊的事件類型之一。 |
+| eventTime | 字串 | 事件產生的時間，以提供者之 UTC 時間為準。 |
+| id | 字串 | 事件的唯一識別碼。 |
+| data | 物件 (object) | 訂用帳戶事件資料。 |
+| dataVersion | 字串 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
+| metadataVersion | 字串 | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | Description |
 | -------- | ---- | ----------- |
-| 授權 | 物件 | 作業的所要求授權。 |
-| claims | 物件 | 宣告的屬性。 如需詳細資訊，請參閱 [JWT 規格](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |
-| correlationId | string | 用於疑難排解的作業識別碼。 |
-| httpRequest | 物件 | 作業的詳細資料。 更新現有資源或刪除資源時，只會包含這個物件。 |
-| resourceProvider | string | 作業的資源提供者。 |
-| resourceUri | string | 作業中資源的 URI。 |
-| operationName | string | 已採取的作業。 |
-| status | string | 作業狀態。 |
-| subscriptionId | string | 資源的訂用帳戶識別碼。 |
-| tenantId | string | 資源的租用戶識別碼。 |
+| 授權 | 物件 (object) | 作業的所要求授權。 |
+| claims | 物件 (object) | 宣告的屬性。 如需詳細資訊，請參閱 [JWT 規格](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。 |
+| correlationId | 字串 | 用於疑難排解的作業識別碼。 |
+| httpRequest | 物件 (object) | 作業的詳細資料。 更新現有資源或刪除資源時，只會包含這個物件。 |
+| resourceProvider | 字串 | 作業的資源提供者。 |
+| resourceUri | 字串 | 作業中資源的 URI。 |
+| operationName | 字串 | 已採取的作業。 |
+| status | 字串 | 作業狀態。 |
+| subscriptionId | 字串 | 資源的訂用帳戶識別碼。 |
+| tenantId | 字串 | 資源的租用戶識別碼。 |
+
+## <a name="tutorials-and-how-tos"></a>教學課程和操作說明
+|Title |描述  |
+|---------|---------|
+| [教學課程：Azure 自動化與事件方格和 Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |建立會傳送事件的虛擬機器。 事件會觸發標記虛擬機器的自動化 Runbook，以及觸發傳送給 Microsoft Teams 通道的訊息。 |
+| [如何：透過入口網站訂閱事件](subscribe-through-portal.md) | 使用入口網站訂閱 Azure 訂用帳戶的事件。 |
+| [Azure CLI：訂閱 Azure 訂用帳戶的事件](./scripts/event-grid-cli-azure-subscription.md) |將事件方格訂用帳戶建立至 Azure 訂用帳戶，並將事件傳送至 WebHook 的範例指令碼。 |
+| [PowerShell：訂閱 Azure 訂用帳戶的事件](./scripts/event-grid-powershell-azure-subscription.md)| 將事件方格訂用帳戶建立至 Azure 訂用帳戶，並將事件傳送至 WebHook 的範例指令碼。 |
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要初步了解 Azure Event Grid，請參閱[什麼是 Event Grid？](overview.md)。
+* 如需 Azure Event Grid 的簡介，請參閱[什麼是事件方格？](overview.md)。
 * 若要了解 Event Grid 訂用帳戶的建立，請參閱 [Event Grid 訂用帳戶結構描述](subscription-creation-schema.md)。

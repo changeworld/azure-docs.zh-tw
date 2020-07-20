@@ -1,18 +1,19 @@
 ---
-title: 將內部部署網路連線到 Azure 虛擬網路：站点到站点 VPN：CLI | Microsoft Docs
+title: 將內部部署網路連線至虛擬網路：站對站 VPN： CLI
 description: 透過公用網際網路建立從內部部署網路至 Azure 虛擬網路之 IPsec 連線的步驟。 這些步驟可協助您使用 CLI 建立跨單位的站對站 VPN 閘道連線。
+titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: 6cf427ee1dbd47d3b762035abc2236bda65db116
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 28d0fa3a0fdc2f8ac65fc3545abab0a273051e37
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773175"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987516"
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>使用 CLI 建立具有站對站 VPN 連線的虛擬網路
 
@@ -29,7 +30,7 @@ ms.locfileid: "57773175"
 
 ![站對站 VPN 閘道跨單位連線圖表](./media/vpn-gateway-howto-site-to-site-resource-manager-cli/site-to-site-diagram.png)
 
-站對站 VPN 閘道連線可用來透過 IPsec/IKE (IKEv1 或 IKEv2) VPN 通道，將內部部署網路連線到 Azure 虛擬網路。 此类型的连接要求位于本地的 VPN 设备分配有一个面向外部的公共 IP 地址。 如需 VPN 閘道的詳細資訊，請參閱[關於 VPN 閘道](vpn-gateway-about-vpngateways.md)。
+站對站 VPN 閘道連線可用來透過 IPsec/IKE (IKEv1 或 IKEv2) VPN 通道，將內部部署網路連線到 Azure 虛擬網路。 此類型的連線需要位於內部部署的 VPN 裝置，且您已對該裝置指派對外開放的公用 IP 位址。 如需 VPN 閘道的詳細資訊，請參閱[關於 VPN 閘道](vpn-gateway-about-vpngateways.md)。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -42,7 +43,7 @@ ms.locfileid: "57773175"
  
   [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-### <a name="example"></a>範例值
+### <a name="example-values"></a><a name="example"></a>範例值
 
 您可以使用下列值來建立測試環境，或參考這些值來進一步了解本文中的範例：
 
@@ -67,13 +68,13 @@ GatewayType             = Vpn 
 ConnectionName          = VNet1toSite2
 ```
 
-## <a name="Login"></a>1.連線至您的訂用帳戶
+## <a name="1-connect-to-your-subscription"></a><a name="Login"></a>1. 連接到您的訂用帳戶
 
 如果您選擇在本機執行 CLI，請連線到您的訂用帳戶。 如果您在瀏覽器中使用 Azure Cloud Shell，則無須連線到您的訂用帳戶。 您會在 Azure Cloud Shell 中自動連線。 不過，連線後，您可能會想要確認所使用的訂用帳戶是否正確。
 
 [!INCLUDE [CLI login](../../includes/vpn-gateway-cli-login-include.md)]
 
-## <a name="rg"></a>2.建立資源群組
+## <a name="2-create-a-resource-group"></a><a name="rg"></a>2. 建立資源群組
 
 下列範例會在「eastus」位置建立名為「TestRG1」的資源群組。 如果您在該區域中已有想要用來建立 VNet 的資源群組，您可以改為使用該資源群組。
 
@@ -81,7 +82,7 @@ ConnectionName          = VNet1toSite2
 az group create --name TestRG1 --location eastus
 ```
 
-## <a name="VNet"></a>3.建立虛擬網路
+## <a name="3-create-a-virtual-network"></a><a name="VNet"></a>3. 建立虛擬網路
 
 如果您還沒有虛擬網路，請使用 [az network vnet create](/cli/azure/network/vnet) 命令建立一個。 在建立虛擬網路時，請確定您指定的位址空間沒有與您在內部部署網路上所擁有的任何位址空間重疊。
 
@@ -96,7 +97,7 @@ az group create --name TestRG1 --location eastus
 az network vnet create --name TestVNet1 --resource-group TestRG1 --address-prefix 10.11.0.0/16 --location eastus --subnet-name Subnet1 --subnet-prefix 10.11.0.0/24
 ```
 
-## 4.<a name="gwsub"></a>建立閘道子網路
+## <a name="4-create-the-gateway-subnet"></a>4. <a name="gwsub"></a> 建立閘道子網
 
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-include.md)]
@@ -109,14 +110,14 @@ az network vnet subnet create --address-prefix 10.11.255.0/27 --name GatewaySubn
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
-## <a name="localnet"></a>5.建立區域網路閘道
+## <a name="5-create-the-local-network-gateway"></a><a name="localnet"></a>5. 建立局域網路閘道
 
-區域網路閘道通常是指您的內部部署位置。 請賦予網站可供 Azure 參考的名稱，然後指定您想要與其建立連線之內部部署 VPN 裝置的 IP 位址。 也請指定 IP 位址首碼，以供系統透過 VPN 閘道路由至 VPN 裝置。 您指定的位址首碼是位於內部部署網路上的首碼。 如果本地网络出现变化，可以轻松更新这些前缀。
+區域網路閘道通常是指您的內部部署位置。 請賦予網站可供 Azure 參考的名稱，然後指定您想要與其建立連線之內部部署 VPN 裝置的 IP 位址。 也請指定 IP 位址首碼，以供系統透過 VPN 閘道路由至 VPN 裝置。 您指定的位址首碼是位於內部部署網路上的首碼。 如果您的內部部署網路有所變更，您可以輕鬆地更新首碼。
 
 輸入下列值：
 
-* --gateway-ip-address 是內部部署 VPN 裝置的 IP 位址。
-* --local-address-prefixes 是內部部署位址空間。
+* *--Gateway-ip 位址*是內部部署 VPN 裝置的 ip 位址。
+* --local-address-prefixes** 是內部部署位址空間。
 
 使用 [az network local-gateway create](/cli/azure/network/local-gateway) 命令新增具有多個位址首碼的區域網路閘道：
 
@@ -124,9 +125,9 @@ az network vnet subnet create --address-prefix 10.11.255.0/27 --name GatewaySubn
 az network local-gateway create --gateway-ip-address 23.99.221.164 --name Site2 --resource-group TestRG1 --local-address-prefixes 10.0.0.0/24 20.0.0.0/24
 ```
 
-## <a name="PublicIP"></a>6.要求公用 IP 位址
+## <a name="6-request-a-public-ip-address"></a><a name="PublicIP"></a>6. 要求公用 IP 位址
 
-VPN 閘道必須具有公用 IP 位址。 您會先要求 IP 位址資源，然後在建立虛擬網路閘道時參考它。 建立 VPN 閘道時，系統會將 IP 位址動態指派給此資源。 VPN 网关当前仅支持动态公共 IP 地址分配。 不能请求静态公共 IP 地址分配。 不過，這不表示 IP 位址變更之後已被指派至您的 VPN 閘道。 公共 IP 地址只在删除或重新创建网关时更改。 它不會因為重新調整、重設或 VPN 閘道的其他內部維護/升級而變更。
+VPN 閘道必須具有公用 IP 位址。 您會先要求 IP 位址資源，然後在建立虛擬網路閘道時參考它。 建立 VPN 閘道時，系統會將 IP 位址動態指派給此資源。 VPN 閘道目前僅支援*動態*公用 IP 位址配置。 您無法要求靜態公用 IP 位址指派。 不過，這不表示 IP 位址變更之後已被指派至您的 VPN 閘道。 公用 IP 位址只會在刪除或重新建立閘道時變更。 它不會因為重新調整、重設或 VPN 閘道的其他內部維護/升級而變更。
 
 使用 [az network public-ip create](/cli/azure/network/public-ip) 命令來要求動態公用 IP 位址。
 
@@ -134,15 +135,15 @@ VPN 閘道必須具有公用 IP 位址。 您會先要求 IP 位址資源，然�
 az network public-ip create --name VNet1GWIP --resource-group TestRG1 --allocation-method Dynamic
 ```
 
-## <a name="CreateGateway"></a>7.创建 VPN 网关
+## <a name="7-create-the-vpn-gateway"></a><a name="CreateGateway"></a>7. 建立 VPN 閘道
 
 建立虛擬網路 VPN 閘道。 建立 VPN 閘道可能需要 45 分鐘以上的時間才能完成。
 
 輸入下列值：
 
-* 網站間組態的 --gateway-type 是 Vpn。 閘道器類型永遠是您實作的組態的特定類型。 如需詳細資訊，請參閱[閘道類型](vpn-gateway-about-vpn-gateway-settings.md#gwtype)。
-* *--vpn-type* 可以是 *RouteBased*（在某些文档中称为动态网关）或 *PolicyBased*（在某些文档中称为静态网关）。 這是您所連線裝置之需求的特有設定。 如需 VPN 閘道類型的詳細資訊，請參閱[關於 VPN 閘道組態設定](vpn-gateway-about-vpn-gateway-settings.md#vpntype)。
-* 選取您想要使用的閘道 SKU。 某些 SKU 存在配置限制。 有关详细信息，请参阅[网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
+* 站對站設定的 *--閘道類型*是*Vpn*。 閘道器類型永遠是您實作的組態的特定類型。 如需詳細資訊，請參閱[閘道類型](vpn-gateway-about-vpn-gateway-settings.md#gwtype)。
+* --vpn-type** 可以是 RouteBased** (在某些文件中稱為動態閘道器)，或 PolicyBased** (在某些文件中稱為靜態閘道器)。 這是您所連線裝置之需求的特有設定。 如需 VPN 閘道類型的詳細資訊，請參閱[關於 VPN 閘道組態設定](vpn-gateway-about-vpn-gateway-settings.md#vpntype)。
+* 選取您想要使用的閘道 SKU。 某些 SKU 有組態限制。 如需詳細資訊，請參閱[閘道 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
 
 使用 [az network vnet-gateway create](/cli/azure/network/vnet-gateway) 命令建立 VPN 閘道。 如果您使用 '--no-wait' 參數執行此命令，您不會看到任何意見反應或輸出。 此參數允許在背景中建立閘道。 大約需要 45 分鐘的時間來建立閘道。
 
@@ -150,12 +151,12 @@ az network public-ip create --name VNet1GWIP --resource-group TestRG1 --allocati
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWIP --resource-group TestRG1 --vnet TestVNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait 
 ```
 
-## <a name="VPNDevice"></a>8.設定 VPN 裝置
+## <a name="8-configure-your-vpn-device"></a><a name="VPNDevice"></a>8. 設定 VPN 裝置
 
-通过站点到站点连接连接到本地网络需要 VPN 设备。 在此步驟中，設定 VPN 裝置。 在設定 VPN 裝置時，您需要下列項目：
+內部部署網路的站對站連線需要 VPN 裝置。 在此步驟中，設定 VPN 裝置。 在設定 VPN 裝置時，您需要下列項目：
 
 - 共用金鑰。 這個共同金鑰與您建立站對站 VPN 連線時指定的共用金鑰相同。 在我們的範例中，我們會使用基本的共用金鑰。 我們建議您產生更複雜的金鑰以供使用。
-- 虚拟网关的“公共 IP 地址”。 您可以使用 Azure 入口網站、PowerShell 或 CLI 來檢視公用 IP 位址。 若要查找虚拟网关的公共 IP 地址，请使用 [az network public-ip list](/cli/azure/network/public-ip) 命令。 为了方便阅读，对输出进行了格式化，以表格式显示一系列公共 IP。
+- 虛擬網路閘道的公用 IP 位址。 您可以使用 Azure 入口網站、PowerShell 或 CLI 來檢視公用 IP 位址。 若要尋找虛擬網路閘道的公用 IP 位址，請使用 [az network public-ip list](/cli/azure/network/public-ip) 命令。 為方便閱讀，系統會將輸出格式化為以資料表格式顯示公用 IP 的清單。
 
   ```azurecli-interactive
   az network public-ip list --resource-group TestRG1 --output table
@@ -165,9 +166,9 @@ az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWIP --re
 [!INCLUDE [Configure VPN device](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
 
-## <a name="CreateConnection"></a>9.建立 VPN 連線
+## <a name="9-create-the-vpn-connection"></a><a name="CreateConnection"></a>9. 建立 VPN 連線
 
-在虚拟网关和本地 VPN 设备之间创建站点到站点 VPN 连接。 请特别注意共享密钥值，该值必须与为 VPN 设备配置的共享密钥值相符。
+您會在虛擬網路閘道與內部部署 VPN 裝置之間建立站對站 VPN 連線。 請特別注意共用金鑰值，此值必須符合您的 VPN 裝置所設定的共用金鑰值。
 
 使用 [az network vpn-connection create](/cli/azure/network/vpn-connection) 命令建立連線。
 
@@ -177,17 +178,17 @@ az network vpn-connection create --name VNet1toSite2 --resource-group TestRG1 --
 
 過一會兒，連接將會建立。
 
-## <a name="toverify"></a>10.驗證 VPN 連線
+## <a name="10-verify-the-vpn-connection"></a><a name="toverify"></a>10. 驗證 VPN 連線
 
 [!INCLUDE [verify connection](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
 
 如果您想要使用其他方法來確認您的連線，請參閱[確認 VPN 閘道連線](vpn-gateway-verify-connection-resource-manager.md)。
 
-## <a name="connectVM"></a>連線至虛擬機器
+## <a name="to-connect-to-a-virtual-machine"></a><a name="connectVM"></a>連線至虛擬機器
 
 [!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-s2s-include.md)]
 
-## <a name="tasks"></a>常見工作
+## <a name="common-tasks"></a><a name="tasks"></a>常見工作
 
 本節包含使用站對站組態時很實用的常見命令。 如需 CLI 網路命令的完整清單，請參閱 [Azure CLI - 網路](/cli/azure/network)。
 
@@ -200,5 +201,5 @@ az network vpn-connection create --name VNet1toSite2 --resource-group TestRG1 --
 * 如需強制通道的相關資訊，請參閱[關於強制通道](vpn-gateway-forced-tunneling-rm.md)。
 * 如需高可用性主動-主動連線的相關資訊，請參閱[高可用性跨單位和 VNet 對 VNet 連線能力](vpn-gateway-highlyavailable.md)。
 * 如需 Azure CLI 網路命令的清單，請參閱 [Azure CLI](https://docs.microsoft.com/cli/azure/network)。
-* 如需使用 Azure Resource Manager 範本建立站對站 VPN 連線的相關資訊，請參閱[建立站對站 VPN 連線](https://azure.microsoft.com/resources/templates/101-site-to-site-vpn-create/)。
-* 如需使用 Azure Resource Manager 範本建立 vnet 對 vnet VPN 連線的相關資訊，請參閱[部署 HB 異地複寫](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/)。
+* 如需使用 Azure Resource Manager 範本建立站對站 VPN 連線的相關資訊，請參閱[建立站對站 vpn](https://azure.microsoft.com/resources/templates/101-site-to-site-vpn-create/)連線。
+* 如需使用 Azure Resource Manager 範本建立 vnet 對 vnet VPN 連線的相關資訊，請參閱[部署 HBase 異地](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/)複寫。

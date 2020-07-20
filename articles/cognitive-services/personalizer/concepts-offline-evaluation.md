@@ -1,25 +1,25 @@
 ---
-title: 離線評估 - 個人化工具
+title: 使用離線評估方法-個人化工具
 titleSuffix: Azure Cognitive Services
-description: 使用個人化工具服務在此 C# 快速入門中建立意見反應迴圈。
+description: 本文將說明如何使用離線評估來測量應用程式的有效性，並分析您的學習迴圈。
 services: cognitive-services
-author: edjez
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
-ms.topic: overview
-ms.date: 05/07/2019
-ms.author: edjez
-ms.openlocfilehash: 29caea481b1999086440db2021b86d949ce6cbc6
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
-ms.translationtype: HT
+ms.topic: conceptual
+ms.date: 02/20/2020
+ms.author: diberry
+ms.openlocfilehash: f8ceef5e80bf15f0ba52a9c289e617018febfb5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65026690"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "77623596"
 ---
 # <a name="offline-evaluation"></a>離線評估
 
-離線評估是可讓您測試及評估個人化工具服務效用的方法，而這不會變更您的程式碼或影響使用者體驗。 離線評估會使用過去的資料 (從您應用程式傳送至排名 API) 來比較不同排名執行的方式。
+離線評估是可讓您測試及評估個人化工具服務效用的方法，而這不會變更您的程式碼或影響使用者體驗。 離線評估會使用過去的資料，從您的應用程式傳送至排名和獎勵 Api，以比較不同的排名執行方式。
 
 離線評估會根據日期範圍來執行。 該範圍的最終時間可以是目前的時間。 範圍起點不能超過[資料保留](how-to-settings.md)的指定天數。
 
@@ -48,17 +48,27 @@ ms.locfileid: "65026690"
 
 個人化工具可使用離線評估程序來自動探索更好的學習原則。
 
-執行離線評估之後，您可以看到新原則與目前線上原則相比之下，個人化工具所具有的比較成效。 然後，您可以套用該學習原則，使其在個人化工具中立即生效，或將其下載，以便在未來進行分析或使用。
+執行離線評估之後，您可以看到新原則與目前線上原則相比之下，個人化工具所具有的比較成效。 接著，您可以套用該學習原則，讓它在個人化工具中立即生效，方法是下載它，然後在 [模型和原則] 面板中上傳它。 您也可以下載它以供日後分析或使用。
+
+評估中包含的目前原則：
+
+| 學習設定 | 目的|
+|--|--|
+|**線上原則**| 個人化工具中目前使用的學習原則 |
+|**基準**|應用程式的預設值（由順位呼叫中所傳送的第一個動作所決定）|
+|**隨機原則**|虛構排名行為，其一律會從所提供的動作傳回隨機選擇的動作。|
+|**自訂原則**|開始評估時上傳的額外學習原則。|
+|**優化的原則**|若開始評估時採用探索最佳化原則的選項，則也會比較最佳化原則，而且您能夠下載該原則或使其成為線上學習原則，並取代目前的學習原則。|
 
 ## <a name="understanding-the-relevance-of-offline-evaluation-results"></a>了解離線評估結果的相關性
 
-當您執行離線評估時，務必要分析結果的「信賴界限」。 如果界限很寬，表示您的應用程式未收到足夠的資料，無法準確或有效地預估獎勵。 由於系統會累積更多資料，而且您會對更長的期間執行離線評估，因此信賴區間會變得愈來愈窄。
+當您執行離線評估時，務必要分析結果的「信賴界限」__。 如果界限很寬，表示您的應用程式未收到足夠的資料，無法準確或有效地預估獎勵。 由於系統會累積更多資料，而且您會對更長的期間執行離線評估，因此信賴區間會變得愈來愈窄。
 
 ## <a name="how-offline-evaluations-are-done"></a>離線評估的運作方式
 
-離線評估會使用名為**反事實評估**的方法來進行。 
+離線評估會使用名為**反事實評估**的方法來進行。
 
-個人化工具的基礎假設是使用者行為 (和獎勵) 無法回溯預測 (如果對使用者顯示的內容個與他們看到的內容不同，則個人化工具無法得知會發生什麼事)，並且只能從預估的獎勵中了解。 
+個人化工具的基礎假設是使用者行為 (和獎勵) 無法回溯預測 (如果對使用者顯示的內容個與他們看到的內容不同，則個人化工具無法得知會發生什麼事)，並且只能從預估的獎勵中了解。
 
 這是用於評估的概念程序：
 
@@ -70,11 +80,11 @@ ms.locfileid: "65026690"
     [For every chronological event in the logs]
     {
         - Perform a Rank call
-    
+
         - Compare the reward of the results against the logged user behavior.
             - If they match, train the model on the observed reward in the logs.
             - If they don't match, then what the user would have done is unknown, so the event is discarded and not used for training or measurement.
-        
+
     }
 
     Add up the rewards and statistics that were predicted, do some aggregation to aid visualizations, and save the results.
@@ -91,11 +101,12 @@ ms.locfileid: "65026690"
 我們建議您查看特性評估並詢問：
 
 * 您的應用程式或系統可提供什麼其他更有效果的額外特性？
-* 可以移除哪些效果低的特性？ 效果低的特性會加重機器學習中的「干擾」。
-* 是否有任何意外加入的特性？ 範例如下：個人識別資訊 (PII) 或重複識別碼等等。
+* 可以移除哪些效果低的特性？ 效果低的特性會加重機器學習中的「干擾」__。
+* 是否有任何意外加入的特性？ 範例如下：使用者標識資訊、重複的識別碼等等。
 * 是否有任何不可用的特性，也就是因為法規或責任考量而不應該用來個人化的特性？ 是否有可以取代不可用特性的特性 (也就是即近似或相關的特性)？
 
 
 ## <a name="next-steps"></a>後續步驟
 
 [設定個人化工具](how-to-settings.md)
+[執行離線評估](how-to-offline-evaluation.md)瞭解[個人化工具的運作方式](how-personalizer-works.md)

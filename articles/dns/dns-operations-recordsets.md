@@ -3,23 +3,20 @@ title: 使用 Azure PowerShell 管理 Azure DNS 中的 DNS 記錄 | Microsoft Do
 description: 將網域裝載於 Azure DNS 時，在 Azure DNS 管理 DNS 記錄集和記錄。 對記錄集和記錄執行作業的所有 PowerShell 命令。
 services: dns
 documentationcenter: na
-author: vhorne
-manager: timlt
-ms.assetid: 7136a373-0682-471c-9c28-9e00d2add9c2
+author: rohinkoul
 ms.service: dns
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
-ms.author: victorh
-ms.openlocfilehash: fedab8cc45fff6d7830f67e7a23786b5952f83a0
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.author: rohink
+ms.openlocfilehash: 07776e0361b8221cf3aca9f06c66478aa6127f53
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995960"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84701727"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure DNS 中的 DNS 記錄和記錄集
 
@@ -46,7 +43,7 @@ ms.locfileid: "59995960"
 
 ## <a name="create-a-new-dns-record"></a>建立新的 DNS 區域
 
-如果新記錄的名稱和類型與現有記錄相同，您需要[將它新增至現有的記錄集](#add-a-record-to-an-existing-record-set)。 否則，如果新記錄的名稱和類型與現有記錄不同，則必須建立新的記錄集。 
+如果新記錄的名稱和類型與現有記錄相同，您需要[將它加入至現有的記錄集](#add-a-record-to-an-existing-record-set)。 否則，如果新記錄的名稱和類型與現有記錄不同，則必須建立新的記錄集。 
 
 ### <a name="create-a-records-in-a-new-record-set"></a>在新的記錄集中建立 'A' 記錄
 
@@ -230,9 +227,9 @@ $recordsets = Get-AzDnsRecordSet -Zone $zone
     Set-AzDnsRecordSet -RecordSet $rs
     ```
 
-使用 `Set-AzDnsRecordSet`，用指定的記錄集*取代* Azure DNS 中現有的記錄集 (與其中所包含的所有記錄)。 [Etag 檢查 ](dns-zones-records.md#etags) 是用來確保並行變更不會遭到覆寫。 您可以使用選擇性的 `-Overwrite` 參數來停用這些檢查。
+使用 ，用指定的記錄集`Set-AzDnsRecordSet` *取代* Azure DNS 中現有的記錄集 (與其中所包含的所有記錄)。 [Etag 檢查 ](dns-zones-records.md#etags) 是用來確保並行變更不會遭到覆寫。 您可以使用選擇性的 `-Overwrite` 參數來停用這些檢查。
 
-作業的此序列也可以「經由管道輸送」，亦即使用管道傳遞記錄集物件，而不是以參數進行傳遞。
+作業的此序列也可以「經由管道輸送」**，亦即使用管道傳遞記錄集物件，而不是以參數進行傳遞。
 
 ```powershell
 Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet

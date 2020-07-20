@@ -1,10 +1,9 @@
 ---
-title: Azure Load Balancer 的 IPv6 概觀
-titlesuffix: Azure Load Balancer
-description: 了解 Azure Load Balancer 和負載平衡 VM 的 IPv6 支援。
+title: IPv6-Azure Load Balancer 總覽
+description: 透過此學習路徑，開始使用 Azure Load Balancer 和負載平衡 Vm 的 IPv6 支援。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 keywords: ipv6, azure load balancer, 雙重堆疊, 公用 ip, 原生 ipv6, 行動, iot
 ms.service: load-balancer
 ms.devlang: na
@@ -13,21 +12,23 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
-ms.author: kumud
-ms.openlocfilehash: 894a56c2e51e8fa8a2d72253563d218416ace4cb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: allensu
+ms.openlocfilehash: d2966f32fcf7f8be2a93d1639f0a63f49768c306
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60861937"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80981846"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer 的 IPv6 概觀
 
 
 >[!NOTE] 
+>[Azure VNet 的 IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)已取代此內容。 Azure 建議新的 IPv6 部署使用適用于 Azure 虛擬網路的新 IPv6 功能。
+
+>[!NOTE]
 >Azure Load Balancer 支援兩種不同類型：基本和標準。 本文討論基本 Load Balancer。 如需標準 Load Balancer 的詳細資訊，請參閱[標準 Load Balancer 概觀](load-balancer-standard-overview.md)。
 
-網際網路面向的負載平衡器可以部署 IPv6 位址。 除了 IPv4 連線功能，這還具有下列功能︰
+基本 SKU 網際網路面向的負載平衡器可以使用 IPv6 位址進行部署。 除了 IPv4 連線功能，這還具有下列功能︰
 
 * 原生端對端 IPv6 連線能力 - 在公用網際網路用戶端和 Azure 虛擬機器 (VM) 之間透過負載平衡器連接。
 * 原生端對端 IPv6 輸出連線能力 - 在 VM 和公用網際網路上已啟用 IPv6 的用戶端之間。
@@ -56,7 +57,7 @@ ms.locfileid: "60861937"
 
 ## <a name="details-and-limitations"></a>詳細資料和限制
 
-详细信息
+詳細資料
 
 * Azure DNS 服務包含 IPV4 A 和 IPv6 AAAA 名稱記錄，以及兩種負載平衡器記錄的回應。 用戶端選擇要與哪一個位址 (IPv4 或 IPv6) 通訊。
 * 當 VM 起始連接至公用網際網路 IPv6 連線裝置的連線時，VM 的來源 IPv6 位址是經網路位址轉譯 (NAT) 後的負載平衡器公用 IPv6 位址。
@@ -79,10 +80,11 @@ ms.locfileid: "60861937"
 * **目前不支援**變更 IPv6 的 loadDistributionMethod 參數。
 * **目前不支援**保留的 IPv6 IP (其中 IPAllocationMethod = 靜態)。
 * 不支援 NAT64 (IPv6 至 IPv4 的轉譯)。
+* **目前不支援**將參考 IPv6 子網的次要 NIC 連接至後端集區。
 
 ## <a name="next-steps"></a>後續步驟
 
-了解如何部署使用 IPv6 的负载均衡器。
+了解如何部署配置有 IPv6 的負載平衡器。
 
 * [依區域的 IPv6 可用性](https://go.microsoft.com/fwlink/?linkid=828357)
 * [使用範本部署配置有 IPv6 的負載平衡器](load-balancer-ipv6-internet-template.md)

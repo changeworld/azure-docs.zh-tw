@@ -1,132 +1,137 @@
 ---
-title: 在 VMware 的解決方案，由 CloudSimple-Azure 中的私人雲端
-description: 深入了解 CloudSimple 私用雲端和概念。
+title: Azure VMware Solution by CloudSimple-私人雲端
+description: 深入瞭解 CloudSimple 私用雲端和概念。
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/20/2019
 ms.topic: article
-ms.service: vmware
+ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: dc07b4eea553e6cb3d9b522826e860ddbfbc1513
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 4fb930603455ed1a5df5d357fcab669f41a0c28c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "64577041"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77024939"
 ---
-# <a name="cloudsimple-private-cloud-overview"></a>CloudSimple 私人雲端概觀
+# <a name="cloudsimple-private-cloud-overview"></a>CloudSimple 私用雲端總覽
 
-CloudSimple 轉換，並擴充到公用雲端的 VMware 工作負載，以分鐘為單位。 CloudSimple 服務，您可以使用部署 VMware 原生 Azure bare metal 基礎結構。 您的部署所在的 Azure 位置，並與 Azure 雲端的其餘部分完全整合。
+在短短幾分鐘內，CloudSimple 會將 VMware 工作負載轉換並擴充至公用雲端。 您可以使用 CloudSimple 服務，以原生方式在 Azure 裸機基礎結構上部署 VMware。 您的部署位於 Azure 位置，並與 Azure 雲端的其他部分完全整合。
 
-* CloudSimple 解決方案提供完整的 VMware 操作持續性。 此解決方案可讓您的公用雲端優點：
-  * 彈性
-  * 創新
-  * 效率
-* 使用 CloudSimple，您會受益於降低擁有權總成本的雲端耗用量模型。 此外，它也會提供隨選佈建、 全額而定-做-您-成長，以及容量最佳化。
-* CloudSimple 完全適用於：
-  * 現有的工具
-  * 技術
-  * 處理序
-* 此相容性可讓您的小組來管理 Azure 雲端上的工作負載，而不會中斷您的原則：
-  * 網路
-  * 安全性  
-  * 資料保護  
-  * 稽核
-* CloudSimple 管理基礎結構和所有必要網路功能和管理的服務。 CloudSimple 服務可讓您的小組專注於：
-  * 商業價值
-  * 應用程式佈建
-  * 業務持續性
-  * 支援
-  * 強制執行原則
+CloudSimple 解決方案提供完整的 VMware 操作持續性。 此解決方案提供您公用雲端的優點：
 
-## <a name="private-cloud-environment-overview"></a>私用雲端環境概觀
+* 彈性
+* 創新
+* 效率
 
-私用雲端是隔離的 VMware 堆疊，例如這些環境：
+透過 CloudSimple，您可以從雲端耗用量模型中獲益，以降低擁有權總成本。 它也提供隨選布建、隨用隨付和容量優化。
+
+CloudSimple 與完全相容：
+
+* 現有的工具
+* 技術
+* 處理程序
+
+此相容性可讓您的小組管理 Azure 雲端上的工作負載，而不會中斷這些類型的原則：
+
+* 網路
+* 安全性  
+* 資料保護  
+* 稽核
+
+CloudSimple 管理基礎結構和所有必要的網路和管理服務。 CloudSimple 服務可讓您的小組專注于：
+
+* 商業價值
+* 應用程式佈建
+* 業務持續性
+* 支援
+* 強制執行原則
+
+## <a name="private-cloud-environment-overview"></a>私用雲端環境總覽
+
+私用雲端是一種隔離的 VMware 堆疊，支援：
 
 * ESXi 主機
 * vCenter
 * vSAN
 * NSX
 
-私用雲端是由 vCenter 伺服器管理在自己管理定義域中。
+私人雲端是透過 CloudSimple 入口網站來管理。 他們在自己的管理網域中有自己的 vCenter server。
 
-在堆疊上執行：
+堆疊會在上執行：
 
 * 專用節點
-* 隔離裸機硬體節點
+* 獨立的裸機硬體節點
 
-使用者會取用透過原生 VMware 工具，包括堆疊：
+使用者透過原生 VMware 工具使用堆疊，包括：
 
 * vCenter
 * NSX 管理員
 
-您可以部署在 Azure 位置的專用的節點。 然後您可以使用 Azure 和 CloudSimple 管理它們。 私用雲端是由一或多個 vSphere 叢集所組成，每個叢集包含 3 到 16 個節點。
+您可以在 Azure 位置中部署專用節點。 然後您就可以使用 Azure 和 CloudSimple 來管理它們。 私用雲端是由一或多個 vSphere 叢集所組成，而每個叢集包含3到16個節點。
 
-您可以建立私用雲端，使用購買節點：
+您可以使用已購買的隨用隨付節點或保留的專用節點來建立私人雲端。
 
-* 隨用隨付節點
-* 保留的專用節點
-
-您可以在內部部署環境與 Azure 使用下列連線的網路連線私用雲端：
+您可以使用下列連線，將私人雲端連線到您的內部部署環境和 Azure 網路：
 
 * 安全
-* 私用 VPN
+* 私人 VPN
 * Azure ExpressRoute
 
-私用雲端環境被設計來排除有單一失敗點：
+私用雲端環境的設計目的是要排除單一失敗點：
 
-* ESXi 叢集已設定 vSphere 的高可用性，並調整大小必須至少一個備用的節點，提供恢復功能。
-* vSAN 提供備援的主要儲存體。 vSan 需要至少三個節點，以針對單一的失敗提供保護。 您可以設定為較大的叢集提供更高的恢復功能的 vSAN。
-* 您可以使用 RAID 10 存放裝置原則，以防止儲存體失敗設定 vCenter、 PSC 和 NSX Manager Vm。 然後，在它們受保護的節點及網路故障的 vSphere HA。
+* ESXi 叢集的設定具有 vSphere 高可用性，並已調整大小為至少有一個備用節點可供復原。
+* vSAN 提供重複的主要儲存體。 vSan 需要至少三個節點，才能針對單一失敗提供保護。 您可以設定 vSAN 來為較大的叢集提供更高的復原能力。
+* 您可以使用 RAID 10 儲存原則來設定 vCenter、PSC 和 NSX Manager Vm，以防止儲存失敗。 vSphere HA 可防止節點和網路失敗。
 
-## <a name="scenarios-for-deploying-a-private-cloud"></a>部署私用雲端案例
+## <a name="scenarios-for-deploying-a-private-cloud"></a>部署私人雲端的案例
 
-* **資料中心淘汰或移轉**
+以下是私用雲端部署的一些範例使用案例。
 
-  * 當您達到您現有的資料中心的限制，或重新整理硬體時，請取得額外的容量。
-  * 在雲端中，新增所需的容量，並排除管理硬體更新的麻煩。
-  * 降低風險與成本的雲端移轉，相較於耗時的轉換或建構。
-  * 使用熟悉的 VMware 工具和技能來加速雲端移轉。 在雲端中，使用 Azure 服務來現代化您的應用程式，您的步調。
+### <a name="data-center-retirement-or-migration"></a>資料中心淘汰或遷移
 
-* **展開 依需求**
+* 當您達到現有資料中心的限制或重新整理硬體時，取得額外的容量。
+* 在雲端中新增所需的容量，並消除管理硬體重新整理的麻煩。
+* 相較于耗時的轉換或改造，降低雲端遷移的風險和成本。
+* 使用熟悉的 VMware 工具和技能來加速雲端遷移。 在雲端中，您可以使用 Azure 服務，依您的步調將應用程式現代化。
 
-  * 展開到雲端，以符合非預期的需求，例如新的開發環境或季節性的容量暴增。
-  * 視需要建立新的容量，並讓它保持，只要您需要它。
-  * 降低初期投資、 加快速度的佈建，並降低複雜度具有相同的架構和原則跨內部部署和雲端。
+### <a name="expand-on-demand"></a>隨選擴充
 
-* **嚴重損壞修復和 Azure 雲端中的虛擬桌面**
+* 擴充至雲端以符合非預期的需求，例如新的開發環境或季節性的容量高載。
+* 依需求建立新的容量，並只在需要時才保留。
+* 透過內部部署和雲端的相同架構和原則，降低您的前期投資、加速布建速度，以及降低複雜性。
 
-  * 建立遠端存取資料、 應用程式，以及以 Azure 雲端中的桌面。 透過高頻寬連線，您需要上傳 / 下載資料速度來從事件復原。 低延遲網路讓您快速回應時間預期從傳統型應用程式的使用者。
+### <a name="disaster-recovery-and-virtual-desktops-in-the-azure-cloud"></a>Azure 雲端中的嚴重損壞修復和虛擬桌面
 
-  * 您所有的原則和網路使用熟悉的 VMware 工具與 CloudSimple 入口網站在雲端中複寫。 投入時間和風險的建立和管理 DR 和 VDI 的實作，可降低此複寫。
+* 建立對 Azure 雲端中的資料、應用程式和桌上型電腦的遠端存取。 透過高頻寬連線，您可以快速上傳/下載資料以從事件復原。 低延遲的網路可讓您快速地回應使用者從桌面應用程式所預期的時間。
 
-* **高效能應用程式和資料庫**
+* 使用 CloudSimple 入口網站和熟悉的 VMware 工具，在雲端中複寫您所有的原則和網路。 複寫可減少建立和管理 DR 和 VDI 的工作和風險。
 
-  * 執行您最嚴苛的工作負載，提供 CloudSimple 超交集架構。
-  * 執行 Oracle、 Microsoft SQL server、 中介軟體系統，以及高效能 NOSQL 資料庫。
+### <a name="high-performance-applications-and-databases"></a>高效能應用程式和資料庫
 
-  * 為您自己的資料中心，利用高速 25 Gbps 的網路連線雲端的經驗。 高速連線可讓您執行跨內部部署，在 Azure 上的 VMware 的混合式應用程式和 Azure 私用的工作負載，不會影響效能。
+* 使用 CloudSimple 所提供的超大範圍架構，執行您最嚴苛的工作負載。
+* 執行 Oracle、Microsoft SQL server、中介軟體系統和高效能的非 SQL 資料庫。
+* 使用高速 25 Gbps 網路連線體驗雲端作為您自己的資料中心。 高速連線可讓您執行跨內部部署、Azure 上的 VMware 和 Azure 私人工作負載的混合式應用程式，而不會影響效能。
 
-* **真正的混合式**
+### <a name="true-hybrid"></a>真正的混合式
 
-  * 整合 DevOps 之間的 VMware 與 Azure 服務。
-  * VMware 管理 Azure 服務和解決方案，可以套用到所有工作負載進行最佳化。
-  * 存取公用雲端服務，而不需要依序展開您的資料中心，或重新架構您的應用程式。
-  * 集中管理身分識別，存取控制原則，記錄和監視在 Azure 上的 VMware 應用程式。
+* 跨 VMware 與 Azure 服務整合 DevOps。
+* 將適用于您所有工作負載的 Azure 服務和解決方案的 VMware 系統管理優化。
+* 存取公用雲端服務，而不需要擴充您的資料中心或重新架構您的應用程式。
+* 集中化身分識別、存取控制原則、記錄和監視 Azure 上的 VMware 應用程式。
 
 ## <a name="limits"></a>限制
 
-下表顯示的節點限制對私人雲端的資源。
+下表列出私人雲端資源的節點限制。
 
-| Resource | 限制 |
+| 資源 | 限制 |
 |----------|-------|
-| 若要建立私人雲端的節點數目下限 | 3 |
-| 在私人雲端上的叢集中的節點數目上限 | 16 |
+| 建立私人雲端的節點數目下限 | 3 |
+| 私人雲端上叢集中的節點數目上限 | 16 |
 | 私人雲端中的節點數目上限 | 64 |
-| 在新叢集上的節點數目下限 | 3 |
+| 新叢集上節點的最小數目 | 3 |
 
 ## <a name="next-steps"></a>後續步驟
 
-* 了解如何[建立私人雲端](https://docs.azure.cloudsimple.com/create-private-cloud/)
-* 了解如何[設定私用雲端環境](quickstart-create-private-cloud.md)
+* 瞭解如何[建立私用雲端](create-private-cloud.md)
+* 瞭解如何[設定私用雲端環境](quickstart-create-private-cloud.md)

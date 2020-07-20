@@ -3,12 +3,22 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 12/13/2018
-ms.openlocfilehash: a36415b10111787ad3e6b3302703bfa97d2294dd
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.date: 05/08/2020
+ms.openlocfilehash: f4c59cb24f0bbc131ace8a56d8530e7894ecfecf
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56740864"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85805615"
 ---
-您必須有具備 Bing 搜尋 API 存取權的[認知服務 API 帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果您沒有 Azure 訂用帳戶，可以[建立免費帳戶](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)。 繼續之前，您需要有啟動免費試用版後所提供的存取金鑰，或是從 Azure 儀表板中取得的付費訂用帳戶金鑰。
+## <a name="create-an-azure-resource"></a>建立 Azure 資源
+
+藉由建立下列其中一項 Azure 資源，開始使用 Bing 自訂搜尋 API。
+
+### <a name="bing-custom-search-resource"></a>[Bing 自訂搜尋資源](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingCustomSearch)
+   * 您可以透過 Azure 入口網站取得該資源，直到將其刪除為止。
+   * 使用免費定價層來試用服務，之後可升級至付費層以用於實際執行環境。
+
+### <a name="multi-service-resource"></a>[多服務資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)
+   * 您可以透過 Azure 入口網站取得該資源，直到將其刪除為止。  
+   * 針對您的應用程式，跨多個認知服務使用相同的金鑰和端點。

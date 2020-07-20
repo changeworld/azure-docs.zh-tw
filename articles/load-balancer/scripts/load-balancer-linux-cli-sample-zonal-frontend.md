@@ -1,12 +1,10 @@
 ---
-title: CLI 範例 - 區域內的 Load Balancer VM - Azure | Microsoft Docs
+title: 在區域內為 VM 進行負載平衡 - Azure CLI
 description: 此 Azure CLI 指令碼範例示範如何為特定可用性區域內 VM 的流量進行負載平衡
 services: load-balancer
 documentationcenter: load-balancer
-author: KumudD
-manager: jeconnoc
-editor: tysonn
-tags: ''
+author: asudbring
+manager: kumudD
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines within a specific zone in a region.
 ms.assetid: ''
 ms.service: load-balancer
@@ -15,15 +13,15 @@ ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/14/2018
-ms.author: kumud
-ms.openlocfilehash: 121d3f941f3d00373bd2821534c3e601107e97e6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 0ae159b57a89b4238d52d178d59cb79b452e0411
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60506955"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79214547"
 ---
-# <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Azure CLI 指令碼範例：使用 VM 平衡流量負載以達到高可用性
+# <a name="azure-cli-script-example-load-balance-traffic-to-vms-within-a-specific-availability-zone"></a>Azure CLI 指令碼範例：在特定可用性區域內為 VM 平衡流量負載
 
 此 Azure CLI 指令碼範例會建立所需的一切，以執行數部依據特定可用性區域內高可用性和負載平衡組態所設定的 Ubuntu 虛擬機器。 執行指令碼之後，在區域內的單一可用性區域中，您將擁有三部可透過 Azure Standard Load Balancer 存取的虛擬機器。 
 
@@ -57,7 +55,7 @@ ms.locfileid: "60506955"
 
   # Create an Azure Load Balancer.
    az network lb create \
-    --resource-group myResourceGroupLB \
+    --resource-group myResourceGroup \
     --name myLoadBalancer \
     --public-ip-address myPublicIP \
     --frontend-ip-name myFrontEndPool \
@@ -168,7 +166,7 @@ az group delete --name myResourceGroup
 
 此指令碼使用下列命令來建立資源群組、虛擬機器、可用性設定組、負載平衡器和所有相關資源。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) | 建立 Azure 虛擬網路和子網路。 |

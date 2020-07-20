@@ -1,28 +1,31 @@
 ---
-title: 叢集在 Azure 地圖服務中的點資料 |Microsoft Docs
-description: 如何叢集化 Web SDK 中的點資料
+title: 叢集地圖上的點資料 | Microsoft Azure 地圖服務
+description: 在本文中，您會了解如何使用 Microsoft Azure 地圖服務 Web SDK 來叢集點資料，並將其呈現在地圖上。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 03/27/2019
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: cpendleton
+manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: d4dc6f0c8fd2dff74a1997c9dca5a31abc70c03a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: ce2891201331ee1efd861d2f13cec78c0551b6ba
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60795926"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "80804566"
 ---
 # <a name="clustering-point-data"></a>叢集點資料
 
-視覺化地圖上的許多資料點，當點彼此重疊對應看起來很雜亂，但是很難看到並使用。 叢集的點資料可用來改善這種使用者經驗。 叢集的資料點是結合彼此相近的點資料，並為單一叢集的資料點在地圖上代表它們的程序。 因為使用者拉近到對應中，叢集分解成其個別的資料點。
+當要視覺化地圖上許多的資料點時，資料點可能會彼此重疊。 重疊會導致地圖無法閱讀且難以使用。 群集位置點資料的程序會結合彼此接近的位置點資料，並在地圖上以單一群集資料點的方式加以表示。 當使用者放大地圖時，群集便會分解成個別的資料點。 當處理大量資料點時，請使用叢集處理序來改善使用者體驗。
 
-## <a name="enabling-clustering-on-a-data-source"></a>啟用叢集上的資料來源
+<br/>
 
-叢集可以輕鬆上啟用`DataSource`類別，藉由設定`cluster`選項設為 true。 此外，結合到叢集中選取點附近的像素半徑可以使用來設定`clusterRadius`並縮放層級可指定要停用叢集的邏輯使用`clusterMaxZoom`選項。 以下是如何啟用叢集的資料來源中的範例。
+<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Clustering-point-data-in-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+
+## <a name="enabling-clustering-on-a-data-source"></a>對資料來源啟用叢集
+
+將 `cluster` 選項設定為 true，以在 `DataSource` 類別中啟用叢集。 設定 `ClusterRadius` 以選取附近的點，並將這些點結合成叢集。 `ClusterRadius` 的值是以像素為單位。 使用 `clusterMaxZoom` 指定停用叢集邏輯的縮放層級。 以下範例示範如何在資料來源中啟用叢集。
 
 ```javascript
 //Create a data source and enable clustering.
@@ -33,80 +36,94 @@ var datasource = new atlas.source.DataSource(null, {
     //The radius in pixels to cluster points together.
     clusterRadius: 45,
 
-    //The maximium zoom level in which clustering occurs.
+    //The maximum zoom level in which clustering occurs.
     //If you zoom in more than this, all points are rendered as symbols.
-    clusterMaxZoom: 15 
+    clusterMaxZoom: 15
 });
 ```
 
 > [!TIP]
-> 如果兩個資料點彼此鄰近到地上，就可以叢集將永遠不會分解，無論在接近使用者縮放。 若要解決此問題，您可以設定`clusterMaxZoom`的縮放層級，若要停用叢集的邏輯，並且只顯示所有項目會指定資料來源的選項。
+> 如果兩個資料點彼此很靠近，不論使用者放大到什麼程度，叢集可能都不會拆分開。 若要解決此問題，您可將 `clusterMaxZoom` 選項設為停用叢集邏輯，只顯示所有項目。
 
-`DataSource`類別也有與叢集相關的下列方法：
+以下是 `DataSource` 類別為叢集提供的其他方法：
 
 | 方法 | 傳回類型 | 描述 |
 |--------|-------------|-------------|
-| getClusterChildren(clusterId: number) | 承諾&lt;功能&lt;幾何，任何&gt;\|圖形&gt; | 擷取指定的叢集上的下一步 的縮放層級的子系。 這些子系可能是圖形和 subclusters 的組合。 Subclusters 會屬性符合 ClusteredProperties 的功能。 |
-| getClusterExpansionZoom(clusterId: number) | Promise&lt;number&gt; | 計算縮放層級的叢集將會開始展開或分解。 |
-| getClusterLeaves(clusterId: number, limit: number, offset: number) | 承諾&lt;功能&lt;幾何，任何&gt;\|圖形&gt; | 擷取在叢集中的所有點。 設定`limit`傳回的點，子集，並使用`offset`逐頁查看點。 |
+| getClusterChildren(clusterId: number) | Promise&lt;Array&lt;Feature&lt;Geometry, any&gt; \| Shape&gt;&gt; | 擷取給定群集在下一個縮放層級上的子系。 這些子系可以是圖形和子群集的組合。 子群集會是屬性符合 ClusteredProperties 的功能。 |
+| getClusterExpansionZoom(clusterId: number) | Promise&lt;number&gt; | 計算群集將開始擴大或分解的臨界縮放層級。 |
+| getClusterLeaves(clusterId: number, limit: number, offset: number) | Promise&lt;Array&lt;Feature&lt;Geometry, any&gt; \| Shape&gt;&gt; | 擷取群集中的所有位置點。 設定 `limit` 可傳回位置點的子集，使用 `offset` 則可逐頁查看位置點。 |
 
 ## <a name="display-clusters-using-a-bubble-layer"></a>使用泡泡圖層顯示叢集
 
-泡泡圖層是適合用來呈現叢集的點，您可以輕鬆地調整半徑，並變更它們依據的叢集中的點數使用運算式的色彩。 顯示時使用的泡泡圖層的叢集，您也應該使用個別的圖層來呈現非叢集的資料點。 它通常是不錯也能夠顯示泡泡上叢集的大小。 無圖示文字與符號層可用來達成此行為。 
+泡泡圖層是呈現叢集資料點的絕佳方式。 使用運算式調整半徑，並根據叢集中的資料點數量變更色彩。 如果使用泡泡圖層顯示叢集，則建議使用其他圖層呈現未叢集化的資料點。
+
+若要在泡泡頂端顯示叢集大小，請使用符號圖層搭配文字，且不要使用圖示。
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="叢集的基本泡泡圖層" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參閱畫筆<a href='https://codepen.io/azuremaps/pen/qvzRZY/'>基本泡泡圖層群集</a>由 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 上<a href='https://codepen.io'>CodePen</a>。
+<iframe height="500" style="width: 100%;" scrolling="no" title="基本泡泡圖層叢集" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+查看畫筆的 <a href='https://codepen.io/azuremaps/pen/qvzRZY/'>Basic bubble layer clustering</a> (基本泡泡圖層叢集)，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
-## <a name="display-clusters-using-a-symbol-layer"></a>顯示使用符號層的叢集
+## <a name="display-clusters-using-a-symbol-layer"></a>使用符號圖層顯示叢集
 
-當使用符號圖層中，依預設它會自動隱藏的點資料視覺化符號的重疊彼此建立簡潔的體驗時，不過這可能不是所需的體驗如果您想要查看資料的密度點在地圖上。 設定`allowOverlap`符號圖層的選項`iconOptions`屬性設`true`停用這項體驗，但會導致顯示的所有符號。 使用叢集，可讓您在建立好用的全新使用者體驗時看到的所有資料的密度。 在此範例中，自訂的符號，將用來代表叢集和個別資料點中。
+視覺化資料點時，符號圖層會自動隱藏彼此重疊的符號，以確保使用者介面更整潔。 如果想在地圖上顯示資料點的密度，則可能不需要這種預設行為。 但您可變更這些設定。 若要顯示所有符號，請將符號圖層 `iconOptions` 屬性的 [`allowOverlap`] 選項設為 [`true`]。 
+
+使用叢集顯示資料點密度，同時保持乾淨的使用者介面。 以下範例示範如何使用符號圖層來新增自訂符號，以及表示叢集和個別資料點。
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="叢集的符號層" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參閱畫筆<a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>叢集符號層</a>透過 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 上<a href='https://codepen.io'>CodePen</a>。
+<iframe height="500" style="width: 100%;" scrolling="no" title="已叢集化的符號圖層" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+查看畫筆的 <a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>Clustered Symbol layer</a> (叢集符號圖層)，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
-## <a name="clustering-and-the-heat-maps-layer"></a>叢集和熱度圖對應圖層
+## <a name="clustering-and-the-heat-maps-layer"></a>叢集和熱度圖圖層
 
-熱度是適合用來在地圖上顯示資料的密度。 此視覺效果可處理大量的資料點，但它可以處理更多的資料，如果資料點叢集和叢集大小做為熱量分佈圖的加權。 設定`weight`熱度圖地圖圖層，以選擇`['get', 'point_count']`來達到此目的。 如果叢集 radius 很小，熱量分佈圖看起來幾乎完全相同熱度圖使用的非叢集的資料點，但更佳。 不過，小叢集 radius、 更精確的熱度圖會但更少的效能獲益。
+熱度圖是在地圖上顯示資料密度的絕佳方式。 這個視覺效果方法可自行處理大量的資料點。 如果資料點已叢集化，且叢集大小作為熱度圖的權數使用，則此熱度圖可處理更多資料。 若要完成此選項，請將熱度圖圖層的 [`weight`] 選項設為 [`['get', 'point_count']`]。 如果叢集半徑很小，則此熱度圖和使用未叢集化資料點的熱度圖看起來幾乎一致，但執行效果更好。 不過，叢集半徑愈小，熱度圖的精確度就愈高，但效能優勢也隨之減少。
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="叢集加權熱量分佈圖" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參閱畫筆<a href='https://codepen.io/azuremaps/pen/VRJrgO/'>叢集加權熱度</a>由 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 上<a href='https://codepen.io'>CodePen</a>。
+<iframe height="500" style="width: 100%;" scrolling="no" title="叢集加權熱度圖" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+查看畫筆的 <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>Cluster weighted Heat Map</a> (叢集加權熱度圖)，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
-## <a name="mouse-events-on-clustered-data-points"></a>在叢集的資料點上的滑鼠事件
+## <a name="mouse-events-on-clustered-data-points"></a>已叢集化資料點的滑鼠事件
 
-滑鼠事件發生時，包含叢集的資料點圖層上，將事件傳回叢集的資料點，以 GeoJSON 點功能物件。 此點功能將會有下列屬性：
+當滑鼠事件發生在包含叢集資料點的圖層上時，叢集資料點會以 GeoJSON 點功能物件的形式傳回事件。 此點功能具有下列屬性：
 
-| 屬性名稱 | 類型 | 描述 |
-|---------------|------|-------------|
-| 叢集 | boolean | 指出是否功能代表叢集。 |
-| cluster_id | string | 可以搭配資料來源叢集的唯一識別碼`getClusterExpansionZoom`， `getClusterChildren`，和`getClusterLeaves`方法。 |
-| point_count | number | 叢集中包含的點數目。 |
-| point_count_abbreviated | string | 縮寫 point_count 值，如果很長的字串。 （例如 4000 變成 4k） |
+| 屬性名稱             | 類型    | 描述   |
+|---------------------------|---------|---------------|
+| `cluster`                 | boolean | 指出功能是否代表群集。 |
+| `cluster_id`              | 字串  | 群集的唯一識別碼，可與 DataSource 的 `getClusterExpansionZoom`、`getClusterChildren` 和 `getClusterLeaves` 方法搭配使用。 |
+| `point_count`             | number  | 群集包含的位置點數目。  |
+| `point_count_abbreviated` | 字串  | 會縮寫較長 `point_count` 值的字串。 (例如，4,000 變成 4K)  |
 
-這個範例會取得泡泡圖層可呈現叢集點，並新增 click 事件，當觸發時，計算中, 與縮放地圖來叢集就會中斷分開使用的下一步] 縮放層級`getClusterExpansionZoom`方法`DataSource`類別，並`cluster_id`屬性的已按下 [叢集資料點。 
+此範例使用會呈現叢集點並新增 click 事件的泡池圖圖層。 觸發 click 事件時，程式碼會計算地圖，將其縮放至可拆分叢集的下一個縮放層級。 這項功能是使用 `DataSource` 類別的 `getClusterExpansionZoom` 方法，並按一下叢集資料點的 `cluster_id` 屬性來實作。
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="叢集 getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參閱畫筆<a href='https://codepen.io/azuremaps/pen/moZWeV/'>叢集 getClusterExpansionZoom</a>透過 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 上<a href='https://codepen.io'>CodePen</a>。
+<iframe height="500" style="width: 100%;" scrolling="no" title="叢集 getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+查看畫筆的 <a href='https://codepen.io/azuremaps/pen/moZWeV/'>Cluster getClusterExpansionZoom</a> (叢集 getClusterExpansionZoom)，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
-## <a name="display-cluster-area"></a>顯示叢集的區域 
+## <a name="display-cluster-area"></a>顯示叢集區域 
 
-群集代表點資料分散到區域。 在此範例中的滑鼠停留的叢集中，個別的資料點，它包含 （分葉） 會用來計算的凸殼和地圖以顯示區域上顯示時。 可以從使用您建立資料來源擷取包含在叢集中的所有點`getClusterLeaves`方法。 凸殼就包裝一組點的多邊形像彈性頻外，而且可以使用計算`atlas.math.getConvexHull`方法。
+叢集代表的點資料會散佈在某個區域。 在此範例中，當滑鼠暫留在叢集上時，會發生兩種主要行為。 首先，使用包含在叢集中的個別資料點來計算凸殼。 然後，凸殼會出現在地圖上以顯示某個區域。  凸殼是一個多邊形，其類似橡皮筋一樣包裹住一組可用 `atlas.math.getConvexHull` 方法計算的資料點。 您可使用 `getClusterLeaves` 方法，以從資料來源擷取出所有包含在叢集中的點。
 
 <br/>
 
- <iframe height="500" style="width: 100%;" scrolling="no" title="叢集區域凸殼" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參閱畫筆<a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>叢集區域凸殼</a>透過 Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 上<a href='https://codepen.io'>CodePen</a>。
+ <iframe height="500" style="width: 100%;" scrolling="no" title="叢集區域凸殼" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+查看畫筆的 <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>Cluster area convex hull</a> (叢集區域凸殼)，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
+</iframe>
+
+## <a name="aggregating-data-in-clusters"></a>彙總叢集中的資料
+
+叢集通常會使用一個符號加上叢集中的點數來表示。 但有時候，您會想要使用其他計量來自訂叢集樣式。 使用叢集彙總時，您可使用[彙總運算式](data-driven-style-expressions-web-sdk.md#aggregate-expression)計算來建立與填入自訂的屬性。  叢集彙總可在 `DataSource` 的 `clusterProperties` 選項中定義。
+
+下列範例使用彙總運算式。 程式碼會根據叢集中每個資料點的實體類型屬性來計算資料點計數。 當使用者按一下叢集時，快顯視窗就會顯示與叢集相關的其他資訊。
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="叢集彙總" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+查看畫筆的 <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>Cluster aggregates</a> (叢集彙總)，發佈者：Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)，發佈位置：<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
 ## <a name="next-steps"></a>後續步驟
@@ -114,13 +131,13 @@ var datasource = new atlas.source.DataSource(null, {
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [資料來源類別](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)
+> [DataSource 類別](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) (英文)
 
 > [!div class="nextstepaction"]
-> [DataSourceOptions 物件](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions?view=azure-iot-typescript-latest)
+> [DataSourceOptions 物件](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions?view=azure-iot-typescript-latest) (英文)
 
 > [!div class="nextstepaction"]
-> [atlas.math namespace](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math?view=azure-iot-typescript-latest)
+> [atlas.math 命名空間](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math?view=azure-iot-typescript-latest)
 
 請參閱程式碼範例，將功能新增至您的應用程式：
 
@@ -131,4 +148,4 @@ var datasource = new atlas.source.DataSource(null, {
 > [新增符號圖層](map-add-pin.md)
 
 > [!div class="nextstepaction"]
-> [加入熱度圖地圖圖層](map-add-heat-map-layer.md)
+> [新增熱度圖圖層](map-add-heat-map-layer.md)

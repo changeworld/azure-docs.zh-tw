@@ -1,5 +1,5 @@
 ---
-title: 混合式組織的 B2B 共同作業 - Azure Active Directory | Microsoft Docs
+title: 適用于混合式組織的 B2B 共同作業-Azure AD
 description: 透過 Azure AD B2B 共同作業對夥伴提供內部部署和雲端資源的存取權。
 services: active-directory
 ms.service: active-directory
@@ -8,15 +8,14 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: mimart
 author: msmimart
-manager: daveba
-ms.reviewer: sasubram
+manager: celestedg
+ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a95b9bc6637526ef0d975815cc88dd084360397
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 427f7ad4d6a1b9839b1197ef9f7ca15400ea0f59
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60412588"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "74272476"
 ---
 # <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>混合式組織的 Azure Active Directory B2B 共同作業
 
@@ -48,6 +47,6 @@ Azure Active Directory (Azure AD) B2B 共同作業可讓您輕鬆地對外部夥
 ## <a name="next-steps"></a>後續步驟
 
 - [對 Azure AD 中的 B2B 使用者授與內部部署應用程式的存取權](hybrid-cloud-to-on-premises.md)
-- [使用 Azure AD B2B 共同作業對本機管理的夥伴帳戶授與雲端資源的存取權](hybrid-on-premises-to-cloud.md)
+- [使用 Azure AD B2B 共同作業，將雲端資源的存取權授與本機管理的夥伴帳戶](hybrid-on-premises-to-cloud.md)
 
 

@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: bd398225-8bd8-4697-9a44-af6e6679113a
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b345656b30a9bb182c097a4c9e18d71a293bf420
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2972af3c94768cc21b53bbf5376826940aee639a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852538"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86168859"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>教學課程：Azure Active Directory 與 SAP 雲端平台整合
 
@@ -34,7 +35,7 @@ SAP 雲端平台與 Azure AD 整合提供下列優點：
 若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 SAP 雲端平台整合，您需要下列項目：
 
@@ -59,19 +60,19 @@ SAP 雲端平台與 Azure AD 整合提供下列優點：
 
 **若要從資源庫新增 SAP 雲端平台，請執行下列步驟：**
 
-1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory] 圖示。
+1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory]  圖示。
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
-2. 瀏覽至 [企業應用程式]，然後選取 [所有應用程式] 選項。
+2. 瀏覽至 [企業應用程式]  ，然後選取 [所有應用程式]  選項。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-3. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式] 按鈕。
+3. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式]  按鈕。
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **SAP 雲端平台**，從結果面板中選取 [SAP 雲端平台]，然後按一下 [新增] 按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **SAP 雲端平台**，從結果面板中選取 [SAP 雲端平台]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 SAP 雲端平台](common/search-new-app.png)
 
@@ -87,7 +88,7 @@ SAP 雲端平台與 Azure AD 整合提供下列優點：
 3. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 Britta Simon 測試 Azure AD 單一登入。
 4. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 Britta Simon 能夠使用 Azure AD 單一登入。
 5. **[建立 SAP 雲端平台測試使用者](#create-sap-cloud-platform-test-user)** - 在 SAP 雲端平台中建立一個與 Azure AD 中代表使用者之項目連結的 Britta Simon 對應項目。
-6. **[測試單一登入](#test-single-sign-on)**，驗證組態是否能運作。
+6. **[測試單一登入](#test-single-sign-on)** ，驗證組態是否能運作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>設定 Azure AD 單一登入
 
@@ -95,98 +96,92 @@ SAP 雲端平台與 Azure AD 整合提供下列優點：
 
 若要設定與 SAP 雲端平台搭配運作的 Azure AD 單一登入，請執行下列步驟：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [SAP 雲端平台] 應用程式整合頁面上，選取 [單一登入]。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [SAP 雲端平台]  應用程式整合頁面上，選取 [單一登入]  。
 
     ![設定單一登入連結](common/select-sso.png)
 
-2. 在 [選取單一登入方法] 對話方塊中，選取 [SAML/WS-Fed] 模式以啟用單一登入。
+2. 在 [選取單一登入方法]  對話方塊中，選取 [SAML/WS-Fed]  模式以啟用單一登入。
 
     ![單一登入選取模式](common/select-saml-option.png)
 
-3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。
+3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。   
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
-4. 在 [基本 SAML 組態] 區段上，執行下列步驟：
+4. 在 [基本 SAML 組態]  區段上，執行下列步驟：
 
     ![SAP 雲端平台網域及 URL 單一登入資訊](common/sp-identifier-reply.png)
 
-    a. 在 [登入 URL] 文字方塊中，輸入使用者用來登入 **SAP 雲端平台**應用程式的 URL。 這是您的 SAP 雲端平台應用程式中受保護資源的帳戶特定 URL。 此 URL 根據下列模式：`https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
+    a. 在 [登入 URL]  文字方塊中，輸入使用者用來登入 **SAP 雲端平台**應用程式的 URL。 這是您的 SAP 雲端平台應用程式中受保護資源的帳戶特定 URL。 此 URL 根據下列模式：`https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
       
-     >[!NOTE]
-     >這是您 SAP 雲端平台應用程式中需要使用者驗證的 URL。
-     > 
+    >[!NOTE]
+    >這是您 SAP 雲端平台應用程式中需要使用者驗證的 URL。
+    > 
 
-    | |
-    |--|
-    | `https://<subdomain>.hanatrial.ondemand.com/<instancename>` |
-    | `https://<subdomain>.hana.ondemand.com/<instancename>` |
+    - `https://<subdomain>.hanatrial.ondemand.com/<instancename>`
+    - `https://<subdomain>.hana.ondemand.com/<instancename>`
 
-    b. 在 [識別碼] 文字方塊中，您會提供 SAP 雲端平台的識別碼，請使用下列其中一個模式輸入 URL： 
+    b. 在 [識別碼]  文字方塊中，您會提供 SAP 雲端平台的識別碼，請使用下列其中一個模式輸入 URL： 
 
-    | |
-    |--|
-    | `https://hanatrial.ondemand.com/<instancename>` |
-    | `https://hana.ondemand.com/<instancename>` |
-    | `https://us1.hana.ondemand.com/<instancename>` |
-    | `https://ap1.hana.ondemand.com/<instancename>` |
+    - `https://hanatrial.ondemand.com/<instancename>`
+    - `https://hana.ondemand.com/<instancename>`
+    - `https://us1.hana.ondemand.com/<instancename>`
+    - `https://ap1.hana.ondemand.com/<instancename>`
 
-    c. 在 [回覆 URL] 文字方塊中，以下列模式輸入 URL：
+    c. 在 [回覆 URL]  文字方塊中，以下列模式輸入 URL：
 
-    | |
-    |--|
-    | `https://<subdomain>.hanatrial.ondemand.com/<instancename>` |
-    | `https://<subdomain>.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.us1.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.dispatcher.us1.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.ap1.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.dispatcher.ap1.hana.ondemand.com/<instancename>` |
-    | `https://<subdomain>.dispatcher.hana.ondemand.com/<instancename>` |
+    - `https://<subdomain>.hanatrial.ondemand.com/<instancename>`
+    - `https://<subdomain>.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.us1.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.dispatcher.us1.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.ap1.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.dispatcher.ap1.hana.ondemand.com/<instancename>`
+    - `https://<subdomain>.dispatcher.hana.ondemand.com/<instancename>`
 
     > [!NOTE] 
     > 這些都不是真正的值。 使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 請連絡[ SAP 雲端平台用戶端支援小組](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/5dd739823b824b539eee47b7860a00be.html)，以取得單一登入 URL 和識別碼。 您可以從信任管理區段取得的「回覆 URL」，稍後會在本教學課程中說明。
     > 
-4. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，按一下 [下載] 以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+4. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
 ### <a name="configure-sap-cloud-platform-single-sign-on"></a>設定 SAP 雲端平台單一登入
 
-1. 在不同的網頁瀏覽器視窗中，登入 SAP 雲端平台駕駛座，網址為 `https://account.<landscape host>.ondemand.com/cockpit`(例如： https://account.hanatrial.ondemand.com/cockpit)。
+1. 在不同的網頁瀏覽器視窗中，登入 SAP 雲端平台駕駛座，網址為 `https://account.<landscape host>.ondemand.com/cockpit`(例如： https://account.hanatrial.ondemand.com/cockpit) 。
 
 2. 按一下 [信任]  索引標籤。
    
     ![信任](./media/sap-hana-cloud-platform-tutorial/ic790800.png "信任")
 
-3. 在 [信任管理] 區段的 [本機服務提供者] 下，執行下列步驟：
+3. 在 [信任管理] 區段的 [本機服務提供者]  下，執行下列步驟：
 
     ![信任管理](./media/sap-hana-cloud-platform-tutorial/ic793931.png "信任管理")
    
-    a. 按一下 [編輯]。
+    a. 按一下 **[編輯]** 。
 
-    b. 針對 [組態類型]，選取 [自訂]。
+    b. 針對 [組態類型]  ，選取 [自訂]  。
 
-    c. 針對 [本機提供者名稱] ，保留預設值。 複製這個值，然後在 Azure AD 的 SAP 雲端平台設定中，貼到 [識別碼] 欄位中。
+    c. 針對 [本機提供者名稱]  ，保留預設值。 複製這個值，然後在 Azure AD 的 SAP 雲端平台設定中，貼到 [識別碼]  欄位中。
 
-    d. 若要產生**簽署金鑰**和**簽署憑證**金鑰組，請按一下 [產生金鑰組]。
+    d. 若要產生**簽署金鑰**和**簽署憑證**金鑰組，請按一下 [產生金鑰組]  。
 
-    e. 針對 [主體傳播]，選取 [已停用]。
+    e. 針對 [主體傳播]  ，選取 [已停用]  。
 
-    f. 針對 [強制驗證]，選取 [已停用]。
+    f. 針對 [強制驗證]  ，選取 [已停用]  。
 
-    g. 按一下 [檔案] 。
+    g. 按一下 [檔案]  。
 
-4. 儲存 [本機服務提供者] 設定之後，執行下列命令以取得「回覆 URL」：
+4. 儲存 [本機服務提供者]  設定之後，執行下列命令以取得「回覆 URL」：
    
     ![取得中繼資料](./media/sap-hana-cloud-platform-tutorial/ic793930.png "取得中繼資料")
 
-    a. 按一下 [取得中繼資料]，以下載 SAP 雲端平台中繼資料檔案。
+    a. 按一下 [取得中繼資料]  ，以下載 SAP 雲端平台中繼資料檔案。
 
     b. 開啟已下載的 SAP 雲端平台中繼資料檔案，然後找出 **ns3:AssertionConsumerService** 標記。
  
-    c. 複製 [位置] 屬性的值，然後在 Azure AD 的 SAP 雲端平台設定中，貼到 [回覆 URL] 欄位中。
+    c. 複製 [位置]  屬性的值，然後在 Azure AD 的 SAP 雲端平台設定中，貼到 [回覆 URL]  欄位中。
 
-5. 按一下 [信任的識別提供者]索引標籤，然後再按一下 [新增信任的識別提供者]。
+5. 按一下 [信任的識別提供者]  索引標籤，然後再按一下 [新增信任的識別提供者]  。
    
     ![信任管理](./media/sap-hana-cloud-platform-tutorial/ic790802.png "信任管理")
    
@@ -195,21 +190,21 @@ SAP 雲端平台與 Azure AD 整合提供下列優點：
     > 
     > 
 
-6. 按一下 [一般] 索引標籤，然後再按一下 [瀏覽] 來上傳下載的中繼資料檔案。
+6. 按一下 [一般]  索引標籤，然後再按一下 [瀏覽]  來上傳下載的中繼資料檔案。
     
     ![信任管理](./media/sap-hana-cloud-platform-tutorial/ic793932.png "信任管理")
     
     >[!NOTE]
-    >上傳中繼資料檔之後，將會自動填入 [單一登入 URL]、[單一登出 URL] 和 [簽署憑證] 的值。
+    >上傳中繼資料檔之後，將會自動填入 [單一登入 URL]  、[單一登出 URL]  和 [簽署憑證]  的值。
     > 
      
 7. 按一下 [屬性]  索引標籤。
 
-8. 在 [屬性] 索引標籤上，執行下列步驟：
+8. 在 [屬性]  索引標籤上，執行下列步驟：
     
     ![屬性](./media/sap-hana-cloud-platform-tutorial/ic790804.png "屬性") 
 
-    a. 按一下 [新增判斷提示式的屬性]，然後新增下列判斷提示式屬性：
+    a. 按一下 [新增判斷提示式的屬性]  ，然後新增下列判斷提示式屬性：
        
     | 判斷提示屬性 | 主體屬性 |
     | --- | --- |
@@ -221,7 +216,7 @@ SAP 雲端平台與 Azure AD 整合提供下列優點：
      >「屬性」的設定取決於 SCP 上的應用程式如何開發，亦即在 SAML 回應中預期哪個屬性，以及在程式碼中以哪個名稱 (主體屬性) 存取該屬性。
      > 
     
-    b. 螢幕擷取畫面中的 [預設屬性] 僅供說明之用。 其並不是案例進行所必須的要素。  
+    b. 螢幕擷取畫面中的 [預設屬性]  僅供說明之用。 其並不是案例進行所必須的要素。  
  
     c. 螢幕擷取畫面所顯示的**主體屬性**名稱與值取決於應用程式是如何開發的。 您的應用程式很可能需要不同的對應。
 
@@ -231,19 +226,19 @@ SAP 雲端平台與 Azure AD 整合提供下列優點：
 
 在 SAP 雲端平台上使用群組可讓您在 SAP 雲端平台應用程式中，以動態方式將一或多個使用者指派給一或多個角色，這是由 SAML 2.0 判斷提示中的屬性值所決定。 
 
-例如，如果判斷提示包含屬性「合約＝暫存」，您可能會希望將所有受影響的使用者新增至「暫存」群組。 「暫存」群組可能包含來自一或多個部署在 SAP 雲端平台帳戶中之應用程式的一或多個角色。
+例如，如果判斷提示包含屬性「合約＝暫存」  ，您可能會希望將所有受影響的使用者新增至「暫存」  群組。 「暫存」  群組可能包含來自一或多個部署在 SAP 雲端平台帳戶中之應用程式的一或多個角色。
  
-當您想要同時指派許多使用者給 SAP 雲端平台帳戶中之應用程式的一個或多個角色時，請使用以判斷提示為基礎的群組。 如果您只想要指派單一或少數使用者給特定角色，我們建議直接在 SAP 雲端平台駕駛座的 [授權] 索引標籤中指派。
+當您想要同時指派許多使用者給 SAP 雲端平台帳戶中之應用程式的一個或多個角色時，請使用以判斷提示為基礎的群組。 如果您只想要指派單一或少數使用者給特定角色，我們建議直接在 SAP 雲端平台駕駛座的 [授權]  索引標籤中指派。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
 本節的目標是要在 Azure 入口網站中建立一個名為 Britta Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
 
     ![[使用者和群組] 與 [所有使用者] 連結](common/users.png)
 
-2. 在畫面頂端選取 [新增使用者]。
+2. 在畫面頂端選取 [新增使用者]  。
 
     ![[新增使用者] 按鈕](common/new-user.png)
 
@@ -251,20 +246,20 @@ SAP 雲端平台與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
   
-    b. 在 [使用者名稱] 欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
+    b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
-    c. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
+    c. 選取 [顯示密碼]  核取方塊，然後記下 [密碼] 方塊中顯示的值。
 
-    d. 按一下頁面底部的 [新增] 。
+    d. 按一下頁面底部的 [新增]  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 SAP 雲端平台的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]、[所有應用程式] 及 [SAP 雲端平台]。
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]  、[所有應用程式]  及 [SAP 雲端平台]  。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
@@ -272,7 +267,7 @@ SAP 雲端平台與 Azure AD 整合提供下列優點：
 
     ![應用程式清單中的 SAP 雲端平台連結](common/all-applications.png)
 
-3. 在左側功能表中，選取 [使用者和群組]。
+3. 在左側功能表中，選取 [使用者和群組]  。
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
@@ -280,11 +275,11 @@ SAP 雲端平台與 Azure AD 整合提供下列優點：
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
-5. 在 [使用者和群組] 對話方塊的 [使用者] 清單中，選取 [Britta Simon]，然後按一下畫面底部的 [選取] 按鈕。
+5. 在 [使用者和群組]  對話方塊的 [使用者] 清單中，選取 [Britta Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
 
-6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色] 對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取] 按鈕。
+6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色]  對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取]  按鈕。
 
-7. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
+7. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
 
 ### <a name="create-sap-cloud-platform-test-user"></a>建立 SAP 雲端平台測試使用者
 
@@ -298,15 +293,15 @@ SAP 雲端平台與 Azure AD 整合提供下列優點：
    
     ![授權](./media/sap-hana-cloud-platform-tutorial/ic790805.png "授權")
    
-    a. 按一下 [授權]。
+    a. 按一下 [授權]  。
 
     b. 按一下 [使用者]  索引標籤。
 
-    c. 在 [使用者] 文字方塊中，輸入使用者的電子郵件地址。
+    c. 在 [使用者]  文字方塊中，輸入使用者的電子郵件地址。
 
-    d. 按一下 [指派] 將使用者指派給角色。
+    d. 按一下 [指派]  將使用者指派給角色。
 
-    e. 按一下 [檔案] 。
+    e. 按一下 [檔案]  。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 

@@ -9,21 +9,21 @@ editor: ''
 ms.assetid: a929f5bc-03e2-4b01-b925-973db236f19f
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: bb1a56d204a46f89213f20e317494120f0ea565e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c787df901fc33c2dcd2c8a901202c72ea6de45d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60580533"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513600"
 ---
 # <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>停用及刪除 StorSimple Virtual Array
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 當您停用 StorSimple Virtual Array 時，您會切斷裝置與相對應 StorSimple 裝置管理員服務之間的連接。 本教學課程說明如何：
 
@@ -36,9 +36,9 @@ ms.locfileid: "60580533"
 
 停用是永久性的作業，而且無法復原。 您無法將已停用的裝置重新向 StorSimple 裝置管理員服務註冊。 在下列情況下，您可能需要停用和刪除 StorSimple Virtual Array：
 
-* **規劃的容錯移轉**:您的裝置已上線，而且您打算將裝置容錯移轉。 如果您打算升級至更大的裝置，您可能需要容錯移轉您的裝置。 在資料擁有權轉移及容錯移轉完成之後，就會自動刪除來源裝置。
-* **非計劃性容錯移轉**:您的裝置已離線，而且您需要將裝置容錯移轉。 在資料中心停止運作且主要裝置已關閉的災害期間，可能會發生此情況。 您計劃將裝置容錯移轉至次要裝置。 在資料擁有權轉移及容錯移轉完成之後，就會自動刪除來源裝置。
-* **解除委任**:您想要解除委任裝置。 這需要您先停用裝置，然後刪除它。 當您停用裝置時，您將無法再存取儲存在本機的任何資料。 您只能存取和復原雲端中儲存的資料。 如果您計劃在停用之後保留裝置資料，則您應該在停用裝置之前擷取所有資料的雲端快照集。 此雲端快照可讓您在稍後的階段中復原所有資料。
+* **規劃的容錯移轉**：您的裝置已上線，而且您打算容錯移轉裝置。 如果您打算升級至更大的裝置，您可能需要容錯移轉您的裝置。 在資料擁有權轉移及容錯移轉完成之後，就會自動刪除來源裝置。
+* **未規劃的容錯移轉**：您的裝置已離線，而且您需要容錯移轉裝置。 在資料中心停止運作且主要裝置已關閉的災害期間，可能會發生此情況。 您計劃將裝置容錯移轉至次要裝置。 在資料擁有權轉移及容錯移轉完成之後，就會自動刪除來源裝置。
+* **解除委任**：您想要解除委任裝置。 這需要您先停用裝置，然後刪除它。 當您停用裝置時，您將無法再存取儲存在本機的任何資料。 您只能存取和復原雲端中儲存的資料。 如果您計劃在停用之後保留裝置資料，則您應該在停用裝置之前擷取所有資料的雲端快照集。 此雲端快照可讓您在稍後的階段中復原所有資料。
 
 ## <a name="deactivate-a-device"></a>停用裝置
 
@@ -46,13 +46,13 @@ ms.locfileid: "60580533"
 
 #### <a name="to-deactivate-the-device"></a>停用裝置
 
-1. 在您的服務中，移至 [管理] > [裝置]。 在 [裝置] 刀鋒視窗中，按一下並選取您想要停用的裝置。
+1. 在您的服務中，移至 [管理] > [裝置]****。 在 [裝置]**** 刀鋒視窗中，按一下並選取您想要停用的裝置。
    
     ![選取要停用的裝置](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete7.png)
-2. 在 [裝置儀表板] 刀鋒視窗中，按一下 [...更多]，然後從清單中選取 [停用]。
+2. 在 [裝置儀表板]**** 刀鋒視窗中，按一下 [...更多]****，然後從清單中選取 [停用]****。
    
     ![按一下停用](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete8.png)
-3. 在 [停用] 刀鋒視窗中，輸入裝置名稱，然後按一下 [停用]。 
+3. 在 [停用]**** 刀鋒視窗中，輸入裝置名稱，然後按一下 [停用]****。 
    
     ![確認停用](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete1.png)
    
@@ -73,11 +73,11 @@ ms.locfileid: "60580533"
 
 #### <a name="to-delete-the-device"></a>刪除裝置
 
-1. 在 StorSimple 裝置管理員中，然移至 [管理] > [裝置]。 在 [裝置] 刀鋒視窗中，選取您想要刪除的已停用裝置。
-2. 在 [裝置儀表板] 刀鋒視窗中，按一下 [...更多]，然後按一下 [刪除]。
+1. 在 StorSimple 裝置管理員中，然移至 [管理] > [裝置]****。 在 [裝置]**** 刀鋒視窗中，選取您想要刪除的已停用裝置。
+2. 在 [裝置儀表板]**** 刀鋒視窗中，按一下 [...更多]****，然後按一下 [刪除]****。
    
    ![選取要刪除的裝置](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete4.png)
-3. 在 [刪除] 刀鋒視窗中，輸入裝置的名稱來確認刪除，然後按一下 [刪除]。 刪除裝置並不會刪除與裝置相關聯的雲端資料。 
+3. 在 [刪除]**** 刀鋒視窗中，輸入裝置的名稱來確認刪除，然後按一下 [刪除]****。 刪除裝置並不會刪除與裝置相關聯的雲端資料。 
    
    ![Confirm delete](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete5.png) 
 4. 刪除程序開始，需要幾分鐘才能完成。

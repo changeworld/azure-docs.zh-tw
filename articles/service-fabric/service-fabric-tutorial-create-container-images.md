@@ -1,27 +1,17 @@
 ---
-title: 在 Azure 中的 Service Fabric 上建立容器映像 | Microsoft Docs
+title: 在 Azure 中的 Service Fabric 上建立容器映像
 description: 在本教學課程中，了解如何建立多容器 Service Fabric 應用程式的容器映像。
-services: service-fabric
-documentationcenter: ''
 author: suhuruli
-manager: chackdan
-editor: suhuruli
-tags: servicefabric
-keywords: Docker、容器、微服務、Service Fabric、Azure
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/15/2017
+ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: c081a6296e1fae89f24a2c3ddb1ae66f7a3f94aa
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: fe06da759a1ad42ef5cef888f98c440cdfb9569c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662538"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "78252792"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>教學課程：在 Linux Service Fabric 叢集上建立容器映像
 
@@ -41,7 +31,7 @@ ms.locfileid: "58662538"
 > * [建置與執行含容器的 Service Fabric 應用程式](service-fabric-tutorial-package-containers.md)
 > * [如何在 Service Fabric 中處理容錯移轉和調整](service-fabric-tutorial-containers-failover.md)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 已針對 Service Fabric 設定的 Linux 開發環境。 請依照[這裡](service-fabric-get-started-linux.md)的指示來設定 Linux 環境。
 * 本教學課程需要您執行 Azure CLI 2.0.4 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
@@ -77,7 +67,7 @@ docker build -t azure-vote-front .
 docker images
 ```
 
-請注意，已下載或建立兩個映像。 azure-vote-front 映像包含應用程式。 它衍生自 Docker Hub 的 python 映像。
+請注意，已下載或建立兩個映像。 azure-vote-front  映像包含應用程式。 它衍生自 Docker Hub 的 python  映像。
 
 ```bash
 REPOSITORY                   TAG                 IMAGE ID            CREATED              SIZE
@@ -90,13 +80,13 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 先執行 **az login** 命令來登入您的 Azure 帳戶。
 
-```bash
+```azurecli
 az login
 ```
 
 接下來，使用 **az account** 命令，選擇您的訂用帳戶來建立 Azure 容器登錄。 您必須輸入您 Azure 訂用帳戶的訂用帳戶識別碼來取代 <subscription_id>。
 
-```bash
+```azurecli
 az account set --subscription <subscription_id>
 ```
 
@@ -104,23 +94,23 @@ az account set --subscription <subscription_id>
 
 使用 **az group create** 命令來建立資源群組。 在此範例中，會在 westus 區域中建立名為 myResourceGroup 的資源群組。
 
-```bash
+```azurecli
 az group create --name <myResourceGroup> --location westus
 ```
 
 使用 **az acr create** 命令來建立 Azure Container Registry。 使用您想要在訂用帳戶下建立的容器登錄名稱取代 \<acrName>。 此名稱必須是英數字元，而且是唯一的。
 
-```bash
+```azurecli
 az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --admin-enabled true
 ```
 
 在本教學課程的其餘部分，我們使用 "acrName" 作為您選擇之容器登錄名稱的預留位置。 請記住這個值。
 
-## <a name="log-in-to-your-container-registry"></a>登入您的容器登錄
+## <a name="sign-in-to-your-container-registry"></a>登入您的容器登錄
 
-請登入您的 ACR 執行個體，再將映像推送到它。 使用 **az acr login** 命令來完成此作業。 在建立容器登錄時，為它提供唯一名稱。
+請登入您的 ACR 執行個體，再將映像推送到該執行個體。 使用 **az acr login** 命令來完成此作業。 在建立容器登錄時，為它提供唯一名稱。
 
-```bash
+```azurecli
 az acr login --name <acrName>
 ```
 
@@ -146,13 +136,13 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 若要取得 loginServer 名稱，請執行下列命令：
 
-```bash
+```azurecli
 az acr show --name <acrName> --query loginServer --output table
 ```
 
 這會輸出如下列結果的表格。 此結果將會用來標記您的 **azure-vote-front** 映像，然後才將映像推送到下一個步驟中的容器登錄。
 
-```bash
+```output
 Result
 ------------------
 <acrName>.azurecr.io
@@ -168,7 +158,7 @@ docker tag azure-vote-front <acrName>.azurecr.io/azure-vote-front:v1
 
 輸出：
 
-```bash
+```output
 REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
 azure-vote-front                       latest              052c549a75bf        23 minutes ago      708MB
 <acrName>.azurecr.io/azure-vote-front   v1                  052c549a75bf       23 minutes ago      708MB
@@ -192,13 +182,13 @@ Docker push 命令需要數分鐘才能完成。
 
 若要傳回已推送至 Azure Container Registry 的映像清單，請使用 [az acr repository list](/cli/azure/acr/repository) 命令。 以 ACR 執行個體名稱更新命令。
 
-```bash
+```azurecli
 az acr repository list --name <acrName> --output table
 ```
 
 輸出：
 
-```bash
+```output
 Result
 ----------------
 azure-vote-front

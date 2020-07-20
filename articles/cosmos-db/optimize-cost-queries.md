@@ -1,17 +1,16 @@
 ---
-title: 最佳化在 Azure Cosmos DB 中執行查詢的要求單位和成本
+title: 將成本和 RU/秒優化，以在 Azure Cosmos DB 中執行查詢
 description: 了解如何評估查詢的要求單位費用，並在效能和成本方面最佳化查詢。
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: rimman
-ms.openlocfilehash: 80c9cd91efd14e3d4b4214bde089f73692568f76
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 08/01/2019
+ms.openlocfilehash: dd75ad4ed1024292868f113e474fe8b8b73679b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60929193"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75445138"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中最佳化查詢成本
 
@@ -33,7 +32,7 @@ Azure Cosmos DB 中的查詢通常已依輸送量排序，從最快/最有效率
 
 將一些資料儲存在 Azure Cosmos 容器中後，可以使用 Azure 入口網站中的 [資料總管] 來建構及執行您的查詢。 您也可以使用 [資料總管] 取得查詢的成本。 這個方法可讓您了解系統支援的典型查詢和作業所涉及的實際費用。
 
-您還可以使用 SDK 以程式設計方式取得查詢的成本。 若要測量任何作業 (如建立、更新或刪除) 的額外負荷，請在使用 REST API 時檢查 `x-ms-request-charge` 標頭。 如果您使用.NET 或 Java SDK，`RequestCharge`屬性是要取得的要求費用的對等屬性，這個屬性是 ResourceResponse 或 FeedResponse 內出現。
+您還可以使用 SDK 以程式設計方式取得查詢的成本。 若要測量任何作業 (如建立、更新或刪除) 的額外負荷，請在使用 REST API 時檢查 `x-ms-request-charge` 標頭。 如果您使用 .NET 或 JAVA SDK， `RequestCharge` 屬性會是取得要求費用的對等屬性，而此屬性會出現在 ResourceResponse 或 FeedResponse 內。
 
 ```csharp
 // Measure the performance (request units) of writes 
@@ -53,13 +52,13 @@ while (queryable.HasMoreResults)
 
 ## <a name="factors-influencing-request-unit-charge-for-a-query"></a>影響查詢的要求單位費用的因素
 
-查詢的要求單位取決於許多因素。 例如，加载/返回的 Azure Cosmos 项的数量、对索引的查找次数、查询编译时间等详细信息。 Azure Cosmos DB 保證在相同資料上執行時，相同的查詢將一律使用相同數量的要求單位，即使重複執行也是如此。 使用查詢執行計量的查詢設定檔，可讓您清楚了解要求單位的使用情況。  
+查詢的要求單位取決於許多因素。 例如，已載入/傳回的 Azure Cosmos 專案數目、針對索引的查閱次數、查詢編譯時間等詳細資料。 Azure Cosmos DB 保證在相同資料上執行時，相同的查詢將一律使用相同數量的要求單位，即使重複執行也是如此。 使用查詢執行計量的查詢設定檔，可讓您清楚了解要求單位的使用情況。  
 
 在某些情況下，您可能會在分頁式查詢執行中看到一連串的 200 和 429 回應以及變數的要求單位，這是因為查詢會根據可用的 RU 盡快執行。 您可能會看到查詢執行分成伺服器和用戶端之間的多個頁面/來回行程。 例如，10,000 個項目可能會以多個頁面傳回，每個頁面根據該頁面上執行的計算來收費。 當您加總這些頁面時，您應該取得與整個查詢相同的 RU 數。  
 
 ## <a name="metrics-for-troubleshooting"></a>用於疑難排解的計量
 
-由查詢、使用者定義函數 (UDF) 耗用的效能和輸送量主要取決於函式主體。 找出 UDF 中查詢執行花費的時間以及消耗的 RU 數目，最簡單的方式是啟用查詢計量。 如果您使用.NET SDK，以下是 SDK 所傳回的範例查詢計量：
+由查詢、使用者定義函數 (UDF) 耗用的效能和輸送量主要取決於函式主體。 找出 UDF 中查詢執行花費的時間以及消耗的 RU 數目，最簡單的方式是啟用查詢計量。 如果您使用 .NET SDK，以下是 SDK 所傳回的範例查詢計量：
 
 ```bash
 Retrieved Document Count                 :               1              
@@ -110,5 +109,5 @@ Total Query Execution Time               :   �
 * 深入了解[最佳化儲存體成本](optimize-cost-storage.md)
 * 深入了解[最佳化讀取和寫入的成本](optimize-cost-reads-writes.md)
 * 深入了解[最佳化多重區域 Azure Cosmos 帳戶的成本](optimize-cost-regions.md)
-* 深入了解 [Azure Cosmos DB 保留容量](cosmos-db-reserved-capacity.md)
+* 深入瞭解[Azure Cosmos DB 保留容量](cosmos-db-reserved-capacity.md)
 

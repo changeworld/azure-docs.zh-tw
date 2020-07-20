@@ -13,6 +13,9 @@
       href: quick-create-portal.md
     - name: 建立 VM - Azure PowerShell
       href: quick-create-powershell.md
+    - name: 建立 VM - ARM 範本
+      displayName: 'Resource Manager, template, json'
+      href: quick-create-template.md
 - name: 教學課程
   items:
     - name: 1 - 建立/管理 VM
@@ -35,126 +38,583 @@
       href: tutorial-backup-vms.md
     - name: 10 - 管理 VM
       href: tutorial-govern-resources.md
-    - name: 11 - 監視及更新 VM
-      href: tutorial-monitoring.md
-    - name: 12 - 管理 VM 安全性
+    - name: 11 - 追蹤和更新 VM
+      href: tutorial-config-management.md
+    - name: 12 - 監視 VM
+      href: tutorial-monitor.md
+    - name: 13 - 管理 VM 安全性
       href: tutorial-azure-security.md
-    - name: 13 - 部署 Jenkins
-      href: tutorial-jenkins-github-docker-cicd.md
-    - name: 14 - CI/CD 搭配 Azure Pipelines
-      href: tutorial-build-deploy-jenkins.md
-    - name: 15a - 建立 LAMP 堆疊
+    - name: 14a - 使用 Jenkins 建置
+      href: ../../jenkins/tutorial-jenkins-github-docker-cicd.md
+    - name: 14b - 將 Jenkins 與 Azure DevOps 進行整合
+      href: ../../jenkins/tutorial-build-deploy-jenkins.md
+    - name: 15a - 設定滾動部署策略
+      href: tutorial-devops-azure-pipelines-classic.md
+    - name: 15b - 設定 Canary 部署策略
+      href: tutorial-azure-devops-canary-strategy.md
+    - name: 15c - 設定藍綠色部署策略
+      href: tutorial-azure-devops-blue-green-strategy.md
+    - name: 15d - 具有 Azure Pipelines 的 CI/CD (YAML)
+      href: tutorial-build-deploy-azure-pipelines.md
+    - name: 16 - 建立 LAMP 堆疊
       href: tutorial-lamp-stack.md
-    - name: 15b - 建立 LEMP 堆疊
-      href: tutorial-lemp-stack.md
-    - name: 15c - 建立 MEAN 堆疊
-      href: tutorial-mean-stack.md
-    - name: 16 - 使用 SSL 保護網路伺服器
+    - name: 17 - 使用 SSL 保護網頁伺服器
       href: tutorial-secure-web-server.md
 - name: 範例
   items:
     - name: Azure CLI
-      href: cli-samples.md
+      items:
+        - name: CLI 範例索引
+          href: cli-samples.md
+        - name: 建立 VM
+          items:
+            - name: 建立虛擬機器
+              href: ./../scripts/virtual-machines-linux-cli-sample-create-vm-quick-create.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: 建立完整設定的虛擬機器
+              href: ./../scripts/virtual-machines-linux-cli-sample-create-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: 建立高可用性的虛擬機器
+              href: ./../scripts/virtual-machines-linux-cli-sample-nlb.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: 建立 VM 並執行組態指令碼
+              href: ./../scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: 建立已安裝 WordPress 的 VM
+              href: ./../scripts/virtual-machines-linux-cli-sample-create-vm-wordpress.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: 從受控 OS 磁碟建立 VM
+              href: ./../scripts/virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: 從快照集建立 VM
+              href: ./../scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: 管理儲存體
+          items:
+            - name: 從 VHD 建立受控磁碟
+              href: ../scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: 從快照集建立受控磁碟
+              href: ../scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: 將受控磁碟複製到相同或不同的訂用帳戶
+              href: ../scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: 將快照集以 VHD 格式匯出至儲存體帳戶
+              href: ../scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-storage-account.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: 將受控磁碟的 VHD 匯出到儲存體帳戶
+              href: ../scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: 將快照集複製到相同或不同的訂用帳戶
+              href: ../scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: 網路虛擬機器
+          items:
+            - name: 保護虛擬機器之間的網路流量
+              href: ./../scripts/virtual-machines-linux-cli-sample-create-vm-nsg.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: 保護虛擬機器
+          items:
+            - name: 加密 VM 和資料磁碟
+              href: ./../scripts/virtual-machines-linux-cli-sample-encrypt-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: 監視虛擬機器
+          items:
+            - name: 透過 Azure 監視器記錄來監視 VM
+              href: ./../scripts/virtual-machines-linux-cli-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: 疑難排解
+          items:
+            - name: 針對 VM 作業系統磁碟進行疑難排解
+              href: ./../scripts/virtual-machines-linux-cli-sample-mount-os-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: Azure PowerShell
-      href: powershell-samples.md
+      items:
+        - name: PowerShell 範例索引
+          href: powershell-samples.md
+        - name: 建立虛擬機器
+          items:
+            - name: 建立完整設定的虛擬機器
+              href: './../scripts/virtual-machines-linux-powershell-sample-create-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Creates a resource group, virtual machine, and all related resources.|'
+            - name: 建立已啟用 Docker 功能的 VM
+              href: ./../scripts/virtual-machines-linux-powershell-sample-create-docker-host.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: 建立 VM 並執行組態指令碼
+              href: ./../scripts/virtual-machines-linux-powershell-sample-create-vm-nginx.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: 建立已安裝 WordPress 的 VM
+              href: ./../scripts/virtual-machines-linux-powershell-sample-create-vm-wordpress.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: 從受控 OS 磁碟建立 VM
+              href: ./../scripts/virtual-machines-linux-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: 從快照集建立 VM
+              href: ./../scripts/virtual-machines-linux-powershell-sample-create-vm-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: 管理儲存體
+          items:
+            - name: 在相同或不同的訂用帳戶中從 VHD 建立受控磁碟
+              href: ../scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: 從快照集建立受控磁碟
+              href: ../scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: 將快照集以 VHD 形式匯出到儲存體帳戶
+              href: ../scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-storage-account.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: 將受控磁碟的 VHD 匯出到儲存體帳戶
+              href: ../scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: 從 VDH 建立快照集
+              href: ../scripts/virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: 將快照集複製到相同或不同的訂用帳戶
+              href: ../scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: 監視虛擬機器
+          items:
+            - name: 透過 Azure 監視器記錄來監視 VM
+              href: ./../scripts/virtual-machines-linux-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: 將受控磁碟複製到相同或不同的訂用帳戶
+              href: ../scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: 使用 PowerShell 收集訂用帳戶中所有 VM 的詳細資料
+              href: ../scripts/virtual-machines-powershell-sample-collect-vm-details.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ../policy-samples.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
 - name: 概念
   items:
-    - name: Azure Resource Manager
-      href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: 區域和可用性
-      href: regions-and-availability.md
-    - name: VM 類型和大小
-      href: sizes.md
+    - name: 建立映像
       items:
+        - name: 概觀
+          href: imaging.md
+        - name: 佈建
+          href: provisioning.md
+        - name: 共用映像資源庫
+          href: shared-image-galleries.md
+        - name: Image Builder
+          href: image-builder-overview.md
+    - name: Azure Resource Manager
+      href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: 區域
+      href: regions.md
+    - name: 延伸模組
+      items:
+        - name: 關於 Azure 擴充功能
+          href: ../extensions/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Linux VM 代理程式
+          href: ../extensions/agent-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: 特性
+          href: ../extensions/features-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: 可用性和效能
+      items:
+        - name: 可用性
+          href: availability.md
+        - name: 位於相同位置
+          href: co-location.md
+        - name: 網路效能
+          href: ../..//virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: VM 類型和大小
+      items:
+        - name: VM 大小
+          href: sizes.md
+        - name: 第 2 代 VM
+          href: generation-2.md
         - name: 一般用途
-          href: sizes-general.md
           items:
+            - name: 概觀
+              href: ../sizes-general.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Av2 系列
+              href: ../av2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: B 系列 Burstable
-              href: b-series-burstable.md
+              href: ../sizes-b-series-burstable.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: DCv2 系列
+              href: ../dcv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dv2 和 DSv2 系列
+              href: ../dv2-dsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dv3 和 Dsv3 系列
+              href: ../dv3-dsv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dav4 和 Dasv4 系列
+              href: ../dav4-dasv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Ddv4 和 Ddsv4 系列
+              href: ../ddv4-ddsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dv4 和 Dsv4 系列
+              href: ../dv4-dsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 計算最佳化
-          href: sizes-compute.md
-        - name: 記憶體最佳化
-          href: sizes-memory.md
           items:
+            - name: 概觀
+              href: ../sizes-compute.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Fsv2 系列
+              href: ../fsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: 記憶體最佳化
+          displayName: Esv3 Ev3 M-series GS G-series DSv2 Dv2
+          items:
+            - name: 概觀
+              href: ../sizes-memory.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dv2 和 DSv2 系列 11-15
+              href: ../dv2-dsv2-series-memory.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Ev3 和 Esv3 系列
+              href: ../ev3-esv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Eav4 和 Easv4 系列
+              href: ../eav4-easv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Edv4 和 Edsv4 系列
+              href: ../edv4-edsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Ev4 和 Esv4 系列
+              href: ../ev4-esv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: M 系列
+              href: ../m-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Mv2 系列
+              href: ../mv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 限制 vCPU
               href: constrained-vcpu.md
         - name: 儲存體最佳化
-          href: sizes-storage.md
           items:
+            - name: 概觀
+              href: ../sizes-storage.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Lsv2 系列
+              href: ../lsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 效能最佳化
               href: storage-performance.md
-        - name: GPU 最佳化
-          href: sizes-gpu.md
+        - name: GPU - 加速計算
           items:
-            - name: 設定 GPU 驅動程式
+            - name: 概觀
+              href: ../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NC 系列
+              href: ../nc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NCv2 系列
+              href: ../ncv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NCv3 系列
+              href: ../ncv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: ND 系列
+              href: ../nd-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NDv2 系列
+              href: ../ndv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NV 系列
+              href: ../nv-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NVv3 系列
+              href: ../nvv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: NVv4 系列
+              href: ../nvv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: 設定 NVIDIA GPU 驅動程式
               href: n-series-driver-setup.md
         - name: 高效能計算
-          href: sizes-hpc.md
+          displayName: H-series
+          items:
+            - name: 概觀
+              href: ../sizes-hpc.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: H 系列
+              href: ../h-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: HB 系列
+              href: ../hb-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: HBv2 系列
+              href: ../hbv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: HC 系列
+              href: ../hc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: 保留執行個體
+          items:
+            - name: VM 預付
+              href: prepay-reserved-vm-instances.md
+            - name: 專用主機預付
+              href: ../prepay-dedicated-hosts-reserved-instances.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: 什麼是 Azure 保留？
+              href: ../../billing/billing-save-compute-costs-reservations.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: VM 執行個體大小彈性
+              href: reserved-vm-instance-size-flexibility.md
+        - name: Spot VM
+          href: spot-vms.md
+          displayName: 'pre-empt, preempt'
+        - name: 沒有暫存磁碟的 Azure VM
+          href: ../azure-vms-no-temp-disk.md
         - name: 上一代
-          href: sizes-previous-gen.md
+          href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: 隔離大小
+          href: isolation.md
         - name: Azure 計算單位 (ACU)
-          href: acu.md
+          href: ../acu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: vCPU 配額
+          href: quotas.md
+        - name: 保留執行個體
+          items:
+            - name: VM 預付
+              href: prepay-reserved-vm-instances.md
+            - name: 什麼是 Azure 保留？
+              href: ../../billing/billing-save-compute-costs-reservations.md
+            - name: VM 執行個體大小彈性
+              href: reserved-vm-instance-size-flexibility.md
         - name: 基準測試分數
           href: compute-benchmark-scores.md
     - name: 背書發佈
       href: endorsed-distros.md
+    - name: 專用主機
+      href: dedicated-hosts.md
     - name: 維護和更新
-      href: maintenance-and-updates.md
+      href: ../maintenance-and-updates.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 磁碟儲存體
       items:
         - name: 受控磁碟簡介
           href: managed-disks-overview.md
         - name: 選取適用於 IaaS VM 的磁碟類型
           href: disks-types.md
+        - name: 加密
+          href: disk-encryption.md
+        - name: 磁碟儲存體保留
+          href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: 為高效能而設計
           href: premium-storage-performance.md
+        - name: 磁碟高載
+          href: disk-bursting.md
         - name: 磁碟適用的延展性目標
           href: disk-scalability-targets.md
         - name: 磁碟備份和災害復原
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: 共用磁碟
+          href: disks-shared.md
         - name: 暫時性 OS 磁碟
           href: ephemeral-os-disks.md
     - name: 網路功能
       href: network-overview.md
-    - name: 自動調整應用程式
-      href: autoscale.md
+    - name: 擴展集
+      href: ../../virtual-machine-scale-sets/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 基礎結構自動化
       href: infrastructure-automation.md
-    - name: 安全性與原則
-      href: security-policy.md
+    - name: 安全性
+      items:
+        - name: 安全性與原則
+          href: security-policy.md
+        - name: Azure 磁碟加密
+          href: disk-encryption-overview.md
+        - name: 內建安全性控制
+          href: virtual-machines-linux-security-controls.md
+        - name: Bastion
+          href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 狀態和生命週期
       href: states-lifecycle.md
     - name: 監視
-      href: monitor.md
+      href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 備份與復原
       href: backup-recovery.md
-    - name: 部署考量
-      items:
-        - name: 基礎結構方針
-          href: infrastructure-example.md
-        - name: vCPU 配額
-          href: quotas.md
-- name: 使用說明指南
+    - name: 雲端採用架構
+      href: 'https://docs.microsoft.com/azure/cloud-adoption-framework/get-started/'
+    - name: 架構中心
+      href: 'https://docs.microsoft.com/azure/architecture/'
+    - name: 基礎結構方針
+      href: infrastructure-example.md
+- name: 操作指南
   items:
     - name: 建立 VM
       items:
         - name: 使用 CLI
           href: create-cli-complete.md
-        - name: 使用範本
-          displayName: 'Azure Resource Manager, ARM'
+        - name: 使用 ARM 範本
+          displayName: Azure Resource Manager
           href: create-ssh-secured-vm-from-template.md
         - name: 使用 REST API
           href: create-vm-rest-api.md
         - name: 複製 VM
           href: copy-vm.md
+        - name: 使用專用主機
+          items:
+            - name: CLI
+              href: dedicated-hosts-cli.md
+            - name: 入口網站
+              href: dedicated-hosts-portal.md
+        - name: 部署 Spot VM
+          items:
+            - name: CLI
+              href: spot-cli.md
+            - name: 入口網站
+              href: ../windows/spot-portal.md?toc=/azure/virtual-machines/linux/toc.json
+            - name: ARM 範本
+              href: spot-template.md
+              displayName: Azure Resource Manager
+            - name: 錯誤碼
+              href: ../error-codes-spot.md?toc=/azure/virtual-machines/linux/toc.json
+    - name: 從傳統移轉至 Azure Resource Manager
+      items:
+        - name: 自 2023 年 3 月 1 日起淘汰
+          href: ../classic-vm-deprecation.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: 移轉概觀
+          href: migration-classic-resource-manager-overview.md
+        - name: 深入了解移轉
+          href: migration-classic-resource-manager-deep-dive.md
+        - name: 規劃移轉
+          href: migration-classic-resource-manager-plan.md
+        - name: 使用 CLI 進行移轉
+          href: migration-classic-resource-manager-cli.md
+        - name: 常見的移轉錯誤
+          href: migration-classic-resource-manager-errors.md
+        - name: 適用於移轉的社群工具
+          href: ../windows/migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: 常見問題集
+          href: migration-classic-resource-manager-faq.md
+    - name: 使用映像
+      displayName: 'SIG, AMI, image'
+      items:
+        - name: 散發特定需求
+          items:
+            - name: 一般步驟
+              href: create-upload-generic.md
+            - name: Ubuntu
+              href: create-upload-ubuntu.md
+            - name: CentOS
+              href: create-upload-centos.md
+            - name: Red Hat
+              href: redhat-create-upload-vhd.md
+            - name: Debian
+              href: debian-create-upload-vhd.md
+            - name: SUSE
+              href: suse-create-upload-vhd.md
+            - name: Oracle Linux
+              href: oracle-create-upload-vhd.md
+            - name: OpenBSD
+              href: create-upload-openbsd.md
+            - name: FreeBSD
+              href: freebsd-intro-on-azure.md
+        - name: 使用 Cloud-init
+          items:
+            - name: Cloud-Init 概觀
+              href: using-cloud-init.md
+            - name: 深入探討
+              href: cloud-init-deep-dive.md
+            - name: 疑難排解
+              href: cloud-init-troubleshooting.md
+            - name: 設定 VM 主機名稱
+              href: cloudinit-update-vm-hostname.md
+            - name: 在 VM 中更新套件
+              href: cloudinit-update-vm.md
+            - name: 在 VM 中新增使用者
+              href: cloudinit-add-user.md
+            - name: 設定交換檔
+              href: cloudinit-configure-swapfile.md
+            - name: 執行現有的 Bash 指令碼
+              href: cloudinit-bash-script.md
+            - name: 為 Cloud-init 準備現有的 VM
+              href: cloudinit-prepare-custom-image.md
+        - name: 建立映射而不包含
+          href: no-agent.md
+        - name: 停用 Linux 代理程式佈建
+          href: disable-provisioning.md
+        - name: 共用映像資源庫
+          items:
+            - name: CLI
+              items:
+                - name: 建立資源庫
+                  href: ../shared-images-cli.md
+                - name: 建立映像
+                  items:
+                    - name: 從 VM
+                      href: ../image-version-vm-cli.md
+                    - name: 從 VHD 或快照集
+                      href: ../image-version-snapshot-cli.md
+                    - name: 從受控映像遷移
+                      href: ../image-version-managed-image-cli.md
+                    - name: 從另一個資源庫複製
+                      href: ../image-version-another-gallery-cli.md
+                - name: 建立 VM
+                  items:
+                    - name: 特製化
+                      href: ../vm-specialized-image-version-cli.md
+                    - name: 一般化
+                      href: ../vm-generalized-image-version-cli.md
+                - name: 更新影像資源
+                  href: ../update-image-resources-cli.md
+                - name: 註冊應用程式以共用
+                  href: share-images-across-tenants.md
+            - name: PowerShell
+              items:
+                - name: 建立資源庫
+                  href: ../shared-images-powershell.md
+                - name: 建立映像版本
+                  items:
+                    - name: 從 VM
+                      href: ../image-version-vm-powershell.md
+                    - name: 從 VHD 或快照集
+                      href: ../image-version-snapshot-powershell.md
+                    - name: 從受控映像遷移
+                      href: ../image-version-managed-image-powershell.md
+                    - name: 從另一個資源庫複製
+                      href: ../image-version-another-gallery-powershell.md
+                - name: 建立 VM
+                  items:
+                    - name: 一般化
+                      href: ../vm-generalized-image-version-powershell.md
+                    - name: 特製化
+                      href: ../vm-specialized-image-version-powershell.md
+                - name: 更新影像資源
+                  href: ../update-image-resources-powershell.md
+                - name: 註冊應用程式以共用
+                  href: ../windows/share-images-across-tenants.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: 入口網站
+              items:
+                - name: 建立資源庫、映像和 VM
+                  href: shared-images-portal.md
+            - name: Resource Manager 範本
+              items:
+                - name: 建立共用映像庫
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+                - name: 在共用映像庫中建立映像定義
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+                - name: 在共用映像庫中建立映像版本
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+                - name: 從映像版本建立 VM
+                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
+            - name: 針對共用映像進行疑難排解
+              href: troubleshooting-shared-images.md
+            - name: 使用客戶管理的金鑰
+              displayName: 'SSE, CMK, encrypt'
+              href: ../image-version-encryption.md
+        - name: 映像產生器 (預覽)
+          items:
+            - name: 使用 Azure CLI
+              href: image-builder.md
+            - name: ARM 範本參考
+              href: image-builder-json.md
+              displayName: 'ARM,Resource Manager'
+            - name: 建置供映像資源庫使用
+              href: image-builder-gallery.md
+            - name: 更新現有映像
+              href: image-builder-gallery-update-image-version.md
+            - name: 疑難排解
+              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
+        - name: 尋找及使用映像
+          href: cli-ps-findimage.md
+        - name: 購買方案資訊
+          href: ../marketplace-images.md
+        - name: 將 VM 擷取至受控映像
+          href: capture-image.md
+        - name: 使用 Packer 建置映像
+          href: build-image-with-packer.md
+        - name: 下載現有磁碟
+          href: download-vhd.md
     - name: 保護 VM
       items:
+        - name: 建議
+          href: security-recommendations.md
         - name: Just-In-Time 存取
-          href: ../../security-center/security-center-just-in-time.md
-        - name: 加密
-          href: encrypt-disks.md
+          href: ../../security-center/security-center-just-in-time.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: 使用 Bastion
+          items:
+            - name: 建立 Bastion 主機
+              items:
+                - name: 入口網站
+                  href: ../../bastion/bastion-create-host-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: PowerShell
+                  href: ../../bastion/bastion-create-host-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: CLI
+                  href: ../../bastion/create-host-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: 使用 Bastion 來連線
+              items:
+                - name: Bastion SSH 連線
+              href: ../../bastion/bastion-connect-vm-ssh.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Bastion RDP 連線
+              href: ../../bastion/bastion-connect-vm-rdp.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Encrypt
+          items:
+            - name: 適用於 Linux 的磁碟加密案例
+              href: disk-encryption-linux.md
+            - name: 使用 Azure CLI 加密 VM
+              href: disk-encryption-cli-quickstart.md
+            - name: 使用 Azure PowerShell 加密 VM
+              href: disk-encryption-powershell-quickstart.md
+            - name: 使用 Azure 入口網站加密 VM
+              href: disk-encryption-portal-quickstart.md
+            - name: 適用於 Azure 磁碟加密的金鑰保存庫
+              href: disk-encryption-key-vault.md
+            - name: 磁碟加密範例指令碼
+              href: disk-encryption-sample-scripts.md
+            - name: 隔離式網路上的磁碟加密
+              href: disk-encryption-isolated-network.md
+            - name: 如何驗證加密狀態
+              href: how-to-verify-encryption-status.md
+            - name: 如何在 crypt 上設定 LVM RAID
+              href: how-to-configure-lvm-raid-on-crypt.md
+            - name: 磁碟加密疑難排解
+              href: disk-encryption-troubleshooting.md
+            - name: 磁碟加密常見問題
+              href: disk-encryption-faq.md
+            - name: 磁碟加密 - 先前版本 (AAD)
+              items:
+                - name: 概觀
+                  href: disk-encryption-overview-aad.md
+                - name: 適用於 Azure 磁碟加密的金鑰保存庫
+                  href: disk-encryption-key-vault-aad.md
+                - name: 適用於 Linux 的磁碟加密案例
+                  href: disk-encryption-linux-aad.md
         - name: 使用存取控制
-          href: ../../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../role-based-access-control/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 使用原則
           href: policy.md
         - name: 建立金鑰保存庫
@@ -169,26 +629,28 @@
               href: create-ssh-keys-detailed.md
     - name: 保護 VM
       items:
+        - name: 災害復原
+          href: ../virtual-machines-disaster-recovery-guidance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 備份 VM
-          href: ../../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../backup/backup-introduction-to-azure-backup.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
           items:
             - name: 備份單一 VM
-              href: ../../backup/quick-backup-vm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../backup/quick-backup-vm-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 備份多個 VM
-              href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../backup/tutorial-backup-vm-at-scale.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 還原磁碟
-              href: ../../backup/tutorial-restore-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../backup/tutorial-restore-disk.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 還原個別檔案
-              href: ../../backup/tutorial-restore-files.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../backup/tutorial-restore-files.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 設定 VM 災害復原
-          href: ../../site-recovery/site-recovery-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../site-recovery/site-recovery-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
           items:
             - name: 啟用 VM 災害復原
-              href: ../../site-recovery/azure-to-azure-tutorial-enable-replication.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../site-recovery/azure-to-azure-tutorial-enable-replication.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 執行 VM 災害復原演練
-              href: ../../site-recovery/azure-to-azure-tutorial-dr-drill.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../site-recovery/azure-to-azure-tutorial-dr-drill.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 將 VM 容錯移轉到另一個區域
-              href: ../../site-recovery/azure-to-azure-tutorial-failover-failback.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../../site-recovery/azure-to-azure-tutorial-failover-failback.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 管理 VM
       items:
         - name: VM 使用方式
@@ -216,116 +678,168 @@
           displayName: AAD
           items:
             - name: Red Hat Enterprise Linux
-              href: ../../active-directory-domain-services/active-directory-ds-join-rhel-linux-vm.md
+              href: ../../active-directory-domain-services/join-rhel-linux-vm.md
             - name: CentOS
-              href: ../../active-directory-domain-services/active-directory-ds-join-centos-linux-vm.md
+              href: ../../active-directory-domain-services/join-centos-linux-vm.md
             - name: Ubuntu
-              href: ../../active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm.md
+              href: ../../active-directory-domain-services/join-ubuntu-linux-vm.md
         - name: 使用 Azure Active Directory 認證登入
           href: login-using-aad.md
         - name: 更新和修補程式
           items:
             - name: Red Hat 更新基礎結構
-              href: update-infrastructure-redhat.md
+              href: ../workloads/redhat/redhat-rhui.md
         - name: Azure VM 代理程式
           items:
             - name: 概觀
               href: ../extensions/agent-linux.md
             - name: 代理程式更新
               href: update-agent.md
-        - name: 預定的維修
-          href: maintenance-notifications.md
         - name: 減輕風險的理論式執行
           href: mitigate-se.md
-        - name: 排定的事件
-          href: scheduled-events.md
         - name: 監視中繼資料
           href: instance-metadata-service.md
         - name: 利用 REST 取得使用計量
           href: metrics-vm-usage-rest.md
-    - name: 管理成本
+    - name: 平台維修
       items:
-        - name: 預付 VM - Azure 保留項目
-          href: prepay-reserved-vm-instances.md
-        - name: 預付 Azure 軟體方案
-          href: prepay-suse-software-charges.md
-        - name: 什麼是 Azure 保留？
-          href: ../../billing/billing-save-compute-costs-reservations.md
-        - name: VM 執行個體大小彈性
-          href: reserved-vm-instance-size-flexibility.md
-    - name: 使用映像
-      items:
-        - name: 共用映像資源庫
+        - name: 維修通知
           items:
             - name: 概觀
-              href: shared-image-galleries.md
+              href: ../maintenance-notifications.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: CLI
-              href: shared-images.md
+              href: ../maintenance-notifications-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 入口網站
-              href: shared-images-portal.md
-            - name: 跨租用戶共用映像
-              href: share-images-across-tenants.md
-            - name: 針對共用映像進行疑難排解
-              href: troubleshooting-shared-images.md
-        - name: 映像產生器 (預覽)
+              href: ../maintenance-notifications-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: PowerShell
+              href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: 維修控制
           items:
             - name: 概觀
-              href: image-builder-overview.md
-            - name: 使用 CLI
-              href: image-builder.md
-            - name: 範本參考
-              href: image-builder-json.md
-            - name: 搭配資源庫使用
-              href: image-builder-gallery.md
-            - name: 更新映像版本
-              href: image-builder-gallery-update-image-version.md
-            - name: 疑難排解
-              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
-        - name: 尋找及使用映像
-          href: cli-ps-findimage.md
-        - name: 建立自訂影像
+              href: ../maintenance-control.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: CLI
+              href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: PowerShell
+              href: ../maintenance-control-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: 入口網站
+              href: ../maintenance-control-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: 排定的事件
+          href: scheduled-events.md
+    - name: 監視 VM
+      href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+      items:
+        - name: 代理程式
           items:
-            - name: 一般步驟
-              href: create-upload-generic.md
-            - name: Ubuntu
-              href: create-upload-ubuntu.md
-            - name: CentOS
-              href: create-upload-centos.md
-            - name: Red Hat
-              href: redhat-create-upload-vhd.md
-            - name: Debian
-              href: debian-create-upload-vhd.md
-            - name: SUSE
-              href: suse-create-upload-vhd.md
-            - name: Oracle Linux
-              href: oracle-create-upload-vhd.md
-            - name: OpenBSD
-              href: create-upload-openbsd.md
-            - name: FreeBSD
-              href: freebsd-intro-on-azure.md
-        - name: 擷取 VM 映像
-          href: capture-image.md
-        - name: 使用 Packer 建置映像
-          href: build-image-with-packer.md
-        - name: Azure 中的 RHEL 映像
-          href: rhel-images.md
-        - name: 下載現有磁碟
-          href: download-vhd.md
+            - name: 代理程式概觀
+              href: ../../azure-monitor/platform/agents-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: 常見問題集
+              href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#agents
+            - name: Azure 診斷擴充功能
+              items:
+                - name: 概觀
+                  href: ../../azure-monitor/platform/diagnostics-extension-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: Linux 診斷延伸模組
+                  displayname: diagnostics extension
+                  items:
+                    - name: 概觀
+                      href: ../../azure-monitor/../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json?toc=/azure/azure-monitor/toc.json
+                    - name: 使用 Telegraf 收集計量
+                      href: ../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Log Analytics 代理程式
+              items:
+                - name: 概觀
+                  href: ../../azure-monitor/platform/log-analytics-agent.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: Linux 代理程式
+                  href: ../../azure-monitor/platform/agent-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: Log Analytics 閘道
+                  href: ../../azure-monitor/platform/gateway.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: 代理程式管理
+                  href: ../../azure-monitor/platform/agent-manage.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: 代理程式健康狀態
+                  href: ../../azure-monitor/insights/solution-agenthealth.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: 資料來源
+                  items:
+                    - name: 概觀
+                      href: ../../azure-monitor/platform/agent-data-sources.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                    - name: 自訂 JSON 資料
+                      href: ../../azure-monitor/platform/data-sources-json.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                    - name: CollectD 效能資料
+                      href: ../../azure-monitor/platform/data-sources-collectd.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                    - name: syslog
+                      href: ../../azure-monitor/platform/data-sources-syslog.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                    - name: 效能計數器
+                      href: ../../azure-monitor/platform/data-sources-performance-counters.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                    - name: Linux 應用程式的效能
+                      href: ../../azure-monitor/platform/data-sources-linux-applications.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                    - name: 自訂的記錄
+                      href: ../../azure-monitor/platform/data-sources-custom-logs.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                    - name: 自訂欄位
+                      href: ../../azure-monitor/platform/custom-fields.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: 疑難排解
+              items:
+                - name: Log Analytics VM 延伸模組
+                  displayname: 'troubleshoot, troubleshooting'
+                  href: ../../azure-monitor/platform/vmext-troubleshoot.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: Log Analytics Linux 代理程式
+                  displayname: 'troubleshoot, troubleshooting'
+                  href: ../../azure-monitor/platform/agent-linux-troubleshoot.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: 適用於 VM 的 Azure 監視器
+          items:
+            - name: 概觀
+              href: ../../azure-monitor/insights/vminsights-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: 正式運作常見問題集
+              href: ../../azure-monitor/insights/vminsights-ga-release-faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: 常見問題集
+              href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#azure-monitor-for-vms
+            - name: 啟用監視
+              items:
+                - name: 啟用監視概觀
+                  href: ../../azure-monitor/insights/vminsights-enable-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: 啟用以供單一 Azure 虛擬機器使用
+                  href: ../../azure-monitor/insights/vminsights-enable-single-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: 使用 Azure 原則啟用
+                  href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: 使用 Azure PowerShell 啟用
+                  href: ../../azure-monitor/insights/vminsights-enable-at-scale-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: 針對混合式環境啟用
+                  href: ../../azure-monitor/insights/vminsights-enable-hybrid-cloud.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: 對應相依性
+              href: ../../azure-monitor/insights/vminsights-maps.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: 監視效能
+              href: ../../azure-monitor/insights/vminsights-performance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: 使用日誌查詢分析資料
+              href: ../../azure-monitor/insights/vminsights-log-search.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: 使用活頁簿將資料視覺化
+              href: ../../azure-monitor/insights/vminsights-workbooks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: 建立警示規則
+              href: ../../azure-monitor/insights/vminsights-alerts.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: 升級相依性代理程式
+              href: ../../azure-monitor/insights/vminsights-dependency-agent-maintenance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: 停用監視
+              href: ../../azure-monitor/insights/vminsights-optout.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 可用性和級別
       items:
         - name: Autoscale
-          href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 高可用性
           href: manage-availability.md
-        - name: 垂直調整
-          href: vertical-scaling-automation.md
+        - name: 變更可用性設定組
+          href: ../windows/change-availability-set.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: 建立鄰近放置群組
+          items:
+            - name: CLI
+              href: proximity-placement-groups.md
+            - name: 入口網站
+              href: ../windows/proximity-placement-groups-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 在可用性區域中建立 VM
           href: create-cli-availability-zone.md
     - name: 使用自動化工具
       items:
+        - name: 自訂資料
+          href: ../custom-data.md
         - name: Ansible
           items:
-            - name: 安裝及設定
+            - name: 安裝和設定
               href: ansible-install-configure.md
             - name: 建立 Linux VM
               href: ansible-create-vm.md
@@ -333,35 +847,19 @@
               href: ansible-manage-linux-vm.md
         - name: Terraform
           items:
-            - name: 安裝及設定
-              href: terraform-install-configure.md
+            - name: 安裝和設定
+              href: /azure/developer/terraform/install-configure
             - name: 建立完整 VM
-              href: terraform-create-complete-vm.md
-        - name: Cloud-init
-          items:
-            - name: Cloud-Init 概觀
-              href: using-cloud-init.md
-            - name: 設定 VM 主機名稱
-              href: cloudinit-update-vm-hostname.md
-            - name: 在 VM 中更新套件
-              href: cloudinit-update-vm.md
-            - name: 在 VM 中新增使用者
-              href: cloudinit-add-user.md
-            - name: 設定交換檔
-              href: cloudinit-configure-swapfile.md
-            - name: 執行現有的 Bash 指令碼
-              href: cloudinit-bash-script.md
-            - name: 為 Cloud-init 準備現有的 VM
-              href: cloudinit-prepare-custom-image.md
+              href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
         - name: Jenkins
-          href: ../../jenkins/overview.md
+          href: /azure/developer/jenkins/overview
           items:
             - name: 建立 Jenkins 伺服器
-              href: ../../jenkins/install-jenkins-solution-template.md
+              href: /azure/developer/jenkins/configure-on-linux-vm
             - name: 以 VM 代理程式進行調整
-              href: ../../jenkins/jenkins-azure-vm-agents.md
+              href: /azure/developer/jenkins/scale-deployments-using-vm-agents
             - name: 將成品發佈至儲存體
-              href: ../../storage/common/storage-java-jenkins-continuous-integration-solution.md
+              href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository
             - name: 保護 Jenkins
               href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
     - name: 執行容器
@@ -375,29 +873,27 @@
     - name: 執行應用程式
       items:
         - name: Cloud Foundry
-          items:
-            - name: 概觀
-              href: cloudfoundry-get-started.md
-            - name: 部署您的第一個應用程式
-              href: cloudfoundry-deploy-your-first-app.md
+          href: 'https://docs.microsoft.com/azure/cloudfoundry/'
         - name: Cassandra
-          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-cassandra?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json'
+          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-cassandra?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json'
         - name: OpenShift
           items:
             - name: OpenShift 概觀
               href: openshift-get-started.md
-            - name: OpenShift 必要條件
-              href: openshift-prerequisites.md
-            - name: Red Hat OpenShift 容器平台
-              href: openshift-container-platform.md
-            - name: OpenShift Marketplace 自我管理
-              href: openshift-marketplace-self-managed.md
+            - name: OpenShift Container Platform 4.x
+              href: openshift-container-platform-4x.md
+            - name: OpenShift Container Platform 3.11 必要條件
+              href: openshift-container-platform-3x-prerequisites.md
+            - name: OpenShift Container Platform 3.11
+              href: openshift-container-platform-3x.md
+            - name: OpenShift Container Platform 3.11 Marketplace 自我管理
+              href: openshift-container-platform-3x-marketplace-self-managed.md
             - name: Azure Stack
               href: openshift-azure-stack.md
-            - name: OpenShift 後續部署工作
-              href: openshift-post-deployment.md
-            - name: 疑難排解部署
-              href: openshift-troubleshooting.md
+            - name: OpenShift Container Platform 3.11 部署後續工作
+              href: openshift-container-platform-3x-post-deployment.md
+            - name: OpenShift Container Platform 3.11 部署疑難排解
+              href: openshift-container-platform-3x-troubleshooting.md
         - name: SAP on Azure
           href: ../workloads/sap/get-started.md
         - name: Oracle
@@ -408,8 +904,6 @@
           href: freebsd-pf-nat.md
         - name: 資料庫
           items:
-            - name: MySQL
-              href: mysql-install.md
             - name: SUSE 上的 MySQL
               href: mysql-on-opensuse.md
             - name: MongoDB
@@ -436,15 +930,37 @@
               href: attach-disk-portal.md
         - name: 中斷連結磁碟
           href: detach-disk.md
-        - name: 透過範本部署磁碟
+        - name: 透過 ARM 範本部署磁碟
           displayName: 'Azure Resource Manager, ARM'
           href: using-managed-disks-template-deployments.md
+        - name: 啟用共用磁碟
+          href: disks-shared-enable.md
+        - name: 將 VHD 上傳到磁碟 - CLI
+          href: disks-upload-vhd-to-managed-disk-cli.md
         - name: 調整磁碟大小
           href: expand-disks.md
+        - name: 使用儲存體總管管理磁碟
+          href: disks-use-storage-explorer-managed-disks.md
         - name: 製作磁碟的快照集
           href: snapshot-copy-managed-disk.md
+        - name: 保留磁碟儲存體
+          href: disks-reserved-capacity.md
+        - name: 建立增量快照 - CLI
+          href: disks-incremental-snapshots.md
+        - name: 建立增量快照 - 入口網站
+          href: disks-incremental-snapshots-portal.md
         - name: 備份非受控磁碟
           href: incremental-snapshots.md
+        - name: 加密
+          items:
+            - name: 在主機上啟用加密 - CLI
+              href: disks-enable-host-based-encryption-cli.md
+            - name: 啟用客戶管理的金鑰 - CLI
+              href: disks-enable-customer-managed-keys-cli.md
+            - name: 啟用客戶管理的金鑰 - 入口網站
+              href: disks-enable-customer-managed-keys-portal.md
+            - name: 啟用雙重待用加密
+              href: disks-enable-double-encryption-at-rest-cli.md
         - name: 移轉和轉換
           items:
             - name: 使用 Azure Site Recovery 移轉到進階儲存體
@@ -459,7 +975,7 @@
           items:
             - name: 使用寫入加速器
               href: how-to-enable-write-accelerator.md
-            - name: 啟用 Ultra SSD
+            - name: 使用 Ultra 磁碟
               href: disks-enable-ultra-ssd.md
             - name: 基準測試磁碟
               href: disks-benchmarks.md
@@ -469,8 +985,10 @@
               href: configure-raid.md
             - name: 設定 LVM
               href: configure-lvm.md
-        - name: 尋找未連接的磁碟
+        - name: 尋找未連接的磁碟 - CLI
           href: find-unattached-disks.md
+        - name: 尋找未連接的磁碟 - 入口網站
+          href: ../disks-find-unattached-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 使用檔案儲存體
           href: mount-azure-file-storage-on-linux-using-smb.md
         - name: 磁碟常見問題
@@ -478,15 +996,15 @@
     - name: 管理網路服務
       items:
         - name: 建立虛擬網路
-          href: ../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 開啟 VM 連接埠
           href: nsg-quickstart.md
         - name: 指派公用 IP 位址
-          href: ../../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 使用多個 NIC
           href: multiple-nics.md
         - name: 使用加速網路
-          href: ../../virtual-network/create-vm-accelerated-networking-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../virtual-network/create-vm-accelerated-networking-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 指派公用 DNS 名稱
           href: portal-create-fqdn.md
         - name: 尋找及刪除未連結的 NIC
@@ -499,52 +1017,88 @@
     - name: 設定受控識別
       items:
         - name: 入口網站
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm?context=azure/virtual-machines/linux/context/linux-vm-context
+          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: CLI
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm?context=azure/virtual-machines/linux/context/linux-vm-context
+          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: PowerShell
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?context=azure/virtual-machines/linux/context/linux-vm-context
+          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Azure Resource Manager 範本
           displayName: ARM
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?context=azure/virtual-machines/linux/context/linux-vm-context
+          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: REST
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm?context=azure/virtual-machines/linux/context/linux-vm-context
+          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Azure SDK
-          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?context=azure/virtual-machines/linux/context/linux-vm-context
+          href: /azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 使用 VM 延伸模組
-      href: ../extensions/overview.md
+      items:
+        - name: 限制延伸模組安裝
+          href: ../extensions/extensions-rmpolicy-howto-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: 更新 Linux 代理程式
+          href: ../extensions/update-linux-agent.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: 匯出擴充功能
+          href: ../extensions/export-templates.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: 疑難排解
+          href: ../extensions/troubleshoot.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: 已啟用 Python 3 Linux 系統的問題
+          href: ../extensions/issues-using-vm-extensions-python-3.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Azure 磁碟加密
+          href: ../extensions/azure-disk-enc-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Azure 金鑰保存庫
+          href: ../extensions/key-vault-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Custom Script
+          href: ../extensions/custom-script-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: VM 快照集
+          href: ../extensions/vmsnapshot-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: 網路監看員代理程式
+          href: ../extensions/network-watcher-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: NVIDIA GPU 驅動程式
+          href: ../extensions/hpccompute-gpu-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Azure 監視器
+          items:
+            - name: 診斷擴充功能
+              href: ../extensions/diagnostics-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Log Analytics
+              href: ../extensions/oms-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Azure 監視器 Linux 相依性代理程式
+              href: ../extensions/agent-dependency-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: PowerShell DSC
+          href: ../extensions/dsc-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          items:
+            - name: DSC 和 Linux
+              href: ../extensions/dsc-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: 處理認證
+              href: ../extensions/dsc-credentials.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: 使用範本
+              href: ../extensions/dsc-template.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: 虛擬機器存取
+          href: ../extensions/vmaccess.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Chef
+          href: ../extensions/chef.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Stackify Retrace
+          href: ../extensions/stackify-retrace-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: Symantec
+          href: ../extensions/symantec.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 移動並遷移 VM
       items:
         - name: 變更訂用帳戶或資源群組
           href: move-vm.md
         - name: 將 VM 移到另一個區域
-          href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 移動至可用性區域
-          href: ../../site-recovery/move-azure-vms-avset-azone.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../../site-recovery/move-azure-vms-avset-azone.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: 將維護控制設定移至另一個區域
+          href: ../move-region-maintenance-configuration.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: 將維護控制設定資源移至另一個區域
+          href: ../move-region-maintenance-configuration-resources.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 移轉 AWS 和內部部署 VM
-          href: ../windows/on-prem-to-azure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+          href: ../windows/on-prem-to-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
           items:
             - name: 從 Amazon Web Services (AWS) 移轉至 Azure
-              href: ../windows/aws-to-azure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../windows/aws-to-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 上傳內部部署 VM
               href: upload-vhd.md
             - name: 使用 Azure Site Recovery
-              href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-        - name: 從傳統服務移轉至 Azure Resource Manager
-          href: migration-classic-resource-manager-overview.md
-          items:
-            - name: 深入了解移轉
-              href: migration-classic-resource-manager-deep-dive.md
-            - name: 為移轉做規劃
-              href: migration-classic-resource-manager-plan.md
-            - name: 使用 CLI 進行移轉
-              href: migration-classic-resource-manager-cli.md
-            - name: 常見的移轉錯誤
-              href: migration-classic-resource-manager-errors.md
-            - name: 適用於移轉的社群工具
-              href: ../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-            - name: 常見問題集
-              href: migration-classic-resource-manager-faq.md
+              href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
 - name: 參考
   items:
     - name: Azure CLI
@@ -563,9 +1117,12 @@
       href: /rest/api/compute
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.compute/allversions
+      displayName: ARM
 - name: 資源
   items:
-    - name: 作者範本
+    - name: 問答集
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-machines.html'
+    - name: 作者 ARM 範本
       displayName: 'Azure Resource Manager, ARM'
       href: /azure/azure-resource-manager/
     - name: 透過 Microsoft Learn 增進您的技巧
@@ -575,15 +1132,15 @@
     - name: Azure 快速入門範本
       displayName: 'Azure Resource Manager, ARM'
       href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/#Linux'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-machine'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
     - name: 常見問題集
       href: faq.md
 - name: 疑難排解
-  href: ../troubleshooting/index.md
+  href: ../troubleshooting/index.yml

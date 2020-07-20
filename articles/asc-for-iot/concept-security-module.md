@@ -1,52 +1,49 @@
 ---
-title: 了解 Azure 資訊安全中心的 IoT 安全性模組對應項的結果預覽 |Microsoft Docs
-description: 深入了解安全性模組對應項以及如何使用 Azure 資訊安全中心的 IoT 的概念。
+title: 安全性模組和裝置 twins
+description: 瞭解安全性模組 twins 的概念，以及如何在 IoT 的 Azure 資訊安全中心中使用它們。
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
 ms.assetid: a5c25cba-59a4-488b-abbe-c37ff9b151f9
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 07/24/2019
 ms.author: mlottner
-ms.openlocfilehash: de0f21fbd847ff801308523f48e9d0c8a91880fa
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: d598d291612c6e4f58caf77e1b213b2bc3f42820
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65198398"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81311453"
 ---
 # <a name="security-module"></a>安全性模組
 
-> [!IMPORTANT]
-> 適用於 IoT 的 Azure 資訊安全中心目前為公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-這篇文章說明 Azure 資訊安全中心 (ASC) 設定為 IoT 如何使用裝置對應項和模組。 
+本文說明 IoT Azure 資訊安全中心如何使用裝置 twins 和模組。
 
 ## <a name="device-twins"></a>裝置對應項
 
-對 Azure 內所建置的 IoT 解決方案來說，裝置對應項在裝置管理和程序自動化中同時扮演重要的角色。  
+對 Azure 內所建置的 IoT 解決方案來說，裝置對應項在裝置管理和程序自動化中同時扮演重要的角色。
 
-適用於 IoT 的 ASC 可與您現有的 IoT 裝置管理平台完全整合，讓您能夠管理裝置的安全性狀態，以及利用現有的裝置控制功能。 整合之後，即可利用 IoT 中樞的對應項的機制。  
+適用於 IoT 的 Azure 資訊安全中心可與您現有的 IoT 裝置管理平台完全整合，讓您能夠管理裝置的安全性狀態，以及利用現有的裝置控制功能。 藉由使用 IoT 中樞對應項機制來達成整合。
 
-深入了解的概念[攣生裝置](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins)Azure IoT 中樞。 
+在 Azure IoT 中樞中深入瞭解[裝置 twins](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins)的概念。
 
-## <a name="security-module-twins"></a>安全性模組對應項
+## <a name="security-module-twins"></a>安全性模組 twins
 
-Iot 的 ASC 會維護每個裝置在服務中的安全性模組對應項。
-安全性模組對應項存放的資訊與相關裝置的安全性，針對每個特定的裝置在您的解決方案。
-裝置的安全性內容會維護專屬的安全性模組對應項進行更安全的通訊，以及啟用更新及維護需要較少的資源中。  
+適用于 IoT 的 Azure 資訊安全中心會為服務中的每個裝置維護一個安全性模組對應項。
+安全性模組對應項會保留您解決方案中每個特定裝置的裝置安全性相關資訊。
+裝置安全性屬性會保留在專用的安全性模組對應項中，以進行更安全的通訊，以及啟用需要較少資源的更新和維護。
 
-請參閱[建立安全性模組對應項](quickstart-create-security-twin.md)並[設定安全性代理程式](how-to-agent-configuration.md)以了解如何建立、 自訂和設定的對應項。 請參閱[了解模組對應項](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins)若要深入了解在 IoT 中樞模組對應項的概念。 
- 
+請參閱[建立安全性模組](quickstart-create-security-twin.md)對應項和[設定安全性代理](how-to-agent-configuration.md)程式，以瞭解如何建立、自訂和設定對應項。 請參閱[瞭解模組 twins](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) ，以深入瞭解模組 twins 在 IoT 中樞中的概念。
 
-## <a name="see-also"></a>請參閱
-- [ASC IoT preview](overview.md)
+## <a name="see-also"></a>另請參閱
+
+- [IoT 的 Azure 資訊安全中心總覽](overview.md)
 - [部署安全性代理程式](how-to-deploy-agent.md)
 - [安全性代理程式驗證方法](concept-security-agent-authentication-methods.md)

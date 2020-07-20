@@ -1,24 +1,22 @@
 ---
-title: 配額、 SKU 和區域可用性的 Azure Kubernetes Service (AKS)
-description: 深入了解預設配額、 限制的節點 VM SKU 大小和區域可用性的 Azure Kubernetes Service (AKS)。
+title: 資源、Sku、區域的限制
+titleSuffix: Azure Kubernetes Service
+description: 瞭解預設配額、受限制的節點 VM SKU 大小，以及 Azure Kubernetes Service 的區域可用性（AKS）。
 services: container-service
-author: iainfoulds
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
-ms.author: iainfou
-ms.openlocfilehash: abeb9ef6e467b62cf7332e01e1b77c710b9ba4f4
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: e3edbcf9603657ce0c747b01b3c59c2923bc0181
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65072887"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82208018"
 ---
-# <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>配額、 虛擬機器的大小限制和區域可用性的 Azure Kubernetes Service (AKS)
+# <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 中的配額、虛擬機器大小限制和區域可用性 (AKS)
 
-所有 Azure 服務都包含資源和功能的特定預設限制和配額。 針對節點的大小，某些虛擬機器 (VM) 的 Sku 為然後僅限使用。
+所有 Azure 服務都會設定資源和功能的預設限制和配額。 某些虛擬機器（VM） Sku 也會受到限制，可供使用。
 
-本文詳細說明 Azure Kubernetes Service (AKS) 資源，以及可用性的 Azure 區域中 AKS 服務的預設資源限制。
+本文詳細說明 Azure Kubernetes Service （AKS）資源的預設資源限制，以及 Azure 區域中 AKS 的可用性。
 
 ## <a name="service-quotas-and-limits"></a>服務配額和限制
 
@@ -26,11 +24,14 @@ ms.locfileid: "65072887"
 
 ## <a name="provisioned-infrastructure"></a>佈建的基礎結構
 
-所有其他網路、計算和儲存體限制都適用於佈建的基礎結構。 如需相關限制，請參閱 [Azure 訂用帳戶和服務限制](../azure-subscription-service-limits.md)。
+所有其他網路、計算和儲存體限制都適用於佈建的基礎結構。 如需相關限制，請參閱[Azure 訂用帳戶和服務限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。
+
+> [!IMPORTANT]
+> 當您升級 AKS 叢集時，會暫時耗用額外的資源。 這些資源包括虛擬網路子網中的可用 IP 位址，或虛擬機器 vCPU 配額。 如果您使用 Windows Server 容器，將最新的更新套用到節點的唯一背書方法，就是執行升級作業。 失敗的叢集升級程式可能表示您沒有可用的 IP 位址空間或 vCPU 配額來處理這些暫存資源。 如需 Windows Server 節點升級程式的詳細資訊，請參閱[升級 AKS 中的節點集][nodepool-upgrade]區。
 
 ## <a name="restricted-vm-sizes"></a>受限制的 VM 大小
 
-在 AKS 叢集中的每個節點包含固定的運算資源，例如個 vCPU 和記憶體數量。 如果 AKS 節點包含足夠的計算資源，可能無法正確執行的 pod。 若要確定所需*kube 系統*pod 和您的應用程式可以可靠地排程，以下 VM Sku 無法使用 AKS 中：
+AKS 叢集中的每個節點都包含固定的計算資源量，例如 vCPU 和 memory。 如果 AKS 節點包含的計算資源不足，pod 可能無法正確執行。 若要確保能夠可靠地排程所需的*kube 系統*pod 和您的應用程式，請**不要在 AKS 中使用下列 VM sku**：
 
 - Standard_A0
 - Standard_A1
@@ -40,15 +41,15 @@ ms.locfileid: "65072887"
 - Standard_F1
 - Standard_F1s
 
-如需有關 VM 類型和其計算資源的詳細資訊，請參閱 <<c0> [ 在 Azure 中的虛擬機器的大小][vm-skus]。
+如需 VM 類型及其計算資源的詳細資訊，請參閱[Azure 中的虛擬機器大小][vm-skus]。
 
 ## <a name="region-availability"></a>區域可用性
 
-如需位置的最新清單部署和執行叢集，請參閱[AKS 區域可用性][region-availability]。
+如需可部署和執行叢集之位置的最新清單，請參閱[AKS 區域可用性][region-availability]。
 
 ## <a name="next-steps"></a>後續步驟
 
-某些預設限制和配額可以增加。 若要要求增加一或多個支援此類增加的資源，請提交 [Azure 支援要求][azure-support] (針對 [問題類型] 選取 [配額])。
+某些預設限制和配額可以增加。 如果您的資源支援增加，請要求透過[Azure 支援要求][azure-support]增加（針對 [**問題類型**]，選取 [**配額**]）。
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest
@@ -56,3 +57,4 @@ ms.locfileid: "65072887"
 
 <!-- LINKS - Internal -->
 [vm-skus]: ../virtual-machines/linux/sizes.md
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

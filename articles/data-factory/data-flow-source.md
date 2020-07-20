@@ -1,103 +1,120 @@
 ---
-title: Azure Data Factory 對應資料流程來源轉換
-description: Azure Data Factory 對應資料流程來源轉換
+title: 對應資料流程中的來源轉換
+description: 瞭解如何在對應的資料流程中設定來源轉換。
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/12/2019
-ms.openlocfilehash: 54302f97913fd01dc8f8e4a8d987a407c8bdf9a7
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.custom: seo-lt-2019
+ms.date: 07/08/2020
+ms.openlocfilehash: 8ad7cfad0a17608af6b59b712d1f0c2b72b49a61
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369160"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223647"
 ---
-# <a name="mapping-data-flow-source-transformation"></a>對應資料流程來源轉換
+# <a name="source-transformation-in-mapping-data-flow"></a>對應資料流程中的來源轉換 
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-來源轉換會設定您想要用來將資料帶入資料流程的資料來源。 在單一資料流程中，您可以有多個來源轉換。 一定會開始設計您的資料流動，以來源轉換。
+「來源」轉換會為數據流設定您的資料來源。 在設計資料流程時，您的第一個步驟一律會設定來源轉換。 若要新增來源，請按一下 [資料流程] 畫布中的 [**新增來源**] 方塊。
 
-> [!NOTE]
-> 每個資料流程需要至少一個來源轉換。 視需要新增多個其他來源，以完成您的資料轉換。 您可以使用聯結或聯集轉換，將這些來源聯結在一起。 當偵錯在偵錯工作階段中的資料流時，則會使用取樣設定或偵錯來源限制從來源讀取資料。 不過，不會再寫入資料到接收在您執行在資料流程管線資料流活動之前。 
+每個資料流程都需要至少一個來源轉換，但您可以視需要新增多個來源來完成資料轉換。 您可以將這些來源與聯結、查閱或聯集轉換聯結在一起。
 
-![來源轉換選項](media/data-flow/source.png "來源")
+每個來源轉換只會與一個資料集或連結服務相關聯。 資料集會定義您想要寫入或讀取之資料的形狀和位置。 如果使用以檔案為基礎的資料集，您可以在來源中使用萬用字元和檔案清單，一次處理一個以上的檔案。
 
-每個資料流程來源轉換必須只有一個 Data Factory 資料集相關聯。 資料集定義的圖形和寫入或讀取資料的位置。 您也可以在您的來源中使用萬用字元和檔案的清單，一次處理一個以上的檔案時使用檔案的來源。
+## <a name="inline-datasets"></a>內嵌資料集
 
-## <a name="data-flow-staging-areas"></a>資料流程暫存區域
+您在建立來源轉換時所做的第一個決定，是要在資料集物件內或在來源轉換內定義您的來源資訊。 大部分的格式僅適用于其中一種。 請參考適當的連接器檔，以瞭解如何使用特定的連接器。
 
-資料流程會處理 Azure 中所有的「預備」資料集。 這些資料流程資料集用於預備資料，以執行您的資料轉換。 Data Factory 可存取將近 80 個不同的原生連接器。 若要將其他來源的資料包含在您的資料流程中，請使用複製活動先將該資料暫存在其中一個資料流程資料集暫存區域中。
+當內嵌和 dataset 物件都支援格式時，兩者都有其優點。 Dataset 物件是可重複使用的實體，可以在其他資料流程和活動（例如複製）中運用。 這些在使用強化的架構時特別有用。 資料集並非以 Spark 為基礎，有時候您可能需要覆寫來源轉換中的特定設定或架構投射。
 
-## <a name="options"></a>選項
+使用彈性架構、一次性來源實例或參數化來源時，建議您使用內嵌資料集。 如果您的來源是高度參數化的，內嵌資料集可讓您不建立「虛擬」物件。 內嵌資料集是以 spark 為基礎，而其屬性是資料流程的原生。
 
-### <a name="allow-schema-drift"></a>允許結構描述漂移
-如果來源資料行會經常變更，請選取 [允許結構描述漂移]。 此設定將允許從您的來源傳入的所有欄位將轉換送至接收。
+若要使用內嵌資料集，請在 [**來源類型**選取器] 中選取所需的格式。 您不需要選取來源資料集，而是選取您想要連接的連結服務。
 
-### <a name="validate-schema"></a>驗證結構描述
+![內嵌資料集](media/data-flow/inline-selector.png "內嵌資料集")
 
-![公用來源](media/data-flow/source1.png "公用來源 1")
+##  <a name="supported-source-types"></a><a name="supported-sources"></a>支援的來源類型
 
-如果來源資料的新近版本不符合定義的結構描述，則資料流程會執行失敗。
+對應資料流程遵循解壓縮、載入、轉換 (ELT) 方法，並可與 Azure 中所有的*暫存*資料集搭配運作。 目前，下列資料集可以用於來源轉換：
 
-### <a name="sampling"></a>取樣
-使用取樣來限制您來源中的資料列數目。  這是測試或從您的來源，以進行偵錯取樣資料時很有用。
+| 連接器 | 格式 | 資料集/內嵌 |
+| --------- | ------ | -------------- |
+| [Azure Blob 儲存體](connector-azure-blob-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties) <br> [分隔符號文字](format-delimited-text.md#mapping-data-flow-properties) <br> [差異 (預覽) ](format-delta.md) <br> [Excel](format-excel.md#mapping-data-flow-properties) <br> [JSON](format-json.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> -/✓ <br> ✓/✓ <br/> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties) <br> [分隔符號文字](format-delimited-text.md#mapping-data-flow-properties) <br> [Excel](format-excel.md#mapping-data-flow-properties) <br> [JSON](format-json.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  | ✓/- <br> ✓/- <br>✓/✓ <br/> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) \(部分機器翻譯\) | [Avro](format-avro.md#mapping-data-flow-properties)  <br> [Common Data Model (預覽) ](format-common-data-model.md#source-properties) <br> [分隔符號文字](format-delimited-text.md#mapping-data-flow-properties) <br> [差異 (預覽) ](format-delta.md) <br> [Excel](format-excel.md#mapping-data-flow-properties) <br> [JSON](format-json.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/-<br/> -/✓ <br> ✓/- <br> -/✓ <br> ✓/✓ <br>✓/- <br/> ✓/- |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure CosmosDB (SQL API) ](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
 
-## <a name="define-schema"></a>定義結構描述
+這些連接器的特定設定位於 [**來源選項**] 索引標籤中。這些設定的資訊和資料流程腳本範例位於連接器檔中。 
 
-![來源轉換](media/data-flow/source2.png "來源 2")
+Azure Data Factory 可以存取超過 [90 種原生連接器](connector-overview.md)。 若要在資料流程中包含來自其他來源的資料，請使用複製活動，將該資料載入其中一個支援的臨時區域。
 
-對於不是強型別的來源檔案類型 (也就是相對於 Parquet 檔案的一般檔案)，您應該在來源轉換中定義每個欄位的資料類型。 您可以接著在選取轉換中變更資料行名稱，以及在衍生資料行轉換中變更資料類型。 
+## <a name="source-settings"></a>來源設定
 
-![來源轉換](media/data-flow/source003.png "資料類型")
+新增來源之後，請透過 [**來源設定**] 索引標籤進行設定。您可以在這裡挑選或建立來源點的資料集。 您也可以選取資料的架構和取樣選項。
 
-針對強型別來源，您可以修改中後續的選取轉換的資料類型。 
+![[來源設定] 索引標籤](media/data-flow/source1.png "[來源設定] 索引標籤")
 
-### <a name="optimize"></a>最佳化
+**輸出資料流程名稱：** 來源轉換的名稱。
 
-![來源資料分割](media/data-flow/sourcepart.png "資料分割")
+**來源類型：** 選擇要使用內嵌資料集或現有的資料集物件。
 
-在來源轉換的 [最佳化] 索引標籤上，您會看到稱為 [來源] 的額外資料分割類型。 這會只在您選取 Azure SQL DB 作為來源時有作用。 因為 ADF 想要平行處理連線，以便對您的 Azure SQL DB 來源執行大型查詢。
+**測試連接：** 測試資料流程的 spark 服務是否可以成功連接到您的源資料集所使用的連結服務。 必須開啟 Debug 模式，才能啟用這項功能。
 
-在您的 SQL DB 來源上分割資料是選擇性作業，但是對於大型查詢很有用。 您有兩個選擇：
+**架構漂移：** [架構漂移](concepts-data-flow-schema-drift.md)是 data factory 能夠以原生方式處理您資料流程中的彈性架構，而不需要明確地定義資料行變更。
 
-### <a name="column"></a>欄
+* 如果來源資料行經常變更，請選取 [**允許架構漂移**] 方塊。 此設定可讓所有傳入的來源欄位流經接收的轉換。
 
-從您的來源資料表中選取要分割的資料行。 您也必須設定連線數目上限。
+* 選擇 [**推斷漂移資料行類型**] 將會指示 data factory 偵測並定義每個探索到的新資料行的資料類型。 關閉這項功能之後，所有漂移的資料行都是字串類型。
 
-### <a name="query-condition"></a>查詢條件
+**驗證架構：** 如果選取了 [驗證架構]，當傳入的來源資料不符合資料集的定義架構時，資料流程將無法執行。
 
-您可以選擇根據查詢來分割連線。 針對這個選項，只要放入 WHERE 述詞的內容即可。 也就是年 > 1980
+**略過行計數：**[略過行計數] 欄位會指定資料集開頭要忽略的行數。
 
-## <a name="source-file-management"></a>來源檔案管理
-![新增來源設定](media/data-flow/source2.png "新增設定")
+**取樣：** 啟用取樣以限制來源的資料列數目。 當您從來源測試或取樣資料以進行調試時，請使用此設定。
 
-* 萬用字元挑選一系列符合模式的檔案從來源資料夾的路徑。 這會覆寫您已設定您的資料集定義中的任何檔案。
-* 檔案清單。 與檔案集相同。 指向您建立的文字檔案，其中包含一份要處理的相對路徑檔案清單。
-* 要儲存檔案名稱的資料行會在您資料的資料行中，儲存來源中的檔案名稱。 在此輸入新的名稱以儲存檔案名稱字串。
-* 完成之後 (在資料流執行之後，您可以選擇不對來源檔案執行任何作業、刪除來源檔案或移動來源檔案。) 用於移動的路徑都是相對路徑。
-
-### <a name="sql-datasets"></a>SQL 資料集
-
-當您使用 Azure SQL DB 或 Azure SQL DW 作為來源時，您會有其他選項。
-
-* 查詢：對您的來源輸入 SQL 查詢。 設定查詢將會覆寫您在資料集中選擇的任何資料表。 請注意，這裡不支援 Order By 子句。 不過，您可以完整 SELECT FROM 陳述式在此處設定。
-
-* 批次大小：輸入批次大小，以將大量資料分成批次大小的讀取。
+若要驗證您的來源設定是否正確，請開啟 [偵測模式]，並提取資料預覽。 如需詳細資訊，請參閱[Debug mode](concepts-data-flow-debug-mode.md)。
 
 > [!NOTE]
-> 只有在管線中使用「執行資料流程」活動，從管線回合 (管線偵錯或執行回合) 執行資料流程時，才會執行檔案作業設定。 檔案作業不會在資料流程偵錯模式中執行。
+> 開啟 [偵錯模式] 時，[調試設定] 中的 [資料列限制] 設定將會在資料預覽期間覆寫來源中的取樣設定。
 
-### <a name="projection"></a>投射
+## <a name="source-options"></a>來源選項
 
-![投射](media/data-flow/source3.png "投射")
+[來源選項] 索引標籤包含所選連接器和格式的特定設定。 如需詳細資訊和範例，請參考相關的[連接器檔](#supported-sources)。
 
-類似於資料集中的結構描述，來源中的投射可定義資料的資料行、資料類型，以及來源資料中的資料格式。 如果您有未定義結構描述的文字檔案，請按一下 [偵測資料類型] 以要求 ADF 嘗試取樣並推斷資料類型。 您可以使用 [定義預設格式] 按鈕，設定自動偵測的預設資料格式。 您可以修改後續衍生資料行轉換中的資料行資料類型。 使用選取轉換可以修改資料行名稱。
+## <a name="projection"></a>投影
 
-![預設格式](media/data-flow/source2.png "預設格式")
+如同資料集內的架構，來源中的投射會定義來源資料的資料行、類型和格式。 對於大部分的資料集類型（例如 SQL 和 Parquet），會修正來源中的投射，以反映資料集中所定義的架構。 當您的來源檔案不是強型別 (例如，一般 csv 檔案，而不是 Parquet 檔案) 時，您可以在來源轉換中定義每個欄位的資料類型。
+
+![[投射] 索引標籤上的設定](media/data-flow/source3.png "投影")
+
+如果您的文字檔沒有已定義的架構，請選取 [偵測**資料類型**]，讓 Data Factory 將會取樣並推斷資料類型。 選取 [**定義預設格式**] 以自動偵測預設資料格式。
+
+**重設架構**會將投影重設為參考的資料集中所定義的投射。
+
+您可以在「向下串流衍生資料行」轉換中修改資料行資料類型。 使用 [選取] 轉換來修改資料行名稱。
+
+### <a name="import-schema"></a>匯入架構
+
+[**預測**] 索引標籤上的 [匯**入架構**] 按鈕可讓您使用主動的 debug 叢集來建立架構投射。 適用于每個來源類型，在此匯入架構將會覆寫資料集中定義的投影。 Dataset 物件將不會變更。
+
+這在支援複雜資料結構的資料集（例如 Avro 和 CosmosDB）中很有用，因為它不需要架構定義存在於資料集內。 對於內嵌資料集，這是參考資料行中繼資料的唯一方式，而不需要架構漂移。
+
+## <a name="optimize-the-source-transformation"></a>優化來源轉換
+
+[**優化**] 索引標籤可讓您在每個轉換步驟中編輯分割區資訊。 在大部分情況下，**使用目前**的資料分割將會針對來源的理想資料分割結構進行優化。
+
+如果您是從 Azure SQL Database 來源讀取，自訂的**來源**分割區可能會以最快的速度讀取資料。 ADF 會以平行方式連接到您的資料庫，以讀取大型查詢。 此來源資料分割可以在資料行上進行或使用查詢來完成。
+
+![來源分割區設定](media/data-flow/sourcepart3.png "分割")
+
+如需有關對應資料流程內優化的詳細資訊，請參閱 [[優化]](concepts-data-flow-overview.md#optimize)索引標籤。
 
 ## <a name="next-steps"></a>後續步驟
 
-開始使用[衍生資料行](data-flow-derived-column.md)和[選取](data-flow-select.md)建置您的資料轉換。
+使用[衍生的資料行轉換](data-flow-derived-column.md)和[選取轉換](data-flow-select.md)，開始建立您的資料流程。

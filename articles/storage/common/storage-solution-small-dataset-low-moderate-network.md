@@ -5,15 +5,15 @@ services: storage
 author: alkohli
 ms.service: storage
 ms.subservice: blobs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: 3e6f4f3eb312f0d4d96a008c0944a9608d0bf4a7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4f21e7f64338b7d50ca401081bf73ca0c1a1c88f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60397272"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504298"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>使用低速至中速網路頻寬進行小型資料集資料轉送
  
@@ -39,7 +39,7 @@ ms.locfileid: "60397272"
 
 - **指令碼/程式設計工具**：例如 AzCopy/PowerShell/Azure CLI 和 Azure 儲存體 REST APIs。
 
-    - **AzCopy**：使用此命令列工具以最佳效能，輕鬆將資料複製到 Azure Blobs、檔案和表格儲存體，或從其中複製資料。 AzCopy 支援並行和平行處理原則，並且能夠繼續中斷的複製作業。
+    - **AzCopy**：使用此命令列工具可獲得最佳效能，輕鬆將資料複製到 Azure Blobs、檔案和表格儲存體，或從其中複製資料。 AzCopy 支援並行和平行處理原則，並且能夠繼續中斷的複製作業。
     - **Azure PowerShell**：針對熟悉系統管理的使用者，在 Azure PowerShell 中使用 Azure 儲存體模組來轉送資料。
     - **Azure CLI**：使用此跨平台工具來管理 Azure 服務並將資料上傳至 Azure 儲存體。
     - **Azure 儲存體 REST API/SDK**：當您在建置應用程式時，您可以針對 Azure 儲存體 REST API/SDK 來開發應用程式，並使用以多種語言提供的 Azure 用戶端程式庫。
@@ -52,12 +52,12 @@ ms.locfileid: "60397272"
 | 功能 | Azure 儲存體總管 | Azure 入口網站 | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure 儲存體 REST API 或 SDK |
 |---------|------------------------|--------------|-----------------------------------------|---------------------------------|
 | 可用性 | 下載並安裝 <br>獨立工具 | 在 Azure 入口網站中的 Web 型瀏覽工具 | 命令列工具 |.NET、Java、Python、JavaScript、C++、Go、Ruby 和 PHP 的可程式化介面 |
-| 圖形化介面 | 是 | 是 | 否 | 否 |
+| 圖形化介面 | Yes | 是 | 否 | 否 |
 | 支援的平台 | Windows、Mac、Linux | Web 型 |Windows、Mac、Linux |所有平台 |
 | 允許的 Blob 儲存體作業<br>(適用於 Blob 和資料夾) | 上傳<br>下載<br>管理 | 上傳<br>下載<br>管理 |上傳<br>下載<br>管理 | 是，可自訂 |
-| 允許的 Data Lake Gen1 儲存體<br>作業 (適用於檔案和資料夾) | 上傳<br>下載<br>管理 | 否 |上傳<br>下載<br>管理                   | 否 |
+| 允許的 Data Lake Gen1 儲存體<br>作業 (適用於檔案和資料夾) | 上傳<br>下載<br>管理 | No |上傳<br>下載<br>管理                   | No |
 | 允許的檔案儲存體作業<br>(適用於檔案和目錄) | 上傳<br>下載<br>管理 | 上傳<br>下載<br>管理   |上傳<br>下載<br>管理 | 是，可自訂 |
-| 允許的資料表儲存體作業<br>(適用於資料表) |管理 | 否 |AzCopy v7 中的資料表支援 |是，可自訂|
+| 允許的資料表儲存體作業<br>(適用於資料表) |管理 | No |AzCopy v7 中的資料表支援 |是，可自訂|
 | 允許的佇列儲存體 | 管理 | 否  |否 | 是，可自訂|
 
 

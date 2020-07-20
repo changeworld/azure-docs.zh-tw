@@ -1,143 +1,128 @@
 ---
-title: 教學課程：使用 C# 程式碼範例從 Azure SQL 資料庫中編製資料索引 - Azure 搜尋服務
-description: C# 程式碼範例會示範如何連線至 Azure SQL 資料庫、擷取可搜尋的資料，並將其載入至 Azure 搜尋服務索引。
+title: 為 Azure SQL 資料編製索引的 C# 教學課程
+titleSuffix: Azure Cognitive Search
+description: 在此 C# 教學課程中，連線至 Azure SQL Database、擷取可搜尋的資料，並將其載入至 Azure 認知搜尋服務索引。
+manager: nitinme
 author: HeidiSteen
-manager: cgronlun
-services: search
-ms.service: search
-ms.devlang: na
-ms.topic: tutorial
-ms.date: 05/02/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: c9413fb78bbb92618818ac4311ab1af8ad65576d
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 06/23/2020
+ms.openlocfilehash: a3a7657aa83a675982adc304de01ba0fcc26d193
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025075"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045445"
 ---
-# <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C# 教學課程：使用 Azure 搜尋索引子搜耙 Azure SQL 資料庫
+# <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>教學課程：使用 .NET SDK 為 Azure SQL 資料編製索引
 
-了解如何設定索引子，以便從範例 Azure SQL 資料庫擷取可搜尋的資料。 [索引子](search-indexer-overview.md)是 Azure 搜尋服務的元件，可搜耙外部資料來源，以內容填入[搜尋索引](search-what-is-an-index.md)。 在所有索引子中，最廣泛使用的是 Azure SQL Database 的索引子。 
+設定[索引子](search-indexer-overview.md)，以從 Azure SQL Database 中擷取可搜尋的資料，並將其傳送至 Azure 認知搜尋中的搜尋索引。 
 
-索引子設定的熟練度很有幫助，因為它可簡化您必須撰寫和維護的程式碼數量。 您不需準備及推送結構描述相容的 JSON 資料集，而是可以將索引子附加至資料來源，讓索引子擷取資料並將其插入索引中，並選擇性地依照週期性排程執行索引子，以掌握基礎來源中的變更。
-
-在此教學課程中，使用 [Azure 搜尋服務 .NET 用戶端程式庫](https://aka.ms/search-sdk)和 .NET Core 主控台應用程式，執行下列工作：
+本教學課程將使用 C# 和 [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) 執行下列工作：
 
 > [!div class="checklist"]
-> * 將搜尋服務資訊新增至應用程式設定
-> * 在 Azure SQL Database 中準備外部資料集 
-> * 檢閱範例程式碼中的索引和索引子定義
-> * 執行索引子程式碼以匯入資料
-> * 搜尋索引
-> * 在入口網站中檢視索引子組態
+> * 建立會連線到 Azure SQL Database 的資料來源
+> * 建立索引子
+> * 執行索引子以將資料載入至索引
+> * 以驗證步驟的形式查詢索引
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-此快速入門會使用下列服務、工具和資料。 
-
-[建立 Azure 搜尋服務](search-create-service-portal.md)，或在您目前的訂用帳戶下方[尋找現有服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 您可以使用此教學課程的免費服務。
-
-[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) 會儲存索引子所用的外部資料來源。 範例解決方案會提供 SQL 資料檔案，以建立資料表。 此教學課程會提供建立服務和資料庫的步驟。
-
-任何版本的 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) 都可用來執行解決方案範例。 範例程式碼和指示已在免費的 Community 版本上經過測試。
-
-位在 Azure 範例 GitHub 存放庫中的 [Azure-Samples/search-dotnet-getting-started](https://github.com/Azure-Samples/search-dotnet-getting-started) 會提供解決方案範例。 下載並擷取解決方案。 根據預設，解決方案會是唯讀狀態。 以滑鼠右鍵按一下方案並清除唯讀屬性，以便您修改檔案。
++ [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)
++ [Visual Studio](https://visualstudio.microsoft.com/downloads/)
++ [建立](search-create-service-portal.md)或[尋找現有的搜尋服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
 > [!Note]
-> 如果您使用免費的 Azure 搜尋服務，則受限於三個索引、三個索引子，以及三個資料來源。 此教學課程會各建立一個。 確定您的服務有空間可接受新的資源。
+> 您可以使用免費服務來進行本教學課程。 免費的搜尋服務會有限制，您只能使用三個索引、三個索引子和三個資料來源。 本教學課程會各建立一個。 開始之前，請確定您的服務有空間可接受新的資源。
 
-## <a name="get-a-key-and-url"></a>取得金鑰和 URL
+## <a name="download-files"></a>下載檔案
 
-REST 呼叫需要服務 URL 和每個要求的存取金鑰。 搜尋服務是同時建立，因此如果您將 Azure 搜尋服務新增至您的訂用帳戶，請遵循下列步驟來取得必要的資訊：
+本教學課程的原始程式碼位於 [Azure-Samples/search-dotnet-getting-started](https://github.com/Azure-Samples/search-dotnet-getting-started) GitHub 存放庫中的 [DotNetHowToIndexer](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToIndexers) 資料夾內。
+
+## <a name="1---create-services"></a>1 - 建立服務
+
+本教學課程將使用 Azure 認知搜尋進行索引編製和查詢，並以 Azure SQL Database 作為外部資料來源。 為具備鄰近性和管理方面的優勢，如果可能，請將這兩項服務建立在相同的區域和資源群組中。 在實務上，Azure SQL Database 可以位於任何區域中。
+
+### <a name="start-with-azure-sql-database"></a>從 Azure SQL Database 開始著手
+
+在此步驟中，請於 Azure SQL Database 上建立索引子可以搜耙的外部資料來源。 您可以使用 Azure 入口網站和範例下載中的 hotels.sql 檔案，在 Azure SQL Database 中建立資料集。 Azure 認知搜尋會取用扁平化資料列集，例如從檢視或查詢產生的資料列集。 範例方案中的 SQL 檔案會建立並填入單一資料表。
+
+如果您有現有的 Azure SQL Database 資源，您可以在其中新增 hotels 資料表 (在步驟 4 開始)。
+
+1. [登入 Azure 入口網站](https://portal.azure.com/)。
+
+1. 尋找或建立 **SQL Database**。 您可以使用預設值和最低層級的定價層。 建立伺服器的優點之一是您可以指定系統管理員使用者名稱和密碼，以便在稍後步驟中建立和載入資料表。
+
+   ![新增資料庫頁面](./media/search-indexer-tutorial/indexer-new-sqldb.png "新增資料庫頁面")
+
+1. 按一下 [檢閱 + 建立] 來部署新的伺服器和資料庫。 等候部署伺服器和資料庫。
+
+1. 在瀏覽窗格中，按一下 [查詢編輯器 (預覽)]，然後輸入伺服器管理員的使用者名稱和密碼。 
+
+   如果存取遭拒，請複製錯誤訊息中的用戶端 IP 位址，然後按一下 [設定伺服器防火牆] 連結，以新增規則來允許使用您的用戶端 IP 作為範圍來從用戶端電腦進行存取。 規則可能需要幾分鐘的時間才會生效。
+
+1. 在查詢編輯器中，按一下 [開啟查詢]，然後瀏覽至本機電腦上「hotels.sql」檔案所在的位置。 
+
+1. 選取檔案，然後按一下 [開啟]。 指令碼應該會看起來如下列螢幕擷取畫面所示：
+
+   ![SQL 指令碼](./media/search-indexer-tutorial/sql-script.png "SQL 指令碼")
+
+1. 按一下 [執行] 來執行查詢。 在 [結果] 窗格中，您應會看到查詢成功訊息 (3 個資料列)。
+
+1. 若要從這個資料表傳回資料列集，您可以執行下列查詢作為驗證步驟：
+
+    ```sql
+    SELECT * FROM Hotels
+    ```
+
+1. 複製資料庫的 ADO.NET 連接字串。 在 [設定] > [連接字串] 底下，複製 ADO.NET 連接字串，如下列範例所示。
+
+    ```sql
+    Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+    ```
+
+在下一個練習中，您將需要此連接字串來設定您的環境。
+
+### <a name="azure-cognitive-search"></a>Azue 認知搜尋
+
+下一個元件是 Azure 認知搜尋，您可以[在入口網站中建立](search-create-service-portal.md)該服務。 您可以使用免費層來完成此逐步解說。 
+
+### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>取得 Azure 認知搜尋的管理員 API 金鑰和 URL
+
+API 呼叫需要用到服務 URL 和存取金鑰。 建立搜尋服務時需要這兩項資料，因此如果您將 Azure 認知搜尋新增至您的訂用帳戶，請依照下列步驟來取得必要的資訊：
 
 1. [登入 Azure 入口網站](https://portal.azure.com/)，並在搜尋服務的 [概觀] 頁面上取得 URL。 範例端點看起來會像是 `https://mydemo.search.windows.net`。
 
-1. 在 [設定]  >  [金鑰] 中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
+1. 在 [設定] >  [金鑰] 中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
 
-![取得 HTTP 端點和存取金鑰](media/search-fiddler/get-url-key.png "取得 HTTP 端點和存取金鑰")
+   ![取得 HTTP 端點和存取金鑰](media/search-get-started-postman/get-url-key.png "取得 HTTP 端點和存取金鑰")
 
-所有要求均都需要在傳送至您服務上的每個要求上使用 API 金鑰。 擁有有效的金鑰就能為每個要求在傳送要求之應用程式與處理要求之服務間建立信任。
+## <a name="2---set-up-your-environment"></a>2 - 設定您的環境
 
-## <a name="set-up-connections"></a>設定連線
-必要服務的連線資訊會指定於方案的 **appsettings.json** 檔案中。 
+1. 啟動 Visual Studio 並開啟 **DotNetHowToIndexers.sln**。
 
-1. 在 Visual Studio 中，開啟 **DotNetHowToIndexers.sln**檔案。
+1. 在方案總管中開啟 **appsettings.json**，以提供連線資訊。
 
-1. 在 [方案總管] 中，開啟 **appsettings.json**，以便您填入每個設定。  
+1. 就 `searchServiceName` 而言，如果完整 URL 是 "https://my-demo-service.search.windows.net"，則應提供的服務名稱就是 "my-demo-service"。
 
-您現在就可以使用 Azure 搜尋服務的 URL 和管理員金鑰來填入前兩個項目。 假設端點是 `https://mydemo.search.windows.net`，則要提供的服務名稱就是 `mydemo`。
-
-```json
-{
-  "SearchServiceName": "Put your search service name here",
-  "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
-  "AzureSqlConnectionString": "Put your Azure SQL database connection string here",
-}
-```
-
-最後一個項目需要現有的資料庫。 您將下一步中建立此資料庫。
-
-## <a name="prepare-sample-data"></a>準備範例資料
-
-在此步驟中，建立索引子可以搜耙的外部資料來源。 您可以使用 Azure 入口網站和範例中的 hotels.sql 檔案，在 Azure SQL Database 中建立資料集。 Azure 搜尋服務會取用扁平化資料列集，例如從檢視或查詢產生的資料列集。 範例方案中的 SQL 檔案會建立並填入單一資料表。
-
-下列練習假設沒有任何現有的伺服器或資料庫，並指示您在步驟 2 中建立兩者。 (選擇性) 如果您有現有的資源，您可以在其中新增 hotels 資料表 (在步驟 4 開始)。
-
-1. [登入 Azure 入口網站](https://portal.azure.com/)。 
-
-2. 尋找或建立 **Azure SQL Database**，以建立資料庫、伺服器和資源群組。 您可以使用預設值和最低層級的定價層。 建立伺服器的優點之一是您可以指定系統管理員使用者名稱和密碼，以便在稍後步驟中建立和載入資料表。
-
-   ![新增資料庫頁面](./media/search-indexer-tutorial/indexer-new-sqldb.png)
-
-3. 按一下 [建立] 來部署新的伺服器和資料庫。 等候部署伺服器和資料庫。
-
-4. 開啟新資料庫的 [SQL Database] 頁面 (如果尚未開啟的話)。 資源名稱應該為 SQL Database，而非 SQL Server。
-
-   ![SQL 資料庫頁面](./media/search-indexer-tutorial/hotels-db.png)
-
-4. 在導覽窗格上，按一下 [查詢編輯器 (預覽)]。
-
-5. 按一下 [登入]，並輸入伺服器管理員的使用者名稱和密碼。
-
-6. 按一下 [開啟查詢] 並瀏覽至 hotels.sql 的位置。 
-
-7. 選取檔案，然後按一下 [開啟]。 指令碼應該會看起來如下列螢幕擷取畫面所示：
-
-   ![SQL 指令碼](./media/search-indexer-tutorial/sql-script.png)
-
-8. 按一下 [執行] 來執行查詢。 在 [結果] 窗格中，您應會看到查詢成功訊息 (3 個資料列)。
-
-9. 若要從這個資料表傳回資料列集，您可以執行下列查詢作為驗證步驟：
-
-    ```sql
-    SELECT HotelId, HotelName, Tags FROM Hotels
-    ```
-    典型查詢 `SELECT * FROM Hotels` 不適用於查詢編輯器中。 範例資料包含 [位置] 欄位中的地理座標，目前並未在編輯器中處理該欄位。 如需要查詢的其他資料行清單，您可以執行此陳述式：`SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')`
-
-10. 您現在有外部資料集，請複製資料庫的 ADO.NET 連接字串。 在您資料庫的 [SQL Database] 頁面上，移至 [設定] > [連接字串]，並複製 ADO.NET 連接字串。
- 
-    ADO.NET 連接字串如下列範例所示，已修改成使用有效的資料庫名稱、使用者名稱和密碼。
-
-    ```sql
-    Server=tcp:hotels-db.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
-    ```
-11. 將連接字串貼到 "AzureSqlConnectionString" 中，作為 Visual Studio 的 **appsettings.json** 檔案中的第三個項目。
+1. `AzureSqlConnectionString` 的字串格式如下所示：`"Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"`
 
     ```json
     {
       "SearchServiceName": "<placeholder-Azure-Search-service-name>",
       "SearchServiceAdminApiKey": "<placeholder-admin-key-for-Azure-Search>",
-      "AzureSqlConnectionString": "Server=tcp:hotels-db.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security  Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+      "AzureSqlConnectionString": "<placeholder-ADO.NET-connection-string",
     }
     ```
 
-## <a name="understand-the-code"></a>了解程式碼
+1. 在連接字串中，確定連接字串包含有效的密碼。 雖然資料庫和使用者名稱會複製過去，但密碼必須手動輸入。
 
-當資料和組態設定都就緒之後，即可建置和執行 **DotNetHowToIndexers.sln** 中的範例程式。 這麼做之前，請花一分鐘研究此範例中的索引和索引子定義。 相關程式碼位於兩個檔案中：
+## <a name="3---create-the-pipeline"></a>3 - 建立管線
+
+索引子需要資料來源物件和索引。 相關程式碼位於兩個檔案中：
 
   + **hotel.cs**，內含可定義索引的結構描述
   + **Program.cs**，內含用於建立和管理您服務中結構的函式
@@ -155,13 +140,11 @@ public string HotelName { get; set; }
 
 結構描述也可以包含其他元素，包括提高搜尋分數、自訂分析城市和其他建構的評分設定檔。 不過，基於我們的目的，結構描述並未嚴密定義，只包含在範例資料集中找到的欄位。
 
-在此教學課程中，索引子會從一個資料來源提取資料。 實際上，您可以將多個索引子附加至相同的索引，並從多個資料來源建立合併的可搜尋索引。 根據您需要彈性的狀況而定，您可以使用相同的索引-索引子配對、不同的資料來源組合，或具有各種索引子和資料來源組合的一個索引。
-
 ### <a name="in-programcs"></a>在 Program.cs 中
 
 主要程式包含用於建立用戶端、索引、資料來源和索引子的邏輯。 在您可能會執行此程式多次的假設之下，此程式碼會檢查並刪除現有的同名資源。
 
-資料來源物件上會配置專屬於 Azure SQL 資料庫資源的設定，包括[累加式索引編製](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows)，以充分利用 Azure SQL 的內建[變更偵測功能](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)。 在 Azure SQL 中，示範用的飯店資料庫具有名為 **IsDeleted** 的「虛刪除」資料行。 當此資料行在資料庫中設定為 true 時，索引子就會從 Azure 搜尋服務索引中移除對應文件。
+資料來源物件上會配置專屬於 Azure SQL Database 資源的設定，包括[部份或增量索引編製](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows)，以充分利用 Azure SQL 的內建[變更偵測功能](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)。 在 Azure SQL 中，示範用的飯店資料庫具有名為 **IsDeleted** 的「虛刪除」資料行。 當此資料行在資料庫中設定為 true 時，索引子就會從 Azure 認知搜尋索引中移除對應文件。
 
   ```csharp
   Console.WriteLine("Creating data source...");
@@ -213,61 +196,61 @@ public string HotelName { get; set; }
   }
   ```
 
+## <a name="4---build-the-solution"></a>4 - 建置解決方案
 
+按 F5 以建置及執行解決方案。 此程式會在偵錯模式中執行。 主控台視窗會報告每項作業的狀態。
 
-## <a name="run-the-indexer"></a>執行索引子
+   ![主控台輸出](./media/search-indexer-tutorial/console-output.png "主控台輸出")
 
-在此步驟中，編譯並執行程式。 
+您的程式碼會在 Visual Studio 本機執行，並連線到您在 Azure 上的搜尋服務，搜尋服務再連線到 Azure SQL Database 並擷取資料集。 由於要進行的作業很多，所以會有數個潛在的失敗點。 如果您收到錯誤，請先檢查下列條件：
 
-1. 在 [方案總管] 中，於 **DotNetHowToIndexers** 上按一下滑鼠右鍵，然後選取 [建置]。
-2. 同樣地，以滑鼠右鍵按一下 **DotNetHowToIndexers**，接著按一下 [偵錯] > [啟動新執行個體]。
++ 您提供搜尋服務連線資訊受限於本教學課程中的服務名稱。 如果您輸入了完整 URL，作業會在索引建立時停止，出現連線失敗錯誤。
 
-此程式會在偵錯模式中執行。 主控台視窗會報告每個作業的狀態。
++ **appsettings.json** 中的資料庫連線資訊。 它應該是從入口網站取得的 ADO.NET 連接字串，已修改成包含您的資料庫適用的使用者名稱和密碼。 使用者帳戶必須具有擷取資料的權限。 您的本機用戶端 IP 位址則必須獲得允許而能進行存取。
 
-  ![SQL 指令碼](./media/search-indexer-tutorial/console-output.png)
++ 資源限制。 回想一下，免費層有 3 個索引、索引子和資料來源的限制。 最大限制的服務無法建立新的物件。
 
-您的程式碼會在 Visual Studio 本機執行，並連線到您在 Azure 上的搜尋服務，而搜尋服務會使用連接字串連線到 Azure SQL Database 並擷取資料集。 這麼多個作業會有數個潛在的失敗點，但如果發生錯誤，請先檢查下列：
+## <a name="5---search"></a>5 - 搜尋
 
-+ 您提供搜尋服務連線資訊受限於此教學課程中的服務名稱。 如果您輸入了完整 URL，作業會在索引建立時停止，出現連線失敗錯誤。
+使用 Azure 入口網站來確認物件的建立，然後使用**搜尋總管**來查詢索引。
 
-+ **appsettings.json** 中的資料庫連線資訊。 它應該是從入口網站取得的 ADO.NET 連接字串，已修改成包含您的資料庫適用的使用者名稱和密碼。 使用者帳戶必須具有擷取資料的權限。
-
-+ 資源限制。 回想一下，共用 (免費) 服務有 3 個索引、索引子和資料來源的限制。 最大限制的服務無法建立新的物件。
-
-## <a name="search-the-index"></a>搜尋索引 
-
-在 Azure 入口網站的搜尋服務 [概觀] 頁面中，按一下頂端的 [搜尋總管]，以提交新索引的一些查詢。
-
-1. 按一下頂端的 [變更索引] 以選取 hotels 索引。
-
-2. 按一下 [搜尋] 按鈕來發出空白搜尋。 
-
-   您的索引中的三個項目會以 JSON 文件形式傳回。 搜尋總管會以 JSON 傳回文件，以便您檢視整個結構。
-
-3. 接下來，輸入搜尋字串：`search=river&$count=true`。 
-
-   此查詢會叫用 `river` 字詞的全文檢索搜尋，而結果會包含相符文件的計數。 在測試包含數千甚至數百萬份文件的大型索引案例時，傳回相符文件的計數很實用。 在此情況下，只有一份文件符合查詢。
-
-4. 最後，輸入搜尋字串，將 JSON 輸出限制為感興趣的欄位：`search=river&$count=true&$select=hotelId, baseRate, description`。 
-
-   查詢回應會縮減為選取的欄位，導致更簡潔的輸出。
-
-## <a name="view-indexer-configuration"></a>檢視索引子組態
-
-所有索引子 (包括您剛才以程式設計方式建立的索引子) 都會列在入口網站中。 您可以開啟索引子定義及檢視其資料來源，或設定重新整理排程，以掌握全新和變更的資料列。
-
-1. [登入 Azure 入口網站](https://portal.azure.com/)，並在您搜尋服務的 [概觀] 頁面上，按一下 [索引]、[索引子] 和 [資料來源] 的連結。
-3. 選取要檢視的個別物件或修改組態設定。
+1. [登入 Azure 入口網站](https://portal.azure.com/)，然後在搜尋服務的 [概觀] 頁面中，依序開啟每個清單以確認物件已完成建立。 [索引]、[索引子] 和 [資料來源] 分別會有 "hotels"、"azure-sql-indexer" 和 "azure-sql"。
 
    ![索引子和資料來源圖格](./media/search-indexer-tutorial/tiles-portal.png)
 
+1. 選取 [hotels] 索引。 在 [hotels] 頁面上，第一個索引標籤是 [搜尋總管]。 
+
+1. 按一下 [搜尋] 以發出空白查詢。 
+
+   您的索引中的三個項目會以 JSON 文件形式傳回。 搜尋總管會以 JSON 傳回文件，以便您檢視整個結構。
+
+   ![查詢索引](./media/search-indexer-tutorial/portal-search.png "查詢索引")
+   
+1. 接下來，輸入搜尋字串：`search=river&$count=true`。 
+
+   此查詢會叫用 `river` 字詞的全文檢索搜尋，而結果會包含相符文件的計數。 在測試包含數千甚至數百萬份文件的大型索引案例時，傳回相符文件的計數很實用。 在此情況下，只有一份文件符合查詢。
+
+1. 最後，輸入搜尋字串，將 JSON 輸出限制為感興趣的欄位：`search=river&$count=true&$select=hotelId, baseRate, description`。 
+
+   查詢回應會縮減為選取的欄位，導致更簡潔的輸出。
+
+## <a name="reset-and-rerun"></a>重設並重新執行
+
+在開發的早期實驗階段中若要設計反覆項目，最實用的方法是從 Azure 認知搜尋中刪除物件，並讓您的程式碼加以重建。 資源名稱是唯一的。 刪除物件可讓您使用相同的名稱加以重新建立。
+
+本教學課程的範例程式碼會檢查是否有現有的物件，並將其刪除，以便您重新執行程式碼。
+
+您也可以使用入口網站來刪除索引、索引子和資料來源。
+
 ## <a name="clean-up-resources"></a>清除資源
 
-在完成教學課程後，最快速的清除方式是刪除包含 Azure 搜尋服務的資源群組。 您現在可以刪除資源群組，以永久刪除當中所包含的所有項目。 在入口網站中，資源群組名稱位在 Azure 搜尋服務的 [概觀] 頁面上。
+如果您使用自己的訂用帳戶，當專案結束時，建議您移除不再需要的資源。 讓資源繼續執行可能會產生費用。 您可以個別刪除資源，或刪除資源群組以刪除整組資源。
+
+您可以使用左導覽窗格中的 [所有資源] 或 [資源群組] 連結，在入口網站中尋找和管理資源。
 
 ## <a name="next-steps"></a>後續步驟
 
-您可以將 AI 擴充資料演算法附加至索引子管線。 下一個步驟中，繼續進行下列教學課程。
+現在您已熟悉 SQL Database 編製索引的基本概念，接下來我們將進一步了解索引子設定。
 
 > [!div class="nextstepaction"]
-> [在 Azure Blob 儲存體中為文件編製索引](search-howto-indexing-azure-blob-storage.md)
+> [設定 SQL 資料庫索引子](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

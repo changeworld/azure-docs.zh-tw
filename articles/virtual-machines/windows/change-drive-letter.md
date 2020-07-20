@@ -1,26 +1,20 @@
 ---
-title: '將 VM 的 D: 磁碟機設為資料磁碟 | Microsoft Docs'
+title: '將 VM 的 D：磁片磁碟機設為數據磁片 '
 description: '說明如何為 Windows VM 變更磁碟機代號，讓您能夠使用 D: 磁碟機做為資料磁碟機。'
 services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 0867a931-0055-4e31-8403-9b38a3eeb904
 ms.service: virtual-machines-windows
+ms.subservice: disks
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: cfd46d5e9750a81d89ed6d3a79bcc9bffdc3d0dd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 15df3178f2860fa066a82cb1429e0c1a6e5c2b08
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60844194"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82083417"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>使用 D: 磁碟機作為 Windows VM 上的資料磁碟機
 如果您的應用程式需要使用 D 磁碟機來儲存資料，請遵循下列指示，使用不同的磁碟機代號來代表暫存磁碟。 切勿使用暫存磁碟儲存需要保留的資料。
@@ -34,35 +28,35 @@ ms.locfileid: "60844194"
 
 ## <a name="temporarily-move-pagefilesys-to-c-drive"></a>暫時將 pagefile.sys 移到 C 磁碟機
 1. 連接至虛擬機器。 
-2. 使用滑鼠右鍵按一下 [開始] 功能表，然後選取 [系統]。
-3. 在左側功能表中，選取 [進階系統設定] 。
-4. 在 [效能] 區段中，選取 [設定]。
-5. 選取 [進階]  索引標籤。
-6. 在 [虛擬記憶體] 區段中，選取 [變更]。
-7. 選取 **C** 磁碟機，然後依序按一下 [系統管理大小] 和 [設定]。
-8. 選取 **D** 磁碟機，然後依序按一下 [沒有分頁檔] 和 [設定]。
+2. 以滑鼠右鍵按一下 [**開始**] 功能表，然後選取 [**系統**]。
+3. 在左側功能表中，選取 [進階系統設定] ****。
+4. 在 [效能]**** 區段中，選取 [設定]****。
+5. 選取 [進階] **** 索引標籤。
+6. 在 [虛擬記憶體]**** 區段中，選取 [變更]****。
+7. 選取 **C** 磁碟機，然後依序按一下 [系統管理大小]**** 和 [設定]****。
+8. 選取 **D** 磁碟機，然後依序按一下 [沒有分頁檔]**** 和 [設定]****。
 9. 按一下 [套用]。 您將會收到一則警告，表示電腦必須重新啟動，才能讓變更生效。
-10. 重启虚拟机。
+10. 重新啟動虛擬機器。
 
 ## <a name="change-the-drive-letters"></a>變更磁碟機代號
 1. 重新啟動 VM 之後，再次登入 VM。
-2. 按一下 [開始] 功能表，然後輸入 **diskmgmt.msc** 並按下 Enter 鍵。 此时会启动“磁盘管理”。
-3. 右键单击 **D**（临时存储驱动器），并选择“更改驱动器号和路径”。
-4. 在磁碟機代號下方，選取新的磁碟機 (例如 **T**)，然後按一下 [確定]。 
-5. 右键单击数据磁盘，并选择“更改驱动器号和路径”。
-6. 在 [磁碟機代號] 下方，選取磁碟機 **D**，然後按一下 [確定]。 
+2. 按一下 [開始]**** 功能表，然後輸入 **diskmgmt.msc** 並按下 Enter 鍵。 隨即會啟動「磁碟管理」。
+3. 使用滑鼠右鍵按一下 **D**、暫存磁碟機，然後選取 [變更磁碟機代號及路徑]****。
+4. 在磁碟機代號下方，選取新的磁碟機 (例如 **T**)，然後按一下 [確定]****。 
+5. 使用滑鼠右鍵按一下資料磁碟，然後選取 [變更磁碟機代號及路徑] ****。
+6. 在 [磁碟機代號] 下方，選取磁碟機 **D**，然後按一下 [確定]****。 
 
 ## <a name="move-pagefilesys-back-to-the-temporary-storage-drive"></a>將 pagefile.sys 移回暫存磁碟機
-1. 使用滑鼠右鍵按一下 [開始] 功能表，然後選取 [系統]。
-2. 在左側功能表中，選取 [進階系統設定] 。
-3. 在 [效能] 區段中，選取 [設定]。
-4. 選取 [進階]  索引標籤。
-5. 在 [虛擬記憶體] 區段中，選取 [變更]。
-6. 選取作業系統磁碟機 **C**，然後依序按一下 [沒有分頁檔] 和 [設定]。
-7. 選取暫存磁碟機 **T**，然後依序按一下 [系統管理大小] 和 [設定]。
-8. 按一下 [套用]。 您將會收到一則警告，表示電腦必須重新啟動，才能讓變更生效。
+1. 以滑鼠右鍵按一下 [**開始**] 功能表，然後選取 [**系統**]
+2. 在左側功能表中，選取 [進階系統設定] ****。
+3. 在 [效能]**** 區段中，選取 [設定]****。
+4. 選取 [進階] **** 索引標籤。
+5. 在 [虛擬記憶體]**** 區段中，選取 [變更]****。
+6. 選取作業系統磁碟機 **C**，然後依序按一下 [沒有分頁檔]**** 和 [設定]****。
+7. 選取暫存磁碟機 **T**，然後依序按一下 [系統管理大小]**** 和 [設定]****。
+8. 按一下 [套用] 。 您將會收到一則警告，表示電腦必須重新啟動，才能讓變更生效。
 9. 重新啟動虛擬機器。
 
 ## <a name="next-steps"></a>後續步驟
-* 可以通过[附加更多数据磁盘](attach-managed-disk-portal.md)来增加虚拟机的可用存储空间。
+* 您可以藉由[附加額外的資料磁片](attach-managed-disk-portal.md)來增加虛擬機器可用的存放裝置。
 

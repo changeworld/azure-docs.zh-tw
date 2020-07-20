@@ -1,26 +1,18 @@
 ---
-title: 確認 VPN 閘道連線 | Microsoft Docs
+title: Azure VPN 閘道：確認閘道連線
 description: 本文說明如何確認虛擬網路「VPN 閘道」連線。
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-service-management,azure-resource-manager
-ms.assetid: 7e3d1043-caa9-4472-96d3-832f4e2c91ee
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+ms.topic: how-to
 ms.date: 05/16/2017
 ms.author: cherylmc
-ms.openlocfilehash: bcece64a85a69c705b0f7f915dafe29123a2cd4a
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 93a7c0bb15c17b6939d6d53018e4fed84b1ae020
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128359"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84984574"
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>確認 VPN 閘道連線
 
@@ -55,4 +47,4 @@ ms.locfileid: "62128359"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 您可以將虛擬機器加入您的虛擬網路。 请参阅 [创建虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 以获取相关步骤。
+* 您可以將虛擬機器加入您的虛擬網路。 請參閱 [建立網站的虛擬機器](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 以取得相關步驟。

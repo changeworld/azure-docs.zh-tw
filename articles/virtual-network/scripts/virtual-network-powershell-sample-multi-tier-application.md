@@ -1,10 +1,10 @@
 ---
-title: Azure PowerShell 指令碼範例 - 為多層式應用程式建立網路 | Microsoft Docs
+title: 為多層式應用程式建立 VNet - Azure PowerShell 指令碼範例
 description: Azure PowerShell 指令碼範例 - 為多層式應用程式建立虛擬網路。
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 12/13/2018
-ms.author: jdial
-ms.openlocfilehash: efd496f2f69f243b958f4e780b9f3455d2ffece3
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.author: kumud
+ms.openlocfilehash: 32140429d96d73100c4bd5a2ae274e508a15b7a8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56648689"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74091313"
 ---
 # <a name="create-a-network-for-multi-tier-applications-script-sample"></a>為多層式應用程式建立網路的指令碼範例
 
@@ -34,7 +34,8 @@ ms.locfileid: "56648689"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-<!-- gitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/17748 --> 子網路識別碼會在虛擬網路建好後指派；具體來說，會使用 New-AzVirtualNetwork Cmdlet 搭配 -Subnet 選項。 如果您在呼叫 New-AzVirtualNetwork 前使用 New-AzVirtualNetworkSubnetConfig Cmdlet 設定子網路，您就不會看到子網路識別碼，直到您呼叫 New-AzVirtualNetwork 後才能看到。
+<!-- gitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/17748 -->
+子網路識別碼會在虛擬網路建立完成後指派；具體來說，會使用 New-AzVirtualNetwork Cmdlet 搭配 -Subnet 選項。 如果您在呼叫 New-AzVirtualNetwork 前使用 New-AzVirtualNetworkSubnetConfig Cmdlet 設定子網路，您就不會看到子網路識別碼，直到您呼叫 New-AzVirtualNetwork 後才能看到。
 
 [!code-azurepowershell-interactive[main](../../../powershell_scripts/virtual-network/virtual-network-multi-tier-application/virtual-network-multi-tier-application.ps1  "Virtual network for multi-tier application")]
 
@@ -50,7 +51,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 此指令碼會使用下列命令來建立資源群組、虛擬網路及網路安全性群組。 下表中的每個命令都會連結至命令特定的文件：
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 建立用來存放所有資源的資源群組。 |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 建立 Azure 虛擬網路和前端子網路。 |

@@ -2,23 +2,23 @@
 title: Azure Active Directory 應用程式 Proxy 與 Tableau | Microsoft Docs
 description: 了解如何使用 Azure Active Directory (Azure AD) 應用程式 Proxy 提供對 Tableau 部署的遠端存取。
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/20/2018
-ms.author: celested
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5d80381815524658d91067ee880eba47c394058
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6df0a0bf21f4be824738d86ac6bdb3c75c9c3564
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60292889"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764497"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory 應用程式 Proxy 與 Tableau 
 
@@ -50,27 +50,27 @@ Azure Active Directory 應用程式 Proxy 和 Tableau 已互相合作，可確�
 **發佈應用程式**： 
 
 
-1. 登入[Azure 入口網站](https://portal.azure.com)身為應用程式系統管理員。 
+1. 以應用程式系統管理員身分登入[Azure 入口網站](https://portal.azure.com)。 
 
-2. 選取 [Azure Active Directory] > [企業應用程式]。 
+2. 選取 [Azure Active Directory] > [企業應用程式]****。 
 
-3. 在刀鋒視窗頂端選取 [新增]。 
+3. 在刀鋒視窗頂端選取 [新增]****。 
 
 4. 選取**內部部署應用程式**。 
 
 5. 使用新應用程式的相關資訊填寫必要的欄位。 使用下列指導方針設定︰ 
 
-    - **內部 URL**：此應用程式應該具有就是 Tableau URL 本身的內部 URL。 例如： `https://adventure-works.tableau.com`。 
+    - **內部 URL**：此應用程式需含有即為真正 Tableau URL 的內部 URL。 例如： `https://adventure-works.tableau.com` 。 
 
-    - **預先驗證方法**：Azure Active Directory (建議使用但非必要)。 
+    - **預先驗證方法**︰Azure Active Directory (建議使用，但非必要)。 
 
-6. 在刀鋒視窗頂端選取 [新增]。 已新增您的應用程式，快速入門功能表隨即開啟。 
+6. 在刀鋒視窗頂端選取 [新增]****。 已新增您的應用程式，快速入門功能表隨即開啟。 
 
-7. 在 [快速啟動] 功能表中，選取 [指派測試使用者]，並將至少一個使用者新增至應用程式。 請確定此測試帳戶可存取內部部署應用程式。 
+7. 在 [快速啟動] 功能表中，選取 [指派測試使用者]****，並將至少一個使用者新增至應用程式。 請確定此測試帳戶可存取內部部署應用程式。 
 
 8. 選取**指派**以儲存測試使用者指派。 
 
-9. (選擇性) 在應用程式管理頁面上，選取 [單一登入]。 在下拉式功能表中選擇 [整合式 Windows 驗證]，然後根據您的 Tableau 設定填妥必要欄位。 選取 [ **儲存**]。 
+9. (選擇性) 在應用程式管理頁面上，選取 [單一登入]****。 在下拉式功能表中選擇 [整合式 Windows 驗證]****，然後根據您的 Tableau 設定填妥必要欄位。 選取 [儲存]。 
 
  
 

@@ -1,17 +1,17 @@
 ---
-title: 在適用於 MariaDB 的 Azure 資料庫中備份與還原
+title: 備份與還原-適用於 MariaDB 的 Azure 資料庫
 description: 了解自動備份及還原您適用於 MariaDB 的 Azure 資料庫伺服器。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: d6141c3184c8915c36f22d010db39aef2460dd1c
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.date: 3/27/2020
+ms.openlocfilehash: c4d5a9ca85237bde1277904a478a0b8828fc2b08
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "60483046"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80369230"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>在適用於 MariaDB 的 Azure 資料庫中備份與還原
 
@@ -20,6 +20,8 @@ ms.locfileid: "60483046"
 ## <a name="backups"></a>備份
 
 適用於 MariaDB 的 Azure 資料庫採用完整、差異及交易記錄備份。 在您設定的備份保留期限內，這些備份可讓您將伺服器還原至任何時間點。 預設的備份保留期限是七天。 可選擇設定的期限最多為 35 天。 所有備份皆會使用 AES 256 位元加密進行加密。
+
+這些備份檔案不是由使用者公開，而且無法匯出。 這些備份只能用於適用於 MariaDB 的 Azure 資料庫中的還原作業。 您可以使用[mysqldump](howto-migrate-dump-restore.md)來複製資料庫。
 
 ### <a name="backup-frequency"></a>備份頻率
 
@@ -40,21 +42,21 @@ ms.locfileid: "60483046"
 
 如需備份儲存體成本的詳細資訊，請前往 [MariaDB 定價頁面](https://azure.microsoft.com/pricing/details/mariadb/)。
 
-## <a name="restore"></a>Restore
+## <a name="restore"></a>還原
 
-在適用於 MariaDB 的 Azure 資料庫中，執行還原會從原始伺服器的備份中建立新伺服器。
+在適用於 MariaDB 的 Azure 資料庫中，執行還原會從源伺服器的備份建立新的伺服器，並還原伺服器中包含的所有資料庫。
 
 有兩種類型的還原可使用：
 
-- **時間點還原**可搭配任一備份備援選項使用，並在您原始伺服器所在區域中建立新的伺服器。
-- **異地還原**只能您將伺服器設定為使用異地備援儲存體時使用，這可讓您將伺服器還原至不同的區域。
+- **時間點還原**適用于備份重複選項，並使用完整和交易記錄備份的組合，在與源伺服器相同的區域中建立新的伺服器。
+- 只有當您將伺服器設定為異地多餘儲存體，而且它可讓您將伺服器還原至使用所建立之最新備份的不同區域時，才可使用**異地還原**。
 
 預估的復原時間取決於數個因素，包括資料庫大小、交易記錄大小、網路頻寬，以及在相同區域中同時進行復原的資料庫總數。 復原時間通常不到 12 小時。
 
 > [!IMPORTANT]
 > 已刪除的伺服器**無法**還原。 如果您刪除伺服器，所有屬於該伺服器的資料庫也會一併刪除，且無法復原。若要在部署後避免伺服器資源遭到意外刪除或非預期的變更，系統管理員可以利用[管理鎖定](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)。
 
-### <a name="point-in-time-restore"></a>還原時間點
+### <a name="point-in-time-restore"></a>時間點還原
 
 與備份備援選項無關，您可以在備份保留期限內地任何時間點執行還原。 新伺服器會建立在與原始伺服器相同的 Azure 區域中。 其使用原始伺服器的組態來建立，包含定價層、計算世代、虛擬核心數目、儲存體大小、備份保留期限，以及備份備援選項。
 
@@ -64,7 +66,7 @@ ms.locfileid: "60483046"
 
 ### <a name="geo-restore"></a>異地還原
 
-如果您已將伺服器設定為使用異地備援備份，您可以將伺服器還原到另一個可使用服務的 Azure 區域中。 當您的伺服器因為裝載伺服器區域中的事件而無法使用時，異地還原就是預設的復原選項。 如果區域中的大規模意外導致您無法使用資料庫應用程式，則您可以從異地備援備份，將伺服器還原到任何其他區域中的伺服器。 在建立備份及將它複寫至不同區域之間會有延遲。 此延遲可能最長達一小時，因此當發生災害時，最多可能會遺失最長達一小時的資料。
+如果您已將伺服器設定為使用異地備援備份，您可以將伺服器還原到另一個可使用服務的 Azure 區域中。 當您的伺服器因為裝載伺服器區域中的事件而無法使用時，異地還原就是預設的復原選項。 如果區域中的大規模意外導致您無法使用資料庫應用程式，則您可以從異地備援備份，將伺服器還原到任何其他區域中的伺服器。 異地還原會利用伺服器的最新備份。 在建立備份及將它複寫至不同區域之間會有延遲。 此延遲可能最長達一小時，因此當發生災害時，最多可能會遺失最長達一小時的資料。
 
 在異地還原期間，可以進行變更的伺服器設定包括計算世代、vCore、備份保留期間及備份備援選項。 異地還原期間不支援變更定價層 (基本、一般，或記憶體最佳化) 或儲存體大小。
 
@@ -73,14 +75,12 @@ ms.locfileid: "60483046"
 從其中任何一種復原機制還原之後，您應執行下列工作，讓您的使用者和應用程式回復正常執行狀態︰
 
 - 如果新伺服器就會取代原始伺服器，則將用戶端和用戶端應用程式重新導向至新伺服器
-- 確定有適當的伺服器層級防火牆規則供使用者連線
+- 請確定已備妥適當的 VNet 規則供使用者連接。 這些規則不會從源伺服器複製。
 - 確定有適當的登入和資料庫層級權限
 - 依適當情況設定警示
 
 ## <a name="next-steps"></a>後續步驟
 
 - 若要深入了解商務持續性，請參閱 [商務持續性概觀](concepts-business-continuity.md)。
-- 若要使用 Azure 入口網站還原至某個時間點，請參閱 [使用 Azure 入口網站將資料庫還原至時間點](howto-restore-server-portal.md)。
- 
-<!--
-- To restore to a point in time using Azure CLI, see [restore database to a point in time using CLI](howto-restore-server-cli.md).-->
+- 若要使用 Azure 入口網站還原至某個時間點，請參閱 [使用 Azure 入口網站將伺服器還原至時間點](howto-restore-server-portal.md)。
+- 若要使用 Azure CLI 還原至某個時間點，請參閱 [使用 CLI 將伺服器還原至某個時間點](howto-restore-server-cli.md)。

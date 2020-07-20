@@ -1,78 +1,109 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Site Recovery 文件
+### YamlMime:Landing
+title: Azure Site Recovery 文件
+summary: 使用 Azure Site Recovery 進行內部部署工作負載和 Azure VM 的災害復原。
 metadata:
-  title: Azure Site Recovery 文件 - 教學課程和 API 參考 | Microsoft Docs
-  meta.description: Learn how to set up cloud disaster recovery and business continuity for physical servers and virtual machines by deploying and managing replication.
-  services: site-recovery
-  author: czeumault
-  manager: carolz
+  title: Azure Site Recovery 文件
+  description: 為內部部署工作負載和 Azure VM 設定災害復原至 Azure。
   ms.service: site-recovery
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 11/27/2018
-  ms.author: carolz
-abstract:
-  description: Azure Site Recovery 可協調和管理 Azure VM 以及內部部署 VM 和實體伺服器的災害復原。 了解如何透過我們的快速入門及教學課程來複寫、容錯移轉和容錯回復。
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 快速設定 Azure VM 的災害復原
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/site-recovery/media/index/portal.svg
-            text: Azure 入口網站
-            href: /azure/site-recovery/azure-to-azure-quickstart
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何設定 VM 和實體伺服器的災害復原。
-      - type: text
-        html: <h3>Azure 至 Azure</h3>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="azure-to-azure-tutorial-enable-replication">設定災害復原</a>
-          - html: <a href="azure-to-azure-tutorial-dr-drill">執行災害復原演練</a>
-          - html: <a href="azure-to-azure-tutorial-failover-failback">執行容錯移轉和容錯回復</a>
-      - type: text
-        html: <h3>VMware</h3>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-prepare-azure">準備 Azure</a>
-          - html: <a href="tutorial-prepare-on-premises-vmware">準備內部部署 VMware</a>
-          - html: <a href="tutorial-vmware-to-azure">設定災害復原</a>
-          - html: <a href="tutorial-dr-drill-azure">執行災害復原演練</a>
-          - html: <a href="vmware-azure-tutorial-failover-failback">執行容錯移轉和容錯回復</a>
-      - type: text
-        html: <h3>Hyper-V</h3>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-prepare-azure">準備 Azure</a>
-          - html: <a href="tutorial-prepare-on-premises-hyper-v">準備內部部署 Hyper-V</a>
-          - html: <a href="tutorial-hyper-v-to-azure">設定適用於 Hyper-V 虛擬機器的災害復原</a>
-          - html: <a href="tutorial-hyper-v-vmm-to-azure">安裝 System Center VMM 所管理的適用於 Hyper-V 虛擬機器的災害復原</a>
-          - html: <a href="tutorial-dr-drill-azure">執行災害復原演練</a>
-          - html: <a href="tutorial-hyper-v-to-azure-failover-failback">執行容錯移轉和容錯回復</a>
-      - type: text
-        html: <h3>移轉至 Azure</h3>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-prepare-azure">準備 Azure</a>
-          - html: <a href="tutorial-migrate-on-premises-to-azure">將內部部署機器</a>或 <a href="tutorial-migrate-aws-to-azure">AWS 執行個體移轉至 Azure</a>
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令列
-            html: <p><a href="/powershell/module/az.recoveryservices/">Azure PowerShell</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/site-recovery/">REST API 參考</a></p>
+  ms.collection: collection
+  author: rayne-wiselman
+  ms.author: raynew
+  ms.date: 11/19/2019
+  ms.openlocfilehash: 009f905e097f434819953b63446e64e3ba3d5efa
+  ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 07/08/2020
+  ms.locfileid: "86135622"
+landingContent:
+- title: 關於 Site Recovery
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Site Recovery？
+      url: ./site-recovery-overview.md
+    - text: Site Recovery 最新功能
+      url: ./site-recovery-whats-new.md
+- title: Azure VM 適用的災害復原
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 試用 Azure VM 適用的災害復原
+      url: ./azure-to-azure-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Azure VM 適用的災害復原
+      url: ./azure-to-azure-tutorial-enable-replication.md
+    - text: 將 Azure VM 移動到另一個區域
+      url: ./azure-to-azure-tutorial-migrate.md
+  - linkListType: learn
+    links:
+    - text: Azure VM 災害復原架構
+      url: ./azure-to-azure-architecture.md
+    - text: Azure 至 Azure 支援矩陣
+      url: ./azure-to-azure-support-matrix.md
+    - text: 常見問題
+      url: ./azure-to-azure-common-questions.md
+    - text: 關於移動 Azure VM
+      url: ./azure-to-azure-move-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure 虛擬機器災害復原網路功能
+      url: ./azure-to-azure-about-networking.md
+    - text: 移轉到 Azure 之後的災害復原
+      url: ./azure-to-azure-replicate-after-migration.md
+- title: 內部部署機器的災害復原
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: VMware VM 的災害復原
+      url: ./tutorial-prepare-azure.md
+    - text: Hyper-V VM 的災害復原
+      url: ./tutorial-prepare-azure-for-hyperv.md
+    - text: 實體伺服器的災害復原
+      url: ./physical-azure-disaster-recovery.md
+  - linkListType: deploy
+    links:
+    - text: VMware 支援矩陣
+      url: ./vmware-physical-azure-support-matrix.md
+    - text: Hyper-V 支援矩陣
+      url: ./hyper-v-azure-support-matrix.md
+  - linkListType: learn
+    links:
+    - text: VMware 災害復原架構
+      url: ./vmware-azure-architecture.md
+    - text: VMware 災害復原概觀
+      url: ./vmware-azure-about-disaster-recovery.md
+    - text: VMware 災害復原的常見問題
+      url: ./vmware-azure-common-questions.md
+    - text: Hyper-V 災害復原架構
+      url: ./hyper-v-azure-architecture.md
+  - linkListType: how-to-guide
+    links:
+    - text: 大規模 VMware 災害復原
+      url: ./vmware-physical-large-deployment.md
+    - text: 規劃 VMware 容量
+      url: ./site-recovery-plan-capacity-vmware.md
+    - text: 規劃 Hyper-V 容量
+      url: ./hyper-v-deployment-planner-overview.md
+- title: 管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 管理 Site Recovery 更新
+      url: service-updates-how-to.md
+    - text: 監視 Site Recovery
+      url: site-recovery-monitor-and-troubleshoot.md
+    - text: 透過 Azure 監視器記錄監視 Site Recovery
+      url: monitor-log-analytics.md
+- title: 積極參與
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 要求服務功能
+      url: https://feedback.azure.com/forums/256299-site-recovery
+    - text: 詢問 Microsoft 問與答頁面
+      url: /answers/topics/azure-site-recovery.html
+    - text: Azure Tech Community
+      url: https://techcommunity.microsoft.com/t5/Azure/ct-p/Azure

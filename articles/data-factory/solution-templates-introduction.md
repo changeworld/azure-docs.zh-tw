@@ -1,24 +1,26 @@
 ---
-title: Azure Data Factory 的範本概觀 | Microsoft Docs
+title: 範本的概觀
 description: 了解如何使用預先定義的範本來快速開始使用 Azure Data Factory。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.author: daperlov
+author: djpmsft
+manager: anandsub
+ms.custom: seo-lt-2019
 ms.date: 01/04/2019
-author: gauravmalhot
-ms.author: gamal
-manager: craigg
-ms.openlocfilehash: 4bd38991b2452bdda65a7647f844dcc17fdfb125
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b5e4512030431b6d2e5d0f849e82a281c882b177
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60786909"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82628941"
 ---
 # <a name="templates"></a>範本
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 範本為預先定義的 Azure Data Factory 管線，可讓您迅速開始使用 Data Factory。 範本很適合在您不熟悉 Data Factory 且想要快速開始使用的情況下使用。 這些範本會減少建置資料整合專案的開發時間，並進一步改善開發人員生產力。
 
@@ -26,11 +28,11 @@ ms.locfileid: "60786909"
 
 您可以透過下列兩種方法從範本開始建立 Data Factory 管線：
 
-1.  選取 [概觀] 頁面上的 [從範本建立管線] 來開啟 [範本資源庫]。
+1.  選取 [概觀] 頁面上的 [從範本建立管線]**** 來開啟 [範本資源庫]。
 
     ![從 [概觀] 頁面開啟 [範本資源庫]](media/solution-templates-introduction/templates-intro-image1.png)
 
-1.  在資源總管中的 [撰寫] 索引標籤上，選取 **+**，然後選取 [來自範本的管線] 以開啟 [範本資源庫]。
+1.  在資源總管的 [作者] 索引標籤上，依序選取 [] **+** 和 [**來自範本的管線**] 以開啟範本庫。
 
     ![從 [撰寫] 索引標籤開啟 [範本資源庫]](media/solution-templates-introduction/templates-intro-image2.png)
 
@@ -40,21 +42,23 @@ ms.locfileid: "60786909"
 
 ### <a name="out-of-the-box-data-factory-templates"></a>立即可用的 Data Factory 範本
 
-Data Factory 使用 Azure Resource Manager 範本來儲存 Data Factory 管線範本。 您可以看到所有 Resource Manager 範本，以及用來利用方塊 Data Factory 範本中中的資訊清單檔案[官方 Azure 資料處理站 GitHub 存放庫](https://github.com/Azure/Azure-DataFactory/tree/master/templates)。 由 Microsoft 所提供的預先定義範本包含 (但不限於) 下列項目：
+Data Factory 使用 Azure Resource Manager 範本來儲存 Data Factory 管線範本。 在[官方的 Azure Data Factory GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/templates)存放庫中，您可以看到所有 Resource Manager 範本，以及用於現成可用 Data Factory 範本的資訊清單檔案。 由 Microsoft 所提供的預先定義範本包含 (但不限於) 下列項目：
 
 -   複製範本：
 
     -   [從資料庫進行大量複製](solution-template-bulk-copy-with-control-table.md)
     
-    -   [將新的檔案，由 LastModifiedDate 複製](solution-template-copy-new-files-lastmodifieddate.md)
+    -   [依 LastModifiedDate 複製新檔案](solution-template-copy-new-files-lastmodifieddate.md)
 
     -   [在檔案型存放區之間複製多個檔案容器](solution-template-copy-files-multiple-containers.md)
 
-    -   [從資料庫進行差異複製](solution-template-delta-copy-with-control-table.md)
+    -   [移動檔案](solution-template-move-files.md)
 
-    -   從 \<來源\> 複製到 \<目的地\>
+    -   [資料庫中的差異複本](solution-template-delta-copy-with-control-table.md)
 
-        -   從 Amazon S3 複製到 Azure Data Lake Store Gen 2
+    -   從複製 \<source\> 到\<destination\>
+
+        -   [從 Amazon S3 複製到 Azure Data Lake Store Gen 2](solution-template-migration-s3-azure.md)
 
         -   從 Google Big Query 複製到 Azure Data Lake Store Gen 2
 
@@ -78,11 +82,11 @@ Data Factory 使用 Azure Resource Manager 範本來儲存 Data Factory 管線�
 
 ### <a name="my-templates"></a>我的範本
 
-您也可以選取 [管線] 索引標籤上的 [儲存為範本] 來將管線儲存為範本。
+您也可以選取 [管線] 索引標籤上的 [儲存為範本]**** 來將管線儲存為範本。
 
 ![選取管線作為範本](media/solution-templates-introduction/templates-intro-image4.png)
 
-您可以在 [範本資源庫] 的 [我的範本] 區段檢視儲存為範本的管線。 您也可以在資源總管中的 [範本] 區段中看見它們。
+您可以在 [範本資源庫] 的 [我的範本]**** 區段檢視儲存為範本的管線。 您也可以在資源總管中的 [範本]**** 區段中看見它們。
 
 ![我的範本](media/solution-templates-introduction/templates-intro-image5.png)
 

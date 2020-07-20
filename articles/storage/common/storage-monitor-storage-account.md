@@ -1,29 +1,32 @@
 ---
-title: 如何監視 Azure 儲存體帳戶 | Microsoft Docs
+title: 如何監視 Azure 入口網站中的 Azure 儲存體帳戶 | Microsoft Docs
 description: 了解如何使用 Azure 入口網站來監視 Azure 中的儲存體帳戶。
-services: storage
 author: normesta
 ms.service: storage
-ms.topic: article
-ms.date: 07/31/2018
+ms.topic: conceptual
+ms.date: 01/09/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 5a28d69ae5ba9f3b7eeb28b6824ad9a458832bb3
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+ms.custom: monitoring
+ms.openlocfilehash: 6f53d5ec2d73c9edbb7e24c24107b2a6d6deb167
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153623"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684670"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>在 Azure 入口網站中監視儲存體帳戶
 
-[Azure 儲存體分析](storage-analytics.md)會提供所有儲存體服務的計量以及 Blob、佇列和資料表的記錄。 您可以使用 [Azure 入口網站](https://portal.azure.com)設定要為帳戶記錄哪些計量和記錄，並設定可利用視覺方式呈現計量資料的圖表。
+[Azure 儲存體分析](storage-analytics.md)會提供所有儲存體服務的計量以及 Blob、佇列和資料表的記錄。 您可以使用 [Azure 入口網站](https://portal.azure.com)設定要為帳戶記錄哪些計量和記錄，並設定可利用視覺方式呈現計量資料的圖表。 
+
+建議您檢閱[適用於儲存體的 Azure 監視器](../../azure-monitor/insights/storage-insights-overview.md) (預覽)。 其是 Azure 監視器的一項功能，藉由統一檢視 Azure 儲存體服務效能、容量和可用性，提供 Azure 儲存體帳戶的全面監視。 您不需要啟用或設定任何項目，而且可以立即從預先定義的互動式圖表和其他包含的視覺效果中檢視這些計量。
 
 > [!NOTE]
 > 在 Azure 入口網站中查看監視資料會衍生相關成本。 如需詳細資訊，請參閱[儲存體分析](storage-analytics.md)。
 >
 > Azure 檔案服務目前支援儲存體分析計量，但還不支援記錄。
+>
+> Premium 效能區塊 Blob 儲存體帳戶不支援儲存體分析計量，但支援記錄。 您可以透過 REST API 或用戶端程式庫以程式設計的方式啟用記錄。 如果您想要使用進階效能 Blob 儲存體帳戶來檢視計量，請考慮使用 [Azure 監視器中 Azure 儲存體計量](storage-metrics-in-azure-monitor.md)。
 >
 > 如需使用儲存體分析和其他工具來識別、診斷及疑難排解 Azure 儲存體相關問題的深入指南，請參閱 [監視、診斷及疑難排解 Microsoft Azure 儲存體](storage-monitoring-diagnosing-troubleshooting.md)。
 >
@@ -39,10 +42,10 @@ ms.locfileid: "65153623"
 
     ![MonitoringOptions](./media/storage-monitor-storage-account/storage-enable-metrics-01.png)
 
-   若要設定資料保留原則，請移動 [保留期 (天)] 滑桿，或輸入要保留資料的天數，範圍從 1 到 365 天。 新儲存體帳戶的預設值是 7 天。 如果不需要设置保留策略，请输入零。 如果沒有保留原則，您可以決定是否刪除監視資料。
+   若要設定資料保留原則，請移動 [保留期 (天)] 滑桿，或輸入要保留資料的天數，範圍從 1 到 365 天。 新儲存體帳戶的預設值是 7 天。 如果不想設定保留原則，則請輸入零。 如果沒有保留原則，您可以決定是否刪除監視資料。
 
    > [!WARNING]
-   > 若您以手動方式刪除計量資料，將需要付費。 過時的分析資料 (存在時間超過保留原則的資料) 則會由系統刪除，不必付費。 建議您根據要將帳戶的儲存體分析資料保留多久來設定保留原則。 有关详细信息，请参阅[按存储指标计费](storage-analytics-metrics.md#billing-on-storage-metrics)。
+   > 若您以手動方式刪除計量資料，將需要付費。 過時的分析資料 (存在時間超過保留原則的資料) 則會由系統刪除，不必付費。 建議您根據要將帳戶的儲存體分析資料保留多久來設定保留原則。 如需詳細資訊，請參閱[儲存體計量的計量](storage-analytics-metrics.md#billing-on-storage-metrics)。
    >
 
 1. 監視組態完成時，選取 [儲存]。
@@ -52,7 +55,7 @@ ms.locfileid: "65153623"
 您可以將 [狀態] 設定為 [關閉] 來停用計量收集和記錄。
 
 > [!NOTE]
-> Azure 儲存體使用[表格儲存體](storage-introduction.md#table-storage)來儲存儲存體帳戶的計量，並且會將計量以資料表形式儲存在帳戶中。 如需詳細資訊，請參閱： [度量的儲存方式](storage-analytics-metrics.md#how-metrics-are-stored)。
+> Azure 儲存體使用[表格儲存體](storage-introduction.md#table-storage)來儲存儲存體帳戶的計量，並且會將計量以資料表形式儲存在帳戶中。 如需詳細資訊，請參閱。 [度量的儲存方式](storage-analytics-metrics.md#how-metrics-are-stored)。
 >
 
 ## <a name="customize-metrics-charts"></a>自訂計量圖表
@@ -128,7 +131,7 @@ ms.locfileid: "65153623"
 >
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，選取 [儲存體帳戶]，然後選取儲存體帳戶名稱以開啟 [儲存體帳戶] 刀鋒視窗。
-1. 在功能表刀鋒視窗的 [監視] 區段中選取 [診斷]。
+1. 在功能表刀鋒視窗的 [監視 (傳統)] 區段中選取 [診斷設定 (傳統)]。
 
     ![Azure 入口網站中 [監視] 底下的 [診斷] 功能表項目。](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
 
@@ -139,8 +142,8 @@ ms.locfileid: "65153623"
 
 診斷記錄會儲存在儲存體帳戶中名為 *$logs* 的 Blob 容器內。 若要檢視記錄資料，您可以使用 [Microsoft 儲存體總管](https://storageexplorer.com)之類的儲存體總管，或使用儲存體用戶端程式庫或 PowerShell 以程式設計方式進行檢視。
 
-有关如何访问 $logs 容器的信息，请参阅[存储分析日志记录](storage-analytics-logging.md)。
+如需存取 $logs 容器的詳細資訊，請參閱[儲存體分析記錄](storage-analytics-logging.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 了解有关存储分析的 [指标、日志记录和计费](storage-analytics.md) 的详细信息。
+* 尋找更多關於儲存體分析之[計量、記錄和帳單](storage-analytics.md)的詳細資料。

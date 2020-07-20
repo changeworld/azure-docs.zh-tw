@@ -1,26 +1,18 @@
 ---
-title: Azure Notebooks 概觀
-description: 使用不需要安裝或設定的免費 Azure Notebooks 服務，在雲端中執行 Jupyter 筆記本。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: douge
-ms.assetid: 9cea5a8e-c52d-4bdc-9e4a-cecdc1ad02c1
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Azure Notebooks 預覽概觀
+description: 使用不需要安裝或設定的免費 Azure Notebooks 預覽服務，在雲端中執行 Jupyter Notebook。
 ms.topic: overview
 ms.date: 04/05/2019
-ms.author: kraigb
-ms.openlocfilehash: 4840a9839fe1f2a31470d4a67b3755b82077fd90
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d229e48e5c49a9a672c533fb24231e9329e524c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280098"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85831398"
 ---
-# <a name="overview-of-azure-notebooks"></a>Azure Notebooks 概觀
+# <a name="overview-of-azure-notebooks-preview"></a>Azure Notebooks 預覽概觀
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Azure Notebooks 是免費的裝載服務，無需任何安裝程序，就能用來在雲端中開發和執行 Jupyter Notebooks。 [Jupyter](https://jupyter.org/) (前稱 IPython) 是開放原始碼專案，可輕鬆將 Markdown 文字、可執行程式碼、持續性資料、圖形以及視覺效果統整至名為「筆記本」(影像由 jupyter.org 提供) 的單一且可分享的畫布上：
 
@@ -119,4 +111,4 @@ Azure Notebooks 已預先設定下列 Jupyter 擴充功能：
   - [放映投影片](present-jupyter-notebooks-slideshow.md)
   - [使用資料檔案](work-with-project-data-files.md)
   - [存取資料資源](access-data-resources-jupyter-notebooks.md)
-  - [使用 Azure 機器學習服務](use-machine-learning-services-jupyter-notebooks.md)
+  - [使用 Azure Machine Learning](use-machine-learning-services-jupyter-notebooks.md)

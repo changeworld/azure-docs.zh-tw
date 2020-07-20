@@ -1,28 +1,19 @@
 ---
-title: 使用 cloud-init 在 Azure 上的 Linux 虛擬機器中執行 Bash 指令碼 | Microsoft Docs
+title: 使用雲端 init 在 Azure 上的 Linux VM 中執行 bash 腳本
 description: 如何透過 Azure CLI 在建立期間使用 cloud-init 在 Linux 虛擬機器中執行 Bash 指令碼
-services: virtual-machines-linux
-documentationcenter: ''
 author: rickstercdn
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 4f65ebfd2e1ce508c5cf9b224871102a35b55fe0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: e2f19ceb6c7f19ba749b46a3553036587be6a71a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60627838"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "78969222"
 ---
 # <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>使用 cloud-init 在 Azure 上的 Linux 虛擬機器中執行 Bash 指令碼
-本文會示範如何在 Azure 佈建期間，使用 [cloud-init](https://cloudinit.readthedocs.io) 在 Linux 虛擬機器 (VM) 上或虛擬機器擴展集 (VMSS) 上執行現有的 Bash 指令碼。 一旦 Azure 佈建資源之後，這些 cloud-init 指令碼就會在初次開機時執行。 如需深入了解 cloud-init 如何以原生方式在 Azure 和支援的 Linux 散發版本中運作，請參閱 [cloud-init 概觀](using-cloud-init.md)
+本文會示範如何在 Azure 佈建期間，使用 [cloud-init](https://cloudinit.readthedocs.io) 在 Linux 虛擬機器 (VM) 上或虛擬機器擴展集 (VMSS) 上執行現有的 Bash 指令碼。 一旦 Azure 佈建資源，這些 cloud-init 指令碼就會在初次開機時執行。 如需深入了解 cloud-init 如何以原生方式在 Azure 和支援的 Linux 散發版本中運作，請參閱 [cloud-init 概觀](using-cloud-init.md)
 
 ## <a name="run-a-bash-script-with-cloud-init"></a>使用 cloud-init 執行 Bash 指令碼
 透過 cloud-init，您不需要將現有指令碼轉換成雲端組態，cloud-init 接受多種輸入類型，其中一個就是 Bash 指令碼。
@@ -36,7 +27,7 @@ ms.locfileid: "60627838"
 echo "this has been written via cloud-init" + $(date) >> /tmp/myScript.txt
 ```
 
-部署此映像前，您必須使用 [az group create](/cli/azure/group) 命令建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組。
+部署此映像前，您必須使用 [az group create](/cli/azure/group) 命令建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 下列範例會在 eastus** 位置建立名為 myResourceGroup** 的資源群組。
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus

@@ -1,28 +1,27 @@
 ---
-title: 在 Azure Data Factory 中將連結服務參數化 | Microsoft Docs
+title: 在 Azure Data Factory 中將連結服務參數化
 description: 了解如何在 Azure Data Factory 中將連結服務參數化，並在執行階段傳遞動態值。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/18/2018
-author: gauravmalhot
-ms.author: gamal
-manager: craigg
-ms.openlocfilehash: 0239c53f98fba201b6d70e1e2212eea36134e30d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 06/18/2020
+author: djpmsft
+ms.author: daperlov
+manager: anandsub
+ms.openlocfilehash: 85689661e7f0d170cd88edde8985f46285e679c6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60635523"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987788"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>在 Azure Data Factory 中將連結服務參數化
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-您現在可以將連結服務參數化，並在執行階段傳遞動態值。 舉例來說，若要連線至同一部 Azure SQL Database 伺服器上的不同資料庫，您現在可以將連結服務定義中的資料庫名稱參數化。 這讓您無需為 Azure SQL 資料庫伺服器上的每個資料庫各建立一個連結服務。 您也可以將連結服務中的其他屬性參數化，例如 *User name*。
+您現在可以將連結服務參數化，並在執行階段傳遞動態值。 例如，如果您想要連接到相同邏輯 SQL server 上的不同資料庫，您現在可以將連結服務定義中的資料庫名稱參數化。 這可讓您不需要為邏輯 SQL server 上的每個資料庫建立連結服務。 您也可以將連結服務中的其他屬性參數化，例如 *User name*。
 
-您可以使用 Azure 入口網站中的 Data Factory UI 或程式設計介面將連結服務參數化。
+您可以使用 Azure 入口網站或程式設計介面中的 Data Factory UI，將已連結的服務參數化。
 
 > [!TIP]
 > 建議您不要將密碼或秘密參數化。 請改為將所有連接字串儲存在 Azure Key Vault 中，並將 *Secret Name* 參數化。
@@ -33,15 +32,16 @@ ms.locfileid: "60635523"
 
 ## <a name="supported-data-stores"></a>支援的資料存放區
 
-目前，Azure 入口網站的 Data Factory UI 中支援下列資料存放區的連結服務參數化。 至於其他資料存放區，您可以選取 [連線] 索引標籤上的 [程式碼] 圖示，並使用 JSON 編輯器，將連結的服務參數化。
-- Azure SQL Database
-- Azure SQL 資料倉儲
-- SQL Server
-- Oracle
-- Cosmos DB
+目前，下列資料存放區的 Data Factory UI 中支援連結服務參數化。 至於其他資料存放區，您可以選取 [連線]**** 索引標籤上的 [程式碼]**** 圖示，並使用 JSON 編輯器，將連結的服務參數化。
+
 - Amazon Redshift
-- MySQL
+- Azure Cosmos DB （SQL API）
 - 適用於 MySQL 的 Azure 資料庫
+- Azure SQL Database
+- Azure Synapse Analytics (先前為 SQL DW)
+- MySQL
+- Oracle
+- SQL Server
 
 ## <a name="data-factory-ui"></a>Data Factory UI
 
@@ -57,10 +57,7 @@ ms.locfileid: "60635523"
     "properties": {
         "type": "AzureSqlDatabase",
         "typeProperties": {
-            "connectionString": {
-                "value": "Server=tcp:myserver.database.windows.net,1433;Database=@{linkedService().DBName};User ID=user;Password=fake;Trusted_Connection=False;Encrypt=True;Connection Timeout=30",
-                "type": "SecureString"
-            }
+            "connectionString": "Server=tcp:myserver.database.windows.net,1433;Database=@{linkedService().DBName};User ID=user;Password=fake;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
         },
         "connectVia": null,
         "parameters": {

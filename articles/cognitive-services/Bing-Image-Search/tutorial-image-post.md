@@ -1,21 +1,21 @@
 ---
-title: 教學課程：使用 Bing 影像搜尋 API 和 C# 來擷取影像詳細資料
+title: 教學課程：使用 REST API 和 C# 來擷取影像詳細資料 - Bing 影像搜尋
 titleSuffix: Azure Cognitive Services
-description: 使用此文章建立 C# 應用程式，以使用 Bing 影像搜尋 API 來擷取影像詳細資料。
+description: 使用本教學課程來建立 C# 應用程式，以使用 Bing 影像搜尋 API 來擷取影像詳細資料。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 9/14/2018
+ms.date: 12/06/2019
 ms.author: aahi
-ms.openlocfilehash: 567a220ce9adcb3cca9c70cef6a7058a85789eb7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 69c5fc9805bed8fdfde3dd208e7fb66254e82c3c
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861735"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "75383870"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>教學課程：使用 Bing 影像搜尋 API 和 C# 來擷取影像詳細資料
 
@@ -34,15 +34,15 @@ ms.locfileid: "55861735"
 
 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingGetSimilarImages.cs) 上有此範例的原始程式碼。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) 的任意版本。
+* [Visual Studio 2017 或更新版本](https://visualstudio.microsoft.com/downloads/)的任何版本。
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="construct-an-image-details-search-request"></a>建構影像詳細資料搜尋要求
 
-以下是 `/details` 端點，此端點會接受要求主體中含有影像資料的 POST 要求。
+以下是 `/details` 端點，此端點會接受要求主體中含有影像資料的 POST 要求。 您可以使用下方的全域端點，也可以使用 Azure 入口網站中針對您的資源所顯示的[自訂子網域](../../cognitive-services/cognitive-services-custom-subdomains.md)端點。
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details
 ```
@@ -98,7 +98,7 @@ var searchResult = new SearchResult()
 
 ## <a name="use-an-image-insights-token-in-a-request"></a>在要求中使用影像深入解析權杖
 
-若要將傳回的 `ImageInsightsToken` 與 `POST` 的結果搭配使用，您可以將它加入至 `GET` 要求。 例如︰
+若要將傳回的 `ImageInsightsToken` 與 `POST` 的結果搭配使用，您可以將它加入至 `GET` 要求。 例如：
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details?InsightsToken="bcid_A2C4BB81AA2C9EF8E049C5933C546449*ccid_osS7gaos*mid_BF7CC4FC4A882A3C3D56E644685BFF7B8BACEAF2

@@ -1,37 +1,29 @@
 ---
-title: 上傳一般化的 VHD 以在 Azure 中建立多部 VM| Microsoft Docs
+title: 上傳一般化的 VHD 以在 Azure 中建立多部 VM
 description: 將一般化 VHD 上傳至 Azure 儲存體帳戶，建立搭配 Resource Manager 部署模型使用的 Windows VM。
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5b38d022d372e7d35ba2dbeaef90660ce95f73fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom: storage-accounts
+ms.openlocfilehash: fc2e2ff0edc09e613b1da0a503eff9d53ebcf7a9
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60250742"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234614"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>將一般化 VHD 上傳至 Azure，以建立新的 VM。
 
 本主題涵蓋將一般化的非受控磁碟上傳至儲存體帳戶，然後建立使用上傳磁碟的新 VM。 一般化 VHD 映像已使用 Sysprep 移除您所有的個人帳戶資訊。 
 
-如果要基于存储帐户中的专用 VHD 创建 VM，请参阅[从专用 VHD 创建 VM](sa-create-vm-specialized.md)。
+如果您想要從儲存體帳戶中的特殊化 VHD 建立 VM，請參閱[從特殊化 VHD 建立 VM](sa-create-vm-specialized.md)。
 
 本主題涵蓋使用儲存體帳戶的內容，但我們建議客戶改用受控磁碟。 如需如何使用受控磁碟來準備、上傳及建立新 VM 的完整逐步解說，請參閱[使用受控磁碟從上傳至 Azure 的一般化 VHD 建立新的 VM](upload-generalized-managed.md)。
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="prepare-the-vm"></a>準備 VM
 
@@ -41,7 +33,7 @@ ms.locfileid: "60250742"
   * 使用 Sysprep 一般化虛擬機器
 
 ### <a name="generalize-a-windows-virtual-machine-using-sysprep"></a>使用 Sysprep 將 Windows 虛擬機器一般化
-本部分说明如何通用化可用作映像的 Windows 虚拟机。 Sysprep 會移除您的所有個人帳戶資訊以及其他項目，並準備電腦以做為映像。 如需 Sysprep 的詳細資訊，請參閱[如何使用 Sysprep：簡介](https://technet.microsoft.com/library/bb457073.aspx) \(英文\)。
+本節說明如何將 Windows 虛擬機器一般化以做為映像。 Sysprep 會移除您的所有個人帳戶資訊以及其他項目，並準備電腦以做為映像。 如需 Sysprep 的詳細資訊，請參閱[如何使用 Sysprep：簡介](https://technet.microsoft.com/library/bb457073.aspx) \(英文\)。
 
 請確定 Sysprep 支援電腦上執行的伺服器角色。 如需詳細資訊，請參閱 [Sysprep Support for Server Roles (伺服器角色的 Sysprep 支援)](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
@@ -50,8 +42,8 @@ ms.locfileid: "60250742"
 > 
 > 
 
-1. 登录到 Windows 虚拟机。
-2. 以系統管理員身分開啟 [命令提示字元] 視窗。 将目录切换到 **%windir%\system32\sysprep**，然后运行 `sysprep.exe`。
+1. 登入 Windows 虛擬機器。
+2. 以系統管理員身分開啟 [命令提示字元] 視窗。 切換至 **%windir%\system32\sysprep** 目錄，然後執行 `sysprep.exe`。
 3. 在 [系統準備工具] 對話方塊中，選取 [進入系統全新體驗 (OOBE)]，並確認已勾選 [一般化] 核取方塊。
 4. 在 [關機選項] 中選取 [關機]。
 5. 按一下 [確定]。
@@ -60,7 +52,7 @@ ms.locfileid: "60250742"
 6. Sysprep 完成時，會關閉虛擬機器。 
 
 > [!IMPORTANT]
-> 在您完成將 VHD 上傳到 Azure 或從 VM 建立映像之前，請勿重新啟動 VM。 如果 VM 意外重启，请运行 Sysprep 将其再次通用化。
+> 在您完成將 VHD 上傳到 Azure 或從 VM 建立映像之前，請勿重新啟動 VM。 如果 VM 意外重新啟動，請執行 Sysprep 來重新將它一般化。
 > 
 > 
 
@@ -72,7 +64,7 @@ ms.locfileid: "60250742"
 ### <a name="log-in-to-azure"></a>登入 Azure
 如果尚未安裝 Azure PowerShell 1.4 版或更高版本，請參閱 [How to install and configure Azure PowerShell (如何安裝和設定 Azure PowerShell)](/powershell/azure/overview)。
 
-1. 打开 Azure PowerShell 并登录到 Azure 帐户。 這會開啟一個可供您輸入 Azure 帳戶認證的快顯視窗。
+1. 開啟 Azure PowerShell，並登入您的 Azure 帳戶。 這會開啟一個可供您輸入 Azure 帳戶認證的快顯視窗。
    
     ```powershell
     Connect-AzAccount
@@ -88,7 +80,7 @@ ms.locfileid: "60250742"
     Select-AzSubscription -SubscriptionId "<subscriptionID>"
     ```
 
-### <a name="get-the-storage-account"></a>获取存储帐户
+### <a name="get-the-storage-account"></a>取得儲存體帳戶
 您需要一個 Azure 中的儲存體帳戶來裝載上傳的 VM 映像。 您可以使用現有的儲存體帳戶或建立新帳戶。 
 
 若要顯示可用的儲存體帳戶，請輸入︰
@@ -107,7 +99,7 @@ Get-AzStorageAccount
     Get-AzResourceGroup
     ```
 
-    若要在**美國中部**區域建立名為 **myResourceGroup** 的資源群組，請輸入︰
+    若要在**美國西部**區域建立名為 **myResourceGroup** 的資源群組，請輸入︰
 
     ```powershell
     New-AzResourceGroup -Name myResourceGroup -Location "West US"
@@ -146,10 +138,10 @@ LocalFilePath           DestinationUri
 C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
 ```
 
-完成执行此命令可能需要一段时间，具体取决于网络连接速度和 VHD 文件的大小。
+視您的網路連線和 VHD 檔案大小而定，此命令可能需要一些時間才能完成。
 
 
-## <a name="create-a-new-vm"></a>创建新 VM 
+## <a name="create-a-new-vm"></a>建立新的 VM 
 
 您現在可以使用已上傳的 VHD 建立新的 VM。 
 
@@ -182,7 +174,7 @@ $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vh
     ```    
 
 ### <a name="create-a-public-ip-address-and-network-interface"></a>建立公用 IP 位址和網路介面
-若要与虚拟网络中的虚拟机通信，需要一个 [公共 IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) 和网络接口。
+若要能夠與虛擬網路中的虛擬機器進行通訊，您需要 [公用 IP 位址](../../virtual-network/public-ip-addresses.md) 和網路介面。
 
 1. 建立公用 IP 位址。 此範例會建立名為 **myPip** 的公用 IP 位址。 
    
@@ -202,7 +194,7 @@ $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vh
 ### <a name="create-the-network-security-group-and-an-rdp-rule"></a>建立網路安全性群組和 RDP 規則
 若要能夠使用 RDP 登入 VM，您必須有可在連接埠 3389 上允許 RDP 存取的安全性規則。 
 
-此範例會建立名為 **myNsg** 的 NSG，其包含的規則 **myRdpRule** 可允許透過連接埠 3389 的 RDP 流量。 有关 NSG 的详细信息，请参阅 [Opening ports to a VM in Azure using PowerShell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（使用 PowerShell 在 Azure 中打开 VM 端口）。
+此範例會建立名為 **myNsg** 的 NSG，其包含的規則 **myRdpRule** 可允許透過連接埠 3389 的 RDP 流量。 如需 NSG 的詳細資訊，請參閱[使用 PowerShell 對 Azure 中的 VM 開啟連接埠](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 ```powershell
 $nsgName = "myNsg"
@@ -218,14 +210,14 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgName -Location $location
 
 
 ### <a name="create-a-variable-for-the-virtual-network"></a>建立虛擬網路的變數
-为完成的虚拟网络创建变量。 
+為已完成的虛擬網路建立變數。 
 
 ```powershell
 $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
 ### <a name="create-the-vm"></a>建立 VM
-以下 PowerShell 脚本演示如何设置虚拟机配置，并使用上传的 VM 映像作为新安装的源。
+下列 PowerShell 指令碼示範如何設定虛擬機器組態，以及使用已上傳的 VM 映像做為新安裝的來源。
 
 
 

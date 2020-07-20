@@ -5,15 +5,15 @@ services: storage
 author: alkohli
 ms.service: storage
 ms.subservice: blobs
-ms.topic: article
-ms.date: 04/01/2019
+ms.topic: conceptual
+ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 8f106674c1b1ec90477c7c030dc55085fcf10656
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9ffa35e158d34a1fc6945ee2730dcf136d13edb5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60729914"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504332"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>適用於定期資料轉送的解決方案
  
@@ -45,10 +45,10 @@ ms.locfileid: "60729914"
 | 功能                  | AzCopy                                 | Azure 儲存體 REST API       |
 |-----------------------------|----------------------------------------|-------------------------------|
 | 板型規格                 | 來自 Microsoft 的命令列工具       | 客戶對儲存體開發 <br> 使用 Azure 用戶端程式庫的 REST API |
-| 初始的單次設定     | 有限                                | 中度、變動的開發投入量    |
+| 初始的單次設定     | 基本                                | 中度、變動的開發投入量    |
 | 資料格式                 | Azure Blob、Azure 檔案、Azure 資料表 | Azure Blob、Azure 檔案、Azure 資料表   |
 | 效能                 | 已最佳化                      | 開發時最佳化                  |
-| 價格                     | 適用免費資料輸出費用      | 適用免費資料輸出費用        |
+| 定價                     | 適用免費資料輸出費用      | 適用免費資料輸出費用        |
 
 ### <a name="continuous-data-ingestion-over-network"></a>透過網路持續擷取資料
 
@@ -58,15 +58,15 @@ ms.locfileid: "60729914"
 | 硬體                                      | 您的 Hypervisor            | 由 Microsoft 提供    | NA                                                            |
 | 初始設定投入量                          | 低 (<30 分鐘)。            | 中 (~數小時) | 大 (~數天)                                                 |
 | 資料格式                                   | Azure Blob、Azure 檔案   | Azure Blob、Azure 檔案 | [支援 70 種以上的資料存放區和格式化資料連接器](https://docs.microsoft.com/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)|
-| 資料預先處理                           | 否                         | 是，透過 Edge 計算    | 是                                                           |
-| 本機快取<br>(儲存內部部署資料)    | 是                        | 是                      | 否                                                            |
+| 資料預先處理                           | No                         | 是，透過 Edge 計算    | Yes                                                           |
+| 本機快取<br>(儲存內部部署資料)    | Yes                        | 是                      | 否                                                            |
 | 從其他雲端轉送                    | 否                         | 否                       | 是                                                           |
-| 價格                                       | [定價](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [定價](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [定價](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
+| 定價                                       | [定價](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [定價](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [定價](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 AzCopy 轉送資料](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
-- [使用 Azure 儲存體 REST API 轉送資料的詳細資訊](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares)。
+- [使用 AzCopy 傳輸資料](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
+- [使用 Azure 儲存體 REST API 轉送資料的詳細資訊](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)。
 - 了解如何：
     - [使用資料箱閘道傳輸資料](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares)。
     - [先使用 Azure Data Box Edge 轉換資料再傳送至 Azure](https://docs.microsoft.com/azure/databox-online/data-box-edge-deploy-configure-compute)。

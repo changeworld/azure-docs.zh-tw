@@ -1,27 +1,26 @@
 ---
-title: 如何在 Azure 中的 OPC 對應項雲端相依性的部署 |Microsoft Docs
-description: 如何部署 OPC 對應項 Azure 相依性。
+title: 如何在 Azure 中部署 OPC 對應項雲端相依性 |Microsoft Docs
+description: 本文說明如何部署執行本機開發和調試所需的 OPC 對應項 Azure 相依性。
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: conceptual
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: ae9f2b05bfc6ea6315022d04c8d267d916cf282e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 231d1efa02ec80e8ad56a8895d4262d774480111
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61451594"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73824105"
 ---
-# <a name="deploying-dependencies-for-local-development"></a>部署適用於本機開發的相依性
+# <a name="deploying-dependencies-for-local-development"></a>部署本機開發的相依性
 
-這篇文章說明如何部署僅 Azure 平台服務需要執行本機開發和偵錯。   在結束時，您必須部署資源群組，其中包含您用於本機開發及偵錯所需的一切。
+本文說明如何只部署執行本機開發和調試所需的 Azure 平臺服務。   最後，您將會有一個部署的資源群組，其中包含本機開發和偵錯工具所需的所有專案。
 
-## <a name="deploy-azure-platform-services"></a>部署 Azure 平台服務
+## <a name="deploy-azure-platform-services"></a>部署 Azure 平臺服務
 
-1. 請確定您具有 PowerShell 及[Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-1.1.0)安裝擴充功能。  開啟命令提示字元或終端機並執行：
+1. 請確定您已安裝 PowerShell 和[AzureRM powershell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)擴充功能。  開啟命令提示字元或終端機，然後執行：
 
    ```bash
    git clone https://github.com/Azure/azure-iiot-components
@@ -32,27 +31,27 @@ ms.locfileid: "61451594"
    deploy -type local
    ```
 
-2. 遵循提示來指派名稱給您的部署的資源群組。  指令碼會將相依性部署到您 Azure 訂用帳戶，但不是微服務中的資源群組。  指令碼也會在 Azure Active Directory 中註冊應用程式。  這樣才能支援 OAUTH 型驗證。  部署可能需要數分鐘的時間。
+2. 遵循提示，為您的部署指派資源群組的名稱。  腳本只會在您的 Azure 訂用帳戶中部署此資源群組的相依性，而不是微服務。  此腳本也會在 Azure Active Directory 中註冊應用程式。  這是支援 OAUTH 型驗證所需的。  部署可能需要數分鐘的時間。
 
-3. 指令碼完成之後，您可以選取儲存.env 檔案。  .Env 環境檔案是組態檔的所有服務和您想要在您的開發電腦上執行的工具。  
+3. 腳本完成後，您可以選擇儲存 env 檔案。  Env 環境檔案是您想要在開發電腦上執行之所有服務和工具的設定檔。  
 
 ## <a name="troubleshooting-deployment-failures"></a>針對部署失敗進行疑難排解
 
 ### <a name="resource-group-name"></a>資源群組名稱
 
-請確定您使用簡短且簡單的資源群組名稱。  若要取得名稱資源因此它必須符合命名需求的資源也會使用的名稱。  
+請確定您使用簡短且簡單的資源組名。  此名稱也會用來命名資源，因此它必須符合資源命名需求。  
 
-### <a name="azure-active-directory-aad-registration"></a>Azure Active Directory (AAD) 註冊
+### <a name="azure-active-directory-aad-registration"></a>Azure Active Directory （AAD）註冊
 
-部署指令碼會嘗試註冊 Azure Active Directory 中的 AAD 應用程式。  根據您選取的 AAD 租用戶的權限，這可能會失敗。   有 3 個選項：
+部署腳本會嘗試在 Azure Active Directory 中註冊 AAD 應用程式。  視您對所選 AAD 租使用者的許可權而定，這可能會失敗。   選項有三個：
 
-1. 如果您選擇的 AAD 租用戶的租用戶清單時，重新啟動指令碼，然後從清單選擇不同。
-2. 或者，部署私用的 AAD 租用戶，並重新啟動指令碼，然後選取要使用它。
-3. 沒有驗證的情況下繼續。  因為您在本機執行您的微服務，這是可以接受的但無法模擬生產環境。  
+1. 如果您從租使用者清單中選擇了 AAD 租使用者，請重新開機腳本，並從清單中選擇另一個。
+2. 或者，部署私人 AAD 租使用者、重新開機腳本，然後選擇使用它。
+3. 繼續但不進行驗證。  因為您是在本機執行微服務，所以這是可接受的，但不會模擬生產環境。  
 
 ## <a name="next-steps"></a>後續步驟
 
-既然您已成功部署至現有專案的 OPC 對應項服務，以下是建議的下一個步驟：
+現在您已成功將 OPC 對應項服務部署到現有的專案，以下是建議的後續步驟：
 
 > [!div class="nextstepaction"]
-> [深入了解如何部署 OPC 對應項模組](howto-opc-twin-deploy-modules.md)
+> [瞭解如何部署 OPC 對應項模組](howto-opc-twin-deploy-modules.md)

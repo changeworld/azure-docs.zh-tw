@@ -1,25 +1,14 @@
 ---
-title: 在 Linux 上建立適用於 Apache Tomcat 伺服器的 Azure Service Fabric 容器 | Microsoft Docs
+title: 在 Linux 上建立 Apache Tomcat 的容器
 description: 建立 Linux 容器以公開在 Azure Service Fabric 上於 Apache Tomcat 伺服器上執行的應用程式。 以您的應用程式和 Apache Tomcat 伺服器建置 Docker 映像，將該映像推送到容器登錄，建置並部署 Service Fabric 容器應用程式。
-services: service-fabric
-documentationcenter: .net
-author: JimacoMS2
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: NA
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 6/08/2018
-ms.author: v-jamebr
-ms.openlocfilehash: 5ae2ca352c6d3cbe02b659a97fe3147c1a31128f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: pepogors
+ms.openlocfilehash: 1a699f3b35970270a9800162a6d8717682a168ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60947374"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75614412"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>在 Linux 上建立執行 Apache Tomcat 伺服器的 Service Fabric 容器
 Apache Tomcat 是一個熱門且開放原始碼的 Java Servlet 和 Java Server 技術實作。 此文章說明如何搭配 Apache Tomcat 和簡單的 Web 應用程式來建置容器，將該容器部署至執行 Linux 的 Service Fabric 叢集，然後連線至 Web 應用程式。  
@@ -28,7 +17,7 @@ Apache Tomcat 是一個熱門且開放原始碼的 Java Servlet 和 Java Server 
 
 ## <a name="prerequisites"></a>必要條件
 * 執行下列項目的開發電腦︰
-  * [Service Fabric SDK 和工具](service-fabric-get-started-linux.md)。
+  * [SERVICE FABRIC SDK 和工具](service-fabric-get-started-linux.md)。
   * [Docker CE for Linux](https://docs.docker.com/engine/installation/#prior-releases). 
   * [Service Fabric CLI](service-fabric-cli.md)
 
@@ -49,7 +38,7 @@ Apache Tomcat 是一個熱門且開放原始碼的 Java Servlet 和 Java Server 
    cd service-fabric-java-getting-started/container-apache-tomcat-web-server-sample
    ```
 
-1. 以位於 Docker Hub 上的官方 [Tomcat 映像](https://hub.docker.com/_/tomcat/) \(英文\) 和 Tomcat 伺服器範例為基礎建立 Docker 檔案。 在 *service-fabric-java-getting-started/container-apache-tomcat-web-server-sample* 目錄中，建立名為 *Dockerfile* (無副檔名) 的檔案。 將下列內容新增至 Dockerfile 並儲存變更：
+1. 以位於 Docker Hub 上的官方 [Tomcat 映像](https://hub.docker.com/_/tomcat/) \(英文\) 和 Tomcat 伺服器範例為基礎建立 Docker 檔案。 在 *service-fabric-java-getting-started/container-apache-tomcat-web-server-sample* 目錄中，建立名為 *Dockerfile* (無副檔名) 的檔案。 將下列內容新增至 Dockerfile** 並儲存變更：
 
    ```
    FROM library/tomcat
@@ -93,7 +82,7 @@ Apache Tomcat 是一個熱門且開放原始碼的 Java Servlet 和 Java Server 
 
    若要了解其他參數，請參閱 [Docker run 文件](https://docs.docker.com/engine/reference/commandline/run/) \(英文\)。
 
-1. 若要測試容器，請開啟瀏覽器並輸入下列其中一個 URL。 您會看到"Hello World ！"的變數 每個 URL 的歡迎畫面。
+1. 若要測試容器，請開啟瀏覽器並輸入下列其中一個 URL。 您會看到 "Hello World！" 的變體 每個 URL 的歡迎畫面。
 
    - `http://localhost:8080/hello` 
    - `http://localhost:8080/hello/sayhello` 
@@ -111,9 +100,9 @@ Apache Tomcat 是一個熱門且開放原始碼的 Java Servlet 和 Java Server 
 ## <a name="push-the-tomcat-image-to-your-container-registry"></a>將 Tomcat 映像推送至容器登錄
 在您確認 Tomcat 映像已在開發電腦上的容器中執行之後，請將它推送至容器登錄中的存放庫。 此文章使用 Azure Container Registry 來儲存映像，但您可以修改步驟來使用您偏好的其他容器登錄。 本文會假設登錄名稱為 *myregistry*，且完整登錄名稱為 myregistry.azurecr.io。 請針對您的案例變更這些內容。 
 
-1. 使用您的[登錄認證](../container-registry/container-registry-authentication.md)執行 `docker login` 登入容器登錄庫。
+1. 執行 `docker login` ，以使用您的登錄[認證](../container-registry/container-registry-authentication.md)登入您的 container registry。
 
-   下列範例會傳遞 Azure Active Directory [service principal](../active-directory/develop/app-objects-and-service-principals.md) 的識別碼和密碼。 例如，您可能基於自動化案例已指派服務主體到您的登錄庫。 或者，您可以使用登錄使用者名稱和密碼進行登入。
+   下列範例會傳遞 Azure Active Directory [service principal](../active-directory/develop/app-objects-and-service-principals.md) 的識別碼和密碼。 例如，您可能基於自動化案例已指派服務主體到您的登錄庫。 或者，您可以使用登錄使用者名稱和密碼來登入。
 
    ```bash
    docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -141,11 +130,11 @@ Apache Tomcat 是一個熱門且開放原始碼的 Java Servlet 和 Java Server 
    ```
    當系統提示時，輸入下列值：
 
-   * 命名您的應用程式：ServiceFabricTomcat
-   * 應用程式服務的名稱：TomcatService
-   * 輸入映像名稱：提供容器登錄; 中的容器映像的 URL比方說，myregistry.azurecr.io/samples/tomcattest。
-   * 命令：將此項保留空白。 因為此映像已定義工作負載進入點，您不需要明確指定輸入命令 (命令會在容器內執行，這會讓容器在啟動後繼續執行)。
-   * 來賓容器應用程式的執行個體數目：1
+   * Name your application (為應用程式命名)：ServiceFabricTomcat
+   * Name of the application service (應用程式服務的名稱)：TomcatService
+   * Input the Image Name (輸入映像名稱)：提供容器映像在容器登錄中的 URL，例如 myregistry.azurecr.io/samples/tomcattest。
+   * Commands (命令)：將此保留空白。 因為此映像已定義工作負載進入點，您不需要明確指定輸入命令 (命令會在容器內執行，這會讓容器在啟動後繼續執行)。
+   * Number of instances of guest container application (客體容器應用程式的執行個體數目)：1
 
    ![容器的 Service Fabric Yeoman 產生器](./media/service-fabric-get-started-tomcat/yo-generator.png)
 
@@ -162,7 +151,7 @@ Apache Tomcat 是一個熱門且開放原始碼的 Java Servlet 和 Java Server 
    </Resources>
    ```
 
-11. 在應用程式資訊清單 (*ServiceFabricTomcat/ServiceFabricTomcat/ApplicationManifest.xml*) 中，在 **ServiceManifestImport** 標記下方新增下列 XML。 將 **RepositoryCredentials** 標記中的 **AccountName** 和 **Password** 取代為容器登錄的名稱，以及登入它所需的密碼。
+11. 在應用程式資訊清單 (*ServiceFabricTomcat/ServiceFabricTomcat/ApplicationManifest.xml*) 中，在 **ServiceManifestImport** 標記下方新增下列 XML。 以您的容器登錄名稱取代**RepositoryCredentials**標記中的**AccountName**和**密碼**，並將其登入所需的密碼。
 
    ```xml
    <Policies>
@@ -214,12 +203,12 @@ Apache Tomcat 是一個熱門且開放原始碼的 Java Servlet 和 Java Server 
    * 在本機叢集上，請使用 `http://localhost:19080/Explorer` (若使用 Mac OS X 上的 Vagrant，請將 *localhost* 取代為 VM 的私人 IP)。
    * 在安全的 Azure 叢集上，使用 `https://PublicIPorFQDN:19080/Explorer`。 
     
-   展開 [應用程式] 節點，並注意到有一個針對您應用程式類型的項目 (**ServiceFabricTomcatType**)，以及另一個針對該類型第一個執行個體的項目。 應用程式可能需要幾分鐘的時間才能完全部署，請耐心等候。
+   展開 [應用程式]**** 節點，並注意到有一個針對您應用程式類型的項目 (**ServiceFabricTomcatType**)，以及另一個針對該類型第一個執行個體的項目。 應用程式可能需要幾分鐘的時間才能完全部署，請耐心等候。
 
    ![Service Fabric Explorer](./media/service-fabric-get-started-tomcat/service-fabric-explorer.png)
 
 
-1. 若要在 Tomcat 伺服器上存取該應用程式，請開啟瀏覽器視窗並輸入下列任一 URL。 如果您是部署至本機叢集，請為 *PublicIPorFQDN* 使用 *localhost*。 您會看到"Hello World ！"的變數 每個 URL 的歡迎畫面。
+1. 若要在 Tomcat 伺服器上存取該應用程式，請開啟瀏覽器視窗並輸入下列任一 URL。 如果您是部署至本機叢集，請為 *PublicIPorFQDN* 使用 *localhost*。 您會看到 "Hello World！" 的變體 每個 URL 的歡迎畫面。
 
    * http://PublicIPorFQDN:8080/hello  
    * http://PublicIPorFQDN:8080/hello/sayhello

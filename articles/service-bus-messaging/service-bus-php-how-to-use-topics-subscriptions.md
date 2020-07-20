@@ -1,31 +1,21 @@
 ---
-title: 如何將服務匯流排主題搭配 PHP 使用 | Microsoft Docs
-description: 了解如何在 Azure 中搭配使用服務匯流排主題與 PHP。
-services: service-bus-messaging
-documentationcenter: php
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: faaa4bbd-f6ef-42ff-aca7-fc4353976449
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
+title: 如何透過 PHP 使用 Azure 服務匯流排主題
+description: 在本教學課程中，了解如何從 PHP 應用程式使用 Azure 服務匯流排主題和訂用帳戶。
 ms.devlang: PHP
-ms.topic: article
-ms.date: 04/15/2019
-ms.author: aschhab
-ms.openlocfilehash: 1ce9c5ddb08f3e81a0f0050048a8afef24e4c625
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.topic: quickstart
+ms.date: 06/23/2020
+ms.openlocfilehash: f2161d39961cc52bc0f0da509abec3ed6377cc07
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60203701"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341093"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>如何透過 PHP 使用服務匯流排主題和訂用帳戶
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>快速入門：如何透過 PHP 使用服務匯流排主題和訂用帳戶
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-本文示範如何使用服務匯流排主題和訂用帳戶。 這些範例均是以 PHP 撰寫，並使用 [Azure SDK for PHP](../php-download-sdk.md) (英文)。 涵蓋的案例包括：
+本文示範如何使用服務匯流排主題和訂用帳戶。 這些範例均是以 PHP 撰寫，並使用 [Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) (英文)。 涵蓋的案例包括：
 
 - 建立主題和訂用帳戶 
 - 建立訂用帳戶篩選 
@@ -33,15 +23,15 @@ ms.locfileid: "60203701"
 - 從訂用帳戶接收訊息
 - 刪除主題和訂用帳戶
 
-## <a name="prerequisites"></a>必要條件
-1. Azure 訂用帳戶。 若要完成此教學課程，您需要 Azure 帳戶。 您可以啟用您[Visual Studio 或 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或是註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-2. 遵循的步驟[快速入門：使用 Azure 入口網站建立服務匯流排主題和訂用帳戶的主題](service-bus-quickstart-topics-subscriptions-portal.md)來建立服務匯流排**命名空間**並取得**連接字串**。
+## <a name="prerequisites"></a>Prerequisites
+1. Azure 訂用帳戶。 若要完成此教學課程，您需要 Azure 帳戶。 您可以啟用自己的 [Visual Studio 或 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+2. 依照下列快速入門中的步驟操作：[快速入門：使用 Azure 入口網站建立服務匯流排主題和主題的訂用帳戶](service-bus-quickstart-topics-subscriptions-portal.md)，以建立服務匯流排**命名空間**及取得**連接字串**。
 
     > [!NOTE]
-    > 您將建立**主題**並**訂用帳戶**使用主題**PHP**在本快速入門。 
+    > 您將會在本快速入門中使用 **PHP**，建立**主題**和主題的**訂用帳戶**。 
 
 ## <a name="create-a-php-application"></a>建立 PHP 應用程式
-若要建立 PHP 應用程式並使其存取 Azure Blob 服務，唯一要求就是在您的程式碼中參考 [Azure SDK for PHP](../php-download-sdk.md) 中的類別。 您可以使用任何開發工具來建立應用程式，或記事本。
+若要建立 PHP 應用程式並使其存取 Azure Blob 服務，唯一要求就是在您的程式碼中參考 [Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) 中的類別。 您可以使用任何開發工具來建立應用程式，或記事本。
 
 > [!NOTE]
 > 您的 PHP 安裝也必須已安裝並啟用 [OpenSSL 延伸模組](https://php.net/openssl)。
@@ -50,14 +40,30 @@ ms.locfileid: "60203701"
 
 本文說明如何使用可從 PHP 應用程式內本機呼叫的服務功能，或可在 Azure Web 角色、背景工作角色或網站內執行的程式碼中呼叫的服務功能。
 
-## <a name="get-the-azure-client-libraries"></a>获取 Azure 客户端库
-[!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
+## <a name="get-the-azure-client-libraries"></a>取得 Azure 用戶端程式庫
+
+### <a name="install-via-composer"></a>透過編輯器安裝
+1. 在專案的根目錄中建立名為 **composer.json** 的檔案，並新增下列程式碼：
+   
+    ```json
+    {
+      "require": {
+        "microsoft/windowsazure": "*"
+      }
+    }
+    ```
+2. 將 **[composer.phar][composer-phar]** 下載到您的專案根目錄中。
+3. 開啟命令提示字元，在專案根目錄中執行下列命令
+   
+    ```
+    php composer.phar install
+    ```
 
 ## <a name="configure-your-application-to-use-service-bus"></a>設定應用程式以使用服務匯流排
 若要使用服務匯流排 API：
 
 1. 使用 [require_once][require-once] 陳述式來參考自動換片器檔案。
-2. 引用所用的任意类。
+2. 參考任何您可能使用的類別。
 
 下列範例說明如何納入自動換片器檔案及參考 **ServiceBusService** 類別。
 
@@ -67,7 +73,7 @@ ms.locfileid: "60203701"
 > 
 
 ```php
-require_once 'vendor\autoload.php';
+require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 
@@ -85,7 +91,7 @@ Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAcce
 若要建立任何 Azure 服務用戶端，您必須使用 `ServicesBuilder` 類別。 您可以：
 
 * 直接將連接字串傳遞給它。
-* 使用 CloudConfigurationManager (CCM) 检查多个外部源以获取连接字符串：
+* 使用 **CloudConfigurationManager (CCM)** 到多種外部來源檢查連接字串：
   * 預設已支援一種外部來源，即環境變數。
   * 您可以擴充 `ConnectionStringSource` 類別以加入新來源。
 
@@ -132,7 +138,7 @@ catch(ServiceException $e){
 ```
 
 > [!NOTE]
-> 可使用 `ServiceBusRestProxy` 对象上的 `listTopics` 方法检查服务命名空间中是否已经存在一个具有指定名称的主题。
+> 您可以在 `ServiceBusRestProxy` 物件上使用 `listTopics` 方法，檢查服務命名空間內是否已有指定名稱的主題存在。
 > 
 > 
 
@@ -171,7 +177,7 @@ catch(ServiceException $e){
 您也可以設定篩選器，讓您指定傳送至主題的哪些訊息應出現在特定主題訂用帳戶中。 訂用帳戶所支援的最具彈性篩選器類型是實作 SQL92 子集的 [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)。 SQL 篩選器會對發佈至主題之訊息的屬性運作。 如需 SqlFilters 的詳細資訊，請參閱 [SqlFilter.SqlExpression 屬性][sqlfilter]。
 
 > [!NOTE]
-> 訂用帳戶的每個規則可獨立處理傳入的訊息，並將其結果訊息新增至訂用帳戶。 此外，每個新訂用帳戶都有具篩選器的預設 **Rule** 物件，而篩選器會將主題中的所有訊息新增至訂用帳戶。 To receive only messages matching your filter, you must remove the default rule. 可以使用 `ServiceBusRestProxy->deleteRule` 方法删除默认规则。
+> 訂用帳戶的每個規則可獨立處理傳入的訊息，並將其結果訊息新增至訂用帳戶。 此外，每個新訂用帳戶都有具篩選器的預設 **Rule** 物件，而篩選器會將主題中的所有訊息新增至訂用帳戶。 To receive only messages matching your filter, you must remove the default rule. 您可以使用 `ServiceBusRestProxy->deleteRule` 方法以移除預設規則。
 > 
 > 
 
@@ -203,10 +209,10 @@ $ruleInfo->withSqlFilter("MessageNumber <= 3");
 $ruleResult = $serviceBusRestProxy->createRule("mytopic", "LowMessages", $ruleInfo);
 ```
 
-现在，消息发送到 `mytopic` 主题后总是会传送给订阅了 `mysubscription` 订阅的接收方，并且会选择性地传送给订阅了 `HighMessages` 和 `LowMessages` 订阅的接收方（具体取决于消息内容）。
+現在，當訊息傳送至 `mytopic` 主題時，一律會將該訊息傳遞至已訂閱 `mysubscription` 訂用帳戶的接收者，並選擇性地傳遞至已訂閱 `HighMessages` 和 `LowMessages` 訂用帳戶的接收者 (視訊息內容而定)。
 
 ## <a name="send-messages-to-a-topic"></a>傳送訊息至主題
-若要將訊息傳送至服務匯流排主題，應用程式會呼叫 `ServiceBusRestProxy->sendTopicMessage` 方法。 下面的代码演示了如何将消息发送到先前在 `MySBNamespace` 服务命名空间创建的 `mytopic` 主题。
+若要將訊息傳送至服務匯流排主題，應用程式會呼叫 `ServiceBusRestProxy->sendTopicMessage` 方法。 下列程式碼示範如何將訊息傳送至先前在 `MySBNamespace` 服務命名空間中建立的 `mytopic` 主題。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -252,7 +258,7 @@ for($i = 0; $i < 5; $i++){
 }
 ```
 
-服務匯流排主題支援的訊息大小上限：在[標準層](service-bus-premium-messaging.md)中為 256 KB 以及在[進階層](service-bus-premium-messaging.md)中為 1 MB。 標頭 (包含標準和自訂應用程式屬性) 可以容納 64 KB 的大小上限。 主題中所保存的訊息數目沒有限制，但主題所保存的訊息大小總計會有最高限制。 主題大小的這項上限為 5 GB。 如需有關配額的詳細資訊，請參閱[服務匯流排配額][Service Bus quotas]。
+服務匯流排主題支援的訊息大小上限：在[標準層](service-bus-premium-messaging.md)中為 256 KB 以及在[進階層](service-bus-premium-messaging.md)中為 1 MB。 標頭 (包含標準和自訂應用程式屬性) 可以容納 64 KB 的大小上限。 主題中所保存的訊息數目沒有限制，但主題所保存的訊息大小總計會有最高限制。 主題大小的這項上限為 5 GB。 如需有關配額的詳細資訊，請參閱 [服務匯流排配額][Service Bus quotas]。
 
 ## <a name="receive-messages-from-a-subscription"></a>自訂用帳戶接收訊息
 從訂用帳戶接收訊息的最佳方式是使用 `ServiceBusRestProxy->receiveSubscriptionMessage` 方法。 可以兩種不同的模式接收訊息：[*ReceiveAndDelete* 和 *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode)。 **PeekLock** 是預設值。
@@ -302,7 +308,7 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>如何：处理应用程序崩溃和不可读消息
+## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>如何處理應用程式當機與無法讀取的訊息
 服務匯流排提供一種功能，可協助您從應用程式的錯誤或處理訊息的問題中順利復原。 如果接收者應用程式因為某些原因無法處理訊息，它可以在接收訊息上呼叫 `unlockMessage` 方法 (而不是 `deleteMessage` 方法)。 這將導致服務匯流排將佇列中的訊息解除鎖定，讓此訊息可以被相同取用應用程式或其他取用應用程式重新接收。
 
 與在佇列內鎖定訊息相關的還有逾時，如果應用程式無法在鎖定逾時到期之前處理訊息 (例如，如果應用程式當機)，則服務匯流排會自動解除鎖定訊息，並讓訊息可以被重新接收。
@@ -343,6 +349,9 @@ catch(ServiceException $e){
 ```php
 $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");
 ```
+
+> [!NOTE]
+> 您可以使用[服務匯流排總管](https://github.com/paolosalvatori/ServiceBusExplorer/)來管理服務匯流排資源。 服務匯流排總管可讓使用者連線到服務匯流排命名空間，並以簡便的方式管理傳訊實體。 此工具提供進階的功能 (例如匯入/匯出功能) 或測試主題、佇列、訂用帳戶、轉送服務、通知中樞和事件中樞的能力。 
 
 ## <a name="next-steps"></a>後續步驟
 如需詳細資訊，請參閱[佇列、主題和訂用帳戶][Queues, topics, and subscriptions]。

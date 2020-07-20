@@ -1,24 +1,16 @@
 ---
 title: Azure Log Analytics 中的網路效能監視器方案 | Microsoft Docs
 description: 使用網路效能監控中的 ExpressRoute 監視功能，透過 Azure ExpressRoute 監視您分公司與 Azure 之間的端對端連線能力和效能。
-services: log-analytics
-documentationcenter: ''
-author: abshamsft
-manager: carmonm
-editor: ''
-ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
+author: abshamsft
+ms.author: absha
 ms.date: 11/27/2018
-ms.author: abshamsft
-ms.openlocfilehash: d0819b57307fc037b3be6ab04ed9ec6c8720a618
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: 6ac610d7dcf9849b6b439741957684867b9d01aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62110135"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77660745"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute 監視
 
@@ -31,7 +23,7 @@ ms.locfileid: "62110135"
 ![ExpressRoute 監視](media/network-performance-monitor-expressroute/expressroute-intro.png)
 
 ## <a name="configuration"></a>組態 
-若要開啟網路效能監控的組態，請開啟[網路效能監控解決方案](network-performance-monitor.md)，然後選取 [設定]。
+若要開啟網路效能監控的設定，請開啟[網路效能監控解決方案](network-performance-monitor.md)，然後選取 [**設定**]。
 
 ### <a name="configure-network-security-group-rules"></a>設定網路安全性群組規則 
 針對 Azure 中用來透過網路效能監控進行監視的伺服器，設定網路安全性群組 (NSG) 規則，以在網路效能監控用來進行綜合交易的連接埠上允許 TCP 流量。 預設連接部是 8084。 此組態允許安裝在 Azure 虛擬機器上的 Log Analytics 代理程式與內部部署監視代理程式通訊。 
@@ -44,8 +36,8 @@ ms.locfileid: "62110135"
  
 ### <a name="discover-expressroute-peering-connections"></a>探索 ExpressRoute 對等互連的連線 
  
-1. 選取 [ExpressRoute 對等互連] 檢視。
-2. 選取 [立即探索]，以探索在與此 Azure Log Analytics 工作區連結的 Azure 訂用帳戶中，連線到虛擬網路的所有 ExpressRoute 私人對等互連。
+1. 選取 [ExpressRoute 對等互連]**** 檢視。
+2. 選取 [立即探索]****，以探索在與此 Azure Log Analytics 工作區連結的 Azure 訂用帳戶中，連線到虛擬網路的所有 ExpressRoute 私人對等互連。
 
     >[!NOTE]
     > 目前，解決方案只會探索 ExpressRoute 私人對等互連。 
@@ -60,16 +52,16 @@ ms.locfileid: "62110135"
 ### <a name="enable-monitoring-of-the-expressroute-peering-connections"></a>啟用 ExpressRoute 對等互連連線監視 
 
 1. 選取您想要監視的私人對等互連連線。
-2. 在右窗格中，選取 [監視這個對等互連] 核取方塊。 
-3. 如果您要建立此連線的健康情況事件，請選取 [啟用此對等互連的健康狀況監視]。 
+2. 在右窗格中，選取 [監視這個對等互連]**** 核取方塊。 
+3. 如果您要建立此連線的健康情況事件，請選取 [啟用此對等互連的健康狀況監視]****。 
 4. 選擇監視條件。 您可以輸入閾值，以設定健康情況事件產生的自訂閾值。 只要條件值高於為對等互連連線選取的閾值時，就會產生健康情況事件。 
-5. 選取 [新增代理程式] 以選擇您要用來監視此對等互連連線的監視代理程式。 請確定您在連線的兩端都新增代理程式。 您在連線到此對等互連的虛擬網路中需要至少一個代理程式。 您也需要至少一個連線到此對等互連的內部部署代理程式。 
-6. 選取 [儲存] 以儲存組態。 
+5. 選取 [新增代理程式]**** 以選擇您要用來監視此對等互連連線的監視代理程式。 請確定您在連線的兩端都新增代理程式。 您在連線到此對等互連的虛擬網路中需要至少一個代理程式。 您也需要至少一個連線到此對等互連的內部部署代理程式。 
+6. 選取 [**儲存**] 以儲存設定。 
 
    ![ExpressRoute 監視組態](media/network-performance-monitor-expressroute/expressroute-configure-discovery.png)
 
 
-在您啟用規則並選取值和代理程式之後，請等待 30 到 60 分鐘，讓值填入以及讓 [ExpressRoute 監視] 圖格出現。 當您看到監視圖格時，即表示網路效能監控正在監視您的 ExpressRoute 線路和連線資源。 
+在您啟用規則並選取值和代理程式之後，請等待 30 到 60 分鐘，讓值填入以及讓 [ExpressRoute 監視]**** 圖格出現。 當您看到監視圖格時，即表示網路效能監控正在監視您的 ExpressRoute 線路和連線資源。 
 
 >[!NOTE]
 > 在已升級為新查詢語言的工作區上能可靠運作這項功能。
@@ -94,13 +86,13 @@ ms.locfileid: "62110135"
 
 ### <a name="peerings-list"></a>對等互連清單 
 
-選取儀表板上的 [私人對等互連] 圖格，即可顯示透過私人對等互連連線到虛擬網路的所有連線清單。 在這裡，您可以選取某個虛擬網路連線，然後檢視其健全狀態，以及封包遺失、頻寬使用率和延遲的趨勢圖表。 
+選取儀表板上的 [私人對等互連]**** 圖格，即可顯示透過私人對等互連連線到虛擬網路的所有連線清單。 在這裡，您可以選取某個虛擬網路連線，然後檢視其健全狀態，以及封包遺失、頻寬使用率和延遲的趨勢圖表。 
 
 ![ExpressRoute 對等互連](media/network-performance-monitor-expressroute/expressroute-peerings.png) 
 
 ### <a name="circuit-topology"></a>線路拓撲 
 
-若要檢視線路拓撲，請選取 [拓撲] 圖格。 這個動作會將您移至所選線路或對等互連的拓撲檢視。 拓撲圖表會提供網路上每個區段的延遲，而且每個第 3 層躍點都會由一個圖表節點來代表。 選取躍點將會顯示關於該躍點的更多詳細資料。 若要將可見性層級提升到包含內部部署躍點，請移動 [篩選] 底下的滑動軸。 將滑動軸向左或向右移動，以增加或減少拓撲圖表中的躍點數目。 您可以看見每個區段的延遲，這可讓您更快速隔離網路上的高延遲區段。
+若要檢視線路拓撲，請選取 [拓撲]**** 圖格。 這個動作會將您移至所選線路或對等互連的拓撲檢視。 拓撲圖表會提供網路上每個區段的延遲，而且每個第 3 層躍點都會由一個圖表節點來代表。 選取躍點將會顯示關於該躍點的更多詳細資料。 若要將可見性層級提升到包含內部部署躍點，請移動 [篩選]**** 底下的滑動軸。 將滑動軸向左或向右移動，以增加或減少拓撲圖表中的躍點數目。 您可以看見每個區段的延遲，這可讓您更快速隔離網路上的高延遲區段。
 
 ![ExpressRoute 拓撲](media/network-performance-monitor-expressroute/expressroute-topology.png)
 
@@ -114,9 +106,9 @@ ms.locfileid: "62110135"
 
 網路效能監控可協助您診斷幾個線路連線問題。 以下列出一些您可能發現的問題。
 
-您可以查看通知代碼，並透過 **LogAnalytics** 設定其警示。 在 [NPM 診斷] 頁面上，您可以看到每個觸發診斷訊息的描述。
+您可以查看通知代碼，並透過 **LogAnalytics** 設定其警示。 在 [NPM 診斷]**** 頁面上，您可以看到每個觸發診斷訊息的描述。
 
-| 通知代碼 (記錄) | 描述 |
+| 通知代碼 (記錄) | Description |
 | --- | --- |
 | 5501 | 無法周遊通過 ExpressRoute 線路的次要連線 |
 | 5502 | 無法周遊通過 ExpressRoute 線路的主要連線 |
@@ -147,4 +139,4 @@ ms.locfileid: "62110135"
  
 
 ## <a name="next-steps"></a>後續步驟
-[搜尋記錄檔](../../azure-monitor/log-query/log-query-overview.md)以檢視詳細的網路效能資料記錄。
+[搜尋記錄](../../azure-monitor/log-query/log-query-overview.md)以檢視詳細的網路效能資料記錄。

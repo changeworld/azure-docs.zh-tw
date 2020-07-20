@@ -1,26 +1,30 @@
 ---
-title: 在 Azure Data Factory 中執行管線活動 | Microsoft Docs
+title: Azure Data Factory 中執行管線活動
 description: 了解如何使用「執行管線活動」從一個資料處理站管線叫用另一個資料處理站管線。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-ms.openlocfilehash: a0ece499262464bc28f55c37188698a3313e2c04
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4bd667a2302136b5e12d2e4e548c9e8863715621
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60808844"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "81415284"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>在 Azure Data Factory 中執行管線活動
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 執行管線活動可允許資料處理站管線叫用另一個管線。
+
+
 
 ## <a name="syntax"></a>語法
 
@@ -60,12 +64,12 @@ ms.locfileid: "60808844"
 
 ## <a name="type-properties"></a>類型屬性
 
-屬性 | 描述 | 允許的值 | 必要項
+屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-name | 執行管線活動的名稱。 | 字串 | 是
-type | 必須設定為：**ExecutePipeline**。 | 字串 | 是
+NAME | 執行管線活動的名稱。 | String | 是
+type | 必須設為：**ExecutePipeline**。 | String | 是
 管線 | 此管線叫用之相依管線的管線參考。 管線參考物件有兩個屬性：**referenceName** 和 **type**。 referenceName 屬性指定參考管線的名稱。 type 屬性必須設為 PipelineReference。 | PipelineReference | 是
-parameters | 要傳遞至叫用之管線的參數 | 將參數名稱對應到引數值的 JSON 物件 | 否
+參數 | 要傳遞至叫用之管線的參數 | 將參數名稱對應到引數值的 JSON 物件 | 否
 waitOnCompletion | 定義活動執行是否等待相依的管線執行完成。 預設值為 false。 | Boolean | 否
 
 ## <a name="sample"></a>範例
@@ -169,10 +173,7 @@ waitOnCompletion | 定義活動執行是否等待相依的管線執行完成。 
     "properties": {
     "type": "AzureStorage",
     "typeProperties": {
-      "connectionString": {
-        "value": "DefaultEndpointsProtocol=https;AccountName=*****",
-        "type": "SecureString"
-      }
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=*****;AccountKey=*****"
     }
   }
 }

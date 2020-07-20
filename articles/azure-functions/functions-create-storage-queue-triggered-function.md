@@ -1,33 +1,21 @@
 ---
-title: 在 Azure 中建立由佇列訊息所觸發的函式 | Microsoft Docs
-description: 使用 Azure Functions 來建立無伺服器函式，並讓此函式由提交至 Azure 儲存體佇列的訊息來叫用。
-services: azure-functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
+title: 在 Azure 中建立由佇列訊息所觸發的函式
+description: 使用 Azure Functions 來建立無伺服器函式，並讓此函式由提交至 Azure 佇列的訊息來叫用。
 ms.assetid: 361da2a4-15d1-4903-bdc4-cc4b27fc3ff4
-ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 10/01/2018
-ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 44d6311246ab303966b7cfd8bee854b1c017f85d
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
-ms.translationtype: HT
+ms.openlocfilehash: c4c20579f2306b61741f3c6ab1549285271435a3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902681"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123170"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>建立 Azure 佇列儲存體所觸發的函式
 
 了解如何建立函式，並讓此函式在訊息提交至 Azure 儲存體佇列時觸發。
 
-![檢視記錄中的訊息。](./media/functions-create-storage-queue-triggered-function/function-app-in-portal-editor.png)
-
 ## <a name="prerequisites"></a>必要條件
-
-- 下載並安裝 [Microsoft Azure 儲存體總管](https://storageexplorer.com/)。
 
 - Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -35,7 +23,7 @@ ms.locfileid: "54902681"
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-![已成功建立函式應用程式。](./media/functions-create-first-azure-function/function-app-create-success.png)
+   :::image type="content" source="./media/functions-create-storage-queue-triggered-function/function-app-create-success.png" alt-text="已成功建立函數應用程式。" border="true":::
 
 接下來，您要在新的函式應用程式中建立函式。
 
@@ -43,69 +31,70 @@ ms.locfileid: "54902681"
 
 ## <a name="create-a-queue-triggered-function"></a>建立由佇列觸發的函式
 
-1. 展開函式應用程式，然後按一下 [Functions] 旁的 [+] 按鈕。 如果這是函式應用程式中的第一個函式，請依序選取 [入口網站內] 和 [繼續]。 否則，請移至步驟三。
+1. 選取 [函式]，然後選取 [+ 新增] 以新增函式。
 
-   ![Azure 入口網站中的 Functions 快速入門](./media/functions-create-storage-queue-triggered-function/function-app-quickstart-choose-portal.png)
+   :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-app-quickstart-choose-template.png" alt-text="選擇 Azure 入口網站中的函式範本。" border="true":::
 
-1. 依序選擇 [更多範本] 和 [完成並檢視範本]。
-
-    ![Functions 快速入門選擇更多範本](./media/functions-create-storage-queue-triggered-function/add-first-function.png)
-
-1. 在搜尋欄位中，輸入 `queue`，然後選擇 [佇列觸發程序] 範本。
-
-1. 如果出現提示，請選取 [安裝]，以在函式應用程式中安裝 Azure 儲存體延伸模組的任何相依性。 安裝成功之後，請選取 [繼續]。
-
-    ![安裝繫結延伸模組](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
+1. 選擇 **Azure 佇列儲存體觸發程序**範本。
 
 1. 使用影像下方資料表中所指定的設定。
 
-    ![設定由儲存體佇列所觸發的函式。](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal-2.png)
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png" alt-text="命名及設定由佇列儲存體所觸發的函式。" border="true":::
 
-    | 設定 | 建議的值 | 說明 |
+
+    | 設定 | 建議的值 | 描述 |
     |---|---|---|
     | **名稱** | 函式應用程式中的唯一名稱 | 這個由佇列所觸發之函式的名稱。 |
     | **佇列名稱**   | myqueue-items    | 儲存體帳戶中的連線目標佇列名稱。 |
-    | **儲存體帳戶連線** | AzureWebJobStorage | 您可以使用應用程式函式已在使用的儲存體帳戶連線，或建立新的連線。  |    
+    | **儲存體帳戶連線** | AzureWebJobsStorage | 您可以使用應用程式函式已在使用的儲存體帳戶連線，或建立新的連線。  |    
 
-1. 按一下 [建立] 可建立函式。
+1. 選取 [建立函式] 以建立函式。
+
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal-3.png" alt-text="建立由佇列儲存體所觸發的函式。" border="true":::
 
 接下來，您要連線到 Azure 儲存體帳戶並建立 **myqueue-items** 儲存體佇列。
 
 ## <a name="create-the-queue"></a>建立佇列
 
-1. 在您的函式中，按一下 [整合]，展開 [文件]，然後複製**帳戶名稱**和**帳戶金鑰**。 您會使用這些認證來連線至 Azure 儲存體總管中的儲存體帳戶。 如果您已連線至儲存體帳戶，請跳至步驟 4。
+1. 在您的函式中，在 [概觀] 頁面上，選取您的資源群組。
 
-    ![取得儲存體帳戶的連線認證。](./media/functions-create-storage-queue-triggered-function/functions-storage-account-connection.png)
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-resource-group.png" alt-text="選取您的 Azure 入口網站資源群組。" border="true":::
 
-1. 執行 [Microsoft Azure 儲存體總管](https://storageexplorer.com/)工具，按一下左側的 [連線] 圖示，選擇 [使用儲存體帳戶名稱和金鑰]，然後按 [下一步]。
+1. 尋找並選取您資源群組的儲存體帳戶。
 
-    ![執行「儲存體帳戶總管」工具。](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-1.png)
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-account-access.png" alt-text="存取儲存體帳戶。" border="true":::
 
-1. 輸入從步驟 1 得到的 [帳戶名稱] 和 [帳戶金鑰]，按 [下一步]，然後按一下 [連線]。
+1. 選擇 [佇列]，然後選擇 [+ 佇列]。 
 
-    ![輸入儲存體認證和連線。](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-2.png)
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-add-queue.png" alt-text="新增佇列到 Azure 入口網站中的儲存體帳戶。" border="true":::
 
-1. 展開連結的儲存體帳戶、以滑鼠右鍵按一下 [佇列]、按一下 [建立佇列]、鍵入 `myqueue-items`，然後按 Enter 鍵。
+1. 在 [名稱] 欄位中輸入 `myqueue-items`，然後選取 [建立]。
 
-    ![建立儲存體佇列。](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-create-queue.png)
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-name-queue.png" alt-text="為佇列儲存體容器命名。" border="true":::
 
 您已擁有儲存體佇列，接下來您可以在佇列中新增訊息以測試函式。
 
 ## <a name="test-the-function"></a>測試函式
 
-1. 回到 Azure 入口網站，並瀏覽至您的函式，然後展開頁面底部的 [記錄]，再確定記錄串流並未暫停。
+1. 回到 Azure 入口網站，瀏覽至您的函式，展開頁面底部的 [記錄]，並確定記錄串流並未暫停。
 
-1. 在儲存體總管中，依序展開您的儲存體帳戶、[佇列] 和 [myqueue-items]，然後按一下 [新增訊息]。
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-queue-storage-log-expander.png" alt-text="在 Azure 入口網站中展開記錄。" border="true":::
 
-    ![將訊息新增至佇列。](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-add-message.png)
+1. 在另一個瀏覽器視窗中，移至 Azure 入口網站中的資源群組，然後選取儲存體帳戶。
 
-1. 將您的 "Hello World!" 輸入 在 [訊息文字] 訊息中，然後按一下 [確定]。
+1. 選取 [佇列]，然後選取 **myqueue-items** 容器。
+
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-queue.png" alt-text="在 Azure 入口網站中移至您的 myqueue-items 佇列。" border="true":::
+
+1. 選取 [新增訊息]，然後 在 [訊息文字] 中輸入 "Hello World!"。 選取 [確定]。
+
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-queue-test.png" alt-text="在 Azure 入口網站中移至您的 myqueue-items 佇列。" border="true":::
 
 1. 等候幾秒鐘，然後回到您的函式記錄，並確認系統已從佇列中讀取新訊息。
 
-    ![檢視記錄中的訊息。](./media/functions-create-storage-queue-triggered-function/functions-queue-storage-trigger-view-logs.png)
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/function-app-in-portal-editor.png" alt-text="檢視記錄中的訊息。" border="true":::
 
-1. 回到儲存體總管，按一下 [重新整理]，然後確認系統已處理訊息，佇列中已沒有該訊息。
+1. 回到儲存體佇列、選取 [重新整理]，然後確認系統已處理訊息，且佇列中已沒有該訊息。
 
 ## <a name="clean-up-resources"></a>清除資源
 

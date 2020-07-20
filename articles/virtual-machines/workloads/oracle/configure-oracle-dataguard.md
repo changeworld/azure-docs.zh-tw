@@ -3,30 +3,29 @@ title: 在 Azure Linux 虛擬機器上實作 Oracle Data Guard | Microsoft Docs
 description: 快速在您的 Azure 環境中啟動並執行 Oracle Data Guard。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: romitgirdhar
-manager: jeconnoc
+author: rgardler
+manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogirdh
-ms.openlocfilehash: c98e59cd0e547381d6b173b3a4b91c3a3e27b3a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: rogardle
+ms.openlocfilehash: 2b0b85792fe1266d2ec6478561193ef0c80ac98f
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60771714"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224293"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虛擬機器上實作 Oracle Data Guard 
 
 Azure CLI 可用來從命令列或在指令碼中建立和管理 Azure 資源。 本文說明如何使用 Azure CLI，從 Azure Marketplace 映像部署 Oracle Database 12c 資料庫。 本文接著會為您逐步說明如何安裝及設定 Azure 虛擬機器 (VM) 上的 Data Guard。
 
-在開始之前，請確定您已安裝 Azure CLI。 如需詳細資訊，請參閱 [Azure CLI 安裝指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+在開始之前，請確定您已安裝 Azure CLI。 如需詳細資訊，請參閱[Azure CLI 安裝指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ## <a name="prepare-the-environment"></a>準備環境
 ### <a name="assumptions"></a>假設
@@ -88,7 +87,7 @@ az vm create \
 
 在您建立 VM 後，Azure CLI 會顯示類似下列範例的資訊。 請記下 `publicIpAddress` 的值。 您必須使用此位址來存取 VM。
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -102,6 +101,7 @@ az vm create \
 ```
 
 建立 myVM2 (待命)：
+
 ```azurecli
 az vm create \
      --resource-group myResourceGroup \
@@ -131,7 +131,7 @@ az network nsg rule create --resource-group myResourceGroup\
 
 結果看起來應該會像下列的回應這樣：
 
-```bash
+```output
 {
   "access": "Allow",
   "description": null,
@@ -199,9 +199,10 @@ $ dbca -silent \
    -storageType FS \
    -ignorePreReqs
 ```
+
 輸出結果看起來應該會像下面的回應這樣：
 
-```bash
+```output
 Copying database files
 1% complete
 2% complete
@@ -264,6 +265,7 @@ SQL> STARTUP MOUNT;
 SQL> ALTER DATABASE ARCHIVELOG;
 SQL> ALTER DATABASE OPEN;
 ```
+
 啟用強制記錄功能，並確定至少有一個記錄檔存在：
 
 ```bash
@@ -280,7 +282,7 @@ SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_r
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 50M;
 ```
 
-開啟 Flashback (可讓復原簡單許多) 並將 STANDBY\_FILE\_MANAGEMENT 設定為 auto。在此之後結束 SQL*Plus。
+開啟閃 (，讓復原變得更容易) 並將待命 \_ 檔案 \_ 管理設定為自動。結束 SQL * Plus。
 
 ```bash
 SQL> ALTER DATABASE FLASHBACK ON;
@@ -342,11 +344,13 @@ ADR_BASE_LISTENER = /u01/app/oracle
 ```
 
 啟用 Data Guard Broker：
+
 ```bash
 $ sqlplus / as sysdba
 SQL> ALTER SYSTEM SET dg_broker_start=true;
 SQL> EXIT;
 ```
+
 啟動接聽程式：
 
 ```bash
@@ -430,6 +434,7 @@ $ lsnrctl start
 ### <a name="restore-the-database-to-myvm2-standby"></a>將資料庫還原到 myVM2 (待命)
 
 使用下列內容建立參數檔案 /tmp/initcdb1_stby.ora：
+
 ```bash
 *.db_name='cdb1'
 ```
@@ -448,6 +453,7 @@ mkdir -p /u01/app/oracle/admin/cdb1/adump
 ```bash
 $ orapwd file=/u01/app/oracle/product/12.1.0/dbhome_1/dbs/orapwcdb1 password=OraPasswd1 entries=10
 ```
+
 在 myVM2 上啟動資料庫：
 
 ```bash
@@ -465,6 +471,7 @@ $ rman TARGET sys/OraPasswd1@cdb1 AUXILIARY sys/OraPasswd1@cdb1_stby
 ```
 
 在 RMAN 中執行下列命令：
+
 ```bash
 DUPLICATE TARGET DATABASE
   FOR STANDBY
@@ -476,11 +483,14 @@ DUPLICATE TARGET DATABASE
 ```
 
 當命令完成時，應該會看到類似下列的訊息。 結束 RMAN。
-```bash
+
+```output
 media recovery complete, elapsed time: 00:00:00
 Finished recover at 29-JUN-17
 Finished Duplicate Db at 29-JUN-17
+```
 
+```bash
 RMAN> EXIT;
 ```
 
@@ -502,7 +512,7 @@ SQL> EXIT;
 
 ### <a name="configure-data-guard-broker-on-myvm1-primary"></a>在 myVM1 (主要) 上設定 Data Guard Broker
 
-啟動 Data Guard Manager，並使用 SYS 和密碼登入。 (請勿使用 OS 驗證。)請執行下列步驟：
+啟動 Data Guard Manager，並使用 SYS 和密碼登入。  (不使用作業系統驗證。 ) 執行下列動作：
 
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1
@@ -521,6 +531,7 @@ Enabled.
 ```
 
 檢閱組態：
+
 ```bash
 DGMGRL> SHOW CONFIGURATION;
 
@@ -587,6 +598,7 @@ With the Partitioning, OLAP, Advanced Analytics and Real Application Testing opt
 
 SQL>
 ```
+
 ## <a name="test-the-data-guard-configuration"></a>測試 Data Guard 組態
 
 ### <a name="switch-over-the-database-on-myvm1-primary"></a>在 myVM1 (主要) 上切換資料庫
@@ -636,6 +648,7 @@ SQL>
 ### <a name="switch-over-the-database-on-myvm2-standby"></a>在 myVM2 (待命) 上切換資料庫
 
 若要切換，請在 myVM2 上執行下列操作：
+
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1_stby
 DGMGRL for Linux: Version 12.1.0.2.0 - 64bit Production

@@ -1,23 +1,20 @@
 ---
 title: 如何連線到 Azure 資料目錄中的資料來源
 description: 操作說明文章著重在說明如何連接到使用 Azure 資料目錄找到的資料來源。
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 4e6b27a5-cf75-4012-b88c-333c1fe638e8
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: c64340491dba11870364610a6c2ff62e25c1328a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.date: 08/01/2019
+ms.openlocfilehash: 1190a0f34206004b72730a6af85bbe5db7d9961a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61001803"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "68976777"
 ---
 # <a name="how-to-connect-to-data-sources"></a>如何連接到資料來源
 ## <a name="introduction"></a>簡介
-**Microsoft Azure 資料目錄** 是完全受控的雲端服務，可作為企業資料來源的註冊系統和探索系統。 換句話說，[Azure 資料目錄]  的重點在於協助人們探索、了解，以及使用資料來源，並可協助組織從現有的資料獲得更多價值。 這個背景的重點就在於使用資料，也就是使用者探索資料來源並了解其用途，然後連接到資料來源將使用其資料。
+**Microsoft Azure 資料目錄** 是完全受控的雲端服務，可作為企業資料來源的註冊系統和探索系統。 換句話說， **Azure 資料目錄**的功能就是協助人們探索、瞭解和使用資料來源，並協助組織從現有的資料獲得更多價值。 這個背景的重點就在於使用資料，也就是使用者探索資料來源並了解其用途，然後連接到資料來源將使用其資料。
 
 ## <a name="data-source-locations"></a>資料來源位置
 資料來源在註冊期間， **Azure 資料目錄** 會收到有關資料來源的中繼資料。 此中繼資料包含資料來源位置的詳細資料。 位置的詳細資料會因資料來源而異，但永遠會包含連接所需的資訊。 例如，SQL Server 資料表的位置包含伺服器名稱、資料庫名稱、結構描述名稱和資料表名稱，而 SQL Server Reporting Services 報表的位置包含伺服器名稱和報表的路徑。 其他資料來源類型的位置，則會反映結構與來源系統的功能。
@@ -30,7 +27,7 @@ ms.locfileid: "61001803"
 
 使用清單檢視時，此功能表位於入口網站視窗頂端的搜尋列中。
 
- ![從搜尋列以報告管理員開啟 SQL Server Reporting Services 報表](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
+ ![在報表管理員中開啟 SQL Server Reporting Services 報表](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
 
 ## <a name="supported-client-applications"></a>支援的用戶端應用程式
 在 Azure 資料目錄入口網站中 對資料來源使用 [開啟於...] 功能表時，用戶端電腦上必須已安裝正確的用戶端應用程式。
@@ -58,8 +55,8 @@ ms.locfileid: "61001803"
 
  ![具有所提供之要求存取指示的連接資訊](./media/data-catalog-how-to-connect/data-catalog-how-to-connect4.png)
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 使用 **Azure 資料目錄**註冊資料來源，即可藉由將資料來源的結構性和描述性中繼資料複製到目錄服務內，使其變成可探索的資料。 資料來源一經註冊且變成可探索之後，使用者就能從 **Azure 資料目錄**入口網站的 [開啟於...] 功能表，或使用他們選擇的資料工具，連接到資料來源。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 * [開始使用 Azure 資料目錄](data-catalog-get-started.md) 教學課程，取得如何連線至資料來源的逐步詳細資料。

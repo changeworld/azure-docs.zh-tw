@@ -1,25 +1,15 @@
 ---
 title: Azure 服務匯流排管理程式庫| Microsoft Docs
-description: 從 .NET 管理服務匯流排命名空間和傳訊實體。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
+description: 本文說明如何使用 Azure 服務匯流排管理程式庫，以動態方式布建服務匯流排的命名空間和實體。
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/05/2018
-ms.author: aschhab
-ms.openlocfilehash: d6c2cd813e96b40fc9f95785a1fd28e324a0437b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/23/2020
+ms.openlocfilehash: 042edcd1851f86dd2a660673bc87884b68410bfb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61315873"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341715"
 ---
 # <a name="service-bus-management-libraries"></a>服務匯流排管理程式庫
 
@@ -36,11 +26,11 @@ Azure 服務匯流排管理程式庫可以動態佈建服務匯流排命名空�
 
 若要開始使用服務匯流排管理程式庫，您必須使用 Azure Active Directory (Azure AD) 服務來驗證。 Azure AD 會要求您以提供 Azure 資源存取權的服務主體來進行驗證。 如需建立服務主體的詳細資訊，請參閱以下其中一篇文章：  
 
-* [使用 Azure 入口網站來建立可存取資源的 Active Directory 應用程式和服務主體](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
+* [使用 Azure 入口網站建立可存取資源的 Active Directory 應用程式和服務主體](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 * [使用 Azure PowerShell 建立用來存取資源的服務主體](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
 * [使用 Azure CLI 建立用來存取資源的服務主體](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 
-這些教學課程會提供您 `AppId` (用戶端識別碼)、`TenantId` 和 `ClientSecret` (驗證金鑰)，全部由管理程式庫用於驗證。 針對您想要執行的資源群組，您必須具備「擁有者」權限。
+這些教學課程會提供您 `AppId` (用戶端識別碼)、`TenantId` 和 `ClientSecret` (驗證金鑰)，全部由管理程式庫用於驗證。 對於您想要執行的資源群組，您必須至少擁有[**Azure 服務匯流排資料擁有**](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner)者或[**參與者**](/azure/role-based-access-control/built-in-roles#contributor)許可權。
 
 ## <a name="programming-pattern"></a>程式設計模式
 
@@ -50,7 +40,7 @@ Azure 服務匯流排管理程式庫可以動態佈建服務匯流排命名空�
    ```csharp
    var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 
-   var result = await context.AcquireTokenAsync("https://management.core.windows.net/", new ClientCredential(clientId, clientSecret));
+   var result = await context.AcquireTokenAsync("https://management.azure.com/", new ClientCredential(clientId, clientSecret));
    ```
 2. 建立 `ServiceBusManagementClient` 物件：
 
@@ -76,7 +66,95 @@ Azure 服務匯流排管理程式庫可以動態佈建服務匯流排命名空�
    await sbClient.Queues.CreateOrUpdateAsync(resourceGroupName, namespaceName, QueueName, queueParams);
    ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="complete-code-to-create-a-queue"></a>完整的程式碼以建立佇列
+以下是建立服務匯流排佇列的完整程式碼： 
 
-* [.NET 管理範例](https://github.com/Azure-Samples/service-bus-dotnet-management/)
-* [Microsoft.Azure.Management.ServiceBus API 參考](/dotnet/api/Microsoft.Azure.Management.ServiceBus)
+```csharp
+using System;
+using System.Threading.Tasks;
+
+using Microsoft.Azure.Management.ServiceBus;
+using Microsoft.Azure.Management.ServiceBus.Models;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Rest;
+
+namespace SBusADApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            CreateQueue().GetAwaiter().GetResult();
+        }
+
+        private static async Task CreateQueue()
+        {
+            try
+            {
+                var subscriptionID = "<SUBSCRIPTION ID>";
+                var resourceGroupName = "<RESOURCE GROUP NAME>";
+                var namespaceName = "<SERVICE BUS NAMESPACE NAME>";
+                var queueName = "<NAME OF QUEUE YOU WANT TO CREATE>";
+
+                var token = await GetToken();
+
+                var creds = new TokenCredentials(token);
+                var sbClient = new ServiceBusManagementClient(creds)
+                {
+                    SubscriptionId = subscriptionID,
+                };
+
+                var queueParams = new SBQueue();
+
+                Console.WriteLine("Creating queue...");
+                await sbClient.Queues.CreateOrUpdateAsync(resourceGroupName, namespaceName, queueName, queueParams);
+                Console.WriteLine("Created queue successfully.");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Could not create a queue...");
+                Console.WriteLine(e.Message);
+                throw e;
+            }
+        }
+
+        private static async Task<string> GetToken()
+        {
+            try
+            {
+                var tenantId = "<AZURE AD TENANT ID>";
+                var clientId = "<APPLICATION/CLIENT ID>";
+                var clientSecret = "<CLIENT SECRET>";
+
+                var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
+
+                var result = await context.AcquireTokenAsync(
+                    "https://management.azure.com/",
+                    new ClientCredential(clientId, clientSecret)
+                );
+
+                // If the token isn't a valid string, throw an error.
+                if (string.IsNullOrEmpty(result.AccessToken))
+                {
+                    throw new Exception("Token result is empty!");
+                }
+
+                return result.AccessToken;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Could not get a token...");
+                Console.WriteLine(e.Message);
+                throw e;
+            }
+        }
+
+    }
+}
+```
+
+> [!IMPORTANT]
+> 如需完整範例，請參閱[GitHub 上的 .net 管理範例](https://github.com/Azure-Samples/service-bus-dotnet-management/)（英文）。 
+
+## <a name="next-steps"></a>後續步驟
+[Microsoft.Azure.Management.ServiceBus API 參考](/dotnet/api/Microsoft.Azure.Management.ServiceBus)

@@ -4,13 +4,22 @@
   items:
     - name: 什麼是適用於 MariaDB 的 Azure DB？
       href: overview.md
+    - name: 我應該選擇哪個 MariaDB 選項？
+      href: select-right-deployment-type.md
 - name: 快速入門
   expanded: true
   items:
-    - name: 建立 DB - 入口網站
-      href: quickstart-create-mariadb-server-database-using-azure-portal.md
-    - name: 建立 DB - Azure CLI
-      href: quickstart-create-mariadb-server-database-using-azure-cli.md
+    - name: 建立 DB
+      items:
+        - name: 建立 DB - 入口網站
+          href: quickstart-create-mariadb-server-database-using-azure-portal.md
+        - name: 建立 DB - Azure CLI
+          href: quickstart-create-mariadb-server-database-using-azure-cli.md
+        - name: 建立 DB - Azure PowerShell
+          href: quickstart-create-mariadb-server-database-using-azure-powershell.md
+        - name: 建立 DB - ARM 範本
+          href: quickstart-create-mariadb-server-database-arm-template.md
+          displayName: deploy azure resource manager template
     - name: 連線和查詢
       items:
         - name: MySQL Workbench
@@ -23,10 +32,15 @@
           href: tutorial-design-database-using-portal.md
         - name: Azure CLI
           href: tutorial-design-database-cli.md
+        - name: Azure PowerShell
+          href: tutorial-design-database-using-powershell.md
 - name: 範例
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: DB 和伺服器
@@ -41,29 +55,52 @@
       items:
         - name: 定價層
           href: concepts-pricing-tiers.md
+        - name: 預付保留容量
+          href: concept-reserved-pricing.md
         - name: 限制
           href: concepts-limits.md
     - name: 資料存取和安全性
       items:
-        - name: 防火牆規則
-          href: concepts-firewall-rules.md
+        - name: 安全性概觀
+          href: concepts-security.md
         - name: 設定 SSL
           href: concepts-ssl-connection-security.md
-        - name: VNet
+        - name: 連線架構
+          href: concepts-connectivity-architecture.md
+        - name: 防火牆規則
+          href: concepts-firewall-rules.md
+        - name: 虛擬網路
           href: concepts-data-access-security-vnet.md
+        - name: 私人連結
+          href: concepts-data-access-security-private-link.md
+        - name: 進階威脅防護
+          href: concepts-data-access-and-security-threat-protection.md
+        - name: 安全性基準
+          href: security-baseline.md
     - name: 業務持續性
       items:
-        - name: 概觀
+        - name: 業務持續性簡介
+          displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
           href: concepts-business-continuity.md
         - name: 備份與還原
           href: concepts-backup.md
-    - name: 監視
+    - name: 監視與微調
       items:
         - name: 監視
           href: concepts-monitoring.md
-        - name: 伺服器記錄
+        - name: 慢速查詢記錄
           href: concepts-server-logs.md
-    - name: 開發
+        - name: 稽核記錄
+          href: concepts-audit-logs.md
+        - name: 查詢存放區
+          href: concepts-query-store.md
+        - name: 查詢效能深入解析
+          href: concepts-query-performance-insight.md
+        - name: 效能建議
+          href: concepts-performance-recommendations.md
+        - name: 伺服器參數
+          href: concepts-server-parameters.md
+    - name: 部署
       items:
         - name: 驅動程式和工具相容性
           href: concepts-compatibility.md
@@ -73,8 +110,18 @@
       items:
         - name: 複寫中的資料
           href: concepts-data-in-replication.md
-- name: 使用說明指南
+        - name: 讀取複本
+          href: concepts-read-replicas.md
+    - name: 在區域間移動
+      items:
+        - name: Azure 入口網站
+          href: howto-move-regions-portal.md
+- name: 操作指南
   items:
+    - name: 管理伺服器
+      items:
+        - name: Azure 入口網站
+          href: howto-create-manage-server-portal.md
     - name: 防火牆規則
       items:
         - name: Azure 入口網站
@@ -87,6 +134,8 @@
           href: howto-restore-server-portal.md
         - name: Azure CLI
           href: howto-restore-server-cli.md
+        - name: Azure PowerShell
+          href: howto-restore-server-powershell.md
     - name: 移轉資料庫
       items:
         - name: 傾印和還原
@@ -99,18 +148,44 @@
           href: howto-connection-string.md
         - name: 設定 SSL
           href: howto-configure-ssl.md
+        - name: 設定 TLS
+          href: howto-tls-configurations.md
+        - name: 使用重新導向連線
+          href: howto-redirection.md
     - name: 設定伺服器參數
       items:
         - name: Azure 入口網站
           href: howto-server-parameters.md
         - name: Azure CLI
           href: howto-configure-server-parameters-cli.md
-    - name: 存取伺服器記錄
+        - name: Azure PowerShell
+          href: howto-configure-server-parameters-using-powershell.md
+    - name: 自動成長的儲存體
       items:
         - name: Azure 入口網站
-          href: howto-configure-server-logs-portal.md
+          href: howto-auto-grow-storage-portal.md
         - name: Azure CLI
-          href: howto-configure-server-logs-cli.md
+          href: howto-auto-grow-storage-cli.md
+        - name: Azure PowerShell
+          href: howto-auto-grow-storage-powershell.md
+    - name: 拒絕公用網路存取
+      items:
+        - name: Azure 入口網站
+          href: howto-deny-public-network-access.md
+    - name: 存取伺服器記錄
+      items:
+        - name: 慢速查詢記錄
+          items:
+            - name: Azure 入口網站
+              href: howto-configure-server-logs-portal.md
+            - name: Azure CLI
+              href: howto-configure-server-logs-cli.md
+        - name: 稽核記錄
+          items:
+            - name: Azure 入口網站
+              href: howto-configure-audit-logs-portal.md
+            - name: Azure CLI
+              href: howto-configure-audit-logs-cli.md
     - name: 監視
       items:
         - name: 建立計量警示
@@ -119,24 +194,42 @@
       items:
         - name: 設定複寫中的資料
           href: howto-data-in-replication.md
+        - name: 在 Azure 入口網站中建立讀取複本
+          href: howto-read-replicas-portal.md
+        - name: 建立讀取複本 Azure CLI，REST API
+          href: howto-read-replicas-cli.md
+        - name: 在 Azure PowerShell 中建立讀取複本
+          href: howto-read-replicas-powershell.md
     - name: 疑難排解
       items:
         - name: 針對連線問題進行疑難排解
           href: howto-troubleshoot-common-connection-issues.md
         - name: 針對查詢效能進行疑難排解
           href: howto-troubleshoot-query-performance.md
+    - name: 進階威脅防護
+      items:
+        - name: Azure 入口網站
+          href: howto-database-threat-protection-portal.md
     - name: 虛擬網路
       items:
         - name: Azure 入口網站
           href: howto-manage-vnet-portal.md
         - name: Azure CLI
           href: howto-manage-vnet-cli.md
+    - name: 私人連結
+      items:
+        - name: Azure 入口網站
+          href: howto-configure-privatelink-portal.md
+        - name: Azure CLI
+          href: howto-configure-privatelink-cli.md
     - name: 重新啟動伺服器
       items:
         - name: Azure 入口網站
           href: howto-restart-server-portal.md
         - name: Azure CLI
           href: howto-restart-server-cli.md
+        - name: Azure PowerShell
+          href: howto-restart-server-powershell.md
 - name: 參考
   items:
     - name: Azure CLI
@@ -145,19 +238,19 @@
       href: /rest/api/mariadb
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.dbformariadb/allversions
-    - name: 複寫中的資料預存程序
-      href: reference-data-in-stored-procedures.md
+    - name: 預存程序管理
+      href: reference-stored-procedures.md
 - name: 資源
   items:
     - name: 部署範本
       href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformariadb'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=databases'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/mariadb/'
-    - name: MSDN 論壇
-      href: 'https://social.msdn.microsoft.com/forums/en-US/home?forum=AzureDatabaseforMariaDB'
-    - name: 堆疊溢位
+    - name: Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-database-mariadb.html'
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-mariadb'
     - name: 要求功能
       href: 'https://feedback.azure.com/forums/915439-azure-database-for-mariadb'

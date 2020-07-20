@@ -1,23 +1,14 @@
 ---
-title: Azure Application Insights 遙測資料模型 - 例外狀況遙測 | Microsoft Docs
+title: Azure 應用程式 Insights 例外狀況遙測資料模型
 description: 例外狀況遙測的 Application Insights 資料模型
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: efd7ad43ee9a2206f474621612eca7dfe5079f99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: fa9bc4efd9549cbcb1d50439989c5dea79d9d60c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60908060"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77671931"
 ---
 # <a name="exception-telemetry-application-insights-data-model"></a>例外狀況遙測：Application Insights 資料模型
 
@@ -27,7 +18,7 @@ ms.locfileid: "60908060"
 
 例外狀況在程式碼中擲回位置的識別項。 用於例外狀況群組。 通常為例外狀況類型和呼叫堆疊中之函式的組合。
 
-最大長度：1024 個字元
+最大長度︰1024 個字元
 
 ## <a name="severity-level"></a>嚴重性層級
 

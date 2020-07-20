@@ -4,24 +4,24 @@ description: 了解如何使用 Azure 入口網站設定虛擬機器 (傳統) �
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
-editor: tysonn
+manager: dcscontentpm
 tags: azure-service-management
 ms.assetid: b8ef8367-58b2-42df-9f26-3269980950b8
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 72d1c4d2ea3adf7d8751adfbb013435f8f2530f0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: c5ae587438e2cc3c583307c3d6b41ec986193216
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62125741"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134748"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-portal"></a>使用 Azure 入口網站設定虛擬機器 (傳統) 的私人 IP 位址
 
@@ -41,40 +41,40 @@ ms.locfileid: "62125741"
 若要在名為 *TestVNet* 之 VNet 的 *FrontEnd* 子網路中建立名為 *DNS01* 的 VM，且其靜態私人 IP 為 *192.168.1.101*，請完成下列步驟：
 
 1. 透過瀏覽器瀏覽至 https://portal.azure.com，並視需要使用您的 Azure 帳戶登入。
-2. 選取 [新增]  >  [計算]  >  [Windows Server 2012 R2 Datacenter]，注意 [選取部署模型] 清單已經顯示 [傳統]，然後選取 [建立]。
+2. 選取 [**新增**  >  ] [**計算**]  >  [**Windows Server 2012 R2 Datacenter**]，注意 [**選取部署模型**] 清單已經顯示 [**傳統**]，然後選取 [**建立**]。
    
     ![在 Azure 入口網站中建立 VM](./media/virtual-networks-static-ip-classic-pportal/figure01.png)
-3. 在 [建立 VM]  下，輸入要建立的 VM 名稱 (案例中為*DNS01* )、本機系統管理員帳戶和密碼。
+3. 在 [建立 VM] **** 下，輸入要建立的 VM 名稱 (案例中為*DNS01* )、本機系統管理員帳戶和密碼。
    
     ![在 Azure 入口網站中建立 VM](./media/virtual-networks-static-ip-classic-pportal/figure02.png)
-4. 選取 [選擇性組態]  >  [網路]  >  [虛擬網路]，然後選取 [TestVNet]。 如果不能使用 **TestVNet**，請確定您使用「美國中部」位置，並已建立本文開頭所描述的測試環境。
+4. 選取 [**選用**設定] [網路] [  >  **Network**  >  **虛擬網路**]，然後選取 [ **TestVNet**]。 如果不能使用 **TestVNet**，請確定您使用「美國中部」** 位置，並已建立本文開頭所描述的測試環境。
    
     ![在 Azure 入口網站中建立 VM](./media/virtual-networks-static-ip-classic-pportal/figure03.png)
-5. 在 [網路] 下，請確定目前選取的子網路是 FrontEnd，然後選取 [IP 位址]，在 [IP 位址指派] 底下，選取 [靜態]，然後 [IP 位址] 輸入 192.168.1.101，如下所示。
+5. 在 [網路]**** 下，請確定目前選取的子網路是 FrontEnd**，然後選取 [IP 位址]****，在 [IP 位址指派]**** 底下，選取 [靜態]****，然後 [IP 位址]**** 輸入 192.168.1.101**，如下所示。
    
     ![在 Azure 入口網站中建立 VM](./media/virtual-networks-static-ip-classic-pportal/figure04.png)    
-6. 在 [IP 位址] 下選取 [確定]、在 [網路] 下選取 [確定]，然後在 [選用設定] 下選取 [確定]。
-7. 在 [建立 VM] 下，選取 [建立]。 請注意您儀表板中下方顯示的磚：
+6. 在 [IP 位址]**** 下選取 [確定]****、在 [網路]**** 下選取 [確定]****，然後在 [選用設定]**** 下選取 [確定]****。
+7. 在 [建立 VM]**** 下，選取 [建立]****。 請注意您儀表板中下方顯示的磚：
    
     ![在 Azure 入口網站中建立 VM](./media/virtual-networks-static-ip-classic-pportal/figure05.png)
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>如何擷取 VM 的靜態私人 IP 位址資訊
 若要檢視使用上述步驟建立之 VM 的靜態私人 IP 位址資訊，請執行下列步驟。
 
-1. 從 Azure 入口網站選取 [瀏覽全部]  >  [虛擬機器 (傳統)]  >  [DNS01]  >  [所有設定]  >  [IP 位址]，並注意 IP 位址指派和 IP 位址，如下所示。
+1. 從 [Azure 入口網站] 中，選取 **[流覽所有**  >  **虛擬機器（傳統）**] [  >  **DNS01**  >  **所有設定**]  >  [**ip 位址**]，並注意如下所示的 ip 位址指派和 ip 位址。
    
     ![在 Azure 入口網站中建立 VM](./media/virtual-networks-static-ip-classic-pportal/figure06.png)
 
 ## <a name="how-to-remove-a-static-private-ip-address-from-a-vm"></a>如何移除 VM 的靜態私人 IP 位址
 
-在 [IP 位址] 下的 [IP 位址指派] 右側，選取 [動態]，選取 [儲存]，然後選取 [是]，如下圖所示：
+在 [IP 位址]**** 下的 [IP 位址指派]**** 右側，選取 [動態]****，選取 [儲存]****，然後選取 [是]****，如下圖所示：
    
-    ![Create VM in Azure portal](./media/virtual-networks-static-ip-classic-pportal/figure07.png)
+![在 Azure 入口網站中建立 VM](./media/virtual-networks-static-ip-classic-pportal/figure07.png)
 
 ## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>如何將靜態私人 IP 位址新增至現有的 VM
 
-1. 在前面顯示的 [IP 位址] 下，選取 [IP 位址指派] 右側的 [靜態]。
-2. 在 [IP 位址] 輸入 192.168.1.101，選取 [儲存]，然後選取 [是]。
+1. 在前面顯示的 [IP 位址]**** 下，選取 [IP 位址指派]**** 右側的 [靜態]****。
+2. 在 [IP 位址]**** 輸入 192.168.1.101**，選取 [儲存]****，然後選取 [是]****。
 
 ## <a name="set-ip-addresses-within-the-operating-system"></a>設定作業系統內的 IP 位址
 

@@ -1,26 +1,17 @@
 ---
-title: Azure ExpressRoute 的網路設定詳細資料 - App Service
-description: 已連線至 Azure ExpressRoute 線路之虛擬網路中 PowerApps 的「App Service 環境」網路設定詳細資料。
-services: app-service
-documentationcenter: ''
+title: 設定 Azure ExpressRoute v1
+description: 使用 Azure ExpressRoute 針對 PowerApps 的 App Service 環境進行網路設定。 本文件僅提供給使用舊版 v1 ASE 的客戶。
 author: stefsch
-manager: nirma
-editor: ''
 ms.assetid: 34b49178-2595-4d32-9b41-110c96dde6bf
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: e0fa87facec73efdfff1a9908dcba92838215425
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.openlocfilehash: abe08da95416dd73035115361cb0d87822ad9239
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62130665"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013392"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>搭配 Azure ExpressRoute 之 PowerApps 的 App Service 環境網路設定詳細資料
 
@@ -43,11 +34,11 @@ ms.locfileid: "62130665"
 
 * 位於連接埠 445 的 Azure 檔案服務的輸出網路連線
 
-* 透過網路連出至位於與「App Service 環境」相同區域之 Azure SQL Database 端點的能力。 SQL Database 端點會在 database.windows.net 網域下解析，這需要連接埠 1433、11000-11999 及 14000-14999 的開放存取權。 如需有關 SQL Database V12 連接埠使用方式的詳細資料，請參閱 [ADO.NET 4.5 超過 1433 以外的連接埠](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md)。
+* 透過網路連出至位於與「App Service 環境」相同區域之 Azure SQL Database 端點的能力。 SQL Database 端點會在 database.windows.net 網域下解析，這需要連接埠 1433、11000-11999 及 14000-14999 的開放存取權。 如需有關 SQL Database V12 連接埠使用方式的詳細資料，請參閱 [ADO.NET 4.5 超過 1433 以外的連接埠](../../azure-sql/database/adonet-v12-develop-direct-route-ports.md)。
 
 * 透過網路連出至 Azure 管理平面端點 (Azure 傳統部署模型和 Azure Resource Manager 端點) 的能力。 對這些端點的連線能力包括 management.core.windows.net 和 management.azure.com 網域。 
 
-* 透過網路連出至 ocsp.msocsp.com、mscrl.microsoft.com 及 crl.microsoft.com 網域的能力。 必須能夠連線至這些網域，才能支援 SSL 功能。
+* 透過網路連出至 ocsp.msocsp.com、mscrl.microsoft.com 及 crl.microsoft.com 網域的能力。 必須能夠連線至這些網域，才能支援 TLS 功能。
 
 * 虛擬網路的 DNS 設定必須能夠解析本文中所提及的所有端點和網域。 如果無法解析端點，建立「App Service 環境」時就會失敗。 所有現有的「App Service 環境」都會標示為狀況不良。
 
@@ -102,13 +93,13 @@ ms.locfileid: "62130665"
 > [!IMPORTANT]
 > 請只在完成設定步驟之後才部署「App Service 環境」。 這些步驟可確保在您嘗試部署「App Service 環境」之前，連出網路連線已可供使用。
 
-### <a name="step-1-create-a-route-table"></a>步驟 1：建立路由表
+### <a name="step-1-create-a-route-table"></a>步驟 1:建立路由表
 
 在「美國西部」Azure 區域建立一個名為 **DirectInternetRouteTable** 的路由表，如以下程式碼片段所示：
 
 `New-AzureRouteTable -Name 'DirectInternetRouteTable' -Location uswest`
 
-### <a name="step-2-create-routes-in-the-table"></a>步驟 2：建立路由表中的路由
+### <a name="step-2-create-routes-in-the-table"></a>步驟 2:建立路由表中的路由
 
 將路由新增至路由表以啟用連出網際網路存取。  
 

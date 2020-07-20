@@ -1,69 +1,66 @@
 ---
-title: 委派的存取權，預覽版 Windows 虛擬桌面-Azure
-description: 如何委派系統管理功能，針對 Windows 虛擬桌面預覽的部署，包括範例。
+title: Windows 虛擬桌面中的委派存取-Azure
+description: 如何在 Windows 虛擬桌面部署上委派系統管理功能，包括範例。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 04/30/2020
 ms.author: helohr
-ms.openlocfilehash: 250aea52de63a6397ce00e9cadcadf3a8ba39858
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+manager: lizross
+ms.openlocfilehash: 16b4fca475f91a8cb5b7f9a20ea5aa74b6b674a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60870501"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82612855"
 ---
-# <a name="delegated-access-in-windows-virtual-desktop-preview"></a>在 Windows 虛擬桌面預覽中的委派的存取
+# <a name="delegated-access-in-windows-virtual-desktop"></a>Windows 虛擬桌面中委派的存取權
 
-Windows 虛擬桌面預覽具有委派的存取模型，可讓您定義特定的使用者允許將角色指派的存取權數量。 角色指派有三個元件： 安全性主體、 角色定義和範圍。 Windows 虛擬桌面的委派的存取模型根據 Azure RBAC 模型。 若要深入了解特定的角色指派和其元件，請參閱[Azure 角色型存取控制概觀](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)。
+>[!IMPORTANT]
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 2020 年春季更新版。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 2019 年秋季版，請參閱[這篇文章](./virtual-desktop-fall-2019/delegated-access-virtual-desktop-2019.md)。
+>
+> Windows 虛擬桌面 2020 年春季更新版目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議您將其用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 
+> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-Windows 虛擬桌面委派存取支援每個項目的角色指派下列值：
+Windows 虛擬桌面具有委派的存取模型，可讓您藉由指派角色給使用者，來定義允許特定使用者擁有的存取權數量。 角色指派有三個元件：安全性主體、角色定義和範圍。 Windows 虛擬桌面委派的存取模型是以 Azure RBAC 模型為基礎。 若要深入瞭解特定角色指派及其元件，請參閱[Azure 角色型存取控制總覽](../role-based-access-control/built-in-roles.md)。
+
+Windows 虛擬桌面委派存取針對角色指派的每個元素支援下列值：
 
 * 安全性主體
     * 使用者
+    * 使用者群組
     * 服務主體
 * 角色定義
     * 內建角色
+    * 自訂角色
 * 影響範圍
-    * 租用戶群組
-    * 租用戶
-    * 主應用程式集區
+    * 主機集區
     * 應用程式群組
+    * 工作區
 
-## <a name="built-in-roles"></a>內建角色
+## <a name="powershell-cmdlets-for-role-assignments"></a>用於角色指派的 PowerShell Cmdlet
 
-在 Windows 虛擬桌面的委派的存取具有數個內建角色定義，您可以指派給使用者和服務主體。
+開始之前，請務必遵循[設定 powershell 模組](powershell-module.md)中的指示來設定 Windows 虛擬桌面 powershell 模組（如果尚未安裝的話）。
 
-* RDS 擁有者可以管理所有項目，包括資源的存取權。
-* RDS 參與者可以管理資源的存取權以外的所有內容。
-* RDS 讀取器可以檢視所有項目，但無法進行任何變更。
-* RDS 操作員可以檢視診斷的活動。
+Windows 虛擬桌面會在將應用程式群組發佈至使用者或使用者群組時，使用 Azure 角色型存取控制（RBAC）。 「桌面虛擬化」使用者角色會指派給使用者或使用者群組，而範圍則是「應用程式群組」。 此角色可讓使用者在應用程式群組上進行特殊資料存取。  
 
-## <a name="powershell-cmdlets-for-role-assignments"></a>角色指派的 PowerShell cmdlet
+執行下列 Cmdlet，將 Azure Active Directory 使用者新增至應用程式群組：
 
-您可以執行下列 cmdlet 來建立、 檢視和編輯角色指派：
+```powershell
+New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'  
+```
 
-* **取得 RdsRoleAssignment**會顯示一份角色指派。
-* **新 RdsRoleAssignment**會建立新的角色指派。
-* **設定 RdsRoleAssignment**編輯角色指派。
+執行下列 Cmdlet，將 Azure Active Directory 使用者群組新增至應用程式群組：
 
-### <a name="accepted-parameters"></a>接受的參數
-
-您可以修改基本的三個 cmdlet，使用下列參數：
-
-* **AadTenantId**： 指定的服務主體所屬的 Azure Active Directory 租用戶識別碼。
-* **AppGroupName**： 遠端桌面應用程式群組的名稱。
-* **診斷**： 指出診斷範圍。 (必須與其中一個配對**基礎結構**或是**租用戶**參數。)
-* **HostPoolName**： 遠端桌面的主應用程式集區的名稱。
-* **基礎結構**： 表示的基礎結構範圍。
-* **RoleDefinitionName**： 指派給使用者、 群組或應用程式的遠端桌面服務角色型存取控制角色的名稱。 （例如，遠端桌面服務擁有者、 遠端桌面服務的讀取器等等。）
-* **ServerPrincipleName**: Azure Active Directory 應用程式的名稱。
-* **SignInName**： 使用者的電子郵件地址或使用者主體名稱。
-* **TenantName**： 遠端桌面的租用戶的名稱。
+```powershell
+New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+```
 
 ## <a name="next-steps"></a>後續步驟
 
-每個角色可以使用 PowerShell cmdlet 的更完整清單，請參閱 < [PowerShell 參考](/powershell/windows-virtual-desktop/overview)。
+如需每個角色可使用之 PowerShell Cmdlet 的更完整清單，請參閱[powershell 參考](/powershell/windows-virtual-desktop/overview)。
 
-如需如何設定 Windows 虛擬桌面環境的指導方針，請參閱[Windows 虛擬桌面預覽環境](environment-setup.md)。
+如需 Azure RBAC 中所支援角色的完整清單，請參閱[azure 內建角色](../role-based-access-control/built-in-roles.md)。
+
+如需如何設定 Windows 虛擬桌面環境的指導方針，請參閱[Windows 虛擬桌面環境](environment-setup.md)。

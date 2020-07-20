@@ -1,24 +1,22 @@
 ---
-title: 為 Azure 事件方格中的自訂主題建置您自己的災害復原 |Microsoft Docs
-description: 不受區域性中斷的影響而保持 Azure 事件方格的連線。
-services: event-grid
-author: banisadr
-ms.service: event-grid
+title: 事件方格中自訂主題的災害復原
+description: 本教學課程將逐步說明如何設定您的事件架構，以便在某個區域中的事件方格服務狀況不良時進行復原。
 ms.topic: tutorial
-ms.date: 01/16/2018
-ms.author: babanisa
-ms.openlocfilehash: fa0ffa9ad913f0dc3afe8dc31aeaa0254fa2d241
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 07/07/2020
+ms.openlocfilehash: 1ee9c9566a70ba104f6c12866a631061672cb0c0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863163"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115075"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>為事件方格中的自訂主題建置您自己的災害復原
-
 災害復原著重在從應用程式功能的嚴重損失中復原。 本教學課程將逐步說明如何設定您的事件架構，以便在特定區域中的事件方格服務狀況不良時進行復原。
 
 在本教學課程中，您將了解如何為事件方格中的自訂主題建立主動-被動容錯移轉架構。 您會在兩個區域間建立主題和訂用帳戶的鏡像，然後在主題狀況不良時進行容錯移轉，以完成容錯移轉。 本教學課程中的架構容錯移轉所有的新流量。 請務必留意，使用這項設定時，必須在有問題的區域恢復良好狀況後，已開始傳輸的事件才會復原。
+
+> [!NOTE]
+> 事件方格現在支援伺服器端上的自動異地災害復原 (GeoDR)。 如果您想要更充分地控管容錯移轉程序，仍可實作用戶端災害復原邏輯。 如需有關自動 GeoDR 的詳細資訊，請參閱 [Azure 事件方格中的伺服器端異地災害復原](geo-disaster-recovery.md)。
 
 ## <a name="create-a-message-endpoint"></a>建立訊息端點
 
@@ -26,7 +24,7 @@ ms.locfileid: "57863163"
 
 為了簡化測試，請部署[預先建置的 Web 應用程式](https://github.com/Azure-Samples/azure-event-grid-viewer)以顯示事件訊息。 已部署的解決方案包含 App Service 方案、App Service Web 應用程式，以及 GitHub 中的原始程式碼。
 
-1. 選取 [部署至 Azure]，將解決方案部署至您的訂用帳戶。 在 Azure 入口網站中，提供參數的值。
+1. 選取 [部署至 Azure]  ，將解決方案部署至您的訂用帳戶。 在 Azure 入口網站中，提供參數的值。
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
@@ -46,28 +44,28 @@ ms.locfileid: "57863163"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 
-1. 在主要 Azure 功能表中的左上角，選擇 [所有服務] > 搜尋 [事件方格] > 選取 [事件方格主題]。
+1. 在主要 Azure 功能表中的左上角，選擇 [所有服務]  > 搜尋 [事件方格]  > 選取 [事件方格主題]  。
 
    ![事件方格主題功能表](./media/custom-disaster-recovery/select-topics-menu.png)
 
     選取事件方格主題旁的星號，將該主題新增至資源功能表，以方便日後存取。
 
-1. 在 [事件方格主題] 功能表中選取 [+新增]，以建立主要主題。
+1. 在 [事件方格主題] 功能表中選取 [+新增]  ，以建立主要主題。
 
    * 為主題指定邏輯名稱，並新增 "-primary" 尾碼，以方便追蹤。
    * 此主題的區域將是您的主要區域。
 
      ![事件方格主要主題建立對話方塊](./media/custom-disaster-recovery/create-primary-topic.png)
 
-1. 主題建立後，請瀏覽至該主題並複製 [主題端點]。 您稍後將會用到此 URI。
+1. 主題建立後，請瀏覽至該主題並複製 [主題端點]  。 您稍後將會用到此 URI。
 
     ![事件方格主要主題](./media/custom-disaster-recovery/get-primary-topic-endpoint.png)
 
-1. 取得主題的存取金鑰，您後續也會用到此金鑰。 按一下資源功能表中的 [存取金鑰]，並複製 [金鑰 1]。
+1. 取得主題的存取金鑰，您後續也會用到此金鑰。 按一下資源功能表中的 [存取金鑰]  ，並複製 [金鑰 1]。
 
     ![取得主要主題金鑰](./media/custom-disaster-recovery/get-primary-access-key.png)
 
-1. 在 [主題] 刀鋒視窗中，按一下 [+事件訂用帳戶] 以建立訂用帳戶，用以訂閱您在本教學課程的必要條件中建立的事件接收器網站。
+1. 在 [主題] 刀鋒視窗中，按一下 [+事件訂用帳戶]  以建立訂用帳戶，用以訂閱您在本教學課程的必要條件中建立的事件接收器網站。
 
    * 為事件訂用帳戶指定邏輯名稱，並新增 "-primary" 尾碼，以方便追蹤。
    * 選取端點類型 Web Hook。

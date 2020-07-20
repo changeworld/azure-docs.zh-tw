@@ -1,28 +1,18 @@
 ---
-title: Azure Batch 分析 | Microsoft Docs
-description: Azure Batch 分析的參考。
-services: batch
-author: laurenhughes
-manager: jeconnoc
-ms.assetid: ''
-ms.service: batch
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
+title: Azure Batch 分析
+description: 批次分析中的主題包含批次服務資源所適用事件和警示的參考資訊。
+ms.topic: reference
 ms.date: 04/20/2017
-ms.author: lahugh
-ms.openlocfilehash: 999c3037196044250b8a12d6b6b380553e58c6ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 9d0e5c90c7bade82d76c7dbdfd4276e9671c961c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60721550"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958101"
 ---
 # <a name="batch-analytics"></a>批次分析
 批次分析中的主題包含批次服務資源所適用事件和警示的參考資訊。
 
-請參閱[記錄事件以便對 Batch 解決方案進行診斷評估和監視](https://azure.microsoft.com/documentation/articles/batch-diagnostics/)，以取得啟用與取用批次診斷記錄的詳細資訊。
+請參閱[記錄事件以便對 Batch 解決方案進行診斷評估和監視](./batch-diagnostics.md)，以取得啟用與取用批次診斷記錄的詳細資訊。
 
 ## <a name="diagnostic-logs"></a>診斷記錄
 

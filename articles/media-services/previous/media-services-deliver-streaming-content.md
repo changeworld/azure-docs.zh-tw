@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 49e9fbc3f8d10dd1e272f5f9bc5a542328a3ddb4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9c7a29ebb355a5733201ff01af9e38f371def1cf
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61224220"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962810"
 ---
 # <a name="publish-media-services-content-using-net"></a>使用 .NET 發佈媒體服務內容  
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "61224220"
 > 
 > 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 您可以建立隨選串流定位器及建置串流 URL，串流處理調適性位元速率 MP4 集。 [為資產編碼](media-services-encode-asset.md) 主題說明如何編碼為調適性位元速率 MP4 集。 
 
 > [!NOTE]
@@ -80,7 +80,7 @@ ms.locfileid: "61224220"
 
         // Get a reference to the streaming manifest file from the  
         // collection of files in the asset. 
-        var manifestFile = asset.AssetFiles.Where(f => f.Name.ToLower().
+        var manifestFile = asset.AssetFiles.ToList().Where(f => f.Name.ToLower().
                                     EndsWith(".ism")).
                                     FirstOrDefault();
 
@@ -99,16 +99,15 @@ ms.locfileid: "61224220"
 
 輸出：
 
-    URL to manifest for client streaming using Smooth Streaming protocol:
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
-    URL to manifest for client streaming using HLS protocol:
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)
-    URL to manifest for client streaming using MPEG DASH protocol:
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)
-
+- 使用 Smooth Streaming 通訊協定之用戶端資料流程的資訊清單 URL： \
+  `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest`
+- 使用 HLS 通訊協定之用戶端資料流程的資訊清單 URL： \
+  `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)`
+- 使用 MPEG 破折號通訊協定之用戶端資料流程的資訊清單 URL： \
+  `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)`
 
 > [!NOTE]
-> 您也可以透過 SSL 連線串流您的內容。 若要執行這個方法，請確定您的串流 URL 是以 HTTPS 開頭。 目前 AMS 不支援使用 SSL 搭配自訂網域。
+> 您也可以透過 TLS 連線來串流處理您的內容。 若要執行這個方法，請確定您的串流 URL 是以 HTTPS 開頭。 目前，AMS 不支援使用自訂網域的 TLS。
 > 
 > 
 
@@ -145,10 +144,10 @@ ms.locfileid: "61224220"
 ```
 輸出：
 
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_400kbps_AAC_und_ch2_96kbps.mp4
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_3400kbps_AAC_und_ch2_96kbps.mp4
-    http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_2250kbps_AAC_und_ch2_96kbps.mp4
+- `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4`
+- `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_400kbps_AAC_und_ch2_96kbps.mp4`
+- `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_3400kbps_AAC_und_ch2_96kbps.mp4`
+- `http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_2250kbps_AAC_und_ch2_96kbps.mp4`
 
     . . . 
 

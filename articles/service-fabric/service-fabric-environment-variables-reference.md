@@ -1,32 +1,24 @@
 ---
-title: Azure Service Fabric 環境變數 | Microsoft Docs
-description: Service Fabric 環境變數的參考文件
-documentationcenter: .net
+title: Azure Service Fabric 環境變數
+description: 瞭解 Azure Service Fabric 中的環境變數。 包含變數及其用法的完整清單參考。
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: reference
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/07/2017
 ms.author: mikhegn
-ms.openlocfilehash: 1c8400898dba59f312ba9d994ee711a5e241973a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: b13522b1d9f2acd2aa3f7923c1b623fab696056d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60946717"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75645679"
 ---
 # <a name="service-fabric-environment-variables"></a>Service Fabric 環境變數
 
 Service Fabric 具有針對每個服務執行個體所設定的內建環境變數。 環境變數的完整清單如下：
 
-| 環境變數                         | 描述                                                            | 範例                                                              |
+| 環境變數                         | 說明                                                            | 範例                                                              |
 |----------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------------|
 | Fabric_ApplicationName                       | 應用程式的網狀架構 URI 名稱                                 | fabric:/MyApplication                                                |
-| Fabric_CodePackageName                       | 處理序所屬的程式碼套件名稱              | 代碼                                                                 |
+| Fabric_CodePackageName                       | 處理序所屬的程式碼套件名稱              | 程式碼                                                                 |
 | Fabric_Endpoint\_IPOrFQDN\_*ServiceEndpointName*     | IP 位址或端點的 FQDN                                 | 10.0.0.1                                                     |
 | Fabric\_Endpoint\_*ServiceEndpointName*              | 端點的連接埠號碼                                  | 8234                                                                 |
 | Fabric_Folder_App_Log                        | 記錄資料夾                                                             | C:\\\\Data\\\\_App\\\\_Node_0\\\\MyApplicationType_App12\\\\log      |

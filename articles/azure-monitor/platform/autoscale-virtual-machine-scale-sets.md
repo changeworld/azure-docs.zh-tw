@@ -1,25 +1,26 @@
 ---
 title: 使用 Azure 虛擬機器的進階自動調整
 description: 使用 Resource Manager 和 VM 擴展集，搭配多個規則與設定檔，以傳送電子郵件並使用調整動作來呼叫 Webhook URL。
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
-ms.date: 02/22/2016
-ms.author: ancav
+ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.openlocfilehash: 6da653bc94c8b549282ab9124dba23b08771c5f1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 06/25/2020
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: c003d66f59f932d818740bdd378280049bbeb7d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60787760"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85373874"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>針對 VM 擴展集使用 Resource Manager 範本的進階自動調整設定
 您可以根據效能標準臨界值、循環排程或特定日期，針對虛擬機器擴展集進行相應縮小和放大。 您也可以針對調整動作設定電子郵件和 webhook 通知。 本逐步解說會示範在 VM 擴展集上使用 Resource Manager 範本設定所有這些物件。
 
 > [!NOTE]
-> 雖然此逐步解說會說明 VM 擴展集的各步驟，相同的資訊也適用於自動調整[雲端服務](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/) 與 [API 管理服務](https://docs.microsoft.com/azure/api-management/api-management-key-concepts) 如需 VM 擴展集上根據簡單效能計量 (例如 CPU) 的簡單相應縮小/放大設定，請參閱 [Linux](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-cli.md) 與 [Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) 文件
+> 雖然此逐步解說會說明 VM 擴展集的各步驟，相同的資訊也適用於自動調整[雲端服務](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/) 與 [API 管理服務](https://docs.microsoft.com/azure/api-management/api-management-key-concepts) 如需 VM 擴展集上根據簡單效能計量 (例如 CPU) 的簡單縮減/擴增設定，請參閱 [Linux](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-cli.md) 與 [Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) 文件
 >
 >
 
@@ -47,7 +48,7 @@ ms.locfileid: "60787760"
 
 4. 以下是我們用於此逐步解說的虛構調整案例。
 
-   * **以負載為基礎** - 我想要根據裝載於擴展集的應用程式的負載來相應放大或縮小。*
+   * **以負載為基礎** - 我想要根據裝載於擴展集的應用程式的負載來擴增或縮減。*
    * **訊息佇列大小** - 我使用服務匯流排佇列來存放傳入應用程式的訊息。 \*我使用佇列的訊息計數和 CPU% 來設定預設設定檔，以在訊息計數或 CPU 達到臨界值時觸發調整動作。
    * **每週和每日時間** - 我想要一個以每週一次「當天時間」為基礎的設定檔，稱為「工作日早上時間」。 \*根據歷史資料，我明白這段期間應該要有特定數量的 VM 執行個體來處理應用程式的負載。
    * **特殊日期** - 我已新增「產品發行日」設定檔。 \*我會預先針對特定日期作出計畫，好讓應用程式可以準備好處理因應行銷公告，或是當我們將新產品置入應用程式時所導致的負載。
@@ -60,7 +61,7 @@ ms.locfileid: "60787760"
 
     ![Autoscalewad, default autoscale setting, 自動調整, 預設自動調整設定](media/autoscale-virtual-machine-scale-sets/autoscalewad.png)
 
-6. 单击“编辑”。 使用下列組態**取代**自動調整設定中的 'profiles' 元素：
+6. 按一下 [編輯]。 使用下列組態**取代**自動調整設定中的 'profiles' 元素：
 
     ![設定檔](media/autoscale-virtual-machine-scale-sets/profiles.png)
 

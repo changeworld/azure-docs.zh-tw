@@ -1,26 +1,19 @@
 ---
-title: 設定常見問題集 - Azure App Service | Microsoft Docs
-description: 對於 Azure App Service 的 Web 應用程式功能的設定和管理問題，取得常見問題集的解答。
-services: app-service\web
-documentationcenter: ''
+title: 設定常見問題
+description: 取得 Azure App Service 設定和管理問題的常見問題解答。
 author: genlin
-manager: cshepard
-editor: ''
+manager: dcscontentpm
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 88051c45f21bdf11807ffcc63d8248cba81ae70b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 867c011cb3086cab736d17501e72bc477d0d2889
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118440"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82159995"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 中 Web 應用程式的設定和管理常見問題集
 
@@ -30,7 +23,7 @@ ms.locfileid: "56118440"
 
 ## <a name="are-there-limitations-i-should-be-aware-of-if-i-want-to-move-app-service-resources"></a>如果我想要移動 App Service 資源，有應該注意的限制嗎？
 
-如果您打算將 App Service 資源移至新的資源群組或訂用帳戶，有一些要注意的限制。 如需詳細資訊，請參閱 [App Service 限制](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations)。
+如果您打算將 App Service 資源移至新的資源群組或訂用帳戶，有一些要注意的限制。 如需詳細資訊，請參閱 [App Service 限制](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)。
 
 ## <a name="how-do-i-use-a-custom-domain-name-for-my-web-app"></a>如何針對 Web 應用程式使用自訂網域名稱？
 
@@ -42,47 +35,47 @@ ms.locfileid: "56118440"
 若要深入了解如何購買並設定 App Service Web 應用程式的自訂網域，請參閱[購買自訂網域名稱並且在 App Service 中設定](manage-custom-dns-buy-domain.md)。
 
 
-## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>如何上傳及設定 Web 應用程式的現有 SSL 憑證？
+## <a name="how-do-i-upload-and-configure-an-existing-tlsssl-certificate-for-my-web-app"></a>如何? 針對我的 web 應用程式上傳和設定現有的 TLS/SSL 憑證嗎？
 
-若要深入了解如何上傳及設定現有的自訂 SSL 憑證，請參閱[將現有的自訂 SSL 憑證繫結至 Azure Web 應用程式](app-service-web-tutorial-custom-ssl.md#upload)。
+若要瞭解如何上傳和設定現有的自訂 TLS/SSL 憑證，請參閱[將 TLS/ssl 憑證新增至您的 App Service 應用程式](configure-ssl-certificate.md)。
 
 
-## <a name="how-do-i-purchase-and-configure-a-new-ssl-certificate-in-azure-for-my-web-app"></a>如何購買 Web 應用程式的新 SSL 憑證並且在 Azure 中設定？
+## <a name="how-do-i-purchase-and-configure-a-new-tlsssl-certificate-in-azure-for-my-web-app"></a>如何? 在 Azure 中針對我的 web 應用程式購買並設定新的 TLS/SSL 憑證嗎？
 
-若要深入了解如何購買及設定 App Service Web 應用程式的 SSL 憑證，請參閱[將 SSL 憑證新增至您的 App Service 應用程式](web-sites-purchase-ssl-web-site.md)。
+若要瞭解如何購買及設定 App Service web 應用程式的 TLS/SSL 憑證，請參閱[將 tls/ssl 憑證新增至您的 App Service 應用程式](configure-ssl-certificate.md)。
 
 
 ## <a name="how-do-i-move-application-insights-resources"></a>如何移動 Application Insights 資源？
 
 目前，Azure Application Insights 並不支援移動作業。 如果您的原始資源群組包含 Application Insights 資源，則您無法移動該資源。 如果您在嘗試移動 App Service 應用程式時包含 Application Insights 資源，則整個移動作業會失敗。 不過，Application Insights 和 App Service 方案不需要位於與應用程式相同的資源群組，應用程式就能正確運作。
 
-如需詳細資訊，請參閱 [App Service 限制](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations)。
+如需詳細資訊，請參閱 [App Service 限制](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)。
 
 ## <a name="where-can-i-find-a-guidance-checklist-and-learn-more-about-resource-move-operations"></a>可以在哪裡尋找指引檢查清單及深入了解資源移動作業？
 
-[App Service 限制](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations)說明如何將資源移至新的訂用帳戶或相同訂用帳戶中新的資源群組。 您可以取得資源移動檢查清單的相關資訊、深入了解哪些服務支援移動作業，以及深入了解 App Service 限制與其他主題。
+[App Service 限制](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)說明如何將資源移至新的訂用帳戶或相同訂用帳戶中新的資源群組。 您可以取得資源移動檢查清單的相關資訊、深入了解哪些服務支援移動作業，以及深入了解 App Service 限制與其他主題。
 
 ## <a name="how-do-i-set-the-server-time-zone-for-my-web-app"></a>如何設定 Web 應用程式的伺服器時區？
 
 若要設定 Web 應用程式的伺服器時區：
 
-1. 在 Azure 入口網站的 App Service 訂用帳戶中，移至 [應用程式設定] 功能表。
-2. 在 [應用程式設定] 底下，新增以下設定：
+1. 在 Azure 入口網站的 App Service 訂用帳戶中，移至 [應用程式設定]**** 功能表。
+2. 在 [應用程式設定]**** 底下，新增以下設定：
     * 索引鍵 = WEBSITE_TIME_ZONE
-    * 值 = 您想要的時區
-3. 選取 [ **儲存**]。
+    * 值 = 您想要的時區**
+3. 選取 [儲存]。
 
-請參閱[預設時區](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) \(英文\) 一文中的**時區**欄，以取得接受的值。
+針對在 Windows 上執行的應用程式服務，請參閱[預設時區](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)文章中的 [**時區**] 資料行以取得接受的值。 針對在 Linux 上執行的應用程式服務，將[TZ 資料庫名稱](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)設定為時區值。 以下是一個 TZ 資料庫名稱：北美洲/Adak 的範例。
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>為什麼我的持續 WebJobs 有時候會失敗？
 
-根據預設，Web 應用程式如果閒置一段時間，就會卸載。 此舉有助於系統保留資源。 在「基本」和「標準」方案中，您可以開啟 [永遠開啟] 設定，讓 Web 應用程式隨時保持載入。 如果您的 Web 應用程式會執行持續的 WebJobs，就應該開啟 [永遠開啟]，否則 WebJobs 可能無法可靠地執行。 如需詳細資訊，請參閱[建立持續執行 WebJob](webjobs-create.md#CreateContinuous)。
+根據預設，Web 應用程式如果閒置一段時間，就會卸載。 此舉有助於系統保留資源。 在「基本」和「標準」方案中，您可以開啟 [永遠開啟]**** 設定，讓 Web 應用程式隨時保持載入。 如果您的 Web 應用程式會執行持續的 WebJobs，就應該開啟 [永遠開啟]****，否則 WebJobs 可能無法可靠地執行。 如需詳細資訊，請參閱[建立持續執行 WebJob](webjobs-create.md#CreateContinuous)。
 
 ## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>如何取得 Web 應用程式的輸出 IP 位址？
 
 若要取得 Web 應用程式的輸出 IP 位址清單：
 
-1. 在 Azure 入口網站的 Web 應用程式刀鋒視窗中，移至 [屬性] 功能表。
+1. 在 Azure 入口網站的 Web 應用程式刀鋒視窗中，移至 [屬性]**** 功能表。
 2. 搜尋**輸出 IP 位址**。
 
 輸出 IP 位址清單隨即出現。
@@ -91,13 +84,13 @@ ms.locfileid: "56118440"
 
 ## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>如何為 Web 應用程式取得保留或專用輸入 IP 位址？
 
-若要針對向 Azure 應用程式網站進行的輸入呼叫設定專用或保留 IP 位址，請安裝及設定以 IP 為主的 SSL 憑證。
+若要為 Azure 應用程式網站的輸入呼叫設定專用或保留的 IP 位址，請安裝並設定以 IP 為基礎的 TLS/SSL 憑證。
 
 請注意，若要針對輸入呼叫使用專用或保留 IP 位址，您的 App Service 方案必須是「基本」或更高版本的服務方案。
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-outside-azure-such-as-for-a-website-hosted-elsewhere"></a>是否可以將 App Service 憑證匯出以在 Azure 外部使用，例如在其他位置裝載的網站？ 
 
-App Service 憑證被視為 Azure 資源。 它們並不適合在 Azure 服務外部使用。 您無法將它們匯出以在 Azure 外部使用。 如需詳細資訊，請參閱 [App Service 憑證和自訂網域的常見問題集](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview)。
+是，您可以將它們匯出以在 Azure 外部使用。 如需詳細資訊，請參閱 [App Service 憑證和自訂網域的常見問題集](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview)。
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-with-other-azure-cloud-services"></a>是否可以匯出我的 App Service 憑證以與其他 Azure 雲端服務搭配使用？
 
@@ -112,7 +105,7 @@ App Service 憑證被視為 Azure 資源。 它們並不適合在 Azure 服務�
 
 ## <a name="how-do-i-remove-a-header-from-the-http-response"></a>如何從 HTTP 回應移除標題？
 
-若要從 HTTP 回應移除標題，請更新網站的 web.config 檔案。 如需詳細資訊，請參閱[在 Azure 網站上移除標準伺服器標題](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)。
+若要移除 HTTP 回應中的標頭，請更新網站的 web.config 檔案。 如需詳細資訊，請參閱[在 Azure 網站上移除標準伺服器標題](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)。
 
 ## <a name="is-app-service-compliant-with-pci-standard-30-and-31"></a>App Service 是否符合 PCI 標準 3.0 和 3.1 的規範？
 
@@ -132,15 +125,15 @@ PCI DSS 3.1 版憑證需要停用傳輸層安全性 (TLS) 1.0。 目前，停用
 
 若要檢閱 WebJob 記錄：
 
-1. 登入 [Kudu 網站](https://*yourwebsitename*.scm.azurewebsites.net)。
+1. 登入您的**Kudu 網站**（ `https://*yourwebsitename*.scm.azurewebsites.net` ）。
 2. 選取 WebJob。
-3. 選取 [切換輸出] 按鈕。
-4. 若要下載輸出檔案，請選取 [下載] 連結。
-5. 針對個別的執行，選取 [個別叫用]。
-6. 選取 [切換輸出] 按鈕。
+3. 選取 [切換輸出]**** 按鈕。
+4. 若要下載輸出檔案，請選取 [下載]**** 連結。
+5. 針對個別的執行，選取 [個別叫用]****。
+6. 選取 [切換輸出]**** 按鈕。
 7. 選取下載連結。
 
-## <a name="im-trying-to-use-hybrid-connections-with-sql-server-why-do-i-see-the-message-systemoverflowexception-arithmetic-operation-resulted-in-an-overflow"></a>我正在嘗試使用混合式連線與 SQL Server。 為什麼會看到「System.OverflowException：數學運算導致溢位」訊息？
+## <a name="im-trying-to-use-hybrid-connections-with-sql-server-why-do-i-see-the-message-systemoverflowexception-arithmetic-operation-resulted-in-an-overflow"></a>我正在嘗試使用混合式連線與 SQL Server。 為什麼會看到「System.OverflowException：	數學運算導致溢位」訊息？
 
 如果您使用混合式連線來存取 SQL Server (2016 年 5 月 10 日的 Microsoft.NET 更新)，可能會導致連線失敗。 您可能會看到下列訊息：
 
@@ -152,12 +145,9 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 例外狀況是「混合式連線管理員」問題所造成的，該問題在那之後已修正。 請務必[更新混合式連線管理員](https://go.microsoft.com/fwlink/?LinkID=841308)以解決此問題。
 
-## <a name="how-do-i-add-or-edit-a-url-rewrite-rule"></a>如何新增或編輯 URL 重寫規則？
+## <a name="how-do-i-add-a-url-rewrite-rule"></a>如何? 新增 URL 重寫規則？
 
-若要新增或編輯 URL 重寫規則：
-
-1. 設定網際網路資訊服務 (IIS) 管理員，以便連線到您的 App Service Web 應用程式。 若要了解如何將 IIS 管理員連線到 App Service，請參閱[使用 IIS 管理員進行 Azure 網站的遠端管理](https://azure.microsoft.com/blog/remote-administration-of-windows-azure-websites-using-iis-manager/)。
-2. 在 IIS 管理員中，新增或編輯 URL 重寫規則。 若要了解如何新增或編輯 URL 重寫規則，請參閱[建立 URL 重寫模組的重寫規則](https://www.iis.net/learn/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)。
+若要新增 URL 重寫規則，請在**wwwroot**資料夾中建立具有相關設定專案的 web.config 檔案。 如需詳細資訊，請參閱[Azure App Services：瞭解 URL 重寫](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)。
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>如何控制 App Service 的輸入流量？
 
@@ -170,7 +160,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 ## <a name="how-do-i-block-ports-in-an-app-service-web-app"></a>如何封鎖 App Service Web 應用程式中的連接埠？
 
-在 App Service 共用租用戶環境中，因為基礎結構的本質，所以無法封鎖特定連接埠。 TCP 連接埠 4016、4018 和 4020 也可能已經針對 Visual Studio 遠端偵錯而開啟。
+在 App Service 共用租用戶環境中，因為基礎結構的本質，所以無法封鎖特定連接埠。 TCP 埠4020、4022和4024也可能針對 Visual Studio 遠端偵錯程式開啟。
 
 在 App Service Environment 中，您對於輸入與輸出流量有完整控制權。 您可以使用網路安全性群組來限制或封鎖特定連接埠。 如需 App Service Environment 的詳細資訊，請參閱[App Service Environment 簡介](https://azure.microsoft.com/blog/introducing-app-service-environment/)。
 
@@ -185,23 +175,23 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 1. 在 Internet Explorer 中，移至您的網站。 請務必在執行下一個步驟之前登入。 否則，F12 追蹤會擷取敏感性登入資料。
 2. 按下 F12。
-3. 確認 [網路] 索引標籤已選取，然後選取綠色 [播放] 按鈕。
+3. 確認 [網路]**** 索引標籤已選取，然後選取綠色 [播放]**** 按鈕。
 4. 執行重現問題的步驟。
-5. 選取紅色 [停止] 按鈕。
-6. 選取 [儲存] 鈕 (磁片圖示)，並儲存 HAR 檔案 (在 Internet Explorer 和 Microsoft Edge 中) 或者以滑鼠右鍵按一下 HAR 檔案，然後選取 [內容另存為 HAR] \(在 Chrome 中)。
+5. 選取紅色 [停止]**** 按鈕。
+6. 選取 [儲存]**** 鈕 (磁片圖示)，並儲存 HAR 檔案 (在 Internet Explorer 和 Microsoft Edge 中) 或者** 以滑鼠右鍵按一下 HAR 檔案，然後選取 [內容另存為 HAR]**** \(在 Chrome 中)。
 
 ### <a name="f12-console-output"></a>F12 主控台輸出
 
-1. 選取 [主控台] 索引標籤。
-2. 對於包含零個以上項目的每個索引標籤，選取索引標籤 (**錯誤**、**警告**或**資訊**)。 如果沒有選取索引標籤，當您將資料指標移開該索引標籤時，索引標籤圖示是灰色或黑色。
-3. 以滑鼠右鍵按一下窗格的訊息區域，然後選取 [全部複製]。
+1. 選取 [主控台]**** 索引標籤。
+2. 對於包含零個以上項目的每個索引標籤，選取索引標籤 (**錯誤**、**警告**或**資訊**)。 如果未選取索引標籤，則當您將游標移離該索引標籤時，索引標籤圖示會是灰色或黑色。
+3. 以滑鼠右鍵按一下窗格的訊息區域，然後選取 [全部複製]****。
 4. 在檔案中貼上複製的文字，然後儲存檔案。
 
-若要檢視 HAR 檔案，您可以使用 [HAR 檢視器](https://www.softwareishard.com/har/viewer/)。
+若要檢視 HAR 檔案，您可以使用 [HAR 檢視器](http://www.softwareishard.com/har/viewer/)。
 
 ## <a name="why-do-i-get-an-error-when-i-try-to-connect-an-app-service-web-app-to-a-virtual-network-that-is-connected-to-expressroute"></a>為什麼當我嘗試將 App Service Web 應用程式連線到虛擬網路 (已連線到 ExpressRoute) 時遇到錯誤？
 
-如果您嘗試將 Azure Web 應用程式連線到已連線至 Azure ExpressRoute 的虛擬網路，就會失敗。 下列訊息隨即出現：「閘道不是 VPN 閘道。」
+如果您嘗試將 Azure Web 應用程式連線到已連線至 Azure ExpressRoute 的虛擬網路，就會失敗。 會出現下列訊息：「閘道不是 VPN 閘道」。
 
 目前，您對於已連線至 ExpressRoute 的虛擬網路不能使用點對站 VPN 連線。 點對站 VPN 和 ExpressRoute 不能並存在相同的虛擬網路。 如需詳細資訊，請參閱 [ExpressRoute 和站對站 VPN 連線限制](../expressroute/expressroute-howto-coexist-classic.md#limits-and-limitations)。
 
@@ -209,7 +199,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 目前，不支援將 App Service Web 應用程式連線至具有靜態路由 (以原則為基礎) 閘道的虛擬網路。 如果目標虛擬網路已存在，您必須先以動態路由閘道器啟用其點對站 VPN，才能使該虛擬網路與應用程式連線。 如果您的閘道設定為靜態路由，您無法啟用點對站 VPN。 
 
-如需詳細資訊，請參閱[將應用程式與 Azure 虛擬網路整合](web-sites-integrate-with-vnet.md#getting-started)。
+如需詳細資訊，請參閱[將應用程式與 Azure 虛擬網路整合](web-sites-integrate-with-vnet.md)。
 
 ## <a name="in-my-app-service-environment-why-can-i-create-only-one-app-service-plan-even-though-i-have-two-workers-available"></a>為什麼我就算有 2 個可用的背景工作角色，卻還是只能在 App Service Environment 中建立一個 App Service 方案？
 
@@ -222,7 +212,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 有時候，建立 App Service Environment 會失敗。 在此情況下，您會在活動記錄中看到下列錯誤：
 ```
 ResourceID: /subscriptions/{SubscriptionID}/resourceGroups/Default-Networking/providers/Microsoft.Web/hostingEnvironments/{ASEname}
-Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period.”}}
+Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period."}}
 ```
 
 若要解決此問題，請確定下列條件均不成立：
@@ -254,11 +244,11 @@ Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provi
 
 ## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>如何執行 App Service 應用程式的滲透測試？
 
-若要執行滲透測試，請[提交要求](https://portal.msrc.microsoft.com/en-us/engage/pentest)。
+若要執行滲透測試，請[提交要求](https://portal.msrc.microsoft.com/engage/pentest)。
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>如何針對使用流量管理員的 App Service Web 應用程式設定自訂網域名稱？
 
-若要深入了解如何搭配使用自訂網域名稱與 App Service 應用程式 (使用 Azure 流量管理員)，以進行負載平衡，請參閱[設定具有流量管理員之 Azure Web 應用程式的自訂網域名稱](web-sites-traffic-manager-custom-domain-name.md)。
+若要深入了解如何搭配使用自訂網域名稱與 App Service 應用程式 (使用 Azure 流量管理員)，以進行負載平衡，請參閱[設定具有流量管理員之 Azure Web 應用程式的自訂網域名稱](configure-domain-traffic-manager.md)。
 
 ## <a name="my-app-service-certificate-is-flagged-for-fraud-how-do-i-resolve-this"></a>我的 App Service 憑證標示為詐騙。 如何解決這個問題？
 
@@ -266,7 +256,7 @@ Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provi
 
 在 App Service 憑證購買的網域驗證期間，您可能會看到下列訊息：
 
-「您的憑證已標示為可能詐騙。 要求目前正在進行檢閱。 如果憑證在 24 小時內無法成為可使用，請連絡 Azure 支援」。
+「您的憑證已標示為可能的詐欺。 要求目前正在進行檢閱。 如果憑證在 24 小時內無法成為可使用，請連絡 Azure 支援」。
 
 此訊息表示，這個詐騙驗證程序可能需要 24 小時才能完成。 在此期間，您將會持續看到訊息。
 
@@ -292,7 +282,7 @@ Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Gr
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>如何將預設 *.azurewebsites.net 網域重新導向至我的 Azure Web 應用程式的自訂網域？
 
-當您使用 Azure 中的 Web 應用程式建立新網站時，預設 sitename.azurewebsites.net 網域會指派至您的網站。 如果您將自訂主機名稱新增至您的網站，且不想讓使用者能夠存取您的預設 *.azurewebsites.net 網域，您可以重新導向預設 URL。 若要深入了解如何將網站預設網域的所有流量重新導向至自訂網域，請參閱[將預設網域重新導向至 Azure Web 應用程式中的自訂網域](https://zainrizvi.io/blog/block-default-azure-websites-domain/)。
+當您使用 Azure 中的 Web 應用程式建立新網站時，預設 sitename**.azurewebsites.net 網域會指派至您的網站。 如果您將自訂主機名稱新增至您的網站，而不想讓使用者能夠存取您的預設 *. azurewebsites.net 網域，您可以重新導向預設 URL。 若要深入了解如何將網站預設網域的所有流量重新導向至自訂網域，請參閱[將預設網域重新導向至 Azure Web 應用程式中的自訂網域](https://zainrizvi.io/blog/block-default-azure-websites-domain/)。
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>如何判斷安裝在 App Service 中的是哪一個版本的 .NET？
 
@@ -324,4 +314,4 @@ Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Gr
 
 ## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>如何從內部部署環境移轉至 App Service？
 
-若要將網站從 Windows 和 Linux 網頁伺服器移轉至 App Service，您可以使用 Azure App Service 移轉小幫手。 移轉工具會視需要在 Azure 中建立 Web 應用程式和資料庫，然後發佈內容。 如需詳細資訊，請參閱 [Azure App Service 移轉小幫手](https://www.migratetoazure.net/)。
+若要將網站從 Windows 和 Linux 網頁伺服器移轉至 App Service，您可以使用 Azure App Service 移轉小幫手。 移轉工具會視需要在 Azure 中建立 Web 應用程式和資料庫，然後發佈內容。 如需詳細資訊，請參閱 [Azure App Service 移轉小幫手](https://appmigration.microsoft.com/)。

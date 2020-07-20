@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric 映像存放區連接字串 | Microsoft Docs
-description: 了解映像存放區連接字串
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric 映射存放區連接字串
+description: 瞭解映射存放區連接字串，包括其對 Service Fabric 叢集的使用和應用程式。
 author: alexwun
-manager: chackdan
-editor: ''
-ms.assetid: 00f8059d-9d53-4cb8-b44a-b25149de3030
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/27/2018
 ms.author: alexwun
-ms.openlocfilehash: 4a56b48c0041e963b89312c59335b45cabacc1bb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8fc0239dd18fc7071823a129a7dbc4f102023d66
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60720162"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246191"
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>了解 ImageStoreConnectionString 設定
 
@@ -47,7 +38,7 @@ Service Fabric 由許多不同的小組以內部 Microsoft 耗用量的平台開
 
 此外，檔案系統提供者或 Azure 儲存體提供者均不應作為在多個叢集之間共用映像存放區的方法 - 這會導致叢集組態資料損毀，因為每個叢集都可以將衝突的資料寫入至映像存放區。 若要在多個叢集之間共用已佈建的應用程式套件，請改用 [sfpkg][12] 檔案，此檔案可透過下載 URI 上傳至任何外部存放區。
 
-因此，當 ImageStoreConnectionString 可設定時，您只要使用預設設定即可。 透過 Visual Studio 發佈至 Azure 時，參數會自動針對您進行相對應的設定。 針對以程式設計方式部署至 Azure 中裝載的叢集，連接字串一律是 "fabric:ImageStore"。 但是當有疑問時，其值一律能夠藉由 [PowerShell](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclustermanifest)[.NET](https://msdn.microsoft.com/library/azure/mt161375.aspx) 或 [REST](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest) 擷取叢集資訊清單來驗證。 內部部署測試與生產叢集也應該一律設定為使用映像存放區服務提供者。
+因此，當 ImageStoreConnectionString 可設定時，您只要使用預設設定即可。 透過 Visual Studio 發佈至 Azure 時，參數會自動針對您進行相對應的設定。 針對以程式設計方式部署至 Azure 中裝載的叢集，連接字串一律是 "fabric:ImageStore"。 但是當有疑問時，其值一律能夠藉由 [PowerShell](/powershell/module/servicefabric/get-servicefabricclustermanifest)[.NET](/previous-versions/azure/reference/mt161375(v=azure.100)) 或 [REST](/rest/api/servicefabric/get-a-cluster-manifest) 擷取叢集資訊清單來驗證。 內部部署測試與生產叢集也應該一律設定為使用映像存放區服務提供者。
 
 ### <a name="next-steps"></a>後續步驟
 [使用 PowerShell 部署與移除應用程式][10]

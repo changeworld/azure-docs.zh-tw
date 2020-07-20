@@ -1,23 +1,22 @@
 ---
-title: 升級至 Azure 搜尋服務 .NET SDK 版本 3 - Azure 搜尋服務
+title: 升級至 Azure 搜尋服務 .NET SDK 第3版
+titleSuffix: Azure Cognitive Search
 description: 從舊版將程式碼移轉至 Azure 搜尋服務 .NET SDK 版本 3。 了解新功能與必要的程式碼變更。
+manager: nitinme
 author: brjohnstmsft
-manager: jlembicz
-services: search
-ms.service: search
+ms.author: brjohnst
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: d41c2b541bf80448d180a1d081c255e5bf754e5e
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.date: 11/04/2019
+ms.openlocfilehash: 10e6d0a183afdda2bf89014bb72f58d03a3013ec
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147324"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171885"
 ---
-# <a name="upgrading-to-the-azure-search-net-sdk-version-3"></a>升級至 Azure 搜尋服務 .NET SDK 版本 3
+# <a name="upgrade-to-azure-search-net-sdk-version-3"></a>升級至 Azure 搜尋服務 .NET SDK 第3版
 
 <!--- DETAILS in the word doc
 cosmosdb
@@ -26,7 +25,7 @@ Indexer execution result errors no longer have status
 the data source API will no longer return in the response of any REST operation, the connection string specified by the user.
 --->
 
-如果您使用版本 2.0 預覽版或更舊版本的 [Azure 搜尋服務 .NET SDK](https://aka.ms/search-sdk)，本文可協助您將應用程式升級至版本 3。
+如果您使用版本 2.0 預覽版或更舊版本的 [Azure 搜尋服務 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)，本文可協助您將應用程式升級至版本 3。
 
 如需包括範例的 SDK 一般逐步解說，請參閱 [如何從 .NET 應用程式使用 Azure 搜尋服務](search-howto-dotnet-sdk.md)。
 
@@ -42,7 +41,7 @@ Azure 搜尋服務 .NET SDK 版本 3 包含一些從舊版所做的變更。 這
 ## <a name="whats-new-in-version-3"></a>版本 3 的新功能
 Azure 搜尋服務 .NET SDK 版本 3 以最新推出的 Azure 搜尋服務 REST API 版本為目標，特別是 2016-09-01。 這樣可讓您從 .NET 應用程式中使用 Azure 搜尋服務的許多新功能，包括：
 
-* [自訂分析器](https://aka.ms/customanalyzers)
+* [自訂分析器](index-add-custom-analyzers.md)
 * [Azure Blob 儲存體](search-howto-indexing-azure-blob-storage.md)和 [Azure 表格儲存體](search-howto-indexing-azure-tables.md)索引子支援
 * 透過 [欄位對應](search-indexer-field-mappings.md)
 * 可安全地並行更新索引定義、索引子和資料來源的 ETag 支援
@@ -58,7 +57,9 @@ Azure 搜尋服務 .NET SDK 版本 3 以最新推出的 Azure 搜尋服務 REST 
 
 如果建置失敗，您應該會看到如下所示的建置錯誤：
 
-    Program.cs(31,45,31,86): error CS0266: Cannot implicitly convert type 'Microsoft.Azure.Search.ISearchIndexClient' to 'Microsoft.Azure.Search.SearchIndexClient'. An explicit conversion exists (are you missing a cast?)
+```output
+Program.cs(31,45,31,86): error CS0266: Cannot implicitly convert type 'Microsoft.Azure.Search.ISearchIndexClient' to 'Microsoft.Azure.Search.SearchIndexClient'. An explicit conversion exists (are you missing a cast?)
+```
 
 下一個步驟是修正此建置錯誤。 如需有關造成錯誤的原因及修正方式的詳細資料，請參閱[版本 3 的重大變更](#ListOfChanges)。
 
@@ -148,6 +149,6 @@ index.Analyzers = new Analyzer[]
 ## <a name="conclusion"></a>結論
 如需更多有關使用 Azure 搜尋服務 .NET SDK 的詳細資料，請參閱 [.NET 做法](search-howto-dotnet-sdk.md)。
 
-歡迎您提供 SDK 的意見反應。 如果您遇到問題，歡迎說明上尋求[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search)。 如果您發現錯誤，您可以在 [Azure .NET SDK GitHub 儲存機制](https://github.com/Azure/azure-sdk-for-net/issues)中提出問題。 請務必在問題的標題前面加上「[Azure 搜尋服務]」前置詞。
+歡迎您提供 SDK 的意見反應。 如果您遇到問題，歡迎詢問我們[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search)的協助。 如果您發現錯誤，您可以在 [Azure .NET SDK GitHub 儲存機制](https://github.com/Azure/azure-sdk-for-net/issues)中提出問題。 請務必在問題的標題前面加上「[Azure 搜尋服務]」前置詞。
 
 感謝您使用 Azure 搜尋服務！

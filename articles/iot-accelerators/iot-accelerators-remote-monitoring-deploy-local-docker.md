@@ -1,25 +1,24 @@
 ---
-title: 本機部署遠端監視解決方案 - Docker - Azure | Microsoft Docs
+title: 在本機部署遠端監視解決方案-Docker-Azure |Microsoft Docs
 description: 此操作指南會示範如何使用 Docker，將遠端監視解決方案加速器部署到本機電腦，以進行測試和開發。
 author: avneet723
 manager: hegate
-ms.author: avneet723
+ms.author: avneets
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: c00e62e237fe263f54926c8e74fb6211a2e5a4e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 32b47d9d6d45ff471961f55f8159dbe85eae2dce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61447024"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "73888827"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>本機部署遠端監視解決方案加速器 - Docker
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-本文會示範如何將遠端監視解決方案加速器部署到本機電腦，以進行測試和開發。 您可了解如何將微服務部署盪本機的 Docker 容器。 本機微服務部署會使用下列雲端服務：IoT 中樞、Cosmos DB、Azure 串流分析，以及雲端中的 Azure 時間序列深入解析服務。
+本文會示範如何將遠端監視解決方案加速器部署到本機電腦，以進行測試和開發。 您可了解如何將微服務部署盪本機的 Docker 容器。 本機微服務部署使用下列雲端服務：雲端中的 IoT 中樞、Cosmos DB、Azure 串流分析及 Azure 時間序列深入解析服務。
 
 如果您想要在本機電腦上執行 IDE 中的遠端監視解決方案加速器，請參閱[本機部署遠端監視解決方案加速器 - Visual Studio](iot-accelerators-remote-monitoring-deploy-local.md)。
 
@@ -91,12 +90,12 @@ docker rmi <list_of_images>
 
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
 1. 瀏覽至為解決方案建立的**資源群組**。 當您執行 **start.cmd** 指令碼時為解決方案選擇的名稱，就是資源群組的名稱。
-1. 在資源清單中，按一下 [串流分析作業]。
-1. 在串流分析作業 [概觀] 頁面上，按一下 [啟動] 按鈕。 接著，按一下 [啟動] 以立即啟動作業。
+1. 在資源清單中，按一下 [串流分析作業]****。
+1. 在串流分析作業 [概觀]**** 頁面上，按一下 [啟動]**** 按鈕。 接著，按一下 [啟動]**** 以立即啟動作業。
 
 ### <a name="connect-to-the-dashboard"></a>連線至儀表板
 
-若要存取遠端監視解決方案儀表板，請巡覽至`http://localhost:8080`瀏覽器中。 您現在可以使用 Web UI 和本機微服務。
+若要存取遠端監視解決方案儀表板，請在瀏覽器中瀏覽至 `http://localhost:8080`。 您現在可以使用 Web UI 和本機微服務。
 
 ## <a name="clean-up"></a>清除
 

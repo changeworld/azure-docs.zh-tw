@@ -1,124 +1,66 @@
 ---
 title: 將 Azure 監視資料串流至事件中樞
-description: 了解如何在您 Azure 監視資料串流到事件中樞取得資料匯入夥伴 SIEM 或分析工具。
-author: johnkemnetz
+description: 瞭解如何將 Azure 監視資料串流至事件中樞，以將資料帶入合作夥伴 SIEM 或分析工具。
+author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 11/01/2018
-ms.author: johnkem
+ms.date: 11/15/2019
+ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: ab439eb77113c53ab046256dd8d448a18b63f887
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 915df5d6356e2246c8937cb167c8068b00e0917b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60452666"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82854616"
 ---
-# <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>將 Azure 監視資料串流至事件中樞以供外部工具取用
+# <a name="stream-azure-monitoring-data-to-an-event-hub"></a>將 Azure 監視資料串流至事件中樞
+Azure 監視器為 Azure、其他雲端和內部部署中的應用程式和服務，提供完整的完整堆疊監視解決方案。 除了使用 Azure 監視器來分析該資料，並將它運用在不同的監視案例中，您可能需要將它傳送至環境中的其他監視工具。 在大部分情況下，將監視資料串流至外部工具的最有效方法是使用[Azure 事件中樞](/azure/event-hubs/)。 本文提供如何將來自不同來源的監視資料串流至事件中樞的簡短描述，以及詳細指引的連結。
 
-本文會逐步解說如何設定 Azure 環境的不同資料層，使其傳送至單一事件中樞命名空間或事件中樞，再由外部工具收集。
 
-> [!VIDEO https://www.youtube.com/embed/SPHxCgbcvSw]
+## <a name="create-an-event-hubs-namespace"></a>建立事件中樞命名空間
 
-## <a name="what-data-can-i-send-into-an-event-hub"></a>我可以將哪些資料傳送至事件中樞？
+針對任何資料來源設定串流之前，您必須先[建立事件中樞命名空間和事件中樞](../../event-hubs/event-hubs-create.md)。 此命名空間和事件中樞是所有監視資料的目的地。 「事件中樞」命名空間是共用相同存取原則之事件中樞的邏輯群組，非常類似於儲存體帳戶在該儲存體帳戶內有個別的 Blob。 請考慮下列有關用來串流處理監視資料的事件中樞命名空間和事件中樞的詳細資料：
 
-Azure 環境內有數個「層級」的監視資料，而存取每一層資料的方法都略有不同。 一般而言，針對各層的描述如下：
+* 輸送量單位數可讓您擴大事件中樞的輸送量規模。 通常只需要一個輸送量單位。 如果您需要在記錄使用量增加時相應增加，您可以手動增加命名空間的輸送量單位數目，或啟用自動擴大。
+* 分割區數可讓您跨眾多客戶平行處理取用量。 單一資料分割最多可支援20MBps 或大約每秒20000個訊息。 視取用資料的工具而定，可能支援也可能不知支援從多個分割區取用。 如果您不確定要設定的資料分割數目，則可以從四個分割區開始。
+* 您在事件中樞至少設定了7天的訊息保留期。 如果您的取用工具停機時間超過一天，這可確保此工具可以從停止的事件（最多7天）繼續進行。
+* 您應該使用事件中樞的預設取用者群組。 您不需要建立其他取用者群組或使用個別的取用者群組，除非您打算讓兩個不同的工具從相同的事件中樞取用相同的資料。
+* 針對 Azure 活動記錄，您可以挑選事件中樞命名空間，Azure 監視器會在該命名空間內建立名為 [深入解析-_記錄檔-作業記錄_] 的事件中樞。 針對其他記錄類型，您可以選擇現有的事件中樞，或讓 Azure 監視器為每個記錄類別建立事件中樞。
+* 輸出埠5671和5672通常必須在電腦或從事件中樞取用資料的 VNET 上開啟。
 
-- **應用程式監視資料：** 您所撰寫並在 Azure 上執行之程式碼的效能和功能相關資料。 應用程式監視資料的範例包括效能追蹤、應用程式記錄，以及使用者遙測。 應用程式監視資料通常會以下列其中一種方式收集：
-  - 透過使用 [Application Insights SDK](../../azure-monitor/app/app-insights-overview.md) 之類的 SDK 來檢測程式碼。
-  - 透過執行會在執行應用程式的電腦上接聽新應用程式記錄的監視代理程式，例如 [Windows Azure 診斷代理程式](./../../azure-monitor/platform/diagnostics-extension-overview.md)或 [Linux Azure 診斷代理程式](../../virtual-machines/extensions/diagnostics-linux.md)。
-- **來賓 OS 監視資料：** 有關應用程式執行所在作業系統的資料。 客體 OS 監視資料的範例為 Linux syslog 或 Windows 系統事件。 若要收集這類資料，您必須安裝像是 [Windows Azure 診斷代理程式](./../../azure-monitor/platform/diagnostics-extension-overview.md)或 [Linux Azure 診斷代理程式](../../virtual-machines/extensions/diagnostics-linux.md) 這類的代理程式。
-- **Azure 資源監視資料：** 有關 Azure 資源操作的資料。 針對某些 Azure 資源類型 (例如虛擬機器)，在該 Azure 服務內會有要監視的客體 OS 與應用程式。 針對其他 Azure 資源 (例如網路安全性群組)，資源監視資料是最高層級的可用資料 (因為在那些資源中沒有執行任何客體 OS 或應用程式)。 這類資料可使用[資源診斷設定](./../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)來收集。
-- **Azure 訂用帳戶監視資料：** 有關 Azure 訂用帳戶作業和管理的資料，以及有關 Azure 本身健康情況和作業的資料。 [活動記錄](./../../azure-monitor/platform/activity-logs-overview.md)包含大部分的訂用帳戶監視資料，例如服務健康情況事件和 Azure Resource Manager 稽核。 您可以使用記錄設定檔收集此資料。
-- **Azure 租用戶監視資料：** 租用戶層級 Azure 服務的作業相關資料，例如 Azure Active Directory。 Azure Active Directory 稽核和登入是租用戶監視資料的範例。 您也可以使用租用戶診斷設定來收集此資料。
+## <a name="monitoring-data-available"></a>可用的監視資料
+[適用于 Azure 監視器的監視資料來源](data-sources.md)會描述 Azure 應用程式的不同資料層，以及適用于各項的監視資料類型。 下表列出每個層級，以及如何將該資料串流處理至事件中樞的說明。 請遵循提供的連結以取得進一步的詳細資料。
 
-來自任何層的資料都能傳送至事件中樞，然後再提取至夥伴工具。 將資料傳送至事件中樞直接，而另一個處理例如邏輯應用程式可能需要擷取所需的資料，可以設定某些來源。 以下幾節說明如何設定來自每一層的資料，以串流至事件中樞。 當中的步驟均假設您在要監視的層級皆已具有資產。
+| 層 | 資料 | 方法 |
+|:---|:---|:---|
+| [Azure 租用戶](data-sources.md#azure-tenant) | Azure Active Directory 稽核記錄 | 在您的 AAD 租使用者上設定租使用者診斷設定。 如需詳細資訊，請參閱[教學課程：將 Azure Active Directory 記錄串流至 Azure 事件中樞](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。 |
+| [Azure 訂用帳戶](data-sources.md#azure-subscription) | Azure 活動記錄檔 | 建立記錄設定檔，將活動記錄檔事件匯出至事件中樞。  如需詳細資訊，請參閱[將 Azure 平臺記錄串流至 Azure 事件中樞](resource-logs-stream-event-hubs.md)。 |
+| [Azure 資源](data-sources.md#azure-resources) | 平台計量<br> 資源記錄 |這兩種資料都會使用資源診斷設定來傳送至事件中樞。 如需詳細資訊，請參閱[將 Azure 資源記錄串流至事件中樞](resource-logs-stream-event-hubs.md)。 |
+| [作業系統（來賓）](data-sources.md#operating-system-guest) | Azure 虛擬機器 | 在 Azure 中的 Windows 和 Linux 虛擬機器上安裝[Azure 診斷延伸](diagnostics-extension-overview.md)模組。 如需有關 Windows Vm 的詳細資料，請參閱[使用事件中樞在最忙碌路徑中串流 Azure 診斷資料](diagnostics-extension-stream-event-hubs.md)，並[使用 linux 診斷擴充功能來監視計量和記錄](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings)檔，以取得 Linux vm 的詳細資訊。 |
+| [應用程式程式碼](data-sources.md#application-code) | Application Insights | Application Insights 不會提供將資料串流至事件中樞的直接方法。 您可以設定將 Application Insights 資料[連續匯出](../../azure-monitor/app/export-telemetry.md)至儲存體帳戶，然後使用邏輯應用程式將資料傳送至事件中樞，如[使用邏輯應用程式手動串流](#manual-streaming-with-logic-app)中所述。 |
 
-## <a name="set-up-an-event-hubs-namespace"></a>設定事件中樞命名空間
+## <a name="manual-streaming-with-logic-app"></a>使用邏輯應用程式手動串流
+對於無法直接串流至事件中樞的資料，您可以寫入至 Azure 儲存體，然後使用時間觸發的邏輯應用程式，[從 blob 儲存體提取資料](../../connectors/connectors-create-api-azureblobstorage.md#add-action)，並將[它以訊息的形式推送至事件中樞](../../connectors/connectors-create-api-azure-event-hubs.md#add-action)。 
 
-在開始之前，您必須[建立事件中樞命名空間和事件中樞](../../event-hubs/event-hubs-create.md)。 此命名空間和事件中樞是所有監視資料的目的地。 「事件中樞」命名空間是共用相同存取原則之事件中樞的邏輯群組，非常類似於儲存體帳戶在該儲存體帳戶內有個別的 Blob。 請注意幾個與您所建立之事件中樞命名空間和事件中樞相關的詳細資料：
-* 建議您使用「標準事件中樞」命名空間。
-* 一般而言，只需要一個輸送量單位。 如果隨著記錄檔使用量的增加，您需要擴大規模，您一律可以稍後手動增加命名空間的輸送量單位數，或是啟用自動擴大。
-* 輸送量單位數可讓您擴大事件中樞的輸送量規模。 分割區數可讓您跨眾多客戶平行處理取用量。 單一分割區每秒最多可以處理 20 MBps 或大約 20,000 則訊息。 視取用資料的工具而定，可能支援也可能不知支援從多個分割區取用。 如果您不確定要設定多少個分割區，建議您從 4 個分割區開始。
-* 建議您將事件中樞上的訊息保留期設定為 7 天。 如果您的取用工具停止運作的時間超過一天，這可確保該工具能夠在其停止的地方接著執行 (最長可達 7 天的事件)。
-* 建議您使用事件中樞的預設取用者群組。 您不需要建立其他取用者群組或使用個別的取用者群組，除非您打算讓兩個不同的工具從相同的事件中樞取用相同的資料。
-* 就「Azure 活動記錄」而言，您需挑選「事件中樞」命名空間，而「Azure 監視器」就會在該命名空間內建立一個名為 'insights-logs-operationallogs' 的事件中樞。 就其他記錄類型而言，您可以選擇現有的事件中樞 (可讓您重複使用相同的 insights-logs-operationallogs 事件中樞)，或讓「Azure 監視器」為每個記錄分類建立一個事件中樞。
-* 一般而言，必須在從事件中樞取用資料的電腦上開啟連接埠 5671 和 5672。
 
-另請參閱 [Azure 事件中樞常見問題集](../../event-hubs/event-hubs-faq.md)。
+## <a name="partner-tools-with-azure-monitor-integration"></a>具有 Azure 監視器整合的合作夥伴工具
 
-## <a name="azure-tenant-monitoring-data"></a>Azure 租用戶監視資料
+使用 Azure 監視器將監視資料路由傳送至事件中樞，可讓您輕鬆地與外部 SIEM 和監視工具整合。 具有 Azure 監視器整合的工具範例包括下列各項：
 
-Azure 租用戶監視資料目前只適用於 Azure Active Directory。 您可以使用 [Azure Active Directory 報告](../../active-directory/reports-monitoring/overview-reports.md)中的資料，其中包含在特定租用戶內所進行登入活動的歷程記錄，和所做變更的稽核記錄。
+| 工具 | 託管于 Azure | Description |
+|:---|:---| :---|
+|  IBM QRadar | No | Microsoft Azure DSM 與 Microsoft Azure 事件中樞通訊協定均可從 [IBM 支援網站](https://www.ibm.com/support)下載。 您可以在[QRADAR DSM](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)設定深入瞭解與 Azure 的整合。 |
+| Splunk | No | [適用于 Splunk 的 Azure 監視器附加](https://splunkbase.splunk.com/app/3534/)元件是 splunkbase 取得中提供的開放原始碼專案。 檔可在 Splunk 的[Azure 監視器](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)附加元件中取得。<br><br> 如果您無法在 Splunk 實例中安裝附加元件（例如，您使用 proxy 或在 Splunk Cloud 上執行），您可以使用[適用于 Splunk 的 Azure](https://github.com/Microsoft/AzureFunctionforSplunkVS)函式將這些事件轉送至 Splunk HTTP 事件收集器，此功能是由事件中樞的新訊息所觸發。 |
+| sumologic | No | [從事件中樞收集 Azure Audit 應用程式的記錄](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)中有提供設定 SumoLogic 以取用來自事件中樞之資料的指示。 |
+| ArcSight | No | ArcSight Azure 事件中樞智慧連接器可作為[ArcSight 智慧連接器集合](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)的一部分。 |
+| Syslog 伺服器 | No | 如果您想要將 Azure 監視器資料直接串流到 syslog 伺服器，您可以使用以[Azure function 為基礎的解決方案](https://github.com/miguelangelopereira/azuremonitor2syslog/)。
+| LogRhythm | No| [這裡](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)提供設定 LogRhythm 以從事件中樞收集記錄的指示。 
+|Logz.io | Yes | 如需詳細資訊，請參閱[針對在 Azure 上執行的 JAVA 應用程式使用 Logz.io 開始進行監視和記錄](https://docs.microsoft.com/azure/developer/java/fundamentals/java-get-started-with-logzio)
 
-### <a name="azure-active-directory-data"></a>Azure Active Directory 資料
-
-若要將資料從 Azure Active Directory 記錄傳送到事件中樞命名空間，您要設定 AAD 租用戶上的租用戶診斷設定。 [遵循本指南](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)來設定租用戶診斷設定。
-
-## <a name="azure-subscription-monitoring-data"></a>Azure 訂用帳戶監視資料
-
-Azure 訂用帳戶監視資料可用於 [Azure 活動記錄](./../../azure-monitor/platform/activity-logs-overview.md)。 這包含來自 Resource Manager 的建立、更新及刪除作業、可能會影響訂用帳戶中資源的 [Azure 服務健康情況](../../service-health/service-health-overview.md)變更、[資源健康情況](../../service-health/resource-health-overview.md)在狀態上的轉換，以及數種其他類型的訂用帳戶層級事件。 [本文詳細說明 Azure 活動記錄中所出現事件的所有類別](./../../azure-monitor/platform/activity-log-schema.md)。
-
-### <a name="activity-log-data"></a>活動記錄資料
-
-若要將 Azure 活動記錄的資料傳送至事件中樞命名空間，您必須在訂用帳戶上設定記錄設定檔。 [遵循此指南](./activity-logs-stream-event-hubs.md)以在訂用帳戶上設定記錄設定檔。 請為每個要監視的訂用帳戶執行這項操作一次。
-
-> [!TIP]
-> 記錄設定檔目前僅允許您選取事件中樞命名空間，其中會以 'insights-operational-logs' 的名稱建立事件中樞。 目前還不能在記錄設定檔中自行指定事件中樞名稱。
-
-## <a name="azure-resource-metrics-and-diagnostics-logs"></a>Azure 資源計量和診斷記錄
-
-Azure 資源會發出兩種監視資料：
-1. [資源診斷記錄](diagnostic-logs-overview.md)
-2. [計量](data-platform.md)
-
-這兩種資料都會使用資源診斷設定來傳送至事件中樞。 [遵循此指南](diagnostic-logs-stream-event-hubs.md)以在特定資源上設定資源診斷設定。 為每個要收集記錄的資源進行資源診斷設定。
-
-> [!TIP]
-> 您可以使用 Azure 原則以透過[在原則規則中使用 DeployIfNotExists 效果](../../governance/policy/concepts/definition-structure.md#policy-rule)，來確保特定範圍內的每個資源一律會搭配診斷設定進行設定。
-
-## <a name="guest-os-data"></a>客體 OS 資料
-
-您必須安裝代理程式，才能將客體 OS 監視資料傳送至事件中樞。 不論是使用 Windows 或 Linux，您都要在設定檔中指定想傳送至事件中樞的資料，以及要傳送資料的目標事件中樞，並將該設定檔傳遞至 VM 上執行的代理程式。
-
-### <a name="linux-data"></a>Linux 資料
-
-[Linux Azure 診斷代理程式](../../virtual-machines/extensions/diagnostics-linux.md)可用來將 Linux 電腦的監視資料傳送至事件中樞。 若要執行此動作，請在 LAD 設定檔保護的設定 JSON 中，將事件中樞新增為接收裝置。 [請參閱此文章以深入了解將事件中樞接收新增至 Linux Azure 診斷代理程式](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings)。
-
-> [!NOTE]
-> 您無法在入口網站中進行將客體 OS 監視資料串流至事件中樞的設定。 相反地，您必須手動編輯設定檔。
-
-### <a name="windows-data"></a>Windows 資料
-
-[Windows Azure 診斷代理程式](./../../azure-monitor/platform/diagnostics-extension-overview.md)可用來將 Windows 電腦的監視資料傳送至事件中樞。 若要執行此動作，請在 WAD 設定檔的 privateConfig 區段中，將事件中樞新增為接收裝置。 [請參閱此文章以深入了解將事件中樞接收新增至 Windows Azure 診斷代理程式](./../../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md)。
-
-> [!NOTE]
-> 您無法在入口網站中進行將客體 OS 監視資料串流至事件中樞的設定。 相反地，您必須手動編輯設定檔。
-
-## <a name="application-monitoring-data"></a>應用程式監視資料
-
-應用程式監視資料要求您的程式碼需搭配 SDK 進行檢測，因此沒有一般的解決方案可將應用程式監視資料路由至 Azure 中的事件中樞。 不過，[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 是可以用來收集 Azure 應用程式層級資料的其中一個服務。 如果您是使用 Application Insights，便執行下列動作來將監視資料串流至事件中樞：
-
-1. 針對儲存體帳戶[設定連續匯出](../../azure-monitor/app/export-telemetry.md) Application Insights 資料。
-
-2. 設定以計時器觸發的邏輯應用程式，使它能[從 Blob 儲存體提取資料](../../connectors/connectors-create-api-azureblobstorage.md#add-action)，並[以訊息的形式將它推送至事件中樞](../../connectors/connectors-create-api-azure-event-hubs.md#add-action)。
-
-## <a name="what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub"></a>傳送至事件中樞的監視資料有何功用？
-
-使用 Azure 監視器將監視資料路由至事件中樞，可讓您輕鬆與夥伴 SIEM 和監視工具整合。 大部分工具皆需要事件中樞連接字串和 Azure 訂用帳戶的特定權限，才能讀取事件中樞的資料。 可與 Azure 監視器整合的部分工具清單如下：
-
-* **IBM QRadar** - Microsoft Azure DSM 與 Microsoft Azure 事件中樞通訊協定均可從 [IBM 支援網站](https://www.ibm.com/support) \(英文\) 下載。 您可以[從這裡深入了解與 Azure 的整合](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0) \(英文\)。
-* **Splunk** -根據您的 Splunk 安裝程式而定，共有兩種方法：
-    1. [適用於 Splunk 的 Azure 監視器附加元件](https://splunkbase.splunk.com/app/3534/) \(英文\) 可從 Splunkbase 和開放原始碼專案中取得。 [文件在此](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk) \(英文\)。
-    2. 如果您無法在 Splunk 執行個體中安裝附加元件 (例如， 如果使用 Proxy 或在 Splunk Cloud 上執行)，您可以使用[由事件中樞中的新訊息觸發的這個功能](https://github.com/Microsoft/AzureFunctionforSplunkVS)，將這些事件轉寄給 Splunk HTTP Event Collector。
-* **SumoLogic** - 設定 SumoLogic 以從事件中樞取用資料的指示[可從這裡取得](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub) \(英文\)
-* **ArcSight** -「ArcSight Azure 事件中樞」智慧型連接器隨附於[這裡的 ArcSight 智慧型連接器集合](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)。
-* **Syslog 伺服器** - 若要直接將 Azure 監視器資料串流到 syslog 伺服器，您可以查看[此 GitHub 存放庫](https://github.com/miguelangelopereira/azuremonitor2syslog/) \(英文\)。
 
 ## <a name="next-steps"></a>後續步驟
 * [將活動記錄檔封存至儲存體帳戶](../../azure-monitor/platform/archive-activity-log.md)
-* [閱讀 Azure 活動記錄檔的概觀](../../azure-monitor/platform/activity-logs-overview.md)
-* [根據活動記錄檔事件設定警示](../../azure-monitor/platform/alerts-log-webhook.md)
+* [閱讀 Azure 活動記錄的總覽](../../azure-monitor/platform/platform-logs-overview.md)
+* [根據活動記錄事件設定警示](../../azure-monitor/platform/alerts-log-webhook.md)
 
 

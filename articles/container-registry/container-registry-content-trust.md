@@ -1,33 +1,30 @@
 ---
-title: Azure Container Registry 中的內容信任
-description: 了解如何為您的 Azure Container Registry 啟用內容信任，以及推送和提取已簽署的映像。
-services: container-registry
-author: dlepow
-ms.service: container-registry
-ms.topic: quickstart
-ms.date: 08/20/2018
-ms.author: danlep
-ms.openlocfilehash: 1f1e7ce41c00078c0181fc5f32c43b7e5885eef8
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
-ms.translationtype: HT
+title: 管理已簽署的映像
+description: 了解如何為您的 Azure 容器登錄啟用內容信任，並推送及提取已簽署的映像。 內容信任是 Premium 服務層的一項功能。
+ms.topic: article
+ms.date: 09/06/2019
+ms.openlocfilehash: 74bc61f71fc001d5333fcd3c9ac47fa4dd90218c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857664"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84509554"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure Container Registry 中的內容信任
 
-對於任何在設計時將安全性納入考量的分散式系統，都必須對進入系統的資料進行*來源*和*完整性*驗證。 資料的取用者必須要能夠驗證資料的發行者 (來源)，並確定資料在發佈後並未經過修改 (完整性)。 Azure Container Registry 可藉由實作 Docker 的[內容信任][docker-content-trust]模型而支援這兩項作業，本文將為您提供入門解說。
+Azure Container Registry 會實作 Docker 的[內容信任][docker-content-trust]模型，以便能夠推送和提取已簽署的映像。 本文可讓您開始在容器登錄中啟用內容信任。
 
-> [!IMPORTANT]
-> 此功能目前為預覽狀態。 若您同意[補充的使用規定][terms-of-use]，即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
+> [!NOTE]
+> 內容信任是 Azure 容器登錄的[進階服務層](container-registry-skus.md)功能。
 
 ## <a name="how-content-trust-works"></a>內容信任的運作方式
+
+對於在設計時就將安全性納入考量的分散式系統而言，針對進入系統的資料進行*來源*和*完整性*驗證十分重要。 資料的取用者必須要能夠驗證資料的發行者 (來源)，並確定資料在發佈後並未經過修改 (完整性)。 
 
 身為映像發行者，內容信任可讓您**簽署**您推送至登錄的映像。 映像的取用者 (從您的登錄提取映像的人員或系統) 可將其用戶端設定成*僅*提取已簽署的映像。 當映像取用者提取已簽署的映像時，其 Docker 用戶端會驗證映像的完整性。 在此模型中，取用者可確知您的登錄中已簽署的映像確實是由您所發佈，且在發佈後未經修改。
 
 ### <a name="trusted-images"></a>信任的映像
 
-內容信任會使用存放庫中的**標記**。 映像存放庫可包含具有已簽署和未簽署標記的映像。 例如，您可能會僅簽署 `myimage:stable` 和 `myimage:latest` 映像，而未簽署 `myimage:dev`。
+內容信任會與存放庫中的**標記**共同運作。 映像存放庫可包含具有已簽署和未簽署標記的映像。 例如，您可能會僅簽署 `myimage:stable` 和 `myimage:latest` 映像，而未簽署 `myimage:dev`。
 
 ### <a name="signing-keys"></a>簽署金鑰
 
@@ -40,13 +37,13 @@ ms.locfileid: "48857664"
 
 首要步驟是在登錄層級啟用內容信任。 啟用內容信任後，用戶端 (使用者或服務) 即可將已簽署的映像推送至您的登錄。 在您的登錄上啟用內容信任時，並不會限定只有已啟用內容信任的取用者才能使用登錄。 未啟用內容信任的取用者仍可繼續如常使用您的登錄。 不過，已在其用戶端中啟用內容信任的取用者，將*只能*在您的登錄中看到已簽署的映像。
 
-若要為您的登錄啟用內容信任，請先瀏覽至 Azure 入口網站中的登錄。 在 [原則] 下方，選取 [內容信任 (預覽)] > [已啟用] > [儲存]。
+若要為您的登錄啟用內容信任，請先瀏覽至 Azure 入口網站中的登錄。 在 [原則] 下方，選取 [內容信任] > [已啟用] > [儲存]。 您也可以使用 Azure CLI 中的 [az acr config content-trust update][az-acr-config-content-trust-update] 命令。
 
 ![在 Azure 入口網站中為登錄啟用內容信任][content-trust-01-portal]
 
 ## <a name="enable-client-content-trust"></a>啟用用戶端內容信任
 
-若要使用受信任的映像，映像發行者和取用者都必須為其 Docker 用戶端啟用內容信任。 身為發行者，您可以簽署您對已啟用內容信任的登錄推送的映像。 身為取用者，啟用內容信任後，您所能檢視的登錄將僅限於已簽署的映像。 在 Docker 用戶端中依預設會停用內容信任，但您可以依據殼層工作階段或命令加以啟用。
+若要使用受信任的映像，映像發行者和取用者都必須為其 Docker 用戶端啟用內容信任。 身為發行者，您可以簽署已推送至使用內容信任之登錄的映像。 身為取用者，啟用內容信任後，您所能檢視的登錄將僅限於已簽署的映像。 在 Docker 用戶端中依預設會停用內容信任，但您可以依據殼層工作階段或命令加以啟用。
 
 若要啟用殼層工作階段的內容信任，請將 `DOCKER_CONTENT_TRUST` 環境變數設定為 **1**。 例如，在 Bash 殼層中：
 
@@ -71,13 +68,16 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 
 ## <a name="grant-image-signing-permissions"></a>授與映像簽署權限
 
-只有您已授與權限的使用者或系統，才可將信任的映像推送至您的登錄。 若要為使用者 (或使用服務主體的系統) 授與信任的映像推送權限，請為其 Azure Active Directory 身分識別授與 `AcrImageSigner` 角色。 除了 `Contributor` (或 `Owner`) 以外，還需要此角色才能將映像推送至登錄。
+只有您已授與權限的使用者或系統，才可將信任的映像推送至您的登錄。 若要為使用者 (或使用服務主體的系統) 授與信任的映像推送權限，請為其 Azure Active Directory 身分識別授與 `AcrImageSigner` 角色。 除了 `AcrPush` (或對等項目) 以外，還需要此角色才能將映像推送至登錄。 如需詳細資訊，請參閱 [Azure Container Registry 角色和權限](container-registry-roles.md)。
 
-以下是在 Azure 入口網站和 Azure CLI 中授與 `AcrImageSigner` 角色的詳細資料。
+> [!NOTE]
+> 您無法將受信任的映像推送權限授與 Azure 容器登錄的[管理帳戶](container-registry-authentication.md#admin-account)。
+
+下文會詳細說明如何在 Azure 入口網站和 Azure CLI 中授與 `AcrImageSigner` 角色。
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-在 Azure 入口網站中瀏覽至您的登錄，然後選取 [存取控制 (IAM)] > [新增]。 在 [新增權限] 下方，選取 [角色] 下的 `AcrImageSigner`，然後**選取**一或多個使用者或服務主體，再按一下 [儲存]。
+在 Azure 入口網站中瀏覽至您的登錄，然後選取 [存取控制 (IAM)] > [新增角色指派]。 在 [新增角色指派] 下方，選取 [角色] 下的 `AcrImageSigner`，然後**選取**一或多個使用者或服務主體，再按一下 [儲存]。
 
 在此範例中，有兩個實體已被指派 `AcrImageSigner` 角色：名為 "service-principal" 的服務主體，以及名為 "Azure User" 的使用者。
 
@@ -98,7 +98,9 @@ az role assignment create --scope <registry ID> --role AcrImageSigner --assignee
 REGISTRY=myregistry
 USER=$(az account show --query user.name --output tsv)
 REGISTRY_ID=$(az acr show --name $REGISTRY --query id --output tsv)
+```
 
+```azurecli
 az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee $USER
 ```
 
@@ -109,6 +111,9 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 ```
 
 `<service principal ID>` 可以是服務主體的 **appId**、**objectId**，或其 **servicePrincipalNames** 之一。 如需使用服務主體與 Azure Container Registry 的詳細資訊，請參閱[使用服務主體進行 Azure Container Registry 驗證](container-registry-auth-service-principal.md)。
+
+> [!IMPORTANT]
+> 進行任何角色變更之後，請執行 `az acr login` 來重新整理 Azure CLI 的本機身分識別權杖，以便讓新的角色生效。 如需驗證身分識別角色的相關資訊，請參閱[使用 RBAC 與 Azure CLI 管理對 Azure 資源的存取權](../role-based-access-control/role-assignments-cli.md)以及[針對適用於 Azure 資源的 RBAC 進行疑難排解](../role-based-access-control/troubleshooting.md)。
 
 ## <a name="push-a-trusted-image"></a>推送信任的映像
 
@@ -138,7 +143,7 @@ Successfully signed myregistry.azurecr.io/myimage:v1
 
 ## <a name="pull-a-trusted-image"></a>提取信任的映像
 
-若要提取的信任的映像，請啟用內容信任，並如常執行 `docker pull` 命令。 已啟用內容信任的取用者只能提取具有已簽署標記的映像。 以下範例說明如何提取已簽署的標記︰
+若要提取的信任的映像，請啟用內容信任，並如常執行 `docker pull` 命令。 若要提取受信任的映像，`AcrPull` 角色已足供一般使用者使用。 不需要任何其他角色，如 `AcrImageSigner` 角色。 已啟用內容信任的取用者只能提取具有已簽署標記的映像。 以下範例說明如何提取已簽署的標記︰
 
 ```console
 $ docker pull myregistry.azurecr.io/myimage:signed
@@ -169,7 +174,7 @@ No valid trust data for unsigned
 ~/.docker/trust/private
 ```
 
-請將您的根金鑰和存放庫金鑰壓縮在封存中，並儲存到安全的離線位置 (例如 USB 儲存裝置上)，而加以備份。 例如，在 Bash 中：
+將根金鑰和存放庫金鑰壓縮在封存檔中，並儲存於安全的位置，加以備份。 例如，在 Bash 中：
 
 ```bash
 umask 077; tar -zcvf docker_private_keys_backup.tar.gz ~/.docker/trust/private; umask 022
@@ -179,20 +184,20 @@ umask 077; tar -zcvf docker_private_keys_backup.tar.gz ~/.docker/trust/private; 
 
 ### <a name="lost-root-key"></a>遺失的根金鑰
 
-如果您無法存取根金鑰，您將無法對任何以該金鑰簽署標記的存放庫存取已簽署的標記。 Azure Container Registry 無法對以遺失的根金鑰簽署的映像標記進行存取權還原。 若要移除登錄的所有信任資料 (簽章)，請先停用登錄的內容信任，然後再重新啟用。
+一旦您遺失了根金鑰，則在以該金鑰簽署標記的存放庫中，您都無法再度存取任何已簽署的標記。 Azure Container Registry 無法對以遺失的根金鑰簽署的映像標記進行存取權還原。 若要移除登錄的所有信任資料 (簽章)，請先停用登錄的內容信任，然後再重新啟用。
 
 > [!WARNING]
-> 在您的登錄中停用並重新啟用內容信任，會對**您的登錄每個存放庫中所有的已簽署標記刪除所有的信任資料**。 此動作無法復原--Azure Container Registry 無法復原已刪除的信任資料。 停用內容信任並不會刪除映像本身。
+> 在您的登錄中停用並重新啟用內容信任，**會把該登錄中各存放庫裡所有已簽署標記的信任資料全都刪除**。 此動作無法復原--Azure Container Registry 無法復原已刪除的信任資料。 停用內容信任並不會刪除映像本身。
 
-若要為您的登錄停用內容信任，請瀏覽至 Azure 入口網站中的登錄。 在 [原則] 下方，選取 [內容信任 (預覽)] > [已停用] > [儲存]。 系統會警告您登錄中的所有簽章都將遺失。 選取 [確定] 會永久刪除您登錄中的所有簽章。
+若要為您的登錄停用內容信任，請瀏覽至 Azure 入口網站中的登錄。 在 [原則] 下方，選取 [內容信任] > [已停用] > [儲存]。 系統會警告您登錄中的所有簽章都將遺失。 選取 [確定] 會永久刪除您登錄中的所有簽章。
 
 ![在 Azure 入口網站中為登錄停用內容信任][content-trust-03-portal]
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱 Docker 文件，以取得關於內容信任的其他資訊。 本文已討論若干要點，但內容信任涉及的主題十分廣泛，這在 Docker 文件中會有更深入的說明。
+* 請參閱 [Docker 中的內容信任][docker-content-trust]，以取得關於內容信任的其他資訊。 本文已討論若干要點，但內容信任涉及的主題十分廣泛，這在 Docker 文件中會有更深入的說明。
 
-[Docker 中的內容信任][docker-content-trust]
+* 在建置和推送 Docker 映像時如需使用內容信任的範例，請參閱 [Azure Pipelines](/azure/devops/pipelines/build/content-trust) 文件。
 
 <!-- IMAGES> -->
 [content-trust-01-portal]: ./media/container-registry-content-trust/content-trust-01-portal.png
@@ -209,3 +214,4 @@ umask 077; tar -zcvf docker_private_keys_backup.tar.gz ~/.docker/trust/private; 
 
 <!-- LINKS - internal -->
 [azure-cli]: /cli/azure/install-azure-cli
+[az-acr-config-content-trust-update]: /cli/azure/acr/config/content-trust#az-acr-config-content-trust-update

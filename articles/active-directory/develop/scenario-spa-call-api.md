@@ -1,36 +1,31 @@
 ---
-title: 單一頁面應用程式 （呼叫 web API）-Microsoft 身分識別平台
-description: 了解如何建置單一頁面應用程式 （呼叫 web API）
+title: 建立單一頁面應用程式，以呼叫 Web API-Microsoft 身分識別平臺 |Azure
+description: 瞭解如何建立單一頁面應用程式，以呼叫 Web API
 services: active-directory
-documentationcenter: dev-center-name
-author: CelesteDG
+author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/06/2019
-ms.author: CelesteDG
+ms.author: ryanwi
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01f141a5374c0e794b264f6e0135ca3e15ff8359
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
-ms.translationtype: MT
+ms.openlocfilehash: 5b70b109f43e80fc3ec68f52aef2dba6823033bb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65074841"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80882126"
 ---
-# <a name="single-page-application---call-a-web-api"></a>單一頁面應用程式層 web API 的呼叫
+# <a name="single-page-application-call-a-web-api"></a>單一頁面應用程式：呼叫 Web API
 
-我們建議您呼叫`acquireTokenSilent`取得，或更新存取權杖呼叫 web API 之前的方法。 語彙基元之後，您可以呼叫受保護的 web API。
+我們建議您在 `acquireTokenSilent` 呼叫 Web API 之前，先呼叫方法來取得或更新存取權杖。 有了權杖之後，您就可以呼叫受保護的 Web API。
 
 ## <a name="call-a-web-api"></a>呼叫 Web API
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-請使用為 HTTP 要求中的持有人取得的存取權杖呼叫 Microsoft 圖形 API 等任何 web API。 例如︰
+使用取得的存取權杖做為 HTTP 要求中的持有人，以呼叫任何 Web API，例如 Microsoft Graph API。 例如：
 
 ```javascript
     var headers = new Headers();
@@ -48,9 +43,11 @@ ms.locfileid: "65074841"
         }
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angular"></a>[Angular](#tab/angular)
 
-中所述[取得權杖 區段](scenario-spa-acquire-token.md)，MSAL Angular 的包裝函式會利用 HTTP 攔截器會自動以無訊息方式取得存取權杖，並將它們附加至 Api 的 HTTP 要求。
+MSAL 角度包裝函式會利用 HTTP 攔截器，以無訊息方式自動取得存取權杖，並將它們附加至 Api 的 HTTP 要求。 如需詳細資訊，請參閱[取得權杖以呼叫 API](scenario-spa-acquire-token.md)。
+
+---
 
 ## <a name="next-steps"></a>後續步驟
 

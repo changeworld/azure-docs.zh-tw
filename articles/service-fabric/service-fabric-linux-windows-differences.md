@@ -1,25 +1,14 @@
 ---
-title: Linux 與 Windows 之間的 Azure Service Fabric 差異 | Microsoft Docs
+title: Azure Service Fabric Linux 與 Windows 之間的差異
 description: Linux 上的 Azure Service Fabric 與 Windows 上的 Azure Service Fabric 之間的差異。
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 829a3ea6e8fafa24831f1731e402a3991c0258c7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom: sfrev
+ms.openlocfilehash: c064291491110b17c172a561afbd1e65d6c08d06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60719986"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "75748538"
 ---
 # <a name="differences-between-service-fabric-on-linux-and-windows"></a>Linux 與 Windows 上的 Service Fabric 差異
 
@@ -31,6 +20,7 @@ Windows 上支援的一些功能，在 Linux 上尚未提供支援。 最終，�
 * Linux 上的錯誤分析服務 (FAS)
 * Service Fabric 服務的 DNS 服務 (Linux 上的容器支援 DNS 服務)
 * 特定 Powershell 命令的 CLI 命令對等項目 (在下面的清單中，大多數項目只適用於獨立叢集)
+* [可能影響擴充性的記錄檔執行差異](service-fabric-concepts-scalability.md#choosing-a-platform)
 
 ## <a name="powershell-cmdlets-that-do-not-work-against-a-linux-service-fabric-cluster"></a>無法針對 Linux Service Fabric 叢集運作的 Powershell Cmdlet
 
@@ -87,11 +77,10 @@ Windows 上支援的一些功能，在 Linux 上尚未提供支援。 最終，�
 * Stop-ServiceFabricRepairTask
 * Update-ServiceFabricRepairTaskHealthPolicy
 
-
-
 ## <a name="next-steps"></a>後續步驟
+
 * [在 Linux 上準備您的開發環境](service-fabric-get-started-linux.md)
-* [在 OSX 上准备开发环境](service-fabric-get-started-mac.md)
+* [在 OSX 上準備您的開發環境](service-fabric-get-started-mac.md)
 * [使用 Yeoman 在 Linux 上建立和部署第一個 Service Fabric Java 應用程式](service-fabric-create-your-first-linux-application-with-java.md)
 * [在 Linux 上使用適用於 Eclipse 的 Service Fabric 外掛程式建立和部署第一個 Service Fabric Java 應用程式](service-fabric-get-started-eclipse.md)
 * [在 Linux 上建立第一個 CSharp 應用程式](service-fabric-create-your-first-linux-application-with-csharp.md)

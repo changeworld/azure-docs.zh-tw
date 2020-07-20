@@ -1,27 +1,26 @@
 ---
-title: 在適用於 Visual Studio 的 Data Lake 工具中使用 Vertex 執行檢視
+title: 適用于 Visual Studio 的 Data Lake 工具中的頂點執行視圖
 description: 本文描述如何使用頂點執行檢視來測驗 Data Lake Analytics 作業。
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: mumian
-ms.author: jgao
-ms.reviewer: jasonwhowell
+author: jasonwhowell
+ms.author: jasonh
 ms.assetid: 5366d852-e7d6-44cf-a88c-e9f52f15f7df
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/13/2016
-ms.openlocfilehash: 73314c5864e3036d102deee2792021345b80bf2e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2dfb03a1b3e0f2bf1146a65627247256125480a2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60687727"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120104"
 ---
 # <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>在適用於 Visual Studio 的 Data Lake 工具中使用 Vertex 執行檢視
 了解如何使用頂點執行檢視測驗 Data Lake Analytics 作業。
 
 
 ## <a name="open-the-vertex-execution-view"></a>開啟頂點執行檢視
-在 Data Lake Tools for Visual Studio 中開啟 U-SQL 作業。 按一下左下角的 [頂點執行檢視]。 系統可能會提示您先載入設定檔，這可能需要一些時間，視您的網路連線而定。
+在 Data Lake Tools for Visual Studio 中開啟 U-SQL 作業。 按一下左下角的 [頂點執行檢視]****。 系統可能會提示您先載入設定檔，這可能需要一些時間，視您的網路連線而定。
 
 ![Data Lake Analytics 工具頂點執行檢視](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-open-vertex-execution-view.png)
 
@@ -39,13 +38,13 @@ ms.locfileid: "60687727"
 ![Data Lake Analytics 工具頂點執行檢視](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane3.png)
 
 正下方的窗格顯示每個頂點的相關資訊：
-* 處理序名稱：頂點執行個體的名稱。 由 StageName|VertexName|VertexRunInstance 中的不同部分組成。 例如，SV7_Split[62].v1 頂點表示階段 SV7_Split 中第 62 號頂點的第二個執行中執行個體 (.v1，從 0 開始編制索引)。
-* 總資料讀取/寫入：資料是讀取/寫入此頂點。
-* 狀態/結束狀態：頂點結束時的則為最終狀態。
-* 結束代碼/失敗類型：頂點失敗時的錯誤。
+* 處理序名稱︰頂點執行個體的名稱。 由 StageName|VertexName|VertexRunInstance 中的不同部分組成。 例如，SV7_Split[62].v1 頂點表示階段 SV7_Split 中第 62 號頂點的第二個執行中執行個體 (.v1，從 0 開始編制索引)。
+* 總資料讀取/寫入︰此頂點讀取/寫入的資料。
+* 狀態/結束狀態︰頂點結束時的最終狀態。
+* 結束代碼/失敗類型︰頂點失敗時的錯誤。
 * 建立原因︰為什麼建立頂點。
 * 資源延遲/處理序延遲/PN 佇列延遲︰頂點等待資源、處理資料以及保持在佇列中所花費的時間。
-* 處理序/建立者 GUID:目前執行的頂點或其建立者的 GUID。
+* 處理序/建立者 GUID：目前執行的頂點或其建立者的 GUID。
 * 版本︰執行中頂點的第 N 個執行個體 (系統可能會針對許多原因排程頂點的新執行個體，例如容錯移轉、計算備援等等。)
 * 版本建立時間。
 * 處理序建立開始時間/處理序佇列時間/處理序開始時間/處理序完成時間：頂點處理序開始建立時；頂點處理序開始佇列時；特定頂點處理序開始時；特定頂點完成時。

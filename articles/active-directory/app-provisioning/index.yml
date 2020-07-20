@@ -1,0 +1,67 @@
+### YamlMime:Landing
+title: 應用程式和 HR 佈建文件
+summary: Azure Active Directory 應用程式佈建可讓您在雲端 (SaaS) 應用程式中自動建立和管理使用者身分識別。 Azure AD 也提供雲端式人力資源 (HR) 應用程式的佈建功能。 了解如何使用我們的快速入門、教學課程和指引，來管理及部署雲端應用程式和 HR 佈建。
+metadata:
+  title: 應用程式佈建文件
+  description: Azure Active Directory 應用程式佈建可讓您在雲端 (SaaS) 應用程式中自動建立和管理使用者身分識別。 Azure AD 也提供雲端式人力資源 (HR) 應用程式的佈建功能。 了解如何使用我們的快速入門、教學課程和指引，來管理及部署雲端應用程式和 HR 佈建。
+  ms.service: active-directory
+  ms.subservice: app-provisioning
+  ms.workload: identity
+  ms.topic: landing-page
+  ms.date: 02/06/2020
+  author: msmimart
+  ms.author: mimart
+  manager: celested
+  ms.openlocfilehash: 0b6b3829f4111c57e20f495be962357832a5bfcd
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "77522461"
+landingContent:
+- title: 將使用者和群組佈建到雲端應用程式
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是應用程式佈建？
+      url: user-provisioning.md
+    - text: 佈建運作方式
+      url: how-provisioning-works.md
+  - linkListType: tutorial
+    links:
+    - text: SAP Cloud Platform Identity Authentication 佈建
+      url: /azure/active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - text: Oracle Fusion ERP 佈建
+      url: /azure/active-directory/saas-apps/oracle-fusion-erp-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - text: Atlassian Cloud 佈建
+      url: /azure/active-directory/saas-apps/atlassian-cloud-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+  - linkListType: how-to-guide
+    links:
+    - text: 要新增資源庫應用程式？ 設定佈建至應用程式
+      url: configure-automatic-user-provisioning-portal.md
+    - text: 自訂屬性對應
+      url: customize-application-attributes.md
+    - text: 使用範圍篩選器
+      url: define-conditional-rules-for-provisioning-user-accounts.md
+- title: 使用 SCIM 開發應用程式以進行佈建
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 使用 SCIM 進行佈建 (身分識別標準部落格)
+      url: https://techcommunity.microsoft.com/t5/identity-standards-blog/provisioning-with-scim-getting-started/ba-p/880010
+  - linkListType: how-to-guide
+    links:
+    - text: 要開發應用程式嗎？ 使用 SCIM 進行自動化佈建
+      url: use-scim-to-provision-users-and-groups.md
+- title: 管理雲端 HR 輸入佈建
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 規劃雲端 HR 使用者佈建部署
+      url: plan-cloud-hr-provision.md
+  - linkListType: tutorial
+    links:
+    - text: Workday 佈建
+      url: /azure/active-directory/saas-apps/workday-inbound-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - text: SAP SuccessFactors 佈建
+      url: /azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context

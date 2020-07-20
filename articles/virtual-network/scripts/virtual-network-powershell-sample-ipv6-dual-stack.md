@@ -1,7 +1,7 @@
 ---
-title: Azure PowerShell 指令碼範例-設定 IPv6 虛擬網路端點 （預覽）
+title: Azure PowerShell 腳本範例-設定 IPv6 端點
 titlesuffix: Azure Virtual Network
-description: 啟用使用 Powershell 在 Azure 虛擬網路的 IPv6 端點
+description: 在 Azure 中使用 Powershell 啟用 IPv6 端點虛擬網路
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -10,33 +10,34 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 04/22/2019
+ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 87c80857a1d4321768d9e0cdefa48d06c4d16a52
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: MT
+ms.openlocfilehash: 5e8102cbf89d601c027e3b969c1c431da8807018
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63761470"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "77201353"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>設定虛擬網路指令碼範例 （預覽） 中的 IPv6 端點
+# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>在虛擬網路中設定 IPv6 端點腳本範例（預覽）
 
-本文說明如何部署雙重堆疊 （IPv4 + IPv6） 中的應用程式包含具有雙重堆疊子網路，使用雙 （IPv4 + IPv6） 前端組態，具有有雙重 IP 組態的 Nic 的 Vm 負載平衡器的雙重堆疊虛擬網路的 Azure雙重的網路安全性群組規則和 「 雙重的公用 Ip。
+本文說明如何在 Azure 中部署雙重堆疊（IPv4 + IPv6）應用程式，其中包含具有雙重堆疊子網的雙協定堆疊虛擬網路、具有雙重（IPv4 + IPv6）前端設定的負載平衡器、具有雙重 IP 設定的 Vm、雙重網路安全性群組規則，以及雙重公用 Ip。
 
-您可以從 Azure [Cloud Shell](https://shell.azure.com/powershell) 或從本機的 PowerShell 安裝來執行指令碼。 如果您在本機使用 PowerShell，此指令碼需要 Azure Az PowerShell 模組版本 1.0.0 或更新版本。 若要尋找已安裝的版本，請執行 `Get-Module -ListAvailable Az`。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
+您可以從 Azure [Cloud Shell](https://shell.azure.com/powershell) 或從本機的 PowerShell 安裝來執行指令碼。 如果您在本機使用 PowerShell，此腳本需要 Azure Az PowerShell 模組1.0.0 版或更新版本。 若要尋找已安裝的版本，請執行 `Get-Module -ListAvailable Az`。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>必要條件
-部署在 Azure 中的雙重堆疊應用程式之前，您必須設定您訂用帳戶一次這項預覽功能使用下列 Azure PowerShell:
+在 Azure 中部署雙重堆疊應用程式之前，您必須使用下列 Azure PowerShell，只為此預覽功能設定訂用帳戶一次：
 
-註冊，如下所示：
+如下所示進行註冊：
 ```azurepowershell
 Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
+Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
 ```
-需要 30 分鐘才能完成功能註冊。 您可以執行下列 Azure PowerShell 命令來檢查您的註冊狀態：檢查註冊，如下所示：
+需要 30 分鐘才能完成功能註冊。 您可以執行下列 Azure PowerShell 命令來檢查註冊狀態：檢查註冊，如下所示：
 ```azurepowershell
 Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
+Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
 ```
 註冊完成之後，請執行下列命令：
 
@@ -248,7 +249,7 @@ Remove-AzResourceGroup -Name <resourcegroupname> -Force
 
 此指令碼使用下列命令來建立資源群組、虛擬機器、可用性設定組、負載平衡器和所有相關資源。 下表中的每個命令都會連結至命令特定的文件。
 
-| 命令 | 注意 |
+| Command | 注意 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 建立用來存放所有資源的資源群組。 |
 | [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | 建立子網路組態。 此組態可使用於虛擬網路建立程序。 |
@@ -257,11 +258,10 @@ Remove-AzResourceGroup -Name <resourcegroupname> -Force
 | [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer)  | 建立 Azure 負載平衡器。 |
 | [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) | 建立負載平衡器探查。 負載平衡器探查是用來監視負載平衡器集合中的每部 VM。 如有任何 VM 變得無法存取，就不會將流量路由至該 VM。 |
 | [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) | 建立負載平衡器規則。 在此範例中，會為連接埠 80 建立規則。 HTTP 流量到達負載平衡器時，它會路由傳送至負載平衡器集內其中一個 VM 的連接埠 80。 |
-| [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) | 建立負載平衡器網路位址轉譯 (NAT) 規則。  NAT 規則會將負載平衡器的連接埠對應至 VM 上的連接埠。 在此範例中，會為傳送到負載平衡器集合中每部 VM 的 SSH 流量建立 NAT 規則。  |
 | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | 建立網路安全性群組 (NSG)，做為網際網路和虛擬機器之間的安全性界限。 |
 | [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) | 建立允許輸入流量的 NSG 規則。 在此範例中，會開放連接埠 22 供 SSH 流量使用。 |
 | [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) | 建立虛擬網路卡，並將它連接至虛擬網路、子網路及 NSG。 |
-| [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) | 建立可用性設定組。 可用性設定組會將虛擬機器分散到實體資源，使得發生失敗時，不會影響整個集合，以確保應用程式執行時間。 |
+| [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) | 建立可用性設定組。 可用性設定組藉由將虛擬機器分散到實體資源來確保應用程式執行時間，如此一來，如果發生失敗，整個集合就不會受到影響。 |
 | [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) | 建立 VM 組態。 此組態包括 VM 名稱、作業系統和系統管理認證等資訊。 建立 VM 時會使用此組態。 |
 | [New-AzVM](/powershell/module/az.compute/new-azvm)  | 建立虛擬機器，並將它連線到網路卡、虛擬網路、子網路及 NSG。 此命令也會指定要使用的虛擬機器映像和管理認證。  |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 刪除資源群組，包括所有的巢狀資源。 |

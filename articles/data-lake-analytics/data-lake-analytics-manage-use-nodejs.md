@@ -7,27 +7,27 @@ author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: 9de1bcf4-b15b-4d0b-9284-8889ecf0c438
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: 3b5b11b148910e9bd1348b20a25fa8383fc2ec9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f821f8f8fddfafbdba060fd3f9940ce32c138755
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60812746"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121345"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-sdk-for-nodejs"></a>使用 Node.js 的 Azure SDK 管理 Azure 資料湖分析
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
 本文說明如何使用以 Azure SDK for Node.js 所撰寫的應用程式，來管理 Azure Data Lake Analytics 帳戶、資料來源、使用者和作業。 
 
-支援的版本如下：
-* **Node.js 版本：0.10.0 或更新版本**
+下面是支援的版本：
+* **Node.js 版本：0.10.0 或更高版本**
 * **帳戶的 REST API 版本：2015-10-01-preview**
 * **目錄的 REST API 版本：2015-10-01-preview**
 * **作業的 REST API 版本：2016-03-20-preview**
 
-## <a name="features"></a>特性
+## <a name="features"></a>功能
 * 帳戶管理：建立、取得、列出、更新及刪除。
 * 作業管理︰提交、取得、列出及取消。
 * 目錄管理：取得及列出。
@@ -129,7 +129,5 @@ catalogClient.catalog.listDatabases(accountName, function (err, result, request,
 });
 ```
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 * [Microsoft Azure SDK for Node.js](https://github.com/azure/azure-sdk-for-node)
-* [Microsoft Azure SDK for Node.js - Data Lake Store 管理](https://github.com/Azure/azure-sdk-for-node/tree/autorest/lib/services/dataLake.Store)
-

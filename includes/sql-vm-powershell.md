@@ -4,12 +4,12 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: mikeray
-ms.openlocfilehash: 3dc799ecc75589279c8d1c73062a8f2157761330
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: c6666f4417cde9e0f77cc965ded1d6bdb5dced34
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56212960"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "67173937"
 ---
 ## <a name="start-your-powershell-session"></a>啟動 PowerShell 工作階段
  

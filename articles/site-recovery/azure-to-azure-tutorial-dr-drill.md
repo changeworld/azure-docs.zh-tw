@@ -1,55 +1,56 @@
 ---
-title: 使用 Azure Site Recovery 服務執行 Azure VM 到次要 Azure 區域的災害復原演練
-description: 了解如何使用 Azure Site Recovery 服務為 for Azure IaaS VM 執行 Azure VM 到次要 Azure 區域的災害復原演練。
+title: 使用 Azure Site Recovery 執行 Azure VM 災害復原演練
+description: 了解如何使用 Azure Site Recovery 服務執行 Azure VM 到次要 Azure 區域的災害復原演練。
 services: site-recovery
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
-ms.author: raynew
+ms.date: 01/16/2020
 ms.custom: mvc
-ms.openlocfilehash: 16c791287cc50b5ac8992a86f6de1e3eeb5e329e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b2ce157f0f192135ab0507e4aae4c0a282bda1ea
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59260267"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "76166184"
 ---
-# <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>執行 Azure VM 到次要 Azure 區域的災害復原演練
+# <a name="run-a-disaster-recovery-drill-to-a-secondary-region-for-azure-vms"></a>執行 Azure VM 到次要 Azure 區域的災害復原演練
 
 [Azure Site Recovery](site-recovery-overview.md) 服務藉由確保您的商務應用程式可在計劃性與非計劃性中斷期間持續啟動並執行，來提供商務持續性和災害復原 (BCDR) 策略。 Site Recovery 會管理並協調內部部署機器和 Azure 虛擬機器 (VM) 的災害復原，包括複寫、容錯移轉和復原。
 
-本教學課程說明如何使用測試容錯移轉，執行 Azure VM 的災害復原演練 (從一個 Azure 區域到另一個區域)。 此演練會驗證不遺失資料或不停機的複寫策略，並且不會影響您的生產環境。 在本教學課程中，您了解如何：
+本教學課程說明如何使用測試容錯移轉，執行 Azure VM 的災害復原演練 (從一個 Azure 區域到另一個區域)。 此演練會驗證不遺失資料或不停機的複寫策略，並且不會影響您的生產環境。 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 檢查必要條件
 > * 執行單一 VM 測試容錯移轉
 
 > [!NOTE]
-> 本教學課程旨在透過最少的步驟來引導使用者執行 DR 演練；如果您想要深入了解執行 DR 演練的各個相關層面，包括網路功能考量、自動化或疑難排解，請參閱 Azure VM 的「操作說明」文件。
+> 本教學課程可協助您以最少的步驟執行災害復原演練。 若要深入了解有關於執行災害復原演練的各種功能，請參閱 Azure VM 的[複寫](azure-to-azure-how-to-enable-replication.md)、[網路](azure-to-azure-about-networking.md)、[自動化](azure-to-azure-powershell.md)或 [疑難排解](azure-to-azure-troubleshoot-errors.md)的相關文件。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- 在您執行測試容錯移轉之前，建議您驗證 VM 屬性並確定一切如同預期。  在 [複寫的項目] 中存取 VM 屬性。 [程式集]  刀鋒視窗會顯示機器設定與狀態的相關資訊。
+進行本教學課程之前，請先確認下列事項：
+
+- 在執行測試容錯移轉之前，建議您先檢查 VM 的屬性，以確定 VM 已進行災害復原的相關設定。 移至 VM 的 [作業]   > [災害復原]   > [屬性]  ，以檢視複寫和容錯移轉屬性。
 - **建議您針對測試容錯移轉，使用個別的 Azure VM 網路**，而非在您啟用複寫時所設定的預設網路。
-
+- 根據您對每個 NIC 所做的來源網路設定，您可以指定 [子網路]  、[私人 IP 位址]  、[公用 IP]  、[網路安全性群組]  或 [負載平衡器]  ，以在執行災害復原演練之前，將其連結至 [計算與網路]  中的測試容錯移轉設定底下的每個 NIC。
 
 ## <a name="run-a-test-failover"></a>執行測試容錯移轉
 
-1. 在 [設定] > [複寫的項目] 中，按一下 [VM] [+測試容錯移轉]圖示。
+此範例說明如何使用復原服務保存庫來執行 VM 測試容錯移轉。
 
-2. 在 [測試容錯移轉] 中，選取要用於容錯移轉的復原點：
-
-   - **最近處理**：將 VM 容錯移轉到 Site Recovery 服務所處理的最新復原點。 隨即顯示時間戳記。 使用此選項時，無須花費時間處理資料，因此它會提供低 RTO (復原時間目標)。
+1. 選取保存庫，並移至 [受保護的項目]   > [複寫的項目]  ，然後選取 VM。
+1. 在 [測試容錯移轉]  中，選取要用於容錯移轉的復原點：
+   - **最新**：在 Site Recovery 服務中處理所有資料，並提供最低的 RTO (復原時間目標)。
+   - **最近處理**：將 VM 容錯移轉到 Site Recovery 所處理的最新復原點。 隨即顯示時間戳記。 使用此選項時無須花費時間處理資料，因此可提供較低的 RTO。
    - **最新應用程式一致**：此選項會將所有 VM 容錯移轉到最新的應用程式一致復原點。 隨即顯示時間戳記。
-   - **自訂**：選取任何復原點。
+   - [自訂]  ：容錯移轉至特定復原點。 只有當您容錯移轉單一 VM，而不是使用復原方案進行容錯移轉時，才可以使用自訂。
+1. 選取次要區域中的 Azure VM 在容錯移轉之後所要連線到的目標 Azure 虛擬網路。
 
-3. 選取 Azure VM 在容錯移轉之後，次要地區所要連線的目標 Azure 虛擬網路。
+   > [!NOTE]
+   > 如果已針對複寫的項目預先設定測試容錯移轉設定，則不會顯示用來選取 Azure 虛擬網路的下拉式功能表。
 
-4. 若要開始容錯移轉，請按一下 [確定]。 若要追蹤進度，請按一下 VM 開啟其內容。 或者，您也可以按一下保存庫名稱中的 [測試容錯移轉] 作業 > [設定] > [作業] > [Site Recovery 作業]。
-5. 容錯移轉完成之後，複本 Azure VM 會出現在 Azure 入口網站> [虛擬機器] 中。 請確定 VM 正在執行中、大小適中，並已連線到適當的網路。
-6. 若要刪除測試容錯移轉期間建立的 VM，請按一下複寫的項目或復原計劃上的 [清除測試容錯移轉]。 在 [記事] 中，記錄並儲存關於測試容錯移轉的任何觀察。
+1. 若要開始進行容錯移轉，請選取 [確定]  。 若要追蹤保存庫的進度，請移至 [監視]   > [Site Recovery 作業]  ，然後並選取 [測試容錯移轉]  作業。
+1. 容錯移轉完成後，複本 Azure VM 會出現在 Azure 入口網站的 [虛擬機器]  中。 請確定 VM 正在執行中、大小適中，並已連線到適當的網路。
+1. 若要刪除測試容錯移轉期間建立的 VM，請選取複寫的項目或復原方案上的 [清除測試容錯移轉]  。 在 [記事]  中，記錄並儲存關於測試容錯移轉的任何觀察。
 
 ## <a name="next-steps"></a>後續步驟
 

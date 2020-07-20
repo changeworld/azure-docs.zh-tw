@@ -1,43 +1,56 @@
 ---
-title: 從網頁瀏覽器-Azure 連線到 Windows 虛擬桌面預覽
-description: 如何從網頁瀏覽器連線到 Windows 虛擬桌面預覽。
+title: 連線 Windows 虛擬桌面 Web 用戶端 - Azure
+description: 如何使用 Web 用戶端連線至 Windows 虛擬桌面。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 04/12/2019
+ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: 9696f3c32f8b903257e337191a5ce32645bfd198
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
-ms.translationtype: MT
+manager: lizross
+ms.openlocfilehash: bb3a73566cd2477e493ca8621336fb3a51f3b3b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65142456"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85212457"
 ---
-# <a name="connect-from-a-web-browser"></a>從網頁瀏覽器連線
+# <a name="connect-with-the-web-client"></a>與 Web 用戶端連線
 
-Web 用戶端可讓您存取您的 Windows 虛擬桌面預覽資源從網頁瀏覽器，而不需要冗長的安裝程序。
+>[!IMPORTANT]
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 2020 年春季更新版。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 2019 年秋季版，請參閱[這篇文章](./virtual-desktop-fall-2019/connect-web-2019.md)。
+>
+> Windows 虛擬桌面 2020 年春季更新版目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議您將其用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
+> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+Web 用戶端可讓您從網頁瀏覽器存取您的 Windows 虛擬桌面資源，而不需要冗長的安裝過程。
 
 >[!NOTE]
->Web 用戶端目前沒有支援的行動裝置作業系統。
+>Web 用戶端目前不支援行動作業系統。
 
 ## <a name="supported-operating-systems-and-browsers"></a>支援的作業系統和瀏覽器
 
-任何支援 HTML5 的瀏覽器應該可行，我們正式支援下列作業系統和瀏覽器。
+雖然任何支援 HTML5 的瀏覽器應該皆可正常運作，但我們已正式支援下列作業系統和瀏覽器。
 
-| [瀏覽器]           | 支援的 OS                     | 注意               |
+| 瀏覽器           | 支援的 OS                     | 注意               |
 |-------------------|----------------------------------|---------------------|
-| Microsoft Edge    |  Windows                          |                     |
-| Internet Explorer |  Windows                          |                     |
+| Microsoft Edge    | Windows                          |                     |
+| Internet Explorer | Windows                          |                     |
 | Apple Safari      | macOS                            |                     |
-| Mozilla Firefox   | Windows、 macOS、 Linux            | 55 或更新版本 |
-| Google Chrome     | Windows、 macOS、 Linux、 Chrome OS |                     |
+| Mozilla Firefox   | Windows、macOS、Linux            | 55 版或更新版本 |
+| Google Chrome     | Windows、macOS、Linux、Chrome OS |                     |
 
 ## <a name="access-remote-resources-feed"></a>存取遠端資源摘要
 
-在瀏覽器中，瀏覽至[Windows 的虛擬桌面 web 用戶端](https://rdweb.wvd.microsoft.com/webclient)並使用您的使用者帳戶登入。
+在瀏覽器中，在 <https://rdweb.wvd.microsoft.com/arm/webclient> 導覽至 Windows 虛擬桌面 Web 用戶端的 Azure Resource Manager 整合版本，並使用您的使用者帳戶登入。
 
 >[!NOTE]
->如果您已經登入使用的是不同於您想要用於 Windows 的虛擬桌面的 Azure AD 帳戶，您可能需要登出或使用私用瀏覽器視窗。
+>如果您使用不含 Azure Resource Manager 整合的 Windows 虛擬桌面 2019 年秋季版，請改為連線至 <https://rdweb.wvd.microsoft.com/webclient> 的資源。
 
-登入之後，您現在應該會看到一份資源清單。 您可以啟動資源，方法是選取它們，就像一般的應用程式中一樣**的所有資源** 索引標籤。
+>[!NOTE]
+>如果您已使用不同於您想要用於 Windows 虛擬桌面的 Azure Active Directory 帳戶登入，請登出或使用私人瀏覽器視窗。
+
+登入之後，您現在應該會看到一份資源清單。 您可以在 [所有資源] 索引標籤中，以選取一般應用程式的方式來啟動資源。
+
+## <a name="next-steps"></a>後續步驟
+
+若要深入了解如何使用 Web 用戶端，請參閱[開始使用 Web 用戶端](/windows-server/remote/remote-desktop-services/clients/remote-desktop-web-client)。

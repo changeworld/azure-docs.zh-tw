@@ -1,19 +1,17 @@
 ---
-title: 將線路從傳統移至 Resource Manager - ExpressRoute：PowerShell：Azure | Microsoft Docs
+title: Azure ExpressRoute：將傳統電路移至 Resource Manager
 description: 本頁面會描述如何使用 PowerShell 將傳統的電路移至 Resource Manager 部署模型。
 services: expressroute
-author: ganesr
+author: charwen
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/25/2019
-ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 11a84d4ced3232102d262352b84abe1f813e2406
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: charwen
+ms.openlocfilehash: 5c4bbdde04176edf693fc58d172a7dcc250c495a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60365174"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84724996"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>使用 PowerShell 將 ExpressRoute 線路從傳統部署模型移至 Resource Manager 部署模型
 
@@ -21,17 +19,17 @@ ms.locfileid: "60365174"
 
 ## <a name="before-you-begin"></a>開始之前
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
-* 验证是否已在本地计算机上安装经典模块和 Az Azure PowerShell 模块。 如需詳細資訊，請參閱 [如何安裝及設定 Azure PowerShell](/powershell/azure/overview)。
+* 確認您已在本機電腦上安裝傳統和 Az Azure PowerShell 模組。 如需詳細資訊，請參閱[如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。
 * 開始設定之前，請確定您已經檢閱過[必要條件](expressroute-prerequisites.md)、[路由需求](expressroute-routing.md)和[工作流程](expressroute-workflows.md)。
 * 請檢閱[將 ExpressRoute 電路從傳統移至 Resource Manager](expressroute-move.md) 下提供的資訊。 請確定您已完整了解各項限制。
 * 請確認電路在傳統部署模型中的運作完全正常。
-* 确保拥有一个在 Resource Manager 部署模型中创建的资源组。
+* 請確定您擁有建立在 Resource Manager 部署模型中建立的資源群組。
 
 ## <a name="move-an-expressroute-circuit"></a>移動 ExpressRoute 電路
 
-### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>步驟 1：從傳統部署模型收集線路詳細資料
+### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>步驟 1︰從傳統部署模型收集電路詳細資訊
 
 登入 Azure 傳統環境並收集服務金鑰。
 
@@ -54,7 +52,7 @@ ms.locfileid: "60365174"
    Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
    ```
 
-4. 使用下列 Cmdlet 來取得所有 ExpressRoute 電路的服務金鑰。 在取得金鑰之後，請複製電路的「服務金鑰」，這個電路就是您想要移至 Resource Manager 部署模型的電路。
+4. 使用下列 Cmdlet 來取得所有 ExpressRoute 電路的服務金鑰。 在取得金鑰之後，請複製電路的「服務金鑰」****，這個電路就是您想要移至 Resource Manager 部署模型的電路。
 
    ```powershell
    Get-AzureDedicatedCircuit
@@ -92,7 +90,7 @@ ms.locfileid: "60365174"
 Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
 ```
 
-在傳統模式中，ExpressRoute 電路沒有繫結至區域的概念。 不過，在 Resource Manager 中，每個資源都必須對應至 Azure 區域。 从技术上来讲，Move-AzExpressRouteCircuit cmdlet 中指定的区域可以是任何区域。 基於組織目的，您可能想要選擇最能代表您對等互連位置的區域。
+在傳統模式中，ExpressRoute 電路沒有繫結至區域的概念。 不過，在 Resource Manager 中，每個資源都必須對應至 Azure 區域。 在技術上，AzExpressRouteCircuit Cmdlet 中指定的區域可以是任何區域。 基於組織目的，您可能想要選擇最能代表您對等互連位置的區域。
 
 > [!NOTE]
 > 移動完成之後，列在前一個 Cmdlet 中的新名稱會用來處理資源。 電路基本上會重新命名。
@@ -122,16 +120,16 @@ Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Locati
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
-4. 執行下列 Cmdlet 以取得 ExpressRoute 電路的詳細資料。 服务密钥必须已列出。
+4. 執行下列 Cmdlet 以取得 ExpressRoute 電路的詳細資料。 您必須能夠看到列出的服務金鑰。
 
    ```powershell
    get-azurededicatedcircuit
    ```
 
-5. 现在，可以使用经典 VNet 的经典部署模型命令以及 Resource Manager VNet 的 Resource Manager 命令来管理 ExpressRoute 线路的链接。 下列文件會協助您管理 ExpressRoute 線路的連結︰
+5. 您現在可以使用適用於傳統 VNet 的傳統部署模型命令，以及適用於 Resource Manager VNet 的 Resource Manager 命令，來管理 ExpressRoute 電路的連結。 下列文件會協助您管理 ExpressRoute 線路的連結︰
 
-    * [在 Resource Manager 部署模型中将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)
-    * [在经典部署模型中将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-classic.md)
+    * [在 Resource Manager 部署模型中將虛擬網路連結到 ExpressRoute 電路](expressroute-howto-linkvnet-arm.md)
+    * [在傳統部署模型中將虛擬網路連結到 ExpressRoute 電路](expressroute-howto-linkvnet-classic.md)
 
 ### <a name="to-disable-expressroute-circuit-access-to-the-classic-deployment-model"></a>停用傳統部署模型的 ExpressRoute 電路存取
 
@@ -157,5 +155,5 @@ Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Locati
 
 ## <a name="next-steps"></a>後續步驟
 
-* [创建和修改 ExpressRoute 线路的路由](expressroute-howto-routing-arm.md)
+* [建立和修改 ExpressRoute 線路的路由](expressroute-howto-routing-arm.md)
 * [將虛擬網路連結至 ExpressRoute 線路](expressroute-howto-linkvnet-arm.md)

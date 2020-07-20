@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 26829dfc04acdac2a25fe0d4fdc3e95e4d219057
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 462db76b06e5071571ae475d420a627e57dad92e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60637058"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "70067762"
 ---
 # <a name="filter-response-content"></a>篩選回應內容
 
@@ -26,7 +25,7 @@ ms.locfileid: "60637058"
 
 ## <a name="policy"></a>原則
 
-將程式碼貼至 [輸出] 區塊。
+將程式碼貼至 [輸出]**** 區塊。
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Filter response content based on product name.policy.xml)]
 

@@ -12,30 +12,29 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
-ms.author: juliako;anilmur
-ms.openlocfilehash: 25f32750b612bb66f23eb19c378f7935689f3a73
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: juliako
+ms.reviewer: anilmur
+ms.openlocfilehash: 87cd7c63939331190530a46071a6b4c40480562f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61463084"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84705095"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>媒體編碼器高階工作流程格式和轉碼器
 
 > [!NOTE]
-> 如有進階編碼器的問題，請傳送電子郵件到 mepd@microsoft.com。
-> 
 > 本主題中討論的媒體編碼器高階工作流程媒體處理器無法在中國使用。 
 
 本文包含 **Media Encoder Premium Workflow** 編碼器公開預覽版本支援的輸入與輸出檔案格式以及轉碼器清單。
 
-[媒體編碼器高階工作流程輸入格式和轉碼器](#input_formats)
+[媒體編碼器高階工作流程輸入格式和編解碼器](#input_formats)
 
 媒體編碼器高階工作流程輸出格式和轉碼器
 
 **Media Encoder Premium Workflow** 支援 [本](#closed_captioning) 章節所述的隱藏式字幕。 
 
-## <a id="input_formats"></a>Media Encoder Premium Worflow 輸入格式和轉碼器
+## <a name="media-encoder-premium-workflow-input-formats-and-codecs"></a><a id="input_formats"></a>Media Encoder Premium Worflow 輸入格式和轉碼器
 
 下節列出此媒體處理器支援做為輸入的轉碼器和檔案格式。
 
@@ -45,7 +44,7 @@ ms.locfileid: "61463084"
 * MXF/SMPTE 377M
 * GXF
 * MPEG-2 傳輸資料流
-* MPEG-2 节目流
+* MPEG-2 程式資料流
 * MPEG-4/MP4
 * Windows Media/ASF
 * AVI (未壓縮 8 位元/10 位元)
@@ -72,11 +71,11 @@ ms.locfileid: "61463084"
 * Windows Media 音訊
 * WAV/PCM
 
-## <a id="output_format"></a>Media Encoder Premium Worflow 輸出格式和轉碼器
+## <a name="media-encoder-premium-workflow-output-formats-and-codecs"></a><a id="output_format"></a>Media Encoder Premium Worflow 輸出格式和轉碼器
 
 下節列出此媒體處理器支援做為輸出的轉碼器和檔案格式。
 
-### <a name="output-containerfile-formats"></a>输出容器/文件格式
+### <a name="output-containerfile-formats"></a>輸出容器/檔案格式
 
 * Adobe® Flash® F4V
 * MXF (OP1a、XDCAM 和 AS02)
@@ -95,11 +94,9 @@ ms.locfileid: "61463084"
 * DVCPro/DVCProHD (使用 MXF)
 * MPEG-2 (高達 422 Profile 和 High Level，包括 XDCAM、XDCAM HD、XDCAM IMX、CableLabs ® 和 D10 等變種)
 * MPEG-1
-* Windows Media 视频/VC-1
+* Windows Media 視訊/VC-1
 * JPEG 縮圖建立
 * HEVC (H.265、8 位元和 10 位元、主要和主要 10 設定檔)
-
-  特定案例提供 HDR 10 支援，請連絡 mepd@microsoft.com 以取得詳細資訊
 
 
 ### <a name="output-audio-codecs"></a>輸出音訊轉碼器
@@ -115,7 +112,7 @@ ms.locfileid: "61463084"
 >[!NOTE]
 >如果編碼成 Dolby® Digital (AC3)，則輸出只能寫入到 ISO MP4 檔案。
 
-## <a id="closed_captioning"></a>支援隱藏式字幕
+## <a name="support-for-closed-captioning"></a><a id="closed_captioning"></a>支援隱藏式字幕
 
 內嵌時， **Media Encoder Premium Workflow** 支援：
 
@@ -140,6 +137,9 @@ ms.locfileid: "61463084"
 
 如果您的輸入視訊不包含隱藏式字幕，輸出資產仍然會包含空白 TTML 檔案。 
 
+## <a name="need-help"></a>需要協助嗎？
+
+您可以藉由瀏覽至[新增支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)來開啟支援票證
 ## <a name="media-services-learning-paths"></a>媒體服務學習路徑
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

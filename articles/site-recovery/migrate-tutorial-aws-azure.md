@@ -6,19 +6,24 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 17acd4eebe53704699d3ec9a3f4f121eed79794d
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 1070230d968a6239a5a4aab5ac412280393d17da
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310382"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133165"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>將 Amazon Web Services (AWS) VM 移轉至 Azure
 
-本教學課程將教導您如何使用 Azure Site Recovery，將 Amazon Web Services (AWS) 虛擬機器 (VM) 移轉至 Azure VM。 將 AWS EC2 執行個體移轉至 Azure 時，VM 會被視為實體的內部部署電腦。 在本教學課程中，您了解如何：
+本教學課程示範如何使用 Azure Site Recovery，將 Amazon Web Services (AWS) 虛擬機器 (VM) 移轉至 Azure VM。 將 AWS EC2 執行個體移轉至 Azure 時，VM 會被視為實體的內部部署電腦。 在本教學課程中，您會了解如何：
+
+
+> [!TIP]
+> 您現在應該使用 Azure Migrate 服務將 AWS VM 遷移至 Azure，而不是 Azure Site Recovery 服務。 [深入了解](../migrate/tutorial-migrate-physical-virtual-machines.md)。
+
 
 > [!div class="checklist"]
 > * 驗證必要條件
@@ -29,10 +34,11 @@ ms.locfileid: "58310382"
 > * 測試容錯移轉以確定一切都沒問題
 > * 執行一次性容錯移轉至 Azure
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/pricing/free-trial/) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 
-## <a name="prerequisites"></a>必要條件
-- 確定您想要移轉的 VM 正執行支援的 OS 版本。 支援的版本包括： 
+
+## <a name="prerequisites"></a>Prerequisites
+- 確定您想要移轉的 VM 正執行支援的 OS 版本。 支援的版本包含： 
   - Windows Server 2016 
   - Windows Server 2012 R2
   - Windows Server 2012 
@@ -88,22 +94,24 @@ Azure 中必須有幾個資源可供移轉的 EC2 執行個體使用。 其中�
 
 移轉 (容錯移轉) 之後建立的 Azure VM 會加入此 Azure 網路。
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，選取 **[建立資源]**>**[網路]** >
-    **[虛擬網路]**。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，選取 [建立資源] > [網路] >
+    [虛擬網路] **** **** ****。
 3. 針對 [名稱]，輸入 **myMigrationNetwork**。
-4. 保留 [位址空間] 的預設值。
+4. 保留 [位址空間] \(必須輸入值\) 的預設值。
 5. 針對 [訂用帳戶]，選取您要使用的訂用帳戶。
 6. 針對 [資源群組]，選取 [使用現有的]，然後選取 [migrationRG]。
 7. 在 [位置] 中，選取 [西歐]。
-8. 在 [子網路] 之下，保留 [名稱] 和 [IP 範圍] 的預設值。
-9. 讓 [服務端點] 選項保持停用。
-10. 當您完成時，選取 [建立]。
+8. 在 [子網路] 之下，保留 [名稱] 和 [IP 範圍] \(必須輸入值\) 的預設值。
+9. 新增 DDoS 保護設定的指示。
+10. 讓 [服務端點] 選項保持停用。
+11. 新增防火牆設定的指示。
+12. 當您完成時，選取 [建立]。
 
 ## <a name="prepare-the-infrastructure"></a>準備基礎結構
 
 在 Azure 入口網站的保存庫頁面上，於 [使用者入門] 區段中選取 [Site Recovery]，然後選取 [準備基礎結構]。 完成下列步驟。
 
-### <a name="1-protection-goal"></a>1:保護目標
+### <a name="1-protection-goal"></a>1：保護目標
 
 在 [保護目標] 頁面上，選取下列值：
 
@@ -111,16 +119,21 @@ Azure 中必須有幾個資源可供移轉的 EC2 執行個體使用。 其中�
 |---------|-----------|
 | 您的電腦位於何處? |選取 [內部部署]。|
 | 您要將電腦複寫到何處? |選取 [至 Azure]。|
+| 您正在執行移轉嗎？ | 選取 [是]，然後核取 [我了解，但想要繼續使用 Azure Site Recovery] 旁的方塊。
 | 您的電腦虛擬化了嗎? |選取 [未虛擬化 / 其他]。|
 
 當您完成時，選取 [確定] 以移至下一個區段。
 
-### <a name="2-prepare-source"></a>2：準備來源
+### <a name="2-select-deployment-planning"></a>2：選取部署規劃
+
+在 [完成部署規劃了嗎] 中，選取 [稍後再進行]，然後選取 [確定]。
+
+### <a name="3-prepare-source"></a>3：準備來源
 
 在 [準備來源] 頁面上，選取 [+ 組態伺服器]。
 
 1. 使用執行 Windows Server 2012 R2 的 EC2 執行個體建立設定伺服器，並註冊到復原保存庫。
-2. 在作為設定伺服器的 EC2 執行個體 VM 上設定 Proxy，使其能夠存取[服務 URL](site-recovery-support-matrix-to-azure.md)。
+2. 在作為設定伺服器的 EC2 執行個體 VM 上設定 Proxy，使其能夠存取[服務 URL](./vmware-physical-azure-support-matrix.md)。
 3. 下載 [Microsoft Azure Site Recovery 整合安裝](https://aka.ms/unifiedinstaller_wus)。 您可以先將它下載到本機電腦，再複製到作為組態伺服器使用的 VM。
 4. 選取 [下載] 按鈕，以下載保存庫註冊金鑰。 將已下載的檔案複製到作為組態伺服器使用的 VM。
 5. 在 VM 上，以滑鼠右鍵按一下您下載的 Microsoft Azure Site Recovery 整合安裝的安裝程式，然後選取 [以系統管理員身分執行]。
@@ -135,12 +148,12 @@ Azure 中必須有幾個資源可供移轉的 EC2 執行個體使用。 其中�
     8. 在 [安裝位置] 中，選取 [下一步] 接受預設值。
     9. 在 [選取網路] 中，選取 [下一步] 接受預設值。
     10. 在 [摘要] 中，選取 [安裝]。
-    11. [安裝進度] 會顯示安裝程序相關資訊。 完成時，選取 [完成]。 視窗會顯示重新開機的相關訊息。 選取 [確定] 。 接下來，視窗會顯示有關組態伺服器連線複雜密碼的訊息。 將複雜密碼複製到剪貼簿，並將它儲存在安全的位置。
+    11. [安裝進度] 會顯示安裝程序相關資訊。 完成時，選取 [完成]。 視窗會顯示重新開機的相關訊息。 選取 [確定]。 接下來，視窗會顯示有關組態伺服器連線複雜密碼的訊息。 將複雜密碼複製到剪貼簿，並將它儲存在安全的位置。
 6. 在 VM 上，執行 cspsconfigtool.exe，以在設定伺服器上建立一或多個管理帳戶。 在您想要移轉的 EC2 執行個體上，請確定管理帳戶具有系統管理員權限。
 
 組態伺服器設定完成時，請回到入口網站，並選取您剛才針對 [組態伺服器] 建立的伺服器。 選取 [確定] 以前往 3：準備目標。
 
-### <a name="3-prepare-target"></a>3：準備目標
+### <a name="4-prepare-target"></a>4：準備目標
 
 在本節中，針對您稍早在本教學課程的[準備 Azure 資源](#prepare-azure-resources)中所建立的資源，輸入相關資訊。
 
@@ -149,21 +162,15 @@ Azure 中必須有幾個資源可供移轉的 EC2 執行個體使用。 其中�
 3. Site Recovery 會確認您是否有一或多個相容的 Azure 儲存體帳戶和網路。 這些應該是您稍早在本教學課程的[準備 Azure 資源](#prepare-azure-resources)中所建立的資源。
 4. 完成後，選取 [確定]。
 
-
-### <a name="4-prepare-replication-settings"></a>4：準備複寫設定
+### <a name="5-prepare-replication-settings"></a>5：準備複寫設定
 
 您必須先建立複寫原則，才能啟用複寫。
 
-1. 選取 [複寫並產生關聯]。
+1. 選取 [建立並產生關聯]。
 2. 在 [名稱] 中，輸入 **myReplicationPolicy**。
 3. 保留其餘的預設設定，然後選取 [確定] 以建立原則。 新原則會自動與設定伺服器產生關聯。
 
-### <a name="5-select-deployment-planning"></a>5：選取部署規劃
-
-在 [完成部署規劃了嗎] 中，選取 [稍後再進行]，然後選取 [確定]。
-
 當您完成 [準備基礎結構] 下的所有五個區段時，選取 [確定]。
-
 
 ## <a name="enable-replication"></a>啟用複寫
 
@@ -172,7 +179,7 @@ Azure 中必須有幾個資源可供移轉的 EC2 執行個體使用。 其中�
 1. 移至 [Azure 入口網站](https://portal.azure.com)。
 1. 在保存庫頁面的 [使用者入門] 下，選取 [Site Recovery]。
 2. 在 [內部部署電腦與 Azure VM] 下，選取 [步驟 1:複寫應用程式]。 以下列資訊完成精靈頁面。 完成時在每個頁面上選取 [確定]：
-   - 1:設定來源
+   - 1：設定來源
 
      |  |  |
      |-----|-----|
@@ -196,7 +203,7 @@ Azure 中必須有幾個資源可供移轉的 EC2 執行個體使用。 其中�
 
    - 3：選取實體機器
 
-     選取 [實體機器]，然後針對您想要移轉的 EC2 執行個體，輸入 [名稱]、[IP 位址] 和 [OS 類型] 的值。 選取 [確定] 。
+     選取 [實體機器]，然後針對您想要移轉的 EC2 執行個體，輸入 [名稱]、[IP 位址] 和 [OS 類型] 的值。 選取 [確定]。
 
    - 4：設定屬性
 
@@ -226,7 +233,7 @@ Azure 中必須有幾個資源可供移轉的 EC2 執行個體使用。 其中�
 2. 選取要用於容錯移轉的復原點：
     - **最近處理**：將 VM 容錯移轉到 Site Recovery 所處理的最新復原點。 隨即顯示時間戳記。 使用此選項時，無須花費時間處理資料，因此它會提供低復原時間目標 (RTO)。
     - **最新應用程式一致**：此選項會將所有 VM 容錯移轉到最新的應用程式一致復原點。 隨即顯示時間戳記。
-    - **自訂**：選取任何復原點。
+    - [自訂]：選取任何復原點。
 
 3. 在 [測試容錯移轉] 中，選取 Azure VM 在容錯移轉之後要連線的目標 Azure 網路。 這應該是您在[準備 Azure 資源](#prepare-azure-resources)中所建立的網路。
 4. 選取 [確定]  即可開始容錯移轉。 若要追蹤進度，請選取 VM 來檢視其屬性。 或者，可以選取保存庫頁面上的 [測試容錯移轉] 作業。 若要這樣做，請選取 [監視與報告] > [作業] >  [Site Recovery 作業]。

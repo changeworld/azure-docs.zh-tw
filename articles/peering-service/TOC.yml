@@ -1,0 +1,54 @@
+- name: 對等互連服務文件
+  href: index.yml
+- name: 概觀
+  items:
+    - name: 關於對等互連服務
+      href: about.md
+- name: 教學課程
+  items:
+    - name: 註冊對等互連服務連線
+      href: azure-portal.md
+    - name: 建立對等互連服務連線
+      href: create-connection.md
+    - name: 測量對等互連服務連線遙測
+      href: measure-connection-telemetry.md
+- name: 概念
+  items:
+    - name: 位置與合作夥伴
+      href: location-partners.md
+    - name: Connection
+      href: connection.md
+    - name: 連線遙測
+      href: connection-telemetry.md
+    - name: 上線模型
+      href: onboarding-model.md
+- name: 操作指南
+  items:
+    - name: 註冊對等互連服務
+      items:
+        - name: Azure PowerShell
+          href: powershell.md
+        - name: Azure CLI
+          href: cli.md
+- name: 參考
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.peering
+    - name: Azure CLI
+      href: /cli/azure/ext/peering/peering
+- name: 資源
+  items:
+    - name: Azure 藍圖
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: 網路部落格
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Azure 網路的 Microsoft 問與答頁面
+      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
+    - name: 網路意見反應
+      href: 'https://feedback.azure.com/forums/217313-networking?category_id=77469'
+    - name: 定價
+      href: 'https://azure.microsoft.com/pricing/details/azure-peering/'
+    - name: 定價計算機
+      href: 'https://azure.microsoft.com/pricing/calculator/?service=azure-peering'
+    - name: 常見問題集
+      href: faq.md

@@ -1,24 +1,17 @@
 ---
 title: Azure 監視器記錄查詢語言差異 | Microsoft Docs
 description: Azure 監視器所使用的 Kusto 查詢語言參考資訊。 包含 Azure 監視器專用的其他元素和 Azure 監視器記錄查詢中不支援的元素。
-services: log-analytics
-documentationcenter: ''
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 10/31/2018
 ms.author: bwren
-ms.openlocfilehash: 1185f3f96fd39f168d138d7dbf66e7780884b1fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/01/2020
+ms.openlocfilehash: 265179909c8ae4a6fa630b835bc9993f042d6460
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60589264"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "80585703"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure 監視器記錄查詢語言差異
 
@@ -31,7 +24,7 @@ ms.locfileid: "60589264"
 
 ### <a name="statements-not-supported-in-azure-monitor"></a>Azure 監視器中不支援的陳述式
 
-* [別名](/azure/kusto/query/aliasstatement)
+* [鋸齒](/azure/kusto/query/aliasstatement)
 * [查詢參數](/azure/kusto/query/queryparametersstatement)
 
 ### <a name="functions-not-supported-in-azure-monitor"></a>Azure 監視器中不支援的函式
@@ -40,7 +33,7 @@ ms.locfileid: "60589264"
 * [cursor_after()](/azure/kusto/query/cursorafterfunction)
 * [cursor_before_or_at()](/azure/kusto/query/cursorbeforeoratfunction)
 * [cursor_current()、current_cursor()](/azure/kusto/query/cursorcurrent)
-* [database()](/azure/kusto/query/databasefunction)
+* [資料庫（）](/azure/kusto/query/databasefunction)
 * [current_principal()](/azure/kusto/query/current-principalfunction)
 * [extent_id()](/azure/kusto/query/extentidfunction)
 * [extent_tags()](/azure/kusto/query/extenttagsfunction)
@@ -48,18 +41,18 @@ ms.locfileid: "60589264"
 ### <a name="operators-not-supported-in-azure-monitor"></a>Azure 監視器中不支援的運算子
 
 * [跨叢集聯結](/azure/kusto/query/joincrosscluster)
-* [externaldata 運算子](/azure/kusto/query/externaldata-operator)
 
 ### <a name="plugins-not-supported-in-azure-monitor"></a>Azure 監視器中不支援的外掛程式
 
+* [Python 外掛程式](/azure/kusto/query/pythonplugin)
 * [sql_request 外掛程式](/azure/kusto/query/sqlrequestplugin)
 
 
 ## <a name="additional-operators-in-azure-monitor"></a>Azure 監視器中的其他運算子
 下列運算子支援特定 Azure 監視器功能，且無法在 Azure 監視器以外的地方使用。
 
-* [app()](app-expression.md)
-* [workspace()](workspace-expression.md)
+* [應用程式（）](app-expression.md)
+* [workspace （）](workspace-expression.md)
 
 ## <a name="next-steps"></a>後續步驟
 

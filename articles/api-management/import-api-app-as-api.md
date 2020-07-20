@@ -9,47 +9,46 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 120fe358e5c8afe63e98038ad353d5ebc45a1937
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 28b055cb343b7f894a28eee5fbe452d037fd6b0e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636440"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249485"
 ---
 # <a name="import-an-api-app-as-an-api"></a>匯入 API 應用程式作為 API
 
 本文示範如何匯入 API 應用程式作為 API。 本文也會示範如何測試 APIM API。
 
-在本文中，您將了解：
+在本文中，您將學會如何：
 
 > [!div class="checklist"]
 > * 匯入 API 應用程式作為 API
 > * 在 Azure 入口網站中測試 API
 > * 在開發人員入口網站中測試 API
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 + 完成下列快速入門：[建立 Azure API 管理執行個體](get-started-create-service-instance.md)
-+ 確定您的訂用帳戶中有 API 應用程式。 如需詳細資訊，請參閱 [App Service 文件](https://docs.microsoft.com/azure/app-service/)
++ 確定您的訂用帳戶中有 API 應用程式。 如需詳細資訊，請參閱 [App Service 文件](../app-service/index.yml)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>匯入和發佈後端 API
+## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>匯入和發佈後端 API
 
-1. 選取 [API 管理] 下方的 [API]。
-2. 從 [加入新的 API] 清單選取 [API 應用程式]。
+1. 在 Azure 入口網站中，瀏覽至您的 APIM 服務，然後從功能表中選取 [API]  。
+2. 從 [加入新的 API]  清單選取 [API 應用程式]  。
 
     ![API 應用程式](./media/import-api-app-as-api/api-app.png)
-3. 按 [瀏覽] 以查看您訂用帳戶中的 API Apps 清單。
+3. 按 [瀏覽]  以查看您訂用帳戶中的 API Apps 清單。
 4. 選取應用程式。 APIM 會尋找與所選取應用程式相關聯的 Swagger，擷取並匯入它。 
 
     萬一 APIM 找不到 Swagger，它會公開 API 以作為「穿通」API。 
 5. 新增 API URL 尾碼。 此尾碼是用來在這個 APIM 執行個體中識別此特定 API 的名稱。 它在這個 APIM 執行個體中必須是唯一的。
-6. 透過將 API 關聯至某個產品來發佈 API。 在本案例中，我們使用「無限制」的產品。  如果您想要發佈 API 以供開發人員使用，請將它新增至產品。 您可以在 API 建立期間執行此動作，或稍後設定它。
+6. 透過將 API 關聯至某個產品來發佈 API。 在本案例中，我們使用「無限制」  的產品。  如果您想要發佈 API 以供開發人員使用，請將它新增至產品。 您可以在 API 建立期間執行此動作，或稍後設定它。
 
     產品是一或多個 API 的關聯。 您可以包括數個 API，並透過開發人員入口網站將它們提供給開發人員。 開發人員必須先訂閱產品，才能取得 API 的存取權。 當他們訂閱時，就能取得適用於該產品中任何 API 的中訂用帳戶金鑰。 如果您建立了 APIM 執行個體，您就已經是系統管理員，因此根據預設，您已訂閱每一個產品。
 
@@ -57,35 +56,21 @@ ms.locfileid: "51636440"
 
     * **入門**
     * **無限制**   
-7. 選取 [建立] 。
+7. 輸入其他 API 設定。 您可以在建立期間設定這些值，或稍後前往 [設定]  索引標籤來進行設定。這些設定會在[匯入和發佈您的第一個 API](import-and-publish.md#-import-and-publish-a-backend-api) 教學課程中說明。
+8. 選取 [建立]  。
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>在 Azure 入口網站中測試新的 APIM API
+## <a name="test-the-new-api-in-the-azure-portal"></a>在 Azure 入口網站中測試新的 API
 
 您可以從 Azure 入口網站直接呼叫作業，以便檢視和測試 API 的作業。  
 
 1. 選取您在上一個步驟中建立的 API。
-2. 按 [測試] 索引標籤。
+2. 按 [測試]  索引標籤。
 3. 選取某個作業。
 
     頁面會顯示查詢參數的欄位和標頭的欄位。 其中一個標頭是 "Ocp-Apim-Subscription-Key"，它適用於與此 API 相關聯之產品的訂用帳戶金鑰。 如果您建立了 APIM 執行個體，您就已經是系統管理員，因此會自動填入此金鑰。 
-1. 按 [傳送]。
+1. 按 [傳送]  。
 
     後端會回應 **200 確定**與部分資料。
-
-## <a name="call-operation"> </a>從開發人員入口網站呼叫作業
-
-您也可以在**開發人員入口網站**呼叫作業來測試 API。 
-
-1. 選取您在「匯入和發佈後端 API」步驟中建立的 API。
-2. 按 [開發人員入口網站]。
-
-    「開發人員入口網站」隨即開啟。
-3. 選取您所建立的 **API**。
-4. 按一下您想要測試的作業。
-5. 按 [試試看]。
-6. 按 [傳送]。
-    
-    叫用作業之後，開發人員入口網站會顯示 [回應狀態]、[回應標頭]，以及任何的 [回應內容]。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

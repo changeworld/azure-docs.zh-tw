@@ -1,27 +1,35 @@
 ---
 title: 快速入門：建立知識庫 - REST (Java) - QnA Maker
-titlesuffix: Azure Cognitive Services
 description: 這個以 Java REST 為基礎的快速入門會逐步引導您以程式設計方式建立範例 QnA Maker 知識庫，且該知識庫會出現在認知服務 API 帳戶的 Azure 儀表板中。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
-ms.topic: quickstart
-ms.date: 02/04/2019
-ms.author: diberry
-ms.openlocfilehash: ddeccd34cbdc72d76d8dd26e36a533f44a9274b8
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.date: 12/16/2019
+ROBOTS: NOINDEX,NOFOLLOW
+ms.custom: RESTCURL2020FEB27
+ms.topic: how-to
+ms.openlocfilehash: 5f1e1d8a8d2ac9ca3d14af09618cb0a2cc0cbb5f
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866299"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84341247"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>快速入門：使用 Java 在 QnA Maker 中建立知識庫
 
-本快速入門會逐步引導您以程式設計方式建立 QnA Maker 知識庫範例。 QnA Maker 會從[資料來源](../Concepts/data-sources-supported.md)中的半結構化內容 (如常見問題集) 自動擷取問題和答案。 知識庫的模型是在 JSON (在 API 要求的本體中傳送) 中定義的。
+本快速入門會逐步引導您以程式設計方式建立 QnA Maker 知識庫範例。 QnA Maker 會從[資料來源](../Concepts/knowledge-base.md)中的半結構化內容 (如常見問題集) 自動擷取問題和答案。 知識庫的模型是在 JSON (在 API 要求的本體中傳送) 中定義的。
 
-[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
+本快速入門會呼叫 QnA Maker API：
+* [建立知識庫](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
+* [取得作業詳細資料](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
+
+[參考檔](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  | [JAVA 範例](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java)
+
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
+## <a name="prerequisites"></a>必要條件
+
+* [Go 1.10.1](https://golang.org/dl/)
+* 您必須有 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰和端點 (其中包含資源名稱)，請在 Azure 入口網站中選取資源的 [快速入門]****。
+
+針對適用於 Java 的 QnA Maker，您可在 GitHub 存放庫上取得其[範例程式碼](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java)。
 
 ## <a name="create-a-knowledge-base-file"></a>建立知識庫檔案
 
@@ -34,7 +42,16 @@ ms.locfileid: "55866299"
 [!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=1-5 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>新增必要的常數
-在上述必要的相依性後面，將必要的常數新增至 `CreateKB` 類別以存取 QnA Maker。 以您自己的 QnA Maker 金鑰取代 `subscriptionKey` 變數的值。 您不需要加上末尾的大括號以終結類別；這是本快速入門結尾處的最終程式碼片段。
+在上述必要的相依性後面，將必要的常數新增至 `CreateKB` 類別以存取 QnA Maker。
+
+您必須有 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰和資源名稱，請在 Azure 入口網站中選取 QnA Maker 資源的 [快速入門]****。
+
+設定下列值：
+
+* `<your-qna-maker-subscription-key>` - **金鑰**是 32 字元字串，且可在 Azure 入口網站中 [快速入門] 頁面上的 [QnA Maker 資源] 上取得。 這與預測端點金鑰不同。
+* `<your-resource-name>` - 您的**資源名稱**用來架構可供撰寫的撰寫端點 URL，其格式為 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`。 這與用於查詢預測端點的 URL 不同。
+
+您不需要加上末尾的大括號以終結類別；這是本快速入門結尾處的最終程式碼片段。
 
 [!code-java[Add the required constants](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=26-34 "Add the required constants")]
 
@@ -100,7 +117,7 @@ ms.locfileid: "55866299"
 ```
 
 ## <a name="add-a-main-method"></a>新增 Main 方法
-Main 方法會建立 KB，然後輪詢狀態。 **建立**作業識別碼會在 POST 回應標頭欄位 [位置] 中傳回，然後在 GET 要求中作為路由的一部分。 **`while` 迴圈會重試未完成的狀態。
+Main 方法會建立 KB，然後輪詢狀態。 作業識別碼會在 POST 回應標頭欄位 [位置]**** 中傳回，然後在 GET 要求中作為路由的一部分。 `while` 迴圈會重試未完成的狀態。
 
 [!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
 
@@ -114,7 +131,7 @@ Main 方法會建立 KB，然後輪詢狀態。 **建立**作業識別碼會在 
 
 2. 在命令列中輸入下列命令，以執行程式。 程式會將要求傳送至 QnA Maker API 以建立 KB，然後會每隔 30 秒輪詢結果。 每個回應都會列印到主控台視窗。
 
-    ```base
+    ```bash
     java -cp ",;libs/*" CreateKB
     ```
 
@@ -125,4 +142,4 @@ Main 方法會建立 KB，然後輪詢狀態。 **建立**作業識別碼會在 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API 參考](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [QnA Maker (V4) REST API 參考](https://go.microsoft.com/fwlink/?linkid=2092179)

@@ -1,4 +1,4 @@
-- name: 適用於 IoT 的 Azure 資訊安全中心 (ASC) 預覽文件
+- name: 適用於 IoT 的 Azure 資訊安全中心文件
   href: index.yml
 - name: 概觀
   href: overview.md
@@ -11,16 +11,21 @@
       href: security-edge-architecture.md
     - name: 服務必要條件
       href: service-prerequisites.md
-    - name: 開始使用適用於 IoT 的 ASC
+    - name: 開始使用適用於 IoT 的 Azure 資訊安全中心
       href: getting-started.md
+      items:
+        - name: IoT 中樞
+          href: iot-hub-integration.md
+        - name: 安全性代理程式
+          href: security-agents.md
 - name: 快速入門
   expanded: true
   items:
-    - name: 在 IoT 中樞中啟用適用於 IoT 的 ASC
+    - name: 在 IoT 中樞中讓適用於 IoT 的 Azure 資訊安全中心上線
       href: quickstart-onboard-iot-hub.md
     - name: 設定您的解決方案
       href: quickstart-configure-your-solution.md
-    - name: 為 IoT 模組對應項建立適用於 IoT 的 ASC
+    - name: 建立適用於 IoT 的 Azure 資訊安全中心模組對應項
       href: quickstart-create-security-twin.md
     - name: 建立自訂的安全性警訊
       href: quickstart-create-custom-alerts.md
@@ -32,11 +37,17 @@
       href: concept-security-module.md
     - name: 安全性警示
       href: concept-security-alerts.md
+    - name: 可自訂的安全性警示
+      href: concept-customizable-security-alerts.md
     - name: 安全性建議
       href: concept-recommendations.md
+    - name: 基準
+      href: concept-baseline.md
+    - name: 事件彙總
+      href: event-aggregation.md
     - name: 定價和相關成本
       href: concept-pricing.md
-- name: 使用說明指南
+- name: 操作指南
   items:
     - name: 我應該部署哪個代理程式？
       items:
@@ -48,6 +59,14 @@
           href: how-to-deploy-linux-cs.md
         - name: 在 Linux 裝置上部署以 C 為基礎的安全性代理程式
           href: how-to-deploy-linux-c.md
+    - name: 安全性代理程式疑難排解
+      items:
+        - name: 適用於 IoT 的 Azure 資訊安全中心 Linux 安全性代理程式疑難排解
+          href: troubleshoot-agent.md
+        - name: 本機組態 C
+          href: azure-iot-security-local-configuration-c.md
+        - name: '本機組態 C#'
+          href: azure-iot-security-local-configuration-csharp.md
     - name: 部署 Edge 安全性模組
       href: how-to-deploy-edge.md
     - name: 設定安全性代理程式
@@ -58,6 +77,10 @@
       href: how-to-security-data-access.md
     - name: 調查裝置
       href: how-to-investigate-device.md
+    - name: 連線到 Azure Sentinel
+      href: how-to-configure-with-sentinel.md
+    - name: 自訂您的解決方案
+      href: how-to-customize-solution.md
 - name: 資源
   items:
     - name: 常見問題集

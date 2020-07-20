@@ -1,29 +1,21 @@
 ---
-title: StorSimple 8000 系列 Update 5 版本資訊 | Microsoft Docs
+title: StorSimple 8000 系列 Update 5 版本資訊
 description: 說明 StorSimple 8000 系列 Update 5 的新功能、問題及因應措施。
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 462cbd6261723aa91bbfd23292611e758a800ed2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 4fed65e12a166c046a0c63d7c4849f86805bbe9c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60844086"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "76275161"
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>StorSimple 8000 系列 Update 5 版本資訊
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 下列版本資訊說明 StorSimple 8000 系列 Update 5 的新功能，並識別未決的重要問題。 當中也包含此版本中隨附之 StorSimple 軟體更新的清單。
 
@@ -51,11 +43,11 @@ Update 5 包含以下重要的改良功能和錯誤修正。
 
 下表提供 Update 5 中已修正之問題的摘要。
 
-| 否 | 功能 | 問題 | 適用於實體裝置 | 適用於虛擬裝置 |
+| No | 功能 | 問題 | 適用於實體裝置 | 適用於虛擬裝置 |
 | --- | --- | --- | --- | --- |
 | 1 |Windows PowerShell 遠端處理 |在舊版中，使用者會在嘗試透過 Windows PowerShell 對 StorSimple 雲端設備建立遠端連線時收到錯誤。 此版本已找出此問題的根本原因並加以修正。 |否 |是 |
-| 2 |頻寬範本 |舊版中的頻寬範本有問題，從而導致頻寬比裝置所設定的值還低。 本版已經修正這個問題。 |是 |是 |
-| 3 |容錯移轉 |在舊版中，當擁有大量磁碟區的裝置容錯移轉至另一個執行 Update 4 的裝置時，該程序會在嘗試套用存取控制記錄時失敗。 此版本已經修正這個問題。 |是 |是 |
+| 2 |頻寬範本 |舊版中的頻寬範本有問題，從而導致頻寬比裝置所設定的值還低。 本版已經修正這個問題。 |是 |Yes |
+| 3 |容錯移轉 |在舊版中，當擁有大量磁碟區的裝置容錯移轉至另一個執行 Update 4 的裝置時，該程序會在嘗試套用存取控制記錄時失敗。 此版本已經修正這個問題。 |是 |Yes |
 
 
 
@@ -71,7 +63,7 @@ Update 5 中沒有新的已知問題。 如需 Update 5 中舊版遺留的問題
 
 這項更新無法套用至 StorSimple Cloud Appliance (也稱為虛擬裝置)。 必須使用 Update 5 映像建立新的雲端設備。 如需如何建立 StorSimple 雲端設備的資訊，請移至[部署和管理 StorSimple 雲端設備](storsimple-8000-cloud-appliance-u2.md)。
 
-## <a name="next-step"></a>後續步驟
+## <a name="next-step"></a>下一步
 
 了解如何[在 StorSimple 裝置上安裝 Update 5](storsimple-8000-install-update-5.md)。
 

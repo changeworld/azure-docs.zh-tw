@@ -1,26 +1,18 @@
 ---
-title: 使用 Azure 監視器 SQL Server 環境最佳化 |Microsoft Docs
-description: 借助 Azure Monitor，可以使用 SQL 运行状况检查解决方案定期评估环境的风险和运行状况。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: e297eb57-1718-4cfe-a241-b9e84b2c42ac
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: 使用 Azure 監視器優化您的 SQL Server 環境 |Microsoft Docs
+description: 有了 Azure 監視器，您就可以使用 SQL 健康情況檢查解決方案，定期評估環境的風險和健全狀況。
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 03/28/2019
-ms.author: magoedte
-ms.openlocfilehash: 94b23bc29c3c986e6a0cd74e0805b5d47ce35849
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+author: bwren
+ms.author: bwren
+ms.date: 05/05/2020
+ms.openlocfilehash: b6b32f9eadc6677bad591f4040981c4c95bf1f76
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62120618"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "82871253"
 ---
-# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>使用 Azure Monitor 中的 SQL Server 运行状况检查解决方案优化 SQL 环境
+# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>使用 Azure 監視器中的 SQL Server 健康情況檢查解決方案來優化您的 SQL 環境
 
 ![SQL 健康情況檢查標誌](./media/sql-assessment/sql-assessment-symbol.png)
 
@@ -32,7 +24,7 @@ ms.locfileid: "62120618"
 
 您可以選擇對組織而言最重要的焦點區域，同時追蹤經營無風險且健康狀態良好之環境的進度。
 
-加入方案且評估完成之後，系統會將焦點區域的摘要資訊顯示在環境之基礎結構的 [SQL 健康情況檢查] 儀表板中。 下列章節說明如何使用 [SQL 健康情況檢查] 儀表板上的資訊，您可以在這裡檢視 SQL Server 基礎結構的建議動作並予以實施。
+加入方案且評估完成之後，系統會將焦點區域的摘要資訊顯示在環境之基礎結構的 [SQL 健康情況檢查]**** 儀表板中。 下列章節說明如何使用 [SQL 健康情況檢查]**** 儀表板上的資訊，您可以在這裡檢視 SQL Server 基礎結構的建議動作並予以實施。
 
 ![SQL 健康情況檢查圖格的影像](./media/sql-assessment/sql-healthcheck-summary-tile.png)
 
@@ -40,24 +32,24 @@ ms.locfileid: "62120618"
 
 ## <a name="prerequisites"></a>必要條件
 
-* SQL 健康情況檢查方案需要在已安裝 Microsoft Monitoring Agent (MMA) 的每部電腦上安裝 .NET Framework 4 的支援版本。  System Center 2016 - Operations Manager 和 Operations Manager 2012 R2，以及 Azure 監視器都使用 MMA 代理程式。  
-* 方案支援 SQL Server 2012、2014 和 2016 版本。
-* Log Analytics 工作區，可以從 Azure 入口網站中的 Azure 市集將 SQL 健康情況檢查方案新增至此。  若要安裝方案，您必須是 Azure 訂用帳戶中的系統管理員或參與者。
+* SQL 健康情況檢查解決方案需要在安裝 Microsoft Monitoring Agent （MMA）的每部電腦上安裝支援的 .NET Framework 4.6.2 版本。  System Center 2016 - Operations Manager 和 Operations Manager 2012 R2，以及 Azure 監視器都使用 MMA 代理程式。  
+* 此解決方案支援2012、2014、2016、2017和 2019 SQL Server 版本。
+* Log Analytics 工作區，可以從 Azure 入口網站中的 Azure 市集將 SQL 健康情況檢查方案新增至此。 若要安裝方案，您必須是 Azure 訂用帳戶中的系統管理員或參與者。
 
   > [!NOTE]
   > 您加入方案之後，AdvisorAssessment.exe 檔案會以代理程式加入伺服器中。 系統會讀取設定資料，然後傳送到在雲端的 Azure 監視器以進行處理。 會將邏輯套用至接收的資料，且雲端服務會記錄資料。
   >
   >
 
-若要针对 SQL Server 服务器执行运行状况检查，这些域控制器需要一个代理，并使用以下受支持的方法之一与 Azure Monitor 建立连接：
+若要對 SQL Server 服務器執行健康情況檢查，必須使用下列其中一種支援的方法，將代理程式和連線能力用於 Azure 監視器：
 
 1. 如果 System Center 2016 - Operations Manager 或 Operations Manager 2012 R2 已不再監視伺服器，則安裝 [Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md)。
-2. 如果该服务器受 System Center 2016 - Operations Manager 或 Operations Manager 2012 R2 的监视并且管理组未与 Azure Monitor 集成，则它可与 Log Analytics 共用多个宿主，以收集数据并将其转发到服务，同时仍可由 Operations Manager 监视。  
+2. 如果它受到 System Center 2016-Operations Manager 或 Operations Manager 2012 R2 監視，而管理群組未與 Azure 監視器整合，則伺服器可以是具有 Log Analytics 的多重主目錄，以便收集資料並轉送至服務，而且仍然受到 Operations Manager 監視。  
 3. 除此之外，如果您的 Operations Manager 管理群組已與服務整合，則在工作區中啟用方案後，您需要讓服務依循[新增代理程式的受控電腦](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor)下的步驟，來新增網域控制站以收集資料。  
 
-SQL Server 上的代理向 Operations Manager 管理组报告、收集数据、将数据转发到为其分配的管理服务器，然后将数据从管理服务器直接发送到 Azure Monitor。  資料並不會寫入 Operations Manager 資料庫。  
+SQL Server 上的代理程式會向 Operations Manager 管理群組報告、收集資料、轉送至其指派的管理伺服器，然後直接從管理伺服器傳送至 Azure 監視器。  資料並不會寫入 Operations Manager 資料庫。  
 
-如果 SQL Server 由 Operations Manager 監視，則您需要設定 Operations Manager 執行身分帳戶。 有关详细信息，请参阅下面的 [Azure Monitor 的 Operations Manager 运行方式帐户](#operations-manager-run-as-accounts-for-log-analytics)。
+如果 SQL Server 由 Operations Manager 監視，則您需要設定 Operations Manager 執行身分帳戶。 如需詳細資訊，請參閱以下[Azure 監視器 Operations Manager 執行身分帳戶](#operations-manager-run-as-accounts-for-log-analytics)。
 
 ## <a name="sql-health-check-data-collection-details"></a>SQL 健康情況檢查的資料收集詳細資料
 SQL 健康情況檢查會使用您已啟用的代理程式，從下列來源收集資料：
@@ -83,10 +75,10 @@ Log Analytics 會使用 Operations Manager 代理程式及管理群組來收集�
 >
 >
 
-1. 在 Operations Manager 中開啟 Operations 主控台，然後按一下 [管理] 。
-2. 在 [執行身分組態] 下方，按一下 [設定檔]，並開啟 [SQL 評定執行身分設定檔]。
-3. 在 [執行身分帳戶] 頁面上，按一下 [新增]。
-4. 選取包含 SQL Server 所需認證的 Windows 執行身分帳戶，或按一下 [新增]  建立一個。
+1. 在 Operations Manager 中開啟作業主控台，然後按一下 [管理]****。
+2. 在 [執行身分組態]**** 下方，按一下 [設定檔]****，並開啟 [SQL 評定執行身分設定檔]****。
+3. 在 [執行身分帳戶]**** 頁面上，按一下 [新增]****。
+4. 選取包含 SQL Server 所需認證的 Windows 執行身分帳戶，或按一下 [新增]**** 建立一個。
 
    > [!NOTE]
    > 執行身分帳戶類型必須是 Windows。 執行身分帳戶也必須屬於裝載 SQL Server 執行個體的所有 Windows 伺服器上的本機系統管理員群組。
@@ -132,7 +124,7 @@ Log Analytics 會使用 Operations Manager 代理程式及管理群組來收集�
 ### <a name="how-weights-are-calculated"></a>加權的計算方式
 加權是彙集以下三個重要因素的值：
 
-* 識別之疑難引發問題的 *機率* 。 機率較高等同於建議的整體分數較高。
+* 識別的問題會造成問題的*機率*。 機率較高等同於建議的整體分數較高。
 * 疑難對組織的 *影響力* (如果確實引發問題)。 影響力較高等同於建議的整體分數較高。
 * 實作建議所需的 *勞力* 。 勞力較高等同於建議的整體分數較低。
 
@@ -157,15 +149,15 @@ Log Analytics 會使用 Operations Manager 代理程式及管理群組來收集�
 每項建議都包含其重要性的指引。 在已知 IT 服務之本質和組織之商務需求的情況下，您應使用該指引來評估實作建議的適當性。
 
 ## <a name="use-health-check-focus-area-recommendations"></a>使用健康情況檢查焦點區域建議
-在 Azure Monitor 中使用评估解决方案之前，必须先安装该解决方案。  安装该服务后，可以使用 Azure 门户中 Azure Monitor 的“概览”页上的“SQL 运行状况检查”磁贴查看建议摘要。
+您必須先安裝解決方案，才可以在 Azure 監視器中使用評估解決方案。  安裝之後，您可以使用 [**總覽**] 頁面上的 [SQL 健康情況檢查] 圖格來查看建議摘要，以取得 Azure 入口網站中的 Azure 監視器。
 
 檢視基礎結構的總結法務遵循評估結果，然後再深入鑽研建議事項。
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>檢視的焦點區域的建議並採取更正措施
-1. 在 [https://portal.azure.com](https://portal.azure.com) 登入 Azure 入口網站。
+1. 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 2. 在 Azure 入口網站中，按一下左下角的 [更多服務]。 在資源清單中輸入 [監視器]。 當您開始輸入時，清單會根據您輸入的文字進行篩選。 選取 [監視器]。
-3. 在菜单的“见解”部分，选择“更多”。  
-4. 在 [概觀] 頁面上，按一下 [SQL 健康情況檢查] 圖格。
+3. 在功能表的 [**深入**解析] 區段中，選取 [**更多**]。  
+4. 在 [概觀]**** 頁面上，按一下 [SQL 健康情況檢查]**** 圖格。
 5. 在 [健康情況檢查] 頁面中檢閱任一焦點區域分葉中的摘要資訊，然後按一下焦點區域以檢視建議。
 6. 在任一焦點區域頁面中，您可以檢視針對環境且按照優先順序排列的建議。 按一下 [受影響的物件]  下方的建議，可檢視建議提出原因的詳細資料。<br><br> ![SQL 健康情況檢查建議的影像](./media/sql-assessment/sql-healthcheck-dashboard-02.png)<br>
 7. 您可以採取 [建議動作] 中所建議的更正動作。 當您解決某個項目後，後續評估會記錄您實施的建議動作並提高法務遵循分數。 更正後的項目將以**通過的物件**呈現。
@@ -174,13 +166,13 @@ Log Analytics 會使用 Operations Manager 代理程式及管理群組來收集�
 如果您有想要忽略的建議，則可以建立 Azure 監視器將用來防止建議出現在您評估結果的文字檔。
 
 ### <a name="to-identify-recommendations-that-you-will-ignore"></a>識別您將忽略的建議
-1. 在 Azure Monitor 菜单中单击“日志”。
+1. 在 [Azure 監視器] 功能表中，按一下 [**記錄**]。
 2. 使用下列查詢來列出您環境中電腦的失敗建議。
 
     ```
     SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-    下面是一个显示了日志查询的屏幕截图：<br><br> ![失敗的建議](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
+    以下是顯示記錄檔查詢的螢幕擷取畫面：<br><br> ![失敗的建議](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
 
 3. 選擇您想要忽略的建議。 您將使用下一個程序中的 RecommendationId 值。
 
@@ -189,7 +181,7 @@ Log Analytics 會使用 Operations Manager 代理程式及管理群組來收集�
 2. 在個別行上貼上或輸入您想要 Azure 監視器忽略之每個建議的各個 RecommendationId，然後儲存並關閉檔案。
 3. 將檔案放在您想要 Azure 監視器忽略建議之每一部電腦的下列資料夾中。
    * 在具有 Microsoft Monitoring Agent 的電腦 (直接連線或透過 Operations Manager 連線) 上 - *SystemDrive*:\Program Files\Microsoft Monitoring Agent\Agent
-   * 在 Operations Manager 管理伺服器上 - *SystemDrive*:\Program Files\Microsoft System Center 2012 R2\Operations Manager\Server
+   * 在 Operations Manager management 伺服器上- *SystemDrive*： \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server
    * 在 Operations Manager 2016 管理伺服器上 - *SystemDrive*:\Program Files\Microsoft System Center 2016\Operations Manager\Server
 
 ### <a name="to-verify-that-recommendations-are-ignored"></a>驗證已忽略建議
@@ -202,11 +194,24 @@ Log Analytics 會使用 Operations Manager 代理程式及管理群組來收集�
 3. 如果您稍後決定想要查看忽略的建議，請移除任何 IgnoreRecommendations.txt 檔案，或從中移除 RecommendationID。
 
 ## <a name="sql-health-check-solution-faq"></a>SQL 健康情況檢查方案常見問題集
+
+*SQL 評定解決方案會執行哪些檢查？*
+
+* 下列查詢會顯示目前執行的所有檢查的描述：
+
+```Kusto
+SQLAssessmentRecommendation
+| distinct RecommendationId, FocusArea, ActionArea, Recommendation, Description
+| sort by FocusArea,ActionArea, Recommendation
+```
+然後可將結果匯出至 Excel 供進一步檢閱。
+
+
 *執行健康情況檢查的頻率為何？*
 
 * 每隔七天執行檢查。
 
-是否有設定檢查執行頻率的方法？
+是否有設定檢查執行頻率的方法？**
 
 * 目前沒有。
 
@@ -251,4 +256,4 @@ Log Analytics 會使用 Operations Manager 代理程式及管理群組來收集�
 * 是，請參閱上面的 [忽略建議](#ignore-recommendations) 一節。
 
 ## <a name="next-steps"></a>後續步驟
-* 参阅[日志查询](../log-query/log-query-overview.md)，了解如何分析详细的 SQL 运行状况检查数据和建议。
+* [記錄查詢](../log-query/log-query-overview.md)，以瞭解如何分析詳細的 SQL 健康情況檢查資料和建議。

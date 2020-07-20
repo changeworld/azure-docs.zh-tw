@@ -9,21 +9,20 @@ editor: ''
 ms.assetid: a13c1ea7-6428-4234-84a6-0ebf51670a85
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/29/2016
 ms.author: manuaery
-ms.openlocfilehash: 9edc0b552f5c2f38e646bc4b44dd8df5c16b0457
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 1ab72788c768568366f2627055015c74028330b5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61408473"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515238"
 ---
 # <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>在連接至 Microsoft Azure StorSimple Virtual Array 的 StorSimple 裝置管理員中使用裝置摘要刀鋒視窗
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 對於已向給定 StorSimple 裝置管理員註冊的 StorSimple Virtual Array，StorSimple 裝置管理員的裝置刀鋒視窗提供摘要檢視，並醒目提示需要系統管理員注意的裝置問題。 本教學課程介紹裝置摘要刀鋒視窗、說明內容和功能，並描述您可以從這個刀鋒視窗執行的工作。
 
@@ -43,13 +42,13 @@ ms.locfileid: "61408473"
 
 ## <a name="storsimple-device-summary"></a>StorSimple 裝置摘要
 
-* [警示] 圖格提供虛擬陣列之所有作用中警示的快照集 (依警示嚴重性分組)。 按一下此圖格來開啟 [警示] 刀鋒視窗，然後按一下個別警示來檢視該警示的其他詳細資料，包括任何建議的動作。 如果已解決問題，您也可以清除警示。
+* [警示]**** 圖格提供虛擬陣列之所有作用中警示的快照集 (依警示嚴重性分組)。 按一下此圖格來開啟 [警示]**** 刀鋒視窗，然後按一下個別警示來檢視該警示的其他詳細資料，包括任何建議的動作。 如果已解決問題，您也可以清除警示。
 
-* [容量] 圖格顯示虛擬裝置上相對於可用的總儲存空間而言，已佈建和剩餘的主要儲存空間。 [已佈建] 是指已備妥和配置供使用的儲存空間數量，[剩餘] 是指這個裝置上可佈建的剩餘容量。 [剩餘階層式] 容量是可供佈建的容量，包括雲端，而 [剩餘本機] 是連接至此虛擬陣列的磁碟上剩餘的容量。
+* [容量]**** 圖格顯示虛擬裝置上相對於可用的總儲存空間而言，已佈建和剩餘的主要儲存空間。 [已佈建]**** 是指已備妥和配置供使用的儲存空間數量，[剩餘]**** 是指這個裝置上可佈建的剩餘容量。 [剩餘階層式]**** 容量是可供佈建的容量，包括雲端，而 [剩餘本機]**** 是連接至此虛擬陣列的磁碟上剩餘的容量。
 
-* 在 [使用量] 圖表中，您可以檢視整個虛擬陣列已使用的主要儲存空間，以及過去 7 天 (預設期間) 耗用的雲端儲存空間。 使用圖表右上角的 [編輯] 選項來選擇不同的時間範圍。
+* 在 [使用量]**** 圖表中，您可以檢視整個虛擬陣列已使用的主要儲存空間，以及過去 7 天 (預設期間) 耗用的雲端儲存空間。 使用圖表右上角的 [編輯]**** 選項來選擇不同的時間範圍。
 
-* [共用] 或 [磁碟區] 圖格提供裝置中的共用或磁碟區數目的摘要 (依狀態分組)。 按一下此圖格來開啟 [共用] 或 [磁碟區] 清單刀鋒視窗，然後按一下個別共用或磁碟區來檢視或修改其屬性。 如需詳細資訊，請參閱如何[管理共用](storsimple-virtual-array-manage-shares.md)或[管理磁碟區](storsimple-virtual-array-manage-volumes.md)。
+* [共用]**** 或 [磁碟區]**** 圖格提供裝置中的共用或磁碟區數目的摘要 (依狀態分組)。 按一下此圖格來開啟 [共用]**** 或 [磁碟區]**** 清單刀鋒視窗，然後按一下個別共用或磁碟區來檢視或修改其屬性。 如需詳細資訊，請參閱如何[管理共用](storsimple-virtual-array-manage-shares.md)或[管理磁碟區](storsimple-virtual-array-manage-volumes.md)。
 
 ## <a name="next-steps"></a>後續步驟
 了解如何：

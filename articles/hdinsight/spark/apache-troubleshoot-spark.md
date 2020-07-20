@@ -1,223 +1,115 @@
 ---
-title: 在 Azure HDInsight 中對 Spark 進行疑難排解
+title: 針對 Azure HDInsight 中的 Apache Spark 進行疑難排解
 description: 取得有關使用 Apache Spark 和 Azure HDInsight 的常見問題解答。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
-ms.topic: conceptual
-ms.date: 12/06/2018
+ms.reviewer: jasonh
+ms.topic: troubleshooting
+ms.date: 08/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: a4dc7293c00097c7a5752e29bf7c9a203cbb31a5
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
-ms.translationtype: MT
+ms.openlocfilehash: 80bca2dab1d07d9b99e75e283068bff99335fa18
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64721162"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79271937"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>使用 Azure HDInsight 為 Apache Spark 進行疑難排解
 
-了解在 [Apache Ambari](https://ambari.apache.org/) 中使用 [Apache Spark](https://spark.apache.org/) 承載時最常發生的問題及其解決方法。
+瞭解在[Apache Ambari](https://ambari.apache.org/)中使用 Apache Spark 承載時最常發生的問題及其解決方法。
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-ambari-on-clusters"></a>如何使用 Apache Ambari 在叢集上設定 Apache Spark 應用程式？
 
-### <a name="resolution-steps"></a>解決步驟
+Spark 設定值可以微調，協助避免 Apache Spark 應用程式 `OutofMemoryError` 例外狀況。 下列步驟顯示 Azure HDInsight 中的預設 Spark 設定值：
 
-可以优化 Spark 配置值，避免出现 Apache Spark 应用程序 OutofMemoryError 异常。 以下步骤显示了 Azure HDInsight 中的默认 Spark 配置值： 
+1. `https://CLUSTERNAME.azurehdidnsight.net`使用您的叢集認證登入 Ambari。 初始畫面會顯示 [總覽] 儀表板。 HDInsight 3.6 和4.0 之間有些微的表面差異。
 
-1. 在叢集清單中選取 [Spark2]。
+1. 流覽至**Spark2**的 [的] [進行]  >  ** **。
 
-    ![從清單中選取叢集](./media/apache-troubleshoot-spark/update-config-1.png)
+    ![選取 [設定] 索引標籤](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
 
-2. 選取 [ **設定** ] 索引標籤。
+1. 在設定清單中，選取並展開 [**自訂-spark2-預設值**]。
 
-    ![選取 [設定] 索引標籤](./media/apache-troubleshoot-spark/update-config-2.png)
+1. 尋找需要調整的設定值，例如 **spark.executor.memory**。 在此情況下， **9728m**的值太高。
 
-3. 在設定清單中選取 [Custom-spark2-defaults]。
+    ![選取 [Custom-spark2-defaults]](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
 
-    ![選取 [Custom-spark2-defaults]](./media/apache-troubleshoot-spark/update-config-3.png)
+1. 將值設為建議的設定。 這項設定的建議值為 **2048m**。
 
-4. 尋找需要調整的設定值，例如 **spark.executor.memory**。 在本例中，值 **4608m** 太高。
+1. 儲存此值，然後儲存設定。 選取 [儲存]。
 
-    ![選取 [spark.executor.memory] 欄位](./media/apache-troubleshoot-spark/update-config-4.png)
+    ![將值變更為 2048m](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
 
-5. 將值設為建議的設定。 這項設定的建議值為 **2048m**。
+    註記設定變更，然後選取 [儲存]****。
 
-    ![將值變更為 2048m](./media/apache-troubleshoot-spark/update-config-5.png)
+    ![輸入所做變更的附註內容](./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png)
 
-6. 儲存此值，然後儲存設定。 在工具列上，選取 [儲存]。
+    如有任何設定需要注意，您會收到通知。 記下項目，然後選取 [仍要繼續]****。
 
-    ![儲存設定值和設定](./media/apache-troubleshoot-spark/update-config-6a.png)
+    ![選取 [仍要繼續]](./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png)
 
-    如有任何設定需要注意，您會收到通知。 記下項目，然後選取 [仍要繼續]。 
+1. 每次儲存設定時，系統都會提示您重新啟動服務。 選取 [重新啟動]****。
 
-    ![選取 [仍要繼續]](./media/apache-troubleshoot-spark/update-config-6b.png)
-
-    註記設定變更，然後選取 [儲存]。
-
-    ![輸入所做變更的附註內容](./media/apache-troubleshoot-spark/update-config-6c.png)
-
-7. 每次儲存設定時，系統都會提示您重新啟動服務。 選取 [重新啟動]。
-
-    ![選取 [重新啟動]](./media/apache-troubleshoot-spark/update-config-7a.png)
+    ![選取 [重新啟動]](./media/apache-troubleshoot-spark/apache-spark-ambari-config7a.png)
 
     確認重新啟動。
 
-    ![選取 [確認全部重新啟動]](./media/apache-troubleshoot-spark/update-config-7b.png)
+    ![選取 [確認全部重新啟動]](./media/apache-troubleshoot-spark/apache-spark-ambari-config7b.png)
 
     您可以檢閱執行中的處理序。
 
-    ![檢閱執行中的處理序](./media/apache-troubleshoot-spark/update-config-7c.png)
+    ![檢閱執行中的處理序](./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png)
 
-8. 您可以新增設定。 在設定清單中選取 [Custom-spark2-defaults]，然後選取 [新增屬性]。
+1. 您可以新增設定。 在設定清單中選取 [Custom-spark2-defaults]****，然後選取 [新增屬性]****。
 
-    ![選取 [新增屬性]](./media/apache-troubleshoot-spark/update-config-8.png)
+    ![選取 [新增屬性]](./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png)
 
-9. 定義新的屬性。 您可以使用特定設定 (例如資料類型) 的對話方塊定義單一屬性。 或者，您也可以使用一行一定義的方式定義多個屬性。 
+1. 定義新的屬性。 您可以使用特定設定 (例如資料類型) 的對話方塊定義單一屬性。 或者，您也可以使用一行一定義的方式定義多個屬性。
 
     在本例中，**spark.driver.memory** 屬性是以值 **4g** 定義。
 
-    ![定義新的屬性](./media/apache-troubleshoot-spark/update-config-9.png)
+    ![定義新的屬性](./media/apache-troubleshoot-spark/apache-spark-ambari-config9.png)
 
-10. 儲存設定，然後重新啟動服務，如步驟 6 和 7 中所述。
+1. 儲存設定，然後重新啟動服務，如步驟 6 和 7 中所述。
 
 這些變更為全叢集的，但可在提交 Spark 作業時予以覆寫。
 
-### <a name="additional-reading"></a>其他閱讀資料
-
-[Apache Spark job submission on HDInsight clusters](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/) (提交 HDInsight 叢集上的 Apache Spark 作業)
-
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>如何使用 Jupyter Notebook 在叢集上設定 Apache Spark 應用程式？
 
-### <a name="resolution-steps"></a>解決步驟
+在 Jupyter 筆記本第一個資料格中的 **%%configure** 指示詞後面，以有效的 JSON 格式指定 Spark 設定。 請視需要變更實際值：
 
-1. 若要判斷需要設定哪些 Spark 設定以及設為哪些值，請參閱造成 Apache Spark 應用程式 OutOfMemoryError 例外狀況的原因。
-
-2. 在 Jupyter 筆記本第一個資料格中的 **%%configure** 指示詞後面，以有效的 JSON 格式指定 Spark 設定。 請視需要變更實際值：
-
-    ![新增設定](./media/apache-troubleshoot-spark/add-configuration-cell.png)
-
-### <a name="additional-reading"></a>其他閱讀資料
-
-[Apache Spark job submission on HDInsight clusters](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/) (提交 HDInsight 叢集上的 Apache Spark 作業)
-
+![新增設定](./media/apache-troubleshoot-spark/add-configuration-cell.png)
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters"></a>如何使用 Apache Livy 在叢集上設定 Apache Spark 應用程式？
 
-### <a name="resolution-steps"></a>解決步驟
+使用 cURL 等 REST 用戶端，將 Spark 應用程式提交給 Livy。 使用類似下列的命令。 請視需要變更實際值：
 
-1. 若要判斷需要設定哪些 Spark 設定以及設為哪些值，請參閱造成 Apache Spark 應用程式 OutOfMemoryError 例外狀況的原因。 
-
-2. 使用 cURL 等 REST 用戶端，將 Spark 應用程式提交給 Livy。 使用類似下列的命令。 請視需要變更實際值：
-
-    ```apache
-    curl -k --user 'username:password' -v -H 'Content-Type: application/json' -X POST -d '{ "file":"wasb://container@storageaccountname.blob.core.windows.net/example/jars/sparkapplication.jar", "className":"com.microsoft.spark.application", "numExecutors":4, "executorMemory":"4g", "executorCores":2, "driverMemory":"8g", "driverCores":4}'  
-    ```
-
-### <a name="additional-reading"></a>其他閱讀資料
-
-[Apache Spark job submission on HDInsight clusters](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/) (提交 HDInsight 叢集上的 Apache Spark 作業)
+```apache
+curl -k --user 'username:password' -v -H 'Content-Type: application/json' -X POST -d '{ "file":"wasb://container@storageaccountname.blob.core.windows.net/example/jars/sparkapplication.jar", "className":"com.microsoft.spark.application", "numExecutors":4, "executorMemory":"4g", "executorCores":2, "driverMemory":"8g", "driverCores":4}'  
+```
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-spark-submit-on-clusters"></a>如何使用 spark-submit 在叢集上設定 Apache Spark 應用程式？
 
-### <a name="resolution-steps"></a>解決步驟
+使用類似下列的命令啟動 spark-shell。 請視需要變更設定的實際值：
 
-1. 若要判斷需要設定哪些 Spark 設定以及設為哪些值，請參閱造成 Apache Spark 應用程式 OutOfMemoryError 例外狀況的原因。
-
-2. 使用類似下列的命令啟動 spark-shell。 請視需要變更設定的實際值： 
-
-    ```apache
-    spark-submit --master yarn-cluster --class com.microsoft.spark.application --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4 /home/user/spark/sparkapplication.jar
-    ```
+```apache
+spark-submit --master yarn-cluster --class com.microsoft.spark.application --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4 /home/user/spark/sparkapplication.jar
+```
 
 ### <a name="additional-reading"></a>其他閱讀資料
 
-[Apache Spark job submission on HDInsight clusters](https://web.archive.org/web/20190112152841/ https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/) (提交 HDInsight 叢集上的 Apache Spark 作業)
+[Apache Spark job submission on HDInsight clusters](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/) (提交 HDInsight 叢集上的 Apache Spark 作業)
 
+## <a name="next-steps"></a>後續步驟
 
-## <a name="what-causes-an-apache-spark-application-outofmemoryerror-exception"></a>造成 Apache Spark 應用程式 OutofMemoryError 例外狀況的原因為何？
+如果您沒有看到您的問題，或無法解決您的問題，請瀏覽下列其中一個管道以取得更多支援：
 
-### <a name="detailed-description"></a>詳細描述
+* [Spark 記憶體管理總覽](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)。
 
-Spark 應用程式因下列無法攔截的例外狀況類型而失敗：
+* [在 HDInsight 叢集上進行 Spark 應用程式的偵錯工具](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)。
 
-```apache
-ERROR Executor: Exception in task 7.0 in stage 6.0 (TID 439) 
+* 透過 [Azure 社群支援](https://azure.microsoft.com/support/community/)獲得由 Azure 專家所提供的解答。
 
-java.lang.OutOfMemoryError 
-    at java.io.ByteArrayOutputStream.hugeCapacity(Unknown Source) 
-    at java.io.ByteArrayOutputStream.grow(Unknown Source) 
-    at java.io.ByteArrayOutputStream.ensureCapacity(Unknown Source) 
-    at java.io.ByteArrayOutputStream.write(Unknown Source) 
-    at java.io.ObjectOutputStream$BlockDataOutputStream.drain(Unknown Source) 
-    at java.io.ObjectOutputStream$BlockDataOutputStream.setBlockDataMode(Unknown Source) 
-    at java.io.ObjectOutputStream.writeObject0(Unknown Source) 
-    at java.io.ObjectOutputStream.writeObject(Unknown Source) 
-    at org.apache.spark.serializer.JavaSerializationStream.writeObject(JavaSerializer.scala:44) 
-    at org.apache.spark.serializer.JavaSerializerInstance.serialize(JavaSerializer.scala:101) 
-    at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:239) 
-    at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) 
-    at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) 
-    at java.lang.Thread.run(Unknown Source) 
-```
+* 連線至 [@AzureSupport](https://twitter.com/azuresupport) - 這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 將 Azure 社群連線到正確的資源：解答、支援和專家。
 
-```apache
-ERROR SparkUncaughtExceptionHandler: Uncaught exception in thread Thread[Executor task launch worker-0,5,main] 
-
-java.lang.OutOfMemoryError 
-    at java.io.ByteArrayOutputStream.hugeCapacity(Unknown Source) 
-    at java.io.ByteArrayOutputStream.grow(Unknown Source) 
-    at java.io.ByteArrayOutputStream.ensureCapacity(Unknown Source) 
-    at java.io.ByteArrayOutputStream.write(Unknown Source) 
-    at java.io.ObjectOutputStream$BlockDataOutputStream.drain(Unknown Source) 
-    at java.io.ObjectOutputStream$BlockDataOutputStream.setBlockDataMode(Unknown Source) 
-    at java.io.ObjectOutputStream.writeObject0(Unknown Source) 
-    at java.io.ObjectOutputStream.writeObject(Unknown Source) 
-    at org.apache.spark.serializer.JavaSerializationStream.writeObject(JavaSerializer.scala:44) 
-    at org.apache.spark.serializer.JavaSerializerInstance.serialize(JavaSerializer.scala:101) 
-    at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:239) 
-    at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) 
-    at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) 
-    at java.lang.Thread.run(Unknown Source) 
-```
-
-### <a name="probable-cause"></a>可能的原因
-
-此例外狀況最可能發生的原因，就是未配置足夠的堆積記憶體給 Java 虛擬機器 (JVM)。 這些 JVM 會當作 Spark 應用程式一部分的執行程式或驅動程式啟動。 
-
-### <a name="resolution-steps"></a>解決步驟
-
-1. 決定 Spark 應用程式可處理的資料大小上限。 您可以依輸入資料的大小上限、由轉換輸入資料所產生的中繼資料，以及應用程式進一步轉換中繼資料時所產生的輸出資料粗略估算。 如果您無法進行正式的初始估算，也可以設定為反覆的程序。 
-
-2. 請確定您要使用的 HDInsight 叢集具有足夠的記憶體資源及核心，才能採用 Spark 應用程式。 若要判斷這點，請檢視 YARN UI 的叢集計量一節，查看**已使用記憶體**和**記憶體總計**，以及**已使用的 VCore** 和**VCore 總計**的值。
-
-3. 將下列 Spark 設定設為適當的值，不要超過可用記憶體及核心的 90%。 這些值應該在 Spark 應用程式的記憶體需求範圍內： 
-
-    ```apache
-    spark.executor.instances (Example: 8 for 8 executor count) 
-    spark.executor.memory (Example: 4g for 4 GB) 
-    spark.yarn.executor.memoryOverhead (Example: 384m for 384 MB) 
-    spark.executor.cores (Example: 2 for 2 cores per executor) 
-    spark.driver.memory (Example: 8g for 8GB) 
-    spark.driver.cores (Example: 4 for 4 cores)   
-    spark.yarn.driver.memoryOverhead (Example: 384m for 384MB) 
-    ```
-
-    计算所有执行程序使用的内存总量： 
-    
-    ```apache
-    spark.executor.instances * (spark.executor.memory + spark.yarn.executor.memoryOverhead) 
-    ```
-   计算驱动程序使用的内存总量：
-    
-    ```apache
-    spark.driver.memory + spark.yarn.driver.memoryOverhead
-    ```
-
-### <a name="additional-reading"></a>其他閱讀資料
-
-- [Apache Spark 記憶體管理概觀](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
-- [Debug an Apache Spark application on an HDInsight cluster](https://web.archive.org/web/20190112152909/ https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/) (在 HDInsight 叢集上偵錯 Apache Spark 應用程式)
-
-
-### <a name="see-also"></a>另请参阅
-[使用 Azure HDInsight 進行疑難排解](../../hdinsight/hdinsight-troubleshoot-guide.md)
+* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。

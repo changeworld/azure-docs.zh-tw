@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: 7f597bb5cba1a12bdb93325fe2b877ffc644e3e4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60199186"
 ---
 # <a name="using-the-azure-cloud-shell-editor"></a>使用 Azure Cloud Shell 編輯器
@@ -52,5 +52,5 @@ Azure Cloud Shell 包含從開放原始碼 [Monaco Editor](https://github.com/Mi
 Cloud Shell 編輯器中的語言反白顯示支援，是透過 [Monaco Editor](https://github.com/Microsoft/monaco-editor) 使用之 Monarch 語法所定義的上游功能實現的。 若要了解如何做出貢獻，請閱讀 [Monaco 參與者指南](https://github.com/Microsoft/monaco-editor/blob/master/CONTRIBUTING.md) \(英文\)。
 
 ## <a name="next-steps"></a>後續步驟
-[嘗試 Cloud Shell 中的 Bash 快速入門](quickstart.md)
-[檢視整合式的 Cloud Shell 工具的完整清單](features.md)
+[試用 Cloud Shell](quickstart.md) 
+ 中 Bash 的快速入門[觀看整合式 Cloud Shell 工具的完整清單](features.md)

@@ -1,24 +1,23 @@
 ---
-title: 利用 Azure 網路監看員進行連線疑難排解 - Azure REST API | Microsoft Docs
+title: 針對連線進行疑難排解-Azure REST API
+titleSuffix: Azure Network Watcher
 description: 了解如何運用 Azure REST API，來使用 Azure 網路監看員的連線疑難排解功能。
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: kumud
-ms.openlocfilehash: 7fbe36d9ee15ffbdaa2ba978aabf3cc4f5db3889
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 33a3c41f49833d669fd94ccf1e22afed971e544b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64694067"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737966"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>使用 Azure REST API 利用 Azure 網路監看員進行連線疑難排解
 
@@ -50,7 +49,7 @@ armclient login
 
 ## <a name="retrieve-a-virtual-machine"></a>擷取虛擬機器
 
-執行下列指令碼，以傳回虛擬機器。 執行連線時需要這項資訊。 
+執行下列指令碼，以傳回虛擬機器。 執行連線時需要這項資訊。
 
 下列程式碼需要下列變數的值︰
 
@@ -90,7 +89,7 @@ $subscriptionId = "00000000-0000-0000-0000-000000000000"
 $resourceGroupName = "NetworkWatcherRG"
 $networkWatcherName = "NetworkWatcher_westcentralus"
 $sourceResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.Compute/virtualMachines/MultiTierApp0"
-$destinationAddress = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.Compute/virtualMachines/Database0"
+$destinationResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.Compute/virtualMachines/Database0"
 $destinationPort = "0"
 $requestBody = @"
 {
@@ -99,7 +98,7 @@ $requestBody = @"
     'port': 0
   },
   'destination': {
-    'resourceId': '${destinationAddress}',
+    'resourceId': '${destinationResourceId}',
     'port': ${destinationPort}
   }
 }
@@ -131,9 +130,9 @@ Date: Fri, 02 Jun 2017 20:21:16 GMT
 null
 ```
 
-### <a name="response"></a>Response
+### <a name="response"></a>回應
 
-下列回應是來自上一個範例。  在此回應中，`ConnectionStatus` 為 [無法連線]。 您可以看到傳送的所有探查都失敗。 因為名為 **UserRule_Port80** 的使用者設定 `NetworkSecurityRule` 設定成封鎖連接埠 80 的連入流量，所以虛擬設備的連線失敗。 這項資訊可以用來研究連線問題。
+下列回應是來自上一個範例。  在此回應中，`ConnectionStatus` 為 [無法連線]****。 您可以看到傳送的所有探查都失敗。 因為名為 **UserRule_Port80** 的使用者設定 `NetworkSecurityRule` 設定成封鎖連接埠 80 的連入流量，所以虛擬設備的連線失敗。 這項資訊可以用來研究連線問題。
 
 ```json
 {
@@ -206,7 +205,7 @@ $subscriptionId = "00000000-0000-0000-0000-000000000000"
 $resourceGroupName = "NetworkWatcherRG"
 $networkWatcherName = "NetworkWatcher_westcentralus"
 $sourceResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.Compute/virtualMachines/MultiTierApp0"
-$destinationAddress = "13.107.21.200"
+$destinationResourceId = "13.107.21.200"
 $destinationPort = "80"
 $requestBody = @"
 {
@@ -215,7 +214,7 @@ $requestBody = @"
     'port': 0
   },
   'destination': {
-    'address': '${destinationAddress}',
+    'address': '${destinationResourceId}',
     'port': ${destinationPort}
   }
 }
@@ -247,9 +246,9 @@ Date: Fri, 02 Jun 2017 20:26:05 GMT
 null
 ```
 
-### <a name="response"></a>Response
+### <a name="response"></a>回應
 
-在下列範例中，`connectionStatus` 會顯示為 [無法連線]。 在 `hops` 詳細資料中，您可以在 `issues` 下看到已因 `UserDefinedRoute` 而封鎖流量。
+在下列範例中，`connectionStatus` 會顯示為 [無法連線]****。 在 `hops` 詳細資料中，您可以在 `issues` 下看到已因 `UserDefinedRoute` 而封鎖流量。
 
 ```json
 {
@@ -302,7 +301,7 @@ $subscriptionId = "00000000-0000-0000-0000-000000000000"
 $resourceGroupName = "NetworkWatcherRG"
 $networkWatcherName = "NetworkWatcher_westcentralus"
 $sourceResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.Compute/virtualMachines/MultiTierApp0"
-$destinationAddress = "https://bing.com"
+$destinationResourceId = "https://bing.com"
 $destinationPort = "0"
 $requestBody = @"
 {
@@ -311,7 +310,7 @@ $requestBody = @"
     'port': 0
   },
   'destination': {
-    'address': '${destinationAddress}',
+    'address': '${destinationResourceId}',
     'port': ${destinationPort}
   }
 }
@@ -343,9 +342,9 @@ Date: Fri, 02 Jun 2017 20:31:00 GMT
 null
 ```
 
-### <a name="response"></a>Response
+### <a name="response"></a>回應
 
-在下列回應中，您可以看到 `connectionStatus` 顯示為 [可以連線]。 連線成功時，會提供延遲值。
+在下列回應中，您可以看到 `connectionStatus` 顯示為 [可以連線]****。 連線成功時，會提供延遲值。
 
 ```json
 {
@@ -389,7 +388,7 @@ $subscriptionId = "00000000-0000-0000-0000-000000000000"
 $resourceGroupName = "NetworkWatcherRG"
 $networkWatcherName = "NetworkWatcher_westcentralus"
 $sourceResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.Compute/virtualMachines/MultiTierApp0"
-$destinationAddress = "https://build2017nwdiag360.blob.core.windows.net/"
+$destinationResourceId = "https://build2017nwdiag360.blob.core.windows.net/"
 $destinationPort = "0"
 $requestBody = @"
 {
@@ -398,7 +397,7 @@ $requestBody = @"
     'port': 0
   },
   'destination': {
-    'address': '${destinationAddress}',
+    'address': '${destinationResourceId}',
     'port': ${destinationPort}
   }
 }
@@ -430,9 +429,9 @@ Date: Fri, 02 Jun 2017 20:05:03 GMT
 null
 ```
 
-### <a name="response"></a>Response
+### <a name="response"></a>回應
 
-下列範例是執行前一個 API 呼叫的回應。 因為檢查成功，所以 `connectionStatus` 屬性會顯示為 [可以連線]。  系統會向您提供連線儲存體 Blob 和延遲所需躍點數目的詳細資料。
+下列範例是執行前一個 API 呼叫的回應。 因為檢查成功，所以 `connectionStatus` 屬性會顯示為 [可以連線]****。  系統會向您提供連線儲存體 Blob 和延遲所需躍點數目的詳細資料。
 
 ```json
 {
@@ -467,20 +466,6 @@ null
 
 ## <a name="next-steps"></a>後續步驟
 
-檢視[建立由警示觸發的封包擷取](network-watcher-alert-triggered-packet-capture.md)來了解如何透過虛擬機器警示將封包擷取自動化。
+瞭解如何藉由查看[建立警示觸發的封包捕獲](network-watcher-alert-triggered-packet-capture.md)，自動執行具有虛擬機器警示的封包捕獲。
 
 造訪[檢查 IP 流量驗證](diagnose-vm-network-traffic-filtering-problem.md)來得知 VM 是否允許特定流量流入或流出。
-
-
-
-
-
-
-
-
-
-
-
-
-
-

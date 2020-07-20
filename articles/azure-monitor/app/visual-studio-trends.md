@@ -1,26 +1,17 @@
 ---
 title: 在 Visual Studio 中分析趨勢 | Microsoft Docs
 description: 在 Visual Studio 中分析、 視覺化及探索您的 Application Insights 遙測的趨勢。
-services: application-insights
-documentationcenter: .net
-author: NumberByColors
-manager: carmonm
-ms.assetid: 3150c6fc-2691-44f6-a290-fc5cd68e692a
-ms.service: application-insights
-ms.custom: vs-azure
-ms.workload: azure-vs
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 03/17/2017
 ms.reviewer: mbullwin
-ms.pm_owner: daviste;NumberByColors
-ms.author: daviste
-ms.openlocfilehash: 898f0974a6a29abde5c84d611adc8d50c3873141
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom: vs-azure
+ms.openlocfilehash: 151248f7cd6fe763643da42fc8edbe7c01a69cc7
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60372709"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744122"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>在 Visual Studio 中分析趨勢 | Microsoft Azure
 「Application Insights 趨勢」工具會以視覺化方式呈現 Web 應用程式的重要遙測事件如何隨著時間變更，協助您快速識別問題和異常。 將您連結至更詳細的診斷資訊，「趨勢」可協助您改善應用程式效能、追蹤例外狀況的原因，以及揭露您的自訂事件情資。
@@ -103,10 +94,10 @@ Application Insights 趨勢會從您的應用程式的遙測建立時間序列�
 > 
 > 
 
-## <a name="next"></a>接續步驟
+## <a name="next-steps"></a><a name="next"></a>後續步驟
 |  |  |
 | --- | --- |
 | **[在 Visual Studio 中使用 Application Insights](../../azure-monitor/app/visual-studio.md)**<br/>搜尋遙測、查看 CodeLens 中的資料，以及設定 Application Insights。 盡在 Visual Studio 中。 |![以滑鼠右鍵按一下專案，然後選擇 [Application Insights]、[搜尋]](./media/visual-studio-trends/34.png) |
 | **[新增更多測試](../../azure-monitor/app/asp-net-more.md)**<br/>監視使用狀況、可用性、相依性、例外狀況。 整合來自記錄架構的追蹤。 撰寫自訂遙測。 |![Visual Studio](./media/visual-studio-trends/64.png) |
-| **[使用 Application Insights 入口網站](../../azure-monitor/app/app-insights-dashboards.md)**<br/>儀表板、功能強大的診斷和分析工具、警示、即時的應用程式相依性對應，以及遙測匯出等功能。 |![Visual Studio](./media/visual-studio-trends/62.png) |
+| **[使用 Application Insights 入口網站](../../azure-monitor/app/overview-dashboard.md)**<br/>儀表板、功能強大的診斷和分析工具、警示、即時的應用程式相依性對應，以及遙測匯出等功能。 |![Visual Studio](./media/visual-studio-trends/62.png) |
 

@@ -6,21 +6,23 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.custom: mvc
 ms.date: 03/18/2019
 ms.author: troyhop
-ms.openlocfilehash: 4401d4b93a27e76554368ce72d256b38de61df4c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.custom:
+- mvc
+- amqp
+- mqtt
+ms.openlocfilehash: c568dddcbbf57ebd6ed5906bb83af01a84dafa41
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61448979"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81683834"
 ---
 # <a name="create-an-advanced-device-model"></a>建立進階裝置型號
 
 本操作指南說明定義自訂裝置型號的 JSON 和 JavaScript 檔案。 本文包含一些範例裝置型號定義檔案，並示範如何將它們上傳至裝置模擬執行個體。 您可以建立進階裝置型號，以模擬更真實的裝置行為進行測試。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -56,7 +58,7 @@ ms.locfileid: "61448979"
 每個裝置定義檔案包含模擬裝置型號的詳細資訊，包括下列資訊：
 
 * 裝置型號名稱：字串。
-* 通訊協定：AMQP |MQTT |HTTP。
+* 通訊協定：AMQP | MQTT | HTTP。
 * 初始裝置狀態。
 * 重新整理裝置狀態的頻率。
 * 要用來重新整理裝置狀態的 JavaScript 檔案。
@@ -149,7 +151,7 @@ IoT 裝置可以使用不同的通訊協定來連線。 模擬可讓您使用 **
 ],
 ```
 
-預留位置使用特殊語法 **${NAME}**，其中 **NAME** 是 JavaScript **main** 函式所傳回裝置狀態物件的金鑰。 字串應該加上引號，而數字則不應該。
+預留位置使用特殊語法 **${NAME}** ，其中 **NAME** 是 JavaScript **main** 函式所傳回裝置狀態物件的金鑰。 字串應該加上引號，而數字則不應該。
 
 #### <a name="message-schema"></a>訊息結構描述
 
@@ -163,13 +165,13 @@ IoT 裝置可以使用不同的通訊協定來連線。 模擬可讓您使用 **
 * 二進位 - 使用 base64 序列化
 * Text
 * Boolean
-* 整數 
+* 整數
 * Double
-* DateTime
+* Datetime
 
 ### <a name="supported-methods"></a>支援的方法
 
-模擬裝置還可因應方法呼叫，執行某些邏輯並提供某些回應。 類似於模擬，方法邏輯儲存在 JavaScript 檔案中，並可以與裝置狀態互動。 例如︰
+模擬裝置還可因應方法呼叫，執行某些邏輯並提供某些回應。 類似於模擬，方法邏輯儲存在 JavaScript 檔案中，並可以與裝置狀態互動。 例如：
 
 ```json
 "CloudToDeviceMethods": {
@@ -259,7 +261,7 @@ JavaScript 檔案必須要有 **elevation** 函式，接受以下兩個參數：
     * **deviceModel**。 例如，**電梯**。
 * **state** 物件，其為先前呼叫中的函式所傳回的值。 模擬服務會維護此裝置狀態，並用來產生遙測訊息。
 
-**main** 函式傳回新的裝置狀態。 例如︰
+**main** 函式傳回新的裝置狀態。 例如：
 
 ```JavaScript
 function main(context, state) {

@@ -1,19 +1,19 @@
 ---
-title: 教學課程：使用 Azure Resource Manager 範本佈建「適用於 MySQL 的 Azure 資料庫」伺服器
+title: 教學課程：建立適用於 MySQL 的 Azure 資料庫 - Azure Resource Manager 範本
 description: 本教學課程說明如何使用 Azure Resource Manager 範本佈建和自動化「適用於 MySQL 的 Azure 資料庫」伺服器的部署。
 author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.devlang: json
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 6e4bb7622fe51c0cab4fc45e945e5bb07b1d32f1
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: f4960482c88bf9768be1c1c9dbb3652409a8f1b8
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925847"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "74771082"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>教學課程：使用 Azure Resource Manager 範本佈建「適用於 MySQL 的 Azure 資料庫」伺服器
 
@@ -105,7 +105,7 @@ Azure Resource Manager 會利用基礎的 REST API 來宣告和程式化大規�
 
 ```azurecli-interactive
 az login
-az group create -n ExampleResourceGroup  -l “West US2”
+az group create -n ExampleResourceGroup  -l "West US2"
 az group deployment create -g $ ExampleResourceGroup   --template-file $ {templateloc} --parameters $ {parametersloc}
 ```
 

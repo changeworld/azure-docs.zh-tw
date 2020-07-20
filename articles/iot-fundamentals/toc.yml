@@ -1,18 +1,24 @@
 - name: Azure 物聯網
-  href: index.md
+  href: index.yml
 - name: 概觀
   items:
     - name: 簡介
       href: iot-introduction.md
+    - name: 選擇合適的 IoT 解決方案
+      href: iot-solution-options.md
     - name: Azure IoT 服務與技術
       href: iot-services-and-technologies.md
+    - name: 支援和協助選項
+      href: iot-support-help.md
 - name: 安全性
   items:
-    - name: 安全性架構
-      href: iot-security-architecture.md
-    - name: 安全性最佳作法
-      href: iot-security-best-practices.md
-    - name: 安全部署
-      href: iot-security-deployment.md
+    - name: 建議
+      href: security-recommendations.md
     - name: 從頭建立安全性
       href: iot-security-ground-up.md
+    - name: 安全性最佳做法
+      href: iot-security-best-practices.md
+    - name: 安全性架構
+      href: iot-security-architecture.md
+    - name: 安全部署
+      href: iot-security-deployment.md

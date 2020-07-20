@@ -1,19 +1,18 @@
 ---
-title: Microsoft Azure 資料箱磁碟概觀 | 資料中的 Microsoft Docs
-description: 說明 Azure 資料箱磁碟，這是可讓您將大量資料傳輸至 Azure 的雲端解決方案
+title: Microsoft Azure 資料箱磁碟安全性功能 |資料中的 Microsoft Docs
+description: 說明為 Azure 資料箱磁碟所實行的安全性功能，這是可讓您將大量資料傳輸至 Azure 的雲端解決方案
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: overview
-ms.date: 01/09/2019
+ms.topic: conceptual
+ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: afb344418f843e54c3172c17d28bde7055e101b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
+ms.openlocfilehash: 59cce6d89bc863ad489a8ed37c7f284d3085c775
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093451"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "79117294"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Azure 資料箱磁碟安全性和資料保護
 
@@ -26,7 +25,7 @@ Microsoft Azure 資料箱解決方案包含四個彼此互動的主要元件：
 - **在 Azure 中託管的 Azure 資料箱服務** – 可供您用來建立磁碟訂單、設定磁碟，然後追蹤訂單直到完成的管理服務。
 - **資料箱磁碟** – 寄送給您的實體磁碟，可供您將內部部署資料匯入 Azure。 
 - **連線至磁碟的用戶端/主機** – 在基礎結構中，透過 USB 連線至資料箱磁碟、並產生需受保護資料的用戶端。
-- **雲端儲存體** – Azure 雲端中儲存資料的位置。 這通常是儲存體帳戶，且連結到您所建立的 Azure 資料箱資源。
+- **雲端儲存體** – Azure 中儲存資料的位置。 這通常是儲存體帳戶，且連結到您所建立的 Azure 資料箱資源。
 
 下圖表示透過 Azure 資料箱磁碟解決方案從內部部署至 Azure 的資料流程。
 
@@ -34,7 +33,7 @@ Microsoft Azure 資料箱解決方案包含四個彼此互動的主要元件：
 
 ## <a name="security-features"></a>安全性功能
 
-資料箱磁碟會確保只有獲得授權的實體可以檢視、修改或刪除您的資料，從而提供資料保護的安全解決方案。 此解決方案的安全性功能適用於磁碟以及相關聯的服務，確保在其中所儲存資料的安全性。 
+資料箱磁碟會確保只有獲得授權的實體可以檢視、修改或刪除您的資料，從而提供資料保護的安全解決方案。 此解決方案的安全性功能適用於磁碟以及相關聯的服務，確保在其中所儲存資料的安全性。
 
 ### <a name="data-box-disk-protection"></a>資料箱磁碟保護
 
@@ -48,7 +47,7 @@ Microsoft Azure 資料箱解決方案包含四個彼此互動的主要元件：
 
 流入及流出資料箱磁碟的資料會受到下列功能保護：
 
-- 隨時進行 BitLocker 的資料加密。 
+- 隨時進行 BitLocker 的資料加密。
 - 將資料上傳至 Azure 完成之後，安全清除磁碟中的資料。 資料清除是根據 NIST 800-88r1 標準。
 
 ### <a name="data-box-service-protection"></a>資料箱服務保護
@@ -56,10 +55,9 @@ Microsoft Azure 資料箱解決方案包含四個彼此互動的主要元件：
 資料箱服務受到下列功能保護。
 
 - 若要存取資料箱磁碟服務，貴組織需有內含資料箱磁碟的 Azure 訂用帳戶。 您的訂用帳戶控管您在 Azure 入口網站中可存取的功能。
-- 因為資料箱服務裝載於 Azure 中，所以會受到 Azure 安全性功能的保護。 如需有關 Microsoft Azure 所提供的安全性功能的詳細資訊，請移至 [Microsoft Azure 信任中心](https://www.microsoft.com/TrustCenter/Security/default.aspx)。 
+- 因為資料箱服務裝載於 Azure 中，所以會受到 Azure 安全性功能的保護。 如需有關 Microsoft Azure 所提供的安全性功能的詳細資訊，請移至 [Microsoft Azure 信任中心](https://www.microsoft.com/TrustCenter/Security/default.aspx)。
 - 資料箱磁碟會儲存磁碟通行金鑰，可用來將服務中的磁碟解除鎖定。 
-- 資料箱磁碟服務會在服務中儲存訂單詳細資料和狀態。 刪除訂單時，會將此資訊刪除。 
-
+- 資料箱磁碟服務會在服務中儲存訂單詳細資料和狀態。 刪除訂單時，會將此資訊刪除。
 
 ## <a name="managing-personal-data"></a>管理個人資料
 

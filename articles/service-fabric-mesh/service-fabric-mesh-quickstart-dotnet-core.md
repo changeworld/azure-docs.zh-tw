@@ -1,28 +1,19 @@
 ---
-title: 快速入門 - 將 Web 應用程式至 Azure Service Fabric Mesh | Microsoft Docs
+title: 快速入門 - 將 Web 應用程式部署至 Azure Service Fabric Mesh
 description: 本快速入門說明如何使用 Visual Studio 建立 ASP.NET Core 網站，並將其發佈至 Azure Service Fabric Mesh。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/17/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b30676e0c5782a95c629571cadead7bf58211789
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 276f8860f407693a7ff08048399fa6edf16aaf0a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804912"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "75459060"
 ---
-# <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>快速入門：建立 Web 應用程式，並將其部署至 Azure Service Fabric Mesh
+# <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>快速入門：建立 Web 應用程式並部署至 Azure Service Fabric Mesh
 
 Azure Service Fabric Mesh 是一個受到完整管理的服務，讓開發人員能夠部署微服務應用程式，而不需管理虛擬機器、儲存體或網路功能。
 
@@ -34,23 +25,23 @@ Azure Service Fabric Mesh 是一個受到完整管理的服務，讓開發人員
 
 ## <a name="create-a-service-fabric-mesh-project"></a>建立 Service Fabric Mesh 專案
 
-開啟 Visual Studio，然後選取 [檔案] > [新增] > [專案]。
+開啟 Visual Studio，然後選取 [檔案]   > [新增]   > [專案]  。
 
-在 [新增專案] 對話方塊頂端的 [搜尋] 方塊中，輸入 `mesh`。 選取 **Service Fabric Mesh 應用程式**範本。 如果您未看到此範本，請確定已安裝 Mesh SDK 和 VS 工具預覽版，如[設定您的開發環境](service-fabric-mesh-howto-setup-developer-environment-sdk.md)中所說明。 
+在 [新增專案]  對話方塊頂端的 [搜尋]  方塊中，輸入 `mesh`。 選取 **Service Fabric Mesh 應用程式**範本。 如果您未看到此範本，請確定已安裝 Mesh SDK 和 VS 工具預覽版，如[設定您的開發環境](service-fabric-mesh-howto-setup-developer-environment-sdk.md)中所說明。 
 
-在 [名稱] 方塊中，輸入 **ServiceFabricMesh1**，然後在 [位置] 方塊中，設定專案檔儲存所在的資料夾路徑。
+在 [名稱]  方塊中，輸入 **ServiceFabricMesh1**，然後在 [位置]  方塊中，設定專案檔儲存所在的資料夾路徑。
 
-確定已勾選 [為方案建立目錄]，然後按一下 [確定] 以建立 Service Fabric Mesh 專案。
+確定已勾選 [為方案建立目錄]  ，然後按一下 [確定]  以建立 Service Fabric Mesh 專案。
 
 ![Visual Studio 的新增 Service Fabric Mesh 專案對話方塊](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-project.png)
 
 ### <a name="create-a-service"></a>建立服務
 
-按一下 [確定] 之後，[新增 Service Fabric 服務] 對話方塊隨即出現。 選取 [ASP.NET Core] 專案類型、確定將 [容器 OS] 設定為 [Windows]，然後按一下 [確定] 以建立 ASP.NET Core 專案。 
+按一下 [確定]  之後，[新增 Service Fabric 服務]  對話方塊隨即出現。 選取 [ASP.NET Core]  專案類型、確定將 [容器 OS]  設定為 [Windows]  ，然後按一下 [確定]  以建立 ASP.NET Core 專案。 
 
 ![Visual Studio 的新增 Service Fabric Mesh 專案對話方塊](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-service-fabric-service.png)
 
-[新增 ASP.NET Core Web 應用程式] 對話方塊隨即出現。 選取 [Web 應用程式]，然後按一下 [確定]。
+[新增 ASP.NET Core Web 應用程式]  對話方塊隨即出現。 選取 [Web 應用程式]  ，然後按一下 [確定]  。
 
 ![Visual Studio 的新增 ASP.NET Core 應用程式](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-aspnetcore-app.png)
 
@@ -66,25 +57,25 @@ Visual Studio 會建立 Service Fabric Mesh 應用程式專案和 ASP.NET Core �
 
 ## <a name="publish-to-azure"></a>發佈至 Azure
 
-若要將您的 Service Fabric Mesh 專案發行至 Azure，請在 Visual Studio 中以滑鼠右鍵按一下 [Service Fabric Mesh 專案]，然後選取 [發行]。
+若要將您的 Service Fabric Mesh 專案發行至 Azure，請在 Visual Studio 中以滑鼠右鍵按一下 [Service Fabric Mesh 專案]  ，然後選取 [發行]  。
 
 ![Visual Studio 中以滑鼠右鍵按一下 Service Fabric Mesh 專案](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-right-click-publish.png)
 
-您將會看見 [發行 Service Fabric 應用程式] 對話方塊。
+您將會看見 [發行 Service Fabric 應用程式]  對話方塊。
 
 ![Visual Studio 的 Service Fabric Mesh 發行對話方塊](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-dialog.png)
 
-選取您的 Azure 帳戶和訂用帳戶。 選擇 [位置] 。 本文使用**美國東部**。
+選取您的 Azure 帳戶和訂用帳戶。 選擇 [位置]  。 本文使用**美國東部**。
 
-在 [資源群組] 下方，選取 [\<建立新的資源群組...>]。 [建立資源群組] 對話方塊隨即出現。 設定**資源群組名稱**和**位置**。  本快速入門使用**美國東部**的位置，並將群組命名為 **sfmeshTutorial1RG** (如果您的組織有多位人員使用同一個訂用帳戶，請選擇唯一的資源群組名稱)。  按一下 [建立] 以建立資源群組並返回發行對話方塊。
+在 [資源群組] 下方，選取 [\<建立新的資源群組...>]。 [建立資源群組]  對話方塊隨即出現。 設定**資源群組名稱**和**位置**。  本快速入門使用**美國東部**的位置，並將群組命名為 **sfmeshTutorial1RG** (如果您的組織有多位人員使用同一個訂用帳戶，請選擇唯一的資源群組名稱)。  按一下 [建立]  以建立資源群組並返回發行對話方塊。
 
 ![Visual Studio 的 Service Fabric Mesh 新增資源群組對話方塊](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-resource-group-dialog.png)
 
-返回 [發佈 Service Fabric 應用程式] 對話方塊，在 [Azure Container Registry] 下方，選取 [\<建立新的容器登錄...>]。 在 [建立容器登錄] 對話方塊中，請針對**容器登錄名稱**使用唯一的名稱。 指定**位置** (本快速入門使用**美國東部**)。 從下拉式清單中選取您在上一個步驟中建立的**資源群組**，例如 **sfmeshTutorial1RG**。 將 **SKU** 設定為 [基本]，然後按一下 [建立] 以返回發行對話方塊。
+返回 [發佈 Service Fabric 應用程式] 對話方塊，在 [Azure Container Registry] 下方，選取 [\<建立新的容器登錄...>]。 在 [建立容器登錄]  對話方塊中，請針對**容器登錄名稱**使用唯一的名稱。 指定**位置** (本快速入門使用**美國東部**)。 從下拉式清單中選取您在上一個步驟中建立的**資源群組**，例如 **sfmeshTutorial1RG**。 將 **SKU** 設定為 [基本]  ，然後按一下 [建立]  以返回發行對話方塊。
 
 ![Visual Studio 的 Service Fabric Mesh 新增資源群組對話方塊](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-new-container-registry-dialog.png)
 
-在發行對話方塊中，按一下 [發行] 按鈕，將您的 Service Fabric Mesh 應用程式部署到 Azure。
+在發行對話方塊中，按一下 [發行]  按鈕，將您的 Service Fabric Mesh 應用程式部署到 Azure。
 
 當您首次發行到 Azure 時，會將 Dcker 映像推送到 Azure Container Registry (ACR)，所需時間取決於映像大小。 後續發行相同專案的速度將會加快。 您可以在 Visual Studio 的 [輸出] 視窗下拉式清單中選取 [Service Fabric 工具]，藉以監視部署的進度。 一旦部署完成之後，**Service Fabric 工具**輸出將會以 URL 形式來顯示應用程式的 IP 位址和連接埠。
 

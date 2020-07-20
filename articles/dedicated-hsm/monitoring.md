@@ -2,8 +2,8 @@
 title: 監視選項 - Azure 專用 HSM | Microsoft Docs
 description: 「Azure 專用 HSM」監視選項和監視責任概觀
 services: dedicated-hsm
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
@@ -11,13 +11,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: barclayn
-ms.openlocfilehash: 2bcf1d1e007398cf80839f5e1d0bac78fd80db07
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.author: mbaldwin
+ms.openlocfilehash: 3fde577a6b0efb7584e1c9efd57c95583ebe4ec9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60912224"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "70881413"
 ---
 # <a name="azure-dedicated-hsm-monitoring"></a>Azure 專用 HSM 監視功能
 

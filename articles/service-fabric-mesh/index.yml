@@ -1,50 +1,82 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Service Fabric Mesh 文件
+summary: Azure Service Fabric Mesh 是一個完全受控服務，讓開發人員能夠部署容器化應用程式，而不需管理虛擬機器、儲存體或網路功能。
 metadata:
-  title: Azure Service Fabric Mesh 文件 - 教學課程和 API 參考 | Microsoft Docs
-  meta.description: 'Azure Service Fabric Mesh is a fully managed service enabling developers to deploy containerized applications without managing virtual machines, storage, or networking resources. Learn how to use Service Fabric Mesh with our quickstarts and tutorials.'
-  services: service-fabric-mesh
-  author: dkkapur
-  manager: timlt
   ms.service: service-fabric-mesh
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 07/26/2018
-  ms.author: dekapur
-abstract:
-  description: Azure Service Fabric Mesh 是完全受控的服務，可讓開發人員建置及部署任務關鍵性應用程式，而不需要管理任何基礎結構。  視需要使用 Service Fabric Mesh 來建置，並執行可縮放的安全、分散式微服務應用程式。 了解如何透過我們的快速入門和教學課程使用 Azure Service Fabric。  若要進一步了解，請閱讀 <a href="/azure/service-fabric-mesh/service-fabric-mesh-overview">Service Fabric Mesh 概觀</a>與<a href="/azure/service-fabric-mesh/service-fabric-mesh-faq">常見問題集</a>。
-sections:
-  - title: 5 分鐘快速入門
-    items:
-      - type: paragraph
-        text: 了解如何將 Service Fabric 應用程式和容器部署至 Service Fabric Mesh
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: 將 Hello World 部署至 Service Fabric Mesh
-            href: /azure/service-fabric-mesh/service-fabric-mesh-quickstart-deploy-container
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_netcore.svg'
-            text: 建立 Web 應用程式，並將其部署至 Service Fabric Mesh
-            href: /azure/service-fabric-mesh/service-fabric-mesh-quickstart-dotnet-core
-  - title: 逐步教學課程
-    items:
-      - type: paragraph
-        text: 了解如何使用 Visual Studio 或 Azure CLI 來建置及部署 Mesh 應用程式。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore">使用 Visual Studio 建立、偵錯、部署及將多服務應用程式升級為 Service Fabric Mesh。</a>
-          - html: <a href="/azure/service-fabric-mesh/service-fabric-mesh-tutorial-template-deploy-app">使用範本來部署、調整及升級 Service Fabric Mesh 應用程式。</a>
-  - title: 參考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="/rest/api/servicefabric/sfmeshrp-index">Service Fabric Mesh 資源提供者 API</a></p><p><a href="/rest/api/servicefabric/sfclient-index#service-fabric-resource-model">Service Fabric 用戶端資源 API</a></p>'
+  author: erikadoyle
+  ms.author: edoyle
+  ms.date: 12/02/2019
+  ms.openlocfilehash: eb24b0b0b4a143e82c2b93f158db0a3d0647ed7c
+  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/25/2020
+  ms.locfileid: "74790164"
+landingContent:
+- title: 關於 Service Fabric Mesh
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Service Fabric Mesh？
+      url: service-fabric-mesh-overview.md
+    - text: Service Fabric 資源模型簡介
+      url: service-fabric-mesh-service-fabric-resources.md
+  - linkListType: concept
+    links:
+    - text: 詞彙
+      url: service-fabric-mesh-terminology.md
+    - text: 網路和閘道
+      url: service-fabric-mesh-networks-and-gateways.md
+    - text: 存放狀態
+      url: service-fabric-mesh-storing-state.md
+    - text: 密碼
+      url: service-fabric-mesh-secrets-overview.md
+  - linkListType: whats-new
+    links:
+    - text: 常見問題集
+      url: service-fabric-mesh-faq.md
+- title: 建置 Service Fabric Mesh 應用程式
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 Visual Studio 建立 Web 應用程式
+      url: service-fabric-mesh-quickstart-dotnet-core.md
+  - linkListType: tutorial
+    links:
+    - text: 使用 Visual Studio 來建置及部署 Mesh 應用程式
+      url: service-fabric-mesh-tutorial-create-dotnetcore.md
+  - linkListType: how-to-guide
+    links:
+    - text: 設定開發環境
+      url: service-fabric-mesh-howto-setup-developer-environment-sdk.md
+    - text: 為 Service Fabric Mesh 最佳化 Visual Studio 效能
+      url: service-fabric-mesh-howto-optimize-vs.md
+    - text: 設定 Service Fabric Mesh CLI
+      url: service-fabric-mesh-howto-setup-cli.md
+  - linkListType: download
+    links:
+    - text: 尋找 Service Fabric Mesh 範例
+      url: service-fabric-mesh-howto-find-samples.md
+- title: 部署和管理現有的應用程式
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 部署 Hello World
+      url: service-fabric-mesh-quickstart-deploy-container.md
+  - linkListType: tutorial
+    links:
+    - text: 部署、調整及升級 Service Fabric Mesh 應用程式
+      url: service-fabric-mesh-tutorial-template-deploy-app.md
+  - linkListType: how-to-guide
+    links:
+    - text: 將 Service Fabric Mesh 的現有 .NET 應用程式容器化
+      url: service-fabric-mesh-howto-containerize-vs.md
+    - text: 建立自動調整原則
+      url: service-fabric-mesh-howto-auto-scale-services.md
+  - linkListType: concept
+    links:
+    - text: 服務延展性
+      url: service-fabric-mesh-scalability.md
+    - text: 監視和診斷
+      url: service-fabric-mesh-monitoring-diagnostics.md
